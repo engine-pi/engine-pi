@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.engine-alpha</groupId>
-    <artifactId>engine-alpha-parent</artifactId>
+    <artifactId>engine-alpha</artifactId>
     <version>4.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
-    <name>Engine Alpha Projekt</name>
-    <modules>
-        <module>engine-alpha</module>
-        <module>engine-alpha-examples</module>
-        <module>engine-alpha-edu</module>
-        <module>engine-alpha-edu-beispiele</module>
-    </modules>
+    <name>Engine Alpha</name>
+    <packaging>jar</packaging>
+
+    <repositories>
+        <repository>
+            <id>project-repository</id>
+            <url>file://${project.basedir}/repository</url>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,58 +24,68 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>git-repository</id>
-            <url>file://${project.basedir}/lib</url>
-        </repository>
-    </repositories>
-
     <dependencies>
+        <!-- Install via:
+
+          mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file \
+             -Dfile=jbox2d-library-master-c0b937b.jar -DgroupId=org.jbox2d \
+             -DartifactId=jbox2d-library -Dversion=2.3.1-SNAPSHOT \
+             -Dpackaging=jar -DlocalRepositoryPath=lib -DgeneratePom=true -DcreateChecksum=true
+
+          mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file \
+             -Dfile=jbox2d-library-master-c0b937b-sources.jar -DgroupId=org.jbox2d \
+             -DartifactId=jbox2d-library -Dversion=2.3.1-SNAPSHOT \
+             -Dpackaging=jar -DlocalRepositoryPath=lib -Dclassifier=sources -DgeneratePom=true
+                -DcreateChecksum=true
+              -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-        <!--    <dependency>
-              <groupId>org.junit.jupiter</groupId>
-              <artifactId>junit-jupiter-api</artifactId>
-              <version>5.6.0</version>
-              <scope>test</scope>
-            </dependency>
-            <dependency>
-              <groupId>org.junit.jupiter</groupId>
-              <artifactId>junit-jupiter-engine</artifactId>
-              <version>5.6.0</version>
-              <scope>test</scope>
-            </dependency>
-            <dependency>
-              <groupId>org.junit.jupiter</groupId>
-              <artifactId>junit-jupiter-params</artifactId>
-              <version>5.6.0</version>
-              <scope>test</scope>
-            </dependency>-->
+
+        <dependency>
+            <groupId>org.jbox2d</groupId>
+            <artifactId>jbox2d-library</artifactId>
+            <version>2.3.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>engine-alpha-4</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
                 <configuration>
-                    <showDeprecation>true</showDeprecation>
-                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <argLine>-Djava.awt.headless=true</argLine>
-                </configuration>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -82,17 +94,22 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.12.0</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.4.5</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
                 <reportSets>
                     <reportSet>
-                        <reports />
+                        <id>html</id>
+                        <configuration>
+                            <locale>de_DE</locale>
+                            <charset>UTF-8</charset>
+                            <doctitle>Engine Alpha 4.x API</doctitle>
+                            <windowtitle>Engine Alpha 4.x API</windowtitle>
+                            <excludePackageNames>*.internal,*.internal.*</excludePackageNames>
+                            <show>public</show>
+                        </configuration>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
                     </reportSet>
                 </reportSets>
             </plugin>
