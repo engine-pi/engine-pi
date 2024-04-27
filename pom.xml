@@ -4,11 +4,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.engine-alpha</groupId>
-    <artifactId>engine-alpha</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <groupId>rocks.friedrich.engine_omega</groupId>
+    <artifactId>engine-omega</artifactId>
+    <version>0.1.0</version>
 
-    <name>Engine Alpha</name>
+    <name>Engine Omega</name>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,7 +51,7 @@
     </dependencies>
 
     <build>
-        <finalName>engine-alpha-4</finalName>
+        <finalName>engine-omega</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -100,8 +100,8 @@
                         <configuration>
                             <locale>de_DE</locale>
                             <charset>UTF-8</charset>
-                            <doctitle>Engine Alpha 4.x API</doctitle>
-                            <windowtitle>Engine Alpha 4.x API</windowtitle>
+                            <doctitle>Engine Omega API</doctitle>
+                            <windowtitle>Engine Omega API</windowtitle>
                             <excludePackageNames>*.internal,*.internal.*</excludePackageNames>
                             <show>public</show>
                         </configuration>

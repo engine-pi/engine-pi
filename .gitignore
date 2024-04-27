@@ -22,12 +22,8 @@
 
 *.orig
 
-engine-alpha.log
+engine-omega.log
 
 *~
 
-/target/
-/engine-alpha/target/
-/engine-alpha-edu/target/
-/engine-alpha-examples/target/
-/engine-alpha-edu-beispiele/target/
+target/
