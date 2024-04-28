@@ -17,11 +17,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ea.rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega;
 
 import org.junit.Test;
-
-import rocks.friedrich.engine_omega.Vector;
 
 import static org.junit.Assert.*;
 

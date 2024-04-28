@@ -1,7 +1,6 @@
-package ea.rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega;
 
 import rocks.friedrich.engine_omega.internal.Bounds;
-import rocks.friedrich.engine_omega.Vector;
 
 import org.junit.Test;
 

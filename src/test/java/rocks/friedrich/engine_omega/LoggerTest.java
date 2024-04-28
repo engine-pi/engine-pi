@@ -1,4 +1,4 @@
-package ea.rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega;
 
 import static org.junit.Assert.assertTrue;
 

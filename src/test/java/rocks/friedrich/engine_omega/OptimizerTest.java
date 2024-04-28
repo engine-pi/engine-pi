@@ -1,8 +1,7 @@
-package ea.rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega;
 
 import rocks.friedrich.engine_omega.internal.util.Logger;
 import rocks.friedrich.engine_omega.internal.util.Optimizer;
-import rocks.friedrich.engine_omega.EngineOmega;
 
 import org.junit.Test;
 
