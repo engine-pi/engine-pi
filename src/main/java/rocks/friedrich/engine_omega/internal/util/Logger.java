@@ -45,12 +45,12 @@ final public class Logger {
         try {
             writer = new BufferedWriter(new FileWriter("engine-omega.log", false));
         } catch (IOException e) {
-            File ea = new File("engine-omega.log");
+            File log = new File("engine-omega.log");
 
-            if (ea.isDirectory()) {
+            if (log.isDirectory()) {
                 System.err.println("Logger konnte nicht initialisiert werden, da 'engine-omega.log' ein Verzeichnis ist!");
                 System.exit(1);
-            } else if (!ea.canWrite()) {
+            } else if (!log.canWrite()) {
                 System.err.println("Logger konnte nicht initialisiert werden, da 'engine-omega.log' nicht beschreibbar ist!");
                 System.exit(1);
             } else {

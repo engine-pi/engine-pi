@@ -402,7 +402,7 @@ public final class Vector implements Cloneable {
      */
     @Override
     public String toString() {
-        return "ea.Vector [ x = " + x + "; y = " + y + " ]";
+        return "Vector [ x = " + x + "; y = " + y + " ]";
     }
 
     /**

@@ -197,7 +197,7 @@ public final class Game {
 
         mousePosition = new java.awt.Point(width / 2, height / 2);
 
-        mainThread = new Thread(Game::run, "ea.main");
+        mainThread = new Thread(Game::run, "rocks.friedrich.engine_omega.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
     }
