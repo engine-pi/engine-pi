@@ -2,7 +2,8 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/rocks.friedrich/engine_omega/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/rocks.friedrich/engine_omega)
 
-
 # Engine Omega
+
+![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/src/main/resources/assets/logo.png)
 
 Mein persönlicher Fork der Engine Alpha
