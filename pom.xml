@@ -57,33 +57,17 @@
     </distributionManagement>
 
     <dependencies>
-        <!-- Install via:
-
-          mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file \
-             -Dfile=jbox2d-library-master-c0b937b.jar -DgroupId=org.jbox2d \
-             -DartifactId=jbox2d-library -Dversion=2.3.1-SNAPSHOT \
-             -Dpackaging=jar -DlocalRepositoryPath=lib -DgeneratePom=true -DcreateChecksum=true
-
-          mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file \
-             -Dfile=jbox2d-library-master-c0b937b-sources.jar -DgroupId=org.jbox2d \
-             -DartifactId=jbox2d-library -Dversion=2.3.1-SNAPSHOT \
-             -Dpackaging=jar -DlocalRepositoryPath=lib -Dclassifier=sources -DgeneratePom=true
-                -DcreateChecksum=true
-              -->
-
         <dependency>
             <groupId>org.jbox2d</groupId>
             <artifactId>jbox2d-library</artifactId>
             <version>2.3.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -160,18 +144,6 @@
                     <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin> -->
-
         </plugins>
     </build>
 </project>
