@@ -1311,7 +1311,7 @@ public abstract class Actor implements KeyListenerContainer, MouseClickListenerC
      * @param toOpacityValue Der Opacity-Wert, zu dem innerhalb von {@code time} zu interpolieren ist.
      * @return Ein {@code ValueAnimator}, der diese Animation ausführt. Der Animator ist bereits aktiv, es muss nichts
      * an dem Objekt getan werden, um die Animation auszuführen.
-     * @see ea.animation.interpolation.EaseInOutFloat
+     * @see rocks.friedrich.engine_omega.animation.interpolation.EaseInOutFloat
      */
     @API
     public final ValueAnimator<Float> animateOpacity(float time, float toOpacityValue) {

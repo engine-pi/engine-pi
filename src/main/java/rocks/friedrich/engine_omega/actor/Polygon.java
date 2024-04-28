@@ -43,7 +43,7 @@ public class Polygon extends Geometry {
      *
      * @param points Neuer Streckenzug.
      *
-     * @see ea.actor.Actor#setFixtures(Supplier)
+     * @see rocks.friedrich.engine_omega.actor.Actor#setFixtures(Supplier)
      */
     @API
     public void resetPoints(Vector... points) {

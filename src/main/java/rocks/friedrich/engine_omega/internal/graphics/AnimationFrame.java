@@ -9,7 +9,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
- * Beschreibt einen Frame einer {@link ea.actor.Animation}.
+ * Beschreibt einen Frame einer {@link rocks.friedrich.engine_omega.actor.Animation}.
  * @author Niklas Keller
  */
 @Internal
