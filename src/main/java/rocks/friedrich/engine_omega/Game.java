@@ -234,6 +234,16 @@ public final class Game {
         gameLogic.enqueue(() -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
     }
 
+    public static void addKeyListener(java.awt.event.KeyListener keyListener) {
+        // frame.addKeyListener(keyListener);
+        renderPanel.addKeyListener(keyListener);
+    }
+
+    public static void removeKeyListener(java.awt.event.KeyListener keyListener) {
+        // frame.removeKeyListener(keyListener);
+        renderPanel.removeKeyListener(keyListener);
+    }
+
     /**
      * Wechselt die aktuelle Szene.
      *
