@@ -24,11 +24,62 @@ import rocks.friedrich.engine_omega.internal.annotations.API;
 public interface KeyListenerContainer {
     EventListeners<KeyListener> getKeyListeners();
 
+    /**
+     * Fügt einen {@link KeyListener} zum Objekt hinzu.
+     * Die Klassen {@link rocks.friedrich.engine_omega.actor.Actor Actor},
+     * {@link rocks.friedrich.engine_omega.Scene Scene} und
+     * {@link rocks.friedrich.engine_omega.Layer Layer} implementieren die
+     * Schnittstelle {@link KeyListenerContainer} und stellen daher diese
+     * Methode zur Verfügung.
+     *
+     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     *
+     * <ol>
+     * <li>Als normale Klasse:
+     *
+     * <pre>{@code
+     *class MyKeylistener implements KeyListener {
+     *    @Override
+     *    public void onKeyDown(KeyEvent e) {
+     *        // Code here
+     *    }
+     *}
+     *obj.addKeyListener(new MyKeylistener());
+     * }</pre>
+     * </li>
+     *
+     * <li>Als anonyme Klasse:
+     *
+     * <pre>{@code
+     *obj.addKeyListener(new KeyListener() {
+     *    @Override
+     *    public void onKeyDown(KeyEvent e) {
+     *        // Code here
+     *    }
+     *});
+     * }</pre>
+     * </li>
+     *
+     * <li>Oder als Lambda-Ausdruck:
+     *
+     * <pre>{@code
+     *obj.addKeyListener(e -> {
+     *    // Code here
+     *});
+     * }</pre>
+     * </li>
+     * </ol>
+     *
+     * @param keyListener
+     */
     @API
     default void addKeyListener(KeyListener keyListener) {
         getKeyListeners().add(keyListener);
     }
 
+    /**
+     * Entfernt einen {@link KeyListener} vom Objekt.
+     */
     @API
     default void removeKeyListener(KeyListener keyListener) {
         getKeyListeners().remove(keyListener);
