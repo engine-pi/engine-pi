@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.gui;
+package rocks.friedrich.engine_omega.examples;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
