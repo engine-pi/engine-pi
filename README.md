@@ -80,8 +80,8 @@ import rocks.friedrich.engine_omega.event.KeyListener
 
 Die Anmeldung des `KeyListener`-Interfaces hat automatisch stattgefunden, als
 das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde.
-Ab diesem Zeitpunkt wird die `[onKeyDown(KeyEvent e)](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent))
-`-Methode bei jedem Tastendruck
+Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent))
+-Methode bei jedem Tastendruck
 aufgerufen.
 
 Soll reagiert werden, wenn eine Taste losgelassen wird, kann die [onKeyUp(KeyEvent e)](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent))-Methode
@@ -91,7 +91,7 @@ Alle Informationen über den Tastendruck sind im Objekt
 `keyEvent` der Klasse [java.awt.event.KeyEvent](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html)
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
-Dieses Mal gibt es eine switch/case-Struktur in der onKeyDown-Methode, um abhängig von der Eingabe (W/A/S/D) unterschiedlich zu reagieren:
+Im folgendem Beispiel wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ```java
 import java.awt.Color;
@@ -143,11 +143,18 @@ public class KeyEventExample extends Scene implements KeyListener
 }
 ```
 
-Java ordnet jeder Taste eine Ganzzahl, einen sogenannten `KeyCode`, zu. Mit der Methode[KeyEvent#getKeyCode()](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#getKeyCode()) kann dieser Code abgefragt werden.
+Java ordnet jeder Taste eine Ganzzahl, einen sogenannten `KeyCode`, zu. Mit der Methode
+[KeyEvent#getKeyCode()](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#getKeyCode())
+kann dieser Code abgefragt werden.
 Außerdem stellt die Klasse `KeyEvent` eine Vielzahl von statischen Attributen bzw. Klassenattributen bereit, dessen Name `VK_` vorangestellt ist.
-`VK` steht dabei für [`Virtual Key`](https://stackoverflow.com/a/70191567).
-Diese Klassenattribute könnten in einer `switch`-Kontrollstruktur zur Fallunterscheidung
+`VK` steht dabei für
+[`Virtual Key`](https://stackoverflow.com/a/70191567).
+Diese Klassenattribute können in einer `switch`-Kontrollstruktur zur Fallunterscheidung
 verwendet werden.
+
+Das nächste Beispiel zeigt den entsprechenden Namen des `VK`-Klassenattributs an,
+nachdem eine Taste gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt,
+erscheint der Text `VK_SPACE`.
 
 ```java
 import java.awt.event.KeyEvent;
