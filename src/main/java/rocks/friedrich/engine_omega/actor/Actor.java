@@ -51,7 +51,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * Jedes Objekt auf der Zeichenebene ist ein Actor.<br>Dies ist die absolute Superklasse aller
+ * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.
+ *
+ * <p>Dies ist die absolute Superklasse aller
  * grafischen Objekte. Umgekehrt kann somit jedes grafische Objekt die folgenden Methoden nutzen.
  *
  * @author Michael Andonie

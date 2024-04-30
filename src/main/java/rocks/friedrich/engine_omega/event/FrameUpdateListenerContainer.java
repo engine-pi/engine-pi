@@ -24,6 +24,12 @@ import rocks.friedrich.engine_omega.internal.SingleTask;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.FrameUpdateListener;
 
+/**
+ * Die Schnittstelle {@link FrameUpdateListenerContainer} definiert Methoden zur Zeitsteuerung.
+ * Sie wird von den Klassen {@link rocks.friedrich.engine_omega.actor.Actor Actor},
+ * {@link rocks.friedrich.engine_omega.Scene Scene} und
+ * {@link rocks.friedrich.engine_omega.Layer Layer} implementieren
+ */
 @API
 public interface FrameUpdateListenerContainer {
     /**
