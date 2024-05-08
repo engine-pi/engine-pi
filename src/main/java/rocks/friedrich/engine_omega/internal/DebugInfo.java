@@ -16,23 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal;
 
-public final class DebugInfo {
+public final class DebugInfo
+{
     private final float frameDuration;
+
     private final int bodyCount;
 
-    public DebugInfo(float frameDuration, int bodyCount) {
+    public DebugInfo(float frameDuration, int bodyCount)
+    {
         this.frameDuration = frameDuration;
         this.bodyCount = bodyCount;
     }
 
-    public float getFrameDuration() {
+    public float getFrameDuration()
+    {
         return frameDuration;
     }
 
-    public int getBodyCount() {
+    public int getBodyCount()
+    {
         return bodyCount;
     }
 }

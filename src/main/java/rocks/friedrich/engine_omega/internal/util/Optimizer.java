@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.util;
 
 import java.awt.*;
@@ -28,34 +27,38 @@ import java.awt.image.ColorModel;
  *
  * @author Niklas Keller {@literal <me@kelunik.com>}
  */
-final public class Optimizer {
-    private static final GraphicsConfiguration graphicsConfig = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+final public class Optimizer
+{
+    private static final GraphicsConfiguration graphicsConfig = GraphicsEnvironment
+            .getLocalGraphicsEnvironment().getDefaultScreenDevice()
+            .getDefaultConfiguration();
 
-    private Optimizer() {
+    private Optimizer()
+    {
         // keine Objekte erlaubt!
     }
 
     /**
-     * Optimiert ein Image für das Rendering, abhänig vom Bildschirm des Anwenders.
+     * Optimiert ein Image für das Rendering, abhänig vom Bildschirm des
+     * Anwenders.
      *
      * @param img Image, das optimiert werden soll
      *
      * @return optimiertes Image
      */
-    public static BufferedImage toCompatibleImage(BufferedImage img) {
+    public static BufferedImage toCompatibleImage(BufferedImage img)
+    {
         ColorModel a = img.getColorModel();
         ColorModel b = graphicsConfig.getColorModel(a.getTransparency());
-
-        if (a.equals(b)) {
+        if (a.equals(b))
+        {
             return img;
         }
-
-        BufferedImage compat = graphicsConfig.createCompatibleImage(img.getWidth(), img.getHeight(), img.getTransparency());
-
+        BufferedImage compat = graphicsConfig.createCompatibleImage(
+                img.getWidth(), img.getHeight(), img.getTransparency());
         Graphics2D g = (Graphics2D) compat.getGraphics();
         g.drawImage(img, 0, 0, null);
         g.dispose();
-
         return compat;
     }
 }

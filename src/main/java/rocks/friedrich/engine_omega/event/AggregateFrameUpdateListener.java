@@ -16,42 +16,48 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.FrameUpdateListener;
 
 /**
- * Aggregiert mehrere {@link FrameUpdateListener}, um sie gemeinsam pausieren zu können.
+ * Aggregiert mehrere {@link FrameUpdateListener}, um sie gemeinsam pausieren zu
+ * können.
  *
  * @author Niklas Keller
  */
-public abstract class AggregateFrameUpdateListener implements FrameUpdateListener, FrameUpdateListenerContainer {
-
+public abstract class AggregateFrameUpdateListener
+        implements FrameUpdateListener, FrameUpdateListenerContainer
+{
     private final EventListeners<FrameUpdateListener> listeners = new EventListeners<>();
 
     private boolean paused = false;
 
     @API
-    public void setPaused(boolean paused) {
+    public void setPaused(boolean paused)
+    {
         this.paused = paused;
     }
 
     @API
-    public boolean isPaused() {
+    public boolean isPaused()
+    {
         return paused;
     }
 
     @Override
-    public void onFrameUpdate(float deltaSeconds) {
-        if (!paused) {
+    public void onFrameUpdate(float deltaSeconds)
+    {
+        if (!paused)
+        {
             listeners.invoke(listener -> listener.onFrameUpdate(deltaSeconds));
         }
     }
 
     @Override
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners() {
+    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    {
         return listeners;
     }
 }

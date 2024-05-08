@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.FixtureBuilder;
@@ -30,20 +29,24 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
- * Ein Image als grafische Repräsentation einer Bilddatei, die gezeichnet werden kann.
+ * Ein Image als grafische Repräsentation einer Bilddatei, die gezeichnet werden
+ * kann.
  *
  * @author Michael Andonie
  */
-public class Image extends Actor {
+public class Image extends Actor
+{
     /**
      * Das BufferedImage, das dieses Image darstellt.
      */
     private final BufferedImage image;
 
     private float width;
+
     private float height;
 
     private boolean flipVertical = false;
+
     private boolean flipHorizontal = false;
 
     /**
@@ -54,11 +57,12 @@ public class Image extends Actor {
      * @param height   Die Höhe in M für das Bildobjekt
      */
     @API
-    public Image(String filepath, float width, float height) {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(width, height));
+    public Image(String filepath, float width, float height)
+    {
+        super(() -> FixtureBuilder.createSimpleRectangularFixture(width,
+                height));
         assertViableSizes(width, height);
         this.image = ImageLoader.load(filepath);
-
         this.width = width;
         this.height = height;
     }
@@ -66,16 +70,20 @@ public class Image extends Actor {
     /**
      * Konstruktor für ein Bildobjekt.
      *
-     * @param filepath      Der Verzeichnispfad des Bildes, das geladen werden soll.
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt an, wie viele Pixel in der Bilddatei
-     *                      einem Meter in der Engine entsprechen.
+     * @param filepath      Der Verzeichnispfad des Bildes, das geladen werden
+     *                      soll.
+     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
+     *                      an, wie viele Pixel in der Bilddatei einem Meter in
+     *                      der Engine entsprechen.
      */
     @API
-    public Image(String filepath, final float pixelPerMeter) {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(ImageLoader.load(filepath).getWidth() / pixelPerMeter, ImageLoader.load(filepath).getHeight() / pixelPerMeter));
+    public Image(String filepath, final float pixelPerMeter)
+    {
+        super(() -> FixtureBuilder.createSimpleRectangularFixture(
+                ImageLoader.load(filepath).getWidth() / pixelPerMeter,
+                ImageLoader.load(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
         this.image = ImageLoader.load(filepath);
-
         this.width = image.getWidth() / pixelPerMeter;
         this.height = image.getHeight() / pixelPerMeter;
     }
@@ -83,16 +91,20 @@ public class Image extends Actor {
     /**
      * Konstruktor für ein Bildobjekt.
      *
-     * @param image         Ein bereits im Speicher vorhandenes Bild vom Datentyp BufferedImage.
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt an, wie viele Pixel in der Bilddatei
-     *                      einem Meter in der Engine entsprechen.
+     * @param image         Ein bereits im Speicher vorhandenes Bild vom
+     *                      Datentyp BufferedImage.
+     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
+     *                      an, wie viele Pixel in der Bilddatei einem Meter in
+     *                      der Engine entsprechen.
      */
     @API
-    public Image(BufferedImage image, final float pixelPerMeter) {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(image.getWidth() / pixelPerMeter, image.getHeight() / pixelPerMeter));
+    public Image(BufferedImage image, final float pixelPerMeter)
+    {
+        super(() -> FixtureBuilder.createSimpleRectangularFixture(
+                image.getWidth() / pixelPerMeter,
+                image.getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
         this.image = image;
-
         this.width = image.getWidth() / pixelPerMeter;
         this.height = image.getHeight() / pixelPerMeter;
     }
@@ -101,7 +113,8 @@ public class Image extends Actor {
      * @return Größe des Bildes in Pixeln
      */
     @Internal
-    public Dimension getImageSizeInPx() {
+    public Dimension getImageSizeInPx()
+    {
         return new Dimension(this.image.getWidth(), this.image.getHeight());
     }
 
@@ -109,95 +122,118 @@ public class Image extends Actor {
      * @return AWT-Repräsentation des Bildes
      */
     @API
-    public BufferedImage getImage() {
+    public BufferedImage getImage()
+    {
         return this.image;
     }
 
     /**
-     * Setzt die Größe des Bildes innerhalb der Physik neu. Ändert die physikalischen Eigenschaften.
-     * Das Bild füllt die neuen Maße und wird ggf. verzerrt.
+     * Setzt die Größe des Bildes innerhalb der Physik neu. Ändert die
+     * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
+     * verzerrt.
      *
      * @param width  Die neue Breite des Objekts in M.
      * @param height Die neue Höhe des Objekts in M.
      *
      * @see #resetPixelPerMeter(float)
      */
-    public void resetImageSize(float width, float height) {
+    public void resetImageSize(float width, float height)
+    {
         assertViableSizes(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder.createSimpleRectangularFixture(width, height));
+        this.setFixture(() -> FixtureBuilder
+                .createSimpleRectangularFixture(width, height));
     }
 
     /**
-     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen Umrechnungsfaktor entspricht.
-     * Ändert auch die physikalischen Eigenschaften des Bildes.
+     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
+     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
+     * Eigenschaften des Bildes.
      *
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt an, wie viele Pixel in der Bilddatei
-     *                      einem Meter in der Engine entsprechen.
+     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
+     *                      an, wie viele Pixel in der Bilddatei einem Meter in
+     *                      der Engine entsprechen.
      *
      * @see #resetImageSize(float, float)
      */
-    public void resetPixelPerMeter(float pixelPerMeter) {
+    public void resetPixelPerMeter(float pixelPerMeter)
+    {
         assertViablePPM(pixelPerMeter);
-        resetImageSize(image.getWidth() / pixelPerMeter, image.getHeight() / pixelPerMeter);
+        resetImageSize(image.getWidth() / pixelPerMeter,
+                image.getHeight() / pixelPerMeter);
     }
 
-    private void assertViableSizes(float width, float height) {
-        if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException("Bildhöhe und Breite müssen größer als 0 sein.");
+    private void assertViableSizes(float width, float height)
+    {
+        if (width <= 0 || height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Bildhöhe und Breite müssen größer als 0 sein.");
         }
     }
 
-    private void assertViablePPM(float pixelPerMeter) {
-        if (pixelPerMeter <= 0) {
-            throw new IllegalArgumentException("Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War " + pixelPerMeter);
+    private void assertViablePPM(float pixelPerMeter)
+    {
+        if (pixelPerMeter <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
+                            + pixelPerMeter);
         }
     }
-
 
     /**
-     * Setzt, ob dieses Bild horizontal gespiegelt dargestellt werden sollen. Hiermit lassen sich zum Beispiel
-     * Bewegungsrichtungen (links/rechts) einfach umsetzen.
+     * Setzt, ob dieses Bild horizontal gespiegelt dargestellt werden sollen.
+     * Hiermit lassen sich zum Beispiel Bewegungsrichtungen (links/rechts)
+     * einfach umsetzen.
      *
-     * @param flipHorizontal Ob das Bild horizontal geflippt dargestellt werden soll.
+     * @param flipHorizontal Ob das Bild horizontal geflippt dargestellt werden
+     *                       soll.
      *
      * @see #setFlipVertical(boolean)
      */
     @API
-    public void setFlipHorizontal(boolean flipHorizontal) {
+    public void setFlipHorizontal(boolean flipHorizontal)
+    {
         this.flipHorizontal = flipHorizontal;
     }
 
     /**
      * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
      *
-     * @param flipVertical Ob die Animation horizontal geflippt dargestellt werden soll.
+     * @param flipVertical Ob die Animation horizontal geflippt dargestellt
+     *                     werden soll.
      *
      * @see #setFlipVertical(boolean)
      */
     @API
-    public void setFlipVertical(boolean flipVertical) {
+    public void setFlipVertical(boolean flipVertical)
+    {
         this.flipVertical = flipVertical;
     }
 
     /**
      * Gibt an, ob das Objekt horizontal gespiegelt ist.
      *
-     * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt ist. Sonst <code>false</code>.
+     * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
+     *         ist. Sonst <code>false</code>.
      */
     @API
-    public boolean isFlipHorizontal() {
+    public boolean isFlipHorizontal()
+    {
         return flipHorizontal;
     }
 
     /**
      * Gibt an, ob das Objekt vertikal gespiegelt ist.
      *
-     * @return <code>true</code>, wenn das Objekt gerade vertikal gespiegelt ist. Sonst <code>false</code>.
+     * @return <code>true</code>, wenn das Objekt gerade vertikal gespiegelt
+     *         ist. Sonst <code>false</code>.
      */
     @API
-    public boolean isFlipVertical() {
+    public boolean isFlipVertical()
+    {
         return flipVertical;
     }
 
@@ -205,15 +241,15 @@ public class Image extends Actor {
      * {@inheritDoc}
      */
     @Override
-    public void render(Graphics2D g, float pixelPerMeter) {
+    public void render(Graphics2D g, float pixelPerMeter)
+    {
         AffineTransform pre = g.getTransform();
-        g.scale(width * pixelPerMeter / this.image.getWidth(), height * pixelPerMeter / this.image.getHeight());
-        g.drawImage(this.image,
-                flipHorizontal ? image.getWidth() : 0,
+        g.scale(width * pixelPerMeter / this.image.getWidth(),
+                height * pixelPerMeter / this.image.getHeight());
+        g.drawImage(this.image, flipHorizontal ? image.getWidth() : 0,
                 -image.getHeight() + (flipVertical ? image.getHeight() : 0),
-                (flipHorizontal ? -1 : 1)*image.getWidth(),
-                (flipVertical ? -1 : 1)*image.getHeight(),
-                null);
+                (flipHorizontal ? -1 : 1) * image.getWidth(),
+                (flipVertical ? -1 : 1) * image.getHeight(), null);
         g.setTransform(pre);
     }
 }

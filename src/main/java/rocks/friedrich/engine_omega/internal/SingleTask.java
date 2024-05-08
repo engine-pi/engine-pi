@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal;
 
 import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
@@ -31,7 +30,8 @@ import rocks.friedrich.engine_omega.FrameUpdateListener;
  * @see FrameUpdateListenerContainer#delay(float, Runnable)
  */
 @Internal
-public final class SingleTask implements FrameUpdateListener {
+public final class SingleTask implements FrameUpdateListener
+{
     /**
      * Verzögerung in Sekunden.
      */
@@ -53,7 +53,8 @@ public final class SingleTask implements FrameUpdateListener {
     private boolean done;
 
     /**
-     * Container, an dem der Task angemeldet wird, wo er sich auch selbst wieder abmeldet.
+     * Container, an dem der Task angemeldet wird, wo er sich auch selbst wieder
+     * abmeldet.
      */
     private FrameUpdateListenerContainer parent;
 
@@ -62,7 +63,9 @@ public final class SingleTask implements FrameUpdateListener {
      *
      * @param delayInSeconds Zeit zwischen den Ausführungen in Millisekunden.
      */
-    public SingleTask(float delayInSeconds, Runnable runnable, FrameUpdateListenerContainer parent) {
+    public SingleTask(float delayInSeconds, Runnable runnable,
+            FrameUpdateListenerContainer parent)
+    {
         this.delay = delayInSeconds;
         this.countdown = delayInSeconds;
         this.runnable = runnable;
@@ -72,10 +75,12 @@ public final class SingleTask implements FrameUpdateListener {
     /**
      * Gibt das aktuelle Intervall des periodischen Tasks aus.
      *
-     * @return Das aktuelle Intervall. Zeit zwischen den Ausführungen in Sekunden.
+     * @return Das aktuelle Intervall. Zeit zwischen den Ausführungen in
+     *         Sekunden.
      */
     @API
-    public float getDelay() {
+    public float getDelay()
+    {
         return delay;
     }
 
@@ -83,18 +88,21 @@ public final class SingleTask implements FrameUpdateListener {
      * @return Sagt, ob der Task bereits vollständig ausgeführt wurde.
      */
     @API
-    public boolean isDone() {
+    public boolean isDone()
+    {
         return done;
     }
 
     /**
-     * @param deltaSeconds Die Zeit in Millisekunden, die seit dem letzten Update vergangen
+     * @param deltaSeconds Die Zeit in Millisekunden, die seit dem letzten
+     *                     Update vergangen
      */
     @Override
-    public void onFrameUpdate(float deltaSeconds) {
+    public void onFrameUpdate(float deltaSeconds)
+    {
         countdown -= deltaSeconds;
-
-        if (!done && this.countdown < 0) {
+        if (!done && this.countdown < 0)
+        {
             runnable.run();
             parent.removeFrameUpdateListener(this);
             done = true;

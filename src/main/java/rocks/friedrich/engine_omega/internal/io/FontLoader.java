@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.io;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -28,25 +27,28 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @API
-final public class FontLoader {
+final public class FontLoader
+{
     private static final int DEFAULT_SIZE = 12;
 
     /**
-     * Alle möglichen Schriftnamen des Systems, auf dem man sich gerade befindet.<br>
-     * Hiernach werden Überprüfungen gemacht, ob die gewünschte Schriftart auf dem System vorhanden
-     * ist.
+     * Alle möglichen Schriftnamen des Systems, auf dem man sich gerade
+     * befindet.<br>
+     * Hiernach werden Überprüfungen gemacht, ob die gewünschte Schriftart auf
+     * dem System vorhanden ist.
      */
     public static final String[] systemFonts;
 
     /**
      * Alle geladenen Fonts, die manuell eingebunden sind.<br />
-     * Macht das Verwenden dieser Schriften möglich, ohne dass die Schriftart auf dem System
-     * vorhanden ist.
+     * Macht das Verwenden dieser Schriften möglich, ohne dass die Schriftart
+     * auf dem System vorhanden ist.
      */
     private static final Map<String, Font> userFonts = new ConcurrentHashMap<>();
-
-    static {
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    static
+    {
+        GraphicsEnvironment ge = GraphicsEnvironment
+                .getLocalGraphicsEnvironment();
         systemFonts = ge.getAvailableFontFamilyNames();
     }
 
@@ -55,16 +57,19 @@ final public class FontLoader {
      *
      * @param fontName Der Name des zu überprüfenden Fonts.
      *
-     * @return <code>true</code>, falls der Font auf dem System existiert, sonst <code>false</code>.
+     * @return <code>true</code>, falls der Font auf dem System existiert, sonst
+     *         <code>false</code>.
      */
     @API
-    public static boolean isSystemFont(String fontName) {
-        for (String s : systemFonts) {
-            if (s.equals(fontName)) {
+    public static boolean isSystemFont(String fontName)
+    {
+        for (String s : systemFonts)
+        {
+            if (s.equals(fontName))
+            {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -74,7 +79,8 @@ final public class FontLoader {
      * @return Liste mit Systemschriftarten.
      */
     @API
-    public static String[] getSystemFonts() {
+    public static String[] getSystemFonts()
+    {
         return systemFonts.clone();
     }
 
@@ -86,7 +92,8 @@ final public class FontLoader {
      * @return Geladener Font.
      */
     @API
-    public static Font loadByName(String fontName) {
+    public static Font loadByName(String fontName)
+    {
         return new Font(fontName, Font.PLAIN, DEFAULT_SIZE);
     }
 
@@ -98,26 +105,32 @@ final public class FontLoader {
      * @return Geladener Font.
      */
     @API
-    public static Font loadFromFile(String filename) {
-        if (userFonts.containsKey(filename)) {
+    public static Font loadFromFile(String filename)
+    {
+        if (userFonts.containsKey(filename))
+        {
             return userFonts.get(filename);
         }
-
-        try (InputStream stream = ResourceLoader.loadAsStream(filename)) {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(Font.PLAIN);
-
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        try (InputStream stream = ResourceLoader.loadAsStream(filename))
+        {
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, stream)
+                    .deriveFont(Font.PLAIN);
+            GraphicsEnvironment ge = GraphicsEnvironment
+                    .getLocalGraphicsEnvironment();
             ge.registerFont(customFont);
-
             userFonts.put(filename, customFont);
-
             return customFont;
-        } catch (FontFormatException | IOException e) {
-            throw new RuntimeException("Die angegebene Schriftart konnte nicht geladen werden: " + filename);
+        }
+        catch (FontFormatException | IOException e)
+        {
+            throw new RuntimeException(
+                    "Die angegebene Schriftart konnte nicht geladen werden: "
+                            + filename);
         }
     }
 
-    private FontLoader() {
+    private FontLoader()
+    {
         // keine Objekte erlaubt!
     }
 }

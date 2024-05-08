@@ -6,10 +6,13 @@ doc:
 	mvn javadoc:javadoc
 	xdg-open target/site/apidocs/index.html
 
+format:
+	mvn formatter:format
+
 install:
 	mvn install
 
 package:
 	mvn package
 
-.PHONY: deploy doc install package
+.PHONY: deploy doc format install package

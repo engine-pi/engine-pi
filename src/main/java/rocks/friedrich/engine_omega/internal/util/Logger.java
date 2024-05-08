@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.util;
 
 import java.io.BufferedWriter;
@@ -28,42 +27,60 @@ import java.util.Date;
 import rocks.friedrich.engine_omega.Game;
 
 /**
- * Logger für die Engine Omega, damit Probleme bei Anwendern auch von Entwicklern nachvollzogen
- * werden können.
+ * Logger für die Engine Omega, damit Probleme bei Anwendern auch von
+ * Entwicklern nachvollzogen werden können.
  *
  * @author Julien Gelmar {@literal <master@nownewstart.net>}
  * @author Niklas Keller {@literal <me@kelunik.com>}
  */
-final public class Logger {
+final public class Logger
+{
     private static BufferedWriter writer;
 
-    private Logger() {
+    private Logger()
+    {
         // keine Objekte erlaubt!
     }
 
-    static {
-        try {
-            writer = new BufferedWriter(new FileWriter("engine-omega.log", false));
-        } catch (IOException e) {
+    static
+    {
+        try
+        {
+            writer = new BufferedWriter(
+                    new FileWriter("engine-omega.log", false));
+        }
+        catch (IOException e)
+        {
             File log = new File("engine-omega.log");
-
-            if (log.isDirectory()) {
-                System.err.println("Logger konnte nicht initialisiert werden, da 'engine-omega.log' ein Verzeichnis ist!");
+            if (log.isDirectory())
+            {
+                System.err.println(
+                        "Logger konnte nicht initialisiert werden, da 'engine-omega.log' ein Verzeichnis ist!");
                 System.exit(1);
-            } else if (!log.canWrite()) {
-                System.err.println("Logger konnte nicht initialisiert werden, da 'engine-omega.log' nicht beschreibbar ist!");
+            }
+            else if (!log.canWrite())
+            {
+                System.err.println(
+                        "Logger konnte nicht initialisiert werden, da 'engine-omega.log' nicht beschreibbar ist!");
                 System.exit(1);
-            } else {
-                System.err.println("Logger konnte aus unbekannten Gründen nicht initialisiert werden!");
+            }
+            else
+            {
+                System.err.println(
+                        "Logger konnte aus unbekannten Gründen nicht initialisiert werden!");
                 System.exit(1);
             }
         }
-
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-                try {
+        Runtime.getRuntime().addShutdownHook(new Thread()
+        {
+            public void run()
+            {
+                try
+                {
                     writer.close();
-                } catch (IOException e) {
+                }
+                catch (IOException e)
+                {
                     e.printStackTrace();
                 }
             }
@@ -75,26 +92,34 @@ final public class Logger {
      *
      * @param s Text der Warnung
      */
-    public static void warning(String s, String tag) {
+    public static void warning(String s, String tag)
+    {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
         write("WARNUNG", tag, e.getFileName(), e.getLineNumber(), s);
     }
 
-    private static String write(String type, String tag, String filename, int line, String message) {
+    private static String write(String type, String tag, String filename,
+            int line, String message)
+    {
         return write(type, tag, filename, line, message, false, true);
     }
 
-    private static String write(String type, String tag, String filename, int line, String message, boolean error, boolean printOnConsole) {
-        String str = String.format("[%s][%s][%s] %s (%s:%s)", getTime(), type, tag, message, filename, line);
-
-        if (printOnConsole) {
-            if (error) {
+    private static String write(String type, String tag, String filename,
+            int line, String message, boolean error, boolean printOnConsole)
+    {
+        String str = String.format("[%s][%s][%s] %s (%s:%s)", getTime(), type,
+                tag, message, filename, line);
+        if (printOnConsole)
+        {
+            if (error)
+            {
                 System.err.println(str);
-            } else {
+            }
+            else
+            {
                 System.out.println(str);
             }
         }
-
         return write(str);
     }
 
@@ -103,7 +128,8 @@ final public class Logger {
      *
      * @return gibt die Zeit für die Logs zurück
      */
-    private static String getTime() {
+    private static String getTime()
+    {
         return new Date().toString();
     }
 
@@ -112,17 +138,21 @@ final public class Logger {
      *
      * @param text Meldungs-Text der zum Log übergeben wird
      *
-     * @return Gibt den geschriebenen Text zurück, im Fehlerfall <code>null</code>
+     * @return Gibt den geschriebenen Text zurück, im Fehlerfall
+     *         <code>null</code>
      */
-    private static String write(String text) {
-        try {
+    private static String write(String text)
+    {
+        try
+        {
             writer.write(text);
             writer.newLine();
-
             return text;
-        } catch (IOException e) {
-            System.err.println("Logger konnte folgende Zeile nicht schreiben:\n" + text);
-
+        }
+        catch (IOException e)
+        {
+            System.err.println(
+                    "Logger konnte folgende Zeile nicht schreiben:\n" + text);
             return null;
         }
     }
@@ -132,10 +162,10 @@ final public class Logger {
      *
      * @param s Text des Fehlers
      */
-    public static void error(String tag, String s) {
+    public static void error(String tag, String s)
+    {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
         write("ERROR", tag, e.getFileName(), e.getLineNumber(), s, true, true);
-
         // TODO: Remove again
         new RuntimeException().printStackTrace();
     }
@@ -145,14 +175,15 @@ final public class Logger {
      *
      * @param s Text der Information
      */
-    public static void info(String tag, String s) {
+    public static void info(String tag, String s)
+    {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
         write("INFO", tag, e.getFileName(), e.getLineNumber(), s);
     }
 
     /**
-     * Logger-Funktion für Informationen. Wird nur tatsächlich ausgeführt, wenn verbose Output in
-     * aktiviert wurde.
+     * Logger-Funktion für Informationen. Wird nur tatsächlich ausgeführt, wenn
+     * verbose Output in aktiviert wurde.
      *
      * @param tag Tag für das Log
      * @param s   Text der Information
@@ -161,10 +192,13 @@ final public class Logger {
      * @since 11.04.2017
      * @see rocks.friedrich.engine_omega.Game#setVerbose(boolean)
      */
-    public static void verboseInfo(String tag, String s) {
-        if (rocks.friedrich.engine_omega.Game.isVerbose()) {
+    public static void verboseInfo(String tag, String s)
+    {
+        if (rocks.friedrich.engine_omega.Game.isVerbose())
+        {
             StackTraceElement e = Thread.currentThread().getStackTrace()[2];
-            write("VER", tag, e.getFileName(), e.getLineNumber(), s, false, false);
+            write("VER", tag, e.getFileName(), e.getLineNumber(), s, false,
+                    false);
         }
     }
 
@@ -177,8 +211,10 @@ final public class Logger {
      *
      * @author Andonie
      */
-    public static void debug(String tag, String s) {
+    public static void debug(String tag, String s)
+    {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
-        write("DEBUG", tag, e.getFileName(), e.getLineNumber(), s, false, Game.isDebug());
+        write("DEBUG", tag, e.getFileName(), e.getLineNumber(), s, false,
+                Game.isDebug());
     }
 }

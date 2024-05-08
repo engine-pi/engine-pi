@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.animation.AnimationMode;
@@ -29,12 +28,14 @@ import java.awt.*;
 import java.util.function.Supplier;
 
 /**
- * Ein Objekt, das aus n primitiven geometrischen Formen - <b>Dreiecken</b> - besteht.
+ * Ein Objekt, das aus n primitiven geometrischen Formen - <b>Dreiecken</b> -
+ * besteht.
  *
  * @author Michael Andonie
  */
 @API
-public abstract class Geometry extends Actor {
+public abstract class Geometry extends Actor
+{
     /**
      * Die Farbe dieses Geometry-Objekts.
      */
@@ -44,18 +45,20 @@ public abstract class Geometry extends Actor {
      * Konstruktor.
      */
     @API
-    public Geometry(Supplier<FixtureData> fixtureSupplier) {
+    public Geometry(Supplier<FixtureData> fixtureSupplier)
+    {
         super(fixtureSupplier);
     }
 
     /**
-     * Setzt ganzheitlich die Farbe aller Formen auf eine bestimmte Farbe.<br>Dadurch färbt
-     * sich im Endeffekt das ganze Objekt neu ein.
+     * Setzt ganzheitlich die Farbe aller Formen auf eine bestimmte Farbe.<br>
+     * Dadurch färbt sich im Endeffekt das ganze Objekt neu ein.
      *
      * @param color Die neue Farbe.
      */
     @API
-    public void setColor(Color color) {
+    public void setColor(Color color)
+    {
         this.color = color;
     }
 
@@ -65,7 +68,8 @@ public abstract class Geometry extends Actor {
      * @return Die Farbe des Objekts.
      */
     @API
-    public Color getColor() {
+    public Color getColor()
+    {
         return color;
     }
 
@@ -74,23 +78,30 @@ public abstract class Geometry extends Actor {
      *
      * @param duration Dauer der Animation in Sekunden
      * @param color    Neue Farbe des Objekts
-     * @return Animations-Objekt, das die weitere Steuerung der Animation erlaubt
+     * @return Animations-Objekt, das die weitere Steuerung der Animation
+     *         erlaubt
      */
     @API
-    public ValueAnimator<Float> animateColor(float duration, Color color) {
+    public ValueAnimator<Float> animateColor(float duration, Color color)
+    {
         Color originalColor = getColor();
-
-        ValueAnimator<Float> animator = new ValueAnimator<>(duration, progress -> setColor(calculateIntermediateColor(originalColor, color, progress)), new LinearFloat(0, 1), AnimationMode.SINGLE, this);
+        ValueAnimator<Float> animator = new ValueAnimator<>(duration,
+                progress -> setColor(calculateIntermediateColor(originalColor,
+                        color, progress)),
+                new LinearFloat(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);
-
         return animator;
     }
 
-    private Color calculateIntermediateColor(Color original, Color target, float progress) {
-        int r = original.getRed() - (int) ((original.getRed() - target.getRed()) * progress);
-        int g = original.getGreen() - (int) ((original.getGreen() - target.getGreen()) * progress);
-        int b = original.getBlue() - (int) ((original.getBlue() - target.getBlue()) * progress);
-
+    private Color calculateIntermediateColor(Color original, Color target,
+            float progress)
+    {
+        int r = original.getRed()
+                - (int) ((original.getRed() - target.getRed()) * progress);
+        int g = original.getGreen()
+                - (int) ((original.getGreen() - target.getGreen()) * progress);
+        int b = original.getBlue()
+                - (int) ((original.getBlue() - target.getBlue()) * progress);
         return new Color(r, g, b);
     }
 }

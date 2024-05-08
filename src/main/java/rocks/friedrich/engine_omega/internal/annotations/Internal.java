@@ -16,17 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.annotations;
 
 import java.lang.annotation.Documented;
 
 /**
- * Diese Annotation markiert Methoden, die Schüler definitiv <u><b>nicht</b></u> verwenden sollen.
+ * Diese Annotation markiert Methoden, die Schüler definitiv <u><b>nicht</b></u>
+ * verwenden sollen.
  *
  * @author Niklas Keller {@literal <me@kelunik.com>}
  */
 @Documented
-public @interface Internal {
-
+public @interface Internal
+{
 }

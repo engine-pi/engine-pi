@@ -16,105 +16,118 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 
-public final class RevoluteJoint extends Joint<org.jbox2d.dynamics.joints.RevoluteJoint> {
+public final class RevoluteJoint
+        extends Joint<org.jbox2d.dynamics.joints.RevoluteJoint>
+{
     private float lowerLimit;
+
     private float upperLimit;
 
     private boolean motorEnabled;
+
     private boolean limitEnabled;
 
     /**
      * Geschwindigkeit in Umdrehungen / Sekunde
      */
     private float motorSpeed;
+
     private float maximumMotorTorque;
 
     @API
-    public void setMaximumMotorTorque(float maximumMotorTorque) {
+    public void setMaximumMotorTorque(float maximumMotorTorque)
+    {
         this.maximumMotorTorque = maximumMotorTorque;
         this.motorEnabled = true;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.setMaxMotorTorque(maximumMotorTorque);
             joint.enableMotor(true);
         }
     }
 
     @API
-    public float getMaximumMotorTorque() {
+    public float getMaximumMotorTorque()
+    {
         return maximumMotorTorque;
     }
 
     @API
-    public float getLowerLimit() {
+    public float getLowerLimit()
+    {
         return lowerLimit;
     }
 
     @API
-    public void setLowerLimit(float lowerLimit) {
+    public void setLowerLimit(float lowerLimit)
+    {
         this.lowerLimit = lowerLimit;
         this.limitEnabled = true;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.setLimits(lowerLimit, upperLimit);
             joint.enableLimit(true);
         }
     }
 
     @API
-    public float getUpperLimit() {
+    public float getUpperLimit()
+    {
         return upperLimit;
     }
 
     @API
-    public void setUpperLimit(float upperLimit) {
+    public void setUpperLimit(float upperLimit)
+    {
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.setLimits(lowerLimit, upperLimit);
             joint.enableLimit(true);
         }
     }
 
     @API
-    public void setLimits(float lowerLimit, float upperLimit) {
+    public void setLimits(float lowerLimit, float upperLimit)
+    {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.setLimits(lowerLimit, upperLimit);
             joint.enableLimit(true);
         }
     }
 
     @API
-    public float getMotorSpeed() {
+    public float getMotorSpeed()
+    {
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             return (float) Math.toDegrees(joint.getMotorSpeed()) / 360;
         }
-
         return motorSpeed;
     }
 
     @API
-    public void setMotorSpeed(float motorSpeed) {
+    public void setMotorSpeed(float motorSpeed)
+    {
         this.motorSpeed = motorSpeed;
         this.motorEnabled = true;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             float speed = (float) Math.toRadians(motorSpeed * 360);
             joint.setMotorSpeed(speed);
             joint.enableMotor(true);
@@ -122,37 +135,43 @@ public final class RevoluteJoint extends Joint<org.jbox2d.dynamics.joints.Revolu
     }
 
     @API
-    public boolean isMotorEnabled() {
+    public boolean isMotorEnabled()
+    {
         return motorEnabled;
     }
 
     @API
-    public void setMotorEnabled(boolean motorEnabled) {
+    public void setMotorEnabled(boolean motorEnabled)
+    {
         this.motorEnabled = motorEnabled;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.enableMotor(motorEnabled);
         }
     }
 
     @API
-    public boolean isLimitEnabled() {
+    public boolean isLimitEnabled()
+    {
         return limitEnabled;
     }
 
     @API
-    public void setLimitEnabled(boolean limitEnabled) {
+    public void setLimitEnabled(boolean limitEnabled)
+    {
         this.limitEnabled = limitEnabled;
-
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
-        if (joint != null) {
+        if (joint != null)
+        {
             joint.enableMotor(limitEnabled);
         }
     }
 
     @Override
-    protected void updateCustomProperties(org.jbox2d.dynamics.joints.RevoluteJoint joint) {
+    protected void updateCustomProperties(
+            org.jbox2d.dynamics.joints.RevoluteJoint joint)
+    {
         joint.setMotorSpeed((float) Math.toRadians(motorSpeed * 360));
         joint.setMaxMotorTorque(maximumMotorTorque);
         joint.setLimits(lowerLimit, upperLimit);

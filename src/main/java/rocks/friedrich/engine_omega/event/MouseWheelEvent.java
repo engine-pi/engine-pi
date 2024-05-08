@@ -16,56 +16,63 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
 /**
- * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseWheelListener} genutzt.
+ * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseWheelListener}
+ * genutzt.
  *
  * @see MouseWheelListener
  *
  * @author Michael Andonie
  */
 @API
-public class MouseWheelEvent {
-
+public class MouseWheelEvent
+{
     /**
-     * Die Rotation des Mausrades. Bei Mäusen mit Präzession auch in Bruchteilen eines "Clicks"
+     * Die Rotation des Mausrades. Bei Mäusen mit Präzession auch in Bruchteilen
+     * eines "Clicks"
      */
     private final float wheelRotation;
 
-
     @Internal
-    public MouseWheelEvent(float wheelRotation) {
+    public MouseWheelEvent(float wheelRotation)
+    {
         this.wheelRotation = wheelRotation;
     }
 
     /**
      * Gibt die Anzahl an "Clicks" aus, die das Mausrad bewegt wurde.
-     * @return  Die Anzahl an "Clicks", die das Mausrad bewegt wurde.<br>
-     *          <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom Benutzer).
-     *          <b>Positive Werte:</b> Das Rad wurde "runter" gedreht (hin zum Benutzer).
+     *
+     * @return Die Anzahl an "Clicks", die das Mausrad bewegt wurde.<br>
+     *         <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom
+     *         Benutzer). <b>Positive Werte:</b> Das Rad wurde "runter" gedreht
+     *         (hin zum Benutzer).
      * @see #getPreciseWheelRotation()
      */
     @API
-    public int getWheelRotation() {
-        return (int)wheelRotation;
+    public int getWheelRotation()
+    {
+        return (int) wheelRotation;
     }
 
     /**
-     * Gibt die Anzahl an "Clicks" aus, die das Mausrad bewegt wurde. Wenn die benutzte Maus auch Zwischenschritte
-     * erlaubt, werden auch "Click-Bruchteile" mit eingerechnet.
-     * @return  Die Anzahl an "Clicks", die das Mausrad bewegt wurde.<br>
-     *          <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom Benutzer).
-     *          <b>Positive Werte:</b> Das Rad wurde "runter" gedreht (hin zum Benutzer).
+     * Gibt die Anzahl an "Clicks" aus, die das Mausrad bewegt wurde. Wenn die
+     * benutzte Maus auch Zwischenschritte erlaubt, werden auch
+     * "Click-Bruchteile" mit eingerechnet.
+     *
+     * @return Die Anzahl an "Clicks", die das Mausrad bewegt wurde.<br>
+     *         <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom
+     *         Benutzer). <b>Positive Werte:</b> Das Rad wurde "runter" gedreht
+     *         (hin zum Benutzer).
      * @see #getWheelRotation()
      */
     @API
-    public float getPreciseWheelRotation() {
-        return (float)wheelRotation;
+    public float getPreciseWheelRotation()
+    {
+        return (float) wheelRotation;
     }
-
 }

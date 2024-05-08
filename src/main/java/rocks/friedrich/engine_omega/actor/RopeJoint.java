@@ -16,13 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
-public final class RopeJoint extends Joint<org.jbox2d.dynamics.joints.RopeJoint> {
-
+public final class RopeJoint extends Joint<org.jbox2d.dynamics.joints.RopeJoint>
+{
     @Override
-    protected void updateCustomProperties(org.jbox2d.dynamics.joints.RopeJoint joint) {
+    protected void updateCustomProperties(
+            org.jbox2d.dynamics.joints.RopeJoint joint)
+    {
         // nothing to do
     }
 }

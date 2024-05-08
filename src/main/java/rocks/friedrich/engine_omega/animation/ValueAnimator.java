@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.animation;
 
 import rocks.friedrich.engine_omega.event.EventListeners;
@@ -26,13 +25,20 @@ import rocks.friedrich.engine_omega.FrameUpdateListener;
 
 import java.util.function.Consumer;
 
-public class ValueAnimator<Value> implements FrameUpdateListener {
+public class ValueAnimator<Value> implements FrameUpdateListener
+{
     private final Consumer<Value> consumer;
+
     private final Interpolator<Value> interpolator;
+
     private final AnimationMode mode;
+
     private float currentTime = 0;
+
     private final float duration;
+
     private boolean complete = false;
+
     private boolean paused = false;
 
     /**
@@ -42,27 +48,33 @@ public class ValueAnimator<Value> implements FrameUpdateListener {
 
     private EventListeners<Consumer<Value>> completionListeners = new EventListeners<>();
 
-    public ValueAnimator(float duration, Consumer<Value> consumer, Interpolator<Value> interpolator, AnimationMode mode, FrameUpdateListenerContainer parent) {
+    public ValueAnimator(float duration, Consumer<Value> consumer,
+            Interpolator<Value> interpolator, AnimationMode mode,
+            FrameUpdateListenerContainer parent)
+    {
         this.duration = duration;
         this.consumer = consumer;
         this.interpolator = interpolator;
         this.mode = mode;
-
-        if (mode == AnimationMode.SINGLE) {
-            addCompletionListener((v) -> parent.removeFrameUpdateListener(this));
+        if (mode == AnimationMode.SINGLE)
+        {
+            addCompletionListener(
+                    (v) -> parent.removeFrameUpdateListener(this));
         }
     }
 
     /**
      * Setzt, ob die ValueAnimation pausiert werden soll.
      *
-     * @param paused <code>true</code>: Die Animation wird unterbrochen, bis das flag umgesetzt wird.
-     *               <code>false</code>: Die Animation wird wieder aufgenommen (sollte sie unterbrochen worden sein)
+     * @param paused <code>true</code>: Die Animation wird unterbrochen, bis das
+     *               flag umgesetzt wird. <code>false</code>: Die Animation wird
+     *               wieder aufgenommen (sollte sie unterbrochen worden sein)
      *
      * @see #isPaused()
      */
     @API
-    public void setPaused(boolean paused) {
+    public void setPaused(boolean paused)
+    {
         this.paused = paused;
     }
 
@@ -74,91 +86,113 @@ public class ValueAnimator<Value> implements FrameUpdateListener {
      * @see #setPaused(boolean)
      */
     @API
-    public boolean isPaused() {
+    public boolean isPaused()
+    {
         return paused;
     }
 
-    public ValueAnimator(float duration, Consumer<Value> consumer, Interpolator<Value> interpolator, FrameUpdateListenerContainer parent) {
+    public ValueAnimator(float duration, Consumer<Value> consumer,
+            Interpolator<Value> interpolator,
+            FrameUpdateListenerContainer parent)
+    {
         this(duration, consumer, interpolator, AnimationMode.SINGLE, parent);
     }
 
     /**
      * Setzt den aktuellen Fortschritt des Animators händisch.
      *
-     * @param progress Der Fortschritt, zu dem der Animator gesetzt werden soll. <code>0</code> ist <b>Anfang der
-     *                 Animation</b>, <code>1</code> ist <b>Ende der Animation</b>. Werte kleiner 0 bzw. größer als 1
-     *                 sind nicht erlaubt.
+     * @param progress Der Fortschritt, zu dem der Animator gesetzt werden soll.
+     *                 <code>0</code> ist <b>Anfang der Animation</b>,
+     *                 <code>1</code> ist <b>Ende der Animation</b>. Werte
+     *                 kleiner 0 bzw. größer als 1 sind nicht erlaubt.
      */
     @API
-    public void setProgress(float progress) {
-        if (progress < 0 || progress > 1) {
-            throw new IllegalArgumentException("Der eingegebene Progess muss zwischen 0 und 1 liegen. War " + progress);
+    public void setProgress(float progress)
+    {
+        if (progress < 0 || progress > 1)
+        {
+            throw new IllegalArgumentException(
+                    "Der eingegebene Progess muss zwischen 0 und 1 liegen. War "
+                            + progress);
         }
-
         this.goingBackwards = false;
         this.currentTime = duration * progress;
         this.interpolator.interpolate(progress);
     }
 
     @Override
-    public void onFrameUpdate(float deltaSeconds) {
-        if (paused) {
+    public void onFrameUpdate(float deltaSeconds)
+    {
+        if (paused)
+        {
             return;
         }
         float progress;
-
-        if (!goingBackwards) {
+        if (!goingBackwards)
+        {
             this.currentTime += deltaSeconds;
+            if (this.currentTime > this.duration)
+            {
+                switch (this.mode)
+                {
+                case REPEATED:
+                    this.currentTime %= this.duration;
+                    progress = this.currentTime / this.duration;
+                    break;
 
-            if (this.currentTime > this.duration) {
-                switch (this.mode) {
-                    case REPEATED:
-                        this.currentTime %= this.duration;
-                        progress = this.currentTime / this.duration;
-                        break;
-                    case SINGLE:
-                        this.currentTime = this.duration;
-                        progress = 1;
-                        complete = true;
+                case SINGLE:
+                    this.currentTime = this.duration;
+                    progress = 1;
+                    complete = true;
+                    Value finalValue = this.interpolator.interpolate(1);
+                    completionListeners
+                            .invoke(listener -> listener.accept(finalValue));
+                    break;
 
-                        Value finalValue = this.interpolator.interpolate(1);
-                        completionListeners.invoke(listener -> listener.accept(finalValue));
+                case PINGPONG:
+                    // Ging bisher vorwärts -> Jetzt Rückwärts
+                    goingBackwards = true;
+                    progress = 1;
+                    break;
 
-                        break;
-                    case PINGPONG:
-                        //Ging bisher vorwärts -> Jetzt Rückwärts
-                        goingBackwards = true;
-                        progress = 1;
-                        break;
-                    default:
-                        progress = -1;
-                        break;
+                default:
+                    progress = -1;
+                    break;
                 }
-            } else {
-                progress = this.currentTime / this.duration;
             }
-        } else {
-            //Ping-Pong-Backwards Strategy
-            this.currentTime -= deltaSeconds;
-            if (this.currentTime < 0) {
-                //PINGPONG backwards ist fertig -> Jetzt wieder vorwärts
-                goingBackwards = false;
-                progress = 0;
-            } else {
+            else
+            {
                 progress = this.currentTime / this.duration;
             }
         }
-
+        else
+        {
+            // Ping-Pong-Backwards Strategy
+            this.currentTime -= deltaSeconds;
+            if (this.currentTime < 0)
+            {
+                // PINGPONG backwards ist fertig -> Jetzt wieder vorwärts
+                goingBackwards = false;
+                progress = 0;
+            }
+            else
+            {
+                progress = this.currentTime / this.duration;
+            }
+        }
         this.consumer.accept(interpolator.interpolate(progress));
     }
 
-    public ValueAnimator<Value> addCompletionListener(Consumer<Value> listener) {
-        if (this.complete) {
+    public ValueAnimator<Value> addCompletionListener(Consumer<Value> listener)
+    {
+        if (this.complete)
+        {
             listener.accept(this.interpolator.interpolate(1));
-        } else {
+        }
+        else
+        {
             this.completionListeners.add(listener);
         }
-
         return this;
     }
 }

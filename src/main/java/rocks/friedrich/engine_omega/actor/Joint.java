@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.event.EventListeners;
@@ -30,30 +29,34 @@ import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
  * @param <JointType> Typ der Verbindung in der Box2D-Repräsentation
  */
 @API
-public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint> {
+public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
+{
     private JointRegistration<JointType> joint;
+
     private final EventListeners<Runnable> releaseListeners = new EventListeners<>();
 
     /**
-     * A joint might be removed and recreated, so we allow to set it here. If it is recreated, the old one has been
-     * automatically destroyed by the body destruction.
+     * A joint might be removed and recreated, so we allow to set it here. If it
+     * is recreated, the old one has been automatically destroyed by the body
+     * destruction.
      */
     @Internal
-    public final void setJoint(JointType joint, WorldHandler worldHandler) {
+    public final void setJoint(JointType joint, WorldHandler worldHandler)
+    {
         this.joint = new JointRegistration<>(joint, worldHandler);
-
         updateCustomProperties(joint);
     }
 
     protected abstract void updateCustomProperties(JointType joint);
 
     @Internal
-    protected final JointType getJoint() {
+    protected final JointType getJoint()
+    {
         JointRegistration<JointType> joint = this.joint;
-        if (joint == null) {
+        if (joint == null)
+        {
             return null;
         }
-
         return joint.getJoint();
     }
 
@@ -61,40 +64,48 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint> 
      * Löst die Verbindung der Objekte.
      */
     @API
-    public void release() {
-        if (joint != null) {
+    public void release()
+    {
+        if (joint != null)
+        {
             joint.getWorldHandler().getWorld().destroyJoint(joint.getJoint());
             joint = null;
         }
-
         releaseListeners.invoke(Runnable::run);
         releaseListeners.clear();
     }
 
     /**
-     * Fügt einen Listener hinzu, der ausgeführt wird, sobald die Verbindung gelöst wird.
+     * Fügt einen Listener hinzu, der ausgeführt wird, sobald die Verbindung
+     * gelöst wird.
      *
      * @param runnable Listener
      */
     @API
-    public void addReleaseListener(Runnable runnable) {
+    public void addReleaseListener(Runnable runnable)
+    {
         releaseListeners.add(runnable);
     }
 
-    public static class JointRegistration<T> {
+    public static class JointRegistration<T>
+    {
         private final T joint;
+
         private final WorldHandler worldHandler;
 
-        public JointRegistration(T joint, WorldHandler worldHandler) {
+        public JointRegistration(T joint, WorldHandler worldHandler)
+        {
             this.joint = joint;
             this.worldHandler = worldHandler;
         }
 
-        public T getJoint() {
+        public T getJoint()
+        {
             return joint;
         }
 
-        public WorldHandler getWorldHandler() {
+        public WorldHandler getWorldHandler()
+        {
             return worldHandler;
         }
     }

@@ -9,15 +9,19 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 /**
- * Beschreibt einen Frame einer {@link rocks.friedrich.engine_omega.actor.Animation}.
+ * Beschreibt einen Frame einer
+ * {@link rocks.friedrich.engine_omega.actor.Animation}.
+ *
  * @author Niklas Keller
  */
 @Internal
-public final class AnimationFrame {
+public final class AnimationFrame
+{
     /**
      * Das Bild, das zu diesem Frame gehört.
      */
     private final BufferedImage image;
+
     /**
      * Die Dauer in Sekunden, die dieser Frame aktiv bleibt.
      */
@@ -25,44 +29,50 @@ public final class AnimationFrame {
 
     /**
      * Erstellt einen Frame.
-     * @param image     Das Bild für den Frame.
-     * @param duration  Die Dauer, die dieser Frame aktiv bleibt.
+     *
+     * @param image    Das Bild für den Frame.
+     * @param duration Die Dauer, die dieser Frame aktiv bleibt.
      */
     @Internal
-    public AnimationFrame(BufferedImage image, float duration) {
+    public AnimationFrame(BufferedImage image, float duration)
+    {
         this.image = image;
         this.duration = duration;
     }
 
     @Internal
-    public void setDuration(float duration) {
+    public void setDuration(float duration)
+    {
         this.duration = duration;
     }
 
     @Internal
-    public BufferedImage getImage() {
+    public BufferedImage getImage()
+    {
         return image;
     }
 
     @Internal
-    public float getDuration() {
+    public float getDuration()
+    {
         return duration;
     }
 
     /**
      * Rendert den Frame (an der entsprechenden Position des Graphics Objekts)
-     * @param g   Das Graphics Objekt
+     *
+     * @param g Das Graphics Objekt
      */
     @Internal
-    public void render(Graphics2D g, float width, float height, boolean flipHorizontal, boolean flipVertical) {
+    public void render(Graphics2D g, float width, float height,
+            boolean flipHorizontal, boolean flipVertical)
+    {
         AffineTransform pre = g.getTransform();
         g.scale(width / this.image.getWidth(), height / this.image.getHeight());
-        g.drawImage(image,
-                flipHorizontal ? image.getWidth() : 0,
+        g.drawImage(image, flipHorizontal ? image.getWidth() : 0,
                 -image.getHeight() + (flipVertical ? image.getHeight() : 0),
-                (flipHorizontal ? -1 : 1)*image.getWidth(),
-                (flipVertical ? -1 : 1)*image.getHeight(),
-                null);
+                (flipHorizontal ? -1 : 1) * image.getWidth(),
+                (flipVertical ? -1 : 1) * image.getHeight(), null);
         g.setTransform(pre);
     }
 }

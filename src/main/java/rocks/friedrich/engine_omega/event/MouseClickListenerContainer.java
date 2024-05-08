@@ -16,17 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
-public interface MouseClickListenerContainer {
+public interface MouseClickListenerContainer
+{
     EventListeners<MouseClickListener> getMouseClickListeners();
 
-    default void addMouseClickListener(MouseClickListener mouseClickListener) {
+    default void addMouseClickListener(MouseClickListener mouseClickListener)
+    {
         getMouseClickListeners().add(mouseClickListener);
     }
 
-    default void removeMouseClickListener(MouseClickListener mouseClickListener) {
+    default void removeMouseClickListener(MouseClickListener mouseClickListener)
+    {
         getMouseClickListeners().remove(mouseClickListener);
     }
 }

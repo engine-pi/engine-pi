@@ -16,13 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.physics;
 
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.joints.Joint;
 
-public interface JointBuilder<JointType extends Joint> {
+public interface JointBuilder<JointType extends Joint>
+{
     JointType createJoint(World world, Body a, Body b);
 }

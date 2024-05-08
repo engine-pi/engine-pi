@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -24,15 +23,18 @@ import rocks.friedrich.engine_omega.internal.annotations.API;
 import java.awt.event.KeyEvent;
 
 /**
- * Dieses Interface wird implementiert, um auf gedrückte Tasten reagieren zu können.
+ * Dieses Interface wird implementiert, um auf gedrückte Tasten reagieren zu
+ * können.
  *
  * @author Niklas Keller
  */
 @API
-public interface KeyListener {
+public interface KeyListener
+{
     /**
-     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste gedrückt wird. Die Methode
-     * wird erst wieder aufgerufen, wenn die Key losgelassen und erneut gedrückt wurde.
+     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste
+     * gedrückt wird. Die Methode wird erst wieder aufgerufen, wenn die Key
+     * losgelassen und erneut gedrückt wurde.
      *
      * @param e Das KeyEvent von AWT.
      */
@@ -40,13 +42,14 @@ public interface KeyListener {
     void onKeyDown(KeyEvent e);
 
     /**
-     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste losgelassen wurde, die
-     * vorher gedrückt war.
+     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste
+     * losgelassen wurde, die vorher gedrückt war.
      *
      * @param e Das KeyEvent von AWT.
      */
     @API
-    default void onKeyUp(KeyEvent e) {
+    default void onKeyUp(KeyEvent e)
+    {
         // default empty
     }
 }

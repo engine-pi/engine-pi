@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -26,13 +25,16 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 @API
-public interface TileMap {
+public interface TileMap
+{
     @API
-    static Tile createFromImage(String path) {
+    static Tile createFromImage(String path)
+    {
         return createFromImage(ImageLoader.load(path));
     }
 
-    static Tile createFromImage(BufferedImage image) {
+    static Tile createFromImage(BufferedImage image)
+    {
         return (g, width, height) -> {
             AffineTransform pre = g.getTransform();
             g.scale(width / image.getWidth(), height / image.getHeight());
@@ -41,29 +43,31 @@ public interface TileMap {
         };
     }
 
-    static TileMap createFromImage(String path, int sizeX, int sizeY) {
+    static TileMap createFromImage(String path, int sizeX, int sizeY)
+    {
         BufferedImage image = ImageLoader.load(path);
-
-        if (image.getWidth() % sizeX != 0) {
-          throw new IllegalArgumentException(String.format(
-              "Kann die Kacheln mit der Breite von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildbreite (%spx) ein Vielfaches der Kachelbreite sein muss.",
-              sizeX, path, image.getWidth()));
+        if (image.getWidth() % sizeX != 0)
+        {
+            throw new IllegalArgumentException(String.format(
+                    "Kann die Kacheln mit der Breite von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildbreite (%spx) ein Vielfaches der Kachelbreite sein muss.",
+                    sizeX, path, image.getWidth()));
         }
-
-        if (image.getHeight() % sizeY != 0) {
-          throw new IllegalArgumentException(String.format(
-              "Kann die Kacheln mit der Höhe von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildhöhe (%spx) ein Vielfaches der Kachelhöhe sein muss.",
-              sizeY, path, image.getHeight()));
+        if (image.getHeight() % sizeY != 0)
+        {
+            throw new IllegalArgumentException(String.format(
+                    "Kann die Kacheln mit der Höhe von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildhöhe (%spx) ein Vielfaches der Kachelhöhe sein muss.",
+                    sizeY, path, image.getHeight()));
         }
-
-        Tile[][] tiles = new Tile[image.getWidth() / sizeX][image.getHeight() / sizeY];
-
-        for (int posX = 0; posX < image.getWidth(); posX += sizeX) {
-            for (int posY = 0; posY < image.getHeight(); posY += sizeY) {
-                tiles[posX / sizeX][posY / sizeY] = createFromImage(image.getSubimage(posX, posY, sizeX, sizeY));
+        Tile[][] tiles = new Tile[image.getWidth() / sizeX][image.getHeight()
+                / sizeY];
+        for (int posX = 0; posX < image.getWidth(); posX += sizeX)
+        {
+            for (int posY = 0; posY < image.getHeight(); posY += sizeY)
+            {
+                tiles[posX / sizeX][posY / sizeY] = createFromImage(
+                        image.getSubimage(posX, posY, sizeX, sizeY));
             }
         }
-
         return (x, y) -> tiles[x][y];
     }
 

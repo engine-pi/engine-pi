@@ -16,21 +16,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 
-public interface MouseWheelListenerContainer {
+public interface MouseWheelListenerContainer
+{
     EventListeners<MouseWheelListener> getMouseWheelListeners();
 
     @API
-    default void addMouseWheelListener(MouseWheelListener mouseWheelListener) {
+    default void addMouseWheelListener(MouseWheelListener mouseWheelListener)
+    {
         getMouseWheelListeners().add(mouseWheelListener);
     }
 
     @API
-    default void removeMouseWheelListener(MouseWheelListener mouseWheelListener) {
+    default void removeMouseWheelListener(MouseWheelListener mouseWheelListener)
+    {
         getMouseWheelListeners().remove(mouseWheelListener);
     }
 }

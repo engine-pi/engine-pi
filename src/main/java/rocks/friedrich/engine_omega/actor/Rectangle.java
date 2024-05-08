@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.FixtureBuilder;
@@ -32,7 +31,8 @@ import java.util.function.Supplier;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class Rectangle extends Geometry {
+public class Rectangle extends Geometry
+{
     /**
      * Die Breite
      */
@@ -54,56 +54,65 @@ public class Rectangle extends Geometry {
      * @param width  Die Breite des Rechtecks
      * @param height Die Höhe des Rechtecks
      */
-    public Rectangle(float width, float height) {
-        this(width, height, () -> FixtureBuilder.createSimpleRectangularFixture(width, height));
+    public Rectangle(float width, float height)
+    {
+        this(width, height, () -> FixtureBuilder
+                .createSimpleRectangularFixture(width, height));
     }
 
-    public Rectangle(float width, float height, Supplier<FixtureData> shapeSupplier) {
+    public Rectangle(float width, float height,
+            Supplier<FixtureData> shapeSupplier)
+    {
         super(shapeSupplier);
-
         assertPositiveWidthAndHeight(width, height);
-
         this.width = width;
         this.height = height;
     }
 
     @API
-    public float getWidth() {
+    public float getWidth()
+    {
         return width;
     }
 
     @API
-    public float getHeight() {
+    public float getHeight()
+    {
         return height;
     }
 
     /**
-     * Setzt die Höhe und Breite des Rechtecks neu. Ändert die physikalischen Eigenschaften (Masse etc.).
+     * Setzt die Höhe und Breite des Rechtecks neu. Ändert die physikalischen
+     * Eigenschaften (Masse etc.).
      *
      * @param width  Neue Breite für das Rechteck.
      * @param height Neue Höhe für das Rechteck.
      */
     @API
-    public void setSize(float width, float height) {
+    public void setSize(float width, float height)
+    {
         assertPositiveWidthAndHeight(width, height);
-
         this.width = width;
         this.height = height;
-
-        this.setFixture(() -> FixtureBuilder.createSimpleRectangularFixture(width, height));
+        this.setFixture(() -> FixtureBuilder
+                .createSimpleRectangularFixture(width, height));
     }
 
     @API
-    public float getBorderRadius() {
+    public float getBorderRadius()
+    {
         return borderRadius;
     }
 
     @API
-    public void setBorderRadius(float percent) {
-        if (percent < 0 || percent > 1) {
-            throw new IllegalArgumentException("Borderradius kann nur zwischen 0 und 1 sein. War " + percent);
+    public void setBorderRadius(float percent)
+    {
+        if (percent < 0 || percent > 1)
+        {
+            throw new IllegalArgumentException(
+                    "Borderradius kann nur zwischen 0 und 1 sein. War "
+                            + percent);
         }
-
         this.borderRadius = percent;
     }
 
@@ -111,14 +120,22 @@ public class Rectangle extends Geometry {
      * {@inheritDoc}
      */
     @Override
-    public void render(Graphics2D g, float pixelPerMeter) {
+    public void render(Graphics2D g, float pixelPerMeter)
+    {
         g.setColor(getColor());
-
-        if (borderRadius == 0) {
-            g.fillRect(0, (int) (-height * pixelPerMeter), (int) (width * pixelPerMeter), (int) (height * pixelPerMeter));
-        } else {
-            int borderRadius = (int) (Math.min(width, height) * pixelPerMeter * this.borderRadius);
-            g.fillRoundRect(0, (int) (-height * pixelPerMeter), (int) (width * pixelPerMeter), (int) (height * pixelPerMeter), borderRadius, borderRadius);
+        if (borderRadius == 0)
+        {
+            g.fillRect(0, (int) (-height * pixelPerMeter),
+                    (int) (width * pixelPerMeter),
+                    (int) (height * pixelPerMeter));
+        }
+        else
+        {
+            int borderRadius = (int) (Math.min(width, height) * pixelPerMeter
+                    * this.borderRadius);
+            g.fillRoundRect(0, (int) (-height * pixelPerMeter),
+                    (int) (width * pixelPerMeter),
+                    (int) (height * pixelPerMeter), borderRadius, borderRadius);
         }
     }
 }

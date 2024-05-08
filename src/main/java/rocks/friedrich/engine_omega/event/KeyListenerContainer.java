@@ -16,17 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 
-public interface KeyListenerContainer {
+public interface KeyListenerContainer
+{
     EventListeners<KeyListener> getKeyListeners();
 
     /**
-     * Fügt einen {@link KeyListener} zum Objekt hinzu.
-     * Die Klassen {@link rocks.friedrich.engine_omega.actor.Actor Actor},
+     * Fügt einen {@link KeyListener} zum Objekt hinzu. Die Klassen
+     * {@link rocks.friedrich.engine_omega.actor.Actor Actor},
      * {@link rocks.friedrich.engine_omega.Scene Scene} und
      * {@link rocks.friedrich.engine_omega.Layer Layer} implementieren die
      * Schnittstelle {@link KeyListenerContainer} und stellen daher diese
@@ -38,42 +38,50 @@ public interface KeyListenerContainer {
      * <li>Als normale Klasse:
      *
      * <pre>{@code
-     *class MyKeylistener implements KeyListener {
-     *    @Override
-     *    public void onKeyDown(KeyEvent e) {
-     *        // Code here
-     *    }
-     *}
-     *obj.addKeyListener(new MyKeylistener());
+     * class MyKeylistener implements KeyListener
+     * {
+     *     @Override
+     *     public void onKeyDown(KeyEvent e)
+     *     {
+     *         // Code here
+     *     }
+     * }
+     * obj.addKeyListener(new MyKeylistener());
      * }</pre>
+     *
      * </li>
      *
      * <li>Als anonyme Klasse:
      *
      * <pre>{@code
-     *obj.addKeyListener(new KeyListener() {
-     *    @Override
-     *    public void onKeyDown(KeyEvent e) {
-     *        // Code here
-     *    }
-     *});
+     * obj.addKeyListener(new KeyListener()
+     * {
+     *     @Override
+     *     public void onKeyDown(KeyEvent e)
+     *     {
+     *         // Code here
+     *     }
+     * });
      * }</pre>
+     *
      * </li>
      *
      * <li>Oder als Lambda-Ausdruck:
      *
      * <pre>{@code
-     *obj.addKeyListener(e -> {
-     *    // Code here
-     *});
+     * obj.addKeyListener(e -> {
+     *     // Code here
+     * });
      * }</pre>
+     *
      * </li>
      * </ol>
      *
      * @param keyListener
      */
     @API
-    default void addKeyListener(KeyListener keyListener) {
+    default void addKeyListener(KeyListener keyListener)
+    {
         getKeyListeners().add(keyListener);
     }
 
@@ -81,7 +89,8 @@ public interface KeyListenerContainer {
      * Entfernt einen {@link KeyListener} vom Objekt.
      */
     @API
-    default void removeKeyListener(KeyListener keyListener) {
+    default void removeKeyListener(KeyListener keyListener)
+    {
         getKeyListeners().remove(keyListener);
     }
 }

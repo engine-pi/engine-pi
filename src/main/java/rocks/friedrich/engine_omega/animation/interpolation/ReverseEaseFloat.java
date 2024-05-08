@@ -16,26 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.animation.interpolation;
 
 import rocks.friedrich.engine_omega.animation.Interpolator;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
-public class ReverseEaseFloat implements Interpolator<Float> {
+public class ReverseEaseFloat implements Interpolator<Float>
+{
     private final float startAndEnd;
+
     private final float middle;
 
     @API
-    public ReverseEaseFloat(float startAndEnd, float middle) {
+    public ReverseEaseFloat(float startAndEnd, float middle)
+    {
         this.startAndEnd = startAndEnd;
         this.middle = middle;
     }
 
     @Internal
     @Override
-    public Float interpolate(float progress) {
-        return this.startAndEnd + (float) Math.sin(progress * Math.PI) * (this.middle - this.startAndEnd);
+    public Float interpolate(float progress)
+    {
+        return this.startAndEnd + (float) Math.sin(progress * Math.PI)
+                * (this.middle - this.startAndEnd);
     }
 }

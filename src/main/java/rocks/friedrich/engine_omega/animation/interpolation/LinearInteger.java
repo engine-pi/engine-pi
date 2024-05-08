@@ -16,26 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.animation.interpolation;
 
 import rocks.friedrich.engine_omega.animation.Interpolator;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
-public class LinearInteger implements Interpolator<Integer> {
+public class LinearInteger implements Interpolator<Integer>
+{
     private final int start;
+
     private final int end;
 
     @API
-    public LinearInteger(int start, int end) {
+    public LinearInteger(int start, int end)
+    {
         this.start = start;
         this.end = end;
     }
 
     @Internal
     @Override
-    public Integer interpolate(float progress) {
+    public Integer interpolate(float progress)
+    {
         return this.start + (int) ((this.end - this.start) * progress);
     }
 }

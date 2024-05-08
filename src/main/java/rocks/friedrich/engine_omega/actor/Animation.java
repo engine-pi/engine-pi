@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.event.EventListeners;
@@ -38,25 +37,28 @@ import java.util.*;
 
 /**
  * Eine Animation ist ein Actor-Objekt, das aus mehreren
- * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Frames</a> besteht. Frames können auf verschiedene
- * Arten aus Bilddateien eingeladen werden:
+ * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Frames</a> besteht.
+ * Frames können auf verschiedene Arten aus Bilddateien eingeladen werden:
  * <ul>
  * <li>Animierte GIFs</li>
- * <li><a href="https://de.wikipedia.org/wiki/Sprite_(Computergrafik)">Spritesheets</a></li>
+ * <li><a href=
+ * "https://de.wikipedia.org/wiki/Sprite_(Computergrafik)">Spritesheets</a></li>
  * <li>Einzelne Bilddateien</li>
  * </ul>
  *
  * @author Michael Andonie
  */
 @API
-public class Animation extends Actor implements FrameUpdateListener {
-
+public class Animation extends Actor implements FrameUpdateListener
+{
     private final AnimationFrame[] frames;
 
     private final float width;
+
     private final float height;
 
     private transient float currentTime;
+
     private transient int currentIndex;
 
     /**
@@ -64,25 +66,27 @@ public class Animation extends Actor implements FrameUpdateListener {
      */
     private final EventListeners<Runnable> onCompleteListeners = new EventListeners<>();
 
-    private Animation(AnimationFrame[] frames, float width, float height) {
+    private Animation(AnimationFrame[] frames, float width, float height)
+    {
         super(() -> {
-            if (frames.length < 1) {
-                throw new RuntimeException("Eine Animation kann nicht mit einem leeren Frames-Array initialisiert werden.");
+            if (frames.length < 1)
+            {
+                throw new RuntimeException(
+                        "Eine Animation kann nicht mit einem leeren Frames-Array initialisiert werden.");
             }
-
             return FixtureBuilder.createSimpleRectangularFixture(width, height);
         });
-
-        for (AnimationFrame frame : frames) {
-            if (frame.getDuration() <= 0) {
-                throw new RuntimeException("Ein Frame muss länger als 0 Sekunden sein.");
+        for (AnimationFrame frame : frames)
+        {
+            if (frame.getDuration() <= 0)
+            {
+                throw new RuntimeException(
+                        "Ein Frame muss länger als 0 Sekunden sein.");
             }
         }
-
         this.frames = frames.clone();
         this.width = width;
         this.height = height;
-
         this.currentTime = 0;
         this.currentIndex = 0;
     }
@@ -92,9 +96,9 @@ public class Animation extends Actor implements FrameUpdateListener {
      *
      * @param animation Animation.
      */
-    public Animation(Animation animation) {
+    public Animation(Animation animation)
+    {
         this(animation.frames, animation.width, animation.height);
-
         animation.onCompleteListeners.invoke(this::addOnCompleteListener);
     }
 
@@ -104,7 +108,8 @@ public class Animation extends Actor implements FrameUpdateListener {
      * @return Die Frames dieser Animation.
      */
     @Internal
-    public AnimationFrame[] getFrames() {
+    public AnimationFrame[] getFrames()
+    {
         return frames.clone();
     }
 
@@ -115,7 +120,8 @@ public class Animation extends Actor implements FrameUpdateListener {
      * @see #getHeight()
      */
     @API
-    public float getWidth() {
+    public float getWidth()
+    {
         return this.width;
     }
 
@@ -126,146 +132,182 @@ public class Animation extends Actor implements FrameUpdateListener {
      * @see #getWidth()
      */
     @API
-    public float getHeight() {
+    public float getHeight()
+    {
         return this.height;
     }
 
     /**
-     * Fügt einen Listener hinzu. Die <code>run()</code>-Methode wird immer wieder ausgeführt, sobald der
-     * <b>letzte Zustand der Animation abgeschlossen wurde</b>.
+     * Fügt einen Listener hinzu. Die <code>run()</code>-Methode wird immer
+     * wieder ausgeführt, sobald der <b>letzte Zustand der Animation
+     * abgeschlossen wurde</b>.
      *
-     * @param listener Ein Runnable, dessen run-Methode ausgeführt werden soll, sobald die Animation abgeschlossen ist
-     *                 (wird ausgeführt, bevor der Loop von Vorne beginnt).
+     * @param listener Ein Runnable, dessen run-Methode ausgeführt werden soll,
+     *                 sobald die Animation abgeschlossen ist (wird ausgeführt,
+     *                 bevor der Loop von Vorne beginnt).
      */
     @API
-    public void addOnCompleteListener(Runnable listener) {
+    public void addOnCompleteListener(Runnable listener)
+    {
         onCompleteListeners.add(listener);
     }
 
     @Internal
     @Override
-    public void onFrameUpdate(float deltaSeconds) {
+    public void onFrameUpdate(float deltaSeconds)
+    {
         this.currentTime += deltaSeconds;
-
         AnimationFrame currentFrame = this.frames[currentIndex];
-
-        while (this.currentTime > currentFrame.getDuration()) {
+        while (this.currentTime > currentFrame.getDuration())
+        {
             this.currentTime -= currentFrame.getDuration();
-            if (this.currentIndex + 1 == this.frames.length) {
+            if (this.currentIndex + 1 == this.frames.length)
+            {
                 onCompleteListeners.invoke(Runnable::run);
                 this.currentIndex = 0;
-            } else {
+            }
+            else
+            {
                 this.currentIndex += 1;
             }
         }
     }
 
     @Override
-    public void render(Graphics2D g, float pixelPerMeter) {
-        this.frames[currentIndex].render(g, width * pixelPerMeter, height * pixelPerMeter, false, false);
+    public void render(Graphics2D g, float pixelPerMeter)
+    {
+        this.frames[currentIndex].render(g, width * pixelPerMeter,
+                height * pixelPerMeter, false, false);
     }
 
     @API
-    public static Animation createFromSpritesheet(float frameDuration, String filepath, int x, int y, float width, float height) {
-        if (frameDuration <= 0) {
+    public static Animation createFromSpritesheet(float frameDuration,
+            String filepath, int x, int y, float width, float height)
+    {
+        if (frameDuration <= 0)
+        {
             throw new RuntimeException("Frame-Länge muss größer als 0 sein");
         }
-
         BufferedImage image = ImageLoader.load(filepath);
-
-        if (image.getWidth() % x != 0) {
-            throw new RuntimeException(String.format("Spritesheet hat nicht die richtigen Maße (Breite: %d) um es auf %d Elemente in getX-Richtung aufzuteilen.", image.getWidth(), x));
+        if (image.getWidth() % x != 0)
+        {
+            throw new RuntimeException(String.format(
+                    "Spritesheet hat nicht die richtigen Maße (Breite: %d) um es auf %d Elemente in getX-Richtung aufzuteilen.",
+                    image.getWidth(), x));
         }
-
-        if (image.getHeight() % y != 0) {
-            throw new RuntimeException(String.format("Spritesheet hat nicht die richtigen Maße (Höhe: %d) um es auf %d Elemente in getY-Richtung aufzuteilen.", image.getHeight(), y));
+        if (image.getHeight() % y != 0)
+        {
+            throw new RuntimeException(String.format(
+                    "Spritesheet hat nicht die richtigen Maße (Höhe: %d) um es auf %d Elemente in getY-Richtung aufzuteilen.",
+                    image.getHeight(), y));
         }
-
         int imageWidth = image.getWidth() / x;
         int imageHeight = image.getHeight() / y;
-
         List<AnimationFrame> frames = new LinkedList<>();
-
-        for (int j = 0; j < y; j++) {
-            for (int i = 0; i < x; i++) {
-                frames.add(new AnimationFrame(image.getSubimage(i * imageWidth, j * imageHeight, imageWidth, imageHeight), frameDuration));
+        for (int j = 0; j < y; j++)
+        {
+            for (int i = 0; i < x; i++)
+            {
+                frames.add(new AnimationFrame(image.getSubimage(i * imageWidth,
+                        j * imageHeight, imageWidth, imageHeight),
+                        frameDuration));
             }
         }
-
-        return new Animation(frames.toArray(new AnimationFrame[0]), width, height);
+        return new Animation(frames.toArray(new AnimationFrame[0]), width,
+                height);
     }
 
     @API
-    public static Animation createFromImages(float frameDuration, float width, float height, String... filepaths) {
-        if (frameDuration <= 0) {
+    public static Animation createFromImages(float frameDuration, float width,
+            float height, String... filepaths)
+    {
+        if (frameDuration <= 0)
+        {
             throw new RuntimeException("Frame-Länge muss größer als 1 sein.");
         }
-
         Collection<AnimationFrame> frames = new LinkedList<>();
-
-        for (String filepath : filepaths) {
-            frames.add(new AnimationFrame(ImageLoader.load(filepath), frameDuration));
+        for (String filepath : filepaths)
+        {
+            frames.add(new AnimationFrame(ImageLoader.load(filepath),
+                    frameDuration));
         }
-
-        return new Animation(frames.toArray(new AnimationFrame[0]), width, height);
+        return new Animation(frames.toArray(new AnimationFrame[0]), width,
+                height);
     }
 
     /**
-     * Lädt alle Bilddateien mit einem bestimmten Präfix in einem bestimmten Verzeichnis in eine Animation.
+     * Lädt alle Bilddateien mit einem bestimmten Präfix in einem bestimmten
+     * Verzeichnis in eine Animation.
      *
      * @param frameDuration Die Dauer (ms), die ein Frame aktiv bleibt.
-     * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden Bilder liegen.
-     * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle Dateien mit dem gegebenen Präfix</a> (im
-     *                      angegebenen Ordner) und fügt sie in aufsteigender Reihenfolge der Animation hinzu.
-     * @return Eine Animation aus allen Dateien, die mit dem Pfadpräfix beginnen.
+     * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden
+     *                      Bilder liegen.
+     * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle
+     *                      Dateien mit dem gegebenen Präfix</a> (im angegebenen
+     *                      Ordner) und fügt sie in aufsteigender Reihenfolge
+     *                      der Animation hinzu.
+     * @return Eine Animation aus allen Dateien, die mit dem Pfadpräfix
+     *         beginnen.
      */
     @API
-    public static Animation createFromImagesPrefix(float frameDuration, float width, float height, String directoryPath, String prefix) {
+    public static Animation createFromImagesPrefix(float frameDuration,
+            float width, float height, String directoryPath, String prefix)
+    {
         // Liste mit den Pfaden aller qualifizierten Dateien
         ArrayList<String> allPaths = new ArrayList<>();
-
         File directory;
-        try {
+        try
+        {
             directory = ResourceLoader.loadAsFile(directoryPath);
-        } catch (IOException e) {
-            throw new RuntimeException("Fehler beim Einladen des Verzeichnisses: " + e.getMessage());
         }
-        if (!directory.isDirectory()) {
-            throw new RuntimeException("Der angegebene Pfad war kein Verzeichnis: " + directoryPath);
+        catch (IOException e)
+        {
+            throw new RuntimeException(
+                    "Fehler beim Einladen des Verzeichnisses: "
+                            + e.getMessage());
         }
-
+        if (!directory.isDirectory())
+        {
+            throw new RuntimeException(
+                    "Der angegebene Pfad war kein Verzeichnis: "
+                            + directoryPath);
+        }
         File[] children = directory.listFiles();
-        if (children != null) {
-            for (File file : children) {
-                if (!file.isDirectory() && file.getName().startsWith(prefix)) {
+        if (children != null)
+        {
+            for (File file : children)
+            {
+                if (!file.isDirectory() && file.getName().startsWith(prefix))
+                {
                     allPaths.add(file.getAbsolutePath());
                 }
             }
         }
-
         allPaths.sort(Comparator.naturalOrder());
-
-        if (allPaths.isEmpty()) {
-            throw new RuntimeException("Konnte keine Bilder mit Präfix \"" + prefix + "\" im Verzeichnis \"" + directoryPath + "\" finden.");
+        if (allPaths.isEmpty())
+        {
+            throw new RuntimeException("Konnte keine Bilder mit Präfix \""
+                    + prefix + "\" im Verzeichnis \"" + directoryPath
+                    + "\" finden.");
         }
-
-        return createFromImages(frameDuration, width, height, allPaths.toArray(new String[0]));
+        return createFromImages(frameDuration, width, height,
+                allPaths.toArray(new String[0]));
     }
 
     @API
-    public static Animation createFromAnimatedGif(String filepath, float width, float height) {
+    public static Animation createFromAnimatedGif(String filepath, float width,
+            float height)
+    {
         GifDecoder gifDecoder = new GifDecoder();
         gifDecoder.read(filepath);
-
         int frameCount = gifDecoder.getFrameCount();
         AnimationFrame[] frames = new AnimationFrame[frameCount];
-
-        for (int i = 0; i < frameCount; i++) {
+        for (int i = 0; i < frameCount; i++)
+        {
             BufferedImage frame = gifDecoder.getFrame(i);
             int durationInMillis = gifDecoder.getDelay(i);
             frames[i] = new AnimationFrame(frame, durationInMillis / 1000f);
         }
-
         return new Animation(frames, width, height);
     }
 }

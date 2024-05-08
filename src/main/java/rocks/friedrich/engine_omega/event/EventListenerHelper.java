@@ -16,27 +16,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.FrameUpdateListener;
 
-public class EventListenerHelper {
-    public static void autoRegisterListeners(Object target) {
-        if (target instanceof KeyListenerContainer && target instanceof KeyListener) {
-            ((KeyListenerContainer) target).addKeyListener((KeyListener) target);
+public class EventListenerHelper
+{
+    public static void autoRegisterListeners(Object target)
+    {
+        if (target instanceof KeyListenerContainer
+                && target instanceof KeyListener)
+        {
+            ((KeyListenerContainer) target)
+                    .addKeyListener((KeyListener) target);
         }
-
-        if (target instanceof MouseClickListenerContainer && target instanceof MouseClickListener) {
-            ((MouseClickListenerContainer) target).addMouseClickListener((MouseClickListener) target);
+        if (target instanceof MouseClickListenerContainer
+                && target instanceof MouseClickListener)
+        {
+            ((MouseClickListenerContainer) target)
+                    .addMouseClickListener((MouseClickListener) target);
         }
-
-        if (target instanceof MouseWheelListenerContainer && target instanceof MouseWheelListener) {
-            ((MouseWheelListenerContainer) target).addMouseWheelListener((MouseWheelListener) target);
+        if (target instanceof MouseWheelListenerContainer
+                && target instanceof MouseWheelListener)
+        {
+            ((MouseWheelListenerContainer) target)
+                    .addMouseWheelListener((MouseWheelListener) target);
         }
-
-        if (target instanceof FrameUpdateListenerContainer && target instanceof FrameUpdateListener) {
-            ((FrameUpdateListenerContainer) target).addFrameUpdateListener((FrameUpdateListener) target);
+        if (target instanceof FrameUpdateListenerContainer
+                && target instanceof FrameUpdateListener)
+        {
+            ((FrameUpdateListenerContainer) target)
+                    .addFrameUpdateListener((FrameUpdateListener) target);
         }
     }
 }

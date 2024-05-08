@@ -16,26 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.animation.interpolation;
 
 import rocks.friedrich.engine_omega.animation.Interpolator;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
-public class LinearFloat implements Interpolator<Float> {
+public class LinearFloat implements Interpolator<Float>
+{
     private final float start;
+
     private final float end;
 
     @API
-    public LinearFloat(float start, float end) {
+    public LinearFloat(float start, float end)
+    {
         this.start = start;
         this.end = end;
     }
 
     @Internal
     @Override
-    public Float interpolate(float progress) {
+    public Float interpolate(float progress)
+    {
         return this.start + (this.end - this.start) * progress;
     }
 }

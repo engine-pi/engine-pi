@@ -16,25 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.Vector;
 
 /**
- * Implementierende Klassen können auf jeden einzelnen Klick reagieren, unabhängig davon, ob dies
- * ein spezielles Objekt trifft oder nicht.
+ * Implementierende Klassen können auf jeden einzelnen Klick reagieren,
+ * unabhängig davon, ob dies ein spezielles Objekt trifft oder nicht.
  *
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public interface MouseClickListener {
+public interface MouseClickListener
+{
     /**
-     * Diese Methode wird bei jedem <b>Klick</b> aufgerufen, unabhängig davon an welcher Position
-     * sich die Maus befindet.
+     * Diese Methode wird bei jedem <b>Klick</b> aufgerufen, unabhängig davon an
+     * welcher Position sich die Maus befindet.
      * <p>
-     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet werden.
+     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
+     * werden.
      *
      * @param position Der Point auf der Zeichenebene.
      * @param button   Die Maustaste, die gedrückt wurde.
@@ -43,16 +44,18 @@ public interface MouseClickListener {
     void onMouseDown(Vector position, MouseButton button);
 
     /**
-     * Diese Methode wird bei jedem <b>Loslassen</b> einer Maustaste aufgerufen, unabhängig davon
-     * an welcher Position sich die Maus befindet.
+     * Diese Methode wird bei jedem <b>Loslassen</b> einer Maustaste aufgerufen,
+     * unabhängig davon an welcher Position sich die Maus befindet.
      * <p>
-     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet werden.
+     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
+     * werden.
      *
      * @param position Der Point auf der Zeichenebene.
      * @param button   Die Maustaste, die gedrückt wurde.
      */
     @API
-    default void onMouseUp(Vector position, MouseButton button) {
+    default void onMouseUp(Vector position, MouseButton button)
+    {
         // empty by default
     }
 }

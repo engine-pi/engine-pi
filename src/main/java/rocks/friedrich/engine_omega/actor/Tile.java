@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -25,11 +24,12 @@ import rocks.friedrich.engine_omega.internal.annotations.Internal;
 import java.awt.Graphics2D;
 
 /**
- * Abstrakte Klasse beschreibt eine Tile-Instanz für den Tile-Atlas. <i>In jeder Engine-Instanz existiert jedes Tile
- * nur einmal im Atlas.</i>
+ * Abstrakte Klasse beschreibt eine Tile-Instanz für den Tile-Atlas. <i>In jeder
+ * Engine-Instanz existiert jedes Tile nur einmal im Atlas.</i>
  */
 @API
-public interface Tile {
+public interface Tile
+{
     @Internal
     void render(Graphics2D g, float width, float height);
 }

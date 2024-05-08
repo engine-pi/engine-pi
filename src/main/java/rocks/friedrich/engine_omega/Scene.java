@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega;
 
 import rocks.friedrich.engine_omega.actor.Actor;
@@ -40,20 +39,29 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
 
-public class Scene implements KeyListenerContainer, MouseClickListenerContainer, MouseWheelListenerContainer, FrameUpdateListenerContainer {
+public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
+        MouseWheelListenerContainer, FrameUpdateListenerContainer
+{
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
+
     private static final Color ROPE_JOINT_COLOR = Color.CYAN;
+
     private static final Color DISTANCE_JOINT_COLOR = Color.ORANGE;
+
     private static final Color PRISMATIC_JOINT_COLOR = Color.GREEN;
 
     /**
-     * Die Kamera des Spiels. Hiermit kann der sichtbare Ausschnitt der Zeichenebene bestimmt und manipuliert werden.
+     * Die Kamera des Spiels. Hiermit kann der sichtbare Ausschnitt der
+     * Zeichenebene bestimmt und manipuliert werden.
      */
     private final Camera camera;
 
     private final EventListeners<KeyListener> keyListeners = new EventListeners<>();
+
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
+
     private final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
+
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
     /**
@@ -69,7 +77,8 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      * @return Das Main Layer der Scene.
      */
     @API
-    public Layer getMainLayer() {
+    public Layer getMainLayer()
+    {
         return mainLayer;
     }
 
@@ -78,38 +87,48 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      */
     private final Layer mainLayer;
 
-    private static final int JOINT_CIRCLE_RADIUS = 10;// (Basis-)Breite für die Visualisierung von Rechtecken
+    private static final int JOINT_CIRCLE_RADIUS = 10;// (Basis-)Breite für die
+                                                      // Visualisierung von
+                                                      // Rechtecken
+
     private static final int JOINT_RECTANGLE_SIDE = 12;
 
-    public Scene() {
+    public Scene()
+    {
         this.camera = new Camera();
         this.mainLayer = new Layer();
         this.mainLayer.setLayerPosition(0);
-
         addLayer(mainLayer);
-
         EventListenerHelper.autoRegisterListeners(this);
     }
 
     /**
      * Führt an allen Layern <b>parallelisiert</b> den World-Step aus.
      *
-     * @param deltaSeconds Die Echtzeit, die seit dem letzten World-Step vergangen ist.
+     * @param deltaSeconds Die Echtzeit, die seit dem letzten World-Step
+     *                     vergangen ist.
      */
     @Internal
-    public final void step(float deltaSeconds, Function<Runnable, Future<?>> invoker) throws InterruptedException {
-        synchronized (layers) {
+    public final void step(float deltaSeconds,
+            Function<Runnable, Future<?>> invoker) throws InterruptedException
+    {
+        synchronized (layers)
+        {
             Collection<Future<?>> layerFutures = new ArrayList<>(layers.size());
-
-            for (Layer layer : layers) {
-                Future<?> future = invoker.apply(() -> layer.step(deltaSeconds));
+            for (Layer layer : layers)
+            {
+                Future<?> future = invoker
+                        .apply(() -> layer.step(deltaSeconds));
                 layerFutures.add(future);
             }
-
-            for (Future<?> layerFuture : layerFutures) {
-                try {
+            for (Future<?> layerFuture : layerFutures)
+            {
+                try
+                {
                     layerFuture.get();
-                } catch (ExecutionException e) {
+                }
+                catch (ExecutionException e)
+                {
                     throw new RuntimeException(e);
                 }
             }
@@ -117,34 +136,39 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    public final void render(Graphics2D g, int width, int height) {
+    public final void render(Graphics2D g, int width, int height)
+    {
         final AffineTransform base = g.getTransform();
-
-        synchronized (layers) {
-            for (Layer layer : layers) {
+        synchronized (layers)
+        {
+            for (Layer layer : layers)
+            {
                 layer.render(g, camera, width, height);
                 g.setTransform(base);
             }
         }
-
-        if (Game.isDebug()) {
+        if (Game.isDebug())
+        {
             renderJoints(g);
         }
     }
 
     /**
-     * Wird aufgerufen, wann immer ein Layerzustand innerhalb dieser Scene geändert wurde.
-     * Stellt sicher, dass die Layer-Liste korrekt sortiert ist und aller Layer in der richtigen Reihenfolge gerendert
-     * werden.
+     * Wird aufgerufen, wann immer ein Layerzustand innerhalb dieser Scene
+     * geändert wurde. Stellt sicher, dass die Layer-Liste korrekt sortiert ist
+     * und aller Layer in der richtigen Reihenfolge gerendert werden.
      */
     @Internal
-    final void sortLayers() {
+    final void sortLayers()
+    {
         this.layers.sort(Comparator.comparingInt(Layer::getLayerPosition));
     }
 
     @API
-    public final void addLayer(Layer layer) {
-        synchronized (this.layers) {
+    public final void addLayer(Layer layer)
+    {
+        synchronized (this.layers)
+        {
             layer.setParent(this);
             this.layers.add(layer);
             sortLayers();
@@ -152,8 +176,10 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @API
-    public final void removeLayer(Layer layer) {
-        synchronized (this.layers) {
+    public final void removeLayer(Layer layer)
+    {
+        synchronized (this.layers)
+        {
             this.layers.remove(layer);
             layer.setParent(null);
         }
@@ -167,23 +193,26 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      * @see Game#getFrameSizeInPixels()
      */
     @API
-    public Bounds getVisibleArea(Vector gameSizeInPixels) {
+    public Bounds getVisibleArea(Vector gameSizeInPixels)
+    {
         return mainLayer.getVisibleArea(gameSizeInPixels);
     }
 
     @API
-    public final Camera getCamera() {
+    public final Camera getCamera()
+    {
         return camera;
     }
 
     @Internal
-    private void renderJoints(Graphics2D g) {
+    private void renderJoints(Graphics2D g)
+    {
         // Display Joints
-
-        for (Layer layer : layers) {
+        for (Layer layer : layers)
+        {
             Joint j = layer.getWorldHandler().getWorld().getJointList();
-
-            while (j != null) {
+            while (j != null)
+            {
                 renderJoint(j, g, layer);
                 j = j.getNext();
             }
@@ -191,34 +220,57 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    private static void renderJoint(Joint j, Graphics2D g, Layer layer) {
+    private static void renderJoint(Joint j, Graphics2D g, Layer layer)
+    {
         Vec2 anchorA = new Vec2(), anchorB = new Vec2();
         j.getAnchorA(anchorA);
         j.getAnchorB(anchorB);
-
-        Vector aInPx = layer.translateWorldPointToFramePxCoordinates(Vector.of(anchorA));
-        Vector bInPx = layer.translateWorldPointToFramePxCoordinates(Vector.of(anchorB));
-
-        if (j instanceof RevoluteJoint) {
+        Vector aInPx = layer
+                .translateWorldPointToFramePxCoordinates(Vector.of(anchorA));
+        Vector bInPx = layer
+                .translateWorldPointToFramePxCoordinates(Vector.of(anchorB));
+        if (j instanceof RevoluteJoint)
+        {
             g.setColor(REVOLUTE_JOINT_COLOR);
-            g.drawOval((int) aInPx.getX() - (JOINT_CIRCLE_RADIUS / 2), (int) aInPx.getY() - (JOINT_CIRCLE_RADIUS / 2), JOINT_CIRCLE_RADIUS, JOINT_CIRCLE_RADIUS);
-        } else if (j instanceof RopeJoint) {
-            renderJointRectangle(g, ROPE_JOINT_COLOR, aInPx, bInPx, layer.calculatePixelPerMeter());
-        } else if (j instanceof DistanceJoint) {
-            renderJointRectangle(g, DISTANCE_JOINT_COLOR, aInPx, bInPx, layer.calculatePixelPerMeter());
-        } else if (j instanceof PrismaticJoint) {
-            renderJointRectangle(g, PRISMATIC_JOINT_COLOR, aInPx, bInPx, layer.calculatePixelPerMeter());
+            g.drawOval((int) aInPx.getX() - (JOINT_CIRCLE_RADIUS / 2),
+                    (int) aInPx.getY() - (JOINT_CIRCLE_RADIUS / 2),
+                    JOINT_CIRCLE_RADIUS, JOINT_CIRCLE_RADIUS);
+        }
+        else if (j instanceof RopeJoint)
+        {
+            renderJointRectangle(g, ROPE_JOINT_COLOR, aInPx, bInPx,
+                    layer.calculatePixelPerMeter());
+        }
+        else if (j instanceof DistanceJoint)
+        {
+            renderJointRectangle(g, DISTANCE_JOINT_COLOR, aInPx, bInPx,
+                    layer.calculatePixelPerMeter());
+        }
+        else if (j instanceof PrismaticJoint)
+        {
+            renderJointRectangle(g, PRISMATIC_JOINT_COLOR, aInPx, bInPx,
+                    layer.calculatePixelPerMeter());
         }
     }
 
     @Internal
-    private static void renderJointRectangle(Graphics2D g, Color color, Vector a, Vector b, float pixelPerMeter) {
+    private static void renderJointRectangle(Graphics2D g, Color color,
+            Vector a, Vector b, float pixelPerMeter)
+    {
         g.setColor(color);
-        g.drawRect((int) a.getX() - (JOINT_CIRCLE_RADIUS / 2), (int) a.getY() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
-        g.drawRect((int) b.getX() - (JOINT_CIRCLE_RADIUS / 2), (int) b.getY() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
-        g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(), (int) b.getY());
+        g.drawRect((int) a.getX() - (JOINT_CIRCLE_RADIUS / 2),
+                (int) a.getY() - (JOINT_CIRCLE_RADIUS / 2),
+                JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
+        g.drawRect((int) b.getX() - (JOINT_CIRCLE_RADIUS / 2),
+                (int) b.getY() - (JOINT_CIRCLE_RADIUS / 2),
+                JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
+        g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(),
+                (int) b.getY());
         Vector middle = a.add(b).divide(2);
-        g.drawString(String.valueOf(a.getDistance(b).divide(pixelPerMeter).getLength()), middle.getX(), middle.getY());
+        g.drawString(
+                String.valueOf(
+                        a.getDistance(b).divide(pixelPerMeter).getLength()),
+                middle.getX(), middle.getY());
     }
 
     /**
@@ -227,17 +279,21 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      * @return WorldHandler der Hauptebene.
      */
     @Internal
-    public final WorldHandler getWorldHandler() {
+    public final WorldHandler getWorldHandler()
+    {
         return mainLayer.getWorldHandler();
     }
 
     /**
-     * Setzt die Schwerkraft, die auf <b>alle Objekte innerhalb der Hauptebene der Szene</b> wirkt.
+     * Setzt die Schwerkraft, die auf <b>alle Objekte innerhalb der Hauptebene
+     * der Szene</b> wirkt.
      *
-     * @param gravityInNewton Die neue Schwerkraft als Vector. Die Einheit ist <b>[N]</b>.
+     * @param gravityInNewton Die neue Schwerkraft als Vector. Die Einheit ist
+     *                        <b>[N]</b>.
      */
     @API
-    public void setGravity(Vector gravityInNewton) {
+    public void setGravity(Vector gravityInNewton)
+    {
         mainLayer.setGravity(gravityInNewton);
     }
 
@@ -245,110 +301,136 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      * Setzt, ob die Engine-Physics für diese Szene pausiert sein soll.
      *
      * @param worldPaused <code>false</code>: Die Engine-Physik läuft normal.
-     *                    <code>true</code>: Die Engine-Physik läuft <b>nicht</b>. Das bedeutet u.A. keine
-     *                    Collision-Detection, keine Physik-Simulation etc., bis die Physik wieder mit
+     *                    <code>true</code>: Die Engine-Physik läuft
+     *                    <b>nicht</b>. Das bedeutet u.A. keine
+     *                    Collision-Detection, keine Physik-Simulation etc., bis
+     *                    die Physik wieder mit
      *                    <code>setPhysicsPaused(true)</code> aktiviert wird.
      *
      * @see #isPhysicsPaused()
      */
     @API
-    public void setPhysicsPaused(boolean worldPaused) {
+    public void setPhysicsPaused(boolean worldPaused)
+    {
         mainLayer.getWorldHandler().setWorldPaused(worldPaused);
     }
 
     /**
      * Gibt an, ob die Physik dieser Szene pausiert ist.
      *
-     * @return <code>true</code>: Die Physik ist pausiert.
-     * <code>false</code>: Die Physik ist nicht pausiert.
+     * @return <code>true</code>: Die Physik ist pausiert. <code>false</code>:
+     *         Die Physik ist nicht pausiert.
      *
      * @see #setPhysicsPaused(boolean)
      */
     @API
-    public boolean isPhysicsPaused() {
+    public boolean isPhysicsPaused()
+    {
         return mainLayer.getWorldHandler().isWorldPaused();
     }
 
     @API
-    final public void add(Actor... actors) {
-        for (Actor actor : actors) {
+    final public void add(Actor... actors)
+    {
+        for (Actor actor : actors)
+        {
             mainLayer.add(actor);
         }
     }
 
     @API
-    final public void remove(Actor... actors) {
-        for (Actor actor : actors) {
+    final public void remove(Actor... actors)
+    {
+        for (Actor actor : actors)
+        {
             mainLayer.remove(actor);
         }
     }
 
     @API
-    public EventListeners<KeyListener> getKeyListeners() {
+    public EventListeners<KeyListener> getKeyListeners()
+    {
         return keyListeners;
     }
 
     @API
-    public EventListeners<MouseClickListener> getMouseClickListeners() {
+    public EventListeners<MouseClickListener> getMouseClickListeners()
+    {
         return mouseClickListeners;
     }
 
     @API
-    public EventListeners<MouseWheelListener> getMouseWheelListeners() {
+    public EventListeners<MouseWheelListener> getMouseWheelListeners()
+    {
         return mouseWheelListeners;
     }
 
     @API
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners() {
+    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    {
         return frameUpdateListeners;
     }
 
     @Internal
-    public final void invokeFrameUpdateListeners(float deltaSeconds) {
-        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener.onFrameUpdate(deltaSeconds));
-
-        synchronized (layers) {
-            for (Layer layer : layers) {
+    public final void invokeFrameUpdateListeners(float deltaSeconds)
+    {
+        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
+                .onFrameUpdate(deltaSeconds));
+        synchronized (layers)
+        {
+            for (Layer layer : layers)
+            {
                 layer.invokeFrameUpdateListeners(deltaSeconds);
             }
         }
     }
 
     @Internal
-    final void invokeKeyDownListeners(KeyEvent e) {
+    final void invokeKeyDownListeners(KeyEvent e)
+    {
         keyListeners.invoke(keyListener -> keyListener.onKeyDown(e));
     }
 
     @Internal
-    final void invokeKeyUpListeners(KeyEvent e) {
+    final void invokeKeyUpListeners(KeyEvent e)
+    {
         keyListeners.invoke(keyListener -> keyListener.onKeyUp(e));
     }
 
     @Internal
-    final void invokeMouseDownListeners(Vector position, MouseButton button) {
-        mouseClickListeners.invoke(mouseClickListener -> mouseClickListener.onMouseDown(position, button));
+    final void invokeMouseDownListeners(Vector position, MouseButton button)
+    {
+        mouseClickListeners.invoke(mouseClickListener -> mouseClickListener
+                .onMouseDown(position, button));
     }
 
     @Internal
-    final void invokeMouseUpListeners(Vector position, MouseButton button) {
-        mouseClickListeners.invoke(mouseClickListener -> mouseClickListener.onMouseUp(position, button));
+    final void invokeMouseUpListeners(Vector position, MouseButton button)
+    {
+        mouseClickListeners.invoke(mouseClickListener -> mouseClickListener
+                .onMouseUp(position, button));
     }
 
     @Internal
-    final void invokeMouseWheelMoveListeners(MouseWheelEvent mouseWheelEvent) {
-        mouseWheelListeners.invoke(mouseWheelListener -> mouseWheelListener.onMouseWheelMove(mouseWheelEvent));
+    final void invokeMouseWheelMoveListeners(MouseWheelEvent mouseWheelEvent)
+    {
+        mouseWheelListeners.invoke(mouseWheelListener -> mouseWheelListener
+                .onMouseWheelMove(mouseWheelEvent));
     }
 
     @API
-    public final Vector getMousePosition() {
+    public final Vector getMousePosition()
+    {
         return Game.convertMousePosition(this, Game.getMousePositionInFrame());
     }
 
-    public Color getBackgroundColor() {
+    public Color getBackgroundColor()
+    {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(Color backgroundColor) {
+    public void setBackgroundColor(Color backgroundColor)
+    {
         this.backgroundColor = backgroundColor;
     }
 }

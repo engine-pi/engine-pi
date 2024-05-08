@@ -9,8 +9,8 @@ import rocks.friedrich.engine_omega.internal.annotations.Internal;
  *
  * @param <Value> Ein beliebiger Typ zum Interpolieren
  */
-public class ConstantInterpolator<Value> implements Interpolator<Value> {
-
+public class ConstantInterpolator<Value> implements Interpolator<Value>
+{
     private final Value value;
 
     /**
@@ -19,13 +19,15 @@ public class ConstantInterpolator<Value> implements Interpolator<Value> {
      * @param value Der stets auszugebende Wert
      */
     @API
-    public ConstantInterpolator(Value value) {
+    public ConstantInterpolator(Value value)
+    {
         this.value = value;
     }
 
     @Internal
     @Override
-    public Value interpolate(float progress) {
+    public Value interpolate(float progress)
+    {
         return value;
     }
 }

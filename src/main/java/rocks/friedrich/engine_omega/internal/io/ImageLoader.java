@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.io;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -33,13 +32,16 @@ import java.util.Map;
  *
  * @author Niklas Keller
  */
-final public class ImageLoader {
+final public class ImageLoader
+{
     /**
-     * Cache, damit viele gleiche Bilder nicht jedes Mal neu geladen werden müssen.
+     * Cache, damit viele gleiche Bilder nicht jedes Mal neu geladen werden
+     * müssen.
      */
     private static final Map<String, BufferedImage> cache = new HashMap<>();
 
-    private ImageLoader() {
+    private ImageLoader()
+    {
         // keine Objekte erlaubt!
     }
 
@@ -50,38 +52,45 @@ final public class ImageLoader {
      *
      * @return geladenes Image
      */
-    public static BufferedImage load(String path) {
-        if (cache.containsKey(path)) {
+    public static BufferedImage load(String path)
+    {
+        if (cache.containsKey(path))
+        {
             return cache.get(path);
         }
-
-        try {
-            BufferedImage img = Optimizer.toCompatibleImage(ImageIO.read(ResourceLoader.loadAsStream(path)));
-
+        try
+        {
+            BufferedImage img = Optimizer.toCompatibleImage(
+                    ImageIO.read(ResourceLoader.loadAsStream(path)));
             cache.put(path, img);
-
             return img;
-        } catch (IOException e) {
-            throw new RuntimeException("Das Image konnte nicht geladen werden: " + path);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(
+                    "Das Image konnte nicht geladen werden: " + path);
         }
     }
 
     /**
-     * Leert den Cache und lädt Bilder beim nächsten Laden erneut vom Dateisystem.
+     * Leert den Cache und lädt Bilder beim nächsten Laden erneut vom
+     * Dateisystem.
      */
     @API
-    public static void clearCache() {
+    public static void clearCache()
+    {
         cache.clear();
     }
 
     /**
-     * Leert einen bestimmten Cache-Eintrag und lädt den Eintrag bei der nächsten Verwendung erneut
-     * vom Dateisystem.
+     * Leert einen bestimmten Cache-Eintrag und lädt den Eintrag bei der
+     * nächsten Verwendung erneut vom Dateisystem.
      *
      * @param path Pfad des Bildes.
      */
     @API
-    public static void clearCache(String path) {
+    public static void clearCache(String path)
+    {
         cache.remove(path);
     }
 }

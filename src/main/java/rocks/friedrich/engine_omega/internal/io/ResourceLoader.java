@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.io;
 
 import rocks.friedrich.engine_omega.internal.util.Logger;
@@ -36,53 +35,63 @@ import java.nio.file.Paths;
  *
  * @author Niklas Keller
  */
-final public class ResourceLoader {
-    private ResourceLoader() {
+final public class ResourceLoader
+{
+    private ResourceLoader()
+    {
         // keine Objekte erlaubt!
     }
 
-    public static byte[] load(String filename) throws IOException {
+    public static byte[] load(String filename) throws IOException
+    {
         String normalizedFilename = normalizePath(filename);
         Path path = Paths.get(normalizedFilename);
-
         URL url = ResourceLoader.class.getResource("/" + normalizedFilename);
-        if (url != null) {
-            try {
+        if (url != null)
+        {
+            try
+            {
                 path = Paths.get(url.toURI());
-            } catch (URISyntaxException e) {
+            }
+            catch (URISyntaxException e)
+            {
                 throw new IOException("Could not convert URL to URI", e);
             }
         }
-
         return Files.readAllBytes(path);
     }
 
-    public static InputStream loadAsStream(String filename) throws IOException {
+    public static InputStream loadAsStream(String filename) throws IOException
+    {
         String normalizedFilename = normalizePath(filename);
-
-        if (ResourceLoader.class.getResource("/" + normalizedFilename) != null) {
-            return ResourceLoader.class.getResourceAsStream("/" + normalizedFilename);
+        if (ResourceLoader.class.getResource("/" + normalizedFilename) != null)
+        {
+            return ResourceLoader.class
+                    .getResourceAsStream("/" + normalizedFilename);
         }
-
         return new FileInputStream(normalizePath(normalizedFilename));
     }
 
-    public static File loadAsFile(String filename) throws IOException {
+    public static File loadAsFile(String filename) throws IOException
+    {
         String normalizedFilename = normalizePath(filename);
-
         URL url = ResourceLoader.class.getResource("/" + normalizedFilename);
-        if (url != null) {
-            try {
+        if (url != null)
+        {
+            try
+            {
                 return new File(url.toURI());
-            } catch (URISyntaxException e) {
+            }
+            catch (URISyntaxException e)
+            {
                 Logger.error("IO", e.getMessage());
             }
         }
-
         return new File(normalizePath(normalizedFilename));
     }
 
-    static String normalizePath(String path) {
+    static String normalizePath(String path)
+    {
         return path.replace("\\", File.separator).replace("/", File.separator);
     }
 }

@@ -16,19 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega;
 
-public final class Factory {
-    private Factory() {
+public final class Factory
+{
+    private Factory()
+    {
         // no instances
     }
 
-    public static Vector vector(float x, float y) {
+    public static Vector vector(float x, float y)
+    {
         return new Vector(x, y);
     }
 
-    public static Vector vector(double x, double y) {
+    public static Vector vector(double x, double y)
+    {
         return new Vector(x, y);
     }
 }

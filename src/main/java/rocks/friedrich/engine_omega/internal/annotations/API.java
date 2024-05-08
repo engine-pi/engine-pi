@@ -16,20 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.annotations;
 
 import java.lang.annotation.Documented;
 
 /**
- * Diese Annotation markiert Methoden, die Schüler verwenden sollen. Methoden ohne <code>@API</code> sollen nicht
- * verwendet werden!
+ * Diese Annotation markiert Methoden, die Schüler verwenden sollen. Methoden
+ * ohne <code>@API</code> sollen nicht verwendet werden!
  * <p>
- * Bisher müssen diese Methoden auch mit <code>@SuppressWarnings("unused")</code> zusätzlich markiert werden.
+ * Bisher müssen diese Methoden auch mit
+ * <code>@SuppressWarnings("unused")</code> zusätzlich markiert werden.
  *
  * @author Niklas Keller {@literal <me@kelunik.com>}
  */
 @Documented
-public @interface API {
-
+public @interface API
+{
 }

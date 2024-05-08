@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.graphics;
 
 import java.awt.Canvas;
@@ -31,39 +30,51 @@ import java.awt.image.BufferStrategy;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public final class RenderPanel extends Canvas implements RenderTarget {
+public final class RenderPanel extends Canvas implements RenderTarget
+{
     /**
      * Konstruktor für Objekte der Klasse RenderPanel
      *
-     * @param width  Die Größe des Einflussbereichs des Panels in Richtung <code>getX</code> in Pixel.
-     * @param height Die Größe des Einflussbereichs des Panels in Richtung <code>getY</code> in Pixel.
+     * @param width  Die Größe des Einflussbereichs des Panels in Richtung
+     *               <code>getX</code> in Pixel.
+     * @param height Die Größe des Einflussbereichs des Panels in Richtung
+     *               <code>getY</code> in Pixel.
      */
-    public RenderPanel(int width, int height) {
+    public RenderPanel(int width, int height)
+    {
         this.setSize(width, height);
         this.setPreferredSize(this.getSize());
         this.setBackground(Color.BLACK);
     }
 
     /**
-     * Muss aufgerufen werden, nachdem das Fenster isVisible ist, um die BufferStrategy zu erzeugen.
+     * Muss aufgerufen werden, nachdem das Fenster isVisible ist, um die
+     * BufferStrategy zu erzeugen.
      */
-    public void allocateBuffers() {
+    public void allocateBuffers()
+    {
         createBufferStrategy(2);
     }
 
-    public void render(RenderSource source) {
+    public void render(RenderSource source)
+    {
         BufferStrategy bufferStrategy = getBufferStrategy();
-
-        do {
-            do {
-                source.render((Graphics2D) bufferStrategy.getDrawGraphics(), getWidth(), getHeight());
-            } while (bufferStrategy.contentsRestored() && !Thread.currentThread().isInterrupted());
-
-            if (!bufferStrategy.contentsLost()) {
+        do
+        {
+            do
+            {
+                source.render((Graphics2D) bufferStrategy.getDrawGraphics(),
+                        getWidth(), getHeight());
+            }
+            while (bufferStrategy.contentsRestored()
+                    && !Thread.currentThread().isInterrupted());
+            if (!bufferStrategy.contentsLost())
+            {
                 bufferStrategy.show();
-
                 Toolkit.getDefaultToolkit().sync();
             }
-        } while (bufferStrategy.contentsLost() && !Thread.currentThread().isInterrupted());
+        }
+        while (bufferStrategy.contentsLost()
+                && !Thread.currentThread().isInterrupted());
     }
 }

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.PeriodicTask;
@@ -25,13 +24,15 @@ import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.FrameUpdateListener;
 
 /**
- * Die Schnittstelle {@link FrameUpdateListenerContainer} definiert Methoden zur Zeitsteuerung.
- * Sie wird von den Klassen {@link rocks.friedrich.engine_omega.actor.Actor Actor},
+ * Die Schnittstelle {@link FrameUpdateListenerContainer} definiert Methoden zur
+ * Zeitsteuerung. Sie wird von den Klassen
+ * {@link rocks.friedrich.engine_omega.actor.Actor Actor},
  * {@link rocks.friedrich.engine_omega.Scene Scene} und
  * {@link rocks.friedrich.engine_omega.Layer Layer} implementieren
  */
 @API
-public interface FrameUpdateListenerContainer {
+public interface FrameUpdateListenerContainer
+{
     /**
      * @return Liste der {@link FrameUpdateListener}
      */
@@ -41,7 +42,8 @@ public interface FrameUpdateListenerContainer {
      * Fügt einen neuen {@link FrameUpdateListener} hinzu.
      */
     @API
-    default void addFrameUpdateListener(FrameUpdateListener frameUpdateListener) {
+    default void addFrameUpdateListener(FrameUpdateListener frameUpdateListener)
+    {
         getFrameUpdateListeners().add(frameUpdateListener);
     }
 
@@ -49,7 +51,9 @@ public interface FrameUpdateListenerContainer {
      * Entfernt einen {@link FrameUpdateListener}.
      */
     @API
-    default void removeFrameUpdateListener(FrameUpdateListener frameUpdateListener) {
+    default void removeFrameUpdateListener(
+            FrameUpdateListener frameUpdateListener)
+    {
         getFrameUpdateListeners().remove(frameUpdateListener);
     }
 
@@ -59,15 +63,17 @@ public interface FrameUpdateListenerContainer {
      * @param runnable Wird im nächsten Frame ausgeführt.
      */
     @API
-    default void defer(Runnable runnable) {
-        FrameUpdateListener frameUpdateListener = new FrameUpdateListener() {
+    default void defer(Runnable runnable)
+    {
+        FrameUpdateListener frameUpdateListener = new FrameUpdateListener()
+        {
             @Override
-            public void onFrameUpdate(float time) {
+            public void onFrameUpdate(float time)
+            {
                 removeFrameUpdateListener(this);
                 runnable.run();
             }
         };
-
         addFrameUpdateListener(frameUpdateListener);
     }
 
@@ -77,12 +83,16 @@ public interface FrameUpdateListenerContainer {
      * @param timeInSeconds Verzögerung
      * @param runnable      Wird nach Ablauf der Verzögerung ausgeführt
      *
-     * @return Listener, der manuell abgemeldet werden kann, falls die Ausführung abgebrochen werden soll.
+     * @return Listener, der manuell abgemeldet werden kann, falls die
+     *         Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener delay(float timeInSeconds, Runnable runnable) {
-        // Später können wir den Return-Type auf SingleTask ändern, falls das notwendig werden sollte
-        FrameUpdateListener singleTask = new SingleTask(timeInSeconds, runnable, this);
+    default FrameUpdateListener delay(float timeInSeconds, Runnable runnable)
+    {
+        // Später können wir den Return-Type auf SingleTask ändern, falls das
+        // notwendig werden sollte
+        FrameUpdateListener singleTask = new SingleTask(timeInSeconds, runnable,
+                this);
         addFrameUpdateListener(singleTask);
         return singleTask;
     }
@@ -91,14 +101,20 @@ public interface FrameUpdateListenerContainer {
      * Führt das übergebene Runnable mit Verzögerung wiederholend aus.
      *
      * @param intervalInSeconds Verzögerung
-     * @param runnable          Wird immer wieder nach Ablauf der Verzögerung ausgeführt
+     * @param runnable          Wird immer wieder nach Ablauf der Verzögerung
+     *                          ausgeführt
      *
-     * @return Listener, der manuell abgemeldet werden kann, falls die Ausführung abgebrochen werden soll.
+     * @return Listener, der manuell abgemeldet werden kann, falls die
+     *         Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener repeat(float intervalInSeconds, Runnable runnable) {
-        // Später können wir den Return-Type auf PeriodicTask ändern, falls das notwendig werden sollte
-        FrameUpdateListener periodicTask = new PeriodicTask(intervalInSeconds, runnable);
+    default FrameUpdateListener repeat(float intervalInSeconds,
+            Runnable runnable)
+    {
+        // Später können wir den Return-Type auf PeriodicTask ändern, falls das
+        // notwendig werden sollte
+        FrameUpdateListener periodicTask = new PeriodicTask(intervalInSeconds,
+                runnable);
         addFrameUpdateListener(periodicTask);
         return periodicTask;
     }

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.internal.util;
 
 import java.awt.Canvas;
@@ -25,17 +24,21 @@ import java.awt.geom.Rectangle2D;
 
 import rocks.friedrich.engine_omega.Vector;
 
-public final class FontMetrics {
-    private static final ThreadLocal<Canvas> canvas = ThreadLocal.withInitial(Canvas::new);
+public final class FontMetrics
+{
+    private static final ThreadLocal<Canvas> canvas = ThreadLocal
+            .withInitial(Canvas::new);
 
-    public static int getDescent(Font font) {
+    public static int getDescent(Font font)
+    {
         return canvas.get().getFontMetrics(font).getDescent();
     }
 
-    public static Vector getSize(String content, Font font) {
+    public static Vector getSize(String content, Font font)
+    {
         Canvas canvas = FontMetrics.canvas.get();
-        Rectangle2D bounds = canvas.getFontMetrics(font).getStringBounds(content, canvas.getGraphics());
-
+        Rectangle2D bounds = canvas.getFontMetrics(font)
+                .getStringBounds(content, canvas.getGraphics());
         return new Vector(bounds.getWidth(), bounds.getHeight());
     }
 }

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -34,7 +33,8 @@ import java.awt.Graphics2D;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class Circle extends Geometry {
+public class Circle extends Geometry
+{
     private float diameter;
 
     /**
@@ -42,9 +42,9 @@ public class Circle extends Geometry {
      *
      * @param diameter Durchmesser des Kreises
      */
-    public Circle(float diameter) {
+    public Circle(float diameter)
+    {
         super(() -> new FixtureData(createCircleShape(diameter)));
-
         this.diameter = diameter;
         this.setColor(Color.WHITE);
     }
@@ -55,7 +55,8 @@ public class Circle extends Geometry {
      * @return Durchmesser des Kreises.
      */
     @API
-    public float getDiameter() {
+    public float getDiameter()
+    {
         return diameter;
     }
 
@@ -65,33 +66,40 @@ public class Circle extends Geometry {
      * @return Radius des Kreises.
      */
     @API
-    public float getRadius() {
+    public float getRadius()
+    {
         return diameter / 2;
     }
 
     @Override
-    public void render(Graphics2D g, float pixelPerMeter) {
+    public void render(Graphics2D g, float pixelPerMeter)
+    {
         g.setColor(getColor());
-        g.fillOval(0, -(int) (diameter * pixelPerMeter), (int) (diameter * pixelPerMeter), (int) (diameter * pixelPerMeter));
+        g.fillOval(0, -(int) (diameter * pixelPerMeter),
+                (int) (diameter * pixelPerMeter),
+                (int) (diameter * pixelPerMeter));
     }
 
     /**
-     * Setzt den Radius des Kreises neu.
-     * Ändert damit die physikalischen Eigenschaften des Objekts.
+     * Setzt den Radius des Kreises neu. Ändert damit die physikalischen
+     * Eigenschaften des Objekts.
      *
      * @param radius Der neue Radius des Kreises.
      */
     @API
-    public void resetRadius(float radius) {
+    public void resetRadius(float radius)
+    {
         this.diameter = 2 * radius;
-        FixtureData[] fixtureData = this.getPhysicsHandler().getPhysicsData().generateFixtureData();
+        FixtureData[] fixtureData = this.getPhysicsHandler().getPhysicsData()
+                .generateFixtureData();
         FixtureData thatoneCircle = fixtureData[0];
         thatoneCircle.setShape(createCircleShape(this.diameter));
         this.setFixture(() -> thatoneCircle);
     }
 
     @Internal
-    private static Shape createCircleShape(float diameter) {
+    private static Shape createCircleShape(float diameter)
+    {
         CircleShape shape = new CircleShape();
         shape.m_radius = diameter / 2;
         shape.m_p.set(shape.m_radius, shape.m_radius);

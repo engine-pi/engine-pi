@@ -17,44 +17,50 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * Default-Handler für Operationen an Actor-Objekten, die an keiner Scene angehängt sind.
- * Führt alle Operationen rein numerisch durch.
- * Gibt Fehler aus, wenn Operationen ausgeführt werden, die nur mit einer Verbindung zu einer
+ * Default-Handler für Operationen an Actor-Objekten, die an keiner Scene
+ * angehängt sind. Führt alle Operationen rein numerisch durch. Gibt Fehler aus,
+ * wenn Operationen ausgeführt werden, die nur mit einer Verbindung zu einer
  * Physics World funktionieren können.
  */
-public class NullHandler implements PhysicsHandler {
-
+public class NullHandler implements PhysicsHandler
+{
     private final PhysicsData physicsData;
+
     private final Collection<Consumer<PhysicsHandler>> mountCallbacks = new ArrayList<>();
 
-    public NullHandler(PhysicsData physicsData) {
+    public NullHandler(PhysicsData physicsData)
+    {
         this.physicsData = physicsData;
     }
 
     @Override
-    public void moveBy(Vector v) {
+    public void moveBy(Vector v)
+    {
         this.physicsData.setX(this.physicsData.getX() + v.getX());
         this.physicsData.setY(this.physicsData.getY() + v.getY());
     }
 
     @Override
-    public Vector getCenter() {
+    public Vector getCenter()
+    {
         AABB bounds = null;
         AABB shapeBounds = new AABB();
         Transform transform = new Transform();
-
-        for (FixtureData fixtureData : physicsData.getFixtures().get()) {
-            transform.set(getPosition().toVec2(), (float) Math.toRadians(getRotation()));
+        for (FixtureData fixtureData : physicsData.getFixtures().get())
+        {
+            transform.set(getPosition().toVec2(),
+                    (float) Math.toRadians(getRotation()));
             fixtureData.getShape().computeAABB(shapeBounds, transform, 0);
-
-            if (bounds != null) {
+            if (bounds != null)
+            {
                 bounds.combine(shapeBounds);
-            } else {
+            }
+            else
+            {
                 bounds = new AABB();
                 bounds.set(shapeBounds);
             }
         }
-
         return Vector.of(bounds.getCenter());
     }
 
@@ -66,206 +72,253 @@ public class NullHandler implements PhysicsHandler {
      * @return false
      */
     @Override
-    public boolean contains(Vector p) {
+    public boolean contains(Vector p)
+    {
         return false;
     }
 
     @Override
-    public Vector getPosition() {
+    public Vector getPosition()
+    {
         return new Vector(this.physicsData.getX(), this.physicsData.getY());
     }
 
     @Override
-    public float getRotation() {
+    public float getRotation()
+    {
         return this.physicsData.getRotation();
     }
 
     @Override
-    public void rotateBy(float degree) {
+    public void rotateBy(float degree)
+    {
         this.physicsData.setRotation(this.physicsData.getRotation() + degree);
     }
 
     @Override
-    public void setRotation(float degree) {
+    public void setRotation(float degree)
+    {
         this.physicsData.setRotation(degree);
     }
 
     @Override
-    public void setDensity(float density) {
-        if (density <= 0) {
-            throw new IllegalArgumentException("Dichte kann nicht kleiner als 0 sein. Eingabe war " + density + ".");
+    public void setDensity(float density)
+    {
+        if (density <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Dichte kann nicht kleiner als 0 sein. Eingabe war "
+                            + density + ".");
         }
         this.physicsData.setGlobalDensity(density);
     }
 
     @Override
-    public float getDensity() {
+    public float getDensity()
+    {
         return this.physicsData.getGlobalDensity();
     }
 
     @Override
-    public void setGravityScale(float factor) {
+    public void setGravityScale(float factor)
+    {
         this.physicsData.setGravityScale(factor);
     }
 
     @Override
-    public float getGravityScale() {
+    public float getGravityScale()
+    {
         return this.physicsData.getGravityScale();
     }
 
     @Override
-    public void setFriction(float friction) {
+    public void setFriction(float friction)
+    {
         this.physicsData.setGlobalFriction(friction);
     }
 
     @Override
-    public float getFriction() {
+    public float getFriction()
+    {
         return this.physicsData.getGlobalFriction();
     }
 
     @Override
-    public void setRestitution(float elasticity) {
+    public void setRestitution(float elasticity)
+    {
         this.physicsData.setGlobalRestitution(elasticity);
     }
 
     @Override
-    public float getRestitution() {
+    public float getRestitution()
+    {
         return this.physicsData.getGlobalRestitution();
     }
 
     @Override
-    public void setLinearDamping(float damping) {
+    public void setLinearDamping(float damping)
+    {
         this.physicsData.setLinearDamping(damping);
     }
 
     @Override
-    public float getLinearDamping() {
+    public float getLinearDamping()
+    {
         return physicsData.getLinearDamping();
     }
 
     @Override
-    public void setAngularDamping(float damping) {
+    public void setAngularDamping(float damping)
+    {
         physicsData.setAngularDamping(damping);
     }
 
     @Override
-    public float getAngularDamping() {
+    public float getAngularDamping()
+    {
         return physicsData.getAngularDamping();
     }
 
     @Override
-    public float getMass() {
+    public float getMass()
+    {
         Float mass = physicsData.getMass();
         return mass == null ? 0 : mass;
     }
 
     @Override
-    public void applyForce(Vector force) {
+    public void applyForce(Vector force)
+    {
         mountCallbacks.add(physicsHandler -> physicsHandler.applyForce(force));
     }
 
     @Override
-    public void applyTorque(float torque) {
-        mountCallbacks.add(physicsHandler -> physicsHandler.applyTorque(torque));
+    public void applyTorque(float torque)
+    {
+        mountCallbacks
+                .add(physicsHandler -> physicsHandler.applyTorque(torque));
     }
 
     @Override
-    public void applyRotationImpulse(float rotationImpulse) {
-        mountCallbacks.add(physicsHandler -> physicsHandler.applyRotationImpulse(rotationImpulse));
+    public void applyRotationImpulse(float rotationImpulse)
+    {
+        mountCallbacks.add(physicsHandler -> physicsHandler
+                .applyRotationImpulse(rotationImpulse));
     }
 
     @Override
-    public void setType(BodyType type) {
+    public void setType(BodyType type)
+    {
         this.physicsData.setType(type);
     }
 
     @Override
-    public BodyType getType() {
+    public BodyType getType()
+    {
         return physicsData.getType();
     }
 
     @Override
-    public void applyForce(Vector force, Vector globalLocation) {
-        mountCallbacks.add(physicsHandler -> physicsHandler.applyForce(force, globalLocation));
+    public void applyForce(Vector force, Vector globalLocation)
+    {
+        mountCallbacks.add(physicsHandler -> physicsHandler.applyForce(force,
+                globalLocation));
     }
 
     @Override
-    public void applyImpulse(Vector impulse, Vector globalLocation) {
-        mountCallbacks.add(physicsHandler -> physicsHandler.applyImpulse(impulse, globalLocation));
+    public void applyImpulse(Vector impulse, Vector globalLocation)
+    {
+        mountCallbacks.add(physicsHandler -> physicsHandler
+                .applyImpulse(impulse, globalLocation));
     }
 
     @Override
-    public WorldHandler getWorldHandler() {
+    public WorldHandler getWorldHandler()
+    {
         return null;
     }
 
     @Override
-    public Body getBody() {
+    public Body getBody()
+    {
         return null;
     }
 
     @Override
-    public void resetMovement() {
+    public void resetMovement()
+    {
         physicsData.setVelocity(Vector.NULL);
         physicsData.setAngularVelocity(0);
     }
 
     @Override
-    public void setVelocity(Vector metersPerSecond) {
+    public void setVelocity(Vector metersPerSecond)
+    {
         physicsData.setVelocity(metersPerSecond);
     }
 
     @Override
-    public Vector getVelocity() {
+    public Vector getVelocity()
+    {
         return physicsData.getVelocity();
     }
 
     @Override
-    public void setAngularVelocity(float rotationsPerSecond) {
-        physicsData.setAngularVelocity((float) Math.toRadians(rotationsPerSecond * 360));
+    public void setAngularVelocity(float rotationsPerSecond)
+    {
+        physicsData.setAngularVelocity(
+                (float) Math.toRadians(rotationsPerSecond * 360));
     }
 
     @Override
-    public float getAngularVelocity() {
+    public float getAngularVelocity()
+    {
         return physicsData.getAngularVelocity();
     }
 
     @Override
-    public void setRotationLocked(boolean locked) {
+    public void setRotationLocked(boolean locked)
+    {
         this.physicsData.setRotationLocked(locked);
     }
 
     @Override
-    public boolean isRotationLocked() {
+    public boolean isRotationLocked()
+    {
         return this.physicsData.isRotationLocked();
     }
 
     @Override
-    public boolean isGrounded() {
+    public boolean isGrounded()
+    {
         return false;
     }
 
     @Override
-    public void setFixtures(Supplier<List<FixtureData>> shapes) {
+    public void setFixtures(Supplier<List<FixtureData>> shapes)
+    {
         physicsData.setFixtures(shapes);
     }
 
     @Override
-    public PhysicsData getPhysicsData() {
+    public PhysicsData getPhysicsData()
+    {
         return this.physicsData;
     }
 
     @Override
-    public void applyMountCallbacks(PhysicsHandler otherHandler) {
-        for (Consumer<PhysicsHandler> mountCallback : mountCallbacks) {
+    public void applyMountCallbacks(PhysicsHandler otherHandler)
+    {
+        for (Consumer<PhysicsHandler> mountCallback : mountCallbacks)
+        {
             mountCallback.accept(otherHandler);
         }
-
         mountCallbacks.clear();
     }
 
     @Override
-    public List<CollisionEvent<Actor>> getCollisions() {
+    public List<CollisionEvent<Actor>> getCollisions()
+    {
         return Collections.emptyList();
     }
 }
