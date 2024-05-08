@@ -18,20 +18,20 @@ public class KeyFrames implements FrameUpdateListener
     /**
      * Der Consumer, der durch dieses Set an Keyframes animiert wird.
      */
-    private final Consumer<Float> toAnimate;
+    private final Consumer<Double> toAnimate;
 
     /**
      * Locked-Flag. Wird true gesetzt, sobald die Keyframes animieren.
      */
     private boolean isLocked = false;
 
-    private float currentAnimationTime;
+    private double currentAnimationTime;
 
-    private float currentInterpolationEndpoint;
+    private double currentInterpolationEndpoint;
 
-    private KeyFrame<Float> currentKeyframe;
+    private KeyFrame<Double> currentKeyframe;
 
-    private Interpolator<Float> currentInterpolator;
+    private Interpolator<Double> currentInterpolator;
 
     /**
      * Gibt an, ob dieses Set an Keyframes unbegrenzt weitergeht.
@@ -51,13 +51,13 @@ public class KeyFrames implements FrameUpdateListener
      *                  interpoliert wird.
      */
     @API
-    public KeyFrames(Consumer<Float> toAnimate)
+    public KeyFrames(Consumer<Double> toAnimate)
     {
         this.toAnimate = toAnimate;
     }
 
     @API
-    public void addKeyframe(KeyFrame<Float> keyFrame)
+    public void addKeyframe(KeyFrame<Double> keyFrame)
     {
         if (isLocked)
         {
@@ -113,10 +113,10 @@ public class KeyFrames implements FrameUpdateListener
     /**
      * Das Set an Keyframes
      */
-    private final ArrayList<KeyFrame<Float>> keyFrames = new ArrayList<>();
+    private final ArrayList<KeyFrame<Double>> keyFrames = new ArrayList<>();
 
     @Override
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         if (paused)
         {
@@ -166,7 +166,7 @@ public class KeyFrames implements FrameUpdateListener
                     "Ein leeres Keyframe-Set sollte animiert werden.");
         }
         currentAnimationTime = 0;
-        KeyFrame<Float> first = keyFrames.get(0);
+        KeyFrame<Double> first = keyFrames.get(0);
         if (first.getTimecode() != 0)
         {
             // Add Keyframe at t=0 with value of previously first keyframe.
@@ -181,7 +181,7 @@ public class KeyFrames implements FrameUpdateListener
         isLocked = true;
     }
 
-    private void setupKeyframeForInterpolation(KeyFrame<Float> keyFrame)
+    private void setupKeyframeForInterpolation(KeyFrame<Double> keyFrame)
     {
         currentKeyframe = keyFrame;
         if (keyFrame.hasNext())

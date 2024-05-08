@@ -20,7 +20,7 @@ package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.animation.AnimationMode;
 import rocks.friedrich.engine_omega.animation.ValueAnimator;
-import rocks.friedrich.engine_omega.animation.interpolation.LinearFloat;
+import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.physics.FixtureData;
 
@@ -82,19 +82,19 @@ public abstract class Geometry extends Actor
      *         erlaubt
      */
     @API
-    public ValueAnimator<Float> animateColor(float duration, Color color)
+    public ValueAnimator<Double> animateColor(double duration, Color color)
     {
         Color originalColor = getColor();
-        ValueAnimator<Float> animator = new ValueAnimator<>(duration,
+        ValueAnimator<Double> animator = new ValueAnimator<>(duration,
                 progress -> setColor(calculateIntermediateColor(originalColor,
                         color, progress)),
-                new LinearFloat(0, 1), AnimationMode.SINGLE, this);
+                new LinearDouble(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);
         return animator;
     }
 
     private Color calculateIntermediateColor(Color original, Color target,
-            float progress)
+            double progress)
     {
         int r = original.getRed()
                 - (int) ((original.getRed() - target.getRed()) * progress);

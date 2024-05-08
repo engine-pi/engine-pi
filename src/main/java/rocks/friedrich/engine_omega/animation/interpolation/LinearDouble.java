@@ -22,14 +22,14 @@ import rocks.friedrich.engine_omega.animation.Interpolator;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
-public class LinearFloat implements Interpolator<Float>
+public class LinearDouble implements Interpolator<Double>
 {
-    private final float start;
+    private final double start;
 
-    private final float end;
+    private final double end;
 
     @API
-    public LinearFloat(float start, float end)
+    public LinearDouble(double start, double end)
     {
         this.start = start;
         this.end = end;
@@ -37,7 +37,7 @@ public class LinearFloat implements Interpolator<Float>
 
     @Internal
     @Override
-    public Float interpolate(float progress)
+    public Double interpolate(double progress)
     {
         return this.start + (this.end - this.start) * progress;
     }

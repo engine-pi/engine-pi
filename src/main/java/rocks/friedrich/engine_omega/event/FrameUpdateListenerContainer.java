@@ -68,7 +68,7 @@ public interface FrameUpdateListenerContainer
         FrameUpdateListener frameUpdateListener = new FrameUpdateListener()
         {
             @Override
-            public void onFrameUpdate(float time)
+            public void onFrameUpdate(double time)
             {
                 removeFrameUpdateListener(this);
                 runnable.run();
@@ -87,7 +87,7 @@ public interface FrameUpdateListenerContainer
      *         Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener delay(float timeInSeconds, Runnable runnable)
+    default FrameUpdateListener delay(double timeInSeconds, Runnable runnable)
     {
         // Später können wir den Return-Type auf SingleTask ändern, falls das
         // notwendig werden sollte
@@ -108,7 +108,7 @@ public interface FrameUpdateListenerContainer
      *         Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener repeat(float intervalInSeconds,
+    default FrameUpdateListener repeat(double intervalInSeconds,
             Runnable runnable)
     {
         // Später können wir den Return-Type auf PeriodicTask ändern, falls das

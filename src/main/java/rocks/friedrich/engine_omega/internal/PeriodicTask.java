@@ -32,12 +32,12 @@ public final class PeriodicTask implements FrameUpdateListener
     /**
      * Intervall in Sekunden.
      */
-    private float interval;
+    private double interval;
 
     /**
      * Aktuelle Zeit bis zur nächsten Ausführung.
      */
-    private float countdown;
+    private double countdown;
 
     /**
      * Code, der alle X Sekunden ausgeführt wird.
@@ -49,7 +49,7 @@ public final class PeriodicTask implements FrameUpdateListener
      *
      * @param intervalInSeconds Zeit zwischen den Ausführungen in Sekunden.
      */
-    public PeriodicTask(float intervalInSeconds, Runnable runnable)
+    public PeriodicTask(double intervalInSeconds, Runnable runnable)
     {
         setInterval(intervalInSeconds);
         this.countdown = intervalInSeconds;
@@ -63,7 +63,7 @@ public final class PeriodicTask implements FrameUpdateListener
      *                 Sekunden. Muss größer als 0 sein.
      */
     @API
-    public void setInterval(float interval)
+    public void setInterval(double interval)
     {
         if (interval <= 0)
         {
@@ -81,7 +81,7 @@ public final class PeriodicTask implements FrameUpdateListener
      *         Sekunden.
      */
     @API
-    public float getInterval()
+    public double getInterval()
     {
         return interval;
     }
@@ -92,7 +92,7 @@ public final class PeriodicTask implements FrameUpdateListener
      */
     @Override
     @Internal
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         countdown -= deltaSeconds;
         while (this.countdown < 0)

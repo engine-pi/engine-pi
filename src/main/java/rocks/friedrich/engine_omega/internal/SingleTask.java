@@ -27,7 +27,7 @@ import rocks.friedrich.engine_omega.FrameUpdateListener;
  * Ein einfacher Task, der einmalig mit Verzögerung ausgeführt wird.
  *
  * @author Niklas Keller
- * @see FrameUpdateListenerContainer#delay(float, Runnable)
+ * @see FrameUpdateListenerContainer#delay(double, Runnable)
  */
 @Internal
 public final class SingleTask implements FrameUpdateListener
@@ -35,12 +35,12 @@ public final class SingleTask implements FrameUpdateListener
     /**
      * Verzögerung in Sekunden.
      */
-    private final float delay;
+    private final double delay;
 
     /**
      * Aktuelle Zeit bis zur nächsten Ausführung.
      */
-    private float countdown;
+    private double countdown;
 
     /**
      * Code, der nach X Sekunden ausgeführt wird.
@@ -63,7 +63,7 @@ public final class SingleTask implements FrameUpdateListener
      *
      * @param delayInSeconds Zeit zwischen den Ausführungen in Millisekunden.
      */
-    public SingleTask(float delayInSeconds, Runnable runnable,
+    public SingleTask(double delayInSeconds, Runnable runnable,
             FrameUpdateListenerContainer parent)
     {
         this.delay = delayInSeconds;
@@ -79,7 +79,7 @@ public final class SingleTask implements FrameUpdateListener
      *         Sekunden.
      */
     @API
-    public float getDelay()
+    public double getDelay()
     {
         return delay;
     }
@@ -98,7 +98,7 @@ public final class SingleTask implements FrameUpdateListener
      *                     Update vergangen
      */
     @Override
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         countdown -= deltaSeconds;
         if (!done && this.countdown < 0)

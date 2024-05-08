@@ -101,7 +101,7 @@ public class CollisionEvent<E extends Actor>
                 .addContactToBlacklist(contact);
     }
     /*
-     * @API public float getTangentSpeed() { return contact.getTangentSpeed();
+     * @API public double getTangentSpeed() { return contact.getTangentSpeed();
      * // TODO Check how this works, currently returns always 0.0 }
      */
 

@@ -109,7 +109,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      *                     vergangen ist.
      */
     @Internal
-    public final void step(float deltaSeconds,
+    public final void step(double deltaSeconds,
             Function<Runnable, Future<?>> invoker) throws InterruptedException
     {
         synchronized (layers)
@@ -255,7 +255,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
 
     @Internal
     private static void renderJointRectangle(Graphics2D g, Color color,
-            Vector a, Vector b, float pixelPerMeter)
+            Vector a, Vector b, double pixelPerMeter)
     {
         g.setColor(color);
         g.drawRect((int) a.getX() - (JOINT_CIRCLE_RADIUS / 2),
@@ -270,7 +270,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         g.drawString(
                 String.valueOf(
                         a.getDistance(b).divide(pixelPerMeter).getLength()),
-                middle.getX(), middle.getY());
+                (int) middle.getX(), (int) middle.getY());
     }
 
     /**
@@ -372,7 +372,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    public final void invokeFrameUpdateListeners(float deltaSeconds)
+    public final void invokeFrameUpdateListeners(double deltaSeconds)
     {
         frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(deltaSeconds));

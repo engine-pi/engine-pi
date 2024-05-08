@@ -33,9 +33,9 @@ public class ValueAnimator<Value> implements FrameUpdateListener
 
     private final AnimationMode mode;
 
-    private float currentTime = 0;
+    private double currentTime = 0;
 
-    private final float duration;
+    private final double duration;
 
     private boolean complete = false;
 
@@ -48,7 +48,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
 
     private EventListeners<Consumer<Value>> completionListeners = new EventListeners<>();
 
-    public ValueAnimator(float duration, Consumer<Value> consumer,
+    public ValueAnimator(double duration, Consumer<Value> consumer,
             Interpolator<Value> interpolator, AnimationMode mode,
             FrameUpdateListenerContainer parent)
     {
@@ -91,7 +91,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         return paused;
     }
 
-    public ValueAnimator(float duration, Consumer<Value> consumer,
+    public ValueAnimator(double duration, Consumer<Value> consumer,
             Interpolator<Value> interpolator,
             FrameUpdateListenerContainer parent)
     {
@@ -107,7 +107,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      *                 kleiner 0 bzw. größer als 1 sind nicht erlaubt.
      */
     @API
-    public void setProgress(float progress)
+    public void setProgress(double progress)
     {
         if (progress < 0 || progress > 1)
         {
@@ -121,13 +121,13 @@ public class ValueAnimator<Value> implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         if (paused)
         {
             return;
         }
-        float progress;
+        double progress;
         if (!goingBackwards)
         {
             this.currentTime += deltaSeconds;

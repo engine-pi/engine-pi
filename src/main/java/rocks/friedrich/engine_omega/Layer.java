@@ -41,15 +41,15 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
 
     private final List<Actor> actors;
 
-    private float parallaxX = 1;
+    private double parallaxX = 1;
 
-    private float parallaxY = 1;
+    private double parallaxY = 1;
 
-    private float parallaxRotation = 1;
+    private double parallaxRotation = 1;
 
-    private float parallaxZoom = 1;
+    private double parallaxZoom = 1;
 
-    private float timeDistort = 1;
+    private double timeDistort = 1;
 
     /**
      * Bestimmt die Reihenfolge der Layer, kleinere Werte werden zuerst
@@ -162,7 +162,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * @param parallaxY Der Y-Parallaxenwert.
      */
     @API
-    public void setParallaxPosition(float parallaxX, float parallaxY)
+    public void setParallaxPosition(double parallaxX, double parallaxY)
     {
         this.parallaxX = parallaxX;
         this.parallaxY = parallaxY;
@@ -182,7 +182,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * </ul>
      */
     @API
-    public void setParallaxZoom(float parallaxZoom)
+    public void setParallaxZoom(double parallaxZoom)
     {
         this.parallaxZoom = parallaxZoom;
     }
@@ -194,7 +194,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * @param parallaxRotation Die Rotationsparallaxe.
      */
     @API
-    public void setParallaxRotation(float parallaxRotation)
+    public void setParallaxRotation(double parallaxRotation)
     {
         this.parallaxRotation = parallaxRotation;
     }
@@ -216,7 +216,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      *                    </ul>
      */
     @API
-    public void setTimeDistort(float timeDistort)
+    public void setTimeDistort(double timeDistort)
     {
         if (timeDistort < 0)
         {
@@ -334,7 +334,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     @Internal
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
     {
-        float pixelPerMeter = calculatePixelPerMeter();
+        double pixelPerMeter = calculatePixelPerMeter();
         Vector frameSize = Game.getFrameSizeInPixels();
         Vector cameraPositionInPx = new Vector(frameSize.getX() / 2,
                 frameSize.getY() / 2);
@@ -357,7 +357,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     public Bounds getVisibleArea(Vector gameSizeInPixels)
     {
         Vector center = parent.getCamera().getPosition();
-        float pixelPerMeter = calculatePixelPerMeter();
+        double pixelPerMeter = calculatePixelPerMeter();
         return new Bounds(0, 0, gameSizeInPixels.getX() / pixelPerMeter,
                 gameSizeInPixels.getY() / pixelPerMeter) //
                 .withCenterPoint(center);
@@ -370,14 +370,14 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * @param width Die Breite in Meter, auf die die Kamera im Fenster exakt zu
      *              setzen ist.
      *
-     * @see #setVisibleHeight(float, Vector)
+     * @see #setVisibleHeight(double, Vector)
      * @see Game#getFrameSizeInPixels()
      */
     @API
-    public void setVisibleWidth(float width, Vector gameSizeInPixels)
+    public void setVisibleWidth(double width, Vector gameSizeInPixels)
     {
-        float desiredPixelPerMeter = gameSizeInPixels.getX() / width;
-        float desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
+        double desiredPixelPerMeter = gameSizeInPixels.getX() / width;
+        double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
         parent.getCamera().setZoom(desiredZoom);
     }
 
@@ -388,19 +388,19 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * @param height Die Höhe in Meter, auf die die Kamera im Fenster exakt zu
      *               setzen ist.
      *
-     * @see #setVisibleWidth(float, Vector)
+     * @see #setVisibleWidth(double, Vector)
      * @see Game#getFrameSizeInPixels()
      */
     @API
-    public void setVisibleHeight(float height, Vector gameSizeInPixels)
+    public void setVisibleHeight(double height, Vector gameSizeInPixels)
     {
-        float desiredPixelPerMeter = gameSizeInPixels.getY() / height;
-        float desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
+        double desiredPixelPerMeter = gameSizeInPixels.getY() / height;
+        double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
         parent.getCamera().setZoom(desiredZoom);
     }
 
     @API
-    public float calculatePixelPerMeter()
+    public double calculatePixelPerMeter()
     {
         return 1 + (parent.getCamera().getZoom() - 1) * parallaxZoom;
     }
@@ -413,10 +413,10 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
             return;
         }
         Vector position = camera.getPosition();
-        float rotation = -camera.getRotation();
+        double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
         g.translate(width / 2, height / 2);
-        float pixelPerMeter = calculatePixelPerMeter();
+        double pixelPerMeter = calculatePixelPerMeter();
         g.rotate(Math.toRadians(rotation) * parallaxRotation, 0, 0);
         g.translate((-position.getX() * parallaxX) * pixelPerMeter,
                 (position.getY() * parallaxY) * pixelPerMeter);
@@ -458,7 +458,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    public void step(float deltaSeconds)
+    public void step(double deltaSeconds)
     {
         synchronized (worldHandler)
         {
@@ -491,9 +491,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    void invokeFrameUpdateListeners(float deltaSeconds)
+    void invokeFrameUpdateListeners(double deltaSeconds)
     {
-        float scaledSeconds = deltaSeconds * timeDistort;
+        double scaledSeconds = deltaSeconds * timeDistort;
         frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(scaledSeconds));
     }

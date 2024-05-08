@@ -20,7 +20,7 @@ public class Polygon extends Geometry
     /**
      * Die Punkte, die das Polygon beschreiben.
      */
-    private float[] px, py;
+    private double[] px, py;
 
     private int[] scaledPx, scaledPy;
 
@@ -56,8 +56,8 @@ public class Polygon extends Geometry
             throw new RuntimeException(
                     "Der Streckenzug muss mindestens aus 3 Punkten bestehen, um ein gültiges Polygon zu beschreiben.");
         }
-        this.px = new float[points.length];
-        this.py = new float[points.length];
+        this.px = new double[points.length];
+        this.py = new double[points.length];
         this.scaledPx = new int[points.length];
         this.scaledPy = new int[points.length];
         for (int i = 0; i < points.length; i++)
@@ -73,7 +73,7 @@ public class Polygon extends Geometry
      */
     @Internal
     @Override
-    public void render(Graphics2D g, float pixelPerMeter)
+    public void render(Graphics2D g, double pixelPerMeter)
     {
         for (int i = 0; i < scaledPx.length; i++)
         {

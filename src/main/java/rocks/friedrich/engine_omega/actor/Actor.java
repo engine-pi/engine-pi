@@ -19,7 +19,7 @@
 package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.animation.ValueAnimator;
-import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutFloat;
+import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
 import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.collision.CollisionListener;
 import rocks.friedrich.engine_omega.event.*;
@@ -96,7 +96,7 @@ public abstract class Actor
      * <li><code>1.0f</code> entspricht einem undurchsichtigem Bild.</li>
      * </ul>
      */
-    private float opacity = 1;
+    private double opacity = 1;
 
     /**
      * Der JB2D-Handler für dieses spezifische Objekt.
@@ -244,7 +244,7 @@ public abstract class Actor
      * @return Gibt die aktuelle Opacity des Raumes zurück.
      */
     @API
-    public final float getOpacity()
+    public final double getOpacity()
     {
         return opacity;
     }
@@ -261,7 +261,7 @@ public abstract class Actor
      *                </ul>
      */
     @API
-    public final void setOpacity(float opacity)
+    public final void setOpacity(double opacity)
     {
         this.opacity = opacity;
     }
@@ -387,11 +387,11 @@ public abstract class Actor
      * @param pixelPerMeter Pixel pro Meter.
      */
     @Internal
-    public final void renderBasic(Graphics2D g, Bounds r, float pixelPerMeter)
+    public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
     {
         if (visible && this.isWithinBounds(r))
         {
-            float rotation = physicsHandler.getRotation();
+            double rotation = physicsHandler.getRotation();
             Vector position = physicsHandler.getPosition();
             // ____ Pre-Render ____
             AffineTransform transform = g.getTransform();
@@ -405,7 +405,7 @@ public abstract class Actor
             {
                 composite = g.getComposite();
                 g.setComposite(AlphaComposite
-                        .getInstance(AlphaComposite.SRC_OVER, opacity));
+                        .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
             }
             else
             {
@@ -456,7 +456,7 @@ public abstract class Actor
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,
-            float pixelPerMeter)
+            double pixelPerMeter)
     {
         if (shape == null)
         {
@@ -482,7 +482,7 @@ public abstract class Actor
         }
         else if (shape instanceof CircleShape circleShape)
         {
-            float diameter = (circleShape.m_radius * 2);
+            double diameter = (circleShape.m_radius * 2);
             g.drawOval(
                     (int) ((circleShape.m_p.x - circleShape.m_radius)
                             * pixelPerMeter),
@@ -614,7 +614,7 @@ public abstract class Actor
      * @param pixelPerMeter Pixel pro Meter.
      */
     @Internal
-    public abstract void render(Graphics2D g, float pixelPerMeter);
+    public abstract void render(Graphics2D g, double pixelPerMeter);
 
     @Internal
     public final void setPhysicsHandler(PhysicsHandler handler)
@@ -759,7 +759,7 @@ public abstract class Actor
      * @return Die Masse des Ziel-Objekts in <b>[kg]</b>.
      */
     @API
-    public final float getMass()
+    public final double getMass()
     {
         return physicsHandler.getMass();
     }
@@ -771,7 +771,7 @@ public abstract class Actor
      * @param densityInKgProQM die neue Dichte des Objekts in <b>[kg/m^2]</b>
      */
     @API
-    public final void setDensity(float densityInKgProQM)
+    public final void setDensity(double densityInKgProQM)
     {
         physicsHandler.setDensity(densityInKgProQM);
     }
@@ -782,7 +782,7 @@ public abstract class Actor
      * @return Die aktuelle Dichte des Objekts in <b>[kg/m^2]</b>.
      */
     @API
-    public final float getDensity()
+    public final double getDensity()
     {
         return physicsHandler.getDensity();
     }
@@ -793,7 +793,7 @@ public abstract class Actor
      * @param factor Gravitationsfaktor
      */
     @API
-    public final void setGravityScale(float factor)
+    public final void setGravityScale(double factor)
     {
         physicsHandler.setGravityScale(factor);
     }
@@ -804,7 +804,7 @@ public abstract class Actor
      * @return Gravitationsfaktor
      */
     @API
-    public final float getGravityScale()
+    public final double getGravityScale()
     {
         return physicsHandler.getGravityScale();
     }
@@ -818,7 +818,7 @@ public abstract class Actor
      * @see #getFriction()
      */
     @API
-    public final void setFriction(float friction)
+    public final void setFriction(double friction)
     {
         physicsHandler.setFriction(friction);
     }
@@ -828,10 +828,10 @@ public abstract class Actor
      *
      * @return Der Reibungskoeffizient des Objekts. Ist in der Regel (in der
      *         Realität) ein Wert im Bereich <b>[0; 1]</b>.
-     * @see #setFriction(float)
+     * @see #setFriction(double)
      */
     @API
-    public final float getFriction()
+    public final double getFriction()
     {
         return physicsHandler.getFriction();
     }
@@ -840,7 +840,7 @@ public abstract class Actor
      * @param damping Dämpfung der Rotationsgeschwindigkeit
      */
     @API
-    public final void setAngularDamping(float damping)
+    public final void setAngularDamping(double damping)
     {
         physicsHandler.setAngularDamping(damping);
     }
@@ -849,7 +849,7 @@ public abstract class Actor
      * @return Dämpfung der Rotationsgeschwindigkeit
      */
     @API
-    public final float getAngularDamping()
+    public final double getAngularDamping()
     {
         return physicsHandler.getAngularDamping();
     }
@@ -858,7 +858,7 @@ public abstract class Actor
      * @param damping Dämpfung der Geschwindigkeit
      */
     @API
-    public final void setLinearDamping(float damping)
+    public final void setLinearDamping(double damping)
     {
         physicsHandler.setLinearDamping(damping);
     }
@@ -867,7 +867,7 @@ public abstract class Actor
      * @return Dämpfung der Geschwindigkeit
      */
     @API
-    public final float getLinearDamping()
+    public final double getLinearDamping()
     {
         return physicsHandler.getLinearDamping();
     }
@@ -910,12 +910,12 @@ public abstract class Actor
      * Gibt die aktuelle Drehgeschwindigkeit aus.
      *
      * @return Die aktuelle Drehgeschwindigkeit.
-     * @see #setAngularVelocity(float)
+     * @see #setAngularVelocity(double)
      * @see #getVelocity()
      * @see #getAngularDamping()
      */
     @API
-    public final float getAngularVelocity()
+    public final double getAngularVelocity()
     {
         return physicsHandler.getAngularVelocity();
     }
@@ -930,12 +930,12 @@ public abstract class Actor
      *                           s]</b>
      * @see #getAngularVelocity()
      * @see #setVelocity(Vector)
-     * @see #setAngularDamping(float)
+     * @see #setAngularDamping(double)
      */
     @API
-    public final void setAngularVelocity(float rotationsPerSecond)
+    public final void setAngularVelocity(double rotationsPerSecond)
     {
-        if (Float.isNaN(rotationsPerSecond))
+        if (Double.isNaN(rotationsPerSecond))
         {
             return;
         }
@@ -943,9 +943,9 @@ public abstract class Actor
     }
 
     @API
-    public final void setRestitution(float restitution)
+    public final void setRestitution(double restitution)
     {
-        if (Float.isNaN(restitution))
+        if (Double.isNaN(restitution))
         {
             return;
         }
@@ -953,7 +953,7 @@ public abstract class Actor
     }
 
     @API
-    public final float getRestitution()
+    public final double getRestitution()
     {
         return physicsHandler.getRestitution();
     }
@@ -964,9 +964,9 @@ public abstract class Actor
      * @param torque Drehmoment, der auf das Ziel-Objekt wirken soll. In [N*m]
      */
     @API
-    public final void applyTorque(float torque)
+    public final void applyTorque(double torque)
     {
-        if (Float.isNaN(torque))
+        if (Double.isNaN(torque))
         {
             return;
         }
@@ -1136,7 +1136,7 @@ public abstract class Actor
      */
     @API
     public final RopeJoint createRopeJoint(Actor other, Vector relativeAnchor,
-            Vector relativeAnchorOther, float ropeLength)
+            Vector relativeAnchorOther, double ropeLength)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             RopeJointDef ropeJointDef = new RopeJointDef();
@@ -1145,7 +1145,7 @@ public abstract class Actor
             ropeJointDef.localAnchorA.set(relativeAnchor.toVec2());
             ropeJointDef.localAnchorB.set(relativeAnchorOther.toVec2());
             ropeJointDef.collideConnected = true;
-            ropeJointDef.maxLength = ropeLength;
+            ropeJointDef.maxLength = (float) ropeLength;
             return (org.jbox2d.dynamics.joints.RopeJoint) world
                     .createJoint(ropeJointDef);
         }, new RopeJoint());
@@ -1161,7 +1161,7 @@ public abstract class Actor
      */
     @API
     public final PrismaticJoint createPrismaticJoint(Actor other, Vector anchor,
-            float axisAngle)
+            double axisAngle)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             double angleInRadians = Math.toRadians(axisAngle);
@@ -1211,7 +1211,8 @@ public abstract class Actor
             Vector distanceBetweenBothActors = (this.getPosition()
                     .add(anchorRelativeToThis)).getDistance(
                             other.getPosition().add(anchorRelativeToOther));
-            distanceJointDef.length = distanceBetweenBothActors.getLength();
+            distanceJointDef.length = (float) distanceBetweenBothActors
+                    .getLength();
             return (org.jbox2d.dynamics.joints.DistanceJoint) world
                     .createJoint(distanceJointDef);
         }, new DistanceJoint());
@@ -1262,12 +1263,12 @@ public abstract class Actor
      * @param x neue <code>getX</code>-Koordinate
      * @param y neue <code>getY</code>-Koordinate
      * @see #setPosition(Vector)
-     * @see #setCenter(float, float)
-     * @see #setX(float)
-     * @see #setY(float)
+     * @see #setCenter(double, double)
+     * @see #setX(double)
+     * @see #setY(double)
      */
     @API
-    public final void setPosition(float x, float y)
+    public final void setPosition(double x, double y)
     {
         this.setPosition(new Vector(x, y));
     }
@@ -1278,10 +1279,10 @@ public abstract class Actor
      * an die neue.
      *
      * @param position Der neue Zielpunkt
-     * @see #setPosition(float, float)
-     * @see #setCenter(float, float)
-     * @see #setX(float)
-     * @see #setY(float)
+     * @see #setPosition(double, double)
+     * @see #setCenter(double, double)
+     * @see #setX(double)
+     * @see #setY(double)
      */
     @API
     public final void setPosition(Vector position)
@@ -1294,7 +1295,7 @@ public abstract class Actor
      *
      * @param v Der Vector, der die Verschiebung des Objekts angibt.
      * @see Vector
-     * @see #moveBy(float, float)
+     * @see #moveBy(double, double)
      */
     @API
     public final void moveBy(Vector v)
@@ -1316,14 +1317,14 @@ public abstract class Actor
      * @param y Die <code>getY</code>-Koordinate des neuen Mittelpunktes des
      *          Objektes
      * @see #setCenter(Vector)
-     * @see #moveBy(float, float)
+     * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #setPosition(float, float)
+     * @see #setPosition(double, double)
      * @see #setPosition(Vector)
      * @see #getCenter()
      */
     @API
-    public final void setCenter(float x, float y)
+    public final void setCenter(double x, double y)
     {
         this.setCenter(new Vector(x, y));
     }
@@ -1335,10 +1336,10 @@ public abstract class Actor
      * Bounding-Rechtecks durch den Aufruf der Methode <code>getCenter()</code>.
      *
      * @param center Der neue Mittelpunkt des Objekts
-     * @see #setCenter(float, float)
-     * @see #moveBy(float, float)
+     * @see #setCenter(double, double)
+     * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #setPosition(float, float)
+     * @see #setPosition(double, double)
      * @see #setPosition(Vector)
      * @see #getCenter()
      */
@@ -1358,7 +1359,7 @@ public abstract class Actor
      * @see #getPosition()
      */
     @API
-    public final float getX()
+    public final double getX()
     {
         return this.getPosition().getX();
     }
@@ -1369,12 +1370,12 @@ public abstract class Actor
      * aktuellen Position an die neue.
      *
      * @param x neue <code>getX</code>-Koordinate
-     * @see #setPosition(float, float)
-     * @see #setCenter(float, float)
-     * @see #setY(float)
+     * @see #setPosition(double, double)
+     * @see #setCenter(double, double)
+     * @see #setY(double)
      */
     @API
-    public final void setX(float x)
+    public final void setX(double x)
     {
         this.moveBy(x - getX(), 0);
     }
@@ -1389,7 +1390,7 @@ public abstract class Actor
      * @see #getPosition()
      */
     @API
-    public final float getY()
+    public final double getY()
     {
         return this.getPosition().getY();
     }
@@ -1403,15 +1404,15 @@ public abstract class Actor
      * Bei <b>allen</b> Objekten ist die eingegebene Position die linke, untere
      * Ecke des Rechtecks, das die Figur optimal umfasst. Das heißt, dass dies
      * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
-     * Sondermethode {@link #setCenter(float, float)}.
+     * Sondermethode {@link #setCenter(double, double)}.
      *
      * @param y neue <code>getY</code>-Koordinate
-     * @see #setPosition(float, float)
-     * @see #setCenter(float, float)
-     * @see #setX(float)
+     * @see #setPosition(double, double)
+     * @see #setCenter(double, double)
+     * @see #setX(double)
      */
     @API
-    public final void setY(float y)
+    public final void setY(double y)
     {
         this.moveBy(0, y - getY());
     }
@@ -1445,7 +1446,7 @@ public abstract class Actor
      * @see #moveBy(Vector)
      */
     @API
-    public final void moveBy(float dX, float dY)
+    public final void moveBy(double dX, double dY)
     {
         this.moveBy(new Vector(dX, dY));
     }
@@ -1472,7 +1473,7 @@ public abstract class Actor
      *               </ul>
      */
     @API
-    public final void rotateBy(float degree)
+    public final void rotateBy(double degree)
     {
         physicsHandler.rotateBy(degree);
     }
@@ -1486,7 +1487,7 @@ public abstract class Actor
      *         <code>0</code> zurück).
      */
     @API
-    public final float getRotation()
+    public final double getRotation()
     {
         return physicsHandler.getRotation();
     }
@@ -1499,7 +1500,7 @@ public abstract class Actor
      *               werden soll.
      */
     @API
-    public final void setRotation(float degree)
+    public final void setRotation(double degree)
     {
         physicsHandler.setRotation(degree);
     }
@@ -1518,11 +1519,11 @@ public abstract class Actor
      * @return Objekt, das die Animation kontrolliert
      */
     @API
-    public final ValueAnimator<Float> animateParticle(float lifetime)
+    public final ValueAnimator<Double> animateParticle(double lifetime)
     {
         setBodyType(BodyType.PARTICLE);
         setOpacity(1);
-        ValueAnimator<Float> animator = animateOpacity(lifetime, 0);
+        ValueAnimator<Double> animator = animateOpacity(lifetime, 0);
         animator.addCompletionListener(value -> remove());
         return animator;
     }
@@ -1530,7 +1531,7 @@ public abstract class Actor
     /**
      * Animiert die Opacity dieses Actors über einen festen Zeitraum: Beginnend
      * von der aktuellen Opacity, ändert sie sich "smooth" (mit
-     * {@code EaseInOutFloat}-Interpolation) vom aktuellen Opacity-Wert (die
+     * {@code EaseInOutDouble}-Interpolation) vom aktuellen Opacity-Wert (die
      * Ausgabe von {@code getOpacity()}) bis hin zum angegebenen Opacity-Wert.
      *
      * @param time           Die Animationszeit in Sekunden
@@ -1539,21 +1540,21 @@ public abstract class Actor
      * @return Ein {@code ValueAnimator}, der diese Animation ausführt. Der
      *         Animator ist bereits aktiv, es muss nichts an dem Objekt getan
      *         werden, um die Animation auszuführen.
-     * @see rocks.friedrich.engine_omega.animation.interpolation.EaseInOutFloat
+     * @see rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble
      */
     @API
-    public final ValueAnimator<Float> animateOpacity(float time,
-            float toOpacityValue)
+    public final ValueAnimator<Double> animateOpacity(double time,
+            double toOpacityValue)
     {
-        ValueAnimator<Float> animator = new ValueAnimator<>(time,
+        ValueAnimator<Double> animator = new ValueAnimator<>(time,
                 this::setOpacity,
-                new EaseInOutFloat(getOpacity(), toOpacityValue), this);
+                new EaseInOutDouble(getOpacity(), toOpacityValue), this);
         addFrameUpdateListener(animator);
         return animator;
     }
 
     @Internal
-    static void assertPositiveWidthAndHeight(float width, float height)
+    static void assertPositiveWidthAndHeight(double width, double height)
     {
         if (width <= 0 || height <= 0)
         {

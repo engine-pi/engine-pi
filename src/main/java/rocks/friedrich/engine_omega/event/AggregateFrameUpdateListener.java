@@ -47,7 +47,7 @@ public abstract class AggregateFrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         if (!paused)
         {

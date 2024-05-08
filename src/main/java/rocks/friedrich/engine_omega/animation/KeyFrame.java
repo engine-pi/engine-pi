@@ -1,7 +1,7 @@
 package rocks.friedrich.engine_omega.animation;
 
-import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutFloat;
-import rocks.friedrich.engine_omega.animation.interpolation.LinearFloat;
+import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
+import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
@@ -24,7 +24,7 @@ public class KeyFrame<Value extends Number>
     /**
      * Der Zeitpunkt, zu dem der Keyframe den angegebenen Wert markiert.
      */
-    private float timecode;
+    private double timecode;
 
     /**
      * Der Wert, den dieser Keyframe markiert.
@@ -43,7 +43,7 @@ public class KeyFrame<Value extends Number>
      * @param timecode Der Timecode des Keyframes
      */
     @API
-    public KeyFrame(Value value, Type type, float timecode)
+    public KeyFrame(Value value, Type type, double timecode)
     {
         this.value = value;
         this.type = type;
@@ -75,7 +75,7 @@ public class KeyFrame<Value extends Number>
     }
 
     @API
-    public void setTimecode(float timecode)
+    public void setTimecode(double timecode)
     {
         if (timecode < 0)
         {
@@ -87,7 +87,7 @@ public class KeyFrame<Value extends Number>
     }
 
     @API
-    public float getTimecode()
+    public double getTimecode()
     {
         return timecode;
     }
@@ -105,17 +105,17 @@ public class KeyFrame<Value extends Number>
     }
 
     @Internal
-    Interpolator<Float> generateInterpolator(Value destinationValue)
+    Interpolator<Double> generateInterpolator(Value destinationValue)
     {
         switch (type)
         {
         case LINEAR:
-            return new LinearFloat(value.floatValue(),
-                    destinationValue.floatValue());
+            return new LinearDouble(value.doubleValue(),
+                    destinationValue.doubleValue());
 
         case SMOOTHED_SIN:
-            return new EaseInOutFloat(value.floatValue(),
-                    destinationValue.floatValue());
+            return new EaseInOutDouble(value.doubleValue(),
+                    destinationValue.doubleValue());
         }
         throw new RuntimeException("The impossible happened.");
     }

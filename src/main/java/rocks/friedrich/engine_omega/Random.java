@@ -92,22 +92,22 @@ public final class Random
     }
 
     /**
-     * Gibt einen <b>zufälligen</b> <code>float</code>-Wert im Intervall
+     * Gibt einen <b>zufälligen</b> <code>double</code>-Wert im Intervall
      * <code>[0;1)</code> zurück. Die Wahrscheinlichkeit ist für alle möglichen
      * Werte in diesem Intervall gleich groß.
      *
-     * @return Ein <code>float</code>Wert im Intervall <code>[0;1]</code>. Die
+     * @return Ein <code>double</code>Wert im Intervall <code>[0;1]</code>. Die
      *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
      *         groß</i>.
      */
     @API
-    public static float range()
+    public static double range()
     {
-        return ThreadLocalRandom.current().nextFloat();
+        return ThreadLocalRandom.current().nextDouble();
     }
 
     /**
-     * Gibt einen <b>zufälligen</b> <code>float</code>-Wert zwischen einer
+     * Gibt einen <b>zufälligen</b> <code>double</code>-Wert zwischen einer
      * festgelegten Unter- und Obergrenze zurück.<br>
      * Die Wahrscheinlichkeiten für die Werte zwischen Unter- und Obergrenze
      * sind gleich groß.
@@ -121,7 +121,7 @@ public final class Random
      *         groß</i>.
      */
     @API
-    public static float range(float lowerLimit, float upperLimit)
+    public static double range(double lowerLimit, double upperLimit)
     {
         if (lowerLimit == upperLimit)
         {
@@ -129,12 +129,12 @@ public final class Random
         }
         else if (lowerLimit < upperLimit)
         {
-            return lowerLimit + ThreadLocalRandom.current().nextFloat()
+            return lowerLimit + ThreadLocalRandom.current().nextDouble()
                     * (upperLimit - lowerLimit);
         }
         else
         {
-            return upperLimit + ThreadLocalRandom.current().nextFloat()
+            return upperLimit + ThreadLocalRandom.current().nextDouble()
                     * (lowerLimit - upperLimit);
         }
     }

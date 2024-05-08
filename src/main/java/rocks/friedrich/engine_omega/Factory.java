@@ -25,13 +25,9 @@ public final class Factory
         // no instances
     }
 
-    public static Vector vector(float x, float y)
-    {
-        return new Vector(x, y);
-    }
-
     public static Vector vector(double x, double y)
     {
         return new Vector(x, y);
     }
+
 }

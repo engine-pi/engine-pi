@@ -48,7 +48,7 @@ public class WorldHandler implements ContactListener
 
     public static final int CATEGORY_PARTICLE = 16;
 
-    public static final float STEP_TIME = 8f / 1000;
+    public static final double STEP_TIME = 8f / 1000;
 
     /**
      * Das Layer, zu dem der WorldHandler gehört.
@@ -83,7 +83,7 @@ public class WorldHandler implements ContactListener
      */
     private final Collection<FixturePair> contactsToIgnore = new ArrayList<>();
 
-    private float simulationAccumulator = 0;
+    private double simulationAccumulator = 0;
 
     /**
      * Erstellt eine neue standardisierte Physik ohne Schwerkraft.
@@ -138,7 +138,7 @@ public class WorldHandler implements ContactListener
         }
     }
 
-    public void step(float deltaSeconds)
+    public void step(double deltaSeconds)
     {
         if (worldPaused)
         {
@@ -154,7 +154,7 @@ public class WorldHandler implements ContactListener
                 while (simulationAccumulator >= STEP_TIME)
                 {
                     simulationAccumulator -= STEP_TIME;
-                    this.world.step(STEP_TIME, 6, 3);
+                    this.world.step((float) STEP_TIME, 6, 3);
                 }
             }
         }

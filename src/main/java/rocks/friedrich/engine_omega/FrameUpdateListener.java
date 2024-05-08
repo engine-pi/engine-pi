@@ -16,5 +16,5 @@ public interface FrameUpdateListener
      *                     Update vergangen
      */
     @API
-    void onFrameUpdate(float deltaSeconds);
+    void onFrameUpdate(double deltaSeconds);
 }

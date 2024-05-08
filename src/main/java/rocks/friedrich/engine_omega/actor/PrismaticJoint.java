@@ -23,9 +23,9 @@ import rocks.friedrich.engine_omega.internal.annotations.API;
 public final class PrismaticJoint
         extends Joint<org.jbox2d.dynamics.joints.PrismaticJoint>
 {
-    private float lowerLimit;
+    private double lowerLimit;
 
-    private float upperLimit;
+    private double upperLimit;
 
     private boolean motorEnabled;
 
@@ -34,69 +34,69 @@ public final class PrismaticJoint
     /**
      * Geschwindigkeit in m / s
      */
-    private float motorSpeed;
+    private double motorSpeed;
 
-    private float maximumMotorForce;
+    private double maximumMotorForce;
 
     @API
-    public void setMaximumMotorForce(float maximumMotorForce)
+    public void setMaximumMotorForce(double maximumMotorForce)
     {
         this.maximumMotorForce = maximumMotorForce;
         this.motorEnabled = true;
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint != null)
         {
-            joint.setMaxMotorForce(maximumMotorForce);
+            joint.setMaxMotorForce((float) maximumMotorForce);
             joint.enableMotor(true);
         }
     }
 
     @API
-    public float getMaximumMotorForce()
+    public double getMaximumMotorForce()
     {
         return maximumMotorForce;
     }
 
     @API
-    public float getLowerLimit()
+    public double getLowerLimit()
     {
         return lowerLimit;
     }
 
     @API
-    public void setLowerLimit(float lowerLimit)
+    public void setLowerLimit(double lowerLimit)
     {
         this.lowerLimit = lowerLimit;
         this.limitEnabled = true;
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint != null)
         {
-            joint.setLimits(lowerLimit, upperLimit);
+            joint.setLimits((float) lowerLimit, (float) upperLimit);
             joint.enableLimit(true);
         }
     }
 
     @API
-    public float getUpperLimit()
+    public double getUpperLimit()
     {
         return upperLimit;
     }
 
     @API
-    public void setUpperLimit(float upperLimit)
+    public void setUpperLimit(double upperLimit)
     {
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint != null)
         {
-            joint.setLimits(lowerLimit, upperLimit);
+            joint.setLimits((float) lowerLimit, (float) upperLimit);
             joint.enableLimit(true);
         }
     }
 
     @API
-    public float getMotorSpeed()
+    public double getMotorSpeed()
     {
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint != null)
@@ -107,14 +107,14 @@ public final class PrismaticJoint
     }
 
     @API
-    public void setMotorSpeed(float motorSpeed)
+    public void setMotorSpeed(double motorSpeed)
     {
         this.motorSpeed = motorSpeed;
         this.motorEnabled = true;
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint != null)
         {
-            joint.setMotorSpeed(motorSpeed);
+            joint.setMotorSpeed((float) motorSpeed);
             joint.enableMotor(true);
         }
     }
@@ -154,14 +154,14 @@ public final class PrismaticJoint
     }
 
     @API
-    public void setLimits(float lower, float upper)
+    public void setLimits(double lower, double upper)
     {
         setLowerLimit(lower);
         setUpperLimit(upper);
     }
 
     @API
-    public float getTranslation()
+    public double getTranslation()
     {
         org.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
         if (joint == null)
@@ -175,9 +175,9 @@ public final class PrismaticJoint
     protected void updateCustomProperties(
             org.jbox2d.dynamics.joints.PrismaticJoint joint)
     {
-        joint.setMotorSpeed(motorSpeed);
-        joint.setMaxMotorForce(maximumMotorForce);
-        joint.setLimits(lowerLimit, upperLimit);
+        joint.setMotorSpeed((float) motorSpeed);
+        joint.setMaxMotorForce((float) maximumMotorForce);
+        joint.setLimits((float) lowerLimit, (float) upperLimit);
         joint.enableMotor(motorEnabled);
         joint.enableLimit(limitEnabled);
     }

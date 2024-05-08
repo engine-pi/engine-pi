@@ -58,7 +58,7 @@ public final class GameLogic
 
     private static final int DEBUG_TEXT_SIZE = 12;
 
-    private static final float DESIRED_FRAME_DURATION = 0.016f;
+    private static final double DESIRED_FRAME_DURATION = 0.016f;
 
     private static final int NANOSECONDS_PER_SECOND = 1000000000;
 
@@ -76,7 +76,7 @@ public final class GameLogic
      */
     private final Queue<Runnable> dispatchableQueue = new ConcurrentLinkedQueue<>();
 
-    private float frameDuration;
+    private double frameDuration;
 
     public GameLogic(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
@@ -101,7 +101,7 @@ public final class GameLogic
             Scene scene = this.currentScene.get();
             try
             {
-                float deltaSeconds = Math.min(2 * DESIRED_FRAME_DURATION,
+                double deltaSeconds = Math.min(2 * DESIRED_FRAME_DURATION,
                         frameDuration);
                 scene.step(deltaSeconds, threadPoolExecutor::submit);
                 scene.getCamera().onFrameUpdate();
@@ -114,7 +114,7 @@ public final class GameLogic
                 }
                 render();
                 frameEnd = System.nanoTime();
-                float duration = (float) (frameEnd - frameStart)
+                double duration = (double) (frameEnd - frameStart)
                         / NANOSECONDS_PER_SECOND;
                 if (duration < DESIRED_FRAME_DURATION)
                 {
@@ -131,7 +131,7 @@ public final class GameLogic
                     }
                 }
                 frameEnd = System.nanoTime();
-                frameDuration = ((float) (frameEnd - frameStart)
+                frameDuration = ((double) (frameEnd - frameStart)
                         / NANOSECONDS_PER_SECOND);
                 frameStart = frameEnd;
             }
@@ -209,16 +209,16 @@ public final class GameLogic
         AffineTransform pre = g.getTransform();
         Camera camera = scene.getCamera();
         Vector position = camera.getPosition();
-        float rotation = -camera.getRotation();
+        double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
         g.translate(width / 2, height / 2);
-        float pixelPerMeter = camera.getZoom();
+        double pixelPerMeter = camera.getZoom();
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-position.getX() * pixelPerMeter,
                 position.getY() * pixelPerMeter);
         int gridSizeInMeters = Math.round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
-        float gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
-        float gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
+        double gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
+        double gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
         {
             int windowSizeInPixels = Math.max(width, height);
@@ -251,8 +251,8 @@ public final class GameLogic
             {
                 for (int y = startY; y <= stopY; y += gridSizeInMeters)
                 {
-                    g.drawString(x + " / " + -y, x * gridSizeFactor + 5,
-                            y * gridSizeFactor - 5);
+                    g.drawString(x + " / " + -y,(int)( x * gridSizeFactor + 5),
+                            (int) (y * gridSizeFactor - 5));
                 }
             }
         }
@@ -267,7 +267,7 @@ public final class GameLogic
     @Internal
     private void renderInfo(Graphics2D g, DebugInfo debugInfo)
     {
-        float frameDuration = debugInfo.getFrameDuration();
+        double frameDuration = debugInfo.getFrameDuration();
         int bodyCount = debugInfo.getBodyCount();
         Font displayFont = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
         FontMetrics fm = g.getFontMetrics(displayFont);

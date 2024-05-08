@@ -4,17 +4,17 @@ import rocks.friedrich.engine_omega.animation.Interpolator;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
-public class EaseInOutFloat implements Interpolator<Float>
+public class EaseInOutDouble implements Interpolator<Double>
 {
     /**
      * Startpunkt. Interpolationswert bei t=0
      */
-    private final float start;
+    private final double start;
 
     /**
      * Endpunkt. Interpolationswert bei t=1
      */
-    private final float end;
+    private final double end;
 
     /**
      * Erstellt einen EaseInOut-Interpolator. Interpoliert "smooth" zwischen den
@@ -26,7 +26,7 @@ public class EaseInOutFloat implements Interpolator<Float>
      * @param end   Der Endpunkt der Interpolation.
      */
     @API
-    public EaseInOutFloat(float start, float end)
+    public EaseInOutDouble(double start, double end)
     {
         this.start = start;
         this.end = end;
@@ -34,9 +34,9 @@ public class EaseInOutFloat implements Interpolator<Float>
 
     @Internal
     @Override
-    public Float interpolate(float progress)
+    public Double interpolate(double progress)
     {
-        return (float) ((Math.sin((double) progress * Math.PI - Math.PI / 2)
+        return (double) ((Math.sin((double) progress * Math.PI - Math.PI / 2)
                 + 1) / 2) * (this.end - this.start) + this.start;
     }
 }

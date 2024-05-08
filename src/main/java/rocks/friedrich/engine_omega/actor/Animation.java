@@ -53,11 +53,11 @@ public class Animation extends Actor implements FrameUpdateListener
 {
     private final AnimationFrame[] frames;
 
-    private final float width;
+    private final double width;
 
-    private final float height;
+    private final double height;
 
-    private transient float currentTime;
+    private transient double currentTime;
 
     private transient int currentIndex;
 
@@ -66,7 +66,7 @@ public class Animation extends Actor implements FrameUpdateListener
      */
     private final EventListeners<Runnable> onCompleteListeners = new EventListeners<>();
 
-    private Animation(AnimationFrame[] frames, float width, float height)
+    private Animation(AnimationFrame[] frames, double width, double height)
     {
         super(() -> {
             if (frames.length < 1)
@@ -120,7 +120,7 @@ public class Animation extends Actor implements FrameUpdateListener
      * @see #getHeight()
      */
     @API
-    public float getWidth()
+    public double getWidth()
     {
         return this.width;
     }
@@ -132,7 +132,7 @@ public class Animation extends Actor implements FrameUpdateListener
      * @see #getWidth()
      */
     @API
-    public float getHeight()
+    public double getHeight()
     {
         return this.height;
     }
@@ -154,7 +154,7 @@ public class Animation extends Actor implements FrameUpdateListener
 
     @Internal
     @Override
-    public void onFrameUpdate(float deltaSeconds)
+    public void onFrameUpdate(double deltaSeconds)
     {
         this.currentTime += deltaSeconds;
         AnimationFrame currentFrame = this.frames[currentIndex];
@@ -174,15 +174,15 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     @Override
-    public void render(Graphics2D g, float pixelPerMeter)
+    public void render(Graphics2D g, double pixelPerMeter)
     {
         this.frames[currentIndex].render(g, width * pixelPerMeter,
                 height * pixelPerMeter, false, false);
     }
 
     @API
-    public static Animation createFromSpritesheet(float frameDuration,
-            String filepath, int x, int y, float width, float height)
+    public static Animation createFromSpritesheet(double frameDuration,
+            String filepath, int x, int y, double width, double height)
     {
         if (frameDuration <= 0)
         {
@@ -218,8 +218,8 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     @API
-    public static Animation createFromImages(float frameDuration, float width,
-            float height, String... filepaths)
+    public static Animation createFromImages(double frameDuration, double width,
+            double height, String... filepaths)
     {
         if (frameDuration <= 0)
         {
@@ -250,8 +250,8 @@ public class Animation extends Actor implements FrameUpdateListener
      *         beginnen.
      */
     @API
-    public static Animation createFromImagesPrefix(float frameDuration,
-            float width, float height, String directoryPath, String prefix)
+    public static Animation createFromImagesPrefix(double frameDuration,
+            double width, double height, String directoryPath, String prefix)
     {
         // Liste mit den Pfaden aller qualifizierten Dateien
         ArrayList<String> allPaths = new ArrayList<>();
@@ -295,8 +295,8 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     @API
-    public static Animation createFromAnimatedGif(String filepath, float width,
-            float height)
+    public static Animation createFromAnimatedGif(String filepath, double width,
+            double height)
     {
         GifDecoder gifDecoder = new GifDecoder();
         gifDecoder.read(filepath);

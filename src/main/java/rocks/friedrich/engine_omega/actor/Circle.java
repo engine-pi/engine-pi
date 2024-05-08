@@ -35,14 +35,14 @@ import java.awt.Graphics2D;
  */
 public class Circle extends Geometry
 {
-    private float diameter;
+    private double diameter;
 
     /**
      * Konstruktor.
      *
      * @param diameter Durchmesser des Kreises
      */
-    public Circle(float diameter)
+    public Circle(double diameter)
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
@@ -55,7 +55,7 @@ public class Circle extends Geometry
      * @return Durchmesser des Kreises.
      */
     @API
-    public float getDiameter()
+    public double getDiameter()
     {
         return diameter;
     }
@@ -66,13 +66,13 @@ public class Circle extends Geometry
      * @return Radius des Kreises.
      */
     @API
-    public float getRadius()
+    public double getRadius()
     {
         return diameter / 2;
     }
 
     @Override
-    public void render(Graphics2D g, float pixelPerMeter)
+    public void render(Graphics2D g, double pixelPerMeter)
     {
         g.setColor(getColor());
         g.fillOval(0, -(int) (diameter * pixelPerMeter),
@@ -87,7 +87,7 @@ public class Circle extends Geometry
      * @param radius Der neue Radius des Kreises.
      */
     @API
-    public void resetRadius(float radius)
+    public void resetRadius(double radius)
     {
         this.diameter = 2 * radius;
         FixtureData[] fixtureData = this.getPhysicsHandler().getPhysicsData()
@@ -98,10 +98,10 @@ public class Circle extends Geometry
     }
 
     @Internal
-    private static Shape createCircleShape(float diameter)
+    private static Shape createCircleShape(double diameter)
     {
         CircleShape shape = new CircleShape();
-        shape.m_radius = diameter / 2;
+        shape.m_radius = (float) diameter / 2;
         shape.m_p.set(shape.m_radius, shape.m_radius);
         return shape;
     }
