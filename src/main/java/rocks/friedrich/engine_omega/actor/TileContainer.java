@@ -43,7 +43,8 @@ public class TileContainer extends Actor implements TileMap
      * @see #setTile(int, int, Tile)
      */
     @API
-    public TileContainer(int numX, int numY, double tileWidth, double tileHeight)
+    public TileContainer(int numX, int numY, double tileWidth,
+            double tileHeight)
     {
         super(() -> FixtureBuilder.createSimpleRectangularFixture(
                 tileWidth * numX, tileHeight * numY));

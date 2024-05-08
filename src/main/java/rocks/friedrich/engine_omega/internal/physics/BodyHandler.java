@@ -121,7 +121,7 @@ public class BodyHandler implements PhysicsHandler
         {
             worldHandler.assertNoWorldStep();
             body.setTransform(body.getPosition(),
-                    body.getAngle() + (double) Math.toRadians(degree));
+                    (float) (body.getAngle() + Math.toRadians(degree)));
         }
     }
 
@@ -132,7 +132,7 @@ public class BodyHandler implements PhysicsHandler
         {
             worldHandler.assertNoWorldStep();
             body.setTransform(body.getPosition(),
-                    (double) Math.toRadians((double) degree));
+                    (float) Math.toRadians(degree));
         }
     }
 
@@ -143,7 +143,7 @@ public class BodyHandler implements PhysicsHandler
         {
             for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
             {
-                fixture.setDensity(density);
+                fixture.setDensity((float) density);
             }
             body.resetMassData();
         }
@@ -158,7 +158,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public void setGravityScale(double factor)
     {
-        body.setGravityScale(factor);
+        body.setGravityScale((float) factor);
         body.setAwake(true);
     }
 
@@ -175,7 +175,7 @@ public class BodyHandler implements PhysicsHandler
         {
             for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
             {
-                fixture.setFriction(friction);
+                fixture.setFriction((float) friction);
             }
         }
     }
@@ -193,7 +193,7 @@ public class BodyHandler implements PhysicsHandler
         {
             for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
             {
-                fixture.setRestitution(elasticity);
+                fixture.setRestitution((float) elasticity);
             }
         }
     }
@@ -209,7 +209,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            body.setLinearDamping(damping);
+            body.setLinearDamping((float) damping);
         }
     }
 
@@ -224,7 +224,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            body.setAngularDamping(damping);
+            body.setAngularDamping((float) damping);
         }
     }
 
@@ -254,7 +254,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            body.applyTorque(torque);
+            body.applyTorque((float) torque);
         }
     }
 
@@ -263,7 +263,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            body.applyAngularImpulse(rotationImpulse);
+            body.applyAngularImpulse((float) rotationImpulse);
         }
     }
 
@@ -377,7 +377,7 @@ public class BodyHandler implements PhysicsHandler
         synchronized (worldHandler)
         {
             body.setAngularVelocity(
-                    (double) Math.toRadians(rotationsPerSecond * 360));
+                    (float) Math.toRadians(rotationsPerSecond * 360));
         }
     }
 
@@ -405,10 +405,10 @@ public class BodyHandler implements PhysicsHandler
     private AABB calculateBodyAABB()
     {
         AABB bodyBounds = new AABB();
-        bodyBounds.lowerBound.x = Double.MAX_VALUE;
-        bodyBounds.lowerBound.y = Double.MAX_VALUE;
-        bodyBounds.upperBound.x = -Double.MAX_VALUE;
-        bodyBounds.upperBound.y = -Double.MAX_VALUE;
+        bodyBounds.lowerBound.x = Float.MAX_VALUE;
+        bodyBounds.lowerBound.y = Float.MAX_VALUE;
+        bodyBounds.upperBound.x = -Float.MAX_VALUE;
+        bodyBounds.upperBound.y = -Float.MAX_VALUE;
         for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
         {
             // TODO Include chain shapes (more than one child)
@@ -433,7 +433,7 @@ public class BodyHandler implements PhysicsHandler
         testAABB.lowerBound.set(bodyBounds.lowerBound.x,
                 bodyBounds.lowerBound.y);
         testAABB.upperBound.set(bodyBounds.upperBound.x,
-                bodyBounds.lowerBound.y + epsilon);
+                (float) (bodyBounds.lowerBound.y + epsilon));
         Fixture[] groundCandidates = worldHandler.queryAABB(testAABB);
         for (Fixture fixture : groundCandidates)
         {

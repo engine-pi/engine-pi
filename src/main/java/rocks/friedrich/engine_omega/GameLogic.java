@@ -216,7 +216,8 @@ public final class GameLogic
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-position.getX() * pixelPerMeter,
                 position.getY() * pixelPerMeter);
-        int gridSizeInMeters = Math.round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
+        int gridSizeInMeters = (int) Math
+                .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
         double gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
         double gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
@@ -251,7 +252,7 @@ public final class GameLogic
             {
                 for (int y = startY; y <= stopY; y += gridSizeInMeters)
                 {
-                    g.drawString(x + " / " + -y,(int)( x * gridSizeFactor + 5),
+                    g.drawString(x + " / " + -y, (int) (x * gridSizeFactor + 5),
                             (int) (y * gridSizeFactor - 5));
                 }
             }

@@ -29,5 +29,4 @@ public final class Factory
     {
         return new Vector(x, y);
     }
-
 }
