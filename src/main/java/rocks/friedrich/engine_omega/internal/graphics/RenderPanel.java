@@ -48,7 +48,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
     }
 
     /**
-     * Muss aufgerufen werden, nachdem das Fenster isVisible ist, um die
+     * Muss aufgerufen werden, nachdem das Fenster sichtbar ist, um die
      * BufferStrategy zu erzeugen.
      */
     public void allocateBuffers()

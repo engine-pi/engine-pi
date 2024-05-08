@@ -1,4 +1,4 @@
 {
   "java.configuration.updateBuildConfiguration": "automatic",
-  "java.format.settings.url": ".eclipse-formatter/school.xml"
+  "java.format.settings.url": ".formatter/school.xml"
 }
