@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.time;
+package rocks.friedrich.engine_omega.examples.event;
 
 import java.awt.event.KeyEvent;
 
@@ -62,7 +62,7 @@ public class PerodicTaskExample extends Scene
 
         public void stop()
         {
-            removeFrameUpdateListener(task);
+            task.unregister();
             task = null;
         }
     }

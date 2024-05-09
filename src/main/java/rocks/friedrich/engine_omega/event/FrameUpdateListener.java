@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.internal.annotations.API;
 

@@ -18,7 +18,6 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
@@ -26,8 +25,9 @@ import rocks.friedrich.engine_omega.internal.annotations.Internal;
  * Eine periodische Aufgabe, die regelmäßig ausgeführt wird.
  *
  * @author Niklas Keller
+ * @author Josef Friedrich
  *
- * @see rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer
+ * @see rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer#repeat(double, Runnable)
  */
 public final class PeriodicTask implements FrameUpdateListener
 {
@@ -72,6 +72,8 @@ public final class PeriodicTask implements FrameUpdateListener
      *                          wurde. Diese Referenz wird dazu verwendet, um
      *                          die periodische Ausführung abzumelden und
      *                          dadurch zu stoppen.
+     *
+     * @author Josef Friedrich
      */
     public PeriodicTask(double intervalInSeconds, Runnable runnable,
             FrameUpdateListenerContainer container)
@@ -129,6 +131,8 @@ public final class PeriodicTask implements FrameUpdateListener
 
     /**
      * Pausiert die periodische Ausführung der Aufgabe.
+     *
+     * @author Josef Friedrich
      */
     public void pause()
     {
@@ -137,6 +141,8 @@ public final class PeriodicTask implements FrameUpdateListener
 
     /**
      * Führt die periodische Aufgabe fort.
+     *
+     * @author Josef Friedrich
      */
     public void resume()
     {
@@ -146,6 +152,8 @@ public final class PeriodicTask implements FrameUpdateListener
     /**
      * Schaltet je nach Zustand zwischen den Zuständen pausiert und nicht
      * pausiert hin und her.
+     *
+     * @author Josef Friedrich
      */
     public void toggle()
     {
@@ -162,6 +170,8 @@ public final class PeriodicTask implements FrameUpdateListener
     /**
      * Stoppt die periodische Ausführung. Sie kann dann nicht mehr neu gestartet
      * werden.
+     *
+     * @author Josef Friedrich
      */
     public void unregister()
     {

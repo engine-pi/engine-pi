@@ -18,7 +18,6 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**

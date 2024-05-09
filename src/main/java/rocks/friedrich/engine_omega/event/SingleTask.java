@@ -18,7 +18,6 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
@@ -26,6 +25,7 @@ import rocks.friedrich.engine_omega.internal.annotations.Internal;
  * Ein einfacher Task, der einmalig mit Verzögerung ausgeführt wird.
  *
  * @author Niklas Keller
+ *
  * @see FrameUpdateListenerContainer#delay(double, Runnable)
  */
 @Internal
