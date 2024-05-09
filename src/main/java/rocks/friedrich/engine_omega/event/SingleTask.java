@@ -16,12 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal;
+package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
+import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 
 /**
  * Ein einfacher Task, der einmalig mit Verzögerung ausgeführt wird.

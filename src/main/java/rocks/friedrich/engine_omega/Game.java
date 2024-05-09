@@ -34,8 +34,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.swing.JOptionPane;
 
 import rocks.friedrich.engine_omega.event.EventListeners;
-import rocks.friedrich.engine_omega.event.KeyListener;
-import rocks.friedrich.engine_omega.event.KeyListenerContainer;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.internal.annotations.API;

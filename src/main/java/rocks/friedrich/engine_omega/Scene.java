@@ -18,15 +18,6 @@
  */
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.event.*;
-import rocks.friedrich.engine_omega.internal.Bounds;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
-import org.jbox2d.common.Vec2;
-import org.jbox2d.dynamics.joints.*;
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -38,6 +29,30 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
+
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.joints.DistanceJoint;
+import org.jbox2d.dynamics.joints.Joint;
+import org.jbox2d.dynamics.joints.PrismaticJoint;
+import org.jbox2d.dynamics.joints.RevoluteJoint;
+import org.jbox2d.dynamics.joints.RopeJoint;
+
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.event.EventListenerHelper;
+import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
+import rocks.friedrich.engine_omega.event.KeyListener;
+import rocks.friedrich.engine_omega.event.KeyListenerContainer;
+import rocks.friedrich.engine_omega.event.MouseButton;
+import rocks.friedrich.engine_omega.event.MouseClickListener;
+import rocks.friedrich.engine_omega.event.MouseClickListenerContainer;
+import rocks.friedrich.engine_omega.event.MouseWheelEvent;
+import rocks.friedrich.engine_omega.event.MouseWheelListener;
+import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
+import rocks.friedrich.engine_omega.internal.Bounds;
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
 
 public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer

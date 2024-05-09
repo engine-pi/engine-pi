@@ -18,9 +18,10 @@
  */
 package rocks.friedrich.engine_omega;
 
+import org.jbox2d.common.Vec2;
+
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import org.jbox2d.common.Vec2;
 
 /**
  * Beschreibt einen zweidimensionalen Vektor auf der Zeichenebene. Diese Klasse

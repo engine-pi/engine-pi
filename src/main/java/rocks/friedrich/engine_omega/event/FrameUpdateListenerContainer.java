@@ -18,10 +18,8 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.internal.PeriodicTask;
-import rocks.friedrich.engine_omega.internal.SingleTask;
-import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.FrameUpdateListener;
+import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**
  * Die Schnittstelle {@link FrameUpdateListenerContainer} definiert Methoden zur
@@ -104,16 +102,14 @@ public interface FrameUpdateListenerContainer
      * @param runnable          Wird immer wieder nach Ablauf der Verzögerung
      *                          ausgeführt
      *
-     * @return Listener, der manuell abgemeldet werden kann, falls die
-     *         Ausführung abgebrochen werden soll.
+     * @return Ein Objekt der Klasse {@link PeriodicTask}, der manuell
+     *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
+     *         soll.
      */
     @API
-    default FrameUpdateListener repeat(double intervalInSeconds,
-            Runnable runnable)
+    default PeriodicTask repeat(double intervalInSeconds, Runnable runnable)
     {
-        // Später können wir den Return-Type auf PeriodicTask ändern, falls das
-        // notwendig werden sollte
-        FrameUpdateListener periodicTask = new PeriodicTask(intervalInSeconds,
+        PeriodicTask periodicTask = new PeriodicTask(intervalInSeconds,
                 runnable);
         addFrameUpdateListener(periodicTask);
         return periodicTask;

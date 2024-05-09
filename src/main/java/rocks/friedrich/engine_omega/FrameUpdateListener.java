@@ -13,7 +13,7 @@ public interface FrameUpdateListener
      * aufgerufen.
      *
      * @param deltaSeconds Die Zeit <b>in Sekunden</b>, die seit dem letzten
-     *                     Update vergangen
+     *                     Update vergangen ist.
      */
     @API
     void onFrameUpdate(double deltaSeconds);
