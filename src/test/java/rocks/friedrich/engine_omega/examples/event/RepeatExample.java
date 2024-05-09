@@ -1,11 +1,11 @@
-package rocks.friedrich.engine_omega.examples.time;
+package rocks.friedrich.engine_omega.examples.event;
 
 import java.awt.event.KeyEvent;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
+import rocks.friedrich.engine_omega.event.PeriodicTask;
 
 public class RepeatExample extends Scene
 {
@@ -18,7 +18,7 @@ public class RepeatExample extends Scene
     {
         private int counter = 0;
 
-        FrameUpdateListener listener;
+        PeriodicTask task;
 
         public CounterText()
         {
@@ -28,7 +28,7 @@ public class RepeatExample extends Scene
             addKeyListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
                 {
-                    if (listener == null)
+                    if (task == null)
                     {
                         start();
                     }
@@ -42,7 +42,7 @@ public class RepeatExample extends Scene
 
         public void start()
         {
-            listener = repeat(1, () -> {
+            task = repeat(1, () -> {
                 counter++;
                 setContent(String.valueOf(counter));
             });
@@ -50,8 +50,8 @@ public class RepeatExample extends Scene
 
         public void stop()
         {
-            removeFrameUpdateListener(listener);
-            listener = null;
+            task.unregister();
+            task = null;
         }
     }
 

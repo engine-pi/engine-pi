@@ -20,8 +20,8 @@ package rocks.friedrich.engine_omega.animation;
 
 import java.util.function.Consumer;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 

@@ -18,7 +18,6 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**
@@ -110,7 +109,7 @@ public interface FrameUpdateListenerContainer
     default PeriodicTask repeat(double intervalInSeconds, Runnable runnable)
     {
         PeriodicTask periodicTask = new PeriodicTask(intervalInSeconds,
-                runnable);
+                runnable, this);
         addFrameUpdateListener(periodicTask);
         return periodicTask;
     }

@@ -42,7 +42,6 @@ import org.jbox2d.dynamics.joints.RevoluteJointDef;
 import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.Vector;
@@ -52,6 +51,7 @@ import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.collision.CollisionListener;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
 import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
 import rocks.friedrich.engine_omega.event.KeyListener;
 import rocks.friedrich.engine_omega.event.KeyListenerContainer;

@@ -3,7 +3,6 @@ package rocks.friedrich.engine_omega.examples;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Random;
 import rocks.friedrich.engine_omega.Scene;
@@ -12,6 +11,7 @@ import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.collision.CollisionListener;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
 /**

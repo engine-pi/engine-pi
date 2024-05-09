@@ -1,10 +1,9 @@
-package rocks.friedrich.engine_omega.examples.listeners;
+package rocks.friedrich.engine_omega.examples.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
-
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Layer;
 
 public class FrameUpdateListenerExample extends Scene

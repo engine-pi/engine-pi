@@ -5,7 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-<!-- insertion marker -->
+## [v0.4.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.4.0) - 2024-05-09
+
+<small>[Compare with v0.3.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.3.0...v0.4.0)</small>
+
+### Changed
+
+- Combine all event specific classes in the package event. `PeriodicTask`,
+  `SingleTask` and `FrameUpdateListener` are now located in the package `event`
+  ([5f22fd3](https://github.com/Josef-Friedrich/engine-omega/commit/5f22fd3763a7c5ca99626a93694d5cfb07c7f230) by Josef Friedrich)
+- Extend class `PeriodicTask`
+  ([986e951](https://github.com/Josef-Friedrich/engine-omega/commit/986e951e79753c32f72de35d41dcf2e64267b352) by Josef Friedrich)
+- Rewrite global static keyboard listener. `Game.addKeyListener()` and `Game.removeKeyListener()` behave now
+  like `scene.addKeyListener()` or `actor.addKeyListener()`.
+  ([21574f4](https://github.com/Josef-Friedrich/engine-omega/commit/21574f482e689d1a06b4700f475ddc1037fb0317) by Josef Friedrich)
+
 ## [v0.3.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.3.0) - 2024-05-08
 
 <small>[Compare with v0.2.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.2.0...v0.3.0)</small>

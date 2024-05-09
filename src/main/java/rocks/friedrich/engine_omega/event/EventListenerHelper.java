@@ -18,8 +18,6 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
-
 public class EventListenerHelper
 {
     public static void autoRegisterListeners(Object target)

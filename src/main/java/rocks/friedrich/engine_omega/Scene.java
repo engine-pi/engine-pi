@@ -40,6 +40,7 @@ import org.jbox2d.dynamics.joints.RopeJoint;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
 import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
 import rocks.friedrich.engine_omega.event.KeyListener;
 import rocks.friedrich.engine_omega.event.KeyListenerContainer;
