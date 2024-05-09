@@ -197,7 +197,7 @@ public final class Bounds
      * @param upperBound Die Grenze, auf der das Ergebnis maximal liegen darf.
      *
      * @return Ein Bounds derselben Höhe und Breite wie dieses, das in jedem
-     *         Fall below, oder auf der Grenze liegt, wenn es passt, ist es
+     *         Fall unter oder auf der Grenze liegt, wenn es passt, ist es
      *         <code>this</code>.
      */
     public Bounds below(double upperBound)

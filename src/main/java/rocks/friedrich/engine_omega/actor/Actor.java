@@ -1058,7 +1058,7 @@ public abstract class Actor
      * <i>Ein Objekt steht genau dann, wenn alle Eigenschaften erfüllt sind:</i>
      * <ul>
      * <li>Es ist ein <b>dynamisches Objekt</b>.</li>
-     * <li>Direkt below der Mitte der minimalen <a href=
+     * <li>Direkt unter der Mitte der minimalen <a href=
      * "https://en.wikipedia.org/wiki/Minimum_bounding_box#Axis-aligned_minimum_bounding_box">AABB</a>,
      * die das gesamte Objekt umspannt, befindet sich ein <b>statisches
      * Objekt</b>.</li>
