@@ -18,14 +18,16 @@
  */
 package rocks.friedrich.engine_omega.internal;
 
+import rocks.friedrich.engine_omega.FrameUpdateListener;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.FrameUpdateListener;
 
 /**
- * Ein periodischer Task, der regelmäßig ausgeführt wird.
+ * Eine periodische Aufgabe, die regelmäßig ausgeführt wird.
  *
  * @author Niklas Keller
+ *
+ * @see rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer
  */
 public final class PeriodicTask implements FrameUpdateListener
 {
@@ -35,7 +37,7 @@ public final class PeriodicTask implements FrameUpdateListener
     private double interval;
 
     /**
-     * Aktuelle Zeit bis zur nächsten Ausführung.
+     * Aktuelle Zeit bis zur nächsten Ausführung in Sekunden.
      */
     private double countdown;
 
@@ -75,9 +77,9 @@ public final class PeriodicTask implements FrameUpdateListener
     }
 
     /**
-     * Gibt das aktuelle Intervall des periodischen Tasks aus.
+     * Gibt das aktuelle Intervall der periodischen Aufgabe aus.
      *
-     * @return Das aktuelle Intervall. Zeit zwischen den Ausführungen in
+     * @return Das aktuelle Intervall. Die Zeit zwischen den Ausführungen in
      *         Sekunden.
      */
     @API
@@ -87,15 +89,15 @@ public final class PeriodicTask implements FrameUpdateListener
     }
 
     /**
-     * @param deltaSeconds Die Zeit in Millisekunden, die seit dem letzten
-     *                     Update vergangen
+     * @param deltaSeconds Die Zeit in Sekunden, die seit dem letzten Update
+     *                     vergangen sind.
      */
     @Override
     @Internal
     public void onFrameUpdate(double deltaSeconds)
     {
         countdown -= deltaSeconds;
-        while (this.countdown < 0)
+        if (countdown < 0)
         {
             countdown += interval;
             runnable.run();
