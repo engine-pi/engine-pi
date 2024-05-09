@@ -18,13 +18,13 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+
+import rocks.friedrich.engine_omega.internal.annotations.API;
 
 public final class EventListeners<T>
 {

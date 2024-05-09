@@ -18,8 +18,8 @@
  */
 package rocks.friedrich.engine_omega.internal;
 
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
 import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
 /**
  * Ein nicht-grafisches Rectangle auf der Zeichenebene, das eine allgemeine

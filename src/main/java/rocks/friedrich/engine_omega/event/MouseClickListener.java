@@ -18,8 +18,8 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**
  * Implementierende Klassen können auf jeden einzelnen Klick reagieren,

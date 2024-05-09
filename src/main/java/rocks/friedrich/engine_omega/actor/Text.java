@@ -18,17 +18,17 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+
+import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.internal.FixtureBuilder;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 import rocks.friedrich.engine_omega.internal.io.FontLoader;
 import rocks.friedrich.engine_omega.internal.physics.FixtureData;
 import rocks.friedrich.engine_omega.internal.util.FontMetrics;
-import rocks.friedrich.engine_omega.Vector;
-
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 
 /**
  * Zur Darstellung von Texten im Programmbildschirm.

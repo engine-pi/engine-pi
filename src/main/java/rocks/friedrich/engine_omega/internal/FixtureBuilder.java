@@ -18,18 +18,18 @@
  */
 package rocks.friedrich.engine_omega.internal;
 
-import rocks.friedrich.engine_omega.internal.physics.FixtureData;
-import rocks.friedrich.engine_omega.Vector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.function.Supplier;
 
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.Vec2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.function.Supplier;
+import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.internal.physics.FixtureData;
 
 public final class FixtureBuilder
 {

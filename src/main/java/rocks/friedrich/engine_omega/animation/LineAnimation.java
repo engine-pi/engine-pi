@@ -1,9 +1,9 @@
 package rocks.friedrich.engine_omega.animation;
 
+import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.event.AggregateFrameUpdateListener;
-import rocks.friedrich.engine_omega.Vector;
 
 /**
  * Eine Animation, die ein Actor-Objekt in einer Linie animiert.

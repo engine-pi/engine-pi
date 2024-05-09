@@ -1,12 +1,12 @@
 package rocks.friedrich.engine_omega.animation;
 
-import rocks.friedrich.engine_omega.animation.interpolation.ConstantInterpolator;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.FrameUpdateListener;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.function.Consumer;
+
+import rocks.friedrich.engine_omega.FrameUpdateListener;
+import rocks.friedrich.engine_omega.animation.interpolation.ConstantInterpolator;
+import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**
  * Utility-Klasse

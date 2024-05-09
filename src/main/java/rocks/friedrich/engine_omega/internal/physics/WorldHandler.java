@@ -1,12 +1,14 @@
 package rocks.friedrich.engine_omega.internal.physics;
 
-import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.actor.Joint;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.collision.CollisionListener;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.util.Logger;
-import rocks.friedrich.engine_omega.Layer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
@@ -21,11 +23,13 @@ import org.jbox2d.dynamics.World;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.jbox2d.dynamics.contacts.ContactEdge;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
+import rocks.friedrich.engine_omega.Layer;
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.Joint;
+import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.collision.CollisionListener;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.internal.util.Logger;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen

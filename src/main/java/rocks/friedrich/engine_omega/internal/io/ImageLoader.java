@@ -18,14 +18,15 @@
  */
 package rocks.friedrich.engine_omega.internal.io;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.util.Optimizer;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.util.Optimizer;
 
 /**
  * Lädt Bilder vom Dateisystem und optimiert diese direkt für die Anzeige.

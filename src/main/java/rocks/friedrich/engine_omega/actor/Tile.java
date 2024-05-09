@@ -18,10 +18,10 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+import java.awt.Graphics2D;
+
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-
-import java.awt.Graphics2D;
 
 /**
  * Abstrakte Klasse beschreibt eine Tile-Instanz für den Tile-Atlas. <i>In jeder

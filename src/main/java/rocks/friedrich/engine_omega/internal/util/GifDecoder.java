@@ -18,9 +18,10 @@
  */
 package rocks.friedrich.engine_omega.internal.util;
 
-import rocks.friedrich.engine_omega.internal.io.ResourceLoader;
-
-import java.awt.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.BufferedInputStream;
@@ -28,6 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+
+import rocks.friedrich.engine_omega.internal.io.ResourceLoader;
 
 /**
  * GIF Decoder <a href=

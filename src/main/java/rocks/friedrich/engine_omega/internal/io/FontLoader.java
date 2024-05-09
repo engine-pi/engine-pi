@@ -18,13 +18,15 @@
  */
 package rocks.friedrich.engine_omega.internal.io;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-
-import java.awt.*;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import rocks.friedrich.engine_omega.internal.annotations.API;
 
 @API
 final public class FontLoader

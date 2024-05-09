@@ -1,15 +1,15 @@
 package rocks.friedrich.engine_omega.internal.physics;
 
+import java.util.List;
+import java.util.function.Supplier;
+
+import org.jbox2d.dynamics.Body;
+
+import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.Vector;
-
-import org.jbox2d.dynamics.Body;
-
-import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Beschreibt allgemein ein Objekt, dass die physikalischen Eigenschaften eines

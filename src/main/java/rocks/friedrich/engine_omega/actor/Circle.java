@@ -18,14 +18,15 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.FixtureData;
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.Shape;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.internal.physics.FixtureData;
 
 /**
  * Beschreibt einen Kreis.

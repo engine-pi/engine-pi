@@ -1,10 +1,8 @@
 package rocks.friedrich.engine_omega.internal.physics;
 
-import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.actor.BodyType;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.Vector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 import org.jbox2d.collision.AABB;
 import org.jbox2d.common.Vec2;
@@ -12,9 +10,11 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.contacts.ContactEdge;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
+import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.BodyType;
+import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische

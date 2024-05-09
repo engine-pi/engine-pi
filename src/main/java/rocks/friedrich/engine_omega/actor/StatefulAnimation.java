@@ -1,13 +1,13 @@
 package rocks.friedrich.engine_omega.actor;
 
+import java.awt.Graphics2D;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import rocks.friedrich.engine_omega.internal.FixtureBuilder;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
 import rocks.friedrich.engine_omega.internal.graphics.AnimationFrame;
-
-import java.awt.Graphics2D;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Ein animierter Actor, der mehrere Zustände haben kann (laufen (links/rechts),

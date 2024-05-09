@@ -18,12 +18,12 @@
  */
 package rocks.friedrich.engine_omega;
 
+import java.awt.Point;
+
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.internal.Bounds;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.annotations.Internal;
-
-import java.awt.Point;
 
 /**
  * Die Kamera "blickt" auf die Zeichenebene, das, was sie sieht, beschreibt den

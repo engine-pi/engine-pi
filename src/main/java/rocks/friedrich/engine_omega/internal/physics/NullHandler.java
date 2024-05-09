@@ -1,20 +1,20 @@
 package rocks.friedrich.engine_omega.internal.physics;
 
-import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.actor.BodyType;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.Vector;
-
-import org.jbox2d.collision.AABB;
-import org.jbox2d.common.Transform;
-import org.jbox2d.dynamics.Body;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+
+import org.jbox2d.collision.AABB;
+import org.jbox2d.common.Transform;
+import org.jbox2d.dynamics.Body;
+
+import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.BodyType;
+import rocks.friedrich.engine_omega.collision.CollisionEvent;
 
 /**
  * Default-Handler für Operationen an Actor-Objekten, die an keiner Scene

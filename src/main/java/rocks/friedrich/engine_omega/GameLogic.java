@@ -18,11 +18,11 @@
  */
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.internal.DebugInfo;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.graphics.RenderTarget;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Queue;
@@ -31,6 +31,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+
+import rocks.friedrich.engine_omega.internal.DebugInfo;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.internal.graphics.RenderTarget;
 
 public final class GameLogic
 {

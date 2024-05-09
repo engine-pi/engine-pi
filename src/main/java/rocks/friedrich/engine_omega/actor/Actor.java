@@ -18,20 +18,17 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
-import rocks.friedrich.engine_omega.animation.ValueAnimator;
-import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.collision.CollisionListener;
-import rocks.friedrich.engine_omega.event.*;
-import rocks.friedrich.engine_omega.internal.Bounds;
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.*;
-import rocks.friedrich.engine_omega.FrameUpdateListener;
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Layer;
-import rocks.friedrich.engine_omega.Vector;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Composite;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -39,15 +36,38 @@ import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.Fixture;
-import org.jbox2d.dynamics.joints.*;
+import org.jbox2d.dynamics.joints.DistanceJointDef;
+import org.jbox2d.dynamics.joints.PrismaticJointDef;
+import org.jbox2d.dynamics.joints.RevoluteJointDef;
+import org.jbox2d.dynamics.joints.RopeJointDef;
+import org.jbox2d.dynamics.joints.WeldJointDef;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import rocks.friedrich.engine_omega.FrameUpdateListener;
+import rocks.friedrich.engine_omega.Game;
+import rocks.friedrich.engine_omega.Layer;
+import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.animation.ValueAnimator;
+import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
+import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.collision.CollisionListener;
+import rocks.friedrich.engine_omega.event.EventListenerHelper;
+import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer;
+import rocks.friedrich.engine_omega.event.KeyListener;
+import rocks.friedrich.engine_omega.event.KeyListenerContainer;
+import rocks.friedrich.engine_omega.event.MouseClickListener;
+import rocks.friedrich.engine_omega.event.MouseClickListenerContainer;
+import rocks.friedrich.engine_omega.event.MouseWheelListener;
+import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
+import rocks.friedrich.engine_omega.internal.Bounds;
+import rocks.friedrich.engine_omega.internal.FixtureBuilder;
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.internal.physics.FixtureData;
+import rocks.friedrich.engine_omega.internal.physics.NullHandler;
+import rocks.friedrich.engine_omega.internal.physics.PhysicsData;
+import rocks.friedrich.engine_omega.internal.physics.PhysicsHandler;
+import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
 
 /**
  * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.

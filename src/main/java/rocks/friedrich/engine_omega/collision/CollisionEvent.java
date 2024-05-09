@@ -1,16 +1,16 @@
 package rocks.friedrich.engine_omega.collision;
 
-import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.Vector;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.jbox2d.collision.WorldManifold;
 import org.jbox2d.dynamics.contacts.Contact;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import rocks.friedrich.engine_omega.Vector;
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
 /**
  * Ein Objekt der Klasse <code>CollisionEvent</code> repräsentiert eine

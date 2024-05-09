@@ -18,14 +18,14 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+import java.awt.Color;
+import java.util.function.Supplier;
+
 import rocks.friedrich.engine_omega.animation.AnimationMode;
 import rocks.friedrich.engine_omega.animation.ValueAnimator;
 import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.internal.annotations.API;
 import rocks.friedrich.engine_omega.internal.physics.FixtureData;
-
-import java.awt.*;
-import java.util.function.Supplier;
 
 /**
  * Ein Objekt, das aus n primitiven geometrischen Formen - <b>Dreiecken</b> -

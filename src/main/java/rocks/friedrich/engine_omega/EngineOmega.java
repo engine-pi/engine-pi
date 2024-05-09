@@ -18,10 +18,6 @@
  */
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.actor.*;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.net.JarURLConnection;
@@ -31,6 +27,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
+import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.BodyType;
+import rocks.friedrich.engine_omega.actor.Circle;
+import rocks.friedrich.engine_omega.actor.Polygon;
+import rocks.friedrich.engine_omega.actor.Rectangle;
+import rocks.friedrich.engine_omega.actor.Text;
+import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.internal.annotations.Internal;
 
 /**
  * Diese Klasse definiert Versions-Konstanten und sorgt für eine About-Box beim
