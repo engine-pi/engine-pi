@@ -18,6 +18,24 @@
  */
 package rocks.friedrich.engine_omega;
 
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics2D;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.util.Collection;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.swing.JOptionPane;
+
+import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.KeyListener;
+import rocks.friedrich.engine_omega.event.KeyListenerContainer;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.internal.annotations.API;
@@ -25,15 +43,6 @@ import rocks.friedrich.engine_omega.internal.annotations.Internal;
 import rocks.friedrich.engine_omega.internal.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.internal.io.ImageLoader;
 import rocks.friedrich.engine_omega.internal.io.ImageWriter;
-
-import javax.swing.JOptionPane;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics2D;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.util.Collection;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle Spiel.
@@ -115,6 +124,8 @@ public final class Game
      * Letzte Mausposition.
      */
     private static java.awt.Point mousePosition;
+
+    private static final EventListeners<rocks.friedrich.engine_omega.event.KeyListener> keyListeners = new EventListeners<>();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -259,16 +270,78 @@ public final class Game
                 () -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
     }
 
-    public static void addKeyListener(java.awt.event.KeyListener keyListener)
+    /**
+     * Fügt einen statisch
+     * {@link rocks.friedrich.engine_omega.event.KeyListener} hinzu, d. h.
+     * dieser KeyListener gilt global über das ganze Spiel und ist unabhängig
+     * von der aktuellen Szene.
+     *
+     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     *
+     * <ol>
+     * <li>Als normale Klasse:
+     *
+     * <pre>{@code
+     * class MyKeylistener implements KeyListener
+     * {
+     *     @Override
+     *     public void onKeyDown(KeyEvent e)
+     *     {
+     *         // Code here
+     *     }
+     * }
+     * obj.addKeyListener(new MyKeylistener());
+     * }</pre>
+     *
+     * </li>
+     *
+     * <li>Als anonyme Klasse:
+     *
+     * <pre>{@code
+     * obj.addKeyListener(new KeyListener()
+     * {
+     *     @Override
+     *     public void onKeyDown(KeyEvent e)
+     *     {
+     *         // Code here
+     *     }
+     * });
+     * }</pre>
+     *
+     * </li>
+     *
+     * <li>Oder als Lambda-Ausdruck:
+     *
+     * <pre>{@code
+     * obj.addKeyListener(e -> {
+     *     // Code here
+     * });
+     * }</pre>
+     *
+     * </li>
+     * </ol>
+     *
+     * @param keyListener Ein Objekt der Klasse
+     *                    {@link rocks.friedrich.engine_omega.event.KeyListener}.
+     */
+    public static void addKeyListener(
+            rocks.friedrich.engine_omega.event.KeyListener keyListener)
     {
-        // frame.addKeyListener(keyListener);
-        renderPanel.addKeyListener(keyListener);
+        keyListeners.add(keyListener);
     }
 
-    public static void removeKeyListener(java.awt.event.KeyListener keyListener)
+    /**
+     * Entfernt einen statischen
+     * {@link rocks.friedrich.engine_omega.event.KeyListener} vom Objekt, d. h.
+     * einen KeyListener, der global für das ganze Spiele gilt.
+     *
+     * @param keyListener Ein Objekt der Klasse
+     *                    {@link rocks.friedrich.engine_omega.event.KeyListener}.
+     */
+    public static void removeKeyListener(
+            rocks.friedrich.engine_omega.event.KeyListener keyListener)
     {
-        // frame.removeKeyListener(keyListener);
-        renderPanel.removeKeyListener(keyListener);
+        keyListeners.remove(keyListener);
     }
 
     /**
@@ -681,10 +754,13 @@ public final class Game
             gameLogic.enqueue(() -> {
                 if (down)
                 {
+                    keyListeners
+                            .invoke(keyListener -> keyListener.onKeyDown(e));
                     scene.invokeKeyDownListeners(e);
                 }
                 else
                 {
+                    keyListeners.invoke(keyListener -> keyListener.onKeyUp(e));
                     scene.invokeKeyUpListeners(e);
                 }
             });

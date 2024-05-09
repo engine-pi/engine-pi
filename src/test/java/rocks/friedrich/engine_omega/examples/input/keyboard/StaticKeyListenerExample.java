@@ -1,12 +1,12 @@
 package rocks.friedrich.engine_omega.examples.input.keyboard;
 
 import java.awt.Color;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Rectangle;
+import rocks.friedrich.engine_omega.event.KeyListener;
 
 public class StaticKeyListenerExample extends Scene
 {
@@ -33,9 +33,9 @@ public class StaticKeyListenerExample extends Scene
     {
         StaticKeyListenerExample scene = new StaticKeyListenerExample();
         Game.start(600, 400, scene);
-        Game.addKeyListener(new KeyAdapter()
+        Game.addKeyListener(new KeyListener()
         {
-            public void keyPressed(KeyEvent e)
+            public void onKeyDown(KeyEvent e)
             {
                 switch (e.getKeyCode())
                 {

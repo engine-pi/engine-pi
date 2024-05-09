@@ -77,7 +77,7 @@ public interface KeyListenerContainer
      * </li>
      * </ol>
      *
-     * @param keyListener
+     * @param keyListener Ein Objekt der Klasse {@link KeyListener}.
      */
     @API
     default void addKeyListener(KeyListener keyListener)
@@ -87,6 +87,8 @@ public interface KeyListenerContainer
 
     /**
      * Entfernt einen {@link KeyListener} vom Objekt.
+     *
+     * @param keyListener Ein Objekt der Klasse {@link KeyListener}.
      */
     @API
     default void removeKeyListener(KeyListener keyListener)
