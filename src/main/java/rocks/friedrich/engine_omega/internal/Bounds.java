@@ -190,7 +190,7 @@ public final class Bounds
     }
 
     /**
-     * Berechnet, ob dieses Rectangle below einer Grenze liegt, und wenn
+     * Berechnet, ob dieses Rectangle unter einer Grenze liegt, und wenn
      * <b>nicht</b>, dann berechnet es eines, das gerade so an der Obergrenze
      * liegt.
      *

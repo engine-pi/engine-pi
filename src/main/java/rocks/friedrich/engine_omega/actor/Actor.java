@@ -1049,7 +1049,7 @@ public abstract class Actor
     }
 
     /**
-     * Testet, ob das Objekt "steht". Diese Funktion ist below anderem hilfreich
+     * Testet, ob das Objekt "steht". Diese Funktion ist unter anderem hilfreich
      * für die Entwicklung von Platformern (z.B. wenn der Spieler nur springen
      * können soll, wenn er auf dem Boden steht).<br>
      * Diese Funktion ist eine <b>Heuristik</b>, sprich sie ist eine Annäherung.
