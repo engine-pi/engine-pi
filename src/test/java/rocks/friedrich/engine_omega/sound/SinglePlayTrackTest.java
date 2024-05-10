@@ -22,7 +22,11 @@ public class SinglePlayTrackTest
         MusicPlayback playback = new MusicPlayback(track);
         playback.play(sound);
 
+
+
         SoundEngine engine = new SoundEngine();
+
+        engine.playMusic(track);
 
         // MusicPlayback playback = engine.playMusic(track);
         // playback.play();
