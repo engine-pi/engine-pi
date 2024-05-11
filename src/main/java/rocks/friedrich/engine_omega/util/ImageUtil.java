@@ -63,8 +63,8 @@ public class ImageUtil
      * Ersetzt Farben in einem Bild entsprechend einer Map, die Quell- und
      * Zielfarben enthält, und gibt dann das Ergebnis zurück.
      *
-     * @see https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513
-     * @see https://codereview.stackexchange.com/a/146611
+     * https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513
+     * https://codereview.stackexchange.com/a/146611
      *
      * @param bufferedImage Das OriginalBild
      * @param colorMappings eine Map mit Quellfarben als Schlüssel und
