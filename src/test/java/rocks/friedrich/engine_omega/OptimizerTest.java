@@ -1,24 +1,26 @@
 package rocks.friedrich.engine_omega;
 
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.awt.GraphicsEnvironment;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
+import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.engine_omega.util.Logger;
 import rocks.friedrich.engine_omega.util.Optimizer;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assume.assumeFalse;
 
 public class OptimizerTest
 {
     @Test
     public void optimizeImage()
     {
-        assumeFalse(GraphicsEnvironment.isHeadless());
+        assertFalse(GraphicsEnvironment.isHeadless());
         BufferedImage img = null;
         try
         {

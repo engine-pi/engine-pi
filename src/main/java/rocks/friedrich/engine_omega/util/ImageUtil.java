@@ -1,33 +1,10 @@
 package rocks.friedrich.engine_omega.util;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.Map;
-import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.Composite;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.Transparency;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Dimension2D;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
-import java.awt.image.FilteredImageSource;
-import java.awt.image.ImageFilter;
-import java.awt.image.ImageProducer;
-import java.awt.image.RGBImageFilter;
 import java.awt.image.WritableRaster;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import java.util.logging.Level;
 
 public class ImageUtil
 {
