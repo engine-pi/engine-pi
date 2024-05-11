@@ -27,7 +27,8 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer#repeat(double, Runnable)
+ * @see rocks.friedrich.engine_omega.event.FrameUpdateListenerContainer#repeat(double,
+ *      Runnable)
  */
 public final class PeriodicTask implements FrameUpdateListener
 {
