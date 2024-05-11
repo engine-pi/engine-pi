@@ -88,6 +88,19 @@ public final class SoundEngine
     }
 
     /**
+     * Sets the currently playing track to a {@code LoopedTrack} with the
+     * specified music {@code Sound}. This has no effect if the specified track
+     * is already playing.
+     *
+     * @param music The {@code Sound} to be played.
+     * @return The playback of the music
+     */
+    public MusicPlayback playMusic(Sound music)
+    {
+        return playMusic(new LoopedTrack(music));
+    }
+
+    /**
      * Sets the currently playing track to the specified track. This has no
      * effect if the specified track is already playing.
      *

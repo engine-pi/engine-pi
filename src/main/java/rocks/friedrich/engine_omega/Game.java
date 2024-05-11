@@ -41,6 +41,7 @@ import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.io.ImageWriter;
+import rocks.friedrich.engine_omega.sound.SoundEngine;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle Spiel.
@@ -64,6 +65,8 @@ public final class Game
                                                           // accelerated image
                                                           // scaling on windows
     }
+
+    private static final SoundEngine soundEngine = new SoundEngine();
 
     /**
      * Wird debug auf <code>true</code> gesetzt, so werden ausführliche
@@ -632,6 +635,11 @@ public final class Game
     public static void setDebug(boolean value)
     {
         debug = value;
+    }
+
+    public static SoundEngine getSoundEngine()
+    {
+        return soundEngine;
     }
 
     /**
