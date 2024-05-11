@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import javax.imageio.ImageIO;
 
 public class ImageUtil
 {
@@ -42,13 +45,18 @@ public class ImageUtil
                 {
                     if (recoloredImage.getRGB(x, y) == from[i].getRGB())
                     {
-                        int newColor = to[i].getRGB();
-                        recoloredImage.setRGB(x, y, newColor);
+                        recoloredImage.setRGB(x, y, to[i].getRGB());
                     }
                 }
             }
         }
         return recoloredImage;
+    }
+
+    public static void write(BufferedImage image, String pathname)
+            throws IOException
+    {
+        ImageIO.write(image, "png", new File(pathname));
     }
 
     /**
