@@ -11,6 +11,9 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
+ */
 public class ImageUtil
 {
     /**
@@ -30,6 +33,30 @@ public class ImageUtil
         return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
     }
 
+    /**
+     * Ersetzt Farben in einem Bild entsprechend zweier Felder, die die
+     * {@link Color Quell-} und {@link Color Zielfarben} enthälten, und gibt
+     * dann das Ergebnis zurück.
+     *
+     * <ul>
+     *
+     * <li>Quelle: <a href=
+     * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513">LITIengine:
+     * src/main/java/de/gurkenlabs/litiengine/util/Imaging.java Zeile
+     * 490-513</a></li>
+     *
+     * <li>Quelle: <a href=
+     * "https://codereview.stackexchange.com/a/146611">codereview.stackexchange.com</a></li>
+     *
+     * </ul>
+     *
+     * @param bufferedImage Das Originalbild.
+     * @param to            Ein Feld, das die Quellfarben enthält.
+     * @param from          Ein Feld, das die Zeilfarben enthält.
+     *
+     * @return Eine neue Version des Originalbildes, bei der die Quellfarben
+     *         durch die Zielfarben ersetzt werden.
+     */
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             Color[] from, Color[] to)
     {
@@ -56,18 +83,27 @@ public class ImageUtil
     }
 
     /**
-     * Ersetzt Farben in einem Bild entsprechend einer Map, die Quell- und
-     * Zielfarben enthält, und gibt dann das Ergebnis zurück.
+     * Ersetzt Farben in einem Bild entsprechend einer {@link Map}, die Quell-
+     * und Zielfarben enthält, und gibt dann das Ergebnis zurück.
      *
-     * https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513
-     * https://codereview.stackexchange.com/a/146611
+     * <ul>
      *
-     * @param bufferedImage Das OriginalBild
-     * @param colorMappings eine Map mit Quellfarben als Schlüssel und
-     *                      Zielfarben als Werte
+     * <li>Quelle: <a href=
+     * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513">LITIengine:
+     * src/main/java/de/gurkenlabs/litiengine/util/Imaging.java Zeile
+     * 490-513</a></li>
      *
-     * @return eine neue Version des Originalbildes, bei der die Quellfarben
-     *         durch die Zielfarben ersetzt werden
+     * <li>Quelle: <a href=
+     * "https://codereview.stackexchange.com/a/146611">codereview.stackexchange.com</a></li>
+     *
+     * </ul>
+     *
+     * @param bufferedImage Das Originalbild.
+     * @param colorMappings Eine {@link Map} mit Quellfarben als Schlüssel und
+     *                      Zielfarben als Werte.
+     *
+     * @return Eine neue Version des Originalbildes, bei der die Quellfarben
+     *         durch die Zielfarben ersetzt werden.
      */
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             Map<Color, Color> colorMappings)

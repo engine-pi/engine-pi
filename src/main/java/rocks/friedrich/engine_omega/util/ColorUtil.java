@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/ColorHelper.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/ColorUtil.java
  *
  * MIT License
  *
@@ -29,6 +29,10 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Statische Klasse, die Hilfsmethoden zur Farbberechnung und -manipulation
+ * bereitstellt.
+ */
 public final class ColorUtil
 {
     private static final Logger log = Logger
@@ -60,7 +64,7 @@ public final class ColorUtil
      *
      * @param color The color that is encoded.
      * @return An hexadecimal string representation of the specified color.
-     * @see ColorHelper#decode(String)
+     * @see ColorUtil#decode(String)
      * @see Color
      * @see Color#getRGB()
      * @see Integer#toHexString(int)
@@ -102,7 +106,7 @@ public final class ColorUtil
      * @param colorHexString The hexadecimal encodes color string
      *                       representation.
      * @return The decoded color.
-     * @see ColorHelper#encode(Color)
+     * @see ColorUtil#encode(Color)
      * @see Color
      * @see Color#decode(String)
      * @see Integer#decode(String)
