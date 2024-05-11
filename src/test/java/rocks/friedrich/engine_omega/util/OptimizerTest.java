@@ -10,11 +10,13 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 
 import rocks.friedrich.engine_omega.EngineOmega;
 
 public class OptimizerTest
 {
+    @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
     @Test
     public void testOptimizeImage()
     {
