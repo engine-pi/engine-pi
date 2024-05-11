@@ -166,10 +166,10 @@ public final class Camera
     /**
      * Mit dieser Methode kann die Kamerabewegung eingeschränkt werden.
      * <p>
-     * Ein Rectangle gibt die Begrenzung an, die die Kameraperspektive niemals
+     * Ein Rechteck gibt die Begrenzung an, die die Kameraperspektive niemals
      * übertreten wird.
      *
-     * @param bounds Das Rectangle, das die Grenzen der Kamera angibt.
+     * @param bounds Das Rechteck, das die Grenzen der Kamera angibt.
      */
     @API
     public void setBounds(Bounds bounds)

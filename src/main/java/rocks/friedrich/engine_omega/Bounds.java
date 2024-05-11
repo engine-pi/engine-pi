@@ -21,7 +21,7 @@ package rocks.friedrich.engine_omega;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
- * Ein nicht-grafisches Rectangle auf der Zeichenebene, das eine allgemeine
+ * Ein nicht-grafisches Rechteck auf der Zeichenebene, das eine allgemeine
  * Fläche beschreibt.
  *
  * @author Michael Andonie
@@ -123,7 +123,7 @@ public final class Bounds
      * Berechnet aus diesem und einem weiteren Bounds ein neues, dass die beiden
      * genau fasst.
      *
-     * @param bounds Das zweite Rectangle für die Berechnung
+     * @param bounds Das zweite Rechteck für die Berechnung
      *
      * @return Ein neues Bounds, dass die beiden Rechtecke genau umfasst.
      */
@@ -166,7 +166,7 @@ public final class Bounds
     }
 
     /**
-     * Berechnet, ob dieses Rectangle über einer Grenze liegt und wenn
+     * Berechnet, ob dieses Rechteck über einer Grenze liegt und wenn
      * <b>nicht</b>, dann berechnet es eines, das gerade so an der Untergrenze
      * liegt.
      *
@@ -189,7 +189,7 @@ public final class Bounds
     }
 
     /**
-     * Berechnet, ob dieses Rectangle unter einer Grenze liegt, und wenn
+     * Berechnet, ob dieses Rechteck unter einer Grenze liegt, und wenn
      * <b>nicht</b>, dann berechnet es eines, das gerade so an der Obergrenze
      * liegt.
      *
@@ -212,7 +212,7 @@ public final class Bounds
     }
 
     /**
-     * Berechnet, ob dieses Rectangle rechts von einer bestimmten Grenze liegt,
+     * Berechnet, ob dieses Rechteck rechts von einer bestimmten Grenze liegt,
      * und wenn <b>nicht</b>, dann berechnet es eines, das gerade so an der
      * linken Extremgrenze liegt.
      *
@@ -236,7 +236,7 @@ public final class Bounds
     }
 
     /**
-     * Berechnet, ob dieses Rectangle links von einer bestimmten Grenze liegt,
+     * Berechnet, ob dieses Rechteck links von einer bestimmten Grenze liegt,
      * und wenn <b>nicht</b>, dann berechnet es eines, das gerade so an der
      * rechten Extremgrenze liegt.
      *
@@ -303,12 +303,12 @@ public final class Bounds
     }
 
     /**
-     * Diese Methoden prüft, ob dieses Bounding-Rectangle ein zweites vollkommen
+     * Diese Methoden prüft, ob dieses Bounding-Rechteck ein zweites vollkommen
      * enthält.<br>
      * <i>Gemeinsame Ränder zählen <b>AUCH</b> als umschliessen!</i>
      *
      * @param inner Das Innere Bounding-Rectangle. Es soll geprüft werden, ob
-     *              dieses Vollkommen von dem die Methode ausführenden Rectangle
+     *              dieses Vollkommen von dem die Methode ausführenden Rechteck
      *              umschlossen wird.
      *
      * @return <code>true</code>, wenn das <b>ausfuehrende Bounding-Rectangle
@@ -325,9 +325,9 @@ public final class Bounds
     /**
      * Berechnet, ob dieses Bounds oberhalb eines zweiten ist.
      *
-     * @param r Das Rectangle, bei dem dies getestet werden soll
+     * @param r Das Rechteck, bei dem dies getestet werden soll
      *
-     * @return <code>true</code>, wenn dieses Rectangle rechts von dem anderen
+     * @return <code>true</code>, wenn dieses Rechteck rechts von dem anderen
      *         ist, sonst <code>false</code>.
      */
     public boolean above(Bounds r)
@@ -336,21 +336,21 @@ public final class Bounds
     }
 
     /**
-     * Sollte dieses Bounding-Rectangle nicht voll innerhalb eines bestimmten
+     * Sollte dieses Bounding-Rechteck nicht voll innerhalb eines bestimmten
      * anderen, äußeren Rechtecks liegen, so wird versucht, dieses
-     * Bounding-Rectangle <i>in das andere mit möglichst wenig Verschiebung</i>
+     * Bounding-Rechteck <i>in das andere mit möglichst wenig Verschiebung</i>
      * zu bringen. Diese Methode wird intern für die Beschränkung des
      * Kamera-Bereiches genutzt.
      * <p>
      * <div class='hinweisProbleme'><b>Achtung</b>: Voraussetzung dafür, dass
-     * dieser Algorithmus Sinn macht ist, dass das äußere Rectangle ausreichend
+     * dieser Algorithmus Sinn macht ist, dass das äußere Rechteck ausreichend
      * größer als dieses ist!</div>
      *
-     * @param outer Das äußere Rectangle, innerhalb dessen sich das
-     *              Ergebnis-Rectangle befinden wird (sollte das äußere
+     * @param outer Das äußere Rechteck, innerhalb dessen sich das
+     *              Ergebnis-Rechteck befinden wird (sollte das äußere
      *              ausreichend groß sein).
      *
-     * @return Das Ergebnis-Rectangle, das sich im äußeren Rectangle befinden
+     * @return Das Ergebnis-Rectangle, das sich im äußeren Rechteck befinden
      *         wird.
      */
     public Bounds in(Bounds outer)
