@@ -6,7 +6,9 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.IOException;
+import java.util.HashMap;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.engine_omega.io.ImageLoader;
@@ -31,18 +33,48 @@ public class ImageUtilTest
                 assertImageEquals(image, copy);
         }
 
-        @Test
-        public void testReplaceColors() throws IOException
+        @Nested
+        class ReplaceColorsTest
         {
-                BufferedImage actual = ImageUtil.replaceColors(
-                                ImageLoader.load("images/gray.png"), new Color[]
-                                { new Color(255, 255, 255),
-                                                new Color(127, 127, 127),
-                                                new Color(0, 0, 0) },
-                                new Color[]
-                                { new Color(255, 0, 0), new Color(0, 255, 0),
-                                                new Color(0, 0, 255) });
-                BufferedImage expected = ImageLoader.load("images/rgb.png");
-                assertImageEquals(expected, actual);
+                static Color white = new Color(255, 255, 255);
+
+                static Color gray = new Color(127, 127, 127);
+
+                static Color black = new Color(0, 0, 0);
+
+                static Color red = new Color(255, 0, 0);
+
+                static Color green = new Color(0, 255, 0);
+
+                static Color blue = new Color(0, 0, 255);
+
+                static BufferedImage input = ImageLoader
+                                .load("images/gray.png");
+
+                static BufferedImage expected = ImageLoader
+                                .load("images/rgb.png");
+
+                @Test
+                public void testArgArray() throws IOException
+                {
+                        BufferedImage actual = ImageUtil.replaceColors(input,
+                                        new Color[]
+                                        { white, gray, black },
+                                        new Color[]
+                                        { red, green, blue });
+                        assertImageEquals(expected, actual);
+                }
+
+                @Test
+                public void testArgMap() throws IOException
+                {
+                        HashMap<Color, Color> map = new HashMap<>();
+                        map.put(white, red);
+                        map.put(gray, green);
+                        map.put(black, blue);
+                        BufferedImage actual = ImageUtil.replaceColors(input,
+                                        map);
+                        assertImageEquals(expected, actual);
+                }
         }
 }

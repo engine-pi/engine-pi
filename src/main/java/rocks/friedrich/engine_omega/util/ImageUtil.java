@@ -7,6 +7,8 @@ import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.imageio.ImageIO;
 
 public class ImageUtil
@@ -53,12 +55,6 @@ public class ImageUtil
         return recoloredImage;
     }
 
-    public static void write(BufferedImage image, String pathname)
-            throws IOException
-    {
-        ImageIO.write(image, "png", new File(pathname));
-    }
-
     /**
      * Ersetzt Farben in einem Bild entsprechend einer Map, die Quell- und
      * Zielfarben enthält, und gibt dann das Ergebnis zurück.
@@ -76,8 +72,22 @@ public class ImageUtil
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             Map<Color, Color> colorMappings)
     {
-        return replaceColors(bufferedImage,
-                colorMappings.keySet().toArray(Color[]::new),
-                colorMappings.keySet().toArray(Color[]::new));
+        int colors = colorMappings.size();
+        Color[] from = new Color[colors];
+        Color[] to = new Color[colors];
+        int index = 0;
+        for (Entry<Color, Color> c : colorMappings.entrySet())
+        {
+            from[index] = c.getKey();
+            to[index] = c.getValue();
+            index++;
+        } ;
+        return replaceColors(bufferedImage, from, to);
+    }
+
+    public static void write(BufferedImage image, String pathname)
+            throws IOException
+    {
+        ImageIO.write(image, "png", new File(pathname));
     }
 }
