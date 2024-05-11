@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega.util;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,11 +7,9 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import rocks.friedrich.engine_omega.util.Logger;
 
 public class LoggerTest
 {
@@ -19,20 +17,20 @@ public class LoggerTest
 
     private final ByteArrayOutputStream errStreamCaptor = new ByteArrayOutputStream();
 
-    @BeforeAll
+    @BeforeEach
     public void setUp()
     {
         System.setErr(new PrintStream(errStreamCaptor));
     }
 
-    @AfterAll
+    @AfterEach
     public void tearDown()
     {
         System.setErr(standardErr);
     }
 
     @Test
-    public void fileExists()
+    public void testFileExists()
     {
         Logger.error("LoggerTest", "lorem ipsum");
         assertTrue(errStreamCaptor.toString().indexOf("lorem ipsum") > -1);

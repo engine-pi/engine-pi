@@ -9,7 +9,7 @@ import rocks.friedrich.engine_omega.sound.SinglePlayTrack;
 import rocks.friedrich.engine_omega.sound.Sound;
 import rocks.friedrich.engine_omega.sound.SoundEngine;
 
-public class SinglePlayTrackTest
+public class SinglePlayTrackExample
 {
     public static void main(String[] args)
             throws IOException, UnsupportedAudioFileException

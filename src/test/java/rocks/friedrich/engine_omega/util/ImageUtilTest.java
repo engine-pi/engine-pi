@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import rocks.friedrich.engine_omega.io.ImageLoader;
 
-class ImageUtilTest
+public class ImageUtilTest
 {
         void assertImageEquals(BufferedImage expected, BufferedImage actual)
         {
@@ -23,7 +23,7 @@ class ImageUtilTest
         }
 
         @Test
-        void testCopy()
+        public void testCopy()
         {
                 BufferedImage image = ImageLoader.load(
                                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
@@ -32,7 +32,7 @@ class ImageUtilTest
         }
 
         @Test
-        void testReplaceColors() throws IOException
+        public void testReplaceColors() throws IOException
         {
                 BufferedImage actual = ImageUtil.replaceColors(
                                 ImageLoader.load("images/gray.png"), new Color[]

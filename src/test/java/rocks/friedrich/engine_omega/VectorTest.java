@@ -18,10 +18,10 @@
  */
 package rocks.friedrich.engine_omega;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 public class VectorTest
 {
     @Test
-    public void punktToPunkt()
+    public void testVectorOfVectors()
     {
         Vector p1 = new Vector(10f, 10f);
         Vector p2 = new Vector(30f, 20f);
@@ -39,7 +39,7 @@ public class VectorTest
     }
 
     @Test
-    public void senkrecht()
+    public void testGetScalarProduct()
     {
         Vector v1 = new Vector(1, 0);
         Vector v2 = new Vector(0, 1);
@@ -50,7 +50,7 @@ public class VectorTest
     }
 
     @Test
-    public void punktGleichVektor()
+    public void testEquals()
     {
         Vector v1 = new Vector(1, 1);
         Vector p1 = new Vector(1, 1);
@@ -58,7 +58,17 @@ public class VectorTest
     }
 
     @Test
-    public void differenz()
+    public void testNotEquals()
+    {
+        Vector vector = new Vector(1, 1);
+        assertNotEquals(new Vector(1, 0), vector);
+        assertNotEquals(new Vector(0, 1), vector);
+        assertNotEquals(new Vector(0, 0), vector);
+        assertNotEquals(vector, new Object());
+    }
+
+    @Test
+    public void testSubtract()
     {
         Vector v1 = new Vector(3, 3);
         Vector v2 = new Vector(2, 2);
@@ -66,45 +76,46 @@ public class VectorTest
     }
 
     @Test
-    public void multiplizieren()
+    public void testMultiply()
     {
         Vector vector = new Vector(1, 2);
         assertEquals(vector.multiply(2), new Vector(2, 4));
     }
 
     @Test
-    public void normiert()
+    public void testNormalize()
     {
         Vector vector = new Vector(10, 100);
         assertEquals(vector.normalize().getLength(), 1, 0);
     }
 
-    // @Test(expected = ArithmeticException.class)
-    public void teilenDurch0()
+    @Test
+    public void testDivideThrowsException()
     {
-        new Vector(0, 0).divide(0);
+        assertThrows(ArithmeticException.class,
+                () -> new Vector(0, 0).divide(0));
     }
 
     @Test
-    public void laenge()
+    public void testGetLength()
     {
         assertEquals(new Vector(1, 1).getLength(), Math.sqrt(2), 0.00001);
     }
 
     @Test
-    public void gegenrichtung()
+    public void testNegate()
     {
         assertEquals(new Vector(1, 1).negate(), new Vector(-1, -1));
     }
 
     @Test
-    public void summe()
+    public void testAdd()
     {
         assertEquals(new Vector(1, 1).add(new Vector(1, 1)), new Vector(2, 2));
     }
 
     @Test
-    public void unwirksam()
+    public void testIsNull()
     {
         assertFalse(new Vector(1, 1).isNull());
         assertFalse(new Vector(1, 0).isNull());
@@ -113,7 +124,7 @@ public class VectorTest
     }
 
     @Test
-    public void istEchtGanzzahlig()
+    public void testIsIntegral()
     {
         assertTrue(new Vector(1, 1).isIntegral());
         assertFalse(new Vector(.5f, .5f).isIntegral());
@@ -122,17 +133,17 @@ public class VectorTest
     }
 
     @Test
-    public void realX()
+    public void testGetX()
     {
-        double x = .013f;
-        assertEquals(new Vector(x, 0).getX(), x, 0.00001f);
+        double x = .013;
+        assertEquals(new Vector(x, 0).getX(), x, 0.00001);
     }
 
     @Test
-    public void realY()
+    public void testGetY()
     {
-        double y = .013f;
-        assertEquals(new Vector(0, y).getY(), y, 0.00001f);
+        double y = .013;
+        assertEquals(new Vector(0, y).getY(), y, 0.00001);
     }
 
     @Test
@@ -140,15 +151,5 @@ public class VectorTest
     {
         assertEquals("Vector [ x = 1.0; y = 1.0 ]",
                 new Vector(1, 1).toString());
-    }
-
-    @Test
-    public void testEquals()
-    {
-        Vector vector = new Vector(1, 1);
-        assertNotEquals(new Vector(1, 0), vector);
-        assertNotEquals(new Vector(0, 1), vector);
-        assertNotEquals(new Vector(0, 0), vector);
-        assertNotEquals(vector, new Object());
     }
 }

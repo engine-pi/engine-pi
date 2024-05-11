@@ -1,5 +1,4 @@
-package rocks.friedrich.engine_omega;
-
+package rocks.friedrich.engine_omega.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,13 +11,12 @@ import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
 
-import rocks.friedrich.engine_omega.util.Logger;
-import rocks.friedrich.engine_omega.util.Optimizer;
+import rocks.friedrich.engine_omega.EngineOmega;
 
 public class OptimizerTest
 {
     @Test
-    public void optimizeImage()
+    public void testOptimizeImage()
     {
         assertFalse(GraphicsEnvironment.isHeadless());
         BufferedImage img = null;
