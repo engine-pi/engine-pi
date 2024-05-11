@@ -10,9 +10,11 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 
 import rocks.friedrich.engine_omega.io.ImageLoader;
 
+@DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImageUtilTest
 {
         void assertImageEquals(BufferedImage expected, BufferedImage actual)
