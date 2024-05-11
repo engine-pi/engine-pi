@@ -1,6 +1,33 @@
+/*
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java
+ *
+ * MIT License
+ *
+ * Copyright (c) 2016 - 2024 Gurkenlabs
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package rocks.friedrich.engine_omega.util;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
@@ -13,6 +40,8 @@ import javax.imageio.ImageIO;
 
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
+ *
+ * https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java
  */
 public class ImageUtil
 {
@@ -119,6 +148,22 @@ public class ImageUtil
             index++;
         } ;
         return replaceColors(bufferedImage, from, to);
+    }
+
+    /**
+     * Vergrößert ein Bild, indem die Pixel vervielfacht werden.
+     *
+     * https://stackoverflow.com/a/4216635
+     */
+    public static BufferedImage scale(BufferedImage image, int factor)
+    {
+        BufferedImage after = new BufferedImage(image.getWidth() * factor,
+                image.getHeight() * factor, BufferedImage.TYPE_INT_ARGB);
+        AffineTransform at = new AffineTransform();
+        at.scale(factor, factor);
+        AffineTransformOp scaleOp = new AffineTransformOp(at,
+                AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+        return scaleOp.filter(image, after);
     }
 
     public static void write(BufferedImage image, String pathname)
