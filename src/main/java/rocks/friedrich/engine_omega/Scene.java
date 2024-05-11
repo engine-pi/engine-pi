@@ -38,6 +38,8 @@ import org.jbox2d.dynamics.joints.RevoluteJoint;
 import org.jbox2d.dynamics.joints.RopeJoint;
 
 import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
@@ -50,10 +52,7 @@ import rocks.friedrich.engine_omega.event.MouseClickListenerContainer;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.event.MouseWheelListener;
 import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
-import rocks.friedrich.engine_omega.internal.Bounds;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
+import rocks.friedrich.engine_omega.physics.WorldHandler;
 
 public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer

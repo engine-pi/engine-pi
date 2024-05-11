@@ -24,7 +24,7 @@ import java.util.LinkedHashSet;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 public final class EventListeners<T>
 {

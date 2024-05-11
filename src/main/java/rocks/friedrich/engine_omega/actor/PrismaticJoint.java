@@ -18,7 +18,7 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 public final class PrismaticJoint
         extends Joint<org.jbox2d.dynamics.joints.PrismaticJoint>

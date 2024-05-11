@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega.physics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.jbox2d.dynamics.FixtureDef;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.BodyType;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines

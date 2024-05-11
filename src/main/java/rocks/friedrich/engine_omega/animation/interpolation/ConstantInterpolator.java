@@ -1,8 +1,8 @@
 package rocks.friedrich.engine_omega.animation.interpolation;
 
 import rocks.friedrich.engine_omega.animation.Interpolator;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Ein Interpolator, der eine konstante Funktion darstellt.

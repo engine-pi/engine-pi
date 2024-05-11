@@ -29,4 +29,4 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE. </blockquote> Created by andonie on 15.02.15.
  */
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega.physics;

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.io;
+package rocks.friedrich.engine_omega.io;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,8 +25,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.util.Optimizer;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.util.Optimizer;
 
 /**
  * Lädt Bilder vom Dateisystem und optimiert diese direkt für die Anzeige.

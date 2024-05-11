@@ -18,7 +18,7 @@
  */
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Repräsentation einer Richtung.

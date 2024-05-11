@@ -3,9 +3,9 @@ package rocks.friedrich.engine_omega.actor;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Ein <code>TileContainer</code> ist eine schachbrettartige Anordnung

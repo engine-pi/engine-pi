@@ -4,10 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.function.Supplier;
 
+import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Beschreibt eine beliebige polygonale geometrische Form.

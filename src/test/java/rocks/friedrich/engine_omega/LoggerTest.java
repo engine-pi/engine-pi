@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import rocks.friedrich.engine_omega.internal.util.Logger;
+import rocks.friedrich.engine_omega.util.Logger;
 
 public class LoggerTest
 {

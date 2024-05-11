@@ -9,8 +9,8 @@ import org.jbox2d.dynamics.contacts.Contact;
 
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Ein Objekt der Klasse <code>CollisionEvent</code> repräsentiert eine

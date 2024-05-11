@@ -32,9 +32,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-import rocks.friedrich.engine_omega.internal.DebugInfo;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.graphics.RenderTarget;
+import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.graphics.RenderTarget;
 
 public final class GameLogic
 {

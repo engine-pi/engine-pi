@@ -1,18 +1,18 @@
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega.physics;
 
 import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.dynamics.Filter;
 import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.FixtureDef;
 
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Wrapper-Klasse für {@link org.jbox2d.dynamics.FixtureDef} zur Übersetzung
  * zwischen Engine-Features und JBox2D-Features.
  *
  * @author Michael Andonie
- * @see rocks.friedrich.engine_omega.internal.physics.PhysicsData
+ * @see rocks.friedrich.engine_omega.physics.PhysicsData
  */
 public class FixtureData
 {

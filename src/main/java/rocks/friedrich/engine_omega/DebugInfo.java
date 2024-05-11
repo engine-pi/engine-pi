@@ -16,13 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega;
 
-import org.jbox2d.dynamics.Body;
-import org.jbox2d.dynamics.World;
-import org.jbox2d.dynamics.joints.Joint;
-
-public interface JointBuilder<JointType extends Joint>
+public final class DebugInfo
 {
-    JointType createJoint(World world, Body a, Body b);
+    private final double frameDuration;
+
+    private final int bodyCount;
+
+    public DebugInfo(double frameDuration, int bodyCount)
+    {
+        this.frameDuration = frameDuration;
+        this.bodyCount = bodyCount;
+    }
+
+    public double getFrameDuration()
+    {
+        return frameDuration;
+    }
+
+    public int getBodyCount()
+    {
+        return bodyCount;
+    }
 }

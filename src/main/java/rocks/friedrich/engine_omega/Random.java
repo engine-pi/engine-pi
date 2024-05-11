@@ -2,8 +2,8 @@ package rocks.friedrich.engine_omega;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Diese Klasse liefert Methoden, die <b>zufällig verteilte Rückgaben</b> haben.

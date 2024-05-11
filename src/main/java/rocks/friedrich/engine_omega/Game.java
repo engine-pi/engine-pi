@@ -33,14 +33,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.swing.JOptionPane;
 
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.graphics.RenderPanel;
-import rocks.friedrich.engine_omega.internal.io.ImageLoader;
-import rocks.friedrich.engine_omega.internal.io.ImageWriter;
+import rocks.friedrich.engine_omega.graphics.RenderPanel;
+import rocks.friedrich.engine_omega.io.ImageLoader;
+import rocks.friedrich.engine_omega.io.ImageWriter;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle Spiel.

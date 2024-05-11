@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega.physics;
 
 import java.util.ArrayList;
 import java.util.Collection;

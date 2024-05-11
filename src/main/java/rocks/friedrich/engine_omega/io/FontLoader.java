@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.io;
+package rocks.friedrich.engine_omega.io;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -26,7 +26,7 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 @API
 final public class FontLoader

@@ -34,8 +34,8 @@ import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Polygon;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.Text;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Diese Klasse definiert Versions-Konstanten und sorgt für eine About-Box beim

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.graphics;
+package rocks.friedrich.engine_omega.graphics;
 
 import java.awt.Canvas;
 import java.awt.Color;

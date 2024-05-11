@@ -1,9 +1,9 @@
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.internal.util.Logger;
-import rocks.friedrich.engine_omega.internal.util.Optimizer;
-
 import org.junit.Test;
+
+import rocks.friedrich.engine_omega.util.Logger;
+import rocks.friedrich.engine_omega.util.Optimizer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

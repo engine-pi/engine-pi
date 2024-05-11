@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.util;
+package rocks.friedrich.engine_omega.util;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -30,7 +30,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
-import rocks.friedrich.engine_omega.internal.io.ResourceLoader;
+import rocks.friedrich.engine_omega.io.ResourceLoader;
 
 /**
  * GIF Decoder <a href=

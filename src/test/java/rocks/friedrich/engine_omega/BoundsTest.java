@@ -1,7 +1,5 @@
 package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.internal.Bounds;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

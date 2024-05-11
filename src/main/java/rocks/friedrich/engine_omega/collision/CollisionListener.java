@@ -19,7 +19,7 @@
 package rocks.friedrich.engine_omega.collision;
 
 import rocks.friedrich.engine_omega.actor.Actor;
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Beschreibt allgemein ein Objekt, das auf die <b>Kollision zweier

@@ -28,15 +28,15 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.graphics.AnimationFrame;
-import rocks.friedrich.engine_omega.internal.io.ImageLoader;
-import rocks.friedrich.engine_omega.internal.io.ResourceLoader;
-import rocks.friedrich.engine_omega.internal.util.GifDecoder;
+import rocks.friedrich.engine_omega.graphics.AnimationFrame;
+import rocks.friedrich.engine_omega.io.ImageLoader;
+import rocks.friedrich.engine_omega.io.ResourceLoader;
+import rocks.friedrich.engine_omega.util.GifDecoder;
 
 /**
  * Eine Animation ist ein Actor-Objekt, das aus mehreren

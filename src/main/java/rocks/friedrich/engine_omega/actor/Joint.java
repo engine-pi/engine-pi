@@ -18,10 +18,10 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
+import rocks.friedrich.engine_omega.physics.WorldHandler;
 
 /**
  * Verbindung zwischen Objekten.

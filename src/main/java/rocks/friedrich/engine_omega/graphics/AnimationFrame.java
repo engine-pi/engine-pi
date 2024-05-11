@@ -1,12 +1,10 @@
-package rocks.friedrich.engine_omega.internal.graphics;
+package rocks.friedrich.engine_omega.graphics;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-//import com.sun.corba.se.impl.orbutil.graph.Graph;
-
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Beschreibt einen Frame einer

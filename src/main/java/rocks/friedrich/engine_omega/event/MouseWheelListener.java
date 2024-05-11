@@ -18,7 +18,7 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Implementierende Klassen können auf das Drehen des Mausrades reagieren.

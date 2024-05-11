@@ -1,7 +1,7 @@
 /*
  * Engine Omega ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2011 - 2014 Michael Andonie and contributors.
+ * Copyright (c) 2011 - 2020 Michael Andonie and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,20 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.annotations;
+package rocks.friedrich.engine_omega.graphics;
 
-import java.lang.annotation.Documented;
-
-/**
- * Diese Annotation markiert Methoden, die Schüler verwenden sollen. Methoden
- * ohne <code>@API</code> sollen nicht verwendet werden!
- * <p>
- * Bisher müssen diese Methoden auch mit
- * <code>@SuppressWarnings("unused")</code> zusätzlich markiert werden.
- *
- * @author Niklas Keller {@literal <me@kelunik.com>}
- */
-@Documented
-public @interface API
+public interface RenderTarget
 {
+    void render(RenderSource source);
 }

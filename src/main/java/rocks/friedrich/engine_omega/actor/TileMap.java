@@ -21,8 +21,8 @@ package rocks.friedrich.engine_omega.actor;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.io.ImageLoader;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.io.ImageLoader;
 
 @API
 public interface TileMap

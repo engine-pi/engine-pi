@@ -2,8 +2,8 @@ package rocks.friedrich.engine_omega.animation;
 
 import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
 import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Beschreibt einen Keyframe.

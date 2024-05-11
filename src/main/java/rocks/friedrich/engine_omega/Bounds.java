@@ -16,10 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal;
+package rocks.friedrich.engine_omega;
 
-import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Ein nicht-grafisches Rectangle auf der Zeichenebene, das eine allgemeine

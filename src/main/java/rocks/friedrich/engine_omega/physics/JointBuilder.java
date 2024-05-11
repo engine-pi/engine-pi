@@ -1,7 +1,7 @@
 /*
  * Engine Omega ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2011 - 2020 Michael Andonie and contributors.
+ * Copyright (c) 2011 - 2019 Michael Andonie and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,11 +16,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.graphics;
+package rocks.friedrich.engine_omega.physics;
 
-import java.awt.Graphics2D;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.World;
+import org.jbox2d.dynamics.joints.Joint;
 
-public interface RenderSource
+public interface JointBuilder<JointType extends Joint>
 {
-    void render(Graphics2D g, int width, int height);
+    JointType createJoint(World world, Body a, Body b);
 }

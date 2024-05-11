@@ -18,8 +18,8 @@
  */
 package rocks.friedrich.engine_omega.event;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Ein einfacher Task, der einmalig mit Verzögerung ausgeführt wird.

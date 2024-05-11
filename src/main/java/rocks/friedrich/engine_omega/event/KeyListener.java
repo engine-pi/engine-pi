@@ -20,7 +20,7 @@ package rocks.friedrich.engine_omega.event;
 
 import java.awt.event.KeyEvent;
 
-import rocks.friedrich.engine_omega.internal.annotations.API;
+import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Dieses Interface wird implementiert, um auf gedrückte Tasten reagieren zu

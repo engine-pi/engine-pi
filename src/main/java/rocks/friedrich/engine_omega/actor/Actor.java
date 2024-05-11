@@ -42,11 +42,15 @@ import org.jbox2d.dynamics.joints.RevoluteJointDef;
 import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
 
+import rocks.friedrich.engine_omega.Bounds;
+import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.animation.ValueAnimator;
 import rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.collision.CollisionListener;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
@@ -59,15 +63,11 @@ import rocks.friedrich.engine_omega.event.MouseClickListener;
 import rocks.friedrich.engine_omega.event.MouseClickListenerContainer;
 import rocks.friedrich.engine_omega.event.MouseWheelListener;
 import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
-import rocks.friedrich.engine_omega.internal.Bounds;
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.physics.FixtureData;
-import rocks.friedrich.engine_omega.internal.physics.NullHandler;
-import rocks.friedrich.engine_omega.internal.physics.PhysicsData;
-import rocks.friedrich.engine_omega.internal.physics.PhysicsHandler;
-import rocks.friedrich.engine_omega.internal.physics.WorldHandler;
+import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.physics.NullHandler;
+import rocks.friedrich.engine_omega.physics.PhysicsData;
+import rocks.friedrich.engine_omega.physics.PhysicsHandler;
+import rocks.friedrich.engine_omega.physics.WorldHandler;
 
 /**
  * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.

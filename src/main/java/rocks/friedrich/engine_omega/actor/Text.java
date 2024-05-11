@@ -22,13 +22,13 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
+import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.io.FontLoader;
-import rocks.friedrich.engine_omega.internal.physics.FixtureData;
-import rocks.friedrich.engine_omega.internal.util.FontMetrics;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.io.FontLoader;
+import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.util.FontMetrics;
 
 /**
  * Zur Darstellung von Texten im Programmbildschirm.
@@ -46,7 +46,7 @@ public class Text extends Geometry
     private static FixtureData createShape(String content, double height,
             Font font)
     {
-        Vector sizeInPixels = rocks.friedrich.engine_omega.internal.util.FontMetrics
+        Vector sizeInPixels = rocks.friedrich.engine_omega.util.FontMetrics
                 .getSize(content, font);
         return FixtureBuilder.createSimpleRectangularFixture(
                 sizeInPixels.getX() * height / sizeInPixels.getY(), height);
@@ -239,7 +239,7 @@ public class Text extends Geometry
     @API
     public double getWidth()
     {
-        Vector sizeInPixels = rocks.friedrich.engine_omega.internal.util.FontMetrics
+        Vector sizeInPixels = rocks.friedrich.engine_omega.util.FontMetrics
                 .getSize(content, font);
         return sizeInPixels.getX() * height / sizeInPixels.getY();
     }
@@ -247,7 +247,7 @@ public class Text extends Geometry
     @API
     public void setWidth(double width)
     {
-        Vector sizeInPixels = rocks.friedrich.engine_omega.internal.util.FontMetrics
+        Vector sizeInPixels = rocks.friedrich.engine_omega.util.FontMetrics
                 .getSize(content, font);
         this.setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
     }

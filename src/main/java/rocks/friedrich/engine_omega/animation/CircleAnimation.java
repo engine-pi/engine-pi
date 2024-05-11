@@ -5,8 +5,8 @@ import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.animation.interpolation.CosinusDouble;
 import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.animation.interpolation.SinusDouble;
+import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.event.AggregateFrameUpdateListener;
-import rocks.friedrich.engine_omega.internal.annotations.API;
 
 /**
  * Animiert einen Actor in einem Kreis.

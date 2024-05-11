@@ -16,9 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal.graphics;
+package rocks.friedrich.engine_omega.graphics;
 
-public interface RenderTarget
+import java.awt.Graphics2D;
+
+public interface RenderSource
 {
-    void render(RenderSource source);
+    void render(Graphics2D g, int width, int height);
 }

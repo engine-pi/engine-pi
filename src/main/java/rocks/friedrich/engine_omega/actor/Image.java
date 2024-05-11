@@ -23,10 +23,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import rocks.friedrich.engine_omega.internal.FixtureBuilder;
-import rocks.friedrich.engine_omega.internal.annotations.API;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.io.ImageLoader;
+import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.io.ImageLoader;
 
 /**
  * Ein Image als grafische Repräsentation einer Bilddatei, die gezeichnet werden

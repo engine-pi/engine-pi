@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.internal.io;
+package rocks.friedrich.engine_omega.io;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import rocks.friedrich.engine_omega.internal.util.Logger;
+import rocks.friedrich.engine_omega.util.Logger;
 
 /**
  * Diese IO Klasse schreibt Bilder.

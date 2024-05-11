@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.internal;
+package rocks.friedrich.engine_omega;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,7 @@ import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.Vec2;
 
-import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.internal.physics.FixtureData;
+import rocks.friedrich.engine_omega.physics.FixtureData;
 
 public final class FixtureBuilder
 {

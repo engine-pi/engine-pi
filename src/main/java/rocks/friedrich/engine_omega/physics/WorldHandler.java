@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.internal.physics;
+package rocks.friedrich.engine_omega.physics;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,10 +26,10 @@ import org.jbox2d.dynamics.contacts.ContactEdge;
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.Joint;
+import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.collision.CollisionEvent;
 import rocks.friedrich.engine_omega.collision.CollisionListener;
-import rocks.friedrich.engine_omega.internal.annotations.Internal;
-import rocks.friedrich.engine_omega.internal.util.Logger;
+import rocks.friedrich.engine_omega.util.Logger;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
