@@ -114,6 +114,37 @@ public class ImageUtil
     }
 
     /**
+     * Ersetzt Farben in einem Bild entsprechend zweier Felder (Arrays), die die
+     * {@link String Quell-} und {@link String Zielfarben} in hexadezimaler
+     * Notation enthalten, und gibt dann das Ergebnis zurück.
+     *
+     * <ul>
+     *
+     * <li>Quelle: <a href=
+     * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L490-L513">LITIengine:
+     * src/main/java/de/gurkenlabs/litiengine/util/Imaging.java Zeile
+     * 490-513</a></li>
+     *
+     * <li>Quelle: <a href=
+     * "https://codereview.stackexchange.com/a/146611">codereview.stackexchange.com</a></li>
+     *
+     * </ul>
+     *
+     * @param bufferedImage Das Originalbild.
+     * @param to            Ein Feld, das die Quellfarben enthält.
+     * @param from          Ein Feld, das die Zeilfarben enthält.
+     *
+     * @return Eine neue Version des Originalbildes, bei der die Quellfarben
+     *         durch die Zielfarben ersetzt werden.
+     */
+    public static BufferedImage replaceColors(final BufferedImage bufferedImage,
+            String[] from, String[] to)
+    {
+        return replaceColors(bufferedImage, ColorUtil.decode(from),
+                ColorUtil.decode(to));
+    }
+
+    /**
      * Ersetzt Farben in einem Bild entsprechend einer {@link Map}, die Quell-
      * und Zielfarben enthält, und gibt dann das Ergebnis zurück.
      *

@@ -28,6 +28,7 @@ package rocks.friedrich.engine_omega.util;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Arrays;
 
 /**
  * Statische Klasse, die Hilfsmethoden zur Farbberechnung und -manipulation
@@ -160,6 +161,12 @@ public final class ColorUtil
                             HEX_STRING_LENGTH_ALPHA });
             return null;
         }
+    }
+
+    public static Color[] decode(String[] hex)
+    {
+        return Arrays.stream(hex).map(Color::decode)
+                .toArray(Color[]::new);
     }
 
     /**

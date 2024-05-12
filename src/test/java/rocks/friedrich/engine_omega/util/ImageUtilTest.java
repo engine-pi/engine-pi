@@ -55,7 +55,7 @@ public class ImageUtilTest
         static BufferedImage expected = ImageLoader.load("images/rgb.png");
 
         @Test
-        public void testArgArray() throws IOException
+        public void testColorArray() throws IOException
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
                     new Color[]
@@ -64,7 +64,18 @@ public class ImageUtilTest
         }
 
         @Test
-        public void testArgMap() throws IOException
+        public void testStringArray() throws IOException
+        {
+            BufferedImage actual = ImageUtil.replaceColors(input,
+                    new String[]
+                    { "#ffffff", "#7F7F7F", "#000000" },
+                    new String[]
+                    { "#FF0000", "#00FF00", "#0000Ff" });
+            assertImageEquals(expected, actual);
+        }
+
+        @Test
+        public void testMap() throws IOException
         {
             HashMap<Color, Color> map = new HashMap<>();
             map.put(white, red);
