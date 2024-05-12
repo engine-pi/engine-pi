@@ -13,12 +13,12 @@ import rocks.friedrich.engine_omega.sound.LoopedTrack;
 import rocks.friedrich.engine_omega.sound.MusicPlayback;
 import rocks.friedrich.engine_omega.sound.SinglePlayTrack;
 import rocks.friedrich.engine_omega.sound.Sound;
-import rocks.friedrich.engine_omega.sound.SoundEngine;
+import rocks.friedrich.engine_omega.sound.Jukebox;
 import rocks.friedrich.engine_omega.sound.Track;
 
 public class SoundEngineExample extends Scene implements KeyListener
 {
-    SoundEngine soundEngine;
+    Jukebox soundEngine;
 
     Track casinoBling;
 
@@ -32,7 +32,7 @@ public class SoundEngineExample extends Scene implements KeyListener
             throws IOException, UnsupportedAudioFileException
     {
         Game.start(200, 300, this);
-        soundEngine = Game.getSoundEngine();
+        soundEngine = Game.getJukebox();
         casinoBling = loadSinglePlayTrack("casino-bling-achievement.mp3");
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
         gameBonus = loadSinglePlayTrack("arcade-video-game-bonus.mp3");

@@ -38,17 +38,16 @@ import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 
 /**
- * This {@code SoundEngine} class provides all methods to play back sounds and
- * music in your game. It allows to define the 2D coordinates of the sound or
- * even pass in the source entity of the sound which will adjust the position
- * according to the position of the entity.
+ * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge und Musik im Spiel
+ * wiederzugeben.
  *
  * <p>
- * The sound engine supports .wav, .mp3 and .ogg by default. If you need other
- * file extensions, you have to write an own SPI implementation and inject it in
- * your project.
+ * Die {@link Jukebox} kann standardmäßig {@code .wav}, {@code .mp3} und
+ * {@code .ogg} Dateien abspielen. Wenn Sie andere Dateierweiterungen benötigen,
+ * müssen Sie eine eigene SPI-Implementierung schreiben und sie in Ihr Projekt
+ * einbauen.
  */
-public final class SoundEngine
+public final class Jukebox
 {
     public static final int DEFAULT_MAX_DISTANCE = 150;
 
@@ -64,8 +63,7 @@ public final class SoundEngine
                 }
             });
 
-    private static final Logger log = Logger
-            .getLogger(SoundEngine.class.getName());
+    private static final Logger log = Logger.getLogger(Jukebox.class.getName());
 
     private int maxDist = DEFAULT_MAX_DISTANCE;
 

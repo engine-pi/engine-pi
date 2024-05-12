@@ -253,7 +253,7 @@ public abstract class SoundPlayback implements Runnable
 
     void play()
     {
-        SoundEngine.EXECUTOR.submit(this);
+        Jukebox.EXECUTOR.submit(this);
     }
 
     /**

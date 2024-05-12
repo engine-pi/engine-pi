@@ -41,7 +41,7 @@ import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.io.ImageWriter;
-import rocks.friedrich.engine_omega.sound.SoundEngine;
+import rocks.friedrich.engine_omega.sound.Jukebox;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle Spiel.
@@ -66,7 +66,10 @@ public final class Game
                                                           // scaling on windows
     }
 
-    private static final SoundEngine soundEngine = new SoundEngine();
+    /**
+     * Eine statische Instanz der {@link Jukebox}.
+     */
+    private static final Jukebox jukebox = new Jukebox();
 
     /**
      * Wird debug auf <code>true</code> gesetzt, so werden ausführliche
@@ -638,13 +641,14 @@ public final class Game
     }
 
     /**
-     * Gibt die statische, d. h. globale Instanz der Sound Engine zurück.
+     * Gibt die statische, d. h. globale Instanz der {@link Jukebox} zurück, die
+     * Geräusche und Musik abpielen kann.
      *
-     * @return Eine Instanze der Sound Engine.
+     * @return Eine Instanze der {@link Jukebox}.
      */
-    public static SoundEngine getSoundEngine()
+    public static Jukebox getJukebox()
     {
-        return soundEngine;
+        return jukebox;
     }
 
     /**

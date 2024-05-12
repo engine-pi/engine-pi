@@ -28,11 +28,8 @@ package rocks.friedrich.engine_omega.sound;
 import javax.sound.sampled.AudioFormat;
 
 /**
- * The {@code Track} class defines a sequence in which music {@code Sounds}
- * should be played back by the engine.
- *
- * <p>
- * This is useful to further define how music is played in the engine.
+ * Die Klasse {@link Track} definiert eine Reihenfolge, in der Klänge
+ * ({@link Sound}s) von der {@link Jukebox} wiedergegeben werden sollen.
  */
 public interface Track extends Iterable<Sound>
 {
