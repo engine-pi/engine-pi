@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.5.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.5.0) - 2024-05-12
+
+<small>[Compare with v0.4.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.4.0...v0.5.0)</small>
+
+### Added
+
+- Add color and math util from the LITIengine ([efd7ca3](https://github.com/Josef-Friedrich/engine-omega/commit/efd7ca31b476ce649addffcddb16bc356d52c0da) by Josef Friedrich).
+- Add ImageUtil from the LITIengine ([99b9beb](https://github.com/Josef-Friedrich/engine-omega/commit/99b9beb50e85d5c796b5e6959aaadb9c30e03f4a) by Josef Friedrich).
+- Add the LITIengine sound engine ([f687c1a](https://github.com/Josef-Friedrich/engine-omega/commit/f687c1a4233f1c9c56acc4567da8b44471e8c3b2) by Josef Friedrich).
+
 ## [v0.4.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.4.0) - 2024-05-09
 
 <small>[Compare with v0.3.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.3.0...v0.4.0)</small>
