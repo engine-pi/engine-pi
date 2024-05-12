@@ -63,18 +63,6 @@
             <version>2.3.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.11.0-M1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.11.0-M1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.soundlibs</groupId>
             <artifactId>jorbis</artifactId>
             <version>0.0.17.4</version>
@@ -98,6 +86,18 @@
             <version>1.9.5.4</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -115,8 +115,9 @@
                     </includes>
                 </configuration>
             </plugin>
+            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
             <plugin>
-                <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.7.1</version>
@@ -126,6 +127,10 @@
                     assembly artifact having the same format as the packaging of the current Maven
                     project will replace the file for this main project artifact. -->
                     <appendAssemblyId>false</appendAssemblyId>
+                    <!-- https://stackoverflow.com/a/47871545 -->
+                    <descriptors>
+                        <descriptor>jar-with-deps-with-exclude.xml</descriptor>
+                    </descriptors>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
