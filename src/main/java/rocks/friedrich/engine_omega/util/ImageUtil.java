@@ -46,12 +46,14 @@ import javax.imageio.ImageIO;
 public class ImageUtil
 {
     /**
-     * Creates a new {@code BufferedImage} instance from the specified image.
+     * Erzeugt eine neue {@code BufferedImage} Instanze des Übergabeparameters.
      *
      * https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L390-L401
      *
-     * @param image The image to be copied.
-     * @return A {@link BufferedImage} that is a copy of the input image.
+     * @param image Das zu kopierende Bild.
+     *
+     * @return Ein {@link BufferedImage}, das eine Kopie des Eingabeparameters
+     *         ist.
      */
     public static BufferedImage copy(BufferedImage image)
     {
@@ -63,8 +65,8 @@ public class ImageUtil
     }
 
     /**
-     * Ersetzt Farben in einem Bild entsprechend zweier Felder, die die
-     * {@link Color Quell-} und {@link Color Zielfarben} enthälten, und gibt
+     * Ersetzt Farben in einem Bild entsprechend zweier Felder (Arrays), die die
+     * {@link Color Quell-} und {@link Color Zielfarben} enthalten, und gibt
      * dann das Ergebnis zurück.
      *
      * <ul>
@@ -151,9 +153,21 @@ public class ImageUtil
     }
 
     /**
-     * Vergrößert ein Bild, indem die Pixel vervielfacht werden.
+     * Vergrößert ein Bild, indem die Pixel vervielfacht werden. Es wird dabei
+     * die Interpolationsmethode {@link AffineTransformOp#TYPE_NEAREST_NEIGHBOR}
+     * angewendet.
      *
-     * https://stackoverflow.com/a/4216635
+     * Entsprechender Code in der <a href=
+     * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L558-L764">LITIengine</a>.
+     *
+     * <a href="https://stackoverflow.com/a/4216635">stackoverflow.com</a>
+     *
+     * @param image  Das Originalbild.
+     * @param factor Der Faktor, um den das Bild vergrößert werden soll. Der
+     *               Faktor 2 verwandelt beispielsweise ein Pixel in vier Pixel
+     *               nämlich {@code 2x2}.
+     *
+     * @return Das vergrößerte Bild.
      */
     public static BufferedImage scale(BufferedImage image, int factor)
     {
