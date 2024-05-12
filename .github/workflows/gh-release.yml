@@ -9,7 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    steps:
       # https://github.com/actions/checkout
       - name: Checkout the repository
         uses: actions/checkout@v4
@@ -19,12 +18,12 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
+      - name: Package using Maven
+        run: mvn package
       # https://github.com/softprops/action-gh-release
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            target/engine-omega.jar
-            target/engine-omega-sources.jar
-            target/engine-omega-javadoc.jar
+          # The action uses the javascript glob library
+          files: target/*.jar
