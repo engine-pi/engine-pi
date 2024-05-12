@@ -101,8 +101,9 @@
     </dependencies>
 
     <build>
-    <!-- Default is ${artifactId}-${version}, to get jar files without the version use ${artifactId} -->
-    <finalName>${project.artifactId}-${version}</finalName>
+        <!-- Default is ${project.artifactId}-${project.version}, to get jar files without the
+        version use ${project.artifactId} -->
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
