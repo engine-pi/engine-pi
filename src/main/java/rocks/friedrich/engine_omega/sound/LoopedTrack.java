@@ -31,60 +31,60 @@ import javax.sound.sampled.AudioFormat;
 
 public class LoopedTrack implements Track, Iterator<Sound>
 {
-  private final Sound track;
+    private final Sound track;
 
-  /**
-   * Initializes a new {@code LoopedTrack} for the specified sound.
-   *
-   * @param sound The sound to be played by this track.
-   */
-  public LoopedTrack(Sound sound)
-  {
-    this.track = Objects.requireNonNull(sound);
-  }
+    /**
+     * Initializes a new {@code LoopedTrack} for the specified sound.
+     *
+     * @param sound The sound to be played by this track.
+     */
+    public LoopedTrack(Sound sound)
+    {
+        this.track = Objects.requireNonNull(sound);
+    }
 
-  @Override
-  public Iterator<Sound> iterator()
-  {
-    return this;
-  }
+    @Override
+    public Iterator<Sound> iterator()
+    {
+        return this;
+    }
 
-  @Override
-  public AudioFormat getFormat()
-  {
-    return this.track.getFormat();
-  }
+    @Override
+    public AudioFormat getFormat()
+    {
+        return this.track.getFormat();
+    }
 
-  // implement the iterator here to avoid allocating new objects
-  // they don't have any state data anyway
-  @Override
-  public boolean hasNext()
-  {
-    return true;
-  }
+    // implement the iterator here to avoid allocating new objects
+    // they don't have any state data anyway
+    @Override
+    public boolean hasNext()
+    {
+        return true;
+    }
 
-  @Override
-  public Sound next()
-  {
-    return this.track;
-  }
+    @Override
+    public Sound next()
+    {
+        return this.track;
+    }
 
-  @Override
-  public boolean equals(Object anObject)
-  {
-    return this == anObject
-        || anObject instanceof LoopedTrack lt && lt.track.equals(this.track);
-  }
+    @Override
+    public boolean equals(Object anObject)
+    {
+        return this == anObject || anObject instanceof LoopedTrack lt
+                && lt.track.equals(this.track);
+    }
 
-  @Override
-  public int hashCode()
-  {
-    return this.track.hashCode();
-  }
+    @Override
+    public int hashCode()
+    {
+        return this.track.hashCode();
+    }
 
-  @Override
-  public String toString()
-  {
-    return "looped track: " + this.track;
-  }
+    @Override
+    public String toString()
+    {
+        return "looped track: " + this.track;
+    }
 }
