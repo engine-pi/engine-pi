@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SinglePlayTrack.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/IntroTrack.java
  *
  * MIT License
  *
@@ -26,55 +26,58 @@
 package rocks.friedrich.engine_omega.sound;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
-
+import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
 /**
- * A {@code Track} that plays a sound once and then stops.
+ * A {@code Track} that plays an intro sound and then loops the specified music
+ * sound.
  */
-public class SinglePlayTrack implements Track
+public class IntroTrack implements Track
 {
-    private Sound sound;
+    private final Sound intro;
+
+    private final Sound loop;
+
+    /**
+     * Initializes a new {@code IntroTrack} for the specified sound.
+     *
+     * @param intro The sound to be played as intro.
+     * @param loop  The sound to be looped.
+     */
+    public IntroTrack(Sound intro, Sound loop)
+    {
+        Objects.requireNonNull(intro);
+        Objects.requireNonNull(loop);
+        if (!intro.getFormat().matches(loop.getFormat()))
+        {
+            throw new IllegalArgumentException(
+                    intro.getFormat() + " does not match " + loop.getFormat());
+        }
+        this.intro = intro;
+        this.loop = loop;
+    }
 
     private class Iter implements Iterator<Sound>
     {
-        private boolean hasNext = true;
+        private boolean first = true;
 
         @Override
         public boolean hasNext()
         {
-            return this.hasNext;
+            return true;
         }
 
         @Override
         public Sound next()
         {
-            if (!this.hasNext)
+            if (this.first)
             {
-                throw new NoSuchElementException();
+                this.first = false;
+                return IntroTrack.this.intro;
             }
-            this.hasNext = false;
-            return SinglePlayTrack.this.sound;
+            return IntroTrack.this.loop;
         }
-    }
-    /**
-     * Initializes a new {@code SinglePlayTrack} for the specified sound.
-     *
-     * @param soundName The name of the sound to be played by this track.
-     */
-    // public SinglePlayTrack(String soundName) {
-    // this();
-    // }
-
-    /**
-     * Initializes a new {@code SinglePlayTrack} for the specified sound.
-     *
-     * @param sound The sound to be played by this track.
-     */
-    public SinglePlayTrack(Sound sound)
-    {
-        this.sound = sound;
     }
 
     @Override
@@ -86,25 +89,42 @@ public class SinglePlayTrack implements Track
     @Override
     public AudioFormat getFormat()
     {
-        return this.sound.getFormat();
+        return this.loop.getFormat();
+    }
+
+    public Sound getIntro()
+    {
+        return this.intro;
+    }
+
+    public Sound getLoop()
+    {
+        return this.loop;
     }
 
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(Object anObject)
     {
-        return obj instanceof SinglePlayTrack spt && this.sound == spt.sound;
+        if (this == anObject)
+        {
+            return true;
+        }
+        if (anObject instanceof IntroTrack it)
+        {
+            return this.intro == it.intro && this.loop == it.loop;
+        }
+        return false;
     }
 
     @Override
     public int hashCode()
     {
-        // add a constant to avoid collisions with LoopedTrack
-        return this.sound.hashCode() + 0xdb9857d0;
+        return this.loop.hashCode() * 31 + this.intro.hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "track: " + this.sound.getName() + " (not looped)";
+        return "looped track: " + this.loop + ", with intro: " + this.intro;
     }
 }

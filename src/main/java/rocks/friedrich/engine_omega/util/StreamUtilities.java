@@ -1,4 +1,4 @@
-/**
+/*
  * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/io/StreamUtilities.java
  *
  * MIT License
