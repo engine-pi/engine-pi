@@ -31,6 +31,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.awt.Color;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -66,40 +68,38 @@ public class ColorUtilTest
                 Arguments.of("#0000ff", Color.BLUE));
     }
 
-    @Test
-    public void testRedFromAlphaHexString()
+    @Nested
+    public class DecodeTest
     {
-        String red200 = "#c8ff0000";
-        Color redDecoded = ColorUtil.decode(red200);
-        Color alphaRed = new Color(255, 0, 0, 200);
-        assertEquals(alphaRed.getRed(), redDecoded.getRed());
-    }
+        String red200 = "#ff0000c8";
 
-    @Test
-    public void testGreenFromAlphaHexString()
-    {
-        String red200 = "#c8ff0000";
         Color redDecoded = ColorUtil.decode(red200);
-        Color alphaRed = new Color(255, 0, 0, 200);
-        assertEquals(alphaRed.getGreen(), redDecoded.getGreen());
-    }
 
-    @Test
-    public void testBlueFromAlphaHexString()
-    {
-        String red200 = "#c8ff0000";
-        Color redDecoded = ColorUtil.decode(red200);
         Color alphaRed = new Color(255, 0, 0, 200);
-        assertEquals(alphaRed.getBlue(), redDecoded.getBlue());
-    }
 
-    @Test
-    public void testAlphaFromAlphaHexString()
-    {
-        String red200 = "#c8ff0000";
-        Color redDecoded = ColorUtil.decode(red200);
-        Color alphaRed = new Color(255, 0, 0, 200);
-        assertEquals(alphaRed.getAlpha(), redDecoded.getAlpha());
+        @Test
+        public void testRedFromAlphaHexString()
+        {
+            assertEquals(alphaRed.getRed(), redDecoded.getRed());
+        }
+
+        @Test
+        public void testGreenFromAlphaHexString()
+        {
+            assertEquals(alphaRed.getGreen(), redDecoded.getGreen());
+        }
+
+        @Test
+        public void testBlueFromAlphaHexString()
+        {
+            assertEquals(alphaRed.getBlue(), redDecoded.getBlue());
+        }
+
+        @Test
+        public void testAlphaFromAlphaHexString()
+        {
+            assertEquals(alphaRed.getAlpha(), redDecoded.getAlpha());
+        }
     }
 
     @ParameterizedTest
@@ -113,9 +113,9 @@ public class ColorUtilTest
 
     private static Stream<Arguments> getSolidColorFromAlphaHexString()
     {
-        return Stream.of(Arguments.of("#c8ff0000", true, new Color(228, 0, 0)),
-                Arguments.of("#c800ff00", true, new Color(0, 228, 0)),
-                Arguments.of("#c80000ff", true, new Color(0, 0, 228)),
+        return Stream.of(Arguments.of("#ff0000c8", true, new Color(228, 0, 0)),
+                Arguments.of("#00ff00c8", true, new Color(0, 228, 0)),
+                Arguments.of("#0000ffc8", true, new Color(0, 0, 228)),
                 Arguments.of("", true, null), Arguments.of(null, true, null));
     }
 
@@ -154,9 +154,9 @@ public class ColorUtilTest
         String redEncoded = ColorUtil.encode(new Color(255, 0, 0, 200));
         String greenEncoded = ColorUtil.encode(new Color(0, 255, 0, 200));
         String blueEncoded = ColorUtil.encode(new Color(0, 0, 255, 200));
-        assertEquals("#c8ff0000", redEncoded);
-        assertEquals("#c800ff00", greenEncoded);
-        assertEquals("#c80000ff", blueEncoded);
+        assertEquals("#ff0000c8", redEncoded);
+        assertEquals("#00ff00c8", greenEncoded);
+        assertEquals("#0000ffc8", blueEncoded);
     }
 
     @ParameterizedTest(name = "testRgbBounds {0}, colorValue={1}, expectedRgb={2}")
