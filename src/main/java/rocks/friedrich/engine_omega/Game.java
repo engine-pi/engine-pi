@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
@@ -272,6 +273,20 @@ public final class Game
                 (double) mouseWheelEvent.getPreciseWheelRotation());
         gameLogic.enqueue(
                 () -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
+    }
+
+    public static FrameUpdateListener addFrameUpdateListener(
+            FrameUpdateListener listener)
+    {
+        gameLogic.getFrameUpdateListener().add(listener);
+        return listener;
+    }
+
+    public static FrameUpdateListener removeFrameUpdateListener(
+            FrameUpdateListener listener)
+    {
+        gameLogic.getFrameUpdateListener().remove(listener);
+        return listener;
     }
 
     /**

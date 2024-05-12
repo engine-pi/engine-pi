@@ -33,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.event.EventListeners;
+import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.graphics.RenderTarget;
 
 public final class GameLogic
@@ -79,6 +81,11 @@ public final class GameLogic
      */
     private final Queue<Runnable> dispatchableQueue = new ConcurrentLinkedQueue<>();
 
+    /**
+     * Für globale Beobachter, die auf regieren Bildaktualisierung.
+     */
+    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+
     private double frameDuration;
 
     public GameLogic(RenderTarget render, Supplier<Scene> currentScene,
@@ -107,6 +114,9 @@ public final class GameLogic
                 double deltaSeconds = Math.min(2 * DESIRED_FRAME_DURATION,
                         frameDuration);
                 scene.step(deltaSeconds, threadPoolExecutor::submit);
+                // Beobachter der Bildaktualisierung.
+                frameUpdateListeners.invoke(
+                        listener -> listener.onFrameUpdate(deltaSeconds));
                 scene.getCamera().onFrameUpdate();
                 scene.invokeFrameUpdateListeners(deltaSeconds);
                 Runnable runnable = dispatchableQueue.poll();
@@ -157,6 +167,11 @@ public final class GameLogic
             // noinspection UnnecessaryReturnStatement
             return; // if interrupted again, don't wait
         }
+    }
+
+    public EventListeners<FrameUpdateListener> getFrameUpdateListener()
+    {
+        return frameUpdateListeners;
     }
 
     public void render(RenderTarget renderTarget)
