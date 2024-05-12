@@ -637,6 +637,11 @@ public final class Game
         debug = value;
     }
 
+    /**
+     * Gibt die statische, d. h. globale Instanz der Sound Engine zurück.
+     *
+     * @return Eine Instanze der Sound Engine.
+     */
     public static SoundEngine getSoundEngine()
     {
         return soundEngine;
