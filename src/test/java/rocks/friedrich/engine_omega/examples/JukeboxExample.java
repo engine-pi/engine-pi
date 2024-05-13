@@ -16,9 +16,9 @@ import rocks.friedrich.engine_omega.sound.Sound;
 import rocks.friedrich.engine_omega.sound.Jukebox;
 import rocks.friedrich.engine_omega.sound.Track;
 
-public class SoundEngineExample extends Scene implements KeyListener
+public class JukeboxExample extends Scene implements KeyListener
 {
-    Jukebox soundEngine;
+    Jukebox jukebox;
 
     Track casinoBling;
 
@@ -28,11 +28,10 @@ public class SoundEngineExample extends Scene implements KeyListener
 
     Track levelMusic;
 
-    public SoundEngineExample()
-            throws IOException, UnsupportedAudioFileException
+    public JukeboxExample() throws IOException, UnsupportedAudioFileException
     {
         Game.start(200, 300, this);
-        soundEngine = Game.getJukebox();
+        jukebox = Game.getJukebox();
         casinoBling = loadSinglePlayTrack("casino-bling-achievement.mp3");
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
         gameBonus = loadSinglePlayTrack("arcade-video-game-bonus.mp3");
@@ -64,19 +63,19 @@ public class SoundEngineExample extends Scene implements KeyListener
         switch (keyEvent.getKeyCode())
         {
         case KeyEvent.VK_1:
-            soundEngine.playMusic(casinoBling, false, false);
+            jukebox.playMusic(casinoBling, false, false);
             break;
 
         case KeyEvent.VK_2:
-            soundEngine.playMusic(gameReached, false, false);
+            jukebox.playMusic(gameReached, false, false);
             break;
 
         case KeyEvent.VK_3:
-            soundEngine.playMusic(gameBonus, false, false);
+            jukebox.playMusic(gameBonus, false, false);
             break;
 
         case KeyEvent.VK_4:
-            soundEngine.playMusic(levelMusic, false, false);
+            jukebox.playMusic(levelMusic, false, false);
             break;
 
         case KeyEvent.VK_PLUS:
@@ -91,10 +90,10 @@ public class SoundEngineExample extends Scene implements KeyListener
 
     private void changeVolume(float diff)
     {
-        MusicPlayback playback = soundEngine.getMusic();
+        MusicPlayback playback = jukebox.getMusic();
         if (playback != null)
         {
-            playback.setVolume(soundEngine.getMusic().getVolume() - 0.1f);
+            playback.setVolume(jukebox.getMusic().getVolume() - 0.1f);
         }
     }
 
@@ -111,6 +110,6 @@ public class SoundEngineExample extends Scene implements KeyListener
     public static void main(String[] args)
             throws IOException, UnsupportedAudioFileException
     {
-        new SoundEngineExample();
+        new JukeboxExample();
     }
 }
