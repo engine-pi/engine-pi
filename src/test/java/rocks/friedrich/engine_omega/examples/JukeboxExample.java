@@ -85,6 +85,17 @@ public class JukeboxExample extends Scene implements KeyListener
         case KeyEvent.VK_MINUS:
             decreaseVolume();
             break;
+
+        case KeyEvent.VK_S:
+            jukebox.stopMusic();
+            break;
+
+        case KeyEvent.VK_L:
+            for (MusicPlayback playback : jukebox.getAllMusic())
+            {
+                System.out.println(playback);
+            }
+            break;
         }
     }
 

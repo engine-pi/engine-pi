@@ -193,9 +193,9 @@ public final class Jukebox
     }
 
     /**
-     * Gets a list of all music playbacks.
+     * Liefert eine Liste mit allen Musikwiedergaben.
      *
-     * @return A list of all music playbacks.
+     * @return Eine Liste mit allen Musikwiedergaben.
      */
     public synchronized Collection<MusicPlayback> getAllMusic()
     {
@@ -215,7 +215,7 @@ public final class Jukebox
     }
 
     /**
-     * Stops the playback of the current background music.
+     * Stoppt die Wiedergabe der aktuellen Hintergrundmusik.
      */
     public synchronized void stopMusic()
     {
