@@ -26,6 +26,10 @@
 package rocks.friedrich.engine_omega.util;
 
 import java.awt.Color;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Transparency;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -45,6 +49,8 @@ import javax.imageio.ImageIO;
  */
 public class ImageUtil
 {
+    private static GraphicsConfiguration graphicsConfig;
+
     /**
      * Erzeugt eine neue {@code BufferedImage} Instanze des Übergabeparameters.
      *
@@ -215,5 +221,52 @@ public class ImageUtil
             throws IOException
     {
         ImageIO.write(image, "png", new File(pathname));
+    }
+
+    /**
+     * Gets an empty {@link BufferedImage} with the given size.
+     *
+     * @param width  the width
+     * @param height the height
+     * @return an empty {@link BufferedImage} with the given size
+     */
+    public static BufferedImage getCompatibleImage(final int width,
+            final int height)
+    {
+        if (width == 0 || height == 0)
+        {
+            return null;
+        }
+        if (graphicsConfig == null)
+        {
+            final GraphicsEnvironment env = GraphicsEnvironment
+                    .getLocalGraphicsEnvironment();
+            final GraphicsDevice device = env.getDefaultScreenDevice();
+            graphicsConfig = device.getDefaultConfiguration();
+        }
+        return graphicsConfig.createCompatibleImage(width, height,
+                Transparency.TRANSLUCENT);
+    }
+
+    /**
+     * Creates a compatible buffered image that contains the source image.
+     *
+     * @param image the source image
+     * @return the compatible buffered image
+     */
+    public static BufferedImage toCompatibleImage(final BufferedImage image)
+    {
+        if (image == null || image.getWidth() == 0 || image.getHeight() == 0)
+        {
+            return image;
+        }
+        final BufferedImage compatibleImg = getCompatibleImage(image.getWidth(),
+                image.getHeight());
+        if (compatibleImg == null)
+        {
+            return null;
+        }
+        compatibleImg.createGraphics().drawImage(image, 0, 0, null);
+        return compatibleImg;
     }
 }
