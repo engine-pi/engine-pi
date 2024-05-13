@@ -82,7 +82,7 @@ public final class GameLogic
     private final Queue<Runnable> dispatchableQueue = new ConcurrentLinkedQueue<>();
 
     /**
-     * Für globale Beobachter, die auf regieren Bildaktualisierung.
+     * Für globale Beobachter, die auf Bildaktualisierung reagieren.
      */
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 

@@ -1389,7 +1389,8 @@ public abstract class Actor
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
      *
-     * @param x neue <code>getX</code>-Koordinate
+     * @param x neue x-Koordinate
+     *
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setY(double)
@@ -1405,7 +1406,8 @@ public abstract class Actor
      * Raumobjekt nicht rechteckig sein, so wird die Position der linken unteren
      * Ecke des umschließenden Rechtecks genommen.
      *
-     * @return <code>getY</code>-Koordinate
+     * @return Die y-Koordinate
+     *
      * @see #getX()
      * @see #getPosition()
      */
@@ -1557,9 +1559,11 @@ public abstract class Actor
      * @param time           Die Animationszeit in Sekunden
      * @param toOpacityValue Der Opacity-Wert, zu dem innerhalb von {@code time}
      *                       zu interpolieren ist.
+     *
      * @return Ein {@code ValueAnimator}, der diese Animation ausführt. Der
      *         Animator ist bereits aktiv, es muss nichts an dem Objekt getan
      *         werden, um die Animation auszuführen.
+     *
      * @see rocks.friedrich.engine_omega.animation.interpolation.EaseInOutDouble
      */
     @API

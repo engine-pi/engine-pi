@@ -262,7 +262,7 @@ public final class Game
 
     /**
      * Diese Methode wird immer dann ausgeführt, wenn das Mausrad bewegt wurde
-     * und ein MouseWheelEvent registriert wurde.
+     * und ein {@code java.awt.event.MouseWheelEvent} registriert wurde.
      *
      * @param mouseWheelEvent das Event.
      */
@@ -275,18 +275,37 @@ public final class Game
                 () -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
     }
 
+    /**
+     * Registiert einen statischen, d. h. globalen Beobachter, der auf
+     * Bildaktualisierungen reagiert.
+     *
+     * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
+     * @return Derselbe Beobachter als als Eingabeparameter angegeben. Kann
+     *         nützlich sein, wenn der Beobachter als Lambda-Ausdruck angegeben
+     *         wird. Dieser Ausdruck kann dann mit dem Datentyp
+     *         {@FrameUpdateListener} einer lokalen Variablen bzw. einem
+     *         Attribut zugeweisen werden.
+     */
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
     {
+        if (gameLogic == null)
+        {
+            throw new RuntimeException("Das Spiel läuft noch nicht");
+        }
         gameLogic.getFrameUpdateListener().add(listener);
         return listener;
     }
 
-    public static FrameUpdateListener removeFrameUpdateListener(
-            FrameUpdateListener listener)
+    /**
+     * Meldet einen statischen, d. h. globalen Beobachter ab, der auf
+     * Bildaktualisierungen reagiert.
+     *
+     * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
+     */
+    public static void removeFrameUpdateListener(FrameUpdateListener listener)
     {
         gameLogic.getFrameUpdateListener().remove(listener);
-        return listener;
     }
 
     /**
@@ -433,8 +452,8 @@ public final class Game
     /**
      * Setzt die Größe des Engine-Fensters.
      *
-     * @param width  Die neue Breite des Engine-Fensters in px.
-     * @param height Die neue Höhe des Engine-Fensters in px.
+     * @param width  Die neue Breite des Engine-Fensters in Pixel.
+     * @param height Die neue Höhe des Engine-Fensters in Pixel.
      */
     @API
     public static void setFrameSize(int width, int height)

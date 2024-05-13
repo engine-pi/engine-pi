@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.6.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.6.0) - 2024-05-13
+
+<small>[Compare with v0.5.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.5.0...v0.6.0)</small>
+
+### Added
+
+- Add static global frame update listener ([2866890](https://github.com/Josef-Friedrich/engine-omega/commit/286689046998c9a24413bcd076624f6b8e00b055) by Josef Friedrich).
+
+### Changed
+
+- Change the input and output format of color methods dealing with hexadecimal colors
+  from `AARRGGBB` to `RRGGBBAA`
+  ([51dfa0f](https://github.com/Josef-Friedrich/engine-omega/commit/51dfa0f257c8dc75ad93afd151b32fd2ce74a8a9) by Josef Friedrich).
+
 ## [v0.5.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.5.0) - 2024-05-12
 
 <small>[Compare with v0.4.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.4.0...v0.5.0)</small>
