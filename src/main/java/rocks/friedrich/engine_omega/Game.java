@@ -283,7 +283,7 @@ public final class Game
      * @return Derselbe Beobachter als als Eingabeparameter angegeben. Kann
      *         nützlich sein, wenn der Beobachter als Lambda-Ausdruck angegeben
      *         wird. Dieser Ausdruck kann dann mit dem Datentyp
-     *         {@FrameUpdateListener} einer lokalen Variablen bzw. einem
+     *         {@link FrameUpdateListener} einer lokalen Variablen bzw. einem
      *         Attribut zugeweisen werden.
      */
     public static FrameUpdateListener addFrameUpdateListener(
