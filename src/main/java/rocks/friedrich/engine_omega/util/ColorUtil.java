@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/ColorHelper.java
  *
  * MIT License
  *
@@ -51,20 +51,26 @@ public final class ColorUtil
     }
 
     /**
-     * Encodes the specified color to a hexadecimal string representation. The
-     * output format is:
+     * Kodiert die angegebene Farbe in eine hexadezimale Repräsenation. Das
+     * Ausgabeformat ist wie folgt:
      *
      * <ul>
-     * <li>#RRGGBB - For colors without alpha
-     * <li>#RRGGBBAA - For colors with alpha
+     * <li>{@code #RRGGBB} - Für Farben ohne Alpha-Kanal bzw. ohne zusätzliche
+     * Transparenzinformationen.
+     *
+     * <li>{@code #RRGGBBAA} - Für Farben mit Alpha-Kanal bzw. mit zusätzlichen
+     * Transparenzinformationen.
      * </ul>
+     *
      * <p>
-     * Examples: <br>
+     * Beispiele: <br>
      * {@code Color.RED} = "#ff0000"<br>
      * {@code new Color(255, 0, 0, 200)} = "#ff0000c8"
      *
-     * @param color The color that is encoded.
-     * @return An hexadecimal string representation of the specified color.
+     * @param color Die Farbe, die kodiert werden soll.
+     *
+     * @return Eine hexadezimale Repräsenation als Zeichenkette.
+     *
      * @see ColorUtil#decode(String)
      * @see Color
      * @see Color#getRGB()
@@ -87,23 +93,31 @@ public final class ColorUtil
 
     /**
      * Konvertiert eine Farbe in hexadezimaler Notation in die entsprechende
-     * Instanz der Klasse {@link Color}. The accepted format is:
+     * Instanz der Klasse {@link Color}.
      * <p>
-     * <i>Note: This returns null if the format of the provided color string is
-     * invalid.</i>
+     * <i>Hinweis: Die Methode gibt null zurück, falls die Eingabe nicht korrekt
+     * ist.</i>
      * </p>
      *
+     * Mögliche Eingabeformate sind:
+     *
      * <ul>
-     * <li>#RRGGBB - For colors without alpha
-     * <li>#RRGGBBAA - For colors with alpha
+     * <li>{@code #RRGGBB} - Für Farben ohne Alpha-Kanal bzw. ohne zusätzliche
+     * Transparenzinformationen.
+     *
+     * <li>{@code #RRGGBBAA} - Für Farben mit Alpha-Kanal bzw. mit zusätzlichen
+     * Transparenzinformationen.
      * </ul>
+     *
      * <p>
-     * Examples: <br>
+     * Beispiele: <br>
      * "#ff0000" = {@code Color.RED}<br>
      * "#ff0000c8" = {@code new Color(255, 0, 0, 200)}
      *
-     * @param hex The hexadecimal encodes color string representation.
-     * @return The decoded color.
+     * @param hex Die Farbe in einer hexadezimalen Repräsentation.
+     *
+     * @return Die dekodierte Farbe.
+     *
      * @see ColorUtil#encode(Color)
      * @see Color
      * @see Color#decode(String)
@@ -155,7 +169,7 @@ public final class ColorUtil
 
         default:
             log.log(Level.SEVERE,
-                    "Could not parse color string \"{0}\". Invalid string length \"{1}\"!\nAccepted lengths:\n\t{2} for Colors without Alpha (#ff0000)\n\t{3} for Colors with Alpha (#c8ff0000)",
+                    "Could not parse color string \"{0}\". Invalid string length \"{1}\"!\nAccepted lengths:\n\t{2} for Colors without Alpha (#ff0000)\n\t{3} for Colors with Alpha (#ff0000c8)",
                     new Object[]
                     { hex, hex.length(), HEX_STRING_LENGTH,
                             HEX_STRING_LENGTH_ALPHA });
@@ -163,19 +177,29 @@ public final class ColorUtil
         }
     }
 
+    /**
+     * Dekodiert eine Feld / Array bestehend aus hexadezimalen Repräsentationen
+     * von Farben in Zeichenkettenform in ein Feld aus Objekten der Klasse
+     * {@link Color}.
+     *
+     * @param hex Eine Feld / Array bestehend aus hexadezimalen Repräsentationen
+     *            von Farben in Zeichenkettenform.
+     *
+     * @return Ein Feld bestehend aus Objekten der Klasse {@link Color}.
+     */
     public static Color[] decode(String[] hex)
     {
-        return Arrays.stream(hex).map(Color::decode)
-                .toArray(Color[]::new);
+        return Arrays.stream(hex).map(Color::decode).toArray(Color[]::new);
     }
 
     /**
-     * Ensures that the specified value lies within the accepted range for Color
-     * values (0-255). Smaller values will be forced to be 0 and larger values
-     * will result in 255.
+     * Stellt sicher, dass der angegebene Wert innerhalb des akzeptierten
+     * Bereichs für Farbwerte (0-255) liegt. Kleinere Werte werden zwangsweise
+     * auf 0 gesetzt und größere Werte ergeben 255.
      *
-     * @param value The value to check for.
-     * @return An integer value that fits the color value restrictions.
+     * @param value Die Zahl, die überprüft werden soll.
+     *
+     * @return Ein ganzzahliger Wert, der den Farbwertbeschränkungen entspricht.
      */
     public static int ensureColorValueRange(float value)
     {
@@ -183,12 +207,13 @@ public final class ColorUtil
     }
 
     /**
-     * Ensures that the specified value lies within the accepted range for Color
-     * values (0-255). Smaller values will be forced to be 0 and larger values
-     * will result in 255.
+     * Stellt sicher, dass der angegebene Wert innerhalb des akzeptierten
+     * Bereichs für Farbwerte (0-255) liegt. Kleinere Werte werden zwangsweise
+     * auf 0 gesetzt und größere Werte ergeben 255.
      *
-     * @param value The value to check for.
-     * @return An integer value that fits the color value restrictions.
+     * @param value Die Zahl, die überprüft werden soll.
+     *
+     * @return Ein ganzzahliger Wert, der den Farbwertbeschränkungen entspricht.
      */
     public static int ensureColorValueRange(int value)
     {
