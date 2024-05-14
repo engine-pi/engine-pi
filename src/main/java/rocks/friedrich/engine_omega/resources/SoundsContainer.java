@@ -40,7 +40,8 @@ import rocks.friedrich.engine_omega.sound.Sound;
 
 public final class SoundsContainer extends ResourcesContainer<Sound>
 {
-    private static final Logger log = Logger.getLogger(SoundsContainer.class.getName());
+    private static final Logger log = Logger
+            .getLogger(SoundsContainer.class.getName());
 
     SoundsContainer()
     {
