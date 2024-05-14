@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.7.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.7.0) - 2024-05-14
+
+<small>[Compare with v0.6.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.6.0...v0.7.0)</small>
+
+### Added
+
+- Add new method `ImageUtil.replaceColor()` ([f310344](https://github.com/Josef-Friedrich/engine-omega/commit/f31034449583dcaf489cf3959123cd0c3ec24d32) by Josef Friedrich).
+- Add resources management code from the LITIENGINE ([bc8af0a](https://github.com/Josef-Friedrich/engine-omega/commit/bc8af0a8e3406179f80ca5e691006aedfc4e29c7) by Josef Friedrich).
+- Add the tween engine from the LITIENGINE ([ae8965a](https://github.com/Josef-Friedrich/engine-omega/commit/ae8965a31ab7ebfad0206069b39942c563c88531) by Josef Friedrich).
+
+### Changed
+
+- ResourceLoader is now in the resouces package
+
+### Removed
+
+- ImageLoader -> ImagesContainer
+- Optimizer -> ImageUtil
+
 ## [v0.6.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.6.0) - 2024-05-13
 
 <small>[Compare with v0.5.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.5.0...v0.6.0)</small>
