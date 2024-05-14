@@ -45,6 +45,7 @@ import rocks.friedrich.engine_omega.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.io.ImageWriter;
 import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
+import rocks.friedrich.engine_omega.resources.ImagesContainer;
 import rocks.friedrich.engine_omega.resources.SoundsContainer;
 import rocks.friedrich.engine_omega.sound.Jukebox;
 
@@ -134,6 +135,9 @@ public final class Game
      */
     private static java.awt.Point mousePosition;
 
+    /**
+     * @author Josef Friedrich
+     */
     private static final EventListeners<rocks.friedrich.engine_omega.event.KeyListener> keyListeners = new EventListeners<>();
 
     /**
@@ -231,6 +235,30 @@ public final class Game
         mainThread.setPriority(Thread.MAX_PRIORITY);
     }
 
+    /**
+     * Stellt den Zugriff auf den {@link ImagesContainer Zwischenspeicher für
+     * Bild-Resourcen} vom Datentyp {@link BufferedImage} bereit.
+     *
+     * @author Josef Friedrich
+     *
+     * @return Ein Zwischenspeicher für Bild-Resourcen vom Datentyp
+     *         {@link BufferedImage}.
+     */
+    public static ImagesContainer getImages()
+    {
+        return AllResourcesContainer.getImages();
+    }
+
+    /**
+     * Stellt den Zugriff auf den {@link SoundsContainer Zwischenspeicher für
+     * Audio-Resourcen} vom Datentyp
+     * {@link rocks.friedrich.engine_omega.sound.Sound Sound} bereit.
+     *
+     * @author Josef Friedrich
+     *
+     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen} vom
+     *         Datentyp {@link rocks.friedrich.engine_omega.sound.Sound Sound}.
+     */
     public static SoundsContainer getSounds()
     {
         return AllResourcesContainer.getSounds();
@@ -294,6 +322,8 @@ public final class Game
      *         wird. Dieser Ausdruck kann dann mit dem Datentyp
      *         {@link FrameUpdateListener} einer lokalen Variablen bzw. einem
      *         Attribut zugeweisen werden.
+     *
+     * @author Josef Friedrich
      */
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
@@ -309,6 +339,8 @@ public final class Game
     /**
      * Meldet einen statischen, d. h. globalen Beobachter ab, der auf
      * Bildaktualisierungen reagiert.
+     *
+     * @author Josef Friedrich
      *
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
      */
@@ -368,6 +400,8 @@ public final class Game
      * </li>
      * </ol>
      *
+     * @author Josef Friedrich
+     *
      * @param keyListener Ein Objekt der Klasse
      *                    {@link rocks.friedrich.engine_omega.event.KeyListener}.
      */
@@ -381,6 +415,8 @@ public final class Game
      * Entfernt einen statischen
      * {@link rocks.friedrich.engine_omega.event.KeyListener} vom Objekt, d. h.
      * einen KeyListener, der global für das ganze Spiele gilt.
+     *
+     * @author Josef Friedrich
      *
      * @param keyListener Ein Objekt der Klasse
      *                    {@link rocks.friedrich.engine_omega.event.KeyListener}.
@@ -686,6 +722,8 @@ public final class Game
     /**
      * Gibt die statische, d. h. globale Instanz der {@link Jukebox} zurück, die
      * Geräusche und Musik abpielen kann.
+     *
+     * @author Josef Friedrich
      *
      * @return Eine Instanze der {@link Jukebox}.
      */

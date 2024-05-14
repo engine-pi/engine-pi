@@ -51,10 +51,6 @@ import rocks.friedrich.engine_omega.sound.Sound;
  *
  * <ul>
  * <li>images</li>
- * <li>fonts</li>
- * <li>maps</li>
- * <li>(localizable) strings</li>
- * <li>spritesheets</li>
  * <li>sounds</li>
  * </ul>
  *
@@ -65,6 +61,8 @@ public final class AllResourcesContainer
     private static final Logger log = Logger
             .getLogger(AllResourcesContainer.class.getName());
 
+    private static ImagesContainer images = new ImagesContainer();
+
     private static SoundsContainer sounds = new SoundsContainer();
 
     private AllResourcesContainer()
@@ -73,11 +71,29 @@ public final class AllResourcesContainer
     }
 
     /**
-     * Gets the container that manages {@code Sound} resources.
+     * Stellt den Zugriff auf den {@link ImagesContainer Zwischenspeicher für
+     * Bild-Resourcen} vom Datentyp {@link java.awt.image.BufferedImage} bereit.
      *
-     * @return The Sound resource container.
+     * @author Josef Friedrich
      *
-     * @see Sound
+     * @return Ein Zwischenspeicher für Bild-Resourcen vom Datentyp
+     *         {@link java.awt.image.BufferedImage}.
+     */
+    public static ImagesContainer getImages()
+    {
+        return images;
+    }
+
+    /**
+     * Stellt den Zugriff auf den {@link SoundsContainer Zwischenspeicher für
+     * Audio-Resourcen} vom Datentyp
+     * {@link rocks.friedrich.engine_omega.sound.Sound Sound} bereit.
+     *
+     * @author Josef Friedrich
+     *
+     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen}
+     *         vom Datentyp {@link rocks.friedrich.engine_omega.sound.Sound
+     *         Sound}.
      */
     public static SoundsContainer getSounds()
     {

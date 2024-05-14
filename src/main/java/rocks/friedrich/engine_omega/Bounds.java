@@ -345,7 +345,7 @@ public final class Bounds
      * {@link Bounds}-Rechteck <i>in das andere mit möglichst wenig
      * Verschiebung</i> zu bringen. Diese Methode wird intern für die
      * Beschränkung des Kamera-Bereiches genutzt.
-     * <p>
+     *
      * <div class='hinweisProbleme'><b>Achtung</b>: Voraussetzung dafür, dass
      * dieser Algorithmus Sinn macht ist, dass das äußere Rechteck ausreichend
      * größer als dieses ist!</div>

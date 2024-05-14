@@ -40,11 +40,14 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * An abstract implementation for all classes that provide a certain type of
- * resources. Basically, it's an in-memory cache of the resources and provides
- * access to manage the resources.
+ * Eine abstrakte Implementierung für Unterklassen, die einen bestimmten Typ von
+ * Ressourcen (z. b. Bilder, Klänge) bereitstellen wollen. Diese Klasse bietet
+ * Methoden zur Verwalten der Ressourcen an.
  *
- * @param <T> The type of the resource that is contained by this instance.
+ * Die Ressourcen werden von dieser Klasse im Speicher gehalten. Es handelt sich
+ * also um einen Cache.
+ *
+ * @param <T> Der Datentyp der Ressource, die in dieser Instanz enthalten ist.
  * @see ResourcesContainerListener
  */
 public abstract class ResourcesContainer<T>
