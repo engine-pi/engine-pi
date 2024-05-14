@@ -38,26 +38,26 @@ import rocks.friedrich.engine_omega.util.ImageUtil;
  */
 public final class ImagesContainer extends ResourcesContainer<BufferedImage>
 {
-  ImagesContainer()
-  {
-  }
-
-  /**
-   * Loads the image by the specified resourceName. This method supports both
-   * loading images from a folder and loading them from the resources.
-   *
-   * @param resourceName The path to the image.
-   *
-   * @return the image
-   */
-  @Override
-  protected BufferedImage load(URL resourceName) throws IOException
-  {
-    BufferedImage img = ImageIO.read(resourceName);
-    if (img == null)
+    ImagesContainer()
     {
-      return null;
     }
-    return ImageUtil.toCompatibleImage(img);
-  }
+
+    /**
+     * Loads the image by the specified resourceName. This method supports both
+     * loading images from a folder and loading them from the resources.
+     *
+     * @param resourceName The path to the image.
+     *
+     * @return the image
+     */
+    @Override
+    protected BufferedImage load(URL resourceName) throws IOException
+    {
+        BufferedImage img = ImageIO.read(resourceName);
+        if (img == null)
+        {
+            return null;
+        }
+        return ImageUtil.toCompatibleImage(img);
+    }
 }

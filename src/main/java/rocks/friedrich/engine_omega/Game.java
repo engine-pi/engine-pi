@@ -256,8 +256,9 @@ public final class Game
      *
      * @author Josef Friedrich
      *
-     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen} vom
-     *         Datentyp {@link rocks.friedrich.engine_omega.sound.Sound Sound}.
+     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen}
+     *         vom Datentyp {@link rocks.friedrich.engine_omega.sound.Sound
+     *         Sound}.
      */
     public static SoundsContainer getSounds()
     {
