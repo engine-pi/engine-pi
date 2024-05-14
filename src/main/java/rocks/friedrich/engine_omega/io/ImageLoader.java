@@ -29,7 +29,7 @@ import javax.imageio.ImageIO;
 
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.resources.ResourceLoader;
-import rocks.friedrich.engine_omega.util.Optimizer;
+import rocks.friedrich.engine_omega.util.ImageUtil;
 
 /**
  * Lädt Bilder vom Dateisystem und optimiert diese direkt für die Anzeige.
@@ -64,7 +64,7 @@ final public class ImageLoader
         }
         try
         {
-            BufferedImage img = Optimizer.toCompatibleImage(
+            BufferedImage img = ImageUtil.toCompatibleImage(
                     ImageIO.read(ResourceLoader.loadAsStream(path)));
             cache.put(path, img);
             return img;

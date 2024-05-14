@@ -288,10 +288,13 @@ public class ImageUtil
     }
 
     /**
-     * Creates a compatible buffered image that contains the source image.
+     * Optimiert ein Bild für das Rendering, abhängig vom Bildschirm des
+     * Anwenders.
      *
-     * @param image the source image
-     * @return the compatible buffered image
+     * @param image Das Bild, das optimiert werden soll.
+     *
+     * @return Das optimierte Bild.
+     *
      */
     public static BufferedImage toCompatibleImage(final BufferedImage image)
     {

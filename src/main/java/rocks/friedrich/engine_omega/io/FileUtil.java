@@ -300,7 +300,7 @@ public final class FileUtil
      * {@link File#separator}.
      *
      * @author Michael Andonie
-     * @authore Niklas Keller
+     * @author Niklas Keller
      *
      * @param path Ein Dateipfad, der Schrägstriche oder Gegenschrägstriche
      *             enthalten kann.

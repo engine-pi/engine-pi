@@ -1,17 +1,24 @@
 package rocks.friedrich.engine_omega.util;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import rocks.friedrich.engine_omega.EngineOmega;
 import rocks.friedrich.engine_omega.io.ImageLoader;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
@@ -84,5 +91,29 @@ public class ImageUtilTest
             BufferedImage actual = ImageUtil.replaceColors(input, map);
             assertImageEquals(expected, actual);
         }
+    }
+
+    @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
+    @Test
+    public void testOptimizeImage()
+    {
+        assertFalse(GraphicsEnvironment.isHeadless());
+        BufferedImage img = null;
+        try
+        {
+            img = ImageIO
+                    .read(EngineOmega.class.getResource("/assets/logo.png"));
+        }
+        catch (Exception e)
+        {
+            Logger.error("OptimizerTest", e.getLocalizedMessage());
+        }
+        assertNotNull(img);
+        BufferedImage opt = ImageUtil.toCompatibleImage(img);
+        assertNotNull(opt);
+        assertEquals(img.getWidth(), opt.getWidth());
+        assertEquals(img.getHeight(), opt.getHeight());
+        BufferedImage opt2 = ImageUtil.toCompatibleImage(opt);
+        assertEquals(opt.getColorModel(), opt2.getColorModel());
     }
 }
