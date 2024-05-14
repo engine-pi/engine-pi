@@ -192,6 +192,26 @@ public class ImageUtil
     }
 
     /**
+     * Ersetzt eine Farbe in einem Bild.
+     *
+     * @param bufferedImage Das Originalbild.
+     * @param from          Die Quellfarbe. Eine Farbe kodiert als Zeichenkette
+     *                      in hexadezimaler Notation.
+     * @param to            Eine Zielfarbe. Eine Farbe kodiert als Zeichenkette
+     *                      in hexadezimaler Notation.
+     *
+     * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
+     *         durch eine Zielfarbe ersetzt wurde.
+     */
+    public static BufferedImage replaceColor(final BufferedImage bufferedImage,
+            String from, String to)
+    {
+        return replaceColors(bufferedImage, new String[] { from },
+                new String[]
+                { to });
+    }
+
+    /**
      * Vergrößert ein Bild, indem die Pixel vervielfacht werden. Es wird dabei
      * die Interpolationsmethode {@link AffineTransformOp#TYPE_NEAREST_NEIGHBOR}
      * angewendet.
@@ -220,27 +240,28 @@ public class ImageUtil
     }
 
     /**
-     *
+     * Speichert ein Bild in das Dateisystem ab.
      *
      * @author Michael Andonie
      * @author Niklas Keller
      *
-     * @param image
-     * @param path
+     * @param image    Das Bild, das gespeichert werden soll.
+     * @param filename Der Dateiname, unter dem das Bild gespeichert werden
+     *                 soll.
      */
-    public static void write(BufferedImage image, String path)
+    public static void write(BufferedImage image, String filename)
     {
-        path = path.toLowerCase();
+        filename = filename.toLowerCase();
         String formatname = null;
-        if (path.endsWith(".png"))
+        if (filename.endsWith(".png"))
         {
             formatname = "png";
         }
-        else if (path.endsWith(".gif"))
+        else if (filename.endsWith(".gif"))
         {
             formatname = "gif";
         }
-        else if (path.endsWith(".jpg"))
+        else if (filename.endsWith(".jpg"))
         {
             formatname = "jpg";
         }
@@ -253,7 +274,7 @@ public class ImageUtil
         try
         {
             ImageIO.write(image, formatname,
-                    new File(FileUtil.normalizePath(path)));
+                    new File(FileUtil.normalizePath(filename)));
         }
         catch (IOException e)
         {
