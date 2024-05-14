@@ -1,4 +1,6 @@
 /*
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/animation/KeyFrames.java
+ *
  * Engine Omega ist eine anfängerorientierte 2D-Gaming Engine.
  *
  * Copyright (c) 2011 - 2024 Michael Andonie and contributors.
