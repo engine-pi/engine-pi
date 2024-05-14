@@ -43,11 +43,11 @@ import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.io.ImageLoader;
-import rocks.friedrich.engine_omega.io.ImageWriter;
 import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
 import rocks.friedrich.engine_omega.resources.ImagesContainer;
 import rocks.friedrich.engine_omega.resources.SoundsContainer;
 import rocks.friedrich.engine_omega.sound.Jukebox;
+import rocks.friedrich.engine_omega.util.ImageUtil;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle Spiel.
@@ -741,13 +741,13 @@ public final class Game
      *                 werden soll.
      */
     @API
-    public static void writeScreenshot(String filename)
+    public static void takeScreenshot(String filename)
     {
         BufferedImage screenshot = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = (Graphics2D) screenshot.getGraphics();
         gameLogic.render(source -> source.render(g2d, width, height));
-        ImageWriter.writeImage(screenshot, filename);
+        ImageUtil.write(screenshot, filename);
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

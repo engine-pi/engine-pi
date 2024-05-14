@@ -42,6 +42,8 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
+import rocks.friedrich.engine_omega.io.ResourceLoader;
+
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
  *
@@ -217,10 +219,47 @@ public class ImageUtil
         return scaleOp.filter(image, after);
     }
 
-    public static void write(BufferedImage image, String pathname)
-            throws IOException
+    /**
+     *
+     *
+     * @author Michael Andonie
+     * @author Niklas Keller
+     *
+     * @param image
+     * @param path
+     */
+    public static void write(BufferedImage image, String path)
     {
-        ImageIO.write(image, "png", new File(pathname));
+        path = path.toLowerCase();
+        String formatname = null;
+        if (path.endsWith(".png"))
+        {
+            formatname = "png";
+        }
+        else if (path.endsWith(".gif"))
+        {
+            formatname = "gif";
+        }
+        else if (path.endsWith(".jpg"))
+        {
+            formatname = "jpg";
+        }
+        else
+        {
+            Logger.error("IO",
+                    "Nicht unterstütztes Format. Nur png, jpg, gif ist unterstützt");
+            return;
+        }
+        try
+        {
+            ImageIO.write(image, formatname,
+                    new File(ResourceLoader.normalizePath(path)));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            throw new RuntimeException("Fehler beim Schreiben des Bildes");
+        }
     }
 
     /**

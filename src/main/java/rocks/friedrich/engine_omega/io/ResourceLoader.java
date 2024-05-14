@@ -92,7 +92,17 @@ final public class ResourceLoader
         return new File(normalizePath(normalizedFilename));
     }
 
-    static String normalizePath(String path)
+    /**
+     * Ersetzt im gegebenen Dateipfad alle Schrägstriche (Slashes) und
+     * Gegenschrägstriche (Backslashes) mit dem Zeichen des Attributs
+     * {@link File#separator}.
+     *
+     * @param path Ein Dateipfad, der Schrägstriche oder Gegenschrägstriche
+     *             enthalten kann.
+     *
+     * @return Der normalisierte Dateipfad.
+     */
+    public static String normalizePath(String path)
     {
         return path.replace("\\", File.separator).replace("/", File.separator);
     }
