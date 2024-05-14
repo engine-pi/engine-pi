@@ -38,11 +38,11 @@ import rocks.friedrich.engine_omega.io.Codec;
 import rocks.friedrich.engine_omega.io.FileUtilities;
 import rocks.friedrich.engine_omega.sound.Sound;
 
-public final class Sounds extends ResourcesContainer<Sound>
+public final class SoundsContainer extends ResourcesContainer<Sound>
 {
-    private static final Logger log = Logger.getLogger(Sounds.class.getName());
+    private static final Logger log = Logger.getLogger(SoundsContainer.class.getName());
 
-    Sounds()
+    SoundsContainer()
     {
     }
 
@@ -86,7 +86,7 @@ public final class Sounds extends ResourcesContainer<Sound>
     @Override
     protected Sound load(URL resourceName) throws Exception
     {
-        try (final InputStream is = Resources.get(resourceName))
+        try (final InputStream is = AllResourcesContainer.get(resourceName))
         {
             if (is == null)
             {

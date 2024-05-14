@@ -60,14 +60,14 @@ import rocks.friedrich.engine_omega.sound.Sound;
  *
  * @see ResourcesContainer
  */
-public final class Resources
+public final class AllResourcesContainer
 {
     private static final Logger log = Logger
-            .getLogger(Resources.class.getName());
+            .getLogger(AllResourcesContainer.class.getName());
 
-    private static Sounds sounds = new Sounds();
+    private static SoundsContainer sounds = new SoundsContainer();
 
-    private Resources()
+    private AllResourcesContainer()
     {
         throw new UnsupportedOperationException();
     }
@@ -79,7 +79,7 @@ public final class Resources
      *
      * @see Sound
      */
-    public static Sounds sounds()
+    public static SoundsContainer getSounds()
     {
         return sounds;
     }
@@ -90,7 +90,7 @@ public final class Resources
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see Resources
+     * @see AllResourcesContainer
      */
     public static InputStream get(String file)
     {
@@ -103,7 +103,7 @@ public final class Resources
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see Resources
+     * @see AllResourcesContainer
      */
     public static InputStream get(URL file)
     {
@@ -191,7 +191,7 @@ public final class Resources
      */
     public static void clearAll()
     {
-        sounds().clear();
+        getSounds().clear();
     }
 
     public static URL getLocation(String name)

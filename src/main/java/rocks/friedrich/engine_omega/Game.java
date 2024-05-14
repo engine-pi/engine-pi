@@ -42,6 +42,8 @@ import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
 import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.io.ImageWriter;
+import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
+import rocks.friedrich.engine_omega.resources.SoundsContainer;
 import rocks.friedrich.engine_omega.sound.Jukebox;
 
 /**
@@ -225,6 +227,11 @@ public final class Game
         mainThread = new Thread(Game::run, "rocks.friedrich.engine_omega.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
+    }
+
+    public static SoundsContainer getSounds()
+    {
+        return AllResourcesContainer.getSounds();
     }
 
     private static void run()
