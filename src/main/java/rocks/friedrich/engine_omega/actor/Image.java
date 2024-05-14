@@ -26,9 +26,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
-import rocks.friedrich.engine_omega.io.ImageLoader;
 
 /**
  * Ein Image als grafische Repräsentation einer Bilddatei, die gezeichnet werden
@@ -64,7 +64,7 @@ public class Image extends Actor
         super(() -> FixtureBuilder.createSimpleRectangularFixture(width,
                 height));
         assertViableSizes(width, height);
-        this.image = ImageLoader.load(filepath);
+        this.image = Game.getImages().get(filepath);
         this.width = width;
         this.height = height;
     }
@@ -82,10 +82,10 @@ public class Image extends Actor
     public Image(String filepath, final double pixelPerMeter)
     {
         super(() -> FixtureBuilder.createSimpleRectangularFixture(
-                ImageLoader.load(filepath).getWidth() / pixelPerMeter,
-                ImageLoader.load(filepath).getHeight() / pixelPerMeter));
+                Game.getImages().get(filepath).getWidth() / pixelPerMeter,
+                Game.getImages().get(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
-        this.image = ImageLoader.load(filepath);
+        this.image = Game.getImages().get(filepath);
         this.width = image.getWidth() / pixelPerMeter;
         this.height = image.getHeight() / pixelPerMeter;
     }

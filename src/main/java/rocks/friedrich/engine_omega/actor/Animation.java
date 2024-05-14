@@ -31,12 +31,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.graphics.AnimationFrame;
-import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.resources.ResourceLoader;
 import rocks.friedrich.engine_omega.util.GifDecoder;
 
@@ -193,7 +193,7 @@ public class Animation extends Actor implements FrameUpdateListener
         {
             throw new RuntimeException("Frame-Länge muss größer als 0 sein");
         }
-        BufferedImage image = ImageLoader.load(filepath);
+        BufferedImage image = Game.getImages().get(filepath);
         if (image.getWidth() % x != 0)
         {
             throw new RuntimeException(String.format(
@@ -233,7 +233,7 @@ public class Animation extends Actor implements FrameUpdateListener
         Collection<AnimationFrame> frames = new LinkedList<>();
         for (String filepath : filepaths)
         {
-            frames.add(new AnimationFrame(ImageLoader.load(filepath),
+            frames.add(new AnimationFrame(Game.getImages().get(filepath),
                     frameDuration));
         }
         return new Animation(frames.toArray(new AnimationFrame[0]), width,

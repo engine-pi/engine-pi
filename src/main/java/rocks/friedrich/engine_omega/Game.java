@@ -42,7 +42,6 @@ import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
-import rocks.friedrich.engine_omega.io.ImageLoader;
 import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
 import rocks.friedrich.engine_omega.resources.ImagesContainer;
 import rocks.friedrich.engine_omega.resources.SoundsContainer;
@@ -221,7 +220,7 @@ public final class Game
         renderPanel.addMouseWheelListener(Game::enqueueMouseWheelEvent);
         try
         {
-            frame.setIconImage(ImageLoader.load("assets/favicon.png"));
+            frame.setIconImage(getImages().get("assets/favicon.png"));
         }
         catch (Exception e)
         {

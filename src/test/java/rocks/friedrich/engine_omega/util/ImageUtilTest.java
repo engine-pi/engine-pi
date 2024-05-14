@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
 import rocks.friedrich.engine_omega.EngineOmega;
-import rocks.friedrich.engine_omega.io.ImageLoader;
+import rocks.friedrich.engine_omega.Game;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImageUtilTest
@@ -36,7 +36,7 @@ public class ImageUtilTest
     @Test
     public void testCopy()
     {
-        BufferedImage image = ImageLoader.load(
+        BufferedImage image = Game.getImages().get(
                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
         BufferedImage copy = ImageUtil.copy(image);
         assertImageEquals(image, copy);
@@ -57,9 +57,9 @@ public class ImageUtilTest
 
         static Color blue = new Color(0, 0, 255);
 
-        static BufferedImage input = ImageLoader.load("images/gray.png");
+        static BufferedImage input = Game.getImages().get("images/gray.png");
 
-        static BufferedImage expected = ImageLoader.load("images/rgb.png");
+        static BufferedImage expected = Game.getImages().get("images/rgb.png");
 
         @Test
         public void testColorArray() throws IOException
