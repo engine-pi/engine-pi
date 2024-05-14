@@ -242,7 +242,7 @@ public final class Camera
 
     /**
      * Verschiebt das Zentrum der Kamera zur angegebenen Position (absolute
-     * Verschiebung). Von nun an ist der Point mit den eingegebenen Koordinaten
+     * Verschiebung). Von nun an ist der Punkt mit den eingegebenen Koordinaten
      * im Zentrum des Bildes.
      *
      * @param x Die <code>getX</code>-Koordinate des Zentrums des Bildes.

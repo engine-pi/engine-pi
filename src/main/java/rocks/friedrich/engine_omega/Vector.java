@@ -97,7 +97,7 @@ public final class Vector implements Cloneable
     /**
      * Konstruktor. <br>
      * <br>
-     * Vector wird erzeugt als die nötige Bewegung von einem Point zu einem
+     * Vector wird erzeugt als die nötige Bewegung von einem Punkt zu einem
      * zweiten.
      *
      * @param start Ausgangspunkt

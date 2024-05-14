@@ -37,7 +37,7 @@ public interface MouseClickListener
      * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
      *
-     * @param position Der Point auf der Zeichenebene.
+     * @param position Der Punkt auf der Zeichenebene.
      * @param button   Die Maustaste, die gedrückt wurde.
      */
     @API
@@ -50,7 +50,7 @@ public interface MouseClickListener
      * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
      *
-     * @param position Der Point auf der Zeichenebene.
+     * @param position Der Punkt auf der Zeichenebene.
      * @param button   Die Maustaste, die gedrückt wurde.
      */
     @API

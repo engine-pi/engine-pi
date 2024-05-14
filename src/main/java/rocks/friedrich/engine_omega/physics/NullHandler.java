@@ -67,7 +67,7 @@ public class NullHandler implements PhysicsHandler
     /**
      * Ein Objekt ohne Physik enthält keinen Punkt.
      *
-     * @param p Ein Point auf der Zeichenebene.
+     * @param p Ein Punkt auf der Zeichenebene.
      *
      * @return false
      */

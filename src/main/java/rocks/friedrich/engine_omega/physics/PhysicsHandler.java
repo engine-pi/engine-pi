@@ -50,12 +50,12 @@ public interface PhysicsHandler
     Vector getCenter();
 
     /**
-     * Gibt an, ob ein bestimmter Point auf der Zeichenebene innerhalb des
+     * Gibt an, ob ein bestimmter Punkt auf der Zeichenebene innerhalb des
      * Ziel-Objekts liegt.
      *
-     * @param p Ein Point auf der Zeichenebene.
+     * @param p Ein Punkt auf der Zeichenebene.
      *
-     * @return <code>true</code>, wenn der übergebene Point innerhalb des
+     * @return <code>true</code>, wenn der übergebene Punkt innerhalb des
      *         Ziel-Objekts liegt, sonst <code>false</code>. Das Ergebnis kann
      *         (abhängig von der implementierenden Klasse) verschieden sicher
      *         richtige Ergebnisse liefern.

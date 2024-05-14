@@ -290,7 +290,7 @@ public abstract class Actor
      * Prüft, ob ein bestimmter Punkt innerhalb des Objekts liegt.
      *
      * @param p Der Punkt, der auf Inhalt im Objekt getestet werden soll.
-     * @return <code>true</code>, wenn der Point innerhalb des Objekts liegt.
+     * @return <code>true</code>, wenn der Punkt innerhalb des Objekts liegt.
      */
     @API
     public final boolean contains(Vector p)
