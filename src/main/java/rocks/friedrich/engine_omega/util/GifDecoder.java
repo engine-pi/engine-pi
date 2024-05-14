@@ -32,7 +32,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
-import rocks.friedrich.engine_omega.io.ResourceLoader;
+import rocks.friedrich.engine_omega.resources.ResourceLoader;
 
 /**
  * GIF Decoder <a href=

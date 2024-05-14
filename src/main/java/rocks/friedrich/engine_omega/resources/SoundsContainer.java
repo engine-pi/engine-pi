@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import rocks.friedrich.engine_omega.io.Codec;
-import rocks.friedrich.engine_omega.io.FileUtilities;
+import rocks.friedrich.engine_omega.io.FileUtil;
 import rocks.friedrich.engine_omega.sound.Sound;
 
 public final class SoundsContainer extends ResourcesContainer<Sound>
@@ -96,7 +96,7 @@ public final class SoundsContainer extends ResourcesContainer<Sound>
                         { resourceName });
                 return null;
             }
-            return new Sound(is, FileUtilities.getFileName(resourceName));
+            return new Sound(is, FileUtil.getFileName(resourceName));
         }
     }
 }

@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.io;
+package rocks.friedrich.engine_omega.resources;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import rocks.friedrich.engine_omega.io.FileUtil;
 import rocks.friedrich.engine_omega.util.Logger;
 
 /**
@@ -46,7 +47,7 @@ final public class ResourceLoader
 
     public static byte[] load(String filename) throws IOException
     {
-        String normalizedFilename = normalizePath(filename);
+        String normalizedFilename = FileUtil.normalizePath(filename);
         Path path = Paths.get(normalizedFilename);
         URL url = ResourceLoader.class.getResource("/" + normalizedFilename);
         if (url != null)
@@ -65,18 +66,19 @@ final public class ResourceLoader
 
     public static InputStream loadAsStream(String filename) throws IOException
     {
-        String normalizedFilename = normalizePath(filename);
+        String normalizedFilename = FileUtil.normalizePath(filename);
         if (ResourceLoader.class.getResource("/" + normalizedFilename) != null)
         {
             return ResourceLoader.class
                     .getResourceAsStream("/" + normalizedFilename);
         }
-        return new FileInputStream(normalizePath(normalizedFilename));
+        return new FileInputStream(
+                FileUtil.normalizePath(normalizedFilename));
     }
 
     public static File loadAsFile(String filename) throws IOException
     {
-        String normalizedFilename = normalizePath(filename);
+        String normalizedFilename = FileUtil.normalizePath(filename);
         URL url = ResourceLoader.class.getResource("/" + normalizedFilename);
         if (url != null)
         {
@@ -89,21 +91,6 @@ final public class ResourceLoader
                 Logger.error("IO", e.getMessage());
             }
         }
-        return new File(normalizePath(normalizedFilename));
-    }
-
-    /**
-     * Ersetzt im gegebenen Dateipfad alle Schrägstriche (Slashes) und
-     * Gegenschrägstriche (Backslashes) mit dem Zeichen des Attributs
-     * {@link File#separator}.
-     *
-     * @param path Ein Dateipfad, der Schrägstriche oder Gegenschrägstriche
-     *             enthalten kann.
-     *
-     * @return Der normalisierte Dateipfad.
-     */
-    public static String normalizePath(String path)
-    {
-        return path.replace("\\", File.separator).replace("/", File.separator);
+        return new File(FileUtil.normalizePath(normalizedFilename));
     }
 }

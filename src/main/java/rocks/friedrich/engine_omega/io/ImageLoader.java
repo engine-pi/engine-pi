@@ -28,6 +28,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.resources.ResourceLoader;
 import rocks.friedrich.engine_omega.util.Optimizer;
 
 /**

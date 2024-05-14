@@ -38,10 +38,10 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public final class FileUtilities
+public final class FileUtil
 {
     private static final Logger log = Logger
-            .getLogger(FileUtilities.class.getName());
+            .getLogger(FileUtil.class.getName());
 
     private static final String[] DIR_BLACKLIST = new String[] { "\\bin",
             "\\screenshots" };
@@ -50,7 +50,7 @@ public final class FileUtilities
 
     private static final String FILE_SEPARATOR = "/";
 
-    private FileUtilities()
+    private FileUtil()
     {
         throw new UnsupportedOperationException();
     }
@@ -292,5 +292,23 @@ public final class FileUtilities
         pre = decimal ? pre : pre + "i";
         return String.format(Locale.ROOT, "%.1f %sB",
                 bytes / Math.pow(unit, exp), pre);
+    }
+
+    /**
+     * Ersetzt im gegebenen Dateipfad alle Schrägstriche (Slashes) und
+     * Gegenschrägstriche (Backslashes) mit dem Zeichen des Attributs
+     * {@link File#separator}.
+     *
+     * @author Michael Andonie
+     * @authore Niklas Keller
+     *
+     * @param path Ein Dateipfad, der Schrägstriche oder Gegenschrägstriche
+     *             enthalten kann.
+     *
+     * @return Der normalisierte Dateipfad.
+     */
+    public static String normalizePath(String path)
+    {
+        return path.replace("\\", File.separator).replace("/", File.separator);
     }
 }

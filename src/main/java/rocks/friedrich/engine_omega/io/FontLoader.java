@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.resources.ResourceLoader;
 
 @API
 final public class FontLoader

@@ -37,8 +37,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import rocks.friedrich.engine_omega.sound.Sound;
-
 /**
  * This class is the engines entry point for accessing any kind of resources. A
  * resource is any non-executable data that is deployed with your game. The

@@ -27,7 +27,7 @@ package rocks.friedrich.engine_omega.resources;
 
 import java.util.ArrayList;
 
-import rocks.friedrich.engine_omega.io.FileUtilities;
+import rocks.friedrich.engine_omega.io.FileUtil;
 
 /**
  * Some common implementations that are used by different kinds of file classes
@@ -64,7 +64,7 @@ final class DataFormat
     protected static <T extends Enum<T>> boolean isSupported(String fileName,
             T[] values, T defaultValue)
     {
-        String extension = FileUtilities.getExtension(fileName);
+        String extension = FileUtil.getExtension(fileName);
         if (extension == null || extension.isEmpty())
         {
             return false;

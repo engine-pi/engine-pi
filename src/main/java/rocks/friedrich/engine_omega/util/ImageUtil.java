@@ -42,7 +42,7 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
-import rocks.friedrich.engine_omega.io.ResourceLoader;
+import rocks.friedrich.engine_omega.io.FileUtil;
 
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
@@ -253,7 +253,7 @@ public class ImageUtil
         try
         {
             ImageIO.write(image, formatname,
-                    new File(ResourceLoader.normalizePath(path)));
+                    new File(FileUtil.normalizePath(path)));
         }
         catch (IOException e)
         {

@@ -8,7 +8,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.event.KeyListener;
-import rocks.friedrich.engine_omega.io.ResourceLoader;
+import rocks.friedrich.engine_omega.resources.ResourceLoader;
 import rocks.friedrich.engine_omega.sound.LoopedTrack;
 import rocks.friedrich.engine_omega.sound.MusicPlayback;
 import rocks.friedrich.engine_omega.sound.SinglePlayTrack;
