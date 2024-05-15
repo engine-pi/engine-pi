@@ -212,6 +212,24 @@ public class ImageUtil
     }
 
     /**
+     * Ersetzt eine Farbe in einem Bild.
+     *
+     * @param bufferedImage Das Originalbild.
+     * @param from          Die Quellfarbe.
+     * @param to            Eine Zielfarbe.
+     *
+     * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
+     *         durch eine Zielfarbe ersetzt wurde.
+     */
+    public static BufferedImage replaceColor(final BufferedImage bufferedImage,
+            Color from, Color to)
+    {
+        return replaceColors(bufferedImage, new Color[] { from },
+                new Color[]
+                { to });
+    }
+
+    /**
      * Vergrößert ein Bild, indem die Pixel vervielfacht werden. Es wird dabei
      * die Interpolationsmethode {@link AffineTransformOp#TYPE_NEAREST_NEIGHBOR}
      * angewendet.
