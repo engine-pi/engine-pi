@@ -47,8 +47,8 @@ import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.Joint;
 import rocks.friedrich.engine_omega.annotations.Internal;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.collision.CollisionListener;
+import rocks.friedrich.engine_omega.event.CollisionEvent;
+import rocks.friedrich.engine_omega.event.CollisionListener;
 import rocks.friedrich.engine_omega.util.Logger;
 
 /**

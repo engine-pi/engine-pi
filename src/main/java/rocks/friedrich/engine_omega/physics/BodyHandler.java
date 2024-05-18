@@ -34,7 +34,7 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.annotations.Internal;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.event.CollisionEvent;
 
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische

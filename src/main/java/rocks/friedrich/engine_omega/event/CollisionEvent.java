@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.collision;
+package rocks.friedrich.engine_omega.event;
 
 import java.util.Arrays;
 import java.util.Collections;

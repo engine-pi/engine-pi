@@ -34,7 +34,7 @@ import org.jbox2d.dynamics.Body;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.BodyType;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.event.CollisionEvent;
 
 /**
  * Default-Handler für Operationen an Actor-Objekten, die an keiner Scene

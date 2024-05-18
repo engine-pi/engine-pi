@@ -9,8 +9,8 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Text;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
-import rocks.friedrich.engine_omega.collision.CollisionListener;
+import rocks.friedrich.engine_omega.event.CollisionEvent;
+import rocks.friedrich.engine_omega.event.CollisionListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.KeyListener;
 

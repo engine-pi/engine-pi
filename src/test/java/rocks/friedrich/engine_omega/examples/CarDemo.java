@@ -42,7 +42,7 @@ import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.RevoluteJoint;
 import rocks.friedrich.engine_omega.actor.TileContainer;
 import rocks.friedrich.engine_omega.actor.TileMap;
-import rocks.friedrich.engine_omega.collision.CollisionEvent;
+import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 
 public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
