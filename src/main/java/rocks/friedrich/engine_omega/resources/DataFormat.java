@@ -27,7 +27,7 @@ package rocks.friedrich.engine_omega.resources;
 
 import java.util.ArrayList;
 
-import rocks.friedrich.engine_omega.io.FileUtil;
+import rocks.friedrich.engine_omega.util.FileUtil;
 
 /**
  * Some common implementations that are used by different kinds of file classes

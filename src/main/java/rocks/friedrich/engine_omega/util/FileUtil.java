@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package rocks.friedrich.engine_omega.io;
+package rocks.friedrich.engine_omega.util;
 
 import java.io.File;
 import java.io.IOException;

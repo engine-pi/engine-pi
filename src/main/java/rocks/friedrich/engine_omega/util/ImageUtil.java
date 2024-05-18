@@ -42,8 +42,6 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
-import rocks.friedrich.engine_omega.io.FileUtil;
-
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
  *

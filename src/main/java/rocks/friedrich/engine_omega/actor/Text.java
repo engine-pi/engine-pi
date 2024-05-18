@@ -28,8 +28,8 @@ import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
-import rocks.friedrich.engine_omega.io.FontLoader;
 import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.resources.FontLoader;
 import rocks.friedrich.engine_omega.util.FontMetrics;
 
 /**

@@ -30,7 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import rocks.friedrich.engine_omega.io.FileUtil;
+import rocks.friedrich.engine_omega.util.FileUtil;
 import rocks.friedrich.engine_omega.util.Logger;
 
 /**
