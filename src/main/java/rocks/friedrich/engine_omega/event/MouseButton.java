@@ -22,10 +22,21 @@ package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.annotations.API;
 
+/**
+ * Aufzählungstyp, mit dem die verschiedenen Maustasten angegeben werden
+ * könnnen.
+ */
 @API
 public enum MouseButton
 {
+    /**
+     * Die linke Maustaste.
+     */
     @API
-    LEFT, @API
+    LEFT,
+    /**
+     * Die rechte Maustaste.
+     */
+    @API
     RIGHT
 }

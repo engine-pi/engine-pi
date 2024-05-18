@@ -28,6 +28,9 @@ import java.util.function.Supplier;
 
 import rocks.friedrich.engine_omega.annotations.API;
 
+/**
+ * Klasse zur Verwaltung von mehreren Beobachtern (Listeners).
+ */
 public final class EventListeners<T>
 {
     private final Collection<T> listeners = new LinkedHashSet<>();
@@ -123,6 +126,11 @@ public final class EventListeners<T>
         }
     }
 
+    /**
+     * Gibt wahr zurück, wenn diese Instanz keine Beobachter enthält.
+     *
+     * @return wahr, wenn diese Instanz keine Beobachter enthält, sonst falsch.
+     */
     @API
     public synchronized boolean isEmpty()
     {

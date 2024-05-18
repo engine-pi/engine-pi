@@ -22,16 +22,34 @@ package rocks.friedrich.engine_omega.event;
 
 import rocks.friedrich.engine_omega.annotations.API;
 
+/**
+ * Eine Schnittstelle für einen Behälter, der Beobachter enthält, die auf
+ * Bewegungen des Mausrads reagieren.
+ */
 public interface MouseWheelListenerContainer
 {
     EventListeners<MouseWheelListener> getMouseWheelListeners();
 
+    /**
+     * Fügt einen Beobachter, der auf Bewegungen des Mausrads reagiert, zum
+     * Behälter hinzu.
+     *
+     * @param mouseWheelListener Ein Beobachter, der auf Bewegungen des Mausrads
+     *                           reagiert.
+     */
     @API
     default void addMouseWheelListener(MouseWheelListener mouseWheelListener)
     {
         getMouseWheelListeners().add(mouseWheelListener);
     }
 
+    /**
+     * Entfernt einen Beobachter, der auf Bewegungen des Mausrads reagiert, aus
+     * dem Behälter.
+     *
+     * @param mouseWheelListener Ein Beobachter, der auf Bewegungen des Mausrads
+     *                           reagiert.
+     */
     @API
     default void removeMouseWheelListener(MouseWheelListener mouseWheelListener)
     {
