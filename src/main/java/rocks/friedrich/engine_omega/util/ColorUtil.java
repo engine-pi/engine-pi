@@ -189,7 +189,7 @@ public final class ColorUtil
      */
     public static Color[] decode(String[] hex)
     {
-        return Arrays.stream(hex).map(Color::decode).toArray(Color[]::new);
+        return Arrays.stream(hex).map(ColorUtil::decode).toArray(Color[]::new);
     }
 
     /**

@@ -100,6 +100,16 @@ public class ColorUtilTest
         {
             assertEquals(alphaRed.getAlpha(), redDecoded.getAlpha());
         }
+
+        @Test
+        public void testStringArray()
+        {
+            Color color = ColorUtil.decode(new String[] { "#ff0000ff" })[0];
+            assertEquals(color.getRed(), 255);
+            assertEquals(color.getGreen(), 0);
+            assertEquals(color.getBlue(), 0);
+            assertEquals(color.getAlpha(), 255);
+        }
     }
 
     @ParameterizedTest
