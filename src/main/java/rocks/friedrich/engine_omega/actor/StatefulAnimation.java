@@ -25,9 +25,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import rocks.friedrich.engine_omega.FixtureBuilder;
+import rocks.friedrich.engine_omega.animation.AnimationFrame;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
-import rocks.friedrich.engine_omega.graphics.AnimationFrame;
 
 /**
  * Ein animierter Actor, der mehrere Zustände haben kann (laufen (links/rechts),

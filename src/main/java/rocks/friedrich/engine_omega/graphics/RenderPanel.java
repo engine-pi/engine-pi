@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/internal/graphics/AnimationFrame.java
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/internal/graphics/RenderPanel.java
  *
  * Engine Omega ist eine anfängerorientierte 2D-Gaming Engine.
  *
