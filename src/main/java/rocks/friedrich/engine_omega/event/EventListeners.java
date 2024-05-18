@@ -93,6 +93,14 @@ public final class EventListeners<T>
         }
     }
 
+    /**
+     * Gibt wahr zurück, wenn der gebenene Beobachter bereits hinzugefügt wurde.
+     *
+     * @param listener Ein Beobachter.
+     *
+     * @return wahr, wenn der gebenene Beobachter bereits hinzugefügt wurde,
+     *         sonst falsch.
+     */
     @API
     public synchronized boolean contains(T listener)
     {
@@ -137,6 +145,9 @@ public final class EventListeners<T>
         return listeners.isEmpty();
     }
 
+    /**
+     * Löscht alle Beobachter aus der Instanz.
+     */
     @API
     public synchronized void clear()
     {
