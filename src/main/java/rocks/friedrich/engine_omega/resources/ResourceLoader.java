@@ -72,8 +72,7 @@ final public class ResourceLoader
             return ResourceLoader.class
                     .getResourceAsStream("/" + normalizedFilename);
         }
-        return new FileInputStream(
-                FileUtil.normalizePath(normalizedFilename));
+        return new FileInputStream(FileUtil.normalizePath(normalizedFilename));
     }
 
     public static File loadAsFile(String filename) throws IOException
