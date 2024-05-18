@@ -34,7 +34,6 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import rocks.friedrich.engine_omega.io.Codec;
 import rocks.friedrich.engine_omega.sound.Sound;
 import rocks.friedrich.engine_omega.util.FileUtil;
 

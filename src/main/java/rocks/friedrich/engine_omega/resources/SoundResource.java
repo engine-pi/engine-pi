@@ -30,7 +30,6 @@ import java.io.InputStream;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import rocks.friedrich.engine_omega.io.Codec;
 import rocks.friedrich.engine_omega.sound.Sound;
 
 public class SoundResource extends NamedResource

@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package rocks.friedrich.engine_omega.io;
+package rocks.friedrich.engine_omega.resources;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -35,7 +35,6 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-import rocks.friedrich.engine_omega.resources.ImageFormat;
 import rocks.friedrich.engine_omega.util.ImageUtil;
 
 public final class Codec
