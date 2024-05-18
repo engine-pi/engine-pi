@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.8.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.8.0) - 2024-05-18
+
+<small>[Compare with v0.7.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.7.0...v0.8.0)</small>
+
+### Added
+
+- Add package-info.java to all packages ([dae1bdd](https://github.com/Josef-Friedrich/engine-omega/commit/dae1bdd32248bc2fa806bbc9dd29ba548679473d) by Josef Friedrich).
+- Add new methode overload: ImageUtil#replaceColor(BufferedImage, Color, Color) ([198becc](https://github.com/Josef-Friedrich/engine-omega/commit/198beccc580bff3542821531db35246f2501ddee) by Josef Friedrich).
+
+### Fixed
+
+- Fix color decode for string arrays ([08fa0cd](https://github.com/Josef-Friedrich/engine-omega/commit/08fa0cdc058d2a6a1898e3f6ed476dbe0ea47756) by Josef Friedrich).
+
 ## [v0.7.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.7.0) - 2024-05-14
 
 <small>[Compare with v0.6.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.6.0...v0.7.0)</small>
