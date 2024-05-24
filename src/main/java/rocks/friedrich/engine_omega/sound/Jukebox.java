@@ -32,10 +32,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
+
+import rocks.friedrich.engine_omega.Game;
 
 /**
  * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge und Musik im Spiel
@@ -71,8 +74,9 @@ public final class Jukebox
 
     private final Collection<MusicPlayback> allMusic = ConcurrentHashMap
             .newKeySet();
-    // private final Collection<SFXPlayback> sounds =
-    // ConcurrentHashMap.newKeySet();
+
+    private final Collection<SFXPlayback> sounds = ConcurrentHashMap
+            .newKeySet();
 
     /**
      * Gets the maximum distance from the listener at which a sound source can
@@ -223,6 +227,65 @@ public final class Jukebox
         {
             track.cancel();
         }
+    }
+
+    /**
+     * Creates an {@code SFXPlayback} object that can be configured prior to
+     * starting. Also allows for a custom source supplier.
+     *
+     * <p>
+     * Unlike the {@code playSound} methods, the {@code SFXPlayback} objects
+     * returned by this method must be started using the
+     * {@link SoundPlayback#start()} method. However, necessary resources are
+     * acquired <em>immediately</em> upon calling this method, and will remain
+     * in use until the playback is either cancelled or finalized.
+     *
+     * @param sound The sound to play
+     * @param loop  Whether to loop the sound
+     * @return An {@code SFXPlayback} object that can be configured prior to
+     *         starting, but will need to be manually started.
+     */
+    public SFXPlayback createSound(Sound sound, boolean loop)
+    {
+        try
+        {
+            return new SFXPlayback(sound, loop);
+        }
+        catch (LineUnavailableException | IllegalArgumentException e)
+        {
+            resourceFailure(e);
+            return null;
+        }
+    }
+
+    void addSound(SFXPlayback playback)
+    {
+        this.sounds.add(playback);
+    }
+
+    public SFXPlayback playSound(Sound sound, boolean loop)
+    {
+        if (sound == null)
+        {
+            return null;
+        }
+        SFXPlayback playback = createSound(sound, loop);
+        if (playback == null)
+        {
+            return null;
+        }
+        playback.start();
+        return playback;
+    }
+
+    public SFXPlayback playSound(final String filePath, boolean loop)
+    {
+        return playSound(Game.getSounds().get(filePath), loop);
+    }
+
+    public SFXPlayback playSound(final String filePath)
+    {
+        return playSound(Game.getSounds().get(filePath), false);
     }
 
     private static void resourceFailure(Throwable e)
