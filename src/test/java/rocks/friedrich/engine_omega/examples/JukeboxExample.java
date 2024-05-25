@@ -15,12 +15,13 @@ import rocks.friedrich.engine_omega.sound.SinglePlayTrack;
 import rocks.friedrich.engine_omega.sound.Sound;
 import rocks.friedrich.engine_omega.sound.Jukebox;
 import rocks.friedrich.engine_omega.sound.Track;
+import rocks.friedrich.engine_omega.sound.Playback;
 
 public class JukeboxExample extends Scene implements KeyListener
 {
     Jukebox jukebox;
 
-    Track casinoBling;
+    Playback casinoBling;
 
     Track gameReached;
 
@@ -32,7 +33,8 @@ public class JukeboxExample extends Scene implements KeyListener
     {
         Game.start(200, 300, this);
         jukebox = Game.getJukebox();
-        casinoBling = loadSinglePlayTrack("casino-bling-achievement.mp3");
+        casinoBling = jukebox
+                .createPlayback("sounds/casino-bling-achievement.mp3", true);
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
         gameBonus = loadSinglePlayTrack("arcade-video-game-bonus.mp3");
         levelMusic = loadLoopedTrack("game-level-music.mp3");
@@ -63,7 +65,7 @@ public class JukeboxExample extends Scene implements KeyListener
         switch (keyEvent.getKeyCode())
         {
         case KeyEvent.VK_1:
-            jukebox.playMusic(casinoBling, false, false);
+            jukebox.playSound("sounds/casino-bling-achievement.mp3");
             break;
 
         case KeyEvent.VK_2:
@@ -76,6 +78,14 @@ public class JukeboxExample extends Scene implements KeyListener
 
         case KeyEvent.VK_4:
             jukebox.playMusic(levelMusic, false, false);
+            break;
+
+        case KeyEvent.VK_5:
+            casinoBling.start();
+            break;
+
+        case KeyEvent.VK_6:
+            casinoBling.cancel();
             break;
 
         case KeyEvent.VK_PLUS:

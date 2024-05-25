@@ -30,7 +30,7 @@ import javax.sound.sampled.LineUnavailableException;
 /**
  * A {@code SoundPlayback} implementation for the playback music.
  */
-public class MusicPlayback extends SoundPlayback
+public class MusicPlayback extends Playback
 {
     private final Track track;
 
