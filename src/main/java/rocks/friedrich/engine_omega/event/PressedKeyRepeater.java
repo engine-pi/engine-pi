@@ -9,10 +9,14 @@ import rocks.friedrich.engine_omega.Game;
 /**
  * Bei gedrückter Taste mehrmals die gleiche Aktionen in einem bestimmten
  * Abstand ausführen.
+ *
+ * @author Josef Friedrich
  */
 public class PressedKeyRepeater implements KeyListener
 {
     private List<Task> tasks;
+
+    private List<Executor> executors;
 
     /**
      * In Sekunden
@@ -56,14 +60,20 @@ public class PressedKeyRepeater implements KeyListener
             // Do nothing
         }
 
+        public void stop()
+        {
+            Game.removeFrameUpdateListener(this);
+            Game.removeKeyListener(this);
+            task.runFinalTask();
+        }
+
         @Override
         public void onKeyUp(KeyEvent e)
         {
             if (e.getKeyCode() == task.getKeyCode())
             {
-                Game.removeFrameUpdateListener(this);
-                Game.removeKeyListener(this);
-                task.runFinalTask();
+                stop();
+                executors.remove(this);
             }
         }
     }
@@ -178,6 +188,7 @@ public class PressedKeyRepeater implements KeyListener
             defaultInitialInterval = intialInterval;
         }
         tasks = new ArrayList<Task>();
+        executors = new ArrayList<Executor>();
         Game.addKeyListener(this);
     }
 
@@ -208,6 +219,18 @@ public class PressedKeyRepeater implements KeyListener
         tasks.add(new Task(keyCode, initialTask, repeatedTask, finalTask));
     }
 
+    /**
+     * Stoppt alle Ausführungen.
+     */
+    public void stop()
+    {
+        for (Executor executor : executors)
+        {
+            executor.stop();
+        }
+        executors.clear();
+    }
+
     @Override
     public void onKeyDown(KeyEvent e)
     {
@@ -215,7 +238,7 @@ public class PressedKeyRepeater implements KeyListener
         {
             if (e.getKeyCode() == task.getKeyCode())
             {
-                new Executor(task);
+                executors.add(new Executor(task));
             }
         }
     }
