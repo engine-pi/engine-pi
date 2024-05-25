@@ -68,8 +68,8 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         super(parent);
         setBackgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
-        Rectangle blender = new Rectangle((float) Showcases.WIDTH / ZOOM,
-                (float) Showcases.HEIGHT / ZOOM);
+        Rectangle blender = new Rectangle((double) Showcases.WIDTH / ZOOM,
+                (double) Showcases.HEIGHT / ZOOM);
         blender.setColor(Color.BLACK);
         blend.add(blender);
         blend.setParallaxRotation(0);
