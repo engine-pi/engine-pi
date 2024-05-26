@@ -20,6 +20,18 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+/**
+ * Eine Seilverbindung erzwingt einen maximalen Abstand zwischen zwei Punkten
+ * auf zwei Körpern.
+ *
+ * <p>
+ * Es hat keine anderen Auswirkungen. Achtung: Wenn Sie versuchen, die maximale
+ * Länge während der Simulation zu ändern, werden Sie ein unphysikalisches
+ * Verhalten feststellen. Ein Modell, das es erlaubt, die Länge dynamisch zu
+ * verändern, wäre etwas schwammig, daher habe ich mich entschieden, es nicht
+ * auf diese Weise zu implementieren. Siehe DistanceJoint, wenn Sie die Länge
+ * dynamisch steuern wollen.
+ */
 public final class RopeJoint extends Joint<org.jbox2d.dynamics.joints.RopeJoint>
 {
     @Override

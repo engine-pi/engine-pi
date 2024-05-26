@@ -22,6 +22,19 @@ package rocks.friedrich.engine_omega.actor;
 
 import rocks.friedrich.engine_omega.annotations.API;
 
+/**
+ * Ein Drehgelenk zwingt zwei Körper dazu, einen gemeinsamen Punkt zu teilen,
+ * während sie sich frei um diesen Punkt drehen können.
+ *
+ * <p>Die relative Drehung um
+ * den gemeinsamen Punkt ist der Gelenkwinkel. Sie können die relative Drehung
+ * mit einer Gelenkbegrenzung begrenzen, die einen unteren und oberen Winkel
+ * angibt. Sie können einen Motor verwenden, um die relative Drehung um den
+ * gemeinsamen Punkt anzutreiben. Es ist ein maximales Motordrehmoment
+ * vorgesehen, damit keine unendlichen Kräfte erzeugt werden.
+ *
+ * Übersetzt mit DeepL.com (kostenlose Version)
+ */
 public final class RevoluteJoint
         extends Joint<org.jbox2d.dynamics.joints.RevoluteJoint>
 {
