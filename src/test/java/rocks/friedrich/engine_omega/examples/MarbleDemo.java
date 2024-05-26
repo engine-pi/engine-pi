@@ -21,72 +21,94 @@ import java.awt.event.KeyEvent;
  */
 public class MarbleDemo extends ShowcaseDemo implements KeyListener
 {
-    /**
-     * Konstanten zur Beschreibung der Position des Trichters.
-     */
-    private static final int ABSTAND_OBEN = -300, ABSTAND_LINKS = 40,
-            ABSTAND_RECHTS = 470;
+    class Funnel
+    {
+        /**
+         * Dicke des Trichters
+         */
+        private static final int THICKNESS = 10;
+
+        /*
+         * Länge der schrängen Wand.
+         */
+        private static final int LENGTH_SLANTED = 200;
+
+        private static final int LENGTH_VERTICAL = 120;
+
+        private static final int NARROW_RADIUS = 50;
+
+        public Funnel()
+        {
+            // slanted
+            Rectangle slantedLeft = new Rectangle(THICKNESS, LENGTH_SLANTED);
+            slantedLeft.setPosition(-NARROW_RADIUS + THICKNESS * 0.25,
+                    LENGTH_VERTICAL - THICKNESS * 0.75);
+            Rectangle slatedRight = new Rectangle(THICKNESS, LENGTH_SLANTED);
+            slatedRight.setPosition(NARROW_RADIUS, LENGTH_VERTICAL);
+            // vertical
+            Rectangle verticalLeft = new Rectangle(THICKNESS, LENGTH_VERTICAL);
+            verticalLeft.setPosition(-NARROW_RADIUS, 0);
+            Rectangle verticalRight = new Rectangle(THICKNESS, LENGTH_VERTICAL);
+            verticalRight.setPosition(NARROW_RADIUS, 0);
+            Rectangle[] allRectangles = new Rectangle[] { slantedLeft,
+                    slatedRight, verticalLeft, verticalRight };
+            for (Rectangle r : allRectangles)
+            {
+                r.setColor(Color.WHITE);
+                add(r);
+                r.setBodyType(BodyType.STATIC);
+            }
+            setGravity(new Vector(0, -30));
+            slantedLeft.setRotation(45);
+            slatedRight.setRotation(-45);
+        }
+    }
 
     /**
      * Der Boden des Trichters. Kann durchlässig gemacht werden.
      */
-    private final Rectangle boden;
+    private final Rectangle ground;
 
     public MarbleDemo(Scene parent)
     {
         super(parent);
         // Trichter
-        Rectangle lo = new Rectangle(50, 150);
-        lo.setPosition(ABSTAND_LINKS, ABSTAND_OBEN);
-        Rectangle lm = new Rectangle(50, 200);
-        lm.setPosition(ABSTAND_LINKS, ABSTAND_OBEN - 150);
-        Rectangle ro = new Rectangle(50, 150);
-        ro.setPosition(ABSTAND_RECHTS, ABSTAND_OBEN);
-        Rectangle rm = new Rectangle(50, 200);
-        rm.setPosition(ABSTAND_RECHTS + 14, ABSTAND_OBEN - 120);
-        Rectangle lu = new Rectangle(50, 120);
-        lu.setPosition(ABSTAND_LINKS + 125, ABSTAND_OBEN - 255);
-        Rectangle ru = new Rectangle(50, 120);
-        ru.setPosition(ABSTAND_LINKS + 304, ABSTAND_OBEN - 260);
-        boden = new Rectangle(230, 40);
-        boden.setPosition(ABSTAND_LINKS + 125, ABSTAND_OBEN - 375);
-        Rectangle[] allRectangles = new Rectangle[] { lo, lm, ro, rm, lu, ru,
-                boden };
-        for (Rectangle r : allRectangles)
-        {
-            r.setColor(Color.WHITE);
-            add(r);
-            r.setBodyType(BodyType.STATIC);
-        }
-        setGravity(new Vector(0, -15));
-        lm.setRotation(45);
-        rm.setRotation(-45);
-        repeat(.1f, () -> {
+        new Funnel();
+        repeat(0.2, () -> {
             Circle marble = makeMarble();
             add(marble);
             marble.setBodyType(BodyType.DYNAMIC);
-            marble.setPosition(ABSTAND_LINKS + 200, ABSTAND_OBEN + 150);
+            marble.setPosition(0, 500);
             marble.applyImpulse(new Vector(Random.range() * 200 - 100,
                     Random.range() * -300 - 100));
         });
-        getCamera().setZoom(1);
+        ground = new Rectangle(Funnel.NARROW_RADIUS * 2 + Funnel.THICKNESS,
+                Funnel.THICKNESS);
+        ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
+        ground.setBodyType(BodyType.STATIC);
+        add(ground);
+        getCamera().setZoom(0.5);
     }
 
     @Override
     public void onKeyDown(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_X)
-        { // Boden togglen
-            if (boden.getBodyType() == BodyType.STATIC)
+        {
+            if (ground.getBodyType() == BodyType.STATIC)
             {
-                boden.setBodyType(BodyType.SENSOR);
-                boden.setColor(new Color(255, 255, 255, 100));
+                ground.setBodyType(BodyType.SENSOR);
+                ground.setColor(new Color(255, 255, 255, 100));
             }
             else
             {
-                boden.setBodyType(BodyType.STATIC);
-                boden.setColor(Color.WHITE);
+                ground.setBodyType(BodyType.STATIC);
+                ground.setColor(Color.WHITE);
             }
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_Y)
+        {
+            setGravity(new Vector(40, 0));
         }
     }
 
@@ -119,7 +141,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyListener
                 }
             }
         }
-        Circle marble = new Marble(Random.range(50) + 10);
+        Circle marble = new Marble(Random.range(20) + 10);
         marble.setBodyType(BodyType.DYNAMIC);
         marble.setGravityScale(2);
         marble.setColor(new Color(Random.range(255), Random.range(255),
@@ -127,10 +149,8 @@ public class MarbleDemo extends ShowcaseDemo implements KeyListener
         return marble;
     }
 
-
     public static void main(String[] args)
     {
         Game.start(1000, 800, new MarbleDemo(null));
-
     }
 }
