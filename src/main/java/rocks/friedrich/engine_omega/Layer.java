@@ -490,9 +490,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Gibt den {@link Worldhandler} dieser Ebene aus.
+     * Gibt den {@link WorldHandler} dieser Ebene aus.
      *
-     * @return Der {@link Worldhandler} dieser Ebene.
+     * @return Der {@link WorldHandler} dieser Ebene.
      */
     @Internal
     public WorldHandler getWorldHandler()
