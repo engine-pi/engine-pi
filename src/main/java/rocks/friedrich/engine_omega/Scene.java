@@ -56,6 +56,11 @@ import rocks.friedrich.engine_omega.event.MouseWheelListener;
 import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
 import rocks.friedrich.engine_omega.physics.WorldHandler;
 
+/**
+ * Mit Hilfe von Szenen können verschiedene Ansichten eines Spiels erstellt
+ * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
+ * neu erzeugen zu müssen.
+ */
 public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer
 {
@@ -89,9 +94,9 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     private Color backgroundColor = Color.BLACK;
 
     /**
-     * Gibt das Main Layer dieser Scene aus.
+     * Gibt die Hauptebene dieser Szene aus.
      *
-     * @return Das Main Layer der Scene.
+     * @return Die Hauptebene dieser Szene.
      */
     @API
     public Layer getMainLayer()
@@ -100,14 +105,15 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Das Main-Layer (default-additions)
+     * Die Hauptebene (default-additions)
      */
     private final Layer mainLayer;
 
-    private static final int JOINT_CIRCLE_RADIUS = 10;// (Basis-)Breite für die
-                                                      // Visualisierung von
-                                                      // Rechtecken
+    private static final int JOINT_CIRCLE_RADIUS = 10;
 
+    /**
+     * (Basis-)Breite für die Visualisierung von Rechtecken
+     */
     private static final int JOINT_RECTANGLE_SIDE = 12;
 
     public Scene()
@@ -120,7 +126,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Führt an allen Layern <b>parallelisiert</b> den World-Step aus.
+     * Führt auf allen Ebenen <b>parallelisiert</b> den World-Step aus.
      *
      * @param deltaSeconds Die Echtzeit, die seit dem letzten World-Step
      *                     vergangen ist.
@@ -346,6 +352,11 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         return mainLayer.getWorldHandler().isWorldPaused();
     }
 
+    /**
+     * Fügt einen oder mehrere Actor-Objekte der Szene hinzu.
+     *
+     * @param actors Ein oder mehrere Actor-Objekte.
+     */
     @API
     final public void add(Actor... actors)
     {
@@ -355,6 +366,11 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         }
     }
 
+    /**
+     * Entferne einen oder mehrere Actor-Objekte aus der Szene.
+     *
+     * @param actors Ein oder mehrere Actor-Objekte.
+     */
     @API
     final public void remove(Actor... actors)
     {
@@ -441,11 +457,21 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         return Game.convertMousePosition(this, Game.getMousePositionInFrame());
     }
 
+    /**
+     * Gibt die Hintergrundfarbe zurück.
+     *
+     * @return Die Hintergrundfarbe.
+     */
     public Color getBackgroundColor()
     {
         return backgroundColor;
     }
 
+    /**
+     * Setzt die Hintergrundfarbe.
+     *
+     * @param backgroundColor Die Hintergrundfarbe.
+     */
     public void setBackgroundColor(Color backgroundColor)
     {
         this.backgroundColor = backgroundColor;

@@ -49,7 +49,7 @@ import rocks.friedrich.engine_omega.physics.PhysicsHandler;
 import rocks.friedrich.engine_omega.physics.WorldHandler;
 
 /**
- * Layer bieten die Möglichkeit, <code>Actors</code> vor und hinter der
+ * Eine Ebene bieten die Möglichkeit, {@link Actor}-Objekte vor und hinter der
  * Zeichenebene mit zusätzlichen Eigenschaften (wie Parallaxe) zu rendern.
  *
  * @author Michael Andonie
@@ -86,7 +86,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
 
     /**
      * Bestimmt die Reihenfolge der Layer, kleinere Werte werden zuerst
-     * gerendert, sind also weiter "hinten"
+     * gerendert, sind also weiter „hinten“.
      */
     private int layerPosition = -2;
 
@@ -303,6 +303,11 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
         return this.visible;
     }
 
+    /**
+     * Fügt einen oder mehrere Actor-Objekte der Ebene hinzu.
+     *
+     * @param actors Ein oder mehrere Actor-Objekte.
+     */
     @API
     public void add(Actor... actors)
     {
@@ -332,6 +337,11 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
         });
     }
 
+    /**
+     * Entferne einen oder mehrere Actor-Objekte aus der Ebene.
+     *
+     * @param actors Ein oder mehrere Actor-Objekte.
+     */
     @API
     final public void remove(Actor... actors)
     {
@@ -480,9 +490,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Gibt den Worldhandler dieses Layers aus.
+     * Gibt den {@link Worldhandler} dieser Ebene aus.
      *
-     * @return Der Worldhandler dieser Ebene.
+     * @return Der {@link Worldhandler} dieser Ebene.
      */
     @Internal
     public WorldHandler getWorldHandler()

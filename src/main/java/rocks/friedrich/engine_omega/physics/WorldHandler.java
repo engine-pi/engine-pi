@@ -53,10 +53,10 @@ import rocks.friedrich.engine_omega.util.Logger;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
- * der JBox2D Engine und der EA. Sie ist verantwortlich für:
+ * der JBox2D Engine und der Engine Omage. Sie ist verantwortlich für:
  * <ul>
  * <li>Den globalen "World"-Parameter aus der JBox2D Engine.</li>
- * <li>Translation zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
+ * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
  * Engine (Zeichengrößen)</li>
  * </ul>
  */
