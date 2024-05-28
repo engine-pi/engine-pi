@@ -260,7 +260,6 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         }
     }
 
-
     public static void main(String[] args)
     {
         Game.start(1000, 800, new ForceKlickEnvironment(null));

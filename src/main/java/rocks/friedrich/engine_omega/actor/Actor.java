@@ -157,10 +157,10 @@ public abstract class Actor
     }
 
     /**
-     * Fügt einen Listener hinzu, der ausgeführt wird, sobald das Objekt
+     * Fügt einen Beobachter hinzu, der ausgeführt wird, sobald das Objekt
      * angemeldet wurde.
      *
-     * @param listener Listener-Implementierung
+     * @param listener Beobachter-Implementierung
      */
     @API
     public final void addMountListener(Runnable listener)
@@ -173,10 +173,10 @@ public abstract class Actor
     }
 
     /**
-     * Entfernt einen Listener, der ausgeführt wird, sobald das Objekt
+     * Entfernt einen Beobachter, der ausgeführt wird, sobald das Objekt
      * angemeldet wurde.
      *
-     * @param listener Listener-Implementierung
+     * @param listener Beobachter-Implementierung
      */
     @API
     public final void removeMountListener(Runnable listener)
@@ -185,10 +185,10 @@ public abstract class Actor
     }
 
     /**
-     * Fügt einen Listener hinzu, der ausgeführt wird, sobald das Objekt
+     * Fügt einen Beobachter hinzu, der ausgeführt wird, sobald das Objekt
      * abgemeldet wurde.
      *
-     * @param listener Listener-Implementierung
+     * @param listener Beobachter-Implementierung
      */
     @API
     public final void addUnmountListener(Runnable listener)
@@ -197,10 +197,10 @@ public abstract class Actor
     }
 
     /**
-     * Entfernt einen Listener, der ausgeführt wird, sobald das Objekt
+     * Entfernt einen Beobachter, der ausgeführt wird, sobald das Objekt
      * abgemeldet wurde.
      *
-     * @param listener Listener-Implementierung
+     * @param listener Beobachter-Implementierung
      */
     @API
     public final void removeUnmountListener(Runnable listener)
@@ -209,10 +209,10 @@ public abstract class Actor
     }
 
     /**
-     * Setzt die Layer-Position dieses Objekts. Je größer, desto weiter vorne
+     * Setzt die Ebenenposition dieses Objekts. Je größer, desto weiter vorne
      * wird das Objekt gezeichnet.
      *
-     * @param position Layer-Index
+     * @param position Der Ebenen-Index.
      * @see #getLayerPosition()
      */
     @API
@@ -222,10 +222,10 @@ public abstract class Actor
     }
 
     /**
-     * Gibt die Layer-Position zurück. Je größer, desto weiter vorne wird das
+     * Gibt die Ebenenposition zurück. Je größer, desto weiter vorne wird das
      * Objekt gezeichnet.
      *
-     * @return Layer-Index
+     * @return Der Ebenen-Index.
      * @see #setLayerPosition(int)
      */
     @API
@@ -237,7 +237,7 @@ public abstract class Actor
     /**
      * Setzt die Sichtbarkeit des Objektes.
      *
-     * @param visible Ob das Objekt isVisible sein soll oder nicht.<br>
+     * @param visible Ob das Objekt sichtbar sein soll oder nicht.<br>
      *                Ist dieser Wert <code>false</code>, so wird es nicht
      *                gezeichnet.
      * @see #isVisible()
@@ -261,9 +261,10 @@ public abstract class Actor
     }
 
     /**
-     * Gibt die aktuelle Opacity des Raumes zurück.
+     * Gibt die aktuelle Durchsichtigkeit des {@link Actor}-Objekts zurück.
      *
-     * @return Gibt die aktuelle Opacity des Raumes zurück.
+     * @return Gibt die aktuelle Durchsichtigkeit des {@link Actor}-Objekts
+     *         zurück.
      */
     @API
     public final double getOpacity()
@@ -272,13 +273,13 @@ public abstract class Actor
     }
 
     /**
-     * Setzt die Sichtbarkeit des Objekts.
+     * Setzt die Durchsichtigkeit des Objekts.
      *
      * @param opacity
      *                <ul>
-     *                <li><code>0.0f</code> entspricht einem komplett
+     *                <li><code>0.0</code> entspricht einem komplett
      *                durchsichtigen (transparenten) Objekt.</li>
-     *                <li><code>1.0f</code> entspricht einem undurchsichtigem
+     *                <li><code>1.0</code> entspricht einem undurchsichtigem
      *                Objekt.</li>
      *                </ul>
      */
@@ -291,25 +292,27 @@ public abstract class Actor
     /**
      * Prüft, ob ein bestimmter Punkt innerhalb des Objekts liegt.
      *
-     * @param p Der Punkt, der auf Inhalt im Objekt getestet werden soll.
+     * @param point Der Punkt, der auf Inhalt im Objekt getestet werden soll.
      * @return <code>true</code>, wenn der Punkt innerhalb des Objekts liegt.
      */
     @API
-    public final boolean contains(Vector p)
+    public final boolean contains(Vector point)
     {
-        return physicsHandler.contains(p);
+        return physicsHandler.contains(point);
     }
 
     /**
-     * Prüft, ob dieses Objekt sich mit einem weiteren Objekt schneidet.<br>
+     * Prüft, ob dieses Objekt sich mit einem weiteren Objekt schneidet.
+     *
+     * <p>
      * Für die Überprüfung des Überlappens werden die internen <b>Collider</b>
      * genutzt. Je nach Genauigkeit der Collider kann die Überprüfung
      * unterschiedlich befriedigend ausfallen. Die Collider können im
      * <b>Debug-Modus</b> der Engine eingesehen werden.
      *
-     * @param other Ein weiteres Actor-Objekt.
-     * @return <code>true</code>, wenn dieses Actor-Objekt sich mit
-     *         <code>another</code> schneidet. Sonst <code>false</code>.
+     * @param other Ein weiteres {@link Actor}-Objekt.
+     * @return <code>true</code>, wenn dieses {@link Actor}-Objekt sich mit
+     *         <code>other</code> schneidet. Sonst <code>false</code>.
      * @see rocks.friedrich.engine_omega.Game#setDebug(boolean)
      */
     @API
@@ -320,18 +323,23 @@ public abstract class Actor
         return WorldHandler.isBodyCollision(a, b);
     }
 
+    /**
+     * Git eine List bestehend aus Kollisionsereignissen zurück.
+     *
+     * @return Eine Liste aus Kollisionsereignissen.
+     */
     public final List<CollisionEvent<Actor>> getCollisions()
     {
         return physicsHandler.getCollisions();
     }
 
     /**
-     * Setzt das allgemeine Verhalten dieses Objekts im Rahmen der
-     * Physics-Engine (und Collision Detection) haben soll. Eine Erläuterung der
-     * verschiedenen Verhaltenstypen finden sich in der Dokumentation von
-     * <code>BodyType</code>.
+     * Setzt das allgemeine Verhalten, dass dieses Objekt im Rahmen der
+     * Physics-Engine (und Kollisionserkennungen) haben soll. Eine Erläuterung
+     * der verschiedenen Verhaltenstypen finden sich in der Dokumentation von
+     * {@link BodyType}.
      *
-     * @param type Der neue <code>BodyType</code>, für den Actor.
+     * @param type Der neue {@link BodyType} für den {@link Actor}.
      * @see BodyType
      */
     @API
@@ -344,7 +352,7 @@ public abstract class Actor
     /**
      * Gibt aus, was für ein Physics-Typ dieses Objekt momentan ist.
      *
-     * @return der Physics-Typ, der das entsprechende <code>Actor</code>-Objekt
+     * @return Der Physics-Typ, der das entsprechende {@link Actor}-Objekt
      *         momentan ist.
      * @see BodyType
      */
@@ -355,7 +363,7 @@ public abstract class Actor
     }
 
     /**
-     * Setzt neue Shapes für das Objekt. Hat Einfluss auf die Physik
+     * Setzt den Umriss für dieses Objekt neu. Hat Einfluss auf die Physik
      * (Kollisionen, Masse, etc.)
      *
      * @param shapeCode der Shape-Code
@@ -384,7 +392,7 @@ public abstract class Actor
     }
 
     /**
-     * Ändert die Fixtures dieses Actors in eine Reihe neuer Fixtures.
+     * Ändert die Umrisse dieses Objekts durch Angabe einer Liste.
      *
      * @param fixturesSupplier Ein Supplier, der eine Liste mit allen neuen
      *                         Shapes für den Actor angibt.
@@ -397,10 +405,12 @@ public abstract class Actor
     }
 
     /**
-     * Die Basiszeichenmethode.<br>
+     * Die Basiszeichenmethode.
+     *
+     * <p>
      * Sie schließt eine Fallabfrage zur Sichtbarkeit ein.
      *
-     * @param g             Das zeichnende Graphics-Objekt
+     * @param g             Das zeichnende Graphics-Objekt.
      * @param r             Das Bounds, dass die Kameraperspektive
      *                      repräsentiert.<br>
      *                      Hierbei soll zunächst getestet werden, ob das Objekt
@@ -556,7 +566,7 @@ public abstract class Actor
      * @param listener Der Listener, der bei Kollisionen zwischen dem
      *                 <b>ausführenden Actor</b> und <code>collider</code>
      *                 informiert werden soll.
-     * @param collider Ein weiteres Actor-Objekt.
+     * @param collider Ein weiteres {@link Actor}-Objekt.
      * @param <E>      Typ-Parameter. SOllte im Regelfall exakt die Klasse von
      *                 <code>collider</code> sein. Dies ermöglicht die Nutzung
      *                 von spezifischen Methoden aus spezialisierteren Klassen
@@ -738,11 +748,15 @@ public abstract class Actor
 
     /**
      * Setzt, ob <i>im Rahmen der physikalischen Simulation</i> die Rotation
-     * dieses Objekts blockiert werden soll. <br>
+     * dieses Objekts blockiert werden soll.
+     *
+     * <p>
      * Das Objekt kann in jedem Fall weiterhin über einen direkten
      * Methodenaufruf rotiert werden. Der folgende Code ist immer wirksam,
      * unabhängig davon, ob die Rotation im Rahmen der physikalischen Simulation
-     * blockiert ist:<br>
+     * blockiert ist:
+     *
+     * <p>
      * <code>
      * actor.getPosition.rotate(4.31f);
      * </code>
@@ -832,7 +846,7 @@ public abstract class Actor
     }
 
     /**
-     * Setzt den Reibungskoeffizient für das Objekt. Hat Einfluss auf die
+     * Setzt den Reibungskoeffizient für das Objekt. Dieser hat Einfluss auf die
      * Bewegung des Objekts.
      *
      * @param friction Der Reibungskoeffizient. In der Regel im Bereich <b>[0;
@@ -859,7 +873,9 @@ public abstract class Actor
     }
 
     /**
-     * @param damping Dämpfung der Rotationsgeschwindigkeit
+     * Setzt die Dämpfung der Rotationsgeschwindigkeit.
+     *
+     * @param damping Die Dämpfung der Rotationsgeschwindigkeit.
      */
     @API
     public final void setAngularDamping(double damping)
@@ -868,7 +884,9 @@ public abstract class Actor
     }
 
     /**
-     * @return Dämpfung der Rotationsgeschwindigkeit
+     * Gibt die Dämpfung der Rotationsgeschwindigkeit zurück.
+     *
+     * @return Die Dämpfung der Rotationsgeschwindigkeit.
      */
     @API
     public final double getAngularDamping()
@@ -877,7 +895,9 @@ public abstract class Actor
     }
 
     /**
-     * @param damping Dämpfung der Geschwindigkeit
+     * Setzt die Dämpfung der Geschwindigkeit.
+     *
+     * @param damping Die Dämpfung der Geschwindigkeit.
      */
     @API
     public final void setLinearDamping(double damping)
@@ -886,6 +906,8 @@ public abstract class Actor
     }
 
     /**
+     * Gibt die Dämpfung der Geschwindigkeit zurück.
+     *
      * @return Dämpfung der Geschwindigkeit
      */
     @API
@@ -895,9 +917,11 @@ public abstract class Actor
     }
 
     /**
-     * Setzt die Geschwindigkeit "hart" für dieses Objekt. Damit wird die
-     * aktuelle Bewegung (nicht aber die Rotation) des Objekts ignoriert und
-     * hart auf den übergebenen Wert gesetzt.
+     * Setzt die Geschwindigkeit „hart“ für dieses Objekt.
+     *
+     * <p>
+     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) des Objekts
+     * ignoriert und hart auf den übergebenen Wert gesetzt.
      *
      * @param velocityInMPerS Die Geschwindigkeit, mit der sich dieses Objekt ab
      *                        sofort bewegen soll. In <b>[m / s]</b>
@@ -1044,7 +1068,7 @@ public abstract class Actor
     }
 
     /**
-     * Wirkt einen Impuls an einem bestimmten <i>Point in der Welt</i>.
+     * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
      *
      * @param newtonSeconds Impuls in <b>[Ns]</b>
      * @param globalPoint   Ort auf der <i>Zeichenebene</i>, an dem der Impuls
@@ -1098,19 +1122,18 @@ public abstract class Actor
 
     /**
      * Erstellt einen Revolute-Joint zwischen dem zugehörigen
-     * <code>Actor</code>-Objekt und einem weiteren.
+     * {@link Actor}-Objekt und einem weiteren.
      *
      * <h4>Definition Revolute-Joint</h4>
      * <p>
-     * Verbindet zwei <code>Actor</code>-Objekte <b>untrennbar an einem
+     * Verbindet zwei {@link Actor}-Objekte <b>untrennbar an einem
      * Anchor-Point</b>. Die Objekte können sich ab sofort nur noch <b>relativ
      * zueinander drehen</b>.
      * </p>
      *
-     * @param other          Das zweite <code>Actor</code>-Objekt, das ab sofort
-     *                       mit dem zugehörigen <code>Actor</code>-Objekt über
-     *                       einen <code>RevoluteJoint</code> verbunden sein
-     *                       soll.
+     * @param other          Das zweite {@link Actor}-Objekt, das ab sofort mit
+     *                       dem zugehörigen {@link Actor}-Objekt über einen
+     *                       <code>RevoluteJoint</code> verbunden sein soll.
      * @param relativeAnchor Der Ankerpunkt <b>relativ zu diesem Actor</b>. Es
      *                       wird davon ausgegangen, dass beide Objekte bereits
      *                       korrekt positioniert sind.
@@ -1134,21 +1157,21 @@ public abstract class Actor
 
     /**
      * Erstellt einen Rope-Joint zwischen diesem und einem weiteren
-     * <code>Actor</code>-Objekt.
+     * {@link Actor}-Objekt.
      *
-     * @param other               Das zweite <code>Actor</code>-Objekt, das ab
-     *                            sofort mit dem zugehörigen
-     *                            <code>Actor</code>-Objekt über einen
-     *                            <code>RopeJoint</code> verbunden sein soll.
+     * @param other               Das zweite {@link Actor}-Objekt, das ab sofort
+     *                            mit dem zugehörigen {@link Actor}-Objekt über
+     *                            einen <code>RopeJoint</code> verbunden sein
+     *                            soll.
      * @param relativeAnchor      Der Ankerpunkt für das zugehörige
-     *                            <code>Actor</code>-Objekt. Der erste
+     *                            {@link Actor}-Objekt. Der erste
      *                            Befestigungspunkt des Lassos. Angabe relativ
      *                            zur Position vom zugehörigen Objekt.
      * @param relativeAnchorOther Der Ankerpunkt für das zweite
-     *                            <code>Actor</code>-Objekt, also
-     *                            <code>other</code>. Der zweite
-     *                            Befestigungspunkt des Lassos. Angabe relativ
-     *                            zur Position vom zugehörigen Objekt.
+     *                            {@link Actor}-Objekt, also <code>other</code>.
+     *                            Der zweite Befestigungspunkt des Lassos.
+     *                            Angabe relativ zur Position vom zugehörigen
+     *                            Objekt.
      * @param ropeLength          Die Länge des Lassos. Dies ist ab sofort die
      *                            maximale Länge, die die beiden Ankerpunkte der
      *                            Objekte voneinader entfernt sein können.
@@ -1200,19 +1223,19 @@ public abstract class Actor
 
     /**
      * Erstellt einen Distance-Joint zwischen diesem und einem weiteren
-     * <code>Actor</code>-Objekt.
+     * {@link Actor}-Objekt.
      *
-     * @param other                 Das zweite <code>Actor</code>-Objekt, das ab
+     * @param other                 Das zweite {@link Actor}-Objekt, das ab
      *                              sofort mit dem zugehörigen
-     *                              <code>Actor</code>-Objekt über einen
+     *                              {@link Actor}-Objekt über einen
      *                              <code>DistanceJoint</code> verbunden sein
      *                              soll.
      * @param anchorRelativeToThis  Der Ankerpunkt für das zugehörige
-     *                              <code>Actor</code>-Objekt. Der erste
+     *                              {@link Actor}-Objekt. Der erste
      *                              Befestigungspunkt des Joints. Angabe relativ
      *                              zu <code>this</code> also absolut.
      * @param anchorRelativeToOther Der Ankerpunkt für das zweite
-     *                              <code>Actor</code>-Objekt, also
+     *                              {@link Actor}-Objekt, also
      *                              <code>other</code>. Der zweite
      *                              Befestigungspunkt des Joints. Angabe relativ
      *                              zu <code>other</code>
@@ -1242,19 +1265,19 @@ public abstract class Actor
 
     /**
      * Erstellt einen Weld-Joint zwischen diesem und einem weiteren
-     * <code>Actor</code>-Objekt.
+     * {@link Actor}-Objekt.
      *
-     * @param other                 Das zweite <code>Actor</code>-Objekt, das ab
+     * @param other                 Das zweite {@link Actor}-Objekt, das ab
      *                              sofort mit dem zugehörigen
-     *                              <code>Actor</code>-Objekt über einen
+     *                              {@link Actor}-Objekt über einen
      *                              <code>DistanceJoint</code> verbunden sein
      *                              soll.
      * @param anchorRelativeToThis  Der Ankerpunkt für das zugehörige
-     *                              <code>Actor</code>-Objekt. Der erste
+     *                              {@link Actor}-Objekt. Der erste
      *                              Befestigungspunkt des Joints. Angabe relativ
      *                              zu <code>this</code> also absolut.
      * @param anchorRelativeToOther Der Ankerpunkt für das zweite
-     *                              <code>Actor</code>-Objekt, also
+     *                              {@link Actor}-Objekt, also
      *                              <code>other</code>. Der zweite
      *                              Befestigungspunkt des Joints. Angabe relativ
      *                              zu <code>other</code>
@@ -1278,7 +1301,7 @@ public abstract class Actor
     }
 
     /**
-     * Setzt die Position des <code>Actor</code>-Objektes gänzlich neu auf der
+     * Setzt die Position des {@link Actor}-Objektes gänzlich neu auf der
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
      *
@@ -1476,9 +1499,9 @@ public abstract class Actor
     }
 
     /**
-     * Gibt die Position dieses Actor-Objekts aus.
+     * Gibt die Position dieses {@link Actor}-Objekts aus.
      *
-     * @return die aktuelle Position dieses <code>Actor</code>-Objekts.
+     * @return die aktuelle Position dieses {@link Actor}-Objekts.
      */
     @API
     public final Vector getPosition()

@@ -41,7 +41,7 @@ import rocks.friedrich.engine_omega.resources.ResourceLoader;
 import rocks.friedrich.engine_omega.util.GifDecoder;
 
 /**
- * Eine Animation ist ein Actor-Objekt, das aus mehreren
+ * Eine Animation ist ein {@link Actor}-Objekt, das aus mehreren
  * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Frames</a> besteht.
  * Frames können auf verschiedene Arten aus Bilddateien eingeladen werden:
  * <ul>

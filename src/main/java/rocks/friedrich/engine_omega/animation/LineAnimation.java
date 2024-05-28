@@ -26,7 +26,7 @@ import rocks.friedrich.engine_omega.animation.interpolation.LinearDouble;
 import rocks.friedrich.engine_omega.event.AggregateFrameUpdateListener;
 
 /**
- * Eine Animation, die ein Actor-Objekt in einer Linie animiert.
+ * Eine Animation, die ein {@link Actor}-Objekt in einer Linie animiert.
  */
 public class LineAnimation extends AggregateFrameUpdateListener
 {

@@ -304,9 +304,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Fügt einen oder mehrere Actor-Objekte der Ebene hinzu.
+     * Fügt einen oder mehrere {@link Actor}-Objekte der Ebene hinzu.
      *
-     * @param actors Ein oder mehrere Actor-Objekte.
+     * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
     public void add(Actor... actors)
@@ -338,9 +338,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Entferne einen oder mehrere Actor-Objekte aus der Ebene.
+     * Entferne einen oder mehrere {@link Actor}-Objekte aus der Ebene.
      *
-     * @param actors Ein oder mehrere Actor-Objekte.
+     * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
     final public void remove(Actor... actors)

@@ -33,23 +33,29 @@ import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
- * Ein Objekt der Klasse <code>CollisionEvent</code> repräsentiert eine
- * <b>Kollision zwischen zwei Actor-Objekten</b>. Nur Actor-Objekte, mit denen
- * ein CollisionListener verkmnüpft ist, generieren
- * <code>CollisionEvent</code>s.
+ * Ein Objekt der Klasse {@link CollisionEvent} repräsentiert eine <b>Kollision
+ * zwischen zwei {@link Actor}-Objekten</b>. Nur {@link Actor}-Objekte, mit
+ * denen ein CollisionListener verknüpft sind, generieren
+ * {@link CollisionEvent}s.
+ *
  * <p>
- * Das CollisionEvent wird verwendet als
+ * Das {@link CollisionEvent} wird verwendet als
+ *
  * <ul>
+ *
  * <li><b>Angabe des Kollisionspartners</b>: In der Engine ist eines der beiden
- * Actor-Objekte des Aufpralls implizit bestimmt dadurch, dass der
- * <code>CollisionListener</code> an dem entsprechenden Actor-Objekt
+ * {@link Actor}-Objekte des Aufpralls implizit bestimmt dadurch, dass der
+ * {@link CollisionListener} an dem entsprechenden {@link Actor}-Objekt
  * <b>angemeldet</b> werden musste. Das hiermit kollidierende Objekt ist im
  * Event angegeben.</li>
+ *
  * <li><b>Ausführliche Informationsquelle</b>: Hierüber sind Informationen zur
  * Kollision erhältlich, z.B. über die Härte des Aufpralls.</li>
+ *
  * <li><b>Kontrolle der Kollisionsauflösung</b>: Der Nutzer kann entscheiden, ob
  * die Kollision aufgelöst werden soll oder ignoriert werden soll. Hiermit
  * lassen sich zum Beispiel einseitige Sperren/Wände umsetzen.</li>
+ *
  * </ul>
  *
  * @param <E> Typ des anderen Objekts bei Kollisionen.
@@ -68,7 +74,7 @@ public class CollisionEvent<E extends Actor>
     private final Contact contact;
 
     /**
-     * Das kollidierende Actor-Objekt.
+     * Das kollidierende {@link Actor}-Objekt.
      */
     private final E colliding;
 
@@ -77,8 +83,8 @@ public class CollisionEvent<E extends Actor>
      *
      * @param contact   Das JBox2D-Contact-Objekt zur direkten Manipulation der
      *                  Kollisionsauflösung (und zur Abfrage von Informationen).
-     * @param colliding Das kollidierende Actor-Objekt. Das zweite Objekt der
-     *                  Kollision ist implizit durch die Anmeldung am
+     * @param colliding Das kollidierende {@link Actor}-Objekt. Das zweite
+     *                  Objekt der Kollision ist implizit durch die Anmeldung am
      *                  entsprechenden Actor gegeben.
      */
     @Internal
@@ -89,11 +95,12 @@ public class CollisionEvent<E extends Actor>
     }
 
     /**
-     * Gibt das <code>Actor</code>-Objekt aus, dass mit dem <code>Actor</code>
-     * kollidiert, an dem der Listener angemeldet wurde.
+     * Gibt das {@link Actor}-Objekt aus, dass mit dem {@link Actor} kollidiert,
+     * an dem der Listener angemeldet wurde.
      *
-     * @return Das kollidierende Actor-Objekt. Das zweite Objekt der Kollision
-     *         ist implizit durch die Anmeldung am entsprechenden Actor gegeben.
+     * @return Das kollidierende {@link Actor}-Objekt. Das zweite Objekt der
+     *         Kollision ist implizit durch die Anmeldung am entsprechenden
+     *         {@link Actor} gegeben.
      */
     @API
     public E getColliding()
@@ -103,12 +110,17 @@ public class CollisionEvent<E extends Actor>
 
     /**
      * Wenn diese Methode aufgerufen wird, wird diese Kollision <b>nicht von der
-     * Physics-Engine</b> aufgelöst, sondern ignoriert. <br>
+     * Physics-Engine</b> aufgelöst, sondern ignoriert.
+     *
+     * <p>
      * Dies lässt sich Nutzen zum Beispiel für:
      * <ul>
-     * <li>Feste Plattformen, durch die man von unten "durchspringen" kann, um
+     *
+     * <li>Feste Plattformen, durch die man von unten „durchspringen“ kann, um
      * so von unten auf sie drauf zu springen.</li>
+     *
      * <li>Einbahn-Sperren, die nur auf einer Seite durchlässig sind.</li>
+     *
      * <li>Gegner, die nicht miteinander kollidieren sollen, sondern nur mit dem
      * Spielcharakter.</li>
      * </ul>

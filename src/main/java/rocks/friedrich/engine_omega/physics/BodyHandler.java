@@ -38,13 +38,13 @@ import rocks.friedrich.engine_omega.event.CollisionEvent;
 
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische
- * Darstellung</i> eines <code>Actor</code>-Objekts.<br>
+ * Darstellung</i> eines {@link Actor}-Objekts.<br>
  * Er übernimmt zwei wesentliche Aufgaben:
  * <ul>
  * <li>Die Kontrolle und Steuerung innerhalb der <b>Physics-Engine</b> aus Sicht
  * des respektiven Actor Objekts.</li>
  * <li>Die Speicherung der <i>räumlichen Eigenschaften</i> (Position und
- * Rotation) des respektiven Actor-Objekts.</li>
+ * Rotation) des respektiven {@link Actor}-Objekts.</li>
  * </ul>
  */
 public class BodyHandler implements PhysicsHandler
@@ -59,8 +59,8 @@ public class BodyHandler implements PhysicsHandler
     private final WorldHandler worldHandler;
 
     /**
-     * Der Body als die physische Repräsentation des analogen Actor-Objekts in
-     * der Physics-Engine.
+     * Der Body als die physische Repräsentation des analogen
+     * {@link Actor}-Objekts in der Physics-Engine.
      */
     private final Body body;
 

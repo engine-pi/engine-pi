@@ -25,20 +25,20 @@ import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Beschreibt allgemein ein Objekt, das auf die <b>Kollision zweier
- * Actor-Objekte</b> reagieren kann.
+ * {@link Actor}-Objekte</b> reagieren kann.
  * <h2>Funktionsweise</h2>
  * <p>
  * Eine <code>KollisionsReagierbar</code>-Instanz wird bei Kollisionen zwischen
- * verschiedenen <code>Actor</code>-Objekten aufgerufen. Die genauen Umstände
- * hängen von der Art der Anmeldung ab.
+ * verschiedenen {@link Actor}-Objekten aufgerufen. Die genauen Umstände hängen
+ * von der Art der Anmeldung ab.
  * </p>
  * <ul>
  * <li>Wurde das Objekt mit einem (oder mehrmals mit verschiedenen)
- * Ziel-Actor-Objekten angemeldet, so wird es nur bei Kollision zwischen den
- * spezifizierten Paaren informiert.</li>
- * <li>Wurde das Objekt nur mit einem einzigen Actor-Objekt angemeldet, so wird
- * es bei jeder Kollision zwischen dem Objekt und jedem anderen (an der Wurzel
- * angemeldeten) <code>Actor</code>-Objekt angemeldet.</li>
+ * Ziel-{@link Actor}-Objekten angemeldet, so wird es nur bei Kollision zwischen
+ * den spezifizierten Paaren informiert.</li>
+ * <li>Wurde das Objekt nur mit einem einzigen {@link Actor}-Objekt angemeldet,
+ * so wird es bei jeder Kollision zwischen dem Objekt und jedem anderen (an der
+ * Wurzel angemeldeten) {@link Actor}-Objekt angemeldet.</li>
  * </ul>
  *
  * @param <E> Typ des anderen Objekts bei Kollisionen.
@@ -48,7 +48,7 @@ public interface CollisionListener<E extends Actor>
 {
     /**
      * Wird bei einer (korrekt angemeldeten) Instanz immer dann aufgerufen, wenn
-     * der hiermit angemeldete Actor mit einem (relevanten) Actor-Objekt
+     * der hiermit angemeldete Actor mit einem (relevanten) {@link Actor}-Objekt
      * kollidiert.
      *
      * @param collisionEvent Ein {@link CollisionEvent}-Objekt, dass alle
@@ -62,7 +62,7 @@ public interface CollisionListener<E extends Actor>
     /**
      * Wird bei einer (korrekt angemeldeten) Instanz immer dann aufgerufen, wenn
      * die Kollision eines hiermit angemeldeten Actors mit einem (relevanten)
-     * Actor-Objekt beendet ist.
+     * {@link Actor}-Objekt beendet ist.
      *
      * @param collisionEvent Ein {@link CollisionEvent}-Objekt, dass alle
      *                       Informationen der

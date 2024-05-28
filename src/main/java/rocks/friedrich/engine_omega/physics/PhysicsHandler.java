@@ -33,13 +33,13 @@ import rocks.friedrich.engine_omega.event.CollisionEvent;
 
 /**
  * Beschreibt allgemein ein Objekt, dass die physikalischen Eigenschaften eines
- * Actor-Objektes kontrollieren kann. Dazu gehört:
+ * {@link Actor}-Objektes kontrollieren kann. Dazu gehört:
  * <ul>
- * <li>Das <code>Actor</code>-Objekt <b>bewegen</b>.</li>
+ * <li>Das {@link Actor}-Objekt <b>bewegen</b>.</li>
  * <li><b>Physikalische Eigenschaften</b> des Objektes verändern (wie Masse,
  * Reibungskoeffizient etc.)</li>
- * <li><b>Einflüsse</b> auf das <code>Actor</code>-Objekt ausüben (wie anwenden
- * von Impulsen / Kräften)</li>
+ * <li><b>Einflüsse</b> auf das {@link Actor}-Objekt ausüben (wie anwenden von
+ * Impulsen / Kräften)</li>
  * </ul>
  * Created by andonie on 16.02.15.
  */
@@ -60,8 +60,7 @@ public interface PhysicsHandler
     void moveBy(Vector v);
 
     /**
-     * Gibt den <b>Gewichtsmittelpunkt</b> dieses <code>Actor</code>-Objekts
-     * aus.
+     * Gibt den <b>Gewichtsmittelpunkt</b> dieses {@link Actor}-Objekts aus.
      *
      * @return der aktuelle <b>Gewichtsmittelpunkt</b> des Ziel-Objekts als
      *         <i>Point auf der Zeichenebene</i>.
@@ -95,7 +94,7 @@ public interface PhysicsHandler
 
     /**
      * Gibt die aktuelle Rotation des Ziel-Objekts in <i>Grad</i> an. Bei
-     * Erstellung eines <code>Actor</code>-Objekts ist seine Rotation stets 0.
+     * Erstellung eines {@link Actor}-Objekts ist seine Rotation stets 0.
      *
      * @return die aktuelle Rotation des Ziel-Objekts in <i>Grad</i>.
      */

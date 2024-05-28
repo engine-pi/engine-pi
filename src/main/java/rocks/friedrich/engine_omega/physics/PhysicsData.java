@@ -37,7 +37,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines
- * <code>Actor</code>-Objekts. Die
+ * {@link Actor}-Objekts. Die
  */
 @Internal
 public class PhysicsData
@@ -123,7 +123,7 @@ public class PhysicsData
      * Default-Konstruktor erstellt ein Proxydatenset mit Standardwerten.
      *
      * @param fixtures Eine Funktion, die eine gut abschätzende Shape für das
-     *                 zugehörige Actor-Objekt berechnet.
+     *                 zugehörige {@link Actor}-Objekt berechnet.
      */
     public PhysicsData(Supplier<List<FixtureData>> fixtures)
     {

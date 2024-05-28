@@ -36,8 +36,8 @@ import rocks.friedrich.engine_omega.event.AggregateFrameUpdateListener;
 public class CircleAnimation extends AggregateFrameUpdateListener
 {
     /**
-     * Erstellt eine Circle-Animation. Animiert ein Actor-Objekt anhand seines
-     * Mittelpunkts um einen Drehungsmittelpunkt.
+     * Erstellt eine Circle-Animation. Animiert ein {@link Actor}-Objekt anhand
+     * seines Mittelpunkts um einen Drehungsmittelpunkt.
      *
      * @param actor             Der zu animierende Actor.
      * @param rotationCenter    Das Zentrum der Drehung.

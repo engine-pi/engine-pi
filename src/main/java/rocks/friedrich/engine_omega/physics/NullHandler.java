@@ -37,10 +37,10 @@ import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.event.CollisionEvent;
 
 /**
- * Default-Handler für Operationen an Actor-Objekten, die an keiner Scene
- * angehängt sind. Führt alle Operationen rein numerisch durch. Gibt Fehler aus,
- * wenn Operationen ausgeführt werden, die nur mit einer Verbindung zu einer
- * Physics World funktionieren können.
+ * Default-Handler für Operationen an {@link Actor}-Objekten, die an keiner
+ * Scene angehängt sind. Führt alle Operationen rein numerisch durch. Gibt
+ * Fehler aus, wenn Operationen ausgeführt werden, die nur mit einer Verbindung
+ * zu einer Physics World funktionieren können.
  */
 public class NullHandler implements PhysicsHandler
 {

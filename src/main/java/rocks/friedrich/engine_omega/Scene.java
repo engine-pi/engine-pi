@@ -353,9 +353,9 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Fügt einen oder mehrere Actor-Objekte der Szene hinzu.
+     * Fügt einen oder mehrere {@link Actor}-Objekte der Szene hinzu.
      *
-     * @param actors Ein oder mehrere Actor-Objekte.
+     * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
     final public void add(Actor... actors)
@@ -367,9 +367,9 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
-     * Entferne einen oder mehrere Actor-Objekte aus der Szene.
+     * Entferne einen oder mehrere {@link Actor}-Objekte aus der Szene.
      *
-     * @param actors Ein oder mehrere Actor-Objekte.
+     * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
     final public void remove(Actor... actors)

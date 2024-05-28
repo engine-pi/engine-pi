@@ -188,7 +188,7 @@ public class BallThrowDemo extends ShowcaseDemo
 
     /**
      * Wird bei jeder Kollision zwischen <b>mit diesem Interface
-     * angemeldeten</b> <code>Actor</code>-Objekten aufgerufen.
+     * angemeldeten</b> {@link Actor}-Objekten aufgerufen.
      */
     @Override
     public void onCollision(CollisionEvent e)

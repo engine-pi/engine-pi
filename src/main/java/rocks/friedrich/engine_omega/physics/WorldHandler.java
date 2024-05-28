@@ -185,10 +185,11 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Erstellt einen Body und mappt ihn intern zum analogen Actor-Objekt.
+     * Erstellt einen Body und mappt ihn intern zum analogen
+     * {@link Actor}-Objekt.
      *
      * @param bd    Exakte Beschreibung des Bodies.
-     * @param actor Actor-Objekt, das ab sofort zu dem Body gehört.
+     * @param actor {@link Actor}-Objekt, das ab sofort zu dem Body gehört.
      *
      * @return Der Body, der aus der BodyDef generiert wurde. Er liegt in der
      *         Game-World dieses Handlers.
@@ -206,7 +207,7 @@ public class WorldHandler implements ContactListener
 
     /**
      * Entfernt alle internen Referenzen auf einen Body und das zugehörige
-     * Actor-Objekt.
+     * {@link Actor}-Objekt.
      *
      * @param body der zu entfernende Body
      */
@@ -433,7 +434,8 @@ public class WorldHandler implements ContactListener
         private final Body body; // Der zweite Body (erster Body ist
                                  // Hashmap-Schlüssel)
 
-        private final E collidingActor; // Das Actor-Objekt, das neben dem Actor
+        private final E collidingActor; // Das {@link Actor}-Objekt, das neben
+                                        // dem Actor
                                         // angemeldet wurde
 
         /**
@@ -497,8 +499,8 @@ public class WorldHandler implements ContactListener
      * Meldet ein spezifisches CollisionListener-Interface in dieser World an.
      *
      * @param listener Das anzumeldende KR Interface
-     * @param actor    Der Actor (Haupt-Actor-Objekt)
-     * @param collider Der Collider (zweites Actor-Objekt)
+     * @param actor    Der Actor (Haupt-{@link Actor}-Objekt)
+     * @param collider Der Collider (zweites {@link Actor}-Objekt)
      * @param <E>      Der Type des Colliders.
      */
     @Internal
@@ -511,7 +513,7 @@ public class WorldHandler implements ContactListener
             if (b1 == null || b2 == null)
             {
                 Logger.error("Kollision",
-                        "Ein Actor-Objekt ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
+                        "Ein {@link Actor}-Objekt ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
                 return;
             }
             Body lower, higher;
