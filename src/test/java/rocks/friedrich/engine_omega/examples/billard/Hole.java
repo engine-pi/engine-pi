@@ -1,9 +1,9 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/showcase/dude/Item.java
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/showcase/billard/Hole.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2011 - 2019 Michael Andonie and contributors.
+ * Copyright (c) 2011 - 2018 Michael Andonie and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.examples.dude;
+package rocks.friedrich.engine_omega.examples.billard;
 
-public enum Item
+import java.awt.Color;
+
+import rocks.friedrich.engine_omega.actor.Circle;
+
+public class Hole extends Circle
 {
-    Coin, ManaPickup
+    public static final double RADIUS = Table.GAP * 2;
+
+    public Hole(double x, double y)
+    {
+        super(RADIUS);
+        setPosition(x, y);
+        setColor(new Color(50, 50, 50));
+    }
 }

@@ -65,10 +65,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final int MASS = 65;
     /*
-     * private final Sound walk = new
-     * Sound("dude/audio/footstep.wav"); private final Sound jump =
-     * new Sound("dude/audio/footstep.wav"); private final Sound
-     * pickup_gold = new Sound("dude/audio/pickup_gold.wav");
+     * private final Sound walk = new Sound("dude/audio/footstep.wav"); private
+     * final Sound jump = new Sound("dude/audio/footstep.wav"); private final
+     * Sound pickup_gold = new Sound("dude/audio/pickup_gold.wav");
      */
 
     private boolean didDoubleJump = false;

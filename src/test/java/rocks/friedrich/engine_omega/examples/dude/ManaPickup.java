@@ -25,34 +25,41 @@ import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.CollisionListener;
 
 /**
- * Danke an <a href="https://sorceressgamelab.itch.io/">SorceressGameLab</a> für die Assets!
+ * Danke an <a href="https://sorceressgamelab.itch.io/">SorceressGameLab</a> für
+ * die Assets!
  */
-public class ManaPickup extends Animation implements CollisionListener<PlayerCharacter> {
+public class ManaPickup extends Animation
+        implements CollisionListener<PlayerCharacter>
+{
     private static final float SIZE = .4f;
+
     private static final float PICKUP_DELAY = 5;
 
     private boolean active = true;
 
-    public ManaPickup() {
-        super(Animation.createFromSpritesheet(.1f, "dude/gem_blue.png", 6, 1, SIZE, SIZE));
+    public ManaPickup()
+    {
+        super(Animation.createFromSpritesheet(.1f, "dude/gem_blue.png", 6, 1,
+                SIZE, SIZE));
     }
 
     @Override
-    public void onCollision(CollisionEvent<PlayerCharacter> collisionEvent) {
-        if (!active) {
+    public void onCollision(CollisionEvent<PlayerCharacter> collisionEvent)
+    {
+        if (!active)
+        {
             return;
         }
-
         // Ich wurde aufgesammelt!
         collisionEvent.getColliding().gotItem(Item.ManaPickup);
         this.setActive(false);
         active = false;
-
         delay(3, () -> setActive(true));
         animateOpacity(2, 1f);
     }
 
-    private void setActive(boolean b) {
+    private void setActive(boolean b)
+    {
         active = b;
         setOpacity(b ? 1 : 0);
     }

@@ -40,17 +40,17 @@ public class HUDDisplay
 
     private final TileMap[] lineSources = { //
             TileMap.createFromImage("dude/hud/orb_red.png", 8, 16), // Line
-                                                                                // 0
-                                                                                // ->
-                                                                                // Health
+                                                                    // 0
+                                                                    // ->
+                                                                    // Health
             TileMap.createFromImage("dude/hud/orb_blue.png", 8, 16), // Line
-                                                                                 // 1
-                                                                                 // ->
-                                                                                 // Power
+                                                                     // 1
+                                                                     // ->
+                                                                     // Power
             TileMap.createFromImage("dude/hud/orb_green.png", 8, 16) // Line
-                                                                                 // 2
-                                                                                 // ->
-                                                                                 // XP
+                                                                     // 2
+                                                                     // ->
+                                                                     // XP
     };
 
     private static final Tile TILE_BACK = TileMap

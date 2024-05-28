@@ -36,8 +36,7 @@ public class Coin extends Animation
 
     public Coin()
     {
-        super(Animation.createFromAnimatedGif("dude/coin.gif", SIZE,
-                SIZE));
+        super(Animation.createFromAnimatedGif("dude/coin.gif", SIZE, SIZE));
     }
 
     @Override

@@ -26,44 +26,50 @@ import rocks.friedrich.engine_omega.actor.TileContainer;
 import rocks.friedrich.engine_omega.actor.TileMap;
 
 /**
- * Einfache Plattform. Herzlichen Dank an <a href="https://www.gameart2d.com/free-graveyard-platformer-tileset.html">Billard
+ * Einfache Plattform. Herzlichen Dank an <a href=
+ * "https://www.gameart2d.com/free-graveyard-platformer-tileset.html">Billard
  * Art 2D</a> für die kostenfreien Tiles.
  */
-public class Platform extends TileContainer {
+public class Platform extends TileContainer
+{
     private static final int SIZE = 2;
+
     private static final float FRICTION = 0.5f;
 
-    public Platform(int tileCount) {
+    public Platform(int tileCount)
+    {
         super(tileCount, 1, SIZE);
-
-        if (tileCount < 2) {
-            throw new IllegalArgumentException("Number of tiles must be at least 2");
+        if (tileCount < 2)
+        {
+            throw new IllegalArgumentException(
+                    "Number of tiles must be at least 2");
         }
-
-        setFixtures("R 0, " + (SIZE - 0.5) + "," + (SIZE * tileCount) + ", 0.5");
-
+        setFixtures(
+                "R 0, " + (SIZE - 0.5) + "," + (SIZE * tileCount) + ", 0.5");
         String basePath = "dude/tiles/";
-
         setLeftTile(TileMap.createFromImage(basePath + "platform_l.png"));
         setMiddleTiles(TileMap.createFromImage(basePath + "platform_m.png"));
         setRightTile(TileMap.createFromImage(basePath + "platform_r.png"));
-
         setBodyType(BodyType.STATIC);
         setFriction(FRICTION);
         setRestitution(0);
     }
 
-    private void setLeftTile(Tile tile) {
+    private void setLeftTile(Tile tile)
+    {
         setTile(0, 0, tile);
     }
 
-    private void setMiddleTiles(Tile tile) {
-        for (int x = 1; x < getTileCountX() - 1; x++) {
+    private void setMiddleTiles(Tile tile)
+    {
+        for (int x = 1; x < getTileCountX() - 1; x++)
+        {
             setTile(x, 0, tile);
         }
     }
 
-    private void setRightTile(Tile tile) {
+    private void setRightTile(Tile tile)
+    {
         setTile(getTileCountX() - 1, 0, tile);
     }
 }
