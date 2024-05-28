@@ -62,8 +62,8 @@ public final class Random
      *
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
-     * @return Eine Zahl <code>getX</code>, wobei
-     *         <code>0 &lt;= getX &lt;= upperLimit</code> gilt. Die
+     * @return Eine Zahl <code>x</code>, wobei
+     *         <code>0 &lt;= x &lt;= upperLimit</code> gilt. Die
      *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
      *         groß</i>.
      */

@@ -101,6 +101,7 @@ public final class MainAnimation
                         .5f);
                 text.setPosition(-10, -7f);
                 text.setColor(Color.WHITE);
+                text.setBodyType(BodyType.STATIC);
                 add(text);
                 addFrameUpdateListener(time -> {
                     for (Actor item : items)
