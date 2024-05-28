@@ -36,8 +36,8 @@ public class Ball extends Circle implements FrameUpdateListener
         super(DIAMETER);
         setColor(Color.YELLOW);
         setBodyType(BodyType.DYNAMIC);
-        setFriction(0.5);
-        setRestitution(0);
+        setFriction(0);
+        setRestitution(0.9);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Ball extends Circle implements FrameUpdateListener
         }
         else
         {
-            applyForce(getVelocity().negate().multiply(1));
+            applyForce(getVelocity().negate().multiply(10));
             // TODO torque
         }
     }

@@ -99,7 +99,7 @@ public class BillardDemo extends ShowcaseDemo implements KeyListener
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
             whiteBall.applyImpulse(
-                    new Vector(1000000000, (Random.range() - .5) * 100000000));
+                    new Vector(1000000000, (Random.range() - .5) * 2));
         }
     }
 
