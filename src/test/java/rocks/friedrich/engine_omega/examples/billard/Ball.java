@@ -36,20 +36,20 @@ public class Ball extends Circle implements FrameUpdateListener
         super(DIAMETER);
         setColor(Color.YELLOW);
         setBodyType(BodyType.DYNAMIC);
-        setFriction(.5f);
+        setFriction(0.5);
         setRestitution(0);
     }
 
     @Override
     public void onFrameUpdate(double deltaSeconds)
     {
-        if (getVelocity().getLength() < 0.2f)
+        if (getVelocity().getLength() < 0.2)
         {
             setVelocity(Vector.NULL);
         }
         else
         {
-            applyForce(getVelocity().negate().multiply(5));
+            applyForce(getVelocity().negate().multiply(1));
             // TODO torque
         }
     }

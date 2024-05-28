@@ -39,14 +39,11 @@ public class Table
 
     private final List<Actor> actors = new ArrayList<>();
 
-    public Actor[] getActors()
-    {
-        return actors.toArray(new Actor[0]);
-    }
+    private Rectangle border;
 
     public Table()
     {
-        Rectangle border = new Rectangle(
+        border = new Rectangle(
                 2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP + BORDER * 2,
                 Edge.WIDTH + 2 * DIAGONAL_GAP + BORDER * 2);
         border.setPosition(-Edge.WIDTH - GAP - DIAGONAL_GAP - BORDER,
@@ -62,6 +59,16 @@ public class Table
         actors.add(background);
         createEdges();
         createHoles();
+    }
+
+    public Actor[] getActors()
+    {
+        return actors.toArray(new Actor[0]);
+    }
+
+    public Rectangle getBorder()
+    {
+        return border;
     }
 
     private void createHoles()

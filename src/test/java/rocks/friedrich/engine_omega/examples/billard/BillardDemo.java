@@ -38,7 +38,8 @@ public class BillardDemo extends ShowcaseDemo implements KeyListener
     public BillardDemo(Scene parent)
     {
         super(parent);
-        add(new Table().getActors());
+        Table table = new Table();
+        add(table.getActors());
         for (int i = 0; i < 10; i++)
         {
             Ball ball = new Ball();
@@ -49,6 +50,8 @@ public class BillardDemo extends ShowcaseDemo implements KeyListener
         whiteBall.setColor(Color.WHITE);
         whiteBall.setPosition(-200, 0);
         add(whiteBall);
+        getCamera().setFocus(table.getBorder());
+        getCamera().setZoom(1);
     }
 
     private Vector calculatePosition(int i)
