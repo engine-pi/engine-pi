@@ -28,7 +28,9 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Die Kamera "blickt" auf die Zeichenebene, das, was sie sieht, beschreibt den
- * Teil der Zeichenebene; das, was im Window dargestellt wird.<br>
+ * Teil der Zeichenebene; das, was im Window dargestellt wird.
+ *
+ * <p>
  * Sie kann ein Objekt fokussieren und ihm so folgen. Hierbei besteht auch die
  * Möglichkeit, diesen Fokus in Grenzen zu halten. Und zwar durch die
  * Fokus-Bounds. Diese 4 Grenzwerte können individuell verstellt und aktiviert
@@ -137,13 +139,12 @@ public final class Camera
      * Setzt einen Kameraverzug. Der Standardwert hierfür ist
      * <code>(0, 0)</code>.
      * <p>
-     * Der Verzug ist ein Vector, um den das Image, das den Fokus exakt im
-     * Zentrum hat, verschoben wird. Das heißt, dass eine Figur im Fokus um 100
-     * Pixel tiefer als im absoluten Bildzentrum liegt, wenn der Fokusverzug mit
-     * folgender Methode gesetzt wurde:
-     * <code>camera.setOffset(new Vector(0, -100));</code>
+     * Der Verzug ist ein Vektor, um den der {@link #focus Fokus} verschoben
+     * wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer als im
+     * absoluten Bildzentrum liegt, wenn der Fokusverzug mit folgender Methode
+     * gesetzt wurde: <code>camera.setOffset(new Vector(0, -100));</code>
      *
-     * @param offset Der Vector, um den ab sofort die Kamera vom Zentrum des
+     * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
      *               Fokus verschoben wird.
      */
     @API
@@ -153,7 +154,7 @@ public final class Camera
     }
 
     /**
-     * Gibt den Offset/Verzug der Kamera aus.
+     * Gibt den Verzug der Kamera aus.
      *
      * @return Der aktuelle Verzug der Kamera.
      *
@@ -162,7 +163,7 @@ public final class Camera
     @API
     public Vector getOffset()
     {
-        return this.offset;
+        return offset;
     }
 
     /**
@@ -187,7 +188,7 @@ public final class Camera
     @API
     public boolean hasBounds()
     {
-        return this.bounds != null;
+        return bounds != null;
     }
 
     /**
@@ -224,22 +225,22 @@ public final class Camera
     }
 
     /**
-     * Verschiebt die Kamera um einen bestimmten Wert in <code>getX</code>- und
-     * <code>getY</code>-Richtung (relativ).
+     * Verschiebt die Kamera um einen bestimmten Wert in <code>x</code>- und
+     * <code>y</code>-Richtung (relativ).
      *
-     * @param x Die Verschiebung in <code>getX</code>-Richtung.
-     * @param y Die Verschiebung in <code>getY</code>-Richtung.
+     * @param x Die Verschiebung in <code>x</code>-Richtung.
+     * @param y Die Verschiebung in <code>y</code>-Richtung.
      */
     @API
     public void moveBy(double x, double y)
     {
-        this.moveBy(new Vector(x, y));
+        moveBy(new Vector(x, y));
     }
 
     @API
     public void moveBy(Vector vector)
     {
-        this.position = this.position.add(vector);
+        position = position.add(vector);
     }
 
     /**
@@ -247,8 +248,8 @@ public final class Camera
      * Verschiebung). Von nun an ist der Punkt mit den eingegebenen Koordinaten
      * im Zentrum des Bildes.
      *
-     * @param x Die <code>getX</code>-Koordinate des Zentrums des Bildes.
-     * @param y Die <code>getY</code>-Koordinate des Zentrums des Bildes.
+     * @param x Die <code>x</code>-Koordinate des Zentrums des Bildes.
+     * @param y Die <code>y</code>-Koordinate des Zentrums des Bildes.
      */
     @API
     public void moveTo(int x, int y)
@@ -259,25 +260,25 @@ public final class Camera
     @API
     public void moveTo(Vector vector)
     {
-        this.position = vector;
+        position = vector;
     }
 
     @API
     public void rotateBy(double degree)
     {
-        this.rotation += degree;
+        rotation += degree;
     }
 
     @API
     public void rotateTo(double degree)
     {
-        this.rotation = degree;
+        rotation = degree;
     }
 
     /**
-     * Setzt die aktuelle Position der Kamera
+     * Setzt die aktuelle Position der Kamera.
      *
-     * @param position die neue Position der Kamera
+     * @param position Die neue Position der Kamera.
      */
     @API
     public void setPosition(Vector position)
@@ -286,15 +287,15 @@ public final class Camera
     }
 
     /**
-     * Setzt die aktuelle Position der Kamera
+     * Setzt die aktuelle Position der Kamera.
      *
-     * @param x Neue X-Koordinate des Kamerazentrums
-     * @param y Neue Y-Koordinate des Kamerazentrums
+     * @param x Die neue X-Koordinate des Kamerazentrums.
+     * @param y Die neue Y-Koordinate des Kamerazentrums.
      */
     @API
     public void setPostion(double x, double y)
     {
-        this.setPosition(new Vector(x, y));
+        setPosition(new Vector(x, y));
     }
 
     /**
@@ -305,17 +306,17 @@ public final class Camera
     @API
     public Vector getPosition()
     {
-        return moveIntoBounds(this.position.add(this.offset));
+        return moveIntoBounds(position.add(offset));
     }
 
     /**
-     * Gibt die Position eines Punktes in der World an, relativ zu seiner
-     * aktuell zu zeichnenden Position und in Px.
+     * Gibt die Position eines Punktes in der Welt an, relativ zu seiner aktuell
+     * zu zeichnenden Position und in Pixel.
      *
-     * @param locationInWorld Ein Punkt in der Welt
+     * @param locationInWorld Ein Punkt in der Welt.
      * @param pixelPerMeter   Umrechnungsfaktor pixelPerMeter
      *
-     * @return Die zu zeichnende Position des Punktes in Px
+     * @return Die zu zeichnende Position des Punktes in Pixel.
      *
      * @hidden
      */
@@ -334,13 +335,18 @@ public final class Camera
     // special moment
     public void onFrameUpdate()
     {
-        if (this.hasFocus())
+        if (hasFocus())
         {
-            this.position = focus.getCenter();
+            position = focus.getCenter();
         }
-        this.position = moveIntoBounds(this.position);
+        position = moveIntoBounds(position);
     }
 
+    /**
+     * Gibt die aktuelle Drehung zurück.
+     *
+     * @return Die aktuelle Drehung.
+     */
     public double getRotation()
     {
         return rotation;

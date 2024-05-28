@@ -1264,7 +1264,7 @@ public abstract class Actor
     }
 
     /**
-     * Erstellt einen Weld-Joint zwischen diesem und einem weiteren
+     * Erstellt eine Schweißnaht zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
      * @param other                 Das zweite {@link Actor}-Objekt, das ab
@@ -1274,15 +1274,15 @@ public abstract class Actor
      *                              soll.
      * @param anchorRelativeToThis  Der Ankerpunkt für das zugehörige
      *                              {@link Actor}-Objekt. Der erste
-     *                              Befestigungspunkt des Joints. Angabe relativ
-     *                              zu <code>this</code> also absolut.
+     *                              Befestigungspunkt der Schweißnaht. Angabe
+     *                              relativ zu <code>this</code> also absolut.
      * @param anchorRelativeToOther Der Ankerpunkt für das zweite
      *                              {@link Actor}-Objekt, also
      *                              <code>other</code>. Der zweite
-     *                              Befestigungspunkt des Joints. Angabe relativ
-     *                              zu <code>other</code>
-     * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
-     *         werden kann.
+     *                              Befestigungspunkt der Schweißnaht. Angabe
+     *                              relativ zu <code>other</code>
+     * @return Ein {@link WeldJoint}-Objekt, mit dem die Verbindung weiter
+     *         gesteuert werden kann.
      * @see org.jbox2d.dynamics.joints.DistanceJoint
      */
     @API
@@ -1305,8 +1305,8 @@ public abstract class Actor
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
      *
-     * @param x neue <code>getX</code>-Koordinate
-     * @param y neue <code>getY</code>-Koordinate
+     * @param x neue <code>x</code>-Koordinate
+     * @param y neue <code>y</code>-Koordinate
      * @see #setPosition(Vector)
      * @see #setCenter(double, double)
      * @see #setX(double)
@@ -1315,7 +1315,7 @@ public abstract class Actor
     @API
     public final void setPosition(double x, double y)
     {
-        this.setPosition(new Vector(x, y));
+        setPosition(new Vector(x, y));
     }
 
     /**
@@ -1332,13 +1332,13 @@ public abstract class Actor
     @API
     public final void setPosition(Vector position)
     {
-        this.moveBy(position.subtract(getPosition()));
+        moveBy(position.subtract(getPosition()));
     }
 
     /**
      * Verschiebt das Objekt ohne Bedingungen auf der Zeichenebene.
      *
-     * @param v Der Vector, der die Verschiebung des Objekts angibt.
+     * @param v Der Vektor, der die Verschiebung des Objekts angibt.
      * @see Vector
      * @see #moveBy(double, double)
      */
@@ -1349,17 +1349,16 @@ public abstract class Actor
     }
 
     /**
-     * Verschiebt die Actor-Figur so, dass ihr Mittelpunkt die eingegebenen
-     * Koordinaten hat.
+     * Verschiebt die {@link Actor}-Figur so, dass ihr Mittelpunkt die
+     * eingegebenen Koordinaten hat.
      * <p>
      * Diese Methode arbeitet nach dem Mittelpunkt des das Objekt abdeckenden
-     * BoundingRechtecks durch den Aufruf der Methode <code>center()</code>.
-     * Daher ist diese Methode in der Anwendung auf ein ActorGroup-Objekt nicht
-     * unbedingt sinnvoll.
+     * Bounding-Rechtecks durch den Aufruf der Methode
+     * <code>{@link #setCenter()}</code>.
      *
-     * @param x Die <code>getX</code>-Koordinate des neuen Mittelpunktes des
+     * @param x Die <code>x</code>-Koordinate des neuen Mittelpunktes des
      *          Objektes
-     * @param y Die <code>getY</code>-Koordinate des neuen Mittelpunktes des
+     * @param y Die <code>y</code>-Koordinate des neuen Mittelpunktes des
      *          Objektes
      * @see #setCenter(Vector)
      * @see #moveBy(double, double)
@@ -1376,7 +1375,9 @@ public abstract class Actor
 
     /**
      * Verschiebt die Actor-Figur so, dass ihr Mittelpunkt die eingegebenen
-     * Koordinaten hat.<br>
+     * Koordinaten hat.
+     *
+     * <p>
      * Diese Methode arbeitet mit dem Mittelpunkt des das Objekt abdeckenden
      * Bounding-Rechtecks durch den Aufruf der Methode <code>getCenter()</code>.
      *
@@ -1391,28 +1392,35 @@ public abstract class Actor
     @API
     public final void setCenter(Vector center)
     {
-        this.moveBy(this.getCenter().negate().add(center));
+        moveBy(getCenter().negate().add(center));
     }
 
     /**
-     * Gibt die x-Koordinate der linken oberen Ecke zurück. Sollte das
-     * Raumobjekt nicht rechteckig sein, so wird die Position der linken oberen
+     * Gibt die x-Koordinate der linken unteren Ecke zurück. Sollte das
+     * Raumobjekt nicht rechteckig sein, so wird die Position der linken unteren
      * Ecke des umschließenden Rechtecks genommen.
      *
-     * @return <code>getX</code>-Koordinate
+     * @return <code>x</code>-Koordinate
      * @see #getY()
      * @see #getPosition()
      */
     @API
     public final double getX()
     {
-        return this.getPosition().getX();
+        return getPosition().getX();
     }
 
     /**
      * Setzt die x-Koordinate der Position des Objektes gänzlich neu auf der
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
+     *
+     * <p>
+     * <b>Achtung!</b><br>
+     * Bei <b>allen</b> Objekten ist die eingegebene Position die linke, untere
+     * Ecke des Rechtecks, das die Figur optimal umfasst. Das heißt, dass dies
+     * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
+     * Sondermethode {@link #setCenter(double, double)}.
      *
      * @param x neue x-Koordinate
      *
@@ -1445,15 +1453,16 @@ public abstract class Actor
     /**
      * Setzt die y-Koordinate der Position des Objektes gänzlich neu auf der
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
-     * aktuellen Position an die neue. <br>
-     * <br>
+     * aktuellen Position an die neue.
+     *
+     * <p>
      * <b>Achtung!</b><br>
      * Bei <b>allen</b> Objekten ist die eingegebene Position die linke, untere
      * Ecke des Rechtecks, das die Figur optimal umfasst. Das heißt, dass dies
      * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
      * Sondermethode {@link #setCenter(double, double)}.
      *
-     * @param y neue <code>getY</code>-Koordinate
+     * @param y neue <code>y</code>-Koordinate
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setX(double)
@@ -1465,9 +1474,9 @@ public abstract class Actor
     }
 
     /**
-     * Gibt den Mittelpunkt des Objektes in der Scene aus.
+     * Gibt den Mittelpunkt des Objektes in der {@link Scene} aus.
      *
-     * @return Die Koordinaten des Mittelpunktes des Objektes
+     * @return Die Koordinaten des Mittelpunktes des Objektes.
      * @see #getPosition()
      */
     @API
@@ -1476,6 +1485,13 @@ public abstract class Actor
         return physicsHandler.getCenter();
     }
 
+    /**
+     * Gibt die Position des Zentrum des {@link Actor}-Objekts relativ zu dessen
+     * Position (Anker links unkten) an.
+     *
+     * @return Die Position des Zentrum des {@link Actor}-Objekts relativ zu
+     *         dessen Position (Anker links unkten).
+     */
     @API
     public final Vector getCenterRelative()
     {
@@ -1483,19 +1499,21 @@ public abstract class Actor
     }
 
     /**
-     * Verschiebt das Objekt.<br>
-     * Hierbei wird nichts anderes gemacht, als <code>move(new
-     * Vector(dx, dy))</code> auszuführen. Insofern ist diese Methode dafür gut,
-     * sich nicht mit der Klasse Vector auseinandersetzen zu müssen.
+     * Verschiebt das Objekt.
      *
-     * @param dX Die Verschiebung in Richtung X
-     * @param dY Die Verschiebung in Richtung Y
+     * <p>
+     * Hierbei wird nichts anderes gemacht, als <code>moveBy(new
+     * Vector(dx, dy))</code> auszuführen. Insofern ist diese Methode dafür gut,
+     * sich nicht mit der Klasse {@link Vector} auseinandersetzen zu müssen.
+     *
+     * @param dX Die Verschiebung in Richtung X.
+     * @param dY Die Verschiebung in Richtung Y.
      * @see #moveBy(Vector)
      */
     @API
     public final void moveBy(double dX, double dY)
     {
-        this.moveBy(new Vector(dX, dY));
+        moveBy(new Vector(dX, dY));
     }
 
     /**
@@ -1530,7 +1548,7 @@ public abstract class Actor
      *
      * @return Der Winkel (in <b>Grad</b>), um den das Objekt derzeit rotiert
      *         ist. Jedes Objekt ist bei Initialisierung nicht rotiert
-     *         (<code>getRotation()</code> gibt direkt ab Initialisierung
+     *         ({@link #getRotation()} gibt direkt ab Initialisierung
      *         <code>0</code> zurück).
      */
     @API
@@ -1552,6 +1570,11 @@ public abstract class Actor
         physicsHandler.setRotation(degree);
     }
 
+    /**
+     * Gib wahr zurück, falls das Objekt einer Ebene zugeordnet ist.
+     *
+     * @return wahr, falls das Objekt einer Ebene zugeordnet ist, sonst falsch.
+     */
     @API
     public final boolean isMounted()
     {
@@ -1559,11 +1582,12 @@ public abstract class Actor
     }
 
     /**
-     * Setzt den BodyType auf PARTICLE und animiert das Partikel, sodass es
-     * ausblasst und nach der Lebenszeit komplett verschwindet.
+     * Setzt den {@link BodyType} auf {@link BodyType.PARTICLE PARTICLE} und
+     * animiert das Partikel, sodass es ausblasst und nach der Lebenszeit
+     * komplett verschwindet.
      *
-     * @param lifetime Lebenszeit in Sekunden
-     * @return Objekt, das die Animation kontrolliert
+     * @param lifetime Die Lebenszeit in Sekunden.
+     * @return Das Objekt, das die Animation kontrolliert.
      */
     @API
     public final ValueAnimator<Double> animateParticle(double lifetime)
@@ -1576,14 +1600,15 @@ public abstract class Actor
     }
 
     /**
-     * Animiert die Opacity dieses Actors über einen festen Zeitraum: Beginnend
-     * von der aktuellen Opacity, ändert sie sich "smooth" (mit
-     * {@code EaseInOutDouble}-Interpolation) vom aktuellen Opacity-Wert (die
-     * Ausgabe von {@code getOpacity()}) bis hin zum angegebenen Opacity-Wert.
+     * Animiert die Durchsichtigkeit dieses {@link Actor}-Objekts über einen
+     * festen Zeitraum: Beginnend von der aktuellen Durchsichtigkeit, ändert sie
+     * sich "smooth" (mit {@code EaseInOutDouble}-Interpolation) vom aktuellen
+     * Durchsichtigkeits-Wert (die Ausgabe von {@link #getOpacity()}) bis hin
+     * zum angegebenen Durchsichtigkeits-Wert.
      *
      * @param time           Die Animationszeit in Sekunden
-     * @param toOpacityValue Der Opacity-Wert, zu dem innerhalb von {@code time}
-     *                       zu interpolieren ist.
+     * @param toOpacityValue Der Durchsichtigkeit-Wert, zu dem innerhalb von
+     *                       {@code time} zu interpolieren ist.
      *
      * @return Ein {@code ValueAnimator}, der diese Animation ausführt. Der
      *         Animator ist bereits aktiv, es muss nichts an dem Objekt getan

@@ -27,7 +27,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 /**
- * Dies ist das Panel, in dem die einzelnen Dinge gezeichnet werden.
+ * Dies ist das Panel, in dem die einzelnen Objekte gezeichnet werden.
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -35,23 +35,23 @@ import java.awt.image.BufferStrategy;
 public final class RenderPanel extends Canvas implements RenderTarget
 {
     /**
-     * Konstruktor für Objekte der Klasse RenderPanel
+     * Konstruktor für Objekte der Klasse {@link RenderPanel}
      *
      * @param width  Die Größe des Einflussbereichs des Panels in Richtung
-     *               <code>getX</code> in Pixel.
+     *               <code>x</code> in Pixel.
      * @param height Die Größe des Einflussbereichs des Panels in Richtung
-     *               <code>getY</code> in Pixel.
+     *               <code>y</code> in Pixel.
      */
     public RenderPanel(int width, int height)
     {
-        this.setSize(width, height);
-        this.setPreferredSize(this.getSize());
-        this.setBackground(Color.BLACK);
+        setSize(width, height);
+        setPreferredSize(getSize());
+        setBackground(Color.BLACK);
     }
 
     /**
      * Muss aufgerufen werden, nachdem das Fenster sichtbar ist, um die
-     * BufferStrategy zu erzeugen.
+     * {@link BufferStrategy} zu erzeugen.
      */
     public void allocateBuffers()
     {

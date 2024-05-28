@@ -301,12 +301,12 @@ public final class Vector implements Cloneable
 
     /**
      * Multipliziert die effektiven Längen beider Anteile des Vektors
-     * (<code>getX</code> und <code>getY</code>) mit einem festen Faktor. <br>
+     * (<code>x</code> und <code>y</code>) mit einem festen Faktor. <br>
      * Dadurch entsteht ein neuer Vector mit anderen Werten, welcher
      * zurückgegeben wird.
      *
-     * @param factor Der Faktor, mit dem die <code>getX</code>- und
-     *               <code>getY</code>-Werte des Vektors multipliziert werden
+     * @param factor Der Faktor, mit dem die <code>x</code>- und
+     *               <code>y</code>-Werte des Vektors multipliziert werden
      * @return Der Vector mit den multiplizierten Werten
      * @see #divide(double)
      */
@@ -366,7 +366,7 @@ public final class Vector implements Cloneable
 
     /**
      * Berechnet, ob dieser Vector keine Wirkung hat. Dies ist der Fall, wenn
-     * beide Komponenten (<code>getX</code> und <code>getY</code>) 0 sind.
+     * beide Komponenten (<code>x</code> und <code>y</code>) 0 sind.
      *
      * @return <code>true</code>, wenn dieser keine Auswirkungen macht, sonst
      *         <code>false</code>.
@@ -420,8 +420,8 @@ public final class Vector implements Cloneable
     /**
      * Prüft, ob ein beliebiges Objekt gleich diesem Vector ist. <br>
      * <br>
-     * Zwei Vektoren gelten als gleich, wenn <code>getX</code> und
-     * <code>getY</code> der beiden Vektoren übereinstimmen.
+     * Zwei Vektoren gelten als gleich, wenn <code>x</code> und
+     * <code>y</code> der beiden Vektoren übereinstimmen.
      *
      * @param o Das auf Gleichheit mit diesem zu überprüfende Objekt.
      * @return <code>true</code>, wenn beide Vektoren gleich sind, sonst

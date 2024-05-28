@@ -394,8 +394,8 @@ public final class Bounds
      * Gibt eine String-Repräsentation dieses Objektes aus.
      *
      * @return Die String-Repräsentation dieses Objektes. Hierin wird Auskunft
-     *         über alle 4 ausschlaggebenden Zahlen (<code>getX</code>,
-     *         <code>getY</code>, <code>getWidth</code> und
+     *         über alle 4 ausschlaggebenden Zahlen (<code>x</code>,
+     *         <code>y</code>, <code>getWidth</code> und
      *         <code>getHeight</code> gemacht).
      */
     @Override
