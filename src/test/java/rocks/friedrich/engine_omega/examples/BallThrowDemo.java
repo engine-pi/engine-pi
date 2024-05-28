@@ -196,6 +196,8 @@ public class BallThrowDemo extends ShowcaseDemo
 
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new BallThrowDemo(null));
+        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new BallThrowDemo
+
+        (null));
     }
 }
