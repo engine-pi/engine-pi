@@ -1067,6 +1067,11 @@ public abstract class Actor
         physicsHandler.applyImpulse(newtonSeconds, physicsHandler.getCenter());
     }
 
+    public final void applyImpulse(double dX, double dY)
+    {
+        applyImpulse(new Vector(dX, dY));
+    }
+
     /**
      * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
      *
