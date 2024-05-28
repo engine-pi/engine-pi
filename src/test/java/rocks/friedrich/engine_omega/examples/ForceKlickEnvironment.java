@@ -23,6 +23,7 @@ package rocks.friedrich.engine_omega.examples;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Actor;
@@ -173,6 +174,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         add(links, rechts, oben);
         add(stab);
         add(atv);
+        getCamera().setZoom(1);
     }
 
     /**
@@ -256,5 +258,11 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
             }
             stange.setRotation(rot);
         }
+    }
+
+
+    public static void main(String[] args)
+    {
+        Game.start(1000, 800, new ForceKlickEnvironment(null));
     }
 }

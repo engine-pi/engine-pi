@@ -20,6 +20,9 @@
  */
 package rocks.friedrich.engine_omega.examples;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
@@ -30,9 +33,6 @@ import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.CollisionListener;
 import rocks.friedrich.engine_omega.event.KeyListener;
-
-import java.awt.Color;
-import java.awt.event.KeyEvent;
 
 /**
  * Eine einfache Demonstration der Engine-Physik durch eine
@@ -82,12 +82,12 @@ public class BallThrowDemo extends ShowcaseDemo
     /**
      * Der Boden.
      */
-    private Rectangle boden;
+    private Rectangle ground;
 
     /**
      * Der Startzeitpunkt der Simulation. Für Zeitmessung
      */
-    private long startzeit;
+    private long startTime;
 
     /**
      * Die Konstanten für die Umsetzung der Simulation
@@ -100,42 +100,40 @@ public class BallThrowDemo extends ShowcaseDemo
      * <li>Winkel: Grad (nicht Bogenmaß)</li>
      * </ul>
      */
-    private static final float DURCHMESSER = 0.2f, HOEHE_UEBER_BODEN = 1f,
-            MASSE = 1f, IMPULS = 10, WINKEL = 60;
+    private static final double DURCHMESSER = 0.2, HOEHE_UEBER_BODEN = 1,
+            MASSE = 1, IMPULS = 10, WINKEL = 60;
 
     /**
      * Die PPM-Berechnungskonstante
      */
-    private static final int PIXELPROMETER = 100;
+    private static final int PIXEL_PER_METER = 100;
 
-    private static final float BODEN_TIEFE = 700, ABSTAND_LINKS = 50;
+    private static final float GROUND_DEPTH = 700;
+
+    private static final float DISTANCE_LEFT = 50;
 
     public BallThrowDemo(Scene parent)
     {
         super(parent);
-        initialisieren();
-    }
-
-    public void initialisieren()
-    {
-        ball = new Circle(DURCHMESSER * PIXELPROMETER);
+        ball = new Circle(DURCHMESSER * PIXEL_PER_METER);
         add(ball);
         ball.setColor(Color.RED);
         ball.setBodyType(BodyType.DYNAMIC);
-        // ball.setGlobalDensity(MASSE*X);
-        ball.setCenter(ABSTAND_LINKS,
-                BODEN_TIEFE - (HOEHE_UEBER_BODEN * PIXELPROMETER
-                        + 0.5f * DURCHMESSER * PIXELPROMETER));
-        // kamera.fokusSetzen(ball);
+        ball.setDensity(MASSE);
+        ball.setCenter(DISTANCE_LEFT,
+                GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
+                        + 0.5f * DURCHMESSER * PIXEL_PER_METER));
         // Den Boden erstellen
-        boden = new Rectangle(20000, 20);
-        boden.setPosition(0, BODEN_TIEFE);
-        add(boden);
-        boden.setColor(Color.WHITE);
-        boden.setBodyType(BodyType.STATIC);
+        ground = new Rectangle(100, 20);
+        ground.setPosition(0, GROUND_DEPTH);
+        add(ground);
+        ground.setColor(Color.WHITE);
+        ground.setBodyType(BodyType.STATIC);
         // Kollision zwischen Ball und Boden beobachten (Code ist uns egal, wir
         // kennen nur einen Kollisionsfall)
-        ball.addCollisionListener(boden, this);
+        ball.addCollisionListener(ground, this);
+        getCamera().setZoom(3);
+        getCamera().setFocus(ground);
     }
 
     /**
@@ -148,12 +146,12 @@ public class BallThrowDemo extends ShowcaseDemo
     {
         switch (e.getKeyCode())
         {
-        case KeyEvent.VK_S: // Starte die Simulation
-            simulationStarten();
+        case KeyEvent.VK_S:
+            start();
             break;
 
-        case KeyEvent.VK_R: // Reset
-            simulationZuruecksetzen();
+        case KeyEvent.VK_R:
+            reset();
             break;
         }
     }
@@ -162,16 +160,15 @@ public class BallThrowDemo extends ShowcaseDemo
      * Startet die Simulation, indem ein Impuls auf den Ball gewirkt wird. Ab
      * diesem Moment beginnt die Zeitmessung
      */
-    private void simulationStarten()
+    private void start()
     {
         // Zeitmessung beginnen = Startzeit erheben
-        startzeit = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
         // Schwerkraft auf den Ball wirken lassen
-        setGravity(new Vector(0, 9.81f));
+        setGravity(new Vector(0, -9.81));
         // Impuls berechnen und auf den Ball wirken lassen
-        Vector impuls = new Vector(
-                (float) Math.cos(Math.toRadians(WINKEL)) * IMPULS,
-                (float) -Math.sin(Math.toRadians(WINKEL)) * IMPULS);
+        Vector impuls = new Vector(Math.cos(Math.toRadians(WINKEL)) * IMPULS,
+                Math.sin(Math.toRadians(WINKEL)) * IMPULS);
         ball.applyImpulse(impuls);
     }
 
@@ -180,12 +177,12 @@ public class BallThrowDemo extends ShowcaseDemo
      * deaktiviert, die Position des Balls wird zurückgesetzt und der Ball wird
      * in Ruhe versetzt.
      */
-    private void simulationZuruecksetzen()
+    private void reset()
     {
         setGravity(new Vector(0, 0)); // Schwerkraft deaktivieren
-        ball.setCenter(ABSTAND_LINKS, // Ballposition zurücksetzen
-                BODEN_TIEFE - (HOEHE_UEBER_BODEN * PIXELPROMETER
-                        + 0.5f * DURCHMESSER * PIXELPROMETER));
+        ball.setCenter(DISTANCE_LEFT, // Ballposition zurücksetzen
+                GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
+                        + 0.5f * DURCHMESSER * PIXEL_PER_METER));
         ball.resetMovement(); // Ball in Ruhe versetzen
     }
 
@@ -199,11 +196,11 @@ public class BallThrowDemo extends ShowcaseDemo
         // Kollision bedeutet, dass der Ball auf den Boden gefallen ist =>
         // Zeitmessung abschließen
         long endzeit = System.currentTimeMillis();
-        long zeitdifferenz = endzeit - startzeit;
+        long zeitdifferenz = endzeit - startTime;
         // Zurückgelegte Distanz seit Simulationsstart ausmessen
         // (Pixel-Differenz ausrechnen und auf Meter umrechnen)
-        double distanz = (ball.getCenter().getX() - ABSTAND_LINKS)
-                / PIXELPROMETER;
+        double distanz = (ball.getCenter().getX() - DISTANCE_LEFT)
+                / PIXEL_PER_METER;
         // Messungen angeben
         System.out.println(
                 "Der Ball ist auf dem Boden aufgeschlagen. Seit Simulationsstart sind "
