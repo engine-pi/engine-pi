@@ -93,22 +93,15 @@ public class MarbleDemo extends ShowcaseDemo implements KeyListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_X)
+        if (ground.getBodyType() == BodyType.STATIC)
         {
-            if (ground.getBodyType() == BodyType.STATIC)
-            {
-                ground.setBodyType(BodyType.SENSOR);
-                ground.setColor(new Color(255, 255, 255, 100));
-            }
-            else
-            {
-                ground.setBodyType(BodyType.STATIC);
-                ground.setColor(Color.WHITE);
-            }
+            ground.setBodyType(BodyType.SENSOR);
+            ground.setColor(new Color(255, 255, 255, 100));
         }
-        else if (e.getKeyCode() == KeyEvent.VK_Y)
+        else
         {
-            setGravity(new Vector(40, 0));
+            ground.setBodyType(BodyType.STATIC);
+            ground.setColor(Color.WHITE);
         }
     }
 
