@@ -40,13 +40,16 @@ import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
+ * Zeigt eine Animation, wenn die main-Methode ausgeführt wird.
+ *
+ * <p>
  * Diese Klasse definiert Versions-Konstanten und sorgt für eine About-Box beim
  * Ausführen der .jar-Datei.
  *
  * @author Niklas Keller {@literal <me@kelunik.com>}
  */
 @Internal
-public final class EngineOmega
+public final class MainAnimation
 {
     @SuppressWarnings("MagicNumber")
     public static void main(String[] args)
@@ -178,8 +181,8 @@ public final class EngineOmega
     @API
     public static boolean isJar()
     {
-        String className = EngineOmega.class.getName().replace('.', '/');
-        String classJar = EngineOmega.class
+        String className = MainAnimation.class.getName().replace('.', '/');
+        String classJar = MainAnimation.class
                 .getResource("/" + className + ".class").toString();
         return classJar.startsWith("jar:");
     }
@@ -193,8 +196,8 @@ public final class EngineOmega
     @API
     public static String getJarName()
     {
-        String className = EngineOmega.class.getName().replace('.', '/');
-        String classJar = EngineOmega.class
+        String className = MainAnimation.class.getName().replace('.', '/');
+        String classJar = MainAnimation.class
                 .getResource("/" + className + ".class").toString();
         if (classJar.startsWith("jar:"))
         {
@@ -231,7 +234,7 @@ public final class EngineOmega
     {
         try
         {
-            String uri = EngineOmega.class.getName().replace('.', '/')
+            String uri = MainAnimation.class.getName().replace('.', '/')
                     + ".class";
             JarURLConnection j = (JarURLConnection) ClassLoader
                     .getSystemResource(uri).openConnection();

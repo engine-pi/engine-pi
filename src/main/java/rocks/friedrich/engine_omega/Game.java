@@ -117,7 +117,7 @@ public final class Game
      */
     private static Scene scene = new Scene();
 
-    private static GameLogic gameLogic;
+    private static GameLoop gameLogic;
 
     private static Thread mainThread;
 
@@ -266,7 +266,7 @@ public final class Game
 
     private static void run()
     {
-        gameLogic = new GameLogic(renderPanel, Game::getActiveScene,
+        gameLogic = new GameLoop(renderPanel, Game::getActiveScene,
                 Game::isDebug);
         gameLogic.run();
         frame.setVisible(false);

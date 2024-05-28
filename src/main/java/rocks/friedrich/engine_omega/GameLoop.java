@@ -39,7 +39,7 @@ import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.graphics.RenderTarget;
 
-public final class GameLogic
+public final class GameLoop
 {
     private static final Color COLOR_FPS_BACKGROUND = new Color(255, 255, 255,
             50);
@@ -90,7 +90,7 @@ public final class GameLogic
 
     private double frameDuration;
 
-    public GameLogic(RenderTarget render, Supplier<Scene> currentScene,
+    public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
     {
         this.render = render;

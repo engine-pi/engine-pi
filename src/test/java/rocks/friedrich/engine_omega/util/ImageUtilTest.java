@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-import rocks.friedrich.engine_omega.EngineOmega;
 import rocks.friedrich.engine_omega.Game;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
@@ -101,8 +100,7 @@ public class ImageUtilTest
         BufferedImage img = null;
         try
         {
-            img = ImageIO
-                    .read(EngineOmega.class.getResource("/assets/logo.png"));
+            img = ImageIO.read(Game.class.getResource("/assets/logo.png"));
         }
         catch (Exception e)
         {
