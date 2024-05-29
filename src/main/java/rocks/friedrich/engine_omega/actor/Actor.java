@@ -1357,14 +1357,32 @@ public abstract class Actor
     /**
      * Verschiebt das Objekt ohne Bedingungen auf der Zeichenebene.
      *
-     * @param v Der Vektor, der die Verschiebung des Objekts angibt.
+     * @param vector Der Vektor, der die Verschiebung des Objekts angibt.
      * @see Vector
      * @see #moveBy(double, double)
      */
     @API
-    public final void moveBy(Vector v)
+    public final void moveBy(Vector vector)
     {
-        physicsHandler.moveBy(v);
+        physicsHandler.moveBy(vector);
+    }
+
+    /**
+     * Verschiebt das Objekt.
+     *
+     * <p>
+     * Hierbei wird nichts anderes gemacht, als <code>moveBy(new
+     * Vector(dx, dy))</code> auszuführen. Insofern ist diese Methode dafür gut,
+     * sich nicht mit der Klasse {@link Vector} auseinandersetzen zu müssen.
+     *
+     * @param dX Die Verschiebung in Richtung X.
+     * @param dY Die Verschiebung in Richtung Y.
+     * @see #moveBy(Vector)
+     */
+    @API
+    public final void moveBy(double dX, double dY)
+    {
+        moveBy(new Vector(dX, dY));
     }
 
     /**
@@ -1516,24 +1534,6 @@ public abstract class Actor
     public final Vector getCenterRelative()
     {
         return getCenter().subtract(getPosition());
-    }
-
-    /**
-     * Verschiebt das Objekt.
-     *
-     * <p>
-     * Hierbei wird nichts anderes gemacht, als <code>moveBy(new
-     * Vector(dx, dy))</code> auszuführen. Insofern ist diese Methode dafür gut,
-     * sich nicht mit der Klasse {@link Vector} auseinandersetzen zu müssen.
-     *
-     * @param dX Die Verschiebung in Richtung X.
-     * @param dY Die Verschiebung in Richtung Y.
-     * @see #moveBy(Vector)
-     */
-    @API
-    public final void moveBy(double dX, double dY)
-    {
-        moveBy(new Vector(dX, dY));
     }
 
     /**

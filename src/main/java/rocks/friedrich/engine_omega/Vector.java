@@ -420,8 +420,8 @@ public final class Vector implements Cloneable
     /**
      * Prüft, ob ein beliebiges Objekt gleich diesem Vector ist. <br>
      * <br>
-     * Zwei Vektoren gelten als gleich, wenn <code>x</code> und
-     * <code>y</code> der beiden Vektoren übereinstimmen.
+     * Zwei Vektoren gelten als gleich, wenn <code>x</code> und <code>y</code>
+     * der beiden Vektoren übereinstimmen.
      *
      * @param o Das auf Gleichheit mit diesem zu überprüfende Objekt.
      * @return <code>true</code>, wenn beide Vektoren gleich sind, sonst

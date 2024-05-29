@@ -49,7 +49,7 @@ public class Circle extends Geometry
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        this.setColor(Color.WHITE);
+        setColor(Color.WHITE);
     }
 
     /**

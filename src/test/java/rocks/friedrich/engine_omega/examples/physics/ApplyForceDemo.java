@@ -34,6 +34,6 @@ public class ApplyForceDemo extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(800, 600, new ApplyForceDemo());
+        Game.start(new ApplyForceDemo());
     }
 }

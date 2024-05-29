@@ -34,6 +34,6 @@ public class ApplyImpulseDemo extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(800, 600, new ApplyImpulseDemo());
+        Game.start(new ApplyImpulseDemo());
     }
 }
