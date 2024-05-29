@@ -9,9 +9,9 @@ import rocks.friedrich.engine_omega.sound.SoundPlaybackListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SoundResourcesExample
+public class SoundsContainerExample
 {
-    public SoundResourcesExample() throws MalformedURLException
+    public SoundsContainerExample() throws MalformedURLException
     {
         String soundName = "sounds/game-level-music.mp3";
         Sound mySound = Game.getSounds().get("sounds/game-level-music.mp3");
@@ -45,6 +45,6 @@ public class SoundResourcesExample
 
     public static void main(String[] args) throws MalformedURLException
     {
-        new SoundResourcesExample();
+        new SoundsContainerExample();
     }
 }

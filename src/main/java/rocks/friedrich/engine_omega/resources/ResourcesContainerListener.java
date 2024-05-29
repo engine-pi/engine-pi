@@ -45,9 +45,7 @@ public interface ResourcesContainerListener<T>
      * @param resource     The added resource.
      * @see ResourcesContainer#add(String, Object)
      */
-    default void added(String resourceName, T resource)
-    {
-    }
+    T added(String resourceName, T resource);
 
     /**
      * This method gets called after the {@code ResourcesContainer.remove}

@@ -62,7 +62,7 @@ public abstract class ResourcesContainer<T>
 
     private final Map<String, String> aliases = new ConcurrentHashMap<>();
 
-    private final List<ResourcesContainerListener<? super T>> listeners = new CopyOnWriteArrayList<>();
+    private final List<ResourcesContainerListener<T>> listeners = new CopyOnWriteArrayList<>();
 
     private final List<ResourcesContainerClearedListener> clearedListeners = new CopyOnWriteArrayList<>();
 
@@ -75,10 +75,11 @@ public abstract class ResourcesContainer<T>
      *                 backs from this container.
      * @see #removeContainerListener(ResourcesContainerListener)
      */
-    public void addContainerListener(
-            ResourcesContainerListener<? super T> listener)
+    public ResourcesContainerListener<T> addContainerListener(
+            ResourcesContainerListener<T> listener)
     {
         this.listeners.add(listener);
+        return listener;
     }
 
     /**
@@ -137,11 +138,15 @@ public abstract class ResourcesContainer<T>
      */
     public void add(String resourceName, T resource)
     {
-        this.resources.put(resourceName, resource);
-        for (ResourcesContainerListener<? super T> listener : this.listeners)
+        for (ResourcesContainerListener<T> listener : this.listeners)
         {
-            listener.added(resourceName, resource);
+            T r = listener.added(resourceName, resource);
+            if (r != null)
+            {
+                resource = r;
+            }
         }
+        this.resources.put(resourceName, resource);
     }
 
     public void add(URL resourceName, T resource)
@@ -156,7 +161,7 @@ public abstract class ResourcesContainer<T>
     public void clear()
     {
         this.resources.clear();
-        for (ResourcesContainerListener<? super T> listener : this.listeners)
+        for (ResourcesContainerListener<T> listener : this.listeners)
         {
             listener.cleared();
         }
@@ -212,7 +217,7 @@ public abstract class ResourcesContainer<T>
      *             returned.
      * @return All resources that match the specified condition.
      */
-    public Collection<T> get(Predicate<? super T> pred)
+    public Collection<T> get(Predicate<T> pred)
     {
         if (pred == null)
         {
@@ -444,7 +449,7 @@ public abstract class ResourcesContainer<T>
         {
             throw new ResourceLoadException(e);
         }
-        for (ResourcesContainerListener<? super T> listener : this.listeners)
+        for (ResourcesContainerListener<T> listener : this.listeners)
         {
             listener.added(identifier, newResource);
         }
