@@ -9,7 +9,10 @@ import rocks.friedrich.engine_omega.annotations.API;
 
 import java.util.Arrays;
 
-public class Group
+/**
+ * Eine Gruppe bestehend aus mehreren {@link Actor}-Objekten.
+ */
+public class Group implements Actable
 {
     private final List<Actor> actors;
 
@@ -41,32 +44,12 @@ public class Group
         }
     }
 
-    /**
-     * Verschiebt die Gruppe ohne Bedingungen auf der Zeichenebene.
-     *
-     * @param vector Der Vektor, der die Verschiebung der Gruppe angibt.
-     * @see Vector
-     * @see #moveBy(double, double)
-     */
     @API
     public final void moveBy(Vector vector)
     {
         actors.forEach((actor) -> actor.moveBy(vector));
     }
 
-    /**
-     * Verschiebt die Gruppe.
-     *
-     * <p>
-     * Hierbei wird nichts anderes gemacht, als <code>moveBy(new
-     * Vector(dx, dy))</code> auszuführen. Insofern ist diese Methode dafür gut,
-     * sich nicht mit der Klasse {@link Vector} auseinandersetzen zu müssen.
-     *
-     * @param dX Die Verschiebung in Richtung X.
-     * @param dY Die Verschiebung in Richtung Y.
-     * @see #moveBy(Vector)
-     */
-    @API
     public final void moveBy(double dX, double dY)
     {
         moveBy(new Vector(dX, dY));

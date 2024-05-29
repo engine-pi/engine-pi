@@ -1624,7 +1624,7 @@ public abstract class Actor
      * festen Zeitraum: Beginnend von der aktuellen Durchsichtigkeit, ändert sie
      * sich "smooth" (mit {@code EaseInOutDouble}-Interpolation) vom aktuellen
      * Durchsichtigkeits-Wert (die Ausgabe von {@link #getOpacity()}) bis hin
-     * zum angegebenen Durchsichtigkeits-Wert.
+     * zum angegebenen Durchsichtigkeitswert.
      *
      * @param time           Die Animationszeit in Sekunden
      * @param toOpacityValue Der Durchsichtigkeit-Wert, zu dem innerhalb von
