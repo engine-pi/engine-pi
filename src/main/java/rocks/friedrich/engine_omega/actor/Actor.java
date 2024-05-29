@@ -1359,7 +1359,7 @@ public abstract class Actor
      * <p>
      * Diese Methode arbeitet nach dem Mittelpunkt des das Objekt abdeckenden
      * Bounding-Rechtecks durch den Aufruf der Methode
-     * <code>{@link #setCenter()}</code>.
+     * <code>{@link #setCenter(double, double)}</code>.
      *
      * @param x Die <code>x</code>-Koordinate des neuen Mittelpunktes des
      *          Objektes
@@ -1479,7 +1479,8 @@ public abstract class Actor
     }
 
     /**
-     * Gibt den Mittelpunkt des Objektes in der {@link Scene} aus.
+     * Gibt den Mittelpunkt des Objektes in der
+     * {@link rocks.friedrich.engine_omega.Scene Scene} aus.
      *
      * @return Die Koordinaten des Mittelpunktes des Objektes.
      * @see #getPosition()
@@ -1587,7 +1588,7 @@ public abstract class Actor
     }
 
     /**
-     * Setzt den {@link BodyType} auf {@link BodyType.PARTICLE PARTICLE} und
+     * Setzt den {@link BodyType} auf {@link BodyType#PARTICLE PARTICLE} und
      * animiert das Partikel, sodass es ausblasst und nach der Lebenszeit
      * komplett verschwindet.
      *
