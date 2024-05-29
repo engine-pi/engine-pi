@@ -1019,6 +1019,15 @@ public abstract class Actor
         physicsHandler.applyTorque(torque);
     }
 
+    public final void applyRotationImpulse(double impulse)
+    {
+        if (Double.isNaN(impulse))
+        {
+            return;
+        }
+        physicsHandler.applyRotationImpulse(impulse);
+    }
+
     /**
      * Wirkt eine Kraft auf den <i>Schwerpunkt</i> des Objekts.
      *

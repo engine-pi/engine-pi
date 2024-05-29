@@ -234,6 +234,11 @@ public final class Game
         mainThread.setPriority(Thread.MAX_PRIORITY);
     }
 
+    public static void start(Scene scene)
+    {
+        start(800, 600, scene);
+    }
+
     /**
      * Stellt den Zugriff auf den {@link ImagesContainer Zwischenspeicher für
      * Bild-Resourcen} vom Datentyp {@link BufferedImage} bereit.
