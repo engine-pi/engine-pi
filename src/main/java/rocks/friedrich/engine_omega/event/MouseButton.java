@@ -24,7 +24,7 @@ import rocks.friedrich.engine_omega.annotations.API;
 
 /**
  * Aufzählungstyp, mit dem die verschiedenen Maustasten angegeben werden
- * könnnen.
+ * können.
  */
 @API
 public enum MouseButton

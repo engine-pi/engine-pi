@@ -79,7 +79,7 @@ public class Dominoes extends Scene
         ground.setBodyType(BodyType.STATIC);
         wall.setBodyType(BodyType.STATIC);
         ball.setBodyType(BodyType.DYNAMIC);
-        this.setGravity(new Vector(0, -9.81f));
+        setGravity(new Vector(0, -9.81));
     }
 
     private void makeDominoes(int num, double beamWidth, double beamHeight)

@@ -68,13 +68,6 @@ public class PaintingCirclesAdvanced extends Scene implements MouseClickListener
         this.add(circle);
     }
 
-    public static void main(String[] args)
-    {
-        Game.start(600, 400, new PaintingCirclesAdvanced());
-        // Game.setDebug(true);
-        Util.addScreenshotKey("User Input Circles Advanced");
-    }
-
     @Override
     public void onMouseDown(Vector position, MouseButton mouseButton)
     {
@@ -125,5 +118,12 @@ public class PaintingCirclesAdvanced extends Scene implements MouseClickListener
                 activeDiameter = diameter;
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new PaintingCirclesAdvanced());
+        // Game.setDebug(true);
+        Util.addScreenshotKey("User Input Circles Advanced");
     }
 }

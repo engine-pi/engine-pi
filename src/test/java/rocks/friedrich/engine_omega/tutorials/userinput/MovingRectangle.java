@@ -33,13 +33,7 @@ public class MovingRectangle extends Scene
 {
     public MovingRectangle()
     {
-        this.add(new Character());
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(600, 400, new MovingRectangle());
-        Util.addScreenshotKey("rectA");
+        add(new Character());
     }
 
     private class Character extends Rectangle implements KeyListener
@@ -47,7 +41,7 @@ public class MovingRectangle extends Scene
         public Character()
         {
             super(2, 2);
-            this.setCenter(0, 0);
+            setCenter(0, 0);
             setColor(Color.RED);
         }
 
@@ -56,22 +50,17 @@ public class MovingRectangle extends Scene
         {
             switch (keyEvent.getKeyCode())
             {
-            case KeyEvent.VK_W:
-                this.moveBy(0, 0.5f);
-                break;
-
-            case KeyEvent.VK_A:
-                this.moveBy(-0.5f, 0);
-                break;
-
-            case KeyEvent.VK_S:
-                this.moveBy(0, -0.5f);
-                break;
-
-            case KeyEvent.VK_D:
-                this.moveBy(0.5f, 0);
-                break;
+            case KeyEvent.VK_W -> moveBy(0, 0.5);
+            case KeyEvent.VK_A -> moveBy(-0.5, 0);
+            case KeyEvent.VK_S -> moveBy(0, -0.5);
+            case KeyEvent.VK_D -> moveBy(0.5, 0);
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new MovingRectangle());
+        Util.addScreenshotKey("rectA");
     }
 }

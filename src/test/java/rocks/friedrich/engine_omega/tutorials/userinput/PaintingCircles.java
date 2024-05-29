@@ -42,15 +42,15 @@ public class PaintingCircles extends Scene implements MouseClickListener
         this.add(circle);
     }
 
-    public static void main(String[] args)
-    {
-        Game.start(600, 400, new PaintingCircles());
-        Util.addScreenshotKey("User Input Circles Simple");
-    }
-
     @Override
     public void onMouseDown(Vector position, MouseButton mouseButton)
     {
         paintCircleAt(position.getX(), position.getY(), 1);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new PaintingCircles());
+        Util.addScreenshotKey("User Input Circles Simple");
     }
 }

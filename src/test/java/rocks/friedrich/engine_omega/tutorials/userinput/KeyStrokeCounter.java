@@ -28,16 +28,11 @@ import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.KeyListener;
 import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class TastenCounter extends Scene
+public class KeyStrokeCounter extends Scene
 {
-    public TastenCounter()
+    public KeyStrokeCounter()
     {
-        this.add(new CounterText());
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(500, 200, new TastenCounter());
+        add(new CounterText());
     }
 
     private class CounterText extends Text implements KeyListener
@@ -46,20 +41,25 @@ public class TastenCounter extends Scene
 
         public CounterText()
         {
-            super("You pressed 0 keys.", 2);
-            this.setCenter(0, 0);
+            super("You pressed 0 keys.", 1);
+            setCenter(0, 0);
         }
 
         @Override
         public void onKeyDown(KeyEvent keyEvent)
         {
             counter++;
-            this.setContent("You pressed " + counter + " keys.");
-            this.setCenter(0, 0);
+            setContent("You pressed " + counter + " keys.");
+            setCenter(0, 0);
             if (keyEvent.getKeyCode() == KeyEvent.VK_1)
             {
                 Util.makeScreenshot("counter");
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(500, 200, new KeyStrokeCounter());
     }
 }

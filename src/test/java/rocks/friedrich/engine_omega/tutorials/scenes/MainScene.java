@@ -55,13 +55,6 @@ public class MainScene extends Scene implements KeyListener
         add(info);
     }
 
-    public static void main(String[] args)
-    {
-        Game.start(600, 400, new MainScene());
-        Util.addScreenshotKey("Scenes");
-        // Game.setDebug(true);
-    }
-
     @Override
     public void onKeyDown(KeyEvent keyEvent)
     {
@@ -129,5 +122,12 @@ public class MainScene extends Scene implements KeyListener
                 }
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new MainScene());
+        Util.addScreenshotKey("Scenes");
+        // Game.setDebug(true);
     }
 }
