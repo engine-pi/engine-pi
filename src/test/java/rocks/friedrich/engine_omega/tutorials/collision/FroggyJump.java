@@ -49,15 +49,8 @@ public class FroggyJump extends Scene
         Camera cam = getCamera();
         cam.setFocus(frog);
         cam.setOffset(new Vector(0, 4));
-        // makeLevel(40);
+        makeLevel(40);
         makePlatforms(10);
-    }
-
-    public static void main(String[] args)
-    {
-        FroggyJump fj = new FroggyJump();
-        Game.start(400, 600, fj);
-        // Game.setDebug(true);
     }
 
     private void makePlatforms(int heightLevel)
@@ -86,8 +79,7 @@ public class FroggyJump extends Scene
             {
                 for (int j = 0; j < Random.range(3); j++)
                 {
-                    SpikeBall ball = SpikeBall.setupSpikeBall(
-                            Random.range() * (4 + j) * i,
+                    SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
                             Random.range() * 4 + 0.5f + 5 * i, getMainLayer());
                 }
             }
@@ -119,7 +111,8 @@ class Frog extends Image implements FrameUpdateListener
 
     public Frog()
     {
-        super("eatutorials/collision/assets/Jump (32x32).png", 25f);
+        super("src/test/java/rocks/friedrich/engine_omega/tutorials/collision/assets/Jump (32x32).png",
+                25);
         setBodyType(BodyType.DYNAMIC);
         setRotationLocked(true);
     }
@@ -172,8 +165,8 @@ class Frog extends Image implements FrameUpdateListener
         // C: Jump if possible
         if (isGrounded() && velocity.getY() <= 0 && canJump)
         {
-            this.setVelocity(new Vector(velocity.getX(), 0));
-            this.applyImpulse(Vector.UP.multiply(180));
+            setVelocity(new Vector(velocity.getX(), 0));
+            applyImpulse(Vector.UP.multiply(180));
         }
     }
 }
@@ -184,14 +177,14 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     {
         super(width, height);
         setBodyType(BodyType.STATIC);
-        this.addCollisionListener(Frog.class, this);
+        addCollisionListener(Frog.class, this);
     }
 
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
         double frogY = collisionEvent.getColliding().getPosition().getY();
-        if (frogY < this.getY())
+        if (frogY < getY())
         {
             collisionEvent.ignoreCollision();
             collisionEvent.getColliding().setJumpEnabled(false);
@@ -218,7 +211,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
             this.ball = ball;
             setVisible(false);
             setBodyType(BodyType.SENSOR);
-            this.addCollisionListener(Frog.class, this);
+            addCollisionListener(Frog.class, this);
             setGravityScale(0);
         }
 
@@ -231,9 +224,10 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 
     public SpikeBall()
     {
-        super("eatutorials/collision/assets/Spiked Ball.png", 40);
+        super("src/test/java/rocks/friedrich/engine_omega/tutorials/collision/assets/Spiked Ball.png",
+                40);
         setGravityScale(0);
-        this.addCollisionListener(Frog.class, this);
+        addCollisionListener(Frog.class, this);
     }
 
     public static SpikeBall setupSpikeBall(double x, double y, Layer layer)
@@ -250,5 +244,12 @@ class SpikeBall extends Image implements CollisionListener<Frog>
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
         collisionEvent.getColliding().kill();
+    }
+
+    public static void main(String[] args)
+    {
+        FroggyJump fj = new FroggyJump();
+        Game.start(400, 600, fj);
+        // Game.setDebug(true);
     }
 }
