@@ -51,92 +51,6 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 @Internal
 public final class MainAnimation
 {
-    @SuppressWarnings("MagicNumber")
-    public static void main(String[] args)
-    {
-        Game.start(800, 600, new Scene()
-        {
-            private final List<Actor> items = new ArrayList<>();
-            {
-                setGravity(new Vector(0, -9.81f));
-                Rectangle ground = new Rectangle(20, .2f);
-                ground.setCenter(0, -6);
-                ground.setRestitution(.9f);
-                ground.setFriction(.2f);
-                ground.setBodyType(BodyType.STATIC);
-                add(ground);
-                for (int i = 0; i < 3; i++)
-                {
-                    Rectangle a = new Rectangle(1, 1);
-                    a.setPosition(-5, -2);
-                    a.setRestitution(.9f);
-                    a.setFriction(1);
-                    a.setBodyType(BodyType.DYNAMIC);
-                    a.setColor(new Color(26, 113, 156));
-                    a.setRotation(30);
-                    spawnItem(a);
-                    Circle b = new Circle(1);
-                    b.setPosition(5, -1);
-                    b.setRestitution(.9f);
-                    b.setFriction(1);
-                    b.setBodyType(BodyType.DYNAMIC);
-                    b.setColor(new Color(158, 5, 5));
-                    b.applyImpulse(new Vector(Random.range(-100, 100), 0));
-                    spawnItem(b);
-                    Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
-                            new Vector(.5, 1));
-                    c.setRestitution(.9f);
-                    c.setFriction(1);
-                    c.setBodyType(BodyType.DYNAMIC);
-                    c.setColor(new Color(25, 159, 69));
-                    c.setRotation(-20);
-                    spawnItem(c);
-                }
-                Date date = new Date(BUILD_TIME * 1000);
-                SimpleDateFormat sdf = new SimpleDateFormat(
-                        "dd.MM.yyyy HH:mm:ss z");
-                sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-                Text text = new Text(
-                        "Build #" + VERSION_CODE + "   " + sdf.format(date),
-                        .5f);
-                text.setPosition(-10, -7f);
-                text.setColor(Color.WHITE);
-                text.setBodyType(BodyType.STATIC);
-                add(text);
-                addFrameUpdateListener(time -> {
-                    for (Actor item : items)
-                    {
-                        if (item.getCenter().getY() < -10)
-                        {
-                            spawnItem(item);
-                        }
-                    }
-                });
-                addKeyListener(e -> {
-                    if (e.getKeyCode() == KeyEvent.VK_D)
-                    {
-                        Game.setDebug(!Game.isDebug());
-                    }
-                });
-            }
-
-            private void spawnItem(Actor item)
-            {
-                if (!item.isMounted())
-                {
-                    delay(Random.range(5), () -> {
-                        items.add(item);
-                        add(item);
-                    });
-                }
-                item.resetMovement();
-                item.setCenter(Random.range(-7, 7), Random.range(0, 5));
-            }
-        });
-        Game.setExitOnEsc(true);
-        Game.setTitle("Engine Omega " + VERSION_STRING);
-    }
-
     /**
      * Der Versionscode des aktuellen Release.<br>
      * Rechnung:<br>
@@ -247,5 +161,91 @@ public final class MainAnimation
         {
             return System.currentTimeMillis() / 1000;
         }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    public static void main(String[] args)
+    {
+        Game.start(800, 600, new Scene()
+        {
+            private final List<Actor> items = new ArrayList<>();
+            {
+                setGravity(new Vector(0, -9.81));
+                Rectangle ground = new Rectangle(20, .2);
+                ground.setCenter(0, -6);
+                ground.setRestitution(.9);
+                ground.setFriction(.2);
+                ground.setBodyType(BodyType.STATIC);
+                add(ground);
+                for (int i = 0; i < 3; i++)
+                {
+                    Rectangle a = new Rectangle(1, 1);
+                    a.setPosition(-5, -2);
+                    a.setRestitution(.9);
+                    a.setFriction(1);
+                    a.setBodyType(BodyType.DYNAMIC);
+                    a.setColor(new Color(26, 113, 156));
+                    a.setRotation(30);
+                    spawnItem(a);
+                    Circle b = new Circle(1);
+                    b.setPosition(5, -1);
+                    b.setRestitution(.9);
+                    b.setFriction(1);
+                    b.setBodyType(BodyType.DYNAMIC);
+                    b.setColor(new Color(158, 5, 5));
+                    b.applyImpulse(new Vector(Random.range(-100, 100), 0));
+                    spawnItem(b);
+                    Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
+                            new Vector(.5, 1));
+                    c.setRestitution(.9);
+                    c.setFriction(1);
+                    c.setBodyType(BodyType.DYNAMIC);
+                    c.setColor(new Color(25, 159, 69));
+                    c.setRotation(-20);
+                    spawnItem(c);
+                }
+                Date date = new Date(BUILD_TIME * 1000);
+                SimpleDateFormat sdf = new SimpleDateFormat(
+                        "dd.MM.yyyy HH:mm:ss z");
+                sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+                Text text = new Text(
+                        "Build #" + VERSION_CODE + "   " + sdf.format(date),
+                        .5f);
+                text.setPosition(-10, -7f);
+                text.setColor(Color.WHITE);
+                text.setBodyType(BodyType.STATIC);
+                add(text);
+                addFrameUpdateListener(time -> {
+                    for (Actor item : items)
+                    {
+                        if (item.getCenter().getY() < -10)
+                        {
+                            spawnItem(item);
+                        }
+                    }
+                });
+                addKeyListener(e -> {
+                    if (e.getKeyCode() == KeyEvent.VK_D)
+                    {
+                        Game.setDebug(!Game.isDebug());
+                    }
+                });
+            }
+
+            private void spawnItem(Actor item)
+            {
+                if (!item.isMounted())
+                {
+                    delay(Random.range(5), () -> {
+                        items.add(item);
+                        add(item);
+                    });
+                }
+                item.resetMovement();
+                item.setCenter(Random.range(-7, 7), Random.range(0, 5));
+            }
+        });
+        Game.setExitOnEsc(true);
+        Game.setTitle("Engine Omega " + VERSION_STRING);
     }
 }

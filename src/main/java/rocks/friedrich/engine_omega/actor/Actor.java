@@ -1068,8 +1068,8 @@ public abstract class Actor
     /**
      * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
      *
-     * @param newtonSeconds Impuls in <b>[Ns]</b>, der auf den Schwerpunkt
-     *                      wirken soll
+     * @param newtonSeconds Der Impuls in <b>[Ns]</b>, der auf den Schwerpunkt
+     *                      wirken soll.
      */
     @API
     public final void applyImpulse(Vector newtonSeconds)
@@ -1089,9 +1089,9 @@ public abstract class Actor
     /**
      * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
      *
-     * @param newtonSeconds Impuls in <b>[Ns]</b>
-     * @param globalPoint   Ort auf der <i>Zeichenebene</i>, an dem der Impuls
-     *                      wirken soll
+     * @param newtonSeconds Der Impuls in <b>[Ns]</b>.
+     * @param globalPoint   Der Ort auf der <i>Zeichenebene</i>, an dem der Impuls
+     *                      wirken soll.
      */
     @API
     public final void applyImpulse(Vector newtonSeconds, Vector globalPoint)
