@@ -1034,6 +1034,11 @@ public abstract class Actor
         physicsHandler.applyForce(newton);
     }
 
+    public final void applyForce(double dX, double dY)
+    {
+        applyForce(new Vector(dX, dY));
+    }
+
     /**
      * Wirkt eine Kraft auf einem bestimmten <i>Punkt in der Welt</i>.
      *

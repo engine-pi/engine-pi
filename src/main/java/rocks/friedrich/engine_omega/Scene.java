@@ -320,6 +320,11 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
         mainLayer.setGravity(gravityInNewton);
     }
 
+    public void setGravity(double dX, double dY)
+    {
+        setGravity(new Vector(dX, dY));
+    }
+
     /**
      * Setzt, ob die Engine-Physics für diese Szene pausiert sein soll.
      *
