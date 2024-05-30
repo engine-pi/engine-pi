@@ -72,7 +72,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
     /**
      * Wird für die Schwerkraft-Berechnung genutzt
      */
-    private static final Vector ERDBESCHLEUNIGUNG = new Vector(0, 9.81f);
+    private static final Vector ERDBESCHLEUNIGUNG = new Vector(0, 9.81);
 
     public static final float FIELD_WIDTH = 85;
 
@@ -146,12 +146,12 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
             walls[i].setBodyType(BodyType.SENSOR);
         }
         // Vector-Visualisierung
-        Rectangle stab = new Rectangle(1, 0.5f);
+        Rectangle stab = new Rectangle(1, 0.5);
         stab.setColor(new Color(200, 50, 50));
         stange = stab;
         stange.setLayerPosition(-10);
         // Attack-Visualisierung
-        Circle atv = new Circle(0.5f);
+        Circle atv = new Circle(0.5);
         atv.setColor(Color.RED);
         attack = atv;
         attack.setLayerPosition(-10);

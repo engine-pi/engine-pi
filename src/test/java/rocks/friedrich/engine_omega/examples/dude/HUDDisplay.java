@@ -32,7 +32,7 @@ public class HUDDisplay
 {
     private static final int VALUE_LENGTH = 10;
 
-    private static final double SCALE = 1.5f;
+    private static final double SCALE = 1.5;
 
     private final TileContainer background;
 

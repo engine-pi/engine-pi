@@ -122,7 +122,7 @@ public class BallThrowDemo extends ShowcaseDemo
         ball.setDensity(MASSE);
         ball.setCenter(DISTANCE_LEFT,
                 GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
-                        + 0.5f * DURCHMESSER * PIXEL_PER_METER));
+                        + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         // Den Boden erstellen
         ground = new Rectangle(100, 20);
         ground.setPosition(0, GROUND_DEPTH);
@@ -182,7 +182,7 @@ public class BallThrowDemo extends ShowcaseDemo
         setGravity(new Vector(0, 0)); // Schwerkraft deaktivieren
         ball.setCenter(DISTANCE_LEFT, // Ballposition zurücksetzen
                 GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
-                        + 0.5f * DURCHMESSER * PIXEL_PER_METER));
+                        + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         ball.resetMovement(); // Ball in Ruhe versetzen
     }
 

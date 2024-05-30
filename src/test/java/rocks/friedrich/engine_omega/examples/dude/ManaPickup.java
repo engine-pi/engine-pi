@@ -31,15 +31,15 @@ import rocks.friedrich.engine_omega.event.CollisionListener;
 public class ManaPickup extends Animation
         implements CollisionListener<PlayerCharacter>
 {
-    private static final float SIZE = .4f;
+    private static final double SIZE = .4;
 
-    private static final float PICKUP_DELAY = 5;
+    private static final double PICKUP_DELAY = 5;
 
     private boolean active = true;
 
     public ManaPickup()
     {
-        super(Animation.createFromSpritesheet(.1f, "dude/gem_blue.png", 6, 1,
+        super(Animation.createFromSpritesheet(.1, "dude/gem_blue.png", 6, 1,
                 SIZE, SIZE));
     }
 

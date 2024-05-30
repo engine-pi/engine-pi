@@ -34,8 +34,8 @@ public class VectorTest
         Vector p1 = new Vector(10f, 10f);
         Vector p2 = new Vector(30f, 20f);
         Vector vector = new Vector(p1, p2);
-        assertEquals(vector.getX(), 20f, 0.0001f);
-        assertEquals(vector.getY(), 10f, 0.0001f);
+        assertEquals(vector.getX(), 20f, 0.0001);
+        assertEquals(vector.getY(), 10f, 0.0001);
     }
 
     @Test
@@ -127,9 +127,9 @@ public class VectorTest
     public void testIsIntegral()
     {
         assertTrue(new Vector(1, 1).isIntegral());
-        assertFalse(new Vector(.5f, .5f).isIntegral());
-        assertFalse(new Vector(.5f, 1).isIntegral());
-        assertFalse(new Vector(1, .5f).isIntegral());
+        assertFalse(new Vector(.5, .5).isIntegral());
+        assertFalse(new Vector(.5, 1).isIntegral());
+        assertFalse(new Vector(1, .5).isIntegral());
     }
 
     @Test

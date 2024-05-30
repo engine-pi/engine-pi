@@ -39,7 +39,7 @@ import rocks.friedrich.engine_omega.event.KeyListener;
  */
 public class SnakeExample extends Scene
 {
-    private Text scoreText = new Text("Score: 0", 1.4f);
+    private Text scoreText = new Text("Score: 0", 1.4);
 
     private int score = 0;
 

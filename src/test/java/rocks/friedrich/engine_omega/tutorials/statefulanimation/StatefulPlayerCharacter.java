@@ -34,7 +34,7 @@ import rocks.friedrich.engine_omega.event.KeyListener;
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         implements KeyListener, FrameUpdateListener
 {
-    private static final double THRESHOLD = 0.01f;
+    private static final double THRESHOLD = 0.01;
 
     private static final double RUNNING_THRESHOLD = 10;
 
@@ -79,7 +79,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         setRotationLocked(true);
         setRestitution(0);
         setFriction(30f);
-        setLinearDamping(.3f);
+        setLinearDamping(.3);
     }
 
     @Override

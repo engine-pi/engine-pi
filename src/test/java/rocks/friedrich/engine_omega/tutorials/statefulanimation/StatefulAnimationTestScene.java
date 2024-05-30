@@ -40,17 +40,17 @@ public class StatefulAnimationTestScene extends Scene
         setupGround();
         add(character);
         getCamera().setFocus(character);
-        setGravity(new Vector(0, -9.81f));
+        setGravity(new Vector(0, -9.81));
     }
 
     private void setupGround()
     {
-        Rectangle ground = makePlatform(200, 0.2f);
+        Rectangle ground = makePlatform(200, 0.2);
         ground.setCenter(0, -5);
         ground.setColor(new Color(255, 195, 150));
-        makePlatform(12, 0.3f).setCenter(16, -1);
-        makePlatform(7, 0.3f).setCenter(25, 2);
-        makePlatform(20, 0.3f).setCenter(35, 6);
+        makePlatform(12, 0.3).setCenter(16, -1);
+        makePlatform(7, 0.3).setCenter(25, 2);
+        makePlatform(20, 0.3).setCenter(35, 6);
         makeBall(5).setCenter(15, 3);
     }
 
@@ -60,23 +60,23 @@ public class StatefulAnimationTestScene extends Scene
         r.setColor(new Color(0, 194, 255));
         r.setBodyType(BodyType.STATIC);
         // r.setRestitution(0);
-        // r.setFriction(.2f);
+        // r.setFriction(.2);
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(
-                FixtureBuilder.createAxisParallelRectangularShape(.1f, h - 0.1f,
-                        w - .2f, 0.1f));
-        top.setFriction(.2f);
+                FixtureBuilder.createAxisParallelRectangularShape(.1, h - 0.1,
+                        w - .2, 0.1));
+        top.setFriction(.2);
         top.setRestitution(0);
         FixtureData left = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(0, 0, 0.1f, h));
+                .createAxisParallelRectangularShape(0, 0, 0.1, h));
         left.setFriction(0);
         left.setRestitution(0);
         FixtureData right = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(w - .1f, 0, 0.1f, h));
+                .createAxisParallelRectangularShape(w - .1, 0, 0.1, h));
         right.setFriction(0);
         right.setRestitution(0);
         FixtureData bottom = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(0, 0, w, .1f));
+                .createAxisParallelRectangularShape(0, 0, w, .1));
         bottom.setFriction(0);
         bottom.setRestitution(0);
         platformFixtures.add(top);

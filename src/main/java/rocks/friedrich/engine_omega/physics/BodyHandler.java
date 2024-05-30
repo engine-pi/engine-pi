@@ -449,7 +449,7 @@ public class BodyHandler implements PhysicsHandler
         // Test-AABB: Should be a rectangle right below the body
         // Minimal height, width of the body
         AABB testAABB = new AABB();
-        final double epsilon = 0.0001f;
+        final double epsilon = 0.0001;
         testAABB.lowerBound.set(bodyBounds.lowerBound.x,
                 bodyBounds.lowerBound.y);
         testAABB.upperBound.set(bodyBounds.upperBound.x,

@@ -34,7 +34,7 @@ public class Platform extends TileContainer
 {
     private static final int SIZE = 2;
 
-    private static final float FRICTION = 0.5f;
+    private static final double FRICTION = 0.5;
 
     public Platform(int tileCount)
     {

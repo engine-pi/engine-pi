@@ -45,23 +45,23 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
     public Shots(Scene parent)
     {
         super(parent);
-        setGravity(new Vector(0, -9.81f));
+        setGravity(new Vector(0, -9.81));
         getCamera().setZoom(100);
-        Vector ballPosition = new Vector(-1.7f, 0.5f);
+        Vector ballPosition = new Vector(-1.7, 0.5);
         getMainLayer()
                 .add(ball = new Ball(ballPosition.getX(), ballPosition.getY()));
-        getMainLayer().add(new Wall(-6, -4.5f, 12, 1));
-        getMainLayer().add(new Wall(-6, 3.5f, 12, 1));
-        getMainLayer().add(new Wall(-6.5f, -4.5f, 1, 9));
-        getMainLayer().add(new Wall(5.5f, -4.5f, 1, 9));
+        getMainLayer().add(new Wall(-6, -4.5, 12, 1));
+        getMainLayer().add(new Wall(-6, 3.5, 12, 1));
+        getMainLayer().add(new Wall(-6.5, -4.5, 1, 9));
+        getMainLayer().add(new Wall(5.5, -4.5, 1, 9));
         BallShadow ballShadow = new BallShadow(ballPosition.getX(),
                 ballPosition.getY());
-        ball.createDistanceJoint(ballShadow, new Vector(.15f, .15f),
-                new Vector(.15f, .15f));
+        ball.createDistanceJoint(ballShadow, new Vector(.15, .15),
+                new Vector(.15, .15));
         getMainLayer().add(ballShadow);
-        basket = new Rectangle(1.5f, 0.05f);
+        basket = new Rectangle(1.5, 0.05);
         basket.setColor(Color.RED);
-        basket.setPosition(3, 0.5f);
+        basket.setPosition(3, 0.5);
         basket.setBodyType(BodyType.SENSOR);
         basket.setGravityScale(0);
         basket.addCollisionListener(ball,
@@ -84,13 +84,13 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
     {
         public Ball(double x, double y)
         {
-            super("shots/ball.png", 0.3f, 0.3f);
-            setPosition(x + .15f, y + .15f);
-            setFixture(() -> FixtureBuilder.createCircleShape(0.15f, 0.15f,
-                    0.15f));
+            super("shots/ball.png", 0.3, 0.3);
+            setPosition(x + .15, y + .15);
+            setFixture(() -> FixtureBuilder.createCircleShape(0.15, 0.15,
+                    0.15));
             setBodyType(BodyType.DYNAMIC);
-            setRestitution(0.85f);
-            setFriction(0.1f);
+            setRestitution(0.85);
+            setFriction(0.1);
         }
     }
 
@@ -98,10 +98,10 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
     {
         public BallShadow(double x, double y)
         {
-            super("shots/shadow.png", 0.3f, 0.3f);
-            setPosition(x + .15f, y + .15f);
-            setFixture(() -> FixtureBuilder.createCircleShape(0.15f, 0.15f,
-                    0.15f));
+            super("shots/shadow.png", 0.3, 0.3);
+            setPosition(x + .15, y + .15);
+            setFixture(() -> FixtureBuilder.createCircleShape(0.15, 0.15,
+                    0.15));
             setBodyType(BodyType.SENSOR);
             setGravityScale(0);
             setRotationLocked(true);
@@ -116,8 +116,8 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
             setPosition(x, y);
             setColor(Color.WHITE);
             setBodyType(BodyType.STATIC);
-            setFriction(.05f);
-            setRestitution(.3f);
+            setFriction(.05);
+            setRestitution(.3);
             setDensity(150);
         }
     }

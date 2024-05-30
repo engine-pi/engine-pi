@@ -32,7 +32,7 @@ import rocks.friedrich.engine_omega.event.CollisionListener;
 public class Coin extends Animation
         implements CollisionListener<PlayerCharacter>
 {
-    private static final float SIZE = .4f;
+    private static final double SIZE = .4;
 
     public Coin()
     {

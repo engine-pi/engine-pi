@@ -215,7 +215,7 @@ public final class MainAnimation
                 sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
                 Text text = new Text(
                         "Build #" + VERSION_CODE + "   " + sdf.format(date),
-                        .5f);
+                        .5);
                 text.setPosition(-10, -7f);
                 text.setColor(Color.WHITE);
                 text.setBodyType(BodyType.STATIC);

@@ -46,7 +46,7 @@ public class PhysicsData
 
     static final double DEFAULT_FRICTION = 0f;
 
-    static final double DEFAULT_RESTITUTION = 0.5f;
+    static final double DEFAULT_RESTITUTION = 0.5;
 
     static final BodyType DEFAULT_BODY_TYPE = BodyType.SENSOR;
 

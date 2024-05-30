@@ -95,16 +95,16 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
     private void createCircle(Vector position, Color color)
     {
         Circle circle = new Circle(6);
-        FrameUpdateListener emitter = repeat(0.01f, () -> {
+        FrameUpdateListener emitter = repeat(0.01, () -> {
             Circle particle = new Circle(3);
             particle.setPosition(circle.getCenter().subtract(new Vector(1, 1)));
             particle.setColor(Color.RED);
             particle.setLayerPosition(-1);
-            particle.animateParticle(.5f);
-            particle.animateColor(.25f, Color.YELLOW);
+            particle.animateParticle(.5);
+            particle.animateColor(.25, Color.YELLOW);
             particle.applyImpulse(
-                    new Vector(6000 * ((float) Math.random() - .5f),
-                            6000 * ((float) Math.random() - .5f)));
+                    new Vector(6000 * ((float) Math.random() - .5),
+                            6000 * ((float) Math.random() - .5)));
             add(particle);
         });
         circle.setPosition(position);
@@ -119,7 +119,7 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
     {
         if (e.getKeyCode() == KeyEvent.VK_LESS)
         {
-            getCamera().rotateBy(0.1f);
+            getCamera().rotateBy(0.1);
         }
     }
 }

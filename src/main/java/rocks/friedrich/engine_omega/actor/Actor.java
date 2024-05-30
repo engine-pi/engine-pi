@@ -114,8 +114,8 @@ public abstract class Actor
      * Opacity = Durchsichtigkeit des Objekts
      * <p>
      * <ul>
-     * <li><code>0.0f</code> entspricht einem komplett durchsichtigen Bild.</li>
-     * <li><code>1.0f</code> entspricht einem undurchsichtigem Bild.</li>
+     * <li><code>0.0</code> entspricht einem komplett durchsichtigen Bild.</li>
+     * <li><code>1.0</code> entspricht einem undurchsichtigem Bild.</li>
      * </ul>
      */
     private double opacity = 1;
@@ -758,7 +758,7 @@ public abstract class Actor
      *
      * <p>
      * <code>
-     * actor.getPosition.rotate(4.31f);
+     * actor.getPosition.rotate(4.31);
      * </code>
      *
      * @param rotationLocked Ist dieser Wert <code>true</code>, rotiert sich

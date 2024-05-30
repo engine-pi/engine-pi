@@ -61,26 +61,26 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         character.setRotationLocked(true);
         character.setBodyType(BodyType.DYNAMIC);
         /*
-         * weird = new Rectangle(2, 0.2f); weird.setColor(Color.ORANGE);
-         * weird.setBodyType(BodyType.DYNAMIC); weird.setPosition(0.3f, 0.6f);
+         * weird = new Rectangle(2, 0.2); weird.setColor(Color.ORANGE);
+         * weird.setBodyType(BodyType.DYNAMIC); weird.setPosition(0.3, 0.6);
          *
-         * Rectangle weird2 = new Rectangle(2, 0.2f);
+         * Rectangle weird2 = new Rectangle(2, 0.2);
          * weird2.setColor(Color.GREEN); weird2.setBodyType(BodyType.DYNAMIC);
-         * weird2.setPosition(2, 0.6f); weird2.createRevoluteJoint(weird, new
-         * Vector(0.1f, 0.1f)); add(weird2);
+         * weird2.setPosition(2, 0.6); weird2.createRevoluteJoint(weird, new
+         * Vector(0.1, 0.1)); add(weird2);
          *
-         * Rectangle boxy = new Rectangle(0.2f, 0.2f);
+         * Rectangle boxy = new Rectangle(0.2, 0.2);
          * boxy.setColor(Color.WHITE); boxy.setBodyType(BodyType.DYNAMIC);
          * boxy.setPosition(3, 0); //boxy.move(10, 10);
          */
         add(character);
         // add(weird);
         // add(boxy);
-        // character.createRevoluteJoint(weird, new Vector(0.4f, 0.7f));
-        // character.createRopeJoint(boxy, new Vector(0.3f, 0.3f), new
-        // Vector(0.1f, 0.1f), 4);
-        // character.createDistanceJoint(boxy, new Vector(0.3f, 0.3f), new
-        // Vector(0.1f, 0.1f));
+        // character.createRevoluteJoint(weird, new Vector(0.4, 0.7));
+        // character.createRopeJoint(boxy, new Vector(0.3, 0.3), new
+        // Vector(0.1, 0.1), 4);
+        // character.createDistanceJoint(boxy, new Vector(0.3, 0.3), new
+        // Vector(0.1, 0.1));
         setGravity(new Vector(0, -13));
         getCamera().setFocus(character);
         getCamera().setOffset(new Vector(0, 3));
@@ -119,7 +119,7 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
     private void setupCosmeticLayers()
     {
         Layer middleBackground = new Layer();
-        middleBackground.setParallaxPosition(0.1f, 0.1f);
+        middleBackground.setParallaxPosition(0.1, 0.1);
         middleBackground.setLayerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
         backgroundImage.setPosition(
@@ -128,28 +128,28 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
         furtherBackground.setLayerPosition(-300);
-        furtherBackground.setParallaxPosition(0.05f, 0.05f);
+        furtherBackground.setParallaxPosition(0.05, 0.05);
         Image moon = new Image("dude/moon.png", 1, 1);
         furtherBackground.add(moon);
         moon.setPosition(300, 300);
         addLayer(middleBackground);
         addLayer(furtherBackground);
         // CLOUDS
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_1.png", 300, 1.6f, 1f,
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_1.png", 300, 1.6, 1f,
                 -100);
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_2.png", -50, 0.8f, 1f,
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_2.png", -50, 0.8, 1f,
                 -100);
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_3.png", -60, 0.7f, 1f,
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_3.png", -60, 0.7, 1f,
                 -100);
     }
 
     private void addCloudLayer(final int NUM_TILES, String tilePath,
-            int layerLevel, float xParallax, float yParallax, float xOffset)
+            int layerLevel, double xParallax, double yParallax, double xOffset)
     {
         Layer clouds = new Layer();
         clouds.setParallaxPosition(xParallax, yParallax);
         clouds.setLayerPosition(layerLevel);
-        final float SCALE = 0.08f;
+        final double SCALE = 0.08;
         TileContainer cloudTiles = new TileContainer(NUM_TILES, 1, 384 * SCALE,
                 216 * SCALE);
         for (int i = 0; i < NUM_TILES; i++)
@@ -163,14 +163,14 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         addLayer(clouds);
     }
 
-    private void makePlatform(int length, float pX, float pY)
+    private void makePlatform(int length, double pX, double pY)
     {
         Platform platform = new Platform(length);
         platform.setPosition(pX, pY);
         add(platform);
     }
 
-    private void makeBoxes(float pX, float pY, int amount)
+    private void makeBoxes(double pX, double pY, int amount)
     {
         for (int i = 0; i < amount; i++)
         {

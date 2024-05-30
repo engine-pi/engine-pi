@@ -43,7 +43,7 @@ import java.util.HashSet;
 public class PlayerCharacter extends StatefulAnimation<PlayerState>
         implements CollisionListener<Actor>, FrameUpdateListener, KeyListener
 {
-    private static final float MAX_SPEED = 100;
+    private static final double MAX_SPEED = 100;
 
     public static final int JUMP_FORCE = +150;
 
@@ -59,9 +59,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final boolean GOD_MODE = true;
 
-    private static final float FRICTION = 0.5f;
+    private static final double FRICTION = 0.5;
 
-    private static final float RESTITUTION = 0;
+    private static final double RESTITUTION = 0;
 
     private static final int MASS = 65;
     /*
@@ -86,14 +86,14 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
     {
         LEFT(-MAX_SPEED), RIGHT(MAX_SPEED), IDLE(0);
 
-        private final float targetVelocityX;
+        private final double targetVelocityX;
 
-        HorizontalMovement(float targetVelocityX)
+        HorizontalMovement(double targetVelocityX)
         {
             this.targetVelocityX = targetVelocityX;
         }
 
-        public float getTargetXVelocity()
+        public double getTargetXVelocity()
         {
             return targetVelocityX;
         }
@@ -133,9 +133,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         setFixtures("C0.5,0.3,0.3&C0.5,0.6,0.3");
         /*
          * setFixtures(() -> { List<Shape> shapeList = new ArrayList<>(2);
-         * shapeList.add(FixtureBuilder.createAxisParallelRectangularShape(0.2f,
-         * 0, 0.6f, 1f)); shapeList.add(FixtureBuilder.createCircleShape(.3f,
-         * .3f, 0.3f)); return shapeList; });
+         * shapeList.add(FixtureBuilder.createAxisParallelRectangularShape(0.2,
+         * 0, 0.6, 1f)); shapeList.add(FixtureBuilder.createCircleShape(.3,
+         * .3, 0.3)); return shapeList; });
          */
         // setMass(MASS);
         addCollisionListener(this);
@@ -158,7 +158,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
             didDoubleJump = true;
             gameData.consumeMana(DOUBLE_JUMP_COST);
             setVelocity(new Vector(getVelocity().getX(), 0));
-            applyImpulse(new Vector(0, JUMP_FORCE * 0.8f));
+            applyImpulse(new Vector(0, JUMP_FORCE * 0.8));
             setState(PlayerState.JumpingUp);
         }
     }
@@ -223,7 +223,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         if (desiredVelocity == 0)
         {
             impulse = 0;
-            setVelocity(new Vector(velocity.getX() * 0.95f, velocity.getY()));
+            setVelocity(new Vector(velocity.getX() * 0.95, velocity.getY()));
         }
         else
         {
@@ -234,16 +234,16 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         {
             gameData.consumeMana(ROCKETCOST_PER_FRAME);
             applyImpulse(new Vector(0, 5));
-            Circle particle = new Circle(0.1f);
+            Circle particle = new Circle(0.1);
             particle.setPosition(getCenter()
-                    .subtract(new Vector((float) Math.random() * 0.1f, .45f)));
+                    .subtract(new Vector((double) Math.random() * 0.1, .45)));
             particle.setColor(Color.RED);
             particle.setLayerPosition(-1);
-            particle.animateParticle(.5f);
-            particle.animateColor(.25f, Color.YELLOW);
+            particle.animateParticle(.5);
+            particle.animateColor(.25, Color.YELLOW);
             particle.applyImpulse(new Vector(
-                    0.005f * -impulse + ((float) Math.random() - 0.5f),
-                    -2 * ((float) Math.random())));
+                    0.005 * -impulse + ((double) Math.random() - 0.5),
+                    -2 * ((double) Math.random())));
             particle.addCollisionListener((e) -> {
                 if (e.getColliding() instanceof Platform)
                 {
@@ -270,15 +270,15 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         case Walking:
             // if(standing) {
             didDoubleJump = false;
-            if (velocity.getY() > 0.1f)
+            if (velocity.getY() > 0.1)
             {
                 setState(PlayerState.Midair);
             }
-            else if (Math.abs(velocity.getX()) > 5.5f)
+            else if (Math.abs(velocity.getX()) > 5.5)
             {
                 changeState(PlayerState.Running);
             }
-            else if (Math.abs(velocity.getX()) > .1f)
+            else if (Math.abs(velocity.getX()) > .1)
             {
                 changeState(PlayerState.Walking);
             }
@@ -415,8 +415,8 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
                 Vector originalOffset = getLayer().getParent().getCamera()
                         .getOffset();
                 Interpolator<Double> interpolator = new SinusDouble(0,
-                        -0.0004f * getVelocity().getY());
-                ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1f,
+                        -0.0004 * getVelocity().getY());
+                ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
                         y -> getLayer().getParent().getCamera().setOffset(
                                 originalOffset.add(new Vector(0, y))),
                         interpolator, getLayer());
@@ -425,19 +425,19 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
                         .getFrameUpdateListeners().remove(valueAnimator));
             }
             Vector speed = getPhysicsHandler().getVelocity();
-            Vector transformedSpeed = Math.abs(speed.getX()) < .1f
-                    ? speed.add(100f * ((float) Math.random() - .5f), 0)
+            Vector transformedSpeed = Math.abs(speed.getX()) < .1
+                    ? speed.add(100f * ((double) Math.random() - .5), 0)
                     : speed;
             for (int i = 0; i < 100; i++)
             {
-                Circle particle = new Circle(Random.range() * .02f + .02f);
+                Circle particle = new Circle(Random.range() * .02 + .02);
                 particle.setPosition(getCenter().add(0, -32));
                 particle.applyImpulse(transformedSpeed.negate()
-                        .multiply((float) Math.random() * 0.1f)
-                        .multiplyY((float) Math.random() * 0.1f));
+                        .multiply((double) Math.random() * 0.1)
+                        .multiplyY((double) Math.random() * 0.1));
                 particle.setColor(Color.GRAY);
                 particle.setLayerPosition(-1);
-                particle.animateParticle(.5f);
+                particle.animateParticle(.5);
                 getLayer().add(particle);
             }
         }

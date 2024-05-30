@@ -65,7 +65,7 @@ public final class GameLoop
 
     private static final int DEBUG_TEXT_SIZE = 12;
 
-    private static final double DESIRED_FRAME_DURATION = 0.016f;
+    private static final double DESIRED_FRAME_DURATION = 0.016;
 
     private static final int NANOSECONDS_PER_SECOND = 1000000000;
 
