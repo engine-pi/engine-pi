@@ -50,7 +50,7 @@ public class MainScene extends Scene implements KeyListener
         addFrameUpdateListener(animation);
         add(toAnimate);
         addKeyListener(this);
-        Text info = new Text("Pause mit P", 0.5f);
+        Text info = new Text("Pause mit P", 0.5);
         info.setCenter(-7, -5);
         add(info);
     }
@@ -78,7 +78,7 @@ public class MainScene extends Scene implements KeyListener
             this.mainScene = mainScene;
             MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
             add(back, back.label);
-            Text headline = new Text("Mach mal Pause.", 2.5f);
+            Text headline = new Text("Mach mal Pause.", 2.5);
             headline.setCenter(0, 3);
             add(headline);
         }
@@ -90,7 +90,7 @@ public class MainScene extends Scene implements KeyListener
 
             public MenuItem(Vector center, String labelText)
             {
-                super(10, 1.5f);
+                super(10, 1.5);
                 label = new Text(labelText, 1);
                 label.setLayerPosition(1);
                 label.setColor(Color.BLACK);

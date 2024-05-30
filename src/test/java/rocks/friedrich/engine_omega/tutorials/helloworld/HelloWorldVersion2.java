@@ -20,25 +20,40 @@
  */
 package rocks.friedrich.engine_omega.tutorials.helloworld;
 
+import java.awt.Color;
+
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
+import rocks.friedrich.engine_omega.actor.Circle;
+import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class HelloWorld_v1 extends Scene
+public class HelloWorldVersion2 extends Scene
 {
-    public HelloWorld_v1()
+    public HelloWorldVersion2()
     {
         Text helloworld = new Text("Hello World", 2);
         helloworld.setCenter(0, 1);
         this.add(helloworld);
-        Game.setDebug(true);
+        // Game.setDebug(true);
+        helloworld.setColor(Color.BLACK);
+        Rectangle background = new Rectangle(10, 3);
+        background.setColor(Color.PINK);
+        background.setCenter(0, 1);
+        // background.setLayerPosition(-1);
+        Circle circle = new Circle(5);
+        circle.setColor(Color.GRAY);
+        circle.setCenter(0, 1);
+        // circle.setLayerPosition(-2);
+        this.add(background, circle);
+        // getCamera().setZoom(0.5);
     }
 
     public static void main(String[] args)
     {
-        Scene helloWorld = new HelloWorld_v1();
+        Scene helloWorld = new HelloWorldVersion2();
         Game.start(400, 300, helloWorld);
-        Util.makeScreenshot("debug");
+        Util.makeScreenshot("nolayer");
     }
 }

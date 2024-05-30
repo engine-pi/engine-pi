@@ -80,7 +80,7 @@ public class FroggyJump extends Scene
                 for (int j = 0; j < Random.range(3); j++)
                 {
                     SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
-                            Random.range() * 4 + 0.5f + 5 * i, getMainLayer());
+                            Random.range() * 4 + 0.5 + 5 * i, getMainLayer());
                 }
             }
         }
@@ -91,7 +91,7 @@ class DeathScreen extends Scene implements KeyListener
 {
     public DeathScreen()
     {
-        Text message = new Text("You Died. Press any button to try again", .6f);
+        Text message = new Text("You Died. Press any button to try again", .6);
         message.setCenter(getCamera().getPosition());
         add(message);
     }

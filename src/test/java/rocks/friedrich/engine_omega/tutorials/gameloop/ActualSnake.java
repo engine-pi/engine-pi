@@ -36,7 +36,7 @@ import rocks.friedrich.engine_omega.tutorials.util.Util;
 
 public class ActualSnake extends Scene implements FrameUpdateListener
 {
-    private Text scoreText = new Text("Score: 0", 1.4f);
+    private Text scoreText = new Text("Score: 0", 1.4);
 
     private int score = 0;
 
@@ -57,7 +57,7 @@ public class ActualSnake extends Scene implements FrameUpdateListener
     public void setScore(int score)
     {
         this.score = score;
-        this.snake_speed = 5 + (score * 0.1f);
+        this.snake_speed = 5 + (score * 0.1);
         this.scoreText.setContent("Score: " + score);
     }
 

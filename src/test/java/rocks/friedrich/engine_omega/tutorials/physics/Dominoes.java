@@ -48,7 +48,7 @@ public class Dominoes extends Scene
         setupBasicObjects();
         setupPhysics();
         setupAngle();
-        makeDominoes(20, 0.4f, 3f);
+        makeDominoes(20, 0.4, 3f);
     }
 
     private void setupBasicObjects()
@@ -57,7 +57,7 @@ public class Dominoes extends Scene
         ground.setCenter(0, -5);
         ground.setColor(Color.WHITE);
         add(ground);
-        ball = new Circle(0.5f);
+        ball = new Circle(0.5);
         ball.setColor(Color.RED);
         ball.setPosition(-10, -2);
         add(ball);
@@ -69,7 +69,7 @@ public class Dominoes extends Scene
 
     private void setupAngle()
     {
-        angle = new Rectangle(1, 0.25f);
+        angle = new Rectangle(1, 0.25);
         angle.setColor(Color.GRAY);
         add(angle);
     }
@@ -101,7 +101,7 @@ public class Dominoes extends Scene
         Vector ballCenter = ball.getCenter();
         Vector distance = ballCenter.getDistance(mousePosition);
         angle.setPosition(ball.getCenter());
-        angle.setSize(distance.getLength(), 0.25f);
+        angle.setSize(distance.getLength(), 0.25);
         double rot = Vector.RIGHT.getAngle(distance);
         angle.setRotation(rot);
     }
