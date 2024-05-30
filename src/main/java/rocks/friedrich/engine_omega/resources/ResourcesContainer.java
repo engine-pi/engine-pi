@@ -66,6 +66,8 @@ public abstract class ResourcesContainer<T>
 
     private final List<ResourcesContainerClearedListener> clearedListeners = new CopyOnWriteArrayList<>();
 
+    private ResourceManipulator<T> manipulator;
+
     /**
      * Add a new container listener to this instance in order to observe
      * resource life cycles. The listener will get notified whenever a resource
@@ -119,6 +121,16 @@ public abstract class ResourcesContainer<T>
         this.clearedListeners.remove(listener);
     }
 
+    public void addManipulator(ResourceManipulator<T> manipulator)
+    {
+        this.manipulator = manipulator;
+    }
+
+    public void removeManipulator()
+    {
+        manipulator = null;
+    }
+
     /**
      * Add the specified resource to this container.<br>
      * The added element can later be retrieved from this container by calling
@@ -138,15 +150,19 @@ public abstract class ResourcesContainer<T>
      */
     public T add(String resourceName, T resource)
     {
-        for (ResourcesContainerListener<T> listener : this.listeners)
+        if (manipulator != null)
         {
-            T r = listener.added(resourceName, resource);
+            T r = manipulator.beforeAdd(resourceName, resource);
             if (r != null)
             {
                 resource = r;
             }
         }
         this.resources.put(resourceName, resource);
+        for (ResourcesContainerListener<T> listener : this.listeners)
+        {
+            listener.added(resourceName, resource);
+        }
         return resource;
     }
 
