@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.10.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.10.0) - 2024-05-30
+
+<small>[Compare with v0.9.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.9.0...v0.10.0)</small>
+
+### Added
+
+- Add ResourceManipulator ([27fff2d](https://github.com/Josef-Friedrich/engine-omega/commit/27fff2d24d06a6bfb23df216d39150c5b658d3f5) by Josef Friedrich).
+
 ## [v0.9.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.9.0) - 2024-05-26
 
 <small>[Compare with v0.8.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.8.0...v0.9.0)</small>
