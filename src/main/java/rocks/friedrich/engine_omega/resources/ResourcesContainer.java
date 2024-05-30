@@ -136,7 +136,7 @@ public abstract class ResourcesContainer<T>
      * @see #remove(String)
      * @see #tryGet(String)
      */
-    public void add(String resourceName, T resource)
+    public T add(String resourceName, T resource)
     {
         for (ResourcesContainerListener<T> listener : this.listeners)
         {
@@ -147,11 +147,12 @@ public abstract class ResourcesContainer<T>
             }
         }
         this.resources.put(resourceName, resource);
+        return resource;
     }
 
-    public void add(URL resourceName, T resource)
+    public T add(URL resourceName, T resource)
     {
-        this.add(resourceName.toString(), resource);
+        return this.add(resourceName.toString(), resource);
     }
 
     /**
@@ -273,7 +274,7 @@ public abstract class ResourcesContainer<T>
         T resource = loadCallback.get();
         if (resource != null)
         {
-            this.add(resourceName, resource);
+            return this.add(resourceName, resource);
         }
         return resource;
     }
@@ -301,21 +302,17 @@ public abstract class ResourcesContainer<T>
         {
             return null;
         }
-        if (forceLoad)
+        T resource = this.resources.get(resourceName);
+        if (forceLoad || resource == null)
         {
-            T resource = this.loadResource(resourceName);
+            resource = this.loadResource(resourceName);
             if (resource == null)
             {
                 return null;
             }
-            this.resources.put(resourceName, resource);
-            return resource;
+            return this.add(resourceName, resource);
         }
-        else
-        {
-            return this.resources.computeIfAbsent(resourceName,
-                    this::loadResource);
-        }
+        return resource;
     }
 
     public T get(URL resourceName, boolean forceLoad)
@@ -448,10 +445,6 @@ public abstract class ResourcesContainer<T>
         catch (Exception e)
         {
             throw new ResourceLoadException(e);
-        }
-        for (ResourcesContainerListener<T> listener : this.listeners)
-        {
-            listener.added(identifier, newResource);
         }
         String alias = this.getAlias(identifier, newResource);
         if (alias != null)
