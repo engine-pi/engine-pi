@@ -33,6 +33,7 @@ import java.util.TimeZone;
 import rocks.friedrich.engine_omega.actor.Actor;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.Circle;
+import rocks.friedrich.engine_omega.actor.Image;
 import rocks.friedrich.engine_omega.actor.Polygon;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.Text;
@@ -170,6 +171,10 @@ public final class MainAnimation
         {
             private final List<Actor> items = new ArrayList<>();
             {
+                Image image = new Image("assets/logo.png", 25);
+                image.setBodyType(BodyType.STATIC);
+                image.setCenter(0, -3);
+                add(image);
                 setGravity(new Vector(0, -9.81));
                 Rectangle ground = new Rectangle(20, .2);
                 ground.setCenter(0, -6);

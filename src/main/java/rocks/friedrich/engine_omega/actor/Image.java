@@ -31,7 +31,7 @@ import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
- * Ein Image als grafische Repräsentation einer Bilddatei, die gezeichnet werden
+ * Ein Bild als grafische Repräsentation einer Bilddatei, die gezeichnet werden
  * kann.
  *
  * @author Michael Andonie
@@ -39,7 +39,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 public class Image extends Actor
 {
     /**
-     * Das BufferedImage, das dieses Image darstellt.
+     * Das {@link BufferedImage}, das dieses Image darstellt.
      */
     private final BufferedImage image;
 

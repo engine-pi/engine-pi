@@ -15,4 +15,7 @@ install:
 package:
 	mvn package
 
-.PHONY: deploy doc format install package
+run_jar: package
+	java -jar target/engine-omega-0.9.0.jar
+
+.PHONY: deploy doc format install package run_jar
