@@ -23,8 +23,7 @@ package rocks.friedrich.engine_omega.event;
 import rocks.friedrich.engine_omega.annotations.API;
 
 /**
- * Aufzählungstyp, mit dem die verschiedenen Maustasten angegeben werden
- * können.
+ * Aufzählungstyp, mit dem die verschiedenen Maustasten angegeben werden können.
  */
 @API
 public enum MouseButton

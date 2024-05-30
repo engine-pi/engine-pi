@@ -147,15 +147,14 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             rope[i].setBorderRadius(.5);
             if (i == 0)
             {
-                rope[0].createRevoluteJoint(left, vector(-.1, .2))
-                        .setLimits(0, 0.1);
+                rope[0].createRevoluteJoint(left, vector(-.1, .2)).setLimits(0,
+                        0.1);
             }
             else
             {
                 if (i == length - 1)
                 {
-                    rope[length - 1]
-                            .createRevoluteJoint(right, vector(.9, .2))
+                    rope[length - 1].createRevoluteJoint(right, vector(.9, .2))
                             .setLimits(0, 0.1);
                 }
                 rope[i - 1].createRevoluteJoint(rope[i], vector(.9, .2))
@@ -335,8 +334,8 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         {
             // Federeffekt für die Achsen
             double translation = spring.getTranslation();
-            spring.setMotorSpeed((double) Math.sin(
-                    min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
+            spring.setMotorSpeed((double) Math
+                    .sin(min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
                     * -.3);
             spring.setMaximumMotorForce(5000);
         }

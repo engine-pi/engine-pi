@@ -62,9 +62,8 @@ public class StatefulAnimationTestScene extends Scene
         // r.setRestitution(0);
         // r.setFriction(.2);
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
-        FixtureData top = new FixtureData(
-                FixtureBuilder.createAxisParallelRectangularShape(.1, h - 0.1,
-                        w - .2, 0.1));
+        FixtureData top = new FixtureData(FixtureBuilder
+                .createAxisParallelRectangularShape(.1, h - 0.1, w - .2, 0.1));
         top.setFriction(.2);
         top.setRestitution(0);
         FixtureData left = new FixtureData(FixtureBuilder
@@ -75,8 +74,8 @@ public class StatefulAnimationTestScene extends Scene
                 .createAxisParallelRectangularShape(w - .1, 0, 0.1, h));
         right.setFriction(0);
         right.setRestitution(0);
-        FixtureData bottom = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(0, 0, w, .1));
+        FixtureData bottom = new FixtureData(
+                FixtureBuilder.createAxisParallelRectangularShape(0, 0, w, .1));
         bottom.setFriction(0);
         bottom.setRestitution(0);
         platformFixtures.add(top);

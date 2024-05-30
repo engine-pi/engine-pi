@@ -121,11 +121,21 @@ public abstract class ResourcesContainer<T>
         this.clearedListeners.remove(listener);
     }
 
+    /**
+     * Fügt einen Resourcenmanipulator zu diesem Resourcenspeicher hinzu.
+     *
+     * @author Josef Friedrich
+     */
     public void addManipulator(ResourceManipulator<T> manipulator)
     {
         this.manipulator = manipulator;
     }
 
+    /**
+     * Entfernt den Resourcenmanipulator aus diesem Resourcenspeicher.
+     *
+     * @author Josef Friedrich
+     */
     public void removeManipulator()
     {
         manipulator = null;

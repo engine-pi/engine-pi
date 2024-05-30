@@ -1,8 +1,7 @@
 package rocks.friedrich.engine_omega.resources;
 
 /**
- * Eine Schnittstelle für Klassen die Resourcen manipulieren, dass heißt
- * verändern.
+ * Eine Schnittstelle für Klassen die Resourcen manipulieren bzw. verändern.
  *
  * @author Josef Friedrich
  */

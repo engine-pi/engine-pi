@@ -69,9 +69,9 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
          * weird2.setPosition(2, 0.6); weird2.createRevoluteJoint(weird, new
          * Vector(0.1, 0.1)); add(weird2);
          *
-         * Rectangle boxy = new Rectangle(0.2, 0.2);
-         * boxy.setColor(Color.WHITE); boxy.setBodyType(BodyType.DYNAMIC);
-         * boxy.setPosition(3, 0); //boxy.move(10, 10);
+         * Rectangle boxy = new Rectangle(0.2, 0.2); boxy.setColor(Color.WHITE);
+         * boxy.setBodyType(BodyType.DYNAMIC); boxy.setPosition(3, 0);
+         * //boxy.move(10, 10);
          */
         add(character);
         // add(weird);
@@ -135,12 +135,9 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         addLayer(middleBackground);
         addLayer(furtherBackground);
         // CLOUDS
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_1.png", 300, 1.6, 1f,
-                -100);
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_2.png", -50, 0.8, 1f,
-                -100);
-        addCloudLayer(10, "dude/tiles/sky/clouds_MG_3.png", -60, 0.7, 1f,
-                -100);
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_1.png", 300, 1.6, 1f, -100);
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_2.png", -50, 0.8, 1f, -100);
+        addCloudLayer(10, "dude/tiles/sky/clouds_MG_3.png", -60, 0.7, 1f, -100);
     }
 
     private void addCloudLayer(final int NUM_TILES, String tilePath,

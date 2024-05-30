@@ -134,8 +134,8 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         /*
          * setFixtures(() -> { List<Shape> shapeList = new ArrayList<>(2);
          * shapeList.add(FixtureBuilder.createAxisParallelRectangularShape(0.2,
-         * 0, 0.6, 1f)); shapeList.add(FixtureBuilder.createCircleShape(.3,
-         * .3, 0.3)); return shapeList; });
+         * 0, 0.6, 1f)); shapeList.add(FixtureBuilder.createCircleShape(.3, .3,
+         * 0.3)); return shapeList; });
          */
         // setMass(MASS);
         addCollisionListener(this);
