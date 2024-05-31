@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.demos;
+package rocks.friedrich.engine_omega.demos.physics;
 
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Game;
@@ -28,6 +28,7 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Rectangle;
+import rocks.friedrich.engine_omega.demos.ShowcaseDemo;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
 import java.awt.Color;

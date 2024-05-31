@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.demos;
+package rocks.friedrich.engine_omega.demos.small_games;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
@@ -44,6 +44,8 @@ import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.RevoluteJoint;
 import rocks.friedrich.engine_omega.actor.TileContainer;
 import rocks.friedrich.engine_omega.actor.TileMap;
+import rocks.friedrich.engine_omega.demos.ShowcaseDemo;
+import rocks.friedrich.engine_omega.demos.Showcases;
 import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 

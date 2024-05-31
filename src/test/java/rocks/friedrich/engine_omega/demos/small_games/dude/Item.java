@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/showcase/dude/PlayerState.java
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/showcase/dude/Item.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -18,9 +18,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.demos.dude;
+package rocks.friedrich.engine_omega.demos.small_games.dude;
 
-public enum PlayerState
+public enum Item
 {
-    Idle, Walking, Running, JumpingUp, Midair, Falling, Landing, Smashing;
+    Coin, ManaPickup
 }

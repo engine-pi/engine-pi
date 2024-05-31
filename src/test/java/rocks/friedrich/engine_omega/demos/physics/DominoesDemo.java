@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.physics;
+package rocks.friedrich.engine_omega.demos.physics;
 
 import java.awt.Color;
 
@@ -32,7 +32,7 @@ import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseClickListener;
 
-public class Dominoes extends Scene
+public class DominoesDemo extends Scene
         implements FrameUpdateListener, MouseClickListener
 {
     private Rectangle ground;
@@ -43,7 +43,7 @@ public class Dominoes extends Scene
 
     private Rectangle angle;
 
-    public Dominoes()
+    public DominoesDemo()
     {
         setupBasicObjects();
         setupPhysics();
@@ -115,7 +115,7 @@ public class Dominoes extends Scene
 
     public static void main(String[] args)
     {
-        Dominoes dominoes = new Dominoes();
+        DominoesDemo dominoes = new DominoesDemo();
         Game.start(800, 300, dominoes);
     }
 }
