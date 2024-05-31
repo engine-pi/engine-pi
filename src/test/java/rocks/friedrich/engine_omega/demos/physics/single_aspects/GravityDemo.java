@@ -15,9 +15,23 @@ public class GravityDemo extends Scene implements KeyListener
     public GravityDemo()
     {
         setGravity(0, -9.81);
-        rectangle = new Rectangle(3, 3);
+        createBorder(-5, 4, false);
+        createBorder(-5, -5, false);
+        createBorder(-5, -5, true);
+        createBorder(4, -5, true);
+        rectangle = new Rectangle(1, 1);
         rectangle.setBodyType(BodyType.DYNAMIC);
         add(rectangle);
+    }
+
+    private Rectangle createBorder(double x, double y, boolean vertical)
+    {
+        Rectangle rectangle = !vertical ? new Rectangle(10, 1)
+                : new Rectangle(1, 10);
+        rectangle.setPosition(x, y);
+        rectangle.setBodyType(BodyType.STATIC);
+        add(rectangle);
+        return rectangle;
     }
 
     @Override
@@ -34,6 +48,7 @@ public class GravityDemo extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
+        Game.setDebug(true);
         Game.start(new GravityDemo());
     }
 }
