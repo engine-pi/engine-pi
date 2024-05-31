@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.actor;
+package rocks.friedrich.engine_omega.demos.actor;
 
 import java.awt.event.KeyEvent;
 

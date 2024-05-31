@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.examples.dude;
+package rocks.friedrich.engine_omega.demos.dude;
 
 import java.awt.event.KeyEvent;
 
@@ -32,8 +32,8 @@ import rocks.friedrich.engine_omega.actor.Image;
 import rocks.friedrich.engine_omega.actor.TileContainer;
 import rocks.friedrich.engine_omega.actor.TileMap;
 import rocks.friedrich.engine_omega.event.KeyListener;
-import rocks.friedrich.engine_omega.examples.ShowcaseDemo;
-import rocks.friedrich.engine_omega.examples.Showcases;
+import rocks.friedrich.engine_omega.demos.ShowcaseDemo;
+import rocks.friedrich.engine_omega.demos.Showcases;
 
 /**
  * Eine kleine Spieldemo.

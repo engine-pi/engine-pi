@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.input.keyboard;
+package rocks.friedrich.engine_omega.demos.input.keyboard;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -8,9 +8,9 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class KeyListenerAsAnonymousClassExample extends Scene
+public class KeyListenerAsAnonymousClassDemo extends Scene
 {
-    public KeyListenerAsAnonymousClassExample()
+    public KeyListenerAsAnonymousClassDemo()
     {
         Circle circle = new Circle(2);
         circle.setColor(Color.RED);
@@ -44,6 +44,6 @@ public class KeyListenerAsAnonymousClassExample extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyListenerAsAnonymousClassExample());
+        Game.start(600, 400, new KeyListenerAsAnonymousClassDemo());
     }
 }

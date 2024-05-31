@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.physics;
+package rocks.friedrich.engine_omega.demos.physics;
 
 import java.awt.event.KeyEvent;
 

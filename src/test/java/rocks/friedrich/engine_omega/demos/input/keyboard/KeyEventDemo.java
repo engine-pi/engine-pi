@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.input.keyboard;
+package rocks.friedrich.engine_omega.demos.input.keyboard;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -8,11 +8,11 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class KeyEventExample extends Scene implements KeyListener
+public class KeyEventDemo extends Scene implements KeyListener
 {
     Rectangle rectangle;
 
-    public KeyEventExample()
+    public KeyEventDemo()
     {
         rectangle = new Rectangle(2, 2);
         rectangle.setColor(Color.BLUE);
@@ -44,6 +44,6 @@ public class KeyEventExample extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyEventExample());
+        Game.start(600, 400, new KeyEventDemo());
     }
 }

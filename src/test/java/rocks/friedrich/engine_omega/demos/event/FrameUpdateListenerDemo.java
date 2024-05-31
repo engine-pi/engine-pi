@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.event;
+package rocks.friedrich.engine_omega.demos.event;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
@@ -6,10 +6,10 @@ import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.Layer;
 
-public class FrameUpdateListenerExample extends Scene
+public class FrameUpdateListenerDemo extends Scene
         implements FrameUpdateListener
 {
-    public FrameUpdateListenerExample()
+    public FrameUpdateListenerDemo()
     {
         add(new TextActor());
         addLayer(new MyLayer());
@@ -48,6 +48,6 @@ public class FrameUpdateListenerExample extends Scene
     public static void main(String[] args)
     {
         Game.setDebug(true);
-        Game.start(700, 200, new FrameUpdateListenerExample());
+        Game.start(700, 200, new FrameUpdateListenerDemo());
     }
 }

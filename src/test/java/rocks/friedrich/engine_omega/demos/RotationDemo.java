@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples;
+package rocks.friedrich.engine_omega.demos;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -9,11 +9,11 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Polygon;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class RotationExample extends Scene implements KeyListener
+public class RotationDemo extends Scene implements KeyListener
 {
     Polygon triangle;
 
-    public RotationExample()
+    public RotationDemo()
     {
         triangle = new Polygon(new Vector(0, 0), new Vector(1, 0),
                 new Vector(.5, 3));
@@ -56,6 +56,6 @@ public class RotationExample extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new RotationExample());
+        Game.start(600, 400, new RotationDemo());
     }
 }

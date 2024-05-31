@@ -1,15 +1,17 @@
-package rocks.friedrich.engine_omega.event;
+package rocks.friedrich.engine_omega.demos.event;
 
 import java.awt.event.KeyEvent;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
+import rocks.friedrich.engine_omega.event.KeyListener;
+import rocks.friedrich.engine_omega.event.PressedKeyRepeater;
 
-public class PressedKeyRepeaterScene extends Scene implements KeyListener
+public class PressedKeyRepeaterDemo extends Scene implements KeyListener
 {
     PressedKeyRepeater keyRepeater;
 
-    public PressedKeyRepeaterScene()
+    public PressedKeyRepeaterDemo()
     {
         keyRepeater = new PressedKeyRepeater();
         keyRepeater.addTask(KeyEvent.VK_RIGHT, () -> {
@@ -32,6 +34,6 @@ public class PressedKeyRepeaterScene extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(400, 300, new PressedKeyRepeaterScene());
+        Game.start(400, 300, new PressedKeyRepeaterDemo());
     }
 }

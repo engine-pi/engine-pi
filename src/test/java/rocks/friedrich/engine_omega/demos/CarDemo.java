@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.examples;
+package rocks.friedrich.engine_omega.demos;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;

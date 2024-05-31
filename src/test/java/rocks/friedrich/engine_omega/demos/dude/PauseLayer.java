@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.examples.dude;
+package rocks.friedrich.engine_omega.demos.dude;
 
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.actor.Rectangle;

@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples;
+package rocks.friedrich.engine_omega.demos;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import rocks.friedrich.engine_omega.sound.Jukebox;
 import rocks.friedrich.engine_omega.sound.Track;
 import rocks.friedrich.engine_omega.sound.Playback;
 
-public class JukeboxExample extends Scene implements KeyListener
+public class JukeboxDemo extends Scene implements KeyListener
 {
     Jukebox jukebox;
 
@@ -29,7 +29,7 @@ public class JukeboxExample extends Scene implements KeyListener
 
     Track levelMusic;
 
-    public JukeboxExample() throws IOException, UnsupportedAudioFileException
+    public JukeboxDemo() throws IOException, UnsupportedAudioFileException
     {
         Game.start(200, 300, this);
         jukebox = Game.getJukebox();
@@ -131,6 +131,6 @@ public class JukeboxExample extends Scene implements KeyListener
     public static void main(String[] args)
             throws IOException, UnsupportedAudioFileException
     {
-        new JukeboxExample();
+        new JukeboxDemo();
     }
 }

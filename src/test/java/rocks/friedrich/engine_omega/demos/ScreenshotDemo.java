@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples;
+package rocks.friedrich.engine_omega.demos;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -8,9 +8,9 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Image;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class ScreenshotExample extends Scene implements KeyListener
+public class ScreenshotDemo extends Scene implements KeyListener
 {
-    public ScreenshotExample()
+    public ScreenshotDemo()
     {
         Image image = new Image(
                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Fall (32x32).png",
@@ -46,6 +46,6 @@ public class ScreenshotExample extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new ScreenshotExample());
+        Game.start(new ScreenshotDemo());
     }
 }

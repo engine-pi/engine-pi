@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.event;
+package rocks.friedrich.engine_omega.demos.event;
 
 import java.awt.event.KeyEvent;
 
@@ -7,11 +7,11 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.PeriodicTask;
 
-public class PerodicTaskExample extends Scene
+public class PerodicTaskDemo extends Scene
 {
     private PeriodicTask task;
 
-    public PerodicTaskExample()
+    public PerodicTaskDemo()
     {
         add(new CounterText());
     }
@@ -69,6 +69,6 @@ public class PerodicTaskExample extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 200, new PerodicTaskExample());
+        Game.start(400, 200, new PerodicTaskDemo());
     }
 }

@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.input.keyboard;
+package rocks.friedrich.engine_omega.demos.input.keyboard;
 
 import java.awt.event.KeyEvent;
 
@@ -7,9 +7,9 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class KeyEventDisplayExample extends Scene
+public class KeyEventDisplayDemo extends Scene
 {
-    public KeyEventDisplayExample()
+    public KeyEventDisplayDemo()
     {
         add(new KeyText());
     }
@@ -35,6 +35,6 @@ public class KeyEventDisplayExample extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyEventDisplayExample());
+        Game.start(new KeyEventDisplayDemo());
     }
 }

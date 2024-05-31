@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.examples.billard;
+package rocks.friedrich.engine_omega.demos.billard;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -28,8 +28,8 @@ import rocks.friedrich.engine_omega.Random;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.event.KeyListener;
-import rocks.friedrich.engine_omega.examples.ShowcaseDemo;
-import rocks.friedrich.engine_omega.examples.Showcases;
+import rocks.friedrich.engine_omega.demos.ShowcaseDemo;
+import rocks.friedrich.engine_omega.demos.Showcases;
 
 public class BillardDemo extends ShowcaseDemo implements KeyListener
 {

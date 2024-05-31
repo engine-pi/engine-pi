@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.event;
+package rocks.friedrich.engine_omega.demos.event;
 
 import java.awt.event.KeyEvent;
 
@@ -7,9 +7,9 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.PeriodicTask;
 
-public class RepeatExample extends Scene
+public class RepeatDemo extends Scene
 {
-    public RepeatExample()
+    public RepeatDemo()
     {
         add(new CounterText());
     }
@@ -57,6 +57,6 @@ public class RepeatExample extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 200, new RepeatExample());
+        Game.start(new RepeatDemo());
     }
 }

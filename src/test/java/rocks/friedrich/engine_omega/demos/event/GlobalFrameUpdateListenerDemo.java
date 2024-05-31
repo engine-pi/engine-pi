@@ -1,11 +1,11 @@
-package rocks.friedrich.engine_omega.examples.event;
+package rocks.friedrich.engine_omega.demos.event;
 
 import java.awt.event.KeyEvent;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 
-public class GlobalFrameUpdateListenerExample
+public class GlobalFrameUpdateListenerDemo
 {
     public static void main(String[] args)
     {

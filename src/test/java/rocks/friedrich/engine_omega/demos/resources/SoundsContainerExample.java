@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.resources;
+package rocks.friedrich.engine_omega.demos.resources;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.sound.MusicPlayback;

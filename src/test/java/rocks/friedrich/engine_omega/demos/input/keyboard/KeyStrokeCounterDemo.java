@@ -1,4 +1,4 @@
-package rocks.friedrich.engine_omega.examples.input.keyboard;
+package rocks.friedrich.engine_omega.demos.input.keyboard;
 
 import java.awt.event.KeyEvent;
 
@@ -7,9 +7,9 @@ import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class KeyStrokeCounterExample extends Scene
+public class KeyStrokeCounterDemo extends Scene
 {
-    public KeyStrokeCounterExample()
+    public KeyStrokeCounterDemo()
     {
         add(new CounterText());
     }
@@ -35,6 +35,6 @@ public class KeyStrokeCounterExample extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(700, 200, new KeyStrokeCounterExample());
+        Game.start(700, 200, new KeyStrokeCounterDemo());
     }
 }
