@@ -316,7 +316,7 @@ public class Animation extends Actor implements FrameUpdateListener
         {
             BufferedImage frame = gifDecoder.getFrame(i);
             int durationInMillis = gifDecoder.getDelay(i);
-            frames[i] = new AnimationFrame(frame, durationInMillis / 1000);
+            frames[i] = new AnimationFrame(frame, durationInMillis / 1000.0);
         }
         return new Animation(frames, width, height);
     }
