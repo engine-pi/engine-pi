@@ -22,23 +22,23 @@ package rocks.friedrich.engine_omega.tutorials.statefulanimation;
 
 public enum PlayerState
 {
-    IDLE("spr_m_traveler_idle_anim.gif"),
-    WALKING("spr_m_traveler_walk_anim.gif"),
-    RUNNING("spr_m_traveler_run_anim.gif"),
-    JUMPING("spr_m_traveler_jump_1up_anim.gif"),
-    MIDAIR("spr_m_traveler_jump_2midair_anim.gif"),
-    FALLING("spr_m_traveler_jump_3down_anim.gif"),
-    LANDING("spr_m_traveler_jump_4land_anim.gif");
+    IDLE("idle"),
+    WALKING("walk"),
+    RUNNING("run"),
+    JUMPING("jump_1up"),
+    MIDAIR("jump_2midair"),
+    FALLING("jump_3down"),
+    LANDING("jump_4land");
 
-    private String gifFileName;
+    private String filename;
 
-    PlayerState(String gifFileName)
+    PlayerState(String filename)
     {
-        this.gifFileName = gifFileName;
+        this.filename = filename;
     }
 
     public String getGifFileLocation()
     {
-        return "eatutorials/statefulanimation/assets/" + this.gifFileName;
+        return "traveler/" + filename + ".gif";
     }
 }

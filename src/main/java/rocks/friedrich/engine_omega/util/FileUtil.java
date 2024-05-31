@@ -33,10 +33,13 @@ import java.net.URL;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
 
 public final class FileUtil
 {
@@ -310,5 +313,18 @@ public final class FileUtil
     public static String normalizePath(String path)
     {
         return path.replace("\\", File.separator).replace("/", File.separator);
+    }
+
+    public static boolean exists(String filePath)
+    {
+        try
+        {
+            return Files.exists(Paths
+                    .get(AllResourcesContainer.getLocation(filePath).toURI()));
+        }
+        catch (URISyntaxException e)
+        {
+            return false;
+        }
     }
 }

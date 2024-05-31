@@ -78,7 +78,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         setBodyType(BodyType.DYNAMIC);
         setRotationLocked(true);
         setRestitution(0);
-        setFriction(30f);
+        setFriction(30);
         setLinearDamping(.3);
     }
 

@@ -33,11 +33,17 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * Ein animierter Actor, der mehrere Zustände haben kann (laufen (links/rechts),
  * stehen(links/rechts), springen (links/rechts), etc.).
  *
- * <h2>Anwendungsbeispiel</h2> <code>
- * StatefulAnimation sf = new StatefulAnimation(); sf.addState(Animation.createFromAnimatedGif("running.gif",
- * "running"); sf.addState(Animation.createFromAnimatedGif("jumping.gif", "jumping"); scene.add(sf);
+ * <h2>Anwendungsbeispiel</h2>
+ *
+ * <pre>
+ * {@code
+ * StatefulAnimation sf = new StatefulAnimation();
+ * sf.addState(Animation.createFromAnimatedGif("running.gif",
+ * "running");
+ * sf.addState(Animation.createFromAnimatedGif("jumping.gif", "jumping");
+ * scene.add(sf);
  * sf.setState("running");
- * </code>
+ * }</pre>
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
  *                werden soll.

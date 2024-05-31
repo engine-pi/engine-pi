@@ -32,9 +32,9 @@ import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.physics.FixtureData;
 
-public class StatefulAnimationTestScene extends Scene
+public class StatefulAnimationDemo extends Scene
 {
-    public StatefulAnimationTestScene()
+    public StatefulAnimationDemo()
     {
         StatefulPlayerCharacter character = new StatefulPlayerCharacter();
         setupGround();
@@ -97,7 +97,7 @@ public class StatefulAnimationTestScene extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1200, 820, new StatefulAnimationTestScene());
+        Game.start(1200, 820, new StatefulAnimationDemo());
         Game.setDebug(true);
     }
 }

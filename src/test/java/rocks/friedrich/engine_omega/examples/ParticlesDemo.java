@@ -38,12 +38,6 @@ import java.awt.event.KeyEvent;
 @SuppressWarnings("MagicNumber")
 public class ParticlesDemo extends ShowcaseDemo implements KeyListener
 {
-    public static void main(String[] args)
-    {
-        Game.setDebug(true);
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new ParticlesDemo(null));
-    }
-
     /**
      * Startet ein Sandbox-Fenster.
      */
@@ -121,5 +115,11 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
         {
             getCamera().rotateBy(0.1);
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.setDebug(true);
+        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new ParticlesDemo(null));
     }
 }

@@ -205,6 +205,7 @@ public final class AllResourcesContainer
      */
     public static void clearAll()
     {
+        getImages().clear();
         getSounds().clear();
     }
 

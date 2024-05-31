@@ -38,6 +38,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.resources.ResourceLoader;
+import rocks.friedrich.engine_omega.util.FileUtil;
 import rocks.friedrich.engine_omega.util.GifDecoder;
 
 /**
@@ -304,6 +305,10 @@ public class Animation extends Actor implements FrameUpdateListener
             double height)
     {
         GifDecoder gifDecoder = new GifDecoder();
+        if (!FileUtil.exists(filepath))
+        {
+            throw new RuntimeException("Filepath doesn’t exist: " + filepath);
+        }
         gifDecoder.read(filepath);
         int frameCount = gifDecoder.getFrameCount();
         AnimationFrame[] frames = new AnimationFrame[frameCount];
@@ -311,7 +316,7 @@ public class Animation extends Actor implements FrameUpdateListener
         {
             BufferedImage frame = gifDecoder.getFrame(i);
             int durationInMillis = gifDecoder.getDelay(i);
-            frames[i] = new AnimationFrame(frame, durationInMillis / 1000f);
+            frames[i] = new AnimationFrame(frame, durationInMillis / 1000);
         }
         return new Animation(frames, width, height);
     }
