@@ -171,6 +171,19 @@
                 <configuration>
                     <!-- to disable the "missing" warnings -->
                     <doclint>all,-missing</doclint>
+                    <tags>
+                        <tag>
+                            <name>jbox2d</name>
+                            <placement>a</placement>
+                            <head>jbox2d source code:</head>
+                        </tag>
+
+                        <tag>
+                            <name>box2d</name>
+                            <placement>a</placement>
+                            <head>box2d source code:</head>
+                        </tag>
+                    </tags>
                 </configuration>
                 <executions>
                     <execution>

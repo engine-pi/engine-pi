@@ -1,4 +1,6 @@
 /**
+ * Enthält die Hauptklassen wie zum Beispiel {@link Game} oder {@link Scene}.
+ *
  * Eine anfängerorientierte 2D-Game-Engine in deutscher Sprache.
  *
  * <p>
