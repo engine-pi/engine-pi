@@ -350,6 +350,92 @@ public abstract class Actor
     }
 
     /**
+     * Verwandelt den {@link Actor} in ein <b>statisches</b> Objekt.
+     *
+     * <p>
+     * <b>Statische</b> Objekte haben keine Geschwindigkeit. Sie bewegen sich
+     * nicht in der Simulation, Kräfte haben keinen Einfluss auf sie. Diese
+     * Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und Decken</i>.
+     *
+     * @see #setBodyType(BodyType)
+     */
+    @API
+    public final void makeStatic()
+    {
+        setBodyType(BodyType.STATIC);
+    }
+
+    /**
+     * Verwandelt den {@link Actor} in ein <b>dynamisches</b> Objekt.
+     *
+     * <p>
+     * <b>Dynamische</b> Objekte verhalten sich wie Objekte der Newton’schen
+     * Mechanik. Sie können Kräfte auf sich wirken lassen und interagieren
+     * miteinander. Diese Eigenschaft gehört zum Beispiel zu <i>Billiardkugeln,
+     * Spielfiguren und Wurfgeschossen</i>.
+     *
+     * @see #setBodyType(BodyType)
+     */
+    @API
+    public final void makeDynamic()
+    {
+        setBodyType(BodyType.DYNAMIC);
+    }
+
+    /**
+     * Verwandelt den {@link Actor} in ein <b>kinematisches</b> Objekt.
+     *
+     * <p>
+     * <b>Kinematische</b> Objekte können eine Geschwindigkeit haben, aber
+     * reagieren nicht auf Kräfte. Sie kollidieren (im Sinne der Physics) nur
+     * mit dynamischen Objekten. Diese Eigenschaft gehört zum Beispiel zu
+     * <i>beweglichen Plattformen</i>.
+     *
+     * @see #setBodyType(BodyType)
+     */
+    @API
+    public final void makeKinematic()
+    {
+        setBodyType(BodyType.KINEMATIC);
+    }
+
+    /**
+     * Verwandelt den {@link Actor} in einen <b>Sensor</b>.
+     *
+     * <p>
+     * <b>Sensoren</b> nehmen nicht an der Physiksimulation teil. Sie werden von
+     * der Physics so behandelt, <i>als wären sie nicht da</i>. Sie generieren
+     * trotzdem Kollisionsereignisse. Dies ist die <b>Standardeinstellung</b>
+     * für Actors, wenn sie erstellt werden.
+     *
+     * @see #setBodyType(BodyType)
+     */
+    @API
+    public final void makeSensor()
+    {
+        setBodyType(BodyType.SENSOR);
+    }
+
+    /**
+     * Verwandelt den {@link Actor} in ein <b>Partikel</b>.
+     *
+     * <p>
+     * <b>Particles</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
+     * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist
+     * hilfreich, wenn du viele Actors generieren willst, diese aber rein
+     * optisch auf das Spiel wirken sollen, wie zum Beispiel Dreck, den ein Auto
+     * beim Anfahren aufwühlt oder Funken, die von einer Wand nach einem Schuss
+     * sprühen.
+     *
+     * @see #setBodyType(BodyType)
+     */
+    @API
+    public final void makeParticle()
+    {
+        setBodyType(BodyType.PARTICLE);
+    }
+
+    /**
      * Gibt aus, was für ein Physics-Typ dieses Objekt momentan ist.
      *
      * @return Der Physics-Typ, der das entsprechende {@link Actor}-Objekt

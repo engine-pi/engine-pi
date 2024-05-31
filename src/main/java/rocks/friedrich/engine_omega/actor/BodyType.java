@@ -24,8 +24,9 @@ import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
- * Aufzählung der verschiedenen Typen von Objekten innerhalb der Physics der EA.
+ * Aufzählung der verschiedenen Typen von Objekten innerhalb der Physics Engine.
  * <ul>
+ *
  * <li><b>Statische</b> Objekte:
  * <ul>
  * <li>Haben keine Geschwindigkeit</li>
@@ -34,6 +35,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * </ul>
  * Diese Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und Decken</i>.
  * </li>
+ *
  * <li><b>Dynamische</b> Objekte:
  * <ul>
  * <li>Verhalten sich wie Objekte der newton'schen Mechanik.</li>
@@ -41,25 +43,29 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * </ul>
  * Diese Eigenschaft gehört zum Beispiel zu <i>Billardkugeln, Spielfiguren und
  * Wurfgeschossen</i>.</li>
+ *
  * <li><b>Kinematische</b> Objekte:
  * <ul>
  * <li>Können eine Geschwindigkeit haben, aber reagieren nicht auf Kräfte.</li>
  * <li>Kollidieren (im Sinne der Physics) nur mit dynamischen Objekten.</li>
  * </ul>
  * Diese Eigenschaft gehört zum Beispiel zu <i>beweglichen Plattformen</i>.</li>
+ *
  * <li><b>Sensoren</b>:
  * <ul>
  * <li>Nehmen nicht an der Physiksimulation teil. Sie werden von der Physics so
  * behandelt, <i>als wären sie nicht da</i>.</li>
- * <li>Generieren trotzdem Collision Events</li>
+ * <li>Generieren trotzdem Kollisionsereignisse</li>
  * </ul>
  * Dies ist die <b>Standardeinstellung</b> für Actors, wenn sie erstellt werden.
  * </li>
+ *
  * <li><b>Particles</b>:
  * <ul>
  * <li>Nehmen wie Sensoren <b>nicht teil an der Physiksimulation</b></li>
- * <li>Generieren trotzdem Collision Events</li>
+ * <li>Generieren trotzdem Kollisionsereignisse</li>
  * </ul>
+ *
  * Dieser Typ ist hilfreich, wenn du viele Actors generieren willst, diese aber
  * rein optisch auf das Spiel wirken sollen, wie zum Beispiel Dreck, den ein
  * Auto beim Anfahren aufwühlt oder Funken, die von einer Wand nach einem Schuss
@@ -76,6 +82,8 @@ public enum BodyType
      * <b>Statische</b> Objekte haben keine Geschwindigkeit. Sie bewegen sich
      * nicht in der Simulation, Kräfte haben keinen Einfluss auf sie. Diese
      * Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und Decken</i>.
+     *
+     * @see Actor#makeStatic()
      */
     STATIC,
     /**
@@ -83,6 +91,8 @@ public enum BodyType
      * Mechanik. Sie können Kräfte auf sich wirken lassen und interagieren
      * miteinander. Diese Eigenschaft gehört zum Beispiel zu <i>Billiardkugeln,
      * Spielfiguren und Wurfgeschossen</i>.
+     *
+     * @see Actor#makeDynamic()
      */
     DYNAMIC,
     /**
@@ -90,21 +100,27 @@ public enum BodyType
      * reagieren nicht auf Kräfte. Sie kollidieren (im Sinne der Physics) nur
      * mit dynamischen Objekten. Diese Eigenschaft gehört zum Beispiel zu
      * <i>beweglichen Plattformen</i>.
+     *
+     * @see Actor#makeKinematic()
      */
     KINEMATIC,
     /**
      * <b>Sensoren</b> nehmen nicht an der Physiksimulation teil. Sie werden von
      * der Physics so behandelt, <i>als wären sie nicht da</i>. Sie generieren
-     * trotzdem Collision Events. Dies ist die <b>Standardeinstellung</b> für
+     * trotzdem Kollisionsereignisse. Dies ist die <b>Standardeinstellung</b> für
      * Actors, wenn sie erstellt werden.
+     *
+     * @see Actor#makeSensor()
      */
     SENSOR,
     /**
-     * <b>Particles</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
-     * teil, sie generieren trotzdem Collision Events. Dieser Typ ist hilfreich,
+     * <b>Partikel</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
+     * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist hilfreich,
      * wenn du viele Actors generieren willst, diese aber rein optisch auf das
      * Spiel wirken sollen, wie zum Beispiel Dreck, den ein Auto beim Anfahren
      * aufwühlt oder Funken, die von einer Wand nach einem Schuss sprühen.
+     *
+     * @see Actor#makeParticle()
      */
     PARTICLE;
 
