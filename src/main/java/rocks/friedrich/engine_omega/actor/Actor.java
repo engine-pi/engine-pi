@@ -420,7 +420,7 @@ public abstract class Actor
      * Verwandelt den {@link Actor} in ein <b>Partikel</b>.
      *
      * <p>
-     * <b>Particles</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
+     * <b>Partikel</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
      * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist
      * hilfreich, wenn du viele Actors generieren willst, diese aber rein
      * optisch auf das Spiel wirken sollen, wie zum Beispiel Dreck, den ein Auto
@@ -890,12 +890,12 @@ public abstract class Actor
      * Setzt die Dichte des Objekts neu. Die Form bleibt dabei unverändert,
      * daher ändert sich die <b>Masse</b> in der Regel.
      *
-     * @param densityInKgProQM die neue Dichte des Objekts in <b>[kg/m^2]</b>
+     * @param density Die neue Dichte des Objekts in <b>[kg/m^2]</b>.
      */
     @API
-    public final void setDensity(double densityInKgProQM)
+    public final void setDensity(double density)
     {
-        physicsHandler.setDensity(densityInKgProQM);
+        physicsHandler.setDensity(density);
     }
 
     /**
@@ -912,7 +912,7 @@ public abstract class Actor
     /**
      * Setzt den Gravitationsfaktor, normalerweise im Bereich [0, 1].
      *
-     * @param factor Gravitationsfaktor
+     * @param factor Der Gravitationsfaktor.
      */
     @API
     public final void setGravityScale(double factor)
@@ -923,7 +923,7 @@ public abstract class Actor
     /**
      * Gibt den aktuellen Gravitationsfaktor des Objekts an.
      *
-     * @return Gravitationsfaktor
+     * @return Den Gravitationsfaktor.
      */
     @API
     public final double getGravityScale()
@@ -1009,18 +1009,18 @@ public abstract class Actor
      * Damit wird die aktuelle Bewegung (nicht aber die Rotation) des Objekts
      * ignoriert und hart auf den übergebenen Wert gesetzt.
      *
-     * @param velocityInMPerS Die Geschwindigkeit, mit der sich dieses Objekt ab
+     * @param velocity Die Geschwindigkeit, mit der sich dieses Objekt ab
      *                        sofort bewegen soll. In <b>[m / s]</b>
      * @see #getVelocity()
      */
     @API
-    public final void setVelocity(Vector velocityInMPerS)
+    public final void setVelocity(Vector velocity)
     {
-        if (velocityInMPerS.isNaN())
+        if (velocity.isNaN())
         {
             return;
         }
-        physicsHandler.setVelocity(velocityInMPerS);
+        physicsHandler.setVelocity(velocity);
     }
 
     /**
