@@ -29,7 +29,6 @@ import static rocks.friedrich.engine_omega.Random.range;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.Scene;
@@ -48,6 +47,7 @@ import rocks.friedrich.engine_omega.demos.ShowcaseDemo;
 import rocks.friedrich.engine_omega.demos.Showcases;
 import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
 {
@@ -355,7 +355,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         public Wheel(double cx, double cy, Axle axle)
         {
             super("car/wheel-back.png", 1.4, 1.4);
-            setFixture(() -> FixtureBuilder.createCircleShape(.7, .7, .7));
+            setFixture(() -> FixtureBuilder.circle(.7, .7, .7));
             setCenter(cx, cy);
             setDensity(100);
             setBodyType(BodyType.DYNAMIC);

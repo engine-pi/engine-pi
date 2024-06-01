@@ -23,8 +23,8 @@ package rocks.friedrich.engine_omega.actor;
 import java.awt.Graphics2D;
 import java.util.function.Supplier;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.physics.FixtureData;
 
 /**
@@ -59,7 +59,7 @@ public class Rectangle extends Geometry
     public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder
-                .createSimpleRectangularFixture(width, height));
+                .rectangle(width, height));
     }
 
     public Rectangle(double width, double height,
@@ -97,7 +97,7 @@ public class Rectangle extends Geometry
         this.width = width;
         this.height = height;
         this.setFixture(() -> FixtureBuilder
-                .createSimpleRectangularFixture(width, height));
+                .rectangle(width, height));
     }
 
     @API

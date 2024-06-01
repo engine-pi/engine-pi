@@ -3,8 +3,8 @@ package rocks.friedrich.engine_omega.actor;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.annotations.API;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 /**
  * Ein Gitter aus quadratischen Zellen.
@@ -49,7 +49,7 @@ public class Grid extends Actor
      */
     public Grid(int numX, int numY, double size)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(numX * size,
+        super(() -> FixtureBuilder.rectangle(numX * size,
                 numY * size));
         this.numX = numX;
         this.numY = numY;

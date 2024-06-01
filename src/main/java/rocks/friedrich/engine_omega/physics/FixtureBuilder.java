@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega;
+package rocks.friedrich.engine_omega.physics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +30,28 @@ import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.Shape;
 import org.jbox2d.common.Vec2;
 
-import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.Vector;
 
+/**
+ * Sammlungen von statischen Methoden, die verschiedene Halterungen (engl.
+ * Fixture) für verschieden geformte
+ * {@link rocks.friedrich.engine_omega.actor.Actor Actor}-Objekte erstellen.
+ *
+ * <p>
+ * Halterungen werden verwendet, um die Größe, Form und Materialeigenschaften
+ * eines Objekts in der Physikszene zu beschreiben.
+ */
 public final class FixtureBuilder
 {
     /**
-     * Erstellt eine <i>einfache</i> rechteckige Shape. Einfach bedeutet: Sie
-     * beginnt immer bei (0|0) und Breite/Höhe ist parallel zu den
+     * Erstellt eine <i>einfache</i> rechteckige Form. Einfach bedeutet: Sie
+     * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
      * Koordinatenaxen.
      *
-     * @param width  Die Breite der rechteckigen Shape.
-     * @param height Die Höhe der rechteckigen Shape.
+     * @param width  Die Breite der rechteckigen Form.
+     * @param height Die Höhe der rechteckigen Form.
      */
-    public static FixtureData createSimpleRectangularFixture(double width,
-            double height)
+    public static FixtureData rectangle(double width, double height)
     {
         PolygonShape shape = new PolygonShape();
         shape.set(
@@ -57,29 +65,28 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erschafft eine kreisförmige Shape.
+     * Erschafft eine kreisförmige Form.
      *
-     * @param mx Der Mittelpunkt des Kreises, X-Koordinate.
-     * @param my Der Mittelpunkt des Kreises, Y-Koordinate.
-     * @param r  Der Radius des Kreises
+     * @param mx     Der Mittelpunkt des Kreises, X-Koordinate.
+     * @param my     Der Mittelpunkt des Kreises, Y-Koordinate.
+     * @param radius Der Radius des Kreises.
      */
-    public static FixtureData createCircleShape(double mx, double my, double r)
+    public static FixtureData circle(double mx, double my, double radius)
     {
         CircleShape circleShape = new CircleShape();
         circleShape.m_p.set((float) mx, (float) my);
-        circleShape.setRadius((float) r);
+        circleShape.setRadius((float) radius);
         return new FixtureData(circleShape);
     }
 
     /**
-     * Erstellt eine polygonale Shape. Kann nur konvexe Shapes erstellen.
-     * Konkave Shapes werden automatisch zur umspannenden konvexen Shape
-     * formatiert.
+     * Erstellt eine polygonale Form. Kann nur konvexe Formen erstellen. Konkave
+     * Formen werden automatisch zur umspannenden konvexen Form formatiert.
      *
-     * @param points Eine Reihe an Punkten, die nacheinander diese Shape
+     * @param points Eine Reihe an Punkten, die nacheinander diese Form
      *               beschreiben (mindestens 3 Punkte).
      */
-    public static FixtureData createPolygonShape(Vector... points)
+    public static FixtureData polygone(Vector... points)
     {
         if (points.length < 3)
         {
@@ -97,15 +104,15 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt eine rechteckige Shape, die parallel zu den Koordinatenaxen
+     * Erstellt eine rechteckige Form, die parallel zu den Koordinatenaxen
      * läuft.
      *
-     * @param sx     Linke untere Ecke, X-Koordinate.
-     * @param sy     Linke untere Ecke, Y-Koordinate.
-     * @param width  Breite der rechteckigen Shape.
-     * @param height Höhe der rechteckigen Shape.
+     * @param sx     Die x-Koordinate der linken unteren Ecke.
+     * @param sy     Die y-Koordinate der linken unteren Ecke.
+     * @param width  Breite der rechteckigen Form.
+     * @param height Höhe der rechteckigen Form.
      */
-    public static Shape createAxisParallelRectangularShape(double sx, double sy,
+    public static Shape axisParallelRectangular(double sx, double sy,
             double width, double height)
     {
         PolygonShape rectShape = new PolygonShape();
@@ -119,11 +126,11 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt einen Shape-Supplier basierend auf einem String.
+     * Erstellt einen Form-Supplier basierend auf einer Zeichenketten.
      *
      * @param code
      *             <ul>
-     *             <li>Shapes werden getrennt durch "&amp;"</li>
+     *             <li>Die Formen werden getrennt durch "&amp;"</li>
      *             <li>Rechteck: <code>R0,0,40,50</code> Rechteck mit Startpunkt
      *             (0|0), Breite 40, Höhe 50</li>
      *             <li>Polygon: <code>P40,40,50,50,10,20</code> Polygon mit drei
@@ -164,7 +171,7 @@ public final class FixtureBuilder
             double sy = Double.parseDouble(split[1]);
             double width = Double.parseDouble(split[2]);
             double height = Double.parseDouble(split[3]);
-            return createAxisParallelRectangularShape(sx, sy, width, height);
+            return axisParallelRectangular(sx, sy, width, height);
 
         case 'P':
             if (split.length % 2 != 0)

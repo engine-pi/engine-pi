@@ -25,7 +25,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
@@ -33,6 +32,7 @@ import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.Image;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 public class Shots extends ShowcaseDemo implements FrameUpdateListener
 {
@@ -87,7 +87,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
             super("shots/ball.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
             setFixture(
-                    () -> FixtureBuilder.createCircleShape(0.15, 0.15, 0.15));
+                    () -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             setBodyType(BodyType.DYNAMIC);
             setRestitution(0.85);
             setFriction(0.1);
@@ -101,7 +101,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
             super("shots/shadow.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
             setFixture(
-                    () -> FixtureBuilder.createCircleShape(0.15, 0.15, 0.15));
+                    () -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             setBodyType(BodyType.SENSOR);
             setGravityScale(0);
             setRotationLocked(true);

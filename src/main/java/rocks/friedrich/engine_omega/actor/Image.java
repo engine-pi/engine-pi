@@ -25,10 +25,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 /**
  * Ein Bild als grafische Repräsentation einer Bilddatei, die gezeichnet werden
@@ -61,7 +61,7 @@ public class Image extends Actor
     @API
     public Image(String filepath, double width, double height)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(width,
+        super(() -> FixtureBuilder.rectangle(width,
                 height));
         assertViableSizes(width, height);
         this.image = Game.getImages().get(filepath);
@@ -81,7 +81,7 @@ public class Image extends Actor
     @API
     public Image(String filepath, final double pixelPerMeter)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(
+        super(() -> FixtureBuilder.rectangle(
                 Game.getImages().get(filepath).getWidth() / pixelPerMeter,
                 Game.getImages().get(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
@@ -102,7 +102,7 @@ public class Image extends Actor
     @API
     public Image(BufferedImage image, final double pixelPerMeter)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(
+        super(() -> FixtureBuilder.rectangle(
                 image.getWidth() / pixelPerMeter,
                 image.getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
@@ -145,7 +145,7 @@ public class Image extends Actor
         this.width = width;
         this.height = height;
         this.setFixture(() -> FixtureBuilder
-                .createSimpleRectangularFixture(width, height));
+                .rectangle(width, height));
     }
 
     /**

@@ -23,13 +23,13 @@ package rocks.friedrich.engine_omega.tutorials.statefulanimation;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Rectangle;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.physics.FixtureData;
 
 public class StatefulAnimationDemo extends Scene
@@ -63,19 +63,19 @@ public class StatefulAnimationDemo extends Scene
         // r.setFriction(.2);
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(.1, h - 0.1, w - .2, 0.1));
+                .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
         top.setFriction(.2);
         top.setRestitution(0);
         FixtureData left = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(0, 0, 0.1, h));
+                .axisParallelRectangular(0, 0, 0.1, h));
         left.setFriction(0);
         left.setRestitution(0);
         FixtureData right = new FixtureData(FixtureBuilder
-                .createAxisParallelRectangularShape(w - .1, 0, 0.1, h));
+                .axisParallelRectangular(w - .1, 0, 0.1, h));
         right.setFriction(0);
         right.setRestitution(0);
         FixtureData bottom = new FixtureData(
-                FixtureBuilder.createAxisParallelRectangularShape(0, 0, w, .1));
+                FixtureBuilder.axisParallelRectangular(0, 0, w, .1));
         bottom.setFriction(0);
         bottom.setRestitution(0);
         platformFixtures.add(top);

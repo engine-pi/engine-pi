@@ -24,10 +24,10 @@ import java.awt.Graphics2D;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.animation.AnimationFrame;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 /**
  * Ein animierter Actor, der mehrere Zustände haben kann (laufen (links/rechts),
@@ -84,7 +84,7 @@ public class StatefulAnimation<State> extends Actor
 
     public StatefulAnimation(double width, double height)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(width,
+        super(() -> FixtureBuilder.rectangle(width,
                 height));
         this.width = width;
         this.height = height;
@@ -397,7 +397,7 @@ public class StatefulAnimation<State> extends Actor
         this.width = width;
         this.height = height;
         this.setFixture(() -> FixtureBuilder
-                .createSimpleRectangularFixture(width, height));
+                .rectangle(width, height));
     }
 
     @Internal

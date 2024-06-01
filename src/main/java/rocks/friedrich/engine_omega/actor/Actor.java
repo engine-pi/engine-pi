@@ -45,7 +45,6 @@ import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
 
 import rocks.friedrich.engine_omega.Bounds;
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Layer;
 import rocks.friedrich.engine_omega.Vector;
@@ -65,6 +64,7 @@ import rocks.friedrich.engine_omega.event.MouseClickListener;
 import rocks.friedrich.engine_omega.event.MouseClickListenerContainer;
 import rocks.friedrich.engine_omega.event.MouseWheelListener;
 import rocks.friedrich.engine_omega.event.MouseWheelListenerContainer;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.physics.FixtureData;
 import rocks.friedrich.engine_omega.physics.NullHandler;
 import rocks.friedrich.engine_omega.physics.PhysicsData;

@@ -24,10 +24,10 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.function.Supplier;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 /**
  * Beschreibt eine beliebige polygonale geometrische Form.
@@ -53,7 +53,7 @@ public class Polygon extends Geometry
     @API
     public Polygon(Vector... points)
     {
-        super(() -> FixtureBuilder.createPolygonShape(points));
+        super(() -> FixtureBuilder.polygone(points));
         resetPoints(points);
     }
 
@@ -85,7 +85,7 @@ public class Polygon extends Geometry
             px[i] = points[i].getX();
             py[i] = points[i].getY();
         }
-        this.setFixture(() -> FixtureBuilder.createPolygonShape(points));
+        this.setFixture(() -> FixtureBuilder.polygone(points));
     }
 
     /**

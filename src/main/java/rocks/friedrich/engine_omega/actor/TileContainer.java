@@ -23,9 +23,9 @@ package rocks.friedrich.engine_omega.actor;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
 /**
  * Ein <code>TileContainer</code> ist eine schachbrettartige Anordnung
@@ -66,7 +66,7 @@ public class TileContainer extends Actor implements TileMap
     public TileContainer(int numX, int numY, double tileWidth,
             double tileHeight)
     {
-        super(() -> FixtureBuilder.createSimpleRectangularFixture(
+        super(() -> FixtureBuilder.rectangle(
                 tileWidth * numX, tileHeight * numY));
         if (numX <= 0 || numY <= 0)
         {

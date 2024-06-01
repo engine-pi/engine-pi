@@ -24,10 +24,10 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.physics.FixtureData;
 import rocks.friedrich.engine_omega.resources.FontLoader;
 import rocks.friedrich.engine_omega.util.FontMetrics;
@@ -50,7 +50,7 @@ public class Text extends Geometry
     {
         Vector sizeInPixels = rocks.friedrich.engine_omega.util.FontMetrics
                 .getSize(content, font);
-        return FixtureBuilder.createSimpleRectangularFixture(
+        return FixtureBuilder.rectangle(
                 sizeInPixels.getX() * height / sizeInPixels.getY(), height);
     }
 

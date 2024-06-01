@@ -30,13 +30,13 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import rocks.friedrich.engine_omega.FixtureBuilder;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.animation.AnimationFrame;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
+import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.resources.ResourceLoader;
 import rocks.friedrich.engine_omega.util.FileUtil;
 import rocks.friedrich.engine_omega.util.GifDecoder;
@@ -80,7 +80,7 @@ public class Animation extends Actor implements FrameUpdateListener
                 throw new RuntimeException(
                         "Eine Animation kann nicht mit einem leeren Frames-Array initialisiert werden.");
             }
-            return FixtureBuilder.createSimpleRectangularFixture(width, height);
+            return FixtureBuilder.rectangle(width, height);
         });
         for (AnimationFrame frame : frames)
         {
