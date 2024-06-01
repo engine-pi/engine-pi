@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.11.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.11.0) - 2024-06-01
+
+<small>[Compare with v0.10.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.10.0...v0.11.0)</small>
+
+### Added
+
+- Add new action class: Grid ([3d129af](https://github.com/Josef-Friedrich/engine-omega/commit/3d129af5b9cb6c2739bf6532c418c665df87d486) by Josef Friedrich).
+- Add setter for BodyTypes on Actor ([ee3aa43](https://github.com/Josef-Friedrich/engine-omega/commit/ee3aa43f46d1ecf0f44b452853a12641263e6acb) by Josef Friedrich).
+- Add the source code of jbox2d to the project instead of the jar file ([fed9c77](https://github.com/Josef-Friedrich/engine-omega/commit/fed9c77640ec947181678cbb1450f2c606904b16) by Josef Friedrich)
+
 ## [v0.10.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.10.0) - 2024-05-30
 
 <small>[Compare with v0.9.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.9.0...v0.10.0)</small>
