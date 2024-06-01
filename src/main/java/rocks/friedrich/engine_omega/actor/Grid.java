@@ -30,6 +30,11 @@ public class Grid extends Actor
     double size = 1;
 
     /**
+     * Die Dicke der Linien in Pixelmeter.
+     */
+    double lineThickness = 0.02;
+
+    /**
      * Die Farbe der Gitterlinien.
      */
     Color color = Color.GREEN;
@@ -49,8 +54,7 @@ public class Grid extends Actor
      */
     public Grid(int numX, int numY, double size)
     {
-        super(() -> FixtureBuilder.rectangle(numX * size,
-                numY * size));
+        super(() -> FixtureBuilder.rectangle(numX * size, numY * size));
         this.numX = numX;
         this.numY = numY;
         this.size = size;
@@ -65,6 +69,16 @@ public class Grid extends Actor
     public Grid(int numX, int numY)
     {
         this(numX, numY, 1);
+    }
+
+    /**
+     * Setzt die Dicke der Linien in Pixelmeter.
+     *
+     * @param lineThickness Die Dicke der Linien in Pixelmeter.
+     */
+    public void setLineThickness(double lineThickness)
+    {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -92,26 +106,37 @@ public class Grid extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        int gridSize = (int) Math.round(pixelPerMeter * size);
+        // Die Größe in Pixel einer Zelle.
+        int cellSize = (int) Math.round(pixelPerMeter * size);
+        // Zeichnen eines Rechtecks, dass die Hintergrundfarbe darstellt.
         if (background != null)
         {
             g.setColor(background);
-            g.fillRect(0, -Math.round(gridSize * numY),
-                    Math.round(gridSize * numX), Math.round(gridSize * numY));
+            g.fillRect(0, -Math.round(cellSize * numY),
+                    Math.round(cellSize * numX), Math.round(cellSize * numY));
         }
         g.setColor(color);
-        // Zeichnen der vertikalen Linien von links nach rechts.
+        // Die Dicke der Linie in Pixel.
+        int thickness = (int) Math.round(pixelPerMeter * lineThickness);
+        if (thickness < 1)
+        {
+            thickness = 1;
+        }
+        // Länge der vertikalen Linien.
+        int lengthVertical = Math.round(numY * cellSize);
         for (int gridX = 0; gridX <= numX; gridX++)
         {
-            g.fillRect(Math.round(gridX * gridSize),
-                    -Math.round(numY * gridSize), 1,
-                    Math.round(numY * gridSize));
+            // Zeichnen der vertikalen Linien von links nach rechts.
+            g.fillRect(Math.round(gridX * cellSize), -lengthVertical, thickness,
+                    lengthVertical);
         }
-        // Zeichnen der horizontalen Linien von unten nach oben.
+        // Länge der horizontalen Linien.
+        int lengthHorizontal = Math.round(numX * cellSize);
         for (int gridY = 0; gridY <= numY; gridY++)
         {
-            g.fillRect(0, -Math.round(gridY * gridSize),
-                    Math.round(numX * gridSize), 1);
+            // Zeichnen der horizontalen Linien von unten nach oben.
+            g.fillRect(0, -Math.round(gridY * cellSize), lengthHorizontal,
+                    thickness);
         }
     }
 }
