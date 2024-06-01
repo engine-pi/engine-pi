@@ -1194,8 +1194,26 @@ public abstract class Actor
     /**
      * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
      *
-     * @param impulse Der Impuls in <b>[Ns]</b>, der auf den Schwerpunkt wirken
-     *                soll.
+     * <p>
+     * Beispiele:
+     * </p>
+     *
+     * <p>
+     * <ul>
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
+     *
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
+     *
+     * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     * </ul>
+     * </p>
+     *
+     * @param impulse Der Impuls in <b>[Ns]</b> [(kg * m) / s], der auf den
+     *                Schwerpunkt wirken soll.
      */
     @API
     public final void applyImpulse(Vector impulse)
@@ -1207,6 +1225,32 @@ public abstract class Actor
         physicsHandler.applyImpulse(impulse, physicsHandler.getCenter());
     }
 
+    /**
+     * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
+     *
+     * <p>
+     * Beispiele:
+     * </p>
+     *
+     * <p>
+     * <ul>
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
+     *
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
+     *
+     * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     * </ul>
+     * </p>
+     *
+     * @param impulseX Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s],
+     *                 der auf den Schwerpunkt wirken soll.
+     * @param impulseY Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s],
+     *                 der auf den Schwerpunkt wirken soll.
+     */
     public final void applyImpulse(double impulseX, double impulseY)
     {
         applyImpulse(new Vector(impulseX, impulseY));
@@ -1214,6 +1258,24 @@ public abstract class Actor
 
     /**
      * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
+     *
+     * <p>
+     * Beispiele:
+     * </p>
+     *
+     * <p>
+     * <ul>
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
+     *
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
+     *
+     * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     * </ul>
+     * </p>
      *
      * @param impulse     Der Impuls in <b>[Ns]</b>.
      * @param globalPoint Der Ort auf der <i>Zeichenebene</i>, an dem der Impuls

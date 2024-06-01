@@ -1,11 +1,14 @@
 package rocks.friedrich.engine_omega.demos.physics.single_aspects;
 
+import java.awt.event.KeyEvent;
+
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Rectangle;
+import rocks.friedrich.engine_omega.event.KeyListener;
 
-public class DensityDemo extends Scene
+public class DensityDemo extends Scene implements KeyListener
 {
     private final Rectangle ground;
 
@@ -17,42 +20,37 @@ public class DensityDemo extends Scene
 
     public DensityDemo()
     {
+        setGravity(0, -9.81);
         ground = new Rectangle(20, 1);
         ground.setPosition(-10, -5);
         ground.makeStatic();
         add(ground);
-        circle1 = createCircle(-5);
-        circle2 = createCircle(0);
-        circle3 = createCircle(5);
-        delay(1, () -> {
-            setGravity(0, -9.81);
-            setUpCircle(circle1, 1);
-            setUpCircle(circle2, 2);
-            setUpCircle(circle3, 100);
-        });
+        circle1 = createCircle(-5, 10);
+        circle2 = createCircle(0, 20);
+        circle3 = createCircle(5, 30);
     }
 
-    private Circle createCircle(double x)
+    private Circle createCircle(double x, double density)
     {
         Circle circle = new Circle(1);
         circle.setPosition(x, 5);
-        circle.makeStatic();
+        circle.setDensity(density);
+        circle.makeDynamic();
         add(circle);
         return circle;
     }
 
-    private void setUpCircle(Circle circle, double density)
+    @Override
+    public void onKeyDown(KeyEvent e)
     {
-        circle.makeDynamic();
-        circle.setDensity(density);
-        System.out.println(circle.getDensity());
-        System.out.println(circle.getMass());
-        System.out.println(circle.getPhysicsHandler());
+        circle1.applyImpulse(0, 100);
+        circle2.applyImpulse(0, 100);
+        circle3.applyImpulse(0, 100);
     }
 
     public static void main(String[] args)
     {
         Game.setDebug(true);
-        Game.start(new RestitutionDemo());
+        Game.start(new DensityDemo());
     }
 }
