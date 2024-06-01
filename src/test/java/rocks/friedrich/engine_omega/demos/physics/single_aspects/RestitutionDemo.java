@@ -24,14 +24,13 @@ public class RestitutionDemo extends Scene
         }
     }
 
-    private Circle createCircle(double x, double restitution)
+    private void createCircle(double x, double restitution)
     {
         Circle circle = new Circle(1);
         add(circle);
         circle.setRestitution(restitution);
         circle.setPosition(x, 5);
         circle.makeDynamic();
-        return circle;
     }
 
     public static void main(String[] args)
