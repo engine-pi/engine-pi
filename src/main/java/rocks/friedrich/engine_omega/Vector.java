@@ -42,7 +42,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Konstante für einen "bewegungslosen" Vector (0, 0).
+     * Konstante für einen „bewegungslosen“ Vektor (0, 0).
      */
     @API
     public static final Vector NULL = new Vector(0, 0);
@@ -86,8 +86,8 @@ public final class Vector implements Cloneable
     /**
      * Konstruktor.
      *
-     * @param x Bewegungsanteil <code>x</code>.
-     * @param y Bewegungsanteil <code>y</code>.
+     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
+     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
      */
     @API
     public Vector(double x, double y)
@@ -97,33 +97,51 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Konstruktor. <br>
-     * <br>
-     * Vector wird erzeugt als die nötige Bewegung von einem Punkt zu einem
+     * Konstruktor.
+     *
+     * <p>
+     * Der Vektor wird erzeugt als die nötige Bewegung von einem Punkt zu einem
      * zweiten.
      *
-     * @param start Ausgangspunkt
-     * @param end   Zielpunkt
+     * @param start Der Ausgangspunkt.
+     * @param end   Der Zielpunkt.
      */
     @API
     public Vector(Vector start, Vector end)
     {
-        this.x = end.x - start.x;
-        this.y = end.y - start.y;
+        this.x = end.getX() - start.getX();
+        this.y = end.getY() - start.getY();
     }
 
-    public static Vector ofAngle(double angleInDegree)
+    /**
+     * Berechnet anhand eines Winkel den entsprechtenden Vektor.
+     *
+     * @param angle Der Winkel in Grad.
+     *
+     * @return Der Vektor, der sich aus einem Winkel berechnet.
+     */
+    public static Vector ofAngle(double angle)
     {
-        double rad = Math.toRadians(angleInDegree);
+        double rad = Math.toRadians(angle);
         return new Vector(Math.cos(rad), Math.sin(rad));
     }
 
+    /**
+     * Gibt den Bewegungsanteil in <code>x</code>-Richtung zurück.
+     *
+     * @return Der Bewegungsanteil in <code>x</code>-Richtung.
+     */
     @API
     public double getX()
     {
         return x;
     }
 
+    /**
+     * Gibt den Bewegungsanteil in <code>y</code>-Richtung zurück.
+     *
+     * @return Der Bewegungsanteil in <code>y</code>-Richtung.
+     */
     @API
     public double getY()
     {
@@ -131,14 +149,14 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt eine <b>Normierung</b> des Vektors aus. Dies ist ein Vector, der
+     * Gibt eine <b>Normierung</b> des Vektors aus. Dies ist ein Vektor, der
      *
      * <ul>
-     * <li>in die selbe Richtung wie der ursprüngliche Vector zeigt.</li>
+     * <li>in die selbe Richtung wie der ursprüngliche Vektor zeigt.</li>
      * <li>eine Länge von (möglichst) exakt 1 hat.</li>
      * </ul>
      *
-     * @return Normierter Vector zu diesem Vector
+     * @return Normierter Vektor zu diesem Vektor.
      */
     @API
     public Vector normalize()
@@ -152,8 +170,9 @@ public final class Vector implements Cloneable
      *
      * @param divisor Hierdurch wird die Länge des Vektors auf der Zeichenebene
      *                geteilt.
-     * @return Vector-Objekt, das eine Bewegung in dieselbe Richtung beschreibt,
-     *         allerdings in der Länge gekürzt um den angegebenen Divisor.
+     * @return Das Vektor-Objekt, das eine Bewegung in dieselbe Richtung
+     *         beschreibt, allerdings in der Länge gekürzt um den angegebenen
+     *         Divisor.
      * @throws java.lang.ArithmeticException Falls <code>divisor</code>
      *                                       <code>0</code> ist.
      * @see #multiply(double)
@@ -182,8 +201,8 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Gegenrichtung des Vektors.
      *
-     * @return Neues Vector-Objekt, das genau die Gegenbewegung zu dem eigenen
-     *         beschreibt.
+     * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
+     *         eigenen beschreibt.
      */
     @API
     public Vector negate()
@@ -194,8 +213,8 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Gegenrichtung des Vektors in X-Richtung.
      *
-     * @return Neues Vector-Objekt, das genau die Gegenbewegung zu dem eigenen
-     *         beschreibt.
+     * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
+     *         eigenen beschreibt.
      */
     @API
     public Vector negateX()
@@ -206,7 +225,7 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Gegenrichtung des Vektors in Y-Richtung.
      *
-     * @return Neues Vector-Objekt, das genau die Gegenbewegung zu dem eigenen
+     * @return Ein neues Vektor, das genau die Gegenbewegung zu dem eigenen
      *         beschreibt.
      */
     @API
@@ -216,12 +235,13 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die effektive Bewegung, die dieser Vector und ein weiterer
+     * Berechnet die effektive Bewegung, die dieser Vektor und ein weiterer
      * zusammen ausüben.
      *
-     * @param x Änderung in X-Richtung
-     * @param y Änderung in Y-Richtung
-     * @return Neues Vector-Objekt, das die Summe der beiden ursprünglichen
+     * @param x Die Änderung in X-Richtung.
+     * @param y Die Änderung in Y-Richtung.
+     *
+     * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
      *         Bewegungen darstellt.
      */
     @API
@@ -234,18 +254,18 @@ public final class Vector implements Cloneable
      * Berechnet die effektive Bewegung, die dieser Vector und ein weiterer
      * zusammen ausüben.
      *
-     * @param v zweiter Vector
-     * @return Neues Vector-Objekt, das die Summe der beiden ursprünglichen
+     * @param vector Ein zweiter Vektor.
+     * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
      *         Bewegungen darstellt.
      */
     @API
-    public Vector add(Vector v)
+    public Vector add(Vector vector)
     {
-        return new Vector(this.x + v.x, this.y + v.y);
+        return new Vector(this.x + vector.x, this.y + vector.y);
     }
 
     /**
-     * Berechnet die Differenz zwischen diesem und einem weiteren Vector.
+     * Berechnet die Differenz zwischen diesem und einem weiteren Vektor.
      *
      * @param x Änderung in X-Richtung
      * @param y Änderung in Y-Richtung
@@ -258,22 +278,23 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die Differenz zwischen diesem und einem weiteren Vector.
+     * Berechnet die Differenz zwischen diesem und einem weiteren Vektor.
      *
-     * @param v zweiter Vector
+     * @param vector zweiter Vektor
      * @return Die Differenz der beiden Vektoren (<code>"this - v"</code>)
      */
     @API
-    public Vector subtract(Vector v)
+    public Vector subtract(Vector vector)
     {
-        return new Vector(this.x - v.x, this.y - v.y);
+        return new Vector(this.x - vector.x, this.y - vector.y);
     }
 
     /**
      * Berechnet eine rotierte Version.
      *
      * @param degree Rotation in Grad
-     * @return Neues Vector-Objekt, das entsprechend der Gradzahl rotiert wurde.
+     * @return Ein neues Vektor-Objekt, das entsprechend der Gradzahl rotiert
+     *         wurde.
      */
     @API
     public Vector rotate(double degree)
@@ -289,25 +310,25 @@ public final class Vector implements Cloneable
      * Gibt den Vektor an, der den Punkt, den dieser Vektor beschreibt, zu dem
      * Punkt verschieben würde, den ein weiterer Vektor beschreibt.
      *
-     * @param v Ein weiterer Vektor.
+     * @param vector Ein weiterer Vektor.
      * @return Der Vektor, der <code>(this.x|this.y)</code> verschieben würde zu
      *         <code>(v.x|v.y)</code>.
      */
     @API
-    public Vector getDistance(Vector v)
+    public Vector getDistance(Vector vector)
     {
-        return v.subtract(this);
+        return vector.subtract(this);
     }
 
     /**
      * Multipliziert die effektiven Längen beider Anteile des Vektors
      * (<code>x</code> und <code>y</code>) mit einem festen Faktor. <br>
-     * Dadurch entsteht ein neuer Vector mit anderen Werten, welcher
+     * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
      *
      * @param factor Der Faktor, mit dem die <code>x</code>- und
      *               <code>y</code>-Werte des Vektors multipliziert werden
-     * @return Der Vector mit den multiplizierten Werten
+     * @return Der Vektor mit den multiplizierten Werten
      * @see #divide(double)
      */
     @API
@@ -319,12 +340,12 @@ public final class Vector implements Cloneable
     /**
      * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
      * festen Faktor. <br>
-     * Dadurch entsteht ein neuer Vector mit anderen Werten, welcher
+     * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
      *               wird
-     * @return Der Vector mit den multiplizierten Werten
+     * @return Der Vektor mit den multiplizierten Werten
      * @see #multiply(double)
      */
     @API
@@ -336,12 +357,12 @@ public final class Vector implements Cloneable
     /**
      * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
      * festen Faktor. <br>
-     * Dadurch entsteht ein neuer Vector mit anderen Werten, welcher
+     * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
      *               wird
-     * @return Der Vector mit den multiplizierten Werten
+     * @return Der Vektor mit den multiplizierten Werten
      * @see #multiply(double)
      */
     @API
@@ -351,21 +372,21 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet das <b>Skalarprodukt</b> von diesem Vector mit einem weiteren.
+     * Berechnet das <b>Skalarprodukt</b> von diesem Vektor mit einem weiteren.
      * Das Skalarprodukt für zweidimensionale Vektoren ist:
      * <code>(a, b) o (c, d) = a * b + c * d</code>
      *
-     * @param v zweiter Vector
-     * @return Skalarprodukt dieser Vektoren mit dem Vector <code>v</code>.
+     * @param vector zweiter Vektor
+     * @return Skalarprodukt dieser Vektoren mit dem Vektor <code>v</code>.
      */
     @API
-    public double getScalarProduct(Vector v)
+    public double getScalarProduct(Vector vector)
     {
-        return this.x * v.x + this.y * v.y;
+        return this.x * vector.x + this.y * vector.y;
     }
 
     /**
-     * Berechnet, ob dieser Vector keine Wirkung hat. Dies ist der Fall, wenn
+     * Berechnet, ob dieser Vektor keine Wirkung hat. Dies ist der Fall, wenn
      * beide Komponenten (<code>x</code> und <code>y</code>) 0 sind.
      *
      * @return <code>true</code>, wenn dieser keine Auswirkungen macht, sonst
@@ -378,7 +399,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt zurück, ob dieser Vector <i>echt ganzzahlig</i> ist, also ob seine
+     * Gibt zurück, ob dieser Vektor <i>echt ganzzahlig</i> ist, also ob seine
      * <b>tatsächlichen Delta-Werte</b> beide Ganzzahlen sind.
      *
      * @return <code>true</code>, wenn <b>beide</b> Delta-Werte dieses Punktes
@@ -418,24 +439,24 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Prüft, ob ein beliebiges Objekt gleich diesem Vector ist. <br>
+     * Prüft, ob ein beliebiges Objekt gleich diesem Vektor ist. <br>
      * <br>
      * Zwei Vektoren gelten als gleich, wenn <code>x</code> und <code>y</code>
      * der beiden Vektoren übereinstimmen.
      *
-     * @param o Das auf Gleichheit mit diesem zu überprüfende Objekt.
+     * @param object Das auf Gleichheit mit diesem zu überprüfende Objekt.
      * @return <code>true</code>, wenn beide Vektoren gleich sind, sonst
      *         <code>false</code>.
      */
     @API
     @Override
-    public boolean equals(Object o)
+    public boolean equals(Object object)
     {
-        if (this == o)
+        if (this == object)
         {
             return true;
         }
-        if (o instanceof Vector v)
+        if (object instanceof Vector v)
         {
             return x == v.x && y == v.y;
         }
@@ -475,7 +496,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet den Winkel zwischen diesem Vector und einem weiteren. Hierzu
+     * Berechnet den Winkel zwischen diesem Vektor und einem weiteren. Hierzu
      * wird diese Formel verwendet: <br>
      * <code>cos t = [a o b] / [|a| * |b|]</code><br>
      * <ul>
@@ -485,8 +506,8 @@ public final class Vector implements Cloneable
      * <li>|a| ist die Länge des Vektors a</li>
      * </ul>
      *
-     * @param other Ein zweiter Vector.
-     * @return Der Winkel zwischen diesem Vector und dem zweiten. Ist zwischen 0
+     * @param other Ein zweiter Vektor.
+     * @return Der Winkel zwischen diesem Vektor und dem zweiten. Ist zwischen 0
      *         und 180.
      */
     @API

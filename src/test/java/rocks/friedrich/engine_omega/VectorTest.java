@@ -31,11 +31,11 @@ public class VectorTest
     @Test
     public void testVectorOfVectors()
     {
-        Vector p1 = new Vector(10f, 10f);
-        Vector p2 = new Vector(30f, 20f);
+        Vector p1 = new Vector(10, 10);
+        Vector p2 = new Vector(30, 20);
         Vector vector = new Vector(p1, p2);
-        assertEquals(vector.getX(), 20f, 0.0001);
-        assertEquals(vector.getY(), 10f, 0.0001);
+        assertEquals(vector.getX(), 20, 0.0001);
+        assertEquals(vector.getY(), 10, 0.0001);
     }
 
     @Test
