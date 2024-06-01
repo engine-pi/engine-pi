@@ -14,12 +14,12 @@ public class Grid extends Actor
     /**
      * Die Anzahl der Spalten in x-Richtung.
      */
-    int numX;
+    int cols;
 
     /**
      * Die Anzahl der Reihen in y-Richtung.
      */
-    int numY;
+    int rows;
 
     /**
      * Die Größe einer Zelle bzw. eines Quadrats in Pixelmeter. Ist
@@ -45,30 +45,30 @@ public class Grid extends Actor
     Color background;
 
     /**
-     * @param numX Die Anzahl der Spalten in x-Richtung.
-     * @param numY Die Anzahl der Reihen in y-Richtung.
+     * @param cols Die Anzahl der Spalten in x-Richtung.
+     * @param rows Die Anzahl der Reihen in y-Richtung.
      * @param size Die Größe einer Zelle bzw. eines Quadrats in Pixelmeter. Ist
      *             beispielsweise die Einheit Pixelmeter auf 60 Pixel und dieses
      *             Attribut auf 2 gesetzt, dann werden die vom Gitter
      *             eingeschlossenen Quadrate 120 auf 120 Pixel groß.
      */
-    public Grid(int numX, int numY, double size)
+    public Grid(int cols, int rows, double size)
     {
-        super(() -> FixtureBuilder.rectangle(numX * size, numY * size));
-        this.numX = numX;
-        this.numY = numY;
+        super(() -> FixtureBuilder.rectangle(cols * size, rows * size));
+        this.cols = cols;
+        this.rows = rows;
         this.size = size;
     }
 
     /**
      * Erstellt eine Gitter mit der Zellegröße von einem Pixelmeter.
      *
-     * @param numX Die Anzahl der Spalten in x-Richtung.
-     * @param numY Die Anzahl der Reihen in y-Richtung.
+     * @param cols Die Anzahl der Spalten in x-Richtung.
+     * @param rows Die Anzahl der Reihen in y-Richtung.
      */
-    public Grid(int numX, int numY)
+    public Grid(int cols, int rows)
     {
-        this(numX, numY, 1);
+        this(cols, rows, 1);
     }
 
     /**
@@ -112,8 +112,8 @@ public class Grid extends Actor
         if (background != null)
         {
             g.setColor(background);
-            g.fillRect(0, -Math.round(cellSize * numY),
-                    Math.round(cellSize * numX), Math.round(cellSize * numY));
+            g.fillRect(0, -Math.round(cellSize * rows),
+                    Math.round(cellSize * cols), Math.round(cellSize * rows));
         }
         g.setColor(color);
         // Die Dicke der Linie in Pixel.
@@ -123,19 +123,19 @@ public class Grid extends Actor
             thickness = 1;
         }
         // Länge der vertikalen Linien.
-        int lengthVertical = Math.round(numY * cellSize);
-        for (int gridX = 0; gridX <= numX; gridX++)
+        int lengthVertical = Math.round(rows * cellSize);
+        for (int x = 0; x <= cols; x++)
         {
             // Zeichnen der vertikalen Linien von links nach rechts.
-            g.fillRect(Math.round(gridX * cellSize), -lengthVertical, thickness,
+            g.fillRect(Math.round(x * cellSize), -lengthVertical, thickness,
                     lengthVertical);
         }
         // Länge der horizontalen Linien.
-        int lengthHorizontal = Math.round(numX * cellSize);
-        for (int gridY = 0; gridY <= numY; gridY++)
+        int lengthHorizontal = Math.round(cols * cellSize);
+        for (int y = 0; y <= rows; y++)
         {
             // Zeichnen der horizontalen Linien von unten nach oben.
-            g.fillRect(0, -Math.round(gridY * cellSize), lengthHorizontal,
+            g.fillRect(0, -Math.round(y * cellSize), lengthHorizontal,
                     thickness);
         }
     }
