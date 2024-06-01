@@ -11,6 +11,7 @@ public class RestitutionDemo extends Scene
 
     public RestitutionDemo()
     {
+        getCamera().setZoom(5);
         ground = new Rectangle(20, 1);
         ground.setPosition(-10, -8);
         ground.makeStatic();

@@ -107,7 +107,7 @@ public final class Camera
     /**
      * Setzt den Fokus der Kamera auf ein Objekt.
      * <p>
-     * Dieses Objekt ist ab dann im 'Zentrum' der Kamera. Die Art des Fokus
+     * Dieses Objekt ist ab dann im „Zentrum“ der Kamera. Die Art des Fokus
      * (rechts, links, oben, unten, mittig, etc.) kann über die Methode
      * {@link #setOffset(Vector)} geändert werden. Soll das Fokusverhalten
      * beendet werden, kann einfach {@code null} übergeben werden, dann bleibt
@@ -194,23 +194,23 @@ public final class Camera
     /**
      * Setzt den Zoom der Kamera.
      * <p>
-     * Der Zoom bestimmt wie "nah" die Kamera an der Zeichenebene ist. Die Größe
+     * Der Zoom bestimmt wie „nah“ die Kamera an der Zeichenebene ist. Die Größe
      * eines Objektes entspricht der Größe auf der Zeichenebene multipliziert
-     * mit dem Zoomfaktor. Defaultwert des Zoomfaktors ist <code>1</code>.
+     * mit dem Zoomfaktor. Der Standardwert des Zoomfaktors ist <code>30</code>.
      *
-     * @param zoom Der neue Zoom-Wert der Kamera. Werte größer als 1 "zoomen
-     *             rein". Werte zwischen 1 und 0 (jeweils exklusiv) "zoomen
-     *             raus".
+     * @param pixelPerMeter Der neue Zoom-Wert der Kamera. Werte größer als 1
+     *                      "zoomen rein". Werte zwischen 1 und 0 (jeweils
+     *                      exklusiv) "zoomen raus".
      */
     @API
-    public void setZoom(double zoom)
+    public void setZoom(double pixelPerMeter)
     {
-        if (zoom <= 0)
+        if (pixelPerMeter <= 0)
         {
             throw new IllegalArgumentException(
                     "Der Kamerazoom kann nicht kleiner oder gleich 0 sein.");
         }
-        this.zoom = zoom;
+        this.zoom = pixelPerMeter;
     }
 
     /**
