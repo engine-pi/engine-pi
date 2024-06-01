@@ -53,6 +53,6 @@ public class DensityDemo extends Scene
     public static void main(String[] args)
     {
         Game.setDebug(true);
-        Game.start(new DensityDemo());
+        Game.start(new RestitutionDemo());
     }
 }

@@ -136,7 +136,7 @@ public interface PhysicsHandler
     double getFriction();
 
     @Internal
-    void setRestitution(double elasticity);
+    void setRestitution(double restitution);
 
     @Internal
     double getRestitution();

@@ -42,7 +42,7 @@ import rocks.friedrich.engine_omega.event.CollisionEvent;
  * Er übernimmt zwei wesentliche Aufgaben:
  * <ul>
  * <li>Die Kontrolle und Steuerung innerhalb der <b>Physics-Engine</b> aus Sicht
- * des respektiven Actor Objekts.</li>
+ * des respektiven {@link Actor}-Objekts.</li>
  * <li>Die Speicherung der <i>räumlichen Eigenschaften</i> (Position und
  * Rotation) des respektiven {@link Actor}-Objekts.</li>
  * </ul>

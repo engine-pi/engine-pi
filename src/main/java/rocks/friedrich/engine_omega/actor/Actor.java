@@ -1009,8 +1009,8 @@ public abstract class Actor
      * Damit wird die aktuelle Bewegung (nicht aber die Rotation) des Objekts
      * ignoriert und hart auf den übergebenen Wert gesetzt.
      *
-     * @param velocity Die Geschwindigkeit, mit der sich dieses Objekt ab
-     *                        sofort bewegen soll. In <b>[m / s]</b>
+     * @param velocity Die Geschwindigkeit, mit der sich dieses Objekt ab sofort
+     *                 bewegen soll. In <b>[m / s]</b>
      * @see #getVelocity()
      */
     @API
@@ -1074,6 +1074,26 @@ public abstract class Actor
         physicsHandler.setAngularVelocity(rotationsPerSecond);
     }
 
+    /**
+     * Setzt die Stoßzahl bzw. den Restitutionskoeffizienten.
+     *
+     * Mit Hilfe der <a href=
+     * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
+     * bzw. des <a href=
+     * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
+     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
+     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
+     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
+     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
+     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     *
+     * @param restitution Die Stoßzahl bzw. der Restitutionskoeffizient.
+     *
+     * @see #getRestitution()
+     *
+     * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137
+     * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338
+     */
     @API
     public final void setRestitution(double restitution)
     {
@@ -1084,6 +1104,26 @@ public abstract class Actor
         physicsHandler.setRestitution(restitution);
     }
 
+    /**
+     * Gibt die Stoßzahl bzw. den Restitutionskoeffizienten zurück.
+     *
+     * Mit Hilfe der <a href=
+     * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
+     * bzw. des <a href=
+     * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
+     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
+     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
+     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
+     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
+     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     *
+     * @return Die Stoßzahl bzw. den Restitutionskoeffizienten.
+     *
+     * @see #setRestitution(double)
+     *
+     * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130
+     * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333
+     */
     @API
     public final double getRestitution()
     {
@@ -1117,72 +1157,72 @@ public abstract class Actor
     /**
      * Wirkt eine Kraft auf den <i>Schwerpunkt</i> des Objekts.
      *
-     * @param newton Kraftvektor in <b>[N]</b>
+     * @param force Der Kraftvektor in <b>[N]</b>.
      */
     @API
-    public final void applyForce(Vector newton)
+    public final void applyForce(Vector force)
     {
-        if (newton.isNaN())
+        if (force.isNaN())
         {
             return;
         }
-        physicsHandler.applyForce(newton);
+        physicsHandler.applyForce(force);
     }
 
-    public final void applyForce(double dX, double dY)
+    public final void applyForce(double forceX, double forceY)
     {
-        applyForce(new Vector(dX, dY));
+        applyForce(new Vector(forceX, forceY));
     }
 
     /**
      * Wirkt eine Kraft auf einem bestimmten <i>Punkt in der Welt</i>.
      *
-     * @param newton      Kraft in <b>[N]</b>
+     * @param force       Kraft in <b>[N]</b>
      * @param globalPoint Ort auf der <i>Zeichenebene</i>, an dem die Kraft
      *                    wirken soll.
      */
     @API
-    public final void applyForce(Vector newton, Vector globalPoint)
+    public final void applyForce(Vector force, Vector globalPoint)
     {
-        if (newton.isNaN() || globalPoint.isNaN())
+        if (force.isNaN() || globalPoint.isNaN())
         {
             return;
         }
-        physicsHandler.applyForce(newton, globalPoint);
+        physicsHandler.applyForce(force, globalPoint);
     }
 
     /**
      * Wirkt einen Impuls auf den <i>Schwerpunkt</i> des Objekts.
      *
-     * @param newtonSeconds Der Impuls in <b>[Ns]</b>, der auf den Schwerpunkt
-     *                      wirken soll.
+     * @param impulse Der Impuls in <b>[Ns]</b>, der auf den Schwerpunkt wirken
+     *                soll.
      */
     @API
-    public final void applyImpulse(Vector newtonSeconds)
+    public final void applyImpulse(Vector impulse)
     {
-        if (newtonSeconds.isNaN())
+        if (impulse.isNaN())
         {
             return; // ignore invalid impulses, they make box2d hang
         }
-        physicsHandler.applyImpulse(newtonSeconds, physicsHandler.getCenter());
+        physicsHandler.applyImpulse(impulse, physicsHandler.getCenter());
     }
 
-    public final void applyImpulse(double dX, double dY)
+    public final void applyImpulse(double impulseX, double impulseY)
     {
-        applyImpulse(new Vector(dX, dY));
+        applyImpulse(new Vector(impulseX, impulseY));
     }
 
     /**
      * Wirkt einen Impuls an einem bestimmten <i>Punkt in der Welt</i>.
      *
-     * @param newtonSeconds Der Impuls in <b>[Ns]</b>.
-     * @param globalPoint   Der Ort auf der <i>Zeichenebene</i>, an dem der
-     *                      Impuls wirken soll.
+     * @param impulse     Der Impuls in <b>[Ns]</b>.
+     * @param globalPoint Der Ort auf der <i>Zeichenebene</i>, an dem der Impuls
+     *                    wirken soll.
      */
     @API
-    public final void applyImpulse(Vector newtonSeconds, Vector globalPoint)
+    public final void applyImpulse(Vector impulse, Vector globalPoint)
     {
-        physicsHandler.applyImpulse(newtonSeconds, globalPoint);
+        physicsHandler.applyImpulse(impulse, globalPoint);
     }
 
     /**
