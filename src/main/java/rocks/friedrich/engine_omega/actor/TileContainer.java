@@ -66,8 +66,8 @@ public class TileContainer extends Actor implements TileMap
     public TileContainer(int numX, int numY, double tileWidth,
             double tileHeight)
     {
-        super(() -> FixtureBuilder.rectangle(
-                tileWidth * numX, tileHeight * numY));
+        super(() -> FixtureBuilder.rectangle(tileWidth * numX,
+                tileHeight * numY));
         if (numX <= 0 || numY <= 0)
         {
             throw new IllegalArgumentException(

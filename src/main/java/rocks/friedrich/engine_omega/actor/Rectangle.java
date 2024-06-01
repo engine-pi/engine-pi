@@ -58,8 +58,7 @@ public class Rectangle extends Geometry
      */
     public Rectangle(double width, double height)
     {
-        this(width, height, () -> FixtureBuilder
-                .rectangle(width, height));
+        this(width, height, () -> FixtureBuilder.rectangle(width, height));
     }
 
     public Rectangle(double width, double height,
@@ -96,8 +95,7 @@ public class Rectangle extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder
-                .rectangle(width, height));
+        this.setFixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     @API

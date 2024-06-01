@@ -86,8 +86,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
         {
             super("shots/ball.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
-            setFixture(
-                    () -> FixtureBuilder.circle(0.15, 0.15, 0.15));
+            setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             setBodyType(BodyType.DYNAMIC);
             setRestitution(0.85);
             setFriction(0.1);
@@ -100,8 +99,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
         {
             super("shots/shadow.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
-            setFixture(
-                    () -> FixtureBuilder.circle(0.15, 0.15, 0.15));
+            setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             setBodyType(BodyType.SENSOR);
             setGravityScale(0);
             setRotationLocked(true);

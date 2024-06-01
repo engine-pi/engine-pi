@@ -1,3 +1,6 @@
+PACKAGE_PATH = src/main/java/org
+JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
+
 deploy:
 	mvn deploy
 
@@ -17,5 +20,13 @@ package:
 
 run_jar: package
 	java -jar target/engine-omega-0.9.0.jar
+
+clone_jbox2d:
+	# git clone https://github.com/jbox2d/jbox2d.git /tmp/jbox2d
+	-rm -rf $(JBOX2D_PATH)
+	mkdir -p $(PACKAGE_PATH)
+	cp -r /tmp/jbox2d/jbox2d-library/$(JBOX2D_PATH) $(PACKAGE_PATH)
+	rm -rf $(JBOX2D_PATH)/gwtemul
+	rm -rf $(JBOX2D_PATH)/JBox2D.gwt.xml
 
 .PHONY: deploy doc format install package run_jar

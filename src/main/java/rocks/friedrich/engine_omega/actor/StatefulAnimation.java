@@ -84,8 +84,7 @@ public class StatefulAnimation<State> extends Actor
 
     public StatefulAnimation(double width, double height)
     {
-        super(() -> FixtureBuilder.rectangle(width,
-                height));
+        super(() -> FixtureBuilder.rectangle(width, height));
         this.width = width;
         this.height = height;
         addFrameUpdateListener(this::internalOnFrameUpdate);
@@ -396,8 +395,7 @@ public class StatefulAnimation<State> extends Actor
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder
-                .rectangle(width, height));
+        this.setFixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     @Internal

@@ -20,11 +20,8 @@ public class GridDemo extends Scene
         grid2.setColor(Color.RED);
         grid2.setPosition(4, 0);
         grid2.makeDynamic();
-
         add(grid2);
-
         Rectangle rectangle = new Rectangle(20, 1);
-
         rectangle.setPosition(-10, -8);
         rectangle.makeStatic();
         add(rectangle);

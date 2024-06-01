@@ -107,18 +107,19 @@ public enum BodyType
     /**
      * <b>Sensoren</b> nehmen nicht an der Physiksimulation teil. Sie werden von
      * der Physics so behandelt, <i>als wären sie nicht da</i>. Sie generieren
-     * trotzdem Kollisionsereignisse. Dies ist die <b>Standardeinstellung</b> für
-     * Actors, wenn sie erstellt werden.
+     * trotzdem Kollisionsereignisse. Dies ist die <b>Standardeinstellung</b>
+     * für Actors, wenn sie erstellt werden.
      *
      * @see Actor#makeSensor()
      */
     SENSOR,
     /**
      * <b>Partikel</b> nehmen wie Sensoren <b>nicht an der Physiksimulation</b>
-     * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist hilfreich,
-     * wenn du viele Actors generieren willst, diese aber rein optisch auf das
-     * Spiel wirken sollen, wie zum Beispiel Dreck, den ein Auto beim Anfahren
-     * aufwühlt oder Funken, die von einer Wand nach einem Schuss sprühen.
+     * teil, sie generieren trotzdem Kollisionsereignisse. Dieser Typ ist
+     * hilfreich, wenn du viele Actors generieren willst, diese aber rein
+     * optisch auf das Spiel wirken sollen, wie zum Beispiel Dreck, den ein Auto
+     * beim Anfahren aufwühlt oder Funken, die von einer Wand nach einem Schuss
+     * sprühen.
      *
      * @see Actor#makeParticle()
      */

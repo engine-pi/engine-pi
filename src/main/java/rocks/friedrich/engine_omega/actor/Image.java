@@ -61,8 +61,7 @@ public class Image extends Actor
     @API
     public Image(String filepath, double width, double height)
     {
-        super(() -> FixtureBuilder.rectangle(width,
-                height));
+        super(() -> FixtureBuilder.rectangle(width, height));
         assertViableSizes(width, height);
         this.image = Game.getImages().get(filepath);
         this.width = width;
@@ -102,8 +101,7 @@ public class Image extends Actor
     @API
     public Image(BufferedImage image, final double pixelPerMeter)
     {
-        super(() -> FixtureBuilder.rectangle(
-                image.getWidth() / pixelPerMeter,
+        super(() -> FixtureBuilder.rectangle(image.getWidth() / pixelPerMeter,
                 image.getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
         this.image = image;
@@ -144,8 +142,7 @@ public class Image extends Actor
         assertViableSizes(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder
-                .rectangle(width, height));
+        this.setFixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     /**

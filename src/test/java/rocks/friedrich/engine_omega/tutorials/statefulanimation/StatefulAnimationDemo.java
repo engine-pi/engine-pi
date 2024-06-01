@@ -66,12 +66,12 @@ public class StatefulAnimationDemo extends Scene
                 .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
         top.setFriction(.2);
         top.setRestitution(0);
-        FixtureData left = new FixtureData(FixtureBuilder
-                .axisParallelRectangular(0, 0, 0.1, h));
+        FixtureData left = new FixtureData(
+                FixtureBuilder.axisParallelRectangular(0, 0, 0.1, h));
         left.setFriction(0);
         left.setRestitution(0);
-        FixtureData right = new FixtureData(FixtureBuilder
-                .axisParallelRectangular(w - .1, 0, 0.1, h));
+        FixtureData right = new FixtureData(
+                FixtureBuilder.axisParallelRectangular(w - .1, 0, 0.1, h));
         right.setFriction(0);
         right.setRestitution(0);
         FixtureData bottom = new FixtureData(

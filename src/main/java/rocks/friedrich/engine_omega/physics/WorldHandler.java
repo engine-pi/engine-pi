@@ -191,8 +191,8 @@ public class WorldHandler implements ContactListener
      * @param bd    Exakte Beschreibung des Bodies.
      * @param actor {@link Actor}-Objekt, das ab sofort zu dem Body gehört.
      *
-     * @return Der {@link Body}, der aus der {@link BodyDef} generiert wurde. Er liegt in der
-     *         Game-World dieses Handlers.
+     * @return Der {@link Body}, der aus der {@link BodyDef} generiert wurde. Er
+     *         liegt in der Game-World dieses Handlers.
      */
     public Body createBody(BodyDef bd, Actor actor)
     {
