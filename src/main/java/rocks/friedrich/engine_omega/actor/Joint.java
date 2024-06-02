@@ -24,9 +24,15 @@ import rocks.friedrich.engine_omega.event.EventListeners;
 import rocks.friedrich.engine_omega.physics.WorldHandler;
 
 /**
- * Verbindung zwischen Objekten.
+ * Eine Verbindung zwischen Objekten.
  *
- * @param <JointType> Typ der Verbindung in der Box2D-Repräsentation
+ * @param <JointType> Der Typ der Verbindung in der Box2D-Repräsentation.
+ *
+ * @see DistanceJoint
+ * @see PrismaticJoint
+ * @see RevoluteJoint
+ * @see RopeJoint
+ * @see WeldJoint
  */
 @API
 public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
@@ -36,9 +42,8 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
     private final EventListeners<Runnable> releaseListeners = new EventListeners<>();
 
     /**
-     * A joint might be removed and recreated, so we allow to set it here. If it
-     * is recreated, the old one has been automatically destroyed by the body
-     * destruction.
+     * Eine Verbindung kann entfernt und neu erstellt werden, daher benötigen
+     * wir diese Methode hier, damit die Verbindung neu gesetzt werden kann.
      */
     @Internal
     public final void setJoint(JointType joint, WorldHandler worldHandler)

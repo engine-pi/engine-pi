@@ -1077,55 +1077,63 @@ public abstract class Actor
     /**
      * Setzt die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
+     * <p>
      * Mit Hilfe der <a href=
      * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
      * bzw. des <a href=
      * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
-     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
-     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
-     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
-     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
-     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     * kann angegeben werden, wie „elastisch“ ein Objekt ist. Wie bei der
+     * Reibung liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass
+     * das Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie
+     * des Aufpralls erhalten bleibt. Bei Werte größer 1 prallt das Objekt bei
+     * jeder Kollision immer weiter ab. Wenn zwei Objekte aufeinander prallen,
+     * federt das Objekt mit dem höheren der beiden Stoßzahlen zurück. Soll ein
+     * Objekt nicht abprallen, so müssen beide Objekte auf 0 gesetzt werden.
+     * </p>
      *
-     * @param restitution Die Stoßzahl bzw. der Restitutionskoeffizient.
+     * @param elasticity Die Stoßzahl bzw. der Restitutionskoeffizient.
      *
-     * @see #getRestitution()
+     * @see #getElasticity()
      *
      * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137
      * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338
      */
     @API
-    public final void setRestitution(double restitution)
+    public final void setElasticity(double elasticity)
     {
-        if (Double.isNaN(restitution))
+        if (Double.isNaN(elasticity))
         {
-            return;
+            throw new RuntimeException("Ungültige Stoßzahl: " + elasticity);
         }
-        physicsHandler.setRestitution(restitution);
+        physicsHandler.setRestitution(elasticity);
     }
 
     /**
      * Gibt die Stoßzahl bzw. den Restitutionskoeffizienten zurück.
      *
+     * <p>
      * Mit Hilfe der <a href=
      * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
      * bzw. des <a href=
      * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
-     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
-     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
-     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
-     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
-     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     * kann angegeben werden, wie „elastisch“ ein Objekt ist. Wie bei der
+     * Reibung liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass
+     * das Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie
+     * des Aufpralls erhalten bleibt. Bei Werte größer 1 prallt das Objekt bei
+     * jeder Kollision immer weiter ab. Wenn zwei Objekte aufeinander prallen,
+     * federt das Objekt mit dem höheren der beiden Stoßzahlen zurück. Soll ein
+     * Objekt nicht abprallen, so müssen beide Objekte auf 0 gesetzt werden.
+     * </p>
      *
      * @return Die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
-     * @see #setRestitution(double)
+     * @see #setElasticity(double)
      *
      * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130
      * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333
      */
     @API
-    public final double getRestitution()
+    public final double getElasticity()
     {
         return physicsHandler.getRestitution();
     }
@@ -1200,15 +1208,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1234,15 +1242,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1265,15 +1273,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1289,11 +1297,14 @@ public abstract class Actor
 
     /**
      * Versetzt das Objekt - unabhängig von aktuellen Kräften und
-     * Geschwindigkeiten - <i>in Ruhe</i>. Damit werden alle (physikalischen)
-     * Bewegungen des Objektes zurückgesetzt. Sollte eine konstante
-     * <i>Schwerkraft</i> (oder etwas Vergleichbares) existieren, wo wird dieses
-     * Objekt jedoch möglicherweise aus der Ruhelage wieder in Bewegung
-     * versetzt.
+     * Geschwindigkeiten - <i>in Ruhe</i>.
+     *
+     * <p>
+     * Damit werden alle (physikalischen) Bewegungen des Objektes zurückgesetzt.
+     * Sollte eine konstante <i>Schwerkraft</i> (oder etwas Vergleichbares)
+     * existieren, wo wird dieses Objekt jedoch möglicherweise aus der Ruhelage
+     * wieder in Bewegung versetzt.
+     * </p>
      */
     @API
     public final void resetMovement()
@@ -1302,12 +1313,20 @@ public abstract class Actor
     }
 
     /**
-     * Testet, ob das Objekt "steht". Diese Funktion ist unter anderem hilfreich
-     * für die Entwicklung von Platformern (z.B. wenn der Spieler nur springen
-     * können soll, wenn er auf dem Boden steht).<br>
+     * Testet, ob das Objekt „steht“.
+     *
+     * <p>
+     * Diese Funktion ist unter anderem hilfreich für die Entwicklung von
+     * Platformern (z.B. wenn der Spieler nur springen können soll, wenn er auf
+     * dem Boden steht).
+     * </p>
+     *
+     * <p>
      * Diese Funktion ist eine <b>Heuristik</b>, sprich sie ist eine Annäherung.
-     * In einer Physik-Simulation ist die Definition von "stehen" nicht
-     * unbedingt einfach. Hier bedeutet es Folgendes:<br>
+     * In einer Physik-Simulation ist die Definition von „stehen“ nicht
+     * unbedingt einfach. Hier bedeutet es Folgendes:
+     * </p>
+     *
      * <i>Ein Objekt steht genau dann, wenn alle Eigenschaften erfüllt sind:</i>
      * <ul>
      * <li>Es ist ein <b>dynamisches Objekt</b>.</li>
@@ -1713,7 +1732,7 @@ public abstract class Actor
 
     /**
      * Gibt die Position des Zentrum des {@link Actor}-Objekts relativ zu dessen
-     * Position (Anker links unkten) an.
+     * Position (Anker links unten) an.
      *
      * @return Die Position des Zentrum des {@link Actor}-Objekts relativ zu
      *         dessen Position (Anker links unkten).
@@ -1779,7 +1798,7 @@ public abstract class Actor
     }
 
     /**
-     * Gib wahr zurück, falls das Objekt einer Ebene zugeordnet ist.
+     * Gibt wahr zurück, falls das Objekt einer Ebene zugeordnet ist.
      *
      * @return wahr, falls das Objekt einer Ebene zugeordnet ist, sonst falsch.
      */

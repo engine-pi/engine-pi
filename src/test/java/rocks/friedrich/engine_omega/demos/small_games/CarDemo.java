@@ -145,7 +145,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             rope[i].setBodyType(BodyType.DYNAMIC);
             rope[i].setDensity(150);
             rope[i].setFriction(GROUND_FRICTION);
-            rope[i].setRestitution(GROUND_RESTITUTION);
+            rope[i].setElasticity(GROUND_RESTITUTION);
             rope[i].setBorderRadius(.5);
             if (i == 0)
             {
@@ -193,7 +193,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             ground.setBodyType(BodyType.STATIC);
             ground.setColor(GROUND_COLOR);
             ground.setFriction(GROUND_FRICTION);
-            ground.setRestitution(GROUND_RESTITUTION);
+            ground.setElasticity(GROUND_RESTITUTION);
             ground.setDensity(50);
             add(ground);
         }
@@ -297,7 +297,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             setColor(GROUND_COLOR);
             setBodyType(BodyType.STATIC);
             setFriction(GROUND_FRICTION);
-            setRestitution(GROUND_RESTITUTION);
+            setElasticity(GROUND_RESTITUTION);
             setDensity(150);
             setBorderRadius(.1);
         }
@@ -360,7 +360,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             setDensity(100);
             setBodyType(BodyType.DYNAMIC);
             setFriction(.5);
-            setRestitution(.2);
+            setElasticity(.2);
             setDensity(150);
             setAngularDamping(1);
             setLayerPosition(2);

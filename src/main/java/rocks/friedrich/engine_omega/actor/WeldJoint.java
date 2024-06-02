@@ -22,6 +22,12 @@ package rocks.friedrich.engine_omega.actor;
 
 /**
  * Eine Schweißnaht klebt zwei Körper zusammen.
+ *
+ * @see Joint
+ * @see DistanceJoint
+ * @see PrismaticJoint
+ * @see RevoluteJoint
+ * @see RopeJoint
  */
 public class WeldJoint extends Joint<org.jbox2d.dynamics.joints.WeldJoint>
 {

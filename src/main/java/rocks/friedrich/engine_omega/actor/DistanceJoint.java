@@ -21,9 +21,15 @@
 package rocks.friedrich.engine_omega.actor;
 
 /**
- * Ein Abstandsgelenk zwingt zwei Punkte auf zwei Körpern dazu, in einem festen
+ * Ein Stabverbindung zwingt zwei Punkte auf zwei Körpern dazu, in einem festen
  * Abstand zueinander zu bleiben. Man kann sich das wie einen masselosen,
  * starren Stab vorstellen.
+ *
+ * @see Joint
+ * @see PrismaticJoint
+ * @see RevoluteJoint
+ * @see RopeJoint
+ * @see WeldJoint
  */
 public class DistanceJoint
         extends Joint<org.jbox2d.dynamics.joints.DistanceJoint>

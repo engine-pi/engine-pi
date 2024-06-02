@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.userinput;
+package rocks.friedrich.engine_omega.demos.input.mouse;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
@@ -26,20 +26,19 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseClickListener;
-import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class PaintingCircles extends Scene implements MouseClickListener
+public class PaintingCirclesDemo extends Scene implements MouseClickListener
 {
-    public PaintingCircles()
+    public PaintingCirclesDemo()
     {
-        this.addMouseClickListener(this);
+        addMouseClickListener(this);
     }
 
     private void paintCircleAt(double mX, double mY, double diameter)
     {
         Circle circle = new Circle(diameter);
         circle.setCenter(mX, mY);
-        this.add(circle);
+        add(circle);
     }
 
     @Override
@@ -50,7 +49,6 @@ public class PaintingCircles extends Scene implements MouseClickListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new PaintingCircles());
-        Util.addScreenshotKey("User Input Circles Simple");
+        Game.start(600, 400, new PaintingCirclesDemo());
     }
 }
