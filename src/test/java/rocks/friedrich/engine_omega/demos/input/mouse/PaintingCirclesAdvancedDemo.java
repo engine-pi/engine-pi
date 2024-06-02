@@ -30,7 +30,6 @@ import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseClickListener;
-import rocks.friedrich.engine_omega.tutorials.util.Util;
 
 public class PaintingCirclesAdvancedDemo extends Scene
         implements MouseClickListener
@@ -41,7 +40,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
 
     public PaintingCirclesAdvancedDemo()
     {
-        this.addMouseClickListener(this);
+        addMouseClickListener(this);
         ColorRect white = new ColorRect(Color.WHITE);
         ColorRect blue = new ColorRect(Color.BLUE);
         ColorRect pink = new ColorRect(Color.PINK);
@@ -66,7 +65,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
         Circle circle = new Circle(diameter);
         circle.setCenter(mX, mY);
         circle.setColor(color);
-        this.add(circle);
+        add(circle);
     }
 
     @Override
@@ -87,13 +86,13 @@ public class PaintingCirclesAdvancedDemo extends Scene
         {
             super(1, 1);
             this.color = color;
-            this.setColor(color);
+            setColor(color);
         }
 
         @Override
         public void onMouseDown(Vector position, MouseButton mouseButton)
         {
-            if (this.contains(position))
+            if (contains(position))
             {
                 activeColor = color;
             }
@@ -108,13 +107,13 @@ public class PaintingCirclesAdvancedDemo extends Scene
         {
             super("" + diameter, 1);
             this.diameter = diameter;
-            this.setColor(Color.CYAN);
+            setColor(Color.CYAN);
         }
 
         @Override
         public void onMouseDown(Vector position, MouseButton mouseButton)
         {
-            if (this.contains(position))
+            if (contains(position))
             {
                 activeDiameter = diameter;
             }
@@ -124,7 +123,5 @@ public class PaintingCirclesAdvancedDemo extends Scene
     public static void main(String[] args)
     {
         Game.start(600, 400, new PaintingCirclesAdvancedDemo());
-        // Game.setDebug(true);
-        Util.addScreenshotKey("User Input Circles Advanced");
     }
 }

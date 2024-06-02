@@ -25,7 +25,6 @@ intern mit Einheiten aus der realen Welt, deshalb bietet sich Meter als Maßheit
 
 https://engine-alpha.org/wiki/v4.x/User_Input
 
-
 ### Tastatureingaben
 
 Der [folgende Code](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
@@ -172,13 +171,15 @@ public class KeyEventDisplayDemo extends Scene
 }
 ```
 
-### Mauseeingaben
+https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
+### Mauseingaben
 
 Auf Mausklick reagieren: Kreise malen
 
-Das folgende Beispiel malt bei jedem Knopfdruck einen Kreis.
+Das [folgende Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesDemo.java) malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
+
+[^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
 
 ```java
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
@@ -203,22 +204,176 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 }
 ```
 
-MouseClickListener
+#### Schnittstelle `MouseClickListener`
 
-Das Interface ea.event.MouseClickListener ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das Reagieren auf Loslassen der Maus. Mehr dazu in der Dokumentation.
+Das Interface [MouseClickListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/MouseClickListener.html) ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das Reagieren auf Loslassen der Maus.
 
 Bei einem Mausklick (egal ob linke, rechte, oder sonstige Maustaste) wird ein Kreis an der Position des Klicks erstellt:
 
-@Override
-public void onMouseDown(Vector position, MouseButton mouseButton) {
-    paintCircleAt(position.getX(), position.getY(), 1);
+```java
+    @Override
+    public void onMouseDown(Vector position, MouseButton mouseButton)
+    {
+        paintCircleAt(position.getX(), position.getY(), 1);
+    }
+```
+
+#### `Vector`
+
+Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
+Engine hier die interne Klasse
+[Vector](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/Vector.html). Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell für die Arbeit mit der Engine.
+
+https://engine-alpha.org/wiki/v4.x/User_Input#Vector
+
+Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
+
+[PaintingCirclesAdvancedDemo.java](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+
+## Physics
+
+https://engine-alpha.org/wiki/v4.x/Physics
+
+Physik in der Engine
+
+Seit Version 4.0 nutzt Engine Alpha eine Java-Version von Box2D. Diese mächtige und effiziente Physics-Engine ist in der Engine leicht zu bedienen und ermöglicht es, mit wenig Aufwand mechanische Phänomene in Deine Spiele zu bringen: von Platforming und Billiard bis zu Hängebrücken und Autos.
+
+Die Physics Engine basiert auf den Prinzipien der Klassischen Mechanik. Ein Grundverständnis hierüber ist nötig: Begriffe wie Masse, Dichte, Impuls und Kraft sollten dir zumindest grob geläufig sein, um diese auf deine Spielobjekte anzuwenden.
+
+#### Beispiel 1: Dominos
+
+Um die Grundlagen der Engine Alpha Physics zu testen, bauen wir eine einfache Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
+
+#### Setup ohne Physics
+
+Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
+
+```java
+import ea.*;
+import ea.actor.*;
+
+import java.awt.Color;
+
+public class Dominoes extends Scene {
+
+    private Rectangle ground;
+    private Rectangle wall;
+    private Circle ball;
+
+    public Dominoes() {
+        setupBasicObjects();
+        makeDominoes(20, 0.4f, 3f);
+    }
+
+    private void setupBasicObjects() {
+        ground = new Rectangle(200, 2);
+        ground.setCenter(0, -5);
+        ground.setColor(Color.WHITE);
+        add(ground);
+
+        ball = new Circle(0.5f);
+        ball.setColor(Color.RED);
+        ball.setPosition(-10, -2);
+        add(ball);
+
+        wall = new Rectangle(1, 40);
+        wall.setPosition(-14, -4);
+        wall.setColor(Color.WHITE);
+        add(wall);
+    }
+
+    private void makeDominoes(int num, float beamWidth, float beamHeight) {
+        for(int i=0; i<num; i++) {
+            Rectangle beam = new Rectangle(beamWidth, beamHeight);
+            beam.setPosition(i*3*(beamWidth), -4);
+            beam.setColor(Color.BLUE);
+            add(beam);
+        }
+    }
 }
+```
 
-Vector
+Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar Dominosteine, und ein weißer Boden mit Wand.
+Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!
 
-Statt zwei float-Parametern für die X/Y-Koordinaten des Klicks, nutzt die Engine hier die interne Klasse ea.Vector. Diese ist einfach ein 2D-Vektor und macht den Code übersichtlicher. Die Klasse Vector wird in der Engine durchgehend verwendet und ist essentiell für die Arbeit mit der Engine.
+#### Die Body Types
 
-### Zeitsteuerung
+Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies drückt sich in verschiedenen Body Types aus:
+
+    Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte: Der Ball prallt an den Dominos ab und die Steine fallen um. Diese Actors haben einen dynamischen Körper.
+    Aber der Boden und die Wand sollen nicht wie die Dominos umfallen. Egal mit wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben. Diese Actors haben einen statischen Körper.
+
+Mit der Methode Actor.setBodyType(BodyType) wird das grundlegende Verhalten eines Actors bestimmt. Zusätzlich wird mit Scene.setGracity(Vector) eine Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
+Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall
+
+In einer setupPhysics() Methode werden die Body Types für die Actors gesetzt und die Schwerkraft (standardmäßige 9,81 m/s^2, gerade nach unten) aktiviert:
+
+```java
+private void setupPhysics() {
+    ground.setBodyType(BodyType.STATIC);
+    wall.setBodyType(BodyType.STATIC);
+    ball.setBodyType(BodyType.DYNAMIC);
+
+    this.setGravity(new Vector(0, -9.81f));
+}
+```
+
+Zusätzlich werden die Dominos in makeDominoes mit beam.setBodyType(BodyType.DYNAMIC); eingerichtet.
+
+Dynamische und statische Körper sind die essentiellsten Body Types in der Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types in der Dokumentation von BodyType und eine vergleichende Übersicht in der dedizierten Wikiseite
+Den Ball Werfen
+Mit einem Methodenaufruf fliegt der Ball
+
+Zeit, die Dominos umzuschmeißen! Die Methode [https://docs.engine-alpha.org/4.x/ea/actor/Actor.html#applyImpulse-ea.Vector- Actor.applyImpulse(Vector) erlaubt dir, den Ball physikalisch korrekt zu 'werfen'.
+
+Mit der Zeile ball.applyImpulse(new Vector(15, 12)); kannst du den ersten Ballwurf testen.
+
+Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in Richtung des Mauscursors katapultiert.
+Das Angle-Objekt hilft dem Spieler
+
+Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des Impulses markiert:
+
+```java
+private void setupAngle() {
+    angle = new Rectangle(1, 0.25f);
+    angle.setColor(Color.GRAY);
+    add(angle);
+}
+```
+
+Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen. Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
+
+```java
+@Override
+public void onFrameUpdate(float deltaSeconds) {
+    Vector mousePosition = getMousePosition();
+    Vector ballCenter = ball.getCenter();
+
+    Vector distance = ballCenter.getDistance(mousePosition);
+    angle.setPosition(ball.getCenter());
+    angle.setSize(distance.getLength(), 0.25f);
+    float rot = Vector.RIGHT.getAngle(distance);
+    angle.setRotation(rot);
+}
+```
+
+Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das Interface MouseClickListener implementiert:
+
+```java
+@Override
+public void onMouseDown(Vector position, MouseButton button) {
+    Vector impulse = ball.getCenter().getDistance(position).multiply(10);
+    ball.applyImpulse(impulse);
+}
+```
+
+#### Anregung zum Experimentieren
+
+    Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit queer gelegten Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der Zerstörung.
+
+    Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
+
+## Zeitsteuerung
 
 ```java
 import java.awt.event.KeyEvent;
