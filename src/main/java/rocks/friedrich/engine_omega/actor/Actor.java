@@ -1443,8 +1443,8 @@ public abstract class Actor
     }
 
     /**
-     * Erstellt einen Distance-Joint zwischen diesem und einem weiteren
-     * {@link Actor}-Objekt.
+     * Erstellt einen Stabverbindung {@link DistanceJoint} zwischen diesem und
+     * einem weiteren {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
      *                    zugehörigen {@link Actor}-Objekt über einen
@@ -1456,8 +1456,8 @@ public abstract class Actor
      * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
      *                    also <code>other</code>. Der zweite Befestigungspunkt
      *                    des Joints. Angabe relativ zu <code>other</code>
-     * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
-     *         werden kann.
+     * @return Ein {@link DistanceJoint}-Objekt, mit dem die Verbindung weiter
+     *         gesteuert werden kann.
      * @see org.jbox2d.dynamics.joints.DistanceJoint
      */
     @API
@@ -1484,8 +1484,8 @@ public abstract class Actor
      * {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
-     *                    zugehörigen {@link Actor}-Objekt über einen
-     *                    <code>DistanceJoint</code> verbunden sein soll.
+     *                    zugehörigen {@link Actor}-Objekt über eine Schweißnaht
+     *                    verbunden sein soll.
      * @param anchorThis  Der Ankerpunkt für das zugehörige
      *                    {@link Actor}-Objekt. Der erste Befestigungspunkt der
      *                    Schweißnaht. Angabe relativ zu <code>this</code> also

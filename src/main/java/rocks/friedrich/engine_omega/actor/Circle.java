@@ -41,7 +41,7 @@ public class Circle extends Geometry
     private double diameter;
 
     /**
-     * Konstruktor.
+     * Erzeugt einen Kreis durch Angabe des Durchmessers.
      *
      * @param diameter Durchmesser des Kreises
      */
@@ -50,6 +50,14 @@ public class Circle extends Geometry
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
         setColor(Color.WHITE);
+    }
+
+    /**
+     * Erzeugen einen Kreis mit einem Meter Durchmesser.
+     */
+    public Circle()
+    {
+        this(1);
     }
 
     /**
