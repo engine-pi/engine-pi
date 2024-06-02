@@ -37,7 +37,7 @@ public class Ball extends Circle implements FrameUpdateListener
         setColor(Color.YELLOW);
         setBodyType(BodyType.DYNAMIC);
         setFriction(0);
-        setRestitution(0.9);
+        setElasticity(0.9);
     }
 
     @Override

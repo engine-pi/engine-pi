@@ -178,7 +178,7 @@ public final class MainAnimation
                 setGravity(new Vector(0, -9.81));
                 Rectangle ground = new Rectangle(20, .2);
                 ground.setCenter(0, -6);
-                ground.setRestitution(.9);
+                ground.setElasticity(.9);
                 ground.setFriction(.2);
                 ground.setBodyType(BodyType.STATIC);
                 add(ground);
@@ -186,7 +186,7 @@ public final class MainAnimation
                 {
                     Rectangle a = new Rectangle(1, 1);
                     a.setPosition(-5, -2);
-                    a.setRestitution(.9);
+                    a.setElasticity(.9);
                     a.setFriction(1);
                     a.setBodyType(BodyType.DYNAMIC);
                     a.setColor(new Color(26, 113, 156));
@@ -194,7 +194,7 @@ public final class MainAnimation
                     spawnItem(a);
                     Circle b = new Circle(1);
                     b.setPosition(5, -1);
-                    b.setRestitution(.9);
+                    b.setElasticity(.9);
                     b.setFriction(1);
                     b.setBodyType(BodyType.DYNAMIC);
                     b.setColor(new Color(158, 5, 5));
@@ -202,7 +202,7 @@ public final class MainAnimation
                     spawnItem(b);
                     Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
                             new Vector(.5, 1));
-                    c.setRestitution(.9);
+                    c.setElasticity(.9);
                     c.setFriction(1);
                     c.setBodyType(BodyType.DYNAMIC);
                     c.setColor(new Color(25, 159, 69));

@@ -52,7 +52,7 @@ public class Platform extends TileContainer
         setRightTile(TileMap.createFromImage(basePath + "platform_r.png"));
         setBodyType(BodyType.STATIC);
         setFriction(FRICTION);
-        setRestitution(0);
+        setElasticity(0);
     }
 
     private void setLeftTile(Tile tile)

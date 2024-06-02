@@ -42,7 +42,7 @@ public class Box extends Image
         super(getBoxPath(type), SIZE, SIZE);
         setBodyType(BodyType.DYNAMIC);
         // setMass(MASS_IN_KG);
-        setRestitution(RESTITUTION);
+        setElasticity(RESTITUTION);
     }
 
     public static String getBoxPath(int type)

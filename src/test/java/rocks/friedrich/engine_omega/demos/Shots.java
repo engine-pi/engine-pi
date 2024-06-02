@@ -88,7 +88,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
             setPosition(x + .15, y + .15);
             setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             setBodyType(BodyType.DYNAMIC);
-            setRestitution(0.85);
+            setElasticity(0.85);
             setFriction(0.1);
         }
     }
@@ -115,7 +115,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
             setColor(Color.WHITE);
             setBodyType(BodyType.STATIC);
             setFriction(.05);
-            setRestitution(.3);
+            setElasticity(.3);
             setDensity(150);
         }
     }

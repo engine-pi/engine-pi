@@ -129,7 +129,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         setStateTransition(PlayerState.Midair, PlayerState.Falling);
         setStateTransition(PlayerState.Landing, PlayerState.Idle);
         setFriction(FRICTION);
-        setRestitution(RESTITUTION);
+        setElasticity(RESTITUTION);
         setFixtures("C0.5,0.3,0.3&C0.5,0.6,0.3");
         /*
          * setFixtures(() -> { List<Shape> shapeList = new ArrayList<>(2);

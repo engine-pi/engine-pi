@@ -51,14 +51,14 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
         left.rotateBy(-21);
         left.setBodyType(BodyType.STATIC);
         left.setColor(Color.white);
-        left.setRestitution(15f);
+        left.setElasticity(15f);
         add(left);
         Rectangle right = new Rectangle(200, 10);
         right.setPosition(+Showcases.WIDTH / 6, 0);
         right.rotateBy(45);
         right.setBodyType(BodyType.STATIC);
         right.setColor(Color.white);
-        right.setRestitution(15f);
+        right.setElasticity(15);
         add(right);
         addKeyListener(this);
         repeat(1, () -> createCircle(getMousePosition(), Color.YELLOW));

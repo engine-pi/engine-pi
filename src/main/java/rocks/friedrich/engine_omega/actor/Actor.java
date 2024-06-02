@@ -1077,55 +1077,63 @@ public abstract class Actor
     /**
      * Setzt die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
+     * <p>
      * Mit Hilfe der <a href=
      * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
      * bzw. des <a href=
      * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
-     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
-     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
-     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
-     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
-     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     * kann angegeben werden, wie „elastisch“ ein Objekt ist. Wie bei der
+     * Reibung liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass
+     * das Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie
+     * des Aufpralls erhalten bleibt. Bei Werte größer 1 prallt das Objekt bei
+     * jeder Kollision immer weiter ab. Wenn zwei Objekte aufeinander prallen,
+     * federt das Objekt mit dem höheren der beiden Stoßzahlen zurück. Soll ein
+     * Objekt nicht abprallen, so müssen beide Objekte auf 0 gesetzt werden.
+     * </p>
      *
-     * @param restitution Die Stoßzahl bzw. der Restitutionskoeffizient.
+     * @param elasticity Die Stoßzahl bzw. der Restitutionskoeffizient.
      *
-     * @see #getRestitution()
+     * @see #getElasticity()
      *
      * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137
      * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338
      */
     @API
-    public final void setRestitution(double restitution)
+    public final void setElasticity(double elasticity)
     {
-        if (Double.isNaN(restitution))
+        if (Double.isNaN(elasticity))
         {
-            return;
+            throw new RuntimeException("Ungültige Stoßzahl: " + elasticity);
         }
-        physicsHandler.setRestitution(restitution);
+        physicsHandler.setRestitution(elasticity);
     }
 
     /**
      * Gibt die Stoßzahl bzw. den Restitutionskoeffizienten zurück.
      *
+     * <p>
      * Mit Hilfe der <a href=
      * "https://de.wikipedia.org/wiki/Sto%C3%9F_(Physik)#Realer_Sto%C3%9F">Stoßzahl</a>
      * bzw. des <a href=
      * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
-     * kann angegeben werden, wie „federnd“ ein Objekt ist. Wie bei der Reibung
-     * liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass das
-     * Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie des
-     * Aufpralls erhalten bleibt. Wenn zwei Objekte aufeinander prallen,
-     * tendiert die resultierende Rückfederung zum höheren der beiden Werte.
+     * kann angegeben werden, wie „elastisch“ ein Objekt ist. Wie bei der
+     * Reibung liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass
+     * das Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie
+     * des Aufpralls erhalten bleibt. Bei Werte größer 1 prallt das Objekt bei
+     * jeder Kollision immer weiter ab. Wenn zwei Objekte aufeinander prallen,
+     * federt das Objekt mit dem höheren der beiden Stoßzahlen zurück. Soll ein
+     * Objekt nicht abprallen, so müssen beide Objekte auf 0 gesetzt werden.
+     * </p>
      *
      * @return Die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
-     * @see #setRestitution(double)
+     * @see #setElasticity(double)
      *
      * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130
      * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333
      */
     @API
-    public final double getRestitution()
+    public final double getElasticity()
     {
         return physicsHandler.getRestitution();
     }
