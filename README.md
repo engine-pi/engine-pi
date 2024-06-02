@@ -237,6 +237,8 @@ Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
+[Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/ElasticityDemo.java)
+
 ```java
 
 
