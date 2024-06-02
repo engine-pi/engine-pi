@@ -1357,27 +1357,25 @@ public abstract class Actor
      * zueinander drehen</b>.
      * </p>
      *
-     * @param other          Das zweite {@link Actor}-Objekt, das ab sofort mit
-     *                       dem zugehörigen {@link Actor}-Objekt über einen
-     *                       <code>RevoluteJoint</code> verbunden sein soll.
-     * @param relativeAnchor Der Ankerpunkt <b>relativ zu diesem Actor</b>. Es
-     *                       wird davon ausgegangen, dass beide Objekte bereits
-     *                       korrekt positioniert sind.
+     * @param other  Das zweite {@link Actor}-Objekt, das ab sofort mit dem
+     *               zugehörigen {@link Actor}-Objekt über einen
+     *               <code>RevoluteJoint</code> verbunden sein soll.
+     * @param anchor Der Ankerpunkt <b>relativ zu diesem Actor</b>. Es wird
+     *               davon ausgegangen, dass beide Objekte bereits korrekt
+     *               positioniert sind.
      * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
      *         werden kann.
      * @see org.jbox2d.dynamics.joints.RevoluteJoint
      */
     @API
-    public final RevoluteJoint createRevoluteJoint(Actor other,
-            Vector relativeAnchor)
+    public final RevoluteJoint createRevoluteJoint(Actor other, Vector anchor)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
-            RevoluteJointDef revoluteJointDef = new RevoluteJointDef();
-            revoluteJointDef.initialize(a, b,
-                    getPosition().add(relativeAnchor).toVec2());
-            revoluteJointDef.collideConnected = false;
+            RevoluteJointDef def = new RevoluteJointDef();
+            def.initialize(a, b, getPosition().add(anchor).toVec2());
+            def.collideConnected = false;
             return (org.jbox2d.dynamics.joints.RevoluteJoint) world
-                    .createJoint(revoluteJointDef);
+                    .createJoint(def);
         }, new RevoluteJoint());
     }
 
@@ -1385,40 +1383,38 @@ public abstract class Actor
      * Erstellt einen Rope-Joint zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
-     * @param other               Das zweite {@link Actor}-Objekt, das ab sofort
-     *                            mit dem zugehörigen {@link Actor}-Objekt über
-     *                            einen <code>RopeJoint</code> verbunden sein
-     *                            soll.
-     * @param relativeAnchor      Der Ankerpunkt für das zugehörige
-     *                            {@link Actor}-Objekt. Der erste
-     *                            Befestigungspunkt des Lassos. Angabe relativ
-     *                            zur Position vom zugehörigen Objekt.
-     * @param relativeAnchorOther Der Ankerpunkt für das zweite
-     *                            {@link Actor}-Objekt, also <code>other</code>.
-     *                            Der zweite Befestigungspunkt des Lassos.
-     *                            Angabe relativ zur Position vom zugehörigen
-     *                            Objekt.
-     * @param ropeLength          Die Länge des Lassos. Dies ist ab sofort die
-     *                            maximale Länge, die die beiden Ankerpunkte der
-     *                            Objekte voneinader entfernt sein können.
+     * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
+     *                    zugehörigen {@link Actor}-Objekt über einen
+     *                    <code>RopeJoint</code> verbunden sein soll.
+     * @param anchor      Der Ankerpunkt für das zugehörige
+     *                    {@link Actor}-Objekt. Der erste Befestigungspunkt des
+     *                    Lassos. Angabe relativ zur Position vom zugehörigen
+     *                    Objekt.
+     * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
+     *                    also <code>other</code>. Der zweite Befestigungspunkt
+     *                    des Lassos. Angabe relativ zur Position vom
+     *                    zugehörigen Objekt.
+     * @param ropeLength  Die Länge des Lassos. Dies ist ab sofort die maximale
+     *                    Länge, die die beiden Ankerpunkte der Objekte
+     *                    voneinader entfernt sein können.
      * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
      *         werden kann.
      * @see org.jbox2d.dynamics.joints.RopeJoint
      */
     @API
-    public final RopeJoint createRopeJoint(Actor other, Vector relativeAnchor,
-            Vector relativeAnchorOther, double ropeLength)
+    public final RopeJoint createRopeJoint(Actor other, Vector anchor,
+            Vector anchorOther, double ropeLength)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
-            RopeJointDef ropeJointDef = new RopeJointDef();
-            ropeJointDef.bodyA = a;
-            ropeJointDef.bodyB = b;
-            ropeJointDef.localAnchorA.set(relativeAnchor.toVec2());
-            ropeJointDef.localAnchorB.set(relativeAnchorOther.toVec2());
-            ropeJointDef.collideConnected = true;
-            ropeJointDef.maxLength = (float) ropeLength;
+            RopeJointDef def = new RopeJointDef();
+            def.bodyA = a;
+            def.bodyB = b;
+            def.localAnchorA.set(anchor.toVec2());
+            def.localAnchorB.set(anchorOther.toVec2());
+            def.collideConnected = true;
+            def.maxLength = (float) ropeLength;
             return (org.jbox2d.dynamics.joints.RopeJoint) world
-                    .createJoint(ropeJointDef);
+                    .createJoint(def);
         }, new RopeJoint());
     }
 
@@ -1436,14 +1432,13 @@ public abstract class Actor
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             double angleInRadians = Math.toRadians(axisAngle);
-            PrismaticJointDef prismaticJointDef = new PrismaticJointDef();
-            prismaticJointDef.initialize(a, b,
-                    getPosition().add(anchor).toVec2(),
+            PrismaticJointDef def = new PrismaticJointDef();
+            def.initialize(a, b, getPosition().add(anchor).toVec2(),
                     new Vec2((float) Math.cos(angleInRadians),
                             (float) Math.sin(angleInRadians)));
-            prismaticJointDef.collideConnected = false;
+            def.collideConnected = false;
             return (org.jbox2d.dynamics.joints.PrismaticJoint) world
-                    .createJoint(prismaticJointDef);
+                    .createJoint(def);
         }, new PrismaticJoint());
     }
 
@@ -1451,41 +1446,36 @@ public abstract class Actor
      * Erstellt einen Distance-Joint zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
-     * @param other                 Das zweite {@link Actor}-Objekt, das ab
-     *                              sofort mit dem zugehörigen
-     *                              {@link Actor}-Objekt über einen
-     *                              <code>DistanceJoint</code> verbunden sein
-     *                              soll.
-     * @param anchorRelativeToThis  Der Ankerpunkt für das zugehörige
-     *                              {@link Actor}-Objekt. Der erste
-     *                              Befestigungspunkt des Joints. Angabe relativ
-     *                              zu <code>this</code> also absolut.
-     * @param anchorRelativeToOther Der Ankerpunkt für das zweite
-     *                              {@link Actor}-Objekt, also
-     *                              <code>other</code>. Der zweite
-     *                              Befestigungspunkt des Joints. Angabe relativ
-     *                              zu <code>other</code>
+     * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
+     *                    zugehörigen {@link Actor}-Objekt über einen
+     *                    <code>DistanceJoint</code> verbunden sein soll.
+     * @param anchorThis  Der Ankerpunkt für das zugehörige
+     *                    {@link Actor}-Objekt. Der erste Befestigungspunkt des
+     *                    Joints. Angabe relativ zu <code>this</code> also
+     *                    absolut.
+     * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
+     *                    also <code>other</code>. Der zweite Befestigungspunkt
+     *                    des Joints. Angabe relativ zu <code>other</code>
      * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
      *         werden kann.
      * @see org.jbox2d.dynamics.joints.DistanceJoint
      */
     @API
     public final DistanceJoint createDistanceJoint(Actor other,
-            Vector anchorRelativeToThis, Vector anchorRelativeToOther)
+            Vector anchorThis, Vector anchorOther)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
-            DistanceJointDef distanceJointDef = new DistanceJointDef();
-            distanceJointDef.bodyA = a;
-            distanceJointDef.bodyB = b;
-            distanceJointDef.localAnchorA.set(anchorRelativeToThis.toVec2());
-            distanceJointDef.localAnchorB.set(anchorRelativeToOther.toVec2());
+            DistanceJointDef def = new DistanceJointDef();
+            def.bodyA = a;
+            def.bodyB = b;
+            def.localAnchorA.set(anchorThis.toVec2());
+            def.localAnchorB.set(anchorOther.toVec2());
             Vector distanceBetweenBothActors = (this.getPosition()
-                    .add(anchorRelativeToThis)).getDistance(
-                            other.getPosition().add(anchorRelativeToOther));
-            distanceJointDef.length = (float) distanceBetweenBothActors
-                    .getLength();
+                    .add(anchorThis))
+                    .getDistance(other.getPosition().add(anchorOther));
+            def.length = (float) distanceBetweenBothActors.getLength();
             return (org.jbox2d.dynamics.joints.DistanceJoint) world
-                    .createJoint(distanceJointDef);
+                    .createJoint(def);
         }, new DistanceJoint());
     }
 
@@ -1493,36 +1483,32 @@ public abstract class Actor
      * Erstellt eine Schweißnaht zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
-     * @param other                 Das zweite {@link Actor}-Objekt, das ab
-     *                              sofort mit dem zugehörigen
-     *                              {@link Actor}-Objekt über einen
-     *                              <code>DistanceJoint</code> verbunden sein
-     *                              soll.
-     * @param anchorRelativeToThis  Der Ankerpunkt für das zugehörige
-     *                              {@link Actor}-Objekt. Der erste
-     *                              Befestigungspunkt der Schweißnaht. Angabe
-     *                              relativ zu <code>this</code> also absolut.
-     * @param anchorRelativeToOther Der Ankerpunkt für das zweite
-     *                              {@link Actor}-Objekt, also
-     *                              <code>other</code>. Der zweite
-     *                              Befestigungspunkt der Schweißnaht. Angabe
-     *                              relativ zu <code>other</code>
+     * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
+     *                    zugehörigen {@link Actor}-Objekt über einen
+     *                    <code>DistanceJoint</code> verbunden sein soll.
+     * @param anchorThis  Der Ankerpunkt für das zugehörige
+     *                    {@link Actor}-Objekt. Der erste Befestigungspunkt der
+     *                    Schweißnaht. Angabe relativ zu <code>this</code> also
+     *                    absolut.
+     * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
+     *                    also <code>other</code>. Der zweite Befestigungspunkt
+     *                    der Schweißnaht. Angabe relativ zu <code>other</code>
      * @return Ein {@link WeldJoint}-Objekt, mit dem die Verbindung weiter
      *         gesteuert werden kann.
      * @see org.jbox2d.dynamics.joints.DistanceJoint
      */
     @API
-    public final WeldJoint createWeldJoint(Actor other,
-            Vector anchorRelativeToThis, Vector anchorRelativeToOther)
+    public final WeldJoint createWeldJoint(Actor other, Vector anchorThis,
+            Vector anchorOther)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
-            WeldJointDef weldJointDef = new WeldJointDef();
-            weldJointDef.bodyA = a;
-            weldJointDef.bodyB = b;
-            weldJointDef.localAnchorA.set(anchorRelativeToThis.toVec2());
-            weldJointDef.localAnchorB.set(anchorRelativeToOther.toVec2());
+            WeldJointDef def = new WeldJointDef();
+            def.bodyA = a;
+            def.bodyB = b;
+            def.localAnchorA.set(anchorThis.toVec2());
+            def.localAnchorB.set(anchorOther.toVec2());
             return (org.jbox2d.dynamics.joints.WeldJoint) world
-                    .createJoint(weldJointDef);
+                    .createJoint(def);
         }, new WeldJoint());
     }
 
