@@ -1200,15 +1200,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1234,15 +1234,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1265,15 +1265,15 @@ public abstract class Actor
      *
      * <p>
      * <ul>
-     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
-     *
-     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
      * <li>Golfball (45 g, 80 m/s): 3,6 Ns</li>
      *
-     * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
-     *
      * <li>Pistolenkugel (9 g, 500 m/s): 4,5 Ns
+     *
+     * <li>Radfahrer (80 kg, 18 km/h): 400 Ns</li>
+     *
+     * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
      * </p>
      *
@@ -1289,11 +1289,14 @@ public abstract class Actor
 
     /**
      * Versetzt das Objekt - unabhängig von aktuellen Kräften und
-     * Geschwindigkeiten - <i>in Ruhe</i>. Damit werden alle (physikalischen)
-     * Bewegungen des Objektes zurückgesetzt. Sollte eine konstante
-     * <i>Schwerkraft</i> (oder etwas Vergleichbares) existieren, wo wird dieses
-     * Objekt jedoch möglicherweise aus der Ruhelage wieder in Bewegung
-     * versetzt.
+     * Geschwindigkeiten - <i>in Ruhe</i>.
+     *
+     * <p>
+     * Damit werden alle (physikalischen) Bewegungen des Objektes zurückgesetzt.
+     * Sollte eine konstante <i>Schwerkraft</i> (oder etwas Vergleichbares)
+     * existieren, wo wird dieses Objekt jedoch möglicherweise aus der Ruhelage
+     * wieder in Bewegung versetzt.
+     * </p>
      */
     @API
     public final void resetMovement()
@@ -1302,12 +1305,20 @@ public abstract class Actor
     }
 
     /**
-     * Testet, ob das Objekt "steht". Diese Funktion ist unter anderem hilfreich
-     * für die Entwicklung von Platformern (z.B. wenn der Spieler nur springen
-     * können soll, wenn er auf dem Boden steht).<br>
+     * Testet, ob das Objekt „steht“.
+     *
+     * <p>
+     * Diese Funktion ist unter anderem hilfreich für die Entwicklung von
+     * Platformern (z.B. wenn der Spieler nur springen können soll, wenn er auf
+     * dem Boden steht).
+     * </p>
+     *
+     * <p>
      * Diese Funktion ist eine <b>Heuristik</b>, sprich sie ist eine Annäherung.
-     * In einer Physik-Simulation ist die Definition von "stehen" nicht
-     * unbedingt einfach. Hier bedeutet es Folgendes:<br>
+     * In einer Physik-Simulation ist die Definition von „stehen“ nicht
+     * unbedingt einfach. Hier bedeutet es Folgendes:
+     * </p>
+     *
      * <i>Ein Objekt steht genau dann, wenn alle Eigenschaften erfüllt sind:</i>
      * <ul>
      * <li>Es ist ein <b>dynamisches Objekt</b>.</li>
@@ -1713,7 +1724,7 @@ public abstract class Actor
 
     /**
      * Gibt die Position des Zentrum des {@link Actor}-Objekts relativ zu dessen
-     * Position (Anker links unkten) an.
+     * Position (Anker links unten) an.
      *
      * @return Die Position des Zentrum des {@link Actor}-Objekts relativ zu
      *         dessen Position (Anker links unkten).
@@ -1779,7 +1790,7 @@ public abstract class Actor
     }
 
     /**
-     * Gib wahr zurück, falls das Objekt einer Ebene zugeordnet ist.
+     * Gibt wahr zurück, falls das Objekt einer Ebene zugeordnet ist.
      *
      * @return wahr, falls das Objekt einer Ebene zugeordnet ist, sonst falsch.
      */

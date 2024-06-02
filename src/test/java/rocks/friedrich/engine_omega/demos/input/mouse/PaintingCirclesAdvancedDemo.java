@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.userinput;
+package rocks.friedrich.engine_omega.demos.input.mouse;
 
 import java.awt.Color;
 
@@ -32,13 +32,14 @@ import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseClickListener;
 import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class PaintingCirclesAdvanced extends Scene implements MouseClickListener
+public class PaintingCirclesAdvancedDemo extends Scene
+        implements MouseClickListener
 {
     static Color activeColor = Color.WHITE;
 
     static double activeDiameter = 1;
 
-    public PaintingCirclesAdvanced()
+    public PaintingCirclesAdvancedDemo()
     {
         this.addMouseClickListener(this);
         ColorRect white = new ColorRect(Color.WHITE);
@@ -122,7 +123,7 @@ public class PaintingCirclesAdvanced extends Scene implements MouseClickListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new PaintingCirclesAdvanced());
+        Game.start(600, 400, new PaintingCirclesAdvancedDemo());
         // Game.setDebug(true);
         Util.addScreenshotKey("User Input Circles Advanced");
     }

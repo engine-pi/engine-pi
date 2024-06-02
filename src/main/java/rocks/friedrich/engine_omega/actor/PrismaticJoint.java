@@ -23,14 +23,14 @@ package rocks.friedrich.engine_omega.actor;
 import rocks.friedrich.engine_omega.annotations.API;
 
 /**
- * Ein prismatisches Gelenk.
+ * Eine Federverbindung.
  *
- * <p>
- * Dieses Gelenk bietet einen Freiheitsgrad: Verschiebung entlang einer im
- * KörperA fixierten Achse. Eine Relativdrehung ist nicht möglich. Sie können
- * eine Gelenkbegrenzung verwenden, um den Bewegungsbereich einzuschränken, und
- * einen Gelenkmotor, um die Bewegung anzutreiben oder um die Gelenkreibung zu
- * modellieren.
+ * @see Joint
+ * @see DistanceJoint
+ * @see PrismaticJoint
+ * @see RevoluteJoint
+ * @see RopeJoint
+ * @see WeldJoint
  */
 public final class PrismaticJoint
         extends Joint<org.jbox2d.dynamics.joints.PrismaticJoint>
