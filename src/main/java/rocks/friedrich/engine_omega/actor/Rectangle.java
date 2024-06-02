@@ -36,12 +36,12 @@ import rocks.friedrich.engine_omega.physics.FixtureData;
 public class Rectangle extends Geometry
 {
     /**
-     * Die Breite
+     * Die Breite des Rechtecks in Meter.
      */
     private double width;
 
     /**
-     * Die Höhe
+     * Die Höhe des Rechtecks in Meter.
      */
     private double height;
 
@@ -70,12 +70,34 @@ public class Rectangle extends Geometry
         this.height = height;
     }
 
+    /**
+     * Gibt die Breite des Rechtecks in Meter zurück.
+     *
+     * @return Die Breite des Rechtecks in Meter.
+     */
     @API
     public double getWidth()
     {
         return width;
     }
 
+    /**
+     * Setzt die Breite des Rechtecks neu. Dadurch ändern sich die
+     * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
+     *
+     * @param width Die neue Breite für das Rechteck in Meter.
+     */
+    @API
+    public void setWidth(double width)
+    {
+        setSize(width, getHeight());
+    }
+
+    /**
+     * Gibt die Höhe des Rechtecks in Meter zurück.
+     *
+     * @return Die Höhe des Rechtecks in Meter.
+     */
     @API
     public double getHeight()
     {
@@ -83,11 +105,23 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Setzt die Höhe und Breite des Rechtecks neu. Ändert die physikalischen
-     * Eigenschaften (Masse etc.).
+     * Setzt die Höhe des Rechtecks neu. Dadurch ändern sich die physikalischen
+     * Eigenschaften (Masse etc.) des Rechtecks.
      *
-     * @param width  Neue Breite für das Rechteck.
-     * @param height Neue Höhe für das Rechteck.
+     * @param height Die neue Höhe für das Rechteck in Meter.
+     */
+    @API
+    public void setHeight(double height)
+    {
+        setSize(getWidth(), height);
+    }
+
+    /**
+     * Setzt die Höhe und Breite des Rechtecks neu. Dadurch ändern sich die
+     * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
+     *
+     * @param width  Die neue Breite für das Rechteck in Meter.
+     * @param height Die neue Höhe für das Rechteck in Meter.
      */
     @API
     public void setSize(double width, double height)

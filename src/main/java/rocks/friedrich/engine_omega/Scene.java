@@ -355,6 +355,18 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     /**
+     * Setzt die Schwerkraft die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
+     * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
+     *
+     * @see Layer#setGravityOfEarth
+     */
+    @API
+    public void setGravityOfEarth()
+    {
+        setGravity(0, -9.81);
+    }
+
+    /**
      * Setzt, ob die Engine-Physics für diese Szene pausiert sein soll.
      *
      * @param worldPaused <code>false</code>: Die Engine-Physik läuft normal.

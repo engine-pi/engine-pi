@@ -232,6 +232,51 @@ Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
 ## Physics
 
+### Schwerkraft
+
+https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/GravityDemo.java
+
+```java
+public class GravityDemo extends Scene implements KeyListener
+{
+    private final Rectangle rectangle;
+
+    public GravityDemo()
+    {
+        setGravity(0, -9.81);
+        createBorder(-5, 4, false);
+        createBorder(-5, -5, false);
+        createBorder(-5, -5, true);
+        createBorder(4, -5, true);
+        rectangle = new Rectangle(1, 1);
+        rectangle.setBodyType(BodyType.DYNAMIC);
+        add(rectangle);
+    }
+
+    private Rectangle createBorder(double x, double y, boolean vertical)
+    {
+        Rectangle rectangle = !vertical ? new Rectangle(10, 1)
+                : new Rectangle(1, 10);
+        rectangle.setPosition(x, y);
+        rectangle.setBodyType(BodyType.STATIC);
+        add(rectangle);
+        return rectangle;
+    }
+
+    @Override
+    public void onKeyDown(KeyEvent e)
+    {
+        switch (e.getKeyCode())
+        {
+        case KeyEvent.VK_UP -> setGravity(0, 9.81);
+        case KeyEvent.VK_DOWN -> setGravity(0, -9.81);
+        case KeyEvent.VK_RIGHT -> setGravity(9.81, 0);
+        case KeyEvent.VK_LEFT -> setGravity(-9.81, 0);
+        }
+    }
+}
+```
+
 ### Elastizität
 
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
@@ -240,8 +285,6 @@ Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 [Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
-
-
 public class ElasticityDemo extends Scene
 {
     private final Rectangle ground;
@@ -282,93 +325,175 @@ public class ElasticityDemo extends Scene
 }
 ```
 
+### Dichte
+
+https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/DensityDemo.java
+
+```java
+public class DensityDemo extends Scene implements KeyListener
+{
+    private final Rectangle ground;
+
+    private final Circle[] circles;
+
+    private final Text[] densityLables;
+
+    public DensityDemo()
+    {
+        circles = new Circle[3];
+        densityLables = new Text[3];
+        int density = 10;
+        int x = -5;
+        for (int i = 0; i < 3; i++)
+        {
+            circles[i] = createCircle(x, density);
+            densityLables[i] = createDensityLables(x, density);
+            x += 5;
+            density += 10;
+        }
+        setGravity(0, -9.81);
+        ground = new Rectangle(20, 1);
+        ground.setPosition(-10, -5);
+        ground.makeStatic();
+        add(ground);
+    }
+
+    private Circle createCircle(double x, double density)
+    {
+        Circle circle = new Circle(1);
+        circle.setPosition(x, 5);
+        circle.setDensity(density);
+        circle.makeDynamic();
+        add(circle);
+        return circle;
+    }
+
+    private Text createDensityLables(int x, int density)
+    {
+        Text text = new Text(density + "", 1);
+        text.setPosition(x, -7);
+        text.makeStatic();
+        add(text);
+        return text;
+    }
+
+    @Override
+    public void onKeyDown(KeyEvent e)
+    {
+        for (Circle circle : circles)
+        {
+            circle.applyImpulse(0, 100);
+        }
+    }
+}
+```
+
 https://engine-alpha.org/wiki/v4.x/Physics
 
 Physik in der Engine
 
-Seit Version 4.0 nutzt Engine Alpha eine Java-Version von Box2D. Diese mächtige und effiziente Physics-Engine ist in der Engine leicht zu bedienen und ermöglicht es, mit wenig Aufwand mechanische Phänomene in Deine Spiele zu bringen: von Platforming und Billiard bis zu Hängebrücken und Autos.
+Seit Version 4.0 nutzt Engine Alpha eine Java-Version von Box2D. Diese mächtige
+und effiziente Physics-Engine ist in der Engine leicht zu bedienen und
+ermöglicht es, mit wenig Aufwand mechanische Phänomene in Deine Spiele zu bringen:
+von Platforming und Billiard bis zu Hängebrücken und Autos.
 
 Die Physics Engine basiert auf den Prinzipien der Klassischen Mechanik. Ein Grundverständnis hierüber ist nötig: Begriffe wie Masse, Dichte, Impuls und Kraft sollten dir zumindest grob geläufig sein, um diese auf deine Spielobjekte anzuwenden.
 
-#### Beispiel 1: Dominos
+### Beispiel 1: Dominos
 
 Um die Grundlagen der Engine Alpha Physics zu testen, bauen wir eine einfache Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
-#### Setup ohne Physics
+### Setup ohne Physics
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
+https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/DominoesDemo.java
+
 ```java
-import ea.*;
-import ea.actor.*;
-
-import java.awt.Color;
-
-public class Dominoes extends Scene {
-
+public class DominoesDemo extends Scene
+        implements FrameUpdateListener, MouseClickListener
+{
     private Rectangle ground;
+
     private Rectangle wall;
+
     private Circle ball;
 
-    public Dominoes() {
+    private Rectangle angle;
+
+    public DominoesDemo()
+    {
         setupBasicObjects();
-        makeDominoes(20, 0.4f, 3f);
+        makeDominoes(20, 0.4, 3);
     }
 
-    private void setupBasicObjects() {
+    private void setupBasicObjects()
+    {
+        // Boden auf dem die Dominosteine stehen
         ground = new Rectangle(200, 2);
         ground.setCenter(0, -5);
         ground.setColor(Color.WHITE);
         add(ground);
-
-        ball = new Circle(0.5f);
+        // Der Ball, der die Dominosteine umwerfen soll.
+        ball = new Circle(0.5);
         ball.setColor(Color.RED);
         ball.setPosition(-10, -2);
         add(ball);
-
+        // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
         wall.setPosition(-14, -4);
         wall.setColor(Color.WHITE);
         add(wall);
     }
 
-    private void makeDominoes(int num, float beamWidth, float beamHeight) {
-        for(int i=0; i<num; i++) {
-            Rectangle beam = new Rectangle(beamWidth, beamHeight);
-            beam.setPosition(i*3*(beamWidth), -4);
-            beam.setColor(Color.BLUE);
-            add(beam);
+    private void makeDominoes(int num, double width, double height)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            Rectangle domino = new Rectangle(width, height);
+            domino.setPosition(i * 3 * width, -4);
+            domino.setColor(Color.BLUE);
+            add(domino);
         }
     }
 }
 ```
 
-Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar Dominosteine, und ein weißer Boden mit Wand.
-Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!
+Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
+Dominosteine, und ein weißer Boden mit Wand.
 
-#### Die Body Types
+### Die Body Types
 
-Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies drückt sich in verschiedenen Body Types aus:
+Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
+drückt sich in verschiedenen Body Types aus:
 
-    Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte: Der Ball prallt an den Dominos ab und die Steine fallen um. Diese Actors haben einen dynamischen Körper.
-    Aber der Boden und die Wand sollen nicht wie die Dominos umfallen. Egal mit wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben. Diese Actors haben einen statischen Körper.
+- Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte:
+  Der Ball prallt an den Dominos ab und die Steine fallen um. Diese Actors haben
+  einen dynamischen Körper.
+- Aber der Boden und die Wand sollen nicht wie die Dominos umfallen. Egal mit
+  wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben.
+  Diese Actors haben einen statischen Körper.
 
-Mit der Methode Actor.setBodyType(BodyType) wird das grundlegende Verhalten eines Actors bestimmt. Zusätzlich wird mit Scene.setGracity(Vector) eine Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
-Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall
+Mit der Methode `Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
+eines Actors bestimmt. Zusätzlich wird mit Scene.setGracity(Vector) eine
+Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
+Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden
+hält den Fall
 
-In einer setupPhysics() Methode werden die Body Types für die Actors gesetzt und die Schwerkraft (standardmäßige 9,81 m/s^2, gerade nach unten) aktiviert:
+In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
+die Schwerkraft (standardmäßige 9,81 m/s^2, gerade nach unten) aktiviert:
 
 ```java
-private void setupPhysics() {
-    ground.setBodyType(BodyType.STATIC);
-    wall.setBodyType(BodyType.STATIC);
-    ball.setBodyType(BodyType.DYNAMIC);
-
-    this.setGravity(new Vector(0, -9.81f));
-}
+    private void setupPhysics()
+    {
+        ground.makeStatic();
+        wall.makeDynamic();
+        ball.makeDynamic();
+        setGravityOfEarth();
+    }
 ```
 
-Zusätzlich werden die Dominos in makeDominoes mit beam.setBodyType(BodyType.DYNAMIC); eingerichtet.
+Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();` eingerichtet.
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types in der Dokumentation von BodyType und eine vergleichende Übersicht in der dedizierten Wikiseite
 Den Ball Werfen
@@ -384,42 +509,45 @@ Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des Impulses markiert:
 
 ```java
-private void setupAngle() {
-    angle = new Rectangle(1, 0.25f);
-    angle.setColor(Color.GRAY);
-    add(angle);
-}
+    private void setupAngle()
+    {
+        angle = new Rectangle(1, 0.1);
+        angle.setColor(Color.GREEN);
+        add(angle);
+    }
 ```
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen. Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
 ```java
-@Override
-public void onFrameUpdate(float deltaSeconds) {
-    Vector mousePosition = getMousePosition();
-    Vector ballCenter = ball.getCenter();
-
-    Vector distance = ballCenter.getDistance(mousePosition);
-    angle.setPosition(ball.getCenter());
-    angle.setSize(distance.getLength(), 0.25f);
-    float rot = Vector.RIGHT.getAngle(distance);
-    angle.setRotation(rot);
-}
+    @Override
+    public void onFrameUpdate(double deltaSeconds)
+    {
+        Vector mousePosition = getMousePosition();
+        Vector ballCenter = ball.getCenter();
+        Vector distance = ballCenter.getDistance(mousePosition);
+        angle.setPosition(ball.getCenter());
+        angle.setWidth(distance.getLength());
+        double rot = Vector.RIGHT.getAngle(distance);
+        angle.setRotation(rot);
+    }
 ```
 
-Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das Interface MouseClickListener implementiert:
+Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
+Interface MouseClickListener implementiert:
 
 ```java
-@Override
-public void onMouseDown(Vector position, MouseButton button) {
-    Vector impulse = ball.getCenter().getDistance(position).multiply(10);
-    ball.applyImpulse(impulse);
-}
+    @Override
+    public void onMouseDown(Vector position, MouseButton button)
+    {
+        Vector impulse = ball.getCenter().getDistance(position).multiply(5);
+        ball.applyImpulse(impulse);
+    }
 ```
 
-#### Anregung zum Experimentieren
+### Anregung zum Experimentieren
 
-    Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit queer gelegten Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der Zerstörung.
+    Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der Zerstörung.
 
     Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
 

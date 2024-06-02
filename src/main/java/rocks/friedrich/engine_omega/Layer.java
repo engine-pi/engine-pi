@@ -265,7 +265,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * dieser Ebene</b> wirkt.
      *
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
-     *                <b>[N]</b>.
+     *                <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
      * @see #setGravity(double, double)
      * @see Scene#setGravity(Vector)
@@ -287,9 +287,9 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
      * y-Richtung, die auf <b>alle Objekte innerhalb dieser Ebene</b> wirkt.
      *
      * @param gravityX Die neue Schwerkraft, die in X-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b>.
+     *                 Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b>.
+     *                 Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
      * @see #setGravity(Vector)
      * @see Scene#setGravity(Vector)
@@ -304,6 +304,18 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     public void setGravity(double gravityX, double gravityY)
     {
         setGravity(new Vector(gravityX, gravityY));
+    }
+
+    /**
+     * Setzt die Schwerkraft die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
+     * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
+     *
+     * @see Scene#setGravityOfEarth
+     */
+    @API
+    public void setGravityOfEarth()
+    {
+        setGravity(0, -9.81);
     }
 
     /**

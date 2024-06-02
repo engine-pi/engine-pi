@@ -25,7 +25,6 @@ import java.awt.Color;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
@@ -48,49 +47,51 @@ public class DominoesDemo extends Scene
         setupBasicObjects();
         setupPhysics();
         setupAngle();
-        makeDominoes(20, 0.4, 3f);
+        makeDominoes(20, 0.4, 3);
     }
 
     private void setupBasicObjects()
     {
+        // Boden auf dem die Dominosteine stehen
         ground = new Rectangle(200, 2);
         ground.setCenter(0, -5);
         ground.setColor(Color.WHITE);
         add(ground);
+        // Der Ball, der die Dominosteine umwerfen soll.
         ball = new Circle(0.5);
         ball.setColor(Color.RED);
         ball.setPosition(-10, -2);
         add(ball);
+        // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
         wall.setPosition(-14, -4);
         wall.setColor(Color.WHITE);
-        add(wall);
     }
 
     private void setupAngle()
     {
-        angle = new Rectangle(1, 0.25);
-        angle.setColor(Color.GRAY);
+        angle = new Rectangle(1, 0.1);
+        angle.setColor(Color.GREEN);
         add(angle);
     }
 
     private void setupPhysics()
     {
-        ground.setBodyType(BodyType.STATIC);
-        wall.setBodyType(BodyType.STATIC);
-        ball.setBodyType(BodyType.DYNAMIC);
-        setGravity(new Vector(0, -9.81));
+        ground.makeStatic();
+        wall.makeDynamic();
+        ball.makeDynamic();
+        setGravityOfEarth();
     }
 
-    private void makeDominoes(int num, double beamWidth, double beamHeight)
+    private void makeDominoes(int num, double width, double height)
     {
         for (int i = 0; i < num; i++)
         {
-            Rectangle beam = new Rectangle(beamWidth, beamHeight);
-            beam.setPosition(i * 3 * (beamWidth), -4);
-            beam.setBodyType(BodyType.DYNAMIC);
-            beam.setColor(Color.BLUE);
-            add(beam);
+            Rectangle domino = new Rectangle(width, height);
+            domino.setPosition(i * 3 * width, -4);
+            domino.makeDynamic();
+            domino.setColor(Color.BLUE);
+            add(domino);
         }
     }
 
@@ -101,7 +102,7 @@ public class DominoesDemo extends Scene
         Vector ballCenter = ball.getCenter();
         Vector distance = ballCenter.getDistance(mousePosition);
         angle.setPosition(ball.getCenter());
-        angle.setSize(distance.getLength(), 0.25);
+        angle.setWidth(distance.getLength());
         double rot = Vector.RIGHT.getAngle(distance);
         angle.setRotation(rot);
     }
@@ -115,7 +116,6 @@ public class DominoesDemo extends Scene
 
     public static void main(String[] args)
     {
-        DominoesDemo dominoes = new DominoesDemo();
-        Game.start(800, 300, dominoes);
+        Game.start(800, 300, new DominoesDemo());
     }
 }
