@@ -626,6 +626,7 @@ public class RepeatExample extends Scene
 | Handler        | Steuerungsklasse          |
 | Joint          | Verbindung                |
 | Listener       | Beobachter                |
+| Offset         | Verzug                    |
 | PrismaticJoint | Federverbindung           |
 | RevoluteJoint  | Gelenkverbindung          |
 | RobeJoint      | Seilverbindung            |

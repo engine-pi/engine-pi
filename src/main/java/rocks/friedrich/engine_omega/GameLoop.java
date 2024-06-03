@@ -189,7 +189,9 @@ public final class GameLoop
     /**
      * Führt die gesamte Zeichenroutine aus.
      *
-     * @param g Zeichenobjekt.
+     * @param g      Das Zeichenobjekt.
+     * @param width  Die Breite in Pixel.
+     * @param height Die Höhe in Pixel.
      */
     @Internal
     private void render(Graphics2D g, int width, int height)
@@ -219,9 +221,13 @@ public final class GameLoop
     }
 
     /**
-     * Rendert Debug-Informationen auf dem Bildschirm.
+     * Zeichnet Debug-Informationen auf dem Bildschirm.
      *
-     * @param g Das Graphics-Objekt zum Zeichnen.
+     * @param g      Das Graphics-Objekt zum Zeichnen.
+     * @param Scene  Die Szene, in die Debug-Information gezeichen werden
+     *               sollen.
+     * @param width  Die Breite in Pixel.
+     * @param height Die Höhe in Pixel.
      */
     @Internal
     private void renderGrid(Graphics2D g, Scene scene, int width, int height)
@@ -281,7 +287,7 @@ public final class GameLoop
     }
 
     /**
-     * Rendert zusätzliche Debug-Infos auf dem Bildschirm.
+     * Zeichnet zusätzliche Debug-Informationen auf dem Bildschirm.
      *
      * @param g Das Graphics-Objekt zum Zeichnen.
      */

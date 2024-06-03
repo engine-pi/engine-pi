@@ -38,16 +38,16 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * </p>
  *
  * <pre>{@code
- * Bounds grenzen = new Bounds(0, 0, 1500, 1000);
- * meineCam.setBounds(grenzen);
+ * Bounds bounds = new Bounds(0, 0, 1500, 1000);
+ * camera.setBounds(bounds);
  * }</pre>
  *
  * <p>
  * Hierdurch wird automatisch der gesamte Fokusapparat (auf den Bereich zwischen
- * den Punkten (0|0) und (1500|1000) ) eingestellt. Bei spezielleren
+ * den Punkten (0|0) und (1500|1000)) eingestellt. Bei spezielleren
  * Fokuswünschen lässt sich dies ebenfalls arrangieren durch die einzelnen
- * Methoden, mit denen alle vier Bounds (N, S, O, W) einzeln verstellt und
- * (de)aktiviert werden können.
+ * Methoden, mit denen alle vier {@link Bounds} (N, S, O, W) einzeln verstellt
+ * und (de)aktiviert werden können.
  * </p>
  *
  * <p>
@@ -57,8 +57,8 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * <p>
  * Bei den Fokuseinstellungen sollte immer ein Bereich gewählt werden, der die
  * Größe des Anzeigefensters (oder Vollbildes) bei weitem übersteigt.<br>
- * Allgemein wirken diese Bounds auch ohne aktivierten Fokus, jedoch ist dies
- * meist weniger sinnvoll.
+ * Allgemein wirken diese {@link Bounds} auch ohne aktivierten Fokus, jedoch ist
+ * dies meist weniger sinnvoll.
  * </p>
  *
  * @author Michael Andonie
@@ -73,7 +73,7 @@ public final class Camera
     private Vector position;
 
     /**
-     * Die Bounds der Kamera (sofern vorhanden), die sie in der Bewegung
+     * Die {@link Bounds} der Kamera (sofern vorhanden), die sie in der Bewegung
      * einschränken.
      */
     private Bounds bounds;
@@ -206,9 +206,7 @@ public final class Camera
      * mit dem Zoomfaktor. Der Standardwert des Zoomfaktors ist <code>30</code>.
      * </p>
      *
-     * @param pixelPerMeter Der neue Zoom-Wert der Kamera. Werte größer als 1
-     *                      "zoomen rein". Werte zwischen 1 und 0 (jeweils
-     *                      exklusiv) "zoomen raus".
+     * @param pixelPerMeter Der neue Zoom-Wert der Kamera.
      */
     @API
     public void setZoom(double pixelPerMeter)
@@ -262,7 +260,7 @@ public final class Camera
     @API
     public void moveTo(int x, int y)
     {
-        this.moveTo(new Vector(x, y));
+        moveTo(new Vector(x, y));
     }
 
     @API
@@ -339,8 +337,10 @@ public final class Camera
                 (int) (frameSize.getY() / 2 + cameraRelativeLocInPx.getY()));
     }
 
-    // Does not implement FrameUpdateListener by design, as it's updated at a
-    // special moment
+    /**
+     * Implementiert den FrameUpdateListener nicht, da die Kamera an einem
+     * anderen Zeitpunkt aktualisiert wird.
+     */
     public void onFrameUpdate()
     {
         if (hasFocus())
@@ -362,14 +362,14 @@ public final class Camera
 
     private Vector moveIntoBounds(Vector position)
     {
-        if (!this.hasBounds())
+        if (!hasBounds())
         {
             return position;
         }
-        double x = Math.max(this.bounds.getX(), Math.min(position.getX(),
-                this.bounds.getX() + this.bounds.getWidth()));
-        double y = Math.max(this.bounds.getY(), Math.min(position.getY(),
-                this.bounds.getY() + this.bounds.getHeight()));
+        double x = Math.max(bounds.getX(),
+                Math.min(position.getX(), bounds.getX() + bounds.getWidth()));
+        double y = Math.max(bounds.getY(),
+                Math.min(position.getY(), bounds.getY() + bounds.getHeight()));
         return new Vector(x, y);
     }
 }

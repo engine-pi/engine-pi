@@ -1206,7 +1206,6 @@ public abstract class Actor
      * Beispiele:
      * </p>
      *
-     * <p>
      * <ul>
      * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
@@ -1218,7 +1217,6 @@ public abstract class Actor
      *
      * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
-     * </p>
      *
      * @param impulse Der Impuls in <b>[Ns]</b> [(kg * m) / s], der auf den
      *                Schwerpunkt wirken soll.
@@ -1240,7 +1238,6 @@ public abstract class Actor
      * Beispiele:
      * </p>
      *
-     * <p>
      * <ul>
      * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
@@ -1252,7 +1249,6 @@ public abstract class Actor
      *
      * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
-     * </p>
      *
      * @param impulseX Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s],
      *                 der auf den Schwerpunkt wirken soll.
@@ -1271,7 +1267,6 @@ public abstract class Actor
      * Beispiele:
      * </p>
      *
-     * <p>
      * <ul>
      * <li>Hammer (300 g, 1 m/s): 0,3 Ns</li>
      *
@@ -1283,7 +1278,6 @@ public abstract class Actor
      *
      * <li>Auto (2 t, 30 km/h): 16 000 Ns</li>
      * </ul>
-     * </p>
      *
      * @param impulse     Der Impuls in <b>[Ns]</b>.
      * @param globalPoint Der Ort auf der <i>Zeichenebene</i>, an dem der Impuls
