@@ -51,10 +51,10 @@ public class Rectangle extends Geometry
     private double borderRadius;
 
     /**
-     * Konstruktor.
+     * Erzeugt ein Rechteck durch Angabe der Breite und der Höhe.
      *
-     * @param width  Die Breite des Rechtecks
-     * @param height Die Höhe des Rechtecks
+     * @param width  Die Breite des Rechtecks.
+     * @param height Die Höhe des Rechtecks.
      */
     public Rectangle(double width, double height)
     {
@@ -68,6 +68,14 @@ public class Rectangle extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
+    }
+
+    /**
+     * Erzeugt ein Quadrat mit der Seitenlängen von einem Meter.
+     */
+    public Rectangle()
+    {
+        this(1, 1);
     }
 
     /**

@@ -5,29 +5,29 @@ import java.awt.event.KeyEvent;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.Vector;
-import rocks.friedrich.engine_omega.actor.Circle;
 import rocks.friedrich.engine_omega.actor.DistanceJoint;
+import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
 public class DistanceJointDemo extends Scene implements KeyListener
 {
-    private final Circle a;
+    private final Rectangle a;
 
-    private final Circle b;
+    private final Rectangle b;
 
     private final DistanceJoint joint;
 
     public DistanceJointDemo()
     {
-        a = new Circle();
+        a = new Rectangle();
         a.setCenter(0, 0);
         a.makeDynamic();
-        b = new Circle();
+        b = new Rectangle();
         b.setCenter(3, 0);
         b.makeDynamic();
         add(a, b);
-        joint = a.createDistanceJoint(b, new Vector(0.5, 0.5),
-                new Vector(0.5, 0.5));
+        joint = a.createDistanceJoint(b, new Vector(0.25, 0.25),
+                new Vector(0.75, 0.75));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });

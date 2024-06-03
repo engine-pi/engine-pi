@@ -37,14 +37,14 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines
- * {@link Actor}-Objekts. Die
+ * {@link Actor}-Objekts.
  */
 @Internal
 public class PhysicsData
 {
-    static final double DEFAULT_DENSITY = 10f;
+    static final double DEFAULT_DENSITY = 10;
 
-    static final double DEFAULT_FRICTION = 0f;
+    static final double DEFAULT_FRICTION = 0;
 
     static final double DEFAULT_RESTITUTION = 0.5;
 
