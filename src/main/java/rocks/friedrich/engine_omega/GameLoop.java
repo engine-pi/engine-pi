@@ -295,7 +295,7 @@ public final class GameLoop
     private void renderInfo(Graphics2D g, DebugInfo debugInfo)
     {
         double frameDuration = debugInfo.getFrameDuration();
-        int bodyCount = debugInfo.getBodyCount();
+        int actorCount = debugInfo.getBodyCount();
         Font displayFont = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
         FontMetrics fm = g.getFontMetrics(displayFont);
         Rectangle2D bounds;
@@ -316,8 +316,8 @@ public final class GameLoop
         g.drawString(fpsMessage, DEBUG_INFO_LEFT + 10,
                 y + 8 + fm.getHeight() - fm.getDescent());
         y += fm.getHeight() + DEBUG_INFO_HEIGHT;
-        String bodyMessage = "Bodies: " + bodyCount;
-        bounds = fm.getStringBounds(bodyMessage, g);
+        String actorMessage = "Actors: " + actorCount;
+        bounds = fm.getStringBounds(actorMessage, g);
         g.setColor(COLOR_BODY_COUNT_BORDER);
         g.fillRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
@@ -328,7 +328,7 @@ public final class GameLoop
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);
         g.setColor(Color.WHITE);
         g.setFont(displayFont);
-        g.drawString(bodyMessage, DEBUG_INFO_LEFT + 10,
+        g.drawString(actorMessage, DEBUG_INFO_LEFT + 10,
                 y + 8 + fm.getHeight() - fm.getDescent());
     }
 }
