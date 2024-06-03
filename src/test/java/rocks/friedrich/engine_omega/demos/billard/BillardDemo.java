@@ -51,7 +51,7 @@ public class BillardDemo extends ShowcaseDemo implements KeyListener
         whiteBall.setPosition(-200, 0);
         add(whiteBall);
         getCamera().setFocus(table.getBorder());
-        getCamera().setZoom(1);
+        getCamera().setMeter(1);
     }
 
     private Vector calculatePosition(int i)

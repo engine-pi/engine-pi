@@ -14,7 +14,7 @@ public class ElasticityDemo extends Scene
 
     public ElasticityDemo()
     {
-        getCamera().setZoom(20);
+        getCamera().setMeter(20);
         // Ein Reckteck als Boden, auf dem die Kreise abprallen.
         ground = new Rectangle(24, 1);
         ground.setPosition(-12, -16);

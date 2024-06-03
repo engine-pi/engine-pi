@@ -466,7 +466,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     {
         double desiredPixelPerMeter = gameSizeInPixels.getX() / width;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.getCamera().setZoom(desiredZoom);
+        parent.getCamera().setMeter(desiredZoom);
     }
 
     /**
@@ -484,13 +484,13 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     {
         double desiredPixelPerMeter = gameSizeInPixels.getY() / height;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.getCamera().setZoom(desiredZoom);
+        parent.getCamera().setMeter(desiredZoom);
     }
 
     @API
     public double calculatePixelPerMeter()
     {
-        return 1 + (parent.getCamera().getZoom() - 1) * parallaxZoom;
+        return 1 + (parent.getCamera().getMeter() - 1) * parallaxZoom;
     }
 
     @Internal

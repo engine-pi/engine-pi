@@ -286,7 +286,7 @@ public final class Game
         // Finde Klick auf Zeichenebene, die Position relativ zum Ursprung des
         // RenderPanel-Canvas.
         // Mausklick-Position muss mit Zoom-Wert verrechnet werden
-        double zoom = scene.getCamera().getZoom();
+        double zoom = scene.getCamera().getMeter();
         double rotation = scene.getCamera().getRotation();
         Vector position = scene.getCamera().getPosition();
         return new Vector(

@@ -238,7 +238,7 @@ public final class GameLoop
         double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
         g.translate(width / 2, height / 2);
-        double pixelPerMeter = camera.getZoom();
+        double pixelPerMeter = camera.getMeter();
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-position.getX() * pixelPerMeter,
                 position.getY() * pixelPerMeter);

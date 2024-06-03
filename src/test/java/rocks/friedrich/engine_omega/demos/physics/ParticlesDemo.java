@@ -81,7 +81,7 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
         r4.setColor(Color.DARK_GRAY);
         r1.addCollisionListener((event) -> remove(event.getColliding()));
         setGravity(new Vector(0, -600));
-        getCamera().setZoom(1);
+        getCamera().setMeter(1);
         left.animateColor(5, Color.YELLOW);
         this.addFrameUpdateListener(new ValueAnimator<>(5, left::setX,
                 new ReverseEaseDouble(left.getX(), left.getX() + 200),

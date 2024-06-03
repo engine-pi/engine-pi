@@ -17,7 +17,7 @@ public class ScreenshotDemo extends Scene implements KeyListener
                 32);
         add(image);
         image.setCenter(0, 0);
-        getCamera().setZoom(320);
+        getCamera().setMeter(320);
         setBackgroundColor(Color.WHITE);
     }
 

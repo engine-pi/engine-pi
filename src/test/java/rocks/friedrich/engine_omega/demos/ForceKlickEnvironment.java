@@ -174,7 +174,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         add(links, rechts, oben);
         add(stab);
         add(atv);
-        getCamera().setZoom(1);
+        getCamera().setMeter(1);
     }
 
     /**

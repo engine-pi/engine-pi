@@ -95,12 +95,12 @@ public abstract class ShowcaseDemo extends Scene
             double factor = event.getPreciseWheelRotation() > 0
                     ? 1 + .3 * event.getPreciseWheelRotation()
                     : 1 / (1 - .3 * event.getPreciseWheelRotation());
-            double newzoom = getCamera().getZoom() * factor;
+            double newzoom = getCamera().getMeter() * factor;
             if (newzoom <= 0)
             {
                 return;
             }
-            getCamera().setZoom(newzoom);
+            getCamera().setMeter(newzoom);
         });
     }
 

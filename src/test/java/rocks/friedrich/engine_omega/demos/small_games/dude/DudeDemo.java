@@ -85,7 +85,7 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         getCamera().setFocus(character);
         getCamera().setOffset(new Vector(0, 3));
         getCamera().setBounds(new Bounds(-2000, -3, 20000, 20000));
-        getCamera().setZoom(30);
+        getCamera().setMeter(30);
         setupPlayground();
         setupCosmeticLayers();
         // getMainLayer().setVisibleHeight(15, Game.getFrameSizeInPixels());

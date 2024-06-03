@@ -65,7 +65,10 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  */
 public final class Camera
 {
-    public static final double DEFAULT_ZOOM = 30;
+    /**
+     * Der Standardwert für die Anzahl an Pixel eines Meters.
+     */
+    public static final double DEFAULT_METER = 30;
 
     /**
      * Aktuelle Position des Mittelpunkts der Kamera.
@@ -89,9 +92,9 @@ public final class Camera
     private Vector offset = Vector.NULL;
 
     /**
-     * Der aktuelle Kamerazoom.
+     * Der aktuelle Anzahl an Pixel eines Meters.
      */
-    private double zoom = DEFAULT_ZOOM;
+    private double meter = DEFAULT_METER;
 
     /**
      * Die aktuelle Drehung in Grad.
@@ -198,36 +201,37 @@ public final class Camera
     }
 
     /**
-     * Setzt den Zoom der Kamera.
+     * Setzt die Anzahl an Pixel, die einem Meter entsprechen und setzt somit
+     * den „Zoom“ der Kamera.
      *
      * <p>
-     * Der Zoom bestimmt wie „nah“ die Kamera an der Zeichenebene ist. Die Größe
-     * eines Objektes entspricht der Größe auf der Zeichenebene multipliziert
-     * mit dem Zoomfaktor. Der Standardwert des Zoomfaktors ist <code>30</code>.
+     * Die Anzahl an Pixel eines Meters bestimmt wie „nah“ oder „fern“ die
+     * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
+     * <code>30</code> Pixel. Große Werte zoomen rein, kleine Werte raus.
      * </p>
      *
-     * @param pixelPerMeter Der neue Zoom-Wert der Kamera.
+     * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
      */
     @API
-    public void setZoom(double pixelPerMeter)
+    public void setMeter(double pixelCount)
     {
-        if (pixelPerMeter <= 0)
+        if (pixelCount <= 0)
         {
             throw new IllegalArgumentException(
                     "Der Kamerazoom kann nicht kleiner oder gleich 0 sein.");
         }
-        this.zoom = pixelPerMeter;
+        this.meter = pixelCount;
     }
 
     /**
-     * Gibt den aktuellen Zoom aus.
+     * Gibt die Anzahl an Pixel aus, die einem Meter entsprechen.
      *
-     * @return Der aktuelle Zoom der Kamera.
+     * @return Die Anzahl an Pixel aus, die einem Meter entsprechen.
      */
     @API
-    public double getZoom()
+    public double getMeter()
     {
-        return zoom;
+        return meter;
     }
 
     /**

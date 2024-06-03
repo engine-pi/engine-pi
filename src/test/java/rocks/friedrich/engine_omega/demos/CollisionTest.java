@@ -46,7 +46,7 @@ public class CollisionTest extends Scene
         {
             System.out.println("OVERLAP");
         }
-        getCamera().setZoom(1);
+        getCamera().setMeter(1);
     }
 
     public static void main(String[] args)

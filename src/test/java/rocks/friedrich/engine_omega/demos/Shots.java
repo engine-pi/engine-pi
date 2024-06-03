@@ -46,7 +46,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
     {
         super(parent);
         setGravity(new Vector(0, -9.81));
-        getCamera().setZoom(100);
+        getCamera().setMeter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
         getMainLayer()
                 .add(ball = new Ball(ballPosition.getX(), ballPosition.getY()));

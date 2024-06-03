@@ -108,7 +108,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyListener
         ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
         ground.setBodyType(BodyType.STATIC);
         add(ground);
-        getCamera().setZoom(0.5);
+        getCamera().setMeter(0.5);
     }
 
     @Override
