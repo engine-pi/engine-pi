@@ -618,14 +618,15 @@ public class RepeatExample extends Scene
 
 ## Deutsche Übersetzungen von englischen Klassennamen
 
-| englisch       | deutsch          |
-| -------------- | ---------------- |
-| RobeJoint      | Seilverbindung   |
-| DistanceJoint  | Stabverbindung   |
-| Joint          | Verbindung       |
-| PrismaticJoint | Federverbindung  |
-| RevoluteJoint  | Gelenkverbindung |
-| WeldJoint      | Schweißnaht      |
-| Fixture        | Halterung        |
-| Handler        | Steuerungsklasse |
-| Listener       | Beobachter       |
+| englisch       | deutsch                   |
+| -------------- | ------------------------- |
+| Bounds         | Schranken, Abgrenzung     |
+| DistanceJoint  | Stabverbindung            |
+| Fixture        | Halterung, Kollisionsform |
+| Handler        | Steuerungsklasse          |
+| Joint          | Verbindung                |
+| Listener       | Beobachter                |
+| PrismaticJoint | Federverbindung           |
+| RevoluteJoint  | Gelenkverbindung          |
+| RobeJoint      | Seilverbindung            |
+| WeldJoint      | Schweißnaht               |

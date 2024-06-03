@@ -27,8 +27,7 @@ import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 
 /**
- * Die Kamera "blickt" auf die Zeichenebene, das, was sie sieht, beschreibt den
- * Teil der Zeichenebene; das, was im Window dargestellt wird.
+ * Die Kamera steuert welchen Ausschnitt der Spielfläche angezeigt wird.
  *
  * <p>
  * Sie kann ein Objekt fokussieren und ihm so folgen. Hierbei besteht auch die
@@ -36,6 +35,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * Fokus-Bounds. Diese 4 Grenzwerte können individuell verstellt und aktiviert
  * werden. auch kann man den von der Kamera darzustellenden Bereich durch eine
  * einzige Methode definieren, in dem man den Bereich als Bounds beschreibt.
+ * </p>
  *
  * <pre>{@code
  * Bounds grenzen = new Bounds(0, 0, 1500, 1000);
@@ -48,15 +48,18 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * Fokuswünschen lässt sich dies ebenfalls arrangieren durch die einzelnen
  * Methoden, mit denen alle vier Bounds (N, S, O, W) einzeln verstellt und
  * (de)aktiviert werden können.
+ * </p>
  *
  * <p>
  * <b>!!Achtung!!</b>
+ * </p>
  *
  * <p>
  * Bei den Fokuseinstellungen sollte immer ein Bereich gewählt werden, der die
  * Größe des Anzeigefensters (oder Vollbildes) bei weitem übersteigt.<br>
- * Allgemein wirken diese Bounds auch ohne aktivierten Fokus. jedoch ist dies
+ * Allgemein wirken diese Bounds auch ohne aktivierten Fokus, jedoch ist dies
  * meist weniger sinnvoll.
+ * </p>
  *
  * @author Michael Andonie
  */
@@ -122,7 +125,7 @@ public final class Camera
     }
 
     /**
-     * Gibt an, ob die Kamera ein Fokus-Objekt verfolgt oder "steif" ist.
+     * Gibt an, ob die Kamera ein Fokus-Objekt verfolgt oder „steif“ ist.
      *
      * @return <code>true</code>, wenn die Kamera ein Fokus-Objekt hat, sonst
      *         <code>false</code>.
@@ -168,9 +171,11 @@ public final class Camera
 
     /**
      * Mit dieser Methode kann die Kamerabewegung eingeschränkt werden.
+     *
      * <p>
      * Ein Rechteck gibt die Begrenzung an, die die Kameraperspektive niemals
      * übertreten wird.
+     * </p>
      *
      * @param bounds Das Rechteck, das die Grenzen der Kamera angibt.
      */
@@ -181,7 +186,8 @@ public final class Camera
     }
 
     /**
-     * Gibt an, ob die Kamera durch Bounds in ihrer Bewegung beschränkt ist.
+     * Gibt an, ob die Kamera durch {@link Bounds} in ihrer Bewegung beschränkt
+     * ist.
      *
      * @return <code>true</code> falls ja, sonst <code>false</code>.
      */
@@ -193,10 +199,12 @@ public final class Camera
 
     /**
      * Setzt den Zoom der Kamera.
+     *
      * <p>
      * Der Zoom bestimmt wie „nah“ die Kamera an der Zeichenebene ist. Die Größe
      * eines Objektes entspricht der Größe auf der Zeichenebene multipliziert
      * mit dem Zoomfaktor. Der Standardwert des Zoomfaktors ist <code>30</code>.
+     * </p>
      *
      * @param pixelPerMeter Der neue Zoom-Wert der Kamera. Werte größer als 1
      *                      "zoomen rein". Werte zwischen 1 und 0 (jeweils

@@ -32,12 +32,14 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 public final class Bounds
 {
     /**
-     * <b>Reelle</b> <code>x</code>-Position des Rechtecks.
+     * Die <code>x</code>-Koordinate der <i>unteren linken Ecke</i> des
+     * Rechtecks.
      */
     private final double x;
 
     /**
-     * <b>Reelle</b> <code>y</code>-Position des Rechtecks.
+     * Die <code>y</code>-Koordinate der <i>unteren linken Ecke</i> des
+     * Rechtecks.
      */
     private final double y;
 
@@ -72,27 +74,27 @@ public final class Bounds
     /**
      * Führt einen Mittenangleich mit einem anderen {@link Bounds} durch.
      *
-     * @param r Das {@link Bounds}, an dessen Mitte auch die Mitte dieses
-     *          Rechtecks angeglichen werden soll.
+     * @param bounds Das {@link Bounds}, an dessen Mitte auch die Mitte dieses
+     *               Rechtecks angeglichen werden soll.
      */
-    public Bounds withCenterAtBoundsCenter(Bounds r)
+    public Bounds withCenterAtBoundsCenter(Bounds bounds)
     {
-        return withCenterPoint(r.getCenter());
+        return withCenterPoint(bounds.getCenter());
     }
 
     /**
      * Gibt ein neues {@link Bounds} mit derselben Höhe und Breite zurück, das
      * seinen Mittelpunkt genau im angegebenen Zentrum hat.
      *
-     * @param p Das Zentrum des zurückzugebenden {@link Bounds}-Rechtecks.
+     * @param point Das Zentrum des zurückzugebenden {@link Bounds}-Rechtecks.
      *
      * @return Ein {@link Bounds} mit der gleichen Höhe und Breite wie dieses,
      *         jedoch so verschoben, dass es mit seiner Mitte im angegebenen
      *         Zentrum liegt.
      */
-    public Bounds withCenterPoint(Vector p)
+    public Bounds withCenterPoint(Vector point)
     {
-        return moveBy(p.subtract(getCenter()));
+        return moveBy(point.subtract(getCenter()));
     }
 
     /**
