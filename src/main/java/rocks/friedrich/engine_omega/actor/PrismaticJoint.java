@@ -44,7 +44,7 @@ public final class PrismaticJoint
     private boolean limitEnabled;
 
     /**
-     * Geschwindigkeit in m / s
+     * Geschwindigkeit in [m / s].
      */
     private double motorSpeed;
 
