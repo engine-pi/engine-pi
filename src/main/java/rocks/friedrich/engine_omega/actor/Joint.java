@@ -81,10 +81,11 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
     }
 
     /**
-     * Fügt einen Listener hinzu, der ausgeführt wird, sobald die Verbindung
+     * Fügt einen Beobachter hinzu, der ausgeführt wird, sobald die Verbindung
      * gelöst wird.
      *
-     * @param runnable Listener
+     * @param runnable Einen Beobachter, der ausgeführt wird, sobald die
+     *                 Verbindung gelöst wird.
      */
     @API
     public void addReleaseListener(Runnable runnable)

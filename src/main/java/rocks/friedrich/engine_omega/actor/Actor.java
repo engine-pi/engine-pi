@@ -1374,20 +1374,20 @@ public abstract class Actor
     }
 
     /**
-     * Erstellt einen Rope-Joint zwischen diesem und einem weiteren
+     * Erstellt einen Seilverbindung zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
      *                    zugehörigen {@link Actor}-Objekt über einen
      *                    <code>RopeJoint</code> verbunden sein soll.
-     * @param anchor      Der Ankerpunkt für das zugehörige
+     * @param anchorThis  Der Ankerpunkt für das zugehörige
      *                    {@link Actor}-Objekt. Der erste Befestigungspunkt des
-     *                    Lassos. Angabe relativ zur Position vom zugehörigen
-     *                    Objekt.
+     *                    Lassos. Die Angabe ist relativ zur Position des
+     *                    zugehörigen Objekts (linke untere Ecke).
      * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
      *                    also <code>other</code>. Der zweite Befestigungspunkt
-     *                    des Lassos. Angabe relativ zur Position vom
-     *                    zugehörigen Objekt.
+     *                    des Lassos. Die Angabe ist relativ zur Position des
+     *                    zugehörigen Objekts (linke untere Ecke).
      * @param ropeLength  Die Länge des Lassos. Dies ist ab sofort die maximale
      *                    Länge, die die beiden Ankerpunkte der Objekte
      *                    voneinader entfernt sein können.
@@ -1396,14 +1396,14 @@ public abstract class Actor
      * @see org.jbox2d.dynamics.joints.RopeJoint
      */
     @API
-    public final RopeJoint createRopeJoint(Actor other, Vector anchor,
+    public final RopeJoint createRopeJoint(Actor other, Vector anchorThis,
             Vector anchorOther, double ropeLength)
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             RopeJointDef def = new RopeJointDef();
             def.bodyA = a;
             def.bodyB = b;
-            def.localAnchorA.set(anchor.toVec2());
+            def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
             def.collideConnected = true;
             def.maxLength = (float) ropeLength;
@@ -1437,7 +1437,7 @@ public abstract class Actor
     }
 
     /**
-     * Erstellt einen Stabverbindung {@link DistanceJoint} zwischen diesem und
+     * Erstellt einen Stabverbindung ({@link DistanceJoint}) zwischen diesem und
      * einem weiteren {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
@@ -1445,11 +1445,12 @@ public abstract class Actor
      *                    <code>DistanceJoint</code> verbunden sein soll.
      * @param anchorThis  Der Ankerpunkt für das zugehörige
      *                    {@link Actor}-Objekt. Der erste Befestigungspunkt des
-     *                    Joints. Angabe relativ zu <code>this</code> also
-     *                    absolut.
+     *                    Joints. Die Angabe ist relativ zur Position des
+     *                    zugehörigen Objekts (linke untere Ecke).
      * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
      *                    also <code>other</code>. Der zweite Befestigungspunkt
-     *                    des Joints. Angabe relativ zu <code>other</code>
+     *                    des Joints. Die Angabe ist relativ zur Position des
+     *                    zugehörigen Objekts (linke untere Ecke).
      * @return Ein {@link DistanceJoint}-Objekt, mit dem die Verbindung weiter
      *         gesteuert werden kann.
      * @see org.jbox2d.dynamics.joints.DistanceJoint
@@ -1474,22 +1475,23 @@ public abstract class Actor
     }
 
     /**
-     * Erstellt eine Schweißnaht zwischen diesem und einem weiteren
-     * {@link Actor}-Objekt.
+     * Erstellt eine Schweißnaht - besser einen Schweißpunkt - zwischen diesem
+     * und einem weiteren {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
      *                    zugehörigen {@link Actor}-Objekt über eine Schweißnaht
      *                    verbunden sein soll.
      * @param anchorThis  Der Ankerpunkt für das zugehörige
      *                    {@link Actor}-Objekt. Der erste Befestigungspunkt der
-     *                    Schweißnaht. Angabe relativ zu <code>this</code> also
-     *                    absolut.
+     *                    Schweißnaht. Die Angabe ist relativ zur Position des
+     *                    zugehörigen Objekts (linke untere Ecke).
      * @param anchorOther Der Ankerpunkt für das zweite {@link Actor}-Objekt,
      *                    also <code>other</code>. Der zweite Befestigungspunkt
-     *                    der Schweißnaht. Angabe relativ zu <code>other</code>
+     *                    der Schweißnaht. Die Angabe ist relativ zur Position
+     *                    des zugehörigen Objekts (linke untere Ecke).
      * @return Ein {@link WeldJoint}-Objekt, mit dem die Verbindung weiter
      *         gesteuert werden kann.
-     * @see org.jbox2d.dynamics.joints.DistanceJoint
+     * @see org.jbox2d.dynamics.joints.WeldJoint
      */
     @API
     public final WeldJoint createWeldJoint(Actor other, Vector anchorThis,

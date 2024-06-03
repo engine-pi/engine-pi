@@ -21,7 +21,7 @@
 package rocks.friedrich.engine_omega.actor;
 
 /**
- * Eine Schweißnaht klebt zwei Körper zusammen.
+ * Eine Schweißnaht - besser ein Schweißpunkt - klebt zwei Körper zusammen.
  *
  * @see Joint
  * @see DistanceJoint
