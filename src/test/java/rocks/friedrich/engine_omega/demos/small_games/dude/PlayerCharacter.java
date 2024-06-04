@@ -62,8 +62,6 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
     private static final double FRICTION = 0.5;
 
     private static final double RESTITUTION = 0;
-
-    private static final int MASS = 65;
     /*
      * private final Sound walk = new Sound("dude/audio/footstep.wav"); private
      * final Sound jump = new Sound("dude/audio/footstep.wav"); private final
@@ -174,6 +172,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
         case RIGHT:
             setFlipHorizontal(false);
             break;
+
+        default:
+            // do nothing
         }
         this.horizontalMovement = state;
     }
@@ -288,6 +289,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState>
             }
             // }
             break;
+
+        default:
+            // do nothing
         }
         applyForce(smashForce);
         if (getY() < BOTTOM_OUT)

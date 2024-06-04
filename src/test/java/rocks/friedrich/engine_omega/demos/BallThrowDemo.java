@@ -191,7 +191,7 @@ public class BallThrowDemo extends ShowcaseDemo
      * angemeldeten</b> {@link Actor}-Objekten aufgerufen.
      */
     @Override
-    public void onCollision(CollisionEvent e)
+    public void onCollision(CollisionEvent<Actor> e)
     {
         // Kollision bedeutet, dass der Ball auf den Boden gefallen ist =>
         // Zeitmessung abschließen

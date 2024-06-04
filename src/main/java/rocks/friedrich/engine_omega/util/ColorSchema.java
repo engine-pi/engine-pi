@@ -94,7 +94,7 @@ public class ColorSchema
      * <b>Rot</b>). zurück.
      *
      * @return Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
-     *          <b>Rot</b>).
+     *         <b>Rot</b>).
      */
     public Color getOrange()
     {
@@ -115,7 +115,7 @@ public class ColorSchema
      * Gibt die Sekundärfarbe <b>Violett</b> zurück.
      *
      * @return Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
-     *          <b>Blau</b>)..
+     *         <b>Blau</b>)..
      */
     public Color getPurple()
     {
@@ -137,7 +137,7 @@ public class ColorSchema
      * <b>Blau</b>) zurück.
      *
      * @return Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *          <b>Blau</b>).
+     *         <b>Blau</b>).
      */
     public Color getGreen()
     {

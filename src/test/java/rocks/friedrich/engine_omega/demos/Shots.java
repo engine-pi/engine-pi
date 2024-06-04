@@ -22,8 +22,6 @@ package rocks.friedrich.engine_omega.demos;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
@@ -39,8 +37,6 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
     private final Ball ball;
 
     private final Rectangle basket;
-
-    private final List<Image> net = new ArrayList<>();
 
     public Shots(Scene parent)
     {

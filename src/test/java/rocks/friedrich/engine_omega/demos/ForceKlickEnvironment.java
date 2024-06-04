@@ -69,23 +69,18 @@ import rocks.friedrich.engine_omega.event.MouseClickListener;
 public class ForceKlickEnvironment extends ShowcaseDemo implements
         CollisionListener<Actor>, MouseClickListener, FrameUpdateListener
 {
-    /**
-     * Wird für die Schwerkraft-Berechnung genutzt
-     */
-    private static final Vector ERDBESCHLEUNIGUNG = new Vector(0, 9.81);
-
     public static final float FIELD_WIDTH = 85;
 
     public static final float FIELD_DEPTH = 50;
 
     @Override
-    public void onCollision(CollisionEvent event)
+    public void onCollision(CollisionEvent<Actor> event)
     {
         attackedLast = event.getColliding();
     }
 
     @Override
-    public void onCollisionEnd(CollisionEvent colliding)
+    public void onCollisionEnd(CollisionEvent<Actor> colliding)
     {
         if (attackedLast == colliding.getColliding())
         {
@@ -101,8 +96,6 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
     {
         ATTACK_POINT, DIRECTION_INTENSITY;
     }
-
-    private Actor ground;
 
     private Actor attack;
 
@@ -130,7 +123,6 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         boden.setPosition(0, FIELD_DEPTH);
         boden.setColor(Color.WHITE);
         boden.setBodyType(BodyType.STATIC);
-        ground = walls[0] = boden;
         // Der Rest der Wände
         Rectangle links = new Rectangle(1, FIELD_DEPTH);
         Rectangle rechts = new Rectangle(1, FIELD_DEPTH);

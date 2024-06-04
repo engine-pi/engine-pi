@@ -33,8 +33,6 @@ public class ManaPickup extends Animation
 {
     private static final double SIZE = .4;
 
-    private static final double PICKUP_DELAY = 5;
-
     private boolean active = true;
 
     public ManaPickup()

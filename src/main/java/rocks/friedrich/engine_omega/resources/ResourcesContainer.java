@@ -371,7 +371,8 @@ public abstract class ResourcesContainer<T>
      */
     public Future<T> getAsync(String name)
     {
-        return this.getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
+        return this
+                .getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
     }
 
     /**

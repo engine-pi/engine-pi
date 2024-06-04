@@ -28,8 +28,6 @@ public class Box extends Image
 {
     private static final double SIZE = 1;
 
-    private static final double MASS_IN_KG = 30;
-
     private static final double RESTITUTION = .3;
 
     public Box()

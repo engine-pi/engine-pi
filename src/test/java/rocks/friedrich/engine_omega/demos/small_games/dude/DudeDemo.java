@@ -167,16 +167,6 @@ public class DudeDemo extends ShowcaseDemo implements KeyListener
         add(platform);
     }
 
-    private void makeBoxes(double pX, double pY, int amount)
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            Box box = new Box();
-            box.setPosition(pX + i * 80, pY);
-            add(box);
-        }
-    }
-
     @Override
     public void onKeyDown(KeyEvent e)
     {
