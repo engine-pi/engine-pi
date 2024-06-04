@@ -21,10 +21,10 @@ public class GridDemo extends Scene
         grid2.setPosition(4, 0);
         grid2.makeDynamic();
         add(grid2);
-        Rectangle rectangle = new Rectangle(20, 1);
-        rectangle.setPosition(-10, -8);
-        rectangle.makeStatic();
-        add(rectangle);
+        Rectangle ground = new Rectangle(20, 1);
+        ground.setPosition(-10, -8);
+        ground.makeStatic();
+        add(ground);
     }
 
     public static void main(String[] args)

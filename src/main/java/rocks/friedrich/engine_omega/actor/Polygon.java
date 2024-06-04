@@ -38,11 +38,24 @@ import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 public class Polygon extends Geometry
 {
     /**
-     * Die Punkte, die das Polygon beschreiben.
+     * Die x-Koordinate der Punkte, die das Polygon beschreiben, in Meter.
      */
-    private double[] px, py;
+    private double[] px;
 
-    private int[] scaledPx, scaledPy;
+    /**
+     * Die y-Koordinate der Punkte, die das Polygon beschreiben, in Meter.
+     */
+    private double[] py;
+
+    /**
+     * Die x-Koordinate der Punkte, die das Polygon beschreiben, in Pixel.
+     */
+    private int[] scaledPx;
+
+    /**
+     * Die y-Koordinate der Punkte, die das Polygon beschreiben, in Pixel.
+     */
+    private int[] scaledPy;
 
     /**
      * Erstellt ein neues Polygon. Seine Position ist der <b>Ursprung</b>.
@@ -76,16 +89,16 @@ public class Polygon extends Geometry
             throw new RuntimeException(
                     "Der Streckenzug muss mindestens aus 3 Punkten bestehen, um ein gültiges Polygon zu beschreiben.");
         }
-        this.px = new double[points.length];
-        this.py = new double[points.length];
-        this.scaledPx = new int[points.length];
-        this.scaledPy = new int[points.length];
+        px = new double[points.length];
+        py = new double[points.length];
+        scaledPx = new int[points.length];
+        scaledPy = new int[points.length];
         for (int i = 0; i < points.length; i++)
         {
             px[i] = points[i].getX();
             py[i] = points[i].getY();
         }
-        this.setFixture(() -> FixtureBuilder.polygone(points));
+        setFixture(() -> FixtureBuilder.polygone(points));
     }
 
     /**
