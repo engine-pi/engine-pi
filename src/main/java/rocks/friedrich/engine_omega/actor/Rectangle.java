@@ -26,6 +26,7 @@ import java.util.function.Supplier;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.resources.Container;
 
 /**
  * Beschreibt ein Rechteck.
@@ -59,6 +60,7 @@ public class Rectangle extends Geometry
     public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
+        setColor(Container.colors.getBlue());
     }
 
     public Rectangle(double width, double height,

@@ -3,67 +3,166 @@ package rocks.friedrich.engine_omega.util;
 import java.awt.Color;
 
 /**
- * https://developer.gnome.org/hig/reference/palette.html
+ * Ein Farbschema, damit die verschiedenen Farben aufeinander abgestimmt werden
+ * können und gut zusamenpassen.
+ *
+ * Außerdem besteht durch diese Klasse die Möglichkeit, ein anderes Farbschema
+ * zu setzen.
  */
 public class ColorSchema
 {
     /**
-     * green3
+     * Die Primärfarbe <b>Gelb</b>.
      */
-    Color green = new Color(51, 209, 122);
+    private Color yellow;
 
     /**
-     * light1
+     * Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
+     * <b>Rot</b>).
+     */
+    private Color orange;
+
+    /**
+     * Die Primärfarbe <b>Rot</b>.
+     */
+    private Color red;
+
+    /**
+     * Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
+     * <b>Blau</b>).
+     */
+    private Color purple;
+
+    /**
+     * Die Primärfarbe <b>Blau</b>.
+     */
+    private Color blue;
+
+    /**
+     * Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und <b>Blau</b>).
+     */
+    private Color green;
+
+    /**
+     * Die Nicht-Farbe <b>Weiß</b> (nach Itten).
      */
     Color white = Color.WHITE;
 
     /**
-     * orange3
+     * Die Nicht-Farbe <b>Weiß</b> (nach Itten).
      */
-    Color orange = new Color(255, 120, 0);
+    Color black = Color.BLACK;
 
     /**
-     * light5
+     * Die Reihenfolge der Farben ist dem <a href=
+     * "https://de.wikipedia.org/wiki/Farbkreis#/media/Datei:Farbkreis_Itten_1961.svg">Farbkreis
+     * von Itten</a> entnommen.
+     *
+     * @param yellow Die Primärfarbe <b>Gelb</b>.
+     * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
+     *               und <b>Rot</b>).
+     * @param red    Die Primärfarbe <b>Rot</b>.
+     * @param purple Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b>
+     *               und <b>Blau</b>).
+     * @param blue   Die Primärfarbe <b>Blau</b>.
+     * @param green  Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     *               <b>Blau</b>).
      */
-    Color gray = new Color(154, 153, 150);
+    public ColorSchema(Color yellow, Color orange, Color red, Color purple,
+            Color blue, Color green)
+    {
+        this.yellow = yellow;
+        this.orange = orange;
+        this.red = red;
+        this.purple = purple;
+        this.blue = blue;
+        this.green = green;
+    }
 
     /**
-     * blue3
+     * Gibt die Primärfarbe <b>Gelb</b> zurück.
+     *
+     * @returns Die Primärfarbe <b>Gelb</b>.
      */
-    Color blue = new Color(53, 132, 228);
+    public Color getYellow()
+    {
+        return yellow;
+    }
 
     /**
-     * red3
+     * Gibt die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
+     * <b>Rot</b>). zurück.
+     *
+     * @returns Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
+     *          <b>Rot</b>).
      */
-    Color red = new Color(224, 27, 36);
+    public Color getOrange()
+    {
+        return orange;
+    }
 
     /**
-     * https://de.wikipedia.org/wiki/Pink_(Farbe) purple1
+     * Gibt die Primärfarbe <b>Rot</b> zurück.
+     *
+     * @returns Die Primärfarbe <b>Rot</b>.
      */
-    Color pink = new Color(220, 138, 221);
+    public Color getRed()
+    {
+        return red;
+    }
 
     /**
-     * https://de.wikipedia.org/wiki/Magenta_(Farbe) purple3
+     * Gibt die Sekundärfarbe <b>Violett</b> zurück.
+     *
+     * @returns Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
+     *          <b>Blau</b>)..
      */
-    Color magenta = new Color(97, 53, 131);
+    public Color getPurple()
+    {
+        return purple;
+    }
 
     /**
-     * https://de.wikipedia.org/wiki/T%C3%BCrkis_(Farbe)
+     * Gibt die Primärfarbe <b>Blau</b> zurück.
+     *
+     * @returns Die Primärfarbe <b>Blau</b>.
      */
-    Color cyan;
+    public Color getBlue()
+    {
+        return blue;
+    }
 
     /**
-     * https://de.wikipedia.org/wiki/Violett lila purple3
+     * Gibt die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     * <b>Blau</b>) zurück.
+     *
+     * @returns Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     *          <b>Blau</b>).
      */
-    Color violet = new Color(145, 65, 172);
+    public Color getGreen()
+    {
+        return green;
+    }
 
     /**
-     * brown3
+     * Erzeugt ein Farbschema nach dem Farben
+     * der<a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
+     * Human Interface Guidelines</a>.
      */
-    Color brown = new Color(152, 106, 68);
-
-    /**
-     * dark5
-     */
-    Color black = new Color(0, 0, 0);
+    public static ColorSchema getGnomeColorSchema()
+    {
+        return new ColorSchema(
+                // yellow3
+                new Color(246, 211, 45),
+                // organe3
+                new Color(255, 120, 0),
+                // red3
+                new Color(224, 27, 36),
+                // purple3
+                new Color(145, 65, 172),
+                // blue3
+                new Color(53, 132, 228),
+                // green3
+                new Color(51, 209, 122));
+    }
 }

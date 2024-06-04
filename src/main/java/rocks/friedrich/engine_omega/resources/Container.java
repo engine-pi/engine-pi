@@ -37,33 +37,34 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import rocks.friedrich.engine_omega.util.ColorSchema;
+
 /**
- * This class is the engines entry point for accessing any kind of resources. A
- * resource is any non-executable data that is deployed with your game. The
- * {@code Resources} class provides access to types of
- * {@code ResourcesContainers} and is used by different (loading) mechanisms to
- * make resources available during runtime.
- * <p>
- * The LITIENGINE supports a variety of different resource types, including:
- * </p>
+ * Zur Aufbewahrung und Verwaltung verschiedener Resourcen.
  *
- * <ul>
- * <li>images</li>
- * <li>sounds</li>
- * </ul>
+ * <p>
+ * Diese Klasse ist der Einstiegspunkt für den Zugriff auf alle Arten von
+ * {@link Ressource}n. Eine Ressource ist jede nicht-ausführbare Datei, die mit
+ * dem Spiel bereitgestellt wird. Die {@link Container} Klasse bietet Zugriff
+ * auf verschiedene Spezialisierungen von {@link ResourcesContainer} und wird
+ * von verschiedenen (Lade-)Mechanismen verwendet, um Ressourcen während der
+ * Laufzeit verfügbar zu machen.
+ * </p>
  *
  * @see ResourcesContainer
  */
-public final class AllResourcesContainer
+public final class Container
 {
     private static final Logger log = Logger
-            .getLogger(AllResourcesContainer.class.getName());
+            .getLogger(Container.class.getName());
 
-    private static ImagesContainer images = new ImagesContainer();
+    public static ImagesContainer images = new ImagesContainer();
 
-    private static SoundsContainer sounds = new SoundsContainer();
+    public static SoundsContainer sounds = new SoundsContainer();
 
-    private AllResourcesContainer()
+    public static ColorSchema colors = ColorSchema.getGnomeColorSchema();
+
+    private Container()
     {
         throw new UnsupportedOperationException();
     }
@@ -104,7 +105,7 @@ public final class AllResourcesContainer
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see AllResourcesContainer
+     * @see Container
      */
     public static InputStream get(String file)
     {
@@ -117,7 +118,7 @@ public final class AllResourcesContainer
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see AllResourcesContainer
+     * @see Container
      */
     public static InputStream get(URL file)
     {

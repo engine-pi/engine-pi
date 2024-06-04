@@ -20,7 +20,6 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 import org.jbox2d.collision.shapes.CircleShape;
@@ -29,6 +28,7 @@ import org.jbox2d.collision.shapes.Shape;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.physics.FixtureData;
+import rocks.friedrich.engine_omega.resources.Container;
 
 /**
  * Beschreibt einen Kreis.
@@ -49,7 +49,7 @@ public class Circle extends Geometry
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        setColor(Color.WHITE);
+        setColor(Container.colors.getYellow());
     }
 
     /**

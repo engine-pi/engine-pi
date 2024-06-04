@@ -86,7 +86,7 @@ public final class SoundsContainer extends ResourcesContainer<Sound>
     @Override
     protected Sound load(URL resourceName) throws Exception
     {
-        try (final InputStream is = AllResourcesContainer.get(resourceName))
+        try (final InputStream is = Container.get(resourceName))
         {
             if (is == null)
             {

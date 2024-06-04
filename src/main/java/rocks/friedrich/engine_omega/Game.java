@@ -42,7 +42,7 @@ import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.MouseButton;
 import rocks.friedrich.engine_omega.event.MouseWheelEvent;
 import rocks.friedrich.engine_omega.graphics.RenderPanel;
-import rocks.friedrich.engine_omega.resources.AllResourcesContainer;
+import rocks.friedrich.engine_omega.resources.Container;
 import rocks.friedrich.engine_omega.resources.ImagesContainer;
 import rocks.friedrich.engine_omega.resources.SoundsContainer;
 import rocks.friedrich.engine_omega.sound.Jukebox;
@@ -250,7 +250,7 @@ public final class Game
      */
     public static ImagesContainer getImages()
     {
-        return AllResourcesContainer.getImages();
+        return Container.getImages();
     }
 
     /**
@@ -266,7 +266,7 @@ public final class Game
      */
     public static SoundsContainer getSounds()
     {
-        return AllResourcesContainer.getSounds();
+        return Container.getSounds();
     }
 
     private static void run()
