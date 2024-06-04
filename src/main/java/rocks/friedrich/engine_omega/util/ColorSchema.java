@@ -79,6 +79,11 @@ public class ColorSchema
         this.green = green;
     }
 
+    private Color mix(Color color1, Color color2)
+    {
+        return ColorUtil.interpolate(color1, color2, 0.5);
+    }
+
     /**
      * Gibt die Primärfarbe <b>Gelb</b> zurück.
      *
@@ -133,6 +138,14 @@ public class ColorSchema
     }
 
     /**
+     * Türkis
+     */
+    public Color getBlueGreen()
+    {
+        return mix(blue, green);
+    }
+
+    /**
      * Gibt die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      * <b>Blau</b>) zurück.
      *
@@ -142,6 +155,14 @@ public class ColorSchema
     public Color getGreen()
     {
         return green;
+    }
+
+    /**
+     * Hellgrün
+     */
+    public Color getYellowGreen()
+    {
+        return mix(yellow, green);
     }
 
     /**
