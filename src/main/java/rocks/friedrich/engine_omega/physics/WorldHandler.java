@@ -116,8 +116,8 @@ public class WorldHandler implements ContactListener
     public WorldHandler(Layer layer)
     {
         this.layer = layer;
-        this.world = new World(new Vec2());
-        this.world.setContactListener(this);
+        world = new World(new Vec2());
+        world.setContactListener(this);
     }
 
     /**
@@ -206,10 +206,10 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Entfernt alle internen Referenzen auf einen Body und das zugehörige
-     * {@link Actor}-Objekt.
+     * Entfernt alle internen Referenzen auf einen {@link Body Körper} und das
+     * zugehörige {@link Actor}-Objekt.
      *
-     * @param body der zu entfernende Body
+     * @param body Der zu entfernende {@link Body Körper}.
      */
     @Internal
     public void removeAllInternalReferences(Body body)
@@ -219,9 +219,9 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Fügt einen Contact der Blacklist hinzu. Kontakte in der Blacklist werden
-     * bis zur Trennung nicht aufgelöst. Der Kontakt wird nach endContact wieder
-     * entfernt.
+     * Fügt einen {@link Contact Kontakt} der Blacklist hinzu. {@link Contact
+     * Kontakt}e in der Blacklist werden bis zur Trennung nicht aufgelöst. Der
+     * Kontakt wird nach endContact wieder entfernt.
      */
     @Internal
     public void addContactToBlacklist(Contact contact)
@@ -425,18 +425,21 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Speichert ein Korrespondierendes Body-Objekt sowie
+     * Speichert ein Korrespondierendes Body-Objekt
      */
     private static class Checkup<E extends Actor>
     {
-        private final CollisionListener<E> listener; // Aufzurufen
+        private final CollisionListener<E> listener;
 
-        private final Body body; // Der zweite Body (erster Body ist
-                                 // Hashmap-Schlüssel)
+        /**
+         * Der zweite Body (erster Body ist Hashmap-Schlüssel)
+         */
+        private final Body body;
 
-        private final E collidingActor; // Das {@link Actor}-Objekt, das neben
-                                        // dem Actor
-                                        // angemeldet wurde
+        /**
+         * Das {@link Actor}-Objekt, das neben dem Actor angemeldet wurde
+         */
+        private final E collidingActor;
 
         /**
          * Erstellt das Checkup-Objekt

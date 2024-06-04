@@ -27,7 +27,6 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.actor.Animation;
 import rocks.friedrich.engine_omega.actor.BodyType;
 import rocks.friedrich.engine_omega.actor.StatefulAnimation;
-import rocks.friedrich.engine_omega.animation.KeyFrames;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.KeyListener;
 
@@ -46,12 +45,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final double JUMP_IMPULSE = 1100;
 
-    private KeyFrames currentMovement = null;
-
     public StatefulPlayerCharacter()
     {
-        super(3, 3); // All GIFs are 64x64 px, hence: Same width/height. In this
-                     // case: 3m each
+        // Alle Bilder haben die Amessung 64x64px und deshalb die gleiche Breite
+        // und Höhe. Wir verwenden drei Meter
+        super(3, 3);
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();

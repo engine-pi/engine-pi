@@ -39,7 +39,6 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import rocks.friedrich.engine_omega.resources.Container;
 import rocks.friedrich.engine_omega.resources.ResourceLoader;
 
 public final class FileUtil

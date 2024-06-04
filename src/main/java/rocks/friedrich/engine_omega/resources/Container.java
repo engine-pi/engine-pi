@@ -43,8 +43,6 @@ import rocks.friedrich.engine_omega.util.ColorSchema;
  */
 public final class Container
 {
-
-
     public static ImagesContainer images = new ImagesContainer();
 
     public static SoundsContainer sounds = new SoundsContainer();
@@ -86,8 +84,6 @@ public final class Container
         return sounds;
     }
 
-
-
     /**
      * Clears the all resource containers by removing previously loaded
      * resources.
@@ -97,6 +93,4 @@ public final class Container
         getImages().clear();
         getSounds().clear();
     }
-
-
 }
