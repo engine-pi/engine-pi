@@ -25,7 +25,7 @@ public class DensityDemo extends Scene implements KeyListener
         int x = -5;
         for (int i = 0; i < 3; i++)
         {
-            circles[i] = createCircle(x, density);
+            circles[i] = createCircleWithDensity(x, density);
             densityLables[i] = createDensityLables(x, density);
             x += 5;
             density += 10;
@@ -37,7 +37,7 @@ public class DensityDemo extends Scene implements KeyListener
         add(ground);
     }
 
-    private Circle createCircle(double x, double density)
+    private Circle createCircleWithDensity(double x, double density)
     {
         Circle circle = new Circle(1);
         circle.setPosition(x, 5);

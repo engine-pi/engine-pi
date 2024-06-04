@@ -20,10 +20,7 @@ public class ColorSchemaDemo extends Scene
         circle2.setPosition(1, -2);
         circle2.setColor(Container.colors.getYellowGreen());
         add(circle2);
-        Circle circle3 = new Circle();
-        circle3.setPosition(1, -4);
-        circle3.setColor(Container.colors.getYellow());
-        add(circle3);
+        createCircle(1, -4, Container.colors.getGreen());
     }
 
     public static void main(String[] args)

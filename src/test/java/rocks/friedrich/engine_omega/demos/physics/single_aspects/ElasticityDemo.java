@@ -27,12 +27,12 @@ public class ElasticityDemo extends Scene
         double elasticity = 0;
         for (double x = -11.5; x < 12; x += 2)
         {
-            createCircle(x, elasticity);
+            createCircleWithElasticity(x, elasticity);
             elasticity += 0.1;
         }
     }
 
-    private void createCircle(double x, double elasticity)
+    private void createCircleWithElasticity(double x, double elasticity)
     {
         Circle circle = new Circle(1);
         add(circle);

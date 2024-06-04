@@ -30,6 +30,7 @@ import java.util.function.Supplier;
 import org.jbox2d.dynamics.Body;
 
 import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.ActorCreator;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
@@ -55,7 +56,7 @@ import rocks.friedrich.engine_omega.physics.WorldHandler;
  * @author Michael Andonie
  */
 public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
-        MouseWheelListenerContainer, FrameUpdateListenerContainer
+        MouseWheelListenerContainer, FrameUpdateListenerContainer, ActorCreator
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
             .comparingInt(Actor::getLayerPosition);
@@ -119,6 +120,11 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     public Scene getParent()
+    {
+        return parent;
+    }
+
+    public Scene getScene()
     {
         return parent;
     }

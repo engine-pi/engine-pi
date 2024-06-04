@@ -40,6 +40,7 @@ import org.jbox2d.dynamics.joints.RevoluteJoint;
 import org.jbox2d.dynamics.joints.RopeJoint;
 
 import rocks.friedrich.engine_omega.actor.Actor;
+import rocks.friedrich.engine_omega.actor.ActorCreator;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.event.EventListenerHelper;
@@ -62,7 +63,7 @@ import rocks.friedrich.engine_omega.physics.WorldHandler;
  * neu erzeugen zu müssen.
  */
 public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
-        MouseWheelListenerContainer, FrameUpdateListenerContainer
+        MouseWheelListenerContainer, FrameUpdateListenerContainer, ActorCreator
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 
@@ -94,17 +95,6 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     private Color backgroundColor = Color.BLACK;
 
     /**
-     * Gibt die Hauptebene dieser Szene aus.
-     *
-     * @return Die Hauptebene dieser Szene.
-     */
-    @API
-    public Layer getMainLayer()
-    {
-        return mainLayer;
-    }
-
-    /**
      * Die Hauptebene (default-additions)
      */
     private final Layer mainLayer;
@@ -118,11 +108,27 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
 
     public Scene()
     {
-        this.camera = new Camera();
-        this.mainLayer = new Layer();
-        this.mainLayer.setLayerPosition(0);
+        camera = new Camera();
+        mainLayer = new Layer();
+        mainLayer.setLayerPosition(0);
         addLayer(mainLayer);
         EventListenerHelper.autoRegisterListeners(this);
+    }
+
+    public Scene getScene()
+    {
+        return this;
+    }
+
+    /**
+     * Gibt die Hauptebene dieser Szene aus.
+     *
+     * @return Die Hauptebene dieser Szene.
+     */
+    @API
+    public Layer getMainLayer()
+    {
+        return mainLayer;
     }
 
     /**
