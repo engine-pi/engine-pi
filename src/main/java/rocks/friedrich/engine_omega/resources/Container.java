@@ -25,18 +25,6 @@
  */
 package rocks.friedrich.engine_omega.resources;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import rocks.friedrich.engine_omega.util.ColorSchema;
 
 /**
@@ -44,7 +32,7 @@ import rocks.friedrich.engine_omega.util.ColorSchema;
  *
  * <p>
  * Diese Klasse ist der Einstiegspunkt für den Zugriff auf alle Arten von
- * {@link Ressource}n. Eine Ressource ist jede nicht-ausführbare Datei, die mit
+ * {@link Resource}n. Eine Ressource ist jede nicht-ausführbare Datei, die mit
  * dem Spiel bereitgestellt wird. Die {@link Container} Klasse bietet Zugriff
  * auf verschiedene Spezialisierungen von {@link ResourcesContainer} und wird
  * von verschiedenen (Lade-)Mechanismen verwendet, um Ressourcen während der
@@ -55,8 +43,7 @@ import rocks.friedrich.engine_omega.util.ColorSchema;
  */
 public final class Container
 {
-    private static final Logger log = Logger
-            .getLogger(Container.class.getName());
+
 
     public static ImagesContainer images = new ImagesContainer();
 
@@ -99,106 +86,7 @@ public final class Container
         return sounds;
     }
 
-    /**
-     * Gets the specified file as InputStream from either a resource folder or
-     * the file system.
-     *
-     * @param file The path to the file.
-     * @return The contents of the specified file as {@code InputStream}.
-     * @see Container
-     */
-    public static InputStream get(String file)
-    {
-        return get(getLocation(file));
-    }
 
-    /**
-     * Gets the specified file as InputStream from either a resource folder or
-     * the file system.
-     *
-     * @param file The path to the file.
-     * @return The contents of the specified file as {@code InputStream}.
-     * @see Container
-     */
-    public static InputStream get(URL file)
-    {
-        InputStream stream = getResource(file);
-        if (stream == null)
-        {
-            return null;
-        }
-        return stream.markSupported() ? stream
-                : new BufferedInputStream(stream);
-    }
-
-    /**
-     * Reads the specified file as String from either a resource folder or the
-     * file system.<br>
-     * Since no {@code Charset} is specified with this overload, the
-     * implementation uses UTF-8 by default.
-     *
-     * @param file The path to the file.
-     * @return The contents of the specified file as {@code String}
-     */
-    public static String read(String file)
-    {
-        return read(file, StandardCharsets.UTF_8);
-    }
-
-    /**
-     * Reads the specified file as String from either a resource folder or the
-     * file system.<br>
-     *
-     * @param file    The path to the file.
-     * @param charset The charset that is used to read the String from the file.
-     * @return The contents of the specified file as {@code String}
-     */
-    public static String read(String file, Charset charset)
-    {
-        final URL location = getLocation(file);
-        if (location == null)
-        {
-            return null;
-        }
-        return read(location, charset);
-    }
-
-    /**
-     * Reads the specified file as String from either a resource folder or the
-     * file system.<br>
-     * Since no {@code Charset} is specified with this overload, the
-     * implementation uses UTF-8 by default.
-     *
-     * @param file The path to the file.
-     * @return The contents of the specified file as {@code String}
-     */
-    public static String read(URL file)
-    {
-        return read(file, StandardCharsets.UTF_8);
-    }
-
-    /**
-     * Reads the specified file as String from either a resource folder or the
-     * file system.<br>
-     *
-     * @param file    The path to the file.
-     * @param charset The charset that is used to read the String from the file.
-     * @return The contents of the specified file as {@code String}
-     */
-    public static String read(URL file, Charset charset)
-    {
-        try (Scanner scanner = new Scanner(file.openStream(),
-                charset.toString()))
-        {
-            scanner.useDelimiter("\\A");
-            return scanner.hasNext() ? scanner.next() : null;
-        }
-        catch (IOException e)
-        {
-            log.log(Level.SEVERE, e.getMessage());
-            return null;
-        }
-    }
 
     /**
      * Clears the all resource containers by removing previously loaded
@@ -210,39 +98,5 @@ public final class Container
         getSounds().clear();
     }
 
-    public static URL getLocation(String name)
-    {
-        URL fromClass = ClassLoader.getSystemResource(name);
-        if (fromClass != null)
-        {
-            return fromClass;
-        }
-        try
-        {
-            return new URL(name);
-        }
-        catch (MalformedURLException e)
-        {
-            try
-            {
-                return (new File(name)).toURI().toURL();
-            }
-            catch (MalformedURLException e1)
-            {
-                return null;
-            }
-        }
-    }
 
-    private static InputStream getResource(final URL file)
-    {
-        try
-        {
-            return file.openStream();
-        }
-        catch (IOException e)
-        {
-            return null;
-        }
-    }
 }

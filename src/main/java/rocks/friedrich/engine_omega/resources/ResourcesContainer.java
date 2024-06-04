@@ -371,7 +371,7 @@ public abstract class ResourcesContainer<T>
      */
     public Future<T> getAsync(String name)
     {
-        return this.getAsync(Container.getLocation(this.getIdentifier(name)));
+        return this.getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
     }
 
     /**
@@ -464,7 +464,7 @@ public abstract class ResourcesContainer<T>
         T newResource;
         try
         {
-            newResource = this.load(Container.getLocation(identifier));
+            newResource = this.load(ResourceLoader.getLocation(identifier));
         }
         catch (Exception e)
         {

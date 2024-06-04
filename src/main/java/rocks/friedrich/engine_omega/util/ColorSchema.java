@@ -82,7 +82,7 @@ public class ColorSchema
     /**
      * Gibt die Primärfarbe <b>Gelb</b> zurück.
      *
-     * @returns Die Primärfarbe <b>Gelb</b>.
+     * @return Die Primärfarbe <b>Gelb</b>.
      */
     public Color getYellow()
     {
@@ -93,7 +93,7 @@ public class ColorSchema
      * Gibt die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
      * <b>Rot</b>). zurück.
      *
-     * @returns Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
+     * @return Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
      *          <b>Rot</b>).
      */
     public Color getOrange()
@@ -104,7 +104,7 @@ public class ColorSchema
     /**
      * Gibt die Primärfarbe <b>Rot</b> zurück.
      *
-     * @returns Die Primärfarbe <b>Rot</b>.
+     * @return Die Primärfarbe <b>Rot</b>.
      */
     public Color getRed()
     {
@@ -114,7 +114,7 @@ public class ColorSchema
     /**
      * Gibt die Sekundärfarbe <b>Violett</b> zurück.
      *
-     * @returns Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
+     * @return Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
      *          <b>Blau</b>)..
      */
     public Color getPurple()
@@ -125,7 +125,7 @@ public class ColorSchema
     /**
      * Gibt die Primärfarbe <b>Blau</b> zurück.
      *
-     * @returns Die Primärfarbe <b>Blau</b>.
+     * @return Die Primärfarbe <b>Blau</b>.
      */
     public Color getBlue()
     {
@@ -136,7 +136,7 @@ public class ColorSchema
      * Gibt die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      * <b>Blau</b>) zurück.
      *
-     * @returns Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     * @return Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      *          <b>Blau</b>).
      */
     public Color getGreen()

@@ -40,6 +40,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import rocks.friedrich.engine_omega.resources.Container;
+import rocks.friedrich.engine_omega.resources.ResourceLoader;
 
 public final class FileUtil
 {
@@ -319,8 +320,8 @@ public final class FileUtil
     {
         try
         {
-            return Files
-                    .exists(Paths.get(Container.getLocation(filePath).toURI()));
+            return Files.exists(
+                    Paths.get(ResourceLoader.getLocation(filePath).toURI()));
         }
         catch (URISyntaxException e)
         {

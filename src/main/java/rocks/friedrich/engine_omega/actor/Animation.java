@@ -261,17 +261,7 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         // Liste mit den Pfaden aller qualifizierten Dateien
         ArrayList<String> allPaths = new ArrayList<>();
-        File directory;
-        try
-        {
-            directory = ResourceLoader.loadAsFile(directoryPath);
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(
-                    "Fehler beim Einladen des Verzeichnisses: "
-                            + e.getMessage());
-        }
+        File directory = ResourceLoader.loadAsFile(directoryPath);
         if (!directory.isDirectory())
         {
             throw new RuntimeException(
