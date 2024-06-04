@@ -5,17 +5,17 @@ import java.awt.Color;
 import rocks.friedrich.engine_omega.Scene;
 
 /**
- * Schnittstelle um {@Actor}-Objekte leicher erzeugen zu können.
+ * Schnittstelle um {@link Actor}-Objekte leicher erzeugen zu können.
  *
  * <p>
  * Mit Hilfe dieses Interfaces können die Klassen {@link Scene} and
- * {@link Layer} um einige Hilfsmethoden erweitert werden, ohne sie dabei mit
+ * {@link rocks.friedrich.engine_omega.Layer Layer} um einige Hilfsmethoden erweitert werden, ohne sie dabei mit
  * vielen weiteren Methoden zu überfrachten. Die erzeugten
- * {@Actor}-Objekt werden gleich zur Szene bzw. zur Ebene hinzugefügt.
+ * {@link Actor}-Objekt werden gleich zur Szene bzw. zur Ebene hinzugefügt.
  * </p>
  *
  * @see Scene
- * @see Layer
+ * @see rocks.friedrich.engine_omega.Layer
  */
 public interface ActorCreator
 {
