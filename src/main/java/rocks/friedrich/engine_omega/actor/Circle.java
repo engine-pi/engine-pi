@@ -20,6 +20,8 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
+import static rocks.friedrich.engine_omega.resources.Container.colors;
+
 import java.awt.Graphics2D;
 
 import org.jbox2d.collision.shapes.CircleShape;
@@ -28,13 +30,15 @@ import org.jbox2d.collision.shapes.Shape;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.annotations.Internal;
 import rocks.friedrich.engine_omega.physics.FixtureData;
-import rocks.friedrich.engine_omega.resources.Container;
 
 /**
  * Beschreibt einen Kreis.
  *
  * @author Michael Andonie
  * @author Niklas Keller
+ *
+ * @see Rectangle
+ * @see Triangle
  */
 public class Circle extends Geometry
 {
@@ -43,17 +47,19 @@ public class Circle extends Geometry
     /**
      * Erzeugt einen Kreis durch Angabe des Durchmessers.
      *
-     * @param diameter Durchmesser des Kreises
+     * @param diameter Der Durchmesser des Kreises.
      */
     public Circle(double diameter)
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        setColor(Container.colors.getYellow());
+        setColor(colors.getYellow());
     }
 
     /**
-     * Erzeugen einen Kreis mit einem Meter Durchmesser.
+     * Erzeugt einen Kreis mit einem Meter Durchmesser.
+     *
+     * @author Josef Friedrich
      */
     public Circle()
     {
@@ -63,7 +69,7 @@ public class Circle extends Geometry
     /**
      * Gibt den Durchmesser des Kreises aus.
      *
-     * @return Durchmesser des Kreises.
+     * @return Der Durchmesser des Kreises.
      */
     @API
     public double getDiameter()
@@ -74,7 +80,7 @@ public class Circle extends Geometry
     /**
      * Gibt den Radius des Kreises aus.
      *
-     * @return Radius des Kreises.
+     * @return Der Radius des Kreises.
      */
     @API
     public double getRadius()

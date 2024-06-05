@@ -1338,7 +1338,7 @@ public abstract class Actor
     {
         return physicsHandler.isGrounded();
     }
-    /* _________________________ JOINTS _________________________ */
+    /* _ Joints _____________________________________________________________ */
 
     /**
      * Erstellt einen Revolute-Joint zwischen dem zugehörigen
@@ -1513,8 +1513,9 @@ public abstract class Actor
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
      *
-     * @param x neue <code>x</code>-Koordinate
-     * @param y neue <code>y</code>-Koordinate
+     * @param x Die neue <code>x</code>-Koordinate.
+     * @param y Die neue <code>y</code>-Koordinate.
+     *
      * @see #setPosition(Vector)
      * @see #setCenter(double, double)
      * @see #setX(double)
@@ -1531,7 +1532,8 @@ public abstract class Actor
      * Setzen ist technisch gesehen eine Verschiebung von der aktuellen Position
      * an die neue.
      *
-     * @param position Der neue Zielpunkt
+     * @param position Der neue Zielpunkt.
+     *
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setX(double)
@@ -1547,6 +1549,7 @@ public abstract class Actor
      * Verschiebt das Objekt ohne Bedingungen auf der Zeichenebene.
      *
      * @param vector Der Vektor, der die Verschiebung des Objekts angibt.
+     *
      * @see Vector
      * @see #moveBy(double, double)
      */

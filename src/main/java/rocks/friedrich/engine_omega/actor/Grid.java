@@ -5,9 +5,12 @@ import java.awt.Graphics2D;
 
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.physics.FixtureBuilder;
+import static rocks.friedrich.engine_omega.resources.Container.colors;
 
 /**
- * Ein Gitter aus quadratischen Zellen.
+ * Beschreibt ein Gitter aus quadratischen Zellen.
+ *
+ * @author Josef Friedrich
  */
 public class Grid extends Actor
 {
@@ -37,7 +40,7 @@ public class Grid extends Actor
     /**
      * Die Farbe der Gitterlinien.
      */
-    Color color = Color.GREEN;
+    Color color = colors.getGreen();
 
     /**
      * Die Hintergrundfarbe.

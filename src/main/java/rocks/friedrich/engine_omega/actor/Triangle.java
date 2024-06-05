@@ -4,6 +4,15 @@ import rocks.friedrich.engine_omega.Vector;
 import rocks.friedrich.engine_omega.annotations.API;
 import rocks.friedrich.engine_omega.resources.Container;
 
+/**
+ * Beschreibt ein Dreieck.
+ *
+ * @author Josef Friedrich
+ *
+ * @see Triangle
+ * @see Rectangle
+ * @see Circle
+ */
 public class Triangle extends Polygon
 {
     /**

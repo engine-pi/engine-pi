@@ -33,6 +33,9 @@ import rocks.friedrich.engine_omega.resources.Container;
  *
  * @author Michael Andonie
  * @author Niklas Keller
+ *
+ * @see Circle
+ * @see Triangle
  */
 public class Rectangle extends Geometry
 {
@@ -56,6 +59,9 @@ public class Rectangle extends Geometry
      *
      * @param width  Die Breite des Rechtecks.
      * @param height Die Höhe des Rechtecks.
+     *
+     * @see ActorCreator#createRectangle(double, double, double, double)
+     * @see ActorCreator#createRectangle(double, double)
      */
     public Rectangle(double width, double height)
     {
