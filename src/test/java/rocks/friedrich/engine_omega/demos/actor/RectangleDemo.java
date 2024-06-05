@@ -1,11 +1,10 @@
 package rocks.friedrich.engine_omega.demos.actor;
 
 import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
 import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.physics.FixtureBuilder;
 
-public class RectangleDemo extends Scene
+public class RectangleDemo extends ActorBaseScene
 {
     public RectangleDemo()
     {

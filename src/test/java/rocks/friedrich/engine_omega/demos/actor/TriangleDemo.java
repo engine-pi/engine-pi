@@ -1,15 +1,12 @@
 package rocks.friedrich.engine_omega.demos.actor;
 
 import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
-import rocks.friedrich.engine_omega.actor.Rectangle;
 import rocks.friedrich.engine_omega.actor.Triangle;
 
-public class TriangleDemo extends Scene
+public class TriangleDemo extends ActorBaseScene
 {
     public TriangleDemo()
     {
-        setGravityOfEarth();
         // Kippt beim Aufprall
         Triangle triangle = new Triangle(5, 2);
         triangle.makeDynamic();
@@ -20,10 +17,6 @@ public class TriangleDemo extends Scene
         triangle2.makeStatic();
         triangle2.setPosition(5, 0);
         add(triangle2);
-        Rectangle ground = new Rectangle(20, 1);
-        ground.setPosition(-10, -8);
-        ground.makeStatic();
-        add(ground);
     }
 
     public static void main(String[] args)
