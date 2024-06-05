@@ -1,26 +1,24 @@
 package rocks.friedrich.engine_omega.demos.resources;
 
+import static rocks.friedrich.engine_omega.resources.Container.colors;
+
+import java.awt.Color;
+import java.util.Map.Entry;
+
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
-import rocks.friedrich.engine_omega.actor.Circle;
-import rocks.friedrich.engine_omega.actor.Rectangle;
-import rocks.friedrich.engine_omega.resources.Container;
 
 public class ColorSchemaDemo extends Scene
 {
     public ColorSchemaDemo()
     {
-        Rectangle rectangle = new Rectangle();
-        rectangle.setPosition(-2, 0);
-        add(rectangle);
-        Circle circle = new Circle();
-        circle.setPosition(2, 0);
-        add(circle);
-        Circle circle2 = new Circle();
-        circle2.setPosition(1, -2);
-        circle2.setColor(Container.colors.getYellowGreen());
-        add(circle2);
-        createCircle(1, -4, Container.colors.getGreen());
+        int x = -12;
+        for (Entry<String, Color> entry : colors.getAll().entrySet())
+        {
+            createCircle(x, 0, entry.getValue());
+            System.out.println(entry.getKey());
+            x += 2;
+        }
     }
 
     public static void main(String[] args)

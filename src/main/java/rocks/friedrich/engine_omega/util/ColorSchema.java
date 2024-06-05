@@ -1,6 +1,8 @@
 package rocks.friedrich.engine_omega.util;
 
 import java.awt.Color;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Ein Farbschema, damit die verschiedenen Farben aufeinander abgestimmt werden
@@ -79,9 +81,14 @@ public class ColorSchema
         this.green = green;
     }
 
+    private Color mix(Color color1, Color color2, double factor)
+    {
+        return ColorUtil.interpolate(color1, color2, factor);
+    }
+
     private Color mix(Color color1, Color color2)
     {
-        return ColorUtil.interpolate(color1, color2, 0.5);
+        return mix(color1, color2, 0.5);
     }
 
     /**
@@ -92,6 +99,11 @@ public class ColorSchema
     public Color getYellow()
     {
         return yellow;
+    }
+
+    public Color getYellowOrange()
+    {
+        return mix(yellow, orange);
     }
 
     /**
@@ -106,6 +118,11 @@ public class ColorSchema
         return orange;
     }
 
+    public Color getOrangeRed()
+    {
+        return mix(orange, red);
+    }
+
     /**
      * Gibt die Primärfarbe <b>Rot</b> zurück.
      *
@@ -114,6 +131,11 @@ public class ColorSchema
     public Color getRed()
     {
         return red;
+    }
+
+    public Color getRedPurple()
+    {
+        return mix(red, purple);
     }
 
     /**
@@ -125,6 +147,11 @@ public class ColorSchema
     public Color getPurple()
     {
         return purple;
+    }
+
+    public Color getPurpleBlue()
+    {
+        return mix(purple, blue);
     }
 
     /**
@@ -163,6 +190,30 @@ public class ColorSchema
     public Color getYellowGreen()
     {
         return mix(yellow, green);
+    }
+
+    public Color getBrown()
+    {
+        return mix(red, green, 0.35);
+    }
+
+    public Map<String, Color> getAll()
+    {
+        Map<String, Color> map = new LinkedHashMap<String, Color>();
+        map.put("yellow", getYellow());
+        map.put("yelloworange", getYellowOrange());
+        map.put("orange", getOrange());
+        map.put("orangered", getOrangeRed());
+        map.put("red", getRed());
+        map.put("redpurple", getRedPurple());
+        map.put("purple", getPurple());
+        map.put("purpleblue", getPurpleBlue());
+        map.put("blue", getBlue());
+        map.put("bluegreen", getBlueGreen());
+        map.put("green", getGreen());
+        map.put("yellowgreen", getYellowGreen());
+        map.put("brown", getBrown());
+        return map;
     }
 
     /**
