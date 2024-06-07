@@ -756,26 +756,31 @@ Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
 ![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/FrogTutorial1.gif)
 
-
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
-Physikalische Eigenschaften
+### Physikalische Eigenschaften
 
-Wie im Physics-Tutorial beschrieben, werden die physikalischen Eigenschaften der Spielobjekte und ihrer Umgebung bestimmt:
+Wie im Physics-Tutorial beschrieben, werden die physikalischen Eigenschaften der
+Spielobjekte und ihrer Umgebung bestimmt:
 
-    Platformen sind statische Objekte: Sie ignorieren Schwerkraft und können nicht durch andere Objekte verschoben werden (egal mit wie viel Kraft der Frosch auf sie fällt).
-    Der Frosch ist ein dynamisches Objekt: Er lässt sich von der Schwerkraft beeinflussen und wird von den statischen Platformen aufgehalten.
-    In der Scene FroggyJump existiert eine Schwerkraft von 10 m/s^2. Sie wird mit setGravity(Vector) gesetzt.
+- Platformen sind **statische** Objekte: Sie ignorieren Schwerkraft und können
+  nicht durch andere Objekte verschoben werden (egal mit wie viel Kraft der
+  Frosch auf sie fällt).
+- Der Frosch ist ein **dynamisches** Objekt: Er lässt sich von der Schwerkraft
+  beeinflussen und wird von den statischen Platformen aufgehalten.
+- In der Scene `FroggyJump` existiert eine Schwerkraft von 10 m/s^2. Sie wird
+  mit `setGravity(Vector)` gesetzt.
 
-Bewegung des Frosches
+### Bewegung des Frosches
 
-Die Bewegung des Frosches wird in jedem Frame kontrolliert. Wie im Game Loop Tutorial beschrieben, wird hierzu das Interface FrameUpdateListener genutzt.
+Die Bewegung des Frosches wird in jedem Frame kontrolliert. Wie im Game Loop
+Tutorial beschrieben, wird hierzu das Interface `FrameUpdateListener` genutzt.
 
 In jedem Frame wird die Bewegung des Frosches in dreierlei hinsicht kontrolliert:
 
-    Teil A: Blickrichtung des Frosches: Das Bild des Frosches wird gespiegelt, falls er sich nach links bewegt.
-    Teil B: Horizontale Bewegung des Frosches: Jeden Frame, in dem der Spieler den Frosch (per Tastendruck) nach links oder rechts steuern möchte, wird eine Bewegungskraft auf den Frosch angewendet. Wird der Frosch in die Gegenrichtung seiner aktuellen Bewegung gesteuert, wird seine horizontale Geschwindigkeit zuvor auf 0 gesetzt, um ein langsames Abbremsen zu verhindern. Das ermöglicht schnelle Reaktion auf Nutzereingabe und ein besseres Spielgefühl. Zusätzlich wird seine Geschwindigkeit auf die Konstante MAX_SPEED begrenzt.
-    Teil C: Springe, wenn möglich: Mit der Funktion isGrounded() bietet die Engine einen einfachen Test, um sicherzustellen, dass der Frosch Boden unter den Füßen hat. Wenn dies gegeben ist, wird ein Sprungimpuls auf den Frosch angewandt. Zuvor wird die vertikale Komponente seiner Geschwindigkeit auf 0 festgesetzt - das garantiert, dass der Frosch jedes mal die selbe Sprunghöhe erreicht.
+- Teil A: Blickrichtung des Frosches: Das Bild des Frosches wird gespiegelt, falls er sich nach links bewegt.
+- Teil B: Horizontale Bewegung des Frosches: Jeden Frame, in dem der Spieler den Frosch (per Tastendruck) nach links oder rechts steuern möchte, wird eine Bewegungskraft auf den Frosch angewendet. Wird der Frosch in die Gegenrichtung seiner aktuellen Bewegung gesteuert, wird seine horizontale Geschwindigkeit zuvor auf 0 gesetzt, um ein langsames Abbremsen zu verhindern. Das ermöglicht schnelle Reaktion auf Nutzereingabe und ein besseres Spielgefühl. Zusätzlich wird seine Geschwindigkeit auf die Konstante `MAX_SPEED` begrenzt.
+- Teil C: Springe, wenn möglich: Mit der Funktion `isGrounded()` bietet die Engine einen einfachen Test, um sicherzustellen, dass der Frosch Boden unter den Füßen hat. Wenn dies gegeben ist, wird ein Sprungimpuls auf den Frosch angewandt. Zuvor wird die vertikale Komponente seiner Geschwindigkeit auf 0 festgesetzt - das garantiert, dass der Frosch jedes mal die selbe Sprunghöhe erreicht.
 
 Die Kamera folgt dem Frosch
 
@@ -790,7 +795,8 @@ Der Frosch soll stets sichtbar bleiben. Hierzu werden zwei Funktionen der Engine
 
 ### Durch Platformen Springen: Kollisionen kontrollieren
 
-Das Interface [CollisionListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+Das Interface
+[CollisionListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
 `CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
 überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere
@@ -810,20 +816,30 @@ unterschiedlich behandelt werden:
 Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
 ```java
-class Platform extends Rectangle implements CollisionListener<Frog> {
-
-    public Platform(float width, float height) {
+class Platform extends Rectangle implements CollisionListener<Frog>
+{
+    public Platform(double width, double height)
+    {
         super(width, height);
-        setBodyType(BodyType.STATIC);
-        this.addCollisionListener(Frog.class, this);
+        makeStatic();
+        addCollisionListener(Frog.class, this);
     }
 
     @Override
-    public void onCollision(CollisionEvent<Frog> collisionEvent) {
-        float frogY = collisionEvent.getColliding().getPosition().getY();
-        if(frogY<this.getY()) {
+    public void onCollision(CollisionEvent<Frog> collisionEvent)
+    {
+        double frogY = collisionEvent.getColliding().getPosition().getY();
+        if (frogY < getY())
+        {
             collisionEvent.ignoreCollision();
+            collisionEvent.getColliding().setJumpEnabled(false);
         }
+    }
+
+    @Override
+    public void onCollisionEnd(CollisionEvent<Frog> collisionEvent)
+    {
+        collisionEvent.getColliding().setJumpEnabled(true);
     }
 }
 ```
