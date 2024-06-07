@@ -145,18 +145,17 @@ public class FixtureData
     @Internal
     FixtureDef createFixtureDef(PhysicsData parent)
     {
-        FixtureDef fixtureDef = new FixtureDef();
-        fixtureDef.density = (float) (isDensitySet ? density
+        FixtureDef def = new FixtureDef();
+        def.density = (float) (isDensitySet ? density
                 : parent.getGlobalDensity());
-        fixtureDef.friction = (float) (isFrictionSet ? friction
+        def.friction = (float) (isFrictionSet ? friction
                 : parent.getGlobalFriction());
-        fixtureDef.restitution = (float) (isRestitutionSet ? restitution
+        def.restitution = (float) (isRestitutionSet ? restitution
                 : parent.getGlobalRestitution());
-        fixtureDef.isSensor = isSensorSet ? isSensor
-                : parent.getType().isSensor();
-        fixtureDef.filter = filter;
-        fixtureDef.shape = shape;
-        return fixtureDef;
+        def.isSensor = isSensorSet ? isSensor : parent.getType().isSensor();
+        def.filter = filter;
+        def.shape = shape;
+        return def;
     }
 
     /**

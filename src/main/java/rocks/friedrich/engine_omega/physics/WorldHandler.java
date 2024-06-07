@@ -94,7 +94,7 @@ public class WorldHandler implements ContactListener
      * Hashmap, die alle spezifisch angegebenen Actor-Actor
      * Kollisionsüberwachungen innehat.
      */
-    private final Map<Body, List<Checkup>> specificCollisionListeners = new ConcurrentHashMap<>();
+    private final Map<Body, List<Checkup<? extends Actor>>> specificCollisionListeners = new ConcurrentHashMap<>();
 
     /**
      * Hashmap, die sämtliche allgemeinen CollisionListener-Listener innehat.
@@ -269,18 +269,20 @@ public class WorldHandler implements ContactListener
         if (b1.hashCode() == b2.hashCode())
         {
             // Hashes sind gleich (blöde Sache!) -> beide Varianten probieren.
-            List<Checkup> result1 = specificCollisionListeners.get(b1);
+            List<Checkup<? extends Actor>> result1 = specificCollisionListeners
+                    .get(b1);
             if (result1 != null)
             {
-                for (Checkup c : result1)
+                for (Checkup<? extends Actor> c : result1)
                 {
                     c.checkCollision(b2, contact, isBegin);
                 }
             }
-            List<Checkup> result2 = specificCollisionListeners.get(b2);
+            List<Checkup<? extends Actor>> result2 = specificCollisionListeners
+                    .get(b2);
             if (result2 != null)
             {
-                for (Checkup c : result2)
+                for (Checkup<? extends Actor> c : result2)
                 {
                     c.checkCollision(b1, contact, isBegin);
                 }
@@ -300,10 +302,11 @@ public class WorldHandler implements ContactListener
                 lower = b2;
                 higher = b1;
             }
-            List<Checkup> result = specificCollisionListeners.get(lower);
+            List<Checkup<? extends Actor>> result = specificCollisionListeners
+                    .get(lower);
             if (result != null)
             {
-                for (Checkup c : result)
+                for (Checkup<? extends Actor> c : result)
                 {
                     c.checkCollision(higher, contact, isBegin);
                 }
@@ -475,11 +478,11 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Meldet ein allgemeines KR-Interface in dieser World an.
+     * Meldet einen allgemeinen Kollisionsbeobachter in der Physics-Welt an.
      *
-     * @param listener Das anzumeldende KR Interface
-     * @param actor    Der Actor (KR Interface wird bei jeder Kollision des
-     *                 Actors informiert)
+     * @param listener Das anzumeldende Kollisionsbeobachter
+     * @param actor    Kollisionsbeobachter wird informiert falls dieses
+     *                 {@link Actor}-Objekt mit einem anderen Objekt kollidiert.
      */
     @Internal
     public static void addGenericCollisionListener(
@@ -499,7 +502,8 @@ public class WorldHandler implements ContactListener
     }
 
     /**
-     * Meldet ein spezifisches CollisionListener-Interface in dieser World an.
+     * Meldet ein spezifisches CollisionListener-Interface in dieser
+     * Physics-Welt an.
      *
      * @param listener Das anzumeldende KR Interface
      * @param actor    Der Actor (Haupt-{@link Actor}-Objekt)
