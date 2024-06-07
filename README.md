@@ -752,106 +752,12 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
-
-
-```java
-package eatutorials.collision;
-
-import ea.*;
-import ea.actor.*;
-import ea.collision.CollisionEvent;
-import ea.collision.CollisionListener;
-import ea.event.KeyListener;
-
-import java.awt.event.KeyEvent;
-
-
-public class FroggyJump extends Scene {
-
-    private Frog frog;
-
-    public FroggyJump() {
-        frog = new Frog();
-        add(frog);
-        setGravity(Vector.DOWN.multiply(10));
-        Camera cam = getCamera();
-        cam.setFocus(frog);
-        cam.setOffset(new Vector(0, 4));
-        makePlatforms(10);
-    }
-
-    public static void main(String[] args) {
-        FroggyJump fj = new FroggyJump();
-        Game.start(400, 600, fj);
-        //Game.setDebug(true);
-    }
-
-    private void makePlatforms(int heightLevel) {
-        for(int i=0; i < heightLevel; i++) {
-            Platform platform = new Platform(5, 1);
-            platform.setPosition(0, i*4);
-            add(platform);
-        }
-    }
-}
-
-class Frog extends Image implements FrameUpdateListener {
-
-    private static float MAX_SPEED = 4;
-
-    public Frog() {
-        super("eatutorials/collision/assets/Jump (32x32).png", 25f);
-        setBodyType(BodyType.DYNAMIC);
-        setRotationLocked(true);
-    }
-
-    @Override
-    public void onFrameUpdate(float deltaSeconds) {
-        Vector velocity = this.getVelocity();
-        //A: Image direction
-        if(velocity.getX() < 0) {
-            setFlipHorizontal(true);
-        } else {
-            setFlipHorizontal(false);
-        }
-
-        //B: Horizontal Movement
-        if (Game.isKeyPressed(KeyEvent.VK_A)) {
-            if(velocity.getX() > 0) {
-                setVelocity(new Vector(0, velocity.getY()));
-            }
-            applyForce(Vector.LEFT.multiply(600));
-        } else if (Game.isKeyPressed(KeyEvent.VK_D)) {
-            if(velocity.getX() < 0) {
-                setVelocity(new Vector(0, velocity.getY()));
-            }
-            applyForce(Vector.RIGHT.multiply(600));
-        }
-        if(Math.abs(velocity.getX()) > MAX_SPEED) {
-            setVelocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()) , velocity.getY()));
-        }
-
-        //C: Jump if possible
-        if (isGrounded()) {
-            this.setVelocity(new Vector(velocity.getX(), 0));
-            this.applyImpulse(Vector.UP.multiply(180));
-        }
-    }
-}
-
-class Platform extends Rectangle {
-
-    public Platform(float width, float height) {
-        super(width, height);
-        setBodyType(BodyType.STATIC);
-    }
-}
-```
-
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
-Ein paar Erklärungen zum Codegerüst für FroggyJump:
+![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/FrogTutorial1.gif)
 
+
+Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
 Physikalische Eigenschaften
 
