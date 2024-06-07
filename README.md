@@ -643,6 +643,8 @@ sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
 `Platform` halt.
 
+[Quellcode des fertigen Spiels](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/collision/FroggyJump.java)
+
 Damit ergibt sich das Codegerüst für das Spiel:
 
 ```java
