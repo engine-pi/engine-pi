@@ -672,9 +672,9 @@ public abstract class Actor
      *
      * @param <E>      Typ des anderen Objekts bei Kollisionen.
      * @param clazz    Typ des anderen Objekts bei Kollisionen.
-     * @param listener Der Listener, der bei Kollisionen informiert werden soll,
-     *                 die der <b>ausführende Actor</b> mit allen anderen
-     *                 Objekten der Scene erlebt.
+     * @param listener Der Beobachter, der bei Kollisionen informiert werden
+     *                 soll, die der <b>ausführende Actor</b> mit allen anderen
+     *                 Objekten der Szene erlebt.
      * @see #addCollisionListener(Actor, CollisionListener)
      */
     @API
