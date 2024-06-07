@@ -3,13 +3,29 @@
 [![Maven Central](https://img.shields.io/maven-central/v/rocks.friedrich.engine_omega/engine-omega.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/rocks.friedrich.engine_omega/engine-omega)
 [![javadoc](https://javadoc.io/badge2/rocks.friedrich.engine_omega/engine-omega/javadoc.svg)](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega)
 
-# Engine Omega
+# Über diese Game Engine
 
 ![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/src/main/resources/assets/logo.png)
 
-Mein persönlicher Fork der [Engine Alpha](https://github.com/engine-alpha/engine-alpha)
+Diese Game Engine ist ein Fork der
+[Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von
+[Michael Andonie](https://github.com/andonie)
+und [Niklas Keller](https://github.com/kelunik) und zwar ein Fork der Core Engine v4.x.
+Die Engine-Alpha-Edu Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
-[PR-Requests](https://github.com/engine-alpha/engine-alpha) bitte gegen das Upstream-Projekt stellen.
+Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) keine
+Audio-Wiedergabe unterstützt, wurde Code der Sound-Engine der
+[LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine-Alpha übernommen.
+Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
+[Steffen Wilke](https://github.com/steffen-wilke)
+[Matthias Wilke](https://github.com/nightm4re94). Neben der Sound-Engine kommen
+viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
+Tweening-Paket aus der LITIENGINE in der Engine Omega zum Einsatz.
+
+Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
+[Engine Alpha Wiki](https://engine-alpha.org), die unter der
+[Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
+Lizenz stehen.
 
 ## Koordinatensystem
 
