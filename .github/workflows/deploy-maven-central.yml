@@ -16,9 +16,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: ossrh
+          server-id: central # see pom.xml <publishingServerId>central</publishingServerId>
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+          # gpg --armor --export-secret-keys <key_id> > gpg_key.asc
+          # cat gpg_key.asc
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
 
