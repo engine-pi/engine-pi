@@ -100,7 +100,7 @@ public class Settings
     /**
      * The maximum number of vertices on a convex polygon.
      */
-    public static int maxPolygonVertices = 8;
+    public static int maxPolygonVertices = 20;
 
     /**
      * This is used to fatten AABBs in the dynamic tree. This allows proxies to
