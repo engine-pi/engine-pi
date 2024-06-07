@@ -636,8 +636,7 @@ public class RepeatExample extends Scene
 
 https://engine-alpha.org/wiki/v4.x/Collision
 
-Spielkonzept und grundlegender Aufbau
-Dieser Frosch soll sich durch das Spiel springen
+### Spielkonzept und grundlegender Aufbau
 
 Ein Frosch soll fröhlich durch das Spiel springen, wann immer er die Chance hat,
 sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
@@ -645,6 +644,113 @@ Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
 `Platform` halt.
 
 Damit ergibt sich das Codegerüst für das Spiel:
+
+```java
+public class FroggyJump extends Scene
+{
+    private Frog frog;
+
+    public FroggyJump()
+    {
+        frog = new Frog();
+        add(frog);
+        setGravity(Vector.DOWN.multiply(10));
+        Camera camera = getCamera();
+        camera.setFocus(frog);
+        camera.setOffset(new Vector(0, 4));
+        makeLevel(40);
+        makePlatforms(10);
+    }
+
+    private void makePlatforms(int heightLevel)
+    {
+        for (int i = 0; i < heightLevel; i++)
+        {
+            Platform platform = new Platform(5, 1);
+            platform.setPosition(0, i * 4);
+            add(platform);
+        }
+    }
+}
+
+class Frog extends Image implements FrameUpdateListener
+{
+    private boolean canJump = true;
+
+    private static double MAX_SPEED = 4;
+
+    public Frog()
+    {
+        super("froggy/Frog.png", 25);
+        makeDynamic();
+        setRotationLocked(true);
+    }
+
+    public void setJumpEnabled(boolean jumpEnabled)
+    {
+        this.canJump = jumpEnabled;
+    }
+
+    public void kill()
+    {
+        Game.transitionToScene(new DeathScreen());
+    }
+
+    @Override
+    public void onFrameUpdate(double deltaSeconds)
+    {
+        Vector velocity = this.getVelocity();
+        // A: Die Blickrichtung des Frosches steuern
+        if (velocity.getX() < 0)
+        {
+            setFlipHorizontal(true);
+        }
+        else
+        {
+            setFlipHorizontal(false);
+        }
+        // B: Horizontale Bewegung steuern
+        if (Game.isKeyPressed(KeyEvent.VK_A))
+        {
+            if (velocity.getX() > 0)
+            {
+                setVelocity(new Vector(0, velocity.getY()));
+            }
+            applyForce(Vector.LEFT.multiply(600));
+        }
+        else if (Game.isKeyPressed(KeyEvent.VK_D))
+        {
+            if (velocity.getX() < 0)
+            {
+                setVelocity(new Vector(0, velocity.getY()));
+            }
+            applyForce(Vector.RIGHT.multiply(600));
+        }
+        if (Math.abs(velocity.getX()) > MAX_SPEED)
+        {
+            setVelocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
+                    velocity.getY()));
+        }
+        // C: Wenn möglich den Frosch springen lassen
+        if (isGrounded() && velocity.getY() <= 0 && canJump)
+        {
+            setVelocity(new Vector(velocity.getX(), 0));
+            applyImpulse(Vector.UP.multiply(180));
+        }
+    }
+}
+
+class Platform extends Rectangle implements CollisionListener<Frog>
+{
+    public Platform(double width, double height)
+    {
+        super(width, height);
+        setBodyType(BodyType.STATIC);
+    }
+}
+```
+
+
 
 ```java
 package eatutorials.collision;

@@ -46,9 +46,9 @@ public class FroggyJump extends Scene
         frog = new Frog();
         add(frog);
         setGravity(Vector.DOWN.multiply(10));
-        Camera cam = getCamera();
-        cam.setFocus(frog);
-        cam.setOffset(new Vector(0, 4));
+        Camera camera = getCamera();
+        camera.setFocus(frog);
+        camera.setOffset(new Vector(0, 4));
         makeLevel(40);
         makePlatforms(10);
     }
@@ -112,7 +112,7 @@ class Frog extends Image implements FrameUpdateListener
     public Frog()
     {
         super("froggy/Frog.png", 25);
-        setBodyType(BodyType.DYNAMIC);
+        makeDynamic();
         setRotationLocked(true);
     }
 
@@ -130,7 +130,7 @@ class Frog extends Image implements FrameUpdateListener
     public void onFrameUpdate(double deltaSeconds)
     {
         Vector velocity = this.getVelocity();
-        // A: Image direction
+        // A: Die Blickrichtung des Frosches steuern
         if (velocity.getX() < 0)
         {
             setFlipHorizontal(true);
@@ -139,7 +139,7 @@ class Frog extends Image implements FrameUpdateListener
         {
             setFlipHorizontal(false);
         }
-        // B: Horizontal Movement
+        // B: Horizontale Bewegung steuern
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
             if (velocity.getX() > 0)
@@ -161,7 +161,7 @@ class Frog extends Image implements FrameUpdateListener
             setVelocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
                     velocity.getY()));
         }
-        // C: Jump if possible
+        // C: Wenn möglich den Frosch springen lassen
         if (isGrounded() && velocity.getY() <= 0 && canJump)
         {
             setVelocity(new Vector(velocity.getX(), 0));
@@ -175,7 +175,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     public Platform(double width, double height)
     {
         super(width, height);
-        setBodyType(BodyType.STATIC);
+        makeStatic();
         addCollisionListener(Frog.class, this);
     }
 
@@ -247,6 +247,5 @@ class SpikeBall extends Image implements CollisionListener<Frog>
     public static void main(String[] args)
     {
         Game.start(400, 600, new FroggyJump());
-        // Game.setDebug(true);
     }
 }
