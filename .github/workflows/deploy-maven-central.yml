@@ -1,0 +1,32 @@
+# https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#publishing-using-apache-maven
+
+name: Publish package to the Maven Central Repository
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:
+      - "*" # Push events to every tag not containing /
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+          # gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
+
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          # MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+# https://github.com/jonashackt/github-actions-release-maven
