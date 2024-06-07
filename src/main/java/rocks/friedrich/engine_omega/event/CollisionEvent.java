@@ -35,7 +35,7 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 /**
  * Ein Objekt der Klasse {@link CollisionEvent} repräsentiert eine <b>Kollision
  * zwischen zwei {@link Actor}-Objekten</b>. Nur {@link Actor}-Objekte, mit
- * denen ein CollisionListener verknüpft sind, generieren
+ * denen ein {@link CollisionListener} verknüpft sind, generieren
  * {@link CollisionEvent}s.
  *
  * <p>
@@ -47,10 +47,10 @@ import rocks.friedrich.engine_omega.annotations.Internal;
  * {@link Actor}-Objekte des Aufpralls implizit bestimmt dadurch, dass der
  * {@link CollisionListener} an dem entsprechenden {@link Actor}-Objekt
  * <b>angemeldet</b> werden musste. Das hiermit kollidierende Objekt ist im
- * Event angegeben.</li>
+ * Ereignis angegeben.</li>
  *
  * <li><b>Ausführliche Informationsquelle</b>: Hierüber sind Informationen zur
- * Kollision erhältlich, z.B. über die Härte des Aufpralls.</li>
+ * Kollision erhältlich, z. B. über die Härte des Aufpralls.</li>
  *
  * <li><b>Kontrolle der Kollisionsauflösung</b>: Der Nutzer kann entscheiden, ob
  * die Kollision aufgelöst werden soll oder ignoriert werden soll. Hiermit
@@ -69,7 +69,7 @@ public class CollisionEvent<E extends Actor>
             .withInitial(WorldManifold::new);
 
     /**
-     * Der JBox2D-Contact. Zur Manipulation der Kollision und zur Abfrage.
+     * Der JBox2D-Kontakt. Zur Manipulation der Kollision und zur Abfrage.
      */
     private final Contact contact;
 
@@ -150,6 +150,14 @@ public class CollisionEvent<E extends Actor>
         return normal;
     }
 
+    /**
+     * Gibt eine Liste von Berührungspunkten aus.
+     *
+     * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine,
+     *         einen oder zwei Berührungspunkte enthalten.
+     * @throws IllegalStateException Wenn die Anzahl der Berührungspunkten
+     *                               größer als 2 ist.
+     */
     @API
     public List<Vector> getPoints()
     {
@@ -177,6 +185,11 @@ public class CollisionEvent<E extends Actor>
         }
     }
 
+    /**
+     * Gibt wahr zurück, falls dieses Ereignis ignoriert wurde.
+     *
+     * @return Wahr, falls dieses Ereignis ignoriert wurde, sonst falsch.
+     */
     public boolean isIgnored()
     {
         return !contact.isEnabled();

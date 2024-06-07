@@ -788,21 +788,27 @@ Der Frosch soll stets sichtbar bleiben. Hierzu werden zwei Funktionen der Engine
    Blick nach oben als nach unten. Mit `Camera.setOffset(Vector)` wird die
    Kamera nach oben verschoben.
 
-Durch Platformen Springen: Kollisionen kontrollieren
+### Durch Platformen Springen: Kollisionen kontrollieren
 
-Das Interface CollisionListener wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+Das Interface [CollisionListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
-CollisionListener kann mehr als nur melden, wenn zwei Actor-Objekte sich überschneiden. Um das FroggyJump-Spiel zu implementieren, nutzen wir weitere Features.
+`CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
+überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere
+Features.
 
+Unser Frosch soll fähig sein, von unten „durch die Platform hindurch“ zu
+springen. Von oben fallend soll er natürlich auf der Platform stehen bleiben.
 
-Unser Frosch soll fähig sein, von unten "durch die Platform hindurch" zu springen. Von oben fallend soll er natürlich auf der Platform stehen bleiben.
+Um diesen Effekt zu erzeugen, müssen Kollisionen zwischen Frosch und Platform
+unterschiedlich behandelt werden:
 
-Um diesen Effekt zu erzeugen, müssen Kollisionen zwischen Frosch und Platform unterschiedlich behandelt werden:
+1. Kollidiert der Frosch von unten, so soll die Kollision ignoriert werden.
+   Er prallt so nicht von der Decke ab und kann weiter nach oben Springen.
+2. Kollidiert der Frosch von oben, so soll die Kollision normal aufgelöst werden,
+   sodass er nicht durch den Boden fällt.
 
-    Kollidiert der Frosch von unten, so soll die Kollision ignoriert werden. Er prallt so nicht von der Decke ab und kann weiter nach oben Springen.
-    Kollidiert der Frosch von oben, so soll die Kollision normal aufgelöst werden, sodass er nicht durch den Boden fällt.
+Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
-Hierzu stellt das CollisionEvent-Objekt in der onCollision-Methode Funktionen bereit.
 ```java
 class Platform extends Rectangle implements CollisionListener<Frog> {
 
