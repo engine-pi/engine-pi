@@ -2,7 +2,7 @@ package rocks.friedrich.engine_omega.resources;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
@@ -16,7 +16,7 @@ public class ResourceManipulatorTest
 
     String resourceName = "Pixel-Adventure-1/Background/Blue.png";
 
-    @AfterEach
+    @BeforeEach
     void clear()
     {
         container.clear();
