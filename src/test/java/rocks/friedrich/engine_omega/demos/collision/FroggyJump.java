@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.collision;
+package rocks.friedrich.engine_omega.demos.collision;
 
 import java.awt.event.KeyEvent;
 
@@ -111,8 +111,7 @@ class Frog extends Image implements FrameUpdateListener
 
     public Frog()
     {
-        super("src/test/java/rocks/friedrich/engine_omega/tutorials/collision/assets/Jump (32x32).png",
-                25);
+        super("froggy/Frog.png", 25);
         setBodyType(BodyType.DYNAMIC);
         setRotationLocked(true);
     }
@@ -224,8 +223,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 
     public SpikeBall()
     {
-        super("src/test/java/rocks/friedrich/engine_omega/tutorials/collision/assets/Spiked Ball.png",
-                40);
+        super("froggy/Spiked-Ball.png", 40);
         setGravityScale(0);
         addCollisionListener(Frog.class, this);
     }
@@ -248,8 +246,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 
     public static void main(String[] args)
     {
-        FroggyJump fj = new FroggyJump();
-        Game.start(400, 600, fj);
+        Game.start(400, 600, new FroggyJump());
         // Game.setDebug(true);
     }
 }
