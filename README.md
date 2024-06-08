@@ -1,11 +1,11 @@
 <!-- https://github.com/softwaremill/maven-badges -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/rocks.friedrich.engine_omega/engine-omega.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/rocks.friedrich.engine_omega/engine-omega)
-[![javadoc](https://javadoc.io/badge2/rocks.friedrich.engine_omega/engine-omega/javadoc.svg)](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega)
+[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer_gymnasium.engine_pi/engine-pi.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer_gymnasium.engine_pi/engine-pi)
+[![javadoc](https://javadoc.io/badge2/de.pirckheimer_gymnasium.engine_pi/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi)
 
 # Über diese Game Engine
 
-![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/src/main/resources/assets/logo.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/src/main/resources/assets/logo.png)
 
 Diese Game Engine ist ein Fork der
 [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von
@@ -20,7 +20,7 @@ Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
 [Steffen Wilke](https://github.com/steffen-wilke)
 [Matthias Wilke](https://github.com/nightm4re94). Neben der Sound-Engine kommen
 viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
-Tweening-Paket aus der LITIENGINE in der Engine Omega zum Einsatz.
+Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
 Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
 [Engine Alpha Wiki](https://engine-alpha.org), die unter der
@@ -203,7 +203,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben
 
-Der [folgende Code](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
+Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
 ```java
@@ -239,7 +239,7 @@ public class KeyStrokeCounterDemo extends Scene
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll,
 implementiert das Interface
-[rocks.friedrich.engine_omega.event.KeyListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html).
+[de.pirckheimer_gymnasium.engine_pi.event.KeyListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html).
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
@@ -250,18 +250,18 @@ Achte darauf, dass du das richtige Interface einbindest.
 Die korrekte Anweisung, um das Interface einzubinden, lautet:
 
 ```java
-import rocks.friedrich.engine_omega.event.KeyListener
+import de.pirckheimer_gymnasium.engine_pi.event.KeyListener
 ```
 
 Die Anmeldung des `KeyListener`-Interfaces hat automatisch stattgefunden, als
 das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde.
-Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)
+Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)
 -Methode bei jedem Tastendruck
 aufgerufen.
 
 Soll reagiert werden, wenn eine Taste losgelassen wird, kann die
 [onKeyUp(KeyEvent
-e)](<https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
+e)](<https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
 implementiert werden.
 
 Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
@@ -269,7 +269,7 @@ Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
 Im [folgendem
-Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ```java
@@ -319,7 +319,7 @@ Key`](https://stackoverflow.com/a/70191567). Diese Klassenattribute können in
 einer `switch`-Kontrollstruktur zur Fallunterscheidung verwendet werden.
 
 Das [nächste
-Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDisplayDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java)
 zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
@@ -360,7 +360,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 Auf Mausklick reagieren: Kreise malen
 
 Das [folgende
-Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
 malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
@@ -391,7 +391,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 #### Schnittstelle `MouseClickListener`
 
 Das Interface
-[MouseClickListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/MouseClickListener.html)
+[MouseClickListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/MouseClickListener.html)
 ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das
 Reagieren auf Loslassen der Maus.
 
@@ -410,7 +410,7 @@ Kreis an der Position des Klicks erstellt:
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-[Vector](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/Vector.html).
+[Vector](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Vector.html).
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.
 
@@ -418,7 +418,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
-[PaintingCirclesAdvancedDemo.java](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+[PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
 ## Game Loop
 
@@ -429,7 +429,7 @@ https://engine-alpha.org/wiki/v4.x/Game_Loop
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/GameLoop.png)
+![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/GameLoop.png)
 
 Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
@@ -447,7 +447,7 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/Snake_Minimal.gif)
+![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/Snake_Minimal.gif)
 
 ```java
 public class SnakeMinimal extends Scene
@@ -652,7 +652,7 @@ public void placeRandomGoodie()
 
 ### Anregung zum Experimentieren
 
-![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/Snake_Advanced.gif)
+![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/Snake_Advanced.gif)
 
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
@@ -900,7 +900,7 @@ public void onFrameUpdate(float v) {
 
 ### Schwerkraft
 
-https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/GravityDemo.java
+https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
 
 ```java
 public class GravityDemo extends Scene implements KeyListener
@@ -948,7 +948,7 @@ public class GravityDemo extends Scene implements KeyListener
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
-[Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/ElasticityDemo.java)
+[Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
 public class ElasticityDemo extends Scene
@@ -993,7 +993,7 @@ public class ElasticityDemo extends Scene
 
 ### Dichte
 
-https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/single_aspects/DensityDemo.java
+https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java
 
 ```java
 public class DensityDemo extends Scene implements KeyListener
@@ -1077,7 +1077,7 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
-https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/physics/DominoesDemo.java
+https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
 
 ```java
 public class DominoesDemo extends Scene
@@ -1240,10 +1240,10 @@ Interface MouseClickListener implementiert:
 ```java
 import java.awt.event.KeyEvent;
 
-import rocks.friedrich.engine_omega.FrameUpdateListener;
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
-import rocks.friedrich.engine_omega.actor.Text;
+import de.pirckheimer_gymnasium.engine_pi.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 
 public class RepeatExample extends Scene
 {
@@ -1311,7 +1311,7 @@ sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
 `Platform` halt.
 
-[Quellcode des fertigen Spiels](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/collision/FroggyJump.java)
+[Quellcode des fertigen Spiels](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
@@ -1422,7 +1422,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
-![](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/FrogTutorial1.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/FrogTutorial1.gif)
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
@@ -1477,7 +1477,7 @@ Engine-Kamera genutzt:
 ### Durch Platformen Springen: Kollisionen kontrollieren
 
 Das Interface
-[CollisionListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+[CollisionListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
 `CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
 überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere
