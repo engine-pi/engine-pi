@@ -205,4 +205,50 @@ public interface ActorCreator
         getScene().add(actor);
         return actor;
     }
+
+    default RegularPolygon createRegularPolygon(int numSides, double radius)
+    {
+        RegularPolygon actor = new RegularPolygon(numSides, radius);
+        getScene().add(actor);
+        return actor;
+    }
+
+    default RegularPolygon createRegularPolygon(int numSides)
+    {
+        return createRegularPolygon(numSides, 1);
+    }
+
+    default RegularPolygon createRegularPolygon(int numSides, double radius,
+            double x, double y)
+    {
+        RegularPolygon actor = createRegularPolygon(numSides, radius);
+        actor.setPosition(x, y);
+        return actor;
+    }
+
+    default RegularPolygon createRegularPolygon(int numSides, double x,
+            double y)
+    {
+        return createRegularPolygon(numSides, 1, x, y);
+    }
+    /* ___ Text _______________________________________________ */
+
+    default Text createText(String content, double height)
+    {
+        Text actor = new Text(content, height);
+        getScene().add(actor);
+        return actor;
+    }
+
+    default Text createText(String content, double height, double x, double y)
+    {
+        Text actor = createText(content, height);
+        actor.setPosition(x, y);
+        return actor;
+    }
+
+    default Text createText(String content, double x, double y)
+    {
+        return createText(content, 1, x, y);
+    }
 }
