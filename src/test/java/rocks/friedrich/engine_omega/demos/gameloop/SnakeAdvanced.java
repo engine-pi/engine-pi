@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.gameloop;
+package rocks.friedrich.engine_omega.demos.gameloop;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -32,9 +32,8 @@ import rocks.friedrich.engine_omega.actor.Text;
 import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.CollisionListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
-import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class ActualSnake extends Scene implements FrameUpdateListener
+public class SnakeAdvanced extends Scene implements FrameUpdateListener
 {
     private Text scoreText = new Text("Score: 0", 1.4);
 
@@ -46,7 +45,7 @@ public class ActualSnake extends Scene implements FrameUpdateListener
 
     private boolean makeNewHead = false;
 
-    public ActualSnake()
+    public SnakeAdvanced()
     {
         add(snakeHead);
         scoreText.setPosition(-9, 5);
@@ -57,8 +56,8 @@ public class ActualSnake extends Scene implements FrameUpdateListener
     public void setScore(int score)
     {
         this.score = score;
-        this.snake_speed = 5 + (score * 0.1);
-        this.scoreText.setContent("Score: " + score);
+        snake_speed = 5 + (score * 0.1);
+        scoreText.setContent("Score: " + score);
     }
 
     public void increaseScore()
@@ -156,14 +155,13 @@ public class ActualSnake extends Scene implements FrameUpdateListener
         {
             increaseScore();
             makeNewHead = true;
-            this.remove();
+            remove();
             placeRandomGoodie();
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new ActualSnake());
-        Util.addScreenshotKey("Game Loop Actual Snake");
+        Game.start(600, 400, new SnakeAdvanced());
     }
 }

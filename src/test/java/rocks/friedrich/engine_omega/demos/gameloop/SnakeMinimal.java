@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package rocks.friedrich.engine_omega.tutorials.gameloop;
+package rocks.friedrich.engine_omega.demos.gameloop;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -33,9 +33,8 @@ import rocks.friedrich.engine_omega.event.CollisionEvent;
 import rocks.friedrich.engine_omega.event.CollisionListener;
 import rocks.friedrich.engine_omega.event.FrameUpdateListener;
 import rocks.friedrich.engine_omega.event.KeyListener;
-import rocks.friedrich.engine_omega.tutorials.util.Util;
 
-public class SnakeHead extends Scene
+public class SnakeMinimal extends Scene
 {
     private Text scoreText = new Text("Score: 0", 1.4);
 
@@ -43,7 +42,7 @@ public class SnakeHead extends Scene
 
     private Snake snake = new Snake();
 
-    public SnakeHead()
+    public SnakeMinimal()
     {
         add(snake);
         scoreText.setPosition(-9, 5);
@@ -54,7 +53,7 @@ public class SnakeHead extends Scene
     public void setScore(int score)
     {
         this.score = score;
-        this.scoreText.setContent("Score: " + score);
+        scoreText.setContent("Score: " + score);
     }
 
     public void increaseScore()
@@ -75,7 +74,7 @@ public class SnakeHead extends Scene
     private class Snake extends Circle
             implements FrameUpdateListener, KeyListener
     {
-        private Vector v_per_s = new Vector(0, 0);
+        private Vector movement = new Vector(0, 0);
 
         public Snake()
         {
@@ -86,7 +85,7 @@ public class SnakeHead extends Scene
         @Override
         public void onFrameUpdate(double timeInS)
         {
-            this.moveBy(v_per_s.multiply(timeInS));
+            moveBy(movement.multiply(timeInS));
         }
 
         @Override
@@ -95,19 +94,19 @@ public class SnakeHead extends Scene
             switch (keyEvent.getKeyCode())
             {
             case KeyEvent.VK_W:
-                v_per_s = new Vector(0, 5);
+                movement = new Vector(0, 5);
                 break;
 
             case KeyEvent.VK_A:
-                v_per_s = new Vector(-5, 0);
+                movement = new Vector(-5, 0);
                 break;
 
             case KeyEvent.VK_S:
-                v_per_s = new Vector(0, -5);
+                movement = new Vector(0, -5);
                 break;
 
             case KeyEvent.VK_D:
-                v_per_s = new Vector(5, 0);
+                movement = new Vector(5, 0);
                 break;
             }
         }
@@ -125,15 +124,13 @@ public class SnakeHead extends Scene
         public void onCollision(CollisionEvent<Snake> collisionEvent)
         {
             increaseScore();
-            this.remove();
+            remove();
             placeRandomGoodie();
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new SnakeHead());
-        Util.addScreenshotKey("User Input Circles Simple");
-        // Game.setDebug(true);
+        Game.start(600, 400, new SnakeMinimal());
     }
 }

@@ -410,192 +410,224 @@ Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
 https://engine-alpha.org/wiki/v4.x/Game_Loop
 
-Inhalt
-
-In diesem Tutorial:
-
-    Baust du einen frame-weisen Game Loop mit Spiellogik
-    Animierst du flüssige Bewegung in deinem Spiel
-
-How-To Engine Code: Der Game Loop
+### How-To Engine Code: Der Game Loop
 
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der Engine. Dieser funktioniert folgendermaßen:
 
-Der Engine Alpha Game Loop
+![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/GameLoop.png)
 
-Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei (den meisten) Computerspielen 30 bis 60 Bilder pro Sekunde in Echtzeit gerendert, um die selbe Illusion von Bewegung zu erzeugen. Nach jedem Bild berechnet die Engine intern die nächsten Schritte und gibt die relevanten Ereignisse (Tastendruck, Kollision, Frame-Update) an die entsprechenden Listener weiter.
+Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
+abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
+(den meisten) Computerspielen 30 bis 60 Bilder pro Sekunde in Echtzeit
+gerendert, um die selbe Illusion von Bewegung zu erzeugen. Nach jedem Bild
+berechnet die Engine intern die nächsten Schritte und gibt die relevanten
+Ereignisse (Tastendruck, Kollision, Frame-Update) an die entsprechenden Listener
+weiter.
 
-Alle Spiel-Logik ist also in den Listener-Interfaces geschrieben. Guter Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
-Snake ohne Körper
+Alle Spiel-Logik ist also in den Listener-Interfaces geschrieben. Guter
+Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 
-Das folgende Program implementiert ein einfaches Snake-Spiel mit einem Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
-Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
+### Snake ohne Körper
+
+Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
+Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
+
+![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/Snake_Minimal.gif)
 
 ```java
-import ea.*;
-import ea.actor.Circle;
-import ea.actor.Text;
-import ea.collision.CollisionEvent;
-import ea.collision.CollisionListener;
-import ea.event.KeyListener;
+public class SnakeMinimal extends Scene
+{
+    private Text scoreText = new Text("Score: 0", 1.4);
 
-import java.awt.Color;
-import java.awt.event.KeyEvent;
-
-public class SnakeHead
-extends Scene {
-
-    private Text scoreText = new Text("Score: 0", 1.4f);
     private int score = 0;
 
     private Snake snake = new Snake();
 
-    public SnakeHead() {
+    public SnakeMinimal()
+    {
         add(snake);
-
         scoreText.setPosition(-9, 5);
         add(scoreText);
         placeRandomGoodie();
-
     }
 
-    public void setScore(int score) {
+    public void setScore(int score)
+    {
         this.score = score;
-        this.scoreText.setContent("Score: " + score);
+        scoreText.setContent("Score: " + score);
     }
 
-    public void increaseScore() {
-        setScore(score+1);
+    public void increaseScore()
+    {
+        setScore(score + 1);
     }
 
-    public void placeRandomGoodie() {
-        float x = Random.range()*10 - 5;
-        float y = Random.range()*10 - 5;
+    public void placeRandomGoodie()
+    {
+        double x = Random.range() * 10 - 5;
+        double y = Random.range() * 10 - 5;
         Goodie goodie = new Goodie();
         goodie.setCenter(x, y);
         add(goodie);
         goodie.addCollisionListener(snake, goodie);
     }
 
-    public static void main(String[] args) {
-        Game.start(600, 400, new SnakeHead());
-        //Game.setDebug(true);
-    }
+    private class Snake extends Circle
+            implements FrameUpdateListener, KeyListener
+    {
+        private Vector movement = new Vector(0, 0);
 
-    private class Snake
-    extends Circle
-    implements FrameUpdateListener, KeyListener {
-        private Vector v_per_s = new Vector(0,0);
-
-        public Snake() {
+        public Snake()
+        {
             super(1);
             setColor(Color.GREEN);
         }
 
         @Override
-        public void onFrameUpdate(float timeInS) {
-            this.moveBy(v_per_s.multiply(timeInS));
+        public void onFrameUpdate(double timeInS)
+        {
+            moveBy(movement.multiply(timeInS));
         }
 
         @Override
-        public void onKeyDown(KeyEvent keyEvent) {
-            switch (keyEvent.getKeyCode()) {
-                case KeyEvent.VK_W:
-                    v_per_s = new Vector(0, 5);
-                    break;
-                case KeyEvent.VK_A:
-                    v_per_s = new Vector(-5, 0);
-                    break;
-                case KeyEvent.VK_S:
-                    v_per_s = new Vector(0, -5);
-                    break;
-                case KeyEvent.VK_D:
-                    v_per_s = new Vector(5, 0);
-                    break;
+        public void onKeyDown(KeyEvent keyEvent)
+        {
+            switch (keyEvent.getKeyCode())
+            {
+            case KeyEvent.VK_W:
+                movement = new Vector(0, 5);
+                break;
+
+            case KeyEvent.VK_A:
+                movement = new Vector(-5, 0);
+                break;
+
+            case KeyEvent.VK_S:
+                movement = new Vector(0, -5);
+                break;
+
+            case KeyEvent.VK_D:
+                movement = new Vector(5, 0);
+                break;
             }
         }
     }
 
-    private class Goodie
-    extends Text
-    implements CollisionListener<Snake> {
-        public Goodie() {
-            super("Eat Me!",1);
+    private class Goodie extends Text implements CollisionListener<Snake>
+    {
+        public Goodie()
+        {
+            super("Eat Me!", 1);
             setColor(Color.RED);
         }
 
         @Override
-        public void onCollision(CollisionEvent<Snake> collisionEvent) {
+        public void onCollision(CollisionEvent<Snake> collisionEvent)
+        {
             increaseScore();
-            this.remove();
+            remove();
             placeRandomGoodie();
         }
     }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new SnakeMinimal());
+    }
 }
+
 ```
 
 ### Snake: Frame-Weise Bewegung
 
-Die Snake ist der spielbare Charakter. Sie soll sich jeden Frame in eine der vier Himmelsrichtungen bewegen.
+Die Snake ist der spielbare Charakter. Sie soll sich jeden Frame in eine der
+vier Himmelsrichtungen bewegen.
 
-Die Bewegung der Snake soll möglichst flüssig sein. Daher wird die Bewegung in jedem einzelnen Frame ausgeführt, um maximal sauber auszusehen. Dazu implementiert die Snake das Engine-Interface ea.event.FrameUpdateListener, um in jedem Frame seine Bewegungslogik auszuführen.
+Die Bewegung der Snake soll möglichst flüssig sein. Daher wird die Bewegung in
+jedem einzelnen Frame ausgeführt, um maximal sauber auszusehen. Dazu
+implementiert die Snake das Engine-Interface FrameUpdateListener, um in jedem
+Frame seine Bewegungslogik auszuführen.
 
-Hierzu kennt die Snake ihre aktuelle Geschwindigkeit als gerichteten ea.Vektor (in Meter/Sekunde). Ein Frame ist deutlich kürzer als eine Sekunde. Mathematik zur Hilfe! v = s/t und damit s = v\*t. Jeden Frame erhält die Snake die tatsächlich vergangene Zeit t seit dem letzten Frame-Update und verrechnet diese mit ihrer aktuellen Geschwindigkeit v:
+Hierzu kennt die Snake ihre aktuelle Geschwindigkeit als gerichteten Vektor (in
+Meter/Sekunde). Ein Frame ist deutlich kürzer als eine Sekunde. Mathematik zur
+Hilfe! `v = s/t` und damit `s = v\*t`. Jeden Frame erhält die Snake die
+tatsächlich vergangene Zeit `t` seit dem letzten Frame-Update und verrechnet
+diese mit ihrer aktuellen Geschwindigkeit `v`:
 
 ```java
 @Override
-public void onFrameUpdate(float timeInS) {
-    this.moveBy(v_per_s.multiply(timeInS));
+public void onFrameUpdate(double timeInS)
+{
+    moveBy(movement.multiply(timeInS));
 }
 ```
 
 ### Bewegungsgeschwindigkeit festlegen
 
-Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab, welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über ea.event.KeyListener gelöst wie im vorigen Tutorial:
+Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
+welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
+`KeyListener` gelöst wie im vorigen Tutorial:
 
 ```java
 @Override
-public void onKeyDown(KeyEvent keyEvent) {
-    switch (keyEvent.getKeyCode()) {
-        case KeyEvent.VK_W:
-            v_per_s = new Vector(0, 5);
-            break;
-        case KeyEvent.VK_A:
-            v_per_s = new Vector(-5, 0);
-            break;
-        case KeyEvent.VK_S:
-            v_per_s = new Vector(0, -5);
-            break;
-        case KeyEvent.VK_D:
-            v_per_s = new Vector(5, 0);
-            break;
-        }
+public void onKeyDown(KeyEvent keyEvent)
+{
+    switch (keyEvent.getKeyCode())
+    {
+    case KeyEvent.VK_W:
+        movement = new Vector(0, 5);
+        break;
+
+    case KeyEvent.VK_A:
+        movement = new Vector(-5, 0);
+        break;
+
+    case KeyEvent.VK_S:
+        movement = new Vector(0, -5);
+        break;
+
+    case KeyEvent.VK_D:
+        movement = new Vector(5, 0);
+        break;
+    }
 }
 ```
 
 ### Auf Kollisionen reagieren: Goodies
 
-Die Schlange bewegt sich. Als nächstes braucht sie ein Ziel, auf das sie sich zubewegt. Hierzu schreiben wir eine Klasse für Goodies.
+Die Schlange bewegt sich. Als nächstes braucht sie ein Ziel, auf das sie sich
+zubewegt. Hierzu schreiben wir eine Klasse für Goodies.
 
-Ein Goodie wartet nur darauf, gegessen zu werden. Damit nicht jeden Frame "von Hand" überprüft werden muss, ob die Schlange das Goodie berührt, lässt sich das ebenfalls über ein Listener-Interface lösen: ea.collision.CollisionListener. Das Interface ist mit Java Generics umgesetzt, daher die spitzen Klammern. Einige Vorteile hiervon kannst du in der Dokumentation durchstöbern.
+Ein Goodie wartet nur darauf, gegessen zu werden. Damit nicht jeden Frame "von
+Hand" überprüft werden muss, ob die Schlange das Goodie berührt, lässt sich das
+ebenfalls über ein Listener-Interface lösen: `CollisionListener`. Das
+Interface ist mit Java Generics umgesetzt, daher die spitzen Klammern. Einige
+Vorteile hiervon kannst du in der Dokumentation durchstöbern.
 
-Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert, das Goodie entfernt, und ein neues Goodie platziert werden.
+Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert,
+das Goodie entfernt, und ein neues Goodie platziert werden.
 
 ```java
 @Override
-public void onCollision(CollisionEvent<Snake> collisionEvent) {
+public void onCollision(CollisionEvent<Snake> collisionEvent)
+{
     increaseScore();
-    this.remove();
+    remove();
     placeRandomGoodie();
 }
 ```
 
-In der placeRandomGoodie()-Methode wird ein neues Goodie erstellt und mit ea.Random an einer zufälligen Stelle auf dem Spielfeld platziert. Weil das Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener spezifisch mit der Schlange angemeldet:
+In der `placeRandomGoodie()`-Methode wird ein neues Goodie erstellt und mit
+`Random` an einer zufälligen Stelle auf dem Spielfeld platziert. Weil das
+Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf
+Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener
+spezifisch mit der Schlange angemeldet:
 
 ```java
-public void placeRandomGoodie() {
-    float x = Random.range()*10 - 5;
-    float y = Random.range()*10 - 5;
+public void placeRandomGoodie()
+{
+    double x = Random.range() * 10 - 5;
+    double y = Random.range() * 10 - 5;
     Goodie goodie = new Goodie();
     goodie.setCenter(x, y);
     add(goodie);
@@ -605,7 +637,7 @@ public void placeRandomGoodie() {
 
 ### Anregung zum Experimentieren
 
-Eine Snake, die mit jedem Pickup wächst
+![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/Snake_Advanced.gif)
 
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange einen von mehreren Hit Points ab).
 - Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest du dem Spieler mehr Kontrolle über die Schlange geben: Statt des KeyListener-Interfaces, kann die Schlange in ihrer onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
@@ -614,11 +646,9 @@ Eine Snake, die mit jedem Pickup wächst
   Beim aufnehmen eines Pick-Ups wird die Schlange um ein Glied länger. Die Glieder bewegen sich versetzt mit der Schlange weiter.
   Wenn die Schlange sich selbst berührt, ist das Spiel beendet.
 
-
 ## Szenen
 
 https://engine-alpha.org/wiki/v4.x/Scenes
-
 
 ### Scenes in der Engine
 
@@ -1428,3 +1458,4 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 | RevoluteJoint  | Gelenkverbindung          |
 | RobeJoint      | Seilverbindung            |
 | WeldJoint      | Schweißnaht               |
+| Frame          | Einzelbild                |

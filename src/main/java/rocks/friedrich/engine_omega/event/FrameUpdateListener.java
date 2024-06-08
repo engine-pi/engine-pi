@@ -23,18 +23,19 @@ package rocks.friedrich.engine_omega.event;
 import rocks.friedrich.engine_omega.annotations.API;
 
 /**
- * Beschreibt ein Objekt, dass auf jedes Frame-Update reagieren kann.
+ * Beschreibt ein Objekt, das auf jede Aktualisierung der Einzelbilder reagieren
+ * kann.
  */
 @API
 public interface FrameUpdateListener
 {
     /**
-     * Diese Methode wird bei einem (angemeldeten) Objekt jeden Frame erneut
-     * aufgerufen.
+     * Diese Methode wird bei einem (angemeldeten) Objekt bei jeden Einzelbild
+     * erneut aufgerufen.
      *
-     * @param deltaSeconds Die Zeit <b>in Sekunden</b>, die seit dem letzten
-     *                     Update vergangen ist.
+     * @param delta Die Zeit <b>in Sekunden</b>, die seit der letzten
+     *              Aktualisierung vergangen ist.
      */
     @API
-    void onFrameUpdate(double deltaSeconds);
+    void onFrameUpdate(double delta);
 }
