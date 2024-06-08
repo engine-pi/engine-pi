@@ -18,12 +18,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.tutorials.scenes;
+package de.pirckheimer_gymnasium.engine_pi.demos.scenes;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.tutorials.util.Util;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
@@ -110,15 +109,15 @@ public class MainScene extends Scene implements KeyListener
             }
 
             @Override
-            public void onFrameUpdate(double v)
+            public void onFrameUpdate(double delta)
             {
                 if (contains(Game.getMousePositionInCurrentScene()))
                 {
-                    this.setColor(Color.MAGENTA);
+                    setColor(Color.MAGENTA);
                 }
                 else
                 {
-                    this.setColor(Color.CYAN);
+                    setColor(Color.CYAN);
                 }
             }
         }
@@ -127,7 +126,5 @@ public class MainScene extends Scene implements KeyListener
     public static void main(String[] args)
     {
         Game.start(600, 400, new MainScene());
-        Util.addScreenshotKey("Scenes");
-        // Game.setDebug(true);
     }
 }

@@ -71,7 +71,12 @@ public class HelloWorld_v1
 
 #### Scene
 
-Die Hello World-Klasse leitet sich aus der classe ea.Scene der Engine ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Scene hat ihre eigenen grafischen (und sonstige) Objekte; Scenes werden unabhängig voneinander berechnet. Mehr dazu erfährst du im Szenen-Tutorial. Für den Moment ist relevant: Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen eine Szene, in der "Hello World" dargestellt werden soll:
+Die Hello World-Klasse leitet sich aus der classe ea.Scene der Engine ab. Szenen
+in der Engine sind eigenständige Spielbereiche. Jede Scene hat ihre eigenen
+grafischen (und sonstige) Objekte; Scenes werden unabhängig voneinander
+berechnet. Mehr dazu erfährst du im Szenen-Tutorial. Für den Moment ist
+relevant: Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
+eine Szene, in der "Hello World" dargestellt werden soll:
 
 ```java
 public class HelloWorld_v1
@@ -80,7 +85,8 @@ public class HelloWorld_v1
 
 #### Text
 
-Wir wollen den Text "Hello World" darstellen. Die Klasse ea.actor.Text ist dafür zuständig.
+Wir wollen den Text "Hello World" darstellen. Die Klasse ea.actor.Text ist dafür
+zuständig.
 
 Ein Text mit Inhalt "Hello World" und Höhe 2 wird erstellt:
 
@@ -100,22 +106,28 @@ Der Text wird an der Szene angemeldet:
 this.add(helloworld);
 ```
 
-Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder Szene werden nur die Objekte auch gerendert, die auch an der Szene angemeldet sind.
+Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder
+Szene werden nur die Objekte auch gerendert, die auch an der Szene angemeldet
+sind.
 
 #### Debug Mode
 
 Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Infos.
 
-Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus der Engine hilfreich. Die auskommentierte Zeile aktiviert den Debug Modus:
+Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus
+der Engine hilfreich. Die auskommentierte Zeile aktiviert den Debug Modus:
 
 ```java
 Game.setDebug(true);
 ```
 
-Die Klasse ea.Game enthält neben Debug-Modus weitere Features, die die Spielumgebung global betreffen. Du erfährst mehr dazu im Tutorial zur Spielsteuerung.
-Das Spiel starten
+Die Klasse ea.Game enthält neben Debug-Modus weitere Features, die die
+Spielumgebung global betreffen. Du erfährst mehr dazu im Tutorial zur
+Spielsteuerung. Das Spiel starten
 
-Die Klasse ea.Game kontrolliert auch den Spielstart. Dazu muss lediglich die (zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem Fall 400 px Breite und 300 px Höhe):
+Die Klasse ea.Game kontrolliert auch den Spielstart. Dazu muss lediglich die
+(zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem
+Fall 400 px Breite und 300 px Höhe):
 
 ```java
 Scene helloWorld = new HelloWorld_v1();
@@ -124,8 +136,8 @@ Game.start(400, 300, helloWorld);
 
 ### Schritt 2: Geometrie und Farbe
 
-Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mit geometrischen Figuren und Farbe.
-Jetzt mit mehr Farbe und geometrischen Figuren
+Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mit
+geometrischen Figuren und Farbe. Jetzt mit mehr Farbe und geometrischen Figuren
 
 ```java
 import ea.Scene;
@@ -675,19 +687,16 @@ public void placeRandomGoodie()
 
 https://engine-alpha.org/wiki/v4.x/Scenes
 
-### Scenes in der Engine
+Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler
+während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung,
+Pausenmenüs, Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den
+Wechsel zwischen diesen Szenen stets alle grafischen Objekte zu zerstören und
+wieder neu aufzubauen. Stattdessen werden alle grafischen Objekte in einer
+`Scene` hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die
+Methode `add(...)`.
 
-Die bisherigen Beispiele waren simplistisch. Ein echtes Spiel hat mehrere
-verschiedene "Teile", zwischen denen der Spieler während des Spielens wechselt.
-Zum Beispiel gibt es neben der Hauptdarstellung: Pausenmenüs, Level-Selections,
-Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den Wechsel zwischen
-diesen Szenen stets alle grafischen Objekte zu zerstören und wieder neu
-aufzubauen. Stattdessen werden alle grafischen Objekte in einer ea.Scene
-hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die Methode
-add(...).
-
-Über die Klasse Game kann schnell zwischen Szenen gewechselt werden. Dazu gibt
-es die Methode Game.transitionToScene(Scene).
+Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
+es die Methode `Game.transitionToScene(Scene)`.
 
 Szenen in der Engine: Beispiel mit Pausenmenü
 
@@ -697,132 +706,121 @@ Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
 Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
 ```java
-import ea.*;
-import ea.actor.Rectangle;
-import ea.actor.Text;
-import ea.animation.CircleAnimation;
-import ea.event.KeyListener;
-import ea.event.MouseButton;
-import ea.event.MouseClickListener;
 
-import java.awt.Color;
-import java.awt.event.KeyEvent;
-
-public class MainScene
-extends Scene
-implements KeyListener {
-
+public class MainScene extends Scene implements KeyListener
+{
     private PauseMenu pauseMenu;
 
-    public MainScene() {
+    public MainScene()
+    {
         pauseMenu = new PauseMenu(this);
-
         Rectangle toAnimate = new Rectangle(5, 2);
         toAnimate.setCenter(0, -5);
         toAnimate.setColor(Color.ORANGE);
-
-        CircleAnimation animation = new CircleAnimation(toAnimate, new Vector(0,0), 8, true, true);
+        CircleAnimation animation = new CircleAnimation(toAnimate,
+                new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
-
         add(toAnimate);
         addKeyListener(this);
-
-        Text info = new Text("Pause mit P", 0.5f);
+        Text info = new Text("Pause mit P", 0.5);
         info.setCenter(-7, -5);
         add(info);
     }
 
-
-    public static void main(String[] args) {
-        Game.start(600, 400, new MainScene());
-        //Game.setDebug(true);
-    }
-
     @Override
-    public void onKeyDown(KeyEvent keyEvent) {
-        if(keyEvent.getKeyCode() == KeyEvent.VK_P) {
+    public void onKeyDown(KeyEvent keyEvent)
+    {
+        if (keyEvent.getKeyCode() == KeyEvent.VK_P)
+        {
             gotoPause();
         }
     }
 
-    private void gotoPause() {
+    private void gotoPause()
+    {
         Game.transitionToScene(pauseMenu);
     }
 
-    private class PauseMenu
-    extends Scene {
-
+    private class PauseMenu extends Scene
+    {
         private Scene mainScene;
 
-        public PauseMenu(Scene mainScene) {
+        public PauseMenu(Scene mainScene)
+        {
             this.mainScene = mainScene;
-
-            MenuItem back = new MenuItem(new Vector(0,-5), "Zurück");
+            MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
             add(back, back.label);
-
-            Text headline = new Text("Mach mal Pause.", 2.5f);
+            Text headline = new Text("Mach mal Pause.", 2.5);
             headline.setCenter(0, 3);
             add(headline);
-
         }
 
-        private class MenuItem
-        extends Rectangle
-        implements MouseClickListener, FrameUpdateListener{
-
+        private class MenuItem extends Rectangle
+                implements MouseClickListener, FrameUpdateListener
+        {
             private Text label;
 
-            public MenuItem(Vector center, String labelText) {
-                super(10, 1.5f);
-
+            public MenuItem(Vector center, String labelText)
+            {
+                super(10, 1.5);
                 label = new Text(labelText, 1);
                 label.setLayerPosition(1);
                 label.setColor(Color.BLACK);
                 label.setCenter(center);
-
                 setLayerPosition(0);
                 setColor(Color.cyan);
                 setCenter(center);
             }
 
             @Override
-            public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
-                if(contains(clickLoc)) {
+            public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
+            {
+                if (contains(clickLoc))
+                {
                     Game.transitionToScene(mainScene);
                 }
             }
 
             @Override
-            public void onFrameUpdate(float v) {
-                if(contains(Game.getMousePositionInCurrentScene())) {
-                    this.setColor(Color.MAGENTA);
-                } else {
-                    this.setColor(Color.CYAN);
+            public void onFrameUpdate(double v)
+            {
+                if (contains(Game.getMousePositionInCurrentScene()))
+                {
+                    setColor(Color.MAGENTA);
+                }
+                else
+                {
+                    setColor(Color.CYAN);
                 }
             }
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(600, 400, new MainScene());
     }
 }
 ```
 
 ### Die zwei Szenen
 
-Die Hauptszene ist MainScene. Hierdrin könnte ein normaler Game Loop für ein
+Die Hauptszene ist `MainScene`. Hierdrin könnte ein normaler Game Loop für ein
 Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur
 eine stumpfe Animation.
 
-Die zweite Szene ist PauseMenu. In ihr gibt es eine Textbotschaft und einen
+Die zweite Szene ist `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
 kleinen Button, um das Menü wieder zu verlassen.
 
 ```java
-public class MainScene
-extends Scene {
+public class MainScene extends Scene
+{
     private Scene pauseMenu;
     //...
 }
 
-private class PauseMenu
-extends Scene {
+private class PauseMenu extends Scene
+{
     private Scene mainScene;
     //...
 }
@@ -832,20 +830,23 @@ Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird
 die Transition ausgeführt:
 
 ```java
-private void gotoPause() {
+private void gotoPause()
+{
     Game.transitionToScene(pauseMenu);
 }
 ```
 
 Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen
-Steuerelement MenuItem wird dafür die entsprechende Methode aufgerufen, wann
+Steuerelement `MenuItem` wird dafür die entsprechende Methode aufgerufen, wann
 immer ein Mausklick auf dem Element landet - dies wird durch die Methode
-contains(Vector) geprüft:
+`contains(Vector)` geprüft:
 
 ```java
 @Override
-public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
-    if(contains(clickLoc)) {
+public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
+{
+    if (contains(clickLoc))
+    {
         Game.transitionToScene(mainScene);
     }
 }
@@ -854,7 +855,7 @@ public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
 ### Kosmetische Kleinigkeiten
 
 Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die
-Hauptszene eine Interpolierte Rotationsanimation. Diese rotiert ein oranges
+Hauptszene eine interpolierte Rotationsanimation. Diese rotiert ein oranges
 Rechteck wiederholend um den Punkt (0|0). Eine volle Rotation im Uhrzeigersinn
 dauert 8 Sekunden.
 
@@ -862,25 +863,28 @@ dauert 8 Sekunden.
 Rectangle toAnimate = new Rectangle(5, 2);
 toAnimate.setCenter(0, -5);
 toAnimate.setColor(Color.ORANGE);
-
-CircleAnimation animation = new CircleAnimation(toAnimate, new Vector(0,0), 8, true, true);
+CircleAnimation animation = new CircleAnimation(toAnimate,
+        new Vector(0, 0), 8, true, true);
 addFrameUpdateListener(animation);
-
 add(toAnimate);
 ```
 
 Das Pausenmenü hat einen Hover-Effekt. Hierzu wird einfach jeden Frame
 überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
-ea.Game.getMousePositionInCurrentScene() genutzt:
+`Game.getMousePositionInCurrentScene()` genutzt:
 
 ```java
 @Override
-public void onFrameUpdate(float v) {
-    if(contains(Game.getMousePositionInCurrentScene())) {
-        this.setColor(Color.MAGENTA);
-    } else {
-        this.setColor(Color.CYAN);
+public void onFrameUpdate(double delta)
+{
+    if (contains(Game.getMousePositionInCurrentScene()))
+    {
+        setColor(Color.MAGENTA);
+    }
+    else
+    {
+        setColor(Color.CYAN);
     }
 }
 ```
@@ -889,11 +893,11 @@ public void onFrameUpdate(float v) {
 
 - Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
   die aktive Szene ist. Dies liegt daran, dass die Animation als
-  FrameUpdateListener in der Hauptszene angemeldet wurde
-  (addFrameUpdateListener(animation)). Alle Listener einer Szene können nur dann
+  `FrameUpdateListener` in der Hauptszene angemeldet wurde
+  (`addFrameUpdateListener(animation)`). Alle Beobachter einer Szene können nur dann
   aufgerufen werden, wenn die Szene aktiv ist.
 - Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
-  KeyListener, der bei Druck von P zum Pausenmenü wechselt, ist in der
+  `KeyListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
   Hauptszene angemeldet.
 
 ## Physics
