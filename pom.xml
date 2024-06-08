@@ -193,6 +193,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- https://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
