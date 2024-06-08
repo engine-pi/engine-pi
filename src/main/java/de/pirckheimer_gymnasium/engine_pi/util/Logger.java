@@ -32,8 +32,8 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
  * Logger für die Engine Pi, damit Probleme bei Anwendern auch von
  * Entwicklern nachvollzogen werden können.
  *
- * @author Julien Gelmar {@literal <master@nownewstart.net>}
- * @author Niklas Keller {@literal <me@kelunik.com>}
+ * @author Julien Gelmar
+ * @author Niklas Keller
  */
 final public class Logger
 {
@@ -206,7 +206,7 @@ final public class Logger
 
     /**
      * Logger-Funktion für Debug-Informationen. Log wird nur ausgeführt, wenn
-     * <code>EngineOmega.setDebug(true);</code> ausgeführt wurde.
+     * <code>Game.setDebug(true);</code> ausgeführt wurde.
      *
      * @param tag Der Tag der Debug-Message.
      * @param s   Text der Information

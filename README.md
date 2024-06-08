@@ -5,7 +5,7 @@
 
 # Über diese Game Engine
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/src/main/resources/assets/logo.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/main/resources/assets/logo.png)
 
 Diese Game Engine ist ein Fork der
 [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von
@@ -203,7 +203,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben
 
-Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
+Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
 ```java
@@ -269,7 +269,7 @@ Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
 Im [folgendem
-Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ```java
@@ -319,7 +319,7 @@ Key`](https://stackoverflow.com/a/70191567). Diese Klassenattribute können in
 einer `switch`-Kontrollstruktur zur Fallunterscheidung verwendet werden.
 
 Das [nächste
-Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java)
 zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
@@ -360,7 +360,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 Auf Mausklick reagieren: Kreise malen
 
 Das [folgende
-Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
 malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
@@ -418,7 +418,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
-[PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+[PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
 ## Game Loop
 
@@ -429,7 +429,7 @@ https://engine-alpha.org/wiki/v4.x/Game_Loop
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/GameLoop.png)
+![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/GameLoop.png)
 
 Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
@@ -447,7 +447,7 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/Snake_Minimal.gif)
+![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Minimal.gif)
 
 ```java
 public class SnakeMinimal extends Scene
@@ -652,7 +652,7 @@ public void placeRandomGoodie()
 
 ### Anregung zum Experimentieren
 
-![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/Snake_Advanced.gif)
+![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Advanced.gif)
 
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
@@ -900,7 +900,7 @@ public void onFrameUpdate(float v) {
 
 ### Schwerkraft
 
-https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
+https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
 
 ```java
 public class GravityDemo extends Scene implements KeyListener
@@ -948,7 +948,7 @@ public class GravityDemo extends Scene implements KeyListener
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
-[Beispiel](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
+[Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
 public class ElasticityDemo extends Scene
@@ -993,7 +993,7 @@ public class ElasticityDemo extends Scene
 
 ### Dichte
 
-https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java
+https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java
 
 ```java
 public class DensityDemo extends Scene implements KeyListener
@@ -1077,7 +1077,7 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
-https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
+https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
 
 ```java
 public class DominoesDemo extends Scene
@@ -1311,7 +1311,7 @@ sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
 `Platform` halt.
 
-[Quellcode des fertigen Spiels](https://github.com/engine-pi/engine-pi/blob/fork/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
+[Quellcode des fertigen Spiels](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
@@ -1422,7 +1422,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/fork/misc/images/FrogTutorial1.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/FrogTutorial1.gif)
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 

@@ -26,7 +26,7 @@ import java.lang.annotation.Documented;
  * Diese Annotation markiert Methoden, die Schüler definitiv <u><b>nicht</b></u>
  * verwenden sollen.
  *
- * @author Niklas Keller {@literal <me@kelunik.com>}
+ * @author Niklas Keller
  */
 @Documented
 public @interface Internal

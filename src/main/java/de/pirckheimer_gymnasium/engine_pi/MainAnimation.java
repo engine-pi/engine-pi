@@ -47,7 +47,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Diese Klasse definiert Versions-Konstanten und sorgt für eine About-Box beim
  * Ausführen der .jar-Datei.
  *
- * @author Niklas Keller {@literal <me@kelunik.com>}
+ * @author Niklas Keller
  */
 @Internal
 public final class MainAnimation

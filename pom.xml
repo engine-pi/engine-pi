@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Engine Pi</name>
-    <description>A beginner-orientated 2D game engine in German. Its main purpose is to develop enthusiasm for programming and computer science through fast, visible and strong achievements. </description>
+    <description>A beginner-orientated 2D game engine in German. Its main purpose is to develop enthusiasm for programming and computer science through fast, visible and strong achievements.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
 
     <licenses>
@@ -29,7 +29,7 @@
     <scm>
         <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
         <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
-        <url>https://github.com/engine-pi/engine-pi/tree/fork</url>
+        <url>https://github.com/engine-pi/engine-pi</url>
     </scm>
 
     <properties>

@@ -29,7 +29,7 @@ import java.lang.annotation.Documented;
  * Bisher müssen diese Methoden auch mit
  * <code>@SuppressWarnings("unused")</code> zusätzlich markiert werden.
  *
- * @author Niklas Keller {@literal <me@kelunik.com>}
+ * @author Niklas Keller
  */
 @Documented
 public @interface API
