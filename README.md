@@ -1,7 +1,7 @@
 <!-- https://github.com/softwaremill/maven-badges -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer_gymnasium.engine_pi/engine-pi.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer_gymnasium.engine_pi/engine-pi)
-[![javadoc](https://javadoc.io/badge2/de.pirckheimer_gymnasium.engine_pi/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi)
+[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer-gymnasium/engine-pi)
+[![javadoc](https://javadoc.io/badge2/de.pirckheimer-gymnasium/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi)
 
 # Über diese Game Engine
 
