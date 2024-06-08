@@ -828,6 +828,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
+
         double frogY = collisionEvent.getColliding().getPosition().getY();
         if (frogY < getY())
         {
