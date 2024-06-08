@@ -10,7 +10,6 @@ public class PentagonDemo extends ActorBaseScene
         Pentagon pentagon = new Pentagon();
         pentagon.makeDynamic();
         add(pentagon);
-
     }
 
     public static void main(String[] args)

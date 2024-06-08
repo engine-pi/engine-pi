@@ -12,7 +12,6 @@ public class StarDemo extends ActorBaseScene
         triangle.makeStatic();
         triangle.rotateBy(45);
         add(triangle);
-
     }
 
     public static void main(String[] args)

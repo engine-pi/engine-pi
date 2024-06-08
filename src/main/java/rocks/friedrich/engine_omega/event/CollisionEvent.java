@@ -153,8 +153,8 @@ public class CollisionEvent<E extends Actor>
     /**
      * Gibt eine Liste von Berührungspunkten aus.
      *
-     * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine,
-     *         einen oder zwei Berührungspunkte enthalten.
+     * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine, einen
+     *         oder zwei Berührungspunkte enthalten.
      * @throws IllegalStateException Wenn die Anzahl der Berührungspunkten
      *                               größer als 2 ist.
      */

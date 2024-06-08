@@ -18,31 +18,6 @@
  */
 package rocks.friedrich.engine_omega.actor;
 
-/**
- * Beschreibt ein reguläres bzw. regelmäßiges <b>Fünfeck</b> bzw.
- * <b>Pentagon</b>.
- *
- * <p>
- * Alle <em>Seiten</em> des Fünfecks sich <em>gleich lang</em>. Außerdem sind
- * alle <em>Winkel</em> an den fünf Ecken <em>gleich groß</em>.
- * </p>
- *
- * @author Josef Friedrich
- *
- * @see RegularPolygon
- * @see Pentagon
- * @see Hexagon
- * @see Heptagon
- */
-public class Pentagon extends RegularPolygon
+public class Square extends Rectangle
 {
-    public Pentagon()
-    {
-        super(5);
-    }
-
-    public Pentagon(double radius)
-    {
-        super(5, radius);
-    }
 }

@@ -19,12 +19,12 @@
 package rocks.friedrich.engine_omega.actor;
 
 /**
- * Beschreibt ein reguläres bzw. regelmäßiges <b>Fünfeck</b> bzw.
- * <b>Pentagon</b>.
+ * Beschreibt ein reguläres bzw. regelmäßiges <b>Sechseck</b> bzw.
+ * <b>Hexagon</b>.
  *
  * <p>
- * Alle <em>Seiten</em> des Fünfecks sich <em>gleich lang</em>. Außerdem sind
- * alle <em>Winkel</em> an den fünf Ecken <em>gleich groß</em>.
+ * Alle <em>Seiten</em> des Sechsecks sich <em>gleich lang</em>. Außerdem sind
+ * alle <em>Winkel</em> an den sechs Ecken <em>gleich groß</em>.
  * </p>
  *
  * @author Josef Friedrich
@@ -34,15 +34,15 @@ package rocks.friedrich.engine_omega.actor;
  * @see Hexagon
  * @see Heptagon
  */
-public class Pentagon extends RegularPolygon
+public class Hexagon extends RegularPolygon
 {
-    public Pentagon()
+    public Hexagon()
     {
-        super(5);
+        super(6);
     }
 
-    public Pentagon(double radius)
+    public Hexagon(double radius)
     {
-        super(5, radius);
+        super(6, radius);
     }
 }

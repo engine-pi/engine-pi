@@ -10,7 +10,6 @@ public class RegularPolygonDemo extends ActorBaseScene
         RegularPolygon polygon = new RegularPolygon(5);
         polygon.makeDynamic();
         add(polygon);
-
     }
 
     public static void main(String[] args)
