@@ -122,10 +122,6 @@
                     assembly artifact having the same format as the packaging of the current Maven
                     project will replace the file for this main project artifact. -->
                     <appendAssemblyId>false</appendAssemblyId>
-                    <!-- https://stackoverflow.com/a/47871545 -->
-                    <descriptors>
-                        <descriptor>jar-with-deps-with-exclude.xml</descriptor>
-                    </descriptors>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
