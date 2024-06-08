@@ -259,14 +259,18 @@ Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/roc
 -Methode bei jedem Tastendruck
 aufgerufen.
 
-Soll reagiert werden, wenn eine Taste losgelassen wird, kann die [onKeyUp(KeyEvent e)](<https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
+Soll reagiert werden, wenn eine Taste losgelassen wird, kann die
+[onKeyUp(KeyEvent
+e)](<https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
 implementiert werden.
 
-Alle Informationen über den Tastendruck sind im Objekt
-`keyEvent` der Klasse [java.awt.event.KeyEvent](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html)
+Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
+[java.awt.event.KeyEvent](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html)
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
-Im [folgendem Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDemo.java) wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
+Im [folgendem
+Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDemo.java)
+wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ```java
 public class KeyEventDemo extends Scene implements KeyListener
@@ -305,18 +309,20 @@ public class KeyEventDemo extends Scene implements KeyListener
 }
 ```
 
-Java ordnet jeder Taste eine Ganzzahl, einen sogenannten `KeyCode`, zu. Mit der Methode
+Java ordnet jeder Taste eine Ganzzahl, einen sogenannten `KeyCode`, zu. Mit der
+Methode
 [KeyEvent#getKeyCode()](<https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyEvent.html#getKeyCode()>)
-kann dieser Code abgefragt werden.
-Außerdem stellt die Klasse `KeyEvent` eine Vielzahl von statischen Attributen bzw. Klassenattributen bereit, dessen Name `VK_` vorangestellt ist.
-`VK` steht dabei für
-[`Virtual Key`](https://stackoverflow.com/a/70191567).
-Diese Klassenattribute können in einer `switch`-Kontrollstruktur zur Fallunterscheidung
-verwendet werden.
+kann dieser Code abgefragt werden. Außerdem stellt die Klasse `KeyEvent` eine
+Vielzahl von statischen Attributen bzw. Klassenattributen bereit, dessen Name
+`VK_` vorangestellt ist. `VK` steht dabei für [`Virtual
+Key`](https://stackoverflow.com/a/70191567). Diese Klassenattribute können in
+einer `switch`-Kontrollstruktur zur Fallunterscheidung verwendet werden.
 
-Das [nächste Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDisplayDemo.java) zeigt den entsprechenden Namen des `VK`-Klassenattributs an,
-nachdem eine Taste gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt,
-erscheint der Text `VK_SPACE`.
+Das [nächste
+Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/keyboard/KeyEventDisplayDemo.java)
+zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
+gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
+`VK_SPACE`.
 
 ```java
 public class KeyEventDisplayDemo extends Scene
@@ -353,7 +359,9 @@ https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
 Auf Mausklick reagieren: Kreise malen
 
-Das [folgende Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesDemo.java) malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
+Das [folgende
+Beispiel](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesDemo.java)
+malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
 
@@ -382,9 +390,13 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 
 #### Schnittstelle `MouseClickListener`
 
-Das Interface [MouseClickListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/MouseClickListener.html) ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das Reagieren auf Loslassen der Maus.
+Das Interface
+[MouseClickListener](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/event/MouseClickListener.html)
+ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das
+Reagieren auf Loslassen der Maus.
 
-Bei einem Mausklick (egal ob linke, rechte, oder sonstige Maustaste) wird ein Kreis an der Position des Klicks erstellt:
+Bei einem Mausklick (egal ob linke, rechte, oder sonstige Maustaste) wird ein
+Kreis an der Position des Klicks erstellt:
 
 ```java
     @Override
@@ -398,7 +410,9 @@ Bei einem Mausklick (egal ob linke, rechte, oder sonstige Maustaste) wird ein Kr
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-[Vector](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/Vector.html). Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell für die Arbeit mit der Engine.
+[Vector](https://javadoc.io/doc/rocks.friedrich.engine_omega/engine-omega/latest/rocks/friedrich/engine_omega/Vector.html).
+Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
+für die Arbeit mit der Engine.
 
 https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
@@ -412,7 +426,8 @@ https://engine-alpha.org/wiki/v4.x/Game_Loop
 
 ### How-To Engine Code: Der Game Loop
 
-Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der Engine. Dieser funktioniert folgendermaßen:
+Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
+Engine. Dieser funktioniert folgendermaßen:
 
 ![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/GameLoop.png)
 
@@ -639,12 +654,22 @@ public void placeRandomGoodie()
 
 ![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/Josef-Friedrich/engine-omega/fork/misc/images/Snake_Advanced.gif)
 
-- Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange einen von mehreren Hit Points ab).
-- Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest du dem Spieler mehr Kontrolle über die Schlange geben: Statt des KeyListener-Interfaces, kann die Schlange in ihrer onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
-- Escalating Difficulty: Je mehr Pick-Ups gesammelt wurden (und damit desto höher der Score), desto schneller bewegt sich die Schlange.
-  Actual Snake: Wenn du Lust auf eine Herausforderung hast, kannst du aus dem Spiel ein echtes Snake machen:
-  Beim aufnehmen eines Pick-Ups wird die Schlange um ein Glied länger. Die Glieder bewegen sich versetzt mit der Schlange weiter.
-  Wenn die Schlange sich selbst berührt, ist das Spiel beendet.
+- Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
+  Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
+  einen von mehreren Hit Points ab).
+- Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange
+  ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest
+  du dem Spieler mehr Kontrolle über die Schlange geben: Statt des
+  KeyListener-Interfaces, kann die Schlange in ihrer
+  onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key
+  heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die
+  Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
+- Escalating Difficulty: Je mehr Pick-Ups gesammelt wurden (und damit desto
+  höher der Score), desto schneller bewegt sich die Schlange. Actual Snake: Wenn
+  du Lust auf eine Herausforderung hast, kannst du aus dem Spiel ein echtes
+  Snake machen: Beim aufnehmen eines Pick-Ups wird die Schlange um ein Glied
+  länger. Die Glieder bewegen sich versetzt mit der Schlange weiter. Wenn die
+  Schlange sich selbst berührt, ist das Spiel beendet.
 
 ## Szenen
 
@@ -652,16 +677,24 @@ https://engine-alpha.org/wiki/v4.x/Scenes
 
 ### Scenes in der Engine
 
-Die bisherigen Beispiele waren simplistisch. Ein echtes Spiel hat mehrere verschiedene "Teile", zwischen denen der Spieler während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung: Pausenmenüs, Level-Selections, Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den Wechsel zwischen diesen Szenen stets alle grafischen Objekte zu zerstören und wieder neu aufzubauen. Stattdessen werden alle grafischen Objekte in einer ea.Scene hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die Methode add(...).
+Die bisherigen Beispiele waren simplistisch. Ein echtes Spiel hat mehrere
+verschiedene "Teile", zwischen denen der Spieler während des Spielens wechselt.
+Zum Beispiel gibt es neben der Hauptdarstellung: Pausenmenüs, Level-Selections,
+Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den Wechsel zwischen
+diesen Szenen stets alle grafischen Objekte zu zerstören und wieder neu
+aufzubauen. Stattdessen werden alle grafischen Objekte in einer ea.Scene
+hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die Methode
+add(...).
 
-Über die Klasse Game kann schnell zwischen Szenen gewechselt werden. Dazu gibt es die Methode Game.transitionToScene(Scene).
+Über die Klasse Game kann schnell zwischen Szenen gewechselt werden. Dazu gibt
+es die Methode Game.transitionToScene(Scene).
 
 Szenen in der Engine: Beispiel mit Pausenmenü
 
 #### Ein Pausenmenü
 
-Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein Pausenmenü.
-Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
+Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
+Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
 ```java
 import ea.*;
@@ -774,9 +807,12 @@ implements KeyListener {
 
 ### Die zwei Szenen
 
-Die Hauptszene ist MainScene. Hierdrin könnte ein normaler Game Loop für ein Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur eine stumpfe Animation.
+Die Hauptszene ist MainScene. Hierdrin könnte ein normaler Game Loop für ein
+Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur
+eine stumpfe Animation.
 
-Die zweite Szene ist PauseMenu. In ihr gibt es eine Textbotschaft und einen kleinen Button, um das Menü wieder zu verlassen.
+Die zweite Szene ist PauseMenu. In ihr gibt es eine Textbotschaft und einen
+kleinen Button, um das Menü wieder zu verlassen.
 
 ```java
 public class MainScene
@@ -792,7 +828,8 @@ extends Scene {
 }
 ```
 
-Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird die Transition ausgeführt:
+Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird
+die Transition ausgeführt:
 
 ```java
 private void gotoPause() {
@@ -800,7 +837,10 @@ private void gotoPause() {
 }
 ```
 
-Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen Steuerelement MenuItem wird dafür die entsprechende Methode aufgerufen, wann immer ein Mausklick auf dem Element landet - dies wird durch die Methode contains(Vector) geprüft:
+Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen
+Steuerelement MenuItem wird dafür die entsprechende Methode aufgerufen, wann
+immer ein Mausklick auf dem Element landet - dies wird durch die Methode
+contains(Vector) geprüft:
 
 ```java
 @Override
@@ -813,7 +853,10 @@ public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
 
 ### Kosmetische Kleinigkeiten
 
-Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die Hauptszene eine Interpolierte Rotationsanimation. Diese rotiert ein oranges Rechteck wiederholend um den Punkt (0|0). Eine volle Rotation im Uhrzeigersinn dauert 8 Sekunden.
+Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die
+Hauptszene eine Interpolierte Rotationsanimation. Diese rotiert ein oranges
+Rechteck wiederholend um den Punkt (0|0). Eine volle Rotation im Uhrzeigersinn
+dauert 8 Sekunden.
 
 ```java
 Rectangle toAnimate = new Rectangle(5, 2);
@@ -826,7 +869,10 @@ addFrameUpdateListener(animation);
 add(toAnimate);
 ```
 
-Das Pausenmenü hat einen Hover-Effekt. Hierzu wird einfach jeden Frame überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig davon die Rechtecksfarbe ändert. Hierzu wird die Methode ea.Game.getMousePositionInCurrentScene() genutzt:
+Das Pausenmenü hat einen Hover-Effekt. Hierzu wird einfach jeden Frame
+überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
+davon die Rechtecksfarbe ändert. Hierzu wird die Methode
+ea.Game.getMousePositionInCurrentScene() genutzt:
 
 ```java
 @Override
@@ -841,8 +887,14 @@ public void onFrameUpdate(float v) {
 
 ### Anmerkungen und Beobachtungen
 
-    Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü die aktive Szene ist. Dies liegt daran, dass die Animation als FrameUpdateListener in der Hauptszene angemeldet wurde (addFrameUpdateListener(animation)). Alle Listener einer Szene können nur dann aufgerufen werden, wenn die Szene aktiv ist.
-    Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der KeyListener, der bei Druck von P zum Pausenmenü wechselt, ist in der Hauptszene angemeldet.
+- Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
+  die aktive Szene ist. Dies liegt daran, dass die Animation als
+  FrameUpdateListener in der Hauptszene angemeldet wurde
+  (addFrameUpdateListener(animation)). Alle Listener einer Szene können nur dann
+  aufgerufen werden, wenn die Szene aktiv ist.
+- Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
+  KeyListener, der bei Druck von P zum Pausenmenü wechselt, ist in der
+  Hauptszene angemeldet.
 
 ## Physics
 
@@ -1011,11 +1063,15 @@ und effiziente Physics-Engine ist in der Engine leicht zu bedienen und
 ermöglicht es, mit wenig Aufwand mechanische Phänomene in Deine Spiele zu bringen:
 von Platforming und Billiard bis zu Hängebrücken und Autos.
 
-Die Physics Engine basiert auf den Prinzipien der Klassischen Mechanik. Ein Grundverständnis hierüber ist nötig: Begriffe wie Masse, Dichte, Impuls und Kraft sollten dir zumindest grob geläufig sein, um diese auf deine Spielobjekte anzuwenden.
+Die Physics Engine basiert auf den Prinzipien der Klassischen Mechanik. Ein
+Grundverständnis hierüber ist nötig: Begriffe wie Masse, Dichte, Impuls und
+Kraft sollten dir zumindest grob geläufig sein, um diese auf deine Spielobjekte
+anzuwenden.
 
 ### Beispiel 1: Dominos
 
-Um die Grundlagen der Engine Alpha Physics zu testen, bauen wir eine einfache Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
+Um die Grundlagen der Engine Alpha Physics zu testen, bauen wir eine einfache
+Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 ### Setup ohne Physics
 
@@ -1109,18 +1165,25 @@ die Schwerkraft (standardmäßige 9,81 m/s^2, gerade nach unten) aktiviert:
 
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();` eingerichtet.
 
-Dynamische und statische Körper sind die essentiellsten Body Types in der Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types in der Dokumentation von BodyType und eine vergleichende Übersicht in der dedizierten Wikiseite
-Den Ball Werfen
-Mit einem Methodenaufruf fliegt der Ball
+Dynamische und statische Körper sind die essentiellsten Body Types in der
+Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
+in der Dokumentation von BodyType und eine vergleichende Übersicht in der
+dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
 
-Zeit, die Dominos umzuschmeißen! Die Methode [https://docs.engine-alpha.org/4.x/ea/actor/Actor.html#applyImpulse-ea.Vector- Actor.applyImpulse(Vector) erlaubt dir, den Ball physikalisch korrekt zu 'werfen'.
+Zeit, die Dominos umzuschmeißen! Die Methode
+[https://docs.engine-alpha.org/4.x/ea/actor/Actor.html#applyImpulse-ea.Vector-
+Actor.applyImpulse(Vector) erlaubt dir, den Ball physikalisch korrekt zu
+'werfen'.
 
-Mit der Zeile ball.applyImpulse(new Vector(15, 12)); kannst du den ersten Ballwurf testen.
+Mit der Zeile ball.applyImpulse(new Vector(15, 12)); kannst du den ersten
+Ballwurf testen.
 
-Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in Richtung des Mauscursors katapultiert.
-Das Angle-Objekt hilft dem Spieler
+Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
+Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
+Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 
-Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des Impulses markiert:
+Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
+Impulses markiert:
 
 ```java
     private void setupAngle()
@@ -1131,7 +1194,11 @@ Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des Impuls
     }
 ```
 
-Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen. Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
+Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
+Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
+Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und
+berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
+den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
 ```java
     @Override
@@ -1161,9 +1228,12 @@ Interface MouseClickListener implementiert:
 
 ### Anregung zum Experimentieren
 
-    Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der Zerstörung.
+- Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
+  Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
+  Zerstörung.
 
-    Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
+- Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position
+  (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
 
 ## Zeitsteuerung
 
@@ -1376,13 +1446,26 @@ Tutorial beschrieben, wird hierzu das Interface `FrameUpdateListener` genutzt.
 
 In jedem Frame wird die Bewegung des Frosches in dreierlei hinsicht kontrolliert:
 
-- Teil A: Blickrichtung des Frosches: Das Bild des Frosches wird gespiegelt, falls er sich nach links bewegt.
-- Teil B: Horizontale Bewegung des Frosches: Jeden Frame, in dem der Spieler den Frosch (per Tastendruck) nach links oder rechts steuern möchte, wird eine Bewegungskraft auf den Frosch angewendet. Wird der Frosch in die Gegenrichtung seiner aktuellen Bewegung gesteuert, wird seine horizontale Geschwindigkeit zuvor auf 0 gesetzt, um ein langsames Abbremsen zu verhindern. Das ermöglicht schnelle Reaktion auf Nutzereingabe und ein besseres Spielgefühl. Zusätzlich wird seine Geschwindigkeit auf die Konstante `MAX_SPEED` begrenzt.
-- Teil C: Springe, wenn möglich: Mit der Funktion `isGrounded()` bietet die Engine einen einfachen Test, um sicherzustellen, dass der Frosch Boden unter den Füßen hat. Wenn dies gegeben ist, wird ein Sprungimpuls auf den Frosch angewandt. Zuvor wird die vertikale Komponente seiner Geschwindigkeit auf 0 festgesetzt - das garantiert, dass der Frosch jedes mal die selbe Sprunghöhe erreicht.
+- Teil A: Blickrichtung des Frosches: Das Bild des Frosches wird gespiegelt,
+  falls er sich nach links bewegt.
+- Teil B: Horizontale Bewegung des Frosches: Jeden Frame, in dem der Spieler den
+  Frosch (per Tastendruck) nach links oder rechts steuern möchte, wird eine
+  Bewegungskraft auf den Frosch angewendet. Wird der Frosch in die Gegenrichtung
+  seiner aktuellen Bewegung gesteuert, wird seine horizontale Geschwindigkeit
+  zuvor auf 0 gesetzt, um ein langsames Abbremsen zu verhindern. Das ermöglicht
+  schnelle Reaktion auf Nutzereingabe und ein besseres Spielgefühl. Zusätzlich
+  wird seine Geschwindigkeit auf die Konstante `MAX_SPEED` begrenzt.
+- Teil C: Springe, wenn möglich: Mit der Funktion `isGrounded()` bietet die
+  Engine einen einfachen Test, um sicherzustellen, dass der Frosch Boden unter
+  den Füßen hat. Wenn dies gegeben ist, wird ein Sprungimpuls auf den Frosch
+  angewandt. Zuvor wird die vertikale Komponente seiner Geschwindigkeit auf 0
+  festgesetzt - das garantiert, dass der Frosch jedes mal die selbe Sprunghöhe
+  erreicht.
 
 Die Kamera folgt dem Frosch
 
-Der Frosch soll stets sichtbar bleiben. Hierzu werden zwei Funktionen der Engine-Kamera genutzt:
+Der Frosch soll stets sichtbar bleiben. Hierzu werden zwei Funktionen der
+Engine-Kamera genutzt:
 
 1. Der Frosch wird mit `Camera.setFocus(Actor)` in den Mittelpunkt der Kamera
    gesetzt. Sie folgt dem Frosch.
