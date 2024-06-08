@@ -37,6 +37,166 @@ intern mit Einheiten aus der realen Welt, deshalb bietet sich Meter als Maßheit
 
 [^zeichnen-grafikfenster]: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster#Zeichnen_im_Grafikfenster
 
+## Hello World
+
+https://engine-alpha.org/wiki/v4.x/Hello_World
+
+### Schritt 1: Grundlegender Aufbau
+
+Das grundlegendste Hello World sieht so aus:
+Das (noch wenig spannende) Ergebnis des Codes
+
+```java
+import ea.Scene;
+import ea.Game;
+
+import ea.actor.Text;
+
+public class HelloWorld_v1
+        extends Scene{
+
+    public HelloWorld_v1() {
+        Text helloworld = new Text("Hello World", 2);
+        helloworld.setCenter(0,1);
+        this.add(helloworld);
+        //Game.setDebug(true);
+    }
+
+    public static void main(String[] args) {
+        Scene helloWorld = new HelloWorld_v1();
+        Game.start(400, 300, helloWorld);
+    }
+}
+```
+
+#### Scene
+
+Die Hello World-Klasse leitet sich aus der classe ea.Scene der Engine ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Scene hat ihre eigenen grafischen (und sonstige) Objekte; Scenes werden unabhängig voneinander berechnet. Mehr dazu erfährst du im Szenen-Tutorial. Für den Moment ist relevant: Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen eine Szene, in der "Hello World" dargestellt werden soll:
+
+```java
+public class HelloWorld_v1
+        extends Scene
+```
+
+#### Text
+
+Wir wollen den Text "Hello World" darstellen. Die Klasse ea.actor.Text ist dafür zuständig.
+
+Ein Text mit Inhalt "Hello World" und Höhe 2 wird erstellt:
+
+```java
+Text helloworld = new Text("Hello World", 2);
+```
+
+Der Text wird an Position (0|1) zentriert:
+
+```java
+helloworld.setCenter(0,1);
+```
+
+Der Text wird an der Szene angemeldet:
+
+```java
+this.add(helloworld);
+```
+
+Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder Szene werden nur die Objekte auch gerendert, die auch an der Szene angemeldet sind.
+
+#### Debug Mode
+
+Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Infos.
+
+Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus der Engine hilfreich. Die auskommentierte Zeile aktiviert den Debug Modus:
+
+```java
+Game.setDebug(true);
+```
+
+Die Klasse ea.Game enthält neben Debug-Modus weitere Features, die die Spielumgebung global betreffen. Du erfährst mehr dazu im Tutorial zur Spielsteuerung.
+Das Spiel starten
+
+Die Klasse ea.Game kontrolliert auch den Spielstart. Dazu muss lediglich die (zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem Fall 400 px Breite und 300 px Höhe):
+
+```java
+Scene helloWorld = new HelloWorld_v1();
+Game.start(400, 300, helloWorld);
+```
+
+### Schritt 2: Geometrie und Farbe
+
+Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mit geometrischen Figuren und Farbe.
+Jetzt mit mehr Farbe und geometrischen Figuren
+
+```java
+import ea.Scene;
+import ea.Game;
+
+import ea.actor.Circle;
+import ea.actor.Rectangle;
+import ea.actor.Text;
+
+import java.awt.Color;
+
+public class HelloWorld_v2
+        extends Scene{
+
+    public HelloWorld_v2() {
+        Text helloworld = new Text("Hello World", 2);
+        helloworld.setCenter(0,1);
+        this.add(helloworld);
+        //Game.setDebug(true);
+
+        helloworld.setColor(Color.BLACK);
+
+        Rectangle background = new Rectangle(10, 3);
+        background.setColor(Color.PINK);
+        background.setCenter(0, 1);
+        background.setLayerPosition(-1);
+
+        Circle circle = new Circle(5);
+        circle.setColor(Color.GRAY);
+        circle.setCenter(0, 1);
+        circle.setLayerPosition(-2);
+
+        this.add(background, circle);
+    }
+
+    public static void main(String[] args) {
+        Scene helloWorld = new HelloWorld_v2();
+        Game.start(400, 300, helloWorld);
+    }
+}
+```
+
+#### Geometrische Figuren
+
+Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und Kreise. Der Code erstellt ein Rechteck mit Breite 10 und Höhe 3 sowie einen Kreis mit Durchmesser 5.
+
+```java
+Rectangle background = new Rectangle(10, 3);
+Circle circle = new Circle(5);
+```
+
+#### Farbe
+
+Einige Objekte in der Engine können beliebig gefärbt werden. Text und geometrische Figuren gehören dazu. Mit setColor kann die Farbe als AWT-Color Objekt übergeben werden:
+
+```java
+background.setColor(Color.PINK);
+circle.setColor(Color.GRAY);
+```
+
+#### Layer Position
+
+So würde das Bild aussehen, wenn die Layer-Position nicht explizit gesetzt werden würde.
+
+Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird. Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen, kann die Layer-Position explizit angegeben werden: Je höher die Layer-Position, desto weiter im Vordergrund ist das Objekt.
+
+```java
+background.setLayerPosition(-1);
+circle.setLayerPosition(-2);
+```
+
 ## Nutzereingaben
 
 https://engine-alpha.org/wiki/v4.x/User_Input
@@ -245,6 +405,414 @@ https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
 [PaintingCirclesAdvancedDemo.java](https://github.com/Josef-Friedrich/engine-omega/blob/fork/src/test/java/rocks/friedrich/engine_omega/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+
+## Game Loop
+
+https://engine-alpha.org/wiki/v4.x/Game_Loop
+
+Inhalt
+
+In diesem Tutorial:
+
+    Baust du einen frame-weisen Game Loop mit Spiellogik
+    Animierst du flüssige Bewegung in deinem Spiel
+
+How-To Engine Code: Der Game Loop
+
+Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der Engine. Dieser funktioniert folgendermaßen:
+
+Der Engine Alpha Game Loop
+
+Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei (den meisten) Computerspielen 30 bis 60 Bilder pro Sekunde in Echtzeit gerendert, um die selbe Illusion von Bewegung zu erzeugen. Nach jedem Bild berechnet die Engine intern die nächsten Schritte und gibt die relevanten Ereignisse (Tastendruck, Kollision, Frame-Update) an die entsprechenden Listener weiter.
+
+Alle Spiel-Logik ist also in den Listener-Interfaces geschrieben. Guter Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
+Snake ohne Körper
+
+Das folgende Program implementiert ein einfaches Snake-Spiel mit einem Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
+Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
+
+```java
+import ea.*;
+import ea.actor.Circle;
+import ea.actor.Text;
+import ea.collision.CollisionEvent;
+import ea.collision.CollisionListener;
+import ea.event.KeyListener;
+
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
+public class SnakeHead
+extends Scene {
+
+    private Text scoreText = new Text("Score: 0", 1.4f);
+    private int score = 0;
+
+    private Snake snake = new Snake();
+
+    public SnakeHead() {
+        add(snake);
+
+        scoreText.setPosition(-9, 5);
+        add(scoreText);
+        placeRandomGoodie();
+
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+        this.scoreText.setContent("Score: " + score);
+    }
+
+    public void increaseScore() {
+        setScore(score+1);
+    }
+
+    public void placeRandomGoodie() {
+        float x = Random.range()*10 - 5;
+        float y = Random.range()*10 - 5;
+        Goodie goodie = new Goodie();
+        goodie.setCenter(x, y);
+        add(goodie);
+        goodie.addCollisionListener(snake, goodie);
+    }
+
+    public static void main(String[] args) {
+        Game.start(600, 400, new SnakeHead());
+        //Game.setDebug(true);
+    }
+
+    private class Snake
+    extends Circle
+    implements FrameUpdateListener, KeyListener {
+        private Vector v_per_s = new Vector(0,0);
+
+        public Snake() {
+            super(1);
+            setColor(Color.GREEN);
+        }
+
+        @Override
+        public void onFrameUpdate(float timeInS) {
+            this.moveBy(v_per_s.multiply(timeInS));
+        }
+
+        @Override
+        public void onKeyDown(KeyEvent keyEvent) {
+            switch (keyEvent.getKeyCode()) {
+                case KeyEvent.VK_W:
+                    v_per_s = new Vector(0, 5);
+                    break;
+                case KeyEvent.VK_A:
+                    v_per_s = new Vector(-5, 0);
+                    break;
+                case KeyEvent.VK_S:
+                    v_per_s = new Vector(0, -5);
+                    break;
+                case KeyEvent.VK_D:
+                    v_per_s = new Vector(5, 0);
+                    break;
+            }
+        }
+    }
+
+    private class Goodie
+    extends Text
+    implements CollisionListener<Snake> {
+        public Goodie() {
+            super("Eat Me!",1);
+            setColor(Color.RED);
+        }
+
+        @Override
+        public void onCollision(CollisionEvent<Snake> collisionEvent) {
+            increaseScore();
+            this.remove();
+            placeRandomGoodie();
+        }
+    }
+}
+```
+
+### Snake: Frame-Weise Bewegung
+
+Die Snake ist der spielbare Charakter. Sie soll sich jeden Frame in eine der vier Himmelsrichtungen bewegen.
+
+Die Bewegung der Snake soll möglichst flüssig sein. Daher wird die Bewegung in jedem einzelnen Frame ausgeführt, um maximal sauber auszusehen. Dazu implementiert die Snake das Engine-Interface ea.event.FrameUpdateListener, um in jedem Frame seine Bewegungslogik auszuführen.
+
+Hierzu kennt die Snake ihre aktuelle Geschwindigkeit als gerichteten ea.Vektor (in Meter/Sekunde). Ein Frame ist deutlich kürzer als eine Sekunde. Mathematik zur Hilfe! v = s/t und damit s = v\*t. Jeden Frame erhält die Snake die tatsächlich vergangene Zeit t seit dem letzten Frame-Update und verrechnet diese mit ihrer aktuellen Geschwindigkeit v:
+
+```java
+@Override
+public void onFrameUpdate(float timeInS) {
+    this.moveBy(v_per_s.multiply(timeInS));
+}
+```
+
+### Bewegungsgeschwindigkeit festlegen
+
+Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab, welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über ea.event.KeyListener gelöst wie im vorigen Tutorial:
+
+```java
+@Override
+public void onKeyDown(KeyEvent keyEvent) {
+    switch (keyEvent.getKeyCode()) {
+        case KeyEvent.VK_W:
+            v_per_s = new Vector(0, 5);
+            break;
+        case KeyEvent.VK_A:
+            v_per_s = new Vector(-5, 0);
+            break;
+        case KeyEvent.VK_S:
+            v_per_s = new Vector(0, -5);
+            break;
+        case KeyEvent.VK_D:
+            v_per_s = new Vector(5, 0);
+            break;
+        }
+}
+```
+
+### Auf Kollisionen reagieren: Goodies
+
+Die Schlange bewegt sich. Als nächstes braucht sie ein Ziel, auf das sie sich zubewegt. Hierzu schreiben wir eine Klasse für Goodies.
+
+Ein Goodie wartet nur darauf, gegessen zu werden. Damit nicht jeden Frame "von Hand" überprüft werden muss, ob die Schlange das Goodie berührt, lässt sich das ebenfalls über ein Listener-Interface lösen: ea.collision.CollisionListener. Das Interface ist mit Java Generics umgesetzt, daher die spitzen Klammern. Einige Vorteile hiervon kannst du in der Dokumentation durchstöbern.
+
+Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert, das Goodie entfernt, und ein neues Goodie platziert werden.
+
+```java
+@Override
+public void onCollision(CollisionEvent<Snake> collisionEvent) {
+    increaseScore();
+    this.remove();
+    placeRandomGoodie();
+}
+```
+
+In der placeRandomGoodie()-Methode wird ein neues Goodie erstellt und mit ea.Random an einer zufälligen Stelle auf dem Spielfeld platziert. Weil das Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener spezifisch mit der Schlange angemeldet:
+
+```java
+public void placeRandomGoodie() {
+    float x = Random.range()*10 - 5;
+    float y = Random.range()*10 - 5;
+    Goodie goodie = new Goodie();
+    goodie.setCenter(x, y);
+    add(goodie);
+    goodie.addCollisionListener(snake, goodie);
+}
+```
+
+### Anregung zum Experimentieren
+
+Eine Snake, die mit jedem Pickup wächst
+
+- Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange einen von mehreren Hit Points ab).
+- Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest du dem Spieler mehr Kontrolle über die Schlange geben: Statt des KeyListener-Interfaces, kann die Schlange in ihrer onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
+- Escalating Difficulty: Je mehr Pick-Ups gesammelt wurden (und damit desto höher der Score), desto schneller bewegt sich die Schlange.
+  Actual Snake: Wenn du Lust auf eine Herausforderung hast, kannst du aus dem Spiel ein echtes Snake machen:
+  Beim aufnehmen eines Pick-Ups wird die Schlange um ein Glied länger. Die Glieder bewegen sich versetzt mit der Schlange weiter.
+  Wenn die Schlange sich selbst berührt, ist das Spiel beendet.
+
+
+## Szenen
+
+https://engine-alpha.org/wiki/v4.x/Scenes
+
+
+### Scenes in der Engine
+
+Die bisherigen Beispiele waren simplistisch. Ein echtes Spiel hat mehrere verschiedene "Teile", zwischen denen der Spieler während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung: Pausenmenüs, Level-Selections, Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den Wechsel zwischen diesen Szenen stets alle grafischen Objekte zu zerstören und wieder neu aufzubauen. Stattdessen werden alle grafischen Objekte in einer ea.Scene hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die Methode add(...).
+
+Über die Klasse Game kann schnell zwischen Szenen gewechselt werden. Dazu gibt es die Methode Game.transitionToScene(Scene).
+
+Szenen in der Engine: Beispiel mit Pausenmenü
+
+#### Ein Pausenmenü
+
+Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein Pausenmenü.
+Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
+
+```java
+import ea.*;
+import ea.actor.Rectangle;
+import ea.actor.Text;
+import ea.animation.CircleAnimation;
+import ea.event.KeyListener;
+import ea.event.MouseButton;
+import ea.event.MouseClickListener;
+
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
+public class MainScene
+extends Scene
+implements KeyListener {
+
+    private PauseMenu pauseMenu;
+
+    public MainScene() {
+        pauseMenu = new PauseMenu(this);
+
+        Rectangle toAnimate = new Rectangle(5, 2);
+        toAnimate.setCenter(0, -5);
+        toAnimate.setColor(Color.ORANGE);
+
+        CircleAnimation animation = new CircleAnimation(toAnimate, new Vector(0,0), 8, true, true);
+        addFrameUpdateListener(animation);
+
+        add(toAnimate);
+        addKeyListener(this);
+
+        Text info = new Text("Pause mit P", 0.5f);
+        info.setCenter(-7, -5);
+        add(info);
+    }
+
+
+    public static void main(String[] args) {
+        Game.start(600, 400, new MainScene());
+        //Game.setDebug(true);
+    }
+
+    @Override
+    public void onKeyDown(KeyEvent keyEvent) {
+        if(keyEvent.getKeyCode() == KeyEvent.VK_P) {
+            gotoPause();
+        }
+    }
+
+    private void gotoPause() {
+        Game.transitionToScene(pauseMenu);
+    }
+
+    private class PauseMenu
+    extends Scene {
+
+        private Scene mainScene;
+
+        public PauseMenu(Scene mainScene) {
+            this.mainScene = mainScene;
+
+            MenuItem back = new MenuItem(new Vector(0,-5), "Zurück");
+            add(back, back.label);
+
+            Text headline = new Text("Mach mal Pause.", 2.5f);
+            headline.setCenter(0, 3);
+            add(headline);
+
+        }
+
+        private class MenuItem
+        extends Rectangle
+        implements MouseClickListener, FrameUpdateListener{
+
+            private Text label;
+
+            public MenuItem(Vector center, String labelText) {
+                super(10, 1.5f);
+
+                label = new Text(labelText, 1);
+                label.setLayerPosition(1);
+                label.setColor(Color.BLACK);
+                label.setCenter(center);
+
+                setLayerPosition(0);
+                setColor(Color.cyan);
+                setCenter(center);
+            }
+
+            @Override
+            public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
+                if(contains(clickLoc)) {
+                    Game.transitionToScene(mainScene);
+                }
+            }
+
+            @Override
+            public void onFrameUpdate(float v) {
+                if(contains(Game.getMousePositionInCurrentScene())) {
+                    this.setColor(Color.MAGENTA);
+                } else {
+                    this.setColor(Color.CYAN);
+                }
+            }
+        }
+    }
+}
+```
+
+### Die zwei Szenen
+
+Die Hauptszene ist MainScene. Hierdrin könnte ein normaler Game Loop für ein Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur eine stumpfe Animation.
+
+Die zweite Szene ist PauseMenu. In ihr gibt es eine Textbotschaft und einen kleinen Button, um das Menü wieder zu verlassen.
+
+```java
+public class MainScene
+extends Scene {
+    private Scene pauseMenu;
+    //...
+}
+
+private class PauseMenu
+extends Scene {
+    private Scene mainScene;
+    //...
+}
+```
+
+Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird die Transition ausgeführt:
+
+```java
+private void gotoPause() {
+    Game.transitionToScene(pauseMenu);
+}
+```
+
+Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen Steuerelement MenuItem wird dafür die entsprechende Methode aufgerufen, wann immer ein Mausklick auf dem Element landet - dies wird durch die Methode contains(Vector) geprüft:
+
+```java
+@Override
+public void onMouseDown(Vector clickLoc, MouseButton mouseButton) {
+    if(contains(clickLoc)) {
+        Game.transitionToScene(mainScene);
+    }
+}
+```
+
+### Kosmetische Kleinigkeiten
+
+Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die Hauptszene eine Interpolierte Rotationsanimation. Diese rotiert ein oranges Rechteck wiederholend um den Punkt (0|0). Eine volle Rotation im Uhrzeigersinn dauert 8 Sekunden.
+
+```java
+Rectangle toAnimate = new Rectangle(5, 2);
+toAnimate.setCenter(0, -5);
+toAnimate.setColor(Color.ORANGE);
+
+CircleAnimation animation = new CircleAnimation(toAnimate, new Vector(0,0), 8, true, true);
+addFrameUpdateListener(animation);
+
+add(toAnimate);
+```
+
+Das Pausenmenü hat einen Hover-Effekt. Hierzu wird einfach jeden Frame überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig davon die Rechtecksfarbe ändert. Hierzu wird die Methode ea.Game.getMousePositionInCurrentScene() genutzt:
+
+```java
+@Override
+public void onFrameUpdate(float v) {
+    if(contains(Game.getMousePositionInCurrentScene())) {
+        this.setColor(Color.MAGENTA);
+    } else {
+        this.setColor(Color.CYAN);
+    }
+}
+```
+
+### Anmerkungen und Beobachtungen
+
+    Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü die aktive Szene ist. Dies liegt daran, dass die Animation als FrameUpdateListener in der Hauptszene angemeldet wurde (addFrameUpdateListener(animation)). Alle Listener einer Szene können nur dann aufgerufen werden, wenn die Szene aktiv ist.
+    Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der KeyListener, der bei Druck von P zum Pausenmenü wechselt, ist in der Hauptszene angemeldet.
 
 ## Physics
 
