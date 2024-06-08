@@ -7,12 +7,12 @@ public class RegularPolygonDemo extends Scene
 {
     public RegularPolygonDemo()
     {
-        int x = -12;
+        int x = -10;
         for (int i = 3; i < 8; i++)
         {
-            createRegularPolygon(i, x, 0);
-            createText(i + "", x - 0.25, -3);
-            x += 6;
+            createRegularPolygon(i, 2, x, 0);
+            createText(i + "", x - 0.25, -4);
+            x += 5;
         }
     }
 
