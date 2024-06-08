@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.13.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.13.0) - 2024-06-08
+
+<small>[Compare with v0.12.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.12.0...v0.13.0)</small>
+
+### Added
+
+- Add new geometric actors ([938931c](https://github.com/Josef-Friedrich/engine-omega/commit/938931cd06b3ba2e3e0a42f67b2391525190f295) by Josef Friedrich).
+
+## [v0.12.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.12.0) - 2024-06-07
+
+<small>[Compare with v0.11.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.11.0...v0.12.0)</small>
+
+### Added
+
+- Add color schema ([22823d2](https://github.com/Josef-Friedrich/engine-omega/commit/22823d28cab4d001822ee7125171e99a077fdc7a) by Josef Friedrich).
+- Add constructor without arguments for the Rectangle class ([6ef6ad7](https://github.com/Josef-Friedrich/engine-omega/commit/6ef6ad74072ba8561380810bc1f315d194dde791) by Josef Friedrich).
+- Add new methods Scene#setGravityOfEarth and Layer#setGravityOfEarth ([1eefabd](https://github.com/Josef-Friedrich/engine-omega/commit/1eefabd511ec28d19fe018e6db74ddbc374c49cd) by Josef Friedrich).
+- Add new actor: Triangle ([ad1a803](https://github.com/Josef-Friedrich/engine-omega/commit/ad1a8035f2367969708e70e1022f76506eb29dc2) by Josef Friedrich).
+
+### Changed
+
+- Rename the attribute zoom of the class Camera into meter ([1b668d5](https://github.com/Josef-Friedrich/engine-omega/commit/1b668d5b1f106f4a67ee2c2d6fb91124e4964a40) by Josef Friedrich)
+
 ## [v0.11.0](https://github.com/Josef-Friedrich/engine-omega/releases/tag/v0.11.0) - 2024-06-01
 
 <small>[Compare with v0.10.0](https://github.com/Josef-Friedrich/engine-omega/compare/v0.10.0...v0.11.0)</small>
