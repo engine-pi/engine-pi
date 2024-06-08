@@ -20,8 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.demos.small_games;
 
-import static de.pirckheimer_gymnasium.engine_pi.Factory.vector;
 import static de.pirckheimer_gymnasium.engine_pi.Random.range;
+import static de.pirckheimer_gymnasium.engine_pi.Vector.vector;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -29,8 +29,6 @@ import static java.lang.Math.min;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
-import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Layer;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -45,6 +43,8 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
+import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
+import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;

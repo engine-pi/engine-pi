@@ -84,7 +84,7 @@ public final class Vector implements Cloneable
     private final double y;
 
     /**
-     * Konstruktor.
+     * Erzeugt einen neuen Vektor.
      *
      * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
      * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
@@ -537,5 +537,36 @@ public final class Vector implements Cloneable
     public boolean isNaN()
     {
         return Double.isNaN(x) || Double.isNaN(y);
+    }
+
+    /**
+     * Erzeugt einen neuen Vektor.
+     *
+     * <p>Diese statische Methode kann dazu benutzt werden, über einen statischen Import dieser Methode
+     *
+     * {@code
+     * import static de.pirckheimer_gymnasium.engine_pi.Vector.vector;
+     * }
+     *
+     * mit etwas weniger Schreibarbeit einen neuen Vektor zu erzeugen. Anstatt
+     *
+     * {@code
+     * new Vector(1, 2);
+     * }
+     *
+     * kann dann
+     *
+     * {@code
+     * vector(1, 2);
+     * }
+     *
+     * geschrieben werden.</p>
+     *
+     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
+     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
+     */
+    public static Vector vector(double x, double y)
+    {
+        return new Vector(x, y);
     }
 }
