@@ -28,6 +28,9 @@ import rocks.friedrich.engine_omega.annotations.Internal;
 /**
  * Abstrakte Klasse beschreibt eine Tile-Instanz für den Tile-Atlas. <i>In jeder
  * Engine-Instanz existiert jedes Tile nur einmal im Atlas.</i>
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
  */
 @API
 public interface Tile

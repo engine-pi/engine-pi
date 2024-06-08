@@ -26,6 +26,10 @@ import java.awt.image.BufferedImage;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.annotations.API;
 
+/**
+ * @author Michael Andonie
+ * @author Niklas Keller
+ */
 @API
 public interface TileMap
 {
