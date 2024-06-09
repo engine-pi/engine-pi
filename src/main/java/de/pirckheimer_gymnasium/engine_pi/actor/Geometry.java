@@ -20,6 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+
 import java.awt.Color;
 import java.util.function.Supplier;
 
@@ -28,6 +30,7 @@ import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
  * Ein Objekt, das aus n primitiven geometrischen Formen - <b>Dreiecken</b> -
@@ -53,8 +56,7 @@ public abstract class Geometry extends Actor
     }
 
     /**
-     * Setzt ganzheitlich die Farbe aller Formen auf eine bestimmte Farbe.<br>
-     * Dadurch färbt sich im Endeffekt das ganze Objekt neu ein.
+     * Setzt die Farbe der Figur auf eine bestimmte Farbe.
      *
      * @param color Die neue Farbe.
      */
@@ -62,6 +64,16 @@ public abstract class Geometry extends Actor
     public void setColor(Color color)
     {
         this.color = color;
+    }
+
+    /**
+     * Setzt die Farbe der Figur auf eine bestimmte Farbe.
+     *
+     * @param color Die neue Farbe.
+     */
+    @API
+    public void setColor(String color) {
+        this.color = colors.get(color);
     }
 
     /**
@@ -88,22 +100,12 @@ public abstract class Geometry extends Actor
     {
         Color originalColor = getColor();
         ValueAnimator<Double> animator = new ValueAnimator<>(duration,
-                progress -> setColor(calculateIntermediateColor(originalColor,
+                progress -> setColor(ColorUtil.interpolate(originalColor,
                         color, progress)),
                 new LinearDouble(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);
         return animator;
     }
 
-    private Color calculateIntermediateColor(Color original, Color target,
-            double progress)
-    {
-        int r = original.getRed()
-                - (int) ((original.getRed() - target.getRed()) * progress);
-        int g = original.getGreen()
-                - (int) ((original.getGreen() - target.getGreen()) * progress);
-        int b = original.getBlue()
-                - (int) ((original.getBlue() - target.getBlue()) * progress);
-        return new Color(r, g, b);
-    }
+
 }

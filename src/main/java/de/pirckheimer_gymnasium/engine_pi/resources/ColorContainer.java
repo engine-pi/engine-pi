@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
+
 /**
  * Ein Speicher für Farben des Datentyps {@link Color}.
  */
@@ -68,11 +70,16 @@ public class ColorContainer implements Container<Color>
      */
     public void clear()
     {
-        this.resources.clear();
+        resources.clear();
     }
 
     public Color get(String name)
     {
-        return resources.get(name);
+        Color color = resources.get(name);
+        if (color == null && ColorUtil.isHexColorString(name))
+        {
+            return ColorUtil.decode(name);
+        }
+        return color;
     }
 }

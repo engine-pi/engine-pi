@@ -532,7 +532,7 @@ public class ColorSchema
     {
         if (brown == null)
         {
-            brown = mix(getRed(), getGreen(), 0.65);
+            brown = mix(getRed(), getGreen(), 0.35);
         }
         return brown;
     }

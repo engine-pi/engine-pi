@@ -90,6 +90,26 @@ public interface ActorCreator
         actor.setColor(color);
         return actor;
     }
+    /* ___ Pentagon (Fünfeck) _______________________________________________ */
+
+    default Pentagon createPentagon(double radius)
+    {
+        Pentagon actor = new Pentagon(radius);
+        getScene().add(actor);
+        return actor;
+    }
+
+    default Pentagon createPentagon(double radius, double x, double y)
+    {
+        Pentagon actor = createPentagon(radius);
+        actor.setPosition(x, y);
+        return actor;
+    }
+
+    default Pentagon createPentagon(double x, double y)
+    {
+        return createPentagon(0.5, x, y);
+    }
     /* ___ Rectangle (Rechteck) _____________________________________________ */
 
     /**
@@ -144,6 +164,22 @@ public interface ActorCreator
         return createRectangle(1, 1, x, y);
     }
     /* ___ Triangle (Dreieck) _______________________________________________ */
+
+    /**
+     * Erzeugt ein neues Dreieck mit der Höhe und Breite von einem Meter, das an
+     * eine bestimme Position gesetzt wird..
+     *
+     * @param x Die neue <code>x</code>-Koordinate.
+     * @param y Die neue <code>y</code>-Koordinate.
+     *
+     * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
+     */
+    default Triangle createTriangle(int x, int y)
+    {
+        Triangle actor = createTriangle(1.0, 1.0);
+        actor.setPosition(x, y);
+        return actor;
+    }
 
     /**
      * Erzeugt ein neues Dreieck durch Angabe von drei Punkten.
@@ -205,6 +241,7 @@ public interface ActorCreator
         getScene().add(actor);
         return actor;
     }
+    /* ___ RegularPolygon (Reguläres Vieleck) _______________________________ */
 
     default RegularPolygon createRegularPolygon(int numSides, double radius)
     {
@@ -231,7 +268,7 @@ public interface ActorCreator
     {
         return createRegularPolygon(numSides, 1, x, y);
     }
-    /* ___ Text _______________________________________________ */
+    /* ___ Text _____________________________________________________________ */
 
     default Text createText(String content, double height)
     {

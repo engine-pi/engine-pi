@@ -26,9 +26,36 @@
 package de.pirckheimer_gymnasium.engine_pi.util;
 
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Arrays;
+import java.util.regex.Pattern;
+
+class HexColorString
+{
+    private static final String HEX_WEBCOLOR_PATTERN = "^#[a-fA-F0-9]+$";
+
+    private static final Pattern pattern = Pattern
+            .compile(HEX_WEBCOLOR_PATTERN);
+
+    /**
+     * Überprüft, ob die gegebene Zeichenketten eine Farbe in hexadezimaler
+     * Notation (z. B. {@code #ff0000}) codiert.
+     *
+     * @param color Eine Zeichenkette, die überprüft werden soll.
+     *
+     * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
+     *         Notation (z. B. {@code #ff0000}) korrekt codiert.
+     */
+    public static boolean isValid(final String colorCode)
+    {
+        if (colorCode.length() == 7 || colorCode.length() == 9)
+        {
+            return pattern.matcher(colorCode).matches();
+        }
+        return false;
+    }
+}
 
 /**
  * Statische Klasse, die Hilfsmethoden zur Farbberechnung und -manipulation
@@ -193,6 +220,20 @@ public final class ColorUtil
     }
 
     /**
+     * Überprüft, ob die gegebene Zeichenketten eine Farbe in hexadezimaler
+     * Notation (z. B. {@code #ff0000}) codiert.
+     *
+     * @param color Eine Zeichenkette, die überprüft werden soll.
+     *
+     * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
+     *         Notation (z. B. {@code #ff0000}) korrekt codiert.
+     */
+    public static boolean isHexColorString(String color)
+    {
+        return HexColorString.isValid(color);
+    }
+
+    /**
      * Stellt sicher, dass der angegebene Wert innerhalb des akzeptierten
      * Bereichs für Farbwerte (0-255) liegt. Kleinere Werte werden zwangsweise
      * auf 0 gesetzt und größere Werte ergeben 255.
@@ -244,7 +285,7 @@ public final class ColorUtil
      * @param color1 Die erste Farbe, mit der gemischt werden soll.
      * @param color2 Die zweite Farbe, mit der gemischt werden soll.
      * @param factor Das Mischverhältnis. Ein Wert zwischen 0 und 1. Ist dieser
-     *               Wert 1, so wird {@code color1} zurückgeben, ist er 0 dann
+     *               Wert 0, so wird {@code color1} zurückgeben, ist er 1 dann
      *               {@code color2}.
      *
      * @return Die neue, aus zwei Farben gemischte Farbe.
@@ -252,15 +293,13 @@ public final class ColorUtil
     public static Color interpolate(Color color1, Color color2, double factor)
     {
         factor = MathUtil.clamp(factor, 0, 1);
-        double reverseFactor = (1 - factor);
-        int r = (int) (color1.getRed() * factor
-                + color2.getRed() * reverseFactor);
-        int g = (int) (color1.getGreen() * factor
-                + color2.getGreen() * reverseFactor);
-        int b = (int) (color1.getBlue() * factor
-                + color2.getBlue() * reverseFactor);
-        int a = (int) (color1.getAlpha() * factor
-                + color2.getAlpha() * reverseFactor);
+        double reverse = (1 - factor);
+        int r = (int) (color1.getRed() * reverse + color2.getRed() * factor);
+        int g = (int) (color1.getGreen() * reverse
+                + color2.getGreen() * factor);
+        int b = (int) (color1.getBlue() * reverse + color2.getBlue() * factor);
+        int a = (int) (color1.getAlpha() * reverse
+                + color2.getAlpha() * factor);
         return new Color(r, g, b, a);
     }
 

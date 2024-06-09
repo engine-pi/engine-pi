@@ -36,13 +36,14 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  */
 public class Pentagon extends RegularPolygon
 {
-    public Pentagon()
-    {
-        super(5);
-    }
-
     public Pentagon(double radius)
     {
         super(5, radius);
+        setColor("lime");
+    }
+
+    public Pentagon()
+    {
+        this(1);
     }
 }
