@@ -240,7 +240,7 @@ public class KeyStrokeCounterDemo extends Scene
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll,
 implementiert das Interface
-[de.pirckheimer_gymnasium.engine_pi.event.KeyListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html).
+[de.pirckheimer_gymnasium.engine_pi.event.KeyListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html).
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
@@ -256,13 +256,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyListener
 
 Die Anmeldung des `KeyListener`-Interfaces hat automatisch stattgefunden, als
 das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde.
-Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)
+Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)
 -Methode bei jedem Tastendruck
 aufgerufen.
 
 Soll reagiert werden, wenn eine Taste losgelassen wird, kann die
 [onKeyUp(KeyEvent
-e)](<https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
+e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
 implementiert werden.
 
 Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
@@ -392,7 +392,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 #### Schnittstelle `MouseClickListener`
 
 Das Interface
-[MouseClickListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/MouseClickListener.html)
+[MouseClickListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/MouseClickListener.html)
 ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das
 Reagieren auf Loslassen der Maus.
 
@@ -411,7 +411,7 @@ Kreis an der Position des Klicks erstellt:
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-[Vector](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Vector.html).
+[Vector](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Vector.html).
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.
 
@@ -1470,7 +1470,7 @@ Engine-Kamera genutzt:
 ### Durch Platformen Springen: Kollisionen kontrollieren
 
 Das Interface
-[CollisionListener](https://javadoc.io/doc/de.pirckheimer_gymnasium.engine_pi/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+[CollisionListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
 `CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
 überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere
