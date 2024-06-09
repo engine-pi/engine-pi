@@ -47,81 +47,76 @@ Das grundlegendste Hello World sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
 
 ```java
-import ea.Scene;
-import ea.Game;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 
-import ea.actor.Text;
-
-public class HelloWorld_v1
-        extends Scene{
-
-    public HelloWorld_v1() {
-        Text helloworld = new Text("Hello World", 2);
-        helloworld.setCenter(0,1);
-        this.add(helloworld);
-        //Game.setDebug(true);
+public class HelloWorldVersion1 extends Scene
+{
+    public HelloWorldVersion1()
+    {
+        Text helloWorld = new Text("Hello, World!", 2);
+        helloWorld.setCenter(0, 1);
+        add(helloWorld);
+        Game.setDebug(true);
     }
 
-    public static void main(String[] args) {
-        Scene helloWorld = new HelloWorld_v1();
-        Game.start(400, 300, helloWorld);
+    public static void main(String[] args)
+    {
+        Game.start(400, 300, new HelloWorldVersion1());
     }
 }
 ```
 
 #### Scene
 
-Die Hello World-Klasse leitet sich aus der classe ea.Scene der Engine ab. Szenen
-in der Engine sind eigenständige Spielbereiche. Jede Scene hat ihre eigenen
-grafischen (und sonstige) Objekte; Scenes werden unabhängig voneinander
-berechnet. Mehr dazu erfährst du im Szenen-Tutorial. Für den Moment ist
-relevant: Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
-eine Szene, in der "Hello World" dargestellt werden soll:
+Die Hello World-Klasse leitet sich aus der Klasse `Scene` der Engine ab. Szenen
+in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre eigenen
+grafischen (und sonstige) Objekte; Szenes werden unabhängig voneinander
+berechnet. Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
+eine Szene, in der „Hello World“ dargestellt werden soll:
 
 ```java
-public class HelloWorld_v1
-        extends Scene
+public class HelloWorldVersion1 extends Scene
 ```
 
 #### Text
 
-Wir wollen den Text "Hello World" darstellen. Die Klasse ea.actor.Text ist dafür
-zuständig.
-
-Ein Text mit Inhalt "Hello World" und Höhe 2 wird erstellt:
+Wir wollen den Text „Hello, World!“ darstellen. Die Klasse `Text` ist dafür
+zuständig. Ein Text mit Inhalt „Hello, World!“ und Höhe 2 wird erstellt:
 
 ```java
-Text helloworld = new Text("Hello World", 2);
+Text helloWorld = new Text("Hello, World!", 2);
 ```
 
 Der Text wird an Position (0|1) zentriert:
 
 ```java
-helloworld.setCenter(0,1);
+helloWorld.setCenter(0, 1);
 ```
 
 Der Text wird an der Szene angemeldet:
 
 ```java
-this.add(helloworld);
+add(helloWorld);
 ```
 
 Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder
-Szene werden nur die Objekte auch gerendert, die auch an der Szene angemeldet
+Szene werden nur die Objekte gerendert, die auch an der Szene angemeldet
 sind.
 
 #### Debug Mode
 
-Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Infos.
+Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.
 
 Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus
-der Engine hilfreich. Die auskommentierte Zeile aktiviert den Debug Modus:
+der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
 
 ```java
 Game.setDebug(true);
 ```
 
-Die Klasse ea.Game enthält neben Debug-Modus weitere Features, die die
+Die Klasse `Game` enthält neben Debug-Modus weitere Features, die die
 Spielumgebung global betreffen. Du erfährst mehr dazu im Tutorial zur
 Spielsteuerung. Das Spiel starten
 
@@ -130,8 +125,7 @@ Die Klasse ea.Game kontrolliert auch den Spielstart. Dazu muss lediglich die
 Fall 400 px Breite und 300 px Höhe):
 
 ```java
-Scene helloWorld = new HelloWorld_v1();
-Game.start(400, 300, helloWorld);
+Game.start(400, 300, new HelloWorldVersion1());
 ```
 
 ### Schritt 2: Geometrie und Farbe
@@ -140,49 +134,38 @@ Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mi
 geometrischen Figuren und Farbe. Jetzt mit mehr Farbe und geometrischen Figuren
 
 ```java
-import ea.Scene;
-import ea.Game;
-
-import ea.actor.Circle;
-import ea.actor.Rectangle;
-import ea.actor.Text;
-
-import java.awt.Color;
-
-public class HelloWorld_v2
-        extends Scene{
-
-    public HelloWorld_v2() {
-        Text helloworld = new Text("Hello World", 2);
-        helloworld.setCenter(0,1);
-        this.add(helloworld);
-        //Game.setDebug(true);
-
+public class HelloWorldVersion2 extends Scene
+{
+    public HelloWorldVersion2()
+    {
+        Text helloworld = new Text("Hello, World!", 2);
+        helloworld.setCenter(0, 1);
+        add(helloworld);
         helloworld.setColor(Color.BLACK);
-
-        Rectangle background = new Rectangle(10, 3);
+        Rectangle background = new Rectangle(12, 3);
         background.setColor(Color.PINK);
         background.setCenter(0, 1);
         background.setLayerPosition(-1);
-
         Circle circle = new Circle(5);
         circle.setColor(Color.GRAY);
         circle.setCenter(0, 1);
         circle.setLayerPosition(-2);
-
-        this.add(background, circle);
+        add(background, circle);
+        getCamera().setMeter(20);
     }
 
-    public static void main(String[] args) {
-        Scene helloWorld = new HelloWorld_v2();
-        Game.start(400, 300, helloWorld);
+    public static void main(String[] args)
+    {
+        Game.start(400, 300, new HelloWorldVersion2());
     }
 }
 ```
 
 #### Geometrische Figuren
 
-Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und Kreise. Der Code erstellt ein Rechteck mit Breite 10 und Höhe 3 sowie einen Kreis mit Durchmesser 5.
+Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und
+Kreise. Der Code erstellt ein Rechteck mit Breite 10 und Höhe 3 sowie einen
+Kreis mit Durchmesser 5.
 
 ```java
 Rectangle background = new Rectangle(10, 3);
@@ -191,7 +174,9 @@ Circle circle = new Circle(5);
 
 #### Farbe
 
-Einige Objekte in der Engine können beliebig gefärbt werden. Text und geometrische Figuren gehören dazu. Mit setColor kann die Farbe als AWT-Color Objekt übergeben werden:
+Einige Objekte in der Engine können beliebig gefärbt werden. Text und
+geometrische Figuren gehören dazu. Mit setColor kann die Farbe als AWT-Color
+Objekt übergeben werden:
 
 ```java
 background.setColor(Color.PINK);
@@ -200,9 +185,13 @@ circle.setColor(Color.GRAY);
 
 #### Layer Position
 
-So würde das Bild aussehen, wenn die Layer-Position nicht explizit gesetzt werden würde.
+So würde das Bild aussehen, wenn die Layer-Position nicht explizit gesetzt
+werden würde.
 
-Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird. Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen, kann die Layer-Position explizit angegeben werden: Je höher die Layer-Position, desto weiter im Vordergrund ist das Objekt.
+Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird.
+Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen,
+kann die Layer-Position explizit angegeben werden: Je höher die Layer-Position,
+desto weiter im Vordergrund ist das Objekt.
 
 ```java
 background.setLayerPosition(-1);

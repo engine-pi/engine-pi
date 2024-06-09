@@ -18,27 +18,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.tutorials.helloworld;
+package de.pirckheimer_gymnasium.engine_pi.demos.helloworld;
 
-import de.pirckheimer_gymnasium.engine_pi.tutorials.util.Util;
+import java.awt.Color;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 
-public class HelloWorldVersion1 extends Scene
+public class HelloWorldVersion2 extends Scene
 {
-    public HelloWorldVersion1()
+    public HelloWorldVersion2()
     {
-        Text helloworld = new Text("Hello World", 2);
+        Text helloworld = new Text("Hello, World!", 2);
         helloworld.setCenter(0, 1);
-        this.add(helloworld);
-        Game.setDebug(true);
+        add(helloworld);
+        helloworld.setColor(Color.BLACK);
+        Rectangle background = new Rectangle(12, 3);
+        background.setColor(Color.PINK);
+        background.setCenter(0, 1);
+        background.setLayerPosition(-1);
+        Circle circle = new Circle(5);
+        circle.setColor(Color.GRAY);
+        circle.setCenter(0, 1);
+        circle.setLayerPosition(-2);
+        add(background, circle);
+        getCamera().setMeter(20);
     }
 
     public static void main(String[] args)
     {
-        Scene helloWorld = new HelloWorldVersion1();
-        Game.start(400, 300, helloWorld);
-        Util.makeScreenshot("debug");
+        Game.start(400, 300, new HelloWorldVersion2());
     }
 }
