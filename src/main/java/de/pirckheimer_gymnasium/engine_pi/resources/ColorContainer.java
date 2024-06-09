@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Ein Speicher für Farben vom Datentyp {@link Color}.
+ * Ein Speicher für Farben des Datentyps {@link Color}.
  */
 public class ColorContainer implements Container<Color>
 {

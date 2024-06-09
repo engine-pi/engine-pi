@@ -237,17 +237,30 @@ public final class ColorUtil
                 premultiply(color.getBlue(), color.getAlpha()));
     }
 
+    /**
+     * Mischt eine neue Farbe aus zwei gegebenen Farben, wobei das
+     * Mischverhältnis angegeben werden kann.
+     *
+     * @param color1 Die erste Farbe, mit der gemischt werden soll.
+     * @param color2 Die zweite Farbe, mit der gemischt werden soll.
+     * @param factor Das Mischverhältnis. Ein Wert zwischen 0 und 1. Ist dieser
+     *               Wert 1, so wird {@code color1} zurückgeben, ist er 0 dann
+     *               {@code color2}.
+     *
+     * @return Die neue, aus zwei Farben gemischte Farbe.
+     */
     public static Color interpolate(Color color1, Color color2, double factor)
     {
         factor = MathUtil.clamp(factor, 0, 1);
-        int r = (int) (color1.getRed() * (1 - factor)
-                + color2.getRed() * factor);
-        int g = (int) (color1.getGreen() * (1 - factor)
-                + color2.getGreen() * factor);
-        int b = (int) (color1.getBlue() * (1 - factor)
-                + color2.getBlue() * factor);
-        int a = (int) (color1.getAlpha() * (1 - factor)
-                + color2.getAlpha() * factor);
+        double reverseFactor = (1 - factor);
+        int r = (int) (color1.getRed() * factor
+                + color2.getRed() * reverseFactor);
+        int g = (int) (color1.getGreen() * factor
+                + color2.getGreen() * reverseFactor);
+        int b = (int) (color1.getBlue() * factor
+                + color2.getBlue() * reverseFactor);
+        int a = (int) (color1.getAlpha() * factor
+                + color2.getAlpha() * reverseFactor);
         return new Color(r, g, b, a);
     }
 

@@ -20,10 +20,11 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colorSchema;
+
 import java.awt.Graphics2D;
 import java.util.function.Supplier;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
@@ -66,7 +67,7 @@ public class Rectangle extends Geometry
     public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
-        setColor(Resources.colorSchema.getBlue());
+        setColor(colorSchema.getBlue());
     }
 
     public Rectangle(double width, double height,
