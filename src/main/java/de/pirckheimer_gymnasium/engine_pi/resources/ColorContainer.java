@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import java.awt.Color;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -9,7 +9,11 @@ import java.util.Map;
  */
 public class ColorContainer implements Container<Color>
 {
-    private final Map<String, Color> resources = new HashMap<>();
+    /**
+     * Wir verwenden {@link LinkedHashMap}, damit die Einfügereihenfolge
+     * erhalten bleibt und die Farbe sortiert ausgegeben werden können.
+     */
+    private final Map<String, Color> resources = new LinkedHashMap<>();
 
     public ColorContainer()
     {
@@ -23,19 +27,39 @@ public class ColorContainer implements Container<Color>
 
     public void addSchema(ColorSchema schema)
     {
+        // Primärfarbe
         add("yellow", schema.getYellow());
-        add("yelloworange", schema.getGold());
+        // Tertiärfarbe
+        add("gold", schema.getGold());
+        // Sekundärfarbe
         add("orange", schema.getOrange());
-        add("orangered", schema.getBrick());
+        // Tertiärfarbe
+        add("brick", schema.getBrick());
+        // Primärfarbe
         add("red", schema.getRed());
-        add("redpurple", schema.getPink());
+        // Tertiärfarbe
+        add("pink", schema.getPink());
+        // Sekundärfarbe
         add("purple", schema.getPurple());
-        add("purpleblue", schema.getIndigo());
+        // Tertiärfarbe
+        add("indigo", schema.getIndigo());
+        // Primärfarbe
         add("blue", schema.getBlue());
-        add("bluegreen", schema.getCyan());
+        // Tertiärfarbe
+        add("cyan", schema.getCyan());
+        // Sekundärfarbe
         add("green", schema.getGreen());
-        add("yellowgreen", schema.getLime());
+        add("lime", schema.getLime());
+        // andere Zusammensetzung, nicht nach Itten.
         add("brown", schema.getBrown());
+        add("white", schema.getWhite());
+        add("gray", schema.getGray());
+        add("black", schema.getBlack());
+    }
+
+    public Map<String, Color> getAll()
+    {
+        return resources;
     }
 
     /**

@@ -52,9 +52,13 @@ public final class Resources
 
     public static SoundContainer sounds = new SoundContainer();
 
-    public static ColorContainer colors = new ColorContainer();
-
     public static ColorSchema colorSchema = ColorSchema.getGnomeColorSchema();
+
+    public static ColorContainer colors = new ColorContainer();
+    static
+    {
+        colors.addSchema(colorSchema);
+    }
 
     private Resources()
     {

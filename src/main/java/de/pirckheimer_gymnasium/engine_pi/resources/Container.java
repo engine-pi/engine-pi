@@ -1,6 +1,14 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
 /**
+ * Schnittstelle für die Ressourcenspeicher.
+ *
+ * <p>
+ * Neben der abstrakten Klasse {@link ResourcesContainer}, die Dateigebundene
+ * Ressourcen verwaltet, wird diese Schnittstelle noch von der Klasse
+ * {@link ColorContainer} implementiert.
+ * </p>
+ *
  *
  * @param <T> Die Ressource, z. B. BufferedImage, Sound, Color
  */

@@ -7,8 +7,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Ein Farbschema, damit die verschiedenen Farben aufeinander abgestimmt werden
- * können und gut zusammenpassen.
+ * Beschreibt ein <b>Farbschema</b>.
+ *
+ * <p>
+ * Diese Klasse ermöglicht es, verschiedene Farben aufeinander abzustimmen,
+ * damit sie gut zusammenpassen.
+ * </p>
  *
  * <p>
  * Außerdem besteht durch diese Klasse die Möglichkeit, ein anderes Farbschema
@@ -18,31 +22,61 @@ import java.util.Map;
 public class ColorSchema
 {
     /**
-     * Die Primärfarbe <b>Gelb</b>.
+     * Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      */
     private Color yellow;
 
     /**
-     * Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
-     * <b>Rot</b>).
+     * Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
+     * <b>Gelb</b> und <b>Orange</b>).
+     */
+    private Color gold;
+
+    /**
+     * Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>, Mischung aus
+     * <b>Gelb</b> und <b>Rot</b>).
      */
     private Color orange;
 
     /**
-     * Die Primärfarbe <b>Rot</b>.
+     * Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>, Mischung
+     * aus <b>Orange</b> und <b>Rot</b>)
+     */
+    private Color brick;
+
+    /**
+     * Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      */
     private Color red;
 
     /**
-     * Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
-     * <b>Blau</b>).
+     * Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
+     * <b>Rot</b> und <b>Violett</b>).
+     */
+    private Color pink;
+
+    /**
+     * Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>, Mischung aus
+     * <b>Rot</b> und <b>Blau</b>).
      */
     private Color purple;
 
     /**
-     * Die Primärfarbe <b>Blau</b>.
+     * Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung aus
+     * <b>Violett</b> und <b>Blau</b>).
+     */
+    private Color indigo;
+
+    /**
+     * Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      */
     private Color blue;
+
+    /**
+     * Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung aus
+     * <b>Blau</b> und <b>Grün</b>).
+     */
+    private Color cyan;
 
     /**
      * Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und <b>Blau</b>).
@@ -50,19 +84,63 @@ public class ColorSchema
     private Color green;
 
     /**
-     * Die Nicht-Farbe <b>Weiß</b> (nach Itten).
+     * Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>, Mischung aus
+     * <b>Geld</b> und <b>Grün</b>).
+     */
+    private Color lime;
+
+    /**
+     * Die Farbe <b>Braun</b> (englisch: <b>brown</b>). <b>Braun</b> kommt nicht
+     * im <a href=
+     * "https://de.wikipedia.org/wiki/Farbkreis#Ittens_Farbkreis">Farbkreis von
+     * Itten</a> vor.
+     */
+    private Color brown;
+
+    /**
+     * Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      */
     Color white = Color.WHITE;
 
     /**
-     * Die Nicht-Farbe <b>Weiß</b> (nach Itten).
+     * Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
+     */
+    Color gray = Color.GRAY;
+
+    /**
+     * Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      */
     Color black = Color.BLACK;
 
     /**
+     * Erzeugt ein neues Farbschema durch Angabe von den drei Primärfarben.
+     *
+     * <p>
      * Die Reihenfolge der Farben ist dem <a href=
-     * "https://de.wikipedia.org/wiki/Farbkreis#/media/Datei:Farbkreis_Itten_1961.svg">Farbkreis
-     * von Itten</a> entnommen.
+     * "https://de.wikipedia.org/wiki/Farbkreis#Ittens_Farbkreis">Farbkreis von
+     * Itten</a> entnommen.
+     * </p>
+     *
+     * @param yellow Die Primärfarbe <b>Gelb</b>.
+     * @param red    Die Primärfarbe <b>Rot</b>.
+     * @param blue   Die Primärfarbe <b>Blau</b>.
+     */
+    public ColorSchema(Color yellow, Color red, Color blue)
+    {
+        this.yellow = yellow;
+        this.red = red;
+        this.blue = blue;
+    }
+
+    /**
+     * Erzeugt ein neues Farbschema durch Angabe von sechs Farben (drei
+     * Primärfarben und drei Sekundärfarben).
+     *
+     * <p>
+     * Die Reihenfolge der Farben ist dem <a href=
+     * "https://de.wikipedia.org/wiki/Farbkreis#Ittens_Farbkreis">Farbkreis von
+     * Itten</a> entnommen.
+     * </p>
      *
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
@@ -96,47 +174,80 @@ public class ColorSchema
     }
 
     /**
-     * Gibt die Primärfarbe <b>Gelb</b> zurück.
+     * Gibt die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) zurück.
      *
-     * @return Die Primärfarbe <b>Gelb</b>.
+     * @return Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) .
      */
     public Color getYellow()
     {
         return yellow;
     }
 
-    public Color getGold()
+    /**
+     * Setzt die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
+     *
+     * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) .
+     */
+    public void setYellow(Color yellow)
     {
-        return mix(yellow, orange);
+        this.yellow = yellow;
     }
 
     /**
-     * Gibt die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
-     * <b>Rot</b>). zurück.
+     * Gibt die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>) - eine Mischung
+     * aus <b>Gelb</b> und <b>Orange</b> - zurück.
      *
-     * @return Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b> und
-     *         <b>Rot</b>).
+     * @return Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
+     *         <b>Gelb</b> und <b>Orange</b>).
+     */
+    public Color getGold()
+    {
+        if (gold != null)
+        {
+            return gold;
+        }
+        return mix(getYellow(), getOrange());
+    }
+
+    /**
+     * Gibt die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>) zurück.
+     *
+     * <p>
+     * <b>Orange</b> ist eine Mischung aus <b>Gelb</b> und <b>Rot</b>.
+     * </p>
+     *
+     * @return Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
+     *         Mischung aus <b>Gelb</b> und <b>Rot</b>).
      */
     public Color getOrange()
     {
-        return orange;
+        if (orange != null)
+        {
+            return orange;
+        }
+        return mix(getYellow(), getRed());
     }
 
     /**
-     * Ziegelrot (englisch brick red) Orangerot - eine Mischung aus Orange und
-     * Rot.
+     * Gibt die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>) -
+     * eine Mischung aus <b>Orange</b> und <b>Rot</b> - zurück.
      *
-     * @return
+     * @return Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>,
+     *         Mischung aus <b>Orange</b> und <b>Rot</b>).
      */
     public Color getBrick()
     {
-        return mix(orange, red);
+        if (brick != null)
+        {
+            return brick;
+        }
+        return mix(getOrange(), getRed());
     }
 
     /**
-     * Gibt die Primärfarbe <b>Rot</b> zurück.
+     * Gibt die Primärfarbe <b>Rot</b> (englisch: <b>red</b>) zurück.
      *
-     * @return Die Primärfarbe <b>Rot</b>.
+     * @return Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      */
     public Color getRed()
     {
@@ -144,40 +255,60 @@ public class ColorSchema
     }
 
     /**
-     * Gibt die Tertiärfarbe Rosa (englisch: pink) - eine Mischung aus Rot und
-     * Violett.
+     * Gibt die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>) - eine Mischung
+     * aus <b>Rot</b> und <b>Violett</b> - zurück.
      *
-     * @return
+     * @return Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
+     *         <b>Rot</b> und <b>Violett</b>).
      */
     public Color getPink()
     {
-        return mix(red, purple);
+        if (pink != null)
+        {
+            return pink;
+        }
+        return mix(getRed(), getPurple());
     }
 
     /**
-     * Gibt die Sekundärfarbe <b>Violett</b> zurück.
+     * Gibt die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>) zurück.
      *
-     * @return Die Sekundärfarbe <b>Violett</b> (Mischung au<s <b>Rot</b> und
-     *         <b>Blau</b>).
+     * <p>
+     * <b>Violett</b> ist eine Mischung aus <b>Rot</b> und <b>Blau</b>.
+     * </p>
+     *
+     * @return Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
+     *         Mischung aus <b>Rot</b> und <b>Blau</b>).
      */
     public Color getPurple()
     {
-        return purple;
+        if (purple != null)
+        {
+            return purple;
+        }
+        return mix(getRed(), getBlue());
     }
 
     /**
-     * Gibt die Tertiärfarbe Indigo (englisch: indigo) - eine Mischung aus
-     * Violett und Blau zurück.
+     * Gibt die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>) - eine
+     * Mischung aus <b>Violett</b> und <b>Blau</b> - zurück.
+     *
+     * @return Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
+     *         aus <b>Violett</b> und <b>Blau</b>).
      */
     public Color getIndigo()
     {
-        return mix(purple, blue);
+        if (indigo != null)
+        {
+            return indigo;
+        }
+        return mix(getPurple(), getBlue());
     }
 
     /**
-     * Gibt die Primärfarbe <b>Blau</b> zurück.
+     * Gibt die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>) zurück.
      *
-     * @return Die Primärfarbe <b>Blau</b>.
+     * @return Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      */
     public Color getBlue()
     {
@@ -185,57 +316,103 @@ public class ColorSchema
     }
 
     /**
-     * Türkis (engl. cyan) oder Blaugrün
+     * Gibt die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>) - eine
+     * Mischung aus <b>Blau</b> und <b>Grün</b> - zurück.
      *
-     * @return Die Tertiärfarbe Türkis
+     * @return Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung aus
+     *         <b>Blau</b> und <b>Grün</b>).
      */
     public Color getCyan()
     {
-        return mix(blue, green);
+        if (cyan != null)
+        {
+            return cyan;
+        }
+        return mix(getBlue(), getGreen());
     }
 
     /**
-     * Gibt die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     * <b>Blau</b>) zurück.
+     * Gibt die Sekundärfarbe <b>Grün</b> (englisch: <b></b>) (Mischung aus
+     * <b>Gelb</b> und <b>Blau</b>) zurück.
      *
      * @return Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      *         <b>Blau</b>).
      */
     public Color getGreen()
     {
-        return green;
+        if (green != null)
+        {
+            return green;
+        }
+        return mix(getYellow(), getBlue());
     }
 
     /**
-     * Limettengrün bzw. Gelbgrün
+     * Gibt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>) - eine
+     * Mischung aus <b>Geld</b> und <b>Grün</b> - zurück.
+     *
+     * @return Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
+     *         Mischung aus <b>Geld</b> und <b>Grün</b>).
      */
     public Color getLime()
     {
-        return mix(yellow, green);
+        if (lime != null)
+        {
+            return lime;
+        }
+        return mix(getYellow(), getGreen());
     }
 
+    /**
+     * Gibt die Farbe <b>Braun</b> (englisch: <b>brown</b>) zurück.
+     *
+     * <p>
+     * Die Farbe <b>Braun</b> ist eine Mischung aus <b>Rot</b> und <b>Grün</b>,
+     * wobei der <b>Rotanteil</b> überwiegt. <b>Braun</b> kommt nicht im
+     * <a href=
+     * "https://de.wikipedia.org/wiki/Farbkreis#Ittens_Farbkreis">Farbkreis von
+     * Itten</a> vor.
+     * </p>
+     *
+     * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
+     */
     public Color getBrown()
     {
-        return mix(red, green, 0.35);
+        if (brown != null)
+        {
+            return brown;
+        }
+        return mix(getRed(), getGreen(), 0.35);
     }
 
-    public Map<String, Color> getAll()
+    /**
+     * Gibt die Farbe <b>Weiß</b> (englisch: <b>white</b>) zurück.
+     *
+     * @return Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
+     */
+    public Color getWhite()
     {
-        Map<String, Color> map = new LinkedHashMap<String, Color>();
-        map.put("yellow", getYellow());
-        map.put("gold", getGold());
-        map.put("orange", getOrange());
-        map.put("brick", getBrick());
-        map.put("red", getRed());
-        map.put("pink", getPink());
-        map.put("purple", getPurple());
-        map.put("indigo", getIndigo());
-        map.put("blue", getBlue());
-        map.put("cyan", getCyan());
-        map.put("green", getGreen());
-        map.put("lime", getLime());
-        map.put("brown", getBrown());
-        return map;
+        return white;
+    }
+
+    /**
+     * Gibt die Farbe <b>Grau</b> (englisch: <b>gray</b>) zurück.
+     *
+     * @return Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
+     */
+    public Color getGray()
+    {
+        return gray;
+    }
+
+    /**
+     * Gibt die Farbe <b>Schwarz</b> (englisch: <b>black</b>) zurück.
+     *
+     * @return Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
+     */
+    public Color getBlack()
+    {
+        return black;
     }
 
     /**
