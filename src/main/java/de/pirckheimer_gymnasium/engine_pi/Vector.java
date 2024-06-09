@@ -542,7 +542,9 @@ public final class Vector implements Cloneable
     /**
      * Erzeugt einen neuen Vektor.
      *
-     * <p>Diese statische Methode kann dazu benutzt werden, über einen statischen Import dieser Methode
+     * <p>
+     * Diese statische Methode kann dazu benutzt werden, über einen statischen
+     * Import dieser Methode
      *
      * {@code
      * import static de.pirckheimer_gymnasium.engine_pi.Vector.vector;
@@ -560,7 +562,8 @@ public final class Vector implements Cloneable
      * vector(1, 2);
      * }
      *
-     * geschrieben werden.</p>
+     * geschrieben werden.
+     * </p>
      *
      * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
      * @param y Der Bewegungsanteil in <code>y</code>-Richtung.

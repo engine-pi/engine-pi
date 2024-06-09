@@ -42,9 +42,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
-import de.pirckheimer_gymnasium.engine_pi.resources.Container;
-import de.pirckheimer_gymnasium.engine_pi.resources.ImagesContainer;
-import de.pirckheimer_gymnasium.engine_pi.resources.SoundsContainer;
+import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
+import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
@@ -229,7 +228,8 @@ public final class Game
             // werden.");
         }
         mousePosition = new java.awt.Point(width / 2, height / 2);
-        mainThread = new Thread(Game::run, "de.pirckheimer_gymnasium.engine_pi.main");
+        mainThread = new Thread(Game::run,
+                "de.pirckheimer_gymnasium.engine_pi.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
     }
@@ -240,7 +240,7 @@ public final class Game
     }
 
     /**
-     * Stellt den Zugriff auf den {@link ImagesContainer Zwischenspeicher für
+     * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für
      * Bild-Resourcen} vom Datentyp {@link BufferedImage} bereit.
      *
      * @author Josef Friedrich
@@ -248,25 +248,25 @@ public final class Game
      * @return Ein Zwischenspeicher für Bild-Resourcen vom Datentyp
      *         {@link BufferedImage}.
      */
-    public static ImagesContainer getImages()
+    public static ImageContainer getImages()
     {
-        return Container.getImages();
+        return Resources.getImages();
     }
 
     /**
-     * Stellt den Zugriff auf den {@link SoundsContainer Zwischenspeicher für
+     * Stellt den Zugriff auf den {@link SoundContainer Zwischenspeicher für
      * Audio-Resourcen} vom Datentyp
      * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound} bereit.
      *
      * @author Josef Friedrich
      *
-     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen}
-     *         vom Datentyp {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound
-     *         Sound}.
+     * @return Ein {@link SoundContainer Zwischenspeicher für Audio-Resourcen}
+     *         vom Datentyp
+     *         {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound}.
      */
-    public static SoundsContainer getSounds()
+    public static SoundContainer getSounds()
     {
-        return Container.getSounds();
+        return Resources.getSounds();
     }
 
     private static void run()
@@ -418,8 +418,8 @@ public final class Game
 
     /**
      * Entfernt einen statischen
-     * {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener} vom Objekt, d. h.
-     * einen KeyListener, der global für das ganze Spiele gilt.
+     * {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener} vom Objekt,
+     * d. h. einen KeyListener, der global für das ganze Spiele gilt.
      *
      * @author Josef Friedrich
      *

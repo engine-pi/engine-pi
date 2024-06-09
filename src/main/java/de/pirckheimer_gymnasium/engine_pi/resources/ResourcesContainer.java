@@ -42,15 +42,17 @@ import java.util.function.Supplier;
 /**
  * Eine abstrakte Implementierung für Unterklassen, die einen bestimmten Typ von
  * Ressourcen (z. b. Bilder, Klänge) bereitstellen wollen. Diese Klasse bietet
- * Methoden zur Verwalten der Ressourcen an.
+ * Methoden zum Verwalten der Ressourcen an.
  *
+ * <p>
  * Die Ressourcen werden von dieser Klasse im Speicher gehalten. Es handelt sich
  * also um einen Cache.
+ * </p>
  *
  * @param <T> Der Datentyp der Ressource, die in dieser Instanz enthalten ist.
  * @see ResourcesContainerListener
  */
-public abstract class ResourcesContainer<T>
+public abstract class ResourcesContainer<T> implements Container<T>
 {
     // use a work-stealing pool to maximize resource load speed while minimizing
     // the number of resources
@@ -122,7 +124,7 @@ public abstract class ResourcesContainer<T>
     }
 
     /**
-     * Fügt einen Resourcenmanipulator zu diesem Resourcenspeicher hinzu.
+     * Fügt einen Ressourcen-Manipulator zu diesem Ressourcenspeicher hinzu.
      *
      * @author Josef Friedrich
      */
@@ -132,7 +134,7 @@ public abstract class ResourcesContainer<T>
     }
 
     /**
-     * Entfernt den Resourcenmanipulator aus diesem Resourcenspeicher.
+     * Entfernt den Ressourcen-Manipulator aus diesem Ressourcenspeicher.
      *
      * @author Josef Friedrich
      */
@@ -142,48 +144,48 @@ public abstract class ResourcesContainer<T>
     }
 
     /**
-     * Add the specified resource to this container.<br>
-     * The added element can later be retrieved from this container by calling
-     * {@code get(resourceName)}.
+     * Fügt die angegebene Ressource zu diesem Speicher hinzu.<br>
+     * Das hinzugefügte Element kann später aus dem Speicher abgerufen werden,
+     * indem {@code get(resourceName)} aufgerufen wird.
      * <p>
-     * Use this method to make a resource accessible over this container during
-     * runtime.
+     * Verwenden Sie diese Methode, um eine Ressource während der Laufzeit über
+     * diesen Speicher zugänglich zu machen.
      * </p>
      *
-     * @param resourceName The name that the resource is managed by.
-     * @param resource     The resource instance.
+     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param resource Die Ressourceninstanz.
      * @see #get(Predicate)
      * @see #get(String)
      * @see #get(String, boolean)
      * @see #remove(String)
      * @see #tryGet(String)
      */
-    public T add(String resourceName, T resource)
+    public T add(String name, T resource)
     {
         if (manipulator != null)
         {
-            T r = manipulator.beforeAdd(resourceName, resource);
+            T r = manipulator.beforeAdd(name, resource);
             if (r != null)
             {
                 resource = r;
             }
         }
-        this.resources.put(resourceName, resource);
+        this.resources.put(name, resource);
         for (ResourcesContainerListener<T> listener : this.listeners)
         {
-            listener.added(resourceName, resource);
+            listener.added(name, resource);
         }
         return resource;
     }
 
-    public T add(URL resourceName, T resource)
+    public T add(URL name, T resource)
     {
-        return this.add(resourceName.toString(), resource);
+        return this.add(name.toString(), resource);
     }
 
     /**
-     * Clears the resource container by removing all previously loaded
-     * resources.
+     * Leert den Ressourcenspeicher, indem alle zuvor geladenen Ressourcen
+     * entfernt werden.
      */
     public void clear()
     {
@@ -200,19 +202,19 @@ public abstract class ResourcesContainer<T>
      * Note that the name is <b>not case-sensitive</b>.
      * </p>
      *
-     * @param resourceName The resource's name.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @return True if this container contains a resource with the specified
      *         name; otherwise false.
      * @see ResourcesContainer#contains(Object)
      */
-    public boolean contains(String resourceName)
+    public boolean contains(String name)
     {
-        return this.resources.containsKey(this.getIdentifier(resourceName));
+        return this.resources.containsKey(this.getIdentifier(name));
     }
 
-    public boolean contains(URL resourceName)
+    public boolean contains(URL name)
     {
-        return this.contains(resourceName.toString());
+        return this.contains(name.toString());
     }
 
     /**
@@ -254,27 +256,30 @@ public abstract class ResourcesContainer<T>
     }
 
     /**
-     * Gets the resource with the specified name.<br>
+     * Ruft die Ressource mit dem angegebenen Namen ab.<br>
      * <p>
-     * This is the most common (and preferred) way to fetch resources from a
-     * container.
-     * </p>
-     * <p>
-     * If not previously loaded, this method attempts to load the resource on
-     * the fly otherwise it will be retrieved from the cache.
+     * Dies ist die gängigste (und bevorzugte) Methode, um Ressourcen aus einem
+     * Speicher abzurufen.
      * </p>
      *
-     * @param resourceName The resource's name.
-     * @return The resource with the specified name or null if not found.
+     * <p>
+     * Wenn die Ressource nicht zuvor geladen wurde, versucht diese Methode, sie
+     * sofort zu laden, andernfalls wird sie aus dem Cache abgerufen.
+     * </p>
+     *
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
+     * @return Die Ressource mit dem angegebenen Namen oder null, wenn sie nicht
+     *         gefunden wird.
      */
-    public T get(String resourceName)
+    public T get(String name)
     {
-        return this.get(this.getIdentifier(resourceName), false);
+        return this.get(this.getIdentifier(name), false);
     }
 
-    public T get(URL resourceName)
+    public T get(URL name)
     {
-        return this.get(resourceName, false);
+        return this.get(name, false);
     }
 
     /**
@@ -285,14 +290,14 @@ public abstract class ResourcesContainer<T>
      * container.
      * </p>
      *
-     * @param resourceName The resource's name.
+     * @param name         Der Name, unter dem die Ressource verwaltet wird.
      * @param loadCallback The callback that is used to load the resource
      *                     on-demand if it's not present on this container.
      * @return T The resource with the specified name.
      */
-    public T get(String resourceName, Supplier<? extends T> loadCallback)
+    public T get(String name, Supplier<? extends T> loadCallback)
     {
-        Optional<T> opt = this.tryGet(resourceName);
+        Optional<T> opt = this.tryGet(name);
         if (opt.isPresent())
         {
             return opt.get();
@@ -300,14 +305,14 @@ public abstract class ResourcesContainer<T>
         T resource = loadCallback.get();
         if (resource != null)
         {
-            return this.add(resourceName, resource);
+            return this.add(name, resource);
         }
-        return resource;
+        return null;
     }
 
-    public T get(URL resourceName, Supplier<? extends T> loadCallback)
+    public T get(URL name, Supplier<? extends T> loadCallback)
     {
-        return this.get(resourceName.toString(), loadCallback);
+        return this.get(name.toString(), loadCallback);
     }
 
     /**
@@ -317,33 +322,33 @@ public abstract class ResourcesContainer<T>
      * the fly otherwise it will be retrieved from the cache.
      * </p>
      *
-     * @param resourceName The name of the game resource.
-     * @param forceLoad    If set to true, cached resource (if existing) will be
-     *                     discarded and the resource will be freshly loaded.
+     * @param name      Der Name, unter dem die Ressource verwaltet wird.
+     * @param forceLoad If set to true, cached resource (if existing) will be
+     *                  discarded and the resource will be freshly loaded.
      * @return The game resource or null if not found.
      */
-    public T get(String resourceName, boolean forceLoad)
+    public T get(String name, boolean forceLoad)
     {
-        if (resourceName == null)
+        if (name == null)
         {
             return null;
         }
-        T resource = this.resources.get(resourceName);
+        T resource = this.resources.get(name);
         if (forceLoad || resource == null)
         {
-            resource = this.loadResource(resourceName);
+            resource = this.loadResource(name);
             if (resource == null)
             {
                 return null;
             }
-            return this.add(resourceName, resource);
+            return this.add(name, resource);
         }
         return resource;
     }
 
-    public T get(URL resourceName, boolean forceLoad)
+    public T get(URL name, boolean forceLoad)
     {
-        return this.get(resourceName.toString(), forceLoad);
+        return this.get(name.toString(), forceLoad);
     }
 
     /**
@@ -365,7 +370,7 @@ public abstract class ResourcesContainer<T>
      * loaded asynchronously and can be retrieved from the returned
      * {@code Future} object returned by this method once loaded.
      *
-     * @param name The name or location of the resource
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @return A {@code Future} object that can be used to retrieve the resource
      *         once it is finished loading
      */
@@ -388,25 +393,25 @@ public abstract class ResourcesContainer<T>
     /**
      * Removes the resource with the specified name from this container.
      *
-     * @param resourceName The name of the resource that should be removed.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @return The removed resource.
      */
-    public T remove(String resourceName)
+    public T remove(String name)
     {
-        T removedResource = this.resources.remove(resourceName);
+        T removedResource = this.resources.remove(name);
         if (removedResource != null)
         {
             for (ResourcesContainerListener<? super T> listener : this.listeners)
             {
-                listener.removed(resourceName, removedResource);
+                listener.removed(name, removedResource);
             }
         }
         return removedResource;
     }
 
-    public T remove(URL resourceName)
+    public T remove(URL name)
     {
-        return this.remove(resourceName.toString());
+        return this.remove(name.toString());
     }
 
     /**
@@ -419,38 +424,38 @@ public abstract class ResourcesContainer<T>
      * present while also fetching it from the container.
      * </p>
      *
-     * @param resourceName The name of the resource.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @return An Optional instance that holds the resource instance, if present
      *         on this container.
      * @see Optional
      * @see #contains(String)
      * @see #get(String)
      */
-    public Optional<T> tryGet(String resourceName)
+    public Optional<T> tryGet(String name)
     {
-        if (this.contains(resourceName))
+        if (this.contains(name))
         {
-            return Optional.of(this.get(resourceName));
+            return Optional.of(this.get(name));
         }
         return Optional.empty();
     }
 
-    public Optional<T> tryGet(URL resourceName)
+    public Optional<T> tryGet(URL name)
     {
-        return this.tryGet(resourceName.getPath());
+        return this.tryGet(name.getPath());
     }
 
-    protected abstract T load(URL resourceName) throws Exception;
+    protected abstract T load(URL name) throws Exception;
 
     /**
      * Gets an alias for the specified resourceName. Note that the process of
      * providing an alias is up to the ResourceContainer implementation.
      *
-     * @param resourceName The original name of the resource.
-     * @param resource     The resource.
+     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param resource The resource.
      * @return An alias for the specified resource.
      */
-    protected String getAlias(String resourceName, T resource)
+    protected String getAlias(String name, T resource)
     {
         return null;
     }
@@ -460,7 +465,7 @@ public abstract class ResourcesContainer<T>
         return this.resources;
     }
 
-    private T loadResource(String identifier)
+    protected T loadResource(String identifier)
     {
         T newResource;
         try
@@ -479,8 +484,8 @@ public abstract class ResourcesContainer<T>
         return newResource;
     }
 
-    private String getIdentifier(String resourceName)
+    private String getIdentifier(String name)
     {
-        return this.aliases.getOrDefault(resourceName, resourceName);
+        return this.aliases.getOrDefault(name, name);
     }
 }

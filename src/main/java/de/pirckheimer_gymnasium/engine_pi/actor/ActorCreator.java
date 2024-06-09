@@ -29,10 +29,10 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  *
  * <p>
  * Mit Hilfe dieses Interfaces können die Klassen {@link Scene} and
- * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} um einige Hilfsmethoden
- * erweitert werden, ohne sie dabei mit vielen weiteren Methoden zu
- * überfrachten. Die erzeugten {@link Actor}-Objekt werden gleich zur Szene bzw.
- * zur Ebene hinzugefügt.
+ * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} um einige
+ * Hilfsmethoden erweitert werden, ohne sie dabei mit vielen weiteren Methoden
+ * zu überfrachten. Die erzeugten {@link Actor}-Objekt werden gleich zur Szene
+ * bzw. zur Ebene hinzugefügt.
  * </p>
  *
  * @author Josef Friedrich

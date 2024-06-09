@@ -1,4 +1,6 @@
-package de.pirckheimer_gymnasium.engine_pi.util;
+package de.pirckheimer_gymnasium.engine_pi.resources;
+
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 import java.awt.Color;
 import java.util.LinkedHashMap;
@@ -6,10 +8,12 @@ import java.util.Map;
 
 /**
  * Ein Farbschema, damit die verschiedenen Farben aufeinander abgestimmt werden
- * können und gut zusamenpassen.
+ * können und gut zusammenpassen.
  *
+ * <p>
  * Außerdem besteht durch diese Klasse die Möglichkeit, ein anderes Farbschema
  * zu setzen.
+ * </p>
  */
 public class ColorSchema
 {
@@ -101,7 +105,7 @@ public class ColorSchema
         return yellow;
     }
 
-    public Color getYellowOrange()
+    public Color getGold()
     {
         return mix(yellow, orange);
     }
@@ -118,7 +122,13 @@ public class ColorSchema
         return orange;
     }
 
-    public Color getOrangeRed()
+    /**
+     * Ziegelrot (englisch brick red) Orangerot - eine Mischung aus Orange und
+     * Rot.
+     *
+     * @return
+     */
+    public Color getBrick()
     {
         return mix(orange, red);
     }
@@ -133,7 +143,13 @@ public class ColorSchema
         return red;
     }
 
-    public Color getRedPurple()
+    /**
+     * Gibt die Tertiärfarbe Rosa (englisch: pink) - eine Mischung aus Rot und
+     * Violett.
+     *
+     * @return
+     */
+    public Color getPink()
     {
         return mix(red, purple);
     }
@@ -141,15 +157,19 @@ public class ColorSchema
     /**
      * Gibt die Sekundärfarbe <b>Violett</b> zurück.
      *
-     * @return Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b> und
-     *         <b>Blau</b>)..
+     * @return Die Sekundärfarbe <b>Violett</b> (Mischung au<s <b>Rot</b> und
+     *         <b>Blau</b>).
      */
     public Color getPurple()
     {
         return purple;
     }
 
-    public Color getPurpleBlue()
+    /**
+     * Gibt die Tertiärfarbe Indigo (englisch: indigo) - eine Mischung aus
+     * Violett und Blau zurück.
+     */
+    public Color getIndigo()
     {
         return mix(purple, blue);
     }
@@ -165,9 +185,11 @@ public class ColorSchema
     }
 
     /**
-     * Türkis
+     * Türkis (engl. cyan) oder Blaugrün
+     *
+     * @return Die Tertiärfarbe Türkis
      */
-    public Color getBlueGreen()
+    public Color getCyan()
     {
         return mix(blue, green);
     }
@@ -185,9 +207,9 @@ public class ColorSchema
     }
 
     /**
-     * Hellgrün
+     * Limettengrün bzw. Gelbgrün
      */
-    public Color getYellowGreen()
+    public Color getLime()
     {
         return mix(yellow, green);
     }
@@ -201,23 +223,23 @@ public class ColorSchema
     {
         Map<String, Color> map = new LinkedHashMap<String, Color>();
         map.put("yellow", getYellow());
-        map.put("yelloworange", getYellowOrange());
+        map.put("gold", getGold());
         map.put("orange", getOrange());
-        map.put("orangered", getOrangeRed());
+        map.put("brick", getBrick());
         map.put("red", getRed());
-        map.put("redpurple", getRedPurple());
+        map.put("pink", getPink());
         map.put("purple", getPurple());
-        map.put("purpleblue", getPurpleBlue());
+        map.put("indigo", getIndigo());
         map.put("blue", getBlue());
-        map.put("bluegreen", getBlueGreen());
+        map.put("cyan", getCyan());
         map.put("green", getGreen());
-        map.put("yellowgreen", getYellowGreen());
+        map.put("lime", getLime());
         map.put("brown", getBrown());
         return map;
     }
 
     /**
-     * Erzeugt ein Farbschema nach dem Farben
+     * Erzeugt ein Farbschema nach den Farben
      * der<a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
      * Human Interface Guidelines</a>.
      */

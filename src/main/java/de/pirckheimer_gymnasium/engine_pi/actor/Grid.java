@@ -18,7 +18,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.resources.Container.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colorSchema;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -59,7 +59,7 @@ public class Grid extends Actor
     /**
      * Die Farbe der Gitterlinien.
      */
-    Color color = colors.getGreen();
+    Color color = colorSchema.getGreen();
 
     /**
      * Die Hintergrundfarbe.

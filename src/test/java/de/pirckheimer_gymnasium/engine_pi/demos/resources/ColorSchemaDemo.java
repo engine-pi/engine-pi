@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.resources;
 
-import static de.pirckheimer_gymnasium.engine_pi.resources.Container.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colorSchema;
 
 import java.awt.Color;
 import java.util.Map.Entry;
@@ -13,11 +13,18 @@ public class ColorSchemaDemo extends Scene
     public ColorSchemaDemo()
     {
         int x = -12;
-        for (Entry<String, Color> entry : colors.getAll().entrySet())
+        int labelY = -2;
+        for (Entry<String, Color> entry : colorSchema.getAll().entrySet())
         {
             createCircle(x, 0, entry.getValue());
+            createText(entry.getKey(), 0.5, x, labelY);
             System.out.println(entry.getKey());
             x += 2;
+            labelY -= 2;
+            if (labelY < -5)
+            {
+                labelY = -2;
+            }
         }
     }
 

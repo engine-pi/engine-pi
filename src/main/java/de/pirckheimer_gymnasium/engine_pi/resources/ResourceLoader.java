@@ -37,6 +37,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 
 /**
@@ -47,7 +48,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 final public class ResourceLoader
 {
     private static final Logger log = Logger
-            .getLogger(Container.class.getName());
+            .getLogger(Resources.class.getName());
 
     private ResourceLoader()
     {
@@ -111,7 +112,7 @@ final public class ResourceLoader
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see Container
+     * @see Resources
      */
     public static InputStream get(String file)
     {
@@ -127,7 +128,7 @@ final public class ResourceLoader
      *
      * @param file The path to the file.
      * @return The contents of the specified file as {@code InputStream}.
-     * @see Container
+     * @see Resources
      */
     public static InputStream get(URL file)
     {

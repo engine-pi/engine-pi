@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.resources.SoundsContainer;
+import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 
 /**
  * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge und Musik im Spiel
@@ -78,7 +78,7 @@ public final class Jukebox
     private final Collection<SoundPlayback> sounds = ConcurrentHashMap
             .newKeySet();
 
-    private static SoundsContainer soundsContainer = Game.getSounds();
+    private static SoundContainer soundsContainer = Game.getSounds();
 
     /**
      * Gets the maximum distance from the listener at which a sound source can

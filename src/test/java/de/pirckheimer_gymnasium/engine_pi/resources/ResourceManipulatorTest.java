@@ -12,7 +12,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ResourceManipulatorTest
 {
-    ImagesContainer container = Game.getImages();
+    ImageContainer container = Game.getImages();
 
     String resourceName = "Pixel-Adventure-1/Background/Blue.png";
 

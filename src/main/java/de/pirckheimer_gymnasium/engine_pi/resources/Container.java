@@ -1,96 +1,49 @@
-/*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/resources/Resources.java
- *
- * MIT License
- *
- * Copyright (c) 2016 - 2024 Gurkenlabs
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
-import de.pirckheimer_gymnasium.engine_pi.util.ColorSchema;
-
 /**
- * Zur Aufbewahrung und Verwaltung verschiedener Resourcen.
  *
- * <p>
- * Diese Klasse ist der Einstiegspunkt für den Zugriff auf alle Arten von
- * {@link Resource}n. Eine Ressource ist jede nicht-ausführbare Datei, die mit
- * dem Spiel bereitgestellt wird. Die {@link Container} Klasse bietet Zugriff
- * auf verschiedene Spezialisierungen von {@link ResourcesContainer} und wird
- * von verschiedenen (Lade-)Mechanismen verwendet, um Ressourcen während der
- * Laufzeit verfügbar zu machen.
- * </p>
- *
- * @see ResourcesContainer
+ * @param <T> Die Ressource, z. B. BufferedImage, Sound, Color
  */
-public final class Container
+public interface Container<T>
 {
-    public static ImagesContainer images = new ImagesContainer();
-
-    public static SoundsContainer sounds = new SoundsContainer();
-
-    public static ColorSchema colors = ColorSchema.getGnomeColorSchema();
-
-    private Container()
-    {
-        throw new UnsupportedOperationException();
-    }
+    /**
+     * Fügt die angegebene Ressource zu diesem Speicher hinzu.<br>
+     * Das hinzugefügte Element kann später aus dem Speicher abgerufen werden,
+     * indem {@code get(resourceName)} aufgerufen wird.
+     * <p>
+     * Verwenden Sie diese Methode, um eine Ressource während der Laufzeit über
+     * diesen Speicher zugänglich zu machen.
+     * </p>
+     *
+     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param resource Die Ressourceninstanz.
+     */
+    public T add(String name, T resource);
 
     /**
-     * Stellt den Zugriff auf den {@link ImagesContainer Zwischenspeicher für
-     * Bild-Resourcen} vom Datentyp {@link java.awt.image.BufferedImage} bereit.
+     * Leert den Ressourcenspeicher, indem alle zuvor geladenen Ressourcen
+     * entfernt werden.
      *
-     * @author Josef Friedrich
-     *
-     * @return Ein Zwischenspeicher für Bild-Resourcen vom Datentyp
-     *         {@link java.awt.image.BufferedImage}.
+     * @see ResourcesContainer#clear()
      */
-    public static ImagesContainer getImages()
-    {
-        return images;
-    }
+    public void clear();
 
     /**
-     * Stellt den Zugriff auf den {@link SoundsContainer Zwischenspeicher für
-     * Audio-Resourcen} vom Datentyp
-     * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound} bereit.
+     * Ruft die Ressource mit dem angegebenen Namen ab.<br>
+     * <p>
+     * Dies ist die gängigste (und bevorzugte) Methode, um Ressourcen aus einem
+     * Speicher abzurufen.
+     * </p>
      *
-     * @author Josef Friedrich
+     * <p>
+     * Wenn die Ressource nicht zuvor geladen wurde, versucht diese Methode, sie
+     * sofort zu laden, andernfalls wird sie aus dem Cache abgerufen.
+     * </p>
      *
-     * @return Ein {@link SoundsContainer Zwischenspeicher für Audio-Resourcen}
-     *         vom Datentyp {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound
-     *         Sound}.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
+     * @return Die Ressource mit dem angegebenen Namen oder null, wenn sie nicht
+     *         gefunden wird.
      */
-    public static SoundsContainer getSounds()
-    {
-        return sounds;
-    }
-
-    /**
-     * Clears the all resource containers by removing previously loaded
-     * resources.
-     */
-    public static void clearAll()
-    {
-        getImages().clear();
-        getSounds().clear();
-    }
+    public T get(String name);
 }

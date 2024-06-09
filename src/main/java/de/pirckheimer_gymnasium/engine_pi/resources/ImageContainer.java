@@ -34,11 +34,11 @@ import javax.imageio.ImageIO;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
- * Ein Speicher für Bild-Resourcen vom Datentyp {@link BufferedImage}.
+ * Ein Speicher für Bild-Ressourcen vom Datentyp {@link BufferedImage}.
  */
-public final class ImagesContainer extends ResourcesContainer<BufferedImage>
+public final class ImageContainer extends ResourcesContainer<BufferedImage>
 {
-    ImagesContainer()
+    public ImageContainer()
     {
     }
 
@@ -46,14 +46,14 @@ public final class ImagesContainer extends ResourcesContainer<BufferedImage>
      * Loads the image by the specified resourceName. This method supports both
      * loading images from a folder and loading them from the resources.
      *
-     * @param resourceName The path to the image.
+     * @param name The path to the image.
      *
      * @return the image
      */
     @Override
-    protected BufferedImage load(URL resourceName) throws IOException
+    protected BufferedImage load(URL name) throws IOException
     {
-        BufferedImage img = ImageIO.read(resourceName);
+        BufferedImage img = ImageIO.read(name);
         if (img == null)
         {
             return null;

@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.resources.Container.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colorSchema;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Grid;
@@ -13,8 +13,8 @@ public class GridDemo extends ActorBaseScene
         grid1.makeStatic();
         add(grid1);
         Grid grid2 = new Grid(5, 7, 1);
-        grid2.setBackground(colors.getOrange());
-        grid2.setColor(colors.getRed());
+        grid2.setBackground(colorSchema.getOrange());
+        grid2.setColor(colorSchema.getRed());
         grid2.rotateBy(-45);
         grid2.setPosition(4, 0);
         grid2.makeDynamic();

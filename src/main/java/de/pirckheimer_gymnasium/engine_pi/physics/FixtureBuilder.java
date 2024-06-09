@@ -35,7 +35,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 /**
  * Sammlungen von statischen Methoden, die verschiedene Halterungen (engl.
  * Fixture) für verschieden geformte
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor}-Objekte erstellen.
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor}-Objekte
+ * erstellen.
  *
  * <p>
  * Halterungen werden verwendet, um die Größe, Form und Materialeigenschaften

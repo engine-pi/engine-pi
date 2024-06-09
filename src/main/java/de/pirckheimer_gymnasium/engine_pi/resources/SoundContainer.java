@@ -37,12 +37,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 
-public final class SoundsContainer extends ResourcesContainer<Sound>
+public final class SoundContainer extends ResourcesContainer<Sound>
 {
     private static final Logger log = Logger
-            .getLogger(SoundsContainer.class.getName());
+            .getLogger(SoundContainer.class.getName());
 
-    SoundsContainer()
+    public SoundContainer()
     {
     }
 
@@ -79,23 +79,23 @@ public final class SoundsContainer extends ResourcesContainer<Sound>
     /**
      * Loads the sound from the specified path and returns it.
      *
-     * @param resourceName The path of the file to be loaded.(Can be relative or
-     *                     absolute)
+     * @param name The path of the file to be loaded.(Can be relative or
+     *             absolute)
      * @return The loaded Sound from the specified path.
      */
     @Override
-    protected Sound load(URL resourceName) throws Exception
+    protected Sound load(URL name) throws Exception
     {
-        try (final InputStream is = ResourceLoader.get(resourceName))
+        try (final InputStream is = ResourceLoader.get(name))
         {
             if (is == null)
             {
                 log.log(Level.SEVERE, "The audio file {0} could not be loaded.",
                         new Object[]
-                        { resourceName });
+                        { name });
                 return null;
             }
-            return new Sound(is, FileUtil.getFileName(resourceName));
+            return new Sound(is, FileUtil.getFileName(name));
         }
     }
 }

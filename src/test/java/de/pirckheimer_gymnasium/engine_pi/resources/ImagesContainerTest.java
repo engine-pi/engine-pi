@@ -14,7 +14,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImagesContainerTest
 {
-    ImagesContainer container = Game.getImages();
+    ImageContainer container = Game.getImages();
 
     @BeforeEach
     void clear()

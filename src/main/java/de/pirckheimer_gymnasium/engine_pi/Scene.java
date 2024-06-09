@@ -58,7 +58,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 
 /**
- * Mit Hilfe von Szenen können verschiedene Ansichten eines Spiels erstellt
+ * Mithilfe von Szenen können verschiedene Ansichten eines Spiels erstellt
  * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
  * neu erzeugen zu müssen.
  */

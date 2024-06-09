@@ -18,9 +18,9 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
-import de.pirckheimer_gymnasium.engine_pi.resources.Container;
 
 /**
  * Beschreibt ein Dreieck.
@@ -45,7 +45,7 @@ public class Triangle extends Polygon
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        setColor(Container.colors.getRed());
+        setColor(Resources.colorSchema.getRed());
     }
 
     /**
