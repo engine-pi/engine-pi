@@ -93,8 +93,8 @@ public abstract class ShowcaseDemo extends Scene
                 return;
             }
             double factor = event.getPreciseWheelRotation() > 0
-                    ? 1 + .3 * event.getPreciseWheelRotation()
-                    : 1 / (1 - .3 * event.getPreciseWheelRotation());
+                    ? 1 + 0.3 * event.getPreciseWheelRotation()
+                    : 1 / (1 - 0.3 * event.getPreciseWheelRotation());
             double newZoom = getCamera().getMeter() * factor;
             if (newZoom <= 0)
             {

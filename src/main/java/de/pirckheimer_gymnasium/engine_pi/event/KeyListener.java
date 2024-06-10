@@ -38,19 +38,19 @@ public interface KeyListener
      * gedrückt wird. Die Methode wird erst wieder aufgerufen, wenn die Key
      * losgelassen und erneut gedrückt wurde.
      *
-     * @param e Das KeyEvent von AWT.
+     * @param event Das KeyEvent von AWT.
      */
     @API
-    void onKeyDown(KeyEvent e);
+    void onKeyDown(KeyEvent event);
 
     /**
      * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste
      * losgelassen wurde, die vorher gedrückt war.
      *
-     * @param e Das KeyEvent von AWT.
+     * @param event Das KeyEvent von AWT.
      */
     @API
-    default void onKeyUp(KeyEvent e)
+    default void onKeyUp(KeyEvent event)
     {
         // default empty
     }

@@ -79,22 +79,22 @@ public interface KeyListenerContainer
      * </li>
      * </ol>
      *
-     * @param keyListener Ein Objekt der Klasse {@link KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyListener}.
      */
     @API
-    default void addKeyListener(KeyListener keyListener)
+    default void addKeyListener(KeyListener listener)
     {
-        getKeyListeners().add(keyListener);
+        getKeyListeners().add(listener);
     }
 
     /**
      * Entfernt einen {@link KeyListener} vom Objekt.
      *
-     * @param keyListener Ein Objekt der Klasse {@link KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyListener}.
      */
     @API
-    default void removeKeyListener(KeyListener keyListener)
+    default void removeKeyListener(KeyListener listener)
     {
-        getKeyListeners().remove(keyListener);
+        getKeyListeners().remove(listener);
     }
 }

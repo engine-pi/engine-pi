@@ -41,19 +41,18 @@ public interface FrameUpdateListenerContainer
      * Fügt einen neuen {@link FrameUpdateListener} hinzu.
      */
     @API
-    default void addFrameUpdateListener(FrameUpdateListener frameUpdateListener)
+    default void addFrameUpdateListener(FrameUpdateListener listener)
     {
-        getFrameUpdateListeners().add(frameUpdateListener);
+        getFrameUpdateListeners().add(listener);
     }
 
     /**
      * Entfernt einen {@link FrameUpdateListener}.
      */
     @API
-    default void removeFrameUpdateListener(
-            FrameUpdateListener frameUpdateListener)
+    default void removeFrameUpdateListener(FrameUpdateListener listener)
     {
-        getFrameUpdateListeners().remove(frameUpdateListener);
+        getFrameUpdateListeners().remove(listener);
     }
 
     /**

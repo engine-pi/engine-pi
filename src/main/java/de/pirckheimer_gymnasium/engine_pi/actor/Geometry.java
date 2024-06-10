@@ -72,7 +72,8 @@ public abstract class Geometry extends Actor
      * @param color Die neue Farbe.
      */
     @API
-    public void setColor(String color) {
+    public void setColor(String color)
+    {
         this.color = colors.get(color);
     }
 
@@ -100,12 +101,10 @@ public abstract class Geometry extends Actor
     {
         Color originalColor = getColor();
         ValueAnimator<Double> animator = new ValueAnimator<>(duration,
-                progress -> setColor(ColorUtil.interpolate(originalColor,
-                        color, progress)),
+                progress -> setColor(
+                        ColorUtil.interpolate(originalColor, color, progress)),
                 new LinearDouble(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);
         return animator;
     }
-
-
 }

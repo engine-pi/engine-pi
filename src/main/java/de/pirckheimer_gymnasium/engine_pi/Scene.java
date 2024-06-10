@@ -497,10 +497,10 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @Internal
-    final void invokeMouseWheelMoveListeners(MouseWheelEvent mouseWheelEvent)
+    final void invokeMouseWheelMoveListeners(MouseWheelEvent e)
     {
-        mouseWheelListeners.invoke(mouseWheelListener -> mouseWheelListener
-                .onMouseWheelMove(mouseWheelEvent));
+        mouseWheelListeners.invoke(
+                mouseWheelListener -> mouseWheelListener.onMouseWheelMove(e));
     }
 
     @API

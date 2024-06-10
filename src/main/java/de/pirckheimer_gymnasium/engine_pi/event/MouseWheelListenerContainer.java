@@ -34,25 +34,23 @@ public interface MouseWheelListenerContainer
      * Fügt einen Beobachter, der auf Bewegungen des Mausrads reagiert, zum
      * Behälter hinzu.
      *
-     * @param mouseWheelListener Ein Beobachter, der auf Bewegungen des Mausrads
-     *                           reagiert.
+     * @param listener Ein Beobachter, der auf Bewegungen des Mausrads reagiert.
      */
     @API
-    default void addMouseWheelListener(MouseWheelListener mouseWheelListener)
+    default void addMouseWheelListener(MouseWheelListener listener)
     {
-        getMouseWheelListeners().add(mouseWheelListener);
+        getMouseWheelListeners().add(listener);
     }
 
     /**
      * Entfernt einen Beobachter, der auf Bewegungen des Mausrads reagiert, aus
      * dem Behälter.
      *
-     * @param mouseWheelListener Ein Beobachter, der auf Bewegungen des Mausrads
-     *                           reagiert.
+     * @param listener Ein Beobachter, der auf Bewegungen des Mausrads reagiert.
      */
     @API
-    default void removeMouseWheelListener(MouseWheelListener mouseWheelListener)
+    default void removeMouseWheelListener(MouseWheelListener listener)
     {
-        getMouseWheelListeners().remove(mouseWheelListener);
+        getMouseWheelListeners().remove(listener);
     }
 }

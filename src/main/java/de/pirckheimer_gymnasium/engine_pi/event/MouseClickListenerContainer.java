@@ -24,13 +24,13 @@ public interface MouseClickListenerContainer
 {
     EventListeners<MouseClickListener> getMouseClickListeners();
 
-    default void addMouseClickListener(MouseClickListener mouseClickListener)
+    default void addMouseClickListener(MouseClickListener listener)
     {
-        getMouseClickListeners().add(mouseClickListener);
+        getMouseClickListeners().add(listener);
     }
 
-    default void removeMouseClickListener(MouseClickListener mouseClickListener)
+    default void removeMouseClickListener(MouseClickListener listener)
     {
-        getMouseClickListeners().remove(mouseClickListener);
+        getMouseClickListeners().remove(listener);
     }
 }

@@ -37,11 +37,12 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.DefaultShortcuts;
+import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
@@ -124,6 +125,8 @@ public final class Game
     private static final Collection<Integer> pressedKeys = ConcurrentHashMap
             .newKeySet();
 
+    private static DefaultControl defaultControl = new DefaultControl();
+
     /**
      * Letzte Mausposition.
      */
@@ -133,8 +136,6 @@ public final class Game
      * @author Josef Friedrich
      */
     private static final EventListeners<de.pirckheimer_gymnasium.engine_pi.event.KeyListener> keyListeners = new EventListeners<>();
-
-    private static de.pirckheimer_gymnasium.engine_pi.event.KeyListener defaultShortcuts = new DefaultShortcuts();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -218,9 +219,10 @@ public final class Game
                 "de.pirckheimer_gymnasium.engine_pi.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
-        if (defaultShortcuts != null)
+        if (defaultControl != null)
         {
-            addKeyListener(defaultShortcuts);
+            addKeyListener(defaultControl);
+            // addFrameUpdateListener(defaultControl);
         }
     }
 
@@ -471,7 +473,7 @@ public final class Game
      *                <code>KeyEvent.VK_D</code>).
      *
      * @return <code>true</code>, wenn die zu testende Taste gerade
-     *         heruntergedrückt ist. Sonst <code>false</code>.
+     *         heruntergedrückt ist, sonst <code>false</code>.
      *
      * @see KeyEvent#getKeyCode()
      * @see java.awt.event.KeyEvent
