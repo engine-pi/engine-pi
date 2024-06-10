@@ -41,6 +41,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
@@ -113,7 +114,7 @@ public final class Game
      */
     private static Scene scene = new Scene();
 
-    private static GameLoop gameLogic;
+    private static GameLoop loop;
 
     private static Thread mainThread;
 
@@ -136,6 +137,13 @@ public final class Game
      * @author Josef Friedrich
      */
     private static final EventListeners<de.pirckheimer_gymnasium.engine_pi.event.KeyListener> keyListeners = new EventListeners<>();
+
+    /**
+     * @author Josef Friedrich
+     */
+    private static final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
+
+    private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -222,8 +230,8 @@ public final class Game
         if (defaultControl != null)
         {
             addKeyListener(defaultControl);
-            // addFrameUpdateListener(defaultControl);
         }
+        // addFrameUpdateListener(defaultControl);
     }
 
     /**
@@ -269,9 +277,8 @@ public final class Game
 
     private static void run()
     {
-        gameLogic = new GameLoop(renderPanel, Game::getActiveScene,
-                Game::isDebug);
-        gameLogic.run();
+        loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
+        loop.run();
         frame.setVisible(false);
         frame.dispose();
         System.exit(0);
@@ -314,7 +321,7 @@ public final class Game
     {
         MouseWheelEvent mouseWheelAction = new MouseWheelEvent(
                 (double) mouseWheelEvent.getPreciseWheelRotation());
-        gameLogic.enqueue(
+        loop.enqueue(
                 () -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
     }
 
@@ -334,11 +341,11 @@ public final class Game
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
     {
-        if (gameLogic == null)
+        if (loop == null)
         {
             throw new RuntimeException("Das Spiel läuft noch nicht");
         }
-        gameLogic.getFrameUpdateListener().add(listener);
+        loop.getFrameUpdateListener().add(listener);
         return listener;
     }
 
@@ -352,7 +359,7 @@ public final class Game
      */
     public static void removeFrameUpdateListener(FrameUpdateListener listener)
     {
-        gameLogic.getFrameUpdateListener().remove(listener);
+        loop.getFrameUpdateListener().remove(listener);
     }
 
     /**
@@ -444,11 +451,11 @@ public final class Game
     {
         if (scene == null)
         {
-            gameLogic.enqueue(() -> Game.scene = new Scene());
+            loop.enqueue(() -> Game.scene = new Scene());
         }
         else
         {
-            gameLogic.enqueue(() -> Game.scene = scene);
+            loop.enqueue(() -> Game.scene = scene);
         }
     }
 
@@ -756,7 +763,7 @@ public final class Game
         BufferedImage screenshot = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = (Graphics2D) screenshot.getGraphics();
-        gameLogic.render(source -> source.render(g2d, width, height));
+        loop.render(source -> source.render(g2d, width, height));
         ImageUtil.write(screenshot, filename);
     }
 
@@ -764,40 +771,40 @@ public final class Game
     private static class MouseListener extends MouseAdapter
     {
         @Override
-        public void mousePressed(MouseEvent e)
+        public void mousePressed(MouseEvent event)
         {
-            enqueueMouseEvent(e, true);
+            enqueueMouseEvent(event, true);
         }
 
         @Override
-        public void mouseReleased(MouseEvent e)
+        public void mouseReleased(MouseEvent event)
         {
-            enqueueMouseEvent(e, false);
+            enqueueMouseEvent(event, false);
         }
 
         @Override
-        public void mouseEntered(MouseEvent e)
+        public void mouseEntered(MouseEvent event)
         {
-            mousePosition = e.getPoint();
+            mousePosition = event.getPoint();
         }
 
         @Override
-        public void mouseMoved(MouseEvent e)
+        public void mouseMoved(MouseEvent event)
         {
-            mousePosition = e.getPoint();
+            mousePosition = event.getPoint();
         }
 
         @Override
-        public void mouseDragged(MouseEvent e)
+        public void mouseDragged(MouseEvent event)
         {
-            mousePosition = e.getPoint();
+            mousePosition = event.getPoint();
         }
 
-        private void enqueueMouseEvent(MouseEvent e, boolean down)
+        private void enqueueMouseEvent(MouseEvent event, boolean down)
         {
-            Vector sourcePosition = convertMousePosition(scene, e.getPoint());
+            Vector position = convertMousePosition(scene, event.getPoint());
             MouseButton button;
-            switch (e.getButton())
+            switch (event.getButton())
             {
             case MouseEvent.BUTTON1:
                 button = MouseButton.LEFT;
@@ -811,14 +818,18 @@ public final class Game
                 // Ignore event
                 return;
             }
-            gameLogic.enqueue(() -> {
+            loop.enqueue(() -> {
                 if (down)
                 {
-                    scene.invokeMouseDownListeners(sourcePosition, button);
+                    mouseClickListeners.invoke(
+                            listener -> listener.onMouseDown(position, button));
+                    scene.invokeMouseDownListeners(position, button);
                 }
                 else
                 {
-                    scene.invokeMouseUpListeners(sourcePosition, button);
+                    mouseClickListeners.invoke(
+                            listener -> listener.onMouseDown(position, button));
+                    scene.invokeMouseUpListeners(position, button);
                 }
             });
         }
@@ -827,20 +838,20 @@ public final class Game
     private static class KeyListener extends KeyAdapter
     {
         @Override
-        public void keyPressed(KeyEvent e)
+        public void keyPressed(KeyEvent event)
         {
-            enqueueKeyEvent(e, true);
+            enqueueKeyEvent(event, true);
         }
 
         @Override
-        public void keyReleased(KeyEvent e)
+        public void keyReleased(KeyEvent event)
         {
-            enqueueKeyEvent(e, false);
+            enqueueKeyEvent(event, false);
         }
 
-        private void enqueueKeyEvent(KeyEvent e, boolean down)
+        private void enqueueKeyEvent(KeyEvent event, boolean down)
         {
-            boolean pressed = pressedKeys.contains(e.getKeyCode());
+            boolean pressed = pressedKeys.contains(event.getKeyCode());
             if (down)
             {
                 if (pressed)
@@ -848,23 +859,24 @@ public final class Game
                     return; // Ignore duplicate presses, because they're system
                             // dependent
                 }
-                pressedKeys.add(e.getKeyCode());
+                pressedKeys.add(event.getKeyCode());
             }
             else
             {
-                pressedKeys.remove(e.getKeyCode());
+                pressedKeys.remove(event.getKeyCode());
             }
-            gameLogic.enqueue(() -> {
+            loop.enqueue(() -> {
                 if (down)
                 {
-                    keyListeners
-                            .invoke(keyListener -> keyListener.onKeyDown(e));
-                    scene.invokeKeyDownListeners(e);
+                    keyListeners.invoke(
+                            keyListener -> keyListener.onKeyDown(event));
+                    scene.invokeKeyDownListeners(event);
                 }
                 else
                 {
-                    keyListeners.invoke(keyListener -> keyListener.onKeyUp(e));
-                    scene.invokeKeyUpListeners(e);
+                    keyListeners
+                            .invoke(keyListener -> keyListener.onKeyUp(event));
+                    scene.invokeKeyUpListeners(event);
                 }
             });
         }
