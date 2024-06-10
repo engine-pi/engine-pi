@@ -962,6 +962,8 @@ public class DominoesDemo extends Scene
 Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
 Dominosteine, und ein weißer Boden mit Wand.
 
+![Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_1-statisch.png)
+
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
 drückt sich in verschiedenen `BodyTypes` aus:
 
@@ -994,9 +996,11 @@ die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
+![Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_2-dynamisch.gif)
+
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
-in der Dokumentation von BodyType und eine vergleichende Übersicht in der
+in der Dokumentation von `BodyType` und eine vergleichende Übersicht in der
 dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
 
 Zeit, die Dominos umzuschmeißen! Die Methode
@@ -1005,6 +1009,8 @@ Zeit, die Dominos umzuschmeißen! Die Methode
 
 Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
 Ballwurf getestet werden.
+
+![Mit einem Methodenaufruf fliegt der Ball](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_3-Wurf.gif)
 
 Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
 Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
@@ -1022,9 +1028,11 @@ Impulses markiert:
     }
 ```
 
+![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_4-Wurfwinkel-Visualisierung.gif)
+
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
-Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und
+Dafür implementiert die Dominoes-Klasse das Interface `FrameUpdateListener` und
 berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
 den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
@@ -1053,8 +1061,6 @@ Interface `MouseClickListener` implementiert:
         ball.applyImpulse(impulse);
     }
 ```
-
-### Anregung zum Experimentieren
 
 - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
   Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
