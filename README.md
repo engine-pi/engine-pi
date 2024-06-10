@@ -23,7 +23,7 @@ viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
 Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
 Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
-[Engine Alpha Wiki](https://engine-alpha.org), die unter der
+[Engine Pi Wiki](https://engine-alpha.org), die unter der
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
 
@@ -430,7 +430,7 @@ https://engine-alpha.org/wiki/v4.x/Game_Loop
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![Der Engine Alpha Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/GameLoop.png)
+![Der Engine Pi Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/GameLoop.png)
 
 Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
@@ -891,6 +891,184 @@ public void onFrameUpdate(double delta)
 
 ## Physics
 
+https://engine-alpha.org/wiki/v4.x/Physics
+
+Die Engine Pi nutzt eine [Java-Version](http://jbox2d.org/) von [Box2D](https://box2d.org/). Diese mächtige
+und effiziente Physics-Engine ist in der Engine Pi leicht zu bedienen und
+ermöglicht es, mit wenig Aufwand mechanische Phänomene in ein Spiel zu bringen.
+
+Die Physics Engine basiert auf den Prinzipien der [klassischen
+Mechanik](https://de.wikipedia.org/wiki/Klassische_Mechanik).
+
+### Tutorial: Dominosteine umwerfen
+
+Um die Grundlagen der Engine Pi Physics zu testen, bauen wir eine einfache
+Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
+
+Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
+
+https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
+
+```java
+public class DominoesDemo extends Scene
+        implements FrameUpdateListener, MouseClickListener
+{
+    private Rectangle ground;
+
+    private Rectangle wall;
+
+    private Circle ball;
+
+    private Rectangle angle;
+
+    public DominoesDemo()
+    {
+        setupBasicObjects();
+        makeDominoes(20, 0.4, 3);
+    }
+
+    private void setupBasicObjects()
+    {
+        // Boden auf dem die Dominosteine stehen
+        ground = new Rectangle(200, 2);
+        ground.setCenter(0, -5);
+        ground.setColor(Color.WHITE);
+        add(ground);
+        // Der Ball, der die Dominosteine umwerfen soll.
+        ball = new Circle(0.5);
+        ball.setColor(Color.RED);
+        ball.setPosition(-10, -2);
+        add(ball);
+        // Eine senkrechte Wand links der Simulation
+        wall = new Rectangle(1, 40);
+        wall.setPosition(-14, -4);
+        wall.setColor(Color.WHITE);
+        add(wall);
+    }
+
+    private void makeDominoes(int num, double width, double height)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            Rectangle domino = new Rectangle(width, height);
+            domino.setPosition(i * 3 * width, -4);
+            domino.setColor(Color.BLUE);
+            add(domino);
+        }
+    }
+}
+```
+
+Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
+Dominosteine, und ein weißer Boden mit Wand.
+
+![Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_1-statisch.png)
+
+Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
+drückt sich in verschiedenen `BodyTypes` aus:
+
+- Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte:
+  Der Ball prallt an den Dominos ab und die Steine fallen um. Diese `Actors` haben
+  einen dynamischen Körper.
+- Aber der Boden und die Wand sollen nicht wie die Dominos umfallen. Egal mit
+  wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben.
+  Diese `Actors` haben einen statischen Körper.
+
+Mit der Methode `Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
+eines `Actors` bestimmt. Zusätzlich wird mit `Scene.setGracity(Vector)` eine
+Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
+Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden
+hält den Fall
+
+In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
+die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
+
+```java
+    private void setupPhysics()
+    {
+        ground.makeStatic();
+        wall.makeDynamic();
+        ball.makeDynamic();
+        setGravityOfEarth();
+    }
+```
+
+Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
+eingerichtet.
+
+![Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_2-dynamisch.gif)
+
+Dynamische und statische Körper sind die essentiellsten Body Types in der
+Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
+in der Dokumentation von `BodyType` und eine vergleichende Übersicht in der
+dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
+
+Zeit, die Dominos umzuschmeißen! Die Methode
+`applyImpulse(Vector)` erlaubt, den Ball physikalisch korrekt zu
+'werfen'.
+
+Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
+Ballwurf getestet werden.
+
+![Mit einem Methodenaufruf fliegt der Ball](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_3-Wurf.gif)
+
+Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
+Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
+Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
+
+Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
+Impulses markiert:
+
+```java
+    private void setupAngle()
+    {
+        angle = new Rectangle(1, 0.1);
+        angle.setColor(Color.GREEN);
+        add(angle);
+    }
+```
+
+![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_4-Wurfwinkel-Visualisierung.gif)
+
+Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
+Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
+Dafür implementiert die Dominoes-Klasse das Interface `FrameUpdateListener` und
+berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
+den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
+
+```java
+    @Override
+    public void onFrameUpdate(double deltaSeconds)
+    {
+        Vector mousePosition = getMousePosition();
+        Vector ballCenter = ball.getCenter();
+        Vector distance = ballCenter.getDistance(mousePosition);
+        angle.setPosition(ball.getCenter());
+        angle.setWidth(distance.getLength());
+        double rot = Vector.RIGHT.getAngle(distance);
+        angle.setRotation(rot);
+    }
+```
+
+Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
+Interface `MouseClickListener` implementiert:
+
+```java
+    @Override
+    public void onMouseDown(Vector position, MouseButton button)
+    {
+        Vector impulse = ball.getCenter().getDistance(position).multiply(5);
+        ball.applyImpulse(impulse);
+    }
+```
+
+- Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
+  Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
+  Zerstörung.
+
+- Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position
+  (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
+
 ### Schwerkraft
 
 https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
@@ -1046,187 +1224,6 @@ public class DensityDemo extends Scene implements KeyListener
     }
 }
 ```
-
-https://engine-alpha.org/wiki/v4.x/Physics
-
-Physik in der Engine
-
-Seit Version 4.0 nutzt Engine Alpha eine Java-Version von Box2D. Diese mächtige
-und effiziente Physics-Engine ist in der Engine leicht zu bedienen und
-ermöglicht es, mit wenig Aufwand mechanische Phänomene in Deine Spiele zu bringen:
-von Platforming und Billiard bis zu Hängebrücken und Autos.
-
-Die Physics Engine basiert auf den Prinzipien der Klassischen Mechanik. Ein
-Grundverständnis hierüber ist nötig: Begriffe wie Masse, Dichte, Impuls und
-Kraft sollten dir zumindest grob geläufig sein, um diese auf deine Spielobjekte
-anzuwenden.
-
-### Beispiel 1: Dominos
-
-Um die Grundlagen der Engine Alpha Physics zu testen, bauen wir eine einfache
-Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
-
-### Setup ohne Physics
-
-Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
-
-https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
-
-```java
-public class DominoesDemo extends Scene
-        implements FrameUpdateListener, MouseClickListener
-{
-    private Rectangle ground;
-
-    private Rectangle wall;
-
-    private Circle ball;
-
-    private Rectangle angle;
-
-    public DominoesDemo()
-    {
-        setupBasicObjects();
-        makeDominoes(20, 0.4, 3);
-    }
-
-    private void setupBasicObjects()
-    {
-        // Boden auf dem die Dominosteine stehen
-        ground = new Rectangle(200, 2);
-        ground.setCenter(0, -5);
-        ground.setColor(Color.WHITE);
-        add(ground);
-        // Der Ball, der die Dominosteine umwerfen soll.
-        ball = new Circle(0.5);
-        ball.setColor(Color.RED);
-        ball.setPosition(-10, -2);
-        add(ball);
-        // Eine senkrechte Wand links der Simulation
-        wall = new Rectangle(1, 40);
-        wall.setPosition(-14, -4);
-        wall.setColor(Color.WHITE);
-        add(wall);
-    }
-
-    private void makeDominoes(int num, double width, double height)
-    {
-        for (int i = 0; i < num; i++)
-        {
-            Rectangle domino = new Rectangle(width, height);
-            domino.setPosition(i * 3 * width, -4);
-            domino.setColor(Color.BLUE);
-            add(domino);
-        }
-    }
-}
-```
-
-Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
-Dominosteine, und ein weißer Boden mit Wand.
-
-### Die Body Types
-
-Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
-drückt sich in verschiedenen Body Types aus:
-
-- Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte:
-  Der Ball prallt an den Dominos ab und die Steine fallen um. Diese Actors haben
-  einen dynamischen Körper.
-- Aber der Boden und die Wand sollen nicht wie die Dominos umfallen. Egal mit
-  wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben.
-  Diese Actors haben einen statischen Körper.
-
-Mit der Methode `Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
-eines Actors bestimmt. Zusätzlich wird mit Scene.setGracity(Vector) eine
-Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
-Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden
-hält den Fall
-
-In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
-die Schwerkraft (standardmäßige 9,81 m/s^2, gerade nach unten) aktiviert:
-
-```java
-    private void setupPhysics()
-    {
-        ground.makeStatic();
-        wall.makeDynamic();
-        ball.makeDynamic();
-        setGravityOfEarth();
-    }
-```
-
-Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();` eingerichtet.
-
-Dynamische und statische Körper sind die essentiellsten Body Types in der
-Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
-in der Dokumentation von BodyType und eine vergleichende Übersicht in der
-dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
-
-Zeit, die Dominos umzuschmeißen! Die Methode
-[https://docs.engine-alpha.org/4.x/ea/actor/Actor.html#applyImpulse-ea.Vector-
-Actor.applyImpulse(Vector) erlaubt dir, den Ball physikalisch korrekt zu
-'werfen'.
-
-Mit der Zeile ball.applyImpulse(new Vector(15, 12)); kannst du den ersten
-Ballwurf testen.
-
-Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
-Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
-Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
-
-Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
-Impulses markiert:
-
-```java
-    private void setupAngle()
-    {
-        angle = new Rectangle(1, 0.1);
-        angle.setColor(Color.GREEN);
-        add(angle);
-    }
-```
-
-Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
-Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
-Dafür implementiert die Dominoes-Klasse das Interface FrameUpdateListener und
-berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
-den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
-
-```java
-    @Override
-    public void onFrameUpdate(double deltaSeconds)
-    {
-        Vector mousePosition = getMousePosition();
-        Vector ballCenter = ball.getCenter();
-        Vector distance = ballCenter.getDistance(mousePosition);
-        angle.setPosition(ball.getCenter());
-        angle.setWidth(distance.getLength());
-        double rot = Vector.RIGHT.getAngle(distance);
-        angle.setRotation(rot);
-    }
-```
-
-Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
-Interface MouseClickListener implementiert:
-
-```java
-    @Override
-    public void onMouseDown(Vector position, MouseButton button)
-    {
-        Vector impulse = ball.getCenter().getDistance(position).multiply(5);
-        ball.applyImpulse(impulse);
-    }
-```
-
-### Anregung zum Experimentieren
-
-- Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
-  Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
-  Zerstörung.
-
-- Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position
-  (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
 
 ## Zeitsteuerung
 
@@ -1521,17 +1518,18 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Deutsche Übersetzungen von englischen Klassennamen
 
-| englisch       | deutsch                   |
-| -------------- | ------------------------- |
-| Bounds         | Schranken, Abgrenzung     |
-| DistanceJoint  | Stabverbindung            |
-| Fixture        | Halterung, Kollisionsform |
-| Handler        | Steuerungsklasse          |
-| Joint          | Verbindung                |
-| Listener       | Beobachter                |
-| Offset         | Verzug                    |
-| PrismaticJoint | Federverbindung           |
-| RevoluteJoint  | Gelenkverbindung          |
-| RobeJoint      | Seilverbindung            |
-| WeldJoint      | Schweißnaht               |
-| Frame          | Einzelbild                |
+| englisch       | deutsch                                    |
+| -------------- | ------------------------------------------ |
+| Bounds         | Schranken, Abgrenzung                      |
+| DistanceJoint  | Stabverbindung                             |
+| Fixture        | Halterung, Kollisionsform                  |
+| Handler        | Steuerungsklasse                           |
+| Joint          | Verbindung                                 |
+| Listener       | Beobachter                                 |
+| Offset         | Verzug                                     |
+| PrismaticJoint | Federverbindung                            |
+| RevoluteJoint  | Gelenkverbindung                           |
+| RobeJoint      | Seilverbindung                             |
+| WeldJoint      | Schweißnaht                                |
+| Frame          | Einzelbild                                 |
+| BodyType       | Verhalten in der physikalischen Simulation |
