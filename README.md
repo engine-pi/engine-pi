@@ -1518,18 +1518,18 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Deutsche Übersetzungen von englischen Klassennamen
 
-| englisch       | deutsch                                    |
-| -------------- | ------------------------------------------ |
-| Bounds         | Schranken, Abgrenzung                      |
-| DistanceJoint  | Stabverbindung                             |
-| Fixture        | Halterung, Kollisionsform                  |
-| Handler        | Steuerungsklasse                           |
-| Joint          | Verbindung                                 |
-| Listener       | Beobachter                                 |
-| Offset         | Verzug                                     |
-| PrismaticJoint | Federverbindung                            |
-| RevoluteJoint  | Gelenkverbindung                           |
-| RobeJoint      | Seilverbindung                             |
-| WeldJoint      | Schweißnaht                                |
-| Frame          | Einzelbild                                 |
-| BodyType       | Verhalten in der physikalischen Simulation |
+| englisch       | deutsch                                                |
+| -------------- | ------------------------------------------------------ |
+| BodyType       | Verhalten einer Figur in der physikalischen Simulation |
+| Bounds         | Schranken, Abgrenzung                                  |
+| DistanceJoint  | Stabverbindung                                         |
+| Fixture        | Halterung, Kollisionsform                              |
+| Frame          | Einzelbild                                             |
+| Handler        | Steuerungsklasse                                       |
+| Joint          | Verbindung                                             |
+| Listener       | Beobachter                                             |
+| Offset         | Verzug                                                 |
+| PrismaticJoint | Federverbindung                                        |
+| RevoluteJoint  | Gelenkverbindung                                       |
+| RopeJoint      | Seilverbindung                                         |
+| WeldJoint      | Schweißnaht                                            |
