@@ -36,7 +36,7 @@ public interface MouseClickListener
      * Diese Methode wird bei jedem <b>Klick</b> aufgerufen, unabhängig davon an
      * welcher Position sich die Maus befindet.
      * <p>
-     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
+     * Natürlich muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
      *
      * @param position Der Punkt auf der Zeichenebene.
@@ -49,7 +49,7 @@ public interface MouseClickListener
      * Diese Methode wird bei jedem <b>Loslassen</b> einer Maustaste aufgerufen,
      * unabhängig davon an welcher Position sich die Maus befindet.
      * <p>
-     * Natürlick muss dafür erst der {@link MouseClickListener} angemeldet
+     * Natürlich muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
      *
      * @param position Der Punkt auf der Zeichenebene.

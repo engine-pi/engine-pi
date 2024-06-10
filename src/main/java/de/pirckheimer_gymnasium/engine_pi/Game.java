@@ -44,6 +44,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
+import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
@@ -143,7 +144,15 @@ public final class Game
      */
     private static final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
 
+    /**
+     * @author Josef Friedrich
+     */
     private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
+
+    /**
+     * @author Josef Friedrich
+     */
+    private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -246,6 +255,36 @@ public final class Game
     }
 
     /**
+     * Wechselt die aktuelle Szene.
+     *
+     * @param scene Die Szene, zu der gewechselt werden soll. Wird
+     *              <code>null</code> übergeben, wird eine neue Szene erstellt.
+     */
+    @API
+    public static void transitionToScene(Scene scene)
+    {
+        Scene previous = getActiveScene();
+        if (scene == previous)
+        {
+            return;
+        }
+        final Scene next;
+        if (scene == null)
+        {
+            next = new Scene();
+        }
+        else
+        {
+            next = scene;
+        }
+        loop.enqueue(() -> {
+            sceneLaunchListeners
+                    .invoke((listener) -> listener.onSceneLaunch(next, previous));
+            Game.scene = next;
+        });
+    }
+
+    /**
      * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für
      * Bild-Resourcen} vom Datentyp {@link BufferedImage} bereit.
      *
@@ -277,6 +316,8 @@ public final class Game
 
     private static void run()
     {
+        sceneLaunchListeners.invoke((listener) -> listener
+                .onSceneLaunch(Game.getActiveScene(), null));
         loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
         loop.run();
         frame.setVisible(false);
@@ -314,15 +355,19 @@ public final class Game
      * Diese Methode wird immer dann ausgeführt, wenn das Mausrad bewegt wurde
      * und ein {@code java.awt.event.MouseWheelEvent} registriert wurde.
      *
-     * @param mouseWheelEvent das Event.
+     * @param event das Event.
      */
     private static void enqueueMouseWheelEvent(
-            java.awt.event.MouseWheelEvent mouseWheelEvent)
+            java.awt.event.MouseWheelEvent event)
     {
-        MouseWheelEvent mouseWheelAction = new MouseWheelEvent(
-                (double) mouseWheelEvent.getPreciseWheelRotation());
-        loop.enqueue(
-                () -> scene.invokeMouseWheelMoveListeners(mouseWheelAction));
+        MouseWheelEvent mouseWheelEvent = new MouseWheelEvent(
+                (double) event.getPreciseWheelRotation());
+        loop.enqueue(() -> {
+            mouseWheelListeners.invoke((listener) -> {
+                listener.onMouseWheelMove(mouseWheelEvent);
+            });
+            scene.invokeMouseWheelMoveListeners(mouseWheelEvent);
+        });
     }
 
     /**
@@ -415,13 +460,15 @@ public final class Game
      *
      * @author Josef Friedrich
      *
-     * @param keyListener Ein Objekt der Klasse
-     *                    {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     * @param listener Ein Objekt der Klasse
+     *                 {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer#addKeyListener(de.pirckheimer_gymnasium.engine_pi.event.KeyListener)
      */
     public static void addKeyListener(
-            de.pirckheimer_gymnasium.engine_pi.event.KeyListener keyListener)
+            de.pirckheimer_gymnasium.engine_pi.event.KeyListener listener)
     {
-        keyListeners.add(keyListener);
+        keyListeners.add(listener);
     }
 
     /**
@@ -431,32 +478,45 @@ public final class Game
      *
      * @author Josef Friedrich
      *
-     * @param keyListener Ein Objekt der Klasse
-     *                    {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     * @param listener Ein Objekt der Klasse
+     *                 {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer#removeKeyListener(de.pirckheimer_gymnasium.engine_pi.event.KeyListener)
      */
     public static void removeKeyListener(
-            de.pirckheimer_gymnasium.engine_pi.event.KeyListener keyListener)
+            de.pirckheimer_gymnasium.engine_pi.event.KeyListener listener)
     {
-        keyListeners.remove(keyListener);
+        keyListeners.remove(listener);
     }
 
-    /**
-     * Wechselt die aktuelle Szene.
-     *
-     * @param scene Die Szene, zu der gewechselt werden soll. Wird
-     *              <code>null</code> übergeben, wird eine neue Szene erstellt.
-     */
-    @API
-    public static void transitionToScene(Scene scene)
+    public static void addMouseClickListener(MouseClickListener listener)
     {
-        if (scene == null)
-        {
-            loop.enqueue(() -> Game.scene = new Scene());
-        }
-        else
-        {
-            loop.enqueue(() -> Game.scene = scene);
-        }
+        mouseClickListeners.add(listener);
+    }
+
+    public static void removeMouseClickListener(MouseClickListener listener)
+    {
+        mouseClickListeners.remove(listener);
+    }
+
+    public static void addMouseWheelListener(MouseWheelListener listener)
+    {
+        mouseWheelListeners.add(listener);
+    }
+
+    public static void removeMouseWheelListener(MouseWheelListener listener)
+    {
+        mouseWheelListeners.remove(listener);
+    }
+
+    public static void addSceneLaunchListener(SceneLaunchListener listener)
+    {
+        sceneLaunchListeners.add(listener);
+    }
+
+    public static void removeSceneLaunchListener(SceneLaunchListener listener)
+    {
+        sceneLaunchListeners.remove(listener);
     }
 
     /**

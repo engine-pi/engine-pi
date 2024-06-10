@@ -277,6 +277,11 @@ public interface ActorCreator
         return actor;
     }
 
+    default Text createText(String content)
+    {
+        return createText(content, 1);
+    }
+
     default Text createText(String content, double height, double x, double y)
     {
         Text actor = createText(content, height);

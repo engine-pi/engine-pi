@@ -80,6 +80,8 @@ public interface KeyListenerContainer
      * </ol>
      *
      * @param listener Ein Objekt der Klasse {@link KeyListener}.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.Game#addKeyListener(KeyListener)
      */
     @API
     default void addKeyListener(KeyListener listener)
