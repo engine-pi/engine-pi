@@ -545,22 +545,17 @@ public final class Game
     }
 
     /**
-     * Diese Methode beendet das Spiel.<br>
-     * Das heißt, dass das Fenster geschlossen, alle belegten Ressourcen
-     * freigegeben und auch die virtuelle Maschine von Java beendet wird.
+     * Beendet das Spiel.
+     *
+     * <p>
+     * Das Fenster wird geschlossen, alle belegten Ressourcen werden freigegeben
+     * und die virtuelle Maschine wird beendet.
+     * </p>
      */
     @API
     public static void exit()
     {
-        if (mainThread == null)
-        {
-            System.exit(0);
-            return;
-        }
-        if (!mainThread.isInterrupted())
-        {
-            mainThread.interrupt();
-        }
+        System.exit(0);
     }
 
     /**
