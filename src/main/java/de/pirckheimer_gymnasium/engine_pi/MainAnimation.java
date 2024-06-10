@@ -250,7 +250,6 @@ public final class MainAnimation
                 item.setCenter(Random.range(-7, 7), Random.range(0, 5));
             }
         });
-        Game.setExitOnEsc(true);
         Game.setTitle("Engine Pi " + VERSION_STRING);
     }
 }

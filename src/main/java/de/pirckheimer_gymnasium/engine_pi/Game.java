@@ -37,6 +37,7 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.event.DefaultShortcuts;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
@@ -107,11 +108,6 @@ public final class Game
     private static RenderPanel renderPanel;
 
     /**
-     * Gibt an, ob bei Escape-Druck das Spiel beendet werden soll.
-     */
-    private static boolean exitOnEsc = true;
-
-    /**
      * Aktuelle Szene des Spiels.
      */
     private static Scene scene = new Scene();
@@ -121,7 +117,7 @@ public final class Game
     private static Thread mainThread;
 
     /**
-     * Speichert den Zustand von Tasten der Tastatur. Ist ein Wert
+     * Speichert den Zustand der einzelnen Tasten der Tastatur. Ist ein Wert
      * <code>true</code>, so ist die entsprechende Taste gedrückt, sonst ist der
      * Wert <code>false</code>.
      */
@@ -138,6 +134,8 @@ public final class Game
      */
     private static final EventListeners<de.pirckheimer_gymnasium.engine_pi.event.KeyListener> keyListeners = new EventListeners<>();
 
+    private static de.pirckheimer_gymnasium.engine_pi.event.KeyListener defaultShortcuts = new DefaultShortcuts();
+
     /**
      * Setzt den Titel des Spielfensters.
      *
@@ -147,17 +145,6 @@ public final class Game
     public static void setTitle(String title)
     {
         frame.setTitle(title);
-    }
-
-    /**
-     * Setzt, ob beim Drücken von Escape das Spiel beendet werden soll.
-     *
-     * @param value <code>true</code>, falls ja, sonst <code>false</code>.
-     */
-    @API
-    public static void setExitOnEsc(boolean value)
-    {
-        exitOnEsc = value;
     }
 
     /**
@@ -173,12 +160,11 @@ public final class Game
     }
 
     /**
-     * Dies startet das Fenster und beginnt sämtliche internen Prozesse der
-     * Engine.
+     * Startet das Spiel in einem Fenster mit der angegebenen Breite und Höhe.
      *
      * @param width  Die Breite des Zeichenbereichs in Pixel.
      * @param height Die Höhe des Zeichenbereichs in Pixel.
-     * @param scene  Szene, mit der das Spiel gestartet wird, z.B. das Menü.
+     * @param scene  Die Szene, mit der das Spiel gestartet wird.
      */
     @API
     public static void start(int width, int height, Scene scene)
@@ -232,8 +218,18 @@ public final class Game
                 "de.pirckheimer_gymnasium.engine_pi.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
+        if (defaultShortcuts != null)
+        {
+            addKeyListener(defaultShortcuts);
+        }
     }
 
+    /**
+     * Startet das Spiel in einem Fenster mit den Abmessungen 800x600 Pixel.
+     *
+     * @param scene Die Szene, mit der das Spiel gestartet wird.
+     */
+    @API
     public static void start(Scene scene)
     {
         start(800, 600, scene);
@@ -279,26 +275,29 @@ public final class Game
         System.exit(0);
     }
 
+    /**
+     * Finde die Position des Mausklicks auf der Zeichenebene. Die Position wird
+     * relativ zum Ursprung des {@link RenderPanel}-Canvas angegeben. Die
+     * Mausklick-Position muss mit dem Zoom-Wert verrechnet werden.
+     */
     @Internal
     public static Vector convertMousePosition(Scene scene,
             java.awt.Point mousePosition)
     {
-        // Finde Klick auf Zeichenebene, die Position relativ zum Ursprung des
-        // RenderPanel-Canvas.
-        // Mausklick-Position muss mit Zoom-Wert verrechnet werden
-        double zoom = scene.getCamera().getMeter();
-        double rotation = scene.getCamera().getRotation();
-        Vector position = scene.getCamera().getPosition();
+        Camera camera = scene.getCamera();
+        double zoom = camera.getMeter();
+        double rotation = camera.getRotation();
+        Vector position = camera.getPosition();
         return new Vector(
-                position.getX() + (((double) Math.cos(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2f)
-                        + (double) Math.sin(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2f)))
+                position.getX() + ((Math.cos(Math.toRadians(rotation))
+                        * (mousePosition.x - width / 2.0)
+                        + Math.sin(Math.toRadians(rotation))
+                                * (mousePosition.y - height / 2.0)))
                         / zoom,
-                position.getY() + (((double) Math.sin(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2f)
-                        - (double) Math.cos(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2f)))
+                position.getY() + ((Math.sin(Math.toRadians(rotation))
+                        * (mousePosition.x - width / 2.0)
+                        - Math.cos(Math.toRadians(rotation))
+                                * (mousePosition.y - height / 2.0)))
                         / zoom);
     }
 
@@ -534,6 +533,7 @@ public final class Game
      * Setzt die Fenster-Position auf dem Bildschirm.
      * <p>
      * Standard ist mittig.
+     * </p>
      *
      * @param x X-Position
      * @param y Y-Position
@@ -660,6 +660,24 @@ public final class Game
     }
 
     /**
+     * Setzt, ob die Engine im Debug-Modus ausgeführt werden soll.
+     *
+     * @param value ist dieser Wert <code>true</code>, wird die Engine ab sofort
+     *              im Debug-Modus ausgeführt. Hierdurch werden mehr
+     *              Informationen beim Ausführen der Engine angegeben, zum
+     *              Beispiel ein grafisches Raster und mehr
+     *              Logging-Informationen. Dies ist hilfreich für das Debugging
+     *              des eigenen Spiels.
+     *
+     * @see #isDebug()
+     */
+    @API
+    public static void setDebug(boolean value)
+    {
+        debug = value;
+    }
+
+    /**
      * Gibt an, ob die Engine gerade im Debug-Modus ausgeführt wird.
      *
      * @return ist dieser Wert <code>true</code>, wird die Engine gerade im
@@ -671,6 +689,15 @@ public final class Game
     public static boolean isDebug()
     {
         return debug;
+    }
+
+    /**
+     * Schaltet je nach Zustand den Debug-Modus an oder aus. Ist der Debug-Modus
+     * an, wird er ausgeschaltet, ist er aus so wird er angeschaltet.
+     */
+    public static void toggleDebug()
+    {
+        Game.setDebug(!Game.isDebug());
     }
 
     /**
@@ -704,24 +731,6 @@ public final class Game
     public static void setVerbose(boolean value)
     {
         verbose = value;
-    }
-
-    /**
-     * Setzt, ob die Engine im Debug-Modus ausgeführt werden soll.
-     *
-     * @param value ist dieser Wert <code>true</code>, wird die Engine ab sofort
-     *              im Debug-Modus ausgeführt. Hierdurch werden mehr
-     *              Informationen beim Ausführen der Engine angegeben, zum
-     *              Beispiel ein Grafisches Raster und mehr
-     *              Logging-Informationen. Dies ist hilfreich für Debugging am
-     *              eigenen Spiel.
-     *
-     * @see #isDebug()
-     */
-    @API
-    public static void setDebug(boolean value)
-    {
-        debug = value;
     }
 
     /**
@@ -834,10 +843,6 @@ public final class Game
 
         private void enqueueKeyEvent(KeyEvent e, boolean down)
         {
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE && exitOnEsc)
-            {
-                Game.exit();
-            }
             boolean pressed = pressedKeys.contains(e.getKeyCode());
             if (down)
             {
