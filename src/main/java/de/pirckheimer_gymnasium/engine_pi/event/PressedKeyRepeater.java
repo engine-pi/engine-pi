@@ -7,16 +7,16 @@ import java.util.List;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 
 /**
- * Bei gedrückter Taste mehrmals die gleiche Aktionen in einem bestimmten
- * Abstand ausführen.
+ * Bei gedrückter Taste mehrmals die gleiche Aktion in einem bestimmten Abstand
+ * ausführen.
  *
  * @author Josef Friedrich
  */
 public class PressedKeyRepeater implements KeyStrokeListener
 {
-    private List<Task> tasks;
+    private final List<Task> tasks;
 
-    private List<Executor> executors;
+    private final List<Executor> executors;
 
     /**
      * In Sekunden
@@ -32,7 +32,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     {
         private double countdown;
 
-        private Task task;
+        private final Task task;
 
         public Executor(Task task)
         {
@@ -80,19 +80,18 @@ public class PressedKeyRepeater implements KeyStrokeListener
 
     private class Task
     {
-        private int keyCode;
+        private final int keyCode;
 
         private Runnable initialTask;
 
-        private Runnable repeatedTask;
+        private final Runnable repeatedTask;
 
         private Runnable finalTask;
 
         /**
-         * Verzögerung zwischen dem ersten Tastendruck und der ersten
-         * Wiederholung der Aufgabe.
-         *
-         * In Sekunden
+         * Zeitintervall in Sekunden. Es handelt sich um die Verzögerung
+         * zwischen dem ersten Tastendruck und der ersten Wiederholung der
+         * Aufgabe.
          */
         private double initialInterval;
 
@@ -123,11 +122,11 @@ public class PressedKeyRepeater implements KeyStrokeListener
             this.finalTask = finalTask;
         }
 
-        public Task(int keyCode, Runnable intialTask, Runnable repeatedTask,
+        public Task(int keyCode, Runnable initialTask, Runnable repeatedTask,
                 Runnable finalTask)
         {
             this.keyCode = keyCode;
-            this.initialTask = intialTask;
+            this.initialTask = initialTask;
             this.repeatedTask = repeatedTask;
             this.finalTask = finalTask;
         }
@@ -177,18 +176,18 @@ public class PressedKeyRepeater implements KeyStrokeListener
         }
     }
 
-    public PressedKeyRepeater(double interval, double intialInterval)
+    public PressedKeyRepeater(double interval, double initialInterval)
     {
         if (interval > 0)
         {
             defaultInterval = interval;
         }
-        if (intialInterval > 0)
+        if (initialInterval > 0)
         {
-            defaultInitialInterval = intialInterval;
+            defaultInitialInterval = initialInterval;
         }
-        tasks = new ArrayList<Task>();
-        executors = new ArrayList<Executor>();
+        tasks = new ArrayList<>();
+        executors = new ArrayList<>();
         Game.addKeyStrokeListener(this);
     }
 

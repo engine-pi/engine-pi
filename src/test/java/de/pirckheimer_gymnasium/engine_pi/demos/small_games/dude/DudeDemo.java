@@ -123,8 +123,8 @@ public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
         middleBackground.setLayerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
         backgroundImage.setPosition(
-                -getVisibleArea(Game.getWindowSize()).getWidth() / 2,
-                -getVisibleArea(Game.getWindowSize()).getHeight() / 2);
+                -getVisibleArea(Game.getWindowSize()).width() / 2,
+                -getVisibleArea(Game.getWindowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
         furtherBackground.setLayerPosition(-300);
@@ -154,7 +154,7 @@ public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
             cloudTiles.setTile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.setPosition(xOffset,
-                -getVisibleArea(Game.getWindowSize()).getHeight() / 2 + 5);
+                -getVisibleArea(Game.getWindowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
     }

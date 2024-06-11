@@ -141,8 +141,8 @@ public class Layer implements KeyStrokeListenerRegistration,
     /**
      * Setzt die Position dieses Layers relativ zu anderen Layers.
      *
-     * @param position Die neue Position dieses Layers. Je höher dieser Wert,
-     *                 desto weiter vorne ist das Layer.
+     * @param position Die neue Position dieser Ebene. Je höher dieser Wert,
+     *                 desto weiter vorne ist sie.
      */
     @API
     public void setLayerPosition(int position)
@@ -168,7 +168,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt den Parallaxenwert der Bewegung für dieses Layer:
+     * Setzt die Parallaxen-Bewegung für dieser Ebene:
      * <ul>
      * <li><code>1</code> ist keine Parallaxe (Bewegung exakt mit der
      * Kamera)</li>
@@ -181,8 +181,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * für Vordergrund).</li>
      * </ul>
      *
-     * @param parallaxX Der X-Parallaxenwert.
-     * @param parallaxY Der Y-Parallaxenwert.
+     * @param parallaxX Der x-Wert der Parallaxen-Bewegung.
+     * @param parallaxY Der y-Wert der Parallaxen-Bewegung.
      */
     @API
     public void setParallaxPosition(double parallaxX, double parallaxY)
@@ -192,7 +192,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt den Parallaxenwert beim Zoom für diese Ebene:
+     * Setzt den Parallaxen-Zoom für diese Ebene:
      * <ul>
      * <li><code>1</code>: Normaler Zoom mit der Kamera</li>
      * <li><code>0</code>: Kamerazoom hat keinen Einfluss auf dieses Layer.</li>

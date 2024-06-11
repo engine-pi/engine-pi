@@ -27,7 +27,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Die Kamera steuert welchen Ausschnitt der Spielfläche angezeigt wird.
+ * Die Kamera steuert, welcher Ausschnitt der Spielfläche angezeigt wird.
  *
  * <p>
  * Sie kann ein Objekt fokussieren und ihm so folgen. Hierbei besteht auch die
@@ -43,11 +43,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * }</pre>
  *
  * <p>
- * Hierdurch wird automatisch der gesamte Fokusapparat (auf den Bereich zwischen
- * den Punkten (0|0) und (1500|1000)) eingestellt. Bei spezielleren
- * Fokuswünschen lässt sich dies ebenfalls arrangieren durch die einzelnen
- * Methoden, mit denen alle vier {@link Bounds} (N, S, O, W) einzeln verstellt
- * und (de)aktiviert werden können.
+ * Hierdurch wird der gesamte Fokus auf den Bereich zwischen den Punkten (0|0)
+ * und (1500|1000) eingestellt.
  * </p>
  *
  * <p>
@@ -55,7 +52,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * </p>
  *
  * <p>
- * Bei den Fokuseinstellungen sollte immer ein Bereich gewählt werden, der die
+ * Bei den Fokus-Einstellungen sollte immer ein Bereich gewählt werden, der die
  * Größe des Anzeigefensters (oder Vollbildes) bei weitem übersteigt.<br>
  * Allgemein wirken diese {@link Bounds} auch ohne aktivierten Fokus, jedoch ist
  * dies meist weniger sinnvoll.
@@ -92,7 +89,7 @@ public final class Camera
     private Vector offset = Vector.NULL;
 
     /**
-     * Der aktuelle Anzahl an Pixel eines Meters.
+     * Die aktuelle Pixelanzahl eines Meters.
      */
     private double meter = DEFAULT_METER;
 
@@ -147,7 +144,7 @@ public final class Camera
      * <p>
      * Der Verzug ist ein Vektor, um den der {@link #focus Fokus} verschoben
      * wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer als im
-     * absoluten Bildzentrum liegt, wenn der Fokusverzug mit folgender Methode
+     * absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender Methode
      * gesetzt wurde: <code>camera.setOffset(new Vector(0, -100));</code>
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
@@ -370,10 +367,10 @@ public final class Camera
         {
             return position;
         }
-        double x = Math.max(bounds.getX(),
-                Math.min(position.getX(), bounds.getX() + bounds.getWidth()));
-        double y = Math.max(bounds.getY(),
-                Math.min(position.getY(), bounds.getY() + bounds.getHeight()));
+        double x = Math.max(bounds.x(),
+                Math.min(position.getX(), bounds.x() + bounds.width()));
+        double y = Math.max(bounds.y(),
+                Math.min(position.getY(), bounds.y() + bounds.height()));
         return new Vector(x, y);
     }
 }

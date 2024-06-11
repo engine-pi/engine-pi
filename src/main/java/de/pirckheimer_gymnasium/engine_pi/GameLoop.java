@@ -294,8 +294,8 @@ public final class GameLoop
     @Internal
     private void renderInfo(Graphics2D g, DebugInfo debugInfo)
     {
-        double frameDuration = debugInfo.getFrameDuration();
-        int actorCount = debugInfo.getBodyCount();
+        double frameDuration = debugInfo.frameDuration();
+        int actorCount = debugInfo.bodyCount();
         Font displayFont = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
         FontMetrics fm = g.getFontMetrics(displayFont);
         Rectangle2D bounds;

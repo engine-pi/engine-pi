@@ -20,25 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
-public final class DebugInfo
+public record DebugInfo(double frameDuration, int bodyCount)
 {
-    private final double frameDuration;
-
-    private final int bodyCount;
-
-    public DebugInfo(double frameDuration, int bodyCount)
-    {
-        this.frameDuration = frameDuration;
-        this.bodyCount = bodyCount;
-    }
-
-    public double getFrameDuration()
-    {
-        return frameDuration;
-    }
-
-    public int getBodyCount()
-    {
-        return bodyCount;
-    }
 }

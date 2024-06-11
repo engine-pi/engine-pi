@@ -57,7 +57,7 @@ public final class SingleTask implements FrameUpdateListener
      * Container, an dem der Task angemeldet wird, wo er sich auch selbst wieder
      * abmeldet.
      */
-    private FrameUpdateListenerRegistration parent;
+    private final FrameUpdateListenerRegistration parent;
 
     /**
      * Konstruktor.

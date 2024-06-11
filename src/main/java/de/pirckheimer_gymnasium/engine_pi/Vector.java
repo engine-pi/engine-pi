@@ -114,7 +114,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet anhand eines Winkel den entsprechtenden Vektor.
+     * Berechnet anhand eines Winkels den entsprechenden Vektor.
      *
      * @param angle Der Winkel in Grad.
      *
@@ -225,7 +225,7 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Gegenrichtung des Vektors in Y-Richtung.
      *
-     * @return Ein neues Vektor, das genau die Gegenbewegung zu dem eigenen
+     * @return Ein neuer Vektor, der genau die Gegenbewegung zum eigenen Vektor
      *         beschreibt.
      */
     @API
@@ -414,7 +414,7 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Richtung des Vektors, in die er wirkt.
      *
-     * @return Der Wert der Konstanten, die diese Bewegung wiederspiegelt.
+     * @return Der Wert der Konstanten, die diese Bewegung widerspiegelt.
      */
     @API
     public Direction getDirection()
@@ -515,15 +515,13 @@ public final class Vector implements Cloneable
     {
         if (this.y < other.y)
         {
-            return (double) Math
-                    .toDegrees(Math.acos(this.getScalarProduct(other)
-                            / (this.getLength() * other.getLength())));
+            return Math.toDegrees(Math.acos(this.getScalarProduct(other)
+                    / (this.getLength() * other.getLength())));
         }
         else
         {
-            return (double) (360
-                    - Math.toDegrees(Math.acos(this.getScalarProduct(other)
-                            / (this.getLength() * other.getLength()))));
+            return (360 - Math.toDegrees(Math.acos(this.getScalarProduct(other)
+                    / (this.getLength() * other.getLength()))));
         }
     }
 
@@ -545,23 +543,29 @@ public final class Vector implements Cloneable
      * <p>
      * Diese statische Methode kann dazu benutzt werden, über einen statischen
      * Import dieser Methode
+     * </p>
      *
      * {@code
      * import static de.pirckheimer_gymnasium.engine_pi.Vector.vector;
      * }
      *
+     * <p>
      * mit etwas weniger Schreibarbeit einen neuen Vektor zu erzeugen. Anstatt
+     * </p>
      *
      * {@code
      * new Vector(1, 2);
      * }
      *
+     * <p>
      * kann dann
+     * </p>
      *
      * {@code
      * vector(1, 2);
      * }
      *
+     * <p>
      * geschrieben werden.
      * </p>
      *
