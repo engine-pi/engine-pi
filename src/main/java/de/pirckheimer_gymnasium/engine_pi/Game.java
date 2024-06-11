@@ -39,8 +39,6 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.*;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
-import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
-import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
@@ -193,7 +191,7 @@ public final class Game
         renderPanel.addMouseWheelListener(Game::enqueueMouseWheelEvent);
         try
         {
-            frame.setIconImage(getImages().get("assets/favicon.png"));
+            frame.setIconImage(Resources.images.get("assets/favicon.png"));
         }
         catch (Exception e)
         {
@@ -254,35 +252,6 @@ public final class Game
         });
     }
 
-    /**
-     * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für
-     * Bild-Resourcen} vom Datentyp {@link BufferedImage} bereit.
-     *
-     * @author Josef Friedrich
-     *
-     * @return Ein Zwischenspeicher für Bild-Resourcen vom Datentyp
-     *         {@link BufferedImage}.
-     */
-    public static ImageContainer getImages()
-    {
-        return Resources.getImages();
-    }
-
-    /**
-     * Stellt den Zugriff auf den {@link SoundContainer Zwischenspeicher für
-     * Audio-Resourcen} vom Datentyp
-     * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound} bereit.
-     *
-     * @author Josef Friedrich
-     *
-     * @return Ein {@link SoundContainer Zwischenspeicher für Audio-Resourcen}
-     *         vom Datentyp
-     *         {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound}.
-     */
-    public static SoundContainer getSounds()
-    {
-        return Resources.getSounds();
-    }
 
     private static void run()
     {

@@ -1,22 +1,24 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.IOException;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImagesContainerTest
 {
-    ImageContainer container = Game.getImages();
+    ImageContainer container = Resources.images;
 
     @BeforeEach
+    @AfterEach
     void clear()
     {
         container.clear();
@@ -34,7 +36,7 @@ public class ImagesContainerTest
     {
         var image1 = container.get("Pixel-Adventure-1/Background/Blue.png");
         var image2 = container.get("Pixel-Adventure-1/Background/Blue.png");
-        assertTrue(image1 == image2);
+        assertSame(image1, image2);
         assertEquals(image1, image2);
     }
 }

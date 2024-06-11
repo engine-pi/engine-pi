@@ -26,6 +26,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
@@ -63,7 +64,7 @@ public class Image extends Actor
     {
         super(() -> FixtureBuilder.rectangle(width, height));
         assertViableSizes(width, height);
-        this.image = Game.getImages().get(filepath);
+        this.image = Resources.images.get(filepath);
         this.width = width;
         this.height = height;
     }
@@ -81,10 +82,10 @@ public class Image extends Actor
     public Image(String filepath, final double pixelPerMeter)
     {
         super(() -> FixtureBuilder.rectangle(
-                Game.getImages().get(filepath).getWidth() / pixelPerMeter,
-                Game.getImages().get(filepath).getHeight() / pixelPerMeter));
+                Resources.images.get(filepath).getWidth() / pixelPerMeter,
+                Resources.images.get(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
-        this.image = Game.getImages().get(filepath);
+        this.image = Resources.images.get(filepath);
         this.width = image.getWidth() / pixelPerMeter;
         this.height = image.getHeight() / pixelPerMeter;
     }

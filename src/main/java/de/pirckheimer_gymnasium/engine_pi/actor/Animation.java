@@ -30,6 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.animation.AnimationFrame;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
@@ -193,7 +194,7 @@ public class Animation extends Actor implements FrameUpdateListener
         {
             throw new RuntimeException("Frame-Länge muss größer als 0 sein");
         }
-        BufferedImage image = Game.getImages().get(filepath);
+        BufferedImage image = Resources.images.get(filepath);
         if (image.getWidth() % x != 0)
         {
             throw new RuntimeException(String.format(
@@ -233,7 +234,7 @@ public class Animation extends Actor implements FrameUpdateListener
         Collection<AnimationFrame> frames = new LinkedList<>();
         for (String filepath : filepaths)
         {
-            frames.add(new AnimationFrame(Game.getImages().get(filepath),
+            frames.add(new AnimationFrame(Resources.images.get(filepath),
                     frameDuration));
         }
         return new Animation(frames.toArray(new AnimationFrame[0]), width,

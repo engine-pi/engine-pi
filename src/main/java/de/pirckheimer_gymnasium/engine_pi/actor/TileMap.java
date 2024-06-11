@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
@@ -36,7 +36,7 @@ public interface TileMap
     @API
     static Tile createFromImage(String path)
     {
-        return createFromImage(Game.getImages().get(path));
+        return createFromImage(Resources.images.get(path));
     }
 
     static Tile createFromImage(BufferedImage image)
@@ -51,7 +51,7 @@ public interface TileMap
 
     static TileMap createFromImage(String path, int sizeX, int sizeY)
     {
-        BufferedImage image = Game.getImages().get(path);
+        BufferedImage image = Resources.images.get(path);
         if (image.getWidth() % sizeX != 0)
         {
             throw new IllegalArgumentException(String.format(

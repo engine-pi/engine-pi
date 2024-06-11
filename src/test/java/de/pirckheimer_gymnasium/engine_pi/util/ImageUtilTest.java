@@ -14,6 +14,7 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
@@ -35,7 +36,7 @@ public class ImageUtilTest
     @Test
     public void testCopy()
     {
-        BufferedImage image = Game.getImages().get(
+        BufferedImage image = Resources.images.get(
                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
         BufferedImage copy = ImageUtil.copy(image);
         assertImageEquals(image, copy);
@@ -56,9 +57,9 @@ public class ImageUtilTest
 
         static Color blue = new Color(0, 0, 255);
 
-        static BufferedImage input = Game.getImages().get("images/gray.png");
+        static BufferedImage input = Resources.images.get("images/gray.png");
 
-        static BufferedImage expected = Game.getImages().get("images/rgb.png");
+        static BufferedImage expected = Resources.images.get("images/rgb.png");
 
         @Test
         public void testColorArray() throws IOException
