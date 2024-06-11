@@ -127,24 +127,15 @@ public final class Game
      */
     private static java.awt.Point mousePosition;
 
-    /**
-     * @author Josef Friedrich
-     */
     private static final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
 
-    /**
-     * @author Josef Friedrich
-     */
+
     private static final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
 
-    /**
-     * @author Josef Friedrich
-     */
+
     private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
 
-    /**
-     * @author Josef Friedrich
-     */
+
     private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
 
     /**
@@ -232,8 +223,9 @@ public final class Game
         if (defaultControl != null)
         {
             addKeyStrokeListener(defaultControl);
+            addFrameUpdateListener(defaultControl);
         }
-        // addFrameUpdateListener(defaultControl);
+
     }
 
     /**
@@ -354,7 +346,7 @@ public final class Game
             java.awt.event.MouseWheelEvent event)
     {
         MouseWheelEvent mouseWheelEvent = new MouseWheelEvent(
-                (double) event.getPreciseWheelRotation());
+                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
             mouseWheelListeners.invoke((listener) -> {
                 listener.onMouseWheelMove(mouseWheelEvent);
@@ -364,7 +356,7 @@ public final class Game
     }
 
     /**
-     * Registiert einen statischen, d. h. globalen Beobachter, der auf
+     * Registriert einen statischen, d. h. globalen Beobachter, der auf
      * Bildaktualisierungen reagiert.
      *
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
@@ -372,18 +364,24 @@ public final class Game
      *         nützlich sein, wenn der Beobachter als Lambda-Ausdruck angegeben
      *         wird. Dieser Ausdruck kann dann mit dem Datentyp
      *         {@link FrameUpdateListener} einer lokalen Variablen bzw. einem
-     *         Attribut zugeweisen werden.
+     *         Attribut zugewiesen werden.
      *
      * @author Josef Friedrich
      */
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
     {
+
         if (loop == null)
         {
-            throw new RuntimeException("Das Spiel läuft noch nicht");
+            addSceneLaunchListener((next, previous) -> {
+                if (previous == null) {
+                    loop.getFrameUpdateListener().add(listener);
+                }
+            });
+        } else {
+            loop.getFrameUpdateListener().add(listener);
         }
-        loop.getFrameUpdateListener().add(listener);
         return listener;
     }
 
@@ -405,7 +403,7 @@ public final class Game
      * KeyListener gilt global über das ganze Spiel und ist unabhängig von der
      * aktuellen Szene.
      *
-     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     * <p>Der {@link KeyListener} kann auf mehrere Arten implementiert werden:</p>
      *
      * <ol>
      * <li>Als normale Klasse:
@@ -786,7 +784,7 @@ public final class Game
 
     /**
      * Gibt die statische, d. h. globale Instanz der {@link Jukebox} zurück, die
-     * Geräusche und Musik abpielen kann.
+     * Geräusche und Musik abspielen kann.
      *
      * @author Josef Friedrich
      *
