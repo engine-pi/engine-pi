@@ -50,19 +50,19 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 public class CarDemo extends Scene implements FrameUpdateListener
 {
-    public static final int WIDTH = 1240;
+    private static final int WIDTH = 1240;
 
-    public static final int HEIGHT = 812;
+    private static final int HEIGHT = 812;
 
-    public static final double GROUND_FRICTION = .6;
+    private static final double GROUND_FRICTION = 0.6;
 
-    public static final double GROUND_RESTITUTION = .3;
+    private static final double GROUND_RESTITUTION = 0.3;
 
-    public static final int MOTOR_SPEED = 80;
+    private static final int MOTOR_SPEED = 80;
 
-    public static final Color GROUND_COLOR = new Color(85, 86, 81);
+    private static final Color GROUND_COLOR = new Color(85, 86, 81);
 
-    public static final int ZOOM = 60;
+    private static final int ZOOM = 60;
 
     private final CarBody carBody;
 

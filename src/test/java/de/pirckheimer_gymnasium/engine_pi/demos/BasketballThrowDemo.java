@@ -29,18 +29,20 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
-public class Shots extends ShowcaseDemo implements FrameUpdateListener
+public class BasketballThrowDemo extends Scene
 {
+    private static final int WIDTH = 1240;
+
+    private static final int HEIGHT = 812;
+
     private final Ball ball;
 
     private final Rectangle basket;
 
-    public Shots(Scene parent)
+    public BasketballThrowDemo()
     {
-        super(parent);
         setGravity(new Vector(0, -9.81));
         getCamera().setMeter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
@@ -69,11 +71,6 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
                 ball.setVelocity(new Vector(Math.signum(basket.getX()) * 2, 6));
             }
         });
-    }
-
-    @Override
-    public void onFrameUpdate(double deltaSeconds)
-    {
     }
 
     private static class Ball extends Image
@@ -118,6 +115,6 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new Shots(null));
+        Game.start(WIDTH, HEIGHT, new BasketballThrowDemo());
     }
 }
