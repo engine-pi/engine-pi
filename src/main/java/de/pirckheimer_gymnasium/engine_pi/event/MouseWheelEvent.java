@@ -27,16 +27,15 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseWheelListener}
  * genutzt.
  *
- * @see MouseWheelListener
- *
  * @author Michael Andonie
+ * @see MouseWheelListener
  */
 @API
 public class MouseWheelEvent
 {
     /**
      * Die Rotation des Mausrades. Bei Mäusen mit Präzession auch in Bruchteilen
-     * eines „Clicks“.
+     * eines „Klicks“.
      */
     private final double wheelRotation;
 
@@ -47,12 +46,11 @@ public class MouseWheelEvent
     }
 
     /**
-     * Gibt die Anzahl an „Clicks“ aus, die das Mausrad bewegt wurde.
+     * Gibt die Anzahl an „Klicks“ aus, die das Mausrad bewegt wurde.
      *
-     * @return Die Anzahl an „Clicks“, die das Mausrad bewegt wurde.<br>
-     *         <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom
-     *         Benutzer). <b>Positive Werte:</b> Das Rad wurde "runter" gedreht
-     *         (hin zum Benutzer).
+     * @return Die Anzahl an „Klicks“, die das Mausrad bewegt wurde.<br>
+     *         <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
+     *         <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
      * @see #getPreciseWheelRotation()
      */
     @API
@@ -62,19 +60,18 @@ public class MouseWheelEvent
     }
 
     /**
-     * Gibt die Anzahl an „Clicks“ aus, die das Mausrad bewegt wurde. Wenn die
+     * Gibt die Anzahl an „Klicks“ aus, die das Mausrad bewegt wurde. Wenn die
      * benutzte Maus auch Zwischenschritte erlaubt, werden auch
-     * "Click-Bruchteile" mit eingerechnet.
+     * "Klick-Bruchteile" mit eingerechnet.
      *
-     * @return Die Anzahl an „Clicks“, die das Mausrad bewegt wurde.<br>
-     *         <b>Negative Werte:</b> Das Rad wurde "rauf" gedreht (weg vom
-     *         Benutzer). <b>Positive Werte:</b> Das Rad wurde "runter" gedreht
-     *         (hin zum Benutzer).
+     * @return Die Anzahl an „Klicks“, die das Mausrad bewegt wurde.<br>
+     *         <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
+     *         <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
      * @see #getWheelRotation()
      */
     @API
     public double getPreciseWheelRotation()
     {
-        return (double) wheelRotation;
+        return wheelRotation;
     }
 }

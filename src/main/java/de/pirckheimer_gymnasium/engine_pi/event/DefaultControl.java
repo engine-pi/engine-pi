@@ -7,16 +7,16 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
- * Registriert einige grundlegende Kontrollmöglichkeiten.
+ * Registriert einige grundlegenden Kontrollmöglichkeiten.
  *
  * <p>
  * Beispielsweise werden Tastenkürzel registriert, die standardmäßig mit der
- * Engine mitgeliefert werden (z. B. ESC zum Schließen des Fensters, STRG+D zum
- * An- und Ausschalten des Debug-Modus).
+ * Engine mitgeliefert werden (z. B. ESC zum Schließen des Fensters, Alt+d zum
+ * An- und Ausschalten des Debug-Modus, Alt+Pfeiltasten zum Bewegen der Kamera,
+ * Alt+Mausrad zum Einstellen des Zoomfaktors.).
  * </p>
  */
-public class DefaultControl
-        implements KeyStrokeListener, FrameUpdateListener, MouseWheelListener
+public class DefaultControl implements DefaultListener
 {
     private static final double CAMERA_SPEED = 7.0;
 
@@ -30,9 +30,9 @@ public class DefaultControl
         return null;
     }
 
-    private boolean hasScene()
+    private boolean hasNoScene()
     {
-        return Game.getActiveScene() != null;
+        return Game.getActiveScene() == null;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DefaultControl
         {
         case KeyEvent.VK_D ->
         {
-            if (Game.isKeyPressed(KeyEvent.VK_CONTROL))
+            if (Game.isKeyPressed(KeyEvent.VK_ALT))
             {
                 Game.toggleDebug();
             }
@@ -57,13 +57,17 @@ public class DefaultControl
     @Override
     public void onFrameUpdate(double delta)
     {
-        if (!hasScene())
+        if (hasNoScene())
+        {
+            return;
+        }
+        Camera camera = getCamera();
+        if (camera == null)
         {
             return;
         }
         if (Game.isKeyPressed(KeyEvent.VK_ALT))
         {
-            // Smooth Camera Movement
             double dX = 0, dY = 0;
             if (Game.isKeyPressed(KeyEvent.VK_UP))
             {
@@ -83,7 +87,7 @@ public class DefaultControl
             }
             if (dX != 0 || dY != 0)
             {
-                getCamera().moveBy(dX, dY);
+                camera.moveBy(dX, dY);
             }
         }
     }
@@ -91,18 +95,27 @@ public class DefaultControl
     @Override
     public void onMouseWheelMove(MouseWheelEvent event)
     {
-        if (!hasScene())
+        if (!Game.isKeyPressed(KeyEvent.VK_ALT))
+        {
+            return;
+        }
+        if (hasNoScene())
+        {
+            return;
+        }
+        Camera camera = getCamera();
+        if (camera == null)
         {
             return;
         }
         double rotation = event.getPreciseWheelRotation();
         double factor = rotation > 0 ? 1 + 0.3 * rotation
                 : 1 / (1 - 0.3 * rotation);
-        double newZoom = getCamera().getMeter() * factor;
+        double newZoom = camera.getMeter() * factor;
         if (newZoom <= 0)
         {
             return;
         }
-        getCamera().setMeter(newZoom);
+        camera.setMeter(newZoom);
     }
 }

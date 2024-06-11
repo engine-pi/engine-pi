@@ -30,7 +30,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 public interface FrameUpdateListener
 {
     /**
-     * Diese Methode wird bei einem (angemeldeten) Objekt bei jeden Einzelbild
+     * Diese Methode wird bei einem (angemeldeten) Objekt bei jedem Einzelbild
      * erneut aufgerufen.
      *
      * @param delta Die Zeit <b>in Sekunden</b>, die seit der letzten

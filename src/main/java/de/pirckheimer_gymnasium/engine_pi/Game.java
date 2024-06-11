@@ -31,6 +31,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.swing.JOptionPane;
@@ -118,7 +119,7 @@ public final class Game
     private static final Collection<Integer> pressedKeys = ConcurrentHashMap
             .newKeySet();
 
-    private static DefaultControl defaultControl = new DefaultControl();
+    private static DefaultListener defaultControl = new DefaultControl();
 
     /**
      * Letzte Mausposition.
@@ -200,8 +201,7 @@ public final class Game
         mainThread.setPriority(Thread.MAX_PRIORITY);
         if (defaultControl != null)
         {
-            addKeyStrokeListener(defaultControl);
-            addFrameUpdateListener(defaultControl);
+            setDefaultControl(defaultControl);
         }
     }
 
@@ -231,14 +231,7 @@ public final class Game
             return;
         }
         final Scene next;
-        if (scene == null)
-        {
-            next = new Scene();
-        }
-        else
-        {
-            next = scene;
-        }
+        next = Objects.requireNonNullElseGet(scene, Scene::new);
         loop.enqueue(() -> {
             listeners.sceneLaunch.invoke(
                     (listener) -> listener.onSceneLaunch(next, previous));
@@ -255,6 +248,35 @@ public final class Game
         frame.setVisible(false);
         frame.dispose();
         System.exit(0);
+    }
+
+    public static DefaultListener getDefaultControl()
+    {
+        return defaultControl;
+    }
+
+    public static void setDefaultControl(DefaultListener control)
+    {
+        defaultControl = control;
+        addKeyStrokeListener(defaultControl);
+        addFrameUpdateListener(defaultControl);
+        addMouseWheelListener(defaultControl);
+        addMouseClickListener(defaultControl);
+    }
+
+    /**
+     * @see DefaultControl
+     */
+    public static void removeDefaultControl()
+    {
+        if (defaultControl != null)
+        {
+            removeKeyStrokeListener(defaultControl);
+            removeFrameUpdateListener(defaultControl);
+            removeMouseWheelListener(defaultControl);
+            removeMouseClickListener(defaultControl);
+            defaultControl = null;
+        }
     }
 
     /**
@@ -307,23 +329,29 @@ public final class Game
      * Bildaktualisierungen reagiert.
      *
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
-     * @return Derselbe Beobachter als als Eingabeparameter angegeben. Kann
-     *         nützlich sein, wenn der Beobachter als Lambda-Ausdruck angegeben
-     *         wird. Dieser Ausdruck kann dann mit dem Datentyp
-     *         {@link FrameUpdateListener} einer lokalen Variablen bzw. einem
-     *         Attribut zugewiesen werden.
+     * @return Der Rückgabewert ist mit dem Eingabeparameter identisch. Dieser
+     *         Wert kann dann mit dem Datentyp {@link FrameUpdateListener} einer
+     *         lokalen Variablen bzw. einem Attribut zugewiesen werden und
+     *         später zum Abmelden verwendet werden.
      *
      * @author Josef Friedrich
      */
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
     {
-        addSceneLaunchListener((next, previous) -> {
-            if (previous == null)
-            {
-                loop.getFrameUpdateListener().add(listener);
-            }
-        });
+        if (loop != null)
+        {
+            loop.getFrameUpdateListener().add(listener);
+        }
+        else
+        {
+            addSceneLaunchListener((next, previous) -> {
+                if (previous == null)
+                {
+                    loop.getFrameUpdateListener().add(listener);
+                }
+            });
+        }
         return listener;
     }
 
