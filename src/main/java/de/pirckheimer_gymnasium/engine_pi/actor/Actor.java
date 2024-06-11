@@ -32,6 +32,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import de.pirckheimer_gymnasium.engine_pi.event.*;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.collision.shapes.Shape;
@@ -52,17 +53,6 @@ import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
@@ -124,21 +114,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     private PhysicsHandler physicsHandler;
 
-    private final EventListeners<Runnable> mountListeners = new EventListeners<>();
-
-    private final EventListeners<Runnable> unmountListeners = new EventListeners<>();
-
-    private final EventListeners<KeyStrokeListener> keyListeners = new EventListeners<>(
-            createParentSupplier(Layer::getKeyStrokeListeners));
-
-    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
-            createParentSupplier(Layer::getMouseClickListeners));
-
-    private final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>(
-            createParentSupplier(Layer::getMouseWheelListeners));
-
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>(
-            createParentSupplier(Layer::getFrameUpdateListeners));
+    private final EventListenerBundle listeners = new EventListenerBundle();
 
     /**
      * Erstellt ein neues Objekt.
@@ -164,7 +140,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final void addMountListener(Runnable listener)
     {
-        mountListeners.add(listener);
+        listeners.mount.add(listener);
         if (isMounted())
         {
             listener.run();
@@ -180,7 +156,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final void removeMountListener(Runnable listener)
     {
-        mountListeners.remove(listener);
+        listeners.mount.remove(listener);
     }
 
     /**
@@ -192,7 +168,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final void addUnmountListener(Runnable listener)
     {
-        unmountListeners.add(listener);
+        listeners.unmount.add(listener);
     }
 
     /**
@@ -204,7 +180,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final void removeUnmountListener(Runnable listener)
     {
-        unmountListeners.remove(listener);
+        listeners.unmount.remove(listener);
     }
 
     /**
@@ -745,11 +721,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 return;
             }
             Layer layer = previousWorldHandler.getLayer();
-            keyListeners.invoke(layer::removeKeyStrokeListener);
-            mouseClickListeners.invoke(layer::removeMouseClickListener);
-            mouseWheelListeners.invoke(layer::removeMouseWheelListener);
-            frameUpdateListeners.invoke(layer::removeFrameUpdateListener);
-            unmountListeners.invoke(Runnable::run);
+            listeners.keyStroke.invoke(layer::removeKeyStrokeListener);
+            listeners.mouseClick.invoke(layer::removeMouseClickListener);
+            listeners.mouseWheel.invoke(layer::removeMouseWheelListener);
+            listeners.frameUpdate.invoke(layer::removeFrameUpdateListener);
+            listeners.unmount.invoke(Runnable::run);
             physicsHandler = handler;
         }
         else
@@ -760,11 +736,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             }
             physicsHandler = handler;
             Layer layer = worldHandler.getLayer();
-            mountListeners.invoke(Runnable::run);
-            keyListeners.invoke(layer::addKeyStrokeListener);
-            mouseClickListeners.invoke(layer::addMouseClickListener);
-            mouseWheelListeners.invoke(layer::addMouseWheelListener);
-            frameUpdateListeners.invoke(layer::addFrameUpdateListener);
+            listeners.mount.invoke(Runnable::run);
+            listeners.keyStroke.invoke(layer::addKeyStrokeListener);
+            listeners.mouseClick.invoke(layer::addMouseClickListener);
+            listeners.mouseWheel.invoke(layer::addMouseWheelListener);
+            listeners.frameUpdate.invoke(layer::addFrameUpdateListener);
         }
     }
 
@@ -801,7 +777,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
-        return keyListeners;
+        return listeners.keyStroke;
     }
 
     /**
@@ -810,7 +786,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final EventListeners<MouseClickListener> getMouseClickListeners()
     {
-        return mouseClickListeners;
+        return listeners.mouseClick;
     }
 
     /**
@@ -819,7 +795,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final EventListeners<MouseWheelListener> getMouseWheelListeners()
     {
-        return mouseWheelListeners;
+        return listeners.mouseWheel;
     }
 
     /**
@@ -828,7 +804,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final EventListeners<FrameUpdateListener> getFrameUpdateListeners()
     {
-        return frameUpdateListeners;
+        return listeners.frameUpdate;
     }
 
     /**

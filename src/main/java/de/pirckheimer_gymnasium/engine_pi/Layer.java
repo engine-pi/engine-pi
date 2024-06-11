@@ -27,21 +27,13 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import de.pirckheimer_gymnasium.engine_pi.event.*;
 import org.jbox2d.dynamics.Body;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.BodyHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData;
@@ -97,16 +89,7 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     private final WorldHandler worldHandler;
 
-    private final EventListeners<KeyStrokeListener> keyListeners = new EventListeners<>(
-            createParentSupplier(Scene::getKeyStrokeListeners));
-
-    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
-            createParentSupplier(Scene::getMouseClickListeners));
-
-    private final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>(
-            createParentSupplier(Scene::getMouseWheelListeners));
-
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+    private final EventListenerBundle listeners = new EventListenerBundle();
 
     /**
      * Erstellt eine neue Ebene.
@@ -139,17 +122,18 @@ public class Layer implements KeyStrokeListenerRegistration,
         }
         if (parent != null)
         {
-            keyListeners.invoke(parent::addKeyStrokeListener);
-            mouseClickListeners.invoke(parent::addMouseClickListener);
-            mouseWheelListeners.invoke(parent::addMouseWheelListener);
-            frameUpdateListeners.invoke(parent::addFrameUpdateListener);
+            listeners.keyStroke.invoke(parent::addKeyStrokeListener);
+            listeners.mouseClick.invoke(parent::addMouseClickListener);
+            listeners.mouseWheel.invoke(parent::addMouseWheelListener);
+            listeners.frameUpdate.invoke(parent::addFrameUpdateListener);
         }
         else
         {
-            keyListeners.invoke(this.parent::removeKeyStrokeListener);
-            mouseClickListeners.invoke(this.parent::removeMouseClickListener);
-            mouseWheelListeners.invoke(this.parent::removeMouseWheelListener);
-            frameUpdateListeners.invoke(this.parent::removeFrameUpdateListener);
+            listeners.keyStroke.invoke(this.parent::removeKeyStrokeListener);
+            listeners.mouseClick.invoke(this.parent::removeMouseClickListener);
+            listeners.mouseWheel.invoke(this.parent::removeMouseWheelListener);
+            listeners.frameUpdate
+                    .invoke(this.parent::removeFrameUpdateListener);
         }
         this.parent = parent;
     }
@@ -563,32 +547,32 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
-        return keyListeners;
+        return listeners.keyStroke;
     }
 
     @API
     public EventListeners<MouseClickListener> getMouseClickListeners()
     {
-        return mouseClickListeners;
+        return listeners.mouseClick;
     }
 
     @API
     public EventListeners<MouseWheelListener> getMouseWheelListeners()
     {
-        return mouseWheelListeners;
+        return listeners.mouseWheel;
     }
 
     @API
     public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
     {
-        return frameUpdateListeners;
+        return listeners.frameUpdate;
     }
 
     @Internal
     void invokeFrameUpdateListeners(double deltaSeconds)
     {
         double scaledSeconds = deltaSeconds * timeDistort;
-        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
+        listeners.frameUpdate.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(scaledSeconds));
     }
 }
