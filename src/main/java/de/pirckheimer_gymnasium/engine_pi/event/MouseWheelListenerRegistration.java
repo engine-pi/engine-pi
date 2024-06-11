@@ -28,7 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  */
 public interface MouseWheelListenerRegistration
 {
-    EventListeners<MouseWheelListener> getMouseWheelListeners();
+    EventListenerBundle getListenerBundle();
 
     /**
      * Fügt einen Beobachter, der auf Bewegungen des Mausrads reagiert, zum
@@ -39,7 +39,7 @@ public interface MouseWheelListenerRegistration
     @API
     default void addMouseWheelListener(MouseWheelListener listener)
     {
-        getMouseWheelListeners().add(listener);
+        getListenerBundle().mouseWheel.add(listener);
     }
 
     /**
@@ -51,6 +51,6 @@ public interface MouseWheelListenerRegistration
     @API
     default void removeMouseWheelListener(MouseWheelListener listener)
     {
-        getMouseWheelListeners().remove(listener);
+        getListenerBundle().mouseWheel.remove(listener);
     }
 }

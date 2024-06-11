@@ -784,9 +784,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link MouseClickListener}.
      */
     @API
-    public final EventListeners<MouseClickListener> getMouseClickListeners()
+    public final EventListenerBundle getListenerBundle()
     {
-        return listeners.mouseClick;
+        return listeners;
     }
 
     /**
@@ -1349,7 +1349,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Erstellt einen Seilverbindung zwischen diesem und einem weiteren
+     * Erstellt eine Seilverbindung zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem
@@ -1412,7 +1412,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Erstellt einen Stabverbindung ({@link DistanceJoint}) zwischen diesem und
+     * Erstellt eine Stabverbindung ({@link DistanceJoint}) zwischen diesem und
      * einem weiteren {@link Actor}-Objekt.
      *
      * @param other       Das zweite {@link Actor}-Objekt, das ab sofort mit dem

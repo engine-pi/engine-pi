@@ -24,7 +24,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 public interface KeyStrokeListenerRegistration
 {
-    EventListeners<KeyStrokeListener> getKeyStrokeListeners();
+    EventListenerBundle getListenerBundle();
 
     /**
      * Fügt einen {@link KeyStrokeListener} zum Objekt hinzu. Die Klassen
@@ -87,7 +87,7 @@ public interface KeyStrokeListenerRegistration
     @API
     default void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyStrokeListeners().add(listener);
+        getListenerBundle().keyStroke.add(listener);
     }
 
     /**
@@ -100,6 +100,6 @@ public interface KeyStrokeListenerRegistration
     @API
     default void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyStrokeListeners().remove(listener);
+        getListenerBundle().keyStroke.remove(listener);
     }
 }

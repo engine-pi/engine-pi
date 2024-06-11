@@ -28,7 +28,6 @@ public interface MouseClickListenerRegistration
 {
     EventListenerBundle getListenerBundle();
 
-
     default void addMouseClickListener(MouseClickListener listener)
     {
         getListenerBundle().mouseClick.add(listener);
