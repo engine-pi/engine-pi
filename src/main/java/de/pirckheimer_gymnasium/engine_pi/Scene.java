@@ -423,9 +423,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     @API
-    public EventListeners<MouseClickListener> getMouseClickListeners()
+    public EventListenerBundle getListenerBundle()
     {
-        return listeners.mouseClick;
+        return listeners;
     }
 
     @API
