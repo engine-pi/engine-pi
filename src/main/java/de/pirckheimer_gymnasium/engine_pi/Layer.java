@@ -33,7 +33,6 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
@@ -117,7 +116,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         worldHandler = new WorldHandler(this);
         actors = new ArrayList<>();
-        EventListenerHelper.autoRegisterListeners(this);
+        EventListeners.registerListeners(this);
     }
 
     public Scene getParent()
@@ -422,8 +421,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @param worldPoint Ein Punkt auf dem Layer
      *
-     * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse ist
-     *         umgekehrt), der mit der aktuellen Kameraeinstellung dem
+     * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse
+     *         ist umgekehrt), der mit der aktuellen Kameraeinstellung dem
      *         angegebenen <code>worldPoint</code> entspricht
      */
     @Internal

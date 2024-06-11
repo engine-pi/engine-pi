@@ -7,9 +7,13 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
- * Registriert einige grundlegende Kontrollmöglichkeiten, d. h. einige
- * Tastenkürzel, die standardmäßig mit der Engine mitgeliefert werden (z. B. ESC
- * zum Schließen des Fensters, STRG+D zum An- und Ausschalten des Debug-Modus).
+ * Registriert einige grundlegende Kontrollmöglichkeiten.
+ *
+ * <p>
+ * Beispielsweise werden Tastenkürzel registriert, die standardmäßig mit der
+ * Engine mitgeliefert werden (z. B. ESC zum Schließen des Fensters, STRG+D zum
+ * An- und Ausschalten des Debug-Modus).
+ * </p>
  */
 public class DefaultControl
         implements KeyStrokeListener, FrameUpdateListener, MouseWheelListener

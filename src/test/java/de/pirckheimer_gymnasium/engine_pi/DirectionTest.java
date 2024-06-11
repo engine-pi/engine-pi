@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DirectionTest
 {
-
     @Test
     void toVector()
     {
@@ -14,5 +13,4 @@ class DirectionTest
         assertEquals(vector.getX(), 0);
         assertEquals(vector.getY(), 1);
     }
-
 }

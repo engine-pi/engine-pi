@@ -37,7 +37,6 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 

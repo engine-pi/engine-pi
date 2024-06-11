@@ -1,16 +1,16 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import java.io.IOException;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-
-import static org.junit.jupiter.api.Assertions.*;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImagesContainerTest

@@ -29,7 +29,12 @@ import java.util.function.Supplier;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Klasse zur Verwaltung von mehreren Beobachtern (Listeners).
+ * Verwaltet mehrere Beobachter (Listeners).
+ *
+ * <p>
+ * Die Klasse stellt Methoden bereit, um Beobachter an- ({@link #add(Object)})
+ * und abzumelden ({@link #remove(Object)}).
+ * </p>
  */
 public final class EventListeners<T>
 {
@@ -53,6 +58,11 @@ public final class EventListeners<T>
         this.parentSupplier = parentSupplier;
     }
 
+    /**
+     * Meldet einen Beobachter an.
+     *
+     * @param listener Der Beobachter, der angemeldet werden soll.
+     */
     @API
     public synchronized void add(T listener)
     {
@@ -73,6 +83,11 @@ public final class EventListeners<T>
         }
     }
 
+    /**
+     * Meldet einen Beobachter ab.
+     *
+     * @param listener Der Beobachter, der abgemeldet werden soll.
+     */
     @API
     public synchronized void remove(T listener)
     {
@@ -94,11 +109,11 @@ public final class EventListeners<T>
     }
 
     /**
-     * Gibt wahr zurück, wenn der gebenene Beobachter bereits hinzugefügt wurde.
+     * Gibt wahr zurück, wenn der gegebene Beobachter bereits hinzugefügt wurde.
      *
      * @param listener Ein Beobachter.
      *
-     * @return wahr, wenn der gebenene Beobachter bereits hinzugefügt wurde,
+     * @return wahr, wenn der gegebene Beobachter bereits hinzugefügt wurde,
      *         sonst falsch.
      */
     @API
@@ -152,5 +167,39 @@ public final class EventListeners<T>
     public synchronized void clear()
     {
         listeners.clear();
+    }
+
+    /**
+     * Meldet einen Beobachter automatisch in der entsprechenden Instanz an, die
+     * alle Beobachter verwaltet.
+     *
+     * @param target Der Beobachter, der angemeldet werden soll.
+     */
+    public static void registerListeners(Object target)
+    {
+        if (target instanceof KeyStrokeListenerRegistration
+                && target instanceof KeyStrokeListener)
+        {
+            ((KeyStrokeListenerRegistration) target)
+                    .addKeyStrokeListener((KeyStrokeListener) target);
+        }
+        if (target instanceof MouseClickListenerRegistration
+                && target instanceof MouseClickListener)
+        {
+            ((MouseClickListenerRegistration) target)
+                    .addMouseClickListener((MouseClickListener) target);
+        }
+        if (target instanceof MouseWheelListenerRegistration
+                && target instanceof MouseWheelListener)
+        {
+            ((MouseWheelListenerRegistration) target)
+                    .addMouseWheelListener((MouseWheelListener) target);
+        }
+        if (target instanceof FrameUpdateListenerRegistration
+                && target instanceof FrameUpdateListener)
+        {
+            ((FrameUpdateListenerRegistration) target)
+                    .addFrameUpdateListener((FrameUpdateListener) target);
+        }
     }
 }

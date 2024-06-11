@@ -32,10 +32,12 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * verschiedenen {@link Actor}-Objekten aufgerufen. Die genauen Umstände hängen
  * von der Art der Anmeldung ab.
  * </p>
+ *
  * <ul>
  * <li>Wurde das Objekt mit einem (oder mehrmals mit verschiedenen)
  * Ziel-{@link Actor}-Objekten angemeldet, so wird es nur bei Kollision zwischen
  * den spezifizierten Paaren informiert.</li>
+ *
  * <li>Wurde das Objekt nur mit einem einzigen {@link Actor}-Objekt angemeldet,
  * so wird es bei jeder Kollision zwischen dem Objekt und jedem anderen (an der
  * Wurzel angemeldeten) {@link Actor}-Objekt angemeldet.</li>
@@ -70,7 +72,7 @@ public interface CollisionListener<E extends Actor>
     @API
     default void onCollisionEnd(CollisionEvent<E> collisionEvent)
     {
-        // Ist selten genug wichtig um zu rechtfertigen, dass eine
+        // Ist selten genug wichtig, um zu rechtfertigen, dass eine
         // Default-Implementierung leer ist.
     }
 }

@@ -125,13 +125,7 @@ public final class Game
      */
     private static java.awt.Point mousePosition;
 
-    private static final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
-
-    private static final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
-
-    private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
-
-    private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
+    private static final EventListenerBundle listeners = new EventListenerBundle();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -246,17 +240,16 @@ public final class Game
             next = scene;
         }
         loop.enqueue(() -> {
-            sceneLaunchListeners.invoke(
+            listeners.sceneLaunch.invoke(
                     (listener) -> listener.onSceneLaunch(next, previous));
             Game.scene = next;
         });
     }
 
-
     private static void run()
     {
         loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
-        sceneLaunchListeners.invoke((listener) -> listener
+        listeners.sceneLaunch.invoke((listener) -> listener
                 .onSceneLaunch(Game.getActiveScene(), null));
         loop.run();
         frame.setVisible(false);
@@ -302,7 +295,7 @@ public final class Game
         MouseWheelEvent mouseWheelEvent = new MouseWheelEvent(
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
-            mouseWheelListeners.invoke((listener) -> {
+            listeners.mouseWheel.invoke((listener) -> {
                 listener.onMouseWheelMove(mouseWheelEvent);
             });
             scene.invokeMouseWheelMoveListeners(mouseWheelEvent);
@@ -407,7 +400,7 @@ public final class Game
      */
     public static void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        keyStrokeListeners.add(listener);
+        listeners.keyStroke.add(listener);
     }
 
     /**
@@ -422,37 +415,37 @@ public final class Game
      */
     public static void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        keyStrokeListeners.remove(listener);
+        listeners.keyStroke.remove(listener);
     }
 
     public static void addMouseClickListener(MouseClickListener listener)
     {
-        mouseClickListeners.add(listener);
+        listeners.mouseClick.add(listener);
     }
 
     public static void removeMouseClickListener(MouseClickListener listener)
     {
-        mouseClickListeners.remove(listener);
+        listeners.mouseClick.remove(listener);
     }
 
     public static void addMouseWheelListener(MouseWheelListener listener)
     {
-        mouseWheelListeners.add(listener);
+        listeners.mouseWheel.add(listener);
     }
 
     public static void removeMouseWheelListener(MouseWheelListener listener)
     {
-        mouseWheelListeners.remove(listener);
+        listeners.mouseWheel.remove(listener);
     }
 
     public static void addSceneLaunchListener(SceneLaunchListener listener)
     {
-        sceneLaunchListeners.add(listener);
+        listeners.sceneLaunch.add(listener);
     }
 
     public static void removeSceneLaunchListener(SceneLaunchListener listener)
     {
-        sceneLaunchListeners.remove(listener);
+        listeners.sceneLaunch.remove(listener);
     }
 
     /**
@@ -840,13 +833,13 @@ public final class Game
             loop.enqueue(() -> {
                 if (down)
                 {
-                    mouseClickListeners.invoke(
+                    listeners.mouseClick.invoke(
                             listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseDownListeners(position, button);
                 }
                 else
                 {
-                    mouseClickListeners.invoke(
+                    listeners.mouseClick.invoke(
                             listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseUpListeners(position, button);
                 }
@@ -887,13 +880,13 @@ public final class Game
             loop.enqueue(() -> {
                 if (down)
                 {
-                    keyStrokeListeners.invoke(
+                    listeners.keyStroke.invoke(
                             keyListener -> keyListener.onKeyDown(event));
                     scene.invokeKeyDownListeners(event);
                 }
                 else
                 {
-                    keyStrokeListeners
+                    listeners.keyStroke
                             .invoke(keyListener -> keyListener.onKeyUp(event));
                     scene.invokeKeyUpListeners(event);
                 }

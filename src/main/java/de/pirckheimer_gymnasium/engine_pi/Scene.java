@@ -43,7 +43,6 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
@@ -113,7 +112,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         mainLayer = new Layer();
         mainLayer.setLayerPosition(0);
         addLayer(mainLayer);
-        EventListenerHelper.autoRegisterListeners(this);
+        EventListeners.registerListeners(this);
     }
 
     public Scene getScene()
@@ -362,7 +361,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Schwerkraft die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
+     * Setzt die Schwerkraft, die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
      * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
      *
      * @see Layer#setGravityOfEarth

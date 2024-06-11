@@ -1,16 +1,17 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.event;
 
-import java.awt.event.KeyEvent;
-
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
-public class GlobalFrameUpdateListenerDemo
+import java.awt.event.KeyEvent;
+
+public class GlobalKeyStrokeListenerDemo
 {
     public static void main(String[] args)
     {
         Game.start(new Scene());
-        Game.addFrameUpdateListener((delta) -> System.out
-                .println("Vergangene Zeit seit letztem Einzelbild: " + delta));
+        Game.addKeyStrokeListener((e) -> {
+            System.out.println("Tastendruck empfangen: " + e.paramString());
+        });
     }
 }
