@@ -28,6 +28,7 @@ import static java.lang.Math.min;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Layer;
@@ -43,14 +44,16 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
-import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
-public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
+public class CarDemo extends Scene implements FrameUpdateListener
 {
+    public static final int WIDTH = 1240;
+
+    public static final int HEIGHT = 812;
+
     public static final double GROUND_FRICTION = .6;
 
     public static final double GROUND_RESTITUTION = .3;
@@ -67,13 +70,12 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
 
     private final Wheel wheelBack;
 
-    public CarDemo(Scene parent)
+    public CarDemo()
     {
-        super(parent);
         setBackgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
-        Rectangle blender = new Rectangle((double) Showcases.WIDTH / ZOOM,
-                (double) Showcases.HEIGHT / ZOOM);
+        Rectangle blender = new Rectangle((double) WIDTH / ZOOM,
+                (double) HEIGHT / ZOOM);
         blender.setColor(Color.BLACK);
         blend.add(blender);
         blend.setParallaxRotation(0);
@@ -234,7 +236,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         }
         if (carBody.getCenter().getY() < -20)
         {
-            Game.transitionToScene(new CarDemo(null));
+            Game.transitionToScene(new CarDemo());
         }
     }
 
@@ -281,7 +283,8 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
                 {
                     for (Vector point : collision.getPoints())
                     {
-                        actor.getLayer().add(createSplitter(point));
+                        Objects.requireNonNull(actor.getLayer())
+                                .add(createSplitter(point));
                     }
                 }
             }
@@ -328,7 +331,8 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             spring = createPrismaticJoint(carBody,
                     getCenterRelative().add(0, getHeight() / 2), 90);
             spring.setLimits(-.15, .15);
-            addMountListener(() -> getLayer().add(carBody));
+            addMountListener(
+                    () -> Objects.requireNonNull(getLayer()).add(carBody));
         }
 
         @Override
@@ -336,7 +340,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         {
             // Federeffekt für die Achsen
             double translation = spring.getTranslation();
-            spring.setMotorSpeed((double) Math
+            spring.setMotorSpeed(Math
                     .sin(min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
                     * -.3);
             spring.setMaximumMotorForce(5000);
@@ -366,7 +370,8 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
             setLayerPosition(2);
             motor = createRevoluteJoint(axle, getCenterRelative());
             motor.setMaximumMotorTorque(5000);
-            addMountListener(() -> getLayer().add(axle));
+            addMountListener(
+                    () -> Objects.requireNonNull(getLayer()).add(axle));
             addCollisionListener(axle.getCarBody(),
                     CollisionEvent::ignoreCollision);
             repeat(.025, () -> {
@@ -375,17 +380,18 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
                     if (collision.getColliding() instanceof Mud)
                     {
                         double velocity = getVelocity().getLength();
-                        double overtwist = abs(getAngularVelocity()
-                                * (double) Math.PI * 2 * 0.7) / velocity;
+                        double overTwist = abs(
+                                getAngularVelocity() * Math.PI * 2 * 0.7)
+                                / velocity;
                         boolean slowMoving = abs(getVelocity().getX()) < 0.5
                                 && abs(getAngularVelocity()) < 0.3;
-                        if (overtwist > 0.95 && overtwist < 1.05 || slowMoving)
+                        if (overTwist > 0.95 && overTwist < 1.05 || slowMoving)
                         {
                             continue;
                         }
                         Vector impulse = collision.getTangentNormal() //
                                 .rotate(90) //
-                                .multiply(min(max(-1, overtwist - 1), 1));
+                                .multiply(min(max(-1, overTwist - 1), 1));
                         for (Vector point : collision.getPoints())
                         {
                             double size = range(0.05, .15);
@@ -393,8 +399,9 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
                                     .getDistance(getCenter()).multiply(size));
                             Color color = ((Mud) collision.getColliding())
                                     .getColor();
-                            getLayer().add(createParticle(size, center, color,
-                                    impulse.rotate(range(-15, 15))));
+                            Objects.requireNonNull(getLayer())
+                                    .add(createParticle(size, center, color,
+                                            impulse.rotate(range(-15, 15))));
                         }
                     }
                 }
@@ -439,8 +446,9 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
                             double size = range(0.05, .15);
                             Vector impulse = vector(range(-1f, 1f),
                                     range(-1f, 1f));
-                            getLayer().add(createParticle(size, point,
-                                    Color.YELLOW, impulse));
+                            Objects.requireNonNull(getLayer())
+                                    .add(createParticle(size, point,
+                                            Color.YELLOW, impulse));
                         }
                     }
                 }
@@ -469,6 +477,6 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new CarDemo(null));
+        Game.start(WIDTH, HEIGHT, new CarDemo());
     }
 }
