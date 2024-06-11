@@ -21,8 +21,8 @@
 package de.pirckheimer_gymnasium.engine_pi.event;
 
 /**
- * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf
- * das Klicken der Maustasten reagieren.
+ * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf das Klicken
+ * der Maustasten reagieren.
  */
 public interface MouseClickListenerRegistration
 {

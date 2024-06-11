@@ -82,9 +82,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * @author Niklas Keller
  */
 @SuppressWarnings("OverlyComplexClass")
-public abstract class Actor
-        implements KeyStrokeListenerRegistration, MouseClickListenerRegistration,
-        MouseWheelListenerRegistration, FrameUpdateListenerRegistration
+public abstract class Actor implements KeyStrokeListenerRegistration,
+        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        FrameUpdateListenerRegistration
 {
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
     {

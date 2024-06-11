@@ -35,8 +35,8 @@ public interface MouseWheelListener
      * Diese Methode wird immer dann aufgerufen, wenn das <b>Mausrad gedreht</b>
      * wurde.
      *
-     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das Mausrad
-     *              gedreht wurde.
+     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das
+     *              Mausrad gedreht wurde.
      * @see MouseWheelEvent
      */
     void onMouseWheelMove(MouseWheelEvent event);

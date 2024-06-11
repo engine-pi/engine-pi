@@ -29,8 +29,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see FrameUpdateListenerRegistration#repeat(double,
- *      Runnable)
+ * @see FrameUpdateListenerRegistration#repeat(double, Runnable)
  */
 public final class PeriodicTask implements FrameUpdateListener
 {

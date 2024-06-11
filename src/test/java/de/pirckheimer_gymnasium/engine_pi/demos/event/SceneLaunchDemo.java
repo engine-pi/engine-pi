@@ -35,10 +35,12 @@ public class SceneLaunchDemo
         Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 -> {
+            case KeyEvent.VK_1 ->
+            {
                 Game.transitionToScene(scene1);
             }
-            case KeyEvent.VK_2 -> {
+            case KeyEvent.VK_2 ->
+            {
                 Game.transitionToScene(scene2);
             }
             }

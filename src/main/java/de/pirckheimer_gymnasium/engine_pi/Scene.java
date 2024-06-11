@@ -62,8 +62,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
  * neu erzeugen zu müssen.
  */
-public class Scene implements KeyStrokeListenerRegistration, MouseClickListenerRegistration,
-        MouseWheelListenerRegistration, FrameUpdateListenerRegistration, ActorCreator
+public class Scene implements KeyStrokeListenerRegistration,
+        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        FrameUpdateListenerRegistration, ActorCreator
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 
@@ -219,7 +220,7 @@ public class Scene implements KeyStrokeListenerRegistration, MouseClickListenerR
      *
      * @return Die sichtbare Fläche auf der Hauptebene
      *
-     * @see Game#getFrameSizeInPixels()
+     * @see Game#getWindowSize()
      */
     @API
     public Bounds getVisibleArea(Vector gameSizeInPixels)

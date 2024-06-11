@@ -31,8 +31,8 @@ public interface KeyStrokeListenerRegistration
      * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
      * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
      * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren die
-     * Schnittstelle {@link KeyStrokeListenerRegistration} und stellen daher diese
-     * Methode zur Verfügung.
+     * Schnittstelle {@link KeyStrokeListenerRegistration} und stellen daher
+     * diese Methode zur Verfügung.
      *
      * Der {@link KeyStrokeListener} kann auf mehrere Arten implementiert
      * werden:

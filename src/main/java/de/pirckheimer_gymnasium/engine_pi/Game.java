@@ -129,12 +129,9 @@ public final class Game
 
     private static final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
 
-
     private static final EventListeners<MouseWheelListener> mouseWheelListeners = new EventListeners<>();
 
-
     private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
-
 
     private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
 
@@ -147,18 +144,6 @@ public final class Game
     public static void setTitle(String title)
     {
         frame.setTitle(title);
-    }
-
-    /**
-     * Gibt die Fenstergröße <b>in Pixel</b> aus.
-     *
-     * @return Ein Vector-Objekt, dessen Höhe und Breite mit Fensterhöhe &amp;
-     *         -breite übereinstimmt.
-     */
-    @API
-    public static Vector getFrameSizeInPixels()
-    {
-        return new Vector(width, height);
     }
 
     /**
@@ -182,11 +167,12 @@ public final class Game
         renderPanel = new RenderPanel(width, height);
         frame.setResizable(false);
         frame.add(renderPanel);
-        frame.pack();
-        // Center frame on screen - https://stackoverflow.com/a/144893/2373138
-        frame.setLocationRelativeTo(null);
         // pack() already allows to create the buffer strategy for rendering
         // (but not on Windows?)
+        frame.pack();
+        // Zentriert das Fenster auf dem Bildschirm -
+        // https://stackoverflow.com/a/144893/2373138
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         renderPanel.allocateBuffers();
         frame.addWindowListener(new WindowAdapter()
@@ -225,7 +211,6 @@ public final class Game
             addKeyStrokeListener(defaultControl);
             addFrameUpdateListener(defaultControl);
         }
-
     }
 
     /**
@@ -346,7 +331,7 @@ public final class Game
             java.awt.event.MouseWheelEvent event)
     {
         MouseWheelEvent mouseWheelEvent = new MouseWheelEvent(
-                 event.getPreciseWheelRotation());
+                event.getPreciseWheelRotation());
         loop.enqueue(() -> {
             mouseWheelListeners.invoke((listener) -> {
                 listener.onMouseWheelMove(mouseWheelEvent);
@@ -371,9 +356,9 @@ public final class Game
     public static FrameUpdateListener addFrameUpdateListener(
             FrameUpdateListener listener)
     {
-
         addSceneLaunchListener((next, previous) -> {
-            if (previous == null) {
+            if (previous == null)
+            {
                 loop.getFrameUpdateListener().add(listener);
             }
         });
@@ -398,7 +383,9 @@ public final class Game
      * KeyListener gilt global über das ganze Spiel und ist unabhängig von der
      * aktuellen Szene.
      *
-     * <p>Der {@link KeyListener} kann auf mehrere Arten implementiert werden:</p>
+     * <p>
+     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     * </p>
      *
      * <ol>
      * <li>Als normale Klasse:
@@ -456,7 +443,7 @@ public final class Game
 
     /**
      * Entfernt einen statischen {@link KeyStrokeListener} vom Objekt, d. h.
-     * einen KeyListener, der global für das ganze Spiele gilt.
+     * einen KeyListener, der global für das ganze Spiel gilt.
      *
      * @author Josef Friedrich
      *
@@ -552,9 +539,12 @@ public final class Game
      *
      * @param width  Die neue Breite des Engine-Fensters in Pixel.
      * @param height Die neue Höhe des Engine-Fensters in Pixel.
+     *
+     * @see #getWindowSize()
+     * @see #setWindowPosition(int, int)
      */
     @API
-    public static void setFrameSize(int width, int height)
+    public static void setWindowSize(int width, int height)
     {
         if (width <= 0 || height <= 0)
         {
@@ -579,16 +569,36 @@ public final class Game
     }
 
     /**
-     * Setzt die Fenster-Position auf dem Bildschirm.
-     * <p>
-     * Standard ist mittig.
-     * </p>
+     * Gibt die Fenstergröße <b>in Pixel</b> aus.
      *
-     * @param x X-Position
-     * @param y Y-Position
+     * @return Ein Vektor-Objekt, dessen Höhe und Breite mit der Fensterhöhe und
+     *         -breite übereinstimmt.
+     *
+     * @see #setWindowPosition(int, int)
+     * @see #setWindowSize(int, int)
      */
     @API
-    public static void setFramePosition(int x, int y)
+    public static Vector getWindowSize()
+    {
+        return new Vector(width, height);
+    }
+
+    /**
+     * Setzt das Spielfenster an eine neue Position.
+     *
+     * <p>
+     * Standardmäßig ist das Fenster mittig positioniert. Die Parameter x und y
+     * beziehen sich auf die linke obere Ecke der neuen Fenster-Position.
+     * </p>
+     *
+     * @param x Die x-Koordinate der linken oberen Ecke des Fensters in Pixel.
+     * @param y Die y-Koordinate der linken oberen Ecke des Fensters in Pixel.
+     *
+     * @see #getWindowSize()
+     * @see #setWindowSize(int, int)
+     */
+    @API
+    public static void setWindowPosition(int x, int y)
     {
         frame.setLocation(x, y);
     }
@@ -783,7 +793,7 @@ public final class Game
      *
      * @author Josef Friedrich
      *
-     * @return Eine Instanze der {@link Jukebox}.
+     * @return Eine Instanz der {@link Jukebox}.
      */
     public static Jukebox getJukebox()
     {

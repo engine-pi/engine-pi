@@ -55,8 +55,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  *
  * @author Michael Andonie
  */
-public class Layer implements KeyStrokeListenerRegistration, MouseClickListenerRegistration,
-        MouseWheelListenerRegistration, FrameUpdateListenerRegistration, ActorCreator
+public class Layer implements KeyStrokeListenerRegistration,
+        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        FrameUpdateListenerRegistration, ActorCreator
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
             .comparingInt(Actor::getLayerPosition);
@@ -429,7 +430,7 @@ public class Layer implements KeyStrokeListenerRegistration, MouseClickListenerR
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
     {
         double pixelPerMeter = calculatePixelPerMeter();
-        Vector frameSize = Game.getFrameSizeInPixels();
+        Vector frameSize = Game.getWindowSize();
         Vector cameraPositionInPx = new Vector(frameSize.getX() / 2,
                 frameSize.getY() / 2);
         Vector fromCamToPointInWorld = parent.getCamera().getPosition()
@@ -445,7 +446,7 @@ public class Layer implements KeyStrokeListenerRegistration, MouseClickListenerR
      * @return Die sichtbare Fläche als Bounds Objekt <b>mit Angaben in
      *         Meter</b>
      *
-     * @see Game#getFrameSizeInPixels()
+     * @see Game#getWindowSize()
      */
     @API
     public Bounds getVisibleArea(Vector gameSizeInPixels)
@@ -465,7 +466,7 @@ public class Layer implements KeyStrokeListenerRegistration, MouseClickListenerR
      *              setzen ist.
      *
      * @see #setVisibleHeight(double, Vector)
-     * @see Game#getFrameSizeInPixels()
+     * @see Game#getWindowSize()
      */
     @API
     public void setVisibleWidth(double width, Vector gameSizeInPixels)
@@ -483,7 +484,7 @@ public class Layer implements KeyStrokeListenerRegistration, MouseClickListenerR
      *               setzen ist.
      *
      * @see #setVisibleWidth(double, Vector)
-     * @see Game#getFrameSizeInPixels()
+     * @see Game#getWindowSize()
      */
     @API
     public void setVisibleHeight(double height, Vector gameSizeInPixels)

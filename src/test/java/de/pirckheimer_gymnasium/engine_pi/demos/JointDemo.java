@@ -36,7 +36,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
  * Einfaches Programm zur Demonstration von Joints in der Engine Created by
  * Michael on 12.04.2017.
  */
-public class JointDemo extends ForceKlickEnvironment implements KeyStrokeListener
+public class JointDemo extends ForceKlickEnvironment
+        implements KeyStrokeListener
 {
     private boolean schwerkraftActive = false;
 

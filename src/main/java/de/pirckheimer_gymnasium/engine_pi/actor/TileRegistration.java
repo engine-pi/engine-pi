@@ -64,7 +64,7 @@ public class TileRegistration extends Actor implements TileMap
      */
     @API
     public TileRegistration(int numX, int numY, double tileWidth,
-                            double tileHeight)
+            double tileHeight)
     {
         super(() -> FixtureBuilder.rectangle(tileWidth * numX,
                 tileHeight * numY));
