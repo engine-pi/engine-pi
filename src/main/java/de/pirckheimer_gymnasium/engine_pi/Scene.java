@@ -46,15 +46,15 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 
 /**
@@ -62,8 +62,8 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
  * neu erzeugen zu müssen.
  */
-public class Scene implements KeyStrokeListenerContainer, MouseClickListenerContainer,
-        MouseWheelListenerContainer, FrameUpdateListenerContainer, ActorCreator
+public class Scene implements KeyStrokeListenerRegistration, MouseClickListenerRegistration,
+        MouseWheelListenerRegistration, FrameUpdateListenerRegistration, ActorCreator
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 

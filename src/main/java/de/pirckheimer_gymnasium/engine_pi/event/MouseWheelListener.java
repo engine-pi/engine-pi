@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Implementierende Klassen können auf das Drehen des Mausrades reagieren.
+ * Implementierende Klassen können auf Bewegungen des Mausrads reagieren.
  *
  * @see MouseWheelEvent
  * @author Michael Andonie
@@ -35,7 +35,7 @@ public interface MouseWheelListener
      * Diese Methode wird immer dann aufgerufen, wenn das <b>Mausrad gedreht</b>
      * wurde.
      *
-     * @param event Das MouseWheelAction-Objekt beschreibt, wie das Mausrad
+     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das Mausrad
      *              gedreht wurde.
      * @see MouseWheelEvent
      */

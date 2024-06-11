@@ -23,14 +23,17 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Die Schnittstelle {@link FrameUpdateListenerContainer} definiert Methoden zur
+ * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf
+ * Aktualisierungen der Einzelbilder reagieren.
+ *
+ * Die Schnittstelle {@link FrameUpdateListenerRegistration} definiert Methoden zur
  * Zeitsteuerung. Sie wird von den Klassen
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
  * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
  * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren
  */
 @API
-public interface FrameUpdateListenerContainer
+public interface FrameUpdateListenerRegistration
 {
     /**
      * @return Liste der {@link FrameUpdateListener}

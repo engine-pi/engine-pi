@@ -28,7 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  *
  * @author Niklas Keller
  *
- * @see FrameUpdateListenerContainer#delay(double, Runnable)
+ * @see FrameUpdateListenerRegistration#delay(double, Runnable)
  */
 @Internal
 public final class SingleTask implements FrameUpdateListener
@@ -57,7 +57,7 @@ public final class SingleTask implements FrameUpdateListener
      * Container, an dem der Task angemeldet wird, wo er sich auch selbst wieder
      * abmeldet.
      */
-    private FrameUpdateListenerContainer parent;
+    private FrameUpdateListenerRegistration parent;
 
     /**
      * Konstruktor.
@@ -65,7 +65,7 @@ public final class SingleTask implements FrameUpdateListener
      * @param delayInSeconds Zeit zwischen den Ausführungen in Millisekunden.
      */
     public SingleTask(double delayInSeconds, Runnable runnable,
-            FrameUpdateListenerContainer parent)
+            FrameUpdateListenerRegistration parent)
     {
         this.delay = delayInSeconds;
         this.countdown = delayInSeconds;

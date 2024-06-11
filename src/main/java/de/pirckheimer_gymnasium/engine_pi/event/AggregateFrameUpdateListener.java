@@ -29,7 +29,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * @author Niklas Keller
  */
 public abstract class AggregateFrameUpdateListener
-        implements FrameUpdateListener, FrameUpdateListenerContainer
+        implements FrameUpdateListener, FrameUpdateListenerRegistration
 {
     private final EventListeners<FrameUpdateListener> listeners = new EventListeners<>();
 

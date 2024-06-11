@@ -31,7 +31,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
+import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
@@ -147,7 +147,7 @@ public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
         clouds.setParallaxPosition(xParallax, yParallax);
         clouds.setLayerPosition(layerLevel);
         final double SCALE = 0.08;
-        TileContainer cloudTiles = new TileContainer(NUM_TILES, 1, 384 * SCALE,
+        TileRegistration cloudTiles = new TileRegistration(NUM_TILES, 1, 384 * SCALE,
                 216 * SCALE);
         for (int i = 0; i < NUM_TILES; i++)
         {

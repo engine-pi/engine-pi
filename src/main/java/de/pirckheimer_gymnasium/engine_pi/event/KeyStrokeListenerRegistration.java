@@ -22,7 +22,7 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
-public interface KeyStrokeListenerContainer
+public interface KeyStrokeListenerRegistration
 {
     EventListeners<KeyStrokeListener> getKeyStrokeListeners();
 
@@ -31,7 +31,7 @@ public interface KeyStrokeListenerContainer
      * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
      * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
      * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren die
-     * Schnittstelle {@link KeyStrokeListenerContainer} und stellen daher diese
+     * Schnittstelle {@link KeyStrokeListenerRegistration} und stellen daher diese
      * Methode zur Verfügung.
      *
      * Der {@link KeyStrokeListener} kann auf mehrere Arten implementiert

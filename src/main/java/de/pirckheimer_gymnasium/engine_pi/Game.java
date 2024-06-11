@@ -37,15 +37,7 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
+import de.pirckheimer_gymnasium.engine_pi.event.*;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
@@ -462,7 +454,7 @@ public final class Game
      *
      * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer#addKeyStrokeListener(KeyStrokeListener)
+     * @see KeyStrokeListenerRegistration#addKeyStrokeListener(KeyStrokeListener)
      */
     public static void addKeyStrokeListener(KeyStrokeListener listener)
     {
@@ -477,7 +469,7 @@ public final class Game
      *
      * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer#removeKeyStrokeListener(KeyStrokeListener)
+     * @see KeyStrokeListenerRegistration#removeKeyStrokeListener(KeyStrokeListener)
      */
     public static void removeKeyStrokeListener(KeyStrokeListener listener)
     {

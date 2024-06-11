@@ -57,13 +57,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
@@ -83,8 +83,8 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  */
 @SuppressWarnings("OverlyComplexClass")
 public abstract class Actor
-        implements KeyStrokeListenerContainer, MouseClickListenerContainer,
-        MouseWheelListenerContainer, FrameUpdateListenerContainer
+        implements KeyStrokeListenerRegistration, MouseClickListenerRegistration,
+        MouseWheelListenerRegistration, FrameUpdateListenerRegistration
 {
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
     {

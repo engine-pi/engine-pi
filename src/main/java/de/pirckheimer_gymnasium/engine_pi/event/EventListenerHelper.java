@@ -24,28 +24,28 @@ public class EventListenerHelper
 {
     public static void autoRegisterListeners(Object target)
     {
-        if (target instanceof KeyStrokeListenerContainer
+        if (target instanceof KeyStrokeListenerRegistration
                 && target instanceof KeyStrokeListener)
         {
-            ((KeyStrokeListenerContainer) target)
+            ((KeyStrokeListenerRegistration) target)
                     .addKeyStrokeListener((KeyStrokeListener) target);
         }
-        if (target instanceof MouseClickListenerContainer
+        if (target instanceof MouseClickListenerRegistration
                 && target instanceof MouseClickListener)
         {
-            ((MouseClickListenerContainer) target)
+            ((MouseClickListenerRegistration) target)
                     .addMouseClickListener((MouseClickListener) target);
         }
-        if (target instanceof MouseWheelListenerContainer
+        if (target instanceof MouseWheelListenerRegistration
                 && target instanceof MouseWheelListener)
         {
-            ((MouseWheelListenerContainer) target)
+            ((MouseWheelListenerRegistration) target)
                     .addMouseWheelListener((MouseWheelListener) target);
         }
-        if (target instanceof FrameUpdateListenerContainer
+        if (target instanceof FrameUpdateListenerRegistration
                 && target instanceof FrameUpdateListener)
         {
-            ((FrameUpdateListenerContainer) target)
+            ((FrameUpdateListenerRegistration) target)
                     .addFrameUpdateListener((FrameUpdateListener) target);
         }
     }

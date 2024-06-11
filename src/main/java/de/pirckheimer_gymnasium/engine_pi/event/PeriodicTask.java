@@ -29,7 +29,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer#repeat(double,
+ * @see FrameUpdateListenerRegistration#repeat(double,
  *      Runnable)
  */
 public final class PeriodicTask implements FrameUpdateListener
@@ -54,7 +54,7 @@ public final class PeriodicTask implements FrameUpdateListener
      * Aufgabe angemeldet wurde. Diese Referenz wird dazu verwendet, um die
      * periodische Ausführung abzumelden und dadurch zu stoppen.
      */
-    private FrameUpdateListenerContainer container;
+    private FrameUpdateListenerRegistration container;
 
     /**
      * Gibt an, ob die Aufgabe pausiert ist.
@@ -79,7 +79,7 @@ public final class PeriodicTask implements FrameUpdateListener
      * @author Josef Friedrich
      */
     public PeriodicTask(double intervalInSeconds, Runnable runnable,
-            FrameUpdateListenerContainer container)
+            FrameUpdateListenerRegistration container)
     {
         setInterval(intervalInSeconds);
         this.countdown = intervalInSeconds;

@@ -23,10 +23,10 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Eine Schnittstelle für einen Behälter, der Beobachter enthält, die auf
+ * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf
  * Bewegungen des Mausrads reagieren.
  */
-public interface MouseWheelListenerContainer
+public interface MouseWheelListenerRegistration
 {
     EventListeners<MouseWheelListener> getMouseWheelListeners();
 

@@ -25,7 +25,7 @@ import java.util.List;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.Tile;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
+import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
 
 public class HUDDisplay
@@ -34,9 +34,9 @@ public class HUDDisplay
 
     private static final double SCALE = 1.5;
 
-    private final TileContainer background;
+    private final TileRegistration background;
 
-    private final TileContainer lines;
+    private final TileRegistration lines;
 
     private final TileMap[] lineSources = { //
             TileMap.createFromImage("dude/hud/orb_red.png", 8, 16), // Line
@@ -67,7 +67,7 @@ public class HUDDisplay
      */
     public HUDDisplay(double x, double y)
     {
-        background = new TileContainer(VALUE_LENGTH + 7, 4, 8 * SCALE,
+        background = new TileRegistration(VALUE_LENGTH + 7, 4, 8 * SCALE,
                 16 * SCALE);
         // Initialize Standard-Parts of backgrounds.
         for (int i = 0; i < 4; i++)
@@ -95,7 +95,7 @@ public class HUDDisplay
         background.setTile(2, 3, NUM_BLACK.getTile(2, 2));
         background.setTile(3, 3, NUM_BLACK.getTile(3, 2));
         // LINE CONTENT
-        lines = new TileContainer(VALUE_LENGTH, 4, 8 * SCALE, 16 * SCALE);
+        lines = new TileRegistration(VALUE_LENGTH, 4, 8 * SCALE, 16 * SCALE);
         background.setPosition(x, y);
         lines.setPosition(x, y);
         lines.moveBy(5 * 8 * SCALE, 0);

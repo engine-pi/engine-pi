@@ -22,7 +22,7 @@ package de.pirckheimer_gymnasium.engine_pi.demos.small_games.dude;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Tile;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
+import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
 
 /**
@@ -30,7 +30,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
  * "https://www.gameart2d.com/free-graveyard-platformer-tileset.html">Billard
  * Art 2D</a> für die kostenfreien Tiles.
  */
-public class Platform extends TileContainer
+public class Platform extends TileRegistration
 {
     private static final int SIZE = 2;
 

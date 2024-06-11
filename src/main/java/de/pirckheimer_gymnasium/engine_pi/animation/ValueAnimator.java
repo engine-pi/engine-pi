@@ -25,7 +25,7 @@ import java.util.function.Consumer;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
 
 public class ValueAnimator<Value> implements FrameUpdateListener
 {
@@ -52,7 +52,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
 
     public ValueAnimator(double duration, Consumer<Value> consumer,
             Interpolator<Value> interpolator, AnimationMode mode,
-            FrameUpdateListenerContainer parent)
+            FrameUpdateListenerRegistration parent)
     {
         this.duration = duration;
         this.consumer = consumer;
@@ -95,7 +95,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
 
     public ValueAnimator(double duration, Consumer<Value> consumer,
             Interpolator<Value> interpolator,
-            FrameUpdateListenerContainer parent)
+            FrameUpdateListenerRegistration parent)
     {
         this(duration, consumer, interpolator, AnimationMode.SINGLE, parent);
     }

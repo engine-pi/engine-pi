@@ -41,7 +41,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.actor.PrismaticJoint;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
+import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
 import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
 import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
@@ -105,7 +105,7 @@ public class CarDemo extends ShowcaseDemo implements FrameUpdateListener
         createHill(45, range(1, 2));
         Layer decoration = new Layer();
         decoration.setLayerPosition(-1);
-        var tiles = new TileContainer(27, 1, .5);
+        var tiles = new TileRegistration(27, 1, .5);
         tiles.setPosition(-9, -10);
         tiles.setBodyType(BodyType.STATIC);
         for (int i = 0; i < tiles.getTileCountX(); i++)

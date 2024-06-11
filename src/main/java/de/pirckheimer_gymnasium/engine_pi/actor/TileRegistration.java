@@ -34,7 +34,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
  *
  * @author Michael Andonie
  */
-public class TileContainer extends Actor implements TileMap
+public class TileRegistration extends Actor implements TileMap
 {
     /**
      * Die IDs der aktuellen Tiles des Containers.
@@ -63,8 +63,8 @@ public class TileContainer extends Actor implements TileMap
      * @see #setTile(int, int, Tile)
      */
     @API
-    public TileContainer(int numX, int numY, double tileWidth,
-            double tileHeight)
+    public TileRegistration(int numX, int numY, double tileWidth,
+                            double tileHeight)
     {
         super(() -> FixtureBuilder.rectangle(tileWidth * numX,
                 tileHeight * numY));
@@ -104,7 +104,7 @@ public class TileContainer extends Actor implements TileMap
      * @see #setTile(int, int, Tile)
      */
     @API
-    public TileContainer(int numX, int numY, double tileSize)
+    public TileRegistration(int numX, int numY, double tileSize)
     {
         this(numX, numY, tileSize, tileSize);
     }

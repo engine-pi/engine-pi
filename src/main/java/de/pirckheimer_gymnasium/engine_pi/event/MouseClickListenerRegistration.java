@@ -20,7 +20,11 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.event;
 
-public interface MouseClickListenerContainer
+/**
+ * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf
+ * das Klicken der Maustasten reagieren.
+ */
+public interface MouseClickListenerRegistration
 {
     EventListeners<MouseClickListener> getMouseClickListeners();
 
