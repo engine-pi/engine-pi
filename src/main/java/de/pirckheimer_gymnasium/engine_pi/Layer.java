@@ -110,7 +110,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
     /**
-     * Erstellt ein neues Layer.
+     * Erstellt eine neue Ebene.
      */
     @API
     public Layer()
@@ -209,7 +209,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt den Parallaxenwert beim Zoom für dieses Layer:
+     * Setzt den Parallaxenwert beim Zoom für diese Ebene:
      * <ul>
      * <li><code>1</code>: Normaler Zoom mit der Kamera</li>
      * <li><code>0</code>: Kamerazoom hat keinen Einfluss auf dieses Layer.</li>
@@ -228,7 +228,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Parallaxe der Rotation. Dieses Layer wird um
+     * Setzt die Parallaxe der Rotation. Diese Ebene wird um
      * <code>[kamerarotation] * parallaxRotation</code> rotiert.
      *
      * @param parallaxRotation Die Rotationsparallaxe.
@@ -314,7 +314,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Schwerkraft die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
+     * Setzt die Schwerkraft, die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
      * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
      *
      * @see Scene#setGravityOfEarth
@@ -326,10 +326,10 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt, ob dieses Layer sichtbar sein soll.
+     * Setzt, ob diese Ebene sichtbar sein soll.
      *
-     * @param visible <code>true</code>: Das Layer ist sichtbar, wenn es an
-     *                einer Szene angemeldet ist. <code>false</code>: Das Layer
+     * @param visible <code>true</code>: Die Ebene ist sichtbar, wenn es an
+     *                einer Szene angemeldet ist. <code>false</code>: Die Ebene
      *                ist auch dann nicht sichtbar, wenn es an einer Szene
      *                angemeldet ist.
      *
@@ -344,8 +344,8 @@ public class Layer implements KeyStrokeListenerRegistration,
     /**
      * Gibt an, ob dieses Layer gerade sichtbar ist.
      *
-     * @return <code>true</code>: Das Layer ist sichtbar. <code>false</code>:
-     *         Das Layer ist nicht sichtbar.
+     * @return <code>true</code>: Die Ebene ist sichtbar. <code>false</code>:
+     *         Die Ebene ist nicht sichtbar.
      *
      * @see #setVisible(boolean)
      */
@@ -422,7 +422,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @param worldPoint Ein Punkt auf dem Layer
      *
-     * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, Y-Achse ist
+     * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse ist
      *         umgekehrt), der mit der aktuellen Kameraeinstellung dem
      *         angegebenen <code>worldPoint</code> entspricht
      */
