@@ -301,9 +301,9 @@ public final class Game
 
     private static void run()
     {
+        loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
         sceneLaunchListeners.invoke((listener) -> listener
                 .onSceneLaunch(Game.getActiveScene(), null));
-        loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
         loop.run();
         frame.setVisible(false);
         frame.dispose();
@@ -372,16 +372,11 @@ public final class Game
             FrameUpdateListener listener)
     {
 
-        if (loop == null)
-        {
-            addSceneLaunchListener((next, previous) -> {
-                if (previous == null) {
-                    loop.getFrameUpdateListener().add(listener);
-                }
-            });
-        } else {
-            loop.getFrameUpdateListener().add(listener);
-        }
+        addSceneLaunchListener((next, previous) -> {
+            if (previous == null) {
+                loop.getFrameUpdateListener().add(listener);
+            }
+        });
         return listener;
     }
 
