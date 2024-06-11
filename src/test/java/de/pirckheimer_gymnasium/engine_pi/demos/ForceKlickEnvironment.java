@@ -122,7 +122,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         Rectangle boden = new Rectangle(FIELD_WIDTH, 1);
         boden.setPosition(0, FIELD_DEPTH);
         boden.setColor(Color.WHITE);
-        boden.setBodyType(BodyType.STATIC);
+        boden.makeStatic();
         // Der Rest der Wände
         Rectangle links = new Rectangle(1, FIELD_DEPTH);
         Rectangle rechts = new Rectangle(1, FIELD_DEPTH);
@@ -135,7 +135,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         {
             walls[i].setColor(Color.WHITE);
             walls[i].setVisible(false);
-            walls[i].setBodyType(BodyType.SENSOR);
+            walls[i].makeSensor();
         }
         // Vector-Visualisierung
         Rectangle stab = new Rectangle(1, 0.5);

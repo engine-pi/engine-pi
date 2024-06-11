@@ -109,7 +109,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         decoration.setLayerPosition(-1);
         var tiles = new TileRegistration(27, 1, .5);
         tiles.setPosition(-9, -10);
-        tiles.setBodyType(BodyType.STATIC);
+        tiles.makeStatic();
         for (int i = 0; i < tiles.getTileCountX(); i++)
         {
             tiles.setTile(i, 0, TileMap.createFromImage("car/tile01.png"));
@@ -131,7 +131,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
     {
         Image image = new Image("car/background-color-grass.png", 10, 10);
         image.setPosition(x, -7);
-        image.setBodyType(BodyType.STATIC);
+        image.makeStatic();
         return image;
     }
 
@@ -144,7 +144,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             rope[i] = new RopeSegment(.8, 0.2);
             rope[i].setPosition(startX + i + 0.1, -10.2);
             rope[i].setColor(new Color(175, 90, 30));
-            rope[i].setBodyType(BodyType.DYNAMIC);
+            rope[i].makeDynamic();
             rope[i].setDensity(150);
             rope[i].setFriction(GROUND_FRICTION);
             rope[i].setElasticity(GROUND_RESTITUTION);
@@ -192,7 +192,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
                             -10 + Math.cos(Math.toRadians(j / 2f * 18 + offset))
                                     * height + height));
             ground.moveBy(0, -0.01);
-            ground.setBodyType(BodyType.STATIC);
+            ground.makeStatic();
             ground.setColor(GROUND_COLOR);
             ground.setFriction(GROUND_FRICTION);
             ground.setElasticity(GROUND_RESTITUTION);
@@ -298,7 +298,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             super(endX - startX, 10);
             setPosition(startX, -20);
             setColor(GROUND_COLOR);
-            setBodyType(BodyType.STATIC);
+            makeStatic();
             setFriction(GROUND_FRICTION);
             setElasticity(GROUND_RESTITUTION);
             setDensity(150);
@@ -324,7 +324,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         {
             super(.2, .9);
             setCenter(cx, cy);
-            setBodyType(BodyType.DYNAMIC);
+            makeDynamic();
             setColor(new Color(255, 255, 255, 0));
             setDensity(50);
             this.carBody = carBody;
@@ -362,7 +362,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             setFixture(() -> FixtureBuilder.circle(.7, .7, .7));
             setCenter(cx, cy);
             setDensity(100);
-            setBodyType(BodyType.DYNAMIC);
+            makeDynamic();
             setFriction(.5);
             setElasticity(.2);
             setDensity(150);
@@ -426,7 +426,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         {
             super("car/truck-240px.png", 4, 1.2);
             setCenter(cx, cy);
-            setBodyType(BodyType.DYNAMIC);
+            makeDynamic();
             setDensity(100);
             setAngularDamping(0.3);
             setFriction(0.5);

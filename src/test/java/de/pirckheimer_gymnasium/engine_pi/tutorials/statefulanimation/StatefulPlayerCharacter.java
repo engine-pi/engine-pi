@@ -73,7 +73,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private void setupPhysics()
     {
-        setBodyType(BodyType.DYNAMIC);
+        makeDynamic();
         setRotationLocked(true);
         setElasticity(0);
         setFriction(30);

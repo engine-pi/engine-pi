@@ -20,7 +20,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         createBorder(-5, -5, true);
         createBorder(4, -5, true);
         rectangle = new Rectangle(1, 1);
-        rectangle.setBodyType(BodyType.DYNAMIC);
+        rectangle.makeDynamic();
         add(rectangle);
     }
 
@@ -29,7 +29,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         Rectangle rectangle = !vertical ? new Rectangle(10, 1)
                 : new Rectangle(1, 10);
         rectangle.setPosition(x, y);
-        rectangle.setBodyType(BodyType.STATIC);
+        rectangle.makeStatic();
         add(rectangle);
         return rectangle;
     }

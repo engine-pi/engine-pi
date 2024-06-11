@@ -209,7 +209,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
             super(2, 8);
             this.ball = ball;
             setVisible(false);
-            setBodyType(BodyType.SENSOR);
+            makeSensor();
             addCollisionListener(Frog.class, this);
             setGravityScale(0);
         }

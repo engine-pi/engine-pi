@@ -38,7 +38,7 @@ public class Box extends Image
     public Box(int type)
     {
         super(getBoxPath(type), SIZE, SIZE);
-        setBodyType(BodyType.DYNAMIC);
+        makeDynamic();
         // setMass(MASS_IN_KG);
         setElasticity(RESTITUTION);
     }

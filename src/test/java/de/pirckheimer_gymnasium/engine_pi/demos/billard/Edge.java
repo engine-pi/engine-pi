@@ -38,6 +38,6 @@ public class Edge extends Polygon
                 new Vector(WIDTH - HEIGHT, HEIGHT), new Vector(WIDTH, 0));
         setPosition(x, y);
         setColor(new Color(45, 90, 40));
-        setBodyType(BodyType.STATIC);
+        makeStatic();
     }
 }

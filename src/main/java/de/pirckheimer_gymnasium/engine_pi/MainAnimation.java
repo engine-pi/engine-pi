@@ -172,7 +172,7 @@ public final class MainAnimation
             private final List<Actor> items = new ArrayList<>();
             {
                 Image image = new Image("assets/logo.png", 25);
-                image.setBodyType(BodyType.STATIC);
+                image.makeStatic();
                 image.setCenter(0, -3);
                 add(image);
                 setGravity(new Vector(0, -9.81));
@@ -180,7 +180,7 @@ public final class MainAnimation
                 ground.setCenter(0, -6);
                 ground.setElasticity(.9);
                 ground.setFriction(.2);
-                ground.setBodyType(BodyType.STATIC);
+                ground.makeStatic();
                 add(ground);
                 for (int i = 0; i < 3; i++)
                 {
@@ -188,7 +188,7 @@ public final class MainAnimation
                     a.setPosition(-5, -2);
                     a.setElasticity(.9);
                     a.setFriction(1);
-                    a.setBodyType(BodyType.DYNAMIC);
+                    a.makeDynamic();
                     a.setColor(new Color(26, 113, 156));
                     a.setRotation(30);
                     spawnItem(a);
@@ -196,7 +196,7 @@ public final class MainAnimation
                     b.setPosition(5, -1);
                     b.setElasticity(.9);
                     b.setFriction(1);
-                    b.setBodyType(BodyType.DYNAMIC);
+                    b.makeDynamic();
                     b.setColor(new Color(158, 5, 5));
                     b.applyImpulse(new Vector(Random.range(-100, 100), 0));
                     spawnItem(b);
@@ -204,7 +204,7 @@ public final class MainAnimation
                             new Vector(.5, 1));
                     c.setElasticity(.9);
                     c.setFriction(1);
-                    c.setBodyType(BodyType.DYNAMIC);
+                    c.makeDynamic();
                     c.setColor(new Color(25, 159, 69));
                     c.setRotation(-20);
                     spawnItem(c);
@@ -218,7 +218,7 @@ public final class MainAnimation
                         .5);
                 text.setPosition(-10, -7f);
                 text.setColor(Color.WHITE);
-                text.setBodyType(BodyType.STATIC);
+                text.makeStatic();
                 add(text);
                 addFrameUpdateListener(time -> {
                     for (Actor item : items)

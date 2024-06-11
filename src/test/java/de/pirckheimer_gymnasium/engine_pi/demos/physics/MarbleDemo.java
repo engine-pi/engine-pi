@@ -77,7 +77,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
             {
                 r.setColor(Color.WHITE);
                 add(r);
-                r.setBodyType(BodyType.STATIC);
+                r.makeStatic();
             }
             setGravity(new Vector(0, -30));
             slantedLeft.setRotation(45);
@@ -98,7 +98,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
         repeat(0.2, () -> {
             Circle marble = makeMarble();
             add(marble);
-            marble.setBodyType(BodyType.DYNAMIC);
+            marble.makeDynamic();
             marble.setPosition(0, 500);
             marble.applyImpulse(new Vector(Random.range() * 200 - 100,
                     Random.range() * -300 - 100));
@@ -106,7 +106,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
         ground = new Rectangle(Funnel.NARROW_RADIUS * 2 + Funnel.THICKNESS,
                 Funnel.THICKNESS);
         ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
-        ground.setBodyType(BodyType.STATIC);
+        ground.makeStatic();
         add(ground);
         getCamera().setMeter(0.5);
     }
@@ -116,12 +116,12 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
     {
         if (ground.getBodyType() == BodyType.STATIC)
         {
-            ground.setBodyType(BodyType.SENSOR);
+            ground.makeSensor();
             ground.setColor(new Color(255, 255, 255, 100));
         }
         else
         {
-            ground.setBodyType(BodyType.STATIC);
+            ground.makeStatic();
             ground.setColor(Color.WHITE);
         }
     }
@@ -156,7 +156,7 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
             }
         }
         Circle marble = new Marble(Random.range(20) + 10);
-        marble.setBodyType(BodyType.DYNAMIC);
+        marble.makeDynamic();
         marble.setGravityScale(2);
         marble.setColor(new Color(Random.range(255), Random.range(255),
                 Random.range(255)));

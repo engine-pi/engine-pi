@@ -59,19 +59,18 @@ public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
         character = new PlayerCharacter(gameData);
         character.setPosition(0, 0);
         character.setRotationLocked(true);
-        character.setBodyType(BodyType.DYNAMIC);
+        character.makeDynamic();
         /*
          * weird = new Rectangle(2, 0.2); weird.setColor(Color.ORANGE);
-         * weird.setBodyType(BodyType.DYNAMIC); weird.setPosition(0.3, 0.6);
+         * weird.makeDynamic(); weird.setPosition(0.3, 0.6);
          *
          * Rectangle weird2 = new Rectangle(2, 0.2);
-         * weird2.setColor(Color.GREEN); weird2.setBodyType(BodyType.DYNAMIC);
+         * weird2.setColor(Color.GREEN); weird2.makeDynamic();
          * weird2.setPosition(2, 0.6); weird2.createRevoluteJoint(weird, new
          * Vector(0.1, 0.1)); add(weird2);
          *
          * Rectangle boxy = new Rectangle(0.2, 0.2); boxy.setColor(Color.WHITE);
-         * boxy.setBodyType(BodyType.DYNAMIC); boxy.setPosition(3, 0);
-         * //boxy.move(10, 10);
+         * boxy.makeDynamic(); boxy.setPosition(3, 0); //boxy.move(10, 10);
          */
         add(character);
         // add(weird);

@@ -69,7 +69,7 @@ public class JointDemo extends ForceKlickEnvironment
         add(ball);
         ball.setColor(Color.BLUE);
         ball.setPosition(new Vector(300, 200));
-        ball.setBodyType(BodyType.DYNAMIC);
+        ball.makeDynamic();
     }
 
     private void hoverHolderBauen()
@@ -82,11 +82,11 @@ public class JointDemo extends ForceKlickEnvironment
                 new Vector(75 * FACT, 100 * FACT),
                 new Vector(0 * FACT, 100 * FACT));
         halter.setColor(Color.CYAN);
-        halter.setBodyType(BodyType.DYNAMIC);
+        halter.makeDynamic();
         Rectangle item = new Rectangle(35 * FACT, 20 * FACT);
         item.setPosition(30 * FACT, 0);
         item.setColor(Color.red);
-        item.setBodyType(BodyType.DYNAMIC);
+        item.makeDynamic();
         halter.createDistanceJoint(item, halter.getCenter(), item.getCenter());
     }
 
@@ -94,11 +94,11 @@ public class JointDemo extends ForceKlickEnvironment
     {
         Circle kx = new Circle(30);
         kx.setColor(Color.BLUE);
-        kx.setBodyType(BodyType.DYNAMIC);
+        kx.makeDynamic();
         Circle ky = new Circle(50);
         ky.setPosition(50, 0);
         ky.setColor(Color.GREEN);
-        ky.setBodyType(BodyType.DYNAMIC);
+        ky.makeDynamic();
         kx.createRopeJoint(ky,
                 // kx.position.mittelPoint().alsVector(),
                 // ky.position.mittelPoint().alsVector(), 4);
@@ -109,10 +109,10 @@ public class JointDemo extends ForceKlickEnvironment
     {
         basis = new Polygon(new Vector(0, 100), new Vector(100, 100),
                 new Vector(50, 0));
-        basis.setBodyType(BodyType.STATIC);
+        basis.makeStatic();
         basis.setColor(Color.WHITE);
         wippe = new Rectangle(500, 40);
-        wippe.setBodyType(BodyType.DYNAMIC);
+        wippe.makeDynamic();
         wippe.setCenter(50, 0);
         wippe.setColor(Color.GRAY);
         Vector verzug = new Vector(100, 100);
@@ -139,7 +139,7 @@ public class JointDemo extends ForceKlickEnvironment
         }
         Circle gewicht = new Circle(100);
         gewicht.setColor(Color.WHITE);
-        gewicht.setBodyType(BodyType.DYNAMIC);
+        gewicht.makeDynamic();
         // gewicht.setMass(40);
         Vector vektor = new Vector(45 * kette.length, 35);
         gewicht.setCenter(new Vector(vektor.getX(), vektor.getY()));

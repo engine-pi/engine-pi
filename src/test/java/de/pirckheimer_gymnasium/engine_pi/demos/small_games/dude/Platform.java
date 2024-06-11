@@ -50,7 +50,7 @@ public class Platform extends TileRegistration
         setLeftTile(TileMap.createFromImage(basePath + "platform_l.png"));
         setMiddleTiles(TileMap.createFromImage(basePath + "platform_m.png"));
         setRightTile(TileMap.createFromImage(basePath + "platform_r.png"));
-        setBodyType(BodyType.STATIC);
+        makeStatic();
         setFriction(FRICTION);
         setElasticity(0);
     }

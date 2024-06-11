@@ -58,7 +58,7 @@ public class StatefulAnimationDemo extends Scene
     {
         Rectangle r = new Rectangle(w, h);
         r.setColor(new Color(0, 194, 255));
-        r.setBodyType(BodyType.STATIC);
+        r.makeStatic();
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(FixtureBuilder
                 .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
@@ -88,7 +88,7 @@ public class StatefulAnimationDemo extends Scene
     private Circle makeBall(double d)
     {
         Circle circle = new Circle(d);
-        circle.setBodyType(BodyType.DYNAMIC);
+        circle.makeDynamic();
         add(circle);
         return circle;
     }

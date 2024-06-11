@@ -43,7 +43,7 @@ public class BasketballThrowDemo extends Scene
 
     public BasketballThrowDemo()
     {
-        setGravity(new Vector(0, -9.81));
+        setGravityOfEarth();
         getCamera().setMeter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
         getMainLayer()
@@ -60,7 +60,7 @@ public class BasketballThrowDemo extends Scene
         basket = new Rectangle(1.5, 0.05);
         basket.setColor(Color.RED);
         basket.setPosition(3, 0.5);
-        basket.setBodyType(BodyType.SENSOR);
+        basket.makeSensor();
         basket.setGravityScale(0);
         basket.addCollisionListener(ball,
                 event -> defer(() -> basket.setX(-basket.getX())));
@@ -80,7 +80,7 @@ public class BasketballThrowDemo extends Scene
             super("shots/ball.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
             setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
-            setBodyType(BodyType.DYNAMIC);
+            makeDynamic();
             setElasticity(0.85);
             setFriction(0.1);
         }
@@ -93,7 +93,7 @@ public class BasketballThrowDemo extends Scene
             super("shots/shadow.png", 0.3, 0.3);
             setPosition(x + .15, y + .15);
             setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
-            setBodyType(BodyType.SENSOR);
+            makeSensor();
             setGravityScale(0);
             setRotationLocked(true);
         }
@@ -106,7 +106,7 @@ public class BasketballThrowDemo extends Scene
             super(width, height);
             setPosition(x, y);
             setColor(Color.WHITE);
-            setBodyType(BodyType.STATIC);
+            makeStatic();
             setFriction(.05);
             setElasticity(.3);
             setDensity(150);

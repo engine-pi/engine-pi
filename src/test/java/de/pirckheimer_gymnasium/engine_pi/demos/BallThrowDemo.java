@@ -118,7 +118,7 @@ public class BallThrowDemo extends ShowcaseDemo
         ball = new Circle(DURCHMESSER * PIXEL_PER_METER);
         add(ball);
         ball.setColor(Color.RED);
-        ball.setBodyType(BodyType.DYNAMIC);
+        ball.makeDynamic();
         ball.setDensity(MASSE);
         ball.setCenter(DISTANCE_LEFT,
                 GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
@@ -128,7 +128,7 @@ public class BallThrowDemo extends ShowcaseDemo
         ground.setPosition(0, GROUND_DEPTH);
         add(ground);
         ground.setColor(Color.WHITE);
-        ground.setBodyType(BodyType.STATIC);
+        ground.makeStatic();
         // Kollision zwischen Ball und Boden beobachten (Code ist uns egal, wir
         // kennen nur einen Kollisionsfall)
         ball.addCollisionListener(ground, this);
