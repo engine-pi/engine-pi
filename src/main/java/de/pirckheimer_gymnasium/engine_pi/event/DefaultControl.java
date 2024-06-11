@@ -7,14 +7,18 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
- * Registriert einige grundlegenden Kontrollmöglichkeiten.
+ * Registriert wenige grundlegenden Maus- und Tastatur-Steuermöglichkeiten.
  *
- * <p>
- * Beispielsweise werden Tastenkürzel registriert, die standardmäßig mit der
- * Engine mitgeliefert werden (z. B. ESC zum Schließen des Fensters, Alt+d zum
- * An- und Ausschalten des Debug-Modus, Alt+Pfeiltasten zum Bewegen der Kamera,
- * Alt+Mausrad zum Einstellen des Zoomfaktors.).
- * </p>
+ * <ul>
+ * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
+ * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+ * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
+ * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
+ * </ul>
+ *
+ * @see Game#getDefaultControl()
+ * @see Game#setDefaultControl(DefaultListener)
+ * @see Game#removeDefaultControl()
  */
 public class DefaultControl implements DefaultListener
 {
@@ -35,6 +39,16 @@ public class DefaultControl implements DefaultListener
         return Game.getActiveScene() == null;
     }
 
+    /**
+     * Registriert wenige Standard-Tastenkürzel:
+     * <ul>
+     * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
+     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+     *
+     * </ul>
+     *
+     * @param e Das KeyEvent von AWT.
+     */
     @Override
     public void onKeyDown(KeyEvent e)
     {
@@ -47,13 +61,17 @@ public class DefaultControl implements DefaultListener
                 Game.toggleDebug();
             }
         }
-        case KeyEvent.VK_ESCAPE ->
-        {
-            Game.exit();
-        }
+        case KeyEvent.VK_ESCAPE -> Game.exit();
         }
     }
 
+    /**
+     * Bewegt die Kamera, wenn {@code ALT} und die {@code Pfeiltasten} gedrückt
+     * werden.
+     *
+     * @param delta Die Zeit <b>in Sekunden</b>, die seit der letzten
+     *              Aktualisierung vergangen ist.
+     */
     @Override
     public void onFrameUpdate(double delta)
     {
@@ -92,6 +110,13 @@ public class DefaultControl implements DefaultListener
         }
     }
 
+    /**
+     * Verändert den Zoomfaktor der Kamera, wenn gleichzeitig {@code ALT} und
+     * das Mausrad benutzt wird.
+     *
+     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das
+     *              Mausrad gedreht wurde.
+     */
     @Override
     public void onMouseWheelMove(MouseWheelEvent event)
     {

@@ -250,31 +250,49 @@ public final class Game
         System.exit(0);
     }
 
+    /**
+     * Gibt die momentan registrierten, grundlegenden Maus- und
+     * Tastatur-Steuermöglichkeiten zurück.
+     *
+     * @return Die registrierten, grundlegenden Maus- und
+     *         Tastatur-Steuermöglichkeiten.
+     */
     public static DefaultListener getDefaultControl()
     {
         return defaultControl;
     }
 
+    /**
+     * Registriert grundlegende Maus- und Tastatur-Steuermöglichkeiten.
+     *
+     * @param control Die grundlegenden Maus- und Tastatur-Steuermöglichkeiten.
+     */
     public static void setDefaultControl(DefaultListener control)
     {
         defaultControl = control;
-        addKeyStrokeListener(defaultControl);
-        addFrameUpdateListener(defaultControl);
-        addMouseWheelListener(defaultControl);
-        addMouseClickListener(defaultControl);
+        if (control != null)
+        {
+            addFrameUpdateListener(defaultControl);
+            addKeyStrokeListener(defaultControl);
+            addMouseClickListener(defaultControl);
+            addMouseWheelListener(defaultControl);
+        }
     }
 
     /**
-     * @see DefaultControl
+     * Meldet die grundlegenden Maus- und Tastatur-Steuermöglichkeiten ab.
+     *
+     * @see DefaultControl Die grundlegenden Maus- und
+     *      Tastatur-Steuermöglichkeiten.
      */
     public static void removeDefaultControl()
     {
         if (defaultControl != null)
         {
-            removeKeyStrokeListener(defaultControl);
             removeFrameUpdateListener(defaultControl);
-            removeMouseWheelListener(defaultControl);
+            removeKeyStrokeListener(defaultControl);
             removeMouseClickListener(defaultControl);
+            removeMouseWheelListener(defaultControl);
             defaultControl = null;
         }
     }

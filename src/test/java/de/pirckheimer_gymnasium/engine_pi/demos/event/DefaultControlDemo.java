@@ -21,7 +21,6 @@ package de.pirckheimer_gymnasium.engine_pi.demos.event;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
-import de.pirckheimer_gymnasium.engine_pi.event.DefaultListener;
 
 import java.awt.event.KeyEvent;
 
