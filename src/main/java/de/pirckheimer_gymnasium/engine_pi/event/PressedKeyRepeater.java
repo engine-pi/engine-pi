@@ -12,7 +12,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
  *
  * @author Josef Friedrich
  */
-public class PressedKeyRepeater implements KeyListener
+public class PressedKeyRepeater implements KeyStrokeListener
 {
     private List<Task> tasks;
 
@@ -28,7 +28,7 @@ public class PressedKeyRepeater implements KeyListener
      */
     private double defaultInitialInterval = 0.15;
 
-    private class Executor implements FrameUpdateListener, KeyListener
+    private class Executor implements FrameUpdateListener, KeyStrokeListener
     {
         private double countdown;
 
@@ -38,7 +38,7 @@ public class PressedKeyRepeater implements KeyListener
         {
             this.task = task;
             countdown = task.getInitialInterval();
-            Game.addKeyListener(this);
+            Game.addKeyStrokeListener(this);
             Game.addFrameUpdateListener(this);
             task.runInitialTask();
             task.runRepeatedTask();
@@ -63,7 +63,7 @@ public class PressedKeyRepeater implements KeyListener
         public void stop()
         {
             Game.removeFrameUpdateListener(this);
-            Game.removeKeyListener(this);
+            Game.removeKeyStrokeListener(this);
             task.runFinalTask();
         }
 
@@ -189,7 +189,7 @@ public class PressedKeyRepeater implements KeyListener
         }
         tasks = new ArrayList<Task>();
         executors = new ArrayList<Executor>();
-        Game.addKeyListener(this);
+        Game.addKeyStrokeListener(this);
     }
 
     public PressedKeyRepeater()

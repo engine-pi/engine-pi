@@ -13,7 +13,7 @@ public class KeyListenerAsLambdaDemo extends Scene
     {
         Circle circle = new Circle(2);
         circle.setColor(Color.RED);
-        circle.addKeyListener(e -> {
+        circle.addKeyStrokeListener(e -> {
             switch (e.getKeyCode())
             {
             case KeyEvent.VK_UP:

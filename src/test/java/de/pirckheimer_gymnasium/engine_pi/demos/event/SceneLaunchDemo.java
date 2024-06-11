@@ -32,7 +32,7 @@ public class SceneLaunchDemo
         Game.addSceneLaunchListener((scene, previous) -> {
             System.out.println("launch " + scene);
         });
-        Game.addKeyListener((event) -> {
+        Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> {

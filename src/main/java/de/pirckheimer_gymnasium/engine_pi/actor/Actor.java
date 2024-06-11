@@ -58,8 +58,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
@@ -83,7 +83,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  */
 @SuppressWarnings("OverlyComplexClass")
 public abstract class Actor
-        implements KeyListenerContainer, MouseClickListenerContainer,
+        implements KeyStrokeListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer
 {
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
@@ -129,8 +129,8 @@ public abstract class Actor
 
     private final EventListeners<Runnable> unmountListeners = new EventListeners<>();
 
-    private final EventListeners<KeyListener> keyListeners = new EventListeners<>(
-            createParentSupplier(Layer::getKeyListeners));
+    private final EventListeners<KeyStrokeListener> keyListeners = new EventListeners<>(
+            createParentSupplier(Layer::getKeyStrokeListeners));
 
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
             createParentSupplier(Layer::getMouseClickListeners));
@@ -746,7 +746,7 @@ public abstract class Actor
                 return;
             }
             Layer layer = previousWorldHandler.getLayer();
-            keyListeners.invoke(layer::removeKeyListener);
+            keyListeners.invoke(layer::removeKeyStrokeListener);
             mouseClickListeners.invoke(layer::removeMouseClickListener);
             mouseWheelListeners.invoke(layer::removeMouseWheelListener);
             frameUpdateListeners.invoke(layer::removeFrameUpdateListener);
@@ -762,7 +762,7 @@ public abstract class Actor
             physicsHandler = handler;
             Layer layer = worldHandler.getLayer();
             mountListeners.invoke(Runnable::run);
-            keyListeners.invoke(layer::addKeyListener);
+            keyListeners.invoke(layer::addKeyStrokeListener);
             mouseClickListeners.invoke(layer::addMouseClickListener);
             mouseWheelListeners.invoke(layer::addMouseWheelListener);
             frameUpdateListeners.invoke(layer::addFrameUpdateListener);
@@ -797,10 +797,10 @@ public abstract class Actor
     }
 
     /**
-     * @return Liste der {@link KeyListener}.
+     * @return Liste der {@link KeyStrokeListener}.
      */
     @API
-    public final EventListeners<KeyListener> getKeyListeners()
+    public final EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
         return keyListeners;
     }

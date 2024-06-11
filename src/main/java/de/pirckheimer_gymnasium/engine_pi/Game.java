@@ -42,6 +42,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
 import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
@@ -137,7 +138,7 @@ public final class Game
     /**
      * @author Josef Friedrich
      */
-    private static final EventListeners<de.pirckheimer_gymnasium.engine_pi.event.KeyListener> keyListeners = new EventListeners<>();
+    private static final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
 
     /**
      * @author Josef Friedrich
@@ -238,7 +239,7 @@ public final class Game
         mainThread.setPriority(Thread.MAX_PRIORITY);
         if (defaultControl != null)
         {
-            addKeyListener(defaultControl);
+            addKeyStrokeListener(defaultControl);
         }
         // addFrameUpdateListener(defaultControl);
     }
@@ -278,8 +279,8 @@ public final class Game
             next = scene;
         }
         loop.enqueue(() -> {
-            sceneLaunchListeners
-                    .invoke((listener) -> listener.onSceneLaunch(next, previous));
+            sceneLaunchListeners.invoke(
+                    (listener) -> listener.onSceneLaunch(next, previous));
             Game.scene = next;
         });
     }
@@ -408,10 +409,9 @@ public final class Game
     }
 
     /**
-     * Fügt einen statisch
-     * {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener} hinzu, d. h.
-     * dieser KeyListener gilt global über das ganze Spiel und ist unabhängig
-     * von der aktuellen Szene.
+     * Fügt einen statisch {@link KeyStrokeListener} hinzu, d. h. dieser
+     * KeyListener gilt global über das ganze Spiel und ist unabhängig von der
+     * aktuellen Szene.
      *
      * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
      *
@@ -460,33 +460,28 @@ public final class Game
      *
      * @author Josef Friedrich
      *
-     * @param listener Ein Objekt der Klasse
-     *                 {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer#addKeyListener(de.pirckheimer_gymnasium.engine_pi.event.KeyListener)
+     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer#addKeyStrokeListener(KeyStrokeListener)
      */
-    public static void addKeyListener(
-            de.pirckheimer_gymnasium.engine_pi.event.KeyListener listener)
+    public static void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        keyListeners.add(listener);
+        keyStrokeListeners.add(listener);
     }
 
     /**
-     * Entfernt einen statischen
-     * {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener} vom Objekt,
-     * d. h. einen KeyListener, der global für das ganze Spiele gilt.
+     * Entfernt einen statischen {@link KeyStrokeListener} vom Objekt, d. h.
+     * einen KeyListener, der global für das ganze Spiele gilt.
      *
      * @author Josef Friedrich
      *
-     * @param listener Ein Objekt der Klasse
-     *                 {@link de.pirckheimer_gymnasium.engine_pi.event.KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer#removeKeyListener(de.pirckheimer_gymnasium.engine_pi.event.KeyListener)
+     * @see de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer#removeKeyStrokeListener(KeyStrokeListener)
      */
-    public static void removeKeyListener(
-            de.pirckheimer_gymnasium.engine_pi.event.KeyListener listener)
+    public static void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        keyListeners.remove(listener);
+        keyStrokeListeners.remove(listener);
     }
 
     public static void addMouseClickListener(MouseClickListener listener)
@@ -928,13 +923,13 @@ public final class Game
             loop.enqueue(() -> {
                 if (down)
                 {
-                    keyListeners.invoke(
+                    keyStrokeListeners.invoke(
                             keyListener -> keyListener.onKeyDown(event));
                     scene.invokeKeyDownListeners(event);
                 }
                 else
                 {
-                    keyListeners
+                    keyStrokeListeners
                             .invoke(keyListener -> keyListener.onKeyUp(event));
                     scene.invokeKeyUpListeners(event);
                 }

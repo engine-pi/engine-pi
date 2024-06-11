@@ -6,15 +6,15 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class KeyListenerAsNormalClassDemo extends Scene
 {
     Circle circle;
 
-    KeyListener keyListener;
+    KeyStrokeListener keyListener;
 
-    class MyKeylistener implements KeyListener
+    class MyKeylistener implements KeyStrokeListener
     {
         @Override
         public void onKeyDown(KeyEvent e)
@@ -38,11 +38,11 @@ public class KeyListenerAsNormalClassDemo extends Scene
                 break;
 
             case KeyEvent.VK_X:
-                circle.removeKeyListener(keyListener);
+                circle.removeKeyStrokeListener(keyListener);
                 break;
 
             case KeyEvent.VK_L:
-                circle.addKeyListener(keyListener);
+                circle.addKeyStrokeListener(keyListener);
                 break;
             }
         }
@@ -53,7 +53,7 @@ public class KeyListenerAsNormalClassDemo extends Scene
         circle = new Circle(2);
         circle.setColor(Color.RED);
         keyListener = new MyKeylistener();
-        circle.addKeyListener(keyListener);
+        circle.addKeyStrokeListener(keyListener);
         add(circle);
     }
 

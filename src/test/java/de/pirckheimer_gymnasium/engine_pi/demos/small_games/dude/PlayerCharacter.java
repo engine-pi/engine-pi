@@ -38,10 +38,10 @@ import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.SinusDouble;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class PlayerCharacter extends StatefulAnimation<PlayerState>
-        implements CollisionListener<Actor>, FrameUpdateListener, KeyListener
+        implements CollisionListener<Actor>, FrameUpdateListener, KeyStrokeListener
 {
     private static final double MAX_SPEED = 100;
 

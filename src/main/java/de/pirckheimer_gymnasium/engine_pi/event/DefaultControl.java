@@ -12,7 +12,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  * zum Schließen des Fensters, STRG+D zum An- und Ausschalten des Debug-Modus).
  */
 public class DefaultControl
-        implements KeyListener, FrameUpdateListener, MouseWheelListener
+        implements KeyStrokeListener, FrameUpdateListener, MouseWheelListener
 {
     private static final double CAMERA_SPEED = 7.0;
 

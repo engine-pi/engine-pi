@@ -32,7 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
  * Eine kleine Demo zum Verhalten vieler partikelähnlicher Physik-Objekte in der
@@ -40,7 +40,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
  * <p>
  * Created by Michael on 11.04.2017.
  */
-public class MarbleDemo extends ShowcaseDemo implements KeyListener
+public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
 {
     class Funnel
     {

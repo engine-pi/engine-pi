@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class KeyListenerAsAnonymousClassDemo extends Scene
 {
@@ -14,7 +14,7 @@ public class KeyListenerAsAnonymousClassDemo extends Scene
     {
         Circle circle = new Circle(2);
         circle.setColor(Color.RED);
-        circle.addKeyListener(new KeyListener()
+        circle.addKeyStrokeListener(new KeyStrokeListener()
         {
             @Override
             public void onKeyDown(KeyEvent e)

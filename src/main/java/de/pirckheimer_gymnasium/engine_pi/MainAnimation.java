@@ -229,7 +229,7 @@ public final class MainAnimation
                         }
                     }
                 });
-                addKeyListener(e -> {
+                addKeyStrokeListener(e -> {
                     if (e.getKeyCode() == KeyEvent.VK_D)
                     {
                         Game.setDebug(!Game.isDebug());

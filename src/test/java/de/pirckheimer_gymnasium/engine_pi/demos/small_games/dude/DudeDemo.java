@@ -33,14 +33,14 @@ import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileContainer;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
  * Eine kleine Spieldemo.
  * <p>
  * Vielen Dank an <a href="https://rvros.itch.io/animated-pixel-hero">rvros</a>
  */
-public class DudeDemo extends ShowcaseDemo implements KeyListener
+public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
 {
     public static final int GAME_WIDTH_PX = Showcases.WIDTH,
             GAME_HEIGHT_PX = Showcases.HEIGHT;

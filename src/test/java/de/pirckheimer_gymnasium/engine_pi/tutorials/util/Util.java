@@ -57,7 +57,7 @@ public class Util
 
     public static void addScreenshotKey(String code)
     {
-        Game.getActiveScene().addKeyListener(keyEvent -> {
+        Game.getActiveScene().addKeyStrokeListener(keyEvent -> {
             if (keyEvent.getKeyCode() == KeyEvent.VK_1)
             {
                 makeScreenshot(code);

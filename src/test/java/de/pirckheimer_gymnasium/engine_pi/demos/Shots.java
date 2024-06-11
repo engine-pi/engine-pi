@@ -63,7 +63,7 @@ public class Shots extends ShowcaseDemo implements FrameUpdateListener
         basket.addCollisionListener(ball,
                 event -> defer(() -> basket.setX(-basket.getX())));
         getMainLayer().add(basket);
-        addKeyListener(e -> {
+        addKeyStrokeListener(e -> {
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
             {
                 ball.setVelocity(new Vector(Math.signum(basket.getX()) * 2, 6));

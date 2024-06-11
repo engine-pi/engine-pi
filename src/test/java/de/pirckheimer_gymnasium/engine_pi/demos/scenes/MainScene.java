@@ -30,11 +30,11 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.animation.CircleAnimation;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 
-public class MainScene extends Scene implements KeyListener
+public class MainScene extends Scene implements KeyStrokeListener
 {
     private PauseMenu pauseMenu;
 
@@ -48,7 +48,7 @@ public class MainScene extends Scene implements KeyListener
                 new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
         add(toAnimate);
-        addKeyListener(this);
+        addKeyStrokeListener(this);
         Text info = new Text("Pause mit P", 0.5);
         info.setCenter(-7, -5);
         add(info);

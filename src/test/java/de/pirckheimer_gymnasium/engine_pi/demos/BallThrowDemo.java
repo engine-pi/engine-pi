@@ -32,7 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
  * Eine einfache Demonstration der Engine-Physik durch eine
@@ -72,7 +72,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
  * Created by Michael on 11.04.2017.
  */
 public class BallThrowDemo extends ShowcaseDemo
-        implements CollisionListener<Actor>, KeyListener
+        implements CollisionListener<Actor>, KeyStrokeListener
 {
     /**
      * Der Circle. Auf ihn wird ein Impuls gewirkt.

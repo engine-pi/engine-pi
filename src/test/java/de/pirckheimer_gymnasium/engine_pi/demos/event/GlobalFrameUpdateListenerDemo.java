@@ -11,7 +11,7 @@ public class GlobalFrameUpdateListenerDemo
     {
         Game.setDebug(true);
         Game.start(400, 300, new Scene());
-        Game.addKeyListener((e) -> {
+        Game.addKeyStrokeListener((e) -> {
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
             {
                 Game.addFrameUpdateListener((deltaSeconds) -> {

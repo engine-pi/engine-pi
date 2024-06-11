@@ -30,12 +30,12 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
 
 public class MinimalDemo extends Scene
-        implements KeyListener, MouseWheelListener, FrameUpdateListener
+        implements KeyStrokeListener, MouseWheelListener, FrameUpdateListener
 {
     private static final int WIDTH = 1020;
 

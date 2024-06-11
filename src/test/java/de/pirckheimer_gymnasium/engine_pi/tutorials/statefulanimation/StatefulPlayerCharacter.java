@@ -28,10 +28,10 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
 import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
-        implements KeyListener, FrameUpdateListener
+        implements KeyStrokeListener, FrameUpdateListener
 {
     private static final double THRESHOLD = 0.01;
 

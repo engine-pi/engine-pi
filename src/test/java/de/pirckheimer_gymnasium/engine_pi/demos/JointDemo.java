@@ -30,13 +30,13 @@ import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
  * Einfaches Programm zur Demonstration von Joints in der Engine Created by
  * Michael on 12.04.2017.
  */
-public class JointDemo extends ForceKlickEnvironment implements KeyListener
+public class JointDemo extends ForceKlickEnvironment implements KeyStrokeListener
 {
     private boolean schwerkraftActive = false;
 

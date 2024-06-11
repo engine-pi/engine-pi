@@ -7,9 +7,9 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Group;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class GroupDemo extends Scene implements KeyListener
+public class GroupDemo extends Scene implements KeyStrokeListener
 {
     private final Group group;
 

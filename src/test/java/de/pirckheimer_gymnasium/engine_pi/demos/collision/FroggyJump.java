@@ -35,7 +35,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class FroggyJump extends Scene
 {
@@ -87,7 +87,7 @@ public class FroggyJump extends Scene
     }
 }
 
-class DeathScreen extends Scene implements KeyListener
+class DeathScreen extends Scene implements KeyStrokeListener
 {
     public DeathScreen()
     {

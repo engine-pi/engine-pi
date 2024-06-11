@@ -47,8 +47,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerContainer;
@@ -62,7 +62,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
  * neu erzeugen zu müssen.
  */
-public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
+public class Scene implements KeyStrokeListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer, ActorCreator
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
@@ -79,7 +79,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
      */
     private final Camera camera;
 
-    private final EventListeners<KeyListener> keyListeners = new EventListeners<>();
+    private final EventListeners<KeyStrokeListener> keyListeners = new EventListeners<>();
 
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
 
@@ -433,7 +433,7 @@ public class Scene implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @API
-    public EventListeners<KeyListener> getKeyListeners()
+    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
         return keyListeners;
     }

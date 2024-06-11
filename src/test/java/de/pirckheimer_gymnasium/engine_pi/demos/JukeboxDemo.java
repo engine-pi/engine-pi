@@ -7,7 +7,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.sound.LoopedTrack;
@@ -17,7 +17,7 @@ import de.pirckheimer_gymnasium.engine_pi.sound.SinglePlayTrack;
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
-public class JukeboxDemo extends Scene implements KeyListener
+public class JukeboxDemo extends Scene implements KeyStrokeListener
 {
     Jukebox jukebox;
 

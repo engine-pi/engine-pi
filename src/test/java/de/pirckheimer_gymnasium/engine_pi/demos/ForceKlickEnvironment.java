@@ -149,7 +149,7 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
         attack.setLayerPosition(-10);
         // Maus erstellen, Listener Anmelden.
         attack.addCollisionListener(this);
-        getKeyListeners().add(e -> {
+        getKeyStrokeListeners().add(e -> {
             if (e.getKeyCode() == KeyEvent.VK_E)
             {
                 boolean wasActive = walls[1].isVisible();

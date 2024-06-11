@@ -6,9 +6,9 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class ApplyForceDemo extends Scene implements KeyListener
+public class ApplyForceDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle rectangle;
 

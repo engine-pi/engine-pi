@@ -24,11 +24,11 @@ public class EventListenerHelper
 {
     public static void autoRegisterListeners(Object target)
     {
-        if (target instanceof KeyListenerContainer
-                && target instanceof KeyListener)
+        if (target instanceof KeyStrokeListenerContainer
+                && target instanceof KeyStrokeListener)
         {
-            ((KeyListenerContainer) target)
-                    .addKeyListener((KeyListener) target);
+            ((KeyStrokeListenerContainer) target)
+                    .addKeyStrokeListener((KeyStrokeListener) target);
         }
         if (target instanceof MouseClickListenerContainer
                 && target instanceof MouseClickListener)

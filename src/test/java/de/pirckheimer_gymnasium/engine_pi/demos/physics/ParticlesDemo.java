@@ -35,10 +35,10 @@ import de.pirckheimer_gymnasium.engine_pi.animation.AnimationMode;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.ReverseEaseDouble;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 @SuppressWarnings("MagicNumber")
-public class ParticlesDemo extends ShowcaseDemo implements KeyListener
+public class ParticlesDemo extends ShowcaseDemo implements KeyStrokeListener
 {
     /**
      * Startet ein Sandbox-Fenster.
@@ -60,7 +60,7 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyListener
         right.setColor(Color.white);
         right.setElasticity(15);
         add(right);
-        addKeyListener(this);
+        addKeyStrokeListener(this);
         repeat(1, () -> createCircle(getMousePosition(), Color.YELLOW));
         Rectangle r1 = new Rectangle(Showcases.WIDTH, 10);
         r1.setPosition(-Showcases.WIDTH / 2, -Showcases.HEIGHT / 2);

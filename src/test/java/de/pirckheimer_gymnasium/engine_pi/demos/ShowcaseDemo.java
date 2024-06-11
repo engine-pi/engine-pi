@@ -43,7 +43,7 @@ public abstract class ShowcaseDemo extends Scene
 
     public ShowcaseDemo(Scene parent)
     {
-        addKeyListener(e -> {
+        addKeyStrokeListener(e -> {
             switch (e.getKeyCode())
             {
             case KeyEvent.VK_ESCAPE:

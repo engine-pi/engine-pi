@@ -25,13 +25,18 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Dieses Interface wird implementiert, um auf gedrückte Tasten reagieren zu
+ * Diese Schnittstelle wird implementiert, um auf gedrückte Tasten reagieren zu
  * können.
+ *
+ * <p>
+ * Die Schnittstelle heißt nicht KeyListener, da es eine KeyListener-Klasse
+ * bereichts im Java-JDK ({@link java.awt.event.KeyListener}) gibt.
+ * </p>
  *
  * @author Niklas Keller
  */
 @API
-public interface KeyListener
+public interface KeyStrokeListener
 {
     /**
      * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste

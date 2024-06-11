@@ -32,7 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class SnakeMinimal extends Scene
 {
@@ -72,7 +72,7 @@ public class SnakeMinimal extends Scene
     }
 
     private class Snake extends Circle
-            implements FrameUpdateListener, KeyListener
+            implements FrameUpdateListener, KeyStrokeListener
     {
         private Vector movement = new Vector(0, 0);
 

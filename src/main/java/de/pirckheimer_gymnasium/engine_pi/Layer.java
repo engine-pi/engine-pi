@@ -37,8 +37,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.EventListenerHelper;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerContainer;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListenerContainer;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerContainer;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
@@ -55,7 +55,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  *
  * @author Michael Andonie
  */
-public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
+public class Layer implements KeyStrokeListenerContainer, MouseClickListenerContainer,
         MouseWheelListenerContainer, FrameUpdateListenerContainer, ActorCreator
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
@@ -97,8 +97,8 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
 
     private final WorldHandler worldHandler;
 
-    private final EventListeners<KeyListener> keyListeners = new EventListeners<>(
-            createParentSupplier(Scene::getKeyListeners));
+    private final EventListeners<KeyStrokeListener> keyListeners = new EventListeners<>(
+            createParentSupplier(Scene::getKeyStrokeListeners));
 
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
             createParentSupplier(Scene::getMouseClickListeners));
@@ -139,14 +139,14 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
         }
         if (parent != null)
         {
-            keyListeners.invoke(parent::addKeyListener);
+            keyListeners.invoke(parent::addKeyStrokeListener);
             mouseClickListeners.invoke(parent::addMouseClickListener);
             mouseWheelListeners.invoke(parent::addMouseWheelListener);
             frameUpdateListeners.invoke(parent::addFrameUpdateListener);
         }
         else
         {
-            keyListeners.invoke(this.parent::removeKeyListener);
+            keyListeners.invoke(this.parent::removeKeyStrokeListener);
             mouseClickListeners.invoke(this.parent::removeMouseClickListener);
             mouseWheelListeners.invoke(this.parent::removeMouseWheelListener);
             frameUpdateListeners.invoke(this.parent::removeFrameUpdateListener);
@@ -561,7 +561,7 @@ public class Layer implements KeyListenerContainer, MouseClickListenerContainer,
     }
 
     @API
-    public EventListeners<KeyListener> getKeyListeners()
+    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
         return keyListeners;
     }

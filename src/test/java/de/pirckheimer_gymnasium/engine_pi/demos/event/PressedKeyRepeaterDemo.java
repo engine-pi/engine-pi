@@ -4,10 +4,10 @@ import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 
-public class PressedKeyRepeaterDemo extends Scene implements KeyListener
+public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 {
     PressedKeyRepeater keyRepeater;
 

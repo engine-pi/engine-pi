@@ -22,19 +22,20 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
-public interface KeyListenerContainer
+public interface KeyStrokeListenerContainer
 {
-    EventListeners<KeyListener> getKeyListeners();
+    EventListeners<KeyStrokeListener> getKeyStrokeListeners();
 
     /**
-     * Fügt einen {@link KeyListener} zum Objekt hinzu. Die Klassen
+     * Fügt einen {@link KeyStrokeListener} zum Objekt hinzu. Die Klassen
      * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
      * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
      * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren die
-     * Schnittstelle {@link KeyListenerContainer} und stellen daher diese
+     * Schnittstelle {@link KeyStrokeListenerContainer} und stellen daher diese
      * Methode zur Verfügung.
      *
-     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     * Der {@link KeyStrokeListener} kann auf mehrere Arten implementiert
+     * werden:
      *
      * <ol>
      * <li>Als normale Klasse:
@@ -79,24 +80,26 @@ public interface KeyListenerContainer
      * </li>
      * </ol>
      *
-     * @param listener Ein Objekt der Klasse {@link KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.Game#addKeyListener(KeyListener)
+     * @see de.pirckheimer_gymnasium.engine_pi.Game#addKeyStrokeListener(KeyStrokeListener)
      */
     @API
-    default void addKeyListener(KeyListener listener)
+    default void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyListeners().add(listener);
+        getKeyStrokeListeners().add(listener);
     }
 
     /**
-     * Entfernt einen {@link KeyListener} vom Objekt.
+     * Entfernt einen {@link KeyStrokeListener} vom Objekt.
      *
-     * @param listener Ein Objekt der Klasse {@link KeyListener}.
+     * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.Game#removeKeyStrokeListener(KeyStrokeListener)
      */
     @API
-    default void removeKeyListener(KeyListener listener)
+    default void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyListeners().remove(listener);
+        getKeyStrokeListeners().remove(listener);
     }
 }

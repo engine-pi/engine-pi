@@ -25,7 +25,7 @@ public class PerodicTaskDemo extends Scene
             super("0", 2);
             setCenter(0, 0);
             start();
-            addKeyListener((e) -> {
+            addKeyStrokeListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
                 {
                     if (task == null)

@@ -29,9 +29,9 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Random;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class BillardDemo extends ShowcaseDemo implements KeyListener
+public class BillardDemo extends ShowcaseDemo implements KeyStrokeListener
 {
     private final Ball whiteBall;
 

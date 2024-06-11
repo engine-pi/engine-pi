@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class StaticKeyListenerDemo extends Scene
 {
@@ -33,7 +33,7 @@ public class StaticKeyListenerDemo extends Scene
     {
         StaticKeyListenerDemo scene = new StaticKeyListenerDemo();
         Game.start(600, 400, scene);
-        Game.addKeyListener(new KeyListener()
+        Game.addKeyStrokeListener(new KeyStrokeListener()
         {
             public void onKeyDown(KeyEvent e)
             {
