@@ -21,7 +21,7 @@ class Scene2 extends Scene
     }
 }
 
-public class SceneLaunchDemo
+public class GlobalSceneLaunchListenerDemo
 {
     public static Scene scene1 = new Scene1();
 

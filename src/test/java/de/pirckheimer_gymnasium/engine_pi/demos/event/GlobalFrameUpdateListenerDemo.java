@@ -1,7 +1,5 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.event;
 
-import java.awt.event.KeyEvent;
-
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 

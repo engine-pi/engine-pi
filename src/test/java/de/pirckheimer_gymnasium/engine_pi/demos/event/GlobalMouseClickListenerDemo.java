@@ -3,13 +3,14 @@ package de.pirckheimer_gymnasium.engine_pi.demos.event;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
-public class GlobalKeyStrokeListenerDemo
+public class GlobalMouseClickListenerDemo
 {
     public static void main(String[] args)
     {
         Game.start(new Scene());
-        Game.addKeyStrokeListener((e) -> {
-            System.out.println("Tastendruck empfangen: " + e.paramString());
+        Game.addMouseClickListener((vector, button) -> {
+            System.err.println("x: %s, y: %s, button %s"
+                    .formatted(vector.getX(), vector.getY(), button));
         });
     }
 }
