@@ -55,9 +55,8 @@ public class JointDemo extends ForceKlickEnvironment
     /**
      * Erstellt das Demo-Objekt
      */
-    public JointDemo(Scene parent)
+    public JointDemo()
     {
-        super(parent);
         initialisieren2();
     }
 
@@ -161,6 +160,6 @@ public class JointDemo extends ForceKlickEnvironment
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new JointDemo(null));
+        Game.start(1000, 800, new JointDemo());
     }
 }

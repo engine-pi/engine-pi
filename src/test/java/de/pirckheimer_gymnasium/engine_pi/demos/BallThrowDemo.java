@@ -70,9 +70,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
  * </ul>
  * Created by Michael on 11.04.2017.
  */
-public class BallThrowDemo extends ShowcaseDemo
+public class BallThrowDemo extends Scene
         implements CollisionListener<Actor>, KeyStrokeListener
 {
+    private static final int WIDTH = 1240;
+
+    private static final int HEIGHT = 812;
+
     /**
      * Der Ball. Auf ihn wird ein Impuls gewirkt.
      */
@@ -111,9 +115,8 @@ public class BallThrowDemo extends ShowcaseDemo
 
     private static final float DISTANCE_LEFT = 50;
 
-    public BallThrowDemo(Scene parent)
+    public BallThrowDemo()
     {
-        super(parent);
         ball = new Circle(DURCHMESSER * PIXEL_PER_METER);
         add(ball);
         ball.setColor(Color.RED);
@@ -211,6 +214,6 @@ public class BallThrowDemo extends ShowcaseDemo
 
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new BallThrowDemo(null));
+        Game.start(WIDTH, HEIGHT, new BallThrowDemo());
     }
 }

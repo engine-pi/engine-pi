@@ -66,7 +66,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
  * <p>
  * Created by andonie on 05.09.15.
  */
-public class ForceKlickEnvironment extends ShowcaseDemo implements
+public class ForceKlickEnvironment extends Scene implements
         CollisionListener<Actor>, MouseClickListener, FrameUpdateListener
 {
     public static final float FIELD_WIDTH = 85;
@@ -112,9 +112,8 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
     /**
      * Startet ein Sandbox-Fenster.
      */
-    public ForceKlickEnvironment(Scene parent)
+    public ForceKlickEnvironment()
     {
-        super(parent);
         // Info-Message
         // fenster.nachrichtSchicken("Elastizität +[W]/-[Q] | Masse +[U] / -[J]
         // | [R]eset | [S]chwerkraft | [E]insperren");
@@ -254,6 +253,6 @@ public class ForceKlickEnvironment extends ShowcaseDemo implements
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new ForceKlickEnvironment(null));
+        Game.start(1000, 800, new ForceKlickEnvironment());
     }
 }

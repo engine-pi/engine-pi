@@ -23,7 +23,6 @@ package de.pirckheimer_gymnasium.engine_pi.demos.physics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Random;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -35,12 +34,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
- * Eine kleine Demo zum Verhalten vieler partikelähnlicher Physik-Objekte in der
- * Engine.
- * <p>
- * Created by Michael on 11.04.2017.
+ * Eine kleine Demo zum Verhalten vieler Partikel ähnlicher Physik-Objekte in
+ * der Engine.
+ *
+ * @version 11.04.2017
+ * @author Michael Andonie
  */
-public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
+public class MarbleDemo extends Scene implements KeyStrokeListener
 {
     class Funnel
     {
@@ -49,8 +49,8 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
          */
         private static final int THICKNESS = 10;
 
-        /*
-         * Länge der schrängen Wand.
+        /**
+         * Länge der schrägen Wand.
          */
         private static final int LENGTH_SLANTED = 200;
 
@@ -90,9 +90,8 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
      */
     private final Rectangle ground;
 
-    public MarbleDemo(Scene parent)
+    public MarbleDemo()
     {
-        super(parent);
         // Trichter
         new Funnel();
         repeat(0.2, () -> {
@@ -165,6 +164,6 @@ public class MarbleDemo extends ShowcaseDemo implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new MarbleDemo(null));
+        Game.start(1000, 800, new MarbleDemo());
     }
 }

@@ -40,7 +40,9 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
  */
 public class Showcases extends Scene
 {
-    public static final int WIDTH = 1240, HEIGHT = 812;
+    public static final int WIDTH = 1240;
+
+    public static final int HEIGHT = 812;
 
     /**
      * State für die interne Textbox

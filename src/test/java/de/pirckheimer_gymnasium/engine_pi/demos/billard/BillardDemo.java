@@ -23,21 +23,22 @@ package de.pirckheimer_gymnasium.engine_pi.demos.billard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
-import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Random;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class BillardDemo extends ShowcaseDemo implements KeyStrokeListener
+public class BillardDemo extends Scene implements KeyStrokeListener
 {
+    private static final int WIDTH = 1240;
+
+    private static final int HEIGHT = 812;
+
     private final Ball whiteBall;
 
-    public BillardDemo(Scene parent)
+    public BillardDemo()
     {
-        super(parent);
         Table table = new Table();
         add(table.getActors());
         for (int i = 0; i < 10; i++)
@@ -105,6 +106,6 @@ public class BillardDemo extends ShowcaseDemo implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new BillardDemo(null));
+        Game.start(WIDTH, HEIGHT, new BillardDemo());
     }
 }
