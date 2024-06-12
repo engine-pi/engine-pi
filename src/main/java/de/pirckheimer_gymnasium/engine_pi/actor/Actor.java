@@ -1824,4 +1824,28 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                             + height);
         }
     }
+
+    /**
+     * Weckt die Figur auf. Eine schlafende Figur hat sehr geringe CPU-Kosten,
+     * deshalb wird sie von der Physics-Engine in den Schlafzustand gesetzt,
+     * wenn sie zur Ruhe kommt.
+     */
+    public void awake()
+    {
+        physicsHandler.setAwake(true);
+    }
+
+    /**
+     * Versetzt die Figur in den Schlafzustand. Eine schlafende Figur hat sehr
+     * geringe CPU-Kosten.
+     *
+     * <p>
+     * Das Versetzen in den Schlafzustand setzt die Geschwindigkeit und den
+     * Impuls der Figur auf null.
+     * </p>
+     */
+    public void sleep()
+    {
+        physicsHandler.setAwake(false);
+    }
 }

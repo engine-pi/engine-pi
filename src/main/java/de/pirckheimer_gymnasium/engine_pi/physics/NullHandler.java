@@ -341,4 +341,21 @@ public class NullHandler implements PhysicsHandler
     {
         return Collections.emptyList();
     }
+
+    /**
+     * Legt den Schlafzustand des Körpers fest. Ein schlafender Körper hat sehr
+     * geringe CPU-Kosten.
+     *
+     * <p>
+     * Das Versetzen in den Schlafzustand setzt die Geschwindigkeit und den
+     * Impuls eines Körpers auf null.
+     * </p>
+     *
+     * @param value Der Schlafzustand des Körpers.
+     */
+    @Override
+    public void setAwake(boolean value)
+    {
+        // Mache nichts
+    }
 }

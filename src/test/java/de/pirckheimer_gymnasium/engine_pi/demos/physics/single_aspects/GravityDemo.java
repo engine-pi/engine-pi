@@ -4,24 +4,23 @@ import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class GravityDemo extends Scene implements KeyStrokeListener
 {
-    private final Rectangle rectangle;
+    private final Circle circle;
 
     public GravityDemo()
     {
+        circle = createCircle();
+        circle.makeDynamic();
         setGravity(0, -9.81);
         createBorder(-5, 4, false);
         createBorder(-5, -5, false);
         createBorder(-5, -5, true);
         createBorder(4, -5, true);
-        rectangle = new Rectangle(1, 1);
-        rectangle.makeDynamic();
-        add(rectangle);
     }
 
     private Rectangle createBorder(double x, double y, boolean vertical)
@@ -43,7 +42,17 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_DOWN -> setGravity(0, -9.81);
         case KeyEvent.VK_RIGHT -> setGravity(9.81, 0);
         case KeyEvent.VK_LEFT -> setGravity(-9.81, 0);
+        case KeyEvent.VK_SPACE -> circle.sleep();
         }
+    }
+
+    @Override
+    public void setGravity(double x, double y)
+    {
+        // Die Figur muss aufgeweckt werden, falls sie zur Ruhe gekommen ist.
+        // Sonst wirkt eine Änderung der Gravitation nicht.
+        circle.awake();
+        super.setGravity(x, y);
     }
 
     public static void main(String[] args)

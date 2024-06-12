@@ -318,4 +318,17 @@ public interface PhysicsHandler
     void applyMountCallbacks(PhysicsHandler otherHandler);
 
     List<CollisionEvent<Actor>> getCollisions();
+
+    /**
+     * Legt den Schlafzustand des Körpers fest. Ein schlafender Körper hat sehr
+     * geringe CPU-Kosten.
+     *
+     * <p>
+     * Das Versetzen in den Schlafzustand setzt die Geschwindigkeit und den
+     * Impuls eines Körpers auf null.
+     * </p>
+     *
+     * @param value Der Schlafzustand des Körpers.
+     */
+    void setAwake(boolean value);
 }

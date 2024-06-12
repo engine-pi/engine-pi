@@ -520,4 +520,20 @@ public class BodyHandler implements PhysicsHandler
     {
         return worldHandler;
     }
+
+    /**
+     * Legt den Schlafzustand des Körpers fest. Ein schlafender Körper hat sehr
+     * geringe CPU-Kosten.
+     *
+     * <p>
+     * Das Versetzen in den Schlafzustand setzt die Geschwindigkeit und den
+     * Impuls eines Körpers auf null.
+     * </p>
+     *
+     * @param value Der Schlafzustand des Körpers.
+     */
+    public void setAwake(boolean value)
+    {
+        body.setAwake(value);
+    }
 }

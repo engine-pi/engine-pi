@@ -90,6 +90,16 @@ public interface ActorCreator
         actor.setColor(color);
         return actor;
     }
+
+    /**
+     * Erzeugt einen Kreis mit einem Meter Durchmesser an der Position (0|0)
+     *
+     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     */
+    default Circle createCircle()
+    {
+        return createCircle(1, 0, 0);
+    }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
 
     default Pentagon createPentagon(double radius)
