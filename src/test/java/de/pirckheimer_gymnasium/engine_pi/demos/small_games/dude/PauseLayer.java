@@ -33,8 +33,7 @@ public class PauseLayer extends Layer
     public PauseLayer()
     {
         setLayerPosition(1000);
-        Rectangle back = new Rectangle(DudeDemo.GAME_WIDTH_PX,
-                DudeDemo.GAME_HEIGHT_PX);
+        Rectangle back = new Rectangle(DudeDemo.WIDTH, DudeDemo.HEIGHT);
         back.setColor(BACKGROUND_COLOR);
         back.setCenter(0, 0);
         add(back);

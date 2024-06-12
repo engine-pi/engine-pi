@@ -20,40 +20,33 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.demos.small_games.dude;
 
-import java.awt.event.KeyEvent;
-
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
-import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.Bounds;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Layer;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
  * Eine kleine Spieldemo.
  * <p>
  * Vielen Dank an <a href="https://rvros.itch.io/animated-pixel-hero">rvros</a>
  */
-public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
+public class DudeDemo extends Scene
 {
-    public static final int GAME_WIDTH_PX = Showcases.WIDTH,
-            GAME_HEIGHT_PX = Showcases.HEIGHT;
+    public static final int WIDTH = 1240;
+
+    public static final int HEIGHT = 812;
 
     private final GameData gameData;
 
     private final PlayerCharacter character;
     // private final Rectangle weird;
 
-    public DudeDemo(Scene parent)
+    public DudeDemo()
     {
-        super(parent);
-        super.setDebuggingEnabled(false);
         gameData = new GameData();
         addLayer(new HUD(gameData));
         character = new PlayerCharacter(gameData);
@@ -165,20 +158,8 @@ public class DudeDemo extends ShowcaseDemo implements KeyStrokeListener
         add(platform);
     }
 
-    @Override
-    public void onKeyDown(KeyEvent e)
-    {
-        if (e.getKeyCode() == KeyEvent.VK_M)
-        {
-            toggleDebug();
-        } /*
-           * else if (e.getKeyCode() == KeyEvent.VK_J) { if (weird.isMounted())
-           * { remove(weird); } else { add(weird); } }
-           */
-    }
-
     public static void main(String[] args)
     {
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new DudeDemo(null));
+        Game.start(WIDTH, HEIGHT, new DudeDemo());
     }
 }

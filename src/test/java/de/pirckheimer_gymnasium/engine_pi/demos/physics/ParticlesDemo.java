@@ -23,12 +23,9 @@ package de.pirckheimer_gymnasium.engine_pi.demos.physics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.demos.ShowcaseDemo;
-import de.pirckheimer_gymnasium.engine_pi.demos.Showcases;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.animation.AnimationMode;
@@ -38,23 +35,26 @@ import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 @SuppressWarnings("MagicNumber")
-public class ParticlesDemo extends ShowcaseDemo implements KeyStrokeListener
+public class ParticlesDemo extends Scene implements KeyStrokeListener
 {
+    private static final int WIDTH = 1240;
+
+    private static final int HEIGHT = 812;
+
     /**
      * Startet ein Sandbox-Fenster.
      */
-    public ParticlesDemo(Scene parent)
+    public ParticlesDemo()
     {
-        super(parent);
         Rectangle left = new Rectangle(200, 10);
-        left.setPosition(-Showcases.WIDTH / 6 - 150, -50);
+        left.setPosition(-WIDTH / 6.0 - 150, -50);
         left.rotateBy(-21);
         left.makeStatic();
         left.setColor(Color.white);
         left.setElasticity(15f);
         add(left);
         Rectangle right = new Rectangle(200, 10);
-        right.setPosition(+Showcases.WIDTH / 6, 0);
+        right.setPosition(WIDTH / 6.0, 0);
         right.rotateBy(45);
         right.makeStatic();
         right.setColor(Color.white);
@@ -62,14 +62,14 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyStrokeListener
         add(right);
         addKeyStrokeListener(this);
         repeat(1, () -> createCircle(getMousePosition(), Color.YELLOW));
-        Rectangle r1 = new Rectangle(Showcases.WIDTH, 10);
-        r1.setPosition(-Showcases.WIDTH / 2, -Showcases.HEIGHT / 2);
-        Rectangle r2 = new Rectangle(10, Showcases.HEIGHT);
-        r2.setPosition(-Showcases.WIDTH / 2, -Showcases.HEIGHT / 2);
-        Rectangle r3 = new Rectangle(Showcases.WIDTH, 10);
-        r3.setPosition(-Showcases.WIDTH / 2, Showcases.HEIGHT / 2 - 10);
-        Rectangle r4 = new Rectangle(10, Showcases.HEIGHT);
-        r4.setPosition(Showcases.WIDTH / 2 - 10, -Showcases.HEIGHT / 2);
+        Rectangle r1 = new Rectangle(WIDTH, 10);
+        r1.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
+        Rectangle r2 = new Rectangle(10, HEIGHT);
+        r2.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
+        Rectangle r3 = new Rectangle(WIDTH, 10);
+        r3.setPosition(-WIDTH / 2.0, HEIGHT / 2.0 - 10);
+        Rectangle r4 = new Rectangle(10, HEIGHT);
+        r4.setPosition(WIDTH / 2.0 - 10, -HEIGHT / 2.0);
         add(r1, r2, r3, r4);
         r1.makeStatic();
         r2.makeStatic();
@@ -122,6 +122,6 @@ public class ParticlesDemo extends ShowcaseDemo implements KeyStrokeListener
     public static void main(String[] args)
     {
         Game.setDebug(true);
-        Game.start(Showcases.WIDTH, Showcases.HEIGHT, new ParticlesDemo(null));
+        Game.start(WIDTH, HEIGHT, new ParticlesDemo());
     }
 }
