@@ -471,7 +471,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * <p>
      * Sie schließt eine Fallabfrage zur Sichtbarkeit ein.
      *
-     * @param g             Das zeichnende Graphics-Objekt.
+     * @param g             Das zeichnende {@link Graphics2D}-Objekt.
      * @param r             Das Bounds, dass die Kameraperspektive
      *                      repräsentiert.<br>
      *                      Hierbei soll zunächst getestet werden, ob das Objekt
@@ -540,12 +540,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /**
      * Rendert eine Shape von JBox2D nach den gegebenen Voreinstellungen im
-     * Graphics-Objekt.
+     * {@link Graphics2D}-Objekt.
      *
      * @param shape Die Shape, die zu rendern ist.
-     * @param g     Das Graphics-Objekt, das die Shape rendern soll. Farbe &amp;
-     *              Co. sollte im Vorfeld eingestellt sein. Diese Methode
-     *              übernimmt nur das direkte rendern.
+     * @param g     Das {@link Graphics2D}-Objekt, das die Form rendern soll.
+     *              Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese
+     *              Methode übernimmt nur das direkte rendern.
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,
@@ -581,8 +581,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                             * pixelPerMeter),
                     (int) ((-circleShape.m_p.y - circleShape.m_radius)
                             * pixelPerMeter),
-                    (int) (diameter * (double) pixelPerMeter),
-                    (int) (diameter * (double) pixelPerMeter));
+                    (int) (diameter * pixelPerMeter),
+                    (int) (diameter * pixelPerMeter));
         }
         else
         {
@@ -703,7 +703,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * <li>Die Roation ist 0.</li>
      * </ul>
      *
-     * @param g             Das zeichnende Graphics-Objekt
+     * @param g             Das zeichnende {@link Graphics2D}-Objekt.
      * @param pixelPerMeter Pixel pro Meter.
      */
     @Internal
@@ -1116,7 +1116,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Wirkt ein Drehmoment auf das Objekt.
      *
-     * @param torque Drehmoment, der auf das Ziel-Objekt wirken soll. In [N*m]
+     * @param torque Drehmoment, der auf das Ziel-Objekt wirken soll. In [N×m]
      */
     @API
     public final void applyTorque(double torque)
@@ -1691,10 +1691,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die Position des Zentrum des {@link Actor}-Objekts relativ zu dessen
-     * Position (Anker links unten) an.
+     * Gibt die Position des Zentrums des {@link Actor}-Objekts relativ zu
+     * dessen Position (Anker links unten) an.
      *
-     * @return Die Position des Zentrum des {@link Actor}-Objekts relativ zu
+     * @return Die Position des Zentrums des {@link Actor}-Objekts relativ zu
      *         dessen Position (Anker links unkten).
      */
     @API

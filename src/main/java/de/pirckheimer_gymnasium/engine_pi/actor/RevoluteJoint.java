@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Ein Gelenkverbindung zwingt zwei Körper dazu, einen gemeinsamen Punkt zu
+ * Eine Gelenkverbindung zwingt zwei Körper dazu, einen gemeinsamen Punkt zu
  * teilen, während sie sich frei um diesen Punkt drehen können.
  *
  * @see Joint
@@ -127,7 +127,7 @@ public final class RevoluteJoint
         org.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
         if (joint != null)
         {
-            return (double) Math.toDegrees(joint.getMotorSpeed()) / 360;
+            return Math.toDegrees(joint.getMotorSpeed()) / 360;
         }
         return motorSpeed;
     }

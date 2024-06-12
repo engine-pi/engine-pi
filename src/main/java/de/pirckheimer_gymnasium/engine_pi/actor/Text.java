@@ -61,7 +61,7 @@ public class Text extends Geometry
 
     /**
      * Die Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).<br>
-     * Dies wird dargestellt als int.Wert:<br>
+     * Dies wird dargestellt als int. Wert:<br>
      * 0: Normaler Text<br>
      * 1: Fett<br>
      * 2: Kursiv<br>

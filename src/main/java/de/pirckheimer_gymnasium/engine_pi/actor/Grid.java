@@ -83,7 +83,7 @@ public class Grid extends Actor
     }
 
     /**
-     * Erstellt eine Gitter mit der Zellegröße von einem Pixelmeter.
+     * Erstellt ein Gitter mit der Zellengröße von einem Pixelmeter.
      *
      * @param cols Die Anzahl der Spalten in x-Richtung.
      * @param rows Die Anzahl der Reihen in y-Richtung.

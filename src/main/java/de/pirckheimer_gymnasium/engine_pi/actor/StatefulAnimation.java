@@ -30,8 +30,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 /**
- * Ein animierter Actor, der mehrere Zustände haben kann (laufen (links/rechts),
- * stehen(links/rechts), springen (links/rechts), etc.).
+ * Ein animierter {@link Actor}, der mehrere Zustände haben kann (laufen
+ * (links/rechts), stehen (links/rechts), springen (links/rechts), etc.).
  *
  * <h2>Anwendungsbeispiel</h2>
  *
@@ -58,9 +58,10 @@ public class StatefulAnimation<State> extends Actor
     private final Map<State, AnimationFrame[]> states = new ConcurrentHashMap<>();
 
     /**
-     * Speichert den Übergang zum Folgestate von jedem State. Ordnet
-     * standardmäßig jedem State sich selbst als Folge-State zu ("loop"). Kann
-     * jedoch über {@link #setStateTransition(State, State)} angepasst werden.
+     * Speichert den Übergang zum Folgezustand von jedem Zustand. Ordnet
+     * standardmäßig jedem Zustand sich selbst als Folgezustand zu ("loop").
+     * Kann jedoch über {@link #setStateTransition(State, State)} angepasst
+     * werden.
      */
     private final Map<State, State> stateTransitions = new ConcurrentHashMap<>();
 
@@ -176,7 +177,7 @@ public class StatefulAnimation<State> extends Actor
     }
 
     /**
-     * Gibt an, ob ein bestimmer Zustandsname bereits in dieser Animation
+     * Gibt an, ob ein bestimmter Zustandsname bereits in dieser Animation
      * genutzt wird.
      *
      * @param state Der zu testende State.
@@ -350,7 +351,7 @@ public class StatefulAnimation<State> extends Actor
     }
 
     /**
-     * Methode wird frameweise über einen anonymen Listener aufgerufen.
+     * Methode pro Einzelbild über einen anonymen Beobachter aufgerufen.
      */
     @Internal
     private void internalOnFrameUpdate(double frameDuration)

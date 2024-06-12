@@ -62,7 +62,7 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
         {
             return null;
         }
-        return joint.getJoint();
+        return joint.joint();
     }
 
     /**
@@ -73,7 +73,7 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
     {
         if (joint != null)
         {
-            joint.getWorldHandler().getWorld().destroyJoint(joint.getJoint());
+            joint.worldHandler().getWorld().destroyJoint(joint.joint());
             joint = null;
         }
         releaseListeners.invoke(Runnable::run);
@@ -93,26 +93,7 @@ public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
         releaseListeners.add(runnable);
     }
 
-    public static class JointRegistration<T>
+    public record JointRegistration<T>(T joint, WorldHandler worldHandler)
     {
-        private final T joint;
-
-        private final WorldHandler worldHandler;
-
-        public JointRegistration(T joint, WorldHandler worldHandler)
-        {
-            this.joint = joint;
-            this.worldHandler = worldHandler;
-        }
-
-        public T getJoint()
-        {
-            return joint;
-        }
-
-        public WorldHandler getWorldHandler()
-        {
-            return worldHandler;
-        }
     }
 }
