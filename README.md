@@ -1223,6 +1223,413 @@ public class DensityDemo extends Scene implements KeyListener
 }
 ```
 
+## Stateful animation
+
+https://engine-alpha.org/wiki/v4.x/Stateful_Animation
+
+Dies ist ein Tutorial zur ea.actor.StatefulAnimation. In diesem Tutorial:
+
+    Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
+    Implementierst du funktionale Bewegungsmechanik für einen Platformer.
+    Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
+
+Stateful Animations
+
+Die StatefulAnimation ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand umzusetzen.
+
+Nehmen wir dieses Beispiel:
+Zustand 	Animiertes GIF
+Idle
+spr m traveler idle anim.gif
+Jumping
+spr m traveler jump 1up anim.gif
+Midair
+spr m traveler jump 2midair anim.gif
+Falling
+spr m traveler jump 3down anim.gif
+Landing
+spr m traveler jump 4land anim.gif
+Walking
+spr m traveler walk anim.gif
+Running
+spr m traveler run anim.gif
+
+Das sind viele zu jonglierende Zustände. Und für ein normales Platformer-Spiel ist die Anzahl an Zuständen eher gering.
+
+Zum Nachimplementieren kannst du die animierten GIFs vom Wiki herunterladen.
+Zustandsübergangsdiagramm für die Figur
+
+Bevor die Umsetzung beginnt, ist es sinnvoll, die Zustände und deren Übergänge
+zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für die Figur.
+
+Tutorial State Transition Diagram.png
+
+
+Implementieren der Figur
+
+Nachdem nun ein guter Überblick über die Figur besteht, können wir zielgerichtet
+die Implementierung der Figur starten.
+
+Die Zustände als Enumeration
+
+Hierzu beginnen wir bei den Zuständen. Zustände einer Figur werden in der Engine
+stets als enum implementiert.
+
+Diese enum definiert die Spielerzustände und speichert gleichzeitig die
+Dateipfade der zugehörigen GIF-Dateien.
+
+```java
+public enum PlayerState {
+    IDLE("spr_m_traveler_idle_anim.gif"),
+    WALKING("spr_m_traveler_walk_anim.gif"),
+    RUNNING("spr_m_traveler_run_anim.gif"),
+    JUMPING("spr_m_traveler_jump_1up_anim.gif"),
+    MIDAIR("spr_m_traveler_jump_2midair_anim.gif"),
+    FALLING("spr_m_traveler_jump_3down_anim.gif"),
+    LANDING("spr_m_traveler_jump_4land_anim.gif");
+
+    private String gifFileName;
+
+    PlayerState(String gifFileName) {
+        this.gifFileName = gifFileName;
+    }
+
+    public String getGifFileLocation() {
+        return "eatutorials/statefulanimation/assets/" + this.gifFileName;
+    }
+}
+```
+
+Damit sind alle Zustände definiert. Ist beispielsweise das GIF des Zustandes
+JUMPING gefragt, so ist es jederzeit mit JUMPING.getGifFileLocation()
+erreichbar. Dies macht den Code deutlich wartbarer.
+
+
+Die Klasse für den Player Character
+
+Mit den definierten Zuständen in PlayerState kann nun die Implementierung der
+eigentlichen Spielfigur beginnen:
+
+```java
+import ea.actor.Animation;
+import ea.actor.BodyType;
+import ea.actor.StatefulAnimation;
+
+public class StatefulPlayerCharacter
+extends StatefulAnimation<PlayerState> {
+
+    public StatefulPlayerCharacter() {
+        super(3, 3); //All GIFs are 64x64 px, hence: Same width/height. In this case: 3m each
+
+        setupPlayerStates();
+        setupAutomaticTransitions();
+        setupPhysics();
+    }
+
+    private void setupPlayerStates() {
+        for(PlayerState state : PlayerState.values()) {
+            Animation animationOfState = Animation.createFromAnimatedGif(state.getGifFileLocation(), 3,3);
+            addState(state, animationOfState);
+        }
+    }
+
+    private void setupAutomaticTransitions() {
+        setStateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
+        setStateTransition(PlayerState.LANDING, PlayerState.IDLE);
+    }
+
+    private void setupPhysics() {
+        setBodyType(BodyType.DYNAMIC);
+        setRotationLocked(true);
+        setRestitution(0);
+        setFriction(30);
+        setLinearDamping(.3f);
+    }
+}
+```
+
+In setupPlayerStates() werden alle in PlayerState definierten Zustände der
+Spielfigur eingepflegt, inklusive des Einladens der animierten GIFs. Hier wird
+der Vorteil der String-Variable im PlayerState deutlich: Der Code ist angenehm
+zu lesen. Im Vergleich hierzu der Code ohne die Variable:
+
+```java
+private void setupPlayerStatesAlternative() {
+    addState(PlayerState.IDLE, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_idle_anim.gif", 3, 3);
+    addState(PlayerState.WALKING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_walk_anim.gif", 3, 3);
+    addState(PlayerState.RUNNING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_run_anim.gif", 3, 3);
+    addState(PlayerState.JUMPING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_jump_1up_anim.gif", 3, 3);
+    addState(PlayerState.FALLING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_jump_3down_anim.gif", 3, 3);
+    //etc.
+}
+```
+
+Wir wissen bereits, dass zwei der Zustände nur einen Animationszyklus bestehen.
+Danach sollen sie in einen anderen Zustand übergehen: MIDAIR geht über zu
+FALLING und LANDING geht über zu IDLE. Diese Übergänge können direkt über die
+Methode setStateTransition(...) umgesetzt werden.
+
+Schließlich wird in setupPhysics() die Figur über die Engine-Physik noch
+dynamisch gesetzt und bereit gemacht, sich als Platformer-Figur der Schwerkraft
+auszusetzen. Der hohe Reibungswert setFriction(30) sorgt dafür, dass die Figur
+später schnell auf dem Boden abbremsen kann, sobald sie sich nicht mehr bewegt.
+Ein Verhalten, dass bei den meisten Platformern erwünscht ist. Testbed
+
+Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
+sie. In einer Scene bekommt sie einen Boden zum Laufen: Der Zwischenstand: Noch
+passiert nicht viel.
+
+```java
+import ea.Game;
+import ea.Scene;
+import ea.Vector;
+import ea.actor.BodyType;
+import ea.actor.Rectangle;
+
+import java.awt.Color;
+
+public class StatefulAnimationTestScene
+extends Scene {
+
+    public StatefulAnimationTestScene() {
+        StatefulPlayerCharacter character = new StatefulPlayerCharacter();
+
+        setupGround();
+        add(character);
+
+        setGravity(new Vector(0, -9.81f));
+    }
+
+    private void setupGround() {
+        Rectangle ground = new Rectangle(200, 0.2f);
+        ground.setCenter(0, -5);
+        ground.setColor(new Color(255, 195, 150));
+        ground.setBodyType(BodyType.STATIC);
+        ground.setRestitution(0);
+        add(ground);
+    }
+
+    public static void main(String[] args) {
+        Game.start(1200, 820, new StatefulAnimationTestScene());
+    }
+}
+```
+
+Damit können wir das Zwischenergebnis schonmal sehen. Und sehen noch nicht viel.
+Die Figur bleibt im IDLE-Zustand hängen. Nun gilt es, die übrigen
+Zustandsübergänge zu implementieren.
+
+Implementieren der Zustände & Übergänge
+
+Springen
+
+Wir fokussieren uns nun auf die Übergänge zum Springen
+
+Springen ist schnell umgesetzt. Auf Tastendruck (Leertaste) soll die Spielfigur
+springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
+zusätzlich KeyListener und führt auf Leertastendruck die Sprungroutine aus: Die
+Figur kann springen, aber nicht landen.
+
+```java
+private void attemptJump() {
+    PlayerState state = getCurrentState();
+    if(state == PlayerState.IDLE || state == PlayerState.WALKING || state == PlayerState.RUNNING) {
+        if(isGrounded()) {
+            applyImpulse(new Vector(0, 850));
+            setState(PlayerState.JUMPING);
+        }
+    }
+}
+```
+
+Fallen und Landen
+
+Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.
+
+Als nächstes sorgen wir dafür, dass die Figur landen kann und schließlich zurück
+in den IDLE-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in Y-Richtung
+wichtig. Im Zustandsübergangsdiagramm haben wir dafür v_y < 0 als Fallen
+definiert und v_y = 0 als Stehen. Das ist im Modell in Ordnung, allerdings ist
+die Physik mit Fließkomma-Zahlen nicht ideal für "harte" Schwellwerte.
+Stattdessen definieren wir einen Grenzwert, innerhalb dessen wir auf 0 runden.
+Ich habe dafür private static final float THRESHOLD = 0.01f; definiert. Es geht
+sicherlich noch genauer, aber das reicht für dieses Tutorial.
+
+Unsere Spielfigur soll einfach in jedem Frame ihre eigene Y-Geschwidingkeit
+überprüfen. Dazu implementiert sie nun zusätzlich FrameUpdateListener und prüft
+in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
+
+Die Figur hat jetzt einen vollen Sprungzyklus
+
+```java
+@Override
+public void onFrameUpdate(float dT) {
+    Vector velocity = getVelocity();
+    PlayerState state = getCurrentState();
+
+    if(velocity.getY() < -THRESHOLD) {
+        switch(state) {
+            case JUMPING:
+                setState(PlayerState.MIDAIR);
+                break;
+            case IDLE:
+            case WALKING:
+            case RUNNING:
+                setState(PlayerState.FALLING);
+                break;
+            default:
+                break;
+        }
+    } else if(velocity.getY() < THRESHOLD && state==PlayerState.FALLING) {
+        setState(PlayerState.LANDING);
+    }
+}
+```
+
+Player Movement
+
+Die letzten zu implementierenden Zustände sind die Bewegung des Spielers. Durch
+die Physik-Engine gibt es viele Möglichkeiten, Bewegung im Spiel zu simulieren.
+Ein physikalisch korrekte Implementierung ist die kontinuierliche Anwendung
+einer Bewegungskraft:
+
+StatefulAnimation Player Movement.png
+
+Die (je nach Tastendruck gerichtete) Kraft beschleunigt die Spielfigur, bis die
+Reibung die wirkende Kraft ausgleicht. In der Methode setupPhysics() wurden
+bereits folgende Reibung für die Figur aktiviert:
+
+Luftreibung (gesetzt mit setLinearDamping(.3f))
+
+Kontaktreibung, z.B, mit Platformen (gesetzt mit setFriction(30))
+
+In der Regel wollen wir bei einem Platformer eine sehr bestimmte
+Maximalgeschwindigkeit (und die ist das Ergebnis von langem und intensivem Test
+und Herumspielen mit der Bewegung). Die Maximalgeschwindigkeit sowie die
+konstant wirkende Kraft setze ich als Konstanten in der Klasse meiner Figur, um
+diese Werte schnell ändern zu können:
+
+```java
+private static final Float MAX_SPEED = 20f;
+private static final float FORCE = 16000;
+```
+
+Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
+Methode onFrameUpdate(float dT) erweitert: Die Figur kann sich bewegen, jedoch
+resultiert dies noch nicht in Zustandsänderung.
+
+```java
+//In: onFrameUpdate( float dT )
+
+if(Math.abs(velocity.getX()) > MAX_SPEED) {
+    setVelocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED, velocity.getY()));
+}
+
+if(Game.isKeyPressed(KeyEvent.VK_A)) {
+    applyForce(new Vector(-FORCE, 0));
+} else if(Game.isKeyPressed(KeyEvent.VK_D)) {
+    applyForce(new Vector(FORCE, 0));
+}
+```
+
+Die Übergänge IDLE - WALKING - RUNNING
+
+Die letzten zu implementierenden Zustandsübergänge hängen von der
+Spielerbewegung ab
+
+Die Figur kann jetzt voll gesteuert werden. Die Zustände WALKING und RUNNING
+können nun eingebracht werden. Ist die Figur in einem der drei "bodenständigen"
+Zustände (idle, walking, running), so hängt der Übergang zwischen diesen
+Zuständen nur vom Betrag ihrer Geschindigkeit ab:
+
+    Bewegt sich die Figur "langsam", so ist sie WALKING.
+    Bewegt sich die Figur "schnell", so ist sie RUNNING.
+    Bewegt sich die Figur "gar nicht", so ist sie IDLE.
+
+Um die Begriffe "langsam" und "schnell" greifbar zu machen, ist einen Grenzwert
+nötig. Dazu definiere ich Konstanten in der Figur:
+
+```java
+private static final float RUNNING_THRESHOLD = 10;
+private static final float WALKING_THRESHOLD = 1;
+```
+
+Sobald sich die Figur mindestens 1 Meter/Sekunde bewegt, zählt sie als WALKING,
+sobald sie sich mindestens 10 Meter/Sekunde bewegt (die Hälfte der maximalen
+Geschwindigkeit), so zählt sie als RUNNING.
+
+Auf diese Grenzwerte wird jeden Frame in der onFrameUpdate(...) der Spielfigur
+geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
+die neue onFrameUpdate(...): Die Figur ist mit ihren Zuständen und Übergängen
+vollständig implementiert.
+
+```java
+@Override
+public void onFrameUpdate(float dT) {
+    Vector velocity = getVelocity();
+    PlayerState state = getCurrentState();
+
+    if(velocity.getY() < -THRESHOLD) {
+        switch(state) {
+            case JUMPING:
+                setState(PlayerState.MIDAIR);
+                break;
+            case IDLE:
+            case WALKING:
+            case RUNNING:
+                setState(PlayerState.FALLING);
+                break;
+            default:
+                break;
+        }
+    } else if(velocity.getY() < THRESHOLD && state==PlayerState.FALLING) {
+        setState(PlayerState.LANDING);
+    }
+
+    if(Math.abs(velocity.getX()) > MAX_SPEED) {
+        setVelocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED, velocity.getY()));
+    }
+
+    if(Game.isKeyPressed(KeyEvent.VK_A)) {
+        applyForce(new Vector(-FORCE, 0));
+    } else if(Game.isKeyPressed(KeyEvent.VK_D)) {
+        applyForce(new Vector(FORCE, 0));
+    }
+
+    if(state == PlayerState.IDLE || state == PlayerState.WALKING || state == PlayerState.RUNNING) {
+        float velXTotal = Math.abs(velocity.getX());
+        if(velXTotal > RUNNING_THRESHOLD) {
+            changeState(PlayerState.RUNNING);
+        } else if(velXTotal > WALKING_THRESHOLD) {
+            changeState(PlayerState.WALKING);
+        } else {
+            changeState(PlayerState.IDLE);
+        }
+    }
+
+    if(velocity.getX() > 0) {
+        setFlipHorizontal(false);
+    } else if(velocity.getX() < 0) {
+        setFlipHorizontal(true);
+    }
+}
+```
+
+Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
+festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
+setFlipHorizontal(boolean flip) die Blickrichtung der Figur angepasst werden.
+Anregung zum Experimentieren
+
+    Different Settings, Different Game: Platformer werden fundamental anders, wenn du an den Stellschrauben drehst: Ändere die Werte für Beschleunigung, Entschleunigung, und Geschwindigkeit und überlege dir interessante Herausforderungen. Ein Platformer mit langer Be-/Ent-Schleunigung eignet sich weniger für viele präzise Sprünge, verlangt allerdings viel Überlegung und Vorbereitung von Seiten des Spielers. Spiele mit den Werten und ändere das Testbett und finde heraus, was dir Spaß macht.
+    Still too simple: Die Geschwindigkeit wird derzeit "blind" interpoliert: Sollte unsere Figur gegen eine Wand knallen, so wird die Geschwindigkeit im folgenden Frame gleich wieder auf den gewünschten Laufwert gesetzt. Durch smartes Reagieren auf Kollisionstests lässt sich die Figur in ihrer Bewegung weiter verbessern.
+    Create Something! Die Grundlage für einen Platformer ist geschaffen. Bewegung ist da. Allerdings sonst noch nicht viel. Baue ein, worauf du Lust hast, zum Beispiel:
+        Ein Level: Stelle Platformen zusammen, baue Schluchten, Kletterparcours nach oben, was immer dein Jump n' Run Herz begehrt!
+        Kamera-Einbindung: Die Kamera kann sich dem Charakter anpassen, sodass ein Level auch über die Sichtweite des Spielfensters hinaus ragen darf.
+        Pick-Ups: Bei Berührung erhält der Charakter einen Bonus (z.B. zeitweise höhere Geschwindigkeit/Sprungkraft)
+        Gegner: Andere Akteure, die der Charakter besser nicht berühren sollte; sie ziehen ihm Hit Points ab (oder beenden das Spiel direkt). Vielleicht kann sich der Charakter mit einem Mario-Sprung auf den Kopf der Gegner zur Wehr setzen?
+        Ein Ziel: Quo Vadis? Was ist das Ziel des Levels? Von Flagge am rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
+        etc, etc, etc.
+
 ## Zeitsteuerung
 
 ```java

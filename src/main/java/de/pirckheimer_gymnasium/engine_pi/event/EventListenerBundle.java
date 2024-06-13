@@ -3,18 +3,18 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 /**
  * Bündelt alle Arten von Beobachtern.
  *
- * @TODO Implementiere
+ * TODO Implementiere
  *
- *       <p>
- *       Diese Klasse ist gedacht für ein Attribut {@code listeners} der Klassen
- *       {@link de.pirckheimer_gymnasium.engine_pi.Game},
- *       {@link de.pirckheimer_gymnasium.engine_pi.Scene},
- *       {@link de.pirckheimer_gymnasium.engine_pi.Layer},
- *       {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor}. In dieser
- *       Klasse werden für alle möglichen Arten von Beobachter Instanzen zur
- *       Verwaltung erstellt, auch wenn sie gar nicht genutzt werden. Dieser
- *       kleine Overhead wird in Kauf genommen.
- *       </p>
+ * <p>
+ * Diese Klasse ist gedacht für ein Attribut {@code listeners} der Klassen
+ * {@link de.pirckheimer_gymnasium.engine_pi.Game},
+ * {@link de.pirckheimer_gymnasium.engine_pi.Scene},
+ * {@link de.pirckheimer_gymnasium.engine_pi.Layer},
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor}. In dieser Klasse
+ * werden für alle möglichen Arten von Beobachter Instanzen zur Verwaltung
+ * erstellt, auch wenn sie gar nicht genutzt werden. Dieser kleine Overhead wird
+ * in Kauf genommen.
+ * </p>
  */
 public class EventListenerBundle
 {
