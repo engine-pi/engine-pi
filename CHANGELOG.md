@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v.0.16.0](https://github.com/engine-pi/engine-pi/releases/tag/v.0.16.0) - 2024-06-13
+
+<small>[Compare with v0.15.0](https://github.com/engine-pi/engine-pi/compare/v0.15.0...v.0.16.0)</small>
+
+### Fixed
+
+- Fix EventListener handling ([3977572](https://github.com/engine-pi/engine-pi/commit/3977572e92c0ec29c1db709dbc5561a3388efe2b) by Josef Friedrich).
+
 ## [v0.15.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.15.0) - 2024-06-13
 
 <small>[Compare with v0.14.0](https://github.com/engine-pi/engine-pi/compare/v0.14.0...v0.15.0)</small>

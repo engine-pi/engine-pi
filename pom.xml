@@ -6,7 +6,7 @@
 
     <groupId>de.pirckheimer-gymnasium</groupId>
     <artifactId>engine-pi</artifactId>
-    <version>0.15.0</version>
+    <version>0.16.0</version>
     <packaging>jar</packaging>
 
     <name>Engine Pi</name>
