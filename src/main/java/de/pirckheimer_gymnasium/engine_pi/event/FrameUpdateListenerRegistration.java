@@ -81,41 +81,40 @@ public interface FrameUpdateListenerRegistration
     }
 
     /**
-     * Führt das übergebene Runnable mit einer vorgegebenen Verzögerung aus.
+     * Führt die übergebene Aufgabe mit einer vorgegebenen Verzögerung aus.
      *
-     * @param timeInSeconds Verzögerung
-     * @param runnable      Wird nach Ablauf der Verzögerung ausgeführt
+     * @param delay Die Verzögerung in Sekunden.
+     * @param task  Die Aufgabe, die nach Ablauf der Verzögerung ausgeführt
+     *              wird.
      *
-     * @return Listener, der manuell abgemeldet werden kann, falls die
+     * @return Der Beobachter, der manuell abgemeldet werden kann, falls die
      *         Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener delay(double timeInSeconds, Runnable runnable)
+    default FrameUpdateListener delay(double delay, Runnable task)
     {
         // Später können wir den Return-Type auf SingleTask ändern, falls das
         // notwendig werden sollte
-        FrameUpdateListener singleTask = new SingleTask(timeInSeconds, runnable,
-                this);
+        FrameUpdateListener singleTask = new SingleTask(delay, task, this);
         addFrameUpdateListener(singleTask);
         return singleTask;
     }
 
     /**
-     * Führt das übergebene Runnable mit Verzögerung wiederholend aus.
+     * Führt die übergebene Aufgabe in einem bestimmten Zeitintervall
+     * wiederholend aus.
      *
-     * @param intervalInSeconds Verzögerung
-     * @param runnable          Wird immer wieder nach Ablauf der Verzögerung
-     *                          ausgeführt
+     * @param interval Das Zeitintervall in Sekunden.
+     * @param task     Wird immer wieder nach Ablauf der Verzögerung ausgeführt
      *
      * @return Ein Objekt der Klasse {@link PeriodicTask}, der manuell
      *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
      *         soll.
      */
     @API
-    default PeriodicTask repeat(double intervalInSeconds, Runnable runnable)
+    default PeriodicTask repeat(double interval, Runnable task)
     {
-        PeriodicTask periodicTask = new PeriodicTask(intervalInSeconds,
-                runnable, this);
+        PeriodicTask periodicTask = new PeriodicTask(interval, task, this);
         addFrameUpdateListener(periodicTask);
         return periodicTask;
     }

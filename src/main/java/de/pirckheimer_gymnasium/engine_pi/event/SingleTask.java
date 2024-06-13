@@ -95,8 +95,8 @@ public final class SingleTask implements FrameUpdateListener
     }
 
     /**
-     * @param deltaSeconds Die Zeit in Millisekunden, die seit dem letzten
-     *                     Update vergangen
+     * @param deltaSeconds Die Zeit in Sekunden, die seit dem letzten Update
+     *                     vergangen
      */
     @Override
     public void onFrameUpdate(double deltaSeconds)
