@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
@@ -39,7 +38,7 @@ public class StatefulAnimationDemo extends Scene
         setupGround();
         add(character);
         getCamera().setFocus(character);
-        setGravity(new Vector(0, -9.81));
+        setGravityOfEarth();
     }
 
     private void setupGround()
@@ -95,6 +94,5 @@ public class StatefulAnimationDemo extends Scene
     public static void main(String[] args)
     {
         Game.start(1200, 820, new StatefulAnimationDemo());
-        Game.setDebug(true);
     }
 }

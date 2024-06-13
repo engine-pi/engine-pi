@@ -8,13 +8,13 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class KeyListenerAsNormalClassDemo extends Scene
+public class KeyStrokeListenerAsNormalClassDemo extends Scene
 {
     Circle circle;
 
-    KeyStrokeListener keyListener;
+    KeyStrokeListener keyStrokeListener;
 
-    class MyKeylistener implements KeyStrokeListener
+    class MyKeyStrokeListener implements KeyStrokeListener
     {
         @Override
         public void onKeyDown(KeyEvent e)
@@ -38,27 +38,27 @@ public class KeyListenerAsNormalClassDemo extends Scene
                 break;
 
             case KeyEvent.VK_X:
-                circle.removeKeyStrokeListener(keyListener);
+                circle.removeKeyStrokeListener(keyStrokeListener);
                 break;
 
             case KeyEvent.VK_L:
-                circle.addKeyStrokeListener(keyListener);
+                circle.addKeyStrokeListener(keyStrokeListener);
                 break;
             }
         }
     }
 
-    public KeyListenerAsNormalClassDemo()
+    public KeyStrokeListenerAsNormalClassDemo()
     {
         circle = new Circle(2);
         circle.setColor(Color.RED);
-        keyListener = new MyKeylistener();
-        circle.addKeyStrokeListener(keyListener);
+        keyStrokeListener = new MyKeyStrokeListener();
+        circle.addKeyStrokeListener(keyStrokeListener);
         add(circle);
     }
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyListenerAsNormalClassDemo());
+        Game.start(600, 400, new KeyStrokeListenerAsNormalClassDemo());
     }
 }

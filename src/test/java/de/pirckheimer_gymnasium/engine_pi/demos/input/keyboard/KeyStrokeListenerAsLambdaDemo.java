@@ -7,9 +7,9 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 
-public class KeyListenerAsLambdaDemo extends Scene
+public class KeyStrokeListenerAsLambdaDemo extends Scene
 {
-    public KeyListenerAsLambdaDemo()
+    public KeyStrokeListenerAsLambdaDemo()
     {
         Circle circle = new Circle(2);
         circle.setColor(Color.RED);
@@ -38,6 +38,6 @@ public class KeyListenerAsLambdaDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyListenerAsLambdaDemo());
+        Game.start(600, 400, new KeyStrokeListenerAsLambdaDemo());
     }
 }

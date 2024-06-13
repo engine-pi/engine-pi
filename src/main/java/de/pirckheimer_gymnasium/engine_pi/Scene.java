@@ -32,7 +32,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
 
-import de.pirckheimer_gymnasium.engine_pi.event.*;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.joints.DistanceJoint;
 import org.jbox2d.dynamics.joints.Joint;
@@ -44,6 +43,17 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 
 /**
@@ -69,7 +79,13 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     private final Camera camera;
 
-    private final EventListenerBundle listeners = new EventListenerBundle();
+    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+
+    private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
+
+    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
+
+    private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>();
 
     /**
      * Die Layer dieser Szene.
@@ -419,31 +435,31 @@ public class Scene implements KeyStrokeListenerRegistration,
     @API
     public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
-        return listeners.keyStroke;
+        return keyStrokeListeners;
     }
 
     @API
-    public EventListenerBundle getListenerBundle()
+    public EventListeners<MouseClickListener> getMouseClickListeners()
     {
-        return listeners;
+        return mouseClickListeners;
     }
 
     @API
     public EventListeners<MouseScrollListener> getMouseScrollListeners()
     {
-        return listeners.mouseScroll;
+        return mouseScrollListeners;
     }
 
     @API
     public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
     {
-        return listeners.frameUpdate;
+        return frameUpdateListeners;
     }
 
     @Internal
     public final void invokeFrameUpdateListeners(double deltaSeconds)
     {
-        listeners.frameUpdate.invoke(frameUpdateListener -> frameUpdateListener
+        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(deltaSeconds));
         synchronized (layers)
         {
@@ -457,33 +473,33 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     final void invokeKeyDownListeners(KeyEvent event)
     {
-        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyDown(event));
+        keyStrokeListeners.invoke(listener -> listener.onKeyDown(event));
     }
 
     @Internal
     final void invokeKeyUpListeners(KeyEvent event)
     {
-        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyUp(event));
+        keyStrokeListeners.invoke(listener -> listener.onKeyUp(event));
     }
 
     @Internal
     final void invokeMouseDownListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick
+        mouseClickListeners
                 .invoke(listener -> listener.onMouseDown(position, button));
     }
 
     @Internal
     final void invokeMouseUpListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick
+        mouseClickListeners
                 .invoke(listener -> listener.onMouseUp(position, button));
     }
 
     @Internal
     final void invokeMouseScrollListeners(MouseScrollEvent event)
     {
-        listeners.mouseScroll
+        mouseScrollListeners
                 .invoke(listener -> listener.onMouseScrollMove(event));
     }
 

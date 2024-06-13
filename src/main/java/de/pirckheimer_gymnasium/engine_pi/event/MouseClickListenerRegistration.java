@@ -26,15 +26,15 @@ package de.pirckheimer_gymnasium.engine_pi.event;
  */
 public interface MouseClickListenerRegistration
 {
-    EventListenerBundle getListenerBundle();
+    EventListeners<MouseClickListener> getMouseClickListeners();
 
     default void addMouseClickListener(MouseClickListener listener)
     {
-        getListenerBundle().mouseClick.add(listener);
+        getMouseClickListeners().add(listener);
     }
 
     default void removeMouseClickListener(MouseClickListener listener)
     {
-        getListenerBundle().mouseClick.remove(listener);
+        getMouseClickListeners().remove(listener);
     }
 }

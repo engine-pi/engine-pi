@@ -8,11 +8,11 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class StaticKeyListenerDemo extends Scene
+public class StaticKeyStrokeListenerDemo extends Scene
 {
     Rectangle rectangle;
 
-    public StaticKeyListenerDemo()
+    public StaticKeyStrokeListenerDemo()
     {
         rectangle = new Rectangle(2, 2);
         rectangle.setColor(Color.BLUE);
@@ -31,7 +31,7 @@ public class StaticKeyListenerDemo extends Scene
 
     public static void main(String[] args)
     {
-        StaticKeyListenerDemo scene = new StaticKeyListenerDemo();
+        StaticKeyStrokeListenerDemo scene = new StaticKeyStrokeListenerDemo();
         Game.start(600, 400, scene);
         Game.addKeyStrokeListener(new KeyStrokeListener()
         {

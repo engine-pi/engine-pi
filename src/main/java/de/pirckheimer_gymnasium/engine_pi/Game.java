@@ -41,7 +41,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultListener;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
+import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
@@ -137,7 +137,13 @@ public final class Game
      */
     private static java.awt.Point mousePosition;
 
-    private static final EventListenerBundle listeners = new EventListenerBundle();
+    private static final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
+
+    private static final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
+
+    private static final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>();
+
+    private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -187,7 +193,7 @@ public final class Game
                 Game.exit();
             }
         });
-        java.awt.event.KeyListener keyListener = new KeyListener();
+        KeyListener keyListener = new KeyListener();
         frame.addKeyListener(keyListener);
         renderPanel.addKeyListener(keyListener);
         renderPanel.setFocusable(true);
@@ -244,7 +250,7 @@ public final class Game
         final Scene next;
         next = Objects.requireNonNullElseGet(scene, Scene::new);
         loop.enqueue(() -> {
-            listeners.sceneLaunch.invoke(
+            sceneLaunchListeners.invoke(
                     (listener) -> listener.onSceneLaunch(next, previous));
             Game.scene = next;
         });
@@ -253,7 +259,7 @@ public final class Game
     private static void run()
     {
         loop = new GameLoop(renderPanel, Game::getActiveScene, Game::isDebug);
-        listeners.sceneLaunch.invoke((listener) -> listener
+        sceneLaunchListeners.invoke((listener) -> listener
                 .onSceneLaunch(Game.getActiveScene(), null));
         loop.run();
         frame.setVisible(false);
@@ -345,7 +351,7 @@ public final class Game
         MouseScrollEvent mouseScrollEvent = new MouseScrollEvent(
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
-            listeners.mouseScroll.invoke((listener) -> {
+            mouseScrollListeners.invoke((listener) -> {
                 listener.onMouseScrollMove(mouseScrollEvent);
             });
             scene.invokeMouseScrollListeners(mouseScrollEvent);
@@ -398,18 +404,19 @@ public final class Game
 
     /**
      * Fügt einen statisch {@link KeyStrokeListener} hinzu, d. h. dieser
-     * KeyListener gilt global über das ganze Spiel und ist unabhängig von der
-     * aktuellen Szene.
+     * KeyStrokeListener gilt global über das ganze Spiel und ist unabhängig von
+     * der aktuellen Szene.
      *
      * <p>
-     * Der {@link KeyListener} kann auf mehrere Arten implementiert werden:
+     * Der {@link KeyStrokeListener} kann auf mehrere Arten implementiert
+     * werden:
      * </p>
      *
      * <ol>
      * <li>Als normale Klasse:
      *
      * <pre>{@code
-     * class MyKeylistener implements KeyListener
+     * class MyKeyStrokelistener implements KeyStrokeListener
      * {
      *     @Override
      *     public void onKeyDown(KeyEvent e)
@@ -417,7 +424,7 @@ public final class Game
      *         // Code here
      *     }
      * }
-     * obj.addKeyListener(new MyKeylistener());
+     * obj.addKeyStrokeListener(new MyKeyStrokelistener());
      * }</pre>
      *
      * </li>
@@ -425,7 +432,7 @@ public final class Game
      * <li>Als anonyme Klasse:
      *
      * <pre>{@code
-     * obj.addKeyListener(new KeyListener()
+     * obj.addKeyStrokeListener(new KeyStrokeListener()
      * {
      *     @Override
      *     public void onKeyDown(KeyEvent e)
@@ -440,7 +447,7 @@ public final class Game
      * <li>Oder als Lambda-Ausdruck:
      *
      * <pre>{@code
-     * obj.addKeyListener(e -> {
+     * obj.addKeyStrokeListener(e -> {
      *     // Code here
      * });
      * }</pre>
@@ -456,12 +463,12 @@ public final class Game
      */
     public static void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        listeners.keyStroke.add(listener);
+        keyStrokeListeners.add(listener);
     }
 
     /**
      * Entfernt einen statischen {@link KeyStrokeListener} vom Objekt, d. h.
-     * einen KeyListener, der global für das ganze Spiel gilt.
+     * einen KeyStrokeListener, der global für das ganze Spiel gilt.
      *
      * @author Josef Friedrich
      *
@@ -471,37 +478,37 @@ public final class Game
      */
     public static void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        listeners.keyStroke.remove(listener);
+        keyStrokeListeners.remove(listener);
     }
 
     public static void addMouseClickListener(MouseClickListener listener)
     {
-        listeners.mouseClick.add(listener);
+        mouseClickListeners.add(listener);
     }
 
     public static void removeMouseClickListener(MouseClickListener listener)
     {
-        listeners.mouseClick.remove(listener);
+        mouseClickListeners.remove(listener);
     }
 
     public static void addMouseScrollListener(MouseScrollListener listener)
     {
-        listeners.mouseScroll.add(listener);
+        mouseScrollListeners.add(listener);
     }
 
     public static void removeMouseScrollListener(MouseScrollListener listener)
     {
-        listeners.mouseScroll.remove(listener);
+        mouseScrollListeners.remove(listener);
     }
 
     public static void addSceneLaunchListener(SceneLaunchListener listener)
     {
-        listeners.sceneLaunch.add(listener);
+        sceneLaunchListeners.add(listener);
     }
 
     public static void removeSceneLaunchListener(SceneLaunchListener listener)
     {
-        listeners.sceneLaunch.remove(listener);
+        sceneLaunchListeners.remove(listener);
     }
 
     /**
@@ -889,13 +896,13 @@ public final class Game
             loop.enqueue(() -> {
                 if (down)
                 {
-                    listeners.mouseClick.invoke(
+                    mouseClickListeners.invoke(
                             listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseDownListeners(position, button);
                 }
                 else
                 {
-                    listeners.mouseClick.invoke(
+                    mouseClickListeners.invoke(
                             listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseUpListeners(position, button);
                 }
@@ -936,13 +943,13 @@ public final class Game
             loop.enqueue(() -> {
                 if (down)
                 {
-                    listeners.keyStroke.invoke(
+                    keyStrokeListeners.invoke(
                             keyListener -> keyListener.onKeyDown(event));
                     scene.invokeKeyDownListeners(event);
                 }
                 else
                 {
-                    listeners.keyStroke
+                    keyStrokeListeners
                             .invoke(keyListener -> keyListener.onKeyUp(event));
                     scene.invokeKeyUpListeners(event);
                 }

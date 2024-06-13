@@ -177,26 +177,22 @@ public final class EventListeners<T>
      */
     public static void registerListeners(Object target)
     {
-        if (target instanceof KeyStrokeListenerRegistration
-                && target instanceof KeyStrokeListener)
+        if (target instanceof KeyStrokeListener)
         {
             ((KeyStrokeListenerRegistration) target)
                     .addKeyStrokeListener((KeyStrokeListener) target);
         }
-        if (target instanceof MouseClickListenerRegistration
-                && target instanceof MouseClickListener)
+        if (target instanceof MouseClickListener)
         {
             ((MouseClickListenerRegistration) target)
                     .addMouseClickListener((MouseClickListener) target);
         }
-        if (target instanceof MouseScrollListenerRegistration
-                && target instanceof MouseScrollListener)
+        if (target instanceof MouseScrollListener)
         {
             ((MouseScrollListenerRegistration) target)
                     .addMouseScrollListener((MouseScrollListener) target);
         }
-        if (target instanceof FrameUpdateListenerRegistration
-                && target instanceof FrameUpdateListener)
+        if (target instanceof FrameUpdateListener)
         {
             ((FrameUpdateListenerRegistration) target)
                     .addFrameUpdateListener((FrameUpdateListener) target);

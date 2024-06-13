@@ -33,12 +33,12 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
@@ -97,7 +97,16 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     private final WorldHandler worldHandler;
 
-    private final EventListenerBundle listeners = new EventListenerBundle();
+    private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>(
+            createParentSupplier(Scene::getKeyStrokeListeners));
+
+    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
+            createParentSupplier(Scene::getMouseClickListeners));
+
+    private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>(
+            createParentSupplier(Scene::getMouseScrollListeners));
+
+    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
     /**
      * Erstellt eine neue Ebene.
@@ -130,19 +139,17 @@ public class Layer implements KeyStrokeListenerRegistration,
         }
         if (parent != null)
         {
-            listeners.keyStroke.invoke(parent::addKeyStrokeListener);
-            listeners.mouseClick.invoke(parent::addMouseClickListener);
-            listeners.mouseScroll.invoke(parent::addMouseScrollListener);
-            listeners.frameUpdate.invoke(parent::addFrameUpdateListener);
+            keyStrokeListeners.invoke(parent::addKeyStrokeListener);
+            mouseClickListeners.invoke(parent::addMouseClickListener);
+            mouseScrollListeners.invoke(parent::addMouseScrollListener);
+            frameUpdateListeners.invoke(parent::addFrameUpdateListener);
         }
         else
         {
-            listeners.keyStroke.invoke(this.parent::removeKeyStrokeListener);
-            listeners.mouseClick.invoke(this.parent::removeMouseClickListener);
-            listeners.mouseScroll
-                    .invoke(this.parent::removeMouseScrollListener);
-            listeners.frameUpdate
-                    .invoke(this.parent::removeFrameUpdateListener);
+            keyStrokeListeners.invoke(this.parent::removeKeyStrokeListener);
+            mouseClickListeners.invoke(this.parent::removeMouseClickListener);
+            mouseScrollListeners.invoke(this.parent::removeMouseScrollListener);
+            frameUpdateListeners.invoke(this.parent::removeFrameUpdateListener);
         }
         this.parent = parent;
     }
@@ -554,34 +561,34 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     @API
-    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
+    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
     {
-        return listeners.keyStroke;
+        return frameUpdateListeners;
     }
 
     @API
-    public EventListenerBundle getListenerBundle()
+    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {
-        return listeners;
+        return keyStrokeListeners;
+    }
+
+    @API
+    public EventListeners<MouseClickListener> getMouseClickListeners()
+    {
+        return mouseClickListeners;
     }
 
     @API
     public EventListeners<MouseScrollListener> getMouseScrollListeners()
     {
-        return listeners.mouseScroll;
-    }
-
-    @API
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
-    {
-        return listeners.frameUpdate;
+        return mouseScrollListeners;
     }
 
     @Internal
     void invokeFrameUpdateListeners(double deltaSeconds)
     {
         double scaledSeconds = deltaSeconds * timeDistort;
-        listeners.frameUpdate.invoke(frameUpdateListener -> frameUpdateListener
+        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(scaledSeconds));
     }
 }

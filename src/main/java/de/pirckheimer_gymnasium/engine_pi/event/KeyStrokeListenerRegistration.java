@@ -24,24 +24,23 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 public interface KeyStrokeListenerRegistration
 {
-    EventListenerBundle getListenerBundle();
+    EventListeners<KeyStrokeListener> getKeyStrokeListeners();
 
     /**
-     * Fügt einen {@link KeyStrokeListener} zum Objekt hinzu. Die Klassen
-     * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
-     * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
-     * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren die
-     * Schnittstelle {@link KeyStrokeListenerRegistration} und stellen daher
-     * diese Methode zur Verfügung.
+     * Fügt einen statisch {@link KeyStrokeListener} hinzu, d. h. dieser
+     * KeyStrokeListener gilt global über das ganze Spiel und ist unabhängig von
+     * der aktuellen Szene.
      *
+     * <p>
      * Der {@link KeyStrokeListener} kann auf mehrere Arten implementiert
      * werden:
+     * </p>
      *
      * <ol>
      * <li>Als normale Klasse:
      *
      * <pre>{@code
-     * class MyKeylistener implements KeyListener
+     * class MyKeyStrokelistener implements KeyStrokeListener
      * {
      *     @Override
      *     public void onKeyDown(KeyEvent e)
@@ -49,7 +48,7 @@ public interface KeyStrokeListenerRegistration
      *         // Code here
      *     }
      * }
-     * obj.addKeyListener(new MyKeylistener());
+     * obj.addKeyStrokeListener(new MyKeyStrokelistener());
      * }</pre>
      *
      * </li>
@@ -57,7 +56,7 @@ public interface KeyStrokeListenerRegistration
      * <li>Als anonyme Klasse:
      *
      * <pre>{@code
-     * obj.addKeyListener(new KeyListener()
+     * obj.addKeyStrokeListener(new KeyStrokeListener()
      * {
      *     @Override
      *     public void onKeyDown(KeyEvent e)
@@ -72,7 +71,7 @@ public interface KeyStrokeListenerRegistration
      * <li>Oder als Lambda-Ausdruck:
      *
      * <pre>{@code
-     * obj.addKeyListener(e -> {
+     * obj.addKeyStrokeListener(e -> {
      *     // Code here
      * });
      * }</pre>
@@ -80,14 +79,16 @@ public interface KeyStrokeListenerRegistration
      * </li>
      * </ol>
      *
+     * @author Josef Friedrich
+     *
      * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.Game#addKeyStrokeListener(KeyStrokeListener)
+     * @see KeyStrokeListenerRegistration#addKeyStrokeListener(KeyStrokeListener)
      */
     @API
     default void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        getListenerBundle().keyStroke.add(listener);
+        getKeyStrokeListeners().add(listener);
     }
 
     /**
@@ -100,6 +101,6 @@ public interface KeyStrokeListenerRegistration
     @API
     default void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        getListenerBundle().keyStroke.remove(listener);
+        getKeyStrokeListeners().remove(listener);
     }
 }

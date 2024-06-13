@@ -8,9 +8,9 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class KeyListenerAsAnonymousClassDemo extends Scene
+public class KeyStrokeListenerAsAnonymousClassDemo extends Scene
 {
-    public KeyListenerAsAnonymousClassDemo()
+    public KeyStrokeListenerAsAnonymousClassDemo()
     {
         Circle circle = new Circle(2);
         circle.setColor(Color.RED);
@@ -44,6 +44,6 @@ public class KeyListenerAsAnonymousClassDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyListenerAsAnonymousClassDemo());
+        Game.start(600, 400, new KeyStrokeListenerAsAnonymousClassDemo());
     }
 }
