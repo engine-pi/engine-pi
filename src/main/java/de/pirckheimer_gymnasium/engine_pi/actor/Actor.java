@@ -72,7 +72,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  */
 @SuppressWarnings("OverlyComplexClass")
 public abstract class Actor implements KeyStrokeListenerRegistration,
-        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        MouseClickListenerRegistration, MouseScrollListenerRegistration,
         FrameUpdateListenerRegistration
 {
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
@@ -723,7 +723,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             Layer layer = previousWorldHandler.getLayer();
             listeners.keyStroke.invoke(layer::removeKeyStrokeListener);
             listeners.mouseClick.invoke(layer::removeMouseClickListener);
-            listeners.mouseWheel.invoke(layer::removeMouseWheelListener);
+            listeners.mouseScroll.invoke(layer::removeMouseScrollListener);
             listeners.frameUpdate.invoke(layer::removeFrameUpdateListener);
             listeners.unmount.invoke(Runnable::run);
             physicsHandler = handler;
@@ -739,7 +739,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             listeners.mount.invoke(Runnable::run);
             listeners.keyStroke.invoke(layer::addKeyStrokeListener);
             listeners.mouseClick.invoke(layer::addMouseClickListener);
-            listeners.mouseWheel.invoke(layer::addMouseWheelListener);
+            listeners.mouseScroll.invoke(layer::addMouseScrollListener);
             listeners.frameUpdate.invoke(layer::addFrameUpdateListener);
         }
     }
@@ -790,12 +790,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @return Liste der {@link MouseWheelListener}.
+     * @return Liste der {@link MouseScrollListener}.
      */
     @API
-    public final EventListeners<MouseWheelListener> getMouseWheelListeners()
+    public final EventListeners<MouseScrollListener> getMouseScrollListeners()
     {
-        return listeners.mouseWheel;
+        return listeners.mouseScroll;
     }
 
     /**

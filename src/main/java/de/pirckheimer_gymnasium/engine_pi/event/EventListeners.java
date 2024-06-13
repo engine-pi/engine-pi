@@ -189,11 +189,11 @@ public final class EventListeners<T>
             ((MouseClickListenerRegistration) target)
                     .addMouseClickListener((MouseClickListener) target);
         }
-        if (target instanceof MouseWheelListenerRegistration
-                && target instanceof MouseWheelListener)
+        if (target instanceof MouseScrollListenerRegistration
+                && target instanceof MouseScrollListener)
         {
-            ((MouseWheelListenerRegistration) target)
-                    .addMouseWheelListener((MouseWheelListener) target);
+            ((MouseScrollListenerRegistration) target)
+                    .addMouseScrollListener((MouseScrollListener) target);
         }
         if (target instanceof FrameUpdateListenerRegistration
                 && target instanceof FrameUpdateListener)

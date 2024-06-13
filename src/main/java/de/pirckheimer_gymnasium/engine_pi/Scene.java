@@ -52,7 +52,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * neu erzeugen zu müssen.
  */
 public class Scene implements KeyStrokeListenerRegistration,
-        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        MouseClickListenerRegistration, MouseScrollListenerRegistration,
         FrameUpdateListenerRegistration, ActorCreator
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
@@ -429,9 +429,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     @API
-    public EventListeners<MouseWheelListener> getMouseWheelListeners()
+    public EventListeners<MouseScrollListener> getMouseScrollListeners()
     {
-        return listeners.mouseWheel;
+        return listeners.mouseScroll;
     }
 
     @API
@@ -455,36 +455,36 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     @Internal
-    final void invokeKeyDownListeners(KeyEvent e)
+    final void invokeKeyDownListeners(KeyEvent event)
     {
-        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyDown(e));
+        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyDown(event));
     }
 
     @Internal
-    final void invokeKeyUpListeners(KeyEvent e)
+    final void invokeKeyUpListeners(KeyEvent event)
     {
-        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyUp(e));
+        listeners.keyStroke.invoke(keyListener -> keyListener.onKeyUp(event));
     }
 
     @Internal
     final void invokeMouseDownListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick.invoke(mouseClickListener -> mouseClickListener
+        listeners.mouseClick.invoke(listener -> listener
                 .onMouseDown(position, button));
     }
 
     @Internal
     final void invokeMouseUpListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick.invoke(mouseClickListener -> mouseClickListener
+        listeners.mouseClick.invoke(listener -> listener
                 .onMouseUp(position, button));
     }
 
     @Internal
-    final void invokeMouseWheelMoveListeners(MouseWheelEvent e)
+    final void invokeMouseScrollListeners(MouseScrollEvent event)
     {
-        listeners.mouseWheel.invoke(
-                mouseWheelListener -> mouseWheelListener.onMouseWheelMove(e));
+        listeners.mouseScroll.invoke(
+                listener -> listener.onMouseScrollMove(event));
     }
 
     @API

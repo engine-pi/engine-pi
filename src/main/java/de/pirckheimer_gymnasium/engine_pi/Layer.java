@@ -40,8 +40,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.BodyHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData;
@@ -55,7 +55,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * @author Michael Andonie
  */
 public class Layer implements KeyStrokeListenerRegistration,
-        MouseClickListenerRegistration, MouseWheelListenerRegistration,
+        MouseClickListenerRegistration, MouseScrollListenerRegistration,
         FrameUpdateListenerRegistration, ActorCreator
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
@@ -132,14 +132,14 @@ public class Layer implements KeyStrokeListenerRegistration,
         {
             listeners.keyStroke.invoke(parent::addKeyStrokeListener);
             listeners.mouseClick.invoke(parent::addMouseClickListener);
-            listeners.mouseWheel.invoke(parent::addMouseWheelListener);
+            listeners.mouseScroll.invoke(parent::addMouseScrollListener);
             listeners.frameUpdate.invoke(parent::addFrameUpdateListener);
         }
         else
         {
             listeners.keyStroke.invoke(this.parent::removeKeyStrokeListener);
             listeners.mouseClick.invoke(this.parent::removeMouseClickListener);
-            listeners.mouseWheel.invoke(this.parent::removeMouseWheelListener);
+            listeners.mouseScroll.invoke(this.parent::removeMouseScrollListener);
             listeners.frameUpdate
                     .invoke(this.parent::removeFrameUpdateListener);
         }
@@ -565,9 +565,9 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     @API
-    public EventListeners<MouseWheelListener> getMouseWheelListeners()
+    public EventListeners<MouseScrollListener> getMouseScrollListeners()
     {
-        return listeners.mouseWheel;
+        return listeners.mouseScroll;
     }
 
     @API

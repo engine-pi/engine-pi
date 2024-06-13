@@ -26,7 +26,7 @@ public class EventListenerBundle
 
     public final EventListeners<MouseClickListener> mouseClick;
 
-    public final EventListeners<MouseWheelListener> mouseWheel;
+    public final EventListeners<MouseScrollListener> mouseScroll;
 
     public final EventListeners<SceneLaunchListener> sceneLaunch;
 
@@ -42,7 +42,7 @@ public class EventListenerBundle
         keyStroke = new EventListeners<>();
         mount = new EventListeners<>();
         mouseClick = new EventListeners<>();
-        mouseWheel = new EventListeners<>();
+        mouseScroll = new EventListeners<>();
         sceneLaunch = new EventListeners<>();
         unmount = new EventListeners<>();
     }

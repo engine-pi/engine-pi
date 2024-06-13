@@ -541,8 +541,8 @@ public final class Vector implements Cloneable
      * Erzeugt einen neuen Vektor.
      *
      * <p>
-     * Diese statische Methode kann dazu benutzt werden, über einen statischen
-     * Import dieser Methode
+     * Diese statische Methode kann dazu benutzt werden, um über einen
+     * statischen Import dieser Methode
      * </p>
      *
      * {@code

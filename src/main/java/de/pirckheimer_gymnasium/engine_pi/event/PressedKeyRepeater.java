@@ -100,12 +100,12 @@ public class PressedKeyRepeater implements KeyStrokeListener
          */
         private double interval;
 
-        public Task(int keyCode, Runnable runnable, double interval,
+        public Task(int keyCode, Runnable reatedTask, double interval,
                 double initialInterval)
         {
             this.keyCode = keyCode;
             this.interval = interval;
-            this.repeatedTask = runnable;
+            this.repeatedTask = reatedTask;
             this.initialInterval = initialInterval;
         }
 
@@ -196,10 +196,10 @@ public class PressedKeyRepeater implements KeyStrokeListener
         this(0, 0);
     }
 
-    public void addTask(int keyCode, Runnable runnable, double interval,
+    public void addTask(int keyCode, Runnable repeatedTask, double interval,
             double initialInterval)
     {
-        tasks.add(new Task(keyCode, runnable, interval, initialInterval));
+        tasks.add(new Task(keyCode, repeatedTask, interval, initialInterval));
     }
 
     public void addTask(int keyCode, Runnable repeatedTask)

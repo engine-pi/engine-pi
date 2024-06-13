@@ -31,11 +31,11 @@ import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 
 public class MinimalDemo extends Scene
-        implements KeyStrokeListener, MouseWheelListener, FrameUpdateListener
+        implements KeyStrokeListener, MouseScrollListener, FrameUpdateListener
 {
     private static final int WIDTH = 1020;
 
@@ -97,10 +97,10 @@ public class MinimalDemo extends Scene
     }
 
     @Override
-    public void onMouseWheelMove(MouseWheelEvent mouseWheelEvent)
+    public void onMouseScrollMove(MouseScrollEvent event)
     {
         double newZoom = getCamera().getMeter()
-                + (mouseWheelEvent.getPreciseWheelRotation() * -0.2);
+                + (event.getPreciseWheelRotation() * -0.2);
         if (newZoom > 0)
         {
             getCamera().setMeter(newZoom);

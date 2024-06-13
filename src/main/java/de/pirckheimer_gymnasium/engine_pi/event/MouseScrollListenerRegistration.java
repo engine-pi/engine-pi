@@ -26,7 +26,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf Bewegungen
  * des Mausrads reagieren.
  */
-public interface MouseWheelListenerRegistration
+public interface MouseScrollListenerRegistration
 {
     EventListenerBundle getListenerBundle();
 
@@ -37,9 +37,9 @@ public interface MouseWheelListenerRegistration
      * @param listener Ein Beobachter, der auf Bewegungen des Mausrads reagiert.
      */
     @API
-    default void addMouseWheelListener(MouseWheelListener listener)
+    default void addMouseScrollListener(MouseScrollListener listener)
     {
-        getListenerBundle().mouseWheel.add(listener);
+        getListenerBundle().mouseScroll.add(listener);
     }
 
     /**
@@ -49,8 +49,8 @@ public interface MouseWheelListenerRegistration
      * @param listener Ein Beobachter, der auf Bewegungen des Mausrads reagiert.
      */
     @API
-    default void removeMouseWheelListener(MouseWheelListener listener)
+    default void removeMouseScrollListener(MouseScrollListener listener)
     {
-        getListenerBundle().mouseWheel.remove(listener);
+        getListenerBundle().mouseScroll.remove(listener);
     }
 }

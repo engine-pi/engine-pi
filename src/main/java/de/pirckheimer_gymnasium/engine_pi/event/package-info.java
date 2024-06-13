@@ -25,8 +25,8 @@
  * {@link de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener}</li>
  * <li>MouseClick:
  * {@link de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener}</li>
- * <li>MouseWheel:
- * {@link de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener}</li>
+ * <li>MouseScroll:
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener}</li>
  * <li>SceneLaunch:
  * {@link de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener}</li>
  * </ul>

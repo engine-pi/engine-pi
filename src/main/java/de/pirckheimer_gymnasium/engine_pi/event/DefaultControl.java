@@ -114,11 +114,11 @@ public class DefaultControl implements DefaultListener
      * Verändert den Zoomfaktor der Kamera, wenn gleichzeitig {@code ALT} und
      * das Mausrad benutzt wird.
      *
-     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das
+     * @param event Das {@link MouseScrollEvent}-Objekt beschreibt, wie das
      *              Mausrad gedreht wurde.
      */
     @Override
-    public void onMouseWheelMove(MouseWheelEvent event)
+    public void onMouseScrollMove(MouseScrollEvent event)
     {
         if (!Game.isKeyPressed(KeyEvent.VK_ALT))
         {

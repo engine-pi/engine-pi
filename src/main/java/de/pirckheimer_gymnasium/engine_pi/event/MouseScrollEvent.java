@@ -24,14 +24,14 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseWheelListener}
+ * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseScrollListener}
  * genutzt.
  *
  * @author Michael Andonie
- * @see MouseWheelListener
+ * @see MouseScrollListener
  */
 @API
-public class MouseWheelEvent
+public class MouseScrollEvent
 {
     /**
      * Die Rotation des Mausrades. Bei Mäusen mit Präzession auch in Bruchteilen
@@ -40,7 +40,7 @@ public class MouseWheelEvent
     private final double wheelRotation;
 
     @Internal
-    public MouseWheelEvent(double wheelRotation)
+    public MouseScrollEvent(double wheelRotation)
     {
         this.wheelRotation = wheelRotation;
     }

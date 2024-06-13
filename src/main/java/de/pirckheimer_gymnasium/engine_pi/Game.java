@@ -27,6 +27,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -38,7 +39,17 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.event.*;
+import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
+import de.pirckheimer_gymnasium.engine_pi.event.DefaultListener;
+import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
+import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
@@ -183,7 +194,7 @@ public final class Game
         MouseAdapter mouseListener = new MouseListener();
         renderPanel.addMouseMotionListener(mouseListener);
         renderPanel.addMouseListener(mouseListener);
-        renderPanel.addMouseWheelListener(Game::enqueueMouseWheelEvent);
+        renderPanel.addMouseWheelListener(Game::enqueueMouseScrollEvent);
         try
         {
             frame.setIconImage(Resources.images.get("assets/logo.png"));
@@ -275,7 +286,7 @@ public final class Game
             addFrameUpdateListener(defaultControl);
             addKeyStrokeListener(defaultControl);
             addMouseClickListener(defaultControl);
-            addMouseWheelListener(defaultControl);
+            addMouseScrollListener(defaultControl);
         }
     }
 
@@ -292,7 +303,7 @@ public final class Game
             removeFrameUpdateListener(defaultControl);
             removeKeyStrokeListener(defaultControl);
             removeMouseClickListener(defaultControl);
-            removeMouseWheelListener(defaultControl);
+            removeMouseScrollListener(defaultControl);
             defaultControl = null;
         }
     }
@@ -325,20 +336,20 @@ public final class Game
 
     /**
      * Diese Methode wird immer dann ausgeführt, wenn das Mausrad bewegt wurde
-     * und ein {@code java.awt.event.MouseWheelEvent} registriert wurde.
+     * und ein {@code MouseWheelEvent} registriert wurde.
      *
      * @param event das Event.
      */
-    private static void enqueueMouseWheelEvent(
-            java.awt.event.MouseWheelEvent event)
+    private static void enqueueMouseScrollEvent(
+            MouseWheelEvent event)
     {
-        MouseWheelEvent mouseWheelEvent = new MouseWheelEvent(
+        MouseScrollEvent mouseScrollEvent = new MouseScrollEvent(
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
-            listeners.mouseWheel.invoke((listener) -> {
-                listener.onMouseWheelMove(mouseWheelEvent);
+            listeners.mouseScroll.invoke((listener) -> {
+                listener.onMouseScrollMove(mouseScrollEvent);
             });
-            scene.invokeMouseWheelMoveListeners(mouseWheelEvent);
+            scene.invokeMouseScrollListeners(mouseScrollEvent);
         });
     }
 
@@ -474,14 +485,14 @@ public final class Game
         listeners.mouseClick.remove(listener);
     }
 
-    public static void addMouseWheelListener(MouseWheelListener listener)
+    public static void addMouseScrollListener(MouseScrollListener listener)
     {
-        listeners.mouseWheel.add(listener);
+        listeners.mouseScroll.add(listener);
     }
 
-    public static void removeMouseWheelListener(MouseWheelListener listener)
+    public static void removeMouseScrollListener(MouseScrollListener listener)
     {
-        listeners.mouseWheel.remove(listener);
+        listeners.mouseScroll.remove(listener);
     }
 
     public static void addSceneLaunchListener(SceneLaunchListener listener)

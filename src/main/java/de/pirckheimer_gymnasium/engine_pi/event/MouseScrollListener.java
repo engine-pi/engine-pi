@@ -25,19 +25,24 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 /**
  * Implementierende Klassen können auf Bewegungen des Mausrads reagieren.
  *
- * @see MouseWheelEvent
+ * <p>
+ * Diese Schnittstelle heißt nicht {@code MouseWheelListener}, da es eine {@code MouseWheelListener}-Klasse
+ * bereits im Java-JDK ({@link java.awt.event.MouseWheelListener}) gibt.
+ * </p>
+ *
+ * @see MouseScrollEvent
  * @author Michael Andonie
  */
 @API
-public interface MouseWheelListener
+public interface MouseScrollListener
 {
     /**
      * Diese Methode wird immer dann aufgerufen, wenn das <b>Mausrad gedreht</b>
      * wurde.
      *
-     * @param event Das {@link MouseWheelEvent}-Objekt beschreibt, wie das
+     * @param event Das {@link MouseScrollEvent}-Objekt beschreibt, wie das
      *              Mausrad gedreht wurde.
-     * @see MouseWheelEvent
+     * @see MouseScrollEvent
      */
-    void onMouseWheelMove(MouseWheelEvent event);
+    void onMouseScrollMove(MouseScrollEvent event);
 }
