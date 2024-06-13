@@ -28,7 +28,6 @@ import de.pirckheimer_gymnasium.engine_pi.Layer;
 import de.pirckheimer_gymnasium.engine_pi.Random;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;

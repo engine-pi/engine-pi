@@ -23,7 +23,6 @@ package de.pirckheimer_gymnasium.engine_pi.demos.billard;
 import java.awt.Color;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 

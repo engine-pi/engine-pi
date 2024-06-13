@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="65.322273mm"
-   height="52.904938mm"
-   viewBox="0 0 65.322273 52.904937"
+   width="55mm"
+   height="55mm"
+   viewBox="0 0 55.000001 54.999999"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
    sodipodi:docname="logo.svg"
+   inkscape:export-filename="logo.png"
+   inkscape:export-xdpi="230.9091"
+   inkscape:export-ydpi="230.9091"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,22 +28,22 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.5614924"
-     inkscape:cx="155.62036"
-     inkscape:cy="5.763717"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:cx="288.82625"
+     inkscape:cy="40.666224"
+     inkscape:window-width="3840"
+     inkscape:window-height="1536"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      showguides="true">
     <sodipodi:guide
-       position="41.693559,44.852951"
+       position="31.627919,41.935742"
        orientation="0,-1"
        id="guide5"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="42.850311,7.5023225"
+       position="32.784671,4.5851138"
        orientation="0,-1"
        id="guide6"
        inkscape:locked="false" />
@@ -51,51 +54,67 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-25.792618,-100.40766)">
+     transform="translate(-35.85826,-103.7638)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:67.224px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';letter-spacing:0px;word-spacing:0px;fill:#9141ac;fill-opacity:1;stroke:none;stroke-width:1.6806"
-       x="33.806759"
-       y="91.357719"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:82.0476px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';letter-spacing:0px;word-spacing:0px;fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:1.6806"
+       x="34.21859"
+       y="63.945015"
        id="text1"
-       transform="scale(1.2035059,0.83090578)"><tspan
+       transform="scale(1.0769194,0.92857459)"><tspan
          sodipodi:role="line"
          id="tspan1"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#9141ac;stroke-width:1.6806"
-         x="33.806759"
-         y="91.357719" /><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#3584e4;stroke-width:1.6806"
+         x="34.21859"
+         y="63.945015" /><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';fill:#3584e4;stroke-width:1.6806"
-         x="33.806759"
-         y="175.38773"
-         id="tspan2">Ω</tspan></text>
+         x="34.21859"
+         y="166.50452"
+         id="tspan2">π</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.3312px;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#dc8add;fill-opacity:1;stroke:none;stroke-width:0.35828"
-       x="65.218262"
-       y="124.89227"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.7536px;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#2ec27e;fill-opacity:1;stroke:none;stroke-width:0.35828"
+       x="61.804867"
+       y="135.79288"
        id="text3"><tspan
          sodipodi:role="line"
-         id="tspan3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#99c1f1;stroke-width:0.35828"
-         x="65.218262"
-         y="124.89227">me</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#2ec27e;stroke-width:0.35828"
+         x="61.804867"
+         y="135.79288"
+         id="tspan7">p</tspan><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#99c1f1;stroke-width:0.35828"
-         x="65.218262"
-         y="134.20755"
-         id="tspan5">ga</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#2ec27e;stroke-width:0.35828"
+         x="61.804867"
+         y="151.23271"
+         id="tspan5" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.68px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';letter-spacing:0px;word-spacing:0px;fill:#77767b;fill-opacity:1;stroke:none;stroke-width:0.317001"
-       x="-173.66348"
-       y="33.517563"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.075px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';letter-spacing:0px;word-spacing:0px;fill:#f66151;fill-opacity:1;stroke:none;stroke-width:0.317001"
+       x="40.528957"
+       y="112.35635"
        id="text4"
-       transform="matrix(0,-0.84253756,1.1868907,0,0,0)"><tspan
+       transform="scale(0.96312826,1.0382833)"><tspan
          sodipodi:role="line"
          id="tspan4"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';fill:#f66151;stroke-width:0.317001"
-         x="-173.66348"
-         y="33.517563">engine</tspan></text>
+         x="40.528957"
+         y="112.35635">engine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.5732px;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#2ec27e;fill-opacity:1;stroke:none;stroke-width:0.35828"
+       x="66.924896"
+       y="155.18343"
+       id="text3-5"><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#2ec27e;stroke-width:0.35828"
+         x="66.924896"
+         y="155.18343"
+         id="tspan7-6">i</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.65;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Bold';text-align:center;text-anchor:middle;fill:#2ec27e;stroke-width:0.35828"
+         x="66.924896"
+         y="171.806"
+         id="tspan5-2" /></text>
   </g>
 </svg>

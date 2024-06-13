@@ -21,7 +21,6 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.small_games.dude;
 
 import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 
 public class Box extends Image

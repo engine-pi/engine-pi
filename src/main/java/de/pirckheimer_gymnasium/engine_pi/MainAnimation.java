@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.TimeZone;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;

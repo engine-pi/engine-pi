@@ -27,13 +27,21 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import de.pirckheimer_gymnasium.engine_pi.event.*;
 import org.jbox2d.dynamics.Body;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
+import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListener;
+import de.pirckheimer_gymnasium.engine_pi.event.MouseWheelListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.BodyHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData;

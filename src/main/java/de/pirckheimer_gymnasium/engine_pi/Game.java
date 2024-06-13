@@ -186,7 +186,7 @@ public final class Game
         renderPanel.addMouseWheelListener(Game::enqueueMouseWheelEvent);
         try
         {
-            frame.setIconImage(Resources.images.get("assets/favicon.png"));
+            frame.setIconImage(Resources.images.get("assets/logo.png"));
         }
         catch (Exception e)
         {
