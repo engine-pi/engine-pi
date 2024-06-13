@@ -1,5 +1,3 @@
-<!-- https://github.com/softwaremill/maven-badges -->
-
 [![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer-gymnasium/engine-pi)
 [![javadoc](https://javadoc.io/badge2/de.pirckheimer-gymnasium/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi)
 
@@ -13,9 +11,9 @@ Diese Game Engine ist ein Fork der
 und [Niklas Keller](https://github.com/kelunik) und zwar ein Fork der Core Engine v4.x.
 Die Engine-Alpha-Edu Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
-Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) keine
+Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
 Audio-Wiedergabe unterstützt, wurde Code der Sound-Engine der
-[LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine-Alpha übernommen.
+[LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine Pi übernommen.
 Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
 [Steffen Wilke](https://github.com/steffen-wilke)
 [Matthias Wilke](https://github.com/nightm4re94). Neben der Sound-Engine kommen
@@ -23,7 +21,7 @@ viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
 Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
 Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
-[Engine Pi Wiki](https://engine-alpha.org), die unter der
+[Engine Alpha Wiki](https://engine-alpha.org), die unter der
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
 
