@@ -469,22 +469,22 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     final void invokeMouseDownListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick.invoke(listener -> listener
-                .onMouseDown(position, button));
+        listeners.mouseClick
+                .invoke(listener -> listener.onMouseDown(position, button));
     }
 
     @Internal
     final void invokeMouseUpListeners(Vector position, MouseButton button)
     {
-        listeners.mouseClick.invoke(listener -> listener
-                .onMouseUp(position, button));
+        listeners.mouseClick
+                .invoke(listener -> listener.onMouseUp(position, button));
     }
 
     @Internal
     final void invokeMouseScrollListeners(MouseScrollEvent event)
     {
-        listeners.mouseScroll.invoke(
-                listener -> listener.onMouseScrollMove(event));
+        listeners.mouseScroll
+                .invoke(listener -> listener.onMouseScrollMove(event));
     }
 
     @API

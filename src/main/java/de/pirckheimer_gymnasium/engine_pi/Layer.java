@@ -139,7 +139,8 @@ public class Layer implements KeyStrokeListenerRegistration,
         {
             listeners.keyStroke.invoke(this.parent::removeKeyStrokeListener);
             listeners.mouseClick.invoke(this.parent::removeMouseClickListener);
-            listeners.mouseScroll.invoke(this.parent::removeMouseScrollListener);
+            listeners.mouseScroll
+                    .invoke(this.parent::removeMouseScrollListener);
             listeners.frameUpdate
                     .invoke(this.parent::removeFrameUpdateListener);
         }

@@ -340,8 +340,7 @@ public final class Game
      *
      * @param event das Event.
      */
-    private static void enqueueMouseScrollEvent(
-            MouseWheelEvent event)
+    private static void enqueueMouseScrollEvent(MouseWheelEvent event)
     {
         MouseScrollEvent mouseScrollEvent = new MouseScrollEvent(
                 event.getPreciseWheelRotation());

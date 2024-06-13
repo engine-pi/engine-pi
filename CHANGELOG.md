@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.15.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.15.0) - 2024-06-13
+
+<small>[Compare with v0.14.0](https://github.com/engine-pi/engine-pi/compare/v0.14.0...v0.15.0)</small>
+
+### Added
+
+- Add SceneLaunchListener ([93eeeb7](https://github.com/engine-pi/engine-pi/commit/93eeeb7ebe373ec07d2c56ba04688947a463dea5) by Josef Friedrich).
+- Add default shortcuts and default controls ([622363a](https://github.com/engine-pi/engine-pi/commit/622363a6613b93438364ebaa153abb8206cd1c88) by Josef Friedrich).
+- Awake and sleep actors ([b9023ce](https://github.com/engine-pi/engine-pi/commit/b9023ceb0c892953989647d0234d94e6c0466e07) by Josef Friedrich).
+
+### Changed
+
+- Change logo ([f40d956](https://github.com/engine-pi/engine-pi/commit/f40d956c44c9be43a3edd18cce1bf8f3d2f00741) by Josef Friedrich).
+- Rename MouseWheelListener into MouseScrollListener to avoid confusion with JDK version ([63fc357](https://github.com/engine-pi/engine-pi/commit/63fc3573e139d331b1d57915e7317673b4fbe7b0) by Josef Friedrich).
+- Rename KeyListener into KeyStrokeListener to avoid confusing with java.awt.event.KeyListener ([5e438ad](https://github.com/engine-pi/engine-pi/commit/5e438ad5771ca6db116ff48ceaeb6fdd8fb9c0e2) by Josef Friedrich).
+
+### Removed
+
+- Remove dependency to Showcase ([f508f17](https://github.com/engine-pi/engine-pi/commit/f508f17601904411c11ef2a03913abdea82ea2a7) by Josef Friedrich).
+- Remove static methods Game.getImages() Game.getSounds() ([20449a6](https://github.com/engine-pi/engine-pi/commit/20449a6f00e2560c6a57f2c6d183560a6e50e7b7) by Josef Friedrich).
+
 ## [v0.14.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.14.0) - 2024-06-08
 
 <small>[Compare with v0.13.0](https://github.com/engine-pi/engine-pi/compare/v0.13.0...v0.14.0)</small>

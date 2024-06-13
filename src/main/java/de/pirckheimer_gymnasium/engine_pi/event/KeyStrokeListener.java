@@ -29,8 +29,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * können.
  *
  * <p>
- * Diese Schnittstelle heißt nicht {@code KeyListener}, da es eine {@code KeyListener}-Klasse
- * bereits im Java-JDK ({@link java.awt.event.KeyListener}) gibt.
+ * Diese Schnittstelle heißt nicht {@code KeyListener}, da es eine
+ * {@code KeyListener}-Klasse bereits im Java-JDK
+ * ({@link java.awt.event.KeyListener}) gibt.
  * </p>
  *
  * @author Niklas Keller
