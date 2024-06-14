@@ -1223,7 +1223,20 @@ public class DensityDemo extends Scene implements KeyListener
 }
 ```
 
-## Stateful animation
+## Stateful Animation
+
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Player_Movement.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_jumpstates.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vx_states.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vy_states.png)
+
 
 https://engine-alpha.org/wiki/v4.x/Stateful_Animation
 
@@ -1240,21 +1253,23 @@ Die StatefulAnimation ist eine elegante Möglichkeit, komplexe Spielfiguren mit 
 Nehmen wir dieses Beispiel:
 Zustand 	Animiertes GIF
 Idle
-spr m traveler idle anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/idle.gif)
 Jumping
-spr m traveler jump 1up anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_1up.gif)
 Midair
-spr m traveler jump 2midair anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_2midair.gif)
 Falling
-spr m traveler jump 3down anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_3down.gif)
 Landing
-spr m traveler jump 4land anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_4land.gif)
 Walking
-spr m traveler walk anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/walk.gif)
 Running
-spr m traveler run anim.gif
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/run.gif)
 
-Das sind viele zu jonglierende Zustände. Und für ein normales Platformer-Spiel ist die Anzahl an Zuständen eher gering.
+
+Das sind viele zu jonglierende Zustände. Und für ein normales Platformer-Spiel
+ist die Anzahl an Zuständen eher gering.
 
 Zum Nachimplementieren kannst du die animierten GIFs vom Wiki herunterladen.
 Zustandsübergangsdiagramm für die Figur
