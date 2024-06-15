@@ -67,7 +67,7 @@ public class Rectangle extends Geometry
     public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
-        setColor(colorScheme.getBlue());
+        setColor("blue");
     }
 
     public Rectangle(double width, double height,

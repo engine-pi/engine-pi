@@ -164,7 +164,7 @@ public final class Game
      * @param scene  Die Szene, mit der das Spiel gestartet wird.
      */
     @API
-    public static void start(int width, int height, Scene scene)
+    public static Scene start(int width, int height, Scene scene)
     {
         if (renderPanel != null)
         {
@@ -220,6 +220,7 @@ public final class Game
         {
             setDefaultControl(defaultControl);
         }
+        return scene;
     }
 
     /**
@@ -228,9 +229,21 @@ public final class Game
      * @param scene Die Szene, mit der das Spiel gestartet wird.
      */
     @API
-    public static void start(Scene scene)
+    public static Scene start(Scene scene)
     {
-        start(800, 600, scene);
+        return start(800, 600, scene);
+    }
+
+    /**
+     * Startet das Spiel in einem Fenster mit den Abmessungen 800x600 Pixel und
+     * erzeugt eine neue leere Szene.
+     *
+     * @return Die erzeugte Szene, mit der das Spiel gestartet wurde.
+     */
+    @API
+    public static Scene start()
+    {
+        return start(new Scene());
     }
 
     /**

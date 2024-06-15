@@ -185,8 +185,8 @@ public class ColorContainer implements Container<Color>
      *
      * <p>
      * Die Farben können auch in hexadezimaler Schreibweise angegeben werden, z.
-     * B. {@code #ff0000}. Groß- und Kleinschreibung spielt keine Rolle. Auch
-     * Leerzeichen werden ignoriert.
+     * B. {@code #ff0000}. Die Groß- und Kleinschreibung spielt keine Rolle.
+     * Auch Leerzeichen werden ignoriert.
      * </p>
      *
      * @param name Der Farbname oder ein Farbalias, eine Farbe in hexadezimaler
@@ -215,5 +215,26 @@ public class ColorContainer implements Container<Color>
             throw new RuntimeException("Unbekannte Farbe: " + name);
         }
         return color;
+    }
+
+    /**
+     * Gibt eine <b>vordefinierte</b> Farbe mit geändertem <b>Alphakanal</b>
+     * zurück.
+     *
+     * <p>
+     * Die Farben können auch in hexadezimaler Schreibweise angegeben werden, z.
+     * B. {@code #ff0000}. Die Groß- und Kleinschreibung spielt keine Rolle.
+     * Auch Leerzeichen werden ignoriert.
+     * </p>
+     *
+     * @param name  Der Farbname oder ein Farbalias, eine Farbe in hexadezimaler
+     *              Codierung.
+     * @param alpha Der Alphakanal als Ganzzahl von 0 - 255.
+     *
+     * @return Eine vordefinierte Farbe.
+     */
+    public Color get(String name, int alpha)
+    {
+        return ColorUtil.changeAlpha(get(name), alpha);
     }
 }

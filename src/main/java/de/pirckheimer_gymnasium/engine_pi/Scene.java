@@ -522,7 +522,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die Hintergrundfarbe zurück.
+     * Gibt die <b>Hintergrundfarbe</b> zurück.
      *
      * @return Die Hintergrundfarbe.
      */
@@ -534,10 +534,22 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Setzt die Hintergrundfarbe.
      *
-     * @param backgroundColor Die Hintergrundfarbe.
+     * @param color Die Hintergrundfarbe.
      */
-    public void setBackgroundColor(Color backgroundColor)
+    public void setBackgroundColor(Color color)
     {
-        this.backgroundColor = backgroundColor;
+        backgroundColor = color;
+    }
+
+    /**
+     * Setzt die Hintergrundfarbe als <b>Zeichenkette</b>.
+     *
+     * @param color Die Hintergrundfarbe als <b>Zeichenkette</b>.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
+     */
+    public void setBackgroundColor(String color)
+    {
+        backgroundColor = Resources.colors.get(color);
     }
 }

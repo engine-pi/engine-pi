@@ -170,11 +170,11 @@ public final class MainAnimation
         {
             private final List<Actor> items = new ArrayList<>();
             {
-                Image image = new Image("assets/logo.png", 25);
+                Image image = new Image("assets/logo.png", 80);
                 image.makeStatic();
                 image.setCenter(0, -3);
                 add(image);
-                setGravity(new Vector(0, -9.81));
+                setGravityOfEarth();
                 Rectangle ground = new Rectangle(20, .2);
                 ground.setCenter(0, -6);
                 ground.setElasticity(.9);
@@ -184,19 +184,17 @@ public final class MainAnimation
                 for (int i = 0; i < 3; i++)
                 {
                     Rectangle a = new Rectangle(1, 1);
-                    a.setPosition(-5, -2);
+                    a.setPosition(-5, 3);
                     a.setElasticity(.9);
                     a.setFriction(1);
                     a.makeDynamic();
-                    a.setColor(new Color(26, 113, 156));
                     a.setRotation(30);
                     spawnItem(a);
                     Circle b = new Circle(1);
-                    b.setPosition(5, -1);
+                    b.setPosition(5, 3);
                     b.setElasticity(.9);
                     b.setFriction(1);
                     b.makeDynamic();
-                    b.setColor(new Color(158, 5, 5));
                     b.applyImpulse(new Vector(Random.range(-100, 100), 0));
                     spawnItem(b);
                     Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
@@ -204,7 +202,6 @@ public final class MainAnimation
                     c.setElasticity(.9);
                     c.setFriction(1);
                     c.makeDynamic();
-                    c.setColor(new Color(25, 159, 69));
                     c.setRotation(-20);
                     spawnItem(c);
                 }
@@ -215,7 +212,7 @@ public final class MainAnimation
                 Text text = new Text(
                         "Build #" + VERSION_CODE + "   " + sdf.format(date),
                         .5);
-                text.setPosition(-10, -7f);
+                text.setPosition(-10, -7);
                 text.setColor(Color.WHITE);
                 text.makeStatic();
                 add(text);

@@ -48,8 +48,7 @@ public class Text extends Geometry
     private static FixtureData createShape(String content, double height,
             Font font)
     {
-        Vector sizeInPixels = de.pirckheimer_gymnasium.engine_pi.util.FontMetrics
-                .getSize(content, font);
+        Vector sizeInPixels = FontMetrics.getSize(content, font);
         return FixtureBuilder.rectangle(
                 sizeInPixels.getX() * height / sizeInPixels.getY(), height);
     }
@@ -170,7 +169,7 @@ public class Text extends Geometry
     /**
      * Setzt den Inhalt des Textes.
      *
-     * @param content Der neue Inhalt des Textes
+     * @param content Der neue Inhalt des Textes.
      */
     @API
     public void setContent(String content)
@@ -183,7 +182,7 @@ public class Text extends Geometry
         if (!this.content.equals(normalizedContent))
         {
             this.content = normalizedContent;
-            this.update();
+            update();
         }
     }
 
@@ -208,11 +207,11 @@ public class Text extends Geometry
     @API
     public void setStyle(int style)
     {
-        if (style >= 0 && style <= 3 && style != this.fontStyle)
+        if (style >= 0 && style <= 3 && style != fontStyle)
         {
             fontStyle = style;
             font = font.deriveFont(style, SIZE);
-            this.update();
+            update();
         }
     }
 
@@ -228,7 +227,7 @@ public class Text extends Geometry
         if (this.height != height)
         {
             this.height = height;
-            this.update();
+            update();
         }
     }
 
@@ -241,17 +240,15 @@ public class Text extends Geometry
     @API
     public double getWidth()
     {
-        Vector sizeInPixels = de.pirckheimer_gymnasium.engine_pi.util.FontMetrics
-                .getSize(content, font);
+        Vector sizeInPixels = FontMetrics.getSize(content, font);
         return sizeInPixels.getX() * height / sizeInPixels.getY();
     }
 
     @API
     public void setWidth(double width)
     {
-        Vector sizeInPixels = de.pirckheimer_gymnasium.engine_pi.util.FontMetrics
-                .getSize(content, font);
-        this.setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
+        Vector sizeInPixels = FontMetrics.getSize(content, font);
+        setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
     }
 
     @Internal

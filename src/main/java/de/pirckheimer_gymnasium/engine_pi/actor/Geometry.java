@@ -44,7 +44,7 @@ public abstract class Geometry extends Actor
     /**
      * Die Farbe dieses Geometry-Objekts.
      */
-    private Color color = Color.WHITE;
+    private Color color = colors.get("green");
 
     /**
      * Konstruktor.
@@ -56,7 +56,7 @@ public abstract class Geometry extends Actor
     }
 
     /**
-     * Setzt die Farbe der Figur auf eine bestimmte Farbe.
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
      *
      * @param color Die neue Farbe.
      */
@@ -67,9 +67,12 @@ public abstract class Geometry extends Actor
     }
 
     /**
-     * Setzt die Farbe der Figur auf eine bestimmte Farbe.
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
+     * <b>Zeichkette</b> angegeben werden kann.
      *
-     * @param color Die neue Farbe.
+     * @param color Die neue Farbe als Zeichenketteu.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
      */
     @API
     public void setColor(String color)

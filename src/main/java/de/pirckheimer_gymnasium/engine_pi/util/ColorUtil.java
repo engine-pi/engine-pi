@@ -367,4 +367,18 @@ public final class ColorUtil
             return baseColor;
         }
     }
+
+    /**
+     * Gibt eine Farbe mit geändertem <b>Alphakanal</b> zurück.
+     *
+     * @param color Die Farbe, dess Alphakanal geändert werden soll.
+     * @param alpha Der Alphakanal als Ganzzahl von 0 - 255.
+     *
+     * @return Die Farbe mit geändertem <b>Alphakanal</b>.
+     */
+    public static Color changeAlpha(Color color, int alpha)
+    {
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(),
+                alpha);
+    }
 }

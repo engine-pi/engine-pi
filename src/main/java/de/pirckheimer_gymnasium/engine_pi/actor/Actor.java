@@ -20,6 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
@@ -581,9 +583,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         AffineTransform pre = g.getTransform();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
-        g.setColor(Color.YELLOW);
+        g.setColor(getColor("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        g.setColor(Color.RED);
+        g.setColor(getColor("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();

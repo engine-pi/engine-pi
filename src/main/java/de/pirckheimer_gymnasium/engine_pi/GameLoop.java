@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -40,6 +40,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderTarget;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 public final class GameLoop
 {
@@ -48,8 +49,6 @@ public final class GameLoop
     private static final int DEBUG_INFO_LEFT = 10;
 
     private static final int DEBUG_INFO_TEXT_OFFSET = 16;
-
-    private static final Color DEBUG_GRID_COLOR = new Color(255, 255, 255, 100);
 
     private static final int GRID_SIZE_IN_PIXELS = 150;
 
@@ -253,7 +252,8 @@ public final class GameLoop
             int stopY = (int) (startY + windowSizeInPixels / pixelPerMeter
                     + gridSizeInMeters * 2);
             g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, DEBUG_TEXT_SIZE));
-            g.setColor(DEBUG_GRID_COLOR);
+            // Setzen der Gitterfarbe
+            g.setColor(Resources.colors.get("white", 150));
             for (int x = startX; x <= stopX; x += gridSizeInMeters)
             {
                 g.fillRect((int) (x * gridSizeFactor) - 1,
@@ -290,10 +290,10 @@ public final class GameLoop
         double frameDuration = debugInfo.frameDuration();
         drawTextBox(g, "FPS: "
                 + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
-                10, getColor("blue"));
+                10, colors.get("blue"));
         // Anzahl an Figuren
         drawTextBox(g, "Actors: " + debugInfo.bodyCount(), 50,
-                getColor("green"));
+                colors.get("green"));
         // Schwerkraft
         Scene scene = currentScene.get();
         Vector gravity = scene.getGravity();
@@ -323,17 +323,17 @@ public final class GameLoop
         Rectangle2D bounds;
         bounds = fm.getStringBounds(text, g);
         // Hintergrund
-        g.setColor(background);
+        g.setColor(ColorUtil.changeAlpha(background, 150));
         g.fillRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET);
         // Rahmen
-        g.setColor(background.darker());
+        g.setColor(ColorUtil.changeAlpha(background.darker().darker(), 150));
         g.drawRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT - 1,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);
         // Text
-        g.setColor(Color.WHITE);
+        g.setColor(colors.get("white"));
         g.setFont(font);
         g.drawString(text, DEBUG_INFO_LEFT + 10,
                 y + 8 + fm.getHeight() - fm.getDescent());
@@ -379,5 +379,11 @@ public final class GameLoop
         g.setColor(color);
         g.drawLine(x1, y1, x2, y2);
         g.fillPolygon(xPoints, yPoints, 3);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.setDebug(true);
+        Game.start();
     }
 }
