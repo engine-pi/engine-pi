@@ -63,6 +63,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code black} (<b>Black</b>)</li>
  * </ul>
  *
+ * @see de.pirckheimer_gymnasium.engine_pi.Resources#colorScheme
  */
 public class ColorScheme
 {
