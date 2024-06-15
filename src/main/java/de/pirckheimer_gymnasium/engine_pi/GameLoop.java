@@ -20,6 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -41,16 +43,6 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.RenderTarget;
 
 public final class GameLoop
 {
-    private static final Color COLOR_FPS_BACKGROUND = new Color(255, 255, 255,
-            50);
-
-    private static final Color COLOR_FPS_BORDER = new Color(0, 106, 214);
-
-    private static final Color COLOR_BODY_COUNT_BORDER = new Color(0, 214, 84);
-
-    private static final Color COLOR_BODY_COUNT_BACKGROUND = new Color(255, 255,
-            255, 50);
-
     private static final int DEBUG_INFO_HEIGHT = 20;
 
     private static final int DEBUG_INFO_LEFT = 10;
@@ -298,26 +290,33 @@ public final class GameLoop
         double frameDuration = debugInfo.frameDuration();
         drawTextBox(g, "FPS: "
                 + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
-                10, COLOR_FPS_BORDER, COLOR_FPS_BACKGROUND);
+                10, getColor("blue"));
         // Anzahl an Figuren
         drawTextBox(g, "Actors: " + debugInfo.bodyCount(), 50,
-                COLOR_BODY_COUNT_BORDER, COLOR_BODY_COUNT_BACKGROUND);
+                getColor("green"));
         // Schwerkraft
         Scene scene = currentScene.get();
         Vector gravity = scene.getGravity();
         Color gravityColor = Resources.colorSchema.getIndigo();
         if (!gravity.isNull())
         {
-            drawTextBox(g,
-                    String.format("G(x,y): %.2f,%.2f", gravity.getX(),
-                            gravity.getY()),
-                    90, gravityColor, gravityColor.darker());
+            drawTextBox(g, String.format("G(x,y): %.2f,%.2f", gravity.getX(),
+                    gravity.getY()), 90, gravityColor);
             drawGravityVector(g, 40, 145, gravity, gravityColor);
         }
     }
 
-    private void drawTextBox(Graphics2D g, String text, int y, Color background,
-            Color border)
+    /**
+     * Zeichnet eine Textbox, die sich automatische an die Länge des Texts
+     * anpasst. Die Schriftfarbe ist standardmäßig Weiß.
+     *
+     * @param g
+     * @param text
+     * @param y
+     * @param background
+     * @param border
+     */
+    private void drawTextBox(Graphics2D g, String text, int y, Color background)
     {
         Font font = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
         FontMetrics fm = g.getFontMetrics(font);
@@ -329,7 +328,7 @@ public final class GameLoop
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET);
         // Rahmen
-        g.setColor(border);
+        g.setColor(background.darker());
         g.drawRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT - 1,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);

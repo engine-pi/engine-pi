@@ -80,6 +80,10 @@ public class ColorContainer implements Container<Color>
         {
             return ColorUtil.decode(name);
         }
+        if (color == null)
+        {
+            throw new RuntimeException("Unbekannte Farbe:");
+        }
         return color;
     }
 }
