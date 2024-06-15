@@ -66,7 +66,7 @@ public class Polygon extends Geometry
     @API
     public Polygon(Vector... points)
     {
-        super(() -> FixtureBuilder.polygone(points));
+        super(() -> FixtureBuilder.polygon(points));
         resetPoints(points);
     }
 
@@ -98,7 +98,7 @@ public class Polygon extends Geometry
             px[i] = points[i].getX();
             py[i] = points[i].getY();
         }
-        setFixture(() -> FixtureBuilder.polygone(points));
+        setFixture(() -> FixtureBuilder.polygon(points));
     }
 
     /**

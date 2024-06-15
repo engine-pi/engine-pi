@@ -196,7 +196,7 @@ public final class GameLoop
     @Internal
     private void render(Graphics2D g, int width, int height)
     {
-        Scene scene = this.currentScene.get();
+        Scene scene = currentScene.get();
         // have to be the same @ Game.screenshot!
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -294,41 +294,45 @@ public final class GameLoop
     @Internal
     private void renderInfo(Graphics2D g, DebugInfo debugInfo)
     {
+        // Einzelbilder pro Sekunden
         double frameDuration = debugInfo.frameDuration();
-        int actorCount = debugInfo.bodyCount();
-        Font displayFont = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
-        FontMetrics fm = g.getFontMetrics(displayFont);
+        drawTextBox(g, "FPS: "
+                + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
+                10, COLOR_FPS_BORDER, COLOR_FPS_BACKGROUND);
+        // Anzahl an Figuren
+        drawTextBox(g, "Actors: " + debugInfo.bodyCount(), 50,
+                COLOR_BODY_COUNT_BORDER, COLOR_BODY_COUNT_BACKGROUND);
+        // Schwerkraft
+        Scene scene = currentScene.get();
+        Vector gravity = scene.getGravity();
+        if (!gravity.isNull())
+        {
+            drawTextBox(g, String.format("G(x,y): %.2f,%.2f", gravity.getX(),
+                    gravity.getY()), 90, Color.MAGENTA, Color.YELLOW);
+        }
+    }
+
+    private void drawTextBox(Graphics2D g, String text, int y, Color background,
+            Color border)
+    {
+        Font font = new Font("Monospaced", Font.PLAIN, DEBUG_TEXT_SIZE);
+        FontMetrics fm = g.getFontMetrics(font);
         Rectangle2D bounds;
-        int y = 10;
-        String fpsMessage = "FPS: "
-                + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration));
-        bounds = fm.getStringBounds(fpsMessage, g);
-        g.setColor(COLOR_FPS_BORDER);
+        bounds = fm.getStringBounds(text, g);
+        // Hintergrund
+        g.setColor(background);
         g.fillRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET);
-        g.setColor(COLOR_FPS_BACKGROUND);
+        // Rahmen
+        g.setColor(border);
         g.drawRect(DEBUG_INFO_LEFT, y,
                 (int) bounds.getWidth() + DEBUG_INFO_HEIGHT - 1,
                 (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);
+        // Text
         g.setColor(Color.WHITE);
-        g.setFont(displayFont);
-        g.drawString(fpsMessage, DEBUG_INFO_LEFT + 10,
-                y + 8 + fm.getHeight() - fm.getDescent());
-        y += fm.getHeight() + DEBUG_INFO_HEIGHT;
-        String actorMessage = "Actors: " + actorCount;
-        bounds = fm.getStringBounds(actorMessage, g);
-        g.setColor(COLOR_BODY_COUNT_BORDER);
-        g.fillRect(DEBUG_INFO_LEFT, y,
-                (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
-                (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET);
-        g.setColor(COLOR_BODY_COUNT_BACKGROUND);
-        g.drawRect(DEBUG_INFO_LEFT, y,
-                (int) bounds.getWidth() + DEBUG_INFO_HEIGHT - 1,
-                (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);
-        g.setColor(Color.WHITE);
-        g.setFont(displayFont);
-        g.drawString(actorMessage, DEBUG_INFO_LEFT + 10,
+        g.setFont(font);
+        g.drawString(text, DEBUG_INFO_LEFT + 10,
                 y + 8 + fm.getHeight() - fm.getDescent());
     }
 }

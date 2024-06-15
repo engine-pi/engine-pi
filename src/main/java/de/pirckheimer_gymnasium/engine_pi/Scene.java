@@ -314,6 +314,18 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Gibt die Schwerkraft, die momentan auf die Hauptebene wirkt, als Vektor
+     * in <b>[N]</b> bzw. <b>[m/s^2]</b> zurück.
+     *
+     * @return Die Schwerkraft, die momentan auf die Hauptebene wirkt, als
+     *         Vektor in <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     */
+    public Vector getGravity()
+    {
+        return mainLayer.getGravity();
+    }
+
+    /**
      * Setzt die Schwerkraft als Vektor, die auf <b>alle Objekte innerhalb der
      * Hauptebene der Szene</b> wirkt.
      *

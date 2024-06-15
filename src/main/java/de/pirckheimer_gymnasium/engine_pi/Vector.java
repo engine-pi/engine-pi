@@ -395,7 +395,7 @@ public final class Vector implements Cloneable
     @API
     public boolean isNull()
     {
-        return this.x == 0 && this.y == 0;
+        return x == 0 && y == 0;
     }
 
     /**
@@ -573,6 +573,46 @@ public final class Vector implements Cloneable
      * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
      */
     public static Vector vector(double x, double y)
+    {
+        return new Vector(x, y);
+    }
+
+    /**
+     * Erzeugt einen neuen Vektor.
+     *
+     * <p>
+     * Diese statische Methode kann dazu benutzt werden, um über einen
+     * statischen Import dieser Methode
+     * </p>
+     *
+     * {@code
+     * import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+     * }
+     *
+     * <p>
+     * mit etwas weniger Schreibarbeit einen neuen Vektor zu erzeugen. Anstatt
+     * </p>
+     *
+     * {@code
+     * new Vector(1, 2);
+     * }
+     *
+     * <p>
+     * kann dann
+     * </p>
+     *
+     * {@code
+     * v(1, 2);
+     * }
+     *
+     * <p>
+     * geschrieben werden.
+     * </p>
+     *
+     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
+     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
+     */
+    public static Vector v(double x, double y)
     {
         return new Vector(x, y);
     }

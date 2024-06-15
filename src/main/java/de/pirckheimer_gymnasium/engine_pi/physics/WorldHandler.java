@@ -75,7 +75,7 @@ public class WorldHandler implements ContactListener
     public static final double STEP_TIME = 8f / 1000;
 
     /**
-     * Das Layer, zu dem der WorldHandler gehört.
+     * Die Ebene, zu dem der {@link WorldHandler} gehört.
      */
     private final Layer layer;
 

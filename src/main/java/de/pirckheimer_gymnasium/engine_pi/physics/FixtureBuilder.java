@@ -87,7 +87,7 @@ public final class FixtureBuilder
      * @param points Eine Reihe an Punkten, die nacheinander diese Form
      *               beschreiben (mindestens 3 Punkte).
      */
-    public static FixtureData polygone(Vector... points)
+    public static FixtureData polygon(Vector... points)
     {
         if (points.length < 3)
         {

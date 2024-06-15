@@ -28,6 +28,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.World;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
@@ -285,7 +286,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public void setGravity(Vector gravity)
     {
-        this.worldHandler.getWorld().setGravity(gravity.toVec2());
+        getWorld().setGravity(gravity.toVec2());
     }
 
     /**
@@ -325,6 +326,18 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Gibt die Schwerkraft, die momentan auf diese Ebene wirkt, als Vektor in
+     * <b>[N]</b> bzw. <b>[m/s^2]</b> zurück.
+     *
+     * @return Die Schwerkraft, die momentan auf diese Ebene wirkt, als Vektor
+     *         in <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     */
+    public Vector getGravity()
+    {
+        return Vector.of(getWorld().getGravity());
+    }
+
+    /**
      * Setzt, ob diese Ebene sichtbar sein soll.
      *
      * @param visible <code>true</code>: Die Ebene ist sichtbar, wenn es an
@@ -351,7 +364,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public boolean isVisible()
     {
-        return this.visible;
+        return visible;
     }
 
     /**
@@ -549,6 +562,11 @@ public class Layer implements KeyStrokeListenerRegistration,
     public WorldHandler getWorldHandler()
     {
         return worldHandler;
+    }
+
+    private World getWorld()
+    {
+        return worldHandler.getWorld();
     }
 
     @Internal

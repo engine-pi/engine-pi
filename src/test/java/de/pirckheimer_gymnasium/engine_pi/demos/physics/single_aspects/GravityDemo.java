@@ -1,16 +1,23 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.physics.single_aspects;
 
+import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class GravityDemo extends Scene implements KeyStrokeListener
+public class GravityDemo extends Scene
+        implements KeyStrokeListener, FrameUpdateListener
 {
     private final Circle circle;
+
+    private Polygon arrow;
 
     public GravityDemo()
     {
@@ -21,6 +28,15 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         createBorder(-5, -5, false);
         createBorder(-5, -5, true);
         createBorder(4, -5, true);
+        createArrow();
+    }
+
+    private void createArrow()
+    {
+        arrow = new Polygon(v(0, 0), v(1, 0), v(0.5, -3));
+        arrow.makeStatic();
+        arrow.setPosition(3, 3);
+        add(arrow);
     }
 
     private Rectangle createBorder(double x, double y, boolean vertical)
@@ -44,6 +60,12 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_LEFT -> setGravity(-9.81, 0);
         case KeyEvent.VK_SPACE -> circle.sleep();
         }
+    }
+
+    @Override
+    public void onFrameUpdate(double delta)
+    {
+        // System.out.println(getGravity());
     }
 
     @Override
