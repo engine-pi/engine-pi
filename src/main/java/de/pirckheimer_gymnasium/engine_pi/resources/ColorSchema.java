@@ -1,7 +1,11 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import java.awt.Color;
+import java.util.Map.Entry;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
@@ -20,13 +24,15 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * auf insgesamt zwölf Farben.
  * </p>
  *
+ *
+ * <img alt="Farbkreis von Itten" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Farbkreis_Itten_1961.svg">
+ *
  * <p>
  * Ein Farbschema kann durch eine unterschiedliche Anzahl an Ausgangsfarben
- * erstellt werden. Im einfachsten Fall genügen drei Primärfarben und ein
- * Farbschema zu erzeugen. Die nicht spezifizieren Farben werden dann aus den
+ * erstellt werden. Im einfachsten Fall genügen drei Primärfarben für ein neues
+ * Farbschema. Die nicht spezifizierten Farben werden dann aus den
  * spezifizierten Farben gemischt. Da jede Farbe auch einen Setter besitzt, kann
- * jede Farbe auch explizit gesetzt werden, ohne dass die Farben gemischt
- * werden.
+ * jede Farbe auch explizit gesetzt werden. Dadurch enfällt der Mischvorgang.
  * </p>
  *
  * Die zwölf Farben nach dem Farbkreis von Itten:
@@ -50,7 +56,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * Farbkreis von Itten)
  *
  * <ul>
- * <li>{@code brown} (<b>Braum</b>)</li>
+ * <li>{@code brown} (<b>Braun</b>)</li>
  * <li>{@code white} (<b>Weiß</b>)</li>
  * <li>{@code gray} (<b>Grau</b>)</li>
  * <li>{@code black} (<b>Black</b>)</li>
@@ -669,5 +675,29 @@ public class ColorSchema
                 new Color(51, 209, 122),
                 // brown3
                 new Color(152, 106, 68));
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(1200, 400, new Scene()
+        {
+            {
+                setBackgroundColor(Resources.getColor("#444444"));
+                int x = -16;
+                int labelY = -2;
+                for (Entry<String, Color> entry : Resources.colors.getAll()
+                        .entrySet())
+                {
+                    createCircle(x, 0, entry.getValue());
+                    createText(entry.getKey(), 0.5, x, labelY);
+                    x += 2;
+                    labelY -= 2;
+                    if (labelY < -4)
+                    {
+                        labelY = -2;
+                    }
+                }
+            }
+        });
     }
 }
