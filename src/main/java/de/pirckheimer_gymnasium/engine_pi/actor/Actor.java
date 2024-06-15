@@ -23,7 +23,6 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
 
 import java.awt.AlphaComposite;
-import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;

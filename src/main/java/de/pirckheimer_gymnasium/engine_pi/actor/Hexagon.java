@@ -18,6 +18,9 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+
 /**
  * Beschreibt ein reguläres bzw. regelmäßiges <b>Sechseck</b> bzw.
  * <b>Hexagon</b>.
@@ -36,13 +39,27 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  */
 public class Hexagon extends RegularPolygon
 {
-    public Hexagon()
-    {
-        super(6);
-    }
-
     public Hexagon(double radius)
     {
         super(6, radius);
+        setColor("pink");
+    }
+
+    public Hexagon()
+    {
+        this(1);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new Scene()
+        {
+            {
+                add(new Hexagon());
+                createHexagon(3, 3, "lime");
+                var h = createHexagon(2, -3, 3, "brick");
+                h.rotateBy(45);
+            }
+        });
     }
 }

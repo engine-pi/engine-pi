@@ -100,6 +100,41 @@ public interface ActorCreator
     {
         return createCircle(1, 0, 0);
     }
+    /* ___ Hexagon (Sechseck) _____________________________________________ */
+
+    default Hexagon createHexagon(double radius)
+    {
+        Hexagon actor = new Hexagon(radius);
+        getScene().add(actor);
+        return actor;
+    }
+
+    default Hexagon createHexagon(double radius, double x, double y)
+    {
+        Hexagon actor = createHexagon(radius);
+        actor.setPosition(x, y);
+        return actor;
+    }
+
+    default Hexagon createHexagon(double x, double y)
+    {
+        return createHexagon(0.5, x, y);
+    }
+
+    default Hexagon createHexagon(double x, double y, String color)
+    {
+        Hexagon actor = createHexagon(x, y);
+        actor.setColor(color);
+        return actor;
+    }
+
+    default Hexagon createHexagon(double radius, double x, double y,
+            String color)
+    {
+        Hexagon actor = createHexagon(radius, x, y);
+        actor.setColor(color);
+        return actor;
+    }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
 
     default Pentagon createPentagon(double radius)

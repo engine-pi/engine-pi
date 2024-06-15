@@ -20,8 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
-
 import java.awt.Graphics2D;
 import java.util.function.Supplier;
 

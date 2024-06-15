@@ -18,7 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
