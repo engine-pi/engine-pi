@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colorSchema;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
 
 import java.awt.Graphics2D;
 
@@ -53,7 +53,7 @@ public class Circle extends Geometry
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        setColor(colorSchema.getYellow());
+        setColor(colorScheme.getYellow());
     }
 
     /**

@@ -42,7 +42,7 @@ public class ColorContainer implements Container<Color>
         return add(name, color);
     }
 
-    public void addSchema(ColorSchema schema)
+    public void addScheme(ColorScheme schema)
     {
         // Primärfarbe
         add("yellow", schema.getYellow(), "Gelb");

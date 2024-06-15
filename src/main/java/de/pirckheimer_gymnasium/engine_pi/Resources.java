@@ -32,7 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.Resource;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourcesContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchema;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
 
 /**
  * Zur Aufbewahrung und Verwaltung verschiedener Ressourcen.
@@ -54,12 +54,12 @@ public final class Resources
 
     public static SoundContainer sounds = new SoundContainer();
 
-    public static ColorSchema colorSchema = ColorSchema.getGnomeColorSchema();
+    public static ColorScheme colorScheme = ColorScheme.getGnomeScheme();
 
     public static ColorContainer colors = new ColorContainer();
     static
     {
-        colors.addSchema(colorSchema);
+        colors.addScheme(colorScheme);
     }
 
     private Resources()

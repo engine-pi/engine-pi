@@ -297,7 +297,7 @@ public final class GameLoop
         // Schwerkraft
         Scene scene = currentScene.get();
         Vector gravity = scene.getGravity();
-        Color gravityColor = Resources.colorSchema.getIndigo();
+        Color gravityColor = Resources.colorScheme.getIndigo();
         if (!gravity.isNull())
         {
             drawTextBox(g, String.format("G(x,y): %.2f,%.2f", gravity.getX(),

@@ -25,7 +25,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </p>
  *
  *
- * <img alt="Farbkreis von Itten" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Farbkreis_Itten_1961.svg">
+ * <img alt="Farbkreis von Itten" src=
+ * "https://upload.wikimedia.org/wikipedia/commons/b/b9/Farbkreis_Itten_1961.svg">
  *
  * <p>
  * Ein Farbschema kann durch eine unterschiedliche Anzahl an Ausgangsfarben
@@ -63,7 +64,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </ul>
  *
  */
-public class ColorSchema
+public class ColorScheme
 {
     /**
      * Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
@@ -169,7 +170,7 @@ public class ColorSchema
      * @param red    Die Primärfarbe <b>Rot</b>.
      * @param blue   Die Primärfarbe <b>Blau</b>.
      */
-    public ColorSchema(Color yellow, Color red, Color blue)
+    public ColorScheme(Color yellow, Color red, Color blue)
     {
         this.yellow = yellow;
         this.red = red;
@@ -196,7 +197,7 @@ public class ColorSchema
      * @param green  Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      *               <b>Blau</b>).
      */
-    public ColorSchema(Color yellow, Color orange, Color red, Color purple,
+    public ColorScheme(Color yellow, Color orange, Color red, Color purple,
             Color blue, Color green)
     {
         this(yellow, red, blue);
@@ -226,7 +227,7 @@ public class ColorSchema
      *               <b>Blau</b>).
      * @param brown  Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      */
-    public ColorSchema(Color yellow, Color orange, Color red, Color purple,
+    public ColorScheme(Color yellow, Color orange, Color red, Color purple,
             Color blue, Color green, Color brown)
     {
         this(yellow, orange, red, purple, blue, green);
@@ -256,11 +257,16 @@ public class ColorSchema
     /**
      * Setzt die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      *
-     * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) .
+     * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setYellow(Color yellow)
+    public ColorScheme setYellow(Color yellow)
     {
         this.yellow = yellow;
+        return this;
     }
 
     /**
@@ -285,10 +291,15 @@ public class ColorSchema
      *
      * @param gold Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung
      *             aus <b>Gelb</b> und <b>Orange</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setGold(Color gold)
+    public ColorScheme setGold(Color gold)
     {
         this.gold = gold;
+        return this;
     }
 
     /**
@@ -316,10 +327,15 @@ public class ColorSchema
      *
      * @param orange Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
      *               Mischung aus <b>Gelb</b> und <b>Rot</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setOrange(Color orange)
+    public ColorScheme setOrange(Color orange)
     {
         this.orange = orange;
+        return this;
     }
 
     /**
@@ -344,10 +360,15 @@ public class ColorSchema
      *
      * @param brick Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick
      *              red</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setBrick(Color brick)
+    public ColorScheme setBrick(Color brick)
     {
         this.brick = brick;
+        return this;
     }
 
     /**
@@ -364,10 +385,15 @@ public class ColorSchema
      * Setzt die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      *
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setRed(Color red)
+    public ColorScheme setRed(Color red)
     {
         this.red = red;
+        return this;
     }
 
     /**
@@ -392,10 +418,15 @@ public class ColorSchema
      *
      * @param pink Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung
      *             aus <b>Rot</b> und <b>Violett</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setPink(Color pink)
+    public ColorScheme setPink(Color pink)
     {
         this.pink = pink;
+        return this;
     }
 
     /**
@@ -407,6 +438,10 @@ public class ColorSchema
      *
      * @return Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
      *         Mischung aus <b>Rot</b> und <b>Blau</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public Color getPurple()
     {
@@ -423,10 +458,15 @@ public class ColorSchema
      *
      * @param purple Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
      *               Mischung aus <b>Rot</b> und <b>Blau</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setPurple(Color purple)
+    public ColorScheme setPurple(Color purple)
     {
         this.purple = purple;
+        return this;
     }
 
     /**
@@ -435,6 +475,10 @@ public class ColorSchema
      *
      * @return Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
      *         aus <b>Violett</b> und <b>Blau</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public Color getIndigo()
     {
@@ -451,10 +495,15 @@ public class ColorSchema
      *
      * @param indigo Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>,
      *               Mischung aus <b>Violett</b> und <b>Blau</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setIndigo(Color indigo)
+    public ColorScheme setIndigo(Color indigo)
     {
         this.indigo = indigo;
+        return this;
     }
 
     /**
@@ -471,10 +520,15 @@ public class ColorSchema
      * Setzt die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      *
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setBlue(Color blue)
+    public ColorScheme setBlue(Color blue)
     {
         this.blue = blue;
+        return this;
     }
 
     /**
@@ -499,10 +553,15 @@ public class ColorSchema
      *
      * @param cyan Die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>,
      *             Mischung aus <b>Blau</b> und <b>Grün</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setCyan(Color cyan)
+    public ColorScheme setCyan(Color cyan)
     {
         this.cyan = cyan;
+        return this;
     }
 
     /**
@@ -527,10 +586,15 @@ public class ColorSchema
      *
      * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      *              <b>Blau</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setGreen(Color green)
+    public ColorScheme setGreen(Color green)
     {
         this.green = green;
+        return this;
     }
 
     /**
@@ -555,10 +619,15 @@ public class ColorSchema
      *
      * @param lime Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
      *             Mischung aus <b>Gelb</b> und <b>Grün</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setLime(Color lime)
+    public ColorScheme setLime(Color lime)
     {
         this.lime = lime;
+        return this;
     }
 
     /**
@@ -572,7 +641,7 @@ public class ColorSchema
      * Itten</a> vor.
      * </p>
      *
-     * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
+     * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).u
      */
     public Color getBrown()
     {
@@ -587,10 +656,15 @@ public class ColorSchema
      * Setzt die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      *
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void set(Color brown)
+    public ColorScheme setBrown(Color brown)
     {
         this.brown = brown;
+        return this;
     }
 
     /**
@@ -607,10 +681,15 @@ public class ColorSchema
      * Setzt die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      *
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setWhite(Color white)
+    public ColorScheme setWhite(Color white)
     {
         this.white = white;
+        return this;
     }
 
     /**
@@ -627,10 +706,15 @@ public class ColorSchema
      * Setzt Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
      *
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setGray(Color gray)
+    public ColorScheme setGray(Color gray)
     {
         this.gray = gray;
+        return this;
     }
 
     /**
@@ -647,20 +731,29 @@ public class ColorSchema
      * Setzt die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      *
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
+     *
+     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
+     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public void setBlack(Color black)
+    public ColorScheme setBlack(Color black)
     {
         this.black = black;
+        return this;
     }
 
     /**
-     * Erzeugt ein Farbschema nach den Farben
-     * der<a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
+     * Erzeugt ein Farbschema nach den Farben derSchema
+     * <a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
      * Human Interface Guidelines</a>.
+     *
+     * @return Ein Farbschema nach den Farben der <a href=
+     *         "https://developer.gnome.org/hig/reference/palette.html">GNOME
+     *         Human Interface Guidelines</a>.
      */
-    public static ColorSchema getGnomeColorSchema()
+    public static ColorScheme getGnomeScheme()
     {
-        return new ColorSchema(
+        return new ColorScheme(
                 // yellow3
                 new Color(246, 211, 45),
                 // organe3
@@ -675,6 +768,21 @@ public class ColorSchema
                 new Color(51, 209, 122),
                 // brown3
                 new Color(152, 106, 68));
+    }
+
+    /**
+     * Erzeugt ein Farbschema, das alle vordefinierten statischen Farbattribute
+     * der Java-{@link Color}-Klasse verwendet.
+     *
+     * @return Ein Farbschema, das alle vordefinierten statischen Farbattribute
+     *         der Java-{@link Color}-Klasse verwendet.
+     */
+    public static ColorScheme getJavaScheme()
+    {
+        return new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)
+                .setPink(Color.PINK).setGray(Color.GRAY).setCyan(Color.CYAN)
+                .setOrange(Color.ORANGE).setPurple(Color.MAGENTA)
+                .setGreen(Color.GREEN);
     }
 
     public static void main(String[] args)
