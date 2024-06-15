@@ -8,7 +8,19 @@ import java.util.Map;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
- * Ein Speicher für Farben des Datentyps {@link Color}.
+ * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link Color}.
+ *
+ * <p>
+ * Die Farben werden in einer {@link Map} unter einem <b>Farbnamen</b> abgelegt.
+ * Neben dem Hauptfarbnamen können weitere Farbnamen als <b>Aliasse</b>
+ * gespeichert.
+ * </p>
+ *
+ * <p>
+ * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
+ * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
+ * sowohl normal als auch umschrieben (ae, ue) werden.
+ * </p>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colors
  */
@@ -27,9 +39,8 @@ public class ColorContainer implements Container<Color>
 
     private String normalizeName(String name)
     {
-        name = name.toLowerCase();
-        return name.replaceAll("\\s", "").replaceAll("ä", "ae")
-                .replaceAll("o", "ue").replaceAll("ü", "ue")
+        return name.toLowerCase().replaceAll("\\s", "").replaceAll("ä", "ae")
+                .replaceAll("ö", "oe").replaceAll("ü", "ue")
                 .replaceAll("ß", "ss");
     }
 
@@ -48,7 +59,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe unter einem Namen hinzu.
+     * Fügt dem Farbenspeicher eine Farbe in <b>hexadezimaler</b> Codierung
+     * unter einem <b>Namen</b> hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe in hexadezimaler Codierung.
@@ -61,8 +73,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe unter einem Namen und beliebig vieler
-     * Aliasse hinzu.
+     * Fügt dem Farbenspeicher eine <b>Farbe</b> unter einem <b>Namen</b> und
+     * beliebig vieler <b>Aliasse</b> hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe.
@@ -80,8 +92,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe in hexadezimaler Codierung unter einem
-     * Namen und beliebig vieler Aliasse hinzu.
+     * Fügt dem Farbenspeicher eine Farbe in <b>hexadezimaler</b> Codierung
+     * unter einem Namen und beliebig vieler <b>Aliasse</b> hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe in hexadezimaler Codierung.
@@ -95,7 +107,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt alle Farben eines Farbschemas dem Farbenspeicher hinzu.
+     * Fügt <b>alle</b> Farben eines <b>Farbschemas</b> dem Farbenspeicher
+     * hinzu.
      *
      * <p>
      * Die Farben werden in einer {@link Map} unter dem englischen Farbnamen
@@ -104,11 +117,17 @@ public class ColorContainer implements Container<Color>
      * des Farbenschema kann deshalb mit mehreren Farbnamen zugegriffen werden.
      * </p>
      *
+     * <p>
+     * Wird eines neues Farbschema gesetzt werden alle sich bereits im Speicher
+     * befindenen Farben gelöscht.
+     * </p>
+     *
      * @param schema Das Farbschema, dessen Farben in den Farbenspeicher
      *               abgelegt werden soll.
      */
     public void addScheme(ColorScheme schema)
     {
+        clear();
         // Primärfarbe
         add("yellow", schema.getYellow(), "Gelb");
         // Tertiärfarbe
@@ -143,7 +162,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Gibt alle Farben samt der Farbnamen als {@link Map} zurück.
+     * Gibt <b>alle</b> Farben samt der Farbnamen als {@link Map} zurück.
      *
      * @return Alle Farben samt der Farbnamen als {@link Map} zurück.
      */
@@ -153,7 +172,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Leert den Farbenspeicher samt der Aliasse.
+     * <b>Leert</b> den Farbenspeicher samt der Aliasse.
      */
     public void clear()
     {
@@ -162,7 +181,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Gibt eine vordefinierte Farbe zurück.
+     * Gibt eine <b>vordefinierte</b> Farbe zurück.
      *
      * <p>
      * Die Farben können auch in hexadezimaler Schreibweise angegeben werden, z.
