@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.tutorials.statefulanimation;
+package de.pirckheimer_gymnasium.engine_pi.demos.stateful_animation;
 
 import java.awt.event.KeyEvent;
 
@@ -47,7 +47,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     public StatefulPlayerCharacter()
     {
         // Alle Bilder haben die Amessung 64x64px und deshalb die gleiche Breite
-        // und Höhe. Wir verwenden drei Meter
+        // und Höhe. Wir verwenden drei Meter.
         super(3, 3);
         setupPlayerStates();
         setupAutomaticTransitions();

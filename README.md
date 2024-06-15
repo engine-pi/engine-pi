@@ -1225,239 +1225,204 @@ public class DensityDemo extends Scene implements KeyListener
 
 ## Stateful Animation
 
-
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Player_Movement.png)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_jumpstates.png)
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram.png)
+
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vx_states.png)
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vy_states.png)
 
-
 https://engine-alpha.org/wiki/v4.x/Stateful_Animation
 
-Dies ist ein Tutorial zur ea.actor.StatefulAnimation. In diesem Tutorial:
-
-    Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
-    Implementierst du funktionale Bewegungsmechanik für einen Platformer.
-    Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
-
-Stateful Animations
-
-Die StatefulAnimation ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand umzusetzen.
+Die
+[StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
+ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand
+umzusetzen.
 
 Nehmen wir dieses Beispiel:
-Zustand 	Animiertes GIF
-Idle
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/idle.gif)
-Jumping
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_1up.gif)
-Midair
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_2midair.gif)
-Falling
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_3down.gif)
-Landing
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_4land.gif)
-Walking
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/walk.gif)
-Running
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/run.gif)
 
+| Zustand | Animiertes GIF                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------ |
+| Idle    | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/idle.gif)         |
+| Jumping | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_1up.gif)     |
+| Midair  | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_2midair.gif) |
+| Falling | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_3down.gif)   |
+| Landing | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_4land.gif)   |
+| Walking | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/walk.gif)         |
+| Running | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/run.gif)          |
 
-Das sind viele zu jonglierende Zustände. Und für ein normales Platformer-Spiel
-ist die Anzahl an Zuständen eher gering.
+<!-- ### Zustandsübergangsdiagramm für die Figur -->
 
-Zum Nachimplementieren kannst du die animierten GIFs vom Wiki herunterladen.
-Zustandsübergangsdiagramm für die Figur
+Ein mögliches Zustandsübergangsdiagramm für die Figur:
 
-Bevor die Umsetzung beginnt, ist es sinnvoll, die Zustände und deren Übergänge
-zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für die Figur.
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram.png)
 
-Tutorial State Transition Diagram.png
+<!-- Die Zustände als Enumeration -->
 
-
-Implementieren der Figur
-
-Nachdem nun ein guter Überblick über die Figur besteht, können wir zielgerichtet
-die Implementierung der Figur starten.
-
-Die Zustände als Enumeration
-
-Hierzu beginnen wir bei den Zuständen. Zustände einer Figur werden in der Engine
-stets als enum implementiert.
+Zustände einer Figur werden in der Engine
+stets als [enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) implementiert.
 
 Diese enum definiert die Spielerzustände und speichert gleichzeitig die
 Dateipfade der zugehörigen GIF-Dateien.
 
 ```java
-public enum PlayerState {
-    IDLE("spr_m_traveler_idle_anim.gif"),
-    WALKING("spr_m_traveler_walk_anim.gif"),
-    RUNNING("spr_m_traveler_run_anim.gif"),
-    JUMPING("spr_m_traveler_jump_1up_anim.gif"),
-    MIDAIR("spr_m_traveler_jump_2midair_anim.gif"),
-    FALLING("spr_m_traveler_jump_3down_anim.gif"),
-    LANDING("spr_m_traveler_jump_4land_anim.gif");
+public enum PlayerState
+{
+    IDLE("idle"), WALKING("walk"), RUNNING("run"), JUMPING("jump_1up"),
+    MIDAIR("jump_2midair"), FALLING("jump_3down"), LANDING("jump_4land");
 
-    private String gifFileName;
+    private String filename;
 
-    PlayerState(String gifFileName) {
-        this.gifFileName = gifFileName;
+    PlayerState(String filename)
+    {
+        this.filename = filename;
     }
 
-    public String getGifFileLocation() {
-        return "eatutorials/statefulanimation/assets/" + this.gifFileName;
+    public String getGifFileLocation()
+    {
+        return "traveler/" + filename + ".gif";
     }
 }
 ```
 
-Damit sind alle Zustände definiert. Ist beispielsweise das GIF des Zustandes
-JUMPING gefragt, so ist es jederzeit mit JUMPING.getGifFileLocation()
+Ist beispielsweise das GIF des Zustandes
+`JUMPING` gefragt, so ist es jederzeit mit `JUMPING.getGifFileLocation()`
 erreichbar. Dies macht den Code deutlich wartbarer.
 
+<!-- Die Klasse für den Player Character -->
 
-Die Klasse für den Player Character
-
-Mit den definierten Zuständen in PlayerState kann nun die Implementierung der
+Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
 ```java
-import ea.actor.Animation;
-import ea.actor.BodyType;
-import ea.actor.StatefulAnimation;
+public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
-public class StatefulPlayerCharacter
-extends StatefulAnimation<PlayerState> {
+{
 
-    public StatefulPlayerCharacter() {
-        super(3, 3); //All GIFs are 64x64 px, hence: Same width/height. In this case: 3m each
-
+    public StatefulPlayerCharacter()
+    {
+        // Alle Bilder haben die Amessung 64x64px und deshalb die gleiche Breite
+        // und Höhe. Wir verwenden drei Meter.
+        super(3, 3);
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();
     }
 
-    private void setupPlayerStates() {
-        for(PlayerState state : PlayerState.values()) {
-            Animation animationOfState = Animation.createFromAnimatedGif(state.getGifFileLocation(), 3,3);
+    private void setupPlayerStates()
+    {
+        for (PlayerState state : PlayerState.values())
+        {
+            Animation animationOfState = Animation
+                    .createFromAnimatedGif(state.getGifFileLocation(), 3, 3);
             addState(state, animationOfState);
         }
     }
 
-    private void setupAutomaticTransitions() {
+    private void setupAutomaticTransitions()
+    {
         setStateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
         setStateTransition(PlayerState.LANDING, PlayerState.IDLE);
     }
 
-    private void setupPhysics() {
-        setBodyType(BodyType.DYNAMIC);
+    private void setupPhysics()
+    {
+        makeDynamic();
         setRotationLocked(true);
-        setRestitution(0);
+        setElasticity(0);
         setFriction(30);
-        setLinearDamping(.3f);
+        setLinearDamping(.3);
     }
 }
 ```
 
-In setupPlayerStates() werden alle in PlayerState definierten Zustände der
-Spielfigur eingepflegt, inklusive des Einladens der animierten GIFs. Hier wird
-der Vorteil der String-Variable im PlayerState deutlich: Der Code ist angenehm
-zu lesen. Im Vergleich hierzu der Code ohne die Variable:
+In `setupPlayerStates()` werden alle in `PlayerState` definierten Zustände der
+Spielfigur eingepflegt, inklusive des Einladens der animierten GIFs.
 
-```java
-private void setupPlayerStatesAlternative() {
-    addState(PlayerState.IDLE, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_idle_anim.gif", 3, 3);
-    addState(PlayerState.WALKING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_walk_anim.gif", 3, 3);
-    addState(PlayerState.RUNNING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_run_anim.gif", 3, 3);
-    addState(PlayerState.JUMPING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_jump_1up_anim.gif", 3, 3);
-    addState(PlayerState.FALLING, Animation.createFromAnimatedGif("eatutorials/statefulanimation/assets/spr_m_traveler_jump_3down_anim.gif", 3, 3);
-    //etc.
-}
-```
+Zwei der Zustände bestehen nur aus einen Animationszyklus. Danach sollen sie in
+einen anderen Zustand übergehen: `MIDAIR` geht über zu `FALLING` und `LANDING`
+geht über zu `IDLE`. Diese Übergänge können direkt über die Methode
+[setStateTransition(...)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
+umgesetzt werden.
 
-Wir wissen bereits, dass zwei der Zustände nur einen Animationszyklus bestehen.
-Danach sollen sie in einen anderen Zustand übergehen: MIDAIR geht über zu
-FALLING und LANDING geht über zu IDLE. Diese Übergänge können direkt über die
-Methode setStateTransition(...) umgesetzt werden.
-
-Schließlich wird in setupPhysics() die Figur über die Engine-Physik noch
+Schließlich wird in `setupPhysics()` die Figur über die Engine-Physik noch
 dynamisch gesetzt und bereit gemacht, sich als Platformer-Figur der Schwerkraft
-auszusetzen. Der hohe Reibungswert setFriction(30) sorgt dafür, dass die Figur
+auszusetzen. Der hohe Reibungswert `setFriction(30)` sorgt dafür, dass die Figur
 später schnell auf dem Boden abbremsen kann, sobald sie sich nicht mehr bewegt.
-Ein Verhalten, dass bei den meisten Platformern erwünscht ist. Testbed
+Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
+
+<!-- Testbed -->
 
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
-sie. In einer Scene bekommt sie einen Boden zum Laufen: Der Zwischenstand: Noch
-passiert nicht viel.
+sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
+
+![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
 
 ```java
-import ea.Game;
-import ea.Scene;
-import ea.Vector;
-import ea.actor.BodyType;
-import ea.actor.Rectangle;
-
-import java.awt.Color;
-
-public class StatefulAnimationTestScene
-extends Scene {
-
-    public StatefulAnimationTestScene() {
+public class StatefulAnimationDemo extends Scene
+{
+    public StatefulAnimationDemo()
+    {
         StatefulPlayerCharacter character = new StatefulPlayerCharacter();
-
         setupGround();
         add(character);
-
-        setGravity(new Vector(0, -9.81f));
+        getCamera().setFocus(character);
+        setGravityOfEarth();
     }
 
-    private void setupGround() {
-        Rectangle ground = new Rectangle(200, 0.2f);
+    private void setupGround()
+    {
+        Rectangle ground = makePlatform(200, 0.2);
         ground.setCenter(0, -5);
         ground.setColor(new Color(255, 195, 150));
-        ground.setBodyType(BodyType.STATIC);
-        ground.setRestitution(0);
-        add(ground);
+        makePlatform(12, 0.3).setCenter(16, -1);
+        makePlatform(7, 0.3).setCenter(25, 2);
+        makePlatform(20, 0.3).setCenter(35, 6);
+        makeBall(5).setCenter(15, 3);
     }
 
-    public static void main(String[] args) {
-        Game.start(1200, 820, new StatefulAnimationTestScene());
+
+    public static void main(String[] args)
+    {
+        Game.start(1200, 820, new StatefulAnimationDemo());
     }
 }
 ```
 
-Damit können wir das Zwischenergebnis schonmal sehen. Und sehen noch nicht viel.
+
 Die Figur bleibt im IDLE-Zustand hängen. Nun gilt es, die übrigen
 Zustandsübergänge zu implementieren.
 
-Implementieren der Zustände & Übergänge
+<!-- Implementieren der Zustände & Übergänge -->
 
-Springen
+<!-- Springen -->
 
-Wir fokussieren uns nun auf die Übergänge zum Springen
-
-Springen ist schnell umgesetzt. Auf Tastendruck (Leertaste) soll die Spielfigur
+Wir fokussieren uns nun auf die Übergänge zum Springen.
+Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
-zusätzlich KeyListener und führt auf Leertastendruck die Sprungroutine aus: Die
+zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus: Die
 Figur kann springen, aber nicht landen.
 
 ```java
-private void attemptJump() {
+private void attemptJump()
+{
     PlayerState state = getCurrentState();
-    if(state == PlayerState.IDLE || state == PlayerState.WALKING || state == PlayerState.RUNNING) {
-        if(isGrounded()) {
-            applyImpulse(new Vector(0, 850));
+    if (state == PlayerState.IDLE || state == PlayerState.WALKING
+            || state == PlayerState.RUNNING)
+    {
+        if (isGrounded())
+        {
+            applyImpulse(new Vector(0, JUMP_IMPULSE));
             setState(PlayerState.JUMPING);
         }
     }
 }
 ```
 
-Fallen und Landen
+<!-- Fallen und Landen -->
 
 Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.
 
@@ -1633,17 +1598,7 @@ public void onFrameUpdate(float dT) {
 Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
 festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 setFlipHorizontal(boolean flip) die Blickrichtung der Figur angepasst werden.
-Anregung zum Experimentieren
 
-    Different Settings, Different Game: Platformer werden fundamental anders, wenn du an den Stellschrauben drehst: Ändere die Werte für Beschleunigung, Entschleunigung, und Geschwindigkeit und überlege dir interessante Herausforderungen. Ein Platformer mit langer Be-/Ent-Schleunigung eignet sich weniger für viele präzise Sprünge, verlangt allerdings viel Überlegung und Vorbereitung von Seiten des Spielers. Spiele mit den Werten und ändere das Testbett und finde heraus, was dir Spaß macht.
-    Still too simple: Die Geschwindigkeit wird derzeit "blind" interpoliert: Sollte unsere Figur gegen eine Wand knallen, so wird die Geschwindigkeit im folgenden Frame gleich wieder auf den gewünschten Laufwert gesetzt. Durch smartes Reagieren auf Kollisionstests lässt sich die Figur in ihrer Bewegung weiter verbessern.
-    Create Something! Die Grundlage für einen Platformer ist geschaffen. Bewegung ist da. Allerdings sonst noch nicht viel. Baue ein, worauf du Lust hast, zum Beispiel:
-        Ein Level: Stelle Platformen zusammen, baue Schluchten, Kletterparcours nach oben, was immer dein Jump n' Run Herz begehrt!
-        Kamera-Einbindung: Die Kamera kann sich dem Charakter anpassen, sodass ein Level auch über die Sichtweite des Spielfensters hinaus ragen darf.
-        Pick-Ups: Bei Berührung erhält der Charakter einen Bonus (z.B. zeitweise höhere Geschwindigkeit/Sprungkraft)
-        Gegner: Andere Akteure, die der Charakter besser nicht berühren sollte; sie ziehen ihm Hit Points ab (oder beenden das Spiel direkt). Vielleicht kann sich der Charakter mit einem Mario-Sprung auf den Kopf der Gegner zur Wehr setzen?
-        Ein Ziel: Quo Vadis? Was ist das Ziel des Levels? Von Flagge am rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
-        etc, etc, etc.
 
 ## Zeitsteuerung
 
