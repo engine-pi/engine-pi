@@ -305,10 +305,14 @@ public final class GameLoop
         // Schwerkraft
         Scene scene = currentScene.get();
         Vector gravity = scene.getGravity();
+        Color gravityColor = Resources.colorSchema.getIndigo();
         if (!gravity.isNull())
         {
-            drawTextBox(g, String.format("G(x,y): %.2f,%.2f", gravity.getX(),
-                    gravity.getY()), 90, Color.MAGENTA, Color.YELLOW);
+            drawTextBox(g,
+                    String.format("G(x,y): %.2f,%.2f", gravity.getX(),
+                            gravity.getY()),
+                    90, gravityColor, gravityColor.darker());
+            drawGravityVector(g, 40, 145, gravity, gravityColor);
         }
     }
 
@@ -334,5 +338,47 @@ public final class GameLoop
         g.setFont(font);
         g.drawString(text, DEBUG_INFO_LEFT + 10,
                 y + 8 + fm.getHeight() - fm.getDescent());
+    }
+
+    private void drawGravityVector(Graphics2D g, int x, int y, Vector gravity,
+            Color color)
+    {
+        drawArrowLine(g, x, y, x + (int) gravity.getX() * 2,
+                y + (int) gravity.getY() * -2, 5, 5, color);
+    }
+
+    /**
+     * Draw an arrow line between two points.
+     *
+     * https://stackoverflow.com/a/27461352
+     *
+     * @param g           the graphics component.
+     * @param x1          x-position of first point in Pixel.
+     * @param y1          y-position of first point in Pixel.
+     * @param x2          x-position of second point in Pixel.
+     * @param y2          y-position of second point in Pixel.
+     * @param arrowWidth  the width of the arrow in Pixel.
+     * @param arrowHeight the height of the arrow in Pixel.
+     */
+    private void drawArrowLine(Graphics2D g, int x1, int y1, int x2, int y2,
+            int arrowWidth, int arrowHeight, Color color)
+    {
+        int dx = x2 - x1;
+        int dy = y2 - y1;
+        double D = Math.sqrt(dx * dx + dy * dy);
+        double xm = D - arrowWidth, xn = xm, ym = arrowHeight,
+                yn = -arrowHeight, x;
+        double sin = dy / D, cos = dx / D;
+        x = xm * cos - ym * sin + x1;
+        ym = xm * sin + ym * cos + y1;
+        xm = x;
+        x = xn * cos - yn * sin + x1;
+        yn = xn * sin + yn * cos + y1;
+        xn = x;
+        int[] xPoints = { x2, (int) xm, (int) xn };
+        int[] yPoints = { y2, (int) ym, (int) yn };
+        g.setColor(color);
+        g.drawLine(x1, y1, x2, y2);
+        g.fillPolygon(xPoints, yPoints, 3);
     }
 }
