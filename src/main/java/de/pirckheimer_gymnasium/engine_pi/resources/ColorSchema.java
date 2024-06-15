@@ -9,13 +9,53 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * <p>
  * Diese Klasse ermöglicht es, verschiedene Farben aufeinander abzustimmen,
- * damit sie gut zusammenpassen.
+ * damit sie gut zusammenpassen. Außerdem besteht durch diese Klasse die
+ * Möglichkeit, ein anderes Farbschema zu setzen.
  * </p>
  *
  * <p>
- * Außerdem besteht durch diese Klasse die Möglichkeit, ein anderes Farbschema
- * zu setzen.
+ * Diese Klasse ist inspiriert von dem Farbkreis von Itten: Aus den drei
+ * Primärfarben Rot, Gelb und Blau lassen sich weitere Sekundärfarben (Orange,
+ * Violett und Grün) mischen. Sechs „Tertiärfarben“ erweitern Ittens Farbkreis
+ * auf insgesamt zwölf Farben.
  * </p>
+ *
+ * <p>
+ * Ein Farbschema kann durch eine unterschiedliche Anzahl an Ausgangsfarben
+ * erstellt werden. Im einfachsten Fall genügen drei Primärfarben und ein
+ * Farbschema zu erzeugen. Die nicht spezifizieren Farben werden dann aus den
+ * spezifizierten Farben gemischt. Da jede Farbe auch einen Setter besitzt, kann
+ * jede Farbe auch explizit gesetzt werden, ohne dass die Farben gemischt
+ * werden.
+ * </p>
+ *
+ * Die zwölf Farben nach dem Farbkreis von Itten:
+ *
+ * <ol>
+ * <li>{@code yellow} (<b>Gelb</b>)</li>
+ * <li>{@code gold} (<b>Gold</b>)</li>
+ * <li>{@code orange} (<b>Orange</b>)</li>
+ * <li>{@code brick} (<b>Ziegelrot</b>)</li>
+ * <li>{@code red} (<b>Rot</b>)</li>
+ * <li>{@code pink} (<b>Rosa</b>)</li>
+ * <li>{@code purple} (<b>Violett</b>)</li>
+ * <li>{@code indigo} (<b>Indigo</b>)</li>
+ * <li>{@code blue} (<b>Blau</b>)</li>
+ * <li>{@code cyan} (<b>Türkis</b>)</li>
+ * <li>{@code green} (<b>Grün</b>)</li>
+ * <li>{@code lime} (<b>Limettengrün</b>)</li>
+ * </ol>
+ *
+ * Diese Farben sind ebenfalls im Farbschema enthalten (gehören aber nicht zum
+ * Farbkreis von Itten)
+ *
+ * <ul>
+ * <li>{@code brown} (<b>Braum</b>)</li>
+ * <li>{@code white} (<b>Weiß</b>)</li>
+ * <li>{@code gray} (<b>Grau</b>)</li>
+ * <li>{@code black} (<b>Black</b>)</li>
+ * </ul>
+ *
  */
 public class ColorSchema
 {
@@ -83,7 +123,7 @@ public class ColorSchema
 
     /**
      * Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>, Mischung aus
-     * <b>Geld</b> und <b>Grün</b>).
+     * <b>Gelb</b> und <b>Grün</b>).
      */
     private Color lime;
 
@@ -489,10 +529,10 @@ public class ColorSchema
 
     /**
      * Gibt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>) - eine
-     * Mischung aus <b>Geld</b> und <b>Grün</b> - zurück.
+     * Mischung aus <b>Gelb</b> und <b>Grün</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
-     *         Mischung aus <b>Geld</b> und <b>Grün</b>).
+     *         Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
     public Color getLime()
     {
@@ -505,10 +545,10 @@ public class ColorSchema
 
     /**
      * Setzt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
-     * Mischung aus <b>Geld</b> und <b>Grün</b>).
+     * Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
      * @param lime Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
-     *             Mischung aus <b>Geld</b> und <b>Grün</b>).
+     *             Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
     public void setLime(Color lime)
     {
