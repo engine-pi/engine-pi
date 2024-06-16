@@ -167,15 +167,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * angemeldet wurde.
      *
      * @param listener Beobachter-Implementierung
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void addMountListener(Runnable listener)
+    public final Actor addMountListener(Runnable listener)
     {
         listeners.mount.add(listener);
         if (isMounted())
         {
             listener.run();
         }
+        return this;
     }
 
     /**
@@ -183,11 +189,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * angemeldet wurde.
      *
      * @param listener Beobachter-Implementierung
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void removeMountListener(Runnable listener)
+    public final Actor removeMountListener(Runnable listener)
     {
         listeners.mount.remove(listener);
+        return this;
     }
 
     /**
@@ -195,11 +207,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * abgemeldet wurde.
      *
      * @param listener Beobachter-Implementierung
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void addUnmountListener(Runnable listener)
+    public final Actor addUnmountListener(Runnable listener)
     {
         listeners.unmount.add(listener);
+        return this;
     }
 
     /**
@@ -207,11 +225,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * abgemeldet wurde.
      *
      * @param listener Beobachter-Implementierung
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void removeUnmountListener(Runnable listener)
+    public final Actor removeUnmountListener(Runnable listener)
     {
         listeners.unmount.remove(listener);
+        return this;
     }
 
     /**
@@ -219,12 +243,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * wird das Objekt gezeichnet.
      *
      * @param position Der Ebenen-Index.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #getLayerPosition()
      */
     @API
-    public final void setLayerPosition(int position)
+    public final Actor setLayerPosition(int position)
     {
         this.layerPosition = position;
+        return this;
     }
 
     /**
@@ -246,12 +277,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param visible Ob das Objekt sichtbar sein soll oder nicht.<br>
      *                Ist dieser Wert <code>false</code>, so wird es nicht
      *                gezeichnet.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #isVisible()
      */
     @API
-    public final void setVisible(boolean visible)
+    public final Actor setVisible(boolean visible)
     {
         this.visible = visible;
+        return this;
     }
 
     /**
@@ -288,11 +326,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                <li><code>1.0</code> entspricht einem undurchsichtigem
      *                Objekt.</li>
      *                </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void setOpacity(double opacity)
+    public final Actor setOpacity(double opacity)
     {
         this.opacity = opacity;
+        return this;
     }
 
     /**
@@ -303,6 +347,43 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public Color getColor()
     {
         return color;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
+     *
+     * @param color Die neue Farbe.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     */
+    @API
+    public Actor setColor(Color color)
+    {
+        this.color = color;
+        return this;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
+     * <b>Zeichkette</b> angegeben werden kann.
+     *
+     * @param color Die neue Farbe als Zeichenkette.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
+     */
+    @API
+    public Actor setColor(String color)
+    {
+        this.color = Resources.colors.get(color);
+        return this;
     }
 
     /**
@@ -356,13 +437,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * {@link BodyType}.
      *
      * @param type Der neue {@link BodyType} für den {@link Actor}.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see BodyType
      */
     @API
-    public final void setBodyType(BodyType type)
+    public final Actor setBodyType(BodyType type)
     {
         Objects.requireNonNull(type, "Typ darf nicht null sein");
         this.physicsHandler.setType(type);
+        return this;
     }
 
     /**
@@ -373,12 +461,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * nicht in der Simulation, Kräfte haben keinen Einfluss auf sie. Diese
      * Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und Decken</i>.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setBodyType(BodyType)
      */
     @API
-    public final void makeStatic()
+    public final Actor makeStatic()
     {
         setBodyType(BodyType.STATIC);
+        return this;
     }
 
     /**
@@ -390,12 +484,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * miteinander. Diese Eigenschaft gehört zum Beispiel zu <i>Billiardkugeln,
      * Spielfiguren und Wurfgeschossen</i>.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setBodyType(BodyType)
      */
     @API
-    public final void makeDynamic()
+    public final Actor makeDynamic()
     {
         setBodyType(BodyType.DYNAMIC);
+        return this;
     }
 
     /**
@@ -407,12 +507,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * mit dynamischen Objekten. Diese Eigenschaft gehört zum Beispiel zu
      * <i>beweglichen Plattformen</i>.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setBodyType(BodyType)
      */
     @API
-    public final void makeKinematic()
+    public final Actor makeKinematic()
     {
         setBodyType(BodyType.KINEMATIC);
+        return this;
     }
 
     /**
@@ -424,12 +530,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * trotzdem Kollisionsereignisse. Dies ist die <b>Standardeinstellung</b>
      * für Actors, wenn sie erstellt werden.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}
+     *
      * @see #setBodyType(BodyType)
      */
     @API
-    public final void makeSensor()
+    public final Actor makeSensor()
     {
         setBodyType(BodyType.SENSOR);
+        return this;
     }
 
     /**
@@ -443,12 +555,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * beim Anfahren aufwühlt oder Funken, die von einer Wand nach einem Schuss
      * sprühen.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setBodyType(BodyType)
      */
     @API
-    public final void makeParticle()
+    public final Actor makeParticle()
     {
         setBodyType(BodyType.PARTICLE);
+        return this;
     }
 
     /**
@@ -456,6 +574,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Der Physics-Typ, der das entsprechende {@link Actor}-Objekt
      *         momentan ist.
+     *
      * @see BodyType
      */
     @API
@@ -469,14 +588,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * (Kollisionen, Masse, etc.)
      *
      * @param shapeCode der Shape-Code
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see FixtureBuilder#fromString(String)
      * @see #setFixture(Supplier)
      * @see #setFixtures(Supplier)
      */
     @API
-    public final void setFixtures(String shapeCode)
+    public final Actor setFixtures(String shapeCode)
     {
         this.setFixtures(FixtureBuilder.fromString(shapeCode));
+        return this;
     }
 
     /**
@@ -484,13 +610,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param fixtureSupplier Der Supplier, der die neue Shape des Objektes
      *                        ausgibt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setFixtures(Supplier)
      */
     @API
-    public final void setFixture(Supplier<FixtureData> fixtureSupplier)
+    public final Actor setFixture(Supplier<FixtureData> fixtureSupplier)
     {
         this.setFixtures(
                 () -> Collections.singletonList(fixtureSupplier.get()));
+        return this;
     }
 
     /**
@@ -498,12 +631,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param fixturesSupplier Ein Supplier, der eine Liste mit allen neuen
      *                         Shapes für den Actor angibt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setFixture(Supplier)
      */
     @API
-    public final void setFixtures(Supplier<List<FixtureData>> fixturesSupplier)
+    public final Actor setFixtures(Supplier<List<FixtureData>> fixturesSupplier)
     {
         this.physicsHandler.setFixtures(fixturesSupplier);
+        return this;
     }
 
     /**
@@ -690,13 +830,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                 <code>collider</code> sein. Dies ermöglicht die Nutzung
      *                 von spezifischen Methoden aus spezialisierteren Klassen
      *                 der Actor-Hierarchie.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #addCollisionListener(CollisionListener)
      */
     @API
-    public final <E extends Actor> void addCollisionListener(E collider,
+    public final <E extends Actor> Actor addCollisionListener(E collider,
             CollisionListener<E> listener)
     {
         WorldHandler.addSpecificCollisionListener(this, collider, listener);
+        return this;
     }
 
     /**
@@ -708,10 +855,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param listener Der Beobachter, der bei Kollisionen informiert werden
      *                 soll, die der <b>ausführende Actor</b> mit allen anderen
      *                 Objekten der Szene erlebt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #addCollisionListener(Actor, CollisionListener)
      */
     @API
-    public final <E extends Actor> void addCollisionListener(Class<E> clazz,
+    public final <E extends Actor> Actor addCollisionListener(Class<E> clazz,
             CollisionListener<E> listener)
     {
         // noinspection OverlyComplexAnonymousInnerClass
@@ -737,6 +890,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 }
             }
         }, this);
+        return this;
     }
 
     /**
@@ -746,12 +900,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param listener Der Listener, der bei Kollisionen informiert werden soll,
      *                 die der <b>ausführende Actor</b> mit allen anderen
      *                 Objekten der Szene erlebt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #addCollisionListener(Actor, CollisionListener)
      */
     @API
-    public final void addCollisionListener(CollisionListener<Actor> listener)
+    public final Actor addCollisionListener(CollisionListener<Actor> listener)
     {
         WorldHandler.addGenericCollisionListener(listener, this);
+        return this;
     }
 
     /**
@@ -766,7 +927,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public abstract void render(Graphics2D g, double pixelPerMeter);
 
     @Internal
-    public final void setPhysicsHandler(PhysicsHandler handler)
+    public final Actor setPhysicsHandler(PhysicsHandler handler)
     {
         WorldHandler worldHandler = handler.getWorldHandler();
         WorldHandler previousWorldHandler = physicsHandler.getWorldHandler();
@@ -774,7 +935,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             if (previousWorldHandler == null)
             {
-                return;
+                return this;
             }
             Layer layer = previousWorldHandler.getLayer();
             keyStrokeListeners.invoke(layer::removeKeyStrokeListener);
@@ -788,7 +949,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             if (previousWorldHandler != null)
             {
-                return;
+                return this;
             }
             physicsHandler = handler;
             Layer layer = worldHandler.getLayer();
@@ -798,6 +959,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             mouseScrollListeners.invoke(layer::addMouseScrollListener);
             frameUpdateListeners.invoke(layer::addFrameUpdateListener);
         }
+        return this;
     }
 
     /**
@@ -817,14 +979,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Entfernt das aktuelle Objekt aus seiner aktuellen Ebene, falls das Objekt
      * gerade einer Ebene zugeordnet ist.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
-    public final void remove()
+    public final Actor remove()
     {
         Layer layer = getLayer();
         if (layer != null)
         {
             layer.remove(this);
         }
+        return this;
     }
 
     /**
@@ -892,12 +1060,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                       Simulation <b>nicht mehr</b>. Ist dieser Wert
      *                       <code>false</code>, rotiert sich dieses Objekt
      *                       innerhalb der physikalsichen Simulation.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #isRotationLocked()
      */
     @API
-    public final void setRotationLocked(boolean rotationLocked)
+    public final Actor setRotationLocked(boolean rotationLocked)
     {
         physicsHandler.setRotationLocked(rotationLocked);
+        return this;
     }
 
     /**
@@ -906,6 +1081,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return <code>true</code>, wenn die Rotation dieses Objekts derzeit
      *         innerhalb der physikalischen Simulation blockiert ist.
+     *
      * @see #setRotationLocked(boolean)
      */
     @API
@@ -931,11 +1107,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * daher ändert sich die <b>Masse</b> in der Regel.
      *
      * @param density Die neue Dichte des Objekts in <b>[kg/m^2]</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void setDensity(double density)
+    public final Actor setDensity(double density)
     {
         physicsHandler.setDensity(density);
+        return this;
     }
 
     /**
@@ -953,11 +1135,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Setzt den Gravitationsfaktor, normalerweise im Bereich [0, 1].
      *
      * @param factor Der Gravitationsfaktor.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void setGravityScale(double factor)
+    public final Actor setGravityScale(double factor)
     {
         physicsHandler.setGravityScale(factor);
+        return this;
     }
 
     /**
@@ -977,12 +1165,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param friction Der Reibungskoeffizient. In der Regel im Bereich <b>[0;
      *                 1]</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #getFriction()
      */
     @API
-    public final void setFriction(double friction)
+    public final Actor setFriction(double friction)
     {
         physicsHandler.setFriction(friction);
+        return this;
     }
 
     /**
@@ -1004,9 +1199,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param damping Die Dämpfung der Rotationsgeschwindigkeit.
      */
     @API
-    public final void setAngularDamping(double damping)
+    public final Actor setAngularDamping(double damping)
     {
         physicsHandler.setAngularDamping(damping);
+        return this;
     }
 
     /**
@@ -1024,11 +1220,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Setzt die Dämpfung der Geschwindigkeit.
      *
      * @param damping Die Dämpfung der Geschwindigkeit.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void setLinearDamping(double damping)
+    public final Actor setLinearDamping(double damping)
     {
         physicsHandler.setLinearDamping(damping);
+        return this;
     }
 
     /**
@@ -1051,16 +1253,23 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param velocity Die Geschwindigkeit, mit der sich dieses Objekt ab sofort
      *                 bewegen soll. In <b>[m / s]</b>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #getVelocity()
      */
     @API
-    public final void setVelocity(Vector velocity)
+    public final Actor setVelocity(Vector velocity)
     {
         if (velocity.isNaN())
         {
-            return;
+            return this;
         }
         physicsHandler.setVelocity(velocity);
+        return this;
     }
 
     /**
@@ -1069,6 +1278,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Geschwindigkeit, mit der sich dieses Objekt gerade (also in
      *         diesem Frame) bewegt. In <b>[m / s]</b>
+     *
      * @see #setVelocity(Vector)
      * @see #getAngularVelocity()
      */
@@ -1082,6 +1292,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Gibt die aktuelle Drehgeschwindigkeit aus.
      *
      * @return Die aktuelle Drehgeschwindigkeit.
+     *
      * @see #setAngularVelocity(double)
      * @see #getVelocity()
      * @see #getAngularDamping()
@@ -1100,18 +1311,25 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param rotationsPerSecond Die Geschwindigkeit, mit der sich dieses Objekt
      *                           ab sofort bewegen soll. In <b>[Umdrehnungen /
      *                           s]</b>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #getAngularVelocity()
      * @see #setVelocity(Vector)
      * @see #setAngularDamping(double)
      */
     @API
-    public final void setAngularVelocity(double rotationsPerSecond)
+    public final Actor setAngularVelocity(double rotationsPerSecond)
     {
         if (Double.isNaN(rotationsPerSecond))
         {
-            return;
+            return this;
         }
         physicsHandler.setAngularVelocity(rotationsPerSecond);
+        return this;
     }
 
     /**
@@ -1133,19 +1351,25 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param elasticity Die Stoßzahl bzw. der Restitutionskoeffizient.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #getElasticity()
      *
      * @jbox2d https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137
      * @box2d https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338
      */
     @API
-    public final void setElasticity(double elasticity)
+    public final Actor setElasticity(double elasticity)
     {
         if (Double.isNaN(elasticity))
         {
             throw new RuntimeException("Ungültige Stoßzahl: " + elasticity);
         }
         physicsHandler.setRestitution(elasticity);
+        return this;
     }
 
     /**
@@ -1182,44 +1406,71 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Wirkt ein Drehmoment auf das Objekt.
      *
      * @param torque Drehmoment, der auf das Ziel-Objekt wirken soll. In [N×m]
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void applyTorque(double torque)
+    public final Actor applyTorque(double torque)
     {
         if (Double.isNaN(torque))
         {
-            return;
+            return this;
         }
         physicsHandler.applyTorque(torque);
+        return this;
     }
 
-    public final void applyRotationImpulse(double impulse)
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     */
+    public final Actor applyRotationImpulse(double impulse)
     {
         if (Double.isNaN(impulse))
         {
-            return;
+            return this;
         }
         physicsHandler.applyRotationImpulse(impulse);
+        return this;
     }
 
     /**
      * Wirkt eine Kraft auf den <i>Schwerpunkt</i> des Objekts.
      *
      * @param force Der Kraftvektor in <b>[N]</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void applyForce(Vector force)
+    public final Actor applyForce(Vector force)
     {
         if (force.isNaN())
         {
-            return;
+            return this;
         }
         physicsHandler.applyForce(force);
+        return this;
     }
 
-    public final void applyForce(double forceX, double forceY)
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
+     */
+    public final Actor applyForce(double forceX, double forceY)
     {
         applyForce(new Vector(forceX, forceY));
+        return this;
     }
 
     /**
@@ -1228,15 +1479,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param force       Kraft in <b>[N]</b>
      * @param globalPoint Ort auf der <i>Zeichenebene</i>, an dem die Kraft
      *                    wirken soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void applyForce(Vector force, Vector globalPoint)
+    public final Actor applyForce(Vector force, Vector globalPoint)
     {
         if (force.isNaN() || globalPoint.isNaN())
         {
-            return;
+            return this;
         }
         physicsHandler.applyForce(force, globalPoint);
+        return this;
     }
 
     /**
@@ -1260,15 +1517,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param impulse Der Impuls in <b>[Ns]</b> [(kg * m) / s], der auf den
      *                Schwerpunkt wirken soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void applyImpulse(Vector impulse)
+    public final Actor applyImpulse(Vector impulse)
     {
         if (impulse.isNaN())
         {
-            return; // ignore invalid impulses, they make box2d hang
+            return this; // ignore invalid impulses, they make box2d hang
         }
         physicsHandler.applyImpulse(impulse, physicsHandler.getCenter());
+        return this;
     }
 
     /**
@@ -1294,10 +1557,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                 der auf den Schwerpunkt wirken soll.
      * @param impulseY Der Impuls in x-Richtung in <b>[Ns]</b> [(kg * m) / s],
      *                 der auf den Schwerpunkt wirken soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
-    public final void applyImpulse(double impulseX, double impulseY)
+    public final Actor applyImpulse(double impulseX, double impulseY)
     {
         applyImpulse(new Vector(impulseX, impulseY));
+        return this;
     }
 
     /**
@@ -1322,11 +1591,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param impulse     Der Impuls in <b>[Ns]</b>.
      * @param globalPoint Der Ort auf der <i>Zeichenebene</i>, an dem der Impuls
      *                    wirken soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void applyImpulse(Vector impulse, Vector globalPoint)
+    public final Actor applyImpulse(Vector impulse, Vector globalPoint)
     {
         physicsHandler.applyImpulse(impulse, globalPoint);
+        return this;
     }
 
     /**
@@ -1339,11 +1614,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * existieren, wo wird dieses Objekt jedoch möglicherweise aus der Ruhelage
      * wieder in Bewegung versetzt.
      * </p>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void resetMovement()
+    public final Actor resetMovement()
     {
         physicsHandler.resetMovement();
+        return this;
     }
 
     /**
@@ -1556,15 +1837,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param x Die neue <code>x</code>-Koordinate.
      * @param y Die neue <code>y</code>-Koordinate.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setPosition(Vector)
      * @see #setCenter(double, double)
      * @see #setX(double)
      * @see #setY(double)
      */
     @API
-    public final void setPosition(double x, double y)
+    public final Actor setPosition(double x, double y)
     {
         setPosition(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -1574,15 +1861,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param position Der neue Zielpunkt.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setX(double)
      * @see #setY(double)
      */
     @API
-    public final void setPosition(Vector position)
+    public final Actor setPosition(Vector position)
     {
         moveBy(position.subtract(getPosition()));
+        return this;
     }
 
     /**
@@ -1590,13 +1883,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param vector Der Vektor, der die Verschiebung des Objekts angibt.
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see Vector
      * @see #moveBy(double, double)
      */
     @API
-    public final void moveBy(Vector vector)
+    public final Actor moveBy(Vector vector)
     {
         physicsHandler.moveBy(vector);
+        return this;
     }
 
     /**
@@ -1609,12 +1908,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param dX Die Verschiebung in Richtung X.
      * @param dY Die Verschiebung in Richtung Y.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #moveBy(Vector)
      */
     @API
-    public final void moveBy(double dX, double dY)
+    public final Actor moveBy(double dX, double dY)
     {
         moveBy(new Vector(dX, dY));
+        return this;
     }
 
     /**
@@ -1629,6 +1935,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *          Objektes
      * @param y Die <code>y</code>-Koordinate des neuen Mittelpunktes des
      *          Objektes
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setCenter(Vector)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
@@ -1637,9 +1949,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #getCenter()
      */
     @API
-    public final void setCenter(double x, double y)
+    public final Actor setCenter(double x, double y)
     {
         this.setCenter(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -1651,6 +1964,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Bounding-Rechtecks durch den Aufruf der Methode <code>getCenter()</code>.
      *
      * @param center Der neue Mittelpunkt des Objekts
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setCenter(double, double)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
@@ -1659,9 +1978,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #getCenter()
      */
     @API
-    public final void setCenter(Vector center)
+    public final Actor setCenter(Vector center)
     {
         moveBy(getCenter().negate().add(center));
+        return this;
     }
 
     /**
@@ -1670,6 +1990,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Ecke des umschließenden Rechtecks genommen.
      *
      * @return <code>x</code>-Koordinate
+     *
      * @see #getY()
      * @see #getPosition()
      */
@@ -1693,14 +2014,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param x neue x-Koordinate
      *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setY(double)
      */
     @API
-    public final void setX(double x)
+    public final Actor setX(double x)
     {
-        this.moveBy(x - getX(), 0);
+        moveBy(x - getX(), 0);
+        return this;
     }
 
     /**
@@ -1716,7 +2043,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getY()
     {
-        return this.getPosition().getY();
+        return getPosition().getY();
     }
 
     /**
@@ -1732,14 +2059,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Sondermethode {@link #setCenter(double, double)}.
      *
      * @param y neue <code>y</code>-Koordinate
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
      * @see #setPosition(double, double)
      * @see #setCenter(double, double)
      * @see #setX(double)
      */
     @API
-    public final void setY(double y)
+    public final Actor setY(double y)
     {
-        this.moveBy(0, y - getY());
+        moveBy(0, y - getY());
+        return this;
     }
 
     /**
@@ -1788,11 +2122,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *               <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
      *               <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
      *               </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void rotateBy(double degree)
+    public final Actor rotateBy(double degree)
     {
         physicsHandler.rotateBy(degree);
+        return this;
     }
 
     /**
@@ -1815,11 +2155,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param degree Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
      *               seiner Ausgangsposition bei Initialisierung</b> rotiert
      *               werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final void setRotation(double degree)
+    public final Actor setRotation(double degree)
     {
         physicsHandler.setRotation(degree);
+        return this;
     }
 
     /**
@@ -1839,6 +2185,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * komplett verschwindet.
      *
      * @param lifetime Die Lebenszeit in Sekunden.
+     *
      * @return Das Objekt, das die Animation kontrolliert.
      */
     @API
@@ -1894,10 +2241,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Weckt die Figur auf. Eine schlafende Figur hat sehr geringe CPU-Kosten,
      * deshalb wird sie von der Physics-Engine in den Schlafzustand gesetzt,
      * wenn sie zur Ruhe kommt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
-    public void awake()
+    public Actor awake()
     {
         physicsHandler.setAwake(true);
+        return this;
     }
 
     /**
@@ -1908,9 +2261,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Das Versetzen in den Schlafzustand setzt die Geschwindigkeit und den
      * Impuls der Figur auf null.
      * </p>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinandergekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
      */
-    public void sleep()
+    public Actor sleep()
     {
         physicsHandler.setAwake(false);
+        return this;
     }
 }

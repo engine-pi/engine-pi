@@ -143,6 +143,13 @@ public interface ActorCreator
         getScene().add(actor);
         return actor;
     }
+
+    default Image createImage(String filePath, double width, double height)
+    {
+        Image actor = new Image(filePath, width, height);
+        getScene().add(actor);
+        return actor;
+    }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
 
     default Pentagon createPentagon(double radius)

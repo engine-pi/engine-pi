@@ -52,31 +52,6 @@ public abstract class Geometry extends Actor
     }
 
     /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
-     *
-     * @param color Die neue Farbe.
-     */
-    @API
-    public void setColor(Color color)
-    {
-        this.color = color;
-    }
-
-    /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
-     * <b>Zeichkette</b> angegeben werden kann.
-     *
-     * @param color Die neue Farbe als Zeichenketteu.
-     *
-     * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
-     */
-    @API
-    public void setColor(String color)
-    {
-        this.color = colors.get(color);
-    }
-
-    /**
      * Gibt die Farbe aus.
      *
      * @return Die Farbe des Objekts.

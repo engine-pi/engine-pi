@@ -2,7 +2,6 @@ package de.pirckheimer_gymnasium.engine_pi.demos.actor;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 
 public class ImageAverageColorDemo extends Scene
 {
@@ -22,10 +21,8 @@ public class ImageAverageColorDemo extends Scene
 
     private void createImageWithAverageColor(String filepath, double x)
     {
-        Image image = new Image(filepath, 1, 1);
-        add(image);
-        image.setPosition(x, 0);
-        createRectangle(1, 1, x, -1.2).setColor(image.getColor());
+        var image = createImage(filepath, 1, 1).setPosition(x, 0);
+        createRectangle(1, 1).setPosition(x, -1.2).setColor(image.getColor());
     }
 
     public static void main(String[] args)

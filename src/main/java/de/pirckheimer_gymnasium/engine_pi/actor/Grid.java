@@ -57,11 +57,6 @@ public class Grid extends Actor
     double lineThickness = 0.02;
 
     /**
-     * Die Farbe der Gitterlinien.
-     */
-    Color color = colorScheme.getGreen();
-
-    /**
      * Die Hintergrundfarbe.
      */
     Color background;
@@ -80,6 +75,7 @@ public class Grid extends Actor
         this.cols = cols;
         this.rows = rows;
         this.size = size;
+        color = colorScheme.getGreen();
     }
 
     /**
@@ -101,17 +97,6 @@ public class Grid extends Actor
     public void setLineThickness(double lineThickness)
     {
         this.lineThickness = lineThickness;
-    }
-
-    /**
-     * Setzt die Farbe der Gitterlinien.
-     *
-     * @param color Die Farbe der Gitterlinien.
-     */
-    @API
-    public void setColor(Color color)
-    {
-        this.color = color;
     }
 
     /**
