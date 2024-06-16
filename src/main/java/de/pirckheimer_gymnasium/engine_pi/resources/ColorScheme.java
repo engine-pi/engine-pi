@@ -63,6 +63,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code black} (<b>Black</b>)</li>
  * </ul>
  *
+ * Anderes Farbschema: https://commons.wikimedia.org/wiki/File:Color_star-en_(tertiary_names).svg
+ *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colorScheme
  */
 public class ColorScheme
