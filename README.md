@@ -1917,6 +1917,14 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
+## Farben
+
+https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_derived_complementary-color.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_shapes.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Shapes-only.png)
+
 ## Deutsche Übersetzungen von englischen Klassennamen
 
 | englisch       | deutsch                                                |
