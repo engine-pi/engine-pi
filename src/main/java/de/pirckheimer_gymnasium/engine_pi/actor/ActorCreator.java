@@ -135,6 +135,14 @@ public interface ActorCreator
         actor.setColor(color);
         return actor;
     }
+    /* ___ Image (Bild) _____________________________________________________ */
+
+    default Image createImage(String filePath, double pixelPerMeter)
+    {
+        Image actor = new Image(filePath, pixelPerMeter);
+        getScene().add(actor);
+        return actor;
+    }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
 
     default Pentagon createPentagon(double radius)

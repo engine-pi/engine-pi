@@ -55,10 +55,20 @@ public class Hexagon extends RegularPolygon
         Game.start(new Scene()
         {
             {
-                add(new Hexagon());
+                // Erzeugen mit Hilfe des Konstruktors ohne Parameter.
+                Hexagon h1 = new Hexagon();
+                add(h1);
+                //
+                // Erzeugen mit Hilfe des Konstruktors ohne Parameter.
+                Hexagon h2 = new Hexagon(4);
+                h2.setPosition(-5, -5);
+                h2.setColor("gold");
+                add(h2);
+                // Erzeugen mit Hilfe der createHexagon()-Methode
                 createHexagon(3, 3, "lime");
-                var h = createHexagon(2, -3, 3, "brick");
-                h.rotateBy(45);
+                // Erzeugen mit Hilfe der createHexagon()-Methode und Rotation.
+                Hexagon h4 = createHexagon(2, -3, 3, "brick");
+                h4.rotateBy(45);
             }
         });
     }

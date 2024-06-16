@@ -25,7 +25,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
@@ -249,12 +251,26 @@ public class Image extends Actor
     public void render(Graphics2D g, double pixelPerMeter)
     {
         AffineTransform pre = g.getTransform();
-        g.scale(width * pixelPerMeter / this.image.getWidth(),
-                height * pixelPerMeter / this.image.getHeight());
-        g.drawImage(this.image, flipHorizontal ? image.getWidth() : 0,
-                -image.getHeight() + (flipVertical ? image.getHeight() : 0),
-                (flipHorizontal ? -1 : 1) * image.getWidth(),
-                (flipVertical ? -1 : 1) * image.getHeight(), null);
+        int imageH = image.getHeight();
+        int imageW = image.getWidth();
+        g.scale(width * pixelPerMeter / imageW,
+                height * pixelPerMeter / imageH);
+        g.drawImage(image, flipHorizontal ? imageW : 0,
+                -imageH + (flipVertical ? imageH : 0),
+                (flipHorizontal ? -1 : 1) * imageW,
+                (flipVertical ? -1 : 1) * imageH, null);
         g.setTransform(pre);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new Scene()
+        {
+            {
+                // Erzeugen mit Hilfe der createImage()-Methode.
+                Image i1 = createImage("assets/logo.png", 40);
+                i1.setCenter(0, 0);
+            }
+        });
     }
 }
