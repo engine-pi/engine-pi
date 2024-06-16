@@ -7,14 +7,14 @@ import java.util.List;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 
 /**
- * Bei gedrückter Taste mehrmals die gleiche Aktion in einem bestimmten Abstand
- * ausführen.
+ * Führt bei <b>gedrückter Taste</b> mehrmals die gleiche Aufgabe in einem
+ * bestimmten zeitlichen Abstand aus.
  *
  * @author Josef Friedrich
  */
 public class PressedKeyRepeater implements KeyStrokeListener
 {
-    private final List<Task> tasks;
+    private final List<KeyAction> keyActions;
 
     private final List<Executor> executors;
 
@@ -28,20 +28,23 @@ public class PressedKeyRepeater implements KeyStrokeListener
      */
     private double defaultInitialInterval = 0.15;
 
+    /**
+     * Führt die einzelnen Aufgaben einer Tastenaktion aus.
+     */
     private class Executor implements FrameUpdateListener, KeyStrokeListener
     {
         private double countdown;
 
-        private final Task task;
+        private final KeyAction action;
 
-        public Executor(Task task)
+        public Executor(KeyAction action)
         {
-            this.task = task;
-            countdown = task.getInitialInterval();
+            this.action = action;
+            countdown = action.getInitialInterval();
             Game.addKeyStrokeListener(this);
             Game.addFrameUpdateListener(this);
-            task.runInitialTask();
-            task.runRepeatedTask();
+            action.runInitialTask();
+            action.runRepeatedTask();
         }
 
         @Override
@@ -50,8 +53,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
             countdown -= deltaSeconds;
             if (countdown < 0)
             {
-                task.runRepeatedTask();
-                countdown = task.getInterval();
+                action.runRepeatedTask();
+                countdown = action.getInterval();
             }
         }
 
@@ -64,13 +67,13 @@ public class PressedKeyRepeater implements KeyStrokeListener
         {
             Game.removeFrameUpdateListener(this);
             Game.removeKeyStrokeListener(this);
-            task.runFinalTask();
+            action.runFinalTask();
         }
 
         @Override
         public void onKeyUp(KeyEvent e)
         {
-            if (e.getKeyCode() == task.getKeyCode())
+            if (e.getKeyCode() == action.getKeyCode())
             {
                 stop();
                 executors.remove(this);
@@ -78,20 +81,40 @@ public class PressedKeyRepeater implements KeyStrokeListener
         }
     }
 
-    private class Task
+    /**
+     * Eine Aktion ordnet einer bestimmten Taste eine oder mehrere Aufgaben zu,
+     * die bei gedrückter Taste ausgeführt werden.
+     */
+    private class KeyAction
     {
+        /**
+         * Der Code der Taste, durch die die Aufgaben gestartet werden.
+         *
+         * @see java.awt.event.KeyEvent
+         */
         private final int keyCode;
 
+        /**
+         * Die Aufgabe, die <b>unmittelbar</b> ausgeführt wird, wenn die
+         * entsprechende Taste <b>gedrückt</b> wird.
+         */
         private Runnable initialTask;
 
+        /**
+         * Die Aufgabe, die in einem bestimmten Zeitintervall <b>wiederholt</b>
+         * wird.
+         */
         private final Runnable repeatedTask;
 
+        /**
+         * Die Aufgabe, die beim <b>Loslassen</b> der entsprechenden Taste,
+         * ausgeführt wird.
+         */
         private Runnable finalTask;
 
         /**
-         * Zeitintervall in Sekunden. Es handelt sich um die Verzögerung
-         * zwischen dem ersten Tastendruck und der ersten Wiederholung der
-         * Aufgabe.
+         * Die zeitliche Verzögerung (in Sekunden) zwischen dem ersten
+         * Tastendruck und der ersten Wiederholung der Aufgabe.
          */
         private double initialInterval;
 
@@ -100,7 +123,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
          */
         private double interval;
 
-        public Task(int keyCode, Runnable reatedTask, double interval,
+        public KeyAction(int keyCode, Runnable reatedTask, double interval,
                 double initialInterval)
         {
             this.keyCode = keyCode;
@@ -109,21 +132,21 @@ public class PressedKeyRepeater implements KeyStrokeListener
             this.initialInterval = initialInterval;
         }
 
-        public Task(int keyCode, Runnable runnable)
+        public KeyAction(int keyCode, Runnable runnable)
         {
             this.keyCode = keyCode;
             this.repeatedTask = runnable;
         }
 
-        public Task(int keyCode, Runnable repeatedTask, Runnable finalTask)
+        public KeyAction(int keyCode, Runnable repeatedTask, Runnable finalTask)
         {
             this.keyCode = keyCode;
             this.repeatedTask = repeatedTask;
             this.finalTask = finalTask;
         }
 
-        public Task(int keyCode, Runnable initialTask, Runnable repeatedTask,
-                Runnable finalTask)
+        public KeyAction(int keyCode, Runnable initialTask,
+                Runnable repeatedTask, Runnable finalTask)
         {
             this.keyCode = keyCode;
             this.initialTask = initialTask;
@@ -186,7 +209,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
         {
             defaultInitialInterval = initialInterval;
         }
-        tasks = new ArrayList<>();
+        keyActions = new ArrayList<>();
         executors = new ArrayList<>();
         Game.addKeyStrokeListener(this);
     }
@@ -199,23 +222,25 @@ public class PressedKeyRepeater implements KeyStrokeListener
     public void addTask(int keyCode, Runnable repeatedTask, double interval,
             double initialInterval)
     {
-        tasks.add(new Task(keyCode, repeatedTask, interval, initialInterval));
+        keyActions.add(new KeyAction(keyCode, repeatedTask, interval,
+                initialInterval));
     }
 
     public void addTask(int keyCode, Runnable repeatedTask)
     {
-        tasks.add(new Task(keyCode, repeatedTask));
+        keyActions.add(new KeyAction(keyCode, repeatedTask));
     }
 
     public void addTask(int keyCode, Runnable repeatedTask, Runnable finalTask)
     {
-        tasks.add(new Task(keyCode, repeatedTask, finalTask));
+        keyActions.add(new KeyAction(keyCode, repeatedTask, finalTask));
     }
 
     public void addTask(int keyCode, Runnable initialTask,
             Runnable repeatedTask, Runnable finalTask)
     {
-        tasks.add(new Task(keyCode, initialTask, repeatedTask, finalTask));
+        keyActions.add(
+                new KeyAction(keyCode, initialTask, repeatedTask, finalTask));
     }
 
     /**
@@ -233,7 +258,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        for (Task task : tasks)
+        for (KeyAction task : keyActions)
         {
             if (e.getKeyCode() == task.getKeyCode())
             {

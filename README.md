@@ -1935,3 +1935,4 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 | RevoluteJoint  | Gelenkverbindung                                       |
 | RopeJoint      | Seilverbindung                                         |
 | WeldJoint      | Schweißnaht                                            |
+| TurboFire      | Dauerfeuer                                             |
