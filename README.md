@@ -1921,6 +1921,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 | englisch       | deutsch                                                |
 | -------------- | ------------------------------------------------------ |
+| Actor          | Figur                                                  |
 | BodyType       | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds         | Schranken, Abgrenzung                                  |
 | DistanceJoint  | Stabverbindung                                         |
