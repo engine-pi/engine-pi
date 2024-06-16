@@ -321,7 +321,7 @@ public final class Camera
      * zu zeichnenden Position und in Pixel.
      *
      * @param locationInWorld Ein Punkt in der Welt.
-     * @param pixelPerMeter   Umrechnungsfaktor pixelPerMeter
+     * @param pixelPerMeter   Gibt an, wie viele Pixel ein Meter misst.
      *
      * @return Die zu zeichnende Position des Punktes in Pixel.
      *

@@ -506,6 +506,9 @@ public class Layer implements KeyStrokeListenerRegistration,
         parent.getCamera().setMeter(desiredZoom);
     }
 
+    /**
+     * @return Die Anzal an Pixel, die ein Meter misst.
+     */
     @API
     public double calculatePixelPerMeter()
     {

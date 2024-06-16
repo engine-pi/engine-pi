@@ -503,7 +503,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                      Hierbei soll zunächst getestet werden, ob das Objekt
      *                      innerhalb der Kamera liegt, und erst dann gezeichnet
      *                      werden.
-     * @param pixelPerMeter Pixel pro Meter.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal
     public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
@@ -578,9 +578,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
      * übernimmt nur das direkte rendern.
      *
-     * @param shape Die Shape, die zu rendern ist.
-     * @param g     Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *              soll.
+     * @param shape         Die Shape, die zu rendern ist.
+     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
+     *                      werden soll.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,

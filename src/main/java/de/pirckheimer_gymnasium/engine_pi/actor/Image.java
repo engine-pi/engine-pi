@@ -73,9 +73,7 @@ public class Image extends Actor
      *
      * @param filepath      Der Verzeichnispfad des Bildes, das geladen werden
      *                      soll.
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
-     *                      an, wie viele Pixel in der Bilddatei einem Meter in
-     *                      der Engine entsprechen.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @API
     public Image(String filepath, final double pixelPerMeter)
@@ -94,9 +92,7 @@ public class Image extends Actor
      *
      * @param image         Ein bereits im Speicher vorhandenes Bild vom
      *                      Datentyp BufferedImage.
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
-     *                      an, wie viele Pixel in der Bilddatei einem Meter in
-     *                      der Engine entsprechen.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @API
     public Image(BufferedImage image, final double pixelPerMeter)
@@ -150,9 +146,7 @@ public class Image extends Actor
      * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
      * Eigenschaften des Bildes.
      *
-     * @param pixelPerMeter Der Umrechnungsfaktor für die Größe des Bildes. Gibt
-     *                      an, wie viele Pixel in der Bilddatei einem Meter in
-     *                      der Engine entsprechen.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
      * @see #resetImageSize(double, double)
      */
@@ -172,6 +166,9 @@ public class Image extends Actor
         }
     }
 
+    /**
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     */
     private void assertViablePPM(double pixelPerMeter)
     {
         if (pixelPerMeter <= 0)

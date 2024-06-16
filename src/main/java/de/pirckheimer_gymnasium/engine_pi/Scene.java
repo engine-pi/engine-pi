@@ -282,6 +282,11 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    /**
+     * @param a             Der Vector a.
+     * @param b             Der Vektor b.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     */
     @Internal
     private static void renderJointRectangle(Graphics2D g, Color color,
             Vector a, Vector b, double pixelPerMeter)

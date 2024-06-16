@@ -57,13 +57,15 @@ public class DefaultControl implements DefaultListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_D -> {
+        case KeyEvent.VK_D ->
+        {
             if (Game.isKeyPressed(KeyEvent.VK_ALT))
             {
                 Game.toggleDebug();
             }
         }
-        case KeyEvent.VK_A -> {
+        case KeyEvent.VK_A ->
+        {
             if (Game.isKeyPressed(KeyEvent.VK_ALT))
             {
                 Game.toggleRenderActors();
