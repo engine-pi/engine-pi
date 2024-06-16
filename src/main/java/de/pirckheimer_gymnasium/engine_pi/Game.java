@@ -52,6 +52,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
+import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
@@ -881,20 +882,20 @@ public final class Game
     }
 
     /**
-     * Rendert einen Screenshot des aktuellen Spielfensters und speichert das
-     * resultierende Bild in einer Datei.
-     *
-     * @param filename Der Name der Datei, in der der Screenshot gespeichert
-     *                 werden soll.
+     * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
+     * {@code ~/engine-pi}.
      */
     @API
-    public static void takeScreenshot(String filename)
+    public static void takeScreenshot()
     {
         BufferedImage screenshot = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2d = (Graphics2D) screenshot.getGraphics();
-        loop.render(source -> source.render(g2d, width, height));
-        ImageUtil.write(screenshot, filename);
+        Graphics2D g = (Graphics2D) screenshot.getGraphics();
+        loop.render(source -> source.render(g, width, height));
+        String dir = FileUtil.getHome() + "/engine-pi";
+        FileUtil.createDir(dir);
+        ImageUtil.write(screenshot,
+                dir + "/screenshot_" + System.nanoTime() + ".png");
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

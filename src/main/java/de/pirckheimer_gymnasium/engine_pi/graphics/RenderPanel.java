@@ -21,10 +21,11 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 /**
  * Dies ist das Panel, in dem die einzelnen Objekte gezeichnet werden.
@@ -46,7 +47,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
     {
         setSize(width, height);
         setPreferredSize(getSize());
-        setBackground(Color.BLACK);
+        setBackground(Resources.getColor("black"));
     }
 
     /**
@@ -58,6 +59,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
         createBufferStrategy(2);
     }
 
+    @Override
     public void render(RenderSource source)
     {
         BufferStrategy bufferStrategy = getBufferStrategy();

@@ -327,4 +327,28 @@ public final class FileUtil
             return false;
         }
     }
+
+    /**
+     * https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/System.html#getProperties()
+     */
+    public static String getHome()
+    {
+        return System.getProperty("user.home");
+    }
+
+    public static void createDir(String dirpath)
+    {
+        Path path = Paths.get(dirpath);
+        if (!Files.exists(path))
+        {
+            try
+            {
+                Files.createDirectories(path);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 }

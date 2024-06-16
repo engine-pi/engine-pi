@@ -11,8 +11,9 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  *
  * <ul>
  * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
- * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
  * <li>{@code ALT + a} zum An- und Ausschalten der Figuren-Zeichenroutine.</li>
+ * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+ * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
  * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
@@ -44,9 +45,10 @@ public class DefaultControl implements DefaultListener
      * Registriert <b>Standard-Tastenkürzel</b>.
      *
      * <ul>
-     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
      * <li>{@code ALT + a} zum An- und Ausschalten der
      * Figuren-Zeichenroutine.</li>
+     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+     * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
      * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
      * </ul>
      *
@@ -55,23 +57,24 @@ public class DefaultControl implements DefaultListener
     @Override
     public void onKeyDown(KeyEvent event)
     {
-        switch (event.getKeyCode())
+        if (Game.isKeyPressed(KeyEvent.VK_ALT))
         {
-        case KeyEvent.VK_D ->
-        {
-            if (Game.isKeyPressed(KeyEvent.VK_ALT))
+            switch (event.getKeyCode())
             {
+            case KeyEvent.VK_D -> {
                 Game.toggleDebug();
             }
-        }
-        case KeyEvent.VK_A ->
-        {
-            if (Game.isKeyPressed(KeyEvent.VK_ALT))
-            {
+            case KeyEvent.VK_A -> {
                 Game.toggleRenderActors();
             }
+            case KeyEvent.VK_S -> {
+                Game.takeScreenshot();
+            }
+            }
         }
-        case KeyEvent.VK_ESCAPE -> Game.exit();
+        if (event.getKeyCode() == KeyEvent.VK_ESCAPE)
+        {
+            Game.exit();
         }
     }
 

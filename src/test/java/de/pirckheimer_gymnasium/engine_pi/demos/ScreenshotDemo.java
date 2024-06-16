@@ -27,19 +27,10 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
         switch (e.getKeyCode())
         {
         case KeyEvent.VK_P:
-            Game.takeScreenshot("screenshot.png");
-            break;
-
-        case KeyEvent.VK_J:
-            Game.takeScreenshot("screenshot.jpg");
-            break;
-
-        case KeyEvent.VK_G:
-            Game.takeScreenshot("screenshot.gif");
+            Game.takeScreenshot();
             break;
 
         default:
-            Game.takeScreenshot("screenshot.png");
             break;
         }
     }
