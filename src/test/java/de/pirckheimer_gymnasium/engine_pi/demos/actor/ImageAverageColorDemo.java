@@ -22,7 +22,10 @@ public class ImageAverageColorDemo extends Scene
     private void createImageWithAverageColor(String filepath, double x)
     {
         var image = createImage(filepath, 1, 1).setPosition(x, 0);
-        createRectangle(1, 1).setPosition(x, -1.2).setColor(image.getColor());
+        createRectangle(1.0, 1.0).setPosition(x, -1.2)
+                .setColor(image.getColor());
+        createRectangle(1.0, 0.5).setPosition(x, -1.9)
+                .setColor(image.getComplementaryColor());
     }
 
     public static void main(String[] args)

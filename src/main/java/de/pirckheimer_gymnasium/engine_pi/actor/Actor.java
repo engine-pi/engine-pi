@@ -350,6 +350,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Gibt die Komplementärfarbe der Figur zurück.
+     *
+     * @return Die Komplementärfarbe der Figur.
+     */
+    public Color getComplementaryColor()
+    {
+        return ColorUtil.getComplementary(color);
+    }
+
+    /**
      * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
      *
      * @param color Die neue Farbe.
@@ -757,7 +767,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
-        g.setColor(actor.color != null ? ColorUtil.getComplementary(actor.color)
+        g.setColor(actor.color != null ? actor.getComplementaryColor()
                 : Resources.getColor("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
