@@ -35,6 +35,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 @API
 public interface Tile
 {
+    /**
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     */
     @Internal
     void render(Graphics2D g, double width, double height);
 }

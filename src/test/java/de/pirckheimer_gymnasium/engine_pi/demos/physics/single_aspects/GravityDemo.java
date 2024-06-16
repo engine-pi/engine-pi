@@ -14,19 +14,24 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 
     public GravityDemo()
     {
+        getCamera().setMeter(45);
         circle = createCircle();
         circle.makeDynamic();
         setGravity(0, -9.81);
-        createBorder(-5, 4, false);
+        // oben
+        createBorder(-5, 4.5, false);
+        // unten
         createBorder(-5, -5, false);
+        // links
         createBorder(-5, -5, true);
-        createBorder(4, -5, true);
+        // rechts
+        createBorder(4.5, -5, true);
     }
 
     private Rectangle createBorder(double x, double y, boolean vertical)
     {
-        Rectangle rectangle = !vertical ? new Rectangle(10, 1)
-                : new Rectangle(1, 10);
+        Rectangle rectangle = !vertical ? new Rectangle(10, 0.5)
+                : new Rectangle(0.5, 10);
         rectangle.setPosition(x, y);
         rectangle.makeStatic();
         add(rectangle);

@@ -79,7 +79,7 @@ public final class AnimationFrame
     /**
      * Rendert den Frame (an der entsprechenden Position des Graphics Objekts)
      *
-     * @param g Das Graphics Objekt
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      */
     @Internal
     public void render(Graphics2D g, double width, double height,

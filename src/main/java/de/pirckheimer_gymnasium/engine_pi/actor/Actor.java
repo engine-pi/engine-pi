@@ -494,8 +494,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Sie schließt eine Fallabfrage zur Sichtbarkeit ein.
+     * </p>
      *
-     * @param g             Das zeichnende {@link Graphics2D}-Objekt.
+     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
+     *                      werden soll.
      * @param r             Das Bounds, dass die Kameraperspektive
      *                      repräsentiert.<br>
      *                      Hierbei soll zunächst getestet werden, ob das Objekt
@@ -566,10 +568,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Rendert eine Shape von JBox2D nach den gegebenen Voreinstellungen im
      * {@link Graphics2D}-Objekt.
      *
+     * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
+     * übernimmt nur das direkte rendern.
+     *
      * @param shape Die Shape, die zu rendern ist.
-     * @param g     Das {@link Graphics2D}-Objekt, das die Form rendern soll.
-     *              Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese
-     *              Methode übernimmt nur das direkte rendern.
+     * @param g     Das {@link Graphics2D}-Objekt, in das gezeichnet werden
+     *              soll.
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,
@@ -721,14 +725,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Rendert das Objekt am Ursprung.
-     * <ul>
-     * <li>Die Position ist (0|0).</li>
-     * <li>Die Roation ist 0.</li>
-     * </ul>
+     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation ist
+     * {@code 0}.
      *
-     * @param g             Das zeichnende {@link Graphics2D}-Objekt.
-     * @param pixelPerMeter Pixel pro Meter.
+     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
+     *                      werden soll.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal
     public abstract void render(Graphics2D g, double pixelPerMeter);

@@ -554,10 +554,6 @@ public class ColorScheme
      *
      * @return Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
      *         Mischung aus <b>Rot</b> und <b>Blau</b>).
-     *
-     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public Color getPurple()
     {
@@ -610,10 +606,6 @@ public class ColorScheme
      *
      * @return Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
      *         aus <b>Violett</b> und <b>Blau</b>).
-     *
-     * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public Color getIndigo()
     {
