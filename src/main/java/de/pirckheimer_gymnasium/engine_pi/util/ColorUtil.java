@@ -26,6 +26,7 @@
 package de.pirckheimer_gymnasium.engine_pi.util;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -398,5 +399,38 @@ public final class ColorUtil
     {
         return new Color(255 - color.getRed(), 255 - color.getGreen(),
                 255 - color.getBlue());
+    }
+
+    /**
+     * Berechnet die Durchschnittsfarbe eines Bildes.
+     *
+     * https://stackoverflow.com/questions/28162488/get-average-color-on-bufferedimage-and-bufferedimage-portion-as-fast-as-possible
+     *
+     * @param image Das Bild von dem die Durchschnittfarbe berechnet werden
+     *              soll.
+     *
+     * @return Die Durchschnittsfarbe.
+     */
+    public static Color calculateAverage(BufferedImage image)
+    {
+        int STEP = 2;
+        int sampled = 0;
+        long sumR = 0, sumG = 0, sumB = 0;
+        for (int x = 0; x < image.getWidth(); x++)
+        {
+            for (int y = 0; y < image.getHeight(); y++)
+            {
+                if (x % STEP == 0 && y % STEP == 0)
+                {
+                    Color pixel = new Color(image.getRGB(x, y));
+                    sumR += pixel.getRed();
+                    sumG += pixel.getGreen();
+                    sumB += pixel.getBlue();
+                    sampled++;
+                }
+            }
+        }
+        return new Color(Math.round(sumR / sampled), Math.round(sumG / sampled),
+                Math.round(sumB / sampled));
     }
 }

@@ -29,6 +29,7 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
  * Ein Bild als grafische Repräsentation einer Bilddatei, die gezeichnet werden
@@ -39,7 +40,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 public class Image extends Actor
 {
     /**
-     * Das {@link BufferedImage}, das dieses Image darstellt.
+     * Das {@link BufferedImage}, das dieses Bild darstellt.
      */
     private final BufferedImage image;
 
@@ -63,7 +64,8 @@ public class Image extends Actor
     {
         super(() -> FixtureBuilder.rectangle(width, height));
         assertViableSizes(width, height);
-        this.image = Resources.images.get(filepath);
+        image = Resources.images.get(filepath);
+        color = ColorUtil.calculateAverage(image);
         this.width = width;
         this.height = height;
     }
@@ -82,9 +84,10 @@ public class Image extends Actor
                 Resources.images.get(filepath).getWidth() / pixelPerMeter,
                 Resources.images.get(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
-        this.image = Resources.images.get(filepath);
-        this.width = image.getWidth() / pixelPerMeter;
-        this.height = image.getHeight() / pixelPerMeter;
+        image = Resources.images.get(filepath);
+        color = ColorUtil.calculateAverage(image);
+        width = image.getWidth() / pixelPerMeter;
+        height = image.getHeight() / pixelPerMeter;
     }
 
     /**
@@ -101,8 +104,9 @@ public class Image extends Actor
                 image.getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
         this.image = image;
-        this.width = image.getWidth() / pixelPerMeter;
-        this.height = image.getHeight() / pixelPerMeter;
+        color = ColorUtil.calculateAverage(this.image);
+        width = image.getWidth() / pixelPerMeter;
+        height = image.getHeight() / pixelPerMeter;
     }
 
     /**
@@ -111,7 +115,7 @@ public class Image extends Actor
     @Internal
     public Dimension getImageSizeInPx()
     {
-        return new Dimension(this.image.getWidth(), this.image.getHeight());
+        return new Dimension(image.getWidth(), image.getHeight());
     }
 
     /**
@@ -120,7 +124,7 @@ public class Image extends Actor
     @API
     public BufferedImage getImage()
     {
-        return this.image;
+        return image;
     }
 
     /**
