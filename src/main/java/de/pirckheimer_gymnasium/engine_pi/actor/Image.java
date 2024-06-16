@@ -132,8 +132,8 @@ public class Image extends Actor
      * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
      * verzerrt.
      *
-     * @param width  Die neue Breite des Objekts in M.
-     * @param height Die neue Höhe des Objekts in M.
+     * @param width  Die neue Breite des Bilds in Meter.
+     * @param height Die neue Höhe des Bild in Meter.
      *
      * @see #resetPixelPerMeter(double)
      */
