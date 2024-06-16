@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -108,8 +108,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     private boolean visible = true;
 
     /**
-     * Die Farbe der Figur. Nicht alle Figuren, wie zum Beispiel die
-     * {@link Image}-Figur, haben tatsächlich eine Farbe.
+     * Die Farbe der Figur.
      */
     protected Color color;
 
@@ -294,6 +293,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final void setOpacity(double opacity)
     {
         this.opacity = opacity;
+    }
+
+    /**
+     * Gibt die Farbe der Figur zurück.
+     *
+     * @return Die Farbe der Figur.
+     */
+    public Color getColor()
+    {
+        return color;
     }
 
     /**
@@ -603,13 +612,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         AffineTransform pre = g.getTransform();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
-        g.setColor(getColor("yellow"));
+        g.setColor(Resources.getColor("yellow"));
         g.drawOval(-1, -1, 2, 2);
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
         g.setColor(actor.color != null ? ColorUtil.getComplementary(actor.color)
-                : getColor("red"));
+                : Resources.getColor("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();

@@ -55,11 +55,15 @@ public class Image extends Actor
     private boolean flipHorizontal = false;
 
     /**
-     * Der Konstruktor für ein Bildobjekt.
+     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b> und der
+     * <b>Abmessungen</b> in <b>Meter</b>.
+     *
+     * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
+     * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
      *
      * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
-     * @param width    Die Breite in M für das Bildobjekt
-     * @param height   Die Höhe in M für das Bildobjekt
+     * @param width    Die Breite des Bilds in Meter.
+     * @param height   Die Höhe des Bilds in Meter.
      */
     @API
     public Image(String filepath, double width, double height)
