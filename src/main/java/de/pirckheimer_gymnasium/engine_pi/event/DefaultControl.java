@@ -12,6 +12,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  * <ul>
  * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
  * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+ * <li>{@code ALT + a} zum An- und Ausschalten der Figuren-Zeichenroutine.</li>
  * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
@@ -40,25 +41,32 @@ public class DefaultControl implements DefaultListener
     }
 
     /**
-     * Registriert wenige Standard-Tastenkürzel:
-     * <ul>
-     * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
-     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+     * Registriert <b>Standard-Tastenkürzel</b>.
      *
+     * <ul>
+     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+     * <li>{@code ALT + a} zum An- und Ausschalten der
+     * Figuren-Zeichenroutine.</li>
+     * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
      * </ul>
      *
-     * @param e Das KeyEvent von AWT.
+     * @param event Das KeyEvent von AWT.
      */
     @Override
-    public void onKeyDown(KeyEvent e)
+    public void onKeyDown(KeyEvent event)
     {
-        switch (e.getKeyCode())
+        switch (event.getKeyCode())
         {
-        case KeyEvent.VK_D ->
-        {
+        case KeyEvent.VK_D -> {
             if (Game.isKeyPressed(KeyEvent.VK_ALT))
             {
                 Game.toggleDebug();
+            }
+        }
+        case KeyEvent.VK_A -> {
+            if (Game.isKeyPressed(KeyEvent.VK_ALT))
+            {
+                Game.toggleRenderActors();
             }
         }
         case KeyEvent.VK_ESCAPE -> Game.exit();

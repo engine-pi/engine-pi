@@ -55,7 +55,7 @@ import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
- * Diese Klasse gibt Zugriff auf das aktuelle Spiel.
+ * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -83,13 +83,24 @@ public final class Game
     private static final Jukebox jukebox = new Jukebox();
 
     /**
-     * Wird debug auf <code>true</code> gesetzt, so werden ausführliche
-     * Informationen zu Tickern im Logger ausgegeben.
+     * Wird {@link Game#debug} auf <code>true</code> gesetzt, so werden
+     * zusätzliche Debug-Informationen angezeigt.
+     *
+     * @see Game#setDebug(boolean)
+     * @see Game#isDebug()
      */
     private static boolean debug;
 
     /**
-     * Wird <code>verbose</code> auf <code>true</code> gesetzt, so werden
+     * Gibt an, ob die Figuren gezeichnet werden sollen. Ist diese Attribut auf
+     * {@code false} gesetzt, werden keine Figuren gezeichnet. Diese Einstellung
+     * macht nur im aktivieren Debug-Modus Sinn, denn dann werden die Umrisse
+     * gezeichnet, jedoch nicht die Füllung.
+     */
+    private static boolean renderActors = true;
+
+    /**
+     * Wird {@link Game#verbose} auf <code>true</code> gesetzt, so werden
      * äußerst ausführliche Log-Ausgaben gemacht. Dies betrifft unter anderem
      * Informationen über das Verhalten der frameweise arbeitenden Threads.
      * Hierfür wurde diese Variable eingeführt.
@@ -97,12 +108,12 @@ public final class Game
     private static boolean verbose;
 
     /**
-     * Breite des Fensters.
+     * Breite des Fensters in Pixel.
      */
     private static int width;
 
     /**
-     * Höhe des Fensters.
+     * Höhe des Fensters in Pixel.
      */
     private static int height;
 
@@ -790,6 +801,37 @@ public final class Game
     public static void toggleDebug()
     {
         Game.setDebug(!Game.isDebug());
+    }
+
+    /**
+     * Setzt, ob die Figuren gezeichnet werden sollen.
+     *
+     * @see #getRenderActors()
+     */
+    @API
+    public static void setRenderActors(boolean value)
+    {
+        renderActors = value;
+    }
+
+    /**
+     * Gibt an, ob die Figuren gezeichnet werden sollen.
+     *
+     * @see #setRenderActors(boolean)
+     */
+    @API
+    public static boolean getRenderActors()
+    {
+        return renderActors;
+    }
+
+    /**
+     * @see #setRenderActors(boolean)
+     * @see #getRenderActors()
+     */
+    public static void toggleRenderActors()
+    {
+        Game.setRenderActors(!Game.getRenderActors());
     }
 
     /**

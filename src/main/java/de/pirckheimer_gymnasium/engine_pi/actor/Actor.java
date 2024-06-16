@@ -530,8 +530,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             {
                 composite = null;
             }
-            // ____ Render ____
-            render(g, pixelPerMeter);
+            // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
+            // werden können.
+            if (Game.getRenderActors())
+            {
+                // Zeichnen der Füllungen der Figuren. Die einzelnen
+                // Unterklassen müssen die render-Methode implementieren, die
+                // dann das Zeichen der Füllungen übernimmt.
+                render(g, pixelPerMeter);
+            }
             if (Game.isDebug())
             {
                 synchronized (this)
