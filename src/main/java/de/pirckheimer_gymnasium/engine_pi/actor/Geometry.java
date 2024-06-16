@@ -42,17 +42,13 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 public abstract class Geometry extends Actor
 {
     /**
-     * Die Farbe dieses Geometry-Objekts.
-     */
-    private Color color = colors.get("green");
-
-    /**
      * Konstruktor.
      */
     @API
     public Geometry(Supplier<FixtureData> fixtureSupplier)
     {
         super(fixtureSupplier);
+        color = colors.get("green");
     }
 
     /**

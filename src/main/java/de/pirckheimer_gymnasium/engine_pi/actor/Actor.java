@@ -23,6 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.getColor;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -71,6 +72,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
  * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.
@@ -104,6 +106,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Ist dies nicht der Fall, so wird die Zeichenroutine direkt übergangen.
      */
     private boolean visible = true;
+
+    /**
+     * Die Farbe der Figur. Nicht alle Figuren, wie zum Beispiel die
+     * {@link Image}-Figur, haben tatsächlich eine Farbe.
+     */
+    protected Color color;
 
     /**
      * Z-Index des Objekts, je höher, desto weiter im Vordergrund wird das
@@ -552,7 +560,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                         Fixture fixture = body.m_fixtureList;
                         while (fixture != null && fixture.m_shape != null)
                         {
-                            renderShape(fixture.m_shape, g, pixelPerMeter);
+                            renderShape(fixture.m_shape, g, pixelPerMeter,
+                                    this);
                             fixture = fixture.m_next;
                         }
                     }
@@ -585,7 +594,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,
-            double pixelPerMeter)
+            double pixelPerMeter, Actor actor)
     {
         if (shape == null)
         {
@@ -596,7 +605,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
         g.setColor(getColor("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        g.setColor(getColor("red"));
+        // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
+        // gewählt.
+        // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
+        g.setColor(actor.color != null ? ColorUtil.getComplementary(actor.color)
+                : getColor("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();
@@ -733,7 +746,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation ist
+     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
      * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet

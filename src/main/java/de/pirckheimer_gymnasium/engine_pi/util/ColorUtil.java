@@ -381,4 +381,22 @@ public final class ColorUtil
         return new Color(color.getRed(), color.getGreen(), color.getBlue(),
                 alpha);
     }
+
+    /**
+     * Berechnet die Komplementärfarbe.
+     *
+     * <p>
+     * Der Alphakanal der Ausgangsfarbe wird ignoriert.
+     * </p>
+     *
+     * @param color Die Ausgangsfarbe, von der die Komplementärfarbe berechnet
+     *              werden soll.
+     *
+     * @return Die Komplementärfarbe.
+     */
+    public static Color getComplementary(Color color)
+    {
+        return new Color(255 - color.getRed(), 255 - color.getGreen(),
+                255 - color.getBlue());
+    }
 }

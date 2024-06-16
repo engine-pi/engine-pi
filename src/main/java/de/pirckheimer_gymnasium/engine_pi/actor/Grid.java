@@ -126,7 +126,7 @@ public class Grid extends Actor
     }
 
     /**
-     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation ist
+     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
      * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
