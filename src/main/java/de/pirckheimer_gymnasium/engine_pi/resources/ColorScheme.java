@@ -1079,6 +1079,20 @@ public class ColorScheme
                 .setGreen(Color.GREEN);
     }
 
+    /**
+     * Gibt die zwölf Farben des Farbkreises von Itten in der richtigen
+     * Reihenfolge von Gelb ausgehend zurück.
+     *
+     * @return Die zwölf Farben des Farbkreises von Itten in der richtigen
+     *         Reihenfolge.
+     */
+    public Color[] getWheelColors()
+    {
+        return new Color[] { getYellow(), getGold(), getOrange(), getBrick(),
+                getRed(), getPink(), getPurple(), getIndigo(), getBlue(),
+                getCyan(), getGreen(), getLime() };
+    }
+
     public static void main(String[] args)
     {
         Game.start(1200, 400, new Scene()

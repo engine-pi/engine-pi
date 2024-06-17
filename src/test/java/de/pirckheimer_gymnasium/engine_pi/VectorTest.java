@@ -47,6 +47,7 @@ public class VectorTest
             Vector a = Vector.ofAngle(angle);
             assertEquals(a.getX(), x, 0.0001);
             assertEquals(a.getY(), y, 0.0001);
+            assertEquals(a.getLength(), 1, 0.0001);
         }
 
         @Test

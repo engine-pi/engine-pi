@@ -111,11 +111,16 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet anhand eines <b>Winkels</b> den entsprechenden Vektor.
+     * Berechnet anhand eines <b>Winkels</b>, der in Grad angegeben ist, den
+     * entsprechenden Vektor.
      *
-     * Der Vektor für 0 Grad ist [x = 1; y = 0] Der Vektor für 90 Grad ist [x =
-     * 0; y = 1] Der Vektor für 180 Grad ist [x = -1; y = 0] Der Vektor für 270
-     * Grad ist [x = 0; y = -1]
+     * <ul>
+     * <li>Der Vektor für 0 Grad ist [x = 1; y = 0]</li>
+     * <li>Der Vektor für 90 Grad ist [x = 0; y = 1]</li>
+     * <li>Der Vektor für 180 Grad ist [x = -1; y = 0]</li>
+     * <li>Der Vektor für 270 Grad ist [x = 0; y = -1]</li>
+     * <li>Der Vektor für 360 Grad ist [x = 1; y = 0]</li>
+     * </ul>
      *
      * @param angle Der Winkel in Grad.
      *
@@ -172,9 +177,11 @@ public final class Vector implements Cloneable
      *
      * @param divisor Hierdurch wird die Länge des Vektors auf der Zeichenebene
      *                geteilt.
+     *
      * @return Das Vektor-Objekt, das eine Bewegung in dieselbe Richtung
      *         beschreibt, allerdings in der Länge gekürzt um den angegebenen
      *         Divisor.
+     *
      * @throws java.lang.ArithmeticException Falls <code>divisor</code>
      *                                       <code>0</code> ist.
      * @see #multiply(double)
@@ -192,7 +199,7 @@ public final class Vector implements Cloneable
     /**
      * Gibt die Länge des Vektors aus.
      *
-     * @return Länge des Vektors.
+     * @return Die Länge des Vektors.
      */
     @API
     public double getLength()
@@ -301,7 +308,7 @@ public final class Vector implements Cloneable
     @API
     public Vector rotate(double angle)
     {
-        // Umrechnung des Winkels von Grad ins Bogenmaß
+        // Umrechnung des Winkels von Grad ins Bogenmaß.
         double rad = Math.toRadians(angle);
         return new Vector(Math.cos(rad) * x + Math.sin(rad) * y,
                 -Math.sin(rad) * x + Math.cos(rad) * y);
@@ -324,13 +331,18 @@ public final class Vector implements Cloneable
 
     /**
      * Multipliziert die effektiven Längen beider Anteile des Vektors
-     * (<code>x</code> und <code>y</code>) mit einem festen Faktor. <br>
+     * (<code>x</code> und <code>y</code>) mit einem festen Faktor.
+     *
+     * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
+     * </p>
      *
      * @param factor Der Faktor, mit dem die <code>x</code>- und
      *               <code>y</code>-Werte des Vektors multipliziert werden
-     * @return Der Vektor mit den multiplizierten Werten
+     *
+     * @return Der Vektor mit den multiplizierten Werten.
+     *
      * @see #divide(double)
      */
     @API
@@ -341,13 +353,18 @@ public final class Vector implements Cloneable
 
     /**
      * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
-     * festen Faktor. <br>
+     * festen Faktor.
+     *
+     * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
+     * </p>
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
-     *               wird
-     * @return Der Vektor mit den multiplizierten Werten
+     *               wird.
+     *
+     * @return Der Vektor mit den multiplizierten Werten.
+     *
      * @see #multiply(double)
      */
     @API
@@ -358,13 +375,18 @@ public final class Vector implements Cloneable
 
     /**
      * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
-     * festen Faktor. <br>
+     * festen Faktor.
+     *
+     * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
+     * </p>
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
-     *               wird
-     * @return Der Vektor mit den multiplizierten Werten
+     *               wird.
+     *
+     * @return Der Vektor mit den multiplizierten Werten.
+     *
      * @see #multiply(double)
      */
     @API
@@ -375,16 +397,18 @@ public final class Vector implements Cloneable
 
     /**
      * Berechnet das <b>Skalarprodukt</b> von diesem Vektor mit einem weiteren.
-     * Das Skalarprodukt für zweidimensionale Vektoren ist:
-     * <code>(a, b) o (c, d) = a * b + c * d</code>
+     *
+     * <b>Das Skalarprodukt für zweidimensionale Vektoren ist:
+     * <code>(a, b) o (c, d) = a * b + c * d</code></b>
      *
      * @param vector zweiter Vektor
+     *
      * @return Skalarprodukt dieser Vektoren mit dem Vektor <code>v</code>.
      */
     @API
     public double getScalarProduct(Vector vector)
     {
-        return this.x * vector.x + this.y * vector.y;
+        return x * vector.x + y * vector.y;
     }
 
     /**
@@ -473,10 +497,12 @@ public final class Vector implements Cloneable
 
     /**
      * Gibt die String-Repräsentation dieses Objektes aus.
+     *
      * <p>
      * Diese Methode sollte nur zu Debugging-Zwecken benutzt werden.
+     * </p>
      *
-     * @return String-Repräsentation dieses Vektors
+     * @return Die String-Repräsentation dieses Vektors.
      */
     @Override
     public String toString()
@@ -501,6 +527,7 @@ public final class Vector implements Cloneable
      * Berechnet den Winkel zwischen diesem Vektor und einem weiteren. Hierzu
      * wird diese Formel verwendet: <br>
      * <code>cos t = [a o b] / [|a| * |b|]</code><br>
+     *
      * <ul>
      * <li>cos ist der Kosinus</li>
      * <li>t ist der gesuchte Winkel</li>
