@@ -59,8 +59,8 @@ public class BodyHandler implements PhysicsHandler
     private final WorldHandler worldHandler;
 
     /**
-     * Der Body als die physische Repräsentation des analogen
-     * {@link Actor}-Objekts in der Physics-Engine.
+     * Der starre Körper (rigid body) als die physische Repräsentation des
+     * analogen {@link Actor}-Objekts in der Physics-Engine.
      */
     private final Body body;
 

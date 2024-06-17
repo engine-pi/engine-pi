@@ -2118,7 +2118,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Gibt die Position dieses {@link Actor}-Objekts aus.
      *
-     * @return die aktuelle Position dieses {@link Actor}-Objekts.
+     * @return Die aktuelle Position dieses {@link Actor}-Objekts.
      */
     @API
     public final Vector getPosition()
@@ -2127,7 +2127,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Rotiert das Objekt.
+     * Rotiert das Objekt um den angegeben Winkel.
+     *
+     * <p>
+     * Positive Werte drehen die Figur gegen den Uhrzeigersinn, negative im
+     * Uhrzeigersinn.
+     * </p>
      *
      * @param degree Der Winkel (in <b>Grad</b>), um den das Objekt rotiert
      *               werden soll.
@@ -2140,6 +2145,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *         aneinandergekettete Setter festgelegt werden können, z. B.
      *         {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see #setRotation(double)
      */
     @API
     public final Actor rotateBy(double degree)
@@ -2163,7 +2170,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt den Rotationswert des Objekts.
+     * Setzt den Rotationswert des Objekts. Nach Erzeugung der Figur ist der
+     * Rotationswert 0. {@code setRotation(90)} dreht die Figur beispiels um 90
+     * Grad <b>gegen</b> den Uhrzeigersinn, {@code setRotation(-90)} um 90 Grad
+     * <b>im</b> Uhrzeigersinn.
      *
      * @param degree Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
      *               seiner Ausgangsposition bei Initialisierung</b> rotiert
