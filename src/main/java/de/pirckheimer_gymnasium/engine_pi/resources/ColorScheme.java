@@ -1074,9 +1074,17 @@ public class ColorScheme
     public static ColorScheme getJavaScheme()
     {
         return new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)
-                .setPink(Color.PINK).setGray(Color.GRAY).setCyan(Color.CYAN)
-                .setOrange(Color.ORANGE).setPurple(Color.MAGENTA)
-                .setGreen(Color.GREEN);
+                // Sekundärfarben
+                // Orange passt nicht in das Schema, viel zu hell.
+                // .setOrange(Color.ORANGE)
+                .setGreen(Color.GREEN)
+                // Tertiärfarben
+                .setCyan(Color.CYAN)
+                // Pink passt nicht in das Schema.
+                // .setPink(Color.PINK)
+                .setPink(Color.MAGENTA)
+                // Andere
+                .setGray(Color.GRAY);
     }
 
     /**
