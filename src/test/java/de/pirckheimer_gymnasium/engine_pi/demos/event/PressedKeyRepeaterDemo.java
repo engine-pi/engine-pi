@@ -9,15 +9,15 @@ import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 
 public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 {
-    PressedKeyRepeater keyRepeater;
+    PressedKeyRepeater repeater;
 
     public PressedKeyRepeaterDemo()
     {
-        keyRepeater = new PressedKeyRepeater();
-        keyRepeater.addTask(KeyEvent.VK_RIGHT, () -> {
+        repeater = new PressedKeyRepeater(0.5, 1);
+        repeater.addListener(KeyEvent.VK_RIGHT, () -> {
             System.out.println("right");
         });
-        keyRepeater.addTask(KeyEvent.VK_LEFT,
+        repeater.addListener(KeyEvent.VK_LEFT,
                 () -> System.out.println("left initial"),
                 () -> System.out.println("left"),
                 () -> System.out.println("left final"));
@@ -28,7 +28,7 @@ public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
             System.out.println("stop");
-            keyRepeater.stop();
+            repeater.stop();
         }
     }
 

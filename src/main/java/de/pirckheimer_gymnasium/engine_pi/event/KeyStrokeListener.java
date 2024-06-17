@@ -40,24 +40,30 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 public interface KeyStrokeListener
 {
     /**
-     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste
-     * gedrückt wird. Die Methode wird erst wieder aufgerufen, wenn die Key
-     * losgelassen und erneut gedrückt wurde.
+     * Wird bei einem angemeldeten Beobachter aufgerufen, sobald eine Taste
+     * gedrückt wird. Die Methode wird erst dann wieder aufgerufen, wenn die
+     * Taste losgelassen und erneut gedrückt wurde.
      *
-     * @param event Das KeyEvent von AWT.
+     * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
+     *              welche Taste gedrückt würde. Die Tastennummer kann zum
+     *              Beispiel über die Methode {@code event.getKeyCode()}
+     *              abgefragt werden.
      */
     @API
     void onKeyDown(KeyEvent event);
 
     /**
-     * Wird bei einem angemeldeten Listener aufgerufen, sobald eine Taste
+     * Wird bei einem angemeldeten Beobachter aufgerufen, sobald eine Taste
      * losgelassen wurde, die vorher gedrückt war.
      *
-     * @param event Das KeyEvent von AWT.
+     * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
+     *              welche Taste gedrückt würde. Die Tastennummer kann zum
+     *              Beispiel über die Methode {@code event.getKeyCode()}
+     *              abgefragt werden.
      */
     @API
     default void onKeyUp(KeyEvent event)
     {
-        // default empty
+        // absichtlich leer.
     }
 }
