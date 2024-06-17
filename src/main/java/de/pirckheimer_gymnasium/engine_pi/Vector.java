@@ -294,15 +294,15 @@ public final class Vector implements Cloneable
     /**
      * Berechnet eine rotierte Version.
      *
-     * @param degree Rotation in Grad
+     * @param angle Der Winkel der Rotation in Grad.
      * @return Ein neues Vektor-Objekt, das entsprechend der Gradzahl rotiert
      *         wurde.
      */
     @API
-    public Vector rotate(double degree)
+    public Vector rotate(double angle)
     {
         // Umrechnung des Winkels von Grad ins Bogenmaß
-        double rad = Math.toRadians(degree);
+        double rad = Math.toRadians(angle);
         return new Vector(Math.cos(rad) * x + Math.sin(rad) * y,
                 -Math.sin(rad) * x + Math.cos(rad) * y);
     }
@@ -312,6 +312,7 @@ public final class Vector implements Cloneable
      * Punkt verschieben würde, den ein weiterer Vektor beschreibt.
      *
      * @param vector Ein weiterer Vektor.
+     *
      * @return Der Vektor, der <code>(this.x|this.y)</code> verschieben würde zu
      *         <code>(v.x|v.y)</code>.
      */
