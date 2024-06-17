@@ -113,12 +113,17 @@ public final class Vector implements Cloneable
     /**
      * Berechnet anhand eines <b>Winkels</b> den entsprechenden Vektor.
      *
+     * Der Vektor für 0 Grad ist [x = 1; y = 0] Der Vektor für 90 Grad ist [x =
+     * 0; y = 1] Der Vektor für 180 Grad ist [x = -1; y = 0] Der Vektor für 270
+     * Grad ist [x = 0; y = -1]
+     *
      * @param angle Der Winkel in Grad.
      *
      * @return Der Vektor, der sich aus einem Winkel berechnet.
      */
     public static Vector ofAngle(double angle)
     {
+        // Umrechnung des Winkels von Grad ins Bogenmaß
         double rad = Math.toRadians(angle);
         return new Vector(Math.cos(rad), Math.sin(rad));
     }
@@ -296,11 +301,10 @@ public final class Vector implements Cloneable
     @API
     public Vector rotate(double degree)
     {
-        double angle = Math.toRadians(degree);
-        return new Vector( //
-                Math.cos(angle) * x + Math.sin(angle) * y, //
-                -Math.sin(angle) * x + Math.cos(angle) * y //
-        );
+        // Umrechnung des Winkels von Grad ins Bogenmaß
+        double rad = Math.toRadians(degree);
+        return new Vector(Math.cos(rad) * x + Math.sin(rad) * y,
+                -Math.sin(rad) * x + Math.cos(rad) * y);
     }
 
     /**

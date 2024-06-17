@@ -45,8 +45,8 @@ public class VectorTest
         private void assertOfAngle(double angle, double x, double y)
         {
             Vector a = Vector.ofAngle(angle);
-            assertEquals(a.getX(), x, "x");
-            assertEquals(a.getY(), y, "y");
+            assertEquals(a.getX(), x, 0.0001);
+            assertEquals(a.getY(), y, 0.0001);
         }
 
         @Test
@@ -58,19 +58,25 @@ public class VectorTest
         @Test
         public void test90()
         {
-            assertOfAngle(90, 6.123233995736766E-17, 1.0);
+            assertOfAngle(90, 0.0, 1.0);
         }
 
         @Test
         public void test180()
         {
-            assertOfAngle(180, -1.0, 1.2246467991473532E-16);
+            assertOfAngle(180, -1.0, 0.0);
         }
 
         @Test
         public void test270()
         {
-            assertOfAngle(270, -1.8369701987210297E-16, -1.0);
+            assertOfAngle(270, 0.0, -1.0);
+        }
+
+        @Test
+        public void test360()
+        {
+            assertOfAngle(360, 1.0, 0.0);
         }
     }
 
