@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.17.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.17.0) - 2024-06-17
+
+<small>[Compare with v0.16.0](https://github.com/engine-pi/engine-pi/compare/v0.16.0...v0.17.0)</small>
+
+### Added
+
+- Calculate the average color of images to draw a shape in complementary colors ([618284b](https://github.com/engine-pi/engine-pi/commit/618284b91d08b9e3b071ade3763d0a7afb43d9be) by Josef Friedrich).
+- Alt+A: Add a default shortcut to hide or show the actors fill color or image ([1859ae7](https://github.com/engine-pi/engine-pi/commit/1859ae7d6b7d45d2b845873619ded7cb08910c8a) by Josef Friedrich).
+- Add a info box to the debug view to show the current gravity vector ([5a1807a](https://github.com/engine-pi/engine-pi/commit/5a1807af662bf08bdef7fd5078289039ebff66f5) by Josef Friedrich).
+
 ## [v0.16.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.16.0) - 2024-06-13
 
 <small>[Compare with v0.15.0](https://github.com/engine-pi/engine-pi/compare/v0.15.0...v0.16.0)</small>
