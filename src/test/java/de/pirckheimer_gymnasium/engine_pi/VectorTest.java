@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class VectorTest
@@ -36,6 +37,55 @@ public class VectorTest
         Vector vector = new Vector(p1, p2);
         assertEquals(vector.getX(), 20, 0.0001);
         assertEquals(vector.getY(), 10, 0.0001);
+    }
+
+    @Nested
+    class OfAngleTest
+    {
+        private void assertOfAngle(double angle, double x, double y)
+        {
+            Vector a = Vector.ofAngle(angle);
+            assertEquals(a.getX(), x, "x");
+            assertEquals(a.getY(), y, "y");
+        }
+
+        @Test
+        public void test0()
+        {
+            assertOfAngle(0, 1.0, 0.0);
+        }
+
+        @Test
+        public void test90()
+        {
+            assertOfAngle(90, 6.123233995736766E-17, 1.0);
+        }
+
+        @Test
+        public void test180()
+        {
+            assertOfAngle(180, -1.0, 1.2246467991473532E-16);
+        }
+
+        @Test
+        public void test270()
+        {
+            assertOfAngle(270, -1.8369701987210297E-16, -1.0);
+        }
+    }
+
+    @Test
+    public void testGetX()
+    {
+        double x = .013;
+        assertEquals(new Vector(x, 0).getX(), x, 0.00001);
+    }
+
+    @Test
+    public void testGetY()
+    {
+        double y = .013;
+        assertEquals(new Vector(0, y).getY(), y, 0.00001);
     }
 
     @Test
@@ -130,20 +180,6 @@ public class VectorTest
         assertFalse(new Vector(.5, .5).isIntegral());
         assertFalse(new Vector(.5, 1).isIntegral());
         assertFalse(new Vector(1, .5).isIntegral());
-    }
-
-    @Test
-    public void testGetX()
-    {
-        double x = .013;
-        assertEquals(new Vector(x, 0).getX(), x, 0.00001);
-    }
-
-    @Test
-    public void testGetY()
-    {
-        double y = .013;
-        assertEquals(new Vector(0, y).getY(), y, 0.00001);
     }
 
     @Test

@@ -26,8 +26,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Beschreibt einen zweidimensionalen Vektor auf der Zeichenebene. Diese Klasse
- * wird für alle Positions- und Richtungsangaben genutzt.
+ * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese
+ * Klasse wird für alle Positions- und Richtungsangaben genutzt.
  *
  * @author Michael Andonie
  */
@@ -97,11 +97,8 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Konstruktor.
-     *
-     * <p>
-     * Der Vektor wird erzeugt als die nötige Bewegung von einem Punkt zu einem
-     * zweiten.
+     * Erzeugt einen Vektor als Bewegung von einem <b>Ausgangspunkt</b> zu einem
+     * <b>Zielpunkt</b>.
      *
      * @param start Der Ausgangspunkt.
      * @param end   Der Zielpunkt.
@@ -114,7 +111,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet anhand eines Winkels den entsprechenden Vektor.
+     * Berechnet anhand eines <b>Winkels</b> den entsprechenden Vektor.
      *
      * @param angle Der Winkel in Grad.
      *
