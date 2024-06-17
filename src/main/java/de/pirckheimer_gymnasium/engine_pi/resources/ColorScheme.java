@@ -36,7 +36,9 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * jede Farbe auch explizit gesetzt werden. Dadurch enfällt der Mischvorgang.
  * </p>
  *
+ * <p>
  * Die zwölf Farben nach dem Farbkreis von Itten:
+ * </p>
  *
  * <ol>
  * <li>{@code yellow} (<b>Gelb</b>)</li>
@@ -53,17 +55,20 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code lime} (<b>Limettengrün</b>)</li>
  * </ol>
  *
+ * <p>
  * Diese Farben sind ebenfalls im Farbschema enthalten (gehören aber nicht zum
  * Farbkreis von Itten)
+ * </p>
  *
  * <ul>
  * <li>{@code brown} (<b>Braun</b>)</li>
  * <li>{@code white} (<b>Weiß</b>)</li>
  * <li>{@code gray} (<b>Grau</b>)</li>
- * <li>{@code black} (<b>Black</b>)</li>
+ * <li>{@code black} (<b>Schwarz</b>)</li>
  * </ul>
  *
- * Anderes Farbschema: https://commons.wikimedia.org/wiki/File:Color_star-en_(tertiary_names).svg
+ * Anderes Farbschema:
+ * https://commons.wikimedia.org/wiki/File:Color_star-en_(tertiary_names).svg
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colorScheme
  */

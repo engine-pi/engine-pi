@@ -55,6 +55,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 
 /**
  * Mithilfe von Szenen können verschiedene Ansichten eines Spiels erstellt
@@ -549,7 +550,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Setzt die Hintergrundfarbe als <b>Zeichenkette</b>.
      *
-     * @param color Die Hintergrundfarbe als <b>Zeichenkette</b>.
+     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
+     *              B. {@code #ff0000}).
      *
      * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
      */

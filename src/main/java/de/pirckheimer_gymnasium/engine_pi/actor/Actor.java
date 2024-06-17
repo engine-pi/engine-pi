@@ -72,6 +72,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.NullHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData;
 import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
@@ -380,7 +381,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
      * <b>Zeichkette</b> angegeben werden kann.
      *
-     * @param color Die neue Farbe als Zeichenkette.
+     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
+     *              B. {@code #ff0000}).
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch

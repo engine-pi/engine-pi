@@ -61,13 +61,16 @@ public class DefaultControl implements DefaultListener
         {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_D -> {
+            case KeyEvent.VK_D ->
+            {
                 Game.toggleDebug();
             }
-            case KeyEvent.VK_A -> {
+            case KeyEvent.VK_A ->
+            {
                 Game.toggleRenderActors();
             }
-            case KeyEvent.VK_S -> {
+            case KeyEvent.VK_S ->
+            {
                 Game.takeScreenshot();
             }
             }

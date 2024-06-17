@@ -11,6 +11,36 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link Color}.
  *
  * <p>
+ * Die zwölf Farben nach dem Farbkreis von Itten:
+ * </p>
+ *
+ * <ol>
+ * <li>{@code yellow}: Gelb</li>
+ * <li>{@code gold}: Golden, Gelb Orange, Orange Gelb, Dunkelgelb</li>
+ * <li>{@code orange}: Orange</li>
+ * <li>{@code brick}: brick red, Ziegelrot, Orange Rot, Rot Orange, Hellrot</li>
+ * <li>{@code red}: Rot</li>
+ * <li>{@code pink}: Rosa</li>
+ * <li>{@code purple}: violet, Violett, Lila</li>
+ * <li>{@code indigo}: Violett Blau, Blau Violett</li>
+ * <li>{@code blue}: Blau</li>
+ * <li>{@code cyan}: Türkis, Blau Grün, Grün Blau</li>
+ * <li>{@code green}: Grün</li>
+ * <li>{@code lime}: Limettengrün, lime green, Limetten Grün, Limette, Gelb
+ * Grün, Grün Gelb, Hellgrün</li>
+ * </ol>
+ *
+ * Diese Farben sind ebenfalls im Farbenspeicher enthalten (gehören aber nicht
+ * zum Farbkreis von Itten):
+ *
+ * <ul>
+ * <li>{@code brown}: Braun</li>
+ * <li>{@code white}: Weiß</li>
+ * <li>{@code gray}: grey, Grau</li>
+ * <li>{@code black}: Schwarz</li>
+ * </ul>
+ *
+ * <p>
  * Die Farben werden in einer {@link Map} unter einem <b>Farbnamen</b> abgelegt.
  * Neben dem Hauptfarbnamen können weitere Farbnamen als <b>Aliasse</b>
  * gespeichert.
@@ -19,7 +49,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <p>
  * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
  * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
- * sowohl normal als auch umschrieben (ae, ue) werden.
+ * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden.
  * </p>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colors
@@ -45,7 +75,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe unter einem Namen hinzu.
+     * Fügt dem Farbenspeicher eine <b>Farbe</b> unter einem <b>Namen</b> hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe.
@@ -131,18 +161,19 @@ public class ColorContainer implements Container<Color>
         // Primärfarbe
         add("yellow", schema.getYellow(), "Gelb");
         // Tertiärfarbe
-        add("gold", schema.getGold(), "Golden", "Gelb Orange", "Orange Gelb");
+        add("gold", schema.getGold(), "Golden", "Gelb Orange", "Orange Gelb",
+                "Dunkelgelb");
         // Sekundärfarbe
         add("orange", schema.getOrange());
         // Tertiärfarbe
         add("brick", schema.getBrick(), "brick red", "Ziegelrot", "Orange Rot",
-                "Rot Orange");
+                "Rot Orange", "Hellrot");
         // Primärfarbe
         add("red", schema.getRed(), "Rot");
         // Tertiärfarbe
         add("pink", schema.getPink(), "Rosa");
         // Sekundärfarbe
-        add("purple", schema.getPurple(), "Violett");
+        add("purple", schema.getPurple(), "Violet", "Violett", "Lila");
         // Tertiärfarbe
         add("indigo", schema.getIndigo(), "Violett Blau", "Blau Violett");
         // Primärfarbe
@@ -153,11 +184,11 @@ public class ColorContainer implements Container<Color>
         add("green", schema.getGreen(), "Grün");
         // Tertiärfarbe
         add("lime", schema.getLime(), "lime green", "Limetten Grün", "Limette",
-                "Gelb Grün", "Grün Gelb");
+                "Gelb Grün", "Grün Gelb", "Hellgrün");
         // andere Zusammensetzung, nicht nach Itten.
         add("brown", schema.getBrown(), "Braun");
         add("white", schema.getWhite(), "Weiß");
-        add("gray", schema.getGray(), "Grau");
+        add("gray", schema.getGray(), "grey", "Grau");
         add("black", schema.getBlack(), "Schwarz");
     }
 
@@ -189,10 +220,14 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name Der Farbname oder ein Farbalias, eine Farbe in hexadezimaler
-     *             Codierung.
+     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *             Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
+     *             B. {@code #ff0000}).
      *
      * @return Eine vordefinierte Farbe.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setColor(String)
+     * @see de.pirckheimer_gymnasium.engine_pi.Scene#setBackgroundColor(String)
      */
     public Color get(String name)
     {
@@ -227,8 +262,9 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name  Der Farbname oder ein Farbalias, eine Farbe in hexadezimaler
-     *              Codierung.
+     * @param name  Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
+     *              B. {@code #ff0000}).
      * @param alpha Der Alphakanal als Ganzzahl von 0 - 255.
      *
      * @return Eine vordefinierte Farbe.
