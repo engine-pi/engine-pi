@@ -192,7 +192,7 @@ public final class Vector implements Cloneable
     @API
     public double getLength()
     {
-        return (double) Math.sqrt(x * x + y * y);
+        return Math.sqrt(x * x + y * y);
     }
 
     /**

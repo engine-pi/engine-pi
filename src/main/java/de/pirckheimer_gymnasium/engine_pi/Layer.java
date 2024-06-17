@@ -507,7 +507,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @return Die Anzal an Pixel, die ein Meter misst.
+     * @return Die Anzahl an Pixel, die ein Meter misst.
      */
     @API
     public double calculatePixelPerMeter()

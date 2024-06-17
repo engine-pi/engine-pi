@@ -93,9 +93,9 @@ public final class Game
     private static boolean debug;
 
     /**
-     * Gibt an, ob die Figuren gezeichnet werden sollen. Ist diese Attribut auf
+     * Gibt an, ob die Figuren gezeichnet werden sollen. Ist dieses Attribut auf
      * {@code false} gesetzt, werden keine Figuren gezeichnet. Diese Einstellung
-     * macht nur im aktivieren Debug-Modus Sinn, denn dann werden die Umrisse
+     * macht nur im aktivierten Debug-Modus Sinn, denn dann werden die Umrisse
      * gezeichnet, jedoch nicht die Füllung.
      */
     private static boolean renderActors = true;
