@@ -59,6 +59,9 @@ https://engine-alpha.org/wiki/v4.x/Hello_World
 Das grundlegendste Hello World sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
 
+
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41](https://github.com/engine-pi/engine-pi/blob/123719a158c4d268875630251b67fefe448a5b66/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41)
+
 ```java
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -83,9 +86,9 @@ public class HelloWorldVersion1 extends Scene
 
 <!-- #### Scene -->
 
-Die Hello World-Klasse leitet sich aus der Klasse `Scene` der Engine ab. Szenen
-in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre eigenen
-grafischen (und sonstige) Objekte; Szenes werden unabhängig voneinander
+Die `HelloWorldVersion1`-Klasse leitet sich aus der Klasse `Scene` der Engine
+ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre
+eigenen grafischen (und sonstige) Objekte; Szenes werden unabhängig voneinander
 berechnet. Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
 eine Szene, in der „Hello World“ dargestellt werden soll:
 
@@ -130,10 +133,9 @@ Game.setDebug(true);
 ```
 
 Die Klasse `Game` enthält neben Debug-Modus weitere Features, die die
-Spielumgebung global betreffen. Du erfährst mehr dazu im Tutorial zur
-Spielsteuerung. Das Spiel starten
+Spielumgebung global betreffen.
 
-Die Klasse ea.Game kontrolliert auch den Spielstart. Dazu muss lediglich die
+Die Klasse `Game` kontrolliert auch den Spielstart. Dazu muss lediglich die
 (zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem
 Fall 400 px Breite und 300 px Höhe):
 
@@ -222,7 +224,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
-https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60)
 
 ```java
 public class KeyStrokeCounterDemo extends Scene
@@ -257,7 +259,7 @@ public class KeyStrokeCounterDemo extends Scene
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll,
 implementiert das Interface
-[de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html).
+[KeyStrokeListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html).
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
@@ -289,7 +291,7 @@ wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyEventDemo.png)
 
-https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69)
 
 ```java
 import java.awt.event.KeyEvent;

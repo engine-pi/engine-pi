@@ -54,8 +54,7 @@ public final class Resources
 
     public static SoundContainer sounds = new SoundContainer();
 
-    // public static ColorScheme colorScheme = ColorScheme.getGnomeScheme();
-    public static ColorScheme colorScheme = ColorScheme.getJavaScheme();
+    public static ColorScheme colorScheme = ColorScheme.getGnomeScheme();
 
     public static ColorContainer colors = new ColorContainer();
     static
