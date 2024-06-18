@@ -59,7 +59,6 @@ https://engine-alpha.org/wiki/v4.x/Hello_World
 Das grundlegendste Hello World sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
 
-
 Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41](https://github.com/engine-pi/engine-pi/blob/123719a158c4d268875630251b67fefe448a5b66/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41)
 
 ```java
@@ -145,10 +144,18 @@ Game.start(400, 300, new HelloWorldVersion1());
 
 <!-- ### Schritt 2: Geometrie und Farbe -->
 
-Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mit
-geometrischen Figuren und Farbe. Jetzt mit mehr Farbe und geometrischen Figuren
+Beim nächste Codebeispiel handelt es sich um eine Erweiterung der Version 1 um
+geometrischen Figuren und Farbe.
+
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
 
 ```java
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+
 public class HelloWorldVersion2 extends Scene
 {
     public HelloWorldVersion2()
@@ -156,13 +163,15 @@ public class HelloWorldVersion2 extends Scene
         Text helloworld = new Text("Hello, World!", 2);
         helloworld.setCenter(0, 1);
         add(helloworld);
-        helloworld.setColor(Color.BLACK);
+        helloworld.setColor("black");
+        // Ein grünes Rechteck als Hintergrund
         Rectangle background = new Rectangle(12, 3);
-        background.setColor(Color.PINK);
+        background.setColor("green");
         background.setCenter(0, 1);
         background.setLayerPosition(-1);
-        Circle circle = new Circle(5);
-        circle.setColor(Color.GRAY);
+        // Ein blauer Kreis
+        Circle circle = new Circle(8);
+        circle.setColor("blue");
         circle.setCenter(0, 1);
         circle.setLayerPosition(-2);
         add(background, circle);
@@ -179,34 +188,35 @@ public class HelloWorldVersion2 extends Scene
 <!-- #### Geometrische Figuren -->
 
 Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und
-Kreise. Der Code erstellt ein Rechteck mit Breite 10 und Höhe 3 sowie einen
-Kreis mit Durchmesser 5.
+Kreise. Der Code erstellt ein Rechteck mit Breite 12 und Höhe 3 sowie einen
+Kreis mit Durchmesser 8.
 
 ```java
-Rectangle background = new Rectangle(10, 3);
-Circle circle = new Circle(5);
+Rectangle background = new Rectangle(12, 3);
+Circle circle = new Circle(8);
 ```
 
 <!-- #### Farbe -->
 
 Einige Objekte in der Engine können beliebig gefärbt werden. Text und
-geometrische Figuren gehören dazu. Mit setColor kann die Farbe als AWT-Color
-Objekt übergeben werden:
+geometrische Figuren gehören dazu. Mit `setColor(Color)` kann die Farbe als
+AWT-Color-Objekt übergeben werden oder einfacher als
+[Zeichenkette](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorContainer.html):
 
 ```java
-background.setColor(Color.PINK);
-circle.setColor(Color.GRAY);
+background.setColor("green");
+circle.setColor("blue");
 ```
 
 <!-- #### Layer Position -->
 
-So würde das Bild aussehen, wenn die Layer-Position nicht explizit gesetzt
+So würde das Bild aussehen, wenn die Ebenen-Position nicht explizit gesetzt
 werden würde.
 
 Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird.
 Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen,
-kann die Layer-Position explizit angegeben werden: Je höher die Layer-Position,
-desto weiter im Vordergrund ist das Objekt.
+kann die Ebenen-Position explizit angegeben werden: Je höher die
+Ebenen-Position, desto weiter im Vordergrund ist das Objekt.
 
 ```java
 background.setLayerPosition(-1);
@@ -352,7 +362,7 @@ zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
 
-https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40)
 
 ```java
 public class KeyEventDisplayDemo extends Scene
@@ -383,7 +393,6 @@ public class KeyEventDisplayDemo extends Scene
 }
 ```
 
-
 ### Mauseingaben erstellen
 
 https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
@@ -396,7 +405,7 @@ malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
 
-https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54)
 
 ```java
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
@@ -432,11 +441,11 @@ Bei einem Mausklick (egal ob linke, rechte, oder sonstige Maustaste) wird ein
 Kreis an der Position des Klicks erstellt:
 
 ```java
-    @Override
-    public void onMouseDown(Vector position, MouseButton mouseButton)
-    {
-        paintCircleAt(position.getX(), position.getY(), 1);
-    }
+@Override
+public void onMouseDown(Vector position, MouseButton mouseButton)
+{
+    paintCircleAt(position.getX(), position.getY(), 1);
+}
 ```
 
 <!-- #### `Vector` -->
@@ -1125,7 +1134,7 @@ Interface `MouseClickListener` implementiert:
 
 ### Schwerkraft
 
-https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java)
 
 ```java
 public class GravityDemo extends Scene implements KeyStrokeListener
@@ -1173,7 +1182,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
-[Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
 public class ElasticityDemo extends Scene
@@ -1218,7 +1227,7 @@ public class ElasticityDemo extends Scene
 
 ### Dichte
 
-https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java)
 
 ```java
 public class DensityDemo extends Scene implements KeyStrokeListener
@@ -1487,7 +1496,7 @@ prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
 ![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
 
-https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
 
 ```java
 @Override
@@ -1551,7 +1560,7 @@ Methode `onFrameUpdate(double delta)` erweitert:
 ![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
 
-https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
 ```java
 //In: onFrameUpdate(double delta)
@@ -1588,7 +1597,7 @@ Zuständen nur vom Betrag ihrer Geschindigkeit ab:
 Um die Begriffe „langsam“ und „schnell“ greifbar zu machen, ist einen Grenzwert
 nötig. Dazu definieren wir Konstanten in der Figur:
 
-https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39)
 
 ```java
 private static final double RUNNING_THRESHOLD = 10;
@@ -1607,7 +1616,7 @@ die neue `onFrameUpdate(...)`:
 ![Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
 
-https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
 
 ```java
 @Override
@@ -1758,7 +1767,7 @@ sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
 `Platform` halt.
 
-[Quellcode des fertigen Spiels](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
@@ -1975,10 +1984,56 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Farben
 
-https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java
+In der ersten Reihe sind mehrere Bilder zu sehen, in der
+Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
+Reihe die Komplementärfarben der entsprechenden Bilder.
 
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_derived_complementary-color.png)
+
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java)
+
+```java
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+
+public class ImageAverageColorDemo extends Scene
+{
+    public ImageAverageColorDemo()
+    {
+        getCamera().setMeter(90);
+        double x = -4;
+        for (String filepath : new String[] { "car/background-color-grass.png",
+                "car/wheel-back.png", "car/truck-240px.png",
+                "dude/background/snow.png", "dude/box/obj_box001.png",
+                "dude/moon.png" })
+        {
+            createImageWithAverageColor(filepath, x);
+            x = x + 1.2;
+        }
+    }
+
+    private void createImageWithAverageColor(String filepath, double x)
+    {
+        var image = createImage(filepath, 1, 1).setPosition(x, 0);
+        createRectangle(1.0, 1.0).setPosition(x, -1.2)
+                .setColor(image.getColor());
+        createRectangle(1.0, 0.5).setPosition(x, -1.9)
+                .setColor(image.getComplementaryColor());
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new ImageAverageColorDemo());
+    }
+}
+```
+
+`ALT + d` aktiviert den Debug-Modus: Die Bilder werden von Umrissen in den Komplementärfarben umrahmt.
+
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_shapes.png)
+
+`Alt + a` blendet die Figurenfüllungen aus. Es sind nur noch die Umrisse zu sehen.
+
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Shapes-only.png)
 
 ## Deutsche Übersetzungen von englischen Klassennamen
