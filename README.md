@@ -54,7 +54,7 @@ y-Wert der Koordinate hat.
 
 https://engine-alpha.org/wiki/v4.x/Hello_World
 
-### Schritt 1: Grundlegender Aufbau
+<!-- ### Schritt 1: Grundlegender Aufbau -->
 
 Das grundlegendste Hello World sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
@@ -81,7 +81,7 @@ public class HelloWorldVersion1 extends Scene
 }
 ```
 
-#### Scene
+<!-- #### Scene -->
 
 Die Hello World-Klasse leitet sich aus der Klasse `Scene` der Engine ab. Szenen
 in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre eigenen
@@ -93,7 +93,7 @@ eine Szene, in der „Hello World“ dargestellt werden soll:
 public class HelloWorldVersion1 extends Scene
 ```
 
-#### Text
+<!-- #### Text -->
 
 Wir wollen den Text „Hello, World!“ darstellen. Die Klasse `Text` ist dafür
 zuständig. Ein Text mit Inhalt „Hello, World!“ und Höhe 2 wird erstellt:
@@ -118,7 +118,7 @@ Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder
 Szene werden nur die Objekte gerendert, die auch an der Szene angemeldet
 sind.
 
-#### Debug Mode
+<!-- #### Debug Mode -->
 
 Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.
 
@@ -141,7 +141,7 @@ Fall 400 px Breite und 300 px Höhe):
 Game.start(400, 300, new HelloWorldVersion1());
 ```
 
-### Schritt 2: Geometrie und Farbe
+<!-- ### Schritt 2: Geometrie und Farbe -->
 
 Im nächsten Schritt hübschen wir die Szene ein wenig auf. Dazu arbeiten wir mit
 geometrischen Figuren und Farbe. Jetzt mit mehr Farbe und geometrischen Figuren
@@ -174,7 +174,7 @@ public class HelloWorldVersion2 extends Scene
 }
 ```
 
-#### Geometrische Figuren
+<!-- #### Geometrische Figuren -->
 
 Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und
 Kreise. Der Code erstellt ein Rechteck mit Breite 10 und Höhe 3 sowie einen
@@ -185,7 +185,7 @@ Rectangle background = new Rectangle(10, 3);
 Circle circle = new Circle(5);
 ```
 
-#### Farbe
+<!-- #### Farbe -->
 
 Einige Objekte in der Engine können beliebig gefärbt werden. Text und
 geometrische Figuren gehören dazu. Mit setColor kann die Farbe als AWT-Color
@@ -196,7 +196,7 @@ background.setColor(Color.PINK);
 circle.setColor(Color.GRAY);
 ```
 
-#### Layer Position
+<!-- #### Layer Position -->
 
 So würde das Bild aussehen, wenn die Layer-Position nicht explizit gesetzt
 werden würde.
@@ -402,7 +402,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 }
 ```
 
-#### Schnittstelle `MouseClickListener`
+<!-- #### Schnittstelle `MouseClickListener` -->
 
 Das Interface
 [MouseClickListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/MouseClickListener.html)
@@ -420,7 +420,7 @@ Kreis an der Position des Klicks erstellt:
     }
 ```
 
-#### `Vector`
+<!-- #### `Vector` -->
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
@@ -460,7 +460,7 @@ neue Kürzel gesetzt werden.
 
 https://engine-alpha.org/wiki/v4.x/Game_Loop
 
-### How-To Engine Code: Der Game Loop
+<!-- ### How-To Engine Code: Der Game Loop -->
 
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
@@ -478,7 +478,7 @@ weiter.
 Alle Spiel-Logik ist also in den Listener-Interfaces geschrieben. Guter
 Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 
-### Snake ohne Körper
+<!-- ### Snake ohne Körper -->
 
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
@@ -589,7 +589,7 @@ public class SnakeMinimal extends Scene
 
 ```
 
-### Snake: Frame-Weise Bewegung
+<!-- ### Snake: Frame-Weise Bewegung -->
 
 Die Snake ist der spielbare Charakter. Sie soll sich jeden Frame in eine der
 vier Himmelsrichtungen bewegen.
@@ -613,7 +613,7 @@ public void onFrameUpdate(double timeInS)
 }
 ```
 
-### Bewegungsgeschwindigkeit festlegen
+<!-- ### Bewegungsgeschwindigkeit festlegen -->
 
 Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
 welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
@@ -644,7 +644,7 @@ public void onKeyDown(KeyEvent keyEvent)
 }
 ```
 
-### Auf Kollisionen reagieren: Goodies
+<!-- ### Auf Kollisionen reagieren: Goodies -->
 
 Die Schlange bewegt sich. Als nächstes braucht sie ein Ziel, auf das sie sich
 zubewegt. Hierzu schreiben wir eine Klasse für Goodies.
@@ -686,7 +686,7 @@ public void placeRandomGoodie()
 }
 ```
 
-### Anregung zum Experimentieren
+<!-- ### Anregung zum Experimentieren -->
 
 ![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Advanced.gif)
 
@@ -724,7 +724,7 @@ es die Methode `Game.transitionToScene(Scene)`.
 
 Szenen in der Engine: Beispiel mit Pausenmenü
 
-#### Ein Pausenmenü
+<!-- #### Ein Pausenmenü -->
 
 Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
 Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
@@ -827,7 +827,7 @@ public class MainScene extends Scene implements KeyStrokeListener
 }
 ```
 
-### Die zwei Szenen
+<!-- ### Die zwei Szenen -->
 
 Die Hauptszene ist `MainScene`. Hierdrin könnte ein normaler Game Loop für ein
 Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur
@@ -876,7 +876,7 @@ public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
 }
 ```
 
-### Kosmetische Kleinigkeiten
+<!-- ### Kosmetische Kleinigkeiten -->
 
 Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die
 Hauptszene eine interpolierte Rotationsanimation. Diese rotiert ein oranges
@@ -913,7 +913,7 @@ public void onFrameUpdate(double delta)
 }
 ```
 
-### Anmerkungen und Beobachtungen
+<!-- ### Anmerkungen und Beobachtungen -->
 
 - Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
   die aktive Szene ist. Dies liegt daran, dass die Animation als
@@ -1732,7 +1732,7 @@ public class RepeatExample extends Scene
 
 https://engine-alpha.org/wiki/v4.x/Collision
 
-### Spielkonzept und grundlegender Aufbau
+<!-- ### Spielkonzept und grundlegender Aufbau -->
 
 Ein Frosch soll fröhlich durch das Spiel springen, wann immer er die Chance hat,
 sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
@@ -1854,7 +1854,7 @@ Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
-### Physikalische Eigenschaften
+<!-- ### Physikalische Eigenschaften -->
 
 Wie im Physics-Tutorial beschrieben, werden die physikalischen Eigenschaften der
 Spielobjekte und ihrer Umgebung bestimmt:
@@ -1867,7 +1867,7 @@ Spielobjekte und ihrer Umgebung bestimmt:
 - In der Scene `FroggyJump` existiert eine Schwerkraft von 10 m/s^2. Sie wird
   mit `setGravity(Vector)` gesetzt.
 
-### Bewegung des Frosches
+<!-- ### Bewegung des Frosches -->
 
 Die Bewegung des Frosches wird in jedem Frame kontrolliert. Wie im Game Loop
 Tutorial beschrieben, wird hierzu das Interface `FrameUpdateListener` genutzt.
@@ -1902,7 +1902,7 @@ Engine-Kamera genutzt:
    Blick nach oben als nach unten. Mit `Camera.setOffset(Vector)` wird die
    Kamera nach oben verschoben.
 
-### Durch Platformen Springen: Kollisionen kontrollieren
+<!-- ### Durch Platformen Springen: Kollisionen kontrollieren -->
 
 Das Interface
 [CollisionListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
