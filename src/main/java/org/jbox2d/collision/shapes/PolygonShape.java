@@ -38,6 +38,8 @@ import org.jbox2d.pooling.arrays.Vec2Array;
  * A convex polygon shape. Polygons have a maximum number of vertices equal to
  * _maxPolygonVertices. In most cases you should not need many vertices for a
  * convex polygon.
+ *
+ * https://github.com/erincatto/box2d/blob/main/src/collision/b2_polygon_shape.cpp
  */
 public class PolygonShape extends Shape
 {

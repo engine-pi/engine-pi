@@ -37,6 +37,8 @@ import org.jbox2d.common.Vec2;
  * other edge shapes. The connectivity information is used to ensure correct
  * contact normals.
  *
+ * https://github.com/erincatto/box2d/blob/main/src/collision/b2_edge_shape.cpp
+ *
  * @author Daniel
  */
 public class EdgeShape extends Shape

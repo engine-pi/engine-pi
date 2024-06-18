@@ -39,6 +39,8 @@ import org.jbox2d.common.Vec2;
  * smooth collisions. WARNING: The chain will not collide properly if there are
  * self-intersections.
  *
+ * https://github.com/erincatto/box2d/blob/main/src/collision/b2_chain_shape.cpp
+ *
  * @author Daniel
  */
 public class ChainShape extends Shape
