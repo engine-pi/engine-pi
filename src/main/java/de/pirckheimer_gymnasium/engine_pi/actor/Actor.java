@@ -688,7 +688,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                     -position.getY() * pixelPerMeter);
             g.translate(position.getX() * pixelPerMeter,
                     -position.getY() * pixelPerMeter);
-            // Opacity Update
+            // Durchsichtigkeit
             Composite composite;
             if (opacity != 1)
             {
@@ -763,8 +763,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             return;
         }
         AffineTransform pre = g.getTransform();
+        // Die Kantenglättung (Antialiasing) ausschalten
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_OFF);
+        // Den Anker der Figur einzeichnen
         g.setColor(Resources.getColor("yellow"));
         g.drawOval(-1, -1, 2, 2);
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
@@ -800,6 +802,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             throw new RuntimeException("Konnte die Shape (" + shape
                     + ") nicht rendern, unerwartete Shape");
         }
+        // Die Kantenglättung (Antialiasing) einschalten
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g.setTransform(pre);

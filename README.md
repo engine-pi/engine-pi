@@ -1945,6 +1945,7 @@ https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gy
 | englisch       | deutsch                                                |
 | -------------- | ------------------------------------------------------ |
 | Actor          | Figur                                                  |
+| Rigid Body     | Starrer Körper                                         |
 | BodyType       | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds         | Schranken, Abgrenzung                                  |
 | DistanceJoint  | Stabverbindung                                         |
@@ -1957,5 +1958,6 @@ https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gy
 | PrismaticJoint | Federverbindung                                        |
 | RevoluteJoint  | Gelenkverbindung                                       |
 | RopeJoint      | Seilverbindung                                         |
-| WeldJoint      | Schweißnaht                                            |
+| Shape          | Umriss                                                 |
 | TurboFire      | Dauerfeuer                                             |
+| WeldJoint      | Schweißnaht                                            |
