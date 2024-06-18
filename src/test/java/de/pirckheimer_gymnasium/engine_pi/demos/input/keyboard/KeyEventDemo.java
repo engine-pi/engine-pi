@@ -20,22 +20,21 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.demos.input.keyboard;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class KeyEventDemo extends Scene implements KeyStrokeListener
 {
-    Rectangle rectangle;
+    Actor rectangle;
 
     public KeyEventDemo()
     {
-        rectangle = new Rectangle(2, 2);
-        rectangle.setColor(Color.BLUE);
+        rectangle = new Rectangle(2, 2).setColor("blue");
         add(rectangle);
     }
 

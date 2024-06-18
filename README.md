@@ -220,6 +220,8 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
+https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60
+
 ```java
 public class KeyStrokeCounterDemo extends Scene
 {
@@ -258,9 +260,6 @@ Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
 
-Dieses Interface hat denselben Namen wie das Standard-Java Interface
-[java.awt.event.KeyStrokeListener](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyStrokeListener.html).
-Achte darauf, dass du das richtige Interface einbindest.
 Die korrekte Anweisung, um das Interface einzubinden, lautet:
 
 ```java
@@ -286,15 +285,24 @@ Im [folgendem
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
+https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69
+
 ```java
+import java.awt.event.KeyEvent;
+
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
+import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+
 public class KeyEventDemo extends Scene implements KeyStrokeListener
 {
-    Rectangle rectangle;
+    Actor rectangle;
 
     public KeyEventDemo()
     {
-        rectangle = new Rectangle(2, 2);
-        rectangle.setColor(Color.BLUE);
+        rectangle = new Rectangle(2, 2).setColor("blue");
         add(rectangle);
     }
 
@@ -338,6 +346,8 @@ zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
 
+https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40
+
 ```java
 public class KeyEventDisplayDemo extends Scene
 {
@@ -367,9 +377,11 @@ public class KeyEventDisplayDemo extends Scene
 }
 ```
 
-https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
 ### Mauseingaben erstellen
+
+https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
+
 
 Auf Mausklick reagieren: Kreise malen
 
@@ -378,6 +390,8 @@ Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirc
 malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
+
+https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54
 
 ```java
 public class PaintingCirclesDemo extends Scene implements MouseClickListener

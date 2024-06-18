@@ -1,6 +1,5 @@
 package de.pirckheimer_gymnasium.engine_pi.demos.input.keyboard;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -51,7 +50,7 @@ public class KeyStrokeListenerAsNormalClassDemo extends Scene
     public KeyStrokeListenerAsNormalClassDemo()
     {
         circle = new Circle(2);
-        circle.setColor(Color.RED);
+        circle.setColor("red");
         keyStrokeListener = new MyKeyStrokeListener();
         circle.addKeyStrokeListener(keyStrokeListener);
         add(circle);
