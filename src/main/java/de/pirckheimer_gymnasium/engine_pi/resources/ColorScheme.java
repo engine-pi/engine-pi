@@ -1101,6 +1101,28 @@ public class ColorScheme
                 getCyan(), getGreen(), getLime() };
     }
 
+    /**
+     * Gibt die drei Primärfarben des Farbkreises von Itten in der Reihenfolge
+     * <b>Gelb</b>, <b>Rot</b> und <b>Blau</b> aus.
+     *
+     * @return Die drei Primärfarben des Farbkreises.
+     */
+    public Color[] getPrimaryColors()
+    {
+        return new Color[] { getYellow(), getRed(), getBlue() };
+    }
+
+    /**
+     * Gibt die drei Sekundärfarben des Farbkreises von Itten in der Reihenfolge
+     * <b>Orange</b>, <b>Violett</b> und <b>Grün</b> aus.
+     *
+     * @return Die drei Sekundärfarben des Farbkreises.
+     */
+    public Color[] getSecondaryColors()
+    {
+        return new Color[] { getOrange(), getPurple(), getGreen() };
+    }
+
     public static void main(String[] args)
     {
         Game.start(1200, 400, new Scene()
