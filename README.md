@@ -228,7 +228,7 @@ public class KeyStrokeCounterDemo extends Scene
         add(new CounterText());
     }
 
-    private class CounterText extends Text implements KeyListener
+    private class CounterText extends Text implements KeyStrokeListener
     {
         private int counter = 0;
 
@@ -249,33 +249,33 @@ public class KeyStrokeCounterDemo extends Scene
 }
 ```
 
-**Das Interface `KeyListener`**
+**Das Interface `KeyStrokeListener`**
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll,
 implementiert das Interface
-[de.pirckheimer_gymnasium.engine_pi.event.KeyListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html).
+[de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html).
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
 
 Dieses Interface hat denselben Namen wie das Standard-Java Interface
-[java.awt.event.KeyListener](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyListener.html).
+[java.awt.event.KeyStrokeListener](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/event/KeyStrokeListener.html).
 Achte darauf, dass du das richtige Interface einbindest.
 Die korrekte Anweisung, um das Interface einzubinden, lautet:
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.event.KeyListener
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener
 ```
 
-Die Anmeldung des `KeyListener`-Interfaces hat automatisch stattgefunden, als
+Die Anmeldung des `KeyStrokeListener`-Interfaces hat automatisch stattgefunden, als
 das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde.
-Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)
+Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html#onKeyDown(java.awt.event.KeyEvent)>)
 -Methode bei jedem Tastendruck
 aufgerufen.
 
 Soll reagiert werden, wenn eine Taste losgelassen wird, kann die
 [onKeyUp(KeyEvent
-e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
+e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html#onKeyDown(java.awt.event.KeyEvent)>)-Methode
 implementiert werden.
 
 Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
@@ -287,7 +287,7 @@ Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirc
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ```java
-public class KeyEventDemo extends Scene implements KeyListener
+public class KeyEventDemo extends Scene implements KeyStrokeListener
 {
     Rectangle rectangle;
 
@@ -346,7 +346,7 @@ public class KeyEventDisplayDemo extends Scene
         add(new KeyText());
     }
 
-    private class KeyText extends Text implements KeyListener
+    private class KeyText extends Text implements KeyStrokeListener
     {
         public KeyText()
         {
@@ -434,7 +434,7 @@ Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
 [PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
-### Voreingestellte Tastenkürzel und Steuerungsmöglihkeiten
+### Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten
 
 Die Engine registriert im Auslieferungszustand einige wenige [grundlegenden
 Maus- und
@@ -524,7 +524,7 @@ public class SnakeMinimal extends Scene
     }
 
     private class Snake extends Circle
-            implements FrameUpdateListener, KeyListener
+            implements FrameUpdateListener, KeyStrokeListener
     {
         private Vector movement = new Vector(0, 0);
 
@@ -617,7 +617,7 @@ public void onFrameUpdate(double timeInS)
 
 Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
 welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
-`KeyListener` gelöst wie im vorigen Tutorial:
+`KeyStrokeListener` gelöst wie im vorigen Tutorial:
 
 ```java
 @Override
@@ -696,7 +696,7 @@ public void placeRandomGoodie()
 - Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange
   ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest
   du dem Spieler mehr Kontrolle über die Schlange geben: Statt des
-  KeyListener-Interfaces, kann die Schlange in ihrer
+  KeyStrokeListener-Interfaces, kann die Schlange in ihrer
   onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key
   heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die
   Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
@@ -731,7 +731,7 @@ Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
 ```java
 
-public class MainScene extends Scene implements KeyListener
+public class MainScene extends Scene implements KeyStrokeListener
 {
     private PauseMenu pauseMenu;
 
@@ -745,7 +745,7 @@ public class MainScene extends Scene implements KeyListener
                 new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
         add(toAnimate);
-        addKeyListener(this);
+        addKeyStrokeListener(this);
         Text info = new Text("Pause mit P", 0.5);
         info.setCenter(-7, -5);
         add(info);
@@ -921,7 +921,7 @@ public void onFrameUpdate(double delta)
   (`addFrameUpdateListener(animation)`). Alle Beobachter einer Szene können nur dann
   aufgerufen werden, wenn die Szene aktiv ist.
 - Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
-  `KeyListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
+  `KeyStrokeListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
   Hauptszene angemeldet.
 
 ## Physics
@@ -1109,7 +1109,7 @@ Interface `MouseClickListener` implementiert:
 https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java
 
 ```java
-public class GravityDemo extends Scene implements KeyListener
+public class GravityDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle rectangle;
 
@@ -1202,7 +1202,7 @@ public class ElasticityDemo extends Scene
 https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java
 
 ```java
-public class DensityDemo extends Scene implements KeyListener
+public class DensityDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle ground;
 
@@ -1691,7 +1691,7 @@ public class RepeatExample extends Scene
             super("0", 2);
             setCenter(0, 0);
             start();
-            addKeyListener((e) -> {
+            addKeyStrokeListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
                 {
                     if (listener == null)
