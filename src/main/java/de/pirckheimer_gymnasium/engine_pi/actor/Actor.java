@@ -54,6 +54,7 @@ import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
@@ -74,6 +75,8 @@ import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
+import de.pirckheimer_gymnasium.engine_pi.util.Graphics2DUtil;
+import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
  * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.
@@ -714,8 +717,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 synchronized (this)
                 {
                     // Visualisiere die Shape
-                    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_OFF);
                     Body body = physicsHandler.getBody();
                     if (body != null)
                     {
@@ -727,8 +728,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                             fixture = fixture.m_next;
                         }
                     }
-                    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_ON);
                 }
             }
             // ____ Post-Render ____
@@ -763,12 +762,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             return;
         }
         AffineTransform pre = g.getTransform();
-        // Die Kantenglättung (Antialiasing) ausschalten
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_OFF);
+        Graphics2DUtil.setAntiAliasing(g, false);
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.getColor("yellow"));
         g.drawOval(-1, -1, 2, 2);
+        if (Debug.SHOW_POSITIONS)
+        {
+            Graphics2DUtil.drawText(g, actor.getPositionformatted(), 8, 5, 5);
+        }
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
@@ -802,9 +803,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             throw new RuntimeException("Konnte die Shape (" + shape
                     + ") nicht rendern, unerwartete Shape");
         }
-        // Die Kantenglättung (Antialiasing) einschalten
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+        Graphics2DUtil.setAntiAliasing(g, true);
         g.setTransform(pre);
     }
 
@@ -2127,6 +2126,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final Vector getPosition()
     {
         return physicsHandler.getPosition();
+    }
+
+    /**
+     * Gibt die Position formatiert als Zeichenkette aus.
+     *
+     * @return Die Position als Zeichenkette im Format {@code 0.00|0.00}.
+     */
+    public final String getPositionformatted()
+    {
+        Vector pos = getPosition();
+        return TextUtil.roundNumber(pos.getX()) + "|"
+                + TextUtil.roundNumber(pos.getY());
     }
 
     /**

@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Camera;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
 
 /**
  * Registriert wenige grundlegenden Maus- und Tastatur-Steuermöglichkeiten.
@@ -13,6 +14,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
  * <li>{@code ALT + a} zum An- und Ausschalten der Figuren-Zeichenroutine.</li>
  * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+ * <li>{@code ALT + p} zum Ein- und Ausblenden der Positionen der Figuren.</li>
  * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
  * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
@@ -48,6 +50,8 @@ public class DefaultControl implements DefaultListener
      * <li>{@code ALT + a} zum An- und Ausschalten der
      * Figuren-Zeichenroutine.</li>
      * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
+     * <li>{@code ALT + p} zum Ein- und Ausblenden der Positionen der
+     * Figuren.</li>
      * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
      * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
      * </ul>
@@ -61,13 +65,17 @@ public class DefaultControl implements DefaultListener
         {
             switch (event.getKeyCode())
             {
+            case KeyEvent.VK_A ->
+            {
+                Game.toggleRenderActors();
+            }
             case KeyEvent.VK_D ->
             {
                 Game.toggleDebug();
             }
-            case KeyEvent.VK_A ->
+            case KeyEvent.VK_P ->
             {
-                Game.toggleRenderActors();
+                Debug.toogleShowPositions();
             }
             case KeyEvent.VK_S ->
             {

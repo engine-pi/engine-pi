@@ -46,13 +46,16 @@ public interface ActorCreator
     /* ___ Circle (Kreis) ___________________________________________________ */
 
     /**
-     * Erzeugt einen Kreis durch Angabe des Durchmessers.
+     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b> und der
+     * <b>Position</b>.
      *
      * @param diameter Der Durchmesser des Kreises.
      * @param x        Die neue <code>x</code>-Koordinate.
      * @param y        Die neue <code>y</code>-Koordinate.
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle
      */
     default Circle createCircle(double diameter, double x, double y)
     {
@@ -63,12 +66,15 @@ public interface ActorCreator
     }
 
     /**
-     * Erzeugt einen Kreis mit einem Meter Durchmesser an einer neuen Position.
+     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b> durch
+     * Angabe der <b>Position</b>.
      *
      * @param x Die neue <code>x</code>-Koordinate.
      * @param y Die neue <code>y</code>-Koordinate.
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle
      */
     default Circle createCircle(double x, double y)
     {
@@ -76,13 +82,16 @@ public interface ActorCreator
     }
 
     /**
-     * Erzeugt einen Kreis mit einem Meter Durchmesser an einer neuen Position.
+     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b> durch
+     * Angabe der <b>Position</b> und der <b>Farbe</b>.
      *
      * @param x     Die neue <code>x</code>-Koordinate.
      * @param y     Die neue <code>y</code>-Koordinate.
      * @param color Die Farbe des Kreises.
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle
      */
     default Circle createCircle(double x, double y, Color color)
     {
@@ -92,13 +101,29 @@ public interface ActorCreator
     }
 
     /**
-     * Erzeugt einen Kreis mit einem Meter Durchmesser an der Position (0|0)
+     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle
      */
     default Circle createCircle()
     {
         return createCircle(1, 0, 0);
+    }
+
+    /**
+     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
+     *
+     * @param diameter Der Durchmesser des Kreises.
+     *
+     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle
+     */
+    default Circle createCircle(double diameter)
+    {
+        return createCircle(diameter, 0, 0);
     }
     /* ___ Hexagon (Sechseck) _____________________________________________ */
 
