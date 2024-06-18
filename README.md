@@ -386,7 +386,7 @@ public class KeyEventDisplayDemo extends Scene
 
 https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.png)
+![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.gif)
 
 Das [folgende
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
@@ -447,7 +447,7 @@ für die Arbeit mit der Engine.
 
 https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
-![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.png)
+![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.gif)
 
 [PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
