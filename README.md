@@ -215,7 +215,7 @@ circle.setLayerPosition(-2);
 
 https://engine-alpha.org/wiki/v4.x/User_Input
 
-### Tastatureingaben
+### Tastatureingaben erstellen
 
 Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
@@ -369,7 +369,7 @@ public class KeyEventDisplayDemo extends Scene
 
 https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-### Mauseingaben
+### Mauseingaben erstellen
 
 Auf Mausklick reagieren: Kreise malen
 
@@ -433,6 +433,28 @@ https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
 
 [PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+
+### Voreingestellte Tastenkürzel und Steuerungsmöglihkeiten
+
+Die Engine registriert im Auslieferungszustand einige wenige [grundlegenden
+Maus- und
+Tastatur-Steuermöglichkeiten](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/DefaultControl.html).
+
+Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
+[Game.removeDefaultControl()](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#removeDefaultControl()>)
+können diese Kürzel entfernt oder mit
+[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#setDefaultControl(de.pirckheimer_gymnasium.engine_pi.event.DefaultListener)>)
+neue Kürzel gesetzt werden.
+
+- `ESCAPE` zum Schließen des Fensters.
+- `ALT + a` zum An- und Abschalten der Figuren-Zeichenroutine (Es
+  werden nur die Umrisse gezeichnet, nicht die Füllung).
+- `ALT + d` zum An- und Abschalten des Debug-Modus.
+- `ALT + p` zum Ein- und Ausblenden der Figuren-Positionen (sehr
+  ressourcenintensiv).
+- `ALT + s` zum Speichern eines Bildschirmfotos (unter `~/engine-pi`).
+- `ALT + Pfeiltasten` zum Bewegen der Kamera.
+- `ALT + Mausrad` zum Einstellen des Zoomfaktors.
 
 ## Game Loop
 

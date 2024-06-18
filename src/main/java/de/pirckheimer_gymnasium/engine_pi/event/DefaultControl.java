@@ -8,14 +8,24 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
 
 /**
- * Registriert wenige grundlegenden Maus- und Tastatur-Steuermöglichkeiten.
+ * Registriert im Auslieferungszustand einige wenige grundlegenden Maus- und
+ * Tastatur-Steuermöglichkeiten.
+ *
+ * <p>
+ * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
+ * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
+ * {@link Game#setDefaultControl(DefaultControl)} neue Kürzel gesetzt werden.
+ * </p>
  *
  * <ul>
  * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
- * <li>{@code ALT + a} zum An- und Ausschalten der Figuren-Zeichenroutine.</li>
- * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
- * <li>{@code ALT + p} zum Ein- und Ausblenden der Positionen der Figuren.</li>
- * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
+ * <li>{@code ALT + a} zum An- und Abschalten der Figuren-Zeichenroutine (Es
+ * werden nur die Umrisse gezeichnet, nicht die Füllung).</li>
+ * <li>{@code ALT + d} zum An- und Abschalten des Debug-Modus.</li>
+ * <li>{@code ALT + p} zum Ein- und Ausblenden der Figuren-Positionen (sehr
+ * ressourcenintensiv).</li>
+ * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
+ * ~/engine-pi).</li>
  * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
@@ -23,6 +33,7 @@ import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
  * @see Game#getDefaultControl()
  * @see Game#setDefaultControl(DefaultListener)
  * @see Game#removeDefaultControl()
+ * @see DefaultListener
  */
 public class DefaultControl implements DefaultListener
 {
@@ -47,13 +58,14 @@ public class DefaultControl implements DefaultListener
      * Registriert <b>Standard-Tastenkürzel</b>.
      *
      * <ul>
-     * <li>{@code ALT + a} zum An- und Ausschalten der
-     * Figuren-Zeichenroutine.</li>
-     * <li>{@code ALT + d} zum An- und Ausschalten des Debug-Modus.</li>
-     * <li>{@code ALT + p} zum Ein- und Ausblenden der Positionen der
-     * Figuren.</li>
-     * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos.</li>
      * <li>{@code ESCAPE} zum Schließen des Fensters.</li>
+     * <li>{@code ALT + a} zum An- und Abschalten der Figuren-Zeichenroutine (Es
+     * werden nur die Umrisse gezeichnet, nicht die Füllung).</li>
+     * <li>{@code ALT + d} zum An- und Abschalten des Debug-Modus.</li>
+     * <li>{@code ALT + p} zum Ein- und Ausblenden der Figuren-Positionen (sehr
+     * ressourcenintensiv).</li>
+     * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
+     * ~/engine-pi).</li>
      * </ul>
      *
      * @param event Das KeyEvent von AWT.
@@ -65,20 +77,16 @@ public class DefaultControl implements DefaultListener
         {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_A ->
-            {
+            case KeyEvent.VK_A -> {
                 Game.toggleRenderActors();
             }
-            case KeyEvent.VK_D ->
-            {
+            case KeyEvent.VK_D -> {
                 Game.toggleDebug();
             }
-            case KeyEvent.VK_P ->
-            {
+            case KeyEvent.VK_P -> {
                 Debug.toogleShowPositions();
             }
-            case KeyEvent.VK_S ->
-            {
+            case KeyEvent.VK_S -> {
                 Game.takeScreenshot();
             }
             }
