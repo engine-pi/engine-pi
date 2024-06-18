@@ -217,6 +217,8 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben erstellen
 
+![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyStrokeCounter.png)
+
 Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
@@ -284,6 +286,8 @@ gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 Im [folgendem
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
+
+![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyEventDemo.png)
 
 https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69
 
@@ -382,8 +386,7 @@ public class KeyEventDisplayDemo extends Scene
 
 https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-
-Auf Mausklick reagieren: Kreise malen
+![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.png)
 
 Das [folgende
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
@@ -444,7 +447,7 @@ für die Arbeit mit der Engine.
 
 https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
-Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü:
+![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.png)
 
 [PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
