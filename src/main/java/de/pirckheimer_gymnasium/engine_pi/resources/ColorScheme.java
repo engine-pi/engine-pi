@@ -33,7 +33,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * erstellt werden. Im einfachsten Fall genügen drei Primärfarben für ein neues
  * Farbschema. Die nicht spezifizierten Farben werden dann aus den
  * spezifizierten Farben gemischt. Da jede Farbe auch einen Setter besitzt, kann
- * jede Farbe auch explizit gesetzt werden. Dadurch enfällt der Mischvorgang.
+ * jede Farbe auch explizit gesetzt werden. Dadurch entfällt der Mischvorgang.
  * </p>
  *
  * <p>
@@ -42,17 +42,17 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * <ol>
  * <li>{@code yellow} (<b>Gelb</b>)</li>
- * <li>{@code yellowOrange} (<b>Gelb-Orange</b>)</li>
+ * <li>{@code yellow orange} (<b>Gelb-Orange</b>)</li>
  * <li>{@code orange} (<b>Orange</b>)</li>
- * <li>{@code redOrange} (<b>Rot-Orange</b>)</li>
+ * <li>{@code red orange} (<b>Rot-Orange</b>)</li>
  * <li>{@code red} (<b>Rot</b>)</li>
- * <li>{@code redPurple} (<b>Rot-Violett</b>)</li>
+ * <li>{@code red purple} (<b>Rot-Violett</b>)</li>
  * <li>{@code purple} (<b>Violett</b>)</li>
- * <li>{@code bluePurple} (<b>Blau-Violett</b>)</li>
+ * <li>{@code blue purple} (<b>Blau-Violett</b>)</li>
  * <li>{@code blue} (<b>Blau</b>)</li>
- * <li>{@code blueGreen} (<b>Blau-Grün</b>)</li>
+ * <li>{@code blue green} (<b>Blau-Grün</b>)</li>
  * <li>{@code green} (<b>Grün</b>)</li>
- * <li>{@code yellowGreen} (<b>Gelb-Grün</b>)</li>
+ * <li>{@code yellow green} (<b>Gelb-Grün</b>)</li>
  * </ol>
  *
  * <p>

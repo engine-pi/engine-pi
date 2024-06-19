@@ -16,19 +16,18 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * <ol>
  * <li>{@code yellow}: Gelb</li>
- * <li>{@code yellowOrange}: Gelb-Orangeen, Gelb Orange, Orange Gelb,
- * Dunkelgelb</li>
+ * <li>{@code yellow orange}: Gelb Orange, Orange Gelb, Dunkelgelb</li>
  * <li>{@code orange}: Orange</li>
- * <li>{@code redOrange}: redOrange red, Rot-Orange, Orange Rot, Rot Orange,
+ * <li>{@code red orange}: redOrange red, Rot-Orange, Orange Rot, Rot Orange,
  * Hellrot</li>
  * <li>{@code red}: Rot</li>
- * <li>{@code redPurple}: Rot-Violett</li>
+ * <li>{@code red purple}: Rot-Violett</li>
  * <li>{@code purple}: violet, Violett, Lila</li>
- * <li>{@code bluePurple}: Violett Blau, Blau Violett</li>
+ * <li>{@code blue purple}: Violett Blau, Blau Violett</li>
  * <li>{@code blue}: Blau</li>
- * <li>{@code blueGreen}: Blau-Grün, Blau Grün, Grün Blau</li>
+ * <li>{@code blue green}: Blau-Grün, Blau Grün, Grün Blau</li>
  * <li>{@code green}: Grün</li>
- * <li>{@code yellowGreen}: Gelb-Grün, yellowGreen green, Limetten Grün,
+ * <li>{@code yellow green}: Gelb-Grün, yellowGreen green, Limetten Grün,
  * Limette, Gelb Grün, Grün Gelb, Hellgrün</li>
  * </ol>
  *
@@ -51,7 +50,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <p>
  * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
  * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
- * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden.
+ * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
+ * der Unterstrich werden ignoriert.
  * </p>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colors
@@ -71,9 +71,9 @@ public class ColorContainer implements Container<Color>
 
     private String normalizeName(String name)
     {
-        return name.toLowerCase().replaceAll("\\s", "").replaceAll("ä", "ae")
-                .replaceAll("ö", "oe").replaceAll("ü", "ue")
-                .replaceAll("ß", "ss");
+        return name.toLowerCase().replaceAll("\\s", "").replaceAll("-", "")
+                .replaceAll("_", "").replaceAll("ä", "ae").replaceAll("ö", "oe")
+                .replaceAll("ü", "ue").replaceAll("ß", "ss");
     }
 
     /**
