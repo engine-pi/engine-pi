@@ -65,7 +65,8 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     /*
      * private final Sound walk = new Sound("dude/audio/footstep.wav"); private
      * final Sound jump = new Sound("dude/audio/footstep.wav"); private final
-     * Sound pickup_gold = new Sound("dude/audio/pickup_gold.wav");
+     * Sound pickup_yellowOrange = new
+     * Sound("dude/audio/pickup_yellowOrange.wav");
      */
 
     private boolean didDoubleJump = false;

@@ -39,7 +39,7 @@ public class Pentagon extends RegularPolygon
     public Pentagon(double radius)
     {
         super(5, radius);
-        setColor("lime");
+        setColor("yellowGreen");
     }
 
     public Pentagon()

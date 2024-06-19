@@ -42,7 +42,7 @@ public final class InfoBoxDrawer
                 colors.get("green"));
         // Schwerkraft
         Vector gravity = scene.getGravity();
-        Color gravityColor = Resources.colorScheme.getIndigo();
+        Color gravityColor = Resources.colorScheme.getBluePurple();
         if (!gravity.isNull())
         {
             Graphics2DUtil.drawTextBox(g, String.format("G(x,y): %.2f,%.2f",

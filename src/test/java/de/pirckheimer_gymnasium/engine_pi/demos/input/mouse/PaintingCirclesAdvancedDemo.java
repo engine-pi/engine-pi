@@ -43,13 +43,13 @@ public class PaintingCirclesAdvancedDemo extends Scene
         addMouseClickListener(this);
         ColorRect white = new ColorRect(Color.WHITE);
         ColorRect blue = new ColorRect(Color.BLUE);
-        ColorRect pink = new ColorRect(Color.PINK);
+        ColorRect redPurple = new ColorRect(Color.PINK);
         ColorRect orange = new ColorRect(Color.ORANGE);
         white.setPosition(-8, 5);
         blue.setPosition(-6, 5);
-        pink.setPosition(-4, 5);
+        redPurple.setPosition(-4, 5);
         orange.setPosition(-2, 5);
-        add(white, blue, pink, orange);
+        add(white, blue, redPurple, orange);
         SizeText sizeText1 = new SizeText(1);
         SizeText sizeText2 = new SizeText(2);
         SizeText sizeText3 = new SizeText(3);

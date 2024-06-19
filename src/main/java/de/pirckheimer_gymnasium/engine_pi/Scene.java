@@ -135,8 +135,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Führt auf allen Ebenen <b>parallelisiert</b> den World-Step aus.
      *
-     * @param pastTime Die Echtzeit, die seit dem letzten World-Step
-     *                     vergangen ist.
+     * @param pastTime Die Echtzeit, die seit dem letzten World-Step vergangen
+     *                 ist.
      */
     @Internal
     public final void step(double pastTime,
@@ -147,8 +147,7 @@ public class Scene implements KeyStrokeListenerRegistration,
             Collection<Future<?>> layerFutures = new ArrayList<>(layers.size());
             for (Layer layer : layers)
             {
-                Future<?> future = invoker
-                        .apply(() -> layer.step(pastTime));
+                Future<?> future = invoker.apply(() -> layer.step(pastTime));
                 layerFutures.add(future);
             }
             for (Future<?> layerFuture : layerFutures)

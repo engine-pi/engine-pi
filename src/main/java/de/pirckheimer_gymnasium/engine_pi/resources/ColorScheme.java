@@ -42,17 +42,17 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * <ol>
  * <li>{@code yellow} (<b>Gelb</b>)</li>
- * <li>{@code gold} (<b>Gold</b>)</li>
+ * <li>{@code yellowOrange} (<b>Gelb-Orange</b>)</li>
  * <li>{@code orange} (<b>Orange</b>)</li>
- * <li>{@code brick} (<b>Ziegelrot</b>)</li>
+ * <li>{@code redOrange} (<b>Rot-Orange</b>)</li>
  * <li>{@code red} (<b>Rot</b>)</li>
- * <li>{@code pink} (<b>Rosa</b>)</li>
+ * <li>{@code redPurple} (<b>Rot-Violett</b>)</li>
  * <li>{@code purple} (<b>Violett</b>)</li>
- * <li>{@code indigo} (<b>Indigo</b>)</li>
+ * <li>{@code bluePurple} (<b>Blau-Violett</b>)</li>
  * <li>{@code blue} (<b>Blau</b>)</li>
- * <li>{@code cyan} (<b>Türkis</b>)</li>
+ * <li>{@code blueGreen} (<b>Blau-Grün</b>)</li>
  * <li>{@code green} (<b>Grün</b>)</li>
- * <li>{@code lime} (<b>Limettengrün</b>)</li>
+ * <li>{@code yellowGreen} (<b>Gelb-Grün</b>)</li>
  * </ol>
  *
  * <p>
@@ -80,10 +80,10 @@ public class ColorScheme
     private Color yellow;
 
     /**
-     * Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
-     * <b>Gelb</b> und <b>Orange</b>).
+     * Die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow orange</b>,
+     * Mischung aus <b>Gelb</b> und <b>Orange</b>).
      */
-    private Color gold;
+    private Color yellowOrange;
 
     /**
      * Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>, Mischung aus
@@ -92,10 +92,10 @@ public class ColorScheme
     private Color orange;
 
     /**
-     * Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>, Mischung
+     * Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>, Mischung
      * aus <b>Orange</b> und <b>Rot</b>)
      */
-    private Color brick;
+    private Color redOrange;
 
     /**
      * Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
@@ -103,10 +103,10 @@ public class ColorScheme
     private Color red;
 
     /**
-     * Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
-     * <b>Rot</b> und <b>Violett</b>).
+     * Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
+     * Mischung aus <b>Rot</b> und <b>Violett</b>).
      */
-    private Color pink;
+    private Color redPurple;
 
     /**
      * Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>, Mischung aus
@@ -115,10 +115,10 @@ public class ColorScheme
     private Color purple;
 
     /**
-     * Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung aus
-     * <b>Violett</b> und <b>Blau</b>).
+     * Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue purple</b>, Mischung
+     * aus <b>Violett</b> und <b>Blau</b>).
      */
-    private Color indigo;
+    private Color bluePurple;
 
     /**
      * Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
@@ -126,10 +126,10 @@ public class ColorScheme
     private Color blue;
 
     /**
-     * Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung aus
+     * Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>, Mischung aus
      * <b>Blau</b> und <b>Grün</b>).
      */
-    private Color cyan;
+    private Color blueGreen;
 
     /**
      * Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und <b>Blau</b>).
@@ -137,10 +137,10 @@ public class ColorScheme
     private Color green;
 
     /**
-     * Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>, Mischung aus
-     * <b>Gelb</b> und <b>Grün</b>).
+     * Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
+     * Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
-    private Color lime;
+    private Color yellowGreen;
 
     /**
      * Die Farbe <b>Braun</b> (englisch: <b>brown</b>). <b>Braun</b> kommt nicht
@@ -273,7 +273,7 @@ public class ColorScheme
      * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellow(Color yellow)
@@ -290,7 +290,7 @@ public class ColorScheme
      *               hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellow(String yellow)
@@ -300,54 +300,56 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>) - eine Mischung
-     * aus <b>Gelb</b> und <b>Orange</b> - zurück.
+     * Gibt die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow orange</b>)
+     * - eine Mischung aus <b>Gelb</b> und <b>Orange</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
-     *         <b>Gelb</b> und <b>Orange</b>).
+     * @return Die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
+     *         orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      */
-    public Color getGold()
+    public Color getYellowOrange()
     {
-        if (gold == null)
+        if (yellowOrange == null)
         {
-            gold = mix(getYellow(), getOrange());
+            yellowOrange = mix(getYellow(), getOrange());
         }
-        return gold;
+        return yellowOrange;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
-     * <b>Gelb</b> und <b>Orange</b>).
+     * Setzt die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
+     * orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      *
-     * @param gold Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung
-     *             aus <b>Gelb</b> und <b>Orange</b>).
+     * @param yellowOrange Die Tertiärfarbe <b>Gelb-Orange</b> (englisch:
+     *                     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und
+     *                     <b>Orange</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGold(Color gold)
+    public ColorScheme setYellowOrange(Color yellowOrange)
     {
-        this.gold = gold;
+        this.yellowOrange = yellowOrange;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung aus
-     * <b>Gelb</b> und <b>Orange</b>) in hexadezimaler Codierung (z. B.
-     * {@code #ff0000}).
+     * Setzt die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
+     * orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>) in hexadezimaler
+     * Codierung (z. B. {@code #ff0000}).
      *
-     * @param gold Die Tertiärfarbe <b>Gold</b> (englisch: <b>gold</b>, Mischung
-     *             aus <b>Gelb</b> und <b>Orange</b>) in hexadezimaler Codierung
-     *             (z. B. {@code #ff0000}).
+     * @param yellowOrange Die Tertiärfarbe <b>Gelb-Orange</b> (englisch:
+     *                     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und
+     *                     <b>Orange</b>) in hexadezimaler Codierung (z. B.
+     *                     {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGold(String gold)
+    public ColorScheme setYellowOrange(String yellowOrange)
     {
-        this.gold = decode(gold);
+        this.yellowOrange = decode(yellowOrange);
         return this;
     }
 
@@ -378,7 +380,7 @@ public class ColorScheme
      *               Mischung aus <b>Gelb</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setOrange(Color orange)
@@ -397,7 +399,7 @@ public class ColorScheme
      *               Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setOrange(String orange)
@@ -407,54 +409,54 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>) -
+     * Gibt die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>) -
      * eine Mischung aus <b>Orange</b> und <b>Rot</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>,
+     * @return Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>,
      *         Mischung aus <b>Orange</b> und <b>Rot</b>).
      */
-    public Color getBrick()
+    public Color getRedOrange()
     {
-        if (brick == null)
+        if (redOrange == null)
         {
-            brick = mix(getOrange(), getRed());
+            redOrange = mix(getOrange(), getRed());
         }
-        return brick;
+        return redOrange;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>,
+     * Setzt die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>,
      * Mischung aus <b>Orange</b> und <b>Rot</b>).
      *
-     * @param brick Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick
-     *              red</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
+     * @param redOrange Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red
+     *                  orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBrick(Color brick)
+    public ColorScheme setRedOrange(Color redOrange)
     {
-        this.brick = brick;
+        this.redOrange = redOrange;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick red</b>,
+     * Setzt die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>,
      * Mischung aus <b>Orange</b> und <b>Rot</b>) in hexadezimaler Codierung (z.
      * B. {@code #ff0000}).
      *
-     * @param brick Die Tertiärfarbe <b>Ziegelrot</b> (englisch: <b>brick
-     *              red</b>, Mischung aus <b>Orange</b> und <b>Rot</b>) in
-     *              hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * @param redOrange Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red
+     *                  orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>)
+     *                  in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBrick(String brick)
+    public ColorScheme setRedOrange(String redOrange)
     {
-        this.brick = decode(brick);
+        this.redOrange = decode(redOrange);
         return this;
     }
 
@@ -474,7 +476,7 @@ public class ColorScheme
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRed(Color red)
@@ -491,7 +493,7 @@ public class ColorScheme
      *            hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRed(String red)
@@ -501,54 +503,54 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>) - eine Mischung
-     * aus <b>Rot</b> und <b>Violett</b> - zurück.
+     * Gibt die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>) -
+     * eine Mischung aus <b>Rot</b> und <b>Violett</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
-     *         <b>Rot</b> und <b>Violett</b>).
+     * @return Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
+     *         Mischung aus <b>Rot</b> und <b>Violett</b>).
      */
-    public Color getPink()
+    public Color getRedPurple()
     {
-        if (pink == null)
+        if (redPurple == null)
         {
-            pink = mix(getRed(), getPurple());
+            redPurple = mix(getRed(), getPurple());
         }
-        return pink;
+        return redPurple;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
-     * <b>Rot</b> und <b>Violett</b>).
+     * Setzt die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
+     * Mischung aus <b>Rot</b> und <b>Violett</b>).
      *
-     * @param pink Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung
-     *             aus <b>Rot</b> und <b>Violett</b>).
+     * @param redPurple Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red
+     *                  purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setPink(Color pink)
+    public ColorScheme setRedPurple(Color redPurple)
     {
-        this.pink = pink;
+        this.redPurple = redPurple;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung aus
-     * <b>Rot</b> und <b>Violett</b>) in hexadezimaler Codierung (z. B.
-     * {@code #ff0000}).
+     * Setzt die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
+     * Mischung aus <b>Rot</b> und <b>Violett</b>) in hexadezimaler Codierung
+     * (z. B. {@code #ff0000}).
      *
-     * @param pink Die Tertiärfarbe <b>Rosa</b> (englisch: <b>pink</b>, Mischung
-     *             aus <b>Rot</b> und <b>Violett</b>) in hexadezimaler Codierung
-     *             (z. B. {@code #ff0000}).
+     * @param redPurple Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red
+     *                  purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>)
+     *                  in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setPink(String pink)
+    public ColorScheme setRedPurple(String redPurple)
     {
-        this.pink = decode(pink);
+        this.redPurple = decode(redPurple);
         return this;
     }
 
@@ -579,7 +581,7 @@ public class ColorScheme
      *               Mischung aus <b>Rot</b> und <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setPurple(Color purple)
@@ -598,7 +600,7 @@ public class ColorScheme
      *               Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setPurple(String purple)
@@ -608,54 +610,56 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>) - eine
-     * Mischung aus <b>Violett</b> und <b>Blau</b> - zurück.
+     * Gibt die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue purple</b>)
+     * - eine Mischung aus <b>Violett</b> und <b>Blau</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
-     *         aus <b>Violett</b> und <b>Blau</b>).
+     * @return Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
+     *         purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
      */
-    public Color getIndigo()
+    public Color getBluePurple()
     {
-        if (indigo == null)
+        if (bluePurple == null)
         {
-            indigo = mix(getPurple(), getBlue());
+            bluePurple = mix(getPurple(), getBlue());
         }
-        return indigo;
+        return bluePurple;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
-     * aus <b>Violett</b> und <b>Blau</b>).
+     * Setzt die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue purple</b>,
+     * Mischung aus <b>Violett</b> und <b>Blau</b>).
      *
-     * @param indigo Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>,
-     *               Mischung aus <b>Violett</b> und <b>Blau</b>).
+     * @param bluePurple Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
+     *                   purple</b>, Mischung aus <b>Violett</b> und
+     *                   <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setIndigo(Color indigo)
+    public ColorScheme setBluePurple(Color bluePurple)
     {
-        this.indigo = indigo;
+        this.bluePurple = bluePurple;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>, Mischung
-     * aus <b>Violett</b> und <b>Blau</b>) in hexadezimaler Codierung (z. B.
-     * {@code #ff0000}).
+     * Setzt die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue purple</b>,
+     * Mischung aus <b>Violett</b> und <b>Blau</b>) in hexadezimaler Codierung
+     * (z. B. {@code #ff0000}).
      *
-     * @param indigo Die Tertiärfarbe <b>Indigo</b> (englisch: <b>indigo</b>,
-     *               Mischung aus <b>Violett</b> und <b>Blau</b>) in
-     *               hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * @param bluePurple Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
+     *                   purple</b>, Mischung aus <b>Violett</b> und
+     *                   <b>Blau</b>) in hexadezimaler Codierung (z. B.
+     *                   {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setIndigo(String indigo)
+    public ColorScheme setBluePurple(String bluePurple)
     {
-        this.indigo = decode(indigo);
+        this.bluePurple = decode(bluePurple);
         return this;
     }
 
@@ -675,7 +679,7 @@ public class ColorScheme
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlue(Color blue)
@@ -692,7 +696,7 @@ public class ColorScheme
      *             hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlue(String blue)
@@ -702,54 +706,54 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>) - eine
-     * Mischung aus <b>Blau</b> und <b>Grün</b> - zurück.
+     * Gibt die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>) -
+     * eine Mischung aus <b>Blau</b> und <b>Grün</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung
-     *         aus <b>Blau</b> und <b>Grün</b>).
+     * @return Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>,
+     *         Mischung aus <b>Blau</b> und <b>Grün</b>).
      */
-    public Color getCyan()
+    public Color getBlueGreen()
     {
-        if (cyan == null)
+        if (blueGreen == null)
         {
-            cyan = mix(getBlue(), getGreen());
+            blueGreen = mix(getBlue(), getGreen());
         }
-        return cyan;
+        return blueGreen;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung aus
-     * <b>Blau</b> und <b>Grün</b>).
+     * Setzt die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>,
+     * Mischung aus <b>Blau</b> und <b>Grün</b>).
      *
-     * @param cyan Die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>,
-     *             Mischung aus <b>Blau</b> und <b>Grün</b>).
+     * @param blueGreen Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue
+     *                  green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setCyan(Color cyan)
+    public ColorScheme setBlueGreen(Color blueGreen)
     {
-        this.cyan = cyan;
+        this.blueGreen = blueGreen;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>, Mischung aus
-     * <b>Blau</b> und <b>Grün</b>) in hexadezimaler Codierung (z. B.
-     * {@code #ff0000}).
+     * Setzt die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>,
+     * Mischung aus <b>Blau</b> und <b>Grün</b>) in hexadezimaler Codierung (z.
+     * B. {@code #ff0000}).
      *
-     * @param cyan Die Tertiärfarbe <b>Türkis</b> (englisch: <b>cyan</b>,
-     *             Mischung aus <b>Blau</b> und <b>Grün</b>) in hexadezimaler
-     *             Codierung (z. B. {@code #ff0000}).
+     * @param blueGreen Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue
+     *                  green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>) in
+     *                  hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setCyan(String cyan)
+    public ColorScheme setBlueGreen(String blueGreen)
     {
-        this.cyan = decode(cyan);
+        this.blueGreen = decode(blueGreen);
         return this;
     }
 
@@ -777,7 +781,7 @@ public class ColorScheme
      *              <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGreen(Color green)
@@ -795,7 +799,7 @@ public class ColorScheme
      *              {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGreen(String green)
@@ -805,54 +809,54 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>) - eine
-     * Mischung aus <b>Gelb</b> und <b>Grün</b> - zurück.
+     * Gibt die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>) -
+     * eine Mischung aus <b>Gelb</b> und <b>Grün</b> - zurück.
      *
-     * @return Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
+     * @return Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
      *         Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
-    public Color getLime()
+    public Color getYellowGreen()
     {
-        if (lime == null)
+        if (yellowGreen == null)
         {
-            lime = mix(getYellow(), getGreen());
+            yellowGreen = mix(getYellow(), getGreen());
         }
-        return lime;
+        return yellowGreen;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
+     * Setzt die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
      * Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
-     * @param lime Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
-     *             Mischung aus <b>Gelb</b> und <b>Grün</b>).
+     * @param yellowGreen Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow
+     *                    green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setLime(Color lime)
+    public ColorScheme setYellowGreen(Color yellowGreen)
     {
-        this.lime = lime;
+        this.yellowGreen = yellowGreen;
         return this;
     }
 
     /**
-     * Setzt die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
+     * Setzt die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
      * Mischung aus <b>Gelb</b> und <b>Grün</b>) in hexadezimaler Codierung (z.
      * B. {@code #ff0000}).
      *
-     * @param lime Die Tertiärfarbe <b>Limettengrün</b> (englisch: <b>lime</b>,
-     *             Mischung aus <b>Gelb</b> und <b>Grün</b>) in hexadezimaler
-     *             Codierung (z. B. {@code #ff0000}).
+     * @param yellowGreen Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow
+     *                    green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>)
+     *                    in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setLime(String lime)
+    public ColorScheme setYellowGreen(String yellowGreen)
     {
-        this.lime = decode(lime);
+        this.yellowGreen = decode(yellowGreen);
         return this;
     }
 
@@ -867,7 +871,7 @@ public class ColorScheme
      * Itten</a> vor.
      * </p>
      *
-     * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).u
+     * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      */
     public Color getBrown()
     {
@@ -884,7 +888,7 @@ public class ColorScheme
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBrown(Color brown)
@@ -901,7 +905,7 @@ public class ColorScheme
      *              hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBrown(String brown)
@@ -926,7 +930,7 @@ public class ColorScheme
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setWhite(Color white)
@@ -943,7 +947,7 @@ public class ColorScheme
      *              hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setWhite(String white)
@@ -968,7 +972,7 @@ public class ColorScheme
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGray(Color gray)
@@ -985,7 +989,7 @@ public class ColorScheme
      *             hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGray(String gray)
@@ -1010,7 +1014,7 @@ public class ColorScheme
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlack(Color black)
@@ -1027,7 +1031,7 @@ public class ColorScheme
      *              hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können z. B.
+     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
      *         {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlack(String black)
@@ -1079,10 +1083,10 @@ public class ColorScheme
                 // .setOrange(Color.ORANGE)
                 .setGreen(Color.GREEN)
                 // Tertiärfarben
-                .setCyan(Color.CYAN)
+                .setBlueGreen(Color.CYAN)
                 // Pink passt nicht in das Schema.
-                // .setPink(Color.PINK)
-                .setPink(Color.MAGENTA)
+                // .setRedPurple(Color.PINK)
+                .setRedPurple(Color.MAGENTA)
                 // Andere
                 .setGray(Color.GRAY);
     }
@@ -1096,9 +1100,10 @@ public class ColorScheme
      */
     public Color[] getWheelColors()
     {
-        return new Color[] { getYellow(), getGold(), getOrange(), getBrick(),
-                getRed(), getPink(), getPurple(), getIndigo(), getBlue(),
-                getCyan(), getGreen(), getLime() };
+        return new Color[] { getYellow(), getYellowOrange(), getOrange(),
+                getRedOrange(), getRed(), getRedPurple(), getPurple(),
+                getBluePurple(), getBlue(), getBlueGreen(), getGreen(),
+                getYellowGreen() };
     }
 
     /**

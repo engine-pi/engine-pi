@@ -819,7 +819,7 @@ public class MainScene extends Scene implements KeyStrokeListener
                 label.setColor("black");
                 label.setCenter(center);
                 setLayerPosition(0);
-                setColor("cyan");
+                setColor("blueGreen");
                 setCenter(center);
             }
 
@@ -841,7 +841,7 @@ public class MainScene extends Scene implements KeyStrokeListener
                 }
                 else
                 {
-                    setColor("cyan");
+                    setColor("blueGreen");
                 }
             }
         }
@@ -935,7 +935,7 @@ public void onFrameUpdate(double pastTime)
     }
     else
     {
-        setColor("cyan");
+        setColor("blueGreen");
     }
 }
 ```

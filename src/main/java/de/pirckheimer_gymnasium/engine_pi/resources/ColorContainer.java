@@ -16,18 +16,20 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * <ol>
  * <li>{@code yellow}: Gelb</li>
- * <li>{@code gold}: Golden, Gelb Orange, Orange Gelb, Dunkelgelb</li>
+ * <li>{@code yellowOrange}: Gelb-Orangeen, Gelb Orange, Orange Gelb,
+ * Dunkelgelb</li>
  * <li>{@code orange}: Orange</li>
- * <li>{@code brick}: brick red, Ziegelrot, Orange Rot, Rot Orange, Hellrot</li>
+ * <li>{@code redOrange}: redOrange red, Rot-Orange, Orange Rot, Rot Orange,
+ * Hellrot</li>
  * <li>{@code red}: Rot</li>
- * <li>{@code pink}: Rosa</li>
+ * <li>{@code redPurple}: Rot-Violett</li>
  * <li>{@code purple}: violet, Violett, Lila</li>
- * <li>{@code indigo}: Violett Blau, Blau Violett</li>
+ * <li>{@code bluePurple}: Violett Blau, Blau Violett</li>
  * <li>{@code blue}: Blau</li>
- * <li>{@code cyan}: Türkis, Blau Grün, Grün Blau</li>
+ * <li>{@code blueGreen}: Blau-Grün, Blau Grün, Grün Blau</li>
  * <li>{@code green}: Grün</li>
- * <li>{@code lime}: Limettengrün, lime green, Limetten Grün, Limette, Gelb
- * Grün, Grün Gelb, Hellgrün</li>
+ * <li>{@code yellowGreen}: Gelb-Grün, yellowGreen green, Limetten Grün,
+ * Limette, Gelb Grün, Grün Gelb, Hellgrün</li>
  * </ol>
  *
  * Diese Farben sind ebenfalls im Farbenspeicher enthalten (gehören aber nicht
@@ -148,6 +150,12 @@ public class ColorContainer implements Container<Color>
      * </p>
      *
      * <p>
+     * Die Reihenfolge der zusammengesetzten Tertiärfarbennamen ist eigentlich
+     * festgelegt: Primärfarbname, dann Sekundärfarbname. Wir fügen jedoch Namen
+     * mit der falschen Reihenfolge auch zu Speicher hinzu.
+     * </p>
+     *
+     * <p>
      * Wird eines neues Farbschema gesetzt werden alle sich bereits im Speicher
      * befindenen Farben gelöscht.
      * </p>
@@ -161,30 +169,34 @@ public class ColorContainer implements Container<Color>
         // Primärfarbe
         add("yellow", schema.getYellow(), "Gelb");
         // Tertiärfarbe
-        add("gold", schema.getGold(), "Golden", "Gelb Orange", "Orange Gelb",
-                "Dunkelgelb");
+        add("yellow orange", schema.getYellowOrange(), "orange yellow", "gold",
+                "Gelb-Orange", "Orange-Gelb", "Golden", "Dunkelgelb");
         // Sekundärfarbe
         add("orange", schema.getOrange());
         // Tertiärfarbe
-        add("brick", schema.getBrick(), "brick red", "Ziegelrot", "Orange Rot",
-                "Rot Orange", "Hellrot");
+        add("red orange", schema.getRedOrange(), "orange red", "brick red",
+                "brick", "Rot-Orange", "Orange-Rot", "Ziegelrot", "Hellrot");
         // Primärfarbe
         add("red", schema.getRed(), "Rot");
         // Tertiärfarbe
-        add("pink", schema.getPink(), "Rosa");
+        add("red purple", schema.getRedPurple(), "purple red", "pink",
+                "Rot-Violett", "Violett-Rot", "Rosa");
         // Sekundärfarbe
         add("purple", schema.getPurple(), "Violet", "Violett", "Lila");
         // Tertiärfarbe
-        add("indigo", schema.getIndigo(), "Violett Blau", "Blau Violett");
+        add("blue purple", schema.getBluePurple(), "purple blue", "indigo",
+                "Violett Blau", "Blau Violett");
         // Primärfarbe
         add("blue", schema.getBlue(), "Blau");
         // Tertiärfarbe
-        add("cyan", schema.getCyan(), "Türkis", "Blau Grün", "Grün Blau");
+        add("blue green", schema.getBlueGreen(), "green blue", "cyan",
+                "Blau-Grün", "Grün-Blau", "Türkis");
         // Sekundärfarbe
         add("green", schema.getGreen(), "Grün");
         // Tertiärfarbe
-        add("lime", schema.getLime(), "lime green", "Limetten Grün", "Limette",
-                "Gelb Grün", "Grün Gelb", "Hellgrün");
+        add("yellow green", schema.getYellowGreen(), "green yellow", "lime",
+                "lime green", "Gelb-Grün", "Grün-Gelb", "Limetten Grün",
+                "Limette", "Hellgrün");
         // andere Zusammensetzung, nicht nach Itten.
         add("brown", schema.getBrown(), "Braun");
         add("white", schema.getWhite(), "Weiß");

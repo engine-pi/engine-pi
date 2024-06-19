@@ -96,7 +96,7 @@ public final class SingleTask implements FrameUpdateListener
 
     /**
      * @param pastTime Die Zeit in Sekunden, die seit dem letzten Update
-     *                     vergangen
+     *                 vergangen
      */
     @Override
     public void onFrameUpdate(double pastTime)

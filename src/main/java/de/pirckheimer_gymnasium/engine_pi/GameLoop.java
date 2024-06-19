@@ -91,8 +91,8 @@ public final class GameLoop
                         frameDuration);
                 scene.step(pastTime, threadPoolExecutor::submit);
                 // Beobachter der Bildaktualisierung.
-                frameUpdateListeners.invoke(
-                        listener -> listener.onFrameUpdate(pastTime));
+                frameUpdateListeners
+                        .invoke(listener -> listener.onFrameUpdate(pastTime));
                 scene.getCamera().onFrameUpdate();
                 scene.invokeFrameUpdateListeners(pastTime);
                 Runnable runnable = dispatchableQueue.poll();

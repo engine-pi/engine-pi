@@ -191,8 +191,8 @@ public final class PeriodicTask implements FrameUpdateListener
     }
 
     /**
-     * @param pastTime Die Zeit in Sekunden, die seit der letzten
-     *                     Aktualisierung vergangen ist.
+     * @param pastTime Die Zeit in Sekunden, die seit der letzten Aktualisierung
+     *                 vergangen ist.
      */
     @Override
     @Internal

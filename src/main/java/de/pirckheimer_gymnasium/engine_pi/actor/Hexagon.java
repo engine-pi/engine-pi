@@ -42,7 +42,7 @@ public class Hexagon extends RegularPolygon
     public Hexagon(double radius)
     {
         super(6, radius);
-        setColor("pink");
+        setColor("redPurple");
     }
 
     public Hexagon()
@@ -62,12 +62,12 @@ public class Hexagon extends RegularPolygon
                 // Erzeugen mit Hilfe des Konstruktors ohne Parameter.
                 Hexagon h2 = new Hexagon(4);
                 h2.setPosition(-5, -5);
-                h2.setColor("gold");
+                h2.setColor("yellowOrange");
                 add(h2);
                 // Erzeugen mit Hilfe der createHexagon()-Methode
-                createHexagon(3, 3, "lime");
+                createHexagon(3, 3, "yellowGreen");
                 // Erzeugen mit Hilfe der createHexagon()-Methode und Rotation.
-                Hexagon h4 = createHexagon(2, -3, 3, "brick");
+                Hexagon h4 = createHexagon(2, -3, 3, "redOrange");
                 h4.rotateBy(45);
             }
         });
