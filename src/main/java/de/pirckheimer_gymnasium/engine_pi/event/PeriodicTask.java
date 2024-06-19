@@ -191,18 +191,18 @@ public final class PeriodicTask implements FrameUpdateListener
     }
 
     /**
-     * @param deltaSeconds Die Zeit in Sekunden, die seit der letzten
+     * @param pastTime Die Zeit in Sekunden, die seit der letzten
      *                     Aktualisierung vergangen ist.
      */
     @Override
     @Internal
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         if (isPaused)
         {
             return;
         }
-        countdown -= deltaSeconds;
+        countdown -= pastTime;
         if (countdown < 0)
         {
             countdown += interval;

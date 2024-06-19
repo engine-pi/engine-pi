@@ -105,7 +105,7 @@ public class DefaultControl implements DefaultListener
      *              Aktualisierung vergangen ist.
      */
     @Override
-    public void onFrameUpdate(double delta)
+    public void onFrameUpdate(double pastTime)
     {
         if (hasNoScene())
         {
@@ -121,19 +121,19 @@ public class DefaultControl implements DefaultListener
             double dX = 0, dY = 0;
             if (Game.isKeyPressed(KeyEvent.VK_UP))
             {
-                dY = CAMERA_SPEED * delta;
+                dY = CAMERA_SPEED * pastTime;
             }
             else if (Game.isKeyPressed(KeyEvent.VK_DOWN))
             {
-                dY = -CAMERA_SPEED * delta;
+                dY = -CAMERA_SPEED * pastTime;
             }
             if (Game.isKeyPressed(KeyEvent.VK_LEFT))
             {
-                dX = -CAMERA_SPEED * delta;
+                dX = -CAMERA_SPEED * pastTime;
             }
             else if (Game.isKeyPressed(KeyEvent.VK_RIGHT))
             {
-                dX = CAMERA_SPEED * delta;
+                dX = CAMERA_SPEED * pastTime;
             }
             if (dX != 0 || dY != 0)
             {

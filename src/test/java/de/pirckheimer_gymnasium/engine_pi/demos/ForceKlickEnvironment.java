@@ -216,7 +216,7 @@ public class ForceKlickEnvironment extends Scene implements
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         // Visualisiere ggf. die Vectorstange
         if (klickMode == KlickMode.DIRECTION_INTENSITY)

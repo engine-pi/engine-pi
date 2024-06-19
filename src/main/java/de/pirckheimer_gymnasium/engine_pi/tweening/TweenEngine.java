@@ -201,7 +201,7 @@ public class TweenEngine implements FrameUpdateListener
      * Updates all registered Tweens by applying the {@code TweenEquation}.
      */
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         for (final Tweenable target : this.getTweens().keySet())
         {

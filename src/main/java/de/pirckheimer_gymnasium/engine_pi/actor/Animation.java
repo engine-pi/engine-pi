@@ -159,9 +159,9 @@ public class Animation extends Actor implements FrameUpdateListener
 
     @Internal
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
-        this.currentTime += deltaSeconds;
+        this.currentTime += pastTime;
         AnimationFrame currentFrame = this.frames[currentIndex];
         while (this.currentTime > currentFrame.getDuration())
         {

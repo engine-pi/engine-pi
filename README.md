@@ -758,7 +758,6 @@ Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
 Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
 ```java
-
 public class MainScene extends Scene implements KeyStrokeListener
 {
     private PauseMenu pauseMenu;
@@ -768,7 +767,7 @@ public class MainScene extends Scene implements KeyStrokeListener
         pauseMenu = new PauseMenu(this);
         Rectangle toAnimate = new Rectangle(5, 2);
         toAnimate.setCenter(0, -5);
-        toAnimate.setColor(Color.ORANGE);
+        toAnimate.setColor("orange");
         CircleAnimation animation = new CircleAnimation(toAnimate,
                 new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
@@ -802,7 +801,7 @@ public class MainScene extends Scene implements KeyStrokeListener
             this.mainScene = mainScene;
             MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
             add(back, back.label);
-            Text headline = new Text("Mach mal Pause.", 2.5);
+            Text headline = new Text("Mach mal Pause.", 2);
             headline.setCenter(0, 3);
             add(headline);
         }
@@ -817,10 +816,10 @@ public class MainScene extends Scene implements KeyStrokeListener
                 super(10, 1.5);
                 label = new Text(labelText, 1);
                 label.setLayerPosition(1);
-                label.setColor(Color.BLACK);
+                label.setColor("black");
                 label.setCenter(center);
                 setLayerPosition(0);
-                setColor(Color.cyan);
+                setColor("cyan");
                 setCenter(center);
             }
 
@@ -834,15 +833,15 @@ public class MainScene extends Scene implements KeyStrokeListener
             }
 
             @Override
-            public void onFrameUpdate(double v)
+            public void onFrameUpdate(double pastTime)
             {
                 if (contains(Game.getMousePositionInCurrentScene()))
                 {
-                    setColor(Color.MAGENTA);
+                    setColor("blue");
                 }
                 else
                 {
-                    setColor(Color.CYAN);
+                    setColor("cyan");
                 }
             }
         }
@@ -914,7 +913,7 @@ dauert 8 Sekunden.
 ```java
 Rectangle toAnimate = new Rectangle(5, 2);
 toAnimate.setCenter(0, -5);
-toAnimate.setColor(Color.ORANGE);
+toAnimate.setColor("orange");
 CircleAnimation animation = new CircleAnimation(toAnimate,
         new Vector(0, 0), 8, true, true);
 addFrameUpdateListener(animation);
@@ -928,7 +927,7 @@ davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 
 ```java
 @Override
-public void onFrameUpdate(double delta)
+public void onFrameUpdate(double pastTime)
 {
     if (contains(Game.getMousePositionInCurrentScene()))
     {
@@ -1101,7 +1100,7 @@ den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
 ```java
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         Vector mousePosition = getMousePosition();
         Vector ballCenter = ball.getCenter();
@@ -1555,7 +1554,7 @@ private static final float FORCE = 16000;
 ```
 
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
-Methode `onFrameUpdate(double delta)` erweitert:
+Methode `onFrameUpdate(double pastTime)` erweitert:
 
 ![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
@@ -1563,7 +1562,7 @@ Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/m
 Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
 ```java
-//In: onFrameUpdate(double delta)
+//In: onFrameUpdate(double pastTime)
 
 if (Math.abs(velocity.getX()) > MAX_SPEED)
 {
@@ -1823,7 +1822,7 @@ class Frog extends Image implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         Vector velocity = this.getVelocity();
         // A: Die Blickrichtung des Frosches steuern

@@ -48,11 +48,11 @@ public abstract class AggregateFrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         if (!paused)
         {
-            listeners.invoke(listener -> listener.onFrameUpdate(deltaSeconds));
+            listeners.invoke(listener -> listener.onFrameUpdate(pastTime));
         }
     }
 

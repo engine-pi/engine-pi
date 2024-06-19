@@ -123,7 +123,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         if (paused)
         {
@@ -132,7 +132,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         double progress;
         if (!goingBackwards)
         {
-            this.currentTime += deltaSeconds;
+            this.currentTime += pastTime;
             if (this.currentTime > this.duration)
             {
                 switch (this.mode)
@@ -170,7 +170,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         else
         {
             // Ping-Pong-Backwards Strategy
-            this.currentTime -= deltaSeconds;
+            this.currentTime -= pastTime;
             if (this.currentTime < 0)
             {
                 // PINGPONG backwards ist fertig -> Jetzt wieder vorwärts

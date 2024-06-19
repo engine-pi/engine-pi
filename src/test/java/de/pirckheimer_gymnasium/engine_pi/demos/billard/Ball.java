@@ -40,7 +40,7 @@ public class Ball extends Circle implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         if (getVelocity().getLength() < 0.2)
         {

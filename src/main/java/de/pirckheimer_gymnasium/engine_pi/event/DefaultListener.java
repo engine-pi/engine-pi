@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 public interface DefaultListener extends FrameUpdateListener, KeyStrokeListener,
         MouseClickListener, MouseScrollListener
 {
-    default void onFrameUpdate(double delta)
+    default void onFrameUpdate(double pastTime)
     {
         // Standardmäßig leer.
     }

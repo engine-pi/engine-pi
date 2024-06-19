@@ -214,7 +214,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         Vector velocity = getVelocity();
         gameData.setPlayerVelocity(velocity.getLength());

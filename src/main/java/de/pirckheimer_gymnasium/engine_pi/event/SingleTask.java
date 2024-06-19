@@ -95,13 +95,13 @@ public final class SingleTask implements FrameUpdateListener
     }
 
     /**
-     * @param deltaSeconds Die Zeit in Sekunden, die seit dem letzten Update
+     * @param pastTime Die Zeit in Sekunden, die seit dem letzten Update
      *                     vergangen
      */
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
-        countdown -= deltaSeconds;
+        countdown -= pastTime;
         if (!done && this.countdown < 0)
         {
             runnable.run();

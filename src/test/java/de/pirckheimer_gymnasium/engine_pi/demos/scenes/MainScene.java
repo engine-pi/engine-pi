@@ -20,7 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.demos.scenes;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -43,7 +42,7 @@ public class MainScene extends Scene implements KeyStrokeListener
         pauseMenu = new PauseMenu(this);
         Rectangle toAnimate = new Rectangle(5, 2);
         toAnimate.setCenter(0, -5);
-        toAnimate.setColor(Color.ORANGE);
+        toAnimate.setColor("orange");
         CircleAnimation animation = new CircleAnimation(toAnimate,
                 new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
@@ -77,7 +76,7 @@ public class MainScene extends Scene implements KeyStrokeListener
             this.mainScene = mainScene;
             MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
             add(back, back.label);
-            Text headline = new Text("Mach mal Pause.", 2.5);
+            Text headline = new Text("Mach mal Pause.", 2);
             headline.setCenter(0, 3);
             add(headline);
         }
@@ -92,10 +91,10 @@ public class MainScene extends Scene implements KeyStrokeListener
                 super(10, 1.5);
                 label = new Text(labelText, 1);
                 label.setLayerPosition(1);
-                label.setColor(Color.BLACK);
+                label.setColor("black");
                 label.setCenter(center);
                 setLayerPosition(0);
-                setColor(Color.cyan);
+                setColor("cyan");
                 setCenter(center);
             }
 
@@ -109,15 +108,15 @@ public class MainScene extends Scene implements KeyStrokeListener
             }
 
             @Override
-            public void onFrameUpdate(double delta)
+            public void onFrameUpdate(double pastTime)
             {
                 if (contains(Game.getMousePositionInCurrentScene()))
                 {
-                    setColor(Color.MAGENTA);
+                    setColor("blue");
                 }
                 else
                 {
-                    setColor(Color.CYAN);
+                    setColor("cyan");
                 }
             }
         }

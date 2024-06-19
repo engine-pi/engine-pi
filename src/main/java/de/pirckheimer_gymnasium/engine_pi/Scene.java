@@ -135,11 +135,11 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Führt auf allen Ebenen <b>parallelisiert</b> den World-Step aus.
      *
-     * @param deltaSeconds Die Echtzeit, die seit dem letzten World-Step
+     * @param pastTime Die Echtzeit, die seit dem letzten World-Step
      *                     vergangen ist.
      */
     @Internal
-    public final void step(double deltaSeconds,
+    public final void step(double pastTime,
             Function<Runnable, Future<?>> invoker) throws InterruptedException
     {
         synchronized (layers)
@@ -148,7 +148,7 @@ public class Scene implements KeyStrokeListenerRegistration,
             for (Layer layer : layers)
             {
                 Future<?> future = invoker
-                        .apply(() -> layer.step(deltaSeconds));
+                        .apply(() -> layer.step(pastTime));
                 layerFutures.add(future);
             }
             for (Future<?> layerFuture : layerFutures)
@@ -475,15 +475,15 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     @Internal
-    public final void invokeFrameUpdateListeners(double deltaSeconds)
+    public final void invokeFrameUpdateListeners(double pastTime)
     {
         frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
-                .onFrameUpdate(deltaSeconds));
+                .onFrameUpdate(pastTime));
         synchronized (layers)
         {
             for (Layer layer : layers)
             {
-                layer.invokeFrameUpdateListeners(deltaSeconds);
+                layer.invokeFrameUpdateListeners(pastTime);
             }
         }
     }

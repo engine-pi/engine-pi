@@ -84,9 +84,9 @@ public class PressedKeyRepeater implements KeyStrokeListener
         }
 
         @Override
-        public void onFrameUpdate(double deltaSeconds)
+        public void onFrameUpdate(double pastTime)
         {
-            countdown -= deltaSeconds;
+            countdown -= pastTime;
             if (countdown < 0)
             {
                 action.runRepeatedTask();

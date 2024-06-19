@@ -573,11 +573,11 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     @Internal
-    public void step(double deltaSeconds)
+    public void step(double pastTime)
     {
         synchronized (worldHandler)
         {
-            worldHandler.step(deltaSeconds * timeDistort);
+            worldHandler.step(pastTime * timeDistort);
         }
     }
 
@@ -606,9 +606,9 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     @Internal
-    void invokeFrameUpdateListeners(double deltaSeconds)
+    void invokeFrameUpdateListeners(double pastTime)
     {
-        double scaledSeconds = deltaSeconds * timeDistort;
+        double scaledSeconds = pastTime * timeDistort;
         frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
                 .onFrameUpdate(scaledSeconds));
     }

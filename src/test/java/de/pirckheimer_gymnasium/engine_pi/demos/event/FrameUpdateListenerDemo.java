@@ -18,9 +18,9 @@ public class FrameUpdateListenerDemo extends Scene
     private class MyLayer extends Layer implements FrameUpdateListener
     {
         @Override
-        public void onFrameUpdate(double deltaSeconds)
+        public void onFrameUpdate(double pastTime)
         {
-            System.out.println("Layer: " + deltaSeconds);
+            System.out.println("Layer: " + pastTime);
         }
     }
 
@@ -33,16 +33,16 @@ public class FrameUpdateListenerDemo extends Scene
         }
 
         @Override
-        public void onFrameUpdate(double deltaSeconds)
+        public void onFrameUpdate(double pastTime)
         {
-            System.out.println("Actor: " + deltaSeconds);
+            System.out.println("Actor: " + pastTime);
         }
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
-        System.out.println("Scene: " + deltaSeconds);
+        System.out.println("Scene: " + pastTime);
     }
 
     public static void main(String[] args)

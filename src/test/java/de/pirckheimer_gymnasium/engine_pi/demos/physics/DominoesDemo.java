@@ -96,7 +96,7 @@ public class DominoesDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         Vector mousePosition = getMousePosition();
         Vector ballCenter = ball.getCenter();

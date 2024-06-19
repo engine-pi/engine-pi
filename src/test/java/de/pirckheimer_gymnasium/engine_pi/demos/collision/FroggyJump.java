@@ -126,7 +126,7 @@ class Frog extends Image implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         Vector velocity = this.getVelocity();
         // A: Die Blickrichtung des Frosches steuern

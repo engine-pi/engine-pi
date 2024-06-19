@@ -87,14 +87,14 @@ public final class GameLoop
             Scene scene = this.currentScene.get();
             try
             {
-                double deltaSeconds = Math.min(2 * DESIRED_FRAME_DURATION,
+                double pastTime = Math.min(2 * DESIRED_FRAME_DURATION,
                         frameDuration);
-                scene.step(deltaSeconds, threadPoolExecutor::submit);
+                scene.step(pastTime, threadPoolExecutor::submit);
                 // Beobachter der Bildaktualisierung.
                 frameUpdateListeners.invoke(
-                        listener -> listener.onFrameUpdate(deltaSeconds));
+                        listener -> listener.onFrameUpdate(pastTime));
                 scene.getCamera().onFrameUpdate();
-                scene.invokeFrameUpdateListeners(deltaSeconds);
+                scene.invokeFrameUpdateListeners(pastTime);
                 Runnable runnable = dispatchableQueue.poll();
                 while (runnable != null)
                 {

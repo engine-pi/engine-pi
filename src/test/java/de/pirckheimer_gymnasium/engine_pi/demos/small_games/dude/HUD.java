@@ -45,7 +45,7 @@ public class HUD extends Layer implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         display.setLineDisplay(0, 1);
         display.setLineDisplay(1,

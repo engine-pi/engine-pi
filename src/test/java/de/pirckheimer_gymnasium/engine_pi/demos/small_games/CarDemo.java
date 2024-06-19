@@ -202,7 +202,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         boolean left = Game.isKeyPressed(KeyEvent.VK_J);
         boolean right = Game.isKeyPressed(KeyEvent.VK_L);
@@ -336,7 +336,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         }
 
         @Override
-        public void onFrameUpdate(double deltaSeconds)
+        public void onFrameUpdate(double pastTime)
         {
             // Federeffekt für die Achsen
             double translation = spring.getTranslation();

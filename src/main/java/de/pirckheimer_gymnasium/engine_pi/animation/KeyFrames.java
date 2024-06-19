@@ -136,7 +136,7 @@ public class KeyFrames implements FrameUpdateListener
     private final ArrayList<KeyFrame<Double>> keyFrames = new ArrayList<>();
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         if (paused)
         {
@@ -175,7 +175,7 @@ public class KeyFrames implements FrameUpdateListener
             setupKeyframeForInterpolation(currentKeyframe.getNext());
         }
         // Time Update
-        currentAnimationTime += deltaSeconds;
+        currentAnimationTime += pastTime;
     }
 
     private void prepForAnimation()

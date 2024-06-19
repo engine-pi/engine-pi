@@ -108,26 +108,26 @@ public class MinimalDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double deltaSeconds)
+    public void onFrameUpdate(double pastTime)
     {
         // Die Geschwindigkeit, in der sich die Kamera bewegt (pro Sekunde)
         float camSpeed = 600;
         if (Game.isKeyPressed(KeyEvent.VK_W))
         {
             // W ist gedrückt → Kamera nach oben bewegen.
-            getCamera().moveBy(0, camSpeed * deltaSeconds);
+            getCamera().moveBy(0, camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_S))
         {
-            getCamera().moveBy(0, -camSpeed * deltaSeconds);
+            getCamera().moveBy(0, -camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            getCamera().moveBy(-camSpeed * deltaSeconds, 0);
+            getCamera().moveBy(-camSpeed * pastTime, 0);
         }
         if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            getCamera().moveBy(camSpeed * deltaSeconds, 0);
+            getCamera().moveBy(camSpeed * pastTime, 0);
         }
     }
 

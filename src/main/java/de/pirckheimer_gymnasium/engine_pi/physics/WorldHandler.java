@@ -162,7 +162,7 @@ public class WorldHandler implements ContactListener
         }
     }
 
-    public void step(double deltaSeconds)
+    public void step(double pastTime)
     {
         if (worldPaused)
         {
@@ -174,7 +174,7 @@ public class WorldHandler implements ContactListener
             {
                 // We use constant time frames for consistency
                 // https://gamedev.stackexchange.com/q/86609/38865
-                simulationAccumulator += deltaSeconds;
+                simulationAccumulator += pastTime;
                 while (simulationAccumulator >= STEP_TIME)
                 {
                     simulationAccumulator -= STEP_TIME;
