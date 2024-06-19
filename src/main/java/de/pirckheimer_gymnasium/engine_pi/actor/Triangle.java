@@ -44,6 +44,10 @@ public class Triangle extends Polygon
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
+        // https://www.byk-instruments.com/de/color-determines-shape
+        // Gelb zeigt sich kämpferisch und aggressiv, besitzt einen schwerelosen
+        // Charakter und steht bei Itten für den Geist und das Denken. Diesem
+        // Charakter entspricht das Dreieck.
         setColor("red");
     }
 

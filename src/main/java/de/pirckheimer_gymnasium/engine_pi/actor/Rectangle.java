@@ -65,7 +65,11 @@ public class Rectangle extends Geometry
     public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
-        setColor("blue");
+        // https://www.byk-instruments.com/de/color-determines-shape
+        // Die Farbe Rot stellt für Itten die körperhafte Materie dar. Sie wirkt
+        // statisch und schwer. Er ordnet deshalb der Farbe die statische Form
+        // des Quadrates zu.
+        setColor("red");
     }
 
     public Rectangle(double width, double height,

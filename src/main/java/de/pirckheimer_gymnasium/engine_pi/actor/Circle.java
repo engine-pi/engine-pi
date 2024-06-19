@@ -51,7 +51,12 @@ public class Circle extends Geometry
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        setColor("yellow");
+        // https://www.byk-instruments.com/de/color-determines-shape
+        // Die Farbe Blau dagegen wirkt für Itten rund, erweckt ein Gefühl der
+        // Entspanntheit und Bewegung und steht für den "in sich bewegten
+        // Geist", wie er sich ausdrückt. Der Kreis entspricht der Farbe Blau,
+        // da er ein Symbol der "stetigen Bewegung" darstelle.
+        setColor("blue");
     }
 
     /**
