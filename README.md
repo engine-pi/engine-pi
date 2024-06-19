@@ -750,7 +750,7 @@ Methode `add(...)`.
 Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
 es die Methode `Game.transitionToScene(Scene)`.
 
-Szenen in der Engine: Beispiel mit Pausenmenü
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/scenes/Scene_Demonstration.png)
 
 <!-- #### Ein Pausenmenü -->
 
@@ -854,14 +854,15 @@ public class MainScene extends Scene implements KeyStrokeListener
 }
 ```
 
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/scenes/Tutorial_Pause_Menu.gif)
+
 <!-- ### Die zwei Szenen -->
 
-Die Hauptszene ist `MainScene`. Hierdrin könnte ein normaler Game Loop für ein
-Spiel stattfinden. Für dieses Tutorial ist in der Hauptszene stattdessen nur
-eine stumpfe Animation.
+Die Hauptszene ist `MainScene`. Hier könnte ein Game Loop für ein
+Spiel stattfinden. Dieses Tutorial zeigt stattdessen eine kleine Animation.
 
-Die zweite Szene ist `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
-kleinen Button, um das Menü wieder zu verlassen.
+Die zweite Szene heißt `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
+kleinen Knopf, um das Menü wieder zu verlassen.
 
 ```java
 public class MainScene extends Scene
@@ -905,10 +906,9 @@ public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
 
 <!-- ### Kosmetische Kleinigkeiten -->
 
-Damit es zumindest irgendetwas zu sehen gibt in den zwei kahlen Szenen, hat die
-Hauptszene eine interpolierte Rotationsanimation. Diese rotiert ein oranges
-Rechteck wiederholend um den Punkt (0|0). Eine volle Rotation im Uhrzeigersinn
-dauert 8 Sekunden.
+In der Hauptszene findet eine interpolierte Rotationsanimation statt. Diese
+rotiert ein oranges Rechteck wiederholend um den Punkt (0|0). Eine volle
+Rotation im Uhrzeigersinn dauert 8 Sekunden.
 
 ```java
 Rectangle toAnimate = new Rectangle(5, 2);
@@ -920,7 +920,7 @@ addFrameUpdateListener(animation);
 add(toAnimate);
 ```
 
-Das Pausenmenü hat einen Hover-Effekt. Hierzu wird einfach jeden Frame
+Das Pausenmenü hat einen Hover-Effekt. Hierzu wird in jeden Einzelbild
 überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 `Game.getMousePositionInCurrentScene()` genutzt:
@@ -931,25 +931,25 @@ public void onFrameUpdate(double pastTime)
 {
     if (contains(Game.getMousePositionInCurrentScene()))
     {
-        setColor(Color.MAGENTA);
+        setColor("blue");
     }
     else
     {
-        setColor(Color.CYAN);
+        setColor("cyan");
     }
 }
 ```
 
 <!-- ### Anmerkungen und Beobachtungen -->
 
-- Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
-  die aktive Szene ist. Dies liegt daran, dass die Animation als
-  `FrameUpdateListener` in der Hauptszene angemeldet wurde
-  (`addFrameUpdateListener(animation)`). Alle Beobachter einer Szene können nur dann
-  aufgerufen werden, wenn die Szene aktiv ist.
-- Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
-  `KeyStrokeListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
-  Hauptszene angemeldet.
+Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
+die aktive Szene ist. Dies liegt daran, dass die Animation als
+`FrameUpdateListener` in der Hauptszene angemeldet wurde
+(`addFrameUpdateListener(animation)`). Alle Beobachter einer Szene können nur
+dann aufgerufen werden, wenn die Szene aktiv ist.
+Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
+`KeyStrokeListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
+Hauptszene angemeldet.
 
 ## Physics
 
