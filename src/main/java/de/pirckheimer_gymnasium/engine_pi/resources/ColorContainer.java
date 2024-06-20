@@ -11,24 +11,42 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link Color}.
  *
  * <p>
- * Die zwölf Farben nach dem Farbkreis von Itten:
+ * Die Farben werden in einer {@link Map} unter einem <b>Farbnamen</b> abgelegt.
+ * Neben dem Hauptfarbnamen können weitere Farbnamen als <b>Aliasse</b>
+ * gespeichert.
+ * </p>
+ *
+ * <p>
+ * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
+ * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
+ * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
+ * der Unterstrich wird ebenfalls nicht berücksichtigt ignoriert.
+ * </p>
+ *
+ * <p>
+ * Die zwölf Farben nach dem Farbkreis von Itten zusammen mit ihren Aliassen
+ * bzw. Synonymen:
  * </p>
  *
  * <ol>
  * <li>{@code yellow}: Gelb</li>
- * <li>{@code yellow orange}: Gelb Orange, Orange Gelb, Dunkelgelb</li>
+ * <li>{@code yellow orange}: „orange yellow“, „gold“, „Gelb-Orange“,
+ * „Orange-Gelb“, „Golden“, „Dunkelgelb“</li>
  * <li>{@code orange}: Orange</li>
- * <li>{@code red orange}: redOrange red, Rot-Orange, Orange Rot, Rot Orange,
- * Hellrot</li>
+ * <li>{@code red orange}: „orange red“, „brick red“, „brick“, „Rot-Orange“,
+ * „Orange-Rot“, „Ziegelrot“, „Hellrot“</li>
  * <li>{@code red}: Rot</li>
- * <li>{@code red purple}: Rot-Violett</li>
- * <li>{@code purple}: violet, Violett, Lila</li>
- * <li>{@code blue purple}: Violett Blau, Blau Violett</li>
+ * <li>{@code red purple}: „purple red“, „pink“, „Rot-Violett“, „Violett-Rot“,
+ * „Rosa“</li>
+ * <li>{@code purple}: „Violet“, „Violett“, „Lila“</li>
+ * <li>{@code blue purple}: „purple blue“, „indigo“, „Violett Blau“, „Blau
+ * Violett“</li>
  * <li>{@code blue}: Blau</li>
- * <li>{@code blue green}: Blau-Grün, Blau Grün, Grün Blau</li>
+ * <li>{@code blue green}: „green blue“, „cyan“, „Blau-Grün“, „Grün-Blau“,
+ * „Türkis“</li>
  * <li>{@code green}: Grün</li>
- * <li>{@code yellow green}: Gelb-Grün, yellowGreen green, Limetten Grün,
- * Limette, Gelb Grün, Grün Gelb, Hellgrün</li>
+ * <li>{@code yellow green}: „green yellow“, „lime“, „lime green“, „Gelb-Grün“,
+ * „Grün-Gelb“, „Limetten Grün“, „Limette“, „Hellgrün“</li>
  * </ol>
  *
  * Diese Farben sind ebenfalls im Farbenspeicher enthalten (gehören aber nicht
@@ -40,19 +58,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code gray}: grey, Grau</li>
  * <li>{@code black}: Schwarz</li>
  * </ul>
- *
- * <p>
- * Die Farben werden in einer {@link Map} unter einem <b>Farbnamen</b> abgelegt.
- * Neben dem Hauptfarbnamen können weitere Farbnamen als <b>Aliasse</b>
- * gespeichert.
- * </p>
- *
- * <p>
- * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
- * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
- * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
- * der Unterstrich werden ignoriert.
- * </p>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colors
  */
