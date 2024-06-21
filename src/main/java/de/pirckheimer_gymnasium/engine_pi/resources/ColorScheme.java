@@ -18,7 +18,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </p>
  *
  * <p>
- * Diese Klasse ist inspiriert von dem Farbkreis von Itten: Aus den drei
+ * Diese Klasse ist inspiriert durch den Farbkreis von Itten: Aus den drei
  * Primärfarben Rot, Gelb und Blau lassen sich weitere Sekundärfarben (Orange,
  * Violett und Grün) mischen. Sechs „Tertiärfarben“ erweitern Ittens Farbkreis
  * auf insgesamt zwölf Farben.
@@ -66,9 +66,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code gray} (<b>Grau</b>)</li>
  * <li>{@code black} (<b>Schwarz</b>)</li>
  * </ul>
- *
- * Anderes Farbschema:
- * https://commons.wikimedia.org/wiki/File:Color_star-en_(tertiary_names).svg
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colorScheme
  */
@@ -1069,11 +1066,11 @@ public class ColorScheme
     }
 
     /**
-     * Erzeugt ein Farbschema, das alle vordefinierten statischen Farbattribute
-     * der Java-{@link Color}-Klasse verwendet.
+     * Erzeugt ein Farbschema, das einige vordefinierten statischen
+     * Farbattribute der Java-{@link Color}-Klasse verwendet.
      *
-     * @return Ein Farbschema, das alle vordefinierten statischen Farbattribute
-     *         der Java-{@link Color}-Klasse verwendet.
+     * @return Ein Farbschema, das einige vordefinierten statischen
+     *         Farbattribute der Java-{@link Color}-Klasse verwendet.
      */
     public static ColorScheme getJavaScheme()
     {
@@ -1092,8 +1089,23 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die zwölf Farben des Farbkreises von Itten in der richtigen
-     * Reihenfolge von Gelb ausgehend zurück.
+     * Gibt die zwölf Farben des Farbkreises von Itten in der Reihenfolge von
+     * Gelb ausgehend zurück.
+     *
+     * <ol>
+     * <li>{@code yellow} (<b>Gelb</b>)</li>
+     * <li>{@code yellow orange} (<b>Gelb-Orange</b>)</li>
+     * <li>{@code orange} (<b>Orange</b>)</li>
+     * <li>{@code red orange} (<b>Rot-Orange</b>)</li>
+     * <li>{@code red} (<b>Rot</b>)</li>
+     * <li>{@code red purple} (<b>Rot-Violett</b>)</li>
+     * <li>{@code purple} (<b>Violett</b>)</li>
+     * <li>{@code blue purple} (<b>Blau-Violett</b>)</li>
+     * <li>{@code blue} (<b>Blau</b>)</li>
+     * <li>{@code blue green} (<b>Blau-Grün</b>)</li>
+     * <li>{@code green} (<b>Grün</b>)</li>
+     * <li>{@code yellow green} (<b>Gelb-Grün</b>)</li>
+     * </ol>
      *
      * @return Die zwölf Farben des Farbkreises von Itten in der richtigen
      *         Reihenfolge.
@@ -1140,7 +1152,8 @@ public class ColorScheme
                         .entrySet())
                 {
                     createCircle(x, 0, entry.getValue());
-                    createText(entry.getKey(), 0.5, x, labelY);
+                    createText(entry.getKey(), 0.5, x, labelY)
+                            .setColor("white");
                     x += 2;
                     labelY -= 2;
                     if (labelY < -4)

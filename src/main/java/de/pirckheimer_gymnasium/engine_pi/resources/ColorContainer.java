@@ -13,14 +13,14 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <p>
  * Die Farben werden in einer {@link Map} unter einem <b>Farbnamen</b> abgelegt.
  * Neben dem Hauptfarbnamen können weitere Farbnamen als <b>Aliasse</b>
- * gespeichert.
+ * gespeichert werden.
  * </p>
  *
  * <p>
  * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
  * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
  * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
- * der Unterstrich wird ebenfalls nicht berücksichtigt ignoriert.
+ * der Unterstrich werden ebenfalls nicht berücksichtigt.
  * </p>
  *
  * <p>
@@ -74,6 +74,13 @@ public class ColorContainer implements Container<Color>
      */
     private final Map<String, String> aliases = new HashMap<>();
 
+    /**
+     * Normalisiert einen Farbnamen.
+     *
+     * @param name Ein Farbname, der noch nicht normalisiert wurde (beispielsweise {@code Gelb-Grün}).
+     *
+     * @return Ein normalisierter Farbname (beispielsweise {@code gelbgruen}).
+     */
     private String normalizeName(String name)
     {
         return name.toLowerCase().replaceAll("\\s", "").replaceAll("-", "")
@@ -91,7 +98,7 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, Color color)
     {
-        resources.put(name, color);
+        resources.put(normalizeName(name), color);
         return color;
     }
 
@@ -106,7 +113,7 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, String color)
     {
-        return add(name, ColorUtil.decode(color));
+        return add(normalizeName(name), ColorUtil.decode(color));
     }
 
     /**
@@ -140,7 +147,7 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, String color, String... alias)
     {
-        return add(name, ColorUtil.decode(color), alias);
+        return add(normalizeName(name), ColorUtil.decode(color), alias);
     }
 
     /**
@@ -149,19 +156,20 @@ public class ColorContainer implements Container<Color>
      *
      * <p>
      * Die Farben werden in einer {@link Map} unter dem englischen Farbnamen
-     * abgelegt. Neben dem englischen Hauptfarbnamen werden sowie weitere
-     * englische und deutsche Farbnamen als Aliasse gespeichert. Auf eine Farbe
-     * des Farbenschema kann deshalb mit mehreren Farbnamen zugegriffen werden.
+     * abgelegt. Neben dem englischen Hauptfarbnamen werden weitere englische
+     * und deutsche Farbnamen als Aliasse gespeichert. Auf eine Farbe des
+     * Farbenschemas kann deshalb mit mehreren Farbnamen zugegriffen werden.
      * </p>
      *
      * <p>
      * Die Reihenfolge der zusammengesetzten Tertiärfarbennamen ist eigentlich
-     * festgelegt: Primärfarbname, dann Sekundärfarbname. Wir fügen jedoch Namen
-     * mit der falschen Reihenfolge auch zu Speicher hinzu.
+     * festgelegt: Primärfarbname, dann Sekundärfarbname (Gelb-Orange nicht
+     * Orange-Gelb). Wir fügen jedoch auch Namen mit der falschen Reihenfolge
+     * zum Speicher hinzu.
      * </p>
      *
      * <p>
-     * Wird eines neues Farbschema gesetzt werden alle sich bereits im Speicher
+     * Wird ein neues Farbschema gesetzt, werden alle sich bereits im Speicher
      * befindenen Farben gelöscht.
      * </p>
      *

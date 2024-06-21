@@ -113,6 +113,7 @@ public class Text extends Geometry
         this.height = height;
         setStyle(style);
         setFont(fontName);
+        setColor("black");
     }
 
     /**
@@ -120,7 +121,7 @@ public class Text extends Geometry
      * Schriftgröße 12, nicht fett, nicht kursiv.
      *
      * @param content  Der Inhalt, der dargestellt wird
-     * @param height   Die Höhe
+     * @param height   Die Höhe in Meter.
      * @param fontName Der Font, in dem der Text dargestellt werden soll.
      */
     @API
@@ -134,7 +135,7 @@ public class Text extends Geometry
      * Schriftart ist ein Standard-Font (Serifenfrei), nicht fett, nicht kursiv.
      *
      * @param content Der Inhalt, der dargestellt wird
-     * @param height  Die Höhe
+     * @param height  Die Höhe in Meter.
      */
     @API
     public Text(String content, double height)
@@ -143,7 +144,7 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt einen neuen Font für den Text.
+     * Setzt einen neue Schriftart für den Text.
      *
      * @param fontName Name des neuen Fonts für den Text
      */

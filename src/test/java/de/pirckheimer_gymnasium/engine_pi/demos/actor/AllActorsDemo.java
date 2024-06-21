@@ -10,6 +10,7 @@ public class AllActorsDemo extends Scene
         createTriangle(-6, 0);
         createRectangle(-4, 0);
         createPentagon(-2, 0);
+        createCircle();
         getCamera().setMeter(60);
     }
 

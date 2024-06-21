@@ -48,7 +48,7 @@ public class Triangle extends Polygon
         // Gelb zeigt sich kämpferisch und aggressiv, besitzt einen schwerelosen
         // Charakter und steht bei Itten für den Geist und das Denken. Diesem
         // Charakter entspricht das Dreieck.
-        setColor("red");
+        setColor("yellow");
     }
 
     /**
