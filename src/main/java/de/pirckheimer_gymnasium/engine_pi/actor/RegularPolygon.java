@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
@@ -41,10 +43,29 @@ public class RegularPolygon extends Polygon
         double angleStep = 2 * Math.PI / numSides;
         for (int i = 0; i < numSides; ++i)
         {
-            double angle = i * angleStep;
+            double angle = i * angleStep
+            // Damit unten keine Spitze ist.
+            - (Math.PI - angleStep) / 2;
             vectors[i] = new Vector(radius * Math.cos(angle),
                     radius * Math.sin(angle));
         }
         return vectors;
+    }
+
+    public static void main(String[] args)
+    {
+        Game.setDebug(true);
+        Game.start(new Scene()
+        {
+            {
+                int x = -10;
+                for (int i = 3; i < 8; i++)
+                {
+                    createRegularPolygon(i, 2, x, 0);
+                    createText(i + "", x - 0.25, -4).setColor("white");
+                    x += 5;
+                }
+            }
+        });
     }
 }

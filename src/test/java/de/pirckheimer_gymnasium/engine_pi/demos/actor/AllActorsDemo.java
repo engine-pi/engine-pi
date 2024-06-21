@@ -11,11 +11,12 @@ public class AllActorsDemo extends Scene
         createRectangle(-4, 0);
         createPentagon(-2, 0);
         createCircle();
-        getCamera().setMeter(60);
+        getCamera().setMeter(120);
     }
 
     public static void main(String[] args)
     {
+        Game.setDebug(true);
         Game.start(new AllActorsDemo());
     }
 }
