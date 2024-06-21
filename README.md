@@ -1761,10 +1761,15 @@ https://engine-alpha.org/wiki/v4.x/Collision
 
 <!-- ### Spielkonzept und grundlegender Aufbau -->
 
-Ein Frosch soll fröhlich durch das Spiel springen, wann immer er die Chance hat,
-sich vom Boden abzustoßen. In der Scene `FroggyJump` kann der Spieler ein
-Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse
-`Platform` halt.
+Ein Frosch soll fröhlich durch das Spiel springen und sich vom Boden abstoßen,
+wenn immer er die Chance dazu hat.
+
+Dieser Frosch soll durch das Spiel springen:
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/froggy/Frog.png)
+
+In der Scene `FroggyJump` kann der Spieler ein
+Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
+halt.
 
 Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
 
