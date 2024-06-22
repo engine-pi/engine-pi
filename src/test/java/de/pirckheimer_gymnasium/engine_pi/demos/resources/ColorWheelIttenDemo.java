@@ -3,17 +3,14 @@ package de.pirckheimer_gymnasium.engine_pi.demos.resources;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.ANDROID;
-import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.JAVA;
-import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.GNOME;
-
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
 
 /**
  * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg
@@ -36,13 +33,22 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private final Actor[] SECONDARY_AREAS;
 
+    private final ColorSchemeSelection[] COLOR_SCHEMES = ColorSchemeSelection
+            .values();
+
+    private int currentColorScheme = -1;
+
+    private final Text NAME;
+
     public ColorWheelIttenDemo()
     {
         WHEEL_AREAS = drawWheelColors();
         // Zuerst Primär, denn die müssen übermalt werden.
         PRIMARY_AREAS = drawPrimaryColors();
         SECONDARY_AREAS = drawSecondaryColors();
-        colorize(ColorScheme.getGnomeScheme());
+        NAME = createText("", 5, 6);
+        NAME.setColor("white");
+        setNextColorScheme();
     }
 
     /**
@@ -61,7 +67,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * Ein farbiges Segment in der Form eines Trapezes mit einer der zwölft
+     * Ein farbiges Segment in der Form eines Trapezes mit einer der zwölf
      * Farben des Farbkreises von Itten. Zwölf Segmente ergeben einen Kreis.
      *
      * @param index Der Farbindex. 0 = gelb
@@ -144,8 +150,20 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         return areas;
     }
 
-    private void colorize(ColorScheme scheme)
+    private ColorSchemeSelection getNextColorScheme()
     {
+        currentColorScheme++;
+        if (currentColorScheme >= COLOR_SCHEMES.length)
+        {
+            currentColorScheme = 0;
+        }
+        return COLOR_SCHEMES[currentColorScheme];
+    }
+
+    private void setColorScheme(ColorSchemeSelection selection)
+    {
+        NAME.setContent(selection.name());
+        var scheme = selection.getScheme();
         int i = 0;
         for (Color color : scheme.getWheelColors())
         {
@@ -166,21 +184,15 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         }
     }
 
+    private void setNextColorScheme()
+    {
+        setColorScheme(getNextColorScheme());
+    }
+
     @Override
     public void onKeyDown(KeyEvent event)
     {
-        switch (event.getKeyCode())
-        {
-        case KeyEvent.VK_1 -> {
-            colorize(GNOME.getScheme());
-        }
-        case KeyEvent.VK_2 -> {
-            colorize(ANDROID.getScheme());
-        }
-        case KeyEvent.VK_3 -> {
-            colorize(JAVA.getScheme());
-        }
-        }
+        setNextColorScheme();
     }
 
     public static void main(String[] args)

@@ -1,9 +1,95 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import java.awt.Color;
+
 public enum ColorSchemeSelection
 {
-    GNOME(ColorScheme.getGnomeScheme()), JAVA(ColorScheme.getJavaScheme()), ANDROID(ColorScheme.getAndroidScheme());
-
+    /**
+     * Ein Farbschema nach den Farben der
+     * <a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
+     * Human Interface Guidelines</a>.
+     */
+    GNOME(new ColorScheme(
+            // yellow3
+            new Color(246, 211, 45),
+            // organe3
+            new Color(255, 120, 0),
+            // red3
+            new Color(224, 27, 36),
+            // purple3
+            new Color(145, 65, 172),
+            // blue3
+            new Color(53, 132, 228),
+            // green3
+            new Color(51, 209, 122),
+            // brown3
+            new Color(152, 106, 68))),
+    /**
+     * Ein Farbschema, das einige vordefinierten statischen Farbattribute der
+     * Java-{@link Color}-Klasse verwendet.
+     */
+    JAVA(new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)
+            // Sekundärfarben
+            // Orange passt nicht in das Schema, viel zu hell.
+            // .setOrange(Color.ORANGE)
+            .setGreen(Color.GREEN)
+            // Tertiärfarben
+            .setBlueGreen(Color.CYAN)
+            // Pink passt nicht in das Schema.
+            // .setRedPurple(Color.PINK)
+            .setRedPurple(Color.MAGENTA)
+            // Andere
+            .setGray(Color.GRAY)),
+    /**
+     * https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+     */
+    ANDROID(new ColorScheme()
+            // Yellow 500
+            .setYellow("#FFEB3B")
+            // Amber 500
+            .setYellowOrange("#FFC107")
+            // Orange 500
+            .setOrange("#FF9800")
+            // Deep Orange 500
+            .setRedOrange("#FF5722")
+            // Red 500
+            .setRed("#F44336")
+            // Pink 500
+            .setRedPurple("#E91E63")
+            // Purple 500
+            .setPurple("#9C27B0")
+            // Deep Purple 500
+            .setBluePurple("#673AB7")
+            // Blue 500
+            .setBlue("#2196F3")
+            // Teal 500
+            .setBlueGreen("#009688")
+            // Green 500
+            .setGreen("#4CAF50")
+            // Lime 500
+            .setYellowGreen("#CDDC39")
+            // Brown 500
+            .setBrown("#795548")
+            // Gray 500
+            .setGray("#9E9E9E")),
+  /**
+     * https://developer.apple.com/design/human-interface-guidelines/color
+     */
+    IOS(new ColorScheme()
+            .setYellow("#FFEB3B")
+            .setYellowOrange("#FFC107")
+            .setOrange("#FF9800")
+            .setRedOrange("#FF5722")
+            .setRed("#F44336")
+            .setRedPurple("#E91E63")
+            .setPurple("#9C27B0")
+            .setBluePurple("#673AB7")
+            .setBlue("#2196F3")
+            .setBlueGreen("#009688")
+            .setGreen("#4CAF50")
+            .setYellowGreen("#CDDC39")
+            .setBrown("#795548")
+            .setGray("#9E9E9E"));
     private ColorScheme scheme;
 
     private ColorSchemeSelection(ColorScheme scheme)
