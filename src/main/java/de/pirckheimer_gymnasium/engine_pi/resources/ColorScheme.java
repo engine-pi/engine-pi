@@ -163,6 +163,17 @@ public class ColorScheme
     Color black = Color.BLACK;
 
     /**
+     * Erzeugt ein neues Farbschema aus den drei Primärfarben Gelb (255,255,0),
+     * Rot (255,0,0) und Blue (0,0,255).
+     */
+    public ColorScheme()
+    {
+        this.yellow = new Color(255, 255, 0);
+        this.red = new Color(255, 0, 0);
+        this.blue = new Color(0, 0, 255);
+    }
+
+    /**
      * Erzeugt ein neues Farbschema durch Angabe von den drei Primärfarben.
      *
      * <p>
@@ -1086,6 +1097,42 @@ public class ColorScheme
                 .setRedPurple(Color.MAGENTA)
                 // Andere
                 .setGray(Color.GRAY);
+    }
+
+    /**
+     * https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+     */
+    public static ColorScheme getAndroidScheme()
+    {
+        return new ColorScheme()
+                // Yellow 500
+                .setYellow("#FFEB3B")
+                // Amber 500
+                .setYellowOrange("#FFC107")
+                // Orange 500
+                .setOrange("#FF9800")
+                // Deep Orange 500
+                .setRedOrange("#FF5722")
+                // Red 500
+                .setRed("#F44336")
+                // Pink 500
+                .setRedPurple("#E91E63")
+                // Purple 500
+                .setPurple("#9C27B0")
+                // Deep Purple 500
+                .setBluePurple("#673AB7")
+                // Blue 500
+                .setBlue("#2196F3")
+                // Teal 500
+                .setBlueGreen("#009688")
+                // Green 500
+                .setGreen("#4CAF50")
+                // Lime 500
+                .setYellowGreen("#CDDC39")
+                // Brown 500
+                .setBrown("#795548")
+                // Gray 500
+                .setGray("#9E9E9E");
     }
 
     /**

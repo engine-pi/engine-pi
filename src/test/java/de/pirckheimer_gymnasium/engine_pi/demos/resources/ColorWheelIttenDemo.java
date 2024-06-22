@@ -3,6 +3,10 @@ package de.pirckheimer_gymnasium.engine_pi.demos.resources;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.ANDROID;
+import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.JAVA;
+import static de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection.GNOME;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
@@ -167,13 +171,14 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_1 ->
-        {
-            colorize(ColorScheme.getGnomeScheme());
+        case KeyEvent.VK_1 -> {
+            colorize(GNOME.getScheme());
         }
-        case KeyEvent.VK_2 ->
-        {
-            colorize(ColorScheme.getJavaScheme());
+        case KeyEvent.VK_2 -> {
+            colorize(ANDROID.getScheme());
+        }
+        case KeyEvent.VK_3 -> {
+            colorize(JAVA.getScheme());
         }
         }
     }
