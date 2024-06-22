@@ -1,0 +1,141 @@
+/*
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/showcase/billard/Table.java
+ *
+ * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2011 - 2018 Michael Andonie and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package de.pirckheimer_gymnasium.engine_pi_demos.billard;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
+import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
+
+public class Table
+{
+    public static final double BORDER = 30;
+
+    public static final double GAP = 20;
+
+    public static final double DIAGONAL_GAP = (double) Math.sqrt(GAP * GAP / 2)
+            * 2;
+
+    private final List<Actor> actors = new ArrayList<>();
+
+    private Rectangle border;
+
+    public Table()
+    {
+        border = new Rectangle(
+                2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP + BORDER * 2,
+                Edge.WIDTH + 2 * DIAGONAL_GAP + BORDER * 2);
+        border.setPosition(-Edge.WIDTH - GAP - DIAGONAL_GAP - BORDER,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP - BORDER);
+        border.setColor(new Color(226, 228, 231));
+        Rectangle background = new Rectangle(
+                2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP,
+                Edge.WIDTH + 2 * DIAGONAL_GAP);
+        background.setPosition(-Edge.WIDTH - GAP - DIAGONAL_GAP,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP);
+        background.setColor(new Color(68, 121, 43));
+        actors.add(border);
+        actors.add(background);
+        createEdges();
+        createHoles();
+    }
+
+    public Actor[] getActors()
+    {
+        return actors.toArray(new Actor[0]);
+    }
+
+    public Rectangle getBorder()
+    {
+        return border;
+    }
+
+    private void createHoles()
+    {
+        Hole hole;
+        CollisionListener<Actor> collisionListener = (collisionEvent) -> {
+            if (collisionEvent.getColliding() instanceof Ball)
+            {
+                collisionEvent.getColliding().remove();
+            }
+        };
+        // top left
+        hole = new Hole(-Edge.WIDTH - GAP - DIAGONAL_GAP - Edge.HEIGHT / 2,
+                Edge.WIDTH / 2 - Hole.RADIUS + DIAGONAL_GAP + Edge.HEIGHT / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+        // top midle
+        hole = new Hole(-Hole.RADIUS / 2,
+                Edge.WIDTH / 2 - Hole.RADIUS + DIAGONAL_GAP + Hole.RADIUS / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+        // top right
+        hole = new Hole(
+                +Edge.WIDTH + GAP + DIAGONAL_GAP - Hole.RADIUS
+                        + Edge.HEIGHT / 2,
+                Edge.WIDTH / 2 - Hole.RADIUS + DIAGONAL_GAP + Edge.HEIGHT / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+        // bottom left
+        hole = new Hole(-Edge.WIDTH - GAP - DIAGONAL_GAP - Edge.HEIGHT / 2,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP - Edge.HEIGHT / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+        // bottom midle
+        hole = new Hole(-Hole.RADIUS / 2,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP - Hole.RADIUS / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+        // bottom right
+        hole = new Hole(
+                +Edge.WIDTH + GAP + DIAGONAL_GAP - Hole.RADIUS
+                        + Edge.HEIGHT / 2,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP - Edge.HEIGHT / 2);
+        hole.addCollisionListener(collisionListener);
+        actors.add(hole);
+    }
+
+    private void createEdges()
+    {
+        Edge topLeft = new Edge(-GAP, +Edge.WIDTH / 2 + DIAGONAL_GAP);
+        topLeft.rotateBy(180);
+        actors.add(topLeft);
+        Edge topRight = new Edge(Edge.WIDTH + GAP,
+                +Edge.WIDTH / 2 + DIAGONAL_GAP);
+        topRight.rotateBy(180);
+        actors.add(topRight);
+        Edge bottomLeft = new Edge(-GAP - Edge.WIDTH,
+                -Edge.WIDTH / 2 - DIAGONAL_GAP);
+        actors.add(bottomLeft);
+        Edge bottomRight = new Edge(GAP, -Edge.WIDTH / 2 - DIAGONAL_GAP);
+        actors.add(bottomRight);
+        Edge left = new Edge(-Edge.WIDTH - GAP - DIAGONAL_GAP, +Edge.WIDTH / 2);
+        left.rotateBy(-90);
+        actors.add(left);
+        Edge right = new Edge(+Edge.WIDTH + GAP + DIAGONAL_GAP,
+                -Edge.WIDTH / 2);
+        right.rotateBy(90);
+        actors.add(right);
+    }
+}
