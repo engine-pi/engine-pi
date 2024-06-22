@@ -51,17 +51,17 @@ import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
  */
 public final class Resources
 {
-    public static final ImageContainer images = new ImageContainer();
+    public static final ColorContainer COLORS = new ColorContainer();
 
-    public static final SoundContainer sounds = new SoundContainer();
+    public static final ImageContainer IMAGES = new ImageContainer();
+
+    public static final SoundContainer SOUNDS = new SoundContainer();
 
     public static ColorScheme colorScheme;
-
-    public static final ColorContainer colors = new ColorContainer();
     static
     {
         setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
-        colors.addScheme(colorScheme);
+        COLORS.addScheme(colorScheme);
     }
 
     private Resources()
@@ -69,21 +69,21 @@ public final class Resources
         throw new UnsupportedOperationException();
     }
 
-    public static Color getColor(String name)
-    {
-        return colors.get(name);
-    }
-
     public static void setColorScheme(ColorScheme scheme)
     {
         colorScheme = scheme;
-        colors.addScheme(colorScheme);
+        COLORS.addScheme(colorScheme);
     }
 
     public static void setColorSchemeToPredefined(
             ColorSchemeSelection selection)
     {
         setColorScheme(selection.getScheme());
+    }
+
+    public static Color getColor(String name)
+    {
+        return COLORS.get(name);
     }
 
     /**
@@ -97,7 +97,7 @@ public final class Resources
      */
     public static ImageContainer getImages()
     {
-        return images;
+        return IMAGES;
     }
 
     /**
@@ -113,7 +113,7 @@ public final class Resources
      */
     public static SoundContainer getSounds()
     {
-        return sounds;
+        return SOUNDS;
     }
 
     /**
@@ -122,7 +122,8 @@ public final class Resources
      */
     public static void clearAll()
     {
-        getImages().clear();
-        getSounds().clear();
+        COLORS.clear();
+        IMAGES.clear();
+        SOUNDS.clear();
     }
 }

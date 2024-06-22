@@ -65,7 +65,7 @@ public final class CoordinateSystemDrawer
                     + gridSizeInMeters * 2);
             g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, DEBUG_TEXT_SIZE));
             // Setzen der Gitterfarbe
-            g.setColor(Resources.colors.get("white", 150));
+            g.setColor(Resources.COLORS.get("white", 150));
             for (int x = startX; x <= stopX; x += gridSizeInMeters)
             {
                 g.fillRect((int) (x * gridSizeFactor) - 1,

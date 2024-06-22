@@ -14,7 +14,7 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 public class ColorContainerTest
 {
-    ColorContainer container = Resources.colors;
+    ColorContainer container = Resources.COLORS;
 
     @BeforeEach
     void clear()

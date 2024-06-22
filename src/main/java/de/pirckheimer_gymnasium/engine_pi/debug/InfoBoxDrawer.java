@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -36,10 +36,10 @@ public final class InfoBoxDrawer
         // Einzelbilder pro Sekunden
         Graphics2DUtil.drawTextBox(g, "FPS: "
                 + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
-                10, colors.get("blue"));
+                10, COLORS.get("blue"));
         // Anzahl an Figuren
         Graphics2DUtil.drawTextBox(g, "Actors: " + actorsCount, 50,
-                colors.get("green"));
+                COLORS.get("green"));
         // Schwerkraft
         Vector gravity = scene.getGravity();
         Color gravityColor = Resources.colorScheme.getBluePurple();

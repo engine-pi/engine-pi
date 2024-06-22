@@ -59,7 +59,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * <li>{@code black}: Schwarz</li>
  * </ul>
  *
- * @see de.pirckheimer_gymnasium.engine_pi.Resources#colors
+ * @see de.pirckheimer_gymnasium.engine_pi.Resources#COLORS
  */
 public class ColorContainer implements Container<Color>
 {
@@ -77,7 +77,8 @@ public class ColorContainer implements Container<Color>
     /**
      * Normalisiert einen Farbnamen.
      *
-     * @param name Ein Farbname, der noch nicht normalisiert wurde (beispielsweise {@code Gelb-Grün}).
+     * @param name Ein Farbname, der noch nicht normalisiert wurde
+     *             (beispielsweise {@code Gelb-Grün}).
      *
      * @return Ein normalisierter Farbname (beispielsweise {@code gelbgruen}).
      */

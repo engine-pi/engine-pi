@@ -201,7 +201,7 @@ public class Animation extends Actor implements FrameUpdateListener
         {
             throw new RuntimeException("Frame-Länge muss größer als 0 sein");
         }
-        BufferedImage image = Resources.images.get(filepath);
+        BufferedImage image = Resources.IMAGES.get(filepath);
         if (image.getWidth() % x != 0)
         {
             throw new RuntimeException(String.format(
@@ -241,7 +241,7 @@ public class Animation extends Actor implements FrameUpdateListener
         Collection<AnimationFrame> frames = new LinkedList<>();
         for (String filepath : filepaths)
         {
-            frames.add(new AnimationFrame(Resources.images.get(filepath),
+            frames.add(new AnimationFrame(Resources.IMAGES.get(filepath),
                     frameDuration));
         }
         return new Animation(frames.toArray(new AnimationFrame[0]), width,

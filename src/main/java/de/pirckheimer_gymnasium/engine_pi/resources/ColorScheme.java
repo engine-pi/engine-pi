@@ -1436,7 +1436,7 @@ public class ColorScheme
                 setBackgroundColor(Resources.getColor("#444444"));
                 int x = -16;
                 int labelY = -2;
-                for (Entry<String, Color> entry : Resources.colors.getAll()
+                for (Entry<String, Color> entry : Resources.COLORS.getAll()
                         .entrySet())
                 {
                     createCircle(x, 0, entry.getValue());

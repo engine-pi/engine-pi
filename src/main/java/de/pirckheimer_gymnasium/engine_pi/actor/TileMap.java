@@ -36,7 +36,7 @@ public interface TileMap
     @API
     static Tile createFromImage(String path)
     {
-        return createFromImage(Resources.images.get(path));
+        return createFromImage(Resources.IMAGES.get(path));
     }
 
     static Tile createFromImage(BufferedImage image)
@@ -51,7 +51,7 @@ public interface TileMap
 
     static TileMap createFromImage(String path, int sizeX, int sizeY)
     {
-        BufferedImage image = Resources.images.get(path);
+        BufferedImage image = Resources.IMAGES.get(path);
         if (image.getWidth() % sizeX != 0)
         {
             throw new IllegalArgumentException(String.format(

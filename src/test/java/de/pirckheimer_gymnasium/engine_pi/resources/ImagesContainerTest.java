@@ -15,7 +15,7 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImagesContainerTest
 {
-    ImageContainer container = Resources.images;
+    ImageContainer container = Resources.IMAGES;
 
     @BeforeEach
     @AfterEach

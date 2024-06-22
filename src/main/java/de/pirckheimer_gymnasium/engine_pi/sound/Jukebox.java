@@ -78,7 +78,7 @@ public final class Jukebox
     private final Collection<SoundPlayback> sounds = ConcurrentHashMap
             .newKeySet();
 
-    private static SoundContainer soundsContainer = Resources.sounds;
+    private static SoundContainer soundsContainer = Resources.SOUNDS;
 
     /**
      * Gets the maximum distance from the listener at which a sound source can

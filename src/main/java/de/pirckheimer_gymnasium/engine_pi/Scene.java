@@ -557,6 +557,6 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     public void setBackgroundColor(String color)
     {
-        backgroundColor = Resources.colors.get(color);
+        backgroundColor = Resources.COLORS.get(color);
     }
 }

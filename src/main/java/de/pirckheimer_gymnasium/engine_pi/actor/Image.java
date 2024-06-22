@@ -70,7 +70,7 @@ public class Image extends Actor
     {
         super(() -> FixtureBuilder.rectangle(width, height));
         assertViableSizes(width, height);
-        image = Resources.images.get(filepath);
+        image = Resources.IMAGES.get(filepath);
         color = ColorUtil.calculateAverage(image);
         this.width = width;
         this.height = height;
@@ -87,10 +87,10 @@ public class Image extends Actor
     public Image(String filepath, final double pixelPerMeter)
     {
         super(() -> FixtureBuilder.rectangle(
-                Resources.images.get(filepath).getWidth() / pixelPerMeter,
-                Resources.images.get(filepath).getHeight() / pixelPerMeter));
+                Resources.IMAGES.get(filepath).getWidth() / pixelPerMeter,
+                Resources.IMAGES.get(filepath).getHeight() / pixelPerMeter));
         assertViablePPM(pixelPerMeter);
-        image = Resources.images.get(filepath);
+        image = Resources.IMAGES.get(filepath);
         color = ColorUtil.calculateAverage(image);
         width = image.getWidth() / pixelPerMeter;
         height = image.getHeight() / pixelPerMeter;

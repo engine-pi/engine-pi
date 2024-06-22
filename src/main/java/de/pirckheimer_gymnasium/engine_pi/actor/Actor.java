@@ -398,7 +398,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public Actor setColor(String color)
     {
-        this.color = Resources.colors.get(color);
+        this.color = Resources.COLORS.get(color);
         return this;
     }
 
