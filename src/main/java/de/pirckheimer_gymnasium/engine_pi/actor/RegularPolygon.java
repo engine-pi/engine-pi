@@ -40,14 +40,13 @@ public class RegularPolygon extends Polygon
     public static Vector[] getVectors(int numSides, double radius)
     {
         Vector[] vectors = new Vector[numSides];
-        double angleStep = 2 * Math.PI / numSides;
+        double angleStep = 360 / numSides;
         for (int i = 0; i < numSides; ++i)
         {
-            double angle = i * angleStep
-            // Damit unten keine Spitze ist.
-            - (Math.PI - angleStep) / 2;
-            vectors[i] = new Vector(radius * Math.cos(angle),
-                    radius * Math.sin(angle));
+            vectors[i] = Vector.ofAngle(i * angleStep
+                    // Damit unten keine Spitze ist.
+                    - (180 - angleStep) / 2).multiply(radius)
+                    .add(radius, radius);
         }
         return vectors;
     }
