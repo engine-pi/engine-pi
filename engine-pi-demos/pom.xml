@@ -123,7 +123,12 @@
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
                     <excludePackageNames>org.jbox2d.*</excludePackageNames>
+                    <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
+                    <links>
+                        <link>https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest</link>
+                    </links>
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>

@@ -7,6 +7,10 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#applyForce(double,double)}
+ */
 public class ApplyForceDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle rectangle;

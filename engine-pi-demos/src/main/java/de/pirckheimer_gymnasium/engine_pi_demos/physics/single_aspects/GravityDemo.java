@@ -8,6 +8,10 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.Scene#setGravity(double, double)}
+ */
 public class GravityDemo extends Scene implements KeyStrokeListener
 {
     private final Circle circle;

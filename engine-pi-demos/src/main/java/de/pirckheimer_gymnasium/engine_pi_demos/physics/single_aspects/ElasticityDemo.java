@@ -8,6 +8,10 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#setElasticity(double)}
+ */
 public class ElasticityDemo extends Scene
 {
     private final Rectangle ground;

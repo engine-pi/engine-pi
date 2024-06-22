@@ -7,6 +7,10 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#applyImpulse(double,double)}
+ */
 public class ApplyImpulseDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle rectangle;

@@ -9,6 +9,10 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#setDensity(double)}
+ */
 public class DensityDemo extends Scene implements KeyStrokeListener
 {
     private final Rectangle ground;
