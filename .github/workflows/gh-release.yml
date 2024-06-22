@@ -29,4 +29,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           # The action uses the javascript glob library
-          files: target/*.jar
+          files: engine-pi/target/*.jar
