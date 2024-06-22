@@ -5,9 +5,12 @@ deploy:
 	mvn deploy
 
 doc:
-	rm -rf target/site/apidocs
+	rm -rf engine-pi/target/site/apidocs
+	rm -rf engine-pi-demos/target/site/apidocs
 	mvn javadoc:javadoc
-	xdg-open target/site/apidocs/index.html
+
+	xdg-open engine-pi/target/site/apidocs/index.html
+	xdg-open engine-pi-demos/target/site/apidocs/index.html
 
 format:
 	mvn formatter:format
