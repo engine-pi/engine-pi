@@ -1428,6 +1428,18 @@ public class ColorScheme
         return new Color[] { getOrange(), getPurple(), getGreen() };
     }
 
+    /**
+     * Gibt vier <b>zusätzlichen</b> Farben aus: <b>Braun</b>, <b>Weiß</b>,
+     * <b>Grau</b> und <b>Schwarz</b>.
+     *
+     * @return Die vier <b>zusätzlichen</b> Farben <b>Braun</b>, <b>Weiß</b>,
+     *         <b>Grau</b> und <b>Schwarz</b>.
+     */
+    public Color[] getExtraColors()
+    {
+        return new Color[] { getBrown(), getWhite(), getGray(), getBlack() };
+    }
+
     public static void main(String[] args)
     {
         Game.start(1200, 400, new Scene()

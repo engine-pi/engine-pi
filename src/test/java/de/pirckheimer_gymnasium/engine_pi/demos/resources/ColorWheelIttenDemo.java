@@ -33,6 +33,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private final Actor[] SECONDARY_AREAS;
 
+    private final Actor[] EXTRA_AREAS;
+
     private final ColorSchemeSelection[] COLOR_SCHEMES = ColorSchemeSelection
             .values();
 
@@ -46,9 +48,11 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         // Zuerst Primär, denn die müssen übermalt werden.
         PRIMARY_AREAS = drawPrimaryColors();
         SECONDARY_AREAS = drawSecondaryColors();
-        NAME = createText("", 5, 6);
+        EXTRA_AREAS = drawExtraColors();
+        NAME = createText("", -8, 7);
         NAME.setColor("white");
         setNextColorScheme();
+        setBackgroundColor("#444444");
     }
 
     /**
@@ -88,7 +92,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * alle 12 Farben
+     * Zeichnet alle zwölf Farben des Farbkreises.
      */
     private Actor[] drawWheelColors()
     {
@@ -105,7 +109,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * die 3 Sekundärfarben
+     * Zeichnet die drei Sekundärfarben.
      */
     private Actor[] drawSecondaryColors()
     {
@@ -128,7 +132,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * die 3 Pimärfarben
+     * Zeichnet die drei Pimärfarben.
      */
     private Actor[] drawPrimaryColors()
     {
@@ -146,6 +150,20 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
                     getCirclePoint(radius, angle - 60), new Vector(0, 0));
             add(area);
             areas[i / 4] = area;
+        }
+        return areas;
+    }
+
+    /**
+     * Zeichnet die vier <b>zusätzlichen</b> Farben: Braun, Weiß, Grau und
+     * Schwarz.
+     */
+    private Actor[] drawExtraColors()
+    {
+        Actor[] areas = new Actor[4];
+        for (int i = 0; i < 4; i++)
+        {
+            areas[i] = createRectangle(7, -i - 5);
         }
         return areas;
     }
@@ -180,6 +198,12 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         for (Color color : scheme.getSecondaryColors())
         {
             SECONDARY_AREAS[i].setColor(color);
+            i++;
+        }
+        i = 0;
+        for (Color color : scheme.getExtraColors())
+        {
+            EXTRA_AREAS[i].setColor(color);
             i++;
         }
     }
