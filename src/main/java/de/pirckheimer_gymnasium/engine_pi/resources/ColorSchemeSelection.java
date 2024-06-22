@@ -6,7 +6,7 @@ public enum ColorSchemeSelection
 {
     /**
      * Ein Farbschema nach den Farben der
-     * <a href="https://developer.gnome.org/hig/reference/palette.html">GNOME
+     * <a href= "https://developer.gnome.org/hig/reference/palette.html">GNOME
      * Human Interface Guidelines</a>.
      */
     GNOME(new ColorScheme(
@@ -72,24 +72,35 @@ public enum ColorSchemeSelection
             .setBrown("#795548")
             // Gray 500
             .setGray("#9E9E9E")),
-  /**
+    /**
      * https://developer.apple.com/design/human-interface-guidelines/color
      */
     IOS(new ColorScheme()
-            .setYellow("#FFEB3B")
-            .setYellowOrange("#FFC107")
-            .setOrange("#FF9800")
-            .setRedOrange("#FF5722")
-            .setRed("#F44336")
-            .setRedPurple("#E91E63")
-            .setPurple("#9C27B0")
-            .setBluePurple("#673AB7")
-            .setBlue("#2196F3")
-            .setBlueGreen("#009688")
-            .setGreen("#4CAF50")
-            .setYellowGreen("#CDDC39")
-            .setBrown("#795548")
-            .setGray("#9E9E9E"));
+            // Yellow Default (Light)
+            .setYellow(255, 204, 0)
+            // Orange Accessible (Dark)
+            .setYellowOrange(255, 179, 64)
+            // Orange Default (Light)
+            .setOrange(255, 149, 0)
+            // Red Default (Light)
+            .setRed(255, 59, 48)
+            // Pink Default (Light)
+            .setRedPurple(255, 45, 85)
+            // Purple Default (Light)
+            .setPurple(175, 82, 222)
+            // Indigo Default (Light)
+            .setBluePurple(88, 86, 214)
+            // Blue Default (Light)
+            .setBlue(0, 122, 255)
+            // Teal Default (Light)
+            .setBlueGreen(48, 176, 199)
+            // Green Default (Light)
+            .setGreen(52, 199, 89)
+            // Brown Default (Light)
+            .setBrown(162, 132, 94)
+            // systemGray Default (Light)
+            .setGray(142, 142, 147));
+
     private ColorScheme scheme;
 
     private ColorSchemeSelection(ColorScheme scheme)

@@ -28,11 +28,12 @@ package de.pirckheimer_gymnasium.engine_pi;
 import java.awt.Color;
 
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
 import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.Resource;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourcesContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
 
 /**
  * Zur Aufbewahrung und Verwaltung verschiedener Ressourcen.
@@ -50,15 +51,16 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
  */
 public final class Resources
 {
-    public static ImageContainer images = new ImageContainer();
+    public static final ImageContainer images = new ImageContainer();
 
-    public static SoundContainer sounds = new SoundContainer();
+    public static final SoundContainer sounds = new SoundContainer();
 
-    public static ColorScheme colorScheme = ColorScheme.getGnomeScheme();
+    public static ColorScheme colorScheme;
 
-    public static ColorContainer colors = new ColorContainer();
+    public static final ColorContainer colors = new ColorContainer();
     static
     {
+        setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
         colors.addScheme(colorScheme);
     }
 
@@ -70,6 +72,18 @@ public final class Resources
     public static Color getColor(String name)
     {
         return colors.get(name);
+    }
+
+    public static void setColorScheme(ColorScheme scheme)
+    {
+        colorScheme = scheme;
+        colors.addScheme(colorScheme);
+    }
+
+    public static void setColorSchemeToPredefined(
+            ColorSchemeSelection selection)
+    {
+        setColorScheme(selection.getScheme());
     }
 
     /**

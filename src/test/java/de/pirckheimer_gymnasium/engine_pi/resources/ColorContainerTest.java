@@ -20,7 +20,7 @@ public class ColorContainerTest
     void clear()
     {
         container.clear();
-        container.addScheme(ColorScheme.getGnomeScheme());
+        container.addScheme(ColorSchemeSelection.GNOME.getScheme());
     }
 
     @Nested
