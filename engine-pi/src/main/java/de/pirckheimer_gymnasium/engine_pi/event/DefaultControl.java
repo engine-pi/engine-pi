@@ -105,8 +105,8 @@ public class DefaultControl implements DefaultListener
      * Bewegt die Kamera, wenn {@code ALT} und die {@code Pfeiltasten} gedrückt
      * werden.
      *
-     * @param delta Die Zeit <b>in Sekunden</b>, die seit der letzten
-     *              Aktualisierung vergangen ist.
+     * @param pastTime Die Zeit <b>in Sekunden</b>, die seit der letzten
+     *                 Aktualisierung vergangen ist.
      */
     @Override
     public void onFrameUpdate(double pastTime)

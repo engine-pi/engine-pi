@@ -4,18 +4,18 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>de.pirckheimer-gymnasium</groupId>
+        <artifactId>engine-pi-meta</artifactId>
+        <version>0.17.0</version>
+    </parent>
+
     <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-meta</artifactId>
+    <artifactId>engine-pi</artifactId>
     <version>0.17.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>Engine Pi Meta</name>
-
-    <modules>
-        <module>engine-pi</module>
-        <module>engine-pi-demos</module>
-    </modules>
-
+    <name>Engine Pi</name>
     <description>A beginner-orientated 2D game engine with German documentation. Its main purpose is to develop enthusiasm for programming and computer science through fast, visible and strong achievements.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
 
@@ -63,6 +63,30 @@
     </distributionManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>jorbis</artifactId>
+            <version>0.0.17.4</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>tritonus-share</artifactId>
+            <version>0.3.7.4</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>vorbisspi</artifactId>
+            <version>1.0.3.3</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>1.9.5.4</version>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -209,7 +233,7 @@
                 <artifactId>formatter-maven-plugin</artifactId>
                 <version>2.23.0</version>
                 <configuration>
-                    <configFile>${project.basedir}/.formatter/school.xml</configFile>
+                    <configFile>../.formatter/school.xml</configFile>
                 </configuration>
             </plugin>
         </plugins>
