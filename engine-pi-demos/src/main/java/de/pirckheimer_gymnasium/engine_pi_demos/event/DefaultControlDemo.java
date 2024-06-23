@@ -24,6 +24,12 @@ import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * Demonstriert die statischen Methoden
+ * {@link de.pirckheimer_gymnasium.engine_pi.Game#getDefaultControl()},
+ * {@link de.pirckheimer_gymnasium.engine_pi.Game#setDefaultControl(de.pirckheimer_gymnasium.engine_pi.event.DefaultListener)}
+ * und {@link de.pirckheimer_gymnasium.engine_pi.Game#removeDefaultControl()}.
+ */
 public class DefaultControlDemo
 {
     public static void main(String[] args)

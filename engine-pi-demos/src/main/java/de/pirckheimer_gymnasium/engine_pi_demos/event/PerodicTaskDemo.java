@@ -7,6 +7,10 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
 
+/**
+ * Demonstriert die Klasse
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask}.
+ */
 public class PerodicTaskDemo extends Scene
 {
     private PeriodicTask task;

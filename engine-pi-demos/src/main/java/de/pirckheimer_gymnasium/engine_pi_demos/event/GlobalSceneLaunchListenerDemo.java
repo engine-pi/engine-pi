@@ -21,6 +21,10 @@ class Scene2 extends Scene
     }
 }
 
+/**
+ * Demonstriert die statische Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.Game#addSceneLaunchListener(de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener)}.
+ */
 public class GlobalSceneLaunchListenerDemo
 {
     public static Scene scene1 = new Scene1();

@@ -6,6 +6,10 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 
+/**
+ * Demonstriert die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener#onFrameUpdate(double)}.
+ */
 public class FrameUpdateListenerDemo extends Scene
         implements FrameUpdateListener
 {

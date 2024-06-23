@@ -7,6 +7,10 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 
+/**
+ * Demonstriert die Klasse
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater}.
+ */
 public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 {
     PressedKeyRepeater repeater;
