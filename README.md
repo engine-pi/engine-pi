@@ -3,7 +3,7 @@
 
 # Über diese Game Engine
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/main/resources/assets/logo.png)
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/engine-pi/src/main/resources/logo/logo.png)
 
 Diese Game Engine ist ein Fork der
 [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von
