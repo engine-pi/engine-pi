@@ -1,4 +1,4 @@
-PACKAGE_PATH = src/main/java/org
+PACKAGE_PATH = engine-pi/src/main/java/org
 JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 
 deploy:

@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.18.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.18.0) - 2024-06-23
+
+<small>[Compare with v0.17.0](https://github.com/engine-pi/engine-pi/compare/v0.17.0...v0.18.0)</small>
+
+### Added
+
+- Add custom javadoc CSS stylesheet ([3b33f87](https://github.com/engine-pi/engine-pi/commit/3b33f87ba6818dd6b6e45a41d465cfc3d72aa4b9) by Josef Friedrich).
+- Add new logo ([b1ee1c2](https://github.com/engine-pi/engine-pi/commit/b1ee1c216d911df3cb4e3e88e75c0f4dd4910ab3) by Josef Friedrich).
+- new enum `ColorSchemeSelection` ([afda4c6](https://github.com/engine-pi/engine-pi/commit/afda4c6f93f4c444f105d631fec11fe1447d5d57) by Josef Friedrich).
+
+### Changed
+
+- Monorepo with three Maven package engine-pi-meta engine-pi engine-pi-demos
+
 ## [v0.17.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.17.0) - 2024-06-17
 
 <small>[Compare with v0.16.0](https://github.com/engine-pi/engine-pi/compare/v0.16.0...v0.17.0)</small>
