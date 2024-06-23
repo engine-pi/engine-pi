@@ -1,7 +1,7 @@
-[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer-gymnasium/engine-pi)
+[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi.svg?style=flat)](https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/engine-pi)
 [![javadoc](https://javadoc.io/badge2/de.pirckheimer-gymnasium/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi)
 demos:
-[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi-demos.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/de.pirckheimer-gymnasium/engine-pi-demos)
+[![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi-demos.svg?style=flat)](https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/engine-pi-demos)
 [![javadoc](https://javadoc.io/badge2/de.pirckheimer-gymnasium/engine-pi-demos/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi-demos)
 
 # Über diese Game Engine
