@@ -34,7 +34,7 @@ public class KeyEventDemo extends Scene implements KeyStrokeListener
 
     public KeyEventDemo()
     {
-        rectangle = new Rectangle(2, 2).setColor("blue");
+        rectangle = new Rectangle(2, 2);
         add(rectangle);
     }
 

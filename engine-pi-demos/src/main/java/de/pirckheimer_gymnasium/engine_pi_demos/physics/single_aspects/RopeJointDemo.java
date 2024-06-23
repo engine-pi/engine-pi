@@ -3,6 +3,11 @@ package de.pirckheimer_gymnasium.engine_pi_demos.physics.single_aspects;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
+/**
+ * Demonstriert die Klasse
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.RopeJoint} und die Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#createRopeJoint(de.pirckheimer_gymnasium.engine_pi.actor.Actor, Vector, Vector, double)}
+ */
 public class RopeJointDemo extends BaseJointScene
 {
     public RopeJointDemo()

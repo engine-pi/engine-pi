@@ -3,6 +3,12 @@ package de.pirckheimer_gymnasium.engine_pi_demos.physics.single_aspects;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
+/**
+ * Demonstriert die Klasse
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.DistanceJoint} und die
+ * Methode
+ * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#createDistanceJoint(de.pirckheimer_gymnasium.engine_pi.actor.Actor, Vector, Vector)}
+ */
 public class DistanceJointDemo extends BaseJointScene
 {
     public DistanceJointDemo()
