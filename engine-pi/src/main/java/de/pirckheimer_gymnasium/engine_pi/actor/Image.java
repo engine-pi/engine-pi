@@ -272,7 +272,7 @@ public class Image extends Actor
         {
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.
-                Image i1 = createImage("logo/logo.png", 40);
+                Image i1 = addImage("logo/logo.png", 40);
                 i1.setCenter(0, 0);
             }
         });

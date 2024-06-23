@@ -9,7 +9,7 @@ class Scene1 extends Scene
 {
     public Scene1()
     {
-        createText("Scene 1");
+        addText("Scene 1");
     }
 }
 
@@ -17,7 +17,7 @@ class Scene2 extends Scene
 {
     public Scene2()
     {
-        createText("Scene 2");
+        addText("Scene 2");
     }
 }
 

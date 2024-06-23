@@ -65,9 +65,9 @@ public class Hexagon extends RegularPolygon
                 h2.setColor("yellowOrange");
                 add(h2);
                 // Erzeugen mit Hilfe der createHexagon()-Methode
-                createHexagon(3, 3, "yellowGreen");
+                addHexagon(3, 3, "yellowGreen");
                 // Erzeugen mit Hilfe der createHexagon()-Methode und Rotation.
-                Hexagon h4 = createHexagon(2, -3, 3, "redOrange");
+                Hexagon h4 = addHexagon(2, -3, 3, "redOrange");
                 h4.rotateBy(45);
             }
         });

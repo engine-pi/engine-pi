@@ -59,8 +59,8 @@ public class Rectangle extends Geometry
      * @param width  Die Breite des Rechtecks.
      * @param height Die Höhe des Rechtecks.
      *
-     * @see ActorCreator#createRectangle(double, double, double, double)
-     * @see ActorCreator#createRectangle(double, double)
+     * @see ActorAdder#addRectangle(double, double, double, double)
+     * @see ActorAdder#addRectangle(double, double)
      */
     public Rectangle(double width, double height)
     {

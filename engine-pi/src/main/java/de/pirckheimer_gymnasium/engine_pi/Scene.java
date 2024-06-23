@@ -40,7 +40,7 @@ import org.jbox2d.dynamics.joints.RevoluteJoint;
 import org.jbox2d.dynamics.joints.RopeJoint;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
+import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
@@ -64,7 +64,7 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
  */
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration, ActorCreator
+        FrameUpdateListenerRegistration, ActorAdder
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 

@@ -31,7 +31,7 @@ import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.World;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.ActorCreator;
+import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
@@ -57,7 +57,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  */
 public class Layer implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration, ActorCreator
+        FrameUpdateListenerRegistration, ActorAdder
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
             .comparingInt(Actor::getLayerPosition);

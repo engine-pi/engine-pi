@@ -19,7 +19,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
     public GravityDemo()
     {
         getCamera().setMeter(45);
-        circle = createCircle();
+        circle = addCircle();
         circle.makeDynamic();
         setGravity(0, -9.81);
         // oben

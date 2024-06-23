@@ -25,7 +25,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Schnittstelle um {@link Actor}-Objekte leicher erzeugen zu können.
+ * Erzeugt verschiedene {@link Actor}-Objekte und fügt sie gleich zur Szene
+ * bzw. zur Ebene hinzu.
  *
  * <p>
  * Mit Hilfe dieses Interfaces können die Klassen {@link Scene} and
@@ -40,7 +41,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * @see Scene
  * @see de.pirckheimer_gymnasium.engine_pi.Layer
  */
-public interface ActorCreator
+public interface ActorAdder
 {
     Scene getScene();
     /* ___ Circle (Kreis) ___________________________________________________ */
@@ -57,7 +58,7 @@ public interface ActorCreator
      *
      * @see Circle
      */
-    default Circle createCircle(double diameter, double x, double y)
+    default Circle addCircle(double diameter, double x, double y)
     {
         Circle actor = new Circle(diameter);
         actor.setPosition(x, y);
@@ -76,9 +77,9 @@ public interface ActorCreator
      *
      * @see Circle
      */
-    default Circle createCircle(double x, double y)
+    default Circle addCircle(double x, double y)
     {
-        return createCircle(1, x, y);
+        return addCircle(1, x, y);
     }
 
     /**
@@ -93,9 +94,9 @@ public interface ActorCreator
      *
      * @see Circle
      */
-    default Circle createCircle(double x, double y, Color color)
+    default Circle addCircle(double x, double y, Color color)
     {
-        Circle actor = createCircle(1, x, y);
+        Circle actor = addCircle(1, x, y);
         actor.setColor(color);
         return actor;
     }
@@ -107,9 +108,9 @@ public interface ActorCreator
      *
      * @see Circle
      */
-    default Circle createCircle()
+    default Circle addCircle()
     {
-        return createCircle(1, 0, 0);
+        return addCircle(1, 0, 0);
     }
 
     /**
@@ -121,55 +122,55 @@ public interface ActorCreator
      *
      * @see Circle
      */
-    default Circle createCircle(double diameter)
+    default Circle addCircle(double diameter)
     {
-        return createCircle(diameter, 0, 0);
+        return addCircle(diameter, 0, 0);
     }
     /* ___ Hexagon (Sechseck) _____________________________________________ */
 
-    default Hexagon createHexagon(double radius)
+    default Hexagon addHexagon(double radius)
     {
         Hexagon actor = new Hexagon(radius);
         getScene().add(actor);
         return actor;
     }
 
-    default Hexagon createHexagon(double radius, double x, double y)
+    default Hexagon addHexagon(double radius, double x, double y)
     {
-        Hexagon actor = createHexagon(radius);
+        Hexagon actor = addHexagon(radius);
         actor.setPosition(x, y);
         return actor;
     }
 
-    default Hexagon createHexagon(double x, double y)
+    default Hexagon addHexagon(double x, double y)
     {
-        return createHexagon(0.5, x, y);
+        return addHexagon(0.5, x, y);
     }
 
-    default Hexagon createHexagon(double x, double y, String color)
+    default Hexagon addHexagon(double x, double y, String color)
     {
-        Hexagon actor = createHexagon(x, y);
+        Hexagon actor = addHexagon(x, y);
         actor.setColor(color);
         return actor;
     }
 
-    default Hexagon createHexagon(double radius, double x, double y,
-            String color)
+    default Hexagon addHexagon(double radius, double x, double y,
+                               String color)
     {
-        Hexagon actor = createHexagon(radius, x, y);
+        Hexagon actor = addHexagon(radius, x, y);
         actor.setColor(color);
         return actor;
     }
     /* ___ Image (Bild) _____________________________________________________ */
 
-    default Image createImage(String filePath, double pixelPerMeter)
+    default Image addImage(String filePath, double pixelPerMeter)
     {
         Image actor = new Image(filePath, pixelPerMeter);
         getScene().add(actor);
         return actor;
     }
 
-    default Image createImage(String filePath, double width, double height)
+    default Image addImage(String filePath, double width, double height)
     {
         Image actor = new Image(filePath, width, height);
         getScene().add(actor);
@@ -177,28 +178,28 @@ public interface ActorCreator
     }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
 
-    default Pentagon createPentagon(double radius)
+    default Pentagon addPentagon(double radius)
     {
         Pentagon actor = new Pentagon(radius);
         getScene().add(actor);
         return actor;
     }
 
-    default Pentagon createPentagon(double radius, double x, double y)
+    default Pentagon addPentagon(double radius, double x, double y)
     {
-        Pentagon actor = createPentagon(radius);
+        Pentagon actor = addPentagon(radius);
         actor.setPosition(x, y);
         return actor;
     }
 
-    default Pentagon createPentagon(double x, double y)
+    default Pentagon addPentagon(double x, double y)
     {
-        return createPentagon(0.5, x, y);
+        return addPentagon(0.5, x, y);
     }
     /* ___ Rectangle (Rechteck) _____________________________________________ */
 
     /**
-     * Erzeugt ein Reckteck durch Angabe der Breite und Höhe sowie der Position.
+     * Erzeugt ein Rechteck durch Angabe der Breite und Höhe sowie der Position.
      *
      * @param width  Die Breite des Rechtecks.
      * @param height Die Höhe des Rechtecks.
@@ -209,8 +210,8 @@ public interface ActorCreator
      *
      * @see Rectangle#Rectangle(double, double)
      */
-    default Rectangle createRectangle(double width, double height, double x,
-            double y)
+    default Rectangle addRectangle(double width, double height, double x,
+                                   double y)
     {
         Rectangle actor = new Rectangle(width, height);
         actor.setPosition(x, y);
@@ -219,7 +220,7 @@ public interface ActorCreator
     }
 
     /**
-     * Erzeugt ein Reckteck durch Angabe der Breite und Höhe.
+     * Erzeugt ein Rechteck durch Angabe der Breite und Höhe.
      *
      * @param width  Die Breite des Rechtecks.
      * @param height Die Höhe des Rechtecks.
@@ -228,9 +229,9 @@ public interface ActorCreator
      *
      * @see Rectangle#Rectangle(double, double)
      */
-    default Rectangle createRectangle(double width, double height)
+    default Rectangle addRectangle(double width, double height)
     {
-        return createRectangle(width, height, 0, 0);
+        return addRectangle(width, height, 0, 0);
     }
 
     /**
@@ -244,24 +245,24 @@ public interface ActorCreator
      *
      * @see Rectangle#Rectangle()
      */
-    default Rectangle createRectangle(int x, int y)
+    default Rectangle addRectangle(int x, int y)
     {
-        return createRectangle(1, 1, x, y);
+        return addRectangle(1, 1, x, y);
     }
     /* ___ Triangle (Dreieck) _______________________________________________ */
 
     /**
      * Erzeugt ein neues Dreieck mit der Höhe und Breite von einem Meter, das an
-     * eine bestimme Position gesetzt wird..
+     * eine bestimmte Position gesetzt wird.
      *
      * @param x Die neue <code>x</code>-Koordinate.
      * @param y Die neue <code>y</code>-Koordinate.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      */
-    default Triangle createTriangle(int x, int y)
+    default Triangle addTriangle(int x, int y)
     {
-        Triangle actor = createTriangle(1.0, 1.0);
+        Triangle actor = addTriangle(1.0, 1.0);
         actor.setPosition(x, y);
         return actor;
     }
@@ -277,7 +278,7 @@ public interface ActorCreator
      *
      * @see Triangle#Triangle(Vector, Vector, Vector)
      */
-    default Triangle createTriangle(Vector point1, Vector point2, Vector point3)
+    default Triangle addTriangle(Vector point1, Vector point2, Vector point3)
     {
         Triangle actor = new Triangle(point1, point2, point3);
         getScene().add(actor);
@@ -300,8 +301,8 @@ public interface ActorCreator
      * @see Triangle#Triangle(double, double, double, double, double, double)
      */
     @API
-    default Triangle createTriangle(double x1, double y1, double x2, double y2,
-            double x3, double y3)
+    default Triangle addTriangle(double x1, double y1, double x2, double y2,
+                                 double x3, double y3)
     {
         Triangle actor = new Triangle(x1, y1, x2, y2, x3, y3);
         getScene().add(actor);
@@ -312,7 +313,7 @@ public interface ActorCreator
      * Erzeugt ein gleichschenkliges Dreieck, dessen Symmetrieachse vertikal
      * ausgerichtet ist. Die Spitze zeigt nach oben.
      *
-     * @param width  Die Breite des gleichschenkligen Dreicks - genauer gesagt
+     * @param width  Die Breite des gleichschenkligen Dreiecks - genauer gesagt
      *               die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      *
@@ -320,7 +321,7 @@ public interface ActorCreator
      *
      * @see Triangle#Triangle(double, double)
      */
-    default Triangle createTriangle(double width, double height)
+    default Triangle addTriangle(double width, double height)
     {
         Triangle actor = new Triangle(width, height);
         getScene().add(actor);
@@ -328,54 +329,54 @@ public interface ActorCreator
     }
     /* ___ RegularPolygon (Reguläres Vieleck) _______________________________ */
 
-    default RegularPolygon createRegularPolygon(int numSides, double radius)
+    default RegularPolygon addRegularPolygon(int numSides, double radius)
     {
         RegularPolygon actor = new RegularPolygon(numSides, radius);
         getScene().add(actor);
         return actor;
     }
 
-    default RegularPolygon createRegularPolygon(int numSides)
+    default RegularPolygon addRegularPolygon(int numSides)
     {
-        return createRegularPolygon(numSides, 1);
+        return addRegularPolygon(numSides, 1);
     }
 
-    default RegularPolygon createRegularPolygon(int numSides, double radius,
-            double x, double y)
+    default RegularPolygon addRegularPolygon(int numSides, double radius,
+                                             double x, double y)
     {
-        RegularPolygon actor = createRegularPolygon(numSides, radius);
+        RegularPolygon actor = addRegularPolygon(numSides, radius);
         actor.setPosition(x, y);
         return actor;
     }
 
-    default RegularPolygon createRegularPolygon(int numSides, double x,
-            double y)
+    default RegularPolygon addRegularPolygon(int numSides, double x,
+                                             double y)
     {
-        return createRegularPolygon(numSides, 1, x, y);
+        return addRegularPolygon(numSides, 1, x, y);
     }
     /* ___ Text _____________________________________________________________ */
 
-    default Text createText(String content, double height)
+    default Text addText(String content, double height)
     {
         Text actor = new Text(content, height);
         getScene().add(actor);
         return actor;
     }
 
-    default Text createText(String content)
+    default Text addText(String content)
     {
-        return createText(content, 1);
+        return addText(content, 1);
     }
 
-    default Text createText(String content, double height, double x, double y)
+    default Text addText(String content, double height, double x, double y)
     {
-        Text actor = createText(content, height);
+        Text actor = addText(content, height);
         actor.setPosition(x, y);
         return actor;
     }
 
-    default Text createText(String content, double x, double y)
+    default Text addText(String content, double x, double y)
     {
-        return createText(content, 1, x, y);
+        return addText(content, 1, x, y);
     }
 }

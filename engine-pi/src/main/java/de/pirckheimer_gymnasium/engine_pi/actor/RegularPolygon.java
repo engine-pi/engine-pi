@@ -60,8 +60,8 @@ public class RegularPolygon extends Polygon
                 int x = -10;
                 for (int i = 3; i < 8; i++)
                 {
-                    createRegularPolygon(i, 2, x, 0);
-                    createText(i + "", x - 0.25, -4).setColor("white");
+                    addRegularPolygon(i, 2, x, 0);
+                    addText(i + "", x - 0.25, -4).setColor("white");
                     x += 5;
                 }
             }
