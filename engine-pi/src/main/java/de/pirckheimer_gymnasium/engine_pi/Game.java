@@ -215,7 +215,7 @@ public final class Game
         renderPanel.addMouseWheelListener(Game::enqueueMouseScrollEvent);
         try
         {
-            frame.setIconImage(Resources.IMAGES.get("assets/logo.png"));
+            frame.setIconImage(Resources.IMAGES.get("logo/logo.png"));
         }
         catch (Exception e)
         {

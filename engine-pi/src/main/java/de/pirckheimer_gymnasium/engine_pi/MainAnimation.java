@@ -170,7 +170,7 @@ public final class MainAnimation
         {
             private final List<Actor> items = new ArrayList<>();
             {
-                Image image = new Image("assets/logo.png", 80);
+                Image image = new Image("logo/logo.png", 80);
                 image.makeStatic();
                 image.setCenter(0, -3);
                 add(image);

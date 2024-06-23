@@ -101,7 +101,7 @@ public class ImageUtilTest
         BufferedImage img = null;
         try
         {
-            img = ImageIO.read(Game.class.getResource("/assets/logo.png"));
+            img = ImageIO.read(Game.class.getResource("/logo/logo.png"));
         }
         catch (Exception e)
         {
