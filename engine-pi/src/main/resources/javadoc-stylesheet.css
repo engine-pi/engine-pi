@@ -6,8 +6,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
+  --font-serif: 'Roboto Serif', 'DejaVu Sans', Arial, Helvetica, sans-serif;
+  --font-sans: 'Roboto', 'DejaVu Sans', Arial, Helvetica, sans-serif;
+  --font-mono: 'Roboto Mono', 'DejaVu Sans Mono', monospace;
+
   --color-white: #deddda;
-  --color-white1: #ffffff;
+  --color-white1: var(--color-white1);
   --color-white2: #f6f5f4;
   --color-white3: #deddda;
   --color-white4: #c0bfbc;
@@ -42,10 +46,10 @@
   --color-green3: #33d17a;
   --color-green4: #2ec27e;
   --color-green5: #26a269;
-  --color-blue: #3584e4;
+  --color-blue: var(--color-blue2);
   --color-blue1: #99c1f1;
   --color-blue2: #62a0ea;
-  --color-blue3: #3584e4;
+  --color-blue3: var(--color-blue2);
   --color-blue4: #1c71d8;
   --color-blue5: #1a5fb4;
   --color-purple: #9141ac;
@@ -60,11 +64,6 @@
   --color-black3: #3d3846;
   --color-black4: #241f31;
   --color-black5: #000000;
-
-  --font-serif: 'Roboto Serif', 'DejaVu Sans', Arial, Helvetica, sans-serif;
-  --font-sans: 'Roboto', 'DejaVu Sans', Arial, Helvetica, sans-serif;
-  --font-mono: 'Roboto Mono', 'DejaVu Sans Mono', monospace;
-
 }
 
 
@@ -184,8 +183,8 @@ button {
     margin-left:.5em;
 }
 .tab {
-    background-color:#0066FF;
-    color:#ffffff;
+    background-color: var(--color-blue5);
+    color: var(--color-white1);
     padding:8px;
     width:5em;
     font-weight:bold;
@@ -210,8 +209,8 @@ button {
     }
 }
 .top-nav {
-    background-color:#3584e4;
-    color:#FFFFFF;
+    background-color:var(--color-blue1);
+    color: var(--color-white1);
     float:left;
     padding:0;
     width:100%;
@@ -222,7 +221,7 @@ button {
     font-size:12px;
 }
 .sub-nav {
-    background-color:#dee3e9;
+    background-color:var(--color-white4);
     float:left;
     width:100%;
     overflow:hidden;
@@ -269,18 +268,18 @@ ul.sub-nav-list li {
     padding-top:10px;
 }
 .top-nav a:link, .top-nav a:active, .top-nav a:visited {
-    color:#FFFFFF;
+    color:var(--color-white1);
     text-decoration:none;
     text-transform:uppercase;
 }
 .top-nav a:hover {
     text-decoration:none;
-    color:#bb7a2a;
+    color: var(--color-yellow5);
     text-transform:uppercase;
 }
 .nav-bar-cell1-rev {
-    background-color:#e01b24;
-    color:#253441;
+    background-color: var(--color-red3);
+    color:var(--color-black3);
     margin: auto 5px;
 }
 .skip-nav {
@@ -301,7 +300,7 @@ ul.sub-nav-list li {
  * Styles for page header and footer.
  */
 .title {
-    color:var(--color-blue5);
+    color: var(--color-blue5);
     margin:10px 0;
 }
 .sub-title {
@@ -329,8 +328,8 @@ body.module-declaration-page  .block-list h2 {
 body.class-declaration-page .summary h3,
 body.class-declaration-page .details h3,
 body.class-declaration-page .summary .inherited-list h2 {
-    background-color:#dee3e9;
-    border:1px solid #d0d9e0;
+    background-color: var(--color-white4);
+    border:1px solid var(--color-white5);
     margin:0 0 6px -8px;
     padding:7px 5px;
 }
@@ -347,7 +346,7 @@ dl.notes > dt {
     font-size:12px;
     font-weight:bold;
     margin:10px 0 0 0;
-    color:#4E4E4E;
+    color: var(--color-black1);
 }
 dl.notes > dd {
     margin:5px 10px 10px 0;
@@ -419,16 +418,16 @@ ul.see-list-long li:not(:last-child):after {
 .summary-table, .details-table {
     width:100%;
     border-spacing:0;
-    border-left:1px solid #EEE;
-    border-right:1px solid #EEE;
-    border-bottom:1px solid #EEE;
+    border-left:1px solid var(--color-white2);
+    border-right:1px solid var(--color-white2);
+    border-bottom:1px solid var(--color-white2);
     padding:0;
 }
 .caption {
     position:relative;
     text-align:left;
     background-repeat:no-repeat;
-    color:#253441;
+    color: var(--color-black3);
     font-weight:bold;
     clear:none;
     overflow:hidden;
@@ -439,11 +438,11 @@ ul.see-list-long li:not(:last-child):after {
     white-space:pre;
 }
 .caption a:link, .caption a:visited {
-    color:#1f389c;
+    color:var(--color-blue5);
 }
 .caption a:hover,
 .caption a:active {
-    color:#FFFFFF;
+    color:var(--color-white1);
 }
 .caption span {
     white-space:nowrap;
@@ -453,7 +452,7 @@ ul.see-list-long li:not(:last-child):after {
     padding-bottom:7px;
     display:inline-block;
     float:left;
-    background-color:#e01b24;
+    background-color: var(--color-red3);
     border: none;
     height:16px;
 }
@@ -470,11 +469,11 @@ div.table-tabs > button {
 }
 div.table-tabs > button.active-table-tab {
    background: var(--color-red3);
-   color: #253441;
+   color: var(--color-black4);
 }
 div.table-tabs > button.table-tab {
    background: var(--color-blue3);
-   color: #FFFFFF;
+   color: var(--color-white1);
 }
 .two-column-summary {
     display: grid;
@@ -548,13 +547,13 @@ div.table-tabs > button.table-tab {
     font-weight:bold;
 }
 .table-sub-heading-color {
-    background-color:#EEEEFF;
+    background-color:var(--color-white1);
 }
 .even-row-color, .even-row-color .table-header {
-    background-color:#FFFFFF;
+    background-color:var(--color-white1);
 }
 .odd-row-color, .odd-row-color .table-header {
-    background-color:#EEEEEF;
+    background-color:var(--color-white1);
 }
 /*
  * Styles for contents.
@@ -601,7 +600,7 @@ div.block {
  * Styles for formatting effect.
  */
 .source-line-no {
-    color:green;
+    color: var(--color-green3);
     padding:0 30px 0 0;
 }
 h1.hidden {
@@ -612,7 +611,7 @@ h1.hidden {
 .block {
     display:block;
     margin:0 10px 5px 0;
-    color:#474747;
+    color:var(--color-black3);
 }
 .deprecated-label, .descfrm-type-label, .implementation-label, .member-name-label, .member-name-link,
 .module-label-in-package, .module-label-in-type, .override-specify-label, .package-label-in-type,
@@ -660,8 +659,8 @@ main, nav, header, footer, section {
     font-weight:bold;
     font-size:15px;
     padding:7px 0 7px 3px;
-    background-color:#3584e4;
-    color:#FFFFFF;
+    background-color: var(--color-blue2);
+    color: var(--color-white1);
 }
 .result-item {
     font-size:13px;
@@ -677,7 +676,7 @@ main, nav, header, footer, section {
 ul.ui-autocomplete {
     position:fixed;
     z-index:999999;
-    background-color: #FFFFFF;
+    background-color: var(--color-white1);
 }
 ul.ui-autocomplete  li {
     float:left;
@@ -715,7 +714,7 @@ ul.ui-autocomplete  li {
     font-size:0px;
 }
 .watermark {
-    color:#545454;
+    color:var(--color-black1);
 }
 .search-tag-desc-result {
     font-style:italic;
@@ -746,12 +745,12 @@ section.class-description {
 .summary section[class$="-summary"], .details section[class$="-details"],
 .class-uses .detail, .serialized-class-details {
     padding: 0px 20px 5px 10px;
-    border: 1px solid #ededed;
-    background-color: #f8f8f8;
+    border: 1px solid var(--color-white2);
+    background-color: var(--color-white3);
 }
 .inherited-list, section[class$="-details"] .detail {
     padding:0 0 5px 8px;
-    background-color:#ffffff;
+    background-color:var(--color-white1);
     border:none;
 }
 .vertical-separator {
@@ -819,34 +818,34 @@ table.borderless > thead > tr, table.borderless > tbody > tr, table.borderless >
 }
 table.plain {
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid var(--color-black5);
 }
 table.plain > thead > tr, table.plain > tbody tr, table.plain > tr {
     background-color: transparent;
 }
 table.plain > thead > tr > th, table.plain > tbody > tr > th, table.plain > tr > th,
 table.plain > thead > tr > td, table.plain > tbody > tr > td, table.plain > tr > td {
-    border: 1px solid black;
+    border: 1px solid var(--color-black5);
 }
 table.striped {
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid var(--color-black5);
 }
 table.striped > thead {
-    background-color: #E3E3E3;
+    background-color: var(--color-white2);
 }
 table.striped > thead > tr > th, table.striped > thead > tr > td {
-    border: 1px solid black;
+    border: 1px solid var(--color-black5);
 }
 table.striped > tbody > tr:nth-child(even) {
-    background-color: #EEE
+    background-color: var(--color-white4)
 }
 table.striped > tbody > tr:nth-child(odd) {
-    background-color: #FFF
+    background-color: var(--color-white3)
 }
 table.striped > tbody > tr > th, table.striped > tbody > tr > td {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 1px solid var(--color-black5);
+    border-right: 1px solid var(--color-black5);
 }
 table.striped > tbody > tr > th {
     font-weight: normal;
