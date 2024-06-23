@@ -129,7 +129,17 @@
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
                     <excludePackageNames>org.jbox2d.*</excludePackageNames>
+                    <!--
+                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
+                    <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.pirckheimer-gymnasium</groupId>
+                        <artifactId>engine-pi</artifactId>
+                        <version>0.18.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
