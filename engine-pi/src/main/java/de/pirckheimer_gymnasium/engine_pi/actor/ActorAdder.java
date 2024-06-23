@@ -25,8 +25,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Erzeugt verschiedene {@link Actor}-Objekte und fügt sie gleich zur Szene
- * bzw. zur Ebene hinzu.
+ * Erzeugt verschiedene {@link Actor}-Objekte und fügt sie gleich zur Szene bzw.
+ * zur Ebene hinzu.
  *
  * <p>
  * Mit Hilfe dieses Interfaces können die Klassen {@link Scene} and
@@ -154,8 +154,7 @@ public interface ActorAdder
         return actor;
     }
 
-    default Hexagon addHexagon(double radius, double x, double y,
-                               String color)
+    default Hexagon addHexagon(double radius, double x, double y, String color)
     {
         Hexagon actor = addHexagon(radius, x, y);
         actor.setColor(color);
@@ -211,7 +210,7 @@ public interface ActorAdder
      * @see Rectangle#Rectangle(double, double)
      */
     default Rectangle addRectangle(double width, double height, double x,
-                                   double y)
+            double y)
     {
         Rectangle actor = new Rectangle(width, height);
         actor.setPosition(x, y);
@@ -302,7 +301,7 @@ public interface ActorAdder
      */
     @API
     default Triangle addTriangle(double x1, double y1, double x2, double y2,
-                                 double x3, double y3)
+            double x3, double y3)
     {
         Triangle actor = new Triangle(x1, y1, x2, y2, x3, y3);
         getScene().add(actor);
@@ -342,15 +341,14 @@ public interface ActorAdder
     }
 
     default RegularPolygon addRegularPolygon(int numSides, double radius,
-                                             double x, double y)
+            double x, double y)
     {
         RegularPolygon actor = addRegularPolygon(numSides, radius);
         actor.setPosition(x, y);
         return actor;
     }
 
-    default RegularPolygon addRegularPolygon(int numSides, double x,
-                                             double y)
+    default RegularPolygon addRegularPolygon(int numSides, double x, double y)
     {
         return addRegularPolygon(numSides, 1, x, y);
     }

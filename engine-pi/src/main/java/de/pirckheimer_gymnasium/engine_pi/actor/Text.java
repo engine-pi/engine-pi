@@ -144,7 +144,7 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt einen neue Schriftart für den Text.
+     * Setzt eine neue Schriftart für den Text.
      *
      * @param fontName Name des neuen Fonts für den Text
      */
@@ -185,6 +185,17 @@ public class Text extends Geometry
             this.content = normalizedContent;
             update();
         }
+    }
+
+    /**
+     * Setzt den Inhalt des Textes durch Angabe eines beliebigen Datentyps.
+     *
+     * @param content Der neue Inhalt des Textes in einem beliebigen Datentyp.
+     */
+    @API
+    public void setContent(Object content)
+    {
+        setContent(String.valueOf(content));
     }
 
     @API

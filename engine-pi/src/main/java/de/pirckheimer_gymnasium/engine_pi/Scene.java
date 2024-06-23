@@ -520,6 +520,19 @@ public class Scene implements KeyStrokeListenerRegistration,
                 .invoke(listener -> listener.onMouseScrollMove(event));
     }
 
+    /**
+     * Gibt die Position der Maus in der Szene als Vektor in Meter relativ zum
+     * Koordinatensystem zurück.
+     *
+     * <p>
+     * Der Positions-Vektor ist in der Einheit Meter angegeben und bezieht sich
+     * auf einen Punkt des zu Grunde liegenden Koordinatensystems.
+     * </p>
+     *
+     * @return Die Position der Maus in der Szene als Vektor in Meter.
+     *
+     * @see Game#getMousePosition()
+     */
     @API
     public final Vector getMousePosition()
     {

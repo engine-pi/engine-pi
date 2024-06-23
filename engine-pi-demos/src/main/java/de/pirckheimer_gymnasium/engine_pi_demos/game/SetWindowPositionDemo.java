@@ -27,32 +27,22 @@ public class SetWindowPositionDemo
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 ->
-            {
                 // links oben
                 Game.setWindowPosition(0, 0);
-            }
             case KeyEvent.VK_2 ->
-            {
                 // rechts oben
                 Game.setWindowPosition(screenWidth - windowWidth, 0);
-            }
             case KeyEvent.VK_3 ->
-            {
                 // links unten
                 Game.setWindowPosition(0, screenHeight - windowHeight);
-            }
             case KeyEvent.VK_4 ->
-            {
                 // rechts unten
                 Game.setWindowPosition(screenWidth - windowWidth,
                         screenHeight - windowHeight);
-            }
             case KeyEvent.VK_5 ->
-            {
                 // zentrieren
                 Game.setWindowPosition((screenWidth - windowWidth) / 2,
                         (screenHeight - windowHeight) / 2);
-            }
             }
         });
     }

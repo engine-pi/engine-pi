@@ -340,32 +340,6 @@ public final class Game
     }
 
     /**
-     * Finde die Position des Mausklicks auf der Zeichenebene. Die Position wird
-     * relativ zum Ursprung des {@link RenderPanel}-Canvas angegeben. Die
-     * Mausklick-Position muss mit dem Zoom-Wert verrechnet werden.
-     */
-    @Internal
-    public static Vector convertMousePosition(Scene scene,
-            java.awt.Point mousePosition)
-    {
-        Camera camera = scene.getCamera();
-        double zoom = camera.getMeter();
-        double rotation = camera.getRotation();
-        Vector position = camera.getPosition();
-        return new Vector(
-                position.getX() + ((Math.cos(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2.0)
-                        + Math.sin(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2.0)))
-                        / zoom,
-                position.getY() + ((Math.sin(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2.0)
-                        - Math.cos(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2.0)))
-                        / zoom);
-    }
-
-    /**
      * Diese Methode wird immer dann ausgeführt, wenn das Mausrad bewegt wurde
      * und ein {@code MouseWheelEvent} registriert wurde.
      *
@@ -745,6 +719,32 @@ public final class Game
                 JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
     }
 
+    /**
+     * Finde die Position des Mausklicks auf der Zeichenebene. Die Position wird
+     * relativ zum Ursprung des {@link RenderPanel}-Canvas angegeben. Die
+     * Mausklick-Position muss mit dem Zoom-Wert verrechnet werden.
+     */
+    @Internal
+    public static Vector convertMousePosition(Scene scene,
+            java.awt.Point mousePosition)
+    {
+        Camera camera = scene.getCamera();
+        double zoom = camera.getMeter();
+        double rotation = camera.getRotation();
+        Vector position = camera.getPosition();
+        return new Vector(
+                position.getX() + ((Math.cos(Math.toRadians(rotation))
+                        * (mousePosition.x - width / 2.0)
+                        + Math.sin(Math.toRadians(rotation))
+                                * (mousePosition.y - height / 2.0)))
+                        / zoom,
+                position.getY() + ((Math.sin(Math.toRadians(rotation))
+                        * (mousePosition.x - width / 2.0)
+                        - Math.cos(Math.toRadians(rotation))
+                                * (mousePosition.y - height / 2.0)))
+                        / zoom);
+    }
+
     @Internal
     public static java.awt.Point getMousePositionInFrame()
     {
@@ -752,13 +752,20 @@ public final class Game
     }
 
     /**
-     * Gibt die Position der Maus in der aktuell angezeigten Scene aus.
+     * Gibt die Position der Maus in der aktuellen Szene als Vektor in Meter
+     * relativ zum Koordinatensystem zurück.
      *
-     * @return Die Position der Maus in der aktuellen Scene (unter Einbezug von
-     *         Kamerazoom und -verschiebung).
+     * <p>
+     * Der Positions-Vektor ist in der Einheit Meter angegeben und bezieht sich
+     * auf einen Punkt des zu Grunde liegenden Koordinatensystems.
+     * </p>
+     *
+     * @return Die Position der Maus in der aktuellen Szene als Vektor in Meter.
+     *
+     * @see Scene#getMousePosition()
      */
     @API
-    public static Vector getMousePositionInCurrentScene()
+    public static Vector getMousePosition()
     {
         return scene.getMousePosition();
     }
