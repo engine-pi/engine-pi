@@ -11,7 +11,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
  * einem <b>bestimmten zeitlichen Abstand</b> aus.
  *
  * <p>
- * Foldender Code-Ausschnitt registriert zwei Beobachter, nämlich einen für die
+ * Folgender Code-Ausschnitt registriert zwei Beobachter, nämlich einen für die
  * linke Pfeiltaste und einen für die rechte Pfeiltaste. Die auszuführenden
  * Aufgaben werden dabei als Lambda-Ausdrücke ({@code () -> {}}) notiert.
  * </p>
@@ -58,7 +58,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     private double DEFAULT_INTERVAL = 0.03;
 
     /**
-     * Der Standardwert für die zeitliche Verzögerung (in Sekunden) zwischen dem
+     * Der Standardwert für die Verzögerung (in Sekunden) zwischen dem
      * <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der Aufgabe.
      */
     private double DEFAULT_INITIAL_INTERVAL = 0.15;
@@ -182,16 +182,16 @@ public class PressedKeyRepeater implements KeyStrokeListener
          *                        Zeitintervall <b>wiederholt</b> wird.
          * @param interval        Das <b>Zeitintervall</b> (in Sekunden) nach
          *                        dem die Aufgabe <b>wiederholt</b> wird.
-         * @param initialInterval Die zeitliche Verzögerung (in Sekunden)
+         * @param initialInterval Die Verzögerung (in Sekunden)
          *                        zwischen dem <b>ersten Tastendruck</b> und der
          *                        <b>ersten Wiederholung</b> der Aufgabe.
          */
-        public PressedKeyListener(int keyCode, Runnable reatedTask,
+        public PressedKeyListener(int keyCode, Runnable repeatedTask,
                 double interval, double initialInterval)
         {
             this.keyCode = keyCode;
             this.interval = interval;
-            this.repeatedTask = reatedTask;
+            this.repeatedTask = repeatedTask;
             this.initialInterval = initialInterval;
         }
 

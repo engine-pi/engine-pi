@@ -4,20 +4,20 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>engine-pi-demos</artifactId>
+    <version>0.18.0</version>
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
         <version>0.18.0</version>
     </parent>
 
-    <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-demos</artifactId>
-    <version>0.18.0</version>
-    <packaging>jar</packaging>
-
     <name>Engine Pi Demos</name>
     <description>A collection of demos to show the capabilities of the Engine Pi.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
+
     <licenses>
         <license>
             <name>The GNU General Public License, Version 3.0</name>
@@ -75,42 +75,6 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.6.3</version>
-                <configuration>
-                    <!-- to disable the "missing" warnings -->
-                    <doclint>all,-missing</doclint>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/tag-configuration.html -->
-                    <tags>
-                        <tag>
-                            <name>jbox2d</name>
-                            <placement>a</placement>
-                            <head>jbox2d source code:</head>
-                        </tag>
-                        <tag>
-                            <name>box2d</name>
-                            <placement>a</placement>
-                            <head>box2d source code:</head>
-                        </tag>
-                    </tags>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
-                    <excludePackageNames>org.jbox2d.*</excludePackageNames>
-
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
