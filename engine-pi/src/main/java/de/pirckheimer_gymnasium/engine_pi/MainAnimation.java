@@ -199,6 +199,7 @@ public final class MainAnimation
                     spawnItem(b);
                     Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
                             new Vector(.5, 1));
+                    c.setColor("yellow");
                     c.setElasticity(.9);
                     c.setFriction(1);
                     c.makeDynamic();
