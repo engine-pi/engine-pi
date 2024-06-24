@@ -10,11 +10,17 @@ import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
 /**
  * Demonstriert die Methode
  * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, Runnable)}.
+ *
+ * <p>
+ * Im Spielfenster wird eine Zahl hochgezählt. Über die <b>Leertaste</b> kann die periodische Aufgabe gestoppt
+ * oder erneut gestartet werden.
+ * </p>
  */
 public class RepeatDemo extends Scene
 {
     public RepeatDemo()
     {
+        setBackgroundColor("white");
         add(new CounterText());
     }
 
@@ -48,7 +54,7 @@ public class RepeatDemo extends Scene
         {
             task = repeat(1, () -> {
                 counter++;
-                setContent(String.valueOf(counter));
+                setContent(counter);
             });
         }
 

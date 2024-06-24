@@ -10,6 +10,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
 /**
  * Demonstriert die Klasse
  * {@link de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask}.
+ *
+ * <p>
+ * Im Spielfenster wird eine Zahl hochgezählt. Über die Taste <b>P</b> kann die
+ * periodische Aufgabe pausiert oder fortgesetzt werden. Über die
+ * <b>Leertaste</b> kann die periodische Aufgabe gestoppt, was jedoch mit einer
+ * <b>Fehlermeldung</b> (so gewollt) fehlschlägt.
+ * </p>
  */
 public class PerodicTaskDemo extends Scene
 {
@@ -17,6 +24,7 @@ public class PerodicTaskDemo extends Scene
 
     public PerodicTaskDemo()
     {
+        setBackgroundColor("white");
         add(new CounterText());
     }
 
@@ -59,7 +67,7 @@ public class PerodicTaskDemo extends Scene
         {
             task = new PeriodicTask(0.1, () -> {
                 counter++;
-                setContent(String.valueOf(counter));
+                setContent(counter);
             });
             addFrameUpdateListener(task);
         }

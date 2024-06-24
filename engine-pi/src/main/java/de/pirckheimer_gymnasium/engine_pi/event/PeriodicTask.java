@@ -24,7 +24,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Eine periodische Aufgabe, die regelmäßig ausgeführt wird.
+ * Eine <b>periodische Aufgabe</b>, die regelmäßig ausgeführt wird.
  *
  * @author Niklas Keller
  * @author Josef Friedrich
@@ -34,19 +34,34 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 public final class PeriodicTask implements FrameUpdateListener
 {
     /**
-     * Intervall in Sekunden.
-     */
-    private double interval;
-
-    /**
      * Aktuelle Zeit bis zur nächsten Ausführung in Sekunden.
      */
     private double countdown;
 
     /**
-     * Code, der alle X Sekunden ausgeführt wird.
+     * Intervall in Sekunden.
      */
-    private Runnable runnable;
+    private double interval;
+
+    /**
+     * Die <b>Anzahl an Wiederholungen</b> der Aufgabe.
+     *
+     * <p>
+     * Gibt an, wie oft die Aufgabe wiederholt wird. Ist dieses Attribut auf
+     * {@code -1} gesetzt, so wird die Aufgabe unendlich oft wiederholt.
+     * </p>
+     */
+    private int repetitions = -1;
+
+    /**
+     * Die Aufgabe, die regelmäßig ausgeführt wird.
+     */
+    private Runnable task;
+
+    /**
+     * Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
+     */
+    private Runnable finalTask;
 
     /**
      * Eine Referenz auf den übergeordneten Behälter, in dem diese periodische
@@ -62,27 +77,60 @@ public final class PeriodicTask implements FrameUpdateListener
 
     /**
      * Erzeugt eine neue periodische Aufgabe, die eine Referenz auf den
-     * übergeordneten Behälter verlangt, in dem diese periodische Aufgabe
-     * angemeldet wurde.
+     * <b>übergeordneten Behälter</b> verlangt, in dem diese periodische Aufgabe
+     * angemeldet wurde. Die Ausführung wird nach einer bestimmten <b>Anzahl an
+     * Wiederholungen</b> unterbrochen und als letzte Wiederholungen eine
+     * <b>abschließende Aufgabe</b> ausgeführt.
      *
-     * @param intervalInSeconds Die Zeit zwischen den Ausführungen in Sekunden.
-     * @param runnable          Ein Objekt vom Typ {@link Runnable}, das eine
-     *                          ausführbare Methode enthält oder ein
-     *                          Lambda-Ausdruck.
-     * @param container         Eine Referenz auf den übergeordneten Behälter,
-     *                          in dem diese periodische Aufgabe angemeldet
-     *                          wurde. Diese Referenz wird dazu verwendet, um
-     *                          die periodische Ausführung abzumelden und
-     *                          dadurch zu stoppen.
+     * @param interval    Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe. Gibt
+     *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
+     *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
+     *                    unendlich oft wiederholt.
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird. Ein
+     *                    Objekt vom Typ {@link Runnable}, das eine ausführbare
+     *                    Methode enthält oder ein Lambda-Ausdruck.
+     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
+     *                    Ein Objekt vom Typ {@link Runnable}, das eine
+     *                    ausführbare Methode enthält oder ein Lambda-Ausdruck.
+     * @param container   Eine Referenz auf den übergeordneten Behälter, in dem
+     *                    diese periodische Aufgabe angemeldet wurde. Diese
+     *                    Referenz wird dazu verwendet, um die periodische
+     *                    Ausführung abzumelden und dadurch zu stoppen.
      *
      * @author Josef Friedrich
      */
-    public PeriodicTask(double intervalInSeconds, Runnable runnable,
+    public PeriodicTask(double interval, int repetitions, Runnable task,
+            Runnable finalTask, FrameUpdateListenerRegistration container)
+    {
+        setInterval(interval);
+        this.repetitions = repetitions;
+        this.task = task;
+        this.finalTask = finalTask;
+        this.container = container;
+    }
+
+    /**
+     * Erzeugt eine neue periodische Aufgabe, die eine Referenz auf den
+     * übergeordneten Behälter verlangt, in dem diese periodische Aufgabe
+     * angemeldet wurde.
+     *
+     * @param interval  Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param task      Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt
+     *                  vom Typ {@link Runnable}, das eine ausführbare Methode
+     *                  enthält oder ein Lambda-Ausdruck.
+     * @param container Eine Referenz auf den übergeordneten Behälter, in dem
+     *                  diese periodische Aufgabe angemeldet wurde. Diese
+     *                  Referenz wird dazu verwendet, um die periodische
+     *                  Ausführung abzumelden und dadurch zu stoppen.
+     *
+     * @author Josef Friedrich
+     */
+    public PeriodicTask(double interval, Runnable task,
             FrameUpdateListenerRegistration container)
     {
-        setInterval(intervalInSeconds);
-        this.countdown = intervalInSeconds;
-        this.runnable = runnable;
+        setInterval(interval);
+        this.task = task;
         this.container = container;
     }
 
@@ -91,14 +139,14 @@ public final class PeriodicTask implements FrameUpdateListener
      * übergeordneten Behälter, in dem diese periodische Aufgabe angemeldet
      * wurde.
      *
-     * @param intervalInSeconds Die Zeit zwischen den Ausführungen in Sekunden.
-     * @param runnable          Ein Objekt vom Typ {@link Runnable}, das eine
-     *                          ausführbare Methode enthält oder ein
-     *                          Lambda-Ausdruck.
+     * @param interval Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt
+     *                 vom Typ {@link Runnable}, das eine ausführbare Methode
+     *                 enthält oder ein Lambda-Ausdruck.
      */
-    public PeriodicTask(double intervalInSeconds, Runnable runnable)
+    public PeriodicTask(double interval, Runnable task)
     {
-        this(intervalInSeconds, runnable, null);
+        this(interval, task, null);
     }
 
     /**
@@ -106,9 +154,12 @@ public final class PeriodicTask implements FrameUpdateListener
      *
      * @param interval Das neue Intervall. Zeit zwischen den Ausführungen in
      *                 Sekunden. Muss größer als 0 sein.
+     *
+     * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
+     *         Setter konfiguriert werden kann.
      */
     @API
-    public void setInterval(double interval)
+    public PeriodicTask setInterval(double interval)
     {
         if (interval <= 0)
         {
@@ -117,6 +168,8 @@ public final class PeriodicTask implements FrameUpdateListener
                             + interval);
         }
         this.interval = interval;
+        this.countdown = interval;
+        return this;
     }
 
     /**
@@ -129,6 +182,79 @@ public final class PeriodicTask implements FrameUpdateListener
     public double getInterval()
     {
         return interval;
+    }
+
+    /**
+     * Setzt die <b>Anzahl an Wiederholungen</b> der Aufgabe.
+     *
+     * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe.
+     *
+     * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
+     *         Setter konfiguriert werden kann.
+     */
+    public PeriodicTask setRepetitions(int repetitions)
+    {
+        this.repetitions = repetitions;
+        return this;
+    }
+
+    /**
+     * Gibt die <b>Anzahl an Wiederholungen</b> der Aufgabe zurück.
+     *
+     * @return Die <b>Anzahl an Wiederholungen</b> der Aufgabe.
+     */
+    public int getRepetitions()
+    {
+        return repetitions;
+    }
+
+    /**
+     * Setzt die <b>Aufgabe</b>, die regelmäßig ausgeführt wird.
+     *
+     * @param task Die <b>Aufgabe</b>, die regelmäßig ausgeführt wird.
+     *
+     * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
+     *         Setter konfiguriert werden kann.
+     */
+    public PeriodicTask setTask(Runnable task)
+    {
+        this.task = task;
+        return this;
+    }
+
+    /**
+     * Gibt die <b>Aufgabe</b>, die regelmäßig ausgeführt wird, zurück.
+     *
+     * @return Die <b>Aufgabe</b>, die regelmäßig ausgeführt wird.
+     */
+    public Runnable getTask()
+    {
+        return task;
+    }
+
+    /**
+     * Setzt die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird.
+     *
+     * @param finalTask Die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt
+     *                  wird..
+     *
+     * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
+     *         Setter konfiguriert werden kann.
+     */
+    public PeriodicTask setFinalTask(Runnable finalTask)
+    {
+        this.finalTask = finalTask;
+        return this;
+    }
+
+    /**
+     * Gibt die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird, zurück.
+     *
+     * @return Die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird.
+     */
+    public Runnable getFinalTask()
+    {
+        return finalTask;
     }
 
     /**
@@ -174,12 +300,14 @@ public final class PeriodicTask implements FrameUpdateListener
      * werden.
      *
      * @author Josef Friedrich
+     *
+     * @throws RuntimeException Falls kein {@link #container} gesetzt ist.
      */
     public void unregister()
     {
-        if (this.container != null)
+        if (container != null)
         {
-            this.container.removeFrameUpdateListener(this);
+            container.removeFrameUpdateListener(this);
         }
         else
         {
@@ -191,8 +319,24 @@ public final class PeriodicTask implements FrameUpdateListener
     }
 
     /**
+     * Stoppt die periodische Ausführung und wirft dabei keine Ausnahme. Sie
+     * kann dann nicht mehr neu gestartet werden.
+     *
+     * @author Josef Friedrich
+     */
+    public void unregisterSafe()
+    {
+        if (container != null)
+        {
+            container.removeFrameUpdateListener(this);
+        }
+    }
+
+    /**
      * @param pastTime Die Zeit in Sekunden, die seit der letzten Aktualisierung
      *                 vergangen ist.
+     *
+     * @hidden
      */
     @Override
     @Internal
@@ -203,10 +347,26 @@ public final class PeriodicTask implements FrameUpdateListener
             return;
         }
         countdown -= pastTime;
-        if (countdown < 0)
+        while (countdown < 0)
         {
+            if (repetitions > 0)
+            {
+                repetitions--;
+            }
             countdown += interval;
-            runnable.run();
+            if (repetitions == 0 && finalTask != null)
+            {
+                finalTask.run();
+            }
+            else
+            {
+                task.run();
+            }
+            if (repetitions == 0)
+            {
+                unregister();
+                return;
+            }
         }
     }
 }

@@ -101,11 +101,43 @@ public interface FrameUpdateListenerRegistration
     }
 
     /**
-     * Führt die übergebene Aufgabe in einem bestimmten Zeitintervall
+     * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
+     * wiederholend aus. Die Ausführung wird nach einer bestimmten <b>Anzahl an
+     * Wiederholungen</b> unterbrochen und als letzte Wiederholungen eine
+     * <b>abschließende Aufgabe</b> ausgeführt.
+     *
+     * @param interval    Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe. Gibt
+     *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
+     *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
+     *                    unendlich oft wiederholt.
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird. Ein
+     *                    Objekt vom Typ {@link Runnable}, das eine ausführbare
+     *                    Methode enthält oder ein Lambda-Ausdruck.
+     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
+     *                    Ein Objekt vom Typ {@link Runnable}, das eine
+     *                    ausführbare Methode enthält oder ein Lambda-Ausdruck.
+     *
+     * @author Josef Friedrich
+     */
+    @API
+    default PeriodicTask repeat(double interval, int repetitions, Runnable task,
+            Runnable finalTask)
+    {
+        PeriodicTask periodicTask = new PeriodicTask(interval, repetitions,
+                task, finalTask, this);
+        addFrameUpdateListener(periodicTask);
+        return periodicTask;
+    }
+
+    /**
+     * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
      * wiederholend aus.
      *
      * @param interval Das Zeitintervall in Sekunden.
-     * @param task     Wird immer wieder nach Ablauf der Verzögerung ausgeführt
+     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt
+     *                 vom Typ {@link Runnable}, das eine ausführbare Methode
+     *                 enthält oder ein Lambda-Ausdruck.
      *
      * @return Ein Objekt der Klasse {@link PeriodicTask}, der manuell
      *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
@@ -114,8 +146,6 @@ public interface FrameUpdateListenerRegistration
     @API
     default PeriodicTask repeat(double interval, Runnable task)
     {
-        PeriodicTask periodicTask = new PeriodicTask(interval, task, this);
-        addFrameUpdateListener(periodicTask);
-        return periodicTask;
+        return repeat(interval, -1, task, null);
     }
 }
