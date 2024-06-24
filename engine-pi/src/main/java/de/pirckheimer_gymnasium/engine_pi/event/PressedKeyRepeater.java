@@ -58,8 +58,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
     private double DEFAULT_INTERVAL = 0.03;
 
     /**
-     * Der Standardwert für die Verzögerung (in Sekunden) zwischen dem
-     * <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der Aufgabe.
+     * Der Standardwert für die Verzögerung (in Sekunden) zwischen dem <b>ersten
+     * Tastendruck</b> und der <b>ersten Wiederholung</b> der Aufgabe.
      */
     private double DEFAULT_INITIAL_INTERVAL = 0.15;
 
@@ -182,9 +182,9 @@ public class PressedKeyRepeater implements KeyStrokeListener
          *                        Zeitintervall <b>wiederholt</b> wird.
          * @param interval        Das <b>Zeitintervall</b> (in Sekunden) nach
          *                        dem die Aufgabe <b>wiederholt</b> wird.
-         * @param initialInterval Die Verzögerung (in Sekunden)
-         *                        zwischen dem <b>ersten Tastendruck</b> und der
-         *                        <b>ersten Wiederholung</b> der Aufgabe.
+         * @param initialInterval Die Verzögerung (in Sekunden) zwischen dem
+         *                        <b>ersten Tastendruck</b> und der <b>ersten
+         *                        Wiederholung</b> der Aufgabe.
          */
         public PressedKeyListener(int keyCode, Runnable repeatedTask,
                 double interval, double initialInterval)

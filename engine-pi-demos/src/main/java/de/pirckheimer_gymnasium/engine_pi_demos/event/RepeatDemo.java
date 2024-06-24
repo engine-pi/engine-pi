@@ -12,8 +12,8 @@ import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
  * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, Runnable)}.
  *
  * <p>
- * Im Spielfenster wird eine Zahl hochgezählt. Über die <b>Leertaste</b> kann die periodische Aufgabe gestoppt
- * oder erneut gestartet werden.
+ * Im Spielfenster wird eine Zahl hochgezählt. Über die <b>Leertaste</b> kann
+ * die periodische Aufgabe gestoppt oder erneut gestartet werden.
  * </p>
  */
 public class RepeatDemo extends Scene

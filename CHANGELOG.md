@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.19.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.19.0) - 2024-06-24
+
+<small>[Compare with v0.18.0](https://github.com/engine-pi/engine-pi/compare/v0.18.0...v0.19.0)</small>
+
+### Changed
+
+- Extend the class PeriodicTask ([ac3aa2f](https://github.com/engine-pi/engine-pi/commit/ac3aa2fee8cfb61238fb8d669109a115f8d8c566) by Josef Friedrich).
+- Rename `Game.getMousePositionInCurrentScene()` into `Game.getMousePosition()` ([df75ced](https://github.com/engine-pi/engine-pi/commit/df75cedc9fc78ddd9bb82c3b3f17f27939d56e7a) by Josef Friedrich).
+- Rename the create..() methods into add..() ([6099302](https://github.com/engine-pi/engine-pi/commit/6099302dc2f5ed404e414b789cc261e9ba447808) by Josef Friedrich).
+
 ## [v0.18.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.18.0) - 2024-06-23
 
 <small>[Compare with v0.17.0](https://github.com/engine-pi/engine-pi/compare/v0.17.0...v0.18.0)</small>
@@ -17,7 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Monorepo with three Maven package engine-pi-meta engine-pi engine-pi-demos
+- Convert project in a monorepo with the three Maven packages `engine-pi-meta` `engine-pi` `engine-pi-demos` ([9f338eb](https://github.com/engine-pi/engine-pi/commit/9f338eb7567af4975d0a42712b1448ed7a537d2d) by Josef Friedrich).
 
 ## [v0.17.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.17.0) - 2024-06-17
 
