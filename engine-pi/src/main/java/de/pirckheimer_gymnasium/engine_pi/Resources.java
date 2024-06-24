@@ -30,6 +30,7 @@ import java.awt.Color;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
+import de.pirckheimer_gymnasium.engine_pi.resources.FontContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.ImageContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.Resource;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourcesContainer;
@@ -52,6 +53,8 @@ import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 public final class Resources
 {
     public static final ColorContainer COLORS = new ColorContainer();
+
+    public static final FontContainer FONTS = new FontContainer();
 
     public static final ImageContainer IMAGES = new ImageContainer();
 
@@ -123,6 +126,7 @@ public final class Resources
     public static void clearAll()
     {
         COLORS.clear();
+        FONTS.clear();
         IMAGES.clear();
         SOUNDS.clear();
     }
