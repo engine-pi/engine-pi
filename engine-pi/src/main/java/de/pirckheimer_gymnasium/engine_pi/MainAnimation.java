@@ -21,7 +21,6 @@
 package de.pirckheimer_gymnasium.engine_pi;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.net.JarURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -32,7 +31,7 @@ import java.util.TimeZone;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
+import de.pirckheimer_gymnasium.engine_pi.actor.Logo;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
@@ -172,14 +171,18 @@ public final class MainAnimation
             {
                 // https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/blob/master/schemas/org.gnome.desktop.interface.gschema.xml.in#L165
                 // Font: https://cantarell.gnome.org/
-                Image image = new Image("logo/logo.png", 80);
-                image.makeStatic();
-                image.setCenter(0, -3);
-                add(image);
+                new Logo(this, new Vector(-3, -6), 2);
+
+                Text enginePiText = new Text("Engine Pi", 3, "fonts/Cantarell-Bold.ttf", 0);
+                enginePiText.makeStatic();
+                enginePiText.setColor("white");
+                enginePiText.setPosition(-10, -8);
+                add(enginePiText);
                 setGravityOfEarth();
                 Rectangle ground = new Rectangle(20, .2);
+                ground.setColor("white");
                 ground.setCenter(0, -6);
-                ground.setElasticity(.9);
+                ground.setElasticity(.95);
                 ground.setFriction(.2);
                 ground.makeStatic();
                 add(ground);
@@ -187,14 +190,14 @@ public final class MainAnimation
                 {
                     Rectangle a = new Rectangle(1, 1);
                     a.setPosition(-5, 10);
-                    a.setElasticity(.9);
+                    a.setElasticity(.95);
                     a.setFriction(1);
                     a.makeDynamic();
                     a.setRotation(30);
                     spawnItem(a);
                     Circle b = new Circle(1);
                     b.setPosition(5, 10);
-                    b.setElasticity(.9);
+                    b.setElasticity(.95);
                     b.setFriction(1);
                     b.makeDynamic();
                     b.applyImpulse(new Vector(Random.range(-100, 100), 0));
@@ -242,6 +245,8 @@ public final class MainAnimation
                 item.resetMovement();
                 item.setCenter(Random.range(-7, 7), Random.range(5, 10));
             }
+
+
         });
         Game.setTitle("Engine Pi " + VERSION_STRING);
     }

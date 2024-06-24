@@ -97,7 +97,7 @@ public class Triangle extends Polygon
      */
     public Triangle(double sideLength)
     {
-        this(new Vector(0, 0), new Vector(sideLength, 0), new Vector(
-                sideLength / 2.0, Math.sqrt(sideLength) / 2.0 * sideLength));
+        this(new Vector(0, 0), new Vector(sideLength, 0),
+                new Vector(sideLength / 2.0, Math.sqrt(3) / 2.0 * sideLength));
     }
 }

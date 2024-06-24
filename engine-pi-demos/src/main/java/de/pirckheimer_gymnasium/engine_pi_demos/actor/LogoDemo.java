@@ -18,24 +18,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos;
+package de.pirckheimer_gymnasium.engine_pi_demos.actor;
+
+import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Logo;
 
 public class LogoDemo extends Scene
 {
-    private final int I_X_POSITION = 2;
-
     public LogoDemo()
     {
-        // P
-        addRectangle(1.0, 2.0);
-        addTriangle(3).rotateBy(-90).setPosition(-0.25, 4);
-        addCircle().setPosition(0.25, 2);
-        // i
-        addRectangle(1.0, 2.0).setX(I_X_POSITION);
-        addCircle().setPosition(I_X_POSITION, 2.8);
+        new Logo(this, v(-5, -5), 3);
     }
 
     public static void main(String[] args)
