@@ -326,6 +326,22 @@ public interface ActorAdder
         getScene().add(actor);
         return actor;
     }
+
+    /**
+     * Erzeugt ein gleichseitiges Dreieck. Die Spitze zeigt nach oben.
+     *
+     * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
+     *
+     * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Triangle#Triangle(double, double)
+     */
+    default Triangle addTriangle(double sideLength)
+    {
+        Triangle actor = new Triangle(sideLength);
+        getScene().add(actor);
+        return actor;
+    }
     /* ___ RegularPolygon (Reguläres Vieleck) _______________________________ */
 
     default RegularPolygon addRegularPolygon(int numSides, double radius)

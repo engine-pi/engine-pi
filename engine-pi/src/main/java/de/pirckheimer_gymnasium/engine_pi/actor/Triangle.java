@@ -87,4 +87,17 @@ public class Triangle extends Polygon
         this(new Vector(0, 0), new Vector(width, 0),
                 new Vector(width / 2, height));
     }
+
+    /**
+     * Erzeugt ein gleichseitiges Dreieck. Die Spitze zeigt nach oben.
+     *
+     * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
+     *
+     * @see ActorAdder#addTriangle(double)
+     */
+    public Triangle(double sideLength)
+    {
+        this(new Vector(0, 0), new Vector(sideLength, 0), new Vector(
+                sideLength / 2.0, Math.sqrt(sideLength) / 2.0 * sideLength));
+    }
 }

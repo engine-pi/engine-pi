@@ -170,6 +170,8 @@ public final class MainAnimation
         {
             private final List<Actor> items = new ArrayList<>();
             {
+                // https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/blob/master/schemas/org.gnome.desktop.interface.gschema.xml.in#L165
+                // Font: https://cantarell.gnome.org/
                 Image image = new Image("logo/logo.png", 80);
                 image.makeStatic();
                 image.setCenter(0, -3);
@@ -184,21 +186,21 @@ public final class MainAnimation
                 for (int i = 0; i < 3; i++)
                 {
                     Rectangle a = new Rectangle(1, 1);
-                    a.setPosition(-5, 3);
+                    a.setPosition(-5, 10);
                     a.setElasticity(.9);
                     a.setFriction(1);
                     a.makeDynamic();
                     a.setRotation(30);
                     spawnItem(a);
                     Circle b = new Circle(1);
-                    b.setPosition(5, 3);
+                    b.setPosition(5, 10);
                     b.setElasticity(.9);
                     b.setFriction(1);
                     b.makeDynamic();
                     b.applyImpulse(new Vector(Random.range(-100, 100), 0));
                     spawnItem(b);
                     Polygon c = new Polygon(new Vector(0, 0), new Vector(1, 0),
-                            new Vector(.5, 1));
+                            new Vector(.5, -1));
                     c.setColor("yellow");
                     c.setElasticity(.9);
                     c.setFriction(1);
@@ -226,12 +228,6 @@ public final class MainAnimation
                         }
                     }
                 });
-                addKeyStrokeListener(e -> {
-                    if (e.getKeyCode() == KeyEvent.VK_D)
-                    {
-                        Game.setDebug(!Game.isDebug());
-                    }
-                });
             }
 
             private void spawnItem(Actor item)
@@ -244,7 +240,7 @@ public final class MainAnimation
                     });
                 }
                 item.resetMovement();
-                item.setCenter(Random.range(-7, 7), Random.range(0, 5));
+                item.setCenter(Random.range(-7, 7), Random.range(5, 10));
             }
         });
         Game.setTitle("Engine Pi " + VERSION_STRING);
