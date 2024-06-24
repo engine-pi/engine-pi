@@ -22,7 +22,7 @@ package:
 	mvn package
 
 run_jar: package
-	java -jar target/engine-pi-0.9.0.jar
+	java -jar engine-pi/target/engine-pi-0.19.0.jar
 
 clone_jbox2d:
 	-rm -rf /tmp/jbox2d
