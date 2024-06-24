@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 
+@DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class FontContainerTest
 {
     FontContainer container = Resources.FONTS;
@@ -20,9 +22,16 @@ public class FontContainerTest
     }
 
     @Test
-    public void testLoad()
+    public void testLoadFromResources()
     {
         var font = container.get("fonts/Cantarell-Bold.ttf");
         assertEquals(font.getName(), "Cantarell Bold");
+    }
+
+    @Test
+    public void testLoadSystemFonts()
+    {
+        var font = container.get("Alegreya");
+        assertEquals(font.getName(), "Alegreya");
     }
 }

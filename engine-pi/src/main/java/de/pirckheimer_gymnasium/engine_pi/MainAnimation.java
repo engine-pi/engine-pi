@@ -172,11 +172,12 @@ public final class MainAnimation
                 // https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/blob/master/schemas/org.gnome.desktop.interface.gschema.xml.in#L165
                 // Font: https://cantarell.gnome.org/
                 new Logo(this, new Vector(-3, -6), 2);
-
-                Text enginePiText = new Text("Engine Pi", 3, "fonts/Cantarell-Bold.ttf", 0);
+                Text enginePiText = new Text(
+                        "E   n   g   i   n   e         P   i", 2,
+                        "fonts/Cantarell-Bold.ttf", 0);
                 enginePiText.makeStatic();
                 enginePiText.setColor("white");
-                enginePiText.setPosition(-10, -8);
+                enginePiText.setCenter(0, -7);
                 add(enginePiText);
                 setGravityOfEarth();
                 Rectangle ground = new Rectangle(20, .2);
@@ -216,9 +217,9 @@ public final class MainAnimation
                         "dd.MM.yyyy HH:mm:ss z");
                 sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
                 Text text = new Text(
-                        "Build #" + VERSION_CODE + "   " + sdf.format(date),
-                        .5);
-                text.setPosition(-10, -7);
+                        "Build #" + VERSION_CODE + "   " + sdf.format(date), .5,
+                        "fonts/Cantarell-Regular.ttf");
+                text.setPosition(-10, 9);
                 text.setColor(Color.WHITE);
                 text.makeStatic();
                 add(text);
@@ -243,10 +244,8 @@ public final class MainAnimation
                     });
                 }
                 item.resetMovement();
-                item.setCenter(Random.range(-7, 7), Random.range(5, 10));
+                item.setCenter(Random.range(-7, 7), Random.range(5, 8));
             }
-
-
         });
         Game.setTitle("Engine Pi " + VERSION_STRING);
     }

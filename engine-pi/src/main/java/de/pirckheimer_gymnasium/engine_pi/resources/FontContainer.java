@@ -32,9 +32,81 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.GraphicsEnvironment;
+
+import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 public final class FontContainer extends ResourcesContainer<Font>
 {
+    private static final int DEFAULT_SIZE = 12;
+
+    /**
+     * Alle möglichen Schriftnamen des Systems, auf dem man sich gerade
+     * befindet.<br>
+     * Hiernach werden Überprüfungen gemacht, ob die gewünschte Schriftart auf
+     * dem System vorhanden ist.
+     */
+    public static final String[] systemFonts;
+    static
+    {
+        GraphicsEnvironment ge = GraphicsEnvironment
+                .getLocalGraphicsEnvironment();
+        systemFonts = ge.getAvailableFontFamilyNames();
+    }
+
+    /**
+     * Prüft, ob ein Font auf diesem System vorhanden ist.
+     *
+     * @param fontName Der Name des zu überprüfenden Fonts.
+     *
+     * @return <code>true</code>, falls der Font auf dem System existiert, sonst
+     *         <code>false</code>.
+     */
+    @API
+    public static boolean isSystemFont(String fontName)
+    {
+        for (String s : systemFonts)
+        {
+            if (s.equals(fontName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void printSystemFonts()
+    {
+        for (String s : systemFonts)
+        {
+            System.out.println(s);
+        }
+    }
+
+    /**
+     * Gibt eine Liste der Namen der Systemschriftarten zurück.
+     *
+     * @return Liste mit Systemschriftarten.
+     */
+    @API
+    public static String[] getSystemFonts()
+    {
+        return systemFonts.clone();
+    }
+
+    /**
+     * Lädt eine Systemschriftart basierend auf dem Namen.
+     *
+     * @param fontName Name des Fonts.
+     *
+     * @return Geladener Font.
+     */
+    @API
+    public static Font loadByName(String fontName)
+    {
+        return new Font(fontName, Font.PLAIN, DEFAULT_SIZE);
+    }
+
     private static final Logger log = Logger
             .getLogger(FontContainer.class.getName());
 
@@ -66,6 +138,15 @@ public final class FontContainer extends ResourcesContainer<Font>
             return null;
         }
         return font.deriveFont(style, size);
+    }
+
+    public Font get(String name)
+    {
+        if (isSystemFont(name))
+        {
+            return loadByName(name);
+        }
+        return super.get(name);
     }
 
     /***

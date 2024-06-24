@@ -29,8 +29,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
-import de.pirckheimer_gymnasium.engine_pi.resources.FontLoader;
 import de.pirckheimer_gymnasium.engine_pi.util.FontMetrics;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 /**
  * Zur Darstellung von Texten im Programmbildschirm.
@@ -108,7 +108,7 @@ public class Text extends Geometry
     public Text(String content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
-                FontLoader.loadByName(fontName).deriveFont(style, SIZE)));
+                Resources.FONTS.get(fontName).deriveFont(style, SIZE)));
         this.content = content == null ? "" : content;
         this.height = height;
         setStyle(style);
@@ -151,7 +151,7 @@ public class Text extends Geometry
     @API
     public void setFont(String fontName)
     {
-        this.setFont(FontLoader.loadByName(fontName));
+        this.setFont(Resources.FONTS.get(fontName));
     }
 
     @API
