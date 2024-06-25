@@ -139,7 +139,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>de.pirckheimer_gymnasium.engine_pi.MainAnimation</mainClass>
+                            <mainClass>de.pirckheimer_gymnasium.engine_pi.debug.MainAnimation</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

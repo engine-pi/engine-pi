@@ -21,7 +21,9 @@ install:
 package:
 	mvn package
 
-run_jar: package
+run_jar:
+	rm -rf engine-pi/target
+	mvn package
 	java -jar engine-pi/target/engine-pi-0.19.0.jar
 
 clone_jbox2d:
