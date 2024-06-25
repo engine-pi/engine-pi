@@ -21,12 +21,14 @@
 package de.pirckheimer_gymnasium.engine_pi;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.net.JarURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.TimeZone;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
@@ -37,6 +39,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 
 /**
  * Zeigt eine Animation, wenn die main-Methode ausgeführt wird.
@@ -162,9 +165,25 @@ public final class MainAnimation
         }
     }
 
-    @SuppressWarnings("MagicNumber")
-    public static void main(String[] args)
+    private static Properties getProjectProperties() throws IOException
     {
+        // https://stackoverflow.com/questions/26551439/getting-maven-project-version-and-artifact-id-from-pom-while-running-in-eclipse/26573884#26573884
+        final Properties properties = new Properties();
+        properties.load(ResourceLoader.loadAsStream("project.properties"));
+        return properties;
+    }
+
+    private static Properties getGitProperties() throws IOException
+    {
+        final Properties properties = new Properties();
+        properties.load(ResourceLoader.loadAsStream("git.properties"));
+        return properties;
+    }
+
+    @SuppressWarnings("MagicNumber")
+    public static void main(String[] args) throws IOException
+    {
+        final Properties propertiesGit = getGitProperties();
         Game.start(800, 600, new Scene()
         {
             private final List<Actor> items = new ArrayList<>();
@@ -217,7 +236,7 @@ public final class MainAnimation
                         "dd.MM.yyyy HH:mm:ss z");
                 sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
                 Text text = new Text(
-                        "Build #" + VERSION_CODE + "   " + sdf.format(date), .5,
+                        "Build #" + propertiesGit.getProperty("git.commit.id.abbrev") + "   " + sdf.format(date), .5,
                         "fonts/Cantarell-Regular.ttf");
                 text.setPosition(-10, 9);
                 text.setColor(Color.WHITE);
