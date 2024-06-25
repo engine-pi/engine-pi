@@ -94,7 +94,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
     {
         // Trichter
         new Funnel();
-        repeat(0.2, () -> {
+        repeat(0.2, (counter) -> {
             Circle marble = makeMarble();
             add(marble);
             marble.makeDynamic();

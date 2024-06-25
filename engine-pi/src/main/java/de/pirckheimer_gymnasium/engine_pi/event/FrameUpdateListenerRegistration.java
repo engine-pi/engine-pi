@@ -111,21 +111,17 @@ public interface FrameUpdateListenerRegistration
      *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
      *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
      *                    unendlich oft wiederholt.
-     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird. Ein
-     *                    Objekt vom Typ {@link Runnable}, das eine ausführbare
-     *                    Methode enthält oder ein Lambda-Ausdruck.
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird.
      * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
-     *                    Ein Objekt vom Typ {@link Runnable}, das eine
-     *                    ausführbare Methode enthält oder ein Lambda-Ausdruck.
      *
      * @author Josef Friedrich
      */
     @API
-    default PeriodicTask repeat(double interval, int repetitions, Runnable task,
-            Runnable finalTask)
+    default PeriodicTaskExecutor repeat(double interval, int repetitions,
+            PeriodicTask task, PeriodicTask finalTask)
     {
-        PeriodicTask periodicTask = new PeriodicTask(interval, repetitions,
-                task, finalTask, this);
+        PeriodicTaskExecutor periodicTask = new PeriodicTaskExecutor(interval,
+                repetitions, task, finalTask, this);
         addFrameUpdateListener(periodicTask);
         return periodicTask;
     }
@@ -135,16 +131,14 @@ public interface FrameUpdateListenerRegistration
      * wiederholend aus.
      *
      * @param interval Das Zeitintervall in Sekunden.
-     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt
-     *                 vom Typ {@link Runnable}, das eine ausführbare Methode
-     *                 enthält oder ein Lambda-Ausdruck.
+     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird.
      *
-     * @return Ein Objekt der Klasse {@link PeriodicTask}, der manuell
+     * @return Ein Objekt der Klasse {@link PeriodicTaskExecutor}, der manuell
      *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
      *         soll.
      */
     @API
-    default PeriodicTask repeat(double interval, Runnable task)
+    default PeriodicTaskExecutor repeat(double interval, PeriodicTask task)
     {
         return repeat(interval, -1, task, null);
     }

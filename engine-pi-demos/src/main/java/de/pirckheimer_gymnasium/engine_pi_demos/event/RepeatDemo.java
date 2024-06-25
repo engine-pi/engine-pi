@@ -5,11 +5,11 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
+import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
 
 /**
  * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, Runnable)}.
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask)}.
  *
  * <p>
  * Im Spielfenster wird eine Zahl hochgezählt. Über die <b>Leertaste</b> kann
@@ -26,9 +26,7 @@ public class RepeatDemo extends Scene
 
     private class CounterText extends Text
     {
-        private int counter = 0;
-
-        PeriodicTask task;
+        PeriodicTaskExecutor task;
 
         public CounterText()
         {
@@ -52,7 +50,7 @@ public class RepeatDemo extends Scene
 
         public void start()
         {
-            task = repeat(1, () -> {
+            task = repeat(1, (counter) -> {
                 counter++;
                 setContent(counter);
             });

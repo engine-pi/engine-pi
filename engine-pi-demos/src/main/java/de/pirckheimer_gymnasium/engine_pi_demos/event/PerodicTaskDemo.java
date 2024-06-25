@@ -5,11 +5,11 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
+import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
 
 /**
  * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask}.
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor}.
  *
  * <p>
  * Im Spielfenster wird eine Zahl hochgezählt. Über die Taste <b>P</b> kann die
@@ -20,7 +20,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
  */
 public class PerodicTaskDemo extends Scene
 {
-    private PeriodicTask task;
+    private PeriodicTaskExecutor task;
 
     public PerodicTaskDemo()
     {
@@ -30,8 +30,6 @@ public class PerodicTaskDemo extends Scene
 
     private class CounterText extends Text
     {
-        private int counter = 0;
-
         public CounterText()
         {
             super("0", 2);
@@ -65,8 +63,7 @@ public class PerodicTaskDemo extends Scene
 
         public void start()
         {
-            task = new PeriodicTask(0.1, () -> {
-                counter++;
+            task = new PeriodicTaskExecutor(0.1, (counter) -> {
                 setContent(counter);
             });
             addFrameUpdateListener(task);

@@ -61,7 +61,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         right.setElasticity(15);
         add(right);
         addKeyStrokeListener(this);
-        repeat(1, () -> createCircle(getMousePosition(), Color.YELLOW));
+        repeat(1, (counter) -> createCircle(getMousePosition(), Color.YELLOW));
         Rectangle r1 = new Rectangle(WIDTH, 10);
         r1.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
         Rectangle r2 = new Rectangle(10, HEIGHT);
@@ -91,7 +91,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
     private void createCircle(Vector position, Color color)
     {
         Circle circle = new Circle(6);
-        FrameUpdateListener emitter = repeat(0.01, () -> {
+        FrameUpdateListener emitter = repeat(0.01, (counter) -> {
             Circle particle = new Circle(3);
             particle.setPosition(circle.getCenter().subtract(new Vector(1, 1)));
             particle.setColor(Color.RED);

@@ -46,6 +46,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
 import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 public class CarDemo extends Scene implements FrameUpdateListener
@@ -273,9 +274,9 @@ public class CarDemo extends Scene implements FrameUpdateListener
         return splitter;
     }
 
-    private static Runnable createSplitterEmitter(Actor actor)
+    private static PeriodicTask createSplitterEmitter(Actor actor)
     {
-        return () -> {
+        return (counter) -> {
             for (CollisionEvent<Actor> collision : actor.getCollisions())
             {
                 if (collision.getColliding() instanceof Wood
@@ -374,7 +375,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
                     () -> Objects.requireNonNull(getLayer()).add(axle));
             addCollisionListener(axle.getCarBody(),
                     CollisionEvent::ignoreCollision);
-            repeat(.025, () -> {
+            repeat(.025, (counter) -> {
                 for (CollisionEvent<Actor> collision : getCollisions())
                 {
                     if (collision.getColliding() instanceof Mud)
@@ -432,7 +433,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             setFriction(0.5);
             setFixtures(
                     "R0,.45,2,.45&P2,1.2,2.6,1.15,3.8,0.8,3.95,0.45,2,0.45&R1,0,2,0.6");
-            repeat(.05, () -> {
+            repeat(.05, (counter) -> {
                 if (getVelocity().getLength() < 0.1)
                 {
                     return;

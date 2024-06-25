@@ -5,7 +5,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
  * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, int, Runnable, Runnable)}.
+ * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, int, de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask, de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask)}.
  *
  * <p>
  * In der Konsole erscheint viermal {@code task} und einmal {@code final task}
@@ -18,8 +18,8 @@ public class RepeatFinalTaskDemo
         Game.start(new Scene()
         {
             {
-                repeat(0.2, 5, () -> System.out.println("task"),
-                        () -> System.out.println("final task"));
+                repeat(0.2, 5, (counter) -> System.out.println("task"),
+                        (counter) -> System.out.println("final task"));
             }
         });
     }
