@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.20.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.20.0) - 2024-06-25
+
+<small>[Compare with v0.19.0](https://github.com/engine-pi/engine-pi/compare/v0.19.0...v0.20.0)</small>
+
+### Added
+
+- Add counter in the class PeriodicTask ([bd6cf0d](https://github.com/engine-pi/engine-pi/commit/bd6cf0d847f6d3a10ece9da32ff4bd23db9fec92) by Josef Friedrich).
+- Import the font container from the LITIENGINE ([bd6cf0d](695e04d57effc2977344b35e21e78bb25214c27a) by Josef Friedrich).
+
+### Changed
+
+- Improve main animation ([3118f26](3118f266e63ab4f6c123638773ab3aa0e282a755) by Josef Friedrich).
+
 ## [v0.19.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.19.0) - 2024-06-24
 
 <small>[Compare with v0.18.0](https://github.com/engine-pi/engine-pi/compare/v0.18.0...v0.19.0)</small>
