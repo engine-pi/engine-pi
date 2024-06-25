@@ -18,11 +18,11 @@ import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
  * <b>Fehlermeldung</b> (so gewollt) fehlschlägt.
  * </p>
  */
-public class PerodicTaskDemo extends Scene
+public class PeriodicTaskDemo extends Scene
 {
     private PeriodicTaskExecutor task;
 
-    public PerodicTaskDemo()
+    public PeriodicTaskDemo()
     {
         setBackgroundColor("white");
         add(new CounterText());
@@ -78,6 +78,6 @@ public class PerodicTaskDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 200, new PerodicTaskDemo());
+        Game.start(400, 200, new PeriodicTaskDemo());
     }
 }
