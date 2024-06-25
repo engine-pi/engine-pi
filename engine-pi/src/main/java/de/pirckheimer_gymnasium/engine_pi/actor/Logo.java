@@ -16,15 +16,15 @@ public class Logo implements ActorAdder
 
     private final Vector anchor;
 
-    private Rectangle rectangleP;
+    public Rectangle rectangleP;
 
-    private Triangle triangleP;
+    public Triangle triangleP;
 
-    private Circle circleP;
+    public Circle circleP;
 
-    private Rectangle rectangleI;
+    public Rectangle rectangleI;
 
-    private Circle circleI;
+    public Circle circleI;
 
     public Logo(Scene scene, Vector anchor, double factor)
     {
