@@ -111,10 +111,9 @@ public interface FrameUpdateListenerRegistration
      *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
      *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
      *                    unendlich oft wiederholt.
-     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird.
-     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
-     *
-     * @author Josef Friedrich
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt werden soll.
+     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt werden
+     *                    soll.
      */
     @API
     default PeriodicTaskExecutor repeat(double interval, int repetitions,
@@ -128,10 +127,53 @@ public interface FrameUpdateListenerRegistration
 
     /**
      * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
+     * wiederholend aus. Die Ausführung wird nach einer bestimmten <b>Anzahl an
+     * Wiederholungen</b> unterbrochen.
+     *
+     * @param interval    Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe. Gibt
+     *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
+     *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
+     *                    unendlich oft wiederholt.
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt werden soll.
+     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt werden
+     *                    soll.
+     */
+    @API
+    default PeriodicTaskExecutor repeat(double interval, int repetitions,
+            PeriodicTask task)
+    {
+        return repeat(interval, repetitions, task, null);
+    }
+
+    /**
+     * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
+     * wiederholend aus. Die Ausführung wird nach einer bestimmten <b>Anzahl an
+     * Wiederholungen</b> unterbrochen. Die Aufgabe kann als {@link Runnable}
+     * angegeben werden.
+     *
+     * @param interval    Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe. Gibt
+     *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
+     *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
+     *                    unendlich oft wiederholt.
+     * @param task        Die Aufgabe, die regelmäßig ausgeführt werden soll.
+     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt werden
+     *                    soll.
+     */
+    @API
+    default PeriodicTaskExecutor repeat(double interval, int repetitions,
+            Runnable task)
+    {
+        return repeat(interval, repetitions, (counter) -> task.run(), null);
+    }
+
+    /**
+     * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
      * wiederholend aus.
      *
      * @param interval Das Zeitintervall in Sekunden.
-     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird.
+     * @param task     Die Aufgabe, die regelmäßig ausgeführt werden soll.
      *
      * @return Ein Objekt der Klasse {@link PeriodicTaskExecutor}, der manuell
      *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
@@ -141,5 +183,22 @@ public interface FrameUpdateListenerRegistration
     default PeriodicTaskExecutor repeat(double interval, PeriodicTask task)
     {
         return repeat(interval, -1, task, null);
+    }
+
+    /**
+     * Führt eine <b>Aufgabe</b> in einem bestimmten <b>Zeitintervall</b>
+     * wiederholend aus. Die Aufgabe kann als {@link Runnable} angegeben werden.
+     *
+     * @param interval Das Zeitintervall in Sekunden.
+     * @param task     Die Aufgabe, die regelmäßig ausgeführt werden soll.
+     *
+     * @return Ein Objekt der Klasse {@link PeriodicTaskExecutor}, der manuell
+     *         abgemeldet werden kann, falls die Ausführung abgebrochen werden
+     *         soll.
+     */
+    @API
+    default PeriodicTaskExecutor repeat(double interval, Runnable task)
+    {
+        return repeat(interval, -1, (counter) -> task.run(), null);
     }
 }
