@@ -136,8 +136,6 @@ public interface FrameUpdateListenerRegistration
      *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
      *                    unendlich oft wiederholt.
      * @param task        Die Aufgabe, die regelmäßig ausgeführt werden soll.
-     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt werden
-     *                    soll.
      */
     @API
     default PeriodicTaskExecutor repeat(double interval, int repetitions,
@@ -158,8 +156,6 @@ public interface FrameUpdateListenerRegistration
      *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
      *                    unendlich oft wiederholt.
      * @param task        Die Aufgabe, die regelmäßig ausgeführt werden soll.
-     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt werden
-     *                    soll.
      */
     @API
     default PeriodicTaskExecutor repeat(double interval, int repetitions,
