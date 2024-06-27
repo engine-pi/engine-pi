@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.21.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.21.0) - 2024-06-27
+
+<small>[Compare with v0.20.0](https://github.com/engine-pi/engine-pi/compare/v0.20.0...v0.21.0)</small>
+
+### Added
+
+- Add more method overloads for the repeat method of the interface FrameUpdateListenerRegistration ([6efbce8](https://github.com/engine-pi/engine-pi/commit/6efbce8faa74047803a8c568e0d0c623cba9f09f) by Josef Friedrich).
+
 ## [v0.20.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.20.0) - 2024-06-25
 
 <small>[Compare with v0.19.0](https://github.com/engine-pi/engine-pi/compare/v0.19.0...v0.20.0)</small>
