@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.sounds;
+package de.pirckheimer_gymnasium.engine_pi_demos.sound;
 
 import java.awt.event.KeyEvent;
 
@@ -13,27 +13,27 @@ class Player
 
     private static String getPath(String baseName)
     {
-        return "tetris/sounds/" + baseName + ".ogg";
+        return "tetris/sounds/" + baseName;
     }
 
     public static void korobeiniki()
     {
-        jukebox.playMusic(getPath("A-Type-Music_Korobeiniki"));
+        jukebox.playMusic(getPath("A-Type-Music_Korobeiniki.ogg"));
     }
 
     public static void title()
     {
-        jukebox.playIntroTrack(getPath("Title_Intro"), getPath("Title_Loop"));
+        jukebox.playIntroTrack(getPath("Title_Intro.ogg"), getPath("Title_Loop.ogg"));
     }
 
     public static void blockMove()
     {
-        jukebox.playSound(getPath("Block_move"));
+        jukebox.playSound(getPath("Block_move.wav"));
     }
 
     public static void blockRotate()
     {
-        jukebox.playSound(getPath("Block_rotate"));
+        jukebox.playSound(getPath("Block_rotate.wav"));
     }
 }
 
