@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.22.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.22.0) - 2024-07-02
+
+<small>[Compare with v0.21.0](https://github.com/engine-pi/engine-pi/compare/v0.21.0...v0.22.0)</small>
+
+### Changed
+
+-  Make the class Jukebox static and move it to the root package ([6e911dd](https://github.com/engine-pi/engine-pi/commit/6e911dd5f2ff09bdd90813d6bd9a3453e419d4aa) by Josef Friedrich).
+
 ## [v0.21.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.21.0) - 2024-06-27
 
 <small>[Compare with v0.20.0](https://github.com/engine-pi/engine-pi/compare/v0.20.0...v0.21.0)</small>
