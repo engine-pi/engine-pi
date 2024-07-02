@@ -117,6 +117,19 @@ public final class Jukebox
     }
 
     /**
+     * Sets the currently playing track to a {@code LoopedTrack} with the
+     * specified music {@code Sound}. This has no effect if the specified track
+     * is already playing.
+     *
+     * @param music The {@code Sound} to be played.
+     * @return The playback of the music
+     */
+    public MusicPlayback playMusic(String music)
+    {
+        return playMusic(soundsContainer.get(music));
+    }
+
+    /**
      * Sets the currently playing track to the specified track.
      *
      * @param track   The track to play
