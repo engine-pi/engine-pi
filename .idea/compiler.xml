@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="engine-pi" />
-        <module name="engine-pi (1)" />
         <module name="engine-pi-demos" />
       </profile>
     </annotationProcessing>

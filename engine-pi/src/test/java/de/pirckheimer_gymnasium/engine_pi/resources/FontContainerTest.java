@@ -31,7 +31,7 @@ public class FontContainerTest
     @Test
     public void testLoadSystemFonts()
     {
-        var font = container.get("Alegreya");
-        assertEquals(font.getName(), "Alegreya");
+        var font = container.get("DejaVu Serif");
+        assertEquals(font.getName(), "DejaVu Serif");
     }
 }
