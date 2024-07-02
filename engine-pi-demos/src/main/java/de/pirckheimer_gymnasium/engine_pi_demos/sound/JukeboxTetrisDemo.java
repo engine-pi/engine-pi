@@ -36,7 +36,7 @@ class Player
     }
 }
 
-public class JukeboxDemo extends Scene implements KeyStrokeListener
+public class JukeboxTetrisDemo extends Scene implements KeyStrokeListener
 {
     @Override
     public void onKeyDown(KeyEvent event)
@@ -52,6 +52,6 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new JukeboxDemo());
+        Game.start(new JukeboxTetrisDemo());
     }
 }

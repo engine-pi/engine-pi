@@ -33,7 +33,7 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
     {
         Game.start(200, 300, this);
         casinoBling = Jukebox
-                .createPlayback("sounds/casino-bling-achievement.mp3", true);
+                .createSoundPlayback("sounds/casino-bling-achievement.mp3", true);
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
         gameBonus = loadSinglePlayTrack("arcade-video-game-bonus.mp3");
         levelMusic = loadLoopedTrack("game-level-music.mp3");

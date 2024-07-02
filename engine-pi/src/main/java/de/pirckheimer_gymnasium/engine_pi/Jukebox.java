@@ -47,8 +47,8 @@ import de.pirckheimer_gymnasium.engine_pi.sound.SoundPlayback;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
 /**
- * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge und Musik im Spiel
- * wiederzugeben.
+ * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge (Sounds) und Musik
+ * (Musik) im Spiel wiederzugeben.
  *
  * <p>
  * Die {@link Jukebox} kann standardmäßig {@code .wav}, {@code .mp3} und
@@ -58,8 +58,6 @@ import de.pirckheimer_gymnasium.engine_pi.sound.Track;
  */
 public final class Jukebox
 {
-    public static final int DEFAULT_MAX_DISTANCE = 150;
-
     public static final ExecutorService EXECUTOR = Executors
             .newCachedThreadPool(new ThreadFactory()
             {
@@ -74,28 +72,15 @@ public final class Jukebox
 
     private static final Logger log = Logger.getLogger(Jukebox.class.getName());
 
-    private static int maxDist = DEFAULT_MAX_DISTANCE;
-
     private static MusicPlayback music;
 
     private static final Collection<MusicPlayback> allMusic = ConcurrentHashMap
             .newKeySet();
 
-    private static final Collection<SoundPlayback> sounds = ConcurrentHashMap
+    private static final Collection<SoundPlayback> allSounds = ConcurrentHashMap
             .newKeySet();
 
     private static SoundContainer soundsContainer = Resources.SOUNDS;
-
-    /**
-     * Gets the maximum distance from the listener at which a sound source can
-     * still be heard.
-     *
-     * @return The maximum distance at which a sound can be heard.
-     */
-    public static int getMaxDistance()
-    {
-        return maxDist;
-    }
 
     /**
      * Sets the currently playing track to a {@code LoopedTrack} with the
@@ -234,18 +219,6 @@ public final class Jukebox
     }
 
     /**
-     * Sets the default maximum distance from the listener at which a sound
-     * source can still be heard. If the distance between the sound source and
-     * the listener is greater than the specified value, the volume is set to 0.
-     *
-     * @param radius The maximum distance at which sounds can still be heard.
-     */
-    public static void setMaxDistance(final int radius)
-    {
-        maxDist = radius;
-    }
-
-    /**
      * Stoppt die Wiedergabe der aktuellen Hintergrundmusik.
      */
     public static synchronized void stopMusic()
@@ -277,7 +250,7 @@ public final class Jukebox
      * @return An {@code SoundPlayback} object that can be configured prior to
      *         starting, but will need to be manually started.
      */
-    public static SoundPlayback createPlayback(Sound sound, boolean loop)
+    public static SoundPlayback createSoundPlayback(Sound sound, boolean loop)
     {
         try
         {
@@ -290,14 +263,15 @@ public final class Jukebox
         }
     }
 
-    public static SoundPlayback createPlayback(String filePath, boolean loop)
+    public static SoundPlayback createSoundPlayback(String filePath,
+            boolean loop)
     {
-        return createPlayback(getSound(filePath), loop);
+        return createSoundPlayback(getSound(filePath), loop);
     }
 
     public static void addSound(SoundPlayback playback)
     {
-        sounds.add(playback);
+        allSounds.add(playback);
     }
 
     public static SoundPlayback playSound(Sound sound, boolean loop)
@@ -306,7 +280,7 @@ public final class Jukebox
         {
             return null;
         }
-        SoundPlayback playback = createPlayback(sound, loop);
+        SoundPlayback playback = createSoundPlayback(sound, loop);
         if (playback == null)
         {
             return null;
