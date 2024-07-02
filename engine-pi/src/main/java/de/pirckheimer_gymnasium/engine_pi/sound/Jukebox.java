@@ -126,7 +126,7 @@ public final class Jukebox
      */
     public MusicPlayback playMusic(String music)
     {
-        return playMusic(soundsContainer.get(music));
+        return playMusic(getSound(music));
     }
 
     /**
@@ -154,6 +154,11 @@ public final class Jukebox
     public MusicPlayback playMusic(Track track, boolean restart, boolean stop)
     {
         return playMusic(track, null, restart, stop);
+    }
+
+    public MusicPlayback playIntroTrack(String track, String loop)
+    {
+        return playMusic(new IntroTrack(getSound(track), getSound(loop)));
     }
 
     /**
