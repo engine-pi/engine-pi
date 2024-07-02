@@ -51,7 +51,6 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
-import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
@@ -77,11 +76,6 @@ public final class Game
                                                           // accelerated image
                                                           // scaling on windows
     }
-
-    /**
-     * Eine statische Instanz der {@link Jukebox}.
-     */
-    private static final Jukebox jukebox = new Jukebox();
 
     /**
      * Wird {@link Game#debug} auf <code>true</code> gesetzt, so werden
@@ -873,19 +867,6 @@ public final class Game
     public static void setVerbose(boolean value)
     {
         verbose = value;
-    }
-
-    /**
-     * Gibt die statische, d. h. globale Instanz der {@link Jukebox} zurück, die
-     * Geräusche und Musik abspielen kann.
-     *
-     * @author Josef Friedrich
-     *
-     * @return Eine Instanz der {@link Jukebox}.
-     */
-    public static Jukebox getJukebox()
-    {
-        return jukebox;
     }
 
     /**

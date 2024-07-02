@@ -6,10 +6,10 @@ import java.io.IOException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
-import de.pirckheimer_gymnasium.engine_pi.sound.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.sound.LoopedTrack;
 import de.pirckheimer_gymnasium.engine_pi.sound.MusicPlayback;
 import de.pirckheimer_gymnasium.engine_pi.sound.Playback;
@@ -32,8 +32,7 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
     public JukeboxDemo() throws IOException, UnsupportedAudioFileException
     {
         Game.start(200, 300, this);
-        jukebox = Game.getJukebox();
-        casinoBling = jukebox
+        casinoBling = Jukebox
                 .createPlayback("sounds/casino-bling-achievement.mp3", true);
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
         gameBonus = loadSinglePlayTrack("arcade-video-game-bonus.mp3");
@@ -65,19 +64,19 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
         switch (keyEvent.getKeyCode())
         {
         case KeyEvent.VK_1:
-            jukebox.playSound("sounds/casino-bling-achievement.mp3");
+            Jukebox.playSound("sounds/casino-bling-achievement.mp3");
             break;
 
         case KeyEvent.VK_2:
-            jukebox.playMusic(gameReached, false, false);
+            Jukebox.playMusic(gameReached, false, false);
             break;
 
         case KeyEvent.VK_3:
-            jukebox.playMusic(gameBonus, false, false);
+            Jukebox.playMusic(gameBonus, false, false);
             break;
 
         case KeyEvent.VK_4:
-            jukebox.playMusic(levelMusic, false, false);
+            Jukebox.playMusic(levelMusic, false, false);
             break;
 
         case KeyEvent.VK_5:
@@ -97,11 +96,11 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_S:
-            jukebox.stopMusic();
+            Jukebox.stopMusic();
             break;
 
         case KeyEvent.VK_L:
-            for (MusicPlayback playback : jukebox.getAllMusic())
+            for (MusicPlayback playback : Jukebox.getAllMusic())
             {
                 System.out.println(playback);
             }
@@ -111,10 +110,10 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
 
     private void changeVolume(float diff)
     {
-        MusicPlayback playback = jukebox.getMusic();
+        MusicPlayback playback = Jukebox.getMusic();
         if (playback != null)
         {
-            playback.setVolume(jukebox.getMusic().getVolume() - 0.1f);
+            playback.setVolume(Jukebox.getMusic().getVolume() - 0.1f);
         }
     }
 

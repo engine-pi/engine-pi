@@ -36,7 +36,7 @@ public class MusicPlayback extends Playback
 
     private final VolumeControl musicVolume;
 
-    MusicPlayback(Track track) throws LineUnavailableException
+    public MusicPlayback(Track track) throws LineUnavailableException
     {
         super(track.getFormat());
         this.track = track;

@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.engine_pi_demos.resources;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Jukebox;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.sound.MusicPlayback;
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
@@ -29,7 +29,7 @@ public class SoundsContainerDemo
             System.out.println("Contains url");
         }
         Resources.SOUNDS.contains(soundName);
-        MusicPlayback playback = Game.getJukebox().playMusic(mySound);
+        MusicPlayback playback = Jukebox.playMusic(mySound);
         playback.addSoundPlaybackListener(new SoundPlaybackListener()
         {
             @Override

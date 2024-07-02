@@ -27,7 +27,7 @@ package de.pirckheimer_gymnasium.engine_pi.sound;
 
 import javax.sound.sampled.LineUnavailableException;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Jukebox;
 
 /**
  * A {@code SoundPlayback} implementation for the playback of sound effects.
@@ -38,7 +38,7 @@ public class SoundPlayback extends Playback
 
     private final boolean loop;
 
-    SoundPlayback(Sound sound, boolean loop) throws LineUnavailableException
+    public SoundPlayback(Sound sound, boolean loop) throws LineUnavailableException
     {
         super(sound.getFormat());
         this.loop = loop;
@@ -73,6 +73,6 @@ public class SoundPlayback extends Playback
     protected void play()
     {
         super.play();
-        Game.getJukebox().addSound(this);
+        Jukebox.addSound(this);
     }
 }

@@ -27,6 +27,8 @@ package de.pirckheimer_gymnasium.engine_pi.sound;
 
 import javax.sound.sampled.AudioFormat;
 
+import de.pirckheimer_gymnasium.engine_pi.Jukebox;
+
 /**
  * Die Klasse {@link Track} definiert eine Reihenfolge, in der Klänge
  * ({@link Sound}s) von der {@link Jukebox} wiedergegeben werden sollen.

@@ -38,6 +38,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+import de.pirckheimer_gymnasium.engine_pi.Jukebox;
+
 /**
  * The {@code SoundPlayback} class is a wrapper {@code SourceDataLine} on which
  * a {@code Sound} playback can be carried out.

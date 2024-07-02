@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.engine_pi.sound;
+package de.pirckheimer_gymnasium.engine_pi;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -37,8 +37,14 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
+import de.pirckheimer_gymnasium.engine_pi.sound.IntroTrack;
+import de.pirckheimer_gymnasium.engine_pi.sound.LoopedTrack;
+import de.pirckheimer_gymnasium.engine_pi.sound.MusicPlayback;
+import de.pirckheimer_gymnasium.engine_pi.sound.Playback;
+import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
+import de.pirckheimer_gymnasium.engine_pi.sound.SoundPlayback;
+import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
 /**
  * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge und Musik im Spiel
@@ -54,7 +60,7 @@ public final class Jukebox
 {
     public static final int DEFAULT_MAX_DISTANCE = 150;
 
-    static final ExecutorService EXECUTOR = Executors
+    public static final ExecutorService EXECUTOR = Executors
             .newCachedThreadPool(new ThreadFactory()
             {
                 private int id = 0;
@@ -68,14 +74,14 @@ public final class Jukebox
 
     private static final Logger log = Logger.getLogger(Jukebox.class.getName());
 
-    private int maxDist = DEFAULT_MAX_DISTANCE;
+    private static int maxDist = DEFAULT_MAX_DISTANCE;
 
-    private MusicPlayback music;
+    private static MusicPlayback music;
 
-    private final Collection<MusicPlayback> allMusic = ConcurrentHashMap
+    private static final Collection<MusicPlayback> allMusic = ConcurrentHashMap
             .newKeySet();
 
-    private final Collection<SoundPlayback> sounds = ConcurrentHashMap
+    private static final Collection<SoundPlayback> sounds = ConcurrentHashMap
             .newKeySet();
 
     private static SoundContainer soundsContainer = Resources.SOUNDS;
@@ -86,7 +92,7 @@ public final class Jukebox
      *
      * @return The maximum distance at which a sound can be heard.
      */
-    public int getMaxDistance()
+    public static int getMaxDistance()
     {
         return maxDist;
     }
@@ -99,7 +105,7 @@ public final class Jukebox
      * @param music The {@code Sound} to be played.
      * @return The playback of the music
      */
-    public MusicPlayback playMusic(Sound music)
+    public static MusicPlayback playMusic(Sound music)
     {
         return playMusic(new LoopedTrack(music));
     }
@@ -111,7 +117,7 @@ public final class Jukebox
      * @param track The track to play
      * @return The playback of the music
      */
-    public MusicPlayback playMusic(Track track)
+    public static MusicPlayback playMusic(Track track)
     {
         return playMusic(track, null, false, true);
     }
@@ -124,7 +130,7 @@ public final class Jukebox
      * @param music The {@code Sound} to be played.
      * @return The playback of the music
      */
-    public MusicPlayback playMusic(String music)
+    public static MusicPlayback playMusic(String music)
     {
         return playMusic(getSound(music));
     }
@@ -137,7 +143,7 @@ public final class Jukebox
      *                playing, determined by {@link Object#equals(Object)}
      * @return The playback of the music
      */
-    public MusicPlayback playMusic(Track track, boolean restart)
+    public static MusicPlayback playMusic(Track track, boolean restart)
     {
         return playMusic(track, null, restart, true);
     }
@@ -151,12 +157,13 @@ public final class Jukebox
      * @param stop    Whether to stop an existing track if present
      * @return The playback of the music
      */
-    public MusicPlayback playMusic(Track track, boolean restart, boolean stop)
+    public static MusicPlayback playMusic(Track track, boolean restart,
+            boolean stop)
     {
         return playMusic(track, null, restart, stop);
     }
 
-    public MusicPlayback playIntroTrack(String track, String loop)
+    public static MusicPlayback playIntroTrack(String track, String loop)
     {
         return playMusic(new IntroTrack(getSound(track), getSound(loop)));
     }
@@ -172,7 +179,7 @@ public final class Jukebox
      * @param stop    Whether to stop an existing track if present
      * @return The playback of the music
      */
-    public synchronized MusicPlayback playMusic(Track track,
+    public static synchronized MusicPlayback playMusic(Track track,
             Consumer<? super MusicPlayback> config, boolean restart,
             boolean stop)
     {
@@ -211,7 +218,7 @@ public final class Jukebox
      *
      * @return The main music, which could be {@code null}.
      */
-    public synchronized MusicPlayback getMusic()
+    public static synchronized MusicPlayback getMusic()
     {
         return music;
     }
@@ -221,7 +228,7 @@ public final class Jukebox
      *
      * @return Eine Liste mit allen Musikwiedergaben.
      */
-    public synchronized Collection<MusicPlayback> getAllMusic()
+    public static synchronized Collection<MusicPlayback> getAllMusic()
     {
         return Collections.unmodifiableCollection(allMusic);
     }
@@ -233,7 +240,7 @@ public final class Jukebox
      *
      * @param radius The maximum distance at which sounds can still be heard.
      */
-    public void setMaxDistance(final int radius)
+    public static void setMaxDistance(final int radius)
     {
         maxDist = radius;
     }
@@ -241,7 +248,7 @@ public final class Jukebox
     /**
      * Stoppt die Wiedergabe der aktuellen Hintergrundmusik.
      */
-    public synchronized void stopMusic()
+    public static synchronized void stopMusic()
     {
         for (MusicPlayback track : allMusic)
         {
@@ -249,7 +256,7 @@ public final class Jukebox
         }
     }
 
-    public Sound getSound(String filePath)
+    public static Sound getSound(String filePath)
     {
         return soundsContainer.get(filePath);
     }
@@ -270,7 +277,7 @@ public final class Jukebox
      * @return An {@code SoundPlayback} object that can be configured prior to
      *         starting, but will need to be manually started.
      */
-    public SoundPlayback createPlayback(Sound sound, boolean loop)
+    public static SoundPlayback createPlayback(Sound sound, boolean loop)
     {
         try
         {
@@ -283,17 +290,17 @@ public final class Jukebox
         }
     }
 
-    public SoundPlayback createPlayback(String filePath, boolean loop)
+    public static SoundPlayback createPlayback(String filePath, boolean loop)
     {
         return createPlayback(getSound(filePath), loop);
     }
 
-    void addSound(SoundPlayback playback)
+    public static void addSound(SoundPlayback playback)
     {
-        this.sounds.add(playback);
+        sounds.add(playback);
     }
 
-    public SoundPlayback playSound(Sound sound, boolean loop)
+    public static SoundPlayback playSound(Sound sound, boolean loop)
     {
         if (sound == null)
         {
@@ -308,12 +315,12 @@ public final class Jukebox
         return playback;
     }
 
-    public SoundPlayback playSound(final String filePath, boolean loop)
+    public static SoundPlayback playSound(final String filePath, boolean loop)
     {
         return playSound(getSound(filePath), loop);
     }
 
-    public SoundPlayback playSound(final String filePath)
+    public static SoundPlayback playSound(final String filePath)
     {
         return playSound(filePath, false);
     }
