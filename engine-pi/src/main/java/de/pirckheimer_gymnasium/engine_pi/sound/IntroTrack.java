@@ -30,8 +30,8 @@ import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
 /**
- * A {@code Track} that plays an intro sound and then loops the specified music
- * sound.
+ * Eine Audiospur, die einmalig eine Eingangsmusik und die darauf folgende Musik
+ * in einer Endlosschleife abspielt.
  */
 public class IntroTrack implements Track
 {
@@ -42,8 +42,9 @@ public class IntroTrack implements Track
     /**
      * Initializes a new {@code IntroTrack} for the specified sound.
      *
-     * @param intro The sound to be played as intro.
-     * @param loop  The sound to be looped.
+     * @param intro Die einmalig abgespielte Eingangsmusik.
+     * @param loop  Die auf die Eingangsmusik folgende in einer Endlosschleife
+     *              wiedergegeben Anschlussmusik.
      */
     public IntroTrack(Sound intro, Sound loop)
     {

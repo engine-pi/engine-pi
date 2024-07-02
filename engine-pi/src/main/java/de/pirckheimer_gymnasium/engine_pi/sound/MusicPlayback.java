@@ -28,7 +28,7 @@ package de.pirckheimer_gymnasium.engine_pi.sound;
 import javax.sound.sampled.LineUnavailableException;
 
 /**
- * A {@code SoundPlayback} implementation for the playback music.
+ * Ermöglicht die Steuerung der Musikwiedergabe.
  */
 public class MusicPlayback extends Playback
 {

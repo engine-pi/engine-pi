@@ -47,14 +47,29 @@ import de.pirckheimer_gymnasium.engine_pi.sound.SoundPlayback;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
 /**
- * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge (Sounds) und Musik
- * (Musik) im Spiel wiederzugeben.
+ * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge (Sound) und Musik
+ * (Music) im Spiel wiederzugeben.
+ *
+ * <p>
+ * Jede Audio-Datei kann sowohl als Musik als auch als Klang abgespielt. Der
+ * Hauptunterschied zwischen Musik und Klang ist: Die
+ * {@code playMusic()}-Methoden ermöglichen eine feinere Steuerung der
+ * Wiedergabe durch zwei Parameter:
+ * </p>
+ *
+ * <ol>
+ * <li>Parameter {@code restart}: Ob die aktuelle Musikwiedergabe von neuem
+ * gestartet werden kann.</li>
+ * <li>Parameter {@code stop}: Ob die neu gestartet Musikwiedergabe eine
+ * laufende Musikwiedergabe stoppen soll.</li>
+ * </ol>
  *
  * <p>
  * Die {@link Jukebox} kann standardmäßig {@code .wav}, {@code .mp3} und
- * {@code .ogg} Dateien abspielen. Wenn Sie andere Dateierweiterungen benötigen,
- * müssen Sie eine eigene SPI-Implementierung schreiben und sie in Ihr Projekt
- * einbauen.
+ * {@code .ogg} Dateien abspielen. Wenn andere Dateierweiterungen benötigt
+ * werden, muss eine eigene SPI-Implementierung geschrieben und dem Projekt
+ * hinzugefügt werden.
+ * </p>
  */
 public final class Jukebox
 {
@@ -72,6 +87,9 @@ public final class Jukebox
 
     private static final Logger log = Logger.getLogger(Jukebox.class.getName());
 
+    /**
+     * Die aktuelle Musikwiedergabe.
+     */
     private static MusicPlayback music;
 
     private static final Collection<MusicPlayback> allMusic = ConcurrentHashMap
@@ -82,38 +100,70 @@ public final class Jukebox
 
     private static SoundContainer soundsContainer = Resources.SOUNDS;
 
+    private static boolean RESTART_DEFAULT = false;
+
+    /**
+     * Standardwert für einige Methoden-Overload, die Musik abspielen. Gibt an,
+     * ob momentan abspielende Musik gestoppt werden soll.
+     */
+    private static boolean STOP_DEFAULT = true;
+
     /**
      * Sets the currently playing track to a {@code LoopedTrack} with the
      * specified music {@code Sound}. This has no effect if the specified track
      * is already playing.
      *
-     * @param music The {@code Sound} to be played.
-     * @return The playback of the music
+     * @param sound Der Klang, der abgespielt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Sound music)
+    public static MusicPlayback playMusic(Sound sound)
     {
-        return playMusic(new LoopedTrack(music));
+        return playMusic(new LoopedTrack(sound), RESTART_DEFAULT, STOP_DEFAULT);
+    }
+
+    /**
+     * Sets the currently playing track to a {@code LoopedTrack} with the
+     * specified music {@code Sound}. This has no effect if the specified track
+     * is already playing.
+     *
+     * @param sound   Der Klang, der abgespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
+     *                werden soll.
+     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    public static MusicPlayback playMusic(Sound sound, boolean restart,
+            boolean stop)
+    {
+        return playMusic(new LoopedTrack(sound), null, restart, stop);
     }
 
     /**
      * Sets the currently playing track to the specified track. This has no
      * effect if the specified track is already playing.
      *
-     * @param track The track to play
-     * @return The playback of the music
+     * @param track Die Audiospur, die gespielt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     public static MusicPlayback playMusic(Track track)
     {
-        return playMusic(track, null, false, true);
+        return playMusic(track, null, RESTART_DEFAULT, STOP_DEFAULT);
     }
 
     /**
-     * Sets the currently playing track to a {@code LoopedTrack} with the
-     * specified music {@code Sound}. This has no effect if the specified track
-     * is already playing.
+     * Spielt die als Zeichenkette angegebene Audio-Datei in einer
+     * Endlosschleife ab. Wird diese Audio-Datei bereits abgespielt, so wird
+     * diese Wiedergabe nicht unterbrochen. Der Aufruf dieser Methode ist dann
+     * ohne Wirkung.
      *
-     * @param music The {@code Sound} to be played.
-     * @return The playback of the music
+     * @param music Die als Zeichenkette angegebene Audio-Datei, die abgespielt
+     *              werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     public static MusicPlayback playMusic(String music)
     {
@@ -121,26 +171,50 @@ public final class Jukebox
     }
 
     /**
+     * Sets the currently playing track to a {@code LoopedTrack} with the
+     * specified music {@code Sound}. This has no effect if the specified track
+     * is already playing.
+     *
+     * @param music   Die als Zeichenkette angegebene Audio-Datei, die
+     *                abgespielt werden soll
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
+     *                werden soll.
+     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    public static MusicPlayback playMusic(String music, boolean restart,
+            boolean stop)
+    {
+        return playMusic(getSound(music), restart, stop);
+    }
+
+    /**
      * Sets the currently playing track to the specified track.
      *
-     * @param track   The track to play
-     * @param restart Whether to restart if the specified track is already
-     *                playing, determined by {@link Object#equals(Object)}
-     * @return The playback of the music
+     * @param track   Die Audiospur, die gespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
+     *                werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     public static MusicPlayback playMusic(Track track, boolean restart)
     {
-        return playMusic(track, null, restart, true);
+        return playMusic(track, null, restart, STOP_DEFAULT);
     }
 
     /**
      * Plays the specified track.
      *
-     * @param track   The track to play
-     * @param restart Whether to restart if the specified track is already
-     *                playing, determined by {@link Object#equals(Object)}
-     * @param stop    Whether to stop an existing track if present
-     * @return The playback of the music
+     * @param track   Die Audiospur, die gespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
+     *                werden soll.
+     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     public static MusicPlayback playMusic(Track track, boolean restart,
             boolean stop)
@@ -148,21 +222,18 @@ public final class Jukebox
         return playMusic(track, null, restart, stop);
     }
 
-    public static MusicPlayback playIntroTrack(String track, String loop)
-    {
-        return playMusic(new IntroTrack(getSound(track), getSound(loop)));
-    }
-
     /**
      * Plays the specified track, optionally configuring it before starting.
      *
-     * @param track   The track to play
+     * @param track   Die Audiospur, die gespielt werden soll.
      * @param config  A call to configure the playback prior to starting, which
      *                can be {@code null}
-     * @param restart Whether to restart if the specified track is already
-     *                playing, determined by {@link Object#equals(Object)}
-     * @param stop    Whether to stop an existing track if present
-     * @return The playback of the music
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
+     *                werden soll.
+     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     public static synchronized MusicPlayback playMusic(Track track,
             Consumer<? super MusicPlayback> config, boolean restart,
@@ -194,6 +265,20 @@ public final class Jukebox
             resourceFailure(e);
             return null;
         }
+    }
+
+    /**
+     * Spielt zwei als Zeichenkette angegeben Audiodatei ab: Die Erste nur
+     * einmalig und die darauf Folgende in einer Endlosschleife.
+     *
+     * @param intro Die Eingangsmusik als Zeichenkette angegeben.
+     * @param loop  Die zu wiederholende Musik als Zeichenkette.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    public static MusicPlayback playIntroTrack(String intro, String loop)
+    {
+        return playMusic(new IntroTrack(getSound(intro), getSound(loop)));
     }
 
     /**
