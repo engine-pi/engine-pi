@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="180mm"
-   height="180mm"
-   viewBox="0 0 180 180"
+   width="500mm"
+   height="500mm"
+   viewBox="0 0 500 500"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
-   sodipodi:docname="pi.svg"
+   sodipodi:docname="logo.svg"
    inkscape:export-filename="pi.png"
    inkscape:export-xdpi="70.555557"
    inkscape:export-ydpi="70.555557"
@@ -28,71 +28,83 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.0331747"
-     inkscape:cx="1460.5468"
-     inkscape:cy="188.25471"
-     inkscape:window-width="3840"
+     inkscape:zoom="0.30531831"
+     inkscape:cx="519.13034"
+     inkscape:cy="954.74128"
+     inkscape:window-width="1920"
      inkscape:window-height="1536"
-     inkscape:window-x="0"
+     inkscape:window-x="1920"
      inkscape:window-y="27"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="g8"
      showgrid="true"
      showguides="true"
      inkscape:lockguides="false">
     <sodipodi:guide
-       position="0,180.00001"
+       position="178.43528,399.05552"
        orientation="0,680.31496"
        id="guide8"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="180.00001,180.00001"
+       position="367.74736,399.05552"
        orientation="680.31496,0"
        id="guide9"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="180.00001,0"
+       position="367.74736,209.74344"
        orientation="0,-680.31496"
        id="guide10"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="0,0"
+       position="178.43528,209.74344"
        orientation="-680.31496,0"
        id="guide11"
        inkscape:locked="false" />
+    <inkscape:page
+       x="0"
+       y="0"
+       width="500"
+       height="500"
+       id="page2"
+       margin="0 0 0 0"
+       bleed="0"
+       inkscape:export-filename="pi.png"
+       inkscape:export-xdpi="25.4"
+       inkscape:export-ydpi="25.4" />
   </sodipodi:namedview>
   <defs
      id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(170.07149,96.021002)">
     <g
        id="g8"
-       transform="translate(-8.1285963,-0.24702467)">
+       transform="translate(12.97347,2.601024)">
+      <rect
+         style="fill:#e01b24;fill-opacity:1;stroke:none;stroke-width:0.251001"
+         id="rect1"
+         width="100"
+         height="200"
+         x="-71.080109"
+         y="156.73526" />
       <rect
          style="fill:#e01b24;fill-opacity:1;stroke:none;stroke-width:0.251"
-         id="rect1"
-         width="42"
-         height="79.066422"
-         x="28.536428"
-         y="86.191544" />
-      <rect
-         style="fill:#e01b24;fill-opacity:1;stroke:none;stroke-width:0.250999"
          id="rect2"
-         width="42"
-         height="68.50769"
-         x="125.72076"
-         y="96.750275" />
+         width="100"
+         height="200"
+         x="126.16058"
+         y="156.73526" />
       <circle
-         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251"
+         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251001"
          id="path3"
-         cx="146.72076"
-         cy="68.459099"
-         r="21" />
+         cx="176.16058"
+         cy="-4.5425696"
+         r="50" />
       <path
          sodipodi:type="star"
-         style="fill:#f6d32d;fill-opacity:1;stroke:none;stroke-width:0.122526"
+         style="fill:#f6d32d;fill-opacity:1;stroke:none;stroke-width:0.0419429"
          id="path8"
          inkscape:flatsided="true"
          sodipodi:sides="3"
@@ -105,15 +117,15 @@
          inkscape:rounded="0"
          inkscape:randomized="0"
          d="m 114.99999,155 -44.999999,25.98076 0,-51.96152 z"
-         inkscape:transform-center-x="-15.36418"
-         transform="matrix(2.0485569,0,0,2.0485569,-114.86737,-249.06717)"
-         inkscape:transform-center-y="2.9686633e-06" />
+         inkscape:transform-center-x="-46.042855"
+         transform="matrix(6.1390472,0,0,5.8335354,-521.98375,-806.61759)"
+         inkscape:transform-center-y="6.443928e-05" />
       <circle
-         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251"
+         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251001"
          id="path3-5"
-         cx="59.504166"
-         cy="68.459099"
-         r="21" />
+         cx="-21.080112"
+         cy="97.580399"
+         r="50" />
     </g>
   </g>
   <metadata
