@@ -8,7 +8,7 @@ public class PixelTextDemo extends Scene
 {
     public PixelTextDemo()
     {
-        setBackgroundColor("white");
+        setBackgroundColor("yellow");
         add(new PixelText("pixel-text", "Hello, World.\nNew line"));
     }
 
