@@ -16,6 +16,11 @@ public class TextUtil
     private static final DecimalFormat decimalFormat = new DecimalFormat(
             "0.00");
 
+    private TextUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * <b>Rundet</b> eine Zahl auf zwei Nachkommastellen.
      *
@@ -46,6 +51,31 @@ public class TextUtil
             }
         });
         return width[0];
+    }
+
+    /**
+     * Gibt die Anzahl der Zeilen zurück.
+     *
+     * @param text Der Text, von dem die Anzahl der Zeilen bestimmt werden soll.
+     *
+     * @return Die Anzahl der Zeilen.
+     */
+    public static int getLineCount(String text)
+    {
+        return (int) text.lines().count();
+    }
+
+    /**
+     * Teilt einen Text in die einzelnen Zeilen auf. Der Text muss
+     * Zeilenumbrüche enthalten.
+     *
+     * @param text Der Text, der in die einzelnen Zeilen aufgeteilt werden soll.
+     *
+     * @return Die einzelnen Zeilen des Textes.
+     */
+    public static String[] splitLines(String text)
+    {
+        return text.lines().toArray(String[]::new);
     }
 
     /**

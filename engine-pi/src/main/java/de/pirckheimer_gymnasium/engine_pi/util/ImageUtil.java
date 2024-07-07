@@ -33,6 +33,7 @@ import java.awt.Transparency;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.io.File;
@@ -50,6 +51,11 @@ import javax.imageio.ImageIO;
 public class ImageUtil
 {
     private static GraphicsConfiguration graphicsConfig;
+
+    private ImageUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Erzeugt eine neue {@code BufferedImage} Instanze des Übergabeparameters.
@@ -347,5 +353,37 @@ public class ImageUtil
         }
         compatibleImg.createGraphics().drawImage(image, 0, 0, null);
         return compatibleImg;
+    }
+
+    /**
+     * Ändert den Farbraum eines Bildes.
+     *
+     * @param image   Das Bild, dessen Farbraum geändert werden soll.
+     * @param newType Der neue Bildtyp, zum Beispiel
+     *                {@link BufferedImage#TYPE_INT_ARGB}.
+     *
+     * @return Ein neues Bild mit geändertem Farbraum.
+     */
+    public static BufferedImage convertColorspace(BufferedImage image,
+            int newType)
+    {
+        BufferedImage raw = image;
+        image = new BufferedImage(raw.getWidth(), raw.getHeight(), newType);
+        ColorConvertOp op = new ColorConvertOp(null);
+        op.filter(raw, image);
+        return image;
+    }
+
+    /**
+     * Ändert den Farbraum eines Bildes in den <b>RGB-Farbraum mit
+     * Alphakanal</b> ({@link BufferedImage#TYPE_INT_ARGB}).
+     *
+     * @param image Das Bild, dessen Farbraum geändert werden soll.
+     *
+     * @return Ein neues Bild mit geändertem Farbraum.
+     */
+    public static BufferedImage addAlphaChannel(BufferedImage image)
+    {
+        return convertColorspace(image, BufferedImage.TYPE_INT_ARGB);
     }
 }

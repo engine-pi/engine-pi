@@ -4,6 +4,7 @@ import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.align;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.getLineCount;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.getLineWidth;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.wrap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,6 +25,12 @@ public class TextUtilTest
     void testGetLineWidth()
     {
         assertEquals(getLineWidth("Lorem\nipsum\ndolor sit"), 9);
+    }
+
+    @Test
+    void testGetLineCount()
+    {
+        assertEquals(getLineCount("Lorem\nipsum\ndolor sit"), 3);
     }
 
     @Nested

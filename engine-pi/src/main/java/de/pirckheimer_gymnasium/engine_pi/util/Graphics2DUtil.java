@@ -34,6 +34,11 @@ public class Graphics2DUtil
      */
     private static final String FONT_COLOR = "white";
 
+    private Graphics2DUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     public static Font getFont(int size)
     {
         return new Font("Monospaced", Font.PLAIN, size);

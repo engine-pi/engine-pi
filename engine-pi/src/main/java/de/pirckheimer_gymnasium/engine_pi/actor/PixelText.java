@@ -4,10 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorConvertOp;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
@@ -55,7 +55,7 @@ public class PixelText extends Actor
         BufferedImage image = new BufferedImage(imageWidth, imageHeight,
                 BufferedImage.TYPE_INT_ARGB);
         Graphics g = image.getGraphics();
-        String[] lines = content.lines().toArray(String[]::new);
+        String[] lines = TextUtil.splitLines(content);
         int y = 0;
         int x = 0;
         for (int i = 0; i < lines.length; i++)
@@ -83,7 +83,7 @@ public class PixelText extends Actor
 
     public int getLineCount()
     {
-        return (int) content.lines().count();
+        return TextUtil.getLineCount(content);
     }
 
     private String convertGlyphToImageName(char glyph)
@@ -121,7 +121,7 @@ public class PixelText extends Actor
         BufferedImage image = Resources.IMAGES.get(getImagePath(glyph));
         if (image != null)
         {
-            image = convertColorspace(image, BufferedImage.TYPE_INT_ARGB);
+            image = ImageUtil.addAlphaChannel(image);
             // bufferedImage = ImageUtil.scale(
             // ImageUtil.replaceColor(bufferedImage, Color.BLACK, color),
             // Tetris.SCALE);
@@ -130,16 +130,6 @@ public class PixelText extends Actor
             // image.setPosition(x, y);
             // scene.add(image);
         }
-        return image;
-    }
-
-    final private static BufferedImage convertColorspace(BufferedImage image,
-            int newType)
-    {
-        BufferedImage raw = image;
-        image = new BufferedImage(raw.getWidth(), raw.getHeight(), newType);
-        ColorConvertOp op = new ColorConvertOp(null);
-        op.filter(raw, image);
         return image;
     }
 

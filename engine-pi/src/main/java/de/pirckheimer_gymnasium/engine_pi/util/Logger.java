@@ -41,7 +41,7 @@ final public class Logger
 
     private Logger()
     {
-        // keine Objekte erlaubt!
+        throw new UnsupportedOperationException();
     }
 
     static
