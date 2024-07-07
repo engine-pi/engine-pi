@@ -8,6 +8,8 @@ import java.awt.image.ColorConvertOp;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
  * https://stackoverflow.com/questions/4055430/java-code-for-wrapping-text-lines-to-a-max-line-width
@@ -21,25 +23,67 @@ public class PixelText extends Actor
 
     private BufferedImage renderedTextImage;
 
+    private int lineWidth = 80;
+
+    private TextAlignment alignment = TextAlignment.LEFT;
+
+    private String content;
+
+    private int pixelFontWidth = 8;
+
+    private int pixelFontHeight = 8;
+
     public PixelText(String basePath, String content)
     {
         super(() -> FixtureBuilder.rectangle(10, 10));
         this.basePath = basePath;
-        renderedTextImage = mergeImages();
+        setContent(content);
+        setRenderedTextImage();
     }
 
-    private BufferedImage mergeImages()
+    public PixelText setContent(String content)
     {
-        BufferedImage c = new BufferedImage(100, 100,
+        content = content.toUpperCase();
+        this.content = TextUtil.wrap(content, lineWidth, alignment);
+        return this;
+    }
+
+    private PixelText setRenderedTextImage()
+    {
+        int imageHeight = pixelFontHeight * getLineCount();
+        int imageWidth = pixelFontWidth * getLineWidth();
+        BufferedImage image = new BufferedImage(imageWidth, imageHeight,
                 BufferedImage.TYPE_INT_ARGB);
-        Graphics g = c.getGraphics();
-        for (int i = 0; i < 3; i++)
+        Graphics g = image.getGraphics();
+        String[] lines = content.lines().toArray(String[]::new);
+        int y = 0;
+        int x = 0;
+        for (int i = 0; i < lines.length; i++)
         {
-            BufferedImage glyph = loadBufferedImage(
-                    String.valueOf(i).charAt(0));
-            g.drawImage(glyph, i * 8, i * 8, null);
+            y = i * pixelFontHeight;
+            String line = lines[i];
+            for (int j = 0; j < line.length(); j++)
+            {
+                x = j * pixelFontWidth;
+                BufferedImage glyph = loadBufferedImage(line.charAt(j));
+                if (glyph != null)
+                {
+                    g.drawImage(glyph, x, y, null);
+                }
+            }
         }
-        return c;
+        renderedTextImage = image;
+        return this;
+    }
+
+    public int getLineWidth()
+    {
+        return TextUtil.getLineWidth(content);
+    }
+
+    public int getLineCount()
+    {
+        return (int) content.lines().count();
     }
 
     private String convertGlyphToImageName(char glyph)
@@ -70,6 +114,10 @@ public class PixelText extends Actor
 
     private BufferedImage loadBufferedImage(char glyph)
     {
+        if (glyph == ' ')
+        {
+            return null;
+        }
         BufferedImage image = Resources.IMAGES.get(getImagePath(glyph));
         if (image != null)
         {
@@ -109,8 +157,6 @@ public class PixelText extends Actor
         AffineTransform pre = g.getTransform();
         int imageH = renderedTextImage.getHeight();
         int imageW = renderedTextImage.getWidth();
-        // g.scale(width * pixelPerMeter / imageW,
-        // height * pixelPerMeter / imageH);
         g.drawImage(renderedTextImage, 0, 0, imageW, imageH, null);
         g.setTransform(pre);
     }
