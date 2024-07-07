@@ -38,7 +38,8 @@ public class SoundPlayback extends Playback
 
     private final boolean loop;
 
-    public SoundPlayback(Sound sound, boolean loop) throws LineUnavailableException
+    public SoundPlayback(Sound sound, boolean loop)
+            throws LineUnavailableException
     {
         super(sound.getFormat());
         this.loop = loop;
