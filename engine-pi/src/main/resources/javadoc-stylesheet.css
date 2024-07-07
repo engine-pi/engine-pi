@@ -1,17 +1,19 @@
 /*
  * Javadoc with Gnome color
  */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
-  --font-serif: "Roboto Serif", "DejaVu Sans", Arial, Helvetica, sans-serif;
-  --font-sans: "Roboto", "DejaVu Sans", Arial, Helvetica, sans-serif;
+  --font-serif: "Cantarell", "DejaVu Sans", Arial, Helvetica, sans-serif;
+  --font-sans: "Cantarell", "DejaVu Sans", Arial, Helvetica, sans-serif;
   --font-mono: "Roboto Mono", "DejaVu Sans Mono", monospace;
 
+  /* https://developer.gnome.org/hig/reference/palette.html */
   --color-white: #deddda;
-  --color-white1: var(--color-white1);
+  --color-white1: #ffffff;
   --color-white2: #f6f5f4;
   --color-white3: #deddda;
   --color-white4: #c0bfbc;
@@ -46,10 +48,10 @@
   --color-green3: #33d17a;
   --color-green4: #2ec27e;
   --color-green5: #26a269;
-  --color-blue: var(--color-blue2);
+  --color-blue: #3584e4;
   --color-blue1: #99c1f1;
   --color-blue2: #62a0ea;
-  --color-blue3: var(--color-blue2);
+  --color-blue3: #3584e4;
   --color-blue4: #1c71d8;
   --color-blue5: #1a5fb4;
   --color-purple: #9141ac;
