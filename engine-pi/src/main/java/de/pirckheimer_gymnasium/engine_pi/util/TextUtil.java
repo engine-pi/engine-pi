@@ -1,25 +1,41 @@
 package de.pirckheimer_gymnasium.engine_pi.util;
 
+import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
+
 import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
+/**
+ * Ein Sammlung von statischen Hilfsmethoden um <b>Text</b> und
+ * <b>Zeichenketten</b> zu bearbeiten.
+ */
 public class TextUtil
 {
     private static final DecimalFormat decimalFormat = new DecimalFormat(
             "0.00");
 
     /**
-     * Rundet eine Zahl auf zwei Nachkommastellen.
+     * <b>Rundet</b> eine Zahl auf zwei Nachkommastellen.
      *
-     * @param number Eine Zahl die gerundet werden soll.
+     * @param number Eine Zahl, die gerundet werden soll.
      *
-     * @return Die gerundete Zahl als Zeichenketten.
+     * @return Die gerundete Zahl als Zeichenkette.
      */
     public static String roundNumber(Object number)
     {
         return decimalFormat.format(number);
     }
 
+    /**
+     * Gibt die <b>maximale Zeilenbreite</b> eines gegebenen Texts zurück.
+     *
+     * @param text Der Text, von dem die maximale Zeilenbreite bestimmt werden
+     *             soll.
+     *
+     * @return Die Anzahl an Zeichen, die die längste Zeile beinhaltet.
+     */
     public static int getLineWidth(String text)
     {
         final int[] width = { 0 };
@@ -33,10 +49,15 @@ public class TextUtil
     }
 
     /**
+     * <b>Richtet</b> den gegebenen Text gemäß einer bestimmten
+     * <b>Zeilenbreite</b> und einer gewünschten <b>Textausrichtung</b>
+     * <b>aus</b>.
+     *
      * @param text      Die Zeichenkette, die ausgerichtet werden soll.
      * @param width     Die Anzahl an Zeichen, die jede Zeile lang sein soll.
      * @param alignment Ob die Zeichen links-, rechtsbündig oder zentriert
      *                  ausgerichtet werden soll.
+     *
      * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
      *         eingefügt wurden.
      */
@@ -46,44 +67,23 @@ public class TextUtil
             line = line.trim();
             int length = line.length();
             int spaces = width - length;
-            if (alignment == TextAlignment.RIGHT)
+            if (alignment == RIGHT)
             {
                 return " ".repeat(spaces) + line;
             }
-            else if (alignment == TextAlignment.CENTER)
+            else if (alignment == CENTER)
             {
                 int left = spaces / 2;
-                int right = spaces - left;
-                return " ".repeat(left) + line + " ".repeat(right);
+                return " ".repeat(left) + line;
             }
-            return line + " ".repeat(spaces);
+            return line;
         }).collect(Collectors.joining("\n"));
     }
 
     /**
-     * @param text  Die Zeichenkette, die ausgerichtet werden soll.
-     * @param width Die Anzahl an Zeichen, die jede Zeile lang sein soll.
+     * <b>Richtet</b> den gegebenen Text gemäß einer gewünschten
+     * <b>Textausrichtung</b> <b>aus</b>.
      *
-     * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
-     *         eingefügt wurden.
-     */
-    public static String align(String text, int width)
-    {
-        return align(text, width, TextAlignment.LEFT);
-    }
-
-    /**
-     * @param text Die Zeichenkette, die ausgerichtet werden soll.
-     *
-     * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
-     *         eingefügt wurden.
-     */
-    public static String align(String text)
-    {
-        return align(text, getLineWidth(text), TextAlignment.LEFT);
-    }
-
-    /**
      * @param text      Die Zeichenkette, die ausgerichtet werden soll.
      * @param alignment Ob die Zeichen links-, rechtsbündig oder zentriert
      *                  ausgerichtet werden soll.
@@ -97,13 +97,26 @@ public class TextUtil
     }
 
     /**
-     * https://github.com/eugenp/tutorials/blob/master/core-java-modules/core-java-string-algorithms-3/src/main/java/com/baeldung/wrappingcharacterwise/Wrapper.java
+     * Bricht den gegebenen Text nach einer bestimmten <b>Zeilenbreite</b> um.
+     * Außerdem kann die <b>Textausrichtung</b> angegeben werden.
      *
-     * @param text
-     * @param width
-     * @return
+     * <p>
+     * Nach einem Code-Beispiel auf <a href=
+     * "https://github.com/eugenp/tutorials/blob/master/core-java-modules/core-java-string-algorithms-3/src/main/java/com/baeldung/wrappingcharacterwise/Wrapper.java">baeldung.com</a>.
+     * </p>
+     *
+     * @param text      Der Text, der nach einer bestimmten Zeilenbreite
+     *                  umgebrochen werden soll.
+     * @param width     Die maximale Zeilenbreite.
+     * @param alignment Die Textausrichtung.
+     *
+     * @return Der neu formatierte Text, in den möglicherweise neue
+     *         Zeilenumbrüche eingefügt wurden.
+     *
+     * @throws IllegalArgumentException Falls es ein längeres Wort als die
+     *                                  Zeilenbreite gibt.
      */
-    public static String wrap(String text, int width)
+    public static String wrap(String text, int width, TextAlignment alignment)
     {
         StringBuilder stringBuilder = new StringBuilder(text);
         int index = 0;
@@ -126,6 +139,25 @@ public class TextUtil
                 index++;
             }
         }
-        return stringBuilder.toString();
+        return align(stringBuilder.toString(), width, alignment);
+    }
+
+    /**
+     * Bricht den gegebenen Text nach einer bestimmten <b>Zeilenbreite</b> und
+     * zwar <b>linksbündig</b> um.
+     *
+     * @param text  Der Text, der nach einer bestimmten Zeilenbreite umgebrochen
+     *              werden soll.
+     * @param width Die maximale Zeilenbreite.
+     *
+     * @return Der neu formatierte Text, in den möglicherweise neue
+     *         Zeilenumbrüche eingefügt wurden.
+     *
+     * @throws IllegalArgumentException Falls es ein längeres Wort als die
+     *                                  Zeilenbreite gibt.
+     */
+    public static String wrap(String text, int width)
+    {
+        return wrap(text, width, LEFT);
     }
 }

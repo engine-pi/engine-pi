@@ -1,9 +1,13 @@
 package de.pirckheimer_gymnasium.engine_pi.util;
 
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
-import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.*;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.align;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.getLineWidth;
+import static de.pirckheimer_gymnasium.engine_pi.util.TextUtil.wrap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -14,13 +18,6 @@ public class TextUtilTest
     void testRoundNumber()
     {
         assertEquals(TextUtil.roundNumber(1.2345), "1.23");
-    }
-
-    @Test
-    void testWrap()
-    {
-        assertEquals(wrap("Lorem ipsum dolor sit", 10),
-                "Lorem\nipsum\ndolor sit");
     }
 
     @Test
@@ -39,27 +36,27 @@ public class TextUtilTest
         @Test
         void testOneLine()
         {
-            assertEquals(align(oneLine), "Lorem ipsum");
+            assertEquals(align(oneLine, LEFT), "Lorem ipsum");
         }
 
         @Test
         void testLeft()
         {
-            assertEquals(align(text),
-                    "Lorem ipsum\n" + "dolor sit  \n" + "amet.      ");
+            assertEquals(align(text, LEFT),
+                    "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
         void testWidth()
         {
-            assertEquals(align(text, 15), "Lorem ipsum    \n"
-                    + "dolor sit      \n" + "amet.          ");
+            assertEquals(align(text, 15, LEFT),
+                    "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
         void testWidthOnOneLine()
         {
-            assertEquals(align(oneLine, 15), "Lorem ipsum    ");
+            assertEquals(align(oneLine, 15, LEFT), "Lorem ipsum");
         }
 
         @Test
@@ -73,7 +70,52 @@ public class TextUtilTest
         void testCenter()
         {
             assertEquals(align(text, CENTER),
-                    "Lorem ipsum\n" + " dolor sit \n" + "   amet.   ");
+                    "Lorem ipsum\n" + " dolor sit\n" + "   amet.");
+        }
+    }
+
+    @Nested
+    class WrapTest
+    {
+        String text = "Lorem ipsum dolor sit";
+
+        @Test
+        void testLeft()
+        {
+            assertEquals(wrap(text, 10, LEFT), "Lorem\nipsum\ndolor sit");
+        }
+
+        @Test
+        void testCenter()
+        {
+            assertEquals(wrap(text, 10, CENTER),
+                    "  Lorem\n" + "  ipsum\n" + "dolor sit");
+        }
+
+        @Test
+        void testRight()
+        {
+            assertEquals(wrap(text, 10, RIGHT),
+                    "     Lorem\n" + "     ipsum\n" + " dolor sit");
+        }
+
+        @Test
+        void testWidthNotToSmall()
+        {
+            assertEquals(wrap(text, 10), "Lorem\nipsum\ndolor sit");
+        }
+
+        @Test
+        void testWidthToSmall()
+        {
+            assertThrows(IllegalArgumentException.class, () -> wrap(text, 4));
+        }
+
+        @Test
+        void testInputWithNewlines()
+        {
+            assertEquals(wrap("Lorem\nipsum\ndolor\nsit", 10),
+                    "Lorem\nipsum\ndolor\nsit");
         }
     }
 }
