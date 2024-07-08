@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoadException;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
+import org.junit.jupiter.api.condition.DisabledIf;
 
+@DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImageFontTest
 {
     ImageFont imageFont = new ImageFont("image-font/tetris",
