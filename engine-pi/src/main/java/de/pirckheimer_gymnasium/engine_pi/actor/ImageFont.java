@@ -24,9 +24,10 @@ import java.util.Map;
  * die gleiche Abmessung aufweisen.
  * </p>
  *
- * https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html
- *
- * https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts
+ * Eine Alternative wäre die
+ * <a href="https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html">BitmapFont-Klasse</a>
+ * der Game-Engine libgdx.
+ * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
  */

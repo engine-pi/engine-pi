@@ -18,12 +18,12 @@ public class ImageFontTest
     public void testSingleLine()
     {
         ImageUtil.write(imageFont.render("Hello, World."),
-                "/home/jf/Downloads/image-font.png");
+                "/home/jf/Downloads/single-line.png");
     }
 
     @Test
     public void testThrows()
     {
-        assertThrows(ResourceLoadException.class, () -> imageFont.render("!"));
+        assertThrows(ResourceLoadException.class, () -> imageFont.render("!"), "");
     }
 }
