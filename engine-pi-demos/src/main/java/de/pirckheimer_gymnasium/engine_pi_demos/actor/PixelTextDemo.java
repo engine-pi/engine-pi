@@ -2,14 +2,14 @@ package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.PixelText;
+import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
 
 public class PixelTextDemo extends Scene
 {
     public PixelTextDemo()
     {
         setBackgroundColor("yellow");
-        add(new PixelText("pixel-text", "Hello, World.\nNew line"));
+        add(new ImageFontText("pixel-text", "Hello, World.\nNew line"));
     }
 
     public static void main(String[] args)

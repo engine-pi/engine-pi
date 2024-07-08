@@ -8,7 +8,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
-public class PixelText extends Image
+/**
+ *  @author Josef Friedrich
+ */
+public class ImageFontText extends Image
 {
     /**
      *
@@ -18,7 +21,7 @@ public class PixelText extends Image
      * @param lineWidth
      * @param alignment
      */
-    public PixelText(String basePath, String content, int lineWidth,
+    public ImageFontText(String basePath, String content, int lineWidth,
             TextAlignment alignment, int pixelFontWidth, int pixelFontHeight)
     {
         super(getRenderedTextImage(basePath,
@@ -26,7 +29,7 @@ public class PixelText extends Image
                 pixelFontHeight), 8);
     }
 
-    public PixelText(String basePath, String content)
+    public ImageFontText(String basePath, String content)
     {
         this(basePath, content, 80, TextAlignment.LEFT, 8, 8);
     }
