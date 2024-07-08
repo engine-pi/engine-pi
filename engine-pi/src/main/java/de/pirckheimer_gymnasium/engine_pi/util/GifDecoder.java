@@ -56,6 +56,10 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
  * purpose, however, refer to the Unisys LZW patent for any additional
  * restrictions. Please forward any corrections to kweiner@fmsware.com.
  *
+ * Möglicherweise kann diese Klasse mit
+ * https://central.sonatype.com/artifact/com.madgag/animated-gif-lib ersetzt
+ * werden.s
+ *
  * @author Kevin Weiner, FM Software; LZW decoder adapted from John Cristy's
  *         ImageMagick.
  * @version 1.03 November 2003
