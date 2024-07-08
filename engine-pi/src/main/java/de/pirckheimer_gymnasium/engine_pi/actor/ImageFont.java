@@ -1,9 +1,10 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
@@ -55,6 +56,8 @@ public class ImageFont
     private String extension = "pgn";
 
     private int pixelMultiplication = 1;
+
+    private Color color;
 
     /**
      * Die Handhabung der Groß- und Kleinschreibung.
@@ -157,6 +160,12 @@ public class ImageFont
         return this;
     }
 
+    public ImageFont setColor(Color color)
+    {
+        this.color = color;
+        return this;
+    }
+
     /**
      * @param extension Die Dateierweiterung der Buchstabenbilder.
      *
@@ -169,7 +178,8 @@ public class ImageFont
         return this;
     }
 
-    public ImageFont setPixelMultiplication(int pixelMultiplication) {
+    public ImageFont setPixelMultiplication(int pixelMultiplication)
+    {
         this.pixelMultiplication = pixelMultiplication;
         return this;
     }
@@ -341,6 +351,14 @@ public class ImageFont
                     g.drawImage(glyph, x, y, null);
                 }
             }
+        }
+        if (color != null)
+        {
+            image = ImageUtil.replaceColor(image, Color.BLACK, color);
+        }
+        if (pixelMultiplication > 1)
+        {
+            image = ImageUtil.scale(image, pixelMultiplication);
         }
         return image;
     }

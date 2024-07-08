@@ -10,6 +10,7 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoadException;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
@@ -63,6 +64,7 @@ public class ImageFontTest
                 .setGlyphHeight(8).setExtension("png")
                 .setCaseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
                 .setAlignment(TextAlignment.LEFT).setThrowException(false)
+                .setPixelMultiplication(4).setColor(Color.BLUE)
                 .render("chaining"), "chaining");
     }
 
