@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
 /**
- * Ein Sammlung von statischen Hilfsmethoden um <b>Text</b> und
+ * Eine Sammlung von statischen Hilfsmethoden um <b>Text</b> und
  * <b>Zeichenketten</b> zu bearbeiten.
  */
 public class TextUtil

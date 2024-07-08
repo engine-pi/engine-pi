@@ -59,8 +59,8 @@ class HexColorString
 }
 
 /**
- * Statische Klasse, die Hilfsmethoden zur <b>Farb</b>berechnung und -manipulation
- * bereitstellt.
+ * Statische Klasse, die Hilfsmethoden zur <b>Farb</b>berechnung und
+ * -manipulation bereitstellt.
  */
 public final class ColorUtil
 {

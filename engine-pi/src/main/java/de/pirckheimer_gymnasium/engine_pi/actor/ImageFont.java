@@ -16,8 +16,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Eine <b>Schriftart</b>, bei der die einzelnen <b>Buchstaben</b> durch eine
+ * Eine <b>Schriftart</b>, bei der die einzelnen <b>Buchstaben</b> durch ein
  * <b>Bild</b> repräsentiert sind.
+ *
+ * <p>
+ * Jedes Bild entspricht einem Buchstaben oder Zeichen. Die Bilder müssen alle
+ * die gleiche Abmessung aufweisen.
+ * </p>
+ *
+ * https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html
+ *
+ * https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts
  *
  * @author Josef Friedrich
  */
@@ -44,26 +53,112 @@ public class ImageFont
      */
     private String extension = "pgn";
 
+    /**
+     * Die Handhabung der Groß- und Kleinschreibung.
+     */
     private ImageFontCaseSensitivity caseSensitivity = null;
 
     private TextAlignment alignment = TextAlignment.LEFT;
 
-    private Map<Character, String> map = new HashMap<>();
+    private final Map<Character, String> map = new HashMap<>();
 
     /**
-     *
-     * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
-     *                 Buchstaben liegen.
+     * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
+     *                        einzelnen Buchstaben liegen.
+     * @param glyphWidth      Die Breite der Buchstabenbilder in Pixel.
+     * @param glyphHeight     Die Höhe der Buchstabenbilder in Pixel.
+     * @param extension       Die Dateierweiterung der Buchstabenbilder.
+     * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
+     * @param alignment       Die Textausrichtung.
      */
-    public ImageFont(String basePath, int glyphWidth, int glyphHeight)
+    public ImageFont(String basePath, int glyphWidth, int glyphHeight,
+            String extension, ImageFontCaseSensitivity caseSensitivity,
+            TextAlignment alignment)
     {
         this.basePath = basePath;
         this.glyphWidth = glyphWidth;
         this.glyphHeight = glyphHeight;
+        this.extension = extension;
+        this.caseSensitivity = caseSensitivity;
+        this.alignment = alignment;
         addMapping('.', "dot");
         addMapping(',', "comma");
         addMapping('"', "quotes");
         addMapping('©', "copyright");
+    }
+
+    /**
+     * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
+     *                 Buchstaben liegen.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setBasePath(String basePath)
+    {
+        this.basePath = basePath;
+        return this;
+    }
+
+    /**
+     * @param glyphWidth Die Breite der Buchstabenbilder in Pixel.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setGlyphWidth(int glyphWidth)
+    {
+        this.glyphWidth = glyphWidth;
+        return this;
+    }
+
+    /**
+     * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setGlyphHeight(int glyphHeight)
+    {
+        this.glyphHeight = glyphHeight;
+        return this;
+    }
+
+    /**
+     * @param extension Die Dateierweiterung der Buchstabenbilder.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setExtension(String extension)
+    {
+        this.extension = extension;
+        return this;
+    }
+
+    /**
+     * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setCaseSensitivity(
+            ImageFontCaseSensitivity caseSensitivity)
+    {
+        this.caseSensitivity = caseSensitivity;
+        return this;
+    }
+
+    /**
+     * @param alignment Die Textausrichtung.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setAlignment(TextAlignment alignment)
+    {
+        this.alignment = alignment;
+        return this;
     }
 
     private String convertGlyphToImageName(char glyph)

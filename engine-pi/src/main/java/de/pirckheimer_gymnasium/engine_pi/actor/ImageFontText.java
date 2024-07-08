@@ -9,7 +9,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
- *  @author Josef Friedrich
+ * @author Josef Friedrich
  */
 public class ImageFontText extends Image
 {
