@@ -25,8 +25,11 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import java.io.Serial;
+
 public class ResourceLoadException extends RuntimeException
 {
+    @Serial
     private static final long serialVersionUID = 2690585643366673974L;
 
     public ResourceLoadException()

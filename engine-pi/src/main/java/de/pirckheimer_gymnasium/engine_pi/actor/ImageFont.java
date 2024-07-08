@@ -24,8 +24,8 @@ import java.util.Map;
  * die gleiche Abmessung aufweisen.
  * </p>
  *
- * Eine Alternative wäre die
- * <a href="https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html">BitmapFont-Klasse</a>
+ * Eine Alternative wäre die <a href=
+ * "https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html">BitmapFont-Klasse</a>
  * der Game-Engine libgdx.
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
@@ -62,6 +62,12 @@ public class ImageFont
     private TextAlignment alignment = TextAlignment.LEFT;
 
     private final Map<Character, String> map = new HashMap<>();
+
+    /**
+     * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen werden
+     * soll oder nicht.
+     */
+    private boolean throwException = true;
 
     /**
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
@@ -176,6 +182,19 @@ public class ImageFont
         return this;
     }
 
+    /**
+     * @param throwException Ob bei einem nicht vorhandenen Zeichen eine
+     *                       Fehlermeldung geworfen werden soll oder nicht.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setThrowException(boolean throwException)
+    {
+        this.throwException = throwException;
+        return this;
+    }
+
     private String convertGlyphToImageName(char glyph)
     {
         String filename = map.get(glyph);
@@ -197,18 +216,30 @@ public class ImageFont
                 + extension;
     }
 
-    private BufferedImage loadBufferedImage(char glyph)
+    private BufferedImage loadBufferedImage(char glyph, String content)
     {
         if (glyph == ' ')
         {
             return null;
         }
-        BufferedImage image = Resources.IMAGES.get(getImagePath(glyph));
-        if (image != null)
+        try
         {
-            image = ImageUtil.addAlphaChannel(image);
+            BufferedImage image = Resources.IMAGES.get(getImagePath(glyph));
+            if (image != null)
+            {
+                image = ImageUtil.addAlphaChannel(image);
+            }
+            return image;
         }
-        return image;
+        catch (Exception e)
+        {
+            if (throwException)
+            {
+                throw new RuntimeException("Unbekannter Buchstabe „" + glyph
+                        + "“ im Text „" + content + "“.");
+            }
+        }
+        return null;
     }
 
     private String processContent(String content, int lineWidth,
@@ -245,7 +276,8 @@ public class ImageFont
             for (int j = 0; j < line.length(); j++)
             {
                 x = j * glyphWidth;
-                BufferedImage glyph = loadBufferedImage(line.charAt(j));
+                BufferedImage glyph = loadBufferedImage(line.charAt(j),
+                        content);
                 if (glyph != null)
                 {
                     g.drawImage(glyph, x, y, null);
@@ -257,6 +289,6 @@ public class ImageFont
 
     public BufferedImage render(String content)
     {
-        return render(content, TextUtil.getLineWidth(content), alignment);
+        return render(content, TextUtil.getLineWidth(content) + 1, alignment);
     }
 }

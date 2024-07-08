@@ -33,7 +33,7 @@ public class LoggerTest
     public void testFileExists()
     {
         Logger.error("LoggerTest", "lorem ipsum");
-        assertTrue(errStreamCaptor.toString().indexOf("lorem ipsum") > -1);
+        assertTrue(errStreamCaptor.toString().contains("lorem ipsum"));
         assertTrue(Files.exists(Paths.get("engine-pi.log")));
     }
 }
