@@ -25,7 +25,7 @@ public class ResourcesTest
         }
 
         @Test
-        public void testCaseInsensivity()
+        public void testCaseInsensitivity()
         {
             assertNotNull(getColor("BLUE"));
         }

@@ -88,6 +88,20 @@ public class ImageFont
     }
 
     /**
+     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssten 8x8
+     * Pixel und als Dateierweiterung pgn haben. Der Text wird linksbündig
+     * ausgerichtet.
+     *
+     * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
+     *                        einzelnen Buchstaben liegen.
+     * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
+     */
+    public ImageFont(String basePath, ImageFontCaseSensitivity caseSensitivity)
+    {
+        this(basePath, 8, 8, "png", caseSensitivity, TextAlignment.LEFT);
+    }
+
+    /**
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
      *                 Buchstaben liegen.
      *

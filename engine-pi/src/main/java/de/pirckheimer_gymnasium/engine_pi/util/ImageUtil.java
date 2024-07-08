@@ -268,27 +268,28 @@ public class ImageUtil
      * @author Niklas Keller
      *
      * @param image    Das Bild, das gespeichert werden soll.
-     * @param filename Der Dateiname, unter dem das Bild gespeichert werden
+     * @param filePath Der Dateiname, unter dem das Bild gespeichert werden
      *                 soll.
      */
-    public static void write(BufferedImage image, String filename)
+    public static void write(BufferedImage image, String filePath)
     {
-        filename = filename.toLowerCase();
+        String extension = FileUtil.getExtension(filePath);
         String formatname = null;
-        if (filename.endsWith(".png"))
+        switch (extension)
         {
+        case "png":
             formatname = "png";
-        }
-        else if (filename.endsWith(".gif"))
-        {
+            break;
+
+        case "gif":
             formatname = "gif";
-        }
-        else if (filename.endsWith(".jpg"))
-        {
+            break;
+
+        case "jpg":
             formatname = "jpg";
-        }
-        else
-        {
+            break;
+
+        default:
             Logger.error("IO",
                     "Nicht unterstütztes Format. Nur png, jpg, gif ist unterstützt");
             return;
@@ -296,7 +297,7 @@ public class ImageUtil
         try
         {
             ImageIO.write(image, formatname,
-                    new File(FileUtil.normalizePath(filename)));
+                    new File(FileUtil.normalizePath(filePath)));
         }
         catch (IOException e)
         {
