@@ -54,6 +54,8 @@ public class ImageFont
      */
     private String extension = "pgn";
 
+    private int pixelMultiplication = 1;
+
     /**
      * Die Handhabung der Groß- und Kleinschreibung.
      */
@@ -164,6 +166,11 @@ public class ImageFont
     public ImageFont setExtension(String extension)
     {
         this.extension = extension;
+        return this;
+    }
+
+    public ImageFont setPixelMultiplication(int pixelMultiplication) {
+        this.pixelMultiplication = pixelMultiplication;
         return this;
     }
 
