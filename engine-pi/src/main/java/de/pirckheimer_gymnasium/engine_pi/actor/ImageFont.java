@@ -59,6 +59,8 @@ public class ImageFont
      */
     private ImageFontCaseSensitivity caseSensitivity = null;
 
+    private int lineWidth = -1;
+
     private TextAlignment alignment = TextAlignment.LEFT;
 
     private final Map<Character, String> map = new HashMap<>();
@@ -134,6 +136,14 @@ public class ImageFont
     }
 
     /**
+     * @return Die Breite der Buchstabenbilder in Pixel.
+     */
+    public int getGlyphWidth()
+    {
+        return glyphWidth;
+    }
+
+    /**
      * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -168,6 +178,39 @@ public class ImageFont
     {
         this.caseSensitivity = caseSensitivity;
         return this;
+    }
+
+    /**
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *                  kann.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont setLineWidth(int lineWidth)
+    {
+        this.lineWidth = lineWidth;
+        return this;
+    }
+
+    /**
+     * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     */
+    public int getLineWidth()
+    {
+        return lineWidth;
+    }
+
+    /**
+     * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     */
+    public int getLineWidth(String content)
+    {
+        if (lineWidth == -1)
+        {
+            return TextUtil.getLineWidth(content) + 1;
+        }
+        return lineWidth;
     }
 
     /**
@@ -256,6 +299,14 @@ public class ImageFont
         return TextUtil.wrap(content, lineWidth, alignment);
     }
 
+    /**
+     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *                  kann.
+     * @param alignment Die Textausrichtung.
+     *
+     * @return Ein Bild.
+     */
     public BufferedImage render(String content, int lineWidth,
             TextAlignment alignment)
     {
@@ -287,8 +338,13 @@ public class ImageFont
         return image;
     }
 
+    /**
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     *
+     * @return Ein Bild.
+     */
     public BufferedImage render(String content)
     {
-        return render(content, TextUtil.getLineWidth(content) + 1, alignment);
+        return render(content, getLineWidth(content), alignment);
     }
 }

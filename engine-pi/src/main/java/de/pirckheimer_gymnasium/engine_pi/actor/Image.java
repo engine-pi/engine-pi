@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
@@ -44,7 +45,7 @@ public class Image extends Actor
     /**
      * Das {@link BufferedImage}, das dieses Bild darstellt.
      */
-    private final BufferedImage image;
+    private BufferedImage image;
 
     private double width;
 
@@ -58,8 +59,10 @@ public class Image extends Actor
      * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b> und der
      * <b>Abmessungen</b> in <b>Meter</b>.
      *
+     * <p>
      * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
      * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
+     * </p>
      *
      * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param width    Die Breite des Bilds in Meter.
@@ -149,6 +152,11 @@ public class Image extends Actor
         this.width = width;
         this.height = height;
         this.setFixture(() -> FixtureBuilder.rectangle(width, height));
+    }
+
+    public void setImage(BufferedImage image)
+    {
+        this.image = image;
     }
 
     /**
