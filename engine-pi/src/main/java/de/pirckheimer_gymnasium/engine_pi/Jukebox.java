@@ -47,8 +47,8 @@ import de.pirckheimer_gymnasium.engine_pi.sound.SoundPlayback;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
 /**
- * Die {@link Jukebox} Klasse bietet Methoden an, um Klänge (Sound) und Musik
- * (Music) im Spiel wiederzugeben.
+ * Die {@link Jukebox} Klasse bietet Methoden an, um <b>Klänge</b> (Sound) und
+ * Musik (Music) im Spiel <b>wiederzugeben</b>.
  *
  * <p>
  * Jede Audio-Datei kann sowohl als Musik als auch als Klang abgespielt. Der
@@ -70,6 +70,9 @@ import de.pirckheimer_gymnasium.engine_pi.sound.Track;
  * werden, muss eine eigene SPI-Implementierung geschrieben und dem Projekt
  * hinzugefügt werden.
  * </p>
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public final class Jukebox
 {

@@ -27,7 +27,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Die Kamera steuert, welcher Ausschnitt der Spielfläche angezeigt wird.
+ * Die <b>Kamera</b> steuert, welcher <b>Ausschnitt</b> der Spielfläche
+ * angezeigt wird.
  *
  * <p>
  * Sie kann ein Objekt fokussieren und ihm so folgen. Hierbei besteht auch die

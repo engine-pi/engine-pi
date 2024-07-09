@@ -58,9 +58,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 
 /**
- * Mithilfe von Szenen können verschiedene Ansichten eines Spiels erstellt
- * werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen und wieder
- * neu erzeugen zu müssen.
+ * Mithilfe von <b>Szenen</b> können verschiedene <b>Ansichten</b> eines Spiels
+ * erstellt werden, ohne beim Szenenwechsel alle grafischen Objekte entfernen
+ * und wieder neu erzeugen zu müssen.
  */
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,

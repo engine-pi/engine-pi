@@ -37,6 +37,18 @@ import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderTarget;
 
+/**
+ * Die <b>Ereignisschleife</b> der Engine.
+ *
+ * <p>
+ * In ihr wird die Verarbeitung der Eingaben des Benutzers angestoßen, die
+ * Berechnung neuer Weltzustände gestartet und das Erzeugen neuer Ausgaben
+ * angewiesen.
+ * </p>
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ */
 public final class GameLoop
 {
     private static final double DESIRED_FRAME_DURATION = 0.016;

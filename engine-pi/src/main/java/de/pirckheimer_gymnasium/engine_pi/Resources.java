@@ -37,7 +37,8 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ResourcesContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 
 /**
- * Zur Aufbewahrung und Verwaltung verschiedener Ressourcen.
+ * Zur <b>Aufbewahrung</b> und <b>Verwaltung</b> verschiedener
+ * <b>Ressourcen</b>.
  *
  * <p>
  * Diese Klasse ist der Einstiegspunkt für den Zugriff auf alle Arten von

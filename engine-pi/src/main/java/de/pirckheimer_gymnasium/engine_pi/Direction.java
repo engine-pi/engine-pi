@@ -23,7 +23,10 @@ package de.pirckheimer_gymnasium.engine_pi;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Repräsentation einer Richtung.
+ * Repräsentation einer <b>Richtung</b>.
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
  */
 @API
 public enum Direction

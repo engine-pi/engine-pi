@@ -23,8 +23,8 @@ package de.pirckheimer_gymnasium.engine_pi;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Ein nicht-grafisches Rechteck auf der Zeichenebene, das eine allgemeine
- * Fläche beschreibt.
+ * Ein <b>nicht-grafisches Rechteck</b> auf der Zeichenebene, das eine
+ * allgemeine Fläche beschreibt.
  *
  * @param x      Die <code>x</code>-Koordinate der <i>unteren linken Ecke</i>
  *               des Rechtecks.
@@ -32,6 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  *               des Rechtecks.
  * @param width  <b>Reelle</b> Breite des Rechtecks.
  * @param height <b>Reelle</b> Höhe des Rechtecks.
+ *
  * @author Michael Andonie
  */
 @Internal

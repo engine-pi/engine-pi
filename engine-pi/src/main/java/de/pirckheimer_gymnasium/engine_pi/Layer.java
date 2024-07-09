@@ -50,8 +50,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.PhysicsHandler;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 
 /**
- * Eine Ebene bieten die Möglichkeit, {@link Actor}-Objekte vor und hinter der
- * Zeichenebene mit zusätzlichen Eigenschaften (wie Parallaxe) zu rendern.
+ * Eine <b>Ebene</b> bieten die Möglichkeit, {@link Actor}-Objekte vor und
+ * hinter der Zeichenebene mit zusätzlichen Eigenschaften (wie zum Beispiel
+ * Parallaxe) zu rendern.
  *
  * @author Michael Andonie
  */
