@@ -46,7 +46,8 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     public StatefulPlayerCharacter()
     {
-        // Alle Bilder haben die Amessung 64x64px und deshalb die gleiche Breite
+        // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche
+        // Breite
         // und Höhe. Wir verwenden drei Meter.
         super(3, 3);
         setupPlayerStates();
@@ -82,11 +83,9 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     @Override
     public void onKeyDown(KeyEvent keyEvent)
     {
-        switch (keyEvent.getKeyCode())
+        if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE)
         {
-        case KeyEvent.VK_SPACE:
             attemptJump();
-            break;
         }
     }
 

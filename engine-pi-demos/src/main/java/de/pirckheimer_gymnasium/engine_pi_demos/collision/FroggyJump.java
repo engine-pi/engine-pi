@@ -132,11 +132,11 @@ class Frog extends Image implements FrameUpdateListener
         // A: Die Blickrichtung des Frosches steuern
         if (velocity.getX() < 0)
         {
-            setFlipHorizontal(true);
+            setFlippedHorizontally(true);
         }
         else
         {
-            setFlipHorizontal(false);
+            setFlippedHorizontally(false);
         }
         // B: Horizontale Bewegung steuern
         if (Game.isKeyPressed(KeyEvent.VK_A))
