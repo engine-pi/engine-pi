@@ -1,17 +1,23 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import java.awt.Color;
+
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
-import java.awt.*;
-
 /**
+ * Zur Darstellung von <b>Texten</b> durch eine <b>Bilderschriftart</b>.
+ *
  * @author Josef Friedrich
+ *
+ * @since 0.23.0
  */
 public class ImageFontText extends Image
 {
     private final ImageFont imageFont;
 
     /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b> dargestellt wird.
+     *
      * @param imageFont           Die Bilderschriftart.
      * @param content             Der Textinhalt, der in das Bild geschrieben
      *                            werden soll.
@@ -38,13 +44,15 @@ public class ImageFontText extends Image
     }
 
     /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b> dargestellt wird.
+     *
      * @param imageFont           Die Bilderschriftart.
      * @param content             Der Textinhalt, der in das Bild geschrieben
      *                            werden soll.
      * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
      *                            aufnehmen kann.
      * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe in der die schwarze Farbe der
+     * @param color               Die Farbe, in der die schwarze Farbe der
      *                            Ausgangsbilder umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
      *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
@@ -58,6 +66,8 @@ public class ImageFontText extends Image
     }
 
     /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b> dargestellt wird.
+     *
      * @param imageFont Die Bilderschriftart.
      * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
@@ -72,6 +82,8 @@ public class ImageFontText extends Image
     }
 
     /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b> dargestellt wird.
+     *
      * @param imageFont Die Bilderschriftart.
      * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
      */
@@ -82,6 +94,8 @@ public class ImageFontText extends Image
     }
 
     /**
+     * Setzt den <b>Textinhalt</b> neu.
+     *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      */
     public void setContent(String content)

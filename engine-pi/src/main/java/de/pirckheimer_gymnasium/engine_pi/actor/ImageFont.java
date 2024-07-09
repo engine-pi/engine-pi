@@ -1,19 +1,18 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import java.awt.*;
+import static de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity.TO_LOWER;
+import static de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity.TO_UPPER;
+
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
-
-import static de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity.TO_UPPER;
-
-import static de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity.TO_LOWER;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Eine <b>Schriftart</b>, bei der die einzelnen <b>Buchstaben</b> durch ein
@@ -30,6 +29,8 @@ import java.util.Map;
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
+ *
+ * @since 0.23.0
  */
 public class ImageFont
 {
@@ -71,8 +72,14 @@ public class ImageFont
      */
     private ImageFontCaseSensitivity caseSensitivity;
 
+    /**
+     * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     */
     private int lineWidth = -1;
 
+    /**
+     * Die Textausrichtung.
+     */
     private TextAlignment alignment;
 
     private final Map<Character, String> map = new HashMap<>();
@@ -123,6 +130,9 @@ public class ImageFont
     }
 
     /**
+     * Setzt den Pfad zu einem Ordner, in dem die Bilder der einzelnen
+     * Buchstaben liegen.
+     *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
      *                 Buchstaben liegen.
      *
@@ -136,6 +146,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die Breite der Buchstabenbilder in Pixel.
+     *
      * @param glyphWidth Die Breite der Buchstabenbilder in Pixel.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -148,6 +160,8 @@ public class ImageFont
     }
 
     /**
+     * Gibt die Breite der Buchstabenbilder in Pixel zurück.
+     *
      * @return Die Breite der Buchstabenbilder in Pixel.
      */
     public int getGlyphWidth()
@@ -156,6 +170,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die Höhe der Buchstabenbilder in Pixel.
+     *
      * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -168,7 +184,10 @@ public class ImageFont
     }
 
     /**
-     * @param color Die Farbe in der die schwarze Farbe der Ausgangsbilder
+     * Setzt die Farbe, in der die schwarze Farbe der Ausgangsbilder umgefärbt
+     * werden soll.
+     *
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *              umgefärbt werden soll.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -181,7 +200,10 @@ public class ImageFont
     }
 
     /**
-     * @return Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt
+     * Gibt die Farbe zurück, in der die schwarze Farbe der Ausgangsbilder
+     * umgefärbt werden soll.
+     *
+     * @return Die Farbe, in der die schwarze Farbe der Ausgangsbilder umgefärbt
      *         werden soll.
      */
     public Color getColor()
@@ -190,6 +212,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die Dateierweiterung der Buchstabenbilder.
+     *
      * @param extension Die Dateierweiterung der Buchstabenbilder.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -202,6 +226,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt, wie oft ein Pixel vervielfältigt werden soll.
+     *
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
      *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
      *                            in 9 Pixel der Abmessung 3x3.
@@ -216,6 +242,8 @@ public class ImageFont
     }
 
     /**
+     * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
+     *
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
      *         verwandelt die Zahl 3 ein Pixel in 9 Pixel der Abmessung 3x3.
      */
@@ -238,6 +266,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     *
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *                  kann.
      *
@@ -251,6 +281,9 @@ public class ImageFont
     }
 
     /**
+     * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
+     * kann.
+     *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
     public int getLineWidth()
@@ -259,6 +292,9 @@ public class ImageFont
     }
 
     /**
+     * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
+     * kann.
+     *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
     public int getLineWidth(String content)
@@ -271,6 +307,9 @@ public class ImageFont
     }
 
     /**
+     * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
+     * kann.
+     *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
     public int getLineWidth(String content, int lineWidth)
@@ -283,6 +322,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die Textausrichtung.
+     *
      * @param alignment Die Textausrichtung.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -295,6 +336,8 @@ public class ImageFont
     }
 
     /**
+     * Gibt die Textausrichtung zurück.
+     *
      * @return Die Textausrichtung.
      */
     public TextAlignment getAlignment()
@@ -377,12 +420,14 @@ public class ImageFont
     }
 
     /**
+     * Setzt den gegebenen Textinhalt in ein Bild.
+     *
      * @param content             Der Textinhalt, der in das Bild geschrieben
      *                            werden soll.
      * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
      *                            aufnehmen kann.
      * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe in der die schwarze Farbe der
+     * @param color               Die Farbe, in der die schwarze Farbe der
      *                            Ausgangsbilder umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
      *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
@@ -431,6 +476,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt den gegebenen Textinhalt in ein Bild.
+     *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      *
      * @return Ein Bild.
