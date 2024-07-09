@@ -32,6 +32,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public class SoundResource extends NamedResource
 {
     private String data;

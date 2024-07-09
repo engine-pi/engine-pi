@@ -36,6 +36,10 @@ import java.awt.GraphicsEnvironment;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public final class FontContainer extends ResourcesContainer<Font>
 {
     private static final int DEFAULT_SIZE = 12;

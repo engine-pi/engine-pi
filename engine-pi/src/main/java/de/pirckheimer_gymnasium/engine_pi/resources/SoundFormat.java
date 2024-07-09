@@ -31,6 +31,9 @@ import java.io.File;
  * Contains all known audio file-formats supported by the engine.
  *
  * @see ImageFormat
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public enum SoundFormat
 {

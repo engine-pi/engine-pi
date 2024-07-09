@@ -33,6 +33,8 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
  *
  * @see ResourcesContainer
  *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public interface ResourcesContainerListener<T>
         extends ResourcesContainerClearedListener

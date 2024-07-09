@@ -60,6 +60,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </ul>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#COLORS
+ *
+ * @author Josef Friedrich
  */
 public class ColorContainer implements Container<Color>
 {

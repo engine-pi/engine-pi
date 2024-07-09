@@ -37,6 +37,10 @@ import javax.imageio.ImageIO;
 
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public final class Codec
 {
     private static final Logger log = Logger.getLogger(Codec.class.getName());

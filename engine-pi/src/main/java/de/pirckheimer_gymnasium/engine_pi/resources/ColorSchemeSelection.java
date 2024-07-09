@@ -2,6 +2,9 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import java.awt.Color;
 
+/**
+ * @author Josef Friedrich
+ */
 public enum ColorSchemeSelection
 {
     /**

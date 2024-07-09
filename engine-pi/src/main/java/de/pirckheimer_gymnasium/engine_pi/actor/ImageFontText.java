@@ -27,8 +27,8 @@ public class ImageFontText extends Image
      * @param color               Die Farbe in der die schwarze Farbe der
      *                            Ausgangsbilder umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
-     *                            in 9 Pixel der Abmessung 3x3.
+     *                            Beispielsweise verwandelt die Zahl {@code 3} ein Pixel
+     *                            in {@code 9} Pixel der Abmessung {@code 3x3}.
      * @param pixelPerMeter       Wie viele Pixel ein Meter des resultierenden
      *                            Bilds groß sein soll.
      */
@@ -55,8 +55,8 @@ public class ImageFontText extends Image
      * @param color               Die Farbe, in der die schwarze Farbe der
      *                            Ausgangsbilder umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
-     *                            in 9 Pixel der Abmessung 3x3.
+     *                            Beispielsweise verwandelt die Zahl {@code 3} ein Pixel
+     *                            in {@code 9} Pixel der Abmessung {@code 3x3}.
      */
     public ImageFontText(ImageFont imageFont, String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)

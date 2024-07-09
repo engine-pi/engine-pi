@@ -27,6 +27,10 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import java.io.Serial;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public class ResourceLoadException extends RuntimeException
 {
     @Serial

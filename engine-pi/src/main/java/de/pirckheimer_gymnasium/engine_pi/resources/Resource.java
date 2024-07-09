@@ -27,6 +27,10 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import de.pirckheimer_gymnasium.engine_pi.util.AlphanumComparator;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public interface Resource extends Comparable<Resource>
 {
     /**

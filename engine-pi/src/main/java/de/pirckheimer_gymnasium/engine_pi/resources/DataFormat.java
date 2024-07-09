@@ -32,6 +32,9 @@ import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 /**
  * Some common implementations that are used by different kinds of file classes
  * (e.g. {@code SoundFormat}, {@code ImageFormat}.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 final class DataFormat
 {

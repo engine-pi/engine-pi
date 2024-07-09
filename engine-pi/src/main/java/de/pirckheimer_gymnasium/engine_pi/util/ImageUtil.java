@@ -77,8 +77,8 @@ public class ImageUtil
     }
 
     /**
-     * Ersetzt Farben in einem Bild entsprechend zweier Felder (Arrays), die die
-     * {@link Color Quell-} und {@link Color Zielfarben} enthalten, und gibt
+     * Ersetzt die Farben in einem Bild entsprechend zweier Felder (Arrays), die
+     * die {@link Color Quell-} und {@link Color Zielfarben} enthalten, und gibt
      * dann das Ergebnis zurück.
      *
      * <ul>
@@ -94,8 +94,8 @@ public class ImageUtil
      * </ul>
      *
      * @param bufferedImage Das Originalbild.
-     * @param to            Ein Feld, das die Quellfarben enthält.
-     * @param from          Ein Feld, das die Zeilfarben enthält.
+     * @param from          Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param to            Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Eine neue Version des Originalbildes, bei der die Quellfarben
      *         durch die Zielfarben ersetzt werden.
@@ -126,8 +126,8 @@ public class ImageUtil
     }
 
     /**
-     * Ersetzt Farben in einem Bild entsprechend zweier Felder (Arrays), die die
-     * {@link String Quell-} und {@link String Zielfarben} in hexadezimaler
+     * Ersetzt die Farben in einem Bild entsprechend zweier Felder (Arrays), die
+     * die {@link String Quell-} und {@link String Zielfarben} in hexadezimaler
      * Notation enthalten, und gibt dann das Ergebnis zurück.
      *
      * <ul>
@@ -143,8 +143,8 @@ public class ImageUtil
      * </ul>
      *
      * @param bufferedImage Das Originalbild.
-     * @param to            Ein Feld, das die Quellfarben enthält.
-     * @param from          Ein Feld, das die Zeilfarben enthält.
+     * @param from          Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param to            Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Eine neue Version des Originalbildes, bei der die Quellfarben
      *         durch die Zielfarben ersetzt werden.
@@ -157,8 +157,8 @@ public class ImageUtil
     }
 
     /**
-     * Ersetzt Farben in einem Bild entsprechend einer {@link Map}, die Quell-
-     * und Zielfarben enthält, und gibt dann das Ergebnis zurück.
+     * Ersetzt die Farben in einem Bild entsprechend einer {@link Map}, die
+     * Quell- und Zielfarben enthält, und gibt dann das Ergebnis zurück.
      *
      * <ul>
      *
@@ -199,10 +199,10 @@ public class ImageUtil
      * Ersetzt eine Farbe in einem Bild.
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Die Quellfarbe. Eine Farbe kodiert als Zeichenkette
-     *                      in hexadezimaler Notation.
-     * @param to            Eine Zielfarbe. Eine Farbe kodiert als Zeichenkette
-     *                      in hexadezimaler Notation.
+     * @param from          Die <b>Quellfarbe</b>. Eine Farbe kodiert als
+     *                      Zeichenkette in <b>hexadezimaler</b> Notation.
+     * @param to            Eine <b>Zielfarbe</b>. Eine Farbe kodiert als
+     *                      Zeichenkette in <b>hexadezimaler</b> Notation.
      *
      * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
      *         durch eine Zielfarbe ersetzt wurde.
@@ -219,8 +219,8 @@ public class ImageUtil
      * Ersetzt eine Farbe in einem Bild.
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Die Quellfarbe.
-     * @param to            Eine Zielfarbe.
+     * @param from          Die <b>Quellfarbe</b>.
+     * @param to            Eine <b>Zielfarbe</b>.
      *
      * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
      *         durch eine Zielfarbe ersetzt wurde.
@@ -238,15 +238,18 @@ public class ImageUtil
      * die Interpolationsmethode {@link AffineTransformOp#TYPE_NEAREST_NEIGHBOR}
      * angewendet.
      *
-     * Entsprechender Code in der <a href=
+     * <ul>
+     * <li>Entsprechender Code in der <a href=
      * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L558-L764">LITIengine</a>.
-     *
-     * <a href="https://stackoverflow.com/a/4216635">stackoverflow.com</a>
+     * </li>
+     * <li><a href=
+     * "https://stackoverflow.com/a/4216635">stackoverflow.com</a></li>
+     * </ul>
      *
      * @param image  Das Originalbild.
      * @param factor Der Faktor, um den das Bild vergrößert werden soll. Der
-     *               Faktor 2 verwandelt beispielsweise ein Pixel in vier Pixel
-     *               nämlich {@code 2x2}.
+     *               Faktor {@code 2} verwandelt beispielsweise ein Pixel in
+     *               {@code 4} Pixel nämlich {@code 2x2}.
      *
      * @return Das vergrößerte Bild.
      */

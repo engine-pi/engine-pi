@@ -68,6 +68,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </ul>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#colorScheme
+ *
+ * @author Josef Friedrich
  */
 public class ColorScheme
 {

@@ -34,21 +34,21 @@ import javax.imageio.ImageIO;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
- * Ein Speicher für Bild-Ressourcen vom Datentyp {@link BufferedImage}.
+ * Ein Speicher für <b>Bilder</b> vom Datentyp {@link BufferedImage}.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public final class ImageContainer extends ResourcesContainer<BufferedImage>
 {
-    public ImageContainer()
-    {
-    }
-
     /**
      * Loads the image by the specified resourceName. This method supports both
      * loading images from a folder and loading them from the resources.
      *
-     * @param name The path to the image.
+     * @param name Der Dateipfad des Bilds.
      *
-     * @return the image
+     * @return Ein Bild vom Datentyp {@link BufferedImage}.
      */
     @Override
     protected BufferedImage load(URL name) throws IOException
@@ -59,5 +59,75 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
             return null;
         }
         return ImageUtil.toCompatibleImage(img);
+    }
+
+    /**
+     * Ruft ein Bild auf, vergrößert es, indem seine <b>Pixel vervielfältigt</b>
+     * werden und <b>färbt</b> es neu.
+     *
+     * @param name                Der <b>Name</b> oder <b>Dateipfad</b> des
+     *                            Bilds.
+     * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
+     *                            soll. Beispielsweise verwandelt die Zahl
+     *                            {@code 3} ein Pixel in {@code 9} Pixel der
+     *                            Abmessung {@code 3x3}.
+     * @param fromColors          Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param toColors            Ein Feld, das die <b>Zielfarben</b> enthält.
+     *
+     * @return Ein Bild vom Datentyp {@link BufferedImage}.
+     *
+     * @since 0.23.0
+     */
+    public BufferedImage get(String name, int pixelMultiplication,
+            String[] fromColors, String[] toColors)
+    {
+        BufferedImage image = get(name);
+        if (pixelMultiplication > 1)
+        {
+            image = ImageUtil.scale(image, pixelMultiplication);
+        }
+        if (fromColors != null && toColors != null)
+        {
+            image = ImageUtil.replaceColors(image, fromColors, toColors);
+        }
+        return image;
+    }
+
+    /**
+     * Ruft ein Bild auf und vergrößert es, indem seine <b>Pixel
+     * vervielfältigt</b> werden.
+     *
+     * @param name                Der <b>Name</b> oder <b>Dateipfad</b> des
+     *                            Bilds.
+     * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
+     *                            soll. Beispielsweise verwandelt die Zahl
+     *                            {@code 3} ein Pixel in {@code 9} Pixel der
+     *                            Abmessung {@code 3x3}.
+     *
+     * @return Ein Bild vom Datentyp {@link BufferedImage}.
+     *
+     * @since 0.23.0
+     */
+    public BufferedImage get(String name, int pixelMultiplication)
+    {
+        return get(name, pixelMultiplication, null, null);
+    }
+
+    /**
+     * Ruft ein Bild auf und <b>färbt</b> es neu.
+     *
+     * @param name       Der <b>Name</b> oder <b>Dateipfad</b> des Bilds.
+     *
+     * @param fromColors Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param toColors   Ein Feld, das die <b>Zielfarben</b> enthält.
+     *
+     * @return Ein Bild vom Datentyp {@link BufferedImage}.
+     *
+     * @since 0.23.0
+     */
+    public BufferedImage get(String name, String[] fromColors,
+            String[] toColors)
+    {
+        return get(name, 1, fromColors, toColors);
     }
 }

@@ -9,8 +9,10 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
  * {@link ColorContainer} implementiert.
  * </p>
  *
- *
  * @param <T> Die Ressource, z. B. BufferedImage, Sound, Color
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public interface Container<T>
 {

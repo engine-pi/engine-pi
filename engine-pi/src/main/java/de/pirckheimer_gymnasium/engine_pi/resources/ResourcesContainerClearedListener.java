@@ -33,6 +33,8 @@ import java.util.EventListener;
  *
  * @see ResourcesContainer
  *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public interface ResourcesContainerClearedListener extends EventListener
 {

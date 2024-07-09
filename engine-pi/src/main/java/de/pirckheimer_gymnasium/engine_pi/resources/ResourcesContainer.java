@@ -51,6 +51,9 @@ import java.util.function.Supplier;
  *
  * @param <T> Der Datentyp der Ressource, die in dieser Instanz enthalten ist.
  * @see ResourcesContainerListener
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public abstract class ResourcesContainer<T> implements Container<T>
 {
@@ -256,7 +259,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
     }
 
     /**
-     * Ruft die Ressource mit dem angegebenen Namen ab.<br>
+     * Ruft die <b>Ressource</b> mit dem angegebenen <b>Name</b> oder
+     * <b>Dateipfad</b> auf.
+     *
      * <p>
      * Dies ist die gängigste (und bevorzugte) Methode, um Ressourcen aus einem
      * Speicher abzurufen.
@@ -267,10 +272,11 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * sofort zu laden, andernfalls wird sie aus dem Cache abgerufen.
      * </p>
      *
-     * @param name Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name oder Dateipfad, unter dem die Ressource verwaltet
+     *             wird.
      *
-     * @return Die Ressource mit dem angegebenen Namen oder null, wenn sie nicht
-     *         gefunden wird.
+     * @return Die Ressource mit dem angegebenen Namen oder {@code null}, wenn
+     *         sie nicht gefunden wird.
      */
     public T get(String name)
     {

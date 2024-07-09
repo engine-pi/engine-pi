@@ -25,6 +25,10 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public abstract class NamedResource implements Resource
 {
     private String name;

@@ -37,6 +37,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public final class SoundContainer extends ResourcesContainer<Sound>
 {
     private static final Logger log = Logger
