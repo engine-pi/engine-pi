@@ -40,7 +40,8 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
  */
 public class Text extends Geometry
 {
-    // Needs to be large enough, so we don't have rounding errors due to integers
+    // Needs to be large enough, so we don't have rounding errors due to
+    // integers
     // in font metrics
     private static final int SIZE = 1000;
 

@@ -40,6 +40,8 @@ public class TextUtil
      *             soll.
      *
      * @return Die Anzahl an Zeichen, die die längste Zeile beinhaltet.
+     *
+     * @since 0.23.0
      */
     public static int getLineWidth(String text)
     {
@@ -59,6 +61,8 @@ public class TextUtil
      * @param text Der Text, von dem die Anzahl der Zeilen bestimmt werden soll.
      *
      * @return Die Anzahl der Zeilen.
+     *
+     * @since 0.23.0
      */
     public static int getLineCount(String text)
     {
@@ -72,6 +76,8 @@ public class TextUtil
      * @param text Der Text, der in die einzelnen Zeilen aufgeteilt werden soll.
      *
      * @return Die einzelnen Zeilen des Textes.
+     *
+     * @since 0.23.0
      */
     public static String[] splitLines(String text)
     {
@@ -90,6 +96,8 @@ public class TextUtil
      *
      * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
      *         eingefügt wurden.
+     *
+     * @since 0.23.0
      */
     public static String align(String text, int width, TextAlignment alignment)
     {
@@ -120,6 +128,8 @@ public class TextUtil
      *
      * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
      *         eingefügt wurden.
+     *
+     * @since 0.23.0
      */
     public static String align(String text, TextAlignment alignment)
     {
@@ -145,6 +155,8 @@ public class TextUtil
      *
      * @throws IllegalArgumentException Falls es ein längeres Wort als die
      *                                  Zeilenbreite gibt.
+     *
+     * @since 0.23.0
      */
     public static String wrap(String text, int width, TextAlignment alignment)
     {
@@ -189,6 +201,8 @@ public class TextUtil
      *
      * @throws IllegalArgumentException Falls es ein längeres Wort als die
      *                                  Zeilenbreite gibt.
+     *
+     * @since 0.23.0
      */
     public static String wrap(String text, int width)
     {

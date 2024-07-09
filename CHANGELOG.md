@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## [v0.23.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.23.0) - 2024-07-09
+
+<small>[Compare with v0.22.0](https://github.com/engine-pi/engine-pi/compare/v0.22.0...v0.23.0)</small>
+
+### Added
+
+- Add new get overloads in the class ImageContainer ([99b76f8](https://github.com/engine-pi/engine-pi/commit/99b76f88f9e902de69e99d927b67ac3dd55035fe) by Josef Friedrich).
+- Add new a actor named ImageFontText ([6213ae9](https://github.com/engine-pi/engine-pi/commit/6213ae9fba9801778eb8634aee5523069c46f66d) by Josef Friedrich).
+- Extend the TextUtils ([58648e9](https://github.com/engine-pi/engine-pi/commit/58648e98a6519d194c1f0c2af33b6d230ef5844a) by Josef Friedrich).
+
 ## [v0.22.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.22.0) - 2024-07-02
 
 <small>[Compare with v0.21.0](https://github.com/engine-pi/engine-pi/compare/v0.21.0...v0.22.0)</small>

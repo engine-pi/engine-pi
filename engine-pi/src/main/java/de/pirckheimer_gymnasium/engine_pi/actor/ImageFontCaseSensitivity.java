@@ -1,7 +1,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
- * Beschreibt, wie mit der <b>Groß- und Kleinschreibung</b> umgegangen werden soll.
+ * Beschreibt, wie mit der <b>Groß- und Kleinschreibung</b> umgegangen werden
+ * soll.
  *
  * @author Josef Friedrich
  *
