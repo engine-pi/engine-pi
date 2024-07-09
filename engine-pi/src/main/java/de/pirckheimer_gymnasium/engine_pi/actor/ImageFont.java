@@ -91,6 +91,8 @@ public class ImageFont
     private boolean throwException = true;
 
     /**
+     * Erzeugt eine neue Bilderschriftart.
+     *
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
      *                        einzelnen Buchstaben liegen.
      * @param glyphWidth      Die Breite der Buchstabenbilder in Pixel.
@@ -116,9 +118,9 @@ public class ImageFont
     }
 
     /**
-     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssten 8x8
-     * Pixel und als Dateierweiterung pgn haben. Der Text wird linksbündig
-     * ausgerichtet.
+     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
+     * {@code 8x8} Pixel groß sein und als Dateierweiterung {@code png} haben.
+     * Der Text wird linksbündig ausgerichtet.
      *
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
      *                        einzelnen Buchstaben liegen.
@@ -127,6 +129,19 @@ public class ImageFont
     public ImageFont(String basePath, ImageFontCaseSensitivity caseSensitivity)
     {
         this(basePath, 8, 8, "png", caseSensitivity, TextAlignment.LEFT);
+    }
+
+    /**
+     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
+     * {@code 8x8} Pixel groß sein und als Dateierweiterung {@code png} haben.
+     * Der Text wird linksbündig ausgerichtet.
+     *
+     * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
+     *                 Buchstaben liegen.
+     */
+    public ImageFont(String basePath)
+    {
+        this(basePath, null);
     }
 
     /**

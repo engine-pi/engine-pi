@@ -25,6 +25,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -79,7 +80,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      * @since 0.23.0
      */
     public BufferedImage get(String name, int pixelMultiplication,
-            String[] fromColors, String[] toColors)
+            Color[] fromColors, Color[] toColors)
     {
         BufferedImage image = get(name);
         if (pixelMultiplication > 1)
@@ -125,8 +126,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      *
      * @since 0.23.0
      */
-    public BufferedImage get(String name, String[] fromColors,
-            String[] toColors)
+    public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
         return get(name, 1, fromColors, toColors);
     }
