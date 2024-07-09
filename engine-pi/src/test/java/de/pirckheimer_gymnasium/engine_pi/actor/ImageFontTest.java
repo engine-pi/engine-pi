@@ -6,7 +6,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoadException;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import org.junit.jupiter.api.condition.DisabledIf;
 

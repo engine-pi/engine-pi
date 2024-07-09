@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
@@ -43,30 +42,38 @@ public class ImageFont
     /**
      * Die Breite der Buchstabenbilder in Pixel.
      */
-    private int glyphWidth = 8;
+    private int glyphWidth;
 
     /**
      * Die Höhe der Buchstabenbilder in Pixel.
      */
-    private int glyphHeight = 8;
+    private int glyphHeight;
 
     /**
      * Die Dateierweiterung der Buchstabenbilder.
      */
-    private String extension = "pgn";
+    private String extension;
 
+    /**
+     * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise verwandelt
+     * die Zahl 3 ein Pixel in 9 Pixel der Abmessung 3x3.
+     */
     private int pixelMultiplication = 1;
 
+    /**
+     * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt werden
+     * soll.
+     */
     private Color color;
 
     /**
      * Die Handhabung der Groß- und Kleinschreibung.
      */
-    private ImageFontCaseSensitivity caseSensitivity = null;
+    private ImageFontCaseSensitivity caseSensitivity;
 
     private int lineWidth = -1;
 
-    private TextAlignment alignment = TextAlignment.LEFT;
+    private TextAlignment alignment;
 
     private final Map<Character, String> map = new HashMap<>();
 
@@ -160,10 +167,26 @@ public class ImageFont
         return this;
     }
 
+    /**
+     * @param color Die Farbe in der die schwarze Farbe der Ausgangsbilder
+     *              umgefärbt werden soll.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
     public ImageFont setColor(Color color)
     {
         this.color = color;
         return this;
+    }
+
+    /**
+     * @return Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt
+     *         werden soll.
+     */
+    public Color getColor()
+    {
+        return color;
     }
 
     /**
@@ -178,10 +201,27 @@ public class ImageFont
         return this;
     }
 
+    /**
+     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
+     *                            in 9 Pixel der Abmessung 3x3.
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
     public ImageFont setPixelMultiplication(int pixelMultiplication)
     {
         this.pixelMultiplication = pixelMultiplication;
         return this;
+    }
+
+    /**
+     * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
+     *         verwandelt die Zahl 3 ein Pixel in 9 Pixel der Abmessung 3x3.
+     */
+    public int getPixelMultiplication()
+    {
+        return pixelMultiplication;
     }
 
     /**
@@ -231,6 +271,18 @@ public class ImageFont
     }
 
     /**
+     * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     */
+    public int getLineWidth(String content, int lineWidth)
+    {
+        if (lineWidth == -1)
+        {
+            return TextUtil.getLineWidth(content) + 1;
+        }
+        return lineWidth;
+    }
+
+    /**
      * @param alignment Die Textausrichtung.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -240,6 +292,14 @@ public class ImageFont
     {
         this.alignment = alignment;
         return this;
+    }
+
+    /**
+     * @return Die Textausrichtung.
+     */
+    public TextAlignment getAlignment()
+    {
+        return alignment;
     }
 
     /**
@@ -317,16 +377,23 @@ public class ImageFont
     }
 
     /**
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *                  kann.
-     * @param alignment Die Textausrichtung.
+     * @param content             Der Textinhalt, der in das Bild geschrieben
+     *                            werden soll.
+     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
+     *                            aufnehmen kann.
+     * @param alignment           Die Textausrichtung.
+     * @param color               Die Farbe in der die schwarze Farbe der
+     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
+     *                            in 9 Pixel der Abmessung 3x3.
      *
      * @return Ein Bild.
      */
     public BufferedImage render(String content, int lineWidth,
-            TextAlignment alignment)
+            TextAlignment alignment, Color color, int pixelMultiplication)
     {
+        lineWidth = getLineWidth(content, lineWidth);
         content = processContent(content, lineWidth, alignment);
         int lineCount = TextUtil.getLineCount(content);
         int imageHeight = glyphHeight * lineCount;
@@ -335,8 +402,8 @@ public class ImageFont
                 BufferedImage.TYPE_INT_ARGB);
         Graphics g = image.getGraphics();
         String[] lines = TextUtil.splitLines(content);
-        int y = 0;
-        int x = 0;
+        int y;
+        int x;
         for (int i = 0; i < lines.length; i++)
         {
             y = i * glyphHeight;
@@ -370,6 +437,7 @@ public class ImageFont
      */
     public BufferedImage render(String content)
     {
-        return render(content, getLineWidth(content), alignment);
+        return render(content, getLineWidth(content), alignment, color,
+                pixelMultiplication);
     }
 }

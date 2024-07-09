@@ -148,6 +148,10 @@ public class TextUtil
      */
     public static String wrap(String text, int width, TextAlignment alignment)
     {
+        if (width < 1)
+        {
+            width = getLineWidth(text);
+        }
         StringBuilder stringBuilder = new StringBuilder(text);
         int index = 0;
         while (stringBuilder.length() > index + width)

@@ -9,13 +9,13 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PixelTextDemo extends Scene
+public class ImageFontTextDemo extends Scene
 {
     ImageFontText helloWorld;
 
     ImageFontText counterText;
 
-    public PixelTextDemo()
+    public ImageFontTextDemo()
     {
         setBackgroundColor("yellow");
         ImageFont font = new ImageFont("pixel-text",
@@ -34,7 +34,7 @@ public class PixelTextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new PixelTextDemo());
+        Game.start(1020, 520, new ImageFontTextDemo());
         Game.setTitle("Text Example");
     }
 }
