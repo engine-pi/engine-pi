@@ -75,8 +75,14 @@ public class StatefulAnimation<State> extends Actor
 
     private int currentIndex = 0;
 
+    /**
+     * Die Breite in Meter.
+     */
     private double width;
 
+    /**
+     * Die Höhe in Meter.
+     */
     private double height;
 
     private boolean flipHorizontal = false;
@@ -85,6 +91,10 @@ public class StatefulAnimation<State> extends Actor
 
     private boolean animationPaused = false;
 
+    /**
+     * @param width Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
+     */
     public StatefulAnimation(double width, double height)
     {
         super(() -> FixtureBuilder.rectangle(width, height));
@@ -93,12 +103,22 @@ public class StatefulAnimation<State> extends Actor
         addFrameUpdateListener(this::internalOnFrameUpdate);
     }
 
+    /**
+     * Gibt die Breite in Meter der animierten Figur zurück.
+     *
+     * @return Die Breite in Meter der animierten Figur.
+     */
     @API
     public double getWidth()
     {
         return width;
     }
 
+    /**
+     * Gibt die Höhe in Meter der animierten Figur zurück.
+     *
+     * @return Die Höhe in Meter der animierten Figur.
+     */
     @API
     public double getHeight()
     {
