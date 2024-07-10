@@ -13,7 +13,38 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  */
 public class ImageFontText extends Image
 {
+    /**
+     * Die Bilderschriftart.
+     */
     private final ImageFont imageFont;
+
+    /**
+     * Der Textinhalt, der in das Bild geschrieben werden soll.
+     */
+    private String content;
+
+    /**
+     * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+     */
+    private int lineWidth;
+
+    /**
+     * Die Textausrichtung.
+     */
+    private TextAlignment alignment;
+
+    /**
+     * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt werden
+     * soll.
+     */
+    private Color color;
+
+    /**
+     * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise verwandelt
+     * die Zahl {@code 3} ein Pixel in {@code 9} Pixel der Abmessung
+     * {@code 3x3}.
+     */
+    private int pixelMultiplication;
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
@@ -40,9 +71,12 @@ public class ImageFontText extends Image
     {
         super(imageFont.render(content, lineWidth, alignment, color,
                 pixelMultiplication), pixelPerMeter);
-        this.imageFont = imageFont.setLineWidth(lineWidth)
-                .setAlignment(alignment).setColor(color)
-                .setPixelMultiplication(pixelMultiplication);
+        this.imageFont = imageFont;
+        this.content = content;
+        this.lineWidth = lineWidth;
+        this.alignment = aligment;
+        this.color = color;
+        this.pixelMultiplication = pixelMultiplication;
     }
 
     /**
@@ -100,19 +134,47 @@ public class ImageFontText extends Image
     }
 
     /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
+     * dargestellt wird.
+     *
+     * @param content             Der Textinhalt, der in das Bild geschrieben
+     *                            werden soll.
+     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
+     *                            aufnehmen kann.
+     * @param alignment           Die Textausrichtung.
+     * @param color               Die Farbe, in der die schwarze Farbe der
+     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     *                            Beispielsweise verwandelt die Zahl {@code 3}
+     *                            ein Pixel in {@code 9} Pixel der Abmessung
+     *                            {@code 3x3}.
+     */
+    public void setContent(String content, int lineWidth,
+            TextAlignment alignment, Color color, int pixelMultiplication)
+    {
+        setImage(imageFont.render(content, lineWidth, alignment, color,
+                pixelMultiplication));
+        this.content = content;
+        this.lineWidth = lineWidth;
+        this.alignment = aligment;
+        this.color = color;
+        this.pixelMultiplication = pixelMultiplication;
+    }
+
+    /**
      * Setzt den <b>Textinhalt</b> neu.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      */
     public void setContent(String content)
     {
-        setImage(imageFont.render(content));
+        setContent(content, lineWidth, alignment, color, pixelMultiplication);
     }
 
     @Override
     public String toString()
     {
-        return String.format("ImageFontText[\n  %s,\n  %s]", imageFont,
+        return String.format("ImageFontText[\n  %s,\n  %s\n]", imageFont,
                 super.toString());
     }
 }
