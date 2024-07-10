@@ -74,7 +74,7 @@ public class ImageFontText extends Image
         this.imageFont = imageFont;
         this.content = content;
         this.lineWidth = lineWidth;
-        this.alignment = aligment;
+        this.alignment = alignment;
         this.color = color;
         this.pixelMultiplication = pixelMultiplication;
     }
@@ -156,7 +156,7 @@ public class ImageFontText extends Image
                 pixelMultiplication));
         this.content = content;
         this.lineWidth = lineWidth;
-        this.alignment = aligment;
+        this.alignment = alignment;
         this.color = color;
         this.pixelMultiplication = pixelMultiplication;
     }
