@@ -1356,12 +1356,11 @@ eigentlichen Spielfigur beginnen:
 
 ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
-
 {
 
     public StatefulPlayerCharacter()
     {
-        // Alle Bilder haben die Amessung 64x64px und deshalb die gleiche Breite
+        // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche Breite
         // und Höhe. Wir verwenden drei Meter.
         super(3, 3);
         setupPlayerStates();
