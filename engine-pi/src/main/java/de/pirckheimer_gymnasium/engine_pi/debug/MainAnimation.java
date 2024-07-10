@@ -65,19 +65,19 @@ public final class MainAnimation extends Scene implements FrameUpdateListener
      * Eine etwas dunklere Farbe, damit sich die kleinen Figuren vom Logo
      * abgrenzen.
      */
-    private Color rectangleItemColor = darkenColor("red");
+    private final Color rectangleItemColor = darkenColor("red");
 
     /**
      * Eine etwas dunklere Farbe, damit sich die kleinen Figuren vom Logo
      * abgrenzen.
      */
-    private Color circleItemColor = darkenColor("blue");
+    private final Color circleItemColor = darkenColor("blue");
 
     /**
      * Eine etwas dunklere Farbe, damit sich die kleinen Figuren vom Logo
      * abgrenzen.
      */
-    private Color triangleItemColor = darkenColor("yellow");
+    private final Color triangleItemColor = darkenColor("yellow");
 
     /**
      * Eine Liste mit 3 Dreiecken, 3 Rechtecken und 3 Kreisen.
@@ -189,7 +189,7 @@ public final class MainAnimation extends Scene implements FrameUpdateListener
                 dropDownItem(item);
             }
         }
-        // Den Kreis des i des Logos auf- und abbewegen, damit sich keine
+        // Den Kreis des i’s auf und ab bewegen, damit sich keine
         // kleinen Figuren zwischen dem P und dem i ansammeln. Somit endet die
         // Animation praktisch nie.
         if (logo.circleI.getY() >= 4)

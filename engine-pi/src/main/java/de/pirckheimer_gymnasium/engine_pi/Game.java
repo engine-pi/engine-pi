@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.MainAnimation;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultListener;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListeners;
@@ -249,7 +250,7 @@ public final class Game
     @API
     public static Scene start()
     {
-        return start(new Scene());
+        return start(new MainAnimation());
     }
 
     /**
@@ -999,5 +1000,10 @@ public final class Game
                 }
             });
         }
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start();
     }
 }
