@@ -29,7 +29,8 @@ import java.awt.event.KeyEvent;
 /**
  * @author Josef Friedrich
  */
-public class ImageFontTextSetContentDemo extends Scene implements KeyStrokeListener
+public class ImageFontTextSetContentDemo extends Scene
+        implements KeyStrokeListener
 {
     ImageFontText textField;
 
@@ -37,7 +38,7 @@ public class ImageFontTextSetContentDemo extends Scene implements KeyStrokeListe
     {
         ImageFont font = new ImageFont("pixel-text",
                 ImageFontCaseSensitivity.TO_UPPER);
-         textField = new ImageFontText(font,
+        textField = new ImageFontText(font,
                 "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 25,
                 TextAlignment.LEFT);
         add(textField);
@@ -46,13 +47,17 @@ public class ImageFontTextSetContentDemo extends Scene implements KeyStrokeListe
     }
 
     @Override
-    public void onKeyDown(KeyEvent event) {
-        switch(event.getKeyCode()) {
-            case KeyEvent.VK_1 -> textField.setContent("Short Text");
-            case KeyEvent.VK_2 -> textField.setContent("A long text, a long text, a long text, a long text, "+
-                    "a long text, a long text, a long text, " + "a long text, a long text, a long text, ");
-         }
-   }
+    public void onKeyDown(KeyEvent event)
+    {
+        switch (event.getKeyCode())
+        {
+        case KeyEvent.VK_1 -> textField.setContent("Short Text");
+        case KeyEvent.VK_2 -> textField.setContent(
+                "A long text, a long text, a long text, a long text, "
+                        + "a long text, a long text, a long text, "
+                        + "a long text, a long text, a long text, ");
+        }
+    }
 
     public static void main(String[] args)
     {
