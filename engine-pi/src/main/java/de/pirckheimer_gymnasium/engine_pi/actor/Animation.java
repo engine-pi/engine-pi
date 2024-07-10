@@ -42,8 +42,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.GifDecoder;
 
 /**
  * Eine Animation ist ein {@link Actor}-Objekt, das aus mehreren
- * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Frames</a> besteht.
- * Frames können auf verschiedene Arten aus Bilddateien eingeladen werden:
+ * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Einzelbildern</a>
+ * besteht. Einzelbilder können auf verschiedene Arten aus Bilddateien
+ * eingeladen werden:
+ *
  * <ul>
  * <li>Animierte GIFs</li>
  * <li><a href=
@@ -58,8 +60,14 @@ public class Animation extends Actor implements FrameUpdateListener
 {
     private final AnimationFrame[] frames;
 
+    /**
+     * Die Breite der Animation in Meter.
+     */
     private final double width;
 
+    /**
+     * Die Höhe der Animation in Meter.
+     */
     private final double height;
 
     private transient double currentTime;
@@ -121,25 +129,27 @@ public class Animation extends Actor implements FrameUpdateListener
     /**
      * Gibt die Breite der Animation in Metern aus.
      *
-     * @return Die Breite der Animation in Pixel.
+     * @return Die Breite der Animation in Meter.
+     *
      * @see #getHeight()
      */
     @API
     public double getWidth()
     {
-        return this.width;
+        return width;
     }
 
     /**
      * Gibt die Höhe der Animation in Metern aus.
      *
-     * @return Die Höhe der Animation in Pixel
+     * @return Die Höhe der Animation in Meter.
+     *
      * @see #getWidth()
      */
     @API
     public double getHeight()
     {
-        return this.height;
+        return height;
     }
 
     /**
@@ -193,6 +203,19 @@ public class Animation extends Actor implements FrameUpdateListener
                 height * pixelPerMeter, false, false);
     }
 
+    /**
+     * Erzeugt eine Animation durch Angabe eines Spritesheets.
+     *
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param filepath      Der Dateipfad des Spritesheets.
+     * @param x             Wie viele Pixel ein Sprite breit ist.
+     * @param y             Wie viele Pixel ein Sprite hoch ist.
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
             String filepath, int x, int y, double width, double height)
@@ -230,6 +253,19 @@ public class Animation extends Actor implements FrameUpdateListener
                 height);
     }
 
+    /**
+     * Erzeugt eine Animation durch Angabe der einzelnen Dateipfade der zu
+     * verwendenden Einzelbilder.
+     *
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
+     * @param filepaths     Die einzelnen Dateipfade der zu verwendenden
+     *                      Einzelbilder.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     */
     @API
     public static Animation createFromImages(double frameDuration, double width,
             double height, String... filepaths)
@@ -252,7 +288,10 @@ public class Animation extends Actor implements FrameUpdateListener
      * Lädt alle Bilddateien mit einem bestimmten Präfix in einem bestimmten
      * Verzeichnis in eine Animation.
      *
-     * @param frameDuration Die Dauer (ms), die ein Frame aktiv bleibt.
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
      * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden
      *                      Bilder liegen.
      * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle
@@ -297,6 +336,15 @@ public class Animation extends Actor implements FrameUpdateListener
                 allPaths.toArray(new String[0]));
     }
 
+    /**
+     * Erzeugt eine Animation aus einer animierter GIF-Datei.
+     *
+     * @param filepath Der Dateipfad der GIF-Datei.
+     * @param width    Die Breite der Animation in Meter.
+     * @param height   Die Höhe der Animation in Meter.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     */
     @API
     public static Animation createFromAnimatedGif(String filepath, double width,
             double height)
@@ -304,7 +352,8 @@ public class Animation extends Actor implements FrameUpdateListener
         GifDecoder gifDecoder = new GifDecoder();
         if (!FileUtil.exists(filepath))
         {
-            throw new RuntimeException("Filepath doesn’t exist: " + filepath);
+            throw new RuntimeException(
+                    "Der Dateipfad existiert nicht: " + filepath);
         }
         gifDecoder.read(filepath);
         int frameCount = gifDecoder.getFrameCount();

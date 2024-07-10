@@ -27,7 +27,7 @@ import java.awt.image.BufferedImage;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Beschreibt einen Frame einer
+ * Beschreibt ein Einzelbild einer
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Animation}.
  *
  * @author Niklas Keller
@@ -36,20 +36,21 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 public final class AnimationFrame
 {
     /**
-     * Das Bild, das zu diesem Frame gehört.
+     * Ein Bild, das sich bereits im Speicher befindet.
      */
     private final BufferedImage image;
 
     /**
-     * Die Dauer in Sekunden, die dieser Frame aktiv bleibt.
+     * Die Dauer in Sekunden, die dieses Einzelbild aktiv bleibt.
      */
     private double duration;
 
     /**
-     * Erstellt einen Frame.
+     * Erstellt ein Einzelbild.
      *
-     * @param image    Das Bild für den Frame.
-     * @param duration Die Dauer, die dieser Frame aktiv bleibt.
+     * @param image    Ein Bild, das sich bereits im Speicher befindet.
+     * @param duration Die Dauer in Sekunden, die dieses Einzelbild aktiv
+     *                 bleibt.
      */
     @Internal
     public AnimationFrame(BufferedImage image, double duration)
@@ -77,7 +78,8 @@ public final class AnimationFrame
     }
 
     /**
-     * Rendert den Frame (an der entsprechenden Position des Graphics Objekts)
+     * Rendert das Einzelbild (an der entsprechenden Position des Graphics
+     * Objekts)
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      */
