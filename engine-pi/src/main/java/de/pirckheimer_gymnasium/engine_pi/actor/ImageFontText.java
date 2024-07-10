@@ -108,4 +108,11 @@ public class ImageFontText extends Image
     {
         setImage(imageFont.render(content));
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("ImageFontText[\n  %s,\n  %s]", imageFont,
+                super.toString());
+    }
 }

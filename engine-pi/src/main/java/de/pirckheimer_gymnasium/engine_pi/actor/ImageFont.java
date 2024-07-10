@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
@@ -501,5 +502,39 @@ public class ImageFont
     {
         return render(content, getLineWidth(content), alignment, color,
                 pixelMultiplication);
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("ImageFont");
+        formatter.add("basePath", basePath);
+        if (glyphWidth != 8 || glyphHeight != 8)
+        {
+            formatter.add("glyphDimension",
+                    String.format("%sx%s", glyphWidth, glyphHeight));
+        }
+        if (!extension.equals("png"))
+        {
+            formatter.add("extension", extension);
+        }
+        if (pixelMultiplication > 1)
+        {
+            formatter.add("pixelMultiplication", pixelMultiplication);
+        }
+        if (color != null)
+        {
+            formatter.add("color", color);
+        }
+        if (caseSensitivity != null)
+        {
+            formatter.add("caseSensitivity", caseSensitivity);
+        }
+        if (lineWidth > 0)
+        {
+            formatter.add("lineWidth", lineWidth);
+        }
+        formatter.add("alignment", alignment);
+        return formatter.format();
     }
 }

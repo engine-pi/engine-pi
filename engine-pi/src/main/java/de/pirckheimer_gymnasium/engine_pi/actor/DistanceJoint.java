@@ -25,6 +25,9 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * Abstand zueinander zu bleiben. Man kann sich das wie einen masselosen,
  * starren Stab vorstellen.
  *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ *
  * @see Joint
  * @see PrismaticJoint
  * @see RevoluteJoint

@@ -25,6 +25,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 /**
  * Eine Federverbindung.
  *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ *
  * @see Joint
  * @see DistanceJoint
  * @see PrismaticJoint

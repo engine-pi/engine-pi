@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 /**
  * Eine Gruppe bestehend aus mehreren {@link Actor}-Objekten.
+ *
+ * @author Josef Friedrich
  */
 public class Group implements Actable
 {

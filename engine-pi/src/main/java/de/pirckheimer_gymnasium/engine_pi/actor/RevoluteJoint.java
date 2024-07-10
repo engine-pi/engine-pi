@@ -26,6 +26,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * Eine Gelenkverbindung zwingt zwei Körper dazu, einen gemeinsamen Punkt zu
  * teilen, während sie sich frei um diesen Punkt drehen können.
  *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ *
  * @see Joint
  * @see DistanceJoint
  * @see PrismaticJoint

@@ -7,6 +7,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
  * Zeichnet das Engine Pi Logo in eine Szene.
+ *
+ * @author Josef Friedrich
  */
 public class Logo implements ActorAdder
 {

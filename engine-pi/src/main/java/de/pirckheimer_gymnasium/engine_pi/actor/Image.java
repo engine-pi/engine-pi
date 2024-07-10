@@ -25,13 +25,13 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
@@ -379,27 +379,24 @@ public class Image extends Actor
     @Override
     public String toString()
     {
-        ArrayList<String> additional = new ArrayList<>();
+        ToStringFormatter formatter = new ToStringFormatter("Image");
+        formatter.add("width", width, "m");
+        formatter.add("height", height, "m");
+        formatter.add("imageWidth", image.getWidth(), "px");
+        formatter.add("imageHeight", image.getHeight(), "px");
         if (pixelPerMeter > 0)
         {
-            additional.add("pixelPerMeter=" + pixelPerMeter);
+            formatter.add("pixelPerMeter", pixelPerMeter);
         }
         if (isFlippedHorizontally())
         {
-            additional.add("flippedHorizontally=true");
+            formatter.add("flippedHorizontally");
         }
         if (isFlippedVertically())
         {
-            additional.add("flippedVertically=true");
+            formatter.add("flippedVertically");
         }
-        String fillIn = "";
-        if (!additional.isEmpty())
-        {
-            fillIn = ", " + String.join(", ", additional);
-        }
-        return String.format(
-                "Image [width=%sm, height=%sm, imageWidth=%spx, imageHeight=%spx%s]",
-                width, height, image.getWidth(), image.getHeight(), fillIn);
+        return formatter.format();
     }
 
     public static void main(String[] args)
@@ -418,6 +415,7 @@ public class Image extends Actor
                     case KeyEvent.VK_H ->
                         System.out.println(image.flipHorizontally());
                     }
+                    System.out.println(image);
                 }));
             }
         });

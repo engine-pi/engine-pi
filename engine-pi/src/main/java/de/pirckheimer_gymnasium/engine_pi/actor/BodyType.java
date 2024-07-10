@@ -74,6 +74,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  *
  * @see Actor#setBodyType(BodyType)
  * @see Actor#getBodyType()
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
  */
 @API
 public enum BodyType

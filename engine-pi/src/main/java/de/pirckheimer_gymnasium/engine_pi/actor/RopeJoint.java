@@ -24,6 +24,9 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * Eine Seilverbindung erzwingt einen maximalen Abstand zwischen zwei Punkten
  * auf zwei Körpern.
  *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ *
  * @see Joint
  * @see DistanceJoint
  * @see PrismaticJoint

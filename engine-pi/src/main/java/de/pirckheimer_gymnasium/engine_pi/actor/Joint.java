@@ -28,6 +28,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  *
  * @param <JointType> Der Typ der Verbindung in der Box2D-Repräsentation.
  *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ *
  * @see DistanceJoint
  * @see PrismaticJoint
  * @see RevoluteJoint

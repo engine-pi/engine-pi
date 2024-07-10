@@ -20,13 +20,10 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.util.Collections;
 import java.util.List;
@@ -49,6 +46,7 @@ import org.jbox2d.dynamics.joints.WeldJointDef;
 import de.pirckheimer_gymnasium.engine_pi.Bounds;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Layer;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
