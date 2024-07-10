@@ -17,6 +17,9 @@ import de.pirckheimer_gymnasium.engine_pi.sound.SinglePlayTrack;
 import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
+/**
+ * Demonstiert die Klasse <b>Jukebox</b>.
+ */
 public class JukeboxDemo extends Scene implements KeyStrokeListener
 {
     Jukebox jukebox;

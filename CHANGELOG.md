@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.24.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.24.0) - 2024-07-10
+
+<small>[Compare with v0.23.0](https://github.com/engine-pi/engine-pi/compare/v0.23.0...v0.24.0)</small>
+
+### Changed
+
+- Refactor the actor Image ([a2aa4b3f](a2aa4b3f66aef367a7b849a34e3d7d91e7434d14) by Josef Friedrich).
+
+### Fixed
+
+- Fix overload ImageContainer.get() not accepting a Color array  ([86960c0](https://github.com/engine-pi/engine-pi/commit/86960c0463bbc111914c7d3a69fb833344e1fadf) by Josef Friedrich).
 
 ## [v0.23.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.23.0) - 2024-07-09
 

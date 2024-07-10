@@ -1,5 +1,6 @@
 /**
- * Eine Ereignissteuerung, die über das Beobachter-Muster realisiert ist.
+ * Eine <b>Ereignissteuerung</b>, die über das <b>Beobachter-Entwurfsmuster</b>
+ * realisiert ist.
  *
  * <p>
  * In der Fachliteratur wird das <a href=

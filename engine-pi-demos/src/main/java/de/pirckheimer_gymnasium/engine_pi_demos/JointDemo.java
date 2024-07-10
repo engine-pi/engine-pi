@@ -32,7 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
- * Einfaches Programm zur Demonstration von Joints in der Engine.
+ * Demonstriert die <b>Verbindungen</b> (Joints) in der Engine.
  *
  * @version 12.04.2017
  *
