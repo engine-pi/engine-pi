@@ -1,6 +1,6 @@
 /**
- * Klassen zur Animation von Figuren durch Berechnung von Einzelbildern zwischen
- * zwei Schlüsselbildern.
+ * Klassen zur <b>Animation von Figuren</b> durch Berechnung von
+ * <b>Einzelbildern zwischen zwei Schlüsselbildern</b>.
  *
  * <p>
  * Unter Tweening oder lang Inbetweening (von engl. in between [zwischen,
