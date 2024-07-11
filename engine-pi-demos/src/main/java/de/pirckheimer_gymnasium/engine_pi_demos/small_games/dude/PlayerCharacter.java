@@ -151,7 +151,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             setState(PlayerState.JumpingUp);
         }
         else if (!didDoubleJump && gameData.getMana() >= DOUBLE_JUMP_COST
-                && !getCurrentState().equals("smashing"))
+                && !getState().equals("smashing"))
         {
             // Double Jump!
             didDoubleJump = true;
@@ -204,7 +204,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
 
     public void smash()
     {
-        PlayerState currentState = getCurrentState();
+        PlayerState currentState = getState();
         if (currentState == PlayerState.Falling
                 || currentState == PlayerState.JumpingUp
                 || currentState == PlayerState.Midair)
@@ -258,7 +258,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             });
             getLayer().add(particle);
         }
-        switch (getCurrentState())
+        switch (getState())
         {
         case JumpingUp:
             if (velocity.getY() < 0)
@@ -409,8 +409,8 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 collisionEvent.ignoreCollision();
             }
         }
-        boolean falling = getCurrentState() == PlayerState.Falling;
-        boolean smashing = getCurrentState() == PlayerState.Smashing;
+        boolean falling = getState() == PlayerState.Falling;
+        boolean smashing = getState() == PlayerState.Smashing;
         if ((falling || smashing) && isGrounded())
         {
             setState(PlayerState.Landing);

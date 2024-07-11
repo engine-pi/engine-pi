@@ -67,13 +67,25 @@ public class StatefulAnimation<State> extends Actor
      */
     private final Map<State, State> stateTransitions = new ConcurrentHashMap<>();
 
-    private State currentState = null;
+    /**
+     * Der aktuelle Zustand.
+     */
+    private State state = null;
 
-    private AnimationFrame[] currentAnimation = null;
+    /**
+     * Die aktuelle Animation.
+     */
+    private AnimationFrame[] animation = null;
 
-    private double currentTime = 0;
+    /**
+     * Die aktuelle Zeit.
+     */
+    private double time = 0;
 
-    private int currentIndex = 0;
+    /**
+     * Der aktelle Index
+     */
+    private int index = 0;
 
     /**
      * Die Breite in Meter.
@@ -91,16 +103,28 @@ public class StatefulAnimation<State> extends Actor
 
     private boolean animationPaused = false;
 
+    private double frameDuration;
+
     /**
-     * @param width Die Breite in Meter der animierten Figur.
+     * @param width  Die Breite in Meter der animierten Figur.
      * @param height Die Höhe in Meter der animierten Figur.
      */
-    public StatefulAnimation(double width, double height)
+    public StatefulAnimation(double width, double height, double frameDuration)
     {
         super(() -> FixtureBuilder.rectangle(width, height));
         this.width = width;
         this.height = height;
+        this.frameDuration = frameDuration;
         addFrameUpdateListener(this::internalOnFrameUpdate);
+    }
+
+    /**
+     * @param width  Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
+     */
+    public StatefulAnimation(double width, double height)
+    {
+        this(width, height, -1);
     }
 
     /**
@@ -151,10 +175,10 @@ public class StatefulAnimation<State> extends Actor
         states.put(state, frames);
         // Add default loop transition rule for state
         stateTransitions.put(state, state);
-        if (currentState == null)
+        if (this.state == null)
         {
-            currentState = state;
-            currentAnimation = frames;
+            this.state = state;
+            animation = frames;
         }
     }
 
@@ -174,10 +198,10 @@ public class StatefulAnimation<State> extends Actor
             throw new RuntimeException(
                     "Zustand nicht nicht vorhanden: " + state);
         }
-        this.currentIndex = 0;
-        this.currentState = state;
-        this.currentTime = 0;
-        this.currentAnimation = states.get(state);
+        this.index = 0;
+        this.state = state;
+        this.time = 0;
+        this.animation = states.get(state);
     }
 
     /**
@@ -192,7 +216,7 @@ public class StatefulAnimation<State> extends Actor
     @API
     public void changeState(State state)
     {
-        if (!state.equals(currentState))
+        if (!state.equals(this.state))
         {
             setState(state);
         }
@@ -224,9 +248,9 @@ public class StatefulAnimation<State> extends Actor
      *         keine Zustände hat.
      */
     @API
-    public State getCurrentState()
+    public State getState()
     {
-        return currentState;
+        return state;
     }
 
     /**
@@ -311,7 +335,7 @@ public class StatefulAnimation<State> extends Actor
     @API
     public boolean isAnimationPaused()
     {
-        return this.animationPaused;
+        return animationPaused;
     }
 
     /**
@@ -378,31 +402,61 @@ public class StatefulAnimation<State> extends Actor
     @Internal
     private void internalOnFrameUpdate(double frameDuration)
     {
-        if (currentAnimation == null || currentAnimation.length == 0
-                || animationPaused)
+        if (animation == null || animation.length == 0 || animationPaused)
         {
             return; // we don't have a state yet - or the animation is paused
         }
-        currentTime += frameDuration;
-        AnimationFrame currentFrame = currentAnimation[currentIndex];
-        while (this.currentTime > currentFrame.getDuration())
+        time += frameDuration;
+        AnimationFrame currentFrame = animation[index];
+        while (time > currentFrame.getDuration())
         {
-            this.currentTime -= currentFrame.getDuration();
-            if (this.currentIndex + 1 == this.currentAnimation.length)
+            time -= currentFrame.getDuration();
+            if (index + 1 == animation.length)
             {
                 // Animation cycle has ended. -> Transition to next state
-                currentIndex = 0;
-                State nextState = stateTransitions.get(currentState);
+                index = 0;
+                State nextState = stateTransitions.get(state);
                 AnimationFrame[] nextAnimation = states.get(nextState);
-                currentState = nextState;
-                currentAnimation = nextAnimation;
+                state = nextState;
+                animation = nextAnimation;
             }
             else
             {
                 // Animation cycle has not ended -> simply move on to next frame
-                this.currentIndex++;
+                index++;
             }
         }
+    }
+
+    public void addFromSpritesheet(State state, String filepath, int x, int y)
+    {
+        addState(state, Animation.createFromSpritesheet(frameDuration, filepath,
+                x, y, width, height));
+    }
+
+    public void addAnimationFromImages(State state, double frameDuration,
+            String... filePaths)
+    {
+        addState(state, Animation.createFromImages(frameDuration, width, height,
+                filePaths));
+    }
+
+    public void addAnimationFromImages(State state, String... filePaths)
+    {
+        addAnimationFromImages(state, frameDuration, filePaths);
+    }
+
+    public void addFromImagesPrefix(State state, String directoryPath,
+            String prefix)
+    {
+        addState(state, Animation.createFromImagesPrefix(frameDuration, width,
+                height, directoryPath, prefix));
+    }
+
+    public void addFromAnimatedGif(State state, String filepath)
+    {
+        addState(state,
+                Animation.createFromAnimatedGif(filepath, width, height));
     }
 
     /**
@@ -433,11 +487,11 @@ public class StatefulAnimation<State> extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        if (currentAnimation == null || currentAnimation.length == 0)
+        if (animation == null || animation.length == 0)
         {
             return; // we don't have a state yet
         }
-        currentAnimation[currentIndex].render(g, width * pixelPerMeter,
+        animation[index].render(g, width * pixelPerMeter,
                 height * pixelPerMeter, flipHorizontal, flipVertical);
     }
 }

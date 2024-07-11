@@ -91,7 +91,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private void attemptJump()
     {
-        PlayerState state = getCurrentState();
+        PlayerState state = getState();
         if (state == PlayerState.IDLE || state == PlayerState.WALKING
                 || state == PlayerState.RUNNING)
         {
@@ -107,7 +107,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     public void onFrameUpdate(double dT)
     {
         Vector velocity = getVelocity();
-        PlayerState state = getCurrentState();
+        PlayerState state = getState();
         if (velocity.getY() < -THRESHOLD)
         {
             switch (state)
