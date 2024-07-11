@@ -196,11 +196,7 @@ public class ImageFontText extends Image
      */
     public int getPixelMultiplication()
     {
-        if (pixelMultiplication > 1)
-        {
-            return pixelMultiplication;
-        }
-        return Game.getPixelMultiplication();
+        return Math.max(pixelMultiplication, 1);
     }
 
     @Override

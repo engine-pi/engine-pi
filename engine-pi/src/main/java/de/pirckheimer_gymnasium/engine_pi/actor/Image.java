@@ -218,7 +218,6 @@ public class Image extends Actor
      *
      * @param width  Die neue Breite des Bilds in Meter.
      * @param height Die neue Höhe des Bild in Meter.
-     *
      * @see #setImageSize(double)
      */
     public void setImageSize(double width, double height)
@@ -235,7 +234,6 @@ public class Image extends Actor
      * Eigenschaften des Bildes.
      *
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
      * @see #setImageSize(double, double)
      */
     public void setImageSize(double pixelPerMeter)
@@ -272,7 +270,7 @@ public class Image extends Actor
      * horizontaler Achse gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
-     *         Sonst <code>false</code>.
+     * Sonst <code>false</code>.
      */
     @API
     public boolean isFlippedVertically()
@@ -285,8 +283,7 @@ public class Image extends Actor
      * gespiegelt.
      *
      * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *         wenn es im Originalzustand angezeigt wird.
-     *
+     * wenn es im Originalzustand angezeigt wird.
      * @since 0.24.0
      */
     public boolean flipVertically()
@@ -300,7 +297,6 @@ public class Image extends Actor
      *
      * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
      *                          werden soll.
-     *
      * @see #setFlippedVertically(boolean)
      */
     @API
@@ -314,7 +310,7 @@ public class Image extends Actor
      * vertikalen Achse gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
-     *         ist. Sonst <code>false</code>.
+     * ist. Sonst <code>false</code>.
      */
     @API
     public boolean isFlippedHorizontally()
@@ -327,8 +323,7 @@ public class Image extends Actor
      * gespiegelt.
      *
      * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *         wenn es im Originalzustand angezeigt wird.
-     *
+     * wenn es im Originalzustand angezeigt wird.
      * @since 0.24.0
      */
     public boolean flipHorizontally()
@@ -344,7 +339,6 @@ public class Image extends Actor
      *
      * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
      *                            werden soll.
-     *
      * @see #setFlippedVertically(boolean)
      */
     @API
@@ -410,10 +404,8 @@ public class Image extends Actor
                 addKeyStrokeListener((event -> {
                     switch (event.getKeyCode())
                     {
-                    case KeyEvent.VK_V ->
-                        System.out.println(image.flipVertically());
-                    case KeyEvent.VK_H ->
-                        System.out.println(image.flipHorizontally());
+                        case KeyEvent.VK_V -> System.out.println(image.flipVertically());
+                        case KeyEvent.VK_H -> System.out.println(image.flipHorizontally());
                     }
                     System.out.println(image);
                 }));
