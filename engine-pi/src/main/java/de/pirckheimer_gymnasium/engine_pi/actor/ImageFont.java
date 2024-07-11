@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
@@ -23,14 +24,13 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
  * Jedes Bild entspricht einem Buchstaben oder Zeichen. Die Bilder müssen alle
  * die gleiche Abmessung aufweisen.
  * </p>
- *
+ * <p>
  * Eine Alternative wäre die <a href=
  * "https://javadoc.io/doc/com.badlogicgames.gdx/gdx/1.4.0/com/badlogic/gdx/graphics/g2d/BitmapFont.html">BitmapFont-Klasse</a>
  * der Game-Engine libgdx.
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
- *
  * @since 0.23.0
  */
 public class ImageFont
@@ -58,7 +58,8 @@ public class ImageFont
 
     /**
      * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise verwandelt
-     * die Zahl 3 ein Pixel in 9 Pixel der Abmessung 3x3.
+     * die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der Abmessung
+     * {@code 3x3}.
      */
     private int pixelMultiplication = 1;
 
@@ -151,7 +152,6 @@ public class ImageFont
      *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
      *                 Buchstaben liegen.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -165,7 +165,6 @@ public class ImageFont
      * Setzt die Breite der Buchstabenbilder in Pixel.
      *
      * @param glyphWidth Die Breite der Buchstabenbilder in Pixel.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -189,7 +188,6 @@ public class ImageFont
      * Setzt die Höhe der Buchstabenbilder in Pixel.
      *
      * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -205,7 +203,6 @@ public class ImageFont
      *
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *              umgefärbt werden soll.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -231,7 +228,6 @@ public class ImageFont
      * Setzt die Dateierweiterung der Buchstabenbilder.
      *
      * @param extension Die Dateierweiterung der Buchstabenbilder.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -245,9 +241,9 @@ public class ImageFont
      * Setzt, wie oft ein Pixel vervielfältigt werden soll.
      *
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
-     *                            in 9 Pixel der Abmessung 3x3.
-     *
+     *                            Beispielsweise verwandelt die Zahl {@code 3}
+     *                            ein Pixel in {@code 9 Pixel} der Abmessung
+     *                            {@code 3x3}.
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -261,11 +257,18 @@ public class ImageFont
      * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
      *
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-     *         verwandelt die Zahl 3 ein Pixel in 9 Pixel der Abmessung 3x3.
+     *         verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
+     *         Abmessung {@code 3x3}.
+     *
+     * @see Game#getPixelMultiplication
      */
     public int getPixelMultiplication()
     {
-        return pixelMultiplication;
+        if (pixelMultiplication > 1)
+        {
+            return pixelMultiplication;
+        }
+        return Game.getPixelMultiplication();
     }
 
     /**
@@ -446,9 +449,9 @@ public class ImageFont
      * @param color               Die Farbe, in der die schwarze Farbe der
      *                            Ausgangsbilder umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl 3 ein Pixel
-     *                            in 9 Pixel der Abmessung 3x3.
-     *
+     *                            Beispielsweise verwandelt die Zahl {@code 3}
+     *                            ein Pixel in {@code 9 Pixel} der Abmessung
+     *                            {@code 3x3}.
      * @return Ein Bild.
      */
     public BufferedImage render(String content, int lineWidth,
@@ -495,7 +498,6 @@ public class ImageFont
      * Setzt den gegebenen Textinhalt in ein Bild.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     *
      * @return Ein Bild.
      */
     public BufferedImage render(String content)

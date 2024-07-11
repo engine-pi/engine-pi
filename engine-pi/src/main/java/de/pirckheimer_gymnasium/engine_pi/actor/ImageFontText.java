@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.Color;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
@@ -168,7 +169,38 @@ public class ImageFontText extends Image
      */
     public void setContent(String content)
     {
-        setContent(content, lineWidth, alignment, color, pixelMultiplication);
+        setContent(content, lineWidth, alignment, color,
+                getPixelMultiplication());
+    }
+
+    /**
+     * Gibt den Textinhalt, der in das Bild geschrieben werden soll, zurück.
+     *
+     * @return Der Textinhalt, der in das Bild geschrieben werden soll.
+     *
+     * @since 0.25.0
+     */
+    public String getContent()
+    {
+        return content;
+    }
+
+    /**
+     * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
+     *
+     * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
+     *         verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
+     *         Abmessung {@code 3x3}.
+     *
+     * @since 0.25.0
+     */
+    public int getPixelMultiplication()
+    {
+        if (pixelMultiplication > 1)
+        {
+            return pixelMultiplication;
+        }
+        return Game.getPixelMultiplication();
     }
 
     @Override
