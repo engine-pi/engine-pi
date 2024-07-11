@@ -67,9 +67,9 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
     public BufferedImage get(String name)
     {
         BufferedImage image = super.get(name);
-        if (Game.PIXEL_MULTIPLICATION > 1)
+        if (Game.getPixelMultiplication() > 1)
         {
-            image = ImageUtil.scale(image, Game.PIXEL_MULTIPLICATION);
+            image = ImageUtil.multiplyPixel(image, Game.getPixelMultiplication());
         }
         return image;
     }
@@ -97,7 +97,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         BufferedImage image = get(name);
         if (pixelMultiplication > 1)
         {
-            image = ImageUtil.scale(image, pixelMultiplication);
+            image = ImageUtil.multiplyPixel(image, pixelMultiplication);
         }
         if (fromColors != null && toColors != null)
         {
@@ -140,6 +140,6 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, Game.PIXEL_MULTIPLICATION, fromColors, toColors);
+        return get(name, Game.getPixelMultiplication(), fromColors, toColors);
     }
 }

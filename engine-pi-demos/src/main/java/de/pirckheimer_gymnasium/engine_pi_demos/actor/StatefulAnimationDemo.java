@@ -33,8 +33,8 @@ class Character extends StatefulAnimation<State>
         super(1, 1, 0.1);
         for (State state : State.values())
         {
-            addFromSpritesheet(state, 32 * Game.PIXEL_MULTIPLICATION,
-                    32 * Game.PIXEL_MULTIPLICATION, state.getImagePath());
+            addFromSpritesheet(state, 32,
+                    32, state.getImagePath());
         }
     }
 }
@@ -45,10 +45,10 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public StatefulAnimationDemo()
     {
-        Game.PIXEL_MULTIPLICATION = 8;
-        getCamera().setMeter(Game.PIXEL_MULTIPLICATION * 32);
+        Game.setPixelMultiplication(8);
         character = new Character();
         getCamera().setFocus(character);
+        getCamera().setMeter(32);
         character.setState(State.IDLE);
         add(character);
     }

@@ -29,6 +29,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.animation.AnimationFrame;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
@@ -292,6 +293,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * @return Eine mit Einzelbildern bestückte Animation.
      *
      * @since 0.25.0
+     *
+     * @see Game#getPixelMultiplication()
      */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
@@ -300,8 +303,8 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         BufferedImage image = Resources.IMAGES.get(filePath);
         return createFromSpritesheet(frameDuration, image,
-                image.getWidth() / spriteWidth,
-                image.getHeight() / spriteHeight, width, height);
+                image.getWidth() / (spriteWidth * Game.getPixelMultiplication()),
+                image.getHeight() / (spriteHeight * Game.getPixelMultiplication()), width, height);
     }
 
     /**

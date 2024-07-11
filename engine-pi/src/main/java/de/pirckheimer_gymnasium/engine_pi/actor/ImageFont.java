@@ -486,7 +486,7 @@ public class ImageFont
         }
         if (pixelMultiplication > 1)
         {
-            image = ImageUtil.scale(image, pixelMultiplication);
+            image = ImageUtil.multiplyPixel(image, pixelMultiplication);
         }
         return image;
     }

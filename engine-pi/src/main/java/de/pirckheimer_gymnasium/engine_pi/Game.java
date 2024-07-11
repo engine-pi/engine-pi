@@ -113,7 +113,7 @@ public final class Game
      */
     private static int height;
 
-    public static int PIXEL_MULTIPLICATION = 1;
+    private static int pixelMultiplication = 1;
 
     /**
      * Eigentliches Fenster des Spiels.
@@ -163,6 +163,47 @@ public final class Game
     public static void setTitle(String title)
     {
         frame.setTitle(title);
+    }
+
+    /**
+     * Setzt den Wert der Pixelvervielfältigung.
+     *
+     * @param pixelMultiplication Der Wert der Pixelvervielfältigung.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     *
+     * @since 0.25.0
+     */
+    public static void setPixelMultiplication(int pixelMultiplication) {
+        Game.pixelMultiplication = pixelMultiplication;
+    }
+
+    /**
+     * Gibt den Wert der Pixelvervielfältigung zurück.
+     *
+     * @return Der Wert der Pixelvervielfältigung.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     * @see Camera#getMeter()
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Animation#createFromSpritesheet
+     *
+     * @since 0.25.0
+     */
+    public static int getPixelMultiplication() {
+        return pixelMultiplication;
+    }
+
+    /**
+     * Gibt wahr zurück, wenn die Pixelvervielfältigung aktiviert ist.
+     *
+     * @return Wahr, wenn die Pixelvervielfältigung aktiviert ist.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     *
+     * @since 0.25.0
+     */
+    public static boolean isPixelMultiplication() {
+        return pixelMultiplication > 1;
     }
 
     /**

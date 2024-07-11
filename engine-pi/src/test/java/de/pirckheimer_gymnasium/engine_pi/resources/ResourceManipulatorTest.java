@@ -39,7 +39,7 @@ public class ResourceManipulatorTest
     public void testManipulation()
     {
         container.addManipulator((resourceName, image) -> {
-            return ImageUtil.scale(image, 2);
+            return ImageUtil.multiplyPixel(image, 2);
         });
         var image = container.get(resourceName);
         assertEquals(128, image.getWidth());

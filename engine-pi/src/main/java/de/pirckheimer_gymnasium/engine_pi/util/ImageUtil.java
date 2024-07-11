@@ -253,7 +253,7 @@ public class ImageUtil
      *
      * @return Das vergrößerte Bild.
      */
-    public static BufferedImage scale(BufferedImage image, int factor)
+    public static BufferedImage multiplyPixel(BufferedImage image, int factor)
     {
         BufferedImage after = new BufferedImage(image.getWidth() * factor,
                 image.getHeight() * factor, BufferedImage.TYPE_INT_ARGB);
