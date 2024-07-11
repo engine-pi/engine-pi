@@ -33,8 +33,7 @@ class Character extends StatefulAnimation<State>
         super(1, 1, 0.1);
         for (State state : State.values())
         {
-            addFromSpritesheet(state, 32,
-                    32, state.getImagePath());
+            addFromSpritesheet(state, 32, 32, state.getImagePath());
         }
     }
 }

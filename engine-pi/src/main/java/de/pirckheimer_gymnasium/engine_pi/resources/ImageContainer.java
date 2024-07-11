@@ -69,7 +69,8 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         BufferedImage image = super.get(name);
         if (Game.getPixelMultiplication() > 1)
         {
-            image = ImageUtil.multiplyPixel(image, Game.getPixelMultiplication());
+            image = ImageUtil.multiplyPixel(image,
+                    Game.getPixelMultiplication());
         }
         return image;
     }

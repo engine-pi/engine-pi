@@ -285,8 +285,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
      *                      bleiben.
      * @param filePath      Der Dateipfad des Spritesheets.
-     * @param spriteWidth
-     * @param spriteHeight
+     * @param spriteWidth   Die Breite des Sprites in Pixel.
+     * @param spriteHeight  Die Höhe des Sprites in Pixel.
      * @param width         Die Breite der Animation in Meter.
      * @param height        Die Höhe der Animation in Meter.
      *
@@ -303,8 +303,11 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         BufferedImage image = Resources.IMAGES.get(filePath);
         return createFromSpritesheet(frameDuration, image,
-                image.getWidth() / (spriteWidth * Game.getPixelMultiplication()),
-                image.getHeight() / (spriteHeight * Game.getPixelMultiplication()), width, height);
+                image.getWidth()
+                        / (spriteWidth * Game.getPixelMultiplication()),
+                image.getHeight()
+                        / (spriteHeight * Game.getPixelMultiplication()),
+                width, height);
     }
 
     /**

@@ -207,7 +207,7 @@ public final class Camera
      * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
      * <code>30</code> Pixel. Große Werte zoomen rein, kleine Werte raus.
      * </p>
-
+     *
      * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
      *
      *
@@ -226,9 +226,10 @@ public final class Camera
     /**
      * Gibt die Anzahl an Pixel aus, die einem Meter entsprechen.
      *
-     *      <p>
-     *       Ist die Pixelvervielfältigung aktiviert, wird der Faktor der
-     *       Pixelvervielfältigung mit der Pixelanzahl multipliziert</p>
+     * <p>
+     * Ist die Pixelvervielfältigung aktiviert, wird der Faktor der
+     * Pixelvervielfältigung mit der Pixelanzahl multipliziert
+     * </p>
      *
      *
      * @return Die Anzahl an Pixel aus, die einem Meter entsprechen.
@@ -238,7 +239,8 @@ public final class Camera
     @API
     public double getMeter()
     {
-        if (Game.isPixelMultiplication()) {
+        if (Game.isPixelMultiplication())
+        {
             return meter * Game.getPixelMultiplication();
         }
         return meter;

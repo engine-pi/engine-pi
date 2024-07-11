@@ -170,11 +170,13 @@ public final class Game
      *
      * @param pixelMultiplication Der Wert der Pixelvervielfältigung.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
+     *      int)
      *
      * @since 0.25.0
      */
-    public static void setPixelMultiplication(int pixelMultiplication) {
+    public static void setPixelMultiplication(int pixelMultiplication)
+    {
         Game.pixelMultiplication = pixelMultiplication;
     }
 
@@ -183,13 +185,15 @@ public final class Game
      *
      * @return Der Wert der Pixelvervielfältigung.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
+     *      int)
      * @see Camera#getMeter()
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Animation#createFromSpritesheet
      *
      * @since 0.25.0
      */
-    public static int getPixelMultiplication() {
+    public static int getPixelMultiplication()
+    {
         return pixelMultiplication;
     }
 
@@ -198,11 +202,13 @@ public final class Game
      *
      * @return Wahr, wenn die Pixelvervielfältigung aktiviert ist.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
+     *      int)
      *
      * @since 0.25.0
      */
-    public static boolean isPixelMultiplication() {
+    public static boolean isPixelMultiplication()
+    {
         return pixelMultiplication > 1;
     }
 

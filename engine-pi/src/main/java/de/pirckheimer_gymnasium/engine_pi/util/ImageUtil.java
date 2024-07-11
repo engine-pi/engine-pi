@@ -46,7 +46,8 @@ import javax.imageio.ImageIO;
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
  *
- * https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java
+ * <a href=
+ * "https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java">LITIENGINE</a>
  */
 public class ImageUtil
 {
@@ -58,9 +59,10 @@ public class ImageUtil
     }
 
     /**
-     * Erzeugt eine neue {@code BufferedImage} Instanze des Übergabeparameters.
+     * Erzeugt eine neue {@code BufferedImage} Instanz des Übergabeparameters.
      *
-     * https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L390-L401
+     * <a href=
+     * "https://github.com/gurkenlabs/litiengine/blob/e9fda2a5bbd3c294538245bfc013e8b17c27797b/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java#L390-L401">LITIENGINE</a>
      *
      * @param image Das zu kopierende Bild.
      *
@@ -191,7 +193,7 @@ public class ImageUtil
             from[index] = c.getKey();
             to[index] = c.getValue();
             index++;
-        } ;
+        }
         return replaceColors(bufferedImage, from, to);
     }
 
@@ -277,19 +279,19 @@ public class ImageUtil
     public static void write(BufferedImage image, String filePath)
     {
         String extension = FileUtil.getExtension(filePath);
-        String formatname = null;
+        String formatName;
         switch (extension)
         {
         case "png":
-            formatname = "png";
+            formatName = "png";
             break;
 
         case "gif":
-            formatname = "gif";
+            formatName = "gif";
             break;
 
         case "jpg":
-            formatname = "jpg";
+            formatName = "jpg";
             break;
 
         default:
@@ -299,7 +301,7 @@ public class ImageUtil
         }
         try
         {
-            ImageIO.write(image, formatname,
+            ImageIO.write(image, formatName,
                     new File(FileUtil.normalizePath(filePath)));
         }
         catch (IOException e)
