@@ -113,6 +113,8 @@ public final class Game
      */
     private static int height;
 
+    public static int PIXEL_MULTIPLICATION = 1;
+
     /**
      * Eigentliches Fenster des Spiels.
      */

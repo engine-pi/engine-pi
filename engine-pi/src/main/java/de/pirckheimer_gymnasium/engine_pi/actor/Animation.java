@@ -208,23 +208,26 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
      *                      bleiben.
-     * @param filepath      Der Dateipfad des Spritesheets.
-     * @param x             Wie viele Pixel ein Sprite breit ist.
-     * @param y             Wie viele Pixel ein Sprite hoch ist.
+     * @param image         Die bereits in den Speicher geladene Bilddatei des
+     *                      Spritesheets.
+     * @param x             Die Anzahl an Sprites in x-Richtung.
+     * @param y             Die Anzahl an Sprites in y-Richtung.
      * @param width         Die Breite der Animation in Meter.
      * @param height        Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
+     *
+     *
+     * @since 0.25.0
      */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
-            String filepath, int x, int y, double width, double height)
+            BufferedImage image, int x, int y, double width, double height)
     {
         if (frameDuration <= 0)
         {
             throw new RuntimeException("Frame-Länge muss größer als 0 sein");
         }
-        BufferedImage image = Resources.IMAGES.get(filepath);
         if (image.getWidth() % x != 0)
         {
             throw new RuntimeException(String.format(
@@ -254,6 +257,54 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
+     * Erzeugt eine Animation durch Angabe eines Spritesheets.
+     *
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param filePath      Der Dateipfad des Spritesheets.
+     * @param x             Die Anzahl an Sprites in x-Richtung.
+     * @param y             Die Anzahl an Sprites in y-Richtung.
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     *
+     */
+    @API
+    public static Animation createFromSpritesheet(double frameDuration,
+            String filePath, int x, int y, double width, double height)
+    {
+        return createFromSpritesheet(frameDuration,
+                Resources.IMAGES.get(filePath), x, y, width, height);
+    }
+
+    /**
+     * Erzeugt eine Animation durch Angabe eines Spritesheets.
+     *
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param filePath      Der Dateipfad des Spritesheets.
+     * @param spriteWidth
+     * @param spriteHeight
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     *
+     * @since 0.25.0
+     */
+    @API
+    public static Animation createFromSpritesheet(double frameDuration,
+            String filePath, double width, double height, int spriteWidth,
+            int spriteHeight)
+    {
+        BufferedImage image = Resources.IMAGES.get(filePath);
+        return createFromSpritesheet(frameDuration, image,
+                image.getWidth() / spriteWidth,
+                image.getHeight() / spriteHeight, width, height);
+    }
+
+    /**
      * Erzeugt eine Animation durch Angabe der einzelnen Dateipfade der zu
      * verwendenden Einzelbilder.
      *
@@ -261,21 +312,21 @@ public class Animation extends Actor implements FrameUpdateListener
      *                      bleiben.
      * @param width         Die Breite der Animation in Meter.
      * @param height        Die Höhe der Animation in Meter.
-     * @param filepaths     Die einzelnen Dateipfade der zu verwendenden
+     * @param filePaths     Die einzelnen Dateipfade der zu verwendenden
      *                      Einzelbilder.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      */
     @API
     public static Animation createFromImages(double frameDuration, double width,
-            double height, String... filepaths)
+            double height, String... filePaths)
     {
         if (frameDuration <= 0)
         {
             throw new RuntimeException("Frame-Länge muss größer als 1 sein.");
         }
         Collection<AnimationFrame> frames = new LinkedList<>();
-        for (String filepath : filepaths)
+        for (String filepath : filePaths)
         {
             frames.add(new AnimationFrame(Resources.IMAGES.get(filepath),
                     frameDuration));

@@ -32,6 +32,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
@@ -60,6 +61,17 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
             return null;
         }
         return ImageUtil.toCompatibleImage(img);
+    }
+
+    @Override
+    public BufferedImage get(String name)
+    {
+        BufferedImage image = super.get(name);
+        if (Game.PIXEL_MULTIPLICATION > 1)
+        {
+            image = ImageUtil.scale(image, Game.PIXEL_MULTIPLICATION);
+        }
+        return image;
     }
 
     /**
@@ -128,6 +140,6 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, 1, fromColors, toColors);
+        return get(name, Game.PIXEL_MULTIPLICATION, fromColors, toColors);
     }
 }

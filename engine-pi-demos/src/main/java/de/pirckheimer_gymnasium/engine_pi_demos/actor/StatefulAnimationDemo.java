@@ -33,7 +33,8 @@ class Character extends StatefulAnimation<State>
         super(1, 1, 0.1);
         for (State state : State.values())
         {
-            addFromSpritesheet(state, state.getImagePath(), 32, 32);
+            addFromSpritesheet(state, 32 * Game.PIXEL_MULTIPLICATION,
+                    32 * Game.PIXEL_MULTIPLICATION, state.getImagePath());
         }
     }
 }
@@ -44,8 +45,11 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public StatefulAnimationDemo()
     {
+        Game.PIXEL_MULTIPLICATION = 8;
+        getCamera().setMeter(Game.PIXEL_MULTIPLICATION * 32);
         character = new Character();
-        character.setState(State.JUMP);
+        getCamera().setFocus(character);
+        character.setState(State.IDLE);
         add(character);
     }
 
@@ -54,7 +58,10 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_LEFT -> System.out.println();
+        case KeyEvent.VK_LEFT -> character.setState(State.JUMP);
+        case KeyEvent.VK_RIGHT -> character.setState(State.HIT);
+        case KeyEvent.VK_UP -> character.setState(State.RUN);
+        case KeyEvent.VK_DOWN -> character.setState(State.DOUBLE_JUMP);
         }
     }
 
