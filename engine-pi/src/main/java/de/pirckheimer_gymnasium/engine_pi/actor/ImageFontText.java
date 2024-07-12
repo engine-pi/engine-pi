@@ -2,7 +2,6 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
