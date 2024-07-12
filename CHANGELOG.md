@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.25.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.25.0) - 2024-07-12
+
+<small>[Compare with v0.24.0](https://github.com/engine-pi/engine-pi/compare/v0.24.0...v0.25.0)</small>
+
+### Added
+
+- Add the eclipse formatter to the resources ([923d11e](https://github.com/engine-pi/engine-pi/commit/923d11e0b396d24e31cf93df8d4311b3c2fb1d9d) by Josef Friedrich).
+- Start main animation with Game.start(); ([3051bd0d](3051bd0d18b2d34fdf889bdd7d28a42615abc42d) by Josef Friedrich).
+- Implement global pixel multiplication (preview feature) ([a0195152](a019515235380a05c0e04a874017574c954b9b5b) by Josef Friedrich).
+
+### Fixed
+
+- Fix ImageFontText ([979cc51](https://github.com/engine-pi/engine-pi/commit/979cc5136b0752ae766dd781b81b8ff16dfa194f) by Josef Friedrich).
+
 ## [v0.24.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.24.0) - 2024-07-10
 
 <small>[Compare with v0.23.0](https://github.com/engine-pi/engine-pi/compare/v0.23.0...v0.24.0)</small>
