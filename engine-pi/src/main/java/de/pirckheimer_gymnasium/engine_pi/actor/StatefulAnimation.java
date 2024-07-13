@@ -55,7 +55,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 public class StatefulAnimation<State> extends Actor
 {
     /**
-     * Speichert die Frames (= "Animation") zu jedem State
+     * Speichert die Einzelbilder (= "Animation") zu jedem Zustand.
      */
     private final Map<State, AnimationFrame[]> states = new ConcurrentHashMap<>();
 
@@ -108,6 +108,8 @@ public class StatefulAnimation<State> extends Actor
     /**
      * @param width  Die Breite in Meter der animierten Figur.
      * @param height Die Höhe in Meter der animierten Figur.
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
      */
     public StatefulAnimation(double width, double height, double frameDuration)
     {
@@ -152,9 +154,8 @@ public class StatefulAnimation<State> extends Actor
     /**
      * Fügt dieser Animation einen neuen Zustand zu hinzu.
      *
-     * @param state          Der Name für den neu hinzuzufügenden State. Unter
-     *                       diesem Namen wird er ab sofort in der Figur
-     *                       beschrieben.
+     * @param state          Der Zustand, unter dem die Animation gespeichert
+     *                      wird.
      * @param stateAnimation Die Animation für diesen Zustand. Kann normal
      *                       eingeladen werden, allerdings sollte das übergebene
      *                       Objekt <b>nicht selbst in einer Scene angemeldet
