@@ -337,7 +337,7 @@ public final class Game
 
     /**
      * Startet das Spiel in einem Fenster mit den Abmessungen <b>800x600</b>
-     * Pixel und und der Begrüßungsanimation.
+     * Pixel und der Begrüßungsanimation.
      *
      * @return Die erzeugte Szene, mit der das Spiel gestartet wurde.
      *

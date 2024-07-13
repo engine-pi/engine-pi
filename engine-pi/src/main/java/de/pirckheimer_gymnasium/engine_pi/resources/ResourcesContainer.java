@@ -25,6 +25,9 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
+
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -355,6 +358,17 @@ public abstract class ResourcesContainer<T> implements Container<T>
     public T get(URL name, boolean forceLoad)
     {
         return this.get(name.toString(), forceLoad);
+    }
+
+
+    public T[] getMultiple(String[] names) {
+        Object[] resources = new Object[names.length];
+
+        for (int i = 0; i < names.length; i++)
+        {
+            resources[i] = get(names[i]);
+        }
+        return (T[]) resources;
     }
 
     /**

@@ -83,19 +83,19 @@ public class StatefulAnimation<State> extends Actor
     private double time = 0;
 
     /**
-     * Der aktelle Index
+     * Der aktuelle Index
      */
     private int index = 0;
 
     /**
      * Die Breite in Meter.
      */
-    private double width;
+    protected double width;
 
     /**
      * Die Höhe in Meter.
      */
-    private double height;
+    protected double height;
 
     private boolean flipHorizontal = false;
 
@@ -103,7 +103,7 @@ public class StatefulAnimation<State> extends Actor
 
     private boolean animationPaused = false;
 
-    private double frameDuration;
+    protected double frameDuration;
 
     /**
      * @param width  Die Breite in Meter der animierten Figur.

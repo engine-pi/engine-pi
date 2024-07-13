@@ -358,12 +358,7 @@ public class Animation extends Actor implements FrameUpdateListener
     public static Animation createFromImages(double frameDuration, double width,
             double height, String... filePaths)
     {
-        BufferedImage[] images = new BufferedImage[filePaths.length];
-        for (int i = 0; i < filePaths.length; i++)
-        {
-            images[i] = Resources.IMAGES.get(filePaths[i]);
-        }
-        return createFromImages(frameDuration, width, height, images);
+        return createFromImages(frameDuration, width, height, Resources.IMAGES.getMultiple(filePaths));
     }
 
     /**
