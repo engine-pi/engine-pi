@@ -55,24 +55,17 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
     @Override
     protected BufferedImage load(URL name) throws IOException
     {
-        BufferedImage img = ImageIO.read(name);
-        if (img == null)
+        BufferedImage image = ImageIO.read(name);
+        if (image == null)
         {
             return null;
         }
-        return ImageUtil.toCompatibleImage(img);
-    }
-
-    @Override
-    public BufferedImage get(String name)
-    {
-        BufferedImage image = super.get(name);
         if (Game.getPixelMultiplication() > 1)
         {
             image = ImageUtil.multiplyPixel(image,
                     Game.getPixelMultiplication());
         }
-        return image;
+        return ImageUtil.toCompatibleImage(image);
     }
 
     /**
