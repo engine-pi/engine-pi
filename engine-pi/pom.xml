@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>engine-pi</artifactId>
-    <version>0.25.0</version>
+    <version>0.26.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
-        <version>0.25.0</version>
+        <version>0.26.0</version>
     </parent>
 
     <name>Engine Pi</name>
