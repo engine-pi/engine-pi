@@ -13,20 +13,21 @@ public class SetPixelMultiplicationDemo extends Scene
 {
     static
     {
-        Game.setPixelMultiplication(4);
+        Game.setPixelMultiplication(2);
     }
 
     public SetPixelMultiplicationDemo()
     {
-
         addText("Text", 0, 0).setPosition(0, -1);
-        Actor image = addImage("Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png", 1, 1);
+        Actor image = addImage(
+                "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
+                1, 1);
         getCamera().setFocus(image);
         setBackgroundColor("white");
     }
 
     public static void main(String[] args)
     {
-        Game.start(new SetPixelMultiplicationDemo());
+        Game.start(125, 200, new SetPixelMultiplicationDemo());
     }
 }

@@ -213,20 +213,32 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit der angegebenen Breite und Höhe.
+     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
+     * <b>Höhe</b> und <b>Pixelvervielfältigung</b>.
      *
-     * @param width  Die Breite des Zeichenbereichs in Pixel.
-     * @param height Die Höhe des Zeichenbereichs in Pixel.
-     * @param scene  Die Szene, mit der das Spiel gestartet wird.
+     * @param scene               Die Szene, mit der das Spiel gestartet wird.
+     * @param width               Die Breite des Zeichenbereichs in Pixel.
+     * @param height              Die Höhe des Zeichenbereichs in Pixel.
+     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     *
+     * @return Die Szene, mit der das Spiel gestartet wurde.
+     *
+     * @see #setPixelMultiplication(int)
+     *
+     * @since 0.26.0 parameter pixelMultiplication
      */
     @API
-    public static Scene start(int width, int height, Scene scene)
+    public static Scene start(Scene scene, int width, int height,
+            int pixelMultiplication)
     {
         if (renderPanel != null)
         {
             throw new IllegalStateException(
                     "Game.start wurde bereits ausgeführt und kann nur einmal ausgeführt werden");
         }
+        setPixelMultiplication(pixelMultiplication);
+        width *= pixelMultiplication;
+        height *= pixelMultiplication;
         Game.width = width;
         Game.height = height;
         Game.scene = scene;
@@ -280,9 +292,42 @@ public final class Game
     }
 
     /**
+     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
+     * <b>Höhe</b>
+     *
+     * @param width  Die Breite des Zeichenbereichs in Pixel.
+     * @param height Die Höhe des Zeichenbereichs in Pixel.
+     * @param scene  Die Szene, mit der das Spiel gestartet wird.
+     *
+     * @return Die Szene, mit der das Spiel gestartet wurde.
+     *
+     * @see #getPixelMultiplication()
+     *
+     * @deprecated use {@link #start(Scene, int, int)}
+     */
+    public static Scene start(int width, int height, Scene scene)
+    {
+        return start(scene, width, height, getPixelMultiplication());
+    }
+
+    /**
      * Startet das Spiel in einem Fenster mit den Abmessungen 800x600 Pixel.
      *
      * @param scene Die Szene, mit der das Spiel gestartet wird.
+     */
+    @API
+    public static Scene start(Scene scene, int width, int height)
+    {
+        return start(width, height, scene);
+    }
+
+    /**
+     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
+     * <b>Höhe</b>
+     *
+     * @param scene Die Szene, mit der das Spiel gestartet wird.
+     *
+     * @return Die Szene, mit der das Spiel gestartet wurde.
      */
     @API
     public static Scene start(Scene scene)
@@ -291,10 +336,12 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen 800x600 Pixel und
-     * erzeugt eine neue leere Szene.
+     * Startet das Spiel in einem Fenster mit den Abmessungen <b>800x600</b>
+     * Pixel und und der Begrüßungsanimation.
      *
      * @return Die erzeugte Szene, mit der das Spiel gestartet wurde.
+     *
+     * @see MainAnimation
      */
     @API
     public static Scene start()

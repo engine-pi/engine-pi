@@ -45,7 +45,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
- * Zeigt eine Animation, wenn die main-Methode ausgeführt wird.
+ * Zeigt eine <b>Animation</b>, wenn die <b>main</b>-Methode ausgeführt wird.
  *
  * <p>
  * In der Mitte steht das Engine-Pi-Logo. Von oben fallen kleine geometrische
