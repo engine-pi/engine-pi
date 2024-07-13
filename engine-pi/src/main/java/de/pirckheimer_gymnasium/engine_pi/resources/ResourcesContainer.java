@@ -360,10 +360,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
         return this.get(name.toString(), forceLoad);
     }
 
-
-    public T[] getMultiple(String[] names) {
+    public T[] getMultiple(String[] names)
+    {
         Object[] resources = new Object[names.length];
-
         for (int i = 0; i < names.length; i++)
         {
             resources[i] = get(names[i]);

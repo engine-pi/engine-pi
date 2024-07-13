@@ -106,8 +106,8 @@ public class StatefulAnimation<State> extends Actor
     protected double frameDuration;
 
     /**
-     * @param width  Die Breite in Meter der animierten Figur.
-     * @param height Die Höhe in Meter der animierten Figur.
+     * @param width         Die Breite in Meter der animierten Figur.
+     * @param height        Die Höhe in Meter der animierten Figur.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
      *                      bleiben.
      */
@@ -155,7 +155,7 @@ public class StatefulAnimation<State> extends Actor
      * Fügt dieser Animation einen neuen Zustand zu hinzu.
      *
      * @param state          Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
+     *                       wird.
      * @param stateAnimation Die Animation für diesen Zustand. Kann normal
      *                       eingeladen werden, allerdings sollte das übergebene
      *                       Objekt <b>nicht selbst in einer Scene angemeldet

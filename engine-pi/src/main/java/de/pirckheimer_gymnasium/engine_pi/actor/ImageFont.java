@@ -264,11 +264,7 @@ public class ImageFont
      */
     public int getPixelMultiplication()
     {
-        if (pixelMultiplication > 1)
-        {
-            return pixelMultiplication;
-        }
-        return Game.getPixelMultiplication();
+        return pixelMultiplication;
     }
 
     /**
