@@ -318,6 +318,37 @@ public class Animation extends Actor implements FrameUpdateListener
      *                      bleiben.
      * @param width         Die Breite der Animation in Meter.
      * @param height        Die Höhe der Animation in Meter.
+     * @param images        Die Einzelbilder.
+     *
+     * @return Eine mit Einzelbildern bestückte Animation.
+     *
+     * @since 0.26.0
+     */
+    @API
+    public static Animation createFromImages(double frameDuration, double width,
+            double height, BufferedImage... images)
+    {
+        if (frameDuration <= 0)
+        {
+            throw new RuntimeException("Frame-Länge muss größer als 1 sein.");
+        }
+        Collection<AnimationFrame> frames = new LinkedList<>();
+        for (BufferedImage filepath : images)
+        {
+            frames.add(new AnimationFrame(filepath, frameDuration));
+        }
+        return new Animation(frames.toArray(new AnimationFrame[0]), width,
+                height);
+    }
+
+    /**
+     * Erzeugt eine Animation durch Angabe der einzelnen Dateipfade der zu
+     * verwendenden Einzelbilder.
+     *
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     * @param width         Die Breite der Animation in Meter.
+     * @param height        Die Höhe der Animation in Meter.
      * @param filePaths     Die einzelnen Dateipfade der zu verwendenden
      *                      Einzelbilder.
      *
@@ -327,18 +358,12 @@ public class Animation extends Actor implements FrameUpdateListener
     public static Animation createFromImages(double frameDuration, double width,
             double height, String... filePaths)
     {
-        if (frameDuration <= 0)
+        BufferedImage[] images = new BufferedImage[filePaths.length];
+        for (int i = 0; i < filePaths.length; i++)
         {
-            throw new RuntimeException("Frame-Länge muss größer als 1 sein.");
+            images[i] = Resources.IMAGES.get(filePaths[i]);
         }
-        Collection<AnimationFrame> frames = new LinkedList<>();
-        for (String filepath : filePaths)
-        {
-            frames.add(new AnimationFrame(Resources.IMAGES.get(filepath),
-                    frameDuration));
-        }
-        return new Animation(frames.toArray(new AnimationFrame[0]), width,
-                height);
+        return createFromImages(frameDuration, width, height, images);
     }
 
     /**
