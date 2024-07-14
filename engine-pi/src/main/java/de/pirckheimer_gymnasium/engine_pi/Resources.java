@@ -25,8 +25,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
-import java.awt.Color;
-
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorScheme;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;

@@ -6,7 +6,8 @@ import java.awt.Color;
 import java.util.List;
 
 /**
- * Speichert eine Farbe zusammen mit einem Hauptnamen und optional mehreren Aliassen.
+ * Speichert eine <b>Farbe</b> zusammen mit einem <b>Hauptnamen</b> und optional
+ * mehreren <b>Aliassen</b>.
  *
  * @author Josef Friedrich
  *
@@ -45,21 +46,21 @@ public class NamedColor
         return color;
     }
 
-    public String getColorDecFormatted() {
-        return String.format("%s, %s, %s", color.getRed(), color.getGreen(), color.getBlue());
+    public String getColorDecFormatted()
+    {
+        return String.format("%s, %s, %s", color.getRed(), color.getGreen(),
+                color.getBlue());
     }
 
-    public String getColorHexFormatted() {
+    public String getColorHexFormatted()
+    {
         return ColorUtil.encode(color);
-
     }
 
     public void setColor(Color color)
     {
         this.color = color;
     }
-
-
 
     public List<String> getAliases()
     {

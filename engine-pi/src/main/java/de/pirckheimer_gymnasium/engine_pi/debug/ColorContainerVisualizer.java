@@ -1,15 +1,15 @@
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
+import java.awt.Color;
+import java.util.Map;
+
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.engine_pi.resources.NamedColor;
 
-import java.awt.*;
-import java.util.Map;
-
 /**
- * Visualisiert den gegebenen Speicher für Farben.
+ * <b>Visualisiert</b> den gegebenen <b>Speicher für Farben</b>.
  *
  * @author Josef Friedrich
  *
@@ -31,14 +31,24 @@ public class ColorContainerVisualizer
         double y = 8;
         for (Map.Entry<String, Color> entry : container.getAll().entrySet())
         {
-            NamedColor namedColor = container.getNamedColor(entry.getKey());
-            scene.addRectangle(1, 1).setPosition(-6, y)
-                    .setColor(namedColor.getColor());
-            scene.addText(namedColor.getName()).setHeight(0.5)
-                    .setPosition(-4, y + 0.25).setColor(WHITE);
-            scene.addText(namedColor.getColorHexFormatted()).setHeight(0.5).setPosition(0, y).setColor(WHITE);
-            scene.addText(namedColor.getAliasesFormatted()).setHeight(0.3)
-                    .setColor(WHITE).setPosition(2, y + 0.3);
+            NamedColor color = container.getNamedColor(entry.getKey());
+            // Rechteck, das die Farbe als Füllfarbe demonstiert
+            scene.addRectangle(1, 1).setPosition(-12, y)
+                    .setColor(color.getColor());
+            // Der dezimale Farbcode
+            scene.addText(color.getColorDecFormatted()).setHeight(0.5)
+                    .setFont("Monospaced").setPosition(-10, y + 0.25)
+                    .setColor(color.getColor());
+            // Der hexadezimale Farbcode
+            scene.addText(color.getColorHexFormatted()).setHeight(0.5)
+                    .setFont("Monospaced").setPosition(-6, y + 0.25)
+                    .setColor(color.getColor());
+            // Der Hauptname der Farbe
+            scene.addText(color.getName()).setHeight(0.5)
+                    .setPosition(-3, y + 0.25).setColor(WHITE);
+            // Die Aliasse
+            scene.addText(color.getAliasesFormatted()).setHeight(0.3)
+                    .setColor(WHITE).setPosition(1, y + 0.3);
             y--;
         }
     }

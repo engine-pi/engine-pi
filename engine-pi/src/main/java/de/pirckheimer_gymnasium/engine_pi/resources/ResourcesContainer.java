@@ -357,6 +357,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         return this.get(name.toString(), forceLoad);
     }
 
+    @SuppressWarnings("unchecked")
     public T[] getMultiple(String[] names)
     {
         Object[] resources = new Object[names.length];
