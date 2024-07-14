@@ -38,7 +38,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  *
  * <li><b>Dynamische</b> Objekte:
  * <ul>
- * <li>Verhalten sich wie Objekte der newton'schen Mechanik.</li>
+ * <li>Verhalten sich wie Objekte der newtonschen Mechanik.</li>
  * <li>Können Kräfte auf sich wirken lassen und interagieren miteinander.</li>
  * </ul>
  * Diese Eigenschaft gehört zum Beispiel zu <i>Billardkugeln, Spielfiguren und
@@ -90,9 +90,9 @@ public enum BodyType
      */
     STATIC,
     /**
-     * <b>Dynamische</b> Objekte verhalten sich wie Objekte der Newton’schen
+     * <b>Dynamische</b> Objekte verhalten sich wie Objekte der Newtonschen
      * Mechanik. Sie können Kräfte auf sich wirken lassen und interagieren
-     * miteinander. Diese Eigenschaft gehört zum Beispiel zu <i>Billiardkugeln,
+     * miteinander. Diese Eigenschaft gehört zum Beispiel zu <i>Billardkugeln,
      * Spielfiguren und Wurfgeschossen</i>.
      *
      * @see Actor#makeDynamic()
@@ -141,22 +141,11 @@ public enum BodyType
     @Internal
     public org.jbox2d.dynamics.BodyType toBox2D()
     {
-        switch (this)
-        {
-        case STATIC:
-            return org.jbox2d.dynamics.BodyType.STATIC;
-
-        case DYNAMIC:
-        case SENSOR:
-        case PARTICLE:
-            return org.jbox2d.dynamics.BodyType.DYNAMIC;
-
-        case KINEMATIC:
-            return org.jbox2d.dynamics.BodyType.KINEMATIC;
-
-        default:
-            throw new RuntimeException("Unhandled body type: " + this);
-        }
+        return switch (this) {
+            case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
+            case DYNAMIC, SENSOR, PARTICLE -> org.jbox2d.dynamics.BodyType.DYNAMIC;
+            case KINEMATIC -> org.jbox2d.dynamics.BodyType.KINEMATIC;
+        };
     }
 
     public boolean isSensor()

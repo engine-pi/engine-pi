@@ -1395,7 +1395,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * "https://en.wikipedia.org/wiki/Coefficient_of_restitution">Restitutionskoeffizienten</a>
      * kann angegeben werden, wie „elastisch“ ein Objekt ist. Wie bei der
      * Reibung liegt der Wertebereich zwischen 0 und 1, wobei 0 bedeutet, dass
-     * das Objekt überhaupt nicht zurückfedert, und 1, dass die gesamte Energie
+     * das Objekt überhaupt nicht zurück federt, und 1, dass die gesamte Energie
      * des Aufpralls erhalten bleibt. Bei Werte größer 1 prallt das Objekt bei
      * jeder Kollision immer weiter ab. Wenn zwei Objekte aufeinander prallen,
      * federt das Objekt mit dem höheren der beiden Stoßzahlen zurück. Soll ein
@@ -2139,7 +2139,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Rotiert das Objekt um den angegeben Winkel.
+     * Rotiert das Objekt um den angegebenen Winkel.
      *
      * <p>
      * Positive Werte drehen die Figur gegen den Uhrzeigersinn, negative im
