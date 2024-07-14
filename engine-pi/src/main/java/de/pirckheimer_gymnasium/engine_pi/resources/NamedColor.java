@@ -3,12 +3,18 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
 import java.awt.Color;
 import java.util.List;
 
+/**
+ * Speichert eine Farbe zusammen mit einem Hauptnamen und optional mehreren Aliassen.
+ */
 public class NamedColor
 {
     private String name;
 
     private Color color;
 
+    /**
+     * Weitere Namen beziehungsweise Aliasse der Farbe.
+     */
     private List<String> aliases;
 
     public NamedColor(String name, Color color, List<String> aliases)

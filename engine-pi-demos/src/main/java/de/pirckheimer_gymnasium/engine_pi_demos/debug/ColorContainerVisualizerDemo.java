@@ -10,7 +10,7 @@ public class ColorContainerVisualizerDemo extends Scene
     static
     {
         Resources.COLORS.clear();
-        Resources.COLORS.add("custom", 1, 200, 3);
+        Resources.COLORS.add("custom", 1, 200, 3, "alias");
     }
 
     public ColorContainerVisualizerDemo()
