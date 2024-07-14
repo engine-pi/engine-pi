@@ -1,11 +1,12 @@
 package de.pirckheimer_gymnasium.engine_pi_demos.game;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Demonstriert die Methode

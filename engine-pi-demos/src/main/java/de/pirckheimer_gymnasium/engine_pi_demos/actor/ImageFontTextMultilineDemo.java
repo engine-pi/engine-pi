@@ -42,7 +42,7 @@ public class ImageFontTextMultilineDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new ImageFontTextMultilineDemo());
+        Game.start(new ImageFontTextMultilineDemo(), 1020, 520);
         Game.setTitle("Text Example");
     }
 }

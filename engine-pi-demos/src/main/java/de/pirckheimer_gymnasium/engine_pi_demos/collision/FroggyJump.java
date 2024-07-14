@@ -245,6 +245,6 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 
     public static void main(String[] args)
     {
-        Game.start(400, 600, new FroggyJump());
+        Game.start(new FroggyJump(), 400, 600);
     }
 }

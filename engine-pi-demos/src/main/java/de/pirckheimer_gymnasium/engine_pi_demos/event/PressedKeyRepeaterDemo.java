@@ -38,6 +38,6 @@ public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(400, 300, new PressedKeyRepeaterDemo());
+        Game.start(new PressedKeyRepeaterDemo(), 400, 300);
     }
 }

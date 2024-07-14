@@ -54,7 +54,7 @@ public class ImageFontTextAlignmentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new ImageFontTextAlignmentDemo());
+        Game.start(new ImageFontTextAlignmentDemo(), 1020, 520);
         Game.setTitle("Text Example");
     }
 }

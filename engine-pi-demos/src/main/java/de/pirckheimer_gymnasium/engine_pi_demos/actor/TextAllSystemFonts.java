@@ -50,7 +50,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new TextAllSystemFonts());
+        Game.start(new TextAllSystemFonts(), 1020, 520);
         Game.setTitle("Text Example");
     }
 }

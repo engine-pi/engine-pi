@@ -162,6 +162,6 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new SnakeAdvanced());
+        Game.start(new SnakeAdvanced(), 600, 400);
     }
 }

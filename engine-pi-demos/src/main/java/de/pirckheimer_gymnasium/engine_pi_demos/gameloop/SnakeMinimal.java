@@ -131,6 +131,6 @@ public class SnakeMinimal extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new SnakeMinimal());
+        Game.start(new SnakeMinimal(), 600, 400);
     }
 }

@@ -61,6 +61,6 @@ public class ImageFontTextSetContentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new ImageFontTextSetContentDemo());
+        Game.start(new ImageFontTextSetContentDemo(), 1020, 520);
     }
 }

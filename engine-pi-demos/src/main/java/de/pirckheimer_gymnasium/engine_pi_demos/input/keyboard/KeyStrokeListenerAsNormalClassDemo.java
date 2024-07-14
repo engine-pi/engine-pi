@@ -58,6 +58,6 @@ public class KeyStrokeListenerAsNormalClassDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyStrokeListenerAsNormalClassDemo());
+        Game.start(new KeyStrokeListenerAsNormalClassDemo(), 600, 400);
     }
 }

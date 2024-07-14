@@ -106,6 +106,6 @@ public class BillardDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(WIDTH, HEIGHT, new BillardDemo());
+        Game.start(new BillardDemo(), WIDTH, HEIGHT);
     }
 }

@@ -25,9 +25,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;

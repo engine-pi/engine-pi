@@ -50,6 +50,6 @@ public class HelloWorldVersion2 extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 300, new HelloWorldVersion2());
+        Game.start(new HelloWorldVersion2(), 400, 300);
     }
 }

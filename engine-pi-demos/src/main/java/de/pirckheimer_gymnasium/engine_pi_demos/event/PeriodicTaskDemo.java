@@ -78,6 +78,6 @@ public class PeriodicTaskDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 200, new PeriodicTaskDemo());
+        Game.start(new PeriodicTaskDemo(), 400, 200);
     }
 }

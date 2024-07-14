@@ -212,6 +212,6 @@ public class BallThrowDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(WIDTH, HEIGHT, new BallThrowDemo());
+        Game.start(new BallThrowDemo(), WIDTH, HEIGHT);
     }
 }

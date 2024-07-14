@@ -72,6 +72,6 @@ public class ListenerOnActorsDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new ListenerOnActorsDemo());
+        Game.start(new ListenerOnActorsDemo(), 600, 400);
     }
 }

@@ -34,7 +34,7 @@ public class ImageFontTextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1020, 520, new ImageFontTextDemo());
+        Game.start(new ImageFontTextDemo(), 1020, 520);
         Game.setTitle("Text Example");
     }
 }

@@ -53,6 +53,6 @@ public class ElasticityDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 800, new ElasticityDemo());
+        Game.start(new ElasticityDemo(), 600, 800);
     }
 }
