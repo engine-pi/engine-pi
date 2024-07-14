@@ -141,10 +141,11 @@ public enum BodyType
     @Internal
     public org.jbox2d.dynamics.BodyType toBox2D()
     {
-        return switch (this) {
-            case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
-            case DYNAMIC, SENSOR, PARTICLE -> org.jbox2d.dynamics.BodyType.DYNAMIC;
-            case KINEMATIC -> org.jbox2d.dynamics.BodyType.KINEMATIC;
+        return switch (this)
+        {
+        case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
+        case DYNAMIC, SENSOR, PARTICLE -> org.jbox2d.dynamics.BodyType.DYNAMIC;
+        case KINEMATIC -> org.jbox2d.dynamics.BodyType.KINEMATIC;
         };
     }
 

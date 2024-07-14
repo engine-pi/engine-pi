@@ -319,7 +319,7 @@ public class ColorContainer implements Container<Color>
      * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
      *             Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
      *             B. {@code #ff0000}).
-
+     *
      * @return Eine vordefinierte Farbe.
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setColor(String)
      * @see de.pirckheimer_gymnasium.engine_pi.Scene#setBackgroundColor(String)
@@ -385,7 +385,6 @@ public class ColorContainer implements Container<Color>
     {
         return ColorUtil.changeAlpha(getSafe(name), alpha);
     }
-
 
     /**
      * Gibt <b>alle</b> Farben samt der Farbnamen als {@link Map} zurück.
