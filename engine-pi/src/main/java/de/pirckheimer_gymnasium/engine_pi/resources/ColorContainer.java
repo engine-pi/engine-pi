@@ -107,8 +107,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der drei
-     * Farbanteile und des Alphakanals in dezimaler Notation hinzu.
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der <b>drei
+     * Farbanteile</b> und des <b>Alphakanals</b> in dezimaler Notation hinzu.
      *
      * @param name Der Farbname.
      * @param r    Der Rotanteil der Farbe (0-255).
@@ -122,14 +122,33 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, int r, int g, int b, int a)
     {
-        Color color = new Color(r, g, b, a);
-        resources.put(normalizeName(name), color);
-        return color;
+        return add(name, new Color(r, g, b, a));
     }
 
     /**
-     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der drei
-     * Farbanteile in dezimaler Notation hinzu.
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der <b>drei
+     * Farbanteile</b>, des <b>Alphakanals</b> in dezimaler Notation und
+     * beliebig vieler <b>Aliasse</b> hinzu.
+     *
+     * @param name  Der Farbname.
+     * @param r     Der Rotanteil der Farbe (0-255).
+     * @param g     Der Gelbanteil der Farbe (0-255).
+     * @param b     Der Blauanteil der Farbe (0-255).
+     * @param a     Der Alphakanal der Farbe (0-255).
+     * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
+     *
+     * @return Die gleiche Farbe, die hinzugefügt wurde.
+     *
+     * @since 0.26.0
+     */
+    public Color add(String name, int r, int g, int b, int a, String... alias)
+    {
+        return add(name, new Color(r, g, b, a), alias);
+    }
+
+    /**
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der <b>drei
+     * Farbanteile</b> in dezimaler Notation hinzu.
      *
      * @param name Der Farbname.
      * @param r    Der Rotanteil der Farbe (0-255).
@@ -142,9 +161,27 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, int r, int g, int b)
     {
-        Color color = new Color(r, g, b);
-        resources.put(normalizeName(name), color);
-        return color;
+        return add(name, new Color(r, g, b));
+    }
+
+    /**
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der <b>drei
+     * Farbanteile</b> in dezimaler Notation und beliebig vieler <b>Aliasse</b>
+     * hinzu.
+     *
+     * @param name  Der Farbname.
+     * @param r     Der Rotanteil der Farbe (0-255).
+     * @param g     Der Gelbanteil der Farbe (0-255).
+     * @param b     Der Blauanteil der Farbe (0-255).
+     * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
+     *
+     * @return Die gleiche Farbe, die hinzugefügt wurde.
+     *
+     * @since 0.26.0
+     */
+    public Color add(String name, int r, int g, int b, String... alias)
+    {
+        return add(name, new Color(r, g, b), alias);
     }
 
     /**

@@ -6,11 +6,12 @@
  * <p>
  * Das Projekt <a href="https://github.com/jbox2d/jbox2d">JBox2D-Projekt</a> ist
  * unter der <i>open source zlib license</i> veröffentlicht.
- * <p>
+ * </p>
  *
  * <blockquote>
  * <p>
  * Copyright (c) 2014, Daniel Murphy All rights reserved.
+ * </p>
  *
  * <ul>
  * <li>Redistributions of source code must retain the above copyright notice,
@@ -19,6 +20,7 @@
  * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.</li>
  * </ul>
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -29,6 +31,10 @@
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE. </blockquote> Created by andonie on 15.02.15.
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * </blockquote>
+ *
+ * @author Created by andonie on 15.02.15.
  */
 package de.pirckheimer_gymnasium.engine_pi.physics;

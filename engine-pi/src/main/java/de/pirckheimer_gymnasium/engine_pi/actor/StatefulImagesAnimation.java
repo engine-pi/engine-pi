@@ -6,13 +6,8 @@ import java.awt.image.BufferedImage;
  * Eine animierte Figur mit mehreren Zuständen, deren Animationen durch Angabe
  * der <b>Einzelbilder</b> erzeugt wird.
  *
- * @param width         Die Breite in Meter der animierten Figur.
- * @param height        Die Höhe in Meter der animierten Figur.
- * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
- *                      bleiben.
- *
- * @param <State>       Typ der Zustände, zwischen denen in der Animation
- *                      gewechselt werden soll.
+ * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ *                werden soll.
  *
  * @author Josef Friedrich
  *
@@ -20,6 +15,12 @@ import java.awt.image.BufferedImage;
  */
 public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
 {
+    /**
+     * @param width         Die Breite in Meter der animierten Figur.
+     * @param height        Die Höhe in Meter der animierten Figur.
+     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
+     *                      bleiben.
+     */
     public StatefulImagesAnimation(double width, double height,
             double frameDuration)
     {
