@@ -139,7 +139,7 @@ public class MinimalDemo extends Scene
     public static void main(String[] args)
     {
         Game.setDebug(true);
-        Game.start(WIDTH, HEIGHT, new MinimalDemo());
+        Game.start(new MinimalDemo(), WIDTH, HEIGHT);
         Game.setTitle("Minimale Demo");
     }
 }

@@ -35,7 +35,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 
 public class MainScene extends Scene implements KeyStrokeListener
 {
-    private PauseMenu pauseMenu;
+    private final PauseMenu pauseMenu;
 
     public MainScene()
     {
@@ -67,9 +67,9 @@ public class MainScene extends Scene implements KeyStrokeListener
         Game.transitionToScene(pauseMenu);
     }
 
-    private class PauseMenu extends Scene
+    private static class PauseMenu extends Scene
     {
-        private Scene mainScene;
+        private final Scene mainScene;
 
         public PauseMenu(Scene mainScene)
         {
@@ -84,7 +84,7 @@ public class MainScene extends Scene implements KeyStrokeListener
         private class MenuItem extends Rectangle
                 implements MouseClickListener, FrameUpdateListener
         {
-            private Text label;
+            private final Text label;
 
             public MenuItem(Vector center, String labelText)
             {

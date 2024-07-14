@@ -78,7 +78,8 @@ public class PaintingCirclesAdvancedDemo extends Scene
         }
     }
 
-    private class ColorRect extends Rectangle implements MouseClickListener
+    private static class ColorRect extends Rectangle
+            implements MouseClickListener
     {
         private final Color color;
 
@@ -122,6 +123,6 @@ public class PaintingCirclesAdvancedDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new PaintingCirclesAdvancedDemo());
+        Game.start(new PaintingCirclesAdvancedDemo(), 600, 400);
     }
 }

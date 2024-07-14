@@ -56,6 +56,6 @@ public class RotationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new RotationDemo());
+        Game.start(new RotationDemo(), 600, 400);
     }
 }

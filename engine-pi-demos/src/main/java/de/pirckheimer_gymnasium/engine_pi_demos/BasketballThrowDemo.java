@@ -114,6 +114,6 @@ public class BasketballThrowDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(WIDTH, HEIGHT, new BasketballThrowDemo());
+        Game.start(new BasketballThrowDemo(), WIDTH, HEIGHT);
     }
 }

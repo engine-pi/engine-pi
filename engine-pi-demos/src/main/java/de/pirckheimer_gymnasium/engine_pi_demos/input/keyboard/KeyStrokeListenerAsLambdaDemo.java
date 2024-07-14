@@ -38,6 +38,6 @@ public class KeyStrokeListenerAsLambdaDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyStrokeListenerAsLambdaDemo());
+        Game.start(new KeyStrokeListenerAsLambdaDemo(), 600, 400);
     }
 }

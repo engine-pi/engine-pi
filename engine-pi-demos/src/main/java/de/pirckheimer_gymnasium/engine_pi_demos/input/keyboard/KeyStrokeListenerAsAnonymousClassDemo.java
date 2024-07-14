@@ -44,6 +44,6 @@ public class KeyStrokeListenerAsAnonymousClassDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyStrokeListenerAsAnonymousClassDemo());
+        Game.start(new KeyStrokeListenerAsAnonymousClassDemo(), 600, 400);
     }
 }

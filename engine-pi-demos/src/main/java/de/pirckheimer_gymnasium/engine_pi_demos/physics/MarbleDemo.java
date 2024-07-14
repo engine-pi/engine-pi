@@ -164,6 +164,6 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new MarbleDemo());
+        Game.start(new MarbleDemo(), 1000, 800);
     }
 }

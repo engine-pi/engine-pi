@@ -35,11 +35,13 @@ public class SoundsContainerDemo
             @Override
             public void finished(SoundEvent event)
             {
+                System.out.println("finished");
             }
 
             @Override
             public void cancelled(SoundEvent event)
             {
+                System.out.println("cancelled");
             }
         });
     }

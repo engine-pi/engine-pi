@@ -25,7 +25,7 @@ public enum PlayerState
     IDLE("idle"), WALKING("walk"), RUNNING("run"), JUMPING("jump_1up"),
     MIDAIR("jump_2midair"), FALLING("jump_3down"), LANDING("jump_4land");
 
-    private String filename;
+    private final String filename;
 
     PlayerState(String filename)
     {

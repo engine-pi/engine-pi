@@ -24,14 +24,9 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        switch (e.getKeyCode())
+        if (e.getKeyCode() == KeyEvent.VK_P)
         {
-        case KeyEvent.VK_P:
             Game.takeScreenshot();
-            break;
-
-        default:
-            break;
         }
     }
 

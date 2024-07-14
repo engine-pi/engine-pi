@@ -47,7 +47,7 @@ public class DominoesDemo extends Scene
         setupBasicObjects();
         setupPhysics();
         setupAngle();
-        makeDominoes(20, 0.4, 3);
+        makeDominoes();
     }
 
     private void setupBasicObjects()
@@ -55,17 +55,16 @@ public class DominoesDemo extends Scene
         // Boden auf dem die Dominosteine stehen
         ground = new Rectangle(200, 2);
         ground.setCenter(0, -5);
-        ground.setColor(Color.WHITE);
+        ground.setColor("white");
         add(ground);
         // Der Ball, der die Dominosteine umwerfen soll.
         ball = new Circle(0.5);
-        ball.setColor(Color.RED);
+        ball.setColor("red");
         ball.setPosition(-10, -2);
         add(ball);
         // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
         wall.setPosition(-14, -4);
-        wall.setColor(Color.WHITE);
     }
 
     private void setupAngle()
@@ -83,14 +82,14 @@ public class DominoesDemo extends Scene
         setGravityOfEarth();
     }
 
-    private void makeDominoes(int num, double width, double height)
+    private void makeDominoes()
     {
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < 20; i++)
         {
-            Rectangle domino = new Rectangle(width, height);
-            domino.setPosition(i * 3 * width, -4);
+            Rectangle domino = new Rectangle(0.4, 3);
+            domino.setPosition(i * 3 * 0.4, -4);
             domino.makeDynamic();
-            domino.setColor(Color.BLUE);
+            domino.setColor("blue");
             add(domino);
         }
     }
@@ -116,6 +115,6 @@ public class DominoesDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(800, 300, new DominoesDemo());
+        Game.start(new DominoesDemo(), 800, 300);
     }
 }

@@ -93,6 +93,6 @@ public class StatefulAnimationDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(1200, 820, new StatefulAnimationDemo());
+        Game.start(new StatefulAnimationDemo(), 1200, 820);
     }
 }

@@ -88,9 +88,9 @@ public class DudeDemo extends Scene
 
     private void setupPlayground()
     {
-        makePlatform(7, -450 / 60, -200 / 60);
-        makePlatform(3, 200 / 60, 0);
-        makePlatform(5, 800 / 60, -100 / 60);
+        makePlatform(7, -450.0 / 60.0, -200.0 / 60.0);
+        makePlatform(3, 200.0 / 60.0, 0.0);
+        makePlatform(5, 800.0 / 60.0, -100.0 / 60.0);
         // makeBoxes(0, 40, 5);
         for (int i = 0; i < 15; i++)
         {
@@ -160,6 +160,6 @@ public class DudeDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(WIDTH, HEIGHT, new DudeDemo());
+        Game.start(new DudeDemo(), WIDTH, HEIGHT);
     }
 }

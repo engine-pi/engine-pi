@@ -58,7 +58,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
  * etc. dar)</li>
  * <li>I Aktiviert/Deaktiviert die Info-Box mit Infos zu den physikalischen
  * Eigenschaften des zuletzt angeklickten Objekts.</li>
- * <li>U und J erhöhen/reduzieren die Masse des zuöetzt angeklickten
+ * <li>U und J erhöhen/reduzieren die Masse des zuletzt angeklickten
  * Objekts.</li>
  * <li>W und Q erhöhen/reduzieren die Elastizität der Wände.</li>
  * <li>1 und 2 zoomen rein/raus</li>
@@ -89,21 +89,21 @@ public class ForceKlickEnvironment extends Scene implements
     }
 
     /**
-     * Beschreibt die Zustände, in denen sich die Sandbox im Bezug auf
+     * Beschreibt die Zustände, in denen sich die Sandbox in Bezug auf
      * Mausklick-Funktion befinden kann.
      */
     private enum KlickMode
     {
-        ATTACK_POINT, DIRECTION_INTENSITY;
+        ATTACK_POINT, DIRECTION_INTENSITY
     }
 
-    private Actor attack;
+    private final Actor attack;
 
-    private Geometry[] walls = new Geometry[4];
+    private final Geometry[] walls = new Geometry[4];
 
     private Actor attackedLast = null;
 
-    private Rectangle stange;
+    private final Rectangle stange;
 
     private KlickMode klickMode = KlickMode.ATTACK_POINT;
 
@@ -222,7 +222,7 @@ public class ForceKlickEnvironment extends Scene implements
         if (klickMode == KlickMode.DIRECTION_INTENSITY)
         {
             Vector currentMousePos = getMousePosition();
-            if (currentMousePos == null || lastAttack == null)
+            if (lastAttack == null)
             {
                 return;
             }
@@ -233,11 +233,7 @@ public class ForceKlickEnvironment extends Scene implements
                 return;
             }
             stange.setSize(vectorLength, stange.getHeight());
-            // float rot =
-            // Vector.RIGHT.getAngle(lastAttack.fromThisTo(pointer).negate());
             double rot = Vector.RIGHT
-                    .getAngle(lastAttack.getDistance(currentMousePos));
-            rot = Vector.RIGHT
                     .getAngle(lastAttack.negate().add(currentMousePos));
             if (Double.isNaN(rot))
             {
@@ -253,6 +249,6 @@ public class ForceKlickEnvironment extends Scene implements
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new ForceKlickEnvironment());
+        Game.start(new ForceKlickEnvironment(), 1000, 800);
     }
 }

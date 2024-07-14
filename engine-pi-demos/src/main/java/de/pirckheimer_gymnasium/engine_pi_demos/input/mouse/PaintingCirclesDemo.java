@@ -49,6 +49,6 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new PaintingCirclesDemo());
+        Game.start(new PaintingCirclesDemo(), 600, 400);
     }
 }

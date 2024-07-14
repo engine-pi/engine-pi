@@ -32,7 +32,7 @@ public class StaticKeyStrokeListenerDemo extends Scene
     public static void main(String[] args)
     {
         StaticKeyStrokeListenerDemo scene = new StaticKeyStrokeListenerDemo();
-        Game.start(600, 400, scene);
+        Game.start(scene, 600, 400);
         Game.addKeyStrokeListener(new KeyStrokeListener()
         {
             public void onKeyDown(KeyEvent e)

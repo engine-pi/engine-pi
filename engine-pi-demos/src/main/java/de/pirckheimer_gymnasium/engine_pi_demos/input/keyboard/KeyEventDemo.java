@@ -63,6 +63,6 @@ public class KeyEventDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new KeyEventDemo());
+        Game.start(new KeyEventDemo(), 600, 400);
     }
 }

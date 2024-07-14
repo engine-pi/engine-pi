@@ -76,12 +76,11 @@ public class JointDemo extends ForceKlickEnvironment
     private void hoverHolderBauen()
     {
         final int FACT = 2;
-        Polygon halter = new Polygon(new Vector(0 * FACT, 50 * FACT),
+        Polygon halter = new Polygon(new Vector(0, 50 * FACT),
                 new Vector(25 * FACT, 75 * FACT),
                 new Vector(50 * FACT, 75 * FACT),
                 new Vector(75 * FACT, 50 * FACT),
-                new Vector(75 * FACT, 100 * FACT),
-                new Vector(0 * FACT, 100 * FACT));
+                new Vector(75 * FACT, 100 * FACT), new Vector(0, 100 * FACT));
         halter.setColor(Color.CYAN);
         halter.makeDynamic();
         Rectangle item = new Rectangle(35 * FACT, 20 * FACT);
@@ -159,6 +158,6 @@ public class JointDemo extends ForceKlickEnvironment
 
     public static void main(String[] args)
     {
-        Game.start(1000, 800, new JointDemo());
+        Game.start(new JointDemo(), 1000, 800);
     }
 }

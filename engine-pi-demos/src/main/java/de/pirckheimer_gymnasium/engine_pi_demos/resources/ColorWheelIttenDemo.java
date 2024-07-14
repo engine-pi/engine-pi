@@ -19,11 +19,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 {
     private final int NUMBER_SEGMENTS = 12;
 
-    private final double SEGMENT_ANGLE = 360 / NUMBER_SEGMENTS;
-
-    private final double HALF_SEGMENT_ANGLE = SEGMENT_ANGLE / 2.0;
-
-    private final double OUTER_RADIUS = 7.0;
+    private final double SEGMENT_ANGLE = 360.0 / NUMBER_SEGMENTS;
 
     private final double INNER_RADIUS = 5.0;
 
@@ -80,9 +76,11 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     private Actor createWheelArea(int index, double angle)
     {
         // Erster Winkel
+        double HALF_SEGMENT_ANGLE = SEGMENT_ANGLE / 2.0;
         double start = angle - HALF_SEGMENT_ANGLE;
         // Zweiter Winkel
         double end = angle + HALF_SEGMENT_ANGLE;
+        double OUTER_RADIUS = 7.0;
         Polygon polygon = new Polygon(getCirclePoint(OUTER_RADIUS, start),
                 getCirclePoint(INNER_RADIUS, start),
                 getCirclePoint(INNER_RADIUS, end),

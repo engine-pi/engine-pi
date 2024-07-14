@@ -51,6 +51,6 @@ public class CollisionTest extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(500, 500, new CollisionTest());
+        Game.start(new CollisionTest(), 500, 500);
     }
 }

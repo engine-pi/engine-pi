@@ -18,12 +18,10 @@ import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.sound.Track;
 
 /**
- * Demonstiert die Klasse <b>Jukebox</b>.
+ * Demonstriert die Klasse <b>Jukebox</b>.
  */
 public class JukeboxDemo extends Scene implements KeyStrokeListener
 {
-    Jukebox jukebox;
-
     Playback casinoBling;
 
     Track gameReached;
@@ -34,7 +32,7 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
 
     public JukeboxDemo() throws IOException, UnsupportedAudioFileException
     {
-        Game.start(200, 300, this);
+        Game.start(this, 200, 300);
         casinoBling = Jukebox.createSoundPlayback(
                 "sounds/casino-bling-achievement.mp3", true);
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");
@@ -116,7 +114,7 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
         MusicPlayback playback = Jukebox.getMusic();
         if (playback != null)
         {
-            playback.setVolume(Jukebox.getMusic().getVolume() - 0.1f);
+            playback.setVolume(Jukebox.getMusic().getVolume() - diff);
         }
     }
 

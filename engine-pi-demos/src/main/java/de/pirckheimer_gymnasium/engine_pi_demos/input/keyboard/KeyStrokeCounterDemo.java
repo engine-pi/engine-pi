@@ -55,6 +55,6 @@ public class KeyStrokeCounterDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(700, 200, new KeyStrokeCounterDemo());
+        Game.start(new KeyStrokeCounterDemo(), 700, 200);
     }
 }

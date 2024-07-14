@@ -46,7 +46,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
  * <ul>
  * <li>S-Key: Startet Simulation</li>
  * <li>R-Key: Setzt Simulation zurück</li>
- * <li>Die Keyn Z und U ändern den Zoom auf die Umgebung (rudimentär
+ * <li>Die Tasten Z und U ändern den Zoom auf die Umgebung (rudimentär
  * implementiert)</li>
  * <li>D-Key: Toggelt den Debug-Modus (zeigt das Pixel-Raster)</li>
  * </ul>
@@ -80,12 +80,7 @@ public class BallThrowDemo extends Scene
     /**
      * Der Ball. Auf ihn wird ein Impuls gewirkt.
      */
-    private Circle ball;
-
-    /**
-     * Der Boden.
-     */
-    private Rectangle ground;
+    private final Circle ball;
 
     /**
      * Der Startzeitpunkt der Simulation für die Zeitmessung.
@@ -126,7 +121,10 @@ public class BallThrowDemo extends Scene
                 GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
                         + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         // Den Boden erstellen
-        ground = new Rectangle(100, 20);
+        /**
+         * Der Boden.
+         */
+        Rectangle ground = new Rectangle(100, 20);
         ground.setPosition(0, GROUND_DEPTH);
         add(ground);
         ground.setColor(Color.WHITE);
