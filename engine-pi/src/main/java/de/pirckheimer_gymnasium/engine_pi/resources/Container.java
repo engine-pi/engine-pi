@@ -4,7 +4,7 @@ package de.pirckheimer_gymnasium.engine_pi.resources;
  * Schnittstelle für die Ressourcenspeicher.
  *
  * <p>
- * Neben der abstrakten Klasse {@link ResourcesContainer}, die Dateigebundene
+ * Neben der abstrakten Klasse {@link ResourcesContainer}, die Datei gebundene
  * Ressourcen verwaltet, wird diese Schnittstelle noch von der Klasse
  * {@link ColorContainer} implementiert.
  * </p>
@@ -28,7 +28,7 @@ public interface Container<T>
      * @param name     Der Name, unter dem die Ressource verwaltet wird.
      * @param resource Die Ressourceninstanz.
      */
-    public T add(String name, T resource);
+    T add(String name, T resource);
 
     /**
      * Leert den Ressourcenspeicher, indem alle zuvor geladenen Ressourcen
@@ -36,7 +36,7 @@ public interface Container<T>
      *
      * @see ResourcesContainer#clear()
      */
-    public void clear();
+    void clear();
 
     /**
      * Ruft die Ressource mit dem angegebenen Namen ab.<br>
@@ -55,5 +55,7 @@ public interface Container<T>
      * @return Die Ressource mit dem angegebenen Namen oder null, wenn sie nicht
      *         gefunden wird.
      */
-    public T get(String name);
+    T get(String name);
+
+    int count();
 }

@@ -410,4 +410,9 @@ public class ColorContainer implements Container<Color>
     {
         return ColorUtil.changeAlpha(get(name), alpha);
     }
+
+    public int count()
+    {
+        return resources.size();
+    }
 }

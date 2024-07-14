@@ -64,8 +64,11 @@ public final class Resources
     public static ColorScheme colorScheme;
     static
     {
-        setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
-        COLORS.addScheme(colorScheme);
+        if (COLORS.count() == 0)
+        {
+            setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
+            COLORS.addScheme(colorScheme);
+        }
     }
 
     private Resources()

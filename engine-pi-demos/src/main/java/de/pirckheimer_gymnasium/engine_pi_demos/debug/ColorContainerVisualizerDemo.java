@@ -7,6 +7,11 @@ import de.pirckheimer_gymnasium.engine_pi.debug.ColorContainerVisualizer;
 
 public class ColorContainerVisualizerDemo extends Scene
 {
+    static
+    {
+        Resources.COLORS.add("custom", 1, 200, 3);
+    }
+
     public ColorContainerVisualizerDemo()
     {
         new ColorContainerVisualizer(this);
