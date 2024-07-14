@@ -17,8 +17,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </p>
  *
  * <p>
- * Bei den Farbennamen wird sowohl die Klein- und Großschreibung als auch
- * Leerzeichen ignoriert. In den Farbennamen können sowohl deutschen Umlaute
+ * Bei den Farbnamen wird sowohl die Klein- und Großschreibung als auch
+ * Leerzeichen ignoriert. In den Farbnamen können sowohl deutschen Umlaute
  * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
  * der Unterstrich werden ebenfalls nicht berücksichtigt.
  * </p>
@@ -49,8 +49,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * „Grün-Gelb“, „Limetten Grün“, „Limette“, „Hellgrün“</li>
  * </ol>
  *
- * Diese Farben sind ebenfalls im Farbenspeicher enthalten (gehören aber nicht
- * zum Farbkreis von Itten):
+ * Diese Farben sind ebenfalls im Speicher für Farben enthalten (gehören aber
+ * nicht zum Farbkreis von Itten):
  *
  * <ul>
  * <li>{@code brown}: Braun</li>
@@ -92,7 +92,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine <b>Farbe</b> unter einem <b>Namen</b> hinzu.
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> unter einem <b>Namen</b>
+     * hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe.
@@ -106,7 +107,48 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe in <b>hexadezimaler</b> Codierung
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der drei
+     * Farbanteile und des Alphakanals in dezimaler Notation hinzu.
+     *
+     * @param name Der Farbname.
+     * @param r    Der Rotanteil der Farbe (0-255).
+     * @param g    Der Gelbanteil der Farbe (0-255).
+     * @param b    Der Blauanteil der Farbe (0-255).
+     * @param a    Der Alphakanal der Farbe (0-255).
+     *
+     * @return Die gleiche Farbe, die hinzugefügt wurde.
+     *
+     * @since 0.26.0
+     */
+    public Color add(String name, int r, int g, int b, int a)
+    {
+        Color color = new Color(r, g, b, a);
+        resources.put(normalizeName(name), color);
+        return color;
+    }
+
+    /**
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> durch Angabe der drei
+     * Farbanteile in dezimaler Notation hinzu.
+     *
+     * @param name Der Farbname.
+     * @param r    Der Rotanteil der Farbe (0-255).
+     * @param g    Der Gelbanteil der Farbe (0-255).
+     * @param b    Der Blauanteil der Farbe (0-255).
+     *
+     * @return Die gleiche Farbe, die hinzugefügt wurde.
+     *
+     * @since 0.26.0
+     */
+    public Color add(String name, int r, int g, int b)
+    {
+        Color color = new Color(r, g, b);
+        resources.put(normalizeName(name), color);
+        return color;
+    }
+
+    /**
+     * Fügt dem Speicher für Farben eine Farbe in <b>hexadezimaler</b> Codierung
      * unter einem <b>Namen</b> hinzu.
      *
      * @param name  Der Farbname.
@@ -120,8 +162,8 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine <b>Farbe</b> unter einem <b>Namen</b> und
-     * beliebig vieler <b>Aliasse</b> hinzu.
+     * Fügt dem Speicher für Farben eine <b>Farbe</b> unter einem <b>Namen</b>
+     * und beliebig vieler <b>Aliasse</b> hinzu.
      *
      * @param name  Der Farbname.
      * @param color Die Farbe.
@@ -139,7 +181,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt dem Farbenspeicher eine Farbe in <b>hexadezimaler</b> Codierung
+     * Fügt dem Speicher für Farben eine Farbe in <b>hexadezimaler</b> Codierung
      * unter einem Namen und beliebig vieler <b>Aliasse</b> hinzu.
      *
      * @param name  Der Farbname.
@@ -154,7 +196,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * Fügt <b>alle</b> Farben eines <b>Farbschemas</b> dem Farbenspeicher
+     * Fügt <b>alle</b> Farben eines <b>Farbschemas</b> dem Speicher für Farben
      * hinzu.
      *
      * <p>
@@ -165,7 +207,7 @@ public class ColorContainer implements Container<Color>
      * </p>
      *
      * <p>
-     * Die Reihenfolge der zusammengesetzten Tertiärfarbennamen ist eigentlich
+     * Die Reihenfolge der zusammengesetzten Tertiärfarbnamen ist eigentlich
      * festgelegt: Primärfarbname, dann Sekundärfarbname (Gelb-Orange nicht
      * Orange-Gelb). Wir fügen jedoch auch Namen mit der falschen Reihenfolge
      * zum Speicher hinzu.
@@ -173,10 +215,10 @@ public class ColorContainer implements Container<Color>
      *
      * <p>
      * Wird ein neues Farbschema gesetzt, werden alle sich bereits im Speicher
-     * befindenen Farben gelöscht.
+     * befindenden Farben gelöscht.
      * </p>
      *
-     * @param schema Das Farbschema, dessen Farben in den Farbenspeicher
+     * @param schema Das Farbschema, dessen Farben in den Speicher für Farben
      *               abgelegt werden soll.
      */
     public void addScheme(ColorScheme schema)
@@ -231,7 +273,7 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
-     * <b>Leert</b> den Farbenspeicher samt der Aliasse.
+     * <b>Leert</b> den Speicher für Farben samt der Aliasse.
      */
     public void clear()
     {
@@ -293,7 +335,7 @@ public class ColorContainer implements Container<Color>
      * @param name  Ein Farbname, ein Farbalias ({@link ColorContainer siehe
      *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
      *              B. {@code #ff0000}).
-     * @param alpha Der Alphakanal als Ganzzahl von 0 - 255.
+     * @param alpha Der Alphakanal als Ganzzahl von 0 bis 255.
      *
      * @return Eine vordefinierte Farbe.
      */
