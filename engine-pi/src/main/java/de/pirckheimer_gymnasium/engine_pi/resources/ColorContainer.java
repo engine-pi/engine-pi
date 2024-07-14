@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -210,10 +211,7 @@ public class ColorContainer implements Container<Color>
      */
     public Color add(String name, Color color, String... alias)
     {
-        for (String a : alias)
-        {
-            aliases.put(normalizeName(a), name);
-        }
+        addAlias(name, alias);
         return add(name, color);
     }
 
@@ -230,6 +228,15 @@ public class ColorContainer implements Container<Color>
     public Color add(String name, String color, String... alias)
     {
         return add(normalizeName(name), ColorUtil.decode(color), alias);
+    }
+
+    public void addAlias(String name, String... alias)
+    {
+        name = normalizeName(name);
+        for (String a : alias)
+        {
+            aliases.put(normalizeName(a), name);
+        }
     }
 
     /**
@@ -357,6 +364,29 @@ public class ColorContainer implements Container<Color>
             throw new RuntimeException("Unbekannte Farbe: " + name);
         }
         return color;
+    }
+
+    public NamedColor getNamedColor(String name)
+    {
+        name = normalizeName(name);
+        Color color = resources.get(name);
+        if (color == null)
+        {
+            String nameFromAlias = aliases.get(name);
+            if (nameFromAlias != null)
+            {
+                name = nameFromAlias;
+            }
+        }
+        ArrayList<String> a = new ArrayList<>();
+        for (Map.Entry<String, String> entry : aliases.entrySet())
+        {
+            if (entry.getValue().equals(name))
+            {
+                a.add(entry.getKey());
+            }
+        }
+        return new NamedColor(name, color, a);
     }
 
     /**

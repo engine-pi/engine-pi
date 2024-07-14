@@ -145,21 +145,35 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt eine neue Schriftart für den Text.
+     * Setzt eine neue Schriftart für den Text durch Angabe des Names.
      *
-     * @param fontName Name des neuen Fonts für den Text
+     * @param fontName Name des neuen Fonts für den Text.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public void setFont(String fontName)
+    public Text setFont(String fontName)
     {
         this.setFont(Resources.FONTS.get(fontName));
+        return this;
     }
 
+    /**
+     * Setzt eine neue Schriftart durch Angabe einer bereits geladenen
+     * Schriftart.
+     *
+     * @param font Eine bereits geladene Schriftart.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
+     */
     @API
-    public void setFont(Font font)
+    public Text setFont(Font font)
     {
         this.font = font.deriveFont(fontStyle, SIZE);
         this.update();
+        return this;
     }
 
     @API
@@ -172,9 +186,12 @@ public class Text extends Geometry
      * Setzt den Inhalt des Textes.
      *
      * @param content Der neue Inhalt des Textes.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public void setContent(String content)
+    public Text setContent(String content)
     {
         String normalizedContent = content;
         if (normalizedContent == null)
@@ -186,17 +203,22 @@ public class Text extends Geometry
             this.content = normalizedContent;
             update();
         }
+        return this;
     }
 
     /**
      * Setzt den Inhalt des Textes durch Angabe eines beliebigen Datentyps.
      *
      * @param content Der neue Inhalt des Textes in einem beliebigen Datentyp.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public void setContent(Object content)
+    public Text setContent(Object content)
     {
         setContent(String.valueOf(content));
+        return this;
     }
 
     @API
@@ -216,9 +238,12 @@ public class Text extends Geometry
      *              <br>
      *              Ist die Eingabe nicht eine dieser 4 Zahlen, so wird nichts
      *              geändert.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public void setStyle(int style)
+    public Text setStyle(int style)
     {
         if (style >= 0 && style <= 3 && style != fontStyle)
         {
@@ -226,6 +251,7 @@ public class Text extends Geometry
             font = font.deriveFont(style, SIZE);
             update();
         }
+        return this;
     }
 
     @API
@@ -234,14 +260,23 @@ public class Text extends Geometry
         return fontStyle;
     }
 
+    /**
+     * Setzt die Höhe in Meter.
+     *
+     * @param height Die Höhe in Meter.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
+     */
     @API
-    public void setHeight(double height)
+    public Text setHeight(double height)
     {
         if (this.height != height)
         {
             this.height = height;
             update();
         }
+        return this;
     }
 
     @API
@@ -257,11 +292,20 @@ public class Text extends Geometry
         return sizeInPixels.getX() * height / sizeInPixels.getY();
     }
 
+    /**
+     * Setzt die Breite des Texts in Meter.
+     *
+     * @param width Die Breite des Texts in Meter.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
+     */
     @API
-    public void setWidth(double width)
+    public Text setWidth(double width)
     {
         Vector sizeInPixels = FontMetrics.getSize(content, font);
         setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
+        return this;
     }
 
     @Internal

@@ -124,6 +124,6 @@ public class MainScene extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(600, 400, new MainScene());
+        Game.start(new MainScene(), 600, 400);
     }
 }

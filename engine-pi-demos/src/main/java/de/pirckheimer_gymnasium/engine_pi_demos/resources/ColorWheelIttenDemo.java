@@ -221,6 +221,6 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(520, 520, new ColorWheelIttenDemo());
+        Game.start(new ColorWheelIttenDemo(), 520, 520);
     }
 }
