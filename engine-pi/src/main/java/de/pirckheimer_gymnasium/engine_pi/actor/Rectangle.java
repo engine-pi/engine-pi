@@ -23,6 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import java.awt.Graphics2D;
 import java.util.function.Supplier;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
@@ -69,7 +70,7 @@ public class Rectangle extends Geometry
         // Die Farbe Rot stellt für Itten die körperhafte Materie dar. Sie wirkt
         // statisch und schwer. Er ordnet deshalb der Farbe die statische Form
         // des Quadrates zu.
-        setColor("red");
+        setColor(Resources.COLORS.getSafe("red"));
     }
 
     public Rectangle(double width, double height,

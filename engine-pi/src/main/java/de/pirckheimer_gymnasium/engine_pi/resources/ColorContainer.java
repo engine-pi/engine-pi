@@ -307,6 +307,82 @@ public class ColorContainer implements Container<Color>
     }
 
     /**
+     * Gibt <b>immer</b> eine <b>vordefinierte</b> Farbe zurück und wirft <b>nie
+     * eine Ausnahme</b>.
+     *
+     * <p>
+     * Die Farben können auch in hexadezimaler Schreibweise angegeben werden, z.
+     * B. {@code #ff0000}. Die Groß- und Kleinschreibung spielt keine Rolle.
+     * Auch Leerzeichen werden ignoriert.
+     * </p>
+     *
+     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *             Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
+     *             B. {@code #ff0000}).
+     *
+     * @return Eine vordefinierte Farbe.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setColor(String)
+     * @see de.pirckheimer_gymnasium.engine_pi.Scene#setBackgroundColor(String)
+     */
+    public Color getSafe(String name)
+    {
+        try
+        {
+            return get(name);
+        }
+        catch (Exception e)
+        {
+            // Ignore
+        }
+        ColorScheme scheme = ColorSchemeSelection.GNOME.getScheme();
+        return switch (normalizeName(name))
+        {
+        case "yellow", "gelb" -> scheme.getYellow();
+        // Tertiärfarbe
+        case "yelloworange", "orangeyellow", "gold", "gelborange", "orangegelb",
+                "golden", "dunkelgelb" ->
+            scheme.getYellowOrange();
+        // Sekundärfarbe
+        case "orange" -> scheme.getOrange();
+        // Tertiärfarbe
+        case "redorange", "orangered", "brickred", "brick", "rotorange",
+                "orangerot", "ziegelrot", "hellrot" ->
+            scheme.getRedOrange();
+        // Primärfarbe
+        case "red", "rot" -> scheme.getRed();
+        // Tertiärfarbe
+        case "redpurple", "purplered", "pink", "rotviolett", "violettrot",
+                "rosa" ->
+            scheme.getRedPurple();
+        // Sekundärfarbe
+        case "purple", "violet", "violett", "lila" -> scheme.getPurple();
+        // Tertiärfarbe
+        case "bluepurple", "purpleblue", "indigo", "violettblau",
+                "blauviolett" ->
+            scheme.getBluePurple();
+        // Primärfarbe
+        case "blue", "blau" -> scheme.getBlue();
+        // Tertiärfarbe
+        case "bluegreen", "greenblue", "cyan", "blaugruen", "gruenblau",
+                "tuerkis" ->
+            scheme.getBlueGreen();
+        // Sekundärfarbe
+        case "green", "gruen" -> scheme.getGreen();
+        // Tertiärfarbe
+        case "yellowgreen", "greenyellow", "lime", "limegreen", "gelbgruen",
+                "gruengelb", "limettengruen", "limette", "hellgruen" ->
+            scheme.getYellowGreen();
+        // andere Zusammensetzung, nicht nach Itten.
+        case "brown", "braun" -> scheme.getBrown();
+        case "white", "weiss" -> scheme.getWhite();
+        case "gray", "grey", "grau" -> scheme.getGray();
+        case "black", "schwarz" -> scheme.getBlack();
+        default -> Color.WHITE;
+        };
+    }
+
+    /**
      * Gibt <b>alle</b> Farben samt der Farbnamen als {@link Map} zurück.
      *
      * @return Alle Farben samt der Farbnamen als {@link Map} zurück.
@@ -342,6 +418,8 @@ public class ColorContainer implements Container<Color>
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setColor(String)
      * @see de.pirckheimer_gymnasium.engine_pi.Scene#setBackgroundColor(String)
+     *
+     * @throws RuntimeException Fall die Farbe nicht definiert ist.
      */
     public Color get(String name)
     {

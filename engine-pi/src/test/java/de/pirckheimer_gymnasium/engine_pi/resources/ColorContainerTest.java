@@ -24,6 +24,51 @@ public class ColorContainerTest
     }
 
     @Nested
+    class GetColorSafeTest
+    {
+        @Test
+        public void testPrimaryName()
+        {
+            assertNotNull(container.getSafe("blue"));
+        }
+
+        @Test
+        public void testAlias()
+        {
+            assertNotNull(container.getSafe("blau"));
+        }
+
+        @Test
+        public void testCaseInsensivity()
+        {
+            assertNotNull(container.getSafe("BLUE"));
+        }
+
+        @Test
+        public void testWhiteSpaces()
+        {
+            assertNotNull(container.getSafe("b l u e"));
+        }
+
+        @Test
+        public void testHexCode()
+        {
+            Color actual = container.getSafe("#aabbccdd");
+            Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
+            assertEquals(actual.getRed(), expected.getRed());
+            assertEquals(actual.getGreen(), expected.getGreen());
+            assertEquals(actual.getBlue(), expected.getBlue());
+            assertEquals(actual.getAlpha(), expected.getAlpha());
+        }
+
+        @Test
+        public void testNoException()
+        {
+            assertNotNull(container.getSafe("XXX"));
+        }
+    }
+
+    @Nested
     class GetColorTest
     {
         @Test

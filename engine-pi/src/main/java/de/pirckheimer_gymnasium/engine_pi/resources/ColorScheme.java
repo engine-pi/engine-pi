@@ -1444,10 +1444,10 @@ public class ColorScheme
 
     public static void main(String[] args)
     {
-        Game.start(1200, 400, new Scene()
+        Game.start(new Scene()
         {
             {
-                setBackgroundColor(Resources.getColor("#444444"));
+                setBackgroundColor(Resources.COLORS.get("#444444"));
                 int x = -16;
                 int labelY = -2;
                 for (Entry<String, Color> entry : Resources.COLORS.getAll()
@@ -1463,6 +1463,6 @@ public class ColorScheme
                     }
                 }
             }
-        });
+        }, 1200, 400);
     }
 }

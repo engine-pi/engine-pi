@@ -88,11 +88,6 @@ public final class Resources
         setColorScheme(selection.getScheme());
     }
 
-    public static Color getColor(String name)
-    {
-        return COLORS.get(name);
-    }
-
     /**
      * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für
      * Bild-Resourcen} vom Datentyp {@link java.awt.image.BufferedImage} bereit.
