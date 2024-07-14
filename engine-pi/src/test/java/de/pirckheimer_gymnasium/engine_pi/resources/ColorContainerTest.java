@@ -29,31 +29,31 @@ public class ColorContainerTest
         @Test
         public void testPrimaryName()
         {
-            assertNotNull(container.getSafe("blue"));
+            assertNotNull(container.getSafe("blue", 150));
         }
 
         @Test
         public void testAlias()
         {
-            assertNotNull(container.getSafe("blau"));
+            assertNotNull(container.getSafe("blau", 150));
         }
 
         @Test
         public void testCaseInsensivity()
         {
-            assertNotNull(container.getSafe("BLUE"));
+            assertNotNull(container.getSafe("BLUE", 150));
         }
 
         @Test
         public void testWhiteSpaces()
         {
-            assertNotNull(container.getSafe("b l u e"));
+            assertNotNull(container.getSafe("b l u e", 150));
         }
 
         @Test
         public void testHexCode()
         {
-            Color actual = container.getSafe("#aabbccdd");
+            Color actual = container.getSafe("#aabbccdd", 150);
             Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
             assertEquals(actual.getRed(), expected.getRed());
             assertEquals(actual.getGreen(), expected.getGreen());
@@ -64,7 +64,7 @@ public class ColorContainerTest
         @Test
         public void testNoException()
         {
-            assertNotNull(container.getSafe("XXX"));
+            assertNotNull(container.getSafe("XXX", 150));
         }
     }
 

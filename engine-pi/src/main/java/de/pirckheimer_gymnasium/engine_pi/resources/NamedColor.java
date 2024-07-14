@@ -1,10 +1,16 @@
 package de.pirckheimer_gymnasium.engine_pi.resources;
 
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
+
 import java.awt.Color;
 import java.util.List;
 
 /**
  * Speichert eine Farbe zusammen mit einem Hauptnamen und optional mehreren Aliassen.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.26.0
  */
 public class NamedColor
 {
@@ -39,10 +45,21 @@ public class NamedColor
         return color;
     }
 
+    public String getColorDecFormatted() {
+        return String.format("%s, %s, %s", color.getRed(), color.getGreen(), color.getBlue());
+    }
+
+    public String getColorHexFormatted() {
+        return ColorUtil.encode(color);
+
+    }
+
     public void setColor(Color color)
     {
         this.color = color;
     }
+
+
 
     public List<String> getAliases()
     {

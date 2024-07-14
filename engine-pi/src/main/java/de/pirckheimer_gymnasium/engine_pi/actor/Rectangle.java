@@ -70,7 +70,7 @@ public class Rectangle extends Geometry
         // Die Farbe Rot stellt für Itten die körperhafte Materie dar. Sie wirkt
         // statisch und schwer. Er ordnet deshalb der Farbe die statische Form
         // des Quadrates zu.
-        setColor(Resources.COLORS.getSafe("red"));
+        setColor(Resources.COLORS.getSafe("red", 150));
     }
 
     public Rectangle(double width, double height,

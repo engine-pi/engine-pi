@@ -53,9 +53,9 @@ public final class CoordinateSystemDrawer
         {
             int windowSizeInPixels = Math.max(width, height);
             int startX = (int) (position.getX()
-                    - windowSizeInPixels / 2 / pixelPerMeter);
+                    - windowSizeInPixels / 2.0 / pixelPerMeter);
             int startY = (int) ((-1 * position.getY())
-                    - windowSizeInPixels / 2 / pixelPerMeter);
+                    - windowSizeInPixels / 2.0 / pixelPerMeter);
             startX -= (startX % gridSizeInMeters) + gridSizeInMeters;
             startY -= (startY % gridSizeInMeters) + gridSizeInMeters;
             startX -= gridSizeInMeters;
@@ -65,7 +65,7 @@ public final class CoordinateSystemDrawer
                     + gridSizeInMeters * 2);
             g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, DEBUG_TEXT_SIZE));
             // Setzen der Gitterfarbe
-            g.setColor(Resources.COLORS.get("white", 150));
+            g.setColor(Resources.COLORS.getSafe("white", 150));
             for (int x = startX; x <= stopX; x += gridSizeInMeters)
             {
                 g.fillRect((int) (x * gridSizeFactor) - 1,

@@ -60,7 +60,7 @@ public class Graphics2DUtil
      */
     public static Font setFont(Graphics2D g, Font font)
     {
-        g.setColor(COLORS.get(FONT_COLOR));
+        g.setColor(COLORS.getSafe(FONT_COLOR));
         g.setFont(font);
         return font;
     }

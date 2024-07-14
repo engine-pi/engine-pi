@@ -48,7 +48,7 @@ public abstract class Geometry extends Actor
     public Geometry(Supplier<FixtureData> fixtureSupplier)
     {
         super(fixtureSupplier);
-        color = COLORS.getSafe("green");
+        color = COLORS.getSafe("green", 150);
     }
 
     /**

@@ -47,7 +47,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
     {
         setSize(width, height);
         setPreferredSize(getSize());
-        setBackground(Resources.COLORS.getSafe("black"));
+        setBackground(Resources.COLORS.getSafe("black", 150));
     }
 
     /**

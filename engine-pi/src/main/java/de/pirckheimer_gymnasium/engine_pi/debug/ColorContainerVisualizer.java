@@ -17,12 +17,6 @@ import java.util.Map;
  */
 public class ColorContainerVisualizer
 {
-    private static final double X_COLOR = -6;
-
-    private static final double X_NAME = -4;
-
-    private static final double X_ALIAS = 0;
-
     private static final Color WHITE = new Color(255, 255, 255);
 
     /**
@@ -38,12 +32,13 @@ public class ColorContainerVisualizer
         for (Map.Entry<String, Color> entry : container.getAll().entrySet())
         {
             NamedColor namedColor = container.getNamedColor(entry.getKey());
-            scene.addRectangle(1, 1).setPosition(X_COLOR, y)
+            scene.addRectangle(1, 1).setPosition(-6, y)
                     .setColor(namedColor.getColor());
             scene.addText(namedColor.getName()).setHeight(0.5)
-                    .setPosition(X_NAME, y + 0.25).setColor(WHITE);
+                    .setPosition(-4, y + 0.25).setColor(WHITE);
+            scene.addText(namedColor.getColorHexFormatted()).setHeight(0.5).setPosition(0, y).setColor(WHITE);
             scene.addText(namedColor.getAliasesFormatted()).setHeight(0.3)
-                    .setColor(WHITE).setPosition(X_ALIAS, y + 0.3);
+                    .setColor(WHITE).setPosition(2, y + 0.3);
             y--;
         }
     }

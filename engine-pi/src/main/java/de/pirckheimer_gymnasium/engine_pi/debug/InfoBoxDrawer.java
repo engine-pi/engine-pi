@@ -36,10 +36,10 @@ public final class InfoBoxDrawer
         // Einzelbilder pro Sekunden
         Graphics2DUtil.drawTextBox(g, "FPS: "
                 + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
-                10, COLORS.get("blue"));
+                10, COLORS.getSafe("blue"));
         // Anzahl an Figuren
         Graphics2DUtil.drawTextBox(g, "Actors: " + actorsCount, 50,
-                COLORS.get("green"));
+                COLORS.getSafe("green"));
         // Schwerkraft
         Vector gravity = scene.getGravity();
         Color gravityColor = Resources.colorScheme.getBluePurple();
