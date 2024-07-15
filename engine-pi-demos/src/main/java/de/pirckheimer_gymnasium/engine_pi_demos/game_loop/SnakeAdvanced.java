@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos.gameloop;
+package de.pirckheimer_gymnasium.engine_pi_demos.game_loop;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;

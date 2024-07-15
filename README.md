@@ -150,7 +150,7 @@ Game.start(400, 300, new HelloWorldVersion1());
 Beim nächste Codebeispiel handelt es sich um eine Erweiterung der Version 1 um
 geometrischen Figuren und Farbe.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
+Quellcode: [demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
 
 ```java
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -234,10 +234,10 @@ https://engine-alpha.org/wiki/v4.x/User_Input
 
 ![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyStrokeCounter.png)
 
-Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
+Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
 gedrückten Tasten (vollkommen egal, welche) festhält.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60)
+Quellcode: [demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60)
 
 ```java
 public class KeyStrokeCounterDemo extends Scene
@@ -299,12 +299,12 @@ Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
 Im [folgendem
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 ![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyEventDemo.png)
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDemo.java#L23-L69)
+Quellcode: [demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java#L23-L68)
 
 ```java
 import java.awt.event.KeyEvent;
@@ -360,12 +360,12 @@ Key`](https://stackoverflow.com/a/70191567). Diese Klassenattribute können in
 einer `switch`-Kontrollstruktur zur Fallunterscheidung verwendet werden.
 
 Das [nächste
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDisplayDemo.java)
 zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40)
+Quellcode: [demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40)
 
 ```java
 public class KeyEventDisplayDemo extends Scene
@@ -403,12 +403,12 @@ https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 ![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.gif)
 
 Das [folgende
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java)
 malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54](https://github.com/engine-pi/engine-pi/blob/ddae75531cadc170a95cc6e9b4dca0ad18a34327/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesDemo.java#L23-L54)
+Quellcode: [demos/input/mouse/PaintingCirclesDemo.java#L23-L54](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java#L23-L54)
 
 ```java
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
@@ -463,7 +463,7 @@ https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
 ![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.gif)
 
-[PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+Quellcode: [demos/input/mouse/PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
 ### Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten
 
@@ -515,6 +515,8 @@ Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
 ![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Minimal.gif)
+
+Quellcode: [demos/game_loop/SnakeMinimal.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java)
 
 ```java
 public class SnakeMinimal extends Scene
@@ -972,7 +974,7 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
-https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/DominoesDemo.java
+https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java
 
 ```java
 public class DominoesDemo extends Scene
@@ -1136,7 +1138,7 @@ Interface `MouseClickListener` implementiert:
 
 ### Schwerkraft
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/GravityDemo.java)
 
 ```java
 public class GravityDemo extends Scene implements KeyStrokeListener
@@ -1184,7 +1186,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
 public class ElasticityDemo extends Scene
@@ -1229,7 +1231,7 @@ public class ElasticityDemo extends Scene
 
 ### Dichte
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/DensityDemo.java)
 
 ```java
 public class DensityDemo extends Scene implements KeyStrokeListener
@@ -1773,7 +1775,7 @@ In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
 halt.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java)
+Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
@@ -1996,7 +1998,7 @@ Reihe die Komplementärfarben der entsprechenden Bilder.
 
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_derived_complementary-color.png)
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/actor/ImageAverageColorDemo.java)
+Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
 ```java
 import de.pirckheimer_gymnasium.engine_pi.Game;
