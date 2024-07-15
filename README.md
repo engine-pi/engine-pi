@@ -15,7 +15,7 @@ und [Niklas Keller](https://github.com/kelunik) und zwar ein Fork der Core Engin
 Die Engine-Alpha-Edu Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
 Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
-Audio-Wiedergabe unterstützt, wurde Code der Sound-Engine der
+Audio-Wiedergabe unterstützt, wurde der Audio-Code der
 [LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine Pi übernommen.
 Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
 [Steffen Wilke](https://github.com/steffen-wilke)
@@ -27,6 +27,37 @@ Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
 [Engine Alpha Wiki](https://engine-alpha.org), die unter der
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
+
+## Verwendung
+
+Im Gegensatz zur Engine Alpha ist die
+[Engine Pi](https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/engine-pi)
+über das wichtigste Repository für Java-Projekte das sogenannte
+[Maven Central Repository](https://central.sonatype.com) abrufbar.
+
+### BlueJ-Projekt
+
+Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>.jar` herunterladen (z. B. [engine-pi-0.25.0.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.25.0/engine-pi-0.25.0.jar)),
+einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
+
+### Maven-Projekt
+
+https://github.com/engine-pi/maven-boilerplate
+
+In der Projekt-Datei `pom.xml` ist die Engine Pi als
+Abhängigkeit (`dependency`) hinterlegt.
+
+```xml
+<project>
+  <dependencies>
+    <dependency>
+      <groupId>de.pirckheimer-gymnasium</groupId>
+      <artifactId>engine-pi</artifactId>
+      <version>0.25.0</version>
+    </dependency>
+  </dependencies>
+</project>
+```
 
 ## Koordinatensystem
 
@@ -1362,6 +1393,8 @@ stets als [enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) 
 Diese enum definiert die Spielerzustände und speichert gleichzeitig die
 Dateipfade der zugehörigen GIF-Dateien.
 
+https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/PlayerState.java
+
 ```java
 public enum PlayerState
 {
@@ -1390,6 +1423,8 @@ erreichbar. Dies macht den Code deutlich wartbarer.
 
 Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
+
+https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java
 
 ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
@@ -1454,6 +1489,8 @@ sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
 ![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
 
+https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java
+
 ```java
 public class StatefulAnimationDemo extends Scene
 {
@@ -1500,6 +1537,8 @@ zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungrou
 
 ![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
 
+https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104
+
 ```java
 private void attemptJump()
 {
@@ -1534,7 +1573,7 @@ prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
 ![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
 
 ```java
 @Override
@@ -1587,6 +1626,8 @@ bereits folgende Reibung für die Figur aktiviert:
 Die Maximalgeschwindigkeit sowie die konstant wirkende Kraft setzen wir als
 Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 
+https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43
+
 ```java
 private static final Float MAX_SPEED = 20;
 private static final float FORCE = 16000;
@@ -1598,7 +1639,7 @@ Methode `onFrameUpdate(double pastTime)` erweitert:
 ![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
 ```java
 //In: onFrameUpdate(double pastTime)
@@ -1635,7 +1676,7 @@ Zuständen nur vom Betrag ihrer Geschindigkeit ab:
 Um die Begriffe „langsam“ und „schnell“ greifbar zu machen, ist einen Grenzwert
 nötig. Dazu definieren wir Konstanten in der Figur:
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39)
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39)
 
 ```java
 private static final double RUNNING_THRESHOLD = 10;
@@ -1654,7 +1695,7 @@ die neue `onFrameUpdate(...)`:
 ![Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
 
 ```java
 @Override
@@ -1731,26 +1772,20 @@ festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 
 ## Zeitsteuerung
 
+https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/event/RepeatDemo.java
+
 ```java
-import java.awt.event.KeyEvent;
-
-import de.pirckheimer_gymnasium.engine_pi.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-
-public class RepeatExample extends Scene
+public class RepeatDemo extends Scene
 {
-    public RepeatExample()
+    public RepeatDemo()
     {
+        setBackgroundColor("white");
         add(new CounterText());
     }
 
     private class CounterText extends Text
     {
-        private int counter = 0;
-
-        FrameUpdateListener listener;
+        PeriodicTaskExecutor task;
 
         public CounterText()
         {
@@ -1760,7 +1795,7 @@ public class RepeatExample extends Scene
             addKeyStrokeListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
                 {
-                    if (listener == null)
+                    if (task == null)
                     {
                         start();
                     }
@@ -1774,22 +1809,22 @@ public class RepeatExample extends Scene
 
         public void start()
         {
-            listener = repeat(1, () -> {
+            task = repeat(1, (counter) -> {
                 counter++;
-                setContent(String.valueOf(counter));
+                setContent(counter);
             });
         }
 
         public void stop()
         {
-            removeFrameUpdateListener(listener);
-            listener = null;
+            task.unregister();
+            task = null;
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(400, 200, new RepeatExample());
+        Game.start(new RepeatDemo());
     }
 }
 ```
@@ -1810,7 +1845,7 @@ In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
 halt.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
+Quellcode: [demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
@@ -1995,6 +2030,8 @@ unterschiedlich behandelt werden:
 
 Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
+https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java#L172-L197
+
 ```java
 class Platform extends Rectangle implements CollisionListener<Frog>
 {
@@ -2033,7 +2070,7 @@ Reihe die Komplementärfarben der entsprechenden Bilder.
 
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_derived_complementary-color.png)
 
-<small>Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)</small>
+Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
 ```java
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -2079,16 +2116,15 @@ public class ImageAverageColorDemo extends Scene
 
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Shapes-only.png)
 
-
 ## Java
 
 ### Java-Entwicklungsumgebung: IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
 
-Eine integrierte Entwicklungsumgebung (IDE, von englisch integrated development environment) ist
-eine Sammlung von Computerprogrammen, mit denen die Aufgaben der Softwareentwicklung
-möglichst ohne Medienbrüche bearbeitet werden können.
+Eine integrierte Entwicklungsumgebung (IDE, von englisch *integrated development
+environment*) ist eine Sammlung von Computerprogrammen, mit denen die Aufgaben
+der Softwareentwicklung möglichst ohne Medienbrüche bearbeitet werden können.[^wikipedia-ide]
 
-<small>Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung)</small>
+[^wikipedia-ide] https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung
 
 #### Bekannte IDEs
 
@@ -2096,38 +2132,6 @@ möglichst ohne Medienbrüche bearbeitet werden können.
 - [Visual Studio Code](https://code.visualstudio.com): von Microsoft entwickelt, für alle Sprachen einsetzbar, wegen vieler Erweiterungen, läuft auf Google Chrome
 - [Eclipse](https://www.eclipse.org/downloads)
 - [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea): auf Java spezialisiert
-
-Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/idea/download/other.html) ein.
-
-### Game-Engine
-
-Als Game-Engine kommt die [Engine Alpha](https://engine-alpha.org) zum Einsatz.
-Der [Quell-Code](https://github.com/engine-alpha/engine-alpha) ist
-auf Github gehostet. Die Engine Alpha wurde und wird von
-[Michael Andonie](https://github.com/andonie)
-und [Niklas Keller](https://github.com/kelunik) entwickelt.
-
-Wir setzen jedoch einen Fork der Engine Alpha ein,
-genannt [Engine Omega](https://github.com/Josef-Friedrich/engine-omega).
-Im Gegensatz zur originalen Engine ist die
-[Engine Omega](https://central.sonatype.com/artifact/de.pirckheimer_gymnasium.engine_pi/engine-omega)
-über das wichtigste Repository für Java-Projekte das sogenannte
-[Maven Central Repository](https://central.sonatype.com) abrufbar.
-
-In der Projekt-Datei `pom.xml` ist die Engine Omega als
-Abhängigkeit (`dependency`) hinterlegt.
-
-```xml
-<project>
-  <dependencies>
-    <dependency>
-      <groupId>de.pirckheimer_gymnasium.engine_pi</groupId>
-      <artifactId>engine-omega</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-  </dependencies>
-</project>
-```
 
 ### Java-Paketnamen
 
@@ -2138,8 +2142,8 @@ Konvention für Paketnamen herausgebildet:
 - Paketnamen sind durch Punkte getrennt.
 - Der Anfang des Paketnamens wird durch die Organisation bestimmt, die sie erstellt.
 
-Um den Paketnamen auf der Grundlage einer Organisation zu bestimmen, wird die URL der Organisation umgedreht.
-Beispielsweise wird aus der URL
+Um den Paketnamen auf der Grundlage einer Organisation zu bestimmen, wird die
+URL der Organisation umgedreht. Beispielsweise wird aus der URL
 
     https://pirckheimer-gymnasium.de/tetris
 
