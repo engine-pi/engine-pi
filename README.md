@@ -638,6 +638,8 @@ Hilfe! `v = s/t` und damit `s = v\*t`. Jeden Frame erhält die Snake die
 tatsächlich vergangene Zeit `t` seit dem letzten Frame-Update und verrechnet
 diese mit ihrer aktuellen Geschwindigkeit `v`:
 
+Quellcode: [demos/game_loop/SnakeMinimal.java#L86-L89](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L86-L89)
+
 ```java
 @Override
 public void onFrameUpdate(double timeInS)
@@ -651,6 +653,8 @@ public void onFrameUpdate(double timeInS)
 Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
 welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
 `KeyStrokeListener` gelöst wie im vorigen Tutorial:
+
+Quellcode: [demos/game_loop/SnakeMinimal.java#L92-L113](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L92-L113)
 
 ```java
 @Override
@@ -691,6 +695,8 @@ Vorteile hiervon kannst du in der Dokumentation durchstöbern.
 Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert,
 das Goodie entfernt, und ein neues Goodie platziert werden.
 
+Quellcode: [demos/game_loop/SnakeMinimal.java#L124-L130](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L124-L130)
+
 ```java
 @Override
 public void onCollision(CollisionEvent<Snake> collisionEvent)
@@ -707,6 +713,8 @@ Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf
 Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener
 spezifisch mit der Schlange angemeldet:
 
+Quellcode: [demos/game_loop/SnakeMinimal.java#L64-L72](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L64-L72)
+
 ```java
 public void placeRandomGoodie()
 {
@@ -722,6 +730,9 @@ public void placeRandomGoodie()
 <!-- ### Anregung zum Experimentieren -->
 
 ![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Advanced.gif)
+
+Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeAdvanced.java)
+
 
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
@@ -761,6 +772,8 @@ es die Methode `Game.transitionToScene(Scene)`.
 
 Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
 Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
+
+Quellcode: [demos/scenes/MainScene.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java)
 
 ```java
 public class MainScene extends Scene implements KeyStrokeListener
@@ -869,13 +882,19 @@ Spiel stattfinden. Dieses Tutorial zeigt stattdessen eine kleine Animation.
 Die zweite Szene heißt `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
 kleinen Knopf, um das Menü wieder zu verlassen.
 
+Quellcode: [demos/scenes/MainScene.java#L36-L38](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L36-L38)
+
 ```java
 public class MainScene extends Scene
 {
     private Scene pauseMenu;
     //...
 }
+```
 
+Quellcode: [demos/scenes/MainScene.java#L70-L72](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L70-L72)
+
+```java
 private class PauseMenu extends Scene
 {
     private Scene mainScene;
@@ -885,6 +904,8 @@ private class PauseMenu extends Scene
 
 Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird
 die Transition ausgeführt:
+
+Quellcode: [demos/scenes/MainScene.java#L65-L68](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L65-L68)
 
 ```java
 private void gotoPause()
@@ -897,6 +918,8 @@ Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen
 Steuerelement `MenuItem` wird dafür die entsprechende Methode aufgerufen, wann
 immer ein Mausklick auf dem Element landet - dies wird durch die Methode
 `contains(Vector)` geprüft:
+
+Quellcode: [demos/scenes/MainScene.java#L102-L108](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L102-L108)
 
 ```java
 @Override
@@ -912,8 +935,10 @@ public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
 <!-- ### Kosmetische Kleinigkeiten -->
 
 In der Hauptszene findet eine interpolierte Rotationsanimation statt. Diese
-rotiert ein oranges Rechteck wiederholend um den Punkt (0|0). Eine volle
-Rotation im Uhrzeigersinn dauert 8 Sekunden.
+rotiert ein oranges Rechteck wiederholend um den Punkt `(0|0)`. Eine volle
+Rotation im Uhrzeigersinn dauert `8` Sekunden.
+
+Quellcode: [demos/scenes/MainScene.java#L43-L49][https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L43-L49]
 
 ```java
 Rectangle toAnimate = new Rectangle(5, 2);
@@ -929,6 +954,8 @@ Das Pausenmenü hat einen Hover-Effekt. Hierzu wird in jeden Einzelbild
 überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 `Game.getMousePositionInCurrentScene()` genutzt:
+
+Quellcode: [demos/scenes/MainScene.java#L111-L121](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L111-L121)
 
 ```java
 @Override
@@ -974,7 +1001,7 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
-https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java
+Quellcode: [demos/physics/DominoesDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java)
 
 ```java
 public class DominoesDemo extends Scene
@@ -1050,14 +1077,16 @@ hält den Fall
 In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
 die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 
+Quellcode: [demos/physics/DominoesDemo.java#L77-L83](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L77-L83)
+
 ```java
-    private void setupPhysics()
-    {
-        ground.makeStatic();
-        wall.makeDynamic();
-        ball.makeDynamic();
-        setGravityOfEarth();
-    }
+private void setupPhysics()
+{
+    ground.makeStatic();
+    wall.makeDynamic();
+    ball.makeDynamic();
+    setGravityOfEarth();
+}
 ```
 
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
@@ -1086,13 +1115,15 @@ Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
 Impulses markiert:
 
+Quellcode: [demos/physics/DominoesDemo.java#L70-L75](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L70-L75)
+
 ```java
-    private void setupAngle()
-    {
-        angle = new Rectangle(1, 0.1);
-        angle.setColor(Color.GREEN);
-        add(angle);
-    }
+private void setupAngle()
+{
+    angle = new Rectangle(1, 0.1);
+    angle.setColor(Color.GREEN);
+    add(angle);
+}
 ```
 
 ![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_4-Wurfwinkel-Visualisierung.gif)
@@ -1103,30 +1134,34 @@ Dafür implementiert die Dominoes-Klasse das Interface `FrameUpdateListener` und
 berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
 den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
+Quellcode: [demos/physics/DominoesDemo.java#L98-L107](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L98-L107)
+
 ```java
-    @Override
-    public void onFrameUpdate(double pastTime)
-    {
-        Vector mousePosition = getMousePosition();
-        Vector ballCenter = ball.getCenter();
-        Vector distance = ballCenter.getDistance(mousePosition);
-        angle.setPosition(ball.getCenter());
-        angle.setWidth(distance.getLength());
-        double rot = Vector.RIGHT.getAngle(distance);
-        angle.setRotation(rot);
-    }
+@Override
+public void onFrameUpdate(double pastTime)
+{
+    Vector mousePosition = getMousePosition();
+    Vector ballCenter = ball.getCenter();
+    Vector distance = ballCenter.getDistance(mousePosition);
+    angle.setPosition(ball.getCenter());
+    angle.setWidth(distance.getLength());
+    double rot = Vector.RIGHT.getAngle(distance);
+    angle.setRotation(rot);
+}
 ```
 
 Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
 Interface `MouseClickListener` implementiert:
 
+Quellcode: [demos/physics/DominoesDemo.java#L110-L114](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L110-L114)
+
 ```java
-    @Override
-    public void onMouseDown(Vector position, MouseButton button)
-    {
-        Vector impulse = ball.getCenter().getDistance(position).multiply(5);
-        ball.applyImpulse(impulse);
-    }
+@Override
+public void onMouseDown(Vector position, MouseButton button)
+{
+    Vector impulse = ball.getCenter().getDistance(position).multiply(5);
+    ball.applyImpulse(impulse);
+}
 ```
 
 - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
@@ -1138,7 +1173,7 @@ Interface `MouseClickListener` implementiert:
 
 ### Schwerkraft
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/GravityDemo.java)
+Quellcode: [demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/GravityDemo.java)
 
 ```java
 public class GravityDemo extends Scene implements KeyStrokeListener
@@ -1186,7 +1221,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/ElasticityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/ElasticityDemo.java)
+Quellcode: [demos/physics/single_aspects/ElasticityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/ElasticityDemo.java)
 
 ```java
 public class ElasticityDemo extends Scene
@@ -1231,7 +1266,7 @@ public class ElasticityDemo extends Scene
 
 ### Dichte
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/physics/single_aspects/DensityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/DensityDemo.java)
+Quellcode: [demos/physics/single_aspects/DensityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/DensityDemo.java)
 
 ```java
 public class DensityDemo extends Scene implements KeyStrokeListener
