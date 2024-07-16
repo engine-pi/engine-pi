@@ -397,9 +397,9 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see Layer#setGravity(Vector)
      * @see Layer#setGravity(double, double)
      *
-     * @jbox2d <a href=
+     * @jbox.2d <a href=
      *         "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a>
-     * @box2d <a href=
+     * @box.2d <a href=
      *        "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
@@ -422,9 +422,9 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see Layer#setGravity(Vector)
      * @see Layer#setGravity(double, double)
      *
-     * @jbox2d <a href=
+     * @jbox.2d <a href=
      *         "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a>
-     * @box2d <a href=
+     * @box.2d <a href=
      *        "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
