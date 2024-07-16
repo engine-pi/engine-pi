@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.26.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.26.0) - 2024-07-16
+
+<small>[Compare with v0.25.0](https://github.com/engine-pi/engine-pi/compare/v0.25.0...v0.26.0)</small>
+
+### Added
+
+- Add new class `ColorContainerVisualizer` ([8bb5ca7](https://github.com/engine-pi/engine-pi/commit/8bb5ca72933209822fe1160fa8f8a964c7df2f2d) by Josef Friedrich).
+- Add method overload ColorContainer.add(String, int, int, int, int) ([3719d25](https://github.com/engine-pi/engine-pi/commit/3719d2548254ee4e0a882f12d6b016db59172749) by Josef Friedrich).
+- Add new overload for Animation.createFromImages ([5a05c09](https://github.com/engine-pi/engine-pi/commit/5a05c09c7c1e06c7adcf0142b733808e30d1a477) by Josef Friedrich).
+- Add new class `LetterTileMap` ([3d5f3a6](https://github.com/engine-pi/engine-pi/commit/3d5f3a62bc79e49b2590de3a940dead579868124) by Josef Friedrich).
+- Add new class `StateFulImagesAnimation`
+- Add new class `NamedColor`
+
+### Changed
+
+- Default zoom is new 32 instead of 30 Pixel per meter.
+
 ## [v0.25.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.25.0) - 2024-07-12
 
 <small>[Compare with v0.24.0](https://github.com/engine-pi/engine-pi/compare/v0.24.0...v0.25.0)</small>
