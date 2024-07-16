@@ -75,7 +75,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     private static final Color PRISMATIC_JOINT_COLOR = Color.GREEN;
 
     /**
-     * Die Kamera des Spiels. Hiermit kann der sichtbare Ausschnitt der
+     * Die <b>Kamera</b> der Szene. Hiermit kann der sichtbare Ausschnitt der
      * Zeichenebene bestimmt und manipuliert werden.
      */
     private final Camera camera;
@@ -227,10 +227,66 @@ public class Scene implements KeyStrokeListenerRegistration,
         return mainLayer.getVisibleArea(gameSizeInPixels);
     }
 
+    /**
+     * Gibt die <b>Kamera</b> der Szene aus.
+     *
+     * @return Die <b>Kamera</b> der Szene aus.
+     */
     @API
     public final Camera getCamera()
     {
         return camera;
+    }
+
+    /**
+     * Setzt die <b>Anzahl an Pixel</b>, die einem <b>Meter</b> entsprechen und
+     * setzt somit den „Zoom“ der Kamera.
+     *
+     * <p>
+     * Die Anzahl an Pixel eines Meters bestimmt wie „nah“ oder „fern“ die
+     * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
+     * <code>32</code> Pixel. Größer Werte zoomen näher an die Spielfläche
+     * heran, kleine Werte weiter von der Spielfläche weg.
+     * </p>
+     *
+     * <p>
+     * Bei dieser Methode handelt es sich um eine Abkürzung. Statt
+     * {@code getCamera().setMeter(double)} braucht nur {@code setMeter(double)}
+     * geschrieben werden.
+     * </p>
+     *
+     * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
+     *
+     * @see Camera#setMeter(double)
+     */
+    @API
+    public void setMeter(double pixelCount)
+    {
+        camera.setMeter(pixelCount);
+    }
+
+    /**
+     * Setzt den <b>Fokus</b> der Kamera auf eine <b>Figur</b>.
+     *
+     * <p>
+     * Dieses Objekt ist ab dann im „Zentrum“ der Kamera. Die Art des Fokus
+     * (rechts, links, oben, unten, mittig, etc.) kann über die Methode
+     * {@link Camera#setOffset(Vector)} geändert werden. Soll das Fokusverhalten
+     * beendet werden, kann einfach {@code null} übergeben werden, dann bleibt
+     * die Kamera bis auf Weiteres in der aktuellen Position.
+     *
+     * <p>
+     * Bei dieser Methode handelt es sich um eine Abkürzung. Statt
+     * {@code getCamera().setFocus(Actor)} braucht nur {@code setFocus(Actor)}
+     * geschrieben werden.
+     * </p>
+     *
+     * @param focus Die Figur, die fokussiert werden soll.
+     */
+    @API
+    public void setFocus(Actor focus)
+    {
+        camera.setFocus(focus);
     }
 
     @Internal

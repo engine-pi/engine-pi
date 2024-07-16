@@ -66,7 +66,7 @@ public final class Camera
     /**
      * Der Standardwert für die Anzahl an Pixel eines Meters.
      */
-    public static final double DEFAULT_METER = 30;
+    public static final double DEFAULT_METER = 32;
 
     /**
      * Aktuelle Position des Mittelpunkts der Kamera.
@@ -109,7 +109,8 @@ public final class Camera
     }
 
     /**
-     * Setzt den Fokus der Kamera auf ein Objekt.
+     * Setzt den <b>Fokus</b> der Kamera auf eine <b>Figur</b>.
+     *
      * <p>
      * Dieses Objekt ist ab dann im „Zentrum“ der Kamera. Die Art des Fokus
      * (rechts, links, oben, unten, mittig, etc.) kann über die Methode
@@ -117,7 +118,7 @@ public final class Camera
      * beendet werden, kann einfach {@code null} übergeben werden, dann bleibt
      * die Kamera bis auf Weiteres in der aktuellen Position.
      *
-     * @param focus Der Fokus.
+     * @param focus Die Figur, die fokussiert werden soll.
      */
     @API
     public void setFocus(Actor focus)
@@ -199,18 +200,19 @@ public final class Camera
     }
 
     /**
-     * Setzt die Anzahl an Pixel, die einem Meter entsprechen und setzt somit
-     * den „Zoom“ der Kamera.
+     * Setzt die <b>Anzahl an Pixel</b>, die einem <b>Meter</b> entsprechen und
+     * setzt somit den „Zoom“ der Kamera.
      *
      * <p>
      * Die Anzahl an Pixel eines Meters bestimmt wie „nah“ oder „fern“ die
      * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
-     * <code>30</code> Pixel. Große Werte zoomen rein, kleine Werte raus.
+     * <code>32</code> Pixel. Größer Werte zoomen näher an die Spielfläche
+     * heran, kleine Werte weiter von der Spielfläche weg.
      * </p>
      *
      * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
      *
-     *
+     * @see Scene#setMeter(double)
      */
     @API
     public void setMeter(double pixelCount)

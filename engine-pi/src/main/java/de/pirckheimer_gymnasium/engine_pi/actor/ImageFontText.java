@@ -10,6 +10,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  * @author Josef Friedrich
  *
  * @since 0.23.0
+ *
+ * @see ImageFont
  */
 public class ImageFontText extends Image
 {

@@ -31,7 +31,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
+ *
  * @since 0.23.0
+ *
+ * @see ImageFontText
  */
 public class ImageFont
 {
@@ -188,6 +191,7 @@ public class ImageFont
      * Setzt die Höhe der Buchstabenbilder in Pixel.
      *
      * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -203,6 +207,7 @@ public class ImageFont
      *
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *              umgefärbt werden soll.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -228,6 +233,7 @@ public class ImageFont
      * Setzt die Dateierweiterung der Buchstabenbilder.
      *
      * @param extension Die Dateierweiterung der Buchstabenbilder.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -244,6 +250,7 @@ public class ImageFont
      *                            Beispielsweise verwandelt die Zahl {@code 3}
      *                            ein Pixel in {@code 9 Pixel} der Abmessung
      *                            {@code 3x3}.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -268,6 +275,8 @@ public class ImageFont
     }
 
     /**
+     * Setzt die die Handhabung der Groß- und Kleinschreibung.
+     *
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
@@ -361,6 +370,9 @@ public class ImageFont
     }
 
     /**
+     * Setzt, ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen
+     * werden soll oder nicht.
+     *
      * @param throwException Ob bei einem nicht vorhandenen Zeichen eine
      *                       Fehlermeldung geworfen werden soll oder nicht.
      *
@@ -383,9 +395,22 @@ public class ImageFont
         return String.valueOf(glyph);
     }
 
-    public void addMapping(char letter, String filename)
+    /**
+     * Ordnet einem Zeichen einem Bilder-Dateinamen zu. Nicht alle Zeichen wie
+     * zum Beispiel der Schrägstrich oder der Doppelpunkt können als Dateinamen
+     * verwendet werden.
+     *
+     * @param letter   Das Zeichen
+     * @param filename Der Dateiname des Bilds ohne Dateierweiterung, das ein
+     *                 Zeichen darstellt, relativ zu {@link #basePath}
+     *
+     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
+     *         Punktschreibweise verkettet werden können.
+     */
+    public ImageFont addMapping(char letter, String filename)
     {
         map.put(letter, filename);
+        return this;
     }
 
     private String getImagePath(char glyph)
@@ -448,6 +473,7 @@ public class ImageFont
      *                            Beispielsweise verwandelt die Zahl {@code 3}
      *                            ein Pixel in {@code 9 Pixel} der Abmessung
      *                            {@code 3x3}.
+     *
      * @return Ein Bild.
      */
     public BufferedImage render(String content, int lineWidth,
@@ -494,6 +520,7 @@ public class ImageFont
      * Setzt den gegebenen Textinhalt in ein Bild.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     *
      * @return Ein Bild.
      */
     public BufferedImage render(String content)
@@ -502,6 +529,9 @@ public class ImageFont
                 pixelMultiplication);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

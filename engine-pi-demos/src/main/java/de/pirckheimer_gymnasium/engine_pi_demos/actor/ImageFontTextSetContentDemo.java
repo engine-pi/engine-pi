@@ -27,6 +27,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import java.awt.event.KeyEvent;
 
 /**
+ * Demonstiert die Methode {@link ImageFontText#setContent(String)} der Klasse
+ * {@link ImageFontText}. Bei jedem Aufruf der Methode wird eine neues Bilder
+ * erzeugt.
+ *
  * @author Josef Friedrich
  */
 public class ImageFontTextSetContentDemo extends Scene
@@ -36,7 +40,7 @@ public class ImageFontTextSetContentDemo extends Scene
 
     public ImageFontTextSetContentDemo()
     {
-        ImageFont font = new ImageFont("pixel-text",
+        ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
         textField = new ImageFontText(font,
                 "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 25,
@@ -61,6 +65,6 @@ public class ImageFontTextSetContentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextSetContentDemo(), 1020, 520);
+        Game.start(new ImageFontTextSetContentDemo());
     }
 }

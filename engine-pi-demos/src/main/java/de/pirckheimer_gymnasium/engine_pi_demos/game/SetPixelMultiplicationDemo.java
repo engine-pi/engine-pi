@@ -17,7 +17,7 @@ public class SetPixelMultiplicationDemo extends Scene
         Actor image = addImage(
                 "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
                 1, 1);
-        getCamera().setFocus(image);
+        setFocus(image);
         setBackgroundColor("white");
     }
 

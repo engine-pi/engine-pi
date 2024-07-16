@@ -20,8 +20,6 @@ import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
 import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
 
-import java.awt.Color;
-
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
@@ -30,23 +28,30 @@ import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
+ * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
+ *
  * @author Josef Friedrich
+ *
+ * @see de.pirckheimer_gymnasium.engine_pi.util.TextAlignment
+ * @see de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText
  */
 public class ImageFontTextAlignmentDemo extends Scene
 {
+    ImageFont font = new ImageFont("image-font/tetris",
+            ImageFontCaseSensitivity.TO_UPPER);
+
     public ImageFontTextAlignmentDemo()
     {
-        setBackgroundColor(Color.GRAY);
-        createTextLine(3, LEFT);
-        createTextLine(0, CENTER);
-        createTextLine(-3, RIGHT);
+        getCamera().setMeter(32);
+        setBackgroundColor("gray");
+        createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
+        createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
+        createTextLine(-7, "Dieser Text ist rechtsbuendig ausgerichtet.", RIGHT);
     }
 
-    private void createTextLine(int y, TextAlignment alignment)
+    private void createTextLine(int y, String content, TextAlignment alignment)
     {
-        ImageFont font = new ImageFont("pixel-text",
-                ImageFontCaseSensitivity.TO_UPPER);
-        ImageFontText line = new ImageFontText(font, "Hello, World.", 18,
+        ImageFontText line = new ImageFontText(font, content, 18,
                 alignment);
         line.setPosition(-9, y);
         add(line);
@@ -54,7 +59,6 @@ public class ImageFontTextAlignmentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextAlignmentDemo(), 1020, 520);
-        Game.setTitle("Text Example");
+        Game.start(new ImageFontTextAlignmentDemo());
     }
 }

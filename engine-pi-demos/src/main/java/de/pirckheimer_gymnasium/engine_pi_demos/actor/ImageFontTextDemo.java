@@ -1,13 +1,13 @@
 package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ImageFontTextDemo extends Scene
 {
@@ -17,10 +17,9 @@ public class ImageFontTextDemo extends Scene
 
     public ImageFontTextDemo()
     {
-        setBackgroundColor("yellow");
-        ImageFont font = new ImageFont("pixel-text",
+        setBackgroundColor("white");
+        ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
-        getCamera().setMeter(8);
         helloWorld = new ImageFontText(font, "Hello, World.\nHello, Universe");
         AtomicInteger counter = new AtomicInteger();
         counterText = new ImageFontText(font, "0", 10, TextAlignment.RIGHT);
@@ -34,7 +33,6 @@ public class ImageFontTextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextDemo(), 1020, 520);
-        Game.setTitle("Text Example");
+        Game.start(new ImageFontTextDemo());
     }
 }

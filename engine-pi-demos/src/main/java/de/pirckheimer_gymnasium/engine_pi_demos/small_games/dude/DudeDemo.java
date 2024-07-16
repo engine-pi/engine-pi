@@ -74,7 +74,7 @@ public class DudeDemo extends Scene
         // character.createDistanceJoint(boxy, new Vector(0.3, 0.3), new
         // Vector(0.1, 0.1));
         setGravity(new Vector(0, -13));
-        getCamera().setFocus(character);
+        setFocus(character);
         getCamera().setOffset(new Vector(0, 3));
         getCamera().setBounds(new Bounds(-2000, -3, 20000, 20000));
         getCamera().setMeter(30);

@@ -1499,7 +1499,7 @@ public class StatefulAnimationDemo extends Scene
         StatefulPlayerCharacter character = new StatefulPlayerCharacter();
         setupGround();
         add(character);
-        getCamera().setFocus(character);
+        setFocus(character);
         setGravityOfEarth();
     }
 

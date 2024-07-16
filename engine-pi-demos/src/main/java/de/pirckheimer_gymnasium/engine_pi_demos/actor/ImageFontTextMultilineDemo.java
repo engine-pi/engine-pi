@@ -24,25 +24,29 @@ import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
+ * Demonstriert den <b>automatischen</b> und <b>erzwungen Zeilenumbruch</b>
+ * eines Bilderschriftarttextes.
+ *
  * @author Josef Friedrich
+ *
+ * @see ImageFontText
  */
 public class ImageFontTextMultilineDemo extends Scene
 {
     public ImageFontTextMultilineDemo()
     {
-        ImageFont font = new ImageFont("pixel-text",
+        ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
         ImageFontText textField = new ImageFontText(font,
-                "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 25,
-                TextAlignment.LEFT);
+                "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
+                20, TextAlignment.LEFT);
         add(textField);
-        getCamera().setPostion(10, 8);
-        setBackgroundColor("gray");
+        setBackgroundColor("white");
+        setFocus(textField);
     }
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextMultilineDemo(), 1020, 520);
-        Game.setTitle("Text Example");
+        Game.start(new ImageFontTextMultilineDemo());
     }
 }

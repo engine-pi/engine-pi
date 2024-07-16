@@ -124,7 +124,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         add(wheelFront, wheelBack);
         setGravity(vector(0, -9.81));
         getCamera().setMeter(ZOOM);
-        getCamera().setFocus(carBody);
+        setFocus(carBody);
         getCamera().setOffset(vector(0, 3));
     }
 

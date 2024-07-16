@@ -133,7 +133,7 @@ public class BallThrowDemo extends Scene
         // kennen nur einen Kollisionsfall)
         ball.addCollisionListener(ground, this);
         getCamera().setMeter(3);
-        getCamera().setFocus(ground);
+        setFocus(ground);
     }
 
     /**

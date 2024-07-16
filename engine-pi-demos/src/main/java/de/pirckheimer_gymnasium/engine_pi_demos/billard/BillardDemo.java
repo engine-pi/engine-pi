@@ -51,7 +51,7 @@ public class BillardDemo extends Scene implements KeyStrokeListener
         whiteBall.setColor(Color.WHITE);
         whiteBall.setPosition(-200, 0);
         add(whiteBall);
-        getCamera().setFocus(table.getBorder());
+        setFocus(table.getBorder());
         getCamera().setMeter(1);
     }
 
