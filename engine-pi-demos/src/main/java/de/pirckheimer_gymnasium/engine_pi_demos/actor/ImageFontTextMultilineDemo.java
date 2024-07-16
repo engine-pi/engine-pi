@@ -27,6 +27,11 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  * Demonstriert den <b>automatischen</b> und <b>erzwungen Zeilenumbruch</b>
  * eines Bilderschriftarttextes.
  *
+ * <p>
+ * <img src=
+ * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextMultilineDemo.png">
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @see ImageFontText
@@ -38,7 +43,8 @@ public class ImageFontTextMultilineDemo extends Scene
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
         ImageFontText textField = new ImageFontText(font,
-                "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
+                "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
+                        + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
                 20, TextAlignment.LEFT);
         add(textField);
         setBackgroundColor("white");

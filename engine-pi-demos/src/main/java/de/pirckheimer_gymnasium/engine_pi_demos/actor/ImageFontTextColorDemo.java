@@ -27,6 +27,13 @@ import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
 
 /**
+ * Demonstriert wie Bilderschriftarttexte <b>eingefärbt</b> werden können.
+ *
+ * <p>
+ * <img src=
+ * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextColorDemo.png">
+ * </p>
+ *
  * @author Josef Friedrich
  */
 public class ImageFontTextColorDemo extends Scene

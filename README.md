@@ -2062,6 +2062,97 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
+## Bilderschrift
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextMultilineDemo.png)
+
+Quellcode: [demos/actor/ImageFontTextMultilineDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextMultilineDemo.java)
+
+```java
+public class ImageFontTextMultilineDemo extends Scene
+{
+    public ImageFontTextMultilineDemo()
+    {
+        ImageFont font = new ImageFont("image-font/tetris",
+                ImageFontCaseSensitivity.TO_UPPER);
+        ImageFontText textField = new ImageFontText(font,
+                "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
+                        + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
+                20, TextAlignment.LEFT);
+        add(textField);
+        setBackgroundColor("white");
+        setFocus(textField);
+    }
+}
+```
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextAlignmentDemo.png)
+
+Quellcode: [demos/actor/ImageFontTextAlignmentDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextAlignmentDemo.java)
+
+```java
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
+import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
+import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
+import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+
+public class ImageFontTextAlignmentDemo extends Scene
+{
+    ImageFont font = new ImageFont("image-font/tetris",
+            ImageFontCaseSensitivity.TO_UPPER);
+
+    public ImageFontTextAlignmentDemo()
+    {
+        getCamera().setMeter(32);
+        setBackgroundColor("white");
+        createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
+        createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
+        createTextLine(-7, "Dieser Text ist rechtsbuendig ausgerichtet.",
+                RIGHT);
+    }
+
+    private void createTextLine(int y, String content, TextAlignment alignment)
+    {
+        ImageFontText line = new ImageFontText(font, content, 18, alignment);
+        line.setPosition(-9, y);
+        add(line);
+    }
+}
+```
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextColorDemo.png)
+
+Quellcode: [demos/actor/ImageFontTextColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextColorDemo.java)
+
+```java
+public class ImageFontTextColorDemo extends Scene
+{
+    ImageFont font = new ImageFont("image-font/tetris",
+            ImageFontCaseSensitivity.TO_UPPER);
+
+    public ImageFontTextColorDemo()
+    {
+        setBackgroundColor("#eeeeee");
+        int y = 9;
+        for (Map.Entry<String, Color> entry : Resources.COLORS.getAll()
+                .entrySet())
+        {
+            setImageFontText(entry.getKey(), -5, y);
+            y--;
+        }
+    }
+
+    public void setImageFontText(String color, int x, int y)
+    {
+        ImageFontText textField = new ImageFontText(font, color, color);
+        textField.setPosition(x, y);
+        add(textField);
+    }
+}
+```
+
 ## Farben
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der
