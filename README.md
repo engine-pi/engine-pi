@@ -1393,7 +1393,7 @@ stets als [enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) 
 Diese enum definiert die Spielerzustände und speichert gleichzeitig die
 Dateipfade der zugehörigen GIF-Dateien.
 
-https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/PlayerState.java
+Quellcode: [demos/stateful_animation/PlayerState.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/PlayerState.java)
 
 ```java
 public enum PlayerState
@@ -1424,7 +1424,7 @@ erreichbar. Dies macht den Code deutlich wartbarer.
 Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
-https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java)
 
 ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
@@ -1489,7 +1489,7 @@ sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
 ![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
 
-https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java
+Quellcode: [demos/stateful_animation/StatefulAnimationDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java)
 
 ```java
 public class StatefulAnimationDemo extends Scene
@@ -1537,7 +1537,7 @@ zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungrou
 
 ![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
 
-https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
 ```java
 private void attemptJump()
@@ -1626,7 +1626,7 @@ bereits folgende Reibung für die Figur aktiviert:
 Die Maximalgeschwindigkeit sowie die konstant wirkende Kraft setzen wir als
 Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 
-https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43
+Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43)
 
 ```java
 private static final Float MAX_SPEED = 20;
@@ -1772,7 +1772,7 @@ festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 
 ## Zeitsteuerung
 
-https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/event/RepeatDemo.java
+Quellcode: [demos/event/RepeatDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/event/RepeatDemo.java)
 
 ```java
 public class RepeatDemo extends Scene
@@ -1845,9 +1845,9 @@ In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
 halt.
 
-Quellcode: [demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
-
 Damit ergibt sich das Codegerüst für das Spiel:
+
+Quellcode: [demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
 
 ```java
 public class FroggyJump extends Scene
@@ -2030,7 +2030,7 @@ unterschiedlich behandelt werden:
 
 Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
-https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java#L172-L197
+Quellcode: [demos/collision/FroggyJump.java#L172-L197](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java#L172-L197)
 
 ```java
 class Platform extends Rectangle implements CollisionListener<Frog>
