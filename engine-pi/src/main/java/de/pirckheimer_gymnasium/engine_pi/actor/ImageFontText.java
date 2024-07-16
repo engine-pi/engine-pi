@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.Color;
 
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
@@ -111,6 +112,38 @@ public class ImageFontText extends Image
      *
      * @param imageFont Die Bilderschriftart.
      * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color     Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *                  umgefärbt werden soll.
+     *
+     */
+    public ImageFontText(ImageFont imageFont, String content, Color color)
+    {
+        this(imageFont, content, imageFont.getLineWidth(),
+                imageFont.getAlignment(), color,
+                imageFont.getPixelMultiplication(), imageFont.getGlyphWidth());
+    }
+
+    /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
+     * dargestellt wird.
+     *
+     * @param imageFont Die Bilderschriftart.
+     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color     Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *                  umgefärbt werden soll.
+     *
+     */
+    public ImageFontText(ImageFont imageFont, String content, String color)
+    {
+        this(imageFont, content, Resources.COLORS.get(color));
+    }
+
+    /**
+     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
+     * dargestellt wird.
+     *
+     * @param imageFont Die Bilderschriftart.
+     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *                  kann.
      * @param alignment Die Textausrichtung.
@@ -171,6 +204,32 @@ public class ImageFontText extends Image
     public void setContent(String content)
     {
         setContent(content, lineWidth, alignment, color,
+                getPixelMultiplication());
+    }
+
+    /**
+     * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
+     *
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color   Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *                umgefärbt werden soll.
+     */
+    public void setContent(String content, Color color)
+    {
+        setContent(content, lineWidth, alignment, color,
+                getPixelMultiplication());
+    }
+
+    /**
+     * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
+     *
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color   Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *                umgefärbt werden soll.
+     */
+    public void setContent(String content, String color)
+    {
+        setContent(content, lineWidth, alignment, Resources.COLORS.get(color),
                 getPixelMultiplication());
     }
 

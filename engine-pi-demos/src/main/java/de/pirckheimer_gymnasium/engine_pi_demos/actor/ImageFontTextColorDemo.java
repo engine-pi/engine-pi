@@ -16,49 +16,45 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
+import java.awt.Color;
+import java.util.Map;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
 import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 
 /**
- * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
- *
  * @author Josef Friedrich
- *
- * @see de.pirckheimer_gymnasium.engine_pi.util.TextAlignment
- * @see de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText
  */
-public class ImageFontTextAlignmentDemo extends Scene
+public class ImageFontTextColorDemo extends Scene
 {
     ImageFont font = new ImageFont("image-font/tetris",
             ImageFontCaseSensitivity.TO_UPPER);
 
-    public ImageFontTextAlignmentDemo()
+    public ImageFontTextColorDemo()
     {
-        getCamera().setMeter(32);
-        setBackgroundColor("gray");
-        createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
-        createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
-        createTextLine(-7, "Dieser Text ist rechtsbuendig ausgerichtet.",
-                RIGHT);
+        setBackgroundColor("#eeeeee");
+        int y = 9;
+        for (Map.Entry<String, Color> entry : Resources.COLORS.getAll()
+                .entrySet())
+        {
+            setImageFontText(entry.getKey(), -5, y);
+            y--;
+        }
     }
 
-    private void createTextLine(int y, String content, TextAlignment alignment)
+    public void setImageFontText(String color, int x, int y)
     {
-        ImageFontText line = new ImageFontText(font, content, 18, alignment);
-        line.setPosition(-9, y);
-        add(line);
+        ImageFontText textField = new ImageFontText(font, color, color);
+        textField.setPosition(x, y);
+        add(textField);
     }
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextAlignmentDemo());
+        Game.start(new ImageFontTextColorDemo(), 600, 800);
     }
 }

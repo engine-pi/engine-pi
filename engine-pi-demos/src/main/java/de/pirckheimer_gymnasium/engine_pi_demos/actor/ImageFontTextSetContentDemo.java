@@ -38,16 +38,27 @@ public class ImageFontTextSetContentDemo extends Scene
 {
     ImageFontText textField;
 
+    String text1 = "Hello, World. Hello Universe";
+
+    String text2 = "Short Text";
+
+    String text3 = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
+
     public ImageFontTextSetContentDemo()
     {
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
         textField = new ImageFontText(font,
-                "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 25,
+                "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 15,
                 TextAlignment.LEFT);
         add(textField);
         getCamera().setPostion(10, 8);
-        setBackgroundColor("gray");
+        setBackgroundColor("white");
+    }
+
+    private void setContent(String content)
+    {
+        textField.setContent(content);
     }
 
     @Override
@@ -55,11 +66,9 @@ public class ImageFontTextSetContentDemo extends Scene
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_1 -> textField.setContent("Short Text");
-        case KeyEvent.VK_2 -> textField.setContent(
-                "A long text, a long text, a long text, a long text, "
-                        + "a long text, a long text, a long text, "
-                        + "a long text, a long text, a long text, ");
+        case KeyEvent.VK_1 -> setContent(text1);
+        case KeyEvent.VK_2 -> setContent(text2);
+        case KeyEvent.VK_3 -> setContent(text3);
         }
     }
 
