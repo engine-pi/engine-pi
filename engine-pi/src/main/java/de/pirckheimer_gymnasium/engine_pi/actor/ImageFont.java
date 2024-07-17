@@ -116,6 +116,35 @@ public class ImageFont
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
         this.alignment = alignment;
+        addDefaultMapping();
+    }
+
+    private void addDefaultMapping()
+    {
+        // Namen nach https://en.wikipedia.org/wiki/ASCII
+        addMapping('-', "dash");
+        addMapping(',', "comma");
+        addMapping(';', "semicolon");
+        addMapping(':', "colon");
+        addMapping('!', "exclamation"); // mark
+        addMapping('?', "question"); // mark
+        addMapping('.', "dot");
+        addMapping('’', "aphostrophe");
+        addMapping('"', "quotes");
+        addMapping('(', "bracket-rount-left");
+        addMapping(')', "bracket-round-right");
+        addMapping('[', "bracket-square-left");
+        addMapping(']', "bracket-square-right");
+        addMapping('{', "bracket-curly-left");
+        addMapping('}', "bracket-curly-right");
+        addMapping('*', "asterisk");
+        addMapping('/', "slash");
+        addMapping('\\', "backslash");
+        addMapping('&', "ampersand");
+        addMapping('#', "hash");
+        addMapping('%', "percent"); // sign
+        addMapping('©', "copyright");
+        addMapping('$', "dollar"); // sign
     }
 
     /**
