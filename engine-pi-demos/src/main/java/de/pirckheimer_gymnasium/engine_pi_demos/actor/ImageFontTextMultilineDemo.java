@@ -28,7 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  * eines Bilderschriftarttextes.
  *
  * <p>
- * <img src=
+ * <img alt="Screenshot" src=
  * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextMultilineDemo.png">
  * </p>
  *

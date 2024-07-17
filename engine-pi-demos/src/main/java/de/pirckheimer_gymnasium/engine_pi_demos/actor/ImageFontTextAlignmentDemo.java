@@ -31,7 +31,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
  *
  * <p>
- * <img src=
+ * <img alt="Screenshot" src=
  * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextAlignmentDemo.png">
  * </p>
  *
