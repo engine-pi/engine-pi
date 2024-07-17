@@ -2153,6 +2153,44 @@ public class ImageFontTextColorDemo extends Scene
 }
 ```
 
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextTetris.png)
+
+Quellcode: [tetris: scenes/CopyrightScene.java](https://github.com/engine-pi/tetris/blob/main/src/main/java/de/pirckheimer_gymnasium/tetris/scenes/CopyrightScene.java)
+
+```java
+public class CopyrightScene extends BaseScene implements KeyStrokeListener
+{
+    public CopyrightScene()
+    {
+        super(null);
+        setBackgroundColor(Tetris.COLOR_SCHEME_GREEN.getWhite());
+        String origText = "\"TM and ©1987 ELORG,\n" + //
+                "Tetris licensed to\n" + //
+                "Bullet-Proof\n" + //
+                "software and\n" + //
+                "sub-licensed to\n" + //
+                "Nintendo.\n" + //
+                "\n" + //
+                "©1989 Bullet-Proof\n" + //
+                "software\n" + //
+                "©1989 Nintendo\n" + //
+                "\n" + //
+                "All rights reserved.\n" + //
+                "\n" + //
+                "original concept\n" + //
+                "design and programm\n" + //
+                // Im Original: by Alexey Pazhitnov."
+                // ." kann mit ImageFont nicht als ein Zeichen dargestellt werden.
+                "by Alexey Pazhitnov\"\n" + "\n";
+        ImageFontText text = new ImageFontText(Font.getFont(), origText, 21,
+                TextAlignment.CENTER);
+        text.setPosition(-2, 0);
+        add(text);
+        delay(4, this::startTitleScene);
+    }
+}
+```
+
 ## Farben
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der
