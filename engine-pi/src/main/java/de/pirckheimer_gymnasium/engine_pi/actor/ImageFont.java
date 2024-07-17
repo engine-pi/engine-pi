@@ -119,34 +119,6 @@ public class ImageFont
         addDefaultMapping();
     }
 
-    private void addDefaultMapping()
-    {
-        // Namen nach https://en.wikipedia.org/wiki/ASCII
-        addMapping('-', "dash");
-        addMapping(',', "comma");
-        addMapping(';', "semicolon");
-        addMapping(':', "colon");
-        addMapping('!', "exclamation"); // mark
-        addMapping('?', "question"); // mark
-        addMapping('.', "dot");
-        addMapping('’', "aphostrophe");
-        addMapping('"', "quotes");
-        addMapping('(', "bracket-rount-left");
-        addMapping(')', "bracket-round-right");
-        addMapping('[', "bracket-square-left");
-        addMapping(']', "bracket-square-right");
-        addMapping('{', "bracket-curly-left");
-        addMapping('}', "bracket-curly-right");
-        addMapping('*', "asterisk");
-        addMapping('/', "slash");
-        addMapping('\\', "backslash");
-        addMapping('&', "ampersand");
-        addMapping('#', "hash");
-        addMapping('%', "percent"); // sign
-        addMapping('©', "copyright");
-        addMapping('$', "dollar"); // sign
-    }
-
     /**
      * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
      * {@code 8x8} Pixel groß sein und als Dateierweiterung {@code png} haben.
@@ -410,6 +382,14 @@ public class ImageFont
         return this;
     }
 
+    /**
+     * Wandelt ein Zeichen in einen Bilder-Dateinamen um.
+     *
+     * @param glyph Das Zeichen, das in einen Bilder-Dateinamen umgewandelt
+     *              werden soll.
+     *
+     * @return Der Bilderdateiname.
+     */
     private String convertGlyphToImageName(char glyph)
     {
         String filename = map.get(glyph);
@@ -421,29 +401,79 @@ public class ImageFont
     }
 
     /**
-     * Ordnet einem Zeichen einem Bilder-Dateinamen zu. Nicht alle Zeichen wie
-     * zum Beispiel der Schrägstrich oder der Doppelpunkt können als Dateinamen
-     * verwendet werden.
+     * Fügt standardmäßig einige Zuordnungen hinzu. Diese können überschrieben
+     * werden.
+     */
+    private void addDefaultMapping()
+    {
+        // Namen nach https://en.wikipedia.org/wiki/ASCII
+        addMapping('-', "dash");
+        addMapping(',', "comma");
+        addMapping(';', "semicolon");
+        addMapping(':', "colon");
+        addMapping('!', "exclamation"); // mark
+        addMapping('?', "question"); // mark
+        addMapping('.', "dot");
+        addMapping('’', "aphostrophe");
+        addMapping('"', "quotes");
+        addMapping('(', "bracket-rount-left");
+        addMapping(')', "bracket-round-right");
+        addMapping('[', "bracket-square-left");
+        addMapping(']', "bracket-square-right");
+        addMapping('{', "bracket-curly-left");
+        addMapping('}', "bracket-curly-right");
+        addMapping('*', "asterisk");
+        addMapping('/', "slash");
+        addMapping('\\', "backslash");
+        addMapping('&', "ampersand");
+        addMapping('#', "hash");
+        addMapping('%', "percent"); // sign
+        addMapping('©', "copyright");
+        addMapping('$', "dollar"); // sign
+    }
+
+    /**
+     * Ordnet einem <b>Zeichen</b> einem <b>Bilder-Dateinamen</b> zu. Nicht alle
+     * Zeichen wie zum Beispiel der Schrägstrich oder der Doppelpunkt können als
+     * Dateinamen verwendet werden.
      *
-     * @param letter   Das Zeichen
+     * @param glyph    Das Zeichen, das durch ein Bild dargestellt werden soll.
      * @param filename Der Dateiname des Bilds ohne Dateierweiterung, das ein
-     *                 Zeichen darstellt, relativ zu {@link #basePath}
+     *                 Zeichen darstellt, relativ zu {@link #basePath}.
      *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
-    public ImageFont addMapping(char letter, String filename)
+    public ImageFont addMapping(char glyph, String filename)
     {
-        map.put(letter, filename);
+        map.put(glyph, filename);
         return this;
     }
 
+    /**
+     * Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
+     *
+     * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
+     *
+     * @return Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
+     */
     private String getImagePath(char glyph)
     {
         return basePath + "/" + convertGlyphToImageName(glyph) + "."
                 + extension;
     }
 
+    /**
+     * Lädt ein Bild, das ein Zeichen darstellt.
+     *
+     * @param glyph   Das Zeichen, das durch ein Bild dargestellt werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     *                Dieser Parameter wird für die Fehlermeldung benötigt.
+     *
+     * @return Ein Bild, das ein Zeichen darstellt.
+     *
+     * @throws RuntimeException
+     */
     private BufferedImage loadBufferedImage(char glyph, String content)
     {
         if (glyph == ' ')
@@ -470,6 +500,18 @@ public class ImageFont
         return null;
     }
 
+    /**
+     * Verarbeitet die Zeichenkette, die gesetzt werden soll.
+     *
+     *
+     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *                  kann.
+     * @param alignment Die Textausrichtung.
+     *
+     * @return Der ausgerichtete Text, in dem neue Zeilenumbrüche eingefügt
+     *         wurden.
+     */
     private String processContent(String content, int lineWidth,
             TextAlignment alignment)
     {
@@ -499,7 +541,7 @@ public class ImageFont
      *                            ein Pixel in {@code 9 Pixel} der Abmessung
      *                            {@code 3x3}.
      *
-     * @return Ein Bild.
+     * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)
@@ -546,7 +588,7 @@ public class ImageFont
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      *
-     * @return Ein Bild.
+     * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content)
     {
