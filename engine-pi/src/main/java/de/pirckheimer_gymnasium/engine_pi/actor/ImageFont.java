@@ -116,10 +116,6 @@ public class ImageFont
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
         this.alignment = alignment;
-        addMapping('.', "dot");
-        addMapping(',', "comma");
-        addMapping('"', "quotes");
-        addMapping('©', "copyright");
     }
 
     /**
