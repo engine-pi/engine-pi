@@ -8,8 +8,25 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * Demonstiert <b>alle Schriftarten</b>, die auf dem System installiert sind.
+ *
+ * <p>
+ * Alle Schriftarten auf einmal zu laden ist sehr langsam.
+ * </p>
+ */
 public class TextAllSystemFonts extends Scene implements KeyStrokeListener
 {
+    /**
+     * Wie viele Seiten angezeigt werden können.
+     */
+    private int pageCount;
+
+    /**
+     * Die aktuelle Seite.
+     */
+    private int page;
+
     public TextAllSystemFonts()
     {
         Text überschrift = new Text("Alle System-Schriftarten", 2f);
@@ -25,7 +42,9 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
         GraphicsEnvironment ge = GraphicsEnvironment
                 .getLocalGraphicsEnvironment();
         String[] systemFonts = ge.getAvailableFontFamilyNames();
-        for (int i = 0; i < systemFonts.length; i++)
+        pageCount = systemFonts.length / 10;
+        int startIndex = page * 10;
+        for (int i = startIndex; i < startIndex + 10; i++)
         {
             String fontName = systemFonts[i];
             Text text = new Text(fontName, 1, fontName);
@@ -40,17 +59,31 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
     {
         if (keyEvent.getKeyCode() == KeyEvent.VK_UP)
         {
-            getCamera().moveBy(0, 5);
+            if (page == 0)
+            {
+                page = pageCount - 1;
+            }
+            else
+            {
+                page--;
+            }
         }
         else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN)
         {
-            getCamera().moveBy(0, -5);
+            if (page == pageCount - 1)
+            {
+                page = 0;
+            }
+            else
+            {
+                page++;
+            }
         }
     }
 
     public static void main(String[] args)
     {
         Game.start(new TextAllSystemFonts(), 1020, 520);
-        Game.setTitle("Text Example");
+        Game.setTitle("Alle Schriftarten");
     }
 }

@@ -3,6 +3,11 @@ package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Star;
 
+/**
+ * Demonstriert die Figur <b>Stern</b> ({@link Star}).
+ *
+ * @author Josef Friedrich
+ */
 public class StarDemo extends ActorBaseScene
 {
     public StarDemo()

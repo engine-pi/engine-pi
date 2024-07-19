@@ -3,6 +3,11 @@ package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 
+/**
+ * Demonstriert die Figur <b>Kreis</b> ({@link Circle}).
+ *
+ * @author Josef Friedrich
+ */
 public class CircleDemo extends ActorBaseScene
 {
     public CircleDemo()

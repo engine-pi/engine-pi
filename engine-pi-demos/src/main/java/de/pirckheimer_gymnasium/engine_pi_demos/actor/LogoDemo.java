@@ -26,6 +26,11 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Logo;
 
+/**
+ * Demonstriert die Figur <b>Logo</b> ({@link Logo}).
+ *
+ * @author Josef Friedrich
+ */
 public class LogoDemo extends Scene
 {
     public LogoDemo()

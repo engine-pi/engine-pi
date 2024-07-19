@@ -10,6 +10,11 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * Demonstriert die Figur <b>Bild</b> ({@link Image}).
+ *
+ * @author Josef Friedrich
+ */
 public class ImageDemo extends Scene implements KeyStrokeListener
 {
     Image box1;

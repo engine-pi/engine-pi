@@ -3,6 +3,11 @@ package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Triangle;
 
+/**
+ * Demonstriert die Figur <b>Dreieck</b> ({@link Triangle}).
+ *
+ * @author Josef Friedrich
+ */
 public class TriangleDemo extends ActorBaseScene
 {
     public TriangleDemo()

@@ -38,13 +38,17 @@ class Character extends StatefulAnimation<State>
     }
 }
 
+/**
+ * Demonstriert eine <b>animierte</b> Figur, die <b>mehrere Zustände</b> haben kann ({@link StatefulAnimation}).
+ *
+ * @author Josef Friedrich
+ */
 public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 {
     Character character;
 
     public StatefulAnimationDemo()
     {
-        Game.setPixelMultiplication(8);
         character = new Character();
         setFocus(character);
         getCamera().setMeter(32);
@@ -66,6 +70,7 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new StatefulAnimationDemo());
+        Game.setPixelMultiplication(8);
+        Game.start(new StatefulAnimationDemo(), 50, 50);
     }
 }

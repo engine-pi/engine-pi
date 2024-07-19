@@ -4,6 +4,11 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
+/**
+ * Demonstriert die Figur <b>Rechteck</b> ({@link Rectangle}).
+ *
+ * @author Josef Friedrich
+ */
 public class RectangleDemo extends ActorBaseScene
 {
     public RectangleDemo()

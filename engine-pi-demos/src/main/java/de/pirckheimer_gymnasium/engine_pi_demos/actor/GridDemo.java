@@ -5,6 +5,11 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.actor.Grid;
 
+/**
+ * Demonstriert die Figur <b>Gitter</b> ({@link Grid}).
+ *
+ * @author Josef Friedrich
+ */
 public class GridDemo extends ActorBaseScene
 {
     public GridDemo()
