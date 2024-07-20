@@ -38,10 +38,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
- *
- * @since 0.23.0
- *
  * @see ImageFontText
+ * @since 0.23.0
  */
 public class ImageFont
 {
@@ -124,7 +122,6 @@ public class ImageFont
         this.alignment = alignment;
         glyphWidth = 0;
         glyphHeight = 0;
-        addDefaultMapping();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(
                 Objects.requireNonNull(ResourceLoader.getLocation(basePath))
                         .toURI())))
@@ -134,28 +131,20 @@ public class ImageFont
                 if (!Files.isDirectory(path) && path.toString().toLowerCase()
                         .endsWith("." + this.extension.toLowerCase()))
                 {
-                    BufferedImage glyph = Resources.IMAGES
-                            .get(path.toUri().toURL());
-                    if (glyph != null)
+                    ImageFontGlyph glyph = new ImageFontGlyph(path);
+                    if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
+                            || (glyphHeight > 0
+                                    && glyphHeight != glyph.getHeight()))
                     {
-                        if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
-                                || (glyphHeight > 0
-                                        && glyphHeight != glyph.getHeight()))
-                        {
-                            throw new Exception(
-                                    "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
-                        }
-                        glyphWidth = glyph.getWidth();
-                        glyphHeight = glyph.getHeight();
-
-
-                        ImageFontGlyph imageFontGlyph = new ImageFontGlyph(path, glyph);
-                        glyphsByFilename.put(path.getFileName().toString(),imageFontGlyph
-                                );
-
-                        if (imageFontGlyph.getGlyph() != 0) {
-                            glyphs.put(imageFontGlyph.getGlyph(), imageFontGlyph);
-                        }
+                        throw new Exception(
+                                "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
+                    }
+                    glyphWidth = glyph.getWidth();
+                    glyphHeight = glyph.getHeight();
+                    glyphsByFilename.put(glyph.getFilename(), glyph);
+                    if (glyph.getGlyph() != 0)
+                    {
+                        glyphs.put(glyph.getGlyph(), glyph);
                     }
                 }
             }
@@ -164,8 +153,7 @@ public class ImageFont
         {
             throw new RuntimeException(e);
         }
-
-
+        addDefaultMapping();
     }
 
     /**
@@ -226,7 +214,6 @@ public class ImageFont
      *
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *              umgefärbt werden soll.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -252,7 +239,6 @@ public class ImageFont
      * Setzt die Dateierweiterung der Buchstabenbilder.
      *
      * @param extension Die Dateierweiterung der Buchstabenbilder.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -269,7 +255,6 @@ public class ImageFont
      *                            Beispielsweise verwandelt die Zahl {@code 3}
      *                            ein Pixel in {@code 9 Pixel} der Abmessung
      *                            {@code 3x3}.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -285,7 +270,6 @@ public class ImageFont
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
      *         verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
      *         Abmessung {@code 3x3}.
-     *
      * @see Game#getPixelMultiplication
      */
     public int getPixelMultiplication()
@@ -297,7 +281,6 @@ public class ImageFont
      * Setzt die Handhabung der Groß- und Kleinschreibung.
      *
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -313,7 +296,6 @@ public class ImageFont
      *
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *                  kann.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -368,7 +350,6 @@ public class ImageFont
      * Setzt die Textausrichtung.
      *
      * @param alignment Die Textausrichtung.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -394,7 +375,6 @@ public class ImageFont
      *
      * @param throwException Ob bei einem nicht vorhandenen Zeichen eine
      *                       Fehlermeldung geworfen werden soll oder nicht.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
@@ -409,7 +389,6 @@ public class ImageFont
      *
      * @param glyph Das Zeichen, das in einen Bilder-Dateinamen umgewandelt
      *              werden soll.
-     *
      * @return Der Bilderdateiname.
      */
     private String convertGlyphToImageName(char glyph)
@@ -429,28 +408,20 @@ public class ImageFont
     private void addDefaultMapping()
     {
         // Namen nach https://en.wikipedia.org/wiki/ASCII
-        addMapping('-', "dash").addMapping(',', "comma").addMapping(';',
-                "semicolon");
-        addMapping(':', "colon");
-        addMapping('!', "exclamation"); // mark
-        addMapping('?', "question"); // mark
-        addMapping('.', "dot");
-        addMapping('’', "apostrophe");
-        addMapping('"', "quotes");
-        addMapping('(', "bracket-round-left");
-        addMapping(')', "bracket-round-right");
-        addMapping('[', "bracket-square-left");
-        addMapping(']', "bracket-square-right");
-        addMapping('{', "bracket-curly-left");
-        addMapping('}', "bracket-curly-right");
-        addMapping('*', "asterisk");
-        addMapping('/', "slash");
-        addMapping('\\', "backslash");
-        addMapping('&', "ampersand");
-        addMapping('#', "hash");
-        addMapping('%', "percent"); // sign
-        addMapping('©', "copyright");
-        addMapping('$', "dollar"); // sign
+        addMapping('-', "dash").addMapping(',', "comma")
+                .addMapping(';', "semicolon").addMapping('!', "exclamation") // mark
+                .addMapping('?', "question") // mark
+                .addMapping('.', "dot").addMapping('’', "apostrophe")
+                .addMapping('"', "quotes").addMapping('(', "bracket-round-left")
+                .addMapping(')', "bracket-round-right")
+                .addMapping('[', "bracket-square-left")
+                .addMapping(']', "bracket-square-right")
+                .addMapping(':', "colon").addMapping('{', "bracket-curly-left")
+                .addMapping('}', "bracket-curly-right")
+                .addMapping('*', "asterisk").addMapping('/', "slash")
+                .addMapping('\\', "backslash").addMapping('&', "ampersand")
+                .addMapping('#', "hash").addMapping('%', "percent") // sign
+                .addMapping('©', "copyright").addMapping('$', "dollar"); // sign
     }
 
     /**
@@ -461,13 +432,18 @@ public class ImageFont
      * @param glyph    Das Zeichen, das durch ein Bild dargestellt werden soll.
      * @param filename Der Dateiname des Bilds ohne Dateierweiterung, das ein
      *                 Zeichen darstellt, relativ zu {@link #basePath}.
-     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *         Punktschreibweise verkettet werden können.
      */
     public ImageFont addMapping(char glyph, String filename)
     {
-        map.put(glyph, filename);
+        ImageFontGlyph imageGlyph = glyphsByFilename.get(filename);
+        if (imageGlyph != null)
+        {
+            imageGlyph.setGlyph(glyph);
+            glyphs.put(glyph, imageGlyph);
+            map.put(glyph, filename);
+        }
         return this;
     }
 
@@ -475,7 +451,6 @@ public class ImageFont
      * Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
      *
      * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
-     *
      * @return Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
      */
     private String getImagePath(char glyph)
@@ -490,9 +465,7 @@ public class ImageFont
      * @param glyph   Das Zeichen, das durch ein Bild dargestellt werden soll.
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      *                Dieser Parameter wird für die Fehlermeldung benötigt.
-     *
      * @return Ein Bild, das ein Zeichen darstellt.
-     *
      * @throws RuntimeException Falls das Zeichen kein entsprechendes Bild hat.
      */
     private BufferedImage loadBufferedImage(char glyph, String content)
@@ -524,12 +497,10 @@ public class ImageFont
     /**
      * Verarbeitet die Zeichenkette, die gesetzt werden soll.
      *
-     *
      * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *                  kann.
      * @param alignment Die Textausrichtung.
-     *
      * @return Der ausgerichtete Text, in dem neue Zeilenumbrüche eingefügt
      *         wurden.
      */
@@ -561,7 +532,6 @@ public class ImageFont
      *                            Beispielsweise verwandelt die Zahl {@code 3}
      *                            ein Pixel in {@code 9 Pixel} der Abmessung
      *                            {@code 3x3}.
-     *
      * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content, int lineWidth,
@@ -608,7 +578,6 @@ public class ImageFont
      * Setzt den gegebenen Textinhalt in ein Bild.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     *
      * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content)
