@@ -6,12 +6,18 @@ import static de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity.
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
+import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
@@ -100,23 +106,53 @@ public class ImageFont
      *
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
      *                        einzelnen Buchstaben liegen.
-     * @param glyphWidth      Die Breite der Buchstabenbilder in Pixel.
-     * @param glyphHeight     Die Höhe der Buchstabenbilder in Pixel.
      * @param extension       Die Dateierweiterung der Buchstabenbilder.
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
      * @param alignment       Die Textausrichtung.
      */
-    public ImageFont(String basePath, int glyphWidth, int glyphHeight,
-            String extension, ImageFontCaseSensitivity caseSensitivity,
-            TextAlignment alignment)
+    public ImageFont(String basePath, String extension,
+            ImageFontCaseSensitivity caseSensitivity, TextAlignment alignment)
     {
         this.basePath = basePath;
-        this.glyphWidth = glyphWidth;
-        this.glyphHeight = glyphHeight;
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
         this.alignment = alignment;
+        int glyphWidth = 0;
+        int glyphHeight = 0;
         addDefaultMapping();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(
+                Objects.requireNonNull(ResourceLoader.getLocation(basePath))
+                        .toURI())))
+        {
+            for (Path path : stream)
+            {
+                if (!Files.isDirectory(path) && path.toString().toLowerCase()
+                        .endsWith("." + this.extension.toLowerCase()))
+                {
+                    BufferedImage glyph = Resources.IMAGES
+                            .get(path.toUri().toURL());
+                    if (glyph != null)
+                    {
+                        if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
+                                || (glyphHeight > 0
+                                        && glyphHeight != glyph.getHeight()))
+                        {
+                            throw new Exception(
+                                    "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben");
+                        }
+                        glyphWidth = glyph.getWidth();
+                        glyphHeight = glyph.getHeight();
+
+                        System.out.println(glyph.getHeight());
+                        System.out.println(path);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -130,7 +166,7 @@ public class ImageFont
      */
     public ImageFont(String basePath, ImageFontCaseSensitivity caseSensitivity)
     {
-        this(basePath, 8, 8, "png", caseSensitivity, TextAlignment.LEFT);
+        this(basePath, "png", caseSensitivity, TextAlignment.LEFT);
     }
 
     /**
@@ -162,19 +198,6 @@ public class ImageFont
     }
 
     /**
-     * Setzt die Breite der Buchstabenbilder in Pixel.
-     *
-     * @param glyphWidth Die Breite der Buchstabenbilder in Pixel.
-     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
-     */
-    public ImageFont setGlyphWidth(int glyphWidth)
-    {
-        this.glyphWidth = glyphWidth;
-        return this;
-    }
-
-    /**
      * Gibt die Breite der Buchstabenbilder in Pixel zurück.
      *
      * @return Die Breite der Buchstabenbilder in Pixel.
@@ -182,20 +205,6 @@ public class ImageFont
     public int getGlyphWidth()
     {
         return glyphWidth;
-    }
-
-    /**
-     * Setzt die Höhe der Buchstabenbilder in Pixel.
-     *
-     * @param glyphHeight Die Höhe der Buchstabenbilder in Pixel.
-     *
-     * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
-     */
-    public ImageFont setGlyphHeight(int glyphHeight)
-    {
-        this.glyphHeight = glyphHeight;
-        return this;
     }
 
     /**

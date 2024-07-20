@@ -59,8 +59,7 @@ public class ImageFontTest
     @Test
     public void testMethodChaining()
     {
-        write(imageFont.setBasePath("image-font/tetris").setGlyphWidth(8)
-                .setGlyphHeight(8).setExtension("png")
+        write(imageFont.setBasePath("image-font/tetris").setExtension("png")
                 .setCaseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
                 .setAlignment(TextAlignment.LEFT).setThrowException(false)
                 .setPixelMultiplication(4).setColor(Color.BLUE)
