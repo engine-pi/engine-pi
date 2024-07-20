@@ -117,8 +117,8 @@ public class ImageFont
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
         this.alignment = alignment;
-        int glyphWidth = 0;
-        int glyphHeight = 0;
+        glyphWidth = 0;
+        glyphHeight = 0;
         addDefaultMapping();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(
                 Objects.requireNonNull(ResourceLoader.getLocation(basePath))
@@ -138,13 +138,10 @@ public class ImageFont
                                         && glyphHeight != glyph.getHeight()))
                         {
                             throw new Exception(
-                                    "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben");
+                                    "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
                         }
                         glyphWidth = glyph.getWidth();
                         glyphHeight = glyph.getHeight();
-
-                        System.out.println(glyph.getHeight());
-                        System.out.println(path);
                     }
                 }
             }
@@ -281,7 +278,7 @@ public class ImageFont
     }
 
     /**
-     * Setzt die die Handhabung der Groß- und Kleinschreibung.
+     * Setzt die Handhabung der Groß- und Kleinschreibung.
      *
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
      *
@@ -416,16 +413,15 @@ public class ImageFont
     private void addDefaultMapping()
     {
         // Namen nach https://en.wikipedia.org/wiki/ASCII
-        addMapping('-', "dash");
-        addMapping(',', "comma");
-        addMapping(';', "semicolon");
+        addMapping('-', "dash").addMapping(',', "comma").addMapping(';',
+                "semicolon");
         addMapping(':', "colon");
         addMapping('!', "exclamation"); // mark
         addMapping('?', "question"); // mark
         addMapping('.', "dot");
-        addMapping('’', "aphostrophe");
+        addMapping('’', "apostrophe");
         addMapping('"', "quotes");
-        addMapping('(', "bracket-rount-left");
+        addMapping('(', "bracket-round-left");
         addMapping(')', "bracket-round-right");
         addMapping('[', "bracket-square-left");
         addMapping(']', "bracket-square-right");
@@ -481,7 +477,7 @@ public class ImageFont
      *
      * @return Ein Bild, das ein Zeichen darstellt.
      *
-     * @throws RuntimeException
+     * @throws RuntimeException Falls das Zeichen kein entsprechendes Bild hat.
      */
     private BufferedImage loadBufferedImage(char glyph, String content)
     {
