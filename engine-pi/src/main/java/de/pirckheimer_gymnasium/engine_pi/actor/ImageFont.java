@@ -154,7 +154,7 @@ public class ImageFont
 
     /**
      * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
-     * {@code 8x8} Pixel groß sein und als Dateierweiterung {@code png} haben.
+     * als Dateierweiterung {@code png} haben.
      * Der Text wird linksbündig ausgerichtet.
      *
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
@@ -168,7 +168,7 @@ public class ImageFont
 
     /**
      * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
-     * {@code 8x8} Pixel groß sein und als Dateierweiterung {@code png} haben.
+     * als Dateierweiterung {@code png} haben.
      * Der Text wird linksbündig ausgerichtet.
      *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
