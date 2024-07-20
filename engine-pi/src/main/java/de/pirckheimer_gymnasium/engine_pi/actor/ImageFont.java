@@ -17,6 +17,7 @@ import java.util.Objects;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
+import de.pirckheimer_gymnasium.engine_pi.resources.NamedColor;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
@@ -95,6 +96,10 @@ public class ImageFont
 
     private final Map<Character, String> map = new HashMap<>();
 
+    private final Map<Character, ImageFontGlyph> glyphs = new HashMap<>();
+
+    private final Map<String, ImageFontGlyph> glyphsByFilename = new HashMap<>();
+
     /**
      * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen werden
      * soll oder nicht.
@@ -142,6 +147,15 @@ public class ImageFont
                         }
                         glyphWidth = glyph.getWidth();
                         glyphHeight = glyph.getHeight();
+
+
+                        ImageFontGlyph imageFontGlyph = new ImageFontGlyph(path, glyph);
+                        glyphsByFilename.put(path.getFileName().toString(),imageFontGlyph
+                                );
+
+                        if (imageFontGlyph.getGlyph() != 0) {
+                            glyphs.put(imageFontGlyph.getGlyph(), imageFontGlyph);
+                        }
                     }
                 }
             }
@@ -150,12 +164,14 @@ public class ImageFont
         {
             throw new RuntimeException(e);
         }
+
+
     }
 
     /**
-     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
-     * als Dateierweiterung {@code png} haben.
-     * Der Text wird linksbündig ausgerichtet.
+     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen als
+     * Dateierweiterung {@code png} haben. Der Text wird linksbündig
+     * ausgerichtet.
      *
      * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
      *                        einzelnen Buchstaben liegen.
@@ -167,9 +183,9 @@ public class ImageFont
     }
 
     /**
-     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen
-     * als Dateierweiterung {@code png} haben.
-     * Der Text wird linksbündig ausgerichtet.
+     * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen als
+     * Dateierweiterung {@code png} haben. Der Text wird linksbündig
+     * ausgerichtet.
      *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
      *                 Buchstaben liegen.

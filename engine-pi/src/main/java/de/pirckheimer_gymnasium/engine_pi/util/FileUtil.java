@@ -169,16 +169,21 @@ public final class FileUtil
         }
     }
 
-    public static String getFileName(URL path)
-    {
-        return getFileName(path.getPath());
-    }
-
-    public static String getFileName(final String path)
-    {
-        return getFileName(path, false);
-    }
-
+    /**
+     * Gibt den Dateinamen eines Pfades mit oder ohne Dateierweiterung zurück.
+     *
+     * <p>
+     * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
+     * Zeichenkette zurück gegeben.
+     * </p>
+     *
+     * @param path      Der Dateipfad angegeben als Zeichenkette.
+     * @param extension Ob die Dateierweiterung im Dateinamen erhalten bleiben
+     *                  soll oder nicht.
+     *
+     * @return Der Dateiname mit oder ohne Dateierweiterung je nach
+     *         Eingabeparameter.
+     */
     public static String getFileName(final String path, boolean extension)
     {
         if (path == null || path.isEmpty() || path.endsWith(FILE_SEPARATOR_WIN)
@@ -209,6 +214,57 @@ public final class FileUtil
             }
         }
         return name;
+    }
+
+    /**
+     * Gibt den Dateinamen eines Pfades ohne die Dateierweiterung zurück.
+     *
+     * <p>
+     * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
+     * Zeichenkette zurück gegeben.
+     * </p>
+     *
+     * @param path Der Dateipfad angegeben als Zeichenkette.
+     *
+     * @return Der Dateiname ohne Dateierweiterung.
+     */
+    public static String getFileName(final String path)
+    {
+        return getFileName(path, false);
+    }
+
+    /**
+     * Gibt den Dateinamen eines Pfades ohne Dateierweiterung zurück.
+     *
+     * <p>
+     * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
+     * Zeichenkette zurück gegeben.
+     * </p>
+     *
+     * @param path Der Dateipfad.
+     *
+     * @return Der Dateiname ohne Dateierweiterung.
+     */
+    public static String getFileName(Path path)
+    {
+        return getFileName(path.toString());
+    }
+
+    /**
+     * Gibt den Dateinamen eines Pfades ohne Dateierweiterung zurück.
+     *
+     * <p>
+     * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
+     * Zeichenkette zurück gegeben.
+     * </p>
+     *
+     * @param path Der Dateipfad.
+     *
+     * @return Der Dateiname ohne Dateierweiterung.
+     */
+    public static String getFileName(URL path)
+    {
+        return getFileName(path.getPath());
     }
 
     public static String getParentDirPath(final String uri)

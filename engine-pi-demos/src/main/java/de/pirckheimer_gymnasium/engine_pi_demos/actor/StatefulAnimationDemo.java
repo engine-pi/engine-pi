@@ -39,7 +39,8 @@ class Character extends StatefulAnimation<State>
 }
 
 /**
- * Demonstriert eine <b>animierte</b> Figur, die <b>mehrere Zustände</b> haben kann ({@link StatefulAnimation}).
+ * Demonstriert eine <b>animierte</b> Figur, die <b>mehrere Zustände</b> haben
+ * kann ({@link StatefulAnimation}).
  *
  * @author Josef Friedrich
  */
