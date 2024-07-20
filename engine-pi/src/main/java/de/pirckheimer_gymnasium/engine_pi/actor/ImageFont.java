@@ -17,7 +17,6 @@ import java.util.Objects;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
-import de.pirckheimer_gymnasium.engine_pi.resources.NamedColor;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
