@@ -17,7 +17,8 @@ public class ImageFontSpecimenDemo extends Scene
         new ImageFontSpecimen(this, tetris);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Game.start(new ImageFontSpecimenDemo());
     }
 }

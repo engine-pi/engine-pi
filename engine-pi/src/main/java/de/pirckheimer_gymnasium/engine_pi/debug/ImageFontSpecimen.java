@@ -21,8 +21,8 @@ public class ImageFontSpecimen
             ImageFontText text = new ImageFontText(font, glyph.getGlyph() + "");
             text.setPosition(x, y);
             scene.add(text);
-            scene.addText(glyph.getContent(), 1, "Noto Sans").setPosition(x + 2,
-                    y).setColor("gray");
+            scene.addText(glyph.getContent(), 1, "Noto Sans")
+                    .setPosition(x + 2, y).setColor("gray");
             scene.addText(glyph.getUnicodeName(), 0.3, "Monospaced")
                     .setPosition(x, y - 0.4).setColor("gray");
             scene.addText(glyph.getHexNumber(), 0.3, "Monospaced")

@@ -382,18 +382,19 @@ public interface ActorAdder
      *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
      *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
      *                 Name der schriftart-Datei!</b>
-     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *                 kursiv</b>).
      *                 <ul>
      *                 <li>{@code 0}: Normaler Text</li>
      *                 <li>{@code 1}: Fett</li>
      *                 <li>{@code 2}: Kursiv</li>
-     *                 <li>{@code 3}: Fett & Kursiv</li>
+     *                 <li>{@code 3}: Fett und Kursiv</li>
      *                 </ul>
      *
      * @see Text#Text(String, double, String, int)
      */
-    default Text addText(String content, double height, String fontName, int style)
+    default Text addText(String content, double height, String fontName,
+            int style)
     {
         Text actor = new Text(content, height, fontName, style);
         getScene().add(actor);
@@ -401,8 +402,9 @@ public interface ActorAdder
     }
 
     /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b> und
-     * <b>Schriftart</b> in <b>nicht fettem und nicht kursiven Schriftstil</b>.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
+     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
+     * Schriftstil</b>.
      *
      * @param content  Der Textinhalt, der dargestellt werden soll.
      * @param height   Die Höhe des Textes in Meter.
@@ -418,8 +420,8 @@ public interface ActorAdder
     }
 
     /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b> in
-     * <b>normaler, serifenfreier Standardschrift</b>.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
+     * in <b>normaler, serifenfreier Standardschrift</b>.
      *
      * @param content Der Textinhalt, der dargestellt werden soll.
      * @param height  Die Höhe des Textes in Meter.

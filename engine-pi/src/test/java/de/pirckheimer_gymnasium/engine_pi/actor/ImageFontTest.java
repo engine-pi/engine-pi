@@ -62,7 +62,7 @@ public class ImageFontTest
         write(imageFont.setBasePath("image-font/tetris").setExtension("png")
                 .setCaseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
                 .setAlignment(TextAlignment.LEFT).setThrowException(false)
-                .setPixelMultiplication(4).setColor(Color.BLUE)
+                .setPixelMultiplication(4).setColor(Color.BLUE).setLineWidth(20)
                 .render("chaining"), "chaining");
     }
 

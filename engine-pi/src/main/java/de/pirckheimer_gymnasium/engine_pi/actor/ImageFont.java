@@ -28,13 +28,11 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
@@ -110,8 +108,6 @@ public class ImageFont
      */
     private TextAlignment alignment;
 
-    private final Map<Character, String> map = new HashMap<>();
-
     private final Map<Character, ImageFontGlyph> glyphs = new LinkedHashMap<>();
 
     private final Map<String, ImageFontGlyph> glyphsByFilename = new LinkedHashMap<>();
@@ -134,7 +130,6 @@ public class ImageFont
     public ImageFont(String basePath, String extension,
             ImageFontCaseSensitivity caseSensitivity, TextAlignment alignment)
     {
-
         this.basePath = basePath;
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
@@ -404,23 +399,6 @@ public class ImageFont
     }
 
     /**
-     * Wandelt ein Zeichen in einen Bilder-Dateinamen um.
-     *
-     * @param glyph Das Zeichen, das in einen Bilder-Dateinamen umgewandelt
-     *              werden soll.
-     * @return Der Bilderdateiname.
-     */
-    private String convertGlyphToImageName(char glyph)
-    {
-        String filename = map.get(glyph);
-        if (filename != null)
-        {
-            return filename;
-        }
-        return String.valueOf(glyph);
-    }
-
-    /**
      * Fügt standardmäßig einige Zuordnungen hinzu. Diese können überschrieben
      * werden.
      */
@@ -436,7 +414,7 @@ public class ImageFont
                 .addMapping('&', "0026_ampersand") //
                 .addMapping('\'', "0027_apostrophe") //
                 .addMapping('(', "0028_left-parenthesis") //
-                .addMapping(')', "0029_right-parenthesiS") //
+                .addMapping(')', "0029_right-parenthesis") //
                 .addMapping('*', "002a_asterisk") //
                 .addMapping('+', "002b_plus-sign") //
                 .addMapping(',', "002c_comma") //
@@ -550,21 +528,8 @@ public class ImageFont
         {
             imageGlyph.setGlyph(glyph);
             glyphs.put(glyph, imageGlyph);
-            map.put(glyph, filename);
         }
         return this;
-    }
-
-    /**
-     * Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
-     *
-     * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
-     * @return Der Dateipfad zu einer Bilddatei, das ein Zeichen darstellt.
-     */
-    private String getImagePath(char glyph)
-    {
-        return basePath + "/" + convertGlyphToImageName(glyph) + "."
-                + extension;
     }
 
     /**
@@ -576,30 +541,19 @@ public class ImageFont
      * @return Ein Bild, das ein Zeichen darstellt.
      * @throws RuntimeException Falls das Zeichen kein entsprechendes Bild hat.
      */
-    private BufferedImage loadBufferedImage(char glyph, String content)
+    private ImageFontGlyph getGlyph(char glyph, String content)
     {
         if (glyph == ' ')
         {
             return null;
         }
-        try
+        ImageFontGlyph image = glyphs.get(glyph);
+        if (image == null && throwException)
         {
-            BufferedImage image = Resources.IMAGES.get(getImagePath(glyph));
-            if (image != null)
-            {
-                image = ImageUtil.addAlphaChannel(image);
-            }
-            return image;
+            throw new RuntimeException("Unbekannter Buchstabe „" + glyph
+                    + "“ im Text „" + content + "“.");
         }
-        catch (Exception e)
-        {
-            if (throwException)
-            {
-                throw new RuntimeException("Unbekannter Buchstabe „" + glyph
-                        + "“ im Text „" + content + "“.");
-            }
-        }
-        return null;
+        return image;
     }
 
     /**
@@ -663,11 +617,10 @@ public class ImageFont
             for (int j = 0; j < line.length(); j++)
             {
                 x = j * glyphWidth;
-                BufferedImage glyph = loadBufferedImage(line.charAt(j),
-                        content);
+                ImageFontGlyph glyph = getGlyph(line.charAt(j), content);
                 if (glyph != null)
                 {
-                    g.drawImage(glyph, x, y, null);
+                    g.drawImage(glyph.getImage(), x, y, null);
                 }
             }
         }
@@ -681,8 +634,6 @@ public class ImageFont
         }
         return image;
     }
-
-
 
     /**
      * Setzt den gegebenen Textinhalt in ein Bild.

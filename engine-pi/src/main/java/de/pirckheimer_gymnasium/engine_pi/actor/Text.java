@@ -63,13 +63,13 @@ public class Text extends Geometry
     private double height;
 
     /**
-     * Der Stil der Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).
+     * Der Stil der Schriftart (<b>fett, kursiv, oder fett und kursiv</b>).
      *
      * <ul>
      * <li>{@code 0}: Normaler Text</li>
      * <li>{@code 1}: Fett</li>
      * <li>{@code 2}: Kursiv</li>
-     * <li>{@code 3}: Fett & Kursiv</li>
+     * <li>{@code 3}: Fett und Kursiv</li>
      * </ul>
      */
     private int fontStyle;
@@ -100,16 +100,17 @@ public class Text extends Geometry
      *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
      *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
      *                 Name der schriftart-Datei!</b>
-     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *                 kursiv</b>).
      *                 <ul>
      *                 <li>{@code 0}: Normaler Text</li>
      *                 <li>{@code 1}: Fett</li>
      *                 <li>{@code 2}: Kursiv</li>
-     *                 <li>{@code 3}: Fett & Kursiv</li>
+     *                 <li>{@code 3}: Fett und Kursiv</li>
      *                 </ul>
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double, String, int)
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
+     *      double, String, int)
      */
     @API
     public Text(String content, double height, String fontName, int style)
@@ -124,14 +125,16 @@ public class Text extends Geometry
     }
 
     /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b> und
-     * <b>Schriftart</b> in <b>nicht fettem und nicht kursiven Schriftstil</b>.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
+     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
+     * Schriftstil</b>.
      *
      * @param content  Der Textinhalt, der dargestellt werden soll.
      * @param height   Die Höhe des Textes in Meter.
      * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double, String)
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
+     *      double, String)
      */
     @API
     public Text(String content, double height, String fontName)
@@ -140,13 +143,14 @@ public class Text extends Geometry
     }
 
     /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b> in
-     * <b>normaler, serifenfreier Standardschrift</b>.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
+     * in <b>normaler, serifenfreier Standardschrift</b>.
      *
      * @param content Der Textinhalt, der dargestellt werden soll.
      * @param height  Die Höhe des Textes in Meter.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
+     *      double)
      */
     @API
     public Text(String content, double height)
@@ -259,16 +263,16 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).
+     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett und kursiv</b>).
      *
-     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *              kursiv</b>).
      *
      *              <ul>
      *              <li>{@code 0}: Normaler Text</li>
      *              <li>{@code 1}: Fett</li>
      *              <li>{@code 2}: Kursiv</li>
-     *              <li>{@code 3}: Fett & Kursiv</li>
+     *              <li>{@code 3}: Fett und Kursiv</li>
      *              </ul>
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
