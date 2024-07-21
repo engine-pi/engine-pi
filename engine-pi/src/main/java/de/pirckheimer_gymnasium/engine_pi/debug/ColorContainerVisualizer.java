@@ -3,6 +3,7 @@ package de.pirckheimer_gymnasium.engine_pi.debug;
 import java.awt.Color;
 import java.util.Map;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
@@ -28,6 +29,7 @@ public class ColorContainerVisualizer
      */
     public ColorContainerVisualizer(ColorContainer container, Scene scene)
     {
+        scene.setBackgroundColor("#222222");
         double y = 8;
         for (Map.Entry<String, Color> entry : container.getAll().entrySet())
         {
@@ -55,7 +57,7 @@ public class ColorContainerVisualizer
 
     /**
      * Zeichnet eine Visualisierung eines Speichers für Farben in eine Szene.
-     * Dabei wir der Standard Speicher für Farben verwendet
+     * Dabei wir der <b>Standard-Speicher für Farben</b> verwendet
      *
      * @param scene Die Szene in der die Visualisierung eingezeichnet werden
      *              soll.
@@ -65,5 +67,15 @@ public class ColorContainerVisualizer
     public ColorContainerVisualizer(Scene scene)
     {
         this(Resources.COLORS, scene);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new Scene()
+        {
+            {
+                new ColorContainerVisualizer(this);
+            }
+        });
     }
 }
