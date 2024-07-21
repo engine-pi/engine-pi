@@ -501,8 +501,10 @@ public class ImageFont
                 .addMapping('{', "007b_left-curly-bracket") //
                 .addMapping('|', "007c_vertical-line") //
                 .addMapping('}', "007d_right-curly-bracket") //
-                .addMapping('~', "007e_tilde")
-                .addMapping('©', "00a9_copyright-sign");
+                .addMapping('~', "007e_tilde") //
+                .addMapping('©', "00a9_copyright-sign") //
+                .addMapping('“', "201c_left-double-quotation-mark") //
+                .addMapping('”', "201d_right-double-quotation-mark");
     }
 
     /**
