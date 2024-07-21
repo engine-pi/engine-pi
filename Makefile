@@ -13,7 +13,7 @@ doc: install
 	xdg-open engine-pi-demos/target/site/apidocs/index.html
 
 format:
-	mvn formatter:format
+	mvn process-sources
 
 install:
 	mvn install
@@ -34,6 +34,6 @@ clone_jbox2d:
 	cp -r /tmp/jbox2d/jbox2d-library/$(JBOX2D_PATH) $(PACKAGE_PATH)
 	rm -rf $(JBOX2D_PATH)/gwtemul
 	rm -rf $(JBOX2D_PATH)/JBox2D.gwt.xml
-	mvn formatter:format
+	mvn process-sources
 
-.PHONY: deploy doc format install package run_jar
+.PHONY: deploy doc format install package run_jar clone_jbox2d

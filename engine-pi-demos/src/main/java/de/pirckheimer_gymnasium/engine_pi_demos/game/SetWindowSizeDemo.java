@@ -34,12 +34,10 @@ public class SetWindowSizeDemo
         Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 ->
-            {
+            case KeyEvent.VK_1 -> {
                 Game.setWindowSize(600, 400);
             }
-            case KeyEvent.VK_2 ->
-            {
+            case KeyEvent.VK_2 -> {
                 Game.setWindowSize(300, 200);
             }
             }
