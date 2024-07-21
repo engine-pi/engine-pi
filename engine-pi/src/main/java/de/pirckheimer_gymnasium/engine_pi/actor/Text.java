@@ -33,7 +33,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontMetrics;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 /**
- * Zur Darstellung von Texten im Programmbildschirm.
+ * Zur Darstellung von <b>Texten</b>.
+ *
+ * Möglich ist es auch, Fonts zu laden, die im Projektordner sind. Diese werden
+ * zu Anfang einmalig geladen und stehen dauerhaft zur Verfügung.
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -55,27 +58,29 @@ public class Text extends Geometry
     }
 
     /**
-     * Höhe des Textes.
+     * Die Höhe des Textes in Meter.
      */
     private double height;
 
     /**
-     * Die Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).<br>
-     * Dies wird dargestellt als int. Wert:<br>
-     * 0: Normaler Text<br>
-     * 1: Fett<br>
-     * 2: Kursiv<br>
-     * 3: Fett & Kursiv
+     * Der Stil der Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).
+     *
+     * <ul>
+     * <li>{@code 0}: Normaler Text</li>
+     * <li>{@code 1}: Fett</li>
+     * <li>{@code 2}: Kursiv</li>
+     * <li>{@code 3}: Fett & Kursiv</li>
+     * </ul>
      */
     private int fontStyle;
 
     /**
-     * Der Wert des Textes
+     * Der Textinhalt, der dargestellt werden soll.
      */
     private String content;
 
     /**
-     * Der Font der Darstellung
+     * Die Schriftart, in der der Text dargestellt werden soll.
      */
     private Font font;
 
@@ -84,26 +89,27 @@ public class Text extends Geometry
     private transient double cachedScaleFactor;
 
     /**
-     * Konstruktor für Objekte der Klasse Text<br>
-     * Möglich ist es auch, Fonts zu laden, die im Projektordner sind. Diese
-     * werden zu Anfang einmalig geladen und stehen dauerhaft zur Verfügung.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
+     * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
-     * @param content  Die Zeichenkette, die dargestellt werden soll
+     * @param content  Der Textinhalt, der dargestellt werden soll.
+     * @param height   Die Höhe des Textes in Meter.
      * @param fontName Der Name des zu verwendenden Fonts.<br>
      *                 Wird hierfür ein Font verwendet, der in dem Projektordner
      *                 vorhanden sein soll, <b>und dies ist immer und in jedem
      *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
      *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
      *                 Name der schriftart-Datei!</b>
-     * @param height   Die Breite
-     * @param style    Die Schriftart dieses Textes. Folgende Werte entsprechen
-     *                 folgendem:<br>
-     *                 0: Normaler Text<br>
-     *                 1: Fett<br>
-     *                 2: Kursiv<br>
-     *                 3: Fett &amp; Kursiv <br>
-     *                 <br>
-     *                 Alles andere sorgt nur für einen normalen Text.
+     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     *                 kursiv</b>).
+     *                 <ul>
+     *                 <li>{@code 0}: Normaler Text</li>
+     *                 <li>{@code 1}: Fett</li>
+     *                 <li>{@code 2}: Kursiv</li>
+     *                 <li>{@code 3}: Fett & Kursiv</li>
+     *                 </ul>
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double, String, int)
      */
     @API
     public Text(String content, double height, String fontName, int style)
@@ -118,12 +124,14 @@ public class Text extends Geometry
     }
 
     /**
-     * Erstellt einen Text mit spezifischem Inhalt und Font. Der Text ist in
-     * Schriftgröße 12, nicht fett, nicht kursiv.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b> und
+     * <b>Schriftart</b> in <b>nicht fettem und nicht kursiven Schriftstil</b>.
      *
-     * @param content  Der Inhalt, der dargestellt wird
-     * @param height   Die Höhe in Meter.
-     * @param fontName Der Font, in dem der Text dargestellt werden soll.
+     * @param content  Der Textinhalt, der dargestellt werden soll.
+     * @param height   Die Höhe des Textes in Meter.
+     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double, String)
      */
     @API
     public Text(String content, double height, String fontName)
@@ -132,31 +140,34 @@ public class Text extends Geometry
     }
 
     /**
-     * Erstellt einen Text mit spezifischem Inhalt und spezifischer Größe. Die
-     * Schriftart ist ein Standard-Font (Serifenfrei), nicht fett, nicht kursiv.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b> in
+     * <b>normaler, serifenfreier Standardschrift</b>.
      *
-     * @param content Der Inhalt, der dargestellt wird
-     * @param height  Die Höhe in Meter.
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height  Die Höhe des Textes in Meter.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String, double)
      */
     @API
     public Text(String content, double height)
     {
-        this(content, height, Font.SANS_SERIF, 0);
+        this(content, height, Font.SANS_SERIF);
     }
 
     /**
-     * Setzt eine neue Schriftart für den Text durch Angabe des Names.
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
+     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
      *
-     * @param fontName Name des neuen Fonts für den Text.
+     * @param content Der Textinhalt, der dargestellt werden soll.
      *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     * @since 0.27.0
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String)
      */
     @API
-    public Text setFont(String fontName)
+    public Text(String content)
     {
-        this.setFont(Resources.FONTS.get(fontName));
-        return this;
+        this(content, 1);
     }
 
     /**
@@ -172,7 +183,22 @@ public class Text extends Geometry
     public Text setFont(Font font)
     {
         this.font = font.deriveFont(fontStyle, SIZE);
-        this.update();
+        update();
+        return this;
+    }
+
+    /**
+     * Setzt eine neue Schriftart für den Text durch Angabe des Names.
+     *
+     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *         Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    public Text setFont(String fontName)
+    {
+        setFont(Resources.FONTS.get(fontName));
         return this;
     }
 
@@ -183,9 +209,9 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt den Inhalt des Textes.
+     * Setzt den Textinhalt, der dargestellt werden soll.
      *
-     * @param content Der neue Inhalt des Textes.
+     * @param content Der Textinhalt, der dargestellt werden soll.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
      *         Punktschreibweise aneinander gekettet werden können.
@@ -221,6 +247,11 @@ public class Text extends Geometry
         return this;
     }
 
+    /**
+     * Gibt den Textinhalt, der dargestellt werden soll, zurück.
+     *
+     * @return Der Textinhalt, der dargestellt werden soll.
+     */
     @API
     public String getContent()
     {
@@ -228,16 +259,17 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt den Stil der Schriftart (Fett/Kursiv/Fett&amp;Kursiv/Normal).
+     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett & kursiv</b>).
      *
-     * @param style Die Repräsentation der Schriftart als Zahl:<br>
-     *              0: Normaler Text<br>
-     *              1: Fett<br>
-     *              2: Kursiv<br>
-     *              3: Fett &amp; Kursiv<br>
-     *              <br>
-     *              Ist die Eingabe nicht eine dieser 4 Zahlen, so wird nichts
-     *              geändert.
+     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     *              kursiv</b>).
+     *
+     *              <ul>
+     *              <li>{@code 0}: Normaler Text</li>
+     *              <li>{@code 1}: Fett</li>
+     *              <li>{@code 2}: Kursiv</li>
+     *              <li>{@code 3}: Fett & Kursiv</li>
+     *              </ul>
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
      *         Punktschreibweise aneinander gekettet werden können.
@@ -261,9 +293,9 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt die Höhe in Meter.
+     * Setzt die <b>Höhe</b> des Tests in Meter.
      *
-     * @param height Die Höhe in Meter.
+     * @param height Die Höhe des Texts in Meter.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
      *         Punktschreibweise aneinander gekettet werden können.
@@ -285,6 +317,11 @@ public class Text extends Geometry
         return height;
     }
 
+    /**
+     * Gibt die <b>Breite</b> des Texts in Meter zurück.
+     *
+     * @return Die <b>Breite</b> des Texts in Meter zurück.
+     */
     @API
     public double getWidth()
     {
@@ -293,7 +330,7 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt die Breite des Texts in Meter.
+     * Setzt die <b>Breite</b> des Texts in Meter.
      *
      * @param width Die Breite des Texts in Meter.
      *

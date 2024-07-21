@@ -370,6 +370,62 @@ public interface ActorAdder
     }
     /* ___ Text _____________________________________________________________ */
 
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
+     * <b>Schriftart</b>, und <b>Schriftstil</b>.
+     *
+     * @param content  Der Textinhalt, der dargestellt werden soll.
+     * @param height   Die Höhe des Textes in Meter.
+     * @param fontName Der Name des zu verwendenden Fonts.<br>
+     *                 Wird hierfür ein Font verwendet, der in dem Projektordner
+     *                 vorhanden sein soll, <b>und dies ist immer und in jedem
+     *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
+     *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
+     *                 Name der schriftart-Datei!</b>
+     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett &
+     *                 kursiv</b>).
+     *                 <ul>
+     *                 <li>{@code 0}: Normaler Text</li>
+     *                 <li>{@code 1}: Fett</li>
+     *                 <li>{@code 2}: Kursiv</li>
+     *                 <li>{@code 3}: Fett & Kursiv</li>
+     *                 </ul>
+     *
+     * @see Text#Text(String, double, String, int)
+     */
+    default Text addText(String content, double height, String fontName, int style)
+    {
+        Text actor = new Text(content, height, fontName, style);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b> und
+     * <b>Schriftart</b> in <b>nicht fettem und nicht kursiven Schriftstil</b>.
+     *
+     * @param content  Der Textinhalt, der dargestellt werden soll.
+     * @param height   Die Höhe des Textes in Meter.
+     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
+     *
+     * @see Text#Text(String, double, String)
+     */
+    default Text addText(String content, double height, String fontName)
+    {
+        Text actor = new Text(content, height, fontName);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b> in
+     * <b>normaler, serifenfreier Standardschrift</b>.
+     *
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height  Die Höhe des Textes in Meter.
+     *
+     * @see Text#Text(String, double)
+     */
     default Text addText(String content, double height)
     {
         Text actor = new Text(content, height);
@@ -377,20 +433,18 @@ public interface ActorAdder
         return actor;
     }
 
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
+     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
+     *
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     *
+     * @see Text#Text(String)
+     */
     default Text addText(String content)
     {
-        return addText(content, 1);
-    }
-
-    default Text addText(String content, double height, double x, double y)
-    {
-        Text actor = addText(content, height);
-        actor.setPosition(x, y);
+        Text actor = new Text(content);
+        getScene().add(actor);
         return actor;
-    }
-
-    default Text addText(String content, double x, double y)
-    {
-        return addText(content, 1, x, y);
     }
 }

@@ -61,7 +61,7 @@ public class RegularPolygon extends Polygon
                 for (int i = 3; i < 8; i++)
                 {
                     addRegularPolygon(i, 2, x, 0);
-                    addText(i + "", x - 0.25, -4).setColor("white");
+                    addText(i + "").setPosition(x - 0.25, -4).setColor("white");
                     x += 5;
                 }
             }

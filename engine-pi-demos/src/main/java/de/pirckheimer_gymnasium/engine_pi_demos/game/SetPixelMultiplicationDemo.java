@@ -31,7 +31,7 @@ public class SetPixelMultiplicationDemo extends Scene
 
     public SetPixelMultiplicationDemo()
     {
-        addText("Text", 0, 0).setPosition(0, -1);
+        addText("Text").setPosition(0, -1);
         Actor image = addImage(
                 "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
                 1, 1);

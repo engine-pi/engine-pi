@@ -1454,7 +1454,8 @@ public class ColorScheme
                         .entrySet())
                 {
                     addCircle(x, 0, entry.getValue());
-                    addText(entry.getKey(), 0.5, x, labelY).setColor("white");
+                    addText(entry.getKey(), 0.5).setPosition(x, labelY)
+                            .setColor("white");
                     x += 2;
                     labelY -= 2;
                     if (labelY < -4)

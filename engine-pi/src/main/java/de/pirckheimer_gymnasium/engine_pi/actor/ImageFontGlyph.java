@@ -27,7 +27,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Path;
 
 /**
- * Stellt ein Zeichen dar, das durch ein Bild repräsentiert ist.
+ * Stellt ein <b>Zeichen</b> dar, das durch ein <b>Bild</b> repräsentiert ist.
  *
  * @author Josef Friedrich
  *
@@ -38,17 +38,17 @@ import java.nio.file.Path;
 public class ImageFontGlyph
 {
     /**
-     * Das Zeichen, das durch ein Bild dargestellt werden soll.
+     * Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
      */
     char glyph;
 
     /**
-     * Das in den Speicher geladene Bild.
+     * Das in den Speicher geladene <b>Bild</b>, das ein Zeichen darstellt.
      */
     BufferedImage image;
 
     /**
-     * Der Dateiname des Bilds ohne Dateierweiterung.
+     * Der <b>Dateiname</b> des Bilds ohne Dateierweiterung.
      */
     String filename;
 
@@ -71,7 +71,8 @@ public class ImageFontGlyph
     }
 
     /**
-     * Gibt das Zeichen, das durch ein Bild dargestellt werden soll, zurück.
+     * Gibt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
+     * zurück.
      *
      * @return Das Zeichen, das durch ein Bild dargestellt werden soll.
      */
@@ -80,21 +81,56 @@ public class ImageFontGlyph
         return glyph;
     }
 
+    /**
+     * Gibt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll, als
+     * Zeichenkette zurück.
+     *
+     * @return Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
+     *         als Zeichenkette.
+     */
+    public String getContent()
+    {
+        return String.valueOf(glyph);
+    }
+
+    /**
+     * Setzt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
+     *
+     * @param glyph Das <b>Zeichen</b>, das durch ein Bild dargestellt werden
+     *              soll.
+     */
     public void setGlyph(char glyph)
     {
         this.glyph = glyph;
     }
 
+    /**
+     * Gibt das in den Speicher geladene <b>Bild</b>, das ein Zeichen darstellt,
+     * zurück.
+     *
+     * @return Das in den Speicher geladene <b>Bild</b>, das ein Zeichen
+     *         darstellt.
+     */
     public BufferedImage getImage()
     {
         return image;
     }
 
+    /**
+     * Gibt die <b>Breite</b> des Bilds in Pixel zurück.
+     *
+     * @return Die <b>Breite</b> des Bilds in Pixel.
+     */
     public int getWidth()
     {
         return image.getWidth();
     }
 
+    /**
+     * Gibt die <b>Höhe</b> des Bilds in Pixel zurück.
+     *
+     * @return Die <b>Höhe</b> des Bilds in Pixel.
+     */
     public int getHeight()
     {
         return image.getHeight();
@@ -108,5 +144,27 @@ public class ImageFontGlyph
     public String getFilename()
     {
         return filename;
+    }
+
+    /**
+     * Gibt den <b>Unicode-Namen</b> des Zeichens (beispielsweise
+     * {@code LATIN CAPITAL LETTER A}) zurück.
+     *
+     * @return Den <b>Unicode-Namen</b> des Zeichens.
+     */
+    public String getUnicodeName()
+    {
+        return filename.substring(5).replace("-", " ").toUpperCase();
+    }
+
+    /**
+     * Gibt die <b>vierstellige, hexadezimale Unicode-Nummer</b> des Zeichens
+     * (beispielsweise {@code 0041}) zurück.
+     *
+     * @return Die vierstellige, hexadezimale Unicode-Nummer.
+     */
+    public String getHexNumber()
+    {
+        return filename.substring(0, 4).toUpperCase();
     }
 }

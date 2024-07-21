@@ -63,7 +63,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         PRIMARY_AREAS = drawPrimaryColors();
         SECONDARY_AREAS = drawSecondaryColors();
         EXTRA_AREAS = drawExtraColors();
-        NAME = addText("", -8, 7);
+        NAME = addText("");
+        NAME.setPosition(-8, 7);
         NAME.setColor("white");
         setNextColorScheme();
         setBackgroundColor("#444444");
@@ -117,7 +118,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         {
             double angle = (i * SEGMENT_ANGLE * -1) + 90;
             Vector textPosition = getCirclePoint(7.5, angle);
-            addText(i + "", 0.5, textPosition.getX(), textPosition.getY())
+            addText(i + "", 0.5)
+                    .setPosition(textPosition.getX(), textPosition.getY())
                     .setColor("weiß");
             areas[i] = createWheelArea(i, angle);
         }

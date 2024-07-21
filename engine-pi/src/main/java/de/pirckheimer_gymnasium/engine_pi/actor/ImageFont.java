@@ -28,8 +28,8 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -112,9 +112,9 @@ public class ImageFont
 
     private final Map<Character, String> map = new HashMap<>();
 
-    private final Map<Character, ImageFontGlyph> glyphs = new HashMap<>();
+    private final Map<Character, ImageFontGlyph> glyphs = new LinkedHashMap<>();
 
-    private final Map<String, ImageFontGlyph> glyphsByFilename = new HashMap<>();
+    private final Map<String, ImageFontGlyph> glyphsByFilename = new LinkedHashMap<>();
 
     /**
      * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen werden
@@ -134,6 +134,7 @@ public class ImageFont
     public ImageFont(String basePath, String extension,
             ImageFontCaseSensitivity caseSensitivity, TextAlignment alignment)
     {
+
         this.basePath = basePath;
         this.extension = extension;
         this.caseSensitivity = caseSensitivity;
