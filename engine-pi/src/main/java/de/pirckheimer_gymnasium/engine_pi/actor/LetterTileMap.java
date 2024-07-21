@@ -91,8 +91,8 @@ abstract class LetterTileMap
     }
 
     /**
-     * @param width      Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln in
-     *                   x-Richtung.
+     * @param width      Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln
+     *                   in x-Richtung.
      * @param height     Die Höhe des Kachelsatzes bzw. die Anzahl an Kacheln in
      *                   y-Richtung.
      * @param pathPrefix
