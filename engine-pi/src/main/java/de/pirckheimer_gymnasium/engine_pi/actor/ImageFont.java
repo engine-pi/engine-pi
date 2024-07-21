@@ -28,6 +28,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -525,6 +526,11 @@ public class ImageFont
                 .addMapping('”', "201d_right-double-quotation-mark");
     }
 
+    public ImageFontGlyph[] getGlyphs()
+    {
+        return glyphs.values().toArray(new ImageFontGlyph[0]);
+    }
+
     /**
      * Ordnet einem <b>Zeichen</b> einem <b>Bilder-Dateinamen</b> zu. Nicht alle
      * Zeichen wie zum Beispiel der Schrägstrich oder der Doppelpunkt können als
@@ -674,6 +680,8 @@ public class ImageFont
         }
         return image;
     }
+
+
 
     /**
      * Setzt den gegebenen Textinhalt in ein Bild.
