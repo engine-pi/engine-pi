@@ -406,105 +406,103 @@ public class ImageFont
      */
     private void addDefaultMapping()
     {
-        // Namen nach https://en.wikipedia.org/wiki/ASCII
-        addMapping('-', "dash").addMapping(',', "comma")
-                .addMapping(';', "semicolon").addMapping('!', "exclamation") // mark
-                .addMapping('?', "question") // mark
-                .addMapping('.', "dot").addMapping('’', "apostrophe")
-                .addMapping('"', "quotes").addMapping('(', "bracket-round-left")
-                .addMapping(')', "bracket-round-right")
-                .addMapping('[', "bracket-square-left")
-                .addMapping(']', "bracket-square-right")
-                .addMapping(':', "colon").addMapping('{', "bracket-curly-left")
-                .addMapping('}', "bracket-curly-right")
-                .addMapping('*', "asterisk").addMapping('/', "slash")
-                .addMapping('\\', "backslash").addMapping('&', "ampersand")
-                .addMapping('#', "hash").addMapping('%', "percent") // sign
-                .addMapping('©', "copyright").addMapping('$', "dollar") // sign
-                // https://de.wikipedia.org/wiki/Unicodeblock_Basis-Lateinisch
-                .addMapping(' ', "SPACE").addMapping('!', "EXCLAMATION MARK")
-                .addMapping('"', "QUOTATION MARK")
-                .addMapping('#', "NUMBER SIGN").addMapping('$', "DOLLAR SIGN")
-                .addMapping('%', "PERCENT SIGN").addMapping('&', "AMPERSAND")
-                .addMapping('\'', "APOSTROPHE")
-                .addMapping('(', "LEFT PARENTHESIS")
-                .addMapping(')', "RIGHT PARENTHESIS")
-                .addMapping('*', "ASTERISK").addMapping('+', "PLUS SIGN")
-                .addMapping(',', "COMMA").addMapping('-', "HYPHEN-MINUS")
-                .addMapping('.', "FULL STOP").addMapping('/', "SOLIDUS")
-                .addMapping('0', "DIGIT ZERO").addMapping('1', "DIGIT ONE")
-                .addMapping('2', "DIGIT TWO").addMapping('3', "DIGIT THREE")
-                .addMapping('4', "DIGIT FOUR").addMapping('5', "DIGIT FIVE")
-                .addMapping('6', "DIGIT SIX").addMapping('7', "DIGIT SEVEN")
-                .addMapping('8', "DIGIT EIGHT").addMapping('9', "DIGIT NINE")
-                .addMapping(':', "COLON").addMapping(';', "SEMICOLON")
-                .addMapping('<', "LESS-THAN SIGN")
-                .addMapping('=', "EQUALS SIGN")
-                .addMapping('>', "GREATER-THAN SIGN")
-                .addMapping('?', "QUESTION MARK")
-                .addMapping('@', "COMMERCIAL AT")
-                .addMapping('A', "LATIN CAPITAL LETTER A")
-                .addMapping('B', "LATIN CAPITAL LETTER B")
-                .addMapping('C', "LATIN CAPITAL LETTER C")
-                .addMapping('D', "LATIN CAPITAL LETTER D")
-                .addMapping('E', "LATIN CAPITAL LETTER E")
-                .addMapping('F', "LATIN CAPITAL LETTER F")
-                .addMapping('G', "LATIN CAPITAL LETTER G")
-                .addMapping('H', "LATIN CAPITAL LETTER H")
-                .addMapping('I', "LATIN CAPITAL LETTER I")
-                .addMapping('J', "LATIN CAPITAL LETTER J")
-                .addMapping('K', "LATIN CAPITAL LETTER K")
-                .addMapping('L', "LATIN CAPITAL LETTER L")
-                .addMapping('M', "LATIN CAPITAL LETTER M")
-                .addMapping('N', "LATIN CAPITAL LETTER N")
-                .addMapping('O', "LATIN CAPITAL LETTER O")
-                .addMapping('P', "LATIN CAPITAL LETTER P")
-                .addMapping('Q', "LATIN CAPITAL LETTER Q")
-                .addMapping('R', "LATIN CAPITAL LETTER R")
-                .addMapping('S', "LATIN CAPITAL LETTER S")
-                .addMapping('T', "LATIN CAPITAL LETTER T")
-                .addMapping('U', "LATIN CAPITAL LETTER U")
-                .addMapping('V', "LATIN CAPITAL LETTER V")
-                .addMapping('W', "LATIN CAPITAL LETTER W")
-                .addMapping('X', "LATIN CAPITAL LETTER X")
-                .addMapping('Y', "LATIN CAPITAL LETTER Y")
-                .addMapping('Z', "LATIN CAPITAL LETTER Z")
-                .addMapping('[', "LEFT SQUARE BRACKET")
-                .addMapping('\\', "REVERSE SOLIDUS")
-                .addMapping(']', "RIGHT SQUARE BRACKET")
-                .addMapping('^', "CIRCUMFLEX ACCENT")
-                .addMapping('_', "LOW LINE")
-                .addMapping('`', "GRAVE ACCENT")
-                .addMapping('a', "LATIN SMALL LETTER A")
-                .addMapping('b', "LATIN SMALL LETTER B")
-                .addMapping('c', "LATIN SMALL LETTER C")
-                .addMapping('d', "LATIN SMALL LETTER D")
-                .addMapping('e', "LATIN SMALL LETTER E")
-                .addMapping('f', "LATIN SMALL LETTER F")
-                .addMapping('g', "LATIN SMALL LETTER G")
-                .addMapping('h', "LATIN SMALL LETTER H")
-                .addMapping('i', "LATIN SMALL LETTER I")
-                .addMapping('j', "LATIN SMALL LETTER J")
-                .addMapping('k', "LATIN SMALL LETTER K")
-                .addMapping('l', "LATIN SMALL LETTER L")
-                .addMapping('m', "LATIN SMALL LETTER M")
-                .addMapping('n', "LATIN SMALL LETTER N")
-                .addMapping('o', "LATIN SMALL LETTER O")
-                .addMapping('p', "LATIN SMALL LETTER P")
-                .addMapping('q', "LATIN SMALL LETTER Q")
-                .addMapping('r', "LATIN SMALL LETTER R")
-                .addMapping('s', "LATIN SMALL LETTER S")
-                .addMapping('t', "LATIN SMALL LETTER T")
-                .addMapping('u', "LATIN SMALL LETTER U")
-                .addMapping('v', "LATIN SMALL LETTER V")
-                .addMapping('w', "LATIN SMALL LETTER W")
-                .addMapping('x', "LATIN SMALL LETTER X")
-                .addMapping('y', "LATIN SMALL LETTER Y")
-                .addMapping('z', "LATIN SMALL LETTER Z")
-                .addMapping('{', "LEFT CURLY BRACKET")
-                .addMapping('|', "VERTICAL LINE")
-                .addMapping('}', "RIGHT CURLY BRACKET")
-                .addMapping('~', "TILDE");
+        // https://de.wikipedia.org/wiki/Unicodeblock_Basis-Lateinisch
+        addMapping(' ', "0020_space") //
+                .addMapping('!', "0021_exclamation-mark") //
+                .addMapping('"', "0022_quotation-mark") //
+                .addMapping('#', "0023_number-sign") //
+                .addMapping('$', "0024_dollar-sign") //
+                .addMapping('%', "0025_percent-sign") //
+                .addMapping('&', "0026_ampersand") //
+                .addMapping('\'', "0027_apostrophe") //
+                .addMapping('(', "0028_left-parenthesis") //
+                .addMapping(')', "0029_right-parenthesiS") //
+                .addMapping('*', "002a_asterisk") //
+                .addMapping('+', "002b_plus-sign") //
+                .addMapping(',', "002c_comma") //
+                .addMapping('-', "002d_hyphen-minus") //
+                .addMapping('.', "002e_full-stop") //
+                .addMapping('/', "002f_solidus") //
+                .addMapping('0', "0030_digit-zero") //
+                .addMapping('1', "0031_digit-one") //
+                .addMapping('2', "0032_digit-two") //
+                .addMapping('3', "0033_digit-three") //
+                .addMapping('4', "0034_digit-four") //
+                .addMapping('5', "0035_digit-five") //
+                .addMapping('6', "0036_digit-six") //
+                .addMapping('7', "0037_digit-seven") //
+                .addMapping('8', "0038_digit-eight") //
+                .addMapping('9', "0039_digit-nine") //
+                .addMapping(':', "003a_colon") //
+                .addMapping(';', "003b_semicolon") //
+                .addMapping('<', "003c_less-than-sign") //
+                .addMapping('=', "003d_equals-sign") //
+                .addMapping('>', "003e_greater-than-sign") //
+                .addMapping('?', "003f_question-mark") //
+                .addMapping('@', "0040_commercial-at") //
+                .addMapping('A', "0041_latin-capital-letter-a") //
+                .addMapping('B', "0042_latin-capital-letter-b") //
+                .addMapping('C', "0043_latin-capital-letter-c") //
+                .addMapping('D', "0044_latin-capital-letter-d") //
+                .addMapping('E', "0045_latin-capital-letter-e") //
+                .addMapping('F', "0046_latin-capital-letter-f") //
+                .addMapping('G', "0047_latin-capital-letter-g") //
+                .addMapping('H', "0048_latin-capital-letter-h") //
+                .addMapping('I', "0049_latin-capital-letter-i") //
+                .addMapping('J', "004a_latin-capital-letter-j") //
+                .addMapping('K', "004b_latin-capital-letter-k") //
+                .addMapping('L', "004c_latin-capital-letter-l") //
+                .addMapping('M', "004d_latin-capital-letter-m") //
+                .addMapping('N', "004e_latin-capital-letter-n") //
+                .addMapping('O', "004f_latin-capital-letter-o") //
+                .addMapping('P', "0050_latin-capital-letter-p") //
+                .addMapping('Q', "0051_latin-capital-letter-q") //
+                .addMapping('R', "0052_latin-capital-letter-r") //
+                .addMapping('S', "0053_latin-capital-letter-s") //
+                .addMapping('T', "0054_latin-capital-letter-t") //
+                .addMapping('U', "0055_latin-capital-letter-u") //
+                .addMapping('V', "0056_latin-capital-letter-v") //
+                .addMapping('W', "0057_latin-capital-letter-w") //
+                .addMapping('X', "0058_latin-capital-letter-x") //
+                .addMapping('Y', "0059_latin-capital-letter-y") //
+                .addMapping('Z', "005a_latin-capital-letter-z") //
+                .addMapping('[', "005b_left-square-bracket") //
+                .addMapping('\\', "005c_reverse-solidus") //
+                .addMapping(']', "005d_right-square-bracket") //
+                .addMapping('^', "005e_circumflex-accent") //
+                .addMapping('_', "005f_low-line") //
+                .addMapping('`', "0060_grave-accent") //
+                .addMapping('a', "0061_latin-small-letter-a") //
+                .addMapping('b', "0062_latin-small-letter-b") //
+                .addMapping('c', "0063_latin-small-letter-c") //
+                .addMapping('d', "0064_latin-small-letter-d") //
+                .addMapping('e', "0065_latin-small-letter-e") //
+                .addMapping('f', "0066_latin-small-letter-f") //
+                .addMapping('g', "0067_latin-small-letter-g") //
+                .addMapping('h', "0068_latin-small-letter-h") //
+                .addMapping('i', "0069_latin-small-letter-i") //
+                .addMapping('j', "006a_latin-small-letter-j") //
+                .addMapping('k', "006b_latin-small-letter-k") //
+                .addMapping('l', "006c_latin-small-letter-l") //
+                .addMapping('m', "006d_latin-small-letter-m") //
+                .addMapping('n', "006e_latin-small-letter-n") //
+                .addMapping('o', "006f_latin-small-letter-o") //
+                .addMapping('p', "0070_latin-small-letter-p") //
+                .addMapping('q', "0071_latin-small-letter-q") //
+                .addMapping('r', "0072_latin-small-letter-r") //
+                .addMapping('s', "0073_latin-small-letter-s") //
+                .addMapping('t', "0074_latin-small-letter-t") //
+                .addMapping('u', "0075_latin-small-letter-u") //
+                .addMapping('v', "0076_latin-small-letter-v") //
+                .addMapping('w', "0077_latin-small-letter-w") //
+                .addMapping('x', "0078_latin-small-letter-x") //
+                .addMapping('y', "0079_latin-small-letter-y") //
+                .addMapping('z', "007a_latin-small-letter-z") //
+                .addMapping('{', "007b_left-curly-bracket") //
+                .addMapping('|', "007c_vertical-line") //
+                .addMapping('}', "007d_right-curly-bracket") //
+                .addMapping('~', "007e_tilde")
+                .addMapping('©', "00a9_copyright-sign");
     }
 
     /**
