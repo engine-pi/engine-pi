@@ -263,7 +263,8 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett und kursiv</b>).
+     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett und
+     * kursiv</b>).
      *
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *              kursiv</b>).
