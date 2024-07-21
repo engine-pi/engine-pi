@@ -1,9 +1,7 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-examples/src/main/java/ea/example/basics/CollisionTest.java
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
- *
- * Copyright (c) 2011 - 2020 Michael Andonie and contributors.
+ * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
