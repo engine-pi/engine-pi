@@ -33,7 +33,7 @@ import org.jbox2d.common.Vec2;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
- * Sammlungen von statischen Methoden, die verschiedene Halterungen (engl.
+ * Sammlungen von statischen Methoden, die verschiedene Halterungen (englisch
  * Fixture) für verschieden geformte
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor}-Objekte
  * erstellen.
@@ -47,7 +47,7 @@ public final class FixtureBuilder
     /**
      * Erstellt eine <i>einfache</i> rechteckige Form. Einfach bedeutet: Sie
      * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
-     * Koordinatenaxen.
+     * Koordinatenachsen.
      *
      * @param width  Die Breite der rechteckigen Form.
      * @param height Die Höhe der rechteckigen Form.
@@ -105,7 +105,7 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt eine rechteckige Form, die parallel zu den Koordinatenaxen
+     * Erstellt eine rechteckige Form, die parallel zu den Koordinatenachsen
      * läuft.
      *
      * @param sx     Die x-Koordinate der linken unteren Ecke.
@@ -127,18 +127,22 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt einen Form-Supplier basierend auf einer Zeichenketten.
+     * Erstellt einen Supplier für Halterungen (Fixture) basierend auf einer
+     * Zeichenkette.
      *
-     * @param code
+     * @param code Eine Minisprache, die die Halterung definiert. Alle Werte
+     *             sind in der Einheit Meter.
      *             <ul>
      *             <li>Die Formen werden getrennt durch "&amp;"</li>
-     *             <li>Rechteck: <code>R0,0,40,50</code> Rechteck mit Startpunkt
-     *             (0|0), Breite 40, Höhe 50</li>
-     *             <li>Polygon: <code>P40,40,50,50,10,20</code> Polygon mit drei
-     *             Punkten: (40|40), (50|50), (10|20)</li>
-     *             <li>Kreis: <code>C10,10,40</code> Kreis mit Mittelpunkt
-     *             (10|10) und Radius 40</li>
+     *             <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit
+     *             Startpunkt (0.5|0.5), Breite 4 Meter, Höhe 5 Meter</li>
+     *             <li>Polygon: <code>P4,4,5,5,1,2</code> Polygon mit drei
+     *             Punkten: (4|4), (5|5), (1|2)</li>
+     *             <li>Kreis: <code>C1,1,4</code> Kreis mit Mittelpunkt (1|1)
+     *             und Radius 4</li>
      *             </ul>
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setFixtures(String)
      */
     public static Supplier<List<FixtureData>> fromString(String code)
     {

@@ -601,7 +601,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Setzt den Umriss für dieses Objekt neu. Hat Einfluss auf die Physik
      * (Kollisionen, Masse, etc.)
      *
-     * @param shapeCode der Shape-Code
+     * @param code Eine Minisprache, die die Halterung definiert. Alle Werte
+     *             sind in der Einheit Meter.
+     *             <ul>
+     *             <li>Die Formen werden getrennt durch "&amp;"</li>
+     *             <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit
+     *             Startpunkt (0.5|0.5), Breite 4 Meter, Höhe 5 Meter</li>
+     *             <li>Polygon: <code>P4,4,5,5,1,2</code> Polygon mit drei
+     *             Punkten: (4|4), (5|5), (1|2)</li>
+     *             <li>Kreis: <code>C1,1,4</code> Kreis mit Mittelpunkt (1|1)
+     *             und Radius 4</li>
+     *             </ul>
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -613,9 +623,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #setFixtures(Supplier)
      */
     @API
-    public final Actor setFixtures(String shapeCode)
+    public final Actor setFixtures(String code)
     {
-        this.setFixtures(FixtureBuilder.fromString(shapeCode));
+        this.setFixtures(FixtureBuilder.fromString(code));
         return this;
     }
 
