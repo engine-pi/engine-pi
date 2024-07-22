@@ -363,8 +363,8 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
-     * Lädt alle Bilddateien mit einem bestimmten Präfix in einem bestimmten
-     * Verzeichnis in eine Animation.
+     * Lädt alle Bilddateien mit einem bestimmten <b>Präfix</b> in einem
+     * bestimmten Verzeichnis in eine Animation.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
      *                      bleiben.
@@ -376,6 +376,7 @@ public class Animation extends Actor implements FrameUpdateListener
      *                      Dateien mit dem gegebenen Präfix</a> (im angegebenen
      *                      Ordner) und fügt sie in aufsteigender Reihenfolge
      *                      der Animation hinzu.
+     *
      * @return Eine Animation aus allen Dateien, die mit dem Pfadpräfix
      *         beginnen.
      */

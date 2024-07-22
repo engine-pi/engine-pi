@@ -199,13 +199,16 @@ public class StatefulAnimation<State> extends Actor
             throw new RuntimeException(
                     "Zustand nicht nicht vorhanden: " + state);
         }
-        this.index = 0;
+        index = 0;
         this.state = state;
-        this.time = 0;
-        this.animation = states.get(state);
+        time = 0;
+        animation = states.get(state);
     }
 
     /**
+     * * Eine animierte Figur mit mehreren Zuständen, deren Animationen durch
+     * Angabe
+     *
      * Ändert den Zustand der Animation. Die Animation des neuen Zustands
      * beginnt nur von vorne, wenn der gesetzte Zustand <b>nicht derselbe ist,
      * wie der aktuelle Zustand</b>.
@@ -427,89 +430,6 @@ public class StatefulAnimation<State> extends Actor
                 index++;
             }
         }
-    }
-
-    /**
-     * @param state
-     * @param filepath
-     * @param x
-     * @param y
-     *
-     *
-     * @since 0.25.0
-     */
-    public void addFromSpritesheet(State state, String filepath, int x, int y)
-    {
-        addState(state, Animation.createFromSpritesheet(frameDuration, filepath,
-                x, y, width, height));
-    }
-
-    /**
-     * @param state
-     * @param spriteWidth
-     * @param spriteHeight
-     * @param filePath
-     *
-     * @since 0.25.0
-     */
-    public void addFromSpritesheet(State state, int spriteWidth,
-            int spriteHeight, String filePath)
-    {
-        addState(state, Animation.createFromSpritesheet(frameDuration, filePath,
-                width, height, spriteWidth, spriteHeight));
-    }
-
-    /**
-     * @param state
-     * @param frameDuration
-     * @param filePaths
-     *
-     * @since 0.25.0
-     */
-    public void addAnimationFromImages(State state, double frameDuration,
-            String... filePaths)
-    {
-        addState(state, Animation.createFromImages(frameDuration, width, height,
-                filePaths));
-    }
-
-    /**
-     * @param state
-     * @param filePaths
-     *
-     * @since 0.25.0
-     */
-    public void addAnimationFromImages(State state, String... filePaths)
-    {
-        addAnimationFromImages(state, frameDuration, filePaths);
-    }
-
-    /**
-     * @param state
-     * @param directoryPath
-     * @param prefix
-     *
-     * @since 0.25.0
-     */
-    public void addFromImagesPrefix(State state, String directoryPath,
-            String prefix)
-    {
-        addState(state, Animation.createFromImagesPrefix(frameDuration, width,
-                height, directoryPath, prefix));
-    }
-
-    /**
-     *
-     * @param state
-     * @param filepath
-     *
-     *
-     * @since 0.25.0
-     */
-    public void addFromAnimatedGif(State state, String filepath)
-    {
-        addState(state,
-                Animation.createFromAnimatedGif(filepath, width, height));
     }
 
     /**
