@@ -823,7 +823,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param bounds Die Bounds der Kamera.
      * @return <code>true</code>, wenn das Objekt (teilweise) innerhalb des
-     *         derzeit sichtbaren Breichs liegt, sonst <code>false</code>.
+     *         derzeit sichtbaren Bereichs liegt, sonst <code>false</code>.
      */
     @Internal
     private boolean isWithinBounds(Bounds bounds)
@@ -851,7 +851,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                 <b>ausführenden Actor</b> und <code>collider</code>
      *                 informiert werden soll.
      * @param collider Ein weiteres {@link Actor}-Objekt.
-     * @param <E>      Typ-Parameter. SOllte im Regelfall exakt die Klasse von
+     * @param <E>      Typ-Parameter. Sollte im Regelfall exakt die Klasse von
      *                 <code>collider</code> sein. Dies ermöglicht die Nutzung
      *                 von spezifischen Methoden aus spezialisierteren Klassen
      *                 der Actor-Hierarchie.
@@ -1084,7 +1084,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *                       dieses Objekts innerhalb der physikalischen
      *                       Simulation <b>nicht mehr</b>. Ist dieser Wert
      *                       <code>false</code>, rotiert sich dieses Objekt
-     *                       innerhalb der physikalsichen Simulation.
+     *                       innerhalb der physikalischen Simulation.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -1097,6 +1097,36 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final Actor setRotationLocked(boolean rotationLocked)
     {
         physicsHandler.setRotationLocked(rotationLocked);
+        return this;
+    }
+
+    /**
+     * Blockiert die Rotation <i>im Rahmen der physikalischen Simulation</i>.
+     *
+     * <p>
+     * Das Objekt kann in jedem Fall weiterhin über einen direkten
+     * Methodenaufruf rotiert werden. Der folgende Code ist immer wirksam,
+     * unabhängig davon, ob die Rotation im Rahmen der physikalischen Simulation
+     * blockiert ist:
+     *
+     * <p>
+     * <code>
+     * actor.getPosition.rotate(4.31);
+     * </code>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinander gekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see #isRotationLocked()
+     *
+     * @since 0.27.0
+     */
+    @API
+    public final Actor lockRotation()
+    {
+        physicsHandler.setRotationLocked(true);
         return this;
     }
 

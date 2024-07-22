@@ -79,8 +79,8 @@ public final class Game
     }
 
     /**
-     * Wird {@link Game#debug} auf <code>true</code> gesetzt, so werden
-     * zusätzliche Debug-Informationen angezeigt.
+     * Wird {@link #debug} auf <code>true</code> gesetzt, so werden zusätzliche
+     * Debug-Informationen angezeigt.
      *
      * @see Game#setDebug(boolean)
      * @see Game#isDebug()
@@ -96,8 +96,8 @@ public final class Game
     private static boolean renderActors = true;
 
     /**
-     * Wird {@link Game#verbose} auf <code>true</code> gesetzt, so werden
-     * äußerst ausführliche Log-Ausgaben gemacht. Dies betrifft unter anderem
+     * Wird {@link #verbose} auf <code>true</code> gesetzt, so werden äußerst
+     * ausführliche Log-Ausgaben gemacht. Dies betrifft unter anderem
      * Informationen über das Verhalten der frameweise arbeitenden Threads.
      * Hierfür wurde diese Variable eingeführt.
      */
@@ -441,9 +441,8 @@ public final class Game
         MouseScrollEvent mouseScrollEvent = new MouseScrollEvent(
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
-            mouseScrollListeners.invoke((listener) -> {
-                listener.onMouseScrollMove(mouseScrollEvent);
-            });
+            mouseScrollListeners.invoke(
+                    (listener) -> listener.onMouseScrollMove(mouseScrollEvent));
             scene.invokeMouseScrollListeners(mouseScrollEvent);
         });
     }
@@ -897,9 +896,21 @@ public final class Game
      * Schaltet je nach Zustand den Debug-Modus an oder aus. Ist der Debug-Modus
      * an, wird er ausgeschaltet, ist er aus so wird er angeschaltet.
      */
+    @API
     public static void toggleDebug()
     {
         Game.setDebug(!Game.isDebug());
+    }
+
+    /**
+     * Aktiviert den Entwicklungsmodus.
+     *
+     * @since 0.27.0
+     */
+    @API
+    public static void debug()
+    {
+        debug = true;
     }
 
     /**
