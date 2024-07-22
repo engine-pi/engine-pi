@@ -18,13 +18,21 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
+import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Formatiert die Textausgabe der {@link Object#toString()}-Methoden.
+ * Hilft die Textausgabe der {@link Object#toString()}-Methoden zu formatieren.
+ *
+ * <p>
+ * Wird die Figur Image mit der Methode {@code System.out.println(String)}
+ * ausgegeben so erscheint folgende Zeichenkette:
+ * {@code Image [width=1.0m, height=1.0m, imageWidth=8px, imageHeight=8px, pixelPerMeter=8.0]}
+ * </p>
  *
  * @author Josef Friedrich
  *
@@ -32,30 +40,69 @@ import java.util.Map;
  */
 public class ToStringFormatter
 {
-    private HashMap<String, Object> map = new LinkedHashMap<>();
+    private final HashMap<String, Object> map = new LinkedHashMap<>();
 
-    private String className;
+    private final String className;
 
+    /**
+     * @param className Der Name der Klasse
+     */
     public ToStringFormatter(String className)
     {
         this.className = className;
     }
 
+    /**
+     * Fügt ein Schlüssel-Wert-Paar hinzu.
+     *
+     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
+     */
     public void add(String key, Object value)
     {
         map.put(key, value);
     }
 
+    /**
+     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine Gleitkommazahl ist,
+     * die gerundet wird.
+     *
+     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param value Der Wert des Schlüssels als Gleitkommazahl, die gerundet
+     *              werden soll.
+     */
+    public void add(String key, double value)
+    {
+        map.put(key, TextUtil.roundNumber(value));
+    }
+
+    /**
+     * Fügt ein Schlüssel-Wert-Paar mit Einheit hinzu.
+     *
+     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
+     * @param unit  Eine zusätzliche Zeichenkette, die an den Wert angehängt
+     *              wird, und als Einheit dienen kann.
+     */
     public void add(String key, Object value, String unit)
     {
         map.put(key, String.format("%s%s", value, unit));
     }
 
+    /**
+     * Fügt lediglich einen Schlüssel beziehungsweise ein Attribut hinzu, das
+     * den Wert zugewiesen bekommt.
+     *
+     * @param key Der Name des Schlüssels bzw. des Attributs.
+     */
     public void add(String key)
     {
         map.put(key, "true");
     }
 
+    /**
+     * @return Die formatierte Zeichenkette.
+     */
     public String format()
     {
         ArrayList<String> entries = new ArrayList<>();

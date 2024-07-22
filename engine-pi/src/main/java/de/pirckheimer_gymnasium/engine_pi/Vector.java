@@ -20,6 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import org.jbox2d.common.Vec2;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
@@ -496,21 +497,6 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt die String-Repräsentation dieses Objektes aus.
-     *
-     * <p>
-     * Diese Methode sollte nur zu Debugging-Zwecken benutzt werden.
-     * </p>
-     *
-     * @return Die String-Repräsentation dieses Vektors.
-     */
-    @Override
-    public String toString()
-    {
-        return "Vector [ x = " + x + "; y = " + y + " ]";
-    }
-
-    /**
      * Gibt die Manhattan-Länge des Vektors zurück. Diese ist für v=(a, b)
      * definiert als a+b.
      *
@@ -644,5 +630,23 @@ public final class Vector implements Cloneable
     public static Vector v(double x, double y)
     {
         return new Vector(x, y);
+    }
+
+    /**
+     * Gibt die String-Repräsentation dieses Objektes aus.
+     *
+     * <p>
+     * Diese Methode sollte nur zu Debugging-Zwecken benutzt werden.
+     * </p>
+     *
+     * @return Die String-Repräsentation dieses Vektors.
+     */
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Vector");
+        formatter.add("x", x);
+        formatter.add("y", y);
+        return formatter.format();
     }
 }

@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import org.jbox2d.collision.WorldManifold;
 import org.jbox2d.dynamics.contacts.Contact;
 
@@ -155,6 +156,7 @@ public class CollisionEvent<E extends Actor>
      *
      * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine, einen
      *         oder zwei Berührungspunkte enthalten.
+     *
      * @throws IllegalStateException Wenn die Anzahl der Berührungspunkten
      *                               größer als 2 ist.
      */
@@ -193,5 +195,21 @@ public class CollisionEvent<E extends Actor>
     public boolean isIgnored()
     {
         return !contact.isEnabled();
+    }
+
+    /**
+     * @hidden
+     */
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("CollisionEvent");
+        formatter.add("colliding", colliding.toString());
+        List<Vector> points = getPoints();
+        formatter.add("points", points.toString());
+        if (isIgnored())
+        {
+            formatter.add("isIgnored");
+        }
+        return formatter.format();
     }
 }
