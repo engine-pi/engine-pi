@@ -200,7 +200,7 @@ public final class GameLoop
         g.setTransform(transform);
         if (isDebug.get())
         {
-            CoordinateSystemDrawer.draw(g, scene, width, height);
+            new CoordinateSystemDrawer(g, scene, width, height).draw();
             InfoBoxDrawer.draw(g, scene, frameDuration,
                     scene.getWorldHandler().getWorld().getBodyCount());
         }
