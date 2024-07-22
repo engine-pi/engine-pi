@@ -144,6 +144,38 @@ public final class CoordinateSystemDrawer
     }
 
     /**
+     * Berechnet den x- oder y-Wert der ersten Koordinatenlinie, die
+     * eingezeichnet werden soll.
+     *
+     * @param cameraPosition Der x- oder y-Wert der Kameraposition.
+     *
+     * @return Der x- oder y-Wert der ersten Koordinatenlinie, die eingezeichnet
+     *         werden soll.
+     */
+    private int calculateStartLinePosition(double cameraPosition)
+    {
+        int start = (int) (cameraPosition
+                - windowSizeInPixels / 2.0 / pixelPerMeter);
+        start -= (start % gridSizeInMeters) + gridSizeInMeters;
+        return start;
+    }
+
+    /**
+     * Berechnet den x- oder y-Wert der letzten Koordinatenlinie, die
+     * eingezeichnet werden soll.
+     *
+     * @param start Der x- oder y-Wert der ersten Koordinatenlinie.
+     *
+     * @return Der x- oder y-Wert der letzten Koordinatenlinie, die
+     *         eingezeichnet werden soll.
+     */
+    private int calculateStopLinePosition(int start)
+    {
+        return (int) (start + windowSizeInPixels / pixelPerMeter
+                + gridSizeInMeters * 2);
+    }
+
+    /**
      * Zeichnet das <b>Koordinatensystem</b>.
      */
     @Internal
@@ -151,17 +183,10 @@ public final class CoordinateSystemDrawer
     {
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
         {
-            int startX = (int) (position.getX()
-                    - windowSizeInPixels / 2.0 / pixelPerMeter);
-            int startY = (int) ((-1 * position.getY())
-                    - windowSizeInPixels / 2.0 / pixelPerMeter);
-            startX -= (startX % gridSizeInMeters) + gridSizeInMeters;
-            startY -= (startY % gridSizeInMeters) + gridSizeInMeters;
-            startX -= gridSizeInMeters;
-            int stopX = (int) (startX + windowSizeInPixels / pixelPerMeter
-                    + gridSizeInMeters * 2);
-            int stopY = (int) (startY + windowSizeInPixels / pixelPerMeter
-                    + gridSizeInMeters * 2);
+            int startX = calculateStartLinePosition(position.getX());
+            int startY = calculateStartLinePosition(-1 * position.getY());
+            int stopX = calculateStopLinePosition(startX);
+            int stopY = calculateStopLinePosition(startY);
             g.setFont(FONT);
             // Setzen der Gitterfarbe
             g.setColor(COLOR);
