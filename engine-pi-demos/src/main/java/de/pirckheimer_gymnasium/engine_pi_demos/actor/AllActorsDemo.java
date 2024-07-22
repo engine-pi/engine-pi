@@ -34,7 +34,7 @@ public class AllActorsDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new AllActorsDemo());
     }
 }

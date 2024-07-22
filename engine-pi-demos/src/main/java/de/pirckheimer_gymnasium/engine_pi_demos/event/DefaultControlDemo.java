@@ -34,7 +34,7 @@ public class DefaultControlDemo
 {
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new Scene());
         Game.addKeyStrokeListener((event) -> {
             if (event.getKeyCode() == KeyEvent.VK_SPACE)

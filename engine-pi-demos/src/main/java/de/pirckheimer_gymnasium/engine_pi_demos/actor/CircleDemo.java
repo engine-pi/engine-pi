@@ -47,7 +47,7 @@ public class CircleDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new CircleDemo());
     }
 }

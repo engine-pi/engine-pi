@@ -121,7 +121,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new ParticlesDemo(), WIDTH, HEIGHT);
     }
 }

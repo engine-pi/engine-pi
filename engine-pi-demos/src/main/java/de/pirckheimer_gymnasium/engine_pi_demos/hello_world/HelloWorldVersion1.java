@@ -32,7 +32,7 @@ public class HelloWorldVersion1 extends Scene
         helloWorld.setColor("white");
         helloWorld.setCenter(0, 1);
         add(helloWorld);
-        Game.setDebug(true);
+        Game.debug();
     }
 
     public static void main(String[] args)

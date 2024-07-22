@@ -107,7 +107,7 @@ public class HelloWorldVersion1 extends Scene
         Text helloWorld = new Text("Hello, World!", 2);
         helloWorld.setCenter(0, 1);
         add(helloWorld);
-        Game.setDebug(true);
+        Game.debug();
     }
 
     public static void main(String[] args)
@@ -162,7 +162,7 @@ Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus
 der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
 
 ```java
-Game.setDebug(true);
+Game.debug();
 ```
 
 Die Klasse `Game` enthält neben Debug-Modus weitere Features, die die

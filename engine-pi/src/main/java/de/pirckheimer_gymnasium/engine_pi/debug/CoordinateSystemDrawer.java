@@ -18,8 +18,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 
 import de.pirckheimer_gymnasium.engine_pi.Camera;
@@ -34,7 +33,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  */
 public final class CoordinateSystemDrawer
 {
-    private static final int GRID_SIZE_IN_PIXELS = 150;
+    private static final int GRID_SIZE_IN_PIXELS = 160;
 
     private static final int GRID_SIZE_METER_LIMIT = 100000;
 
@@ -63,8 +62,10 @@ public final class CoordinateSystemDrawer
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-position.getX() * pixelPerMeter,
                 position.getY() * pixelPerMeter);
+        // Wie viele Meter ein Kästchen im Gitter groß sein soll.
         int gridSizeInMeters = (int) Math
                 .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
+        // Wie viele Pixel ein Kästchen im Gitter groß sein soll.
         double gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
         double gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
@@ -83,24 +84,32 @@ public final class CoordinateSystemDrawer
                     + gridSizeInMeters * 2);
             g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, DEBUG_TEXT_SIZE));
             // Setzen der Gitterfarbe
-            g.setColor(Resources.COLORS.getSafe("white"));
+            g.setColor(new Color(255, 255, 255, 150));
+            // Zeichnen der vertikalen Linien
             for (int x = startX; x <= stopX; x += gridSizeInMeters)
             {
                 g.fillRect((int) (x * gridSizeFactor) - 1,
-                        (int) ((startY - 1) * gridSizeFactor), 2,
+                        (int) ((startY - 1) * gridSizeFactor), x == 0 ? 3 : 1,
                         (int) (windowSizeInPixels + 3 * gridSizeInPixels));
             }
+            // Zeichnen der horizontalen Linien
             for (int y = startY; y <= stopY; y += gridSizeInMeters)
             {
                 g.fillRect((int) ((startX - 1) * gridSizeFactor),
                         (int) (y * gridSizeFactor - 1),
-                        (int) (windowSizeInPixels + 3 * gridSizeInPixels), 2);
+                        (int) (windowSizeInPixels + 3 * gridSizeInPixels),
+                        y == 0 ? 3 : 1);
+            }
+            for (int y = startY; y <= stopY; y += gridSizeInMeters)
+            {
+                g.drawString(-y + "", (int) (0 * gridSizeFactor + 5),
+                        (int) (y * gridSizeFactor - 5));
             }
             for (int x = startX; x <= stopX; x += gridSizeInMeters)
             {
                 for (int y = startY; y <= stopY; y += gridSizeInMeters)
                 {
-                    g.drawString(x + " / " + -y, (int) (x * gridSizeFactor + 5),
+                    g.drawString(x + "|" + -y, (int) (x * gridSizeFactor + 5),
                             (int) (y * gridSizeFactor - 5));
                 }
             }
@@ -110,7 +119,7 @@ public final class CoordinateSystemDrawer
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start();
     }
 }

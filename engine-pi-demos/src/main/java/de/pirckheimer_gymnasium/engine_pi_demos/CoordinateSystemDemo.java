@@ -25,7 +25,7 @@ public class CoordinateSystemDemo
 {
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new Scene());
     }
 }

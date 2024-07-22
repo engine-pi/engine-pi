@@ -84,7 +84,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new GravityDemo());
     }
 }

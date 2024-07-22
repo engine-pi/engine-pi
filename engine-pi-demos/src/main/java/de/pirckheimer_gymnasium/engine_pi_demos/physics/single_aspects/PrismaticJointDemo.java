@@ -39,7 +39,7 @@ public class PrismaticJointDemo extends BaseJointScene
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new PrismaticJointDemo());
     }
 }

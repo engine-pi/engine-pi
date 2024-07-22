@@ -205,7 +205,7 @@ final public class Logger
 
     /**
      * Logger-Funktion für Debug-Informationen. Log wird nur ausgeführt, wenn
-     * <code>Game.setDebug(true);</code> ausgeführt wurde.
+     * <code>Game.debug();</code> ausgeführt wurde.
      *
      * @param tag Der Tag der Debug-Message.
      * @param s   Text der Information

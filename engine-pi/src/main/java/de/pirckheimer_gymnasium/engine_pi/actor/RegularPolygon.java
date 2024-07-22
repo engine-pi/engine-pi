@@ -53,7 +53,7 @@ public class RegularPolygon extends Polygon
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new Scene()
         {
             {

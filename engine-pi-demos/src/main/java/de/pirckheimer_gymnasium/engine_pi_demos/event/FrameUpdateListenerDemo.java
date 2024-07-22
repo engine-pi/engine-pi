@@ -69,7 +69,7 @@ public class FrameUpdateListenerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.setDebug(true);
+        Game.debug();
         Game.start(new FrameUpdateListenerDemo(), 700, 200);
     }
 }
