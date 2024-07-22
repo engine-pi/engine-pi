@@ -598,11 +598,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt den Umriss für dieses Objekt neu. Hat Einfluss auf die Physik
-     * (Kollisionen, Masse, etc.)
+     * Setzt die Halterung (Fixture) für dieses Objekt neu. Dies hat Einfluss
+     * auf die Physik (Kollisionen, Masse, etc.).
      *
      * @param code Eine Minisprache, die die Halterung definiert. Alle Werte
-     *             sind in der Einheit Meter.
+     *             sind in der Einheit Meter anzugeben. Die Koordinatenangaben
+     *             beziehen sich dabei auf den Ankerpunkt der Figur links unten.
      *             <ul>
      *             <li>Die Formen werden getrennt durch "&amp;"</li>
      *             <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit
@@ -630,7 +631,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Ändert die Fixture des Actors neu in eine einzige alternative Fixture.
+     * Setzt die Halterung (Fixture) der Figur neu in eine einzige alternative
+     * Halterung.
      *
      * @param fixtureSupplier Der Supplier, der die neue Shape des Objektes
      *                        ausgibt.
@@ -651,7 +653,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Ändert die Umrisse dieses Objekts durch Angabe einer Liste.
+     * Ändert die Halterung (Fixture) dieses Objekts durch Angabe einer Liste.
      *
      * @param fixturesSupplier Ein Supplier, der eine Liste mit allen neuen
      *                         Shapes für den Actor angibt.

@@ -131,7 +131,8 @@ public final class FixtureBuilder
      * Zeichenkette.
      *
      * @param code Eine Minisprache, die die Halterung definiert. Alle Werte
-     *             sind in der Einheit Meter.
+     *             sind in der Einheit Meter anzugeben. Die Koordinatenangaben
+     *             beziehen sich dabei auf den Ankerpunkt der Figur links unten.
      *             <ul>
      *             <li>Die Formen werden getrennt durch "&amp;"</li>
      *             <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit

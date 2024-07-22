@@ -13,8 +13,8 @@ public class ActorSetFixtureFromStringDemo extends Scene
         rectangle.setFixtures("R 0.25, 0.25, 0.5, 0.5");
         add(rectangle);
         Image circle = new Image("dude/moon.png", 1, 1);
+        circle.setFixtures("C 0.5, 0.5, 0.3");
         circle.setPosition(1, 1);
-        circle.setFixtures("C 3,3,2");
         add(circle);
     }
 
