@@ -8,10 +8,14 @@ public class ActorSetFixtureFromStringDemo extends Scene
 {
     public ActorSetFixtureFromStringDemo()
     {
-        setMeter(200);
-        Image image = new Image("dude/box/obj_box001.png", 1, 1);
-        image.setFixtures("R 0.25,0.25,0.5,0.5");
-        add(image);
+        setMeter(50);
+        Image rectangle = new Image("dude/box/obj_box001.png", 1, 1);
+        rectangle.setFixtures("R 0.25, 0.25, 0.5, 0.5");
+        add(rectangle);
+        Image circle = new Image("dude/moon.png", 1, 1);
+        circle.setPosition(1, 1);
+        circle.setFixtures("C 3,3,2");
+        add(circle);
     }
 
     public static void main(String[] args)
