@@ -269,7 +269,6 @@ public class Animation extends Actor implements FrameUpdateListener
      * @param height        Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
-     *
      */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
