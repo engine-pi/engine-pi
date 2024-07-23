@@ -27,6 +27,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  * Zeichnet das Engine Pi Logo in eine Szene.
  *
  * @author Josef Friedrich
+ *
+ * @since 0.20.0
  */
 public class Logo implements ActorAdder
 {
@@ -78,14 +80,14 @@ public class Logo implements ActorAdder
 
     private Rectangle drawRectangle()
     {
-        Rectangle rectangle = addRectangle(1.0 * factor, 2.0 * factor);
+        Rectangle rectangle = addRectangle(factor, 2.0 * factor);
         applyPhysicSettings(rectangle);
         return rectangle;
     }
 
     private Circle drawCircle()
     {
-        Circle circle = addCircle(1.0 * factor);
+        Circle circle = addCircle(factor);
         applyPhysicSettings(circle);
         return circle;
     }

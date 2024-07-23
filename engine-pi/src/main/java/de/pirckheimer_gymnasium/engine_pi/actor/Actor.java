@@ -52,7 +52,7 @@ import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
-import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
+import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
 import de.pirckheimer_gymnasium.engine_pi.event.EventListenerBundle;
@@ -776,7 +776,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.COLORS.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        if (Debug.SHOW_POSITIONS)
+        if (DebugConfiguration.showPositions)
         {
             Graphics2DUtil.drawText(g, actor.getPositionformatted(), 8, 5, 5);
         }

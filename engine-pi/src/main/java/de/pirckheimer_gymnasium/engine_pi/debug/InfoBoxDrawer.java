@@ -32,6 +32,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.Graphics2DUtil;
 
 /**
  * Zeichnet einige <b>Informationsboxen</b> in das linke obere Eck.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.17.0
  */
 public final class InfoBoxDrawer
 {

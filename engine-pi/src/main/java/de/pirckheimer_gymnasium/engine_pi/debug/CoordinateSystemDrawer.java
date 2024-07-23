@@ -25,6 +25,7 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
 /**
@@ -101,8 +102,15 @@ public final class CoordinateSystemDrawer
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-position.getX() * pixelPerMeter,
                 position.getY() * pixelPerMeter);
-        gridSizeInMeters = (int) Math
-                .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
+        if (DebugConfiguration.coordinateSystemLinesEveryNMeter > 0)
+        {
+            gridSizeInMeters = DebugConfiguration.coordinateSystemLinesEveryNMeter;
+        }
+        else
+        {
+            gridSizeInMeters = (int) Math
+                    .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
+        }
         gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
         gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
         windowSizeInPixels = Math.max(width, height);
@@ -212,6 +220,21 @@ public final class CoordinateSystemDrawer
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start();
+        Scene scene = Game.start();
+        scene.addKeyStrokeListener((event) -> {
+            switch (event.getKeyCode())
+            {
+            case KeyEvent.VK_1 ->
+                DebugConfiguration.coordinateSystemLinesEveryNMeter = 1;
+            case KeyEvent.VK_2 ->
+                DebugConfiguration.coordinateSystemLinesEveryNMeter = 2;
+            case KeyEvent.VK_3 ->
+                DebugConfiguration.coordinateSystemLinesEveryNMeter = 3;
+            case KeyEvent.VK_4 ->
+                DebugConfiguration.coordinateSystemLinesEveryNMeter = 4;
+            case KeyEvent.VK_5 ->
+                DebugConfiguration.coordinateSystemLinesEveryNMeter = 5;
+            }
+        });
     }
 }

@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Camera;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.debug.Debug;
+import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
 
 /**
  * Registriert im Auslieferungszustand einige wenige grundlegenden Maus- und
@@ -84,7 +84,7 @@ public class DefaultControl implements DefaultListener
                 Game.toggleDebug();
             }
             case KeyEvent.VK_P -> {
-                Debug.toogleShowPositions();
+                DebugConfiguration.toogleShowPositions();
             }
             case KeyEvent.VK_S -> {
                 Game.takeScreenshot();

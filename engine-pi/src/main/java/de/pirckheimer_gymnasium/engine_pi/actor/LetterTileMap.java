@@ -28,6 +28,10 @@ import java.util.HashSet;
  * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke oberen Ecke an
  * die Position -0.5 x 0.5 im Engine-Alpha-Koordinatensystem gesetzt, sodass zum
  * Beispiel (0,0) die Mitte der ersten Kachel (links oben) adressiert.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.26.0
  */
 abstract class LetterTileMap
 {
@@ -123,7 +127,7 @@ abstract class LetterTileMap
         {
             extension = "";
         }
-        if (pathPrefix.length() > 0)
+        if (!pathPrefix.isEmpty())
         {
             char last = pathPrefix.charAt(pathPrefix.length() - 1);
             if (last != '/')
