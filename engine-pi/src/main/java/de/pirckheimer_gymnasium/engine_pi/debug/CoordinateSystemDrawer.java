@@ -62,19 +62,19 @@ public final class CoordinateSystemDrawer
     private final double pixelPerMeter;
 
     /**
-     * Wie viele Meter ein Kästchen im Gitter groß sein soll.
+     * Wie viele Meter ein Gitterkästchen groß sein soll.
      */
     private final int gridSizeInMeters;
 
     /**
-     * Wie viele Pixel ein Kästchen im Gitter groß sein soll.
+     * Wie viele Pixel ein Gitterkästchen groß sein soll.
      */
     private final double gridSizeInPixels;
 
     private final double gridSizeFactor;
 
     /**
-     * Die maximale Ausdehnung des Spielfelds in Pixel.
+     * Der maximale Wert von Höhe oder Breite in Pixeln.
      */
     private final int windowSizeInPixels;
 
@@ -183,6 +183,37 @@ public final class CoordinateSystemDrawer
                 + gridSizeInMeters * 2);
     }
 
+    private void drawCoordinateLabels(int startX, int stopX, int startY,
+            int stopY)
+    {
+        for (int x = startX; x <= stopX; x += gridSizeInMeters)
+        {
+            for (int y = startY; y <= stopY; y += gridSizeInMeters)
+            {
+                g.drawString(x + "|" + -y, (int) (x * gridSizeFactor + 5),
+                        (int) (y * gridSizeFactor - 5));
+            }
+        }
+    }
+
+    private void drawVerticalCoordinateLabels(int startY, int stopY)
+    {
+        for (int y = startY; y <= stopY; y += gridSizeInMeters)
+        {
+            g.drawString(-y + "", (int) (0 * gridSizeFactor + 5),
+                    (int) (y * gridSizeFactor - 5));
+        }
+    }
+
+    private void drawHorizontalCoordinateLabels(int startX, int stopX)
+    {
+        for (int x = startX; x <= stopX; x += gridSizeInMeters)
+        {
+            g.drawString(-x + "", (int) (0 * gridSizeFactor + 5),
+                    (int) (x * gridSizeFactor - 5));
+        }
+    }
+
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
      */
@@ -195,24 +226,13 @@ public final class CoordinateSystemDrawer
             int startY = calculateStartLinePosition(-1 * position.getY());
             int stopX = calculateStopLinePosition(startX);
             int stopY = calculateStopLinePosition(startY);
+            // Setzen der Schriftart.
             g.setFont(FONT);
-            // Setzen der Gitterfarbe
+            // Setzen der Gitterfarbe.
             g.setColor(COLOR);
             drawVerticalLines(startX, stopX, startY);
             drawHorizontalLines(startY, stopY, startX);
-            for (int y = startY; y <= stopY; y += gridSizeInMeters)
-            {
-                g.drawString(-y + "", (int) (0 * gridSizeFactor + 5),
-                        (int) (y * gridSizeFactor - 5));
-            }
-            for (int x = startX; x <= stopX; x += gridSizeInMeters)
-            {
-                for (int y = startY; y <= stopY; y += gridSizeInMeters)
-                {
-                    g.drawString(x + " | " + -y, (int) (x * gridSizeFactor + 5),
-                            (int) (y * gridSizeFactor - 5));
-                }
-            }
+            drawCoordinateLabels(startX, stopX, startY, stopY);
         }
         g.setTransform(pre);
     }
