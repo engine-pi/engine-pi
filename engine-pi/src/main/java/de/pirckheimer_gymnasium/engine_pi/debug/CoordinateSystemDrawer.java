@@ -45,6 +45,11 @@ public final class CoordinateSystemDrawer
     private static final Color COLOR = new Color(255, 255, 255, 150);
 
     /**
+     * Verschiebung der Koordinatensystembeschriftungen.
+     */
+    private static final int LABEL_SHIFT = 5;
+
+    /**
      * Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      */
     private final Graphics2D g;
@@ -196,21 +201,28 @@ public final class CoordinateSystemDrawer
         }
     }
 
-    private void drawVerticalCoordinateLabels(int startY, int stopY)
+    private void drawOneLineVerticalCoordinateLabels(int startY, int stopY, int x)
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
-            g.drawString(-y + "", (int) (0 * gridSizeFactor + 5),
-                    (int) (y * gridSizeFactor - 5));
+            g.drawString(-y + "", (int) (x * gridSizeFactor + LABEL_SHIFT),
+                    (int) (y * gridSizeFactor - LABEL_SHIFT));
         }
+    }
+
+    private void drawVerticalCoordinateLabels(int startX, int stopX, int startY, int stopY)
+    {
+        drawOneLineVerticalCoordinateLabels(startY, stopY, startX);
+        drawOneLineVerticalCoordinateLabels(startY, stopY, 0);
+        drawOneLineVerticalCoordinateLabels(startY, stopY, stopX);
     }
 
     private void drawHorizontalCoordinateLabels(int startX, int stopX)
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
-            g.drawString(-x + "", (int) (0 * gridSizeFactor + 5),
-                    (int) (x * gridSizeFactor - 5));
+            g.drawString(-x + "", (int) (0 * gridSizeFactor + LABEL_SHIFT),
+                    (int) (x * gridSizeFactor - LABEL_SHIFT));
         }
     }
 
@@ -232,7 +244,9 @@ public final class CoordinateSystemDrawer
             g.setColor(COLOR);
             drawVerticalLines(startX, stopX, startY);
             drawHorizontalLines(startY, stopY, startX);
-            drawCoordinateLabels(startX, stopX, startY, stopY);
+//            drawCoordinateLabels(startX, stopX, startY, stopY);
+
+            drawVerticalCoordinateLabels(startX + 3, stopX -3 , startY, stopY);
         }
         g.setTransform(pre);
     }
