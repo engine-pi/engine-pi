@@ -97,11 +97,6 @@ public final class CoordinateSystemDrawer
     private final double gridSizeInPixels;
 
     /**
-     * Berechnet sich aus {@code gridSizeInPixels / gridSizeInMeters};
-     */
-    private final double gridSizeFactor;
-
-    /**
      * Der maximale Wert von Höhe oder Breite in Pixeln.
      */
     private final int windowSizeInPixels;
@@ -170,7 +165,6 @@ public final class CoordinateSystemDrawer
                     .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
         }
         gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
-        gridSizeFactor = gridSizeInPixels / gridSizeInMeters;
         windowSizeInPixels = Math.max(width, height);
     }
 
@@ -189,8 +183,8 @@ public final class CoordinateSystemDrawer
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
-            g.fillRect((int) ((startX - 1) * gridSizeFactor),
-                    (int) (y * gridSizeFactor - 1),
+            g.fillRect((int) ((startX - 1) * pixelPerMeter),
+                    (int) (y * pixelPerMeter - 1),
                     (int) (windowSizeInPixels + 3 * gridSizeInPixels),
                     getLineThickness(y));
         }
@@ -203,8 +197,8 @@ public final class CoordinateSystemDrawer
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
-            g.fillRect((int) (x * gridSizeFactor) - 1,
-                    (int) ((startY - 1) * gridSizeFactor), getLineThickness(x),
+            g.fillRect((int) (x * pixelPerMeter) - 1,
+                    (int) ((startY - 1) * pixelPerMeter), getLineThickness(x),
                     (int) (windowSizeInPixels + 3 * gridSizeInPixels));
         }
     }
@@ -247,8 +241,8 @@ public final class CoordinateSystemDrawer
         {
             for (int y = startY; y <= stopY; y += gridSizeInMeters)
             {
-                g.drawString(x + "|" + -y, (int) (x * gridSizeFactor + 5),
-                        (int) (y * gridSizeFactor - 5));
+                g.drawString(x + "|" + -y, (int) (x * pixelPerMeter + 5),
+                        (int) (y * pixelPerMeter - 5));
             }
         }
     }
@@ -257,8 +251,8 @@ public final class CoordinateSystemDrawer
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
-            g.drawString(-y + "", (int) (x * gridSizeFactor + LABEL_SHIFT),
-                    (int) (y * gridSizeFactor - LABEL_SHIFT));
+            g.drawString(-y + "", (int) (x * pixelPerMeter + LABEL_SHIFT),
+                    (int) (y * pixelPerMeter - LABEL_SHIFT));
         }
     }
 
@@ -273,8 +267,8 @@ public final class CoordinateSystemDrawer
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
-            g.drawString(-x + "", (int) (0 * gridSizeFactor + LABEL_SHIFT),
-                    (int) (x * gridSizeFactor - LABEL_SHIFT));
+            g.drawString(-x + "", (int) (0 * pixelPerMeter + LABEL_SHIFT),
+                    (int) (x * pixelPerMeter - LABEL_SHIFT));
         }
     }
 
