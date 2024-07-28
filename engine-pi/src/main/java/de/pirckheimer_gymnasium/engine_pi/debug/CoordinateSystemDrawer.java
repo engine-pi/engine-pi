@@ -30,6 +30,13 @@ import java.awt.geom.AffineTransform;
 
 /**
  * Zeichnet das <b>Koordinatensystem</b>.
+ *
+ * <p>
+ * Das Koordinatensystem wird in der Einheit Meter gezeichnet. Das
+ * Graphics2D-Objekt erwartet jedoch Pixel. Außerdem ist der Ursprung des
+ * Graphics2D-Objekt links oben, der Ursprung des Engine-Pi-Koordinatensystem
+ * jedoch in der Mitte.
+ * </p>
  */
 public final class CoordinateSystemDrawer
 {
@@ -45,7 +52,7 @@ public final class CoordinateSystemDrawer
     private static final Color COLOR = new Color(255, 255, 255, 150);
 
     /**
-     * Verschiebung der Koordinatensystembeschriftungen.
+     * Verschiebung der Koordinatensystembeschriftungen in Pixel.
      */
     private static final int LABEL_SHIFT = 5;
 
@@ -55,6 +62,16 @@ public final class CoordinateSystemDrawer
     private final Graphics2D g;
 
     AffineTransform pre;
+
+    /**
+     * Die Breite des Spielfelds in Pixel.
+     */
+    private final int width;
+
+    /**
+     * Die Höhe des Spielfelds in Pixel.
+     */
+    private final int height;
 
     /**
      * Die Kameraposition.
@@ -72,10 +89,16 @@ public final class CoordinateSystemDrawer
     private final int gridSizeInMeters;
 
     /**
-     * Wie viele Pixel ein Gitterkästchen groß sein soll.
+     * Wie viele Pixel ein Gitterkästchen groß sein soll. Ist beispielsweise ein
+     * Meter 32 Pixel lang und ein Gitterkästchen 5 Meter, so ist eine
+     * Gitterkästchen 160x160 Pixel groß. Der Wert dieses Attributs beträgt dann
+     * 160.
      */
     private final double gridSizeInPixels;
 
+    /**
+     * Berechnet sich aus {@code gridSizeInPixels / gridSizeInMeters};
+     */
     private final double gridSizeFactor;
 
     /**
@@ -121,6 +144,8 @@ public final class CoordinateSystemDrawer
             int height)
     {
         this.g = g;
+        this.width = width;
+        this.height = height;
         pre = g.getTransform();
         Camera camera = scene.getCamera();
         position = camera.getPosition();
@@ -128,6 +153,8 @@ public final class CoordinateSystemDrawer
         g.setClip(0, 0, width, height);
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im
         // linken oberen Bildschirmviertel gezeichnet werden.
+        // Damit der Mittelpunkt des Engine-Pi-Koordinatensystems mit dem
+        // Mittelpunkt des Graphics2D-Objekts zusammenfällt.
         g.translate(width / 2, height / 2);
         pixelPerMeter = camera.getMeter();
         g.rotate(Math.toRadians(rotation), 0, 0);
