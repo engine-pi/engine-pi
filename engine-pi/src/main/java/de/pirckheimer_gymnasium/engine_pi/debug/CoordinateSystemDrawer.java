@@ -84,6 +84,30 @@ public final class CoordinateSystemDrawer
     private final int windowSizeInPixels;
 
     /**
+     * Der kleinste x-Wert, der durch eine vertikale Linie dargestellt werden
+     * soll.
+     */
+    private int startX;
+
+    /**
+     * Der größte x-Wert, der durch eine vertikale Linie dargestellt werden
+     * soll.
+     */
+    private int stopX;
+
+    /**
+     * Der kleinste y-Wert, der durch eine horizontale Linie dargestellt werden
+     * soll.
+     */
+    private int startY;
+
+    /**
+     * Der größte y-Wert, der durch eine horizontale Linie dargestellt werden
+     * soll.
+     */
+    private int stopY;
+
+    /**
      * Zeichnet das <b>Koordinatensystem</b>.
      *
      * @param g      Das {@link Graphics2D}-Objekt, in das gezeichnet werden
@@ -102,6 +126,8 @@ public final class CoordinateSystemDrawer
         position = camera.getPosition();
         double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
+        // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im
+        // linken oberen Bildschirmviertel gezeichnet werden.
         g.translate(width / 2, height / 2);
         pixelPerMeter = camera.getMeter();
         g.rotate(Math.toRadians(rotation), 0, 0);
@@ -132,7 +158,7 @@ public final class CoordinateSystemDrawer
     /**
      * Zeichnet die horizontalen Linien.
      */
-    private void drawHorizontalLines(int startY, int stopY, int startX)
+    private void drawHorizontalLines()
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
@@ -146,7 +172,7 @@ public final class CoordinateSystemDrawer
     /**
      * Zeichnet die vertikalen Linien.
      */
-    private void drawVerticalLines(int startX, int stopX, int startY)
+    private void drawVerticalLines()
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
@@ -188,8 +214,7 @@ public final class CoordinateSystemDrawer
                 + gridSizeInMeters * 2);
     }
 
-    private void drawCoordinateLabels(int startX, int stopX, int startY,
-            int stopY)
+    private void drawCoordinateLabels()
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
@@ -201,7 +226,7 @@ public final class CoordinateSystemDrawer
         }
     }
 
-    private void drawOneLineVerticalCoordinateLabels(int startY, int stopY, int x)
+    private void drawOneLineVerticalCoordinateLabels(int x)
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
@@ -210,14 +235,14 @@ public final class CoordinateSystemDrawer
         }
     }
 
-    private void drawVerticalCoordinateLabels(int startX, int stopX, int startY, int stopY)
+    private void drawVerticalCoordinateLabels()
     {
-        drawOneLineVerticalCoordinateLabels(startY, stopY, startX);
-        drawOneLineVerticalCoordinateLabels(startY, stopY, 0);
-        drawOneLineVerticalCoordinateLabels(startY, stopY, stopX);
+        drawOneLineVerticalCoordinateLabels(startX);
+        drawOneLineVerticalCoordinateLabels(0);
+        drawOneLineVerticalCoordinateLabels(stopX);
     }
 
-    private void drawHorizontalCoordinateLabels(int startX, int stopX)
+    private void drawHorizontalCoordinateLabels()
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
@@ -234,19 +259,18 @@ public final class CoordinateSystemDrawer
     {
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
         {
-            int startX = calculateStartLinePosition(position.getX());
-            int startY = calculateStartLinePosition(-1 * position.getY());
-            int stopX = calculateStopLinePosition(startX);
-            int stopY = calculateStopLinePosition(startY);
+            startX = calculateStartLinePosition(position.getX());
+            startY = calculateStartLinePosition(-1 * position.getY());
+            stopX = calculateStopLinePosition(startX);
+            stopY = calculateStopLinePosition(startY);
             // Setzen der Schriftart.
             g.setFont(FONT);
             // Setzen der Gitterfarbe.
             g.setColor(COLOR);
-            drawVerticalLines(startX, stopX, startY);
-            drawHorizontalLines(startY, stopY, startX);
-//            drawCoordinateLabels(startX, stopX, startY, stopY);
-
-            drawVerticalCoordinateLabels(startX + 3, stopX -3 , startY, stopY);
+            drawVerticalLines();
+            drawHorizontalLines();
+            // drawCoordinateLabels(startX, stopX, startY, stopY);
+            drawVerticalCoordinateLabels();
         }
         g.setTransform(pre);
     }
