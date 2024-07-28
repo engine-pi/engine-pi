@@ -35,7 +35,10 @@ import java.awt.geom.AffineTransform;
  * Das Koordinatensystem wird in der Einheit Meter gezeichnet. Das
  * Graphics2D-Objekt erwartet jedoch Pixel. Außerdem ist der Ursprung des
  * Graphics2D-Objekt links oben, der Ursprung des Engine-Pi-Koordinatensystem
- * jedoch in der Mitte.
+ * jedoch in der Mitte. Das Koordinatengitter wird etwas größer gezeichnet, als
+ * tatsächlich zu sehen ist, d. h. es werden zusätzlichen vertikale und
+ * horizontale Linien gezeichnet, die unter Umständen außerhalb des sichtbaren
+ * Bereichs liegen.
  * </p>
  */
 public final class CoordinateSystemDrawer
@@ -74,9 +77,9 @@ public final class CoordinateSystemDrawer
     private final int height;
 
     /**
-     * Die Kameraposition.
+     * Die Kameraposition, also der Mittelpunkt des sichtbaren Spielfelds.
      */
-    private final Vector position;
+    private final Vector center;
 
     /**
      * Wie viele Pixel ein Meter misst.
@@ -143,7 +146,7 @@ public final class CoordinateSystemDrawer
         this.height = height;
         pre = g.getTransform();
         Camera camera = scene.getCamera();
-        position = camera.getPosition();
+        center = camera.getPosition();
         double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im
@@ -153,8 +156,8 @@ public final class CoordinateSystemDrawer
         g.translate(width / 2, height / 2);
         pixelPerMeter = camera.getMeter();
         g.rotate(Math.toRadians(rotation), 0, 0);
-        g.translate(-position.getX() * pixelPerMeter,
-                position.getY() * pixelPerMeter);
+        g.translate(-center.getX() * pixelPerMeter,
+                center.getY() * pixelPerMeter);
         if (DebugConfiguration.coordinateSystemLinesEveryNMeter > 0)
         {
             gridSizeInMeters = DebugConfiguration.coordinateSystemLinesEveryNMeter;
@@ -166,6 +169,27 @@ public final class CoordinateSystemDrawer
         }
         gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
         windowSizeInPixels = Math.max(width, height);
+    }
+
+    /**
+     * Wie viele Meter der sichtbare Ausschnitt des Spielfelds breit ist.
+     *
+     * @return Wie viele Meter der sichtbare Ausschnitt des Spielfelds breit
+     *         ist.
+     */
+    private double getWidthInMeter()
+    {
+        return width / pixelPerMeter;
+    }
+
+    /**
+     * Wie viele Meter der sichtbare Ausschnitt des Spielfelds hoch ist.
+     *
+     * @return Wie viele Meter der sichtbare Ausschnitt des Spielfelds hoch ist.
+     */
+    private double getHeightInMeter()
+    {
+        return height / pixelPerMeter;
     }
 
     /**
@@ -247,7 +271,7 @@ public final class CoordinateSystemDrawer
         }
     }
 
-    private void drawOneLineVerticalCoordinateLabels(int x)
+    private void drawOneLineVerticalCoordinateLabels(double x)
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
@@ -258,9 +282,15 @@ public final class CoordinateSystemDrawer
 
     private void drawVerticalCoordinateLabels()
     {
-        drawOneLineVerticalCoordinateLabels(startX);
+        // y-Werte am linken Rand
+        drawOneLineVerticalCoordinateLabels(
+                center.getX() - (getWidthInMeter() / 2));
+        // y-Werte an der y-Achse
         drawOneLineVerticalCoordinateLabels(0);
-        drawOneLineVerticalCoordinateLabels(stopX);
+        // y-Werte am rechten Rand
+        drawOneLineVerticalCoordinateLabels(
+                (center.getX() + (getWidthInMeter() / 2))
+                        - getWidthInMeter() * 0.04);
     }
 
     private void drawHorizontalCoordinateLabels()
@@ -280,8 +310,8 @@ public final class CoordinateSystemDrawer
     {
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
         {
-            startX = calculateStartLinePosition(position.getX());
-            startY = calculateStartLinePosition(-1 * position.getY());
+            startX = calculateStartLinePosition(center.getX());
+            startY = calculateStartLinePosition(-1 * center.getY());
             stopX = calculateStopLinePosition(startX);
             stopY = calculateStopLinePosition(startY);
             // Setzen der Schriftart.
