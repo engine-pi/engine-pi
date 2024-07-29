@@ -1,7 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi_demos.debug;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.debug.ColorContainerVisualizer;
 
