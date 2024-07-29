@@ -132,7 +132,7 @@
                     to create the resultant assembly artifacts without classifier. As such, an
                     assembly artifact having the same format as the packaging of the current Maven
                     project will replace the file for this main project artifact. -->
-                    <appendAssemblyId>false</appendAssemblyId>
+                    <appendAssemblyId>true</appendAssemblyId>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
