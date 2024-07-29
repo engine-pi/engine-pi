@@ -319,8 +319,8 @@ public final class CoordinateSystemDrawer
     }
 
     /**
-     * Zeichnet die Beschriftungen für die vertikalen Linien - also die y-Achsen
-     * - ein.
+     * Zeichnet die Beschriftungen für die vertikalen Linien - also für die
+     * y-Achsen - ein.
      */
     private void drawVerticalCoordinateLabels()
     {
@@ -347,7 +347,7 @@ public final class CoordinateSystemDrawer
     }
 
     /**
-     * Zeichnet die Beschriftungen für die horizontalen Linien - also die
+     * Zeichnet die Beschriftungen für die horizontalen Linien - also für die
      * x-Achsen - ein.
      */
     private void drawHorizontalCoordinateLabels()

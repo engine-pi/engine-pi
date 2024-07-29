@@ -20,9 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -222,9 +220,16 @@ public final class Game
         // pack() already allows to create the buffer strategy for rendering
         // (but not on Windows?)
         frame.pack();
-        // Zentriert das Fenster auf dem Bildschirm -
-        // https://stackoverflow.com/a/144893/2373138
-        frame.setLocationRelativeTo(null);
+        if (DebugConfiguration.windowPosition != Direction.NONE)
+        {
+            Game.setWindowPosition(DebugConfiguration.windowPosition);
+        }
+        else
+        {
+            // Zentriert das Fenster auf dem Bildschirm -
+            // https://stackoverflow.com/a/144893/2373138
+            frame.setLocationRelativeTo(null);
+        }
         frame.setVisible(true);
         renderPanel.allocateBuffers();
         frame.addWindowListener(new WindowAdapter()
@@ -689,6 +694,52 @@ public final class Game
     public static void setWindowPosition(int x, int y)
     {
         frame.setLocation(x, y);
+    }
+
+    /**
+     * Setzt das Spielfenster an eine neue Position.
+     *
+     * @param direction Wo das Spielfeld auf dem Bildschirm angezeigt werden
+     *                  sollen.
+     *                  <ul>
+     *                  <li>{@link Direction#UP}: oben mittig</li>
+     *                  <li>{@link Direction#UP_RIGHT}: oben rechts</li>
+     *                  <li>{@link Direction#RIGHT}: rechts mittig</li>
+     *                  <li>{@link Direction#DOWN_RIGHT}: unten rechts</li>
+     *                  <li>{@link Direction#DOWN}: unten mittig</li>
+     *                  <li>{@link Direction#DOWN_LEFT}: unten links</li>
+     *                  <li>{@link Direction#LEFT}: links</li>
+     *                  <li>{@link Direction#UP_LEFT}: oben links</li>
+     *                  <li>{@link Direction#NONE}: mittig</li>
+     *                  </ul>
+     *
+     * @see DebugConfiguration#windowPosition
+     */
+    public static void setWindowPosition(Direction direction)
+    {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
+        int screenWidth = (int) screenSize.getWidth();
+        int screenHeight = (int) screenSize.getHeight();
+        Vector vector = Game.getWindowSize();
+        int windowWidth = (int) vector.getX();
+        int windowHeight = (int) vector.getY();
+        int diffWidth = screenWidth - windowWidth;
+        int diffHeight = screenHeight - windowHeight;
+        switch (direction)
+        {
+        case UP -> Game.setWindowPosition(diffWidth / 2, 0);
+        case UP_RIGHT -> Game.setWindowPosition(diffWidth, 0);
+        case RIGHT -> Game.setWindowPosition(diffWidth, diffHeight / 2);
+        case DOWN_RIGHT -> Game.setWindowPosition(diffWidth, diffHeight);
+        case DOWN -> Game.setWindowPosition(diffWidth / 2, diffHeight);
+        case DOWN_LEFT -> Game.setWindowPosition(0, diffHeight);
+        case LEFT -> Game.setWindowPosition(0, diffHeight / 2);
+        case UP_LEFT -> Game.setWindowPosition(0, 0);
+        case NONE ->
+            // zentrieren
+            Game.setWindowPosition(diffWidth / 2, diffHeight / 2);
+        };
     }
 
     /**

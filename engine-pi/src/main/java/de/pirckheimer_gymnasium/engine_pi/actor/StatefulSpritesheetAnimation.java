@@ -42,17 +42,9 @@ public class StatefulSpritesheetAnimation<State>
     }
 
     /**
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
-     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param filePath      Der Dateipfad des Spritesheets.
-     * @param x             Die Anzahl an Sprites in x-Richtung.
-     * @param y             Die Anzahl an Sprites in y-Richtung.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
-     *
-     * @return Eine mit Einzelbildern bestückte Animation.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
+     * @param x     Die Anzahl an Sprites in x-Richtung.
+     * @param y     Die Anzahl an Sprites in y-Richtung.
      */
     public void addState(State state, String filepath, int x, int y)
     {
@@ -61,17 +53,11 @@ public class StatefulSpritesheetAnimation<State>
     }
 
     /**
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
-     * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param filePath      Der Dateipfad des Spritesheets.
-     * @param spriteWidth   Die Breite des Sprites in Pixel.
-     * @param spriteHeight  Die Höhe des Sprites in Pixel.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
-     *
-     * @return Eine mit Einzelbildern bestückte Animation.
+     * @param state        Der Zustand, unter dem die Animation gespeichert
+     *                     wird.
+     * @param filePath     Der Dateipfad des Spritesheets.
+     * @param spriteWidth  Die Breite des Sprites in Pixel.
+     * @param spriteHeight Die Höhe des Sprites in Pixel.
      */
     public void addState(State state, int spriteWidth, int spriteHeight,
             String filePath)

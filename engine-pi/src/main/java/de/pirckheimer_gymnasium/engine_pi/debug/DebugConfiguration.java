@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
+import de.pirckheimer_gymnasium.engine_pi.Direction;
+
 /**
  * Verwaltet die Einstellmöglichkeiten mit Bezug zum Entwicklungsmodus.
  *
@@ -58,6 +60,25 @@ public class DebugConfiguration
      * Koordinatensystem.
      */
     public static int coordinateSystemLinesEveryNMeter = -1;
+
+    /**
+     * Gibt an, wo das Spielfeld auf dem Bildschirm angezeigt werden sollen.
+     *
+     * <ul>
+     * <li>{@link Direction#UP}: oben mittig</li>
+     * <li>{@link Direction#UP_RIGHT}: oben rechts</li>
+     * <li>{@link Direction#RIGHT}: rechts mittig</li>
+     * <li>{@link Direction#DOWN_RIGHT}: unten rechts</li>
+     * <li>{@link Direction#DOWN}: unten mittig</li>
+     * <li>{@link Direction#DOWN_LEFT}: unten links</li>
+     * <li>{@link Direction#LEFT}: links</li>
+     * <li>{@link Direction#UP_LEFT}: oben links</li>
+     * <li>{@link Direction#NONE}: mittig</li>
+     * </ul>
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.Game#setWindowPosition(Direction)
+     */
+    public static Direction windowPosition = Direction.NONE;
 
     /**
      * Schaltet die Einstellung, ob die Ankerpunkte der Figuren gezeichnet

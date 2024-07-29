@@ -22,9 +22,11 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
+import de.pirckheimer_gymnasium.engine_pi.Direction;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
 
 /**
  * Demonstriert die Methode
@@ -34,34 +36,20 @@ public class SetWindowPositionDemo
 {
     public static void main(String[] args)
     {
+        DebugConfiguration.windowPosition = Direction.UP_LEFT;
         Game.start(new Scene());
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-        int screenWidth = (int) screenSize.getWidth();
-        int screenHeight = (int) screenSize.getHeight();
-        Vector vector = Game.getWindowSize();
-        int windowWidth = (int) vector.getX();
-        int windowHeight = (int) vector.getY();
         Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 ->
-                // links oben
-                Game.setWindowPosition(0, 0);
-            case KeyEvent.VK_2 ->
-                // rechts oben
-                Game.setWindowPosition(screenWidth - windowWidth, 0);
-            case KeyEvent.VK_3 ->
-                // links unten
-                Game.setWindowPosition(0, screenHeight - windowHeight);
-            case KeyEvent.VK_4 ->
-                // rechts unten
-                Game.setWindowPosition(screenWidth - windowWidth,
-                        screenHeight - windowHeight);
-            case KeyEvent.VK_5 ->
-                // zentrieren
-                Game.setWindowPosition((screenWidth - windowWidth) / 2,
-                        (screenHeight - windowHeight) / 2);
+            case KeyEvent.VK_1 -> Game.setWindowPosition(Direction.UP);
+            case KeyEvent.VK_2 -> Game.setWindowPosition(Direction.UP_RIGHT);
+            case KeyEvent.VK_3 -> Game.setWindowPosition(Direction.RIGHT);
+            case KeyEvent.VK_4 -> Game.setWindowPosition(Direction.DOWN_RIGHT);
+            case KeyEvent.VK_5 -> Game.setWindowPosition(Direction.DOWN);
+            case KeyEvent.VK_6 -> Game.setWindowPosition(Direction.DOWN_LEFT);
+            case KeyEvent.VK_7 -> Game.setWindowPosition(Direction.LEFT);
+            case KeyEvent.VK_8 -> Game.setWindowPosition(Direction.UP_LEFT);
+            case KeyEvent.VK_9 -> Game.setWindowPosition(Direction.NONE);
             }
         });
     }
