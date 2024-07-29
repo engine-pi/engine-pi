@@ -105,8 +105,6 @@ public final class Game
 
     private static GameLoop loop;
 
-    private static Thread mainThread;
-
     /**
      * Speichert den Zustand der einzelnen Tasten der Tastatur. Ist ein Wert
      * <code>true</code>, so ist die entsprechende Taste gedrückt, sonst ist der
@@ -256,7 +254,7 @@ public final class Game
             // werden.");
         }
         mousePosition = new java.awt.Point(width / 2, height / 2);
-        mainThread = new Thread(Game::run,
+        Thread mainThread = new Thread(Game::run,
                 "de.pirckheimer_gymnasium.engine_pi.main");
         mainThread.start();
         mainThread.setPriority(Thread.MAX_PRIORITY);
@@ -609,9 +607,9 @@ public final class Game
     }
 
     /**
-     * Gibt an, ob gerade die Engine läuft. Die Engine läuft, sobald es ein
-     * sichtbares Fenster gibt. Dieses läuft, sobald
-     * {@link #start(int, int, Scene)} ausgeführt wurde.
+     * Gibt an, ob die Engine gerade läuft. Die Engine läuft, sobald es ein
+     * sichtbares Fenster gibt. Dieses läuft, sobald {@link #start(Scene)}
+     * ausgeführt wurde.
      *
      * @return <code>true</code>, wenn das Spiel läuft, sonst
      *         <code>false</code>.
