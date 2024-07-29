@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.27.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.27.0) - 2024-07-29
+
+<small>[Compare with v0.26.0](https://github.com/engine-pi/engine-pi/compare/v0.26.0...v0.27.0)</small>
+
+### Added
+
+- New classes `actor/ImageFontGlyph`, `actor/ImageFontSpecimen`
+  `actor/StatefulAnimatedGifAnimation.java`
+  `actor/StatefulImagesPrefixAnimation.java`
+  `actor/StatefulSpritesheetAnimation.java`
+- New method Actor#toggleVisible() ([58303071](58303071ab9acda1392df125ea812f14518f5afa) by Josef Friedrich).
+- Implement Game#setWindowPosition(Direction) ([e2e928b8](e2e928b8ffabe7da762241ef7a9bb38b9a512d4b) by Josef Friedrich).
+
+### Changed
+
+- Refactor coordinate system drawing ([fe6563ba](fe6563ba2abc8042d06c7462287fe90cb04c982b) by Josef Friedrich).
+- Create more jar files jar-with-dependencies ([30d8be42](30d8be42ee5db3dca5674bf9c64c97e72582617e) by Josef Friedrich).
+
+### Fixed
+
+- Fix image font ([fa6438a](https://github.com/engine-pi/engine-pi/commit/fa6438aa75ae18f7e3badb1091b2f745711d129b) by Josef Friedrich).
+
 ## [v0.26.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.26.0) - 2024-07-16
 
 <small>[Compare with v0.25.0](https://github.com/engine-pi/engine-pi/compare/v0.25.0...v0.26.0)</small>
