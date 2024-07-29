@@ -30,7 +30,23 @@ public class DebugConfiguration
     /**
      * Ob der Entwicklungsmodus aktiviert werden soll.
      */
-    public static boolean enableDebugMode;
+    public static boolean enableDebugMode = false;
+
+    /**
+     * Wird dieses Attribut auf <code>true</code> gesetzt, so werden äußerst
+     * ausführliche Log-Ausgaben gemacht. Dies betrifft unter anderem
+     * Informationen über das Verhalten auf Ebene von Einzelbildern arbeitenden
+     * Threads. Hierfür wurde diese Variable eingeführt.
+     */
+    public static boolean verbose;
+
+    /**
+     * Gibt an, ob die Figuren gezeichnet werden sollen. Ist dieses Attribut auf
+     * {@code false} gesetzt, werden keine Figuren gezeichnet. Diese Einstellung
+     * macht nur im aktivierten Debug-Modus Sinn, denn dann werden die Umrisse
+     * gezeichnet, jedoch nicht die Füllung.
+     */
+    public static boolean renderActors = true;
 
     /**
      * Ob die Ankerpunkte der Figuren gezeichnet werden sollen.

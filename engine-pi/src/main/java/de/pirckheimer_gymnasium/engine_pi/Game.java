@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
 import de.pirckheimer_gymnasium.engine_pi.debug.MainAnimation;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
 import de.pirckheimer_gymnasium.engine_pi.event.DefaultListener;
@@ -77,31 +78,6 @@ public final class Game
                                                           // accelerated image
                                                           // scaling on windows
     }
-
-    /**
-     * Wird {@link #debug} auf <code>true</code> gesetzt, so werden zusätzliche
-     * Debug-Informationen angezeigt.
-     *
-     * @see Game#setDebug(boolean)
-     * @see Game#isDebug()
-     */
-    private static boolean debug;
-
-    /**
-     * Gibt an, ob die Figuren gezeichnet werden sollen. Ist dieses Attribut auf
-     * {@code false} gesetzt, werden keine Figuren gezeichnet. Diese Einstellung
-     * macht nur im aktivierten Debug-Modus Sinn, denn dann werden die Umrisse
-     * gezeichnet, jedoch nicht die Füllung.
-     */
-    private static boolean renderActors = true;
-
-    /**
-     * Wird {@link #verbose} auf <code>true</code> gesetzt, so werden äußerst
-     * ausführliche Log-Ausgaben gemacht. Dies betrifft unter anderem
-     * Informationen über das Verhalten der frameweise arbeitenden Threads.
-     * Hierfür wurde diese Variable eingeführt.
-     */
-    private static boolean verbose;
 
     /**
      * Breite des Fensters in Pixel.
@@ -875,7 +851,7 @@ public final class Game
     @API
     public static void setDebug(boolean value)
     {
-        debug = value;
+        DebugConfiguration.enableDebugMode = value;
     }
 
     /**
@@ -889,7 +865,7 @@ public final class Game
     @API
     public static boolean isDebug()
     {
-        return debug;
+        return DebugConfiguration.enableDebugMode;
     }
 
     /**
@@ -910,7 +886,7 @@ public final class Game
     @API
     public static void debug()
     {
-        debug = true;
+        DebugConfiguration.enableDebugMode = true;
     }
 
     /**
@@ -921,7 +897,7 @@ public final class Game
     @API
     public static void setRenderActors(boolean value)
     {
-        renderActors = value;
+        DebugConfiguration.renderActors = value;
     }
 
     /**
@@ -932,7 +908,7 @@ public final class Game
     @API
     public static boolean getRenderActors()
     {
-        return renderActors;
+        return DebugConfiguration.renderActors;
     }
 
     /**
@@ -956,7 +932,7 @@ public final class Game
     @API
     public static boolean isVerbose()
     {
-        return verbose;
+        return DebugConfiguration.verbose;
     }
 
     /**
@@ -974,7 +950,7 @@ public final class Game
     @API
     public static void setVerbose(boolean value)
     {
-        verbose = value;
+        DebugConfiguration.verbose = value;
     }
 
     /**
