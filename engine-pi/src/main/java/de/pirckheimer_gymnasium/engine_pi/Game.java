@@ -739,7 +739,7 @@ public final class Game
         case NONE ->
             // zentrieren
             Game.setWindowPosition(diffWidth / 2, diffHeight / 2);
-        };
+        }
     }
 
     /**

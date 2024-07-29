@@ -286,6 +286,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *         {@code actor.setColor(..).setPostion(..)}.
      *
      * @see #isVisible()
+     * @see #toggleVisible()
      */
     @API
     public final Actor setVisible(boolean visible)
@@ -295,15 +296,36 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Wechselt zwischen den Zuständen sichtbar und nicht sichtbar hin und her.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *         aneinander gekettete Setter festgelegt werden können, z. B.
+     *         {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see #isVisible()
+     * @see #setVisible(boolean)
+     *
+     * @since 0.27.0
+     */
+    @API
+    public final Actor toggleVisible()
+    {
+        this.visible = !visible;
+        return this;
+    }
+
+    /**
      * Gibt an, ob das Objekt sichtbar ist.
      *
      * @return Ist <code>true</code>, wenn das Objekt zurzeit sichtbar ist.
+     *
      * @see #setVisible(boolean)
      */
     @API
     public final boolean isVisible()
     {
-        return this.visible;
+        return visible;
     }
 
     /**
