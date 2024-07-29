@@ -100,9 +100,9 @@ public final class CoordinateSystemDrawer
     private final double gridSizeInPixels;
 
     /**
-     * Der maximale Wert von Höhe oder Breite in Pixeln.
+     * Der maximale Wert von Höhe oder Breite in Pixel.
      */
-    private final int windowSizeInPixels;
+    private final int maxWindowSideInPixels;
 
     /**
      * Der kleinste x-Wert, der durch eine vertikale Linie dargestellt werden
@@ -152,7 +152,7 @@ public final class CoordinateSystemDrawer
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im
         // linken oberen Bildschirmviertel gezeichnet werden.
         // Damit der Mittelpunkt des Engine-Pi-Koordinatensystems mit dem
-        // Mittelpunkt des Graphics2D-Objekts zusammenfällt.
+        // Mittelpunkt des {@link Graphics2D}-Objekts zusammenfällt.
         g.translate(width / 2, height / 2);
         pixelPerMeter = camera.getMeter();
         g.rotate(Math.toRadians(rotation), 0, 0);
@@ -168,11 +168,12 @@ public final class CoordinateSystemDrawer
                     .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
         }
         gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
-        windowSizeInPixels = Math.max(width, height);
+        maxWindowSideInPixels = Math.max(width, height);
     }
 
     /**
-     * Wie viele Meter der sichtbare Ausschnitt des Spielfelds breit ist.
+     * Gibt zurück, wie viele Meter der sichtbare Ausschnitt des Spielfelds
+     * breit ist.
      *
      * @return Wie viele Meter der sichtbare Ausschnitt des Spielfelds breit
      *         ist.
@@ -180,6 +181,23 @@ public final class CoordinateSystemDrawer
     private double getWidthInMeter()
     {
         return width / pixelPerMeter;
+    }
+
+    private double getWidthInMeter(double factor)
+    {
+        return getWidthInMeter() * factor;
+    }
+
+    /**
+     * Gibt zurück, wie viele Meter die Hälfte des sichtbaren Ausschnitts des
+     * Spielfelds breit ist.
+     *
+     * @return Wie viele Meter die Hälfte des sichtbaren Ausschnitts des
+     *         Spielfelds breit ist.
+     */
+    private double getHalfWidthInMeter()
+    {
+        return getWidthInMeter() / 2;
     }
 
     /**
@@ -190,6 +208,23 @@ public final class CoordinateSystemDrawer
     private double getHeightInMeter()
     {
         return height / pixelPerMeter;
+    }
+
+    private double getHeightInMeter(double factor)
+    {
+        return getHeightInMeter() * factor;
+    }
+
+    /**
+     * Gibt zurück, wie viele Meter die Hälfte des sichtbaren Ausschnitts des
+     * Spielfelds hoch ist.
+     *
+     * @return Wie viele Meter die Hälfte des sichtbaren Ausschnitts des
+     *         Spielfelds hoch ist.
+     */
+    private double getHalfHeightInMeter()
+    {
+        return getHeightInMeter() / 2;
     }
 
     /**
@@ -209,7 +244,7 @@ public final class CoordinateSystemDrawer
         {
             g.fillRect((int) ((startX - 1) * pixelPerMeter),
                     (int) (y * pixelPerMeter - 1),
-                    (int) (windowSizeInPixels + 3 * gridSizeInPixels),
+                    (int) (maxWindowSideInPixels + 3 * gridSizeInPixels),
                     getLineThickness(y));
         }
     }
@@ -223,7 +258,7 @@ public final class CoordinateSystemDrawer
         {
             g.fillRect((int) (x * pixelPerMeter) - 1,
                     (int) ((startY - 1) * pixelPerMeter), getLineThickness(x),
-                    (int) (windowSizeInPixels + 3 * gridSizeInPixels));
+                    (int) (maxWindowSideInPixels + 3 * gridSizeInPixels));
         }
     }
 
@@ -239,7 +274,7 @@ public final class CoordinateSystemDrawer
     private int calculateStartLinePosition(double cameraPosition)
     {
         int start = (int) (cameraPosition
-                - windowSizeInPixels / 2.0 / pixelPerMeter);
+                - maxWindowSideInPixels / 2.0 / pixelPerMeter);
         start -= (start % gridSizeInMeters) + gridSizeInMeters;
         return start;
     }
@@ -255,7 +290,7 @@ public final class CoordinateSystemDrawer
      */
     private int calculateStopLinePosition(int start)
     {
-        return (int) (start + windowSizeInPixels / pixelPerMeter
+        return (int) (start + maxWindowSideInPixels / pixelPerMeter
                 + gridSizeInMeters * 2);
     }
 
@@ -271,6 +306,9 @@ public final class CoordinateSystemDrawer
         }
     }
 
+    /**
+     * @param x Der x-Wert in Meter.
+     */
     private void drawOneLineVerticalCoordinateLabels(double x)
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
@@ -280,26 +318,48 @@ public final class CoordinateSystemDrawer
         }
     }
 
+    /**
+     * Zeichnet die Beschriftungen für die vertikalen Linien - also die y-Achsen
+     * - ein.
+     */
     private void drawVerticalCoordinateLabels()
     {
         // y-Werte am linken Rand
         drawOneLineVerticalCoordinateLabels(
-                center.getX() - (getWidthInMeter() / 2));
+                center.getX() - getHalfWidthInMeter());
         // y-Werte an der y-Achse
         drawOneLineVerticalCoordinateLabels(0);
         // y-Werte am rechten Rand
         drawOneLineVerticalCoordinateLabels(
-                (center.getX() + (getWidthInMeter() / 2))
-                        - getWidthInMeter() * 0.04);
+                center.getX() + getHalfWidthInMeter() - getWidthInMeter(0.04));
     }
 
-    private void drawHorizontalCoordinateLabels()
+    /**
+     * @param y Der y-Wert in Meter.
+     */
+    private void drawOneLineHorizontalCoordinateLabels(double y)
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
-            g.drawString(-x + "", (int) (0 * pixelPerMeter + LABEL_SHIFT),
-                    (int) (x * pixelPerMeter - LABEL_SHIFT));
+            g.drawString(x + "", (int) (x * pixelPerMeter + LABEL_SHIFT),
+                    (int) (-1 * y * pixelPerMeter - LABEL_SHIFT));
         }
+    }
+
+    /**
+     * Zeichnet die Beschriftungen für die horizontalen Linien - also die
+     * x-Achsen - ein.
+     */
+    private void drawHorizontalCoordinateLabels()
+    {
+        // x-Werte am unteren Rand
+        drawOneLineHorizontalCoordinateLabels(center.getY()
+                - getHalfHeightInMeter() + getHeightInMeter(0.02));
+        // x-Werte an der x-Achse
+        drawOneLineHorizontalCoordinateLabels(0);
+        // x-Werte am oberen Rand
+        drawOneLineHorizontalCoordinateLabels((center.getY()
+                + (getHalfHeightInMeter() - getHeightInMeter(0.04))));
     }
 
     /**
@@ -320,7 +380,7 @@ public final class CoordinateSystemDrawer
             g.setColor(COLOR);
             drawVerticalLines();
             drawHorizontalLines();
-            // drawCoordinateLabels(startX, stopX, startY, stopY);
+            drawHorizontalCoordinateLabels();
             drawVerticalCoordinateLabels();
         }
         g.setTransform(pre);
