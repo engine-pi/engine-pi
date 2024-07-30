@@ -370,16 +370,41 @@ public final class Camera
         moveTo(new Vector(x, y));
     }
 
+    /**
+     * <b>Rotiert</b> die Kamera um den angegebenen <b>Winkel</b>.
+     *
+     * <p>
+     * Positive Werte drehen die die Kamera gegen den Uhrzeigersinn, negative im
+     * Uhrzeigersinn.
+     * </p>
+     *
+     * @param angle Der Winkel (in <b>Grad</b>), um den die Kamera rotiert
+     *              werden soll.
+     *              <ul>
+     *              <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
+     *              <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *              </ul>
+     */
     @API
-    public void rotateBy(double degree)
+    public void rotateBy(double angle)
     {
-        rotation += degree;
+        rotation += angle;
+        rotation = rotation % 360;
     }
 
+    /**
+     * Setzt den Rotationswert der Kamera. {@code rotateTo(90)} dreht die Kamera
+     * beispiels um 90 Grad <b>gegen</b> den Uhrzeigersinn,
+     * {@code rotateTo(-90)} um 90 Grad <b>im</b> Uhrzeigersinn.
+     *
+     * @param winkel Der Winkel (in <b>Grad</b>), um die Kamera <b>von seiner
+     *               Ausgangsposition bei Initialisierung</b> rotiert werden
+     *               soll.
+     */
     @API
-    public void rotateTo(double degree)
+    public void rotateTo(double angle)
     {
-        rotation = degree;
+        rotation = angle % 360;
     }
 
     /**
@@ -483,6 +508,10 @@ public final class Camera
         ToStringFormatter formatter = new ToStringFormatter("Camera");
         formatter.add("meter", meter);
         formatter.add("center", center);
+        if (rotation != 0)
+        {
+            formatter.add("rotation", rotation);
+        }
         if (focus != null)
         {
             formatter.add("focus", focus);

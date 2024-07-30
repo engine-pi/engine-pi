@@ -70,12 +70,16 @@ public class CameraDemo extends Scene
         case KeyEvent.VK_1 -> {
             camera.moveTo(new Vector(1, 1));
         }
-        case KeyEvent.VK_PLUS -> camera.zoomIn();
-        case KeyEvent.VK_MINUS -> camera.zoomOut();
         case KeyEvent.VK_UP -> moveFocus(0, 1);
         case KeyEvent.VK_LEFT -> moveFocus(-1, 0);
         case KeyEvent.VK_DOWN -> moveFocus(0, -1);
         case KeyEvent.VK_RIGHT -> moveFocus(1, 0);
+        case KeyEvent.VK_R -> camera.rotateBy(-30);
+        case KeyEvent.VK_L -> camera.rotateBy(30);
+        case KeyEvent.VK_2 -> camera.rotateTo(0);
+        case KeyEvent.VK_3 -> camera.rotateTo(90);
+        case KeyEvent.VK_4 -> camera.rotateTo(180);
+        case KeyEvent.VK_5 -> camera.rotateTo(270);
         }
         System.out.println(camera);
     }

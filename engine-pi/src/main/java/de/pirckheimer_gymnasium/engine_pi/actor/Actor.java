@@ -2205,19 +2205,19 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Rotiert das Objekt um den angegebenen Winkel.
+     * <b>Rotiert</b> das Objekt um den angegebenen <b>Winkel</b>.
      *
      * <p>
      * Positive Werte drehen die Figur gegen den Uhrzeigersinn, negative im
      * Uhrzeigersinn.
      * </p>
      *
-     * @param degree Der Winkel (in <b>Grad</b>), um den das Objekt rotiert
-     *               werden soll.
-     *               <ul>
-     *               <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
-     *               <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
-     *               </ul>
+     * @param angle Der Winkel (in <b>Grad</b>), um den das Objekt rotiert
+     *              werden soll.
+     *              <ul>
+     *              <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
+     *              <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *              </ul>
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *         Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -2227,14 +2227,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #setRotation(double)
      */
     @API
-    public final Actor rotateBy(double degree)
+    public final Actor rotateBy(double angle)
     {
-        physicsHandler.rotateBy(degree);
+        physicsHandler.rotateBy(angle);
         return this;
     }
 
     /**
-     * Gibt den Winkel aus, um den das Objekt derzeit rotiert ist.
+     * Gibt den <b>Winkel</b> aus, um den das Objekt derzeit <b>rotiert</b> ist.
      *
      * @return Der Winkel (in <b>Grad</b>), um den das Objekt derzeit rotiert
      *         ist. Jedes Objekt ist bei Initialisierung nicht rotiert
@@ -2253,7 +2253,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Grad <b>gegen</b> den Uhrzeigersinn, {@code setRotation(-90)} um 90 Grad
      * <b>im</b> Uhrzeigersinn.
      *
-     * @param degree Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
+     * @param winkel Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
      *               seiner Ausgangsposition bei Initialisierung</b> rotiert
      *               werden soll.
      *
@@ -2263,9 +2263,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *         {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setRotation(double degree)
+    public final Actor setRotation(double winkel)
     {
-        physicsHandler.setRotation(degree);
+        physicsHandler.setRotation(winkel);
         return this;
     }
 

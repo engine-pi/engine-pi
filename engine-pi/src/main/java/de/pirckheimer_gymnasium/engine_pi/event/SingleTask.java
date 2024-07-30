@@ -24,7 +24,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Ein einfacher Task, der einmalig mit Verzögerung ausgeführt wird.
+ * Eine einfache Aufgabe, der einmalig mit Verzögerung ausgeführt wird.
  *
  * @author Niklas Keller
  *
@@ -46,38 +46,35 @@ public final class SingleTask implements FrameUpdateListener
     /**
      * Code, der nach X Sekunden ausgeführt wird.
      */
-    private final Runnable runnable;
+    private final Runnable task;
 
     /**
-     * Sagt, ob der Task bereits vollständig ausgeführt wurde.
+     * Sagt, ob die Aufgabe bereits vollständig ausgeführt wurde.
      */
     private boolean done;
 
     /**
-     * Container, an dem der Task angemeldet wird, wo er sich auch selbst wieder
-     * abmeldet.
+     * Container, an dem die Aufgabe angemeldet wird, wo er sich auch selbst
+     * wieder abmeldet.
      */
     private final FrameUpdateListenerRegistration parent;
 
     /**
-     * Konstruktor.
-     *
-     * @param delayInSeconds Zeit zwischen den Ausführungen in Millisekunden.
+     * @param delayInSeconds Zeit zwischen den Ausführungen in Sekunden.
      */
-    public SingleTask(double delayInSeconds, Runnable runnable,
+    public SingleTask(double delayInSeconds, Runnable task,
             FrameUpdateListenerRegistration parent)
     {
         this.delay = delayInSeconds;
         this.countdown = delayInSeconds;
-        this.runnable = runnable;
+        this.task = task;
         this.parent = parent;
     }
 
     /**
-     * Gibt das aktuelle Intervall des periodischen Tasks aus.
+     * Gibt die Verzögerung in Sekunden aus.
      *
-     * @return Das aktuelle Intervall. Zeit zwischen den Ausführungen in
-     *         Sekunden.
+     * @return Die Verzögerung in Sekunden.
      */
     @API
     public double getDelay()
@@ -86,7 +83,7 @@ public final class SingleTask implements FrameUpdateListener
     }
 
     /**
-     * @return Sagt, ob der Task bereits vollständig ausgeführt wurde.
+     * @return Sagt, ob die Aufgabe bereits vollständig ausgeführt wurde.
      */
     @API
     public boolean isDone()
@@ -97,6 +94,8 @@ public final class SingleTask implements FrameUpdateListener
     /**
      * @param pastTime Die Zeit in Sekunden, die seit dem letzten Update
      *                 vergangen
+     *
+     * @hidden
      */
     @Override
     public void onFrameUpdate(double pastTime)
@@ -104,7 +103,7 @@ public final class SingleTask implements FrameUpdateListener
         countdown -= pastTime;
         if (!done && this.countdown < 0)
         {
-            runnable.run();
+            task.run();
             parent.removeFrameUpdateListener(this);
             done = true;
         }

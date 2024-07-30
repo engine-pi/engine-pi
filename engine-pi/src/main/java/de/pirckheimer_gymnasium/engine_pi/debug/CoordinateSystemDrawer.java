@@ -294,6 +294,10 @@ public final class CoordinateSystemDrawer
                 + gridSizeInMeters * 2);
     }
 
+    /**
+     * Zeichne Koordinatenbeschriftungen bei jeder Überschneidung der
+     * Gitterlinien ein.
+     */
     private void drawCoordinateLabels()
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
@@ -382,6 +386,10 @@ public final class CoordinateSystemDrawer
             drawHorizontalLines();
             drawHorizontalCoordinateLabels();
             drawVerticalCoordinateLabels();
+            if (DebugConfiguration.coordinateSystemLabelsEachIntersectionGridLines)
+            {
+                drawCoordinateLabels();
+            }
         }
         g.setTransform(pre);
     }

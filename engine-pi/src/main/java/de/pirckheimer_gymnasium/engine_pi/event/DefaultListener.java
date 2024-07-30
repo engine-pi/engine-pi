@@ -12,6 +12,10 @@ import java.awt.event.KeyEvent;
  * </p>
  *
  * @see DefaultControl
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.15.0
  */
 public interface DefaultListener extends FrameUpdateListener, KeyStrokeListener,
         MouseClickListener, MouseScrollListener

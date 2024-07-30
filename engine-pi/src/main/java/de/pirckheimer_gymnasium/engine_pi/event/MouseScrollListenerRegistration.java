@@ -25,6 +25,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 /**
  * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf Bewegungen
  * des Mausrads reagieren.
+ *
+ * @author Niklas Keller
  */
 public interface MouseScrollListenerRegistration
 {

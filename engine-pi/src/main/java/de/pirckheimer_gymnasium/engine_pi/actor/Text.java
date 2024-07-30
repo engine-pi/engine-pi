@@ -27,6 +27,7 @@ import java.awt.geom.AffineTransform;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 import de.pirckheimer_gymnasium.engine_pi.util.FontMetrics;
@@ -380,5 +381,16 @@ public class Text extends Geometry
         g.drawString(content, 0, -cachedDescent);
         g.setFont(preFont);
         g.setTransform(pre);
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Text");
+        formatter.add("content", content);
+        return formatter.format();
     }
 }

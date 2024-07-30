@@ -8,13 +8,13 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
 
 /**
- * Registriert im Auslieferungszustand einige wenige grundlegenden Maus- und
- * Tastatur-Steuermöglichkeiten.
+ * Registriert im Auslieferungszustand einige wenige <b>grundlegenden Maus- und
+ * Tastatur-Steuermöglichkeiten</b>.
  *
  * <p>
  * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
  * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
- * {@link Game#setDefaultControl(DefaultControl)} neue Kürzel gesetzt werden.
+ * {@link Game#setDefaultControl(DefaultListener)} neue Kürzel gesetzt werden.
  * </p>
  *
  * <ul>
@@ -26,6 +26,10 @@ import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
  * ressourcenintensiv).</li>
  * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
  * ~/engine-pi).</li>
+ * <li>{@code ALT + PLUS} Hineinzoomen.</li>
+ * <li>{@code ALT + MINUS} Herauszoomen.</li>
+ * <li>{@code ALT + SHIFT + PLUS} schnelles Hineinzoomen.</li>
+ * <li>{@code ALT + SHIFT + MINUS} schnelles Herauszoomen.</li>
  * <li>{@code ALT + Pfeiltasten} zum Bewegen der Kamera.</li>
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
@@ -34,6 +38,10 @@ import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
  * @see Game#setDefaultControl(DefaultListener)
  * @see Game#removeDefaultControl()
  * @see DefaultListener
+ *
+ * @since 0.15.0
+ *
+ * @author Josef Friedrich
  */
 public class DefaultControl implements DefaultListener
 {
@@ -66,6 +74,10 @@ public class DefaultControl implements DefaultListener
      * ressourcenintensiv).</li>
      * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
      * ~/engine-pi).</li>
+     * <li>{@code ALT + PLUS} Hineinzoomen.</li>
+     * <li>{@code ALT + MINUS} Herauszoomen.</li>
+     * <li>{@code ALT + SHIFT + PLUS} schnelles Hineinzoomen.</li>
+     * <li>{@code ALT + SHIFT + MINUS} schnelles Herauszoomen.</li>
      * </ul>
      *
      * @param event Das KeyEvent von AWT.
@@ -75,20 +87,19 @@ public class DefaultControl implements DefaultListener
     {
         if (Game.isKeyPressed(KeyEvent.VK_ALT))
         {
+            double zoomFactor = 0.05;
+            if (Game.isKeyPressed(KeyEvent.VK_SHIFT))
+            {
+                zoomFactor = 0.2;
+            }
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_A -> {
-                Game.toggleRenderActors();
-            }
-            case KeyEvent.VK_D -> {
-                Game.toggleDebug();
-            }
-            case KeyEvent.VK_P -> {
-                DebugConfiguration.toogleShowPositions();
-            }
-            case KeyEvent.VK_S -> {
-                Game.takeScreenshot();
-            }
+            case KeyEvent.VK_A -> Game.toggleRenderActors();
+            case KeyEvent.VK_D -> Game.toggleDebug();
+            case KeyEvent.VK_P -> DebugConfiguration.toogleShowPositions();
+            case KeyEvent.VK_S -> Game.takeScreenshot();
+            case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);
+            case KeyEvent.VK_MINUS -> getCamera().zoomOut(zoomFactor);
             }
         }
         if (event.getKeyCode() == KeyEvent.VK_ESCAPE)

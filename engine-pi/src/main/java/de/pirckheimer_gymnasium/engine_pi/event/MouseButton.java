@@ -24,6 +24,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
  * Aufzählungstyp, mit dem die verschiedenen Maustasten angegeben werden können.
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
  */
 @API
 public enum MouseButton

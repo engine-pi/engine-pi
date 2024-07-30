@@ -62,6 +62,12 @@ public class DebugConfiguration
     public static int coordinateSystemLinesEveryNMeter = -1;
 
     /**
+     * Zeichne Koordinatenbeschriftungen bei jeder Überschneidung der
+     * Gitterlinien ein.
+     */
+    public static boolean coordinateSystemLabelsEachIntersectionGridLines = false;
+
+    /**
      * Gibt an, wo das Spielfeld auf dem Bildschirm angezeigt werden sollen.
      *
      * <ul>
