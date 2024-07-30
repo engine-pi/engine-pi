@@ -25,6 +25,7 @@ import java.awt.Point;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 
 /**
  * Die <b>Kamera</b> steuert, welcher <b>Ausschnitt</b> der Spielfläche
@@ -68,10 +69,12 @@ public final class Camera
      */
     public static final double DEFAULT_METER = 32;
 
+    public static final double DEFAULT_ZOOM_FACTOR = 0.05;
+
     /**
      * Aktuelle Position des Mittelpunkts der Kamera.
      */
-    private Vector position;
+    private Vector center;
 
     /**
      * Die {@link Bounds} der Kamera (sofern vorhanden), die sie in der Bewegung
@@ -105,7 +108,7 @@ public final class Camera
     @Internal
     public Camera()
     {
-        this.position = new Vector(0, 0);
+        this.center = new Vector(0, 0);
     }
 
     /**
@@ -124,6 +127,17 @@ public final class Camera
     public void setFocus(Actor focus)
     {
         this.focus = focus;
+    }
+
+    /**
+     * Entfernt die fokussierte Figur von der Kamera.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public void removeFocus()
+    {
+        this.focus = null;
     }
 
     /**
@@ -180,6 +194,8 @@ public final class Camera
      * </p>
      *
      * @param bounds Das Rechteck, das die Grenzen der Kamera angibt.
+     *
+     * @see #hasBounds()
      */
     @API
     public void setBounds(Bounds bounds)
@@ -192,6 +208,8 @@ public final class Camera
      * ist.
      *
      * @return <code>true</code> falls ja, sonst <code>false</code>.
+     *
+     * @see #setBounds(Bounds)
      */
     @API
     public boolean hasBounds()
@@ -226,6 +244,59 @@ public final class Camera
     }
 
     /**
+     * Die Kamera bewegt sich näher an das Spielfeld. Die Ansicht wird
+     * vergrößert.
+     *
+     * @param factor 1 verdoppelt die Pixelanzahl eines Meters, 0 keine
+     *               Veränderung.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public void zoomIn(double factor)
+    {
+        meter += meter * factor;
+    }
+
+    /**
+     * Die Kamera bewegt sich um den Standard-Zoomfaktor näher an das Spielfeld.
+     * Die Ansicht wird vergrößert.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public void zoomIn()
+    {
+        zoomIn(DEFAULT_ZOOM_FACTOR);
+    }
+
+    /**
+     * Die Kamera entfernt sich vom Spielfeld. Die Ansicht wird verkleinert.
+     *
+     * @param factor 0.5 halbiert die Pixelanzahl eines Meters, 0 keine
+     *               Veränderung.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public void zoomOut(double factor)
+    {
+        meter -= meter * factor;
+    }
+
+    /**
+     * Die Kamera entfernt sich um den Standard-Zoomfaktor vom Spielfeld. Die
+     * Ansicht wird verkleinert.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public void zoomOut()
+    {
+        zoomOut(DEFAULT_ZOOM_FACTOR);
+    }
+
+    /**
      * Gibt die Anzahl an Pixel aus, die einem Meter entsprechen.
      *
      * <p>
@@ -249,8 +320,19 @@ public final class Camera
     }
 
     /**
-     * Verschiebt die Kamera um einen bestimmten Wert in <code>x</code>- und
-     * <code>y</code>-Richtung (relativ).
+     * <b>Verschiebt</b> die Kamera um einen bestimmten Vektor (<b>relativ</b>).
+     *
+     * @param vector Die Verschiebung als Vektor.
+     */
+    @API
+    public void moveBy(Vector vector)
+    {
+        center = center.add(vector);
+    }
+
+    /**
+     * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in <code>x</code>-
+     * und <code>y</code>-Richtung (<b>relativ</b>).
      *
      * @param x Die Verschiebung in <code>x</code>-Richtung.
      * @param y Die Verschiebung in <code>y</code>-Richtung.
@@ -261,16 +343,23 @@ public final class Camera
         moveBy(new Vector(x, y));
     }
 
+    /**
+     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
+     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
+     * Koordinaten im Zentrum des Bildes.
+     *
+     * @param vector Das neue Zentrum der Kamera.
+     */
     @API
-    public void moveBy(Vector vector)
+    public void moveTo(Vector vector)
     {
-        position = position.add(vector);
+        center = vector;
     }
 
     /**
-     * Verschiebt das Zentrum der Kamera zur angegebenen Position (absolute
-     * Verschiebung). Von nun an ist der Punkt mit den eingegebenen Koordinaten
-     * im Zentrum des Bildes.
+     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
+     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
+     * Koordinaten im Zentrum des Bildes.
      *
      * @param x Die <code>x</code>-Koordinate des Zentrums des Bildes.
      * @param y Die <code>y</code>-Koordinate des Zentrums des Bildes.
@@ -279,12 +368,6 @@ public final class Camera
     public void moveTo(int x, int y)
     {
         moveTo(new Vector(x, y));
-    }
-
-    @API
-    public void moveTo(Vector vector)
-    {
-        position = vector;
     }
 
     @API
@@ -302,24 +385,24 @@ public final class Camera
     /**
      * Setzt die aktuelle Position der Kamera.
      *
-     * @param position Die neue Position der Kamera.
-     */
-    @API
-    public void setPosition(Vector position)
-    {
-        this.position = position;
-    }
-
-    /**
-     * Setzt die aktuelle Position der Kamera.
-     *
      * @param x Die neue X-Koordinate des Kamerazentrums.
      * @param y Die neue Y-Koordinate des Kamerazentrums.
      */
     @API
     public void setPostion(double x, double y)
     {
-        setPosition(new Vector(x, y));
+        setCenter(new Vector(x, y));
+    }
+
+    /**
+     * Setzt die aktuelle Position der Kamera.
+     *
+     * @param position Die neue Position der Kamera.
+     */
+    @API
+    public void setCenter(Vector position)
+    {
+        this.center = position;
     }
 
     /**
@@ -328,9 +411,9 @@ public final class Camera
      * @return Die aktuelle Position der Kamera.
      */
     @API
-    public Vector getPosition()
+    public Vector getCenter()
     {
-        return moveIntoBounds(position.add(offset));
+        return moveIntoBounds(center.add(offset));
     }
 
     /**
@@ -348,7 +431,7 @@ public final class Camera
     public Point toScreenPixelLocation(Vector locationInWorld,
             double pixelPerMeter)
     {
-        Vector cameraRelativeLocInPx = position.multiply(pixelPerMeter);
+        Vector cameraRelativeLocInPx = center.multiply(pixelPerMeter);
         Vector frameSize = Game.getWindowSize();
         return new Point(
                 (int) (frameSize.getX() / 2 + cameraRelativeLocInPx.getX()),
@@ -363,9 +446,9 @@ public final class Camera
     {
         if (hasFocus())
         {
-            position = focus.getCenter();
+            center = focus.getCenter();
         }
-        position = moveIntoBounds(position);
+        center = moveIntoBounds(center);
     }
 
     /**
@@ -389,5 +472,21 @@ public final class Camera
         double y = Math.max(bounds.y(),
                 Math.min(position.getY(), bounds.y() + bounds.height()));
         return new Vector(x, y);
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Camera");
+        formatter.add("meter", meter);
+        formatter.add("center", center);
+        if (focus != null)
+        {
+            formatter.add("focus", focus);
+        }
+        return formatter.format();
     }
 }

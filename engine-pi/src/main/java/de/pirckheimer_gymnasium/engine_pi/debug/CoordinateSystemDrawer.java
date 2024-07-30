@@ -146,7 +146,7 @@ public final class CoordinateSystemDrawer
         this.height = height;
         pre = g.getTransform();
         Camera camera = scene.getCamera();
-        center = camera.getPosition();
+        center = camera.getCenter();
         double rotation = -camera.getRotation();
         g.setClip(0, 0, width, height);
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im

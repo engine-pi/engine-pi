@@ -846,7 +846,7 @@ public final class Game
         Camera camera = scene.getCamera();
         double zoom = camera.getMeter();
         double rotation = camera.getRotation();
-        Vector position = camera.getPosition();
+        Vector position = camera.getCenter();
         return new Vector(
                 position.getX() + ((Math.cos(Math.toRadians(rotation))
                         * (mousePosition.x - width / 2.0)
