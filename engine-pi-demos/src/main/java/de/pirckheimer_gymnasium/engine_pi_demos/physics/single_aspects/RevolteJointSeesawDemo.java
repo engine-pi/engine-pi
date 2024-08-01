@@ -20,15 +20,13 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos.physics.single_aspects;
 
+import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
-
-import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 /**
  * Demonstriert die Klasse
@@ -51,14 +49,8 @@ public class RevolteJointSeesawDemo extends Scene
         seesaw.setColor("gray");
         seesaw.createRevoluteJoint(base, v(2.5, 0.2));
         add(seesaw);
-        Circle circle = new Circle();
-        circle.setPosition(-2, 2);
-        circle.makeDynamic();
-        add(circle);
-        Circle circle2 = new Circle();
-        circle2.setPosition(2, 2.2);
-        circle2.makeDynamic();
-        add(circle2);
+        addCircle().setPosition(-2, 2).makeDynamic();
+        addCircle().setPosition(2, 2.2).makeDynamic();
         setGravityOfEarth();
     }
 

@@ -145,31 +145,11 @@ public interface ActorAdder
     /* ___ Rectangle (Rechteck) _____________________________________________ */
 
     /**
-     * Erzeugt ein Rechteck durch Angabe der Breite und Höhe sowie der Position.
+     * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
+     * <b>Höhe</b>.
      *
-     * @param width  Die Breite des Rechtecks.
-     * @param height Die Höhe des Rechtecks.
-     * @param x      Die neue <code>x</code>-Koordinate.
-     * @param y      Die neue <code>y</code>-Koordinate.
-     *
-     * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Rectangle#Rectangle(double, double)
-     */
-    default Rectangle addRectangle(double width, double height, double x,
-            double y)
-    {
-        Rectangle actor = new Rectangle(width, height);
-        actor.setPosition(x, y);
-        getScene().add(actor);
-        return actor;
-    }
-
-    /**
-     * Erzeugt ein Rechteck durch Angabe der Breite und Höhe.
-     *
-     * @param width  Die Breite des Rechtecks.
-     * @param height Die Höhe des Rechtecks.
+     * @param width  Die <b>Breite</b> des Rechtecks in Meter.
+     * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      *
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
@@ -177,23 +157,23 @@ public interface ActorAdder
      */
     default Rectangle addRectangle(double width, double height)
     {
-        return addRectangle(width, height, 0, 0);
+        Rectangle actor = new Rectangle(width, height);
+        getScene().add(actor);
+        return actor;
     }
 
     /**
-     * Erzeugt ein Quadrat mit der Seitenlängen von einem Meter an eine bestimme
-     * Position.
-     *
-     * @param x Die neue <code>x</code>-Koordinate.
-     * @param y Die neue <code>y</code>-Koordinate.
+     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
      *
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Rectangle#Rectangle()
      */
-    default Rectangle addRectangle(int x, int y)
+    default Rectangle addRectangle()
     {
-        return addRectangle(1, 1, x, y);
+        Rectangle actor = new Rectangle();
+        getScene().add(actor);
+        return actor;
     }
     /* ___ Triangle (Dreieck) _______________________________________________ */
 

@@ -29,7 +29,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 
 /**
- * Beschreibt ein Rechteck.
+ * Beschreibt ein <b>Rechteck</b>.
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -40,12 +40,12 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 public class Rectangle extends Geometry
 {
     /**
-     * Die Breite des Rechtecks in Meter.
+     * Die <b>Breite</b> des Rechtecks in Meter.
      */
     private double width;
 
     /**
-     * Die Höhe des Rechtecks in Meter.
+     * Die <b>Höhe</b> des Rechtecks in Meter.
      */
     private double height;
 
@@ -55,12 +55,12 @@ public class Rectangle extends Geometry
     private double borderRadius;
 
     /**
-     * Erzeugt ein Rechteck durch Angabe der Breite und der Höhe.
+     * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
+     * <b>Höhe</b>.
      *
-     * @param width  Die Breite des Rechtecks.
-     * @param height Die Höhe des Rechtecks.
+     * @param width  Die <b>Breite</b> des Rechtecks in Meter.
+     * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      *
-     * @see ActorAdder#addRectangle(double, double, double, double)
      * @see ActorAdder#addRectangle(double, double)
      */
     public Rectangle(double width, double height)
@@ -73,6 +73,14 @@ public class Rectangle extends Geometry
         setColor(Resources.COLORS.getSafe("red"));
     }
 
+    /**
+     * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
+     * <b>Höhe</b>.
+     *
+     * @param width         Die <b>Breite</b> des Rechtecks in Meter.
+     * @param height        Die <b>Höhe</b> des Rechtecks in Meter.
+     * @param shapeSupplier
+     */
     public Rectangle(double width, double height,
             Supplier<FixtureData> shapeSupplier)
     {
@@ -83,7 +91,9 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Erzeugt ein Quadrat mit der Seitenlängen von einem Meter.
+     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
+     *
+     * @see ActorAdder#addRectangle(double, double)
      */
     public Rectangle()
     {
