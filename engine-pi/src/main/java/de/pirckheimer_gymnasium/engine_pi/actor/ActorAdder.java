@@ -18,8 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import java.awt.Color;
-
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
@@ -47,57 +45,18 @@ public interface ActorAdder
     /* ___ Circle (Kreis) ___________________________________________________ */
 
     /**
-     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b> und der
-     * <b>Position</b>.
+     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
      *
      * @param diameter Der Durchmesser des Kreises.
-     * @param x        Die neue <code>x</code>-Koordinate.
-     * @param y        Die neue <code>y</code>-Koordinate.
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
      *
-     * @see Circle
+     * @see Circle#Circle(double)
      */
-    default Circle addCircle(double diameter, double x, double y)
+    default Circle addCircle(double diameter)
     {
         Circle actor = new Circle(diameter);
-        actor.setPosition(x, y);
         getScene().add(actor);
-        return actor;
-    }
-
-    /**
-     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b> durch
-     * Angabe der <b>Position</b>.
-     *
-     * @param x Die neue <code>x</code>-Koordinate.
-     * @param y Die neue <code>y</code>-Koordinate.
-     *
-     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Circle
-     */
-    default Circle addCircle(double x, double y)
-    {
-        return addCircle(1, x, y);
-    }
-
-    /**
-     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b> durch
-     * Angabe der <b>Position</b> und der <b>Farbe</b>.
-     *
-     * @param x     Die neue <code>x</code>-Koordinate.
-     * @param y     Die neue <code>y</code>-Koordinate.
-     * @param color Die Farbe des Kreises.
-     *
-     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Circle
-     */
-    default Circle addCircle(double x, double y, Color color)
-    {
-        Circle actor = addCircle(1, x, y);
-        actor.setColor(color);
         return actor;
     }
 
@@ -106,25 +65,13 @@ public interface ActorAdder
      *
      * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
      *
-     * @see Circle
+     * @see Circle#Circle()
      */
     default Circle addCircle()
     {
-        return addCircle(1, 0, 0);
-    }
-
-    /**
-     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
-     *
-     * @param diameter Der Durchmesser des Kreises.
-     *
-     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Circle
-     */
-    default Circle addCircle(double diameter)
-    {
-        return addCircle(diameter, 0, 0);
+        Circle actor = new Circle();
+        getScene().add(actor);
+        return actor;
     }
     /* ___ Hexagon (Sechseck) _____________________________________________ */
 

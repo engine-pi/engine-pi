@@ -41,8 +41,8 @@ public class CircleDemo extends ActorBaseScene
         circle2.makeStatic();
         add(circle2);
         // Mit Hilfe der create... Methoden erzeugen.
-        addCircle(5, 3).makeStatic();
-        addCircle(3, -6, -3).makeStatic();
+        addCircle().setPosition(5, 3).makeStatic();
+        addCircle(3).setPosition(-6, -3).makeStatic();
     }
 
     public static void main(String[] args)

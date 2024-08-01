@@ -43,8 +43,6 @@ public class JointDemo extends ForceKlickEnvironment
 {
     private boolean isGravityActive = false;
 
-    private Rectangle seesaw;
-
     private Rectangle[] chain;
 
     private Circle ball;

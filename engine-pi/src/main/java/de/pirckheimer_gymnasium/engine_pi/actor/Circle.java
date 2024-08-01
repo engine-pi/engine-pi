@@ -30,7 +30,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 
 /**
- * Beschreibt einen Kreis.
+ * Beschreibt einen <b>Kreis</b>.
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -43,7 +43,7 @@ public class Circle extends Geometry
     private double diameter;
 
     /**
-     * Erzeugt einen Kreis durch Angabe des Durchmessers.
+     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
      *
      * @param diameter Der Durchmesser des Kreises.
      */
@@ -60,7 +60,7 @@ public class Circle extends Geometry
     }
 
     /**
-     * Erzeugt einen Kreis mit einem Meter Durchmesser.
+     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
      *
      * @author Josef Friedrich
      */
@@ -70,7 +70,7 @@ public class Circle extends Geometry
     }
 
     /**
-     * Gibt den Durchmesser des Kreises aus.
+     * Gibt den <b>Durchmesser</b> des Kreises aus.
      *
      * @return Der Durchmesser des Kreises.
      */
@@ -81,7 +81,7 @@ public class Circle extends Geometry
     }
 
     /**
-     * Gibt den Radius des Kreises aus.
+     * Gibt den <b>Radius</b> des Kreises aus.
      *
      * @return Der Radius des Kreises.
      */

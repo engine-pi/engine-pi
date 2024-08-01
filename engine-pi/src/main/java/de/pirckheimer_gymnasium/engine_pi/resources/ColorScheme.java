@@ -1453,7 +1453,7 @@ public class ColorScheme
                 for (Entry<String, Color> entry : Resources.COLORS.getAll()
                         .entrySet())
                 {
-                    addCircle(x, 0, entry.getValue());
+                    addCircle().setPosition(x, 0).setColor(entry.getValue());
                     addText(entry.getKey(), 0.5).setPosition(x, labelY)
                             .setColor("white");
                     x += 2;

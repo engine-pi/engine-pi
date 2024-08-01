@@ -397,9 +397,9 @@ public final class Camera
      * beispiels um 90 Grad <b>gegen</b> den Uhrzeigersinn,
      * {@code rotateTo(-90)} um 90 Grad <b>im</b> Uhrzeigersinn.
      *
-     * @param winkel Der Winkel (in <b>Grad</b>), um die Kamera <b>von seiner
-     *               Ausgangsposition bei Initialisierung</b> rotiert werden
-     *               soll.
+     * @param angle Der Winkel (in <b>Grad</b>), um die Kamera <b>von seiner
+     *              Ausgangsposition bei Initialisierung</b> rotiert werden
+     *              soll.
      */
     @API
     public void rotateTo(double angle)
