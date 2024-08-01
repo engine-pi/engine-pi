@@ -21,7 +21,7 @@
 package de.pirckheimer_gymnasium.engine_pi;
 
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
-import org.jbox2d.common.Vec2;
+import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;

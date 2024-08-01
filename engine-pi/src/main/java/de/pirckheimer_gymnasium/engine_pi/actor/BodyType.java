@@ -139,13 +139,15 @@ public enum BodyType
      * @return Der zugehörige JB2D-Physiktyp zu diesem Engine-Physiktyp.
      */
     @Internal
-    public org.jbox2d.dynamics.BodyType toBox2D()
+    public de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType toBox2D()
     {
         return switch (this)
         {
-        case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
-        case DYNAMIC, SENSOR, PARTICLE -> org.jbox2d.dynamics.BodyType.DYNAMIC;
-        case KINEMATIC -> org.jbox2d.dynamics.BodyType.KINEMATIC;
+        case STATIC -> de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.STATIC;
+        case DYNAMIC, SENSOR, PARTICLE ->
+            de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.DYNAMIC;
+        case KINEMATIC ->
+            de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.KINEMATIC;
         };
     }
 

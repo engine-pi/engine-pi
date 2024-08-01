@@ -22,8 +22,8 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.Graphics2D;
 
-import org.jbox2d.collision.shapes.CircleShape;
-import org.jbox2d.collision.shapes.Shape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;

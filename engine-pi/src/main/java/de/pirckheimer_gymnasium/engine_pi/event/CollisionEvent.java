@@ -25,8 +25,8 @@ import java.util.Collections;
 import java.util.List;
 
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
-import org.jbox2d.collision.WorldManifold;
-import org.jbox2d.dynamics.contacts.Contact;
+import de.pirckheimer_gymnasium.jbox2d.collision.WorldManifold;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;

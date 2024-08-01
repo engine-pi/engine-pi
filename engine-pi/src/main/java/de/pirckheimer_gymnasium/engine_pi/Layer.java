@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.jbox2d.dynamics.Body;
-import org.jbox2d.dynamics.World;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;

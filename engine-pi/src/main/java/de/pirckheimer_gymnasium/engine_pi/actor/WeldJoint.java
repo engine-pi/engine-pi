@@ -32,11 +32,12 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * @see RevoluteJoint
  * @see RopeJoint
  */
-public class WeldJoint extends Joint<org.jbox2d.dynamics.joints.WeldJoint>
+public class WeldJoint
+        extends Joint<de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint>
 {
     @Override
     protected void updateCustomProperties(
-            org.jbox2d.dynamics.joints.WeldJoint joint)
+            de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint joint)
     {
         // nothing to do
     }

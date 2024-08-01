@@ -20,15 +20,16 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.physics;
 
-import org.jbox2d.collision.shapes.Shape;
-import org.jbox2d.dynamics.Filter;
-import org.jbox2d.dynamics.Fixture;
-import org.jbox2d.dynamics.FixtureDef;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.Filter;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.FixtureDef;
 
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Wrapper-Klasse für {@link org.jbox2d.dynamics.FixtureDef} zur Übersetzung
+ * Wrapper-Klasse für
+ * {@link de.pirckheimer_gymnasium.jbox2d.dynamics.FixtureDef} zur Übersetzung
  * zwischen Engine-Features und JBox2D-Features.
  *
  * @author Michael Andonie

@@ -32,12 +32,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
 
-import org.jbox2d.common.Vec2;
-import org.jbox2d.dynamics.joints.DistanceJoint;
-import org.jbox2d.dynamics.joints.Joint;
-import org.jbox2d.dynamics.joints.PrismaticJoint;
-import org.jbox2d.dynamics.joints.RevoluteJoint;
-import org.jbox2d.dynamics.joints.RopeJoint;
+import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;

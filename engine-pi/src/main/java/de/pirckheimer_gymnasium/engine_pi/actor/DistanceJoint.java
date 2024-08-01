@@ -34,12 +34,12 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * @see RopeJoint
  * @see WeldJoint
  */
-public class DistanceJoint
-        extends Joint<org.jbox2d.dynamics.joints.DistanceJoint>
+public class DistanceJoint extends
+        Joint<de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint>
 {
     @Override
     protected void updateCustomProperties(
-            org.jbox2d.dynamics.joints.DistanceJoint joint)
+            de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint joint)
     {
         // nothing to do
     }

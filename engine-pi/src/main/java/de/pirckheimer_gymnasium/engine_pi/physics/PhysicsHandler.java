@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.physics;
 import java.util.List;
 import java.util.function.Supplier;
 
-import org.jbox2d.dynamics.Body;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;

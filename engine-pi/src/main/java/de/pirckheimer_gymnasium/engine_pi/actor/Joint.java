@@ -38,7 +38,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
  * @see WeldJoint
  */
 @API
-public abstract class Joint<JointType extends org.jbox2d.dynamics.joints.Joint>
+public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint>
 {
     private JointRegistration<JointType> joint;
 

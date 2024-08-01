@@ -27,9 +27,9 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import org.jbox2d.collision.AABB;
-import org.jbox2d.common.Transform;
-import org.jbox2d.dynamics.Body;
+import de.pirckheimer_gymnasium.jbox2d.collision.AABB;
+import de.pirckheimer_gymnasium.jbox2d.common.Transform;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;

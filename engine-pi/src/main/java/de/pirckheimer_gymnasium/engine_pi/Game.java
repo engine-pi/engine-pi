@@ -20,7 +20,10 @@
  */
 package de.pirckheimer_gymnasium.engine_pi;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -53,6 +56,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderPanel;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
+import de.pirckheimer_gymnasium.jbox2d.common.Settings;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
@@ -75,6 +79,11 @@ public final class Game
         System.setProperty("sun.java2d.ddscale", "true"); // ok, hardware
                                                           // accelerated image
                                                           // scaling on windows
+        /**
+         * Damit die Umrisse zum Beispiel bei der Klasse Star richitg gezeichnet
+         * wird.
+         */
+        Settings.maxPolygonVertices = 20;
     }
 
     /**
