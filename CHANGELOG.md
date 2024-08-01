@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.28.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.28.0) - 2024-08-01
+
+<small>[Compare with v0.27.0](https://github.com/engine-pi/engine-pi/compare/v0.27.0...v0.28.0)</small>
+
+### Added
+
+- Add new methods to the Camera ([68c15fa](https://github.com/engine-pi/engine-pi/commit/68c15fa0369b4eb4bc6d1e7e9c63c166034c08a8) by Josef Friedrich).
+
+### Removed
+
+- Remove some addRectangle methods ([5821efb](https://github.com/engine-pi/engine-pi/commit/5821efb26395bdc52b4bf39a431615154b8f73df) by Josef Friedrich).
+- Remove some addCircle overloads ([c6b6965](https://github.com/engine-pi/engine-pi/commit/c6b6965cf5fa46c91d5dafb690955a6a4bb560db) by Josef Friedrich).
+
 ## [v0.27.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.27.0) - 2024-07-29
 
 <small>[Compare with v0.26.0](https://github.com/engine-pi/engine-pi/compare/v0.26.0...v0.27.0)</small>
