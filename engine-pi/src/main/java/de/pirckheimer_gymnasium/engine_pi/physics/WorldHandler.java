@@ -227,7 +227,7 @@ public class WorldHandler implements ContactListener
     public void addContactToBlacklist(Contact contact)
     {
         contactsToIgnore
-                .add(new FixturePair(contact.m_fixtureA, contact.m_fixtureB));
+                .add(new FixturePair(contact.fixtureA, contact.fixtureB));
     }
     /* ____________ CONTACT LISTENER INTERFACE ____________ */
 
@@ -332,7 +332,7 @@ public class WorldHandler implements ContactListener
         FixturePair fixturePair = null;
         for (FixturePair ignoredPair : contactsToIgnore)
         {
-            if (ignoredPair.matches(contact.m_fixtureA, contact.m_fixtureB))
+            if (ignoredPair.matches(contact.fixtureA, contact.fixtureB))
             {
                 fixturePair = ignoredPair;
                 break;
@@ -377,7 +377,7 @@ public class WorldHandler implements ContactListener
     {
         for (FixturePair ignoredPair : contactsToIgnore)
         {
-            if (ignoredPair.matches(contact.m_fixtureA, contact.m_fixtureB))
+            if (ignoredPair.matches(contact.fixtureA, contact.fixtureB))
             {
                 contact.setEnabled(false);
             }

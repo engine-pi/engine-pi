@@ -129,8 +129,8 @@ public class Circle extends Geometry
     private static Shape createCircleShape(double diameter)
     {
         CircleShape shape = new CircleShape();
-        shape.m_radius = (float) diameter / 2;
-        shape.m_p.set(shape.m_radius, shape.m_radius);
+        shape.radius = (float) diameter / 2;
+        shape.p.set(shape.radius, shape.radius);
         return shape;
     }
 }

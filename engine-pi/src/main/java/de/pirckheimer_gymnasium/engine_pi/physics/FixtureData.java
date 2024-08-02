@@ -171,13 +171,13 @@ public class FixtureData
     @Internal
     public static FixtureData fromFixture(Fixture fixture)
     {
-        FixtureData data = new FixtureData(fixture.m_shape);
-        data.setRestitution(fixture.m_restitution);
-        data.setDensity(fixture.m_density);
-        data.setFriction(fixture.m_density);
-        data.setSensor(fixture.m_isSensor);
-        data.filter = fixture.m_filter; // TODO: Adapt Filter Line once Filter
-                                        // is implemented
+        FixtureData data = new FixtureData(fixture.shape);
+        data.setRestitution(fixture.restitution);
+        data.setDensity(fixture.density);
+        data.setFriction(fixture.density);
+        data.setSensor(fixture.isSensor);
+        data.filter = fixture.filter; // TODO: Adapt Filter Line once Filter
+                                      // is implemented
         return data;
     }
 }

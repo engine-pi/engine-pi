@@ -112,7 +112,7 @@ public class BodyHandler implements PhysicsHandler
     public boolean contains(Vector vector)
     {
         Vec2 point = vector.toVec2();
-        for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+        for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
         {
             if (fixture.testPoint(point))
             {
@@ -161,7 +161,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+            for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 fixture.setDensity((float) density);
             }
@@ -172,7 +172,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public double getDensity()
     {
-        return body.m_fixtureList.getDensity();
+        return body.fixtureList.getDensity();
     }
 
     @Override
@@ -193,7 +193,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+            for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 fixture.setFriction((float) friction);
             }
@@ -203,7 +203,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public double getFriction()
     {
-        return body.m_fixtureList.getFriction();
+        return body.fixtureList.getFriction();
     }
 
     @Override
@@ -211,7 +211,7 @@ public class BodyHandler implements PhysicsHandler
     {
         synchronized (worldHandler)
         {
-            for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+            for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 fixture.setRestitution((float) elasticity);
             }
@@ -221,7 +221,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public double getRestitution()
     {
-        return body.m_fixtureList.getRestitution();
+        return body.fixtureList.getRestitution();
     }
 
     @Override
@@ -301,36 +301,36 @@ public class BodyHandler implements PhysicsHandler
             body.setType(type.toBox2D());
             body.setActive(true);
             body.setAwake(true);
-            for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+            for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
-                fixture.m_isSensor = type.isSensor();
+                fixture.isSensor = type.isSensor();
                 switch (type)
                 {
                 case SENSOR:
-                    fixture.m_filter.categoryBits = WorldHandler.CATEGORY_PASSIVE;
-                    fixture.m_filter.maskBits = DEFAULT_MASK_BITS
+                    fixture.filter.categoryBits = WorldHandler.CATEGORY_PASSIVE;
+                    fixture.filter.maskBits = DEFAULT_MASK_BITS
                             & ~WorldHandler.CATEGORY_PARTICLE;
                     break;
 
                 case STATIC:
-                    fixture.m_filter.categoryBits = WorldHandler.CATEGORY_STATIC;
-                    fixture.m_filter.maskBits = DEFAULT_MASK_BITS;
+                    fixture.filter.categoryBits = WorldHandler.CATEGORY_STATIC;
+                    fixture.filter.maskBits = DEFAULT_MASK_BITS;
                     break;
 
                 case KINEMATIC:
-                    fixture.m_filter.categoryBits = WorldHandler.CATEGORY_KINEMATIC;
-                    fixture.m_filter.maskBits = DEFAULT_MASK_BITS;
+                    fixture.filter.categoryBits = WorldHandler.CATEGORY_KINEMATIC;
+                    fixture.filter.maskBits = DEFAULT_MASK_BITS;
                     break;
 
                 case DYNAMIC:
-                    fixture.m_filter.categoryBits = WorldHandler.CATEGORY_DYNAMIC;
-                    fixture.m_filter.maskBits = DEFAULT_MASK_BITS
+                    fixture.filter.categoryBits = WorldHandler.CATEGORY_DYNAMIC;
+                    fixture.filter.maskBits = DEFAULT_MASK_BITS
                             & ~WorldHandler.CATEGORY_PARTICLE;
                     break;
 
                 case PARTICLE:
-                    fixture.m_filter.categoryBits = WorldHandler.CATEGORY_PARTICLE;
-                    fixture.m_filter.maskBits = WorldHandler.CATEGORY_STATIC
+                    fixture.filter.categoryBits = WorldHandler.CATEGORY_PARTICLE;
+                    fixture.filter.maskBits = WorldHandler.CATEGORY_STATIC
                             | WorldHandler.CATEGORY_KINEMATIC;
                     break;
 
@@ -429,7 +429,7 @@ public class BodyHandler implements PhysicsHandler
         bodyBounds.lowerBound.y = Float.MAX_VALUE;
         bodyBounds.upperBound.x = -Float.MAX_VALUE;
         bodyBounds.upperBound.y = -Float.MAX_VALUE;
-        for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+        for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
         {
             // TODO Include chain shapes (more than one child)
             bodyBounds.combine(bodyBounds, fixture.getAABB(0));
@@ -473,7 +473,7 @@ public class BodyHandler implements PhysicsHandler
         synchronized (worldHandler)
         {
             PhysicsData physicsData = this.getPhysicsData();
-            for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+            for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 body.destroyFixture(fixture);
             }

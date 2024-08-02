@@ -91,18 +91,18 @@ public class PhysicsData
     {
         PhysicsData data = new PhysicsData(extractFixturesFromBody(body));
         // Global Fixture Vals are blindly taken from first Fixture
-        data.setGlobalDensity(body.m_fixtureList.m_density);
-        data.setGlobalFriction(body.m_fixtureList.m_friction);
-        data.setGlobalRestitution(body.m_fixtureList.m_restitution);
+        data.setGlobalDensity(body.fixtureList.density);
+        data.setGlobalFriction(body.fixtureList.friction);
+        data.setGlobalRestitution(body.fixtureList.restitution);
         data.setRotationLocked(body.isFixedRotation());
-        data.setGravityScale(body.m_gravityScale);
+        data.setGravityScale(body.gravityScale);
         data.setX(body.getPosition().x);
         data.setY(body.getPosition().y);
         data.setRotation((double) Math.toDegrees(body.getAngle()));
-        data.setTorque(body.m_torque);
-        data.setVelocity(Vector.of(body.m_linearVelocity));
+        data.setTorque(body.torque);
+        data.setVelocity(Vector.of(body.linearVelocity));
         data.setAngularVelocity(
-                (double) Math.toDegrees(body.m_angularVelocity) / 360);
+                (double) Math.toDegrees(body.angularVelocity) / 360);
         data.setType(type);
         data.setAngularDamping(body.getAngularDamping());
         data.setLinearDamping(body.getLinearDamping());
@@ -112,7 +112,7 @@ public class PhysicsData
     public static Supplier<List<FixtureData>> extractFixturesFromBody(Body body)
     {
         final ArrayList<FixtureData> fixtureData = new ArrayList<>();
-        for (Fixture fixture = body.m_fixtureList; fixture != null; fixture = fixture.m_next)
+        for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
         {
             fixtureData.add(FixtureData.fromFixture(fixture));
         }

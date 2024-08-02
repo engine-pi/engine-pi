@@ -61,7 +61,7 @@ public final class FixtureBuilder
                         new Vec2((float) width, (float) height),
                         new Vec2((float) width, 0) },
                 4);
-        shape.m_centroid.set(new Vec2((float) width / 2, (float) height / 2));
+        shape.centroid.set(new Vec2((float) width / 2, (float) height / 2));
         return new FixtureData(shape);
     }
 
@@ -75,7 +75,7 @@ public final class FixtureBuilder
     public static FixtureData circle(double mx, double my, double radius)
     {
         CircleShape circleShape = new CircleShape();
-        circleShape.m_p.set((float) mx, (float) my);
+        circleShape.p.set((float) mx, (float) my);
         circleShape.setRadius((float) radius);
         return new FixtureData(circleShape);
     }
@@ -201,7 +201,7 @@ public final class FixtureBuilder
                 throw new IllegalArgumentException("Fehlerhafte Eingabe");
             }
             CircleShape circleShape = new CircleShape();
-            circleShape.m_p.set(Float.parseFloat(split[0]),
+            circleShape.p.set(Float.parseFloat(split[0]),
                     Float.parseFloat(split[1]));
             circleShape.setRadius(Float.parseFloat(split[2]));
             return circleShape;

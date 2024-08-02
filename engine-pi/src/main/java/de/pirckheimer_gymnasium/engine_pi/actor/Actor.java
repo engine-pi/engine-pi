@@ -752,12 +752,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                     Body body = physicsHandler.getBody();
                     if (body != null)
                     {
-                        Fixture fixture = body.m_fixtureList;
-                        while (fixture != null && fixture.m_shape != null)
+                        Fixture fixture = body.fixtureList;
+                        while (fixture != null && fixture.shape != null)
                         {
-                            renderShape(fixture.m_shape, g, pixelPerMeter,
-                                    this);
-                            fixture = fixture.m_next;
+                            renderShape(fixture.shape, g, pixelPerMeter, this);
+                            fixture = fixture.next;
                         }
                     }
                 }
@@ -821,11 +820,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         }
         else if (shape instanceof CircleShape circleShape)
         {
-            double diameter = (circleShape.m_radius * 2);
+            double diameter = (circleShape.radius * 2);
             g.drawOval(
-                    (int) ((circleShape.m_p.x - circleShape.m_radius)
+                    (int) ((circleShape.p.x - circleShape.radius)
                             * pixelPerMeter),
-                    (int) ((-circleShape.m_p.y - circleShape.m_radius)
+                    (int) ((-circleShape.p.y - circleShape.radius)
                             * pixelPerMeter),
                     (int) (diameter * pixelPerMeter),
                     (int) (diameter * pixelPerMeter));

@@ -144,7 +144,7 @@ public class CollisionEvent<E extends Actor>
         WorldManifold worldManifold = CollisionEvent.worldManifold.get();
         contact.getWorldManifold(worldManifold);
         Vector normal = Vector.of(worldManifold.normal);
-        if (contact.m_fixtureA.getBody().getUserData() == colliding)
+        if (contact.fixtureA.getBody().getUserData() == colliding)
         {
             normal = normal.negate();
         }
