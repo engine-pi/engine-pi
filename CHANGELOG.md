@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<!-- insertion marker -->
+## [v0.29.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.29.0) - 2024-08-05
+
+<small>[Compare with v0.28.0](https://github.com/engine-pi/engine-pi/compare/v0.28.0...v0.29.0)</small>
+
+### Changed
+
+- Use jbox2d from https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/jbox2d-library ([64865e15](64865e15f89b96c36ef0d109094f8d6688a023eb) by Josef Friedrich).
+- Update eclipse formatter ([38e30075](38e3007568796025a37b0d6f89b14d6f52ee45a7) by Josef Friedrich).
+
 ## [v0.28.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.28.0) - 2024-08-01
 
 <small>[Compare with v0.27.0](https://github.com/engine-pi/engine-pi/compare/v0.27.0...v0.28.0)</small>
