@@ -131,11 +131,10 @@ public final class CoordinateSystemDrawer
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
      *
-     * @param g      Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *               soll.
-     * @param scene  Die Szene, über die das Koordinatensystem gezeichnet werden
-     *               soll.
-     * @param width  Die Breite des Spielfelds in Pixel.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param scene Die Szene, über die das Koordinatensystem gezeichnet werden
+     *     soll.
+     * @param width Die Breite des Spielfelds in Pixel.
      * @param height Die Höhe des Spielfelds in Pixel.
      */
     public CoordinateSystemDrawer(Graphics2D g, Scene scene, int width,
@@ -176,7 +175,7 @@ public final class CoordinateSystemDrawer
      * breit ist.
      *
      * @return Wie viele Meter der sichtbare Ausschnitt des Spielfelds breit
-     *         ist.
+     *     ist.
      */
     private double getWidthInMeter()
     {
@@ -193,7 +192,7 @@ public final class CoordinateSystemDrawer
      * Spielfelds breit ist.
      *
      * @return Wie viele Meter die Hälfte des sichtbaren Ausschnitts des
-     *         Spielfelds breit ist.
+     *     Spielfelds breit ist.
      */
     private double getHalfWidthInMeter()
     {
@@ -220,7 +219,7 @@ public final class CoordinateSystemDrawer
      * Spielfelds hoch ist.
      *
      * @return Wie viele Meter die Hälfte des sichtbaren Ausschnitts des
-     *         Spielfelds hoch ist.
+     *     Spielfelds hoch ist.
      */
     private double getHalfHeightInMeter()
     {
@@ -269,7 +268,7 @@ public final class CoordinateSystemDrawer
      * @param cameraPosition Der x- oder y-Wert der Kameraposition.
      *
      * @return Der x- oder y-Wert der ersten Koordinatenlinie, die eingezeichnet
-     *         werden soll.
+     *     werden soll.
      */
     private int calculateStartLinePosition(double cameraPosition)
     {
@@ -286,7 +285,7 @@ public final class CoordinateSystemDrawer
      * @param start Der x- oder y-Wert der ersten Koordinatenlinie.
      *
      * @return Der x- oder y-Wert der letzten Koordinatenlinie, die
-     *         eingezeichnet werden soll.
+     *     eingezeichnet werden soll.
      */
     private int calculateStopLinePosition(int start)
     {

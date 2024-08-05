@@ -80,8 +80,8 @@ public class Image extends Actor
      * </p>
      *
      * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
-     * @param width    Die Breite des Bilds in Meter.
-     * @param height   Die Höhe des Bilds in Meter.
+     * @param width Die Breite des Bilds in Meter.
+     * @param height Die Höhe des Bilds in Meter.
      */
     @API
     public Image(String filepath, double width, double height)
@@ -93,8 +93,7 @@ public class Image extends Actor
     /**
      * Konstruktor für ein Bildobjekt.
      *
-     * @param filepath      Der Verzeichnispfad des Bildes, das geladen werden
-     *                      soll.
+     * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @API
@@ -107,8 +106,8 @@ public class Image extends Actor
     /**
      * Konstruktor für ein Bildobjekt.
      *
-     * @param image         Ein bereits im Speicher vorhandenes Bild vom
-     *                      Datentyp {@link BufferedImage}.
+     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
+     *     {@link BufferedImage}.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @API
@@ -139,9 +138,9 @@ public class Image extends Actor
     /**
      * Setzt oder ersetzt das Bild.
      *
-     * @param image  Ein bereits im Speicher vorhandenes Bild vom Datentyp
-     *               {@link BufferedImage}.
-     * @param width  Die Breite des Bilds in Meter.
+     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
+     *     {@link BufferedImage}.
+     * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
      */
     public void setImage(BufferedImage image, double width, double height)
@@ -158,8 +157,8 @@ public class Image extends Actor
      * Setzt oder ersetzt das Bild.
      *
      * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
-     * @param width    Die Breite des Bilds in Meter.
-     * @param height   Die Höhe des Bilds in Meter.
+     * @param width Die Breite des Bilds in Meter.
+     * @param height Die Höhe des Bilds in Meter.
      */
     public void setImage(String filepath, double width, double height)
     {
@@ -170,7 +169,7 @@ public class Image extends Actor
      * Setzt oder ersetzt das Bild.
      *
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
-     *              {@link BufferedImage}.
+     *     {@link BufferedImage}.
      */
     public void setImage(BufferedImage image)
     {
@@ -187,8 +186,8 @@ public class Image extends Actor
     /**
      * Setzt oder ersetzt das Bild.
      *
-     * @param image         Ein bereits im Speicher vorhandenes Bild vom
-     *                      Datentyp {@link BufferedImage}.
+     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
+     *     {@link BufferedImage}.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     public void setImage(BufferedImage image, double pixelPerMeter)
@@ -202,8 +201,7 @@ public class Image extends Actor
     /**
      * Setzt oder ersetzt das Bild.
      *
-     * @param filepath      Der Verzeichnispfad des Bildes, das geladen werden
-     *                      soll.
+     * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     public void setImage(String filepath, double pixelPerMeter)
@@ -216,8 +214,9 @@ public class Image extends Actor
      * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
      * verzerrt.
      *
-     * @param width  Die neue Breite des Bilds in Meter.
+     * @param width Die neue Breite des Bilds in Meter.
      * @param height Die neue Höhe des Bild in Meter.
+     *
      * @see #setImageSize(double)
      */
     public void setImageSize(double width, double height)
@@ -234,6 +233,7 @@ public class Image extends Actor
      * Eigenschaften des Bildes.
      *
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
      * @see #setImageSize(double, double)
      */
     public void setImageSize(double pixelPerMeter)
@@ -270,7 +270,7 @@ public class Image extends Actor
      * horizontaler Achse gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
-     *         Sonst <code>false</code>.
+     *     Sonst <code>false</code>.
      */
     @API
     public boolean isFlippedVertically()
@@ -283,7 +283,8 @@ public class Image extends Actor
      * gespiegelt.
      *
      * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *         wenn es im Originalzustand angezeigt wird.
+     *     wenn es im Originalzustand angezeigt wird.
+     *
      * @since 0.24.0
      */
     public boolean flipVertically()
@@ -296,7 +297,8 @@ public class Image extends Actor
      * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
      *
      * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
-     *                          werden soll.
+     *     werden soll.
+     *
      * @see #setFlippedVertically(boolean)
      */
     @API
@@ -310,7 +312,7 @@ public class Image extends Actor
      * vertikalen Achse gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
-     *         ist. Sonst <code>false</code>.
+     *     ist. Sonst <code>false</code>.
      */
     @API
     public boolean isFlippedHorizontally()
@@ -323,7 +325,8 @@ public class Image extends Actor
      * gespiegelt.
      *
      * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *         wenn es im Originalzustand angezeigt wird.
+     *     wenn es im Originalzustand angezeigt wird.
+     *
      * @since 0.24.0
      */
     public boolean flipHorizontally()
@@ -338,7 +341,8 @@ public class Image extends Actor
      * Bewegungsrichtungen (links/rechts) einfach umsetzen.
      *
      * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
-     *                            werden soll.
+     *     werden soll.
+     *
      * @see #setFlippedVertically(boolean)
      */
     @API
@@ -351,8 +355,7 @@ public class Image extends Actor
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override

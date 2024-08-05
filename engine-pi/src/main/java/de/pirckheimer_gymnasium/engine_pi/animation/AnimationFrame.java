@@ -48,9 +48,9 @@ public final class AnimationFrame
     /**
      * Erstellt ein Einzelbild.
      *
-     * @param image    Ein Bild, das sich bereits im Speicher befindet.
+     * @param image Ein Bild, das sich bereits im Speicher befindet.
      * @param duration Die Dauer in Sekunden, die dieses Einzelbild aktiv
-     *                 bleibt.
+     *     bleibt.
      */
     @Internal
     public AnimationFrame(BufferedImage image, double duration)

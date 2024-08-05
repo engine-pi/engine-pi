@@ -46,7 +46,7 @@ class HexColorString
      * @param color Eine Zeichenkette, die überprüft werden soll.
      *
      * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
-     *         Notation (z. B. {@code #ff0000}) korrekt codiert.
+     *     Notation (z. B. {@code #ff0000}) korrekt codiert.
      */
     public static boolean isValid(final String colorCode)
     {
@@ -160,9 +160,9 @@ public final class ColorUtil
      * Konvertiert eine Farbe in hexadezimaler Notation in die entsprechende
      * Instanz der Klasse {@link Color}.
      *
-     * @param hex   Ein Farbe in hexadezimaler Notation.
+     * @param hex Ein Farbe in hexadezimaler Notation.
      * @param solid Bedeutet, dass der Alphakanal grundsätzlich ein dunklere
-     *              Version der Grundfarbe erzeugt.
+     *     Version der Grundfarbe erzeugt.
      *
      * @return Die Farbe als Instanz der Klasse {@link Color}.
      */
@@ -211,7 +211,7 @@ public final class ColorUtil
      * {@link Color}.
      *
      * @param hex Eine Feld / Array bestehend aus hexadezimalen Repräsentationen
-     *            von Farben in Zeichenkettenform.
+     *     von Farben in Zeichenkettenform.
      *
      * @return Ein Feld bestehend aus Objekten der Klasse {@link Color}.
      */
@@ -227,7 +227,7 @@ public final class ColorUtil
      * @param color Eine Zeichenkette, die überprüft werden soll.
      *
      * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
-     *         Notation (z. B. {@code #ff0000}) korrekt codiert.
+     *     Notation (z. B. {@code #ff0000}) korrekt codiert.
      */
     public static boolean isHexColorString(String color)
     {
@@ -266,6 +266,7 @@ public final class ColorUtil
      * Premultiplies the alpha on the given color.
      *
      * @param color The color to premultiply
+     *
      * @return The color given, with alpha replaced with a black background.
      */
     public static Color premultiply(Color color)
@@ -286,8 +287,8 @@ public final class ColorUtil
      * @param color1 Die erste Farbe, mit der gemischt werden soll.
      * @param color2 Die zweite Farbe, mit der gemischt werden soll.
      * @param factor Das Mischverhältnis. Ein Wert zwischen 0 und 1. Ist dieser
-     *               Wert 0, so wird {@code color1} zurückgeben, ist er 1 dann
-     *               {@code color2}.
+     *     Wert 0, so wird {@code color1} zurückgeben, ist er 1 dann
+     *     {@code color2}.
      *
      * @return Die neue, aus zwei Farben gemischte Farbe.
      */
@@ -330,9 +331,9 @@ public final class ColorUtil
     }
 
     /**
-     * @param hex   Ein Farbe in hexadezimaler Notation.
+     * @param hex Ein Farbe in hexadezimaler Notation.
      * @param solid bedeutet, dass der Alphakanal grundsätzlich ein dunklere
-     *              Version der Grundfarbe erzeugt.
+     *     Version der Grundfarbe erzeugt.
      *
      * @return Die Farbe als Instanz der Klasse {@link Color}.
      */
@@ -391,7 +392,7 @@ public final class ColorUtil
      * </p>
      *
      * @param color Die Ausgangsfarbe, von der die Komplementärfarbe berechnet
-     *              werden soll.
+     *     werden soll.
      *
      * @return Die Komplementärfarbe.
      */
@@ -407,7 +408,7 @@ public final class ColorUtil
      * https://stackoverflow.com/questions/28162488/get-average-color-on-bufferedimage-and-bufferedimage-portion-as-fast-as-possible
      *
      * @param image Das Bild von dem die Durchschnittfarbe berechnet werden
-     *              soll.
+     *     soll.
      *
      * @return Die Durchschnittsfarbe.
      */

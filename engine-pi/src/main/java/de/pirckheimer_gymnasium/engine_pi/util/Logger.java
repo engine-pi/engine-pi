@@ -140,7 +140,7 @@ final public class Logger
      * @param text Meldungs-Text der zum Log übergeben wird
      *
      * @return Gibt den geschriebenen Text zurück, im Fehlerfall
-     *         <code>null</code>
+     *     <code>null</code>
      */
     private static String write(String text)
     {
@@ -187,10 +187,12 @@ final public class Logger
      * verbose Output in aktiviert wurde.
      *
      * @param tag Tag für das Log
-     * @param s   Text der Information
+     * @param s Text der Information
      *
      * @author Michael Andonie
+     *
      * @since 11.04.2017
+     *
      * @see de.pirckheimer_gymnasium.engine_pi.Game#setVerbose(boolean)
      */
     public static void verboseInfo(String tag, String s)
@@ -208,7 +210,7 @@ final public class Logger
      * <code>Game.debug();</code> ausgeführt wurde.
      *
      * @param tag Der Tag der Debug-Message.
-     * @param s   Text der Information
+     * @param s Text der Information
      *
      * @author Andonie
      */

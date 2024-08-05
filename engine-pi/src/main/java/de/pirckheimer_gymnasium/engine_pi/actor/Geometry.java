@@ -66,9 +66,10 @@ public abstract class Geometry extends Actor
      * Animiert die Farbe des aktuellen Objekts.
      *
      * @param duration Dauer der Animation in Sekunden
-     * @param color    Neue Farbe des Objekts
+     * @param color Neue Farbe des Objekts
+     *
      * @return Animations-Objekt, das die weitere Steuerung der Animation
-     *         erlaubt
+     *     erlaubt
      */
     @API
     public ValueAnimator<Double> animateColor(double duration, Color color)

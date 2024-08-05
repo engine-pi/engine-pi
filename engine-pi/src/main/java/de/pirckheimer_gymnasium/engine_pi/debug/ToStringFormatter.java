@@ -55,7 +55,7 @@ public class ToStringFormatter
     /**
      * Fügt ein Schlüssel-Wert-Paar hinzu.
      *
-     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param key Der Name des Schlüssels bzw. des Attributs.
      * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
      */
     public void add(String key, Object value)
@@ -67,9 +67,9 @@ public class ToStringFormatter
      * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine Gleitkommazahl ist,
      * die gerundet wird.
      *
-     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param key Der Name des Schlüssels bzw. des Attributs.
      * @param value Der Wert des Schlüssels als Gleitkommazahl, die gerundet
-     *              werden soll.
+     *     werden soll.
      */
     public void add(String key, double value)
     {
@@ -79,10 +79,10 @@ public class ToStringFormatter
     /**
      * Fügt ein Schlüssel-Wert-Paar mit Einheit hinzu.
      *
-     * @param key   Der Name des Schlüssels bzw. des Attributs.
+     * @param key Der Name des Schlüssels bzw. des Attributs.
      * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
-     * @param unit  Eine zusätzliche Zeichenkette, die an den Wert angehängt
-     *              wird, und als Einheit dienen kann.
+     * @param unit Eine zusätzliche Zeichenkette, die an den Wert angehängt
+     *     wird, und als Einheit dienen kann.
      */
     public void add(String key, Object value, String unit)
     {

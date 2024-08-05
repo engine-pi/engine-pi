@@ -54,7 +54,9 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
  * <a href="https://libgdx.com/wiki/graphics/2d/fonts/bitmap-fonts">...</a>
  *
  * @author Josef Friedrich
+ *
  * @see ImageFontText
+ *
  * @since 0.23.0
  */
 public class ImageFont
@@ -121,11 +123,11 @@ public class ImageFont
     /**
      * Erzeugt eine neue Bilderschriftart.
      *
-     * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
-     *                        einzelnen Buchstaben liegen.
-     * @param extension       Die Dateierweiterung der Buchstabenbilder.
+     * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
+     *     Buchstaben liegen.
+     * @param extension Die Dateierweiterung der Buchstabenbilder.
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
-     * @param alignment       Die Textausrichtung.
+     * @param alignment Die Textausrichtung.
      */
     public ImageFont(String basePath, String extension,
             ImageFontCaseSensitivity caseSensitivity, TextAlignment alignment)
@@ -175,8 +177,8 @@ public class ImageFont
      * Dateierweiterung {@code png} haben. Der Text wird linksbündig
      * ausgerichtet.
      *
-     * @param basePath        Der Pfad zu einem Ordner, in dem die Bilder der
-     *                        einzelnen Buchstaben liegen.
+     * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
+     *     Buchstaben liegen.
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
      */
     public ImageFont(String basePath, ImageFontCaseSensitivity caseSensitivity)
@@ -190,7 +192,7 @@ public class ImageFont
      * ausgerichtet.
      *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
-     *                 Buchstaben liegen.
+     *     Buchstaben liegen.
      */
     public ImageFont(String basePath)
     {
@@ -202,9 +204,10 @@ public class ImageFont
      * Buchstaben liegen.
      *
      * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der einzelnen
-     *                 Buchstaben liegen.
+     *     Buchstaben liegen.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setBasePath(String basePath)
     {
@@ -227,9 +230,10 @@ public class ImageFont
      * werden soll.
      *
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *              umgefärbt werden soll.
+     *     umgefärbt werden soll.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setColor(Color color)
     {
@@ -242,7 +246,7 @@ public class ImageFont
      * umgefärbt werden soll.
      *
      * @return Die Farbe, in der die schwarze Farbe der Ausgangsbilder umgefärbt
-     *         werden soll.
+     *     werden soll.
      */
     public Color getColor()
     {
@@ -253,8 +257,9 @@ public class ImageFont
      * Setzt die Dateierweiterung der Buchstabenbilder.
      *
      * @param extension Die Dateierweiterung der Buchstabenbilder.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setExtension(String extension)
     {
@@ -266,11 +271,11 @@ public class ImageFont
      * Setzt, wie oft ein Pixel vervielfältigt werden soll.
      *
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl {@code 3}
-     *                            ein Pixel in {@code 9 Pixel} der Abmessung
-     *                            {@code 3x3}.
+     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in
+     *     {@code 9 Pixel} der Abmessung {@code 3x3}.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setPixelMultiplication(int pixelMultiplication)
     {
@@ -282,8 +287,9 @@ public class ImageFont
      * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
      *
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-     *         verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-     *         Abmessung {@code 3x3}.
+     *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
+     *     Abmessung {@code 3x3}.
+     *
      * @see Game#getPixelMultiplication
      */
     public int getPixelMultiplication()
@@ -295,8 +301,9 @@ public class ImageFont
      * Setzt die Handhabung der Groß- und Kleinschreibung.
      *
      * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setCaseSensitivity(
             ImageFontCaseSensitivity caseSensitivity)
@@ -309,9 +316,10 @@ public class ImageFont
      * Setzt die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      *
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *                  kann.
+     *     kann.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setLineWidth(int lineWidth)
     {
@@ -364,8 +372,9 @@ public class ImageFont
      * Setzt die Textausrichtung.
      *
      * @param alignment Die Textausrichtung.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setAlignment(TextAlignment alignment)
     {
@@ -388,9 +397,10 @@ public class ImageFont
      * werden soll oder nicht.
      *
      * @param throwException Ob bei einem nicht vorhandenen Zeichen eine
-     *                       Fehlermeldung geworfen werden soll oder nicht.
+     *     Fehlermeldung geworfen werden soll oder nicht.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont setThrowException(boolean throwException)
     {
@@ -515,11 +525,12 @@ public class ImageFont
      * Zeichen wie zum Beispiel der Schrägstrich oder der Doppelpunkt können als
      * Dateinamen verwendet werden.
      *
-     * @param glyph    Das Zeichen, das durch ein Bild dargestellt werden soll.
+     * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
      * @param filename Der Dateiname des Bilds ohne Dateierweiterung, das ein
-     *                 Zeichen darstellt, relativ zu {@link #basePath}.
+     *     Zeichen darstellt, relativ zu {@link #basePath}.
+     *
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-     *         Punktschreibweise verkettet werden können.
+     *     Punktschreibweise verkettet werden können.
      */
     public ImageFont addMapping(char glyph, String filename)
     {
@@ -535,10 +546,12 @@ public class ImageFont
     /**
      * Lädt ein Bild, das ein Zeichen darstellt.
      *
-     * @param glyph   Das Zeichen, das durch ein Bild dargestellt werden soll.
+     * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     *                Dieser Parameter wird für die Fehlermeldung benötigt.
+     *     Dieser Parameter wird für die Fehlermeldung benötigt.
+     *
      * @return Ein Bild, das ein Zeichen darstellt.
+     *
      * @throws RuntimeException Falls das Zeichen kein entsprechendes Bild hat.
      */
     private ImageFontGlyph getGlyph(char glyph, String content)
@@ -559,12 +572,13 @@ public class ImageFont
     /**
      * Verarbeitet die Zeichenkette, die gesetzt werden soll.
      *
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *                  kann.
+     *     kann.
      * @param alignment Die Textausrichtung.
+     *
      * @return Der ausgerichtete Text, in dem neue Zeilenumbrüche eingefügt
-     *         wurden.
+     *     wurden.
      */
     private String processContent(String content, int lineWidth,
             TextAlignment alignment)
@@ -583,17 +597,16 @@ public class ImageFont
     /**
      * Setzt den gegebenen Textinhalt in ein Bild.
      *
-     * @param content             Der Textinhalt, der in das Bild geschrieben
-     *                            werden soll.
-     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
-     *                            aufnehmen kann.
-     * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe, in der die schwarze Farbe der
-     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *     kann.
+     * @param alignment Die Textausrichtung.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl {@code 3}
-     *                            ein Pixel in {@code 9 Pixel} der Abmessung
-     *                            {@code 3x3}.
+     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in
+     *     {@code 9 Pixel} der Abmessung {@code 3x3}.
+     *
      * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content, int lineWidth,
@@ -639,6 +652,7 @@ public class ImageFont
      * Setzt den gegebenen Textinhalt in ein Bild.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     *
      * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt wurden.
      */
     public BufferedImage render(String content)

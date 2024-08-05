@@ -34,7 +34,7 @@ public interface FrameUpdateListener
      * erneut aufgerufen.
      *
      * @param pastTime Die Zeit <b>in Sekunden</b>, die seit der letzten
-     *                 Aktualisierung vergangen ist.
+     *     Aktualisierung vergangen ist.
      */
     @API
     void onFrameUpdate(double pastTime);

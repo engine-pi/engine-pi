@@ -25,10 +25,9 @@ import java.awt.Graphics2D;
 public interface RenderSource
 {
     /**
-     * @param g      Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *               soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
-     * @param width  Die Breite in Pixel.
+     * @param width Die Breite in Pixel.
      * @param height Die Höhe in Pixel.
      */
     void render(Graphics2D g, int width, int height);

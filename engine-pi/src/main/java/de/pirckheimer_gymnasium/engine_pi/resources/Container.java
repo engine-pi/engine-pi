@@ -25,7 +25,7 @@ public interface Container<T>
      * diesen Speicher zugänglich zu machen.
      * </p>
      *
-     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param resource Die Ressourceninstanz.
      */
     T add(String name, T resource);
@@ -53,7 +53,7 @@ public interface Container<T>
      * @param name Der Name, unter dem die Ressource verwaltet wird.
      *
      * @return Die Ressource mit dem angegebenen Namen oder null, wenn sie nicht
-     *         gefunden wird.
+     *     gefunden wird.
      */
     T get(String name);
 

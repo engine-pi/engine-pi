@@ -40,7 +40,7 @@ public interface MouseClickListener
      * werden.
      *
      * @param position Der Punkt auf der Zeichenebene.
-     * @param button   Die Maustaste, die gedrückt wurde.
+     * @param button Die Maustaste, die gedrückt wurde.
      */
     @API
     void onMouseDown(Vector position, MouseButton button);
@@ -53,7 +53,7 @@ public interface MouseClickListener
      * werden.
      *
      * @param position Der Punkt auf der Zeichenebene.
-     * @param button   Die Maustaste, die gedrückt wurde.
+     * @param button Die Maustaste, die gedrückt wurde.
      */
     @API
     default void onMouseUp(Vector position, MouseButton button)

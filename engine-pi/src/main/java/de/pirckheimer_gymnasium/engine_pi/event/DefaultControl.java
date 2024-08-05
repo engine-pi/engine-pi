@@ -113,7 +113,7 @@ public class DefaultControl implements DefaultListener
      * werden.
      *
      * @param pastTime Die Zeit <b>in Sekunden</b>, die seit der letzten
-     *                 Aktualisierung vergangen ist.
+     *     Aktualisierung vergangen ist.
      */
     @Override
     public void onFrameUpdate(double pastTime)
@@ -158,7 +158,7 @@ public class DefaultControl implements DefaultListener
      * das Mausrad benutzt wird.
      *
      * @param event Das {@link MouseScrollEvent}-Objekt beschreibt, wie das
-     *              Mausrad gedreht wurde.
+     *     Mausrad gedreht wurde.
      */
     @Override
     public void onMouseScrollMove(MouseScrollEvent event)

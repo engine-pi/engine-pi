@@ -44,7 +44,8 @@ public interface ResourcesContainerListener<T>
      * was executed.
      *
      * @param resourceName The name by which the added resource is identified.
-     * @param resource     The added resource.
+     * @param resource The added resource.
+     *
      * @see ResourcesContainer#add(String, Object)
      */
     default void added(String resourceName, T resource)
@@ -56,8 +57,9 @@ public interface ResourcesContainerListener<T>
      * method was executed.
      *
      * @param resourceName The name by which the removed resource was
-     *                     identified.
-     * @param resource     The removed resource.
+     *     identified.
+     * @param resource The removed resource.
+     *
      * @see ResourcesContainer#remove(String)
      */
     default void removed(String resourceName, T resource)

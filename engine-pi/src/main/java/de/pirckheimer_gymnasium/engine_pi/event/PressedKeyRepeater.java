@@ -193,18 +193,17 @@ public class PressedKeyRepeater implements KeyStrokeListener
          * </p>
          *
          *
-         * @param keyCode         Die <b>Nummer der Taste</b>, durch die die
-         *                        Aufgaben gestartet werden. Beispielsweise kann
-         *                        mit dem statischen Attribut
-         *                        {@code KeyEvent.VK_A} die Tastennummer der
-         *                        Taste „A“ bestimmt werden.
-         * @param repeatedTask    Die Aufgabe, die nach einem bestimmten
-         *                        Zeitintervall <b>wiederholt</b> wird.
-         * @param interval        Das <b>Zeitintervall</b> (in Sekunden) nach
-         *                        dem die Aufgabe <b>wiederholt</b> wird.
+         * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+         *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+         *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt
+         *     werden.
+         * @param repeatedTask Die Aufgabe, die nach einem bestimmten
+         *     Zeitintervall <b>wiederholt</b> wird.
+         * @param interval Das <b>Zeitintervall</b> (in Sekunden) nach dem die
+         *     Aufgabe <b>wiederholt</b> wird.
          * @param initialInterval Die Verzögerung (in Sekunden) zwischen dem
-         *                        <b>ersten Tastendruck</b> und der <b>ersten
-         *                        Wiederholung</b> der Aufgabe.
+         *     <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
+         *     Aufgabe.
          */
         public PressedKeyListener(int keyCode, Runnable repeatedTask,
                 double interval, double initialInterval)
@@ -224,12 +223,12 @@ public class PressedKeyRepeater implements KeyStrokeListener
          * Aufgabe</b> angegeben werden.
          * </p>
          *
-         * @param keyCode      Die <b>Nummer der Taste</b>, durch die die
-         *                     Aufgaben gestartet werden. Beispielsweise kann
-         *                     mit dem statischen Attribut {@code KeyEvent.VK_A}
-         *                     die Tastennummer der Taste „A“ bestimmt werden.
+         * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+         *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+         *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt
+         *     werden.
          * @param repeatedTask Die Aufgabe, die nach einem bestimmten
-         *                     Zeitintervall <b>wiederholt</b> wird.
+         *     Zeitintervall <b>wiederholt</b> wird.
          */
         public PressedKeyListener(int keyCode, Runnable repeatedTask)
         {
@@ -247,14 +246,14 @@ public class PressedKeyRepeater implements KeyStrokeListener
          * werden.
          * </p>
          *
-         * @param keyCode      Die <b>Nummer der Taste</b>, durch die die
-         *                     Aufgaben gestartet werden. Beispielsweise kann
-         *                     mit dem statischen Attribut {@code KeyEvent.VK_A}
-         *                     die Tastennummer der Taste „A“ bestimmt werden.
+         * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+         *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+         *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt
+         *     werden.
          * @param repeatedTask Die Aufgabe, die nach einem bestimmten
-         *                     Zeitintervall <b>wiederholt</b> wird.
-         * @param finalTask    Eine einmalige Aufgabe, die beim <b>Loslassen</b>
-         *                     der entsprechenden Taste, ausgeführt wird.
+         *     Zeitintervall <b>wiederholt</b> wird.
+         * @param finalTask Eine einmalige Aufgabe, die beim <b>Loslassen</b>
+         *     der entsprechenden Taste, ausgeführt wird.
          */
         public PressedKeyListener(int keyCode, Runnable repeatedTask,
                 Runnable finalTask)
@@ -274,17 +273,17 @@ public class PressedKeyRepeater implements KeyStrokeListener
          * <b>abschließende einmalige Aufgabe</b> angegeben werden.
          * </p>
          *
-         * @param keyCode      Die <b>Nummer der Taste</b>, durch die die
-         *                     Aufgaben gestartet werden. Beispielsweise kann
-         *                     mit dem statischen Attribut {@code KeyEvent.VK_A}
-         *                     die Tastennummer der Taste „A“ bestimmt werden.
-         * @param initialTask  Eine einmalige Aufgabe, die <b>unmittelbar</b>
-         *                     ausgeführt wird, wenn die entsprechende Taste
-         *                     <b>gedrückt</b> wird.
+         * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+         *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+         *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt
+         *     werden.
+         * @param initialTask Eine einmalige Aufgabe, die <b>unmittelbar</b>
+         *     ausgeführt wird, wenn die entsprechende Taste <b>gedrückt</b>
+         *     wird.
          * @param repeatedTask Die Aufgabe, die nach einem bestimmten
-         *                     Zeitintervall <b>wiederholt</b> wird.
-         * @param finalTask    Eine einmalige Aufgabe, die beim <b>Loslassen</b>
-         *                     der entsprechenden Taste, ausgeführt wird.
+         *     Zeitintervall <b>wiederholt</b> wird.
+         * @param finalTask Eine einmalige Aufgabe, die beim <b>Loslassen</b>
+         *     der entsprechenden Taste, ausgeführt wird.
          */
         public PressedKeyListener(int keyCode, Runnable initialTask,
                 Runnable repeatedTask, Runnable finalTask)
@@ -344,11 +343,11 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * Erzeugt einen Wiederholer durch Angabe des <b>Zeitintervalls der
      * Wiederholung</b> und der <b>anfänglichen zeitlichen Verzögerung</b>.
      *
-     * @param interval        Das <b>Zeitintervall</b> (in Sekunden) nach dem
-     *                        die Aufgabe <b>wiederholt</b> wird.
+     * @param interval Das <b>Zeitintervall</b> (in Sekunden) nach dem die
+     *     Aufgabe <b>wiederholt</b> wird.
      * @param initialInterval Die zeitliche Verzögerung (in Sekunden) zwischen
-     *                        dem <b>ersten Tastendruck</b> und der <b>ersten
-     *                        Wiederholung</b> der Aufgabe.
+     *     dem <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
+     *     Aufgabe.
      */
     public PressedKeyRepeater(double interval, double initialInterval)
     {
@@ -386,17 +385,16 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * Aufgabe</b>, das <b>Zeitintervall der Wiederholung</b> und <b>anfängliche
      * zeitliche Verzögerung</b> angegeben werden.
      *
-     * @param keyCode         Die <b>Nummer der Taste</b>, durch die die
-     *                        Aufgaben gestartet werden. Beispielsweise kann mit
-     *                        dem statischen Attribut {@code KeyEvent.VK_A} die
-     *                        Tastennummer der Taste „A“ bestimmt werden.
-     * @param repeatedTask    Die Aufgabe, die nach einem bestimmten
-     *                        Zeitintervall <b>wiederholt</b> wird.
-     * @param interval        Das <b>Zeitintervall</b> (in Sekunden) nach dem
-     *                        die Aufgabe <b>wiederholt</b> wird.
+     * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+     *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+     *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt werden.
+     * @param repeatedTask Die Aufgabe, die nach einem bestimmten Zeitintervall
+     *     <b>wiederholt</b> wird.
+     * @param interval Das <b>Zeitintervall</b> (in Sekunden) nach dem die
+     *     Aufgabe <b>wiederholt</b> wird.
      * @param initialInterval Die zeitliche Verzögerung (in Sekunden) zwischen
-     *                        dem <b>ersten Tastendruck</b> und der <b>ersten
-     *                        Wiederholung</b> der Aufgabe.
+     *     dem <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
+     *     Aufgabe.
      */
     public void addListener(int keyCode, Runnable repeatedTask, double interval,
             double initialInterval)
@@ -410,12 +408,11 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * reagiert; dabei kann die <b>Tastennummer</b> und die sich
      * <b>wiederholende Aufgabe</b> angegeben werden.
      *
-     * @param keyCode      Die <b>Nummer der Taste</b>, durch die die Aufgaben
-     *                     gestartet werden. Beispielsweise kann mit dem
-     *                     statischen Attribut {@code KeyEvent.VK_A} die
-     *                     Tastennummer der Taste „A“ bestimmt werden.
+     * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+     *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+     *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt werden.
      * @param repeatedTask Die Aufgabe, die nach einem bestimmten Zeitintervall
-     *                     <b>wiederholt</b> wird.
+     *     <b>wiederholt</b> wird.
      */
     public void addListener(int keyCode, Runnable repeatedTask)
     {
@@ -428,14 +425,13 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * Aufgabe</b> und die <b>abschließende einmalige Aufgabe</b> angegeben
      * werden.
      *
-     * @param keyCode      Die <b>Nummer der Taste</b>, durch die die Aufgaben
-     *                     gestartet werden. Beispielsweise kann mit dem
-     *                     statischen Attribut {@code KeyEvent.VK_A} die
-     *                     Tastennummer der Taste „A“ bestimmt werden.
+     * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+     *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+     *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt werden.
      * @param repeatedTask Die Aufgabe, die nach einem bestimmten Zeitintervall
-     *                     <b>wiederholt</b> wird.
-     * @param finalTask    Eine einmalige Aufgabe, die beim <b>Loslassen</b> der
-     *                     entsprechenden Taste, ausgeführt wird.
+     *     <b>wiederholt</b> wird.
+     * @param finalTask Eine einmalige Aufgabe, die beim <b>Loslassen</b> der
+     *     entsprechenden Taste, ausgeführt wird.
      */
     public void addListener(int keyCode, Runnable repeatedTask,
             Runnable finalTask)
@@ -449,17 +445,15 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * einmalige Aufgabe</b>, die sich <b>wiederholende Aufgabe</b> und
      * <b>abschließende einmalige Aufgabe</b> angegeben werden.
      *
-     * @param keyCode      Die <b>Nummer der Taste</b>, durch die die Aufgaben
-     *                     gestartet werden. Beispielsweise kann mit dem
-     *                     statischen Attribut {@code KeyEvent.VK_A} die
-     *                     Tastennummer der Taste „A“ bestimmt werden.
-     * @param initialTask  Eine einmalige Aufgabe, die <b>unmittelbar</b>
-     *                     ausgeführt wird, wenn die entsprechende Taste
-     *                     <b>gedrückt</b> wird.
+     * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
+     *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
+     *     {@code KeyEvent.VK_A} die Tastennummer der Taste „A“ bestimmt werden.
+     * @param initialTask Eine einmalige Aufgabe, die <b>unmittelbar</b>
+     *     ausgeführt wird, wenn die entsprechende Taste <b>gedrückt</b> wird.
      * @param repeatedTask Die Aufgabe, die nach einem bestimmten Zeitintervall
-     *                     <b>wiederholt</b> wird.
-     * @param finalTask    Eine einmalige Aufgabe, die beim <b>Loslassen</b> der
-     *                     entsprechenden Taste, ausgeführt wird.
+     *     <b>wiederholt</b> wird.
+     * @param finalTask Eine einmalige Aufgabe, die beim <b>Loslassen</b> der
+     *     entsprechenden Taste, ausgeführt wird.
      */
     public void addListener(int keyCode, Runnable initialTask,
             Runnable repeatedTask, Runnable finalTask)

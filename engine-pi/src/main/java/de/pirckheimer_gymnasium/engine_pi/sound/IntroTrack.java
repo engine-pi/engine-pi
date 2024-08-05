@@ -43,8 +43,8 @@ public class IntroTrack implements Track
      * Initializes a new {@code IntroTrack} for the specified sound.
      *
      * @param intro Die einmalig abgespielte Eingangsmusik.
-     * @param loop  Die auf die Eingangsmusik folgende in einer Endlosschleife
-     *              wiedergegeben Anschlussmusik.
+     * @param loop Die auf die Eingangsmusik folgende in einer Endlosschleife
+     *     wiedergegeben Anschlussmusik.
      */
     public IntroTrack(Sound intro, Sound loop)
     {

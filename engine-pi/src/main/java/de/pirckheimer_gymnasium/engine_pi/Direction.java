@@ -77,8 +77,8 @@ public enum Direction
      * positiv wie negativ).
      *
      * @return Vector, der mit einer einfachen Auslenkung (d.h. für
-     *         <code>x</code> und <code>y</code> je ein Wertebereich von {-1, 0,
-     *         1}) die entsprechende Bewegung macht.
+     *     <code>x</code> und <code>y</code> je ein Wertebereich von {-1, 0, 1})
+     *     die entsprechende Bewegung macht.
      */
     @API
     public Vector toVector()

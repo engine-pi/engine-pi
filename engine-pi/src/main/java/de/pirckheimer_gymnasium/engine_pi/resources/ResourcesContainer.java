@@ -50,6 +50,7 @@ import java.util.function.Supplier;
  * </p>
  *
  * @param <T> Der Datentyp der Ressource, die in dieser Instanz enthalten ist.
+ *
  * @see ResourcesContainerListener
  *
  * @author Steffen Wilke
@@ -79,7 +80,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * was added to or removed from this container.
      *
      * @param listener The container listener instance that will receive call
-     *                 backs from this container.
+     *     backs from this container.
+     *
      * @see #removeContainerListener(ResourcesContainerListener)
      */
     public ResourcesContainerListener<T> addContainerListener(
@@ -93,7 +95,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Remove the specified listener from this container.
      *
      * @param listener The listener instance that was previously added to this
-     *                 container.
+     *     container.
+     *
      * @see #addContainerListener(ResourcesContainerListener)
      */
     public void removeContainerListener(ResourcesContainerListener<T> listener)
@@ -106,6 +109,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * instance is cleared.
      *
      * @param listener The container listener instance.
+     *
      * @see #removeClearedListener(ResourcesContainerClearedListener)
      */
     public void addClearedListener(ResourcesContainerClearedListener listener)
@@ -117,7 +121,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Remove the specified listener from this container.
      *
      * @param listener The listener instance that was previously added to this
-     *                 container.
+     *     container.
+     *
      * @see #addClearedListener(ResourcesContainerClearedListener)
      */
     public void removeClearedListener(
@@ -155,8 +160,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * diesen Speicher zugänglich zu machen.
      * </p>
      *
-     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param resource Die Ressourceninstanz.
+     *
      * @see #get(Predicate)
      * @see #get(String)
      * @see #get(String, boolean)
@@ -206,8 +212,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * </p>
      *
      * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
      * @return True if this container contains a resource with the specified
-     *         name; otherwise false.
+     *     name; otherwise false.
+     *
      * @see ResourcesContainer#contains(Object)
      */
     public boolean contains(String name)
@@ -224,8 +232,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Checks if the specified resource is contained by this instance.
      *
      * @param resource The resource.
+     *
      * @return True if this instance contains the specified resource instance;
-     *         otherwise false.
+     *     otherwise false.
      */
     public boolean contains(T resource)
     {
@@ -246,7 +255,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Gets all resources that match the specified condition.
      *
      * @param pred The condition that a resource must fulfill in order to be
-     *             returned.
+     *     returned.
+     *
      * @return All resources that match the specified condition.
      */
     public Collection<T> get(Predicate<T> pred)
@@ -273,10 +283,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * </p>
      *
      * @param name Der Name oder Dateipfad, unter dem die Ressource verwaltet
-     *             wird.
+     *     wird.
      *
      * @return Die Ressource mit dem angegebenen Namen oder {@code null}, wenn
-     *         sie nicht gefunden wird.
+     *     sie nicht gefunden wird.
      */
     public T get(String name)
     {
@@ -296,9 +306,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * container.
      * </p>
      *
-     * @param name         Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param loadCallback The callback that is used to load the resource
-     *                     on-demand if it's not present on this container.
+     *     on-demand if it's not present on this container.
+     *
      * @return T The resource with the specified name.
      */
     public T get(String name, Supplier<? extends T> loadCallback)
@@ -328,9 +339,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * the fly otherwise it will be retrieved from the cache.
      * </p>
      *
-     * @param name      Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param forceLoad If set to true, cached resource (if existing) will be
-     *                  discarded and the resource will be freshly loaded.
+     *     discarded and the resource will be freshly loaded.
+     *
      * @return The game resource or null if not found.
      */
     public T get(String name, boolean forceLoad)
@@ -374,8 +386,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * {@code Future} object returned by this method once loaded.
      *
      * @param location The location of the resource
+     *
      * @return A {@code Future} object that can be used to retrieve the resource
-     *         once it is finished loading
+     *     once it is finished loading
      */
     public Future<T> getAsync(URL location)
     {
@@ -388,8 +401,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * {@code Future} object returned by this method once loaded.
      *
      * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
      * @return A {@code Future} object that can be used to retrieve the resource
-     *         once it is finished loading
+     *     once it is finished loading
      */
     public Future<T> getAsync(String name)
     {
@@ -411,6 +425,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Removes the resource with the specified name from this container.
      *
      * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
      * @return The removed resource.
      */
     public T remove(String name)
@@ -442,8 +457,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * </p>
      *
      * @param name Der Name, unter dem die Ressource verwaltet wird.
+     *
      * @return An Optional instance that holds the resource instance, if present
-     *         on this container.
+     *     on this container.
+     *
      * @see Optional
      * @see #contains(String)
      * @see #get(String)
@@ -468,8 +485,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Gets an alias for the specified resourceName. Note that the process of
      * providing an alias is up to the ResourceContainer implementation.
      *
-     * @param name     Der Name, unter dem die Ressource verwaltet wird.
+     * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param resource The resource.
+     *
      * @return An alias for the specified resource.
      */
     protected String getAlias(String name, T resource)

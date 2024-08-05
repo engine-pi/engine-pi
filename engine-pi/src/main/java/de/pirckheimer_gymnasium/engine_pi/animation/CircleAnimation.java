@@ -39,17 +39,15 @@ public class CircleAnimation extends AggregateFrameUpdateListener
      * Erstellt eine Circle-Animation. Animiert ein {@link Actor}-Objekt anhand
      * seines Mittelpunkts um einen Drehungsmittelpunkt.
      *
-     * @param actor             Der zu animierende Actor.
-     * @param rotationCenter    Das Zentrum der Drehung.
+     * @param actor Der zu animierende Actor.
+     * @param rotationCenter Das Zentrum der Drehung.
      * @param durationInSeconds Die Dauer einer ganzen Umdrehung in
-     *                          Millisekunden.
-     * @param circleClockwise   <code>true</code>: Drehung im Uhrzeigersinn.
-     *                          <code>false</code>: Drehung entgegen des
-     *                          Uhrzeigersinns.
-     * @param rotateActor       <code>true</code>: Der Actor rotiert auch.
-     *                          <code>false</code>: Die Rotation des Actors
-     *                          bleibt fix. Nur seine Position verändert sich
-     *                          durch die Animation.
+     *     Millisekunden.
+     * @param circleClockwise <code>true</code>: Drehung im Uhrzeigersinn.
+     *     <code>false</code>: Drehung entgegen des Uhrzeigersinns.
+     * @param rotateActor <code>true</code>: Der Actor rotiert auch.
+     *     <code>false</code>: Die Rotation des Actors bleibt fix. Nur seine
+     *     Position verändert sich durch die Animation.
      */
     @API
     public CircleAnimation(Actor actor, Vector rotationCenter,

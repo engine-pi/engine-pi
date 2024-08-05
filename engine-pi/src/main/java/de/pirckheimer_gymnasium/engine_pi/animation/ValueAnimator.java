@@ -69,8 +69,8 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      * Setzt, ob die ValueAnimation pausiert werden soll.
      *
      * @param paused <code>true</code>: Die Animation wird unterbrochen, bis das
-     *               flag umgesetzt wird. <code>false</code>: Die Animation wird
-     *               wieder aufgenommen (sollte sie unterbrochen worden sein)
+     *     flag umgesetzt wird. <code>false</code>: Die Animation wird wieder
+     *     aufgenommen (sollte sie unterbrochen worden sein)
      *
      * @see #isPaused()
      */
@@ -104,9 +104,9 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      * Setzt den aktuellen Fortschritt des Animators händisch.
      *
      * @param progress Der Fortschritt, zu dem der Animator gesetzt werden soll.
-     *                 <code>0</code> ist <b>Anfang der Animation</b>,
-     *                 <code>1</code> ist <b>Ende der Animation</b>. Werte
-     *                 kleiner 0 bzw. größer als 1 sind nicht erlaubt.
+     *     <code>0</code> ist <b>Anfang der Animation</b>, <code>1</code> ist
+     *     <b>Ende der Animation</b>. Werte kleiner 0 bzw. größer als 1 sind
+     *     nicht erlaubt.
      */
     @API
     public void setProgress(double progress)

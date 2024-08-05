@@ -49,7 +49,7 @@ public final class FixtureBuilder
      * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
      * Koordinatenachsen.
      *
-     * @param width  Die Breite der rechteckigen Form.
+     * @param width Die Breite der rechteckigen Form.
      * @param height Die Höhe der rechteckigen Form.
      */
     public static FixtureData rectangle(double width, double height)
@@ -68,8 +68,8 @@ public final class FixtureBuilder
     /**
      * Erschafft eine kreisförmige Form.
      *
-     * @param mx     Der Mittelpunkt des Kreises, X-Koordinate.
-     * @param my     Der Mittelpunkt des Kreises, Y-Koordinate.
+     * @param mx Der Mittelpunkt des Kreises, X-Koordinate.
+     * @param my Der Mittelpunkt des Kreises, Y-Koordinate.
      * @param radius Der Radius des Kreises.
      */
     public static FixtureData circle(double mx, double my, double radius)
@@ -85,7 +85,7 @@ public final class FixtureBuilder
      * Formen werden automatisch zur umspannenden konvexen Form formatiert.
      *
      * @param points Eine Reihe an Punkten, die nacheinander diese Form
-     *               beschreiben (mindestens 3 Punkte).
+     *     beschreiben (mindestens 3 Punkte).
      */
     public static FixtureData polygon(Vector... points)
     {
@@ -108,9 +108,9 @@ public final class FixtureBuilder
      * Erstellt eine rechteckige Form, die parallel zu den Koordinatenachsen
      * läuft.
      *
-     * @param sx     Die x-Koordinate der linken unteren Ecke.
-     * @param sy     Die y-Koordinate der linken unteren Ecke.
-     * @param width  Breite der rechteckigen Form.
+     * @param sx Die x-Koordinate der linken unteren Ecke.
+     * @param sy Die y-Koordinate der linken unteren Ecke.
+     * @param width Breite der rechteckigen Form.
      * @param height Höhe der rechteckigen Form.
      */
     public static Shape axisParallelRectangular(double sx, double sy,
@@ -131,17 +131,17 @@ public final class FixtureBuilder
      * Zeichenkette.
      *
      * @param code Eine Minisprache, die die Halterung definiert. Alle Werte
-     *             sind in der Einheit Meter anzugeben. Die Koordinatenangaben
-     *             beziehen sich dabei auf den Ankerpunkt der Figur links unten.
-     *             <ul>
-     *             <li>Die Formen werden getrennt durch "&amp;"</li>
-     *             <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit
-     *             Startpunkt (0.5|0.5), Breite 4 Meter, Höhe 5 Meter</li>
-     *             <li>Polygon: <code>P4,4,5,5,1,2</code> Polygon mit drei
-     *             Punkten: (4|4), (5|5), (1|2)</li>
-     *             <li>Kreis: <code>C1,1,4</code> Kreis mit Mittelpunkt (1|1)
-     *             und Radius 4</li>
-     *             </ul>
+     *     sind in der Einheit Meter anzugeben. Die Koordinatenangaben beziehen
+     *     sich dabei auf den Ankerpunkt der Figur links unten.
+     *     <ul>
+     *     <li>Die Formen werden getrennt durch "&amp;"</li>
+     *     <li>Rechteck: <code>R0.5,0.5,4,5</code> Rechteck mit Startpunkt
+     *     (0.5|0.5), Breite 4 Meter, Höhe 5 Meter</li>
+     *     <li>Polygon: <code>P4,4,5,5,1,2</code> Polygon mit drei Punkten:
+     *     (4|4), (5|5), (1|2)</li>
+     *     <li>Kreis: <code>C1,1,4</code> Kreis mit Mittelpunkt (1|1) und Radius
+     *     4</li>
+     *     </ul>
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setFixtures(String)
      */

@@ -63,7 +63,7 @@ public class Triangle extends Polygon
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
      *
      * @see ActorAdder#addTriangle(double, double, double, double, double,
-     *      double)
+     *     double)
      */
     @API
     public Triangle(double x1, double y1, double x2, double y2, double x3,
@@ -76,8 +76,8 @@ public class Triangle extends Polygon
      * Erzeugt ein gleichschenkliges Dreieck, dessen Symmetrieachse vertikal
      * ausgerichtet ist. Die Spitze zeigt nach oben.
      *
-     * @param width  Die Breite des gleichschenkligen Dreicks - genauer gesagt
-     *               die Länge der Basis.
+     * @param width Die Breite des gleichschenkligen Dreicks - genauer gesagt
+     *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      *
      * @see ActorAdder#addTriangle(double, double)

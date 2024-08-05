@@ -160,7 +160,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Setzt die Position dieses Layers relativ zu anderen Layers.
      *
      * @param position Die neue Position dieser Ebene. Je höher dieser Wert,
-     *                 desto weiter vorne ist sie.
+     *     desto weiter vorne ist sie.
      */
     @API
     public void setLayerPosition(int position)
@@ -245,16 +245,15 @@ public class Layer implements KeyStrokeListenerRegistration,
      * vergeht standardmäßig in Echtzeit, kann allerdings verzerrt werden.
      *
      * @param timeDistort <i>Zeit in der Simulation = Echtzeit *
-     *                    Verzerrungsfaktor</i> <br />
-     *                    <ul>
-     *                    <li>Werte <code>&gt;1</code> lassen die Zeit
-     *                    <b>schneller</b> vergehen</li>
-     *                    <li>Werte <code>&lt;1</code> lassen die Zeit
-     *                    <b>langsamer</b> vergehen</li>
-     *                    <li><code>1</code> lässt die Zeit in Echtzeit
-     *                    vergehen</li>
-     *                    <li>Werte <code>&lt;=0</code> sind nicht erlaubt</li>
-     *                    </ul>
+     *     Verzerrungsfaktor</i> <br />
+     *     <ul>
+     *     <li>Werte <code>&gt;1</code> lassen die Zeit <b>schneller</b>
+     *     vergehen</li>
+     *     <li>Werte <code>&lt;1</code> lassen die Zeit <b>langsamer</b>
+     *     vergehen</li>
+     *     <li><code>1</code> lässt die Zeit in Echtzeit vergehen</li>
+     *     <li>Werte <code>&lt;=0</code> sind nicht erlaubt</li>
+     *     </ul>
      */
     @API
     public void setTimeDistort(double timeDistort)
@@ -273,16 +272,16 @@ public class Layer implements KeyStrokeListenerRegistration,
      * dieser Ebene</b> wirkt.
      *
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
-     *                <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     *     <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
      * @see #setGravity(double, double)
      * @see Scene#setGravity(Vector)
      * @see Scene#setGravity(double, double)
      *
-     *      @jbox.2d <a href=
-     *      "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
-     *      <a href=
-     *      "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
+     *     @jbox.2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
+     *     <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
     public void setGravity(Vector gravity)
@@ -295,18 +294,18 @@ public class Layer implements KeyStrokeListenerRegistration,
      * y-Richtung, die auf <b>alle Objekte innerhalb dieser Ebene</b> wirkt.
      *
      * @param gravityX Die neue Schwerkraft, die in X-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     *     Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     *     Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
      * @see #setGravity(Vector)
      * @see Scene#setGravity(Vector)
      * @see Scene#setGravity(double, double)
      *
-     *      @jbox.2d <a href=
-     *      "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
-     *      <a href=
-     *      "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
+     *     @jbox.2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
+     *     <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
     public void setGravity(double gravityX, double gravityY)
@@ -331,7 +330,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * <b>[N]</b> bzw. <b>[m/s^2]</b> zurück.
      *
      * @return Die Schwerkraft, die momentan auf diese Ebene wirkt, als Vektor
-     *         in <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     *     in <b>[N]</b> bzw. <b>[m/s^2]</b>.
      */
     public Vector getGravity()
     {
@@ -342,9 +341,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Setzt, ob diese Ebene sichtbar sein soll.
      *
      * @param visible <code>true</code>: Die Ebene ist sichtbar, wenn es an
-     *                einer Szene angemeldet ist. <code>false</code>: Die Ebene
-     *                ist auch dann nicht sichtbar, wenn es an einer Szene
-     *                angemeldet ist.
+     *     einer Szene angemeldet ist. <code>false</code>: Die Ebene ist auch
+     *     dann nicht sichtbar, wenn es an einer Szene angemeldet ist.
      *
      * @see #isVisible()
      */
@@ -358,7 +356,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Gibt an, ob dieses Layer gerade sichtbar ist.
      *
      * @return <code>true</code>: Die Ebene ist sichtbar. <code>false</code>:
-     *         Die Ebene ist nicht sichtbar.
+     *     Die Ebene ist nicht sichtbar.
      *
      * @see #setVisible(boolean)
      */
@@ -436,8 +434,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param worldPoint Ein Punkt auf dem Layer
      *
      * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse
-     *         ist umgekehrt), der mit der aktuellen Kameraeinstellung dem
-     *         angegebenen <code>worldPoint</code> entspricht
+     *     ist umgekehrt), der mit der aktuellen Kameraeinstellung dem
+     *     angegebenen <code>worldPoint</code> entspricht
      */
     @Internal
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
@@ -457,7 +455,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Gibt die derzeit auf dem Bildschirm sichtbare Fläche des Layers an.
      *
      * @return Die sichtbare Fläche als Bounds Objekt <b>mit Angaben in
-     *         Meter</b>
+     *     Meter</b>
      *
      * @see Game#getWindowSize()
      */
@@ -476,7 +474,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Fensters einer bestimmten Länge entspricht.
      *
      * @param width Die Breite in Meter, auf die die Kamera im Fenster exakt zu
-     *              setzen ist.
+     *     setzen ist.
      *
      * @see #setVisibleHeight(double, Vector)
      * @see Game#getWindowSize()
@@ -494,7 +492,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Fensters einer bestimmten Länge entspricht.
      *
      * @param height Die Höhe in Meter, auf die die Kamera im Fenster exakt zu
-     *               setzen ist.
+     *     setzen ist.
      *
      * @see #setVisibleWidth(double, Vector)
      * @see Game#getWindowSize()

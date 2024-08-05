@@ -68,7 +68,7 @@ public class KeyFrames implements FrameUpdateListener
      * Erstellt ein leeres Set an Keyframes
      *
      * @param toAnimate Die Funktion, die durch dieses Set an Keyframes
-     *                  interpoliert wird.
+     *     interpoliert wird.
      */
     @API
     public KeyFrames(Consumer<Double> toAnimate)
@@ -104,10 +104,9 @@ public class KeyFrames implements FrameUpdateListener
      * Setzt, ob diese Animation unendlich lange gehen soll.
      *
      * @param infinite Ist dieser Wert <code>true</code>, so wird nach Ablauf
-     *                 des letzten Keyframes jeden weiteren Frame der letzte
-     *                 Wert interpoliert. Ist dieser Wert <code>false</code>, so
-     *                 wird nach dem letzten Keyframe keine weitere
-     *                 Interpolation ausgeführt.
+     *     des letzten Keyframes jeden weiteren Frame der letzte Wert
+     *     interpoliert. Ist dieser Wert <code>false</code>, so wird nach dem
+     *     letzten Keyframe keine weitere Interpolation ausgeführt.
      *
      * @see #isInfinite()
      */

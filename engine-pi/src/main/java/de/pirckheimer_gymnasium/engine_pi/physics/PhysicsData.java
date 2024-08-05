@@ -123,7 +123,7 @@ public class PhysicsData
      * Default-Konstruktor erstellt ein Proxydatenset mit Standardwerten.
      *
      * @param fixtures Eine Funktion, die eine gut abschätzende Shape für das
-     *                 zugehörige {@link Actor}-Objekt berechnet.
+     *     zugehörige {@link Actor}-Objekt berechnet.
      */
     public PhysicsData(Supplier<List<FixtureData>> fixtures)
     {
@@ -170,10 +170,10 @@ public class PhysicsData
      * wurde.</b>
      *
      * @param world Der World-Handler, in dessen World der Body erstellt werden
-     *              soll.
+     *     soll.
      *
      * @return Der frisch erstellte Body nach allen Spezifikationen der
-     *         Proxy-Daten.
+     *     Proxy-Daten.
      */
     Body createBody(WorldHandler world, Actor actor)
     {

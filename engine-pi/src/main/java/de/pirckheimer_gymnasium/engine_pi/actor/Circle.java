@@ -95,8 +95,7 @@ public class Circle extends Geometry
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override

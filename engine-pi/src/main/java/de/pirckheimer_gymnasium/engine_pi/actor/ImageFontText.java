@@ -71,20 +71,18 @@ public class ImageFontText extends Image
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont           Die Bilderschriftart.
-     * @param content             Der Textinhalt, der in das Bild geschrieben
-     *                            werden soll.
-     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
-     *                            aufnehmen kann.
-     * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe in der die schwarze Farbe der
-     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param imageFont Die Bilderschriftart.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *     kann.
+     * @param alignment Die Textausrichtung.
+     * @param color Die Farbe in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl {@code 3}
-     *                            ein Pixel in {@code 9} Pixel der Abmessung
-     *                            {@code 3x3}.
-     * @param pixelPerMeter       Wie viele Pixel ein Meter des resultierenden
-     *                            Bilds groß sein soll.
+     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
+     *     Pixel der Abmessung {@code 3x3}.
+     * @param pixelPerMeter Wie viele Pixel ein Meter des resultierenden Bilds
+     *     groß sein soll.
      */
     public ImageFontText(ImageFont imageFont, String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication,
@@ -104,18 +102,16 @@ public class ImageFontText extends Image
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont           Die Bilderschriftart.
-     * @param content             Der Textinhalt, der in das Bild geschrieben
-     *                            werden soll.
-     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
-     *                            aufnehmen kann.
-     * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe, in der die schwarze Farbe der
-     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param imageFont Die Bilderschriftart.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *     kann.
+     * @param alignment Die Textausrichtung.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl {@code 3}
-     *                            ein Pixel in {@code 9} Pixel der Abmessung
-     *                            {@code 3x3}.
+     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
+     *     Pixel der Abmessung {@code 3x3}.
      */
     public ImageFontText(ImageFont imageFont, String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)
@@ -129,9 +125,9 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color     Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *                  umgefärbt werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      *
      */
     public ImageFontText(ImageFont imageFont, String content, Color color)
@@ -146,9 +142,9 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color     Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *                  umgefärbt werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      *
      */
     public ImageFontText(ImageFont imageFont, String content, String color)
@@ -161,9 +157,9 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *                  kann.
+     *     kann.
      * @param alignment Die Textausrichtung.
      */
     public ImageFontText(ImageFont imageFont, String content, int lineWidth,
@@ -178,7 +174,7 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content   Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      */
     public ImageFontText(ImageFont imageFont, String content)
     {
@@ -190,17 +186,15 @@ public class ImageFontText extends Image
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param content             Der Textinhalt, der in das Bild geschrieben
-     *                            werden soll.
-     * @param lineWidth           Die maximale Anzahl an Zeichen, die eine Zeile
-     *                            aufnehmen kann.
-     * @param alignment           Die Textausrichtung.
-     * @param color               Die Farbe, in der die schwarze Farbe der
-     *                            Ausgangsbilder umgefärbt werden soll.
+     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
+     *     kann.
+     * @param alignment Die Textausrichtung.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *                            Beispielsweise verwandelt die Zahl {@code 3}
-     *                            ein Pixel in {@code 9} Pixel der Abmessung
-     *                            {@code 3x3}.
+     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
+     *     Pixel der Abmessung {@code 3x3}.
      */
     public void setContent(String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)
@@ -229,8 +223,8 @@ public class ImageFontText extends Image
      * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color   Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *                umgefärbt werden soll.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      */
     public void setContent(String content, Color color)
     {
@@ -242,8 +236,8 @@ public class ImageFontText extends Image
      * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color   Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *                umgefärbt werden soll.
+     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
      */
     public void setContent(String content, String color)
     {
@@ -267,8 +261,8 @@ public class ImageFontText extends Image
      * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
      *
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-     *         verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-     *         Abmessung {@code 3x3}.
+     *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
+     *     Abmessung {@code 3x3}.
      *
      * @since 0.25.0
      */

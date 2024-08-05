@@ -28,6 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * genutzt.
  *
  * @author Michael Andonie
+ *
  * @see MouseScrollListener
  */
 @API
@@ -49,8 +50,9 @@ public class MouseScrollEvent
      * Gibt die Anzahl an „Klicks“ aus, die das Mausrad bewegt wurde.
      *
      * @return Die Anzahl an „Klicks“, die das Mausrad bewegt wurde.<br>
-     *         <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
-     *         <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
+     *     <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
+     *     <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
+     *
      * @see #getPreciseWheelRotation()
      */
     @API
@@ -65,8 +67,9 @@ public class MouseScrollEvent
      * "Klick-Bruchteile" mit eingerechnet.
      *
      * @return Die Anzahl an „Klicks“, die das Mausrad bewegt wurde.<br>
-     *         <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
-     *         <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
+     *     <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
+     *     <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
+     *
      * @see #getWheelRotation()
      */
     @API

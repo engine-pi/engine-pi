@@ -152,7 +152,7 @@ public final class Game
      * @param pixelMultiplication Der Wert der Pixelvervielfältigung.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
-     *      int)
+     *     int)
      *
      * @since 0.25.0
      */
@@ -167,7 +167,7 @@ public final class Game
      * @return Der Wert der Pixelvervielfältigung.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
-     *      int)
+     *     int)
      * @see Camera#getMeter()
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Animation#createFromSpritesheet
      *
@@ -184,7 +184,7 @@ public final class Game
      * @return Wahr, wenn die Pixelvervielfältigung aktiviert ist.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.util.ImageUtil#multiplyPixel(BufferedImage,
-     *      int)
+     *     int)
      *
      * @since 0.25.0
      */
@@ -197,9 +197,9 @@ public final class Game
      * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
      * <b>Höhe</b> und <b>Pixelvervielfältigung</b>.
      *
-     * @param scene               Die Szene, mit der das Spiel gestartet wird.
-     * @param width               Die Breite des Zeichenbereichs in Pixel.
-     * @param height              Die Höhe des Zeichenbereichs in Pixel.
+     * @param scene Die Szene, mit der das Spiel gestartet wird.
+     * @param width Die Breite des Zeichenbereichs in Pixel.
+     * @param height Die Höhe des Zeichenbereichs in Pixel.
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
@@ -283,9 +283,9 @@ public final class Game
      * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
      * <b>Höhe</b>
      *
-     * @param width  Die Breite des Zeichenbereichs in Pixel.
+     * @param width Die Breite des Zeichenbereichs in Pixel.
      * @param height Die Höhe des Zeichenbereichs in Pixel.
-     * @param scene  Die Szene, mit der das Spiel gestartet wird.
+     * @param scene Die Szene, mit der das Spiel gestartet wird.
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
      *
@@ -341,7 +341,7 @@ public final class Game
      * Wechselt die aktuelle Szene.
      *
      * @param scene Die Szene, zu der gewechselt werden soll. Wird
-     *              <code>null</code> übergeben, wird eine neue Szene erstellt.
+     *     <code>null</code> übergeben, wird eine neue Szene erstellt.
      */
     @API
     public static void transitionToScene(Scene scene)
@@ -376,7 +376,7 @@ public final class Game
      * Tastatur-Steuermöglichkeiten zurück.
      *
      * @return Die registrierten, grundlegenden Maus- und
-     *         Tastatur-Steuermöglichkeiten.
+     *     Tastatur-Steuermöglichkeiten.
      */
     public static DefaultListener getDefaultControl()
     {
@@ -404,7 +404,7 @@ public final class Game
      * Meldet die grundlegenden Maus- und Tastatur-Steuermöglichkeiten ab.
      *
      * @see DefaultControl Die grundlegenden Maus- und
-     *      Tastatur-Steuermöglichkeiten.
+     *     Tastatur-Steuermöglichkeiten.
      */
     public static void removeDefaultControl()
     {
@@ -440,10 +440,11 @@ public final class Game
      * Bildaktualisierungen reagiert.
      *
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
+     *
      * @return Der Rückgabewert ist mit dem Eingabeparameter identisch. Dieser
-     *         Wert kann dann mit dem Datentyp {@link FrameUpdateListener} einer
-     *         lokalen Variablen bzw. einem Attribut zugewiesen werden und
-     *         später zum Abmelden verwendet werden.
+     *     Wert kann dann mit dem Datentyp {@link FrameUpdateListener} einer
+     *     lokalen Variablen bzw. einem Attribut zugewiesen werden und später
+     *     zum Abmelden verwendet werden.
      *
      * @author Josef Friedrich
      */
@@ -592,7 +593,7 @@ public final class Game
      * Gibt die gerade aktive Szene an.
      *
      * @return Die gerade aktive Szene. Wurde das Spiel noch nicht gestartet,
-     *         ist die Rückgabe <code>null</code>.
+     *     ist die Rückgabe <code>null</code>.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.Scene
      */
@@ -606,10 +607,10 @@ public final class Game
      * Gibt an, ob eine bestimmte Taste derzeit heruntergedrückt ist.
      *
      * @param keyCode Die zu testende Taste als Key-Code (also z.B.
-     *                <code>KeyEvent.VK_D</code>).
+     *     <code>KeyEvent.VK_D</code>).
      *
      * @return <code>true</code>, wenn die zu testende Taste gerade
-     *         heruntergedrückt ist, sonst <code>false</code>.
+     *     heruntergedrückt ist, sonst <code>false</code>.
      *
      * @see KeyEvent#getKeyCode()
      * @see java.awt.event.KeyEvent
@@ -626,7 +627,7 @@ public final class Game
      * ausgeführt wurde.
      *
      * @return <code>true</code>, wenn das Spiel läuft, sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      *
      * @see #start(int, int, Scene)
      */
@@ -639,7 +640,7 @@ public final class Game
     /**
      * Setzt die Größe des Engine-Fensters.
      *
-     * @param width  Die neue Breite des Engine-Fensters in Pixel.
+     * @param width Die neue Breite des Engine-Fensters in Pixel.
      * @param height Die neue Höhe des Engine-Fensters in Pixel.
      *
      * @see #getWindowSize()
@@ -674,7 +675,7 @@ public final class Game
      * Gibt die Fenstergröße <b>in Pixel</b> aus.
      *
      * @return Ein Vektor-Objekt, dessen Höhe und Breite mit der Fensterhöhe und
-     *         -breite übereinstimmt.
+     *     -breite übereinstimmt.
      *
      * @see #setWindowPosition(int, int)
      * @see #setWindowSize(int, int)
@@ -709,18 +710,18 @@ public final class Game
      * Setzt das Spielfenster an eine neue Position.
      *
      * @param direction Wo das Spielfeld auf dem Bildschirm angezeigt werden
-     *                  sollen.
-     *                  <ul>
-     *                  <li>{@link Direction#UP}: oben mittig</li>
-     *                  <li>{@link Direction#UP_RIGHT}: oben rechts</li>
-     *                  <li>{@link Direction#RIGHT}: rechts mittig</li>
-     *                  <li>{@link Direction#DOWN_RIGHT}: unten rechts</li>
-     *                  <li>{@link Direction#DOWN}: unten mittig</li>
-     *                  <li>{@link Direction#DOWN_LEFT}: unten links</li>
-     *                  <li>{@link Direction#LEFT}: links</li>
-     *                  <li>{@link Direction#UP_LEFT}: oben links</li>
-     *                  <li>{@link Direction#NONE}: mittig</li>
-     *                  </ul>
+     *     sollen.
+     *     <ul>
+     *     <li>{@link Direction#UP}: oben mittig</li>
+     *     <li>{@link Direction#UP_RIGHT}: oben rechts</li>
+     *     <li>{@link Direction#RIGHT}: rechts mittig</li>
+     *     <li>{@link Direction#DOWN_RIGHT}: unten rechts</li>
+     *     <li>{@link Direction#DOWN}: unten mittig</li>
+     *     <li>{@link Direction#DOWN_LEFT}: unten links</li>
+     *     <li>{@link Direction#LEFT}: links</li>
+     *     <li>{@link Direction#UP_LEFT}: oben links</li>
+     *     <li>{@link Direction#NONE}: mittig</li>
+     *     </ul>
      *
      * @see DebugConfiguration#windowPosition
      */
@@ -770,7 +771,7 @@ public final class Game
      * über {@link javax.swing.JOptionPane} implementiert.
      *
      * @param message Der Inhalt der Botschaft im Dialogfenster.
-     * @param title   Der Titel des Dialogfensters.
+     * @param title Der Titel des Dialogfensters.
      */
     @API
     public static void showMessage(String message, String title)
@@ -785,10 +786,10 @@ public final class Game
      * {@link javax.swing.JOptionPane} implementiert.
      *
      * @param message Der Inhalt der Botschaft im Dialogfenster.
-     * @param title   Der Titel des Dialogfensters.
+     * @param title Der Titel des Dialogfensters.
      *
      * @return Die Eingabe des Nutzers. Ist <code>null</code>, wenn der Nutzer
-     *         den Dialog abgebrochen hat.
+     *     den Dialog abgebrochen hat.
      */
     @API
     public static String requestStringInput(String message, String title)
@@ -802,15 +803,14 @@ public final class Game
      * {@link javax.swing.JOptionPane} implementiert.
      *
      * @param message Der Inhalt der Botschaft im Dialogfenster.
-     * @param title   Der Titel des Dialogfensters.
+     * @param title Der Titel des Dialogfensters.
      *
      * @return Die Eingabe des Nutzers:
-     *         <ul>
-     *         <li>Ja → <code>true</code></li>
-     *         <li>Nein → <code>false</code></li>
-     *         <li>Abbruch (= Dialog manuell schließen) →
-     *         <code>false</code></li>
-     *         </ul>
+     *     <ul>
+     *     <li>Ja → <code>true</code></li>
+     *     <li>Nein → <code>false</code></li>
+     *     <li>Abbruch (= Dialog manuell schließen) → <code>false</code></li>
+     *     </ul>
      */
     @API
     public static boolean requestYesNo(String message, String title)
@@ -825,15 +825,14 @@ public final class Game
      * über {@link javax.swing.JOptionPane} implementiert.
      *
      * @param message Der Inhalt der Botschaft im Dialogfenster.
-     * @param title   Der Titel des Dialogfensters.
+     * @param title Der Titel des Dialogfensters.
      *
      * @return Die Eingabe des Nutzers:
-     *         <ul>
-     *         <li>OK → <code>true</code></li>
-     *         <li>Abbrechen → <code>false</code></li>
-     *         <li>Abbruch (= Dialog manuell schließen) →
-     *         <code>false</code></li>
-     *         </ul>
+     *     <ul>
+     *     <li>OK → <code>true</code></li>
+     *     <li>Abbrechen → <code>false</code></li>
+     *     <li>Abbruch (= Dialog manuell schließen) → <code>false</code></li>
+     *     </ul>
      */
     @API
     public static boolean requestOkCancel(String message, String title)
@@ -898,11 +897,10 @@ public final class Game
      * Setzt, ob die Engine im Debug-Modus ausgeführt werden soll.
      *
      * @param value ist dieser Wert <code>true</code>, wird die Engine ab sofort
-     *              im Debug-Modus ausgeführt. Hierdurch werden mehr
-     *              Informationen beim Ausführen der Engine angegeben, zum
-     *              Beispiel ein grafisches Raster und mehr
-     *              Logging-Informationen. Dies ist hilfreich für das Debugging
-     *              des eigenen Spiels.
+     *     im Debug-Modus ausgeführt. Hierdurch werden mehr Informationen beim
+     *     Ausführen der Engine angegeben, zum Beispiel ein grafisches Raster
+     *     und mehr Logging-Informationen. Dies ist hilfreich für das Debugging
+     *     des eigenen Spiels.
      *
      * @see #isDebug()
      */
@@ -916,7 +914,7 @@ public final class Game
      * Gibt an, ob die Engine gerade im Debug-Modus ausgeführt wird.
      *
      * @return ist dieser Wert <code>true</code>, wird die Engine gerade im
-     *         Debug-Modus ausgeführt. Sonst ist der Wert <code>false</code>.
+     *     Debug-Modus ausgeführt. Sonst ist der Wert <code>false</code>.
      *
      * @see #setDebug(boolean)
      */
@@ -982,8 +980,8 @@ public final class Game
      * Gibt an, ob die laufende Instanz der Engine gerade verbose Output gibt.
      *
      * @return ist dieser Wert <code>true</code>, werden extrem ausführliche
-     *         Logging-Informationen gespeichert. Sonst ist der Wert
-     *         <code>false</code>.
+     *     Logging-Informationen gespeichert. Sonst ist der Wert
+     *     <code>false</code>.
      *
      * @see #setVerbose(boolean)
      */
@@ -998,9 +996,8 @@ public final class Game
      * soll.
      *
      * @param value ist dieser Wert <code>true</code>, so wird ein äußerst
-     *              ausführliches Log über die Funktionalität der Engine
-     *              geführt. Dies ist hauptsächlich für das Debugging an der
-     *              Engine selbst notwendig.
+     *     ausführliches Log über die Funktionalität der Engine geführt. Dies
+     *     ist hauptsächlich für das Debugging an der Engine selbst notwendig.
      *
      * @see #isVerbose()
      * @see #setDebug(boolean)

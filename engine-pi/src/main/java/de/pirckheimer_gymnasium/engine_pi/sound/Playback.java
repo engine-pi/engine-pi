@@ -262,6 +262,7 @@ public abstract class Playback implements Runnable
      * Plays a sound to this object's data line.
      *
      * @param sound The sound to play
+     *
      * @return Whether the sound was cancelled while playing
      */
     boolean play(Sound sound) throws LineUnavailableException

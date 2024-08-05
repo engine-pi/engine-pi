@@ -55,9 +55,9 @@ public class TileRegistration extends Actor implements TileMap
      * Erstellt einen <b>leeren</b> Tile-Container. Er ist erst "sichtbar", wenn
      * Tiles gesetzt werden.
      *
-     * @param numX       Die Anzahl an Tiles in X-Richtung.
-     * @param numY       Die Anzahl an Tiles in Y-Richtung.
-     * @param tileWidth  Die Breite eines Tiles in Meter.
+     * @param numX Die Anzahl an Tiles in X-Richtung.
+     * @param numY Die Anzahl an Tiles in Y-Richtung.
+     * @param tileWidth Die Breite eines Tiles in Meter.
      * @param tileHeight Die Höhe eines Tiles in Meter.
      *
      * @see #setTile(int, int, Tile)
@@ -97,8 +97,8 @@ public class TileRegistration extends Actor implements TileMap
      * Erstellt einen <b>leeren</b> Tile-Container für quadratische Tiles. Er
      * ist erst "sichtbar", wenn Tiles gesetzt werden.
      *
-     * @param numX     Die Anzahl an Tiles in X-Richtung.
-     * @param numY     Die Anzahl an Tiles in Y-Richtung.
+     * @param numX Die Anzahl an Tiles in X-Richtung.
+     * @param numY Die Anzahl an Tiles in Y-Richtung.
      * @param tileSize Die Höhe <b>und</b> Breite eines Tiles in Pixel.
      *
      * @see #setTile(int, int, Tile)
@@ -112,10 +112,10 @@ public class TileRegistration extends Actor implements TileMap
     /**
      * Setzt das Tile an einer festen Position durch eine klare Bilddatei.
      *
-     * @param x    Der X-Index für das neu zu setzende Tile.
-     * @param y    Der Y-Index für das neu zu setzende Tile.
+     * @param x Der X-Index für das neu zu setzende Tile.
+     * @param y Der Y-Index für das neu zu setzende Tile.
      * @param tile Das neue Tile. Bei <code>null</code> wird das entsprechende
-     *             Tile leer.
+     *     Tile leer.
      */
     @API
     public void setTile(int x, int y, Tile tile)
@@ -127,8 +127,7 @@ public class TileRegistration extends Actor implements TileMap
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal

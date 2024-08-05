@@ -54,6 +54,7 @@ public final class Codec
      * Decodes a previously encoded angle.
      *
      * @param encodedAngle The encoded angle.
+     *
      * @return The decoded angle.
      */
     public static float decodeAngle(final byte encodedAngle)
@@ -76,8 +77,9 @@ public final class Codec
      * encodeSmallFloatingPointNumber}.
      *
      * @param encodedNumber The encoded number
-     * @param precision     The precision of the encoded number. The same
-     *                      precision, used for encoding.
+     * @param precision The precision of the encoded number. The same precision,
+     *     used for encoding.
+     *
      * @return The decoded small floating point number.
      */
     public static float decodeSmallFloatingPointNumber(
@@ -92,6 +94,7 @@ public final class Codec
      * can differ at max. around 1.43 degrees from the original one.
      *
      * @param angle The angle
+     *
      * @return The encoded angle.
      */
     public static byte encodeAngle(final float angle)
@@ -118,7 +121,8 @@ public final class Codec
      * (6553.4 for precision = 1).
      *
      * @param smallNumber The small number to encode
-     * @param precision   The comma precision for the encoding process.
+     * @param precision The comma precision for the encoding process.
+     *
      * @return The encoded number.
      */
     public static short encodeSmallFloatingPointNumber(final float smallNumber,
@@ -198,7 +202,9 @@ public final class Codec
      * Decodes the specified {@code Base64} string to a byte array.
      *
      * @param base64 The Base64 string containing the encoded binary data.
+     *
      * @return The decoded byte array.
+     *
      * @see Base64
      */
     public static byte[] decode(String base64)

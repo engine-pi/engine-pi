@@ -58,7 +58,7 @@ public class Rectangle extends Geometry
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
      * <b>Höhe</b>.
      *
-     * @param width  Die <b>Breite</b> des Rechtecks in Meter.
+     * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      *
      * @see ActorAdder#addRectangle(double, double)
@@ -77,8 +77,8 @@ public class Rectangle extends Geometry
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
      * <b>Höhe</b>.
      *
-     * @param width         Die <b>Breite</b> des Rechtecks in Meter.
-     * @param height        Die <b>Höhe</b> des Rechtecks in Meter.
+     * @param width Die <b>Breite</b> des Rechtecks in Meter.
+     * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      * @param shapeSupplier
      */
     public Rectangle(double width, double height,
@@ -150,7 +150,7 @@ public class Rectangle extends Geometry
      * Setzt die Höhe und Breite des Rechtecks neu. Dadurch ändern sich die
      * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
      *
-     * @param width  Die neue Breite für das Rechteck in Meter.
+     * @param width Die neue Breite für das Rechteck in Meter.
      * @param height Die neue Höhe für das Rechteck in Meter.
      */
     @API
@@ -184,8 +184,7 @@ public class Rectangle extends Geometry
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override

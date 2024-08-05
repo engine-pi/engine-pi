@@ -43,8 +43,9 @@ public enum SoundFormat
      * Gets the {@code SoundFormat} of the specified format string.
      *
      * @param format The format string from which to extract the format.
+     *
      * @return The format of the specified string or {@code UNDEFINED} if not
-     *         supported.
+     *     supported.
      */
     public static SoundFormat get(String format)
     {
@@ -56,6 +57,7 @@ public enum SoundFormat
      * the engine.
      *
      * @param file The file to check for.
+     *
      * @return True if the extension is part of this enum; otherwise false.
      */
     public static boolean isSupported(File file)
@@ -68,6 +70,7 @@ public enum SoundFormat
      * the engine.
      *
      * @param fileName The file name to check for.
+     *
      * @return True if the extension is part of this enum; otherwise false.
      */
     public static boolean isSupported(String fileName)

@@ -144,7 +144,7 @@ public final class Camera
      * Gibt an, ob die Kamera ein Fokus-Objekt verfolgt oder „steif“ ist.
      *
      * @return <code>true</code>, wenn die Kamera ein Fokus-Objekt hat, sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      *
      * @see #setFocus(Actor)
      */
@@ -164,7 +164,7 @@ public final class Camera
      * gesetzt wurde: <code>camera.setOffset(new Vector(0, -100));</code>
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
-     *               Fokus verschoben wird.
+     *     Fokus verschoben wird.
      */
     @API
     public void setOffset(Vector offset)
@@ -248,7 +248,7 @@ public final class Camera
      * vergrößert.
      *
      * @param factor 1 verdoppelt die Pixelanzahl eines Meters, 0 keine
-     *               Veränderung.
+     *     Veränderung.
      *
      * @since 0.28.0
      */
@@ -274,7 +274,7 @@ public final class Camera
      * Die Kamera entfernt sich vom Spielfeld. Die Ansicht wird verkleinert.
      *
      * @param factor 0.5 halbiert die Pixelanzahl eines Meters, 0 keine
-     *               Veränderung.
+     *     Veränderung.
      *
      * @since 0.28.0
      */
@@ -379,11 +379,11 @@ public final class Camera
      * </p>
      *
      * @param angle Der Winkel (in <b>Grad</b>), um den die Kamera rotiert
-     *              werden soll.
-     *              <ul>
-     *              <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
-     *              <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
-     *              </ul>
+     *     werden soll.
+     *     <ul>
+     *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
+     *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *     </ul>
      */
     @API
     public void rotateBy(double angle)
@@ -398,8 +398,7 @@ public final class Camera
      * {@code rotateTo(-90)} um 90 Grad <b>im</b> Uhrzeigersinn.
      *
      * @param angle Der Winkel (in <b>Grad</b>), um die Kamera <b>von seiner
-     *              Ausgangsposition bei Initialisierung</b> rotiert werden
-     *              soll.
+     *     Ausgangsposition bei Initialisierung</b> rotiert werden soll.
      */
     @API
     public void rotateTo(double angle)
@@ -446,7 +445,7 @@ public final class Camera
      * zu zeichnenden Position und in Pixel.
      *
      * @param locationInWorld Ein Punkt in der Welt.
-     * @param pixelPerMeter   Gibt an, wie viele Pixel ein Meter misst.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
      * @return Die zu zeichnende Position des Punktes in Pixel.
      *

@@ -30,6 +30,7 @@ public interface Actable
      * Verschiebt die Gruppe ohne Bedingungen auf der Zeichenebene.
      *
      * @param vector Der Vektor, der die Verschiebung der Gruppe angibt.
+     *
      * @see Vector
      * @see #moveBy(double, double)
      */
@@ -46,6 +47,7 @@ public interface Actable
      *
      * @param dX Die Verschiebung in Richtung X.
      * @param dY Die Verschiebung in Richtung Y.
+     *
      * @see #moveBy(Vector)
      */
     @API

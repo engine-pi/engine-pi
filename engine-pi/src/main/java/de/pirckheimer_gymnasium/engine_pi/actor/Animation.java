@@ -159,8 +159,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * abgeschlossen wurde</b>.
      *
      * @param listener Ein Runnable, dessen run-Methode ausgeführt werden soll,
-     *                 sobald die Animation abgeschlossen ist (wird ausgeführt,
-     *                 bevor der Loop von Vorne beginnt).
+     *     sobald die Animation abgeschlossen ist (wird ausgeführt, bevor der
+     *     Loop von Vorne beginnt).
      */
     @API
     public void addOnCompleteListener(Runnable listener)
@@ -193,8 +193,7 @@ public class Animation extends Actor implements FrameUpdateListener
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override
@@ -208,13 +207,13 @@ public class Animation extends Actor implements FrameUpdateListener
      * Erzeugt eine Animation durch Angabe eines Spritesheets.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param image         Die bereits in den Speicher geladene Bilddatei des
-     *                      Spritesheets.
-     * @param x             Die Anzahl an Sprites in x-Richtung.
-     * @param y             Die Anzahl an Sprites in y-Richtung.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
+     *     bleiben.
+     * @param image Die bereits in den Speicher geladene Bilddatei des
+     *     Spritesheets.
+     * @param x Die Anzahl an Sprites in x-Richtung.
+     * @param y Die Anzahl an Sprites in y-Richtung.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      *
@@ -261,12 +260,12 @@ public class Animation extends Actor implements FrameUpdateListener
      * Erzeugt eine Animation durch Angabe eines Spritesheets.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param filePath      Der Dateipfad des Spritesheets.
-     * @param x             Die Anzahl an Sprites in x-Richtung.
-     * @param y             Die Anzahl an Sprites in y-Richtung.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
+     *     bleiben.
+     * @param filePath Der Dateipfad des Spritesheets.
+     * @param x Die Anzahl an Sprites in x-Richtung.
+     * @param y Die Anzahl an Sprites in y-Richtung.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      */
@@ -282,12 +281,12 @@ public class Animation extends Actor implements FrameUpdateListener
      * Erzeugt eine Animation durch Angabe eines Spritesheets.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param filePath      Der Dateipfad des Spritesheets.
-     * @param spriteWidth   Die Breite des Sprites in Pixel.
-     * @param spriteHeight  Die Höhe des Sprites in Pixel.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
+     *     bleiben.
+     * @param filePath Der Dateipfad des Spritesheets.
+     * @param spriteWidth Die Breite des Sprites in Pixel.
+     * @param spriteHeight Die Höhe des Sprites in Pixel.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      *
@@ -314,10 +313,10 @@ public class Animation extends Actor implements FrameUpdateListener
      * verwendenden Einzelbilder.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
-     * @param images        Die Einzelbilder.
+     *     bleiben.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
+     * @param images Die Einzelbilder.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      *
@@ -345,11 +344,11 @@ public class Animation extends Actor implements FrameUpdateListener
      * verwendenden Einzelbilder.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
-     * @param filePaths     Die einzelnen Dateipfade der zu verwendenden
-     *                      Einzelbilder.
+     *     bleiben.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
+     * @param filePaths Die einzelnen Dateipfade der zu verwendenden
+     *     Einzelbilder.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      */
@@ -366,18 +365,17 @@ public class Animation extends Actor implements FrameUpdateListener
      * bestimmten Verzeichnis in eine Animation.
      *
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param width         Die Breite der Animation in Meter.
-     * @param height        Die Höhe der Animation in Meter.
+     *     bleiben.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
      * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden
-     *                      Bilder liegen.
-     * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle
-     *                      Dateien mit dem gegebenen Präfix</a> (im angegebenen
-     *                      Ordner) und fügt sie in aufsteigender Reihenfolge
-     *                      der Animation hinzu.
+     *     Bilder liegen.
+     * @param prefix Das Pfad-Präfix. Diese Funktion sucht <a>alle Dateien mit
+     *     dem gegebenen Präfix</a> (im angegebenen Ordner) und fügt sie in
+     *     aufsteigender Reihenfolge der Animation hinzu.
      *
      * @return Eine Animation aus allen Dateien, die mit dem Pfadpräfix
-     *         beginnen.
+     *     beginnen.
      */
     @API
     public static Animation createFromImagesPrefix(double frameDuration,
@@ -418,8 +416,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * Erzeugt eine Animation aus einer animierter GIF-Datei.
      *
      * @param filepath Der Dateipfad der GIF-Datei.
-     * @param width    Die Breite der Animation in Meter.
-     * @param height   Die Höhe der Animation in Meter.
+     * @param width Die Breite der Animation in Meter.
+     * @param height Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      */

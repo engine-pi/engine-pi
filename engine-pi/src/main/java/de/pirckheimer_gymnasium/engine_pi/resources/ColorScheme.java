@@ -185,8 +185,8 @@ public class ColorScheme
      * </p>
      *
      * @param yellow Die Primärfarbe <b>Gelb</b>.
-     * @param red    Die Primärfarbe <b>Rot</b>.
-     * @param blue   Die Primärfarbe <b>Blau</b>.
+     * @param red Die Primärfarbe <b>Rot</b>.
+     * @param blue Die Primärfarbe <b>Blau</b>.
      */
     public ColorScheme(Color yellow, Color red, Color blue)
     {
@@ -207,13 +207,13 @@ public class ColorScheme
      *
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
-     *               und <b>Rot</b>).
-     * @param red    Die Primärfarbe <b>Rot</b>.
+     *     und <b>Rot</b>).
+     * @param red Die Primärfarbe <b>Rot</b>.
      * @param purple Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b>
-     *               und <b>Blau</b>).
-     * @param blue   Die Primärfarbe <b>Blau</b>.
-     * @param green  Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *               <b>Blau</b>).
+     *     und <b>Blau</b>).
+     * @param blue Die Primärfarbe <b>Blau</b>.
+     * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     *     <b>Blau</b>).
      */
     public ColorScheme(Color yellow, Color orange, Color red, Color purple,
             Color blue, Color green)
@@ -236,14 +236,14 @@ public class ColorScheme
      *
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
-     *               und <b>Rot</b>).
-     * @param red    Die Primärfarbe <b>Rot</b>.
+     *     und <b>Rot</b>).
+     * @param red Die Primärfarbe <b>Rot</b>.
      * @param purple Die Sekundärfarbe <b>Violett</b> (Mischung aus <b>Rot</b>
-     *               und <b>Blau</b>).
-     * @param blue   Die Primärfarbe <b>Blau</b>.
-     * @param green  Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *               <b>Blau</b>).
-     * @param brown  Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
+     *     und <b>Blau</b>).
+     * @param blue Die Primärfarbe <b>Blau</b>.
+     * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
+     *     <b>Blau</b>).
+     * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      */
     public ColorScheme(Color yellow, Color orange, Color red, Color purple,
             Color blue, Color green, Color brown)
@@ -283,8 +283,8 @@ public class ColorScheme
      * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellow(Color yellow)
     {
@@ -298,13 +298,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellow(int r, int g, int b)
     {
@@ -317,11 +317,11 @@ public class ColorScheme
      * hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) in
-     *               hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellow(String yellow)
     {
@@ -334,7 +334,7 @@ public class ColorScheme
      * - eine Mischung aus <b>Gelb</b> und <b>Orange</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
-     *         orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
+     *     orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      */
     public Color getYellowOrange()
     {
@@ -350,12 +350,11 @@ public class ColorScheme
      * orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      *
      * @param yellowOrange Die Tertiärfarbe <b>Gelb-Orange</b> (englisch:
-     *                     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und
-     *                     <b>Orange</b>).
+     *     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowOrange(Color yellowOrange)
     {
@@ -370,13 +369,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowOrange(int r, int g, int b)
     {
@@ -390,13 +389,12 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param yellowOrange Die Tertiärfarbe <b>Gelb-Orange</b> (englisch:
-     *                     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und
-     *                     <b>Orange</b>) in hexadezimaler Codierung (z. B.
-     *                     {@code #ff0000}).
+     *     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>) in
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowOrange(String yellowOrange)
     {
@@ -412,7 +410,7 @@ public class ColorScheme
      * </p>
      *
      * @return Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
-     *         Mischung aus <b>Gelb</b> und <b>Rot</b>).
+     *     Mischung aus <b>Gelb</b> und <b>Rot</b>).
      */
     public Color getOrange()
     {
@@ -428,11 +426,11 @@ public class ColorScheme
      * aus <b>Gelb</b> und <b>Rot</b>).
      *
      * @param orange Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
-     *               Mischung aus <b>Gelb</b> und <b>Rot</b>).
+     *     Mischung aus <b>Gelb</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setOrange(Color orange)
     {
@@ -447,13 +445,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setOrange(int r, int g, int b)
     {
@@ -467,12 +465,12 @@ public class ColorScheme
      * {@code #ff0000}).
      *
      * @param orange Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
-     *               Mischung aus <b>Gelb</b> und <b>Rot</b>) in hexadezimaler
-     *               Codierung (z. B. {@code #ff0000}).
+     *     Mischung aus <b>Gelb</b> und <b>Rot</b>) in hexadezimaler Codierung
+     *     (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setOrange(String orange)
     {
@@ -485,7 +483,7 @@ public class ColorScheme
      * eine Mischung aus <b>Orange</b> und <b>Rot</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>,
-     *         Mischung aus <b>Orange</b> und <b>Rot</b>).
+     *     Mischung aus <b>Orange</b> und <b>Rot</b>).
      */
     public Color getRedOrange()
     {
@@ -501,11 +499,11 @@ public class ColorScheme
      * Mischung aus <b>Orange</b> und <b>Rot</b>).
      *
      * @param redOrange Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red
-     *                  orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
+     *     orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedOrange(Color redOrange)
     {
@@ -520,13 +518,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedOrange(int r, int g, int b)
     {
@@ -540,12 +538,12 @@ public class ColorScheme
      * B. {@code #ff0000}).
      *
      * @param redOrange Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red
-     *                  orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>)
-     *                  in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>) in
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedOrange(String redOrange)
     {
@@ -569,8 +567,8 @@ public class ColorScheme
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRed(Color red)
     {
@@ -584,13 +582,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRed(int r, int g, int b)
     {
@@ -603,11 +601,11 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>) in
-     *            hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRed(String red)
     {
@@ -620,7 +618,7 @@ public class ColorScheme
      * eine Mischung aus <b>Rot</b> und <b>Violett</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
-     *         Mischung aus <b>Rot</b> und <b>Violett</b>).
+     *     Mischung aus <b>Rot</b> und <b>Violett</b>).
      */
     public Color getRedPurple()
     {
@@ -636,11 +634,11 @@ public class ColorScheme
      * Mischung aus <b>Rot</b> und <b>Violett</b>).
      *
      * @param redPurple Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red
-     *                  purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>).
+     *     purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedPurple(Color redPurple)
     {
@@ -655,13 +653,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedPurple(int r, int g, int b)
     {
@@ -675,12 +673,12 @@ public class ColorScheme
      * (z. B. {@code #ff0000}).
      *
      * @param redPurple Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red
-     *                  purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>)
-     *                  in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>) in
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setRedPurple(String redPurple)
     {
@@ -696,7 +694,7 @@ public class ColorScheme
      * </p>
      *
      * @return Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
-     *         Mischung aus <b>Rot</b> und <b>Blau</b>).
+     *     Mischung aus <b>Rot</b> und <b>Blau</b>).
      */
     public Color getPurple()
     {
@@ -712,11 +710,11 @@ public class ColorScheme
      * aus <b>Rot</b> und <b>Blau</b>).
      *
      * @param purple Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
-     *               Mischung aus <b>Rot</b> und <b>Blau</b>).
+     *     Mischung aus <b>Rot</b> und <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setPurple(Color purple)
     {
@@ -731,13 +729,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setPurple(int r, int g, int b)
     {
@@ -751,12 +749,12 @@ public class ColorScheme
      * {@code #ff0000}).
      *
      * @param purple Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
-     *               Mischung aus <b>Rot</b> und <b>Blau</b>) in hexadezimaler
-     *               Codierung (z. B. {@code #ff0000}).
+     *     Mischung aus <b>Rot</b> und <b>Blau</b>) in hexadezimaler Codierung
+     *     (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setPurple(String purple)
     {
@@ -769,7 +767,7 @@ public class ColorScheme
      * - eine Mischung aus <b>Violett</b> und <b>Blau</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
-     *         purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
+     *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
      */
     public Color getBluePurple()
     {
@@ -785,12 +783,11 @@ public class ColorScheme
      * Mischung aus <b>Violett</b> und <b>Blau</b>).
      *
      * @param bluePurple Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
-     *                   purple</b>, Mischung aus <b>Violett</b> und
-     *                   <b>Blau</b>).
+     *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBluePurple(Color bluePurple)
     {
@@ -805,13 +802,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBluePurple(int r, int g, int b)
     {
@@ -825,13 +822,12 @@ public class ColorScheme
      * (z. B. {@code #ff0000}).
      *
      * @param bluePurple Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
-     *                   purple</b>, Mischung aus <b>Violett</b> und
-     *                   <b>Blau</b>) in hexadezimaler Codierung (z. B.
-     *                   {@code #ff0000}).
+     *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>) in
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBluePurple(String bluePurple)
     {
@@ -855,8 +851,8 @@ public class ColorScheme
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlue(Color blue)
     {
@@ -870,13 +866,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlue(int r, int g, int b)
     {
@@ -889,11 +885,11 @@ public class ColorScheme
      * hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>) in
-     *             hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlue(String blue)
     {
@@ -906,7 +902,7 @@ public class ColorScheme
      * eine Mischung aus <b>Blau</b> und <b>Grün</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>,
-     *         Mischung aus <b>Blau</b> und <b>Grün</b>).
+     *     Mischung aus <b>Blau</b> und <b>Grün</b>).
      */
     public Color getBlueGreen()
     {
@@ -922,11 +918,11 @@ public class ColorScheme
      * Mischung aus <b>Blau</b> und <b>Grün</b>).
      *
      * @param blueGreen Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue
-     *                  green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>).
+     *     green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlueGreen(Color blueGreen)
     {
@@ -941,13 +937,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlueGreen(int r, int g, int b)
     {
@@ -961,12 +957,12 @@ public class ColorScheme
      * B. {@code #ff0000}).
      *
      * @param blueGreen Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue
-     *                  green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>) in
-     *                  hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>) in hexadezimaler
+     *     Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlueGreen(String blueGreen)
     {
@@ -979,7 +975,7 @@ public class ColorScheme
      * <b>Gelb</b> und <b>Blau</b>) zurück.
      *
      * @return Die Sekundärfarbe <b>Grün</b> (englisch: <b>green</b>, Mischung
-     *         aus <b>Gelb</b> und <b>Blau</b>).
+     *     aus <b>Gelb</b> und <b>Blau</b>).
      */
     public Color getGreen()
     {
@@ -995,11 +991,11 @@ public class ColorScheme
      * <b>Blau</b>).
      *
      * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *              <b>Blau</b>).
+     *     <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGreen(Color green)
     {
@@ -1013,13 +1009,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGreen(int r, int g, int b)
     {
@@ -1032,12 +1028,11 @@ public class ColorScheme
      * <b>Blau</b>) in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *              <b>Blau</b>) in hexadezimaler Codierung (z. B.
-     *              {@code #ff0000}).
+     *     <b>Blau</b>) in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGreen(String green)
     {
@@ -1050,7 +1045,7 @@ public class ColorScheme
      * eine Mischung aus <b>Gelb</b> und <b>Grün</b> - zurück.
      *
      * @return Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
-     *         Mischung aus <b>Gelb</b> und <b>Grün</b>).
+     *     Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
     public Color getYellowGreen()
     {
@@ -1066,11 +1061,11 @@ public class ColorScheme
      * Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
      * @param yellowGreen Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow
-     *                    green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>).
+     *     green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowGreen(Color yellowGreen)
     {
@@ -1085,13 +1080,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowGreen(int r, int g, int b)
     {
@@ -1105,12 +1100,12 @@ public class ColorScheme
      * B. {@code #ff0000}).
      *
      * @param yellowGreen Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow
-     *                    green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>)
-     *                    in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>) in hexadezimaler
+     *     Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setYellowGreen(String yellowGreen)
     {
@@ -1146,8 +1141,8 @@ public class ColorScheme
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBrown(Color brown)
     {
@@ -1161,13 +1156,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBrown(int r, int g, int b)
     {
@@ -1180,11 +1175,11 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>) in
-     *              hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBrown(String brown)
     {
@@ -1208,8 +1203,8 @@ public class ColorScheme
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setWhite(Color white)
     {
@@ -1223,13 +1218,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setWhite(int r, int g, int b)
     {
@@ -1242,11 +1237,11 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>) in
-     *              hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setWhite(String white)
     {
@@ -1270,8 +1265,8 @@ public class ColorScheme
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGray(Color gray)
     {
@@ -1285,13 +1280,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGray(int r, int g, int b)
     {
@@ -1304,11 +1299,11 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>) in
-     *             hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setGray(String gray)
     {
@@ -1332,8 +1327,8 @@ public class ColorScheme
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlack(Color black)
     {
@@ -1347,13 +1342,13 @@ public class ColorScheme
      *
      * @param r Der Rot-Anteil der Farbe im Bereich von {@code 0} - {@code 255}.
      * @param g Der Grün-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      * @param b Der Blau-Anteil der Farbe im Bereich von {@code 0} -
-     *          {@code 255}.
+     *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlack(int r, int g, int b)
     {
@@ -1366,11 +1361,11 @@ public class ColorScheme
      * Codierung (z. B. {@code #ff0000}).
      *
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>) in
-     *              hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *         Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *         {@code scheme.setGreen(..).setBlue(..)}.
+     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     {@code scheme.setGreen(..).setBlue(..)}.
      */
     public ColorScheme setBlack(String black)
     {
@@ -1398,7 +1393,7 @@ public class ColorScheme
      * </ol>
      *
      * @return Die zwölf Farben des Farbkreises von Itten in der richtigen
-     *         Reihenfolge.
+     *     Reihenfolge.
      */
     public Color[] getWheelColors()
     {
@@ -1435,7 +1430,7 @@ public class ColorScheme
      * <b>Grau</b> und <b>Schwarz</b>.
      *
      * @return Die vier <b>zusätzlichen</b> Farben <b>Braun</b>, <b>Weiß</b>,
-     *         <b>Grau</b> und <b>Schwarz</b>.
+     *     <b>Grau</b> und <b>Schwarz</b>.
      */
     public Color[] getExtraColors()
     {

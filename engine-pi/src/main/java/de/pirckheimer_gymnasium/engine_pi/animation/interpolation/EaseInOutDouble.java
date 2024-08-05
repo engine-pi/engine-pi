@@ -43,7 +43,7 @@ public class EaseInOutDouble implements Interpolator<Double>
      * Änderungsrate dynamisch.
      *
      * @param start Der Startpunkt der Interpolation.
-     * @param end   Der Endpunkt der Interpolation.
+     * @param end Der Endpunkt der Interpolation.
      */
     @API
     public EaseInOutDouble(double start, double end)

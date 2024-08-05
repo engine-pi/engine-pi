@@ -44,18 +44,17 @@ public class CosinusDouble implements Interpolator<Double>
     /**
      * Erstellt einen neuen Cosinuskurven-Interpolator.
      *
-     * @param start     Der Startpunkt der Animation (also die Spitze der
-     *                  Cosinuskurve)
+     * @param start Der Startpunkt der Animation (also die Spitze der
+     *     Cosinuskurve)
      * @param amplitude Die Amplitude der Cosinuskurve. Damit ist die
-     *                  Interpolation
-     *                  <ul>
-     *                  <li>Nach 0/4 der Zeit <code>start</code></li>
-     *                  <li>Nach 1/4 der Zeit <code>start-amplitude</code></li>
-     *                  <li>Nach 1/2 der Zeit
-     *                  <code>start- 2*amplitude</code></li>
-     *                  <li>Nach 3/4 der Zeit <code>start-amplitude</code></li>
-     *                  <li>Nach 4/4 der Zeit <code>start</code></li>
-     *                  </ul>
+     *     Interpolation
+     *     <ul>
+     *     <li>Nach 0/4 der Zeit <code>start</code></li>
+     *     <li>Nach 1/4 der Zeit <code>start-amplitude</code></li>
+     *     <li>Nach 1/2 der Zeit <code>start- 2*amplitude</code></li>
+     *     <li>Nach 3/4 der Zeit <code>start-amplitude</code></li>
+     *     <li>Nach 4/4 der Zeit <code>start</code></li>
+     *     </ul>
      */
     @API
     public CosinusDouble(double start, double amplitude)

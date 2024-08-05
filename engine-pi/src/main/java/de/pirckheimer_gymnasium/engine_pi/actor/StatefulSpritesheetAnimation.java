@@ -20,7 +20,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
- *                werden soll.
+ *     werden soll.
  *
  * @author Josef Friedrich
  *
@@ -30,10 +30,10 @@ public class StatefulSpritesheetAnimation<State>
         extends StatefulAnimation<State>
 {
     /**
-     * @param width         Die Breite in Meter der animierten Figur.
-     * @param height        Die Höhe in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
+     *     bleiben.
      */
     public StatefulSpritesheetAnimation(double width, double height,
             double frameDuration)
@@ -43,8 +43,8 @@ public class StatefulSpritesheetAnimation<State>
 
     /**
      * @param state Der Zustand, unter dem die Animation gespeichert wird.
-     * @param x     Die Anzahl an Sprites in x-Richtung.
-     * @param y     Die Anzahl an Sprites in y-Richtung.
+     * @param x Die Anzahl an Sprites in x-Richtung.
+     * @param y Die Anzahl an Sprites in y-Richtung.
      */
     public void addState(State state, String filepath, int x, int y)
     {
@@ -53,10 +53,9 @@ public class StatefulSpritesheetAnimation<State>
     }
 
     /**
-     * @param state        Der Zustand, unter dem die Animation gespeichert
-     *                     wird.
-     * @param filePath     Der Dateipfad des Spritesheets.
-     * @param spriteWidth  Die Breite des Sprites in Pixel.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
+     * @param filePath Der Dateipfad des Spritesheets.
+     * @param spriteWidth Die Breite des Sprites in Pixel.
      * @param spriteHeight Die Höhe des Sprites in Pixel.
      */
     public void addState(State state, int spriteWidth, int spriteHeight,

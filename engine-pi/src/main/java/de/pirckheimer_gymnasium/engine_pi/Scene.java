@@ -136,7 +136,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Führt auf allen Ebenen <b>parallelisiert</b> den World-Step aus.
      *
      * @param pastTime Die Echtzeit, die seit dem letzten World-Step vergangen
-     *                 ist.
+     *     ist.
      */
     @Internal
     public final void step(double pastTime,
@@ -339,8 +339,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @param a             Der Vector a.
-     * @param b             Der Vektor b.
+     * @param a Der Vector a.
+     * @param b Der Vektor b.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal
@@ -379,7 +379,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * in <b>[N]</b> bzw. <b>[m/s^2]</b> zurück.
      *
      * @return Die Schwerkraft, die momentan auf die Hauptebene wirkt, als
-     *         Vektor in <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     *     Vektor in <b>[N]</b> bzw. <b>[m/s^2]</b>.
      */
     public Vector getGravity()
     {
@@ -391,16 +391,16 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Hauptebene der Szene</b> wirkt.
      *
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
-     *                <b>[N]</b>.
+     *     <b>[N]</b>.
      *
      * @see #setGravity(double, double)
      * @see Layer#setGravity(Vector)
      * @see Layer#setGravity(double, double)
      *
-     *      @jbox.2d <a href=
-     *      "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
-     *      <a href=
-     *      "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
+     *     @jbox.2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
+     *     <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
     public void setGravity(Vector gravity)
@@ -414,18 +414,18 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Szene</b> wirkt.
      *
      * @param gravityX Die neue Schwerkraft, die in X-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b>.
+     *     Einheit ist <b>[N]</b>.
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
-     *                 Einheit ist <b>[N]</b>.
+     *     Einheit ist <b>[N]</b>.
      *
      * @see #setGravity(Vector)
      * @see Layer#setGravity(Vector)
      * @see Layer#setGravity(double, double)
      *
-     *      @jbox.2d <a href=
-     *      "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
-     *      <a href=
-     *      "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
+     *     @jbox.2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box.2d
+     *     <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
     public void setGravity(double gravityX, double gravityY)
@@ -449,11 +449,9 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Setzt, ob die Engine-Physics für diese Szene pausiert sein soll.
      *
      * @param worldPaused <code>false</code>: Die Engine-Physik läuft normal.
-     *                    <code>true</code>: Die Engine-Physik läuft
-     *                    <b>nicht</b>. Das bedeutet u.A. keine
-     *                    Collision-Detection, keine Physik-Simulation etc., bis
-     *                    die Physik wieder mit
-     *                    <code>setPhysicsPaused(true)</code> aktiviert wird.
+     *     <code>true</code>: Die Engine-Physik läuft <b>nicht</b>. Das bedeutet
+     *     u.A. keine Collision-Detection, keine Physik-Simulation etc., bis die
+     *     Physik wieder mit <code>setPhysicsPaused(true)</code> aktiviert wird.
      *
      * @see #isPhysicsPaused()
      */
@@ -467,7 +465,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Gibt an, ob die Physik dieser Szene pausiert ist.
      *
      * @return <code>true</code>: Die Physik ist pausiert. <code>false</code>:
-     *         Die Physik ist nicht pausiert.
+     *     Die Physik ist nicht pausiert.
      *
      * @see #setPhysicsPaused(boolean)
      */
@@ -619,8 +617,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Setzt die Hintergrundfarbe als <b>Zeichenkette</b>.
      *
      * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
-     *              B. {@code #ff0000}).
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
      *
      * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
      */

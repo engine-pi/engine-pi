@@ -31,7 +31,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  *
  * @see FrameUpdateListenerRegistration#repeat(double, PeriodicTask)
  * @see FrameUpdateListenerRegistration#repeat(double, int, PeriodicTask,
- *      PeriodicTask)
+ *     PeriodicTask)
  */
 public final class PeriodicTaskExecutor implements FrameUpdateListener
 {
@@ -89,17 +89,16 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Wiederholungen</b> unterbrochen und als letzte Wiederholungen eine
      * <b>abschließende Aufgabe</b> ausgeführt.
      *
-     * @param interval    Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param interval Die Zeit zwischen den Ausführungen in Sekunden.
      * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe. Gibt
-     *                    an, wie oft die Aufgabe wiederholt wird. Ist dieses
-     *                    Attribut auf {@code -1} gesetzt, so wird die Aufgabe
-     *                    unendlich oft wiederholt.
-     * @param task        Die Aufgabe, die regelmäßig ausgeführt wird.
-     * @param finalTask   Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
-     * @param container   Eine Referenz auf den übergeordneten Behälter, in dem
-     *                    diese periodische Aufgabe angemeldet wurde. Diese
-     *                    Referenz wird dazu verwendet, um die periodische
-     *                    Ausführung abzumelden und dadurch zu stoppen.
+     *     an, wie oft die Aufgabe wiederholt wird. Ist dieses Attribut auf
+     *     {@code -1} gesetzt, so wird die Aufgabe unendlich oft wiederholt.
+     * @param task Die Aufgabe, die regelmäßig ausgeführt wird.
+     * @param finalTask Die Aufgabe, die als letzte Aufgabe ausgeführt wird.
+     * @param container Eine Referenz auf den übergeordneten Behälter, in dem
+     *     diese periodische Aufgabe angemeldet wurde. Diese Referenz wird dazu
+     *     verwendet, um die periodische Ausführung abzumelden und dadurch zu
+     *     stoppen.
      *
      * @author Josef Friedrich
      */
@@ -119,12 +118,12 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * übergeordneten Behälter verlangt, in dem diese periodische Aufgabe
      * angemeldet wurde.
      *
-     * @param interval  Die Zeit zwischen den Ausführungen in Sekunden.
-     * @param task      Die Aufgabe, die regelmäßig ausgeführt wird.
+     * @param interval Die Zeit zwischen den Ausführungen in Sekunden.
+     * @param task Die Aufgabe, die regelmäßig ausgeführt wird.
      * @param container Eine Referenz auf den übergeordneten Behälter, in dem
-     *                  diese periodische Aufgabe angemeldet wurde. Diese
-     *                  Referenz wird dazu verwendet, um die periodische
-     *                  Ausführung abzumelden und dadurch zu stoppen.
+     *     diese periodische Aufgabe angemeldet wurde. Diese Referenz wird dazu
+     *     verwendet, um die periodische Ausführung abzumelden und dadurch zu
+     *     stoppen.
      *
      * @author Josef Friedrich
      */
@@ -142,9 +141,9 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * wurde.
      *
      * @param interval Die Zeit zwischen den Ausführungen in Sekunden.
-     * @param task     Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt
-     *                 vom Typ {@link Runnable}, das eine ausführbare Methode
-     *                 enthält oder ein Lambda-Ausdruck.
+     * @param task Die Aufgabe, die regelmäßig ausgeführt wird. Ein Objekt vom
+     *     Typ {@link Runnable}, das eine ausführbare Methode enthält oder ein
+     *     Lambda-Ausdruck.
      */
     public PeriodicTaskExecutor(double interval, PeriodicTask task)
     {
@@ -155,10 +154,10 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Setzt das Intervall dieses periodischen Tasks neu.
      *
      * @param interval Das neue Intervall. Zeit zwischen den Ausführungen in
-     *                 Sekunden. Muss größer als 0 sein.
+     *     Sekunden. Muss größer als 0 sein.
      *
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
-     *         Setter konfiguriert werden kann.
+     *     Setter konfiguriert werden kann.
      */
     @API
     public PeriodicTaskExecutor setInterval(double interval)
@@ -178,7 +177,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Gibt das aktuelle Intervall der periodischen Aufgabe aus.
      *
      * @return Das aktuelle Intervall. Die Zeit zwischen den Ausführungen in
-     *         Sekunden.
+     *     Sekunden.
      */
     @API
     public double getInterval()
@@ -192,7 +191,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @param repetitions Die <b>Anzahl an Wiederholungen</b> der Aufgabe.
      *
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
-     *         Setter konfiguriert werden kann.
+     *     Setter konfiguriert werden kann.
      */
     public PeriodicTaskExecutor setRepetitions(int repetitions)
     {
@@ -216,7 +215,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @param task Die <b>Aufgabe</b>, die regelmäßig ausgeführt wird.
      *
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
-     *         Setter konfiguriert werden kann.
+     *     Setter konfiguriert werden kann.
      */
     public PeriodicTaskExecutor setTask(PeriodicTask task)
     {
@@ -238,10 +237,10 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Setzt die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird.
      *
      * @param finalTask Die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt
-     *                  wird..
+     *     wird..
      *
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
-     *         Setter konfiguriert werden kann.
+     *     Setter konfiguriert werden kann.
      */
     public PeriodicTaskExecutor setFinalTask(PeriodicTask finalTask)
     {
@@ -336,7 +335,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
 
     /**
      * @param pastTime Die Zeit in Sekunden, die seit der letzten Aktualisierung
-     *                 vergangen ist.
+     *     vergangen ist.
      *
      * @hidden
      */

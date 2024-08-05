@@ -145,6 +145,7 @@ public enum TweenFunction
      * Computes the next value of the interpolation.
      *
      * @param time The current progress of the tween duration, between 0 and 1.
+     *
      * @return The next interpolated value.
      */
     public float compute(float time)

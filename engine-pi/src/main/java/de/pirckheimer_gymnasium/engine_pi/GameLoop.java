@@ -175,9 +175,8 @@ public final class GameLoop
     /**
      * Führt die gesamte Zeichenroutine aus.
      *
-     * @param g      Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *               soll.
-     * @param width  Die Breite in Pixel.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param width Die Breite in Pixel.
      * @param height Die Höhe in Pixel.
      */
     @Internal

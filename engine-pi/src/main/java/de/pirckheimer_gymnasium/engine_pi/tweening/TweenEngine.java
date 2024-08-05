@@ -53,10 +53,11 @@ public class TweenEngine implements FrameUpdateListener
      * {@code Tweenable} with the given {@code TweenType}, it is restarted with
      * the given duration.
      *
-     * @param target   the {@code Tweenable} target object
-     * @param type     the {@code TweenType} determining which values of the
-     *                 target object will be modified.
+     * @param target the {@code Tweenable} target object
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
      * @param duration the duration of the Tween in milliseconds.
+     *
      * @return the Tween instance
      */
     public Tween begin(final Tweenable target, final TweenType type,
@@ -82,8 +83,9 @@ public class TweenEngine implements FrameUpdateListener
      * one.
      *
      * @param target the {@code Tweenable} target object
-     * @param type   the {@code TweenType} determining which values of the
-     *               target object will be modified.
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
+     *
      * @return the Tween instance
      */
     public Tween getTween(final Tweenable target, final TweenType type)
@@ -111,8 +113,9 @@ public class TweenEngine implements FrameUpdateListener
      * start values.
      *
      * @param target the {@code Tweenable} target object
-     * @param type   the {@code TweenType} determining which values of the
-     *               target object will be modified.
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
+     *
      * @return the Tween instance
      */
     public Tween reset(final Tweenable target, final TweenType type)
@@ -131,8 +134,9 @@ public class TweenEngine implements FrameUpdateListener
      * Attempts to resume the Tween if it was stopped.
      *
      * @param target the {@code Tweenable} target object
-     * @param type   the {@code TweenType} determining which values of the
-     *               target object will be modified.
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
+     *
      * @return the Tween instance
      */
     public Tween resume(final Tweenable target, final TweenType type)
@@ -158,8 +162,8 @@ public class TweenEngine implements FrameUpdateListener
      * Attempts to remove the Tween from the TweenEngine.
      *
      * @param target the {@code Tweenable} target object
-     * @param type   the {@code TweenType} determining which values of the
-     *               target object will be modified.
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
      */
     public void remove(final Tweenable target, final TweenType type)
     {
@@ -175,8 +179,9 @@ public class TweenEngine implements FrameUpdateListener
      * Attempts to stop the Tween.
      *
      * @param target the {@code Tweenable} target object
-     * @param type   the {@code TweenType} determining which values of the
-     *               target object will be modified.
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
+     *
      * @return the Tween instance
      */
     public Tween stop(final Tweenable target, final TweenType type)

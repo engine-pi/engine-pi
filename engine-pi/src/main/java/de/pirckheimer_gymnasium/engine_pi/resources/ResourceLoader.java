@@ -111,7 +111,9 @@ final public class ResourceLoader
      * @author Matthias Wilke
      *
      * @param file The path to the file.
+     *
      * @return The contents of the specified file as {@code InputStream}.
+     *
      * @see Resources
      */
     public static InputStream get(String file)
@@ -127,7 +129,9 @@ final public class ResourceLoader
      * @author Matthias Wilke
      *
      * @param file The path to the file.
+     *
      * @return The contents of the specified file as {@code InputStream}.
+     *
      * @see Resources
      */
     public static InputStream get(URL file)
@@ -151,6 +155,7 @@ final public class ResourceLoader
      * @author Matthias Wilke
      *
      * @param file The path to the file.
+     *
      * @return The contents of the specified file as {@code String}
      */
     public static String read(String file)
@@ -165,8 +170,9 @@ final public class ResourceLoader
      * @author Steffen Wilke
      * @author Matthias Wilke
      *
-     * @param file    The path to the file.
+     * @param file The path to the file.
      * @param charset The charset that is used to read the String from the file.
+     *
      * @return The contents of the specified file as {@code String}
      */
     public static String read(String file, Charset charset)
@@ -189,6 +195,7 @@ final public class ResourceLoader
      * @author Matthias Wilke
      *
      * @param file The path to the file.
+     *
      * @return The contents of the specified file as {@code String}
      */
     public static String read(URL file)
@@ -203,8 +210,9 @@ final public class ResourceLoader
      * @author Steffen Wilke
      * @author Matthias Wilke
      *
-     * @param file    The path to the file.
+     * @param file The path to the file.
      * @param charset The charset that is used to read the String from the file.
+     *
      * @return The contents of the specified file as {@code String}
      */
     public static String read(URL file, Charset charset)

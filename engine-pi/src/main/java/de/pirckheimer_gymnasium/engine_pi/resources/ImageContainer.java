@@ -72,14 +72,12 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      * Ruft ein Bild auf, vergrößert es, indem seine <b>Pixel vervielfältigt</b>
      * werden und <b>färbt</b> es neu.
      *
-     * @param name                Der <b>Name</b> oder <b>Dateipfad</b> des
-     *                            Bilds.
+     * @param name Der <b>Name</b> oder <b>Dateipfad</b> des Bilds.
      * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
-     *                            soll. Beispielsweise verwandelt die Zahl
-     *                            {@code 3} ein Pixel in {@code 9} Pixel der
-     *                            Abmessung {@code 3x3}.
-     * @param fromColors          Ein Feld, das die <b>Quellfarben</b> enthält.
-     * @param toColors            Ein Feld, das die <b>Zielfarben</b> enthält.
+     *     soll. Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in
+     *     {@code 9} Pixel der Abmessung {@code 3x3}.
+     * @param fromColors Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param toColors Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Ein Bild vom Datentyp {@link BufferedImage}.
      *
@@ -104,12 +102,10 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      * Ruft ein Bild auf und vergrößert es, indem seine <b>Pixel
      * vervielfältigt</b> werden.
      *
-     * @param name                Der <b>Name</b> oder <b>Dateipfad</b> des
-     *                            Bilds.
+     * @param name Der <b>Name</b> oder <b>Dateipfad</b> des Bilds.
      * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
-     *                            soll. Beispielsweise verwandelt die Zahl
-     *                            {@code 3} ein Pixel in {@code 9} Pixel der
-     *                            Abmessung {@code 3x3}.
+     *     soll. Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in
+     *     {@code 9} Pixel der Abmessung {@code 3x3}.
      *
      * @return Ein Bild vom Datentyp {@link BufferedImage}.
      *
@@ -123,10 +119,10 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
     /**
      * Ruft ein Bild auf und <b>färbt</b> es neu.
      *
-     * @param name       Der <b>Name</b> oder <b>Dateipfad</b> des Bilds.
+     * @param name Der <b>Name</b> oder <b>Dateipfad</b> des Bilds.
      *
      * @param fromColors Ein Feld, das die <b>Quellfarben</b> enthält.
-     * @param toColors   Ein Feld, das die <b>Zielfarben</b> enthält.
+     * @param toColors Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Ein Bild vom Datentyp {@link BufferedImage}.
      *

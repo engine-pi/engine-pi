@@ -32,6 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * </p>
  *
  * @see MouseScrollEvent
+ *
  * @author Michael Andonie
  */
 @API
@@ -42,7 +43,8 @@ public interface MouseScrollListener
      * wurde.
      *
      * @param event Das {@link MouseScrollEvent}-Objekt beschreibt, wie das
-     *              Mausrad gedreht wurde.
+     *     Mausrad gedreht wurde.
+     *
      * @see MouseScrollEvent
      */
     void onMouseScrollMove(MouseScrollEvent event);

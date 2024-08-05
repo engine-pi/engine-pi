@@ -50,7 +50,7 @@ public final class Version
      * Gibt den Namen der Jar-Datei zurück, die gerade ausgeführt wird.
      *
      * @return Dateiname der Jar-Datei oder <code>null</code>, falls das
-     *         Programm nicht über eine Jar-Datei ausgeführt wird.
+     *     Programm nicht über eine Jar-Datei ausgeführt wird.
      */
     @API
     public static String getJarName()
@@ -85,8 +85,8 @@ public final class Version
      * Gibt an, wann die Jar-Datei erzeugt wurde.
      *
      * @return Erzeugungsdatum der Jar-Datei in Sekunden seit dem 01.01.1970
-     *         (Unix Timestamp) oder den aktuellen Timestamp, falls nicht von
-     *         einer Jar-Datei ausgeführt.
+     *     (Unix Timestamp) oder den aktuellen Timestamp, falls nicht von einer
+     *     Jar-Datei ausgeführt.
      */
     @API
     public static long getBuildTime()

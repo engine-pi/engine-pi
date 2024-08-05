@@ -42,8 +42,8 @@ public class ColorContainerVisualizer
      * Zeichnet eine Visualisierung eines Speichers für Farben in eine Szene.
      *
      * @param container Der Speicher für Farben, der visualisiert werden soll.
-     * @param scene     Die Szene in der die Visualisierung eingezeichnet werden
-     *                  soll.
+     * @param scene Die Szene in der die Visualisierung eingezeichnet werden
+     *     soll.
      */
     public ColorContainerVisualizer(ColorContainer container, Scene scene)
     {
@@ -78,7 +78,7 @@ public class ColorContainerVisualizer
      * Dabei wir der <b>Standard-Speicher für Farben</b> verwendet
      *
      * @param scene Die Szene in der die Visualisierung eingezeichnet werden
-     *              soll.
+     *     soll.
      *
      * @see Resources#COLORS
      */

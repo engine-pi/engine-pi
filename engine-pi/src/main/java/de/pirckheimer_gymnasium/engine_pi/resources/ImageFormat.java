@@ -43,8 +43,9 @@ public enum ImageFormat
      * Gets the {@code ImageFormat} of the specified format string.
      *
      * @param imageFormat The format string from which to extract the format.
+     *
      * @return The format of the specified string or {@code UNDEFINED} if not
-     *         supported.
+     *     supported.
      */
     public static ImageFormat get(String imageFormat)
     {

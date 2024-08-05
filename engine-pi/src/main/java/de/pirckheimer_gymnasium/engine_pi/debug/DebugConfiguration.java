@@ -91,7 +91,7 @@ public class DebugConfiguration
      * werden sollen, ein oder aus.
      *
      * @return Die Einstellung, ob die Ankerpunkte der Figuren gezeichnet werden
-     *         sollen, nach der Veränderung.
+     *     sollen, nach der Veränderung.
      */
     public static boolean toogleShowPositions()
     {

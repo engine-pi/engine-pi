@@ -46,7 +46,7 @@ public final class Random
      * sind gleich groß.
      *
      * @return Mit 50 % Wahrscheinlichkeit <code>false</code>, mit 50 %
-     *         Wahrscheinlichkeit <code>true</code>.
+     *     Wahrscheinlichkeit <code>true</code>.
      */
     @API
     public static boolean toggle()
@@ -63,9 +63,8 @@ public final class Random
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
      * @return Eine Zahl <code>x</code>, wobei
-     *         <code>0 &lt;= x &lt;= upperLimit</code> gilt. Die
-     *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
-     *         groß</i>.
+     *     <code>0 &lt;= x &lt;= upperLimit</code> gilt. Die Wahrscheinlichkeit
+     *     für alle möglichen Rückgaben ist <i>gleich groß</i>.
      */
     @API
     public static int range(int upperLimit)
@@ -88,9 +87,9 @@ public final class Random
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
      * @return Eine Zahl <code>x</code>, wobei
-     *         <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
-     *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
-     *         groß</i>.
+     *     <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
+     *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
+     *     groß</i>.
      */
     @API
     public static int range(int lowerLimit, int upperLimit)
@@ -117,8 +116,8 @@ public final class Random
      * Werte in diesem Intervall gleich groß.
      *
      * @return Ein <code>double</code>Wert im Intervall <code>[0;1]</code>. Die
-     *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
-     *         groß</i>.
+     *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
+     *     groß</i>.
      */
     @API
     public static double range()
@@ -136,9 +135,9 @@ public final class Random
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
      * @return Eine Zahl <code>x</code>, wobei
-     *         <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
-     *         Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
-     *         groß</i>.
+     *     <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
+     *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
+     *     groß</i>.
      */
     @API
     public static double range(double lowerLimit, double upperLimit)

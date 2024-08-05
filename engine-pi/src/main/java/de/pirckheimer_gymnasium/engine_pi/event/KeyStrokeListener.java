@@ -45,9 +45,8 @@ public interface KeyStrokeListener
      * Taste losgelassen und erneut gedrückt wurde.
      *
      * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
-     *              welche Taste gedrückt würde. Die Tastennummer kann zum
-     *              Beispiel über die Methode {@code event.getKeyCode()}
-     *              abgefragt werden.
+     *     welche Taste gedrückt würde. Die Tastennummer kann zum Beispiel über
+     *     die Methode {@code event.getKeyCode()} abgefragt werden.
      */
     @API
     void onKeyDown(KeyEvent event);
@@ -57,9 +56,8 @@ public interface KeyStrokeListener
      * losgelassen wurde, die vorher gedrückt war.
      *
      * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
-     *              welche Taste gedrückt würde. Die Tastennummer kann zum
-     *              Beispiel über die Methode {@code event.getKeyCode()}
-     *              abgefragt werden.
+     *     welche Taste gedrückt würde. Die Tastennummer kann zum Beispiel über
+     *     die Methode {@code event.getKeyCode()} abgefragt werden.
      */
     @API
     default void onKeyUp(KeyEvent event)

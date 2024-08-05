@@ -138,7 +138,7 @@ public class WorldHandler implements ContactListener
 
     public boolean isWorldPaused()
     {
-        return this.worldPaused;
+        return worldPaused;
     }
 
     /**
@@ -148,8 +148,8 @@ public class WorldHandler implements ContactListener
      * führt zu Inkonsistenzen).
      *
      * @throws RuntimeException Wenn die World sich gerade im World-Step
-     *                          befindet. Ist dies nicht der Fall, passiert
-     *                          nichts (und es wird keine Exception geworfen).
+     *     befindet. Ist dies nicht der Fall, passiert nichts (und es wird keine
+     *     Exception geworfen).
      */
     @Internal
     public void assertNoWorldStep()
@@ -188,11 +188,11 @@ public class WorldHandler implements ContactListener
      * Erstellt einen {@link Body} und mappt ihn intern zum analogen
      * {@link Actor}-Objekt.
      *
-     * @param bd    Exakte Beschreibung des Bodies.
+     * @param bd Exakte Beschreibung des Bodies.
      * @param actor {@link Actor}-Objekt, das ab sofort zu dem Body gehört.
      *
      * @return Der {@link Body}, der aus der {@link BodyDef} generiert wurde. Er
-     *         liegt in der Game-World dieses Handlers.
+     *     liegt in der Game-World dieses Handlers.
      */
     public Body createBody(BodyDef bd, Actor actor)
     {
@@ -447,8 +447,8 @@ public class WorldHandler implements ContactListener
         /**
          * Erstellt das Checkup-Objekt
          *
-         * @param listener       Das aufzurufende KR
-         * @param body           Der zweite Body für den Checkup
+         * @param listener Das aufzurufende KR
+         * @param body Der zweite Body für den Checkup
          * @param collidingActor Der zugehörige Collider für diesen Checkup
          */
         private Checkup(CollisionListener<E> listener, Body body,
@@ -481,8 +481,8 @@ public class WorldHandler implements ContactListener
      * Meldet einen allgemeinen Kollisionsbeobachter in der Physics-Welt an.
      *
      * @param listener Das anzumeldende Kollisionsbeobachter
-     * @param actor    Kollisionsbeobachter wird informiert falls dieses
-     *                 {@link Actor}-Objekt mit einem anderen Objekt kollidiert.
+     * @param actor Kollisionsbeobachter wird informiert falls dieses
+     *     {@link Actor}-Objekt mit einem anderen Objekt kollidiert.
      */
     @Internal
     public static void addGenericCollisionListener(
@@ -506,9 +506,9 @@ public class WorldHandler implements ContactListener
      * Physics-Welt an.
      *
      * @param listener Das anzumeldende KR Interface
-     * @param actor    Der Actor (Haupt-{@link Actor}-Objekt)
+     * @param actor Der Actor (Haupt-{@link Actor}-Objekt)
      * @param collider Der Collider (zweites {@link Actor}-Objekt)
-     * @param <E>      Der Type des Colliders.
+     * @param <E> Der Type des Colliders.
      */
     @Internal
     public static <E extends Actor> void addSpecificCollisionListener(

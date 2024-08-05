@@ -81,7 +81,7 @@ public class ColorContainer implements Container<Color>
      * Normalisiert einen Farbnamen.
      *
      * @param name Ein Farbname, der noch nicht normalisiert wurde
-     *             (beispielsweise {@code Gelb-Grün}).
+     *     (beispielsweise {@code Gelb-Grün}).
      *
      * @return Ein normalisierter Farbname (beispielsweise {@code gelbgruen}).
      */
@@ -96,7 +96,7 @@ public class ColorContainer implements Container<Color>
      * Fügt dem Speicher für Farben eine <b>Farbe</b> unter einem <b>Namen</b>
      * hinzu.
      *
-     * @param name  Der Farbname.
+     * @param name Der Farbname.
      * @param color Die Farbe.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
@@ -112,10 +112,10 @@ public class ColorContainer implements Container<Color>
      * Farbanteile</b> und des <b>Alphakanals</b> in dezimaler Notation hinzu.
      *
      * @param name Der Farbname.
-     * @param r    Der Rotanteil der Farbe (0-255).
-     * @param g    Der Gelbanteil der Farbe (0-255).
-     * @param b    Der Blauanteil der Farbe (0-255).
-     * @param a    Der Alphakanal der Farbe (0-255).
+     * @param r Der Rotanteil der Farbe (0-255).
+     * @param g Der Gelbanteil der Farbe (0-255).
+     * @param b Der Blauanteil der Farbe (0-255).
+     * @param a Der Alphakanal der Farbe (0-255).
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      *
@@ -131,11 +131,11 @@ public class ColorContainer implements Container<Color>
      * Farbanteile</b>, des <b>Alphakanals</b> in dezimaler Notation und
      * beliebig vieler <b>Aliasse</b> hinzu.
      *
-     * @param name  Der Farbname.
-     * @param r     Der Rotanteil der Farbe (0-255).
-     * @param g     Der Gelbanteil der Farbe (0-255).
-     * @param b     Der Blauanteil der Farbe (0-255).
-     * @param a     Der Alphakanal der Farbe (0-255).
+     * @param name Der Farbname.
+     * @param r Der Rotanteil der Farbe (0-255).
+     * @param g Der Gelbanteil der Farbe (0-255).
+     * @param b Der Blauanteil der Farbe (0-255).
+     * @param a Der Alphakanal der Farbe (0-255).
      * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
@@ -152,9 +152,9 @@ public class ColorContainer implements Container<Color>
      * Farbanteile</b> in dezimaler Notation hinzu.
      *
      * @param name Der Farbname.
-     * @param r    Der Rotanteil der Farbe (0-255).
-     * @param g    Der Gelbanteil der Farbe (0-255).
-     * @param b    Der Blauanteil der Farbe (0-255).
+     * @param r Der Rotanteil der Farbe (0-255).
+     * @param g Der Gelbanteil der Farbe (0-255).
+     * @param b Der Blauanteil der Farbe (0-255).
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      *
@@ -170,10 +170,10 @@ public class ColorContainer implements Container<Color>
      * Farbanteile</b> in dezimaler Notation und beliebig vieler <b>Aliasse</b>
      * hinzu.
      *
-     * @param name  Der Farbname.
-     * @param r     Der Rotanteil der Farbe (0-255).
-     * @param g     Der Gelbanteil der Farbe (0-255).
-     * @param b     Der Blauanteil der Farbe (0-255).
+     * @param name Der Farbname.
+     * @param r Der Rotanteil der Farbe (0-255).
+     * @param g Der Gelbanteil der Farbe (0-255).
+     * @param b Der Blauanteil der Farbe (0-255).
      * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
@@ -189,7 +189,7 @@ public class ColorContainer implements Container<Color>
      * Fügt dem Speicher für Farben eine Farbe in <b>hexadezimaler</b> Codierung
      * unter einem <b>Namen</b> hinzu.
      *
-     * @param name  Der Farbname.
+     * @param name Der Farbname.
      * @param color Die Farbe in hexadezimaler Codierung.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
@@ -203,7 +203,7 @@ public class ColorContainer implements Container<Color>
      * Fügt dem Speicher für Farben eine <b>Farbe</b> unter einem <b>Namen</b>
      * und beliebig vieler <b>Aliasse</b> hinzu.
      *
-     * @param name  Der Farbname.
+     * @param name Der Farbname.
      * @param color Die Farbe.
      * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
      *
@@ -219,7 +219,7 @@ public class ColorContainer implements Container<Color>
      * Fügt dem Speicher für Farben eine Farbe in <b>hexadezimaler</b> Codierung
      * unter einem Namen und beliebig vieler <b>Aliasse</b> hinzu.
      *
-     * @param name  Der Farbname.
+     * @param name Der Farbname.
      * @param color Die Farbe in hexadezimaler Codierung.
      * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
      *
@@ -263,7 +263,7 @@ public class ColorContainer implements Container<Color>
      * </p>
      *
      * @param schema Das Farbschema, dessen Farben in den Speicher für Farben
-     *               abgelegt werden soll.
+     *     abgelegt werden soll.
      */
     public void addScheme(ColorScheme schema)
     {
@@ -317,10 +317,11 @@ public class ColorContainer implements Container<Color>
      * </p>
      *
      * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *             Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
-     *             B. {@code #ff0000}).
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
      *
      * @return Eine vordefinierte Farbe.
+     *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Actor#setColor(String)
      * @see de.pirckheimer_gymnasium.engine_pi.Scene#setBackgroundColor(String)
      */
@@ -415,8 +416,8 @@ public class ColorContainer implements Container<Color>
      * </p>
      *
      * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *             Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
-     *             B. {@code #ff0000}).
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
      *
      * @return Eine vordefinierte Farbe.
      *
@@ -481,9 +482,9 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name  Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *              Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.
-     *              B. {@code #ff0000}).
+     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
      * @param alpha Der Alphakanal als Ganzzahl von 0 bis 255.
      *
      * @return Eine vordefinierte Farbe.

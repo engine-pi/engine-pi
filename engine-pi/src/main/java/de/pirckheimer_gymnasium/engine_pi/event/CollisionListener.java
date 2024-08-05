@@ -44,6 +44,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * </ul>
  *
  * @param <E> Typ des anderen Objekts bei Kollisionen.
+ *
  * @author Michael Andonie
  */
 public interface CollisionListener<E extends Actor>
@@ -54,7 +55,7 @@ public interface CollisionListener<E extends Actor>
      * kollidiert.
      *
      * @param collisionEvent Ein {@link CollisionEvent}-Objekt, dass alle
-     *                       Informationen der Kollision beschreibt.
+     *     Informationen der Kollision beschreibt.
      *
      * @see CollisionEvent
      */
@@ -67,7 +68,7 @@ public interface CollisionListener<E extends Actor>
      * {@link Actor}-Objekt beendet ist.
      *
      * @param collisionEvent Ein {@link CollisionEvent}-Objekt, dass alle
-     *                       Informationen der
+     *     Informationen der
      */
     @API
     default void onCollisionEnd(CollisionEvent<E> collisionEvent)

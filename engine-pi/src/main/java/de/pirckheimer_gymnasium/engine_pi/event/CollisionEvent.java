@@ -60,9 +60,10 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * </ul>
  *
  * @param <E> Typ des anderen Objekts bei Kollisionen.
+ *
  * @see CollisionListener
  * @see <a href="http://www.iforce2d.net/b2dtut/collision-anatomy" target=
- *      "_top">http://www.iforce2d.net/b2dtut/collision-anatomy</a>
+ *     "_top">http://www.iforce2d.net/b2dtut/collision-anatomy</a>
  */
 public class CollisionEvent<E extends Actor>
 {
@@ -82,11 +83,11 @@ public class CollisionEvent<E extends Actor>
     /**
      * Konstruktor. Erstellt ein Collision-Event.
      *
-     * @param contact   Das JBox2D-Contact-Objekt zur direkten Manipulation der
-     *                  Kollisionsauflösung (und zur Abfrage von Informationen).
+     * @param contact Das JBox2D-Contact-Objekt zur direkten Manipulation der
+     *     Kollisionsauflösung (und zur Abfrage von Informationen).
      * @param colliding Das kollidierende {@link Actor}-Objekt. Das zweite
-     *                  Objekt der Kollision ist implizit durch die Anmeldung am
-     *                  entsprechenden Actor gegeben.
+     *     Objekt der Kollision ist implizit durch die Anmeldung am
+     *     entsprechenden Actor gegeben.
      */
     @Internal
     public CollisionEvent(Contact contact, E colliding)
@@ -100,8 +101,8 @@ public class CollisionEvent<E extends Actor>
      * an dem der Listener angemeldet wurde.
      *
      * @return Das kollidierende {@link Actor}-Objekt. Das zweite Objekt der
-     *         Kollision ist implizit durch die Anmeldung am entsprechenden
-     *         {@link Actor} gegeben.
+     *     Kollision ist implizit durch die Anmeldung am entsprechenden
+     *     {@link Actor} gegeben.
      */
     @API
     public E getColliding()
@@ -155,10 +156,10 @@ public class CollisionEvent<E extends Actor>
      * Gibt eine Liste von Berührungspunkten aus.
      *
      * @return Eine Liste von aus Berührungspunkten. Die Liste kann keine, einen
-     *         oder zwei Berührungspunkte enthalten.
+     *     oder zwei Berührungspunkte enthalten.
      *
      * @throws IllegalStateException Wenn die Anzahl der Berührungspunkten
-     *                               größer als 2 ist.
+     *     größer als 2 ist.
      */
     @API
     public List<Vector> getPoints()

@@ -88,7 +88,7 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
      * gelöst wird.
      *
      * @param runnable Einen Beobachter, der ausgeführt wird, sobald die
-     *                 Verbindung gelöst wird.
+     *     Verbindung gelöst wird.
      */
     @API
     public void addReleaseListener(Runnable runnable)

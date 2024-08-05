@@ -25,7 +25,7 @@ import java.awt.image.BufferedImage;
  * der <b>Einzelbilder</b> erzeugt wird.
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
- *                werden soll.
+ *     werden soll.
  *
  * @author Josef Friedrich
  *
@@ -34,10 +34,10 @@ import java.awt.image.BufferedImage;
 public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
 {
     /**
-     * @param width         Die Breite in Meter der animierten Figur.
-     * @param height        Die Höhe in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
+     *     bleiben.
      */
     public StatefulImagesAnimation(double width, double height,
             double frameDuration)
@@ -48,12 +48,11 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
     /**
      * Fügt der Animation einen neuen Zustand hinzu.
      *
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param images        Die bereits in den Speicher geladenen Bilder, die
-     *                      als Einzelbilder verwendet werden sollen.
+     *     bleiben.
+     * @param images Die bereits in den Speicher geladenen Bilder, die als
+     *     Einzelbilder verwendet werden sollen.
      */
     public void addState(State state, double frameDuration,
             BufferedImage... images)
@@ -65,9 +64,9 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
     /**
      * Fügt der Animation einen neuen Zustand hinzu.
      *
-     * @param state  Der Zustand, unter dem die Animation gespeichert wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param images Die bereits in den Speicher geladenen Bilder, die als
-     *               Einzelbilder verwendet werden sollen.
+     *     Einzelbilder verwendet werden sollen.
      */
     public void addState(State state, BufferedImage... images)
     {
@@ -77,12 +76,11 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
     /**
      * Fügt der Animation einen neuen Zustand hinzu.
      *
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
-     * @param filePaths     Die einzelnen Dateipfade der zu verwendenden
-     *                      Einzelbilder.
+     *     bleiben.
+     * @param filePaths Die einzelnen Dateipfade der zu verwendenden
+     *     Einzelbilder.
      */
     public void addState(State state, double frameDuration, String... filePaths)
     {
@@ -93,9 +91,9 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
     /**
      * Fügt der Animation einen neuen Zustand hinzu.
      *
-     * @param state     Der Zustand, unter dem die Animation gespeichert wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param filePaths Die einzelnen Dateipfade der zu verwendenden
-     *                  Einzelbilder.
+     *     Einzelbilder.
      */
     public void addState(State state, String... filePaths)
     {

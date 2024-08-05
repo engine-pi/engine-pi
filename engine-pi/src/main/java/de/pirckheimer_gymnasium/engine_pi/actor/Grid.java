@@ -65,9 +65,9 @@ public class Grid extends Actor
      * @param cols Die Anzahl der Spalten in x-Richtung.
      * @param rows Die Anzahl der Reihen in y-Richtung.
      * @param size Die Größe einer Zelle bzw. eines Quadrats in Pixelmeter. Ist
-     *             beispielsweise die Einheit Pixelmeter auf 60 Pixel und dieses
-     *             Attribut auf 2 gesetzt, dann werden die vom Gitter
-     *             eingeschlossenen Quadrate 120 auf 120 Pixel groß.
+     *     beispielsweise die Einheit Pixelmeter auf 60 Pixel und dieses
+     *     Attribut auf 2 gesetzt, dann werden die vom Gitter eingeschlossenen
+     *     Quadrate 120 auf 120 Pixel groß.
      */
     public Grid(int cols, int rows, double size)
     {
@@ -114,8 +114,7 @@ public class Grid extends Actor
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override

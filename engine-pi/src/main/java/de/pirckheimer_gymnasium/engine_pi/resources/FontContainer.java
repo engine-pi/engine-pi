@@ -64,7 +64,7 @@ public final class FontContainer extends ResourcesContainer<Font>
      * @param fontName Der Name des zu überprüfenden Fonts.
      *
      * @return <code>true</code>, falls der Font auf dem System existiert, sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      */
     @API
     public static boolean isSystemFont(String fontName)
@@ -159,6 +159,7 @@ public final class FontContainer extends ResourcesContainer<Font>
      * it tries to get the font from the environment by calling.
      *
      * @param resourceName The name of the font
+     *
      * @return The loaded font.
      *
      * @see Font#createFont(int, java.io.File)

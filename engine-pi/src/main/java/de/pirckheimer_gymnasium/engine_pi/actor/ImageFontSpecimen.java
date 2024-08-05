@@ -33,14 +33,14 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 public class ImageFontSpecimen
 {
     /**
-     * @param scene        Die Szene, in der das Schriftmuster eingezeichnet
-     *                     werden soll.
-     * @param font         Die Bilderschrift, von der alle Zeichen dargestellt
-     *                     werden sollen.
+     * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
+     *     soll.
+     * @param font Die Bilderschrift, von der alle Zeichen dargestellt werden
+     *     sollen.
      * @param glyphsPerRow Wie viele Zeichen in einer Zeile dargestellt werden
-     *                     sollen.
-     * @param x            Die x-Koordinate des linken, oberen Zeichens.
-     * @param y            Die y-Koordinate des linken, oberen Zeichens.
+     *     sollen.
+     * @param x Die x-Koordinate des linken, oberen Zeichens.
+     * @param y Die y-Koordinate des linken, oberen Zeichens.
      */
     public ImageFontSpecimen(Scene scene, ImageFont font, int glyphsPerRow,
             double x, double y)
@@ -70,9 +70,9 @@ public class ImageFontSpecimen
 
     /**
      * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
-     *              soll.
-     * @param font  Die Bilderschrift, von der alle Zeichen dargestellt werden
-     *              sollen.
+     *     soll.
+     * @param font Die Bilderschrift, von der alle Zeichen dargestellt werden
+     *     sollen.
      */
     public ImageFontSpecimen(Scene scene, ImageFont font)
     {

@@ -33,6 +33,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * zwischen Engine-Features und JBox2D-Features.
  *
  * @author Michael Andonie
+ *
  * @see de.pirckheimer_gymnasium.engine_pi.physics.PhysicsData
  */
 public class FixtureData
@@ -163,10 +164,10 @@ public class FixtureData
      * Generiert eine Fixture Data aus einer JBox2D-Fixture
      *
      * @param fixture Die JBox2D-Fixture, die als Engine Fixture Data generiert
-     *                werden solll
+     *     werden solll
      *
      * @return Eine Engine-Fixture-Data, die die JBox2D-Fixture-Def vollständig
-     *         beschreibt.
+     *     beschreibt.
      */
     @Internal
     public static FixtureData fromFixture(Fixture fixture)

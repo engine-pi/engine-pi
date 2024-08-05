@@ -52,11 +52,11 @@ public class Graphics2DUtil
     /**
      * Setzt die Schriftart durch Angabe der <b>Schriftart</b>.
      *
-     * @param g    Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param font Die Schriftart.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
-     *         wurde.
+     *     wurde.
      */
     public static Font setFont(Graphics2D g, Font font)
     {
@@ -69,15 +69,14 @@ public class Graphics2DUtil
      * Setzt die Schriftart durch Angabe der <b>Schriftgröße</b> und
      * <b>Schriftfarbe</b>.
      *
-     * @param g     Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *              soll.
-     * @param size  Die Größe der Schrift in pt (Points).
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param size Die Größe der Schrift in pt (Points).
      * @param color Ein Farbname wie er im
-     *              {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
-     *              ColorContainer} hinterlegt ist.
+     *     {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
+     *     ColorContainer} hinterlegt ist.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
-     *         wurde.
+     *     wurde.
      */
     public static Font setFont(Graphics2D g, int size, String color)
     {
@@ -91,11 +90,11 @@ public class Graphics2DUtil
      * Setzt die Schriftart auf {@link #FONT_COLOR} durch Angabe der
      * <b>Schriftgröße</b>.
      *
-     * @param g    Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param size Die Größe der Schrift in pt (Points).
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
-     *         wurde.
+     *     wurde.
      */
     public static Font setFont(Graphics2D g, int size)
     {
@@ -106,14 +105,13 @@ public class Graphics2DUtil
      * Setzt die Schriftart auf {@link #FONT_SIZE} durch Angabe der
      * <b>Schriftfarbe</b>.
      *
-     * @param g     Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *              soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param color Ein Farbname wie er im
-     *              {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
-     *              ColorContainer} hinterlegt ist.
+     *     {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
+     *     ColorContainer} hinterlegt ist.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
-     *         wurde.
+     *     wurde.
      */
     public static Font setFont(Graphics2D g, String color)
     {
@@ -126,7 +124,7 @@ public class Graphics2DUtil
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
-     *         wurde.
+     *     wurde.
      */
     public static Font setFont(Graphics2D g)
     {
@@ -137,12 +135,12 @@ public class Graphics2DUtil
      * Zeichnet einen <b>Text</b> mit der Schriftgröße {@link #FONT_SIZE} und
      * der Schriftfarbe {@link #FONT_COLOR} an eine bestimmte <b>Position</b>.
      *
-     * @param g    Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param text Der Text, der eingezeichnet werden soll.
-     * @param x    Die x-Koordinate in Pixel der Position, an die der Text
-     *             gesetzt werden soll.
-     * @param y    Die y-Koordinate in Pixel der Position an die der Text
-     *             gesetzt werden soll.
+     * @param x Die x-Koordinate in Pixel der Position, an die der Text gesetzt
+     *     werden soll.
+     * @param y Die y-Koordinate in Pixel der Position an die der Text gesetzt
+     *     werden soll.
      */
     public static void drawText(Graphics2D g, String text, int x, int y)
     {
@@ -154,13 +152,13 @@ public class Graphics2DUtil
      * Zeichnet einen <b>Text</b> mit der Schriftfarbe {@link #FONT_COLOR} durch
      * Angabe der <b>Schriftgröße</b> und einer <b>Position</b>.
      *
-     * @param g    Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param text Der Text, der eingezeichnet werden soll.
      * @param size Die Größe der Schrift in pt (Points).
-     * @param x    Die x-Koordinate in Pixel der Position, an die der Text
-     *             gesetzt werden soll.
-     * @param y    Die y-Koordinate in Pixel der Position an die der Text
-     *             gesetzt werden soll.
+     * @param x Die x-Koordinate in Pixel der Position, an die der Text gesetzt
+     *     werden soll.
+     * @param y Die y-Koordinate in Pixel der Position an die der Text gesetzt
+     *     werden soll.
      */
     public static void drawText(Graphics2D g, String text, int size, int x,
             int y)
@@ -173,13 +171,12 @@ public class Graphics2DUtil
      * Zeichnet eine <b>Textbox</b>, die sich automatische an die Länge des
      * Texts anpasst. Die Schriftfarbe ist {@link #FONT_COLOR}.
      *
-     * @param g          Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *                   soll.
-     * @param text       Der Text, der in die Textbox gesetzt werden soll.
-     * @param y          Die y-Koordinate in Pixel.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param text Der Text, der in die Textbox gesetzt werden soll.
+     * @param y Die y-Koordinate in Pixel.
      * @param background Ein Farbname wie er im
-     *                   {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
-     *                   ColorContainer} hinterlegt ist.
+     *     {@link de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer
+     *     ColorContainer} hinterlegt ist.
      */
     public static void drawTextBox(Graphics2D g, String text, int y,
             Color background)
@@ -209,13 +206,12 @@ public class Graphics2DUtil
      *
      * https://stackoverflow.com/a/27461352
      *
-     * @param g           Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                    werden soll.
-     * @param x1          x-position of first point in Pixel.
-     * @param y1          y-position of first point in Pixel.
-     * @param x2          x-position of second point in Pixel.
-     * @param y2          y-position of second point in Pixel.
-     * @param arrowWidth  the width of the arrow in Pixel.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param x1 x-position of first point in Pixel.
+     * @param y1 y-position of first point in Pixel.
+     * @param x2 x-position of second point in Pixel.
+     * @param y2 y-position of second point in Pixel.
+     * @param arrowWidth the width of the arrow in Pixel.
      * @param arrowHeight the height of the arrow in Pixel.
      */
     public static void drawArrowLine(Graphics2D g, int x1, int y1, int x2,
@@ -244,7 +240,7 @@ public class Graphics2DUtil
      * Die <b>Kantenglättung</b> (Antialiasing) ein- oder ausschalten.
      *
      * @param on Ist der Wert wahr, so wird die Kantenglättung eingeschaltet,
-     *           sonst wird sie ausgeschaltet.
+     *     sonst wird sie ausgeschaltet.
      */
     public static void setAntiAliasing(Graphics2D g, boolean on)
     {

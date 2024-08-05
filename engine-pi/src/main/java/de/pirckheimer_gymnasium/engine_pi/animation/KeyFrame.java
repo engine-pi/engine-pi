@@ -59,7 +59,7 @@ public class KeyFrame<Value extends Number>
     /**
      * Erstellt einen Keyframe
      *
-     * @param type     Der Typ des Keyframes
+     * @param type Der Typ des Keyframes
      * @param timecode Der Timecode des Keyframes
      */
     @API

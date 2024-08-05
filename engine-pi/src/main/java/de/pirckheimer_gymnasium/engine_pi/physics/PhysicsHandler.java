@@ -53,8 +53,7 @@ public interface PhysicsHandler
      * Eigenschaften</b> des Ziel-Objekts (außer dessen Ort).
      *
      * @param v Ein Vector, um den das Ziel-Objekt verschoben werden soll. Dies
-     *          ändert seine Position, jedoch sonst keine weiteren
-     *          Eigenschaften.
+     *     ändert seine Position, jedoch sonst keine weiteren Eigenschaften.
      */
     @Internal
     void moveBy(Vector v);
@@ -63,7 +62,7 @@ public interface PhysicsHandler
      * Gibt den <b>Gewichtsmittelpunkt</b> dieses {@link Actor}-Objekts aus.
      *
      * @return der aktuelle <b>Gewichtsmittelpunkt</b> des Ziel-Objekts als
-     *         <i>Point auf der Zeichenebene</i>.
+     *     <i>Point auf der Zeichenebene</i>.
      */
     @Internal
     Vector getCenter();
@@ -75,9 +74,9 @@ public interface PhysicsHandler
      * @param p Ein Punkt auf der Zeichenebene.
      *
      * @return <code>true</code>, wenn der übergebene Punkt innerhalb des
-     *         Ziel-Objekts liegt, sonst <code>false</code>. Das Ergebnis kann
-     *         (abhängig von der implementierenden Klasse) verschieden sicher
-     *         richtige Ergebnisse liefern.
+     *     Ziel-Objekts liegt, sonst <code>false</code>. Das Ergebnis kann
+     *     (abhängig von der implementierenden Klasse) verschieden sicher
+     *     richtige Ergebnisse liefern.
      */
     @Internal
     boolean contains(Vector p);
@@ -86,8 +85,8 @@ public interface PhysicsHandler
      * Gibt die aktuelle Position des Ziel-Objekts an.
      *
      * @return Die aktuelle Position des Ziel-Objekts. Diese ist bei Erstellung
-     *         des Objekts zunächst immer <code>(0|0)</code> und wird mit
-     *         Rotation und Verschiebung verändert.
+     *     des Objekts zunächst immer <code>(0|0)</code> und wird mit Rotation
+     *     und Verschiebung verändert.
      */
     @Internal
     Vector getPosition();
@@ -105,11 +104,11 @@ public interface PhysicsHandler
      * Rotiert das Ziel-Objekt um einen festen Winkel.
      *
      * @param degree Der Winkel, um den das Ziel-Objekt gedreht werden soll (in
-     *               <i>Grad</i>).
-     *               <ul>
-     *               <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
-     *               <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
-     *               </ul>
+     *     <i>Grad</i>).
+     *     <ul>
+     *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
+     *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *     </ul>
      */
     @Internal
     void rotateBy(double degree);
@@ -166,7 +165,7 @@ public interface PhysicsHandler
      * möglich).
      *
      * @param force Die Kraft, die auf den Massenschwerpunkt angewandt werden
-     *              soll. <b>Nicht in [px]</b>, sondern in [N] = [m / s^2].
+     *     soll. <b>Nicht in [px]</b>, sondern in [N] = [m / s^2].
      */
     @Internal
     void applyForce(Vector force);
@@ -175,7 +174,7 @@ public interface PhysicsHandler
      * Wirkt einen Drehmoment auf das Ziel-Objekt.
      *
      * @param torque der Drehmoment, der auf das Ziel-Objekt wirken soll. In
-     *               [N*m]
+     *     [N*m]
      */
     @Internal
     void applyTorque(double torque);
@@ -184,7 +183,7 @@ public interface PhysicsHandler
      * Wirkt einen Drehimpuls auf das Ziel-Objekt.
      *
      * @param rotationImpulse der Drehimpuls, der auf das Ziel-Objekt wirken
-     *                        soll. in [kg*m*m/s]
+     *     soll. in [kg*m*m/s]
      */
     @Internal
     void applyRotationImpulse(double rotationImpulse);
@@ -206,7 +205,7 @@ public interface PhysicsHandler
     /**
      * Wirkt einen Impuls auf einem Welt-Point.
      *
-     * @param impulsInNS     Ein Impuls (in [Ns]).
+     * @param impulsInNS Ein Impuls (in [Ns]).
      * @param globalLocation TODO
      */
     @Internal
@@ -240,7 +239,7 @@ public interface PhysicsHandler
      * Setzt die Geschwindigkeit für das Handler-Objekt.
      *
      * @param metersPerSecond Setzt die Geschwindigkeit, mit der sich das
-     *                        Zielobjekt bewegen soll.
+     *     Zielobjekt bewegen soll.
      */
     @Internal
     void setVelocity(Vector metersPerSecond);
@@ -257,7 +256,7 @@ public interface PhysicsHandler
      * Setzt die Drehgeschwindigkeit für das Handler-Objekt.
      *
      * @param rotationsPerSecond Setzt die Drehgeschwindigkeit, mit der sich das
-     *                           Zielobjekt bewegen soll.
+     *     Zielobjekt bewegen soll.
      */
     @Internal
     void setAngularVelocity(double rotationsPerSecond);
@@ -291,7 +290,7 @@ public interface PhysicsHandler
      * passives Objekt anliegt.
      *
      * @return <code>true</code>, wenn direkt unter dem Objekt ein passives
-     *         Objekt ist. Sonst <code>false</code>.
+     *     Objekt ist. Sonst <code>false</code>.
      */
     @Internal
     boolean isGrounded();
@@ -301,7 +300,7 @@ public interface PhysicsHandler
      * dieses Objekt neu.
      *
      * @param fixtures Die neuen Fixtures als Supplier, der die Liste der
-     *                 Fixtures ausgibt.
+     *     Fixtures ausgibt.
      */
     @Internal
     void setFixtures(Supplier<List<FixtureData>> fixtures);
@@ -310,7 +309,7 @@ public interface PhysicsHandler
      * Gibt die Proxy-Daten des Actors aus.
      *
      * @return der gegenwärtige physikalische Zustand des Raum-Objekts in
-     *         Proxy-Daten.
+     *     Proxy-Daten.
      */
     @Internal
     PhysicsData getPhysicsData();

@@ -26,11 +26,11 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Ein <b>nicht-grafisches Rechteck</b> auf der Zeichenebene, das eine
  * allgemeine Fläche beschreibt.
  *
- * @param x      Die <code>x</code>-Koordinate der <i>unteren linken Ecke</i>
- *               des Rechtecks.
- * @param y      Die <code>y</code>-Koordinate der <i>unteren linken Ecke</i>
- *               des Rechtecks.
- * @param width  <b>Reelle</b> Breite des Rechtecks.
+ * @param x Die <code>x</code>-Koordinate der <i>unteren linken Ecke</i> des
+ *     Rechtecks.
+ * @param y Die <code>y</code>-Koordinate der <i>unteren linken Ecke</i> des
+ *     Rechtecks.
+ * @param width <b>Reelle</b> Breite des Rechtecks.
  * @param height <b>Reelle</b> Höhe des Rechtecks.
  *
  * @author Michael Andonie
@@ -42,7 +42,7 @@ public record Bounds(double x, double y, double width, double height)
      * Gleicht das eigene Zentrum mit der Mitte eines anderen {@link Bounds} ab.
      *
      * @param bounds Das {@link Bounds}, an dessen Mitte auch die Mitte dieses
-     *               Rechtecks angeglichen werden soll.
+     *     Rechtecks angeglichen werden soll.
      */
     public Bounds withCenterAtBoundsCenter(Bounds bounds)
     {
@@ -54,9 +54,10 @@ public record Bounds(double x, double y, double width, double height)
      * seinen Mittelpunkt genau im angegebenen Zentrum hat.
      *
      * @param point Das Zentrum des zurückzugebenden {@link Bounds}-Rechtecks.
+     *
      * @return Ein {@link Bounds} mit der gleichen Höhe und Breite wie dieses,
-     *         jedoch so verschoben, dass es mit seiner Mitte im angegebenen
-     *         Zentrum liegt.
+     *     jedoch so verschoben, dass es mit seiner Mitte im angegebenen Zentrum
+     *     liegt.
      */
     public Bounds withCenterPoint(Vector point)
     {
@@ -68,7 +69,7 @@ public record Bounds(double x, double y, double width, double height)
      * Zeichenebene.
      *
      * @return Der Punkt mit den Koordinaten, der im Zentrum des Rechtecks
-     *         liegt.
+     *     liegt.
      */
     public Vector getCenter()
     {
@@ -80,9 +81,10 @@ public record Bounds(double x, double y, double width, double height)
      * um einen bestimmten Vector verschoben.
      *
      * @param v Der Vector, der die Verschiebung des neuen Objektes von diesem
-     *          beschreibt.
+     *     beschreibt.
+     *
      * @return Ein neues {@link Bounds}-Objekt, das dieselben Maße wie dieses
-     *         hat, jedoch um die entsprechende Verschiebung verschoben ist.
+     *     hat, jedoch um die entsprechende Verschiebung verschoben ist.
      */
     public Bounds moveBy(Vector v)
     {
@@ -94,8 +96,9 @@ public record Bounds(double x, double y, double width, double height)
      * die beiden genau fasst.
      *
      * @param bounds Das zweite Rechteck für die Berechnung
+     *
      * @return Ein neues {@link Bounds}, dass die beiden Rechtecke genau
-     *         umfasst.
+     *     umfasst.
      */
     public Bounds smallestCommon(Bounds bounds)
     {
@@ -127,9 +130,10 @@ public record Bounds(double x, double y, double width, double height)
      * liegt.
      *
      * @param lowerBound Die Grenze, auf der das Ergebnis maximal liegen darf.
+     *
      * @return Ein {@link Bounds} derselben Höhe und Breite wie dieses, das in
-     *         jedem Fall über, oder auf der Grenze liegt, wenn es passt, ist es
-     *         <code>this</code>.
+     *     jedem Fall über, oder auf der Grenze liegt, wenn es passt, ist es
+     *     <code>this</code>.
      */
     public Bounds above(double lowerBound)
     {
@@ -149,9 +153,10 @@ public record Bounds(double x, double y, double width, double height)
      * liegt.
      *
      * @param upperBound Die Grenze, auf der das Ergebnis maximal liegen darf.
+     *
      * @return Ein {@link Bounds} derselben Höhe und Breite wie dieses, das in
-     *         jedem Fall unter oder auf der Grenze liegt, wenn es passt, ist es
-     *         <code>this</code>.
+     *     jedem Fall unter oder auf der Grenze liegt, wenn es passt, ist es
+     *     <code>this</code>.
      */
     public Bounds below(double upperBound)
     {
@@ -171,10 +176,11 @@ public record Bounds(double x, double y, double width, double height)
      * linken Extremgrenze liegt.
      *
      * @param border Der Wert, den das Ergebnisrechteck maximal links sein darf
+     *
      * @return Ein {@link Bounds} derselben Höhe und Breite, das in jedem rechts
-     *         jenseits oder auf der Grenze liegt.<br>
-     *         Wenn diese Eigenschaften bereits von diesem Objekt erfüllt
-     *         werden, so wird <code>this</code> zurückgegeben.
+     *     jenseits oder auf der Grenze liegt.<br>
+     *     Wenn diese Eigenschaften bereits von diesem Objekt erfüllt werden, so
+     *     wird <code>this</code> zurückgegeben.
      */
     public Bounds rightOf(double border)
     {
@@ -194,10 +200,11 @@ public record Bounds(double x, double y, double width, double height)
      * rechten Extremgrenze liegt.
      *
      * @param border Der Wert, den das Ergebnisrechteck maximal rechts sein darf
+     *
      * @return Ein {@link Bounds} derselben Höhe und Breite, das in jedem Fall
-     *         links jenseits oder auf der Grenze liegt.<br>
-     *         Wenn diese Eigenschaften bereits von diesem Objekt erfüllt
-     *         werden, so wird <code>this</code> zurückgegeben.
+     *     links jenseits oder auf der Grenze liegt.<br>
+     *     Wenn diese Eigenschaften bereits von diesem Objekt erfüllt werden, so
+     *     wird <code>this</code> zurückgegeben.
      */
     public Bounds leftOf(double border)
     {
@@ -218,11 +225,12 @@ public record Bounds(double x, double y, double width, double height)
      * BoundingRechtecks.
      *
      * @param realX Die <i>X-Koordinate der linken unteren Ecke</i> des
-     *              BoundingRechtecks
+     *     BoundingRechtecks
      * @param realY Die <i>Y-Koordinate der linken unteren Ecke</i> des
-     *              BoundingRechtecks
+     *     BoundingRechtecks
+     *
      * @return Ein neues {@link Bounds} mit der eingegebenen Position und
-     *         derselben Breite und Höhe.
+     *     derselben Breite und Höhe.
      */
     public Bounds atPosition(double realX, double realY)
     {
@@ -233,6 +241,7 @@ public record Bounds(double x, double y, double width, double height)
      * Testet, ob ein Punkt sich in dem {@link Bounds} befindet.
      *
      * @param v Der Punkt, der getestet werden soll
+     *
      * @return true, wenn der Punkt in dem {@link Bounds} ist
      */
     public boolean contains(Vector v)
@@ -258,11 +267,12 @@ public record Bounds(double x, double y, double width, double height)
      * <i>Gemeinsame Ränder zählen <b>AUCH</b> als umschliessen!</i>
      *
      * @param inner Das innere {@link Bounds}-Rechteck. Es soll geprüft werden,
-     *              ob dieses vollkommen von dem die Methode ausführenden
-     *              Rechteck umschlossen wird.
+     *     ob dieses vollkommen von dem die Methode ausführenden Rechteck
+     *     umschlossen wird.
+     *
      * @return <code>wahr</code>, wenn das <b>ausführende
-     *         {@link Bounds}-Rechteck das als Argument übergebene
-     *         {@link Bounds} voll enthält</b>, sonst <code>falsch</code>.
+     *     {@link Bounds}-Rechteck das als Argument übergebene {@link Bounds}
+     *     voll enthält</b>, sonst <code>falsch</code>.
      */
     public boolean contains(Bounds inner)
     {
@@ -275,8 +285,9 @@ public record Bounds(double x, double y, double width, double height)
      * Berechnet, ob dieses {@link Bounds} oberhalb eines zweiten ist.
      *
      * @param r Das Rechteck, bei dem dies getestet werden soll
+     *
      * @return <code>wahr</code>, wenn dieses Rechteck rechts von dem anderen
-     *         ist, sonst <code>falsch</code>.
+     *     ist, sonst <code>falsch</code>.
      */
     public boolean above(Bounds r)
     {
@@ -295,10 +306,11 @@ public record Bounds(double x, double y, double width, double height)
      * größer als dieses ist!</div>
      *
      * @param outer Das äußere Rechteck, innerhalb dessen sich das
-     *              Ergebnis-Rechteck befinden wird (sollte das äußere
-     *              ausreichend groß sein).
+     *     Ergebnis-Rechteck befinden wird (sollte das äußere ausreichend groß
+     *     sein).
+     *
      * @return Das Ergebnis-Rechteck, das sich im äußeren Rechteck befinden
-     *         wird.
+     *     wird.
      */
     public Bounds in(Bounds outer)
     {
@@ -337,9 +349,8 @@ public record Bounds(double x, double y, double width, double height)
      * Gibt eine String-Repräsentation dieses Objektes aus.
      *
      * @return Die String-Repräsentation dieses Objektes. Hierin wird Auskunft
-     *         über alle 4 ausschlaggebenden Zahlen (<code>x</code>,
-     *         <code>y</code>, <code>getWidth</code> und <code>getHeight</code>
-     *         gemacht).
+     *     über alle 4 ausschlaggebenden Zahlen (<code>x</code>, <code>y</code>,
+     *     <code>getWidth</code> und <code>getHeight</code> gemacht).
      */
     @Override
     public String toString()
@@ -352,7 +363,8 @@ public record Bounds(double x, double y, double width, double height)
      * Gibt die <b>reelle</b> X-Koordinate der unteren linken Ecke aus.
      *
      * @return Die <b>reelle</b> X-Koordinate der unteren linken Ecke dieses
-     *         BoundingRechtecks.
+     *     BoundingRechtecks.
+     *
      * @see #y ()
      * @see #width ()
      * @see #height ()
@@ -367,7 +379,8 @@ public record Bounds(double x, double y, double width, double height)
      * Gibt die <b>reelle</b> Y-Koordinate der unteren linken Ecke aus.
      *
      * @return Die <b>reelle</b> Y-Koordinate der unteren linken Ecke dieses
-     *         {@link Bounds}-Rechtecks.
+     *     {@link Bounds}-Rechtecks.
+     *
      * @see #x ()
      * @see #width ()
      * @see #height ()
@@ -382,6 +395,7 @@ public record Bounds(double x, double y, double width, double height)
      * Gibt die <b>reelle</b> Breite aus.
      *
      * @return Die <b>reelle</b> Breite dieses {@link Bounds}-Rechtecks.
+     *
      * @see #x ()
      * @see #y ()
      * @see #height ()
@@ -396,6 +410,7 @@ public record Bounds(double x, double y, double width, double height)
      * Gibt die <b>reelle</b> Höhe aus.
      *
      * @return Die <b>reelle</b> Höhe dieses {@link Bounds}-Rechtecks.
+     *
      * @see #x ()
      * @see #y ()
      * @see #width ()
@@ -411,7 +426,7 @@ public record Bounds(double x, double y, double width, double height)
      * {@link Bounds}-Rechtecks aus.
      *
      * @return die Position des {@link Bounds}-Rechtecks, beschrieben durch den
-     *         Punkt der linken unteren Ecke dieses Objekts.
+     *     Punkt der linken unteren Ecke dieses Objekts.
      */
     public Vector getPosition()
     {

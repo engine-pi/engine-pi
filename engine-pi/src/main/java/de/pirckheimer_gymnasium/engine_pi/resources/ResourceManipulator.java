@@ -12,10 +12,10 @@ public interface ResourceManipulator<T>
      * wird.
      *
      * @param resourceName Der Name der Resource als Dateipfad.
-     * @param resource     Die Resource
+     * @param resource Die Resource
      *
      * @return Die veränderte Resource oder {@code null} falls die Resource
-     *         nicht verändert werden soll.
+     *     nicht verändert werden soll.
      */
     T beforeAdd(String resourceName, T resource);
 }

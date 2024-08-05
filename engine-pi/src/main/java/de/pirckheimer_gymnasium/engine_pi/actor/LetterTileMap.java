@@ -95,13 +95,13 @@ abstract class LetterTileMap
     }
 
     /**
-     * @param width      Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln
-     *                   in x-Richtung.
-     * @param height     Die Höhe des Kachelsatzes bzw. die Anzahl an Kacheln in
-     *                   y-Richtung.
+     * @param width Die Breite des Kachelsatzes bzw. die Anzahl an Kacheln in
+     *     x-Richtung.
+     * @param height Die Höhe des Kachelsatzes bzw. die Anzahl an Kacheln in
+     *     y-Richtung.
      * @param pathPrefix
-     * @param extension  Die Dateiendung der Bild-Dateien, die als Kacheln
-     *                   verwendet werden.
+     * @param extension Die Dateiendung der Bild-Dateien, die als Kacheln
+     *     verwendet werden.
      */
     public LetterTileMap(int width, int height, String pathPrefix,
             String extension)
@@ -145,9 +145,9 @@ abstract class LetterTileMap
 
     /**
      * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
-     *          linken Rand gelegene) Spalte.
+     *     linken Rand gelegene) Spalte.
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-     *          (oberste) Zeile.
+     *     (oberste) Zeile.
      */
     protected Tile getTileFromCache(int x, int y)
     {
@@ -194,9 +194,9 @@ abstract class LetterTileMap
 
     /**
      * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
-     *          linken Rand gelegene) Spalte.
+     *     linken Rand gelegene) Spalte.
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-     *          (oberste) Zeile.
+     *     (oberste) Zeile.
      */
     public final char getLetter(int x, int y)
     {
@@ -208,7 +208,7 @@ abstract class LetterTileMap
      * registiert ist.
      *
      * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
-     *             wurde.
+     *     wurde.
      */
     protected final boolean existsTile(char tile)
     {
@@ -272,7 +272,7 @@ abstract class LetterTileMap
      * Setze ein und dieselbe Kachel auf alle Positionen im Kachelgitter.
      *
      * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
-     *             wurde.
+     *     wurde.
      */
     public final void fill(char tile)
     {
@@ -286,12 +286,12 @@ abstract class LetterTileMap
     }
 
     /**
-     * @param x    Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz
-     *             am linken Rand gelegene) Spalte.
-     * @param y    Die y-Position im Kachelgitter. 0 adressiert die erste,
-     *             (oberste) Zeile.
+     * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
+     *     linken Rand gelegene) Spalte.
+     * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
+     *     (oberste) Zeile.
      * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
-     *             wurde.
+     *     wurde.
      */
     public void setTile(int x, int y, char tile)
     {
@@ -304,7 +304,7 @@ abstract class LetterTileMap
      * Setzt die Kacheln in einer Zeile von links nach rechts.
      *
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
-     *          (oberste) Zeile.
+     *     (oberste) Zeile.
      */
     public final void setRow(int y, String row)
     {
@@ -319,7 +319,7 @@ abstract class LetterTileMap
      * Setzt die Kacheln in einer Spalte von oben nach unten.
      *
      * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
-     *          linken Rand gelegene) Spalte.
+     *     linken Rand gelegene) Spalte.
      */
     public final void setColumn(int x, String column)
     {

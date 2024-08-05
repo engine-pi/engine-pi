@@ -86,7 +86,7 @@ public class ImageFontGlyph
      * Zeichenkette zurück.
      *
      * @return Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
-     *         als Zeichenkette.
+     *     als Zeichenkette.
      */
     public String getContent()
     {
@@ -97,7 +97,7 @@ public class ImageFontGlyph
      * Setzt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
      *
      * @param glyph Das <b>Zeichen</b>, das durch ein Bild dargestellt werden
-     *              soll.
+     *     soll.
      */
     public void setGlyph(char glyph)
     {
@@ -109,7 +109,7 @@ public class ImageFontGlyph
      * zurück.
      *
      * @return Das in den Speicher geladene <b>Bild</b>, das ein Zeichen
-     *         darstellt.
+     *     darstellt.
      */
     public BufferedImage getImage()
     {

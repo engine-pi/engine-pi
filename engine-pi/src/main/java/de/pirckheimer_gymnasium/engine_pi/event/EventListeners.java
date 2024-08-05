@@ -114,7 +114,7 @@ public final class EventListeners<T>
      * @param listener Ein Beobachter.
      *
      * @return wahr, wenn der gegebene Beobachter bereits hinzugefügt wurde,
-     *         sonst falsch.
+     *     sonst falsch.
      */
     @API
     public synchronized boolean contains(T listener)

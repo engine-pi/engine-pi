@@ -93,25 +93,24 @@ public class Text extends Geometry
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
      * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
-     * @param content  Der Textinhalt, der dargestellt werden soll.
-     * @param height   Die Höhe des Textes in Meter.
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height Die Höhe des Textes in Meter.
      * @param fontName Der Name des zu verwendenden Fonts.<br>
-     *                 Wird hierfür ein Font verwendet, der in dem Projektordner
-     *                 vorhanden sein soll, <b>und dies ist immer und in jedem
-     *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
-     *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
-     *                 Name der schriftart-Datei!</b>
-     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett und
-     *                 kursiv</b>).
-     *                 <ul>
-     *                 <li>{@code 0}: Normaler Text</li>
-     *                 <li>{@code 1}: Fett</li>
-     *                 <li>{@code 2}: Kursiv</li>
-     *                 <li>{@code 3}: Fett und Kursiv</li>
-     *                 </ul>
+     *     Wird hierfür ein Font verwendet, der in dem Projektordner vorhanden
+     *     sein soll, <b>und dies ist immer und in jedem Fall zu empfehlen</b>,
+     *     muss der Name der Schriftart hier ebenfalls einfach nur eingegeben
+     *     werden, <b>nicht der Name der schriftart-Datei!</b>
+     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
+     *     kursiv</b>).
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
-     *      double, String, int)
+     *     double, String, int)
      */
     @API
     public Text(String content, double height, String fontName, int style)
@@ -130,12 +129,12 @@ public class Text extends Geometry
      * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
      * Schriftstil</b>.
      *
-     * @param content  Der Textinhalt, der dargestellt werden soll.
-     * @param height   Die Höhe des Textes in Meter.
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height Die Höhe des Textes in Meter.
      * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
-     *      double, String)
+     *     double, String)
      */
     @API
     public Text(String content, double height, String fontName)
@@ -148,10 +147,10 @@ public class Text extends Geometry
      * in <b>normaler, serifenfreier Standardschrift</b>.
      *
      * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height  Die Höhe des Textes in Meter.
+     * @param height Die Höhe des Textes in Meter.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
-     *      double)
+     *     double)
      */
     @API
     public Text(String content, double height)
@@ -182,7 +181,7 @@ public class Text extends Geometry
      * @param font Eine bereits geladene Schriftart.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setFont(Font font)
@@ -198,7 +197,7 @@ public class Text extends Geometry
      * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setFont(String fontName)
@@ -219,7 +218,7 @@ public class Text extends Geometry
      * @param content Der Textinhalt, der dargestellt werden soll.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setContent(String content)
@@ -243,7 +242,7 @@ public class Text extends Geometry
      * @param content Der neue Inhalt des Textes in einem beliebigen Datentyp.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setContent(Object content)
@@ -268,17 +267,17 @@ public class Text extends Geometry
      * kursiv</b>).
      *
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
-     *              kursiv</b>).
+     *     kursiv</b>).
      *
-     *              <ul>
-     *              <li>{@code 0}: Normaler Text</li>
-     *              <li>{@code 1}: Fett</li>
-     *              <li>{@code 2}: Kursiv</li>
-     *              <li>{@code 3}: Fett und Kursiv</li>
-     *              </ul>
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setStyle(int style)
@@ -304,7 +303,7 @@ public class Text extends Geometry
      * @param height Die Höhe des Texts in Meter.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setHeight(double height)
@@ -341,7 +340,7 @@ public class Text extends Geometry
      * @param width Die Breite des Texts in Meter.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *         Punktschreibweise aneinander gekettet werden können.
+     *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
     public Text setWidth(double width)
@@ -364,8 +363,7 @@ public class Text extends Geometry
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Override

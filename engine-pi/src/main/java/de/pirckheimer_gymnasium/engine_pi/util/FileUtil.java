@@ -177,12 +177,12 @@ public final class FileUtil
      * Zeichenkette zurück gegeben.
      * </p>
      *
-     * @param path      Der Dateipfad angegeben als Zeichenkette.
+     * @param path Der Dateipfad angegeben als Zeichenkette.
      * @param extension Ob die Dateierweiterung im Dateinamen erhalten bleiben
-     *                  soll oder nicht.
+     *     soll oder nicht.
      *
      * @return Der Dateiname mit oder ohne Dateierweiterung je nach
-     *         Eingabeparameter.
+     *     Eingabeparameter.
      */
     public static String getFileName(final String path, boolean extension)
     {
@@ -297,7 +297,8 @@ public final class FileUtil
      * arguments. The output will use the path separator of the current system;
      *
      * @param basePath The base path for the combined path.
-     * @param paths    The parts of the path to be constructed.
+     * @param paths The parts of the path to be constructed.
+     *
      * @return The combined path.
      */
     public static String combine(String basePath, final String... paths)
@@ -362,7 +363,7 @@ public final class FileUtil
      * @author Niklas Keller
      *
      * @param path Ein Dateipfad, der Schrägstriche oder Gegenschrägstriche
-     *             enthalten kann.
+     *     enthalten kann.
      *
      * @return Der normalisierte Dateipfad.
      */

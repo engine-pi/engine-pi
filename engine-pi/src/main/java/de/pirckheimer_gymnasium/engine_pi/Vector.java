@@ -102,7 +102,7 @@ public final class Vector implements Cloneable
      * <b>Zielpunkt</b>.
      *
      * @param start Der Ausgangspunkt.
-     * @param end   Der Zielpunkt.
+     * @param end Der Zielpunkt.
      */
     @API
     public Vector(Vector start, Vector end)
@@ -177,14 +177,15 @@ public final class Vector implements Cloneable
      * seine Effektivität.
      *
      * @param divisor Hierdurch wird die Länge des Vektors auf der Zeichenebene
-     *                geteilt.
+     *     geteilt.
      *
      * @return Das Vektor-Objekt, das eine Bewegung in dieselbe Richtung
-     *         beschreibt, allerdings in der Länge gekürzt um den angegebenen
-     *         Divisor.
+     *     beschreibt, allerdings in der Länge gekürzt um den angegebenen
+     *     Divisor.
      *
      * @throws java.lang.ArithmeticException Falls <code>divisor</code>
-     *                                       <code>0</code> ist.
+     *     <code>0</code> ist.
+     *
      * @see #multiply(double)
      */
     @API
@@ -212,7 +213,7 @@ public final class Vector implements Cloneable
      * Berechnet die Gegenrichtung des Vektors.
      *
      * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
-     *         eigenen beschreibt.
+     *     eigenen beschreibt.
      */
     @API
     public Vector negate()
@@ -224,7 +225,7 @@ public final class Vector implements Cloneable
      * Berechnet die Gegenrichtung des Vektors in X-Richtung.
      *
      * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
-     *         eigenen beschreibt.
+     *     eigenen beschreibt.
      */
     @API
     public Vector negateX()
@@ -236,7 +237,7 @@ public final class Vector implements Cloneable
      * Berechnet die Gegenrichtung des Vektors in Y-Richtung.
      *
      * @return Ein neuer Vektor, der genau die Gegenbewegung zum eigenen Vektor
-     *         beschreibt.
+     *     beschreibt.
      */
     @API
     public Vector negateY()
@@ -252,7 +253,7 @@ public final class Vector implements Cloneable
      * @param y Die Änderung in Y-Richtung.
      *
      * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
-     *         Bewegungen darstellt.
+     *     Bewegungen darstellt.
      */
     @API
     public Vector add(double x, double y)
@@ -265,8 +266,9 @@ public final class Vector implements Cloneable
      * zusammen ausüben.
      *
      * @param vector Ein zweiter Vektor.
+     *
      * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
-     *         Bewegungen darstellt.
+     *     Bewegungen darstellt.
      */
     @API
     public Vector add(Vector vector)
@@ -279,6 +281,7 @@ public final class Vector implements Cloneable
      *
      * @param x Änderung in X-Richtung
      * @param y Änderung in Y-Richtung
+     *
      * @return Die Differenz der beiden Vektoren (<code>"this - v"</code>)
      */
     @API
@@ -291,6 +294,7 @@ public final class Vector implements Cloneable
      * Berechnet die Differenz zwischen diesem und einem weiteren Vektor.
      *
      * @param vector zweiter Vektor
+     *
      * @return Die Differenz der beiden Vektoren (<code>"this - v"</code>)
      */
     @API
@@ -303,8 +307,9 @@ public final class Vector implements Cloneable
      * Berechnet eine rotierte Version.
      *
      * @param angle Der Winkel der Rotation in Grad.
+     *
      * @return Ein neues Vektor-Objekt, das entsprechend der Gradzahl rotiert
-     *         wurde.
+     *     wurde.
      */
     @API
     public Vector rotate(double angle)
@@ -322,7 +327,7 @@ public final class Vector implements Cloneable
      * @param vector Ein weiterer Vektor.
      *
      * @return Der Vektor, der <code>(this.x|this.y)</code> verschieben würde zu
-     *         <code>(v.x|v.y)</code>.
+     *     <code>(v.x|v.y)</code>.
      */
     @API
     public Vector getDistance(Vector vector)
@@ -340,7 +345,7 @@ public final class Vector implements Cloneable
      * </p>
      *
      * @param factor Der Faktor, mit dem die <code>x</code>- und
-     *               <code>y</code>-Werte des Vektors multipliziert werden
+     *     <code>y</code>-Werte des Vektors multipliziert werden
      *
      * @return Der Vektor mit den multiplizierten Werten.
      *
@@ -362,7 +367,7 @@ public final class Vector implements Cloneable
      * </p>
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
-     *               wird.
+     *     wird.
      *
      * @return Der Vektor mit den multiplizierten Werten.
      *
@@ -384,7 +389,7 @@ public final class Vector implements Cloneable
      * </p>
      *
      * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
-     *               wird.
+     *     wird.
      *
      * @return Der Vektor mit den multiplizierten Werten.
      *
@@ -417,7 +422,7 @@ public final class Vector implements Cloneable
      * beide Komponenten (<code>x</code> und <code>y</code>) 0 sind.
      *
      * @return <code>true</code>, wenn dieser keine Auswirkungen macht, sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      */
     @API
     public boolean isNull()
@@ -430,7 +435,7 @@ public final class Vector implements Cloneable
      * <b>tatsächlichen Delta-Werte</b> beide Ganzzahlen sind.
      *
      * @return <code>true</code>, wenn <b>beide</b> Delta-Werte dieses Punktes
-     *         ganzzahlig sind, sonst <code>false</code>.
+     *     ganzzahlig sind, sonst <code>false</code>.
      */
     @API
     public boolean isIntegral()
@@ -472,8 +477,9 @@ public final class Vector implements Cloneable
      * der beiden Vektoren übereinstimmen.
      *
      * @param object Das auf Gleichheit mit diesem zu überprüfende Objekt.
+     *
      * @return <code>true</code>, wenn beide Vektoren gleich sind, sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      */
     @API
     @Override
@@ -522,8 +528,9 @@ public final class Vector implements Cloneable
      * </ul>
      *
      * @param other Ein zweiter Vektor.
+     *
      * @return Der Winkel zwischen diesem Vektor und dem zweiten. Ist zwischen 0
-     *         und 180.
+     *     und 180.
      */
     @API
     public double getAngle(Vector other)

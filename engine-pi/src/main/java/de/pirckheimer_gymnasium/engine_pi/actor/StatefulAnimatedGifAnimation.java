@@ -22,7 +22,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * Erzeugt eine Animation aus einer animierter GIF-Datei.
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
- *                werden soll.
+ *     werden soll.
  *
  * @author Josef Friedrich
  *
@@ -32,7 +32,7 @@ public class StatefulAnimatedGifAnimation<State>
         extends StatefulAnimation<State>
 {
     /**
-     * @param width  Die Breite in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
      * @param height Die Höhe in Meter der animierten Figur.
      */
     public StatefulAnimatedGifAnimation(double width, double height)
@@ -41,7 +41,7 @@ public class StatefulAnimatedGifAnimation<State>
     }
 
     /**
-     * @param state    Der Zustand, unter dem die Animation gespeichert wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param filepath Der Dateipfad der GIF-Datei.
      */
     public void addState(State state, String filepath)

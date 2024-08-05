@@ -67,7 +67,7 @@ public class ImageUtil
      * @param image Das zu kopierende Bild.
      *
      * @return Ein {@link BufferedImage}, das eine Kopie des Eingabeparameters
-     *         ist.
+     *     ist.
      */
     public static BufferedImage copy(BufferedImage image)
     {
@@ -96,11 +96,11 @@ public class ImageUtil
      * </ul>
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Ein Feld, das die <b>Quellfarben</b> enthält.
-     * @param to            Ein Feld, das die <b>Zielfarben</b> enthält.
+     * @param from Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param to Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Eine neue Version des Originalbildes, bei der die Quellfarben
-     *         durch die Zielfarben ersetzt werden.
+     *     durch die Zielfarben ersetzt werden.
      */
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             Color[] from, Color[] to)
@@ -145,11 +145,11 @@ public class ImageUtil
      * </ul>
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Ein Feld, das die <b>Quellfarben</b> enthält.
-     * @param to            Ein Feld, das die <b>Zielfarben</b> enthält.
+     * @param from Ein Feld, das die <b>Quellfarben</b> enthält.
+     * @param to Ein Feld, das die <b>Zielfarben</b> enthält.
      *
      * @return Eine neue Version des Originalbildes, bei der die Quellfarben
-     *         durch die Zielfarben ersetzt werden.
+     *     durch die Zielfarben ersetzt werden.
      */
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             String[] from, String[] to)
@@ -176,10 +176,10 @@ public class ImageUtil
      *
      * @param bufferedImage Das Originalbild.
      * @param colorMappings Eine {@link Map} mit Quellfarben als Schlüssel und
-     *                      Zielfarben als Werte.
+     *     Zielfarben als Werte.
      *
      * @return Eine neue Version des Originalbildes, bei der die Quellfarben
-     *         durch die Zielfarben ersetzt werden.
+     *     durch die Zielfarben ersetzt werden.
      */
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             Map<Color, Color> colorMappings)
@@ -201,13 +201,13 @@ public class ImageUtil
      * Ersetzt eine Farbe in einem Bild.
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Die <b>Quellfarbe</b>. Eine Farbe kodiert als
-     *                      Zeichenkette in <b>hexadezimaler</b> Notation.
-     * @param to            Eine <b>Zielfarbe</b>. Eine Farbe kodiert als
-     *                      Zeichenkette in <b>hexadezimaler</b> Notation.
+     * @param from Die <b>Quellfarbe</b>. Eine Farbe kodiert als Zeichenkette in
+     *     <b>hexadezimaler</b> Notation.
+     * @param to Eine <b>Zielfarbe</b>. Eine Farbe kodiert als Zeichenkette in
+     *     <b>hexadezimaler</b> Notation.
      *
      * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
-     *         durch eine Zielfarbe ersetzt wurde.
+     *     durch eine Zielfarbe ersetzt wurde.
      */
     public static BufferedImage replaceColor(final BufferedImage bufferedImage,
             String from, String to)
@@ -221,11 +221,11 @@ public class ImageUtil
      * Ersetzt eine Farbe in einem Bild.
      *
      * @param bufferedImage Das Originalbild.
-     * @param from          Die <b>Quellfarbe</b>.
-     * @param to            Eine <b>Zielfarbe</b>.
+     * @param from Die <b>Quellfarbe</b>.
+     * @param to Eine <b>Zielfarbe</b>.
      *
      * @return Eine neue Version des Originalbildes, bei der eine Quellfarben
-     *         durch eine Zielfarbe ersetzt wurde.
+     *     durch eine Zielfarbe ersetzt wurde.
      */
     public static BufferedImage replaceColor(final BufferedImage bufferedImage,
             Color from, Color to)
@@ -248,10 +248,10 @@ public class ImageUtil
      * "https://stackoverflow.com/a/4216635">stackoverflow.com</a></li>
      * </ul>
      *
-     * @param image  Das Originalbild.
+     * @param image Das Originalbild.
      * @param factor Der Faktor, um den das Bild vergrößert werden soll. Der
-     *               Faktor {@code 2} verwandelt beispielsweise ein Pixel in
-     *               {@code 4} Pixel nämlich {@code 2x2}.
+     *     Faktor {@code 2} verwandelt beispielsweise ein Pixel in {@code 4}
+     *     Pixel nämlich {@code 2x2}.
      *
      * @return Das vergrößerte Bild.
      */
@@ -272,9 +272,9 @@ public class ImageUtil
      * @author Michael Andonie
      * @author Niklas Keller
      *
-     * @param image    Das Bild, das gespeichert werden soll.
+     * @param image Das Bild, das gespeichert werden soll.
      * @param filePath Der Dateiname, unter dem das Bild gespeichert werden
-     *                 soll.
+     *     soll.
      */
     public static void write(BufferedImage image, String filePath)
     {
@@ -314,8 +314,9 @@ public class ImageUtil
     /**
      * Gets an empty {@link BufferedImage} with the given size.
      *
-     * @param width  the width
+     * @param width the width
      * @param height the height
+     *
      * @return an empty {@link BufferedImage} with the given size
      */
     public static BufferedImage getCompatibleImage(final int width,
@@ -364,9 +365,9 @@ public class ImageUtil
     /**
      * Ändert den Farbraum eines Bildes.
      *
-     * @param image   Das Bild, dessen Farbraum geändert werden soll.
+     * @param image Das Bild, dessen Farbraum geändert werden soll.
      * @param newType Der neue Bildtyp, zum Beispiel
-     *                {@link BufferedImage#TYPE_INT_ARGB}.
+     *     {@link BufferedImage#TYPE_INT_ARGB}.
      *
      * @return Ein neues Bild mit geändertem Farbraum.
      */

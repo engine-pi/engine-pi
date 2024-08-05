@@ -90,7 +90,7 @@ public final class Resources
      * @author Josef Friedrich
      *
      * @return Ein Zwischenspeicher für Bild-Ressourcen vom Datentyp
-     *         {@link java.awt.image.BufferedImage}.
+     *     {@link java.awt.image.BufferedImage}.
      */
     public static ImageContainer getImages()
     {
@@ -105,8 +105,8 @@ public final class Resources
      * @author Josef Friedrich
      *
      * @return Ein {@link SoundContainer Zwischenspeicher für Audio-Ressourcen}
-     *         vom Datentyp
-     *         {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound}.
+     *     vom Datentyp {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound
+     *     Sound}.
      */
     public static SoundContainer getSounds()
     {

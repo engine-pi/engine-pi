@@ -130,11 +130,11 @@ public final class Jukebox
      * specified music {@code Sound}. This has no effect if the specified track
      * is already playing.
      *
-     * @param sound   Der Klang, der abgespielt werden soll.
+     * @param sound Der Klang, der abgespielt werden soll.
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
-     *                werden soll.
-     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     *     soll.
+     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -164,7 +164,7 @@ public final class Jukebox
      * ohne Wirkung.
      *
      * @param music Die als Zeichenkette angegebene Audio-Datei, die abgespielt
-     *              werden soll.
+     *     werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -178,12 +178,12 @@ public final class Jukebox
      * specified music {@code Sound}. This has no effect if the specified track
      * is already playing.
      *
-     * @param music   Die als Zeichenkette angegebene Audio-Datei, die
-     *                abgespielt werden soll
+     * @param music Die als Zeichenkette angegebene Audio-Datei, die abgespielt
+     *     werden soll
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
-     *                werden soll.
-     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     *     soll.
+     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -196,10 +196,10 @@ public final class Jukebox
     /**
      * Sets the currently playing track to the specified track.
      *
-     * @param track   Die Audiospur, die gespielt werden soll.
+     * @param track Die Audiospur, die gespielt werden soll.
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
-     *                werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     *     soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -211,11 +211,11 @@ public final class Jukebox
     /**
      * Plays the specified track.
      *
-     * @param track   Die Audiospur, die gespielt werden soll.
+     * @param track Die Audiospur, die gespielt werden soll.
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
-     *                werden soll.
-     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     *     soll.
+     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -228,13 +228,13 @@ public final class Jukebox
     /**
      * Plays the specified track, optionally configuring it before starting.
      *
-     * @param track   Die Audiospur, die gespielt werden soll.
-     * @param config  A call to configure the playback prior to starting, which
-     *                can be {@code null}
+     * @param track Die Audiospur, die gespielt werden soll.
+     * @param config A call to configure the playback prior to starting, which
+     *     can be {@code null}
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *                (bestimmt mit {@link Object#equals(Object)}) neu gestartet
-     *                werden soll.
-     * @param stop    Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     *     soll.
+     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -275,7 +275,7 @@ public final class Jukebox
      * einmalig und die darauf Folgende in einer Endlosschleife.
      *
      * @param intro Die Eingangsmusik als Zeichenkette angegeben.
-     * @param loop  Die zu wiederholende Musik als Zeichenkette.
+     * @param loop Die zu wiederholende Musik als Zeichenkette.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -334,9 +334,10 @@ public final class Jukebox
      * in use until the playback is either cancelled or finalized.
      *
      * @param sound The sound to play
-     * @param loop  Whether to loop the sound
+     * @param loop Whether to loop the sound
+     *
      * @return An {@code SoundPlayback} object that can be configured prior to
-     *         starting, but will need to be manually started.
+     *     starting, but will need to be manually started.
      */
     public static SoundPlayback createSoundPlayback(Sound sound, boolean loop)
     {

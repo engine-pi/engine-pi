@@ -37,7 +37,7 @@ public class TextUtil
      * Gibt die <b>maximale Zeilenbreite</b> eines gegebenen Texts zurück.
      *
      * @param text Der Text, von dem die maximale Zeilenbreite bestimmt werden
-     *             soll.
+     *     soll.
      *
      * @return Die Anzahl an Zeichen, die die längste Zeile beinhaltet.
      *
@@ -89,13 +89,13 @@ public class TextUtil
      * <b>Zeilenbreite</b> und einer gewünschten <b>Textausrichtung</b>
      * <b>aus</b>.
      *
-     * @param text      Die Zeichenkette, die ausgerichtet werden soll.
-     * @param width     Die Anzahl an Zeichen, die jede Zeile lang sein soll.
+     * @param text Die Zeichenkette, die ausgerichtet werden soll.
+     * @param width Die Anzahl an Zeichen, die jede Zeile lang sein soll.
      * @param alignment Ob die Zeichen links-, rechtsbündig oder zentriert
-     *                  ausgerichtet werden soll.
+     *     ausgerichtet werden soll.
      *
      * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
-     *         eingefügt wurden.
+     *     eingefügt wurden.
      *
      * @since 0.23.0
      */
@@ -122,12 +122,12 @@ public class TextUtil
      * <b>Richtet</b> den gegebenen Text gemäß einer gewünschten
      * <b>Textausrichtung</b> <b>aus</b>.
      *
-     * @param text      Die Zeichenkette, die ausgerichtet werden soll.
+     * @param text Die Zeichenkette, die ausgerichtet werden soll.
      * @param alignment Ob die Zeichen links-, rechtsbündig oder zentriert
-     *                  ausgerichtet werden soll.
+     *     ausgerichtet werden soll.
      *
      * @return Eine Zeichenkette, in der je nach Ausrichtung Leerzeichen
-     *         eingefügt wurden.
+     *     eingefügt wurden.
      *
      * @since 0.23.0
      */
@@ -145,16 +145,16 @@ public class TextUtil
      * "https://github.com/eugenp/tutorials/blob/master/core-java-modules/core-java-string-algorithms-3/src/main/java/com/baeldung/wrappingcharacterwise/Wrapper.java">baeldung.com</a>.
      * </p>
      *
-     * @param text      Der Text, der nach einer bestimmten Zeilenbreite
-     *                  umgebrochen werden soll.
-     * @param width     Die maximale Zeilenbreite.
+     * @param text Der Text, der nach einer bestimmten Zeilenbreite umgebrochen
+     *     werden soll.
+     * @param width Die maximale Zeilenbreite.
      * @param alignment Die Textausrichtung.
      *
      * @return Der neu formatierte Text, in den möglicherweise neue
-     *         Zeilenumbrüche eingefügt wurden.
+     *     Zeilenumbrüche eingefügt wurden.
      *
      * @throws IllegalArgumentException Falls es ein längeres Wort als die
-     *                                  Zeilenbreite gibt.
+     *     Zeilenbreite gibt.
      *
      * @since 0.23.0
      */
@@ -192,15 +192,15 @@ public class TextUtil
      * Bricht den gegebenen Text nach einer bestimmten <b>Zeilenbreite</b> und
      * zwar <b>linksbündig</b> um.
      *
-     * @param text  Der Text, der nach einer bestimmten Zeilenbreite umgebrochen
-     *              werden soll.
+     * @param text Der Text, der nach einer bestimmten Zeilenbreite umgebrochen
+     *     werden soll.
      * @param width Die maximale Zeilenbreite.
      *
      * @return Der neu formatierte Text, in den möglicherweise neue
-     *         Zeilenumbrüche eingefügt wurden.
+     *     Zeilenumbrüche eingefügt wurden.
      *
      * @throws IllegalArgumentException Falls es ein längeres Wort als die
-     *                                  Zeilenbreite gibt.
+     *     Zeilenbreite gibt.
      *
      * @since 0.23.0
      */

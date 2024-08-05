@@ -61,7 +61,8 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
  * werden.s
  *
  * @author Kevin Weiner, FM Software; LZW decoder adapted from John Cristy's
- *         ImageMagick.
+ *     ImageMagick.
+ *
  * @version 1.03 November 2003
  */
 @SuppressWarnings("all")

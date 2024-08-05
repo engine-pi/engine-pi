@@ -46,7 +46,7 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
  * }</pre>
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
- *                werden soll.
+ *     werden soll.
  *
  * @author Michael Andonie
  *
@@ -106,10 +106,10 @@ public class StatefulAnimation<State> extends Actor
     protected double frameDuration;
 
     /**
-     * @param width         Die Breite in Meter der animierten Figur.
-     * @param height        Die Höhe in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
+     *     bleiben.
      */
     public StatefulAnimation(double width, double height, double frameDuration)
     {
@@ -121,7 +121,7 @@ public class StatefulAnimation<State> extends Actor
     }
 
     /**
-     * @param width  Die Breite in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
      * @param height Die Höhe in Meter der animierten Figur.
      */
     public StatefulAnimation(double width, double height)
@@ -154,12 +154,10 @@ public class StatefulAnimation<State> extends Actor
     /**
      * Fügt dieser Animation einen neuen Zustand zu hinzu.
      *
-     * @param state          Der Zustand, unter dem die Animation gespeichert
-     *                       wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param stateAnimation Die Animation für diesen Zustand. Kann normal
-     *                       eingeladen werden, allerdings sollte das übergebene
-     *                       Objekt <b>nicht selbst in einer Scene angemeldet
-     *                       sein</b>.
+     *     eingeladen werden, allerdings sollte das übergebene Objekt <b>nicht
+     *     selbst in einer Scene angemeldet sein</b>.
      *
      * @see Animation
      */
@@ -233,9 +231,9 @@ public class StatefulAnimation<State> extends Actor
      * @param state Der zu testende State.
      *
      * @return <code>true</code>: Diese Animation hat einen Zustand mit dem
-     *         Namen <code>stateName</code>. <br />
-     *         <code>false</code>: Diese Animation hat keinen Zustand mit dem
-     *         Namen <code>stateName</code>.
+     *     Namen <code>stateName</code>. <br />
+     *     <code>false</code>: Diese Animation hat keinen Zustand mit dem Namen
+     *     <code>stateName</code>.
      */
     @API
     public boolean hasState(State state)
@@ -247,9 +245,9 @@ public class StatefulAnimation<State> extends Actor
      * Gibt den aktuellen Zustand der Animation aus.
      *
      * @return Der aktuelle Zustand der Animation. Dies ist der {@link String},
-     *         der beim Hinzufügen der aktuell aktiven Animation als State-Name
-     *         angegeben wurde. Ist <code>null</code>, wenn die Animation noch
-     *         keine Zustände hat.
+     *     der beim Hinzufügen der aktuell aktiven Animation als State-Name
+     *     angegeben wurde. Ist <code>null</code>, wenn die Animation noch keine
+     *     Zustände hat.
      */
     @API
     public State getState()
@@ -263,7 +261,7 @@ public class StatefulAnimation<State> extends Actor
      * (links/rechts) einfach umsetzen.
      *
      * @param flipHorizontal Ob die Animation horizontal geflippt dargestellt
-     *                       werden soll.
+     *     werden soll.
      *
      * @see #setFlipVertical(boolean)
      */
@@ -277,7 +275,7 @@ public class StatefulAnimation<State> extends Actor
      * Setzt, ob alle Animationen vertikal gespiegelt dargestellt werden sollen.
      *
      * @param flipVertical Ob die Animation horizontal geflippt dargestellt
-     *                     werden soll.
+     *     werden soll.
      *
      * @see #setFlipVertical(boolean)
      */
@@ -291,7 +289,7 @@ public class StatefulAnimation<State> extends Actor
      * Gibt an, ob das Objekt horizontal gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
-     *         ist. Sonst <code>false</code>.
+     *     ist. Sonst <code>false</code>.
      */
     @API
     public boolean isFlipHorizontal()
@@ -303,7 +301,7 @@ public class StatefulAnimation<State> extends Actor
      * Gibt an, ob das Objekt vertikal gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade vertikal gespiegelt
-     *         ist. Sonst <code>false</code>.
+     *     ist. Sonst <code>false</code>.
      */
     @API
     public boolean isFlipVertical()
@@ -315,10 +313,9 @@ public class StatefulAnimation<State> extends Actor
      * Setzt, ob diese <code>StatefulAnimation</code> animiert werden soll.
      *
      * @param animationPaused Ist dieser Wert <code>true</code>, so läuft die
-     *                        Animation normal weiter. Ist dieser Wert
-     *                        <code>false</code>, so läuft die Animation nicht
-     *                        und keine automatischen Zustandsübergänge
-     *                        passieren.
+     *     Animation normal weiter. Ist dieser Wert <code>false</code>, so läuft
+     *     die Animation nicht und keine automatischen Zustandsübergänge
+     *     passieren.
      *
      * @see #isAnimationPaused()
      */
@@ -332,7 +329,7 @@ public class StatefulAnimation<State> extends Actor
      * Gibt an, ob die Animation derzeit pausiert ist.
      *
      * @return <code>true</code>, wenn die Animation gerade pausiert ist. Sonst
-     *         <code>false</code>.
+     *     <code>false</code>.
      *
      * @see #setAnimationPaused(boolean)
      */
@@ -354,7 +351,7 @@ public class StatefulAnimation<State> extends Actor
      * entsprechenden Von-Zustand.
      *
      * @param stateFrom Der Von-Zustand.
-     * @param stateTo   Der Ziel-Zustand.
+     * @param stateTo Der Ziel-Zustand.
      */
     @API
     public void setStateTransition(State stateFrom, State stateTo)
@@ -380,11 +377,10 @@ public class StatefulAnimation<State> extends Actor
     /**
      * Setzt die Dauer, die ein Frame einer bestimmten Animation verweilt.
      *
-     * @param state         Der State, für den die Frame-Dauer neu gesetzt
-     *                      werden soll.
+     * @param state Der State, für den die Frame-Dauer neu gesetzt werden soll.
      * @param frameDuration Die Zeit (in Sekunden), die jeder einzelne Frame der
-     *                      Animation des entsprechenden States verweilen soll,
-     *                      bis der Frame gewechselt wird.
+     *     Animation des entsprechenden States verweilen soll, bis der Frame
+     *     gewechselt wird.
      */
     @API
     public void setFrameDuration(State state, double frameDuration)
@@ -436,7 +432,7 @@ public class StatefulAnimation<State> extends Actor
      * Setzt die Höhe und Breite der Animation neu. Ändert die physikalischen
      * Eigenschaften (Masse etc.).
      *
-     * @param width  Neue Breite für das Rechteck.
+     * @param width Neue Breite für das Rechteck.
      * @param height Neue Höhe für das Rechteck.
      */
     @API
@@ -452,8 +448,7 @@ public class StatefulAnimation<State> extends Actor
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
-     * @param g             Das {@link Graphics2D}-Objekt, in das gezeichnet
-     *                      werden soll.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @Internal

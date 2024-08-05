@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
  * Verzeichnis in eine Animation.
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
- *                werden soll.
+ *     werden soll.
  *
  * @author Josef Friedrich
  *
@@ -33,10 +33,10 @@ public class StatefulImagesPrefixAnimation<State>
         extends StatefulAnimation<State>
 {
     /**
-     * @param width         Die Breite in Meter der animierten Figur.
-     * @param height        Die Höhe in Meter der animierten Figur.
+     * @param width Die Breite in Meter der animierten Figur.
+     * @param height Die Höhe in Meter der animierten Figur.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
+     *     bleiben.
      */
     public StatefulImagesPrefixAnimation(double width, double height,
             double frameDuration)
@@ -48,16 +48,14 @@ public class StatefulImagesPrefixAnimation<State>
      * Lädt alle Bilddateien mit einem bestimmten <b>Präfix</b> in einem
      * bestimmten Verzeichnis in eine Animation.
      *
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
-     *                      bleiben.
+     *     bleiben.
      * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden
-     *                      Bilder liegen.
-     * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle
-     *                      Dateien mit dem gegebenen Präfix</a> (im angegebenen
-     *                      Ordner) und fügt sie in aufsteigender Reihenfolge
-     *                      der Animation hinzu.
+     *     Bilder liegen.
+     * @param prefix Das Pfad-Präfix. Diese Funktion sucht <a>alle Dateien mit
+     *     dem gegebenen Präfix</a> (im angegebenen Ordner) und fügt sie in
+     *     aufsteigender Reihenfolge der Animation hinzu.
      */
     public void addState(State state, double frameDuration,
             String directoryPath, String prefix)
@@ -70,14 +68,12 @@ public class StatefulImagesPrefixAnimation<State>
      * Lädt alle Bilddateien mit einem bestimmten <b>Präfix</b> in einem
      * bestimmten Verzeichnis in eine Animation.
      *
-     * @param state         Der Zustand, unter dem die Animation gespeichert
-     *                      wird.
+     * @param state Der Zustand, unter dem die Animation gespeichert wird.
      * @param directoryPath Der Pfad zum Verzeichnis, in dem die einzuladenden
-     *                      Bilder liegen.
-     * @param prefix        Das Pfad-Präfix. Diese Funktion sucht <a>alle
-     *                      Dateien mit dem gegebenen Präfix</a> (im angegebenen
-     *                      Ordner) und fügt sie in aufsteigender Reihenfolge
-     *                      der Animation hinzu.
+     *     Bilder liegen.
+     * @param prefix Das Pfad-Präfix. Diese Funktion sucht <a>alle Dateien mit
+     *     dem gegebenen Präfix</a> (im angegebenen Ordner) und fügt sie in
+     *     aufsteigender Reihenfolge der Animation hinzu.
      */
     public void addState(State state, String directoryPath, String prefix)
     {

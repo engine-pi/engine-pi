@@ -61,12 +61,12 @@ public final class Sound
      * static {@code
      * Resources.sounds().get(String)} method.
      *
-     * @param is   The input stream to load the sound from.
+     * @param is The input stream to load the sound from.
      * @param name The name of this sound file.
-     * @throws IOException                   If something went wrong loading the
-     *                                       file
+     *
+     * @throws IOException If something went wrong loading the file
      * @throws UnsupportedAudioFileException If the audio format is not
-     *                                       supported
+     *     supported
      */
     public Sound(InputStream is, String name)
             throws IOException, UnsupportedAudioFileException

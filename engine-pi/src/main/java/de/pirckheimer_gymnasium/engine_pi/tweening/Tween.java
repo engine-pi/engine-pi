@@ -53,9 +53,9 @@ public class Tween
     /**
      * Instantiates a new tween.
      *
-     * @param target   the {@code Tweenable} target object
-     * @param type     the {@code TweenType} determining which values of the
-     *                 target object will be modified.
+     * @param target the {@code Tweenable} target object
+     * @param type the {@code TweenType} determining which values of the target
+     *     object will be modified.
      * @param duration the duration of the Tween in milliseconds.
      */
     public Tween(final Tweenable target, final TweenType type,
@@ -85,7 +85,8 @@ public class Tween
      * Sets a custom easing function for this Tween.
      *
      * @param easeEquation the {@code TweenEquation} applied to the tween
-     *                     values.
+     *     values.
+     *
      * @return the Tween instance.
      */
     public Tween ease(final TweenEquation easeEquation)
@@ -98,7 +99,8 @@ public class Tween
      * Sets a predefined easing function for this Tween.
      *
      * @param easingFunction the {@code TweenFunction} applied to the tween
-     *                       values.
+     *     values.
+     *
      * @return the Tween instance.
      */
     public Tween ease(final TweenFunction easingFunction)
@@ -235,6 +237,7 @@ public class Tween
      * Sets the target values absolutely.
      *
      * @param targetValues the absolute target values
+     *
      * @return the Tween instance
      */
     public Tween target(final float... targetValues)
@@ -251,7 +254,8 @@ public class Tween
      * Sets the target values relatively to the start values.
      *
      * @param targetValues the relative target values with respect to the start
-     *                     values
+     *     values
+     *
      * @return the Tween instance
      */
     public Tween targetRelative(final float... targetValues)

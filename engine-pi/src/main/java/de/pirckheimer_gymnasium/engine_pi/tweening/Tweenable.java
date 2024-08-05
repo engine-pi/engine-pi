@@ -40,7 +40,8 @@ public interface Tweenable
      * tween type. It is used by the Tween Engine to determine starting values.
      *
      * @param tweenType The tween type of this interpolation, determining which
-     *                  values are modified.
+     *     values are modified.
+     *
      * @return The array of current tween values.
      */
     default float[] getTweenValues(final TweenType tweenType)
@@ -57,7 +58,7 @@ public interface Tweenable
      * interpolated values.
      *
      * @param tweenType The tween type of this interpolation, determining which
-     *                  values are modified.
+     *     values are modified.
      * @param newValues The new values determined by the tween equation.
      */
     default void setTweenValues(final TweenType tweenType,

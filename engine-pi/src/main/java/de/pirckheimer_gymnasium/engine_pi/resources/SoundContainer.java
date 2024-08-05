@@ -54,7 +54,7 @@ public final class SoundContainer extends ResourcesContainer<Sound>
      * Loads a sound from the specified XML resource.
      *
      * @param resource The XML resource that contains the sound as Base64
-     *                 string.
+     *     string.
      *
      * @return The {@code Sound} instance loaded from the specified resource.
      *
@@ -84,7 +84,8 @@ public final class SoundContainer extends ResourcesContainer<Sound>
      * Loads the sound from the specified path and returns it.
      *
      * @param name The path of the file to be loaded.(Can be relative or
-     *             absolute)
+     *     absolute)
+     *
      * @return The loaded Sound from the specified path.
      */
     @Override

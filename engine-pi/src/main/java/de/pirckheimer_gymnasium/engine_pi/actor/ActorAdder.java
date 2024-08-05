@@ -148,7 +148,7 @@ public interface ActorAdder
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
      * <b>Höhe</b>.
      *
-     * @param width  Die <b>Breite</b> des Rechtecks in Meter.
+     * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      *
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
@@ -239,8 +239,8 @@ public interface ActorAdder
      * Erzeugt ein gleichschenkliges Dreieck, dessen Symmetrieachse vertikal
      * ausgerichtet ist. Die Spitze zeigt nach oben.
      *
-     * @param width  Die Breite des gleichschenkligen Dreiecks - genauer gesagt
-     *               die Länge der Basis.
+     * @param width Die Breite des gleichschenkligen Dreiecks - genauer gesagt
+     *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
@@ -301,22 +301,21 @@ public interface ActorAdder
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
      * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
-     * @param content  Der Textinhalt, der dargestellt werden soll.
-     * @param height   Die Höhe des Textes in Meter.
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height Die Höhe des Textes in Meter.
      * @param fontName Der Name des zu verwendenden Fonts.<br>
-     *                 Wird hierfür ein Font verwendet, der in dem Projektordner
-     *                 vorhanden sein soll, <b>und dies ist immer und in jedem
-     *                 Fall zu empfehlen</b>, muss der Name der Schriftart hier
-     *                 ebenfalls einfach nur eingegeben werden, <b>nicht der
-     *                 Name der schriftart-Datei!</b>
-     * @param style    Der Stil der Schriftart (<b>fett, kursiv, oder fett und
-     *                 kursiv</b>).
-     *                 <ul>
-     *                 <li>{@code 0}: Normaler Text</li>
-     *                 <li>{@code 1}: Fett</li>
-     *                 <li>{@code 2}: Kursiv</li>
-     *                 <li>{@code 3}: Fett und Kursiv</li>
-     *                 </ul>
+     *     Wird hierfür ein Font verwendet, der in dem Projektordner vorhanden
+     *     sein soll, <b>und dies ist immer und in jedem Fall zu empfehlen</b>,
+     *     muss der Name der Schriftart hier ebenfalls einfach nur eingegeben
+     *     werden, <b>nicht der Name der schriftart-Datei!</b>
+     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
+     *     kursiv</b>).
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
      *
      * @see Text#Text(String, double, String, int)
      */
@@ -333,8 +332,8 @@ public interface ActorAdder
      * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
      * Schriftstil</b>.
      *
-     * @param content  Der Textinhalt, der dargestellt werden soll.
-     * @param height   Die Höhe des Textes in Meter.
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param height Die Höhe des Textes in Meter.
      * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
      *
      * @see Text#Text(String, double, String)
@@ -351,7 +350,7 @@ public interface ActorAdder
      * in <b>normaler, serifenfreier Standardschrift</b>.
      *
      * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height  Die Höhe des Textes in Meter.
+     * @param height Die Höhe des Textes in Meter.
      *
      * @see Text#Text(String, double)
      */
