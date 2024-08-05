@@ -30,3 +30,5 @@ target/
 screenshot.png
 screenshot.gif
 screenshot.jpg
+
+*.xml.versionsBackup
