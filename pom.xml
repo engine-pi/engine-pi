@@ -107,16 +107,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- https://central.sonatype.org/publish/publish-portal-maven/ -->
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.4.0</version>
+                <version>0.5.0</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <!-- see ~/.m2/settings.xml -->
                     <publishingServerId>central</publishingServerId>
                     <tokenAuth>true</tokenAuth>
                     <autoPublish>true</autoPublish>
                 </configuration>
+            </plugin>
+            <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.17.1</version>
             </plugin>
         </plugins>
     </build>
