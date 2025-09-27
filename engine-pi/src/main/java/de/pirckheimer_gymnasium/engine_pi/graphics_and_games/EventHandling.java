@@ -3,20 +3,24 @@ package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
 /**
  * Zugriff auf die Ereignisse einschließlich Taktgeber.
  *
+ * <p>
+ * Der ursprüngliche Name der Klasse war {@code Ereignisbehandlung}.
+ * </p>
+ *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-public class Ereignisbehandlung
+public class EventHandling
 {
     /**
      * Der Konstruktor meldet den Taktgeber und die Eventlistener bei der
      * Zeichenfläche an.
      */
-    public Ereignisbehandlung()
+    public EventHandling()
     {
-        Zeichenfenster.AktionsEmpfängerEintragen(
-                new Zeichenfenster.AktionsEmpfaenger()
+        DrawingWindow
+                .AktionsEmpfängerEintragen(new DrawingWindow.AktionsEmpfaenger()
                 {
                     public void Ausführen()
                     {
@@ -54,7 +58,7 @@ public class Ereignisbehandlung
      */
     public void Starten()
     {
-        Zeichenfenster.TaktgeberStarten();
+        DrawingWindow.TaktgeberStarten();
     }
 
     /**
@@ -62,7 +66,7 @@ public class Ereignisbehandlung
      */
     public void Anhalten()
     {
-        Zeichenfenster.TaktgeberStoppen();
+        DrawingWindow.TaktgeberStoppen();
     }
 
     /**
@@ -72,7 +76,7 @@ public class Ereignisbehandlung
      */
     public void TaktdauerSetzen(int dauer)
     {
-        Zeichenfenster.TaktdauerSetzen(dauer);
+        DrawingWindow.TaktdauerSetzen(dauer);
     }
 
     /**

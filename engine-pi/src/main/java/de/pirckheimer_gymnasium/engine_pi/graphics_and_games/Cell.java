@@ -12,11 +12,15 @@ package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
  * Sie wird aber in mehreren Projekten verwendet.
  * </p>
  *
+ * <p>
+ * Der ursprüngliche Name der Klasse war {@code Zelle}.
+ * </p>
+ *
  * @author Peter Brichzin
  *
  * @version 1.0
  */
-public class Zelle extends Rechteck
+public class Cell extends Rectangle
 {
     /**
      * Erzeugt und platziert eine Zelle in der gewünschten Farbe.
@@ -25,7 +29,7 @@ public class Zelle extends Rechteck
      * @param yLinksOben y-Wert der Ecke links oben der Zelle
      * @param farbeNeu Farbe der Zelle
      */
-    public Zelle(int xLinksOben, int yLinksOben, String farbeNeu)
+    public Cell(int xLinksOben, int yLinksOben, String farbeNeu)
     {
         super();
         PositionSetzen(xLinksOben, yLinksOben);

@@ -3,11 +3,15 @@ package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
 /**
  * Wrapperklasse für die Turtle auf der Zeichenfläche.
  *
+ * <p>
+ * Der ursprüngliche Name der Klasse war {@code Figur}.
+ * </p>
+ *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-public class Figur
+public class Character
 {
     /**
      * x-Position der Figur.
@@ -42,28 +46,28 @@ public class Figur
     /**
      * Referenz auf das echte Figursymbol.
      */
-    Zeichenfenster.FigurIntern symbol;
+    DrawingWindow.FigurIntern symbol;
 
     /**
      * Referenz auf das Aktionsempfängerobjekt.
      */
-    Zeichenfenster.AktionsEmpfaenger aktionsEmpfänger;
+    DrawingWindow.AktionsEmpfaenger aktionsEmpfänger;
 
     /**
      * Konstruktor der Figur Erzeugt eine Figur und versetzt sie in einen
      * gültigen Startzustand.
      */
-    public Figur()
+    public Character()
     {
-        symbol = (Zeichenfenster.FigurIntern) Zeichenfenster
-                .SymbolErzeugen(Zeichenfenster.SymbolArt.figur);
+        symbol = (DrawingWindow.FigurIntern) DrawingWindow
+                .SymbolErzeugen(DrawingWindow.SymbolArt.figur);
         symbol.SichtbarkeitSetzen(true);
         x = symbol.x;
         y = symbol.y;
         winkel = symbol.winkel;
         größe = symbol.b;
         sichtbar = symbol.sichtbar;
-        aktionsEmpfänger = new Zeichenfenster.AktionsEmpfaenger()
+        aktionsEmpfänger = new DrawingWindow.AktionsEmpfaenger()
         {
             public void Ausführen()
             {
@@ -85,7 +89,7 @@ public class Figur
                 MausGeklickt(x, y, anzahl);
             }
         };
-        Zeichenfenster.AktionsEmpfängerEintragen(aktionsEmpfänger);
+        DrawingWindow.AktionsEmpfängerEintragen(aktionsEmpfänger);
     }
 
     /**
@@ -188,7 +192,7 @@ public class Figur
      */
     public void Entfernen()
     {
-        Zeichenfenster.AktionsEmpfängerEntfernen(aktionsEmpfänger);
+        DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
         symbol.Entfernen();
     }
 

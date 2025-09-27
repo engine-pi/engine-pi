@@ -43,11 +43,15 @@ import javax.swing.event.ChangeListener;
  * werden können. Die Zeichenfläche wird beim ersten Anlegen eines
  * Zeichenobjekts automatisch nach dem Muster Singleton angelegt.
  *
+ * <p>
+ * Der ursprüngliche Name der Klasse war {@code Zeichenfenster}.
+ * </p>
+ *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-public class Zeichenfenster
+public class DrawingWindow
 {
     /**
      * Interface für die Aktionsausführung.
@@ -77,7 +81,7 @@ public class Zeichenfenster
     /**
      * Einziges Objekt der Zeichenfläche.
      */
-    private static Zeichenfenster zeichenfläche = null;
+    private static DrawingWindow zeichenfläche = null;
 
     /**
      * Fenster für die Zeichenfläche.
@@ -122,7 +126,7 @@ public class Zeichenfenster
     /**
      * Legt das Fenster und die Malfläche an
      */
-    private Zeichenfenster()
+    private DrawingWindow()
     {
         alleSymbole = new ArrayList<GrafikSymbol>();
         aktionsEmpfänger = new ArrayList<AktionsEmpfaenger>();
@@ -324,7 +328,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         return zeichenfläche.malfläche.getWidth();
     }
@@ -338,7 +342,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         return zeichenfläche.malfläche.getHeight();
     }
@@ -352,7 +356,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         zeichenfläche.aktionsEmpfänger.add(neu);
     }
@@ -366,7 +370,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         zeichenfläche.aktionsEmpfänger.remove(alt);
     }
@@ -383,7 +387,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         return zeichenfläche.SymbolAnlegen(art);
     }
@@ -395,7 +399,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         zeichenfläche.TaktgeberStartenIntern();
     }
@@ -407,7 +411,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         zeichenfläche.TaktgeberStoppenIntern();
     }
@@ -421,7 +425,7 @@ public class Zeichenfenster
     {
         if (zeichenfläche == null)
         {
-            zeichenfläche = new Zeichenfenster();
+            zeichenfläche = new DrawingWindow();
         }
         zeichenfläche.slider
                 .setValue(dauer < 0 ? 0 : (dauer > 1000 ? 1000 : dauer));
@@ -1360,8 +1364,8 @@ public class Zeichenfenster
              */
             HintergrundBild()
             {
-                bild = new BufferedImage(Zeichenfenster.MalflächenBreiteGeben(),
-                        Zeichenfenster.MalflächenBreiteGeben(),
+                bild = new BufferedImage(DrawingWindow.MalflächenBreiteGeben(),
+                        DrawingWindow.MalflächenBreiteGeben(),
                         BufferedImage.TYPE_INT_ARGB);
                 g = bild.createGraphics();
                 g.setColor(new Color(0, 0, 0, 0));
@@ -1733,25 +1737,25 @@ public class Zeichenfenster
         boolean Berührt(Object object)
         {
             GrafikSymbol s = null;
-            if (object instanceof Rechteck)
+            if (object instanceof Rectangle)
             {
-                s = ((Rechteck) object).symbol;
+                s = ((Rectangle) object).symbol;
             }
-            else if (object instanceof Dreieck)
+            else if (object instanceof Triangle)
             {
-                s = ((Dreieck) object).symbol;
+                s = ((Triangle) object).symbol;
             }
-            else if (object instanceof Kreis)
+            else if (object instanceof Circle)
             {
-                s = ((Kreis) object).symbol;
+                s = ((Circle) object).symbol;
             }
             else if (object instanceof Turtle)
             {
                 s = ((Turtle) object).symbol;
             }
-            else if (object instanceof Figur)
+            else if (object instanceof Character)
             {
-                s = ((Figur) object).symbol;
+                s = ((Character) object).symbol;
             }
             return (s != null) && (s != this) && s.IstInnerhalb(x, y)
                     && s.sichtbar && (!(s instanceof TurtleIntern)
@@ -2080,25 +2084,25 @@ public class Zeichenfenster
         boolean Berührt(Object object)
         {
             GrafikSymbol s = null;
-            if (object instanceof Rechteck)
+            if (object instanceof Rectangle)
             {
-                s = ((Rechteck) object).symbol;
+                s = ((Rectangle) object).symbol;
             }
-            else if (object instanceof Dreieck)
+            else if (object instanceof Triangle)
             {
-                s = ((Dreieck) object).symbol;
+                s = ((Triangle) object).symbol;
             }
-            else if (object instanceof Kreis)
+            else if (object instanceof Circle)
             {
-                s = ((Kreis) object).symbol;
+                s = ((Circle) object).symbol;
             }
             else if (object instanceof Turtle)
             {
                 s = ((Turtle) object).symbol;
             }
-            else if (object instanceof Figur)
+            else if (object instanceof Character)
             {
-                s = ((Figur) object).symbol;
+                s = ((Character) object).symbol;
             }
             return (s != null) && (s != this) && s.Schneidet(form) && s.sichtbar
                     && (!(s instanceof TurtleIntern)

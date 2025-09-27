@@ -47,12 +47,12 @@ public class Turtle
     /**
      * Referenz auf das echte Turtlesybol.
      */
-    Zeichenfenster.TurtleIntern symbol;
+    DrawingWindow.TurtleIntern symbol;
 
     /**
      * Referenz auf das Aktionsempfängerobjekt.
      */
-    Zeichenfenster.AktionsEmpfaenger aktionsEmpfänger;
+    DrawingWindow.AktionsEmpfaenger aktionsEmpfänger;
 
     /**
      * Konstruktor der Turtle Erzeugt eine Turtle und versetzt sie in einen
@@ -60,8 +60,8 @@ public class Turtle
      */
     public Turtle()
     {
-        symbol = (Zeichenfenster.TurtleIntern) Zeichenfenster
-                .SymbolErzeugen(Zeichenfenster.SymbolArt.turtle);
+        symbol = (DrawingWindow.TurtleIntern) DrawingWindow
+                .SymbolErzeugen(DrawingWindow.SymbolArt.turtle);
         symbol.SichtbarkeitSetzen(true);
         x = symbol.x;
         y = symbol.y;
@@ -69,7 +69,7 @@ public class Turtle
         größe = symbol.b;
         stiftUnten = symbol.stiftUnten;
         sichtbar = symbol.sichtbar;
-        aktionsEmpfänger = new Zeichenfenster.AktionsEmpfaenger()
+        aktionsEmpfänger = new DrawingWindow.AktionsEmpfaenger()
         {
             public void Ausführen()
             {
@@ -91,7 +91,7 @@ public class Turtle
                 MausGeklickt(x, y, anzahl);
             }
         };
-        Zeichenfenster.AktionsEmpfängerEintragen(aktionsEmpfänger);
+        DrawingWindow.AktionsEmpfängerEintragen(aktionsEmpfänger);
     }
 
     /**
@@ -207,7 +207,7 @@ public class Turtle
      */
     public void Entfernen()
     {
-        Zeichenfenster.AktionsEmpfängerEntfernen(aktionsEmpfänger);
+        DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
         symbol.Entfernen();
     }
 

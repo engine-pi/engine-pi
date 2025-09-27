@@ -1,83 +1,93 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
 
 /**
- * Wrapperklasse für einen Kreis auf der Zeichenfläche.
+ * Wrapperklasse für ein Rechteck auf der Zeichenfläche.
+ *
+ * <p>
+ * Der ursprüngliche Name der Klasse war {@code Rechteck}.
+ * </p>
  *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-public class Kreis
+public class Rectangle
 {
     /**
-     * x-Position des Kreismittelpunktes.
+     * x-Position der linken oberen Ecke.
      */
     public int x;
 
     /**
-     * y-Position des Kreismittelpunktes.
+     * y-Position der linken oberen Ecke.
      */
     public int y;
 
     /**
-     * Radius des Kreises.
+     * Breite des Rechtecks.
      */
-    public int radius;
+    public int breite;
 
     /**
-     * Farbe des Kreises.
+     * Höhe des Rechtecks.
+     */
+    public int höhe;
+
+    /**
+     * Farbe des Rechtecks.
      */
     public String farbe;
 
     /**
-     * Sichtbarkeit des Kreises.
+     * Sichtbarkeit des Rechtecks.
      */
     public boolean sichtbar;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Kreises in Grad.
+     * Drehwinkel (mathematisch positiver Drehsinn) des Rechtecks in Grad.
      */
     public int winkel;
 
     /**
      * Referenz auf das Delegate-Objekt.
      */
-    Zeichenfenster.GrafikSymbol symbol;
+    DrawingWindow.GrafikSymbol symbol;
 
     /**
      * Der Konstruktor erzeugt das Delegate-Objekt
      */
-    public Kreis()
+    public Rectangle()
     {
-        x = 60;
-        y = 60;
-        radius = 50;
+        x = 10;
+        y = 10;
+        breite = 100;
+        höhe = 100;
         farbe = "rot";
         sichtbar = true;
         winkel = 0;
-        symbol = Zeichenfenster.SymbolErzeugen(Zeichenfenster.SymbolArt.kreis);
-        symbol.PositionSetzen(x - radius, y - radius);
-        symbol.GrößeSetzen(radius * 2, radius * 2);
+        symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.rechteck);
+        symbol.PositionSetzen(x, y);
+        symbol.GrößeSetzen(breite, höhe);
         symbol.FarbeSetzen(farbe);
         symbol.SichtbarkeitSetzen(sichtbar);
         symbol.WinkelSetzen(winkel);
     }
 
     /**
-     * Setzt die Position (des Mittelpunkts) des Kreises.
+     * Setzt die Position (der linken oberen Ecke) des Rechtecks.
      *
-     * @param x x-Position des Mittelpunkts
-     * @param y y-Position des Mittelpunkts
+     * @param x x-Position der linken oberen Ecke
+     * @param y y-Position der linken oberen Ecke
      */
     public void PositionSetzen(int x, int y)
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.PositionSetzen(x, y);
     }
 
     /**
-     * Verschiebt den Kreis um die angegebenen Werte.
+     * Verschiebt das Rechteck um die angegebenen Werte.
      *
      * @param deltaX Verschiebung in x-Richtung
      * @param deltaY Verschiebung in y-Richtung
@@ -86,11 +96,11 @@ public class Kreis
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.PositionSetzen(x, y);
     }
 
     /**
-     * Dreht den Kreis
+     * Dreht das Rechteck
      *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
@@ -101,19 +111,20 @@ public class Kreis
     }
 
     /**
-     * Setzt den Radius des Kreises.
+     * Setzt die Größe des Rechtecks.
      *
-     * @param radius (neuer) Radius
+     * @param breite (neue) Breite
+     * @param höhe (neue) Höhe
      */
-    public void RadiusSetzen(int radius)
+    public void GrößeSetzen(int breite, int höhe)
     {
-        this.radius = radius;
-        symbol.GrößeSetzen(radius * 2, radius * 2);
-        symbol.PositionSetzen(x - radius, y - radius);
+        this.breite = breite;
+        this.höhe = höhe;
+        symbol.GrößeSetzen(breite, höhe);
     }
 
     /**
-     * Setzt die Farbe des Kreises. Erlaubte Farben sind: "weiß", "weiss",
+     * Setzt die Farbe des Rechtecks. Erlaubte Farben sind: "weiß", "weiss",
      * "rot", "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
      * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
@@ -127,11 +138,11 @@ public class Kreis
     }
 
     /**
-     * Setzt den Drehwinkel des Kreises. Die Winkelangabe ist in Grad,positive
+     * Setzt den Drehwinkel des Rechtecks. Die Winkelangabe ist in Grad,positive
      * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
-     * @param winkel der (neue) Drehwinkel des Kreises
+     * @param winkel der (neue) Drehwinkel des Rechtecks
      */
     public void WinkelSetzen(int winkel)
     {
@@ -140,10 +151,10 @@ public class Kreis
     }
 
     /**
-     * Schaltet die Sichtbarkeit des Kreises ein oder aus. Erlaubte
+     * Schaltet die Sichtbarkeit des Rechtecks ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
-     * @param sichtbar (neue) Sichtbarkeit des Kreises
+     * @param sichtbar (neue) Sichtbarkeit des Rechtecks
      */
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
@@ -152,7 +163,7 @@ public class Kreis
     }
 
     /**
-     * Entfernt den Kreis aus dem Zeichenfenster.
+     * Entfernt das Rechteck aus dem Zeichenfenster.
      */
     public void Entfernen()
     {
@@ -160,7 +171,7 @@ public class Kreis
     }
 
     /**
-     * Bringt den Kreis eine Ebene nach vorn.
+     * Bringt das Rechteck eine Ebene nach vorn.
      */
     public void NachVornBringen()
     {
@@ -168,7 +179,7 @@ public class Kreis
     }
 
     /**
-     * Bringt den Kreis in die vorderste Ebene.
+     * Bringt das Rechteck in die vorderste Ebene.
      */
     public void GanzNachVornBringen()
     {
@@ -176,7 +187,7 @@ public class Kreis
     }
 
     /**
-     * Bringt den Kreis eine Ebene nach hinten.
+     * Bringt das Rechteck eine Ebene nach hinten.
      */
     public void NachHintenBringen()
     {
@@ -184,7 +195,7 @@ public class Kreis
     }
 
     /**
-     * Bringt den Kreis in die hinterste Ebene.
+     * Bringt das Rechteck in die hinterste Ebene.
      */
     public void GanzNachHintenBringen()
     {

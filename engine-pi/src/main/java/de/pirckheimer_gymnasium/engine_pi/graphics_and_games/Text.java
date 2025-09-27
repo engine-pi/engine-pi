@@ -42,7 +42,7 @@ public class Text
     /**
      * Referenz auf das Delegate-Objekt.
      */
-    public Zeichenfenster.TextIntern symbol;
+    public DrawingWindow.TextIntern symbol;
 
     /**
      * Der Konstruktor erzeugt das Delegate-Objekt
@@ -55,8 +55,8 @@ public class Text
         sichtbar = true;
         winkel = 0;
         textgröße = 12;
-        symbol = (Zeichenfenster.TextIntern) Zeichenfenster
-                .SymbolErzeugen(Zeichenfenster.SymbolArt.text);
+        symbol = (DrawingWindow.TextIntern) DrawingWindow
+                .SymbolErzeugen(DrawingWindow.SymbolArt.text);
         symbol.PositionSetzen(x, y);
         symbol.FarbeSetzen(farbe);
         symbol.SichtbarkeitSetzen(sichtbar);
