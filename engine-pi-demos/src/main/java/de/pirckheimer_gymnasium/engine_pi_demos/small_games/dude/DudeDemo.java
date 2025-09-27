@@ -55,13 +55,10 @@ public class DudeDemo extends Scene
         character.makeDynamic();
         /*
          * weird = new Rectangle(2, 0.2); weird.setColor(Color.ORANGE);
-         * weird.makeDynamic(); weird.setPosition(0.3, 0.6);
-         *
-         * Rectangle weird2 = new Rectangle(2, 0.2);
-         * weird2.setColor(Color.GREEN); weird2.makeDynamic();
-         * weird2.setPosition(2, 0.6); weird2.createRevoluteJoint(weird, new
-         * Vector(0.1, 0.1)); add(weird2);
-         *
+         * weird.makeDynamic(); weird.setPosition(0.3, 0.6); Rectangle weird2 =
+         * new Rectangle(2, 0.2); weird2.setColor(Color.GREEN);
+         * weird2.makeDynamic(); weird2.setPosition(2, 0.6);
+         * weird2.createRevoluteJoint(weird, new Vector(0.1, 0.1)); add(weird2);
          * Rectangle boxy = new Rectangle(0.2, 0.2); boxy.setColor(Color.WHITE);
          * boxy.makeDynamic(); boxy.setPosition(3, 0); //boxy.move(10, 10);
          */

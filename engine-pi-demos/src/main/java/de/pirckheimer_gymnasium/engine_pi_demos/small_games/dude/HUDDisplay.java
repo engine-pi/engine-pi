@@ -123,10 +123,10 @@ public class HUDDisplay
     /**
      * Ändert den anzuzeigenden Wert eines der Attribute im HUD.
      *
-     * @param lineIndex    Index der zu ändernden Zeile
-     * @param lineValue    Wert der zu ändernden Zeile.
+     * @param lineIndex Index der zu ändernden Zeile
+     * @param lineValue Wert der zu ändernden Zeile.
      * @param fullCapFinal true: Soll der letzte Wert voll dargestellt werden
-     *                     oder halb?
+     *     oder halb?
      */
     private void setLineValue(int lineIndex, int lineValue,
             boolean fullCapFinal)

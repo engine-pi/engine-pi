@@ -74,8 +74,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
      * Berechnet einen Punkt auf der Kreislinie.
      *
      * @param radius Der Radius des Kreises.
-     * @param angle  Der Winkel, der die Lage des Punktes angibt (0 = rechts, 90
-     *               = oben, 180 = links, 270 = unten).
+     * @param angle Der Winkel, der die Lage des Punktes angibt (0 = rechts, 90
+     *     = oben, 180 = links, 270 = unten).
      *
      * @return Ein Punkt, der auf der Kreislinie liegt.
      *
