@@ -73,22 +73,22 @@ public class Turtle
         {
             public void Ausführen()
             {
-                AktionAusführen();
+                performAction();
             }
 
             public void Taste(char taste)
             {
-                TasteGedrückt(taste);
+                onKeyPressed(taste);
             }
 
             public void SonderTaste(int taste)
             {
-                SonderTasteGedrückt(taste);
+                onSpecialKeyPressed(taste);
             }
 
             public void Geklickt(int x, int y, int anzahl)
             {
-                MausGeklickt(x, y, anzahl);
+                onMouseClick(x, y, anzahl);
             }
         };
         DrawingWindow.AktionsEmpfängerEintragen(aktionsEmpfänger);
@@ -97,8 +97,14 @@ public class Turtle
     /**
      * Methode wird aufgerufen, wenn die Turtle handeln soll. Die vordefinierte
      * Methode tut nichts.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code AktionAusführen}.
+     * </p>
+     *
      */
-    public void AktionAusführen()
+    public void performAction()
     {
     }
 
@@ -106,9 +112,13 @@ public class Turtle
      * Die eigentliche Aktionsmethode für gedrückte Tasten. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
+     * </p>
+     *
      * @param taste die gedrückte Taste
      */
-    public void TasteGedrückt(char taste)
+    public void onKeyPressed(char taste)
     {
         // System. out. println ("Taste: " + taste);
     }
@@ -117,9 +127,14 @@ public class Turtle
      * Die eigentliche Aktionsmethode für gedrückte Sondertasten. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SonderTasteGedrückt}.
+     * </p>
+     *
      * @param taste KeyCode der gedrückten Taste
      */
-    public void SonderTasteGedrückt(int taste)
+    public void onSpecialKeyPressed(int taste)
     {
         // System. out. println ("Sondertaste: " + taste);
     }
@@ -128,11 +143,15 @@ public class Turtle
      * Die eigentliche Aktionsmethode für einen Mausklick. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
+     * </p>
+     *
      * @param x x-Position des Mausklicks
      * @param y y-Position des Mausklicks
      * @param anzahl Anzahl der aufeinanderfolgenden Mausklicks
      */
-    public void MausGeklickt(int x, int y, int anzahl)
+    public void onMouseClick(int x, int y, int anzahl)
     {
         System.out.println("Maus: (" + x + "|" + y + "), " + anzahl + " mal");
     }
@@ -140,10 +159,14 @@ public class Turtle
     /**
      * Setzt die Position der Turtle.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * </p>
+     *
      * @param x x-Position der Turtle
      * @param y y-Position der Turtle
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -153,9 +176,13 @@ public class Turtle
     /**
      * Setzt die Größe des Turtlesymbols.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * </p>
+     *
      * @param größe (neue) Größe
      */
-    public void GrößeSetzen(int größe)
+    public void setSize(int größe)
     {
         this.größe = größe;
         symbol.GrößeSetzen(größe, größe);
@@ -167,9 +194,13 @@ public class Turtle
      * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * </p>
+     *
      * @param farbe (neue) Farbe
      */
-    public void FarbeSetzen(String farbe)
+    public void setColor(String farbe)
     {
         this.farbe = farbe;
         symbol.FarbeSetzen(farbe);
@@ -182,9 +213,13 @@ public class Turtle
      * nach rechts, 90˚: Turtle schaut nach oben, 180˚: Turtle schaut nach
      * links, 270˚bzw. -90˚: Turtle schaut nach unten
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * </p>
+     *
      * @param winkel der (neue) Drehwinkel der Turtle
      */
-    public void WinkelSetzen(int winkel)
+    public void setAngle(int winkel)
     {
         this.winkel = winkel;
         symbol.WinkelSetzen(winkel);
@@ -194,9 +229,14 @@ public class Turtle
      * Schaltet die Sichtbarkeit der Turtle ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SichtbarkeitSetzen}.
+     * </p>
+     *
      * @param sichtbar (neue) Sichtbarkeit der Turtle
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
         symbol.SichtbarkeitSetzen(sichtbar);
@@ -204,8 +244,13 @@ public class Turtle
 
     /**
      * Entfernt die Turtle aus dem Zeichenfenster.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * </p>
+     *
      */
-    public void Entfernen()
+    public void remove()
     {
         DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
         symbol.Entfernen();
@@ -213,6 +258,12 @@ public class Turtle
 
     /**
      * Bringt die Turtle eine Ebene nach vorn.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachVornBringen}.
+     * </p>
+     *
      */
     public void NachVornBringen()
     {
@@ -221,6 +272,12 @@ public class Turtle
 
     /**
      * Bringt die Turtle in die vorderste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachVornBringen}.
+     * </p>
+     *
      */
     public void GanzNachVornBringen()
     {
@@ -229,6 +286,12 @@ public class Turtle
 
     /**
      * Bringt die Turtle eine Ebene nach hinten.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachHintenBringen}.
+     * </p>
+     *
      */
     public void NachHintenBringen()
     {
@@ -237,6 +300,12 @@ public class Turtle
 
     /**
      * Bringt die Turtle in die hinterste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachHintenBringen}.
+     * </p>
+     *
      */
     public void GanzNachHintenBringen()
     {
@@ -245,8 +314,14 @@ public class Turtle
 
     /**
      * Setzt die Turtle wieder an ihre Ausgangsposition.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code ZumStartpunktGehen}.
+     * </p>
+     *
      */
-    public void ZumStartpunktGehen()
+    public void moveToStartPoint()
     {
         symbol.ZumStartpunktGehen();
         x = symbol.x;
@@ -257,9 +332,13 @@ public class Turtle
     /**
      * Bewegt die Turtle nach vorne.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+     * </p>
+     *
      * @param länge Anzahl der Längeneinheiten
      */
-    public void Gehen(double länge)
+    public void move(double länge)
     {
         symbol.Gehen(länge);
         x = symbol.x;
@@ -269,26 +348,40 @@ public class Turtle
     /**
      * Dreht die Turtle
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * </p>
+     *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
      */
-    public void Drehen(int grad)
+    public void rotate(int grad)
     {
         symbol.Drehen(grad);
         winkel = symbol.winkel;
     }
 
     /**
-     * Versetzt Zeichenfläche und Turtle in den Ausgangszustand
+     * Versetzt Zeichenfläche und Turtle in den Ausgangszustand.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
+     * </p>
+     *
      */
-    public void Löschen()
+    public void reset()
     {
         symbol.Löschen();
     }
 
     /**
      * Turtle wechselt in den Modus "nicht zeichnen"
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
+     * </p>
+     *
      */
-    public void StiftHeben()
+    public void liftPen()
     {
         symbol.StiftHeben();
         stiftUnten = false;
@@ -296,8 +389,12 @@ public class Turtle
 
     /**
      * Turtle wechselt in den Modus "zeichnen"
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code StiftSenken}.
+     * </p>
      */
-    public void StiftSenken()
+    public void lowerPen()
     {
         symbol.StiftSenken();
         stiftUnten = true;
@@ -310,9 +407,13 @@ public class Turtle
      * Turtle schaut nach rechts, 90˚: Turtle schaut nach oben, 180˚: Turtle
      * schaut nach links, 270˚bzw. -90˚: Turtle schaut nach unten
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
+     * </p>
+     *
      * @return Winkel im Gradmass
      */
-    public int WinkelGeben()
+    public int getAngle()
     {
         return winkel;
     }
@@ -320,19 +421,27 @@ public class Turtle
     /**
      * Gibt die x-Koordinate der Turtle zurück
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
+     * </p>
+     *
      * @return x-Koordinate
      */
-    public int XPositionGeben()
+    public int getX()
     {
         return x;
     }
 
     /**
-     * Gibt die y-Koordinate der Turtle zurück
+     * Gibt die y-Koordinate der Turtle zurück.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
+     * </p>
      *
      * @return y-Koordinate
      */
-    public int YPositionGeben()
+    public int getY()
     {
         return y;
     }
@@ -341,9 +450,14 @@ public class Turtle
      * Schaltet die Sichtbarkeit des Turtlesymbols ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SichtbarkeitFürSymbolSetzen}.
+     * </p>
+     *
      * @param sichtbar (neue) Sichtbarkeit des Turtlesymbols
      */
-    public void SichtbarkeitFürSymbolSetzen(boolean sichtbar)
+    public void setSymbolVisibility(boolean sichtbar)
     {
         symbol.SichtbarkeitFürSymbolSetzen(sichtbar);
     }
@@ -351,9 +465,13 @@ public class Turtle
     /**
      * Testet, ob die Turtle eine Figur berührt.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
+     *
      * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur sind
      */
-    public boolean Berührt()
+    public boolean isTouching()
     {
         return symbol.Berührt();
     }
@@ -361,12 +479,16 @@ public class Turtle
     /**
      * Testet, ob die Turtle eine Figur in der angegebenen Farbe berührt.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
+     *
      * @param farbe die Farbe, die die berührte Figur haben muss.
      *
      * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur in
      *     der angegebenen Farbe sind
      */
-    public boolean Berührt(String farbe)
+    public boolean isTouching(String farbe)
     {
         return symbol.Berührt(farbe);
     }
@@ -374,12 +496,16 @@ public class Turtle
     /**
      * Testet, ob die Turtle die angegebene Figur berührt.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
+     *
      * @param objekt das Objekt, das getestet werden soll.
      *
      * @return true, wenn die Turtlekoordinaten innerhalb der angegebenen
      *     Grafikfigur sind
      */
-    public boolean Berührt(Object objekt)
+    public boolean isTouching(Object objekt)
     {
         return symbol.Berührt(objekt);
     }
