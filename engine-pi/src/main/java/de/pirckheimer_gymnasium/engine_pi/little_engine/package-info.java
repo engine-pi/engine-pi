@@ -18,4 +18,4 @@
  * "https://informatikschulbuch.de/wp-content/daten/Informatik3/Vorlagen/Kapitel4/BlueJ_Java/GraphicsAndGames_BlueJ_Java.zip">GraphicsAndGames
  * auf informatikschulbuch.de</a>
  */
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;

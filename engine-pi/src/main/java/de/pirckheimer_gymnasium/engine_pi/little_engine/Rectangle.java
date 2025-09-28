@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
  * Wrapperklasse für ein Rechteck auf der Zeichenfläche.
@@ -200,7 +200,7 @@ public class Rectangle
      */
     public void Entfernen()
     {
-        symbol.Entfernen();
+        symbol.remove();
     }
 
     /**
@@ -213,7 +213,7 @@ public class Rectangle
      */
     public void NachVornBringen()
     {
-        symbol.NachVornBringen();
+        symbol.raiseLayer();
     }
 
     /**

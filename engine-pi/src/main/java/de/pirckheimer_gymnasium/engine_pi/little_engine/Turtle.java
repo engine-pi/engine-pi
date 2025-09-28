@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
  * Wrapperklasse für die Turtle auf der Zeichenfläche.
@@ -21,28 +21,48 @@ public class Turtle
 
     /**
      * Größe der Turtle.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code größe}.
+     * </p>
      */
-    public int größe;
+    public int size;
 
     /**
      * Farbe der Turtle.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
      * Sichtbarkeit der Turtles.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
      * Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
      * Stiftposition
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code stiftUnten}.
+     * </p>
      */
-    public boolean stiftUnten;
+    public boolean penDown;
 
     /**
      * Referenz auf das echte Turtlesybol.
@@ -51,6 +71,10 @@ public class Turtle
 
     /**
      * Referenz auf das Aktionsempfängerobjekt.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code}.
+     * </p>
      */
     DrawingWindow.AktionsEmpfaenger aktionsEmpfänger;
 
@@ -65,10 +89,10 @@ public class Turtle
         symbol.SichtbarkeitSetzen(true);
         x = symbol.x;
         y = symbol.y;
-        winkel = symbol.winkel;
-        größe = symbol.b;
-        stiftUnten = symbol.stiftUnten;
-        sichtbar = symbol.sichtbar;
+        rotation = symbol.winkel;
+        size = symbol.b;
+        penDown = symbol.stiftUnten;
+        visible = symbol.sichtbar;
         aktionsEmpfänger = new DrawingWindow.AktionsEmpfaenger()
         {
             public void Ausführen()
@@ -102,7 +126,6 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code AktionAusführen}.
      * </p>
-     *
      */
     public void performAction()
     {
@@ -180,12 +203,12 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
-     * @param größe (neue) Größe
+     * @param size (neue) Größe
      */
-    public void setSize(int größe)
+    public void setSize(int size)
     {
-        this.größe = größe;
-        symbol.GrößeSetzen(größe, größe);
+        this.size = size;
+        symbol.GrößeSetzen(size, size);
     }
 
     /**
@@ -198,12 +221,12 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param farbe (neue) Farbe
+     * @param color (neue) Farbe
      */
-    public void setColor(String farbe)
+    public void setColor(String color)
     {
-        this.farbe = farbe;
-        symbol.FarbeSetzen(farbe);
+        this.color = color;
+        symbol.FarbeSetzen(color);
     }
 
     /**
@@ -217,12 +240,12 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param winkel der (neue) Drehwinkel der Turtle
+     * @param rotation der (neue) Drehwinkel der Turtle
      */
-    public void setAngle(int winkel)
+    public void setAngle(int rotation)
     {
-        this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        this.rotation = rotation;
+        symbol.WinkelSetzen(rotation);
     }
 
     /**
@@ -234,12 +257,12 @@ public class Turtle
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
-     * @param sichtbar (neue) Sichtbarkeit der Turtle
+     * @param visible (neue) Sichtbarkeit der Turtle
      */
-    public void setVisibility(boolean sichtbar)
+    public void setVisibility(boolean visible)
     {
-        this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        this.visible = visible;
+        symbol.SichtbarkeitSetzen(visible);
     }
 
     /**
@@ -253,7 +276,7 @@ public class Turtle
     public void remove()
     {
         DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
-        symbol.Entfernen();
+        symbol.remove();
     }
 
     /**
@@ -267,7 +290,7 @@ public class Turtle
      */
     public void raiseLayer()
     {
-        symbol.NachVornBringen();
+        symbol.raiseLayer();
     }
 
     /**
@@ -318,14 +341,13 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code ZumStartpunktGehen}.
      * </p>
-     *
      */
     public void moveToStartPoint()
     {
-        symbol.ZumStartpunktGehen();
+        symbol.moveToStartPoint();
         x = symbol.x;
         y = symbol.y;
-        winkel = symbol.winkel;
+        rotation = symbol.winkel;
     }
 
     /**
@@ -339,7 +361,7 @@ public class Turtle
      */
     public void move(double länge)
     {
-        symbol.Gehen(länge);
+        symbol.move(länge);
         x = symbol.x;
         y = symbol.y;
     }
@@ -351,12 +373,12 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
-     * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
+     * @param rotation Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
      */
-    public void rotate(int grad)
+    public void rotate(int rotation)
     {
-        symbol.Drehen(grad);
-        winkel = symbol.winkel;
+        symbol.rotate(rotation);
+        rotation = symbol.winkel;
     }
 
     /**
@@ -365,11 +387,10 @@ public class Turtle
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
      * </p>
-     *
      */
     public void reset()
     {
-        symbol.Löschen();
+        symbol.reset();
     }
 
     /**
@@ -378,12 +399,11 @@ public class Turtle
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
      * </p>
-     *
      */
     public void liftPen()
     {
-        symbol.StiftHeben();
-        stiftUnten = false;
+        symbol.liftPen();
+        penDown = false;
     }
 
     /**
@@ -395,8 +415,8 @@ public class Turtle
      */
     public void lowerPen()
     {
-        symbol.StiftSenken();
-        stiftUnten = true;
+        symbol.lowerPen();
+        penDown = true;
     }
 
     /**
@@ -414,7 +434,7 @@ public class Turtle
      */
     public int getRotation()
     {
-        return winkel;
+        return rotation;
     }
 
     /**
@@ -454,11 +474,11 @@ public class Turtle
      * {@code SichtbarkeitFürSymbolSetzen}.
      * </p>
      *
-     * @param sichtbar (neue) Sichtbarkeit des Turtlesymbols
+     * @param visible (neue) Sichtbarkeit des Turtlesymbols
      */
-    public void setSymbolVisibility(boolean sichtbar)
+    public void setSymbolVisibility(boolean visible)
     {
-        symbol.SichtbarkeitFürSymbolSetzen(sichtbar);
+        symbol.setSymbolVisibility(visible);
     }
 
     /**
@@ -472,7 +492,7 @@ public class Turtle
      */
     public boolean isTouching()
     {
-        return symbol.Berührt();
+        return symbol.isTouching();
     }
 
     /**
@@ -482,14 +502,14 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @param farbe die Farbe, die die berührte Figur haben muss.
+     * @param color die Farbe, die die berührte Figur haben muss.
      *
      * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur in
      *     der angegebenen Farbe sind
      */
-    public boolean isTouching(String farbe)
+    public boolean isTouching(String color)
     {
-        return symbol.Berührt(farbe);
+        return symbol.isTouching(color);
     }
 
     /**
@@ -499,13 +519,13 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @param objekt das Objekt, das getestet werden soll.
+     * @param object das Objekt, das getestet werden soll.
      *
      * @return true, wenn die Turtlekoordinaten innerhalb der angegebenen
      *     Grafikfigur sind
      */
-    public boolean isTouching(Object objekt)
+    public boolean isTouching(Object object)
     {
-        return symbol.Berührt(objekt);
+        return symbol.isTouching(object);
     }
 }

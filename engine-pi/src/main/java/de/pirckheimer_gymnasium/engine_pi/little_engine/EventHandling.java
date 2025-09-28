@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
  * Zugriff auf die Ereignisse einschließlich Taktgeber.

@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
  * Wrapperklasse für einen Text auf der Zeichenfläche.
@@ -231,7 +231,7 @@ public class Text
      */
     public void Entfernen()
     {
-        symbol.Entfernen();
+        symbol.remove();
     }
 
     /**
@@ -244,7 +244,7 @@ public class Text
      */
     public void NachVornBringen()
     {
-        symbol.NachVornBringen();
+        symbol.raiseLayer();
     }
 
     /**

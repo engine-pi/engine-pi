@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -825,7 +825,7 @@ public class DrawingWindow
          * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
          * </p>
          */
-        void Entfernen()
+        void remove()
         {
             synchronized (zeichenfläche.malfläche)
             {
@@ -842,7 +842,7 @@ public class DrawingWindow
          * {@code NachVornBringen}.
          * </p>
          */
-        void NachVornBringen()
+        void raiseLayer()
         {
             synchronized (zeichenfläche.malfläche)
             {
@@ -1830,7 +1830,7 @@ public class DrawingWindow
          * {@code ZumStartpunktGehen}.
          * </p>
          */
-        void ZumStartpunktGehen()
+        void moveToStartPoint()
         {
             x = homeX;
             y = homeY;
@@ -1850,7 +1850,7 @@ public class DrawingWindow
          *
          * @param länge Anzahl der Längeneinheiten
          */
-        void Gehen(double länge)
+        void move(double länge)
         {
             double neuX = xD + Math.cos(DrehwinkelGeben(winkel)) * länge;
             double neuY = yD + Math.sin(DrehwinkelGeben(winkel)) * länge;
@@ -1880,7 +1880,7 @@ public class DrawingWindow
          *
          * @param grad Drehwinkel im Gradmass
          */
-        void Drehen(int grad)
+        void rotate(int grad)
         {
             winkel = WinkelNormieren(winkel + grad);
             FormErzeugen();
@@ -1894,11 +1894,11 @@ public class DrawingWindow
          * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
          * </p>
          */
-        void Löschen()
+        void reset()
         {
             linien.clear();
             hintergrund = new HintergrundBild();
-            ZumStartpunktGehen();
+            moveToStartPoint();
         }
 
         /**
@@ -1908,7 +1908,7 @@ public class DrawingWindow
          * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
          * </p>
          */
-        void StiftHeben()
+        void liftPen()
         {
             stiftUnten = false;
         }
@@ -1921,7 +1921,7 @@ public class DrawingWindow
          * {@code StiftSenken}.
          * </p>
          */
-        void StiftSenken()
+        void lowerPen()
         {
             stiftUnten = true;
         }
@@ -1937,7 +1937,7 @@ public class DrawingWindow
          *
          * @param sichtbar (neue) Sichtbarkeit des Turtlesymbols
          */
-        void SichtbarkeitFürSymbolSetzen(boolean sichtbar)
+        void setSymbolVisibility(boolean sichtbar)
         {
             symbolSichtbar = sichtbar;
             zeichenfläche.malfläche.repaint();
@@ -1953,7 +1953,7 @@ public class DrawingWindow
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
          *     sind
          */
-        boolean Berührt()
+        boolean isTouching()
         {
             for (GrafikSymbol g : zeichenfläche.alleSymbole)
             {
@@ -1980,7 +1980,7 @@ public class DrawingWindow
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
          *     in der angegebenen Farbe sind
          */
-        boolean Berührt(String farbe)
+        boolean isTouching(String farbe)
         {
             Color c2 = FarbeCodieren(farbe);
             boolean ok = false;
@@ -2050,7 +2050,7 @@ public class DrawingWindow
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
          *     in der angegebenen Farbe sind
          */
-        boolean Berührt(Object object)
+        boolean isTouching(Object object)
         {
             GrafikSymbol s = null;
             if (object instanceof Rectangle)

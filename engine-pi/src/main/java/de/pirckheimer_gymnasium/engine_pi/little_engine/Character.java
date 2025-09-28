@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
  * Wrapperklasse für die Turtle auf der Zeichenfläche.
@@ -232,7 +232,7 @@ public class Character
     public void Entfernen()
     {
         DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
-        symbol.Entfernen();
+        symbol.remove();
     }
 
     /**
@@ -245,7 +245,7 @@ public class Character
      */
     public void NachVornBringen()
     {
-        symbol.NachVornBringen();
+        symbol.raiseLayer();
     }
 
     /**

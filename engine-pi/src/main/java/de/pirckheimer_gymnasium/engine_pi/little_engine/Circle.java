@@ -1,50 +1,45 @@
-package de.pirckheimer_gymnasium.engine_pi.graphics_and_games;
+package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
- * Wrapperklasse für ein Dreieck auf der Zeichenfläche.
+ * Wrapperklasse für einen Kreis auf der Zeichenfläche.
  *
  * <p>
- * Der ursprüngliche Name der Klasse war {@code Dreieck}.
+ * Der ursprüngliche Name der Klasse war {@code Kreis}.
  * </p>
  *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-public class Triangle
+public class Circle
 {
     /**
-     * x-Position der Spitze.
+     * x-Position des Kreismittelpunktes.
      */
     public int x;
 
     /**
-     * y-Position der Spitze.
+     * y-Position des Kreismittelpunktes.
      */
     public int y;
 
     /**
-     * Breite des umgebenden Rechtecks.
+     * Radius des Kreises.
      */
-    public int breite;
+    public int radius;
 
     /**
-     * Höhe des umgebenden Rechtecks.
-     */
-    public int höhe;
-
-    /**
-     * Farbe des Dreiecks.
+     * Farbe des Kreises.
      */
     public String farbe;
 
     /**
-     * Sichtbarkeit des Dreiecks.
+     * Sichtbarkeit des Kreises.
      */
     public boolean sichtbar;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Dreiecks in Grad.
+     * Drehwinkel (mathematisch positiver Drehsinn) des Kreises in Grad.
      */
     public int winkel;
 
@@ -56,42 +51,41 @@ public class Triangle
     /**
      * Der Konstruktor erzeugt das Delegate-Objekt
      */
-    public Triangle()
+    public Circle()
     {
         x = 60;
-        y = 10;
-        breite = 100;
-        höhe = 100;
+        y = 60;
+        radius = 50;
         farbe = "rot";
         sichtbar = true;
         winkel = 0;
-        symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.dreieck);
-        symbol.PositionSetzen(x - breite / 2, y);
-        symbol.GrößeSetzen(breite, höhe);
+        symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.kreis);
+        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.GrößeSetzen(radius * 2, radius * 2);
         symbol.FarbeSetzen(farbe);
         symbol.SichtbarkeitSetzen(sichtbar);
         symbol.WinkelSetzen(winkel);
     }
 
     /**
-     * Setzt die Position (der Spitze) des Dreiecks.
+     * Setzt die Position (des Mittelpunkts) des Kreises.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
-     * @param x x-Position der Spitze
-     * @param y y-Position der Spitze
+     * @param x x-Position des Mittelpunkts
+     * @param y y-Position des Mittelpunkts
      */
     public void PositionSetzen(int x, int y)
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x - breite / 2, y);
+        symbol.PositionSetzen(x - radius, y - radius);
     }
 
     /**
-     * Verschiebt das Dreieck um die angegebenen Werte.
+     * Verschiebt den Kreis um die angegebenen Werte.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
@@ -104,11 +98,11 @@ public class Triangle
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x - breite / 2, y);
+        symbol.PositionSetzen(x - radius, y - radius);
     }
 
     /**
-     * Dreht das Dreieck
+     * Dreht den Kreis
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
@@ -123,25 +117,23 @@ public class Triangle
     }
 
     /**
-     * Setzt die Größe des Dreiecks.
+     * Setzt den Radius des Kreises.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * Die ursprünglich deutsche Name dieser Methode war {@code RadiusSetzen}.
      * </p>
      *
-     * @param breite (neue) Breite
-     * @param höhe (neue) Höhe
+     * @param radius (neuer) Radius
      */
-    public void GrößeSetzen(int breite, int höhe)
+    public void RadiusSetzen(int radius)
     {
-        this.breite = breite;
-        this.höhe = höhe;
-        symbol.GrößeSetzen(breite, höhe);
-        symbol.PositionSetzen(x - breite / 2, y);
+        this.radius = radius;
+        symbol.GrößeSetzen(radius * 2, radius * 2);
+        symbol.PositionSetzen(x - radius, y - radius);
     }
 
     /**
-     * Setzt die Farbe des Dreiecks. Erlaubte Farben sind: "weiß", "weiss",
+     * Setzt die Farbe des Kreises. Erlaubte Farben sind: "weiß", "weiss",
      * "rot", "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
      * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
@@ -159,7 +151,7 @@ public class Triangle
     }
 
     /**
-     * Setzt den Drehwinkel des Dreiecks. Die Winkelangabe ist in Grad,positive
+     * Setzt den Drehwinkel des Kreises. Die Winkelangabe ist in Grad,positive
      * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
@@ -167,7 +159,7 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param winkel der (neue) Drehwinkel des Dreiecks
+     * @param winkel der (neue) Drehwinkel des Kreises
      */
     public void WinkelSetzen(int winkel)
     {
@@ -176,7 +168,7 @@ public class Triangle
     }
 
     /**
-     * Schaltet die Sichtbarkeit des Dreiecks ein oder aus. Erlaubte
+     * Schaltet die Sichtbarkeit des Kreises ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
      * <p>
@@ -184,7 +176,7 @@ public class Triangle
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
-     * @param sichtbar (neue) Sichtbarkeit des Dreiecks
+     * @param sichtbar (neue) Sichtbarkeit des Kreises
      */
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
@@ -193,7 +185,7 @@ public class Triangle
     }
 
     /**
-     * Entfernt das Dreieck aus dem Zeichenfenster.
+     * Entfernt den Kreis aus dem Zeichenfenster.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
@@ -201,11 +193,11 @@ public class Triangle
      */
     public void Entfernen()
     {
-        symbol.Entfernen();
+        symbol.remove();
     }
 
     /**
-     * Bringt das Dreieck eine Ebene nach vorn.
+     * Bringt den Kreis eine Ebene nach vorn.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
@@ -214,11 +206,11 @@ public class Triangle
      */
     public void NachVornBringen()
     {
-        symbol.NachVornBringen();
+        symbol.raiseLayer();
     }
 
     /**
-     * Bringt das Dreieck in die vorderste Ebene.
+     * Bringt den Kreis in die vorderste Ebene.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
@@ -231,7 +223,7 @@ public class Triangle
     }
 
     /**
-     * Bringt das Dreieck eine Ebene nach hinten.
+     * Bringt den Kreis eine Ebene nach hinten.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
@@ -244,7 +236,7 @@ public class Triangle
     }
 
     /**
-     * Bringt das Dreieck in die hinterste Ebene.
+     * Bringt den Kreis in die hinterste Ebene.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
