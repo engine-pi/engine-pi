@@ -132,8 +132,8 @@ class RecursiveSquareDrawing
      * @param remainingSquares Anzahl der noch zu zeichnenden Quadrate
      * @param radius der Radius des Kreises mit den Quadraten
      */
-    private void drawSquareCircleWithRadius(int numberOfSquares, int remainingSquares,
-            int radius)
+    private void drawSquareCircleWithRadius(int numberOfSquares,
+            int remainingSquares, int radius)
     {
         if (remainingSquares > 0)
         {
@@ -147,7 +147,8 @@ class RecursiveSquareDrawing
             turtle.move(radius);
             turtle.lowerPen();
             turtle.rotate(180);
-            drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1, radius);
+            drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1,
+                    radius);
         }
     }
 
@@ -166,7 +167,8 @@ class RecursiveSquareDrawing
     {
         if (radius >= 30)
         {
-            drawSquareCircleWithRadius(numberOfSquares, numberOfSquares, radius);
+            drawSquareCircleWithRadius(numberOfSquares, numberOfSquares,
+                    radius);
             drawMultipleSquareCircles(numberOfSquares, radius / 2);
         }
     }
