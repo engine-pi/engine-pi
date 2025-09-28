@@ -9,12 +9,11 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
  * Die ursprünglich deutsche Name dieser Klasse war {@code RekursiveGrafik}.
  * </p>
  *
- *
  * @author Albert Wiedemann
  *
  * @version 1.0
  */
-class RecursiveDrawing
+class RecursiveSquareDrawing
 {
     /**
      * Die Turtle zum Zeichnen
@@ -24,7 +23,7 @@ class RecursiveDrawing
     /**
      * Der Konstruktor legt die Turtle an.
      */
-    RecursiveDrawing()
+    RecursiveSquareDrawing()
     {
         turtle = new Turtle();
         turtle.setColor("blau");
@@ -82,14 +81,14 @@ class RecursiveDrawing
      * {@code QuadratmusterZeichnen}.
      * </p>
      *
-     * @param anzahl (Rest-)anzahl der Quadrate
+     * @param numberOfSquares (Rest-)anzahl der Quadrate
      */
-    void drawSquarePattern(int anzahl)
+    void drawSquarePattern(int numberOfSquares)
     {
-        if (anzahl > 0)
+        if (numberOfSquares > 0)
         {
-            drawSquare(anzahl * 10);
-            drawSquarePattern(anzahl - 1);
+            drawSquare(numberOfSquares * 10);
+            drawSquarePattern(numberOfSquares - 1);
         }
     }
 
@@ -100,15 +99,15 @@ class RecursiveDrawing
      * Die ursprünglich deutsche Name dieser Methode war {@code MusterZeichnen}.
      * </p>
      *
-     * @param gesamtanzahlQuadrate insgesamte Anzahl der Quadrate
-     * @param nochZuZeichnendeQuadrate Anzahl der noch zu zeichnenden Quadrate
+     * @param numberOfSquares insgesamte Anzahl der Quadrate
+     * @param remainingSquares Anzahl der noch zu zeichnenden Quadrate
      */
-    void MusterZeichnen(int gesamtanzahlQuadrate, int nochZuZeichnendeQuadrate)
+    void drawSquareCircle(int numberOfSquares, int remainingSquares)
     {
-        if (nochZuZeichnendeQuadrate > 0)
+        if (remainingSquares > 0)
         {
             turtle.liftPen();
-            turtle.rotate(360 / gesamtanzahlQuadrate);
+            turtle.rotate(360 / numberOfSquares);
             turtle.move(50);
             turtle.lowerPen();
             drawSquare(20);
@@ -117,7 +116,7 @@ class RecursiveDrawing
             turtle.move(50);
             turtle.lowerPen();
             turtle.rotate(180);
-            MusterZeichnen(gesamtanzahlQuadrate, nochZuZeichnendeQuadrate - 1);
+            drawSquareCircle(numberOfSquares, remainingSquares - 1);
         }
     }
 
@@ -129,17 +128,17 @@ class RecursiveDrawing
      * {@code MusterZeichnen2}.
      * </p>
      *
-     * @param anzahlQuadrate Anzahl der Quadrate
-     * @param quadratNummer Nummer des aktuellen Quadrats
+     * @param numberOfSquares Anzahl der Quadrate
+     * @param remainingSquares Anzahl der noch zu zeichnenden Quadrate
      * @param radius der Radius des Kreises mit den Quadraten
      */
-    private void MusterZeichnen2(int anzahlQuadrate, int quadratNummer,
+    private void drawSquareCircleWithRadius(int numberOfSquares, int remainingSquares,
             int radius)
     {
-        if (quadratNummer > 0)
+        if (remainingSquares > 0)
         {
             turtle.liftPen();
-            turtle.rotate(360 / anzahlQuadrate);
+            turtle.rotate(360 / numberOfSquares);
             turtle.move(radius);
             turtle.lowerPen();
             drawSquare(radius / 2);
@@ -148,7 +147,7 @@ class RecursiveDrawing
             turtle.move(radius);
             turtle.lowerPen();
             turtle.rotate(180);
-            MusterZeichnen2(anzahlQuadrate, quadratNummer - 1, radius);
+            drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1, radius);
         }
     }
 
@@ -160,24 +159,24 @@ class RecursiveDrawing
      * {@code QuadratkreiseZeichnen}.
      * </p>
      *
-     * @param anzahlQuadrate Anzahl der Quadrate
+     * @param numberOfSquares Anzahl der Quadrate
      * @param radius der Radius des Kreises mit den Quadraten
      */
-    void QuadratkreiseZeichnen(int anzahlQuadrate, int radius)
+    public void drawMultipleSquareCircles(int numberOfSquares, int radius)
     {
         if (radius >= 30)
         {
-            MusterZeichnen2(anzahlQuadrate, anzahlQuadrate, radius);
-            QuadratkreiseZeichnen(anzahlQuadrate, radius / 2);
+            drawSquareCircleWithRadius(numberOfSquares, numberOfSquares, radius);
+            drawMultipleSquareCircles(numberOfSquares, radius / 2);
         }
     }
 
     public static void main(String[] args)
     {
-        RecursiveDrawing drawing = new RecursiveDrawing();
-
+        RecursiveSquareDrawing drawing = new RecursiveSquareDrawing();
         drawing.drawBeadChain(10);
-        // drawing.MusterZeichnen(10, 5);
-        // grafik.MusterZeichnen2(4, 3, 2);
+        // drawing.drawSquarePattern(10);
+        // drawing.drawSquareCircle(7, 7);
+        // drawing.drawMultipleSquareCircles(7, 100);
     }
 }
