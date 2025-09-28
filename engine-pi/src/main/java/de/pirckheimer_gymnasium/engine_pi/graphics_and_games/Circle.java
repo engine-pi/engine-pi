@@ -70,6 +70,10 @@ public class Circle
     /**
      * Setzt die Position (des Mittelpunkts) des Kreises.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * </p>
+     *
      * @param x x-Position des Mittelpunkts
      * @param y y-Position des Mittelpunkts
      */
@@ -82,6 +86,10 @@ public class Circle
 
     /**
      * Verschiebt den Kreis um die angegebenen Werte.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * </p>
      *
      * @param deltaX Verschiebung in x-Richtung
      * @param deltaY Verschiebung in y-Richtung
@@ -96,6 +104,10 @@ public class Circle
     /**
      * Dreht den Kreis
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * </p>
+     *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
     public void Drehen(int grad)
@@ -106,6 +118,10 @@ public class Circle
 
     /**
      * Setzt den Radius des Kreises.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code RadiusSetzen}.
+     * </p>
      *
      * @param radius (neuer) Radius
      */
@@ -122,6 +138,10 @@ public class Circle
      * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * </p>
+     *
      * @param farbe (neue) Farbe
      */
     public void FarbeSetzen(String farbe)
@@ -135,6 +155,10 @@ public class Circle
      * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * </p>
+     *
      * @param winkel der (neue) Drehwinkel des Kreises
      */
     public void WinkelSetzen(int winkel)
@@ -147,6 +171,11 @@ public class Circle
      * Schaltet die Sichtbarkeit des Kreises ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SichtbarkeitSetzen}.
+     * </p>
+     *
      * @param sichtbar (neue) Sichtbarkeit des Kreises
      */
     public void SichtbarkeitSetzen(boolean sichtbar)
@@ -157,6 +186,10 @@ public class Circle
 
     /**
      * Entfernt den Kreis aus dem Zeichenfenster.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * </p>
      */
     public void Entfernen()
     {
@@ -165,6 +198,11 @@ public class Circle
 
     /**
      * Bringt den Kreis eine Ebene nach vorn.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachVornBringen}.
+     * </p>
      */
     public void NachVornBringen()
     {
@@ -173,25 +211,40 @@ public class Circle
 
     /**
      * Bringt den Kreis in die vorderste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachVornBringen}.
+     * </p>
      */
     public void GanzNachVornBringen()
     {
-        symbol.GanzNachVornBringen();
+        symbol.bringToFront();
     }
 
     /**
      * Bringt den Kreis eine Ebene nach hinten.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachHintenBringen}.
+     * </p>
      */
     public void NachHintenBringen()
     {
-        symbol.NachHintenBringen();
+        symbol.lowerLayer();
     }
 
     /**
      * Bringt den Kreis in die hinterste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachHintenBringen}.
+     * </p>
      */
     public void GanzNachHintenBringen()
     {
-        symbol.GanzNachHintenBringen();
+        symbol.bringToBack();
     }
 }

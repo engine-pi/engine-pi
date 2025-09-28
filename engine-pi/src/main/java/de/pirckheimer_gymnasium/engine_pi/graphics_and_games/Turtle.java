@@ -265,7 +265,7 @@ public class Turtle
      * </p>
      *
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.NachVornBringen();
     }
@@ -277,11 +277,10 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
-     *
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
-        symbol.GanzNachVornBringen();
+        symbol.bringToFront();
     }
 
     /**
@@ -293,9 +292,9 @@ public class Turtle
      * </p>
      *
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
-        symbol.NachHintenBringen();
+        symbol.lowerLayer();
     }
 
     /**
@@ -307,9 +306,9 @@ public class Turtle
      * </p>
      *
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
-        symbol.GanzNachHintenBringen();
+        symbol.bringToBack();
     }
 
     /**
@@ -413,7 +412,7 @@ public class Turtle
      *
      * @return Winkel im Gradmass
      */
-    public int getAngle()
+    public int getRotation()
     {
         return winkel;
     }

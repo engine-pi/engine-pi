@@ -76,6 +76,10 @@ public class Rectangle
     /**
      * Setzt die Position (der linken oberen Ecke) des Rechtecks.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * </p>
+     *
      * @param x x-Position der linken oberen Ecke
      * @param y y-Position der linken oberen Ecke
      */
@@ -88,6 +92,10 @@ public class Rectangle
 
     /**
      * Verschiebt das Rechteck um die angegebenen Werte.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * </p>
      *
      * @param deltaX Verschiebung in x-Richtung
      * @param deltaY Verschiebung in y-Richtung
@@ -102,6 +110,10 @@ public class Rectangle
     /**
      * Dreht das Rechteck
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * </p>
+     *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
     public void Drehen(int grad)
@@ -112,6 +124,10 @@ public class Rectangle
 
     /**
      * Setzt die Größe des Rechtecks.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * </p>
      *
      * @param breite (neue) Breite
      * @param höhe (neue) Höhe
@@ -129,6 +145,10 @@ public class Rectangle
      * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * </p>
+     *
      * @param farbe (neue) Farbe
      */
     public void FarbeSetzen(String farbe)
@@ -142,6 +162,10 @@ public class Rectangle
      * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * </p>
+     *
      * @param winkel der (neue) Drehwinkel des Rechtecks
      */
     public void WinkelSetzen(int winkel)
@@ -154,6 +178,11 @@ public class Rectangle
      * Schaltet die Sichtbarkeit des Rechtecks ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SichtbarkeitSetzen}.
+     * </p>
+     *
      * @param sichtbar (neue) Sichtbarkeit des Rechtecks
      */
     public void SichtbarkeitSetzen(boolean sichtbar)
@@ -164,6 +193,10 @@ public class Rectangle
 
     /**
      * Entfernt das Rechteck aus dem Zeichenfenster.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * </p>
      */
     public void Entfernen()
     {
@@ -172,6 +205,11 @@ public class Rectangle
 
     /**
      * Bringt das Rechteck eine Ebene nach vorn.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachVornBringen}.
+     * </p>
      */
     public void NachVornBringen()
     {
@@ -180,25 +218,40 @@ public class Rectangle
 
     /**
      * Bringt das Rechteck in die vorderste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachVornBringen}.
+     * </p>
      */
     public void GanzNachVornBringen()
     {
-        symbol.GanzNachVornBringen();
+        symbol.bringToFront();
     }
 
     /**
      * Bringt das Rechteck eine Ebene nach hinten.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachHintenBringen}.
+     * </p>
      */
     public void NachHintenBringen()
     {
-        symbol.NachHintenBringen();
+        symbol.lowerLayer();
     }
 
     /**
      * Bringt das Rechteck in die hinterste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachHintenBringen}.
+     * </p>
      */
     public void GanzNachHintenBringen()
     {
-        symbol.GanzNachHintenBringen();
+        symbol.bringToBack();
     }
 }

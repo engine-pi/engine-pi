@@ -322,6 +322,11 @@ public class DrawingWindow
     /**
      * Meldet die aktuelle Breite der Malfläche.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code MalflächenBreiteGeben}.
+     * </p>
+     *
      * @return Breite der Malfläche
      */
     public static int MalflächenBreiteGeben()
@@ -335,6 +340,11 @@ public class DrawingWindow
 
     /**
      * Meldet die aktuelle Höhe der Malfläche.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code MalflächenHöheGeben}.
+     * </p>
      *
      * @return Höhe der Malfläche
      */
@@ -350,6 +360,11 @@ public class DrawingWindow
     /**
      * Trägt einen neuen Aktionsempfänger ein.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code AktionsEmpfängerEintragen}.
+     * </p>
+     *
      * @param neu der neue Aktionsempfänger
      */
     public static void AktionsEmpfängerEintragen(AktionsEmpfaenger neu)
@@ -363,6 +378,11 @@ public class DrawingWindow
 
     /**
      * Löscht einen Aktionsempfänger aus der Liste.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code AktionsEmpfängerEntfernen}.
+     * </p>
      *
      * @param alt der zu löschende Aktionsempfänger
      */
@@ -379,6 +399,10 @@ public class DrawingWindow
      * Erzeugt ein neues darzustelledes Symbol. Die möglichen Symbole sind im
      * Aufzählungstyp SymbolArt beschrieben.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code SymbolErzeugen}.
+     * </p>
+     *
      * @param art Art des zu erzeugenden Symbols.
      *
      * @return Referenz auf das Delegate-Objekt.
@@ -394,6 +418,11 @@ public class DrawingWindow
 
     /**
      * Startet den Taktgeber.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code TaktgeberStarten}.
+     * </p>
      */
     public static void TaktgeberStarten()
     {
@@ -406,6 +435,11 @@ public class DrawingWindow
 
     /**
      * Stoppt den Taktgeber.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code TaktgeberStoppen}.
+     * </p>
      */
     public static void TaktgeberStoppen()
     {
@@ -418,6 +452,12 @@ public class DrawingWindow
 
     /**
      * Ablaufgeschwindigkeit des Zeitgebers einstellen.
+     *
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code TaktdauerSetzen}.
+     * </p>
      *
      * @param dauer: Angabe in Millisekunden
      */
@@ -433,6 +473,10 @@ public class DrawingWindow
 
     /**
      * Erzeugt das neue Symbol tatsächlich.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code SymbolAnlegen}.
+     * </p>
      *
      * @param art Art des zu erzeugenden Symbols.
      *
@@ -477,6 +521,11 @@ public class DrawingWindow
 
     /**
      * Startet den Taktgeber.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code TaktgeberStartenIntern}.
+     * </p>
      */
     private void TaktgeberStartenIntern()
     {
@@ -487,6 +536,11 @@ public class DrawingWindow
 
     /**
      * Stoppt den Taktgeber.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code TaktgeberStoppenIntern}.
+     * </p>
      */
     private void TaktgeberStoppenIntern()
     {
@@ -580,6 +634,11 @@ public class DrawingWindow
         /**
          * Normiert den Winkel auf Werte im Bereich [0; 360[
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code WinkelNormieren}.
+         * </p>
+         *
          * @param winkel der Eingabewinkel
          *
          * @return der normierte Winkel
@@ -596,6 +655,11 @@ public class DrawingWindow
         /**
          * Setzt die Position (der linken oberen Ecke) des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code PositionSetzen}.
+         * </p>
+         *
          * @param x x-Position der linken oberen Ecke
          * @param y y-Position der linken oberen Ecke
          */
@@ -610,6 +674,11 @@ public class DrawingWindow
         /**
          * Setzt die Größe des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code GrößeSetzen}.
+         * </p>
+         *
          * @param breite (neue) Breite des Objekts
          * @param höhe (neue) Höhe des Objekts
          */
@@ -623,6 +692,11 @@ public class DrawingWindow
 
         /**
          * Bestimmt die RGB-Farbe für den gegeben String.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FarbeCodieren}.
+         * </p>
          *
          * @param farbe die Farbe als String
          *
@@ -683,6 +757,11 @@ public class DrawingWindow
         /**
          * Setzt die Farbe des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FarbeSetzen}.
+         * </p>
+         *
          * @param farbe (neue) Farbe des Objekts
          */
         void FarbeSetzen(String farbe)
@@ -692,6 +771,11 @@ public class DrawingWindow
 
         /**
          * Setzt die Farbe des Objekts.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FarbeSetzen}.
+         * </p>
          *
          * @param c (neue) Farbe des Objekts
          */
@@ -704,6 +788,11 @@ public class DrawingWindow
         /**
          * Setzt die Sichtbarkeit des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code SichtbarkeitSetzen}.
+         * </p>
+         *
          * @param sichtbar (neue) Sichtbarkeit des Objekts
          */
         void SichtbarkeitSetzen(boolean sichtbar)
@@ -714,6 +803,11 @@ public class DrawingWindow
 
         /**
          * Setzt den Drehwinkel des Objekts.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code WinkelSetzen}.
+         * </p>
          *
          * @param winkel der (neue) Drehwinkel des Objekts
          */
@@ -726,6 +820,10 @@ public class DrawingWindow
 
         /**
          * Entfernt das Objekt aus dem Zeichenfenster.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+         * </p>
          */
         void Entfernen()
         {
@@ -738,6 +836,11 @@ public class DrawingWindow
 
         /**
          * Bringt das Objekt eine Ebene nach vorn.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code NachVornBringen}.
+         * </p>
          */
         void NachVornBringen()
         {
@@ -756,8 +859,13 @@ public class DrawingWindow
 
         /**
          * Bringt das Objekt in die vorderste Ebene.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code GanzNachVornBringen}.
+         * </p>
          */
-        void GanzNachVornBringen()
+        void bringToFront()
         {
             synchronized (zeichenfläche.malfläche)
             {
@@ -773,8 +881,13 @@ public class DrawingWindow
 
         /**
          * Bringt das Objekt eine Ebene nach hinten.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code NachHintenBringen}.
+         * </p>
          */
-        void NachHintenBringen()
+        void lowerLayer()
         {
             synchronized (zeichenfläche.malfläche)
             {
@@ -791,8 +904,13 @@ public class DrawingWindow
 
         /**
          * Bringt das Objekt in die hinterste Ebene.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code GanzNachHintenBringen}.
+         * </p>
          */
-        void GanzNachHintenBringen()
+        void bringToBack()
         {
             synchronized (zeichenfläche.malfläche)
             {
@@ -809,6 +927,11 @@ public class DrawingWindow
         /**
          * Testet, ob der angegebene Punkt innerhalb der Figur ist.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code IstInnerhalb}.
+         * </p>
+         *
          * @param x x-Koordinate des zu testenden Punktes
          * @param y y-Koordinate des zu testenden Punktes
          *
@@ -821,6 +944,10 @@ public class DrawingWindow
 
         /**
          * Testet, ob die beiden Figuren überlappen.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Schneidet}.
+         * </p>
          *
          * @param wen die andere Form
          *
@@ -836,6 +963,10 @@ public class DrawingWindow
         /**
          * Zeichnet das Objekt
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * </p>
+         *
          * @param g das Grafikobjekt zum Zeichnen
          */
         void Zeichnen(Graphics g)
@@ -849,6 +980,11 @@ public class DrawingWindow
          * Graphik-Frameworks. Für Java: Winkel in Radians, positive Drehrichtng
          * im Uhrzeiger.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code DrehwinkelGeben}.
+         * </p>
+         *
          * @param winkel: Der Winkel in Grad, mathematischer Drehsinn
          *
          * @return Winkel für Graphik-Framework
@@ -860,6 +996,11 @@ public class DrawingWindow
 
         /**
          * Erstellt die Form des Objekts.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         abstract void FormErzeugen();
     }
@@ -871,6 +1012,11 @@ public class DrawingWindow
     {
         /**
          * Erstellt die Form des Rechtecks.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -889,6 +1035,11 @@ public class DrawingWindow
     {
         /**
          * Erstellt die Form der Ellipse.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -907,6 +1058,11 @@ public class DrawingWindow
     {
         /**
          * Erstellt die Form des Dreiecks.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -939,6 +1095,10 @@ public class DrawingWindow
 
         /**
          * Belegt text und size mit Defaultwerten.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code TextIntern}.
+         * </p>
          */
         TextIntern()
         {
@@ -950,6 +1110,11 @@ public class DrawingWindow
 
         /**
          * Erstellt die Form des Textes. Dummy, legt ein leeres Area an.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -959,6 +1124,11 @@ public class DrawingWindow
 
         /**
          * Testet, ob der angegebene Punkt innerhalb der Figur ist.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code IstInnerhalb}.
+         * </p>
          *
          * @param x x-Koordinate des zu testenden Punktes
          * @param y y-Koordinate des zu testenden Punktes
@@ -974,6 +1144,10 @@ public class DrawingWindow
         /**
          * Setzt den aktuellen Text.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code TextSetzen}.
+         * </p>
+         *
          * @param t der neue Text
          */
         void TextSetzen(String t)
@@ -984,6 +1158,11 @@ public class DrawingWindow
 
         /**
          * Setzt die Größe des Textes.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code TextGrößeSetzen}.
+         * </p>
          */
         void TextGrößeSetzen(int größe)
         {
@@ -993,6 +1172,11 @@ public class DrawingWindow
 
         /**
          * Vergrößert den Text.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code TextVergrößern}.
+         * </p>
          */
         void TextVergrößern()
         {
@@ -1013,6 +1197,11 @@ public class DrawingWindow
 
         /**
          * Verkleinert den Text.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code TextVerkleinern}.
+         * </p>
          */
         void TextVerkleinern()
         {
@@ -1037,6 +1226,10 @@ public class DrawingWindow
 
         /**
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
          */
@@ -1088,6 +1281,11 @@ public class DrawingWindow
         /**
          * Zeichnet das Figurenelement.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZeichnen}.
+         * </p>
+         *
          * @param g das Grafikobjekt
          * @param größe die aktuelle Größe der Figur
          * @param x die x-Koordinate des Aufhängepunkts der Figur
@@ -1097,6 +1295,11 @@ public class DrawingWindow
 
         /**
          * Fügt den Pfadteil deiser Komponente zum umgebenden Pfad hinzu.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZuForm}.
+         * </p>
          *
          * @param p der Gesamtpfad
          * @param größe die aktuelle Größe der Figur
@@ -1114,6 +1317,11 @@ public class DrawingWindow
     {
         /**
          * Der Konstruktor speichert die Rahmendaten.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurenElementRechteck}.
+         * </p>
          *
          * @param x x-Koordinate der linken oberen Ecke des Rechtecks relativ
          *     zum Aufhängepunkt.
@@ -1136,6 +1344,11 @@ public class DrawingWindow
         /**
          * Zeichnet das Figurenelement.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZeichnen}.
+         * </p>
+         *
          * @param g das Grafikobjekt
          * @param größe die aktuelle Größe der Figur
          * @param x die x-Koordinate des Aufhängepunkts der Figur
@@ -1152,6 +1365,11 @@ public class DrawingWindow
 
         /**
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZuForm}.
+         * </p>
          *
          * @param p der Gesamtpfad
          * @param größe die aktuelle Größe der Figur
@@ -1175,6 +1393,11 @@ public class DrawingWindow
         /**
          * Der Konstruktor speichert die Rahmendaten.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurenElementEllipse}.
+         * </p>
+         *
          * @param x x-Koordinate der linken oberen Ecke des umgebenden Rechtecks
          *     relativ zum Aufhängepunkt.
          * @param y y-Koordinate der linken oberen Ecke des umgebenden Rechtecks
@@ -1196,6 +1419,11 @@ public class DrawingWindow
         /**
          * Zeichnet das Figurenelement.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZeichnen}.
+         * </p>
+         *
          * @param g das Grafikobjekt
          * @param größe die aktuelle Größe der Figur
          * @param x die x-Koordinate des Aufhängepunkts der Figur
@@ -1212,6 +1440,11 @@ public class DrawingWindow
 
         /**
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZuForm}.
+         * </p>
          *
          * @param p der Gesamtpfad
          * @param größe die aktuelle Größe der Figur
@@ -1261,6 +1494,11 @@ public class DrawingWindow
         /**
          * Zeichnet das Figurenelement.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZeichnen}.
+         * </p>
+         *
          * @param g das Grafikobjekt
          * @param größe die aktuelle Größe der Figur
          * @param x die x-Koordinate des Aufhängepunkts der Figur
@@ -1277,6 +1515,11 @@ public class DrawingWindow
 
         /**
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ElementZuForm}.
+         * </p>
          *
          * @param p der Gesamtpfad
          * @param größe die aktuelle Größe der Figur
@@ -1375,6 +1618,11 @@ public class DrawingWindow
             /**
              * Zeichent die angegebe Linie in das Bild.
              *
+             * <p>
+             * Die ursprünglich deutsche Name dieser Methode war
+             * {@code LinieZeichnen}.
+             * </p>
+             *
              * @param linie das zu zeichnende Linienelement.
              */
             void LinieZeichnen(LinienElement linie)
@@ -1384,6 +1632,11 @@ public class DrawingWindow
 
             /**
              * Zeichnet das Bild in das angegebene Zeichenobjekt.
+             *
+             * <p>
+             * Die ursprünglich deutsche Name dieser Methode war
+             * {@code BildZeichnen}.
+             * </p>
              *
              * @param wohin Zeichenobjekt
              */
@@ -1470,6 +1723,11 @@ public class DrawingWindow
 
         /**
          * Baut die Standardfigur aus den Elementen auf.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code StandardfigurErzeugen}.
+         * </p>
          */
         private void StandardfigurErzeugen()
         {
@@ -1499,6 +1757,11 @@ public class DrawingWindow
 
         /**
          * Passt das Hintergrundbild an eine neue Größe der Zeichenfläche an.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code NeueGrößeSetzen}.
+         * </p>
          */
         void NeueGrößeSetzen()
         {
@@ -1511,6 +1774,11 @@ public class DrawingWindow
 
         /**
          * Erstellt die Form der Turtle.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -1538,6 +1806,11 @@ public class DrawingWindow
         /**
          * Setzt die Position (der linken oberen Ecke) des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code PositionSetzen}.
+         * </p>
+         *
          * @param x x-Position der linken oberen Ecke
          * @param y y-Position der linken oberen Ecke
          */
@@ -1551,6 +1824,11 @@ public class DrawingWindow
 
         /**
          * Setzt die Turtle wieder an ihre Ausgangsposition.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ZumStartpunktGehen}.
+         * </p>
          */
         void ZumStartpunktGehen()
         {
@@ -1565,6 +1843,10 @@ public class DrawingWindow
 
         /**
          * Bewegt die Turtle nach vorne.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+         * </p>
          *
          * @param länge Anzahl der Längeneinheiten
          */
@@ -1592,6 +1874,10 @@ public class DrawingWindow
         /**
          * Dreht die Turtle
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+         * </p>
+         *
          * @param grad Drehwinkel im Gradmass
          */
         void Drehen(int grad)
@@ -1603,6 +1889,10 @@ public class DrawingWindow
 
         /**
          * Versetzt Zeichenfläche und Turtle in den Ausgangszustand
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
+         * </p>
          */
         void Löschen()
         {
@@ -1613,6 +1903,10 @@ public class DrawingWindow
 
         /**
          * Turtle wechselt in den Modus "nicht zeichnen"
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
+         * </p>
          */
         void StiftHeben()
         {
@@ -1621,6 +1915,11 @@ public class DrawingWindow
 
         /**
          * Turtle wechselt in den Modus "zeichnen"
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code StiftSenken}.
+         * </p>
          */
         void StiftSenken()
         {
@@ -1630,6 +1929,11 @@ public class DrawingWindow
         /**
          * Schaltet die Sichtbarkeit des Turtlesymbols ein oder aus. Erlaubte
          * Parameterwerte: true, false
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code SichtbarkeitFürSymbolSetzen}.
+         * </p>
          *
          * @param sichtbar (neue) Sichtbarkeit des Turtlesymbols
          */
@@ -1641,6 +1945,10 @@ public class DrawingWindow
 
         /**
          * Testet, ob die Turtle eine (sichtbare) Figur berührt.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
          *
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
          *     sind
@@ -1662,6 +1970,10 @@ public class DrawingWindow
         /**
          * Testet, ob die Turtle eine (sichtbare) Figur in der angegebenen Farbe
          * berührt. Bei Überlappungen
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
          *
          * @param farbe die Farbe, die die berührte Figur haben muss.
          *
@@ -1729,6 +2041,10 @@ public class DrawingWindow
         /**
          * Testet, ob die Turtle die (sichtbare, ) angegebene Figur berührt.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
+         *
          * @param object das Objekt, das getestet werden soll.
          *
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
@@ -1764,6 +2080,10 @@ public class DrawingWindow
 
         /**
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
          */
@@ -1840,6 +2160,11 @@ public class DrawingWindow
 
         /**
          * Legt die Figur mit Startpunkt (100|200) in Richtung 0˚ an.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurIntern}.
+         * </p>
          */
         FigurIntern()
         {
@@ -1862,6 +2187,11 @@ public class DrawingWindow
 
         /**
          * Baut die Standardfigur aus den Elementen auf.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code StandardfigurErzeugen}.
+         * </p>
          */
         private void StandardfigurErzeugen()
         {
@@ -1874,6 +2204,11 @@ public class DrawingWindow
 
         /**
          * Erstellt die Form der Figur.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FormErzeugen}.
+         * </p>
          */
         @Override
         void FormErzeugen()
@@ -1904,6 +2239,11 @@ public class DrawingWindow
         /**
          * Setzt die Position (der Mitte) des Objekts.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code PositionSetzen}.
+         * </p>
+         *
          * @param x x-Position der Mitte
          * @param y y-Position der Mitte
          */
@@ -1917,6 +2257,11 @@ public class DrawingWindow
 
         /**
          * Setzt die Figur wieder an ihre Ausgangsposition.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code ZumStartpunktGehen}.
+         * </p>
          */
         void ZumStartpunktGehen()
         {
@@ -1931,6 +2276,10 @@ public class DrawingWindow
 
         /**
          * Bewegt die Figur nach vorne.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+         * </p>
          *
          * @param länge Anzahl der Längeneinheiten
          */
@@ -1949,6 +2298,10 @@ public class DrawingWindow
         /**
          * Dreht die Figur
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+         * </p>
+         *
          * @param grad Drehwinkel im Gradmass
          */
         void Drehen(int grad)
@@ -1960,6 +2313,10 @@ public class DrawingWindow
 
         /**
          * Testet, ob die Figur eine (sichtbare) Grafik-Figur berührt.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
          *
          * @return true, wenn die Figurkoordinaten innerhalb einer Grafikfigur
          *     sind
@@ -1981,6 +2338,10 @@ public class DrawingWindow
         /**
          * Testet, ob die Figur eine (sichtbare) Grafik-Figur in der angegebenen
          * Farbe berührt. Bei Überlappungen
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
          *
          * @param farbe die Farbe, die die berührte Figur haben muss.
          *
@@ -2076,6 +2437,10 @@ public class DrawingWindow
          * Testet, ob die Figur die (sichtbare, ) angegebene Grafik-Figur
          * berührt.
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * </p>
+         *
          * @param object das Objekt, das getestet werden soll.
          *
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
@@ -2114,6 +2479,11 @@ public class DrawingWindow
          * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100 und den
          * Koordinaten (0|0) in der Mitte des Quadrats
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurteilFestlegenRechteck}.
+         * </p>
+         *
          * @param x x-Wert der linken oberen Ecke des Rechtecks
          * @param y y-Wert der linken oberen Ecke des Rechtecks
          * @param breite Breite des Rechtecks
@@ -2136,6 +2506,11 @@ public class DrawingWindow
          * Erzeugt ein neues, elliptisches Element einer eigenen Darstellung der
          * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100 und den
          * Koordinaten (0|0) in der Mitte des Quadrats
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurteilFestlegenEllipse}.
+         * </p>
          *
          * @param x x-Wert der linken oberen Ecke des umgebenden Rechtecks der
          *     Ellipse
@@ -2162,6 +2537,11 @@ public class DrawingWindow
          * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100 und den
          * Koordinaten (0|0) in der Mitte des Quadrats
          *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code FigurteilFestlegenDreieck}.
+         * </p>
+         *
          * @param x1 x-Wert des ersten Punkts des Dreiecks
          * @param y1 y-Wert des ersten Punkts des Dreiecks
          * @param x2 x-Wert des zweiten Punkts des Dreiecks
@@ -2187,6 +2567,11 @@ public class DrawingWindow
         /**
          * Löscht die Vereinbarung für die eigene Darstellung Figur. Die Figur
          * wird wieder durch die Originalfigur dargestellt.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war
+         * {@code EigeneFigurLöschen}.
+         * </p>
          */
         void EigeneFigurLöschen()
         {
@@ -2197,6 +2582,10 @@ public class DrawingWindow
 
         /**
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
+         *
+         * <p>
+         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
          */

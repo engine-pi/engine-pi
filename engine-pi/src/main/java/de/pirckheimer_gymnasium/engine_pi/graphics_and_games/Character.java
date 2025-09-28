@@ -95,6 +95,11 @@ public class Character
     /**
      * Methode wird aufgerufen, wenn die Figur handeln soll. Die vordefinierte
      * Methode tut nichts.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code AktionAusführen}.
+     * </p>
      */
     public void AktionAusführen()
     {
@@ -103,6 +108,10 @@ public class Character
     /**
      * Die eigentliche Aktionsmethode für gedrückte Tasten. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
+     * </p>
      *
      * @param taste die gedrückte Taste
      */
@@ -115,6 +124,11 @@ public class Character
      * Die eigentliche Aktionsmethode für gedrückte Sondertasten. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SonderTasteGedrückt}.
+     * </p>
+     *
      * @param taste KeyCode der gedrückten Taste
      */
     public void SonderTasteGedrückt(int taste)
@@ -125,6 +139,10 @@ public class Character
     /**
      * Die eigentliche Aktionsmethode für einen Mausklick. <br>
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
+     * </p>
      *
      * @param x x-Position des Mausklicks
      * @param y y-Position des Mausklicks
@@ -139,6 +157,10 @@ public class Character
     /**
      * Setzt die Position der Figur.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * </p>
+     *
      * @param x x-Position der Figur
      * @param y y-Position der Figur
      */
@@ -151,6 +173,10 @@ public class Character
 
     /**
      * Setzt die Größe des Figurensymbols.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * </p>
      *
      * @param größe (neue) Größe
      */
@@ -167,6 +193,10 @@ public class Character
      * nach rechts, 90˚: Figur schaut nach oben, 180˚: Figur schaut nach links,
      * 270˚bzw. -90˚: Figur schaut nach unten
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * </p>
+     *
      * @param winkel der (neue) Drehwinkel der Figur
      */
     public void WinkelSetzen(int winkel)
@@ -179,6 +209,11 @@ public class Character
      * Schaltet die Sichtbarkeit der Figur ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code SichtbarkeitSetzen}.
+     * </p>
+     *
      * @param sichtbar (neue) Sichtbarkeit der Figur
      */
     public void SichtbarkeitSetzen(boolean sichtbar)
@@ -189,6 +224,10 @@ public class Character
 
     /**
      * Entfernt die Figur aus dem Zeichenfenster.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * </p>
      */
     public void Entfernen()
     {
@@ -198,6 +237,11 @@ public class Character
 
     /**
      * Bringt die Figur eine Ebene nach vorn.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachVornBringen}.
+     * </p>
      */
     public void NachVornBringen()
     {
@@ -206,30 +250,50 @@ public class Character
 
     /**
      * Bringt die Figur in die vorderste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachVornBringen}.
+     * </p>
      */
     public void GanzNachVornBringen()
     {
-        symbol.GanzNachVornBringen();
+        symbol.bringToFront();
     }
 
     /**
      * Bringt die Figur eine Ebene nach hinten.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code NachHintenBringen}.
+     * </p>
      */
     public void NachHintenBringen()
     {
-        symbol.NachHintenBringen();
+        symbol.lowerLayer();
     }
 
     /**
      * Bringt die Figur in die hinterste Ebene.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code GanzNachHintenBringen}.
+     * </p>
      */
     public void GanzNachHintenBringen()
     {
-        symbol.GanzNachHintenBringen();
+        symbol.bringToBack();
     }
 
     /**
      * Setzt die Figur wieder an ihre Ausgangsposition.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code ZumStartpunktGehen}.
+     * </p>
      */
     public void ZumStartpunktGehen()
     {
@@ -242,6 +306,10 @@ public class Character
     /**
      * Bewegt die Figur nach vorne.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+     * </p>
+     *
      * @param länge Anzahl der Längeneinheiten
      */
     public void Gehen(double länge)
@@ -253,6 +321,10 @@ public class Character
 
     /**
      * Dreht die Figur
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * </p>
      *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
      */
@@ -269,6 +341,10 @@ public class Character
      * nach rechts, 90˚: Figur schaut nach oben, 180˚: Figur schaut nach links,
      * 270˚bzw. -90˚: Figur schaut nach unten
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
+     * </p>
+     *
      * @return Winkel im Gradmaß
      */
     public int WinkelGeben()
@@ -278,6 +354,10 @@ public class Character
 
     /**
      * Gibt die x-Koordinate der Figur zurück.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
+     * </p>
      *
      * @return x-Koordinate
      */
@@ -289,6 +369,10 @@ public class Character
     /**
      * Gibt die y-Koordinate der Figur zurück.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
+     * </p>
+     *
      * @return y-Koordinate
      */
     public int YPositionGeben()
@@ -299,6 +383,10 @@ public class Character
     /**
      * Testet, ob die Figur eine Grafik-Figur berührt.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
+     *
      * @return true, wenn die Figur und eine Grafikfigur überlappen
      */
     public boolean Berührt()
@@ -308,6 +396,10 @@ public class Character
 
     /**
      * Testet, ob die Figur eine Grafik-Figur in der angegebenen Farbe berührt.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
      *
      * @param farbe die Farbe, die die berührte Figur haben muss
      *
@@ -322,6 +414,10 @@ public class Character
     /**
      * Testet, ob die Figur die angegebene Figur berührt.
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * </p>
+     *
      * @param objekt das Objekt, das getestet werden soll
      *
      * @return true, wenn die Figur die angegebene Grafikfigur überlappen
@@ -335,6 +431,11 @@ public class Character
      * Erzeugt ein neues, rechteckiges Element einer eigenen Darstellung der
      * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100x100 und den
      * Koordinaten (0|0) in der Mitte des Quadrats
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code FigurteilFestlegenRechteck}.
+     * </p>
      *
      * @param x x-Wert der linken oberen Ecke des Rechtecks
      * @param y y-Wert der linken oberen Ecke des Rechtecks
@@ -352,6 +453,11 @@ public class Character
      * Erzeugt ein neues, elliptisches Element einer eigenen Darstellung der
      * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100x100 und den
      * Koordinaten (0|0) in der Mitte des Quadrats
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code FigurteilFestlegenEllipse}.
+     * </p>
      *
      * @param x x-Wert der linken oberen Ecke des umgebenden Rechtecks der
      *     Ellipse
@@ -372,6 +478,11 @@ public class Character
      * Figur. Alle Werte beziehen sich auf eine Figur der Größe 100x100 und den
      * Koordinaten (0|0) in der Mitte des Quadrats
      *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code FigurteilFestlegenDreieck}.
+     * </p>
+     *
      * @param x1 x-Wert des ersten Punkts des Dreiecks
      * @param y1 y-Wert des ersten Punkts des Dreiecks
      * @param x2 x-Wert des zweiten Punkts des Dreiecks
@@ -389,6 +500,11 @@ public class Character
     /**
      * Löscht die Vereinbarung für die eigene Darstellung der Figur. Die Figur
      * wird wieder durch die Originalfigur dargestellt.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieser Methode war
+     * {@code EigeneFigurLöschen}.
+     * </p>
      */
     public void EigeneFigurLöschen()
     {
