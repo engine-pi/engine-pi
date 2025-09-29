@@ -7,15 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v0.31.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.31.0) - 2025-09-29
 
-<small>[Compare with v0.28.0](https://github.com/engine-pi/engine-pi/compare/v0.30.0...v0.31.0)</small>
+<small>[Compare with v0.30.0](https://github.com/engine-pi/engine-pi/compare/v0.30.0...v0.31.0)</small>
 
 ### Changed
 
-- Translate some methods and attributes of the  `little_engine` into English.
+- Translate some methods and attributes of the `little_engine` into English.
 
 ## [v0.30.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.30.0) - 2025-09-28
 
-<small>[Compare with v0.28.0](https://github.com/engine-pi/engine-pi/compare/v0.29.0...v0.30.0)</small>
+<small>[Compare with v0.29.0](https://github.com/engine-pi/engine-pi/compare/v0.29.0...v0.30.0)</small>
 
 ### Added
 
