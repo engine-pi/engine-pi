@@ -66,11 +66,11 @@ public class Triangle
         sichtbar = true;
         winkel = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.dreieck);
-        symbol.PositionSetzen(x - breite / 2, y);
-        symbol.GrößeSetzen(breite, höhe);
-        symbol.FarbeSetzen(farbe);
-        symbol.SichtbarkeitSetzen(sichtbar);
-        symbol.WinkelSetzen(winkel);
+        symbol.setPosition(x - breite / 2, y);
+        symbol.setSize(breite, höhe);
+        symbol.setColor(farbe);
+        symbol.setVisibility(sichtbar);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Triangle
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x - breite / 2, y);
+        symbol.setPosition(x - breite / 2, y);
     }
 
     /**
@@ -104,7 +104,7 @@ public class Triangle
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x - breite / 2, y);
+        symbol.setPosition(x - breite / 2, y);
     }
 
     /**
@@ -119,7 +119,7 @@ public class Triangle
     public void Drehen(int grad)
     {
         winkel += grad;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -136,8 +136,8 @@ public class Triangle
     {
         this.breite = breite;
         this.höhe = höhe;
-        symbol.GrößeSetzen(breite, höhe);
-        symbol.PositionSetzen(x - breite / 2, y);
+        symbol.setSize(breite, höhe);
+        symbol.setPosition(x - breite / 2, y);
     }
 
     /**
@@ -155,7 +155,7 @@ public class Triangle
     public void FarbeSetzen(String farbe)
     {
         this.farbe = farbe;
-        symbol.FarbeSetzen(farbe);
+        symbol.setColor(farbe);
     }
 
     /**
@@ -172,7 +172,7 @@ public class Triangle
     public void WinkelSetzen(int winkel)
     {
         this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -189,7 +189,7 @@ public class Triangle
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        symbol.setVisibility(sichtbar);
     }
 
     /**

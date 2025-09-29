@@ -61,7 +61,7 @@ public class Character
     {
         symbol = (DrawingWindow.FigurIntern) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.figur);
-        symbol.SichtbarkeitSetzen(true);
+        symbol.setVisibility(true);
         x = symbol.x;
         y = symbol.y;
         winkel = symbol.winkel;
@@ -168,7 +168,7 @@ public class Character
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -183,7 +183,7 @@ public class Character
     public void GrößeSetzen(int größe)
     {
         this.größe = größe;
-        symbol.GrößeSetzen(größe, größe);
+        symbol.setSize(größe, größe);
     }
 
     /**
@@ -202,7 +202,7 @@ public class Character
     public void WinkelSetzen(int winkel)
     {
         this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -219,7 +219,7 @@ public class Character
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        symbol.setVisibility(sichtbar);
     }
 
     /**

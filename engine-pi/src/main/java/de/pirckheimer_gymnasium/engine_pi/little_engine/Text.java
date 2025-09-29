@@ -57,10 +57,10 @@ public class Text
         textgröße = 12;
         symbol = (DrawingWindow.TextIntern) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.text);
-        symbol.PositionSetzen(x, y);
-        symbol.FarbeSetzen(farbe);
-        symbol.SichtbarkeitSetzen(sichtbar);
-        symbol.WinkelSetzen(winkel);
+        symbol.setPosition(x, y);
+        symbol.setColor(farbe);
+        symbol.setVisibility(sichtbar);
+        symbol.setRotation(winkel);
         symbol.TextGrößeSetzen(textgröße);
     }
 
@@ -78,7 +78,7 @@ public class Text
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -152,7 +152,7 @@ public class Text
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -167,7 +167,7 @@ public class Text
     public void Drehen(int grad)
     {
         winkel += grad;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -185,7 +185,7 @@ public class Text
     public void FarbeSetzen(String farbe)
     {
         this.farbe = farbe;
-        symbol.FarbeSetzen(farbe);
+        symbol.setColor(farbe);
     }
 
     /**
@@ -202,7 +202,7 @@ public class Text
     public void WinkelSetzen(int winkel)
     {
         this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -219,7 +219,7 @@ public class Text
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        symbol.setVisibility(sichtbar);
     }
 
     /**

@@ -1,5 +1,11 @@
 /**
  * <p>
+ * Eine Variante der Engine <a href=
+ * "https://informatikschulbuch.de/wp-content/daten/Informatik3/Vorlagen/Kapitel4/BlueJ_Java/GraphicsAndGames_BlueJ_Java.zip">GraphicsAndGames</a>
+ * des Cornelsen-Verlag mit englischer API.
+ * </p>
+ *
+ * <p>
  * Das Paket stellt ein Fenster mit einer Malfläche zur Verfügung, auf der
  * Objekte der Klassen Rechteck, Kreis und Dreieck sowie Turtle dargestellt
  * werden können. Die Zeichenfläche wird beim ersten Anlegen eines

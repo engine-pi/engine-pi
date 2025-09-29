@@ -73,7 +73,8 @@ public class Turtle
      * Referenz auf das Aktionsempfängerobjekt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code}.
+     * Die ursprünglich deutsche Name dieses Attributs war
+     * {@code aktionsEmpfänger}.
      * </p>
      */
     DrawingWindow.AktionsEmpfaenger aktionsEmpfänger;
@@ -86,7 +87,7 @@ public class Turtle
     {
         symbol = (DrawingWindow.TurtleIntern) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.turtle);
-        symbol.SichtbarkeitSetzen(true);
+        symbol.setVisibility(true);
         x = symbol.x;
         y = symbol.y;
         rotation = symbol.winkel;
@@ -139,9 +140,9 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
      * </p>
      *
-     * @param taste die gedrückte Taste
+     * @param key die gedrückte Taste
      */
-    public void onKeyPressed(char taste)
+    public void onKeyPressed(char key)
     {
         // System. out. println ("Taste: " + taste);
     }
@@ -155,9 +156,9 @@ public class Turtle
      * {@code SonderTasteGedrückt}.
      * </p>
      *
-     * @param taste KeyCode der gedrückten Taste
+     * @param key KeyCode der gedrückten Taste
      */
-    public void onSpecialKeyPressed(int taste)
+    public void onSpecialKeyPressed(int key)
     {
         // System. out. println ("Sondertaste: " + taste);
     }
@@ -172,11 +173,12 @@ public class Turtle
      *
      * @param x x-Position des Mausklicks
      * @param y y-Position des Mausklicks
-     * @param anzahl Anzahl der aufeinanderfolgenden Mausklicks
+     * @param clickCount Anzahl der aufeinanderfolgenden Mausklicks
      */
-    public void onMouseClick(int x, int y, int anzahl)
+    public void onMouseClick(int x, int y, int clickCount)
     {
-        System.out.println("Maus: (" + x + "|" + y + "), " + anzahl + " mal");
+        System.out
+                .println("Maus: (" + x + "|" + y + "), " + clickCount + " mal");
     }
 
     /**
@@ -193,7 +195,7 @@ public class Turtle
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -208,7 +210,7 @@ public class Turtle
     public void setSize(int size)
     {
         this.size = size;
-        symbol.GrößeSetzen(size, size);
+        symbol.setSize(size, size);
     }
 
     /**
@@ -226,7 +228,7 @@ public class Turtle
     public void setColor(String color)
     {
         this.color = color;
-        symbol.FarbeSetzen(color);
+        symbol.setColor(color);
     }
 
     /**
@@ -242,10 +244,10 @@ public class Turtle
      *
      * @param rotation der (neue) Drehwinkel der Turtle
      */
-    public void setAngle(int rotation)
+    public void setRotation(int rotation)
     {
         this.rotation = rotation;
-        symbol.WinkelSetzen(rotation);
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -262,7 +264,7 @@ public class Turtle
     public void setVisibility(boolean visible)
     {
         this.visible = visible;
-        symbol.SichtbarkeitSetzen(visible);
+        symbol.setVisibility(visible);
     }
 
     /**
@@ -357,11 +359,11 @@ public class Turtle
      * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
      * </p>
      *
-     * @param länge Anzahl der Längeneinheiten
+     * @param length Anzahl der Längeneinheiten
      */
-    public void move(double länge)
+    public void move(double length)
     {
-        symbol.move(länge);
+        symbol.move(length);
         x = symbol.x;
         y = symbol.y;
     }

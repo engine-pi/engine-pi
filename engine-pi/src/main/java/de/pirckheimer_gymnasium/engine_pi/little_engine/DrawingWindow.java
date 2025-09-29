@@ -663,7 +663,7 @@ public class DrawingWindow
          * @param x x-Position der linken oberen Ecke
          * @param y y-Position der linken oberen Ecke
          */
-        void PositionSetzen(int x, int y)
+        void setPosition(int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -682,7 +682,7 @@ public class DrawingWindow
          * @param breite (neue) Breite des Objekts
          * @param höhe (neue) Höhe des Objekts
          */
-        void GrößeSetzen(int breite, int höhe)
+        void setSize(int breite, int höhe)
         {
             b = breite;
             h = höhe;
@@ -764,7 +764,7 @@ public class DrawingWindow
          *
          * @param farbe (neue) Farbe des Objekts
          */
-        void FarbeSetzen(String farbe)
+        void setColor(String farbe)
         {
             FarbeSetzen(FarbeCodieren(farbe));
         }
@@ -795,7 +795,7 @@ public class DrawingWindow
          *
          * @param sichtbar (neue) Sichtbarkeit des Objekts
          */
-        void SichtbarkeitSetzen(boolean sichtbar)
+        void setVisibility(boolean sichtbar)
         {
             this.sichtbar = sichtbar;
             zeichenfläche.malfläche.repaint();
@@ -811,7 +811,7 @@ public class DrawingWindow
          *
          * @param winkel der (neue) Drehwinkel des Objekts
          */
-        void WinkelSetzen(int winkel)
+        void setRotation(int winkel)
         {
             this.winkel = WinkelNormieren(winkel);
             FormErzeugen();
@@ -1815,9 +1815,9 @@ public class DrawingWindow
          * @param y y-Position der linken oberen Ecke
          */
         @Override
-        void PositionSetzen(int x, int y)
+        void setPosition(int x, int y)
         {
-            super.PositionSetzen(x, y);
+            super.setPosition(x, y);
             xD = x;
             yD = y;
         }
@@ -2248,9 +2248,9 @@ public class DrawingWindow
          * @param y y-Position der Mitte
          */
         @Override
-        void PositionSetzen(int x, int y)
+        void setPosition(int x, int y)
         {
-            super.PositionSetzen(x, y);
+            super.setPosition(x, y);
             xD = x;
             yD = y;
         }

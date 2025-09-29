@@ -66,11 +66,11 @@ public class Rectangle
         sichtbar = true;
         winkel = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.rechteck);
-        symbol.PositionSetzen(x, y);
-        symbol.GrößeSetzen(breite, höhe);
-        symbol.FarbeSetzen(farbe);
-        symbol.SichtbarkeitSetzen(sichtbar);
-        symbol.WinkelSetzen(winkel);
+        symbol.setPosition(x, y);
+        symbol.setSize(breite, höhe);
+        symbol.setColor(farbe);
+        symbol.setVisibility(sichtbar);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Rectangle
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -104,7 +104,7 @@ public class Rectangle
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x, y);
+        symbol.setPosition(x, y);
     }
 
     /**
@@ -119,7 +119,7 @@ public class Rectangle
     public void Drehen(int grad)
     {
         winkel += grad;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -136,7 +136,7 @@ public class Rectangle
     {
         this.breite = breite;
         this.höhe = höhe;
-        symbol.GrößeSetzen(breite, höhe);
+        symbol.setSize(breite, höhe);
     }
 
     /**
@@ -154,7 +154,7 @@ public class Rectangle
     public void FarbeSetzen(String farbe)
     {
         this.farbe = farbe;
-        symbol.FarbeSetzen(farbe);
+        symbol.setColor(farbe);
     }
 
     /**
@@ -171,7 +171,7 @@ public class Rectangle
     public void WinkelSetzen(int winkel)
     {
         this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -188,7 +188,7 @@ public class Rectangle
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        symbol.setVisibility(sichtbar);
     }
 
     /**

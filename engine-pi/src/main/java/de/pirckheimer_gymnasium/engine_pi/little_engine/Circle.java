@@ -60,11 +60,11 @@ public class Circle
         sichtbar = true;
         winkel = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.kreis);
-        symbol.PositionSetzen(x - radius, y - radius);
-        symbol.GrößeSetzen(radius * 2, radius * 2);
-        symbol.FarbeSetzen(farbe);
-        symbol.SichtbarkeitSetzen(sichtbar);
-        symbol.WinkelSetzen(winkel);
+        symbol.setPosition(x - radius, y - radius);
+        symbol.setSize(radius * 2, radius * 2);
+        symbol.setColor(farbe);
+        symbol.setVisibility(sichtbar);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -81,7 +81,7 @@ public class Circle
     {
         this.x = x;
         this.y = y;
-        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.setPosition(x - radius, y - radius);
     }
 
     /**
@@ -98,7 +98,7 @@ public class Circle
     {
         x += deltaX;
         y += deltaY;
-        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.setPosition(x - radius, y - radius);
     }
 
     /**
@@ -113,7 +113,7 @@ public class Circle
     public void Drehen(int grad)
     {
         winkel += grad;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -128,8 +128,8 @@ public class Circle
     public void RadiusSetzen(int radius)
     {
         this.radius = radius;
-        symbol.GrößeSetzen(radius * 2, radius * 2);
-        symbol.PositionSetzen(x - radius, y - radius);
+        symbol.setSize(radius * 2, radius * 2);
+        symbol.setPosition(x - radius, y - radius);
     }
 
     /**
@@ -147,7 +147,7 @@ public class Circle
     public void FarbeSetzen(String farbe)
     {
         this.farbe = farbe;
-        symbol.FarbeSetzen(farbe);
+        symbol.setColor(farbe);
     }
 
     /**
@@ -164,7 +164,7 @@ public class Circle
     public void WinkelSetzen(int winkel)
     {
         this.winkel = winkel;
-        symbol.WinkelSetzen(winkel);
+        symbol.setRotation(winkel);
     }
 
     /**
@@ -181,7 +181,7 @@ public class Circle
     public void SichtbarkeitSetzen(boolean sichtbar)
     {
         this.sichtbar = sichtbar;
-        symbol.SichtbarkeitSetzen(sichtbar);
+        symbol.setVisibility(sichtbar);
     }
 
     /**
