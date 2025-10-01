@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.engine_pi_demos.little_engine.turtle;
 import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
 
 /**
- * Zeichnet die Levy-C-Kurve
+ * Zeichnet die Lévy-C-Kurve.
  *
  * @author Albert Wiedemann
  *
@@ -12,12 +12,12 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
 class LevyCCurve
 {
     /**
-     * Die Turtle
+     * Die Turtle.
      */
     private Turtle t;
 
     /**
-     * Legt die Turtle an
+     * Legt die Turtle an.
      */
     LevyCCurve()
     {
@@ -35,8 +35,8 @@ class LevyCCurve
      * Die ursprünglich deutsche Name dieser Methode war {@code KurveZeichnen}.
      * </p>
      *
-     * @param depth Rekursionstiefe
-     * @param color die Linienfarbe
+     * @param depth Die Rekursionstiefe.
+     * @param color Die Linienfarbe.
      */
     void drawCurve(int depth, String color)
     {
@@ -47,7 +47,7 @@ class LevyCCurve
     }
 
     /**
-     * Zeichnet die Levy-C-Kurve mit den Tiefen 0 bis 3
+     * Zeichnet die Levy-C-Kurve mit den Tiefen 0 bis 3.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
@@ -80,8 +80,8 @@ class LevyCCurve
      * {@code SchrittAusführen}.
      * </p>
      *
-     * @param length die Linienlänge
-     * @param depth die (restliche) Rekursionstiefe
+     * @param length Die Linienlänge.
+     * @param depth Die (restliche) Rekursionstiefe.
      */
     private void drawPart(double length, int depth)
     {

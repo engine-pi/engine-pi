@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.engine_pi_demos.little_engine.turtle;
 import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
 
 /**
- * Rahmenklasse zum Zeichen von Mustern aus Quadraten
+ * Rahmenklasse zum Zeichen von Mustern aus Quadraten.
  *
  * <p>
  * Die ursprünglich deutsche Name dieser Klasse war {@code RekursiveGrafik}.
@@ -16,48 +16,48 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
 class RecursiveSquareDrawing
 {
     /**
-     * Die Turtle zum Zeichnen
+     * Die Turtle zum Zeichnen.
      */
-    Turtle turtle;
+    Turtle t;
 
     /**
      * Der Konstruktor legt die Turtle an.
      */
     RecursiveSquareDrawing()
     {
-        turtle = new Turtle();
-        turtle.setColor("blau");
-        turtle.setPosition(400, 200);
+        t = new Turtle();
+        t.setColor("blau");
+        t.setPosition(400, 200);
     }
 
     /**
-     * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der Turtle
+     * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der Turtle.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code QuadratZeichnen}.
      * </p>
      *
-     * @param length Seitenlänge des Quadrats
+     * @param length Die Seitenlänge des Quadrats.
      */
     private void drawSquare(double length)
     {
         for (int i = 0; i < 4; i += 1)
         {
-            turtle.move(length);
-            turtle.rotate(-90);
+            t.move(length);
+            t.rotate(-90);
         }
     }
 
     /**
-     * Zeichnet ein Element der Perlenkette
+     * Zeichnet ein Element der Perlenkette.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code PerlenketteZeichnen}.
      * </p>
      *
-     * @param numberOfBeads (Rest-)anzahl der Perlen (Quadrate)
+     * @param numberOfBeads Die (Rest-)anzahl der Perlen (Quadrate).
      */
     void drawBeadChain(int numberOfBeads)
     {
@@ -68,20 +68,20 @@ class RecursiveSquareDrawing
         else
         {
             drawBeadChain(numberOfBeads - 1);
-            turtle.move(20);
+            t.move(20);
             drawSquare(10);
         }
     }
 
     /**
-     * Zeichnet ein Element der Quadratmuster
+     * Zeichnet ein Element der Quadratmuster.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code QuadratmusterZeichnen}.
      * </p>
      *
-     * @param numberOfSquares (Rest-)anzahl der Quadrate
+     * @param numberOfSquares Die (Rest-)anzahl der Quadrate.
      */
     void drawSquarePattern(int numberOfSquares)
     {
@@ -93,75 +93,75 @@ class RecursiveSquareDrawing
     }
 
     /**
-     * Zeichnet Quadratmuster im Kreis
+     * Zeichnet Quadratmuster im Kreis.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code MusterZeichnen}.
      * </p>
      *
-     * @param numberOfSquares insgesamte Anzahl der Quadrate
-     * @param remainingSquares Anzahl der noch zu zeichnenden Quadrate
+     * @param numberOfSquares Die insgesamte Anzahl der Quadrate.
+     * @param remainingSquares Die Anzahl der noch zu zeichnenden Quadrate.
      */
     void drawSquareCircle(int numberOfSquares, int remainingSquares)
     {
         if (remainingSquares > 0)
         {
-            turtle.liftPen();
-            turtle.rotate(360 / numberOfSquares);
-            turtle.move(50);
-            turtle.lowerPen();
+            t.liftPen();
+            t.rotate(360 / numberOfSquares);
+            t.move(50);
+            t.lowerPen();
             drawSquare(20);
-            turtle.liftPen();
-            turtle.rotate(180);
-            turtle.move(50);
-            turtle.lowerPen();
-            turtle.rotate(180);
+            t.liftPen();
+            t.rotate(180);
+            t.move(50);
+            t.lowerPen();
+            t.rotate(180);
             drawSquareCircle(numberOfSquares, remainingSquares - 1);
         }
     }
 
     /**
-     * Zeichnet Quadratmuster im Kreis mit variablem Radius
+     * Zeichnet Quadratmuster im Kreis mit variablem Radius.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code MusterZeichnen2}.
      * </p>
      *
-     * @param numberOfSquares Anzahl der Quadrate
-     * @param remainingSquares Anzahl der noch zu zeichnenden Quadrate
-     * @param radius der Radius des Kreises mit den Quadraten
+     * @param numberOfSquares Die Anzahl der Quadrate.
+     * @param remainingSquares Die Anzahl der noch zu zeichnenden Quadrate.
+     * @param radius Der Radius des Kreises mit den Quadraten.
      */
     private void drawSquareCircleWithRadius(int numberOfSquares,
             int remainingSquares, int radius)
     {
         if (remainingSquares > 0)
         {
-            turtle.liftPen();
-            turtle.rotate(360 / numberOfSquares);
-            turtle.move(radius);
-            turtle.lowerPen();
+            t.liftPen();
+            t.rotate(360 / numberOfSquares);
+            t.move(radius);
+            t.lowerPen();
             drawSquare(radius / 2);
-            turtle.liftPen();
-            turtle.rotate(180);
-            turtle.move(radius);
-            turtle.lowerPen();
-            turtle.rotate(180);
+            t.liftPen();
+            t.rotate(180);
+            t.move(radius);
+            t.lowerPen();
+            t.rotate(180);
             drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1,
                     radius);
         }
     }
 
     /**
-     * Zeichnet eine Folge immer kleinerer Quadratkreise
+     * Zeichnet eine Folge immer kleinerer Quadratkreise.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code QuadratkreiseZeichnen}.
      * </p>
      *
-     * @param numberOfSquares Anzahl der Quadrate
-     * @param radius der Radius des Kreises mit den Quadraten
+     * @param numberOfSquares Die Anzahl der Quadrate.
+     * @param radius Der Radius des Kreises mit den Quadraten.
      */
     public void drawMultipleSquareCircles(int numberOfSquares, int radius)
     {
