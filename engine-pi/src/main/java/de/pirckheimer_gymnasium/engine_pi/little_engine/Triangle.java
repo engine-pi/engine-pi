@@ -24,29 +24,49 @@ public class Triangle
     public int y;
 
     /**
-     * Breite des umgebenden Rechtecks.
+     * Die Breite des umgebenden Rechtecks.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code breite}.
+     * </p>
      */
-    public int breite;
+    public int width;
 
     /**
-     * Höhe des umgebenden Rechtecks.
+     * Die Höhe des umgebenden Rechtecks.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code höhe}.
+     * </p>
      */
-    public int höhe;
+    public int height;
 
     /**
-     * Farbe des Dreiecks.
+     * Die Farbe des Dreiecks.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
-     * Sichtbarkeit des Dreiecks.
+     * Die Sichtbarkeit des Dreiecks.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Dreiecks in Grad.
+     * Der Drehwinkel (mathematisch positiver Drehsinn) des Dreiecks in Grad.
+     *
+     * <p>
+     * Die ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
      * Referenz auf das Delegate-Objekt.
@@ -54,23 +74,23 @@ public class Triangle
     DrawingWindow.GrafikSymbol symbol;
 
     /**
-     * Der Konstruktor erzeugt das Delegate-Objekt
+     * Der Konstruktor erzeugt das Delegate-Objekt.
      */
     public Triangle()
     {
         x = 60;
         y = 10;
-        breite = 100;
-        höhe = 100;
-        farbe = "rot";
-        sichtbar = true;
-        winkel = 0;
+        width = 100;
+        height = 100;
+        color = "rot";
+        visible = true;
+        rotation = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.dreieck);
-        symbol.setPosition(x - breite / 2, y);
-        symbol.setSize(breite, höhe);
-        symbol.setColor(farbe);
-        symbol.setVisibility(sichtbar);
-        symbol.setRotation(winkel);
+        symbol.setPosition(x - width / 2, y);
+        symbol.setSize(width, height);
+        symbol.setColor(color);
+        symbol.setVisibility(visible);
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -83,11 +103,11 @@ public class Triangle
      * @param x x-Position der Spitze
      * @param y y-Position der Spitze
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
-        symbol.setPosition(x - breite / 2, y);
+        symbol.setPosition(x - width / 2, y);
     }
 
     /**
@@ -97,29 +117,29 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
      * </p>
      *
-     * @param deltaX Verschiebung in x-Richtung
-     * @param deltaY Verschiebung in y-Richtung
+     * @param deltaX Die Verschiebung in x-Richtung.
+     * @param deltaY Die Verschiebung in y-Richtung.
      */
-    public void Verschieben(int deltaX, int deltaY)
+    public void move(int deltaX, int deltaY)
     {
         x += deltaX;
         y += deltaY;
-        symbol.setPosition(x - breite / 2, y);
+        symbol.setPosition(x - width / 2, y);
     }
 
     /**
-     * Dreht das Dreieck
+     * Dreht das Dreieck.
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
-     * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
+     * @param angle Der Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß.
      */
-    public void Drehen(int grad)
+    public void rotate(int angle)
     {
-        winkel += grad;
-        symbol.setRotation(winkel);
+        rotation += angle;
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -129,15 +149,15 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
-     * @param breite (neue) Breite
-     * @param höhe (neue) Höhe
+     * @param width Die (neue) Breite.
+     * @param height Die (neue) Höhe.
      */
-    public void GrößeSetzen(int breite, int höhe)
+    public void setSize(int width, int height)
     {
-        this.breite = breite;
-        this.höhe = höhe;
-        symbol.setSize(breite, höhe);
-        symbol.setPosition(x - breite / 2, y);
+        this.width = width;
+        this.height = height;
+        symbol.setSize(width, height);
+        symbol.setPosition(x - width / 2, y);
     }
 
     /**
@@ -150,16 +170,16 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param farbe (neue) Farbe
+     * @param color Die (neue) Farbe.
      */
-    public void FarbeSetzen(String farbe)
+    public void setColor(String color)
     {
-        this.farbe = farbe;
-        symbol.setColor(farbe);
+        this.color = color;
+        symbol.setColor(color);
     }
 
     /**
-     * Setzt den Drehwinkel des Dreiecks. Die Winkelangabe ist in Grad,positive
+     * Setzt den Drehwinkel des Dreiecks. Die Winkelangabe ist in Grad, positive
      * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
@@ -167,29 +187,29 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param winkel der (neue) Drehwinkel des Dreiecks
+     * @param rotation Der (neue) Drehwinkel des Dreiecks.
      */
-    public void WinkelSetzen(int winkel)
+    public void setRotation(int rotation)
     {
-        this.winkel = winkel;
-        symbol.setRotation(winkel);
+        this.rotation = rotation;
+        symbol.setRotation(rotation);
     }
 
     /**
      * Schaltet die Sichtbarkeit des Dreiecks ein oder aus. Erlaubte
-     * Parameterwerte: true, false
+     * Parameterwerte: {@code true}, {@code false}
      *
      * <p>
      * Die ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
-     * @param sichtbar (neue) Sichtbarkeit des Dreiecks
+     * @param visible Die (neue) Sichtbarkeit des Dreiecks.
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean visible)
     {
-        this.sichtbar = sichtbar;
-        symbol.setVisibility(sichtbar);
+        this.visible = visible;
+        symbol.setVisibility(visible);
     }
 
     /**
@@ -199,7 +219,7 @@ public class Triangle
      * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
-    public void Entfernen()
+    public void remove()
     {
         symbol.remove();
     }
@@ -212,7 +232,7 @@ public class Triangle
      * {@code NachVornBringen}.
      * </p>
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.raiseLayer();
     }
@@ -225,7 +245,7 @@ public class Triangle
      * {@code GanzNachVornBringen}.
      * </p>
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
         symbol.bringToFront();
     }
@@ -238,7 +258,7 @@ public class Triangle
      * {@code NachHintenBringen}.
      * </p>
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
         symbol.lowerLayer();
     }
@@ -251,7 +271,7 @@ public class Triangle
      * {@code GanzNachHintenBringen}.
      * </p>
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
         symbol.bringToBack();
     }
