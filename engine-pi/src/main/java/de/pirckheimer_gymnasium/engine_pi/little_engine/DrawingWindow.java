@@ -228,9 +228,9 @@ public class DrawingWindow
                 {
                     for (GrafikSymbol s : alleSymbole)
                     {
-                        if (s instanceof TurtleIntern)
+                        if (s instanceof TurtleInternal)
                         {
-                            ((TurtleIntern) s).NeueGrößeSetzen();
+                            ((TurtleInternal) s).NeueGrößeSetzen();
                         }
                     }
                 }
@@ -488,27 +488,27 @@ public class DrawingWindow
         switch (art)
         {
         case rechteck:
-            neu = new RechteckIntern();
+            neu = new RectangleInternal();
             break;
 
         case kreis:
-            neu = new EllipseIntern();
+            neu = new EllipseInternal();
             break;
 
         case dreieck:
-            neu = new DreieckIntern();
+            neu = new TriangleInternal();
             break;
 
         case turtle:
-            neu = new TurtleIntern();
+            neu = new TurtleInternal();
             break;
 
         case figur:
-            neu = new FigurIntern();
+            neu = new CharacterInternal();
             break;
 
         case text:
-            neu = new TextIntern();
+            neu = new TextInternal();
             break;
         }
         synchronized (zeichenfläche.malfläche)
@@ -552,6 +552,10 @@ public class DrawingWindow
     /**
      * Oberklasse für alle verfügbaren Grafiksymbole. Alle Grafiksymbole werden
      * über ihr umgebendes Rechteck beschrieben.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code GrafikSymbol}.
+     * </p>
      */
     abstract class GrafikSymbol
     {
@@ -1007,8 +1011,12 @@ public class DrawingWindow
 
     /**
      * Objekte dieser Klasse verwalten ein Rechteck.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code RechteckIntern}.
+     * </p>
      */
-    private class RechteckIntern extends GrafikSymbol
+    private class RectangleInternal extends GrafikSymbol
     {
         /**
          * Erstellt die Form des Rechtecks.
@@ -1030,8 +1038,12 @@ public class DrawingWindow
 
     /**
      * Objekte dieser Klasse verwalten eine Ellipse.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code EllipseIntern}.
+     * </p>
      */
-    private class EllipseIntern extends GrafikSymbol
+    private class EllipseInternal extends GrafikSymbol
     {
         /**
          * Erstellt die Form der Ellipse.
@@ -1053,8 +1065,12 @@ public class DrawingWindow
 
     /**
      * Objekte dieser Klasse verwalten ein Dreieck.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code ElementZeichnen}.
+     * </p>
      */
-    private class DreieckIntern extends GrafikSymbol
+    private class TriangleInternal extends GrafikSymbol
     {
         /**
          * Erstellt die Form des Dreiecks.
@@ -1080,8 +1096,12 @@ public class DrawingWindow
 
     /**
      * Objekte dieser Klasse verwalten einen Text.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code TextIntern}.
+     * </p>
      */
-    class TextIntern extends GrafikSymbol
+    class TextInternal extends GrafikSymbol
     {
         /**
          * Der aktuelle Text.
@@ -1100,7 +1120,7 @@ public class DrawingWindow
          * Der ursprünglich deutsche Name dieser Methode war {@code TextIntern}.
          * </p>
          */
-        TextIntern()
+        TextInternal()
         {
             super();
             text = "Text";
@@ -1265,8 +1285,12 @@ public class DrawingWindow
 
     /**
      * Oberklasse für alle Elemente einer Figur (Figur, Turtle).
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code FigurenElement}.
+     * </p>
      */
-    private abstract class FigurenElement
+    private abstract class CharacterElement
     {
         double xe;
 
@@ -1312,8 +1336,13 @@ public class DrawingWindow
 
     /**
      * Ein rechteckiges Figurenelement.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war
+     * {@code FigurenElementRechteck}.
+     * </p>
      */
-    private class FigurenElementRechteck extends FigurenElement
+    private class CharacterElementRectangle extends CharacterElement
     {
         /**
          * Der Konstruktor speichert die Rahmendaten.
@@ -1331,8 +1360,8 @@ public class DrawingWindow
          * @param höhe Höhe des Rechtecks
          * @param c Farbe des Rechtecks
          */
-        FigurenElementRechteck(double x, double y, double breite, double höhe,
-                Color c)
+        CharacterElementRectangle(double x, double y, double breite,
+                double höhe, Color c)
         {
             this.xe = x;
             this.ye = y;
@@ -1387,8 +1416,13 @@ public class DrawingWindow
 
     /**
      * Ein elliptisches Figurenelement.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war
+     * {@code FigurenElementEllipse}.
+     * </p>
      */
-    private class FigurenElementEllipse extends FigurenElement
+    private class CharacterElementEllipse extends CharacterElement
     {
         /**
          * Der Konstruktor speichert die Rahmendaten.
@@ -1406,7 +1440,7 @@ public class DrawingWindow
          * @param höhe Höhe der Ellipse
          * @param c Farbe der Ellipse
          */
-        FigurenElementEllipse(double x, double y, double breite, double höhe,
+        CharacterElementEllipse(double x, double y, double breite, double höhe,
                 Color c)
         {
             this.xe = x;
@@ -1462,8 +1496,13 @@ public class DrawingWindow
 
     /**
      * Ein Figurenelement begrenzt durch das angegebene Polygon.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war
+     * {@code FigurenElementPolygon}.
+     * </p>
      */
-    private class FigurenElementPolygon extends FigurenElement
+    private class CharacterElementPolygon extends CharacterElement
     {
         /**
          * Das Polygonobjekt
@@ -1479,7 +1518,7 @@ public class DrawingWindow
          *     Aufhängepunkt.
          * @param c Farbe der Polygonfläche
          */
-        FigurenElementPolygon(int[] x, int[] y, Color c)
+        CharacterElementPolygon(int[] x, int[] y, Color c)
         {
             int anz = x.length <= y.length ? x.length : y.length;
             poly = new Polygon(x, y, anz);
@@ -1540,8 +1579,12 @@ public class DrawingWindow
 
     /**
      * Das Objekt dieser Klasse zeichnet den Weg der Turtle.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code TurtleIntern}.
+     * </p>
      */
-    class TurtleIntern extends GrafikSymbol
+    class TurtleInternal extends GrafikSymbol
     {
         private class LinienElement
         {
@@ -1689,7 +1732,7 @@ public class DrawingWindow
         /**
          * Standardfigur für Turtle.
          */
-        private LinkedList<FigurenElement> standardFigur;
+        private LinkedList<CharacterElement> standardFigur;
 
         /**
          * Das Hintergrundbild für die Linien.
@@ -1699,7 +1742,7 @@ public class DrawingWindow
         /**
          * Legt die Turtle mit Startpunkt (100|200) in Richtung 0˚ an.
          */
-        TurtleIntern()
+        TurtleInternal()
         {
             super();
             x = 100;
@@ -1716,7 +1759,7 @@ public class DrawingWindow
             symbolSichtbar = true;
             linien = new ArrayList<LinienElement>();
             hintergrund = new HintergrundBild();
-            standardFigur = new LinkedList<FigurenElement>();
+            standardFigur = new LinkedList<CharacterElement>();
             StandardfigurErzeugen();
             FormErzeugen();
         }
@@ -1732,27 +1775,28 @@ public class DrawingWindow
         private void StandardfigurErzeugen()
         {
             // Kopf
-            standardFigur.add(
-                    new FigurenElementEllipse(50, -12.5, 25, 25, Color.GREEN));
+            standardFigur.add(new CharacterElementEllipse(50, -12.5, 25, 25,
+                    Color.GREEN));
             // Beine
-            standardFigur.add(new FigurenElementEllipse(22.5, -32.5, 12.5, 17.5,
-                    Color.GREEN));
-            standardFigur.add(new FigurenElementEllipse(40.0, -32.5, 12.5, 17.5,
-                    Color.GREEN));
-            standardFigur.add(new FigurenElementEllipse(22.5, 15.0, 12.5, 17.5,
-                    Color.GREEN));
-            standardFigur.add(new FigurenElementEllipse(40.0, 15.0, 12.5, 17.5,
-                    Color.GREEN));
+            standardFigur.add(new CharacterElementEllipse(22.5, -32.5, 12.5,
+                    17.5, Color.GREEN));
+            standardFigur.add(new CharacterElementEllipse(40.0, -32.5, 12.5,
+                    17.5, Color.GREEN));
+            standardFigur.add(new CharacterElementEllipse(22.5, 15.0, 12.5,
+                    17.5, Color.GREEN));
+            standardFigur.add(new CharacterElementEllipse(40.0, 15.0, 12.5,
+                    17.5, Color.GREEN));
             // Augen
-            standardFigur
-                    .add(new FigurenElementRechteck(67.5, -10.0, 5.0, 7.5, c));
-            standardFigur
-                    .add(new FigurenElementRechteck(67.5, 2.5, 5.0, 7.5, c));
-            // Schwanz
-            standardFigur.add(new FigurenElementEllipse(0, -3.75, 25, 7.5, c));
-            // Rumpf
             standardFigur.add(
-                    new FigurenElementEllipse(7.5, -23.75, 57.5, 47.5, braun));
+                    new CharacterElementRectangle(67.5, -10.0, 5.0, 7.5, c));
+            standardFigur
+                    .add(new CharacterElementRectangle(67.5, 2.5, 5.0, 7.5, c));
+            // Schwanz
+            standardFigur
+                    .add(new CharacterElementEllipse(0, -3.75, 25, 7.5, c));
+            // Rumpf
+            standardFigur.add(new CharacterElementEllipse(7.5, -23.75, 57.5,
+                    47.5, braun));
         }
 
         /**
@@ -1791,7 +1835,7 @@ public class DrawingWindow
             {
                 synchronized (standardFigur)
                 {
-                    for (FigurenElement e : standardFigur)
+                    for (CharacterElement e : standardFigur)
                     {
                         Path2D.Double p = new Path2D.Double();
                         e.ElementZuForm(p, größe, x, y);
@@ -1958,8 +2002,8 @@ public class DrawingWindow
             for (GrafikSymbol g : zeichenfläche.alleSymbole)
             {
                 if ((g != this) && g.IstInnerhalb(x, y) && g.sichtbar
-                        && (!(g instanceof TurtleIntern)
-                                || ((TurtleIntern) g).symbolSichtbar))
+                        && (!(g instanceof TurtleInternal)
+                                || ((TurtleInternal) g).symbolSichtbar))
                 {
                     return true;
                 }
@@ -1988,12 +2032,12 @@ public class DrawingWindow
             {
                 if ((g != this) && g.IstInnerhalb(x, y) && g.sichtbar)
                 {
-                    if (g instanceof TurtleIntern)
+                    if (g instanceof TurtleInternal)
                     {
-                        TurtleIntern t = (TurtleIntern) g;
+                        TurtleInternal t = (TurtleInternal) g;
                         if (t.symbolSichtbar)
                         {
-                            for (FigurenElement e : t.standardFigur)
+                            for (CharacterElement e : t.standardFigur)
                             {
                                 Path2D.Double p = new Path2D.Double();
                                 double größe = t.h > t.b ? t.b : t.h;
@@ -2008,14 +2052,14 @@ public class DrawingWindow
                             }
                         }
                     }
-                    else if (g instanceof FigurIntern)
+                    else if (g instanceof CharacterInternal)
                     {
-                        FigurIntern t = (FigurIntern) g;
-                        LinkedList<FigurenElement> figur = ((t.eigeneFigur == null)
+                        CharacterInternal t = (CharacterInternal) g;
+                        LinkedList<CharacterElement> figur = ((t.eigeneFigur == null)
                                 || (t.eigeneFigur.size() == 0))
                                         ? t.standardFigur
                                         : t.eigeneFigur;
-                        for (FigurenElement e : figur)
+                        for (CharacterElement e : figur)
                         {
                             Path2D.Double p = new Path2D.Double();
                             double größe = t.h > t.b ? t.b : t.h;
@@ -2074,8 +2118,8 @@ public class DrawingWindow
                 s = ((Character) object).symbol;
             }
             return (s != null) && (s != this) && s.IstInnerhalb(x, y)
-                    && s.sichtbar && (!(s instanceof TurtleIntern)
-                            || ((TurtleIntern) s).symbolSichtbar);
+                    && s.sichtbar && (!(s instanceof TurtleInternal)
+                            || ((TurtleInternal) s).symbolSichtbar);
         }
 
         /**
@@ -2106,7 +2150,7 @@ public class DrawingWindow
                 {
                     synchronized (standardFigur)
                     {
-                        for (FigurenElement e : standardFigur)
+                        for (CharacterElement e : standardFigur)
                         {
                             e.ElementZeichnen(g2, größe, x, y);
                         }
@@ -2119,8 +2163,12 @@ public class DrawingWindow
 
     /**
      * Das Objekt dieser Klasse ist ein in der Gestalt definierbarer Akteur.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Klasse war {@code FigurIntern}.
+     * </p>
      */
-    class FigurIntern extends GrafikSymbol
+    class CharacterInternal extends GrafikSymbol
     {
 
         /**
@@ -2151,12 +2199,12 @@ public class DrawingWindow
         /**
          * Eigene Figur für Figur.
          */
-        private LinkedList<FigurenElement> eigeneFigur;
+        private LinkedList<CharacterElement> eigeneFigur;
 
         /**
          * Standardfigur für Figur.
          */
-        private LinkedList<FigurenElement> standardFigur;
+        private LinkedList<CharacterElement> standardFigur;
 
         /**
          * Legt die Figur mit Startpunkt (100|200) in Richtung 0˚ an.
@@ -2166,7 +2214,7 @@ public class DrawingWindow
          * {@code FigurIntern}.
          * </p>
          */
-        FigurIntern()
+        CharacterInternal()
         {
             super();
             x = 100;
@@ -2179,8 +2227,8 @@ public class DrawingWindow
             homeY = y;
             homeWinkel = winkel;
             c = Color.black;
-            eigeneFigur = new LinkedList<FigurenElement>();
-            standardFigur = new LinkedList<FigurenElement>();
+            eigeneFigur = new LinkedList<CharacterElement>();
+            standardFigur = new LinkedList<CharacterElement>();
             StandardfigurErzeugen();
             FormErzeugen();
         }
@@ -2197,9 +2245,9 @@ public class DrawingWindow
         {
             int[] x = new int[] { -50, 50, -50 };
             int[] y = new int[] { -50, 0, 50 };
-            standardFigur.add(new FigurenElementPolygon(x, y, Color.yellow));
+            standardFigur.add(new CharacterElementPolygon(x, y, Color.yellow));
             standardFigur.add(
-                    new FigurenElementEllipse(-10, -10, 20, 20, Color.blue));
+                    new CharacterElementEllipse(-10, -10, 20, 20, Color.blue));
         }
 
         /**
@@ -2219,12 +2267,12 @@ public class DrawingWindow
             double größe = h > b ? b : h;
             if (standardFigur != null)
             {
-                LinkedList<FigurenElement> figur = ((eigeneFigur == null)
+                LinkedList<CharacterElement> figur = ((eigeneFigur == null)
                         || (eigeneFigur.size() == 0)) ? standardFigur
                                 : eigeneFigur;
                 synchronized (figur)
                 {
-                    for (FigurenElement e : figur)
+                    for (CharacterElement e : figur)
                     {
                         Path2D.Double p = new Path2D.Double();
                         e.ElementZuForm(p, größe, x, y);
@@ -2326,8 +2374,8 @@ public class DrawingWindow
             for (GrafikSymbol g : zeichenfläche.alleSymbole)
             {
                 if ((g != this) && g.Schneidet(form) && g.sichtbar
-                        && (!(g instanceof TurtleIntern)
-                                || ((TurtleIntern) g).symbolSichtbar))
+                        && (!(g instanceof TurtleInternal)
+                                || ((TurtleInternal) g).symbolSichtbar))
                 {
                     return true;
                 }
@@ -2356,9 +2404,9 @@ public class DrawingWindow
             {
                 if ((g != this) && g.Schneidet(form) && g.sichtbar)
                 {
-                    if (g instanceof TurtleIntern)
+                    if (g instanceof TurtleInternal)
                     {
-                        TurtleIntern t = (TurtleIntern) g;
+                        TurtleInternal t = (TurtleInternal) g;
                         if (t.symbolSichtbar)
                         {
                             Area[] areas = new Area[t.standardFigur.size()];
@@ -2366,7 +2414,7 @@ public class DrawingWindow
                             AffineTransform a = new AffineTransform();
                             a.rotate(DrehwinkelGeben(t.winkel), t.x, t.y);
                             int pos = 0;
-                            for (FigurenElement e : t.standardFigur)
+                            for (CharacterElement e : t.standardFigur)
                             {
                                 Path2D.Double p = new Path2D.Double();
                                 double größe = t.h > t.b ? t.b : t.h;
@@ -2390,10 +2438,10 @@ public class DrawingWindow
                             }
                         }
                     }
-                    else if (g instanceof FigurIntern)
+                    else if (g instanceof CharacterInternal)
                     {
-                        FigurIntern t = (FigurIntern) g;
-                        LinkedList<FigurenElement> figur = ((t.eigeneFigur == null)
+                        CharacterInternal t = (CharacterInternal) g;
+                        LinkedList<CharacterElement> figur = ((t.eigeneFigur == null)
                                 || (t.eigeneFigur.size() == 0))
                                         ? t.standardFigur
                                         : t.eigeneFigur;
@@ -2402,7 +2450,7 @@ public class DrawingWindow
                         AffineTransform a = new AffineTransform();
                         a.rotate(DrehwinkelGeben(t.winkel), t.x, t.y);
                         int pos = 0;
-                        for (FigurenElement e : figur)
+                        for (CharacterElement e : figur)
                         {
                             Path2D.Double p = new Path2D.Double();
                             double größe = t.h > t.b ? t.b : t.h;
@@ -2470,8 +2518,8 @@ public class DrawingWindow
                 s = ((Character) object).symbol;
             }
             return (s != null) && (s != this) && s.Schneidet(form) && s.sichtbar
-                    && (!(s instanceof TurtleIntern)
-                            || ((TurtleIntern) s).symbolSichtbar);
+                    && (!(s instanceof TurtleInternal)
+                            || ((TurtleInternal) s).symbolSichtbar);
         }
 
         /**
@@ -2495,8 +2543,8 @@ public class DrawingWindow
         {
             synchronized (eigeneFigur)
             {
-                eigeneFigur.add(new FigurenElementRechteck(x, y, breite, höhe,
-                        FarbeCodieren(farbe)));
+                eigeneFigur.add(new CharacterElementRectangle(x, y, breite,
+                        höhe, FarbeCodieren(farbe)));
             }
             FormErzeugen();
             zeichenfläche.malfläche.repaint();
@@ -2525,7 +2573,7 @@ public class DrawingWindow
         {
             synchronized (eigeneFigur)
             {
-                eigeneFigur.add(new FigurenElementEllipse(x, y, breite, höhe,
+                eigeneFigur.add(new CharacterElementEllipse(x, y, breite, höhe,
                         FarbeCodieren(farbe)));
             }
             FormErzeugen();
@@ -2557,8 +2605,8 @@ public class DrawingWindow
             {
                 int[] x = new int[] { x1, x2, x3 };
                 int[] y = new int[] { y1, y2, y3 };
-                eigeneFigur.add(
-                        new FigurenElementPolygon(x, y, FarbeCodieren(farbe)));
+                eigeneFigur.add(new CharacterElementPolygon(x, y,
+                        FarbeCodieren(farbe)));
             }
             FormErzeugen();
             zeichenfläche.malfläche.repaint();
@@ -2605,12 +2653,12 @@ public class DrawingWindow
             g2.rotate(DrehwinkelGeben(winkel), x, y);
             if (standardFigur != null)
             {
-                LinkedList<FigurenElement> figur = ((eigeneFigur == null)
+                LinkedList<CharacterElement> figur = ((eigeneFigur == null)
                         || (eigeneFigur.size() == 0)) ? standardFigur
                                 : eigeneFigur;
                 synchronized (figur)
                 {
-                    for (FigurenElement e : figur)
+                    for (CharacterElement e : figur)
                     {
                         e.ElementZeichnen(g2, größe, x, y);
                     }

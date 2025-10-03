@@ -58,7 +58,7 @@ public class Text
     /**
      * Referenz auf das Delegate-Objekt.
      */
-    public DrawingWindow.TextIntern symbol;
+    public DrawingWindow.TextInternal symbol;
 
     /**
      * Der Konstruktor erzeugt das Delegate-Objekt
@@ -71,7 +71,7 @@ public class Text
         visible = true;
         rotation = 0;
         size = 12;
-        symbol = (DrawingWindow.TextIntern) DrawingWindow
+        symbol = (DrawingWindow.TextInternal) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.text);
         symbol.setPosition(x, y);
         symbol.setColor(color);

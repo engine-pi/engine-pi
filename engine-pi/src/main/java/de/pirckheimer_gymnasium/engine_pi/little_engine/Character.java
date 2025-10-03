@@ -62,7 +62,7 @@ public class Character
     /**
      * Referenz auf das echte Figursymbol.
      */
-    DrawingWindow.FigurIntern symbol;
+    DrawingWindow.CharacterInternal symbol;
 
     /**
      * Referenz auf das Aktionsempfängerobjekt.
@@ -75,7 +75,7 @@ public class Character
      */
     public Character()
     {
-        symbol = (DrawingWindow.FigurIntern) DrawingWindow
+        symbol = (DrawingWindow.CharacterInternal) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.figur);
         symbol.setVisibility(true);
         x = symbol.x;
@@ -377,7 +377,7 @@ public class Character
      *
      * @return x-Koordinate
      */
-    public int XPositionGeben()
+    public int getX()
     {
         return x;
     }
@@ -391,7 +391,7 @@ public class Character
      *
      * @return y-Koordinate
      */
-    public int YPositionGeben()
+    public int getY()
     {
         return y;
     }

@@ -67,7 +67,7 @@ public class Turtle
     /**
      * Referenz auf das echte Turtlesybol.
      */
-    DrawingWindow.TurtleIntern symbol;
+    DrawingWindow.TurtleInternal symbol;
 
     /**
      * Referenz auf das Aktionsempfängerobjekt.
@@ -85,7 +85,7 @@ public class Turtle
      */
     public Turtle()
     {
-        symbol = (DrawingWindow.TurtleIntern) DrawingWindow
+        symbol = (DrawingWindow.TurtleInternal) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.turtle);
         symbol.setVisibility(true);
         x = symbol.x;
@@ -315,7 +315,6 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
-     *
      */
     public void lowerLayer()
     {
@@ -329,7 +328,6 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
-     *
      */
     public void bringToBack()
     {
