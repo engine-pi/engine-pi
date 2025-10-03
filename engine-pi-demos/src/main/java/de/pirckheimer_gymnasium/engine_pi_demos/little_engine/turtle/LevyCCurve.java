@@ -102,6 +102,7 @@ public class LevyCCurve
     public static void main(String[] args)
     {
         LevyCCurve curve = new LevyCCurve();
-        curve.drawCurve(10, "schwarz");
+        // curve.drawCurve(10, "schwarz");
+        curve.drawCurve0to3();
     }
 }

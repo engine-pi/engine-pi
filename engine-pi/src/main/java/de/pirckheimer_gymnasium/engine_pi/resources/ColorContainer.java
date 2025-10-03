@@ -30,22 +30,22 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </p>
  *
  * <ol>
- * <li>{@code yellow}: Gelb</li>
+ * <li>{@code yellow}: „Gelb“, „Hellgelb“</li>
  * <li>{@code yellow orange}: „orange yellow“, „gold“, „Gelb-Orange“,
  * „Orange-Gelb“, „Golden“, „Dunkelgelb“</li>
- * <li>{@code orange}: Orange</li>
+ * <li>{@code orange}: „Orange“</li>
  * <li>{@code red orange}: „orange red“, „brick red“, „brick“, „Rot-Orange“,
  * „Orange-Rot“, „Ziegelrot“, „Hellrot“</li>
- * <li>{@code red}: Rot</li>
- * <li>{@code red purple}: „purple red“, „pink“, „Rot-Violett“, „Violett-Rot“,
- * „Rosa“</li>
+ * <li>{@code red}: „Rot“</li>
+ * <li>{@code red purple}: „purple red“, „magenta“, „pink“, „Rot-Violett“,
+ * „Violett-Rot“, „Rosa“</li>
  * <li>{@code purple}: „Violet“, „Violett“, „Lila“</li>
  * <li>{@code blue purple}: „purple blue“, „indigo“, „Violett Blau“, „Blau
  * Violett“</li>
- * <li>{@code blue}: Blau</li>
+ * <li>{@code blue}: „Blau“</li>
  * <li>{@code blue green}: „green blue“, „cyan“, „Blau-Grün“, „Grün-Blau“,
  * „Türkis“</li>
- * <li>{@code green}: Grün</li>
+ * <li>{@code green}: „Grün“</li>
  * <li>{@code yellow green}: „green yellow“, „lime“, „lime green“, „Gelb-Grün“,
  * „Grün-Gelb“, „Limetten Grün“, „Limette“, „Hellgrün“</li>
  * </ol>
@@ -54,10 +54,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * nicht zum Farbkreis von Itten):
  *
  * <ul>
- * <li>{@code brown}: Braun</li>
- * <li>{@code white}: Weiß</li>
- * <li>{@code gray}: grey, Grau</li>
- * <li>{@code black}: Schwarz</li>
+ * <li>{@code brown}: „Braun“</li>
+ * <li>{@code white}: „Weiß“</li>
+ * <li>{@code gray}: „grey“, „Grau“</li>
+ * <li>{@code black}: „Schwarz“</li>
  * </ul>
  *
  * @see de.pirckheimer_gymnasium.engine_pi.Resources#COLORS
@@ -269,7 +269,7 @@ public class ColorContainer implements Container<Color>
     {
         clear();
         // Primärfarbe
-        add("yellow", schema.getYellow(), "Gelb");
+        add("yellow", schema.getYellow(), "Gelb", "Hellgelb");
         // Tertiärfarbe
         add("yellow orange", schema.getYellowOrange(), "orange yellow", "gold",
                 "Gelb-Orange", "Orange-Gelb", "Golden", "Dunkelgelb");
@@ -281,8 +281,8 @@ public class ColorContainer implements Container<Color>
         // Primärfarbe
         add("red", schema.getRed(), "Rot");
         // Tertiärfarbe
-        add("red purple", schema.getRedPurple(), "purple red", "pink",
-                "Rot-Violett", "Violett-Rot", "Rosa");
+        add("red purple", schema.getRedPurple(), "purple red", "magenta",
+                "pink", "Rot-Violett", "Violett-Rot", "Rosa");
         // Sekundärfarbe
         add("purple", schema.getPurple(), "Violet", "Violett", "Lila");
         // Tertiärfarbe
@@ -338,7 +338,7 @@ public class ColorContainer implements Container<Color>
         ColorScheme scheme = ColorSchemeSelection.GNOME.getScheme();
         return switch (normalizeName(name))
         {
-        case "yellow", "gelb" -> scheme.getYellow();
+        case "yellow", "gelb", "hellgelb" -> scheme.getYellow();
         // Tertiärfarbe
         case "yelloworange", "orangeyellow", "gold", "gelborange", "orangegelb",
                 "golden", "dunkelgelb" ->
@@ -352,8 +352,8 @@ public class ColorContainer implements Container<Color>
         // Primärfarbe
         case "red", "rot" -> scheme.getRed();
         // Tertiärfarbe
-        case "redpurple", "purplered", "pink", "rotviolett", "violettrot",
-                "rosa" ->
+        case "redpurple", "purplered", "magenta", "pink", "rotviolett",
+                "violettrot", "rosa" ->
             scheme.getRedPurple();
         // Sekundärfarbe
         case "purple", "violet", "violett", "lila" -> scheme.getPurple();
@@ -378,7 +378,7 @@ public class ColorContainer implements Container<Color>
         case "white", "weiss" -> scheme.getWhite();
         case "gray", "grey", "grau" -> scheme.getGray();
         case "black", "schwarz" -> scheme.getBlack();
-        default -> Color.WHITE;
+        default -> Color.BLACK;
         };
     }
 

@@ -1,5 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -594,26 +596,6 @@ public class DrawingWindow
         protected Area form;
 
         /**
-         * Farbe Hellgelb.
-         */
-        protected final Color hellgelb = new Color(255, 255, 128);
-
-        /**
-         * Farbe Hellgrün.
-         */
-        protected final Color hellgrün = new Color(128, 255, 128);
-
-        /**
-         * Farbe Orange.
-         */
-        protected final Color orange = new Color(255, 128, 0);
-
-        /**
-         * Farbe Braun.
-         */
-        protected final Color braun = new Color(128, 64, 0);
-
-        /**
          * Der Konstruktor erzeugt ein rotes Symbol in der linken oberen Ecke
          * des Fensters.
          */
@@ -623,7 +605,7 @@ public class DrawingWindow
             y = 10;
             b = 100;
             h = 100;
-            c = Color.RED;
+            c = COLORS.get("red");
             sichtbar = true;
             winkel = 0;
             FormErzeugen();
@@ -702,54 +684,7 @@ public class DrawingWindow
          */
         Color FarbeCodieren(String farbe)
         {
-            farbe = farbe.toLowerCase();
-            switch (farbe)
-            {
-            case "weiß":
-            case "weiss":
-                return Color.WHITE;
-
-            case "rot":
-                return Color.RED;
-
-            case "grün":
-            case "gruen":
-                return Color.GREEN;
-
-            case "blau":
-                return Color.BLUE;
-
-            case "gelb":
-                return Color.YELLOW;
-
-            case "magenta":
-                return Color.MAGENTA;
-
-            case "cyan":
-                return Color.CYAN;
-
-            case "hellgelb":
-                return hellgelb;
-
-            case "hellgrün":
-            case "hellgruen":
-                return hellgrün;
-
-            case "orange":
-                return orange;
-
-            case "braun":
-                return braun;
-
-            case "grau":
-                return Color.GRAY;
-
-            case "schwarz":
-                return Color.BLACK;
-
-            default:
-                return Color.BLACK;
-            }
+            return COLORS.getSafe(farbe);
         }
 
         /**
@@ -1119,7 +1054,7 @@ public class DrawingWindow
             super();
             text = "Text";
             size = 12;
-            c = Color.black;
+            c = COLORS.get("black");
         }
 
         /**
@@ -1748,7 +1683,7 @@ public class DrawingWindow
             homeX = x;
             homeY = y;
             homeWinkel = winkel;
-            c = Color.black;
+            c = COLORS.get("black");
             stiftUnten = true;
             symbolSichtbar = true;
             linien = new ArrayList<LinienElement>();
@@ -1770,16 +1705,16 @@ public class DrawingWindow
         {
             // Kopf
             standardFigur.add(new CharacterElementEllipse(50, -12.5, 25, 25,
-                    Color.GREEN));
+                    COLORS.get("green")));
             // Beine
             standardFigur.add(new CharacterElementEllipse(22.5, -32.5, 12.5,
-                    17.5, Color.GREEN));
+                    17.5, COLORS.get("green")));
             standardFigur.add(new CharacterElementEllipse(40.0, -32.5, 12.5,
-                    17.5, Color.GREEN));
+                    17.5, COLORS.get("green")));
             standardFigur.add(new CharacterElementEllipse(22.5, 15.0, 12.5,
-                    17.5, Color.GREEN));
+                    17.5, COLORS.get("green")));
             standardFigur.add(new CharacterElementEllipse(40.0, 15.0, 12.5,
-                    17.5, Color.GREEN));
+                    17.5, COLORS.get("green")));
             // Augen
             standardFigur.add(
                     new CharacterElementRectangle(67.5, -10.0, 5.0, 7.5, c));
@@ -1790,7 +1725,7 @@ public class DrawingWindow
                     .add(new CharacterElementEllipse(0, -3.75, 25, 7.5, c));
             // Rumpf
             standardFigur.add(new CharacterElementEllipse(7.5, -23.75, 57.5,
-                    47.5, braun));
+                    47.5, COLORS.get("brown")));
         }
 
         /**
@@ -2137,7 +2072,7 @@ public class DrawingWindow
 
             if (symbolSichtbar)
             {
-                g.setColor(Color.black);
+                g.setColor(COLORS.get("black"));
                 double größe = h > b ? b : h;
                 AffineTransform alt = g2.getTransform();
                 g2.rotate(DrehwinkelGeben(winkel), x, y);
@@ -2221,7 +2156,7 @@ public class DrawingWindow
             homeX = x;
             homeY = y;
             homeWinkel = winkel;
-            c = Color.black;
+            c = COLORS.get("black");
             eigeneFigur = new LinkedList<CharacterElement>();
             standardFigur = new LinkedList<CharacterElement>();
             StandardfigurErzeugen();
@@ -2240,9 +2175,10 @@ public class DrawingWindow
         {
             int[] x = new int[] { -50, 50, -50 };
             int[] y = new int[] { -50, 0, 50 };
-            standardFigur.add(new CharacterElementPolygon(x, y, Color.yellow));
             standardFigur.add(
-                    new CharacterElementEllipse(-10, -10, 20, 20, Color.blue));
+                    new CharacterElementPolygon(x, y, COLORS.get("yellow")));
+            standardFigur.add(new CharacterElementEllipse(-10, -10, 20, 20,
+                    COLORS.get("blue")));
         }
 
         /**
@@ -2637,7 +2573,7 @@ public class DrawingWindow
         {
             Graphics2D g2 = (Graphics2D) g;
             // Outline
-            g.setColor(Color.black);
+            g.setColor(COLORS.get("black"));
             Stroke stAlt = g2.getStroke();
             g2.setStroke(new BasicStroke(3.0f));
             g2.draw(form);

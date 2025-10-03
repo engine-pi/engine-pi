@@ -15,8 +15,14 @@ import java.util.List;
  */
 public class NamedColor
 {
+    /**
+     * Der <b>Hauptname</b> der Farbe.
+     */
     private String name;
 
+    /**
+     * Die Farbe als AWT-Color-Objekt.
+     */
     private Color color;
 
     /**
@@ -24,6 +30,11 @@ public class NamedColor
      */
     private List<String> aliases;
 
+    /**
+     * @param name Der <b>Hauptname</b> der Farbe.
+     * @param color Die Farbe als AWT-Color-Objekt.
+     * @param aliases Weitere Namen beziehungsweise Aliasse der Farbe.
+     */
     public NamedColor(String name, Color color, List<String> aliases)
     {
         this.name = name;
@@ -31,11 +42,21 @@ public class NamedColor
         this.aliases = aliases;
     }
 
+    /**
+     * Gibt den <b>Hauptnamen</b> der Farbe zurück.
+     *
+     * @return Der <b>Hauptname</b> der Farbe.
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     * Setzt den <b>Hauptnamen</b> der Farbe.
+     *
+     * @param name Der <b>Hauptname</b> der Farbe.
+     */
     public void setName(String name)
     {
         this.name = name;
