@@ -133,14 +133,8 @@ public class DrawingWindow
         fenster = new JFrame("Zeichenfenster");
         fenster.setLocation(50, 50);
         fenster.setSize(800, 600);
-        fenster.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE); // Close-Button
-                                                                               // kann
-                                                                               // nicht
-                                                                               // versteckt
-                                                                               // oder
-                                                                               // abgestellt
-                                                                               // werden.
-
+        // Close-Button kann nicht versteckt oder abgestellt werden.
+        fenster.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         malfläche = new JComponent()
         {
             public void paint(Graphics g)
@@ -166,7 +160,7 @@ public class DrawingWindow
              * Gibt den Ort eines Mouseclicks an die eigentliche Aktionsmethode
              * weiter.
              *
-             * @param e das zugrestellte Ereignis
+             * @param e Das zugestellte Ereignis.
              */
             public void mousePressed(MouseEvent e)
             {
@@ -184,7 +178,7 @@ public class DrawingWindow
             /**
              * Gibt die Taste an die eigentliche Aktionsmethode weiter.
              *
-             * @param e das zugestellte Ereignis
+             * @param e Das zugestellte Ereignis.
              */
             public void keyPressed(KeyEvent e)
             {
@@ -1578,7 +1572,7 @@ public class DrawingWindow
     }
 
     /**
-     * Das Objekt dieser Klasse zeichnet den Weg der Turtle.
+     * Das Objekt dieser Klasse zeichnet den Weg der Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Klasse war {@code TurtleIntern}.
@@ -1690,27 +1684,27 @@ public class DrawingWindow
         }
 
         /**
-         * Genaue x-Koordinate der Turtle.
+         * Genaue x-Koordinate der Schildkröte.
          */
         double xD;
 
         /**
-         * Genaue y-Koordinate der Turtle.
+         * Genaue y-Koordinate der Schildkröte.
          */
         double yD;
 
         /**
-         * Startkoordinate der Turtle.
+         * Startkoordinate der Schildkröte.
          */
         private int homeX;
 
         /**
-         * Startkoordinate der Turtle.
+         * Startkoordinate der Schildkröte.
          */
         private int homeY;
 
         /**
-         * Startwinkel der Turtle.
+         * Startwinkel der Schildkröte.
          */
         private int homeWinkel;
 
@@ -1817,7 +1811,7 @@ public class DrawingWindow
         }
 
         /**
-         * Erstellt die Form der Turtle.
+         * Erstellt die Form der Schildkröte.
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war

@@ -51,7 +51,7 @@ public class Character
     public boolean visible;
 
     /**
-     * Der Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
+     * Der Drehwinkel (mathemtisch positiver Drehsinn) der Schildkröte in Grad.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code rotation}.

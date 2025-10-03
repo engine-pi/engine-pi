@@ -10,17 +10,17 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Turtle
 {
     /**
-     * Die x-Position der Turtle.
+     * Die x-Position der Schildkröte.
      */
     public int x;
 
     /**
-     * Die y-Position der Turtle.
+     * Die y-Position der Schildkröte.
      */
     public int y;
 
     /**
-     * Größe der Turtle.
+     * Die Größe der Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code größe}.
@@ -29,7 +29,7 @@ public class Turtle
     public int size;
 
     /**
-     * Farbe der Turtle.
+     * Die Farbe der Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
@@ -38,7 +38,7 @@ public class Turtle
     public String color;
 
     /**
-     * Sichtbarkeit der Turtles.
+     * Die Sichtbarkeit der Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
@@ -47,7 +47,7 @@ public class Turtle
     public boolean visible;
 
     /**
-     * Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
+     * Der Drehwinkel (mathemtisch positiver Drehsinn) der Schildkröte in Grad.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
@@ -56,7 +56,7 @@ public class Turtle
     public int rotation;
 
     /**
-     * Stiftposition
+     * Die Stiftposition. Wenn wahr, dann ist der Stift unten, er schreibt also.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war {@code stiftUnten}.
@@ -65,12 +65,12 @@ public class Turtle
     public boolean penDown;
 
     /**
-     * Referenz auf das echte Turtlesybol.
+     * Eine Referenz auf das echte Turtlesymbol.
      */
     DrawingWindow.TurtleInternal symbol;
 
     /**
-     * Referenz auf das Aktionsempfängerobjekt.
+     * Eine Referenz auf das Aktionsempfängerobjekt.
      *
      * <p>
      * Der ursprünglich deutsche Name dieses Attributs war
@@ -80,7 +80,7 @@ public class Turtle
     DrawingWindow.AktionsEmpfaenger aktionsEmpfänger;
 
     /**
-     * Konstruktor der Turtle Erzeugt eine Turtle und versetzt sie in einen
+     * Konstruktor der Schildkröte Erzeugt eine Turtle und versetzt sie in einen
      * gültigen Startzustand.
      */
     public Turtle()
@@ -182,14 +182,14 @@ public class Turtle
     }
 
     /**
-     * Setzt die Position der Turtle.
+     * Setzt die Position der Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
-     * @param x x-Position der Turtle
-     * @param y y-Position der Turtle
+     * @param x x-Position der Schildkröte
+     * @param y y-Position der Schildkröte
      */
     public void setPosition(int x, int y)
     {
@@ -232,17 +232,21 @@ public class Turtle
     }
 
     /**
-     * Setzt den Drehwinkel der Turtle. Die Winkelangabe ist in Grad, positive
-     * Werte drehen gegen den Uhrzeigersinn, negative Werte drehen im
-     * Uhrzeigersinn (mathematisch positiver Drehsinn), d. h. 0˚: Turtle schaut
-     * nach rechts, 90˚: Turtle schaut nach oben, 180˚: Turtle schaut nach
-     * links, 270˚bzw. -90˚: Turtle schaut nach unten
+     * Setzt den Drehwinkel der Schildkröte.
+     *
+     * <p>
+     * Die Winkelangabe ist in Grad, positive Werte drehen gegen den
+     * Uhrzeigersinn, negative Werte drehen im Uhrzeigersinn (mathematisch
+     * positiver Drehsinn), d. h. 0˚: Die Schilkröte schaut nach rechts, 90˚:
+     * Die Schilkröte schaut nach oben, 180˚: Die Schilkröte schaut nach links,
+     * 270˚bzw. -90˚: Die Schilkröte schaut nach unten.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param rotation der (neue) Drehwinkel der Turtle
+     * @param rotation der (neue) Drehwinkel der Schildkröte
      */
     public void setRotation(int rotation)
     {
@@ -251,7 +255,7 @@ public class Turtle
     }
 
     /**
-     * Schaltet die Sichtbarkeit der Turtle ein oder aus. Erlaubte
+     * Schaltet die Sichtbarkeit der Schildkröte ein oder aus. Erlaubte
      * Parameterwerte: true, false
      *
      * <p>
@@ -259,7 +263,7 @@ public class Turtle
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
-     * @param visible (neue) Sichtbarkeit der Turtle
+     * @param visible (neue) Sichtbarkeit der Schildkröte
      */
     public void setVisibility(boolean visible)
     {
@@ -273,7 +277,6 @@ public class Turtle
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
-     *
      */
     public void remove()
     {
@@ -288,7 +291,6 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
-     *
      */
     public void raiseLayer()
     {
@@ -357,7 +359,7 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
      * </p>
      *
-     * @param length Anzahl der Längeneinheiten
+     * @param length Die Anzahl der Längeneinheiten.
      */
     public void move(double length)
     {
@@ -367,13 +369,14 @@ public class Turtle
     }
 
     /**
-     * Dreht die Schildkröte
+     * Dreht die Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
-     * @param rotation Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
+     * @param rotation Der Drehwinkel (mathematisch positiver Drehsinn) im
+     *     Gradmaß.
      */
     public void rotate(int rotation)
     {
@@ -382,7 +385,7 @@ public class Turtle
     }
 
     /**
-     * Versetzt Zeichenfläche und Turtle in den Ausgangszustand.
+     * Versetzt die Zeichenfläche und die Schilkröte in den Ausgangszustand.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Löschen}.
@@ -394,7 +397,7 @@ public class Turtle
     }
 
     /**
-     * Turtle wechselt in den Modus "nicht zeichnen"
+     * Die Schildkröte wechselt in den Modus „nicht zeichnen“.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
@@ -407,7 +410,7 @@ public class Turtle
     }
 
     /**
-     * Turtle wechselt in den Modus "zeichnen"
+     * Die Schildkröte wechselt in den Modus „zeichnen“.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code StiftSenken}.
@@ -420,17 +423,21 @@ public class Turtle
     }
 
     /**
-     * Gibt den aktuellen Winkel der Turtle zurück. Die Winkelangabe ist in
-     * Grad, positive Werte drehen gegen den Uhrzeigersinn, negative Werte
-     * drehen im Uhrzeigersinn (mathematisch positiver Drehsinn), d. h. 0˚:
-     * Turtle schaut nach rechts, 90˚: Turtle schaut nach oben, 180˚: Turtle
-     * schaut nach links, 270˚bzw. -90˚: Turtle schaut nach unten
+     * Gibt den aktuellen Winkel der Schildkröte zurück.
+     *
+     * <p>
+     * Die Winkelangabe ist in Grad, positive Werte drehen gegen den
+     * Uhrzeigersinn, negative Werte drehen im Uhrzeigersinn (mathematisch
+     * positiver Drehsinn), d. h. 0˚: Die Schildkröte schaut nach rechts, 90˚:
+     * Die Schildkröte schaut nach oben, 180˚: Die Schildkröte schaut nach
+     * links, 270˚ bzw. -90˚: Die Schildkröte schaut nach unten.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
      * </p>
      *
-     * @return Winkel im Gradmass
+     * @return Derr Winkel im Gradmaß.
      */
     public int getRotation()
     {
@@ -438,13 +445,13 @@ public class Turtle
     }
 
     /**
-     * Gibt die x-Koordinate der Turtle zurück
+     * Gibt die x-Koordinate der Schildkröte zurück.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
      * </p>
      *
-     * @return x-Koordinate
+     * @return Die x-Koordinate.
      */
     public int getX()
     {
@@ -452,13 +459,13 @@ public class Turtle
     }
 
     /**
-     * Gibt die y-Koordinate der Turtle zurück.
+     * Gibt die y-Koordinate der Schildkröte zurück.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
      * </p>
      *
-     * @return y-Koordinate
+     * @return Die y-Koordinate.
      */
     public int getY()
     {
@@ -466,15 +473,18 @@ public class Turtle
     }
 
     /**
-     * Schaltet die Sichtbarkeit des Turtlesymbols ein oder aus. Erlaubte
-     * Parameterwerte: true, false
+     * Schaltet die Sichtbarkeit der Schildkröte ein oder aus.
+     *
+     * <p>
+     * Erlaubte Parameterwerte: {@code true}, {@code false}.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitFürSymbolSetzen}.
      * </p>
      *
-     * @param visible (neue) Sichtbarkeit des Turtlesymbols
+     * @param visible Die (neue) Sichtbarkeit der Schildkröte.
      */
     public void setSymbolVisibility(boolean visible)
     {
@@ -488,8 +498,8 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @return true, wenn die Schildkrötekoordinaten innerhalb einer Grafikfigur
-     *     sind
+     * @return {@code true}, wenn die Schildkrötekoordinaten innerhalb einer
+     *     Grafikfigur sind.
      */
     public boolean isTouching()
     {
@@ -503,10 +513,10 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @param color die Farbe, die die berührte Figur haben muss.
+     * @param color Die Farbe, die die berührte Figur haben muss.
      *
-     * @return true, wenn die Schildkrötekoordinaten innerhalb einer Grafikfigur
-     *     in der angegebenen Farbe sind
+     * @return {@code true}, wenn die Schildkrötekoordinaten innerhalb einer
+     *     Grafikfigur in der angegebenen Farbe sindl
      */
     public boolean isTouching(String color)
     {
@@ -520,10 +530,10 @@ public class Turtle
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @param object das Objekt, das getestet werden soll.
+     * @param object Das Objekt, das getestet werden soll.
      *
-     * @return true, wenn die Schildkrötekoordinaten innerhalb der angegebenen
-     *     Grafikfigur sind
+     * @return {@code true}, wenn die Schildkrötekoordinaten innerhalb der
+     *     angegebenen Grafikfigur sind.
      */
     public boolean isTouching(Object object)
     {

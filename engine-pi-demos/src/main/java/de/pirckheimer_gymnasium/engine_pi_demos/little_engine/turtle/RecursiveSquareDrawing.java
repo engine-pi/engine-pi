@@ -31,7 +31,8 @@ public class RecursiveSquareDrawing
     }
 
     /**
-     * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der Turtle.
+     * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der
+     * Schildkröte.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
