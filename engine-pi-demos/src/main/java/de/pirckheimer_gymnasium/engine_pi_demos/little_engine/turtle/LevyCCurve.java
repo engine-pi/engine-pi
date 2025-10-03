@@ -9,17 +9,17 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
  *
  * @version 1.0
  */
-class LevyCCurve
+public class LevyCCurve
 {
     /**
-     * Die Turtle.
+     * Die Schildkröte.
      */
     private Turtle t;
 
     /**
-     * Legt die Turtle an.
+     * Legt die Schildkröte an.
      */
-    LevyCCurve()
+    public LevyCCurve()
     {
         t = new Turtle();
         t.liftPen();

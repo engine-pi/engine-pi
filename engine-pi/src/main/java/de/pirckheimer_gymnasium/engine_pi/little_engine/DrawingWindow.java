@@ -1631,7 +1631,7 @@ public class DrawingWindow
         }
 
         /**
-         * Verwaltet das Hintergrundfenster für die Turtlezeichnung.
+         * Verwaltet das Hintergrundfenster für die Schildkrötezeichnung.
          */
         private class HintergrundBild
         {
@@ -1740,7 +1740,7 @@ public class DrawingWindow
         private HintergrundBild hintergrund;
 
         /**
-         * Legt die Turtle mit Startpunkt (100|200) in Richtung 0˚ an.
+         * Legt die Schildkröte mit Startpunkt (100|200) in Richtung 0˚ an.
          */
         TurtleInternal()
         {
@@ -1867,7 +1867,7 @@ public class DrawingWindow
         }
 
         /**
-         * Setzt die Turtle wieder an ihre Ausgangsposition.
+         * Setzt die Schildkröte wieder an ihre Ausgangsposition.
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war
@@ -1886,7 +1886,7 @@ public class DrawingWindow
         }
 
         /**
-         * Bewegt die Turtle nach vorne.
+         * Bewegt die Schildkröte nach vorne.
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
@@ -1916,7 +1916,7 @@ public class DrawingWindow
         }
 
         /**
-         * Dreht die Turtle
+         * Dreht die Schildkröte
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
@@ -1988,14 +1988,14 @@ public class DrawingWindow
         }
 
         /**
-         * Testet, ob die Turtle eine (sichtbare) Figur berührt.
+         * Testet, ob die Schildkröte eine (sichtbare) Figur berührt.
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
-         * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
-         *     sind
+         * @return true, wenn die Schildkrötekoordinaten innerhalb einer
+         *     Grafikfigur sind
          */
         boolean isTouching()
         {
@@ -2012,8 +2012,8 @@ public class DrawingWindow
         }
 
         /**
-         * Testet, ob die Turtle eine (sichtbare) Figur in der angegebenen Farbe
-         * berührt. Bei Überlappungen
+         * Testet, ob die Schildkröte eine (sichtbare) Figur in der angegebenen
+         * Farbe berührt. Bei Überlappungen
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
@@ -2021,8 +2021,8 @@ public class DrawingWindow
          *
          * @param farbe die Farbe, die die berührte Figur haben muss.
          *
-         * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
-         *     in der angegebenen Farbe sind
+         * @return true, wenn die Schildkrötekoordinaten innerhalb einer
+         *     Grafikfigur in der angegebenen Farbe sind
          */
         boolean isTouching(String farbe)
         {
@@ -2083,7 +2083,8 @@ public class DrawingWindow
         }
 
         /**
-         * Testet, ob die Turtle die (sichtbare, ) angegebene Figur berührt.
+         * Testet, ob die Schildkröte die (sichtbare, ) angegebene Figur
+         * berührt.
          *
          * <p>
          * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
@@ -2091,8 +2092,8 @@ public class DrawingWindow
          *
          * @param object das Objekt, das getestet werden soll.
          *
-         * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
-         *     in der angegebenen Farbe sind
+         * @return true, wenn die Schildkrötekoordinaten innerhalb einer
+         *     Grafikfigur in der angegebenen Farbe sind
          */
         boolean isTouching(Object object)
         {
@@ -2491,8 +2492,8 @@ public class DrawingWindow
          *
          * @param object das Objekt, das getestet werden soll.
          *
-         * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
-         *     in der angegebenen Farbe sind
+         * @return true, wenn die Schildkrötekoordinaten innerhalb einer
+         *     Grafikfigur in der angegebenen Farbe sind
          */
         boolean Berührt(Object object)
         {

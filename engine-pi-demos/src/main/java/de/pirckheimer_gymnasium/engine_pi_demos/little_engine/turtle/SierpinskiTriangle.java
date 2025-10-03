@@ -44,7 +44,7 @@ public class SierpinskiTriangle
      * @param height Die Höhe des Umgebungsdreiecks.
      * @param depth Die restliche Rekursionstiefe.
      */
-    void makeStep(int x, int y, int width, int height, int depth)
+    private void makeStep(int x, int y, int width, int height, int depth)
     {
         if (depth > 0)
         {

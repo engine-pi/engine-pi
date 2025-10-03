@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
- * Wrapperklasse für die Turtle auf der Zeichenfläche.
+ * Wrapperklasse für die Schildkröte auf der Zeichenfläche.
  *
  * @author Albert Wiedemann
  *
@@ -120,8 +120,8 @@ public class Turtle
     }
 
     /**
-     * Methode wird aufgerufen, wenn die Turtle handeln soll. Die vordefinierte
-     * Methode tut nichts.
+     * Methode wird aufgerufen, wenn die Schildkröte handeln soll. Die
+     * vordefinierte Methode tut nichts.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -268,7 +268,7 @@ public class Turtle
     }
 
     /**
-     * Entfernt die Turtle aus dem Zeichenfenster.
+     * Entfernt die Schildkröte aus dem Zeichenfenster.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
@@ -282,7 +282,7 @@ public class Turtle
     }
 
     /**
-     * Bringt die Turtle eine Ebene nach vorn.
+     * Bringt die Schildkröte eine Ebene nach vorn.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -296,7 +296,7 @@ public class Turtle
     }
 
     /**
-     * Bringt die Turtle in die vorderste Ebene.
+     * Bringt die Schildkröte in die vorderste Ebene.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -309,7 +309,7 @@ public class Turtle
     }
 
     /**
-     * Bringt die Turtle eine Ebene nach hinten.
+     * Bringt die Schildkröte eine Ebene nach hinten.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -322,7 +322,7 @@ public class Turtle
     }
 
     /**
-     * Bringt die Turtle in die hinterste Ebene.
+     * Bringt die Schildkröte in die hinterste Ebene.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -335,7 +335,7 @@ public class Turtle
     }
 
     /**
-     * Setzt die Turtle wieder an ihre Ausgangsposition.
+     * Setzt die Schildkröte wieder an ihre Ausgangsposition.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -351,7 +351,7 @@ public class Turtle
     }
 
     /**
-     * Bewegt die Turtle nach vorne.
+     * Bewegt die Schildkröte nach vorne.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
@@ -367,7 +367,7 @@ public class Turtle
     }
 
     /**
-     * Dreht die Turtle
+     * Dreht die Schildkröte
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
@@ -482,13 +482,14 @@ public class Turtle
     }
 
     /**
-     * Testet, ob die Turtle eine Figur berührt.
+     * Testet, ob die Schildkröte eine Figur berührt.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
-     * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur sind
+     * @return true, wenn die Schildkrötekoordinaten innerhalb einer Grafikfigur
+     *     sind
      */
     public boolean isTouching()
     {
@@ -496,7 +497,7 @@ public class Turtle
     }
 
     /**
-     * Testet, ob die Turtle eine Figur in der angegebenen Farbe berührt.
+     * Testet, ob die Schildkröte eine Figur in der angegebenen Farbe berührt.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
@@ -504,8 +505,8 @@ public class Turtle
      *
      * @param color die Farbe, die die berührte Figur haben muss.
      *
-     * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur in
-     *     der angegebenen Farbe sind
+     * @return true, wenn die Schildkrötekoordinaten innerhalb einer Grafikfigur
+     *     in der angegebenen Farbe sind
      */
     public boolean isTouching(String color)
     {
@@ -513,7 +514,7 @@ public class Turtle
     }
 
     /**
-     * Testet, ob die Turtle die angegebene Figur berührt.
+     * Testet, ob die Schildkröte die angegebene Figur berührt.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
@@ -521,7 +522,7 @@ public class Turtle
      *
      * @param object das Objekt, das getestet werden soll.
      *
-     * @return true, wenn die Turtlekoordinaten innerhalb der angegebenen
+     * @return true, wenn die Schildkrötekoordinaten innerhalb der angegebenen
      *     Grafikfigur sind
      */
     public boolean isTouching(Object object)

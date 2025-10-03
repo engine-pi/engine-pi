@@ -13,17 +13,17 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
  *
  * @version 1.0
  */
-class RecursiveSquareDrawing
+public class RecursiveSquareDrawing
 {
     /**
-     * Die Turtle zum Zeichnen.
+     * Die Schildkröte zum Zeichnen.
      */
     Turtle t;
 
     /**
-     * Der Konstruktor legt die Turtle an.
+     * Der Konstruktor legt die Schildkröte an.
      */
-    RecursiveSquareDrawing()
+    public RecursiveSquareDrawing()
     {
         t = new Turtle();
         t.setColor("blau");
