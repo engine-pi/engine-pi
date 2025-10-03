@@ -299,7 +299,8 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen 800x600 Pixel.
+     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b> und
+     * <b>Höhe</b>.
      *
      * @param scene Die Szene, mit der das Spiel gestartet wird.
      */
@@ -310,8 +311,8 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
-     * <b>Höhe</b>
+     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
+     * Pixel.
      *
      * @param scene Die Szene, mit der das Spiel gestartet wird.
      *
@@ -324,7 +325,7 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen <b>800x600</b>
+     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
      * Pixel und der Begrüßungsanimation.
      *
      * @return Die erzeugte Szene, mit der das Spiel gestartet wurde.

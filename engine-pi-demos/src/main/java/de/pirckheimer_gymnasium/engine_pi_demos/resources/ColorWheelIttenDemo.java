@@ -181,7 +181,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         Actor[] areas = new Actor[4];
         for (int i = 0; i < 4; i++)
         {
-            areas[i] = addRectangle(7, -i - 5);
+            areas[i] = addRectangle(1, 1);
+            areas[i].setPosition(-8 + i, -8);
         }
         return areas;
     }
