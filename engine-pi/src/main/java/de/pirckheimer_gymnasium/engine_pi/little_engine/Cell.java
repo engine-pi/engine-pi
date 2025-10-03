@@ -32,8 +32,8 @@ public class Cell extends Rectangle
     public Cell(int xLinksOben, int yLinksOben, String farbeNeu)
     {
         super();
-        PositionSetzen(xLinksOben, yLinksOben);
-        GrößeSetzen(46, 46);
-        FarbeSetzen(farbeNeu);
+        setPosition(xLinksOben, yLinksOben);
+        setSize(46, 46);
+        setColor(farbeNeu);
     }
 }

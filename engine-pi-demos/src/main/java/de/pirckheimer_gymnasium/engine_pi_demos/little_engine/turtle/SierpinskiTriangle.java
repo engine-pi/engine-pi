@@ -6,7 +6,7 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Triangle;
  * Erzeugt das Sierpinski-Dreieck.
  *
  * <p>
- * Die ursprünglich deutsche Name dieser Klasse war {@code SierpinskiDreieck}.
+ * Der ursprünglich deutsche Name dieser Klasse war {@code SierpinskiDreieck}.
  * </p>
  *
  * @author Albert Wiedemann
@@ -34,7 +34,7 @@ public class SierpinskiTriangle
      * Ermittelt den Rekursionsschritt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SchrittAusführen}.
      * </p>
      *

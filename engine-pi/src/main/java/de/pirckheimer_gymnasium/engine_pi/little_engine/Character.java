@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
- * Wrapperklasse für die Turtle auf der Zeichenfläche.
+ * Wrapperklasse für eine Figur auf der Zeichenfläche.
  *
  * <p>
  * Der ursprüngliche Name der Klasse war {@code Figur}.
@@ -14,34 +14,50 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Character
 {
     /**
-     * x-Position der Figur.
+     * Die x-Position der Figur.
      */
     public int x;
 
     /**
-     * y-Position der Figur.
+     * Die y-Position der Figur.
      */
     public int y;
 
     /**
-     * Größe der Figur.
+     * Die Größe der Figur.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code größe}.
+     * </p>
      */
-    public int größe;
+    public int size;
 
     /**
-     * Farbe der Figur.
+     * Die Farbe der Figur.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
-     * Sichtbarkeit der Figur.
+     * Die Sichtbarkeit der Figur.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
-     * Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
+     * Der Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code rotation}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
      * Referenz auf das echte Figursymbol.
@@ -64,9 +80,9 @@ public class Character
         symbol.setVisibility(true);
         x = symbol.x;
         y = symbol.y;
-        winkel = symbol.winkel;
-        größe = symbol.b;
-        sichtbar = symbol.sichtbar;
+        rotation = symbol.winkel;
+        size = symbol.b;
+        visible = symbol.sichtbar;
         aktionsEmpfänger = new DrawingWindow.AktionsEmpfaenger()
         {
             public void Ausführen()
@@ -97,7 +113,7 @@ public class Character
      * Methode tut nichts.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code AktionAusführen}.
      * </p>
      */
@@ -110,7 +126,7 @@ public class Character
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
      * </p>
      *
      * @param taste die gedrückte Taste
@@ -125,7 +141,7 @@ public class Character
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SonderTasteGedrückt}.
      * </p>
      *
@@ -141,7 +157,7 @@ public class Character
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
      * </p>
      *
      * @param x x-Position des Mausklicks
@@ -158,13 +174,13 @@ public class Character
      * Setzt die Position der Figur.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position der Figur
      * @param y y-Position der Figur
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -175,14 +191,14 @@ public class Character
      * Setzt die Größe des Figurensymbols.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
      * @param größe (neue) Größe
      */
-    public void GrößeSetzen(int größe)
+    public void setSize(int größe)
     {
-        this.größe = größe;
+        this.size = größe;
         symbol.setSize(größe, größe);
     }
 
@@ -194,14 +210,14 @@ public class Character
      * 270˚bzw. -90˚: Figur schaut nach unten
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
      * @param winkel der (neue) Drehwinkel der Figur
      */
-    public void WinkelSetzen(int winkel)
+    public void setRotation(int winkel)
     {
-        this.winkel = winkel;
+        this.rotation = winkel;
         symbol.setRotation(winkel);
     }
 
@@ -210,15 +226,15 @@ public class Character
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
      * @param sichtbar (neue) Sichtbarkeit der Figur
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean sichtbar)
     {
-        this.sichtbar = sichtbar;
+        this.visible = sichtbar;
         symbol.setVisibility(sichtbar);
     }
 
@@ -226,10 +242,10 @@ public class Character
      * Entfernt die Figur aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
-    public void Entfernen()
+    public void remove()
     {
         DrawingWindow.AktionsEmpfängerEntfernen(aktionsEmpfänger);
         symbol.remove();
@@ -239,11 +255,11 @@ public class Character
      * Bringt die Figur eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.raiseLayer();
     }
@@ -252,11 +268,11 @@ public class Character
      * Bringt die Figur in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
         symbol.bringToFront();
     }
@@ -265,11 +281,11 @@ public class Character
      * Bringt die Figur eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
         symbol.lowerLayer();
     }
@@ -278,11 +294,11 @@ public class Character
      * Bringt die Figur in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
         symbol.bringToBack();
     }
@@ -291,7 +307,7 @@ public class Character
      * Setzt die Figur wieder an ihre Ausgangsposition.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code ZumStartpunktGehen}.
      * </p>
      */
@@ -300,19 +316,19 @@ public class Character
         symbol.ZumStartpunktGehen();
         x = symbol.x;
         y = symbol.y;
-        winkel = symbol.winkel;
+        rotation = symbol.winkel;
     }
 
     /**
      * Bewegt die Figur nach vorne.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
      * </p>
      *
      * @param länge Anzahl der Längeneinheiten
      */
-    public void Gehen(double länge)
+    public void move(double länge)
     {
         symbol.Gehen(länge);
         x = symbol.x;
@@ -323,15 +339,15 @@ public class Character
      * Dreht die Figur
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
      */
-    public void Drehen(int grad)
+    public void rotate(int grad)
     {
         symbol.Drehen(grad);
-        winkel = symbol.winkel;
+        rotation = symbol.winkel;
     }
 
     /**
@@ -342,21 +358,21 @@ public class Character
      * 270˚bzw. -90˚: Figur schaut nach unten
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
      * </p>
      *
      * @return Winkel im Gradmaß
      */
-    public int WinkelGeben()
+    public int getRotation()
     {
-        return winkel;
+        return rotation;
     }
 
     /**
      * Gibt die x-Koordinate der Figur zurück.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
      * </p>
      *
      * @return x-Koordinate
@@ -370,7 +386,7 @@ public class Character
      * Gibt die y-Koordinate der Figur zurück.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
      * </p>
      *
      * @return y-Koordinate
@@ -384,7 +400,7 @@ public class Character
      * Testet, ob die Figur eine Grafik-Figur berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @return true, wenn die Figur und eine Grafikfigur überlappen
@@ -398,7 +414,7 @@ public class Character
      * Testet, ob die Figur eine Grafik-Figur in der angegebenen Farbe berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @param farbe die Farbe, die die berührte Figur haben muss
@@ -415,7 +431,7 @@ public class Character
      * Testet, ob die Figur die angegebene Figur berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @param objekt das Objekt, das getestet werden soll
@@ -433,7 +449,7 @@ public class Character
      * Koordinaten (0|0) in der Mitte des Quadrats
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code FigurteilFestlegenRechteck}.
      * </p>
      *
@@ -455,7 +471,7 @@ public class Character
      * Koordinaten (0|0) in der Mitte des Quadrats
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code FigurteilFestlegenEllipse}.
      * </p>
      *
@@ -479,7 +495,7 @@ public class Character
      * Koordinaten (0|0) in der Mitte des Quadrats
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code FigurteilFestlegenDreieck}.
      * </p>
      *
@@ -502,7 +518,7 @@ public class Character
      * wird wieder durch die Originalfigur dargestellt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code EigeneFigurLöschen}.
      * </p>
      */

@@ -32,7 +32,7 @@ class LevyCCurve
      * Farbe.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code KurveZeichnen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code KurveZeichnen}.
      * </p>
      *
      * @param depth Die Rekursionstiefe.
@@ -50,7 +50,7 @@ class LevyCCurve
      * Zeichnet die Levy-C-Kurve mit den Tiefen 0 bis 3.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code KurveZeichnen0bis3}.
      * </p>
      */
@@ -76,7 +76,7 @@ class LevyCCurve
      * Rekursionsschrittes.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SchrittAusführen}.
      * </p>
      *

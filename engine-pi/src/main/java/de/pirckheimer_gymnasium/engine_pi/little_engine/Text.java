@@ -10,34 +10,50 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Text
 {
     /**
-     * x-Position der linken Seite der Grundlinie.
+     * Die x-Position der linken Seite der Grundlinie.
      */
     public int x;
 
     /**
-     * y-Position der Grundlinie.
+     * Die y-Position der Grundlinie.
      */
     public int y;
 
     /**
-     * Farbe des Textes.
+     * Die Farbe des Textes.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
-     * Sichtbarkeit des Textes.
+     * Die Sichtbarkeit des Textes.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Textes in Grad.
+     * Der Drehwinkel (mathematisch positiver Drehsinn) des Textes in Grad.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
-     * Größe des Textes in Punkten.
+     * Die Größe des Textes in Punkten.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code textgröße}.
+     * </p>
      */
-    public int textgröße;
+    public int size;
 
     /**
      * Referenz auf das Delegate-Objekt.
@@ -51,30 +67,30 @@ public class Text
     {
         x = 10;
         y = 10;
-        farbe = "schwarz";
-        sichtbar = true;
-        winkel = 0;
-        textgröße = 12;
+        color = "schwarz";
+        visible = true;
+        rotation = 0;
+        size = 12;
         symbol = (DrawingWindow.TextIntern) DrawingWindow
                 .SymbolErzeugen(DrawingWindow.SymbolArt.text);
         symbol.setPosition(x, y);
-        symbol.setColor(farbe);
-        symbol.setVisibility(sichtbar);
-        symbol.setRotation(winkel);
-        symbol.TextGrößeSetzen(textgröße);
+        symbol.setColor(color);
+        symbol.setVisibility(visible);
+        symbol.setRotation(rotation);
+        symbol.TextGrößeSetzen(size);
     }
 
     /**
      * Setzt die Position (der Grundline) des Textes.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position der linken Seite der Grundlinie
      * @param y y-Position der Grundlinie
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -85,12 +101,12 @@ public class Text
      * Setzt den aktuellen Text.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code TextSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code TextSetzen}.
      * </p>
      *
      * @param text der neue Text
      */
-    public void TextSetzen(String text)
+    public void setText(String text)
     {
         symbol.TextSetzen(text);
     }
@@ -99,50 +115,50 @@ public class Text
      * Setzt die Größe des Textes.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TextGrößeSetzen}.
      * </p>
      *
-     * @param größe die (neue) Textgröße
+     * @param size die (neue) Textgröße
      */
-    public void TextGrößeSetzen(int größe)
+    public void setSize(int size)
     {
-        textgröße = größe;
-        symbol.TextGrößeSetzen(größe);
+        this.size = size;
+        symbol.TextGrößeSetzen(size);
     }
 
     /**
      * Vergrößert den Text.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code TextVergrößern}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code TextVergrößern}.
      * </p>
      */
     public void TextVergrößern()
     {
         symbol.TextVergrößern();
-        textgröße = (int) symbol.size;
+        size = (int) symbol.size;
     }
 
     /**
      * Verkleinert den Text.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TextVerkleinern}.
      * </p>
      */
     public void TextVerkleinern()
     {
         symbol.TextVerkleinern();
-        textgröße = (int) symbol.size;
+        size = (int) symbol.size;
     }
 
     /**
      * Verschiebt den Text um die angegebenen Werte.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
      * </p>
      *
      * @param deltaX Verschiebung in x-Richtung
@@ -159,15 +175,15 @@ public class Text
      * Dreht den Text
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
      * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
     public void Drehen(int grad)
     {
-        winkel += grad;
-        symbol.setRotation(winkel);
+        rotation += grad;
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -177,14 +193,14 @@ public class Text
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
      * @param farbe (neue) Farbe
      */
-    public void FarbeSetzen(String farbe)
+    public void setColor(String farbe)
     {
-        this.farbe = farbe;
+        this.color = farbe;
         symbol.setColor(farbe);
     }
 
@@ -194,14 +210,14 @@ public class Text
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
      * @param winkel der (neue) Drehwinkel des Textes
      */
-    public void WinkelSetzen(int winkel)
+    public void setRotation(int winkel)
     {
-        this.winkel = winkel;
+        this.rotation = winkel;
         symbol.setRotation(winkel);
     }
 
@@ -210,15 +226,15 @@ public class Text
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
      * @param sichtbar (neue) Sichtbarkeit des Textes
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean sichtbar)
     {
-        this.sichtbar = sichtbar;
+        this.visible = sichtbar;
         symbol.setVisibility(sichtbar);
     }
 
@@ -226,10 +242,10 @@ public class Text
      * Entfernt den Text aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
-    public void Entfernen()
+    public void remove()
     {
         symbol.remove();
     }
@@ -238,11 +254,11 @@ public class Text
      * Bringt den Text eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.raiseLayer();
     }
@@ -251,11 +267,11 @@ public class Text
      * Bringt den Text in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
         symbol.bringToFront();
     }
@@ -264,11 +280,11 @@ public class Text
      * Bringt den Text eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
         symbol.lowerLayer();
     }
@@ -277,11 +293,11 @@ public class Text
      * Bringt den Text in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
         symbol.bringToBack();
     }

@@ -14,12 +14,12 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Triangle
 {
     /**
-     * x-Position der Spitze.
+     * Die x-Position der Spitze.
      */
     public int x;
 
     /**
-     * y-Position der Spitze.
+     * Die y-Position der Spitze.
      */
     public int y;
 
@@ -27,7 +27,7 @@ public class Triangle
      * Die Breite des umgebenden Rechtecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code breite}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code breite}.
      * </p>
      */
     public int width;
@@ -36,7 +36,7 @@ public class Triangle
      * Die Höhe des umgebenden Rechtecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code höhe}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code höhe}.
      * </p>
      */
     public int height;
@@ -45,7 +45,7 @@ public class Triangle
      * Die Farbe des Dreiecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
      * </p>
      */
     public String color;
@@ -54,7 +54,7 @@ public class Triangle
      * Die Sichtbarkeit des Dreiecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
      * </p>
      */
     public boolean visible;
@@ -63,7 +63,7 @@ public class Triangle
      * Der Drehwinkel (mathematisch positiver Drehsinn) des Dreiecks in Grad.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
      * </p>
      */
     public int rotation;
@@ -97,7 +97,7 @@ public class Triangle
      * Setzt die Position (der Spitze) des Dreiecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position der Spitze
@@ -114,7 +114,7 @@ public class Triangle
      * Verschiebt das Dreieck um die angegebenen Werte.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
      * </p>
      *
      * @param deltaX Die Verschiebung in x-Richtung.
@@ -131,7 +131,7 @@ public class Triangle
      * Dreht das Dreieck.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
      * @param angle Der Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß.
@@ -146,7 +146,7 @@ public class Triangle
      * Setzt die Größe des Dreiecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
      * @param width Die (neue) Breite.
@@ -167,7 +167,7 @@ public class Triangle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
      * @param color Die (neue) Farbe.
@@ -184,7 +184,7 @@ public class Triangle
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
      * @param rotation Der (neue) Drehwinkel des Dreiecks.
@@ -200,7 +200,7 @@ public class Triangle
      * Parameterwerte: {@code true}, {@code false}
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
@@ -216,7 +216,7 @@ public class Triangle
      * Entfernt das Dreieck aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
     public void remove()
@@ -228,7 +228,7 @@ public class Triangle
      * Bringt das Dreieck eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      */
@@ -241,7 +241,7 @@ public class Triangle
      * Bringt das Dreieck in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
@@ -254,7 +254,7 @@ public class Triangle
      * Bringt das Dreieck eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      */
@@ -267,7 +267,7 @@ public class Triangle
      * Bringt das Dreieck in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      */

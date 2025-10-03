@@ -6,7 +6,7 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
  * Rahmenklasse zum Zeichen von Mustern aus Quadraten.
  *
  * <p>
- * Die ursprünglich deutsche Name dieser Klasse war {@code RekursiveGrafik}.
+ * Der ursprünglich deutsche Name dieser Klasse war {@code RekursiveGrafik}.
  * </p>
  *
  * @author Albert Wiedemann
@@ -34,7 +34,7 @@ class RecursiveSquareDrawing
      * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der Turtle.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code QuadratZeichnen}.
      * </p>
      *
@@ -53,7 +53,7 @@ class RecursiveSquareDrawing
      * Zeichnet ein Element der Perlenkette.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code PerlenketteZeichnen}.
      * </p>
      *
@@ -77,7 +77,7 @@ class RecursiveSquareDrawing
      * Zeichnet ein Element der Quadratmuster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code QuadratmusterZeichnen}.
      * </p>
      *
@@ -96,7 +96,7 @@ class RecursiveSquareDrawing
      * Zeichnet Quadratmuster im Kreis.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code MusterZeichnen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code MusterZeichnen}.
      * </p>
      *
      * @param numberOfSquares Die insgesamte Anzahl der Quadrate.
@@ -124,7 +124,7 @@ class RecursiveSquareDrawing
      * Zeichnet Quadratmuster im Kreis mit variablem Radius.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code MusterZeichnen2}.
      * </p>
      *
@@ -156,7 +156,7 @@ class RecursiveSquareDrawing
      * Zeichnet eine Folge immer kleinerer Quadratkreise.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code QuadratkreiseZeichnen}.
      * </p>
      *

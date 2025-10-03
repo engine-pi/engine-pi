@@ -14,39 +14,59 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Rectangle
 {
     /**
-     * x-Position der linken oberen Ecke.
+     * Die x-Position der linken oberen Ecke.
      */
     public int x;
 
     /**
-     * y-Position der linken oberen Ecke.
+     * Die y-Position der linken oberen Ecke.
      */
     public int y;
 
     /**
-     * Breite des Rechtecks.
+     * Die Breite des Rechtecks.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code breite}.
+     * </p>
      */
-    public int breite;
+    public int width;
 
     /**
-     * Höhe des Rechtecks.
+     * Die Höhe des Rechtecks.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code höhe}.
+     * </p>
      */
-    public int höhe;
+    public int height;
 
     /**
-     * Farbe des Rechtecks.
+     * Die Farbe des Rechtecks.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
-     * Sichtbarkeit des Rechtecks.
+     * Die Sichtbarkeit des Rechtecks.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Rechtecks in Grad.
+     * Der Drehwinkel (mathematisch positiver Drehsinn) des Rechtecks in Grad.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
      * Referenz auf das Delegate-Objekt.
@@ -60,30 +80,30 @@ public class Rectangle
     {
         x = 10;
         y = 10;
-        breite = 100;
-        höhe = 100;
-        farbe = "rot";
-        sichtbar = true;
-        winkel = 0;
+        width = 100;
+        height = 100;
+        color = "rot";
+        visible = true;
+        rotation = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.rechteck);
         symbol.setPosition(x, y);
-        symbol.setSize(breite, höhe);
-        symbol.setColor(farbe);
-        symbol.setVisibility(sichtbar);
-        symbol.setRotation(winkel);
+        symbol.setSize(width, height);
+        symbol.setColor(color);
+        symbol.setVisibility(visible);
+        symbol.setRotation(rotation);
     }
 
     /**
      * Setzt die Position (der linken oberen Ecke) des Rechtecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position der linken oberen Ecke
      * @param y y-Position der linken oberen Ecke
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -94,13 +114,13 @@ public class Rectangle
      * Verschiebt das Rechteck um die angegebenen Werte.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
      * </p>
      *
      * @param deltaX Verschiebung in x-Richtung
      * @param deltaY Verschiebung in y-Richtung
      */
-    public void Verschieben(int deltaX, int deltaY)
+    public void move(int deltaX, int deltaY)
     {
         x += deltaX;
         y += deltaY;
@@ -111,32 +131,32 @@ public class Rectangle
      * Dreht das Rechteck
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
-     * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
+     * @param angle Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
-    public void Drehen(int grad)
+    public void rotate(int angle)
     {
-        winkel += grad;
-        symbol.setRotation(winkel);
+        rotation += angle;
+        symbol.setRotation(rotation);
     }
 
     /**
      * Setzt die Größe des Rechtecks.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
-     * @param breite (neue) Breite
-     * @param höhe (neue) Höhe
+     * @param width (neue) Breite
+     * @param height (neue) Höhe
      */
-    public void GrößeSetzen(int breite, int höhe)
+    public void setSize(int width, int height)
     {
-        this.breite = breite;
-        this.höhe = höhe;
-        symbol.setSize(breite, höhe);
+        this.width = width;
+        this.height = height;
+        symbol.setSize(width, height);
     }
 
     /**
@@ -146,15 +166,15 @@ public class Rectangle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param farbe (neue) Farbe
+     * @param color (neue) Farbe
      */
-    public void FarbeSetzen(String farbe)
+    public void setColor(String color)
     {
-        this.farbe = farbe;
-        symbol.setColor(farbe);
+        this.color = color;
+        symbol.setColor(color);
     }
 
     /**
@@ -163,15 +183,15 @@ public class Rectangle
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param winkel der (neue) Drehwinkel des Rechtecks
+     * @param rotation der (neue) Drehwinkel des Rechtecks
      */
-    public void WinkelSetzen(int winkel)
+    public void setRotation(int rotation)
     {
-        this.winkel = winkel;
-        symbol.setRotation(winkel);
+        this.rotation = rotation;
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -179,15 +199,15 @@ public class Rectangle
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
      * @param sichtbar (neue) Sichtbarkeit des Rechtecks
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean sichtbar)
     {
-        this.sichtbar = sichtbar;
+        this.visible = sichtbar;
         symbol.setVisibility(sichtbar);
     }
 
@@ -195,10 +215,10 @@ public class Rectangle
      * Entfernt das Rechteck aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
-    public void Entfernen()
+    public void remove()
     {
         symbol.remove();
     }
@@ -207,11 +227,11 @@ public class Rectangle
      * Bringt das Rechteck eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.raiseLayer();
     }
@@ -220,11 +240,11 @@ public class Rectangle
      * Bringt das Rechteck in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
         symbol.bringToFront();
     }
@@ -233,11 +253,11 @@ public class Rectangle
      * Bringt das Rechteck eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
         symbol.lowerLayer();
     }
@@ -246,11 +266,11 @@ public class Rectangle
      * Bringt das Rechteck in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
         symbol.bringToBack();
     }

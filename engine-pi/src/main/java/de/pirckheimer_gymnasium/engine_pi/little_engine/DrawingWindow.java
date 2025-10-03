@@ -323,7 +323,7 @@ public class DrawingWindow
      * Meldet die aktuelle Breite der Malfläche.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code MalflächenBreiteGeben}.
      * </p>
      *
@@ -342,7 +342,7 @@ public class DrawingWindow
      * Meldet die aktuelle Höhe der Malfläche.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code MalflächenHöheGeben}.
      * </p>
      *
@@ -361,7 +361,7 @@ public class DrawingWindow
      * Trägt einen neuen Aktionsempfänger ein.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code AktionsEmpfängerEintragen}.
      * </p>
      *
@@ -380,7 +380,7 @@ public class DrawingWindow
      * Löscht einen Aktionsempfänger aus der Liste.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code AktionsEmpfängerEntfernen}.
      * </p>
      *
@@ -400,7 +400,7 @@ public class DrawingWindow
      * Aufzählungstyp SymbolArt beschrieben.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code SymbolErzeugen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code SymbolErzeugen}.
      * </p>
      *
      * @param art Art des zu erzeugenden Symbols.
@@ -420,7 +420,7 @@ public class DrawingWindow
      * Startet den Taktgeber.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TaktgeberStarten}.
      * </p>
      */
@@ -437,7 +437,7 @@ public class DrawingWindow
      * Stoppt den Taktgeber.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TaktgeberStoppen}.
      * </p>
      */
@@ -455,7 +455,7 @@ public class DrawingWindow
      *
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TaktdauerSetzen}.
      * </p>
      *
@@ -475,7 +475,7 @@ public class DrawingWindow
      * Erzeugt das neue Symbol tatsächlich.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code SymbolAnlegen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code SymbolAnlegen}.
      * </p>
      *
      * @param art Art des zu erzeugenden Symbols.
@@ -523,7 +523,7 @@ public class DrawingWindow
      * Startet den Taktgeber.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TaktgeberStartenIntern}.
      * </p>
      */
@@ -538,7 +538,7 @@ public class DrawingWindow
      * Stoppt den Taktgeber.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code TaktgeberStoppenIntern}.
      * </p>
      */
@@ -635,7 +635,7 @@ public class DrawingWindow
          * Normiert den Winkel auf Werte im Bereich [0; 360[
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code WinkelNormieren}.
          * </p>
          *
@@ -656,7 +656,7 @@ public class DrawingWindow
          * Setzt die Position (der linken oberen Ecke) des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code PositionSetzen}.
          * </p>
          *
@@ -675,7 +675,7 @@ public class DrawingWindow
          * Setzt die Größe des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code GrößeSetzen}.
          * </p>
          *
@@ -694,7 +694,7 @@ public class DrawingWindow
          * Bestimmt die RGB-Farbe für den gegeben String.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FarbeCodieren}.
          * </p>
          *
@@ -758,7 +758,7 @@ public class DrawingWindow
          * Setzt die Farbe des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FarbeSetzen}.
          * </p>
          *
@@ -773,7 +773,7 @@ public class DrawingWindow
          * Setzt die Farbe des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FarbeSetzen}.
          * </p>
          *
@@ -789,7 +789,7 @@ public class DrawingWindow
          * Setzt die Sichtbarkeit des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code SichtbarkeitSetzen}.
          * </p>
          *
@@ -805,7 +805,7 @@ public class DrawingWindow
          * Setzt den Drehwinkel des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code WinkelSetzen}.
          * </p>
          *
@@ -822,7 +822,7 @@ public class DrawingWindow
          * Entfernt das Objekt aus dem Zeichenfenster.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
          * </p>
          */
         void remove()
@@ -838,7 +838,7 @@ public class DrawingWindow
          * Bringt das Objekt eine Ebene nach vorn.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code NachVornBringen}.
          * </p>
          */
@@ -861,7 +861,7 @@ public class DrawingWindow
          * Bringt das Objekt in die vorderste Ebene.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code GanzNachVornBringen}.
          * </p>
          */
@@ -883,7 +883,7 @@ public class DrawingWindow
          * Bringt das Objekt eine Ebene nach hinten.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code NachHintenBringen}.
          * </p>
          */
@@ -906,7 +906,7 @@ public class DrawingWindow
          * Bringt das Objekt in die hinterste Ebene.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code GanzNachHintenBringen}.
          * </p>
          */
@@ -928,7 +928,7 @@ public class DrawingWindow
          * Testet, ob der angegebene Punkt innerhalb der Figur ist.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code IstInnerhalb}.
          * </p>
          *
@@ -946,7 +946,7 @@ public class DrawingWindow
          * Testet, ob die beiden Figuren überlappen.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Schneidet}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Schneidet}.
          * </p>
          *
          * @param wen die andere Form
@@ -964,7 +964,7 @@ public class DrawingWindow
          * Zeichnet das Objekt
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
          * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
@@ -981,7 +981,7 @@ public class DrawingWindow
          * im Uhrzeiger.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code DrehwinkelGeben}.
          * </p>
          *
@@ -998,7 +998,7 @@ public class DrawingWindow
          * Erstellt die Form des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1014,7 +1014,7 @@ public class DrawingWindow
          * Erstellt die Form des Rechtecks.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1037,7 +1037,7 @@ public class DrawingWindow
          * Erstellt die Form der Ellipse.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1060,7 +1060,7 @@ public class DrawingWindow
          * Erstellt die Form des Dreiecks.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1097,7 +1097,7 @@ public class DrawingWindow
          * Belegt text und size mit Defaultwerten.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code TextIntern}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code TextIntern}.
          * </p>
          */
         TextIntern()
@@ -1112,7 +1112,7 @@ public class DrawingWindow
          * Erstellt die Form des Textes. Dummy, legt ein leeres Area an.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1126,7 +1126,7 @@ public class DrawingWindow
          * Testet, ob der angegebene Punkt innerhalb der Figur ist.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code IstInnerhalb}.
          * </p>
          *
@@ -1145,7 +1145,7 @@ public class DrawingWindow
          * Setzt den aktuellen Text.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code TextSetzen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code TextSetzen}.
          * </p>
          *
          * @param t der neue Text
@@ -1160,7 +1160,7 @@ public class DrawingWindow
          * Setzt die Größe des Textes.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code TextGrößeSetzen}.
          * </p>
          */
@@ -1174,7 +1174,7 @@ public class DrawingWindow
          * Vergrößert den Text.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code TextVergrößern}.
          * </p>
          */
@@ -1199,7 +1199,7 @@ public class DrawingWindow
          * Verkleinert den Text.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code TextVerkleinern}.
          * </p>
          */
@@ -1228,7 +1228,7 @@ public class DrawingWindow
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
          * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
@@ -1282,7 +1282,7 @@ public class DrawingWindow
          * Zeichnet das Figurenelement.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZeichnen}.
          * </p>
          *
@@ -1297,7 +1297,7 @@ public class DrawingWindow
          * Fügt den Pfadteil deiser Komponente zum umgebenden Pfad hinzu.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZuForm}.
          * </p>
          *
@@ -1319,7 +1319,7 @@ public class DrawingWindow
          * Der Konstruktor speichert die Rahmendaten.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurenElementRechteck}.
          * </p>
          *
@@ -1345,7 +1345,7 @@ public class DrawingWindow
          * Zeichnet das Figurenelement.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZeichnen}.
          * </p>
          *
@@ -1367,7 +1367,7 @@ public class DrawingWindow
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZuForm}.
          * </p>
          *
@@ -1394,7 +1394,7 @@ public class DrawingWindow
          * Der Konstruktor speichert die Rahmendaten.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurenElementEllipse}.
          * </p>
          *
@@ -1420,7 +1420,7 @@ public class DrawingWindow
          * Zeichnet das Figurenelement.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZeichnen}.
          * </p>
          *
@@ -1442,7 +1442,7 @@ public class DrawingWindow
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZuForm}.
          * </p>
          *
@@ -1495,7 +1495,7 @@ public class DrawingWindow
          * Zeichnet das Figurenelement.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZeichnen}.
          * </p>
          *
@@ -1517,7 +1517,7 @@ public class DrawingWindow
          * Fügt den Pfadteil dieser Komponente zum umgebenden Pfad hinzu.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ElementZuForm}.
          * </p>
          *
@@ -1619,7 +1619,7 @@ public class DrawingWindow
              * Zeichent die angegebe Linie in das Bild.
              *
              * <p>
-             * Die ursprünglich deutsche Name dieser Methode war
+             * Der ursprünglich deutsche Name dieser Methode war
              * {@code LinieZeichnen}.
              * </p>
              *
@@ -1634,7 +1634,7 @@ public class DrawingWindow
              * Zeichnet das Bild in das angegebene Zeichenobjekt.
              *
              * <p>
-             * Die ursprünglich deutsche Name dieser Methode war
+             * Der ursprünglich deutsche Name dieser Methode war
              * {@code BildZeichnen}.
              * </p>
              *
@@ -1725,7 +1725,7 @@ public class DrawingWindow
          * Baut die Standardfigur aus den Elementen auf.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code StandardfigurErzeugen}.
          * </p>
          */
@@ -1759,7 +1759,7 @@ public class DrawingWindow
          * Passt das Hintergrundbild an eine neue Größe der Zeichenfläche an.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code NeueGrößeSetzen}.
          * </p>
          */
@@ -1776,7 +1776,7 @@ public class DrawingWindow
          * Erstellt die Form der Turtle.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -1807,7 +1807,7 @@ public class DrawingWindow
          * Setzt die Position (der linken oberen Ecke) des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code PositionSetzen}.
          * </p>
          *
@@ -1826,7 +1826,7 @@ public class DrawingWindow
          * Setzt die Turtle wieder an ihre Ausgangsposition.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ZumStartpunktGehen}.
          * </p>
          */
@@ -1845,7 +1845,7 @@ public class DrawingWindow
          * Bewegt die Turtle nach vorne.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
          * </p>
          *
          * @param länge Anzahl der Längeneinheiten
@@ -1875,7 +1875,7 @@ public class DrawingWindow
          * Dreht die Turtle
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
          * </p>
          *
          * @param grad Drehwinkel im Gradmass
@@ -1891,7 +1891,7 @@ public class DrawingWindow
          * Versetzt Zeichenfläche und Turtle in den Ausgangszustand
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Löschen}.
          * </p>
          */
         void reset()
@@ -1905,7 +1905,7 @@ public class DrawingWindow
          * Turtle wechselt in den Modus "nicht zeichnen"
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
          * </p>
          */
         void liftPen()
@@ -1917,7 +1917,7 @@ public class DrawingWindow
          * Turtle wechselt in den Modus "zeichnen"
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code StiftSenken}.
          * </p>
          */
@@ -1931,7 +1931,7 @@ public class DrawingWindow
          * Parameterwerte: true, false
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code SichtbarkeitFürSymbolSetzen}.
          * </p>
          *
@@ -1947,7 +1947,7 @@ public class DrawingWindow
          * Testet, ob die Turtle eine (sichtbare) Figur berührt.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur
@@ -1972,7 +1972,7 @@ public class DrawingWindow
          * berührt. Bei Überlappungen
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @param farbe die Farbe, die die berührte Figur haben muss.
@@ -2042,7 +2042,7 @@ public class DrawingWindow
          * Testet, ob die Turtle die (sichtbare, ) angegebene Figur berührt.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @param object das Objekt, das getestet werden soll.
@@ -2082,7 +2082,7 @@ public class DrawingWindow
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
          * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen
@@ -2162,7 +2162,7 @@ public class DrawingWindow
          * Legt die Figur mit Startpunkt (100|200) in Richtung 0˚ an.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurIntern}.
          * </p>
          */
@@ -2189,7 +2189,7 @@ public class DrawingWindow
          * Baut die Standardfigur aus den Elementen auf.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code StandardfigurErzeugen}.
          * </p>
          */
@@ -2206,7 +2206,7 @@ public class DrawingWindow
          * Erstellt die Form der Figur.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FormErzeugen}.
          * </p>
          */
@@ -2240,7 +2240,7 @@ public class DrawingWindow
          * Setzt die Position (der Mitte) des Objekts.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code PositionSetzen}.
          * </p>
          *
@@ -2259,7 +2259,7 @@ public class DrawingWindow
          * Setzt die Figur wieder an ihre Ausgangsposition.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code ZumStartpunktGehen}.
          * </p>
          */
@@ -2278,7 +2278,7 @@ public class DrawingWindow
          * Bewegt die Figur nach vorne.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
          * </p>
          *
          * @param länge Anzahl der Längeneinheiten
@@ -2299,7 +2299,7 @@ public class DrawingWindow
          * Dreht die Figur
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
          * </p>
          *
          * @param grad Drehwinkel im Gradmass
@@ -2315,7 +2315,7 @@ public class DrawingWindow
          * Testet, ob die Figur eine (sichtbare) Grafik-Figur berührt.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @return true, wenn die Figurkoordinaten innerhalb einer Grafikfigur
@@ -2340,7 +2340,7 @@ public class DrawingWindow
          * Farbe berührt. Bei Überlappungen
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @param farbe die Farbe, die die berührte Figur haben muss.
@@ -2438,7 +2438,7 @@ public class DrawingWindow
          * berührt.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
          * </p>
          *
          * @param object das Objekt, das getestet werden soll.
@@ -2480,7 +2480,7 @@ public class DrawingWindow
          * Koordinaten (0|0) in der Mitte des Quadrats
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurteilFestlegenRechteck}.
          * </p>
          *
@@ -2508,7 +2508,7 @@ public class DrawingWindow
          * Koordinaten (0|0) in der Mitte des Quadrats
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurteilFestlegenEllipse}.
          * </p>
          *
@@ -2538,7 +2538,7 @@ public class DrawingWindow
          * Koordinaten (0|0) in der Mitte des Quadrats
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code FigurteilFestlegenDreieck}.
          * </p>
          *
@@ -2569,7 +2569,7 @@ public class DrawingWindow
          * wird wieder durch die Originalfigur dargestellt.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war
+         * Der ursprünglich deutsche Name dieser Methode war
          * {@code EigeneFigurLöschen}.
          * </p>
          */
@@ -2584,7 +2584,7 @@ public class DrawingWindow
          * Zeichnet das Objekt als Dreieck in der gegebenen Farbe.
          *
          * <p>
-         * Die ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
+         * Der ursprünglich deutsche Name dieser Methode war {@code Zeichnen}.
          * </p>
          *
          * @param g das Grafikobjekt zum Zeichnen

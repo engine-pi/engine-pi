@@ -10,12 +10,12 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Turtle
 {
     /**
-     * x-Position der Turtle.
+     * Die x-Position der Turtle.
      */
     public int x;
 
     /**
-     * y-Position der Turtle.
+     * Die y-Position der Turtle.
      */
     public int y;
 
@@ -23,7 +23,7 @@ public class Turtle
      * Größe der Turtle.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code größe}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code größe}.
      * </p>
      */
     public int size;
@@ -32,7 +32,7 @@ public class Turtle
      * Farbe der Turtle.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
      * </p>
      */
     public String color;
@@ -41,7 +41,7 @@ public class Turtle
      * Sichtbarkeit der Turtles.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
      * </p>
      */
     public boolean visible;
@@ -50,7 +50,7 @@ public class Turtle
      * Drehwinkel (mathemtisch positiver Drehsinn) der Turtle in Grad.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
      * </p>
      */
     public int rotation;
@@ -59,7 +59,7 @@ public class Turtle
      * Stiftposition
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war {@code stiftUnten}.
+     * Der ursprünglich deutsche Name dieses Attributs war {@code stiftUnten}.
      * </p>
      */
     public boolean penDown;
@@ -73,7 +73,7 @@ public class Turtle
      * Referenz auf das Aktionsempfängerobjekt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieses Attributs war
+     * Der ursprünglich deutsche Name dieses Attributs war
      * {@code aktionsEmpfänger}.
      * </p>
      */
@@ -124,7 +124,7 @@ public class Turtle
      * Methode tut nichts.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code AktionAusführen}.
      * </p>
      */
@@ -137,7 +137,7 @@ public class Turtle
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code TasteGedrückt}.
      * </p>
      *
      * @param key die gedrückte Taste
@@ -152,7 +152,7 @@ public class Turtle
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SonderTasteGedrückt}.
      * </p>
      *
@@ -168,7 +168,7 @@ public class Turtle
      * Muss bei Bedarf von einer Unterklasse überschrieben werden.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code MausGeklickt}.
      * </p>
      *
      * @param x x-Position des Mausklicks
@@ -185,7 +185,7 @@ public class Turtle
      * Setzt die Position der Turtle.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position der Turtle
@@ -202,7 +202,7 @@ public class Turtle
      * Setzt die Größe des Turtlesymbols.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code GrößeSetzen}.
      * </p>
      *
      * @param size (neue) Größe
@@ -220,7 +220,7 @@ public class Turtle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
      * @param color (neue) Farbe
@@ -239,7 +239,7 @@ public class Turtle
      * links, 270˚bzw. -90˚: Turtle schaut nach unten
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
      * @param rotation der (neue) Drehwinkel der Turtle
@@ -255,7 +255,7 @@ public class Turtle
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
@@ -271,7 +271,7 @@ public class Turtle
      * Entfernt die Turtle aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      *
      */
@@ -285,7 +285,7 @@ public class Turtle
      * Bringt die Turtle eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      *
@@ -299,7 +299,7 @@ public class Turtle
      * Bringt die Turtle in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
@@ -312,7 +312,7 @@ public class Turtle
      * Bringt die Turtle eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      *
@@ -326,7 +326,7 @@ public class Turtle
      * Bringt die Turtle in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      *
@@ -340,7 +340,7 @@ public class Turtle
      * Setzt die Turtle wieder an ihre Ausgangsposition.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code ZumStartpunktGehen}.
      * </p>
      */
@@ -356,7 +356,7 @@ public class Turtle
      * Bewegt die Turtle nach vorne.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Gehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Gehen}.
      * </p>
      *
      * @param length Anzahl der Längeneinheiten
@@ -372,7 +372,7 @@ public class Turtle
      * Dreht die Turtle
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
      * @param rotation Drehwinkel (mathematisch positiver Drehsinn) im Gradmaß
@@ -387,7 +387,7 @@ public class Turtle
      * Versetzt Zeichenfläche und Turtle in den Ausgangszustand.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Löschen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Löschen}.
      * </p>
      */
     public void reset()
@@ -399,7 +399,7 @@ public class Turtle
      * Turtle wechselt in den Modus "nicht zeichnen"
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code StiftHeben}.
      * </p>
      */
     public void liftPen()
@@ -412,7 +412,7 @@ public class Turtle
      * Turtle wechselt in den Modus "zeichnen"
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code StiftSenken}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code StiftSenken}.
      * </p>
      */
     public void lowerPen()
@@ -429,7 +429,7 @@ public class Turtle
      * schaut nach links, 270˚bzw. -90˚: Turtle schaut nach unten
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelGeben}.
      * </p>
      *
      * @return Winkel im Gradmass
@@ -443,7 +443,7 @@ public class Turtle
      * Gibt die x-Koordinate der Turtle zurück
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code XPositionGeben}.
      * </p>
      *
      * @return x-Koordinate
@@ -457,7 +457,7 @@ public class Turtle
      * Gibt die y-Koordinate der Turtle zurück.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code YPositionGeben}.
      * </p>
      *
      * @return y-Koordinate
@@ -472,7 +472,7 @@ public class Turtle
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitFürSymbolSetzen}.
      * </p>
      *
@@ -487,7 +487,7 @@ public class Turtle
      * Testet, ob die Turtle eine Figur berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @return true, wenn die Turtlekoordinaten innerhalb einer Grafikfigur sind
@@ -501,7 +501,7 @@ public class Turtle
      * Testet, ob die Turtle eine Figur in der angegebenen Farbe berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @param color die Farbe, die die berührte Figur haben muss.
@@ -518,7 +518,7 @@ public class Turtle
      * Testet, ob die Turtle die angegebene Figur berührt.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Berührt}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Berührt}.
      * </p>
      *
      * @param object das Objekt, das getestet werden soll.

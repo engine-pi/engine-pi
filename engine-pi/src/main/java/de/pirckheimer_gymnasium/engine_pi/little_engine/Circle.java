@@ -14,34 +14,46 @@ package de.pirckheimer_gymnasium.engine_pi.little_engine;
 public class Circle
 {
     /**
-     * x-Position des Kreismittelpunktes.
+     * Die x-Position des Kreismittelpunktes.
      */
     public int x;
 
     /**
-     * y-Position des Kreismittelpunktes.
+     * Die y-Position des Kreismittelpunktes.
      */
     public int y;
 
     /**
-     * Radius des Kreises.
+     * Der Radius des Kreises.
      */
     public int radius;
 
     /**
-     * Farbe des Kreises.
+     * Die Farbe des Kreises.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code farbe}.
+     * </p>
      */
-    public String farbe;
+    public String color;
 
     /**
-     * Sichtbarkeit des Kreises.
+     * Die Sichtbarkeit des Kreises.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code sichtbar}.
+     * </p>
      */
-    public boolean sichtbar;
+    public boolean visible;
 
     /**
-     * Drehwinkel (mathematisch positiver Drehsinn) des Kreises in Grad.
+     * Der Drehwinkel (mathematisch positiver Drehsinn) des Kreises in Grad.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieses Attributs war {@code winkel}.
+     * </p>
      */
-    public int winkel;
+    public int rotation;
 
     /**
      * Referenz auf das Delegate-Objekt.
@@ -56,28 +68,28 @@ public class Circle
         x = 60;
         y = 60;
         radius = 50;
-        farbe = "rot";
-        sichtbar = true;
-        winkel = 0;
+        color = "rot";
+        visible = true;
+        rotation = 0;
         symbol = DrawingWindow.SymbolErzeugen(DrawingWindow.SymbolArt.kreis);
         symbol.setPosition(x - radius, y - radius);
         symbol.setSize(radius * 2, radius * 2);
-        symbol.setColor(farbe);
-        symbol.setVisibility(sichtbar);
-        symbol.setRotation(winkel);
+        symbol.setColor(color);
+        symbol.setVisibility(visible);
+        symbol.setRotation(rotation);
     }
 
     /**
      * Setzt die Position (des Mittelpunkts) des Kreises.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
      * @param x x-Position des Mittelpunkts
      * @param y y-Position des Mittelpunkts
      */
-    public void PositionSetzen(int x, int y)
+    public void setPosition(int x, int y)
     {
         this.x = x;
         this.y = y;
@@ -88,13 +100,13 @@ public class Circle
      * Verschiebt den Kreis um die angegebenen Werte.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Verschieben}.
      * </p>
      *
      * @param deltaX Verschiebung in x-Richtung
      * @param deltaY Verschiebung in y-Richtung
      */
-    public void Verschieben(int deltaX, int deltaY)
+    public void move(int deltaX, int deltaY)
     {
         x += deltaX;
         y += deltaY;
@@ -105,27 +117,27 @@ public class Circle
      * Dreht den Kreis
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Drehen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Drehen}.
      * </p>
      *
-     * @param grad Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
+     * @param angle Drehwinkel (mathematisch positiver Drehsinn) im Gradmass
      */
-    public void Drehen(int grad)
+    public void rotate(int angle)
     {
-        winkel += grad;
-        symbol.setRotation(winkel);
+        this.rotation += angle;
+        symbol.setRotation(rotation);
     }
 
     /**
      * Setzt den Radius des Kreises.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code RadiusSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code RadiusSetzen}.
      * </p>
      *
      * @param radius (neuer) Radius
      */
-    public void RadiusSetzen(int radius)
+    public void setRadius(int radius)
     {
         this.radius = radius;
         symbol.setSize(radius * 2, radius * 2);
@@ -139,15 +151,15 @@ public class Circle
      * anderen Eingaben werden auf die Farbe schwarz abgebildet.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param farbe (neue) Farbe
+     * @param color (neue) Farbe
      */
-    public void FarbeSetzen(String farbe)
+    public void setColor(String color)
     {
-        this.farbe = farbe;
-        symbol.setColor(farbe);
+        this.color = color;
+        symbol.setColor(color);
     }
 
     /**
@@ -156,15 +168,15 @@ public class Circle
      * Uhrzeigersinn (mathematisch positiver Drehsinn).
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code WinkelSetzen}.
      * </p>
      *
-     * @param winkel der (neue) Drehwinkel des Kreises
+     * @param rotation der (neue) Drehwinkel des Kreises
      */
-    public void WinkelSetzen(int winkel)
+    public void setRotation(int rotation)
     {
-        this.winkel = winkel;
-        symbol.setRotation(winkel);
+        this.rotation = rotation;
+        symbol.setRotation(rotation);
     }
 
     /**
@@ -172,15 +184,15 @@ public class Circle
      * Parameterwerte: true, false
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code SichtbarkeitSetzen}.
      * </p>
      *
      * @param sichtbar (neue) Sichtbarkeit des Kreises
      */
-    public void SichtbarkeitSetzen(boolean sichtbar)
+    public void setVisibility(boolean sichtbar)
     {
-        this.sichtbar = sichtbar;
+        this.visible = sichtbar;
         symbol.setVisibility(sichtbar);
     }
 
@@ -188,10 +200,10 @@ public class Circle
      * Entfernt den Kreis aus dem Zeichenfenster.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
+     * Der ursprünglich deutsche Name dieser Methode war {@code Entfernen}.
      * </p>
      */
-    public void Entfernen()
+    public void remove()
     {
         symbol.remove();
     }
@@ -200,11 +212,11 @@ public class Circle
      * Bringt den Kreis eine Ebene nach vorn.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachVornBringen}.
      * </p>
      */
-    public void NachVornBringen()
+    public void raiseLayer()
     {
         symbol.raiseLayer();
     }
@@ -213,11 +225,11 @@ public class Circle
      * Bringt den Kreis in die vorderste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachVornBringen}.
      * </p>
      */
-    public void GanzNachVornBringen()
+    public void bringToFront()
     {
         symbol.bringToFront();
     }
@@ -226,11 +238,11 @@ public class Circle
      * Bringt den Kreis eine Ebene nach hinten.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code NachHintenBringen}.
      * </p>
      */
-    public void NachHintenBringen()
+    public void lowerLayer()
     {
         symbol.lowerLayer();
     }
@@ -239,11 +251,11 @@ public class Circle
      * Bringt den Kreis in die hinterste Ebene.
      *
      * <p>
-     * Die ursprünglich deutsche Name dieser Methode war
+     * Der ursprünglich deutsche Name dieser Methode war
      * {@code GanzNachHintenBringen}.
      * </p>
      */
-    public void GanzNachHintenBringen()
+    public void bringToBack()
     {
         symbol.bringToBack();
     }
