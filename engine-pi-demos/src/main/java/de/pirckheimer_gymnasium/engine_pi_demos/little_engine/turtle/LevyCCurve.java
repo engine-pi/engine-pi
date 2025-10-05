@@ -88,7 +88,7 @@ public class LevyCCurve
         if (depth > 0)
         {
             t.rotate(45);
-            //  1 / Math.sqrt(2) == 0.7071067811865475
+            // 1 / Math.sqrt(2) == 0.7071067811865475
             // sqrt -> square root -> Quadratwurzel
             drawPart(length * 0.7071, depth - 1);
             t.rotate(-90);
