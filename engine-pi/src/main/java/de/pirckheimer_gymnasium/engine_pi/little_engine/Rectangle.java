@@ -1,7 +1,9 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+
 /**
- * Wrapperklasse für ein Rechteck auf der Zeichenfläche.
+ * Ein <b>Rechteck</b> auf der Zeichenfläche.
  *
  * <p>
  * Der ursprüngliche Name der Klasse war {@code Rechteck}.
@@ -160,16 +162,19 @@ public class Rectangle
     }
 
     /**
-     * Setzt die Farbe des Rechtecks. Erlaubte Farben sind: "weiß", "weiss",
-     * "rot", "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
-     * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
-     * anderen Eingaben werden auf die Farbe schwarz abgebildet.
+     * Setzt die Farbe des Rechtecks.
+     *
+     * <p>
+     * Die möglichen Farbnamen sind über die Dokumentation der Klasse
+     * {@link ColorContainer ColorContainer} einzusehen.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param color (neue) Farbe
+     * @param color Der (neue) Farbname (Mögliche Farbnamen:
+     *     {@link ColorContainer siehe Auflistung}).
      */
     public void setColor(String color)
     {

@@ -1,7 +1,9 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+
 /**
- * Wrapperklasse für ein Dreieck auf der Zeichenfläche.
+ * Ein <b>Dreieck</b> auf der Zeichenfläche.
  *
  * <p>
  * Der ursprüngliche Name der Klasse war {@code Dreieck}.
@@ -74,7 +76,8 @@ public class Triangle
     DrawingWindow.GrafikSymbol symbol;
 
     /**
-     * Der Konstruktor erzeugt das Delegate-Objekt.
+     * Erzeugt ein neues rotes Rechteck mit der Breite und Höhe von jeweils 100
+     * Pixel.
      */
     public Triangle()
     {
@@ -100,8 +103,8 @@ public class Triangle
      * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
-     * @param x x-Position der Spitze
-     * @param y y-Position der Spitze
+     * @param x Die x-Position der Spitze.
+     * @param y Die y-Position der Spitze.
      */
     public void setPosition(int x, int y)
     {
@@ -161,16 +164,19 @@ public class Triangle
     }
 
     /**
-     * Setzt die Farbe des Dreiecks. Erlaubte Farben sind: "weiß", "weiss",
-     * "rot", "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
-     * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
-     * anderen Eingaben werden auf die Farbe schwarz abgebildet.
+     * Setzt die Farbe des Dreiecks.
+     *
+     * <p>
+     * Die möglichen Farbnamen sind über die Dokumentation der Klasse
+     * {@link ColorContainer ColorContainer} einzusehen.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param color Die (neue) Farbe.
+     * @param color Der (neue) Farbname (Mögliche Farbnamen:
+     *     {@link ColorContainer siehe Auflistung}).
      */
     public void setColor(String color)
     {

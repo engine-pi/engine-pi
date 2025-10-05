@@ -1,6 +1,8 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
+ * Eine <b>Zelle</b> auf der Zeichenfläche.
+ *
  * <p>
  * Zellen als Bestandteile der Welt, in der sich die Figuren bewegen können.
  * Jede Zelle hat die Größe 46x46 Pixel. Beachte Ränder um die Zellen, bei der

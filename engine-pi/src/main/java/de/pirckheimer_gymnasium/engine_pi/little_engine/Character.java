@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
 /**
- * Wrapperklasse für eine Figur auf der Zeichenfläche.
+ * Eine <b>Figur</b> auf der Zeichenfläche.
  *
  * <p>
  * Der ursprüngliche Name der Klasse war {@code Figur}.

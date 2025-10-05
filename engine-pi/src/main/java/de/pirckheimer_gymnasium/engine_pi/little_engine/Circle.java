@@ -1,7 +1,9 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+
 /**
- * Wrapperklasse für einen Kreis auf der Zeichenfläche.
+ * Ein <b>Kreis</b> auf der Zeichenfläche.
  *
  * <p>
  * Der ursprüngliche Name der Klasse war {@code Kreis}.
@@ -61,7 +63,8 @@ public class Circle
     DrawingWindow.GrafikSymbol symbol;
 
     /**
-     * Der Konstruktor erzeugt das Delegate-Objekt
+     * Erzeugt einen neuen roten Kreis an der Position (60|60) mit einem Radius
+     * von 50px.
      */
     public Circle()
     {
@@ -86,8 +89,8 @@ public class Circle
      * Der ursprünglich deutsche Name dieser Methode war {@code PositionSetzen}.
      * </p>
      *
-     * @param x x-Position des Mittelpunkts
-     * @param y y-Position des Mittelpunkts
+     * @param x Die x-Position des Mittelpunkts.
+     * @param y Die y-Position des Mittelpunkts.
      */
     public void setPosition(int x, int y)
     {
@@ -145,16 +148,19 @@ public class Circle
     }
 
     /**
-     * Setzt die Farbe des Kreises. Erlaubte Farben sind: "weiß", "weiss",
-     * "rot", "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
-     * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
-     * anderen Eingaben werden auf die Farbe schwarz abgebildet.
+     * Setzt die Farbe des Kreises.
+     *
+     * <p>
+     * Die möglichen Farbnamen sind über die Dokumentation der Klasse
+     * {@link ColorContainer ColorContainer} einzusehen.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param color (neue) Farbe
+     * @param color Der (neue) Farbname (Mögliche Farbnamen:
+     *     {@link ColorContainer siehe Auflistung}).
      */
     public void setColor(String color)
     {

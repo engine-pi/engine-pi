@@ -40,8 +40,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Die Klasse stellt ein Fenster mit einer Malfläche zur Verfügung, auf der
- * Objekte der Klassen Rechteck, Kreis und Dreieck sowie Turtle dargestellt
+ * Die Klasse stellt ein <b>Fenster mit einer Malfläche</b> zur Verfügung, auf
+ * der Objekte der Klassen Rechteck, Kreis und Dreieck sowie Turtle dargestellt
  * werden können. Die Zeichenfläche wird beim ersten Anlegen eines
  * Zeichenobjekts automatisch nach dem Muster Singleton angelegt.
  *

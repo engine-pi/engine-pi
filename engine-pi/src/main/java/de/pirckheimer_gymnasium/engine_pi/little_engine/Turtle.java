@@ -1,7 +1,9 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
+import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+
 /**
- * Wrapperklasse für die Schildkröte auf der Zeichenfläche.
+ * Eine <b>Schildkröte</b> auf der Zeichenfläche.
  *
  * @author Albert Wiedemann
  *
@@ -214,16 +216,19 @@ public class Turtle
     }
 
     /**
-     * Setzt die Farbe der Linie. Erlaubte Farben sind: "weiß", "weiss", "rot",
-     * "grün", "gruen", "blau", "gelb", "magenta", "cyan", "hellgelb",
-     * "hellgrün", "hellgruen", "orange", "braun", "grau", "schwarz" Alle
-     * anderen Eingaben werden auf die Farbe schwarz abgebildet.
+     * Setzt die Farbe der Linie.
+     *
+     * <p>
+     * Die möglichen Farbnamen sind über die Dokumentation der Klasse
+     * {@link ColorContainer ColorContainer} einzusehen.
+     * </p>
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war {@code FarbeSetzen}.
      * </p>
      *
-     * @param color (neue) Farbe
+     * @param color Der (neue) Farbname (Mögliche Farbnamen:
+     *     {@link ColorContainer siehe Auflistung}).
      */
     public void setColor(String color)
     {
