@@ -411,9 +411,27 @@ public final class Camera
      *
      * @param x Die neue X-Koordinate des Kamerazentrums.
      * @param y Die neue Y-Koordinate des Kamerazentrums.
+     *
+     * @see #setCenter(double, double)
      */
     @API
     public void setPostion(double x, double y)
+    {
+        setCenter(new Vector(x, y));
+    }
+
+    /**
+     * Setzt die aktuelle Position der Kamera.
+     *
+     * @param x Die neue X-Koordinate des Kamerazentrums.
+     * @param y Die neue Y-Koordinate des Kamerazentrums.
+     *
+     * @since 0.33.0
+     *
+     * @see #setPostion(double, double)
+     */
+    @API
+    public void setCenter(double x, double y)
     {
         setCenter(new Vector(x, y));
     }

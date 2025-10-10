@@ -14,7 +14,7 @@ import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
  * <p>
  * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
  * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
- * {@link Game#setDefaultControl(DefaultListener)} neuen Kürzel ersetzt werden.
+ * {@link Game#setDefaultControl(DefaultListener)} neue Kürzel gesetzt werden.
  * </p>
  *
  * <ul>

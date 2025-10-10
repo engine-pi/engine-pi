@@ -34,7 +34,8 @@ public class Chessboard
     public static void main(String[] args)
     {
         Scene scene = new Scene();
-        scene.setMeter(100);
+        scene.setMeter(50);
+        scene.getCamera().setCenter(4, 4);
         new Chessboard(scene);
         Game.start(scene);
     }

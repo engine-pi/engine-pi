@@ -65,9 +65,11 @@ Das Koordinatensystem ist mittig zentriert. Die x-Achse zeigt wie im
 Mathematikunterricht nach rechts und die y-Achse nach oben. 1 Längeneinheit
 entspricht 1 Meter. Die verwendete Physik-Engine rechnet intern mit Einheiten
 aus der realen Welt, deshalb bietet sich Meter als Maßheit für das
-Koordinatensystem an.[^zeichnen-grafikfenster]
+Koordinatensystem an.[^engine-alpha-wiki:zeichnen-grafikfenster]
 
-[^zeichnen-grafikfenster]: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster#Zeichnen_im_Grafikfenster
+[^engine-alpha-wiki:zeichnen-grafikfenster]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster#Zeichnen_im_Grafikfenster
+
 
 ## Figur (Actor)
 
@@ -91,7 +93,8 @@ für den x- als auch den y-Wert der Koordinate hat.
 
 ## Tutorial: Hello World[^engine-alpha-wiki:hello-world]
 
-[^engine-alpha-wiki:hello-world]: https://engine-alpha.org/wiki/v4.x/Hello_World
+[^engine-alpha-wiki:hello-world]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Hello_World
 
 <!-- ### Schritt 1: Grundlegender Aufbau -->
 
@@ -264,7 +267,7 @@ circle.setLayerPosition(-2);
 
 ## Nutzereingaben[^engine-alpha-wiki:user-input]
 
-[^engine-alpha-wiki:user-input]: Der folgende Abschnitt stammt aus dem
+[^engine-alpha-wiki:user-input]: Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben erstellen
@@ -435,9 +438,10 @@ public class KeyEventDisplayDemo extends Scene
 }
 ```
 
-### Mauseingaben erstellen
+### Mauseingaben erstellen[^engine-alpha-wiki:user-input-mouse-click-listener]
 
-https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
+[^engine-alpha-wiki:user-input-mouse-click-listener]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
 ![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.gif)
 
@@ -496,9 +500,10 @@ Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
 [Vector](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Vector.html).
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
-für die Arbeit mit der Engine.
+für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 
-https://engine-alpha.org/wiki/v4.x/User_Input#Vector
+[^engine-alpha-wiki:vector]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
 ![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.gif)
 
@@ -523,12 +528,17 @@ neue Kürzel gesetzt werden.
 - `ALT + p` zum Ein- und Ausblenden der Figuren-Positionen (sehr
   ressourcenintensiv).
 - `ALT + s` zum Speichern eines Bildschirmfotos (unter `~/engine-pi`).
+- `ALT + PLUS` Hineinzoomen.
+- `ALT + MINUS` Herauszoomen.
+- `ALT + SHIFT + PLUS` schnelles Hineinzoomen.
+- `ALT + SHIFT + MINUS` schnelles Herauszoomen.
 - `ALT + Pfeiltasten` zum Bewegen der Kamera.
 - `ALT + Mausrad` zum Einstellen des Zoomfaktors.
 
-## Game Loop
+## Game Loop[^engine-alpha-wiki:game-loop]
 
-https://engine-alpha.org/wiki/v4.x/Game_Loop
+[^engine-alpha-wiki:game-loop]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Game_Loop
 
 <!-- ### How-To Engine Code: Der Game Loop -->
 
@@ -790,9 +800,10 @@ Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/eng
   länger. Die Glieder bewegen sich versetzt mit der Schlange weiter. Wenn die
   Schlange sich selbst berührt, ist das Spiel beendet.
 
-## Szenen
+## Szenen[^engine-alpha-wiki:scenes]
 
-https://engine-alpha.org/wiki/v4.x/Scenes
+[^engine-alpha-wiki:scenes]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Scenes
 
 Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler
 während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung,
@@ -1022,9 +1033,10 @@ Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
 `KeyStrokeListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der
 Hauptszene angemeldet.
 
-## Physics
+## Physics[^engine-alpha-wiki:physics]
 
-https://engine-alpha.org/wiki/v4.x/Physics
+[^engine-alpha-wiki:physics]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Physics
 
 Die Engine Pi nutzt eine [Java-Version](http://jbox2d.org/) von [Box2D](https://box2d.org/). Diese mächtige
 und effiziente Physics-Engine ist in der Engine Pi leicht zu bedienen und
@@ -1366,9 +1378,10 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 }
 ```
 
-## Stateful Animation
+## Stateful Animation[^engine-alpha-wiki:stateful-animation]
 
-https://engine-alpha.org/wiki/v4.x/Stateful_Animation
+[^engine-alpha-wiki:stateful-animation]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Stateful_Animation
 
 Die
 [StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
@@ -1837,9 +1850,10 @@ public class RepeatDemo extends Scene
 }
 ```
 
-## Kollisionen-Erkennung
+## Kollisionen-Erkennung[^engine-alpha-wiki:collision]
 
-https://engine-alpha.org/wiki/v4.x/Collision
+[^engine-alpha-wiki:collision]: Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Collision
 
 <!-- ### Spielkonzept und grundlegender Aufbau -->
 
