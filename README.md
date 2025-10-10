@@ -262,16 +262,19 @@ background.setLayerPosition(-1);
 circle.setLayerPosition(-2);
 ```
 
-## Nutzereingaben
+## Nutzereingaben[^engine-alpha-wiki:user-input]
 
-https://engine-alpha.org/wiki/v4.x/User_Input
+[^engine-alpha-wiki:user-input]: Der folgende Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben erstellen
 
 ![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyStrokeCounter.png)
 
-Der [folgende Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java) implementiert einen einfachen Zähler, der die Anzahl an
-gedrückten Tasten (vollkommen egal, welche) festhält.
+Der [folgende
+Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java)
+implementiert einen einfachen Zähler, der die Anzahl an gedrückten Tasten
+(vollkommen egal, welche) festhält.
 
 Quellcode: [demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60)
 
@@ -306,8 +309,8 @@ public class KeyStrokeCounterDemo extends Scene
 
 **Das Interface `KeyStrokeListener`**
 
-Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll,
-implementiert das Interface
+Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll, implementiert
+das Interface
 [KeyStrokeListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html).
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
@@ -319,11 +322,11 @@ Die korrekte Anweisung, um das Interface einzubinden, lautet:
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener
 ```
 
-Die Anmeldung des `KeyStrokeListener`-Interfaces hat automatisch stattgefunden, als
-das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde.
-Ab diesem Zeitpunkt wird die [onKeyDown(KeyEvent e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html#onKeyDown(java.awt.event.KeyEvent)>)
--Methode bei jedem Tastendruck
-aufgerufen.
+Die Anmeldung des `KeyStrokeListener`-Interfaces hat automatisch stattgefunden,
+als das Objekt der Klasse `CounterText` über `add(...)` angemeldet wurde. Ab
+diesem Zeitpunkt wird die [onKeyDown(KeyEvent
+e)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/KeyStrokeListener.html#onKeyDown(java.awt.event.KeyEvent)>)
+-Methode bei jedem Tastendruck aufgerufen.
 
 Soll reagiert werden, wenn eine Taste losgelassen wird, kann die
 [onKeyUp(KeyEvent

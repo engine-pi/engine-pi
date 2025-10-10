@@ -14,7 +14,7 @@ import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
  * <p>
  * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
  * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
- * {@link Game#setDefaultControl(DefaultListener)} neue Kürzel gesetzt werden.
+ * {@link Game#setDefaultControl(DefaultListener)} neuen Kürzel ersetzt werden.
  * </p>
  *
  * <ul>
@@ -25,7 +25,7 @@ import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
  * <li>{@code ALT + p} zum Ein- und Ausblenden der Figuren-Positionen (sehr
  * ressourcenintensiv).</li>
  * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
- * ~/engine-pi).</li>
+ * {@code ~/engine-pi}).</li>
  * <li>{@code ALT + PLUS} Hineinzoomen.</li>
  * <li>{@code ALT + MINUS} Herauszoomen.</li>
  * <li>{@code ALT + SHIFT + PLUS} schnelles Hineinzoomen.</li>
