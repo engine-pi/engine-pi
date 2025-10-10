@@ -23,21 +23,43 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
+ * Beschreibt ein regelmäßiges <b>Vieleck</b> bzw{@literal .} reguläres
+ * <b>Polygon</b>.
+ *
+ * <p>
+ * Bei einem regelmäßigen Polygon sind alle Seiten gleich lang und alle
+ * Innenwinkel gleich groß.
+ * </p>
+ *
  * @author Josef Friedrich
  */
 public class RegularPolygon extends Polygon
 {
+    /**
+     * Erzeugt einen reguläres <b>Polygon</b> durch Angabe der Anzahl der Seiten
+     * und des Radius.
+     *
+     * @param numSides Die Anzahl an Seiten, die das Polygon haben soll.
+     * @param radius Der Radius in Meter vom Mittelpunkt zum virtuellen Kreis,
+     *     auf dem alle Ecken liegen.
+     */
     public RegularPolygon(int numSides, double radius)
     {
         super(RegularPolygon.getVectors(numSides, radius));
     }
 
+    /**
+     * Erzeugt einen reguläres <b>Polygon</b> durch Angabe der Anzahl der Seiten
+     * und einem Radius von einem Meter.
+     *
+     * @param numSides Die Anzahl an Seiten, die das Polygon haben soll.
+     */
     public RegularPolygon(int numSides)
     {
         this(numSides, 1);
     }
 
-    public static Vector[] getVectors(int numSides, double radius)
+    private static Vector[] getVectors(int numSides, double radius)
     {
         Vector[] vectors = new Vector[numSides];
         double angleStep = 360 / numSides;

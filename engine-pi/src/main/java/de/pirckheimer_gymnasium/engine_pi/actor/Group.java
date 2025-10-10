@@ -28,7 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import java.util.Arrays;
 
 /**
- * Eine Gruppe bestehend aus mehreren {@link Actor}-Objekten.
+ * Eine <b>Gruppe</b> bestehend aus mehreren {@link Actor}-Objekten.
  *
  * @author Josef Friedrich
  */

@@ -27,7 +27,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 /**
- * Beschreibt ein Gitter aus quadratischen Zellen.
+ * Beschreibt ein <b>Gitter</b> aus quadratischen Zellen.
  *
  * @author Josef Friedrich
  */

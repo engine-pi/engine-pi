@@ -22,8 +22,8 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
- * Beschreibt ein reguläres bzw. regelmäßiges <b>Sechseck</b> bzw.
- * <b>Hexagon</b>.
+ * Beschreibtttt ein reguläres bzw{@literal .} regelmäßiges <b>Sechseck</b>
+ * bzw{@literal .} <b>Hexagon</b>.
  *
  * <p>
  * Alle <em>Seiten</em> des Sechsecks sich <em>gleich lang</em>. Außerdem sind

@@ -19,8 +19,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
- * Beschreibt ein reguläres bzw. regelmäßiges <b>Siebeneck</b> bzw.
- * <b>Heptagon</b>.
+ * Beschreibt ein reguläres bzw{@literal .} regelmäßiges <b>Siebeneck</b>
+ * bzw{@literal .} <b>Heptagon</b>.
  *
  * <p>
  * Alle <em>Seiten</em> des Siebenecks sich <em>gleich lang</em>. Außerdem sind
