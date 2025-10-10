@@ -14,6 +14,8 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  * @author Josef Friedrich (englische Übersetzung, Array statt Arraylist)
  *
  * @version 1.0
+ *
+ * @since 0.33.0
  */
 class EightQueensPuzzleGraphically
 {

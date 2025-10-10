@@ -11,6 +11,9 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
+/**
+ * @since 0.33.0
+ */
 public class Chessboard
 {
 

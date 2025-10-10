@@ -11,6 +11,8 @@ package de.pirckheimer_gymnasium.engine_pi_demos.eight_queens_puzzle;
  * @author Josef Friedrich (englische Übersetzung, Array statt Arraylist)
  *
  * @version 1.0
+ *
+ * @since 0.33.0
  */
 class EightQueensPuzzle
 {
