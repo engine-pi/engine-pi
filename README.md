@@ -84,9 +84,9 @@ der Koordinate (0|0), d. h. die linke untere Ecke der Figur - ihr Ankerpunkt -
 liegt an dem Punkt im Koordinatensystem, das 0 sowohl für den x- als auch den
 y-Wert der Koordinate hat.
 
-## Tutorial: Hello World
+## Tutorial: Hello World[^engine-alpha-wiki:hello-world]
 
-https://engine-alpha.org/wiki/v4.x/Hello_World
+[^engine-alpha-wiki:hello-world]: https://engine-alpha.org/wiki/v4.x/Hello_World
 
 <!-- ### Schritt 1: Grundlegender Aufbau -->
 
@@ -2414,7 +2414,6 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
 | englisch       | deutsch                                                |
 | -------------- | ------------------------------------------------------ |
 | Actor          | Figur                                                  |
-| Rigid Body     | Starrer Körper                                         |
 | BodyType       | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds         | Schranken, Abgrenzung                                  |
 | DistanceJoint  | Stabverbindung                                         |
@@ -2422,12 +2421,17 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
 | Frame          | Einzelbild                                             |
 | Handler        | Steuerungsklasse                                       |
 | Joint          | Verbindung                                             |
+| Layer          | Ebene                                                  |
 | Listener       | Beobachter                                             |
 | Offset         | Verzug                                                 |
 | PrismaticJoint | Federverbindung                                        |
+| Rectangle      | Rechteck                                               |
 | RevoluteJoint  | Gelenkverbindung                                       |
+| Rigid Body     | Starrer Körper                                         |
 | RopeJoint      | Seilverbindung                                         |
+| Scene          | Szene                                                  |
 | Shape          | Umriss                                                 |
+| Square         | Quadrat                                                |
 | TurboFire      | Dauerfeuer                                             |
 | WeldJoint      | Schweißnaht                                            |
 
