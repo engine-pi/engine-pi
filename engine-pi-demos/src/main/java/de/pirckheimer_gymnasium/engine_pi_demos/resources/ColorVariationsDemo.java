@@ -28,6 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 {
@@ -81,17 +82,11 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 
         for (Color color : scheme.getWheelColors())
         {
-
-            float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(),
-                    color.getBlue(), null);
-
-            System.out
-                    .println(String.format("%s %s %s", hsb[0], hsb[1], hsb[2]));
-            COLOR_AREAS[i][0].setColor(Color.getHSBColor(hsb[0], 0.2f, hsb[2]));
-            COLOR_AREAS[i][1].setColor(Color.getHSBColor(hsb[0], 0.4f, hsb[2]));
-            COLOR_AREAS[i][2].setColor(Color.getHSBColor(hsb[0], 0.6f, hsb[2]));
-            COLOR_AREAS[i][3].setColor(Color.getHSBColor(hsb[0], 0.8f, hsb[2]));
-            COLOR_AREAS[i][4].setColor(Color.getHSBColor(hsb[0], 1f, hsb[2]));
+            COLOR_AREAS[i][0].setColor(ColorUtil.setBrightness(color, 0.2));
+            COLOR_AREAS[i][1].setColor(ColorUtil.setBrightness(color, 0.4));
+            COLOR_AREAS[i][2].setColor(ColorUtil.setBrightness(color, 0.6));
+            COLOR_AREAS[i][3].setColor(ColorUtil.setBrightness(color, 0.8));
+            COLOR_AREAS[i][4].setColor(ColorUtil.setBrightness(color, 1));
             i++;
         }
 

@@ -187,4 +187,13 @@ public class ColorUtilTest
         Color color = new Color(225, 0, 0);
         assertEquals(new Color(225, 0, 0), ColorUtil.premultiply(color));
     }
+
+    @Test
+    public void testChangeHSB()
+    {
+        Color color = new Color(225, 0, 0);
+        assertEquals(new Color(225, 0, 0), ColorUtil.chanceHSB(color, (hsb) -> {
+            return hsb;
+        }));
+    }
 }

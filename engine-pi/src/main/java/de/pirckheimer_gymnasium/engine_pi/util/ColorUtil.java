@@ -434,4 +434,108 @@ public final class ColorUtil
         return new Color(Math.round(sumR / sampled), Math.round(sumG / sampled),
                 Math.round(sumB / sampled));
     }
+
+    /**
+     * Ändert die HSB-Werte (Farbton (Hue), Sättigung (Saturation), Helligkeit
+     * (Brightness)) einer gegebenen Farbe durch einen Lambda-Funktion.
+     *
+     * @param color Die ursprüngliche Farbe, deren HSB-Werte geändert werden
+     *     sollen.
+     * @param variant Eine Lambda-Funktion, die die Änderung der HSB-Werte
+     *     definiert.
+     *
+     * @return Eine neue Farbe mit den geänderten HSB-Werten.
+     *
+     * @since 0.33.0
+     */
+    public static Color chanceHSB(Color color, HSBColorVariant variant)
+    {
+        float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(),
+                color.getBlue(), null);
+        hsb = variant.change(hsb);
+        return Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+    }
+
+    /**
+     * Setzt die Helligkeit einer gegebenen Farbe auf den angegebenen Wert.
+     *
+     * @param color Die ursprüngliche Farbe, deren Helligkeit geändert werden
+     *     soll.
+     * @param brightness Der gewünschte Helligkeitswert (zwischen {@code 0.0}
+     *     und {@code 1.0}).
+     *
+     * @return Eine neue Farbe mit der angepassten Helligkeit.
+     *
+     * @since 0.33.0
+     */
+    public static Color setBrightness(Color color, double brightness)
+    {
+        return chanceHSB(color, (hsb) -> {
+            hsb[2] = (float) brightness;
+            return hsb;
+        });
+    }
+
+    /**
+     * Ändert die Helligkeit einer gegebenen Farbe um einen bestimmten Betrag.
+     *
+     * @param color Die ursprüngliche Farbe, deren Helligkeit geändert werden
+     *     soll.
+     * @param deltaBrightness Der Betrag, um den die Helligkeit (zwischen
+     *     {@code 0.0} und {@code 1.0}) geändert werden soll. Positive Werte
+     *     erhöhen die Helligkeit, negative Werte verringern sie.
+     *
+     * @return Eine neue Farbe mit der angepassten Helligkeit.
+     */
+    public static Color changeBrightness(Color color, double deltaBrightness)
+    {
+        return chanceHSB(color, (hsb) -> {
+            hsb[2] = hsb[2] + (float) deltaBrightness;
+            return hsb;
+        });
+    }
+
+    /**
+     * Setzt die Sättigung einer gegebenen Farbe auf den angegebenen Wert.
+     *
+     * @param color Die ursprüngliche Farbe, deren Sättigung geändert werden
+     *     soll.
+     * @param saturation Der neue Sättigungswert (zwischen {@code 0.0} und
+     *     {@code 1.0}), der angewendet werden soll.
+     *
+     * @return Eine neue Farbe mit der angepassten Sättigung.
+     *
+     * @since 0.33.0
+     */
+    public static Color setSaturation(Color color, double saturation)
+    {
+        return chanceHSB(color, (hsb) -> {
+            hsb[1] = (float) saturation;
+            return hsb;
+        });
+    }
+
+    /**
+     * Ändert die Sättigung einer gegebenen Farbe um einen bestimmten Wert.
+     *
+     * @param color Die ursprüngliche Farbe, deren Sättigung geändert werden
+     *     soll.
+     * @param deltaSaturation Der Wert, um den die Sättigung (zwischen
+     *     {@code 0.0} und {@code 1.0}) erhöht oder verringert werden soll.
+     *     Positive Werte erhöhen die Sättigung, negative Werte verringern sie.
+     *
+     * @return Eine neue Farbe mit der angepassten Sättigung.
+     */
+    public static Color changeSaturation(Color color, double deltaSaturation)
+    {
+        return chanceHSB(color, (hsb) -> {
+            hsb[1] = hsb[1] + (float) deltaSaturation;
+            return hsb;
+        });
+    }
+}
+
+interface HSBColorVariant
+{
+    float[] change(float[] hsbvals);
 }
