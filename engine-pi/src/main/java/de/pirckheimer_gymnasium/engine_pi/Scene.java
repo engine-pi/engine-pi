@@ -107,6 +107,14 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     private static final int JOINT_RECTANGLE_SIDE = 12;
 
+    /**
+     * Erzeugt eine neue Szene.
+     *
+     * <p>
+     * Dabei wird eine neue Kamera und einen neue Ebene erzeugt. Die Ebene hat
+     * die Position {@code 0}
+     * </p>
+     */
     public Scene()
     {
         camera = new Camera();
@@ -116,6 +124,11 @@ public class Scene implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
     }
 
+    /**
+     * Gibt sich selbst zurück.
+     *
+     * @return Die Szene selbst.
+     */
     public Scene getScene()
     {
         return this;
@@ -183,33 +196,45 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Wird aufgerufen, wann immer ein Layerzustand innerhalb dieser Scene
-     * geändert wurde. Stellt sicher, dass die Layer-Liste korrekt sortiert ist
-     * und aller Layer in der richtigen Reihenfolge gerendert werden.
+     * Sortiert die Ebenenen.
+     *
+     * <p>
+     * Die Methode wird aufgerufen, wenn sich ein Ebenenzustand innerhalb dieser
+     * Szene geändert. Stellt sicher, dass die Ebene-Liste korrekt sortiert ist
+     * und aller Ebenen in der richtigen Reihenfolge gerendert werden.
+     * </p>
      */
     @Internal
     final void sortLayers()
     {
-        this.layers.sort(Comparator.comparingInt(Layer::getLayerPosition));
+        layers.sort(Comparator.comparingInt(Layer::getLayerPosition));
     }
 
+    /**
+     * <b>Fügt</b> der Szene eine neue <b>Ebene</b> <b>hinzu</b>.
+     *
+     * @param layer Die Ebene, die der Szene hinzugefügt werden soll.
+     */
     @API
     public final void addLayer(Layer layer)
     {
         synchronized (this.layers)
         {
             layer.setParent(this);
-            this.layers.add(layer);
+            layers.add(layer);
             sortLayers();
         }
     }
 
+    /**
+     * <b>Entfernt</b> eine <b>Ebene</b> aus der Szene.
+     */
     @API
     public final void removeLayer(Layer layer)
     {
         synchronized (this.layers)
         {
-            this.layers.remove(layer);
+            layers.remove(layer);
             layer.setParent(null);
         }
     }
@@ -245,7 +270,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * <p>
      * Die Anzahl an Pixel eines Meters bestimmt wie „nah“ oder „fern“ die
      * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
-     * <code>32</code> Pixel. Größer Werte zoomen näher an die Spielfläche
+     * <code>32</code> Pixel. Größere Werte zoomen näher an die Spielfläche
      * heran, kleine Werte weiter von der Spielfläche weg.
      * </p>
      *
@@ -339,7 +364,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @param a Der Vector a.
+     * @param a Der Vektor a.
      * @param b Der Vektor b.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
