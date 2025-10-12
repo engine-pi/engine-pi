@@ -8,10 +8,13 @@ import java.util.concurrent.TimeUnit;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.33.0
  */
 public class Chessboard
@@ -21,12 +24,15 @@ public class Chessboard
 
     private Image[][] queens;
 
+    private Circle[][] highlightCircles;
+
     public Chessboard(Scene scene, int numberOfSquares)
     {
         Color brown = colorScheme.getBrown();
         Color brown2 = changeSaturation(brown, -0.2);
         squares = new Square[numberOfSquares][numberOfSquares];
         queens = new Image[numberOfSquares][numberOfSquares];
+        highlightCircles = new Circle[numberOfSquares][numberOfSquares];
 
         for (int row = 0; row < 8; row += 1)
         {
@@ -45,8 +51,20 @@ public class Chessboard
                 queen.setVisible(false);
                 queens[row][column] = queen;
                 scene.add(queen);
+
+                Circle circle = new Circle(0.2);
+                shift = 0.4;
+                circle.setPosition(column + shift, row + shift);
+                circle.setVisible(false);
+                highlightCircles[row][column] = circle;
+                scene.add(circle);
             }
         }
+    }
+
+    public Chessboard(Scene scene)
+    {
+        this(scene, 8);
     }
 
     public void setQueens(boolean[][] hasQueens, int sleepMilliSeconds)
@@ -58,7 +76,11 @@ public class Chessboard
                 queens[row][column].setVisible(hasQueens[row][column]);
             }
         }
+        sleep(sleepMilliSeconds);
+    }
 
+    private void sleep(int sleepMilliSeconds)
+    {
         try
         {
             TimeUnit.MILLISECONDS.sleep(sleepMilliSeconds);
@@ -69,9 +91,11 @@ public class Chessboard
         }
     }
 
-    public Chessboard(Scene scene)
+    public void highlightSquare(int row, int column)
     {
-        this(scene, 8);
+        highlightCircles[row][column].setVisible(true);
+        sleep(100);
+        highlightCircles[row][column].setVisible(false);
     }
 
     public static void main(String[] args)

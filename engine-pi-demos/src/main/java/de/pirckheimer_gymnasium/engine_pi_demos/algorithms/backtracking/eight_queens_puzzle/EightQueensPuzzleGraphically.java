@@ -17,14 +17,14 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  *
  * @since 0.33.0
  */
-class EightQueensPuzzleGraphically
+public class EightQueensPuzzleGraphically
 {
     /**
      * <p>
      * Der ursprünglich deutsche Name dieses Attributes war {@code schachbrett}.
      * </p>
      */
-    private boolean[][] hasQueens;
+    private boolean[][] queenPositions;
 
     private Chessboard chessboard;
 
@@ -34,15 +34,14 @@ class EightQueensPuzzleGraphically
      * @param numberOfQueens Die Anzahl der Damen (und damit auch die Größe des
      *     Schachbretts.
      */
-    EightQueensPuzzleGraphically(int numberOfQueens)
+    public EightQueensPuzzleGraphically(int numberOfQueens)
     {
-        hasQueens = new boolean[numberOfQueens][numberOfQueens];
+        queenPositions = new boolean[numberOfQueens][numberOfQueens];
         Scene scene = new Scene();
         scene.setMeter(50);
         scene.getCamera().setCenter(4, 4);
         chessboard = new Chessboard(scene);
         Game.start(scene);
-
         makeStep(0);
     }
 
@@ -63,36 +62,42 @@ class EightQueensPuzzleGraphically
      */
     boolean isSquareThreatened(int row, int column)
     {
-        int currentColumn = column - 1;
-        while (currentColumn >= 0)
+        // aktuelle Zeile
+        int r = row;
+        // aktuelle Spalte
+        int c = column - 1;
+        while (c >= 0)
         {
-            if (hasQueens[row][currentColumn])
+            chessboard.highlightSquare(r, c);
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
+            c -= 1;
         }
-        currentColumn = column - 1;
-        int currentRow = row - 1;
-        while (currentColumn >= 0 && currentRow >= 0)
+        c = column - 1;
+        r = row - 1;
+        while (c >= 0 && r >= 0)
         {
-            if (hasQueens[currentRow][currentColumn])
+            chessboard.highlightSquare(r, c);
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
-            currentRow -= 1;
+            c -= 1;
+            r -= 1;
         }
-        currentColumn = column - 1;
-        currentRow = row + 1;
-        while (currentColumn >= 0 && currentRow < hasQueens.length)
+        c = column - 1;
+        r = row + 1;
+        while (c >= 0 && r < queenPositions.length)
         {
-            if (hasQueens[currentRow][currentColumn])
+            chessboard.highlightSquare(r, c);
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
-            currentRow += 1;
+            c -= 1;
+            r += 1;
         }
         return false;
     }
@@ -107,11 +112,11 @@ class EightQueensPuzzleGraphically
     void printSolution()
     {
         System.out.println("Lösung:");
-        for (int column = 0; column < hasQueens.length; column += 1)
+        for (int column = 0; column < queenPositions.length; column += 1)
         {
-            for (int row = 0; row < hasQueens.length; row += 1)
+            for (int row = 0; row < queenPositions.length; row += 1)
             {
-                if (hasQueens[row][column])
+                if (queenPositions[row][column])
                 {
                     System.out.print(" " + row);
                 }
@@ -135,22 +140,22 @@ class EightQueensPuzzleGraphically
      */
     void makeStep(int column)
     {
-        for (int row = 0; row < hasQueens.length; row += 1)
+        for (int row = 0; row < queenPositions.length; row += 1)
         {
             if (!isSquareThreatened(row, column))
             {
-                hasQueens[row][column] = true;
-                if (column == hasQueens.length - 1)
+                queenPositions[row][column] = true;
+                if (column == queenPositions.length - 1)
                 {
                     printSolution();
-                    chessboard.setQueens(hasQueens, 2000);
+                    chessboard.setQueens(queenPositions, 2000);
                 }
                 else
                 {
                     makeStep(column + 1);
-                    chessboard.setQueens(hasQueens, 50);
+                    chessboard.setQueens(queenPositions, 120);
                 }
-                hasQueens[row][column] = false;
+                queenPositions[row][column] = false;
             }
         }
     }

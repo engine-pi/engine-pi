@@ -14,14 +14,14 @@ package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_q
  *
  * @since 0.33.0
  */
-class EightQueensPuzzle
+public class EightQueensPuzzle
 {
     /**
      * <p>
      * Der ursprünglich deutsche Name dieses Attributes war {@code schachbrett}.
      * </p>
      */
-    private boolean[][] chessboard;
+    private boolean[][] queenPositions;
 
     /**
      * Legt das Schachbrett an.
@@ -29,9 +29,9 @@ class EightQueensPuzzle
      * @param numberOfQueens Die Anzahl der Damen (und damit auch die Größe des
      *     Schachbretts.
      */
-    EightQueensPuzzle(int numberOfQueens)
+    public EightQueensPuzzle(int numberOfQueens)
     {
-        chessboard = new boolean[numberOfQueens][numberOfQueens];
+        queenPositions = new boolean[numberOfQueens][numberOfQueens];
         makeStep(0);
     }
 
@@ -52,36 +52,39 @@ class EightQueensPuzzle
      */
     boolean isSquareThreatened(int row, int column)
     {
-        int currentColumn = column - 1;
-        while (currentColumn >= 0)
+        // aktuelle Zeile
+        int r = row;
+        // aktuelle Spalte
+        int c = column - 1;
+        while (c >= 0)
         {
-            if (chessboard[row][currentColumn])
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
+            c -= 1;
         }
-        currentColumn = column - 1;
-        int currentRow = row - 1;
-        while (currentColumn >= 0 && currentRow >= 0)
+        c = column - 1;
+        r = row - 1;
+        while (c >= 0 && r >= 0)
         {
-            if (chessboard[currentRow][currentColumn])
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
-            currentRow -= 1;
+            c -= 1;
+            r -= 1;
         }
-        currentColumn = column - 1;
-        currentRow = row + 1;
-        while (currentColumn >= 0 && currentRow < chessboard.length)
+        c = column - 1;
+        r = row + 1;
+        while (c >= 0 && r < queenPositions.length)
         {
-            if (chessboard[currentRow][currentColumn])
+            if (queenPositions[r][c])
             {
                 return true;
             }
-            currentColumn -= 1;
-            currentRow += 1;
+            c -= 1;
+            r += 1;
         }
         return false;
     }
@@ -96,11 +99,11 @@ class EightQueensPuzzle
     void printSolution()
     {
         System.out.println("Lösung:");
-        for (int column = 0; column < chessboard.length; column += 1)
+        for (int column = 0; column < queenPositions.length; column += 1)
         {
-            for (int row = 0; row < chessboard.length; row += 1)
+            for (int row = 0; row < queenPositions.length; row += 1)
             {
-                if (chessboard[row][column])
+                if (queenPositions[row][column])
                 {
                     System.out.print(" " + row);
                 }
@@ -124,12 +127,12 @@ class EightQueensPuzzle
      */
     void makeStep(int column)
     {
-        for (int row = 0; row < chessboard.length; row += 1)
+        for (int row = 0; row < queenPositions.length; row += 1)
         {
             if (!isSquareThreatened(row, column))
             {
-                chessboard[row][column] = true;
-                if (column == chessboard.length - 1)
+                queenPositions[row][column] = true;
+                if (column == queenPositions.length - 1)
                 {
                     printSolution();
                 }
@@ -137,7 +140,7 @@ class EightQueensPuzzle
                 {
                     makeStep(column + 1);
                 }
-                chessboard[row][column] = false;
+                queenPositions[row][column] = false;
             }
         }
     }
