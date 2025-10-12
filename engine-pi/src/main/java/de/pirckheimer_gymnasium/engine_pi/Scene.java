@@ -629,7 +629,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Hintergrundfarbe.
+     * Setzt die <b>Hintergrundfarbe</b> durch Angabe eines
+     * {@link Color}-Objekts.
      *
      * @param color Die Hintergrundfarbe.
      */
@@ -639,13 +640,13 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Hintergrundfarbe als <b>Zeichenkette</b>.
+     * Setzt die <b>Hintergrundfarbe</b> als <b>Zeichenkette</b>.
      *
      * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
      *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
      *     {@code #ff0000}).
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer#get(String)
+     * @see ColorContainer#get(String)
      */
     public void setBackgroundColor(String color)
     {

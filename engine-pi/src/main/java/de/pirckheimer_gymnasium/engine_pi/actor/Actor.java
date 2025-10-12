@@ -2374,4 +2374,23 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         physicsHandler.setAwake(false);
         return this;
     }
+
+    /**
+     * Gibt die eigene Instanze zurück.
+     *
+     * <p>
+     * Diese Methode wird benötigt, um mit Hilfe der Schnittstelle
+     * {@link de.pirckheimer_gymnasium.engine_pi.instant.InstantActor} weitere
+     * Methoden für alle Instant-Figuren bereitzustellen.
+     * </p>
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.InstantActor#getActor()
+     *
+     * @since 0.33.0
+     */
+    @Internal
+    public Actor getActor()
+    {
+        return this;
+    }
 }

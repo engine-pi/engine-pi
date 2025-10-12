@@ -1,4 +1,7 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.eight_queens_puzzle;
+package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_queens_puzzle;
+
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
  * Löst das Problem der N Damen.
@@ -14,14 +17,16 @@ package de.pirckheimer_gymnasium.engine_pi_demos.eight_queens_puzzle;
  *
  * @since 0.33.0
  */
-class EightQueensPuzzle
+class EightQueensPuzzleGraphically
 {
     /**
      * <p>
      * Der ursprünglich deutsche Name dieses Attributes war {@code schachbrett}.
      * </p>
      */
-    private boolean[][] chessboard;
+    private boolean[][] hasQueens;
+
+    private Chessboard chessboard;
 
     /**
      * Legt das Schachbrett an.
@@ -29,9 +34,15 @@ class EightQueensPuzzle
      * @param numberOfQueens Die Anzahl der Damen (und damit auch die Größe des
      *     Schachbretts.
      */
-    EightQueensPuzzle(int numberOfQueens)
+    EightQueensPuzzleGraphically(int numberOfQueens)
     {
-        chessboard = new boolean[numberOfQueens][numberOfQueens];
+        hasQueens = new boolean[numberOfQueens][numberOfQueens];
+        Scene scene = new Scene();
+        scene.setMeter(50);
+        scene.getCamera().setCenter(4, 4);
+        chessboard = new Chessboard(scene);
+        Game.start(scene);
+
         makeStep(0);
     }
 
@@ -55,7 +66,7 @@ class EightQueensPuzzle
         int currentColumn = column - 1;
         while (currentColumn >= 0)
         {
-            if (chessboard[row][currentColumn])
+            if (hasQueens[row][currentColumn])
             {
                 return true;
             }
@@ -65,7 +76,7 @@ class EightQueensPuzzle
         int currentRow = row - 1;
         while (currentColumn >= 0 && currentRow >= 0)
         {
-            if (chessboard[currentRow][currentColumn])
+            if (hasQueens[currentRow][currentColumn])
             {
                 return true;
             }
@@ -74,9 +85,9 @@ class EightQueensPuzzle
         }
         currentColumn = column - 1;
         currentRow = row + 1;
-        while (currentColumn >= 0 && currentRow < chessboard.length)
+        while (currentColumn >= 0 && currentRow < hasQueens.length)
         {
-            if (chessboard[currentRow][currentColumn])
+            if (hasQueens[currentRow][currentColumn])
             {
                 return true;
             }
@@ -96,11 +107,11 @@ class EightQueensPuzzle
     void printSolution()
     {
         System.out.println("Lösung:");
-        for (int column = 0; column < chessboard.length; column += 1)
+        for (int column = 0; column < hasQueens.length; column += 1)
         {
-            for (int row = 0; row < chessboard.length; row += 1)
+            for (int row = 0; row < hasQueens.length; row += 1)
             {
-                if (chessboard[row][column])
+                if (hasQueens[row][column])
                 {
                     System.out.print(" " + row);
                 }
@@ -124,26 +135,28 @@ class EightQueensPuzzle
      */
     void makeStep(int column)
     {
-        for (int row = 0; row < chessboard.length; row += 1)
+        for (int row = 0; row < hasQueens.length; row += 1)
         {
             if (!isSquareThreatened(row, column))
             {
-                chessboard[row][column] = true;
-                if (column == chessboard.length - 1)
+                hasQueens[row][column] = true;
+                if (column == hasQueens.length - 1)
                 {
                     printSolution();
+                    chessboard.setQueens(hasQueens, 2000);
                 }
                 else
                 {
                     makeStep(column + 1);
+                    chessboard.setQueens(hasQueens, 50);
                 }
-                chessboard[row][column] = false;
+                hasQueens[row][column] = false;
             }
         }
     }
 
     public static void main(String[] args)
     {
-        new EightQueensPuzzle(8);
+        new EightQueensPuzzleGraphically(8);
     }
 }

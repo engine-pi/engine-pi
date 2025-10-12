@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.instant;
 
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
 
 /**
@@ -7,6 +8,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
  */
 public class Rectangle
         extends de.pirckheimer_gymnasium.engine_pi.actor.Rectangle
+        implements InstantActor
 {
 
     /**
@@ -21,7 +23,7 @@ public class Rectangle
     public Rectangle(double width, double height)
     {
         super(width, height);
-        Controller.addActors(this);
+        InstantController.addActors(this);
     }
 
     /**
@@ -32,6 +34,14 @@ public class Rectangle
     public Rectangle()
     {
         this(1, 1);
+    }
+
+    /**
+     * @since 0.33.0
+     */
+    public Scene getMainScene()
+    {
+        return InstantController.getMainScene();
     }
 
     public static void main(String[] args)

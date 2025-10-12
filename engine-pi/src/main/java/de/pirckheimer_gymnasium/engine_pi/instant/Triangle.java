@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.instant;
 
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
@@ -20,7 +21,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * @since 0.33.0
  */
 public class Triangle extends de.pirckheimer_gymnasium.engine_pi.actor.Triangle
+        implements InstantActor
 {
+
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
@@ -112,7 +115,15 @@ public class Triangle extends de.pirckheimer_gymnasium.engine_pi.actor.Triangle
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        Controller.addActors(this);
+        InstantController.addActors(this);
+    }
+
+    /**
+     * @since 0.33.0
+     */
+    public Scene getMainScene()
+    {
+        return InstantController.getMainScene();
     }
 
     public static void main(String[] args)

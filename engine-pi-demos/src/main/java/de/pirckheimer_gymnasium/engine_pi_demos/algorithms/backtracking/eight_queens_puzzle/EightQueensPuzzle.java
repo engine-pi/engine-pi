@@ -1,7 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.eight_queens_puzzle;
-
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_queens_puzzle;
 
 /**
  * Löst das Problem der N Damen.
@@ -17,16 +14,14 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  *
  * @since 0.33.0
  */
-class EightQueensPuzzleGraphically
+class EightQueensPuzzle
 {
     /**
      * <p>
      * Der ursprünglich deutsche Name dieses Attributes war {@code schachbrett}.
      * </p>
      */
-    private boolean[][] hasQueens;
-
-    private Chessboard chessboard;
+    private boolean[][] chessboard;
 
     /**
      * Legt das Schachbrett an.
@@ -34,15 +29,9 @@ class EightQueensPuzzleGraphically
      * @param numberOfQueens Die Anzahl der Damen (und damit auch die Größe des
      *     Schachbretts.
      */
-    EightQueensPuzzleGraphically(int numberOfQueens)
+    EightQueensPuzzle(int numberOfQueens)
     {
-        hasQueens = new boolean[numberOfQueens][numberOfQueens];
-        Scene scene = new Scene();
-        scene.setMeter(50);
-        scene.getCamera().setCenter(4, 4);
-        chessboard = new Chessboard(scene);
-        Game.start(scene);
-
+        chessboard = new boolean[numberOfQueens][numberOfQueens];
         makeStep(0);
     }
 
@@ -66,7 +55,7 @@ class EightQueensPuzzleGraphically
         int currentColumn = column - 1;
         while (currentColumn >= 0)
         {
-            if (hasQueens[row][currentColumn])
+            if (chessboard[row][currentColumn])
             {
                 return true;
             }
@@ -76,7 +65,7 @@ class EightQueensPuzzleGraphically
         int currentRow = row - 1;
         while (currentColumn >= 0 && currentRow >= 0)
         {
-            if (hasQueens[currentRow][currentColumn])
+            if (chessboard[currentRow][currentColumn])
             {
                 return true;
             }
@@ -85,9 +74,9 @@ class EightQueensPuzzleGraphically
         }
         currentColumn = column - 1;
         currentRow = row + 1;
-        while (currentColumn >= 0 && currentRow < hasQueens.length)
+        while (currentColumn >= 0 && currentRow < chessboard.length)
         {
-            if (hasQueens[currentRow][currentColumn])
+            if (chessboard[currentRow][currentColumn])
             {
                 return true;
             }
@@ -107,11 +96,11 @@ class EightQueensPuzzleGraphically
     void printSolution()
     {
         System.out.println("Lösung:");
-        for (int column = 0; column < hasQueens.length; column += 1)
+        for (int column = 0; column < chessboard.length; column += 1)
         {
-            for (int row = 0; row < hasQueens.length; row += 1)
+            for (int row = 0; row < chessboard.length; row += 1)
             {
-                if (hasQueens[row][column])
+                if (chessboard[row][column])
                 {
                     System.out.print(" " + row);
                 }
@@ -135,28 +124,26 @@ class EightQueensPuzzleGraphically
      */
     void makeStep(int column)
     {
-        for (int row = 0; row < hasQueens.length; row += 1)
+        for (int row = 0; row < chessboard.length; row += 1)
         {
             if (!isSquareThreatened(row, column))
             {
-                hasQueens[row][column] = true;
-                if (column == hasQueens.length - 1)
+                chessboard[row][column] = true;
+                if (column == chessboard.length - 1)
                 {
                     printSolution();
-                    chessboard.setQueens(hasQueens, 2000);
                 }
                 else
                 {
                     makeStep(column + 1);
-                    chessboard.setQueens(hasQueens, 50);
                 }
-                hasQueens[row][column] = false;
+                chessboard[row][column] = false;
             }
         }
     }
 
     public static void main(String[] args)
     {
-        new EightQueensPuzzleGraphically(8);
+        new EightQueensPuzzle(8);
     }
 }

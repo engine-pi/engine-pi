@@ -1,36 +1,36 @@
 package de.pirckheimer_gymnasium.engine_pi.instant;
 
+import de.pirckheimer_gymnasium.engine_pi.Camera;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
 /**
- * Verwaltet eine statische Instanz einer
- * <p>
- * Haupt-Szene
- * </p>
- * , die automatisch gestartet wird und bietet einige statische Hilfsmethoden
- * an, um das Spiel zu steuern.
+ * Verwaltet den Instant-Modus der Engine Pi.
+ *
+ * Die Klasse verwaltet eine statische Instanz der <b>Haupt-Szene</b>, die
+ * automatisch gestartet wird und bietet einige statische Hilfsmethoden an, um
+ * das Spiel im Instant-Modus zu steuern.
  *
  * @since 0.33.0
  */
-public final class Controller
+public final class InstantController
 {
     private static Scene scene;
 
     /**
-     * Gibt die aktuelle <b>Haupt-Szene</b> zurück.
+     * Gibt die aktuelle <b>Hauptszene</b> zurück.
      *
      * <p>
      * Falls noch keine Szene existiert, wird eine neue erstellt und startet das
      * Spiel, falls es noch nicht läuft.
      * </p>
      *
-     * @return Die aktuelle <b>Haupt-Szene</b>.
+     * @return Die aktuelle <b>Hauptszene</b>.
      *
      * @since 0.33.0
      */
-    public static Scene getScene()
+    public static Scene getMainScene()
     {
         if (scene == null)
         {
@@ -44,7 +44,19 @@ public final class Controller
     }
 
     /**
-     * Fügt der aktuellen Haupt-Szene <b>mehrere Figur auf einmal hinzu.</b>
+     * Gibt die <b>Kamera</b> der Hauptszene zurück.
+     *
+     * @return Die Kamera der Hauptszene.
+     *
+     * @since 0.33.0
+     */
+    public static Camera getCamera()
+    {
+        return getMainScene().getCamera();
+    }
+
+    /**
+     * Fügt der aktuellen Hauptszene <b>mehrere Figur auf einmal hinzu.</b>
      *
      * @param actors Der hinzuzufügende Figuren.
      *
@@ -52,11 +64,11 @@ public final class Controller
      */
     public static void addActors(Actor... actors)
     {
-        getScene().add(actors);
+        getMainScene().add(actors);
     }
 
     /**
-     * Fügt der aktuellen Haupt-Szene eine <b>einzelne Figur hinzu.</b>
+     * Fügt der aktuellen Hauptszene eine <b>einzelne Figur hinzu.</b>
      *
      * @param actor Der hinzuzufügende Figur.
      *
