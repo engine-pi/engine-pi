@@ -9,8 +9,8 @@ doc: install
 	rm -rf engine-pi-demos/target/site/apidocs
 	mvn javadoc:javadoc
 
-	xdg-open engine-pi/target/site/apidocs/index.html
-	xdg-open engine-pi-demos/target/site/apidocs/index.html
+	xdg-open engine-pi/target/reports/apidocs/index.html
+	xdg-open engine-pi-demos/target/reports/apidocs/index.html
 
 format:
 	mvn process-sources

@@ -2479,3 +2479,7 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 ```
+
+## Anordnung der Konstruktoren
+
+Oben stehen die Konstruktoren mit wenigen Parameters unten die mit vielen.

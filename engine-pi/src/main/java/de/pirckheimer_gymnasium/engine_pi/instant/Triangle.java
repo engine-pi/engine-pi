@@ -1,28 +1,11 @@
-/*
- * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
- *
- * Copyright (c) 2024 Josef Friedrich and contributors.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-package de.pirckheimer_gymnasium.engine_pi.actor;
+package de.pirckheimer_gymnasium.engine_pi.instant;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Beschreibt ein <b>Dreieck</b>.
+ * Beschreibt die <b>Instant-Variante</b> eines <b>Dreiecks</b>.
  *
  * <p>
  * Das Dreieck ist standardmäßig <b>gelb</b> gefärbt. Gelb steht bei
@@ -34,16 +17,18 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  *
  * @author Josef Friedrich
  *
- * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle
+ * @since 0.33.0
  */
-public class Triangle extends Polygon
+public class Triangle extends de.pirckheimer_gymnasium.engine_pi.actor.Triangle
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle()
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle#Triangle()
      * @see ActorAdder#addTriangle()
+     *
+     * @since 0.33.0
      */
     public Triangle()
     {
@@ -55,8 +40,10 @@ public class Triangle extends Polygon
      *
      * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double)
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle#Triangle(double)
      * @see ActorAdder#addTriangle(double)
+     *
+     * @since 0.33.0
      */
     public Triangle(double sideLength)
     {
@@ -72,9 +59,11 @@ public class Triangle extends Polygon
      *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double,
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle#Triangle(double,
      *     double)
      * @see ActorAdder#addTriangle(double, double)
+     *
+     * @since 0.33.0
      */
     public Triangle(double width, double height)
     {
@@ -93,10 +82,12 @@ public class Triangle extends Polygon
      * @param x3 Die x-Koordinate des dritten Eckpunkts.
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double,
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle#Triangle(double,
      *     double, double, double, double, double)
      * @see ActorAdder#addTriangle(double, double, double, double, double,
      *     double)
+     *
+     * @since 0.33.0
      */
     @API
     public Triangle(double x1, double y1, double x2, double y2, double x3,
@@ -112,13 +103,20 @@ public class Triangle extends Polygon
      * @param point2 Die Koordinate des zweiten Eckpunkts.
      * @param point3 Die Koordinate des dritten Eckpunkts.
      *
-     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(Vector,
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle#Triangle(Vector,
      *     Vector, Vector)
      * @see ActorAdder#addTriangle(Vector, Vector, Vector)
+     *
+     * @since 0.33.0
      */
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        setColor("yellow");
+        Controller.addActors(this);
+    }
+
+    public static void main(String[] args)
+    {
+        new Triangle();
     }
 }

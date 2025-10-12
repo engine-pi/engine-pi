@@ -178,35 +178,55 @@ public interface ActorAdder
     /* ___ Triangle (Dreieck) _______________________________________________ */
 
     /**
-     * Erzeugt ein neues Dreieck mit der Höhe und Breite von einem Meter, das an
-     * eine bestimmte Position gesetzt wird.
-     *
-     * @param x Die neue <code>x</code>-Koordinate.
-     * @param y Die neue <code>y</code>-Koordinate.
+     * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
+     * Meter</b>. Die Spitze zeigt nach oben.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Triangle#Triangle()
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle()
      */
-    default Triangle addTriangle(int x, int y)
+    default Triangle addTriangle()
     {
-        Triangle actor = addTriangle(1.0, 1.0);
-        actor.setPosition(x, y);
+        Triangle actor = new Triangle();
+        getScene().add(actor);
         return actor;
     }
 
     /**
-     * Erzeugt ein neues Dreieck durch Angabe von drei Punkten.
+     * Erzeugt ein gleichseitiges Dreieck. Die Spitze zeigt nach oben.
      *
-     * @param point1 Die Koordinate des ersten Eckpunkts.
-     * @param point2 Die Koordinate des zweiten Eckpunkts.
-     * @param point3 Die Koordinate des dritten Eckpunkts.
+     * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
-     * @see Triangle#Triangle(Vector, Vector, Vector)
+     * @see Triangle#Triangle(double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double)
      */
-    default Triangle addTriangle(Vector point1, Vector point2, Vector point3)
+    default Triangle addTriangle(double sideLength)
     {
-        Triangle actor = new Triangle(point1, point2, point3);
+        Triangle actor = new Triangle(sideLength);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erzeugt ein gleichschenkliges Dreieck, dessen Symmetrieachse vertikal
+     * ausgerichtet ist. Die Spitze zeigt nach oben.
+     *
+     * @param width Die Breite des gleichschenkligen Dreiecks - genauer gesagt
+     *     die Länge der Basis.
+     * @param height Die Höhe der Symmetrieachse.
+     *
+     * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Triangle#Triangle(double, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double,
+     *     double)
+     */
+    default Triangle addTriangle(double width, double height)
+    {
+        Triangle actor = new Triangle(width, height);
         getScene().add(actor);
         return actor;
     }
@@ -225,6 +245,8 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle(double, double, double, double, double, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(double,
+     *     double, double, double, double, double)
      */
     @API
     default Triangle addTriangle(double x1, double y1, double x2, double y2,
@@ -236,39 +258,41 @@ public interface ActorAdder
     }
 
     /**
-     * Erzeugt ein gleichschenkliges Dreieck, dessen Symmetrieachse vertikal
-     * ausgerichtet ist. Die Spitze zeigt nach oben.
+     * Erzeugt ein neues Dreieck durch Angabe von drei Punkten.
      *
-     * @param width Die Breite des gleichschenkligen Dreiecks - genauer gesagt
-     *     die Länge der Basis.
-     * @param height Die Höhe der Symmetrieachse.
+     * @param point1 Die Koordinate des ersten Eckpunkts.
+     * @param point2 Die Koordinate des zweiten Eckpunkts.
+     * @param point3 Die Koordinate des dritten Eckpunkts.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
-     * @see Triangle#Triangle(double, double)
+     * @see Triangle#Triangle(Vector, Vector, Vector)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Triangle#Triangle(Vector,
+     *     Vector, Vector)
      */
-    default Triangle addTriangle(double width, double height)
+    default Triangle addTriangle(Vector point1, Vector point2, Vector point3)
     {
-        Triangle actor = new Triangle(width, height);
+        Triangle actor = new Triangle(point1, point2, point3);
         getScene().add(actor);
         return actor;
     }
 
     /**
-     * Erzeugt ein gleichseitiges Dreieck. Die Spitze zeigt nach oben.
+     * Erzeugt ein neues Dreieck mit der Höhe und Breite von einem Meter, das an
+     * eine bestimmte Position gesetzt wird.
      *
-     * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
+     * @param x Die neue <code>x</code>-Koordinate.
+     * @param y Die neue <code>y</code>-Koordinate.
      *
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Triangle#Triangle(double, double)
      */
-    default Triangle addTriangle(double sideLength)
+    default Triangle addTriangle(int x, int y)
     {
-        Triangle actor = new Triangle(sideLength);
-        getScene().add(actor);
+        Triangle actor = addTriangle(1.0, 1.0);
+        actor.setPosition(x, y);
         return actor;
     }
+
     /* ___ RegularPolygon (Reguläres Vieleck) _______________________________ */
 
     default RegularPolygon addRegularPolygon(int numSides, double radius)
