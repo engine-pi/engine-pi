@@ -147,6 +147,12 @@
                                     <formats>
                                         <format>zip</format>
                                     </formats>
+                                    <!-- Includes a base directory in the final archive. For
+                                    example, if you are creating an assembly named "your-app",
+                                    setting includeBaseDirectory to true will create an archive that
+                                    includes this base directory. If this option is set to false the
+                                    archive created will unzip its content to the current directory.  -->
+                                    <includeBaseDirectory>false</includeBaseDirectory>
                                     <fileSets>
                                         <fileSet>
                                             <directory>target</directory>
@@ -156,13 +162,11 @@
                                             </includes>
                                             <outputDirectory>+libs/</outputDirectory>
                                         </fileSet>
+                                        <fileSet>
+                                            <directory>../misc/bluej-template</directory>
+                                            <outputDirectory>/</outputDirectory>
+                                        </fileSet>
                                     </fileSets>
-                                    <files>
-                                        <file>
-                                            <source>../README.md</source>
-                                            <fileMode>0644</fileMode>
-                                        </file>
-                                    </files>
                                 </inlineDescriptor>
                             </inlineDescriptors>
                         </configuration>
