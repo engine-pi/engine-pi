@@ -95,10 +95,11 @@ public class Text extends Geometry
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
      * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
      *
-     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      *
      * @since 0.27.0
      *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String)
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String)
      */
     @API
@@ -114,6 +115,7 @@ public class Text extends Geometry
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      * @param height Die <b>Höhe</b> des Textes in Meter.
      *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double)
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
      *     double)
      */
@@ -133,6 +135,8 @@ public class Text extends Geometry
      * @param fontName Der Name der <b>Schriftart</b>, in der der Text
      *     dargestellt werden soll und nicht der Name der Schrift-Datei.
      *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double,
+     *     String)
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
      *     double, String)
      */
@@ -159,6 +163,8 @@ public class Text extends Geometry
      *     <li>{@code 3}: Fett und Kursiv</li>
      *     </ul>
      *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double,
+     *     String, int)
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
      *     double, String, int)
      */

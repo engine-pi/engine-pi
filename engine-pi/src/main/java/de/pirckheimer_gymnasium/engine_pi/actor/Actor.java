@@ -914,6 +914,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // noinspection OverlyComplexAnonymousInnerClass
         WorldHandler.addGenericCollisionListener(new CollisionListener<>()
         {
+            @SuppressWarnings("unchecked")
             @Override
             public void onCollision(CollisionEvent<Actor> collisionEvent)
             {
@@ -924,6 +925,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 }
             }
 
+            @SuppressWarnings("unchecked")
             @Override
             public void onCollisionEnd(CollisionEvent<Actor> collisionEvent)
             {

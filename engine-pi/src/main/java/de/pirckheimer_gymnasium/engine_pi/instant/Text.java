@@ -24,7 +24,7 @@ public class Text extends de.pirckheimer_gymnasium.engine_pi.actor.Text
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
      * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
      *
-     * @param content Der Textinhalt, der dargestellt werden soll.
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      *
      * @since 0.34.0
      *
@@ -67,7 +67,7 @@ public class Text extends de.pirckheimer_gymnasium.engine_pi.actor.Text
      *     dargestellt werden soll und nicht der Name der Schrift-Datei.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Text#Text(String, double,
-     *     String) *
+     *     String)
      * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
      *     double, String)
      *
@@ -107,7 +107,7 @@ public class Text extends de.pirckheimer_gymnasium.engine_pi.actor.Text
     public Text(String content, double height, String fontName, int style)
     {
         super(content, height, fontName, style);
-        InstantController.addActors(this);
+        Controller.addActors(this);
     }
 
     /**
@@ -115,7 +115,7 @@ public class Text extends de.pirckheimer_gymnasium.engine_pi.actor.Text
      */
     public Scene getMainScene()
     {
-        return InstantController.getMainScene();
+        return Controller.getMainScene();
     }
 
     public static void main(String[] args)

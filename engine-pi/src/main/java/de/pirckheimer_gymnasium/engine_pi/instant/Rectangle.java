@@ -67,7 +67,7 @@ public class Rectangle
     public Rectangle(double width, double height)
     {
         super(width, height);
-        InstantController.addActors(this);
+        Controller.addActors(this);
     }
 
     /**
@@ -75,7 +75,7 @@ public class Rectangle
      */
     public Scene getMainScene()
     {
-        return InstantController.getMainScene();
+        return Controller.getMainScene();
     }
 
     public static void main(String[] args)

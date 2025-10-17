@@ -32,35 +32,29 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 /**
  * Beschreibt einen <b>Kreis</b>.
  *
+ * <p>
+ * Das Kreis ist standardmäßig <b>blau</b> gefärbt. Die Farbe Blau wirkt für
+ * <a href="https://www.byk-instruments.com/de/color-determines-shape">Itten</a>
+ * rund, erweckt ein Gefühl der Entspanntheit und Bewegung und steht für den „in
+ * sich bewegten Geist“, wie er sich ausdrückt. Der Kreis entspricht der Farbe
+ * Blau, da er ein Symbol der „stetigen Bewegung“ darstelle.
+ * </p>
+ *
  * @author Michael Andonie
  * @author Niklas Keller
  *
- * @see Rectangle
- * @see Triangle
+ * @see de.pirckheimer_gymnasium.engine_pi.instant.Circle
+ * @see ActorAdder
  */
 public class Circle extends Geometry
 {
     private double diameter;
 
     /**
-     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
-     *
-     * @param diameter Der Durchmesser des Kreises.
-     */
-    public Circle(double diameter)
-    {
-        super(() -> new FixtureData(createCircleShape(diameter)));
-        this.diameter = diameter;
-        // https://www.byk-instruments.com/de/color-determines-shape
-        // Die Farbe Blau dagegen wirkt für Itten rund, erweckt ein Gefühl der
-        // Entspanntheit und Bewegung und steht für den "in sich bewegten
-        // Geist", wie er sich ausdrückt. Der Kreis entspricht der Farbe Blau,
-        // da er ein Symbol der "stetigen Bewegung" darstelle.
-        setColor("blue");
-    }
-
-    /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Circle#Circle()
+     * @see ActorAdder#addCircle()
      *
      * @author Josef Friedrich
      */
@@ -70,9 +64,24 @@ public class Circle extends Geometry
     }
 
     /**
+     * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
+     *
+     * @param diameter Der <b>Durchmesser</b> des Kreises.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Circle#Circle(double)
+     * @see ActorAdder#addCircle(double)
+     */
+    public Circle(double diameter)
+    {
+        super(() -> new FixtureData(createCircleShape(diameter)));
+        this.diameter = diameter;
+        setColor("blue");
+    }
+
+    /**
      * Gibt den <b>Durchmesser</b> des Kreises aus.
      *
-     * @return Der Durchmesser des Kreises.
+     * @return Der <b>Durchmesser</b> des Kreises.
      */
     @API
     public double getDiameter()
@@ -83,7 +92,7 @@ public class Circle extends Geometry
     /**
      * Gibt den <b>Radius</b> des Kreises aus.
      *
-     * @return Der Radius des Kreises.
+     * @return Der <b>Radius</b> des Kreises.
      */
     @API
     public double getRadius()

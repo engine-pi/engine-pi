@@ -45,11 +45,25 @@ public interface ActorAdder
     /* ___ Circle (Kreis) ___________________________________________________ */
 
     /**
+     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
+     *
+     * @return Ein <b>Kreis</b>, der bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Circle#Circle()
+     */
+    default Circle addCircle()
+    {
+        Circle actor = new Circle();
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
      * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
      *
-     * @param diameter Der Durchmesser des Kreises.
+     * @param diameter Der <b>Durchmesser</b> des Kreises.
      *
-     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
+     * @return Ein <b>Kreis</b>, der bereits zur Szene hinzugefügt wurde.
      *
      * @see Circle#Circle(double)
      */
@@ -60,19 +74,6 @@ public interface ActorAdder
         return actor;
     }
 
-    /**
-     * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
-     *
-     * @return Ein Kreis, der bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Circle#Circle()
-     */
-    default Circle addCircle()
-    {
-        Circle actor = new Circle();
-        getScene().add(actor);
-        return actor;
-    }
     /* ___ Hexagon (Sechseck) _____________________________________________ */
 
     default Hexagon addHexagon(double radius)
@@ -343,16 +344,67 @@ public interface ActorAdder
     /* ___ Text _____________________________________________________________ */
 
     /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
+     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @see Text#Text(String)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String)
+     */
+    default Text addText(String content)
+    {
+        Text actor = new Text(content);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
+     * in <b>normaler, serifenfreier Standardschrift</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     *
+     * @see Text#Text(String, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double)
+     */
+    default Text addText(String content, double height)
+    {
+        Text actor = new Text(content, height);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
+     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
+     * Schriftstil</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
+     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
+     *
+     * @see Text#Text(String, double, String)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double,
+     *     String)
+     */
+    default Text addText(String content, double height, String fontName)
+    {
+        Text actor = new Text(content, height, fontName);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
      * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     * @param fontName Der Name des zu verwendenden Fonts.<br>
-     *     Wird hierfür ein Font verwendet, der in dem Projektordner vorhanden
-     *     sein soll, <b>und dies ist immer und in jedem Fall zu empfehlen</b>,
-     *     muss der Name der Schriftart hier ebenfalls einfach nur eingegeben
-     *     werden, <b>nicht der Name der schriftart-Datei!</b>
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
+     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *     kursiv</b>).
      *     <ul>
@@ -363,6 +415,8 @@ public interface ActorAdder
      *     </ul>
      *
      * @see Text#Text(String, double, String, int)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double,
+     *     String, int)
      */
     default Text addText(String content, double height, String fontName,
             int style)
@@ -372,52 +426,4 @@ public interface ActorAdder
         return actor;
     }
 
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
-     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
-     * Schriftstil</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
-     *
-     * @see Text#Text(String, double, String)
-     */
-    default Text addText(String content, double height, String fontName)
-    {
-        Text actor = new Text(content, height, fontName);
-        getScene().add(actor);
-        return actor;
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
-     * in <b>normaler, serifenfreier Standardschrift</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     *
-     * @see Text#Text(String, double)
-     */
-    default Text addText(String content, double height)
-    {
-        Text actor = new Text(content, height);
-        getScene().add(actor);
-        return actor;
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
-     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     *
-     * @see Text#Text(String)
-     */
-    default Text addText(String content)
-    {
-        Text actor = new Text(content);
-        getScene().add(actor);
-        return actor;
-    }
 }

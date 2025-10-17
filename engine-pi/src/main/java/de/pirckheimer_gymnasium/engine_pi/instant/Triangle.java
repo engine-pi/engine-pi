@@ -118,7 +118,7 @@ public class Triangle extends de.pirckheimer_gymnasium.engine_pi.actor.Triangle
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        InstantController.addActors(this);
+        Controller.addActors(this);
     }
 
     /**
@@ -126,7 +126,7 @@ public class Triangle extends de.pirckheimer_gymnasium.engine_pi.actor.Triangle
      */
     public Scene getMainScene()
     {
-        return InstantController.getMainScene();
+        return Controller.getMainScene();
     }
 
     public static void main(String[] args)

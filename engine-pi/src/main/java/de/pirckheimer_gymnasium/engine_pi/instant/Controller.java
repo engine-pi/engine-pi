@@ -16,7 +16,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
  *
  * @since 0.33.0
  */
-public final class InstantController
+public final class Controller
 {
     private static Scene scene;
 
