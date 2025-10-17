@@ -145,6 +145,38 @@ public interface ActorAdder
     /* ___ Rectangle (Rechteck) _____________________________________________ */
 
     /**
+     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
+     *
+     * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Rectangle#Rectangle()
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle()
+     */
+    default Rectangle addRectangle()
+    {
+        Rectangle actor = new Rectangle();
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
+     * Erzeugt ein <b>Quadrat</b> unter Angabe der <b>Seitenlänge</b>.
+     *
+     * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
+     *
+     * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
+     *
+     * @see Rectangle#Rectangle(double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle(double)
+     */
+    default Rectangle addRectangle(double sideLength)
+    {
+        Rectangle actor = new Rectangle(sideLength);
+        getScene().add(actor);
+        return actor;
+    }
+
+    /**
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
      * <b>Höhe</b>.
      *
@@ -154,6 +186,8 @@ public interface ActorAdder
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Rectangle#Rectangle(double, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle(double,
+     *     double)
      */
     default Rectangle addRectangle(double width, double height)
     {
@@ -162,19 +196,6 @@ public interface ActorAdder
         return actor;
     }
 
-    /**
-     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
-     *
-     * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
-     *
-     * @see Rectangle#Rectangle()
-     */
-    default Rectangle addRectangle()
-    {
-        Rectangle actor = new Rectangle();
-        getScene().add(actor);
-        return actor;
-    }
     /* ___ Triangle (Dreieck) _______________________________________________ */
 
     /**

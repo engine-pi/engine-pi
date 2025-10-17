@@ -16,6 +16,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * Itten das Dreieck.
  * </p>
  *
+ * @see de.pirckheimer_gymnasium.engine_pi.actor.Triangle
+ * @see ActorAdder
+ *
  * @author Josef Friedrich
  *
  * @since 0.33.0

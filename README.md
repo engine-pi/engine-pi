@@ -2482,4 +2482,4 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
 
 ## Anordnung der Konstruktoren
 
-Oben stehen die Konstruktoren mit wenigen Parameters unten die mit vielen.
+Oben stehen die Konstruktoren mit wenigen Parametern unten die mit vielen.

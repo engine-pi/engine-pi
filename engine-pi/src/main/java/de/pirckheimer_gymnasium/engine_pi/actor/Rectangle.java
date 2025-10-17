@@ -31,6 +31,13 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 /**
  * Beschreibt ein <b>Rechteck</b>.
  *
+ * <p>
+ * Das Rechteck ist standardmäßig <b>rot</b> gefärbt. Die Farbe Rot stellt für
+ * <a href="https://www.byk-instruments.com/de/color-determines-shape">Itten</a>
+ * die körperhafte Materie dar. Sie wirkt statisch und schwer. Er ordnet deshalb
+ * der Farbe die statische Form des Quadrates zu.
+ * </p>
+ *
  * @author Michael Andonie
  * @author Niklas Keller
  *
@@ -55,22 +62,31 @@ public class Rectangle extends Geometry
     private double borderRadius;
 
     /**
-     * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
-     * <b>Höhe</b>.
+     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
      *
-     * @param width Die <b>Breite</b> des Rechtecks in Meter.
-     * @param height Die <b>Höhe</b> des Rechtecks in Meter.
-     *
-     * @see ActorAdder#addRectangle(double, double)
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle()
+     * @see ActorAdder#addRectangle()
      */
-    public Rectangle(double width, double height)
+    @API
+    public Rectangle()
     {
-        this(width, height, () -> FixtureBuilder.rectangle(width, height));
-        // https://www.byk-instruments.com/de/color-determines-shape
-        // Die Farbe Rot stellt für Itten die körperhafte Materie dar. Sie wirkt
-        // statisch und schwer. Er ordnet deshalb der Farbe die statische Form
-        // des Quadrates zu.
-        setColor(Resources.COLORS.getSafe("red"));
+        this(1, 1);
+    }
+
+    /**
+     * Erzeugt ein <b>Quadrat</b> unter Angabe der <b>Seitenlänge</b>.
+     *
+     * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle(double)
+     * @see ActorAdder#addRectangle(double)
+     *
+     * @since 0.34.0
+     */
+    @API
+    public Rectangle(double sideLength)
+    {
+        this(sideLength, sideLength);
     }
 
     /**
@@ -79,7 +95,24 @@ public class Rectangle extends Geometry
      *
      * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
-     * @param shapeSupplier
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.instant.Rectangle#Rectangle(double,
+     *     double)
+     * @see ActorAdder#addRectangle(double, double)
+     */
+    @API
+    public Rectangle(double width, double height)
+    {
+        this(width, height, () -> FixtureBuilder.rectangle(width, height));
+    }
+
+    /**
+     * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und
+     * <b>Höhe</b>.
+     *
+     * @param width Die <b>Breite</b> des Rechtecks in Meter.
+     * @param height Die <b>Höhe</b> des Rechtecks in Meter.
+     * @param shapeSupplier Eine Lamda-Funktion, die den <b>Umriss</b> liefert.
      */
     public Rectangle(double width, double height,
             Supplier<FixtureData> shapeSupplier)
@@ -88,22 +121,13 @@ public class Rectangle extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
+        setColor(Resources.COLORS.getSafe("red"));
     }
 
     /**
-     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
+     * Gibt die <b>Breite</b> des Rechtecks in Meter zurück.
      *
-     * @see ActorAdder#addRectangle(double, double)
-     */
-    public Rectangle()
-    {
-        this(1, 1);
-    }
-
-    /**
-     * Gibt die Breite des Rechtecks in Meter zurück.
-     *
-     * @return Die Breite des Rechtecks in Meter.
+     * @return Die <b>Breite</b> des Rechtecks in Meter.
      */
     @API
     public double getWidth()
@@ -112,10 +136,10 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Setzt die Breite des Rechtecks neu. Dadurch ändern sich die
+     * Setzt die <b>Breite</b> des Rechtecks neu. Dadurch ändern sich die
      * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
      *
-     * @param width Die neue Breite für das Rechteck in Meter.
+     * @param width Die neue <b>Breite</b> für das Rechteck in Meter.
      */
     @API
     public void setWidth(double width)
@@ -124,9 +148,9 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Gibt die Höhe des Rechtecks in Meter zurück.
+     * Gibt die <b>Höhe</b> des Rechtecks in Meter zurück.
      *
-     * @return Die Höhe des Rechtecks in Meter.
+     * @return Die <b>Höhe</b> des Rechtecks in Meter.
      */
     @API
     public double getHeight()
@@ -135,10 +159,10 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Setzt die Höhe des Rechtecks neu. Dadurch ändern sich die physikalischen
-     * Eigenschaften (Masse etc.) des Rechtecks.
+     * Setzt die <b>Höhe</b> des Rechtecks neu. Dadurch ändern sich die
+     * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
      *
-     * @param height Die neue Höhe für das Rechteck in Meter.
+     * @param height Die neue <b>Höhe</b> für das Rechteck in Meter.
      */
     @API
     public void setHeight(double height)
@@ -147,11 +171,11 @@ public class Rectangle extends Geometry
     }
 
     /**
-     * Setzt die Höhe und Breite des Rechtecks neu. Dadurch ändern sich die
-     * physikalischen Eigenschaften (Masse etc.) des Rechtecks.
+     * Setzt die <b>Höhe</b> und <b>Breite</b> des Rechtecks neu. Dadurch ändern
+     * sich die physikalischen Eigenschaften (Masse etc.) des Rechtecks.
      *
-     * @param width Die neue Breite für das Rechteck in Meter.
-     * @param height Die neue Höhe für das Rechteck in Meter.
+     * @param width Die neue <b>Breite</b> für das Rechteck in Meter.
+     * @param height Die neue <b>Höhe</b> für das Rechteck in Meter.
      */
     @API
     public void setSize(double width, double height)
