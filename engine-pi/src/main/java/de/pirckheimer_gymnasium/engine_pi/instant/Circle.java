@@ -31,7 +31,7 @@ public class Circle extends de.pirckheimer_gymnasium.engine_pi.actor.Circle
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Circle#Circle()
      * @see ActorAdder#addCircle()
      *
-     * @author Josef Friedrich
+     * @since 0.34.0
      */
     public Circle()
     {
@@ -45,6 +45,8 @@ public class Circle extends de.pirckheimer_gymnasium.engine_pi.actor.Circle
      *
      * @see de.pirckheimer_gymnasium.engine_pi.actor.Circle#Circle(double)
      * @see ActorAdder#addCircle(double)
+     *
+     * @since 0.34.0
      */
     public Circle(double diameter)
     {
@@ -62,6 +64,6 @@ public class Circle extends de.pirckheimer_gymnasium.engine_pi.actor.Circle
 
     public static void main(String[] args)
     {
-        new Text("Hello, World").setColor("white");
+        new Circle();
     }
 }
