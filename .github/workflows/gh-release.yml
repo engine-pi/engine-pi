@@ -31,4 +31,5 @@ jobs:
           # The action uses the javascript glob library
           files: |
             engine-pi/target/*.jar
+            engine-pi/target/*.zip
             engine-pi-demos/target/*.jar
