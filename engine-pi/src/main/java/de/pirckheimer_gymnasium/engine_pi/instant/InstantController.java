@@ -6,11 +6,13 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
 /**
- * Verwaltet den Instant-Modus der Engine Pi.
+ * <b>Steuert</b> die Engine Pi im <b>Instant-Modus</b>.
  *
+ * <p>
  * Die Klasse verwaltet eine statische Instanz der <b>Haupt-Szene</b>, die
  * automatisch gestartet wird und bietet einige statische Hilfsmethoden an, um
  * das Spiel im Instant-Modus zu steuern.
+ * </p>
  *
  * @since 0.33.0
  */

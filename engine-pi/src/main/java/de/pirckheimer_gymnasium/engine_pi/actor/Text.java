@@ -36,8 +36,10 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 /**
  * Zur Darstellung von <b>Texten</b>.
  *
+ * <p>
  * Möglich ist es auch, Fonts zu laden, die im Projektordner sind. Diese werden
  * zu Anfang einmalig geladen und stehen dauerhaft zur Verfügung.
+ * </p>
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -90,16 +92,64 @@ public class Text extends Geometry
     private transient double cachedScaleFactor;
 
     /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
+     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
+     *
+     * @param content Der Textinhalt, der dargestellt werden soll.
+     *
+     * @since 0.27.0
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String)
+     */
+    @API
+    public Text(String content)
+    {
+        this(content, 1);
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
+     * in <b>normaler, serifenfreier Standardschrift</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
+     *     double)
+     */
+    @API
+    public Text(String content, double height)
+    {
+        this(content, height, Font.SANS_SERIF);
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
+     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
+     * Schriftstil</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
+     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
+     *
+     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
+     *     double, String)
+     */
+    @API
+    public Text(String content, double height, String fontName)
+    {
+        this(content, height, fontName, 0);
+    }
+
+    /**
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
      * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     * @param fontName Der Name des zu verwendenden Fonts.<br>
-     *     Wird hierfür ein Font verwendet, der in dem Projektordner vorhanden
-     *     sein soll, <b>und dies ist immer und in jedem Fall zu empfehlen</b>,
-     *     muss der Name der Schriftart hier ebenfalls einfach nur eingegeben
-     *     werden, <b>nicht der Name der schriftart-Datei!</b>
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
+     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *     kursiv</b>).
      *     <ul>
@@ -122,56 +172,6 @@ public class Text extends Geometry
         setStyle(style);
         setFont(fontName);
         setColor("black");
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
-     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
-     * Schriftstil</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
-     *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
-     *     double, String)
-     */
-    @API
-    public Text(String content, double height, String fontName)
-    {
-        this(content, height, fontName, 0);
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
-     * in <b>normaler, serifenfreier Standardschrift</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     * @param height Die Höhe des Textes in Meter.
-     *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String,
-     *     double)
-     */
-    @API
-    public Text(String content, double height)
-    {
-        this(content, height, Font.SANS_SERIF);
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
-     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
-     *
-     * @param content Der Textinhalt, der dargestellt werden soll.
-     *
-     * @since 0.27.0
-     *
-     * @see de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder#addText(String)
-     */
-    @API
-    public Text(String content)
-    {
-        this(content, 1);
     }
 
     /**
