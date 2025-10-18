@@ -34,9 +34,9 @@ public class Chessboard
         queens = new Image[numberOfSquares][numberOfSquares];
         highlightCircles = new Circle[numberOfSquares][numberOfSquares];
 
-        for (int row = 0; row < 8; row += 1)
+        for (int row = 0; row < numberOfSquares; row++)
         {
-            for (int column = 0; column < 8; column += 1)
+            for (int column = 0; column < numberOfSquares; column++)
             {
                 Square square = new Square();
                 square.setPosition(column, row);

@@ -1,5 +1,8 @@
 package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_queens_puzzle;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+
 /**
  * Löst das Problem der N Damen.
  *
@@ -23,6 +26,8 @@ public class EightQueensPuzzle
      */
     private boolean[][] queenPositions;
 
+    private Chessboard chessboard;
+
     /**
      * Legt das Schachbrett an.
      *
@@ -32,6 +37,11 @@ public class EightQueensPuzzle
     public EightQueensPuzzle(int numberOfQueens)
     {
         queenPositions = new boolean[numberOfQueens][numberOfQueens];
+        Scene scene = new Scene();
+        scene.setMeter(50);
+        scene.getCamera().setCenter(4, 4);
+        chessboard = new Chessboard(scene, numberOfQueens);
+        Game.start(scene);
         makeStep(0);
     }
 
@@ -58,6 +68,7 @@ public class EightQueensPuzzle
         int c = column - 1;
         while (c >= 0)
         {
+            chessboard.highlightSquare(r, c);
             if (queenPositions[r][c])
             {
                 return true;
@@ -68,6 +79,7 @@ public class EightQueensPuzzle
         r = row - 1;
         while (c >= 0 && r >= 0)
         {
+            chessboard.highlightSquare(r, c);
             if (queenPositions[r][c])
             {
                 return true;
@@ -79,6 +91,7 @@ public class EightQueensPuzzle
         r = row + 1;
         while (c >= 0 && r < queenPositions.length)
         {
+            chessboard.highlightSquare(r, c);
             if (queenPositions[r][c])
             {
                 return true;
@@ -135,10 +148,12 @@ public class EightQueensPuzzle
                 if (column == queenPositions.length - 1)
                 {
                     printSolution();
+                    chessboard.setQueens(queenPositions, 2000);
                 }
                 else
                 {
                     makeStep(column + 1);
+                    chessboard.setQueens(queenPositions, 120);
                 }
                 queenPositions[row][column] = false;
             }
@@ -147,6 +162,6 @@ public class EightQueensPuzzle
 
     public static void main(String[] args)
     {
-        new EightQueensPuzzle(8);
+        new EightQueensPuzzle(9);
     }
 }
