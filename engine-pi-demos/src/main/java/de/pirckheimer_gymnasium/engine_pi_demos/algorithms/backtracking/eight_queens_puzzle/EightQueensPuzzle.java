@@ -19,6 +19,12 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  */
 public class EightQueensPuzzle
 {
+
+    /**
+     * Speichert die bisher gefundenen Lösungen.
+     */
+    private int foundSolutions;
+
     /**
      * <p>
      * Der ursprünglich deutsche Name dieses Attributes war {@code schachbrett}.
@@ -53,18 +59,20 @@ public class EightQueensPuzzle
      * Der ursprünglich deutsche Name dieser Methode war {@code IstFeldBedroht}.
      * </p>
      *
-     * @param row Zeile das Feldelements. Laut englischer Schachfachsprache
-     *     müsste der Parameter eigentlich {@code rank} heißen. Der ursprünglich
-     *     deutsche Name dieses Parameters war {@code zeile}.
-     * @param column Spalte das Feldelements. Laut englischer Schachfachsprache
-     *     müsste der Parameter eigentlich {@code file} heißen. Der ursprünglich
-     *     deutsche Name dieses Parameters war {@code spalte}.
+     * @param row Die Reihen- bzw. Zeilennummer eines Felds. {@code 0} ist die
+     *     untereste Reihe. Laut englischer Schachfachsprache müsste der
+     *     Parameter eigentlich {@code rank} heißen. Der ursprünglich deutsche
+     *     Name dieses Parameters war {@code zeile}.
+     * @param column Die Linien- bzw. Spaltennummer eines Felds. {@code 0} ist
+     *     die Linie ganz links. Laut englischer Schachfachsprache müsste der
+     *     Parameter eigentlich {@code file} heißen. Der ursprünglich deutsche
+     *     Name dieses Parameters war {@code spalte}.
      */
     boolean isSquareThreatened(int row, int column)
     {
-        // aktuelle Zeile
+        // aktuelle Reihe bzw. Zeile
         int r = row;
-        // aktuelle Spalte
+        // aktuelle Linie bzw. Spalte
         int c = column - 1;
         while (c >= 0)
         {
@@ -133,27 +141,28 @@ public class EightQueensPuzzle
      * {@code SchrittAusführen}.
      * </p>
      *
-     * @param column Die Spalte das Feldelements. Laut englischer
-     *     Schachfachsprache müsste der Parameter eigentlich {@code file}
-     *     heißen. Der ursprünglich deutsche Name dieses Parameters war
-     *     {@code spalte}.
+     * @param column Die Linien- bzw. Spaltennummer eines Felds. {@code 0} ist
+     *     die Linie ganz links. Laut englischer Schachfachsprache müsste der
+     *     Parameter eigentlich {@code file} heißen. Der ursprünglich deutsche
+     *     Name dieses Parameters war {@code spalte}.
      */
     void makeStep(int column)
     {
-        for (int row = 0; row < queenPositions.length; row += 1)
+        for (int row = 0; row < queenPositions.length; row++)
         {
             if (!isSquareThreatened(row, column))
             {
                 queenPositions[row][column] = true;
                 if (column == queenPositions.length - 1)
                 {
+                    foundSolutions++;
                     printSolution();
                     chessboard.setQueens(queenPositions, 2000);
                 }
                 else
                 {
-                    makeStep(column + 1);
                     chessboard.setQueens(queenPositions, 120);
+                    makeStep(column + 1);
                 }
                 queenPositions[row][column] = false;
             }

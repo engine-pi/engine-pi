@@ -82,6 +82,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
  * <p>
  * Dies ist die absolute Superklasse aller grafischen Objekte. Umgekehrt kann
  * somit jedes grafische Objekt die folgenden Methoden nutzen.
+ * </p>
  *
  * @author Michael Andonie
  * @author Niklas Keller
@@ -274,7 +275,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Sichtbarkeit des Objektes.
+     * Setzt die <b>Sichtbarkeit</b> des Objektes.
      *
      * @param visible Ob das Objekt sichtbar sein soll oder nicht.<br>
      *     Ist dieser Wert <code>false</code>, so wird es nicht gezeichnet.
@@ -315,7 +316,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt an, ob das Objekt sichtbar ist.
+     * Gibt an, ob das Objekt <b>sichtbar</b> ist.
      *
      * @return Ist <code>true</code>, wenn das Objekt zurzeit sichtbar ist.
      *
@@ -325,6 +326,42 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final boolean isVisible()
     {
         return visible;
+    }
+
+    /**
+     * <b>Zeigt</b> die Figur auf der Ebene bzw. blendet die Figur ein.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see #setVisible(boolean)
+     *
+     * @since 0.35.0
+     */
+    @API
+    public final Actor show()
+    {
+        return setVisible(true);
+    }
+
+    /**
+     * <b>Versteckt</b> die Figur auf der Ebene bzw. blendet die Figur aus.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.setColor(..).setPostion(..)}.
+     *
+     * @see #setVisible(boolean)
+     *
+     * @since 0.35.0
+     */
+    @API
+    public final Actor hide()
+    {
+        return setVisible(false);
     }
 
     /**
@@ -362,20 +399,22 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die Farbe der Figur zurück.
+     * Gibt die <b>Farbe</b> der Figur zurück.
      *
-     * @return Die Farbe der Figur.
+     * @return Die <b>Farbe</b> der Figur.
      */
+    @API
     public Color getColor()
     {
         return color;
     }
 
     /**
-     * Gibt die Komplementärfarbe der Figur zurück.
+     * Gibt die <b>Komplementärfarbe</b> der Figur zurück.
      *
-     * @return Die Komplementärfarbe der Figur.
+     * @return Die <b>Komplementärfarbe</b> der Figur.
      */
+    @API
     public Color getComplementaryColor()
     {
         return ColorUtil.getComplementary(color);
@@ -384,7 +423,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
      *
-     * @param color Die neue Farbe.
+     * @param color Die neue <b>Farbe</b>.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -458,10 +497,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Git eine List bestehend aus Kollisionsereignissen zurück.
+     * Gibt eine Liste bestehend aus <b>Kollisionsereignissen</b> zurück.
      *
-     * @return Eine Liste aus Kollisionsereignissen.
+     * @return Eine Liste aus <b>Kollisionsereignissen</b>.
      */
+    @API
     public final List<CollisionEvent<Actor>> getCollisions()
     {
         return physicsHandler.getCollisions();
@@ -707,6 +747,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     Hierbei soll zunächst getestet werden, ob das Objekt innerhalb der
      *     Kamera liegt, und erst dann gezeichnet werden.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
      */
     @Internal
     public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
@@ -780,6 +822,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param shape Die Shape, die zu rendern ist.
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
      */
     @Internal
     private static void renderShape(Shape shape, Graphics2D g,
@@ -843,6 +887,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return <code>true</code>, wenn das Objekt (teilweise) innerhalb des
      *     derzeit sichtbaren Bereichs liegt, sonst <code>false</code>.
+     *
+     * @hidden
      */
     @Internal
     private boolean isWithinBounds(Bounds bounds)
@@ -855,6 +901,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Gibt den aktuellen, internen Physics-Handler aus.
      *
      * @return der aktuellen, internen Physics-Handler aus.
+     *
+     * @hidden
      */
     @Internal
     public final PhysicsHandler getPhysicsHandler()
@@ -967,10 +1015,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
      */
     @Internal
     public abstract void render(Graphics2D g, double pixelPerMeter);
 
+    /**
+     * @hidden
+     */
     @Internal
     public final Actor setPhysicsHandler(PhysicsHandler handler)
     {
@@ -1008,8 +1061,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @return Gibt die Ebene zurück, an der das aktuelle Objekt angemeldet ist,
-     *     sonst {@code null}.
+     * Gibt die Ebene zurück, an der das aktuelle Objekt angemeldet ist, sonst
+     * {@code null}.
+     *
+     * @return Die Ebene, an der das aktuelle Objekt angemeldet ist, sonst
+     *     {@code null}.
      */
     public final Layer getLayer()
     {
@@ -2330,6 +2386,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return animator;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     static void assertPositiveWidthAndHeight(double width, double height)
     {
@@ -2389,6 +2448,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see de.pirckheimer_gymnasium.engine_pi.instant.InstantActor#getActor()
      *
      * @since 0.33.0
+     *
+     * @hidden
      */
     @Internal
     public Actor getActor()

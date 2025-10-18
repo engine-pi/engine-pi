@@ -13,26 +13,59 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Image;
 import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
 /**
+ * Ein quadratisches Schachbrett.
+ *
  * @author Josef Friedrich
  *
  * @since 0.33.0
  */
 public class Chessboard
 {
-
+    /**
+     * Die in zwei Farben gefärbten Quadrate des Schachbrett. Der erste Index
+     * des zweidimensionalen Arrays stellt die Reihen, der zweite Index die
+     * Linien bzw. Spalten dar.
+     */
     private Square[][] squares;
 
+    /**
+     * Auf allen Schachbrettfeldern werden Damen als Bilder platziert. Der erste
+     * Index des zweidimensionalen Arrays stellt die Reihen, der zweite Index
+     * die Linien bzw. Spalten dar.
+     */
     private Image[][] queens;
 
-    private Circle[][] highlightCircles;
+    /**
+     * Kleine blaue Kreise, die auf jedem Feld des Schachbretts platziert sind,
+     * um gegebenenfalls angezeigt werden zu können. Der erste Index des
+     * zweidimensionalen Arrays stellt die Reihen, der zweite Index die Linien
+     * bzw. Spalten dar.
+     */
+    private Circle[][] highlightingPoints;
 
+    /**
+     * Wenn war, werden die einzelnen Feld durch kleinen blaue Punkte
+     * hervorgehoben.
+     */
+    private boolean doHighlighting;
+
+    /**
+     * Zeichnet ein quadratisches Schachbrett mit einer bestimmten Anzahl an
+     * Reihen und Linien.
+     *
+     * @param scene Die Szene, in der das Schachbrett gezeichnet werden soll.
+     * @param numberOfSquares Die Anzahl der Felder einer Reihe bzw. Linie.
+     *     Beispielsweise {@code 8} erzeugt ein Schachbrett mit {@code 8x8},
+     *     also {@code 64} Feldern.
+     */
     public Chessboard(Scene scene, int numberOfSquares)
     {
+        doHighlighting = true;
         Color brown = colorScheme.getBrown();
         Color brown2 = changeSaturation(brown, -0.2);
         squares = new Square[numberOfSquares][numberOfSquares];
         queens = new Image[numberOfSquares][numberOfSquares];
-        highlightCircles = new Circle[numberOfSquares][numberOfSquares];
+        highlightingPoints = new Circle[numberOfSquares][numberOfSquares];
 
         for (int row = 0; row < numberOfSquares; row++)
         {
@@ -48,20 +81,25 @@ public class Chessboard
                         120);
                 double shift = 0.2;
                 queen.setPosition(column + shift, row + shift);
-                queen.setVisible(false);
+                queen.hide();
                 queens[row][column] = queen;
                 scene.add(queen);
 
                 Circle circle = new Circle(0.2);
                 shift = 0.4;
                 circle.setPosition(column + shift, row + shift);
-                circle.setVisible(false);
-                highlightCircles[row][column] = circle;
+                circle.hide();
+                highlightingPoints[row][column] = circle;
                 scene.add(circle);
             }
         }
     }
 
+    /**
+     * Zeichnet ein quadratisches Schachbrett mit 8 Reihen und 8 Linien.
+     *
+     * @param scene Die Szene, in der das Schachbrett gezeichnet werden soll.
+     */
     public Chessboard(Scene scene)
     {
         this(scene, 8);
@@ -91,11 +129,33 @@ public class Chessboard
         }
     }
 
+    /**
+     * Deaktiviert die Methode {@link #highlightSquare(int, int)}
+     */
+    public void disableHighlighting()
+    {
+        doHighlighting = false;
+    }
+
+    /**
+     * @param row Die Reihen- bzw. Zeilennummer eines Felds. {@code 0} ist die
+     *     untereste Reihe. Laut englischer Schachfachsprache müsste der
+     *     Parameter eigentlich {@code rank} heißen. Der ursprünglich deutsche
+     *     Name dieses Parameters war {@code zeile}.
+     * @param column Die Linien- bzw. Spaltennummer eines Felds. {@code 0} ist
+     *     die Linie ganz links. Laut englischer Schachfachsprache müsste der
+     *     Parameter eigentlich {@code file} heißen. Der ursprünglich deutsche
+     *     Name dieses Parameters war {@code spalte}.
+     */
     public void highlightSquare(int row, int column)
     {
-        highlightCircles[row][column].setVisible(true);
+        if (!doHighlighting)
+        {
+            return;
+        }
+        highlightingPoints[row][column].show();
         sleep(100);
-        highlightCircles[row][column].setVisible(false);
+        highlightingPoints[row][column].hide();
     }
 
     public static void main(String[] args)
@@ -106,5 +166,4 @@ public class Chessboard
         new Chessboard(scene);
         Game.start(scene);
     }
-
 }
