@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_q
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Counter;
 
 /**
  * Löst das Problem der N Damen.
@@ -23,7 +24,7 @@ public class EightQueensPuzzle
     /**
      * Speichert die bisher gefundenen Lösungen.
      */
-    private int foundSolutions;
+    private Counter foundSolutions;
 
     /**
      * <p>
@@ -47,6 +48,11 @@ public class EightQueensPuzzle
         scene.setMeter(50);
         scene.getCamera().setCenter(4, 4);
         chessboard = new Chessboard(scene, numberOfQueens);
+        chessboard.disableHighlighting();
+        foundSolutions = new Counter();
+        foundSolutions.setPosition(10, 4);
+        foundSolutions.setColor("white");
+        scene.add(foundSolutions);
         Game.start(scene);
         makeStep(0);
     }
@@ -155,7 +161,7 @@ public class EightQueensPuzzle
                 queenPositions[row][column] = true;
                 if (column == queenPositions.length - 1)
                 {
-                    foundSolutions++;
+                    foundSolutions.increase();
                     printSolution();
                     chessboard.setQueens(queenPositions, 2000);
                 }
@@ -171,6 +177,6 @@ public class EightQueensPuzzle
 
     public static void main(String[] args)
     {
-        new EightQueensPuzzle(9);
+        new EightQueensPuzzle(8);
     }
 }
