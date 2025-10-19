@@ -88,7 +88,7 @@ public class EightQueensPuzzle
             chessboard.highlightSquare(r, c);
         }
 
-        // Überprüfen der aktuellen waagrechten Reihe bzw. Zeile
+        // Überprüfen der aktuellen waagrechten Reihe bzw. Zeile nach links
         while (c >= 0)
         {
             chessboard.highlightSquare(r, c);
