@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_queens_puzzle;
+package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.recursion.backtracking.eight_queens_puzzle;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -48,7 +48,7 @@ public class EightQueensPuzzle
         scene.setMeter(50);
         scene.getCamera().setCenter(4, 4);
         chessboard = new Chessboard(scene, numberOfQueens);
-        chessboard.disableHighlighting();
+        // chessboard.disableHighlighting();
         foundSolutions = new Counter();
         foundSolutions.setPosition(10, 4);
         foundSolutions.setColor("white");
@@ -80,6 +80,15 @@ public class EightQueensPuzzle
         int r = row;
         // aktuelle Linie bzw. Spalte
         int c = column - 1;
+
+        if (c >= 0 && r >= 0)
+        {
+            chessboard.highlightSquare(r, c);
+            chessboard.highlightSquare(r, c);
+            chessboard.highlightSquare(r, c);
+        }
+
+        // Überprüfen der aktuellen waagrechten Reihe bzw. Zeile
         while (c >= 0)
         {
             chessboard.highlightSquare(r, c);
@@ -89,6 +98,8 @@ public class EightQueensPuzzle
             }
             c -= 1;
         }
+
+        // Überprüfen der Diagonalen nach links unten
         c = column - 1;
         r = row - 1;
         while (c >= 0 && r >= 0)
@@ -101,6 +112,8 @@ public class EightQueensPuzzle
             c -= 1;
             r -= 1;
         }
+
+        // Überprüfen der Diagonalen nach links oben
         c = column - 1;
         r = row + 1;
         while (c >= 0 && r < queenPositions.length)

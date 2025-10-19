@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.backtracking.eight_queens_puzzle;
+package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.recursion.backtracking.eight_queens_puzzle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
 import static de.pirckheimer_gymnasium.engine_pi.util.ColorUtil.changeSaturation;
@@ -154,7 +154,7 @@ public class Chessboard
             return;
         }
         highlightingPoints[row][column].show();
-        sleep(100);
+        sleep(200);
         highlightingPoints[row][column].hide();
     }
 
