@@ -35,6 +35,7 @@ import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 import javax.swing.JOptionPane;
 
@@ -303,11 +304,38 @@ public final class Game
      * <b>Höhe</b>.
      *
      * @param scene Die Szene, mit der das Spiel gestartet wird.
+     *
+     * @return Die Szene, mit der das Spiel gestartet wurde.
      */
     @API
     public static Scene start(Scene scene, int width, int height)
     {
         return start(width, height, scene);
+    }
+
+    /**
+     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
+     * Pixel. Es wird automatische eine Szene erzeugt und diese zur weiteren
+     * Verwendung an eine <b>Lambda-Funktion</b> übergeben.
+     *
+     * <pre>{@code
+     * Game.start((scene) -> {
+     *     Line line = new Line(1, 1, 4, 5);
+     *     line.setColor("grün");
+     *     scene.add(line);
+     * });
+     * }</pre>
+     *
+     * @param sceneConsumer Eine Lamda-Funktion, die als Eingabe-Parameter die
+     *     erzeugte Szene erhält.
+     *
+     * @return Die Szene, mit der das Spiel gestartet wurde.
+     */
+    public static Scene start(Consumer<Scene> sceneConsumer)
+    {
+        Scene scene = new Scene();
+        sceneConsumer.accept(scene);
+        return start(scene);
     }
 
     /**

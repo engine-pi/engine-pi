@@ -146,6 +146,19 @@ public final class Vector implements Cloneable
     }
 
     /**
+     * Gibt den Bewegungsanteil in Pixel in <code>x</code>-Richtung zurück.
+     *
+     * @return Der Bewegungsanteil in Pixel in <code>x</code>-Richtung.
+     *
+     * @since 0.36.0
+     */
+    @API
+    public int getX(double pixelPerMeter)
+    {
+        return (int) (x * pixelPerMeter);
+    }
+
+    /**
      * Gibt den Bewegungsanteil in <code>y</code>-Richtung zurück.
      *
      * @return Der Bewegungsanteil in <code>y</code>-Richtung.
@@ -154,6 +167,19 @@ public final class Vector implements Cloneable
     public double getY()
     {
         return y;
+    }
+
+    /**
+     * Gibt den Bewegungsanteil in Pixel in <code>y</code>-Richtung zurück.
+     *
+     * @return Der Bewegungsanteil in Pixel in <code>y</code>-Richtung.
+     *
+     * @since 0.36.0
+     */
+    @API
+    public int getY(double pixelPerMeter)
+    {
+        return (int) (y * pixelPerMeter);
     }
 
     /**

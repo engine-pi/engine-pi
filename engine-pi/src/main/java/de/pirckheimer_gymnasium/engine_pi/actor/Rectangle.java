@@ -25,6 +25,7 @@ import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
+import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
 
@@ -204,13 +205,7 @@ public class Rectangle extends Geometry
         this.borderRadius = percent;
     }
 
-    /**
-     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
-     * {@code 0}.
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     */
+    @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {

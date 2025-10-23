@@ -1013,6 +1013,35 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
+     * <p>
+     * <b>Meter in Pixel umrechnen:</b>
+     * </p>
+     *
+     * <pre>{@code
+     * g.drawLine((int) (point1.getX() * pixelPerMeter),
+     *         (int) (point1.getY() * pixelPerMeter),
+     *         (int) (point2.getX() * pixelPerMeter),
+     *         (int) (point2.getY() * pixelPerMeter));
+     * }</pre>
+     *
+     * <p>
+     * <b>Farbe setzen:</b>
+     * </p>
+     *
+     * <pre>{@code
+     * g.setColor(getColor());
+     * }</pre>
+     *
+     * <p>
+     * <b>Koordinatensystem anpassen:</b>
+     * </p>
+     *
+     * <pre>{@code
+     * AffineTransform at = g.getTransform();
+     * g.scale(1, -1);
+     * g.setTransform(at);
+     * }</pre>
+     *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
