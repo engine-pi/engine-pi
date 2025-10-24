@@ -32,6 +32,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.EdgeShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.PolygonShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
@@ -870,10 +871,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                     (int) (diameter * pixelPerMeter),
                     (int) (diameter * pixelPerMeter));
         }
+        else if (shape instanceof EdgeShape edgeShape)
+        {
+            g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
+                    (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
+                    (int) (edgeShape.vertex2.x * pixelPerMeter),
+                    (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
+        }
         else
         {
-            throw new RuntimeException("Konnte die Shape (" + shape
-                    + ") nicht rendern, unerwartete Shape");
+            throw new RuntimeException("Konnte den Umriss (" + shape
+                    + ") nicht zeichnen, unerwarteter Umriss");
         }
         Graphics2DUtil.setAntiAliasing(g, true);
         g.setTransform(pre);

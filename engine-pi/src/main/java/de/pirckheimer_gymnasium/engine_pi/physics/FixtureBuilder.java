@@ -26,6 +26,7 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.EdgeShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.PolygonShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
@@ -33,14 +34,15 @@ import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
- * Sammlungen von statischen Methoden, die verschiedene Halterungen (englisch
- * Fixture) für verschieden geformte
+ * Eine Sammlungen von statischen Methoden, die verschiedene Halterungen
+ * (englisch Fixture) für verschieden geformte
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor}-Objekte
  * erstellen.
  *
  * <p>
  * Halterungen werden verwendet, um die Größe, Form und Materialeigenschaften
  * eines Objekts in der Physikszene zu beschreiben.
+ * </p>
  */
 public final class FixtureBuilder
 {
@@ -49,8 +51,8 @@ public final class FixtureBuilder
      * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
      * Koordinatenachsen.
      *
-     * @param width Die Breite der rechteckigen Form.
-     * @param height Die Höhe der rechteckigen Form.
+     * @param width Die Breite der rechteckigen Form in Meter.
+     * @param height Die Höhe der rechteckigen Form in Meter.
      */
     public static FixtureData rectangle(double width, double height)
     {
@@ -66,7 +68,7 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erschafft eine kreisförmige Form.
+     * Erschafft eine <b>kreisförmige</b> Form.
      *
      * @param mx Der Mittelpunkt des Kreises, X-Koordinate.
      * @param my Der Mittelpunkt des Kreises, Y-Koordinate.
@@ -81,8 +83,28 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt eine polygonale Form. Kann nur konvexe Formen erstellen. Konkave
-     * Formen werden automatisch zur umspannenden konvexen Form formatiert.
+     * Erstellt die Umrissdaten, die eine Linie bzw. eine Kante zwischen zwei
+     * Punkten darstellen.
+     *
+     * @param point1 Der erste Punkt der Linie als Vector.
+     * @param point2 Der zweite Punkt der Linie als Vector.
+     *
+     * @return Eine Umrissdaten, die die Linie repräsentiert.
+     *
+     * @since 0.36.0
+     */
+    public static FixtureData line(Vector point1, Vector point2)
+    {
+        EdgeShape edgeShape = new EdgeShape();
+        edgeShape.set(new Vec2((float) point1.getX(), (float) point1.getY()),
+                new Vec2((float) point2.getX(), (float) point2.getY()));
+        return new FixtureData(edgeShape);
+    }
+
+    /**
+     * Erstellt eine <b>polygonale</b> Form. Kann nur konvexe Formen erstellen.
+     * Konkave Formen werden automatisch zur umspannenden konvexen Form
+     * formatiert.
      *
      * @param points Eine Reihe an Punkten, die nacheinander diese Form
      *     beschreiben (mindestens 3 Punkte).
@@ -105,8 +127,8 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt eine rechteckige Form, die parallel zu den Koordinatenachsen
-     * läuft.
+     * Erstellt eine <b>rechteckige</b> Form, die parallel zu den
+     * Koordinatenachsen läuft.
      *
      * @param sx Die x-Koordinate der linken unteren Ecke.
      * @param sy Die y-Koordinate der linken unteren Ecke.

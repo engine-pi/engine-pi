@@ -30,7 +30,7 @@ public class Line extends Actor
 
     public Line(Vector point1, Vector point2)
     {
-        super(() -> FixtureBuilder.rectangle(300, 300));
+        super(() -> FixtureBuilder.line(point1, point2));
         this.point1 = point1;
         this.point2 = point2;
     }

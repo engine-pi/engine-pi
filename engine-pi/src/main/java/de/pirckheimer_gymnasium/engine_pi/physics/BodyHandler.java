@@ -38,8 +38,11 @@ import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
 
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische
- * Darstellung</i> eines {@link Actor}-Objekts.<br>
+ * Darstellung</i> eines {@link Actor}-Objekts.
+ * <p>
  * Er übernimmt zwei wesentliche Aufgaben:
+ * </p>
+ *
  * <ul>
  * <li>Die Kontrolle und Steuerung innerhalb der <b>Physics-Engine</b> aus Sicht
  * des respektiven {@link Actor}-Objekts.</li>

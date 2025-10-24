@@ -19,27 +19,27 @@
 package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Star;
+import de.pirckheimer_gymnasium.engine_pi.actor.Line;
 
 /**
- * Demonstriert die Figur <b>Stern</b> ({@link Star}).
+ * Demonstriert die Figur <b>Linie</b> ({@link Line}).
  *
  * @author Josef Friedrich
  */
-public class StarDemo extends ActorBaseScene
+public class LineDemo extends ActorBaseScene
 {
-    public StarDemo()
+    public LineDemo()
     {
-        Star star = new Star();
-        star.setPosition(2, 2);
-        star.makeDynamic();
-        star.rotateBy(45);
-        add(star);
+        Line line = new Line(0, 0, 1, 1);
+        // line.setPosition(2, 2);
+        line.makeDynamic();
+        // line.rotateBy(45);
+        add(line);
     }
 
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start(new StarDemo());
+        Game.start(new LineDemo());
     }
 }
