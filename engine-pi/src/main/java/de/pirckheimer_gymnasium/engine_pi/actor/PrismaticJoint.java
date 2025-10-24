@@ -23,7 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Eine Federverbindung.
+ * Eine <b>Federverbindung</b>.
  *
  * @author Michael Andonie
  * @author Niklas Keller

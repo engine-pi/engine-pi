@@ -21,8 +21,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
- * Eine Seilverbindung erzwingt einen maximalen Abstand zwischen zwei Punkten
- * auf zwei Körpern.
+ * Eine <b>Seilverbindung</b> bzw. eine <b>Lasso</b> erzwingt einen maximalen
+ * Abstand zwischen zwei Punkten auf zwei Körpern.
  *
  * @author Michael Andonie
  * @author Niklas Keller

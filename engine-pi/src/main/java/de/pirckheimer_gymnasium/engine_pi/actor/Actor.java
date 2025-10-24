@@ -1866,7 +1866,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Erstellt eine Seilverbindung zwischen diesem und einem weiteren
+     * Erstellt eine <b>Seilverbindung</b> zwischen diesem und einem weiteren
      * {@link Actor}-Objekt.
      *
      * @param other Das zweite {@link Actor}-Objekt, das ab sofort mit dem

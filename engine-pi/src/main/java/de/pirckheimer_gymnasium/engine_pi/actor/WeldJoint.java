@@ -21,7 +21,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
- * Eine Schweißnaht - besser ein Schweißpunkt - klebt zwei Körper zusammen.
+ * Eine <b>Schweißnaht</b> - besser ein <b>Schweißpunkt</b> - klebt zwei Körper
+ * zusammen.
  *
  * @author Michael Andonie
  * @author Niklas Keller
