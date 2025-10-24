@@ -21,8 +21,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
- * Ein Stabverbindung zwingt zwei Punkte auf zwei Körpern dazu, in einem festen
- * Abstand zueinander zu bleiben. Man kann sich das wie einen masselosen,
+ * Eine <b>Stabverbindung</b> zwingt zwei Punkte auf zwei Körpern dazu, in einem
+ * festen Abstand zueinander zu bleiben. Man kann sich das wie einen masselosen,
  * starren Stab vorstellen.
  *
  * @author Michael Andonie

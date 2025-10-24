@@ -19,6 +19,9 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 /**
+ * Ein <b>Quadarat</b>.
+ *
+ *
  * @author Josef Friedrich
  */
 public class Square extends Rectangle

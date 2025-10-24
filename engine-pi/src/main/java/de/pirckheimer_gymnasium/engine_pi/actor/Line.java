@@ -1,18 +1,18 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 /**
+ * Eine <b>Linie</b> zwischen zwei Punkten.
+ *
  * @author Josef Friedrich
  *
  * @since 0.36.0
@@ -52,6 +52,9 @@ public class Line extends Actor
         g.setStroke(oldStroke);
     }
 
+    /**
+     * @hidden
+     */
     public static void main(String[] args)
     {
         Game.start((scene) -> {
