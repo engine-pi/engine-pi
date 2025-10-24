@@ -19,20 +19,75 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 
 /**
+ * Ein regelmäßiger <b>Stern</b>.
+ *
  * @author Josef Friedrich
  */
 public class Star extends Polygon
 {
+
+    /**
+     * Die <b>Anzahl der Zacken</b> des Sterns.
+     */
+    private int numPoints;
+
+    /**
+     * Der <b>äußere Radius</b> des Sterns.
+     */
+    private double radius;
+
+    /**
+     * Der <b>innere Radius</b> des Sterns.
+     */
+    private double innerRadius;
+
+    /**
+     * Erstellt einen Stern mit einem <b>äußeren Radius vom 2 Meter</b>, einem
+     * <b>innere Radius von 1 Meter</b> und <b>7 Zacken</b>.
+     */
     public Star()
     {
-        super(Star.getVectors(0, 0, 2, 1, 7));
+        this(7, 2, 1);
     }
 
-    public static Vector[] getVectors(int x, int y, double radius,
-            double innerRadius, int numPoints)
+    /**
+     * Erstellt einen Stern durch Angabe des <b>äußeren Radius</b>, des
+     * <b>innere Radius</b> und der <b>Anzahl der Zacken</b>.
+     *
+     * @param numPoints Die <b>Anzahl der Zacken</b> des Sterns.
+     * @param radius Der <b>äußere Radius</b> des Sterns.
+     * @param innerRadius Der <b>innere Radius</b> des Sterns.
+     *
+     * @since 0.36.0
+     */
+    public Star(int numPoints, double radius, double innerRadius)
     {
+        super(Star.calculateVectors(numPoints, radius, innerRadius));
+        this.numPoints = numPoints;
+        this.radius = radius;
+        this.innerRadius = innerRadius;
+
+    }
+
+    /**
+     * Berechnet die Vektoren, die die Punkte eines Sterns mit einer bestimmten
+     * Anzahl von Spitzen, einem äußeren Radius und einem inneren Radius
+     * darstellen.
+     *
+     * @param numPoints Die <b>Anzahl der Zacken</b> des Sterns.
+     * @param radius Der <b>äußere Radius</b> des Sterns.
+     * @param innerRadius Der <b>innere Radius</b> des Sterns.
+     *
+     * @return Ein Array von Vektoren, das die Punkte des Sterns repräsentiert.
+     */
+    private static Vector[] calculateVectors(int numPoints, double radius,
+            double innerRadius)
+    {
+        int x = 0;
+        int y = 0;
         Vector[] vectors = new Vector[numPoints * 2];
         double angleStep = Math.PI / numPoints;
         double startAngle = Math.PI / 2.0;
@@ -48,5 +103,15 @@ public class Star extends Polygon
                             * Math.sin(startAngle + (2 * i + 1) * angleStep));
         }
         return vectors;
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Star");
+        formatter.add("numPoints", numPoints);
+        formatter.add("radius", radius, "m");
+        formatter.add("innerRadius", innerRadius, "m");
+        return formatter.format();
     }
 }
