@@ -8,17 +8,25 @@ demos:
 
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/engine-pi/src/main/resources/logo/logo.png)
 
-Diese Game Engine ist ein Fork der
-[Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von
-[Michael Andonie](https://github.com/andonie)
-und [Niklas Keller](https://github.com/kelunik) und zwar ein Fork der Core Engine v4.x.
-Die Engine-Alpha-Edu Version mit deutschen Java Bezeichnern wurde nicht geforkt.
+Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
+einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an
+allgemeinbildenden Schulen zwar mit englischen Bezeichnern jedoch mit [deutscher
+Dokumentation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi).
+
+Die Engine Pi ist eine Fortführung und Erweiterung (Fork) der
+[Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von [Michael
+Andonie](https://github.com/andonie) und [Niklas
+Keller](https://github.com/kelunik) und zwar ein Fork der [Core Engine
+v4.x](https://github.com/engine-alpha/engine-alpha/tree/4.x/engine-alpha). Die
+Engine Alpha wird leider offensichtlich nicht mehr weiterentwickelt. Die
+[Engine-Alpha-Edu](https://github.com/engine-alpha/engine-alpha/tree/4.x/engine-alpha-edu)
+Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
 Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
 Audio-Wiedergabe unterstützt, wurde der Audio-Code der
 [LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine Pi übernommen.
 Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
-[Steffen Wilke](https://github.com/steffen-wilke)
+[Steffen Wilke](https://github.com/steffen-wilke) und
 [Matthias Wilke](https://github.com/nightm4re94). Neben der Sound-Engine kommen
 viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
 Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
@@ -67,9 +75,9 @@ entspricht 1 Meter. Die verwendete Physik-Engine rechnet intern mit Einheiten
 aus der realen Welt, deshalb bietet sich Meter als Maßheit für das
 Koordinatensystem an.[^engine-alpha-wiki:zeichnen-grafikfenster]
 
-[^engine-alpha-wiki:zeichnen-grafikfenster]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:zeichnen-grafikfenster]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster#Zeichnen_im_Grafikfenster
-
 
 ## Figur (Actor)
 
@@ -93,7 +101,8 @@ für den x- als auch den y-Wert der Koordinate hat.
 
 ## Tutorial: Hello World[^engine-alpha-wiki:hello-world]
 
-[^engine-alpha-wiki:hello-world]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:hello-world]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Hello_World
 
 <!-- ### Schritt 1: Grundlegender Aufbau -->
@@ -267,7 +276,8 @@ circle.setLayerPosition(-2);
 
 ## Nutzereingaben[^engine-alpha-wiki:user-input]
 
-[^engine-alpha-wiki:user-input]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:user-input]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input
 
 ### Tastatureingaben erstellen
@@ -440,7 +450,8 @@ public class KeyEventDisplayDemo extends Scene
 
 ### Mauseingaben erstellen[^engine-alpha-wiki:user-input-mouse-click-listener]
 
-[^engine-alpha-wiki:user-input-mouse-click-listener]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:user-input-mouse-click-listener]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
 ![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.gif)
@@ -502,7 +513,8 @@ Engine hier die interne Klasse
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 
-[^engine-alpha-wiki:vector]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:vector]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
 ![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.gif)
@@ -537,7 +549,8 @@ neue Kürzel gesetzt werden.
 
 ## Game Loop[^engine-alpha-wiki:game-loop]
 
-[^engine-alpha-wiki:game-loop]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:game-loop]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Game_Loop
 
 <!-- ### How-To Engine Code: Der Game Loop -->
@@ -782,7 +795,6 @@ public void placeRandomGoodie()
 
 Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeAdvanced.java)
 
-
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
   einen von mehreren Hit Points ab).
@@ -802,7 +814,8 @@ Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/eng
 
 ## Szenen[^engine-alpha-wiki:scenes]
 
-[^engine-alpha-wiki:scenes]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:scenes]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Scenes
 
 Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler
@@ -1035,7 +1048,8 @@ Hauptszene angemeldet.
 
 ## Physics[^engine-alpha-wiki:physics]
 
-[^engine-alpha-wiki:physics]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:physics]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Physics
 
 Die Engine Pi nutzt eine [Java-Version](http://jbox2d.org/) von [Box2D](https://box2d.org/). Diese mächtige
@@ -1380,7 +1394,8 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 
 ## Stateful Animation[^engine-alpha-wiki:stateful-animation]
 
-[^engine-alpha-wiki:stateful-animation]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:stateful-animation]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Stateful_Animation
 
 Die
@@ -1852,7 +1867,8 @@ public class RepeatDemo extends Scene
 
 ## Kollisionen-Erkennung[^engine-alpha-wiki:collision]
 
-[^engine-alpha-wiki:collision]: Der Abschnitt stammt aus dem
+[^engine-alpha-wiki:collision]:
+    Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Collision
 
 <!-- ### Spielkonzept und grundlegender Aufbau -->
@@ -2217,11 +2233,11 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
 
 Die Klassen mit Farbbezug:
 
-* [resources.ColorContainer](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorContainer.html)
-* [resources.ColorScheme](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorScheme.html)
-* [resources.ColorSchemeSelection](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorSchemeSelection.html)
-* [resources.NamedColor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/NamedColor.html)
-* [Resources.COLORS](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#COLORS)
+- [resources.ColorContainer](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorContainer.html)
+- [resources.ColorScheme](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorScheme.html)
+- [resources.ColorSchemeSelection](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorSchemeSelection.html)
+- [resources.NamedColor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/NamedColor.html)
+- [Resources.COLORS](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#COLORS)
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
@@ -2279,8 +2295,8 @@ public class ImageAverageColorDemo extends Scene
 
 ### Java-Entwicklungsumgebung: IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
 
-Eine integrierte Entwicklungsumgebung (IDE, von englisch *integrated development
-environment*) ist eine Sammlung von Computerprogrammen, mit denen die Aufgaben
+Eine integrierte Entwicklungsumgebung (IDE, von englisch _integrated development
+environment_) ist eine Sammlung von Computerprogrammen, mit denen die Aufgaben
 der Softwareentwicklung möglichst ohne Medienbrüche bearbeitet werden können.[^wikipedia-ide]
 
 [^wikipedia-ide] https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung
