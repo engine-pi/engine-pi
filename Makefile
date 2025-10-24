@@ -4,7 +4,7 @@ JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 deploy:
 	mvn deploy
 
-doc: install
+doc: clean install
 	rm -rf engine-pi/target/site/apidocs
 	rm -rf engine-pi-demos/target/site/apidocs
 	mvn javadoc:javadoc
@@ -20,6 +20,9 @@ install:
 
 package:
 	mvn package
+
+clean:
+	mvn clean
 
 run_jar:
 	rm -rf engine-pi/target

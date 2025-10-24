@@ -34,6 +34,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * @param height <b>Reelle</b> Höhe des Rechtecks.
  *
  * @author Michael Andonie
+ *
+ * @hidden
  */
 @Internal
 public record Bounds(double x, double y, double width, double height)

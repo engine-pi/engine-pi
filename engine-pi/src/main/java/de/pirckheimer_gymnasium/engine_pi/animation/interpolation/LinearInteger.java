@@ -37,6 +37,9 @@ public class LinearInteger implements Interpolator<Integer>
         this.end = end;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public Integer interpolate(double progress)

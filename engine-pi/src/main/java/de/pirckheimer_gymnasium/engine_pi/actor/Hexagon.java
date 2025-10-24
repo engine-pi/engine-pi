@@ -50,6 +50,9 @@ public class Hexagon extends RegularPolygon
         this(1);
     }
 
+    /**
+     * @hidden
+     */
     public static void main(String[] args)
     {
         Game.start(new Scene()

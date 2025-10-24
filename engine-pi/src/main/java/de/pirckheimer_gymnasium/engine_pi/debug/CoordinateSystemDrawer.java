@@ -367,6 +367,8 @@ public final class CoordinateSystemDrawer
 
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
+     *
+     * @hidden
      */
     @Internal
     public void draw()

@@ -112,6 +112,9 @@ public class KeyFrame<Value extends Number>
         return timecode;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     void setNext(KeyFrame<Value> next)
     {
@@ -124,6 +127,9 @@ public class KeyFrame<Value extends Number>
         return (int) ((this.getTimecode() - o.getTimecode()) * 1000);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     Interpolator<Double> generateInterpolator(Value destinationValue)
     {
@@ -140,12 +146,18 @@ public class KeyFrame<Value extends Number>
         throw new RuntimeException("The impossible happened.");
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     boolean hasNext()
     {
         return next != null;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     KeyFrame<Value> getNext()
     {

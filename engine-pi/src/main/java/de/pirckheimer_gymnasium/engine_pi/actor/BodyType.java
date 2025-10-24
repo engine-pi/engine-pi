@@ -137,6 +137,8 @@ public enum BodyType
      * Konvertierungsmethode zwischen Engine-Physiktyp und JB2D-Physiktyp.
      *
      * @return Der zugehörige JB2D-Physiktyp zu diesem Engine-Physiktyp.
+     *
+     * @hidden
      */
     @Internal
     public de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType toBox2D()

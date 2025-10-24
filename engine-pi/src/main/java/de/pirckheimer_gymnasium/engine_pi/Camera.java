@@ -104,6 +104,8 @@ public final class Camera
 
     /**
      * Konstruktor erstellt eine neue Kamera mit Fokus auf <code>(0, 0)</code>.
+     *
+     * @hidden
      */
     @Internal
     public Camera()

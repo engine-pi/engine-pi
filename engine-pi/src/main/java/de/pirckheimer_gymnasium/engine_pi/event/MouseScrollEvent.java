@@ -40,6 +40,9 @@ public class MouseScrollEvent
      */
     private final double wheelRotation;
 
+    /**
+     * @hidden
+     */
     @Internal
     public MouseScrollEvent(double wheelRotation)
     {

@@ -35,6 +35,9 @@ public class Line extends Actor
         this.point2 = point2;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

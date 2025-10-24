@@ -205,6 +205,9 @@ public class Rectangle extends Geometry
         this.borderRadius = percent;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

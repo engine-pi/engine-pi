@@ -37,6 +37,8 @@ public interface Tile
 {
     /**
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @hidden
      */
     @Internal
     void render(Graphics2D g, double width, double height);

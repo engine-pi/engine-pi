@@ -131,6 +131,9 @@ public class Layer implements KeyStrokeListenerRegistration,
         return parent;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     void setParent(Scene parent)
     {
@@ -436,6 +439,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse
      *     ist umgekehrt), der mit der aktuellen Kameraeinstellung dem
      *     angegebenen <code>worldPoint</code> entspricht
+     *
+     * @hidden
      */
     @Internal
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
@@ -514,6 +519,9 @@ public class Layer implements KeyStrokeListenerRegistration,
         return 1 + (parent.getCamera().getMeter() - 1) * parallaxZoom;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public void render(Graphics2D g, Camera camera, int width, int height)
     {
@@ -559,6 +567,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Gibt den {@link WorldHandler} dieser Ebene aus.
      *
      * @return Der {@link WorldHandler} dieser Ebene.
+     *
+     * @hidden
      */
     @Internal
     public WorldHandler getWorldHandler()
@@ -571,6 +581,9 @@ public class Layer implements KeyStrokeListenerRegistration,
         return worldHandler.getWorld();
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public void step(double pastTime)
     {
@@ -604,6 +617,9 @@ public class Layer implements KeyStrokeListenerRegistration,
         return mouseScrollListeners;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     void invokeFrameUpdateListeners(double pastTime)
     {

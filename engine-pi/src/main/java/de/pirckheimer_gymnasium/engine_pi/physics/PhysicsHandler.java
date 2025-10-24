@@ -41,7 +41,12 @@ import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
  * <li><b>Einflüsse</b> auf das {@link Actor}-Objekt ausüben (wie anwenden von
  * Impulsen / Kräften)</li>
  * </ul>
- * Created by andonie on 16.02.15.
+ *
+ * @author Michael Andonie
+ *
+ * @since 16.02.15
+ *
+ * @hidden
  */
 @Internal
 public interface PhysicsHandler
@@ -54,6 +59,8 @@ public interface PhysicsHandler
      *
      * @param v Ein Vector, um den das Ziel-Objekt verschoben werden soll. Dies
      *     ändert seine Position, jedoch sonst keine weiteren Eigenschaften.
+     *
+     * @hidden
      */
     @Internal
     void moveBy(Vector v);
@@ -63,6 +70,8 @@ public interface PhysicsHandler
      *
      * @return der aktuelle <b>Gewichtsmittelpunkt</b> des Ziel-Objekts als
      *     <i>Point auf der Zeichenebene</i>.
+     *
+     * @hidden
      */
     @Internal
     Vector getCenter();
@@ -77,6 +86,8 @@ public interface PhysicsHandler
      *     Ziel-Objekts liegt, sonst <code>false</code>. Das Ergebnis kann
      *     (abhängig von der implementierenden Klasse) verschieden sicher
      *     richtige Ergebnisse liefern.
+     *
+     * @hidden
      */
     @Internal
     boolean contains(Vector p);
@@ -87,6 +98,8 @@ public interface PhysicsHandler
      * @return Die aktuelle Position des Ziel-Objekts. Diese ist bei Erstellung
      *     des Objekts zunächst immer <code>(0|0)</code> und wird mit Rotation
      *     und Verschiebung verändert.
+     *
+     * @hidden
      */
     @Internal
     Vector getPosition();
@@ -96,6 +109,8 @@ public interface PhysicsHandler
      * Erstellung eines {@link Actor}-Objekts ist seine Rotation stets 0.
      *
      * @return die aktuelle Rotation des Ziel-Objekts in <i>Grad</i>.
+     *
+     * @hidden
      */
     @Internal
     double getRotation();
@@ -109,46 +124,87 @@ public interface PhysicsHandler
      *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
      *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
      *     </ul>
+     *
+     * @hidden
      */
     @Internal
     void rotateBy(double degree);
 
+    /**
+     * @hidden
+     */
     @Internal
     void setRotation(double degree);
 
+    /**
+     * @hidden
+     */
     @Internal
     void setDensity(double density);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getDensity();
 
+    /**
+     * @hidden
+     */
     @Internal
     void setGravityScale(double factor);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getGravityScale();
 
+    /**
+     * @hidden
+     */
     @Internal
     void setFriction(double friction);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getFriction();
 
+    /**
+     * @hidden
+     */
     @Internal
     void setRestitution(double restitution);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getRestitution();
 
+    /**
+     * @hidden
+     */
     @Internal
     void setLinearDamping(double damping);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getLinearDamping();
 
+    /**
+     * @hidden
+     */
     @Internal
     void setAngularDamping(double damping);
 
+    /**
+     * @hidden
+     */
     @Internal
     double getAngularDamping();
 
@@ -156,6 +212,8 @@ public interface PhysicsHandler
      * Gibt die Masse des Ziel-Objekts aus.
      *
      * @return Die Masse des Ziel-Objekts in [kg].
+     *
+     * @hidden
      */
     @Internal
     double getMass();
@@ -166,6 +224,8 @@ public interface PhysicsHandler
      *
      * @param force Die Kraft, die auf den Massenschwerpunkt angewandt werden
      *     soll. <b>Nicht in [px]</b>, sondern in [N] = [m / s^2].
+     *
+     * @hidden
      */
     @Internal
     void applyForce(Vector force);
@@ -175,6 +235,8 @@ public interface PhysicsHandler
      *
      * @param torque der Drehmoment, der auf das Ziel-Objekt wirken soll. In
      *     [N*m]
+     *
+     * @hidden
      */
     @Internal
     void applyTorque(double torque);
@@ -184,6 +246,8 @@ public interface PhysicsHandler
      *
      * @param rotationImpulse der Drehimpuls, der auf das Ziel-Objekt wirken
      *     soll. in [kg*m*m/s]
+     *
+     * @hidden
      */
     @Internal
     void applyRotationImpulse(double rotationImpulse);
@@ -192,13 +256,21 @@ public interface PhysicsHandler
      * Macht ein Type-Update für diesen Handler.
      *
      * @param type Der neue Type.
+     *
+     * @hidden
      */
     @Internal
     void setType(BodyType type);
 
+    /**
+     * @hidden
+     */
     @Internal
     BodyType getType();
 
+    /**
+     * @hidden
+     */
     @Internal
     void applyForce(Vector kraftInN, Vector globalLocation);
 
@@ -207,6 +279,8 @@ public interface PhysicsHandler
      *
      * @param impulsInNS Ein Impuls (in [Ns]).
      * @param globalLocation TODO
+     *
+     * @hidden
      */
     @Internal
     void applyImpulse(Vector impulsInNS, Vector globalLocation);
@@ -216,6 +290,8 @@ public interface PhysicsHandler
      * befindet.
      *
      * @return Der World-Handler, der zu diesem Physics-Handler gehört.
+     *
+     * @hidden
      */
     @Internal
     WorldHandler getWorldHandler();
@@ -224,6 +300,8 @@ public interface PhysicsHandler
      * Wird intern zum Debuggen benutzt. Gibt den korrespondierenden Body aus.
      *
      * @return Der korrespondierende Body.
+     *
+     * @hidden
      */
     @Internal
     Body getBody();
@@ -231,6 +309,8 @@ public interface PhysicsHandler
     /**
      * Setzt die Wirkung aller physikalischer Bewegungen (Geschwindigkeit und
      * Drehung) zurück. Hiernach ist das Objekt in Ruhe.
+     *
+     * @hidden
      */
     @Internal
     void resetMovement();
@@ -240,6 +320,8 @@ public interface PhysicsHandler
      *
      * @param metersPerSecond Setzt die Geschwindigkeit, mit der sich das
      *     Zielobjekt bewegen soll.
+     *
+     * @hidden
      */
     @Internal
     void setVelocity(Vector metersPerSecond);
@@ -248,6 +330,8 @@ public interface PhysicsHandler
      * Gibt die aktuelle Geschwindigkeit aus.
      *
      * @return Die aktuelle Geschwindigkeit.
+     *
+     * @hidden
      */
     @Internal
     Vector getVelocity();
@@ -257,6 +341,8 @@ public interface PhysicsHandler
      *
      * @param rotationsPerSecond Setzt die Drehgeschwindigkeit, mit der sich das
      *     Zielobjekt bewegen soll.
+     *
+     * @hidden
      */
     @Internal
     void setAngularVelocity(double rotationsPerSecond);
@@ -265,18 +351,24 @@ public interface PhysicsHandler
      * Gibt die aktuelle Drehgeschwindigkeit aus.
      *
      * @return Die aktuelle Drehgeschwindigkeit.
+     *
+     * @hidden
      */
     @Internal
     double getAngularVelocity();
 
     /**
      * Setzt, ob die Rotation blockiert sein soll.
+     *
+     * @hidden
      */
     @Internal
     void setRotationLocked(boolean locked);
 
     /**
      * @return Ob die Rotation des Objekts blockiert ist.
+     *
+     * @hidden
      */
     @Internal
     boolean isRotationLocked();
@@ -291,6 +383,8 @@ public interface PhysicsHandler
      *
      * @return <code>true</code>, wenn direkt unter dem Objekt ein passives
      *     Objekt ist. Sonst <code>false</code>.
+     *
+     * @hidden
      */
     @Internal
     boolean isGrounded();
@@ -301,6 +395,8 @@ public interface PhysicsHandler
      *
      * @param fixtures Die neuen Fixtures als Supplier, der die Liste der
      *     Fixtures ausgibt.
+     *
+     * @hidden
      */
     @Internal
     void setFixtures(Supplier<List<FixtureData>> fixtures);
@@ -310,6 +406,8 @@ public interface PhysicsHandler
      *
      * @return der gegenwärtige physikalische Zustand des Raum-Objekts in
      *     Proxy-Daten.
+     *
+     * @hidden
      */
     @Internal
     PhysicsData getPhysicsData();

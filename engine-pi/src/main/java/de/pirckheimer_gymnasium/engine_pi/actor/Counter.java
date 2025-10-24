@@ -125,6 +125,9 @@ public class Counter extends Text
         return formatter.format();
     }
 
+    /**
+     * @hidden
+     */
     public static void main(String[] args)
     {
         Game.start(new Scene()

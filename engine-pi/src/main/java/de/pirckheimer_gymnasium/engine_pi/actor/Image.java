@@ -119,6 +119,8 @@ public class Image extends Actor
 
     /**
      * @return Die Größe des Bildes in Pixeln.
+     *
+     * @hidden
      */
     @Internal
     public Dimension getImageSizeInPx()
@@ -351,6 +353,9 @@ public class Image extends Actor
         this.flippedHorizontally = flippedHorizontally;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
@@ -390,6 +395,9 @@ public class Image extends Actor
         return formatter.format();
     }
 
+    /**
+     * @hidden
+     */
     public static void main(String[] args)
     {
         Game.start(new Scene()

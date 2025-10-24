@@ -68,6 +68,8 @@ public class BodyHandler implements PhysicsHandler
 
     /**
      * Erstellt einen neuen Body-Handler
+     *
+     * @hidden
      */
     @Internal
     public BodyHandler(Actor actor, PhysicsData physicsData,
@@ -484,6 +486,9 @@ public class BodyHandler implements PhysicsHandler
         }
     }
 
+    /**
+     * @hidden
+     */
     @Override
     @Internal
     public PhysicsData getPhysicsData()

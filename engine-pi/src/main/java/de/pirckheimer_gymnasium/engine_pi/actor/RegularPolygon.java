@@ -73,6 +73,9 @@ public class RegularPolygon extends Polygon
         return vectors;
     }
 
+    /**
+     * @hidden
+     */
     public static void main(String[] args)
     {
         Game.debug();

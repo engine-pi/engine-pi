@@ -100,6 +100,9 @@ public class Circle extends Geometry
         return diameter / 2;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
@@ -127,6 +130,9 @@ public class Circle extends Geometry
         this.setFixture(() -> thatoneCircle);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     private static Shape createCircleShape(double diameter)
     {

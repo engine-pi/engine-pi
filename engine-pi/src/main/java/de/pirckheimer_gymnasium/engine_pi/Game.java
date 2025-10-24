@@ -875,6 +875,8 @@ public final class Game
      * Finde die Position des Mausklicks auf der Zeichenebene. Die Position wird
      * relativ zum Ursprung des {@link RenderPanel}-Canvas angegeben. Die
      * Mausklick-Position muss mit dem Zoom-Wert verrechnet werden.
+     *
+     * @hidden
      */
     @Internal
     public static Vector convertMousePosition(Scene scene,
@@ -897,6 +899,9 @@ public final class Game
                         / zoom);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public static java.awt.Point getMousePositionInFrame()
     {

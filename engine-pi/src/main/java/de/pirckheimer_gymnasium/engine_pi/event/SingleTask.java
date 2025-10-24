@@ -29,6 +29,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * @author Niklas Keller
  *
  * @see FrameUpdateListenerRegistration#delay(double, Runnable)
+ *
+ * @hidden
  */
 @Internal
 public final class SingleTask implements FrameUpdateListener

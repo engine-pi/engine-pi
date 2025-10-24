@@ -59,6 +59,9 @@ public class SinusDouble implements Interpolator<Double>
         this.amplitude = amplitude;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public Double interpolate(double progress)

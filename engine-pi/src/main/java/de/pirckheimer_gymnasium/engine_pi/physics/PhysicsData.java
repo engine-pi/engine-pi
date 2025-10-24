@@ -38,6 +38,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines
  * {@link Actor}-Objekts.
+ *
+ * @hidden
  */
 @Internal
 public class PhysicsData
@@ -185,6 +187,9 @@ public class PhysicsData
         return body;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public FixtureData[] generateFixtureData()
     {

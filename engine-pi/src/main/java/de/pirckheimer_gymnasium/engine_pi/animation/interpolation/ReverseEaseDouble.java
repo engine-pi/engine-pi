@@ -37,6 +37,9 @@ public class ReverseEaseDouble implements Interpolator<Double>
         this.middle = middle;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public Double interpolate(double progress)

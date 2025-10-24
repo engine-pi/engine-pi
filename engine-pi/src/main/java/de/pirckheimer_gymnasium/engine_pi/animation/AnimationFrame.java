@@ -31,6 +31,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Animation}.
  *
  * @author Niklas Keller
+ *
+ * @hidden
  */
 @Internal
 public final class AnimationFrame
@@ -51,6 +53,8 @@ public final class AnimationFrame
      * @param image Ein Bild, das sich bereits im Speicher befindet.
      * @param duration Die Dauer in Sekunden, die dieses Einzelbild aktiv
      *     bleibt.
+     *
+     * @hidden
      */
     @Internal
     public AnimationFrame(BufferedImage image, double duration)
@@ -59,18 +63,27 @@ public final class AnimationFrame
         this.duration = duration;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public void setDuration(double duration)
     {
         this.duration = duration;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public BufferedImage getImage()
     {
         return image;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public double getDuration()
     {
@@ -82,6 +95,8 @@ public final class AnimationFrame
      * Objekts)
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @hidden
      */
     @Internal
     public void render(Graphics2D g, double width, double height,

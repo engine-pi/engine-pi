@@ -50,6 +50,8 @@ public final class InfoBoxDrawer
      * Zeichnet einige <b>Informationsboxen</b> in das linke obere Eck.
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @hidden
      */
     @Internal
     public static void draw(Graphics2D g, Scene scene, double frameDuration,

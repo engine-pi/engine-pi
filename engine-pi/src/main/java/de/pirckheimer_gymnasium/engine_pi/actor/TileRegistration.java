@@ -123,6 +123,9 @@ public class TileRegistration extends Actor implements TileMap
         tiles[x][y] = tile;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

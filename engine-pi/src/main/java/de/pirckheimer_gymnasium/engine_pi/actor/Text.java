@@ -51,6 +51,9 @@ public class Text extends Geometry
     // in font metrics
     private static final int SIZE = 1000;
 
+    /**
+     * @hidden
+     */
     @Internal
     private static FixtureData createShape(String content, double height,
             Font font)
@@ -356,6 +359,9 @@ public class Text extends Geometry
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     private void update()
     {
@@ -365,6 +371,9 @@ public class Text extends Geometry
         setFixture(() -> createShape(content, height, font));
     }
 
+    /**
+     * @hidden
+     */
     @Override
     @Internal
     public void render(Graphics2D g, double pixelPerMeter)

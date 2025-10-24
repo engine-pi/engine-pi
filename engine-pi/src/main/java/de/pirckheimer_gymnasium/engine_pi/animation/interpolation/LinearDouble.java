@@ -37,6 +37,9 @@ public class LinearDouble implements Interpolator<Double>
         this.end = end;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public Double interpolate(double progress)

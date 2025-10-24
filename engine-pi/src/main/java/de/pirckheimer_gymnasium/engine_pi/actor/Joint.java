@@ -47,6 +47,8 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
     /**
      * Eine Verbindung kann entfernt und neu erstellt werden, daher benötigen
      * wir diese Methode hier, damit die Verbindung neu gesetzt werden kann.
+     *
+     * @hidden
      */
     @Internal
     public final void setJoint(JointType joint, WorldHandler worldHandler)
@@ -57,6 +59,9 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
 
     protected abstract void updateCustomProperties(JointType joint);
 
+    /**
+     * @hidden
+     */
     @Internal
     protected final JointType getJoint()
     {

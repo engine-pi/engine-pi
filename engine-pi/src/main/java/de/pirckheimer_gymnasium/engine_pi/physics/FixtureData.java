@@ -143,6 +143,8 @@ public class FixtureData
     /**
      * Generiert eine JBox2D Fixture-Definition, die den aktuellen Settings
      * dieser Fixture-Data entspricht.
+     *
+     * @hidden
      */
     @Internal
     FixtureDef createFixtureDef(PhysicsData parent)
@@ -168,6 +170,8 @@ public class FixtureData
      *
      * @return Eine Engine-Fixture-Data, die die JBox2D-Fixture-Def vollständig
      *     beschreibt.
+     *
+     * @hidden
      */
     @Internal
     public static FixtureData fromFixture(Fixture fixture)

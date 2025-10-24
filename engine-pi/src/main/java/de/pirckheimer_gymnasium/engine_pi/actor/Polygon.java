@@ -101,6 +101,9 @@ public class Polygon extends Geometry
         setFixture(() -> FixtureBuilder.polygon(points));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

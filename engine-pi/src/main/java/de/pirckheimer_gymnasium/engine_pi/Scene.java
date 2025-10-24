@@ -150,6 +150,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @param pastTime Die Echtzeit, die seit dem letzten World-Step vergangen
      *     ist.
+     *
+     * @hidden
      */
     @Internal
     public final void step(double pastTime,
@@ -177,6 +179,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {
@@ -203,6 +208,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Szene geändert. Stellt sicher, dass die Ebene-Liste korrekt sortiert ist
      * und aller Ebenen in der richtigen Reihenfolge gerendert werden.
      * </p>
+     *
+     * @hidden
      */
     @Internal
     final void sortLayers()
@@ -314,6 +321,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         camera.setFocus(focus);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     private void renderJoints(Graphics2D g)
     {
@@ -329,6 +339,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     private static void renderJoint(Joint j, Graphics2D g, Layer layer)
     {
@@ -367,6 +380,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param a Der Vektor a.
      * @param b Der Vektor b.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
      */
     @Internal
     private static void renderJointRectangle(Graphics2D g, Color color,
@@ -392,6 +407,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * Gibt den WorldHandler der Hauptebene aus.
      *
      * @return WorldHandler der Hauptebene.
+     *
+     * @hidden
      */
     @Internal
     public final WorldHandler getWorldHandler()
@@ -552,6 +569,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         return frameUpdateListeners;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public final void invokeFrameUpdateListeners(double pastTime)
     {
@@ -566,18 +586,27 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     final void invokeKeyDownListeners(KeyEvent event)
     {
         keyStrokeListeners.invoke(listener -> listener.onKeyDown(event));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     final void invokeKeyUpListeners(KeyEvent event)
     {
         keyStrokeListeners.invoke(listener -> listener.onKeyUp(event));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     final void invokeMouseDownListeners(Vector position, MouseButton button)
     {
@@ -585,6 +614,9 @@ public class Scene implements KeyStrokeListenerRegistration,
                 .invoke(listener -> listener.onMouseDown(position, button));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     final void invokeMouseUpListeners(Vector position, MouseButton button)
     {
@@ -592,6 +624,9 @@ public class Scene implements KeyStrokeListenerRegistration,
                 .invoke(listener -> listener.onMouseUp(position, button));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     final void invokeMouseScrollListeners(MouseScrollEvent event)
     {

@@ -88,6 +88,8 @@ public class CollisionEvent<E extends Actor>
      * @param colliding Das kollidierende {@link Actor}-Objekt. Das zweite
      *     Objekt der Kollision ist implizit durch die Anmeldung am
      *     entsprechenden Actor gegeben.
+     *
+     * @hidden
      */
     @Internal
     public CollisionEvent(Contact contact, E colliding)

@@ -33,6 +33,8 @@ public final class Random
 {
     /**
      * Privater Konstruktor.
+     *
+     * @hidden
      */
     @Internal
     private Random()

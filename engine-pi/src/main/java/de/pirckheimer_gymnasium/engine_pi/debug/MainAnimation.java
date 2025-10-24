@@ -57,6 +57,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  *
  * @author Niklas Keller
  * @author Josef Friedrich
+ *
+ * @hidden
  */
 @Internal
 public final class MainAnimation extends Scene implements FrameUpdateListener

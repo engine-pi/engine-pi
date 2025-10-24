@@ -44,6 +44,9 @@ public class ConstantInterpolator<Value> implements Interpolator<Value>
         this.value = value;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public Value interpolate(double progress)

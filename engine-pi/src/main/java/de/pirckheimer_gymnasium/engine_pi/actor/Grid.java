@@ -111,6 +111,9 @@ public class Grid extends Actor
         background = color;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

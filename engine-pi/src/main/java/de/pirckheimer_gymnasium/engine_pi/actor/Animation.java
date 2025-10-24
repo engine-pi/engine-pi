@@ -120,6 +120,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * Gibt die Frames dieser Animation aus.
      *
      * @return Die Frames dieser Animation.
+     *
+     * @hidden
      */
     @Internal
     public AnimationFrame[] getFrames()
@@ -168,6 +170,9 @@ public class Animation extends Actor implements FrameUpdateListener
         onCompleteListeners.add(listener);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void onFrameUpdate(double pastTime)
@@ -189,6 +194,9 @@ public class Animation extends Actor implements FrameUpdateListener
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

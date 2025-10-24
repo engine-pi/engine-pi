@@ -398,6 +398,8 @@ public class StatefulAnimation<State> extends Actor
 
     /**
      * Methode pro Einzelbild über einen anonymen Beobachter aufgerufen.
+     *
+     * @hidden
      */
     @Internal
     private void internalOnFrameUpdate(double frameDuration)
@@ -444,6 +446,9 @@ public class StatefulAnimation<State> extends Actor
         this.setFixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)

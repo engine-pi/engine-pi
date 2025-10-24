@@ -111,6 +111,8 @@ public class WorldHandler implements ContactListener
 
     /**
      * Erstellt eine neue standardisierte Physik ohne Schwerkraft.
+     *
+     * @hidden
      */
     @Internal
     public WorldHandler(Layer layer)
@@ -124,6 +126,8 @@ public class WorldHandler implements ContactListener
      * Gibt den World-Parameter der Physics aus.
      *
      * @return Der JB2D-World-Parameter der Welt.
+     *
+     * @hidden
      */
     @Internal
     public World getWorld()
@@ -150,6 +154,8 @@ public class WorldHandler implements ContactListener
      * @throws RuntimeException Wenn die World sich gerade im World-Step
      *     befindet. Ist dies nicht der Fall, passiert nichts (und es wird keine
      *     Exception geworfen).
+     *
+     * @hidden
      */
     @Internal
     public void assertNoWorldStep()
@@ -210,6 +216,8 @@ public class WorldHandler implements ContactListener
      * zugehörige {@link Actor}-Objekt.
      *
      * @param body Der zu entfernende {@link Body Körper}.
+     *
+     * @hidden
      */
     @Internal
     public void removeAllInternalReferences(Body body)
@@ -222,6 +230,8 @@ public class WorldHandler implements ContactListener
      * Fügt einen {@link Contact Kontakt} der Blacklist hinzu. {@link Contact
      * Kontakt}e in der Blacklist werden bis zur Trennung nicht aufgelöst. Der
      * Kontakt wird nach endContact wieder entfernt.
+     *
+     * @hidden
      */
     @Internal
     public void addContactToBlacklist(Contact contact)
@@ -248,6 +258,8 @@ public class WorldHandler implements ContactListener
      *
      * @param contact JBox2D Contact Objekt, das den Contact beschreibt.
      * @param isBegin true = Begin-Kontakt | false = End-Kontakt
+     *
+     * @hidden
      */
     @Internal
     private void processContact(final Contact contact, boolean isBegin)
@@ -344,6 +356,9 @@ public class WorldHandler implements ContactListener
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     private void generalCheckup(Body act, Body col, Contact contact,
             final boolean isBegin)
@@ -396,6 +411,9 @@ public class WorldHandler implements ContactListener
     }
     /* ____________ On-Request Collision Checkups ____________ */
 
+    /**
+     * @hidden
+     */
     @Internal
     public Fixture[] queryAABB(AABB aabb)
     {
@@ -404,6 +422,9 @@ public class WorldHandler implements ContactListener
         return fixtures.toArray(new Fixture[0]);
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public static boolean isBodyCollision(Body a, Body b)
     {
@@ -483,6 +504,8 @@ public class WorldHandler implements ContactListener
      * @param listener Das anzumeldende Kollisionsbeobachter
      * @param actor Kollisionsbeobachter wird informiert falls dieses
      *     {@link Actor}-Objekt mit einem anderen Objekt kollidiert.
+     *
+     * @hidden
      */
     @Internal
     public static void addGenericCollisionListener(
@@ -509,6 +532,8 @@ public class WorldHandler implements ContactListener
      * @param actor Der Actor (Haupt-{@link Actor}-Objekt)
      * @param collider Der Collider (zweites {@link Actor}-Objekt)
      * @param <E> Der Type des Colliders.
+     *
+     * @hidden
      */
     @Internal
     public static <E extends Actor> void addSpecificCollisionListener(
@@ -541,6 +566,9 @@ public class WorldHandler implements ContactListener
         });
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public static <JointType extends de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint, Wrapper extends Joint<JointType>> Wrapper createJoint(
             Actor a, Actor b, JointBuilder<JointType> jointBuilder,
@@ -556,6 +584,9 @@ public class WorldHandler implements ContactListener
         return wrapper;
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public static List<Runnable> addMountListener(Actor a, Actor b,
             Consumer<WorldHandler> runnable)

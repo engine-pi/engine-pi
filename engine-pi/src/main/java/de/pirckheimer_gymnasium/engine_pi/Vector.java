@@ -36,6 +36,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 @SuppressWarnings("StaticVariableOfConcreteClass")
 public final class Vector implements Cloneable
 {
+    /**
+     * @hidden
+     */
     @Internal
     public static Vector of(Vec2 vector)
     {
@@ -573,6 +576,9 @@ public final class Vector implements Cloneable
         }
     }
 
+    /**
+     * @hidden
+     */
     @Internal
     public Vec2 toVec2()
     {
