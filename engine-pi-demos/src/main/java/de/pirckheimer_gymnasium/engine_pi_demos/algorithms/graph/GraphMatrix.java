@@ -12,28 +12,16 @@ public class GraphMatrix
 {
     /**
      * Die aktuelle Knotenanzahl.
-     *
-     * <p>
-     * Heißt im Schulbuch: <code>nodeCount</code>.
-     * </p>
      */
     private int nodeCount;
 
     /**
      * Das Feld der Knoten des Graphen.
-     *
-     * <p>
-     * Heißt im Schulbuch: <code>knoten</code>.
-     * </p>
      */
     private Node[] nodes;
 
     /**
      * Das 2-dimensionale Feld der Adjazenzmatrix.
-     *
-     * <p>
-     * Heißt im Schulbuch: <code>matrix</code>.
-     * </p>
      */
     private int[][] matrix;
 
@@ -41,11 +29,7 @@ public class GraphMatrix
      * Konstruktor für Objekte der Klasse GRAPH_MATRIX Die maximale Anzahl der
      * Knoten wird dabei festgelegt
      *
-     * <p>
-     * Heißt im Schulbuch: <code>GraphMatrix(int maximaleKnoten)</code>.
-     * </p>
-     *
-     * @param maxNodes Anzahl der maximal möglichen Knoten
+     * @param maxNodes Die <b>Anzahl der maximal möglichen Knoten</b>.
      */
     public GraphMatrix(int maxNodes)
     {
@@ -184,32 +168,63 @@ public class GraphMatrix
     }
 
     /**
-     * Einfügen einer Kante in den Graphen Eine Kante ist durch einen
-     * Anfangsknoten und einen Endknoten festgelegt und hat eine Gewichtung
+     * <b>Einfügen</b> einer Kante in den Graphen.
      *
-     * @param from Der Bezeichner des Anfangsknotens.
-     * @param to Der Bezeichner des Endknotens.
-     * @param weight Die Gewichtung der Kante.
+     * <p>
+     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
+     * festgelegt, hat eine <b>Gewichtung</b> und kann <b>gerichtet</b> sein.
+     * </p>
+     *
+     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
+     * @param to Der <b>Bezeichner</b> des Endknotens.
+     * @param weight Die <b>Gewichtung</b> der Kante.
+     * @param directed Ist die Kante <b>gerichtet</b>?
      */
-    public void addEdge(String from, String to, int weight)
+    public void addEdge(String from, String to, int weight, boolean directed)
     {
         int fromIndex = getNodeIndex(from);
         int toIndex = getNodeIndex(to);
         if (fromIndex != -1 && toIndex != -1 && fromIndex != toIndex)
         {
             matrix[fromIndex][toIndex] = weight;
-            matrix[toIndex][fromIndex] = weight;
+            if (!directed)
+            {
+                matrix[toIndex][fromIndex] = weight;
+            }
         }
     }
 
-    public void addDirectedEdge(String from, String to, int weight)
+    /**
+     * <b>Einfügen</b> einer Kante in den Graphen.
+     *
+     * <p>
+     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
+     * festgelegt, hat eine <b>Gewichtung</b> und ist <b>ungerichtet</b>.
+     * </p>
+     *
+     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
+     * @param to Der <b>Bezeichner</b> des Endknotens.
+     * @param weight Die <b>Gewichtung</b> der Kante.
+     */
+    public void addEdge(String from, String to, int weight)
     {
-        int fromIndex = getNodeIndex(from);
-        int toIndex = getNodeIndex(to);
-        if (fromIndex != -1 && toIndex != -1 && fromIndex != toIndex)
-        {
-            matrix[fromIndex][toIndex] = weight;
-        }
+        addEdge(from, to, weight, false);
+    }
+
+    /**
+     * <b>Einfügen</b> einer Kante in den Graphen.
+     *
+     * <p>
+     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
+     * festgelegt, hat eine <b>Gewichtung von 1</b> und ist <b>ungerichtet</b>.
+     * </p>
+     *
+     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
+     * @param to Der <b>Bezeichner</b> des Endknotens.
+     */
+    public void addEdge(String from, String to)
+    {
+        addEdge(from, to, 1);
     }
 
     /**
@@ -701,9 +716,9 @@ public class GraphMatrix
         g.addEdge("B", "C", 10);
         g.addEdge("B", "D", 15);
         g.addEdge("C", "D", 11);
-        g.addDirectedEdge("E", "D", 6);
+        g.addEdge("E", "D", 6, true);
         g.addEdge("E", "F", 9);
-        g.addDirectedEdge("F", "C", 2);
+        g.addEdge("F", "C", 2, true);
         return g;
     }
 
