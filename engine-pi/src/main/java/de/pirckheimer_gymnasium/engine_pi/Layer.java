@@ -160,7 +160,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Position dieses Layers relativ zu anderen Layers.
+     * Setzt die <b>Position</b> dieser <b>Ebene</b> relativ zu anderen Ebenen.
      *
      * @param position Die neue Position dieser Ebene. Je höher dieser Wert,
      *     desto weiter vorne ist sie.
@@ -470,7 +470,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         Vector center = parent.getCamera().getCenter();
         double pixelPerMeter = calculatePixelPerMeter();
         return new Bounds(0, 0, gameSizeInPixels.getX() / pixelPerMeter,
-                gameSizeInPixels.getY() / pixelPerMeter) //
+                gameSizeInPixels.getY() / pixelPerMeter)
                 .withCenterPoint(center);
     }
 

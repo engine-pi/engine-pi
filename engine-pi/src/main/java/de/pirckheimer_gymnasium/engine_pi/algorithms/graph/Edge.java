@@ -1,5 +1,12 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
+/**
+ *
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.36.0
+ */
 public class Edge
 {
     private Node from;

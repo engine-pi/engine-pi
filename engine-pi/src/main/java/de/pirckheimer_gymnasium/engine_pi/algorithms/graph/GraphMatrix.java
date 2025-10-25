@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
 /**
  * Klasse für einen ungerichteten, gewichteten Graphen. Als Datenstruktur wird
@@ -25,10 +25,13 @@ package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
  * @see <a href=
  *     "https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/GraphAdjazenzMatrix.java">Bschlangaul-Sammlung:
  *     GraphAdjazenzMatrix.java</a>
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.36.0
  */
 public class GraphMatrix extends Graph
 {
-
     /**
      * Das 2-dimensionale Feld der Adjazenzmatrix.
      */
@@ -44,6 +47,14 @@ public class GraphMatrix extends Graph
     {
         super();
         matrix = new int[maxNodes][maxNodes];
+    }
+
+    /**
+     * Erstelle eine Adjazenz-Matrix die <b>100 Knoten</b> aufnehmen kann.
+     */
+    public GraphMatrix()
+    {
+        this(100);
     }
 
     /**

@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
 import java.util.ArrayList;
 
@@ -27,10 +27,13 @@ import java.util.ArrayList;
  * @see <a href=
  *     "https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/Graph.java">Bschlangaul-Sammlung:
  *     Graph.java</a>
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.36.0
  */
 public abstract class Graph
 {
-
     /**
      * Alle Knoten des Graphen
      */
@@ -73,6 +76,11 @@ public abstract class Graph
         }
         throw new RuntimeException(
                 "Unbekannter Knoten mit dem Bezeichner: " + label);
+    }
+
+    public Node getNode(int index)
+    {
+        return nodes.get(index);
     }
 
     /**
@@ -230,6 +238,16 @@ public abstract class Graph
         addEdge(from, to, 1);
     }
 
+    public ArrayList<Node> getNodes()
+    {
+        return nodes;
+    }
+
+    public ArrayList<Edge> getEdges()
+    {
+        return edges;
+    }
+
     public static GraphMatrix getHausDesNikolaus()
     {
         GraphMatrix g = new GraphMatrix(5);
@@ -238,14 +256,14 @@ public abstract class Graph
         g.addNode("C");
         g.addNode("D");
         g.addNode("E");
-        g.addEdge("A", "B", 1);
-        g.addEdge("A", "D", 1);
-        g.addEdge("A", "E", 1);
-        g.addEdge("B", "C", 1);
-        g.addEdge("B", "D", 1);
-        g.addEdge("B", "E", 1);
-        g.addEdge("C", "D", 1);
-        g.addEdge("D", "E", 1);
+        g.addEdge("A", "B");
+        g.addEdge("A", "D");
+        g.addEdge("A", "E");
+        g.addEdge("B", "C");
+        g.addEdge("B", "D");
+        g.addEdge("B", "E");
+        g.addEdge("C", "D");
+        g.addEdge("D", "E");
         return g;
     }
 
@@ -586,56 +604,56 @@ public abstract class Graph
         g.addNode("Tutzing");
         g.addNode("Wolfratshausen");
         // Anlegen der Kanten mit der Gewichtung "ist verbunden"
-        g.addEdge("Dachau", "Altomünster", 1);
-        g.addEdge("Harras", "Großhadern", 1);
-        g.addEdge("Hauptbahnhof", "Donnersbergerbrücke", 1);
-        g.addEdge("Heimeranplatz", "Donnersbergerbrücke", 1);
-        g.addEdge("Heimeranplatz", "Harras", 1);
-        g.addEdge("Heimeranplatz", "Hauptbahnhof", 1);
-        g.addEdge("Holzkirchen", "Giesing", 1);
-        g.addEdge("Innsbrucker Ring", "Giesing", 1);
-        g.addEdge("Karlsplatz", "Hauptbahnhof", 1);
-        g.addEdge("Laim", "Dachau", 1);
-        g.addEdge("Laim", "Donnersbergerbrücke", 1);
-        g.addEdge("Laim", "Feldmoching", 1);
-        g.addEdge("Laimer Platz", "Heimeranplatz", 1);
-        g.addEdge("Marienplatz", "Karlsplatz", 1);
-        g.addEdge("Neufahrn", "Feldmoching", 1);
-        g.addEdge("Neufahrn", "Flughafen", 1);
-        g.addEdge("Neufahrn", "Freising", 1);
-        g.addEdge("Neuperlach", "Giesing", 1);
-        g.addEdge("Neuperlach", "Innsbrucker Ring", 1);
-        g.addEdge("Neuperlach", "Kreuzstraße", 1);
-        g.addEdge("Odeonsplatz", "Arabellapark", 1);
-        g.addEdge("Odeonsplatz", "Garching", 1);
-        g.addEdge("Odeonsplatz", "Karlsplatz", 1);
-        g.addEdge("Odeonsplatz", "Marienplatz", 1);
-        g.addEdge("OEZ", "Hauptbahnhof", 1);
-        g.addEdge("Ostbahnhof", "Erding", 1);
-        g.addEdge("Ostbahnhof", "Flughafen", 1);
-        g.addEdge("Ostbahnhof", "Giesing", 1);
-        g.addEdge("Ostbahnhof", "Innsbrucker Ring", 1);
-        g.addEdge("Ostbahnhof", "Marienplatz", 1);
-        g.addEdge("Ostbahnhof", "Odeonsplatz", 1);
-        g.addEdge("Pasing", "Geltendorf", 1);
-        g.addEdge("Pasing", "Herrsching", 1);
-        g.addEdge("Pasing", "Laim", 1);
-        g.addEdge("Pasing", "Mammendorf", 1);
-        g.addEdge("Petershausen", "Dachau", 1);
-        g.addEdge("Scheidplatz", "Feldmoching", 1);
-        g.addEdge("Scheidplatz", "Hauptbahnhof", 1);
-        g.addEdge("Scheidplatz", "OEZ", 1);
-        g.addEdge("Sendlinger Tor", "Fürstenried", 1);
-        g.addEdge("Sendlinger Tor", "Giesing", 1);
-        g.addEdge("Sendlinger Tor", "Harras", 1);
-        g.addEdge("Sendlinger Tor", "Hauptbahnhof", 1);
-        g.addEdge("Sendlinger Tor", "Marienplatz", 1);
-        g.addEdge("Trudering", "Ebersberg", 1);
-        g.addEdge("Trudering", "Innsbrucker Ring", 1);
-        g.addEdge("Trudering", "Messe", 1);
-        g.addEdge("Trudering", "Ostbahnhof", 1);
-        g.addEdge("Tutzing", "Pasing", 1);
-        g.addEdge("Wolfratshausen", "Harras", 1);
+        g.addEdge("Dachau", "Altomünster");
+        g.addEdge("Harras", "Großhadern");
+        g.addEdge("Hauptbahnhof", "Donnersbergerbrücke");
+        g.addEdge("Heimeranplatz", "Donnersbergerbrücke");
+        g.addEdge("Heimeranplatz", "Harras");
+        g.addEdge("Heimeranplatz", "Hauptbahnhof");
+        g.addEdge("Holzkirchen", "Giesing");
+        g.addEdge("Innsbrucker Ring", "Giesing");
+        g.addEdge("Karlsplatz", "Hauptbahnhof");
+        g.addEdge("Laim", "Dachau");
+        g.addEdge("Laim", "Donnersbergerbrücke");
+        g.addEdge("Laim", "Feldmoching");
+        g.addEdge("Laimer Platz", "Heimeranplatz");
+        g.addEdge("Marienplatz", "Karlsplatz");
+        g.addEdge("Neufahrn", "Feldmoching");
+        g.addEdge("Neufahrn", "Flughafen");
+        g.addEdge("Neufahrn", "Freising");
+        g.addEdge("Neuperlach", "Giesing");
+        g.addEdge("Neuperlach", "Innsbrucker Ring");
+        g.addEdge("Neuperlach", "Kreuzstraße");
+        g.addEdge("Odeonsplatz", "Arabellapark");
+        g.addEdge("Odeonsplatz", "Garching");
+        g.addEdge("Odeonsplatz", "Karlsplatz");
+        g.addEdge("Odeonsplatz", "Marienplatz");
+        g.addEdge("OEZ", "Hauptbahnhof");
+        g.addEdge("Ostbahnhof", "Erding");
+        g.addEdge("Ostbahnhof", "Flughafen");
+        g.addEdge("Ostbahnhof", "Giesing");
+        g.addEdge("Ostbahnhof", "Innsbrucker Ring");
+        g.addEdge("Ostbahnhof", "Marienplatz");
+        g.addEdge("Ostbahnhof", "Odeonsplatz");
+        g.addEdge("Pasing", "Geltendorf");
+        g.addEdge("Pasing", "Herrsching");
+        g.addEdge("Pasing", "Laim");
+        g.addEdge("Pasing", "Mammendorf");
+        g.addEdge("Petershausen", "Dachau");
+        g.addEdge("Scheidplatz", "Feldmoching");
+        g.addEdge("Scheidplatz", "Hauptbahnhof");
+        g.addEdge("Scheidplatz", "OEZ");
+        g.addEdge("Sendlinger Tor", "Fürstenried");
+        g.addEdge("Sendlinger Tor", "Giesing");
+        g.addEdge("Sendlinger Tor", "Harras");
+        g.addEdge("Sendlinger Tor", "Hauptbahnhof");
+        g.addEdge("Sendlinger Tor", "Marienplatz");
+        g.addEdge("Trudering", "Ebersberg");
+        g.addEdge("Trudering", "Innsbrucker Ring");
+        g.addEdge("Trudering", "Messe");
+        g.addEdge("Trudering", "Ostbahnhof");
+        g.addEdge("Tutzing", "Pasing");
+        g.addEdge("Wolfratshausen", "Harras");
         return g;
     }
 
@@ -721,6 +739,247 @@ public abstract class Graph
         g.addEdge("N", "BA", 61);
         g.addEdge("N", "BT", 72);
         g.addEdge("WÜ", "N", 109);
+        return g;
+    }
+
+    /**
+     * {@code Abiturfahrt.grdb}
+     */
+    public static GraphMatrix getCornelsenAbiturfahrt()
+    {
+        GraphMatrix g = new GraphMatrix();
+        // Anlegen der Knoten
+        g.addNode("Bologna", 1.6875, 0.0);
+        g.addNode("Innsbruck", 1.5, 6.65625);
+        g.addNode("München", 0.9375, 8.875);
+        g.addNode("Nürnberg", 0.03125, 11.8125);
+        g.addNode("Salzburg", 4.125, 8.4375);
+        g.addNode("Venedig", 3.59375, 2.65625);
+        g.addNode("Verona", 0.0, 2.5625);
+        // Anlegen der Kanten
+        g.addEdge("Nürnberg", "München", 170);
+        g.addEdge("München", "Innsbruck", 150);
+        g.addEdge("Innsbruck", "Verona", 270);
+        g.addEdge("Verona", "Bologna", 140);
+        g.addEdge("Verona", "Venedig", 110);
+        g.addEdge("Venedig", "Salzburg", 450);
+        g.addEdge("München", "Salzburg", 145);
+        return g;
+    }
+
+    /**
+     * {@code Autobahn.grdb}
+     */
+    public static GraphMatrix getCornelsenAutobahn()
+    {
+        GraphMatrix g = new GraphMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 6.15625, 1.96875);
+        g.addNode("FD", 4.03125, 10.3125);
+        g.addNode("HO", 10.5625, 10.28125);
+        g.addNode("LI", 2.0625, 0.0);
+        g.addNode("M", 10.03125, 1.09375);
+        g.addNode("N", 8.78125, 6.40625);
+        g.addNode("R", 13.125, 4.90625);
+        g.addNode("RO", 14.03125, 0.40625);
+        g.addNode("S", 0.0, 4.65625);
+        g.addNode("UL", 3.03125, 2.90625);
+        g.addNode("WÜ", 3.9375, 7.3125);
+        // Anlegen der Kanten
+        g.addEdge("WÜ", "FD", 86);
+        g.addEdge("S", "UL", 103);
+        g.addEdge("UL", "WÜ", 165);
+        g.addEdge("UL", "LI", 126);
+        g.addEdge("UL", "A", 59);
+        g.addEdge("A", "M", 64);
+        g.addEdge("M", "N", 163);
+        g.addEdge("WÜ", "N", 104);
+        g.addEdge("N", "HO", 116);
+        g.addEdge("N", "R", 80);
+        g.addEdge("R", "M", 117);
+        g.addEdge("M", "RO", 60);
+        g.addEdge("HO", "R", 166);
+        g.addEdge("WÜ", "HO", 192);
+        return g;
+    }
+
+    /**
+     * {@code ICENetz.grdb}
+     */
+    public static GraphMatrix getCornelsenICENetz()
+    {
+        GraphMatrix g = new GraphMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 9.5625, 1.1875);
+        g.addNode("B", 10.96875, 13.96875);
+        g.addNode("D", 1.59375, 11.71875);
+        g.addNode("DD", 14.3125, 9.3125);
+        g.addNode("F", 4.03125, 7.375);
+        g.addNode("F2", 2.125, 6.5);
+        g.addNode("FD", 6.5, 9.25);
+        g.addNode("H", 5.65625, 12.9375);
+        g.addNode("HH", 5.6875, 15.53125);
+        g.addNode("K", 0.0, 8.8125);
+        g.addNode("L", 10.75, 10.8125);
+        g.addNode("M", 12.34375, 0.0);
+        g.addNode("MA", 2.78125, 3.65625);
+        g.addNode("N", 10.65625, 4.25);
+        g.addNode("S", 5.625, 2.53125);
+        g.addNode("WÜ", 7.9375, 6.3125);
+        // Anlegen der Kanten
+        g.addEdge("HH", "H", 74);
+        g.addEdge("B", "H", 98);
+        g.addEdge("H", "D", 100);
+        g.addEdge("D", "K", 77);
+        g.addEdge("K", "F2", 67);
+        g.addEdge("F2", "F", 10);
+        g.addEdge("F", "FD", 52);
+        g.addEdge("FD", "H", 88);
+        g.addEdge("FD", "L", 151);
+        g.addEdge("L", "B", 67);
+        g.addEdge("L", "DD", 73);
+        g.addEdge("FD", "WÜ", 34);
+        g.addEdge("F", "WÜ", 70);
+        g.addEdge("WÜ", "N", 58);
+        g.addEdge("L", "N", 189);
+        g.addEdge("F2", "MA", 30);
+        g.addEdge("MA", "S", 37);
+        g.addEdge("S", "A", 98);
+        g.addEdge("A", "N", 62);
+        g.addEdge("N", "M", 71);
+        g.addEdge("M", "A", 40);
+        g.addEdge("HH", "B", 143);
+        return g;
+    }
+
+    /**
+     * {@code Beispielgraph.grdb}
+     */
+    public static GraphMatrix getCornelsenBeispielgraph()
+    {
+        GraphMatrix g = new GraphMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 0.0, 0.0);
+        g.addNode("B", 2.34375, 0.46875);
+        g.addNode("C", 6.65625, 1.15625);
+        g.addNode("D", 8.625, 2.0625);
+        g.addNode("E", 12.875, 2.84375);
+        g.addNode("F", 15.8125, 1.0);
+        g.addNode("G", 19.9375, 1.875);
+        g.addNode("H", 19.59375, 4.375);
+        g.addNode("I", 0.6875, 4.09375);
+        g.addNode("J", 3.375, 4.5625);
+        g.addNode("K", 6.59375, 4.125);
+        g.addNode("L", 0.8125, 6.78125);
+        g.addNode("M", 5.75, 6.5);
+        g.addNode("N", 9.65625, 6.1875);
+        g.addNode("O", 14.84375, 7.09375);
+        g.addNode("P", 2.3125, 9.5);
+        g.addNode("Q", 7.8125, 9.1875);
+        g.addNode("R", 11.34375, 9.3125);
+        g.addNode("S", 16.3125, 9.5);
+        g.addNode("T", 0.65625, 10.96875);
+        g.addNode("U", 4.96875, 11.84375);
+        g.addNode("V", 10.1875, 11.5);
+        g.addNode("W", 19.21875, 10.90625);
+        // Anlegen der Kanten
+        g.addEdge("I", "A");
+        g.addEdge("A", "B");
+        g.addEdge("B", "I");
+        g.addEdge("I", "J");
+        g.addEdge("J", "C");
+        g.addEdge("B", "C");
+        g.addEdge("J", "K");
+        g.addEdge("K", "C");
+        g.addEdge("C", "D");
+        g.addEdge("D", "E");
+        g.addEdge("E", "F");
+        g.addEdge("F", "G");
+        g.addEdge("E", "H");
+        g.addEdge("G", "H");
+        g.addEdge("L", "I");
+        g.addEdge("M", "K");
+        g.addEdge("K", "N");
+        g.addEdge("E", "O");
+        g.addEdge("O", "H");
+        g.addEdge("P", "L");
+        g.addEdge("M", "P");
+        g.addEdge("M", "Q");
+        g.addEdge("N", "Q");
+        g.addEdge("N", "R");
+        g.addEdge("R", "S");
+        g.addEdge("S", "O");
+        g.addEdge("T", "P");
+        g.addEdge("P", "U");
+        g.addEdge("U", "T");
+        g.addEdge("U", "V");
+        g.addEdge("V", "R");
+        g.addEdge("S", "W");
+        g.addEdge("W", "H");
+        g.addEdge("N", "E");
+        return g;
+    }
+
+    /**
+     * {@code Beispielgraph2.grdb}
+     */
+    public static GraphMatrix getCornelsenBeispielgraph2()
+    {
+        GraphMatrix g = new GraphMatrix();
+        g.addNode("A", 0.0, 0.0);
+        g.addNode("B", 2.34375, 0.46875);
+        g.addNode("C", 6.65625, 1.15625);
+        g.addNode("D", 8.625, 2.0625);
+        g.addNode("E", 12.875, 2.84375);
+        g.addNode("F", 15.8125, 1.0);
+        g.addNode("G", 19.9375, 1.875);
+        g.addNode("H", 19.59375, 4.375);
+        g.addNode("I", 0.6875, 4.09375);
+        g.addNode("J", 3.375, 4.5625);
+        g.addNode("K", 6.59375, 4.125);
+        g.addNode("L", 0.8125, 6.78125);
+        g.addNode("M", 5.75, 6.5);
+        g.addNode("N", 9.65625, 6.1875);
+        g.addNode("O", 14.84375, 7.09375);
+        g.addNode("P", 2.3125, 9.5);
+        g.addNode("Q", 7.8125, 9.1875);
+        g.addNode("R", 11.34375, 9.3125);
+        g.addNode("S", 16.3125, 9.5);
+        g.addNode("T", 0.65625, 10.96875);
+        g.addNode("U", 4.96875, 11.84375);
+        g.addNode("V", 10.1875, 11.5);
+        g.addNode("W", 19.21875, 10.90625);
+        g.addEdge("I", "A");
+        g.addEdge("A", "B");
+        g.addEdge("B", "I");
+        g.addEdge("I", "J");
+        g.addEdge("J", "C");
+        g.addEdge("B", "C");
+        g.addEdge("J", "K");
+        g.addEdge("K", "C");
+        g.addEdge("C", "D");
+        g.addEdge("E", "F");
+        g.addEdge("F", "G");
+        g.addEdge("E", "H");
+        g.addEdge("G", "H");
+        g.addEdge("L", "I");
+        g.addEdge("M", "K");
+        g.addEdge("K", "N");
+        g.addEdge("E", "O");
+        g.addEdge("O", "H");
+        g.addEdge("P", "L");
+        g.addEdge("M", "P");
+        g.addEdge("M", "Q");
+        g.addEdge("N", "Q");
+        g.addEdge("N", "R");
+        g.addEdge("S", "O");
+        g.addEdge("T", "P");
+        g.addEdge("P", "U");
+        g.addEdge("U", "T");
+        g.addEdge("U", "V");
+        g.addEdge("V", "R");
+        g.addEdge("S", "W");
+        g.addEdge("W", "H");
         return g;
     }
 

@@ -16,22 +16,43 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Layer;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 
-public class GraphDrawer extends Scene
-
+/**
+ * <b>Zeichnet</b> einen <b>Graphen</b> in eine Szene.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.36.0
+ */
+public class GraphDrawer
 {
-    public GraphDrawer(Graph graph)
-    {
+    private Circle[] nodes;
 
+    public GraphDrawer(Scene scene, Graph graph)
+    {
+        nodes = new Circle[graph.getNodesCount()];
+        for (int i = 0; i < graph.getNodesCount(); i++)
+        {
+            Node node = graph.getNode(i);
+            Circle circle = new Circle();
+            circle.setPosition(node.getX(), node.getY());
+            scene.add(circle);
+            nodes[i] = circle;
+        }
     }
 
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start(new GraphDrawer(Graph.getHighway()));
+        Game.start(scene -> {
+            Layer layer = scene.getMainLayer();
+            new GraphDrawer(scene, Graph.getCornelsenBeispielgraph2());
+        });
     }
 }

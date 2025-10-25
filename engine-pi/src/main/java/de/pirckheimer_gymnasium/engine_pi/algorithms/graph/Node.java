@@ -16,10 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
 /**
- * Stelle einen Knoten in einem Graphen dar.
+ * Stellt einen <b>Knoten</b> in einem Graphen dar.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.36.0
  */
 public class Node
 {
