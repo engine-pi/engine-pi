@@ -27,7 +27,7 @@ class Scene1 extends Scene
 {
     public Scene1()
     {
-        addText("Scene 1");
+        addText("Scene 1").setColor("red");
     }
 }
 
@@ -35,7 +35,7 @@ class Scene2 extends Scene
 {
     public Scene2()
     {
-        addText("Scene 2");
+        addText("Scene 2").setColor("green");
     }
 }
 
@@ -52,8 +52,10 @@ public class GlobalSceneLaunchListenerDemo
     public static void main(String[] args)
     {
         Game.addSceneLaunchListener((scene, previous) -> {
-            System.out.println("launch " + scene);
+            System.out.println("scene: " + scene);
+            System.out.println("previous: " + previous);
         });
+
         Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {

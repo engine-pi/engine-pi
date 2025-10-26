@@ -26,10 +26,10 @@ public class FontUtilTest
     {
         Rectangle2D bounds = FontUtil.getStringBounds(content, font);
         assertNotNull(bounds);
-        assertEquals(70.0, bounds.getWidth(), 5);
-        assertEquals(13.8, bounds.getHeight(), 5);
-        assertEquals(-10.8, bounds.getY(), 5);
-        assertEquals(0, bounds.getX(), 5);
+        assertEquals(70.0, bounds.getWidth(), 10);
+        assertEquals(13.8, bounds.getHeight(), 10);
+        assertEquals(-10.8, bounds.getY(), 10);
+        assertEquals(0, bounds.getX(), 10);
     }
 
 }

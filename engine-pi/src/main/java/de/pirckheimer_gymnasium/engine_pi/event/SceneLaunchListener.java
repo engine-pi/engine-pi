@@ -22,7 +22,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Ein Beobachter, der auf Szenenwechsel reagiert.
+ * Ein Beobachter, der auf <b>Szenenwechsel</b> reagiert.
  *
  * @author Josef Friedrich
  *

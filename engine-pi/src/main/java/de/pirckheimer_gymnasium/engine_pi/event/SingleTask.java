@@ -24,7 +24,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Eine einfache Aufgabe, der einmalig mit Verzögerung ausgeführt wird.
+ * Eine einfache Aufgabe, die einmalig mit Verzögerung ausgeführt wird.
  *
  * @author Niklas Keller
  *
