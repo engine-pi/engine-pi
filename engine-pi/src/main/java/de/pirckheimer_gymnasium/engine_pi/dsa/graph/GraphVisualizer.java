@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -30,19 +30,22 @@ import de.pirckheimer_gymnasium.engine_pi.actor.LabeledNode;
  *
  * @since 0.36.0
  */
-public class GraphDrawer
+public class GraphVisualizer
 {
     private LabeledNode[] labeledNodes;
 
     private LabeledEdge[] labeledEdges;
 
-    public GraphDrawer(Scene scene, Graph graph)
+    private Graph graph;
+
+    public GraphVisualizer(Scene scene, Graph graph)
     {
+        this.graph = graph;
         labeledNodes = new LabeledNode[graph.getNodesCount()];
         labeledEdges = new LabeledEdge[graph.getEdgesCount()];
         for (int i = 0; i < graph.getEdgesCount(); i++)
         {
-            Edge edge = graph.getEdge(i);
+            GraphEdge edge = graph.getEdge(i);
             LabeledEdge labledEdge = new LabeledEdge(
                     edge.getFrom().getPosition(), edge.getTo().getPosition());
             scene.add(labledEdge);
@@ -50,7 +53,7 @@ public class GraphDrawer
         }
         for (int i = 0; i < graph.getNodesCount(); i++)
         {
-            Node node = graph.getNode(i);
+            GraphNode node = graph.getNode(i);
             LabeledNode labeledNode = new LabeledNode(node.getLabel());
             labeledNode.setCenter(node.getPosition());
             scene.add(labeledNode);
@@ -58,11 +61,24 @@ public class GraphDrawer
         }
     }
 
+    public void setNodeColor(int index, String color)
+    {
+        labeledNodes[index].setColor(color);
+    }
+
+    public void setNodeColor(String label, String color)
+    {
+        setNodeColor(graph.getNodeIndex(label), color);
+    }
+
     public static void main(String[] args)
     {
-        Game.debug();
         Game.start(scene -> {
-            new GraphDrawer(scene, Graph.getCornelsenBeispielgraph2());
+            GraphVisualizer visualizer = new GraphVisualizer(scene,
+                    GraphCollection.Cornelsen6Beispielgraph2());
+            scene.getCamera().setCenter(10, 6);
+            visualizer.setNodeColor("B", "green");
+
         });
     }
 }

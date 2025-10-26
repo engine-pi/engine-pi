@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.recursion;
+package de.pirckheimer_gymnasium.engine_pi_demos.dsa.recursion;
 
 import de.pirckheimer_gymnasium.engine_pi.instant.Triangle;
 

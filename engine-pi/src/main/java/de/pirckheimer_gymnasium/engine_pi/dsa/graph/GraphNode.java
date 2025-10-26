@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
@@ -27,7 +27,7 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  *
  * @since 0.36.0
  */
-public class Node
+public class GraphNode
 {
     /**
      * Die <b>Bezeichnung</b> bzw. der Name des Knotens.
@@ -49,7 +49,7 @@ public class Node
      *
      * @param label Die <b>Bezeichnung</b> bzw. der Name des Knotens.
      */
-    public Node(String label)
+    public GraphNode(String label)
     {
         this.label = label;
     }
@@ -62,7 +62,7 @@ public class Node
      * @param x Die <b>x-Koordinate</b> des Knotens in Meter.
      * @param y Die <b>y-Koordinate</b> des Knotens in Meter.
      */
-    public Node(String label, double x, double y)
+    public GraphNode(String label, double x, double y)
     {
         this.label = label;
         this.x = x;

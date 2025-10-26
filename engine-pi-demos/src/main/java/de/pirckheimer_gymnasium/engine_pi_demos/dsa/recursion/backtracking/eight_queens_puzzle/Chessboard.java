@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi_demos.algorithms.recursion.backtracking.eight_queens_puzzle;
+package de.pirckheimer_gymnasium.engine_pi_demos.dsa.recursion.backtracking.eight_queens_puzzle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
 import static de.pirckheimer_gymnasium.engine_pi.util.ColorUtil.changeSaturation;

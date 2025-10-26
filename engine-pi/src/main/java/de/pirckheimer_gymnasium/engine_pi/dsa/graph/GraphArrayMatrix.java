@@ -16,11 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 /**
- * Klasse für einen ungerichteten, gewichteten Graphen. Als Datenstruktur wird
- * eine Adjazenzmatrix verwendet
+ * Ein Graph, der über ein zweidimensionales Feld / Array implementiert ist.
  *
  * @see <a href=
  *     "https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/GraphAdjazenzMatrix.java">Bschlangaul-Sammlung:
@@ -30,20 +29,20 @@ package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
  *
  * @since 0.36.0
  */
-public class GraphMatrix extends Graph
+public class GraphArrayMatrix extends Graph
 {
     /**
      * Das 2-dimensionale Feld der Adjazenzmatrix.
      */
-    private int[][] matrix;
+    protected int[][] matrix;
 
     /**
-     * Konstruktor für Objekte der Klasse GRAPH_MATRIX Die maximale Anzahl der
-     * Knoten wird dabei festgelegt
+     * Erzeugt einen neuen Graphen durch Angabe der <b>maximale Anzahl der
+     * Knoten</b>.
      *
      * @param maxNodes Die <b>Anzahl der maximal möglichen Knoten</b>.
      */
-    public GraphMatrix(int maxNodes)
+    public GraphArrayMatrix(int maxNodes)
     {
         super();
         matrix = new int[maxNodes][maxNodes];
@@ -52,7 +51,7 @@ public class GraphMatrix extends Graph
     /**
      * Erstelle eine Adjazenz-Matrix die <b>100 Knoten</b> aufnehmen kann.
      */
-    public GraphMatrix()
+    public GraphArrayMatrix()
     {
         this(100);
     }
@@ -114,46 +113,36 @@ public class GraphMatrix extends Graph
     }
 
     /**
-     * Gibt die Adjazenzmatrix des Graphen in der Konsole aus Nach Zeilen und
-     * Spalten formatiert Als Spaltenbreite wurde hier 4 Zeichen gewählt.
+     * Gibt die Adjazenzmatrix des Graphen nach Zeilen und Spalten formatiert in
+     * der Konsole aus. Als Spaltenbreite wurde hier 4 Zeichen gewählt.
      */
-    // public void print()
-    // {
-    // int width = 4;
-    // String whiteSpace = " ".repeat(4);
-    // // Kopfzeile
-    // System.out.print(whiteSpace);
-    // for (int i = 0; i < nodeCount; i++)
-    // {
-    // System.out.print(nodes[i].getFormattedLabel(width));
-    // }
-    // System.out.println();
-    // for (int i = 0; i < nodeCount; i++)
-    // {
-    // System.out.print(nodes[i].getFormattedLabel(width));
-    // for (int j = 0; j < nodeCount; j++)
-    // {
-    // if (matrix[i][j] != -1)
-    // {
-    // System.out.print(
-    // (matrix[i][j] + whiteSpace).substring(0, width));
-    // }
-    // else
-    // {
-    // System.out.print(whiteSpace);
-    // }
-    // }
-    // System.out.println();
-    // }
-    // }
-
-    public static void main(String[] args)
+    public void print()
     {
-        // getBavarianHighwayGraph().startDepthFirstSearch("N");
-        // getBavarianHighwayGraph().searchShortestPath("N", "UL");
-        // getFahrzeitenZweispurig().searchShortestPath("A", "E");
-        // getFahrzeitenZweispurigDirected().searchShortestPath("A", "E");
-        // getNuernbergUlmMuenchenHamburg().searchShortestPath("N", "UL");
-        // getNuernbergUlmMuenchenHamburg().searchShortestPath("M", "HH");
+        int width = 4;
+        String whiteSpace = " ".repeat(4);
+        // Kopfzeile
+        System.out.print(whiteSpace);
+        for (int i = 0; i < getNodesCount(); i++)
+        {
+            System.out.print(getNode(i).getFormattedLabel(width));
+        }
+        System.out.println();
+        for (int i = 0; i < getNodesCount(); i++)
+        {
+            System.out.print(getNode(i).getFormattedLabel(width));
+            for (int j = 0; j < getNodesCount(); j++)
+            {
+                if (matrix[i][j] != -1)
+                {
+                    System.out.print(
+                            (matrix[i][j] + whiteSpace).substring(0, width));
+                }
+                else
+                {
+                    System.out.print(whiteSpace);
+                }
+            }
+            System.out.println();
+        }
     }
 }

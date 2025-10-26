@@ -1,261 +1,21 @@
-/*
- * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
- *
- * Copyright (c) 2025 Josef Friedrich and contributors.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
-
-import java.util.ArrayList;
+package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 /**
- * Damit wir zwei unterschiedliche Graph-Implementationen - Adjazenzmatrix und
- * Adjazenzliste - über eine gemeinsame Schnittstelle bereitstellen können.
- *
- * @see <a href=
- *     "https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/Graph.java">Bschlangaul-Sammlung:
- *     Graph.java</a>
+ * Eine Sammlung an Graphen. Die Graphen stammen größtenteils aus Schulbüchern.
  *
  * @author Josef Friedrich
  *
  * @since 0.36.0
  */
-public abstract class Graph
+public class GraphCollection
 {
-    /**
-     * Alle Knoten des Graphen
-     */
-    protected ArrayList<Node> nodes;
 
     /**
-     * Alle Kanten des Graphen.
+     * Ein Graph der wie das Haus des Nikolaus aufgebaut ist.
      */
-    protected ArrayList<Edge> edges;
-
-    public Graph()
+    public static GraphArrayMatrix getHausDesNikolaus()
     {
-        nodes = new ArrayList<>();
-        edges = new ArrayList<>();
-    }
-
-    /**
-     * Gibt die Anzahl der Knoten des Graphen.
-     *
-     * @return Anzahl der Knoten
-     */
-    public int getNodesCount()
-    {
-        return nodes.size();
-    }
-
-    public int getEdgesCount()
-    {
-        return edges.size();
-    }
-
-    public Node getNode(String label)
-    {
-        for (int i = 0; i < nodes.size(); i++)
-        {
-            if (nodes.get(i).getLabel().equals(label))
-            {
-                return nodes.get(i);
-            }
-        }
-        throw new RuntimeException(
-                "Unbekannter Knoten mit dem Bezeichner: " + label);
-    }
-
-    public Node getNode(int index)
-    {
-        return nodes.get(index);
-    }
-
-    /**
-     * Gibt die interne Nummer des Knoten zurück.
-     *
-     * <p>
-     * Wenn ein Knoten mit diesem Bezeichner nicht bekannt ist wird {@code -1}
-     * zurückgegeben.
-     * </p>
-     *
-     * @param label Der <b>Bezeichner</b> des Knoten, der gesucht wird.
-     *
-     * @return Die Indexnummer des Knotens im Knotenarray;
-     *     {@code 0 &lt;= x &lt;= anzahl-1} bzw. {@code -1}
-     */
-    public int getNodeIndex(String label)
-    {
-        for (int i = 0; i < nodes.size(); i++)
-        {
-            if (nodes.get(i).getLabel().equals(label))
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Gibt die Bezeichnung eines Knotens mit der internen Knotennummer.
-     *
-     * @param index Indexnummer des Knotens im Knotenarray;
-     *     {@code 0 &lt;= x &lt;=
-     *     anzahl-1}
-     *
-     * @return Der Bezeichner des Knoten.
-     */
-    public String getNodeLabel(int index)
-    {
-        return nodes.get(index).getLabel();
-    }
-
-    /**
-     * <b>Fügt</b> einen neuen Knoten in den Datenstruktur (z. B. Matrix oder
-     * List) der aktuellen Graph-Implementation <b>ein</b>.
-     *
-     * <p>
-     * Diese Methode wird aufgerufen, wenn bereits ein neuer Knoten erzeugt
-     * wurde. Außerdem ist schon überprüft worden, ob der Bezeichner des Knotens
-     * eindeutig ist.
-     * </p>
-     *
-     * @param label Der <b>Bezeichner</b> des neuen Knotens, der dem Graphen
-     *     hinzugefügt wird.
-     * @param x Die <b>x-Koordinate</b> des Knotens in Meter.
-     * @param y Die <b>y-Koordinate</b> des Knotens in Meter.
-     */
-    protected abstract void addNodeIntoDataStructure(String label, double x,
-            double y);
-
-    /**
-     * <b>Fügt</b> einen neuen Knoten in den Graphen <b>ein</b>.
-     *
-     * @param label Der <b>Bezeichner</b> des neuen Knotens, der dem Graphen
-     *     hinzugefügt wird.
-     * @param x Die <b>x-Koordinate</b> des Knotens in Meter.
-     * @param y Die <b>y-Koordinate</b> des Knotens in Meter.
-     */
-    public void addNode(String label, double x, double y)
-    {
-        if (getNodeIndex(label) > -1)
-        {
-            throw new RuntimeException("Ein Knoten mit der Bezeichnung " + label
-                    + " existiert bereits.");
-        }
-        nodes.add(new Node(label, x, y));
-        addNodeIntoDataStructure(label, x, y);
-    }
-
-    /**
-     * <b>Fügt</b> einen neuen Knoten in den Graphen <b>ein</b>.
-     *
-     * @param label Der <b>Bezeichner</b> des neuen Knotens, der dem Graphen
-     *     hinzugefügt wird.
-     */
-    public void addNode(String label)
-    {
-        addNode(label, 0, 0);
-    }
-
-    /**
-     * <b>Einfügen</b> einer Kante in den Graphen.
-     *
-     * <p>
-     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
-     * festgelegt, hat eine <b>Gewichtung</b> und kann <b>gerichtet</b> sein.
-     * </p>
-     *
-     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
-     * @param to Der <b>Bezeichner</b> des Endknotens.
-     * @param weight Die <b>Gewichtung</b> der Kante.
-     * @param directed Ist die Kante <b>gerichtet</b>?
-     */
-    protected abstract void addEdgeIntoDataStructure(String from, String to,
-            int weight, boolean directed);
-
-    /**
-     * <b>Einfügen</b> einer Kante in den Graphen.
-     *
-     * <p>
-     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
-     * festgelegt, hat eine <b>Gewichtung</b> und kann <b>gerichtet</b> sein.
-     * </p>
-     *
-     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
-     * @param to Der <b>Bezeichner</b> des Endknotens.
-     * @param weight Die <b>Gewichtung</b> der Kante.
-     * @param directed Ist die Kante <b>gerichtet</b>?
-     */
-    public void addEdge(String from, String to, int weight, boolean directed)
-    {
-        edges.add(new Edge(getNode(from), getNode(to), weight, directed));
-        addEdgeIntoDataStructure(from, to, weight, directed);
-    }
-
-    /**
-     * <b>Einfügen</b> einer Kante in den Graphen.
-     *
-     * <p>
-     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
-     * festgelegt, hat eine <b>Gewichtung</b> und ist <b>ungerichtet</b>.
-     * </p>
-     *
-     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
-     * @param to Der <b>Bezeichner</b> des Endknotens.
-     * @param weight Die <b>Gewichtung</b> der Kante.
-     */
-    public void addEdge(String from, String to, int weight)
-    {
-        addEdge(from, to, weight, false);
-    }
-
-    /**
-     * <b>Einfügen</b> einer Kante in den Graphen.
-     *
-     * <p>
-     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
-     * festgelegt, hat eine <b>Gewichtung von 1</b> und ist <b>ungerichtet</b>.
-     * </p>
-     *
-     * @param from Der <b>Bezeichner</b> des Anfangsknotens.
-     * @param to Der <b>Bezeichner</b> des Endknotens.
-     */
-    public void addEdge(String from, String to)
-    {
-        addEdge(from, to, 1);
-    }
-
-    public ArrayList<Node> getNodes()
-    {
-        return nodes;
-    }
-
-    public Edge getEdge(int index)
-    {
-        return edges.get(index);
-    }
-
-    public ArrayList<Edge> getEdges()
-    {
-        return edges;
-    }
-
-    public static GraphMatrix getHausDesNikolaus()
-    {
-        GraphMatrix g = new GraphMatrix(5);
+        GraphArrayMatrix g = new GraphArrayMatrix(5);
         g.addNode("A");
         g.addNode("B");
         g.addNode("C");
@@ -273,19 +33,11 @@ public abstract class Graph
     }
 
     /**
-     * <p>
-     * Führt sämtliche Arbeiten zur Implementierung des Graphen entsprechend der
-     * Vorgabe in der Teilaufgabe Autobahn aus Instanzieren des Graphenobjekts;
-     * Einfügen der Knoten und Einfügen der Kanten; am Ende Ausgabe der
-     * Adjazenzmatrix zur Kontrolle
-     * </p>
-     *
      * Heißt im Schulbuch: <code>Arbeit.AusfuehrenAutobahn()</code>.
      */
-    public static GraphMatrix getHighway()
+    public static GraphArrayMatrix getHighway()
     {
-        // Erzeugen eines Graphenobjekts g für 14 Knoten
-        GraphMatrix g = new GraphMatrix(14);
+        GraphArrayMatrix g = new GraphArrayMatrix(14);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("F");
@@ -324,18 +76,9 @@ public abstract class Graph
         return g;
     }
 
-    /**
-     * <p>
-     * Führt sämtliche Arbeiten zur Implementierung des Graphen entsprechend der
-     * Vorgabe in der Teilaufgabe Flugroute aus Instanzieren des Graphenobjekts;
-     * Einfügen der Knoten und Einfügen der Kanten; am Ende Ausgabe der
-     * Adjazenzmatrix zur Kontrolle
-     * </p>
-     */
-    public static GraphMatrix getFlightRoute()
+    public static GraphArrayMatrix getFlightRoute()
     {
-        // Erzeugen eines Graphenobjekts g für 21 Knoten
-        GraphMatrix g = new GraphMatrix(21);
+        GraphArrayMatrix g = new GraphArrayMatrix(21);
         // Anlegen der Knoten
         g.addNode("AMS");
         g.addNode("ARN");
@@ -404,17 +147,12 @@ public abstract class Graph
     }
 
     /**
-     * <p>
-     * Führt sämtliche Arbeiten zur Implementierung des Graphen entsprechend der
-     * Vorgabe in der Teilaufgabe ICE-Verbindungen aus Instanzieren des
-     * Graphenobjekts; Einfügen der Knoten und Einfügen der Kanten; am Ende
-     * Ausgabe der Adjazenzmatrix zur Kontrolle
-     * </p>
+     * ICE-Verbindungen
      */
-    public static GraphMatrix getICE()
+    public static GraphArrayMatrix getICE()
     {
         // Erzeugen eines Graphenobjekts g für 16 Knoten
-        GraphMatrix g = new GraphMatrix(16);
+        GraphArrayMatrix g = new GraphArrayMatrix(16);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("B");
@@ -462,10 +200,10 @@ public abstract class Graph
     /**
      * Graph Seite 110, Gewichte nach k10_a3_1.png
      */
-    public static GraphMatrix getBavarianHighwayGraph()
+    public static GraphArrayMatrix getBavarianHighwayGraph()
     {
         // Erzeugen eines Graphenobjekts g für 11 Knoten
-        GraphMatrix g = new GraphMatrix(11);
+        GraphArrayMatrix g = new GraphArrayMatrix(11);
         // Anlegen der Knoten
         g.addNode("A"); // Augsburg
         g.addNode("FD"); // Fulda
@@ -505,17 +243,12 @@ public abstract class Graph
     }
 
     /**
-     * <p>
-     * Führt sämtliche Arbeiten zur Implementierung des Graphen entsprechend der
-     * Vorgabe in der Teilaufgabe Autobahnkartenausschnitt aus: Instanzieren des
-     * Graphenobjekts; Einfügen der Knoten und Einfügen der Kanten; am Ende
-     * Ausgabe der Adjazenzmatrix zur Kontrolle
-     * </p>
+     * Autobahnkartenausschnitt
      */
-    public static GraphMatrix getHighwaySelection()
+    public static GraphArrayMatrix getHighwaySelection()
     {
         // Erzeugen eines Graphenobjekts g für 14 Knoten
-        GraphMatrix g = new GraphMatrix(14);
+        GraphArrayMatrix g = new GraphArrayMatrix(14);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("F");
@@ -555,17 +288,12 @@ public abstract class Graph
     }
 
     /**
-     * <p>
-     * Führt sämtliche Arbeiten zur Implementierung des Graphen entsprechend der
-     * Vorgabe in der Teilaufgabe S- und U-Bahn-Verbindungen aus: Instanzieren
-     * des Graphenobjekts; Einfügen der Knoten und Einfügen der Kanten; am Ende
-     * Ausgabe der Adjazenzmatrix zur Kontrolle
-     * </p>
+     * S- und U-Bahn-Verbindungen
      */
-    public static GraphMatrix getSubway()
+    public static GraphArrayMatrix getSubway()
     {
         // Erzeugen eines Graphenobjekts g für 41 Knoten
-        GraphMatrix g = new GraphMatrix(41);
+        GraphArrayMatrix g = new GraphArrayMatrix(41);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("Altomünster");
@@ -665,9 +393,9 @@ public abstract class Graph
     /**
      * Buchner Seite 45
      */
-    public static GraphMatrix getFahrzeitenZweispurig()
+    public static GraphArrayMatrix getFahrzeitenZweispurig()
     {
-        GraphMatrix g = new GraphMatrix(6);
+        GraphArrayMatrix g = new GraphArrayMatrix(6);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("B");
@@ -691,9 +419,9 @@ public abstract class Graph
     /**
      * Buchner Seite 45
      */
-    public static GraphMatrix getFahrzeitenZweispurigDirected()
+    public static GraphArrayMatrix getFahrzeitenZweispurigDirected()
     {
-        GraphMatrix g = new GraphMatrix(6);
+        GraphArrayMatrix g = new GraphArrayMatrix(6);
         // Anlegen der Knoten
         g.addNode("A");
         g.addNode("B");
@@ -714,9 +442,9 @@ public abstract class Graph
         return g;
     }
 
-    public static GraphMatrix getNuernbergUlmMuenchenHamburg()
+    public static GraphArrayMatrix getNuernbergUlmMuenchenHamburg()
     {
-        GraphMatrix g = new GraphMatrix(11);
+        GraphArrayMatrix g = new GraphArrayMatrix(11);
         // Anlegen der Knoten
         g.addNode("BA");
         g.addNode("BT");
@@ -750,9 +478,9 @@ public abstract class Graph
     /**
      * {@code Abiturfahrt.grdb}
      */
-    public static GraphMatrix getCornelsenAbiturfahrt()
+    public static GraphArrayMatrix getCornelsenAbiturfahrt()
     {
-        GraphMatrix g = new GraphMatrix();
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
         g.addNode("Bologna", 1.6875, 0.0);
         g.addNode("Innsbruck", 1.5, 6.65625);
@@ -775,9 +503,9 @@ public abstract class Graph
     /**
      * {@code Autobahn.grdb}
      */
-    public static GraphMatrix getCornelsenAutobahn()
+    public static GraphArrayMatrix getCornelsenAutobahn()
     {
-        GraphMatrix g = new GraphMatrix();
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
         g.addNode("A", 6.15625, 1.96875);
         g.addNode("FD", 4.03125, 10.3125);
@@ -811,9 +539,9 @@ public abstract class Graph
     /**
      * {@code ICENetz.grdb}
      */
-    public static GraphMatrix getCornelsenICENetz()
+    public static GraphArrayMatrix getCornelsenICENetz()
     {
-        GraphMatrix g = new GraphMatrix();
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
         g.addNode("A", 9.5625, 1.1875);
         g.addNode("B", 10.96875, 13.96875);
@@ -860,9 +588,9 @@ public abstract class Graph
     /**
      * {@code Beispielgraph.grdb}
      */
-    public static GraphMatrix getCornelsenBeispielgraph()
+    public static GraphArrayMatrix getCornelsenBeispielgraph()
     {
-        GraphMatrix g = new GraphMatrix();
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
         g.addNode("A", 0.0, 0.0);
         g.addNode("B", 2.34375, 0.46875);
@@ -928,9 +656,9 @@ public abstract class Graph
     /**
      * {@code Beispielgraph2.grdb}
      */
-    public static GraphMatrix getCornelsenBeispielgraph2()
+    public static GraphArrayMatrix Cornelsen6Beispielgraph2()
     {
-        GraphMatrix g = new GraphMatrix();
+        GraphArrayMatrix g = new GraphArrayMatrix();
         g.addNode("A", 0.0, 0.0);
         g.addNode("B", 2.34375, 0.46875);
         g.addNode("C", 6.65625, 1.15625);
@@ -987,5 +715,4 @@ public abstract class Graph
         g.addEdge("W", "H");
         return g;
     }
-
 }

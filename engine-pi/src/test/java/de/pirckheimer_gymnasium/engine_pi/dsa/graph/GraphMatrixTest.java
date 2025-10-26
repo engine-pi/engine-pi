@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
+package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 
 public class GraphMatrixTest
 {
-    private GraphMatrix g;
+    private GraphArrayMatrix g;
 
     @BeforeEach
     public void setUp()
     {
-        g = new GraphMatrix(5);
+        g = new GraphArrayMatrix(5);
     }
 
     @Test
@@ -49,8 +49,8 @@ public class GraphMatrixTest
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
-        assertEquals(-1, g.getEdgeWeight("A", "C"));
-        assertEquals(-1, g.getEdgeWeight("C", "B"));
+        assertThrows(RuntimeException.class, () -> g.getEdgeWeight("A", "C"));
+        assertThrows(RuntimeException.class, () -> g.getEdgeWeight("C", "B"));
     }
 
     @Test
@@ -75,9 +75,9 @@ public class GraphMatrixTest
         g.addNode("B", 1, 1);
         RuntimeException exception = assertThrows(RuntimeException.class,
                 () -> g.addEdge("A", "C", 10, false));
-        assertEquals("Unbekannter Knoten mit dem Bezeichner: C",
+        assertEquals(
+                "Es konnte kein Knoten mit dem Bezeichner „C“ gefunden werden.",
                 exception.getMessage());
-        // Node "C" does not exist
-        assertEquals(-1, g.getEdgeWeight("A", "C"));
+        assertThrows(RuntimeException.class, () -> g.getEdgeWeight("A", "C"));
     }
 }
