@@ -11,16 +11,18 @@ public class GraphCollection
 {
 
     /**
-     * Ein Graph der wie das Haus des Nikolaus aufgebaut ist.
+     * Ein Graph, der wie das Haus des Nikolaus aufgebaut ist.
      */
-    public static GraphArrayMatrix getHausDesNikolaus()
+    public static GraphArrayMatrix HausDesNikolaus()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(5);
+        // Anlegen der Knoten
         g.addNode("A");
         g.addNode("B");
         g.addNode("C");
         g.addNode("D");
         g.addNode("E");
+        // Anlegen der Kanten
         g.addEdge("A", "B");
         g.addEdge("A", "D");
         g.addEdge("A", "E");
@@ -35,7 +37,7 @@ public class GraphCollection
     /**
      * Heißt im Schulbuch: <code>Arbeit.AusfuehrenAutobahn()</code>.
      */
-    public static GraphArrayMatrix getHighway()
+    public static GraphArrayMatrix OldenburgHighway()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(14);
         // Anlegen der Knoten
@@ -76,7 +78,7 @@ public class GraphCollection
         return g;
     }
 
-    public static GraphArrayMatrix getFlightRoute()
+    public static GraphArrayMatrix OldenburgFlightRoute()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(21);
         // Anlegen der Knoten
@@ -149,7 +151,7 @@ public class GraphCollection
     /**
      * ICE-Verbindungen
      */
-    public static GraphArrayMatrix getICE()
+    public static GraphArrayMatrix OldenburgICE()
     {
         // Erzeugen eines Graphenobjekts g für 16 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(16);
@@ -200,7 +202,7 @@ public class GraphCollection
     /**
      * Graph Seite 110, Gewichte nach k10_a3_1.png
      */
-    public static GraphArrayMatrix getBavarianHighwayGraph()
+    public static GraphArrayMatrix OldenburgBavarianHighwayGraph()
     {
         // Erzeugen eines Graphenobjekts g für 11 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(11);
@@ -245,7 +247,7 @@ public class GraphCollection
     /**
      * Autobahnkartenausschnitt
      */
-    public static GraphArrayMatrix getHighwaySelection()
+    public static GraphArrayMatrix OldenburgHighwaySelection()
     {
         // Erzeugen eines Graphenobjekts g für 14 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(14);
@@ -290,7 +292,7 @@ public class GraphCollection
     /**
      * S- und U-Bahn-Verbindungen
      */
-    public static GraphArrayMatrix getSubway()
+    public static GraphArrayMatrix OldenburgSubway()
     {
         // Erzeugen eines Graphenobjekts g für 41 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(41);
@@ -393,7 +395,7 @@ public class GraphCollection
     /**
      * Buchner Seite 45
      */
-    public static GraphArrayMatrix getFahrzeitenZweispurig()
+    public static GraphArrayMatrix Buchner11FahrzeitenZweispurig()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(6);
         // Anlegen der Knoten
@@ -419,7 +421,7 @@ public class GraphCollection
     /**
      * Buchner Seite 45
      */
-    public static GraphArrayMatrix getFahrzeitenZweispurigDirected()
+    public static GraphArrayMatrix Buchner11FahrzeitenZweispurigDirected()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(6);
         // Anlegen der Knoten
@@ -478,7 +480,7 @@ public class GraphCollection
     /**
      * {@code Abiturfahrt.grdb}
      */
-    public static GraphArrayMatrix getCornelsenAbiturfahrt()
+    public static GraphArrayMatrix Cornelsen6Abiturfahrt()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
@@ -503,7 +505,7 @@ public class GraphCollection
     /**
      * {@code Autobahn.grdb}
      */
-    public static GraphArrayMatrix getCornelsenAutobahn()
+    public static GraphArrayMatrix Cornelsen6Autobahn()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
@@ -539,7 +541,7 @@ public class GraphCollection
     /**
      * {@code ICENetz.grdb}
      */
-    public static GraphArrayMatrix getCornelsenICENetz()
+    public static GraphArrayMatrix Cornelsen6ICENetz()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
@@ -588,7 +590,7 @@ public class GraphCollection
     /**
      * {@code Beispielgraph.grdb}
      */
-    public static GraphArrayMatrix getCornelsenBeispielgraph()
+    public static GraphArrayMatrix Cornelsen6Beispielgraph()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten

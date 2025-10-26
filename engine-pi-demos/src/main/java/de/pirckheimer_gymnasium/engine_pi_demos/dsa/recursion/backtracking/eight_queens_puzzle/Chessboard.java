@@ -2,9 +2,9 @@ package de.pirckheimer_gymnasium.engine_pi_demos.dsa.recursion.backtracking.eigh
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
 import static de.pirckheimer_gymnasium.engine_pi.util.ColorUtil.changeSaturation;
+import static de.pirckheimer_gymnasium.engine_pi.util.TimeUtil.sleep;
 
 import java.awt.Color;
-import java.util.concurrent.TimeUnit;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
@@ -115,18 +115,6 @@ public class Chessboard
             }
         }
         sleep(sleepMilliSeconds);
-    }
-
-    private void sleep(int sleepMilliSeconds)
-    {
-        try
-        {
-            TimeUnit.MILLISECONDS.sleep(sleepMilliSeconds);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     /**

@@ -18,7 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import static de.pirckheimer_gymnasium.engine_pi.util.TimeUtil.sleep;
+
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.LabeledEdge;
 import de.pirckheimer_gymnasium.engine_pi.actor.LabeledNode;
@@ -38,9 +39,43 @@ public class GraphVisualizer
 
     private Graph graph;
 
+    private Scene scene;
+
+    public GraphVisualizer(Scene scene)
+    {
+        this.scene = scene;
+    }
+
     public GraphVisualizer(Scene scene, Graph graph)
     {
+        this.scene = scene;
+        setGraph(graph);
+    }
+
+    public void clear()
+    {
+        if (labeledNodes != null)
+        {
+            for (LabeledNode node : labeledNodes)
+            {
+                scene.remove(node);
+            }
+        }
+
+        if (labeledEdges != null)
+        {
+            for (LabeledEdge edge : labeledEdges)
+            {
+                scene.remove(edge);
+
+            }
+        }
+    }
+
+    public void setGraph(Graph graph)
+    {
         this.graph = graph;
+        clear();
         labeledNodes = new LabeledNode[graph.getNodesCount()];
         labeledEdges = new LabeledEdge[graph.getEdgesCount()];
         for (int i = 0; i < graph.getEdgesCount(); i++)
@@ -61,24 +96,24 @@ public class GraphVisualizer
         }
     }
 
-    public void setNodeColor(int index, String color)
+    public void setNodeColor(int index, String color, int sleepMilliSeconds)
     {
         labeledNodes[index].setColor(color);
+        sleep(sleepMilliSeconds);
+    }
+
+    public void setNodeColor(int index, String color)
+    {
+        setNodeColor(index, color, 0);
+    }
+
+    public void setNodeColor(String label, String color, int sleepMilliSeconds)
+    {
+        setNodeColor(graph.getNodeIndex(label), color, sleepMilliSeconds);
     }
 
     public void setNodeColor(String label, String color)
     {
-        setNodeColor(graph.getNodeIndex(label), color);
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(scene -> {
-            GraphVisualizer visualizer = new GraphVisualizer(scene,
-                    GraphCollection.Cornelsen6Beispielgraph2());
-            scene.getCamera().setCenter(10, 6);
-            visualizer.setNodeColor("B", "green");
-
-        });
+        setNodeColor(label, color, 0);
     }
 }

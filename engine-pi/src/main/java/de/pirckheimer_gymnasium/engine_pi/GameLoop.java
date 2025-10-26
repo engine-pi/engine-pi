@@ -152,8 +152,7 @@ public final class GameLoop
         }
         catch (InterruptedException e)
         {
-            // noinspection UnnecessaryReturnStatement
-            return; // if interrupted again, don't wait
+            return;
         }
     }
 

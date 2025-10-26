@@ -1,9 +1,9 @@
-package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
+package de.pirckheimer_gymnasium.engine_pi_demos.dsa.graph.dfs;
 
-/**
- * Implementation der Tiefensuche.
- */
-public class DepthFirstSearch extends GraphArrayMatrix
+import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphArrayMatrix;
+import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphVisualizer;
+
+class DepthFirstSearch extends GraphArrayMatrix
 {
     private GraphVisualizer visualizer;
 
@@ -28,7 +28,8 @@ public class DepthFirstSearch extends GraphArrayMatrix
         visited[nodeIndex] = true;
         for (int i = 0; i < getNodesCount(); i++)
         {
-            // es gibt eine Kante und deren Zielknoten ist noch nicht besucht
+            // es gibt eine Kante und deren Zielknoten ist noch nicht
+            // besucht
             if (matrix[nodeIndex][i] > 0 && !visited[i])
             {
                 visitNode(i);
