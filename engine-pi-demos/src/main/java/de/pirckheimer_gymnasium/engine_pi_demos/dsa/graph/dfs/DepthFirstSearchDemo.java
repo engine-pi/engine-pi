@@ -16,7 +16,7 @@ public class DepthFirstSearchDemo extends Scene
         visualizer = new GraphVisualizer(this);
         dfs = new DepthFirstSearch(visualizer);
         dfs.importGraph(GraphCollection.Cornelsen6Beispielgraph2());
-        visualizer.setGraph(dfs);;
+        visualizer.setGraph(dfs);
         getCamera().setCenter(10, 6);
     }
 

@@ -19,7 +19,7 @@ class DepthFirstSearch extends GraphArrayMatrix
     /**
      * Setzt den Rekursionsschritt bei einem Knoten um.
      *
-     * @param nodeIndex Die Index bzw. die Nummer des aktuell zu besuchenden
+     * @param nodeIndex Der Index bzw. die Nummer des aktuell zu besuchenden
      *     Knotens.
      */
     public void visitNode(int nodeIndex)
