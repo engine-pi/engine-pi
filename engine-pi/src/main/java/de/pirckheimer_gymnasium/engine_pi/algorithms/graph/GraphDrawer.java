@@ -19,9 +19,9 @@
 package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Layer;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import de.pirckheimer_gymnasium.engine_pi.actor.LabeledEdge;
+import de.pirckheimer_gymnasium.engine_pi.actor.LabeledNode;
 
 /**
  * <b>Zeichnet</b> einen <b>Graphen</b> in eine Szene.
@@ -32,18 +32,29 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
  */
 public class GraphDrawer
 {
-    private Circle[] nodes;
+    private LabeledNode[] labeledNodes;
+
+    private LabeledEdge[] labeledEdges;
 
     public GraphDrawer(Scene scene, Graph graph)
     {
-        nodes = new Circle[graph.getNodesCount()];
+        labeledNodes = new LabeledNode[graph.getNodesCount()];
+        labeledEdges = new LabeledEdge[graph.getEdgesCount()];
+        for (int i = 0; i < graph.getEdgesCount(); i++)
+        {
+            Edge edge = graph.getEdge(i);
+            LabeledEdge labledEdge = new LabeledEdge(
+                    edge.getFrom().getPosition(), edge.getTo().getPosition());
+            scene.add(labledEdge);
+            labeledEdges[i] = labledEdge;
+        }
         for (int i = 0; i < graph.getNodesCount(); i++)
         {
             Node node = graph.getNode(i);
-            Circle circle = new Circle();
-            circle.setPosition(node.getX(), node.getY());
-            scene.add(circle);
-            nodes[i] = circle;
+            LabeledNode labeledNode = new LabeledNode(node.getLabel());
+            labeledNode.setCenter(node.getPosition());
+            scene.add(labeledNode);
+            labeledNodes[i] = labeledNode;
         }
     }
 
@@ -51,7 +62,6 @@ public class GraphDrawer
     {
         Game.debug();
         Game.start(scene -> {
-            Layer layer = scene.getMainLayer();
             new GraphDrawer(scene, Graph.getCornelsenBeispielgraph2());
         });
     }

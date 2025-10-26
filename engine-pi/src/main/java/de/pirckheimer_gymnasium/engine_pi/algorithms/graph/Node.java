@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.algorithms.graph;
 
+import de.pirckheimer_gymnasium.engine_pi.Vector;
+
 /**
  * Stellt einen <b>Knoten</b> in einem Graphen dar.
  *
@@ -95,6 +97,11 @@ public class Node
     public double getY()
     {
         return y;
+    }
+
+    public Vector getPosition()
+    {
+        return new Vector(x, y);
     }
 
     /**

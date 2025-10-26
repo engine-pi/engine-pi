@@ -23,15 +23,16 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
-import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
-import de.pirckheimer_gymnasium.engine_pi.util.FontMetrics;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 
 /**
  * Zur Darstellung von <b>Texten</b>.
@@ -47,8 +48,7 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 public class Text extends Geometry
 {
     // Needs to be large enough, so we don't have rounding errors due to
-    // integers
-    // in font metrics
+    // integers in font metrics
     private static final int SIZE = 1000;
 
     /**
@@ -58,9 +58,10 @@ public class Text extends Geometry
     private static FixtureData createShape(String content, double height,
             Font font)
     {
-        Vector sizeInPixels = FontMetrics.getSize(content, font);
+        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
         return FixtureBuilder.rectangle(
-                sizeInPixels.getX() * height / sizeInPixels.getY(), height);
+                sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
+                height);
     }
 
     /**
@@ -339,8 +340,8 @@ public class Text extends Geometry
     @API
     public double getWidth()
     {
-        Vector sizeInPixels = FontMetrics.getSize(content, font);
-        return sizeInPixels.getX() * height / sizeInPixels.getY();
+        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
+        return sizeInPixels.getWidth() * height / sizeInPixels.getHeight();
     }
 
     /**
@@ -354,7 +355,7 @@ public class Text extends Geometry
     @API
     public Text setWidth(double width)
     {
-        Vector sizeInPixels = FontMetrics.getSize(content, font);
+        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
         setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
         return this;
     }
@@ -365,9 +366,9 @@ public class Text extends Geometry
     @Internal
     private void update()
     {
-        Vector size = FontMetrics.getSize(content, font);
-        cachedScaleFactor = height / size.getY();
-        cachedDescent = FontMetrics.getDescent(font);
+        Rectangle2D size = FontUtil.getStringBounds(content, font);
+        cachedScaleFactor = height / size.getHeight();
+        cachedDescent = FontUtil.getDescent(font);
         setFixture(() -> createShape(content, height, font));
     }
 
@@ -398,5 +399,13 @@ public class Text extends Geometry
         ToStringFormatter formatter = new ToStringFormatter("Text");
         formatter.add("content", content);
         return formatter.format();
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(scene -> {
+            scene.setBackgroundColor("white");
+            scene.add(new Text("Text"));
+        });
     }
 }

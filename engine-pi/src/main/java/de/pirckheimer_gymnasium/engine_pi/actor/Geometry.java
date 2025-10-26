@@ -52,9 +52,9 @@ public abstract class Geometry extends Actor
     }
 
     /**
-     * Gibt die Farbe aus.
+     * Gibt die <b>Farbe</b> aus.
      *
-     * @return Die Farbe des Objekts.
+     * @return Die <b>Farbe</b> des Objekts.
      */
     @API
     public Color getColor()

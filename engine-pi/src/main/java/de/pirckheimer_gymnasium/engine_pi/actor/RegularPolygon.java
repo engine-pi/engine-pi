@@ -19,7 +19,6 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
@@ -78,17 +77,14 @@ public class RegularPolygon extends Polygon
      */
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new Scene()
-        {
+        Game.start(scene -> {
+            int x = -10;
+            for (int i = 3; i < 8; i++)
             {
-                int x = -10;
-                for (int i = 3; i < 8; i++)
-                {
-                    addRegularPolygon(i, 2, x, 0);
-                    addText(i + "").setPosition(x - 0.25, -4).setColor("white");
-                    x += 5;
-                }
+                scene.addRegularPolygon(i, 2, x, 0);
+                scene.addText(i + "").setPosition(x - 0.25, -4)
+                        .setColor("white");
+                x += 5;
             }
         });
     }

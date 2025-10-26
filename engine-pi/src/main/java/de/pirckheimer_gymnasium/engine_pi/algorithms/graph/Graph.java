@@ -243,6 +243,11 @@ public abstract class Graph
         return nodes;
     }
 
+    public Edge getEdge(int index)
+    {
+        return edges.get(index);
+    }
+
     public ArrayList<Edge> getEdges()
     {
         return edges;
