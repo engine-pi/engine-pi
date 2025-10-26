@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.36.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.36.0) - 2025-10-26
+
+<small>[Compare with v0.35.0](https://github.com/engine-pi/engine-pi/compare/v0.35.0...v0.36.0)</small>
+
+### Added
+
+- Add package `dsa/graph`. `dsa` = Data Structures and Algorithms to visualize graphs.
+
 ## [v0.35.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.35.0) - 2025-10-19
 
 <small>[Compare with v0.34.0](https://github.com/engine-pi/engine-pi/compare/v0.34.0...v0.35.0)</small>

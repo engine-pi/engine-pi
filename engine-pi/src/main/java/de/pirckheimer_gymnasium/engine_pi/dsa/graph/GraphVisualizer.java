@@ -67,7 +67,6 @@ public class GraphVisualizer
             for (LabeledEdge edge : labeledEdges)
             {
                 scene.remove(edge);
-
             }
         }
     }

@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 /**
@@ -9,6 +27,254 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
  */
 public class GraphCollection
 {
+
+    /**
+     * Entspricht der Graphdatenbank {@code Abiturfahrt.grdb} aus dem Schulbuch
+     * des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     */
+    public static GraphArrayMatrix Cornelsen6Abiturfahrt()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix();
+        // Anlegen der Knoten
+        g.addNode("Bologna", 1.6875, 0.0);
+        g.addNode("Innsbruck", 1.5, 6.65625);
+        g.addNode("München", 0.9375, 8.875);
+        g.addNode("Nürnberg", 0.03125, 11.8125);
+        g.addNode("Salzburg", 4.125, 8.4375);
+        g.addNode("Venedig", 3.59375, 2.65625);
+        g.addNode("Verona", 0.0, 2.5625);
+        // Anlegen der Kanten
+        g.addEdge("Nürnberg", "München", 170);
+        g.addEdge("München", "Innsbruck", 150);
+        g.addEdge("Innsbruck", "Verona", 270);
+        g.addEdge("Verona", "Bologna", 140);
+        g.addEdge("Verona", "Venedig", 110);
+        g.addEdge("Venedig", "Salzburg", 450);
+        g.addEdge("München", "Salzburg", 145);
+        return g;
+    }
+
+    /**
+     * Entspricht der Graphdatenbank {@code Autobahn.grdb} aus dem Schulbuch des
+     * Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     */
+    public static GraphArrayMatrix Cornelsen6Autobahn()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 6.15625, 1.96875);
+        g.addNode("FD", 4.03125, 10.3125);
+        g.addNode("HO", 10.5625, 10.28125);
+        g.addNode("LI", 2.0625, 0.0);
+        g.addNode("M", 10.03125, 1.09375);
+        g.addNode("N", 8.78125, 6.40625);
+        g.addNode("R", 13.125, 4.90625);
+        g.addNode("RO", 14.03125, 0.40625);
+        g.addNode("S", 0.0, 4.65625);
+        g.addNode("UL", 3.03125, 2.90625);
+        g.addNode("WÜ", 3.9375, 7.3125);
+        // Anlegen der Kanten
+        g.addEdge("WÜ", "FD", 86);
+        g.addEdge("S", "UL", 103);
+        g.addEdge("UL", "WÜ", 165);
+        g.addEdge("UL", "LI", 126);
+        g.addEdge("UL", "A", 59);
+        g.addEdge("A", "M", 64);
+        g.addEdge("M", "N", 163);
+        g.addEdge("WÜ", "N", 104);
+        g.addEdge("N", "HO", 116);
+        g.addEdge("N", "R", 80);
+        g.addEdge("R", "M", 117);
+        g.addEdge("M", "RO", 60);
+        g.addEdge("HO", "R", 166);
+        g.addEdge("WÜ", "HO", 192);
+        return g;
+    }
+
+    /**
+     * Entspricht der Graphdatenbank {@code ICENetz.grdb} aus dem Schulbuch des
+     * Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     */
+    public static GraphArrayMatrix Cornelsen6ICENetz()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 9.5625, 1.1875);
+        g.addNode("B", 10.96875, 13.96875);
+        g.addNode("D", 1.59375, 11.71875);
+        g.addNode("DD", 14.3125, 9.3125);
+        g.addNode("F", 4.03125, 7.375);
+        g.addNode("F2", 2.125, 6.5);
+        g.addNode("FD", 6.5, 9.25);
+        g.addNode("H", 5.65625, 12.9375);
+        g.addNode("HH", 5.6875, 15.53125);
+        g.addNode("K", 0.0, 8.8125);
+        g.addNode("L", 10.75, 10.8125);
+        g.addNode("M", 12.34375, 0.0);
+        g.addNode("MA", 2.78125, 3.65625);
+        g.addNode("N", 10.65625, 4.25);
+        g.addNode("S", 5.625, 2.53125);
+        g.addNode("WÜ", 7.9375, 6.3125);
+        // Anlegen der Kanten
+        g.addEdge("HH", "H", 74);
+        g.addEdge("B", "H", 98);
+        g.addEdge("H", "D", 100);
+        g.addEdge("D", "K", 77);
+        g.addEdge("K", "F2", 67);
+        g.addEdge("F2", "F", 10);
+        g.addEdge("F", "FD", 52);
+        g.addEdge("FD", "H", 88);
+        g.addEdge("FD", "L", 151);
+        g.addEdge("L", "B", 67);
+        g.addEdge("L", "DD", 73);
+        g.addEdge("FD", "WÜ", 34);
+        g.addEdge("F", "WÜ", 70);
+        g.addEdge("WÜ", "N", 58);
+        g.addEdge("L", "N", 189);
+        g.addEdge("F2", "MA", 30);
+        g.addEdge("MA", "S", 37);
+        g.addEdge("S", "A", 98);
+        g.addEdge("A", "N", 62);
+        g.addEdge("N", "M", 71);
+        g.addEdge("M", "A", 40);
+        g.addEdge("HH", "B", 143);
+        return g;
+    }
+
+    /**
+     * Entspricht der Graphdatenbank {@code Beispielgraph.grdb} aus dem
+     * Schulbuch des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von
+     * 2024.
+     */
+    public static GraphArrayMatrix Cornelsen6Beispielgraph()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix();
+        // Anlegen der Knoten
+        g.addNode("A", 0.0, 0.0);
+        g.addNode("B", 2.34375, 0.46875);
+        g.addNode("C", 6.65625, 1.15625);
+        g.addNode("D", 8.625, 2.0625);
+        g.addNode("E", 12.875, 2.84375);
+        g.addNode("F", 15.8125, 1.0);
+        g.addNode("G", 19.9375, 1.875);
+        g.addNode("H", 19.59375, 4.375);
+        g.addNode("I", 0.6875, 4.09375);
+        g.addNode("J", 3.375, 4.5625);
+        g.addNode("K", 6.59375, 4.125);
+        g.addNode("L", 0.8125, 6.78125);
+        g.addNode("M", 5.75, 6.5);
+        g.addNode("N", 9.65625, 6.1875);
+        g.addNode("O", 14.84375, 7.09375);
+        g.addNode("P", 2.3125, 9.5);
+        g.addNode("Q", 7.8125, 9.1875);
+        g.addNode("R", 11.34375, 9.3125);
+        g.addNode("S", 16.3125, 9.5);
+        g.addNode("T", 0.65625, 10.96875);
+        g.addNode("U", 4.96875, 11.84375);
+        g.addNode("V", 10.1875, 11.5);
+        g.addNode("W", 19.21875, 10.90625);
+        // Anlegen der Kanten
+        g.addEdge("I", "A");
+        g.addEdge("A", "B");
+        g.addEdge("B", "I");
+        g.addEdge("I", "J");
+        g.addEdge("J", "C");
+        g.addEdge("B", "C");
+        g.addEdge("J", "K");
+        g.addEdge("K", "C");
+        g.addEdge("C", "D");
+        g.addEdge("D", "E");
+        g.addEdge("E", "F");
+        g.addEdge("F", "G");
+        g.addEdge("E", "H");
+        g.addEdge("G", "H");
+        g.addEdge("L", "I");
+        g.addEdge("M", "K");
+        g.addEdge("K", "N");
+        g.addEdge("E", "O");
+        g.addEdge("O", "H");
+        g.addEdge("P", "L");
+        g.addEdge("M", "P");
+        g.addEdge("M", "Q");
+        g.addEdge("N", "Q");
+        g.addEdge("N", "R");
+        g.addEdge("R", "S");
+        g.addEdge("S", "O");
+        g.addEdge("T", "P");
+        g.addEdge("P", "U");
+        g.addEdge("U", "T");
+        g.addEdge("U", "V");
+        g.addEdge("V", "R");
+        g.addEdge("S", "W");
+        g.addEdge("W", "H");
+        g.addEdge("N", "E");
+        return g;
+    }
+
+    /**
+     * Entspricht der Graphdatenbank {@code Beispielgraph2.grdb} aus dem
+     * Schulbuch des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von
+     * 2024.
+     */
+    public static GraphArrayMatrix Cornelsen6Beispielgraph2()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix();
+        g.addNode("A", 0.0, 0.0);
+        g.addNode("B", 2.34375, 0.46875);
+        g.addNode("C", 6.65625, 1.15625);
+        g.addNode("D", 8.625, 2.0625);
+        g.addNode("E", 12.875, 2.84375);
+        g.addNode("F", 15.8125, 1.0);
+        g.addNode("G", 19.9375, 1.875);
+        g.addNode("H", 19.59375, 4.375);
+        g.addNode("I", 0.6875, 4.09375);
+        g.addNode("J", 3.375, 4.5625);
+        g.addNode("K", 6.59375, 4.125);
+        g.addNode("L", 0.8125, 6.78125);
+        g.addNode("M", 5.75, 6.5);
+        g.addNode("N", 9.65625, 6.1875);
+        g.addNode("O", 14.84375, 7.09375);
+        g.addNode("P", 2.3125, 9.5);
+        g.addNode("Q", 7.8125, 9.1875);
+        g.addNode("R", 11.34375, 9.3125);
+        g.addNode("S", 16.3125, 9.5);
+        g.addNode("T", 0.65625, 10.96875);
+        g.addNode("U", 4.96875, 11.84375);
+        g.addNode("V", 10.1875, 11.5);
+        g.addNode("W", 19.21875, 10.90625);
+        g.addEdge("I", "A");
+        g.addEdge("A", "B");
+        g.addEdge("B", "I");
+        g.addEdge("I", "J");
+        g.addEdge("J", "C");
+        g.addEdge("B", "C");
+        g.addEdge("J", "K");
+        g.addEdge("K", "C");
+        g.addEdge("C", "D");
+        g.addEdge("E", "F");
+        g.addEdge("F", "G");
+        g.addEdge("E", "H");
+        g.addEdge("G", "H");
+        g.addEdge("L", "I");
+        g.addEdge("M", "K");
+        g.addEdge("K", "N");
+        g.addEdge("E", "O");
+        g.addEdge("O", "H");
+        g.addEdge("P", "L");
+        g.addEdge("M", "P");
+        g.addEdge("M", "Q");
+        g.addEdge("N", "Q");
+        g.addEdge("N", "R");
+        g.addEdge("S", "O");
+        g.addEdge("T", "P");
+        g.addEdge("P", "U");
+        g.addEdge("U", "T");
+        g.addEdge("U", "V");
+        g.addEdge("V", "R");
+        g.addEdge("S", "W");
+        g.addEdge("W", "H");
+        return g;
+    }
 
     /**
      * Ein Graph, der wie das Haus des Nikolaus aufgebaut ist.
@@ -477,244 +743,4 @@ public class GraphCollection
         return g;
     }
 
-    /**
-     * {@code Abiturfahrt.grdb}
-     */
-    public static GraphArrayMatrix Cornelsen6Abiturfahrt()
-    {
-        GraphArrayMatrix g = new GraphArrayMatrix();
-        // Anlegen der Knoten
-        g.addNode("Bologna", 1.6875, 0.0);
-        g.addNode("Innsbruck", 1.5, 6.65625);
-        g.addNode("München", 0.9375, 8.875);
-        g.addNode("Nürnberg", 0.03125, 11.8125);
-        g.addNode("Salzburg", 4.125, 8.4375);
-        g.addNode("Venedig", 3.59375, 2.65625);
-        g.addNode("Verona", 0.0, 2.5625);
-        // Anlegen der Kanten
-        g.addEdge("Nürnberg", "München", 170);
-        g.addEdge("München", "Innsbruck", 150);
-        g.addEdge("Innsbruck", "Verona", 270);
-        g.addEdge("Verona", "Bologna", 140);
-        g.addEdge("Verona", "Venedig", 110);
-        g.addEdge("Venedig", "Salzburg", 450);
-        g.addEdge("München", "Salzburg", 145);
-        return g;
-    }
-
-    /**
-     * {@code Autobahn.grdb}
-     */
-    public static GraphArrayMatrix Cornelsen6Autobahn()
-    {
-        GraphArrayMatrix g = new GraphArrayMatrix();
-        // Anlegen der Knoten
-        g.addNode("A", 6.15625, 1.96875);
-        g.addNode("FD", 4.03125, 10.3125);
-        g.addNode("HO", 10.5625, 10.28125);
-        g.addNode("LI", 2.0625, 0.0);
-        g.addNode("M", 10.03125, 1.09375);
-        g.addNode("N", 8.78125, 6.40625);
-        g.addNode("R", 13.125, 4.90625);
-        g.addNode("RO", 14.03125, 0.40625);
-        g.addNode("S", 0.0, 4.65625);
-        g.addNode("UL", 3.03125, 2.90625);
-        g.addNode("WÜ", 3.9375, 7.3125);
-        // Anlegen der Kanten
-        g.addEdge("WÜ", "FD", 86);
-        g.addEdge("S", "UL", 103);
-        g.addEdge("UL", "WÜ", 165);
-        g.addEdge("UL", "LI", 126);
-        g.addEdge("UL", "A", 59);
-        g.addEdge("A", "M", 64);
-        g.addEdge("M", "N", 163);
-        g.addEdge("WÜ", "N", 104);
-        g.addEdge("N", "HO", 116);
-        g.addEdge("N", "R", 80);
-        g.addEdge("R", "M", 117);
-        g.addEdge("M", "RO", 60);
-        g.addEdge("HO", "R", 166);
-        g.addEdge("WÜ", "HO", 192);
-        return g;
-    }
-
-    /**
-     * {@code ICENetz.grdb}
-     */
-    public static GraphArrayMatrix Cornelsen6ICENetz()
-    {
-        GraphArrayMatrix g = new GraphArrayMatrix();
-        // Anlegen der Knoten
-        g.addNode("A", 9.5625, 1.1875);
-        g.addNode("B", 10.96875, 13.96875);
-        g.addNode("D", 1.59375, 11.71875);
-        g.addNode("DD", 14.3125, 9.3125);
-        g.addNode("F", 4.03125, 7.375);
-        g.addNode("F2", 2.125, 6.5);
-        g.addNode("FD", 6.5, 9.25);
-        g.addNode("H", 5.65625, 12.9375);
-        g.addNode("HH", 5.6875, 15.53125);
-        g.addNode("K", 0.0, 8.8125);
-        g.addNode("L", 10.75, 10.8125);
-        g.addNode("M", 12.34375, 0.0);
-        g.addNode("MA", 2.78125, 3.65625);
-        g.addNode("N", 10.65625, 4.25);
-        g.addNode("S", 5.625, 2.53125);
-        g.addNode("WÜ", 7.9375, 6.3125);
-        // Anlegen der Kanten
-        g.addEdge("HH", "H", 74);
-        g.addEdge("B", "H", 98);
-        g.addEdge("H", "D", 100);
-        g.addEdge("D", "K", 77);
-        g.addEdge("K", "F2", 67);
-        g.addEdge("F2", "F", 10);
-        g.addEdge("F", "FD", 52);
-        g.addEdge("FD", "H", 88);
-        g.addEdge("FD", "L", 151);
-        g.addEdge("L", "B", 67);
-        g.addEdge("L", "DD", 73);
-        g.addEdge("FD", "WÜ", 34);
-        g.addEdge("F", "WÜ", 70);
-        g.addEdge("WÜ", "N", 58);
-        g.addEdge("L", "N", 189);
-        g.addEdge("F2", "MA", 30);
-        g.addEdge("MA", "S", 37);
-        g.addEdge("S", "A", 98);
-        g.addEdge("A", "N", 62);
-        g.addEdge("N", "M", 71);
-        g.addEdge("M", "A", 40);
-        g.addEdge("HH", "B", 143);
-        return g;
-    }
-
-    /**
-     * {@code Beispielgraph.grdb}
-     */
-    public static GraphArrayMatrix Cornelsen6Beispielgraph()
-    {
-        GraphArrayMatrix g = new GraphArrayMatrix();
-        // Anlegen der Knoten
-        g.addNode("A", 0.0, 0.0);
-        g.addNode("B", 2.34375, 0.46875);
-        g.addNode("C", 6.65625, 1.15625);
-        g.addNode("D", 8.625, 2.0625);
-        g.addNode("E", 12.875, 2.84375);
-        g.addNode("F", 15.8125, 1.0);
-        g.addNode("G", 19.9375, 1.875);
-        g.addNode("H", 19.59375, 4.375);
-        g.addNode("I", 0.6875, 4.09375);
-        g.addNode("J", 3.375, 4.5625);
-        g.addNode("K", 6.59375, 4.125);
-        g.addNode("L", 0.8125, 6.78125);
-        g.addNode("M", 5.75, 6.5);
-        g.addNode("N", 9.65625, 6.1875);
-        g.addNode("O", 14.84375, 7.09375);
-        g.addNode("P", 2.3125, 9.5);
-        g.addNode("Q", 7.8125, 9.1875);
-        g.addNode("R", 11.34375, 9.3125);
-        g.addNode("S", 16.3125, 9.5);
-        g.addNode("T", 0.65625, 10.96875);
-        g.addNode("U", 4.96875, 11.84375);
-        g.addNode("V", 10.1875, 11.5);
-        g.addNode("W", 19.21875, 10.90625);
-        // Anlegen der Kanten
-        g.addEdge("I", "A");
-        g.addEdge("A", "B");
-        g.addEdge("B", "I");
-        g.addEdge("I", "J");
-        g.addEdge("J", "C");
-        g.addEdge("B", "C");
-        g.addEdge("J", "K");
-        g.addEdge("K", "C");
-        g.addEdge("C", "D");
-        g.addEdge("D", "E");
-        g.addEdge("E", "F");
-        g.addEdge("F", "G");
-        g.addEdge("E", "H");
-        g.addEdge("G", "H");
-        g.addEdge("L", "I");
-        g.addEdge("M", "K");
-        g.addEdge("K", "N");
-        g.addEdge("E", "O");
-        g.addEdge("O", "H");
-        g.addEdge("P", "L");
-        g.addEdge("M", "P");
-        g.addEdge("M", "Q");
-        g.addEdge("N", "Q");
-        g.addEdge("N", "R");
-        g.addEdge("R", "S");
-        g.addEdge("S", "O");
-        g.addEdge("T", "P");
-        g.addEdge("P", "U");
-        g.addEdge("U", "T");
-        g.addEdge("U", "V");
-        g.addEdge("V", "R");
-        g.addEdge("S", "W");
-        g.addEdge("W", "H");
-        g.addEdge("N", "E");
-        return g;
-    }
-
-    /**
-     * {@code Beispielgraph2.grdb}
-     */
-    public static GraphArrayMatrix Cornelsen6Beispielgraph2()
-    {
-        GraphArrayMatrix g = new GraphArrayMatrix();
-        g.addNode("A", 0.0, 0.0);
-        g.addNode("B", 2.34375, 0.46875);
-        g.addNode("C", 6.65625, 1.15625);
-        g.addNode("D", 8.625, 2.0625);
-        g.addNode("E", 12.875, 2.84375);
-        g.addNode("F", 15.8125, 1.0);
-        g.addNode("G", 19.9375, 1.875);
-        g.addNode("H", 19.59375, 4.375);
-        g.addNode("I", 0.6875, 4.09375);
-        g.addNode("J", 3.375, 4.5625);
-        g.addNode("K", 6.59375, 4.125);
-        g.addNode("L", 0.8125, 6.78125);
-        g.addNode("M", 5.75, 6.5);
-        g.addNode("N", 9.65625, 6.1875);
-        g.addNode("O", 14.84375, 7.09375);
-        g.addNode("P", 2.3125, 9.5);
-        g.addNode("Q", 7.8125, 9.1875);
-        g.addNode("R", 11.34375, 9.3125);
-        g.addNode("S", 16.3125, 9.5);
-        g.addNode("T", 0.65625, 10.96875);
-        g.addNode("U", 4.96875, 11.84375);
-        g.addNode("V", 10.1875, 11.5);
-        g.addNode("W", 19.21875, 10.90625);
-        g.addEdge("I", "A");
-        g.addEdge("A", "B");
-        g.addEdge("B", "I");
-        g.addEdge("I", "J");
-        g.addEdge("J", "C");
-        g.addEdge("B", "C");
-        g.addEdge("J", "K");
-        g.addEdge("K", "C");
-        g.addEdge("C", "D");
-        g.addEdge("E", "F");
-        g.addEdge("F", "G");
-        g.addEdge("E", "H");
-        g.addEdge("G", "H");
-        g.addEdge("L", "I");
-        g.addEdge("M", "K");
-        g.addEdge("K", "N");
-        g.addEdge("E", "O");
-        g.addEdge("O", "H");
-        g.addEdge("P", "L");
-        g.addEdge("M", "P");
-        g.addEdge("M", "Q");
-        g.addEdge("N", "Q");
-        g.addEdge("N", "R");
-        g.addEdge("S", "O");
-        g.addEdge("T", "P");
-        g.addEdge("P", "U");
-        g.addEdge("U", "T");
-        g.addEdge("U", "V");
-        g.addEdge("V", "R");
-        g.addEdge("S", "W");
-        g.addEdge("W", "H");
-        return g;
-    }
 }
