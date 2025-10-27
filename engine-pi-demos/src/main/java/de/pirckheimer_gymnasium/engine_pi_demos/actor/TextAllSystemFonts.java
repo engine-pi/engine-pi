@@ -45,29 +45,47 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
      */
     private int page;
 
+    private String[] systemFonts;
+
+    private Text[] fonts;
+
+    private final int fontsCountPerPage = 10;
+
     public TextAllSystemFonts()
     {
         Text überschrift = new Text("Alle System-Schriftarten", 2f);
         überschrift.setPosition(-12, 3);
         überschrift.setColor("black");
+        fonts = new Text[fontsCountPerPage];
         add(überschrift);
-        loadFonts();
+        GraphicsEnvironment ge = GraphicsEnvironment
+                .getLocalGraphicsEnvironment();
+        systemFonts = ge.getAvailableFontFamilyNames();
+        setFontsOfCurrentPage();
         setBackgroundColor("white");
     }
 
-    private void loadFonts()
+    private void setFontsOfCurrentPage()
     {
-        GraphicsEnvironment ge = GraphicsEnvironment
-                .getLocalGraphicsEnvironment();
-        String[] systemFonts = ge.getAvailableFontFamilyNames();
-        pageCount = systemFonts.length / 10;
-        int startIndex = page * 10;
-        for (int i = startIndex; i < startIndex + 10; i++)
+        for (Text text : fonts)
+        {
+            if (text != null)
+            {
+                text.remove();
+            }
+        }
+
+        pageCount = systemFonts.length / fontsCountPerPage;
+        int startIndex = page * fontsCountPerPage;
+        int x = 0;
+        for (int i = startIndex; i < startIndex + fontsCountPerPage; i++)
         {
             String fontName = systemFonts[i];
             Text text = new Text(fontName, 1, fontName);
-            text.setPosition(-12, -1 * i);
+            text.setPosition(-12, -1 * x);
             text.setColor("black");
+            fonts[x] = text;
+            x++;
             add(text);
         }
     }
@@ -97,6 +115,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
                 page++;
             }
         }
+        setFontsOfCurrentPage();
     }
 
     public static void main(String[] args)

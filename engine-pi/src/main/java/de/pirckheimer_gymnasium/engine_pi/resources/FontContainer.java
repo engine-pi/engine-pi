@@ -59,12 +59,12 @@ public final class FontContainer extends ResourcesContainer<Font>
     }
 
     /**
-     * Prüft, ob ein Font auf diesem System vorhanden ist.
+     * Prüft, ob eine Schriftart auf diesem System vorhanden ist.
      *
-     * @param fontName Der Name des zu überprüfenden Fonts.
+     * @param fontName Der Name der zu überprüfenden Schriftart.
      *
-     * @return <code>true</code>, falls der Font auf dem System existiert, sonst
-     *     <code>false</code>.
+     * @return <code>true</code>, falls die Schriftart auf dem System existiert,
+     *     sonst <code>false</code>.
      */
     @API
     public static boolean isSystemFont(String fontName)
