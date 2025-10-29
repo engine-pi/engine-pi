@@ -73,8 +73,10 @@ public class LabeledNode extends Geometry
         super(() -> new FixtureData(createCircleShape(size)));
         this.label = label;
         this.size = size;
-        font = Resources.FONTS.get("XXXXXX");
+        font = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+                .deriveFont(12.0f);
         cachedFontStringBounds = FontUtil.getStringBounds(label, font);
+        System.out.println(cachedFontStringBounds);
         setColor("blue");
     }
 

@@ -37,11 +37,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 /**
  * Zur Darstellung von <b>Texten</b>.
  *
- * <p>
- * Möglich ist es auch, Fonts zu laden, die im Projektordner sind. Diese werden
- * zu Anfang einmalig geladen und stehen dauerhaft zur Verfügung.
- * </p>
- *
  * @author Michael Andonie
  * @author Niklas Keller
  */
@@ -136,8 +131,8 @@ public class Text extends Geometry
      *
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      * @param height Die <b>Höhe</b> des Textes in Meter.
-     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
-     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      *
      * @see de.pirckheimer_gymnasium.engine_pi.instant.Text#Text(String, double,
      *     String)
@@ -156,8 +151,8 @@ public class Text extends Geometry
      *
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      * @param height Die <b>Höhe</b> des Textes in Meter.
-     * @param fontName Der Name der <b>Schriftart</b>, in der der Text
-     *     dargestellt werden soll und nicht der Name der Schrift-Datei.
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *     kursiv</b>).
      *     <ul>
@@ -204,7 +199,8 @@ public class Text extends Geometry
     /**
      * Setzt eine neue Schriftart für den Text durch Angabe des Names.
      *
-     * @param fontName Die Schriftart, in der der Text dargestellt werden soll.
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      *
      * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
      *     Punktschreibweise aneinander gekettet werden können.
