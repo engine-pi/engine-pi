@@ -21,12 +21,13 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 import java.util.ArrayList;
 
 /**
- * Ein Graph.
+ * Ein <b>Graph</b>.
  *
  * <p>
  * Eine abstrakte Basisklasse als Grundlage zum Vererben für unterschiedliche
- * Graph-Implementationen, z. B. Adjazenzmatrix und Adjazenzliste. Diese Klasse
- * wird auch als Datenbasis zum grafischen Zeichnen des Graphen verwendet.
+ * Graph-Implementationen, z. B. eine Implementation eines Graphen durch eine
+ * Adjazenzmatrix oder durch eine Adjazenzliste. Diese Klasse wird auch als
+ * Datenbasis zum grafischen Zeichnen des Graphen verwendet.
  * </p>
  *
  * @see <a href=
@@ -308,4 +309,32 @@ public abstract class Graph
         return edges;
     }
 
+    /**
+     * Exportiert den Graphen, indem eine Zeichenkette generiert wird, die als
+     * Java-Code verwendet werden kann.
+     *
+     * @since 0.37.0
+     */
+    public String generateJavaCode()
+    {
+        ArrayList<String> lines = new ArrayList<>();
+        if (getNodesCount() > 0)
+        {
+            lines.add("// Anlegen der Knoten");
+
+            for (GraphNode node : getNodes())
+            {
+                lines.add(node.generateJavaCode());
+            }
+        }
+        if (getEdgesCount() > 0)
+        {
+            lines.add("// Anlegen der Kanten");
+            for (GraphEdge edge : getEdges())
+            {
+                lines.add(edge.generateJavaCode());
+            }
+        }
+        return String.join(System.lineSeparator(), lines);
+    }
 }

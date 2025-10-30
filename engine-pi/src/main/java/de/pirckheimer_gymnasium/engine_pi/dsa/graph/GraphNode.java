@@ -80,6 +80,16 @@ public class GraphNode
     }
 
     /**
+     * Setzt den Bezeichner des Knotens.
+     *
+     * @param label Der Bezeichner des Knotens.
+     */
+    public void setLabel(String label)
+    {
+        this.label = label;
+    }
+
+    /**
      * Gibt die <b>x-Koordinate</b> des Knotens in Meter zurück.
      *
      * @return Die <b>x-Koordinate</b> des Knotens in Meter.
@@ -120,5 +130,16 @@ public class GraphNode
     public String getFormattedLabel(int width)
     {
         return (label + "               ").substring(0, width);
+    }
+
+    /**
+     * Exportiert den Knoten, indem eine Zeichenkette generiert wird, die als
+     * Java-Code verwendet werden kann.
+     *
+     * @since 0.37.0
+     */
+    public String generateJavaCode()
+    {
+        return String.format("g.addNode(\"%s\", %.2f, %.2f);", label, x, y);
     }
 }

@@ -24,9 +24,8 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
  * <b>Wird ein Graph über eine Adjazenz-Matrix oder -Liste implementiert, ist
  * diese Klasse eigentlich nicht nötig. Beim Einfügen von Kanten in den Graphen
  * wird momentan zusätzlich zu den oben beschriebenen Datenstrukturen auch eine
- * Objekt dieser Klasse erzeugt. Dadurch entstehen Datendoppelungen. Vor allem
- * das Zeichnen von Kanten wird durch die Klasse {@link GraphEdge}
- * vereinfacht.</b>
+ * Objekt dieser Klasse erzeugt. Dadurch entstehen Datendoppelungen. Jedoch wird
+ * das Zeichnen von Kanten durch diese Klasse vereinfacht.</b>
  *
  * @author Josef Friedrich
  *
@@ -34,14 +33,36 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
  */
 public class GraphEdge
 {
+    /**
+     * Der <b>Startknoten</b>.
+     */
     private GraphNode from;
 
+    /**
+     * Der <b>Endknoten</b>.
+     */
     private GraphNode to;
 
+    /**
+     * Die <b>Gewichtung</b> der Kante.
+     */
     private int weight;
 
+    /**
+     * Wahr, falls die Kante <b>gerichtet</b> ist.
+     */
     private boolean directed;
 
+    /**
+     * Erzeugt einen Kante durch Angabe des <b>Startknoten</b>, des
+     * <b>Endknoten</b>, der <b>Gewichtung</b> und der Information, ob die Kante
+     * <b>gerichtet</b> ist.
+     *
+     * @param from Der <b>Startknoten</b>.
+     * @param to Der <b>Endknoten</b>.
+     * @param weight Die <b>Gewichtung</b> der Kante.
+     * @param directed Wahr, falls die Kante <b>gerichtet</b> ist.
+     */
     public GraphEdge(GraphNode from, GraphNode to, int weight, boolean directed)
     {
         this.from = from;
@@ -50,23 +71,105 @@ public class GraphEdge
         this.directed = directed;
     }
 
+    /**
+     * Erzeugt eine ungerichtete Kante durch Angabe des <b>Startknoten</b>, des
+     * <b>Endknoten</b> und der <b>Gewichtung</b>.
+     *
+     * @param from Der <b>Startknoten</b>.
+     * @param to Der <b>Endknoten</b>.
+     * @param weight Die <b>Gewichtung</b> der Kante.
+     *
+     * @since 0.37.0
+     */
+    public GraphEdge(GraphNode from, GraphNode to, int weight)
+    {
+        this(from, to, weight, false);
+    }
+
+    /**
+     * Erzeugt eine ungerichtete Kante mit der Gewichtung von 1 durch Angabe des
+     * <b>Startknoten</b> und des <b>Endknoten</b>.
+     *
+     * @param from Der <b>Startknoten</b>.
+     * @param to Der <b>Endknoten</b>.
+     *
+     * @since 0.37.0
+     */
+    public GraphEdge(GraphNode from, GraphNode to)
+    {
+        this(from, to, 1);
+    }
+
+    /**
+     * Gibt dem <b>Startknoten</b> zurück.
+     *
+     * @return Der <b>Startknoten</b>.
+     */
     public GraphNode getFrom()
     {
         return from;
     }
 
+    /**
+     * Gibt dem <b>Endknoten</b> zurück.
+     *
+     * @return Der <b>Endknoten</b>.
+     */
     public GraphNode getTo()
     {
         return to;
     }
 
+    /**
+     * Gibt die <b>Gewichtung</b> der Kante zurück.
+     *
+     * @return Die <b>Gewichtung</b> der Kante.
+     */
     public int getWeight()
     {
         return weight;
     }
 
+    /**
+     * Gibt wahr zurück, falls die Kante <b>gerichtet</b> ist.
+     *
+     * @return Wahr, falls die Kante <b>gerichtet</b> ist.
+     */
     public boolean isDirected()
     {
         return directed;
+    }
+
+    private String generateJavaCodeToAndFrom(String additonalArguments)
+    {
+        if (additonalArguments == null)
+        {
+            additonalArguments = "";
+        }
+        else
+        {
+            additonalArguments = ", " + additonalArguments;
+        }
+        return String.format("g.addEdge(\"%s\", \"%s\"%s);", to.getLabel(),
+                from.getLabel(), additonalArguments);
+    }
+
+    /**
+     * Exportiert die Kante, indem eine Zeichenkette generiert wird, die als
+     * Java-Code verwendet werden kann.
+     *
+     * @since 0.37.0
+     */
+    public String generateJavaCode()
+    {
+        if (!directed && weight != 1)
+        {
+            return generateJavaCodeToAndFrom(weight + "");
+        }
+        if (!directed && weight == 1)
+        {
+            return generateJavaCodeToAndFrom(null);
+        }
+        return generateJavaCodeToAndFrom("" + weight + ", " + directed);
     }
 }

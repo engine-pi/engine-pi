@@ -80,4 +80,17 @@ public class GraphMatrixTest
                 exception.getMessage());
         assertThrows(RuntimeException.class, () -> g.getEdgeWeight("A", "C"));
     }
+
+    @Test
+    public void testGenerateJavaCodes()
+    {
+        g.addNode("A", 0, 0);
+        g.addNode("B", 1, 1);
+        g.addEdge("A", "B", 10, true);
+        assertEquals(g.generateJavaCode(), "// Anlegen der Knoten\n" + //
+                "g.addNode(\"A\", 0.00, 0.00);\n" + //
+                "g.addNode(\"B\", 1.00, 1.00);\n" + //
+                "// Anlegen der Kanten\n" + //
+                "g.addEdge(\"B\", \"A\", 10, true);");
+    }
 }

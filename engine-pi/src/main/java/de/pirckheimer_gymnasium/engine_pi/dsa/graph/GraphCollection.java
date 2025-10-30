@@ -659,6 +659,22 @@ public class GraphCollection
     }
 
     /**
+     * {@code k10_a7_3.png}
+     */
+    public static GraphArrayMatrix Oldenburg()
+    {
+        GraphArrayMatrix g = new GraphArrayMatrix(6);
+        // Anlegen der Knoten
+        g.addNode("A", 5.15625, 1.8937501907348633);
+        g.addNode("B", 5.21875, 8.081250190734863);
+        g.addNode("C", 14.9375, 5.018750190734863);
+        g.addNode("D", 11.28125, 8.393750190734863);
+        g.addNode("E", 11.28125, 1.9562501907348633);
+        g.addNode("F", 1.125, 5.206250190734863);
+        return g;
+    }
+
+    /**
      * Buchner Seite 45
      */
     public static GraphArrayMatrix Buchner11FahrzeitenZweispurig()
