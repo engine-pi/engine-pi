@@ -10,21 +10,22 @@ import javax.swing.JFrame;
 
 /**
  * Übernimmt den Cast von Graphics zu Graphics2D und bietet wie die
- * Actor-Klassen eine render-Methode an.
+ * Actor-Klassen eine render-Methode an. Außerdem eine show-Methode und eine
+ * Fenster zum zeichnen.
  */
 abstract class Component extends JComponent
 {
     abstract void render(Graphics2D g);
 
     @Override
-    public void paintComponent(Graphics g)
+    public void paintComponent(Graphics graphics)
     {
-        if (g instanceof Graphics2D)
+        if (graphics instanceof Graphics2D)
         {
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
-            render((Graphics2D) g);
+            render(graphics2D);
         }
     }
 
@@ -33,7 +34,7 @@ abstract class Component extends JComponent
         JFrame frame = new JFrame("Graphics2D Demo");
         Container cp = frame.getContentPane();
         cp.add(this);
-        frame.setSize(300, 200);
+        frame.setSize(800, 600);
         frame.setVisible(true);
     }
 }
