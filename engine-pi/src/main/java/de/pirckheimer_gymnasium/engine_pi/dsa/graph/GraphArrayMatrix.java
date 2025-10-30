@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
+import static de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphEdge.NOT_REACHABLE_WEIGHT;
+
 /**
  * Ein Graph, der über ein zweidimensionales Feld / Array implementiert ist.
  *
@@ -37,23 +39,62 @@ public class GraphArrayMatrix extends Graph
     protected int[][] matrix;
 
     /**
-     * Erzeugt einen neuen Graphen durch Angabe der <b>maximale Anzahl der
-     * Knoten</b>.
+     * Erzeugt einen neuen Graphen unter Angabe der <b>Größe der Matrix</b>. Die
+     * Matrix wird automatisch vergrößert.
      *
-     * @param maxNodes Die <b>Anzahl der maximal möglichen Knoten</b>.
+     * @param matrixSize Die <b>Größe der Matrix</b>.
      */
-    public GraphArrayMatrix(int maxNodes)
+    public GraphArrayMatrix(int matrixSize)
     {
         super();
-        matrix = new int[maxNodes][maxNodes];
+        matrix = new int[matrixSize][matrixSize];
     }
 
     /**
-     * Erstelle eine Adjazenz-Matrix die <b>100 Knoten</b> aufnehmen kann.
+     * Erstellt eine Adjazenz-Matrix mit der Größe von {@code 42}. Die Matrix
+     * wird automatisch vergrößert.
      */
     public GraphArrayMatrix()
     {
-        this(100);
+        this(42);
+    }
+
+    /**
+     * Vergrößert die aktuelle Adjazenzmatrix, um mehr Knoten im Graphen zu
+     * ermöglichen.
+     *
+     * <p>
+     * Die neue Matrix wird um 10 Zeilen und Spalten erweitert. Alle neuen
+     * Einträge werden mit dem Standardwert {@code NOT_REACHABLE_WEIGHT}
+     * initialisiert. Bestehende Werte aus der alten Matrix werden in die neue
+     * Matrix kopiert.
+     * </p>
+     */
+    private void enlargeMatrix()
+    {
+        int newSize = matrix.length + 10;
+        int[][] newMatrix = new int[newSize][newSize];
+
+        // Initialisiert den neue Matrix mit dem „nicht
+        // erreichtbar“-Standard-Wert
+        for (int i = 0; i < newSize; i++)
+        {
+            for (int j = 0; j < newSize; j++)
+            {
+                newMatrix[i][j] = NOT_REACHABLE_WEIGHT;
+            }
+        }
+
+        // Kopiert die bestehenden Gewichte in die neue Matrix
+        for (int i = 0; i < matrix.length; i++)
+        {
+            for (int j = 0; j < matrix.length; j++)
+            {
+                newMatrix[i][j] = matrix[i][j];
+            }
+        }
+
+        matrix = newMatrix;
     }
 
     /**
@@ -70,13 +111,7 @@ public class GraphArrayMatrix extends Graph
      */
     public int getEdgeWeight(String from, String to)
     {
-        int fromIndex = getNodeIndex(from);
-        int toIndex = getNodeIndex(to);
-        if (fromIndex != -1 && toIndex != -1)
-        {
-            return matrix[fromIndex][toIndex];
-        }
-        return -1;
+        return matrix[getNodeIndex(from)][getNodeIndex(to)];
     }
 
     protected void addNodeIntoDataStructure(String label, double x, double y)
@@ -84,16 +119,14 @@ public class GraphArrayMatrix extends Graph
         int index = getNodesCount() - 1;
         if (index >= matrix.length)
         {
-            throw new RuntimeException(
-                    "Die maximale Anzahl an Knoten wurde überschritten: "
-                            + getNodesCount());
+            enlargeMatrix();
         }
         matrix[index][index] = 0;
         for (int i = 0; i < index; i++)
         {
             // Symmetrie, da ungerichteter Graph
-            matrix[index][i] = -1;
-            matrix[i][index] = -1;
+            matrix[index][i] = NOT_REACHABLE_WEIGHT;
+            matrix[i][index] = NOT_REACHABLE_WEIGHT;
         }
     }
 
@@ -102,7 +135,7 @@ public class GraphArrayMatrix extends Graph
     {
         int fromIndex = getNodeIndex(from);
         int toIndex = getNodeIndex(to);
-        if (fromIndex != -1 && toIndex != -1 && fromIndex != toIndex)
+        if (fromIndex != toIndex)
         {
             matrix[fromIndex][toIndex] = weight;
             if (!directed)

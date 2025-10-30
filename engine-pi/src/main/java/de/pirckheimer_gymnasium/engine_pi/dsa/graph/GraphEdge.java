@@ -33,6 +33,9 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
  */
 public class GraphEdge
 {
+
+    public static int NOT_REACHABLE_WEIGHT = -1;
+
     /**
      * Der <b>Startknoten</b>.
      */

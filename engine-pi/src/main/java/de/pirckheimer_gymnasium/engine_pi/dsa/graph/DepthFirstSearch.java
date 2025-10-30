@@ -19,7 +19,8 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 /**
- * Implementation der Tiefensuche.
+ * Eine Implementation der <b>Tiefensuche</b>. Im Englischen heißt dieser
+ * Algorithmus <em>depth-first search</em>.
  *
  * @author Josef Friedrich
  *

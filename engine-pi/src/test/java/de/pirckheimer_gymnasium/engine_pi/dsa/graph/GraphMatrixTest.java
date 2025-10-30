@@ -61,11 +61,9 @@ public class GraphMatrixTest
         g.addNode("C", 2, 2);
         g.addNode("D", 3, 3);
         g.addNode("E", 4, 4);
-
-        RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> g.addNode("F", 5, 5));
-        assertEquals("Die maximale Anzahl an Knoten wurde überschritten: 6",
-                exception.getMessage());
+        // Matrix wird vergrößert
+        g.addNode("F", 5, 5);
+        assertEquals(g.getNodesCount(), 6);
     }
 
     @Test
