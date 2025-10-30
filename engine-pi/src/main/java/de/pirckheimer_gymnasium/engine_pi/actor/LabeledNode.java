@@ -73,11 +73,24 @@ public class LabeledNode extends Geometry
         super(() -> new FixtureData(createCircleShape(size)));
         this.label = label;
         this.size = size;
-        font = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
-                .deriveFont(12.0f);
-        cachedFontStringBounds = FontUtil.getStringBounds(label, font);
-        System.out.println(cachedFontStringBounds);
+        updateLabel();
         setColor("blue");
+    }
+
+    private void updateLabel()
+    {
+        if (label != null)
+        {
+            font = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+                    .deriveFont(12.0f);
+            cachedFontStringBounds = FontUtil.getStringBounds(label, font);
+        }
+    }
+
+    public void setLabel(String label)
+    {
+        this.label = label;
+        updateLabel();
     }
 
     /**
@@ -95,20 +108,22 @@ public class LabeledNode extends Geometry
         g.fillOval(0, -nodeSize, nodeSize, nodeSize);
 
         // label
-        AffineTransform pre = g.getTransform();
-        Font oldFont = g.getFont();
-        g.setColor(Resources.COLORS.get("white"));
-        // g.scale(cachedScaleFactor * pixelPerMeter,
-        // cachedScaleFactor * pixelPerMeter);
-        g.setFont(font);
-
-        var b = cachedFontStringBounds;
-        int fontPosX = (nodeSize - (int) b.getWidth()) / 2;
-        // TODO getY ist Unterlänge ? Schrift jedoch zu weit oben
-        int fontPoxY = (nodeSize - (int) (b.getHeight() + b.getY())) / 2;
-        g.drawString(label, fontPosX, -fontPoxY);
-        g.setFont(oldFont);
-        g.setTransform(pre);
+        if (label != null)
+        {
+            AffineTransform pre = g.getTransform();
+            Font oldFont = g.getFont();
+            g.setColor(Resources.COLORS.get("white"));
+            // g.scale(cachedScaleFactor * pixelPerMeter,
+            // cachedScaleFactor * pixelPerMeter);
+            g.setFont(font);
+            var b = cachedFontStringBounds;
+            int fontPosX = (nodeSize - (int) b.getWidth()) / 2;
+            // TODO getY ist Unterlänge ? Schrift jedoch zu weit oben
+            int fontPoxY = (nodeSize - (int) (b.getHeight() + b.getY())) / 2;
+            g.drawString(label, fontPosX, -fontPoxY);
+            g.setFont(oldFont);
+            g.setTransform(pre);
+        }
     }
 
     /**
