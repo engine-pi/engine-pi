@@ -168,12 +168,12 @@ public abstract class Graph
 
     /**
      * <b>Fügt</b> einen neuen Knoten in den Datenstruktur (z. B. Matrix oder
-     * List) der aktuellen Graph-Implementation <b>ein</b>.
+     * Liste) der aktuellen Graph-Implementation <b>ein</b>.
      *
      * <p>
-     * Diese Methode wird aufgerufen, wenn bereits ein neuer Knoten erzeugt
-     * wurde. Außerdem ist schon überprüft worden, ob der Bezeichner des Knotens
-     * eindeutig ist.
+     * Diese Methode wird aufgerufen, wenn bereits ein neuer Knoten vom Datentyp
+     * {@link GraphNode} erzeugt wurde. Außerdem ist schon überprüft worden, ob
+     * der Bezeichner des Knotens eindeutig ist.
      * </p>
      *
      * @param label Der <b>Bezeichner</b> des neuen Knotens, der dem Graphen
@@ -191,6 +191,9 @@ public abstract class Graph
      *     hinzugefügt wird.
      * @param x Die <b>x-Koordinate</b> des Knotens in Meter.
      * @param y Die <b>y-Koordinate</b> des Knotens in Meter.
+     *
+     * @throws RuntimeException Wenn die Bezeichnung des Knotens bereits
+     *     existiert.
      */
     public void addNode(String label, double x, double y)
     {
@@ -209,6 +212,9 @@ public abstract class Graph
      *
      * @param label Der <b>Bezeichner</b> des neuen Knotens, der dem Graphen
      *     hinzugefügt wird.
+     *
+     * @throws RuntimeException Wenn die Bezeichnung des Knotens bereits
+     *     existiert.
      */
     public void addNode(String label)
     {

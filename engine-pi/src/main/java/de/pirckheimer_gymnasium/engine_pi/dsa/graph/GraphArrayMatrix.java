@@ -124,7 +124,8 @@ public class GraphArrayMatrix extends Graph
         matrix[index][index] = 0;
         for (int i = 0; i < index; i++)
         {
-            // Symmetrie, da ungerichteter Graph
+            // Der neu eingefügte Knoten hat noch keine Kanten zu den bereits
+            // bestehenden Knoten.
             matrix[index][i] = NOT_REACHABLE_WEIGHT;
             matrix[i][index] = NOT_REACHABLE_WEIGHT;
         }
