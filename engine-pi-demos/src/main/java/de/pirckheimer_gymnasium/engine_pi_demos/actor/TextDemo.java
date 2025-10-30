@@ -18,28 +18,34 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos.actor;
 
+import java.awt.Font;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 
 /**
- * Demonstiert die Figur <b>Text</b>
+ * Demonstiert die Figur <b>Text</b>.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.37.0
  */
-public class TextDemo extends Scene
+public class TextDemo
 {
-
-    public TextDemo()
-    {
-        Text cantarell = new Text("This is Cantarell", 2f,
-                "fonts/Cantarell-Regular.ttf");
-        cantarell.setColor("black");
-        add(cantarell);
-        setBackgroundColor("white");
-    }
 
     public static void main(String[] args)
     {
-        Game.start(new TextDemo());
         Game.setTitle("Cantarell");
+        Game.start(s -> {
+            s.add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
+                    "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));
+            Font cantarell = Resources.FONTS.get("fonts/Cantarell-Regular.ttf");
+            s.add(new Text("Mit Unterlängen", 2).setFont(cantarell)
+                    .setPosition(-7, -2));
+            s.add(new Text("... ohne", 2).setFont(cantarell).setPosition(4,
+                    -2));
+            s.setBackgroundColor("green");
+        });
     }
 }
