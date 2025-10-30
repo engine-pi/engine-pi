@@ -23,7 +23,6 @@ public class FontStyleDemo extends Component
 
         g.setFont(font.deriveFont(Font.ITALIC));
         g.drawString("Italic", 70, 300);
-
     }
 
     public static void main(String[] args)
