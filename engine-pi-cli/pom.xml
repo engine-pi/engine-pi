@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>engine-pi-cli</artifactId>
+    <version>0.36.0</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>de.pirckheimer-gymnasium</groupId>
+        <artifactId>engine-pi-meta</artifactId>
+        <version>0.36.0</version>
+    </parent>
+
+    <name>Engine Pi Command Line Tool</name>
+    <description>Command line tool for the Engine Pi development</description>
+    <url>https://github.com/engine-pi/engine-pi</url>
+
+    <licenses>
+        <license>
+            <name>The GNU General Public License, Version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Josef Friedrich</name>
+            <email>josef.friedrich@pirckheimer-gymnasium.de</email>
+            <organizationUrl>http://pirckheimer-gymnasium.de</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
+        <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
+        <url>https://github.com/engine-pi/engine-pi</url>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-symbol-solver-core</artifactId>
+            <version>3.27.1</version>
+        </dependency>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--
+            https://code.revelc.net/formatter-maven-plugin/examples.html#basic-configuration-using-external-resource -->
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>2.24.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                        <configuration>
+                            <configFile>eclipse-formatter.xml</configFile>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.pirckheimer-gymnasium</groupId>
+                        <artifactId>engine-pi</artifactId>
+                        <version>0.29.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

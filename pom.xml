@@ -14,6 +14,7 @@
     <modules>
         <module>engine-pi</module>
         <module>engine-pi-demos</module>
+        <module>engine-pi-cli</module>
     </modules>
 
     <description>The parent meta package of the Engine Pi.</description>
