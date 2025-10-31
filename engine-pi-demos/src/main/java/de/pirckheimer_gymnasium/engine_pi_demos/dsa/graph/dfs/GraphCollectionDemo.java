@@ -30,7 +30,7 @@ public class GraphCollectionDemo extends Scene implements KeyStrokeListener
         visualizer.setGraph(graph);
     }
 
-    private void importGraph(String methodName)
+    public void importGraph(String methodName)
     {
         try
         {
@@ -74,7 +74,7 @@ public class GraphCollectionDemo extends Scene implements KeyStrokeListener
         GraphCollectionDemo scene = new GraphCollectionDemo();
         Game.start(scene);
         scene.importNextGraph();
-
+        // scene.importGraph("OldenburgKapitel10Aufgabe7Nr3");
     }
 
 }

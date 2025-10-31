@@ -23,7 +23,11 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 /**
- * Eine Sammlung an Graphen. Die Graphen stammen größtenteils aus Schulbüchern.
+ * Eine <b>Sammlung an Graphen</b>, die größtenteils aus Schulbüchern stammen.
+ *
+ * <ul>
+ * <li>Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024</li>
+ * </ul>
  *
  * @author Josef Friedrich
  *
@@ -34,7 +38,7 @@ public class GraphCollection
 
     /**
      * Entspricht der Graphdatenbank {@code Abiturfahrt.grdb} aus dem Schulbuch
-     * des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     * des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
      */
     public static GraphArrayMatrix Cornelsen6Abiturfahrt()
     {
@@ -60,44 +64,56 @@ public class GraphCollection
 
     /**
      * Entspricht der Graphdatenbank {@code Autobahn.grdb} aus dem Schulbuch des
-     * Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     * Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
+     *
+     * Auch in Oldenbourg Graph Seite 110, Gewichte nach k10_a3_1.png (Gewichte
+     * etwas anders)
      */
     public static GraphArrayMatrix Cornelsen6Autobahn()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
-        g.addNode("A", 6.15625, 1.96875);
-        g.addNode("FD", 4.03125, 10.3125);
-        g.addNode("HO", 10.5625, 10.28125);
-        g.addNode("LI", 2.0625, 0.0);
-        g.addNode("M", 10.03125, 1.09375);
-        g.addNode("N", 8.78125, 6.40625);
-        g.addNode("R", 13.125, 4.90625);
-        g.addNode("RO", 14.03125, 0.40625);
-        g.addNode("S", 0.0, 4.65625);
-        g.addNode("UL", 3.03125, 2.90625);
-        g.addNode("WÜ", 3.9375, 7.3125);
+        g.addNode("A", 6.15625, 1.96875); // Augsburg
+        g.addNode("FD", 4.03125, 10.3125); // Fulda
+        g.addNode("HO", 10.5625, 10.28125); // Hof
+        g.addNode("LI", 2.0625, 0.0); // Lindau
+        g.addNode("M", 10.03125, 1.09375); // München
+        g.addNode("N", 8.78125, 6.40625); // Nürnberg
+        g.addNode("R", 13.125, 4.90625); // Regensburg
+        g.addNode("RO", 14.03125, 0.40625); // Rosenheim
+        g.addNode("S", 0.0, 4.65625); // Stuttgart
+        g.addNode("UL", 3.03125, 2.90625); // Ulm
+        g.addNode("WÜ", 3.9375, 7.3125); // Würzburg
         // Anlegen der Kanten
-        g.addEdge("WÜ", "FD", 86);
-        g.addEdge("S", "UL", 103);
-        g.addEdge("UL", "WÜ", 165);
-        g.addEdge("UL", "LI", 126);
-        g.addEdge("UL", "A", 59);
+
+        // A
         g.addEdge("A", "M", 64);
-        g.addEdge("M", "N", 163);
-        g.addEdge("WÜ", "N", 104);
-        g.addEdge("N", "HO", 116);
-        g.addEdge("N", "R", 80);
-        g.addEdge("R", "M", 117);
-        g.addEdge("M", "RO", 60);
+        g.addEdge("A", "UL", 59);
+        // FD
+        g.addEdge("FD", "WÜ", 86);
+        // HO
+        g.addEdge("HO", "N", 116);
         g.addEdge("HO", "R", 166);
-        g.addEdge("WÜ", "HO", 192);
+        g.addEdge("HO", "WÜ", 192);
+        // LI
+        g.addEdge("LI", "UL", 126);
+        // M
+        g.addEdge("M", "N", 143);
+        g.addEdge("M", "R", 117);
+        g.addEdge("M", "RO", 60);
+        // N
+        g.addEdge("N", "R", 80);
+        g.addEdge("N", "WÜ", 104);
+        // S
+        g.addEdge("S", "UL", 103);
+        // UL
+        g.addEdge("UL", "WÜ", 165);
         return g;
     }
 
     /**
      * Entspricht der Graphdatenbank {@code ICENetz.grdb} aus dem Schulbuch des
-     * Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von 2024.
+     * Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
      */
     public static GraphArrayMatrix Cornelsen6ICENetz()
     {
@@ -147,7 +163,7 @@ public class GraphCollection
 
     /**
      * Entspricht der Graphdatenbank {@code Beispielgraph.grdb} aus dem
-     * Schulbuch des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von
+     * Schulbuch des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von
      * 2024.
      */
     public static GraphArrayMatrix Cornelsen6Beispielgraph()
@@ -217,7 +233,7 @@ public class GraphCollection
 
     /**
      * Entspricht der Graphdatenbank {@code Beispielgraph2.grdb} aus dem
-     * Schulbuch des Cornelsen Verlag „Informatik 6 grundlegendes Niveau“ von
+     * Schulbuch des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von
      * 2024.
      */
     public static GraphArrayMatrix Cornelsen6Beispielgraph2()
@@ -306,45 +322,24 @@ public class GraphCollection
 
     /**
      * Heißt im Schulbuch: <code>Arbeit.AusfuehrenAutobahn()</code>.
+     *
+     * @see #Cornelsen6Autobahn()
      */
     public static GraphArrayMatrix OldenburgHighway()
     {
-        GraphArrayMatrix g = new GraphArrayMatrix(14);
+        GraphArrayMatrix g = Cornelsen6Autobahn();
         // Anlegen der Knoten
-        g.addNode("A");
         g.addNode("F");
-        g.addNode("FD");
-        g.addNode("HO");
+
         g.addNode("KA");
-        g.addNode("LI");
-        g.addNode("M");
-        g.addNode("N");
+
         g.addNode("PA");
-        g.addNode("R");
-        g.addNode("RO");
-        g.addNode("S");
-        g.addNode("UL");
-        g.addNode("WÜ");
+
         // Anlegen der Kanten
         g.addEdge("KA", "F", 127);
         g.addEdge("F", "WÜ", 131);
-        g.addEdge("WÜ", "N", 104);
-        g.addEdge("N", "R", 80);
         g.addEdge("R", "PA", 72);
-        g.addEdge("HO", "WÜ", 192);
-        g.addEdge("HO", "N", 116);
-        g.addEdge("HO", "R", 166);
-        g.addEdge("FD", "WÜ", 98);
-        g.addEdge("M", "A", 64);
-        g.addEdge("M", "N", 163);
-        g.addEdge("M", "R", 117);
-        g.addEdge("M", "RO", 60);
-        g.addEdge("UL", "A", 59);
-        g.addEdge("UL", "WÜ", 165);
-        g.addEdge("UL", "LI", 126);
-        g.addEdge("UL", "S", 103);
         g.addEdge("S", "KA", 53);
-        g.addEdge("S", "WÜ", 155);
         return g;
     }
 
@@ -423,28 +418,32 @@ public class GraphCollection
 
     /**
      * ICE-Verbindungen
+     *
+     * {@code k10_a2_1.png}
      */
     public static GraphArrayMatrix OldenburgICE()
     {
         // Erzeugen eines Graphenobjekts g für 16 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(16);
         // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("D");
-        g.addNode("DD");
-        g.addNode("F");
-        g.addNode("F2");
-        g.addNode("FD");
-        g.addNode("HH");
-        g.addNode("H");
-        g.addNode("K");
-        g.addNode("L");
-        g.addNode("M");
-        g.addNode("MA");
-        g.addNode("N");
-        g.addNode("S");
-        g.addNode("WÜ");
+        // Anlegen der Knoten
+        g.addNode("A", 10.90, 1.58);
+        g.addNode("B", 13.15, 17.86);
+        g.addNode("D", 2.15, 14.71);
+        g.addNode("DD", 16.12, 12.49);
+        g.addNode("F", 4.94, 9.74);
+        g.addNode("F2", 2.25, 8.71);
+        g.addNode("FD", 7.59, 11.02);
+        g.addNode("H", 7.09, 16.71);
+        g.addNode("HH", 7.09, 20.86);
+        g.addNode("K", 0.34, 11.80);
+        g.addNode("L", 12.62, 13.64);
+        g.addNode("M", 13.81, 0.80);
+        g.addNode("MA", 3.12, 5.30);
+        g.addNode("N", 12.72, 5.18);
+        g.addNode("S", 6.56, 2.68);
+        g.addNode("WÜ", 9.12, 7.33);
+
         // Anlegen der Kanten mit der Gewichtung Fahrzeit in Minuten
         g.addEdge("F2", "F", 10);
         g.addEdge("FD", "F", 52);
@@ -469,96 +468,6 @@ public class GraphCollection
         g.addEdge("WÜ", "F", 70);
         g.addEdge("WÜ", "FD", 34);
         g.addEdge("WÜ", "N", 58);
-        return g;
-    }
-
-    /**
-     * Graph Seite 110, Gewichte nach k10_a3_1.png
-     */
-    public static GraphArrayMatrix OldenburgBavarianHighwayGraph()
-    {
-        // Erzeugen eines Graphenobjekts g für 11 Knoten
-        GraphArrayMatrix g = new GraphArrayMatrix(11);
-        // Anlegen der Knoten
-        g.addNode("A"); // Augsburg
-        g.addNode("FD"); // Fulda
-        g.addNode("HO"); // Hof
-        g.addNode("LI"); // Lindau
-        g.addNode("M"); // München
-        g.addNode("N"); // Nürnberg
-        g.addNode("R"); // Regensburg
-        g.addNode("RO"); // Rosenheim
-        g.addNode("S"); // Stuttgart
-        g.addNode("UL"); // Ulm
-        g.addNode("WÜ"); // Würzburg
-        // Anlegen der Kanten
-        // A
-        g.addEdge("A", "M", 64);
-        g.addEdge("A", "UL", 59);
-        // FD
-        g.addEdge("FD", "WÜ", 148);
-        // HO
-        g.addEdge("HO", "N", 116);
-        g.addEdge("HO", "R", 167);
-        g.addEdge("HO", "WÜ", 192);
-        // LI
-        g.addEdge("LI", "UL", 111);
-        // M
-        g.addEdge("M", "N", 143);
-        g.addEdge("M", "R", 96);
-        g.addEdge("M", "RO", 96);
-        // N
-        g.addEdge("N", "R", 80);
-        g.addEdge("N", "WÜ", 104);
-        // S
-        g.addEdge("S", "UL", 103);
-        // UL
-        g.addEdge("UL", "WÜ", 165);
-        return g;
-    }
-
-    /**
-     * Autobahnkartenausschnitt
-     */
-    public static GraphArrayMatrix OldenburgHighwaySelection()
-    {
-        // Erzeugen eines Graphenobjekts g für 14 Knoten
-        GraphArrayMatrix g = new GraphArrayMatrix(14);
-        // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("F");
-        g.addNode("FD");
-        g.addNode("HO");
-        g.addNode("KA");
-        g.addNode("LI");
-        g.addNode("M");
-        g.addNode("N");
-        g.addNode("PA");
-        g.addNode("R");
-        g.addNode("RO");
-        g.addNode("S");
-        g.addNode("UL");
-        g.addNode("WÜ");
-        // Anlegen der Kanten mit der Gewichtung AutobahnKilometer
-        g.addEdge("KA", "F", 127);
-        g.addEdge("F", "WÜ", 131);
-        g.addEdge("WÜ", "N", 104);
-        g.addEdge("N", "R", 80);
-        g.addEdge("R", "PA", 72);
-        g.addEdge("HO", "WÜ", 192);
-        g.addEdge("HO", "N", 116);
-        g.addEdge("HO", "R", 166);
-        g.addEdge("FD", "WÜ", 98);
-        g.addEdge("M", "A", 64);
-        g.addEdge("M", "N", 163);
-        g.addEdge("M", "R", 117);
-        g.addEdge("M", "RO", 60);
-        g.addEdge("UL", "A", 59);
-        g.addEdge("UL", "WÜ", 165);
-        g.addEdge("UL", "LI", 126);
-        g.addEdge("UL", "S", 103);
-        g.addEdge("S", "KA", 53);
-        // g.addEdge("S", "WÜ", 155);
         return g;
     }
 
@@ -670,16 +579,26 @@ public class GraphCollection
     /**
      * {@code k10_a7_3.png}
      */
-    public static GraphArrayMatrix Oldenburg()
+    public static GraphArrayMatrix OldenburgKapitel10Aufgabe7Nr3()
     {
-        GraphArrayMatrix g = new GraphArrayMatrix(6);
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
-        g.addNode("A", 5.15625, 1.8937501907348633);
-        g.addNode("B", 5.21875, 8.081250190734863);
-        g.addNode("C", 14.9375, 5.018750190734863);
-        g.addNode("D", 11.28125, 8.393750190734863);
-        g.addNode("E", 11.28125, 1.9562501907348633);
-        g.addNode("F", 1.125, 5.206250190734863);
+        g.addNode("A", 5.16, 1.89);
+        g.addNode("B", 5.22, 8.08);
+        g.addNode("C", 14.94, 5.02);
+        g.addNode("D", 11.28, 8.39);
+        g.addNode("E", 11.28, 1.96);
+        g.addNode("F", 1.12, 5.20);
+        g.addEdge("A", "B");
+        g.addEdge("A", "D");
+        g.addEdge("A", "E");
+        g.addEdge("A", "F");
+        g.addEdge("B", "D");
+        g.addEdge("B", "E");
+        g.addEdge("B", "F");
+        g.addEdge("C", "D");
+        g.addEdge("C", "E");
+        g.addEdge("D", "E");
         return g;
     }
 
@@ -688,14 +607,14 @@ public class GraphCollection
      */
     public static GraphArrayMatrix Buchner11FahrzeitenZweispurig()
     {
-        GraphArrayMatrix g = new GraphArrayMatrix(6);
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("C");
-        g.addNode("D");
-        g.addNode("E");
-        g.addNode("F");
+        g.addNode("A", 9.27, 12.59);
+        g.addNode("B", 12.86, 4.71);
+        g.addNode("C", 8.61, 1.30);
+        g.addNode("D", 1.58, 4.59);
+        g.addNode("E", 3.39, 12.40);
+        g.addNode("F", 4.64, 6.27);
         // Anlegen der Kanten
         g.addEdge("A", "B", 7);
         g.addEdge("A", "C", 9);
@@ -714,14 +633,14 @@ public class GraphCollection
      */
     public static GraphArrayMatrix Buchner11FahrzeitenZweispurigDirected()
     {
-        GraphArrayMatrix g = new GraphArrayMatrix(6);
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("C");
-        g.addNode("D");
-        g.addNode("E");
-        g.addNode("F");
+        g.addNode("A", 9.27, 12.59);
+        g.addNode("B", 12.86, 4.71);
+        g.addNode("C", 8.61, 1.30);
+        g.addNode("D", 1.58, 4.59);
+        g.addNode("E", 3.39, 12.40);
+        g.addNode("F", 4.64, 6.27);
         // Anlegen der Kanten
         g.addEdge("A", "B", 7);
         g.addEdge("A", "C", 9);
@@ -735,21 +654,24 @@ public class GraphCollection
         return g;
     }
 
-    public static GraphArrayMatrix getNuernbergUlmMuenchenHamburg()
+    /**
+     * Seite 58 Aufgabe Nr. 4
+     */
+    public static GraphArrayMatrix Cornelsen11SpbNuernbergUlmMuenchenHamburg()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(11);
         // Anlegen der Knoten
-        g.addNode("BA");
-        g.addNode("BT");
-        g.addNode("FD");
-        g.addNode("H");
-        g.addNode("HH");
-        g.addNode("LG");
-        g.addNode("M");
-        g.addNode("MD");
-        g.addNode("N");
-        g.addNode("UL");
-        g.addNode("WÜ");
+        g.addNode("BA", 7.79, 8.32);
+        g.addNode("BT", 11.82, 9.19);
+        g.addNode("FD", 2.79, 10.01);
+        g.addNode("H", 2.36, 13.26);
+        g.addNode("HH", 3.39, 16.26);
+        g.addNode("LG", 6.89, 14.79);
+        g.addNode("M", 11.11, 0.98);
+        g.addNode("MD", 11.14, 11.54);
+        g.addNode("N", 10.98, 3.88);
+        g.addNode("UL", 3.04, 3.19);
+        g.addNode("WÜ", 3.29, 6.51);
         // Anlegen der Kanten
         g.addEdge("M", "N", 143);
         g.addEdge("M", "UL", 144);
