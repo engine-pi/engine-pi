@@ -546,17 +546,22 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt <b>alle Figuren aller Ebenen</b> als Liste zurück.
+     * Gibt alle <b>Figuren</b> aller Ebenen, die <b>bereits in der
+     * Physics-Engine</b> registriert sind, als Liste zurück.
      *
      * <p>
      * Die Figuren werden erst mit Verzögerung durch die Methode
-     * {@link this#defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
-     * sofort nach dem Hinzufügen nur Ebene über die Methode abrufbar.
+     * {@link this#defer(Runnable)} zu den Ebenen hinzugefügt. Sie sind also
+     * nicht sofort nach dem Hinzufügen über diese Methode abrufbar.
      * </p>
      *
-     * @return <b>Alle Figuren aller Ebenen</b> als Liste.
+     * @return Alle Figuren aller Ebenen, die <b>bereits in der
+     *     Physics-Engine</b> registriert sind.
      *
      * @since 0.37.0
+     *
+     * @see Layer#getActors()
+     * @see #getAddedActors()
      */
     public List<Actor> getActors()
     {
@@ -564,6 +569,30 @@ public class Scene implements KeyStrokeListenerRegistration,
         for (Layer layer : layers)
         {
             actors.addAll(layer.getActors());
+        }
+        return actors;
+    }
+
+    /**
+     * Gibt alle <b>Figuren</b>, die bereits zu einer Ebene hinzugefügt und aber
+     * unter Umständen <b>noch nicht in der Physiks-Engine</b> registriert
+     * wurden, als Liste zurück.
+     *
+     * @return Alle <b>Figuren</b>, die bereits zu einer Ebene hinzugefügt und
+     *     aber unter Umständen <b>noch nicht in der Physiks-Engine</b>
+     *     registriert
+     *
+     * @since 0.37.0
+     *
+     * @see Layer#getAddedActors()
+     * @see #getActors()
+     */
+    public List<Actor> getAddedActors()
+    {
+        ArrayList<Actor> actors = new ArrayList<>();
+        for (Layer layer : layers)
+        {
+            actors.addAll(layer.getAddedActors());
         }
         return actors;
     }

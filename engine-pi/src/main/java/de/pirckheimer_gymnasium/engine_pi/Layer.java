@@ -75,7 +75,16 @@ public class Layer implements KeyStrokeListenerRegistration,
         };
     }
 
+    /**
+     * Die <b>bereits in der Physics-Engine</b> registrierten Figuren.
+     */
     private final List<Actor> actors;
+
+    /**
+     * Die bereits zur Ebene hinzugefügten und aber unter Umständen <b>noch
+     * nicht in der Physiks-Engine</b> registrierten Figuren.
+     */
+    private final List<Actor> addedActors;
 
     private double parallaxX = 1;
 
@@ -118,6 +127,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         worldHandler = new WorldHandler(this);
         actors = new ArrayList<>();
+        addedActors = new ArrayList<>();
         EventListeners.registerListeners(this);
     }
 
@@ -377,6 +387,11 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public void add(Actor... actors)
     {
+        for (Actor actor : actors)
+        {
+            addedActors.add(actor);
+        }
+        addedActors.sort(ACTOR_COMPARATOR);
         defer(() -> {
             for (Actor actor : actors)
             {
@@ -411,6 +426,10 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     final public void remove(Actor... actors)
     {
+        for (Actor actor : actors)
+        {
+            addedActors.remove(actor);
+        }
         defer(() -> {
             for (Actor actor : actors)
             {
@@ -431,21 +450,42 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt alle Figuren dieser Ebene als Liste zurück.
+     * Gibt alle <b>Figuren</b> dieser Ebene, die <b>bereits in der
+     * Physics-Engine</b> registriert sind, als Liste zurück.
      *
      * <p>
      * Die Figuren werden erst mit Verzögerung durch die Methode
      * {@link this#defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
-     * sofort nach dem Hinzufügen nur Ebene über die Methode abrufbar.
+     * sofort nach dem Hinzufügen zur Ebene über diese Methode abrufbar.
      * </p>
      *
-     * @return Alle Figuren dieser Ebene als Liste.
+     * @return Alle Figuren dieser Ebene, die <b>bereits in der
+     *     Physics-Engine</b> registriert sind.
      *
      * @since 0.37.0
+     *
+     * @see #getAddedActors()
      */
     public List<Actor> getActors()
     {
         return actors;
+    }
+
+    /**
+     * Gibt alle <b>Figuren</b>, die bereits zur Ebene hinzugefügt und aber
+     * unter Umständen <b>noch nicht in der Physiks-Engine</b> registriert
+     * wurden, als Liste zurück.
+     *
+     * @return Alle <b>Figuren</b>, die bereits zur Ebene hinzugefügt und aber
+     *     unter Umständen <b>noch nicht in der Physiks-Engine</b> registriert
+     *
+     * @since 0.37.0
+     *
+     * @see #getActors()
+     */
+    public List<Actor> getAddedActors()
+    {
+        return addedActors;
     }
 
     /**
