@@ -597,6 +597,70 @@ public class Scene implements KeyStrokeListenerRegistration,
         return actors;
     }
 
+    /**
+     * Gibt den Mittelpunkt der hinzugefügten Figuren aller Ebenen aus.
+     *
+     * <p>
+     * Bei der Berechnung werden die <b>Mittelpunkte</b> aller Figuren
+     * herangezogen.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    public Vector getCenter()
+    {
+        double minX = Double.MAX_VALUE;
+        double minY = Double.MAX_VALUE;
+        double maxX = Double.MIN_VALUE;
+        double maxY = Double.MIN_VALUE;
+
+        for (Actor actor : getAddedActors())
+        {
+
+            Vector center = actor.getCenter();
+            double x = center.getX();
+            double y = center.getY();
+
+            if (x < minX)
+            {
+                minX = x;
+            }
+
+            if (y < minY)
+            {
+                minY = y;
+            }
+
+            if (x > maxX)
+            {
+                maxX = x;
+            }
+
+            if (y > maxY)
+            {
+                maxY = y;
+            }
+
+        }
+        return new Vector((minX + maxX) / 2, (minY + maxY) / 2);
+    }
+
+    /**
+     * Setzt den Mittelpunkt der Kamera auf den Mittelpunkt der hinzugefügten
+     * Figuren aller Ebenen.
+     *
+     * <p>
+     * Bei der Berechnung werden die <b>Mittelpunkte</b> aller Figuren
+     * herangezogen.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    public void focusCenter()
+    {
+        camera.setCenter(getCenter());
+    }
+
     @API
     public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {

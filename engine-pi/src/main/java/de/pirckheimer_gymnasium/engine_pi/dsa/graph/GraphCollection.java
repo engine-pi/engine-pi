@@ -18,6 +18,10 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+
 /**
  * Eine Sammlung an Graphen. Die Graphen stammen größtenteils aus Schulbüchern.
  *
@@ -344,31 +348,34 @@ public class GraphCollection
         return g;
     }
 
+    /**
+     * {@code k10_a1_2.png}
+     */
     public static GraphArrayMatrix OldenburgFlightRoute()
     {
-        GraphArrayMatrix g = new GraphArrayMatrix(21);
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
-        g.addNode("AMS");
-        g.addNode("ARN");
-        g.addNode("BKK");
-        g.addNode("CAI");
-        g.addNode("CDG");
-        g.addNode("DEL");
-        g.addNode("DME");
-        g.addNode("FRA");
-        g.addNode("GRU");
-        g.addNode("JFK");
-        g.addNode("JNB");
-        g.addNode("LHR");
-        g.addNode("MAD");
-        g.addNode("MEX");
-        g.addNode("MUC");
-        g.addNode("NRT");
-        g.addNode("ORD");
-        g.addNode("PEK");
-        g.addNode("SFO");
-        g.addNode("SIN");
-        g.addNode("TXL");
+        g.addNode("AMS", 6.31, 15.43);
+        g.addNode("ARN", 10.63, 18.33);
+        g.addNode("BKK", 22.16, 3.93);
+        g.addNode("CAI", 16.28, 0.77);
+        g.addNode("CDG", 4.13, 8.96);
+        g.addNode("DEL", 21.81, 1.43);
+        g.addNode("DME", 20.94, 15.24);
+        g.addNode("FRA", 10.94, 10.83);
+        g.addNode("GRU", 3.13, 3.36);
+        g.addNode("JFK", 3.41, 12.11);
+        g.addNode("JNB", 7.59, 0.86);
+        g.addNode("LHR", 8.22, 17.08);
+        g.addNode("MAD", 7.78, 5.80);
+        g.addNode("MEX", 1.47, 5.80);
+        g.addNode("MUC", 11.53, 3.49);
+        g.addNode("NRT", 22.78, 9.14);
+        g.addNode("ORD", 1.75, 15.21);
+        g.addNode("PEK", 22.13, 12.18);
+        g.addNode("SFO", 0.53, 10.36);
+        g.addNode("SIN", 22.59, 6.43);
+        g.addNode("TXL", 13.78, 14.58);
         // Anlegen der Kanten mit der Gewichtung Flugzeit in Minuten
         g.addEdge("FRA", "AMS", 70);
         g.addEdge("FRA", "ARN", 125);
@@ -557,53 +564,54 @@ public class GraphCollection
 
     /**
      * S- und U-Bahn-Verbindungen
+     *
+     * {@code k10_a4_1.png}
      */
     public static GraphArrayMatrix OldenburgSubway()
     {
         // Erzeugen eines Graphenobjekts g für 41 Knoten
         GraphArrayMatrix g = new GraphArrayMatrix(41);
         // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("Altomünster");
-        g.addNode("Arabellapark");
-        g.addNode("Dachau");
-        g.addNode("Donnersbergerbrücke");
-        g.addNode("Ebersberg");
-        g.addNode("Erding");
-        g.addNode("Feldmoching");
-        g.addNode("Flughafen");
-        g.addNode("Freising");
-        g.addNode("Fürstenried");
-        g.addNode("Garching");
-        g.addNode("Geltendorf");
-        g.addNode("Giesing");
-        g.addNode("Großhadern");
-        g.addNode("Harras");
-        g.addNode("Hauptbahnhof");
-        g.addNode("Heimeranplatz");
-        g.addNode("Herrsching");
-        g.addNode("Holzkirchen");
-        g.addNode("Innsbrucker Ring");
-        g.addNode("Karlsplatz");
-        g.addNode("Kreuzstraße");
-        g.addNode("Laim");
-        g.addNode("Laimer Platz");
-        g.addNode("Mammendorf");
-        g.addNode("Mangfallplatz");
-        g.addNode("Marienplatz");
-        g.addNode("Messe");
-        g.addNode("Neufahrn");
-        g.addNode("Neuperlach");
-        g.addNode("Odeonsplatz");
-        g.addNode("OEZ");
-        g.addNode("Ostbahnhof");
-        g.addNode("Pasing");
-        g.addNode("Petershausen");
-        g.addNode("Scheidplatz");
-        g.addNode("Sendlinger Tor");
-        g.addNode("Trudering");
-        g.addNode("Tutzing");
-        g.addNode("Wolfratshausen");
+        g.addNode("Altomünster", 3.73, 19.96);
+        g.addNode("Arabellapark", 23.64, 16.37);
+        g.addNode("Dachau", 6.55, 15.90);
+        g.addNode("Donnersbergerbrücke", 11.08, 12.71);
+        g.addNode("Ebersberg", 32.73, 2.12);
+        g.addNode("Erding", 29.61, 19.21);
+        g.addNode("Feldmoching", 10.20, 17.40);
+        g.addNode("Flughafen", 27.42, 21.75);
+        g.addNode("Freising", 17.76, 22.46);
+        g.addNode("Fürstenried", 9.73, 4.18);
+        g.addNode("Garching", 20.58, 19.81);
+        g.addNode("Geltendorf", 1.01, 3.31);
+        g.addNode("Giesing", 22.17, 8.34);
+        g.addNode("Großhadern", 7.83, 6.96);
+        g.addNode("Harras", 11.61, 6.84);
+        g.addNode("Hauptbahnhof", 15.11, 12.25);
+        g.addNode("Heimeranplatz", 11.67, 9.62);
+        g.addNode("Herrsching", 3.23, 1.31);
+        g.addNode("Holzkirchen", 21.45, 1.84);
+        g.addNode("Innsbrucker Ring", 26.51, 9.12);
+        g.addNode("Karlsplatz", 17.64, 12.50);
+        g.addNode("Kreuzstraße", 27.20, 1.84);
+        g.addNode("Laim", 8.17, 12.50);
+        g.addNode("Laimer Platz", 8.45, 9.78);
+        g.addNode("Mangfallplatz", 19.17, 5.71);
+        g.addNode("Mammendorf", 0.95, 18.37);
+        g.addNode("Marienplatz", 20.51, 12.68);
+        g.addNode("Messe", 32.26, 11.87);
+        g.addNode("Neufahrn", 13.92, 20.81);
+        g.addNode("Neuperlach", 26.70, 5.78);
+        g.addNode("Odeonsplatz", 20.26, 15.28);
+        g.addNode("OEZ", 12.76, 15.71);
+        g.addNode("Ostbahnhof", 24.86, 12.50);
+        g.addNode("Pasing", 4.83, 12.43);
+        g.addNode("Petershausen", 6.48, 20.18);
+        g.addNode("Scheidplatz", 16.67, 17.12);
+        g.addNode("Sendlinger Tor", 17.64, 9.03);
+        g.addNode("Trudering", 29.48, 10.90);
+        g.addNode("Tutzing", 6.58, 1.28);
+        g.addNode("Wolfratshausen", 13.20, 1.21);
         // Anlegen der Kanten mit der Gewichtung "ist verbunden"
         g.addEdge("Dachau", "Altomünster");
         g.addEdge("Harras", "Großhadern");
@@ -649,6 +657,7 @@ public class GraphCollection
         g.addEdge("Sendlinger Tor", "Harras");
         g.addEdge("Sendlinger Tor", "Hauptbahnhof");
         g.addEdge("Sendlinger Tor", "Marienplatz");
+        g.addEdge("Sendlinger Tor", "Mangfallplatz");
         g.addEdge("Trudering", "Ebersberg");
         g.addEdge("Trudering", "Innsbrucker Ring");
         g.addEdge("Trudering", "Messe");
@@ -757,6 +766,36 @@ public class GraphCollection
         g.addEdge("N", "BT", 72);
         g.addEdge("WÜ", "N", 109);
         return g;
+    }
+
+    /**
+     * Gibt die Namen aller öffentlichen, statischen Methoden dieser Klasse
+     * zurück, mit Ausnahme der Methode {@link #getMethodNames()}.
+     *
+     * @return Ein Array von Strings, das die Namen der Methoden enthält.
+     */
+    public static String[] getMethodNames()
+    {
+        ArrayList<String> names = new ArrayList<>();
+        try
+        {
+            Method[] methods = GraphCollection.class.getDeclaredMethods();
+            for (Method method : methods)
+            {
+                String name = method.getName();
+                if (Modifier.isStatic(method.getModifiers())
+                        && Modifier.isPublic(method.getModifiers())
+                        && !name.equals("getMethodNames"))
+                {
+                    names.add(name);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return names.toArray(new String[0]);
     }
 
 }

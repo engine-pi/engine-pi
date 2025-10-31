@@ -11,8 +11,8 @@ public class GraphDrawerDemo extends Scene
     public GraphDrawerDemo()
     {
         Image graphImage = new Image(
-                "/data/school/Archiv/schulbuecher/Informatik/Oldenbourg/Informatik-Oberstufe-1_Oldenbourg_2009_Lehrer/kapitel_iii/pics/k10_a7_3.png",
-                10);
+                "/data/school/Archiv/schulbuecher/Informatik/Oldenbourg/Informatik-Oberstufe-1_Oldenbourg_2009_Lehrer/kapitel_iii/pics/k10_a4_1.png",
+                30);
         add(graphImage);
 
         new GraphDrawer(this);
@@ -22,7 +22,7 @@ public class GraphDrawerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new GraphDrawerDemo());
+        Game.start(new GraphDrawerDemo(), 1200, 800);
     }
 
 }

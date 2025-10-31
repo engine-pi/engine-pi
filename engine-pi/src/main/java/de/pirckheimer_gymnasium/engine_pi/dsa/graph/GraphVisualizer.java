@@ -71,6 +71,25 @@ public class GraphVisualizer
         }
     }
 
+    /**
+     * Setzt den Graphen neu und aktualisiert die Darstellung.
+     *
+     * Die Methode führt folgende Schritte aus:
+     * <ul>
+     * <li>Speichert den übergebenen Graphen in der Instanzvariable.</li>
+     * <li>Räumt die aktuelle Szene auf.</li>
+     * <li>Erstellt und fügt beschriftete Kanten ({@link LabeledEdge}) für jede
+     * Kante des Graphen hinzu.</li>
+     * <li>Erstellt und fügt beschriftete Knoten ({@link LabeledNode}) für jeden
+     * Knoten des Graphen hinzu.</li>
+     * </ul>
+     *
+     * Hinweis: Die Positionen der Knoten und Kanten werden aus dem übergebenen
+     * Graphen übernommen.
+     *
+     * @param graph Der Graph, der visualisiert werden soll. Dieser Graph
+     *     enthält die Knoten und Kanten, die in der Szene dargestellt werden.
+     */
     public void setGraph(Graph graph)
     {
         this.graph = graph;

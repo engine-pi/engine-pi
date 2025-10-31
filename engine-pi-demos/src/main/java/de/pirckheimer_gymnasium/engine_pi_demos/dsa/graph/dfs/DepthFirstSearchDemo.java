@@ -17,7 +17,6 @@ public class DepthFirstSearchDemo extends Scene
         dfs = new DepthFirstSearch(visualizer);
         dfs.importGraph(GraphCollection.Cornelsen6Beispielgraph2());
         visualizer.setGraph(dfs);
-        getCamera().setCenter(10, 6);
     }
 
     public void visit(String label)
@@ -29,6 +28,7 @@ public class DepthFirstSearchDemo extends Scene
     {
         DepthFirstSearchDemo scene = new DepthFirstSearchDemo();
         Game.start(scene);
+        scene.focusCenter();
         scene.visit("H");
     }
 
