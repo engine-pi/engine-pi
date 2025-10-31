@@ -20,8 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos;
 
-import java.awt.Color;
-
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
@@ -35,8 +33,8 @@ public class CollisionTest extends Scene
 
     public CollisionTest()
     {
-        wall.setColor(Color.ORANGE);
-        ball.setColor(Color.green);
+        wall.setColor("orange");
+        ball.setColor("green");
         // ball.position.set(-200, 0);
         // wall.position.set(200, -200);
         add(wall, ball);

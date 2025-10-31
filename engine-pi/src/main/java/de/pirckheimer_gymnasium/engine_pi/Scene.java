@@ -545,6 +545,29 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    /**
+     * Gibt <b>alle Figuren aller Ebenen</b> als Liste zurück.
+     *
+     * <p>
+     * Die Figuren werden erst mit Verzögerung durch die Methode
+     * {@link this#defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
+     * sofort nach dem Hinzufügen nur Ebene über die Methode abrufbar.
+     * </p>
+     *
+     * @return <b>Alle Figuren aller Ebenen</b> als Liste.
+     *
+     * @since 0.37.0
+     */
+    public List<Actor> getActors()
+    {
+        ArrayList<Actor> actors = new ArrayList<>();
+        for (Layer layer : layers)
+        {
+            actors.addAll(layer.getActors());
+        }
+        return actors;
+    }
+
     @API
     public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
     {

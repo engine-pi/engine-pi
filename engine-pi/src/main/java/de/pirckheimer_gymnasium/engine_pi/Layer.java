@@ -140,7 +140,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         if (parent != null && this.parent != null)
         {
             throw new IllegalStateException(
-                    "Das Layer wurde bereits an einer Scene angemeldet.");
+                    "Die Ebene wurde bereits in einer Szene angemeldet.");
         }
         if (parent != null)
         {
@@ -431,6 +431,24 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Gibt alle Figuren dieser Ebene als Liste zurück.
+     *
+     * <p>
+     * Die Figuren werden erst mit Verzögerung durch die Methode
+     * {@link this#defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
+     * sofort nach dem Hinzufügen nur Ebene über die Methode abrufbar.
+     * </p>
+     *
+     * @return Alle Figuren dieser Ebene als Liste.
+     *
+     * @since 0.37.0
+     */
+    public List<Actor> getActors()
+    {
+        return actors;
+    }
+
+    /**
      * Übersetzt einen Punkt auf diesem Layer zu der analogen, aktuellen
      * Pixelkoordinate im zeichnenden Frame.
      *
@@ -457,10 +475,9 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die derzeit auf dem Bildschirm sichtbare Fläche des Layers an.
+     * Gibt die derzeit auf dem Bildschirm sichtbare Fläche der Ebene an.
      *
-     * @return Die sichtbare Fläche als Bounds Objekt <b>mit Angaben in
-     *     Meter</b>
+     * @return Die sichtbare Fläche <b>mit Angaben in Meter</b>
      *
      * @see Game#getWindowSize()
      */
