@@ -18,6 +18,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -47,10 +48,27 @@ import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
  * Methode zurückgreift, falls das nicht-statische Attribut nicht gesetzt wird.
  * </p>
  *
+ * Objekt Attribute
+ *
+ * label
+ *
+ * Statische Attribute
+ *
+ * <ol>
+ * <li>SIZE</li>
+ * <li>FONT_SIZE</li>
+ * <li>FONT</li>
+ * <li>COLOR</li>
+ * </ol>
+ *
  * @author Josef Friedrich
  */
 public class LabeledNode extends Geometry
 {
+    /**
+     * Die <b>Bezeichnung</b> des Knotens.
+     */
+    private String label;
 
     /**
      * Die <b>Größe</b> des Knotens in Meter.
@@ -72,13 +90,18 @@ public class LabeledNode extends Geometry
      */
     private double size = 0;
 
+    /**
+     * Die <b>Schriftgröße</b> des Bezeichners in Punkten (z.B. 12pt).
+     */
+    public static double FONT_SIZE = 16;
+
     public static Font FONT = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
-            .deriveFont(16.0f);
+            .deriveFont((float) FONT_SIZE);
 
     /**
-     * Die <b>Bezeichnung</b> des Knotens.
+     * Die <b>Hintergrundfarbe</b> des Knotens.
      */
-    private String label;
+    public static Color COLOR = Resources.COLORS.get("blue");
 
     private FontStringBounds cachedFontStringBounds;
 
@@ -130,7 +153,8 @@ public class LabeledNode extends Geometry
         this.label = label;
         this.size = size;
         updateLabel();
-        setColor("blue");
+        // Damit zuerst auf das statische Attribut COLOR zurückgegriffen wird.
+        color = null;
         setCenter(x, y);
     }
 
@@ -177,6 +201,26 @@ public class LabeledNode extends Geometry
      *
      * @return Die <b>Schriftart</b> der Knotenbezeichnung.
      */
+    public void setFontSize(double fontSize)
+    {
+        setFont(getFont().deriveFont((float) fontSize));
+    }
+
+    /**
+     * Setzt die <b>Schriftart</b> der Knotenbezeichnung.
+     *
+     * @param font Die <b>Schriftart</b> der Knotenbezeichnung.
+     */
+    public void setFont(Font font)
+    {
+        this.font = font;
+    }
+
+    /**
+     * Gibt die <b>Schriftart</b> der Knotenbezeichnung zurück.
+     *
+     * @return Die <b>Schriftart</b> der Knotenbezeichnung.
+     */
     private Font getFont()
     {
         if (font == null)
@@ -184,6 +228,20 @@ public class LabeledNode extends Geometry
             return FONT;
         }
         return font;
+    }
+
+    /**
+     * Gibt die <b>Hintergrundfarbe</b> des Knotens zurück.
+     *
+     * @return Die <b>Hintergrundfarbe</b> des Knotens
+     */
+    public Color getColor()
+    {
+        if (color == null)
+        {
+            return COLOR;
+        }
+        return color;
     }
 
     /**
@@ -255,11 +313,18 @@ public class LabeledNode extends Geometry
     public static void main(String[] args)
     {
         Game.start(s -> {
+            LabeledNode n1, n2, n3;
             LabeledNode.SIZE = 2;
-            LabeledNode node = new LabeledNode("Node");
+            n1 = new LabeledNode("Node 1");
+            s.add(n1);
 
-            s.add(node);
-            s.add(new LabeledNode("Placed node", 5, 5));
+            LabeledNode.COLOR = Resources.COLORS.get("orange");
+            n2 = new LabeledNode("Node 2", 5, 5);
+            n2.setColor("green");
+            s.add(n2);
+
+            n3 = new LabeledNode("Node 3", 5, -5);
+            s.add(n3);
         });
     }
 }

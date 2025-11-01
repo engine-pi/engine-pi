@@ -25,16 +25,17 @@ public class LabeledEdge extends Actor
 
     private String label;
 
-    public LabeledEdge(double x1, double y1, double x2, double y2)
+    public LabeledEdge(double x1, double y1, double x2, double y2, String label)
     {
-        this(new Vector(x1, y1), new Vector(x2, y2));
+        this(new Vector(x1, y1), new Vector(x2, y2), label);
     }
 
-    public LabeledEdge(Vector point1, Vector point2)
+    public LabeledEdge(Vector point1, Vector point2, String label)
     {
         super(() -> FixtureBuilder.line(point1, point2));
         this.point1 = point1;
         this.point2 = point2;
+        this.label = label;
         setColor("gray");
     }
 
@@ -64,7 +65,7 @@ public class LabeledEdge extends Actor
     public static void main(String[] args)
     {
         Game.start((scene) -> {
-            LabeledEdge edge = new LabeledEdge(1, 1, 4, 5);
+            LabeledEdge edge = new LabeledEdge(1, 1, 4, 5, "asd");
             scene.add(edge);
         });
     }
