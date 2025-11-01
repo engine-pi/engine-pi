@@ -1026,15 +1026,25 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * </p>
      *
      * <p>
-     * Der Ursprung des Koordinatensystems ist in Java links oben, in der Engine
-     * Pi links unten.
+     * Der Ursprung des Koordinatensystems ist in <b>Java links oben</b>, in der
+     * <b>Engine Pi links unten</b>. In Java zeigt die y-Achse nach unten in der
+     * Engine Pi nach oben. Um beispielsweise ein Rechteck mit der Breite
+     * {@code width} und der Höhe {@code height} an der Position {@code (0|0)}
+     * zu zeichnen, ist folgender Code notwendig:
      * </p>
+     *
+     * <pre>{@code
+     * g.fillRect(0, -height, width, height);
+     * }</pre>
+     *
+     * Oder es kann mit Hilfe der Klasse {@link AffineTransform} eine horizonale
+     * Spiegelung der x-Achse vorgenommen werden:
      *
      * <pre>{@code
      * AffineTransform at = g.getTransform();
      * g.scale(1, -1);
      * g.setTransform(at);
-     * }</pre>
+     *
      *
      * <p>
      * <b>Meter in Pixel umrechnen:</b>
@@ -1059,11 +1069,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * <b>Farbe setzen:</b>
      * </p>
      *
-     * <pre>{@code
+     * <pre>
+     * {@code
      * g.setColor(getColor());
-     * }</pre>
+     * }
+     * </pre>
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
      * @hidden

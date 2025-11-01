@@ -33,18 +33,47 @@ import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 
 /**
- * Beschreibt einen <b>Knoten</b>, der zur Visualisualisierung von Listen,
- * Bäumen oder Graphen verwendet werden kann.
+ * Beschreibt einen <b>Knoten (node)</b> mit einer <b>Bezeichnung (label)</b>,
+ * der zur Visualisualisierung von Listen, Bäumen oder Graphen verwendet werden
+ * kann.
+ *
+ * <p>
+ * Einige Eigenschaften dieser Knoten-Klassen haben sowohl ein statisches als
+ * auch ein nicht statisches Attribut. Die statischen Attribute werden groß
+ * geschrieben (z.B. {@code SIZE}), die nicht-statische bzw. Objekt-Attribute
+ * klein (z.B. {@code size}). Mit Hilfe der statischen Attribute kann dann das
+ * Aussehen aller Knoten auf einmal geändert werden. Zu den statischen und
+ * nicht-statischen Attribut-Paar gesellt sich eine Getter-Methode, die auf die
+ * Methode zurückgreift, falls das nicht-statische Attribut nicht gesetzt wird.
+ * </p>
  *
  * @author Josef Friedrich
  */
 public class LabeledNode extends Geometry
 {
+
     /**
-     * Die <b>Größe</b> des Knotens in Meter. Bei einem Kreis handelt es sich um
-     * den Durchmesser.
+     * Die <b>Größe</b> des Knotens in Meter.
+     *
+     * <p>
+     * Standardmäßig wird der Knoten als Kreis gezeichnet. Bei einem Kreis
+     * stellt {@code size} den Durchmesser dar.
+     * </p>
      */
-    private double size;
+    public static double SIZE = 1;
+
+    /**
+     * Die <b>Größe</b> des Knotens in Meter.
+     *
+     * <p>
+     * Standardmäßig wird der Knoten als Kreis gezeichnet. Bei einem Kreis
+     * stellt {@code size} den Durchmesser dar.
+     * </p>
+     */
+    private double size = 0;
+
+    public static Font FONT = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+            .deriveFont(16.0f);
 
     /**
      * Die <b>Bezeichnung</b> des Knotens.
@@ -53,37 +82,68 @@ public class LabeledNode extends Geometry
 
     private FontStringBounds cachedFontStringBounds;
 
+    /**
+     * Die Schriftart der Knotenbezeichnung.
+     */
     private Font font;
 
     @API
     public LabeledNode()
     {
-        this(null, 1);
+        this(null);
     }
 
+    /**
+     * @param label Die <b>Bezeichnung</b> des Knotens.
+     */
     @API
     public LabeledNode(String label)
     {
-        this(label, 1);
+        this(label, SIZE, 0, 0);
     }
 
+    /**
+     * @param label Die <b>Bezeichnung</b> des Knotens.
+     * @param x Die <b>x-Koordinate des Mittelpunkts</b> (nicht die linke untere
+     *     Ecke).
+     * @param y Die <b>x-Koordinate des Mittelpunkts</b> (nicht die linke untere
+     *     Ecke).
+     */
     @API
-    public LabeledNode(String label, double size)
+    public LabeledNode(String label, double x, double y)
+    {
+        this(label, SIZE, x, y);
+    }
+
+    /**
+     * @param label Die <b>Bezeichnung</b> des Knotens.
+     * @param size Die <b>Größe</b> des Knotens in Meter.
+     * @param x Die <b>x-Koordinate des Mittelpunkts</b> (nicht die linke untere
+     *     Ecke).
+     * @param y Die <b>x-Koordinate des Mittelpunkts</b> (nicht die linke untere
+     *     Ecke).
+     */
+    @API
+    public LabeledNode(String label, double size, double x, double y)
     {
         super(() -> new FixtureData(createCircleShape(size)));
         this.label = label;
         this.size = size;
         updateLabel();
         setColor("blue");
+        setCenter(x, y);
     }
 
+    /**
+     * Diese Hilfsmethode muss jedesmal ausgeführt werden, wenn die Bezeichnung
+     * des Knotens geändert wird.
+     */
     private void updateLabel()
     {
         if (label != null)
         {
-            font = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
-                    .deriveFont(24.0f);
-            cachedFontStringBounds = FontUtil.getStringBoundsNg(label, font);
+            cachedFontStringBounds = FontUtil.getStringBoundsNg(label,
+                    getFont());
         }
     }
 
@@ -94,19 +154,53 @@ public class LabeledNode extends Geometry
     }
 
     /**
+     * Gibt die <b>Größe</b> des Knotens in Meter zurück.
+     *
+     * <p>
+     * Standardmäßig wird der Knoten als Kreis gezeichnet. Bei einem Kreis
+     * stellt {@code size} den Durchmesser dar.
+     * </p>
+     *
+     * @return Die <b>Größe</b> des Knotens in Meter.
+     */
+    private double getSize()
+    {
+        if (size == 0)
+        {
+            return SIZE;
+        }
+        return size;
+    }
+
+    /**
+     * Gibt die <b>Schriftart</b> der Knotenbezeichnung zurück.
+     *
+     * @return Die <b>Schriftart</b> der Knotenbezeichnung.
+     */
+    private Font getFont()
+    {
+        if (font == null)
+        {
+            return FONT;
+        }
+        return font;
+    }
+
+    /**
      * @hidden
      */
     @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        // in Pixel
-        int nodeSize = (int) (size * pixelPerMeter);
+        // Die Größe des Knotens in Pixel
+        int nodeSize = (int) (getSize() * pixelPerMeter);
 
-        // Die x-Koordinate der linken oberen Ecke
+        // Die x-Koordinate der linken oberen Ecke.
         int upperLeftX = 0;
-        // Die y-Koordinate der linken oberen Ecke. Wir nehmen hier -nodeSize,
-        // damit der Anker des Knotens dann links unten auf (0|0) steht.
+        // Die y-Koordinate der linken oberen Ecke. Wir nehmen hier {@code
+        // -nodeSize},
+        // damit der Anker des Knotens dann links unten auf {@code (0|0)} steht.
         int upperLeftY = -nodeSize;
 
         // Kreis
@@ -119,7 +213,7 @@ public class LabeledNode extends Geometry
             AffineTransform pre = g.getTransform();
             Font oldFont = g.getFont();
             g.setColor(Resources.COLORS.get("white"));
-            g.setFont(font);
+            g.setFont(getFont());
             var b = cachedFontStringBounds;
 
             // Der obere Abstand des Schriftrahmen zum Knotenrahmen.
@@ -155,9 +249,12 @@ public class LabeledNode extends Geometry
 
     public static void main(String[] args)
     {
-        Game.start(scene -> {
+        Game.start(s -> {
+            LabeledNode.SIZE = 2;
             LabeledNode node = new LabeledNode("Node");
-            scene.add(node);
+
+            s.add(node);
+            s.add(new LabeledNode("Placed node", 5, 5));
         });
     }
 }
