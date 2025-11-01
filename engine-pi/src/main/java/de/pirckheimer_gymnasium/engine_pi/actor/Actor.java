@@ -1022,7 +1022,30 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * {@code 0}.
      *
      * <p>
+     * <b>Koordinatensystem anpassen:</b>
+     * </p>
+     *
+     * <p>
+     * Der Ursprung des Koordinatensystems ist in Java links oben, in der Engine
+     * Pi links unten.
+     * </p>
+     *
+     * <pre>{@code
+     * AffineTransform at = g.getTransform();
+     * g.scale(1, -1);
+     * g.setTransform(at);
+     * }</pre>
+     *
+     * <p>
      * <b>Meter in Pixel umrechnen:</b>
+     * </p>
+     *
+     * <p>
+     * Um einen Meter in Pixel umzurechnen, muss mit dem Parameter
+     * {@code pixelPerMeter} multipliziert werden. Soll beispielsweise ein
+     * Rechteck mit der Breite von {@code 2} Metern und der Höhe von {@code 1}
+     * Meter gezeichnet werden, so ist die Breite {@code 2 * pixelPerMeter} und
+     * die Höhe {@code 1 * pixelPerMeter} Pixel.
      * </p>
      *
      * <pre>{@code
@@ -1038,16 +1061,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * <pre>{@code
      * g.setColor(getColor());
-     * }</pre>
-     *
-     * <p>
-     * <b>Koordinatensystem anpassen:</b>
-     * </p>
-     *
-     * <pre>{@code
-     * AffineTransform at = g.getTransform();
-     * g.scale(1, -1);
-     * g.setTransform(at);
      * }</pre>
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.

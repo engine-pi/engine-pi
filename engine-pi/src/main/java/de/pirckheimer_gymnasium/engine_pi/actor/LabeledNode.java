@@ -21,16 +21,16 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureData;
+import de.pirckheimer_gymnasium.engine_pi.util.FontStringBounds;
 import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 
 /**
  * Beschreibt einen <b>Knoten</b>, der zur Visualisualisierung von Listen,
@@ -41,8 +41,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 public class LabeledNode extends Geometry
 {
     /**
-     * Die <b>Größe</b> des Knotens. Bei einem Kreis handelt es sich um den
-     * Durchmesser.
+     * Die <b>Größe</b> des Knotens in Meter. Bei einem Kreis handelt es sich um
+     * den Durchmesser.
      */
     private double size;
 
@@ -51,7 +51,7 @@ public class LabeledNode extends Geometry
      */
     private String label;
 
-    private Rectangle2D cachedFontStringBounds;
+    private FontStringBounds cachedFontStringBounds;
 
     private Font font;
 
@@ -82,8 +82,8 @@ public class LabeledNode extends Geometry
         if (label != null)
         {
             font = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
-                    .deriveFont(12.0f);
-            cachedFontStringBounds = FontUtil.getStringBounds(label, font);
+                    .deriveFont(24.0f);
+            cachedFontStringBounds = FontUtil.getStringBoundsNg(label, font);
         }
     }
 
@@ -103,24 +103,39 @@ public class LabeledNode extends Geometry
         // in Pixel
         int nodeSize = (int) (size * pixelPerMeter);
 
-        // Circle
-        g.setColor(getColor());
-        g.fillOval(0, -nodeSize, nodeSize, nodeSize);
+        // Die x-Koordinate der linken oberen Ecke
+        int upperLeftX = 0;
+        // Die y-Koordinate der linken oberen Ecke. Wir nehmen hier -nodeSize,
+        // damit der Anker des Knotens dann links unten auf (0|0) steht.
+        int upperLeftY = -nodeSize;
 
-        // label
+        // Kreis
+        g.setColor(getColor());
+        g.fillOval(upperLeftX, upperLeftY, nodeSize, nodeSize);
+
+        // Bezeichnung
         if (label != null)
         {
             AffineTransform pre = g.getTransform();
             Font oldFont = g.getFont();
             g.setColor(Resources.COLORS.get("white"));
-            // g.scale(cachedScaleFactor * pixelPerMeter,
-            // cachedScaleFactor * pixelPerMeter);
             g.setFont(font);
             var b = cachedFontStringBounds;
-            int fontPosX = (nodeSize - (int) b.getWidth()) / 2;
-            // TODO getY ist Unterlänge ? Schrift jedoch zu weit oben
-            int fontPoxY = (nodeSize - (int) (b.getHeight() + b.getY())) / 2;
-            g.drawString(label, fontPosX, -fontPoxY);
+
+            // Der obere Abstand des Schriftrahmen zum Knotenrahmen.
+            int topMargin = (nodeSize - b.height) / 2;
+            // Der linke Abstand des Schriftrahmen zum Knotenrahmen.
+            int leftMargin = (nodeSize - b.width) / 2;
+
+            // Im Debug-Modus wird der Textrahmen um die Knotenbezeichnung
+            // eingezeichnet.
+            if (Game.isDebug())
+            {
+                g.drawRect(upperLeftX + leftMargin, upperLeftY + topMargin,
+                        b.width, b.height);
+            }
+            g.drawString(label, upperLeftX + leftMargin,
+                    upperLeftY + topMargin + b.baseline);
             g.setFont(oldFont);
             g.setTransform(pre);
         }

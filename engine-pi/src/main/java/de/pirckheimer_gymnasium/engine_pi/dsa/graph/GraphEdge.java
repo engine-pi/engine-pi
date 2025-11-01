@@ -21,11 +21,19 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 /**
  * Stellt eine <b>Kante</b> in einem Graphen dar.
  *
- * <b>Wird ein Graph über eine Adjazenz-Matrix oder -Liste implementiert, ist
- * diese Klasse eigentlich nicht nötig. Beim Einfügen von Kanten in den Graphen
- * wird momentan zusätzlich zu den oben beschriebenen Datenstrukturen auch eine
+ * <p>
+ * Wird ein Graph über eine Adjazenz-Matrix oder -Liste implementiert, ist diese
+ * Klasse eigentlich nicht nötig. Beim Einfügen von Kanten in den Graphen wird
+ * momentan zusätzlich zu den oben beschriebenen Datenstrukturen auch eine
  * Objekt dieser Klasse erzeugt. Dadurch entstehen Datendoppelungen. Jedoch wird
- * das Zeichnen von Kanten durch diese Klasse vereinfacht.</b>
+ * das Zeichnen von Kanten durch diese Klasse vereinfacht.
+ * </p>
+ *
+ * <p>
+ * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mit Hilfe der
+ * Klasse {@link de.pirckheimer_gymnasium.engine_pi.actor.LabeledEdge} kann eine
+ * Kante grafisch dargestellt werden.
+ * </p>
  *
  * @author Josef Friedrich
  *

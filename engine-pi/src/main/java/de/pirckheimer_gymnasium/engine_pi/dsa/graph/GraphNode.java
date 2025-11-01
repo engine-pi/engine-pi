@@ -23,6 +23,12 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 /**
  * Stellt einen <b>Knoten</b> in einem Graphen dar.
  *
+ * <p>
+ * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mit Hilfe der
+ * Klasse {@link de.pirckheimer_gymnasium.engine_pi.actor.LabeledNode} kann ein
+ * Knoten grafisch dargestellt werden.
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.36.0
