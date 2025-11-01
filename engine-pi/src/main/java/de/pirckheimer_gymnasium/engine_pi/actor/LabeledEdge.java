@@ -30,6 +30,16 @@ public class LabeledEdge extends Actor
         this(new Vector(x1, y1), new Vector(x2, y2), label);
     }
 
+    public LabeledEdge(double x1, double y1, double x2, double y2)
+    {
+        this(x1, y1, x2, y2, null);
+    }
+
+    public LabeledEdge(Vector point1, Vector point2)
+    {
+        this(point1, point1, null);
+    }
+
     public LabeledEdge(Vector point1, Vector point2, String label)
     {
         super(() -> FixtureBuilder.line(point1, point2));
