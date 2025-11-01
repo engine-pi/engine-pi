@@ -193,19 +193,24 @@ public class LabeledNode extends Geometry
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
+        // Wir rechnen in float damit der Text nicht springt beim raus- und
+        // reinzoomen.
+        // Text kann auch an float-Koordinaten eingezeichnet werden. Nicht
+        // sicher ob das was bringt?
         // Die Größe des Knotens in Pixel
-        int nodeSize = (int) (getSize() * pixelPerMeter);
+        float nodeSize = (float) (getSize() * pixelPerMeter);
 
         // Die x-Koordinate der linken oberen Ecke.
-        int upperLeftX = 0;
+        float upperLeftX = 0;
         // Die y-Koordinate der linken oberen Ecke. Wir nehmen hier {@code
         // -nodeSize},
         // damit der Anker des Knotens dann links unten auf {@code (0|0)} steht.
-        int upperLeftY = -nodeSize;
+        float upperLeftY = -nodeSize;
 
         // Kreis
         g.setColor(getColor());
-        g.fillOval(upperLeftX, upperLeftY, nodeSize, nodeSize);
+        g.fillOval((int) upperLeftX, (int) upperLeftY, (int) nodeSize,
+                (int) nodeSize);
 
         // Bezeichnung
         if (label != null)
@@ -217,16 +222,16 @@ public class LabeledNode extends Geometry
             var b = cachedFontStringBounds;
 
             // Der obere Abstand des Schriftrahmen zum Knotenrahmen.
-            int topMargin = (nodeSize - b.height) / 2;
+            float topMargin = (nodeSize - b.height) / 2;
             // Der linke Abstand des Schriftrahmen zum Knotenrahmen.
-            int leftMargin = (nodeSize - b.width) / 2;
+            float leftMargin = (nodeSize - b.width) / 2;
 
             // Im Debug-Modus wird der Textrahmen um die Knotenbezeichnung
             // eingezeichnet.
             if (Game.isDebug())
             {
-                g.drawRect(upperLeftX + leftMargin, upperLeftY + topMargin,
-                        b.width, b.height);
+                g.drawRect((int) (upperLeftX + leftMargin),
+                        (int) (upperLeftY + topMargin), b.width, b.height);
             }
             g.drawString(label, upperLeftX + leftMargin,
                     upperLeftY + topMargin + b.baseline);
