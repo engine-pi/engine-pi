@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import java.awt.BasicStroke;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
@@ -56,16 +57,27 @@ public class LabeledEdge extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        AffineTransform at = g.getTransform();
-        g.scale(1, -1);
+        // AffineTransform at = g.getTransform();
+        // g.scale(1, -1);
         Stroke oldStroke = g.getStroke();
         Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
                 BasicStroke.JOIN_MITER);
         g.setStroke(stroke);
         g.setColor(getColor());
+
+        if (label != null)
+        {
+            Font font = new Font(null, Font.PLAIN, 48);
+            AffineTransform affineTransform = new AffineTransform();
+
+            affineTransform.rotate(point1.getRadians(point2), 0, 0);
+            Font rotatedFont = font.deriveFont(affineTransform);
+            g.setFont(rotatedFont);
+            g.drawString(label, 0, 0);
+        }
         g.drawLine(point1.getX(pixelPerMeter), point1.getY(pixelPerMeter),
                 point2.getX(pixelPerMeter), point2.getY(pixelPerMeter));
-        g.setTransform(at);
+        // g.setTransform(at);
         g.setStroke(oldStroke);
     }
 
@@ -75,7 +87,7 @@ public class LabeledEdge extends Actor
     public static void main(String[] args)
     {
         Game.start((scene) -> {
-            LabeledEdge edge = new LabeledEdge(1, 1, 4, 5, "asd");
+            LabeledEdge edge = new LabeledEdge(1, 1, 4, 5, "label");
             scene.add(edge);
         });
     }

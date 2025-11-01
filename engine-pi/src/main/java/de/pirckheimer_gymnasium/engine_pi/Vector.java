@@ -577,6 +577,29 @@ public final class Vector implements Cloneable
     }
 
     /**
+     * Berechnet den Winkel (im Bogenmaß) der Richtung vom aktuellen Vektor zum
+     * übergebenen Vektor.
+     *
+     * Der Winkel ist relativ zur positiven X-Achse und wird gegen den
+     * Uhrzeigersinn als positiv gezählt. Der Rückgabewert liegt im Bereich [-π,
+     * π]. Sind beide Vektoren identisch, wird 0.0 zurückgegeben.
+     *
+     * @param other Zielvektor, zu dem die Richtung (other - this) berechnet
+     *     wird
+     *
+     * @return Winkel in Bogenmaß im Bereich [-π, π], gemessen von der positiven
+     *     X-Achse zur Richtung (other - this)
+     *
+     * @throws NullPointerException wenn other null ist
+     *
+     * @since 0.37.0
+     */
+    public double getRadians(Vector other)
+    {
+        return Math.atan2(other.getY() - y, other.getX() - x);
+    }
+
+    /**
      * @hidden
      */
     @Internal

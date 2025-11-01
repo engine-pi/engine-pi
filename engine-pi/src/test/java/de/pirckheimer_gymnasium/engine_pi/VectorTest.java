@@ -194,4 +194,105 @@ public class VectorTest
     {
         assertEquals("Vector [x=1.00, y=1.00]", new Vector(1, 1).toString());
     }
+
+    @Nested
+    class GetRadiansTest
+    {
+        @Test
+        public void testSameVectorReturnsZero()
+        {
+            Vector v = new Vector(1, 2);
+            assertEquals(v.getRadians(v), 0.0, 0.0);
+        }
+
+        @Test
+        public void testEastIsZero()
+        {
+            assertEquals(new Vector(0, 0).getRadians(new Vector(1, 0)), 0.0,
+                    1e-9);
+        }
+
+        @Test
+        public void testNorthIsPiOverTwo()
+        {
+            assertEquals(new Vector(0, 0).getRadians(new Vector(0, 1)),
+                    Math.PI / 2, 1e-9);
+        }
+
+        @Test
+        public void testWestIsPi()
+        {
+            assertEquals(new Vector(0, 0).getRadians(new Vector(-1, 0)),
+                    Math.PI, 1e-9);
+        }
+
+        @Test
+        public void testSouthIsMinusPiOverTwo()
+        {
+            assertEquals(new Vector(0, 0).getRadians(new Vector(0, -1)),
+                    -Math.PI / 2, 1e-9);
+        }
+
+        @Test
+        public void testArbitraryVectors()
+        {
+            Vector a = new Vector(1.0, 1.0);
+            Vector b = new Vector(2.0, 2.0);
+            double expected = Math.atan2(b.getY() - a.getY(),
+                    b.getX() - a.getX());
+            assertEquals(a.getRadians(b), expected, 1e-9);
+        }
+
+        @Test
+        public void testNullThrowsException()
+        {
+            assertThrows(NullPointerException.class,
+                    () -> new Vector(0, 0).getRadians(null));
+        }
+    }
+
+    @Nested
+    class GetAngleTest
+    {
+        @Test
+        public void testSameVectorReturnsZero()
+        {
+            Vector v = new Vector(1, 2);
+            assertEquals(360, v.getAngle(v), 1e-5);
+        }
+
+        @Test
+        public void testOrthogonalIsNinety()
+        {
+            Vector a = new Vector(1, 0);
+            Vector b = new Vector(0, 1);
+            assertEquals(90.0, a.getAngle(b), 1e-9);
+            assertEquals(270.0, b.getAngle(a), 1e-9);
+        }
+
+        @Test
+        public void testOppositeIsOneEighty()
+        {
+            Vector a = new Vector(1, 0);
+            Vector b = new Vector(-1, 0);
+            assertEquals(180.0, a.getAngle(b), 1e-9);
+        }
+
+        @Test
+        public void testArbitraryVectors()
+        {
+            Vector a = new Vector(1.0, 1.0);
+            Vector b = new Vector(2.0, 3.0);
+            double expected = Math.toDegrees(Math.acos(
+                    a.getScalarProduct(b) / (a.getLength() * b.getLength())));
+            assertEquals(expected, a.getAngle(b), 1e-9);
+        }
+
+        @Test
+        public void testNullThrowsException()
+        {
+            assertThrows(NullPointerException.class,
+                    () -> new Vector(0, 0).getAngle(null));
+        }
+    }
 }
