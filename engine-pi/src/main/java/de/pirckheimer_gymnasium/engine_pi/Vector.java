@@ -545,9 +545,12 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet den Winkel zwischen diesem Vektor und einem weiteren. Hierzu
-     * wird diese Formel verwendet: <br>
-     * <code>cos t = [a o b] / [|a| * |b|]</code><br>
+     * Berechnet den Winkel zwischen diesem Vektor und einem weiteren in Grad.
+     *
+     * <p>
+     * Hierzu wird diese Formel verwendet:
+     * <code>cos t = [a o b] / [|a| * |b|]</code>
+     * </p>
      *
      * <ul>
      * <li>cos ist der Kosinus</li>
@@ -558,22 +561,17 @@ public final class Vector implements Cloneable
      *
      * @param other Ein zweiter Vektor.
      *
-     * @return Der Winkel zwischen diesem Vektor und dem zweiten. Ist zwischen 0
-     *     und 180.
+     * @return Der Winkel zwischen diesem Vektor und dem zweiten.
      */
-    @API
     public double getAngle(Vector other)
     {
-        if (this.y < other.y)
+        double degrees = Math.toDegrees(Math.acos(
+                getScalarProduct(other) / (getLength() * other.getLength())));
+        if (y >= other.y)
         {
-            return Math.toDegrees(Math.acos(this.getScalarProduct(other)
-                    / (this.getLength() * other.getLength())));
+            return 360 - degrees;
         }
-        else
-        {
-            return (360 - Math.toDegrees(Math.acos(this.getScalarProduct(other)
-                    / (this.getLength() * other.getLength()))));
-        }
+        return degrees;
     }
 
     /**
@@ -584,17 +582,17 @@ public final class Vector implements Cloneable
      * Uhrzeigersinn als positiv gezählt. Der Rückgabewert liegt im Bereich [-π,
      * π]. Sind beide Vektoren identisch, wird 0.0 zurückgegeben.
      *
-     * @param other Zielvektor, zu dem die Richtung (other - this) berechnet
-     *     wird
+     * @param other Zielvektor, zu dem die Richtung ({@code other - this})
+     *     berechnet wird
      *
      * @return Winkel in Bogenmaß im Bereich [-π, π], gemessen von der positiven
-     *     X-Achse zur Richtung (other - this)
+     *     X-Achse zur Richtung ({@code other - this})
      *
      * @throws NullPointerException wenn other null ist
      *
      * @since 0.37.0
      */
-    public double getRadians(Vector other)
+    public double getDirectionAngleInRadians(Vector other)
     {
         return Math.atan2(other.getY() - y, other.getX() - x);
     }

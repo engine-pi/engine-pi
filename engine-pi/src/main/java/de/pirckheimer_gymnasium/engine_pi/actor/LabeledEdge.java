@@ -57,8 +57,12 @@ public class LabeledEdge extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        // AffineTransform at = g.getTransform();
-        // g.scale(1, -1);
+        int x1 = point1.getX(pixelPerMeter);
+        int y1 = point1.getY(pixelPerMeter) * -1;
+
+        int x2 = point2.getX(pixelPerMeter);
+        int y2 = point2.getY(pixelPerMeter) * -1;
+
         Stroke oldStroke = g.getStroke();
         Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
                 BasicStroke.JOIN_MITER);
@@ -67,17 +71,16 @@ public class LabeledEdge extends Actor
 
         if (label != null)
         {
-            Font font = new Font(null, Font.PLAIN, 48);
+            Font font = new Font(null, Font.PLAIN, 12);
             AffineTransform affineTransform = new AffineTransform();
 
-            affineTransform.rotate(point1.getRadians(point2), 0, 0);
+            affineTransform.rotate(new Vector(x1, y1)
+                    .getDirectionAngleInRadians(new Vector(x2, y2)), 0, 0);
             Font rotatedFont = font.deriveFont(affineTransform);
             g.setFont(rotatedFont);
-            g.drawString(label, 0, 0);
+            g.drawString(label, 100, -100);
         }
-        g.drawLine(point1.getX(pixelPerMeter), point1.getY(pixelPerMeter),
-                point2.getX(pixelPerMeter), point2.getY(pixelPerMeter));
-        // g.setTransform(at);
+        g.drawLine(x1, y1, x2, y2);
         g.setStroke(oldStroke);
     }
 
@@ -86,6 +89,7 @@ public class LabeledEdge extends Actor
      */
     public static void main(String[] args)
     {
+        Game.debug();
         Game.start((scene) -> {
             LabeledEdge edge = new LabeledEdge(1, 1, 4, 5, "label");
             scene.add(edge);

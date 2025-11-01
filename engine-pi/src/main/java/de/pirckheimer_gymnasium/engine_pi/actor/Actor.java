@@ -1037,8 +1037,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * g.fillRect(0, -height, width, height);
      * }</pre>
      *
-     * Oder es kann mit Hilfe der Klasse {@link AffineTransform} eine horizonale
-     * Spiegelung der x-Achse vorgenommen werden:
+     * Oder es kann mit Hilfe der Klasse {@link AffineTransform} eine Spiegelung
+     * an der x-Achse vorgenommen werden:
      *
      * <pre>{@code
      * AffineTransform at = g.getTransform();
