@@ -119,6 +119,11 @@
                     <publishingServerId>central</publishingServerId>
                     <tokenAuth>true</tokenAuth>
                     <autoPublish>true</autoPublish>
+                    <!-- The plugin can ignore, or more specifically not add, components that have
+                    already been published in the past to the bundle that will be uploaded and
+                    published.
+                    https://central.sonatype.org/publish/publish-portal-maven/#ignorepublishedcomponents -->
+                    <ignorePublishedComponents>true</ignorePublishedComponents>
                 </configuration>
             </plugin>
             <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->
