@@ -49,7 +49,7 @@ public class LabeledEdge extends Actor
 
     public LabeledEdge(Vector from, Vector to)
     {
-        this(from, from, null);
+        this(from, to, null);
     }
 
     public LabeledEdge(Vector from, Vector to, String label)
