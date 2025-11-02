@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
-
+import static java.lang.Math.PI;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -322,4 +322,151 @@ public class VectorTest
         assertEquals("Vector [x=1.00, y=1.00]", v(1, 1).toString());
     }
 
+    @Nested
+    class GetAngleOwnTest
+    {
+
+        double delta = 1e-9;
+
+        private void assertAngle(double expected, double x, double y)
+        {
+            assertEquals(expected, v(x, y).getAngle(), delta);
+        }
+
+        @Test
+        public void testZero()
+        {
+            assertAngle(0.0, 0, 0);
+        }
+
+        @Test
+        public void testEast()
+        {
+            assertAngle(0.0, 1, 0);
+        }
+
+        @Test
+        public void testEastNorth()
+        {
+            assertAngle(45, 1, 1);
+        }
+
+        @Test
+        public void testNorth()
+        {
+            assertAngle(90, 0, 1);
+        }
+
+        @Test
+        public void testNorthWest()
+        {
+            assertAngle(135, -1, 1);
+        }
+
+        @Test
+        public void testWest()
+        {
+            assertAngle(180, -1, 0);
+        }
+
+        @Test
+        public void testWestSouth()
+        {
+            assertAngle(-135, -1, -1);
+        }
+
+        @Test
+        public void testSouth()
+        {
+            assertAngle(-90, 0, -1);
+        }
+
+        @Test
+        public void testSouthEast()
+        {
+            assertAngle(-45, 1, -1);
+        }
+
+        @Test
+        public void testArbitraryVector()
+        {
+            Vector a = v(2.0, -3.0);
+            double expected = Math.toDegrees(Math.atan2(a.getY(), a.getX()));
+            assertEquals(expected, a.getAngle(), 1e-9);
+        }
+    }
+
+    @Nested
+    class GetRadiansOwnTest
+    {
+
+        double delta = 1e-9;
+
+        private void assertRadians(double expected, double x, double y)
+        {
+            assertEquals(expected, v(x, y).getRadians(), delta);
+        }
+
+        @Test
+        public void testZero()
+        {
+            assertRadians(0.0, 0, 0);
+        }
+
+        @Test
+        public void testEast()
+        {
+            assertRadians(0.0, 1, 0);
+        }
+
+        @Test
+        public void testEastNorth()
+        {
+            assertRadians(PI / 4, 1, 1);
+        }
+
+        @Test
+        public void testNorth()
+        {
+            assertRadians(PI / 2, 0, 1);
+        }
+
+        @Test
+        public void testNorthWest()
+        {
+            assertRadians(PI / 2 + PI / 4, -1, 1);
+        }
+
+        @Test
+        public void testWest()
+        {
+            assertRadians(PI, -1, 0);
+        }
+
+        @Test
+        public void testWestSouth()
+        {
+            assertRadians(-PI / 2 - PI / 4, -1, -1);
+        }
+
+        @Test
+        public void testSouth()
+        {
+            assertRadians(-PI / 2, 0, -1);
+        }
+
+        @Test
+        public void testSouthEast()
+        {
+            assertRadians(-PI / 4, 1, -1);
+        }
+
+        @Test
+        public void testArbitraryVector()
+        {
+            Vector a = v(2.0, -3.0);
+            double expected = Math.atan2(a.getY(), a.getX());
+            assertEquals(expected, a.getRadians(), 1e-9);
+        }
+    }
 }

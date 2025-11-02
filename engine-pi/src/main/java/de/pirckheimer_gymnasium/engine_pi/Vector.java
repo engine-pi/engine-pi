@@ -31,6 +31,10 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Klasse wird für alle Positions- und Richtungsangaben genutzt.
  *
  * @author Michael Andonie
+ *
+ * @see <a href=
+ *     "https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/geom/Vector2D.java">Vector2D
+ *     der LITIENGINE</a>
  */
 @API
 @SuppressWarnings("StaticVariableOfConcreteClass")
@@ -246,7 +250,7 @@ public final class Vector implements Cloneable
      * Gibt die euklidische Distanz zwischen diesem Vektor und dem angegebenen
      * Vektor zurück.
      *
-     * @param other der Vergleichsvektor
+     * @param other Ein weiterer Vektor.
      *
      * @return die Länge des Differenzvektors (euklidische Distanz)
      *
@@ -316,7 +320,7 @@ public final class Vector implements Cloneable
      * Berechnet die effektive Bewegung, die dieser Vector und ein weiterer
      * zusammen ausüben.
      *
-     * @param other Ein zweiter Vektor.
+     * @param other Ein weiterer Vektor.
      *
      * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
      *     Bewegungen darstellt.
@@ -342,9 +346,9 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die Differenz zwischen diesem und einem weiteren Vektor.
+     * Berechnet die <b>Differenz</b> zwischen diesem und einem weiteren Vektor.
      *
-     * @param other zweiter Vektor
+     * @param other Ein weiterer Vektor.
      *
      * @return Die Differenz der beiden Vektoren (<code>this - other</code>)
      */
@@ -396,7 +400,7 @@ public final class Vector implements Cloneable
      * </p>
      *
      * @param factor Der Faktor, mit dem die <code>x</code>- und
-     *     <code>y</code>-Werte des Vektors multipliziert werden
+     *     <code>y</code>-Werte des Vektors multipliziert werden.
      *
      * @return Der Vektor mit den multiplizierten Werten.
      *
@@ -409,8 +413,8 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
-     * festen Faktor.
+     * <b>Multipliziert</b> die effektive Länge des <b>x</b>-Anteils des Vektors
+     * mit einem festen Faktor.
      *
      * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
@@ -431,15 +435,15 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Multipliziert die effektive Länge des X-Anteils des Vektors mit einem
-     * festen Faktor.
+     * <b>Multipliziert</b> die effektive Länge des <b>y</b>-Anteils des Vektors
+     * mit einem festen Faktor.
      *
      * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
      * </p>
      *
-     * @param factor Der Faktor, mit dem der x-Wert des Vektors multipliziert
+     * @param factor Der Faktor, mit dem der y-Wert des Vektors multipliziert
      *     wird.
      *
      * @return Der Vektor mit den multiplizierten Werten.
@@ -458,7 +462,7 @@ public final class Vector implements Cloneable
      * <b>Das Skalarprodukt für zweidimensionale Vektoren ist:
      * <code>(a, b) o (c, d) = a * b + c * d</code></b>
      *
-     * @param other zweiter Vektor
+     * @param other Ein weiterer Vektor.
      *
      * @return Skalarprodukt dieser Vektoren mit dem Vektor <code>v</code>.
      */
@@ -567,6 +571,48 @@ public final class Vector implements Cloneable
     }
 
     /**
+     * Gibt den <b>Winkel</b> dieses Vektors in <b>Grad</b> zurück.
+     *
+     * <p>
+     * Der Wert wird durch Umrechnung des von {@link #getRadians()} gelieferten
+     * Winkels (Bogenmaß) mit {@link Math#toDegrees(double)} in Grad ermittelt.
+     * Der genaue Wertebereich hängt vom Rückgabewert von {@link #getRadians()}
+     * ab (z. B. (-π, π] → (-180°, 180°], [0, 2π) → [0°, 360°)).
+     * </p>
+     *
+     * @return Winkel des Vektors in Grad
+     *
+     * @since 0.37.0
+     */
+    public double getAngle()
+    {
+        return Math.toDegrees(getRadians());
+    }
+
+    /**
+     * Gibt den <b>Winkel</b> dieses Vektors in <b>Bogenmaß</b> zurück.
+     *
+     * <p>
+     * Der Winkel ist derjenige zwischen der positiven x-Achse und dem Vektor
+     * (x, y), gemessen gegen den Uhrzeigersinn. Der zurückgegebene Wert liegt
+     * im Bereich {@code [-π, π]}.
+     * </p>
+     *
+     * <p>
+     * Für den Nullvektor {@code (0, 0)} wird {@code 0} zurückgegeben.
+     * </p>
+     *
+     * @return Winkel in Bogenmaß im Bereich {@code [-π, π]}
+     *
+     *
+     * @since 0.37.0
+     */
+    public double getRadians()
+    {
+        return Math.atan2(y, x);
+    }
+
+    /**
      * Berechnet den Winkel zwischen diesem Vektor und einem weiteren in Grad.
      *
      * <p>
@@ -581,7 +627,7 @@ public final class Vector implements Cloneable
      * <li>|a| ist die Länge des Vektors a</li>
      * </ul>
      *
-     * @param other Ein zweiter Vektor.
+     * @param other Ein weiterer Vektor.
      *
      * @return Der Winkel zwischen diesem Vektor und dem zweiten.
      */
@@ -604,8 +650,8 @@ public final class Vector implements Cloneable
      * Uhrzeigersinn als positiv gezählt. Der Rückgabewert liegt im Bereich [-π,
      * π]. Sind beide Vektoren identisch, wird 0.0 zurückgegeben.
      *
-     * @param other Zielvektor, zu dem die Richtung ({@code other - this})
-     *     berechnet wird
+     * @param other Ein weiterer Vektor, zu dem die Richtung
+     *     ({@code other - this}) berechnet wird.
      *
      * @return Winkel in Bogenmaß im Bereich [-π, π], gemessen von der positiven
      *     X-Achse zur Richtung ({@code other - this})
