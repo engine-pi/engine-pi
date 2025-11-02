@@ -455,7 +455,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Die Figuren werden erst mit Verzögerung durch die Methode
-     * {@link this#defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
+     * {@link #defer(Runnable)} zur Ebene hinzugefügt. Sie sind also nicht
      * sofort nach dem Hinzufügen zur Ebene über diese Methode abrufbar.
      * </p>
      *

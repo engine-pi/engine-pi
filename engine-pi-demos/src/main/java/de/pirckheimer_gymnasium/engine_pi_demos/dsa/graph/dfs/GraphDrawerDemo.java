@@ -11,9 +11,9 @@ public class GraphDrawerDemo extends Scene
     public GraphDrawerDemo()
     {
         Image graphImage = new Image(
-                // "/data/school/Archiv/schulbuecher/Informatik/Oldenbourg/Informatik-Oberstufe-1_Oldenbourg_2009_Lehrer/kapitel_iii/pics/k10_a2_1.png",
-                "/home/jf/Nextcloud/graph-schoolbooks/Cornelsen/11-spb/Seite-58.png",
-                40);
+                "/home/jf/Nextcloud/graph-schoolbooks/Oldenbourgh/k11_a2_1.png",
+                // "/home/jf/Nextcloud/graph-schoolbooks/Cornelsen/11-spb/Seite-58.png",
+                10);
         add(graphImage);
 
         new GraphDrawer(this);

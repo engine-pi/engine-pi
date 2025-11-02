@@ -7,6 +7,7 @@ import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
@@ -32,9 +33,17 @@ public class LabeledEdge extends Actor
     private String label;
 
     /**
-     * Der Abstand des Kantenlinie und der Kantenbezeichnung in Meter.
+     * Der Abstand der Kantenbezeichnung zur Kantenlinie in Meter.
      */
     public static double LABEL_LINE_DISTANCE = 0.25;
+
+    /**
+     * Die <b>Schriftgröße</b> des Bezeichners in Punkten (z.B. 12pt).
+     */
+    public static double FONT_SIZE = 12;
+
+    public static Font FONT = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+            .deriveFont((float) FONT_SIZE);
 
     public LabeledEdge(double fromX, double fromY, double toX, double toY,
             String label)
@@ -91,11 +100,10 @@ public class LabeledEdge extends Actor
 
         if (label != null)
         {
-            Font font = new Font(null, Font.PLAIN, 16);
             AffineTransform affineTransform = new AffineTransform();
 
             FontStringBounds labelBounds = FontUtil.getStringBoundsNg(label,
-                    font);
+                    FONT);
 
             // Der Differenzvektor
             Vector edge = toPx.subtract(fromPx);
@@ -110,7 +118,7 @@ public class LabeledEdge extends Actor
                     .add(edge.multiply(labelMargin / edgeLength))
                     .add(labelLineDistance);
             affineTransform.rotate(edge.getRadians(), 0, 0);
-            Font rotatedFont = font.deriveFont(affineTransform);
+            Font rotatedFont = FONT.deriveFont(affineTransform);
             g.setFont(rotatedFont);
             g.drawString(label, (int) labelAnchor.getX(),
                     (int) labelAnchor.getY());

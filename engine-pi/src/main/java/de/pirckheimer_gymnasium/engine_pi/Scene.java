@@ -551,8 +551,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Die Figuren werden erst mit Verzögerung durch die Methode
-     * {@link this#defer(Runnable)} zu den Ebenen hinzugefügt. Sie sind also
-     * nicht sofort nach dem Hinzufügen über diese Methode abrufbar.
+     * {@link #defer(Runnable)} zu den Ebenen hinzugefügt. Sie sind also nicht
+     * sofort nach dem Hinzufügen über diese Methode abrufbar.
      * </p>
      *
      * @return Alle Figuren aller Ebenen, die <b>bereits in der

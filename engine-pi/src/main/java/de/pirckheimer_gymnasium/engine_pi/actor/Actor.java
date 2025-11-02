@@ -1044,7 +1044,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * AffineTransform at = g.getTransform();
      * g.scale(1, -1);
      * g.setTransform(at);
-     *
+     * }</pre>
      *
      * <p>
      * <b>Meter in Pixel umrechnen:</b>

@@ -22,6 +22,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
+import de.pirckheimer_gymnasium.engine_pi.dsa.Source;
+
 /**
  * Eine <b>Sammlung an Graphen</b>, die größtenteils aus Schulbüchern stammen.
  *
@@ -299,15 +301,17 @@ public class GraphCollection
     /**
      * Ein Graph, der wie das Haus des Nikolaus aufgebaut ist.
      */
+    @Source(filename = "k11_a2_1.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
     public static GraphArrayMatrix HausDesNikolaus()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(5);
         // Anlegen der Knoten
-        g.addNode("A");
-        g.addNode("B");
-        g.addNode("C");
-        g.addNode("D");
-        g.addNode("E");
+        // Anlegen der Knoten
+        g.addNode("A", 1.49, 1.69);
+        g.addNode("B", 1.80, 6.84);
+        g.addNode("C", 5.11, 11.16);
+        g.addNode("D", 8.21, 7.06);
+        g.addNode("E", 8.02, 1.44);
         // Anlegen der Kanten
         g.addEdge("A", "B");
         g.addEdge("A", "D");
@@ -325,7 +329,8 @@ public class GraphCollection
      *
      * @see #Cornelsen6Autobahn()
      */
-    public static GraphArrayMatrix OldenburgHighway()
+    @Source(filename = "k10_a1_2.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
+    public static GraphArrayMatrix OldenbourgHighway()
     {
         GraphArrayMatrix g = Cornelsen6Autobahn();
         // Anlegen der Knoten
@@ -343,10 +348,8 @@ public class GraphCollection
         return g;
     }
 
-    /**
-     * {@code k10_a1_2.png}
-     */
-    public static GraphArrayMatrix OldenburgFlightRoute()
+    @Source(filename = "k10_a1_2.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
+    public static GraphArrayMatrix OldenbourgFlightRoute()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
@@ -418,14 +421,11 @@ public class GraphCollection
 
     /**
      * ICE-Verbindungen
-     *
-     * {@code k10_a2_1.png}
      */
-    public static GraphArrayMatrix OldenburgICE()
+    @Source(filename = "k10_a2_1.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
+    public static GraphArrayMatrix OldenbourgICE()
     {
-        // Erzeugen eines Graphenobjekts g für 16 Knoten
-        GraphArrayMatrix g = new GraphArrayMatrix(16);
-        // Anlegen der Knoten
+        GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
         g.addNode("A", 10.90, 1.58);
         g.addNode("B", 13.15, 17.86);
@@ -443,7 +443,6 @@ public class GraphCollection
         g.addNode("N", 12.72, 5.18);
         g.addNode("S", 6.56, 2.68);
         g.addNode("WÜ", 9.12, 7.33);
-
         // Anlegen der Kanten mit der Gewichtung Fahrzeit in Minuten
         g.addEdge("F2", "F", 10);
         g.addEdge("FD", "F", 52);
@@ -473,9 +472,8 @@ public class GraphCollection
 
     /**
      * S- und U-Bahn-Verbindungen
-     *
-     * {@code k10_a4_1.png}
      */
+    @Source(filename = "k10_a4_1.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
     public static GraphArrayMatrix OldenburgSubway()
     {
         // Erzeugen eines Graphenobjekts g für 41 Knoten
@@ -576,10 +574,8 @@ public class GraphCollection
         return g;
     }
 
-    /**
-     * {@code k10_a7_3.png}
-     */
-    public static GraphArrayMatrix OldenburgKapitel10Aufgabe7Nr3()
+    @Source(filename = "k10_a7_3.png", title = "Informatik Oberstufe 1", subtitle = "Datenstrukturen und Softwareentwicklung", publisher = "Oldenbourg", releaseYear = 2009)
+    public static GraphArrayMatrix OldenbourgKapitel10Aufgabe7Nr3()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
         // Anlegen der Knoten
@@ -657,6 +653,7 @@ public class GraphCollection
     /**
      * Seite 58 Aufgabe Nr. 4
      */
+    @Source(page = 58, publisher = "Cornelsen")
     public static GraphArrayMatrix Cornelsen11SpbNuernbergUlmMuenchenHamburg()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(11);

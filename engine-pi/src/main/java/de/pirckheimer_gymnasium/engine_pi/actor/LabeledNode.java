@@ -197,9 +197,10 @@ public class LabeledNode extends Geometry
     }
 
     /**
-     * Gibt die <b>Schriftart</b> der Knotenbezeichnung zurück.
+     * Setzt die <b>Schriftgröße</b> des Bezeichners in Punkten (z.B. 12pt).
      *
-     * @return Die <b>Schriftart</b> der Knotenbezeichnung.
+     * @param fontSize Die <b>Schriftgröße</b> des Bezeichners in Punkten (z.B.
+     *     12pt).
      */
     public void setFontSize(double fontSize)
     {
