@@ -12,9 +12,9 @@
     <name>Engine Pi Meta</name>
 
     <modules>
-        <module>engine-pi</module>
-        <module>engine-pi-demos</module>
-        <module>engine-pi-cli</module>
+        <module>modules/engine</module>
+        <module>modules/demos</module>
+        <module>modules/cli</module>
     </modules>
 
     <description>The parent meta package of the Engine Pi.</description>
