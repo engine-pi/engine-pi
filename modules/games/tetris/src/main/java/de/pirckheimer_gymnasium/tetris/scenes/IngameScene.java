@@ -325,8 +325,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     private void clearLines(FilledRowRange range)
     {
         isInAnimation = true;
-        Rectangle overlay = addRectangle(10, range.getRowCount(), 0,
-                range.getFrom());
+        Rectangle overlay = addRectangle(10, range.getRowCount());
+        overlay.setPosition(0, range.getFrom());
         overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
         overlay.setVisible(false);
         periodicTask.pause();

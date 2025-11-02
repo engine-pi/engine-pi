@@ -263,8 +263,8 @@ public class GridDebugScene extends BaseScene
                 // 6. Zeile sichtbar
                 // 7. Zeile getilgt
                 // 8. Zeilen oberhalb nach unten gerutscht
-                Rectangle overlay = addRectangle(10, range.getRowCount(), 0,
-                        range.getFrom());
+                Rectangle overlay = addRectangle(10, range.getRowCount());
+                overlay.setPosition(0, range.getFrom());
                 overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
                 overlay.setVisible(false);
                 showRangeOverlay = false;

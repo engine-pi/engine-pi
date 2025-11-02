@@ -39,4 +39,8 @@ clone_jbox2d:
 	rm -rf $(JBOX2D_PATH)/JBox2D.gwt.xml
 	mvn process-sources
 
+clone_resources:
+	git clone https://github.com/engine-pi/tetris.git /tmp/tetris
+	rsync -av /tmp/tetris/src/main/resources modules/games/tetris/src/main
+
 .PHONY: deploy doc format install package run_jar clone_jbox2d
