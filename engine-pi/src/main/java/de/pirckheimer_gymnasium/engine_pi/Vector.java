@@ -149,9 +149,11 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in Pixel in <code>x</code>-Richtung zurück.
+     * Gibt den Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
+     * Pixel per Meter zurück.
      *
-     * @return Der Bewegungsanteil in Pixel in <code>x</code>-Richtung.
+     * @return Der Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
+     *     Pixel per Meter.
      *
      * @since 0.36.0
      */
@@ -173,9 +175,11 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in Pixel in <code>y</code>-Richtung zurück.
+     * Gibt den Bewegungsanteil in <code>y</code>-Richtung multipliziert mit
+     * Pixel per Meter zurück.
      *
-     * @return Der Bewegungsanteil in Pixel in <code>y</code>-Richtung.
+     * @return Der Bewegungsanteil in <code>y</code>-Richtung multipliziert mit
+     *     Pixel per Meter.
      *
      * @since 0.36.0
      */
@@ -239,7 +243,25 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die Gegenrichtung des Vektors.
+     * Gibt die euklidische Distanz zwischen diesem Vektor und dem angegebenen
+     * Vektor zurück.
+     *
+     * @param other der Vergleichsvektor
+     *
+     * @return die Länge des Differenzvektors (euklidische Distanz)
+     *
+     * @throws NullPointerException falls other null ist
+     *
+     * @since 0.37.0
+     */
+    public double getLength(Vector other)
+    {
+        Vector vector = subtract(other);
+        return Math.hypot(vector.x, vector.y);
+    }
+
+    /**
+     * Berechnet die <b>Gegenrichtung</b> des Vektors.
      *
      * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
      *     eigenen beschreibt.
@@ -251,7 +273,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die Gegenrichtung des Vektors in X-Richtung.
+     * Berechnet die <b>Gegenrichtung</b> des Vektors in <b>X-Richtung</b>.
      *
      * @return Ein neues Vektor-Objekt, das genau die Gegenbewegung zu dem
      *     eigenen beschreibt.
@@ -263,7 +285,7 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Berechnet die Gegenrichtung des Vektors in Y-Richtung.
+     * Berechnet die <b>Gegenrichtung</b> des Vektors in <b>Y-Richtung</b>.
      *
      * @return Ein neuer Vektor, der genau die Gegenbewegung zum eigenen Vektor
      *     beschreibt.
@@ -294,15 +316,15 @@ public final class Vector implements Cloneable
      * Berechnet die effektive Bewegung, die dieser Vector und ein weiterer
      * zusammen ausüben.
      *
-     * @param vector Ein zweiter Vektor.
+     * @param other Ein zweiter Vektor.
      *
      * @return Ein neues Vektor-Objekt, das die Summe der beiden ursprünglichen
      *     Bewegungen darstellt.
      */
     @API
-    public Vector add(Vector vector)
+    public Vector add(Vector other)
     {
-        return new Vector(this.x + vector.x, this.y + vector.y);
+        return new Vector(this.x + other.x, this.y + other.y);
     }
 
     /**
@@ -322,14 +344,14 @@ public final class Vector implements Cloneable
     /**
      * Berechnet die Differenz zwischen diesem und einem weiteren Vektor.
      *
-     * @param vector zweiter Vektor
+     * @param other zweiter Vektor
      *
-     * @return Die Differenz der beiden Vektoren (<code>"this - v"</code>)
+     * @return Die Differenz der beiden Vektoren (<code>this - other</code>)
      */
     @API
-    public Vector subtract(Vector vector)
+    public Vector subtract(Vector other)
     {
-        return new Vector(this.x - vector.x, this.y - vector.y);
+        return new Vector(this.x - other.x, this.y - other.y);
     }
 
     /**
@@ -353,15 +375,15 @@ public final class Vector implements Cloneable
      * Gibt den Vektor an, der den Punkt, den dieser Vektor beschreibt, zu dem
      * Punkt verschieben würde, den ein weiterer Vektor beschreibt.
      *
-     * @param vector Ein weiterer Vektor.
+     * @param other Ein weiterer Vektor.
      *
      * @return Der Vektor, der <code>(this.x|this.y)</code> verschieben würde zu
      *     <code>(v.x|v.y)</code>.
      */
     @API
-    public Vector getDistance(Vector vector)
+    public Vector getDistance(Vector other)
     {
-        return vector.subtract(this);
+        return other.subtract(this);
     }
 
     /**
@@ -436,14 +458,14 @@ public final class Vector implements Cloneable
      * <b>Das Skalarprodukt für zweidimensionale Vektoren ist:
      * <code>(a, b) o (c, d) = a * b + c * d</code></b>
      *
-     * @param vector zweiter Vektor
+     * @param other zweiter Vektor
      *
      * @return Skalarprodukt dieser Vektoren mit dem Vektor <code>v</code>.
      */
     @API
-    public double getScalarProduct(Vector vector)
+    public double getScalarProduct(Vector other)
     {
-        return x * vector.x + y * vector.y;
+        return x * other.x + y * other.y;
     }
 
     /**
@@ -532,8 +554,8 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt die Manhattan-Länge des Vektors zurück. Diese ist für v=(a, b)
-     * definiert als a+b.
+     * Gibt die Manhattan-Länge des Vektors zurück. Diese ist für
+     * {@code v=(a, b)} definiert als {@code a+b}.
      *
      * @return Die Summe von delta X und delta Y des Vektors.
      */

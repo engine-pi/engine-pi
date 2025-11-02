@@ -78,7 +78,7 @@ public class LabeledEdge extends Actor
                     .getDirectionAngleInRadians(new Vector(x2, y2)), 0, 0);
             Font rotatedFont = font.deriveFont(affineTransform);
             g.setFont(rotatedFont);
-            g.drawString(label, 100, -100);
+            g.drawString(label, 0, 0);
         }
         g.drawLine(x1, y1, x2, y2);
         g.setStroke(oldStroke);
