@@ -28,7 +28,14 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.Source;
  * Eine <b>Sammlung an Graphen</b>, die größtenteils aus Schulbüchern stammen.
  *
  * <ul>
- * <li>Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024</li>
+ * <li>Informatik 11, Buchner, 2023</li>
+ * <li>Informatik 6 Bayern | NTG | Grundlegendes Niveau, Listen | Bäume |
+ * Rekursion - Nebenläufigkeit und Threads - Informationssicherheit -
+ * Softwareprojekte, Cornelsen, 2024</li>
+ * <li>Informatik Oberstufe 1, Datenstrukturen und Softwareentwicklung,
+ * Oldenbourg, 2009</li>
+ * <li>Informatik 11 spätbeginnend, Algorithmen | Codierung | Kommunikation in
+ * Netzwerken | Künstliche Intelligenz, Cornelsen, 2023</li>
  * </ul>
  *
  * @author Josef Friedrich
@@ -42,6 +49,7 @@ public class GraphCollection
      * Entspricht der Graphdatenbank {@code Abiturfahrt.grdb} aus dem Schulbuch
      * des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
      */
+    @Source(filename = "Abiturfahrt.grdb", title = "Informatik 6 Bayern | NTG | Grundlegendes Niveau", subtitle = "Listen | Bäume | Rekursion - Nebenläufigkeit und Threads - Informationssicherheit - Softwareprojekte", publisher = "Cornelsen", releaseYear = 2024)
     public static GraphArrayMatrix Cornelsen6Abiturfahrt()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -71,6 +79,7 @@ public class GraphCollection
      * Auch in Oldenbourg Graph Seite 110, Gewichte nach k10_a3_1.png (Gewichte
      * etwas anders)
      */
+    @Source(filename = "Autobahn.grdb", title = "Informatik 6 Bayern | NTG | Grundlegendes Niveau", subtitle = "Listen | Bäume | Rekursion - Nebenläufigkeit und Threads - Informationssicherheit - Softwareprojekte", publisher = "Cornelsen", releaseYear = 2024)
     public static GraphArrayMatrix Cornelsen6Autobahn()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -117,6 +126,7 @@ public class GraphCollection
      * Entspricht der Graphdatenbank {@code ICENetz.grdb} aus dem Schulbuch des
      * Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
      */
+    @Source(filename = "ICENetz.grdb", title = "Informatik 6 Bayern | NTG | Grundlegendes Niveau", subtitle = "Listen | Bäume | Rekursion - Nebenläufigkeit und Threads - Informationssicherheit - Softwareprojekte", publisher = "Cornelsen", releaseYear = 2024)
     public static GraphArrayMatrix Cornelsen6ICENetz()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -168,6 +178,7 @@ public class GraphCollection
      * Schulbuch des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von
      * 2024.
      */
+    @Source(filename = "Beispielgraph.grdb", title = "Informatik 6 Bayern | NTG | Grundlegendes Niveau", subtitle = "Listen | Bäume | Rekursion - Nebenläufigkeit und Threads - Informationssicherheit - Softwareprojekte", publisher = "Cornelsen", releaseYear = 2024)
     public static GraphArrayMatrix Cornelsen6Beispielgraph()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -238,6 +249,7 @@ public class GraphCollection
      * Schulbuch des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von
      * 2024.
      */
+    @Source(filename = "Beispielgraph2.grdb", title = "Informatik 6 Bayern | NTG | Grundlegendes Niveau", subtitle = "Listen | Bäume | Rekursion - Nebenläufigkeit und Threads - Informationssicherheit - Softwareprojekte", publisher = "Cornelsen", releaseYear = 2024)
     public static GraphArrayMatrix Cornelsen6Beispielgraph2()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -601,6 +613,7 @@ public class GraphCollection
     /**
      * Buchner Seite 45
      */
+    @Source(page = 45, title = "Informatik 11", publisher = "Buchner", releaseYear = 2023)
     public static GraphArrayMatrix Buchner11FahrzeitenZweispurig()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -627,6 +640,7 @@ public class GraphCollection
     /**
      * Buchner Seite 45
      */
+    @Source(page = 45, title = "Informatik 11", publisher = "Buchner", releaseYear = 2023)
     public static GraphArrayMatrix Buchner11FahrzeitenZweispurigDirected()
     {
         GraphArrayMatrix g = new GraphArrayMatrix();
@@ -653,7 +667,7 @@ public class GraphCollection
     /**
      * Seite 58 Aufgabe Nr. 4
      */
-    @Source(page = 58, publisher = "Cornelsen")
+    @Source(page = 58, title = "Informatik 11 spätbeginnend", subtitle = "Algorithmen | Codierung | Kommunikation in Netzwerken | Künstliche Intelligenz", publisher = "Cornelsen", releaseYear = 2023)
     public static GraphArrayMatrix Cornelsen11SpbNuernbergUlmMuenchenHamburg()
     {
         GraphArrayMatrix g = new GraphArrayMatrix(11);
