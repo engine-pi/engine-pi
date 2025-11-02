@@ -131,7 +131,7 @@ public class GraphArrayMatrix extends Graph
         }
     }
 
-    public void addEdgeIntoDataStructure(String from, String to, int weight,
+    protected void addEdgeIntoDataStructure(String from, String to, int weight,
             boolean directed)
     {
         int fromIndex = getNodeIndex(from);

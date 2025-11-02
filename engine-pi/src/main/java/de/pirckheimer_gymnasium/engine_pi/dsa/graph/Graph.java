@@ -221,6 +221,16 @@ public abstract class Graph
         addNode(label, 0, 0);
     }
 
+    /**
+     * Fügt eine Kopie des übergebenen {@link GraphNode}-Objekt dem Graphen
+     * hinzu.
+     *
+     * @param node der einzufügende Knoten; darf nicht {@code null} sein
+     *
+     * @throws NullPointerException wenn {@code node} {@code null} ist
+     *
+     * @see #addNode(String, int, int)
+     */
     public void addNode(GraphNode node)
     {
         addNode(node.getLabel(), node.getX(), node.getY());
@@ -305,11 +315,26 @@ public abstract class Graph
         return nodes;
     }
 
+    /**
+     * Gibt die <b>Kante</b> anhand des Indexes zurück.
+     *
+     * @param index Der 0-basierte Index der gewünschten Kante.
+     *
+     * @return Die Kante
+     *
+     * @throws IndexOutOfBoundsException wenn der Index außerhalb des gültigen
+     *     Bereichs liegt
+     */
     public GraphEdge getEdge(int index)
     {
         return edges.get(index);
     }
 
+    /**
+     * Gibt die Liste aller Kanten dieses Graphen zurück.
+     *
+     * @return Die Liste aller Kanten dieses Graphen.
+     */
     public ArrayList<GraphEdge> getEdges()
     {
         return edges;
