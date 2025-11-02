@@ -38,7 +38,6 @@ import java.awt.geom.Rectangle2D;
  */
 public class FontStringBounds
 {
-
     /**
      * Die <b>Breite</b> des Textes in Pixel.
      */
@@ -62,16 +61,33 @@ public class FontStringBounds
         baseline = -1 * (int) Math.round(bounds.getY());
     }
 
+    /**
+     * Gibt die <b>Breite</b> des Textes in Pixel zurück.
+     *
+     * @return Die <b>Breite</b> des Textes in Pixel.
+     */
     public int getWidth()
     {
         return width;
     }
 
+    /**
+     * Gibt die <b>Höhe</b> des Textes in Pixel zurück.
+     *
+     * @return Die <b>Höhe</b> des Textes in Pixel.
+     */
     public int getHeight()
     {
         return height;
     }
 
+    /**
+     * Gibt den Abstand der linken oberen Ecke des Rechtecks zur
+     * <b>Grundlinie</b> des Textes in Pixel (positiver Wert) zurück.
+     *
+     * @return Der Abstand der linken oberen Ecke des Rechtecks zur
+     *     <b>Grundlinie</b> des Textes in Pixel (positiver Wert).
+     */
     public int getBaseline()
     {
         return baseline;

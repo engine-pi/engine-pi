@@ -10,6 +10,8 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import de.pirckheimer_gymnasium.engine_pi.util.FontStringBounds;
+import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 
 /**
  * Eine beschriftete Kante
@@ -24,30 +26,44 @@ public class LabeledEdge extends Actor
 
     private Vector to;
 
+    /**
+     * Der Bezeichner der Kante (z.B. das Kantengewicht).
+     */
     private String label;
 
-    public LabeledEdge(double x1, double y1, double x2, double y2, String label)
+    /**
+     * Der Abstand des Kantenlinie und der Kantenbezeichnung in Meter.
+     */
+    public static double LABEL_LINE_DISTANCE = 0.25;
+
+    public LabeledEdge(double fromX, double fromY, double toX, double toY,
+            String label)
     {
-        this(new Vector(x1, y1), new Vector(x2, y2), label);
+        this(new Vector(fromX, fromY), new Vector(toX, toY), label);
     }
 
-    public LabeledEdge(double x1, double y1, double x2, double y2)
+    public LabeledEdge(double fromX, double fromY, double toX, double toY)
     {
-        this(x1, y1, x2, y2, null);
+        this(fromX, fromY, toX, toY, null);
     }
 
-    public LabeledEdge(Vector point1, Vector point2)
+    public LabeledEdge(Vector from, Vector to)
     {
-        this(point1, point1, null);
+        this(from, from, null);
     }
 
-    public LabeledEdge(Vector point1, Vector point2, String label)
+    public LabeledEdge(Vector from, Vector to, String label)
     {
-        super(() -> FixtureBuilder.line(point1, point2));
-        this.from = point1;
-        this.to = point2;
+        super(() -> FixtureBuilder.line(from, to));
+        this.from = from;
+        this.to = to;
         this.label = label;
         setColor("gray");
+    }
+
+    public void setLabel(String label)
+    {
+        this.label = label;
     }
 
     /**
@@ -75,17 +91,29 @@ public class LabeledEdge extends Actor
 
         if (label != null)
         {
-            Font font = new Font(null, Font.PLAIN, 24);
+            Font font = new Font(null, Font.PLAIN, 16);
             AffineTransform affineTransform = new AffineTransform();
 
-            // Der Differenzvektor
-            Vector sub = toPx.subtract(fromPx);
+            FontStringBounds labelBounds = FontUtil.getStringBoundsNg(label,
+                    font);
 
-            Vector lineMid = fromPx.add(sub.divide(0.5));
-            affineTransform.rotate(sub.getRadians(), 0, 0);
+            // Der Differenzvektor
+            Vector edge = toPx.subtract(fromPx);
+
+            double edgeLength = edge.getLength();
+            double labelMargin = (edgeLength - labelBounds.getWidth()) / 2;
+
+            Vector labelLineDistance = Vector.ofAngle(edge.getAngle() - 90)
+                    .multiply(LABEL_LINE_DISTANCE * pixelPerMeter);
+
+            Vector labelAnchor = fromPx
+                    .add(edge.multiply(labelMargin / edgeLength))
+                    .add(labelLineDistance);
+            affineTransform.rotate(edge.getRadians(), 0, 0);
             Font rotatedFont = font.deriveFont(affineTransform);
             g.setFont(rotatedFont);
-            g.drawString(label, (int) lineMid.getX(), (int) lineMid.getY());
+            g.drawString(label, (int) labelAnchor.getX(),
+                    (int) labelAnchor.getY());
         }
         g.drawLine(fromX, fromY, toX, toY);
         g.setStroke(oldStroke);
@@ -98,8 +126,12 @@ public class LabeledEdge extends Actor
     {
         Game.debug();
         Game.start((scene) -> {
-            LabeledEdge edge = new LabeledEdge(1, 1, 4, 5, "label");
-            scene.add(edge);
+            LabeledEdge e1, e2;
+            e1 = new LabeledEdge(1, 1, 4, 5, "label");
+
+            e2 = new LabeledEdge(-1, -1, -4, -5,
+                    "e2: A very, very, very long label");
+            scene.add(e1, e2);
         });
     }
 }

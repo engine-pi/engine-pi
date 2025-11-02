@@ -96,14 +96,20 @@ public class GraphVisualizer
         clear();
         labeledNodes = new LabeledNode[graph.getNodesCount()];
         labeledEdges = new LabeledEdge[graph.getEdgesCount()];
+        // Zuerst werden die Kanten eingezeichnet.
         for (int i = 0; i < graph.getEdgesCount(); i++)
         {
             GraphEdge edge = graph.getEdge(i);
             LabeledEdge labledEdge = new LabeledEdge(
                     edge.getFrom().getPosition(), edge.getTo().getPosition());
+            if (edge.getWeight() != 1)
+            {
+                labledEdge.setLabel(String.valueOf(edge.getWeight()));
+            }
             scene.add(labledEdge);
             labeledEdges[i] = labledEdge;
         }
+        // Dann die Knoten.
         for (int i = 0; i < graph.getNodesCount(); i++)
         {
             GraphNode node = graph.getNode(i);
