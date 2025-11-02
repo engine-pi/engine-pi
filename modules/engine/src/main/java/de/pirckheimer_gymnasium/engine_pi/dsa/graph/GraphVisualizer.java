@@ -52,6 +52,9 @@ public class GraphVisualizer
         setGraph(graph);
     }
 
+    /**
+     * Entfernt alle grafischen Knoten und Kanten aus der Szene.
+     */
     public void clear()
     {
         if (labeledNodes != null)

@@ -22,6 +22,10 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
  * Eine Implementation der <b>Tiefensuche</b>. Im Englischen heißt dieser
  * Algorithmus <em>depth-first search</em>.
  *
+ * @see <a href=
+ *     "https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/graph/algorithmen/TiefenSucheRekursion.java">Bschlangaul-Sammlung:
+ *     TiefenSucheRekursion.java</a>
+ *
  * @author Josef Friedrich
  *
  * @since 0.36.0
