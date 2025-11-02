@@ -30,6 +30,10 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese
  * Klasse wird für alle Positions- und Richtungsangaben genutzt.
  *
+ *
+ *
+ *
+ *
  * @author Michael Andonie
  *
  * @see <a href=
@@ -640,29 +644,6 @@ public final class Vector implements Cloneable
             return 360 - degrees;
         }
         return degrees;
-    }
-
-    /**
-     * Berechnet den Winkel (im Bogenmaß) der Richtung vom aktuellen Vektor zum
-     * übergebenen Vektor.
-     *
-     * Der Winkel ist relativ zur positiven X-Achse und wird gegen den
-     * Uhrzeigersinn als positiv gezählt. Der Rückgabewert liegt im Bereich [-π,
-     * π]. Sind beide Vektoren identisch, wird 0.0 zurückgegeben.
-     *
-     * @param other Ein weiterer Vektor, zu dem die Richtung
-     *     ({@code other - this}) berechnet wird.
-     *
-     * @return Winkel in Bogenmaß im Bereich [-π, π], gemessen von der positiven
-     *     X-Achse zur Richtung ({@code other - this})
-     *
-     * @throws NullPointerException wenn other null ist
-     *
-     * @since 0.37.0
-     */
-    public double getDirectionAngleInRadians(Vector other)
-    {
-        return Math.atan2(other.getY() - y, other.getX() - x);
     }
 
     /**

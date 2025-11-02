@@ -8,7 +8,7 @@ public class FontRotationDemo extends Component
 {
     public void render(Graphics2D g)
     {
-        Font font = new Font(null, Font.PLAIN, 48);
+        Font font = new Font(null, Font.PLAIN, 24);
         AffineTransform affineTransform = new AffineTransform();
         affineTransform.rotate(Math.toRadians(45), 0, 0);
         Font rotatedFont = font.deriveFont(affineTransform);

@@ -20,9 +20,9 @@ import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
  */
 public class LabeledEdge extends Actor
 {
-    private Vector point1;
+    private Vector from;
 
-    private Vector point2;
+    private Vector to;
 
     private String label;
 
@@ -44,8 +44,8 @@ public class LabeledEdge extends Actor
     public LabeledEdge(Vector point1, Vector point2, String label)
     {
         super(() -> FixtureBuilder.line(point1, point2));
-        this.point1 = point1;
-        this.point2 = point2;
+        this.from = point1;
+        this.to = point2;
         this.label = label;
         setColor("gray");
     }
@@ -57,11 +57,15 @@ public class LabeledEdge extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        int x1 = point1.getX(pixelPerMeter);
-        int y1 = point1.getY(pixelPerMeter) * -1;
+        int fromX = from.getX(pixelPerMeter);
+        int fromY = from.getY(pixelPerMeter) * -1;
+        // In Pixel mit umgedrehter y-Richtung
+        Vector fromPx = new Vector(fromX, fromY);
 
-        int x2 = point2.getX(pixelPerMeter);
-        int y2 = point2.getY(pixelPerMeter) * -1;
+        int toX = to.getX(pixelPerMeter);
+        int toY = to.getY(pixelPerMeter) * -1;
+        // In Pixel mit umgedrehter y-Richtung
+        Vector toPx = new Vector(toX, toY);
 
         Stroke oldStroke = g.getStroke();
         Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
@@ -71,16 +75,19 @@ public class LabeledEdge extends Actor
 
         if (label != null)
         {
-            Font font = new Font(null, Font.PLAIN, 12);
+            Font font = new Font(null, Font.PLAIN, 24);
             AffineTransform affineTransform = new AffineTransform();
 
-            affineTransform.rotate(new Vector(x1, y1)
-                    .getDirectionAngleInRadians(new Vector(x2, y2)), 0, 0);
+            // Der Differenzvektor
+            Vector sub = toPx.subtract(fromPx);
+
+            Vector lineMid = fromPx.add(sub.divide(0.5));
+            affineTransform.rotate(sub.getRadians(), 0, 0);
             Font rotatedFont = font.deriveFont(affineTransform);
             g.setFont(rotatedFont);
-            g.drawString(label, 0, 0);
+            g.drawString(label, (int) lineMid.getX(), (int) lineMid.getY());
         }
-        g.drawLine(x1, y1, x2, y2);
+        g.drawLine(fromX, fromY, toX, toY);
         g.setStroke(oldStroke);
     }
 

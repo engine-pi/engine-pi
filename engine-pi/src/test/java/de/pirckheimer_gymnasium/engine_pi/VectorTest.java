@@ -260,62 +260,6 @@ public class VectorTest
         }
     }
 
-    @Nested
-    class GetRadiansTest
-    {
-        @Test
-        public void testSameVectorReturnsZero()
-        {
-            Vector v = new Vector(1, 2);
-            assertEquals(v.getDirectionAngleInRadians(v), 0.0, 0.0);
-        }
-
-        @Test
-        public void testEastIsZero()
-        {
-            assertEquals(v(0, 0).getDirectionAngleInRadians(v(1, 0)), 0.0,
-                    1e-9);
-        }
-
-        @Test
-        public void testNorthIsPiOverTwo()
-        {
-            assertEquals(v(0, 0).getDirectionAngleInRadians(v(0, 1)),
-                    Math.PI / 2, 1e-9);
-        }
-
-        @Test
-        public void testWestIsPi()
-        {
-            assertEquals(v(0, 0).getDirectionAngleInRadians(v(-1, 0)), Math.PI,
-                    1e-9);
-        }
-
-        @Test
-        public void testSouthIsMinusPiOverTwo()
-        {
-            assertEquals(v(0, 0).getDirectionAngleInRadians(v(0, -1)),
-                    -Math.PI / 2, 1e-9);
-        }
-
-        @Test
-        public void testArbitraryVectors()
-        {
-            Vector a = v(1.0, 1.0);
-            Vector b = v(2.0, 2.0);
-            double expected = Math.atan2(b.getY() - a.getY(),
-                    b.getX() - a.getX());
-            assertEquals(a.getDirectionAngleInRadians(b), expected, 1e-9);
-        }
-
-        @Test
-        public void testNullThrowsException()
-        {
-            assertThrows(NullPointerException.class,
-                    () -> v(0, 0).getDirectionAngleInRadians(null));
-        }
-    }
-
     @Test
     public void testToString()
     {
