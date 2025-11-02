@@ -15,6 +15,7 @@
         <module>modules/engine</module>
         <module>modules/demos</module>
         <module>modules/cli</module>
+        <module>modules/games/tetris</module>
     </modules>
 
     <description>The parent meta package of the Engine Pi.</description>

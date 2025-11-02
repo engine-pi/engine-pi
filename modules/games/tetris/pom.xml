@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.pirckheimer_gymnasium.tetris</groupId>
+  <artifactId>tetris</artifactId>
+  <version>0.0.1</version>
+
+  <parent>
+    <groupId>de.pirckheimer-gymnasium</groupId>
+    <artifactId>engine-pi-meta</artifactId>
+    <version>0.36.0</version>
+  </parent>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.pirckheimer-gymnasium</groupId>
+      <artifactId>engine-pi</artifactId>
+      <version>0.27.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!--
+      https://code.revelc.net/formatter-maven-plugin/examples.html#basic-configuration-using-external-resource -->
+      <plugin>
+        <groupId>net.revelc.code.formatter</groupId>
+        <artifactId>formatter-maven-plugin</artifactId>
+        <version>2.24.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>format</goal>
+            </goals>
+            <configuration>
+              <configFile>eclipse-formatter.xml</configFile>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>de.pirckheimer-gymnasium</groupId>
+            <artifactId>engine-pi</artifactId>
+            <version>0.27.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!--
+      https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>de.pirckheimer-gymnasium</groupId>
+            <artifactId>engine-pi</artifactId>
+            <version>0.26.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.7.1</version>
+        <configuration>
+          <!-- Set to false to exclude the assembly id from the assembly final name, and
+                    to create the resultant assembly artifacts without classifier. As such, an
+                    assembly artifact having the same format as the packaging of the current Maven
+                    project will replace the file for this main project artifact. -->
+          <appendAssemblyId>true</appendAssemblyId>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>de.pirckheimer_gymnasium.tetris.Tetris</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
