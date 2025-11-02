@@ -61,7 +61,7 @@ public class Tetris
      * </p>
      *
      * @param value ist dieser Wert true, wird Tetris ab sofort im Debug-Modus
-     *              ausgeführt.
+     *     ausgeführt.
      */
     public static void setDebug(boolean value)
     {

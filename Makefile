@@ -5,12 +5,10 @@ deploy:
 	mvn deploy
 
 doc: clean install
-	rm -rf engine-pi/target/site/apidocs
-	rm -rf engine-pi-demos/target/site/apidocs
 	mvn javadoc:javadoc
 
-	xdg-open engine-pi/target/reports/apidocs/index.html
-	xdg-open engine-pi-demos/target/reports/apidocs/index.html
+	xdg-open modules/engine/target/reports/apidocs/index.html
+	xdg-open modules/demos/target/reports/apidocs/index.html
 
 format:
 	mvn process-sources

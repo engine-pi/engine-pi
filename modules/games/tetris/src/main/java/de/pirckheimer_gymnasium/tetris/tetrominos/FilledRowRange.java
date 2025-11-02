@@ -43,9 +43,9 @@ public class FilledRowRange
 
     /**
      * @param from Ab welcher y-Koordinate (einschließlich) der Bereich mit
-     *             ausgefüllten Zeilen reicht.
-     * @param to   Bis zu welcher y-Koordinate (einschließlich) der Bereich mit
-     *             ausgefüllten Zeilen reicht.
+     *     ausgefüllten Zeilen reicht.
+     * @param to Bis zu welcher y-Koordinate (einschließlich) der Bereich mit
+     *     ausgefüllten Zeilen reicht.
      */
     public FilledRowRange(int from, int to)
     {
@@ -58,7 +58,7 @@ public class FilledRowRange
      * mit ausgefüllten Zeilen reicht.
      *
      * @return Ab welcher y-Koordinate (einschließlich) der Bereich mit
-     *         ausgefüllten Zeilen reicht.
+     *     ausgefüllten Zeilen reicht.
      */
     public int getFrom()
     {
@@ -70,7 +70,7 @@ public class FilledRowRange
      * Bereich mit ausgefüllten Zeilen reicht.
      *
      * @return Bis zu welcher y-Koordinate (einschließlich) der Bereich mit
-     *         ausgefüllten Zeilen reicht.
+     *     ausgefüllten Zeilen reicht.
      */
     public int getTo()
     {

@@ -143,7 +143,7 @@ public class Grid
      * Löscht alle Blöcke aus einer Zeile.
      *
      * @param y Die y-Koordinate der Zeile aus der Blöcke gelöscht werden
-     *          sollen.
+     *     sollen.
      */
     public void clearRow(int y)
     {

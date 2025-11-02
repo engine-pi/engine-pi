@@ -33,8 +33,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * <li>Bewegen sich nicht in der Simulation, Kräfte haben keinen Einfluss auf
  * sie.</li>
  * </ul>
- * Diese Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und Decken</i>.
- * </li>
+ * Diese Eigenschaft gehört zum Beispiel zu <i>Wänden, Böden und
+ * Decken</i>.</li>
  *
  * <li><b>Dynamische</b> Objekte:
  * <ul>
@@ -57,8 +57,8 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * behandelt, <i>als wären sie nicht da</i>.</li>
  * <li>Generieren trotzdem Kollisionsereignisse</li>
  * </ul>
- * Dies ist die <b>Standardeinstellung</b> für Actors, wenn sie erstellt werden.
- * </li>
+ * Dies ist die <b>Standardeinstellung</b> für Actors, wenn sie erstellt
+ * werden.</li>
  *
  * <li><b>Particles</b>:
  * <ul>

@@ -41,7 +41,7 @@ public class ColorScheme
      *
      * @param white Die Farbe <em>Weiß</em> ({@code white}).
      * @param light Die Farbe <em>Hell</em> ({@code light}).
-     * @param dark  Die Farbe <em>Dunkel</em> ({@code dark}).
+     * @param dark Die Farbe <em>Dunkel</em> ({@code dark}).
      * @param black Die Farbe <em>Schwarz</em> ({@code black}).
      */
     public ColorScheme(Color white, Color light, Color dark, Color black)
@@ -58,13 +58,13 @@ public class ColorScheme
      * die Farbe in <b>hexadezimaler Notation</b> codieren.
      *
      * @param white Die Farbe <em>Weiß</em> ({@code white}) als Zeichenkette in
-     *              die in <b>hexadezimaler Notation</b>.
+     *     die in <b>hexadezimaler Notation</b>.
      * @param light Die Farbe <em>Hell</em> ({@code light}) als Zeichenkette in
-     *              die in <b>hexadezimaler Notation</b>.
-     * @param dark  Die Farbe <em>Dunkel</em> ({@code dark}) als Zeichenkette in
-     *              die in <b>hexadezimaler Notation</b>.
+     *     die in <b>hexadezimaler Notation</b>.
+     * @param dark Die Farbe <em>Dunkel</em> ({@code dark}) als Zeichenkette in
+     *     die in <b>hexadezimaler Notation</b>.
      * @param black Die Farbe <em>Schwarz</em> ({@code black}) als Zeichenkette
-     *              in die in <b>hexadezimaler Notation</b>.
+     *     in die in <b>hexadezimaler Notation</b>.
      */
     public ColorScheme(String white, String light, String dark, String black)
     {

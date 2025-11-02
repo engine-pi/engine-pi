@@ -50,18 +50,16 @@ public class BlockDeluxe
     private Scene scene;
 
     /**
-     * @param scene           Eine Referenz auf die Szene, in der der Block
-     *                        angezeigt werden soll.
-     * @param imageName       Das Hauptbild angegeben als Dateiname ohne die
-     *                        Dateierweiterung, z. B. {@code "L"} oder
-     *                        {@code "I_h_left"}.
+     * @param scene Eine Referenz auf die Szene, in der der Block angezeigt
+     *     werden soll.
+     * @param imageName Das Hauptbild angegeben als Dateiname ohne die
+     *     Dateierweiterung, z. B. {@code "L"} oder {@code "I_h_left"}.
      * @param secondImageName Das zweite Bild angegeben als Dateiname ohne die
-     *                        Dateierweiterung, z. B. {@code "L"} oder
-     *                        {@code "I_v_bottom"}.
-     * @param x               Die X-Koordinate der Startposition, auf die der
-     *                        Block gesetzt werden soll.
-     * @param y               Die Y-Koordinate der Startposition, auf die der
-     *                        Block gesetzt werden soll.
+     *     Dateierweiterung, z. B. {@code "L"} oder {@code "I_v_bottom"}.
+     * @param x Die X-Koordinate der Startposition, auf die der Block gesetzt
+     *     werden soll.
+     * @param y Die Y-Koordinate der Startposition, auf die der Block gesetzt
+     *     werden soll.
      */
     public BlockDeluxe(Scene scene, String imageName, String secondImageName,
             int x, int y)
@@ -81,15 +79,14 @@ public class BlockDeluxe
     }
 
     /**
-     * @param scene     Eine Referenz auf die Szene, in der der Block angezeigt
-     *                  werden soll.
+     * @param scene Eine Referenz auf die Szene, in der der Block angezeigt
+     *     werden soll.
      * @param imageName Der Name des Blocks entspricht dem Dateinamen des Bildes
-     *                  ohne die Dateierweiterung, z. B. {@code "L"} oder
-     *                  {@code "I_h_left"}.
-     * @param x         Die X-Koordinate der Startposition, auf die der Block
-     *                  gesetzt werden soll.
-     * @param y         Die Y-Koordinate der Startposition, auf die der Block
-     *                  gesetzt werden soll.
+     *     ohne die Dateierweiterung, z. B. {@code "L"} oder {@code "I_h_left"}.
+     * @param x Die X-Koordinate der Startposition, auf die der Block gesetzt
+     *     werden soll.
+     * @param y Die Y-Koordinate der Startposition, auf die der Block gesetzt
+     *     werden soll.
      */
     public BlockDeluxe(Scene scene, String imageName, int x, int y)
     {
@@ -110,7 +107,7 @@ public class BlockDeluxe
      * Gibt den ersten Buchstaben des Blocknamens zurück.
      *
      * @return Der erste Buchstaben des Blocknamens des Blocks z. B. {@code 'L'}
-     *         oder {@code 'I'}.
+     *     oder {@code 'I'}.
      */
     public char getChar()
     {

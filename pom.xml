@@ -59,6 +59,21 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>2.24.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.12.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <!-- Default is ${project.artifactId}-${project.version}, to get jar files without the
         version use ${project.artifactId} -->
@@ -132,6 +147,70 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.19.1</version>
+            </plugin>
+            <plugin>
+                <groupId>net.revelc.code.formatter</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>2.24.1</version>
+                <configuration>
+                    <configFile>eclipse-formatter.xml</configFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.pirckheimer-gymnasium</groupId>
+                        <artifactId>engine-pi</artifactId>
+                        <version>0.37.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.12.0</version>
+                <configuration>
+                    <!-- to disable the "missing" warnings -->
+                    <doclint>all,-missing</doclint>
+                    <!--
+                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/tag-configuration.html -->
+                    <tags>
+                        <tag>
+                            <name>jbox.2d</name>
+                            <placement>a</placement>
+                            <head>jbox2d source code:</head>
+                        </tag>
+                        <tag>
+                            <name>box.2d</name>
+                            <placement>a</placement>
+                            <head>box2d source code:</head>
+                        </tag>
+                    </tags>
+                    <!--
+                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
+                    <links>
+                        <link>https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi-demos/latest</link>
+                    </links>
+                    <!--
+                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
+                    <excludePackageNames>org.jbox2d.*</excludePackageNames>
+                    <!--
+                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
+                    <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

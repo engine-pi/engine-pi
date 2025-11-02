@@ -67,13 +67,13 @@ public abstract class Tetromino
      * Erzeugt ein Tetromino durch Angabe des Names.
      *
      * @param scene Die Szene, in der das Tetromino eingefügt werden soll.
-     * @param grid  Das Blockgitter, in das das Tetromino eingefügt werden soll.
-     * @param name  Der Name des Tetrominos, zum Beispiel J, L, etc. Die
-     *              Tetrominos sind nach Großbuchstaben benannt.
-     * @param x     Die x-Koordinate (entspricht der Koordinate des 0-ten
-     *              Blocks), an der das Tetromino eingefügt werden soll.
-     * @param y     Die y-Koordinate (entspricht der Koordinate des 0-ten
-     *              Blocks), an der das Tetromino eingefügt werden soll.
+     * @param grid Das Blockgitter, in das das Tetromino eingefügt werden soll.
+     * @param name Der Name des Tetrominos, zum Beispiel J, L, etc. Die
+     *     Tetrominos sind nach Großbuchstaben benannt.
+     * @param x Die x-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
+     * @param y Die y-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
      */
     public Tetromino(Scene scene, Grid grid, String name, int x, int y)
     {
@@ -89,7 +89,7 @@ public abstract class Tetromino
      * Gibt die x-Koordinate des Tetrominos zurück.
      *
      * @return Die x-Koordinate des Tetrominos entspricht der Lage des ersten
-     *         Blocks, also dem Block mit der Indexnummer 0 im Blockfeld.
+     *     Blocks, also dem Block mit der Indexnummer 0 im Blockfeld.
      */
     public int getX()
     {
@@ -100,7 +100,7 @@ public abstract class Tetromino
      * Gibt die y-Koordinate des Tetrominos zurück.
      *
      * @return Die y-Koordinate des Tetrominos entspricht der Lage des ersten
-     *         Blocks, also dem Block mit der Indexnummer 0 im Blockfeld.
+     *     Blocks, also dem Block mit der Indexnummer 0 im Blockfeld.
      */
     public int getY()
     {
@@ -111,8 +111,8 @@ public abstract class Tetromino
      * Fügt einen Block ein.
      *
      * @param index Die Indexnummer im Blockfeld.
-     * @param x     Die x-Koordinate, an der der Block eingefügt werden soll.
-     * @param y     Die y-Koordinate, an der der Block eingefügt werden soll.
+     * @param x Die x-Koordinate, an der der Block eingefügt werden soll.
+     * @param y Die y-Koordinate, an der der Block eingefügt werden soll.
      */
     protected void addBlock(int index, int x, int y)
     {
@@ -137,9 +137,9 @@ public abstract class Tetromino
      * Vectors.
      *
      * @param index Die Indexnummer, die angibt, welcher Block verschoben werden
-     *              soll.
-     * @param dX    Delta-Wert der Bewegung in x-Richtung.
-     * @param dY    Delta-Wert der Bewegung in y-Richtung.
+     *     soll.
+     * @param dX Delta-Wert der Bewegung in x-Richtung.
+     * @param dY Delta-Wert der Bewegung in y-Richtung.
      */
     protected void moveBlock(int index, int dX, int dY)
     {
@@ -399,7 +399,7 @@ public abstract class Tetromino
      * @see #doRotation
      *
      * @return Gibt wahr zurück, wenn sind das Tetromino drehen konnte, sonst
-     *         falsch.
+     *     falsch.
      */
     public boolean rotate()
     {
@@ -438,13 +438,13 @@ public abstract class Tetromino
      * Erzeugt ein Tetromino durch Angabe des Names.
      *
      * @param scene Die Szene, in der das Tetromino eingefügt werden soll.
-     * @param grid  Das Blockgitter, in das das Tetromino eingefügt werden soll.
-     * @param name  Der Name des Tetrominos, zum Beispiel J, L, etc. Die
-     *              Tetrominos sind nach Großbuchstaben benannt.
-     * @param x     Die x-Koordinate (entspricht der Koordinate des 0-ten
-     *              Blocks), an der das Tetromino eingefügt werden soll.
-     * @param y     Die y-Koordinate (entspricht der Koordinate des 0-ten
-     *              Blocks), an der das Tetromino eingefügt werden soll.
+     * @param grid Das Blockgitter, in das das Tetromino eingefügt werden soll.
+     * @param name Der Name des Tetrominos, zum Beispiel J, L, etc. Die
+     *     Tetrominos sind nach Großbuchstaben benannt.
+     * @param x Die x-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
+     * @param y Die y-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
      *
      * @return Das erzeugte Tetromino.
      */
@@ -466,15 +466,14 @@ public abstract class Tetromino
     /**
      * Erzeugt ein Tetromino durch Angabe einer Nummer.
      *
-     * @param scene  Die Szene, in der das Tetromino eingefügt werden soll.
-     * @param grid   Das Blockgitter, in das das Tetromino eingefügt werden
-     *               soll.
+     * @param scene Die Szene, in der das Tetromino eingefügt werden soll.
+     * @param grid Das Blockgitter, in das das Tetromino eingefügt werden soll.
      * @param number Die Nummer des Tetrominos, 0 ist zum Beispiel das
-     *               L-Tetromino, 6 das T-Tetromino.
-     * @param x      Die x-Koordinate (entspricht der Koordinate des 0-ten
-     *               Blocks), an der das Tetromino eingefügt werden soll.
-     * @param y      Die y-Koordinate (entspricht der Koordinate des 0-ten
-     *               Blocks), an der das Tetromino eingefügt werden soll.
+     *     L-Tetromino, 6 das T-Tetromino.
+     * @param x Die x-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
+     * @param y Die y-Koordinate (entspricht der Koordinate des 0-ten Blocks),
+     *     an der das Tetromino eingefügt werden soll.
      *
      * @return Das erzeugte Tetromino.
      */

@@ -229,8 +229,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * <li><code>0</code>: Kamerazoom hat keinen Einfluss auf dieses Layer.</li>
      * <li><code>0 &lt; parallaxZoom &lt; 1</code>: Der Zoomeffekt tritt
      * schwächer auf.</li>
-     * <li><code>parallaxZoom &gt; 1</code>: Der Zoomeffekt tritt stärker auf.
-     * </li>
+     * <li><code>parallaxZoom &gt; 1</code>: Der Zoomeffekt tritt stärker
+     * auf.</li>
      * <li><code>parallaxZoom &lt; 0</code>: Der Zoomeffekt tritt betragsmäßig
      * ähnlich und umgekehrt auf.</li>
      * </ul>
