@@ -18,13 +18,6 @@
     <name>Command Line Tool</name>
     <description>Command line tool for the Engine Pi development</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>com.github.javaparser</groupId>
