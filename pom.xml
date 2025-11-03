@@ -16,6 +16,7 @@
         <module>modules/demos</module>
         <module>modules/cli</module>
         <module>modules/games/tetris</module>
+        <module>modules/build-tools</module>
     </modules>
 
     <description>The parent meta package of the Engine Pi.</description>
@@ -78,6 +79,16 @@
         <!-- Default is ${project.artifactId}-${project.version}, to get jar files without the
         version use ${project.artifactId} -->
         <finalName>${project.artifactId}-${project.version}</finalName>
+        <!-- https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <version>2.29.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -148,27 +159,21 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.19.1</version>
             </plugin>
+            <!--
+            https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
             <plugin>
                 <groupId>net.revelc.code.formatter</groupId>
                 <artifactId>formatter-maven-plugin</artifactId>
-                <version>2.24.1</version>
-                <configuration>
-                    <configFile>eclipse-formatter.xml</configFile>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>format</goal>
                         </goals>
+                        <configuration>
+                            <configFile>eclipse-formatter.xml</configFile>
+                        </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>de.pirckheimer-gymnasium</groupId>
-                        <artifactId>engine-pi</artifactId>
-                        <version>0.36.0</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

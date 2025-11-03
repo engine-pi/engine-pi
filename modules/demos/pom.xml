@@ -52,6 +52,24 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
+                <plugin>
+                    <groupId>net.revelc.code.formatter</groupId>
+                    <artifactId>formatter-maven-plugin</artifactId>
+                    <dependencies>
+                        <dependency>
+                            <groupId>de.pirckheimer-gymnasium</groupId>
+                            <artifactId>engine-pi-build-tools</artifactId>
+                            <version>0.1.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
             <plugin>

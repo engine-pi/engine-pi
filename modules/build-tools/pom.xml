@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>engine-pi-build-tools</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>de.pirckheimer-gymnasium</groupId>
+        <artifactId>engine-pi-meta</artifactId>
+        <version>0.37.0</version>
+        <relativePath>../..</relativePath>
+    </parent>
+
+    <name>Engine Pi Build Tools</name>
+    <description>Resources for build tools</description>
+    <url>https://github.com/engine-pi/engine-pi</url>
+
+    <licenses>
+        <license>
+            <name>The GNU General Public License, Version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Josef Friedrich</name>
+            <email>josef.friedrich@pirckheimer-gymnasium.de</email>
+            <organizationUrl>http://pirckheimer-gymnasium.de</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
+        <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
+        <url>https://github.com/engine-pi/engine-pi</url>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+</project>
