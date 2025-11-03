@@ -198,10 +198,11 @@ public final class Game
      * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
      * <b>Höhe</b> und <b>Pixelvervielfältigung</b>.
      *
-     * @param scene Die Szene, mit der das Spiel gestartet wird.
-     * @param width Die Breite des Zeichenbereichs in Pixel.
-     * @param height Die Höhe des Zeichenbereichs in Pixel.
-     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     * @param scene Die <b>Szene</b>, mit der das Spiel gestartet wird.
+     * @param width Die <b>Breite</b> des Zeichenbereichs in Pixel.
+     * @param height Die <b>Höhe</b> des Zeichenbereichs in Pixel.
+     * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
+     *     soll.
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
      *

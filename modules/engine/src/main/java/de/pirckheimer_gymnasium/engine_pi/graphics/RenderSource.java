@@ -22,13 +22,17 @@ package de.pirckheimer_gymnasium.engine_pi.graphics;
 
 import java.awt.Graphics2D;
 
+/**
+ * Definiert eine Methode, um in eine Fläche zu zeichnen.
+ */
 public interface RenderSource
 {
     /**
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * Zeichnet in eine Fläche.
      *
-     * @param width Die Breite in Pixel.
-     * @param height Die Höhe in Pixel.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param width Die <b>Breite</b> der Zeichenfläche in Pixel.
+     * @param height Die <b>Höhe</b> der Zeichenfläche in Pixel.
      */
     void render(Graphics2D g, int width, int height);
 }

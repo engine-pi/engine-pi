@@ -37,8 +37,11 @@ import java.awt.GraphicsEnvironment;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
+ * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link Font}.
+ *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public final class FontContainer extends ResourcesContainer<Font>
 {
@@ -151,6 +154,48 @@ public final class FontContainer extends ResourcesContainer<Font>
             return loadByName(name);
         }
         return super.get(name);
+    }
+
+    /**
+     * Gibt die mit der Engine Pi mitgelieferte Standardschrift aus.
+     *
+     * @return
+     *
+     * @since 0.37.0
+     */
+    public Font getDefault(FontStyle style)
+    {
+        String[] fontFiles = { "fonts/Cantarell-Regular.ttf",
+                "fonts/Cantarell-Bold.ttf", "fonts/Cantarell-Italic.ttf",
+                "fonts/Cantarell-BoldItalic.ttf" };
+
+        GraphicsEnvironment ge = GraphicsEnvironment
+                .getLocalGraphicsEnvironment();
+        for (String file : fontFiles)
+        {
+            try
+            {
+                Font f = this.get(file);
+                if (f != null)
+                {
+                    ge.registerFont(f);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new RuntimeException(
+                        "failed to register default font " + file);
+            }
+        }
+
+        Font defaultFont = this.get("Cantarell");
+        if (defaultFont == null)
+        {
+            // fallback to a system sans-serif font
+            return new Font(Font.SANS_SERIF, style.getStyle(), DEFAULT_SIZE);
+        }
+
+        return defaultFont.deriveFont(style.getStyle(), (float) DEFAULT_SIZE);
     }
 
     /***

@@ -54,6 +54,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.graphics.RenderSource;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
 
@@ -64,7 +65,7 @@ import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
  */
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration, ActorAdder
+        FrameUpdateListenerRegistration, ActorAdder, RenderSource
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 
@@ -108,6 +109,50 @@ public class Scene implements KeyStrokeListenerRegistration,
     private static final int JOINT_RECTANGLE_SIDE = 12;
 
     /**
+     * Der <b>Titel</b> der Szene.
+     *
+     * <p>
+     * Der Titel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    protected String title;
+
+    /**
+     * Der <b>Untertitel</b> der Szene.
+     *
+     * <p>
+     * Der Untertitel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    protected String subtitle;
+
+    /**
+     * Ein längerer <b>Beschreibungstext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    protected String description;
+
+    /**
+     * Ein <b>Hilfetext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.37.0
+     */
+    protected String help;
+
+    /**
      * Erzeugt eine neue Szene.
      *
      * <p>
@@ -122,6 +167,70 @@ public class Scene implements KeyStrokeListenerRegistration,
         mainLayer.setLayerPosition(0);
         addLayer(mainLayer);
         EventListeners.registerListeners(this);
+    }
+
+    /**
+     * Setzt den <b>Titel</b> der Szene.
+     *
+     * <p>
+     * Der Titel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @param title Der <b>Titel</b> der Szene.
+     *
+     * @since 0.37.0
+     */
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    /**
+     * Setzt den <b>Untertitel</b> der Szene.
+     *
+     * <p>
+     * Der Untertitel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @param subtitle Der <b>Untertitel</b> der Szene.
+     *
+     * @since 0.37.0
+     */
+    public void setSubtitle(String subtitle)
+    {
+        this.subtitle = subtitle;
+    }
+
+    /**
+     * Setzt den längerer <b>Beschreibungstext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @param description Ein längerer <b>Beschreibungstext</b> zur Szene.
+     *
+     * @since 0.37.0
+     */
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
+    /**
+     * Setzt den <b>Hilfetext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @param help Ein <b>Hilfetext</b> zur Szene.
+     *
+     * @since 0.37.0
+     */
+    public void setHelp(String help)
+    {
+        this.help = help;
     }
 
     /**
@@ -180,12 +289,28 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @hidden
+     * Zeichnet eine <b>Überblendung</b> in die Szene, die unabhängig von der
+     * Kameraeinstellung ist und alle Figuren der Szene überdecken kann.
+     *
+     * <p>
+     * Diese Methode ist dazu gedacht, überschrieben zu werden.
+     * </p>
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param width Die <b>Breite</b> der Zeichenfläche in Pixel.
+     * @param height Die <b>Höhe</b> der Zeichenfläche in Pixel.
      */
+    @API
+    public void renderOverlay(Graphics2D g, int width, int height)
+    {
+
+    }
+
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {
         final AffineTransform base = g.getTransform();
+        renderOverlay(g, width, height);
         synchronized (layers)
         {
             for (Layer layer : layers)

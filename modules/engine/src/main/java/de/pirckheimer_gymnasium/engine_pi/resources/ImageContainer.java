@@ -36,7 +36,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
 
 /**
- * Ein Speicher für <b>Bilder</b> vom Datentyp {@link BufferedImage}.
+ * Ein Speicher für <b>Bilder</b> des Datentyps {@link BufferedImage}.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
