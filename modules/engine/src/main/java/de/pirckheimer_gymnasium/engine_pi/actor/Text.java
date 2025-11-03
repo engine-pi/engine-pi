@@ -42,8 +42,10 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  */
 public class Text extends Geometry
 {
-    // Needs to be large enough, so we don't have rounding errors due to
-    // integers in font metrics
+    /**
+     * Needs to be large enough, so we don't have rounding errors due to
+     * integers in font metrics
+     */
     private static final int SIZE = 1000;
 
     /**
@@ -121,7 +123,8 @@ public class Text extends Geometry
     @API
     public Text(String content, double height)
     {
-        this(content, height, Resources.FONTS.getDefault(), 0);
+        this(content, height,
+                Resources.FONTS.getDefault().deriveFont((float) SIZE), 0);
     }
 
     /**
