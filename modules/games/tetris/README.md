@@ -1,7 +1,7 @@
 # Tetris auf dem Gameboy
 
 Nachbau des Spiels Tetris auf dem klassischem Gameboy mit Hilfe von Java und
-der Engine Alpha.
+der Engine Pi.
 
 ## Über das Spiel Tetris
 

@@ -4,5 +4,6 @@
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx32G -Xms100m -Xlog:disable",
   "editor.tabSize": 4,
   "java.dependency.packagePresentation": "hierarchical",
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "maven.view": "hierarchical"
 }

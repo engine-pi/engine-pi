@@ -10,15 +10,6 @@
     <packaging>pom</packaging>
 
     <name>Engine Pi Meta</name>
-
-    <modules>
-        <module>modules/engine</module>
-        <module>modules/demos</module>
-        <module>modules/cli</module>
-        <module>modules/games/tetris</module>
-        <module>modules/build-tools</module>
-    </modules>
-
     <description>The parent meta package of the Engine Pi.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
     <licenses>
@@ -31,7 +22,7 @@
         <developer>
             <name>Josef Friedrich</name>
             <email>josef.friedrich@pirckheimer-gymnasium.de</email>
-            <organizationUrl>http://pirckheimer-gymnasium.de</organizationUrl>
+            <organizationUrl>https://pirckheimer-gymnasium.de</organizationUrl>
         </developer>
     </developers>
     <scm>
@@ -44,6 +35,14 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <modules>
+        <module>modules/engine</module>
+        <module>modules/demos</module>
+        <module>modules/cli</module>
+        <module>modules/games/tetris</module>
+        <module>modules/build-tools</module>
+    </modules>
 
     <dependencies>
         <dependency>

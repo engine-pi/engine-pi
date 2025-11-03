@@ -4,10 +4,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.pirckheimer_gymnasium.tetris</groupId>
-  <artifactId>tetris</artifactId>
+  <groupId>de.pirckheimer_gymnasium</groupId>
+  <artifactId>engine-pi-tetris</artifactId>
   <version>0.0.1</version>
+  <packaging>jar</packaging>
 
+  <name>Tetris implemented using the Engine Pi</name>
+  <description>Replica of the game Tetris on the classic Gameboy using the Engine Pi.</description>
   <parent>
     <groupId>de.pirckheimer-gymnasium</groupId>
     <artifactId>engine-pi-meta</artifactId>
