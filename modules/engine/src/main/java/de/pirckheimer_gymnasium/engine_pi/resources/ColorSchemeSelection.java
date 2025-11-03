@@ -36,8 +36,8 @@ public enum ColorSchemeSelection
      * JAVA-{@link Color}-Klasse verwendet.
      */
     JAVA(new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)// Sekundärfarben
-            // Orange passt nicht in das Schema, viel zu hell.
-            // .setOrange(Color.ORANGE)
+    // Orange passt nicht in das Schema, viel zu hell.
+    // .setOrange(Color.ORANGE)
             .setGreen(Color.GREEN)// Tertiärfarben
             .setBlueGreen(Color.CYAN)// Pink passt nicht in das Schema.
             // .setRedPurple(Color.PINK)
