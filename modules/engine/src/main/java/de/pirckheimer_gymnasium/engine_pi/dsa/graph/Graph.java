@@ -79,7 +79,7 @@ public abstract class Graph
      *
      * @return Die <b>Anzahl der Knoten</b>.
      */
-    public int getNodesCount()
+    public int getNodeCount()
     {
         return nodes.size();
     }
@@ -89,7 +89,7 @@ public abstract class Graph
      *
      * @return Die <b>Anzahl der Kanten</b>.
      */
-    public int getEdgesCount()
+    public int getEdgeCount()
     {
         return edges.size();
     }
@@ -117,6 +117,14 @@ public abstract class Graph
         throw new RuntimeException(String.format(
                 "Es konnte kein Knoten mit dem Bezeichner „%s“ gefunden werden.",
                 label));
+    }
+
+    /**
+     * @since 0.37.0
+     */
+    public int getNodeIndex(GraphNode node)
+    {
+        return getNodeIndex(node.getLabel());
     }
 
     /**
@@ -349,7 +357,7 @@ public abstract class Graph
     public String generateJavaCode()
     {
         ArrayList<String> lines = new ArrayList<>();
-        if (getNodesCount() > 0)
+        if (getNodeCount() > 0)
         {
             lines.add("// Anlegen der Knoten");
 
@@ -358,7 +366,7 @@ public abstract class Graph
                 lines.add(node.generateJavaCode());
             }
         }
-        if (getEdgesCount() > 0)
+        if (getEdgeCount() > 0)
         {
             lines.add("// Anlegen der Kanten");
             for (GraphEdge edge : getEdges())

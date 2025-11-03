@@ -116,7 +116,7 @@ public class GraphArrayMatrix extends Graph
 
     protected void addNodeIntoDataStructure(String label, double x, double y)
     {
-        int index = getNodesCount() - 1;
+        int index = getNodeCount() - 1;
         if (index >= matrix.length)
         {
             enlargeMatrix();
@@ -156,15 +156,15 @@ public class GraphArrayMatrix extends Graph
         String whiteSpace = " ".repeat(4);
         // Kopfzeile
         System.out.print(whiteSpace);
-        for (int i = 0; i < getNodesCount(); i++)
+        for (int i = 0; i < getNodeCount(); i++)
         {
             System.out.print(getNode(i).getFormattedLabel(width));
         }
         System.out.println();
-        for (int i = 0; i < getNodesCount(); i++)
+        for (int i = 0; i < getNodeCount(); i++)
         {
             System.out.print(getNode(i).getFormattedLabel(width));
-            for (int j = 0; j < getNodesCount(); j++)
+            for (int j = 0; j < getNodeCount(); j++)
             {
                 if (matrix[i][j] != -1)
                 {

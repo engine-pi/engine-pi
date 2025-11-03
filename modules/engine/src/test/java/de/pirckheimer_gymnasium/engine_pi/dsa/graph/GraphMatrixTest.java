@@ -21,7 +21,7 @@ public class GraphMatrixTest
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
-        assertEquals(2, g.getNodesCount());
+        assertEquals(2, g.getNodeCount());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class GraphMatrixTest
         g.addNode("E", 4, 4);
         // Matrix wird vergrößert
         g.addNode("F", 5, 5);
-        assertEquals(g.getNodesCount(), 6);
+        assertEquals(g.getNodeCount(), 6);
     }
 
     @Test
