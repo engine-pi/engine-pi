@@ -8,6 +8,9 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
+    <name>Build Tools Resources</name>
+    <description>Resources for the build tools, for example elipse-formatter.xml, javadoc-stylesheet.css</description>
+
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
@@ -15,8 +18,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <name>Engine Pi Build Tools</name>
-    <description>Resources for build tools</description>
+
     <url>https://github.com/engine-pi/engine-pi</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

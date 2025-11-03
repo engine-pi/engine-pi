@@ -15,7 +15,7 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <name>Engine Pi</name>
+    <name>Engine</name>
     <description>A beginner-orientated 2D game engine with German documentation. Its main purpose is to develop enthusiasm for programming and computer science through fast, visible and strong achievements.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
 
@@ -173,48 +173,6 @@
                         </configuration>
                         <goals>
                             <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.12.0</version>
-                <configuration>
-                    <!-- to disable the "missing" warnings -->
-                    <doclint>all,-missing</doclint>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/tag-configuration.html -->
-                    <tags>
-                        <tag>
-                            <name>jbox.2d</name>
-                            <placement>a</placement>
-                            <head>jbox2d source code:</head>
-                        </tag>
-                        <tag>
-                            <name>box.2d</name>
-                            <placement>a</placement>
-                            <head>box2d source code:</head>
-                        </tag>
-                    </tags>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
-                    <links>
-                        <link>https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi-demos/latest</link>
-                    </links>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
-                    <excludePackageNames>org.jbox2d.*</excludePackageNames>
-                    <!--
-                    https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
-                    <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>

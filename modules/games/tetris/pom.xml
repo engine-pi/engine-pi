@@ -9,7 +9,7 @@
   <version>0.0.1</version>
   <packaging>jar</packaging>
 
-  <name>Tetris implemented using the Engine Pi</name>
+  <name>Tetris</name>
   <description>Replica of the game Tetris on the classic Gameboy using the Engine Pi.</description>
   <parent>
     <groupId>de.pirckheimer-gymnasium</groupId>
@@ -58,24 +58,6 @@
     </pluginManagement>
 
     <plugins>
-      <!--
-      https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.7.0</version>
-        <configuration>
-          <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>de.pirckheimer-gymnasium</groupId>
-            <artifactId>engine-pi</artifactId>
-            <version>0.26.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
       <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
       <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
       <plugin>

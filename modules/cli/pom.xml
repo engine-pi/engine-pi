@@ -15,28 +15,9 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <name>Engine Pi Command Line Tool</name>
+    <name>Command Line Tool</name>
     <description>Command line tool for the Engine Pi development</description>
-    <url>https://github.com/engine-pi/engine-pi</url>
 
-    <licenses>
-        <license>
-            <name>The GNU General Public License, Version 3.0</name>
-            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <name>Josef Friedrich</name>
-            <email>josef.friedrich@pirckheimer-gymnasium.de</email>
-            <organizationUrl>http://pirckheimer-gymnasium.de</organizationUrl>
-        </developer>
-    </developers>
-    <scm>
-        <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
-        <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
-        <url>https://github.com/engine-pi/engine-pi</url>
-    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
