@@ -20,7 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos.game_loop;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -79,7 +78,7 @@ public class SnakeMinimal extends Scene
         public Snake()
         {
             super(1);
-            setColor(Color.GREEN);
+            setColor("green");
         }
 
         @Override
@@ -117,7 +116,7 @@ public class SnakeMinimal extends Scene
         public Goodie()
         {
             super("Eat Me!", 1);
-            setColor(Color.RED);
+            setColor("red");
         }
 
         @Override

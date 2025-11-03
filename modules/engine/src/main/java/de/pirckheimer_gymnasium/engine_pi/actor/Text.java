@@ -121,7 +121,7 @@ public class Text extends Geometry
     @API
     public Text(String content, double height)
     {
-        this(content, height, Font.SANS_SERIF);
+        this(content, height, Resources.FONTS.getDefault(), 0);
     }
 
     /**
@@ -176,7 +176,18 @@ public class Text extends Geometry
         this.height = height;
         setStyle(style);
         setFont(fontName);
-        setColor("black");
+        setColor("white");
+    }
+
+    public Text(String content, double height, Font font, int style)
+    {
+        super(() -> createShape(content == null ? "" : content, height,
+                font.deriveFont(style, SIZE)));
+        this.content = content == null ? "" : content;
+        this.height = height;
+        setStyle(style);
+        setFont(font);
+        setColor("white");
     }
 
     /**

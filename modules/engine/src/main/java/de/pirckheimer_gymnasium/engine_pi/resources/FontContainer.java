@@ -206,6 +206,11 @@ public final class FontContainer extends ResourcesContainer<Font>
         return defaultFont.deriveFont(style.getStyle(), (float) DEFAULT_SIZE);
     }
 
+    public Font getDefault()
+    {
+        return getDefault(FontStyle.PLAIN);
+    }
+
     /***
      * Loads a custom font with the specified name from game's resources. As a
      * fallback, when no font could be found by the specified {@code fontName},

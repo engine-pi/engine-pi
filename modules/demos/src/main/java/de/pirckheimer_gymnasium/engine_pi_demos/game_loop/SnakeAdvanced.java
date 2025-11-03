@@ -20,7 +20,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi_demos.game_loop;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -118,7 +117,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         public Snake()
         {
             super(1);
-            setColor(Color.GREEN);
+            setColor("green");
         }
 
         private void snakeHeadMove(double dX, double dY)
@@ -147,7 +146,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         public Goodie()
         {
             super("Eat Me!", 1);
-            setColor(Color.RED);
+            setColor("red");
         }
 
         @Override
