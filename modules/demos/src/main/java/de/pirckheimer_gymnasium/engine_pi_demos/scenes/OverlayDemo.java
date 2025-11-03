@@ -5,22 +5,36 @@ import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+
 import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
 
 public class OverlayDemo extends Scene
 {
 
+    private int margin = 50;
+
     public OverlayDemo()
     {
-        addCircle();
+        Circle circle = addCircle(15);
+        circle.setCenter(0, 0);
     }
 
     @Override
     public void renderOverlay(Graphics2D g, int width, int height)
     {
         Color old = g.getColor();
+        int rectangleWidth = (width - 3 * margin) / 2;
+        int rectangleHeight = height - 2 * margin;
+
+        // Undurchsichtiges Rechteck links
+        g.setColor(COLORS.get("green"));
+        g.fillRect(margin, margin, rectangleWidth, rectangleHeight);
+
+        // Durchsichtiges Rechteck rechts
         g.setColor(COLORS.get("green", 100));
-        g.fillRect(100, 100, width - 200, height - 200);
+        g.fillRect(2 * margin + rectangleWidth, margin, rectangleWidth,
+                rectangleHeight);
         g.setColor(old);
     }
 

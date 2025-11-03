@@ -306,11 +306,26 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     }
 
+    /**
+     * Ruft die zu überschreibende Methode
+     * {@link #renderOverlay(Graphics2D, int, int)} auf und zeichnet die
+     * Beschreibungstexte (Titel, Untertitel etc.) ein.
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param width Die <b>Breite</b> der Zeichenfläche in Pixel.
+     * @param height Die <b>Höhe</b> der Zeichenfläche in Pixel.
+     */
+    private void renderOverlays(Graphics2D g, int width, int height)
+    {
+        // Muss ganz zum Schluss erfolgen, damit zuerst gezeichnete
+        // Überblendungen übermalt werden.
+        renderOverlay(g, width, height);
+    }
+
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {
         final AffineTransform base = g.getTransform();
-        renderOverlay(g, width, height);
         synchronized (layers)
         {
             for (Layer layer : layers)
@@ -323,6 +338,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         {
             renderJoints(g);
         }
+        // Muss ganz zum Schluss erfolgen, damit zuerst gezeichnete Figuren
+        // übermalt werden.
+        renderOverlays(g, width, height);
     }
 
     /**

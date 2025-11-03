@@ -1,6 +1,8 @@
 /*
  * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/resources/Fonts.java
  *
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/internal/io/FontLoader.java
+ *
  * MIT License
  *
  * Copyright (c) 2016 - 2024 Gurkenlabs
@@ -47,6 +49,14 @@ public final class FontContainer extends ResourcesContainer<Font>
 {
     private static final int DEFAULT_SIZE = 12;
 
+    private static GraphicsEnvironment ge = GraphicsEnvironment
+            .getLocalGraphicsEnvironment();
+
+    private static final Logger log = Logger
+            .getLogger(FontContainer.class.getName());
+
+    private Font defaultFont;
+
     /**
      * Alle möglichen Schriftnamen des Systems, auf dem man sich gerade
      * befindet.<br>
@@ -56,8 +66,6 @@ public final class FontContainer extends ResourcesContainer<Font>
     public static final String[] systemFonts;
     static
     {
-        GraphicsEnvironment ge = GraphicsEnvironment
-                .getLocalGraphicsEnvironment();
         systemFonts = ge.getAvailableFontFamilyNames();
     }
 
@@ -91,7 +99,7 @@ public final class FontContainer extends ResourcesContainer<Font>
     }
 
     /**
-     * Gibt eine Liste der Namen der Systemschriftarten zurück.
+     * Gibt eine Namesliste der Systemschriftarten zurück.
      *
      * @return Liste mit Systemschriftarten.
      */
@@ -104,18 +112,15 @@ public final class FontContainer extends ResourcesContainer<Font>
     /**
      * Lädt eine Systemschriftart basierend auf dem Namen.
      *
-     * @param fontName Name des Fonts.
+     * @param fontName Der Name der Systemschriftart.
      *
-     * @return Geladener Font.
+     * @return Die Systemschriftart.
      */
     @API
     public static Font loadByName(String fontName)
     {
         return new Font(fontName, Font.PLAIN, DEFAULT_SIZE);
     }
-
-    private static final Logger log = Logger
-            .getLogger(FontContainer.class.getName());
 
     public Font get(String name, float size)
     {
@@ -157,42 +162,45 @@ public final class FontContainer extends ResourcesContainer<Font>
     }
 
     /**
-     * Gibt die mit der Engine Pi mitgelieferte Standardschrift aus.
+     * Gibt die mit der Engine Pi mitgelieferte <b>Standardschrift</b> aus.
      *
-     * @return
+     * @return Die mitgelieferte <b>Standardschrift</b>.
      *
      * @since 0.37.0
      */
     public Font getDefault(FontStyle style)
     {
-        String[] fontFiles = { "fonts/Cantarell-Regular.ttf",
-                "fonts/Cantarell-Bold.ttf", "fonts/Cantarell-Italic.ttf",
-                "fonts/Cantarell-BoldItalic.ttf" };
-
-        GraphicsEnvironment ge = GraphicsEnvironment
-                .getLocalGraphicsEnvironment();
-        for (String file : fontFiles)
+        if (defaultFont == null)
         {
-            try
+            String[] fontFiles = { "fonts/Cantarell-Regular.ttf",
+                    "fonts/Cantarell-Bold.ttf", "fonts/Cantarell-Italic.ttf",
+                    "fonts/Cantarell-BoldItalic.ttf" };
+
+            for (String file : fontFiles)
             {
-                Font f = this.get(file);
-                if (f != null)
+                try
                 {
-                    ge.registerFont(f);
+                    Font f = this.get(file);
+                    if (f != null)
+                    {
+                        ge.registerFont(f);
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                throw new RuntimeException(
-                        "failed to register default font " + file);
+                catch (Exception e)
+                {
+                    throw new RuntimeException(
+                            "Das Laden der Standardschriftart ist fehlgeschlagen: "
+                                    + file);
+                }
             }
         }
 
-        Font defaultFont = this.get("Cantarell");
+        defaultFont = this.get("Cantarell");
         if (defaultFont == null)
         {
             // fallback to a system sans-serif font
-            return new Font(Font.SANS_SERIF, style.getStyle(), DEFAULT_SIZE);
+            defaultFont = new Font(Font.SANS_SERIF, style.getStyle(),
+                    DEFAULT_SIZE);
         }
 
         return defaultFont.deriveFont(style.getStyle(), (float) DEFAULT_SIZE);
