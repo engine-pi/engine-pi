@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.37.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.37.0) - 2025-11-04
+
+<small>[Compare with v0.36.0](https://github.com/engine-pi/engine-pi/compare/v0.36.0...v0.37.0)</small>
+
+### Added
+
+- Add new module `build-tools` containing build resources.
+- Include the games `tetris`, `pacman` and `blockly-robot` as submodules
+- Add new method `renderOverlay` in the class `Scene`
+
+### Changed
+
+- New folder structure for the multi module setup
+
 ## [v0.36.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.36.0) - 2025-10-26
 
 <small>[Compare with v0.35.0](https://github.com/engine-pi/engine-pi/compare/v0.35.0...v0.36.0)</small>

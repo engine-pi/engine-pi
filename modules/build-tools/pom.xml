@@ -8,7 +8,7 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>Build Tools Resources</name>
+    <name>Build Tool Resources</name>
     <description>Resources for the build tools, for example elipse-formatter.xml, javadoc-stylesheet.css</description>
 
     <parent>

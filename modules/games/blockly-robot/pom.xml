@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>blockly-robot</artifactId>
-    <version>0.0.1</version>
+    <artifactId>engine-pi-blockly-robot</artifactId>
+    <version>0.1.0</version>
 
     <name>Blockly Robot</name>
     <description>An attempt to reprogram the training tasks on jwinf.de (youth computer science competition) in Java.</description>
