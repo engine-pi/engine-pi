@@ -25,7 +25,8 @@ package:
 clean:
 	mvn clean
 
-sync_resources:
+pull_resources:
+	 mkdir -p $(HOME)/.cache
 	if [ -d $(ASSETS) ]; then \
 		git -C $(ASSETS) pull; \
 	else \
