@@ -13,13 +13,18 @@ doc: clean install
 
 	mvn javadoc:aggregate
 	xdg-open target/reports/apidocs/index.html
+
 format:
 	mvn process-sources
 
 install:
+	# Package build-tools is requried by javadoc
+	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 	mvn install
 
 package:
+	# Package build-tools is requried by javadoc
+	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 	mvn package
 
 clean:
@@ -35,5 +40,3 @@ pull_resources:
 	rsync -av --delete $(ASSETS)/blockly-robot/resources modules/games/blockly-robot/src/main
 	rsync -av --delete $(ASSETS)/pacman/resources modules/games/pacman/src/main
 	rsync -av --delete $(ASSETS)/tetris/resources modules/games/tetris/src/main
-
-.PHONY: deploy doc format install package run_jar clone_jbox2d
