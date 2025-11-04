@@ -31,7 +31,8 @@ sync_resources:
 	else \
 		git clone https://github.com/engine-pi/assets.git $(ASSETS); \
 	fi
-	rsync -av --delete $(ASSETS)/tetris/resources modules/games/tetris/src/main
+	rsync -av --delete $(ASSETS)/blockly-robot/resources modules/games/blockly-robot/src/main
 	rsync -av --delete $(ASSETS)/pacman/resources modules/games/pacman/src/main
+	rsync -av --delete $(ASSETS)/tetris/resources modules/games/tetris/src/main
 
 .PHONY: deploy doc format install package run_jar clone_jbox2d

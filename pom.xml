@@ -40,8 +40,9 @@
         <module>modules/engine</module>
         <module>modules/demos</module>
         <module>modules/cli</module>
-        <module>modules/games/tetris</module>
+        <module>modules/games/blockly-robot</module>
         <module>modules/games/pacman</module>
+        <module>modules/games/tetris</module>
         <module>modules/build-tools</module>
     </modules>
 
