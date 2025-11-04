@@ -90,7 +90,8 @@ public class Client
         public void run()
         {
             Document doc = format.newDocument();
-            StaticJavaParser.getConfiguration().setLanguageLevel(languageLevel);
+            StaticJavaParser.getParserConfiguration()
+                    .setLanguageLevel(languageLevel);
 
             // Extract diagram elements
             try

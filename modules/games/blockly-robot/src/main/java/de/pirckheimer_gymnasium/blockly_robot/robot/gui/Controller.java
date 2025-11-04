@@ -35,7 +35,7 @@ public class Controller
         scene.setBackgroundColor(Color.WHITE);
         if (!Game.isRunning())
         {
-            Game.start(width, height, scene);
+            Game.start(scene, width, height);
             if (debug)
             {
                 Game.setDebug(true);

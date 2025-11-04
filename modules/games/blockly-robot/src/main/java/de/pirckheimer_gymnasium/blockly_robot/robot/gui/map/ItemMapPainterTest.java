@@ -15,7 +15,7 @@ public class ItemMapPainterTest extends Scene
     {
         if (!Game.isRunning())
         {
-            Game.start(1000, 1000, this);
+            Game.start(this, 1000, 1000);
             Game.setDebug(true);
         }
         else
