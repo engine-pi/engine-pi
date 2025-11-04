@@ -47,11 +47,11 @@ public abstract class Ghost extends StatefulImagesAnimation<GhostState>
     {
         String realPath = state.getImagePath(no);
         String virtualPath = realPath + "__" + name;
-        if (Resources.IMAGES.contains(virtualPath))
+        if (Resources.images.contains(virtualPath))
         {
-            return Resources.IMAGES.get(virtualPath);
+            return Resources.images.get(virtualPath);
         }
-        return ImageUtil.replaceColor(Resources.IMAGES.get(realPath), fromColor,
+        return ImageUtil.replaceColor(Resources.images.get(realPath), fromColor,
                 color);
     }
 

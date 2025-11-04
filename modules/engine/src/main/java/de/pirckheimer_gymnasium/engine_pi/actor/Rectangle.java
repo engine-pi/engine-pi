@@ -122,7 +122,7 @@ public class Rectangle extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        setColor(Resources.COLORS.getSafe("red"));
+        setColor(Resources.colors.getSafe("red"));
     }
 
     /**

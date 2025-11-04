@@ -276,7 +276,7 @@ public class Animation extends Actor implements FrameUpdateListener
             String filePath, int x, int y, double width, double height)
     {
         return createFromSpritesheet(frameDuration,
-                Resources.IMAGES.get(filePath), x, y, width, height);
+                Resources.images.get(filePath), x, y, width, height);
     }
 
     /**
@@ -301,7 +301,7 @@ public class Animation extends Actor implements FrameUpdateListener
             String filePath, double width, double height, int spriteWidth,
             int spriteHeight)
     {
-        BufferedImage image = Resources.IMAGES.get(filePath);
+        BufferedImage image = Resources.images.get(filePath);
         return createFromSpritesheet(frameDuration, image,
                 image.getWidth()
                         / (spriteWidth * Game.getPixelMultiplication()),
@@ -359,7 +359,7 @@ public class Animation extends Actor implements FrameUpdateListener
             double height, String... filePaths)
     {
         return createFromImages(frameDuration, width, height,
-                Resources.IMAGES.getMultiple(filePaths));
+                Resources.images.getMultiple(filePaths));
     }
 
     /**

@@ -456,7 +456,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public Actor setColor(String color)
     {
-        this.color = Resources.COLORS.getSafe(color);
+        this.color = Resources.colors.getSafe(color);
         return this;
     }
 
@@ -837,7 +837,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         AffineTransform pre = g.getTransform();
         Graphics2DUtil.setAntiAliasing(g, false);
         // Den Anker der Figur einzeichnen
-        g.setColor(Resources.COLORS.getSafe("yellow"));
+        g.setColor(Resources.colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
         if (DebugConfiguration.showPositions)
         {
@@ -847,7 +847,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
         g.setColor(actor.color != null ? actor.getComplementaryColor()
-                : Resources.COLORS.getSafe("red"));
+                : Resources.colors.getSafe("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();

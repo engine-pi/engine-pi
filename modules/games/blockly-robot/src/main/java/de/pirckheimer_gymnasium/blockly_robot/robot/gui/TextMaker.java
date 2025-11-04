@@ -9,7 +9,7 @@ public class TextMaker
 {
     public static Font loadTitillium(String style)
     {
-        return Resources.FONTS
+        return Resources.fonts
                 .get("fonts/titilium/TitilliumWeb-%s.ttf".formatted(style));
     }
 

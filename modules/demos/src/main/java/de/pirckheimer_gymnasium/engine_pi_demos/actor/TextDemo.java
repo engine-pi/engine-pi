@@ -40,7 +40,7 @@ public class TextDemo
         Game.start(s -> {
             s.add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
                     "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));
-            Font cantarell = Resources.FONTS.get("fonts/Cantarell-Regular.ttf");
+            Font cantarell = Resources.fonts.get("fonts/Cantarell-Regular.ttf");
             s.add(new Text("Mit Unterlängen", 2).setFont(cantarell)
                     .setPosition(-7, -2));
             s.add(new Text("... ohne", 2).setFont(cantarell).setPosition(4,

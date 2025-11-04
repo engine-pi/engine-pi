@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.little_engine;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -605,7 +605,7 @@ public class DrawingWindow
             y = 10;
             b = 100;
             h = 100;
-            c = COLORS.get("red");
+            c = colors.get("red");
             sichtbar = true;
             winkel = 0;
             FormErzeugen();
@@ -684,7 +684,7 @@ public class DrawingWindow
          */
         Color FarbeCodieren(String farbe)
         {
-            return COLORS.getSafe(farbe);
+            return colors.getSafe(farbe);
         }
 
         /**
@@ -1054,7 +1054,7 @@ public class DrawingWindow
             super();
             text = "Text";
             size = 12;
-            c = COLORS.get("black");
+            c = colors.get("black");
         }
 
         /**
@@ -1683,7 +1683,7 @@ public class DrawingWindow
             homeX = x;
             homeY = y;
             homeWinkel = winkel;
-            c = COLORS.get("black");
+            c = colors.get("black");
             stiftUnten = true;
             symbolSichtbar = true;
             linien = new ArrayList<LinienElement>();
@@ -1705,16 +1705,16 @@ public class DrawingWindow
         {
             // Kopf
             standardFigur.add(new CharacterElementEllipse(50, -12.5, 25, 25,
-                    COLORS.get("green")));
+                    colors.get("green")));
             // Beine
             standardFigur.add(new CharacterElementEllipse(22.5, -32.5, 12.5,
-                    17.5, COLORS.get("green")));
+                    17.5, colors.get("green")));
             standardFigur.add(new CharacterElementEllipse(40.0, -32.5, 12.5,
-                    17.5, COLORS.get("green")));
+                    17.5, colors.get("green")));
             standardFigur.add(new CharacterElementEllipse(22.5, 15.0, 12.5,
-                    17.5, COLORS.get("green")));
+                    17.5, colors.get("green")));
             standardFigur.add(new CharacterElementEllipse(40.0, 15.0, 12.5,
-                    17.5, COLORS.get("green")));
+                    17.5, colors.get("green")));
             // Augen
             standardFigur.add(
                     new CharacterElementRectangle(67.5, -10.0, 5.0, 7.5, c));
@@ -1725,7 +1725,7 @@ public class DrawingWindow
                     .add(new CharacterElementEllipse(0, -3.75, 25, 7.5, c));
             // Rumpf
             standardFigur.add(new CharacterElementEllipse(7.5, -23.75, 57.5,
-                    47.5, COLORS.get("brown")));
+                    47.5, colors.get("brown")));
         }
 
         /**
@@ -2072,7 +2072,7 @@ public class DrawingWindow
 
             if (symbolSichtbar)
             {
-                g.setColor(COLORS.get("black"));
+                g.setColor(colors.get("black"));
                 double größe = h > b ? b : h;
                 AffineTransform alt = g2.getTransform();
                 g2.rotate(DrehwinkelGeben(winkel), x, y);
@@ -2156,7 +2156,7 @@ public class DrawingWindow
             homeX = x;
             homeY = y;
             homeWinkel = winkel;
-            c = COLORS.get("black");
+            c = colors.get("black");
             eigeneFigur = new LinkedList<CharacterElement>();
             standardFigur = new LinkedList<CharacterElement>();
             StandardfigurErzeugen();
@@ -2176,9 +2176,9 @@ public class DrawingWindow
             int[] x = new int[] { -50, 50, -50 };
             int[] y = new int[] { -50, 0, 50 };
             standardFigur.add(
-                    new CharacterElementPolygon(x, y, COLORS.get("yellow")));
+                    new CharacterElementPolygon(x, y, colors.get("yellow")));
             standardFigur.add(new CharacterElementEllipse(-10, -10, 20, 20,
-                    COLORS.get("blue")));
+                    colors.get("blue")));
         }
 
         /**
@@ -2573,7 +2573,7 @@ public class DrawingWindow
         {
             Graphics2D g2 = (Graphics2D) g;
             // Outline
-            g.setColor(COLORS.get("black"));
+            g.setColor(colors.get("black"));
             Stroke stAlt = g2.getStroke();
             g2.setStroke(new BasicStroke(3.0f));
             g2.draw(form);

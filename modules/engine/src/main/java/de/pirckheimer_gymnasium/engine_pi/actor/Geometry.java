@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Color;
 import java.util.function.Supplier;
@@ -48,7 +48,7 @@ public abstract class Geometry extends Actor
     public Geometry(Supplier<FixtureData> fixtureSupplier)
     {
         super(fixtureSupplier);
-        color = COLORS.getSafe("green");
+        color = colors.getSafe("green");
     }
 
     /**

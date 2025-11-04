@@ -95,13 +95,13 @@ public class LabeledNode extends Geometry
      */
     public static double FONT_SIZE = 16;
 
-    public static Font FONT = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+    public static Font FONT = Resources.fonts.get("fonts/Cantarell-Regular.ttf")
             .deriveFont((float) FONT_SIZE);
 
     /**
      * Die <b>Hintergrundfarbe</b> des Knotens.
      */
-    public static Color COLOR = Resources.COLORS.get("blue");
+    public static Color COLOR = Resources.colors.get("blue");
 
     private FontStringBounds cachedFontStringBounds;
 
@@ -276,7 +276,7 @@ public class LabeledNode extends Geometry
         {
             AffineTransform pre = g.getTransform();
             Font oldFont = g.getFont();
-            g.setColor(Resources.COLORS.get("white"));
+            g.setColor(Resources.colors.get("white"));
             g.setFont(getFont());
             var b = cachedFontStringBounds;
 
@@ -319,7 +319,7 @@ public class LabeledNode extends Geometry
             n1 = new LabeledNode("Node 1");
             s.add(n1);
 
-            LabeledNode.COLOR = Resources.COLORS.get("orange");
+            LabeledNode.COLOR = Resources.colors.get("orange");
             n2 = new LabeledNode("Node 2", 5, 5);
             n2.setColor("green");
             s.add(n2);

@@ -80,11 +80,11 @@ public class ColorContainerVisualizer
      * @param scene Die Szene in der die Visualisierung eingezeichnet werden
      *     soll.
      *
-     * @see Resources#COLORS
+     * @see Resources#colors
      */
     public ColorContainerVisualizer(Scene scene)
     {
-        this(Resources.COLORS, scene);
+        this(Resources.colors, scene);
     }
 
     public static void main(String[] args)

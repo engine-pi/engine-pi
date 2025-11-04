@@ -7,7 +7,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 public class OverlayDemo extends Scene
 {
@@ -28,11 +28,11 @@ public class OverlayDemo extends Scene
         int rectangleHeight = height - 2 * margin;
 
         // Undurchsichtiges Rechteck links
-        g.setColor(COLORS.get("green"));
+        g.setColor(colors.get("green"));
         g.fillRect(margin, margin, rectangleWidth, rectangleHeight);
 
         // Durchsichtiges Rechteck rechts
-        g.setColor(COLORS.get("green", 100));
+        g.setColor(colors.get("green", 100));
         g.fillRect(2 * margin + rectangleWidth, margin, rectangleWidth,
                 rectangleHeight);
         g.setColor(old);

@@ -57,7 +57,7 @@ public class ImageFontGlyph
         filename = FileUtil.getFileName(path);
         try
         {
-            image = Resources.IMAGES.get(path.toUri().toURL());
+            image = Resources.images.get(path.toUri().toURL());
             image = ImageUtil.addAlphaChannel(image);
         }
         catch (MalformedURLException e)

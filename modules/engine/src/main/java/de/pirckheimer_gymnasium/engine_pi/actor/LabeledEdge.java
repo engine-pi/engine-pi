@@ -42,7 +42,7 @@ public class LabeledEdge extends Actor
      */
     public static double FONT_SIZE = 12;
 
-    public static Font FONT = Resources.FONTS.get("fonts/Cantarell-Regular.ttf")
+    public static Font FONT = Resources.fonts.get("fonts/Cantarell-Regular.ttf")
             .deriveFont((float) FONT_SIZE);
 
     public LabeledEdge(double fromX, double fromY, double toX, double toY,

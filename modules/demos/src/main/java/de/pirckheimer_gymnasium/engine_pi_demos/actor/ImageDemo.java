@@ -39,11 +39,11 @@ public class ImageDemo extends Scene implements KeyStrokeListener
 
     Image box2;
 
-    BufferedImage image1 = Resources.IMAGES.get("dude/box/obj_box003.png");
+    BufferedImage image1 = Resources.images.get("dude/box/obj_box003.png");
 
-    BufferedImage image2 = Resources.IMAGES.get("dude/box/obj_box004.png", 2);
+    BufferedImage image2 = Resources.images.get("dude/box/obj_box004.png", 2);
 
-    BufferedImage image3 = Resources.IMAGES.get("dude/box/obj_box005.png", 3);
+    BufferedImage image3 = Resources.images.get("dude/box/obj_box005.png", 3);
 
     public ImageDemo()
     {

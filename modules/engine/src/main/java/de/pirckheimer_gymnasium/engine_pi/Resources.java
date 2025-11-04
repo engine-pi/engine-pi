@@ -51,19 +51,34 @@ import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
  */
 public final class Resources
 {
-    public static final ColorContainer COLORS = new ColorContainer();
+    /**
+     * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps
+     * {@link java.awt.Color}.
+     */
+    public static final ColorContainer colors = new ColorContainer();
 
-    public static final FontContainer FONTS = new FontContainer();
+    /**
+     * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link java.awt.Font}.
+     */
+    public static final FontContainer fonts = new FontContainer();
 
-    public static final ImageContainer IMAGES = new ImageContainer();
+    /**
+     * Ein Speicher für <b>Bilder</b> des Datentyps
+     * {@link java.awt.image.BufferedImage}.
+     */
+    public static final ImageContainer images = new ImageContainer();
 
-    public static final SoundContainer SOUNDS = new SoundContainer();
+    /**
+     * Ein Speicher für <b>Klänge</b> des Datentyps
+     * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound}.
+     */
+    public static final SoundContainer sounds = new SoundContainer();
 
     public static ColorScheme colorScheme;
     static
     {
         setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
-        COLORS.addScheme(colorScheme);
+        colors.addScheme(colorScheme);
     }
 
     private Resources()
@@ -74,7 +89,7 @@ public final class Resources
     public static void setColorScheme(ColorScheme scheme)
     {
         colorScheme = scheme;
-        COLORS.addScheme(colorScheme);
+        colors.addScheme(colorScheme);
     }
 
     public static void setColorSchemeToPredefined(
@@ -94,7 +109,7 @@ public final class Resources
      */
     public static ImageContainer getImages()
     {
-        return IMAGES;
+        return images;
     }
 
     /**
@@ -110,7 +125,7 @@ public final class Resources
      */
     public static SoundContainer getSounds()
     {
-        return SOUNDS;
+        return sounds;
     }
 
     /**
@@ -119,9 +134,9 @@ public final class Resources
      */
     public static void clearAll()
     {
-        COLORS.clear();
-        FONTS.clear();
-        IMAGES.clear();
-        SOUNDS.clear();
+        colors.clear();
+        fonts.clear();
+        images.clear();
+        sounds.clear();
     }
 }

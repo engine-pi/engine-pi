@@ -164,7 +164,7 @@ public class Image extends Actor
      */
     public void setImage(String filepath, double width, double height)
     {
-        setImage(Resources.IMAGES.get(filepath), width, height);
+        setImage(Resources.images.get(filepath), width, height);
     }
 
     /**
@@ -208,7 +208,7 @@ public class Image extends Actor
      */
     public void setImage(String filepath, double pixelPerMeter)
     {
-        setImage(Resources.IMAGES.get(filepath), pixelPerMeter);
+        setImage(Resources.images.get(filepath), pixelPerMeter);
     }
 
     /**

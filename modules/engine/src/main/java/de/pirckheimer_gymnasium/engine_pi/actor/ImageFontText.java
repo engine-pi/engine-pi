@@ -149,7 +149,7 @@ public class ImageFontText extends Image
      */
     public ImageFontText(ImageFont imageFont, String content, String color)
     {
-        this(imageFont, content, Resources.COLORS.get(color));
+        this(imageFont, content, Resources.colors.get(color));
     }
 
     /**
@@ -241,7 +241,7 @@ public class ImageFontText extends Image
      */
     public void setContent(String content, String color)
     {
-        setContent(content, lineWidth, alignment, Resources.COLORS.get(color),
+        setContent(content, lineWidth, alignment, Resources.colors.get(color),
                 getPixelMultiplication());
     }
 

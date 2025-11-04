@@ -13,7 +13,7 @@ import de.pirckheimer_gymnasium.engine_pi.Resources;
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class FontContainerTest
 {
-    FontContainer container = Resources.FONTS;
+    FontContainer container = Resources.fonts;
 
     @BeforeEach
     @AfterEach

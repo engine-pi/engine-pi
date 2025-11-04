@@ -1442,10 +1442,10 @@ public class ColorScheme
         Game.start(new Scene()
         {
             {
-                setBackgroundColor(Resources.COLORS.get("#444444"));
+                setBackgroundColor(Resources.colors.get("#444444"));
                 int x = -16;
                 int labelY = -2;
-                for (Entry<String, Color> entry : Resources.COLORS.getAll()
+                for (Entry<String, Color> entry : Resources.colors.getAll()
                         .entrySet())
                 {
                     addCircle().setPosition(x, 0).setColor(entry.getValue());

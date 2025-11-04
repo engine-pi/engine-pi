@@ -101,7 +101,7 @@ public final class Jukebox
     private static final Collection<SoundPlayback> allSounds = ConcurrentHashMap
             .newKeySet();
 
-    private static SoundContainer soundsContainer = Resources.SOUNDS;
+    private static SoundContainer soundsContainer = Resources.sounds;
 
     private static boolean RESTART_DEFAULT = false;
 

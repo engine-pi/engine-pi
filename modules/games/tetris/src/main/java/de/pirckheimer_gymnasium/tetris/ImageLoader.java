@@ -50,7 +50,7 @@ public class ImageLoader
      */
     public static Image get(String pathname)
     {
-        BufferedImage image = Resources.IMAGES.get(pathname);
+        BufferedImage image = Resources.images.get(pathname);
         image = ImageUtil.replaceColors(image, COLOR_SCHEME_GRAY.getColors(),
                 COLOR_SCHEME_GREEN.getColors());
         return new Image(image,

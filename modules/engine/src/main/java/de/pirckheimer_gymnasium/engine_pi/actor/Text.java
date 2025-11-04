@@ -124,7 +124,7 @@ public class Text extends Geometry
     public Text(String content, double height)
     {
         this(content, height,
-                Resources.FONTS.getDefault().deriveFont((float) SIZE), 0);
+                Resources.fonts.getDefault().deriveFont((float) SIZE), 0);
     }
 
     /**
@@ -174,7 +174,7 @@ public class Text extends Geometry
     public Text(String content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
-                Resources.FONTS.get(fontName).deriveFont(style, SIZE)));
+                Resources.fonts.get(fontName).deriveFont(style, SIZE)));
         this.content = content == null ? "" : content;
         this.height = height;
         setStyle(style);
@@ -222,7 +222,7 @@ public class Text extends Geometry
     @API
     public Text setFont(String fontName)
     {
-        setFont(Resources.FONTS.get(fontName));
+        setFont(Resources.fonts.get(fontName));
         return this;
     }
 

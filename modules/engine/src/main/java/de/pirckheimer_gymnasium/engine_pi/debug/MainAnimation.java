@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.debug;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -119,7 +119,7 @@ public final class MainAnimation extends Scene implements FrameUpdateListener
 
     private Color darkenColor(String color)
     {
-        return ColorUtil.interpolate(COLORS.get(color), COLORS.get("black"),
+        return ColorUtil.interpolate(colors.get(color), colors.get("black"),
                 0.5);
     }
 

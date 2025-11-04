@@ -14,7 +14,7 @@ public class Text extends ImageFontText
     public Text(String content, String color)
     {
         super(font, content, 28, TextAlignment.LEFT,
-                Resources.COLORS.get(color), 1, 8);
+                Resources.colors.get(color), 1, 8);
     }
 
     public Text(String content)

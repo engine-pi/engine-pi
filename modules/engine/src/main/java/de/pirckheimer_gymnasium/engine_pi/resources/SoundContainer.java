@@ -38,6 +38,8 @@ import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
 import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 
 /**
+ * Ein Speicher für <b>Klänge</b> des Datentyps {@link Sound}.
+ *
  * @author Steffen Wilke
  * @author Matthias Wilke
  */

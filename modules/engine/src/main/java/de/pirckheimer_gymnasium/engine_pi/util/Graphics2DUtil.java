@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.util;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.COLORS;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -60,7 +60,7 @@ public class Graphics2DUtil
      */
     public static Font setFont(Graphics2D g, Font font)
     {
-        g.setColor(COLORS.getSafe(FONT_COLOR));
+        g.setColor(colors.getSafe(FONT_COLOR));
         g.setFont(font);
         return font;
     }
@@ -81,7 +81,7 @@ public class Graphics2DUtil
     public static Font setFont(Graphics2D g, int size, String color)
     {
         Font font = getFont(size);
-        g.setColor(COLORS.get(color));
+        g.setColor(colors.get(color));
         g.setFont(font);
         return font;
     }

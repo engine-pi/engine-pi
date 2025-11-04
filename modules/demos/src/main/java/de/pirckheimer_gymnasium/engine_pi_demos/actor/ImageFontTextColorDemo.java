@@ -45,7 +45,7 @@ public class ImageFontTextColorDemo extends Scene
     {
         setBackgroundColor("#eeeeee");
         int y = 9;
-        for (Map.Entry<String, Color> entry : Resources.COLORS.getAll()
+        for (Map.Entry<String, Color> entry : Resources.colors.getAll()
                 .entrySet())
         {
             setImageFontText(entry.getKey(), -5, y);

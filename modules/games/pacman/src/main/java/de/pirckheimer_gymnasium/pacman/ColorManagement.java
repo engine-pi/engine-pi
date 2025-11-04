@@ -7,7 +7,7 @@ public class ColorManagement
 {
     public static ColorContainer setColors()
     {
-        ColorContainer container = Resources.COLORS;
+        ColorContainer container = Resources.colors;
         container.clear();
         // AllAssetsPalettes.png
         container.add("Black", 0, 0, 0, "schwarz");
