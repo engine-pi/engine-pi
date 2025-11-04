@@ -25,7 +25,8 @@ jobs:
           # cat gpg_key.asc
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
-
+      - name: Package build-tools is requried by javadoc
+        run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
       - name: Publish package
         run: mvn --batch-mode deploy
         env:
