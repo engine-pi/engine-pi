@@ -27,6 +27,8 @@ jobs:
           gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
       - name: Package build-tools is requried by javadoc
         run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Publish package
         run: mvn --batch-mode deploy
         env:

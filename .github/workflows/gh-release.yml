@@ -22,8 +22,14 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
+          # gpg --armor --export-secret-keys <key_id> > gpg_key.asc
+          # cat gpg_key.asc
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+          gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
       - name: Package build-tools is requried by javadoc
         run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Package using Maven
         run: mvn package
       # https://github.com/softprops/action-gh-release
