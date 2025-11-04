@@ -8,10 +8,11 @@ deploy:
 
 doc: clean install
 	mvn javadoc:javadoc
-
 	xdg-open modules/engine/target/reports/apidocs/index.html
 	xdg-open modules/demos/target/reports/apidocs/index.html
 
+	mvn javadoc:aggregate
+	xdg-open target/reports/apidocs/index.html
 format:
 	mvn process-sources
 
