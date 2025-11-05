@@ -28,7 +28,24 @@ import java.awt.image.BufferStrategy;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
 
 /**
- * Dies ist das Panel, in dem die einzelnen Objekte gezeichnet werden.
+ * Ein Render-Panel, das als Zeichenfläche für die Engine dient.
+ *
+ * <p>
+ * Diese Klasse erweitert {@link Canvas} und implementiert {@link RenderTarget},
+ * um eine effiziente Darstellung von Grafiken mithilfe von Buffer-Strategien zu
+ * ermöglichen. Das Panel verwendet Double-Buffering, um Flackern beim Rendern
+ * zu vermeiden.
+ * </p>
+ *
+ * <p>
+ * Das Panel muss nach dem Sichtbarwerden des Fensters initialisiert werden,
+ * indem {@link #allocateBuffers()} aufgerufen wird, um die Buffer-Strategie zu
+ * erstellen.
+ * </p>
+ *
+ * @see RenderTarget
+ * @see Canvas
+ * @see BufferStrategy
  *
  * @author Michael Andonie
  * @author Niklas Keller

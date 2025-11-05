@@ -22,8 +22,10 @@ package de.pirckheimer_gymnasium.engine_pi;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -151,6 +153,13 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @since 0.37.0
      */
     protected String help;
+
+    /**
+     * Ein Bild, in das gemalt werden kann und das als Hintergrundbild angezeigt
+     * wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
+     * Simulation eines Malprogramms.
+     */
+    protected BufferedImage drawArea;
 
     /**
      * Erzeugt eine neue Szene.
@@ -306,6 +315,35 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     }
 
+    public Graphics2D getDrawArea()
+    {
+        if (drawArea == null)
+        {
+            var size = Game.getWindowSize();
+            drawArea = new BufferedImage((int) size.getX(), (int) size.getY(),
+                    BufferedImage.TYPE_INT_ARGB);
+        }
+
+        Graphics2D g = drawArea.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
+                RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING,
+                RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_DITHERING,
+                RenderingHints.VALUE_DITHER_ENABLE);
+        g.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,
+                RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_QUALITY);
+        g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
+                RenderingHints.VALUE_STROKE_PURE);
+        return g;
+    }
+
     /**
      * Ruft die zu überschreibende Methode
      * {@link #renderOverlay(Graphics2D, int, int)} auf und zeichnet die
@@ -325,6 +363,10 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {
+        if (drawArea != null)
+        {
+            g.drawImage(drawArea, 0, 0, null);
+        }
         final AffineTransform base = g.getTransform();
         synchronized (layers)
         {
@@ -348,8 +390,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Die Methode wird aufgerufen, wenn sich ein Ebenenzustand innerhalb dieser
-     * Szene geändert. Stellt sicher, dass die Ebene-Liste korrekt sortiert ist
-     * und aller Ebenen in der richtigen Reihenfolge gerendert werden.
+     * Szene geändert. Sie stellt sicher, dass die Ebene-Liste korrekt sortiert
+     * ist und aller Ebenen in der richtigen Reihenfolge gezeichnet werden.
      * </p>
      *
      * @hidden
@@ -390,7 +432,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die sichtbare Fläche auf dem <b>Hauptebene</b> aus.
+     * Gibt die sichtbare Fläche auf der <b>Hauptebene</b> aus.
      *
      * @return Die sichtbare Fläche auf der Hauptebene
      *
@@ -405,7 +447,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Gibt die <b>Kamera</b> der Szene aus.
      *
-     * @return Die <b>Kamera</b> der Szene aus.
+     * @return Die <b>Kamera</b> der Szene.
      */
     @API
     public final Camera getCamera()

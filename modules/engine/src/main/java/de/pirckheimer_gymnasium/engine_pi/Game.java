@@ -104,6 +104,9 @@ public final class Game
      */
     private static final Frame frame = new Frame("Engine Pi");
 
+    /**
+     * Die Zeichenfläche, in der alle Figuren eingezeichnet werden.
+     */
     private static RenderPanel renderPanel;
 
     /**
@@ -259,16 +262,7 @@ public final class Game
         renderPanel.addMouseMotionListener(mouseListener);
         renderPanel.addMouseListener(mouseListener);
         renderPanel.addMouseWheelListener(Game::enqueueMouseScrollEvent);
-        try
-        {
-            frame.setIconImage(Resources.images.get("logo/logo.png"));
-        }
-        catch (Exception e)
-        {
-            // FIXME: Doesn't work in JAR in BlueJ
-            // Logger.warning("IO", "Standard-Icon konnte nicht geladen
-            // werden.");
-        }
+        frame.setIconImage(Resources.images.get("logo/logo.png"));
         mousePosition = new java.awt.Point(width / 2, height / 2);
         Thread mainThread = new Thread(Game::run,
                 "de.pirckheimer_gymnasium.engine_pi.main");
@@ -907,6 +901,18 @@ public final class Game
     public static java.awt.Point getMousePositionInFrame()
     {
         return mousePosition;
+    }
+
+    /**
+     * Gibt die Zeichenfläche, in der alle Figuren eingezeichnet werden, zurück.
+     *
+     * @return Die Zeichenfläche, in der alle Figuren eingezeichnet werden.
+     *
+     * @since 0.38.0
+     */
+    public static RenderPanel getRenderPanel()
+    {
+        return renderPanel;
     }
 
     /**

@@ -35,9 +35,11 @@ public interface MouseClickListener
     /**
      * Diese Methode wird bei jedem <b>Klick</b> aufgerufen, unabhängig davon an
      * welcher Position sich die Maus befindet.
+     *
      * <p>
      * Natürlich muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
+     * </p>
      *
      * @param position Der Punkt auf der Zeichenebene.
      * @param button Die Maustaste, die gedrückt wurde.
@@ -48,9 +50,11 @@ public interface MouseClickListener
     /**
      * Diese Methode wird bei jedem <b>Loslassen</b> einer Maustaste aufgerufen,
      * unabhängig davon an welcher Position sich die Maus befindet.
+     *
      * <p>
      * Natürlich muss dafür erst der {@link MouseClickListener} angemeldet
      * werden.
+     * </p>
      *
      * @param position Der Punkt auf der Zeichenebene.
      * @param button Die Maustaste, die gedrückt wurde.
