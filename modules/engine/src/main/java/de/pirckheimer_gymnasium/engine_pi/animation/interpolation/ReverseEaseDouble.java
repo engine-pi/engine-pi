@@ -44,7 +44,7 @@ public class ReverseEaseDouble implements Interpolator<Double>
     @Override
     public Double interpolate(double progress)
     {
-        return this.startAndEnd + (double) Math.sin(progress * Math.PI)
+        return this.startAndEnd + Math.sin(progress * Math.PI)
                 * (this.middle - this.startAndEnd);
     }
 }

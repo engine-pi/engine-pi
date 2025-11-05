@@ -100,11 +100,10 @@ public class PhysicsData
         data.setGravityScale(body.gravityScale);
         data.setX(body.getPosition().x);
         data.setY(body.getPosition().y);
-        data.setRotation((double) Math.toDegrees(body.getAngle()));
+        data.setRotation(Math.toDegrees(body.getAngle()));
         data.setTorque(body.torque);
         data.setVelocity(Vector.of(body.linearVelocity));
-        data.setAngularVelocity(
-                (double) Math.toDegrees(body.angularVelocity) / 360);
+        data.setAngularVelocity(Math.toDegrees(body.angularVelocity) / 360);
         data.setType(type);
         data.setAngularDamping(body.getAngularDamping());
         data.setLinearDamping(body.getLinearDamping());

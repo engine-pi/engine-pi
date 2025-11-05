@@ -136,7 +136,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public double getRotation()
     {
-        return (double) Math.toDegrees(body.getAngle());
+        return Math.toDegrees(body.getAngle());
     }
 
     @Override
@@ -409,7 +409,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public double getAngularVelocity()
     {
-        return (double) Math.toDegrees(body.getAngularVelocity()) / 360;
+        return Math.toDegrees(body.getAngularVelocity()) / 360;
     }
 
     @Override

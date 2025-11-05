@@ -237,15 +237,15 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             gameData.consumeMana(ROCKETCOST_PER_FRAME);
             applyImpulse(new Vector(0, 5));
             Circle particle = new Circle(0.1);
-            particle.setPosition(getCenter()
-                    .subtract(new Vector((double) Math.random() * 0.1, .45)));
+            particle.setPosition(
+                    getCenter().subtract(new Vector(Math.random() * 0.1, .45)));
             particle.setColor(Color.RED);
             particle.setLayerPosition(-1);
             particle.animateParticle(.5);
             particle.animateColor(.25, Color.YELLOW);
-            particle.applyImpulse(new Vector(
-                    0.005 * -impulse + ((double) Math.random() - 0.5),
-                    -2 * ((double) Math.random())));
+            particle.applyImpulse(
+                    new Vector(0.005 * -impulse + (Math.random() - 0.5),
+                            -2 * (Math.random())));
             particle.addCollisionListener((e) -> {
                 if (e.getColliding() instanceof Platform)
                 {
@@ -431,15 +431,15 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             }
             Vector speed = getPhysicsHandler().getVelocity();
             Vector transformedSpeed = Math.abs(speed.getX()) < .1
-                    ? speed.add(100f * ((double) Math.random() - .5), 0)
+                    ? speed.add(100 * (Math.random() - .5), 0)
                     : speed;
             for (int i = 0; i < 100; i++)
             {
                 Circle particle = new Circle(Random.range() * .02 + .02);
                 particle.setPosition(getCenter().add(0, -32));
-                particle.applyImpulse(transformedSpeed.negate()
-                        .multiply((double) Math.random() * 0.1)
-                        .multiplyY((double) Math.random() * 0.1));
+                particle.applyImpulse(
+                        transformedSpeed.negate().multiply(Math.random() * 0.1)
+                                .multiplyY(Math.random() * 0.1));
                 particle.setColor(Color.GRAY);
                 particle.setLayerPosition(-1);
                 particle.animateParticle(.5);

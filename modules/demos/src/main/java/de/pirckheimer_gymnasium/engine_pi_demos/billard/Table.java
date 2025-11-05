@@ -34,8 +34,7 @@ public class Table
 
     public static final double GAP = 20;
 
-    public static final double DIAGONAL_GAP = (double) Math.sqrt(GAP * GAP / 2)
-            * 2;
+    public static final double DIAGONAL_GAP = Math.sqrt(GAP * GAP / 2) * 2;
 
     private final List<Actor> actors = new ArrayList<>();
 

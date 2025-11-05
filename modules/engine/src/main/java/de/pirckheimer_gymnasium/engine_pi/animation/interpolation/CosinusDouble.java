@@ -70,7 +70,6 @@ public class CosinusDouble implements Interpolator<Double>
     @Override
     public Double interpolate(double progress)
     {
-        return (double) Math.cos(Math.PI * progress * 2) * amplitude + start
-                - amplitude;
+        return Math.cos(Math.PI * progress * 2) * amplitude + start - amplitude;
     }
 }

@@ -286,8 +286,8 @@ public class NullHandler implements PhysicsHandler
     @Override
     public void setAngularVelocity(double rotationsPerSecond)
     {
-        physicsData.setAngularVelocity(
-                (double) Math.toRadians(rotationsPerSecond * 360));
+        physicsData
+                .setAngularVelocity(Math.toRadians(rotationsPerSecond * 360));
     }
 
     @Override

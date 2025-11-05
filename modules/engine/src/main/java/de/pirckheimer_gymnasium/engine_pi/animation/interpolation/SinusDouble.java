@@ -66,6 +66,6 @@ public class SinusDouble implements Interpolator<Double>
     @Override
     public Double interpolate(double progress)
     {
-        return (double) Math.sin(Math.PI * progress * 2) * amplitude + start;
+        return Math.sin(Math.PI * progress * 2) * amplitude + start;
     }
 }

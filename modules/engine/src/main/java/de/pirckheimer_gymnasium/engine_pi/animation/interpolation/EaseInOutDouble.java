@@ -59,7 +59,7 @@ public class EaseInOutDouble implements Interpolator<Double>
     @Override
     public Double interpolate(double progress)
     {
-        return (double) ((Math.sin((double) progress * Math.PI - Math.PI / 2)
-                + 1) / 2) * (this.end - this.start) + this.start;
+        return ((Math.sin(progress * Math.PI - Math.PI / 2) + 1) / 2)
+                * (this.end - this.start) + this.start;
     }
 }
