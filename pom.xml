@@ -182,14 +182,14 @@
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/tag-configuration.html -->
                     <tags>
                         <tag>
-                            <name>jbox.2d</name>
+                            <name>jbox2d</name>
                             <placement>a</placement>
-                            <head>jbox2d source code:</head>
+                            <head>JBox2D source code:</head>
                         </tag>
                         <tag>
-                            <name>box.2d</name>
+                            <name>box2d</name>
                             <placement>a</placement>
-                            <head>box2d source code:</head>
+                            <head>Box2D source code:</head>
                         </tag>
                     </tags>
                     <!--

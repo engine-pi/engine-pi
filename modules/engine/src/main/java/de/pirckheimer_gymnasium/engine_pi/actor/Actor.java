@@ -1551,9 +1551,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @see #getElasticity()
      *
-     *     @jbox.2d
-     *     https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137 @box.2d
-     *     https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338
+     * @jbox2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137">dynamics/FixtureDef.java#L132-L137</a>
+     *
+     * @box2d <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338">b2_fixture.h#L335-L338</a>
      */
     @API
     public final Actor setElasticity(double elasticity)
@@ -1587,9 +1589,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @see #setElasticity(double)
      *
-     *     @jbox.2d
-     *     https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130 @box.2d
-     *     https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333
+     * @jbox2d <a href=
+     *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130">dynamics/FixtureDef.java#L125-L130</a>
+     *
+     * @box2d <a href=
+     *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333">b2_fixture.h#L330-L333</a>
      */
     @API
     public final double getElasticity()
