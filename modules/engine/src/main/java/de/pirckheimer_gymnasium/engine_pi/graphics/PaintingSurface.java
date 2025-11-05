@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -145,13 +146,25 @@ public class PaintingSurface
         drawCenteredCircle(position, size);
     }
 
-    public void drawLine(Vector point1, Vector point2)
+    public void drawLine(Vector point1, Vector point2, Color color,
+            double lineWidth)
     {
         initialize();
-        g.setColor(colors.get("grey"));
+        g.setColor(color);
+        g.setStroke(new BasicStroke((float) lineWidth));
         Vector px1 = translateCoordinates(point1);
         Vector px2 = translateCoordinates(point2);
         g.drawLine(px1.getX(1), px1.getY(1), px2.getX(1), px2.getY(1));
+    }
+
+    public void drawLine(Vector point1, Vector point2, Color color)
+    {
+        drawLine(point1, point2, color, 1);
+    }
+
+    public void drawLine(Vector point1, Vector point2)
+    {
+        drawLine(point1, point2, colors.get("grey"));
     }
 
 }

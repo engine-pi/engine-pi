@@ -23,6 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
+import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
@@ -56,7 +57,21 @@ public class Turtle
 
     private boolean drawLine;
 
-    private double speed = 3;
+    /**
+     * Die Geschwindigkeit mit der sich die Schildkröte bewegt (in Meter pro
+     * Sekunde).
+     */
+    private double speed = 6;
+
+    /**
+     * Die Linienstärke in Pixel.
+     */
+    private double lineWidth = 1;
+
+    /**
+     * Die Farbe der Linie.
+     */
+    private Color lineColor = colors.get("brown");
 
     private PaintingSurface surface;
 
@@ -72,9 +87,9 @@ public class Turtle
 
         scene.setBackgroundColor(colors.get("white"));
 
-        turtle = new Polygon(v(-0.5, 0.5), v(1, 0), v(-0.5, -0.5));
+        turtle = new Polygon(v(-0.25, 0.25), v(1, 0), v(-0.25, -0.25));
         turtle.setCenter(0, 0);
-        turtle.setColor(colors.get("red"));
+        turtle.setColor(colors.get("green"));
 
         scene.add(turtle);
 
@@ -88,6 +103,45 @@ public class Turtle
         }
 
         // scene.getCamera().setFocus(turtle);
+    }
+
+    /**
+     * Die Geschwindigkeit mit der sich die Schildkröte bewegt (in Meter pro
+     * Sekunde).
+     */
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+
+    /**
+     * Setzt die Linienstärke in Pixel
+     *
+     * @param lineWidth Die Linienstärke in Pixel.
+     */
+    public void setLineWidth(double lineWidth)
+    {
+        this.lineWidth = lineWidth;
+    }
+
+    /**
+     * Setzt die Farbe der Linie als {@link Color}-Objekt.
+     *
+     * @param lineColor Die Farbe der Linie.
+     */
+    public void setLineColor(Color lineColor)
+    {
+        this.lineColor = lineColor;
+    }
+
+    /**
+     * Setzt die Farbe der Linie als Zeichenkette.
+     *
+     * @param lineColor Die Farbe der Linie.
+     */
+    public void setLineColor(String lineColor)
+    {
+        this.lineColor = colors.get(lineColor);
     }
 
     /**
@@ -163,7 +217,8 @@ public class Turtle
                 {
                     surface = scene.getPaintingSurface();
                 }
-                surface.drawLine(lastPosition, turtle.getCenter());
+                surface.drawLine(lastPosition, turtle.getCenter(), lineColor,
+                        lineWidth);
             }
         });
     }
@@ -181,7 +236,7 @@ public class Turtle
         Vector center = turtle.getCenter();
         double start = turtle.getRotation();
         double duration = Math.abs(rotation) / 360 / speed;
-        System.out.println(duration);
+        // * 4 damit man die Rotation auch sieht
         animate(duration * 4, progress -> {
             turtle.setRotation(start + progress * rotation);
             turtle.setCenter(center);
