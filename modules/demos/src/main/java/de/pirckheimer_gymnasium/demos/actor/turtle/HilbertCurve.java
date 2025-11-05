@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.little_engine.turtle;
+package de.pirckheimer_gymnasium.demos.actor.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
 
 /**
  * Zeichnet die Hilbert-Kurve.
@@ -33,9 +33,10 @@ public class HilbertCurve
     public HilbertCurve(int depth)
     {
         t = new Turtle();
-        length = 400.0 / Math.pow(2.0, depth);
+        t.setSpeed(100);
+        t.setPosition(-7, 7);
+        length = 15 / Math.pow(2.0, depth);
         t.liftPen();
-        t.setPosition((int) (length / 2.0), (int) (length / 2.0));
         t.lowerPen();
         drawElement(false, depth);
     }

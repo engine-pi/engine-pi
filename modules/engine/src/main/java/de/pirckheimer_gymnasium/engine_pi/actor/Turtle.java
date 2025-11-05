@@ -36,6 +36,19 @@ import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 
 /**
+ * Eine Schildkröte um Turtle-Grafiken zu malen.
+ *
+ * <p>
+ * Die Klasse hat animierte Methoden, die künstliche verlangsamt werden, damit
+ * der Malprozess nachvollzogen werden kann. Das Zeichnen einer Turtle-Grafik
+ * kann unter Umständen sehr lange dauern. Deshalb sollten animierten
+ * Methodenaufrufen in Konstrukturen geschrieben werden, da das Objekt lange
+ * nicht erzeugt werden kann. Diese Klasse startet deshalb automatische eine
+ * Szene.
+ * </p>
+ *
+ *
+ *
  * @since 0.38.0
  *
  * @see <a href=
@@ -103,6 +116,16 @@ public class Turtle
         }
 
         // scene.getCamera().setFocus(turtle);
+    }
+
+    public void setPosition(Vector position)
+    {
+        turtle.setCenter(position);
+    }
+
+    public void setPosition(double x, double y)
+    {
+        turtle.setCenter(new Vector(x, y));
     }
 
     /**
@@ -241,6 +264,11 @@ public class Turtle
             turtle.setRotation(start + progress * rotation);
             turtle.setCenter(center);
         });
+    }
+
+    public void setRotation(double rotation)
+    {
+        turtle.rotateBy(rotation);
     }
 
     private void animate(double duration, Consumer<Double> setter)

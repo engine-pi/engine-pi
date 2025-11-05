@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.little_engine.turtle;
+package de.pirckheimer_gymnasium.demos.actor.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
 
 /**
  * Zeichnet die Lévy-C-Kurve.
@@ -22,8 +22,8 @@ public class LevyCCurve
     public LevyCCurve()
     {
         t = new Turtle();
+        t.setSpeed(300);
         t.liftPen();
-        t.setPosition(350, 250);
         t.lowerPen();
     }
 
@@ -40,35 +40,8 @@ public class LevyCCurve
      */
     void drawCurve(int depth, String color)
     {
-        t.reset();
-        t.setColor(color);
-        t.setPosition(350, 250);
-        drawPart(150, depth);
-    }
 
-    /**
-     * Zeichnet die Levy-C-Kurve mit den Tiefen 0 bis 3.
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war
-     * {@code KurveZeichnen0bis3}.
-     * </p>
-     */
-    void drawCurve0to3()
-    {
-        t.reset();
-        t.setColor("schwarz");
-        t.setPosition(350, 250);
-        drawPart(150, 0);
-        t.setColor("rot");
-        t.setPosition(350, 250);
-        drawPart(150, 1);
-        t.setColor("grün");
-        t.setPosition(350, 250);
-        drawPart(150, 2);
-        t.setColor("blau");
-        t.setPosition(350, 250);
-        drawPart(150, 3);
+        drawPart(5, depth);
     }
 
     /**
@@ -104,7 +77,6 @@ public class LevyCCurve
     public static void main(String[] args)
     {
         LevyCCurve curve = new LevyCCurve();
-        // curve.drawCurve(10, "schwarz");
-        curve.drawCurve0to3();
+        curve.drawCurve(10, "schwarz");
     }
 }

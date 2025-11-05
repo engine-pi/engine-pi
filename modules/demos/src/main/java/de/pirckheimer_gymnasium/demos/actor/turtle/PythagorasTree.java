@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.little_engine.turtle;
+package de.pirckheimer_gymnasium.demos.actor.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
 
 /**
  * Zeichnet den Pythagorasbaum.
@@ -8,6 +8,8 @@ import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
  * <p>
  * Der ursprünglich deutsche Name dieser Klasse war {@code PythagorasBaum}.
  * </p>
+ *
+ * TODO fix ...
  *
  * @author Albert Wiedemann
  *
@@ -53,17 +55,18 @@ public class PythagorasTree
     public PythagorasTree(int depth)
     {
         t = new Turtle();
-        // a = 300.0;
-        // b = 400.0;
-        a = 100.0;
-        b = 100.0;
-        // a = 120.0;
-        // b = 50.0;
+        t.setSpeed(1000);
+        // a = 30;
+        // b = 40;
+        a = 10;
+        b = 10;
+        // a = 12;
+        // b = 5;
         c2 = a * a + b * b;
         bc = (b * b) / c2;
         abc = a * b / c2;
-        drawRectangle(400.0, 100.0, 500.0, 100.0, 500.0, 200.0, 400.0, 200.0);
-        makeStep(400.0, 200.0, 500.0, 200.0, depth);
+        drawRectangle(40, 10, 50, 10, 50, 20, 40, 20);
+        makeStep(40, 20, 50, 20, depth);
     }
 
     /**
@@ -80,12 +83,12 @@ public class PythagorasTree
      *
      * @return Richtungswinkel zum Zielpunkt
      */
-    private int getRotation(double xSrc, double ySrc, double xDest,
+    private double getRotation(double xSrc, double ySrc, double xDest,
             double yDest)
     {
         double dx = xDest - xSrc;
         double dy = yDest - ySrc;
-        int rotation = 0;
+        double rotation = 0;
         if (dx == 0)
         {
             if (dy > 0)
@@ -99,13 +102,11 @@ public class PythagorasTree
         }
         else if (dx > 0)
         {
-            rotation = -((int) Math
-                    .round(Math.atan(dy / dx) * 180.0 / Math.PI));
+            rotation = -Math.atan(dy / dx) * 18 / Math.PI;
         }
         else
         {
-            rotation = 180
-                    - ((int) Math.round(Math.atan(dy / dx) * 180.0 / Math.PI));
+            rotation = 180 - Math.round(Math.atan(dy / dx) * 18 / Math.PI);
         }
         return rotation;
     }

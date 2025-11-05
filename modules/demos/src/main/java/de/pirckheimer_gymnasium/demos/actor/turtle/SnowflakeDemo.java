@@ -30,6 +30,7 @@ public class SnowflakeDemo
     public SnowflakeDemo()
     {
         turtle = new Turtle();
+        turtle.setSpeed(100);
         drawSnowFlake(10, 3);
     }
 
