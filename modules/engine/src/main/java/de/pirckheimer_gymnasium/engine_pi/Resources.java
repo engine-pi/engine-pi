@@ -52,25 +52,26 @@ import de.pirckheimer_gymnasium.engine_pi.resources.SoundContainer;
 public final class Resources
 {
     /**
-     * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps
-     * {@link java.awt.Color}.
+     * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color
+     * Color}.
      */
     public static final ColorContainer colors = new ColorContainer();
 
     /**
-     * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link java.awt.Font}.
+     * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link java.awt.Font
+     * Font}.
      */
     public static final FontContainer fonts = new FontContainer();
 
     /**
      * Ein Speicher für <b>Bilder</b> des Datentyps
-     * {@link java.awt.image.BufferedImage}.
+     * {@link java.awt.image.BufferedImage BufferedImage}.
      */
     public static final ImageContainer images = new ImageContainer();
 
     /**
      * Ein Speicher für <b>Klänge</b> des Datentyps
-     * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound}.
+     * {@link de.pirckheimer_gymnasium.engine_pi.sound.Sound Sound}.
      */
     public static final SoundContainer sounds = new SoundContainer();
 

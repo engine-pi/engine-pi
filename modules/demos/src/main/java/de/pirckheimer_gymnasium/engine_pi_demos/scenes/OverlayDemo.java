@@ -9,6 +9,15 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
+/**
+ * Demonstriert die Methode {@link Scene#render(Graphics2D, int, int)}.
+ *
+ * <p>
+ * Das Demo zeigt zwei grüne Rechtecke, die die Kreisfigur überlagern. Das linke
+ * Rechteck ist undurchsichtig und das rechte Rechteck ist transparent. Die
+ * Transparenz wird über eine Farbe mit reduziertem Alphakanal erzeugt.
+ * </p>
+ */
 public class OverlayDemo extends Scene
 {
 

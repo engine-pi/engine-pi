@@ -48,7 +48,7 @@ public class MainScene extends Scene implements KeyStrokeListener
         addFrameUpdateListener(animation);
         add(toAnimate);
         addKeyStrokeListener(this);
-        Text info = new Text("Pause mit P", 0.5);
+        Text info = new Text("Pause mit P");
         info.setCenter(-7, -5);
         add(info);
     }
