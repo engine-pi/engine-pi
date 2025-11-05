@@ -20,14 +20,11 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
@@ -35,6 +32,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
+import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 
 /**
  * @since 0.38.0
@@ -55,11 +53,9 @@ public class Turtle
 
     private boolean drawLine;
 
-    private Color lineColor = Color.BLACK;
-
     private double speed = 20;
 
-    private Graphics2D drawArea;
+    private PaintingSurface surface;
 
     public Turtle()
     {
@@ -151,32 +147,26 @@ public class Turtle
 
         double duration = distance / speed;
 
-        AtomicReference<Rectangle> line = new AtomicReference<>();
+        // AtomicReference<Rectangle> line = new AtomicReference<>();
 
         animate(duration, progress -> {
             turtle.setCenter(initial.add(move.multiply(progress)));
 
             if (drawLine)
             {
-                if (line.get() != null)
+                // if (line.get() != null)
+                // {
+                // line.get().remove();
+                // }
+
+                if (surface == null)
                 {
-                    line.get().remove();
+                    surface = scene.getPaintingSurface();
                 }
 
-                if (drawArea == null)
-                {
-                    drawArea = scene.getDrawArea();
-                }
+                surface.drawPoint(turtle.getCenter());
 
-                Vector center = turtle.getCenter();
-
-                Vector centerPx = scene.getMainLayer()
-                        .translateWorldPointToFramePxCoordinates(center);
-
-                drawArea.setColor(colors.get("grey"));
-                drawArea.drawOval((int) centerPx.getX() - 1,
-                        (int) centerPx.getY() - 1, 2, 2);
-                line.set(new Rectangle(distance * progress, 0.1));
+                // line.set(new Rectangle(distance * progress, 0.1));
                 // line.get().setRotation(turtle.getRotation());
                 // line.get().setCenter(turtle.getCenter()
                 // .subtract(move.multiply(progress * 0.5)));

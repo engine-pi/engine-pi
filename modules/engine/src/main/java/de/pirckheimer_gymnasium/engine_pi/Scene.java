@@ -22,10 +22,8 @@ package de.pirckheimer_gymnasium.engine_pi;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -33,13 +31,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.function.Function;
-
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.ActorAdder;
@@ -56,9 +47,16 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
+import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderSource;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint;
+import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
 
 /**
  * Mithilfe von <b>Szenen</b> können verschiedene <b>Ansichten</b> eines Spiels
@@ -155,11 +153,11 @@ public class Scene implements KeyStrokeListenerRegistration,
     protected String help;
 
     /**
-     * Ein Bild, in das gemalt werden kann und das als Hintergrundbild angezeigt
-     * wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
-     * Simulation eines Malprogramms.
+     * Ein Malfläche, in die gemalt werden kann und das als Hintergrundbild
+     * angezeigt wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden
+     * oder zur Simulation eines Malprogramms.
      */
-    protected BufferedImage drawArea;
+    protected PaintingSurface paintingSurface;
 
     /**
      * Erzeugt eine neue Szene.
@@ -315,33 +313,13 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     }
 
-    public Graphics2D getDrawArea()
+    public PaintingSurface getPaintingSurface()
     {
-        if (drawArea == null)
+        if (paintingSurface == null)
         {
-            var size = Game.getWindowSize();
-            drawArea = new BufferedImage((int) size.getX(), (int) size.getY(),
-                    BufferedImage.TYPE_INT_ARGB);
+            paintingSurface = new PaintingSurface(this);
         }
-
-        Graphics2D g = drawArea.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING,
-                RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g.setRenderingHint(RenderingHints.KEY_DITHERING,
-                RenderingHints.VALUE_DITHER_ENABLE);
-        g.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,
-                RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        g.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_QUALITY);
-        g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                RenderingHints.VALUE_STROKE_PURE);
-        return g;
+        return paintingSurface;
     }
 
     /**
@@ -363,9 +341,10 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {
-        if (drawArea != null)
+        // Die Malfläche zuerst als Hintergrund.
+        if (paintingSurface != null)
         {
-            g.drawImage(drawArea, 0, 0, null);
+            g.drawImage(paintingSurface.getImage(), 0, 0, null);
         }
         final AffineTransform base = g.getTransform();
         synchronized (layers)
