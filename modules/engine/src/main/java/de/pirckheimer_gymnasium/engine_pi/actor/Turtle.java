@@ -20,9 +20,11 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicReference;
@@ -55,11 +57,14 @@ public class Turtle
 
     private Color lineColor = Color.BLACK;
 
-    private double speed = 3;
+    private double speed = 20;
+
+    private Graphics2D drawArea;
 
     public Turtle()
     {
         scene = new Scene();
+
         scene.setBackgroundColor(new Color(240, 240, 240));
 
         turtle = new Polygon(v(-0.5, 0.5), v(1, 0), v(-0.5, -0.5));
@@ -158,15 +163,28 @@ public class Turtle
                     line.get().remove();
                 }
 
-                line.set(new Rectangle(distance * progress, 0.1));
-                line.get().setRotation(turtle.getRotation());
-                line.get().setCenter(turtle.getCenter()
-                        .subtract(move.multiply(progress * 0.5)));
-                line.get().setColor(lineColor);
-                line.get().setBorderRadius(1);
-                line.get().setBodyType(BodyType.PARTICLE);
+                if (drawArea == null)
+                {
+                    drawArea = scene.getDrawArea();
+                }
 
-                scene.add(line.get());
+                Vector center = turtle.getCenter();
+
+                Vector centerPx = scene.getMainLayer()
+                        .translateWorldPointToFramePxCoordinates(center);
+
+                drawArea.setColor(colors.get("grey"));
+                drawArea.drawOval((int) centerPx.getX() - 1,
+                        (int) centerPx.getY() - 1, 2, 2);
+                line.set(new Rectangle(distance * progress, 0.1));
+                // line.get().setRotation(turtle.getRotation());
+                // line.get().setCenter(turtle.getCenter()
+                // .subtract(move.multiply(progress * 0.5)));
+                // line.get().setColor(lineColor);
+                // line.get().setBorderRadius(1);
+                // line.get().setBodyType(BodyType.PARTICLE);
+
+                // scene.add(line.get());
             }
         });
     }
