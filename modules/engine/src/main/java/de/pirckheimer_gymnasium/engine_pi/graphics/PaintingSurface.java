@@ -15,13 +15,13 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  * Eine Malfläche, in die gezeichnet werden kann.
  *
  * <p>
- * Die kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
+ * Die Malfläche kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
  * Simulation eines Malprogramms.
  * </p>
  *
  * <p>
- * Alle Malaktionen werden in einem {@link BufferedImage} vollzogen. Die Klassen
- * übernimmt die Übersetzung des Engine-Pi-Koordinatensystems in das
+ * Alle Malaktionen werden in einem {@link BufferedImage} vollzogen. Diese
+ * Klasse übernimmt die Übersetzung des Engine-Pi-Koordinatensystems in das
  * Java-Koordinatensystem. Dazu ist eine Referenz auf eine {@link Scene Szene}
  * nötig.
  * </p>
@@ -32,7 +32,9 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  */
 public class PaintingSurface
 {
-
+    /**
+     * Die Szene, in der die Malfläche als Hintergrund verwendet wird.
+     */
     private Scene scene;
 
     /**
@@ -42,8 +44,16 @@ public class PaintingSurface
      */
     private BufferedImage image;
 
+    /**
+     * Das {@link Graphics2D}-Objekt, das aus dem {@link #image}-Objekt erzeugt
+     * wurde.
+     */
     private Graphics2D g;
 
+    /**
+     * @param scene Die Szene, in der die Malfläche als Hintergrund verwendet
+     *     wird.
+     */
     public PaintingSurface(Scene scene)
     {
         this.scene = scene;
@@ -55,8 +65,8 @@ public class PaintingSurface
     }
 
     /**
-     * Die Bilddatei kann nicht im Konstruktur initialisiert werden, da zu dem
-     * Zeitpunkt das Fenster noch keine Abmessungen hat.
+     * Die Bilddatei kann nicht im Konstruktur initialisiert werden, da zu
+     * diesem Zeitpunkt das Fenster noch keine Abmessungen hat.
      */
     public void initialize()
     {
@@ -65,24 +75,9 @@ public class PaintingSurface
             var size = Game.getWindowSize();
             image = new BufferedImage((int) size.getX(), (int) size.getY(),
                     BufferedImage.TYPE_INT_ARGB);
-
             g = image.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                    RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
-            g.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING,
-                    RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-            g.setRenderingHint(RenderingHints.KEY_DITHERING,
-                    RenderingHints.VALUE_DITHER_ENABLE);
-            g.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,
-                    RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g.setRenderingHint(RenderingHints.KEY_RENDERING,
-                    RenderingHints.VALUE_RENDER_QUALITY);
-            g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                    RenderingHints.VALUE_STROKE_PURE);
         }
     }
 
@@ -95,6 +90,11 @@ public class PaintingSurface
                 .translateWorldPointToFramePxCoordinates(point);
     }
 
+    /**
+     * Füllt die gesamte Zeichenfläche mit der angegebenen Farbe.
+     *
+     * @param color Die Farbe, mit der die Zeichenfläche gefüllt werden soll.
+     */
     public void fill(Color color)
     {
         initialize();
@@ -102,11 +102,23 @@ public class PaintingSurface
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
     }
 
+    /**
+     * Füllt die Zeichenfläche mit der angegebenen Farbe.
+     *
+     * @param color Der Name der Farbe als String, die zum Füllen verwendet
+     *     werden soll. Die Farbe muss in der Farbzuordnung vorhanden sein.
+     */
     public void fill(String color)
     {
         fill(colors.get(color));
     }
 
+    /**
+     * Löscht die gesamte Zeichenfläche, indem sie weiß gefüllt wird.
+     *
+     * Diese Methode setzt die Zeichenfläche auf ihren Ausgangszustand zurück,
+     * indem sie mit der Farbe Weiß gefüllt wird.
+     */
     public void clear()
     {
         fill("white");
@@ -131,6 +143,15 @@ public class PaintingSurface
         initialize();
         g.setColor(color);
         drawCenteredCircle(position, size);
+    }
+
+    public void drawLine(Vector point1, Vector point2)
+    {
+        initialize();
+        g.setColor(colors.get("grey"));
+        Vector px1 = translateCoordinates(point1);
+        Vector px2 = translateCoordinates(point2);
+        g.drawLine(px1.getX(1), px1.getY(1), px2.getX(1), px2.getY(1));
     }
 
 }

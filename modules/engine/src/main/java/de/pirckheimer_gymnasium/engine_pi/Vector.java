@@ -30,10 +30,6 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese
  * Klasse wird für alle Positions- und Richtungsangaben genutzt.
  *
- *
- *
- *
- *
  * @author Michael Andonie
  *
  * @see <a href=
@@ -158,7 +154,7 @@ public final class Vector implements Cloneable
 
     /**
      * Gibt den Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
-     * Pixel per Meter zurück.
+     * Pixel per Meter als Ganzzahl zurück.
      *
      * @return Der Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
      *     Pixel per Meter.
@@ -168,7 +164,7 @@ public final class Vector implements Cloneable
     @API
     public int getX(double pixelPerMeter)
     {
-        return (int) (x * pixelPerMeter);
+        return (int) Math.round(x * pixelPerMeter);
     }
 
     /**
@@ -194,7 +190,7 @@ public final class Vector implements Cloneable
     @API
     public int getY(double pixelPerMeter)
     {
-        return (int) (y * pixelPerMeter);
+        return (int) Math.round(y * pixelPerMeter);
     }
 
     /**

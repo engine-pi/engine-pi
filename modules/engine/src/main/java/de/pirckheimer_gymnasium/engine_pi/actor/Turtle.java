@@ -20,9 +20,9 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
-import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
@@ -43,29 +43,38 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
  * @see <a href=
  *     "https://github.com/engine-pi/engine-pi/blob/main/modules/games/blockly-robot/src/main/java/de/pirckheimer_gymnasium/blockly_robot/robot/gui/robot/ImageRobot.java">ImageRobot
  *     in Blockly Robot</a>
+ *
+ * @author Josef Friedrich
+ * @author Michael Andonie
+ * @author Niklas Keller
  */
 public class Turtle
 {
-
     private final Scene scene;
 
     private final Polygon turtle;
 
     private boolean drawLine;
 
-    private double speed = 20;
+    private double speed = 3;
 
     private PaintingSurface surface;
+
+    /**
+     * Das Zentrum der Schildkröte vor der Aktualisierung. Diese Position wird
+     * verwendet, um die einzelnen Liniensegmente zu zeichnen.
+     */
+    private Vector lastPosition;
 
     public Turtle()
     {
         scene = new Scene();
 
-        scene.setBackgroundColor(new Color(240, 240, 240));
+        scene.setBackgroundColor(colors.get("white"));
 
         turtle = new Polygon(v(-0.5, 0.5), v(1, 0), v(-0.5, -0.5));
         turtle.setCenter(0, 0);
-        turtle.setColor(Color.RED);
+        turtle.setColor(colors.get("red"));
 
         scene.add(turtle);
 
@@ -144,37 +153,17 @@ public class Turtle
     {
         Vector move = Vector.ofAngle(turtle.getRotation()).multiply(distance);
         Vector initial = turtle.getCenter();
-
         double duration = distance / speed;
-
-        // AtomicReference<Rectangle> line = new AtomicReference<>();
-
         animate(duration, progress -> {
+            lastPosition = turtle.getCenter();
             turtle.setCenter(initial.add(move.multiply(progress)));
-
             if (drawLine)
             {
-                // if (line.get() != null)
-                // {
-                // line.get().remove();
-                // }
-
                 if (surface == null)
                 {
                     surface = scene.getPaintingSurface();
                 }
-
-                surface.drawPoint(turtle.getCenter());
-
-                // line.set(new Rectangle(distance * progress, 0.1));
-                // line.get().setRotation(turtle.getRotation());
-                // line.get().setCenter(turtle.getCenter()
-                // .subtract(move.multiply(progress * 0.5)));
-                // line.get().setColor(lineColor);
-                // line.get().setBorderRadius(1);
-                // line.get().setBodyType(BodyType.PARTICLE);
-
-                // scene.add(line.get());
+                surface.drawLine(lastPosition, turtle.getCenter());
             }
         });
     }
@@ -191,9 +180,9 @@ public class Turtle
     {
         Vector center = turtle.getCenter();
         double start = turtle.getRotation();
-        double duration = rotation / 360 / speed;
-
-        animate(duration, progress -> {
+        double duration = Math.abs(rotation) / 360 / speed;
+        System.out.println(duration);
+        animate(duration * 4, progress -> {
             turtle.setRotation(start + progress * rotation);
             turtle.setCenter(center);
         });
@@ -205,7 +194,6 @@ public class Turtle
 
         ValueAnimator<Double> animator = new ValueAnimator<>(duration, setter,
                 new LinearDouble(0, 1), turtle);
-
         animator.addCompletionListener(value -> {
             setter.accept(value);
             future.complete(null);
@@ -231,7 +219,7 @@ public class Turtle
         {
             turtle.lowerPen();
             turtle.move(3);
-            turtle.rotate(90);
+            turtle.rotate(-90);
         }
     }
 }
