@@ -52,12 +52,12 @@ public class LineAnimation extends AggregateFrameUpdateListener
         addFrameUpdateListener(new ValueAnimator<>(durationInSeconds,
                 x -> actor.setCenter(x, actor.getCenter().getY()),
                 new LinearDouble(center.getX(), endPoint.getX()),
-                pingpong ? AnimationMode.PINGPONG : AnimationMode.SINGLE,
+                pingpong ? AnimationMode.PING_PONG : AnimationMode.SINGLE,
                 this));
         addFrameUpdateListener(new ValueAnimator<>(durationInSeconds,
                 y -> actor.setCenter(actor.getCenter().getX(), y),
                 new LinearDouble(center.getY(), endPoint.getY()),
-                pingpong ? AnimationMode.PINGPONG : AnimationMode.SINGLE,
+                pingpong ? AnimationMode.PING_PONG : AnimationMode.SINGLE,
                 this));
     }
 }

@@ -20,7 +20,23 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.animation;
 
+/**
+ * Definiert die verschiedenen Modi für Animationen.
+ */
 public enum AnimationMode
 {
-    SINGLE, REPEATED, PINGPONG
+    /**
+     * Die Animation läuft einmal ab und stoppt.
+     */
+    SINGLE,
+
+    /**
+     * Die Animation wird fortlaufend wiederholt.
+     */
+    REPEATED,
+
+    /**
+     * Die Animation läuft vorwärts und rückwärts ab (Hin- und Her-Modus).
+     */
+    PING_PONG
 }

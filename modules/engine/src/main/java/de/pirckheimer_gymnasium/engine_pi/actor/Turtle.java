@@ -20,6 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+
 import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -47,20 +49,20 @@ public class Turtle
 
     private final Scene scene;
 
-    private final Rectangle turtle;
+    private final Polygon turtle;
 
     private boolean drawLine;
 
     private Color lineColor = Color.BLACK;
 
-    private double speed = 100;
+    private double speed = 3;
 
     public Turtle()
     {
         scene = new Scene();
         scene.setBackgroundColor(new Color(240, 240, 240));
 
-        turtle = new Rectangle(1, 1);
+        turtle = new Polygon(v(-0.5, 0.5), v(1, 0), v(-0.5, -0.5));
         turtle.setCenter(0, 0);
         turtle.setColor(Color.RED);
 
@@ -68,59 +70,14 @@ public class Turtle
 
         if (!Game.isRunning())
         {
-            Game.start(scene, 800, 600);
+            Game.start(scene);
         }
         else
         {
             Game.transitionToScene(scene);
         }
 
-        scene.getCamera().setFocus(turtle);
-
-        schnee(10, 5);
-    }
-
-    private void schnee(double length, int d)
-    {
-        liftPen();
-        rotate(180);
-        move(5);
-        rotate(-90);
-        move(3);
-        rotate(-90);
-        lowerPen();
-
-        for (int i = 0; i < 3; i++)
-        {
-            curve(length, d);
-            rotate(-120);
-        }
-
-        liftPen();
-        rotate(180);
-        move(-5);
-        rotate(-90);
-        move(-3);
-        rotate(-90);
-        lowerPen();
-    }
-
-    private void curve(double length, int d)
-    {
-        if (d == 0)
-        {
-            move(length);
-        }
-        else
-        {
-            curve(length / 3, d - 1);
-            rotate(60);
-            curve(length / 3, d - 1);
-            rotate(-120);
-            curve(length / 3, d - 1);
-            rotate(60);
-            curve(length / 3, d - 1);
-        }
+        // scene.getCamera().setFocus(turtle);
     }
 
     /**
@@ -225,7 +182,6 @@ public class Turtle
     public void rotate(double rotation)
     {
         Vector center = turtle.getCenter();
-
         double start = turtle.getRotation();
         double duration = rotation / 360 / speed;
 
@@ -261,6 +217,13 @@ public class Turtle
 
     public static void main(String[] args)
     {
-        new Turtle();
+        Turtle turtle = new Turtle();
+
+        for (int i = 0; i < 4; i++)
+        {
+            turtle.lowerPen();
+            turtle.move(3);
+            turtle.rotate(90);
+        }
     }
 }

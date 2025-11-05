@@ -30,7 +30,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
 
 /**
- * Beschreibt eine beliebige polygonale geometrische Form.
+ * Beschreibt eine beliebige <b>polygonale</b> geometrische Form.
  *
  * @author Michael Andonie
  */
@@ -61,7 +61,6 @@ public class Polygon extends Geometry
      * Erstellt ein neues Polygon. Seine Position ist der <b>Ursprung</b>.
      *
      * @param points Der Streckenzug an Punkten, der das Polygon beschreibt.
-     *     Alle
      */
     @API
     public Polygon(Vector... points)

@@ -23,8 +23,8 @@ package de.pirckheimer_gymnasium.engine_pi.event;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 
 /**
- * Eine Schnittstelle zum An- und Abmelden von Beobachtern, die auf die
- * Aktualisierungen der Einzelbilder reagieren.
+ * Eine Schnittstelle zum <b>An- und Abmelden von Beobachtern</b>, die auf die
+ * <b>Aktualisierungen der Einzelbilder</b> reagieren.
  *
  * <p>
  * Die Schnittstelle {@link FrameUpdateListenerRegistration} definiert Methoden
