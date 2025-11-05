@@ -490,9 +490,9 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     /**
      * Übersetzt einen Punkt auf diesem Layer zu der analogen, aktuellen
-     * Pixelkoordinate im zeichnenden Frame.
+     * Pixelkoordinate im zum zeichnenden Frame.
      *
-     * @param worldPoint Ein Punkt auf dem Layer
+     * @param worldPoint Ein Punkt auf der Ebene.
      *
      * @return Ein Vektor <b>in Pixelkoordinaten</b> (nicht Meter, die y-Achse
      *     ist umgekehrt), der mit der aktuellen Kameraeinstellung dem
@@ -517,7 +517,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     /**
      * Gibt die derzeit auf dem Bildschirm sichtbare Fläche der Ebene an.
      *
-     * @return Die sichtbare Fläche <b>mit Angaben in Meter</b>
+     * @return Die sichtbare Fläche <b>mit Angaben in Meter</b>.
      *
      * @see Game#getWindowSize()
      */
