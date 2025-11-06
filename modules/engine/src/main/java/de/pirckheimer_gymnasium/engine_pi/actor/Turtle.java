@@ -36,18 +36,18 @@ import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 
 /**
- * Eine Schildkröte um Turtle-Grafiken zu malen.
+ * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
  *
  * <p>
  * Die Klasse hat animierte Methoden, die künstliche verlangsamt werden, damit
  * der Malprozess nachvollzogen werden kann. Das Zeichnen einer Turtle-Grafik
- * kann unter Umständen sehr lange dauern. Deshalb sollten animierten
+ * kann unter Umständen sehr lange dauern. Deshalb sollten keine animierten
  * Methodenaufrufen in Konstrukturen geschrieben werden, da das Objekt lange
  * nicht erzeugt werden kann. Diese Klasse startet deshalb automatische eine
  * Szene.
  * </p>
  *
- *
+ * // Schönes Schildkröten-Logo: https://github.com/AmrDeveloper/Turtle
  *
  * @since 0.38.0
  *
@@ -68,6 +68,10 @@ public class Turtle
 
     private final Polygon turtle;
 
+    /**
+     * Zeigt an, ob die Schildkröte momentatn den Stift gesenkt hat und zeichnet
+     * oder nicht.
+     */
     private boolean drawLine = true;
 
     /**

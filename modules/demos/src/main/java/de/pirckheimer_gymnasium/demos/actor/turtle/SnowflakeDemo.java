@@ -22,6 +22,9 @@ package de.pirckheimer_gymnasium.demos.actor.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
 
+/**
+ * https://de.wikipedia.org/wiki/Koch-Kurve
+ */
 public class SnowflakeDemo
 {
 
