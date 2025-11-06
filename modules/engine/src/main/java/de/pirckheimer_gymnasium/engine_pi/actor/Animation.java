@@ -20,6 +20,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,7 +32,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
 import de.pirckheimer_gymnasium.engine_pi.animation.AnimationFrame;
 import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
@@ -42,10 +43,18 @@ import de.pirckheimer_gymnasium.engine_pi.util.FileUtil;
 import de.pirckheimer_gymnasium.engine_pi.util.GifDecoder;
 
 /**
- * Eine Animation ist ein {@link Actor}-Objekt, das aus mehreren
- * <a href="https://de.wikipedia.org/wiki/Einzelbild_(Film)">Einzelbildern</a>
- * besteht. Einzelbilder können auf verschiedene Arten aus Bilddateien
- * eingeladen werden:
+ * Eine Animation ist eine {@link Actor Figur}, die aus mehreren
+ * {@link AnimationFrame Einzelbildern} (Frames) besteht.
+ *
+ * <p>
+ * Die Einzelbilder werden in einer bestimmen Reihenfolge in die Animation
+ * eingefügt und dann in dieser Reihenfolge nacheinander gezeigt.
+ * </p>
+ *
+ * <p>
+ * Die Einzelbilder können auf verschiedene Arten aus Bilddateien eingeladen
+ * werden:
+ * </p>
  *
  * <ul>
  * <li>Animierte GIFs</li>
@@ -54,7 +63,18 @@ import de.pirckheimer_gymnasium.engine_pi.util.GifDecoder;
  * <li>Einzelne Bilddateien</li>
  * </ul>
  *
+ * <p>
+ * Die Animation kann in zwei Modi abgespielt werden.
+ * </p>
+ *
+ * <ol>
+ * <li>Automatischer Modus: Die Bilder werden nach einer gewissen Dauer
+ * gewechselt.</li>
+ * <li>Manueller Module: Die Einzelbilder müssen manuell gewechselt werden.</li>
+ * </ol>
+ *
  * @author Michael Andonie
+ * @author Josef Friedrich
  */
 @API
 public class Animation extends Actor implements FrameUpdateListener
@@ -62,21 +82,35 @@ public class Animation extends Actor implements FrameUpdateListener
     private final AnimationFrame[] frames;
 
     /**
-     * Die Breite der Animation in Meter.
+     * Die <b>Breite</b> der Animation in Meter.
      */
     private final double width;
 
     /**
-     * Die Höhe der Animation in Meter.
+     * Die <b>Höhe</b> der Animation in Meter.
      */
     private final double height;
 
+    /**
+     * Falls wahr, werden die Einzelbilder nicht automatisch nach einer gewissen
+     * Zeit weiter geschaltet, sondern über die Methoden
+     * {@link #setFrameIndex(int)} oder {@link #showNext(int)}.
+     */
+    private boolean manualMode = false;
+
+    /**
+     * Wie lange ein Einzelbild bereits gezeigt wurde.
+     */
     private transient double currentTime;
 
+    /**
+     * Die Indexnummer des Einzelbilds, das aktuell gezeigt wird.
+     */
     private transient int currentIndex;
 
     /**
-     * Liste aller Runnable, die beim Abschließen des Loops ausgeführt werden.
+     * Liste aller Runnable, die beim Abschließen der Schleife ausgeführt
+     * werden.
      */
     private final EventListeners<Runnable> onCompleteListeners = new EventListeners<>();
 
@@ -101,8 +135,8 @@ public class Animation extends Actor implements FrameUpdateListener
         this.frames = frames.clone();
         this.width = width;
         this.height = height;
-        this.currentTime = 0;
-        this.currentIndex = 0;
+        currentTime = 0;
+        currentIndex = 0;
     }
 
     /**
@@ -117,9 +151,40 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
-     * Gibt die Frames dieser Animation aus.
+     * Schaltet den <b>manuellen Modus</b> ein.
      *
-     * @return Die Frames dieser Animation.
+     * <p>
+     * Die Einzelbilder werden dann nicht automatisch nach einer gewissen Zeit
+     * weiter geschaltet, sondern über die Methoden {@link #setFrameIndex(int)}
+     * oder {@link #showNext()}.
+     * </p>
+     */
+    public void enableManualMode()
+    {
+        manualMode = true;
+    }
+
+    /**
+     * Setzt ein bestimmtes <b>Einzelbild</b> über seinen <b>Index</b>.
+     *
+     * @param index Der Index des Einzelbilds ({@code 0} ist der erste Index).
+     *
+     * @since 0.38.0
+     */
+    public void setFrameIndex(int index)
+    {
+        if (!manualMode)
+        {
+            throw new RuntimeException(
+                    "Nur im manuellen Modus können die Einzelbilder direkt gesetzt werden.");
+        }
+        currentIndex = index;
+    }
+
+    /**
+     * Gibt die <b>Einzelbilder</b> dieser Animation aus.
+     *
+     * @return Die <b>Einzelbilder</b> dieser Animation.
      *
      * @hidden
      */
@@ -130,9 +195,9 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
-     * Gibt die Breite der Animation in Metern aus.
+     * Gibt die <b>Breite</b> der Animation in Metern aus.
      *
-     * @return Die Breite der Animation in Meter.
+     * @return Die <b>Breite</b> der Animation in Meter.
      *
      * @see #getHeight()
      */
@@ -143,9 +208,9 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
-     * Gibt die Höhe der Animation in Metern aus.
+     * Gibt die <b>Höhe</b> der Animation in Metern aus.
      *
-     * @return Die Höhe der Animation in Meter.
+     * @return Die <b>Höhe</b> der Animation in Meter.
      *
      * @see #getWidth()
      */
@@ -156,18 +221,43 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
-     * Fügt einen Listener hinzu. Die <code>run()</code>-Methode wird immer
-     * wieder ausgeführt, sobald der <b>letzte Zustand der Animation
+     * Fügt einen Beobachter hinzu. Die {@link Runnable#run() run()}-Methode
+     * wird immer wieder ausgeführt, sobald der <b>letzte Zustand der Animation
      * abgeschlossen wurde</b>.
      *
-     * @param listener Ein Runnable, dessen run-Methode ausgeführt werden soll,
-     *     sobald die Animation abgeschlossen ist (wird ausgeführt, bevor der
-     *     Loop von Vorne beginnt).
+     * @param listener Ein {@link Runnable}, dessen {@link Runnable#run()
+     *     run()}-Methode ausgeführt werden soll, sobald die Animation
+     *     abgeschlossen ist (wird ausgeführt, bevor die Schleife von vorne
+     *     beginnt).
      */
     @API
     public void addOnCompleteListener(Runnable listener)
     {
         onCompleteListeners.add(listener);
+    }
+
+    /**
+     * Zeigt das nächste Einzelbild der Animation an.
+     *
+     * <p>
+     * Wenn das aktuelle Einzelbild das letzte ist, werden alle registrierten
+     * Beobacher benachrichtigt und der Index wird auf 0 zurückgesetzt.
+     * Andernfalls wird der Index um eins erhöht.
+     * </p>
+     *
+     * @since 0.38.0
+     */
+    public void showNext()
+    {
+        if (currentIndex == frames.length - 1)
+        {
+            onCompleteListeners.invoke(Runnable::run);
+            currentIndex = 0;
+        }
+        else
+        {
+            currentIndex++;
+        }
     }
 
     /**
@@ -177,20 +267,16 @@ public class Animation extends Actor implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        this.currentTime += pastTime;
-        AnimationFrame currentFrame = this.frames[currentIndex];
-        while (this.currentTime > currentFrame.getDuration())
+        if (manualMode)
         {
-            this.currentTime -= currentFrame.getDuration();
-            if (this.currentIndex + 1 == this.frames.length)
-            {
-                onCompleteListeners.invoke(Runnable::run);
-                this.currentIndex = 0;
-            }
-            else
-            {
-                this.currentIndex += 1;
-            }
+            return;
+        }
+        currentTime += pastTime;
+        AnimationFrame currentFrame = frames[currentIndex];
+        while (currentTime > currentFrame.getDuration())
+        {
+            currentTime -= currentFrame.getDuration();
+            showNext();
         }
     }
 
@@ -275,8 +361,8 @@ public class Animation extends Actor implements FrameUpdateListener
     public static Animation createFromSpritesheet(double frameDuration,
             String filePath, int x, int y, double width, double height)
     {
-        return createFromSpritesheet(frameDuration,
-                Resources.images.get(filePath), x, y, width, height);
+        return createFromSpritesheet(frameDuration, images.get(filePath), x, y,
+                width, height);
     }
 
     /**
@@ -285,10 +371,10 @@ public class Animation extends Actor implements FrameUpdateListener
      * @param frameDuration Die Dauer in Sekunden, die die Einzelbilder aktiv
      *     bleiben.
      * @param filePath Der Dateipfad des Spritesheets.
-     * @param spriteWidth Die Breite des Sprites in Pixel.
-     * @param spriteHeight Die Höhe des Sprites in Pixel.
      * @param width Die Breite der Animation in Meter.
      * @param height Die Höhe der Animation in Meter.
+     * @param spriteWidth Die Breite des Sprites in Pixel.
+     * @param spriteHeight Die Höhe des Sprites in Pixel.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
      *
@@ -301,7 +387,7 @@ public class Animation extends Actor implements FrameUpdateListener
             String filePath, double width, double height, int spriteWidth,
             int spriteHeight)
     {
-        BufferedImage image = Resources.images.get(filePath);
+        BufferedImage image = images.get(filePath);
         return createFromSpritesheet(frameDuration, image,
                 image.getWidth()
                         / (spriteWidth * Game.getPixelMultiplication()),
@@ -359,7 +445,7 @@ public class Animation extends Actor implements FrameUpdateListener
             double height, String... filePaths)
     {
         return createFromImages(frameDuration, width, height,
-                Resources.images.getMultiple(filePaths));
+                images.getMultiple(filePaths));
     }
 
     /**

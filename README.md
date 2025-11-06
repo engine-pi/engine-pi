@@ -2458,6 +2458,7 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
 | Joint          | Verbindung                                             |
 | Layer          | Ebene                                                  |
 | Listener       | Beobachter                                             |
+| Loop           | Schleife                                               |
 | Offset         | Verzug                                                 |
 | PrismaticJoint | Federverbindung                                        |
 | Rectangle      | Rechteck                                               |

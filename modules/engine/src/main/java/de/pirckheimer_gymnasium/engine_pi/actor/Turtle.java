@@ -21,6 +21,8 @@
 package de.pirckheimer_gymnasium.engine_pi.actor;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
+
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import java.awt.Color;
@@ -34,6 +36,7 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
+import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /**
  * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
@@ -66,7 +69,7 @@ public class Turtle
 {
     private final Scene scene;
 
-    private final Polygon turtle;
+    private Actor turtle;
 
     /**
      * Zeigt an, ob die Schildkröte momentatn den Stift gesenkt hat und zeichnet
@@ -102,11 +105,10 @@ public class Turtle
     {
         scene = new Scene();
 
-        scene.setBackgroundColor(colors.get("white"));
+        scene.setBackgroundColor(
+                ColorUtil.changeSaturation(colors.get("yellow"), 0.7));
 
-        turtle = new Polygon(v(-0.25, 0.25), v(1, 0), v(-0.25, -0.25));
-        turtle.setCenter(0, 0);
-        turtle.setColor(colors.get("green"));
+        setActor(true);
 
         scene.add(turtle);
 
@@ -120,6 +122,29 @@ public class Turtle
         }
 
         // scene.getCamera().setFocus(turtle);
+    }
+
+    /**
+     * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
+     * dann wird eine Dreieck gezeichnet.
+     */
+    public void setActor(boolean actorAsImage)
+    {
+        if (actorAsImage)
+        {
+            // turtle = new Image("turtle.png", 1, 1);
+
+            Animation animation = Animation.createFromImages(1 / speed, 1, 1,
+                    images.get("turtle.png"), images.get("turtle2.png"));
+            animation.enableManualMode();
+            turtle = animation;
+        }
+        else
+        {
+            turtle = new Polygon(v(-0.25, 0.25), v(1, 0), v(-0.25, -0.25));
+            turtle.setColor("green");
+        }
+        turtle.setCenter(0, 0);
     }
 
     public void setPosition(Vector position)
@@ -238,6 +263,11 @@ public class Turtle
         animate(duration, progress -> {
             lastPosition = turtle.getCenter();
             turtle.setCenter(initial.add(move.multiply(progress)));
+            if (turtle instanceof Animation)
+            {
+                Animation animation = (Animation) turtle;
+                animation.showNext();
+            }
             if (drawLine)
             {
                 if (surface == null)
@@ -304,6 +334,7 @@ public class Turtle
     public static void main(String[] args)
     {
         Turtle turtle = new Turtle();
+        turtle.setSpeed(2);
 
         for (int i = 0; i < 4; i++)
         {

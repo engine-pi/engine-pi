@@ -38,12 +38,12 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 public final class AnimationFrame
 {
     /**
-     * Ein Bild, das sich bereits im Speicher befindet.
+     * Ein <b>Bild</b>, das sich bereits im Speicher befindet.
      */
     private final BufferedImage image;
 
     /**
-     * Die Dauer in Sekunden, die dieses Einzelbild aktiv bleibt.
+     * Die <b>Dauer</b> in Sekunden, die dieses Einzelbild aktiv bleibt.
      */
     private double duration;
 
@@ -64,6 +64,11 @@ public final class AnimationFrame
     }
 
     /**
+     * Setzt die <b>Dauer</b> in Sekunden, die dieses Einzelbild aktiv bleibt.
+     *
+     * @param duration Die <b>Dauer</b> in Sekunden, die dieses Einzelbild aktiv
+     *     bleibt.
+     *
      * @hidden
      */
     @Internal
@@ -82,6 +87,11 @@ public final class AnimationFrame
     }
 
     /**
+     * Gibt die <b>Dauer</b> in Sekunden, die dieses Einzelbild aktiv bleibt,
+     * zurück.
+     *
+     * @return Die <b>Dauer</b> in Sekunden, die dieses Einzelbild aktiv bleibt.
+     *
      * @hidden
      */
     @Internal
