@@ -84,6 +84,6 @@ public class HilbertCurve
 
     public static void main(String[] args)
     {
-        new HilbertCurve(4);
+        new HilbertCurve(5);
     }
 }
