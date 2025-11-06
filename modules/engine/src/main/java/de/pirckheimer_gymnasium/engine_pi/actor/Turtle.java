@@ -68,7 +68,7 @@ public class Turtle
 
     private final Polygon turtle;
 
-    private boolean drawLine;
+    private boolean drawLine = true;
 
     /**
      * Die Geschwindigkeit mit der sich die Schildkröte bewegt (in Meter pro
@@ -253,6 +253,9 @@ public class Turtle
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code Drehen}, in der Engine Alpha {@code rotiere}.
      * </p>
+     *
+     * @param rotation Der Drehwinkel in Grad. Positive Werte drehen gegen den
+     *     Uhrzeigersinn, negative Werte im Uhrzeigersinn.
      */
     public void rotate(double rotation)
     {
@@ -268,7 +271,7 @@ public class Turtle
 
     public void setRotation(double rotation)
     {
-        turtle.rotateBy(rotation);
+        turtle.setRotation(rotation);
     }
 
     private void animate(double duration, Consumer<Double> setter)

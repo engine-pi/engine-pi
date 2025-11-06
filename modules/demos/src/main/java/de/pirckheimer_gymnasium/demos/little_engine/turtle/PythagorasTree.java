@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.actor.turtle;
+package de.pirckheimer_gymnasium.demos.little_engine.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
 
 /**
  * Zeichnet den Pythagorasbaum.
@@ -8,8 +8,6 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
  * <p>
  * Der ursprünglich deutsche Name dieser Klasse war {@code PythagorasBaum}.
  * </p>
- *
- * TODO fix ...
  *
  * @author Albert Wiedemann
  *
@@ -55,14 +53,17 @@ public class PythagorasTree
     public PythagorasTree(int depth)
     {
         t = new Turtle();
-        t.setSpeed(1000);
-        a = 2;
-        b = 2;
+        // a = 300.0;
+        // b = 400.0;
+        a = 100.0;
+        b = 100.0;
+        // a = 120.0;
+        // b = 50.0;
         c2 = a * a + b * b;
         bc = (b * b) / c2;
         abc = a * b / c2;
-        drawRectangle(8, 2, 10, 2, 10, 4, 8, 4);
-        // makeStep(8, 4, 10, 4, depth);
+        drawRectangle(400.0, 100.0, 500.0, 100.0, 500.0, 200.0, 400.0, 200.0);
+        makeStep(400.0, 200.0, 500.0, 200.0, depth);
     }
 
     /**
@@ -79,12 +80,12 @@ public class PythagorasTree
      *
      * @return Richtungswinkel zum Zielpunkt
      */
-    private double getRotation(double xSrc, double ySrc, double xDest,
+    private int getRotation(double xSrc, double ySrc, double xDest,
             double yDest)
     {
         double dx = xDest - xSrc;
         double dy = yDest - ySrc;
-        double rotation = 0;
+        int rotation = 0;
         if (dx == 0)
         {
             if (dy > 0)
@@ -98,11 +99,13 @@ public class PythagorasTree
         }
         else if (dx > 0)
         {
-            rotation = -Math.atan(dy / dx) * 18 / Math.PI;
+            rotation = -((int) Math
+                    .round(Math.atan(dy / dx) * 180.0 / Math.PI));
         }
         else
         {
-            rotation = 180 - Math.round(Math.atan(dy / dx) * 18 / Math.PI);
+            rotation = 180
+                    - ((int) Math.round(Math.atan(dy / dx) * 180.0 / Math.PI));
         }
         return rotation;
     }
@@ -147,7 +150,7 @@ public class PythagorasTree
     private void drawTriangle(double aX, double aY, double bX, double bY,
             double cX, double cY)
     {
-        t.setPosition(aX, aY);
+        t.setPosition((int) aX, (int) aY);
         t.setRotation(getRotation(aX, aY, bX, bY));
         t.move(getLength(aX, aY, bX, bY));
         t.setRotation(getRotation(bX, bY, cX, cY));
@@ -176,7 +179,7 @@ public class PythagorasTree
     private void drawRectangle(double aX, double aY, double bX, double bY,
             double cX, double cY, double dX, double dY)
     {
-        t.setPosition(aX, aY);
+        t.setPosition((int) aX, (int) aY);
         t.setRotation(getRotation(aX, aY, bX, bY));
         t.move(getLength(aX, aY, bX, bY));
         t.setRotation(getRotation(bX, bY, cX, cY));

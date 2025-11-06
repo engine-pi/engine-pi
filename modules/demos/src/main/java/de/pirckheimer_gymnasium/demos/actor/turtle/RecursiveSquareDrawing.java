@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.little_engine.turtle;
+package de.pirckheimer_gymnasium.demos.actor.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.little_engine.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
 
 /**
  * Rahmenklasse zum Zeichen von Mustern aus Quadraten.
@@ -26,8 +26,8 @@ public class RecursiveSquareDrawing
     public RecursiveSquareDrawing()
     {
         t = new Turtle();
-        t.setColor("blau");
-        t.setPosition(400, 200);
+        t.setSpeed(1000);
+        t.setPosition(-8, 0);
     }
 
     /**
@@ -62,15 +62,16 @@ public class RecursiveSquareDrawing
      */
     void drawBeadChain(int numberOfBeads)
     {
+        double length = 0.4;
         if (numberOfBeads == 1)
         {
-            drawSquare(10);
+            drawSquare(length);
         }
         else
         {
             drawBeadChain(numberOfBeads - 1);
-            t.move(20);
-            drawSquare(10);
+            t.move(2);
+            drawSquare(length);
         }
     }
 
@@ -88,7 +89,7 @@ public class RecursiveSquareDrawing
     {
         if (numberOfSquares > 0)
         {
-            drawSquare(numberOfSquares * 10);
+            drawSquare((double) numberOfSquares / 2);
             drawSquarePattern(numberOfSquares - 1);
         }
     }
@@ -109,12 +110,12 @@ public class RecursiveSquareDrawing
         {
             t.liftPen();
             t.rotate(360 / numberOfSquares);
-            t.move(50);
+            t.move(3);
             t.lowerPen();
-            drawSquare(20);
+            drawSquare(1);
             t.liftPen();
             t.rotate(180);
-            t.move(50);
+            t.move(3);
             t.lowerPen();
             t.rotate(180);
             drawSquareCircle(numberOfSquares, remainingSquares - 1);
@@ -134,7 +135,7 @@ public class RecursiveSquareDrawing
      * @param radius Der Radius des Kreises mit den Quadraten.
      */
     private void drawSquareCircleWithRadius(int numberOfSquares,
-            int remainingSquares, int radius)
+            int remainingSquares, double radius)
     {
         if (remainingSquares > 0)
         {
@@ -164,9 +165,9 @@ public class RecursiveSquareDrawing
      * @param numberOfSquares Die Anzahl der Quadrate.
      * @param radius Der Radius des Kreises mit den Quadraten.
      */
-    public void drawMultipleSquareCircles(int numberOfSquares, int radius)
+    public void drawMultipleSquareCircles(int numberOfSquares, double radius)
     {
-        if (radius >= 30)
+        if (radius >= 1)
         {
             drawSquareCircleWithRadius(numberOfSquares, numberOfSquares,
                     radius);
@@ -177,9 +178,9 @@ public class RecursiveSquareDrawing
     public static void main(String[] args)
     {
         RecursiveSquareDrawing drawing = new RecursiveSquareDrawing();
-        drawing.drawBeadChain(10);
+        // drawing.drawBeadChain(10);
         // drawing.drawSquarePattern(10);
         // drawing.drawSquareCircle(7, 7);
-        // drawing.drawMultipleSquareCircles(7, 100);
+        drawing.drawMultipleSquareCircles(7, 3);
     }
 }
