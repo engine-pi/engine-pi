@@ -70,9 +70,15 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  */
 public class Turtle
 {
+    /**
+     * Eine Szene, in die die Schildkröte zeichnet.
+     */
     private final Scene scene;
 
-    private Actor turtle;
+    /**
+     * Die grafische Repräsentation der Schildkröte.
+     */
+    private Actor turtleImage;
 
     /**
      * Zeigt an, ob die Schildkröte momentatn den Stift gesenkt hat und zeichnet
@@ -96,11 +102,20 @@ public class Turtle
      */
     private Color lineColor = colors.get("yellow");
 
+    /**
+     * Die Hintergrundfarbe der Zeichenfläche.
+     */
     private Color backgroundColor = ColorUtil
             .changeSaturation(colors.get("yellow"), 0.7);
 
+    /**
+     * Die Größe der Schildkröte in Meter.
+     */
     private double turtleSize = 2;
 
+    /**
+     * Die Malfläche, in die die Schildkröte zeichnet.
+     */
     private PaintingSurface surface;
 
     /**
@@ -121,6 +136,9 @@ public class Turtle
      */
     private Vector lastPosition;
 
+    /**
+     * Eine Referenz auf eine Szene, in die die Schildkröte zeichnet.
+     */
     public Turtle()
     {
         this(new Scene());
@@ -134,13 +152,17 @@ public class Turtle
         }
     }
 
+    /**
+     *
+     * @param scene Eine Szene, in die die Schildkröte zeichnet.
+     */
     public Turtle(Scene scene)
     {
         this.scene = scene;
         scene.setBackgroundColor(backgroundColor);
         currentPenPosition = new Vector(0, 0);
         setActor(true);
-        scene.add(turtle);
+        scene.add(turtleImage);
     }
 
     /**
@@ -155,15 +177,15 @@ public class Turtle
                     turtleSize, turtleSize, images.get("turtle.png"),
                     images.get("turtle2.png"));
             animation.enableManualMode();
-            turtle = animation;
+            turtleImage = animation;
         }
         else
         {
-            turtle = new Polygon(v(-turtleSize / 4, turtleSize / 4),
+            turtleImage = new Polygon(v(-turtleSize / 4, turtleSize / 4),
                     v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
-            turtle.setColor("green");
+            turtleImage.setColor("green");
         }
-        turtle.setCenter(currentPenPosition);
+        turtleImage.setCenter(currentPenPosition);
     }
 
     /**
@@ -206,28 +228,6 @@ public class Turtle
     }
 
     /**
-     * <b>Warte</b> die angegeben Anzahl an Sekunden.
-     *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags gibt es keine
-     * ähnliche Methode, in der Engine Alpha {@code warte}.
-     * </p>
-     *
-     * @param seconds Wie lange die Schildkröte warten soll.
-     */
-    public void wait(double seconds)
-    {
-        try
-        {
-            Thread.sleep((long) (1000 * seconds));
-        }
-        catch (InterruptedException e)
-        {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    /**
      * <b>Wechselt</b> in den Modus <em>„zeichnen“</em>.
      *
      * <p>
@@ -266,16 +266,17 @@ public class Turtle
      */
     public void move(double distance)
     {
-        Vector move = Vector.ofAngle(turtle.getRotation()).multiply(distance);
+        Vector move = Vector.ofAngle(turtleImage.getRotation())
+                .multiply(distance);
         Vector initial = currentPenPosition;
         double duration = distance / speed;
         animate(duration, progress -> {
             lastPosition = currentPenPosition;
             currentPenPosition = initial.add(move.multiply(progress));
-            turtle.setCenter(currentPenPosition);
-            if (turtle instanceof Animation)
+            turtleImage.setCenter(currentPenPosition);
+            if (turtleImage instanceof Animation)
             {
-                Animation animation = (Animation) turtle;
+                Animation animation = (Animation) turtleImage;
                 animation.showNext();
             }
             if (drawLine)
@@ -284,8 +285,8 @@ public class Turtle
                 {
                     surface = scene.getPaintingSurface();
                 }
-                surface.drawLine(lastPosition, turtle.getCenter(), lineColor,
-                        lineWidth);
+                surface.drawLine(lastPosition, turtleImage.getCenter(),
+                        lineColor, lineWidth);
             }
         });
     }
@@ -303,12 +304,12 @@ public class Turtle
      */
     public void rotate(double rotation)
     {
-        double start = turtle.getRotation();
+        double start = turtleImage.getRotation();
         double duration = Math.abs(rotation) / 360 / speed;
         // * 4 damit man die Rotation auch sieht
         animate(duration * 4, progress -> {
-            turtle.setRotation(start + progress * rotation);
-            turtle.setCenter(currentPenPosition);
+            turtleImage.setRotation(start + progress * rotation);
+            turtleImage.setCenter(currentPenPosition);
         });
     }
 
@@ -329,7 +330,7 @@ public class Turtle
     {
         lastPosition = currentPenPosition;
         currentPenPosition = position;
-        turtle.setCenter(position);
+        turtleImage.setCenter(position);
     }
 
     /**
@@ -360,9 +361,9 @@ public class Turtle
      */
     public void setDirection(double direction)
     {
-        turtle.setRotation(direction);
+        turtleImage.setRotation(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
-        turtle.setCenter(currentPenPosition);
+        turtleImage.setCenter(currentPenPosition);
     }
 
     /**
@@ -377,33 +378,51 @@ public class Turtle
     }
 
     /**
-     * Blenden die Schildkröte aus.
+     * <b>Blendet</b> die Schildkröte <b>aus</b>.
      */
     public void hide()
     {
-        turtle.hide();
+        turtleImage.hide();
     }
 
     /**
-     * Blendet die Schildkröte ein.
+     * <b>Blendet</b> die Schildkröte <b>ein</b>.
      */
     public void show()
     {
-        turtle.show();
+        turtleImage.show();
     }
 
+    /**
+     * Führt eine lineare Animation von 0 bis 1 über die angegebene Dauer aus
+     * und ruft dabei den übergebenen Setter kontinuierlich mit dem aktuellen
+     * Animationswert auf.
+     *
+     * <p>
+     * Die Methode blockiert den aufrufenden Thread bis zum Abschluss der
+     * Animation (sie wartet intern auf ein {@link CompletableFuture})..
+     * </p>
+     *
+     * @param duration Dauer der Animation in Sekunden.
+     * @param setter Callback, das mit dem aktuellen interpolierten Wert
+     *     (zwischen 0.0 und 1.0) während der Animation sowie abschließend mit
+     *     dem Endwert aufgerufen wird.
+     *
+     * @throws RuntimeException Falls der Thread unterbrochen wird oder im
+     *     Animator eine Ausnahme auftritt..
+     */
     private void animate(double duration, Consumer<Double> setter)
     {
         CompletableFuture<Void> future = new CompletableFuture<>();
 
         ValueAnimator<Double> animator = new ValueAnimator<>(duration, setter,
-                new LinearDouble(0, 1), turtle);
+                new LinearDouble(0, 1), turtleImage);
         animator.addCompletionListener(value -> {
             setter.accept(value);
             future.complete(null);
         });
 
-        turtle.addFrameUpdateListener(animator);
+        turtleImage.addFrameUpdateListener(animator);
 
         try
         {

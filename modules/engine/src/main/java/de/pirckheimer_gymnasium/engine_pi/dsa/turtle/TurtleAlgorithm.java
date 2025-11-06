@@ -4,7 +4,7 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
- * Diese abstrakte kann von geerbt werden, um einen Algorithmus zur Zeichnung
+ * Diese abstrakte Klasse kann geerbt werden, um einen Algorithmus zur Zeichnung
  * einer Turtle-Grafik zu formulieren. Da Turtle-Algorithmen oft rekursiv sind,
  * reicht es nicht den Algorithmus in eine Methode zu schreiben. Die Klasse
  * implementiert auch die {@link Runnable}-Schnittstelle, um lang laufende
@@ -20,6 +20,8 @@ public abstract class TurtleAlgorithm implements Runnable
 
     protected Scene scene;
 
+    protected Runnable onFinished;
+
     public TurtleAlgorithm(Scene scene)
     {
         turtle = new Turtle(scene);
@@ -31,16 +33,53 @@ public abstract class TurtleAlgorithm implements Runnable
         this(new Scene());
     }
 
-    public abstract void run();
+    public TurtleAlgorithm onFinished(Runnable onFinished)
+    {
+        this.onFinished = onFinished;
+        return this;
+    }
 
+    protected abstract void draw();
+
+    public void run()
+    {
+        draw();
+        if (onFinished != null)
+        {
+            onFinished.run();
+        }
+    }
+
+    private void trigger(boolean openWindow)
+    {
+        if (openWindow)
+        {
+            Game.start(scene);
+        }
+        run();
+
+    }
+
+    /**
+     * Startet den Algorithmus und öffnet ein Fenster.
+     */
+    public void show()
+    {
+        trigger(true);
+    }
+
+    /**
+     * Startet den Algorithmus und öffnet kein Fenster.
+     */
     public void start()
     {
-        Game.start(scene);
-        run();
+        trigger(false);
     }
 
     /**
      * Löscht den Hintergrund, d.h. alle bisher eingezeichneten Malspuren.
+     *
+     * @see Turtle#clearBackground()
      */
     public void clearBackground()
     {
@@ -49,6 +88,8 @@ public abstract class TurtleAlgorithm implements Runnable
 
     /**
      * Blenden die Schildkröte aus.
+     *
+     * @see Turtle#hide()
      */
     public void hideTurtle()
     {
@@ -57,6 +98,8 @@ public abstract class TurtleAlgorithm implements Runnable
 
     /**
      * Blendet die Schildkröte ein.
+     *
+     * @see Turtle#show()
      */
     public void showTurtle()
     {

@@ -46,7 +46,7 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
         this(new Scene());
     }
 
-    public void run()
+    public void draw()
     {
         turtle.setSpeed(100);
         turtle.setStartPosition(-7, 7);
@@ -99,6 +99,6 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new HilbertCurveTurtle().start();
+        new HilbertCurveTurtle().show();
     }
 }

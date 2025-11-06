@@ -68,7 +68,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
         this(5);
     }
 
-    public void run()
+    public void draw()
     {
         a = 2;
         b = 2;
@@ -239,6 +239,6 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new PythagorasTreeTurtle().start();
+        new PythagorasTreeTurtle().show();
     }
 }

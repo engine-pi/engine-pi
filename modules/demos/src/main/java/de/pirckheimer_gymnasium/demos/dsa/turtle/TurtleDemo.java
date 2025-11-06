@@ -20,9 +20,22 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
     {
         algos = new ArrayList<>();
         algos.add(new SquareTurtle(this));
+        algos.add(new SetDirectionTurtle(this));
         algos.add(new SnowflakeTurtle(this));
         algos.add(new HilbertCurveTurtle(this));
+        algos.add(new LevyCCurveTurtle(this));
+        algos.add(new SierpinskiCurveTurtle(this));
         clearAll();
+    }
+
+    public void registerStartNext()
+    {
+        for (TurtleAlgorithm turtleAlgorithm : algos)
+        {
+            turtleAlgorithm.onFinished(() -> {
+                startNextAlgorithm();
+            });
+        }
     }
 
     public void clearAll()
@@ -60,11 +73,22 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
         startAlgorithm(currentAlgoIndex);
     }
 
+    private void runAll()
+    {
+        registerStartNext();
+        startAlgorithm(0);
+        currentAlgoIndex = 0;
+    }
+
     @Override
     public void onKeyDown(KeyEvent event)
     {
         switch (event.getKeyCode())
         {
+        case KeyEvent.VK_ENTER:
+            runAll();
+            break;
+
         case KeyEvent.VK_SPACE:
             startNextAlgorithm();
             break;

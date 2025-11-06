@@ -50,7 +50,7 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         this(new Scene(), 10, 3);
     }
 
-    public void run()
+    public void draw()
     {
         drawSnowFlake(length, depth);
     }

@@ -17,7 +17,7 @@ public class SquareTurtle extends TurtleAlgorithm
     }
 
     @Override
-    public void run()
+    public void draw()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -28,6 +28,6 @@ public class SquareTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new SquareTurtle().start();
+        new SquareTurtle().show();
     }
 }

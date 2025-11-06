@@ -36,7 +36,7 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
         this(new Scene());
     }
 
-    public void run()
+    public void draw()
     {
         drawCurve(depth);
     }
@@ -88,6 +88,6 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new LevyCCurveTurtle().start();
+        new LevyCCurveTurtle().show();
     }
 }

@@ -3,41 +3,41 @@ package de.pirckheimer_gymnasium.demos.dsa.turtle;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
-public class SetRotationTurtle extends TurtleAlgorithm
+public class SetDirectionTurtle extends TurtleAlgorithm
 {
 
-    public SetRotationTurtle(Scene scene)
+    public SetDirectionTurtle(Scene scene)
     {
         super(scene);
         turtle.setSpeed(2);
     }
 
-    public SetRotationTurtle()
+    public SetDirectionTurtle()
     {
         this(new Scene());
     }
 
-    private void setRotation(double rotation)
+    private void setDirection(double direction)
     {
         turtle.lowerPen();
         turtle.setStartPosition(0, 0);
-        turtle.setDirection(rotation);
+        turtle.setDirection(direction);
         turtle.move(4);
         turtle.liftPen();
 
     }
 
     @Override
-    public void run()
+    public void draw()
     {
-        setRotation(0);
-        setRotation(90);
-        setRotation(180);
-        setRotation(270);
+        setDirection(0);
+        setDirection(90);
+        setDirection(180);
+        setDirection(270);
     }
 
     public static void main(String[] args)
     {
-        new SetRotationTurtle().start();
+        new SetDirectionTurtle().start();
     }
 }
