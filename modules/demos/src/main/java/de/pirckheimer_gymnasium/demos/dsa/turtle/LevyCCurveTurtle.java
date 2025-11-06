@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
  * Zeichnet die Lévy-C-Kurve.
@@ -9,22 +10,35 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
  *
  * @version 1.0
  */
-public class LevyCCurve
+public class LevyCCurveTurtle extends TurtleAlgorithm
 {
-    /**
-     * Die Schildkröte.
-     */
-    private Turtle t;
+    private int depth;
 
     /**
      * Legt die Schildkröte an.
      */
-    public LevyCCurve()
+    public LevyCCurveTurtle(Scene scene, int depth)
     {
-        t = new Turtle();
-        t.setSpeed(300);
-        t.liftPen();
-        t.lowerPen();
+        super(scene);
+        this.depth = depth;
+        turtle.setSpeed(10000);
+        turtle.setPosition(-4, 0);
+
+    }
+
+    public LevyCCurveTurtle(Scene scene)
+    {
+        this(scene, 10);
+    }
+
+    public LevyCCurveTurtle()
+    {
+        this(new Scene());
+    }
+
+    public void run()
+    {
+        drawCurve(depth);
     }
 
     /**
@@ -36,12 +50,10 @@ public class LevyCCurve
      * </p>
      *
      * @param depth Die Rekursionstiefe.
-     * @param color Die Linienfarbe.
      */
-    void drawCurve(int depth, String color)
+    void drawCurve(int depth)
     {
-
-        drawPart(5, depth);
+        drawPart(7, depth);
     }
 
     /**
@@ -60,23 +72,22 @@ public class LevyCCurve
     {
         if (depth > 0)
         {
-            t.rotate(45);
+            turtle.rotate(45);
             // 1 / Math.sqrt(2) == 0.7071067811865475
             // sqrt -> square root -> Quadratwurzel
             drawPart(length * 0.7071, depth - 1);
-            t.rotate(-90);
+            turtle.rotate(-90);
             drawPart(length * 0.7071, depth - 1);
-            t.rotate(45);
+            turtle.rotate(45);
         }
         else
         {
-            t.move(length);
+            turtle.move(length);
         }
     }
 
     public static void main(String[] args)
     {
-        LevyCCurve curve = new LevyCCurve();
-        curve.drawCurve(10, "schwarz");
+        new LevyCCurveTurtle().start();
     }
 }

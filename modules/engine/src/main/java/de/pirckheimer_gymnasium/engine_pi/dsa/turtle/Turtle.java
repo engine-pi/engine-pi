@@ -94,7 +94,12 @@ public class Turtle
     /**
      * Die Farbe der Linie.
      */
-    private Color lineColor = colors.get("brown");
+    private Color lineColor = colors.get("yellow");
+
+    private Color backgroundColor = ColorUtil
+            .changeSaturation(colors.get("yellow"), 0.7);
+
+    private double turtleSize = 2;
 
     private PaintingSurface surface;
 
@@ -120,8 +125,7 @@ public class Turtle
     public Turtle(Scene scene)
     {
         this.scene = scene;
-        scene.setBackgroundColor(
-                ColorUtil.changeSaturation(colors.get("yellow"), 0.7));
+        scene.setBackgroundColor(backgroundColor);
         setActor(true);
         scene.add(turtle);
         // scene.getCamera().setFocus(turtle);
@@ -137,14 +141,16 @@ public class Turtle
         {
             // turtle = new Image("turtle.png", 1, 1);
 
-            Animation animation = Animation.createFromImages(1 / speed, 1, 1,
-                    images.get("turtle.png"), images.get("turtle2.png"));
+            Animation animation = Animation.createFromImages(1 / speed,
+                    turtleSize, turtleSize, images.get("turtle.png"),
+                    images.get("turtle2.png"));
             animation.enableManualMode();
             turtle = animation;
         }
         else
         {
-            turtle = new Polygon(v(-0.25, 0.25), v(1, 0), v(-0.25, -0.25));
+            turtle = new Polygon(v(-turtleSize / 4, turtleSize / 4),
+                    v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
             turtle.setColor("green");
         }
         turtle.setCenter(0, 0);
@@ -309,6 +315,33 @@ public class Turtle
     public void setRotation(double rotation)
     {
         turtle.setRotation(rotation);
+    }
+
+    /**
+     * Löscht den Hintergrund, d.h. alle bisher eingezeichneten Malspuren.
+     */
+    public void clearBackground()
+    {
+        if (surface != null)
+        {
+            surface.fill(backgroundColor);
+        }
+    }
+
+    /**
+     * Blenden die Schildkröte aus.
+     */
+    public void hide()
+    {
+        turtle.hide();
+    }
+
+    /**
+     * Blendet die Schildkröte ein.
+     */
+    public void show()
+    {
+        turtle.show();
     }
 
     private void animate(double duration, Consumer<Double> setter)

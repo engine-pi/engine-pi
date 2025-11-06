@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
+import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 /**
@@ -25,5 +26,40 @@ public abstract class TurtleAlgorithm implements Runnable
         this.scene = scene;
     }
 
+    public TurtleAlgorithm()
+    {
+        this(new Scene());
+    }
+
     public abstract void run();
+
+    public void start()
+    {
+        Game.start(scene);
+        run();
+    }
+
+    /**
+     * Löscht den Hintergrund, d.h. alle bisher eingezeichneten Malspuren.
+     */
+    public void clearBackground()
+    {
+        turtle.clearBackground();
+    }
+
+    /**
+     * Blenden die Schildkröte aus.
+     */
+    public void hideTurtle()
+    {
+        turtle.hide();
+    }
+
+    /**
+     * Blendet die Schildkröte ein.
+     */
+    public void showTurtle()
+    {
+        turtle.show();
+    }
 }

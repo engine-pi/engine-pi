@@ -12,12 +12,52 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
 {
     ArrayList<TurtleAlgorithm> algos;
 
+    int currentAlgoIndex = -1;
+
     Thread thread;
 
     public TurtleDemo()
     {
         algos = new ArrayList<>();
         algos.add(new SquareTurtle(this));
+        algos.add(new SnowflakeTurtle(this));
+        algos.add(new HilbertCurveTurtle(this));
+        clearAll();
+    }
+
+    public void clearAll()
+    {
+        for (TurtleAlgorithm turtleAlgorithm : algos)
+        {
+            turtleAlgorithm.hideTurtle();
+            turtleAlgorithm.clearBackground();
+        }
+    }
+
+    private void startAlgorithm(int index)
+    {
+        if (thread != null)
+        {
+            thread.interrupt();
+        }
+        TurtleAlgorithm algo = algos.get(index);
+        clearAll();
+        algo.showTurtle();
+        thread = new Thread(algos.get(index));
+        thread.start();
+    }
+
+    private void startNextAlgorithm()
+    {
+        if (currentAlgoIndex == algos.size() - 1)
+        {
+            currentAlgoIndex = 0;
+        }
+        else
+        {
+            currentAlgoIndex++;
+        }
+        startAlgorithm(currentAlgoIndex);
     }
 
     @Override
@@ -26,8 +66,7 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
         switch (event.getKeyCode())
         {
         case KeyEvent.VK_SPACE:
-            thread = new Thread(algos.get(0));
-            thread.start();
+            startNextAlgorithm();
             break;
 
         case KeyEvent.VK_E:

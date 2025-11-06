@@ -20,21 +20,39 @@
  */
 package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
  * https://de.wikipedia.org/wiki/Koch-Kurve
  */
-public class SnowflakeDemo
+public class SnowflakeTurtle extends TurtleAlgorithm
 {
+    private double length;
 
-    private Turtle turtle;
+    private int depth;
 
-    public SnowflakeDemo()
+    public SnowflakeTurtle(Scene scene, double length, int depth)
     {
-        turtle = new Turtle();
+        super(scene);
+        this.length = length;
+        this.depth = depth;
         turtle.setSpeed(100);
-        drawSnowFlake(10, 3);
+    }
+
+    public SnowflakeTurtle(Scene scene)
+    {
+        this(scene, 10, 3);
+    }
+
+    public SnowflakeTurtle()
+    {
+        this(new Scene(), 10, 3);
+    }
+
+    public void run()
+    {
+        drawSnowFlake(length, depth);
     }
 
     private void drawSnowFlake(double length, int depth)
@@ -82,7 +100,7 @@ public class SnowflakeDemo
 
     public static void main(String[] args)
     {
-        new SnowflakeDemo();
+        new SnowflakeTurtle().start();
     }
 
 }
