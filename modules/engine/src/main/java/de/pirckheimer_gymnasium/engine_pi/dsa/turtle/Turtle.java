@@ -104,6 +104,18 @@ public class Turtle
     private PaintingSurface surface;
 
     /**
+     * Die aktuelle Position des Stifts. Diese Position wird bewegt und das
+     * Zentrum der Figur wird auf diese Position gesetzt.
+     *
+     * <p>
+     * Es reicht nicht, die Stiftposition über die Methode
+     * {@link Actor#getCenter()} der Schildkrötenfigur zu bestimmen, denn bei
+     * einer Rotation ändert sich das Zentrum.
+     * </p>
+     */
+    private Vector currentPenPosition;
+
+    /**
      * Das Zentrum der Schildkröte vor der Aktualisierung. Diese Position wird
      * verwendet, um die einzelnen Liniensegmente zu zeichnen.
      */
@@ -126,9 +138,9 @@ public class Turtle
     {
         this.scene = scene;
         scene.setBackgroundColor(backgroundColor);
+        currentPenPosition = new Vector(0, 0);
         setActor(true);
         scene.add(turtle);
-        // scene.getCamera().setFocus(turtle);
     }
 
     /**
@@ -139,8 +151,6 @@ public class Turtle
     {
         if (actorAsImage)
         {
-            // turtle = new Image("turtle.png", 1, 1);
-
             Animation animation = Animation.createFromImages(1 / speed,
                     turtleSize, turtleSize, images.get("turtle.png"),
                     images.get("turtle2.png"));
@@ -153,17 +163,7 @@ public class Turtle
                     v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
             turtle.setColor("green");
         }
-        turtle.setCenter(0, 0);
-    }
-
-    public void setPosition(Vector position)
-    {
-        turtle.setCenter(position);
-    }
-
-    public void setPosition(double x, double y)
-    {
-        turtle.setCenter(new Vector(x, y));
+        turtle.setCenter(currentPenPosition);
     }
 
     /**
@@ -267,11 +267,12 @@ public class Turtle
     public void move(double distance)
     {
         Vector move = Vector.ofAngle(turtle.getRotation()).multiply(distance);
-        Vector initial = turtle.getCenter();
+        Vector initial = currentPenPosition;
         double duration = distance / speed;
         animate(duration, progress -> {
-            lastPosition = turtle.getCenter();
-            turtle.setCenter(initial.add(move.multiply(progress)));
+            lastPosition = currentPenPosition;
+            currentPenPosition = initial.add(move.multiply(progress));
+            turtle.setCenter(currentPenPosition);
             if (turtle instanceof Animation)
             {
                 Animation animation = (Animation) turtle;
@@ -302,19 +303,66 @@ public class Turtle
      */
     public void rotate(double rotation)
     {
-        Vector center = turtle.getCenter();
         double start = turtle.getRotation();
         double duration = Math.abs(rotation) / 360 / speed;
         // * 4 damit man die Rotation auch sieht
         animate(duration * 4, progress -> {
             turtle.setRotation(start + progress * rotation);
-            turtle.setCenter(center);
+            turtle.setCenter(currentPenPosition);
         });
     }
 
-    public void setRotation(double rotation)
+    /**
+     * Setzt die Schildkröte auf eine neue <b>Position</b>.
+     *
+     * <p>
+     * Im Gegensatz zur {@link #move(double)}-Methode geschieht die Bewegung
+     * hier ruckhaft. Die Schildkröte wird quasi in die Luft gehoben und an
+     * einer anderen Stelle wieder abgesetzt. Deshalb wird auch keine Linie
+     * gezeichnet und auch keine Animation durchgeführt. Sonst könnte mit dieser
+     * Methode „geschummelt“ werden.
+     * </p>
+     *
+     * @param position Die bewünschte Position als Vektor in Meter.
+     */
+    public void setStartPosition(Vector position)
     {
-        turtle.setRotation(rotation);
+        lastPosition = currentPenPosition;
+        currentPenPosition = position;
+        turtle.setCenter(position);
+    }
+
+    /**
+     * Setzt die Schildkröte auf eine neue <b>Position</b>.
+     *
+     * <p>
+     * Im Gegensatz zur {@link #move(double)}-Methode geschieht die Bewegung
+     * hier ruckhaft. Die Schildkröte wird quasi in die Luft gehoben und an
+     * einer anderen Stelle wieder abgesetzt. Deshalb wird auch keine Linie
+     * gezeichnet und auch keine Animation durchgeführt. Sonst könnte mit dieser
+     * Methode „geschummelt“ werden.
+     * </p>
+     *
+     * @param x Die x-Koordinate der gewünschten Position in Meter.
+     * @param y Die y-Koordinate der gewünschten Position in Meter.
+     */
+    public void setStartPosition(double x, double y)
+    {
+        setStartPosition(new Vector(x, y));
+    }
+
+    /**
+     * Setzt die <b>Blickrichtung</b> der Schildkröte.
+     *
+     * @param direction Die Blickrichtung der Schildkröte in Grad: 0°: nach
+     *     rechts (Osten), 90°: nach oben (Norden) 180°: nach links (Westen)
+     *     270°: nach unten (Süden)
+     */
+    public void setDirection(double direction)
+    {
+        turtle.setRotation(direction);
+        // Unbedingt notwendig, da eine Rotation das Zentrum verändert
+        turtle.setCenter(currentPenPosition);
     }
 
     /**
@@ -370,13 +418,13 @@ public class Turtle
     public static void main(String[] args)
     {
         Turtle turtle = new Turtle();
-        turtle.setSpeed(2);
+        turtle.setSpeed(1);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             turtle.lowerPen();
             turtle.move(3);
-            turtle.rotate(-90);
+            turtle.rotate(120);
         }
     }
 }

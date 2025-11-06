@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
  * Zeichnet den Pythagorasbaum.
@@ -15,12 +16,10 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
  *
  * @version 1.0
  */
-public class PythagorasTree
+public class PythagorasTreeTurtle extends TurtleAlgorithm
 {
-    /**
-     * Die Schildkröte.
-     */
-    Turtle t;
+
+    int depth;
 
     /**
      * Seite a des rechtwinkeligen Ausgangsdreiecks
@@ -52,17 +51,32 @@ public class PythagorasTree
      *
      * @param depth Die Rekursionstiefe.
      */
-    public PythagorasTree(int depth)
+    public PythagorasTreeTurtle(Scene scene, int depth)
     {
-        t = new Turtle();
-        t.setSpeed(1000);
+        super(scene);
+        this.depth = depth;
+        turtle.setSpeed(1000);
+    }
+
+    public PythagorasTreeTurtle(int depth)
+    {
+        this(new Scene(), depth);
+    }
+
+    public PythagorasTreeTurtle()
+    {
+        this(5);
+    }
+
+    public void run()
+    {
         a = 2;
         b = 2;
         c2 = a * a + b * b;
         bc = (b * b) / c2;
         abc = a * b / c2;
         drawRectangle(8, 2, 10, 2, 10, 4, 8, 4);
-        // makeStep(8, 4, 10, 4, depth);
+        makeStep(8, 4, 10, 4, depth);
     }
 
     /**
@@ -147,13 +161,13 @@ public class PythagorasTree
     private void drawTriangle(double aX, double aY, double bX, double bY,
             double cX, double cY)
     {
-        t.setPosition(aX, aY);
-        t.setRotation(getRotation(aX, aY, bX, bY));
-        t.move(getLength(aX, aY, bX, bY));
-        t.setRotation(getRotation(bX, bY, cX, cY));
-        t.move(getLength(bX, bY, cX, cY));
-        t.setRotation(getRotation(cX, cY, aX, aY));
-        t.move(getLength(cX, cY, aX, aY));
+        turtle.setStartPosition(aX, aY);
+        turtle.setDirection(getRotation(aX, aY, bX, bY));
+        turtle.move(getLength(aX, aY, bX, bY));
+        turtle.setDirection(getRotation(bX, bY, cX, cY));
+        turtle.move(getLength(bX, bY, cX, cY));
+        turtle.setDirection(getRotation(cX, cY, aX, aY));
+        turtle.move(getLength(cX, cY, aX, aY));
     }
 
     /**
@@ -176,15 +190,15 @@ public class PythagorasTree
     private void drawRectangle(double aX, double aY, double bX, double bY,
             double cX, double cY, double dX, double dY)
     {
-        t.setPosition(aX, aY);
-        t.setRotation(getRotation(aX, aY, bX, bY));
-        t.move(getLength(aX, aY, bX, bY));
-        t.setRotation(getRotation(bX, bY, cX, cY));
-        t.move(getLength(bX, bY, cX, cY));
-        t.setRotation(getRotation(cX, cY, dX, dY));
-        t.move(getLength(cX, cY, dX, dY));
-        t.setRotation(getRotation(dX, dY, aX, aY));
-        t.move(getLength(dX, dY, aX, aY));
+        turtle.setStartPosition(aX, aY);
+        turtle.setDirection(getRotation(aX, aY, bX, bY));
+        turtle.move(getLength(aX, aY, bX, bY));
+        turtle.setDirection(getRotation(bX, bY, cX, cY));
+        turtle.move(getLength(bX, bY, cX, cY));
+        turtle.setDirection(getRotation(cX, cY, dX, dY));
+        turtle.move(getLength(cX, cY, dX, dY));
+        turtle.setDirection(getRotation(dX, dY, aX, aY));
+        turtle.move(getLength(dX, dY, aX, aY));
     }
 
     /**
@@ -225,6 +239,6 @@ public class PythagorasTree
 
     public static void main(String[] args)
     {
-        new PythagorasTree(5);
+        new PythagorasTreeTurtle().start();
     }
 }

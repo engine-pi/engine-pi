@@ -26,8 +26,8 @@ public class RecursiveSquareDrawing
     public RecursiveSquareDrawing()
     {
         t = new Turtle();
-        t.setSpeed(1000);
-        t.setPosition(-8, 0);
+        t.setSpeed(12);
+        t.setStartPosition(-8, 0);
     }
 
     /**

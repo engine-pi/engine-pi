@@ -1,8 +1,6 @@
 package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -18,10 +16,6 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  */
 public class SierpinskiCurve extends TurtleAlgorithm
 {
-    /**
-     * Die Schildkröte.
-     */
-    private Turtle turtle;
 
     /**
      * Die Linienlänge.
@@ -46,6 +40,16 @@ public class SierpinskiCurve extends TurtleAlgorithm
         this.depth = depth;
     }
 
+    public SierpinskiCurve(int depth)
+    {
+        this(new Scene(), depth);
+    }
+
+    public SierpinskiCurve()
+    {
+        this(5);
+    }
+
     public void run()
     {
         length = 4;
@@ -60,19 +64,19 @@ public class SierpinskiCurve extends TurtleAlgorithm
         length2 = length * 1.414213562373095;
         length = length * 2.0;
         turtle.liftPen();
-        turtle.setPosition(x0, y0);
+        turtle.setStartPosition(x0, y0);
         turtle.lowerPen();
         drawElementA(depth);
-        turtle.setRotation(315);
+        turtle.setDirection(315);
         turtle.move(length2);
         drawElementB(depth);
-        turtle.setRotation(225);
+        turtle.setDirection(225);
         turtle.move(length2);
         drawElementC(depth);
-        turtle.setRotation(135);
+        turtle.setDirection(135);
         turtle.move(length2);
         drawElementD(depth);
-        turtle.setRotation(45);
+        turtle.setDirection(45);
         turtle.move(length2);
     }
 
@@ -91,13 +95,13 @@ public class SierpinskiCurve extends TurtleAlgorithm
         if (depth > 0)
         {
             drawElementA(depth - 1);
-            turtle.setRotation(315);
+            turtle.setDirection(315);
             turtle.move(length2);
             drawElementB(depth - 1);
-            turtle.setRotation(0);
+            turtle.setDirection(0);
             turtle.move(length);
             drawElementD(depth - 1);
-            turtle.setRotation(45);
+            turtle.setDirection(45);
             turtle.move(length2);
             drawElementA(depth - 1);
         }
@@ -118,13 +122,13 @@ public class SierpinskiCurve extends TurtleAlgorithm
         if (depth > 0)
         {
             drawElementB(depth - 1);
-            turtle.setRotation(225);
+            turtle.setDirection(225);
             turtle.move(length2);
             drawElementC(depth - 1);
-            turtle.setRotation(270);
+            turtle.setDirection(270);
             turtle.move(length);
             drawElementA(depth - 1);
-            turtle.setRotation(315);
+            turtle.setDirection(315);
             turtle.move(length2);
             drawElementB(depth - 1);
         }
@@ -145,13 +149,13 @@ public class SierpinskiCurve extends TurtleAlgorithm
         if (depth > 0)
         {
             drawElementC(depth - 1);
-            turtle.setRotation(135);
+            turtle.setDirection(135);
             turtle.move(length2);
             drawElementD(depth - 1);
-            turtle.setRotation(180);
+            turtle.setDirection(180);
             turtle.move(length);
             drawElementB(depth - 1);
-            turtle.setRotation(225);
+            turtle.setDirection(225);
             turtle.move(length2);
             drawElementC(depth - 1);
         }
@@ -172,13 +176,13 @@ public class SierpinskiCurve extends TurtleAlgorithm
         if (depth > 0)
         {
             drawElementD(depth - 1);
-            turtle.setRotation(45);
+            turtle.setDirection(45);
             turtle.move(length2);
             drawElementA(depth - 1);
-            turtle.setRotation(90);
+            turtle.setDirection(90);
             turtle.move(length);
             drawElementC(depth - 1);
-            turtle.setRotation(135);
+            turtle.setDirection(135);
             turtle.move(length2);
             drawElementD(depth - 1);
         }
@@ -186,8 +190,6 @@ public class SierpinskiCurve extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        Scene scene = Game.start();
-        new SierpinskiCurve(scene, 5).run();
-
+        new SierpinskiCurve().start();
     }
 }

@@ -49,7 +49,7 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
     public void run()
     {
         turtle.setSpeed(100);
-        turtle.setPosition(-7, 7);
+        turtle.setStartPosition(-7, 7);
         length = 15 / Math.pow(2.0, depth);
         turtle.liftPen();
         turtle.lowerPen();

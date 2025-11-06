@@ -22,7 +22,7 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
         super(scene);
         this.depth = depth;
         turtle.setSpeed(10000);
-        turtle.setPosition(-4, 0);
+        turtle.setStartPosition(-4, 0);
 
     }
 
