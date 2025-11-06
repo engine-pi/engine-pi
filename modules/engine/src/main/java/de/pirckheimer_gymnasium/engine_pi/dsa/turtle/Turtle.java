@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.engine_pi.actor;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
@@ -33,6 +33,9 @@ import java.util.function.Consumer;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
+import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
+import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
@@ -103,15 +106,7 @@ public class Turtle
 
     public Turtle()
     {
-        scene = new Scene();
-
-        scene.setBackgroundColor(
-                ColorUtil.changeSaturation(colors.get("yellow"), 0.7));
-
-        setActor(true);
-
-        scene.add(turtle);
-
+        this(new Scene());
         if (!Game.isRunning())
         {
             Game.start(scene);
@@ -120,7 +115,15 @@ public class Turtle
         {
             Game.transitionToScene(scene);
         }
+    }
 
+    public Turtle(Scene scene)
+    {
+        this.scene = scene;
+        scene.setBackgroundColor(
+                ColorUtil.changeSaturation(colors.get("yellow"), 0.7));
+        setActor(true);
+        scene.add(turtle);
         // scene.getCamera().setFocus(turtle);
     }
 

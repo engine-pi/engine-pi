@@ -1,6 +1,8 @@
-package de.pirckheimer_gymnasium.demos.actor.turtle;
+package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
  * Zeichnet die Hilbert-Kurve.
@@ -13,31 +15,34 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
  *
  * @version 1.0
  */
-public class HilbertCurve
+public class HilbertCurve extends TurtleAlgorithm
 {
-    /**
-     * Die Schildkröte.
-     */
-    private Turtle t;
 
     /**
      * Die Linienlänge.
      */
     private double length;
 
+    private int depth;
+
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
      *
      * @param depth Die Rekursionstiefe.
      */
-    public HilbertCurve(int depth)
+    public HilbertCurve(Scene scene, int depth)
     {
-        t = new Turtle();
-        t.setSpeed(100);
-        t.setPosition(-7, 7);
+        super(scene);
+        this.depth = depth;
+    }
+
+    public void run()
+    {
+        turtle.setSpeed(100);
+        turtle.setPosition(-7, 7);
         length = 15 / Math.pow(2.0, depth);
-        t.liftPen();
-        t.lowerPen();
+        turtle.liftPen();
+        turtle.lowerPen();
         drawElement(false, depth);
     }
 
@@ -50,11 +55,11 @@ public class HilbertCurve
     {
         if (left)
         {
-            t.rotate(90);
+            turtle.rotate(90);
         }
         else
         {
-            t.rotate(-90);
+            turtle.rotate(-90);
         }
     }
 
@@ -70,13 +75,13 @@ public class HilbertCurve
         {
             rotate(left);
             drawElement(!left, depth - 1);
-            t.move(length);
+            turtle.move(length);
             rotate(!left);
             drawElement(left, depth - 1);
-            t.move(length);
+            turtle.move(length);
             drawElement(left, depth - 1);
             rotate(!left);
-            t.move(length);
+            turtle.move(length);
             drawElement(!left, depth - 1);
             rotate(left);
         }
@@ -84,6 +89,7 @@ public class HilbertCurve
 
     public static void main(String[] args)
     {
-        new HilbertCurve(5);
+        Scene scene = Game.start();
+        new HilbertCurve(scene, 5).run();
     }
 }

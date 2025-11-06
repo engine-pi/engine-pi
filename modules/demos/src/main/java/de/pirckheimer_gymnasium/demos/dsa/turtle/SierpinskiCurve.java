@@ -1,6 +1,9 @@
-package de.pirckheimer_gymnasium.demos.actor.turtle;
+package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
  * Zeichnet die Sierpinski-Kurve.
@@ -13,12 +16,12 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
  *
  * @version 1.0
  */
-public class SierpinskiCurve
+public class SierpinskiCurve extends TurtleAlgorithm
 {
     /**
      * Die Schildkröte.
      */
-    private Turtle t;
+    private Turtle turtle;
 
     /**
      * Die Linienlänge.
@@ -30,14 +33,21 @@ public class SierpinskiCurve
      */
     private double length2;
 
+    private int depth;
+
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
      *
      * @param depth Die Rekursionstiefe.
      */
-    public SierpinskiCurve(int depth)
+    public SierpinskiCurve(Scene scene, int depth)
     {
-        t = new Turtle();
+        super(scene);
+        this.depth = depth;
+    }
+
+    public void run()
+    {
         length = 4;
         double x0 = 0;
         double y0 = 8 - length;
@@ -49,21 +59,21 @@ public class SierpinskiCurve
         }
         length2 = length * 1.414213562373095;
         length = length * 2.0;
-        t.liftPen();
-        t.setPosition(x0, y0);
-        t.lowerPen();
+        turtle.liftPen();
+        turtle.setPosition(x0, y0);
+        turtle.lowerPen();
         drawElementA(depth);
-        t.setRotation(315);
-        t.move(length2);
+        turtle.setRotation(315);
+        turtle.move(length2);
         drawElementB(depth);
-        t.setRotation(225);
-        t.move(length2);
+        turtle.setRotation(225);
+        turtle.move(length2);
         drawElementC(depth);
-        t.setRotation(135);
-        t.move(length2);
+        turtle.setRotation(135);
+        turtle.move(length2);
         drawElementD(depth);
-        t.setRotation(45);
-        t.move(length2);
+        turtle.setRotation(45);
+        turtle.move(length2);
     }
 
     /**
@@ -81,14 +91,14 @@ public class SierpinskiCurve
         if (depth > 0)
         {
             drawElementA(depth - 1);
-            t.setRotation(315);
-            t.move(length2);
+            turtle.setRotation(315);
+            turtle.move(length2);
             drawElementB(depth - 1);
-            t.setRotation(0);
-            t.move(length);
+            turtle.setRotation(0);
+            turtle.move(length);
             drawElementD(depth - 1);
-            t.setRotation(45);
-            t.move(length2);
+            turtle.setRotation(45);
+            turtle.move(length2);
             drawElementA(depth - 1);
         }
     }
@@ -108,14 +118,14 @@ public class SierpinskiCurve
         if (depth > 0)
         {
             drawElementB(depth - 1);
-            t.setRotation(225);
-            t.move(length2);
+            turtle.setRotation(225);
+            turtle.move(length2);
             drawElementC(depth - 1);
-            t.setRotation(270);
-            t.move(length);
+            turtle.setRotation(270);
+            turtle.move(length);
             drawElementA(depth - 1);
-            t.setRotation(315);
-            t.move(length2);
+            turtle.setRotation(315);
+            turtle.move(length2);
             drawElementB(depth - 1);
         }
     }
@@ -135,14 +145,14 @@ public class SierpinskiCurve
         if (depth > 0)
         {
             drawElementC(depth - 1);
-            t.setRotation(135);
-            t.move(length2);
+            turtle.setRotation(135);
+            turtle.move(length2);
             drawElementD(depth - 1);
-            t.setRotation(180);
-            t.move(length);
+            turtle.setRotation(180);
+            turtle.move(length);
             drawElementB(depth - 1);
-            t.setRotation(225);
-            t.move(length2);
+            turtle.setRotation(225);
+            turtle.move(length2);
             drawElementC(depth - 1);
         }
     }
@@ -162,20 +172,22 @@ public class SierpinskiCurve
         if (depth > 0)
         {
             drawElementD(depth - 1);
-            t.setRotation(45);
-            t.move(length2);
+            turtle.setRotation(45);
+            turtle.move(length2);
             drawElementA(depth - 1);
-            t.setRotation(90);
-            t.move(length);
+            turtle.setRotation(90);
+            turtle.move(length);
             drawElementC(depth - 1);
-            t.setRotation(135);
-            t.move(length2);
+            turtle.setRotation(135);
+            turtle.move(length2);
             drawElementD(depth - 1);
         }
     }
 
     public static void main(String[] args)
     {
-        new SierpinskiCurve(5);
+        Scene scene = Game.start();
+        new SierpinskiCurve(scene, 5).run();
+
     }
 }

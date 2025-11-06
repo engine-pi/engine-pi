@@ -18,9 +18,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.actor.turtle;
+package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 
 /**
  * https://de.wikipedia.org/wiki/Koch-Kurve

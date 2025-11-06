@@ -1,6 +1,6 @@
-package de.pirckheimer_gymnasium.demos.actor.turtle;
+package de.pirckheimer_gymnasium.demos.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 
 /**
  * Rahmenklasse zum Zeichen von Mustern aus Quadraten.

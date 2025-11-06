@@ -3,7 +3,9 @@
  * Visualisierung von Lehrplaninhalten.
  *
  * <p>
- * DSA steht für <em>Data Structures and Algorithms</em>.
+ * {@code DSA} steht für <em>Data Structures and Algorithms</em> und ist die
+ * englische Abkürzung für {@code AUD} (<em>Algorithmen und
+ * Datenstrukturen</em>).
  * </p>
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa;
