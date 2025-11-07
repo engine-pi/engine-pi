@@ -13,7 +13,7 @@
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
-        <version>0.37.0</version>
+        <version>0.38.0</version>
         <relativePath>../../..</relativePath>
     </parent>
     <dependencies>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>de.pirckheimer-gymnasium</groupId>
             <artifactId>engine-pi</artifactId>
-            <version>0.37.0</version>
+            <version>0.38.0</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
