@@ -16,20 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.game;
+package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
-/**
- * Demonstriert die Methode {@link Game#requestYesNo(String, String)}.
- */
-public class RequestYesNoDemo
+public class SetPixelMultiplicationDemo extends Scene
 {
+    static
+    {
+        Game.setPixelMultiplication(2);
+    }
+
+    public SetPixelMultiplicationDemo()
+    {
+        addText("Text").setPosition(0, -1);
+        Actor image = addImage(
+                "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
+                1, 1);
+        setFocus(image);
+        setBackgroundColor("white");
+    }
+
     public static void main(String[] args)
     {
-        Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            Game.requestYesNo("Das ist eine Nachricht", "Das ist der Titel");
-        });
+        Game.start(new SetPixelMultiplicationDemo(), 125, 200);
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/MovingRectangle.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/TastenCounter.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -18,51 +18,43 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.input.keyboard;
+package de.pirckheimer_gymnasium.demos.classes.event.keyboard;
 
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class KeyEventDemo extends Scene implements KeyStrokeListener
+public class KeyStrokeCounterDemo extends Scene
 {
-    Actor rectangle;
-
-    public KeyEventDemo()
+    public KeyStrokeCounterDemo()
     {
-        rectangle = new Rectangle(2, 2);
-        add(rectangle);
+        add(new CounterText());
     }
 
-    @Override
-    public void onKeyDown(KeyEvent keyEvent)
+    private class CounterText extends Text implements KeyStrokeListener
     {
-        switch (keyEvent.getKeyCode())
+        private int counter = 0;
+
+        public CounterText()
         {
-        case KeyEvent.VK_UP:
-            rectangle.moveBy(0, 1);
-            break;
+            super("You pressed 0 keys.", 2);
+            setCenter(0, 0);
+        }
 
-        case KeyEvent.VK_RIGHT:
-            rectangle.moveBy(1, 0);
-            break;
-
-        case KeyEvent.VK_DOWN:
-            rectangle.moveBy(0, -1);
-            break;
-
-        case KeyEvent.VK_LEFT:
-            rectangle.moveBy(-1, 0);
-            break;
+        @Override
+        public void onKeyDown(KeyEvent keyEvent)
+        {
+            counter++;
+            setContent("You pressed " + counter + " keys.");
+            setCenter(0, 0);
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(new KeyEventDemo(), 600, 400);
+        Game.start(new KeyStrokeCounterDemo(), 700, 200);
     }
 }

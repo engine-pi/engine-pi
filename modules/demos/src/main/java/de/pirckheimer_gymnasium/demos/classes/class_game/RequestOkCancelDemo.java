@@ -16,19 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.game;
+package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 
 /**
- * Demonstriert die Methode {@link Game#isRunning()}.
+ * Demonstriert die Methode {@link Game#requestOkCancel(String, String)}.
  */
-public class IsRunningDemo
+public class RequestOkCancelDemo
 {
     public static void main(String[] args)
     {
-        System.out.println(Game.isRunning());
         Game.start();
-        System.out.println(Game.isRunning());
+        Game.addKeyStrokeListener((event) -> {
+            Game.requestOkCancel("Das ist eine Nachricht", "Das ist der Titel");
+        });
     }
 }

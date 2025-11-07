@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.demos.scenes;
+package de.pirckheimer_gymnasium.demos.classes.class_scene;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 

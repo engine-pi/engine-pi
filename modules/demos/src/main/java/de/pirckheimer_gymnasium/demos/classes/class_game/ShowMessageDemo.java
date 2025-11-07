@@ -16,31 +16,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.game;
+package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-
-import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die Methode {@link Game#setWindowPosition(int, int)}
+ * Demonstriert die Methode {@link Game#showMessage(String, String)}.
  */
-public class SetWindowSizeDemo
+public class ShowMessageDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
+        Game.start();
         Game.addKeyStrokeListener((event) -> {
-            switch (event.getKeyCode())
-            {
-            case KeyEvent.VK_1 -> {
-                Game.setWindowSize(600, 400);
-            }
-            case KeyEvent.VK_2 -> {
-                Game.setWindowSize(300, 200);
-            }
-            }
+            Game.showMessage("Das ist eine Nachricht", "Das ist der Titel");
         });
     }
 }

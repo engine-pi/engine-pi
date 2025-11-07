@@ -16,43 +16,45 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.input.keyboard;
-
-import java.awt.event.KeyEvent;
+package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
-public class KeyEventDisplayDemo extends Scene
+/**
+ * Demonstriert die Methode {@link Game#getMousePosition()}.
+ */
+public class GetMousePositionDemo extends Scene implements FrameUpdateListener
 {
-    public KeyEventDisplayDemo()
+    private final Text x;
+
+    private final Text y;
+
+    public GetMousePositionDemo()
     {
-        add(new KeyText());
+        addText("x:").setPosition(-3, 0);
+        x = addText("");
+        x.setPosition(-2, 0);
+        addText("y:").setPosition(1, 0);
+        y = addText("");
+        y.setPosition(2, 0);
+        setBackgroundColor("white");
     }
 
-    private class KeyText extends Text implements KeyStrokeListener
+    @Override
+    public void onFrameUpdate(double pastTime)
     {
-        public KeyText()
-        {
-            super("Press a key", 1);
-            setCenter(0, 0);
-        }
-
-        @Override
-        public void onKeyDown(KeyEvent keyEvent)
-        {
-            String text = KeyEvent.getKeyText(keyEvent.getKeyCode());
-            text = text.replace(" ", "_");
-            text = text.toUpperCase();
-            setContent("VK_" + text);
-            setCenter(0, 0);
-        }
+        Vector position = Game.getMousePosition();
+        x.setContent(TextUtil.roundNumber(position.getX()));
+        y.setContent(TextUtil.roundNumber(position.getY()));
     }
 
     public static void main(String[] args)
     {
-        Game.start(new KeyEventDisplayDemo());
+        Game.start(new GetMousePositionDemo());
     }
 }

@@ -16,20 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.game;
+package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 
 /**
- * Demonstriert die Methode {@link Game#showMessage(String, String)}.
+ * Demonstriert die Methode {@link Game#requestStringInput(String, String)}.
  */
-public class ShowMessageDemo
+public class RequestStringInputDemo
 {
     public static void main(String[] args)
     {
         Game.start();
         Game.addKeyStrokeListener((event) -> {
-            Game.showMessage("Das ist eine Nachricht", "Das ist der Titel");
+            String input = Game.requestStringInput("Das ist eine Nachricht",
+                    "Das ist der Titel");
+            System.out.println(input);
         });
     }
 }
