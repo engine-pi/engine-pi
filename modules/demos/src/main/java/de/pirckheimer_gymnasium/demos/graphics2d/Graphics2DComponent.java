@@ -13,9 +13,9 @@ import javax.swing.JFrame;
  * Actor-Klassen eine render-Methode an. Außerdem eine show-Methode und eine
  * Fenster zum zeichnen.
  */
-abstract class Component extends JComponent
+public abstract class Graphics2DComponent extends JComponent
 {
-    abstract void render(Graphics2D g);
+    public abstract void render(Graphics2D g);
 
     @Override
     public void paintComponent(Graphics graphics)

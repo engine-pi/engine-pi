@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
@@ -8,4 +9,32 @@ import java.util.ArrayList;
 public abstract class BoxContainer extends Box
 {
     protected ArrayList<Box> childs;
+
+    public BoxContainer(Box... childs)
+    {
+        this.childs = new ArrayList<Box>();
+        for (Box box : childs)
+        {
+            this.childs.add(box);
+            box.parent = this;
+        }
+    }
+
+    @Override
+    public void calculateAnchors()
+    {
+        for (Box box : childs)
+        {
+            box.calculateAnchors();
+        }
+    }
+
+    public void render(Graphics2D g)
+    {
+        calculateAnchors();
+        for (Box box : childs)
+        {
+            box.render(g);
+        }
+    }
 }

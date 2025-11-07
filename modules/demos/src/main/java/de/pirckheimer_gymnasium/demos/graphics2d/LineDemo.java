@@ -10,7 +10,7 @@ import static java.awt.BasicStroke.JOIN_MITER;
 /**
  * Demonstierte den Umgang mit <b>Text</b> mit und ohne Unterlängen.
  */
-public class LineDemo extends Component
+public class LineDemo extends Graphics2DComponent
 {
     @Override
     public void render(Graphics2D g)

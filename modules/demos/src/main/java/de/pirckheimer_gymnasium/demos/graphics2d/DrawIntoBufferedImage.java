@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  * Demonstierte wie mit der {@link Graphics2D}-API in ein Bild gezeichnet werden
  * kann. Diese Technik ist nützlich für Turtle-Grafiken.
  */
-public class DrawIntoBufferedImage extends Component
+public class DrawIntoBufferedImage extends Graphics2DComponent
 {
 
     @Override

@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
  * Demonstierte den Umgang mit verschiedenen Schriftstilen (normal, fett oder
  * kursiv) von <b>Schriftarten</b>.
  */
-public class FontStyleDemo extends Component
+public class FontStyleDemo extends Graphics2DComponent
 {
 
     @Override

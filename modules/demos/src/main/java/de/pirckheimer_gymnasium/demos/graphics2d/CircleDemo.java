@@ -4,7 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-public class CircleDemo extends Component
+public class CircleDemo extends Graphics2DComponent
 {
     @Override
     public void render(Graphics2D g)

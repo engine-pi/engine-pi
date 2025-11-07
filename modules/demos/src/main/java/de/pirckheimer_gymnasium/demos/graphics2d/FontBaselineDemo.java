@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 /**
  * Demonstierte den Umgang mit <b>Text</b> mit und ohne Unterlängen.
  */
-public class FontBaselineDemo extends Component
+public class FontBaselineDemo extends Graphics2DComponent
 {
 
     @Override

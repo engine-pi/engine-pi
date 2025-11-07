@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  * Demonstierte wie mit der {@link Graphics2D}-API ein Bild gezeichnet werden
  * kann.
  */
-public class DrawImage extends Component
+public class DrawImage extends Graphics2DComponent
 {
 
     @Override

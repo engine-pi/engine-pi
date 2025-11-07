@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;
 
 import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 
-public class FontStringBounds extends Component
+public class FontStringBounds extends Graphics2DComponent
 {
     public void render(Graphics2D g)
     {

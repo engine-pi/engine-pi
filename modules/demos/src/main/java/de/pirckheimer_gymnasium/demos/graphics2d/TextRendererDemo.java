@@ -7,7 +7,7 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.Align;
 import de.pirckheimer_gymnasium.engine_pi.graphics.TextRenderer;
 import de.pirckheimer_gymnasium.engine_pi.graphics.Valign;
 
-public class TextRendererDemo extends Component
+public class TextRendererDemo extends Graphics2DComponent
 {
 
     private final String lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
