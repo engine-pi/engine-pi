@@ -159,10 +159,23 @@ public class Turtle
     private Vector currentPenPosition;
 
     /**
+     * Wir speichern die aktuelle Rotation und nehmen nicht die Rotation der
+     * grafischen Repräsentation. Möglicherweise läuft die Physics-Engine in
+     * einem anderen Thread. Im Warp-Modus entstehen komisch verzerrte Grafiken.
+     */
+    private double currentRotation;
+
+    /**
      * Das Zentrum der Schildkröte vor der Aktualisierung. Diese Position wird
      * verwendet, um die einzelnen Liniensegmente zu zeichnen.
      */
     private Vector lastPosition;
+
+    /**
+     * Im sogenannte Warp-Modus finden keine Animationen statt. Die
+     * Turtle-Grafik wird so schnell wie möglich gezeichnet.
+     */
+    private boolean warpMode = false;
 
     /**
      * Erzeugt neue eine Schildkröte in einem <b>neuen Fenster</b>.
@@ -198,32 +211,149 @@ public class Turtle
         scene.add(turtleImage);
     }
 
+    /* Hauptmethoden */
+
     /**
-     * Setzt die Figur die die Schildkröte graphisch repräsentiert neu.
-     *
-     * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
-     * dann wird eine Dreieck gezeichnet.
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach vorne.
      *
      * @since 0.38.0
      */
-    private void setActor(boolean actorAsImage)
+    public void move()
     {
-        if (actorAsImage)
+        move(3);
+    }
+
+    /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung nach vorne.
+     *
+     * <p>
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code Gehen}, in der Engine Alpha {@code laufe}.
+     * </p>
+     *
+     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
+     *     zurücklegen soll.
+     *
+     * @since 0.38.0
+     */
+    public void move(double distance)
+    {
+        // Vielleicht wäre es besser die Rotation auch extra zu speichern wie
+        // bei currentPenPosition und nicht aus der Grafik raus zu lesen
+        Vector movement = Vector.ofAngle(currentRotation).multiply(distance);
+        Vector initial = currentPenPosition;
+        if (warpMode)
         {
-            Animation animation = Animation.createFromImages(1 / speed,
-                    turtleSize, turtleSize, images.get("turtle.png"),
-                    images.get("turtle2.png"));
-            animation.enableManualMode();
-            turtleImage = animation;
+            lastPosition = currentPenPosition;
+            currentPenPosition = initial.add(movement);
+            drawLineInSurface(lastPosition, currentPenPosition);
         }
         else
         {
-            turtleImage = new Polygon(v(-turtleSize / 4, turtleSize / 4),
-                    v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
-            turtleImage.setColor("green");
+            double duration = distance / speed;
+            animate(duration, progress -> {
+                lastPosition = currentPenPosition;
+                currentPenPosition = initial.add(movement.multiply(progress));
+                turtleImage.setCenter(currentPenPosition);
+                if (turtleImage instanceof Animation)
+                {
+                    Animation animation = (Animation) turtleImage;
+                    animation.showNext();
+                }
+                drawLineInSurface(lastPosition, currentPenPosition);
+            });
         }
+
+    }
+
+    private void drawLineInSurface(Vector from, Vector to)
+    {
+        if (!drawLine)
+        {
+            return;
+        }
+        if (surface == null)
+        {
+            surface = scene.getPaintingSurface();
+        }
+        surface.drawLine(from, to, lineColor, lineWidth);
+    }
+
+    private void setCurrentRotation(double rotation)
+    {
+        currentRotation = rotation % 360;
+
+    }
+
+    private void doRotation(double rotation)
+    {
+        setCurrentRotation(rotation);
+        turtleImage.setRotation(rotation);
+        // die Rotation kann den Mittelpunkt verschieben.
         turtleImage.setCenter(currentPenPosition);
     }
+
+    /**
+     * <b>Dreht</b> die Schildkröte.
+     *
+     * <p>
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code Drehen}, in der Engine Alpha {@code rotiere}.
+     * </p>
+     *
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
+     *     gegen den Uhrzeigersinn, negative Werte im Uhrzeigersinn.
+     *
+     * @since 0.38.0
+     */
+    public void rotate(double rotation)
+    {
+        double start = currentRotation;
+        if (warpMode)
+        {
+            doRotation(start + rotation);
+        }
+        else
+        {
+            double duration = Math.abs(rotation) / 360 / speed;
+            // * 4 damit man die Rotation auch sieht
+            animate(duration * 4, progress -> {
+                doRotation(start + progress * rotation);
+            });
+        }
+    }
+
+    /**
+     * <b>Wechselt</b> in den Modus <em>„zeichnen“</em>.
+     *
+     * <p>
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code StiftSenken}, in der Engine Alpha {@code ansetzen}.
+     * </p>
+     *
+     * @since 0.38.0
+     */
+    public void lowerPen()
+    {
+        drawLine = true;
+    }
+
+    /**
+     * <b>Wechselt</b> in den Modus <em>„nicht zeichnen“</em>.
+     *
+     * <p>
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code StiftHeben}, in der Engine Alpha {@code absetzen}.
+     * </p>
+     *
+     * @since 0.38.0
+     */
+    public void liftPen()
+    {
+        drawLine = false;
+    }
+
+    /* Setter */
 
     /**
      * Setzt die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in
@@ -260,6 +390,32 @@ public class Turtle
             return;
         }
         speed += speedChange;
+    }
+
+    /**
+     * Schaltet in den sogenannten „<b>Warp-Modus</b>“.
+     *
+     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
+     * so schnell wie möglich gezeichnet.</b>
+     *
+     * @since 0.38.0
+     */
+    public void enableWarpMode()
+    {
+        warpMode = true;
+    }
+
+    /**
+     * Schaltet den sogenannten „<b>Warp-Modus</b>“ <b>an oder aus</b>.
+     *
+     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
+     * so schnell wie möglich gezeichnet.</b>
+     *
+     * @since 0.38.0
+     */
+    public void toggleWarpMode()
+    {
+        warpMode = !warpMode;
     }
 
     /**
@@ -321,110 +477,6 @@ public class Turtle
     }
 
     /**
-     * <b>Wechselt</b> in den Modus <em>„zeichnen“</em>.
-     *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
-     * {@code StiftSenken}, in der Engine Alpha {@code ansetzen}.
-     * </p>
-     *
-     * @since 0.38.0
-     */
-    public void lowerPen()
-    {
-        drawLine = true;
-    }
-
-    /**
-     * <b>Wechselt</b> in den Modus <em>„nicht zeichnen“</em>.
-     *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
-     * {@code StiftHeben}, in der Engine Alpha {@code absetzen}.
-     * </p>
-     *
-     * @since 0.38.0
-     */
-    public void liftPen()
-    {
-        drawLine = false;
-    }
-
-    /**
-     * <b>Bewegt</b> die Schildkröte in Blickrichtung nach vorne.
-     *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
-     * {@code Gehen}, in der Engine Alpha {@code laufe}.
-     * </p>
-     *
-     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
-     *     zurücklegen soll.
-     *
-     * @since 0.38.0
-     */
-    public void move(double distance)
-    {
-        Vector move = Vector.ofAngle(turtleImage.getRotation())
-                .multiply(distance);
-        Vector initial = currentPenPosition;
-        double duration = distance / speed;
-        animate(duration, progress -> {
-            lastPosition = currentPenPosition;
-            currentPenPosition = initial.add(move.multiply(progress));
-            turtleImage.setCenter(currentPenPosition);
-            if (turtleImage instanceof Animation)
-            {
-                Animation animation = (Animation) turtleImage;
-                animation.showNext();
-            }
-            if (drawLine)
-            {
-                if (surface == null)
-                {
-                    surface = scene.getPaintingSurface();
-                }
-                surface.drawLine(lastPosition, turtleImage.getCenter(),
-                        lineColor, lineWidth);
-            }
-        });
-    }
-
-    /**
-     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach vorne.
-     *
-     * @since 0.38.0
-     */
-    public void move()
-    {
-        move(3);
-    }
-
-    /**
-     * <b>Dreht</b> die Schildkröte.
-     *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
-     * {@code Drehen}, in der Engine Alpha {@code rotiere}.
-     * </p>
-     *
-     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
-     *     gegen den Uhrzeigersinn, negative Werte im Uhrzeigersinn.
-     *
-     * @since 0.38.0
-     */
-    public void rotate(double rotation)
-    {
-        double start = turtleImage.getRotation();
-        double duration = Math.abs(rotation) / 360 / speed;
-        // * 4 damit man die Rotation auch sieht
-        animate(duration * 4, progress -> {
-            turtleImage.setRotation(start + progress * rotation);
-            turtleImage.setCenter(currentPenPosition);
-        });
-    }
-
-    /**
      * Setzt die Schildkröte auf eine neue <b>Position</b>.
      *
      * <p>
@@ -478,6 +530,7 @@ public class Turtle
      */
     public void setDirection(double direction)
     {
+        setCurrentRotation(direction);
         turtleImage.setRotation(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
         turtleImage.setCenter(currentPenPosition);
@@ -514,6 +567,33 @@ public class Turtle
     public void show()
     {
         turtleImage.show();
+    }
+
+    /**
+     * Setzt die Figur die die Schildkröte graphisch repräsentiert neu.
+     *
+     * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
+     * dann wird eine Dreieck gezeichnet.
+     *
+     * @since 0.38.0
+     */
+    private void setActor(boolean actorAsImage)
+    {
+        if (actorAsImage)
+        {
+            Animation animation = Animation.createFromImages(1 / speed,
+                    turtleSize, turtleSize, images.get("turtle.png"),
+                    images.get("turtle2.png"));
+            animation.enableManualMode();
+            turtleImage = animation;
+        }
+        else
+        {
+            turtleImage = new Polygon(v(-turtleSize / 4, turtleSize / 4),
+                    v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
+            turtleImage.setColor("green");
+        }
+        turtleImage.setCenter(currentPenPosition);
     }
 
     /**

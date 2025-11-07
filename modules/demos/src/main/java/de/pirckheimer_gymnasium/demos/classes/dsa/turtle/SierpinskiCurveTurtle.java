@@ -38,6 +38,7 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
     {
         super(scene);
         turtle.setSpeed(1000);
+        turtle.enableWarpMode();
         this.depth = depth;
     }
 

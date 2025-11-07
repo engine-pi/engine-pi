@@ -116,6 +116,10 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
             currentAlgo.getTurtle().changeLineWidth(-1);
             break;
 
+        case KeyEvent.VK_W:
+            currentAlgo.getTurtle().toggleWarpMode();
+            break;
+
         default:
             break;
         }
