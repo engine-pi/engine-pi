@@ -22,9 +22,7 @@ public class TextBox extends Box
     {
         this.content = content;
         this.font = font;
-
         var bounds = FontUtil.getStringBoundsNg(content, font);
-
         width = bounds.getWidth();
         height = bounds.getHeight();
     }
