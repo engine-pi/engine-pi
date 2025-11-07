@@ -31,14 +31,23 @@ public abstract class Box
         return x;
     }
 
-    public void x(int x)
+    public Box x(int x)
     {
         this.x = x;
+        return this;
     }
 
-    public void y(int y)
+    public Box y(int y)
     {
         this.y = y;
+        return this;
+    }
+
+    public Box anchor(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        return this;
     }
 
     public int y()

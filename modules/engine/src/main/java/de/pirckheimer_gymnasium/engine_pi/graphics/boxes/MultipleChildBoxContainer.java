@@ -6,11 +6,11 @@ import java.util.ArrayList;
 /**
  * Eine Box, die weitere untergeordnete Boxen enthält.
  */
-public abstract class BoxContainer extends Box
+public abstract class MultipleChildBoxContainer extends Box
 {
     protected ArrayList<Box> childs;
 
-    public BoxContainer(Box... childs)
+    public MultipleChildBoxContainer(Box... childs)
     {
         this.childs = new ArrayList<Box>();
         for (Box box : childs)
@@ -29,6 +29,7 @@ public abstract class BoxContainer extends Box
         }
     }
 
+    @Override
     public void render(Graphics2D g)
     {
         calculateAnchors();
