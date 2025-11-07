@@ -41,8 +41,45 @@ import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
+/*
+ * Implementation so ähnlich wie <a href="https://github.com/engine-pi/engine-pi/blob/main/modules/games/blockly-robot/src/main/java/de/pirckheimer_gymnasium/blockly_robot/robot/gui/robot/ImageRobot.java">ImageRobot
+ * </a>in Blockly Robot
+ */
+
 /**
  * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
+ *
+ * <h2>Die Hauptmethoden:</h2>
+ *
+ * <ul>
+ * <li>{@link #move()}: Bewegt die Schildkröte in Blickrichtung nach vorne.</li>
+ * <li>{@link #rotate(double)}: Dreht die Schildkröte.</li>
+ * <li>{@link #lowerPen()}: Wechselt in den Modus „zeichnen“.</li>
+ * <li>{@link #liftPen()}: Wechselt in den Modus „nicht zeichnen“.</li>
+ * </ul>
+ *
+ * <p>
+ * Folgendes Code-Beispiel demonstiert, wie mit <b>minimalen</b>
+ * Programmieraufwand eine <b>Turtle</b>-Grafik (hier ein Dreieck) gezeichnet
+ * werden kann:
+ * </p>
+ *
+ * <pre>{@code
+ * import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+ *
+ * public class MinimalTurtleDemo
+ * {
+ *     public static void main(String[] args)
+ *     {
+ *         Turtle turtle = new Turtle();
+ *         turtle.move();
+ *         turtle.rotate(120);
+ *         turtle.move();
+ *         turtle.rotate(120);
+ *         turtle.move();
+ *     }
+ * }
+ * }</pre>
  *
  * <p>
  * Die Klasse hat animierte Methoden, die künstliche verlangsamt werden, damit
@@ -53,16 +90,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * Szene.
  * </p>
  *
- * // Schönes Schildkröten-Logo: https://github.com/AmrDeveloper/Turtle
- *
  * @since 0.38.0
- *
- * @see <a href=
- *     "https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha-edu/src/main/java/ea/edu/turtle/Turtle.java">Turtle
- *     in der Engine-Alpha-Edu-Version</a>
- * @see <a href=
- *     "https://github.com/engine-pi/engine-pi/blob/main/modules/games/blockly-robot/src/main/java/de/pirckheimer_gymnasium/blockly_robot/robot/gui/robot/ImageRobot.java">ImageRobot
- *     in Blockly Robot</a>
  *
  * @author Josef Friedrich
  * @author Michael Andonie
@@ -137,7 +165,9 @@ public class Turtle
     private Vector lastPosition;
 
     /**
-     * Erzeugt eine Schildkröte in einem <b>neuen Fenster</b>.
+     * Erzeugt neue eine Schildkröte in einem <b>neuen Fenster</b>.
+     *
+     * @since 0.38.0
      */
     public Turtle()
     {
@@ -156,6 +186,8 @@ public class Turtle
      * Erzeugt eine Schildkröte in einer <b>gegebenen Szene</b>.
      *
      * @param scene Eine <b>Szene</b>, in die die Schildkröte zeichnet.
+     *
+     * @since 0.38.0
      */
     public Turtle(Scene scene)
     {
@@ -167,10 +199,14 @@ public class Turtle
     }
 
     /**
+     * Setzt die Figur die die Schildkröte graphisch repräsentiert neu.
+     *
      * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
      * dann wird eine Dreieck gezeichnet.
+     *
+     * @since 0.38.0
      */
-    public void setActor(boolean actorAsImage)
+    private void setActor(boolean actorAsImage)
     {
         if (actorAsImage)
         {
@@ -195,6 +231,8 @@ public class Turtle
      *
      * @param speed Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte
      *     bewegt (in Meter pro Sekunde).
+     *
+     * @since 0.38.0
      */
     public void setSpeed(double speed)
     {
@@ -202,15 +240,16 @@ public class Turtle
     }
 
     /**
-     * <b>Ändert</b> die aktuelle Geschwindigkeit um den angegebenen Wert.
+     * <b>Ändert</b> die aktuelle <b>Geschwindigkeit</b> um den angegebenen
+     * Wert.
      *
      * Positive Werte erhöhen die Geschwindigkeit, negative Werte verringern
      * sie. Führt die geplante Änderung dazu, dass die Geschwindigkeit negativ
      * würde, so wird die Änderung verworfen und die Geschwindigkeit bleibt
      * unverändert.
      *
-     * @param speedChange Betrag, um den die Geschwindigkeit erhöht (positiv)
-     *     oder verringert (negativ) werden soll.
+     * @param speedChange Der Betrag, um den die Geschwindigkeit erhöht
+     *     (positiv) oder verringert (negativ) werden soll.
      *
      * @since 0.38.0
      */
@@ -312,15 +351,15 @@ public class Turtle
     }
 
     /**
-     * <b>Bewegt</b> die Schildkröte nach vorne.
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung nach vorne.
      *
      * <p>
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code Gehen}, in der Engine Alpha {@code laufe}.
      * </p>
      *
-     * @param distance Die Entfernung in Meter, die die Schildkröte zurück legen
-     *     soll.
+     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
+     *     zurücklegen soll.
      *
      * @since 0.38.0
      */
@@ -352,6 +391,16 @@ public class Turtle
     }
 
     /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach vorne.
+     *
+     * @since 0.38.0
+     */
+    public void move()
+    {
+        move(3);
+    }
+
+    /**
      * <b>Dreht</b> die Schildkröte.
      *
      * <p>
@@ -359,8 +408,8 @@ public class Turtle
      * {@code Drehen}, in der Engine Alpha {@code rotiere}.
      * </p>
      *
-     * @param rotation Der Drehwinkel in Grad. Positive Werte drehen gegen den
-     *     Uhrzeigersinn, negative Werte im Uhrzeigersinn.
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
+     *     gegen den Uhrzeigersinn, negative Werte im Uhrzeigersinn.
      *
      * @since 0.38.0
      */
@@ -386,7 +435,7 @@ public class Turtle
      * Methode „geschummelt“ werden.
      * </p>
      *
-     * @param position Die bewünschte Position als Vektor in Meter.
+     * @param position Die gewünschte <b>Position</b> als Vektor in Meter.
      *
      * @since 0.38.0
      */
@@ -408,8 +457,8 @@ public class Turtle
      * Methode „geschummelt“ werden.
      * </p>
      *
-     * @param x Die x-Koordinate der gewünschten Position in Meter.
-     * @param y Die y-Koordinate der gewünschten Position in Meter.
+     * @param x Die <b>x</b>-Koordinate der gewünschten Position in Meter.
+     * @param y Die <b>y</b>-Koordinate der gewünschten Position in Meter.
      *
      * @since 0.38.0
      */

@@ -2,13 +2,45 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
- * Diese abstrakte Klasse kann geerbt werden, um einen Algorithmus zur Zeichnung
- * einer Turtle-Grafik zu formulieren. Da Turtle-Algorithmen oft rekursiv sind,
- * reicht es nicht den Algorithmus in eine Methode zu schreiben. Die Klasse
- * implementiert auch die {@link Runnable}-Schnittstelle, um lang laufende
- * Algorithmen zu stoppen zu können.
+ * Eine Hilfsklasse zum Formulieren eines <b>Turtle-Algorithmus</b>.
+ *
+ * <p>
+ * Diese abstrakte Klasse kann geerbt werden, um einen <b>Algorithmus</b> zur
+ * Zeichnung einer Turtle-Grafik zu formulieren. Folgendes Code-Beispiel
+ * illustiert die Verwendung dieser Hilfsklasse:
+ * </p>
+ *
+ * <pre>{@code
+ * import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+ *
+ * public class TriangleTurtle extends TurtleAlgorithm
+ * {
+ *     @Override
+ *     public void draw()
+ *     {
+ *         for (int i = 0; i < 3; i++)
+ *         {
+ *             turtle.move(4);
+ *             turtle.rotate(120);
+ *         }
+ *     }
+ *
+ *     public static void main(String[] args)
+ *     {
+ *         new TriangleTurtle().show();
+ *     }
+ * }
+ * }</pre>
+ *
+ * <p>
+ * Da Turtle-Algorithmen oft rekursiv sind, reicht es nicht den Algorithmus in
+ * eine Methode zu schreiben. Die Klasse implementiert auch die
+ * {@link Runnable}-Schnittstelle, um lang laufende Algorithmen in einem eigenen
+ * Thread laufen zu lassen und gegenfalls zu stoppen, wenn er zu lange läuft.
+ * </p>
  *
  * @author Josef Friedrich
  *
@@ -16,18 +48,42 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
  */
 public abstract class TurtleAlgorithm implements Runnable
 {
+    /**
+     * Die Schildkröte, die einen Grafik zeichnet.
+     */
     protected Turtle turtle;
 
+    /**
+     * Eine <b>Szene</b>, in der mit Hilfe einer Schildkröte ein Algorithmus
+     * formuliert werden soll.
+     */
     protected Scene scene;
 
+    /**
+     * Eine Callback-Funktion, die aufgerufen wird, wenn die Turtle-Grafik
+     * fertig gezeichnet wurde.
+     */
     protected Runnable onFinished;
 
+    /**
+     * Fügt den <b>Turtle-Algorithmus</b> in eine <b>vorhandet Szene</b>.
+     *
+     * @param scene Eine <b>Szene</b>, in der mit Hilfe einer Schildkröte ein
+     *     Algorithmus formuliert werden soll.
+     *
+     * @since 0.38.0
+     */
     public TurtleAlgorithm(Scene scene)
     {
         turtle = new Turtle(scene);
         this.scene = scene;
     }
 
+    /**
+     * Fügt den <b>Turtle-Algorithmus</b> in eine <b>neue Szene</b>.
+     *
+     * @since 0.38.0
+     */
     public TurtleAlgorithm()
     {
         this(new Scene());
@@ -39,8 +95,15 @@ public abstract class TurtleAlgorithm implements Runnable
         return this;
     }
 
+    /**
+     * In dieser Methode soll der Turtle-Algorithmus formuliert werden.
+     */
     protected abstract void draw();
 
+    /**
+     * @hidden
+     */
+    @Internal
     public void run()
     {
         draw();
@@ -50,6 +113,13 @@ public abstract class TurtleAlgorithm implements Runnable
         }
     }
 
+    /**
+     * <b>Löst</b> den Turtle-Algorithmus <b>aus</b>.
+     *
+     * @param openWindow Falls wahr, wir ein neues Fenster geöffnet.
+     *
+     * @since 0.38.0
+     */
     private void trigger(boolean openWindow)
     {
         if (openWindow)
@@ -57,11 +127,10 @@ public abstract class TurtleAlgorithm implements Runnable
             Game.start(scene);
         }
         run();
-
     }
 
     /**
-     * Startet den Algorithmus und öffnet ein Fenster.
+     * <b>Startet</b> den Turtle-Algorithmus und <b>öffnet</b> ein Fenster.
      *
      * @since 0.38.0
      */
@@ -71,7 +140,7 @@ public abstract class TurtleAlgorithm implements Runnable
     }
 
     /**
-     * Startet den Algorithmus und öffnet kein Fenster.
+     * <b>Startet</b> den Turtle-Algorithmus und öffnet <b>kein</b> Fenster.
      *
      * @since 0.38.0
      */
@@ -80,6 +149,13 @@ public abstract class TurtleAlgorithm implements Runnable
         trigger(false);
     }
 
+    /**
+     * Gibt die <b>Schildkröte</b>, mit der gezeichnet wird, zurück.
+     *
+     * @return Die <b>Schildkröte</b>, mit der gezeichnet wird.
+     *
+     * @since 0.38.0
+     */
     public Turtle getTurtle()
     {
         return turtle;

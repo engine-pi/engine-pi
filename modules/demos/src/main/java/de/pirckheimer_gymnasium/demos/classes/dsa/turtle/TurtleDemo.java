@@ -21,6 +21,7 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
     public TurtleDemo()
     {
         algos = new ArrayList<>();
+        algos.add(new TriangleTurtle(this));
         algos.add(new SquareTurtle(this));
         algos.add(new SetDirectionTurtle(this));
         algos.add(new SnowflakeTurtle(this));
