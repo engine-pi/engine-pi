@@ -62,6 +62,8 @@ public abstract class TurtleAlgorithm implements Runnable
 
     /**
      * Startet den Algorithmus und öffnet ein Fenster.
+     *
+     * @since 0.38.0
      */
     public void show()
     {
@@ -70,39 +72,16 @@ public abstract class TurtleAlgorithm implements Runnable
 
     /**
      * Startet den Algorithmus und öffnet kein Fenster.
+     *
+     * @since 0.38.0
      */
     public void start()
     {
         trigger(false);
     }
 
-    /**
-     * Löscht den Hintergrund, d.h. alle bisher eingezeichneten Malspuren.
-     *
-     * @see Turtle#clearBackground()
-     */
-    public void clearBackground()
+    public Turtle getTurtle()
     {
-        turtle.clearBackground();
-    }
-
-    /**
-     * Blenden die Schildkröte aus.
-     *
-     * @see Turtle#hide()
-     */
-    public void hideTurtle()
-    {
-        turtle.hide();
-    }
-
-    /**
-     * Blendet die Schildkröte ein.
-     *
-     * @see Turtle#show()
-     */
-    public void showTurtle()
-    {
-        turtle.show();
+        return turtle;
     }
 }

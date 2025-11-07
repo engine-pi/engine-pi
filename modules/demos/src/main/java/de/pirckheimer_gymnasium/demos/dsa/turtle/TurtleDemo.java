@@ -10,11 +10,13 @@ import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 public class TurtleDemo extends Scene implements KeyStrokeListener
 {
-    ArrayList<TurtleAlgorithm> algos;
+    private ArrayList<TurtleAlgorithm> algos;
 
-    int currentAlgoIndex = -1;
+    private TurtleAlgorithm currentAlgo;
 
-    Thread thread;
+    private int currentAlgoIndex = -1;
+
+    private Thread thread;
 
     public TurtleDemo()
     {
@@ -42,8 +44,8 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
     {
         for (TurtleAlgorithm turtleAlgorithm : algos)
         {
-            turtleAlgorithm.hideTurtle();
-            turtleAlgorithm.clearBackground();
+            turtleAlgorithm.getTurtle().hide();
+            turtleAlgorithm.getTurtle().clearBackground();
         }
     }
 
@@ -53,10 +55,10 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
         {
             thread.interrupt();
         }
-        TurtleAlgorithm algo = algos.get(index);
+        currentAlgo = algos.get(index);
         clearAll();
-        algo.showTurtle();
-        thread = new Thread(algos.get(index));
+        currentAlgo.getTurtle().show();
+        thread = new Thread(currentAlgo);
         thread.start();
     }
 
@@ -98,12 +100,19 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_1:
-            System.out.println("Set speed");
-            // turtle.setSpeed(1);
+            currentAlgo.getTurtle().changeSpeed(+3);
             break;
 
-        case KeyEvent.VK_9:
-            // turtle.setSpeed(9);
+        case KeyEvent.VK_2:
+            currentAlgo.getTurtle().changeSpeed(-3);
+            break;
+
+        case KeyEvent.VK_3:
+            currentAlgo.getTurtle().changeLineWidth(+1);
+            break;
+
+        case KeyEvent.VK_4:
+            currentAlgo.getTurtle().changeLineWidth(-1);
             break;
 
         default:

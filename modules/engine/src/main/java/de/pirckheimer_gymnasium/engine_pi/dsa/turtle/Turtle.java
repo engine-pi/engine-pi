@@ -71,31 +71,31 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 public class Turtle
 {
     /**
-     * Eine Szene, in die die Schildkröte zeichnet.
+     * Eine <b>Szene</b>, in die die Schildkröte zeichnet.
      */
     private final Scene scene;
 
     /**
-     * Die grafische Repräsentation der Schildkröte.
+     * Die <b>graphische Repräsentation</b> der Schildkröte.
      */
     private Actor turtleImage;
 
     /**
-     * Zeigt an, ob die Schildkröte momentatn den Stift gesenkt hat und zeichnet
-     * oder nicht.
+     * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
+     * zeichnet oder nicht.
      */
     private boolean drawLine = true;
 
     /**
-     * Die Geschwindigkeit mit der sich die Schildkröte bewegt (in Meter pro
-     * Sekunde).
+     * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
+     * pro Sekunde).
      */
     private double speed = 6;
 
     /**
      * Die Linienstärke in Pixel.
      */
-    private double lineWidth = 1;
+    private int lineWidth = 3;
 
     /**
      * Die Farbe der Linie.
@@ -137,7 +137,7 @@ public class Turtle
     private Vector lastPosition;
 
     /**
-     * Eine Referenz auf eine Szene, in die die Schildkröte zeichnet.
+     * Erzeugt eine Schildkröte in einem <b>neuen Fenster</b>.
      */
     public Turtle()
     {
@@ -153,8 +153,9 @@ public class Turtle
     }
 
     /**
+     * Erzeugt eine Schildkröte in einer <b>gegebenen Szene</b>.
      *
-     * @param scene Eine Szene, in die die Schildkröte zeichnet.
+     * @param scene Eine <b>Szene</b>, in die die Schildkröte zeichnet.
      */
     public Turtle(Scene scene)
     {
@@ -189,8 +190,11 @@ public class Turtle
     }
 
     /**
-     * Die Geschwindigkeit mit der sich die Schildkröte bewegt (in Meter pro
-     * Sekunde).
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in
+     * Meter pro Sekunde).
+     *
+     * @param speed Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte
+     *     bewegt (in Meter pro Sekunde).
      */
     public void setSpeed(double speed)
     {
@@ -198,19 +202,67 @@ public class Turtle
     }
 
     /**
-     * Setzt die Linienstärke in Pixel
+     * <b>Ändert</b> die aktuelle Geschwindigkeit um den angegebenen Wert.
+     *
+     * Positive Werte erhöhen die Geschwindigkeit, negative Werte verringern
+     * sie. Führt die geplante Änderung dazu, dass die Geschwindigkeit negativ
+     * würde, so wird die Änderung verworfen und die Geschwindigkeit bleibt
+     * unverändert.
+     *
+     * @param speedChange Betrag, um den die Geschwindigkeit erhöht (positiv)
+     *     oder verringert (negativ) werden soll.
+     *
+     * @since 0.38.0
+     */
+    public void changeSpeed(double speedChange)
+    {
+        if (speed + speedChange < 0)
+        {
+            return;
+        }
+        speed += speedChange;
+    }
+
+    /**
+     * Setzt die <b>Linienstärke</b> in Pixel
      *
      * @param lineWidth Die Linienstärke in Pixel.
+     *
+     * @since 0.38.0
      */
-    public void setLineWidth(double lineWidth)
+    public void setLineWidth(int lineWidth)
     {
         this.lineWidth = lineWidth;
+    }
+
+    /**
+     * <b>Ändert</b> die aktuelle <b>Linienstärke</b> um einen gegeben Wert.
+     *
+     * Positive Werte erhöhen die Linienstärke, negative Werte verringern sie.
+     * Führt die Änderung zu einer negativen Linienstärke, wird die Änderung
+     * verworfen und der vorhandene Wert bleibt unverändert.
+     *
+     * @param lineWidthChange Differenz der Linienstärke (positiv zum Erhöhen,
+     *     negativ zum Verringern); wird ignoriert, wenn die resultierende
+     *     Linienstärke negativ wäre.
+     *
+     * @since 0.38.0
+     */
+    public void changeLineWidth(int lineWidthChange)
+    {
+        if (lineWidth + lineWidthChange < 0)
+        {
+            return;
+        }
+        lineWidth += lineWidthChange;
     }
 
     /**
      * Setzt die Farbe der Linie als {@link Color}-Objekt.
      *
      * @param lineColor Die Farbe der Linie.
+     *
+     * @since 0.38.0
      */
     public void setLineColor(Color lineColor)
     {
@@ -221,6 +273,8 @@ public class Turtle
      * Setzt die Farbe der Linie als Zeichenkette.
      *
      * @param lineColor Die Farbe der Linie.
+     *
+     * @since 0.38.0
      */
     public void setLineColor(String lineColor)
     {
@@ -234,6 +288,8 @@ public class Turtle
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code StiftSenken}, in der Engine Alpha {@code ansetzen}.
      * </p>
+     *
+     * @since 0.38.0
      */
     public void lowerPen()
     {
@@ -247,6 +303,8 @@ public class Turtle
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code StiftHeben}, in der Engine Alpha {@code absetzen}.
      * </p>
+     *
+     * @since 0.38.0
      */
     public void liftPen()
     {
@@ -263,6 +321,8 @@ public class Turtle
      *
      * @param distance Die Entfernung in Meter, die die Schildkröte zurück legen
      *     soll.
+     *
+     * @since 0.38.0
      */
     public void move(double distance)
     {
@@ -301,6 +361,8 @@ public class Turtle
      *
      * @param rotation Der Drehwinkel in Grad. Positive Werte drehen gegen den
      *     Uhrzeigersinn, negative Werte im Uhrzeigersinn.
+     *
+     * @since 0.38.0
      */
     public void rotate(double rotation)
     {
@@ -325,6 +387,8 @@ public class Turtle
      * </p>
      *
      * @param position Die bewünschte Position als Vektor in Meter.
+     *
+     * @since 0.38.0
      */
     public void setStartPosition(Vector position)
     {
@@ -346,6 +410,8 @@ public class Turtle
      *
      * @param x Die x-Koordinate der gewünschten Position in Meter.
      * @param y Die y-Koordinate der gewünschten Position in Meter.
+     *
+     * @since 0.38.0
      */
     public void setStartPosition(double x, double y)
     {
@@ -358,6 +424,8 @@ public class Turtle
      * @param direction Die Blickrichtung der Schildkröte in Grad: 0°: nach
      *     rechts (Osten), 90°: nach oben (Norden) 180°: nach links (Westen)
      *     270°: nach unten (Süden)
+     *
+     * @since 0.38.0
      */
     public void setDirection(double direction)
     {
@@ -368,6 +436,8 @@ public class Turtle
 
     /**
      * Löscht den Hintergrund, d.h. alle bisher eingezeichneten Malspuren.
+     *
+     * @since 0.38.0
      */
     public void clearBackground()
     {
@@ -379,6 +449,8 @@ public class Turtle
 
     /**
      * <b>Blendet</b> die Schildkröte <b>aus</b>.
+     *
+     * @since 0.38.0
      */
     public void hide()
     {
@@ -387,6 +459,8 @@ public class Turtle
 
     /**
      * <b>Blendet</b> die Schildkröte <b>ein</b>.
+     *
+     * @since 0.38.0
      */
     public void show()
     {
@@ -409,7 +483,9 @@ public class Turtle
      *     dem Endwert aufgerufen wird.
      *
      * @throws RuntimeException Falls der Thread unterbrochen wird oder im
-     *     Animator eine Ausnahme auftritt..
+     *     Animator eine Ausnahme auftritt.
+     *
+     * @since 0.38.0
      */
     private void animate(double duration, Consumer<Double> setter)
     {
