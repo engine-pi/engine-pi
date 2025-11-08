@@ -1,10 +1,12 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
+import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
- * Zeichnet den Pythagorasbaum.
+ * Zeichnet den <a href="https://de.wikipedia.org/wiki/Pythagoras-Baum"></a>.
  *
  * <p>
  * Der ursprünglich deutsche Name dieser Klasse war {@code PythagorasBaum}.
@@ -19,30 +21,35 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 public class PythagorasTreeTurtle extends TurtleAlgorithm
 {
 
+    /**
+     * Die Rekursionstiefe.
+     */
     int depth;
 
     /**
-     * Seite a des rechtwinkeligen Ausgangsdreiecks
+     * Die Seite a des rechtwinkeligen Ausgangsdreiecks.
      */
     double a;
 
     /**
-     * Seite b des rechtwinkeligen Ausgangsdreiecks
+     * Die Seite b des rechtwinkeligen Ausgangsdreiecks.
      */
     double b;
 
     /**
-     * Seite c^2 des rechtwinkeligen Ausgangsdreiecks
+     * Die Seite c^2 des rechtwinkeligen Ausgangsdreiecks.
      */
     double c2;
 
     /**
-     * Seitenverhältnis für die Berechnung der C-Punkte der angefügten Dreiecke
+     * Das Seitenverhältnis für die Berechnung der C-Punkte der angefügten
+     * Dreiecke.
      */
     double bc;
 
     /**
-     * Seitenverhältnis für die Berechnung der C-Punkte der angefügten Dreiecke
+     * Das Seitenverhältnis für die Berechnung der C-Punkte der angefügten
+     * Dreiecke.
      */
     double abc;
 
@@ -65,7 +72,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
 
     public PythagorasTreeTurtle()
     {
-        this(5);
+        this(1);
     }
 
     public void draw()
@@ -96,29 +103,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     private double getRotation(double xSrc, double ySrc, double xDest,
             double yDest)
     {
-        double dx = xDest - xSrc;
-        double dy = yDest - ySrc;
-        double rotation = 0;
-        if (dx == 0)
-        {
-            if (dy > 0)
-            {
-                rotation = 270;
-            }
-            else if (dy < 0)
-            {
-                rotation = 90;
-            }
-        }
-        else if (dx > 0)
-        {
-            rotation = -Math.atan(dy / dx) * 18 / Math.PI;
-        }
-        else
-        {
-            rotation = 180 - Math.round(Math.atan(dy / dx) * 18 / Math.PI);
-        }
-        return rotation;
+        return v(xSrc, ySrc).subtract(v(xDest, yDest)).getAngle();
     }
 
     /**
@@ -128,23 +113,21 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
      * Der ursprünglich deutsche Name dieser Methode war {@code LängeGeben}.
      * </p>
      *
-     * @param xStart Die x-Koordinate des Startpunkts.
-     * @param yStart Die y-Koordinate des Startpunkts.
-     * @param xZiel Die x-Koordinate des Zielpunkts.
-     * @param yZiel Die y-Koordinate des Zielpunkts.
+     * @param xSrc Die x-Koordinate des Startpunkts.
+     * @param ySrc Die y-Koordinate des Startpunkts.
+     * @param xDest Die x-Koordinate des Zielpunkts.
+     * @param yDest Die y-Koordinate des Zielpunkts.
      *
      * @return Die Weglänge zum Zielpunkt.
      */
-    private double getLength(double xStart, double yStart, double xZiel,
-            double yZiel)
+    private double getLength(double xSrc, double ySrc, double xDest,
+            double yDest)
     {
-        double dX = xZiel - xStart;
-        double dY = yZiel - yStart;
-        return Math.sqrt(dX * dX + dY * dY);
+        return v(xSrc, ySrc).subtract(v(xDest, yDest)).getLength();
     }
 
     /**
-     * Zeichnet das Dreieck mit den angegebenen Eckpunkten
+     * Zeichnet das Dreieck mit den angegebenen Eckpunkten.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
@@ -171,7 +154,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     }
 
     /**
-     * Zeichnet das Viereck mit den angegebenen Eckpunkten
+     * Zeichnet das Viereck mit den angegebenen Eckpunkten.
      *
      * <p>
      * Der ursprünglich deutsche Name dieser Methode war
