@@ -13,6 +13,7 @@ public abstract class SingleChildBoxContainer extends Box
     public SingleChildBoxContainer(Box child)
     {
         this.child = child;
+        child.parent = this;
     }
 
     @Override
