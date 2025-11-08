@@ -1,12 +1,16 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class GraphMatrixTest
+public class GraphArrayMatrixTest
 {
     private GraphArrayMatrix g;
 
@@ -77,6 +81,37 @@ public class GraphMatrixTest
                 "Es konnte kein Knoten mit dem Bezeichner „C“ gefunden werden.",
                 exception.getMessage());
         assertThrows(RuntimeException.class, () -> g.getEdgeWeight("A", "C"));
+    }
+
+    @Test
+    public void testAllEdgesOfNodePairs()
+    {
+        g.addNode("B");
+        g.addNode("A");
+        g.addNode("C");
+        g.addNode("D");
+        g.addEdge("A", "B", 10, true);
+        g.addEdge("A", "C");
+        ArrayList<EdgesOfNodePair> all = g.getAllEdgesOfNodePairs();
+        assertEquals(2, all.size());
+
+        // ab
+        EdgesOfNodePair AB = all.get(0);
+        GraphNode[] nodes = AB.getNodes();
+        // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
+        assertEquals("A", nodes[0].getLabel());
+        assertEquals("B", nodes[1].getLabel());
+        assertEquals(10, AB.getWeight());
+        assertTrue(AB.isDirected());
+
+        // ac
+        EdgesOfNodePair AC = all.get(1);
+        nodes = AC.getNodes();
+        // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
+        assertEquals("A", nodes[0].getLabel());
+        assertEquals("C", nodes[1].getLabel());
+        assertEquals(1, AC.getWeight());
+        assertFalse(AC.isDirected());
     }
 
     @Test

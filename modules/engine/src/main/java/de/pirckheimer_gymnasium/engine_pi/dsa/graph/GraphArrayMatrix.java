@@ -20,6 +20,8 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.graph;
 
 import static de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphEdge.NOT_REACHABLE_WEIGHT;
 
+import java.util.ArrayList;
+
 /**
  * Ein Graph, der über ein zweidimensionales Feld / Array implementiert ist.
  *
@@ -144,6 +146,31 @@ public class GraphArrayMatrix extends Graph
                 matrix[toIndex][fromIndex] = weight;
             }
         }
+    }
+
+    public ArrayList<EdgesOfNodePair> getAllEdgesOfNodePairs()
+    {
+        ArrayList<EdgesOfNodePair> all = new ArrayList<>();
+        for (int nodeIndex = 0; nodeIndex < getNodeCount(); nodeIndex++)
+        {
+            for (int i = 0; i < nodeIndex; i++)
+            {
+                EdgesOfNodePair pair = new EdgesOfNodePair(this);
+                if (matrix[nodeIndex][i] > 0)
+                {
+                    pair.addDirectedEdge(nodeIndex, i, matrix[nodeIndex][i]);
+                }
+                if (matrix[i][nodeIndex] > 0)
+                {
+                    pair.addDirectedEdge(i, nodeIndex, matrix[i][nodeIndex]);
+                }
+                if (!pair.isEmpty())
+                {
+                    all.add(pair);
+                }
+            }
+        }
+        return all;
     }
 
     /**
