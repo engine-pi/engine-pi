@@ -18,11 +18,12 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 /**
  * Eine <b>Box</b> beschreibt eine rechteckige graphische Fläche, die weitere
- * Kindboxen enthalten kann.
+ * Kinder-Boxen enthalten kann.
  *
  * @author Josef Friedrich
  *
@@ -74,6 +75,7 @@ public abstract class Box
     }
 
     /**
+     * Setzt die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @param y Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
      *
@@ -91,9 +93,11 @@ public abstract class Box
     }
 
     /**
+     * Setzt die <b>x</b>- nd <b>y</b>-Koordinate der linken oberen Ecke in
+     * Pixel.
      *
-     * @param x
-     * @param y
+     * @param x Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
+     * @param y Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
@@ -114,14 +118,19 @@ public abstract class Box
     /**
      * Gibt die <b>x</b>-Koordinate der linken oberen Ecke in Pixel zurück.
      *
+     * <p>
+     * Außerdem wird überprüft, ob die <b>x</b>-Koordinate bereits gesetzt
+     * wurde.
+     * </p>
+     *
      * @return Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
      *
-     * @throws RuntimeException Falls die x<b>-Koordinate noch nicht gesetzt
-     *     wurde. </b>
+     * @throws RuntimeException Falls die <b>x</b>-Koordinate noch nicht gesetzt
+     *     wurde.
      *
      * @since 0.38.0
      */
-    public int x()
+    int x()
     {
         if (x == Integer.MIN_VALUE)
         {
@@ -134,11 +143,19 @@ public abstract class Box
     /**
      * Gibt die <b>y</b>-Koordinate der linken oberen Ecke in Pixel zurück.
      *
+     * <p>
+     * Außerdem wird überprüft, ob die <b>y</b>-Koordinate bereits gesetzt
+     * wurde.
+     * </p>
+     *
      * @return Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
+     *
+     * @throws RuntimeException Falls die <b>y</b>-Koordinate noch nicht gesetzt
+     *     wurde.
      *
      * @since 0.38.0
      */
-    public int y()
+    int y()
     {
         if (y == Integer.MIN_VALUE)
         {
@@ -170,8 +187,8 @@ public abstract class Box
 
     /**
      * Berechnet rekursiv alle Ankerpunkte (linkes oberes Eck) der
-     * untergeordneten Kindboxen. Die inneren Blattboxen brauchen diese Methode
-     * nicht zu implementieren.
+     * untergeordneten Kinder-Boxen. Die inneren Blattboxen brauchen diese
+     * Methode nicht zu implementieren.
      *
      * @since 0.38.0
      */
@@ -200,5 +217,81 @@ public abstract class Box
     {
         calculateAnchors();
         draw(g);
+    }
+
+    /* static instantiation methods */
+
+    /**
+     * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
+     *
+     * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
+     *
+     * @since 0.39.0
+     *
+     * @see FrameBox#FrameBox(Box)
+     */
+    public static FrameBox frame(Box child)
+    {
+        return new FrameBox(child);
+    }
+
+    /**
+     * Erzeugt eine neue <b>horizontale</b> Box.
+     *
+     * @param childs Die Kinder-Boxen, die <b>horizontal</b> von links nach
+     *     rechts angeordnet werden sollen.
+     *
+     * @since 0.39.0
+     *
+     * @see HorizontalBox#HorizontalBox(Box...)
+     */
+    public static HorizontalBox horizontal(Box... childs)
+    {
+        return new HorizontalBox(childs);
+    }
+
+    /**
+     * Erzeugt eine <b>Text</b>box.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @since 0.39.0
+     *
+     * @see TextBox#TextBox(String)
+     */
+    public static TextBox text(String content)
+    {
+        return new TextBox(content);
+    }
+
+    /**
+     * Erzeugt eine <b>Text</b>box.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
+     *     soll.
+     *
+     * @since 0.39.0
+     *
+     * @see TextBox#TextBox(String, Font)
+     */
+    public static TextBox text(String content, Font font)
+    {
+        return new TextBox(content, font);
+    }
+
+    /**
+     * Erzeugt eine neue <b>vertikale</b> Box.
+     *
+     * @param childs Die Kinder-Boxen, die <b>vertikal</b> von oben nach unten
+     *     angeordnet werden sollen.
+     *
+     * @since 0.39.0
+     *
+     * @see VerticalBox#VerticalBox(Box...)
+     */
+    public static VerticalBox vertical(Box... childs)
+    {
+        return new VerticalBox(childs);
     }
 }

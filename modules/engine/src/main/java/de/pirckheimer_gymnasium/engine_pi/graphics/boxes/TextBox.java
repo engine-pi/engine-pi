@@ -18,6 +18,10 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
@@ -32,16 +36,26 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  */
 public class TextBox extends Box
 {
-
     /**
+     * Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
      * @since 0.38.0
      */
     private String content;
 
     /**
+     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
      * @since 0.38.0
      */
-    private Font font;
+    private Font font = fonts.getDefault();
+
+    /**
+     *
+     */
+    private double fontSize = 12;
+
+    private Color color;
 
     /**
      * @since 0.38.0
@@ -59,17 +73,91 @@ public class TextBox extends Box
     private int baseline;
 
     /**
+     * Erzeugt eine <b>Text</b>box.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @since 0.39.0
+     *
+     * @see Box#text(String)
+     */
+    public TextBox(String content)
+    {
+        this.content = content;
+        update();
+    }
+
+    /**
+     * Erzeugt eine <b>Text</b>box.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
+     *     soll.
+     *
      * @since 0.38.0
+     *
+     * @see Box#text(String, Font)
      */
     public TextBox(String content, Font font)
     {
         this.content = content;
         this.font = font;
+        update();
+    }
+
+    private void update()
+    {
         var bounds = FontUtil.getStringBoundsNg(content, font);
         width = bounds.getWidth();
         height = bounds.getHeight();
         baseline = bounds.getBaseline();
     }
+
+    /* Setter */
+
+    /**
+     * @since 0.39.0
+     */
+    public TextBox content(String content)
+    {
+        this.content = content;
+        update();
+        return this;
+    }
+
+    /**
+     * @since 0.39.0
+     */
+    public TextBox font(Font font)
+    {
+        this.font = font;
+        update();
+        return this;
+    }
+
+    /**
+     * @param fontSize Die Schriftgröße in Punkten (Points pt)
+     */
+    public TextBox fontSize(double fontSize)
+    {
+        font = font.deriveFont((float) fontSize);
+        update();
+        return this;
+    }
+
+    public TextBox color(Color color)
+    {
+        this.color = color;
+        return this;
+    }
+
+    public TextBox color(String color)
+    {
+        this.color = colors.get(color);
+        return this;
+    }
+
+    /* Getter */
 
     @Override
     int width()
@@ -86,7 +174,19 @@ public class TextBox extends Box
     @Override
     void draw(Graphics2D g)
     {
+        Color oldColor = null;
+        Font oldFont = g.getFont();
+        if (color != null)
+        {
+            oldColor = g.getColor();
+            g.setColor(color);
+        }
         g.setFont(font);
         g.drawString(content, x(), y() + baseline);
+        if (oldColor != null)
+        {
+            g.setColor(oldColor);
+        }
+        g.setFont(oldFont);
     }
 }

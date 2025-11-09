@@ -9,20 +9,22 @@ import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 
-public class VerticalBoxDemo extends Graphics2DComponent
+public class TextBoxDemo extends Graphics2DComponent
 {
     Font font = fonts.getDefault().deriveFont(64f);
 
     public void render(Graphics2D g)
     {
-        var box = vertical(text("Text 1"), text("Text 2").fontSize(64),
-                text("Text 3"));
+        var box = vertical(text("default"),
+                text("different fontSize").fontSize(42),
+                text("custom Font", font), text("custom color").color("orange"),
+                text("custom content").content("updated content"));
         box.anchor(200, 100);
         box.render(g);
     }
 
     public static void main(String[] args)
     {
-        new VerticalBoxDemo().show();
+        new TextBoxDemo().show();
     }
 }

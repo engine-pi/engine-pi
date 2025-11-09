@@ -22,7 +22,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
- * Eine Box, die weitere untergeordnete Boxen enthält.
+ * Eine Box, die <b>mehrere untergeordnete</b> Boxen enthält.
  *
  * @author Josef Friedrich
  *
@@ -41,28 +41,28 @@ abstract class MultipleChildBoxContainer extends Box
     public MultipleChildBoxContainer(Box... childs)
     {
         this.childs = new ArrayList<Box>();
-        for (Box box : childs)
+        for (Box child : childs)
         {
-            this.childs.add(box);
-            box.parent = this;
+            this.childs.add(child);
+            child.parent = this;
         }
     }
 
     @Override
     void calculateAnchors()
     {
-        for (Box box : childs)
+        for (Box child : childs)
         {
-            box.calculateAnchors();
+            child.calculateAnchors();
         }
     }
 
     @Override
     void draw(Graphics2D g)
     {
-        for (Box box : childs)
+        for (Box child : childs)
         {
-            box.draw(g);
+            child.draw(g);
         }
     }
 }

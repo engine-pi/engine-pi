@@ -24,7 +24,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
- * Legt einen <b>Rahmen</b> um eine enthaltene Kindbox.
+ * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
  *
  * <p>
  * Die Konzeption der Klasse ist inspiriert von dem
@@ -37,7 +37,6 @@ import java.awt.Graphics2D;
  */
 public class FrameBox extends SingleChildBoxContainer
 {
-
     /**
      * Die <b>Hintergrundfarbe</b> des Rahmens.
      *
@@ -74,9 +73,9 @@ public class FrameBox extends SingleChildBoxContainer
     Color borderColor;
 
     /**
-     * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kindbox.
+     * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
      *
-     * @param child Die Kindbox, die umrahmt werden soll.
+     * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
      *
      * @since 0.38.0
      */

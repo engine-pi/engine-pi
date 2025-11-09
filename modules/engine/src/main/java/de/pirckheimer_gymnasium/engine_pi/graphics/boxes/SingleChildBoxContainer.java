@@ -21,7 +21,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 import java.awt.Graphics2D;
 
 /**
- * Eine Box, die nur eine einzige <b>Kindbox</b> enthält.
+ * Eine Box, die nur eine einzige <b>Kind-Box</b> enthält.
  *
  * @author Josef Friedrich
  *
@@ -30,15 +30,15 @@ import java.awt.Graphics2D;
 abstract class SingleChildBoxContainer extends Box
 {
     /**
-     * Die <b>Kindbox</b>, dieser übergeordneten Box.
+     * Die <b>Kind-Box</b>, dieser übergeordneten Box.
      */
     protected Box child;
 
     /**
-     * Erzeugt eine Box, die nur eine einzige <b>Kindbox</b> enthält und setzt
-     * dabei sich als Elternbox der Kindbox.
+     * Erzeugt eine Box, die nur eine einzige <b>Kind-Box</b> enthält und setzt
+     * dabei sich als Elternbox der Kind-Box.
      *
-     * @param child Die Kindbox.
+     * @param child Die Kind-Box.
      *
      * @since 0.38.0
      */

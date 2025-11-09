@@ -19,26 +19,26 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 /**
- * Eine <b>vertikale</b> Box, die die enthaltenen Kinder-Boxen vertikal von oben
- * nach unten anordnet.
+ * Eine <b>horizontale</b> Box, die die enthaltenen Kinder-Boxen horizontal von
+ * links nach rechts anordnet.
  *
  * @author Josef Friedrich
  *
- * @since 0.38.0
+ * @since 0.39.0
  */
-public class VerticalBox extends MultipleChildBoxContainer
+public class HorizontalBox extends MultipleChildBoxContainer
 {
     /**
-     * Erzeugt eine neue <b>vertikale</b> Box.
+     * Erzeugt eine neue <b>horizontale</b> Box.
      *
-     * @param childs Die Kinder-Boxen, die <b>vertikal</b> von oben nach unten
-     *     angeordnet werden sollen.
+     * @param childs Die Kinder-Boxen, die <b>horizontal</b> von links nach
+     *     rechts angeordnet werden sollen.
      *
-     * @since 0.38.0
+     * @see Box#horizontal(Box...)
      *
-     * @see Box#vertical(Box...)
+     * @since 0.39.0
      */
-    public VerticalBox(Box... childs)
+    public HorizontalBox(Box... childs)
     {
         super(childs);
     }
@@ -46,37 +46,37 @@ public class VerticalBox extends MultipleChildBoxContainer
     @Override
     int width()
     {
-        int maxWidth = 0;
+        int width = 0;
         for (Box child : childs)
         {
-            if (child.width() > maxWidth)
-            {
-                maxWidth = child.width();
-            }
+            width += child.width();
         }
-        return maxWidth;
+        return width;
     }
 
     @Override
     int height()
     {
-        int height = 0;
+        int maxHeight = 0;
         for (Box child : childs)
         {
-            height += child.height();
+            if (child.height() > maxHeight)
+            {
+                maxHeight = child.height();
+            }
         }
-        return height;
+        return maxHeight;
     }
 
     @Override
     void calculateAnchors()
     {
-        int yCursor = y;
+        int xCursor = x();
         for (Box child : childs)
         {
-            child.x = x;
-            child.y = yCursor;
-            yCursor += child.height();
+            child.x = xCursor;
+            child.y = y();
+            xCursor += child.width();
             child.calculateAnchors();
         }
     }
