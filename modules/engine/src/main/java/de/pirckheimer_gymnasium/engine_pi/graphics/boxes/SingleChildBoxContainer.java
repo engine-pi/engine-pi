@@ -1,15 +1,47 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
 /**
- * Eine Box, die nur einen einzige Box enthält.
+ * Eine Box, die nur eine einzige <b>Kindbox</b> enthält.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.38.0
  */
-public abstract class SingleChildBoxContainer extends Box
+abstract class SingleChildBoxContainer extends Box
 {
-
+    /**
+     * Die <b>Kindbox</b>, dieser übergeordneten Box.
+     */
     protected Box child;
 
+    /**
+     * Erzeugt eine Box, die nur eine einzige <b>Kindbox</b> enthält und setzt
+     * dabei sich als Elternbox der Kindbox.
+     *
+     * @param child Die Kindbox.
+     *
+     * @since 0.38.0
+     */
     public SingleChildBoxContainer(Box child)
     {
         this.child = child;
@@ -17,16 +49,14 @@ public abstract class SingleChildBoxContainer extends Box
     }
 
     @Override
-    public void calculateAnchors()
+    void calculateAnchors()
     {
         child.calculateAnchors();
     }
 
     @Override
-    public void render(Graphics2D g)
+    void draw(Graphics2D g)
     {
-        calculateAnchors();
-        child.render(g);
+        child.draw(g);
     }
-
 }

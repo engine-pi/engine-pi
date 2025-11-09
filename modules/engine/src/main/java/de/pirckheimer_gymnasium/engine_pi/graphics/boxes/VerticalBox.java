@@ -18,51 +18,62 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-
 /**
- * Eine Box, die weitere untergeordnete Boxen enthält.
+ * Ordnet die enthaltenen Kindboxen <b>vertikal</b> von oben nach unten an.
  *
  * @author Josef Friedrich
  *
  * @since 0.38.0
  */
-abstract class MultipleChildBoxContainer extends Box
+public class VerticalBox extends MultipleChildBoxContainer
 {
     /**
+     *
+     * @param childs
+     *
      * @since 0.38.0
      */
-    protected ArrayList<Box> childs;
-
-    /**
-     * @since 0.38.0
-     */
-    public MultipleChildBoxContainer(Box... childs)
+    public VerticalBox(Box... childs)
     {
-        this.childs = new ArrayList<Box>();
+        super(childs);
+    }
+
+    @Override
+    int width()
+    {
+        int maxWidth = 0;
         for (Box box : childs)
         {
-            this.childs.add(box);
-            box.parent = this;
+            if (box.width() > maxWidth)
+            {
+                maxWidth = box.width();
+            }
         }
+        return maxWidth;
+    }
+
+    @Override
+    int height()
+    {
+        int height = 0;
+        for (Box box : childs)
+        {
+            height += box.height();
+        }
+        return height;
     }
 
     @Override
     void calculateAnchors()
     {
-        for (Box box : childs)
+        int yCursor = y;
+        for (Box child : childs)
         {
-            box.calculateAnchors();
+            child.x = x;
+            child.y = yCursor;
+            yCursor += child.height();
+            child.calculateAnchors();
         }
     }
 
-    @Override
-    void draw(Graphics2D g)
-    {
-        for (Box box : childs)
-        {
-            box.draw(g);
-        }
-    }
 }
