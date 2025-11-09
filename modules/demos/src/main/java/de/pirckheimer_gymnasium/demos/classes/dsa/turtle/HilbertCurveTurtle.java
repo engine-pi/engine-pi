@@ -51,8 +51,6 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
         turtle.setSpeed(100);
         turtle.setStartPosition(-7, 7);
         length = 15 / Math.pow(2.0, depth);
-        turtle.liftPen();
-        turtle.lowerPen();
         drawElement(false, depth);
     }
 
