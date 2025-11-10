@@ -41,7 +41,7 @@ public class FontContainerTest
     {
         var font = container.getDefault(FontStyle.PLAIN);
 
-        assertEquals("Cantarell", font.getName());
+        assertEquals("Cantarell Regular", font.getName());
         assertEquals(0, font.getStyle());
     }
 

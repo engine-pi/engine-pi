@@ -18,11 +18,14 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
+import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
+
 import java.awt.Font;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import de.pirckheimer_gymnasium.engine_pi.resources.FontStyle;
 
 /**
  * Demonstiert die Figur <b>Text</b>.
@@ -31,21 +34,38 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Text;
  *
  * @since 0.37.0
  */
-public class TextDemo
+public class TextDemo extends Scene
 {
+
+    public TextDemo()
+    {
+        setBackgroundColor("green");
+
+        add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
+                "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));
+        Font cantarell = fonts.get("fonts/Cantarell-Regular.ttf");
+
+        // Demonstiert, ob die Grundline zweier Text-Figuren mit gleicher
+        // y-Koordinate übereinstimmt.
+        add(new Text("Mit Unterlängen", 2).setFont(cantarell).setPosition(-7,
+                -2));
+        add(new Text("... ohne", 2).setFont(cantarell).setPosition(4, -2));
+
+        demonstrateFontStyle(0, 3);
+        demonstrateFontStyle(1, 4);
+        demonstrateFontStyle(2, 5);
+        demonstrateFontStyle(3, 6);
+    }
+
+    public void demonstrateFontStyle(int style, int y)
+    {
+        add(new Text(FontStyle.getStyle(style).toString())
+                .setFont(fonts.getDefault(style)).setPosition(3, y));
+    }
 
     public static void main(String[] args)
     {
         Game.setTitle("Cantarell");
-        Game.start(s -> {
-            s.add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
-                    "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));
-            Font cantarell = Resources.fonts.get("fonts/Cantarell-Regular.ttf");
-            s.add(new Text("Mit Unterlängen", 2).setFont(cantarell)
-                    .setPosition(-7, -2));
-            s.add(new Text("... ohne", 2).setFont(cantarell).setPosition(4,
-                    -2));
-            s.setBackgroundColor("green");
-        });
+        Game.start(new TextDemo());
     }
 }
