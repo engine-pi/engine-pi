@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v0.39.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.39.0) - 2025-11-10
+
+<small>[Compare with v0.38.0](https://github.com/engine-pi/engine-pi/compare/v0.38.0...v0.39.0)</small>
+
+### Fixed
+
+- Fix the loading of the default fonts
+- Add BlueJ template files to the zip file
+
 ## [v0.38.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.38.0) - 2025-11-08
 
 <small>[Compare with v0.37.0](https://github.com/engine-pi/engine-pi/compare/v0.37.0...v0.38.0)</small>
@@ -16,7 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Use lowercase attribute name for the static resource containers (e.g. `Resources.FONTS` -> `Resources.fonts`)
+- Use lowercase attribute names for the static resource containers (e.g. `Resources.FONTS` -> `Resources.fonts`)
 
 ### Removed
 

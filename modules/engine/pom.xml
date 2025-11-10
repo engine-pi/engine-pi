@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>engine-pi</artifactId>
-    <version>0.38.0</version>
+    <version>0.39.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
-        <version>0.38.0</version>
+        <version>0.39</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -157,7 +157,7 @@
                                             <outputDirectory>+libs/</outputDirectory>
                                         </fileSet>
                                         <fileSet>
-                                            <directory>../misc/bluej-template</directory>
+                                            <directory>../../misc/bluej-template</directory>
                                             <outputDirectory>/</outputDirectory>
                                         </fileSet>
                                     </fileSets>

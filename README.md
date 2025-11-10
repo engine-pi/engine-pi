@@ -2449,9 +2449,40 @@ Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schlei
 ### Aufbau des Projekts
 
 Die Engine Pi nutzt das Build Tool [maven](https://maven.apache.org/). Das
-Projekt ist als sogenanntes [Multliple
+Projekt ist als sogenanntes [Multiple
 Modules](https://maven.apache.org/guides/mini/guide-multiple-modules.html)-Projekt
 strukturiert.
+Die eigentliche Engine befindet sich im Ordner `./modules/engine`.
+
+| Pfad                          | artefactId              |
+| ----------------------------- | ----------------------- |
+| ./                            | engine-pi-meta          |
+| ./modules/engine              | engine-pi               |
+| ./modules/demos               | engine-pi-demos         |
+| ./modules/cli                 | engine-pi-cli           |
+| ./modules/games/blockly-robot | engine-pi-blockly-robot |
+| ./modules/games/pacman        | engine-pi-pacman        |
+| ./modules/games/tetris        | engine-pi-tetris        |
+| ./modules/build-tools         | engine-pi-build-tools   |
+
+
+### Eine neue Version veröffentlichen
+
+Es wird Semantic Versioning verwendet.
+
+Die Versionsnummer der Engine setzen.
+
+```
+mvn versions:set -f modules/engine/pom.xml
+```
+
+Die Versionsnummer des Meta-Projekts setzen.
+
+```
+mvn versions:set
+```
+
+Das CHANGELOG.md bezieht sich auf die Engine als ./modules/engine
 
 ### Deutsche Übersetzungen von englischen Klassennamen
 
