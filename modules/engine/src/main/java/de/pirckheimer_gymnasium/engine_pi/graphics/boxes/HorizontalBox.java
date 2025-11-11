@@ -44,39 +44,30 @@ public class HorizontalBox extends MultipleChildBoxContainer
     }
 
     @Override
-    int width()
-    {
-        int width = 0;
-        for (Box child : childs)
-        {
-            width += child.width();
-        }
-        return width;
-    }
-
-    @Override
-    int height()
+    protected void calculateDimension()
     {
         int maxHeight = 0;
         for (Box child : childs)
         {
-            if (child.height() > maxHeight)
+            child.calculateDimension();
+            width += child.width;
+            if (child.height > maxHeight)
             {
-                maxHeight = child.height();
+                maxHeight = child.height;
             }
         }
-        return maxHeight;
+        height = maxHeight;
     }
 
     @Override
-    void calculateAnchors()
+    protected void calculateAnchors()
     {
-        int xCursor = x();
+        int xCursor = x;
         for (Box child : childs)
         {
             child.x = xCursor;
-            child.y = y();
-            xCursor += child.width();
+            child.y = y;
+            xCursor += child.width;
             child.calculateAnchors();
         }
     }

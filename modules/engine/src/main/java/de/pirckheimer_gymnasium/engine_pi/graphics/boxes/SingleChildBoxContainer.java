@@ -49,12 +49,6 @@ abstract class SingleChildBoxContainer extends Box
     }
 
     @Override
-    void calculateAnchors()
-    {
-        child.calculateAnchors();
-    }
-
-    @Override
     void draw(Graphics2D g)
     {
         child.draw(g);

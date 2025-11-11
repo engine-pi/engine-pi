@@ -15,6 +15,8 @@ public class TextBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
+        text("as standalone box").fontSize(32).anchor(500, 400).render(g);
+
         var box = vertical(text("default"),
                 text("different fontSize").fontSize(42),
                 text("custom Font", font), text("custom color").color("orange"),

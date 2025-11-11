@@ -44,39 +44,30 @@ public class VerticalBox extends MultipleChildBoxContainer
     }
 
     @Override
-    int width()
+    protected void calculateDimension()
     {
         int maxWidth = 0;
         for (Box child : childs)
         {
-            if (child.width() > maxWidth)
+            child.calculateDimension();
+            if (child.width > maxWidth)
             {
-                maxWidth = child.width();
+                maxWidth = child.width;
             }
+            height += child.height;
         }
-        return maxWidth;
+        width = maxWidth;
     }
 
     @Override
-    int height()
-    {
-        int height = 0;
-        for (Box child : childs)
-        {
-            height += child.height();
-        }
-        return height;
-    }
-
-    @Override
-    void calculateAnchors()
+    protected void calculateAnchors()
     {
         int yCursor = y;
         for (Box child : childs)
         {
             child.x = x;
             child.y = yCursor;
-            yCursor += child.height();
+            yCursor += child.height;
             child.calculateAnchors();
         }
     }

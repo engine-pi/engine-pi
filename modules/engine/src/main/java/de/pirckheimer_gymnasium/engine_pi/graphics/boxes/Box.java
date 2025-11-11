@@ -33,18 +33,37 @@ public abstract class Box
 {
 
     /**
+     * Zeigt an, ob die Box bereits ausgemessen wurde.
+     */
+    private boolean measured;
+
+    /**
+     * Die <b>Breite</b> der Box in Pixel.
+     *
+     * @since 0.40.0
+     */
+    protected int width;
+
+    /**
+     * Die <b>Höhe</b> der Box in Pixel.
+     *
+     * @since 0.40.0
+     */
+    protected int height;
+
+    /**
      * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @since 0.38.0
      */
-    protected int x = Integer.MIN_VALUE;
+    protected int x;
 
     /**
      * Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @since 0.38.0
      */
-    protected int y = Integer.MIN_VALUE;
+    protected int y;
 
     /**
      * Die <b>übergeordnet</b> Box, in der diese Box enthalten ist. Dieses
@@ -93,7 +112,7 @@ public abstract class Box
     }
 
     /**
-     * Setzt die <b>x</b>- nd <b>y</b>-Koordinate der linken oberen Ecke in
+     * Setzt die <b>x</b>- und <b>y</b>-Koordinate der linken oberen Ecke in
      * Pixel.
      *
      * @param x Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
@@ -113,77 +132,12 @@ public abstract class Box
         return this;
     }
 
-    /* Getter */
-
-    /**
-     * Gibt die <b>x</b>-Koordinate der linken oberen Ecke in Pixel zurück.
-     *
-     * <p>
-     * Außerdem wird überprüft, ob die <b>x</b>-Koordinate bereits gesetzt
-     * wurde.
-     * </p>
-     *
-     * @return Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
-     *
-     * @throws RuntimeException Falls die <b>x</b>-Koordinate noch nicht gesetzt
-     *     wurde.
-     *
-     * @since 0.38.0
-     */
-    int x()
-    {
-        if (x == Integer.MIN_VALUE)
-        {
-            throw new RuntimeException(
-                    "Die x-Koordinate wurde noch nicht gesetzt.");
-        }
-        return x;
-    }
-
-    /**
-     * Gibt die <b>y</b>-Koordinate der linken oberen Ecke in Pixel zurück.
-     *
-     * <p>
-     * Außerdem wird überprüft, ob die <b>y</b>-Koordinate bereits gesetzt
-     * wurde.
-     * </p>
-     *
-     * @return Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
-     *
-     * @throws RuntimeException Falls die <b>y</b>-Koordinate noch nicht gesetzt
-     *     wurde.
-     *
-     * @since 0.38.0
-     */
-    int y()
-    {
-        if (y == Integer.MIN_VALUE)
-        {
-            throw new RuntimeException(
-                    "Die y-Koordinate wurde noch nicht gesetzt.");
-        }
-        return y;
-    }
-
-    /**
-     * Gibt die <b>Breite</b> der Box in Pixel zurück.
-     *
-     * @return Die <b>Breite</b> der Box in Pixel.
-     *
-     * @since 0.38.0
-     */
-    abstract int width();
-
-    /**
-     * Gibt die <b>Höhe</b> der Box in Pixel zurück.
-     *
-     * @return Die <b>Höhe</b> der Box in Pixel.
-     *
-     * @since 0.38.0
-     */
-    abstract int height();
-
     /* Methods */
+
+    /**
+     * Berechnet rekursive die Höhe und Breite.
+     */
+    protected abstract void calculateDimension();
 
     /**
      * Berechnet rekursiv alle Ankerpunkte (linkes oberes Eck) der
@@ -192,9 +146,17 @@ public abstract class Box
      *
      * @since 0.38.0
      */
-    void calculateAnchors()
-    {
+    protected abstract void calculateAnchors();
 
+    /**
+     * Bestimmt rekursive zu erst die Abmessngen (Höhe und Breite) und
+     * anschließend die Ankerpunkte (x, y) der Kind-Boxen.
+     */
+    void measure()
+    {
+        calculateDimension();
+        calculateAnchors();
+        measured = true;
     }
 
     /**
@@ -207,7 +169,8 @@ public abstract class Box
     abstract void draw(Graphics2D g);
 
     /**
-     * Berechnet die <b>Ankerpunkte</b> und <b>zeichnet</b> die Box.
+     * Berechnet die <b>Abmessungen</b> und <b>Ankerpunkte</b> und
+     * <b>zeichnet</b> die Box.
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
@@ -215,7 +178,10 @@ public abstract class Box
      */
     public void render(Graphics2D g)
     {
-        calculateAnchors();
+        if (!measured)
+        {
+            measure();
+        }
         draw(g);
     }
 

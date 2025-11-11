@@ -197,22 +197,18 @@ public class FrameBox extends SingleChildBoxContainer
     }
 
     @Override
-    int width()
+    protected void calculateDimension()
     {
-        return child.width() + 2 * outerContentSize();
+        child.calculateDimension();
+        width = child.width + 2 * outerContentSize();
+        height = child.height + 2 * outerContentSize();
     }
 
     @Override
-    int height()
+    protected void calculateAnchors()
     {
-        return child.height() + 2 * outerContentSize();
-    }
-
-    @Override
-    void calculateAnchors()
-    {
-        child.x = x() + outerContentSize();
-        child.y = y() + outerContentSize();
+        child.x = x + outerContentSize();
+        child.y = y + outerContentSize();
     }
 
     @Override
@@ -223,14 +219,13 @@ public class FrameBox extends SingleChildBoxContainer
             Color oldColor = g.getColor();
             g.setColor(backgroundColor);
             int outer = margin + borderSize;
-            g.fillRect(x() + outer, y() + outer, width() - 2 * outer,
-                    height() - 2 * outer);
+            g.fillRect(x + outer, y + outer, width - 2 * outer,
+                    height - 2 * outer);
             g.setColor(oldColor);
         }
 
         if (borderColor != null && borderSize > 0)
         {
-
             // die Methode g.drawRect() macht Antialising (siehe unten)
 
             // ---
@@ -244,25 +239,25 @@ public class FrameBox extends SingleChildBoxContainer
                     // y
                     y + margin,
                     // width
-                    width() - 2 * margin,
+                    width - 2 * margin,
                     // height
                     borderSize);
             // rechts
             g.fillRect(// x
-                    x + outerContentSize() + child.width() + padding,
+                    x + outerContentSize() + child.width + padding,
                     // y
                     y + margin + borderSize,
                     // width
                     borderSize,
                     // height
-                    child.height() + 2 * padding);
+                    child.height + 2 * padding);
             // unten
             g.fillRect(// x
                     x + margin,
                     // y
-                    y + outerContentSize() + child.height() + padding,
+                    y + outerContentSize() + child.height + padding,
                     // width
-                    width() - 2 * margin,
+                    width - 2 * margin,
                     // height
                     borderSize);
             // links
@@ -273,7 +268,7 @@ public class FrameBox extends SingleChildBoxContainer
                     // width
                     borderSize,
                     // height
-                    child.height() + 2 * padding);
+                    child.height + 2 * padding);
             g.setColor(oldColor);
         }
 
@@ -292,4 +287,5 @@ public class FrameBox extends SingleChildBoxContainer
         // }
         child.draw(g);
     }
+
 }

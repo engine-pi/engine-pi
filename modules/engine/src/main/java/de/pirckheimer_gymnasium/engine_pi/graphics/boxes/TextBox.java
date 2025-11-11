@@ -34,7 +34,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  *
  * @since 0.38.0
  */
-public class TextBox extends Box
+public class TextBox extends ChildBox
 {
     /**
      * Der <b>Inhalt</b> der Textbox als Zeichenkette.
@@ -44,28 +44,18 @@ public class TextBox extends Box
     private String content;
 
     /**
-     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @since 0.38.0
-     */
-    private Font font = fonts.getDefault();
-
-    /**
      *
      */
     private double fontSize = 12;
 
+    /**
+     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
+     * @since 0.38.0
+     */
+    private Font font = fonts.getDefault().deriveFont((float) fontSize);
+
     private Color color;
-
-    /**
-     * @since 0.38.0
-     */
-    private int width;
-
-    /**
-     * @since 0.38.0
-     */
-    private int height;
 
     /**
      * @since 0.38.0
@@ -84,7 +74,7 @@ public class TextBox extends Box
     public TextBox(String content)
     {
         this.content = content;
-        update();
+        calculateDimension();
     }
 
     /**
@@ -102,10 +92,10 @@ public class TextBox extends Box
     {
         this.content = content;
         this.font = font;
-        update();
+        calculateDimension();
     }
 
-    private void update()
+    protected void calculateDimension()
     {
         var bounds = FontUtil.getStringBoundsNg(content, font);
         width = bounds.getWidth();
@@ -121,7 +111,7 @@ public class TextBox extends Box
     public TextBox content(String content)
     {
         this.content = content;
-        update();
+        calculateDimension();
         return this;
     }
 
@@ -131,7 +121,7 @@ public class TextBox extends Box
     public TextBox font(Font font)
     {
         this.font = font;
-        update();
+        calculateDimension();
         return this;
     }
 
@@ -141,7 +131,7 @@ public class TextBox extends Box
     public TextBox fontSize(double fontSize)
     {
         font = font.deriveFont((float) fontSize);
-        update();
+        calculateDimension();
         return this;
     }
 
@@ -157,20 +147,6 @@ public class TextBox extends Box
         return this;
     }
 
-    /* Getter */
-
-    @Override
-    int width()
-    {
-        return width;
-    }
-
-    @Override
-    int height()
-    {
-        return height;
-    }
-
     @Override
     void draw(Graphics2D g)
     {
@@ -182,7 +158,7 @@ public class TextBox extends Box
             g.setColor(color);
         }
         g.setFont(font);
-        g.drawString(content, x(), y() + baseline);
+        g.drawString(content, x, y + baseline);
         if (oldColor != null)
         {
             g.setColor(oldColor);
