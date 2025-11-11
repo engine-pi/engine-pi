@@ -99,6 +99,14 @@ public class Animation extends Actor implements FrameUpdateListener
     private boolean manualMode = false;
 
     /**
+     * Falls wahr, wird die Animation gestoppt. Das aktuelle Einzelbild bleibt
+     * dauerhaft stehen.
+     *
+     * @since 0.40.0
+     */
+    private boolean stopped = false;
+
+    /**
      * Wie lange ein Einzelbild bereits gezeigt wurde.
      */
     private transient double currentTime;
@@ -165,6 +173,37 @@ public class Animation extends Actor implements FrameUpdateListener
     }
 
     /**
+     * <b>Startet</b> die Animation, falls sie vorher gestoppt wurde.
+     *
+     * @since 0.40.0
+     */
+    public void start()
+    {
+        stopped = false;
+    }
+
+    /**
+     * <b>Stoppt</b> die Animation. Das aktuelle Einzelbild bleibt dauerhaft
+     * stehen.
+     *
+     * @since 0.40.0
+     */
+    public void stop()
+    {
+        stopped = true;
+    }
+
+    /**
+     * <b>Stoppt</b> oder <b>startet</b> je nach Zustand die Animation.
+     *
+     * @since 0.40.0
+     */
+    public void toggle()
+    {
+        stopped = !stopped;
+    }
+
+    /**
      * Setzt ein bestimmtes <b>Einzelbild</b> über seinen <b>Index</b>.
      *
      * @param index Der Index des Einzelbilds ({@code 0} ist der erste Index).
@@ -179,6 +218,22 @@ public class Animation extends Actor implements FrameUpdateListener
                     "Nur im manuellen Modus können die Einzelbilder direkt gesetzt werden.");
         }
         currentIndex = index;
+    }
+
+    /**
+     * Setzt die <b>Dauer</b> in Sekunden, die jedes Einzelbild aktiv bleibt.
+     *
+     * @param duration Die <b>Dauer</b> in Sekunden, die jedes Einzelbild aktiv
+     *     bleibt.
+     *
+     * @since 0.40.0
+     */
+    public void setDuration(double duration)
+    {
+        for (AnimationFrame animationFrame : frames)
+        {
+            animationFrame.setDuration(duration);
+        }
     }
 
     /**
@@ -249,6 +304,10 @@ public class Animation extends Actor implements FrameUpdateListener
      */
     public void showNext()
     {
+        if (stopped)
+        {
+            return;
+        }
         if (currentIndex == frames.length - 1)
         {
             onCompleteListeners.invoke(Runnable::run);
@@ -267,7 +326,7 @@ public class Animation extends Actor implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        if (manualMode)
+        if (manualMode || stopped)
         {
             return;
         }
@@ -304,7 +363,6 @@ public class Animation extends Actor implements FrameUpdateListener
      * @param height Die Höhe der Animation in Meter.
      *
      * @return Eine mit Einzelbildern bestückte Animation.
-     *
      *
      * @since 0.25.0
      */
@@ -416,7 +474,8 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         if (frameDuration <= 0)
         {
-            throw new RuntimeException("Frame-Länge muss größer als 1 sein.");
+            throw new RuntimeException(
+                    "Die Dauer, wie lange ein Einzelbild angezeigt wird, muss größer als 0 sein.");
         }
         Collection<AnimationFrame> frames = new LinkedList<>();
         for (BufferedImage filepath : images)
