@@ -6,13 +6,13 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.PaintingSurfaceScene;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
 
-public class PaintingSurfaceDemo extends Scene
+public class PaintingSurfaceDemo extends PaintingSurfaceScene
         implements MouseClickListener, KeyStrokeListener
 {
 

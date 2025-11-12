@@ -13,7 +13,7 @@ import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
- * Eine Malfläche, in die gezeichnet werden kann.
+ * Eine <b>Malfläche</b>, in die gezeichnet werden kann.
  *
  * <p>
  * Die Malfläche kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
@@ -34,14 +34,14 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 public class PaintingSurface
 {
     /**
-     * Die Szene, in der die Malfläche als Hintergrund verwendet wird.
+     * Die <b>Szene</b>, in der die Malfläche als Hintergrund verwendet wird.
      */
     private Scene scene;
 
     /**
-     * Ein Bild, in das gemalt werden kann und das als Hintergrundbild angezeigt
-     * wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden oder zur
-     * Simulation eines Malprogramms.
+     * Ein <b>Bild</b>, in das gemalt werden kann und das als Hintergrundbild
+     * angezeigt wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden
+     * oder zur Simulation eines Malprogramms.
      */
     private BufferedImage image;
 
@@ -52,8 +52,8 @@ public class PaintingSurface
     private Graphics2D g;
 
     /**
-     * @param scene Die Szene, in der die Malfläche als Hintergrund verwendet
-     *     wird.
+     * @param scene Die <b>Szene</b>, in der die Malfläche als Hintergrund
+     *     verwendet wird.
      */
     public PaintingSurface(Scene scene)
     {
@@ -66,8 +66,8 @@ public class PaintingSurface
     }
 
     /**
-     * Die Bilddatei kann nicht im Konstruktur initialisiert werden, da zu
-     * diesem Zeitpunkt das Fenster noch keine Abmessungen hat.
+     * Die Bilddatei kann nicht im Konstruktur <b>initialisiert</b> werden, da
+     * zu diesem Zeitpunkt das Fenster noch keine Abmessungen hat.
      */
     public void initialize()
     {
@@ -117,8 +117,10 @@ public class PaintingSurface
     /**
      * Löscht die gesamte Zeichenfläche, indem sie weiß gefüllt wird.
      *
+     * <p>
      * Diese Methode setzt die Zeichenfläche auf ihren Ausgangszustand zurück,
      * indem sie mit der Farbe Weiß gefüllt wird.
+     * </p>
      */
     public void clear()
     {
@@ -166,5 +168,4 @@ public class PaintingSurface
     {
         drawLine(point1, point2, colors.get("grey"));
     }
-
 }

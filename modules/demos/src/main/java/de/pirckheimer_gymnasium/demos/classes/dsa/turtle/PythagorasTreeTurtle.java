@@ -2,7 +2,7 @@ package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -58,16 +58,16 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
      *
      * @param depth Die Rekursionstiefe.
      */
-    public PythagorasTreeTurtle(Scene scene, int depth)
+    public PythagorasTreeTurtle(Turtle turtle, int depth)
     {
-        super(scene);
+        super(turtle);
         this.depth = depth;
         turtle.setSpeed(1000);
     }
 
     public PythagorasTreeTurtle(int depth)
     {
-        this(new Scene(), depth);
+        this(new Turtle(), depth);
     }
 
     public PythagorasTreeTurtle()

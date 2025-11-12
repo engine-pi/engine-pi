@@ -22,7 +22,6 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
-
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import java.awt.Color;
@@ -31,7 +30,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
@@ -96,13 +94,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class Turtle
+public class Turtle extends PaintingSurfaceScene
 {
-    /**
-     * Eine <b>Szene</b>, in die die Schildkröte zeichnet.
-     */
-    private final Scene scene;
-
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
      */
@@ -184,31 +177,36 @@ public class Turtle
      */
     public Turtle()
     {
-        this(new Scene());
-        if (!Game.isRunning())
-        {
-            Game.start(scene);
-        }
-        else
-        {
-            Game.transitionToScene(scene);
-        }
+        this(true);
+
     }
 
     /**
      * Erzeugt eine Schildkröte in einer <b>gegebenen Szene</b>.
      *
-     * @param scene Eine <b>Szene</b>, in die die Schildkröte zeichnet.
+     * @param autoStart Falls wahr, dann wird das das Fenster <b>automatisch
+     *     gestartet</b>.
      *
      * @since 0.38.0
      */
-    public Turtle(Scene scene)
+    public Turtle(boolean autoStart)
     {
-        this.scene = scene;
-        scene.setBackgroundColor(backgroundColor);
+        setBackgroundColor(backgroundColor);
         currentPenPosition = new Vector(0, 0);
         setActor(true);
-        scene.add(turtleImage);
+        add(turtleImage);
+
+        if (autoStart)
+        {
+            if (!Game.isRunning())
+            {
+                Game.start(this);
+            }
+            else
+            {
+                Game.transitionToScene(this);
+            }
+        }
     }
 
     /* Hauptmethoden */
@@ -274,7 +272,7 @@ public class Turtle
         }
         if (surface == null)
         {
-            surface = scene.getPaintingSurface();
+            surface = getPaintingSurface();
         }
         surface.drawLine(from, to, lineColor, lineWidth);
     }

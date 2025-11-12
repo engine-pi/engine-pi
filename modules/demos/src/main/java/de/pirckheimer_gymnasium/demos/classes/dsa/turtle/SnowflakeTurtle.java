@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -32,22 +32,22 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     private int depth;
 
-    public SnowflakeTurtle(Scene scene, double length, int depth)
+    public SnowflakeTurtle(Turtle turtle, double length, int depth)
     {
-        super(scene);
+        super(turtle);
         this.length = length;
         this.depth = depth;
         turtle.setSpeed(100);
     }
 
-    public SnowflakeTurtle(Scene scene)
+    public SnowflakeTurtle(Turtle turtle)
     {
-        this(scene, 10, 3);
+        this(turtle, 10, 3);
     }
 
     public SnowflakeTurtle()
     {
-        this(new Scene(), 10, 3);
+        this(new Turtle(), 10, 3);
     }
 
     public void draw()

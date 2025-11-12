@@ -3,12 +3,11 @@ package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class TurtleDemo extends Scene implements KeyStrokeListener
+public class TurtleDemo extends Turtle implements KeyStrokeListener
 {
     private ArrayList<TurtleAlgorithm> algos;
 
@@ -128,7 +127,7 @@ public class TurtleDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new TurtleDemo());
+        new TurtleDemo();
     }
 
 }

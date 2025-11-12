@@ -1,7 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
@@ -54,30 +53,10 @@ public abstract class TurtleAlgorithm implements Runnable
     protected Turtle turtle;
 
     /**
-     * Eine <b>Szene</b>, in der mit Hilfe einer Schildkröte ein Algorithmus
-     * formuliert werden soll.
-     */
-    protected Scene scene;
-
-    /**
      * Eine Callback-Funktion, die aufgerufen wird, wenn die Turtle-Grafik
      * fertig gezeichnet wurde.
      */
     protected Runnable onFinished;
-
-    /**
-     * Fügt den <b>Turtle-Algorithmus</b> in eine <b>vorhandet Szene</b>.
-     *
-     * @param scene Eine <b>Szene</b>, in der mit Hilfe einer Schildkröte ein
-     *     Algorithmus formuliert werden soll.
-     *
-     * @since 0.38.0
-     */
-    public TurtleAlgorithm(Scene scene)
-    {
-        turtle = new Turtle(scene);
-        this.scene = scene;
-    }
 
     /**
      * Fügt den <b>Turtle-Algorithmus</b> in eine <b>neue Szene</b>.
@@ -86,7 +65,17 @@ public abstract class TurtleAlgorithm implements Runnable
      */
     public TurtleAlgorithm()
     {
-        this(new Scene());
+        this(new Turtle());
+    }
+
+    /**
+     * Fügt den <b>Turtle-Algorithmus</b> in eine <b>vorhandet Szene</b>.
+     *
+     * @since 0.38.0
+     */
+    public TurtleAlgorithm(Turtle turtle)
+    {
+        this.turtle = turtle;
     }
 
     public TurtleAlgorithm onFinished(Runnable onFinished)
@@ -124,7 +113,7 @@ public abstract class TurtleAlgorithm implements Runnable
     {
         if (openWindow)
         {
-            Game.start(scene);
+            Game.start(turtle);
         }
         run();
     }

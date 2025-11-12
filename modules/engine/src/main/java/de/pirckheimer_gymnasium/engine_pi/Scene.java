@@ -153,13 +153,6 @@ public class Scene implements KeyStrokeListenerRegistration,
     protected String help;
 
     /**
-     * Ein Malfläche, in die gemalt werden kann und das als Hintergrundbild
-     * angezeigt wird. Es kann zum Beispiel für Turtle-Grafiken verwendet werden
-     * oder zur Simulation eines Malprogramms.
-     */
-    protected PaintingSurface paintingSurface;
-
-    /**
      * Erzeugt eine neue Szene.
      *
      * <p>
@@ -313,15 +306,6 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     }
 
-    public PaintingSurface getPaintingSurface()
-    {
-        if (paintingSurface == null)
-        {
-            paintingSurface = new PaintingSurface(this);
-        }
-        return paintingSurface;
-    }
-
     /**
      * Ruft die zu überschreibende Methode
      * {@link #renderOverlay(Graphics2D, int, int)} auf und zeichnet die
@@ -339,13 +323,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     @Internal
-    public final void render(Graphics2D g, int width, int height)
+    public void render(Graphics2D g, int width, int height)
     {
-        // Die Malfläche zuerst als Hintergrund.
-        if (paintingSurface != null)
-        {
-            g.drawImage(paintingSurface.getImage(), 0, 0, null);
-        }
         final AffineTransform base = g.getTransform();
         synchronized (layers)
         {
