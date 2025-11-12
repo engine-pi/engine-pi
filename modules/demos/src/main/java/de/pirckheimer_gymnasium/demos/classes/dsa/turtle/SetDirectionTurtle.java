@@ -20,14 +20,13 @@ public class SetDirectionTurtle extends TurtleAlgorithm
     private void setDirection(double direction)
     {
         turtle.lowerPen();
-        turtle.setStartPosition(0, 0);
+        turtle.setPosition(0, 0);
         turtle.setDirection(direction);
         turtle.move(4);
         turtle.liftPen();
 
     }
 
-    @Override
     public void draw()
     {
         setDirection(0);

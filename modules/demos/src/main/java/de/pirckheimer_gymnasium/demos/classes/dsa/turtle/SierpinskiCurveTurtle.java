@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -56,6 +57,11 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
         this(5);
     }
 
+    protected void initialize(InitialTurtleState state)
+    {
+        state.speed(1000);
+    }
+
     public void draw()
     {
         length = 4;
@@ -70,7 +76,7 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
         length2 = length * 1.414213562373095;
         length = length * 2.0;
         turtle.liftPen();
-        turtle.setStartPosition(x0, y0);
+        turtle.setPosition(x0, y0);
         turtle.lowerPen();
         drawElementA(depth);
         turtle.setDirection(315);

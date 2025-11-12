@@ -47,7 +47,6 @@ import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListenerRegistration;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
 import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListenerRegistration;
-import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 import de.pirckheimer_gymnasium.engine_pi.graphics.RenderSource;
 import de.pirckheimer_gymnasium.engine_pi.physics.WorldHandler;
 import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;

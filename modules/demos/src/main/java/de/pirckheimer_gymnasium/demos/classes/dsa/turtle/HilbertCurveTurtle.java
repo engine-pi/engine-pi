@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -46,10 +47,15 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
         this(new Turtle());
     }
 
+    protected void initialize(InitialTurtleState state)
+    {
+        state.position(-7, 7).speed(100);
+    }
+
     public void draw()
     {
         turtle.setSpeed(100);
-        turtle.setStartPosition(-7, 7);
+        turtle.setPosition(-7, 7);
         length = 15 / Math.pow(2.0, depth);
         drawElement(false, depth);
     }
@@ -99,4 +105,5 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
     {
         new HilbertCurveTurtle().show();
     }
+
 }

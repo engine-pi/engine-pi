@@ -81,7 +81,7 @@ public final class Game
                                                           // accelerated image
                                                           // scaling on windows
         /**
-         * Damit die Umrisse zum Beispiel bei der Klasse Star richitg gezeichnet
+         * Damit die Umrisse zum Beispiel bei der Klasse Star richtig gezeichnet
          * wird.
          */
         Settings.maxPolygonVertices = 20;
@@ -359,6 +359,25 @@ public final class Game
     public static Scene start()
     {
         return start(new MainAnimation());
+    }
+
+    /**
+     * Wenn das Spiel noch nicht läuft, wird das Spiel gestartet, ansonsten wird
+     * zur gegeben Szene gewechselt.
+     *
+     * @since 0.40.0
+     */
+    public static Scene startSafe(Scene scene)
+    {
+        if (!isRunning())
+        {
+            Game.start(scene);
+        }
+        else
+        {
+            transitionToScene(scene);
+        }
+        return scene;
     }
 
     /**

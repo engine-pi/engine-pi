@@ -1,5 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
+import java.util.function.Supplier;
+
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
@@ -58,6 +60,8 @@ public abstract class TurtleAlgorithm implements Runnable
      */
     protected Runnable onFinished;
 
+    protected InitialTurtleState initalState = new InitialTurtleState();
+
     /**
      * Fügt den <b>Turtle-Algorithmus</b> in eine <b>neue Szene</b>.
      *
@@ -84,6 +88,11 @@ public abstract class TurtleAlgorithm implements Runnable
         return this;
     }
 
+    protected void initialize(InitialTurtleState state)
+    {
+
+    }
+
     /**
      * In dieser Methode soll der Turtle-Algorithmus formuliert werden.
      */
@@ -95,11 +104,37 @@ public abstract class TurtleAlgorithm implements Runnable
     @Internal
     public void run()
     {
+        if (initalState != null)
+        {
+            initialize(initalState);
+            initalState.apply(turtle);
+        }
         draw();
         if (onFinished != null)
         {
             onFinished.run();
         }
+    }
+
+    public void repeat(Supplier<Boolean> afterRun, boolean openWindow)
+    {
+        if (openWindow)
+        {
+            Game.startSafe(turtle);
+        }
+        while (true)
+        {
+            run();
+            if (!afterRun.get())
+            {
+                break;
+            }
+        }
+    }
+
+    public void repeat(Supplier<Boolean> afterRun)
+    {
+        repeat(afterRun, true);
     }
 
     /**

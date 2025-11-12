@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -33,7 +34,7 @@ public class RecursiveSquareTurtle extends TurtleAlgorithm
 
     private void reset()
     {
-        turtle.setStartPosition(-8, 0);
+        turtle.setPosition(-8, 0);
         turtle.clearBackground();
     }
 
@@ -198,5 +199,13 @@ public class RecursiveSquareTurtle extends TurtleAlgorithm
     public static void main(String[] args)
     {
         new RecursiveSquareTurtle().show();
+    }
+
+    @Override
+    protected void initialize(InitialTurtleState state)
+    {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException(
+                "Unimplemented method 'initialize'");
     }
 }

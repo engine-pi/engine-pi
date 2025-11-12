@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -62,7 +63,6 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     {
         super(turtle);
         this.depth = depth;
-        turtle.setSpeed(1000);
     }
 
     public PythagorasTreeTurtle(int depth)
@@ -73,6 +73,11 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     public PythagorasTreeTurtle()
     {
         this(1);
+    }
+
+    protected void initialize(InitialTurtleState state)
+    {
+        state.speed(1000);
     }
 
     public void draw()
@@ -144,7 +149,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     private void drawTriangle(double aX, double aY, double bX, double bY,
             double cX, double cY)
     {
-        turtle.setStartPosition(aX, aY);
+        turtle.setPosition(aX, aY);
         turtle.setDirection(getRotation(aX, aY, bX, bY));
         turtle.move(getLength(aX, aY, bX, bY));
         turtle.setDirection(getRotation(bX, bY, cX, cY));
@@ -173,7 +178,7 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     private void drawRectangle(double aX, double aY, double bX, double bY,
             double cX, double cY, double dX, double dY)
     {
-        turtle.setStartPosition(aX, aY);
+        turtle.setPosition(aX, aY);
         turtle.setDirection(getRotation(aX, aY, bX, bY));
         turtle.move(getLength(aX, aY, bX, bY));
         turtle.setDirection(getRotation(bX, bY, cX, cY));

@@ -105,7 +105,7 @@ public class Turtle extends PaintingSurfaceScene
      * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
      * zeichnet oder nicht.
      */
-    private boolean drawLine = true;
+    private boolean penDown = true;
 
     /**
      * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
@@ -266,7 +266,7 @@ public class Turtle extends PaintingSurfaceScene
 
     private void drawLineInSurface(Vector from, Vector to)
     {
-        if (!drawLine)
+        if (!penDown)
         {
             return;
         }
@@ -333,7 +333,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void lowerPen()
     {
-        drawLine = true;
+        penDown = true;
     }
 
     /**
@@ -348,7 +348,15 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void liftPen()
     {
-        drawLine = false;
+        penDown = false;
+    }
+
+    /**
+     * @since 0.40.0
+     */
+    public void setPen(boolean penDown)
+    {
+        this.penDown = penDown;
     }
 
     /* Setter */
@@ -414,6 +422,14 @@ public class Turtle extends PaintingSurfaceScene
     public void toggleWarpMode()
     {
         warpMode = !warpMode;
+    }
+
+    /**
+     * @since 0.40.0
+     */
+    public void setWarpMode(boolean warpMode)
+    {
+
     }
 
     /**
@@ -489,7 +505,7 @@ public class Turtle extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setStartPosition(Vector position)
+    public void setPosition(Vector position)
     {
         lastPosition = currentPenPosition;
         currentPenPosition = position;
@@ -512,9 +528,9 @@ public class Turtle extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setStartPosition(double x, double y)
+    public void setPosition(double x, double y)
     {
-        setStartPosition(new Vector(x, y));
+        setPosition(new Vector(x, y));
     }
 
     /**
