@@ -48,7 +48,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 public abstract class TurtleAlgorithm implements Runnable
 {
     /**
-     * Die Schildkröte, die einen Grafik zeichnet.
+     * Die <b>Schildkröte</b>, die eine Grafik zeichnet.
      */
     protected Turtle turtle;
 

@@ -140,8 +140,8 @@ public class Turtle extends PaintingSurfaceScene
     private PaintingSurface surface;
 
     /**
-     * Die aktuelle Position des Stifts. Diese Position wird bewegt und das
-     * Zentrum der Figur wird auf diese Position gesetzt.
+     * Die aktuelle <b>Position des Stifts</b>. Diese Position wird bewegt und
+     * das Zentrum der Figur wird auf diese Position gesetzt.
      *
      * <p>
      * Es reicht nicht, die Stiftposition über die Methode
