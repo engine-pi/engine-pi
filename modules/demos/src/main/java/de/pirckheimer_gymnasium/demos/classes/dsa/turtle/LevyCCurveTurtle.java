@@ -14,6 +14,16 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 {
     private int depth;
 
+    public LevyCCurveTurtle()
+    {
+        this(new Turtle());
+    }
+
+    public LevyCCurveTurtle(Turtle turtle)
+    {
+        this(turtle, 5);
+    }
+
     /**
      * Legt die Schildkröte an.
      */
@@ -21,21 +31,11 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
     {
         super(turtle);
         this.depth = depth;
-    }
-
-    public LevyCCurveTurtle(Turtle turtle)
-    {
-        this(turtle, 1);
-    }
-
-    public LevyCCurveTurtle()
-    {
-        this(new Turtle());
+        initalState.position(-4, 0).speed(20);
     }
 
     public void draw()
     {
-        initalState.position(-4, 0).speed(1);
         drawCurve(depth);
     }
 
@@ -86,6 +86,8 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 
     public void showDifferentDepths()
     {
+        depth = 1;
+        initalState.speed(10 * depth);
         repeat(() -> {
             depth++;
             initalState.speed(10 * depth);

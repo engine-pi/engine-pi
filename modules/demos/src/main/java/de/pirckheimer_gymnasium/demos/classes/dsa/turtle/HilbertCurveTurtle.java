@@ -27,6 +27,16 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
      */
     private int depth;
 
+    public HilbertCurveTurtle()
+    {
+        this(new Turtle());
+    }
+
+    public HilbertCurveTurtle(Turtle turtle)
+    {
+        this(turtle, 5);
+    }
+
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
      *
@@ -36,22 +46,11 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
     {
         super(turtle);
         this.depth = depth;
-    }
-
-    public HilbertCurveTurtle(Turtle turtle)
-    {
-        this(turtle, 5);
-
-    }
-
-    public HilbertCurveTurtle()
-    {
-        this(new Turtle());
+        initalState.position(-7, 7).speed(100);
     }
 
     public void draw()
     {
-        initalState.position(-7, 7).speed(100);
         length = 15 / Math.pow(2.0, depth);
         drawElement(false, depth);
     }

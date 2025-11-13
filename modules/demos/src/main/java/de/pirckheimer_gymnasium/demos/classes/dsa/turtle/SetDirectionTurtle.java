@@ -6,14 +6,15 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 public class SetDirectionTurtle extends TurtleAlgorithm
 {
 
-    public SetDirectionTurtle(Turtle turtle)
-    {
-        super(turtle);
-    }
-
     public SetDirectionTurtle()
     {
         this(new Turtle());
+    }
+
+    public SetDirectionTurtle(Turtle turtle)
+    {
+        super(turtle);
+        initalState.speed(2);
     }
 
     private void setDirection(double direction)
@@ -28,7 +29,6 @@ public class SetDirectionTurtle extends TurtleAlgorithm
 
     public void draw()
     {
-        initalState.speed(2);
         setDirection(0);
         setDirection(90);
         setDirection(180);

@@ -21,8 +21,6 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
-import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
 import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
@@ -32,8 +30,6 @@ import java.util.function.Consumer;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
-import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
@@ -99,7 +95,7 @@ public class Turtle extends PaintingSurfaceScene
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
      */
-    private Actor turtleImage;
+    private TurtleImage turtleImage;
 
     /**
      * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
@@ -128,11 +124,6 @@ public class Turtle extends PaintingSurfaceScene
      */
     private Color backgroundColor = ColorUtil
             .changeSaturation(colors.get("yellow"), 0.7);
-
-    /**
-     * Die Größe der Schildkröte in Meter.
-     */
-    private double turtleSize = 2;
 
     /**
      * Die Malfläche, in die die Schildkröte zeichnet.
@@ -193,8 +184,7 @@ public class Turtle extends PaintingSurfaceScene
     {
         setBackgroundColor(backgroundColor);
         currentPenPosition = new Vector(0, 0);
-        setActor(true);
-        add(turtleImage);
+        turtleImage = new TurtleImage(this);
 
         if (autoStart)
         {
@@ -252,12 +242,8 @@ public class Turtle extends PaintingSurfaceScene
             animate(duration, progress -> {
                 lastPosition = currentPenPosition;
                 currentPenPosition = initial.add(movement.multiply(progress));
-                turtleImage.setCenter(currentPenPosition);
-                if (turtleImage instanceof Animation)
-                {
-                    Animation animation = (Animation) turtleImage;
-                    animation.showNext();
-                }
+                turtleImage.setPosition(currentPenPosition);
+                turtleImage.showNextAnimation();
                 drawLineInSurface(lastPosition, currentPenPosition);
             });
         }
@@ -288,7 +274,7 @@ public class Turtle extends PaintingSurfaceScene
         setCurrentRotation(rotation);
         turtleImage.setRotation(rotation);
         // die Rotation kann den Mittelpunkt verschieben.
-        turtleImage.setCenter(currentPenPosition);
+        turtleImage.setPosition(currentPenPosition);
     }
 
     /**
@@ -425,11 +411,19 @@ public class Turtle extends PaintingSurfaceScene
     }
 
     /**
+     * Setzt den Zustand des sogenannten „<b>Warp-Modus</b>“.
+     *
+     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
+     * so schnell wie möglich gezeichnet.</b>
+     *
+     * @param warpMode Der Warp-Modulus wird angeschaltet, falls der Wert wahr
+     *     ist. Er wird ausgeschaltet, falls der Wert falsch ist.
+     *
      * @since 0.40.0
      */
     public void setWarpMode(boolean warpMode)
     {
-
+        this.warpMode = warpMode;
     }
 
     /**
@@ -509,7 +503,7 @@ public class Turtle extends PaintingSurfaceScene
     {
         lastPosition = currentPenPosition;
         currentPenPosition = position;
-        turtleImage.setCenter(position);
+        turtleImage.setPosition(position);
     }
 
     /**
@@ -547,7 +541,17 @@ public class Turtle extends PaintingSurfaceScene
         setCurrentRotation(direction);
         turtleImage.setRotation(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
-        turtleImage.setCenter(currentPenPosition);
+        turtleImage.setPosition(currentPenPosition);
+    }
+
+    public void setDress(TurtleDress dress)
+    {
+        turtleImage.setDress(dress);
+    }
+
+    public void setNextDress()
+    {
+        turtleImage.setNextDress();
     }
 
     /**
@@ -584,33 +588,6 @@ public class Turtle extends PaintingSurfaceScene
     }
 
     /**
-     * Setzt die Figur die die Schildkröte graphisch repräsentiert neu.
-     *
-     * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
-     * dann wird eine Dreieck gezeichnet.
-     *
-     * @since 0.38.0
-     */
-    private void setActor(boolean actorAsImage)
-    {
-        if (actorAsImage)
-        {
-            Animation animation = Animation.createFromImages(1 / speed,
-                    turtleSize, turtleSize, images.get("turtle.png"),
-                    images.get("turtle2.png"));
-            animation.enableManualMode();
-            turtleImage = animation;
-        }
-        else
-        {
-            turtleImage = new Polygon(v(-turtleSize / 4, turtleSize / 4),
-                    v(turtleSize, 0), v(-turtleSize / 4, -turtleSize / 4));
-            turtleImage.setColor("green");
-        }
-        turtleImage.setCenter(currentPenPosition);
-    }
-
-    /**
      * Führt eine lineare Animation von 0 bis 1 über die angegebene Dauer aus
      * und ruft dabei den übergebenen Setter kontinuierlich mit dem aktuellen
      * Animationswert auf.
@@ -635,13 +612,13 @@ public class Turtle extends PaintingSurfaceScene
         CompletableFuture<Void> future = new CompletableFuture<>();
 
         ValueAnimator<Double> animator = new ValueAnimator<>(duration, setter,
-                new LinearDouble(0, 1), turtleImage);
+                new LinearDouble(0, 1), this);
         animator.addCompletionListener(value -> {
             setter.accept(value);
             future.complete(null);
         });
 
-        turtleImage.addFrameUpdateListener(animator);
+        addFrameUpdateListener(animator);
 
         try
         {

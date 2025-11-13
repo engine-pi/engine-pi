@@ -119,6 +119,10 @@ public class TurtleDemo extends Turtle implements KeyStrokeListener
             currentAlgo.getTurtle().toggleWarpMode();
             break;
 
+        case KeyEvent.VK_D:
+            currentAlgo.getTurtle().setNextDress();
+            break;
+
         default:
             break;
         }

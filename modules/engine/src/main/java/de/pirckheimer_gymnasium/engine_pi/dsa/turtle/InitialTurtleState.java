@@ -3,13 +3,15 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
 /**
- * Alle Einstellungen, die die Schildkröte braucht, um einen Algorithmus
- * sinnvoll zeichnen zu können.
+ * Speichert den <b>Startzustand</b> der Schildkröte, d. h. alle Einstellungen,
+ * die die Schildkröte braucht, bevor sie beginnt mit eine Algorithmus eine
+ * Turtle-Grafik zu zeichnen.
  *
  * <p>
- * Falls der Algorithmus mehrmals hintereinander ausgeführt wird oder
- * verschiedene Algorithmen hintereinander ausgeführt werden, dann kann diese
- * Klasse benutzt werden, um den Anfangszustand zu speichern.
+ * Diese Klasse kann dazu benutzt werden, um den Anfangszustand zu speichern,
+ * wenn derselbe Algorithmus oder verschiedene Algorithmen mehrmals
+ * hintereinander ausgeführt werden und die Schildkröte eine definierten
+ * Anfangszustand braucht.
  * </p>
  *
  * @since 0.40.0
@@ -17,14 +19,14 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 public class InitialTurtleState
 {
     /**
-     * Die Startposition der Schildkröte.
+     * Die <b>Startposition</b> der Schildkröte.
      *
      * @since 0.40.0
      */
     private Vector position = new Vector(0, 0);
 
     /**
-     * Die Richtung, in die die Schildkröte schaut.
+     * Die <b>Richtung</b>, in die die Schildkröte schaut.
      *
      * @since 0.40.0
      */
@@ -47,7 +49,7 @@ public class InitialTurtleState
     private double speed = 6;
 
     /**
-     * Im sogenannte Warp-Modus finden keine Animationen statt. Die
+     * Im sogenannte <b>Warp-Modus</b> finden keine Animationen statt. Die
      * Turtle-Grafik wird so schnell wie möglich gezeichnet.
      *
      * @since 0.40.0
@@ -56,9 +58,10 @@ public class InitialTurtleState
 
     /**
      * Ignoriert den Anfangszustand bei einer Ausführung des Algorithmus. Die
-     * Schildkröte bleibt im Zustand, wie sie den Algorithmus verlassen hat.
+     * Schildkröte bleibt in dem Zustand, wie sie den vorherigen Algorithmus
+     * verlassen hat.
      */
-    private boolean ignore;
+    private boolean ignore = false;
 
     private static InitialTurtleState getDefaults()
     {

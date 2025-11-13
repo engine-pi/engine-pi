@@ -32,11 +32,9 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     private int depth;
 
-    public SnowflakeTurtle(Turtle turtle, double length, int depth)
+    public SnowflakeTurtle()
     {
-        super(turtle);
-        this.length = length;
-        this.depth = depth;
+        this(new Turtle(), 10, 1);
     }
 
     public SnowflakeTurtle(Turtle turtle)
@@ -44,14 +42,16 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         this(turtle, 10, 1);
     }
 
-    public SnowflakeTurtle()
+    public SnowflakeTurtle(Turtle turtle, double length, int depth)
     {
-        this(new Turtle(), 10, 1);
+        super(turtle);
+        this.length = length;
+        this.depth = depth;
+        initalState.speed(50);
     }
 
     public void draw()
     {
-        initalState.speed(50);
         drawSnowFlake(length, depth);
     }
 

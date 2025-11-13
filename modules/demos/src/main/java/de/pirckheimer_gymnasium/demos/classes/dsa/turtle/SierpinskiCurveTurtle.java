@@ -30,6 +30,21 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     private int depth;
 
+    public SierpinskiCurveTurtle()
+    {
+        this(5);
+    }
+
+    public SierpinskiCurveTurtle(int depth)
+    {
+        this(new Turtle(), depth);
+    }
+
+    public SierpinskiCurveTurtle(Turtle turtle)
+    {
+        this(turtle, 5);
+    }
+
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
      *
@@ -39,21 +54,7 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
     {
         super(turtle);
         this.depth = depth;
-    }
-
-    public SierpinskiCurveTurtle(Turtle turtle)
-    {
-        this(turtle, 5);
-    }
-
-    public SierpinskiCurveTurtle(int depth)
-    {
-        this(new Turtle(), depth);
-    }
-
-    public SierpinskiCurveTurtle()
-    {
-        this(5);
+        initalState.speed(1000);
     }
 
     protected void initialize(InitialTurtleState state)
@@ -63,7 +64,6 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     public void draw()
     {
-        initalState.speed(1000);
         length = 4;
         double x0 = 0;
         double y0 = 8 + length;
