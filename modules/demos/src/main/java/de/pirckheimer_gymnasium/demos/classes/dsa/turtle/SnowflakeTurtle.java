@@ -98,9 +98,9 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         }
     }
 
-    public void repeat()
+    public void showDifferentDepths()
     {
-        super.repeat(() -> {
+        repeat(() -> {
             depth++;
             if (depth > 5)
             {
@@ -112,7 +112,7 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new SnowflakeTurtle().clearBeforeRun().repeat();
+        new SnowflakeTurtle().clearBeforeRun().showDifferentDepths();
     }
 
 }

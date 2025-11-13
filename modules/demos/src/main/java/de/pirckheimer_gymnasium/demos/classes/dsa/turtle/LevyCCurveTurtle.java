@@ -25,7 +25,7 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 
     public LevyCCurveTurtle(Turtle turtle)
     {
-        this(turtle, 10);
+        this(turtle, 1);
     }
 
     public LevyCCurveTurtle()
@@ -35,7 +35,7 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 
     public void draw()
     {
-        initalState.position(-4, 0).speed(10000);
+        initalState.position(-4, 0).speed(1);
         drawCurve(depth);
     }
 
@@ -84,8 +84,22 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
         }
     }
 
+    public void showDifferentDepths()
+    {
+        repeat(() -> {
+            depth++;
+            initalState.speed(10 * depth);
+            if (depth > 10)
+            {
+                return false;
+            }
+            return true;
+        });
+    }
+
     public static void main(String[] args)
     {
-        new LevyCCurveTurtle().show();
+        new LevyCCurveTurtle().clearBeforeRun().waitAfterFinish(2)
+                .showDifferentDepths();
     }
 }

@@ -22,6 +22,9 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
      */
     private double length;
 
+    /**
+     * Die Rekursionstiefe.
+     */
     private int depth;
 
     /**
@@ -49,8 +52,6 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
     public void draw()
     {
         initalState.position(-7, 7).speed(100);
-        turtle.setSpeed(100);
-        turtle.setPosition(-7, 7);
         length = 15 / Math.pow(2.0, depth);
         drawElement(false, depth);
     }

@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
+import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
 
 /**
  * Eine Hilfsklasse zum Formulieren eines <b>Turtle-Algorithmus</b>.
@@ -67,6 +68,12 @@ public abstract class TurtleAlgorithm implements Runnable
     protected boolean clearBeforeRun = false;
 
     /**
+     * Wartet, nachdem die draw-Methode fertig ausgeführt wurde, die angegeben
+     * Anzahl an Sekunden bevor zur nächsten Wiederholung übergegangen wird.
+     */
+    protected double waitAfterFinish = 0.0;
+
+    /**
      * Fügt den <b>Turtle-Algorithmus</b> in eine <b>neue Szene</b>.
      *
      * @since 0.38.0
@@ -103,6 +110,10 @@ public abstract class TurtleAlgorithm implements Runnable
             turtle.clearBackground();
         }
         draw();
+        if (waitAfterFinish > 0)
+        {
+            TimeUtil.sleep((int) (1000 * waitAfterFinish));
+        }
         if (onFinished != null)
         {
             onFinished.run();
@@ -127,6 +138,12 @@ public abstract class TurtleAlgorithm implements Runnable
         return this;
     }
 
+    public TurtleAlgorithm waitAfterFinish(double durationInSec)
+    {
+        this.waitAfterFinish = durationInSec;
+        return this;
+    }
+
     public void repeat(Supplier<Boolean> afterRepeat)
     {
         repeat(afterRepeat, true, -1);
@@ -137,7 +154,7 @@ public abstract class TurtleAlgorithm implements Runnable
         repeat(null, openWindow, -1);
     }
 
-    public void repeat()
+    public void showDifferentDepths()
     {
         repeat(null, true, -1);
     }
@@ -178,7 +195,7 @@ public abstract class TurtleAlgorithm implements Runnable
     {
         if (openWindow)
         {
-            Game.start(turtle);
+            Game.startSafe(turtle);
         }
         run();
     }
