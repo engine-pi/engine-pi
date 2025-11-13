@@ -20,7 +20,6 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -50,13 +49,9 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         this(new Turtle(), 10, 1);
     }
 
-    protected void initialize(InitialTurtleState state)
-    {
-        state.speed(50);
-    }
-
     public void draw()
     {
+        initalState.speed(50);
         drawSnowFlake(length, depth);
     }
 
@@ -103,9 +98,9 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         }
     }
 
-    void onRepeat()
+    public void repeat()
     {
-        repeat(() -> {
+        super.repeat(() -> {
             depth++;
             if (depth > 5)
             {
@@ -117,7 +112,7 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new SnowflakeTurtle().onRepeat();
+        new SnowflakeTurtle().clearBeforeRun().repeat();
     }
 
 }

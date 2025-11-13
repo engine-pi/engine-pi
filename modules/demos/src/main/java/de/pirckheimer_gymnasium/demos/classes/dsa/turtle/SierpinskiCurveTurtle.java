@@ -38,7 +38,6 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
     public SierpinskiCurveTurtle(Turtle turtle, int depth)
     {
         super(turtle);
-        turtle.setSpeed(1000);
         this.depth = depth;
     }
 
@@ -59,11 +58,12 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     protected void initialize(InitialTurtleState state)
     {
-        state.speed(1000);
+
     }
 
     public void draw()
     {
+        initalState.speed(1000);
         length = 4;
         double x0 = 0;
         double y0 = 8 + length;

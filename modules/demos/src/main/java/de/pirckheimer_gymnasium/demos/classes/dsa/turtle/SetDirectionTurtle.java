@@ -9,7 +9,6 @@ public class SetDirectionTurtle extends TurtleAlgorithm
     public SetDirectionTurtle(Turtle turtle)
     {
         super(turtle);
-        turtle.setSpeed(2);
     }
 
     public SetDirectionTurtle()
@@ -29,6 +28,7 @@ public class SetDirectionTurtle extends TurtleAlgorithm
 
     public void draw()
     {
+        initalState.speed(2);
         setDirection(0);
         setDirection(90);
         setDirection(180);

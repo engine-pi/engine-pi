@@ -21,14 +21,14 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    private Vector position;
+    private Vector position = new Vector(0, 0);
 
     /**
      * Die Richtung, in die die Schildkröte schaut.
      *
      * @since 0.40.0
      */
-    private double direction;
+    private double direction = 0;
 
     /**
      * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
@@ -36,7 +36,7 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    private boolean penDown;
+    private boolean penDown = true;
 
     /**
      * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
@@ -44,7 +44,7 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    private double speed;
+    private double speed = 6;
 
     /**
      * Im sogenannte Warp-Modus finden keine Animationen statt. Die
@@ -52,24 +52,45 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    private boolean warpMode;
-
-    public InitialTurtleState()
-    {
-        this(new Vector(0, 0), 0, true, 6, false);
-    }
+    private boolean warpMode = false;
 
     /**
-     * @since 0.40.0
+     * Ignoriert den Anfangszustand bei einer Ausführung des Algorithmus. Die
+     * Schildkröte bleibt im Zustand, wie sie den Algorithmus verlassen hat.
      */
-    public InitialTurtleState(Vector position, double direction,
-            boolean penDown, double speed, boolean warpMode)
+    private boolean ignore;
+
+    private static InitialTurtleState getDefaults()
     {
-        this.position = position;
-        this.direction = direction;
-        this.penDown = penDown;
-        this.speed = speed;
-        this.warpMode = warpMode;
+        return new InitialTurtleState();
+    }
+
+    private static void copy(InitialTurtleState from, InitialTurtleState to)
+    {
+        to.position = from.position;
+        to.direction = from.direction;
+        to.penDown = from.penDown;
+        to.speed = from.speed;
+        to.warpMode = from.warpMode;
+        to.ignore = from.ignore;
+    }
+
+    public InitialTurtleState set(InitialTurtleState state)
+    {
+        copy(state, this);
+        return this;
+    }
+
+    public InitialTurtleState reset()
+    {
+        copy(getDefaults(), this);
+        return this;
+    }
+
+    public InitialTurtleState ignore()
+    {
+        ignore = true;
+        return this;
     }
 
     /**
@@ -133,6 +154,10 @@ public class InitialTurtleState
      */
     public void apply(Turtle turtle)
     {
+        if (ignore)
+        {
+            return;
+        }
         turtle.setPosition(position);
         turtle.setDirection(direction);
         turtle.setPen(penDown);

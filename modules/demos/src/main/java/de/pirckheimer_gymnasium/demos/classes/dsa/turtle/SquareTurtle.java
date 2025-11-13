@@ -28,6 +28,8 @@ public class SquareTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new SquareTurtle().show();
+        SquareTurtle turtle = new SquareTurtle();
+        turtle.clearBeforeRun();
+        turtle.repeat(3);
     }
 }

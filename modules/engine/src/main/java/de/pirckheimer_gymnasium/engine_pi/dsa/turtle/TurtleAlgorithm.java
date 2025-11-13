@@ -60,7 +60,11 @@ public abstract class TurtleAlgorithm implements Runnable
      */
     protected Runnable onFinished;
 
-    protected InitialTurtleState initalState = new InitialTurtleState();
+    protected final InitialTurtleState initalState = new InitialTurtleState();
+
+    protected Supplier<Boolean> onRepeat;
+
+    protected boolean clearBeforeRun = false;
 
     /**
      * Fügt den <b>Turtle-Algorithmus</b> in eine <b>neue Szene</b>.
@@ -82,17 +86,6 @@ public abstract class TurtleAlgorithm implements Runnable
         this.turtle = turtle;
     }
 
-    public TurtleAlgorithm onFinished(Runnable onFinished)
-    {
-        this.onFinished = onFinished;
-        return this;
-    }
-
-    protected void initialize(InitialTurtleState state)
-    {
-
-    }
-
     /**
      * In dieser Methode soll der Turtle-Algorithmus formuliert werden.
      */
@@ -104,10 +97,10 @@ public abstract class TurtleAlgorithm implements Runnable
     @Internal
     public void run()
     {
-        if (initalState != null)
+        initalState.apply(turtle);
+        if (clearBeforeRun)
         {
-            initialize(initalState);
-            initalState.apply(turtle);
+            turtle.clearBackground();
         }
         draw();
         if (onFinished != null)
@@ -116,25 +109,62 @@ public abstract class TurtleAlgorithm implements Runnable
         }
     }
 
-    public void repeat(Supplier<Boolean> afterRun, boolean openWindow)
+    public TurtleAlgorithm onFinished(Runnable onFinished)
     {
+        this.onFinished = onFinished;
+        return this;
+    }
+
+    public TurtleAlgorithm onRepeat(Supplier<Boolean> afterRepeat)
+    {
+        this.onRepeat = afterRepeat;
+        return this;
+    }
+
+    public TurtleAlgorithm clearBeforeRun()
+    {
+        this.clearBeforeRun = true;
+        return this;
+    }
+
+    public void repeat(Supplier<Boolean> afterRepeat)
+    {
+        repeat(afterRepeat, true, -1);
+    }
+
+    public void repeat(boolean openWindow)
+    {
+        repeat(null, openWindow, -1);
+    }
+
+    public void repeat()
+    {
+        repeat(null, true, -1);
+    }
+
+    public void repeat(int numberOfRepeats)
+    {
+        repeat(null, true, numberOfRepeats);
+    }
+
+    public void repeat(Supplier<Boolean> afterRepeat, boolean openWindow,
+            int numberOfRepeats)
+    {
+        int counter = 0;
+        this.onRepeat(afterRepeat);
         if (openWindow)
         {
             Game.startSafe(turtle);
         }
-        while (true)
+        while (numberOfRepeats == -1 || counter < numberOfRepeats)
         {
+            counter++;
             run();
-            if (!afterRun.get())
+            if (afterRepeat != null && !afterRepeat.get())
             {
                 break;
             }
         }
-    }
-
-    public void repeat(Supplier<Boolean> afterRun)
-    {
-        repeat(afterRun, true);
     }
 
     /**

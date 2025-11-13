@@ -459,7 +459,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void changeLineWidth(int lineWidthChange)
     {
-        if (lineWidth + lineWidthChange < 0)
+        if (lineWidth + lineWidthChange < 1)
         {
             return;
         }

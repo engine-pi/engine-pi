@@ -1,6 +1,5 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -34,13 +33,9 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
         this(new Turtle());
     }
 
-    protected void initialize(InitialTurtleState state)
-    {
-        state.position(-4, 0).speed(10000);
-    }
-
     public void draw()
     {
+        initalState.position(-4, 0).speed(10000);
         drawCurve(depth);
     }
 

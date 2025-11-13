@@ -2,7 +2,6 @@ package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
@@ -75,13 +74,9 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
         this(1);
     }
 
-    protected void initialize(InitialTurtleState state)
-    {
-        state.speed(1000);
-    }
-
     public void draw()
     {
+        initalState.speed(1000);
         a = 2;
         b = 2;
         c2 = a * a + b * b;
