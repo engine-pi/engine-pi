@@ -110,7 +110,7 @@ public class FramedTextBox extends CombinedChildBox
 
     /**
      * Setzt die <b>Dicke der Linie</b> in Pixel. Ist die Linienfarbe noch nicht
-     * festgelegt worden, so wird auf grau gesetzt.
+     * festgelegt worden, so wird auf <em>schwarz</em> gesetzt.
      *
      * @param thickness Die <b>Dicke der Linie</b> in Pixel.
      *
@@ -119,11 +119,12 @@ public class FramedTextBox extends CombinedChildBox
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code box.x(..).y(..)}.
      *
+     * @see BorderBox#thickness(int)
+     *
      * @since 0.38.0
      */
     public FramedTextBox borderThickness(int thickness)
     {
-
         this.border.thickness(thickness);
         return this;
     }
@@ -146,4 +147,26 @@ public class FramedTextBox extends CombinedChildBox
         this.border.color(borderColor);
         return this;
     }
+
+    /**
+     * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @see TextBox#content(String)
+     *
+     * @since 0.39.0
+     */
+    public FramedTextBox content(String content)
+    {
+        this.text.content(content);
+        return this;
+    }
+
+    public FramedTextBox textColor(Color color)
+    {
+        this.text.color(color);
+        return this;
+    }
+
 }

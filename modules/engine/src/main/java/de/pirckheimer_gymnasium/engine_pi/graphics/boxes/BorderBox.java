@@ -42,7 +42,7 @@ public class BorderBox extends ChildBox
 
     /**
      * Setzt die <b>Dicke der Linie</b> in Pixel. Ist die Linienfarbe noch nicht
-     * festgelegt worden, so wird auf grau gesetzt.
+     * festgelegt worden, so wird auf <em>schwarz</em> gesetzt.
      *
      * @param thickness Die <b>Dicke der Linie</b> in Pixel.
      *
@@ -50,6 +50,8 @@ public class BorderBox extends ChildBox
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code box.x(..).y(..)}.
+     *
+     * @see FramedTextBox#borderThickness(int)
      *
      * @since 0.40.0
      */

@@ -224,10 +224,14 @@ public abstract class Box
     protected abstract void calculateAnchors();
 
     /**
-     * Bestimmt rekursive zu erst die Abmessungen (Höhe und Breite) und
+     * <b>Misst</b> alle Kind-Boxen <b>aus</b>.
+     *
+     * <p>
+     * Bestimmt rekursiv zuerst die Abmessungen (Höhe und Breite) und
      * anschließend die Ankerpunkte (x, y) der Kind-Boxen.
+     * </p>
      */
-    void measure()
+    public void measure()
     {
         calculateDimension();
         calculateAnchors();

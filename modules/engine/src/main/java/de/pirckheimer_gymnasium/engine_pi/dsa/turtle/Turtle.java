@@ -23,6 +23,7 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
@@ -33,6 +34,9 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
+
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /*
@@ -161,6 +165,10 @@ public class Turtle extends PaintingSurfaceScene
      */
     private boolean warpMode = false;
 
+    private double traveledDistance;
+
+    private FramedTextBox statistics;
+
     /**
      * Erzeugt neue eine Schildkröte in einem <b>neuen Fenster</b>.
      *
@@ -186,16 +194,14 @@ public class Turtle extends PaintingSurfaceScene
         currentPenPosition = new Vector(0, 0);
         turtleImage = new TurtleImage(this);
 
+        statistics = new FramedTextBox(String.valueOf(traveledDistance))
+                .borderThickness(0).backgroundColor(colors.get("grey", 50))
+                .textColor(colors.get("black"));
+        statistics.anchor(20, 20);
+
         if (autoStart)
         {
-            if (!Game.isRunning())
-            {
-                Game.start(this);
-            }
-            else
-            {
-                Game.transitionToScene(this);
-            }
+            Game.startSafe(this);
         }
     }
 
@@ -247,7 +253,7 @@ public class Turtle extends PaintingSurfaceScene
                 drawLineInSurface(lastPosition, currentPenPosition);
             });
         }
-
+        traveledDistance += distance;
     }
 
     private void drawLineInSurface(Vector from, Vector to)
@@ -628,6 +634,14 @@ public class Turtle extends PaintingSurfaceScene
         {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public void renderOverlay(Graphics2D g, int width, int height)
+    {
+        statistics.content(String.valueOf(traveledDistance));
+        statistics.measure();
+        statistics.render(g);
     }
 
     public static void main(String[] args)

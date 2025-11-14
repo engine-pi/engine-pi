@@ -106,6 +106,12 @@ public class TextBox extends LeafBox
     /* Setter */
 
     /**
+     * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
+     *
+     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @see FramedTextBox#content(String)
+     *
      * @since 0.39.0
      */
     public TextBox content(String content)
@@ -116,6 +122,11 @@ public class TextBox extends LeafBox
     }
 
     /**
+     * Setzt die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
+     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
+     *     soll.
+     *
      * @since 0.39.0
      */
     public TextBox font(Font font)
