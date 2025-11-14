@@ -23,6 +23,7 @@ public class TurtleDemo extends Turtle implements KeyStrokeListener
         algos.add(new TriangleTurtle(this));
         algos.add(new SquareTurtle(this));
         algos.add(new SetDirectionTurtle(this));
+        algos.add(new PythagorasTreeTurtle(this));
         algos.add(new SnowflakeTurtle(this));
         algos.add(new HilbertCurveTurtle(this));
         algos.add(new LevyCCurveTurtle(this));

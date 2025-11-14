@@ -78,7 +78,6 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
     {
         super(turtle);
         initalState.speed(1000).position(0, -7).direction(90).warpMode(false);
-        turtle.setLineWidth(1);
     }
 
     public void draw()
