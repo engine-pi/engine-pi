@@ -5,5 +5,9 @@
   "editor.tabSize": 4,
   "java.dependency.packagePresentation": "hierarchical",
   "java.configuration.updateBuildConfiguration": "automatic",
-  "maven.view": "hierarchical"
+  "maven.view": "hierarchical",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "Joint.java": "*Joint.java"
+  }
 }

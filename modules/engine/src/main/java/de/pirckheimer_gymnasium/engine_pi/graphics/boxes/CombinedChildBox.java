@@ -19,6 +19,13 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 /**
+ * Eine Box, die aus mehreren primitiven Kind-Boxen <b>kombiniert</b> ist.
+ *
+ * <p>
+ * Es handelt sich also um eine eine virtuelle, transparente Box, die keine
+ * Zeichnenroutinen ausführt.
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0

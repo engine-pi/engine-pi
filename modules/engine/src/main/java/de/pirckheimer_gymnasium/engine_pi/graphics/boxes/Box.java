@@ -282,6 +282,11 @@ public abstract class Box
 
     /* static instantiation methods */
 
+    public static AlignBox align(Box child)
+    {
+        return new AlignBox(child);
+    }
+
     /**
      * Unterlegt eine Kind-Box mit einer <b>Hintergrundfarbe</b>.
      *
@@ -304,6 +309,11 @@ public abstract class Box
     public static BorderBox border(Box child)
     {
         return new BorderBox(child);
+    }
+
+    public static DimensionBox dimension(Box child)
+    {
+        return new DimensionBox(child);
     }
 
     /**
@@ -344,6 +354,11 @@ public abstract class Box
     public static MarginBox margin(Box child)
     {
         return new MarginBox(child);
+    }
+
+    public static EmptyBox empty()
+    {
+        return new EmptyBox();
     }
 
     /**
