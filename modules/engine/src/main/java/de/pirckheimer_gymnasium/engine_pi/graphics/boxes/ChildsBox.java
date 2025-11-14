@@ -20,6 +20,8 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
@@ -46,6 +48,12 @@ abstract class ChildsBox extends Box
             this.childs.add(child);
             child.parent = this;
         }
+    }
+
+    @Override
+    public Iterator<Box> iterator()
+    {
+        return Collections.unmodifiableList(childs).iterator();
     }
 
     @Override

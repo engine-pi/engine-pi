@@ -35,8 +35,6 @@ import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
-
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /*
@@ -169,6 +167,8 @@ public class Turtle extends PaintingSurfaceScene
 
     private FramedTextBox statistics;
 
+    public final TurtlePen pen;
+
     /**
      * Erzeugt neue eine Schildkröte in einem <b>neuen Fenster</b>.
      *
@@ -192,6 +192,7 @@ public class Turtle extends PaintingSurfaceScene
     {
         setBackgroundColor(backgroundColor);
         currentPenPosition = new Vector(0, 0);
+        pen = new TurtlePen();
         turtleImage = new TurtleImage(this);
 
         statistics = new FramedTextBox(String.valueOf(traveledDistance))

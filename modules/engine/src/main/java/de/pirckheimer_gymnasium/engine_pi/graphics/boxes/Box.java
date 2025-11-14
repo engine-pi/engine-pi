@@ -20,6 +20,8 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Eine <b>Box</b> beschreibt eine rechteckige graphische Fläche, die weitere
@@ -29,7 +31,7 @@ import java.awt.Graphics2D;
  *
  * @since 0.38.0
  */
-public abstract class Box
+public abstract class Box implements Iterable<Box>
 {
     /**
      * Zeigt an, ob die Box bereits <b>ausgemessen</b> wurde.
@@ -71,6 +73,22 @@ public abstract class Box
      * @since 0.38.0
      */
     protected Box parent;
+
+    /**
+     * Liefert einen Iterator über die direkten Kinder dieser Box.
+     *
+     * Standardmäßig sind Boxen ohne Kinder definiert — Container-Subklassen
+     * sollten diese Methode überschreiben, um tatsächliche Kinder zu liefern.
+     *
+     * @return Ein Iterator über die direkten Kind-Boxen (leer wenn keine).
+     *
+     * @since 0.40.0
+     */
+    @Override
+    public Iterator<Box> iterator()
+    {
+        return Collections.emptyIterator();
+    }
 
     /* Setter */
 

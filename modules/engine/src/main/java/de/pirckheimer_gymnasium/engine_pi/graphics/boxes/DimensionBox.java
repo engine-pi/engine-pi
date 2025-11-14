@@ -4,6 +4,11 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  * Eine Box, dessen <b>Abmessung</b> (Breite und Höhe) gesetzt und nicht
  * rekursiv berechnet wird.
  *
+ * <p>
+ * Wird die Abmessung nicht gesetzt, so wird die Breite und Höhe von der
+ * Kinder-Box übernommen.
+ * </p>
+ *
  * @since 0.40.0
  */
 public class DimensionBox extends ChildBox
@@ -44,8 +49,8 @@ public class DimensionBox extends ChildBox
     protected void calculateDimension()
     {
         child.calculateDimension();
-        width = setWidth;
-        height = setHeight;
+        width = setWidth > 0 ? setWidth : child.width;
+        height = setHeight > 0 ? setHeight : child.height;;
     }
 
     @Override
