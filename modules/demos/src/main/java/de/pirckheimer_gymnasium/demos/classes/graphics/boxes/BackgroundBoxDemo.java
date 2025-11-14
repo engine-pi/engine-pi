@@ -1,25 +1,28 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
+import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.border;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.margin;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.text;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
 
-import java.awt.Font;
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.BorderBox;
 
 public class BackgroundBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault().deriveFont(32f);
-
     public void render(Graphics2D g)
     {
-        BorderBox defaultSettings = border(background(text("default", font)));
-        vertical(defaultSettings).anchor(0, 0).render(g);
+        var defaultSettings = background(text("default"));
+
+        var custom = background(text("custom")).color(colors.get("red"));
+
+        var nested = background(
+                margin(background(text("nested")).color(colors.get("yellow"))))
+                .color(colors.get("green"));
+
+        vertical(defaultSettings, custom, nested).anchor(0, 0).render(g);
     }
 
     public static void main(String[] args)

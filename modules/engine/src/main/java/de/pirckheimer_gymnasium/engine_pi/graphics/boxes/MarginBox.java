@@ -25,7 +25,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.40.0
  */
-public class MarginBox extends SingleChildBoxContainer
+public class MarginBox extends ChildBox
 {
     /**
      * Der <b>Außenabstand</b> in Pixel.

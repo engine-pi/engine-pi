@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  *
  * @since 0.40.0
  */
-public class BackgroundBox extends SingleChildBoxContainer
+public class BackgroundBox extends ChildBox
 {
     /**
      * Die <b>Hintergrundfarbe</b>.

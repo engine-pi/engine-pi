@@ -34,7 +34,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  *
  * @since 0.38.0
  */
-public class TextBox extends ChildBox
+public class TextBox extends LeafBox
 {
     /**
      * Der <b>Inhalt</b> der Textbox als Zeichenkette.
@@ -46,7 +46,7 @@ public class TextBox extends ChildBox
     /**
      *
      */
-    private double fontSize = 12;
+    private double fontSize = 16;
 
     /**
      * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.

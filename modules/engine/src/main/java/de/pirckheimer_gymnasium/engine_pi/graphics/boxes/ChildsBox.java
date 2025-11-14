@@ -22,13 +22,13 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 /**
- * Eine Box, die <b>mehrere untergeordnete</b> Boxen enthält.
+ * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
  *
  * @author Josef Friedrich
  *
  * @since 0.38.0
  */
-abstract class MultipleChildBoxContainer extends Box
+abstract class ChildsBox extends Box
 {
     /**
      * @since 0.38.0
@@ -38,7 +38,7 @@ abstract class MultipleChildBoxContainer extends Box
     /**
      * @since 0.38.0
      */
-    public MultipleChildBoxContainer(Box... childs)
+    public ChildsBox(Box... childs)
     {
         this.childs = new ArrayList<Box>();
         for (Box child : childs)

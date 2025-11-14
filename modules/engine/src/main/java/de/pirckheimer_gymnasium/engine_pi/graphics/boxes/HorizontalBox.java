@@ -26,7 +26,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.39.0
  */
-public class HorizontalBox extends MultipleChildBoxContainer
+public class HorizontalBox extends ChildsBox
 {
     /**
      * Erzeugt eine neue <b>horizontale</b> Box.

@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
  *
  * @since 0.40.0
  */
-public class BorderBox extends SingleChildBoxContainer
+public class BorderBox extends ChildBox
 {
     /**
      * Die <b>Dicke der Linie</b> in Pixel.

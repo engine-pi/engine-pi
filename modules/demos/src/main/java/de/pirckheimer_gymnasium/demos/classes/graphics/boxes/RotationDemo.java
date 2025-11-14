@@ -11,8 +11,6 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.BorderBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.MarginBox;
 
 public class RotationDemo extends Graphics2DComponent
 {
@@ -20,10 +18,9 @@ public class RotationDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        BorderBox defaultSettings = border(
-                margin(border(text("default", font))));
+        var defaultSettings = border(margin(border(text("default", font))));
 
-        MarginBox manuel = margin(text("default", font)).margin(50);
+        var manuel = margin(text("default", font)).margin(50);
 
         AffineTransform oldTransform = g.getTransform();
 

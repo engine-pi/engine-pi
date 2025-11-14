@@ -142,7 +142,7 @@ public abstract class Box
      * werden, <b>dann</b> die Abmessungen der <b>eigenen</b> Box.
      * </p>
      *
-     * <h4>SingleChild-Code-Beispiel</h4>
+     * <h4>SingleChildContainer-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -155,7 +155,7 @@ public abstract class Box
      * }
      * </pre>
      *
-     * <h4>MultipleChild-Code-Beispiel</h4>
+     * <h4>MultipleChildContainer-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -183,10 +183,12 @@ public abstract class Box
      * untergeordneten Kinder-Boxen. Die inneren Blattboxen brauchen diese
      * Methode nicht zu implementieren.
      *
-     * Zuerst muss der eigene Ankerpunkt bestimmt werden, dann die Ankerpunkte
-     * der Kindboxen.
+     * <p>
+     * <b>Zuerst</b> muss der <b>eigene</b> Ankerpunkt bestimmt werden,
+     * <b>dann</b> die Ankerpunkte der <b>Kind</b>boxen.
+     * </p>
      *
-     * <h4>SingleChild-Code-Beispiel</h4>
+     * <h4>SingleChildContainer-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -199,7 +201,7 @@ public abstract class Box
      * }
      * </pre>
      *
-     * <h4>MultipleChild-Code-Beispiel</h4>
+     * <h4>MultipleChildContainer-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -233,7 +235,27 @@ public abstract class Box
     }
 
     /**
-     * <b>Zeichnet</b> die Box.
+     * <b>Zeichnet</b> die eigene Box sowie alle Kind-Boxen.
+     *
+     * <h4>SingleChildContainer-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code
+     * void draw(Graphics2D g)
+     * {
+     *     Color oldColor = g.getColor();
+     *     g.setColor(color);
+     *     g.fillRect(x, y, width, height);
+     *     g.setColor(oldColor);
+     *     child.draw(g);
+     * }
+     * }
+     * </pre>
+     *
+     * <h4>MultipleChildContainer-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code for (Box child : childs) { child.draw(g); } } </pre
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
@@ -287,15 +309,11 @@ public abstract class Box
     /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
      *
-     * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
-     *
-     * @since 0.39.0
-     *
-     * @see FrameBox#FrameBox(Box)
+     * @since 0.40.0
      */
-    public static FrameBox frame(Box child)
+    public static FramedTextBox framedText(String content)
     {
-        return new FrameBox(child);
+        return new FramedTextBox(content);
     }
 
     /**

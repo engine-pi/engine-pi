@@ -10,8 +10,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.BorderBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.MarginBox;
 
 public class MarginBoxDemo extends Graphics2DComponent
 {
@@ -19,10 +17,9 @@ public class MarginBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        BorderBox defaultSettings = border(
-                margin(border(text("default", font))));
+        var defaultSettings = border(margin(border(text("default", font))));
 
-        MarginBox manuel = margin(text("default", font)).margin(50);
+        var manuel = margin(text("default", font)).margin(50);
 
         vertical(defaultSettings, manuel).anchor(50, 50).render(g);
     }
