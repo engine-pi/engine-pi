@@ -31,9 +31,8 @@ import java.awt.Graphics2D;
  */
 public abstract class Box
 {
-
     /**
-     * Zeigt an, ob die Box bereits ausgemessen wurde.
+     * Zeigt an, ob die Box bereits <b>ausgemessen</b> wurde.
      */
     private boolean measured;
 
@@ -135,12 +134,12 @@ public abstract class Box
     /* Methods */
 
     /**
-     * Berechnet rekursive die Höhe und Breite.
+     * Berechnet rekursiv die <b>Abmessungen</b>, d. h. die Höhe und Breite.
      */
     protected abstract void calculateDimension();
 
     /**
-     * Berechnet rekursiv alle Ankerpunkte (linkes oberes Eck) der
+     * Berechnet rekursiv alle <b>Ankerpunkte</b> (linkes oberes Eck) der
      * untergeordneten Kinder-Boxen. Die inneren Blattboxen brauchen diese
      * Methode nicht zu implementieren.
      *
@@ -149,7 +148,7 @@ public abstract class Box
     protected abstract void calculateAnchors();
 
     /**
-     * Bestimmt rekursive zu erst die Abmessngen (Höhe und Breite) und
+     * Bestimmt rekursive zu erst die Abmessungen (Höhe und Breite) und
      * anschließend die Ankerpunkte (x, y) der Kind-Boxen.
      */
     void measure()
@@ -192,6 +191,20 @@ public abstract class Box
      *
      * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
      *
+     * @since 0.40.0
+     *
+     * @see BorderBox#BorderBox(Box)
+     */
+    public static BorderBox border(Box child)
+    {
+        return new BorderBox(child);
+    }
+
+    /**
+     * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
+     *
+     * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
+     *
      * @since 0.39.0
      *
      * @see FrameBox#FrameBox(Box)
@@ -214,6 +227,21 @@ public abstract class Box
     public static HorizontalBox horizontal(Box... childs)
     {
         return new HorizontalBox(childs);
+    }
+
+    /**
+     * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen
+     * Kind-Box.
+     *
+     * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
+     *
+     * @since 0.40.0
+     *
+     * @see MarginBox#MarginBox(Box)
+     */
+    public static MarginBox margin(Box child)
+    {
+        return new MarginBox(child);
     }
 
     /**
