@@ -22,7 +22,7 @@ public class TurtlePen
      *
      * @since 0.40.0
      */
-    public boolean isDown = true;
+    boolean isDown = true;
 
     /**
      * Die <b>Linienstärke</b> in Pixel.
@@ -50,7 +50,7 @@ public class TurtlePen
      *
      * @since 0.40.0
      */
-    public Vector position = new Vector(0, 0);
+    Vector position = new Vector(0, 0);
 
     /**
      * Die aktuelle Schreib<b>richtung</b>.
@@ -63,6 +63,6 @@ public class TurtlePen
      *
      * @since 0.40.0
      */
-    public double direction = 0;
+    double direction = 0;
 
 }

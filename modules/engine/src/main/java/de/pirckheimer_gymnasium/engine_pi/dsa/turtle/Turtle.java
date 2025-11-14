@@ -30,7 +30,6 @@ import java.util.function.Consumer;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
@@ -100,26 +99,10 @@ public class Turtle extends PaintingSurfaceScene
     private TurtleImage turtleImage;
 
     /**
-     * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
-     * zeichnet oder nicht.
-     */
-    private boolean penDown = true;
-
-    /**
      * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
      * pro Sekunde).
      */
     private double speed = 6;
-
-    /**
-     * Die Linienstärke in Pixel.
-     */
-    private int lineWidth = 3;
-
-    /**
-     * Die Farbe der Linie.
-     */
-    private Color lineColor = colors.get("yellow");
 
     /**
      * Die Hintergrundfarbe der Zeichenfläche.
@@ -131,25 +114,6 @@ public class Turtle extends PaintingSurfaceScene
      * Die Malfläche, in die die Schildkröte zeichnet.
      */
     private PaintingSurface surface;
-
-    /**
-     * Die aktuelle <b>Position des Stifts</b>. Diese Position wird bewegt und
-     * das Zentrum der Figur wird auf diese Position gesetzt.
-     *
-     * <p>
-     * Es reicht nicht, die Stiftposition über die Methode
-     * {@link Actor#getCenter()} der Schildkrötenfigur zu bestimmen, denn bei
-     * einer Rotation ändert sich das Zentrum.
-     * </p>
-     */
-    private Vector currentPenPosition;
-
-    /**
-     * Wir speichern die aktuelle Rotation und nehmen nicht die Rotation der
-     * grafischen Repräsentation. Möglicherweise läuft die Physics-Engine in
-     * einem anderen Thread. Im Warp-Modus entstehen komisch verzerrte Grafiken.
-     */
-    private double currentRotation;
 
     /**
      * Das Zentrum der Schildkröte vor der Aktualisierung. Diese Position wird
@@ -177,7 +141,6 @@ public class Turtle extends PaintingSurfaceScene
     public Turtle()
     {
         this(true);
-
     }
 
     /**
@@ -191,7 +154,6 @@ public class Turtle extends PaintingSurfaceScene
     public Turtle(boolean autoStart)
     {
         setBackgroundColor(backgroundColor);
-        currentPenPosition = new Vector(0, 0);
         pen = new TurtlePen();
         turtleImage = new TurtleImage(this);
 
@@ -235,23 +197,23 @@ public class Turtle extends PaintingSurfaceScene
     {
         // Vielleicht wäre es besser die Rotation auch extra zu speichern wie
         // bei currentPenPosition und nicht aus der Grafik raus zu lesen
-        Vector movement = Vector.ofAngle(currentRotation).multiply(distance);
-        Vector initial = currentPenPosition;
+        Vector movement = Vector.ofAngle(pen.direction).multiply(distance);
+        Vector initial = pen.position;
         if (warpMode)
         {
-            lastPosition = currentPenPosition;
-            currentPenPosition = initial.add(movement);
-            drawLineInSurface(lastPosition, currentPenPosition);
+            lastPosition = pen.position;
+            pen.position = initial.add(movement);
+            drawLineInSurface(lastPosition, pen.position);
         }
         else
         {
             double duration = distance / speed;
             animate(duration, progress -> {
-                lastPosition = currentPenPosition;
-                currentPenPosition = initial.add(movement.multiply(progress));
-                turtleImage.setPosition(currentPenPosition);
+                lastPosition = pen.position;
+                pen.position = initial.add(movement.multiply(progress));
+                turtleImage.setPosition(pen.position);
                 turtleImage.showNextAnimation();
-                drawLineInSurface(lastPosition, currentPenPosition);
+                drawLineInSurface(lastPosition, pen.position);
             });
         }
         traveledDistance += distance;
@@ -259,7 +221,7 @@ public class Turtle extends PaintingSurfaceScene
 
     private void drawLineInSurface(Vector from, Vector to)
     {
-        if (!penDown)
+        if (!pen.isDown)
         {
             return;
         }
@@ -267,12 +229,12 @@ public class Turtle extends PaintingSurfaceScene
         {
             surface = getPaintingSurface();
         }
-        surface.drawLine(from, to, lineColor, lineWidth);
+        surface.drawLine(from, to, pen.color, pen.thickness);
     }
 
     private void setCurrentRotation(double rotation)
     {
-        currentRotation = rotation % 360;
+        pen.direction = rotation % 360;
 
     }
 
@@ -281,7 +243,7 @@ public class Turtle extends PaintingSurfaceScene
         setCurrentRotation(rotation);
         turtleImage.setRotation(rotation);
         // die Rotation kann den Mittelpunkt verschieben.
-        turtleImage.setPosition(currentPenPosition);
+        turtleImage.setPosition(pen.position);
     }
 
     /**
@@ -299,7 +261,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void rotate(double rotation)
     {
-        double start = currentRotation;
+        double start = pen.direction;
         if (warpMode)
         {
             doRotation(start + rotation);
@@ -326,7 +288,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void lowerPen()
     {
-        penDown = true;
+        pen.isDown = true;
     }
 
     /**
@@ -341,15 +303,15 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void liftPen()
     {
-        penDown = false;
+        pen.isDown = false;
     }
 
     /**
      * @since 0.40.0
      */
-    public void setPen(boolean penDown)
+    public void setPen(boolean isDown)
     {
-        this.penDown = penDown;
+        pen.isDown = isDown;
     }
 
     /* Setter */
@@ -442,7 +404,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void setLineWidth(int lineWidth)
     {
-        this.lineWidth = lineWidth;
+        pen.thickness = lineWidth;
     }
 
     /**
@@ -460,11 +422,11 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void changeLineWidth(int lineWidthChange)
     {
-        if (lineWidth + lineWidthChange < 1)
+        if (pen.thickness + lineWidthChange < 1)
         {
             return;
         }
-        lineWidth += lineWidthChange;
+        pen.thickness += lineWidthChange;
     }
 
     /**
@@ -476,7 +438,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void setLineColor(Color lineColor)
     {
-        this.lineColor = lineColor;
+        pen.color = lineColor;
     }
 
     /**
@@ -488,7 +450,7 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void setLineColor(String lineColor)
     {
-        this.lineColor = colors.get(lineColor);
+        pen.color = colors.get(lineColor);
     }
 
     /**
@@ -508,8 +470,8 @@ public class Turtle extends PaintingSurfaceScene
      */
     public void setPosition(Vector position)
     {
-        lastPosition = currentPenPosition;
-        currentPenPosition = position;
+        lastPosition = pen.position;
+        pen.position = position;
         turtleImage.setPosition(position);
     }
 
@@ -548,7 +510,7 @@ public class Turtle extends PaintingSurfaceScene
         setCurrentRotation(direction);
         turtleImage.setRotation(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
-        turtleImage.setPosition(currentPenPosition);
+        turtleImage.setPosition(pen.position);
     }
 
     public void setDress(TurtleDress dress)
