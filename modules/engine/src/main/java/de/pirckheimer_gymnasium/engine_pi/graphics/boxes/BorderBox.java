@@ -17,14 +17,14 @@ public class BorderBox extends SingleChildBoxContainer
      *
      * @since 0.40.0
      */
-    int lineWidth = 1;
+    int thickness = 1;
 
     /**
      * Die <b>Farbe der Linie</b> in Pixel.
      *
      * @since 0.40.0
      */
-    Color lineColor;
+    Color color = colors.get("black");
 
     /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
@@ -44,7 +44,7 @@ public class BorderBox extends SingleChildBoxContainer
      * Setzt die <b>Dicke der Linie</b> in Pixel. Ist die Linienfarbe noch nicht
      * festgelegt worden, so wird auf grau gesetzt.
      *
-     * @param lineWidth Die <b>Dicke der Linie</b> in Pixel.
+     * @param thickness Die <b>Dicke der Linie</b> in Pixel.
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
@@ -53,13 +53,13 @@ public class BorderBox extends SingleChildBoxContainer
      *
      * @since 0.40.0
      */
-    public BorderBox lineWidth(int lineWidth)
+    public BorderBox thickness(int thickness)
     {
-        if (lineColor == null)
+        if (color == null)
         {
-            lineColor = colors.get("grey");
+            color = colors.get("black");
         }
-        this.lineWidth = lineWidth;
+        this.thickness = thickness;
         return this;
     }
 
@@ -67,7 +67,7 @@ public class BorderBox extends SingleChildBoxContainer
      * Setzt die <b>Farbe der Linie</b> in Pixel. Ist die Liniendicke noch nicht
      * festgelegt worden, so wird sie auf 1 Pixel gesetzt.
      *
-     * @param lineColor Die <b>Farbe der Linie</b> in Pixel.
+     * @param color Die <b>Farbe der Linie</b> in Pixel.
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
@@ -76,13 +76,13 @@ public class BorderBox extends SingleChildBoxContainer
      *
      * @since 0.40.0
      */
-    public BorderBox lineColor(Color lineColor)
+    public BorderBox color(Color color)
     {
-        if (lineWidth == 0)
+        if (thickness == 0)
         {
-            lineWidth = 1;
+            thickness = 1;
         }
-        this.lineColor = lineColor;
+        this.color = color;
         return this;
     }
 
@@ -92,67 +92,23 @@ public class BorderBox extends SingleChildBoxContainer
     protected void calculateDimension()
     {
         child.calculateDimension();
-        width = child.width + 2 * lineWidth;
-        height = child.height + 2 * lineWidth;
+        width = child.width + 2 * thickness;
+        height = child.height + 2 * thickness;
     }
 
     @Override
     protected void calculateAnchors()
     {
-        child.x = x + lineWidth;
-        child.y = y + lineWidth;
+        child.x = x + thickness;
+        child.y = y + thickness;
+        child.calculateAnchors();
     }
 
     @Override
     void draw(Graphics2D g)
     {
-
-        // die Methode g.drawRect() macht Antialising (siehe unten)
-
-        // ---
-        // | |
-        // ---
-        Color oldColor = g.getColor();
-        g.setColor(lineColor);
-        // oben
-        g.fillRect(// x
-                x,
-                // y
-                y,
-                // width
-                width,
-                // height
-                lineWidth);
-        // rechts
-        g.fillRect(// x
-                x + lineWidth + child.width,
-                // y
-                y + lineWidth,
-                // width
-                lineWidth,
-                // height
-                child.height);
-        // unten
-        g.fillRect(// x
-                x,
-                // y
-                y + lineWidth + child.height,
-                // width
-                width,
-                // height
-                lineWidth);
-        // links
-        g.fillRect(// x
-                x,
-                // y
-                y + lineWidth,
-                // width
-                lineWidth,
-                // height
-                child.height);
-        g.setColor(oldColor);
-
-        // Lösung mit der Methode g.drawRect(): macht Antialising
+        // die Methode g.drawRect() macht Antialising
+        // Lösung mit der Methode g.drawRect():
         // setzt die Linie irgendwie mittig
         // if (borderColor != null && borderSize > 0)
         // {
@@ -165,6 +121,49 @@ public class BorderBox extends SingleChildBoxContainer
         // g.setColor(oldColor);
         // g.setStroke(oldStroke);
         // }
+
+        // ---
+        // | |
+        // ---
+        Color oldColor = g.getColor();
+        g.setColor(color);
+        // oben
+        g.fillRect(// x
+                x,
+                // y
+                y,
+                // width
+                width,
+                // height
+                thickness);
+        // rechts
+        g.fillRect(// x
+                x + thickness + child.width,
+                // y
+                y + thickness,
+                // width
+                thickness,
+                // height
+                child.height);
+        // unten
+        g.fillRect(// x
+                x,
+                // y
+                y + thickness + child.height,
+                // width
+                width,
+                // height
+                thickness);
+        // links
+        g.fillRect(// x
+                x,
+                // y
+                y + thickness,
+                // width
+                thickness,
+                // height
+                child.height);
+        g.setColor(oldColor);
         child.draw(g);
     }
 }

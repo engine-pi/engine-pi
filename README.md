@@ -2465,7 +2465,6 @@ Die eigentliche Engine befindet sich im Ordner `./modules/engine`.
 | ./modules/games/tetris        | engine-pi-tetris        |
 | ./modules/build-tools         | engine-pi-build-tools   |
 
-
 ### Eine neue Version veröffentlichen
 
 Es wird Semantic Versioning verwendet.
@@ -2483,6 +2482,47 @@ mvn versions:set
 ```
 
 Das CHANGELOG.md bezieht sich auf die Engine als ./modules/engine
+
+### javadoc
+
+#### Abfolge der Tags
+
+Wir folgenden der Empfehlung, die im Artikel [How to Write Doc Comments for the
+Javadoc
+Tool](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html#orderoftags)
+von [Oracle](https://www.oracle.com) dargestellt wird.
+
+1. `@author` (classes and interfaces only, required)
+1. `@version` (classes and interfaces only, required. See footnote 1)
+1. `@param` (methods and constructors only)
+1. `@return` (methods only)
+1. `@throws` (a synonym added in Javadoc 1.2 `@exceptions`)
+1. `@see`
+1. `@since`
+1. `@deprecated` (see How and When To Deprecate APIs)
+
+### Code Beispiele
+
+Einzeilig
+
+```java
+/**
+ * {@code System.out.println("Lorem ipsum");}
+ */
+```
+
+Mehrzeilig:
+
+```java
+/**
+ * <pre>
+ * {@code
+ * Set<String> s;
+ * System.out.println(s);
+ * }
+ * </pre>
+ */
+```
 
 ### Deutsche Übersetzungen von englischen Klassennamen
 

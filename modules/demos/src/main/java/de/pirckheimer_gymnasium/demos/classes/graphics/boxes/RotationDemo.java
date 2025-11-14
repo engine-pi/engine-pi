@@ -1,0 +1,42 @@
+package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
+
+import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.border;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.margin;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.text;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
+
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+
+import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.BorderBox;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.MarginBox;
+
+public class RotationDemo extends Graphics2DComponent
+{
+    Font font = fonts.getDefault().deriveFont(32f);
+
+    public void render(Graphics2D g)
+    {
+        BorderBox defaultSettings = border(
+                margin(border(text("default", font))));
+
+        MarginBox manuel = margin(text("default", font)).margin(50);
+
+        AffineTransform oldTransform = g.getTransform();
+
+        AffineTransform newTransform = new AffineTransform();
+        newTransform.rotate(Math.toRadians(-45));
+        g.setTransform(newTransform);
+
+        vertical(defaultSettings, manuel).anchor(-100, 100).render(g);
+        g.setTransform(oldTransform);
+    }
+
+    public static void main(String[] args)
+    {
+        new RotationDemo().show();
+    }
+}

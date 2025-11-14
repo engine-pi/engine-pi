@@ -134,7 +134,47 @@ public abstract class Box
     /* Methods */
 
     /**
-     * Berechnet rekursiv die <b>Abmessungen</b>, d. h. die Höhe und Breite.
+     * Berechnet rekursiv die <b>Abmessungen</b>, d.h. die Höhe und Breite der
+     * eigenen Box und aller Kind-Boxen.
+     *
+     * <p>
+     * <b>Zuerst</b> müssen die Abmessungen der <b>Kind</b>-Boxen ermittelt
+     * werden, <b>dann</b> die Abmessungen der <b>eigenen</b> Box.
+     * </p>
+     *
+     * <h4>SingleChild-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code
+     * protected void calculateDimension()
+     * {
+     *     child.calculateDimension();
+     *     width = child.width + 2 * margin;
+     *     height = child.height + 2 * margin;
+     * }
+     * }
+     * </pre>
+     *
+     * <h4>MultipleChild-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code
+     * protected void calculateDimension()
+     * {
+     *     int maxWidth = 0;
+     *     for (Box child : childs)
+     *     {
+     *         child.calculateDimension();
+     *         if (child.width > maxWidth)
+     *         {
+     *             maxWidth = child.width;
+     *         }
+     *         height += child.height;
+     *     }
+     *     width = maxWidth;
+     * }
+     * }
+     * </pre>
      */
     protected abstract void calculateDimension();
 
@@ -142,6 +182,40 @@ public abstract class Box
      * Berechnet rekursiv alle <b>Ankerpunkte</b> (linkes oberes Eck) der
      * untergeordneten Kinder-Boxen. Die inneren Blattboxen brauchen diese
      * Methode nicht zu implementieren.
+     *
+     * Zuerst muss der eigene Ankerpunkt bestimmt werden, dann die Ankerpunkte
+     * der Kindboxen.
+     *
+     * <h4>SingleChild-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code
+     * protected void calculateAnchors()
+     * {
+     *     child.x = x + margin;
+     *     child.y = y + margin;
+     *     child.calculateAnchors();
+     * }
+     * }
+     * </pre>
+     *
+     * <h4>MultipleChild-Code-Beispiel</h4>
+     *
+     * <pre>
+     * {@code
+     * protected void calculateAnchors()
+     * {
+     *     int yCursor = y;
+     *     for (Box child : childs)
+     *     {
+     *         child.x = x;
+     *         child.y = yCursor;
+     *         yCursor += child.height;
+     *         child.calculateAnchors();
+     *     }
+     * }
+     * }
+     * </pre>
      *
      * @since 0.38.0
      */
@@ -185,6 +259,16 @@ public abstract class Box
     }
 
     /* static instantiation methods */
+
+    /**
+     * Unterlegt eine Kind-Box mit einer <b>Hintergrundfarbe</b>.
+     *
+     * @since 0.40.0
+     */
+    public static BackgroundBox background(Box child)
+    {
+        return new BackgroundBox(child);
+    }
 
     /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.

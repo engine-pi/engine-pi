@@ -32,7 +32,7 @@ public class MarginBox extends SingleChildBoxContainer
      *
      * @since 0.40.0
      */
-    int margin = 0;
+    int margin = 10;
 
     /**
      * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen
@@ -80,5 +80,6 @@ public class MarginBox extends SingleChildBoxContainer
     {
         child.x = x + margin;
         child.y = y + margin;
+        child.calculateAnchors();
     }
 }
