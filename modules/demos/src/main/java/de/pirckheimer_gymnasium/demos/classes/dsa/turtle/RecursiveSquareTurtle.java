@@ -4,71 +4,22 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
- * <p>
- * Mit rekursiven Algorithmen kannst du wunderbare Grafiken erzeugen. Du gehst
- * von folgender Anleitung aus: Zeichne ausgehend von A ein Quadrat ABCD mit
- * Basisseite AD
- * </p>
+ * Rahmenklasse zum Zeichen von Mustern aus Quadraten.
  *
  * <p>
- * Füge ein rechtwinkliges, gleichschenkliges BD1C Dreieck an der Seite BC an
+ * Der ursprünglich deutsche Name dieser Klasse war {@code RekursiveGrafik}.
  * </p>
  *
- * <p>
- * Zeichne den Baum erneut ausgehend von den Quadraten A1D1 und A2D2 als
- * Basisseiten
- * </p>
+ * @author Albert Wiedemann
  *
- *
- * <p>
- * Es ist bekannt, dass die Umsetzung in ein rekursives Programm ungewohnt ist.
- * Darum erhältst du hier eine ausführliche Anleitung, wie du vorgehen musst.
- * </p>
- *
- * <p>
- * Definiere einen Befehl square(s), mit dem die Turtle ein Quadrat mit der
- * Seitenlänge s zeichnet und wieder in die Anfangsposition mit
- * Anfangsblickrichtung zurückkehrt
- * </p>
- *
- * <p>
- * Definiere den Befehl tree(s), welcher einen Baum ausgehend von einem Quadrat
- * der Seitenlänge s zeichnet. In der Definition darfst du tree() wieder
- * verwenden. Wichtig: Nach dem Zeichnen des Baums ist die Turtle wieder in der
- * Anfangsposition mit Anfangsblickrichtung. Du überlegst schrittweise, als ob
- * du die Turtle wärst (das neu Hinzugefügte ist grau unterlegt).
- * </p>
- *
- * <p>
- * Du zeichnest zuerst vom Punkt A aus ein Quadrat mit der Seitenlänge s:
- * </p>
- *
- * <p>
- * Du fährst zur Ecke B des Quadrats, drehst 45 Grad nach links und betrachtest
- * dies als Startpunkt eines neuen Baums mit verkleinertem Parameter s1. Es gilt
- * nach dem Satz von Pythagoras:
- * </p>
- *
- * <p>
- * Da du ja voraussetzt, dass du nach dem Zeichnen des Baums wieder am
- * Startpunkt mit der Startblickrichtung landest, befindest du dich wieder in B
- * und schaust in Richtung B1. Du drehst dich um 90 Grad nach rechts und fährst
- * die Strecke s1 vorwärts. Jetzt bist du im Punkt D1 und hast die Blickrichtung
- * zu B2. Von hier aus zeichnest du den Baum erneut.
- * </p>
- *
- *
- * <p>
- * Jetzt musst du nur noch an den Anfangsort A mit der Anfangsblickrichtung
- * zurückkehren. Dazu bewegst du dich um s1 rückwärts, drehst dich um 45 Grad
- * nach links und fährst um s rückwärts.
- * </p>
- * <a href=
- * "https://programmierkonzepte.ch/engl/index.php?inhalt_links=&inhalt_mitte=turtle/rekursionen.inc.php">https://programmierkonzepte.ch</a>
+ * @version 1.0
  */
 public class RecursiveSquareTurtle extends TurtleAlgorithm
 {
 
+    /**
+     * Der Konstruktor legt die Schildkröte an.
+     */
     public RecursiveSquareTurtle()
     {
         this(new Turtle());
@@ -77,60 +28,171 @@ public class RecursiveSquareTurtle extends TurtleAlgorithm
     public RecursiveSquareTurtle(Turtle turtle)
     {
         super(turtle);
-        initalState.speed(1000).position(0, -7).direction(90).warpMode(false);
-        turtle.setLineWidth(1);
+        turtle.setSpeed(3);
+    }
+
+    private void reset()
+    {
+        turtle.setPosition(-8, 0);
+        turtle.clearBackground();
     }
 
     public void draw()
     {
-        drawTree(3);
+        reset();
+        drawBeadChain(10);
+        reset();
+        drawSquarePattern(10);
+        reset();
+        drawSquareCircle(7, 7);
+        reset();
+        drawMultipleSquareCircles(7, 3);
+
     }
 
-    private void drawTree(double sideLength)
+    /**
+     * Zeichnet ein Quadrat mit gegebener Seitenlänge an der Stelle der
+     * Schildkröte.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war
+     * {@code QuadratZeichnen}.
+     * </p>
+     *
+     * @param length Die Seitenlänge des Quadrats.
+     */
+    private void drawSquare(double length)
     {
-        if (sideLength < 0.3)
+        for (int i = 0; i < 4; i += 1)
         {
-            return;
-        }
-        drawSquare(sideLength);
-        turtle.move(sideLength);
-        double s1 = sideLength / Math.sqrt(2);
-        left(45);
-        drawTree(s1);
-        right(90);
-        turtle.move(s1);
-        drawTree(s1);
-        back(s1);
-        left(45);
-        back(sideLength);
-    }
-
-    private void left(double degree)
-    {
-        turtle.rotate(degree);
-    }
-
-    private void right(double degree)
-    {
-        turtle.rotate(-degree);
-    }
-
-    private void back(double sidelength)
-    {
-        turtle.rotate(180);
-        turtle.move(sidelength);
-        turtle.rotate(180);
-    }
-
-    private void drawSquare(double sideLength)
-    {
-        turtle.lowerPen();
-        for (int i = 0; i < 4; i++)
-        {
-            turtle.move(sideLength);
+            turtle.move(length);
             turtle.rotate(-90);
         }
-        turtle.liftPen();
+    }
+
+    /**
+     * Zeichnet ein Element der Perlenkette.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war
+     * {@code PerlenketteZeichnen}.
+     * </p>
+     *
+     * @param numberOfBeads Die (Rest-)anzahl der Perlen (Quadrate).
+     */
+    void drawBeadChain(int numberOfBeads)
+    {
+        double length = 0.4;
+        if (numberOfBeads == 1)
+        {
+            drawSquare(length);
+        }
+        else
+        {
+            drawBeadChain(numberOfBeads - 1);
+            turtle.move(2);
+            drawSquare(length);
+        }
+    }
+
+    /**
+     * Zeichnet ein Element der Quadratmuster.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war
+     * {@code QuadratmusterZeichnen}.
+     * </p>
+     *
+     * @param numberOfSquares Die (Rest-)anzahl der Quadrate.
+     */
+    void drawSquarePattern(int numberOfSquares)
+    {
+        if (numberOfSquares > 0)
+        {
+            drawSquare((double) numberOfSquares / 2);
+            drawSquarePattern(numberOfSquares - 1);
+        }
+    }
+
+    /**
+     * Zeichnet Quadratmuster im Kreis.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war {@code MusterZeichnen}.
+     * </p>
+     *
+     * @param numberOfSquares Die insgesamte Anzahl der Quadrate.
+     * @param remainingSquares Die Anzahl der noch zu zeichnenden Quadrate.
+     */
+    void drawSquareCircle(int numberOfSquares, int remainingSquares)
+    {
+        if (remainingSquares > 0)
+        {
+            turtle.liftPen();
+            turtle.rotate(360 / numberOfSquares);
+            turtle.move(3);
+            turtle.lowerPen();
+            drawSquare(1);
+            turtle.liftPen();
+            turtle.rotate(180);
+            turtle.move(3);
+            turtle.lowerPen();
+            turtle.rotate(180);
+            drawSquareCircle(numberOfSquares, remainingSquares - 1);
+        }
+    }
+
+    /**
+     * Zeichnet Quadratmuster im Kreis mit variablem Radius.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war
+     * {@code MusterZeichnen2}.
+     * </p>
+     *
+     * @param numberOfSquares Die Anzahl der Quadrate.
+     * @param remainingSquares Die Anzahl der noch zu zeichnenden Quadrate.
+     * @param radius Der Radius des Kreises mit den Quadraten.
+     */
+    private void drawSquareCircleWithRadius(int numberOfSquares,
+            int remainingSquares, double radius)
+    {
+        if (remainingSquares > 0)
+        {
+            turtle.liftPen();
+            turtle.rotate(360 / numberOfSquares);
+            turtle.move(radius);
+            turtle.lowerPen();
+            drawSquare(radius / 2);
+            turtle.liftPen();
+            turtle.rotate(180);
+            turtle.move(radius);
+            turtle.lowerPen();
+            turtle.rotate(180);
+            drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1,
+                    radius);
+        }
+    }
+
+    /**
+     * Zeichnet eine Folge immer kleinerer Quadratkreise.
+     *
+     * <p>
+     * Der ursprünglich deutsche Name dieser Methode war
+     * {@code QuadratkreiseZeichnen}.
+     * </p>
+     *
+     * @param numberOfSquares Die Anzahl der Quadrate.
+     * @param radius Der Radius des Kreises mit den Quadraten.
+     */
+    public void drawMultipleSquareCircles(int numberOfSquares, double radius)
+    {
+        if (radius >= 1)
+        {
+            drawSquareCircleWithRadius(numberOfSquares, numberOfSquares,
+                    radius);
+            drawMultipleSquareCircles(numberOfSquares, radius / 2);
+        }
     }
 
     public static void main(String[] args)

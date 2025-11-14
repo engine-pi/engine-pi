@@ -1,223 +1,136 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
-
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
- * Zeichnet den <a href="https://de.wikipedia.org/wiki/Pythagoras-Baum"></a>.
- *
  * <p>
- * Der ursprünglich deutsche Name dieser Klasse war {@code PythagorasBaum}.
+ * Mit rekursiven Algorithmen kannst du wunderbare Grafiken erzeugen. Du gehst
+ * von folgender Anleitung aus: Zeichne ausgehend von A ein Quadrat ABCD mit
+ * Basisseite AD
  * </p>
  *
- * TODO fix ...
+ * <p>
+ * Füge ein rechtwinkliges, gleichschenkliges BD1C Dreieck an der Seite BC an
+ * </p>
  *
- * @author Albert Wiedemann
+ * <p>
+ * Zeichne den Baum erneut ausgehend von den Quadraten A1D1 und A2D2 als
+ * Basisseiten
+ * </p>
  *
- * @version 1.0
+ *
+ * <p>
+ * Es ist bekannt, dass die Umsetzung in ein rekursives Programm ungewohnt ist.
+ * Darum erhältst du hier eine ausführliche Anleitung, wie du vorgehen musst.
+ * </p>
+ *
+ * <p>
+ * Definiere einen Befehl square(s), mit dem die Turtle ein Quadrat mit der
+ * Seitenlänge s zeichnet und wieder in die Anfangsposition mit
+ * Anfangsblickrichtung zurückkehrt
+ * </p>
+ *
+ * <p>
+ * Definiere den Befehl tree(s), welcher einen Baum ausgehend von einem Quadrat
+ * der Seitenlänge s zeichnet. In der Definition darfst du tree() wieder
+ * verwenden. Wichtig: Nach dem Zeichnen des Baums ist die Turtle wieder in der
+ * Anfangsposition mit Anfangsblickrichtung. Du überlegst schrittweise, als ob
+ * du die Turtle wärst (das neu Hinzugefügte ist grau unterlegt).
+ * </p>
+ *
+ * <p>
+ * Du zeichnest zuerst vom Punkt A aus ein Quadrat mit der Seitenlänge s:
+ * </p>
+ *
+ * <p>
+ * Du fährst zur Ecke B des Quadrats, drehst 45 Grad nach links und betrachtest
+ * dies als Startpunkt eines neuen Baums mit verkleinertem Parameter s1. Es gilt
+ * nach dem Satz von Pythagoras:
+ * </p>
+ *
+ * <p>
+ * Da du ja voraussetzt, dass du nach dem Zeichnen des Baums wieder am
+ * Startpunkt mit der Startblickrichtung landest, befindest du dich wieder in B
+ * und schaust in Richtung B1. Du drehst dich um 90 Grad nach rechts und fährst
+ * die Strecke s1 vorwärts. Jetzt bist du im Punkt D1 und hast die Blickrichtung
+ * zu B2. Von hier aus zeichnest du den Baum erneut.
+ * </p>
+ *
+ *
+ * <p>
+ * Jetzt musst du nur noch an den Anfangsort A mit der Anfangsblickrichtung
+ * zurückkehren. Dazu bewegst du dich um s1 rückwärts, drehst dich um 45 Grad
+ * nach links und fährst um s rückwärts.
+ * </p>
+ * <a href=
+ * "https://programmierkonzepte.ch/engl/index.php?inhalt_links=&inhalt_mitte=turtle/rekursionen.inc.php">https://programmierkonzepte.ch</a>
  */
 public class PythagorasTreeTurtle extends TurtleAlgorithm
 {
 
-    /**
-     * Die Rekursionstiefe.
-     */
-    int depth;
-
-    /**
-     * Die Seite a des rechtwinkeligen Ausgangsdreiecks.
-     */
-    double a;
-
-    /**
-     * Die Seite b des rechtwinkeligen Ausgangsdreiecks.
-     */
-    double b;
-
-    /**
-     * Die Seite c^2 des rechtwinkeligen Ausgangsdreiecks.
-     */
-    double c2;
-
-    /**
-     * Das Seitenverhältnis für die Berechnung der C-Punkte der angefügten
-     * Dreiecke.
-     */
-    double bc;
-
-    /**
-     * Das Seitenverhältnis für die Berechnung der C-Punkte der angefügten
-     * Dreiecke.
-     */
-    double abc;
-
-    /**
-     * Besetzt die Konstanten und baut den Baum auf.
-     *
-     * @param depth Die Rekursionstiefe.
-     */
-    public PythagorasTreeTurtle(Turtle turtle, int depth)
-    {
-        super(turtle);
-        this.depth = depth;
-    }
-
-    public PythagorasTreeTurtle(int depth)
-    {
-        this(new Turtle(), depth);
-    }
-
     public PythagorasTreeTurtle()
     {
-        this(1);
+        this(new Turtle());
+    }
+
+    public PythagorasTreeTurtle(Turtle turtle)
+    {
+        super(turtle);
+        initalState.speed(1000).position(0, -7).direction(90).warpMode(false);
+        turtle.setLineWidth(1);
     }
 
     public void draw()
     {
-        initalState.speed(1000);
-        a = 2;
-        b = 2;
-        c2 = a * a + b * b;
-        bc = (b * b) / c2;
-        abc = a * b / c2;
-        drawRectangle(8, 2, 10, 2, 10, 4, 8, 4);
-        makeStep(8, 4, 10, 4, depth);
+        drawTree(3);
     }
 
-    /**
-     * Berechnet die Richtung von Startpunkt zum Zielpunkt.
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war {@code RichtungGeben}.
-     * </p>
-     *
-     * @param xSrc Die x-Koordinate des Startpunkts.
-     * @param ySrc Die y-Koordinate des Startpunkts.
-     * @param xDest Die x-Koordinate des Zielpunkts.
-     * @param yDest Die y-Koordinate des Zielpunkts.
-     *
-     * @return Richtungswinkel zum Zielpunkt
-     */
-    private double getRotation(double xSrc, double ySrc, double xDest,
-            double yDest)
+    private void drawTree(double sideLength)
     {
-        return v(xSrc, ySrc).subtract(v(xDest, yDest)).getAngle();
-    }
-
-    /**
-     * Berechnet die Weglänge von Startpunkt zum Zielpunkt.
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war {@code LängeGeben}.
-     * </p>
-     *
-     * @param xSrc Die x-Koordinate des Startpunkts.
-     * @param ySrc Die y-Koordinate des Startpunkts.
-     * @param xDest Die x-Koordinate des Zielpunkts.
-     * @param yDest Die y-Koordinate des Zielpunkts.
-     *
-     * @return Die Weglänge zum Zielpunkt.
-     */
-    private double getLength(double xSrc, double ySrc, double xDest,
-            double yDest)
-    {
-        return v(xSrc, ySrc).subtract(v(xDest, yDest)).getLength();
-    }
-
-    /**
-     * Zeichnet das Dreieck mit den angegebenen Eckpunkten.
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war
-     * {@code DreieckZeichnen}.
-     * </p>
-     *
-     * @param aX Die x-Koordinate der Ecke A.
-     * @param aY Die y-Koordinate der Ecke A.
-     * @param bX Die x-Koordinate der Ecke B.
-     * @param bY Die y-Koordinate der Ecke B.
-     * @param cX Die x-Koordinate der Ecke C.
-     * @param cY Die y-Koordinate der Ecke C.
-     */
-    private void drawTriangle(double aX, double aY, double bX, double bY,
-            double cX, double cY)
-    {
-        turtle.setPosition(aX, aY);
-        turtle.setDirection(getRotation(aX, aY, bX, bY));
-        turtle.move(getLength(aX, aY, bX, bY));
-        turtle.setDirection(getRotation(bX, bY, cX, cY));
-        turtle.move(getLength(bX, bY, cX, cY));
-        turtle.setDirection(getRotation(cX, cY, aX, aY));
-        turtle.move(getLength(cX, cY, aX, aY));
-    }
-
-    /**
-     * Zeichnet das Viereck mit den angegebenen Eckpunkten.
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war
-     * {@code ViereckZeichnen}.
-     * </p>
-     *
-     * @param aX Die x-Koordinate der Ecke A.
-     * @param aY Die y-Koordinate der Ecke A.
-     * @param bX Die x-Koordinate der Ecke B.
-     * @param bY Die y-Koordinate der Ecke B.
-     * @param cX Die x-Koordinate der Ecke C.
-     * @param cY Die y-Koordinate der Ecke C.
-     * @param dX Die x-Koordinate der Ecke D.
-     * @param dY Die y-Koordinate der Ecke D.
-     */
-    private void drawRectangle(double aX, double aY, double bX, double bY,
-            double cX, double cY, double dX, double dY)
-    {
-        turtle.setPosition(aX, aY);
-        turtle.setDirection(getRotation(aX, aY, bX, bY));
-        turtle.move(getLength(aX, aY, bX, bY));
-        turtle.setDirection(getRotation(bX, bY, cX, cY));
-        turtle.move(getLength(bX, bY, cX, cY));
-        turtle.setDirection(getRotation(cX, cY, dX, dY));
-        turtle.move(getLength(cX, cY, dX, dY));
-        turtle.setDirection(getRotation(dX, dY, aX, aY));
-        turtle.move(getLength(dX, dY, aX, aY));
-    }
-
-    /**
-     * Führt einen Rekursionsschritt aus
-     *
-     * <p>
-     * Der ursprünglich deutsche Name dieser Methode war
-     * {@code SchrittAusführen}.
-     * </p>
-     *
-     * @param aX Die x-Koordinate der Ecke A der Basislinie.
-     * @param aY Die y-Koordinate der Ecke A der Basislinie.
-     * @param bX Die x-Koordinate der Ecke B der Basislinie.
-     * @param bY Die y-Koordinate der Ecke B der Basislinie.
-     * @param depth Die Rekursionstiefe.
-     */
-    private void makeStep(double aX, double aY, double bX, double bY, int depth)
-    {
-        if (depth > 0)
+        if (sideLength < 0.3)
         {
-            double cX = aX + (bX - aX) * bc - (bY - aY) * abc;
-            double cY = aY + (bY - aY) * bc + (bX - aX) * abc;
-            drawTriangle(aX, aY, bX, bY, cX, cY);
-            double p1X = aX - (cY - aY);
-            double p1Y = aY + (cX - aX);
-            double p2X = cX - (cY - aY);
-            double p2Y = cY + (cX - aX);
-            drawRectangle(aX, aY, cX, cY, p2X, p2Y, p1X, p1Y);
-            makeStep(p1X, p1Y, p2X, p2Y, depth - 1);
-            p1X = cX - (bY - cY);
-            p1Y = cY + (bX - cX);
-            p2X = bX - (bY - cY);
-            p2Y = bY + (bX - cX);
-            drawRectangle(cX, cY, bX, bY, p2X, p2Y, p1X, p1Y);
-            makeStep(p1X, p1Y, p2X, p2Y, depth - 1);
+            return;
         }
+        drawSquare(sideLength);
+        turtle.move(sideLength);
+        double s1 = sideLength / Math.sqrt(2);
+        left(45);
+        drawTree(s1);
+        right(90);
+        turtle.move(s1);
+        drawTree(s1);
+        back(s1);
+        left(45);
+        back(sideLength);
+    }
+
+    private void left(double degree)
+    {
+        turtle.rotate(degree);
+    }
+
+    private void right(double degree)
+    {
+        turtle.rotate(-degree);
+    }
+
+    private void back(double sidelength)
+    {
+        turtle.rotate(180);
+        turtle.move(sidelength);
+        turtle.rotate(180);
+    }
+
+    private void drawSquare(double sideLength)
+    {
+        turtle.lowerPen();
+        for (int i = 0; i < 4; i++)
+        {
+            turtle.move(sideLength);
+            turtle.rotate(-90);
+        }
+        turtle.liftPen();
     }
 
     public static void main(String[] args)
