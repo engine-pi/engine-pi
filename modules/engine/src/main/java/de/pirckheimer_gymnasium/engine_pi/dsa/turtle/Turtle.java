@@ -33,13 +33,14 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
 import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
 import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 
 /*
  * Implementation so ähnlich wie <a href="https://github.com/engine-pi/engine-pi/blob/main/modules/games/blockly-robot/src/main/java/de/pirckheimer_gymnasium/blockly_robot/robot/gui/robot/ImageRobot.java">ImageRobot
  * </a>in Blockly Robot
  */
+
+// file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
@@ -127,11 +128,9 @@ public class Turtle extends PaintingSurfaceScene
      */
     private boolean warpMode = false;
 
-    private double traveledDistance;
-
-    private FramedTextBox statistics;
-
     public final TurtlePen pen;
+
+    private final TurtleStatistics statistics;
 
     /**
      * Erzeugt neue eine Schildkröte in einem <b>neuen Fenster</b>.
@@ -157,10 +156,7 @@ public class Turtle extends PaintingSurfaceScene
         pen = new TurtlePen();
         turtleImage = new TurtleImage(this);
 
-        statistics = new FramedTextBox(String.valueOf(traveledDistance))
-                .borderThickness(0).backgroundColor(colors.get("grey", 50))
-                .textColor(colors.get("black"));
-        statistics.anchor(20, 20);
+        statistics = new TurtleStatistics();
 
         if (autoStart)
         {
@@ -216,7 +212,7 @@ public class Turtle extends PaintingSurfaceScene
                 drawLineInSurface(lastPosition, pen.position);
             });
         }
-        traveledDistance += distance;
+        statistics.addTraveledDistance(distance);
     }
 
     private void drawLineInSurface(Vector from, Vector to)
@@ -602,8 +598,6 @@ public class Turtle extends PaintingSurfaceScene
 
     public void renderOverlay(Graphics2D g, int width, int height)
     {
-        statistics.content(String.valueOf(traveledDistance));
-        statistics.measure();
         statistics.render(g);
     }
 
