@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -71,10 +71,10 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
 
     public PythagorasTreeTurtle()
     {
-        this(new Turtle());
+        this(new TurtleScene());
     }
 
-    public PythagorasTreeTurtle(Turtle turtle)
+    public PythagorasTreeTurtle(TurtleScene turtle)
     {
         super(turtle);
         initalState.speed(1000).position(0, -7).direction(90).warpMode(false);

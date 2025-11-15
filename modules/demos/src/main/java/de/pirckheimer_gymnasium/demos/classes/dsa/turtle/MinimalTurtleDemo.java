@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 
 /**
  * Demonstiert, wie mit <b>minimalen</b> Programmieraufwand eine
@@ -10,7 +10,7 @@ public class MinimalTurtleDemo
 {
     public static void main(String[] args)
     {
-        Turtle turtle = new Turtle();
+        TurtleScene turtle = new TurtleScene();
         turtle.move();
         turtle.rotate(120);
         turtle.move();

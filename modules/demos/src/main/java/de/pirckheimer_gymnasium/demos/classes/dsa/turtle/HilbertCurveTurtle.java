@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -29,10 +29,10 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
 
     public HilbertCurveTurtle()
     {
-        this(new Turtle());
+        this(new TurtleScene());
     }
 
-    public HilbertCurveTurtle(Turtle turtle)
+    public HilbertCurveTurtle(TurtleScene turtle)
     {
         this(turtle, 5);
     }
@@ -42,7 +42,7 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
      *
      * @param depth Die Rekursionstiefe.
      */
-    public HilbertCurveTurtle(Turtle turtle, int depth)
+    public HilbertCurveTurtle(TurtleScene turtle, int depth)
     {
         super(turtle);
         this.depth = depth;

@@ -20,7 +20,7 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -34,15 +34,15 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     public SnowflakeTurtle()
     {
-        this(new Turtle(), 10, 1);
+        this(new TurtleScene(), 10, 1);
     }
 
-    public SnowflakeTurtle(Turtle turtle)
+    public SnowflakeTurtle(TurtleScene turtle)
     {
         this(turtle, 10, 1);
     }
 
-    public SnowflakeTurtle(Turtle turtle, double length, int depth)
+    public SnowflakeTurtle(TurtleScene turtle, double length, int depth)
     {
         super(turtle);
         this.length = length;

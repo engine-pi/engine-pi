@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -22,10 +22,10 @@ public class RecursiveSquareTurtle extends TurtleAlgorithm
      */
     public RecursiveSquareTurtle()
     {
-        this(new Turtle());
+        this(new TurtleScene());
     }
 
-    public RecursiveSquareTurtle(Turtle turtle)
+    public RecursiveSquareTurtle(TurtleScene turtle)
     {
         super(turtle);
         turtle.setSpeed(3);

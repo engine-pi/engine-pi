@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -37,10 +37,10 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     public SierpinskiCurveTurtle(int depth)
     {
-        this(new Turtle(), depth);
+        this(new TurtleScene(), depth);
     }
 
-    public SierpinskiCurveTurtle(Turtle turtle)
+    public SierpinskiCurveTurtle(TurtleScene turtle)
     {
         this(turtle, 5);
     }
@@ -50,7 +50,7 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
      *
      * @param depth Die Rekursionstiefe.
      */
-    public SierpinskiCurveTurtle(Turtle turtle, int depth)
+    public SierpinskiCurveTurtle(TurtleScene turtle, int depth)
     {
         super(turtle);
         this.depth = depth;

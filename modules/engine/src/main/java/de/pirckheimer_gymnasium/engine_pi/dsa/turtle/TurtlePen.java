@@ -7,6 +7,8 @@ import java.awt.Color;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
+// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+
 /**
  * Der <b>Mal- bzw. Zeichenstift</b> der Schildkröte.
  *

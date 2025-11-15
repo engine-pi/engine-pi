@@ -10,6 +10,8 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
 import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
 import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
 
+// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+
 /**
  * Verwaltet die grafische Repräsentation der Schildkröte. Die Schildkröte kann
  * verschieden dargestellt werden: Als animiertes Bild, als Pfeil oder als

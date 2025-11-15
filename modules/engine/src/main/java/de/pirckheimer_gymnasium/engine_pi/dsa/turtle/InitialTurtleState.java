@@ -155,7 +155,7 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    public void apply(Turtle turtle)
+    public void apply(TurtleScene turtle)
     {
         if (ignore)
         {

@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 /**
@@ -16,10 +16,10 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
 
     public LevyCCurveTurtle()
     {
-        this(new Turtle());
+        this(new TurtleScene());
     }
 
-    public LevyCCurveTurtle(Turtle turtle)
+    public LevyCCurveTurtle(TurtleScene turtle)
     {
         this(turtle, 5);
     }
@@ -27,7 +27,7 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
     /**
      * Legt die Schildkröte an.
      */
-    public LevyCCurveTurtle(Turtle turtle, int depth)
+    public LevyCCurveTurtle(TurtleScene turtle, int depth)
     {
         super(turtle);
         this.depth = depth;

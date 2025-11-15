@@ -1,12 +1,12 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
 
 public class TriangleTurtle extends TurtleAlgorithm
 {
 
-    public TriangleTurtle(Turtle turtle)
+    public TriangleTurtle(TurtleScene turtle)
     {
         super(turtle);
     }

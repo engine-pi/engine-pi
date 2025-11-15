@@ -6,6 +6,8 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
 
+// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+
 /**
  * Eine Hilfsklasse zum Formulieren eines <b>Turtle-Algorithmus</b>.
  *
@@ -53,7 +55,7 @@ public abstract class TurtleAlgorithm implements Runnable
     /**
      * Die <b>Schildkröte</b>, die eine Grafik zeichnet.
      */
-    protected Turtle turtle;
+    protected TurtleScene turtle;
 
     /**
      * Eine Callback-Funktion, die aufgerufen wird, wenn die Turtle-Grafik
@@ -80,7 +82,7 @@ public abstract class TurtleAlgorithm implements Runnable
      */
     public TurtleAlgorithm()
     {
-        this(new Turtle());
+        this(new TurtleScene());
     }
 
     /**
@@ -88,7 +90,7 @@ public abstract class TurtleAlgorithm implements Runnable
      *
      * @since 0.38.0
      */
-    public TurtleAlgorithm(Turtle turtle)
+    public TurtleAlgorithm(TurtleScene turtle)
     {
         this.turtle = turtle;
     }
@@ -227,7 +229,7 @@ public abstract class TurtleAlgorithm implements Runnable
      *
      * @since 0.38.0
      */
-    public Turtle getTurtle()
+    public TurtleScene getTurtle()
     {
         return turtle;
     }
