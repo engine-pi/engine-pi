@@ -1,0 +1,31 @@
+
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.12.0</version>
+            <configuration>
+                <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>de.pirckheimer-gymnasium</groupId>
+                    <artifactId>engine-pi-build-tools</artifactId>
+                    <version>0.1.0</version>
+                </dependency>
+            </dependencies>
+            <executions>
+                <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
