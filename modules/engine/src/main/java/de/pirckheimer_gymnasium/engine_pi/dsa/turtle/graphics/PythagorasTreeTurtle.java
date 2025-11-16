@@ -103,7 +103,7 @@ public class PythagorasTreeTurtle extends TurtleGraphics
         for (int i = 0; i < 4; i++)
         {
             turtle.forward(sideLength);
-            turtle.left(-90);
+            turtle.right(90);
         }
         turtle.liftPen();
     }
