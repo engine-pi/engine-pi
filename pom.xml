@@ -6,7 +6,7 @@
 
     <groupId>de.pirckheimer-gymnasium</groupId>
     <artifactId>engine-pi-meta</artifactId>
-    <version>0.39</version>
+    <version>0.40.0</version>
     <packaging>pom</packaging>
 
     <name>Parent Meta Project</name>
@@ -194,9 +194,9 @@
                     </tags>
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
-                    <links>
+                    <!-- <links>
                         <link>https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi-demos/latest</link>
-                    </links>
+                    </links> -->
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
                     <excludePackageNames>org.jbox2d.*</excludePackageNames>
@@ -219,12 +219,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.19.1</version>
             </plugin>
         </plugins>
     </build>

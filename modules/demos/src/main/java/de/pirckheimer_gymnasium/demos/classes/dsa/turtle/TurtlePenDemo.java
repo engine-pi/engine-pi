@@ -14,20 +14,20 @@ public class TurtlePenDemo
     {
         Turtle turtle = new Turtle();
         turtle.pen.color("red").thickness(1);
-        turtle.move(5);
+        turtle.forward(5);
 
         turtle.pen.color("green").thickness(3);
-        turtle.rotate(120);
-        turtle.move(5);
+        turtle.left(120);
+        turtle.forward(5);
 
         turtle.pen.color("blue").thickness(5);
-        turtle.rotate(120);
-        turtle.move(5);
+        turtle.left(120);
+        turtle.forward(5);
 
         turtle.pen.lift();
 
-        turtle.move(7);
+        turtle.forward(7);
         turtle.pen.lower().color("brown");
-        turtle.move(2);
+        turtle.forward(2);
     }
 }

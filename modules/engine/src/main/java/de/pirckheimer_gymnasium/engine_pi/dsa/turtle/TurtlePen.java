@@ -31,7 +31,7 @@ public class TurtlePen
      *
      * @since 0.40.0
      */
-    public int thickness = 3;
+    public int thickness = 1;
 
     /**
      * Die <b>Farbe</b> der Linie.
@@ -73,28 +73,39 @@ public class TurtlePen
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtlePen color(Color color)
     {
         this.color = color;
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtlePen color(String color)
     {
         this.color = colors.get(color);
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtlePen lower()
     {
         isDown = true;
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtlePen lift()
     {
         isDown = false;
         return this;
     }
-
 }

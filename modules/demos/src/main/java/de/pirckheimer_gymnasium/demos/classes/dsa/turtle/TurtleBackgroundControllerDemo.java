@@ -14,11 +14,11 @@ public class TurtleBackgroundControllerDemo
     {
         Turtle turtle = new Turtle();
         turtle.background.color("blue");
-        turtle.move();
-        turtle.rotate(120);
-        turtle.move();
-        turtle.rotate(120);
-        turtle.move();
+        turtle.forward();
+        turtle.left(120);
+        turtle.forward();
+        turtle.left(120);
+        turtle.forward();
         turtle.background.clear();
     }
 }

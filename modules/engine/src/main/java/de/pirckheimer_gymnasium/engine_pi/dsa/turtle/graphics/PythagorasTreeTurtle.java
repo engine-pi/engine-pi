@@ -85,33 +85,16 @@ public class PythagorasTreeTurtle extends TurtleGraphics
             return;
         }
         drawSquare(sideLength);
-        turtle.move(sideLength);
+        turtle.forward(sideLength);
         double s1 = sideLength / Math.sqrt(2);
-        left(45);
+        turtle.left(45);
         drawTree(s1);
-        right(90);
-        turtle.move(s1);
+        turtle.right(90);
+        turtle.forward(s1);
         drawTree(s1);
-        back(s1);
-        left(45);
-        back(sideLength);
-    }
-
-    private void left(double degree)
-    {
-        turtle.rotate(degree);
-    }
-
-    private void right(double degree)
-    {
-        turtle.rotate(-degree);
-    }
-
-    private void back(double sidelength)
-    {
-        turtle.rotate(180);
-        turtle.move(sidelength);
-        turtle.rotate(180);
+        turtle.backward(s1);
+        turtle.left(45);
+        turtle.backward(sideLength);
     }
 
     private void drawSquare(double sideLength)
@@ -119,8 +102,8 @@ public class PythagorasTreeTurtle extends TurtleGraphics
         turtle.lowerPen();
         for (int i = 0; i < 4; i++)
         {
-            turtle.move(sideLength);
-            turtle.rotate(-90);
+            turtle.forward(sideLength);
+            turtle.left(-90);
         }
         turtle.liftPen();
     }

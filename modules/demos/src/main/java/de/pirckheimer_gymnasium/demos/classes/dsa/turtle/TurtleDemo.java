@@ -13,10 +13,10 @@ public class TurtleDemo
     public static void main(String[] args)
     {
         Turtle turtle = new Turtle();
-        turtle.move();
-        turtle.rotate(120);
-        turtle.move();
-        turtle.rotate(120);
-        turtle.move();
+        turtle.forward();
+        turtle.left(120);
+        turtle.forward();
+        turtle.left(120);
+        turtle.forward();
     }
 }

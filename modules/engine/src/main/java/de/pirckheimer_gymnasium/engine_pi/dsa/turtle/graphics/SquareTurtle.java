@@ -10,8 +10,8 @@ public class SquareTurtle extends TurtleGraphics
     {
         for (int i = 0; i < 4; i++)
         {
-            turtle.move(4);
-            turtle.rotate(90);
+            turtle.forward(4);
+            turtle.left(90);
         }
     }
 

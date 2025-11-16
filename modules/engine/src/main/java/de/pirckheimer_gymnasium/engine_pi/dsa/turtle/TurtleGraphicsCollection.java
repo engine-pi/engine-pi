@@ -13,17 +13,34 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SquareTurtle;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.TriangleTurtle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
+/**
+ * @since 0.40.0
+ */
 public class TurtleGraphicsCollection implements KeyStrokeListener
 {
-
+    /**
+     * @since 0.40.0
+     */
     private ArrayList<TurtleGraphics> graphics;
 
+    /**
+     * @since 0.40.0
+     */
     private TurtleGraphics currentGraphics;
 
+    /**
+     * @since 0.40.0
+     */
     private int currentGraphicsIndex = -1;
 
+    /**
+     * @since 0.40.0
+     */
     private Thread thread;
 
+    /**
+     * @since 0.40.0
+     */
     public TurtleGraphicsCollection()
     {
         graphics = new ArrayList<>();
@@ -38,6 +55,9 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         clearAll();
     }
 
+    /**
+     * @since 0.40.0
+     */
     public void registerStartNext()
     {
         for (TurtleGraphics graphic : graphics)
@@ -48,12 +68,18 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         }
     }
 
+    /**
+     * @since 0.40.0
+     */
     public void clearAll()
     {
-        TurtleLauncher.scene().hide();
+        TurtleLauncher.scene().hideTurtle();
         TurtleLauncher.scene().clearBackground();
     }
 
+    /**
+     * @since 0.40.0
+     */
     private void startAlgorithm(int index)
     {
         if (thread != null)
@@ -62,10 +88,13 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         }
         currentGraphics = graphics.get(index);
         clearAll();
-        TurtleLauncher.scene().show();
+        TurtleLauncher.scene().showTurtle();
         TurtleLauncher.launch(currentGraphics);
     }
 
+    /**
+     * @since 0.40.0
+     */
     private void startNextAlgorithm()
     {
         if (currentGraphicsIndex == graphics.size() - 1)
@@ -79,6 +108,9 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         startAlgorithm(currentGraphicsIndex);
     }
 
+    /**
+     * @since 0.40.0
+     */
     private void runAll()
     {
         registerStartNext();
@@ -86,6 +118,9 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         currentGraphicsIndex = 0;
     }
 
+    /**
+     * @since 0.40.0
+     */
     @Override
     public void onKeyDown(KeyEvent event)
     {

@@ -42,49 +42,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
- *
- * <h2>Die Hauptmethoden:</h2>
- *
- * <ul>
- * <li>{@link #move()}: Bewegt die Schildkröte in Blickrichtung nach vorne.</li>
- * <li>{@link #rotate(double)}: Dreht die Schildkröte.</li>
- * <li>{@link #lowerPen()}: Wechselt in den Modus „zeichnen“.</li>
- * <li>{@link #liftPen()}: Wechselt in den Modus „nicht zeichnen“.</li>
- * </ul>
- *
- * <p>
- * Folgendes Code-Beispiel demonstiert, wie mit <b>minimalen</b>
- * Programmieraufwand eine <b>Turtle</b>-Grafik (hier ein Dreieck) gezeichnet
- * werden kann:
- * </p>
- *
- * <pre>{@code
- * import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.Turtle;
- *
- * public class MinimalTurtleDemo
- * {
- *     public static void main(String[] args)
- *     {
- *         Turtle turtle = new Turtle();
- *         turtle.move();
- *         turtle.rotate(120);
- *         turtle.move();
- *         turtle.rotate(120);
- *         turtle.move();
- *     }
- * }
- * }</pre>
- *
- * <p>
- * Die Klasse hat animierte Methoden, die künstliche verlangsamt werden, damit
- * der Malprozess nachvollzogen werden kann. Das Zeichnen einer Turtle-Grafik
- * kann unter Umständen sehr lange dauern. Deshalb sollten keine animierten
- * Methodenaufrufen in Konstrukturen geschrieben werden, da das Objekt lange
- * nicht erzeugt werden kann. Diese Klasse startet deshalb automatische eine
- * Szene.
- * </p>
- *
  * @since 0.38.0
  *
  * @author Josef Friedrich
@@ -92,7 +49,6 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * @author Niklas Keller
  */
 public class TurtleScene extends PaintingSurfaceScene
-        implements TurtleDrawControl
 {
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
@@ -147,12 +103,7 @@ public class TurtleScene extends PaintingSurfaceScene
 
     /* Hauptmethoden */
 
-    public void move()
-    {
-        move(3);
-    }
-
-    public void move(double distance)
+    void moveTurtleForward(double distance)
     {
         // Vielleicht wäre es besser die Rotation auch extra zu speichern wie
         // bei currentPenPosition und nicht aus der Grafik raus zu lesen
@@ -166,7 +117,7 @@ public class TurtleScene extends PaintingSurfaceScene
         }
         else
         {
-            double duration = distance / speed;
+            double duration = Math.abs(distance) / speed;
             animate(duration, progress -> {
                 lastPosition = pen.position;
                 pen.position = initial.add(movement.multiply(progress));
@@ -205,7 +156,7 @@ public class TurtleScene extends PaintingSurfaceScene
         turtleImage.setPosition(pen.position);
     }
 
-    public void rotate(double rotation)
+    void rotateTurtle(double rotation)
     {
         double start = pen.direction;
         if (warpMode)
@@ -222,20 +173,10 @@ public class TurtleScene extends PaintingSurfaceScene
         }
     }
 
-    public void lowerPen()
-    {
-        pen.isDown = true;
-    }
-
-    public void liftPen()
-    {
-        pen.isDown = false;
-    }
-
     /**
      * @since 0.40.0
      */
-    public void setPen(boolean isDown)
+    void setPen(boolean isDown)
     {
         pen.isDown = isDown;
     }
@@ -251,7 +192,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setSpeed(double speed)
+    void setSpeed(double speed)
     {
         this.speed = speed;
     }
@@ -270,7 +211,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void changeSpeed(double speedChange)
+    void changeSpeed(double speedChange)
     {
         if (speed + speedChange < 0)
         {
@@ -287,7 +228,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void enableWarpMode()
+    void enableWarpMode()
     {
         warpMode = true;
     }
@@ -300,7 +241,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void toggleWarpMode()
+    void toggleWarpMode()
     {
         warpMode = !warpMode;
     }
@@ -316,7 +257,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.40.0
      */
-    public void setWarpMode(boolean warpMode)
+    void setWarpMode(boolean warpMode)
     {
         this.warpMode = warpMode;
     }
@@ -328,7 +269,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setLineWidth(int lineWidth)
+    void setLineWidth(int lineWidth)
     {
         pen.thickness = lineWidth;
     }
@@ -346,7 +287,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void changeLineWidth(int lineWidthChange)
+    void changeLineWidth(int lineWidthChange)
     {
         if (pen.thickness + lineWidthChange < 1)
         {
@@ -362,7 +303,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setLineColor(Color lineColor)
+    void setLineColor(Color lineColor)
     {
         pen.color = lineColor;
     }
@@ -374,24 +315,19 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void setLineColor(String lineColor)
+    void setLineColor(String lineColor)
     {
         pen.color = colors.get(lineColor);
     }
 
-    public void setPosition(Vector position)
+    void setPosition(Vector position)
     {
         lastPosition = pen.position;
         pen.position = position;
         turtleImage.setPosition(position);
     }
 
-    public void setPosition(double x, double y)
-    {
-        setPosition(new Vector(x, y));
-    }
-
-    public void setDirection(double direction)
+    void setDirection(double direction)
     {
         setCurrentRotation(direction);
         turtleImage.setRotation(direction);
@@ -399,12 +335,12 @@ public class TurtleScene extends PaintingSurfaceScene
         turtleImage.setPosition(pen.position);
     }
 
-    public void setDress(TurtleDress dress)
+    void setDress(TurtleDress dress)
     {
         turtleImage.setDress(dress);
     }
 
-    public void setNextDress()
+    void setNextDress()
     {
         turtleImage.setNextDress();
     }
@@ -414,7 +350,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void clearBackground()
+    void clearBackground()
     {
         if (surface != null)
         {
@@ -427,7 +363,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void hide()
+    void hideTurtle()
     {
         turtleImage.hide();
     }
@@ -437,7 +373,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * @since 0.38.0
      */
-    public void show()
+    void showTurtle()
     {
         turtleImage.show();
     }

@@ -19,9 +19,14 @@ public class PaintingSurfaceScene extends Scene
      * Ein <b>Malfläche</b>, in die gemalt werden kann und dir als
      * Hintergrundbild angezeigt wird. Es kann zum Beispiel für Turtle-Grafiken
      * verwendet werden oder zur Simulation eines Malprogramms.
+     *
+     * @since 0.40.0
      */
     protected PaintingSurface paintingSurface;
 
+    /**
+     * @since 0.40.0
+     */
     public PaintingSurface getPaintingSurface()
     {
         if (paintingSurface == null)
@@ -31,6 +36,9 @@ public class PaintingSurfaceScene extends Scene
         return paintingSurface;
     }
 
+    /**
+     * @since 0.40.0
+     */
     @Internal
     public final void render(Graphics2D g, int width, int height)
     {

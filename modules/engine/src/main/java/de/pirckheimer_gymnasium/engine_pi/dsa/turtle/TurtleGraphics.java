@@ -53,29 +53,46 @@ public abstract class TurtleGraphics implements Runnable
 {
     /**
      * Die <b>Schildkröte</b>, die eine Grafik zeichnet.
+     *
+     * @since 0.40.0
      */
-    protected TurtleDrawControl turtle;
+    protected TurtleController turtle;
 
     /**
      * Eine Callback-Funktion, die aufgerufen wird, wenn die Turtle-Grafik
      * fertig gezeichnet wurde.
+     *
+     * @since 0.40.0
      */
     protected Runnable onFinished;
 
+    /**
+     * @since 0.40.0
+     */
     protected final InitialTurtleState initalState = new InitialTurtleState();
 
+    /**
+     * @since 0.40.0
+     */
     protected Supplier<Boolean> onRepeat;
 
+    /**
+     * @since 0.40.0
+     */
     protected boolean clearBeforeRun = false;
 
     /**
      * Wartet, nachdem die draw-Methode fertig ausgeführt wurde, die angegeben
      * Anzahl an Sekunden bevor zur nächsten Wiederholung übergegangen wird.
+     *
+     * @since 0.40.0
      */
     protected double waitAfterFinish = 0.0;
 
     /**
      * In dieser Methode soll der Turtle-Algorithmus formuliert werden.
+     *
+     * @since 0.40.0
      */
     protected abstract void draw();
 
@@ -96,18 +113,27 @@ public abstract class TurtleGraphics implements Runnable
         }
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtleGraphics onFinished(Runnable onFinished)
     {
         this.onFinished = onFinished;
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public TurtleGraphics onRepeat(Supplier<Boolean> afterRepeat)
     {
         this.onRepeat = afterRepeat;
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public void start()
     {
         TurtleLauncher.launch(this);

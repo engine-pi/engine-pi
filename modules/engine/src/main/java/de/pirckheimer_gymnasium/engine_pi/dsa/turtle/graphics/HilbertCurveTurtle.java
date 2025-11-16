@@ -49,11 +49,11 @@ public class HilbertCurveTurtle extends TurtleGraphics
     {
         if (left)
         {
-            turtle.rotate(90);
+            turtle.left(90);
         }
         else
         {
-            turtle.rotate(-90);
+            turtle.left(-90);
         }
     }
 
@@ -69,13 +69,13 @@ public class HilbertCurveTurtle extends TurtleGraphics
         {
             rotate(left);
             drawElement(!left, depth - 1);
-            turtle.move(length);
+            turtle.forward(length);
             rotate(!left);
             drawElement(left, depth - 1);
-            turtle.move(length);
+            turtle.forward(length);
             drawElement(left, depth - 1);
             rotate(!left);
-            turtle.move(length);
+            turtle.forward(length);
             drawElement(!left, depth - 1);
             rotate(left);
         }

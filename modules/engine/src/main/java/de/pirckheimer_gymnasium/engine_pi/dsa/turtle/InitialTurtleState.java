@@ -60,14 +60,22 @@ public class InitialTurtleState
      * Ignoriert den Anfangszustand bei einer Ausführung des Algorithmus. Die
      * Schildkröte bleibt in dem Zustand, wie sie den vorherigen Algorithmus
      * verlassen hat.
+     *
+     * @since 0.40.0
      */
     private boolean ignore = false;
 
+    /**
+     * @since 0.40.0
+     */
     private static InitialTurtleState getDefaults()
     {
         return new InitialTurtleState();
     }
 
+    /**
+     * @since 0.40.0
+     */
     private static void copy(InitialTurtleState from, InitialTurtleState to)
     {
         to.position = from.position;
@@ -78,18 +86,27 @@ public class InitialTurtleState
         to.ignore = from.ignore;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public InitialTurtleState set(InitialTurtleState state)
     {
         copy(state, this);
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public InitialTurtleState reset()
     {
         copy(getDefaults(), this);
         return this;
     }
 
+    /**
+     * @since 0.40.0
+     */
     public InitialTurtleState ignore()
     {
         ignore = true;

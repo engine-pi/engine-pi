@@ -16,16 +16,26 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
  * Verwaltet die grafische Repräsentation der Schildkröte. Die Schildkröte kann
  * verschieden dargestellt werden: Als animiertes Bild, als Pfeil oder als
  * Punkt.
+ *
+ * @since 0.40.0
  */
 class TurtleImage
 {
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
+     *
+     * @since 0.40.0
      */
     private Actor image;
 
+    /**
+     * @since 0.40.0
+     */
     private Scene scene;
 
+    /**
+     * @since 0.40.0
+     */
     private TurtleDress dress;
 
     /**
@@ -33,11 +43,17 @@ class TurtleImage
      */
     private double size = 2;
 
+    /**
+     * @since 0.40.0
+     */
     TurtleImage(Scene scene)
     {
         this(scene, TurtleDress.ANIMATED_IMAGE, 2);
     }
 
+    /**
+     * @since 0.40.0
+     */
     TurtleImage(Scene scene, TurtleDress dress, double size)
     {
         this.scene = scene;
@@ -82,6 +98,9 @@ class TurtleImage
         scene.add(image);
     }
 
+    /**
+     * @since 0.40.0
+     */
     void setNextDress()
     {
         TurtleDress[] dresses = TurtleDress.values();
@@ -94,6 +113,9 @@ class TurtleImage
         setDress(dresses[(i + 1) % dresses.length]);
     }
 
+    /**
+     * @since 0.40.0
+     */
     void showNextAnimation()
     {
         if (image instanceof Animation)
@@ -103,11 +125,17 @@ class TurtleImage
         }
     }
 
+    /**
+     * @since 0.40.0
+     */
     void setPosition(Vector position)
     {
         image.setCenter(position);
     }
 
+    /**
+     * @since 0.40.0
+     */
     void setRotation(double rotation)
     {
         image.setRotation(rotation);

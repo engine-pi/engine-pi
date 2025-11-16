@@ -59,17 +59,17 @@ public class LevyCCurveTurtle extends TurtleGraphicsSeries
     {
         if (depth > 0)
         {
-            turtle.rotate(45);
+            turtle.left(45);
             // 1 / Math.sqrt(2) == 0.7071067811865475
             // sqrt -> square root -> Quadratwurzel
             drawPart(length * 0.7071, depth - 1);
-            turtle.rotate(-90);
+            turtle.left(-90);
             drawPart(length * 0.7071, depth - 1);
-            turtle.rotate(45);
+            turtle.left(45);
         }
         else
         {
-            turtle.move(length);
+            turtle.forward(length);
         }
     }
 

@@ -5,21 +5,29 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 /**
  * Die verschiedenen Arten, wie eine Schildkröte grafisch dargestellt werden
  * kann.
+ *
+ * @since 0.40.0
  */
 public enum TurtleDress
 {
     /**
      * Als animiertes Bild
+     *
+     * @since 0.40.0
      */
     ANIMATED_IMAGE,
 
     /**
      * Als Pfeil
+     *
+     * @since 0.40.0
      */
     ARROW,
 
     /**
      * Als kleiner Punkt.
+     *
+     * @since 0.40.0
      */
     DOT
 }

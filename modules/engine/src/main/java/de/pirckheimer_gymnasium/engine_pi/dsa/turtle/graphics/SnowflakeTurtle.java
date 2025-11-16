@@ -47,25 +47,25 @@ public class SnowflakeTurtle extends TurtleGraphicsSeries
     private void drawSnowFlake(double length, int depth)
     {
         turtle.liftPen();
-        turtle.rotate(180);
-        turtle.move(5);
-        turtle.rotate(-90);
-        turtle.move(3);
-        turtle.rotate(-90);
+        turtle.left(180);
+        turtle.forward(5);
+        turtle.left(-90);
+        turtle.forward(3);
+        turtle.left(-90);
         turtle.lowerPen();
 
         for (int i = 0; i < 3; i++)
         {
             drawCurve(length, depth);
-            turtle.rotate(-120);
+            turtle.left(-120);
         }
 
         turtle.liftPen();
-        turtle.rotate(180);
-        turtle.move(-5);
-        turtle.rotate(-90);
-        turtle.move(-3);
-        turtle.rotate(-90);
+        turtle.left(180);
+        turtle.forward(-5);
+        turtle.left(-90);
+        turtle.forward(-3);
+        turtle.left(-90);
         turtle.lowerPen();
     }
 
@@ -73,16 +73,16 @@ public class SnowflakeTurtle extends TurtleGraphicsSeries
     {
         if (depth == 0)
         {
-            turtle.move(length);
+            turtle.forward(length);
         }
         else
         {
             drawCurve(length / 3, depth - 1);
-            turtle.rotate(60);
+            turtle.left(60);
             drawCurve(length / 3, depth - 1);
-            turtle.rotate(-120);
+            turtle.left(-120);
             drawCurve(length / 3, depth - 1);
-            turtle.rotate(60);
+            turtle.left(60);
             drawCurve(length / 3, depth - 1);
         }
     }

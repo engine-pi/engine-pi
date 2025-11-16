@@ -15,7 +15,7 @@ public class SetDirectionTurtle extends TurtleGraphics
         turtle.lowerPen();
         turtle.setPosition(0, 0);
         turtle.setDirection(direction);
-        turtle.move(4);
+        turtle.forward(4);
         turtle.liftPen();
 
     }

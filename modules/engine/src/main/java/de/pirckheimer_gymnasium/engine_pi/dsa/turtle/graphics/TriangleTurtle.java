@@ -10,8 +10,8 @@ public class TriangleTurtle extends TurtleGraphics
     {
         for (int i = 0; i < 3; i++)
         {
-            turtle.move(4);
-            turtle.rotate(120);
+            turtle.forward(4);
+            turtle.left(120);
         }
     }
 

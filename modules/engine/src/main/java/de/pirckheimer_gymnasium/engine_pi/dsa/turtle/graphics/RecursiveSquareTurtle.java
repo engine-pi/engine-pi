@@ -44,8 +44,8 @@ public class RecursiveSquareTurtle extends TurtleGraphics
     {
         for (int i = 0; i < 4; i += 1)
         {
-            turtle.move(length);
-            turtle.rotate(-90);
+            turtle.forward(length);
+            turtle.left(-90);
         }
     }
 
@@ -69,7 +69,7 @@ public class RecursiveSquareTurtle extends TurtleGraphics
         else
         {
             drawBeadChain(numberOfBeads - 1);
-            turtle.move(2);
+            turtle.forward(2);
             drawSquare(length);
         }
     }
@@ -108,15 +108,15 @@ public class RecursiveSquareTurtle extends TurtleGraphics
         if (remainingSquares > 0)
         {
             turtle.liftPen();
-            turtle.rotate(360 / numberOfSquares);
-            turtle.move(3);
+            turtle.left(360 / numberOfSquares);
+            turtle.forward(3);
             turtle.lowerPen();
             drawSquare(1);
             turtle.liftPen();
-            turtle.rotate(180);
-            turtle.move(3);
+            turtle.left(180);
+            turtle.forward(3);
             turtle.lowerPen();
-            turtle.rotate(180);
+            turtle.left(180);
             drawSquareCircle(numberOfSquares, remainingSquares - 1);
         }
     }
@@ -139,15 +139,15 @@ public class RecursiveSquareTurtle extends TurtleGraphics
         if (remainingSquares > 0)
         {
             turtle.liftPen();
-            turtle.rotate(360 / numberOfSquares);
-            turtle.move(radius);
+            turtle.left(360 / numberOfSquares);
+            turtle.forward(radius);
             turtle.lowerPen();
             drawSquare(radius / 2);
             turtle.liftPen();
-            turtle.rotate(180);
-            turtle.move(radius);
+            turtle.left(180);
+            turtle.forward(radius);
             turtle.lowerPen();
-            turtle.rotate(180);
+            turtle.left(180);
             drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1,
                     radius);
         }
