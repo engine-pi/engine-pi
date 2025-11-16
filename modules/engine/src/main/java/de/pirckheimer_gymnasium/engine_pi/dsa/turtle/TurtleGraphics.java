@@ -49,7 +49,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
  *
  * @since 0.38.0
  */
-public abstract class TurtleAlgorithmNg implements Runnable
+public abstract class TurtleGraphics implements Runnable
 {
     /**
      * Die <b>Schildkröte</b>, die eine Grafik zeichnet.
@@ -96,16 +96,20 @@ public abstract class TurtleAlgorithmNg implements Runnable
         }
     }
 
-    public TurtleAlgorithmNg onFinished(Runnable onFinished)
+    public TurtleGraphics onFinished(Runnable onFinished)
     {
         this.onFinished = onFinished;
         return this;
     }
 
-    public TurtleAlgorithmNg onRepeat(Supplier<Boolean> afterRepeat)
+    public TurtleGraphics onRepeat(Supplier<Boolean> afterRepeat)
     {
         this.onRepeat = afterRepeat;
         return this;
     }
 
+    public void start()
+    {
+        TurtleLauncher.launch(this);
+    }
 }

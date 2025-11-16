@@ -1,19 +1,12 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
-public class SetDirectionTurtle extends TurtleAlgorithm
+public class SetDirectionTurtle extends TurtleGraphics
 {
 
     public SetDirectionTurtle()
     {
-        this(new TurtleScene());
-    }
-
-    public SetDirectionTurtle(TurtleScene turtle)
-    {
-        super(turtle);
         initalState.speed(2);
     }
 

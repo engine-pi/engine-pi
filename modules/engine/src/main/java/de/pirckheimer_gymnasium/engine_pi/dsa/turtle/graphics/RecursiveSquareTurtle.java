@@ -1,7 +1,6 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
 /**
  * Rahmenklasse zum Zeichen von Mustern aus Quadraten.
@@ -14,40 +13,20 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  *
  * @version 1.0
  */
-public class RecursiveSquareTurtle extends TurtleAlgorithm
+public class RecursiveSquareTurtle extends TurtleGraphics
 {
 
-    /**
-     * Der Konstruktor legt die Schildkröte an.
-     */
     public RecursiveSquareTurtle()
     {
-        this(new TurtleScene());
-    }
-
-    public RecursiveSquareTurtle(TurtleScene turtle)
-    {
-        super(turtle);
-        turtle.setSpeed(3);
-    }
-
-    private void reset()
-    {
-        turtle.setPosition(-8, 0);
-        turtle.clearBackground();
+        initalState.position(-8, 0).speed(3);
     }
 
     public void draw()
     {
-        reset();
         drawBeadChain(10);
-        reset();
         drawSquarePattern(10);
-        reset();
         drawSquareCircle(7, 7);
-        reset();
         drawMultipleSquareCircles(7, 3);
-
     }
 
     /**
@@ -197,6 +176,6 @@ public class RecursiveSquareTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new RecursiveSquareTurtle().show();
+        new RecursiveSquareTurtle().start();
     }
 }

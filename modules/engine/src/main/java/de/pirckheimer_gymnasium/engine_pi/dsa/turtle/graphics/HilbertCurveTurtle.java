@@ -1,7 +1,6 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
 /**
  * Zeichnet die Hilbert-Kurve.
@@ -14,9 +13,8 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  *
  * @version 1.0
  */
-public class HilbertCurveTurtle extends TurtleAlgorithm
+public class HilbertCurveTurtle extends TurtleGraphics
 {
-
     /**
      * Die Linienlänge.
      */
@@ -27,26 +25,13 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
      */
     private int depth;
 
-    public HilbertCurveTurtle()
-    {
-        this(new TurtleScene());
-    }
-
-    public HilbertCurveTurtle(TurtleScene turtle)
-    {
-        this(turtle, 5);
-    }
-
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
-     *
-     * @param depth Die Rekursionstiefe.
      */
-    public HilbertCurveTurtle(TurtleScene turtle, int depth)
+    public HilbertCurveTurtle()
     {
-        super(turtle);
-        this.depth = depth;
         initalState.position(-7, 7).speed(100);
+        depth = 5;
     }
 
     public void draw()
@@ -98,7 +83,6 @@ public class HilbertCurveTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new HilbertCurveTurtle().show();
+        new HilbertCurveTurtle().start();
     }
-
 }

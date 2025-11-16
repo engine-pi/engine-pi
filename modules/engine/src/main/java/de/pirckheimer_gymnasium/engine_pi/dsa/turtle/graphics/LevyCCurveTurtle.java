@@ -1,7 +1,6 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphicsSeries;
 
 /**
  * Zeichnet die Lévy-C-Kurve.
@@ -10,27 +9,17 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  *
  * @version 1.0
  */
-public class LevyCCurveTurtle extends TurtleAlgorithm
+public class LevyCCurveTurtle extends TurtleGraphicsSeries
 {
     private int depth;
-
-    public LevyCCurveTurtle()
-    {
-        this(new TurtleScene());
-    }
-
-    public LevyCCurveTurtle(TurtleScene turtle)
-    {
-        this(turtle, 5);
-    }
 
     /**
      * Legt die Schildkröte an.
      */
-    public LevyCCurveTurtle(TurtleScene turtle, int depth)
+    public LevyCCurveTurtle()
     {
-        super(turtle);
-        this.depth = depth;
+        depth = 5;
+        numberOfSeries = 5;
         initalState.position(-4, 0).speed(20);
     }
 
@@ -84,24 +73,14 @@ public class LevyCCurveTurtle extends TurtleAlgorithm
         }
     }
 
-    public void showDifferentDepths()
+    public void onDrawEnd()
     {
-        depth = 1;
+        depth++;
         initalState.speed(10 * depth);
-        repeat(() -> {
-            depth++;
-            initalState.speed(10 * depth);
-            if (depth > 10)
-            {
-                return false;
-            }
-            return true;
-        });
     }
 
     public static void main(String[] args)
     {
-        new LevyCCurveTurtle().clearBeforeRun().waitAfterFinish(2)
-                .showDifferentDepths();
+        new LevyCCurveTurtle().start();
     }
 }

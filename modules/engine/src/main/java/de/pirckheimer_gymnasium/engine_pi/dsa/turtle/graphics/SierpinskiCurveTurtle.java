@@ -1,8 +1,6 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.InitialTurtleState;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
 /**
  * Zeichnet die Sierpinski-Kurve.
@@ -15,7 +13,7 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  *
  * @version 1.0
  */
-public class SierpinskiCurveTurtle extends TurtleAlgorithm
+public class SierpinskiCurveTurtle extends TurtleGraphics
 {
 
     /**
@@ -30,36 +28,14 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     private int depth;
 
-    public SierpinskiCurveTurtle()
-    {
-        this(5);
-    }
-
-    public SierpinskiCurveTurtle(int depth)
-    {
-        this(new TurtleScene(), depth);
-    }
-
-    public SierpinskiCurveTurtle(TurtleScene turtle)
-    {
-        this(turtle, 5);
-    }
-
     /**
      * Legt die Schildkröte an und startet die Zeichnung.
      *
-     * @param depth Die Rekursionstiefe.
      */
-    public SierpinskiCurveTurtle(TurtleScene turtle, int depth)
+    public SierpinskiCurveTurtle()
     {
-        super(turtle);
-        this.depth = depth;
+        this.depth = 5;
         initalState.speed(1000);
-    }
-
-    protected void initialize(InitialTurtleState state)
-    {
-
     }
 
     public void draw()
@@ -202,6 +178,6 @@ public class SierpinskiCurveTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new SierpinskiCurveTurtle().show();
+        new SierpinskiCurveTurtle().start();
     }
 }

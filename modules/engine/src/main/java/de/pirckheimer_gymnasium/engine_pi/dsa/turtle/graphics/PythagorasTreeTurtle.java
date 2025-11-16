@@ -1,7 +1,6 @@
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
 /**
  * <p>
@@ -66,17 +65,11 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  * <a href=
  * "https://programmierkonzepte.ch/engl/index.php?inhalt_links=&inhalt_mitte=turtle/rekursionen.inc.php">https://programmierkonzepte.ch</a>
  */
-public class PythagorasTreeTurtle extends TurtleAlgorithm
+public class PythagorasTreeTurtle extends TurtleGraphics
 {
 
     public PythagorasTreeTurtle()
     {
-        this(new TurtleScene());
-    }
-
-    public PythagorasTreeTurtle(TurtleScene turtle)
-    {
-        super(turtle);
         initalState.speed(1000).position(0, -7).direction(90).warpMode(false);
     }
 
@@ -134,6 +127,6 @@ public class PythagorasTreeTurtle extends TurtleAlgorithm
 
     public static void main(String[] args)
     {
-        new PythagorasTreeTurtle().show();
+        new PythagorasTreeTurtle().start();
     }
 }

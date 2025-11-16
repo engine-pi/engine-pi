@@ -18,15 +18,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleScene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphicsSeries;
 
 /**
  * https://de.wikipedia.org/wiki/Koch-Kurve
  */
-public class SnowflakeTurtle extends TurtleAlgorithm
+public class SnowflakeTurtle extends TurtleGraphicsSeries
 {
     private double length;
 
@@ -34,19 +33,9 @@ public class SnowflakeTurtle extends TurtleAlgorithm
 
     public SnowflakeTurtle()
     {
-        this(new TurtleScene(), 10, 1);
-    }
-
-    public SnowflakeTurtle(TurtleScene turtle)
-    {
-        this(turtle, 10, 1);
-    }
-
-    public SnowflakeTurtle(TurtleScene turtle, double length, int depth)
-    {
-        super(turtle);
-        this.length = length;
-        this.depth = depth;
+        length = 10;
+        depth = 1;
+        numberOfSeries = -1;
         initalState.speed(50);
     }
 
@@ -98,21 +87,14 @@ public class SnowflakeTurtle extends TurtleAlgorithm
         }
     }
 
-    public void showDifferentDepths()
+    protected void onDrawEnd()
     {
-        repeat(() -> {
-            depth++;
-            if (depth > 5)
-            {
-                return false;
-            }
-            return true;
-        });
+        depth++;
     }
 
     public static void main(String[] args)
     {
-        new SnowflakeTurtle().clearBeforeRun().showDifferentDepths();
+        new SnowflakeTurtle().start();
     }
 
 }
