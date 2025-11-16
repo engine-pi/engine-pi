@@ -73,13 +73,18 @@ public class PaintingSurface
     {
         if (image == null)
         {
-            var size = Game.getWindowSize();
-            image = new BufferedImage((int) size.getX(), (int) size.getY(),
-                    BufferedImage.TYPE_INT_ARGB);
-            g = image.createGraphics();
-            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
+            setNewImage();
         }
+    }
+
+    private void setNewImage()
+    {
+        var size = Game.getWindowSize();
+        image = new BufferedImage((int) size.getX(), (int) size.getY(),
+                BufferedImage.TYPE_INT_ARGB);
+        g = image.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
     }
 
     /**
@@ -104,10 +109,11 @@ public class PaintingSurface
     }
 
     /**
-     * Füllt die Zeichenfläche mit der angegebenen Farbe.
+     * <b>Füllt</b> die Zeichenfläche mit der angegebenen Farbe.
      *
-     * @param color Der Name der Farbe als String, die zum Füllen verwendet
-     *     werden soll. Die Farbe muss in der Farbzuordnung vorhanden sein.
+     * @param color Der <b>Name der Farbe</b> als Zeichenkette, die zum Füllen
+     *     verwendet werden soll. Die Farbe muss in der Farbzuordnung vorhanden
+     *     sein.
      */
     public void fill(String color)
     {
@@ -115,16 +121,18 @@ public class PaintingSurface
     }
 
     /**
-     * Löscht die gesamte Zeichenfläche, indem sie weiß gefüllt wird.
+     * <b>Löscht</b> die gesamte Zeichenfläche und macht sie transparent.
      *
      * <p>
      * Diese Methode setzt die Zeichenfläche auf ihren Ausgangszustand zurück,
-     * indem sie mit der Farbe Weiß gefüllt wird.
+     * indem sie mit der Farbe Weiß in voller Transparenz (Alphakanalwert
+     * {@code 0}) ausgefüllt wird.
      * </p>
      */
     public void clear()
     {
-        fill("white");
+        setNewImage();
+        // fill(colors.get("white", 0));
     }
 
     private void drawCenteredCircle(Vector position, int size)

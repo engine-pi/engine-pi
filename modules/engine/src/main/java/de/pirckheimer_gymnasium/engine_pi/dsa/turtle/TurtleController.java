@@ -1,18 +1,22 @@
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
-// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
-public class Turtle implements TurtleControl
+public class TurtleController implements TurtleDrawControl
 {
-    private TurtleScene scene;
+    protected TurtleScene scene;
 
-    public Turtle()
+    public TurtleBackgroundController background;
+
+    public TurtlePen pen;
+
+    public TurtleController()
     {
         scene = new TurtleScene();
-        Game.startSafe(scene);
+        background = new TurtleBackgroundController(scene);
+        pen = scene.pen;
     }
 
     @Override
@@ -62,17 +66,4 @@ public class Turtle implements TurtleControl
     {
         scene.liftPen();
     }
-
-    public static void main(String[] args)
-    {
-        Turtle turtle = new Turtle();
-
-        for (int i = 0; i < 3; i++)
-        {
-            turtle.lowerPen();
-            turtle.move(3);
-            turtle.rotate(120);
-        }
-    }
-
 }

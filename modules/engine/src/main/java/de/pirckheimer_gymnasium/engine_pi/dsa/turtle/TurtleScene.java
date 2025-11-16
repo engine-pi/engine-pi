@@ -39,7 +39,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * </a>in Blockly Robot
  */
 
-// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Eine <b>Schildkröte</b> um Turtle-Grafiken zu malen.
@@ -91,7 +91,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class TurtleScene extends PaintingSurfaceScene implements TurtleControl
+public class TurtleScene extends PaintingSurfaceScene
+        implements TurtleDrawControl
 {
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
@@ -111,7 +112,7 @@ public class TurtleScene extends PaintingSurfaceScene implements TurtleControl
             .changeSaturation(colors.get("yellow"), 0.7);
 
     /**
-     * Die Malfläche, in die die Schildkröte zeichnet.
+     * Die <b>Malfläche</b>, in die die Schildkröte zeichnet.
      */
     private PaintingSurface surface;
 
@@ -417,7 +418,7 @@ public class TurtleScene extends PaintingSurfaceScene implements TurtleControl
     {
         if (surface != null)
         {
-            surface.fill(backgroundColor);
+            surface.clear();
         }
     }
 

@@ -2527,7 +2527,7 @@ Mehrzeilig:
 ### File Link zu den Demos:
 
 ```java
-// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 ```
 
 ### Deutsche Übersetzungen von englischen Klassennamen

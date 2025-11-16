@@ -115,7 +115,11 @@ public class ColorContainer implements Container<Color>
      * @param r Der Rotanteil der Farbe (0-255).
      * @param g Der Gelbanteil der Farbe (0-255).
      * @param b Der Blauanteil der Farbe (0-255).
-     * @param a Der Alphakanal der Farbe (0-255).
+     * @param a Der
+     *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
+     *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht
+     *     das Attribut <em>„vollständig transparent“</em>, d. h. unsichtbar.
+     *     {@code 255} entspricht <em>„nicht transparent“</em>.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      *
@@ -135,7 +139,11 @@ public class ColorContainer implements Container<Color>
      * @param r Der Rotanteil der Farbe (0-255).
      * @param g Der Gelbanteil der Farbe (0-255).
      * @param b Der Blauanteil der Farbe (0-255).
-     * @param a Der Alphakanal der Farbe (0-255).
+     * @param a Der
+     *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
+     *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht
+     *     das Attribut <em>„vollständig transparent“</em>, d. h. unsichtbar.
+     *     {@code 255} entspricht <em>„nicht transparent“</em>.
      * @param alias Beliebig viele weitere Farbnamen, die als Aliasse dienen.
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
@@ -485,7 +493,11 @@ public class ColorContainer implements Container<Color>
      * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
      *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
      *     {@code #ff0000}).
-     * @param alpha Der Alphakanal als Ganzzahl von 0 bis 255.
+     * @param alpha Der
+     *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
+     *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht
+     *     das Attribut <em>„vollständig transparent“</em>, d. h. unsichtbar.
+     *     {@code 255} entspricht <em>„nicht transparent“</em>.
      *
      * @return Eine vordefinierte Farbe.
      */

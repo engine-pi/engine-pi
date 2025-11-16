@@ -2,7 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 
-// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Definiert die Methoden mit denen die Schildkröte gesteuert werden kann.
@@ -11,7 +11,7 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  * zeichnen zu können. Methoden, die grafische Einstellungen vornehmen sind
  * nicht enhalten.
  */
-public interface TurtleControl
+public interface TurtleDrawControl
 {
     /**
      * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach vorne.

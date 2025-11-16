@@ -7,7 +7,7 @@ import java.awt.Color;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
-// Demo: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenDemo.java
 
 /**
  * Der <b>Mal- bzw. Zeichenstift</b> der Schildkröte.
@@ -66,5 +66,35 @@ public class TurtlePen
      * @since 0.40.0
      */
     double direction = 0;
+
+    public TurtlePen thickness(int thickness)
+    {
+        this.thickness = thickness;
+        return this;
+    }
+
+    public TurtlePen color(Color color)
+    {
+        this.color = color;
+        return this;
+    }
+
+    public TurtlePen color(String color)
+    {
+        this.color = colors.get(color);
+        return this;
+    }
+
+    public TurtlePen lower()
+    {
+        isDown = true;
+        return this;
+    }
+
+    public TurtlePen lift()
+    {
+        isDown = false;
+        return this;
+    }
 
 }
