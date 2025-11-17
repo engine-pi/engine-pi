@@ -7,6 +7,8 @@ import de.pirckheimer_gymnasium.engine_pi.Game;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleLauncher

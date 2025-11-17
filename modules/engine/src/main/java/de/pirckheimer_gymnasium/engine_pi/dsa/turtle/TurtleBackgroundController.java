@@ -5,6 +5,8 @@ import java.awt.Color;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleBackgroundControllerDemo.java
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleBackgroundController

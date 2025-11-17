@@ -13,6 +13,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  * nicht enhalten.
  * </p>
  *
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleController
@@ -38,6 +40,11 @@ public class TurtleController
     public TurtleAnimationController animation;
 
     /**
+     * @since 0.41.0
+     */
+    public TurtleDressController dress;
+
+    /**
      * @since 0.40.0
      */
     private double defaultDistance = 3;
@@ -50,11 +57,11 @@ public class TurtleController
         this.scene = scene;
         background = new TurtleBackgroundController(scene);
         pen = scene.pen;
-        animation = new TurtleAnimationController(scene);
+        animation = scene.animation;
     }
 
     /**
-     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach vorne.
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach <b>vorne</b>.
      *
      * @since 0.38.0
      */
@@ -64,15 +71,17 @@ public class TurtleController
     }
 
     /**
-     * <b>Bewegt</b> die Schildkröte in Blickrichtung nach vorne.
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung die angegebene Entfernung
+     * nach <b>vorne</b>.
      *
-     * <p>
+     * <p class="development-note">
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code Gehen}, in der Engine Alpha {@code laufe}.
      * </p>
      *
      * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
-     *     zurücklegen soll.
+     *     zurücklegen soll. Negative Werte bewegen die Schildkröte rückwärts
+     *     statt vorwärts.
      *
      * @since 0.38.0
      */
@@ -82,6 +91,53 @@ public class TurtleController
     }
 
     /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach <b>vorne</b>.
+     *
+     * <p>
+     * Diese Methode ist identisch mit der {@link #forward()}-Methode. Es
+     * handelt sich um eine Alias-Methode.
+     * </p>
+     *
+     * @see #forward()
+     *
+     * @since 0.41.0
+     */
+    public void move()
+    {
+        scene.moveTurtleForward(defaultDistance);
+    }
+
+    /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung die angegebene Entfernung
+     * nach <b>vorne</b>.
+     *
+     * <p>
+     * Diese Methode ist identisch mit der {@link #forward(double)}-Methode. Es
+     * handelt sich um eine Alias-Methode.
+     * </p>
+     *
+     * <p class="development-note">
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code Gehen}, in der Engine Alpha {@code laufe}.
+     * </p>
+     *
+     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
+     *     zurücklegen soll. Negative Werte bewegen die Schildkröte rückwärts
+     *     statt vorwärts.
+     *
+     * @see #forward(double)
+     *
+     * @since 0.41.0
+     */
+    public void move(double distance)
+    {
+        scene.moveTurtleForward(distance);
+    }
+
+    /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung 3 Meter nach
+     * <b>hinten</b>, also <b>rückwärts</b>.
+     *
      * @since 0.40.0
      */
     public void backward()
@@ -90,6 +146,13 @@ public class TurtleController
     }
 
     /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung die angegebene Entfernung
+     * nach <b>hinten</b>, also <b>rückwärts</b>.
+     *
+     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
+     *     zurücklegen soll. Negative Werte bewegen die Schildkröte vorwärts
+     *     statt rückwärts.
+     *
      * @since 0.40.0
      */
     public void backward(double distance)
@@ -139,15 +202,10 @@ public class TurtleController
     }
 
     /**
-     * <b>Dreht</b> die Schildkröte.
+     * <b>Dreht</b> die Blickrichtung der Schildkröte nach <b>links</b>.
      *
-     * <p>
-     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
-     * {@code Drehen}, in der Engine Alpha {@code rotiere}.
-     * </p>
-     *
-     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
-     *     gegen den Uhrzeigersinn, negative Werte im Uhrzeigersinn.
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Negative Werte drehen die
+     *     Schilkröte nach rechts.
      *
      * @since 0.38.0
      */
@@ -157,11 +215,37 @@ public class TurtleController
     }
 
     /**
+     * <b>Dreht</b> die Blickrichtung der Schildkröte nach <b>rechts</b>.
+     *
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Negative Werte drehen die
+     *     Schilkröte nach links.
+     *
      * @since 0.40.0
      */
     public void right(double rotation)
     {
         left(rotation * -1);
+    }
+
+    /**
+     * <b>Dreht</b> die Blickrichtung der Schildkröte.
+     *
+     * <p class="development-note">
+     * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
+     * {@code Drehen}, in der Engine Alpha {@code rotiere}.
+     * </p>
+     *
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
+     *     gegen den Uhrzeigersinn also nach links, negative Werte im
+     *     Uhrzeigersinn also nach rechts.
+     *
+     * @see #left(double)
+     *
+     * @since 0.38.0
+     */
+    public void rotate(double rotation)
+    {
+        scene.rotateTurtle(rotation);
     }
 
     /**
@@ -181,7 +265,7 @@ public class TurtleController
     /**
      * <b>Wechselt</b> in den Modus <em>„zeichnen“</em>.
      *
-     * <p>
+     * <p class="development-note">
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code StiftSenken}, in der Engine Alpha {@code ansetzen}.
      * </p>
@@ -196,7 +280,7 @@ public class TurtleController
     /**
      * <b>Wechselt</b> in den Modus <em>„nicht zeichnen“</em>.
      *
-     * <p>
+     * <p class="development-note">
      * In der GraphicsAndGames-Engine des Cornelsen Verlags heißt die Methode
      * {@code StiftHeben}, in der Engine Alpha {@code absetzen}.
      * </p>

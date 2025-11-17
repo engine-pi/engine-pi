@@ -14,6 +14,8 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.TriangleTurtle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleGraphicsCollection implements KeyStrokeListener
@@ -139,11 +141,11 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_1:
-            TurtleLauncher.scene().changeSpeed(+3);
+            TurtleLauncher.scene().animation.changeSpeed(+3);
             break;
 
         case KeyEvent.VK_2:
-            TurtleLauncher.scene().changeSpeed(-3);
+            TurtleLauncher.scene().animation.changeSpeed(-3);
             break;
 
         case KeyEvent.VK_3:
@@ -155,7 +157,7 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_W:
-            TurtleLauncher.scene().toggleWarpMode();
+            TurtleLauncher.scene().animation.toggleWarpMode();
             break;
 
         case KeyEvent.VK_D:

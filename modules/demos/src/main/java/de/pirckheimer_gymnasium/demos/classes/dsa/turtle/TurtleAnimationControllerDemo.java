@@ -17,7 +17,7 @@ public class TurtleAnimationControllerDemo
         turtle = new Turtle();
         turtle.setPosition(-4, -6);
         drawPolygone(6, 5);
-        turtle.animation.enableWarpMode();
+        turtle.animation.warp();
         turtle.pen.color("green").thickness(1);
         drawPolygone(7, 4);
     }
@@ -26,7 +26,7 @@ public class TurtleAnimationControllerDemo
     {
         for (int i = 0; i < sides; i++)
         {
-            turtle.animation.setSpeed(i + 3);
+            turtle.animation.speed(i + 3);
             turtle.forward(length);
             turtle.left(360 / sides);
         }

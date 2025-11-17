@@ -8,11 +8,12 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleStatistics
 {
-
     /**
      * @since 0.40.0
      */

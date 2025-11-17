@@ -56,12 +56,6 @@ public class TurtleScene extends PaintingSurfaceScene
     private TurtleImage turtleImage;
 
     /**
-     * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
-     * pro Sekunde).
-     */
-    private double speed = 6;
-
-    /**
      * Die Hintergrundfarbe der Zeichenfläche.
      */
     private Color backgroundColor = ColorUtil
@@ -78,15 +72,11 @@ public class TurtleScene extends PaintingSurfaceScene
      */
     private Vector lastPosition;
 
-    /**
-     * Im sogenannte Warp-Modus finden keine Animationen statt. Die
-     * Turtle-Grafik wird so schnell wie möglich gezeichnet.
-     */
-    private boolean warpMode = false;
-
-    public final TurtlePen pen;
+    final TurtlePen pen;
 
     private final TurtleStatistics statistics;
+
+    final TurtleAnimationController animation;
 
     /**
      * Erzeugt eine Schildkröte in einer <b>gegebenen Szene</b>.
@@ -99,6 +89,7 @@ public class TurtleScene extends PaintingSurfaceScene
         pen = new TurtlePen();
         turtleImage = new TurtleImage(this);
         statistics = new TurtleStatistics();
+        animation = new TurtleAnimationController();
     }
 
     /* Hauptmethoden */
@@ -109,7 +100,7 @@ public class TurtleScene extends PaintingSurfaceScene
         // bei currentPenPosition und nicht aus der Grafik raus zu lesen
         Vector movement = Vector.ofAngle(pen.direction).multiply(distance);
         Vector initial = pen.position;
-        if (warpMode)
+        if (animation.warpMode)
         {
             lastPosition = pen.position;
             pen.position = initial.add(movement);
@@ -117,7 +108,7 @@ public class TurtleScene extends PaintingSurfaceScene
         }
         else
         {
-            double duration = Math.abs(distance) / speed;
+            double duration = Math.abs(distance) / animation.speed;
             animate(duration, progress -> {
                 lastPosition = pen.position;
                 pen.position = initial.add(movement.multiply(progress));
@@ -159,13 +150,13 @@ public class TurtleScene extends PaintingSurfaceScene
     void rotateTurtle(double rotation)
     {
         double start = pen.direction;
-        if (warpMode)
+        if (animation.warpMode)
         {
             doRotation(start + rotation);
         }
         else
         {
-            double duration = Math.abs(rotation) / 360 / speed;
+            double duration = Math.abs(rotation) / 360 / animation.speed;
             // * 4 damit man die Rotation auch sieht
             animate(duration * 4, progress -> {
                 doRotation(start + progress * rotation);
@@ -182,85 +173,6 @@ public class TurtleScene extends PaintingSurfaceScene
     }
 
     /* Setter */
-
-    /**
-     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in
-     * Meter pro Sekunde).
-     *
-     * @param speed Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte
-     *     bewegt (in Meter pro Sekunde).
-     *
-     * @since 0.38.0
-     */
-    void setSpeed(double speed)
-    {
-        this.speed = speed;
-    }
-
-    /**
-     * <b>Ändert</b> die aktuelle <b>Geschwindigkeit</b> um den angegebenen
-     * Wert.
-     *
-     * Positive Werte erhöhen die Geschwindigkeit, negative Werte verringern
-     * sie. Führt die geplante Änderung dazu, dass die Geschwindigkeit negativ
-     * würde, so wird die Änderung verworfen und die Geschwindigkeit bleibt
-     * unverändert.
-     *
-     * @param speedChange Der Betrag, um den die Geschwindigkeit erhöht
-     *     (positiv) oder verringert (negativ) werden soll.
-     *
-     * @since 0.38.0
-     */
-    void changeSpeed(double speedChange)
-    {
-        if (speed + speedChange < 0)
-        {
-            return;
-        }
-        speed += speedChange;
-    }
-
-    /**
-     * Schaltet in den sogenannten „<b>Warp-Modus</b>“.
-     *
-     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
-     * so schnell wie möglich gezeichnet.</b>
-     *
-     * @since 0.38.0
-     */
-    void enableWarpMode()
-    {
-        warpMode = true;
-    }
-
-    /**
-     * Schaltet den sogenannten „<b>Warp-Modus</b>“ <b>an oder aus</b>.
-     *
-     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
-     * so schnell wie möglich gezeichnet.</b>
-     *
-     * @since 0.38.0
-     */
-    void toggleWarpMode()
-    {
-        warpMode = !warpMode;
-    }
-
-    /**
-     * Setzt den Zustand des sogenannten „<b>Warp-Modus</b>“.
-     *
-     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
-     * so schnell wie möglich gezeichnet.</b>
-     *
-     * @param warpMode Der Warp-Modulus wird angeschaltet, falls der Wert wahr
-     *     ist. Er wird ausgeschaltet, falls der Wert falsch ist.
-     *
-     * @since 0.40.0
-     */
-    void setWarpMode(boolean warpMode)
-    {
-        this.warpMode = warpMode;
-    }
 
     /**
      * Setzt die <b>Linienstärke</b> in Pixel

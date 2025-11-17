@@ -18,7 +18,6 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
  * Basisseiten
  * </p>
  *
- *
  * <p>
  * Es ist bekannt, dass die Umsetzung in ein rekursives Programm ungewohnt ist.
  * Darum erhältst du hier eine ausführliche Anleitung, wie du vorgehen musst.
@@ -75,12 +74,12 @@ public class PythagorasTreeTurtle extends TurtleGraphics
 
     public void draw()
     {
-        drawTree(3);
+        drawTree(3, 10);
     }
 
-    private void drawTree(double sideLength)
+    private void drawTree(double sideLength, int depth)
     {
-        if (sideLength < 0.3)
+        if (depth < 1)
         {
             return;
         }
@@ -88,10 +87,10 @@ public class PythagorasTreeTurtle extends TurtleGraphics
         turtle.forward(sideLength);
         double s1 = sideLength / Math.sqrt(2);
         turtle.left(45);
-        drawTree(s1);
+        drawTree(s1, depth - 1);
         turtle.right(90);
         turtle.forward(s1);
-        drawTree(s1);
+        drawTree(s1, depth - 1);
         turtle.backward(s1);
         turtle.left(45);
         turtle.backward(sideLength);

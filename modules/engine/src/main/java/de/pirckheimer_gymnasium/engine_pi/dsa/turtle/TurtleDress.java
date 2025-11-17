@@ -6,6 +6,8 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
  * Die verschiedenen Arten, wie eine Schildkröte grafisch dargestellt werden
  * kann.
  *
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public enum TurtleDress

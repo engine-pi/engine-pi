@@ -14,6 +14,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  * Anfangszustand braucht.
  * </p>
  *
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class InitialTurtleState
@@ -181,7 +183,7 @@ public class InitialTurtleState
         turtle.setPosition(position);
         turtle.setDirection(direction);
         turtle.setPen(penDown);
-        turtle.setSpeed(speed);
-        turtle.setWarpMode(warpMode);
+        turtle.animation.speed(speed);
+        turtle.animation.warp(warpMode);
     }
 }

@@ -3,23 +3,23 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleAnimationControllerDemo.java
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public class TurtleAnimationController
 {
+    /**
+     * Die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in Meter
+     * pro Sekunde).
+     */
+    double speed = 6;
 
     /**
-     * @since 0.40.0
+     * Im sogenannte Warp-Modus finden keine Animationen statt. Die
+     * Turtle-Grafik wird so schnell wie möglich gezeichnet.
      */
-    private TurtleScene scene;
-
-    /**
-     * @since 0.40.0
-     */
-    public TurtleAnimationController(TurtleScene scene)
-    {
-        this.scene = scene;
-    }
+    boolean warpMode = false;
 
     /**
      * Setzt die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in
@@ -30,7 +30,7 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void setSpeed(double speed)
+    public void speed(double speed)
     {
         if (speed <= 0)
         {
@@ -38,17 +38,19 @@ public class TurtleAnimationController
                     "Die Geschwindigkeit der Schildkröte muss größer als 0 sein, nicht: "
                             + speed);
         }
-        scene.setSpeed(speed);
+        this.speed = speed;
     }
 
     /**
      * <b>Ändert</b> die aktuelle <b>Geschwindigkeit</b> um den angegebenen
      * Wert.
      *
+     * <p>
      * Positive Werte erhöhen die Geschwindigkeit, negative Werte verringern
      * sie. Führt die geplante Änderung dazu, dass die Geschwindigkeit negativ
      * würde, so wird die Änderung verworfen und die Geschwindigkeit bleibt
      * unverändert.
+     * </p>
      *
      * @param speedChange Der Betrag, um den die Geschwindigkeit erhöht
      *     (positiv) oder verringert (negativ) werden soll.
@@ -57,8 +59,11 @@ public class TurtleAnimationController
      */
     public void changeSpeed(double speedChange)
     {
-        scene.changeSpeed(speedChange);
-
+        if (speed + speedChange < 0)
+        {
+            return;
+        }
+        speed += speedChange;
     }
 
     /**
@@ -69,9 +74,9 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void enableWarpMode()
+    public void warp()
     {
-        scene.enableWarpMode();
+        warpMode = true;
     }
 
     /**
@@ -84,7 +89,7 @@ public class TurtleAnimationController
      */
     public void toggleWarpMode()
     {
-        scene.toggleWarpMode();
+        warpMode = !warpMode;
     }
 
     /**
@@ -98,8 +103,8 @@ public class TurtleAnimationController
      *
      * @since 0.40.0
      */
-    public void setWarpMode(boolean warpMode)
+    public void warp(boolean warpMode)
     {
-        scene.setWarpMode(warpMode);
+        this.warpMode = warpMode;
     }
 }

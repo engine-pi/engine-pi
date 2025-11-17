@@ -3,7 +3,10 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Eine Schildkröteszene, die automatisch startet, d. h. ein Fenster öffnet.
+ * Eine Schildkröteszene, die <b>automatisch startet</b>, d. h. die automatisch
+ * ein Fenster öffnet.
+ *
+ * @author Josef Friedrich
  *
  * @since 0.40.0
  */

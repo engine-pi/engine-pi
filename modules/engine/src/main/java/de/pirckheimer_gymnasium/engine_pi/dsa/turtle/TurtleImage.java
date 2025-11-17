@@ -17,6 +17,8 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
  * verschieden dargestellt werden: Als animiertes Bild, als Pfeil oder als
  * Punkt.
  *
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 class TurtleImage

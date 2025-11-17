@@ -5,6 +5,8 @@ import java.util.function.Supplier;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
+ * @author Josef Friedrich
+ *
  * @since 0.40.0
  */
 public abstract class TurtleGraphicsSeries extends TurtleGraphics
