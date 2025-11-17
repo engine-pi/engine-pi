@@ -23,6 +23,14 @@ import java.util.function.Supplier;
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 
 /**
+ * Hilfsklasse, um eine <b>Reihe</b> von <b>Turtle-Grafik</b> zu zeichnen.
+ *
+ * <p>
+ * Turle-Grafiken werden oft rekursiv erstellt. Die Klasse ermöglicht es, ein
+ * und denselben Algorithmus mehrmals zeichnen zu lassten und bei jeder
+ * Wiederholung Attribute zum verändern, wie zum Beispiel die Rekursionstiefe.
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0

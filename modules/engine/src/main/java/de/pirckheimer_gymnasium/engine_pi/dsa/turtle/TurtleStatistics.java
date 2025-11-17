@@ -26,6 +26,10 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
+ * Sammelt statistische Information, wie zum Beispiel die zurückgelegte
+ * Wegstrecker der Schilkröte und erstellt Textboxen, die dann in die Szene
+ * eingezeichnet werden können.
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0
@@ -48,7 +52,7 @@ public class TurtleStatistics
     public TurtleStatistics()
     {
         traveledDistance = 0;
-        textBox = new FramedTextBox(String.valueOf(traveledDistance))
+        textBox = new FramedTextBox(TextUtil.roundNumber(traveledDistance))
                 .borderThickness(0).backgroundColor(colors.get("grey", 50))
                 .textColor(colors.get("black"));
         textBox.anchor(20, 20);

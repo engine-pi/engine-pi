@@ -58,7 +58,7 @@ class TurtleDressController
     /**
      * @since 0.40.0
      */
-    private TurtleDressType dress;
+    private TurtleDressType dressType;
 
     /**
      * Die Größe der Schildkröte in Meter.
@@ -80,7 +80,7 @@ class TurtleDressController
     {
         this.scene = scene;
         this.size = size;
-        setDress(dress);
+        setDressType(dress);
     }
 
     /**
@@ -92,7 +92,7 @@ class TurtleDressController
      * @since 0.40.0
      */
 
-    public void setDress(TurtleDressType dressType)
+    public void setDressType(TurtleDressType dressType)
     {
         if (image != null)
         {
@@ -117,7 +117,7 @@ class TurtleDressController
             image = animation;
             break;
         }
-        this.dress = dressType;
+        this.dressType = dressType;
         scene.add(image);
     }
 
@@ -131,10 +131,10 @@ class TurtleDressController
         int i = 0;
         for (; i < dresses.length; i++)
         {
-            if (dresses[i] == dress)
+            if (dresses[i] == dressType)
                 break;
         }
-        setDress(dresses[(i + 1) % dresses.length]);
+        setDressType(dresses[(i + 1) % dresses.length]);
     }
 
     /**

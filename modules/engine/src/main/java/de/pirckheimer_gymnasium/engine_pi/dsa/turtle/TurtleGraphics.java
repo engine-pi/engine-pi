@@ -26,7 +26,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Eine Hilfsklasse zum Formulieren eines <b>Turtle-Algorithmus</b>.
+ * Hilfsklasse, um eine <b>Turtle-Grafik</b> zu zeichnen bzw. einen
+ * Turtle-Algorithmus zu formulieren.
  *
  * <p>
  * Diese abstrakte Klasse kann geerbt werden, um einen <b>Algorithmus</b> zur
@@ -37,7 +38,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
  * <pre>{@code
  * import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleAlgorithm;
  *
- * public class TriangleTurtle extends TurtleAlgorithm
+ * public class TriangleTurtle extends TurtleGraphics
  * {
  *     @Override
  *     public void draw()
@@ -51,7 +52,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
  *
  *     public static void main(String[] args)
  *     {
- *         new TriangleTurtle().show();
+ *         new TriangleTurtle().start();
  *     }
  * }
  * }</pre>

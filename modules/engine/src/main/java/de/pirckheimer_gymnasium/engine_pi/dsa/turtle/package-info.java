@@ -18,6 +18,12 @@
  */
 
 /**
- * Paket zum Zeichen von Turtle-Grafiken.
+ * Ein Paket zum Zeichen von Turtle-Grafiken.
+ *
+ * <p>
+ * Viele Klassen aus diesem Paket dienen dazu, Funktionalität für die
+ * Hauptklasse {@link de.pirckheimer_gymnasium.engine_pi.Turtle Turtle} im
+ * Hauptpaket der Engine bereit zu stellen.
+ * </p>
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;

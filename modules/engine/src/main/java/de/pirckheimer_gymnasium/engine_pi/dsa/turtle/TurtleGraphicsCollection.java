@@ -33,6 +33,9 @@ import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.TriangleTurtleGrap
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
+ * <b>Bündelt</b> alle in der Engine Pi mitgelieferten Turtle-Grafiken und
+ * spielt sie nacheinander ab.
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0
@@ -193,6 +196,6 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        new TurtleGraphicsCollection();
+        new TurtleGraphicsCollection().runAll();
     }
 }

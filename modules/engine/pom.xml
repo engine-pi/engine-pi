@@ -153,6 +153,8 @@
                                             <includes>
                                                 <include>
                                                     engine-pi-${project.version}-jar-with-dependencies.jar</include>
+                                                <include>
+                                                    engine-pi-${project.version}-sources.jar</include>
                                             </includes>
                                             <outputDirectory>+libs/</outputDirectory>
                                         </fileSet>

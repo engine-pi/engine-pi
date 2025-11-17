@@ -21,6 +21,9 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleAnimationControllerDemo.java
 
 /**
+ * Steuert die Animationen der Schildkröte, wie zum Beispiel die Geschwindigkeit
+ * oder den Warp-Modus.
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0

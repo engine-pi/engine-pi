@@ -9,7 +9,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     // engine_pi
-    "Game.java": "Bounds.java, Camera.java, Direction.java, GameLoop.java, Jukebox.java, Layer.java, Random.java, Resources.java, Scene.java, Vector.java",
+    "Game.java": "Bounds.java, Camera.java, Direction.java, GameLoop.java, Jukebox.java, Layer.java, Random.java, Resources.java, Scene.java, Turtle.java, Vector.java",
     // engine_pi/actor
     "Actor.java": "Actable.java, ActorAdder.java, BodyType.java, Group.java",
     "ImageFont.java": "ImageFontCaseSensitivity.java, ImageFontGlyph.java, ImageFontSpecimen.java, ImageFontText.java",
