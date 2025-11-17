@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
@@ -10,13 +28,13 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenDemo.java
 
 /**
- * Der <b>Mal- bzw. Zeichenstift</b> der Schildkröte.
+ * Der <b>Mal- bzw{@literal .} Zeichenstift</b> der Schildkröte.
  *
  * @author Josef Friedrich
  *
  * @since 0.40.0
  */
-public class TurtlePen
+public class TurtlePenController
 {
     /**
      * Zeigt an, ob die Schildkröte momentan den <b>Stift gesenkt</b> hat und
@@ -67,7 +85,7 @@ public class TurtlePen
      */
     double direction = 0;
 
-    public TurtlePen thickness(int thickness)
+    public TurtlePenController thickness(int thickness)
     {
         this.thickness = thickness;
         return this;
@@ -76,7 +94,7 @@ public class TurtlePen
     /**
      * @since 0.40.0
      */
-    public TurtlePen color(Color color)
+    public TurtlePenController color(Color color)
     {
         this.color = color;
         return this;
@@ -85,7 +103,7 @@ public class TurtlePen
     /**
      * @since 0.40.0
      */
-    public TurtlePen color(String color)
+    public TurtlePenController color(String color)
     {
         this.color = colors.get(color);
         return this;
@@ -94,7 +112,7 @@ public class TurtlePen
     /**
      * @since 0.40.0
      */
-    public TurtlePen lower()
+    public TurtlePenController lower()
     {
         isDown = true;
         return this;
@@ -103,7 +121,7 @@ public class TurtlePen
     /**
      * @since 0.40.0
      */
-    public TurtlePen lift()
+    public TurtlePenController lift()
     {
         isDown = false;
         return this;

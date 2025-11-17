@@ -50,10 +50,17 @@ import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
  */
 public class TurtleScene extends PaintingSurfaceScene
 {
+
+    final TurtleAnimationController animation;
+
     /**
      * Die <b>graphische Repräsentation</b> der Schildkröte.
      */
-    private TurtleImage turtleImage;
+    final TurtleDressController dress;
+
+    final TurtlePenController pen;
+
+    private final TurtleStatistics statistics;
 
     /**
      * Die Hintergrundfarbe der Zeichenfläche.
@@ -72,12 +79,6 @@ public class TurtleScene extends PaintingSurfaceScene
      */
     private Vector lastPosition;
 
-    final TurtlePen pen;
-
-    private final TurtleStatistics statistics;
-
-    final TurtleAnimationController animation;
-
     /**
      * Erzeugt eine Schildkröte in einer <b>gegebenen Szene</b>.
      *
@@ -86,10 +87,10 @@ public class TurtleScene extends PaintingSurfaceScene
     public TurtleScene()
     {
         setBackgroundColor(backgroundColor);
-        pen = new TurtlePen();
-        turtleImage = new TurtleImage(this);
-        statistics = new TurtleStatistics();
         animation = new TurtleAnimationController();
+        dress = new TurtleDressController(this);
+        pen = new TurtlePenController();
+        statistics = new TurtleStatistics();
     }
 
     /* Hauptmethoden */
@@ -112,8 +113,8 @@ public class TurtleScene extends PaintingSurfaceScene
             animate(duration, progress -> {
                 lastPosition = pen.position;
                 pen.position = initial.add(movement.multiply(progress));
-                turtleImage.setPosition(pen.position);
-                turtleImage.showNextAnimation();
+                dress.setPosition(pen.position);
+                dress.showNextAnimation();
                 drawLineInSurface(lastPosition, pen.position);
             });
         }
@@ -142,9 +143,9 @@ public class TurtleScene extends PaintingSurfaceScene
     private void doRotation(double rotation)
     {
         setCurrentRotation(rotation);
-        turtleImage.setRotation(rotation);
+        dress.setRotation(rotation);
         // die Rotation kann den Mittelpunkt verschieben.
-        turtleImage.setPosition(pen.position);
+        dress.setPosition(pen.position);
     }
 
     void rotateTurtle(double rotation)
@@ -236,25 +237,15 @@ public class TurtleScene extends PaintingSurfaceScene
     {
         lastPosition = pen.position;
         pen.position = position;
-        turtleImage.setPosition(position);
+        dress.setPosition(position);
     }
 
     void setDirection(double direction)
     {
         setCurrentRotation(direction);
-        turtleImage.setRotation(direction);
+        dress.setRotation(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
-        turtleImage.setPosition(pen.position);
-    }
-
-    void setDress(TurtleDress dress)
-    {
-        turtleImage.setDress(dress);
-    }
-
-    void setNextDress()
-    {
-        turtleImage.setNextDress();
+        dress.setPosition(pen.position);
     }
 
     /**
@@ -268,26 +259,6 @@ public class TurtleScene extends PaintingSurfaceScene
         {
             surface.clear();
         }
-    }
-
-    /**
-     * <b>Blendet</b> die Schildkröte <b>aus</b>.
-     *
-     * @since 0.38.0
-     */
-    void hideTurtle()
-    {
-        turtleImage.hide();
-    }
-
-    /**
-     * <b>Blendet</b> die Schildkröte <b>ein</b>.
-     *
-     * @since 0.38.0
-     */
-    void showTurtle()
-    {
-        turtleImage.show();
     }
 
     /**

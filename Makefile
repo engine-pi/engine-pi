@@ -6,7 +6,12 @@ ASSETS = "$(HOME)/.cache/engine-pi-assets"
 deploy:
 	mvn deploy
 
-doc: clean install
+doc: install_build_tools
+	mvn --file modules/engine clean
+	mvn --file modules/engine javadoc:javadoc
+	xdg-open modules/engine/target/reports/apidocs/index.html
+
+doc_all: clean install
 	mvn javadoc:javadoc
 	xdg-open modules/engine/target/reports/apidocs/index.html
 	xdg-open modules/demos/target/reports/apidocs/index.html
@@ -17,12 +22,14 @@ doc: clean install
 format:
 	mvn process-sources
 
-install:
-	# Package build-tools is requried by javadoc
+install_build_tools:
+# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
+
+install: install_build_tools
 	mvn install
 
-package:
+package: install_build_tools
 	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 	mvn package

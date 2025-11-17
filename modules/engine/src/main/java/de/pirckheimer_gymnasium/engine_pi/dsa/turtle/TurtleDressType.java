@@ -18,57 +18,36 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-
-import java.awt.Graphics2D;
-
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
-import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
+ * Die verschiedenen Arten, wie eine Schildkröte grafisch dargestellt werden
+ * kann.
+ *
  * @author Josef Friedrich
  *
  * @since 0.40.0
  */
-public class TurtleStatistics
+public enum TurtleDressType
 {
     /**
+     * Als animiertes Bild
+     *
      * @since 0.40.0
      */
-    private double traveledDistance;
+    ANIMATED_IMAGE,
 
     /**
+     * Als Pfeil
+     *
      * @since 0.40.0
      */
-    private FramedTextBox textBox;
+    ARROW,
 
     /**
+     * Als kleiner Punkt.
+     *
      * @since 0.40.0
      */
-    public TurtleStatistics()
-    {
-        traveledDistance = 0;
-        textBox = new FramedTextBox(String.valueOf(traveledDistance))
-                .borderThickness(0).backgroundColor(colors.get("grey", 50))
-                .textColor(colors.get("black"));
-        textBox.anchor(20, 20);
-    }
-
-    /**
-     * @since 0.40.0
-     */
-    public void addTraveledDistance(double distance)
-    {
-        traveledDistance += distance;
-    }
-
-    /**
-     * @since 0.40.0
-     */
-    public void render(Graphics2D g)
-    {
-        textBox.content(TextUtil.roundNumber(traveledDistance));
-        textBox.measure();
-        textBox.render(g);
-    }
+    DOT
 }

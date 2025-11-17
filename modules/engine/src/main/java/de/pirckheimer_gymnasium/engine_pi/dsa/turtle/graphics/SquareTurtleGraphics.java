@@ -16,8 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
+
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphics;
 
 /**
- * Paket zum Zeichen von Turtle-Grafiken.
+ * Zeichnet ein <b>Quadrat</b>.
+ *
+ * @author Josef Friedrich
  */
-package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
+public class SquareTurtleGraphics extends TurtleGraphics
+{
+
+    @Override
+    public void draw()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            turtle.forward(4);
+            turtle.left(90);
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        new SquareTurtleGraphics().start();
+    }
+}

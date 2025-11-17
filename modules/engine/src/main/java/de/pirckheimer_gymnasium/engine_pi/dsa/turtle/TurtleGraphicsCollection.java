@@ -1,16 +1,35 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.HilbertCurveTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.LevyCCurveTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.PythagorasTreeTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SetDirectionTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SierpinskiCurveTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SnowflakeTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SquareTurtle;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.TriangleTurtle;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.HilbertCurveTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.KochSnowflakeTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.LevyCCurveTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.PythagorasTreeTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SetDirectionTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SierpinskiCurveTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.SquareTurtleGraphics;
+import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics.TriangleTurtleGraphics;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 /**
@@ -46,15 +65,17 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
     public TurtleGraphicsCollection()
     {
         graphics = new ArrayList<>();
-        graphics.add(new TriangleTurtle());
-        graphics.add(new SquareTurtle());
-        graphics.add(new SetDirectionTurtle());
-        graphics.add(new PythagorasTreeTurtle());
-        graphics.add(new SnowflakeTurtle());
-        graphics.add(new HilbertCurveTurtle());
-        graphics.add(new LevyCCurveTurtle());
-        graphics.add(new SierpinskiCurveTurtle());
+        graphics.add(new TriangleTurtleGraphics());
+        graphics.add(new SquareTurtleGraphics());
+        graphics.add(new SetDirectionTurtleGraphics());
+        graphics.add(new PythagorasTreeTurtleGraphics());
+        graphics.add(new KochSnowflakeTurtleGraphics());
+        graphics.add(new HilbertCurveTurtleGraphics());
+        graphics.add(new LevyCCurveTurtleGraphics());
+        graphics.add(new SierpinskiCurveTurtleGraphics());
         clearAll();
+
+        Game.addKeyStrokeListener(this);
     }
 
     /**
@@ -75,7 +96,7 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
      */
     public void clearAll()
     {
-        TurtleLauncher.scene().hideTurtle();
+        TurtleLauncher.scene().dress.hide();
         TurtleLauncher.scene().clearBackground();
     }
 
@@ -90,7 +111,7 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         }
         currentGraphics = graphics.get(index);
         clearAll();
-        TurtleLauncher.scene().showTurtle();
+        TurtleLauncher.scene().dress.show();
         TurtleLauncher.launch(currentGraphics);
     }
 
@@ -161,7 +182,7 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_D:
-            TurtleLauncher.scene().setNextDress();
+            TurtleLauncher.scene().dress.show();
             break;
 
         default:
@@ -174,5 +195,4 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
     {
         new TurtleGraphicsCollection();
     }
-
 }

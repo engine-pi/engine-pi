@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
@@ -19,20 +37,8 @@ import de.pirckheimer_gymnasium.engine_pi.Vector;
  */
 public class TurtleController
 {
-    /**
-     * @since 0.40.0
-     */
-    protected TurtleScene scene;
 
-    /**
-     * @since 0.40.0
-     */
-    public TurtleBackgroundController background;
-
-    /**
-     * @since 0.40.0
-     */
-    public TurtlePen pen;
+    /* Öffentliche “Controller” als deligierte Klasse, alphabetisch sortiert */
 
     /**
      * @since 0.40.0
@@ -40,9 +46,26 @@ public class TurtleController
     public TurtleAnimationController animation;
 
     /**
+     * @since 0.40.0
+     */
+    public TurtleBackgroundController background;
+
+    /**
      * @since 0.41.0
      */
     public TurtleDressController dress;
+
+    /**
+     * @since 0.40.0
+     */
+    public TurtlePenController pen;
+
+    /* private Attribute */
+
+    /**
+     * @since 0.40.0
+     */
+    protected TurtleScene scene;
 
     /**
      * @since 0.40.0
@@ -58,6 +81,7 @@ public class TurtleController
         background = new TurtleBackgroundController(scene);
         pen = scene.pen;
         animation = scene.animation;
+        dress = scene.dress;
     }
 
     /**

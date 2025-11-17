@@ -23,15 +23,16 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle.graphics;
 import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.TurtleGraphicsSeries;
 
 /**
- * https://de.wikipedia.org/wiki/Koch-Kurve
+ * Zeichnet die <a href="https://de.wikipedia.org/wiki/Koch-Kurve">kochschen
+ * Schneeflocke</a>
  */
-public class SnowflakeTurtle extends TurtleGraphicsSeries
+public class KochSnowflakeTurtleGraphics extends TurtleGraphicsSeries
 {
     private double length;
 
     private int depth;
 
-    public SnowflakeTurtle()
+    public KochSnowflakeTurtleGraphics()
     {
         length = 10;
         depth = 1;
@@ -94,7 +95,7 @@ public class SnowflakeTurtle extends TurtleGraphicsSeries
 
     public static void main(String[] args)
     {
-        new SnowflakeTurtle().start();
+        new KochSnowflakeTurtleGraphics().start();
     }
 
 }

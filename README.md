@@ -2485,6 +2485,14 @@ Das CHANGELOG.md bezieht sich auf die Engine als ./modules/engine
 
 ### javadoc
 
+Im Module `build-tools` befindet sich eine CSS-Datei, die verwendet wird, um das
+Aussehen der Dokumentation mit den Engine-Pi-Farbe (Gnome-Farben) und der
+Engine-Pi-Standard-Schrift (Cantarell) anzupassen.
+
+#### Eigene CSS-Klassen
+
+`.development-note`
+
 #### Abfolge der Tags
 
 Wir folgenden der Empfehlung, die im Artikel [How to Write Doc Comments for the
