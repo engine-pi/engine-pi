@@ -97,10 +97,24 @@ public class TurtleScene extends PaintingSurfaceScene
 
     /* Hauptmethoden */
 
+    /**
+     * <b>Bewegt</b> die Schildkröte in Blickrichtung die angegebene Entfernung
+     * nach <b>vorne</b>.
+     *
+     * @param distance Die <b>Entfernung</b> in Meter, die die Schildkröte
+     *     zurücklegen soll. Negative Werte bewegen die Schildkröte rückwärts
+     *     statt vorwärts.
+     *
+     * @see TurtleController#forward(double)
+     * @see TurtleController#forward()
+     * @see TurtleController#backward(double)
+     * @see TurtleController#backward()
+     * @see TurtleController#move()
+     *
+     * @since 0.38.0
+     */
     void moveTurtleForward(double distance)
     {
-        // Vielleicht wäre es besser die Rotation auch extra zu speichern wie
-        // bei currentPenPosition und nicht aus der Grafik raus zu lesen
         Vector movement = Vector.ofAngle(pen.direction).multiply(distance);
         Vector initial = pen.position;
         if (animation.warpMode)
@@ -108,9 +122,14 @@ public class TurtleScene extends PaintingSurfaceScene
             lastPosition = pen.position;
             pen.position = initial.add(movement);
             drawLineInSurface(lastPosition, pen.position);
+            // Bei sehr hohen Rekursionstiefen im Warp-Modus kommt die
+            // Schildkröte nicht nach. Man sieht die Schildkröte doppelt. Wir
+            // blenden sie deshalb aus.
+            dress.hide();
         }
         else
         {
+            dress.show();
             double duration = Math.abs(distance) / animation.speed;
             animate(duration, progress -> {
                 lastPosition = pen.position;
@@ -139,26 +158,43 @@ public class TurtleScene extends PaintingSurfaceScene
     private void setCurrentRotation(double rotation)
     {
         pen.direction = rotation % 360;
-
     }
 
     private void doRotation(double rotation)
     {
         setCurrentRotation(rotation);
-        dress.setRotation(rotation);
-        // die Rotation kann den Mittelpunkt verschieben.
-        dress.setPosition(pen.position);
+        if (!animation.warpMode)
+        {
+            dress.setRotation(rotation);
+            // die Rotation kann den Mittelpunkt verschieben.
+            dress.setPosition(pen.position);
+        }
     }
 
+    /**
+     * <b>Dreht</b> die Blickrichtung der Schildkröte.
+     *
+     * @param rotation Der <b>Drehwinkel</b> in Grad. Positive Werte drehen
+     *     gegen den Uhrzeigersinn also nach links, negative Werte im
+     *     Uhrzeigersinn also nach rechts.
+     *
+     * @see TurtleController#rotate(double)
+     * @see TurtleController#left(double)
+     */
     void rotateTurtle(double rotation)
     {
         double start = pen.direction;
         if (animation.warpMode)
         {
             doRotation(start + rotation);
+            // Bei sehr hohen Rekursionstiefen im Warp-Modus kommt die
+            // Schildkröte nicht nach. Man sieht die Schildkröte doppelt. Wir
+            // blenden sie deshalb aus.
+            dress.hide();
         }
         else
         {
+            dress.show();
             double duration = Math.abs(rotation) / 360 / animation.speed;
             // * 4 damit man die Rotation auch sieht
             animate(duration * 4, progress -> {
@@ -167,73 +203,7 @@ public class TurtleScene extends PaintingSurfaceScene
         }
     }
 
-    /**
-     * @since 0.40.0
-     */
-    void setPen(boolean isDown)
-    {
-        pen.isDown = isDown;
-    }
-
     /* Setter */
-
-    /**
-     * Setzt die <b>Linienstärke</b> in Pixel
-     *
-     * @param lineWidth Die Linienstärke in Pixel.
-     *
-     * @since 0.38.0
-     */
-    void setLineWidth(int lineWidth)
-    {
-        pen.thickness = lineWidth;
-    }
-
-    /**
-     * <b>Ändert</b> die aktuelle <b>Linienstärke</b> um einen gegeben Wert.
-     *
-     * Positive Werte erhöhen die Linienstärke, negative Werte verringern sie.
-     * Führt die Änderung zu einer negativen Linienstärke, wird die Änderung
-     * verworfen und der vorhandene Wert bleibt unverändert.
-     *
-     * @param lineWidthChange Differenz der Linienstärke (positiv zum Erhöhen,
-     *     negativ zum Verringern); wird ignoriert, wenn die resultierende
-     *     Linienstärke negativ wäre.
-     *
-     * @since 0.38.0
-     */
-    void changeLineWidth(int lineWidthChange)
-    {
-        if (pen.thickness + lineWidthChange < 1)
-        {
-            return;
-        }
-        pen.thickness += lineWidthChange;
-    }
-
-    /**
-     * Setzt die Farbe der Linie als {@link Color}-Objekt.
-     *
-     * @param lineColor Die Farbe der Linie.
-     *
-     * @since 0.38.0
-     */
-    void setLineColor(Color lineColor)
-    {
-        pen.color = lineColor;
-    }
-
-    /**
-     * Setzt die Farbe der Linie als Zeichenkette.
-     *
-     * @param lineColor Die Farbe der Linie.
-     *
-     * @since 0.38.0
-     */
-    void setLineColor(String lineColor)
-    {
-        pen.color = colors.get(lineColor);
-    }
 
     void setPosition(Vector position)
     {
@@ -270,7 +240,7 @@ public class TurtleScene extends PaintingSurfaceScene
      *
      * <p>
      * Die Methode blockiert den aufrufenden Thread bis zum Abschluss der
-     * Animation (sie wartet intern auf ein {@link CompletableFuture})..
+     * Animation (sie wartet intern auf ein {@link CompletableFuture}).
      * </p>
      *
      * @param duration Dauer der Animation in Sekunden.
@@ -311,5 +281,4 @@ public class TurtleScene extends PaintingSurfaceScene
     {
         statistics.render(g);
     }
-
 }

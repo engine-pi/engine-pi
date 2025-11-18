@@ -28,7 +28,7 @@ import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenControllerDemo.java
 
 /**
- * Steuert den <b>Mal- bzw{@literal .} Zeichenstift</b> der Schildkröte.
+ * Steuert den <b>Zeichenstift</b> der Schildkröte.
  *
  * @see TurtleController#pen
  *
@@ -47,21 +47,21 @@ public class TurtlePenController
     boolean isDown = true;
 
     /**
-     * Die <b>Linienstärke</b> in Pixel.
+     * Die <b>Linienstärke</b> des Zeichenstifts in Pixel.
      *
      * @since 0.40.0
      */
     public int thickness = 1;
 
     /**
-     * Die <b>Farbe</b> der Linie.
+     * Die <b>Farbe</b> des Zeichenstifts.
      *
      * @since 0.40.0
      */
     public Color color = colors.get("yellow");
 
     /**
-     * Die aktuelle <b>Position des Stifts</b>.
+     * Die aktuelle <b>Position des Zeichenstifts</b>.
      *
      * <p>
      * Diese Position wird bewegt und das Zentrum der Figur wird auf diese
@@ -75,7 +75,7 @@ public class TurtlePenController
     Vector position = new Vector(0, 0);
 
     /**
-     * Die aktuelle Schreib<b>richtung</b>.
+     * Die aktuelle Zeichen<b>richtung</b>.
      *
      * <p>
      * Wir speichern die aktuelle Rotation und verwenden nicht die Rotation der
@@ -87,6 +87,13 @@ public class TurtlePenController
      */
     double direction = 0;
 
+    /**
+     * Setzt die <b>Linienstärke</b> des Zeichenstifts in Pixel.
+     *
+     * @param thickness Die <b>Linienstärke</b> des Zeichenstifts in Pixel.
+     *
+     * @since 0.38.0
+     */
     public TurtlePenController thickness(int thickness)
     {
         this.thickness = thickness;
@@ -94,6 +101,36 @@ public class TurtlePenController
     }
 
     /**
+     * <b>Ändert</b> die aktuelle <b>Linienstärke</b> des Zeichenstifs um einen
+     * gegeben Wert.
+     *
+     * <p>
+     * Positive Werte erhöhen die Linienstärke, negative Werte verringern sie.
+     * Führt die Änderung zu einer negativen Linienstärke, wird die Änderung
+     * verworfen und der vorhandene Wert bleibt unverändert.
+     * </p>
+     *
+     * @param thickness Die Differenz der Linienstärke (positiv zum Erhöhen,
+     *     negativ zum Verringern); wird ignoriert, wenn die resultierende
+     *     Linienstärke negativ wäre.
+     *
+     * @since 0.38.0
+     */
+    public TurtlePenController changeThickness(int thickness)
+    {
+        if (this.thickness + thickness < 1)
+        {
+            return this;
+        }
+        this.thickness += thickness;
+        return this;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> des Zeichenstiftsals {@link Color}-Objekt.
+     *
+     * @param color Die <b>Farbe</b> des Zeichenstifts.
+     *
      * @since 0.40.0
      */
     public TurtlePenController color(Color color)
@@ -103,6 +140,10 @@ public class TurtlePenController
     }
 
     /**
+     * Setzt die <b>Farbe</b> des Zeichenstifts als Zeichenkette.
+     *
+     * @param color Die <b>Farbe</b> des Zeichenstifts.
+     *
      * @since 0.40.0
      */
     public TurtlePenController color(String color)
@@ -112,6 +153,8 @@ public class TurtlePenController
     }
 
     /**
+     * <b>Senkt</b> den Zeichenstift, sodass die Schildkröte zeichnet.
+     *
      * @since 0.40.0
      */
     public TurtlePenController lower()
@@ -121,11 +164,27 @@ public class TurtlePenController
     }
 
     /**
+     * <b>Hebt</b> den Zeichenstift an, sodass die Schildkröte nicht zeichnet.
+     *
      * @since 0.40.0
      */
     public TurtlePenController lift()
     {
         isDown = false;
+        return this;
+    }
+
+    /**
+     * <b>Setzt</b> den Zustand des Zeichenstifts.
+     *
+     * @param isDown Wird wahr übergeben, so schreibt der Stift. Wird falsch
+     *     übergeben, so schreibt er nicht.
+     *
+     * @since 0.40.0
+     */
+    public TurtlePenController set(boolean isDown)
+    {
+        this.isDown = isDown;
         return this;
     }
 }

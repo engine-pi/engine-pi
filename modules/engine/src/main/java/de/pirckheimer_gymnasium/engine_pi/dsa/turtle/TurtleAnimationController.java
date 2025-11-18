@@ -109,20 +109,6 @@ public class TurtleAnimationController
     }
 
     /**
-     * Schaltet den sogenannten „<b>Warp-Modus</b>“ <b>an oder aus</b>.
-     *
-     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
-     * so schnell wie möglich gezeichnet.</b>
-     *
-     * @since 0.38.0
-     */
-    public TurtleAnimationController toggleWarpMode()
-    {
-        warpMode = !warpMode;
-        return this;
-    }
-
-    /**
      * Setzt den Zustand des sogenannten „<b>Warp-Modus</b>“.
      *
      * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
@@ -136,6 +122,20 @@ public class TurtleAnimationController
     public TurtleAnimationController warp(boolean warpMode)
     {
         this.warpMode = warpMode;
+        return this;
+    }
+
+    /**
+     * Schaltet den sogenannten „<b>Warp-Modus</b>“ <b>an oder aus</b>.
+     *
+     * <b>Im Warp-Modus finden keine Animationen statt. Die Turtle-Grafik wird
+     * so schnell wie möglich gezeichnet.</b>
+     *
+     * @since 0.38.0
+     */
+    public TurtleAnimationController toggleWarpMode()
+    {
+        warpMode = !warpMode;
         return this;
     }
 }

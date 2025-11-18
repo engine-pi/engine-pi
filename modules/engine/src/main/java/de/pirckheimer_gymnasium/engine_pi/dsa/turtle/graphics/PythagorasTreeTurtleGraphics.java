@@ -32,12 +32,13 @@ public class PythagorasTreeTurtleGraphics extends TurtleGraphics
 
     public PythagorasTreeTurtleGraphics()
     {
-        initalState.speed(1000).position(0, -7).direction(90).warpMode(false);
+        initalState.speed(1000).position(-1.5, -5).direction(90)
+                .warpMode(false);
     }
 
     public void draw()
     {
-        drawTree(3, 10);
+        drawTree(3, 7);
     }
 
     private void drawTree(double sideLength, int depth)

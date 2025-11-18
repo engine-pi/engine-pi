@@ -192,16 +192,16 @@ public class InitialTurtleState
      *
      * @since 0.40.0
      */
-    public void apply(TurtleScene turtle)
+    public void apply(TurtleScene turtleScene)
     {
         if (ignore)
         {
             return;
         }
-        turtle.setPosition(position);
-        turtle.setDirection(direction);
-        turtle.setPen(penDown);
-        turtle.animation.speed(speed);
-        turtle.animation.warp(warpMode);
+        turtleScene.setPosition(position);
+        turtleScene.setDirection(direction);
+        turtleScene.pen.set(penDown);
+        turtleScene.animation.speed(speed);
+        turtleScene.animation.warp(warpMode);
     }
 }

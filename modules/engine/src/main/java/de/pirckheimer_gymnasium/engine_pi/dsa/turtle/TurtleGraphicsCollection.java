@@ -173,11 +173,11 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_3:
-            TurtleLauncher.scene().changeLineWidth(+1);
+            TurtleLauncher.scene().pen.changeThickness(+1);
             break;
 
         case KeyEvent.VK_4:
-            TurtleLauncher.scene().changeLineWidth(-1);
+            TurtleLauncher.scene().pen.changeThickness(-1);
             break;
 
         case KeyEvent.VK_W:
