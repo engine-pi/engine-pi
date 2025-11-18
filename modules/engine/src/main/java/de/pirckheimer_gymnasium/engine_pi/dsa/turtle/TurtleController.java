@@ -41,24 +41,40 @@ public class TurtleController
     /* Öffentliche “Controller” als deligierte Klasse, alphabetisch sortiert */
 
     /**
+     * Steuert die <b>Animationen</b>, die während des Malprozesses der
+     * Schildkröte zu sehen sind.
+     *
      * @since 0.40.0
      */
-    public TurtleAnimationController animation;
+    public final TurtleAnimationController animation;
 
     /**
+     * Steuert die Malfläche, also den <b>Hintergrund</b>, auf dem die
+     * Schildkröte malt.
+     *
      * @since 0.40.0
      */
-    public TurtleBackgroundController background;
+    public final TurtleBackgroundController background;
+
+    /**
+     * Steuert die <b>Kleidung</b> der Schildkröte, d. h. das Aussehen der
+     * Schildkröte.
+     *
+     * @since 0.41.0
+     */
+    public final TurtleDressController dress;
+
+    /**
+     * Steuert den <b>Mal- bzw{@literal .} Zeichenstift</b> der Schildkröte.
+     *
+     * @since 0.40.0
+     */
+    public final TurtlePenController pen;
 
     /**
      * @since 0.41.0
      */
-    public TurtleDressController dress;
-
-    /**
-     * @since 0.40.0
-     */
-    public TurtlePenController pen;
+    public final TurtleWindowController window;
 
     /* private Attribute */
 
@@ -82,6 +98,7 @@ public class TurtleController
         pen = scene.pen;
         animation = scene.animation;
         dress = scene.dress;
+        window = new TurtleWindowController();
     }
 
     /**

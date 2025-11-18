@@ -24,7 +24,7 @@
     "CombinedChildBox.java": "FramedTextBox.java",
     "VAlignment.java": "HAlignment.java",
     "ChildsBox.java": "VerticalBox.java, HorizontalBox.java",
-    "TurtleController.java": "AutoStartTurtleController.java, TurtleAnimationController.java, TurtleBackgroundController.java, TurtleDressController.java, TurtlePenController.java",
+    "TurtleController.java": "AutoStartTurtleController.java, TurtleAnimationController.java, TurtleBackgroundController.java, TurtleDressController.java, TurtlePenController.java, TurtleWindowController.java",
     "TurtleGraphicsCollection.java": "TurtleGraphics.java, TurtleGraphicsSeries.java"
   },
   "java.project.explorer.showNonJavaResources": false,

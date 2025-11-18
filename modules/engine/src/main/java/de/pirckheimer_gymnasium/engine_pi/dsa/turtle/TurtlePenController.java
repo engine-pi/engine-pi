@@ -25,10 +25,12 @@ import java.awt.Color;
 import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
 
-// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenDemo.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenControllerDemo.java
 
 /**
- * Der <b>Mal- bzw{@literal .} Zeichenstift</b> der Schildkröte.
+ * Steuert den <b>Mal- bzw{@literal .} Zeichenstift</b> der Schildkröte.
+ *
+ * @see TurtleController#pen
  *
  * @author Josef Friedrich
  *

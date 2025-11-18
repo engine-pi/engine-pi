@@ -21,8 +21,13 @@ package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleAnimationControllerDemo.java
 
 /**
- * Steuert die Animationen der Schildkröte, wie zum Beispiel die Geschwindigkeit
- * oder den Warp-Modus.
+ * Steuert die <b>Animationen</b>, die während des Malprozesses der Schildkröte
+ * zu sehen sind.
+ *
+ * <p>
+ * Mit Hilfe dieser Klasse kann zum Beispiel die Geschwindigkeit eingestellt
+ * oder der Warp-Modus eingeschaltet werden.
+ * </p>
  *
  * @author Josef Friedrich
  *
@@ -51,7 +56,7 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void speed(double speed)
+    public TurtleAnimationController speed(double speed)
     {
         if (speed <= 0)
         {
@@ -60,6 +65,7 @@ public class TurtleAnimationController
                             + speed);
         }
         this.speed = speed;
+        return this;
     }
 
     /**
@@ -78,13 +84,14 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void changeSpeed(double speedChange)
+    public TurtleAnimationController changeSpeed(double speedChange)
     {
         if (speed + speedChange < 0)
         {
-            return;
+            return this;
         }
         speed += speedChange;
+        return this;
     }
 
     /**
@@ -95,9 +102,10 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void warp()
+    public TurtleAnimationController warp()
     {
         warpMode = true;
+        return this;
     }
 
     /**
@@ -108,9 +116,10 @@ public class TurtleAnimationController
      *
      * @since 0.38.0
      */
-    public void toggleWarpMode()
+    public TurtleAnimationController toggleWarpMode()
     {
         warpMode = !warpMode;
+        return this;
     }
 
     /**
@@ -124,8 +133,9 @@ public class TurtleAnimationController
      *
      * @since 0.40.0
      */
-    public void warp(boolean warpMode)
+    public TurtleAnimationController warp(boolean warpMode)
     {
         this.warpMode = warpMode;
+        return this;
     }
 }

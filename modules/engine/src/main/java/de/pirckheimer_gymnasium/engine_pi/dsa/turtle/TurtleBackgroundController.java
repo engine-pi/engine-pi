@@ -23,10 +23,14 @@ import java.awt.Color;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleBackgroundControllerDemo.java
 
 /**
- * Steuert die Malfläche, also den Hintergrund, auf den die Schildkröte malt.
+ * Steuert die Malfläche, also den <b>Hintergrund</b>, auf dem die Schildkröte
+ * malt.
  *
- * Sie Klasse kann einen neue Hintergrundfarbe setzten und die Malspuren
- * löschen.
+ * <p>
+ * Die Klasse kann die Hintergrundfarbe setzen und die Malspuren löschen.
+ * </p>
+ *
+ * @see TurtleController#background
  *
  * @author Josef Friedrich
  *
@@ -34,7 +38,6 @@ import java.awt.Color;
  */
 public class TurtleBackgroundController
 {
-
     /**
      * @since 0.40.0
      */

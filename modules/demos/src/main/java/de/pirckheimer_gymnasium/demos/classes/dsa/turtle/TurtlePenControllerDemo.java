@@ -2,13 +2,13 @@ package de.pirckheimer_gymnasium.demos.classes.dsa.turtle;
 
 import de.pirckheimer_gymnasium.engine_pi.Turtle;
 
-// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/dsa/turtle/TurtlePen.java
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/dsa/turtle/TurtlePenController.java
 
 /**
  * Demonstiert, wie mit <b>minimalen</b> Programmieraufwand eine
  * <b>Turtle</b>-Grafik gezeichnet werden kann.
  */
-public class TurtlePenDemo
+public class TurtlePenControllerDemo
 {
     public static void main(String[] args)
     {

@@ -34,9 +34,9 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.PaintingSurface;
 public class PaintingSurfaceScene extends Scene
 {
     /**
-     * Ein <b>Malfläche</b>, in die gemalt werden kann und dir als
-     * Hintergrundbild angezeigt wird. Es kann zum Beispiel für Turtle-Grafiken
-     * verwendet werden oder zur Simulation eines Malprogramms.
+     * Eine <b>Malfläche</b>, in die gemalt werden kann und die als
+     * Hintergrundbild angezeigt wird. Diese Fläche kann zum Beispiel für
+     * Turtle-Grafiken verwendet werden oder zur Simulation eines Malprogramms.
      *
      * @since 0.40.0
      */

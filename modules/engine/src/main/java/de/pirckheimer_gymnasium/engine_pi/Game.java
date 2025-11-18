@@ -681,10 +681,10 @@ public final class Game
     }
 
     /**
-     * Setzt die Größe des Engine-Fensters.
+     * Setzt die <b>Größe</b> des Engine-<b>Fensters</b>.
      *
-     * @param width Die neue Breite des Engine-Fensters in Pixel.
-     * @param height Die neue Höhe des Engine-Fensters in Pixel.
+     * @param width Die neue <b>Breite</b> des Engine-Fensters in Pixel.
+     * @param height Die neue <b>Höhe</b> des Engine-Fensters in Pixel.
      *
      * @see #getWindowSize()
      * @see #setWindowPosition(int, int)
@@ -730,7 +730,7 @@ public final class Game
     }
 
     /**
-     * Setzt das Spielfenster an eine neue Position.
+     * Setzt das Spielfenster an eine neue <b>Position</b>.
      *
      * <p>
      * Standardmäßig ist das Fenster mittig positioniert. Die Parameter x und y
