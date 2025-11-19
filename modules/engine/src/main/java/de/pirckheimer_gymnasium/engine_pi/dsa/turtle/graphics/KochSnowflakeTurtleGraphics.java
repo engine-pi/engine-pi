@@ -88,7 +88,7 @@ public class KochSnowflakeTurtleGraphics extends TurtleGraphicsSeries
         }
     }
 
-    protected void onDrawEnd()
+    protected void afterEachDraw()
     {
         depth++;
     }

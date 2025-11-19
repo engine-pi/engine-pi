@@ -18,8 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.dsa.turtle;
 
-import java.util.function.Supplier;
-
 import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
 import de.pirckheimer_gymnasium.engine_pi.util.TimeUtil;
 
@@ -93,11 +91,6 @@ public abstract class TurtleGraphics implements Runnable
     /**
      * @since 0.40.0
      */
-    protected Supplier<Boolean> onRepeat;
-
-    /**
-     * @since 0.40.0
-     */
     protected boolean clearBeforeRun = false;
 
     /**
@@ -138,15 +131,6 @@ public abstract class TurtleGraphics implements Runnable
     public TurtleGraphics onFinished(Runnable onFinished)
     {
         this.onFinished = onFinished;
-        return this;
-    }
-
-    /**
-     * @since 0.40.0
-     */
-    public TurtleGraphics onRepeat(Supplier<Boolean> afterRepeat)
-    {
-        this.onRepeat = afterRepeat;
         return this;
     }
 

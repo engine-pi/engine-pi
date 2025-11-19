@@ -26,8 +26,13 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  * Hilfsklasse, um eine <b>Reihe</b> von <b>Turtle-Grafik</b> zu zeichnen.
  *
  * <p>
- * Turle-Grafiken werden oft rekursiv erstellt. Die Klasse ermöglicht es, ein
- * und denselben Algorithmus mehrmals zeichnen zu lassten und bei jeder
+ * Diese Klasse ermöglich es, die {@link TurtleGraphics#draw() draw()}-Methode
+ * mehrmals hintereinander aufzurufen.
+ * </p>
+ *
+ * <p>
+ * Turtle-Grafiken werden oft rekursiv erstellt. Die Klasse ermöglicht es, ein
+ * und denselben Algorithmus mehrmals zeichnen zu lassen und bei jeder
  * Wiederholung Attribute zum verändern, wie zum Beispiel die Rekursionstiefe.
  * </p>
  *
@@ -37,7 +42,6 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.Internal;
  */
 public abstract class TurtleGraphicsSeries extends TurtleGraphics
 {
-
     /**
      * @since 0.40.0
      */
@@ -49,8 +53,8 @@ public abstract class TurtleGraphicsSeries extends TurtleGraphics
     protected Supplier<Boolean> afterRepeat;
 
     /**
-     * Gibt an wie of eine Turtle-Grafik gezeichnet werden soll. {@code -1}
-     * zeichnet die Grafik in einer endlos Schleife.
+     * Gibt an, wie oft eine Turtle-Grafik gezeichnet werden soll. {@code -1}
+     * zeichnet die Grafik in einer Endlosschleife.
      *
      * @since 0.40.0
      */
@@ -68,41 +72,61 @@ public abstract class TurtleGraphicsSeries extends TurtleGraphics
     }
 
     /**
-     * Wird ganz am Anfang der Grafik-Reihe ausgeführt.
+     * Wird ganz am Anfang der Grafik-Reihe ausgeführt, also nachdem alle
+     * {@link TurtleGraphics#draw() draw()}-Methode-Aufrufe stattfanden.
+     *
+     * <p>
+     * Diese Methode ist dazu gedacht, überschrieben zu werden.
+     * </p>
      *
      * @since 0.40.0
      */
-    protected void onSeriesStart()
+    protected void beforeSeries()
     {
 
     }
 
     /**
-     * Wird bevor jedem Zeichenvorgang ausgeführt.
+     * Wird vor jedem Aufruf der {@link TurtleGraphics#draw() draw()}-Methode
+     * ausgeführt.
+     *
+     * <p>
+     * Diese Methode ist dazu gedacht, überschrieben zu werden.
+     * </p>
      *
      * @since 0.40.0
      */
-    protected void onDrawStart()
+    protected void beforeEachDraw()
     {
 
     }
 
     /**
-     * Wird nach jedem Zeichenvorgang ausgeführt.
+     * Wird nach jedem Aufruf der {@link TurtleGraphics#draw() draw()}-Methode
+     * ausgeführt.
+     *
+     * <p>
+     * Diese Methode ist dazu gedacht, überschrieben zu werden.
+     * </p>
      *
      * @since 0.40.0
      */
-    protected void onDrawEnd()
+    protected void afterEachDraw()
     {
 
     }
 
     /**
-     * Wird ganz am Ende der Grafik-Reihe ausgeführt.
+     * Wird ganz am Ende der Grafik-Reihe ausgeführt, also nachdem alle
+     * {@link TurtleGraphics#draw() draw()}-Methode-Aufrufe stattfanden.
+     *
+     * <p>
+     * Diese Methode ist dazu gedacht, überschrieben zu werden.
+     * </p>
      *
      * @since 0.40.0
      */
-    protected void onSeriesEnd()
+    protected void afterSeries()
     {
 
     }
@@ -114,9 +138,8 @@ public abstract class TurtleGraphicsSeries extends TurtleGraphics
     @Override
     public void run()
     {
-        onSeriesStart();
+        beforeSeries();
         int counter = 0;
-        this.onRepeat(afterRepeat);
         // -1 zeichnet die Grafik unendlich oft
         while (numberOfSeries == -1 || counter < numberOfSeries)
         {
@@ -125,15 +148,14 @@ public abstract class TurtleGraphicsSeries extends TurtleGraphics
                 break;
             }
             counter++;
-            onDrawStart();
+            beforeEachDraw();
             draw();
-            onDrawEnd();
+            afterEachDraw();
             if (afterRepeat != null && !afterRepeat.get())
             {
                 break;
             }
         }
-        onSeriesEnd();
+        afterSeries();
     }
-
 }

@@ -92,7 +92,7 @@ public class LevyCCurveTurtleGraphics extends TurtleGraphicsSeries
         }
     }
 
-    public void onDrawEnd()
+    public void afterEachDraw()
     {
         depth++;
         initalState.speed(10 * depth);
