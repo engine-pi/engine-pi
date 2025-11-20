@@ -9,6 +9,12 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  */
 public abstract class LeafBox extends Box
 {
+
+    public int numberOfChilds()
+    {
+        return 0;
+    }
+
     @Override
     protected void calculateAnchors()
     {

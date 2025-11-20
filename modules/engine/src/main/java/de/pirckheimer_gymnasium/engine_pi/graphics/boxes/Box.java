@@ -151,6 +151,8 @@ public abstract class Box implements Iterable<Box>
 
     /* Methods */
 
+    public abstract int numberOfChilds();
+
     /**
      * Berechnet rekursiv die <b>Abmessungen</b>, d.h. die Höhe und Breite der
      * eigenen Box und aller Kind-Boxen.
@@ -348,6 +350,11 @@ public abstract class Box implements Iterable<Box>
         return new FramedTextBox(content);
     }
 
+    public static GridBox grid(Box... childs)
+    {
+        return new GridBox(childs);
+    }
+
     /**
      * Erzeugt eine neue <b>horizontale</b> Box.
      *
@@ -381,6 +388,16 @@ public abstract class Box implements Iterable<Box>
     public static EmptyBox empty()
     {
         return new EmptyBox();
+    }
+
+    public static EmptyBox[] empty(int number)
+    {
+        EmptyBox[] boxes = new EmptyBox[number];
+        for (int i = 0; i < number; i++)
+        {
+            boxes[i] = new EmptyBox();
+        }
+        return boxes;
     }
 
     /**

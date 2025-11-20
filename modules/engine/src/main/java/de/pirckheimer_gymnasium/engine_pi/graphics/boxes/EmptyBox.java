@@ -7,8 +7,14 @@ import java.awt.Graphics2D;
  *
  * @since 0.40.0
  */
-public class EmptyBox extends Box
+public class EmptyBox extends LeafBox
 {
+
+    public int numberOfChilds()
+    {
+        return 0;
+    }
+
     @Override
     protected void calculateAnchors()
     {

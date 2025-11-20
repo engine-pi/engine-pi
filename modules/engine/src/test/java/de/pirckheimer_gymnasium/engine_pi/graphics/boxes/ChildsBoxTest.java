@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.empty;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.grid;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,6 +14,13 @@ import org.junit.jupiter.api.Test;
 
 class ChildsBoxTest
 {
+
+    @Test
+    void numberOfChilds()
+    {
+        assertEquals(grid(empty(5)).numberOfChilds(), 5);
+    }
+
     @Test
     void iteratorReturnsChildrenInOrder()
     {
@@ -49,5 +57,4 @@ class ChildsBoxTest
         }
         assertEquals(2, counter);
     }
-
 }

@@ -70,6 +70,11 @@ abstract class ChildBox extends Box
         }
     }
 
+    public int numberOfChilds()
+    {
+        return 1;
+    }
+
     @Override
     void draw(Graphics2D g)
     {

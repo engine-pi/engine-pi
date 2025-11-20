@@ -50,6 +50,11 @@ abstract class ChildsBox extends Box
         }
     }
 
+    public int numberOfChilds()
+    {
+        return childs.size();
+    }
+
     @Override
     public Iterator<Box> iterator()
     {

@@ -19,14 +19,15 @@
     "StatefulAnimation.java": "StatefulAnimatedGifAnimation.java,StatefulImagesAnimation.java, StatefulImagesPrefixAnimation.java, StatefulSpritesheetAnimation.java",
     "Tile.java": "LetterTileMap.java, TileMap.java, TileRegistration.java",
     // engine_pi/graphics/boxes
-    "Box.java": "LeafBox.java",
-    "ChildBox.java": "AlignBox.java, BackgroundBox.java, BorderBox.java, DimensionBox.java, EmptyBox.java, MarginBox.java, TextBox.java",
+    "ChildBox.java": "AlignBox.java, BackgroundBox.java, BorderBox.java, DimensionBox.java, MarginBox.java",
+    "LeafBox.java": "EmptyBox.java, TextBox.java",
     "CombinedChildBox.java": "FramedTextBox.java",
     "VAlignment.java": "HAlignment.java",
-    "ChildsBox.java": "VerticalBox.java, HorizontalBox.java",
+    "ChildsBox.java": "VerticalBox.java, GridBox.java, HorizontalBox.java",
     "TurtleController.java": "AutoStartTurtleController.java, TurtleAnimationController.java, TurtleBackgroundController.java, TurtleDressController.java, TurtlePenController.java, TurtleWindowController.java",
     "TurtleGraphicsCollection.java": "TurtleGraphics.java, TurtleGraphicsSeries.java"
   },
   "java.project.explorer.showNonJavaResources": false,
-  "java.dependency.syncWithFolderExplorer": true
+"java.dependency.syncWithFolderExplorer": true,
+"java.compile.nullAnalysis.mode": "automatic"
 }
