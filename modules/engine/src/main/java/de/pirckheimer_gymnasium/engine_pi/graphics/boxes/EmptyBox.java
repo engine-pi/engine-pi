@@ -9,17 +9,6 @@ import java.awt.Graphics2D;
  */
 public class EmptyBox extends LeafBox
 {
-
-    public int numberOfChilds()
-    {
-        return 0;
-    }
-
-    @Override
-    protected void calculateAnchors()
-    {
-    }
-
     @Override
     protected void calculateDimension()
     {
