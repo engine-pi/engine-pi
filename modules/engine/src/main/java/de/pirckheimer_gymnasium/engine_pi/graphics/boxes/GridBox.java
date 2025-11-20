@@ -2,6 +2,8 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.util.ArrayList;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
+
 public class GridBox extends ChildsBox
 {
     int columns = 2;
@@ -41,7 +43,7 @@ public class GridBox extends ChildsBox
     {
         // Anfangsindex
         final int start = row * columns;
-        ArrayList<Box> rowChilds = new ArrayList<Box>();
+        ArrayList<Box> rowChilds = new ArrayList<>();
         for (int i = start; i < Math.min(numberOfChilds(),
                 start + columns); i++)
         {
@@ -52,11 +54,29 @@ public class GridBox extends ChildsBox
 
     public ArrayList<Box> getColumn(int column)
     {
-        ArrayList<Box> columnChilds = new ArrayList<Box>();
+        ArrayList<Box> columnChilds = new ArrayList<>();
         for (int i = column; i < numberOfChilds(); i += columns())
         {
             columnChilds.add(childs.get(i));
         }
         return columnChilds;
+    }
+
+    @Override
+    protected void calculateDimension()
+    {
+        for (Box child : childs)
+        {
+            child.calculateDimension();
+        }
+    }
+
+    @Override
+    protected void calculateAnchors()
+    {
+        for (Box child : childs)
+        {
+            child.calculateAnchors();
+        }
     }
 }

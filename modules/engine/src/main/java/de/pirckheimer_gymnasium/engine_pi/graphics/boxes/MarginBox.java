@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/MarginBoxDemo.java
+
 /**
  * Ein <b>Außenabstand</b> um die enthaltene Kind-Box.
  *

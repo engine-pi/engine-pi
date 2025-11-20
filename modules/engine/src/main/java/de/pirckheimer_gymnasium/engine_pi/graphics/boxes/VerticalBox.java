@@ -18,6 +18,8 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
+
 /**
  * Eine <b>vertikale</b> Box, die die enthaltenen Kinder-Boxen vertikal von oben
  * nach unten anordnet.

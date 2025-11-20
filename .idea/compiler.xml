@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="engine-pi" />
+        <module name="engine-pi-tetris" />
         <module name="engine-pi-demos" />
+        <module name="engine-pi-blockly-robot" />
+        <module name="engine-pi" />
+        <module name="engine-pi-cli" />
+        <module name="engine-pi-build-tools" />
+        <module name="engine-pi-pacman" />
       </profile>
     </annotationProcessing>
   </component>

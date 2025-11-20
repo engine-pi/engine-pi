@@ -20,11 +20,12 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Eine <b>Box</b> beschreibt eine rechteckige graphische Fläche, die weitere
+ * Eine <b>Box</b> beschreibt eine rechteckige grafische Fläche, die weitere
  * Kinder-Boxen enthalten kann.
  *
  * @author Josef Friedrich
@@ -67,12 +68,14 @@ public abstract class Box implements Iterable<Box>
     protected int y;
 
     /**
-     * Die <b>übergeordnet</b> Box, in der diese Box enthalten ist. Dieses
+     * Die <b>übergeordnete</b> Box, in der diese Box enthalten ist. Dieses
      * Attribut kann {@code null} sein, wenn keine Elternbox vorhanden ist.
      *
      * @since 0.38.0
      */
     protected Box parent;
+
+    protected FixedSize fixedSize;
 
     /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.
@@ -304,6 +307,11 @@ public abstract class Box implements Iterable<Box>
         draw(g);
     }
 
+    public Box getBox()
+    {
+        return this;
+    }
+
     /* static instantiation methods */
 
     public static AlignBox align(Box child)
@@ -340,6 +348,21 @@ public abstract class Box implements Iterable<Box>
         return new DimensionBox(child);
     }
 
+    public static EmptyBox empty()
+    {
+        return new EmptyBox();
+    }
+
+    public static EmptyBox[] empty(int number)
+    {
+        EmptyBox[] boxes = new EmptyBox[number];
+        for (int i = 0; i < number; i++)
+        {
+            boxes[i] = new EmptyBox();
+        }
+        return boxes;
+    }
+
     /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
      *
@@ -370,6 +393,16 @@ public abstract class Box implements Iterable<Box>
         return new HorizontalBox(childs);
     }
 
+    public static ImageBox image(BufferedImage image)
+    {
+        return new ImageBox(image);
+    }
+
+    public static ImageBox image(String image)
+    {
+        return new ImageBox(image);
+    }
+
     /**
      * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen
      * Kind-Box.
@@ -383,21 +416,6 @@ public abstract class Box implements Iterable<Box>
     public static MarginBox margin(Box child)
     {
         return new MarginBox(child);
-    }
-
-    public static EmptyBox empty()
-    {
-        return new EmptyBox();
-    }
-
-    public static EmptyBox[] empty(int number)
-    {
-        EmptyBox[] boxes = new EmptyBox[number];
-        for (int i = 0; i < number; i++)
-        {
-            boxes[i] = new EmptyBox();
-        }
-        return boxes;
     }
 
     /**

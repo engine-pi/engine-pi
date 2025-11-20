@@ -384,7 +384,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     <ul>
      *     <li><code>0.0</code> entspricht einem komplett durchsichtigen
      *     (transparenten) Objekt.</li>
-     *     <li><code>1.0</code> entspricht einem undurchsichtigem Objekt.</li>
+     *     <li><code>1.0</code> entspricht einem undurchsichtigen Objekt.</li>
      *     </ul>
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
@@ -2504,10 +2504,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die eigene Instanze zurück.
+     * Gibt die eigene Instanz zurück.
      *
      * <p>
-     * Diese Methode wird benötigt, um mit Hilfe der Schnittstelle
+     * Diese Methode wird benötigt, um mithilfe der Schnittstelle
      * {@link de.pirckheimer_gymnasium.engine_pi.instant.InstantActor} weitere
      * Methoden für alle Instant-Figuren bereitzustellen.
      * </p>

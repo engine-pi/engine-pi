@@ -13,7 +13,6 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  */
 public class DimensionBox extends ChildBox
 {
-
     /**
      * Die gesetzte Breite in Pixel. Im Gegensatz zu {@link Box#width} wird
      * dieses Attribut gesetzt und nicht durch {@link Box#calculateDimension()}

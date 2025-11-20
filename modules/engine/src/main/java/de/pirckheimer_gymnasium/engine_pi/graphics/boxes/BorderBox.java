@@ -109,7 +109,7 @@ public class BorderBox extends ChildBox
     @Override
     void draw(Graphics2D g)
     {
-        // die Methode g.drawRect() macht Antialising
+        // die Methode g.drawRect() macht Antialiasing
         // Lösung mit der Methode g.drawRect():
         // setzt die Linie irgendwie mittig
         // if (borderColor != null && borderSize > 0)

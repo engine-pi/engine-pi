@@ -18,7 +18,7 @@ class ChildsBoxTest
     @Test
     void numberOfChilds()
     {
-        assertEquals(grid(empty(5)).numberOfChilds(), 5);
+        assertEquals(5, grid(empty(5)).numberOfChilds());
     }
 
     @Test

@@ -5,6 +5,8 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/BackgroundBoxDemo.java
+
 /**
  * Unterlegt eine Kind-Box mit einer <b>Hintergrundfarbe</b>.
  *

@@ -20,7 +20,7 @@
     "Tile.java": "LetterTileMap.java, TileMap.java, TileRegistration.java",
     // engine_pi/graphics/boxes
     "ChildBox.java": "AlignBox.java, BackgroundBox.java, BorderBox.java, DimensionBox.java, MarginBox.java",
-    "LeafBox.java": "EmptyBox.java, TextBox.java",
+    "LeafBox.java": "EmptyBox.java, ImageBox.java, TextBox.java",
     "CombinedChildBox.java": "FramedTextBox.java",
     "VAlignment.java": "HAlignment.java",
     "ChildsBox.java": "VerticalBox.java, GridBox.java, HorizontalBox.java",
@@ -28,6 +28,6 @@
     "TurtleGraphicsCollection.java": "TurtleGraphics.java, TurtleGraphicsSeries.java"
   },
   "java.project.explorer.showNonJavaResources": false,
-"java.dependency.syncWithFolderExplorer": true,
-"java.compile.nullAnalysis.mode": "automatic"
+  "java.dependency.syncWithFolderExplorer": true,
+  "java.compile.nullAnalysis.mode": "disabled"
 }

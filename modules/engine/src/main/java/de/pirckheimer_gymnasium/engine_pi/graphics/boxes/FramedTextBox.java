@@ -20,6 +20,8 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Color;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/FramedTextBoxDemo.java
+
 /**
  * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
  *
