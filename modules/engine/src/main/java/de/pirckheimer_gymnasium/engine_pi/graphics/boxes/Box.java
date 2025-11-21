@@ -54,6 +54,20 @@ public abstract class Box implements Iterable<Box>
     protected int height;
 
     /**
+     * Die <b>gesetzte Breite</b> in Pixel. Im Gegensatz zu {@link #width} wird
+     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
+     * berechnet.
+     */
+    protected int definedWidth;
+
+    /**
+     * Die <b>gesetzte Höhe</b> in Pixel. Im Gegensatz zu {@link #height} wird
+     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
+     * berechnet.
+     */
+    protected int definedHeight;
+
+    /**
      * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @since 0.38.0
@@ -74,8 +88,6 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     protected Box parent;
-
-    protected FixedSize fixedSize;
 
     /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.

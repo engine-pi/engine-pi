@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.border;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textBlock;
 
 import java.awt.Graphics2D;
@@ -13,9 +14,9 @@ public class TextBlockBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        textBlock(
+        border(textBlock(
                 "Lorem ipsum dolor sit amet, \nconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
-                .render(g);
+                .width(300)).anchor(10, 10).render(g);
     }
 
     public static void main(String[] args)

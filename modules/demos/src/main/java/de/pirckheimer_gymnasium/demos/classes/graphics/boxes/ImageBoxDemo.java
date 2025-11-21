@@ -25,7 +25,8 @@ public class ImageBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        vertical(box(), box().size(300, 200), box().size(16, 16)).render(g);
+        vertical(box(), box().width(300).height(200),
+                box().width(16).height(16)).render(g);
 
         vertical(car(), car().flippedVertically(), car().flippedHorizontally(),
                 car().flippedVertically().flippedHorizontally()).anchor(400, 0)

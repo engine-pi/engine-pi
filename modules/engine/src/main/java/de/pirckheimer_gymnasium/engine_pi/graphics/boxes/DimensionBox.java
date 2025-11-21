@@ -13,20 +13,6 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  */
 public class DimensionBox extends ChildBox
 {
-    /**
-     * Die gesetzte Breite in Pixel. Im Gegensatz zu {@link Box#width} wird
-     * dieses Attribut gesetzt und nicht durch {@link Box#calculateDimension()}
-     * berechnet.
-     */
-    int setWidth;
-
-    /**
-     * Die gesetzte Höhe in Pixel. Im Gegensatz zu {@link Box#height} wird
-     * dieses Attribut gesetzt und nicht durch {@link Box#calculateDimension()}
-     * berechnet.
-     */
-    int setHeight;
-
     public DimensionBox(Box child)
     {
         super(child);
@@ -34,13 +20,13 @@ public class DimensionBox extends ChildBox
 
     public DimensionBox width(int width)
     {
-        setWidth = width;
+        definedWidth = width;
         return this;
     }
 
     public DimensionBox height(int height)
     {
-        setHeight = height;
+        definedHeight = height;
         return this;
     }
 
@@ -48,8 +34,8 @@ public class DimensionBox extends ChildBox
     protected void calculateDimension()
     {
         child.calculateDimension();
-        width = setWidth > 0 ? setWidth : child.width;
-        height = setHeight > 0 ? setHeight : child.height;;
+        width = definedWidth > 0 ? definedWidth : child.width;
+        height = definedHeight > 0 ? definedHeight : child.height;;
     }
 
     @Override

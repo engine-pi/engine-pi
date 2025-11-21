@@ -24,7 +24,6 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
@@ -54,6 +53,8 @@ public class TextBlockBox extends LeafBox
      */
     private String content;
 
+    List<TextLayout> lines = new ArrayList<>();
+
     /**
      * @since 0.41.0
      */
@@ -67,11 +68,6 @@ public class TextBlockBox extends LeafBox
     private Font font = fonts.getDefault().deriveFont((float) fontSize);
 
     private Color color;
-
-    /**
-     * @since 0.41.0
-     */
-    private int baseline;
 
     /**
      * Erzeugt eineen <b>Text</b>block.
@@ -108,13 +104,21 @@ public class TextBlockBox extends LeafBox
 
     protected void calculateDimension()
     {
-        var bounds = FontUtil.getStringBoundsNg(content, font);
-        width = bounds.getWidth();
-        height = bounds.getHeight();
-        baseline = bounds.getBaseline();
+        width = definedWidth > 0 ? definedWidth : 300;
+        lines = splitIntoLines(content, FontUtil.getFontRenderContext(), font,
+                width);
+        var dim = measureLines(lines);
+        width = dim.width;
+        height = dim.height;
     }
 
     /* Setter */
+
+    public TextBlockBox width(int width)
+    {
+        definedWidth = width;
+        return this;
+    }
 
     /**
      * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
@@ -169,46 +173,60 @@ public class TextBlockBox extends LeafBox
         return this;
     }
 
-    @Override
-    void draw(Graphics2D g)
+    private static List<TextLayout> splitIntoLines(String content,
+            FontRenderContext context, Font font, float wrappingWidth)
     {
-
-        if (content == null || content.isEmpty())
+        ArrayList<TextLayout> lines = new ArrayList<>();
+        for (String line : content.split(System.lineSeparator()))
         {
-            return;
-        }
-        RenderingHints oldHints = g.getRenderingHints();
-
-        final FontRenderContext frc = g.getFontRenderContext();
-        List<TextLayout> lines = new ArrayList<>();
-        double textHeight = 0;
-        for (String s : content.split(System.lineSeparator()))
-        {
-            final AttributedString styledText = new AttributedString(s);
-            styledText.addAttribute(TextAttribute.FONT, g.getFont());
+            final AttributedString styledText = new AttributedString(line);
+            styledText.addAttribute(TextAttribute.FONT, font);
             final AttributedCharacterIterator iterator = styledText
                     .getIterator();
             final LineBreakMeasurer measurer = new LineBreakMeasurer(iterator,
-                    frc);
+                    context);
             while (true)
             {
-                TextLayout nextLayout = measurer.nextLayout((float) 300);
+                TextLayout nextLayout = measurer.nextLayout(wrappingWidth);
                 lines.add(nextLayout);
-                textHeight += nextLayout.getAscent() + nextLayout.getDescent();
-                if (measurer.getPosition() >= s.length())
+                if (measurer.getPosition() >= line.length())
                 {
                     break;
                 }
-                textHeight += nextLayout.getLeading();
             }
         }
-        float textY = (float) y;
-        for (TextLayout layout : lines)
+        return lines;
+    }
+
+    private static PixelDimension measureLines(List<TextLayout> lines)
+    {
+        PixelDimension dim = new PixelDimension();
+        float maxWidth = 0;
+        float height = 0;
+        for (TextLayout line : lines)
         {
-            textY += layout.getAscent();
-            layout.draw(g, (float) (x), textY);
-            textY += layout.getDescent() + layout.getLeading();
+            float width = line.getAdvance();
+            if (width > maxWidth)
+            {
+                maxWidth = width;
+            }
+            height += line.getAscent() + line.getDescent() + line.getLeading();
         }
-        g.setRenderingHints(oldHints);
+
+        dim.width = (int) Math.ceil(maxWidth);
+        dim.height = (int) Math.ceil(height);
+        return dim;
+    }
+
+    @Override
+    void draw(Graphics2D g)
+    {
+        float textY = (float) y;
+        for (TextLayout line : lines)
+        {
+            textY += line.getAscent();
+            line.draw(g, (float) (x), textY);
+            textY += line.getDescent() + line.getLeading();
+        }
     }
 }

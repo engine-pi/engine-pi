@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/ImageBoxDemo.java
 
-public class ImageBox extends LeafBox implements FixedSizeSetter
+public class ImageBox extends LeafBox
 {
     BufferedImage image;
 
@@ -30,6 +30,18 @@ public class ImageBox extends LeafBox implements FixedSizeSetter
     public ImageBox(String image)
     {
         this(images.get(image));
+    }
+
+    public ImageBox width(int width)
+    {
+        definedWidth = width;
+        return this;
+    }
+
+    public ImageBox height(int height)
+    {
+        definedHeight = height;
+        return this;
     }
 
     public ImageBox flippedVertically(boolean flippedVertically)
@@ -57,14 +69,20 @@ public class ImageBox extends LeafBox implements FixedSizeSetter
     @Override
     protected void calculateDimension()
     {
-        if (fixedSize != null)
+        if (definedWidth > 0)
         {
-            width = fixedSize.width;
-            height = fixedSize.height;
+            width = definedWidth;
         }
         else
         {
             width = image.getWidth();
+        }
+        if (definedHeight > 0)
+        {
+            height = definedHeight;
+        }
+        else
+        {
             height = image.getHeight();
         }
     }

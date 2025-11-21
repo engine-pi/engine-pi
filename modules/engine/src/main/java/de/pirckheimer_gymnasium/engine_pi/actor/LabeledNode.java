@@ -166,8 +166,7 @@ public class LabeledNode extends Geometry
     {
         if (label != null)
         {
-            cachedFontStringBounds = FontUtil.getStringBoundsNg(label,
-                    getFont());
+            cachedFontStringBounds = FontUtil.getStringBounds(label, getFont());
         }
     }
 

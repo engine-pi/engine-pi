@@ -102,7 +102,7 @@ public class LabeledEdge extends Actor
         {
             AffineTransform affineTransform = new AffineTransform();
 
-            FontStringBounds labelBounds = FontUtil.getStringBoundsNg(label,
+            FontStringBounds labelBounds = FontUtil.getStringBounds(label,
                     FONT);
 
             // Der Differenzvektor

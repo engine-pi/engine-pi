@@ -22,10 +22,13 @@ package de.pirckheimer_gymnasium.engine_pi.util;
 
 import java.awt.Canvas;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Statische Hilfsmethoden um Abmessungen von Zeichenketten in bestimmen
+ * Statische Hilfsmethoden um Abmessungen von Zeichenketten in bestimmten
  * Schriftarten zu bestimmen.
  */
 public final class FontUtil
@@ -50,7 +53,22 @@ public final class FontUtil
      */
     public static int getDescent(Font font)
     {
-        return canvas.get().getFontMetrics(font).getDescent();
+        return getCanvas().getFontMetrics(font).getDescent();
+    }
+
+    private static Canvas getCanvas()
+    {
+        return canvas.get();
+    }
+
+    private static Graphics getGraphics()
+    {
+        return getCanvas().getGraphics();
+    }
+
+    public static FontRenderContext getFontRenderContext()
+    {
+        return new FontRenderContext(new AffineTransform(), true, true);
     }
 
     /**
@@ -67,32 +85,11 @@ public final class FontUtil
      *     {@link Rectangle2D#getHeight()} kann die Höhe ausgegeben werden und
      *     mit {@link Rectangle2D#getY()} die Position der Grundlinie.
      */
-    public static Rectangle2D getStringBounds(String content, Font font)
+    public static FontStringBounds getStringBounds(String content, Font font)
     {
-        Canvas canvas = FontUtil.canvas.get();
-        return canvas.getFontMetrics(font).getStringBounds(content,
-                canvas.getGraphics());
-    }
-
-    /**
-     * Bestimmt die <b>Abmessungen einer Zeichenkette</b> in einer bestimmten
-     * Schriftart in Pixel.
-     *
-     * @param content Die <b>Zeichenkette</b>, von der die Abmessungen bestimmt
-     *     werden sollen.
-     * @param font Die <b>Schriftart</b>, von der die Abmessungen bestimmt
-     *     werden sollen.
-     *
-     * @return Das umgebende Rechteck in Pixel. Mit der Methode
-     *     {@link Rectangle2D#getWidth()} kann die Breite, mit der Methode
-     *     {@link Rectangle2D#getHeight()} kann die Höhe ausgegeben werden und
-     *     mit {@link Rectangle2D#getY()} die Position der Grundlinie.
-     */
-    public static FontStringBounds getStringBoundsNg(String content, Font font)
-    {
-        Canvas canvas = FontUtil.canvas.get();
+        Canvas canvas = getCanvas();
         return new FontStringBounds(canvas.getFontMetrics(font)
-                .getStringBounds(content, canvas.getGraphics()));
+                .getStringBounds(content, getGraphics()));
     }
 
 }

@@ -23,7 +23,6 @@ package de.pirckheimer_gymnasium.engine_pi.actor;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
 
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Resources;
@@ -55,7 +54,7 @@ public class Text extends Geometry
     private static FixtureData createShape(String content, double height,
             Font font)
     {
-        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
+        var sizeInPixels = FontUtil.getStringBounds(content, font);
         return FixtureBuilder.rectangle(
                 sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
                 height);
@@ -350,7 +349,7 @@ public class Text extends Geometry
     @API
     public double getWidth()
     {
-        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
+        var sizeInPixels = FontUtil.getStringBounds(content, font);
         return sizeInPixels.getWidth() * height / sizeInPixels.getHeight();
     }
 
@@ -365,8 +364,8 @@ public class Text extends Geometry
     @API
     public Text setWidth(double width)
     {
-        Rectangle2D sizeInPixels = FontUtil.getStringBounds(content, font);
-        setHeight(width / sizeInPixels.getX() * sizeInPixels.getY());
+        var sizeInPixels = FontUtil.getStringBounds(content, font);
+        setHeight(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());
         return this;
     }
 
@@ -376,7 +375,7 @@ public class Text extends Geometry
     @Internal
     private void update()
     {
-        Rectangle2D size = FontUtil.getStringBounds(content, font);
+        var size = FontUtil.getStringBounds(content, font);
         cachedScaleFactor = height / size.getHeight();
         cachedDescent = FontUtil.getDescent(font);
         setFixture(() -> createShape(content, height, font));
@@ -414,7 +413,6 @@ public class Text extends Geometry
     public static void main(String[] args)
     {
         Game.start(scene -> {
-            scene.setBackgroundColor("white");
             scene.add(new Text("Text"));
         });
     }

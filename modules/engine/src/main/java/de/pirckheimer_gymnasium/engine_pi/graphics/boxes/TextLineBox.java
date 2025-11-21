@@ -99,7 +99,7 @@ public class TextLineBox extends LeafBox
 
     protected void calculateDimension()
     {
-        var bounds = FontUtil.getStringBoundsNg(content, font);
+        var bounds = FontUtil.getStringBounds(content, font);
         width = bounds.getWidth();
         height = bounds.getHeight();
         baseline = bounds.getBaseline();

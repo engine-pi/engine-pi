@@ -24,12 +24,11 @@ public class FontUtilTest
     @Test
     void testGetStringBounds()
     {
-        Rectangle2D bounds = FontUtil.getStringBounds(content, font);
+        var bounds = FontUtil.getStringBounds(content, font);
         assertNotNull(bounds);
         assertEquals(70.0, bounds.getWidth(), 10);
         assertEquals(13.8, bounds.getHeight(), 10);
-        assertEquals(-10.8, bounds.getY(), 10);
-        assertEquals(0, bounds.getX(), 10);
+        assertEquals(11, bounds.getBaseline(), 10);
     }
 
 }
