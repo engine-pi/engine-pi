@@ -52,9 +52,10 @@ public class TurtleStatistics
     public TurtleStatistics()
     {
         traveledDistance = 0;
-        textBox = new FramedTextBox(TextUtil.roundNumber(traveledDistance))
-                .borderThickness(0).backgroundColor(colors.get("grey", 50))
-                .textColor(colors.get("black"));
+        textBox = new FramedTextBox(TextUtil.roundNumber(traveledDistance));
+        textBox.border.thickness(0);
+        textBox.background.color(colors.get("grey", 50));
+        textBox.textLine.color("black");
         textBox.anchor(20, 20);
     }
 
@@ -71,7 +72,7 @@ public class TurtleStatistics
      */
     public void render(Graphics2D g)
     {
-        textBox.content(TextUtil.roundNumber(traveledDistance));
+        textBox.textLine.content(TextUtil.roundNumber(traveledDistance));
         textBox.measure();
         textBox.render(g);
     }

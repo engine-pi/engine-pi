@@ -32,14 +32,28 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.40.0
  */
-public class FramedTextBox extends FramedBox
+public class FramedBox extends CombinedChildBox
 {
-    public final TextLineBox textLine;
+    public final MarginBox margin;
 
-    public FramedTextBox(String content)
+    public final BorderBox border;
+
+    public final BackgroundBox background;
+
+    public final MarginBox padding;
+
+    public final DimensionBox dimension;
+
+    public final AlignBox align;
+
+    public FramedBox(Box child)
     {
-        super(null);
-        textLine = new TextLineBox(content);
-        addChild(textLine);
+        align = new AlignBox(child);
+        dimension = new DimensionBox(align);
+        padding = new MarginBox(dimension);
+        background = new BackgroundBox(padding);
+        border = new BorderBox(background);
+        margin = new MarginBox(border);
+        addChild(margin);
     }
 }

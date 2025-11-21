@@ -83,7 +83,7 @@ public class GridBox extends ChildsBox
 
     public Box[] getColumn(int column)
     {
-        Box[] childs = new Box[grid.length];
+        Box[] childs = new Box[rowCount()];
         for (int i = 0; i < childs.length; i++)
         {
             childs[i] = grid[i][column];
@@ -111,11 +111,40 @@ public class GridBox extends ChildsBox
         {
             child.calculateDimension();
         }
+
+        height = 0;
+        for (int row = 0; row < rowCount(); row++)
+        {
+            height += getMaxHeightOfRow(row);
+        }
+
+        width = 0;
+        for (int column = 0; column < columnCount(); column++)
+        {
+            width += getMaxWidthOfColumn(column);
+        }
     }
 
     @Override
     protected void calculateAnchors()
     {
+        int yCursor = 0;
+        for (int row = 0; row < rowCount(); row++)
+        {
+            int xCursor = 0;
+            for (int column = 0; column < columnCount(); column++)
+            {
+                Box child = getChild(row, column);
+                if (child != null)
+                {
+                    child.x = xCursor;
+                    child.y = yCursor;
+                }
+                xCursor += getMaxWidthOfColumn(column);
+            }
+            yCursor += getMaxHeightOfRow(row);
+        }
+
         for (Box child : childs)
         {
             child.calculateAnchors();

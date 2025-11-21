@@ -23,18 +23,21 @@ public class FramedTextBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        var allFeatures = framedText("All features")
-                .backgroundColor(backgroundColor).borderColor(borderColor)
-                .borderThickness(21).margin(10).padding(40);
+        var allFeatures = framedText("All features");
+        allFeatures.background.color(backgroundColor);
+        allFeatures.border.color(borderColor);
+        allFeatures.border.thickness(21);
+        allFeatures.margin.margin(10);
+        allFeatures.padding.margin(40);
 
-        var onlyBackground = framedText("only background")
-                .backgroundColor(backgroundColor);
+        var onlyBackground = framedText("only background");
+        onlyBackground.background.color(backgroundColor);
 
-        var onlyBorderColor = framedText("only borderColor")
-                .borderColor(borderColor);
+        var onlyBorderColor = framedText("only borderColor");
+        onlyBorderColor.border.color(borderColor);
 
-        var onlyBorderSize = framedText("only borderSize").borderThickness(13);
-
+        var onlyBorderSize = framedText("only borderSize");
+        onlyBorderSize.border.thickness(13);
         vertical(allFeatures, onlyBackground, onlyBorderColor, onlyBorderSize)
                 .anchor(0, 0).render(g);
 

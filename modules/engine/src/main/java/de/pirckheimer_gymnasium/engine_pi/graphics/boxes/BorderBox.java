@@ -51,8 +51,6 @@ public class BorderBox extends ChildBox
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code box.x(..).y(..)}.
      *
-     * @see FramedTextBox#borderThickness(int)
-     *
      * @since 0.40.0
      */
     public BorderBox thickness(int thickness)

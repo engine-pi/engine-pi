@@ -79,7 +79,6 @@ public abstract class TextBox extends LeafBox
      *
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
-     * @see FramedTextBox#content(String)
      *
      * @since 0.39.0
      */

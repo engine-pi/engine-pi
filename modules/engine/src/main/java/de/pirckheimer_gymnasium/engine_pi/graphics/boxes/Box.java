@@ -176,7 +176,7 @@ public abstract class Box implements Iterable<Box>
      * werden, <b>dann</b> die Abmessungen der <b>eigenen</b> Box.
      * </p>
      *
-     * <h4>SingleChildContainer-Code-Beispiel</h4>
+     * <h4>Single-Child-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -189,7 +189,7 @@ public abstract class Box implements Iterable<Box>
      * }
      * </pre>
      *
-     * <h4>MultipleChildContainer-Code-Beispiel</h4>
+     * <h4>Multiple-Child-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -222,7 +222,7 @@ public abstract class Box implements Iterable<Box>
      * <b>dann</b> die Ankerpunkte der <b>Kind</b>boxen.
      * </p>
      *
-     * <h4>SingleChildContainer-Code-Beispiel</h4>
+     * <h4>Single-Child-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
@@ -235,7 +235,7 @@ public abstract class Box implements Iterable<Box>
      * }
      * </pre>
      *
-     * <h4>MultipleChildContainer-Code-Beispiel</h4>
+     * <h4>Multiple-Child-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
