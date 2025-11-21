@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.border;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.margin;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.text;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textLine;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
 
 import java.awt.Font;
@@ -18,9 +18,9 @@ public class RotationDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        var defaultSettings = border(margin(border(text("default", font))));
+        var defaultSettings = border(margin(border(textLine("default", font))));
 
-        var manuel = margin(text("default", font)).margin(50);
+        var manuel = margin(textLine("default", font)).margin(50);
 
         AffineTransform oldTransform = g.getTransform();
 

@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.align;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.text;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textLine;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.CENTER;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.LEFT;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.RIGHT;
@@ -16,6 +16,8 @@ import java.awt.Graphics2D;
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment;
 import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/AlignBox.java
 
 public class AlignBoxDemo extends Graphics2DComponent
 {
@@ -53,9 +55,9 @@ public class AlignBoxDemo extends Graphics2DComponent
             break;
         }
 
-        background(align(text(String.format("%s %s", hAlign, vAlign))).h(hAlign)
-                .v(vAlign).width(180).height(150)).color(colors.get("red"))
-                .anchor(x, y).render(g);
+        background(align(textLine(String.format("%s %s", hAlign, vAlign)))
+                .h(hAlign).v(vAlign).width(180).height(150))
+                .color(colors.get("red")).anchor(x, y).render(g);
     }
 
     public void render(Graphics2D g)

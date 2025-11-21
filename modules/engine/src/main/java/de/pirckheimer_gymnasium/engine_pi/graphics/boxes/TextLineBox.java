@@ -27,7 +27,7 @@ import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBoxDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
 /**
  * Eine einzeilige <b>Text</b>box.
@@ -36,7 +36,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  *
  * @since 0.38.0
  */
-public class TextBox extends LeafBox
+public class TextLineBox extends LeafBox
 {
     /**
      * Der <b>Inhalt</b> der Textbox als Zeichenkette.
@@ -71,9 +71,9 @@ public class TextBox extends LeafBox
      *
      * @since 0.39.0
      *
-     * @see Box#text(String)
+     * @see Box#textLine(String)
      */
-    public TextBox(String content)
+    public TextLineBox(String content)
     {
         this.content = content;
         calculateDimension();
@@ -88,9 +88,9 @@ public class TextBox extends LeafBox
      *
      * @since 0.38.0
      *
-     * @see Box#text(String, Font)
+     * @see Box#textLine(String, Font)
      */
-    public TextBox(String content, Font font)
+    public TextLineBox(String content, Font font)
     {
         this.content = content;
         this.font = font;
@@ -116,7 +116,7 @@ public class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
-    public TextBox content(String content)
+    public TextLineBox content(String content)
     {
         this.content = content;
         calculateDimension();
@@ -131,7 +131,7 @@ public class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
-    public TextBox font(Font font)
+    public TextLineBox font(Font font)
     {
         this.font = font;
         calculateDimension();
@@ -141,20 +141,20 @@ public class TextBox extends LeafBox
     /**
      * @param fontSize Die Schriftgröße in Punkten (Points pt)
      */
-    public TextBox fontSize(double fontSize)
+    public TextLineBox fontSize(double fontSize)
     {
         font = font.deriveFont((float) fontSize);
         calculateDimension();
         return this;
     }
 
-    public TextBox color(Color color)
+    public TextLineBox color(Color color)
     {
         this.color = color;
         return this;
     }
 
-    public TextBox color(String color)
+    public TextLineBox color(String color)
     {
         this.color = colors.get(color);
         return this;

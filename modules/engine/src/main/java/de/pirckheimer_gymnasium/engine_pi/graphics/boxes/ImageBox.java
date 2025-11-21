@@ -32,6 +32,28 @@ public class ImageBox extends LeafBox implements FixedSizeSetter
         this(images.get(image));
     }
 
+    public ImageBox flippedVertically(boolean flippedVertically)
+    {
+        this.flippedVertically = flippedVertically;
+        return this;
+    }
+
+    public ImageBox flippedVertically()
+    {
+        return flippedVertically(true);
+    }
+
+    public ImageBox flippedHorizontally(boolean flippedHorizontally)
+    {
+        this.flippedHorizontally = flippedHorizontally;
+        return this;
+    }
+
+    public ImageBox flippedHorizontally()
+    {
+        return flippedHorizontally(true);
+    }
+
     @Override
     protected void calculateDimension()
     {
@@ -50,14 +72,11 @@ public class ImageBox extends LeafBox implements FixedSizeSetter
     @Override
     void draw(Graphics2D g)
     {
-        AffineTransform pre = g.getTransform();
-        // g.scale(1, 1);
-        // g.drawImage(image, flippedHorizontally ? width : 0,
-        // -height + (flippedVertically ? height : 0),
-        // (flippedHorizontally ? -1 : 1) * width,
-        // (flippedVertically ? -1 : 1) * height, null);
-
-        g.drawImage(image, x, y, width, height, null);
-        g.setTransform(pre);
+        AffineTransform oldTransfer = g.getTransform();
+        g.drawImage(image, flippedHorizontally ? x + width : x,
+                flippedVertically ? y + height : y,
+                (flippedHorizontally ? -1 : 1) * width,
+                (flippedVertically ? -1 : 1) * height, null);
+        g.setTransform(oldTransfer);
     }
 }

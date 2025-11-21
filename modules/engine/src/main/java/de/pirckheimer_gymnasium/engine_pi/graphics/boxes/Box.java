@@ -418,6 +418,11 @@ public abstract class Box implements Iterable<Box>
         return new MarginBox(child);
     }
 
+    public static TextBlockBox textBlock(String content)
+    {
+        return new TextBlockBox(content);
+    }
+
     /**
      * Erzeugt eine <b>Text</b>box.
      *
@@ -425,11 +430,11 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.39.0
      *
-     * @see TextBox#TextBox(String)
+     * @see TextLineBox#TextLineBox(String)
      */
-    public static TextBox text(String content)
+    public static TextLineBox textLine(String content)
     {
-        return new TextBox(content);
+        return new TextLineBox(content);
     }
 
     /**
@@ -441,11 +446,11 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.39.0
      *
-     * @see TextBox#TextBox(String, Font)
+     * @see TextLineBox#TextLineBox(String, Font)
      */
-    public static TextBox text(String content, Font font)
+    public static TextLineBox textLine(String content, Font font)
     {
-        return new TextBox(content, font);
+        return new TextLineBox(content, font);
     }
 
     /**

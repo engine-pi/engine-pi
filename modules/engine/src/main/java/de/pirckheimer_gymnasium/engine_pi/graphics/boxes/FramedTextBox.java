@@ -44,11 +44,11 @@ public class FramedTextBox extends CombinedChildBox
 
     private MarginBox padding;
 
-    private TextBox text;
+    private TextLineBox text;
 
     public FramedTextBox(String content)
     {
-        text = new TextBox(content);
+        text = new TextLineBox(content);
         padding = new MarginBox(text);
         background = new BackgroundBox(padding);
         border = new BorderBox(background);
@@ -155,7 +155,7 @@ public class FramedTextBox extends CombinedChildBox
      *
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
-     * @see TextBox#content(String)
+     * @see TextLineBox#content(String)
      *
      * @since 0.39.0
      */
