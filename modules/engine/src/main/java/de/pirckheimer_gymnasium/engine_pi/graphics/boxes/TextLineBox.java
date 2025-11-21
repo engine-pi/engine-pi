@@ -18,9 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -36,29 +33,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  *
  * @since 0.38.0
  */
-public class TextLineBox extends LeafBox
+public class TextLineBox extends TextBox
 {
-    /**
-     * Der <b>Inhalt</b> der Textbox als Zeichenkette.
-     *
-     * @since 0.38.0
-     */
-    private String content;
-
-    /**
-     *
-     */
-    private double fontSize = 16;
-
-    /**
-     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @since 0.38.0
-     */
-    private Font font = fonts.getDefault().deriveFont((float) fontSize);
-
-    private Color color;
-
     /**
      * @since 0.38.0
      */
@@ -75,26 +51,7 @@ public class TextLineBox extends LeafBox
      */
     public TextLineBox(String content)
     {
-        this.content = content;
-        calculateDimension();
-    }
-
-    /**
-     * Erzeugt eine <b>Text</b>box.
-     *
-     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
-     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
-     *     soll.
-     *
-     * @since 0.38.0
-     *
-     * @see Box#textLine(String, Font)
-     */
-    public TextLineBox(String content, Font font)
-    {
-        this.content = content;
-        this.font = font;
-        calculateDimension();
+        super(content);
     }
 
     protected void calculateDimension()
@@ -103,61 +60,6 @@ public class TextLineBox extends LeafBox
         width = bounds.getWidth();
         height = bounds.getHeight();
         baseline = bounds.getBaseline();
-    }
-
-    /* Setter */
-
-    /**
-     * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
-     *
-     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
-     *
-     * @see FramedTextBox#content(String)
-     *
-     * @since 0.39.0
-     */
-    public TextLineBox content(String content)
-    {
-        this.content = content;
-        calculateDimension();
-        return this;
-    }
-
-    /**
-     * Setzt die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
-     *     soll.
-     *
-     * @since 0.39.0
-     */
-    public TextLineBox font(Font font)
-    {
-        this.font = font;
-        calculateDimension();
-        return this;
-    }
-
-    /**
-     * @param fontSize Die Schriftgröße in Punkten (Points pt)
-     */
-    public TextLineBox fontSize(double fontSize)
-    {
-        font = font.deriveFont((float) fontSize);
-        calculateDimension();
-        return this;
-    }
-
-    public TextLineBox color(Color color)
-    {
-        this.color = color;
-        return this;
-    }
-
-    public TextLineBox color(String color)
-    {
-        this.color = colors.get(color);
-        return this;
     }
 
     @Override

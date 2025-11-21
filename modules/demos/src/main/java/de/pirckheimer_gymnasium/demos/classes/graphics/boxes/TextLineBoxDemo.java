@@ -21,7 +21,7 @@ public class TextLineBoxDemo extends Graphics2DComponent
 
         var box = vertical(textLine("default"),
                 textLine("different fontSize").fontSize(42),
-                textLine("custom Font", font),
+                textLine("custom Font").font(font),
                 textLine("custom color").color("orange"),
                 textLine("custom content").content("updated content"));
         box.anchor(200, 100);

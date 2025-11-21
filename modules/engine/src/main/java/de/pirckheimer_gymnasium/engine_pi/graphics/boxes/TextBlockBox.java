@@ -18,10 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
-
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.font.FontRenderContext;
@@ -44,62 +40,22 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  *
  * @since 0.41.0
  */
-public class TextBlockBox extends LeafBox
+public class TextBlockBox extends TextBox
 {
-    /**
-     * Der <b>Inhalt</b> des Textblocks als Zeichenkette.
-     *
-     * @since 0.41.0
-     */
-    private String content;
-
     List<TextLayout> lines = new ArrayList<>();
 
     /**
-     * @since 0.41.0
-     */
-    private double fontSize = 16;
-
-    /**
-     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @since 0.41.0
-     */
-    private Font font = fonts.getDefault().deriveFont((float) fontSize);
-
-    private Color color;
-
-    /**
      * Erzeugt eineen <b>Text</b>block.
      *
      * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
      *
-     * @since @since 0.41.0
+     * @since 0.41.0
      *
-     * @see Box#textLine(String)
+     * @see Box#textBlock(String)
      */
     public TextBlockBox(String content)
     {
-        this.content = content;
-        calculateDimension();
-    }
-
-    /**
-     * Erzeugt eineen <b>Text</b>block.
-     *
-     * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
-     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
-     *     soll.
-     *
-     * @since 0.41.0
-     *
-     * @see Box#textLine(String, Font)
-     */
-    public TextBlockBox(String content, Font font)
-    {
-        this.content = content;
-        this.font = font;
-        calculateDimension();
+        super(content);
     }
 
     protected void calculateDimension()
@@ -112,70 +68,17 @@ public class TextBlockBox extends LeafBox
         height = dim.height;
     }
 
-    /* Setter */
-
     public TextBlockBox width(int width)
     {
         definedWidth = width;
         return this;
     }
 
-    /**
-     * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
-     *
-     * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
-     *
-     * @see FramedTextBox#content(String)
-     *
-     * @since 0.39.0
-     */
-    public TextBlockBox content(String content)
-    {
-        this.content = content;
-        calculateDimension();
-        return this;
-    }
-
-    /**
-     * Setzt die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
-     *     soll.
-     *
-     * @since 0.39.0
-     */
-    public TextBlockBox font(Font font)
-    {
-        this.font = font;
-        calculateDimension();
-        return this;
-    }
-
-    /**
-     * @param fontSize Die Schriftgröße in Punkten (Points pt)
-     */
-    public TextBlockBox fontSize(double fontSize)
-    {
-        font = font.deriveFont((float) fontSize);
-        calculateDimension();
-        return this;
-    }
-
-    public TextBlockBox color(Color color)
-    {
-        this.color = color;
-        return this;
-    }
-
-    public TextBlockBox color(String color)
-    {
-        this.color = colors.get(color);
-        return this;
-    }
-
     private static List<TextLayout> splitIntoLines(String content,
             FontRenderContext context, Font font, float wrappingWidth)
     {
+        // Source:
+        // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
         ArrayList<TextLayout> lines = new ArrayList<>();
         for (String line : content.split(System.lineSeparator()))
         {
@@ -200,6 +103,8 @@ public class TextBlockBox extends LeafBox
 
     private static PixelDimension measureLines(List<TextLayout> lines)
     {
+        // Source:
+        // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
         PixelDimension dim = new PixelDimension();
         float maxWidth = 0;
         float height = 0;

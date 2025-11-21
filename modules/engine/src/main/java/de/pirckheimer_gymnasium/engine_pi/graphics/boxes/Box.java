@@ -18,7 +18,6 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Collections;
@@ -447,22 +446,6 @@ public abstract class Box implements Iterable<Box>
     public static TextLineBox textLine(String content)
     {
         return new TextLineBox(content);
-    }
-
-    /**
-     * Erzeugt eine <b>Text</b>box.
-     *
-     * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
-     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
-     *     soll.
-     *
-     * @since 0.39.0
-     *
-     * @see TextLineBox#TextLineBox(String, Font)
-     */
-    public static TextLineBox textLine(String content, Font font)
-    {
-        return new TextLineBox(content, font);
     }
 
     /**

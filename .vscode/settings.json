@@ -20,7 +20,7 @@
     "Tile.java": "LetterTileMap.java, TileMap.java, TileRegistration.java",
     // engine_pi/graphics/boxes
     "ChildBox.java": "AlignBox.java, BackgroundBox.java, BorderBox.java, DimensionBox.java, MarginBox.java",
-    "LeafBox.java": "EmptyBox.java, ImageBox.java, TextBlockBox.java, TextLineBox.java",
+    "LeafBox.java": "EmptyBox.java, ImageBox.java, TextBox.java, TextBlockBox.java, TextLineBox.java",
     "CombinedChildBox.java": "FramedTextBox.java",
     "VAlignment.java": "HAlignment.java",
     "ChildsBox.java": "VerticalBox.java, GridBox.java, HorizontalBox.java",

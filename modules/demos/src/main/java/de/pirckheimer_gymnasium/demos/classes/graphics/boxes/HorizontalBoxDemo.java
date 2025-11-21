@@ -17,9 +17,9 @@ public class HorizontalBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        var box = horizontal(textLine("Text 1", font),
-                textLine("Text 2", font.deriveFont(32f)),
-                textLine("Text 3", font));
+        var box = horizontal(textLine("Text 1"),
+                textLine("Text 2").font(font.deriveFont(32f)),
+                textLine("Text 3"));
         box.anchor(200, 100);
         box.render(g);
     }
