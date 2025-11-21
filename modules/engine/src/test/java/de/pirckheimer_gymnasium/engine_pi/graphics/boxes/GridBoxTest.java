@@ -13,33 +13,40 @@ public class GridBoxTest
     @Test
     void columns()
     {
-        assertEquals(2, gridBox.columns());
+        assertEquals(2, gridBox.columnCount());
     }
 
     @Test
     void rows()
     {
-        assertEquals(3, gridBox.rows());
+        assertEquals(3, gridBox.rowCount());
+    }
+
+    @Test
+    void gridArray()
+    {
+        assertEquals(3, gridBox.grid.length);
+        assertEquals(2, gridBox.grid[0].length);
     }
 
     @Test
     void getRow()
     {
-        assertEquals(2, gridBox.getRow(0).size());
-        assertEquals(2, gridBox.getRow(1).size());
-        assertEquals(1, gridBox.getRow(2).size());
+        assertEquals(2, gridBox.getRow(0).length);
+        assertEquals(2, gridBox.getRow(1).length);
+        assertEquals(2, gridBox.getRow(2).length);
     }
 
     @Test
     void getColumn()
     {
-        assertEquals(3, gridBox.getColumn(0).size());
-        assertEquals(2, gridBox.getColumn(1).size());
+        assertEquals(3, gridBox.getColumn(0).length);
+        assertEquals(3, gridBox.getColumn(1).length);
 
         GridBox g2 = grid(empty(27)).columns(4);
-        assertEquals(7, g2.getColumn(0).size());
-        assertEquals(7, g2.getColumn(1).size());
-        assertEquals(7, g2.getColumn(2).size());
-        assertEquals(6, g2.getColumn(3).size());
+        assertEquals(7, g2.getColumn(0).length);
+        assertEquals(7, g2.getColumn(1).length);
+        assertEquals(7, g2.getColumn(2).length);
+        assertEquals(7, g2.getColumn(3).length);
     }
 }

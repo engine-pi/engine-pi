@@ -1,21 +1,23 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import java.util.ArrayList;
-
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
 
 public class GridBox extends ChildsBox
 {
     int columns = 2;
 
+    Box[][] grid;
+
     public GridBox(Box... childs)
     {
         super(childs);
+        buildGrid();
     }
 
     public GridBox columns(int columns)
     {
         this.columns = columns;
+        buildGrid();
         return this;
     }
 
@@ -24,7 +26,7 @@ public class GridBox extends ChildsBox
      *
      * @return Die Anzahl der Spalten.
      */
-    public int columns()
+    public int columnCount()
     {
         return columns;
     }
@@ -34,32 +36,72 @@ public class GridBox extends ChildsBox
      *
      * @return Die Anzahl der Reihen.
      */
-    public int rows()
+    public int rowCount()
     {
         return (int) Math.ceil((double) numberOfChilds() / columns);
     }
 
-    public ArrayList<Box> getRow(int row)
+    private void buildGrid()
     {
-        // Anfangsindex
-        final int start = row * columns;
-        ArrayList<Box> rowChilds = new ArrayList<>();
-        for (int i = start; i < Math.min(numberOfChilds(),
-                start + columns); i++)
+        grid = new Box[rowCount()][columnCount()];
+        for (int column = 0; column < columnCount(); column++)
         {
-            rowChilds.add(childs.get(i));
+            for (int row = 0; row < rowCount(); row++)
+            {
+                grid[row][column] = getChild(row, column);
+            }
         }
-        return rowChilds;
     }
 
-    public ArrayList<Box> getColumn(int column)
+    private Box getChild(int row, int column)
     {
-        ArrayList<Box> columnChilds = new ArrayList<>();
-        for (int i = column; i < numberOfChilds(); i += columns())
+        int index = row * columnCount() + column;
+        if (index < numberOfChilds())
         {
-            columnChilds.add(childs.get(i));
+            return childs.get(index);
         }
-        return columnChilds;
+        return null;
+    }
+
+    public Box[] getRow(int row)
+    {
+        return grid[row];
+    }
+
+    public int getMaxHeightOfRow(int row)
+    {
+        int maxHeight = 0;
+        for (Box box : getRow(row))
+        {
+            if (box != null & box.height > maxHeight)
+            {
+                maxHeight = box.height;
+            }
+        }
+        return maxHeight;
+    }
+
+    public Box[] getColumn(int column)
+    {
+        Box[] childs = new Box[grid.length];
+        for (int i = 0; i < childs.length; i++)
+        {
+            childs[i] = grid[i][column];
+        }
+        return childs;
+    }
+
+    public int getMaxWidthOfColumn(int column)
+    {
+        int maxWidth = 0;
+        for (Box box : getColumn(column))
+        {
+            if (box != null & box.width > maxWidth)
+            {
+                maxWidth = box.width;
+            }
+        }
+        return maxWidth;
     }
 
     @Override
