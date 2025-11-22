@@ -1,10 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
+import static de.pirckheimer_gymnasium.demos.classes.graphics.boxes.DemoBoxes.demo;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.horizontal;
 
-import java.awt.Font;
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
@@ -13,13 +12,11 @@ import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 
 public class HorizontalBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault().deriveFont(64f);
 
     public void render(Graphics2D g)
     {
-        var box = horizontal(textLine("Text 1"),
-                textLine("Text 2").font(font.deriveFont(32f)),
-                textLine("Text 3"));
+        var box = border(horizontal(demo("Text 1"), demo("Text 2", 100, 70),
+                demo("Text 3")).padding(10));
         box.anchor(200, 100);
         box.render(g);
     }

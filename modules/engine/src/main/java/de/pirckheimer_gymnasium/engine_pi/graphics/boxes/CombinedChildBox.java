@@ -37,7 +37,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *         // child -> parent
  *         content = child;
  *         align = new AlignBox(child);
- *         dimension = new DimensionBox(align);
+ *         dimension = align;
  *         addChild(dimension);
  *     }
  * }

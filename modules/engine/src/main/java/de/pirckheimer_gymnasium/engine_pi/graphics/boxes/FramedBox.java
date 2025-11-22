@@ -52,7 +52,7 @@ public class FramedBox extends CombinedChildBox
     {
         content = child;
         align = new AlignBox(child);
-        dimension = new DimensionBox(align);
+        dimension = align;
         padding = new MarginBox(dimension);
         background = new BackgroundBox(padding);
         border = new BorderBox(background);

@@ -23,7 +23,7 @@
     "LeafBox.java": "EmptyBox.java, ImageBox.java, TextBox.java, TextBlockBox.java, TextLineBox.java",
     "CombinedChildBox.java": "FramedBox.java, FramedTextBox.java",
     "VAlignment.java": "HAlignment.java",
-    "ChildsBox.java": "VerticalBox.java, GridBox.java, HorizontalBox.java",
+    "ChildsBox.java": "GridBox.java, HorizontalBox.java, PaddingBox.java, VerticalBox.java",
     "TurtleController.java": "AutoStartTurtleController.java, TurtleAnimationController.java, TurtleBackgroundController.java, TurtleDressController.java, TurtlePenController.java, TurtleWindowController.java",
     "TurtleGraphicsCollection.java": "TurtleGraphics.java, TurtleGraphicsSeries.java"
   },

@@ -28,7 +28,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.39.0
  */
-public class HorizontalBox extends ChildsBox
+public class HorizontalBox extends PaddingBox
 {
     /**
      * Erzeugt eine neue <b>horizontale</b> Box.
@@ -58,18 +58,20 @@ public class HorizontalBox extends ChildsBox
                 maxHeight = child.height;
             }
         }
-        height = maxHeight;
+
+        width += (numberOfChilds() + 1) * padding;
+        height = maxHeight + 2 * padding;
     }
 
     @Override
     protected void calculateAnchors()
     {
-        int xCursor = x;
+        int xCursor = x + padding;
         for (Box child : childs)
         {
             child.x = xCursor;
-            child.y = y;
-            xCursor += child.width;
+            child.y = y + padding;
+            xCursor += child.width + padding;
             child.calculateAnchors();
         }
     }

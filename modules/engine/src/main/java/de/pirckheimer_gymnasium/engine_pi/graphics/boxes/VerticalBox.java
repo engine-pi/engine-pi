@@ -28,7 +28,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.38.0
  */
-public class VerticalBox extends ChildsBox
+public class VerticalBox extends PaddingBox
 {
     /**
      * Erzeugt eine neue <b>vertikale</b> Box.

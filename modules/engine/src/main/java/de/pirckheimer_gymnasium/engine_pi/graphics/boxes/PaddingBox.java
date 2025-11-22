@@ -18,58 +18,23 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import java.awt.Graphics2D;
-
 /**
- * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
- *
  * @author Josef Friedrich
  *
- * @since 0.38.0
+ * @since 0.41.0
  */
-abstract class ChildsBox extends Box
+public abstract class PaddingBox extends ChildsBox
 {
-    /**
-     * @since 0.38.0
-     */
-    public ChildsBox(Box... childs)
+    int padding = 0;
+
+    public PaddingBox(Box... childs)
     {
-        for (Box child : childs)
-        {
-            this.childs.add(child);
-            child.parent = this;
-        }
+        super(childs);
     }
 
-    public int numberOfChilds()
+    public PaddingBox padding(int padding)
     {
-        return childs.size();
-    }
-
-    @Override
-    protected void calculateDimension()
-    {
-        for (Box child : childs)
-        {
-            child.calculateDimension();
-        }
-    }
-
-    @Override
-    protected void calculateAnchors()
-    {
-        for (Box child : childs)
-        {
-            child.calculateAnchors();
-        }
-    }
-
-    @Override
-    void draw(Graphics2D g)
-    {
-        for (Box child : childs)
-        {
-            child.draw(g);
-        }
+        this.padding = padding;
+        return this;
     }
 }

@@ -19,8 +19,6 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Graphics2D;
-import java.util.Collections;
-import java.util.Iterator;
 
 /**
  * Eine Box, die nur eine einzige <b>Kind-Box</b> enthält.
@@ -39,13 +37,6 @@ abstract class ChildBox extends Box
     public ChildBox()
     {
         this(null);
-    }
-
-    @Override
-    public Iterator<Box> iterator()
-    {
-        return child == null ? Collections.<Box>emptyIterator()
-                : Collections.singleton(child).iterator();
     }
 
     /**
@@ -68,8 +59,11 @@ abstract class ChildBox extends Box
         {
             child.parent = this;
         }
+        childs.clear();
+        childs.add(child);
     }
 
+    @Override
     public int numberOfChilds()
     {
         return 1;

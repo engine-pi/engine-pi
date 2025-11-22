@@ -19,8 +19,10 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Eine <b>Box</b> beschreibt eine rechteckige grafische Fläche, die weitere
@@ -32,6 +34,21 @@ import java.util.Iterator;
  */
 public abstract class Box implements Iterable<Box>
 {
+    /**
+     * Alle <b>Kinder-Boxen</b>, die diese Box enthält.
+     *
+     * @since 0.41.0
+     */
+    protected List<Box> childs = new ArrayList<Box>();
+
+    /**
+     * Die <b>übergeordnete</b> Box, in der diese Box enthalten ist. Dieses
+     * Attribut kann {@code null} sein, wenn keine Elternbox vorhanden ist.
+     *
+     * @since 0.38.0
+     */
+    protected Box parent;
+
     /**
      * Zeigt an, ob die Box bereits <b>ausgemessen</b> wurde.
      */
@@ -80,14 +97,6 @@ public abstract class Box implements Iterable<Box>
     protected int y;
 
     /**
-     * Die <b>übergeordnete</b> Box, in der diese Box enthalten ist. Dieses
-     * Attribut kann {@code null} sein, wenn keine Elternbox vorhanden ist.
-     *
-     * @since 0.38.0
-     */
-    protected Box parent;
-
-    /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.
      *
      * Standardmäßig sind Boxen ohne Kinder definiert — Container-Subklassen
@@ -100,7 +109,7 @@ public abstract class Box implements Iterable<Box>
     @Override
     public Iterator<Box> iterator()
     {
-        return Collections.emptyIterator();
+        return Collections.unmodifiableList(childs).iterator();
     }
 
     /* Setter */
@@ -164,6 +173,11 @@ public abstract class Box implements Iterable<Box>
 
     /* Methods */
 
+    /**
+     * Gibt die <b>Anzahl an Kinder-Boxen</b> zurück.
+     *
+     * @return Die <b>Anzahl an Kinder-Boxen</b>.
+     */
     public abstract int numberOfChilds();
 
     /**

@@ -14,7 +14,6 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.TextLineBox;
 
 class MarginTestBox extends CombinedChildBox
 {
-
     BorderBox outerBorder;
 
     MarginBox margin;
@@ -37,7 +36,6 @@ class MarginTestBox extends CombinedChildBox
 
 public class MarginBoxDemo extends Graphics2DComponent
 {
-
     private MarginTestBox box(String content)
     {
         return new MarginTestBox(content);

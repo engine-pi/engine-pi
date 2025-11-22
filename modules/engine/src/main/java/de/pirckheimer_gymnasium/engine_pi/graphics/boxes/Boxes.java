@@ -26,7 +26,8 @@ public final class Boxes
     }
 
     /**
-     * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
+     * Erzeugt einen neuen Rahmen mit einer Linienstärke von einem Pixel um die
+     * enthaltene Kind-Box.
      *
      * @param child Die <b>Kind-Box</b>, die umrahmt werden soll.
      *
@@ -36,7 +37,7 @@ public final class Boxes
      */
     public static BorderBox border(Box child)
     {
-        return new BorderBox(child);
+        return new BorderBox(child).thickness(1);
     }
 
     public static DimensionBox dimension(Box child)
