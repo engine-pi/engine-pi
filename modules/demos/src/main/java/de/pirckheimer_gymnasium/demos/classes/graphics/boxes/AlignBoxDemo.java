@@ -4,25 +4,25 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.align;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.background;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.CENTER;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.LEFT;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.RIGHT;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment.BOTTOM;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment.MIDDLE;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment.TOP;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.CENTER;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.LEFT;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.RIGHT;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.BOTTOM;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.MIDDLE;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.TOP;
 
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/AlignBox.java
 
 public class AlignBoxDemo extends Graphics2DComponent
 {
 
-    private void makeBox(Graphics2D g, HAlignment hAlign, VAlignment vAlign)
+    private void makeBox(Graphics2D g, HAlign hAlign, VAlign vAlign)
     {
         int x = 0;
         int y = 0;
@@ -56,7 +56,7 @@ public class AlignBoxDemo extends Graphics2DComponent
         }
 
         background(align(textLine(String.format("%s %s", hAlign, vAlign)))
-                .h(hAlign).v(vAlign).width(180).height(150))
+                .hAlign(hAlign).vAlign(vAlign).width(180).height(150))
                 .color(colors.get("red")).anchor(x, y).render(g);
     }
 

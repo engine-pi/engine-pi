@@ -3,26 +3,27 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/AlignBoxDemo.java
 
 /**
- * Eine größere Box, in die eine kleiner Boxen eingesetzt werden kann.
+ * Eine größere Box, in die eine kleiner Box eingesetzt und <b>ausgerichtet</b>
+ * (vertikal und horizontal) werden kann.
  */
 public class AlignBox extends DimensionBox
 {
-    HAlignment hAlign = HAlignment.LEFT;
+    HAlign hAlign = HAlign.LEFT;
 
-    VAlignment vAlign = VAlignment.TOP;
+    VAlign vAlign = VAlign.TOP;
 
     public AlignBox(Box child)
     {
         super(child);
     }
 
-    public AlignBox h(HAlignment hAlign)
+    public AlignBox hAlign(HAlign hAlign)
     {
         this.hAlign = hAlign;
         return this;
     }
 
-    public AlignBox v(VAlignment vAlign)
+    public AlignBox vAlign(VAlign vAlign)
     {
         this.vAlign = vAlign;
         return this;

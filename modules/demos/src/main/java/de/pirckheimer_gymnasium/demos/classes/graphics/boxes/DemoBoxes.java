@@ -3,8 +3,8 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlignment;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign;
 
 public class DemoBoxes
 {
@@ -13,8 +13,8 @@ public class DemoBoxes
         FramedTextBox box = new FramedTextBox("");
         box.background.color(colors.get("blue", 100));
         box.padding.allSides(10);
-        box.align.h(HAlignment.CENTER);
-        box.align.v(VAlignment.MIDDLE);
+        box.align.hAlign(HAlign.CENTER);
+        box.align.vAlign(VAlign.MIDDLE);
         return box;
     }
 

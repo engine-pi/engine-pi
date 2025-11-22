@@ -3,9 +3,9 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.grid;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textBlock;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.CENTER;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.LEFT;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.RIGHT;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.CENTER;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.LEFT;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.RIGHT;
 
 import java.awt.Graphics2D;
 import java.util.function.Consumer;

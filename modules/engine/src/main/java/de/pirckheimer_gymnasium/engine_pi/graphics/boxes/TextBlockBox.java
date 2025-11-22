@@ -42,7 +42,7 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
-    HAlignment hAlignment = HAlignment.LEFT;
+    HAlign hAlignment = HAlign.LEFT;
 
     List<TextLayout> lines = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
-    public TextBlockBox hAlign(HAlignment hAlignment)
+    public TextBlockBox hAlign(HAlign hAlignment)
     {
         this.hAlignment = hAlignment;
         return this;
@@ -118,12 +118,25 @@ public class TextBlockBox extends TextBox
         float height = 0;
         for (TextLayout line : lines)
         {
+            // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
+            // Vorschub des Zeichen ganz rechts.
             float width = line.getAdvance();
             if (width > maxWidth)
             {
                 maxWidth = width;
             }
-            height += line.getAscent() + line.getDescent() + line.getLeading();
+            height +=
+                    // Ascent: der Abstand von der oberen rechten Ecke des
+                    // Textlayouts zur Grundlinie.
+                    line.getAscent() +
+                    // Descent: Entfernung von der Grundlinie zum unteren linken
+                    // Rand
+                    // des Textlayouts
+                            line.getDescent() +
+                            // Leading: empfohlener Zeilenabstand relativ zur
+                            // Grundlinie.
+                            // Scheint meistens 0.0 zu sein?
+                            line.getLeading();
         }
         dim.width = (int) Math.ceil(maxWidth);
         dim.height = (int) Math.ceil(height);
@@ -139,8 +152,9 @@ public class TextBlockBox extends TextBox
             // Ascent: der Abstand von der oberen rechten Ecke des
             // Textlayouts zur Grundlinie.
             yCursor += line.getAscent();
-
             float xCursor = (float) x;
+            // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
+            // Vorschub des Zeichen ganz rechts.
             float lineWidth = line.getAdvance();
             switch (hAlignment)
             {
@@ -160,7 +174,8 @@ public class TextBlockBox extends TextBox
             // Descent: Entfernung von der Grundlinie zum unteren linken Rand
             // des Textlayouts
             yCursor += line.getDescent() +
-            // Leading: empfohlener Zeilenabstand relativ zur Grundlinie
+            // Leading: empfohlener Zeilenabstand relativ zur Grundlinie.
+            // Scheint meistens 0.0 zu sein?
                     line.getLeading();
         }
     }
