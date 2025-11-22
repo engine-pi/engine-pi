@@ -86,6 +86,11 @@ public class BorderBox extends ChildBox
         return this;
     }
 
+    public BorderBox color(String color)
+    {
+        return color(colors.get(color));
+    }
+
     /* Getter */
 
     @Override

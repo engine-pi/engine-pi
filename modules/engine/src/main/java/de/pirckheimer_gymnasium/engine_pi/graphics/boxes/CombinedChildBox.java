@@ -21,6 +21,29 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 /**
  * Eine Box, die aus mehreren primitiven Kind-Boxen <b>kombiniert</b> ist.
  *
+ * <pre>
+ * {@code
+ * public class FramedBox extends CombinedChildBox
+ * {
+ *     // parent -> child
+ *     public final DimensionBox dimension;
+ *
+ *     public final AlignBox align;
+ *
+ *     public final Box content;
+ *
+ *     public FramedBox(Box child)
+ *     {
+ *         // child -> parent
+ *         content = child;
+ *         align = new AlignBox(child);
+ *         dimension = new DimensionBox(align);
+ *         addChild(dimension);
+ *     }
+ * }
+ * }
+ * </pre>
+ *
  * <p>
  * Es handelt sich also um eine eine virtuelle, transparente Box, die keine
  * Zeichnenroutinen ausführt.
@@ -30,7 +53,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  *
  * @since 0.40.0
  */
-abstract class CombinedChildBox extends ChildBox
+public abstract class CombinedChildBox extends ChildBox
 {
     @Override
     protected void calculateDimension()
