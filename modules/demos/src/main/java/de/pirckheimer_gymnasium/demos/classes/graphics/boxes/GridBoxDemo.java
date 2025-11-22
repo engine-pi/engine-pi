@@ -2,6 +2,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.framedText;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.grid;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
 
 import java.awt.Graphics2D;
 
@@ -33,7 +34,7 @@ public class GridBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        var box = grid(boxes(9));
+        var box = border(grid(boxes(10)).columns(3).padding(10));
         box.anchor(200, 100);
         box.render(g);
     }

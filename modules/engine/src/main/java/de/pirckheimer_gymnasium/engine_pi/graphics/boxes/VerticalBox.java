@@ -58,18 +58,19 @@ public class VerticalBox extends PaddingBox
             }
             height += child.height;
         }
-        width = maxWidth;
+        width = maxWidth + 2 * padding;
+        height += (numberOfChilds() + 1) * padding;
     }
 
     @Override
     protected void calculateAnchors()
     {
-        int yCursor = y;
+        int yCursor = y + padding;
         for (Box child : childs)
         {
-            child.x = x;
+            child.x = x + padding;
             child.y = yCursor;
-            yCursor += child.height;
+            yCursor += child.height + padding;
             child.calculateAnchors();
         }
     }

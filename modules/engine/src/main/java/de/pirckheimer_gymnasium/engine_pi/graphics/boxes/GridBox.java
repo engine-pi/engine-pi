@@ -2,7 +2,7 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
 
-public class GridBox extends ChildsBox
+public class GridBox extends PaddingBox
 {
     int columns = 2;
 
@@ -112,26 +112,29 @@ public class GridBox extends ChildsBox
             child.calculateDimension();
         }
 
+        width = 0;
+        for (int column = 0; column < columnCount(); column++)
+        {
+            width += getMaxWidthOfColumn(column);
+        }
+
         height = 0;
         for (int row = 0; row < rowCount(); row++)
         {
             height += getMaxHeightOfRow(row);
         }
 
-        width = 0;
-        for (int column = 0; column < columnCount(); column++)
-        {
-            width += getMaxWidthOfColumn(column);
-        }
+        width += (columnCount() + 1) * padding;
+        height += (rowCount() + 1) * padding;
     }
 
     @Override
     protected void calculateAnchors()
     {
-        int yCursor = 0;
+        int yCursor = y + padding;
         for (int row = 0; row < rowCount(); row++)
         {
-            int xCursor = 0;
+            int xCursor = x + padding;
             for (int column = 0; column < columnCount(); column++)
             {
                 Box child = getChild(row, column);
@@ -140,9 +143,9 @@ public class GridBox extends ChildsBox
                     child.x = xCursor;
                     child.y = yCursor;
                 }
-                xCursor += getMaxWidthOfColumn(column);
+                xCursor += getMaxWidthOfColumn(column) + padding;
             }
-            yCursor += getMaxHeightOfRow(row);
+            yCursor += getMaxHeightOfRow(row) + padding;
         }
 
         for (Box child : childs)
