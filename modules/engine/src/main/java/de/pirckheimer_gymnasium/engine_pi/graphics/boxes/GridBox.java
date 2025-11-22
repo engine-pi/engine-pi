@@ -73,7 +73,7 @@ public class GridBox extends ChildsBox
         int maxHeight = 0;
         for (Box box : getRow(row))
         {
-            if (box != null & box.height > maxHeight)
+            if (box != null && box.height > maxHeight)
             {
                 maxHeight = box.height;
             }
@@ -96,7 +96,7 @@ public class GridBox extends ChildsBox
         int maxWidth = 0;
         for (Box box : getColumn(column))
         {
-            if (box != null & box.width > maxWidth)
+            if (box != null && box.width > maxWidth)
             {
                 maxWidth = box.width;
             }
