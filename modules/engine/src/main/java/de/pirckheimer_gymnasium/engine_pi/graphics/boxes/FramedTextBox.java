@@ -38,8 +38,7 @@ public class FramedTextBox extends FramedBox
 
     public FramedTextBox(String content)
     {
-        super(null);
-        textLine = new TextLineBox(content);
-        addChild(textLine);
+        super(new TextLineBox(content));
+        textLine = (TextLineBox) this.content;
     }
 }

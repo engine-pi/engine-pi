@@ -17,7 +17,7 @@ public class RotationDemo extends Graphics2DComponent
     {
         var defaultSettings = border(margin(border(textLine("default"))));
 
-        var manuel = margin(textLine("default")).margin(50);
+        var manuel = margin(textLine("default")).allSides(50);
 
         AffineTransform oldTransform = g.getTransform();
 

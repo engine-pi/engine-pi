@@ -29,12 +29,13 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  */
 public class MarginBox extends ChildBox
 {
-    /**
-     * Der <b>Außenabstand</b> in Pixel.
-     *
-     * @since 0.40.0
-     */
-    int margin = 10;
+    int top = 10;
+
+    int right = 10;
+
+    int bottom = 10;
+
+    int left = 10;
 
     /**
      * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen
@@ -63,9 +64,36 @@ public class MarginBox extends ChildBox
      *
      * @since 0.40.0
      */
-    public MarginBox margin(int margin)
+    public MarginBox allSides(int margin)
     {
-        this.margin = margin;
+        top = margin;
+        right = margin;
+        bottom = margin;
+        left = margin;
+        return this;
+    }
+
+    public MarginBox top(int top)
+    {
+        this.top = top;
+        return this;
+    }
+
+    public MarginBox right(int right)
+    {
+        this.right = right;
+        return this;
+    }
+
+    public MarginBox bottom(int bottom)
+    {
+        this.bottom = bottom;
+        return this;
+    }
+
+    public MarginBox left(int left)
+    {
+        this.left = left;
         return this;
     }
 
@@ -73,15 +101,15 @@ public class MarginBox extends ChildBox
     protected void calculateDimension()
     {
         child.calculateDimension();
-        width = child.width + 2 * margin;
-        height = child.height + 2 * margin;
+        width = left + child.width + right;
+        height = top + child.height + bottom;
     }
 
     @Override
     protected void calculateAnchors()
     {
-        child.x = x + margin;
-        child.y = y + margin;
+        child.x = x + left;
+        child.y = y + top;
         child.calculateAnchors();
     }
 }

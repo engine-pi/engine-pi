@@ -46,8 +46,11 @@ public class FramedBox extends CombinedChildBox
 
     public final AlignBox align;
 
+    public final Box content;
+
     public FramedBox(Box child)
     {
+        content = child;
         align = new AlignBox(child);
         dimension = new DimensionBox(align);
         padding = new MarginBox(dimension);

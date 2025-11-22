@@ -17,8 +17,11 @@ public class MarginBoxDemo extends Graphics2DComponent
     public void render(Graphics2D g)
     {
         var defaultSettings = border(margin(border(textLine("default"))));
-        var manuel = margin(textLine("default")).margin(50);
-        vertical(defaultSettings, manuel).anchor(50, 50).render(g);
+        var manuel = margin(textLine(".allSides(50)")).allSides(50);
+        var different = border(margin(
+                border(textLine(".top(5).right(10).bottom(15).left(20)")))
+                .top(5).right(10).bottom(15).left(20));
+        vertical(defaultSettings, manuel, different).anchor(50, 50).render(g);
     }
 
     public static void main(String[] args)

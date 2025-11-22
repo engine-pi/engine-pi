@@ -27,8 +27,8 @@ public class FramedTextBoxDemo extends Graphics2DComponent
         allFeatures.background.color(backgroundColor);
         allFeatures.border.color(borderColor);
         allFeatures.border.thickness(21);
-        allFeatures.margin.margin(10);
-        allFeatures.padding.margin(40);
+        allFeatures.margin.allSides(10);
+        allFeatures.padding.allSides(40);
 
         var onlyBackground = framedText("only background");
         onlyBackground.background.color(backgroundColor);
