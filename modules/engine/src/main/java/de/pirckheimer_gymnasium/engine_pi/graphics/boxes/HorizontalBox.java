@@ -36,7 +36,7 @@ public class HorizontalBox extends ChildsBox
      * @param childs Die Kinder-Boxen, die <b>horizontal</b> von links nach
      *     rechts angeordnet werden sollen.
      *
-     * @see Box#horizontal(Box...)
+     * @see Boxes#horizontal(Box...)
      *
      * @since 0.39.0
      */

@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.framedText;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.grid;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.framedText;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.grid;
 
 import java.awt.Graphics2D;
 
@@ -17,6 +17,7 @@ public class GridBoxDemo extends Graphics2DComponent
     {
         var box = framedText(number + "");
         box.padding.allSides(number * 3);
+        box.background.color("red");
         return box;
     }
 

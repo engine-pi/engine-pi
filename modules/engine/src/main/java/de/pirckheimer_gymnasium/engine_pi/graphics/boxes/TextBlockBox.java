@@ -51,7 +51,7 @@ public class TextBlockBox extends TextBox
      *
      * @since 0.41.0
      *
-     * @see Box#textBlock(String)
+     * @see Boxes#textBlock(String)
      */
     public TextBlockBox(String content)
     {

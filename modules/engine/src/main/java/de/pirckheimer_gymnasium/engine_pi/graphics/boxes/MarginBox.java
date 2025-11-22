@@ -29,13 +29,13 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
  */
 public class MarginBox extends ChildBox
 {
-    int top = 10;
+    int top = 0;
 
-    int right = 10;
+    int right = 0;
 
-    int bottom = 10;
+    int bottom = 0;
 
-    int left = 10;
+    int left = 0;
 
     /**
      * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen

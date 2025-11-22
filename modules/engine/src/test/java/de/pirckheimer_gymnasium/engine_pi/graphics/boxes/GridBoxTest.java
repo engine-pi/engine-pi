@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.empty;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.grid;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.empty;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.grid;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;

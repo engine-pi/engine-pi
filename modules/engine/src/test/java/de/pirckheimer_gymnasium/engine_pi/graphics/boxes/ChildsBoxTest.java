@@ -1,8 +1,8 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.empty;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.grid;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.empty;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.grid;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;

@@ -38,7 +38,7 @@ public class VerticalBox extends ChildsBox
      *
      * @since 0.38.0
      *
-     * @see Box#vertical(Box...)
+     * @see Boxes#vertical(Box...)
      */
     public VerticalBox(Box... childs)
     {

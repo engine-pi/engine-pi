@@ -19,7 +19,7 @@ public class BackgroundBox extends ChildBox
      *
      * @since 0.38.0
      */
-    Color color = colors.get("white");
+    Color color = null;
 
     public BackgroundBox(Box child)
     {
@@ -45,6 +45,12 @@ public class BackgroundBox extends ChildBox
         this.color = color;
         return this;
     }
+
+    public BackgroundBox color(String color)
+    {
+        this.color = colors.get(color);
+        return this;
+    }
     /* Getter */
 
     @Override
@@ -66,10 +72,13 @@ public class BackgroundBox extends ChildBox
     @Override
     void draw(Graphics2D g)
     {
-        Color oldColor = g.getColor();
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
-        g.setColor(oldColor);
+        if (color != null)
+        {
+            Color oldColor = g.getColor();
+            g.setColor(color);
+            g.fillRect(x, y, width, height);
+            g.setColor(oldColor);
+        }
         child.draw(g);
     }
 }

@@ -17,14 +17,14 @@ public class BorderBox extends ChildBox
      *
      * @since 0.40.0
      */
-    int thickness = 1;
+    int thickness = 0;
 
     /**
      * Die <b>Farbe der Linie</b> in Pixel.
      *
      * @since 0.40.0
      */
-    Color color = colors.get("black");
+    Color color = null;
 
     /**
      * Erzeugt einen neuen Rahmen durch die Angabe der enthaltenen Kind-Box.
@@ -125,45 +125,48 @@ public class BorderBox extends ChildBox
         // ---
         // | |
         // ---
-        Color oldColor = g.getColor();
-        g.setColor(color);
-        // oben
-        g.fillRect(// x
-                x,
-                // y
-                y,
-                // width
-                width,
-                // height
-                thickness);
-        // rechts
-        g.fillRect(// x
-                x + thickness + child.width,
-                // y
-                y + thickness,
-                // width
-                thickness,
-                // height
-                child.height);
-        // unten
-        g.fillRect(// x
-                x,
-                // y
-                y + thickness + child.height,
-                // width
-                width,
-                // height
-                thickness);
-        // links
-        g.fillRect(// x
-                x,
-                // y
-                y + thickness,
-                // width
-                thickness,
-                // height
-                child.height);
-        g.setColor(oldColor);
+        if (color != null && thickness > 0)
+        {
+            Color oldColor = g.getColor();
+            g.setColor(color);
+            // oben
+            g.fillRect(// x
+                    x,
+                    // y
+                    y,
+                    // width
+                    width,
+                    // height
+                    thickness);
+            // rechts
+            g.fillRect(// x
+                    x + thickness + child.width,
+                    // y
+                    y + thickness,
+                    // width
+                    thickness,
+                    // height
+                    child.height);
+            // unten
+            g.fillRect(// x
+                    x,
+                    // y
+                    y + thickness + child.height,
+                    // width
+                    width,
+                    // height
+                    thickness);
+            // links
+            g.fillRect(// x
+                    x,
+                    // y
+                    y + thickness,
+                    // width
+                    thickness,
+                    // height
+                    child.height);
+            g.setColor(oldColor);
+        }
         child.draw(g);
     }
 }

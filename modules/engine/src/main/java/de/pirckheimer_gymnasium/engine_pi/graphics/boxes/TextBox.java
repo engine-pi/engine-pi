@@ -64,7 +64,7 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.39.0
      *
-     * @see Box#textLine(String)
+     * @see Boxes#textLine(String)
      */
     public TextBox(String content)
     {

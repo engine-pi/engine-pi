@@ -1,10 +1,10 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.margin;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textLine;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.vertical;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.background;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.margin;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
 
 import java.awt.Graphics2D;
 

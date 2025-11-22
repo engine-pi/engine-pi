@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
 import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.align;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textLine;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.align;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.background;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.CENTER;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.LEFT;
 import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlignment.RIGHT;

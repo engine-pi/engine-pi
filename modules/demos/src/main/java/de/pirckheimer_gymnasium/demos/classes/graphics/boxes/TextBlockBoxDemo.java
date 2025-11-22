@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.border;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Box.textBlock;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
+import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textBlock;
 
 import java.awt.Graphics2D;
 
