@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="fUqwYvK4Wff4LgY5sTU9" name="Page-1">
-        <mxGraphModel dx="1084" dy="1123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="600" math="0" shadow="0">
+        <mxGraphModel dx="381" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="600" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -31,7 +31,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="88" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left;&quot;&gt;HorizontalBox&lt;/span&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="450" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="100" y="380" width="140" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="89" value="" style="endArrow=block;endSize=16;endFill=0;html=1;edgeStyle=elbowEdgeStyle;rounded=0;" parent="1" source="88" target="106" edge="1">
                     <mxGeometry y="-60" width="160" relative="1" as="geometry">
@@ -44,7 +44,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="90" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left;&quot;&gt;VerticalBox&lt;/span&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="530" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="100" y="440" width="140" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="91" value="" style="endArrow=block;endSize=16;endFill=0;html=1;edgeStyle=elbowEdgeStyle;rounded=0;" parent="1" source="90" target="106" edge="1">
                     <mxGeometry y="-60" width="160" relative="1" as="geometry">
@@ -156,7 +156,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="108" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: left;&quot;&gt;GridBox&lt;/span&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" vertex="1" parent="1">
-                    <mxGeometry x="100" y="370" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="100" y="320" width="140" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="109" value="" style="endArrow=block;endSize=16;endFill=0;html=1;edgeStyle=elbowEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="108" target="106">
                     <mxGeometry y="-60" width="160" relative="1" as="geometry">
@@ -164,7 +164,7 @@
                         <mxPoint x="90" y="320" as="targetPoint"/>
                         <mxPoint as="offset"/>
                         <Array as="points">
-                            <mxPoint x="80" y="400"/>
+                            <mxPoint x="80" y="350"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>

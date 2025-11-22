@@ -42,6 +42,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
+    HAlignment hAlignment = HAlignment.LEFT;
+
     List<TextLayout> lines = new ArrayList<>();
 
     /**
@@ -56,6 +58,12 @@ public class TextBlockBox extends TextBox
     public TextBlockBox(String content)
     {
         super(content);
+    }
+
+    public TextBlockBox hAlign(HAlignment hAlignment)
+    {
+        this.hAlignment = hAlignment;
+        return this;
     }
 
     protected void calculateDimension()
@@ -117,7 +125,6 @@ public class TextBlockBox extends TextBox
             }
             height += line.getAscent() + line.getDescent() + line.getLeading();
         }
-
         dim.width = (int) Math.ceil(maxWidth);
         dim.height = (int) Math.ceil(height);
         return dim;
@@ -126,12 +133,35 @@ public class TextBlockBox extends TextBox
     @Override
     void draw(Graphics2D g)
     {
-        float textY = (float) y;
+        float yCursor = (float) y;
         for (TextLayout line : lines)
         {
-            textY += line.getAscent();
-            line.draw(g, (float) (x), textY);
-            textY += line.getDescent() + line.getLeading();
+            // Ascent: der Abstand von der oberen rechten Ecke des
+            // Textlayouts zur Grundlinie.
+            yCursor += line.getAscent();
+
+            float xCursor = (float) x;
+            float lineWidth = line.getAdvance();
+            switch (hAlignment)
+            {
+            case LEFT:
+                break;
+
+            case CENTER:
+                xCursor += (width - lineWidth) / 2;
+                break;
+
+            case RIGHT:
+                xCursor += (width - lineWidth);
+                break;
+            }
+
+            line.draw(g, xCursor, yCursor);
+            // Descent: Entfernung von der Grundlinie zum unteren linken Rand
+            // des Textlayouts
+            yCursor += line.getDescent() +
+            // Leading: empfohlener Zeilenabstand relativ zur Grundlinie
+                    line.getLeading();
         }
     }
 }
