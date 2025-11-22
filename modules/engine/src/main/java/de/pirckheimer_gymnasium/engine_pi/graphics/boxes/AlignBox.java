@@ -17,6 +17,24 @@ public class AlignBox extends DimensionBox
         super(child);
     }
 
+    public int childWidth()
+    {
+        if (child != null)
+        {
+            return child.width;
+        }
+        return 0;
+    }
+
+    public int childHeight()
+    {
+        if (child != null)
+        {
+            return child.height;
+        }
+        return 0;
+    }
+
     public AlignBox hAlign(HAlign hAlign)
     {
         this.hAlign = hAlign;

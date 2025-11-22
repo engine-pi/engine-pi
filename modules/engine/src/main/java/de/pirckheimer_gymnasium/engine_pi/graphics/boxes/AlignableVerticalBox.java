@@ -18,63 +18,45 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-import java.awt.Graphics2D;
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
 
 /**
- * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
- *
- * @author Josef Friedrich
- *
- * @since 0.38.0
+ * @since 0.41.0
  */
-abstract class ChildsBox extends Box
+public class AlignableVerticalBox extends VerticalBox
 {
+
+    AlignBoxOrder alignBoxes;
+
     /**
-     * @since 0.38.0
+     * @since 0.41.0
      */
-    public ChildsBox(Box... childs)
+    public AlignableVerticalBox(Box... childs)
     {
-        for (Box child : childs)
+        super();
+        alignBoxes = new AlignBoxOrder();
+        for (Box box : childs)
         {
-            this.childs.add(child);
-            child.parent = this;
+            addChild(alignBoxes.addInner(box));
         }
     }
 
-    public void addChild(Box child)
+    public AlignableVerticalBox hAlign(HAlign hAlign)
     {
-        this.childs.add(child);
+        alignBoxes.hAlign(hAlign);
+        return this;
     }
 
-    public int numberOfChilds()
+    public AlignableVerticalBox vAlign(VAlign vAlign)
     {
-        return childs.size();
+        alignBoxes.vAlign(vAlign);
+        return this;
     }
 
     @Override
     protected void calculateDimension()
     {
-        for (Box child : childs)
-        {
-            child.calculateDimension();
-        }
-    }
-
-    @Override
-    protected void calculateAnchors()
-    {
-        for (Box child : childs)
-        {
-            child.calculateAnchors();
-        }
-    }
-
-    @Override
-    void draw(Graphics2D g)
-    {
-        for (Box child : childs)
-        {
-            child.draw(g);
-        }
+        super.calculateDimension();
+        alignBoxes.maxChildWidth();
     }
 }
