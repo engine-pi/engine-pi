@@ -87,5 +87,4 @@ public class AlignBox extends DimensionBox
 
         child.calculateAnchors();
     }
-
 }

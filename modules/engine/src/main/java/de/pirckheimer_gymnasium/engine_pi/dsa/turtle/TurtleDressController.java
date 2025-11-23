@@ -168,7 +168,7 @@ class TurtleDressController
      * @since 0.40.0
      */
     @Internal
-    void setRotation(double rotation)
+    void setDirection(double rotation)
     {
         image.setRotation(rotation);
     }

@@ -13,16 +13,13 @@ import java.util.stream.Collectors;
  */
 public class TextUtil
 {
-    private static final DecimalFormat decimalFormat = new DecimalFormat(
-            "0.00");
-
     private TextUtil()
     {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * <b>Rundet</b> eine Zahl auf zwei Nachkommastellen.
+     * <b>Rundet</b> eine Zahl auf eine Nachkommastelle.
      *
      * @param number Eine Zahl, die gerundet werden soll.
      *
@@ -30,7 +27,44 @@ public class TextUtil
      */
     public static String roundNumber(Object number)
     {
-        return decimalFormat.format(number);
+        return roundNumber(number, 1);
+    }
+
+    /**
+     * Formatiert eine übergebene Zahl auf die angegebene Anzahl
+     * Nachkommastellen und gibt das Ergebnis als String zurück. Es werden
+     * fehlende Nachkommastellen mit Nullen aufgefüllt.
+     *
+     * @param number Eine darstellbare Zahl (Instanz von
+     *     {@link java.lang.Number} oder kompatibel). Wenn das Objekt kein
+     *     unterstützter Zahlentyp ist, wirft {@link java.text.DecimalFormat}
+     *     eine {@link IllegalArgumentException}.
+     * @param decimalPlaces Anzahl der gewünschten Nachkommastellen (>= 0). Bei
+     *     0 werden keine Dezimalstellen ausgegeben.
+     *
+     * @return String-Repräsentation der Zahl mit exakt {@code decimalPlaces}
+     *     Nachkommastellen.
+     *
+     * @throws IllegalArgumentException falls {@code decimalPlaces} kleiner 0
+     *     ist oder das Objekt nicht als Zahl formatiert werden kann.
+     */
+    public static String roundNumber(Object number, int decimalPlaces)
+    {
+        if (decimalPlaces < 0)
+        {
+            throw new IllegalArgumentException("decimalPlaces must be >= 0");
+        }
+        StringBuilder pattern = new StringBuilder("0");
+        if (decimalPlaces > 0)
+        {
+            pattern.append('.');
+            for (int i = 0; i < decimalPlaces; i++)
+            {
+                pattern.append('0');
+            }
+        }
+        DecimalFormat df = new DecimalFormat(pattern.toString());
+        return df.format(number);
     }
 
     /**

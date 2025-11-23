@@ -22,7 +22,12 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 
 import java.awt.Graphics2D;
 
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
+import de.pirckheimer_gymnasium.engine_pi.Resources;
+import de.pirckheimer_gymnasium.engine_pi.Turtle;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedBox;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign;
+import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.TextTableBox;
+import de.pirckheimer_gymnasium.engine_pi.resources.FontStyle;
 import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 
 /**
@@ -37,14 +42,22 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextUtil;
 public class TurtleStatistics
 {
     /**
+     * Die zurückgelegte Distanz der Schildkröte in Meter.
+     *
      * @since 0.40.0
      */
     private double traveledDistance;
 
     /**
-     * @since 0.40.0
+     * Die aktuelle Blickrichtung der Schildkröte.
+     *
+     * @see Turtle#setDirection(double)
      */
-    private FramedTextBox textBox;
+    private double currentDirection = 0;
+
+    private TextTableBox table;
+
+    private FramedBox framedTable;
 
     /**
      * @since 0.40.0
@@ -52,14 +65,29 @@ public class TurtleStatistics
     public TurtleStatistics()
     {
         traveledDistance = 0;
-        textBox = new FramedTextBox(TextUtil.roundNumber(traveledDistance));
-        textBox.border.thickness(0);
-        textBox.background.color(colors.get("grey", 50));
-        textBox.textLine.color("black");
-        textBox.anchor(20, 20);
+        currentDirection = 0;
+        table = new TextTableBox("Entfernung:",
+                TextUtil.roundNumber(traveledDistance), "aktuelle Ausrichtung:",
+                "000.00000");
+        table.allCells(cell -> {
+            cell.text.color("black");
+            cell.align.hAlign(HAlign.RIGHT);
+        });
+        table.padding(3);
+        table.column(0, cell -> cell.text.font(Resources.fonts
+                .getDefault(FontStyle.BOLD).deriveFont((float) 16)));
+        framedTable = new FramedBox(table);
+        framedTable.background.color(colors.get("grey", 50));
+        framedTable.padding.allSides(5);
+        framedTable.anchor(20, 20);
     }
 
     /**
+     * Addierte eine Entfernung in Meter zu der bereits zurückgelegten Strecke
+     * der Schildkröte.
+     *
+     * @param distance Eine Entfernung in Meter
+     *
      * @since 0.40.0
      */
     public void addTraveledDistance(double distance)
@@ -67,13 +95,32 @@ public class TurtleStatistics
         traveledDistance += distance;
     }
 
+    public void currentDirection(double currentDirection)
+    {
+        this.currentDirection = currentDirection;
+    }
+
     /**
      * @since 0.40.0
      */
     public void render(Graphics2D g)
     {
-        textBox.textLine.content(TextUtil.roundNumber(traveledDistance));
-        textBox.measure();
-        textBox.render(g);
+        table.cell(0, 1, b -> b.text
+                .content(TextUtil.roundNumber(traveledDistance) + " m"));
+        table.cell(1, 1, b -> b.text
+                .content(TextUtil.roundNumber(currentDirection) + " °"));
+        framedTable.measure();
+        framedTable.render(g);
+    }
+
+    public static void main(String[] args)
+    {
+        Turtle turtle = new Turtle();
+        for (int i = 0; i < 3; i++)
+        {
+            turtle.lowerPen();
+            turtle.forward(3);
+            turtle.left(120);
+        }
     }
 }

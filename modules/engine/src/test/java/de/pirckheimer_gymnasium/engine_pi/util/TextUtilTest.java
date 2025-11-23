@@ -18,7 +18,13 @@ public class TextUtilTest
     @Test
     void testRoundNumber()
     {
-        assertEquals(TextUtil.roundNumber(1.2345), "1.23");
+        assertEquals(TextUtil.roundNumber(1.2345), "1.2");
+    }
+
+    @Test
+    void testRoundNumberWithDecimalPlaces()
+    {
+        assertEquals(TextUtil.roundNumber(1.2345, 3), "1.234");
     }
 
     @Test

@@ -155,17 +155,18 @@ public class TurtleScene extends PaintingSurfaceScene
         surface.drawLine(from, to, pen.color, pen.thickness);
     }
 
-    private void setCurrentRotation(double rotation)
+    private void setCurrentDirection(double direction)
     {
-        pen.direction = rotation % 360;
+        statistics.currentDirection(direction);
+        pen.direction = direction % 360;
     }
 
-    private void doRotation(double rotation)
+    private void doDirection(double direction)
     {
-        setCurrentRotation(rotation);
+        setCurrentDirection(direction);
         if (!animation.warpMode)
         {
-            dress.setRotation(rotation);
+            dress.setDirection(direction);
             // die Rotation kann den Mittelpunkt verschieben.
             dress.setPosition(pen.position);
         }
@@ -186,7 +187,7 @@ public class TurtleScene extends PaintingSurfaceScene
         double start = pen.direction;
         if (animation.warpMode)
         {
-            doRotation(start + rotation);
+            doDirection(start + rotation);
             // Bei sehr hohen Rekursionstiefen im Warp-Modus kommt die
             // Schildkröte nicht nach. Man sieht die Schildkröte doppelt. Wir
             // blenden sie deshalb aus.
@@ -198,7 +199,7 @@ public class TurtleScene extends PaintingSurfaceScene
             double duration = Math.abs(rotation) / 360 / animation.speed;
             // * 4 damit man die Rotation auch sieht
             animate(duration * 4, progress -> {
-                doRotation(start + progress * rotation);
+                doDirection(start + progress * rotation);
             });
         }
     }
@@ -214,8 +215,8 @@ public class TurtleScene extends PaintingSurfaceScene
 
     void setDirection(double direction)
     {
-        setCurrentRotation(direction);
-        dress.setRotation(direction);
+        setCurrentDirection(direction);
+        dress.setDirection(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
         dress.setPosition(pen.position);
     }

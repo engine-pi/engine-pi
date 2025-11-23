@@ -125,11 +125,26 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
 
     public GenericGridBox<T> cell(int row, int column, Consumer<T> consumer)
     {
-
         T box = grid.get(row).get(column);
         if (box != null)
         {
             consumer.accept(box);
+        }
+        return this;
+    }
+
+    public GenericGridBox<T> allCells(Consumer<T> consumer)
+    {
+        for (int row = 0; row < rowCount(); row++)
+        {
+            for (int column = 0; column < columnCount(); column++)
+            {
+                T box = grid.get(row).get(column);
+                if (box != null)
+                {
+                    consumer.accept(box);
+                }
+            }
         }
         return this;
     }
@@ -168,8 +183,7 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         {
             int maxHeight = getMaxHeightOfRow(row);
             height += maxHeight;
-            column(row, b -> b.height(maxHeight));
-
+            row(row, b -> b.height(maxHeight));
         }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;

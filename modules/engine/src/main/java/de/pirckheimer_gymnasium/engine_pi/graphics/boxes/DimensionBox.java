@@ -34,8 +34,24 @@ public class DimensionBox extends ChildBox
     protected void calculateDimension()
     {
         child.calculateDimension();
-        width = definedWidth > 0 ? definedWidth : child.width;
-        height = definedHeight > 0 ? definedHeight : child.height;;
+
+        if (definedWidth > 0 && definedWidth > child.width)
+        {
+            width = definedWidth;
+        }
+        else
+        {
+            width = child.width;
+        }
+
+        if (definedHeight > 0 && definedHeight > child.height)
+        {
+            height = definedHeight;
+        }
+        else
+        {
+            height = child.height;
+        }
     }
 
     @Override

@@ -263,7 +263,7 @@ public class VectorTest
     @Test
     public void testToString()
     {
-        assertEquals("Vector [x=1.00, y=1.00]", v(1, 1).toString());
+        assertEquals("Vector [x=1.0, y=1.0]", v(1, 1).toString());
     }
 
     @Nested

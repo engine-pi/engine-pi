@@ -40,7 +40,7 @@ public class TextBlockAlignBox extends CombinedAlignBox
     @Override
     public CombinedAlignBox height(int height)
     {
-        align.height(width);
+        align.height(height);
         return this;
     }
 
