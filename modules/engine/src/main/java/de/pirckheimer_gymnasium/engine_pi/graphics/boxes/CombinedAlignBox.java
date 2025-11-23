@@ -19,6 +19,9 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 /**
+ * Eine (äußere) Box, die eine kleinere (innere) Box enthält und diese einpassen
+ * und ausrichten kann.
+ *
  * @author Josef Friedrich
  *
  * @since 0.41.0
