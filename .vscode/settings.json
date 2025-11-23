@@ -21,9 +21,9 @@
     // engine_pi/graphics/boxes
     "ChildBox.java": "AlignBox.java, BackgroundBox.java, BorderBox.java, DimensionBox.java, MarginBox.java",
     "LeafBox.java": "EmptyBox.java, ImageBox.java, TextBox.java, TextBlockBox.java, TextLineBox.java",
-    "CombinedChildBox.java": "FramedBox.java, FramedTextBox.java",
-    "VAlignment.java": "HAlignment.java",
-    "ChildsBox.java": "GridBox.java, HorizontalBox.java, PaddingBox.java, VerticalBox.java",
+    "CombinedChildBox.java": "CombinedAlignBox.java, FramedBox.java, FramedTextBox.java",
+    "VAlign.java": "HAlign.java",
+    "ChildsBox.java": "AlignableVerticalBox.java, GridBox.java, GenericGridBox.java, HorizontalBox.java, PaddingBox.java, VerticalBox.java",
     "TurtleController.java": "AutoStartTurtleController.java, TurtleAnimationController.java, TurtleBackgroundController.java, TurtleDressController.java, TurtlePenController.java, TurtleWindowController.java",
     "TurtleGraphicsCollection.java": "TurtleGraphics.java, TurtleGraphicsSeries.java"
   },

@@ -33,7 +33,7 @@ public abstract class CombinedAlignBox extends CombinedChildBox
 
     public abstract CombinedAlignBox height(int height);
 
-    public abstract CombinedAlignBox hAlgin(HAlign hAlign);
+    public abstract CombinedAlignBox hAlign(HAlign hAlign);
 
-    public abstract CombinedAlignBox vAlgin(VAlign vAlign);
+    public abstract CombinedAlignBox vAlign(VAlign vAlign);
 }

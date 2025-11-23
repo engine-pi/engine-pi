@@ -18,6 +18,7 @@
  */
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.font.FontRenderContext;
@@ -146,6 +147,11 @@ public class TextBlockBox extends TextBox
     @Override
     void draw(Graphics2D g)
     {
+        Color oldColor = g.getColor();
+        if (color != null)
+        {
+            g.setColor(color);
+        }
         float yCursor = (float) y;
         for (TextLayout line : lines)
         {
@@ -178,5 +184,6 @@ public class TextBlockBox extends TextBox
             // Scheint meistens 0.0 zu sein?
                     line.getLeading();
         }
+        g.setColor(oldColor);
     }
 }

@@ -1,12 +1,17 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import java.util.ArrayList;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
+
+import java.util.List;
+import java.util.function.Consumer;
 
 public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
 {
     int columns = 2;
 
-    T[][] grid;
+    List<List<T>> grid;
 
     public GenericGridBox(Box... childs)
     {
@@ -41,16 +46,16 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         return (int) Math.ceil((double) numberOfChilds() / columns);
     }
 
-    @SuppressWarnings({ "unchecked" })
-    private void buildGrid()
+    protected void buildGrid()
     {
+        grid = new ArrayList<>();
 
-        grid = (T[][]) new Object[rowCount()][columnCount()];
-        for (int column = 0; column < columnCount(); column++)
+        for (int row = 0; row < rowCount(); row++)
         {
-            for (int row = 0; row < rowCount(); row++)
+            grid.add(new ArrayList<>());
+            for (int column = 0; column < columnCount(); column++)
             {
-                grid[row][column] = getChild(row, column);
+                grid.get(row).add(getChild(row, column));
             }
         }
     }
@@ -66,9 +71,21 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         return null;
     }
 
-    public T[] getRow(int row)
+    public List<T> getRow(int row)
     {
-        return grid[row];
+        return grid.get(row);
+    }
+
+    public GenericGridBox<T> row(int row, Consumer<T> consumer)
+    {
+        for (T box : getRow(row))
+        {
+            if (box != null)
+            {
+                consumer.accept(box);
+            }
+        }
+        return this;
     }
 
     public int getMaxHeightOfRow(int row)
@@ -84,15 +101,37 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         return maxHeight;
     }
 
-    @SuppressWarnings({ "unchecked" })
-    public T[] getColumn(int column)
+    public List<T> getColumn(int column)
     {
-        T[] childs = (T[]) new Object[rowCount()];
-        for (int i = 0; i < childs.length; i++)
+        List<T> childs = new ArrayList<>();
+        for (int row = 0; row < rowCount(); row++)
         {
-            childs[i] = grid[i][column];
+            childs.add(grid.get(row).get(column));
         }
         return childs;
+    }
+
+    public GenericGridBox<T> column(int column, Consumer<T> consumer)
+    {
+        for (T box : getColumn(column))
+        {
+            if (box != null)
+            {
+                consumer.accept(box);
+            }
+        }
+        return this;
+    }
+
+    public GenericGridBox<T> cell(int row, int column, Consumer<T> consumer)
+    {
+
+        T box = grid.get(row).get(column);
+        if (box != null)
+        {
+            consumer.accept(box);
+        }
+        return this;
     }
 
     public int getMaxWidthOfColumn(int column)
@@ -119,15 +158,19 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         width = 0;
         for (int column = 0; column < columnCount(); column++)
         {
-            width += getMaxWidthOfColumn(column);
+            int maxWidth = getMaxWidthOfColumn(column);
+            width += maxWidth;
+            column(column, b -> b.width(maxWidth));
         }
 
         height = 0;
         for (int row = 0; row < rowCount(); row++)
         {
-            height += getMaxHeightOfRow(row);
-        }
+            int maxHeight = getMaxHeightOfRow(row);
+            height += maxHeight;
+            column(row, b -> b.height(maxHeight));
 
+        }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;
     }

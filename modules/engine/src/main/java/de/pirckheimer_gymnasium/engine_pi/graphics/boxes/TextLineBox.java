@@ -74,10 +74,7 @@ public class TextLineBox extends TextBox
         }
         g.setFont(font);
         g.drawString(content, x, y + baseline);
-        if (oldColor != null)
-        {
-            g.setColor(oldColor);
-        }
+        g.setColor(oldColor);
         g.setFont(oldFont);
     }
 }
