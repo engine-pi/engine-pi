@@ -48,30 +48,25 @@ public class TurtleStatistics
      */
     private double traveledDistance;
 
-    /**
-     * Die aktuelle Blickrichtung der Schildkröte.
-     *
-     * @see Turtle#setDirection(double)
-     */
-    private double currentDirection = 0;
+    private final TextTableBox table;
 
-    private TextTableBox table;
+    private final FramedBox framedTable;
 
-    private FramedBox framedTable;
+    private final TurtlePenController pen;
 
     /**
      * @since 0.40.0
      */
-    public TurtleStatistics()
+    public TurtleStatistics(TurtlePenController pen)
     {
+        this.pen = pen;
         traveledDistance = 0;
-        currentDirection = 0;
         table = new TextTableBox("Entfernung:",
                 TextUtil.roundNumber(traveledDistance), "aktuelle Ausrichtung:",
                 "000.00000");
         table.allCells(cell -> {
             cell.text.color("black");
-            cell.align.hAlign(HAlign.RIGHT);
+            cell.container.hAlign(HAlign.RIGHT);
         });
         table.padding(3);
         table.column(0, cell -> cell.text.font(Resources.fonts
@@ -95,11 +90,6 @@ public class TurtleStatistics
         traveledDistance += distance;
     }
 
-    public void currentDirection(double currentDirection)
-    {
-        this.currentDirection = currentDirection;
-    }
-
     /**
      * @since 0.40.0
      */
@@ -108,7 +98,7 @@ public class TurtleStatistics
         table.cell(0, 1, b -> b.text
                 .content(TextUtil.roundNumber(traveledDistance) + " m"));
         table.cell(1, 1, b -> b.text
-                .content(TextUtil.roundNumber(currentDirection) + " °"));
+                .content(TextUtil.roundNumber(pen.direction) + " °"));
         framedTable.measure();
         framedTable.render(g);
     }

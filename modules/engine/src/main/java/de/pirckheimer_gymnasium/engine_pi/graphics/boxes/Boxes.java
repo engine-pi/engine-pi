@@ -44,9 +44,9 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 public final class Boxes
 {
 
-    public static AlignBox align(Box child)
+    public static ContainerBox container(Box child)
     {
-        return new AlignBox(child);
+        return new ContainerBox(child);
     }
 
     /**
@@ -72,11 +72,6 @@ public final class Boxes
     public static BorderBox border(Box child)
     {
         return new BorderBox(child).thickness(1);
-    }
-
-    public static DimensionBox dimension(Box child)
-    {
-        return new DimensionBox(child);
     }
 
     public static EmptyBox empty()

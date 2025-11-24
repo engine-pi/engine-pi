@@ -4,28 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Eine Anordung und Aufreihung mehrerer äußerer {@link AlignBox}en, die
+ * Eine Anordung und Aufreihung mehrerer äußerer {@link ContainerBox}en, die
  * verschiedene Kinder-{@link Box}en unterschiedlicher Größe enthalten können.
  */
 public class AlignBoxOrder
 {
-    private List<AlignBox> alignBoxes;
+    private List<ContainerBox> alignBoxes;
 
     public AlignBoxOrder()
     {
-        this.alignBoxes = new ArrayList<AlignBox>();
+        this.alignBoxes = new ArrayList<ContainerBox>();
     }
 
-    public AlignBox addInner(Box inner)
+    public ContainerBox addInner(Box inner)
     {
-        AlignBox align = new AlignBox(inner);
+        ContainerBox align = new ContainerBox(inner);
         this.alignBoxes.add(align);
         return align;
     }
 
     public AlignBoxOrder hAlign(HAlign hAlign)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.hAlign(hAlign);
         }
@@ -34,7 +34,7 @@ public class AlignBoxOrder
 
     public AlignBoxOrder vAlign(VAlign vAlign)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.vAlign(vAlign);
         }
@@ -47,7 +47,7 @@ public class AlignBoxOrder
     private int getMaxChildWidth()
     {
         int maxWidth = 0;
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             if (box.childWidth() > maxWidth)
             {
@@ -63,7 +63,7 @@ public class AlignBoxOrder
     private int getMaxChildHeight()
     {
         int maxHeight = 0;
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             if (box.childHeight() > maxHeight)
             {
@@ -77,7 +77,7 @@ public class AlignBoxOrder
 
     public void alignV(VAlign vAlign)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.vAlign(vAlign);
         }
@@ -85,7 +85,7 @@ public class AlignBoxOrder
 
     public void alignH(HAlign hAlign)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.hAlign(hAlign);
         }
@@ -93,7 +93,7 @@ public class AlignBoxOrder
 
     public void width(int width)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.width = width;
         }
@@ -101,14 +101,14 @@ public class AlignBoxOrder
 
     public void height(int height)
     {
-        for (AlignBox box : alignBoxes)
+        for (ContainerBox box : alignBoxes)
         {
             box.height = height;
         }
     }
 
     /**
-     * Setzt alle äußeren {@link AlignBox}en auf die maximale innere Breite.
+     * Setzt alle äußeren {@link ContainerBox}en auf die maximale innere Breite.
      */
     public void maxChildWidth()
     {
@@ -116,7 +116,7 @@ public class AlignBoxOrder
     }
 
     /**
-     * Setzt alle äußeren {@link AlignBox}en auf die maximale innere Höhe.
+     * Setzt alle äußeren {@link ContainerBox}en auf die maximale innere Höhe.
      */
     public void maxChildHeight()
     {

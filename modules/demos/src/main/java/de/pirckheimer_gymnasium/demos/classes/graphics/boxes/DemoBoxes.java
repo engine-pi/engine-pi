@@ -13,8 +13,8 @@ public class DemoBoxes
         FramedTextBox box = new FramedTextBox("");
         box.background.color(colors.get("blue", 100));
         box.padding.allSides(10);
-        box.align.hAlign(HAlign.CENTER);
-        box.align.vAlign(VAlign.MIDDLE);
+        box.container.hAlign(HAlign.CENTER);
+        box.container.vAlign(VAlign.MIDDLE);
         return box;
     }
 
@@ -28,8 +28,8 @@ public class DemoBoxes
     public static FramedTextBox demo(String content, int width, int height)
     {
         var b = demo(content);
-        b.dimension.width(width);
-        b.dimension.height(height);
+        b.container.width(width);
+        b.container.height(height);
         return b;
     }
 }

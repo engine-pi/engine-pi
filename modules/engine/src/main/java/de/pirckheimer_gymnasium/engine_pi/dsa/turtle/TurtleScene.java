@@ -92,7 +92,7 @@ public class TurtleScene extends PaintingSurfaceScene
         animation = new TurtleAnimationController();
         dress = new TurtleDressController(this);
         pen = new TurtlePenController();
-        statistics = new TurtleStatistics();
+        statistics = new TurtleStatistics(pen);
     }
 
     /* Hauptmethoden */
@@ -157,7 +157,6 @@ public class TurtleScene extends PaintingSurfaceScene
 
     private void setCurrentDirection(double direction)
     {
-        statistics.currentDirection(direction);
         pen.direction = direction % 360;
     }
 
