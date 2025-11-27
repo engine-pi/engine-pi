@@ -107,11 +107,6 @@ public class GridBox extends PaddingBox
     @Override
     protected void calculateDimension()
     {
-        for (Box child : childs)
-        {
-            child.calculateDimension();
-        }
-
         width = 0;
         for (int column = 0; column < columnCount(); column++)
         {
@@ -146,11 +141,6 @@ public class GridBox extends PaddingBox
                 xCursor += getMaxWidthOfColumn(column) + padding;
             }
             yCursor += getMaxHeightOfRow(row) + padding;
-        }
-
-        for (Box child : childs)
-        {
-            child.calculateAnchors();
         }
     }
 }

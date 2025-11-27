@@ -184,18 +184,12 @@ public abstract class Box implements Iterable<Box>
      * Berechnet rekursiv die <b>Abmessungen</b>, d.h. die Höhe und Breite der
      * eigenen Box und aller Kind-Boxen.
      *
-     * <p>
-     * <b>Zuerst</b> müssen die Abmessungen der <b>Kind</b>-Boxen ermittelt
-     * werden, <b>dann</b> die Abmessungen der <b>eigenen</b> Box.
-     * </p>
-     *
      * <h4>Single-Child-Code-Beispiel</h4>
      *
      * <pre>
      * {@code
      * protected void calculateDimension()
      * {
-     *     child.calculateDimension();
      *     width = child.width + 2 * margin;
      *     height = child.height + 2 * margin;
      * }
@@ -211,7 +205,6 @@ public abstract class Box implements Iterable<Box>
      *     int maxWidth = 0;
      *     for (Box child : childs)
      *     {
-     *         child.calculateDimension();
      *         if (child.width > maxWidth)
      *         {
      *             maxWidth = child.width;
@@ -225,15 +218,19 @@ public abstract class Box implements Iterable<Box>
      */
     protected abstract void calculateDimension();
 
+    protected void measureDimension()
+    {
+        for (Box child : childs)
+        {
+            child.measureDimension();
+        }
+        calculateDimension();
+    }
+
     /**
      * Berechnet rekursiv alle <b>Ankerpunkte</b> (linkes oberes Eck) der
      * untergeordneten Kinder-Boxen. Die inneren Blattboxen brauchen diese
      * Methode nicht zu implementieren.
-     *
-     * <p>
-     * <b>Zuerst</b> muss der <b>eigene</b> Ankerpunkt bestimmt werden,
-     * <b>dann</b> die Ankerpunkte der <b>Kind</b>boxen.
-     * </p>
      *
      * <h4>Single-Child-Code-Beispiel</h4>
      *
@@ -243,7 +240,6 @@ public abstract class Box implements Iterable<Box>
      * {
      *     child.x = x + margin;
      *     child.y = y + margin;
-     *     child.calculateAnchors();
      * }
      * }
      * </pre>
@@ -260,7 +256,6 @@ public abstract class Box implements Iterable<Box>
      *         child.x = x;
      *         child.y = yCursor;
      *         yCursor += child.height;
-     *         child.calculateAnchors();
      *     }
      * }
      * }
@@ -269,6 +264,15 @@ public abstract class Box implements Iterable<Box>
      * @since 0.38.0
      */
     protected abstract void calculateAnchors();
+
+    protected void measureAnchors()
+    {
+        calculateAnchors();
+        for (Box child : childs)
+        {
+            child.measureAnchors();
+        }
+    }
 
     /**
      * <b>Misst</b> alle Kind-Boxen <b>aus</b>.
@@ -280,8 +284,8 @@ public abstract class Box implements Iterable<Box>
      */
     public void measure()
     {
-        calculateDimension();
-        calculateAnchors();
+        measureDimension();
+        measureAnchors();
         measured = true;
     }
 

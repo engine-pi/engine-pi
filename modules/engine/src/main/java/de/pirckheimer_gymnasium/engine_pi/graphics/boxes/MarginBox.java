@@ -100,7 +100,6 @@ public class MarginBox extends ChildBox
     @Override
     protected void calculateDimension()
     {
-        child.calculateDimension();
         width = left + child.width + right;
         height = top + child.height + bottom;
     }
@@ -110,6 +109,5 @@ public class MarginBox extends ChildBox
     {
         child.x = x + left;
         child.y = y + top;
-        child.calculateAnchors();
     }
 }

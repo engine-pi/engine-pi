@@ -54,19 +54,11 @@ abstract class ChildsBox extends Box
     @Override
     protected void calculateDimension()
     {
-        for (Box child : childs)
-        {
-            child.calculateDimension();
-        }
     }
 
     @Override
     protected void calculateAnchors()
     {
-        for (Box child : childs)
-        {
-            child.calculateAnchors();
-        }
     }
 
     @Override

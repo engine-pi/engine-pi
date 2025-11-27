@@ -51,7 +51,6 @@ public class VerticalBox extends PaddingBox
         int maxWidth = 0;
         for (Box child : childs)
         {
-            child.calculateDimension();
             if (child.width > maxWidth)
             {
                 maxWidth = child.width;
@@ -71,7 +70,6 @@ public class VerticalBox extends PaddingBox
             child.x = x + padding;
             child.y = yCursor;
             yCursor += child.height + padding;
-            child.calculateAnchors();
         }
     }
 }

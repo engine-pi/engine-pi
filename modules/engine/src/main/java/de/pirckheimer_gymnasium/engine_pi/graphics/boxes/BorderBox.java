@@ -5,6 +5,8 @@ import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/BorderBoxDemo.java
+
 /**
  * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
  *
@@ -96,7 +98,6 @@ public class BorderBox extends ChildBox
     @Override
     protected void calculateDimension()
     {
-        child.calculateDimension();
         width = child.width + 2 * thickness;
         height = child.height + 2 * thickness;
     }
@@ -106,7 +107,6 @@ public class BorderBox extends ChildBox
     {
         child.x = x + thickness;
         child.y = y + thickness;
-        child.calculateAnchors();
     }
 
     @Override

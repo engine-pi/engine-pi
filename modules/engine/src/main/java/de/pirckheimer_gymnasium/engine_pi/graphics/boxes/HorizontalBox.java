@@ -51,7 +51,6 @@ public class HorizontalBox extends PaddingBox
         int maxHeight = 0;
         for (Box child : childs)
         {
-            child.calculateDimension();
             width += child.width;
             if (child.height > maxHeight)
             {
@@ -72,7 +71,6 @@ public class HorizontalBox extends PaddingBox
             child.x = xCursor;
             child.y = y + padding;
             xCursor += child.width + padding;
-            child.calculateAnchors();
         }
     }
 }

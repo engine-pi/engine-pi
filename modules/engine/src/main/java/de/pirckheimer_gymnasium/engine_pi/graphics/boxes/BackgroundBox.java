@@ -56,7 +56,6 @@ public class BackgroundBox extends ChildBox
     @Override
     protected void calculateDimension()
     {
-        child.calculateDimension();
         width = child.width;
         height = child.height;
     }
@@ -66,7 +65,6 @@ public class BackgroundBox extends ChildBox
     {
         child.x = x;
         child.y = y;
-        child.calculateAnchors();
     }
 
     @Override

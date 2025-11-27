@@ -69,8 +69,6 @@ public class ContainerBox extends ChildBox
     @Override
     protected void calculateDimension()
     {
-        child.calculateDimension();
-
         if (definedWidth > 0 && definedWidth > child.width)
         {
             width = definedWidth;
@@ -127,7 +125,5 @@ public class ContainerBox extends ChildBox
             child.y = y + freeV;
             break;
         }
-
-        child.calculateAnchors();
     }
 }

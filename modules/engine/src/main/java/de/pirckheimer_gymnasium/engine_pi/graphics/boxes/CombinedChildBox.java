@@ -58,7 +58,6 @@ public abstract class CombinedChildBox extends ChildBox
     @Override
     protected void calculateDimension()
     {
-        child.calculateDimension();
         width = child.width;
         height = child.height;
     }
@@ -68,6 +67,5 @@ public abstract class CombinedChildBox extends ChildBox
     {
         child.x = x;
         child.y = y;
-        child.calculateAnchors();
     }
 }
