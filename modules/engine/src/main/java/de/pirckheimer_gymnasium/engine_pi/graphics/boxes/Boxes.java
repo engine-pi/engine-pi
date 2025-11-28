@@ -104,9 +104,9 @@ public final class Boxes
      * links oben nach rechts unten angeordnet werden. Der Innenabstand wird auf
      * 10 Pixel gesetzt.
      */
-    public static <T extends Box> GenericGridBox<T> grid(Box... childs)
+    public static <T extends Box> GridBox<T> grid(Box... childs)
     {
-        GenericGridBox<T> box = new GenericGridBox<T>(childs);
+        GridBox<T> box = new GridBox<T>(childs);
         box.padding(10);
         return box;
     }

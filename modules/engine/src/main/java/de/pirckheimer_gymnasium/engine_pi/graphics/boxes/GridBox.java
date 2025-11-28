@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class GenericGridBox<T extends Box> extends PaddingBox
+public class GridBox<T extends Box> extends PaddingBox
 {
     int columns = 2;
 
     List<List<T>> grid;
 
-    public GenericGridBox(Box... childs)
+    public GridBox(Box... childs)
     {
         super(childs);
         buildGrid();
     }
 
-    public GenericGridBox<T> columns(int columns)
+    public GridBox<T> columns(int columns)
     {
         this.columns = columns;
         buildGrid();
@@ -76,7 +76,7 @@ public class GenericGridBox<T extends Box> extends PaddingBox
         return grid.get(row);
     }
 
-    public GenericGridBox<T> row(int row, Consumer<T> consumer)
+    public GridBox<T> row(int row, Consumer<T> consumer)
     {
         for (T box : getRow(row))
         {
@@ -111,7 +111,7 @@ public class GenericGridBox<T extends Box> extends PaddingBox
         return childs;
     }
 
-    public GenericGridBox<T> column(int column, Consumer<T> consumer)
+    public GridBox<T> column(int column, Consumer<T> consumer)
     {
         for (T box : getColumn(column))
         {
@@ -123,7 +123,7 @@ public class GenericGridBox<T extends Box> extends PaddingBox
         return this;
     }
 
-    public GenericGridBox<T> cell(int row, int column, Consumer<T> consumer)
+    public GridBox<T> cell(int row, int column, Consumer<T> consumer)
     {
         T box = grid.get(row).get(column);
         if (box != null)
@@ -133,7 +133,7 @@ public class GenericGridBox<T extends Box> extends PaddingBox
         return this;
     }
 
-    public GenericGridBox<T> allCells(Consumer<T> consumer)
+    public GridBox<T> allCells(Consumer<T> consumer)
     {
         for (int row = 0; row < rowCount(); row++)
         {
