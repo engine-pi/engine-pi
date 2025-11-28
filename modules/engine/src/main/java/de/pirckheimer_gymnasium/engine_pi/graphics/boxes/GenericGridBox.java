@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
+public class GenericGridBox<T extends Box> extends PaddingBox
 {
     int columns = 2;
 
@@ -60,7 +60,7 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         }
     }
 
-    @SuppressWarnings({ "unchecked" })
+    @SuppressWarnings("unchecked")
     private T getChild(int row, int column)
     {
         int index = row * columnCount() + column;
@@ -170,7 +170,12 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         {
             int maxWidth = getMaxWidthOfColumn(column);
             width += maxWidth;
-            column(column, b -> b.width(maxWidth));
+            column(column, b -> {
+                if (b.supportsDefinedDimension)
+                {
+                    b.definedWidth = maxWidth;
+                }
+            });
         }
 
         height = 0;
@@ -178,7 +183,12 @@ public class GenericGridBox<T extends CombinedAlignBox> extends PaddingBox
         {
             int maxHeight = getMaxHeightOfRow(row);
             height += maxHeight;
-            row(row, b -> b.height(maxHeight));
+            row(row, b -> {
+                if (b.supportsDefinedDimension)
+                {
+                    b.definedHeight = maxHeight;
+                }
+            });
         }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;

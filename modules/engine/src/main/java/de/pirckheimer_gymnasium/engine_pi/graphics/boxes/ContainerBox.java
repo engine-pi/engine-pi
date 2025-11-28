@@ -22,6 +22,7 @@ public class ContainerBox extends ChildBox
     public ContainerBox(Box child)
     {
         super(child);
+        supportsDefinedDimension = true;
     }
 
     public int childWidth()
