@@ -31,7 +31,7 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
  * zur Zeitsteuerung. Sie wird von den Klassen
  * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor Actor},
  * {@link de.pirckheimer_gymnasium.engine_pi.Scene Scene} und
- * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementieren
+ * {@link de.pirckheimer_gymnasium.engine_pi.Layer Layer} implementiert.
  * </p>
  */
 @API
@@ -61,7 +61,7 @@ public interface FrameUpdateListenerRegistration
     }
 
     /**
-     * Führt das übergebene Runnable mit Verzögerung aus.
+     * Führt das übergebene {@link Runnable} mit Verzögerung aus.
      *
      * @param runnable Wird im nächsten Frame ausgeführt.
      */

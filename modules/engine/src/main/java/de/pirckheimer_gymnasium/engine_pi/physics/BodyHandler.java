@@ -427,6 +427,13 @@ public class BodyHandler implements PhysicsHandler
         return body.isFixedRotation();
     }
 
+    /**
+     * Berechnet den achsenparallelen Begrenzungsrahmen (axis-aligned bounding
+     * box (AABB)) dieses Körpers.
+     *
+     * @return Der achsenparallele Begrenzungsrahmen (axis-aligned bounding box
+     *     (AABB)) dieses Körpers.
+     */
     private AABB calculateBodyAABB()
     {
         AABB bodyBounds = new AABB();

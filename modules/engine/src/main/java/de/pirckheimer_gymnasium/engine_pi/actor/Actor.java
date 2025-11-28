@@ -2129,17 +2129,27 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Verschiebt die {@link Actor}-Figur so, dass ihr Mittelpunkt die
-     * eingegebenen Koordinaten hat.
-     * <p>
-     * Diese Methode arbeitet nach dem Mittelpunkt des das Objekt abdeckenden
-     * Bounding-Rechtecks durch den Aufruf der Methode
-     * <code>{@link #setCenter(double, double)}</code>.
+     * Verschiebt die {@link Actor}-Figur so, dass ihr <b>Mittelpunkt</b> die
+     * angegebenen Koordinaten hat.
      *
-     * @param x Die <code>x</code>-Koordinate des neuen Mittelpunktes des
-     *     Objektes
-     * @param y Die <code>y</code>-Koordinate des neuen Mittelpunktes des
-     *     Objektes
+     * <p>
+     * Im Gegensatz zur {@link Actor#setCenter(Vector)}-Methode muss hier kein
+     * neues {@link Vector}-Objekt erzeugt werden. Der Mittelpunkt ist durch
+     * zwei einzelne Werte, nämlich die x- und die y-Koordinate, anzugeben.
+     * </p>
+     *
+     * <p>
+     * Diese Methode ermittelt zuerst den aktuellen achsenparallelen
+     * Begrenzungsrahmen (axis-aligned bounding box (AABB)) der Figur. Von
+     * diesem Begrenzungsrahmen wird anschließend der Mittelpunkt bestimmt
+     * ({@link Actor#getCenter()}). Die Methode berechnet schließlich den
+     * Differenzvektor zwischen dem aktuellen Mittelpunkt und dem gewünschten
+     * neuen Mittelpunkt und verschiebt die Figur mit Hilfe dieses
+     * Differenzvektors.
+     * </p>
+     *
+     * @param x Die <code>x</code>-Koordinate des neuen Mittelpunktes der Figur.
+     * @param y Die <code>y</code>-Koordinate des neuen Mittelpunktes der Figur.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -2161,14 +2171,20 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Verschiebt die Actor-Figur so, dass ihr Mittelpunkt die eingegebenen
-     * Koordinaten hat.
+     * Verschiebt die {@link Actor}-Figur so, dass ihr <b>Mittelpunkt</b> die
+     * angegebenen Koordinaten hat.
      *
      * <p>
-     * Diese Methode arbeitet mit dem Mittelpunkt des das Objekt abdeckenden
-     * Bounding-Rechtecks durch den Aufruf der Methode <code>getCenter()</code>.
+     * Diese Methode ermittelt zuerst den aktuellen achsenparallelen
+     * Begrenzungsrahmen (axis-aligned bounding box (AABB)) der Figur. Von
+     * diesem Begrenzungsrahmen wird anschließend der Mittelpunkt bestimmt
+     * ({@link Actor#getCenter()}). Die Methode berechnet schließlich den
+     * Differenzvektor zwischen dem aktuellen Mittelpunkt und dem gewünschten
+     * neuen Mittelpunkt und verschiebt die Figur mit Hilfe dieses
+     * Differenzvektors.
+     * </p>
      *
-     * @param center Der neue Mittelpunkt des Objekts
+     * @param center Der neue Mittelpunkt der Figur.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch

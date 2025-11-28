@@ -647,10 +647,10 @@ public final class Game
     }
 
     /**
-     * Gibt an, ob eine bestimmte Taste derzeit heruntergedrückt ist.
+     * Gibt an, ob eine bestimmte <b>Taste</b> derzeit <b>gedrückt</b> ist.
      *
      * @param keyCode Die zu testende Taste als Key-Code (also z.B.
-     *     <code>KeyEvent.VK_D</code>).
+     *     {@link KeyEvent#VK_D}).
      *
      * @return <code>true</code>, wenn die zu testende Taste gerade
      *     heruntergedrückt ist, sonst <code>false</code>.

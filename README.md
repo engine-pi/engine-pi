@@ -2540,30 +2540,31 @@ Mehrzeilig:
 
 ### Deutsche Übersetzungen von englischen Klassennamen
 
-| englisch       | deutsch                                                |
-| -------------- | ------------------------------------------------------ |
-| Actor          | Figur                                                  |
-| BodyType       | Verhalten einer Figur in der physikalischen Simulation |
-| Bounds         | Schranken, Abgrenzung                                  |
-| DistanceJoint  | Stabverbindung                                         |
-| Fixture        | Halterung, Kollisionsform                              |
-| Frame          | Einzelbild                                             |
-| Handler        | Steuerungsklasse                                       |
-| Joint          | Verbindung                                             |
-| Layer          | Ebene                                                  |
-| Listener       | Beobachter                                             |
-| Loop           | Schleife                                               |
-| Offset         | Verzug                                                 |
-| PrismaticJoint | Federverbindung                                        |
-| Rectangle      | Rechteck                                               |
-| RevoluteJoint  | Gelenkverbindung                                       |
-| Rigid Body     | Starrer Körper                                         |
-| RopeJoint      | Seilverbindung                                         |
-| Scene          | Szene                                                  |
-| Shape          | Umriss                                                 |
-| Square         | Quadrat                                                |
-| TurboFire      | Dauerfeuer                                             |
-| WeldJoint      | Schweißnaht                                            |
+| englisch                         | deutsch                                                |
+| -------------------------------- | ------------------------------------------------------ |
+| AABB (axis-aligned bounding box) | achsenparallelen Begrenzungsrahmen                     |
+| Actor                            | Figur                                                  |
+| BodyType                         | Verhalten einer Figur in der physikalischen Simulation |
+| Bounds                           | Schranken, Abgrenzung                                  |
+| DistanceJoint                    | Stabverbindung                                         |
+| Fixture                          | Halterung, Kollisionsform                              |
+| Frame                            | Einzelbild                                             |
+| Handler                          | Steuerungsklasse                                       |
+| Joint                            | Verbindung                                             |
+| Layer                            | Ebene                                                  |
+| Listener                         | Beobachter                                             |
+| Loop                             | Schleife                                               |
+| Offset                           | Verzug                                                 |
+| PrismaticJoint                   | Federverbindung                                        |
+| Rectangle                        | Rechteck                                               |
+| RevoluteJoint                    | Gelenkverbindung                                       |
+| Rigid Body                       | Starrer Körper                                         |
+| RopeJoint                        | Seilverbindung                                         |
+| Scene                            | Szene                                                  |
+| Shape                            | Umriss                                                 |
+| Square                           | Quadrat                                                |
+| TurboFire                        | Dauerfeuer                                             |
+| WeldJoint                        | Schweißnaht                                            |
 
 ### Kommentar mit Lizenzhinweis
 

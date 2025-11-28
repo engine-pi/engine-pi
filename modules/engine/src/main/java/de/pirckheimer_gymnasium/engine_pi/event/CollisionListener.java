@@ -26,7 +26,9 @@ import de.pirckheimer_gymnasium.engine_pi.annotations.API;
 /**
  * Beschreibt allgemein ein Objekt, das auf die <b>Kollision zweier
  * {@link Actor}-Objekte</b> reagieren kann.
+ *
  * <h2>Funktionsweise</h2>
+ *
  * <p>
  * Eine <code>KollisionsReagierbar</code>-Instanz wird bei Kollisionen zwischen
  * verschiedenen {@link Actor}-Objekten aufgerufen. Die genauen Umstände hängen
