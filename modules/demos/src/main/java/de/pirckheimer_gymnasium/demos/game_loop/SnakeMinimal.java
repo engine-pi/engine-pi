@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials//.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/gameloop/SnakeHead.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *

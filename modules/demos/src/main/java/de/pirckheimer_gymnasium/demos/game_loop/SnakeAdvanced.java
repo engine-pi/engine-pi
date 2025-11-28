@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials//.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/gameloop/ActualSnake.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -40,7 +40,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
     private Snake snakeHead = new Snake();
 
-    private double snake_speed = 5;
+    private double snakeSpeed = 5;
 
     private boolean makeNewHead = false;
 
@@ -55,7 +55,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public void setScore(int score)
     {
         this.score = score;
-        snake_speed = 5 + (score * 0.1);
+        snakeSpeed = 5 + (score * 0.1);
         scoreText.setContent("Score: " + score);
     }
 
@@ -80,19 +80,19 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         double dX = 0, dY = 0;
         if (Game.isKeyPressed(KeyEvent.VK_W))
         {
-            dY = snake_speed * timeInS;
+            dY = snakeSpeed * timeInS;
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            dX = -snake_speed * timeInS;
+            dX = -snakeSpeed * timeInS;
         }
         if (Game.isKeyPressed(KeyEvent.VK_S))
         {
-            dY = -snake_speed * timeInS;
+            dY = -snakeSpeed * timeInS;
         }
         if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            dX = snake_speed * timeInS;
+            dX = snakeSpeed * timeInS;
         }
         if (makeNewHead)
         {
