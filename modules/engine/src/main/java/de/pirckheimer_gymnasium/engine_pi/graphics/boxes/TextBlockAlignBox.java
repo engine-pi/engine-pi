@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
-public class TextBlockAlignBox extends CombinedAlignBox
+public class TextBlockAlignBox extends CombinedChildBox
 {
     public ContainerBox container;
 
@@ -18,44 +18,37 @@ public class TextBlockAlignBox extends CombinedAlignBox
         addChild(container);
     }
 
-    @Override
     public int innerWidth()
     {
         return text.width;
     }
 
-    @Override
     public int innerHeight()
     {
         return text.height;
     }
 
-    @Override
-    public CombinedAlignBox width(int width)
+    public TextBlockAlignBox width(int width)
     {
         container.width(width);
         return this;
     }
 
-    @Override
-    public CombinedAlignBox height(int height)
+    public TextBlockAlignBox height(int height)
     {
         container.height(height);
         return this;
     }
 
-    @Override
-    public CombinedAlignBox hAlign(HAlign hAlign)
+    public TextBlockAlignBox hAlign(HAlign hAlign)
     {
         container.hAlign(hAlign);
         return this;
     }
 
-    @Override
-    public CombinedAlignBox vAlign(VAlign vAlign)
+    public TextBlockAlignBox vAlign(VAlign vAlign)
     {
         container.vAlign(vAlign);
         return this;
     }
-
 }
