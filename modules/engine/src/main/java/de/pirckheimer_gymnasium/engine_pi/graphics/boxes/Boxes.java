@@ -104,9 +104,9 @@ public final class Boxes
      * links oben nach rechts unten angeordnet werden. Der Innenabstand wird auf
      * 10 Pixel gesetzt.
      */
-    public static GridBox grid(Box... childs)
+    public static <T extends Box> GridBox<T> grid(Box... childs)
     {
-        GridBox box = new GridBox(childs);
+        GridBox<T> box = new GridBox<T>(childs);
         box.padding(10);
         return box;
     }
@@ -154,7 +154,7 @@ public final class Boxes
         return new MarginBox(child);
     }
 
-    public static TextBlockBox textBlock(String content)
+    public static TextBlockBox textBlock(Object content)
     {
         return new TextBlockBox(content);
     }
@@ -166,9 +166,9 @@ public final class Boxes
      *
      * @since 0.39.0
      *
-     * @see TextLineBox#TextLineBox(String)
+     * @see TextLineBox#TextLineBox(Object)
      */
-    public static TextLineBox textLine(String content)
+    public static TextLineBox textLine(Object content)
     {
         return new TextLineBox(content);
     }

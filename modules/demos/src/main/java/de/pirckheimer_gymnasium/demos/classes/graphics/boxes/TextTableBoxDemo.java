@@ -10,14 +10,21 @@ import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.TextTableBox;
 
 public class TextTableBoxDemo extends Graphics2DComponent
 {
-
     public void render(Graphics2D g)
     {
-        new TextTableBox("Cell 1", "Cell 2", "Cell 3").row(0, b -> b.width(400))
-                .cell(0, 0, b -> {
-                    b.text.color("red");
-                    b.text.content("This is cell 0,0");
-                }).column(0, b -> b.hAlign(HAlign.RIGHT)).padding(10).render(g);
+        TextTableBox table = new TextTableBox("Cell 1", "Cell 2", "Cell 3",
+                "Cell 4");
+        table.row(0, b -> b.width(400));
+        table.cell(0, 0, b -> {
+            b.text.color("red");
+            b.text.content("This is cell 0,0");
+        });
+        table.column(0, b -> {
+            b.hAlign(HAlign.RIGHT);
+            b.text.color("green");
+        });
+        table.padding(10);
+        table.render(g);
     }
 
     public static void main(String[] args)

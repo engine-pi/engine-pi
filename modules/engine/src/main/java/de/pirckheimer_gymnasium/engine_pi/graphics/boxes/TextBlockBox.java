@@ -54,9 +54,9 @@ public class TextBlockBox extends TextBox
      *
      * @since 0.41.0
      *
-     * @see Boxes#textBlock(String)
+     * @see Boxes#textBlock(Object)
      */
-    public TextBlockBox(String content)
+    public TextBlockBox(Object content)
     {
         super(content);
     }

@@ -83,6 +83,12 @@ public abstract class Box implements Iterable<Box>
     protected int definedHeight;
 
     /**
+     * Gibt an, ob bei dieser Box die Abmessungen gesetzt werden können oder ob
+     * die Abmessungen nur automatisch bestimmt werden können.
+     */
+    protected boolean supportsDefinedDimension = false;
+
+    /**
      * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @since 0.38.0

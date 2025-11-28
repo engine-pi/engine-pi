@@ -47,9 +47,9 @@ public class TextLineBox extends TextBox
      *
      * @since 0.39.0
      *
-     * @see Boxes#textLine(String)
+     * @see Boxes#textLine(Object)
      */
-    public TextLineBox(String content)
+    public TextLineBox(Object content)
     {
         super(content);
     }

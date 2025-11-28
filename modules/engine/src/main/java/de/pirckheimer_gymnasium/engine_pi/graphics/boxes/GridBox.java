@@ -1,12 +1,17 @@
 package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
+import java.util.ArrayList;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
 
-public class GridBox extends PaddingBox
+import java.util.List;
+import java.util.function.Consumer;
+
+public class GridBox<T extends Box> extends PaddingBox
 {
     int columns = 2;
 
-    Box[][] grid;
+    List<List<T>> grid;
 
     public GridBox(Box... childs)
     {
@@ -14,7 +19,7 @@ public class GridBox extends PaddingBox
         buildGrid();
     }
 
-    public GridBox columns(int columns)
+    public GridBox<T> columns(int columns)
     {
         this.columns = columns;
         buildGrid();
@@ -41,31 +46,46 @@ public class GridBox extends PaddingBox
         return (int) Math.ceil((double) numberOfChilds() / columns);
     }
 
-    private void buildGrid()
+    protected void buildGrid()
     {
-        grid = new Box[rowCount()][columnCount()];
-        for (int column = 0; column < columnCount(); column++)
+        grid = new ArrayList<>();
+
+        for (int row = 0; row < rowCount(); row++)
         {
-            for (int row = 0; row < rowCount(); row++)
+            grid.add(new ArrayList<>());
+            for (int column = 0; column < columnCount(); column++)
             {
-                grid[row][column] = getChild(row, column);
+                grid.get(row).add(getChild(row, column));
             }
         }
     }
 
-    private Box getChild(int row, int column)
+    @SuppressWarnings("unchecked")
+    private T getChild(int row, int column)
     {
         int index = row * columnCount() + column;
         if (index < numberOfChilds())
         {
-            return childs.get(index);
+            return (T) childs.get(index);
         }
         return null;
     }
 
-    public Box[] getRow(int row)
+    public List<T> getRow(int row)
     {
-        return grid[row];
+        return grid.get(row);
+    }
+
+    public GridBox<T> row(int row, Consumer<T> consumer)
+    {
+        for (T box : getRow(row))
+        {
+            if (box != null)
+            {
+                consumer.accept(box);
+            }
+        }
+        return this;
     }
 
     public int getMaxHeightOfRow(int row)
@@ -81,14 +101,52 @@ public class GridBox extends PaddingBox
         return maxHeight;
     }
 
-    public Box[] getColumn(int column)
+    public List<T> getColumn(int column)
     {
-        Box[] childs = new Box[rowCount()];
-        for (int i = 0; i < childs.length; i++)
+        List<T> childs = new ArrayList<>();
+        for (int row = 0; row < rowCount(); row++)
         {
-            childs[i] = grid[i][column];
+            childs.add(grid.get(row).get(column));
         }
         return childs;
+    }
+
+    public GridBox<T> column(int column, Consumer<T> consumer)
+    {
+        for (T box : getColumn(column))
+        {
+            if (box != null)
+            {
+                consumer.accept(box);
+            }
+        }
+        return this;
+    }
+
+    public GridBox<T> cell(int row, int column, Consumer<T> consumer)
+    {
+        T box = grid.get(row).get(column);
+        if (box != null)
+        {
+            consumer.accept(box);
+        }
+        return this;
+    }
+
+    public GridBox<T> allCells(Consumer<T> consumer)
+    {
+        for (int row = 0; row < rowCount(); row++)
+        {
+            for (int column = 0; column < columnCount(); column++)
+            {
+                T box = grid.get(row).get(column);
+                if (box != null)
+                {
+                    consumer.accept(box);
+                }
+            }
+        }
+        return this;
     }
 
     public int getMaxWidthOfColumn(int column)
@@ -110,15 +168,28 @@ public class GridBox extends PaddingBox
         width = 0;
         for (int column = 0; column < columnCount(); column++)
         {
-            width += getMaxWidthOfColumn(column);
+            int maxWidth = getMaxWidthOfColumn(column);
+            width += maxWidth;
+            column(column, b -> {
+                if (b.supportsDefinedDimension)
+                {
+                    b.definedWidth = maxWidth;
+                }
+            });
         }
 
         height = 0;
         for (int row = 0; row < rowCount(); row++)
         {
-            height += getMaxHeightOfRow(row);
+            int maxHeight = getMaxHeightOfRow(row);
+            height += maxHeight;
+            row(row, b -> {
+                if (b.supportsDefinedDimension)
+                {
+                    b.definedHeight = maxHeight;
+                }
+            });
         }
-
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;
     }
