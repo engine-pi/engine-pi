@@ -66,10 +66,9 @@ public abstract class TextBox extends LeafBox
      *
      * @see Boxes#textLine(String)
      */
-    public TextBox(String content)
+    public TextBox(Object content)
     {
-        this.content = content;
-        calculateDimension();
+        content(content);
     }
 
     /* Setter */
@@ -82,9 +81,9 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
-    public TextBox content(String content)
+    public TextBox content(Object content)
     {
-        this.content = content;
+        this.content = String.valueOf(content);
         calculateDimension();
         return this;
     }

@@ -4,10 +4,10 @@ package de.pirckheimer_gymnasium.engine_pi.graphics.boxes;
 
 public class TextTableBox extends GridBox<TextBlockAlignBox>
 {
-    public TextTableBox(String... contents)
+    public TextTableBox(Object... contents)
     {
         super();
-        for (String content : contents)
+        for (Object content : contents)
         {
             addChild(new TextBlockAlignBox(content));
         }

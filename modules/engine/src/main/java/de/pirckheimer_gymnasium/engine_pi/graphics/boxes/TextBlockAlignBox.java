@@ -11,7 +11,7 @@ public class TextBlockAlignBox extends CombinedChildBox
         this("");
     }
 
-    public TextBlockAlignBox(String content)
+    public TextBlockAlignBox(Object content)
     {
         text = new TextBlockBox(content);
         container = new ContainerBox(text);
