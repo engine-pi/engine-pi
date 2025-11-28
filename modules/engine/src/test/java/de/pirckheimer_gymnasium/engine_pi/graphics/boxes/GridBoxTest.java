@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class GridBoxTest
 {
-    GridBox gridBox = grid(empty(5));
+    GenericGridBox<EmptyBox> gridBox = grid(empty(5));
 
     @Test
     void columns()
@@ -25,28 +25,28 @@ public class GridBoxTest
     @Test
     void gridArray()
     {
-        assertEquals(3, gridBox.grid.length);
-        assertEquals(2, gridBox.grid[0].length);
+        assertEquals(3, gridBox.grid.size());
+        assertEquals(2, gridBox.grid.get(0).size());
     }
 
     @Test
     void getRow()
     {
-        assertEquals(2, gridBox.getRow(0).length);
-        assertEquals(2, gridBox.getRow(1).length);
-        assertEquals(2, gridBox.getRow(2).length);
+        assertEquals(2, gridBox.getRow(0).size());
+        assertEquals(2, gridBox.getRow(1).size());
+        assertEquals(2, gridBox.getRow(2).size());
     }
 
     @Test
     void getColumn()
     {
-        assertEquals(3, gridBox.getColumn(0).length);
-        assertEquals(3, gridBox.getColumn(1).length);
+        assertEquals(3, gridBox.getColumn(0).size());
+        assertEquals(3, gridBox.getColumn(1).size());
 
-        GridBox g2 = grid(empty(27)).columns(4);
-        assertEquals(7, g2.getColumn(0).length);
-        assertEquals(7, g2.getColumn(1).length);
-        assertEquals(7, g2.getColumn(2).length);
-        assertEquals(7, g2.getColumn(3).length);
+        GenericGridBox<Box> g2 = grid(empty(27)).columns(4);
+        assertEquals(7, g2.getColumn(0).size());
+        assertEquals(7, g2.getColumn(1).size());
+        assertEquals(7, g2.getColumn(2).size());
+        assertEquals(7, g2.getColumn(3).size());
     }
 }
