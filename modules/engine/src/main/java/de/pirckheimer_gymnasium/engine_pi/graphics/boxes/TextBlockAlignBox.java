@@ -16,6 +16,7 @@ public class TextBlockAlignBox extends CombinedChildBox
         text = new TextBlockBox(content);
         container = new ContainerBox(text);
         addChild(container);
+        supportsDefinedDimension = true;
     }
 
     public int innerWidth()

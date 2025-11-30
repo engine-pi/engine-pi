@@ -110,7 +110,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Ein Iterator über die direkten Kind-Boxen (leer wenn keine).
      *
-     * @since 0.40.0
+     * @since 0.40.0width
      */
     @Override
     public Iterator<Box> iterator()
@@ -119,6 +119,24 @@ public abstract class Box implements Iterable<Box>
     }
 
     /* Setter */
+
+    public Box width(int width)
+    {
+        if (supportsDefinedDimension)
+        {
+            this.definedWidth = width;
+        }
+        return this;
+    }
+
+    public Box height(int height)
+    {
+        if (supportsDefinedDimension)
+        {
+            this.definedHeight = height;
+        }
+        return this;
+    }
 
     /**
      * Setzt die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.

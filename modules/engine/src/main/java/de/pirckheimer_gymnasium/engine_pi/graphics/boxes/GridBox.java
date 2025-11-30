@@ -27,9 +27,9 @@ public class GridBox<T extends Box> extends PaddingBox
     }
 
     /**
-     * Gibt die Anzahl der Spalten zurück.
+     * Gibt die Anzahl an Spalten zurück.
      *
-     * @return Die Anzahl der Spalten.
+     * @return Die Anzahl an Spalten.
      */
     public int columnCount()
     {
@@ -37,9 +37,9 @@ public class GridBox<T extends Box> extends PaddingBox
     }
 
     /**
-     * Gibt die Anzahl der Reihen zurück.
+     * Gibt die Anzahl an Reihen zurück.
      *
-     * @return Die Anzahl der Reihen.
+     * @return Die Anzahl an Reihen.
      */
     public int rowCount()
     {
@@ -48,11 +48,11 @@ public class GridBox<T extends Box> extends PaddingBox
 
     protected void buildGrid()
     {
-        grid = new ArrayList<>();
+        grid = new ArrayList<>(rowCount());
 
         for (int row = 0; row < rowCount(); row++)
         {
-            grid.add(new ArrayList<>());
+            grid.add(new ArrayList<>(columnCount()));
             for (int column = 0; column < columnCount(); column++)
             {
                 grid.get(row).add(getChild(row, column));
@@ -103,7 +103,7 @@ public class GridBox<T extends Box> extends PaddingBox
 
     public List<T> getColumn(int column)
     {
-        List<T> childs = new ArrayList<>();
+        List<T> childs = new ArrayList<>(rowCount());
         for (int row = 0; row < rowCount(); row++)
         {
             childs.add(grid.get(row).get(column));
@@ -170,12 +170,7 @@ public class GridBox<T extends Box> extends PaddingBox
         {
             int maxWidth = getMaxWidthOfColumn(column);
             width += maxWidth;
-            column(column, b -> {
-                if (b.supportsDefinedDimension)
-                {
-                    b.definedWidth = maxWidth;
-                }
-            });
+            column(column, b -> b.width(maxWidth));
         }
 
         height = 0;
@@ -183,12 +178,7 @@ public class GridBox<T extends Box> extends PaddingBox
         {
             int maxHeight = getMaxHeightOfRow(row);
             height += maxHeight;
-            row(row, b -> {
-                if (b.supportsDefinedDimension)
-                {
-                    b.definedHeight = maxHeight;
-                }
-            });
+            row(row, b -> b.height(maxHeight));
         }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;
