@@ -1,57 +1,57 @@
-/*
- * Nach: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/gameloop/ActualSnake.java
- *
- * Copyright (c) 2025 Josef Friedrich and contributors.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package de.pirckheimer_gymnasium.demos.small_games.snake;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
-class Snake extends Square
+/**
+ *
+ */
+public class Snake
 {
-    Snake next = null;
+    SnakeHead head;
 
-    public Snake()
+    SnakeBodyElement body;
+
+    SnakeScene scene;
+
+    public Snake(SnakeScene scene)
     {
-        super(0.75);
-        setColor("white");
+        this.scene = scene;
+        head = new SnakeHead();
+        scene.add(head);
     }
 
-    void moveHead(double dX, double dY)
+    /**
+     * Die Schlange wächst vom Kopf aus. Der bisherige Kopf wird durch ein
+     * Körperelement ersetzt.
+     *
+     * TODO fix keine neuen Köpfe erzeugen
+     *
+     * @param dX
+     * @param dY
+     */
+    public void grow(double dX, double dY)
     {
-        Vector mycenter = getCenter();
-        moveBy(dX, dY);
-        if (next != null)
+        Vector oldPosition = head.getCenter();
+        SnakeBodyElement firstBodyElement = new SnakeBodyElement();
+        scene.add(firstBodyElement);
+        firstBodyElement.setCenter(oldPosition);
+        scene.remove(head);
+        SnakeBodyElement oldFirstBodyElement = body;
+        body = firstBodyElement;
+        firstBodyElement.next = oldFirstBodyElement;
+        head = new SnakeHead();
+        head.setCenter(oldPosition);
+        scene.add(head);
+        move(dX, dY);
+    }
+
+    public void move(double dX, double dY)
+    {
+        head.moveBy(dX, dY);
+
+        if (body != null)
         {
-            next.moveChildren(mycenter);
+            body.moveChildren(new Vector(dX, dY));
         }
-    }
-
-    void moveChildren(Vector newCenter)
-    {
-        Vector mycenter = getCenter();
-        setCenter(newCenter);
-        // Je größer die Verzögerung, desto größer ist der Abstand zwischen den
-        // einzelnen Körperteilen der Schlange
-        delay(0.05, () -> {
-            if (next != null)
-            {
-                next.moveChildren(mycenter);
-            }
-        });
     }
 }

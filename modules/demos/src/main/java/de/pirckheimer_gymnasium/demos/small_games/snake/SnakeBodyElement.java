@@ -18,27 +18,30 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.snake;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
+import de.pirckheimer_gymnasium.engine_pi.Vector;
+import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
-class Goodie extends Text implements CollisionListener<SnakeHead>
+class SnakeBodyElement extends Square
 {
-    private SnakeScene scene;
+    SnakeBodyElement next = null;
 
-    public Goodie(SnakeScene scene)
+    public SnakeBodyElement()
     {
-        super("Eat Me!", 1);
-        setColor("red");
-        this.scene = scene;
+        super(0.75);
+        setColor("white");
     }
 
-    @Override
-    public void onCollision(CollisionEvent<SnakeHead> collisionEvent)
+    void moveChildren(Vector newCenter)
     {
-        scene.increaseScore();
-        scene.makeNewHead = true;
-        remove();
-        scene.placeRandomGoodie();
+        Vector oldCenter = getCenter();
+        setCenter(oldCenter.add(newCenter));
+        // Je größer die Verzögerung, desto größer ist der Abstand zwischen den
+        // einzelnen Körperteilen der Schlange
+        delay(0.05, () -> {
+            if (next != null)
+            {
+                next.moveChildren(oldCenter);
+            }
+        });
     }
 }

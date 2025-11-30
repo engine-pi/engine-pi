@@ -23,7 +23,6 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Random;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
 import de.pirckheimer_gymnasium.engine_pi.actor.Text;
 import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
 
@@ -33,7 +32,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
 
     private int score = 0;
 
-    private Snake snakeHead = new Snake();
+    private Snake snake;
 
     private double snakeSpeed = 5;
 
@@ -45,7 +44,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
 
     public SnakeScene()
     {
-        add(snakeHead);
+        snake = new Snake(this);
         scoreText.setPosition(-9, 5);
         add(scoreText);
         placeRandomGoodie();
@@ -70,7 +69,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
         Goodie goodie = new Goodie(this);
         goodie.setCenter(x, y);
         add(goodie);
-        goodie.addCollisionListener(snakeHead, goodie);
+        goodie.addCollisionListener(SnakeHead.class, goodie);
     }
 
     @Override
@@ -98,17 +97,12 @@ public class SnakeScene extends Scene implements FrameUpdateListener
         }
         if (makeNewHead)
         {
-            Snake newHead = new Snake();
-            newHead.setCenter(snakeHead.getCenter());
-            newHead.next = snakeHead;
-            newHead.moveBy(new Vector(dX, dY).multiply(1));
-            add(newHead);
-            snakeHead = newHead;
+            snake.grow(dX, dY);
             makeNewHead = false;
         }
         else if (dX != 0 || dY != 0)
         {
-            snakeHead.moveHead(dX, dY);
+            snake.move(dX, dY);
         }
     }
 

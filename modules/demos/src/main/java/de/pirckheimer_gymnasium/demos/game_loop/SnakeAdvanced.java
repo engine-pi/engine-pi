@@ -75,31 +75,30 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double timeInS)
+    public void onFrameUpdate(double pastTime)
     {
         double dX = 0, dY = 0;
         if (Game.isKeyPressed(KeyEvent.VK_W))
         {
-            dY = snakeSpeed * timeInS;
+            dY = snakeSpeed * pastTime;
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            dX = -snakeSpeed * timeInS;
+            dX = -snakeSpeed * pastTime;
         }
         if (Game.isKeyPressed(KeyEvent.VK_S))
         {
-            dY = -snakeSpeed * timeInS;
+            dY = -snakeSpeed * pastTime;
         }
         if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            dX = snakeSpeed * timeInS;
+            dX = snakeSpeed * pastTime;
         }
         if (makeNewHead)
         {
             Snake newHead = new Snake();
             newHead.setCenter(snakeHead.getCenter());
             newHead.next = snakeHead;
-            newHead.moveBy(new Vector(dX, dY).multiply(1));
             add(newHead);
             snakeHead = newHead;
             makeNewHead = false;

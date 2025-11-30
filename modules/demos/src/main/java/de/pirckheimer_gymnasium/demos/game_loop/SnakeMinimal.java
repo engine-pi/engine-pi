@@ -82,9 +82,9 @@ public class SnakeMinimal extends Scene
         }
 
         @Override
-        public void onFrameUpdate(double timeInS)
+        public void onFrameUpdate(double pastTime)
         {
-            moveBy(movement.multiply(timeInS));
+            moveBy(movement.multiply(pastTime));
         }
 
         @Override
