@@ -2338,7 +2338,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Gibt die Position formatiert als Zeichenkette aus.
      *
-     * @return Die Position als Zeichenkette im Format {@code 0.00|0.00}.
+     * @return Die Position als Zeichenkette im Format {@code 0.0|0.0}.
      */
     public final String getPositionformatted()
     {

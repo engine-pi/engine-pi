@@ -19,16 +19,16 @@
 package de.pirckheimer_gymnasium.demos.small_games.snake;
 
 import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import de.pirckheimer_gymnasium.engine_pi.actor.Square;
 
-class Snake extends Circle
+class Snake extends Square
 {
     Snake next = null;
 
     public Snake()
     {
-        super(1);
-        setColor("green");
+        super(0.75);
+        setColor("white");
     }
 
     void moveHead(double dX, double dY)
@@ -45,9 +45,13 @@ class Snake extends Circle
     {
         Vector mycenter = getCenter();
         setCenter(newCenter);
-        if (next != null)
-        {
-            next.moveChildren(mycenter);
-        }
+        // Je größer die Verzögerung, desto größer ist der Abstand zwischen den
+        // einzelnen Körperteilen der Schlange
+        delay(0.05, () -> {
+            if (next != null)
+            {
+                next.moveChildren(mycenter);
+            }
+        });
     }
 }
