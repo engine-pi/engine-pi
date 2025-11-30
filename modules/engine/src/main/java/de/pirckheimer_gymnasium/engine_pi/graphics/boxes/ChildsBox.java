@@ -36,14 +36,17 @@ abstract class ChildsBox extends Box
     {
         for (Box child : childs)
         {
-            this.childs.add(child);
-            child.parent = this;
+            addChild(child);
         }
     }
 
     public void addChild(Box child)
     {
-        this.childs.add(child);
+        if (child != null)
+        {
+            this.childs.add(child);
+            child.parent = this;
+        }
     }
 
     public int numberOfChilds()
