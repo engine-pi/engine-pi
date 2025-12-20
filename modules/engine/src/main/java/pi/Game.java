@@ -88,18 +88,6 @@ public final class Game
     }
 
     /**
-     * Breite des Fensters in Pixel.
-     */
-    private static int width;
-
-    /**
-     * Höhe des Fensters in Pixel.
-     */
-    private static int height;
-
-    private static int pixelMultiplication = 1;
-
-    /**
      * Eigentliches Fenster des Spiels.
      */
     private static final Frame frame = new Frame("Engine Pi");
@@ -161,7 +149,7 @@ public final class Game
      */
     public static void setPixelMultiplication(int pixelMultiplication)
     {
-        Game.pixelMultiplication = pixelMultiplication;
+        Configuration.pixelMultiplication = pixelMultiplication;
     }
 
     /**
@@ -177,7 +165,7 @@ public final class Game
      */
     public static int getPixelMultiplication()
     {
-        return pixelMultiplication;
+        return Configuration.pixelMultiplication;
     }
 
     /**
@@ -191,7 +179,7 @@ public final class Game
      */
     public static boolean isPixelMultiplication()
     {
-        return pixelMultiplication > 1;
+        return Configuration.pixelMultiplication > 1;
     }
 
     /**
@@ -222,8 +210,8 @@ public final class Game
         setPixelMultiplication(pixelMultiplication);
         width *= pixelMultiplication;
         height *= pixelMultiplication;
-        Game.width = width;
-        Game.height = height;
+        Configuration.windowWidthPx = width;
+        Configuration.windowHeightPx = height;
         Game.scene = scene;
         renderPanel = new RenderPanel(width, height);
         frame.setResizable(false);
@@ -305,9 +293,10 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
-     * Pixel. Es wird automatische eine Szene erzeugt und diese zur weiteren
-     * Verwendung an eine <b>Lambda-Funktion</b> übergeben.
+     * Startet das Spiel in einem Fenster mit den Standard-Abmessungen
+     * ({@code 800x600} Pixel falls nicht anderweitig konfiguriert). Es wird
+     * automatische eine Szene erzeugt und diese zur weiteren Verwendung an eine
+     * <b>Lambda-Funktion</b> übergeben.
      *
      * <pre>{@code
      * Game.start((scene) -> {
@@ -330,8 +319,8 @@ public final class Game
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
-     * Pixel.
+     * Startet das Spiel in einem Fenster mit den Standard-Abmessungen
+     * ({@code 800x600} Pixel falls nicht anderweitig konfiguriert).
      *
      * @param scene Die Szene, mit der das Spiel gestartet wird.
      *
@@ -340,12 +329,14 @@ public final class Game
     @API
     public static Scene start(Scene scene)
     {
-        return start(800, 600, scene);
+        return start(Configuration.windowWidthPx, Configuration.windowHeightPx,
+                scene);
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit den Abmessungen {@code 800x600}
-     * Pixel und der Begrüßungsanimation.
+     * Startet das Spiel in einem Fenster mit den Standard-Abmessungen
+     * ({@code 800x600} Pixel falls nicht anderweitig konfiguriert) und der
+     * Begrüßungsanimation.
      *
      * @return Die erzeugte Szene, mit der das Spiel gestartet wurde.
      *
@@ -699,10 +690,10 @@ public final class Game
             throw new RuntimeException(
                     "Fenster-Resizing ist erst möglich, nachdem Game.start ausgeführt wurde.");
         }
-        int diffX = (width - Game.width) / 2;
-        int diffY = (height - Game.height) / 2;
-        Game.width = width;
-        Game.height = height;
+        int diffX = (width - Configuration.windowWidthPx) / 2;
+        int diffY = (height - Configuration.windowHeightPx) / 2;
+        Configuration.windowWidthPx = width;
+        Configuration.windowHeightPx = height;
         renderPanel.setSize(width, height);
         renderPanel.setPreferredSize(new Dimension(width, height));
         frame.pack();
@@ -722,7 +713,8 @@ public final class Game
     @API
     public static Vector getWindowSize()
     {
-        return new Vector(width, height);
+        return new Vector(Configuration.windowWidthPx,
+                Configuration.windowHeightPx);
     }
 
     /**
@@ -898,14 +890,14 @@ public final class Game
         Vector position = camera.getCenter();
         return new Vector(
                 position.getX() + ((Math.cos(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2.0)
-                        + Math.sin(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2.0)))
+                        * (mousePosition.x - Configuration.windowWidthPx / 2.0)
+                        + Math.sin(Math.toRadians(rotation)) * (mousePosition.y
+                                - Configuration.windowHeightPx / 2.0)))
                         / zoom,
                 position.getY() + ((Math.sin(Math.toRadians(rotation))
-                        * (mousePosition.x - width / 2.0)
-                        - Math.cos(Math.toRadians(rotation))
-                                * (mousePosition.y - height / 2.0)))
+                        * (mousePosition.x - Configuration.windowWidthPx / 2.0)
+                        - Math.cos(Math.toRadians(rotation)) * (mousePosition.y
+                                - Configuration.windowHeightPx / 2.0)))
                         / zoom);
     }
 
@@ -1071,10 +1063,12 @@ public final class Game
     @API
     public static void takeScreenshot()
     {
-        BufferedImage screenshot = new BufferedImage(width, height,
+        BufferedImage screenshot = new BufferedImage(
+                Configuration.windowWidthPx, Configuration.windowHeightPx,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D g = (Graphics2D) screenshot.getGraphics();
-        loop.render(source -> source.render(g, width, height));
+        loop.render(source -> source.render(g, Configuration.windowWidthPx,
+                Configuration.windowHeightPx));
         String dir = FileUtil.getHome() + "/engine-pi";
         FileUtil.createDir(dir);
         ImageUtil.write(screenshot,
