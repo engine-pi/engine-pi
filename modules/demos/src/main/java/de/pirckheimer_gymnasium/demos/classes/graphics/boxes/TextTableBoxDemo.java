@@ -3,6 +3,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
+import pi.graphics.boxes.BorderBox;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextTableBox;
 
@@ -14,7 +15,7 @@ public class TextTableBoxDemo extends Graphics2DComponent
     {
         TextTableBox table = new TextTableBox("Cell 1", "Cell 2", "Cell 3",
                 "Cell 4");
-        table.row(0, b -> b.width(400));
+        table.row(0, b -> b.width(300));
         table.column(0, b -> {
             b.hAlign(HAlign.RIGHT);
             b.text.color("green");
@@ -24,7 +25,11 @@ public class TextTableBoxDemo extends Graphics2DComponent
             b.text.content("This is cell 0,0");
         });
         table.padding(10);
-        table.render(g);
+        table.column(1, b -> {
+            b.hAlign(HAlign.RIGHT);
+            b.text.color("green");
+        });
+        new BorderBox(table).color("black").render(g);
     }
 
     public static void main(String[] args)
