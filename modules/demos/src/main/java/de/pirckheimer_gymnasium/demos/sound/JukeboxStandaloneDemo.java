@@ -18,7 +18,7 @@
  */
 package de.pirckheimer_gymnasium.demos.sound;
 
-import de.pirckheimer_gymnasium.engine_pi.Jukebox;
+import pi.Jukebox;
 
 public class JukeboxStandaloneDemo
 {

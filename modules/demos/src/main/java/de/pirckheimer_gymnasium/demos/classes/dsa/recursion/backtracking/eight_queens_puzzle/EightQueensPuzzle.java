@@ -1,8 +1,8 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Counter;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Counter;
 
 /**
  * Löst das Problem der N Damen.

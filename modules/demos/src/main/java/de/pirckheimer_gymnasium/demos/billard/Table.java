@@ -24,9 +24,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
+import pi.actor.Actor;
+import pi.actor.Rectangle;
+import pi.event.CollisionListener;
 
 public class Table
 {

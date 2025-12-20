@@ -23,11 +23,11 @@ package de.pirckheimer_gymnasium.demos.billard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Random;
+import pi.Scene;
+import pi.Vector;
+import pi.event.KeyStrokeListener;
 
 public class BillardDemo extends Scene implements KeyStrokeListener
 {

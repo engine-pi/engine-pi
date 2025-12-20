@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.logic.navigation;
 
-import de.pirckheimer_gymnasium.engine_pi.Direction;
+import pi.Direction;
 
 public class DirectionalCoords extends Coords
 {

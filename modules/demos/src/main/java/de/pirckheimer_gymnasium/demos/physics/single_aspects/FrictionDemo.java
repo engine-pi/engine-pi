@@ -20,10 +20,10 @@ package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Rectangle;
+import pi.event.KeyStrokeListener;
 
 public class FrictionDemo extends Scene implements KeyStrokeListener
 {

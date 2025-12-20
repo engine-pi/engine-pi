@@ -18,12 +18,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import pi.Resources;
+import pi.Scene;
+import pi.Game;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.actor.Image;
+import pi.event.KeyStrokeListener;
 
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;

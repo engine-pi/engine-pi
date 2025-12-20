@@ -18,9 +18,9 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import pi.Game;
+import pi.actor.Rectangle;
+import pi.physics.FixtureBuilder;
 
 /**
  * Demonstriert die Figur <b>Rechteck</b> ({@link Rectangle}).

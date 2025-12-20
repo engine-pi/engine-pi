@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.actor.StatefulImagesAnimation;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.util.ImageUtil;
+import pi.Resources;
+import pi.actor.StatefulImagesAnimation;
+import pi.event.FrameUpdateListener;
+import pi.util.ImageUtil;
 
 public abstract class Ghost extends StatefulImagesAnimation<GhostState>
         implements FrameUpdateListener

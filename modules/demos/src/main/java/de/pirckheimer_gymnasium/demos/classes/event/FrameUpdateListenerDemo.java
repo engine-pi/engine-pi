@@ -18,15 +18,15 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import pi.Game;
+import pi.Layer;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.FrameUpdateListener;
 
 /**
  * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener#onFrameUpdate(double)}.
+ * {@link pi.event.FrameUpdateListener#onFrameUpdate(double)}.
  */
 public class FrameUpdateListenerDemo extends Scene
         implements FrameUpdateListener

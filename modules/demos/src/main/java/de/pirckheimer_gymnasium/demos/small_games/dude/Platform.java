@@ -20,9 +20,9 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.dude;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Tile;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
+import pi.actor.Tile;
+import pi.actor.TileMap;
+import pi.actor.TileRegistration;
 
 /**
  * Einfache Plattform. Herzlichen Dank an <a href=

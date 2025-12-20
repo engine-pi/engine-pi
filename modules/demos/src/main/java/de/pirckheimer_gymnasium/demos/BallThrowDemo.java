@@ -23,15 +23,15 @@ package de.pirckheimer_gymnasium.demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Actor;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
+import pi.event.KeyStrokeListener;
 
 /**
  * Eine einfache Demonstration der Engine-Physik durch eine

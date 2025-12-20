@@ -22,16 +22,16 @@ package de.pirckheimer_gymnasium.demos.game_loop;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Random;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.actor.Text;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
 
 public class SnakeMinimal extends Scene
 {

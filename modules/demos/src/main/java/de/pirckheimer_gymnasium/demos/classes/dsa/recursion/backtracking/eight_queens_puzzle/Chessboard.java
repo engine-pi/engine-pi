@@ -1,16 +1,16 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
-import static de.pirckheimer_gymnasium.engine_pi.util.ColorUtil.changeSaturation;
-import static de.pirckheimer_gymnasium.engine_pi.util.TimeUtil.sleep;
+import static pi.Resources.colorScheme;
+import static pi.util.ColorUtil.changeSaturation;
+import static pi.util.TimeUtil.sleep;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.actor.Square;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Circle;
+import pi.actor.Image;
+import pi.actor.Square;
 
 /**
  * Ein quadratisches Schachbrett.

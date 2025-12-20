@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.graph.dfs;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphCollection;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphVisualizer;
+import pi.Game;
+import pi.Scene;
+import pi.dsa.graph.GraphCollection;
+import pi.dsa.graph.GraphVisualizer;
 
 public class DepthFirstSearchDemo extends Scene
 {

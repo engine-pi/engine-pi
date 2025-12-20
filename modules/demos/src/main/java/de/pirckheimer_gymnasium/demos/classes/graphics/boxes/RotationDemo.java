@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.margin;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
+import static pi.graphics.boxes.Boxes.border;
+import static pi.graphics.boxes.Boxes.margin;
+import static pi.graphics.boxes.Boxes.textLine;
+import static pi.graphics.boxes.Boxes.vertical;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;

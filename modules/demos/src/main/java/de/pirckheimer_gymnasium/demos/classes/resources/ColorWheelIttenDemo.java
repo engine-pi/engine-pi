@@ -21,14 +21,14 @@ package de.pirckheimer_gymnasium.demos.classes.resources;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Actor;
+import pi.actor.Polygon;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
+import pi.resources.ColorSchemeSelection;
 
 /**
  * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg

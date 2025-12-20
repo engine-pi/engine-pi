@@ -20,14 +20,13 @@ package de.pirckheimer_gymnasium.demos.classes.class_game;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Direction;
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
+import pi.Direction;
+import pi.Game;
+import pi.Scene;
+import pi.debug.DebugConfiguration;
 
 /**
- * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#setWindowPosition(int, int)}
+ * Demonstriert die Methode {@link pi.Game#setWindowPosition(int, int)}
  */
 public class SetWindowPositionDemo
 {

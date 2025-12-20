@@ -1,14 +1,14 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.gui.scenes;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Rectangle;
+import pi.actor.Text;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.Color;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.Controller;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.State;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.TextMaker;
-import de.pirckheimer_gymnasium.engine_pi.Bounds;
+import pi.Bounds;
 
 public class MainMenuScene extends Scene implements WindowScene
 {

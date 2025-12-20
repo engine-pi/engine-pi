@@ -18,9 +18,9 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.class_game;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Actor;
 
 public class SetPixelMultiplicationDemo extends Scene
 {

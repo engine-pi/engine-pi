@@ -1,8 +1,11 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.logic.navigation;
 
-import static de.pirckheimer_gymnasium.engine_pi.Direction.*;
+import static pi.Direction.DOWN;
+import static pi.Direction.LEFT;
+import static pi.Direction.RIGHT;
+import static pi.Direction.UP;
 
-import de.pirckheimer_gymnasium.engine_pi.Direction;
+import pi.Direction;
 
 /**
  * Rough direction of the four main cardinal points /

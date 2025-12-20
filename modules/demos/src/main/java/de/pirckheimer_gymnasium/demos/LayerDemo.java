@@ -1,10 +1,10 @@
 package de.pirckheimer_gymnasium.demos;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import pi.Game;
+import pi.Layer;
+import pi.Scene;
+import pi.actor.Actor;
+import pi.actor.Circle;
 
 public class LayerDemo extends Scene
 {

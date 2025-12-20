@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
-import de.pirckheimer_gymnasium.engine_pi.Jukebox;
+import pi.Jukebox;
 
 /**
  * @author Josef Friedrich

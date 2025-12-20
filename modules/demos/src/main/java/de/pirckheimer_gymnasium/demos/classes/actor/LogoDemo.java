@@ -18,11 +18,11 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+import static pi.Vector.v;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Logo;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Logo;
 
 /**
  * Demonstriert die Figur <b>Logo</b> ({@link Logo}).

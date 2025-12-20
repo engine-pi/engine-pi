@@ -16,8 +16,8 @@
  */
 package de.pirckheimer_gymnasium.tetris;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 import de.pirckheimer_gymnasium.tetris.scenes.CopyrightScene;
 
 public class Tetris

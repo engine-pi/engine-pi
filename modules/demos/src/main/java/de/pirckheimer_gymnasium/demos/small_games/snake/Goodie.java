@@ -18,9 +18,9 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.snake;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
+import pi.actor.Text;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
 
 class Goodie extends Text implements CollisionListener<SnakeHead>
 {

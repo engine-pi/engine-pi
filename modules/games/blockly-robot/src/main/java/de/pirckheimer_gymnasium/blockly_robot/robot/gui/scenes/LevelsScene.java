@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.Controller;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.TextMaker;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.level.AssembledLevel;
@@ -17,7 +17,7 @@ import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Difficulty;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Level;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.LevelCollection;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.menu.TaskList;
-import de.pirckheimer_gymnasium.engine_pi.Bounds;
+import pi.Bounds;
 
 public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
 {

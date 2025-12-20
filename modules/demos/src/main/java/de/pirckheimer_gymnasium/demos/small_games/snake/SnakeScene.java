@@ -20,11 +20,11 @@ package de.pirckheimer_gymnasium.demos.small_games.snake;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import pi.Game;
+import pi.Random;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.FrameUpdateListener;
 
 public class SnakeScene extends Scene implements FrameUpdateListener
 {

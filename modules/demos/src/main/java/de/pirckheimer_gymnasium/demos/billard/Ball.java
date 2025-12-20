@@ -22,9 +22,9 @@ package de.pirckheimer_gymnasium.demos.billard;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.event.FrameUpdateListener;
 
 public class Ball extends Circle implements FrameUpdateListener
 {

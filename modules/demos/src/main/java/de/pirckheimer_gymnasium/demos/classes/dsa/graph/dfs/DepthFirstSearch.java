@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.graph.dfs;
 
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphArrayMatrix;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphVisualizer;
+import pi.dsa.graph.GraphArrayMatrix;
+import pi.dsa.graph.GraphVisualizer;
 
 class DepthFirstSearch extends GraphArrayMatrix
 {

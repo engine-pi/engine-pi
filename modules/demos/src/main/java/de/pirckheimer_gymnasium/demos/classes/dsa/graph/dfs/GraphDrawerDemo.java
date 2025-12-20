@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.graph.dfs;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphDrawer;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Image;
+import pi.dsa.graph.GraphDrawer;
 
 public class GraphDrawerDemo extends Scene
 {

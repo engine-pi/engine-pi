@@ -20,8 +20,8 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games;
 
-import static de.pirckheimer_gymnasium.engine_pi.Random.range;
-import static de.pirckheimer_gymnasium.engine_pi.Vector.vector;
+import static pi.Random.range;
+import static pi.Vector.vector;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -30,24 +30,24 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
-import de.pirckheimer_gymnasium.engine_pi.actor.PrismaticJoint;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask;
-import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import pi.Game;
+import pi.Layer;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Actor;
+import pi.actor.BodyType;
+import pi.actor.Circle;
+import pi.actor.Image;
+import pi.actor.Polygon;
+import pi.actor.PrismaticJoint;
+import pi.actor.Rectangle;
+import pi.actor.RevoluteJoint;
+import pi.actor.TileRegistration;
+import pi.actor.TileMap;
+import pi.event.CollisionEvent;
+import pi.event.FrameUpdateListener;
+import pi.event.PeriodicTask;
+import pi.physics.FixtureBuilder;
 
 public class CarDemo extends Scene implements FrameUpdateListener
 {

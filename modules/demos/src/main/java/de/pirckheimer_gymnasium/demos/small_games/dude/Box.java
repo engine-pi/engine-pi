@@ -20,8 +20,8 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.dude;
 
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
+import pi.Random;
+import pi.actor.Image;
 
 public class Box extends Image
 {

@@ -18,12 +18,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 /**
  * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListenerRegistration#repeat(double, int, de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask, de.pirckheimer_gymnasium.engine_pi.event.PeriodicTask)}.
+ * {@link pi.event.FrameUpdateListenerRegistration#repeat(double, int, pi.event.PeriodicTask, pi.event.PeriodicTask)}.
  *
  * <p>
  * In der Konsole erscheint viermal {@code task} und einmal {@code final task}

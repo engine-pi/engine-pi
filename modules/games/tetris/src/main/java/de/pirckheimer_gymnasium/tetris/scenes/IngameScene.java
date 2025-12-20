@@ -19,11 +19,11 @@ package de.pirckheimer_gymnasium.tetris.scenes;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
-import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
+import pi.Game;
+import pi.actor.Rectangle;
+import pi.event.KeyStrokeListener;
+import pi.event.PeriodicTaskExecutor;
+import pi.event.PressedKeyRepeater;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.FilledRowRange;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;

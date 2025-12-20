@@ -3,7 +3,7 @@ package de.pirckheimer_gymnasium.demos.graphics2d;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
-import de.pirckheimer_gymnasium.engine_pi.util.FontUtil;
+import pi.util.FontUtil;
 
 public class FontStringBounds extends Graphics2DComponent
 {

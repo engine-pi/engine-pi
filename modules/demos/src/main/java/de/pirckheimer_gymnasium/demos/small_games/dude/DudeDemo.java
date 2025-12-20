@@ -20,14 +20,14 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.dude;
 
-import de.pirckheimer_gymnasium.engine_pi.Bounds;
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
+import pi.Bounds;
+import pi.Game;
+import pi.Layer;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Image;
+import pi.actor.TileRegistration;
+import pi.actor.TileMap;
 
 /**
  * Eine kleine Spieldemo.

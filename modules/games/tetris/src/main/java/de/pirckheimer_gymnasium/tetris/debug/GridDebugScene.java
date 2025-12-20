@@ -18,13 +18,13 @@ package de.pirckheimer_gymnasium.tetris.debug;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import pi.Game;
+import pi.Vector;
+import pi.actor.Rectangle;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
+import pi.event.MouseButton;
+import pi.event.MouseClickListener;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.scenes.BaseScene;
 import de.pirckheimer_gymnasium.tetris.tetrominos.FilledRowRange;

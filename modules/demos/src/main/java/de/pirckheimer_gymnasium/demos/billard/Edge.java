@@ -22,8 +22,8 @@ package de.pirckheimer_gymnasium.demos.billard;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
+import pi.Vector;
+import pi.actor.Polygon;
 
 public class Edge extends Polygon
 {

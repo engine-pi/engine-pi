@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>engine-pi</artifactId>
-    <version>0.40.0</version>
+    <version>0.41.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
         <artifactId>engine-pi-meta</artifactId>
-        <version>0.40.0</version>
+        <version>0.41.0</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -106,7 +106,7 @@
                                 <manifest>
                                     <addClasspath>true</addClasspath>
                                     <mainClass>
-                                        de.pirckheimer_gymnasium.engine_pi.debug.MainAnimation</mainClass>
+                                        pi.debug.MainAnimation</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>

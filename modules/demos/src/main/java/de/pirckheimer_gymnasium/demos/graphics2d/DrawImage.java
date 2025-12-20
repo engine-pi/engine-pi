@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.graphics2d;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.images;
+import static pi.Resources.images;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;

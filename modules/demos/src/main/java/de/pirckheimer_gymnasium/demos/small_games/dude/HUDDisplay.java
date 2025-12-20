@@ -23,10 +23,10 @@ package de.pirckheimer_gymnasium.demos.small_games.dude;
 import java.util.Arrays;
 import java.util.List;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Tile;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileRegistration;
-import de.pirckheimer_gymnasium.engine_pi.actor.TileMap;
+import pi.actor.Actor;
+import pi.actor.Tile;
+import pi.actor.TileRegistration;
+import pi.actor.TileMap;
 
 public class HUDDisplay
 {

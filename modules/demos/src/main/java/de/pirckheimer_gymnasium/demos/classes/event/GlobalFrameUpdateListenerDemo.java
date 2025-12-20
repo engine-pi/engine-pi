@@ -18,12 +18,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#addFrameUpdateListener(de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener)}.
+ * {@link pi.Game#addFrameUpdateListener(pi.event.FrameUpdateListener)}.
  */
 public class GlobalFrameUpdateListenerDemo
 {

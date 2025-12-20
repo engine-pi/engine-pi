@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.pacman;
 
-import de.pirckheimer_gymnasium.engine_pi.Direction;
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.debug.DebugConfiguration;
+import pi.Direction;
+import pi.Game;
+import pi.Scene;
+import pi.debug.DebugConfiguration;
 
 public class Main
 {

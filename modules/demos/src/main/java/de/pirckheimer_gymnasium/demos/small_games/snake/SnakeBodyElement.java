@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.snake;
 
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Square;
+import pi.Vector;
+import pi.actor.Square;
 
 class SnakeBodyElement extends Square
 {

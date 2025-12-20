@@ -19,9 +19,9 @@ package de.pirckheimer_gymnasium.tetris.debug;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;

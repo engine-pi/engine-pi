@@ -21,14 +21,14 @@ package de.pirckheimer_gymnasium.demos.classes.resources;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Square;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorSchemeSelection;
-import de.pirckheimer_gymnasium.engine_pi.util.ColorUtil;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Actor;
+import pi.actor.Square;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
+import pi.resources.ColorSchemeSelection;
+import pi.util.ColorUtil;
 
 public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 {

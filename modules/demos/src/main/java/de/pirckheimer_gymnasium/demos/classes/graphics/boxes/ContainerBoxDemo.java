@@ -1,21 +1,21 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.container;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.textLine;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.CENTER;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.LEFT;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign.RIGHT;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.BOTTOM;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.MIDDLE;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign.TOP;
+import static pi.Resources.colors;
+import static pi.graphics.boxes.Boxes.container;
+import static pi.graphics.boxes.Boxes.background;
+import static pi.graphics.boxes.Boxes.textLine;
+import static pi.graphics.boxes.HAlign.CENTER;
+import static pi.graphics.boxes.HAlign.LEFT;
+import static pi.graphics.boxes.HAlign.RIGHT;
+import static pi.graphics.boxes.VAlign.BOTTOM;
+import static pi.graphics.boxes.VAlign.MIDDLE;
+import static pi.graphics.boxes.VAlign.TOP;
 
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign;
+import pi.graphics.boxes.HAlign;
+import pi.graphics.boxes.VAlign;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/ContainerBox.java
 

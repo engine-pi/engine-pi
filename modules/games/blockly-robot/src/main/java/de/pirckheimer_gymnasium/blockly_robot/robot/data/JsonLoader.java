@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.pirckheimer_gymnasium.blockly_robot.robot.data.model.GridInfosData;
 import de.pirckheimer_gymnasium.blockly_robot.robot.data.model.MenuData;
 import de.pirckheimer_gymnasium.blockly_robot.robot.data.model.TaskData;
-import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
+import pi.resources.ResourceLoader;
 
 public class JsonLoader
 {

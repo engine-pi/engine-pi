@@ -17,9 +17,9 @@ import static de.pirckheimer_gymnasium.pacman.scenes.Brick.*;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.actor.Image;
+import pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.pacman.Main;
 import de.pirckheimer_gymnasium.pacman.actors.Blinky;
 import de.pirckheimer_gymnasium.pacman.actors.Ghost;

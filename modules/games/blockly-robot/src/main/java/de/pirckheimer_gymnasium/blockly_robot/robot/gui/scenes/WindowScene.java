@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.gui.scenes;
 
-import de.pirckheimer_gymnasium.engine_pi.Bounds;
+import pi.Bounds;
 
 /**
  * Szene, die Informationen mitliefert, in welchem Fenster die Szene geöffnet

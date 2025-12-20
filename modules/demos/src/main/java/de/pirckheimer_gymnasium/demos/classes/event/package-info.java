@@ -1,5 +1,4 @@
 /**
- * Demonstriert die Klassen des Pakets
- * {@link de.pirckheimer_gymnasium.engine_pi.event event}.
+ * Demonstriert die Klassen des Pakets {@link pi.event event}.
  */
 package de.pirckheimer_gymnasium.demos.classes.event;

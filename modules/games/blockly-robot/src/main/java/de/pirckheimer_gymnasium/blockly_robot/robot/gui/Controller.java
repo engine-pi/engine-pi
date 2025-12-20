@@ -1,13 +1,13 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.gui;
 
-import de.pirckheimer_gymnasium.engine_pi.Camera;
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
-import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.LinearDouble;
+import pi.Camera;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.animation.interpolation.EaseInOutDouble;
+import pi.animation.interpolation.LinearDouble;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.scenes.WindowScene;
-import de.pirckheimer_gymnasium.engine_pi.Bounds;
+import pi.Bounds;
 
 public class Controller
 {

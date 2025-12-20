@@ -8,8 +8,8 @@ import static de.pirckheimer_gymnasium.pacman.actors.GhostState.UP;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
 import de.pirckheimer_gymnasium.pacman.Main;
 import de.pirckheimer_gymnasium.pacman.actors.Blinky;
 import de.pirckheimer_gymnasium.pacman.actors.Clyde;

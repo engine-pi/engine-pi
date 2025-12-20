@@ -23,17 +23,17 @@ import java.io.IOException;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Jukebox;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.resources.ResourceLoader;
-import de.pirckheimer_gymnasium.engine_pi.sound.LoopedTrack;
-import de.pirckheimer_gymnasium.engine_pi.sound.MusicPlayback;
-import de.pirckheimer_gymnasium.engine_pi.sound.Playback;
-import de.pirckheimer_gymnasium.engine_pi.sound.SinglePlayTrack;
-import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
-import de.pirckheimer_gymnasium.engine_pi.sound.Track;
+import pi.Game;
+import pi.Jukebox;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
+import pi.resources.ResourceLoader;
+import pi.sound.LoopedTrack;
+import pi.sound.MusicPlayback;
+import pi.sound.Playback;
+import pi.sound.SinglePlayTrack;
+import pi.sound.Sound;
+import pi.sound.Track;
 
 /**
  * Demonstriert die Klasse <b>Jukebox</b>.

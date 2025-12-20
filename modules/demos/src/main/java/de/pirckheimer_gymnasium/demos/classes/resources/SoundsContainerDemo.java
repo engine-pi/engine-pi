@@ -21,12 +21,12 @@ package de.pirckheimer_gymnasium.demos.classes.resources;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import de.pirckheimer_gymnasium.engine_pi.Jukebox;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.sound.MusicPlayback;
-import de.pirckheimer_gymnasium.engine_pi.sound.Sound;
-import de.pirckheimer_gymnasium.engine_pi.sound.SoundEvent;
-import de.pirckheimer_gymnasium.engine_pi.sound.SoundPlaybackListener;
+import pi.Jukebox;
+import pi.Resources;
+import pi.sound.MusicPlayback;
+import pi.sound.Sound;
+import pi.sound.SoundEvent;
+import pi.sound.SoundPlaybackListener;
 
 public class SoundsContainerDemo
 {

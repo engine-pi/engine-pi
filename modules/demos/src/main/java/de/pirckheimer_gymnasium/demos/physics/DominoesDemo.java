@@ -22,14 +22,14 @@ package de.pirckheimer_gymnasium.demos.physics;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.event.FrameUpdateListener;
+import pi.event.MouseButton;
+import pi.event.MouseClickListener;
 
 public class DominoesDemo extends Scene
         implements FrameUpdateListener, MouseClickListener

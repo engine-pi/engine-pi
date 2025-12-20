@@ -18,14 +18,12 @@
  */
 package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
+import pi.Game;
+import pi.Vector;
 
 /**
- * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.DistanceJoint} und die
- * Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#createDistanceJoint(de.pirckheimer_gymnasium.engine_pi.actor.Actor, Vector, Vector)}
+ * Demonstriert die Klasse {@link pi.actor.DistanceJoint} und die Methode
+ * {@link pi.actor.Actor#createDistanceJoint(pi.actor.Actor, Vector, Vector)}
  */
 public class DistanceJointDemo extends BaseJointScene
 {

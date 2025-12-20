@@ -2,8 +2,8 @@ package de.pirckheimer_gymnasium.tetris.text;
 
 import static de.pirckheimer_gymnasium.tetris.Tetris.COLOR_SCHEME_GREEN;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
 
 public class Font
 {

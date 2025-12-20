@@ -18,9 +18,9 @@
  */
 package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Joint;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import pi.Scene;
+import pi.actor.Joint;
+import pi.actor.Rectangle;
 
 abstract class BaseJointScene extends Scene
 {

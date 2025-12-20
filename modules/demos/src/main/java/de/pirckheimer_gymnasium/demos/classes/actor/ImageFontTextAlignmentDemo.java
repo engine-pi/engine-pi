@@ -16,16 +16,16 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.CENTER;
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.LEFT;
-import static de.pirckheimer_gymnasium.engine_pi.util.TextAlignment.RIGHT;
+import static pi.util.TextAlignment.CENTER;
+import static pi.util.TextAlignment.LEFT;
+import static pi.util.TextAlignment.RIGHT;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.Game;
+import pi.Scene;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFontText;
+import pi.util.TextAlignment;
 
 /**
  * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
@@ -37,8 +37,8 @@ import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
  *
  * @author Josef Friedrich
  *
- * @see de.pirckheimer_gymnasium.engine_pi.util.TextAlignment
- * @see de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText
+ * @see pi.util.TextAlignment
+ * @see pi.actor.ImageFontText
  */
 public class ImageFontTextAlignmentDemo extends Scene
 {

@@ -22,12 +22,12 @@ package de.pirckheimer_gymnasium.demos.stateful_animation;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
-import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Vector;
+import pi.actor.Animation;
+import pi.actor.StatefulAnimation;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
 
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         implements KeyStrokeListener, FrameUpdateListener

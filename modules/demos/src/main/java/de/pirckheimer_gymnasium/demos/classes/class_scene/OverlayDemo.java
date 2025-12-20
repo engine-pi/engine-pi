@@ -3,11 +3,11 @@ package de.pirckheimer_gymnasium.demos.classes.class_scene;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Circle;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static pi.Resources.colors;
 
 /**
  * Demonstriert die Methode {@link Scene#render(Graphics2D, int, int)}.

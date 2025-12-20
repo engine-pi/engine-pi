@@ -20,11 +20,11 @@
  */
 package de.pirckheimer_gymnasium.demos.hello_world;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.actor.Text;
 
 public class HelloWorldVersion2 extends Scene
 {

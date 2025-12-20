@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.pacman.scenes;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
+import pi.actor.Image;
 
 public enum Brick
 {

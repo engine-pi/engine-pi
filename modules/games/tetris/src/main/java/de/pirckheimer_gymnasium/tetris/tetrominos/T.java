@@ -16,7 +16,7 @@
  */
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Scene;
 
 /**
  * Ein Tetromino in Form eines <b>„T“</b>.

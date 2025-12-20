@@ -20,10 +20,10 @@ package de.pirckheimer_gymnasium.demos.sound;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Jukebox;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Jukebox;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
 
 class Player
 {

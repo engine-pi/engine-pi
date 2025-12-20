@@ -20,8 +20,8 @@ package de.pirckheimer_gymnasium.demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 class Scene1 extends Scene
 {
@@ -41,7 +41,7 @@ class Scene2 extends Scene
 
 /**
  * Demonstriert die statische Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#addSceneLaunchListener(de.pirckheimer_gymnasium.engine_pi.event.SceneLaunchListener)}.
+ * {@link pi.Game#addSceneLaunchListener(pi.event.SceneLaunchListener)}.
  */
 public class GlobalSceneLaunchListenerDemo
 {

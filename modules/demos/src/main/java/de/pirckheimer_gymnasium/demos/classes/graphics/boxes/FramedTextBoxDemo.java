@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.framedText;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
+import static pi.Resources.colors;
+import static pi.Resources.fonts;
+import static pi.graphics.boxes.Boxes.framedText;
+import static pi.graphics.boxes.Boxes.vertical;
 
 import java.awt.Color;
 import java.awt.Font;

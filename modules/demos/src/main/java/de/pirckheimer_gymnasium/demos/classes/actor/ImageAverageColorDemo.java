@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 public class ImageAverageColorDemo extends Scene
 {

@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.pacman;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.resources.ColorContainer;
+import pi.Resources;
+import pi.resources.ColorContainer;
 
 public class ColorManagement
 {

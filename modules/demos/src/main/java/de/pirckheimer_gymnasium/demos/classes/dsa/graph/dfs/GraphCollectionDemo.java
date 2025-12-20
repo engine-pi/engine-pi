@@ -4,13 +4,13 @@ import java.awt.event.KeyEvent;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.Graph;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphArrayMatrix;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphCollection;
-import de.pirckheimer_gymnasium.engine_pi.dsa.graph.GraphVisualizer;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Scene;
+import pi.dsa.graph.Graph;
+import pi.dsa.graph.GraphArrayMatrix;
+import pi.dsa.graph.GraphCollection;
+import pi.dsa.graph.GraphVisualizer;
+import pi.event.KeyStrokeListener;
 
 public class GraphCollectionDemo extends Scene implements KeyStrokeListener
 {

@@ -12,11 +12,11 @@ import de.pirckheimer_gymnasium.blockly_robot.robot.logic.log.Movement;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.navigation.Coords;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.robot.Robot;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.robot.VirtualRobot;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
-import de.pirckheimer_gymnasium.engine_pi.animation.Interpolator;
-import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
-import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.SinusDouble;
+import pi.Vector;
+import pi.actor.Image;
+import pi.animation.Interpolator;
+import pi.animation.ValueAnimator;
+import pi.animation.interpolation.SinusDouble;
 
 public class ImageRobot extends Image implements Robot
 {

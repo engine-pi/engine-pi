@@ -2,8 +2,8 @@ package de.pirckheimer_gymnasium.blockly_robot.robot.gui;
 
 import java.awt.Font;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
+import pi.actor.Text;
+import pi.Resources;
 
 public class TextMaker
 {

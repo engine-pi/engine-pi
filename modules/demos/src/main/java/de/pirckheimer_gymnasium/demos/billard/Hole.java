@@ -22,7 +22,7 @@ package de.pirckheimer_gymnasium.demos.billard;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import pi.actor.Circle;
 
 public class Hole extends Circle
 {

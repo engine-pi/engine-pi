@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.background;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.container;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.empty;
+import static pi.Resources.colors;
+import static pi.graphics.boxes.Boxes.background;
+import static pi.graphics.boxes.Boxes.container;
+import static pi.graphics.boxes.Boxes.empty;
 
 import java.awt.Graphics2D;
 

@@ -1,10 +1,10 @@
 package de.pirckheimer_gymnasium.pacman.actors;
 
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.Resources;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFontText;
+import pi.util.TextAlignment;
 
 public class Text extends ImageFontText
 {

@@ -20,14 +20,13 @@ package de.pirckheimer_gymnasium.demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.PeriodicTaskExecutor;
 
 /**
- * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor}.
+ * Demonstriert die Klasse {@link pi.event.PeriodicTaskExecutor}.
  *
  * <p>
  * Im Spielfenster wird eine Zahl hochgezählt. Über die Taste <b>P</b> kann die

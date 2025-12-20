@@ -18,7 +18,7 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.class_game;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
+import pi.Game;
 
 /**
  * Demonstriert die Methode {@link Game#isRunning()}.

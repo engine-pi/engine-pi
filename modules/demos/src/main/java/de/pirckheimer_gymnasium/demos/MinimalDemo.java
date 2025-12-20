@@ -23,16 +23,16 @@ package de.pirckheimer_gymnasium.demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseScrollListener;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Animation;
+import pi.actor.Rectangle;
+import pi.actor.StatefulAnimation;
+import pi.actor.Text;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
+import pi.event.MouseScrollEvent;
+import pi.event.MouseScrollListener;
 
 public class MinimalDemo extends Scene
         implements KeyStrokeListener, MouseScrollListener, FrameUpdateListener

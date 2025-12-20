@@ -18,10 +18,10 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colorScheme;
+import static pi.Resources.colorScheme;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Grid;
+import pi.Game;
+import pi.actor.Grid;
 
 /**
  * Demonstriert die Figur <b>Gitter</b> ({@link Grid}).

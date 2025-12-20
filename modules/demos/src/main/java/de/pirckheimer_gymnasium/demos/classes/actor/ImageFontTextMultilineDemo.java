@@ -16,12 +16,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.Game;
+import pi.Scene;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFontText;
+import pi.util.TextAlignment;
 
 /**
  * Demonstriert den <b>automatischen</b> und <b>erzwungen Zeilenumbruch</b>

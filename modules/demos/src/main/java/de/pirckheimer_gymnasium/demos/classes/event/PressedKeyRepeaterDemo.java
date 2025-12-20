@@ -20,14 +20,13 @@ package de.pirckheimer_gymnasium.demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
+import pi.Game;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
+import pi.event.PressedKeyRepeater;
 
 /**
- * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater}.
+ * Demonstriert die Klasse {@link pi.event.PressedKeyRepeater}.
  */
 public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 {

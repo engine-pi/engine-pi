@@ -3,8 +3,8 @@ package de.pirckheimer_gymnasium.blockly_robot.robot.gui.map;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.physics.FixtureBuilder;
+import pi.actor.Actor;
+import pi.physics.FixtureBuilder;
 
 public class Grid extends Actor
 {

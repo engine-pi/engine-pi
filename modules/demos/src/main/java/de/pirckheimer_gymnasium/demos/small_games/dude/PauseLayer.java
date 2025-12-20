@@ -22,9 +22,9 @@ package de.pirckheimer_gymnasium.demos.small_games.dude;
 
 import java.awt.Color;
 
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Layer;
+import pi.actor.Rectangle;
+import pi.actor.Text;
 
 public class PauseLayer extends Layer
 {

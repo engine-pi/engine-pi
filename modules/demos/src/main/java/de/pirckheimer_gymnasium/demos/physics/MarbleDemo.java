@@ -23,15 +23,15 @@ package de.pirckheimer_gymnasium.demos.physics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.BodyType;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Random;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.BodyType;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
 
 /**
  * Eine kleine Demo zum Verhalten vieler Partikel ähnlicher Physik-Objekte in

@@ -20,20 +20,18 @@
  */
 package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
-import static de.pirckheimer_gymnasium.engine_pi.Vector.v;
+import static pi.Vector.v;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Polygon;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Polygon;
+import pi.actor.Rectangle;
 
 /**
- * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint} und die
- * Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#createRevoluteJoint(de.pirckheimer_gymnasium.engine_pi.actor.Actor, Vector)}
- * anhand einer Wippe.
+ * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
+ * {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)} anhand
+ * einer Wippe.
  */
 public class RevolteJointSeesawDemo extends Scene
 {

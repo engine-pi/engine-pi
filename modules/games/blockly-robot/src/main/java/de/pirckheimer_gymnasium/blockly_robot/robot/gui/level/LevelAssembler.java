@@ -6,8 +6,8 @@ import de.pirckheimer_gymnasium.blockly_robot.robot.gui.map.ItemMapPainter;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.robot.ImageRobot;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Level;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.robot.RobotWrapper;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
+import pi.Scene;
+import pi.Vector;
 
 /**
  * Klasse, die eine Version einer Trainingsaufgabe zusammenbaut.

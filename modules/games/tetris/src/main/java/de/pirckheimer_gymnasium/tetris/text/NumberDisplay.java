@@ -16,9 +16,9 @@
  */
 package de.pirckheimer_gymnasium.tetris.text;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.Scene;
+import pi.actor.ImageFontText;
+import pi.util.TextAlignment;
 
 public class NumberDisplay
 {

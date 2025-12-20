@@ -1,10 +1,10 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static pi.Resources.colors;
 
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.FramedTextBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.HAlign;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.VAlign;
+import pi.graphics.boxes.FramedTextBox;
+import pi.graphics.boxes.HAlign;
+import pi.graphics.boxes.VAlign;
 
 public class DemoBoxes
 {

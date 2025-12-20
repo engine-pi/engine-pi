@@ -1,8 +1,8 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.gui;
 
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Difficulty;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Scene;
+import pi.actor.Text;
 
 public class Painter
 {

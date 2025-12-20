@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Line;
+import pi.Game;
+import pi.actor.Line;
 
 /**
  * Demonstriert die Figur <b>Linie</b> ({@link Line}).

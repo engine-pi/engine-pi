@@ -1,9 +1,9 @@
 package de.pirckheimer_gymnasium.demos.debug;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.debug.ColorContainerVisualizer;
+import pi.Game;
+import pi.Resources;
+import pi.Scene;
+import pi.debug.ColorContainerVisualizer;
 
 /**
  * Demonstriert die Klasse {@link ColorContainerVisualizer} mit einem

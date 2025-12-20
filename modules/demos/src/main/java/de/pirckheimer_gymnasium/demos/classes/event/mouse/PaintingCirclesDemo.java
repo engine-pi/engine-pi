@@ -20,12 +20,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event.mouse;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.event.MouseButton;
+import pi.event.MouseClickListener;
 
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
 {

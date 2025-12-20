@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
+import pi.Scene;
+import pi.actor.Rectangle;
 
 abstract class ActorBaseScene extends Scene
 {

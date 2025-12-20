@@ -1,8 +1,8 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
 import static de.pirckheimer_gymnasium.demos.classes.graphics.boxes.DemoBoxes.demo;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.border;
+import static pi.graphics.boxes.Boxes.vertical;
+import static pi.graphics.boxes.Boxes.border;
 
 import java.awt.Graphics2D;
 

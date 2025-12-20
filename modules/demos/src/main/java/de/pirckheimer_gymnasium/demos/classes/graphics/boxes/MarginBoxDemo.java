@@ -1,14 +1,14 @@
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import static de.pirckheimer_gymnasium.engine_pi.graphics.boxes.Boxes.vertical;
+import static pi.graphics.boxes.Boxes.vertical;
 
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.BorderBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.CombinedChildBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.MarginBox;
-import de.pirckheimer_gymnasium.engine_pi.graphics.boxes.TextLineBox;
+import pi.graphics.boxes.BorderBox;
+import pi.graphics.boxes.CombinedChildBox;
+import pi.graphics.boxes.MarginBox;
+import pi.graphics.boxes.TextLineBox;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/MarginBox.java
 

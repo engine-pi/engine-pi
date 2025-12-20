@@ -20,15 +20,14 @@ package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
 import java.text.DecimalFormat;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.actor.Text;
 
 /**
- * Demonstriert die Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#setElasticity(double)}
+ * Demonstriert die Methode {@link pi.actor.Actor#setElasticity(double)}
  */
 public class ElasticityDemo extends Scene
 {

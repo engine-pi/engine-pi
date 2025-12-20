@@ -16,8 +16,8 @@
  */
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 /**
  * Ein Tetromino ist ein Spielstein in Form von vier Blöcken.

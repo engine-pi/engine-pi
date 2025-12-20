@@ -22,10 +22,10 @@ package de.pirckheimer_gymnasium.demos.classes.event.keyboard;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
 
 public class KeyStrokeCounterDemo extends Scene
 {

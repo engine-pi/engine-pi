@@ -20,9 +20,9 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.dude;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
+import pi.actor.Animation;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
 
 /**
  * Herzlichen Dank an <a href=

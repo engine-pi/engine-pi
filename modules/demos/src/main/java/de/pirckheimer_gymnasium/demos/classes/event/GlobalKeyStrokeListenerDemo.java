@@ -18,12 +18,12 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#addKeyStrokeListener(de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener)}.
+ * {@link pi.Game#addKeyStrokeListener(pi.event.KeyStrokeListener)}.
  */
 public class GlobalKeyStrokeListenerDemo
 {

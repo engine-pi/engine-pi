@@ -19,12 +19,12 @@ package de.pirckheimer_gymnasium.demos.classes.actor;
 import java.awt.Color;
 import java.util.Map;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Resources;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
+import pi.Game;
+import pi.Resources;
+import pi.Scene;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFontText;
 
 /**
  * Demonstriert wie Bilderschriftarttexte <b>eingefärbt</b> werden können.

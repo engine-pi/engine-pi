@@ -6,7 +6,7 @@ import de.pirckheimer_gymnasium.blockly_robot.robot.gui.map.Grid;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.item.Item;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Level;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.robot.RobotWrapper;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Scene;
 
 /**
  * Die Figuren und Hintergründe, die erzeugt wurden, um eine Version einer

@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Triangle;
+import pi.Game;
+import pi.actor.Triangle;
 
 /**
  * Demonstriert die Figur <b>Dreieck</b> ({@link Triangle}).

@@ -18,14 +18,14 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.fonts;
+import static pi.Resources.fonts;
 
 import java.awt.Font;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
-import de.pirckheimer_gymnasium.engine_pi.resources.FontStyle;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Text;
+import pi.resources.FontStyle;
 
 /**
  * Demonstiert die Figur <b>Text</b>.

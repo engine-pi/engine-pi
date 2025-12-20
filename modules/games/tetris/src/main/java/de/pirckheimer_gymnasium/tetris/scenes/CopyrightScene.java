@@ -18,9 +18,9 @@ package de.pirckheimer_gymnasium.tetris.scenes;
 
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.actor.ImageFontText;
+import pi.event.KeyStrokeListener;
+import pi.util.TextAlignment;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.text.Font;
 

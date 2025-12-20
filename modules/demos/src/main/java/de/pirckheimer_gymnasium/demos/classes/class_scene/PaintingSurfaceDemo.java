@@ -1,16 +1,16 @@
 package de.pirckheimer_gymnasium.demos.classes.class_scene;
 
-import static de.pirckheimer_gymnasium.engine_pi.Resources.colors;
+import static pi.Resources.colors;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.dsa.turtle.PaintingSurfaceScene;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseButton;
-import de.pirckheimer_gymnasium.engine_pi.event.MouseClickListener;
+import pi.Game;
+import pi.Vector;
+import pi.dsa.turtle.PaintingSurfaceScene;
+import pi.event.KeyStrokeListener;
+import pi.event.MouseButton;
+import pi.event.MouseClickListener;
 
 public class PaintingSurfaceDemo extends PaintingSurfaceScene
         implements MouseClickListener, KeyStrokeListener

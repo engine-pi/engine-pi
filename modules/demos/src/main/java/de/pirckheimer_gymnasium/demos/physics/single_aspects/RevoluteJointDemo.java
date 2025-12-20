@@ -18,18 +18,16 @@
  */
 package de.pirckheimer_gymnasium.demos.physics.single_aspects;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint;
+import pi.Game;
+import pi.Scene;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.actor.RevoluteJoint;
 
 /**
- * Demonstriert die Klasse
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.RevoluteJoint} und die
- * Methode
- * {@link de.pirckheimer_gymnasium.engine_pi.actor.Actor#createRevoluteJoint(de.pirckheimer_gymnasium.engine_pi.actor.Actor, Vector)}
+ * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
+ * {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)}
  */
 public class RevoluteJointDemo extends Scene
 {

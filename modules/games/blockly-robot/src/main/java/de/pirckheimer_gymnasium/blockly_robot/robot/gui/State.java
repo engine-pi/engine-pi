@@ -4,8 +4,8 @@ import de.pirckheimer_gymnasium.blockly_robot.robot.gui.robot.ImageRobot;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.Task;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.level.Level;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.menu.Menu;
-import de.pirckheimer_gymnasium.engine_pi.animation.Interpolator;
-import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.EaseInOutDouble;
+import pi.animation.Interpolator;
+import pi.animation.interpolation.EaseInOutDouble;
 
 public class State
 {

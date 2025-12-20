@@ -88,7 +88,7 @@ verschiedener Figurenarten (z. B.
 diese Spezialisierungen sind abgeleitet von der Oberklasse
 [Actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Actor.html)
 Die API-Dokumentation des Pakets
-[de.pirckheimer_gymnasium.engine_pi.actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/package-summary.html)
+[pi.actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/package-summary.html)
 listet alle verfügbaren Actor-Klassen auf.
 
 Nachdem eine Figur erzeugt und zur Szene hinzugefügt wurde, befindet sie
@@ -110,9 +110,9 @@ Das (noch wenig spannende) Ergebnis des Codes
 Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41](https://github.com/engine-pi/engine-pi/blob/123719a158c4d268875630251b67fefe448a5b66/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41)
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Text;
 
 public class HelloWorldVersion1 extends Scene
 {
@@ -198,11 +198,11 @@ geometrischen Figuren und Farbe.
 Quellcode: [demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Circle;
+import pi.actor.Rectangle;
+import pi.actor.Text;
 
 public class HelloWorldVersion2 extends Scene
 {
@@ -329,7 +329,7 @@ um auf alle eingehenden Ereignisse reagieren zu können.
 Die korrekte Anweisung, um das Interface einzubinden, lautet:
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener
+import pi.event.KeyStrokeListener
 ```
 
 Die Anmeldung des `KeyStrokeListener`-Interfaces hat automatisch stattgefunden,
@@ -358,11 +358,11 @@ Quellcode: [demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/e
 ```java
 import java.awt.event.KeyEvent;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Actor;
+import pi.actor.Rectangle;
+import pi.event.KeyStrokeListener;
 
 public class KeyEventDemo extends Scene implements KeyStrokeListener
 {
@@ -527,7 +527,7 @@ Tastatur-Steuermöglichkeiten](https://javadoc.io/doc/de.pirckheimer-gymnasium/e
 Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
 [Game.removeDefaultControl()](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#removeDefaultControl()>)
 können diese Kürzel entfernt oder mit
-[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#setDefaultControl(de.pirckheimer_gymnasium.engine_pi.event.DefaultListener)>)
+[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#setDefaultControl(pi.event.DefaultListener)>)
 neue Kürzel gesetzt werden.
 
 - `ESCAPE` zum Schließen des Fensters.
@@ -2126,12 +2126,12 @@ public class ImageFontTextMultilineDemo extends Scene
 Quellcode: [demos/actor/ImageFontTextAlignmentDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextAlignmentDemo.java)
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFont;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontCaseSensitivity;
-import de.pirckheimer_gymnasium.engine_pi.actor.ImageFontText;
-import de.pirckheimer_gymnasium.engine_pi.util.TextAlignment;
+import pi.Game;
+import pi.Scene;
+import pi.actor.ImageFont;
+import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageFontText;
+import pi.util.TextAlignment;
 
 public class ImageFontTextAlignmentDemo extends Scene
 {
@@ -2245,8 +2245,8 @@ Reihe die Komplementärfarben der entsprechenden Bilder.
 Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
 ```java
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
+import pi.Game;
+import pi.Scene;
 
 public class ImageAverageColorDemo extends Scene
 {
@@ -2481,7 +2481,7 @@ Die Versionsnummer des Meta-Projekts setzen.
 mvn versions:set
 ```
 
-Das CHANGELOG.md bezieht sich auf die Engine als ./modules/engine
+Die Datei `CHANGELOG.md` bezieht sich auf die Engine also auf `./modules/engine`.
 
 ### javadoc
 

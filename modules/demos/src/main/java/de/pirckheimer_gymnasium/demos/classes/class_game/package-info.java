@@ -1,4 +1,4 @@
 /**
- * Demonstriert die Klasse {@link de.pirckheimer_gymnasium.engine_pi.Game}.
+ * Demonstriert die Klasse {@link pi.Game}.
  */
 package de.pirckheimer_gymnasium.demos.classes.class_game;

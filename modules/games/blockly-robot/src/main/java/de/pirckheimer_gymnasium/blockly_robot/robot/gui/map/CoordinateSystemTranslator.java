@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.blockly_robot.robot.gui.map;
 
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.navigation.Coords;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
+import pi.Vector;
 
 public class CoordinateSystemTranslator
 {

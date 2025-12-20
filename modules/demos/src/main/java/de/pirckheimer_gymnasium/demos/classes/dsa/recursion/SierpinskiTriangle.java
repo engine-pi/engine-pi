@@ -1,6 +1,6 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.recursion;
 
-import de.pirckheimer_gymnasium.engine_pi.instant.Triangle;
+import pi.instant.Triangle;
 
 /**
  * Erzeugt das Sierpinski-Dreieck.

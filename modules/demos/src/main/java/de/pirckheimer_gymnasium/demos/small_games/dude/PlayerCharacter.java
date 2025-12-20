@@ -25,20 +25,20 @@ import java.awt.event.KeyEvent;
 import java.util.Collection;
 import java.util.HashSet;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Random;
-import de.pirckheimer_gymnasium.engine_pi.Vector;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.actor.Animation;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
-import de.pirckheimer_gymnasium.engine_pi.actor.StatefulAnimation;
-import de.pirckheimer_gymnasium.engine_pi.animation.Interpolator;
-import de.pirckheimer_gymnasium.engine_pi.animation.ValueAnimator;
-import de.pirckheimer_gymnasium.engine_pi.animation.interpolation.SinusDouble;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionEvent;
-import de.pirckheimer_gymnasium.engine_pi.event.CollisionListener;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
-import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import pi.Game;
+import pi.Random;
+import pi.Vector;
+import pi.actor.Actor;
+import pi.actor.Animation;
+import pi.actor.Circle;
+import pi.actor.StatefulAnimation;
+import pi.animation.Interpolator;
+import pi.animation.ValueAnimator;
+import pi.animation.interpolation.SinusDouble;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
+import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
 
 public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         CollisionListener<Actor>, FrameUpdateListener, KeyStrokeListener

@@ -3,8 +3,8 @@ package de.pirckheimer_gymnasium.blockly_robot.robot.gui.map;
 import de.pirckheimer_gymnasium.blockly_robot.robot.gui.level.LevelAssembler;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.item.Item;
 import de.pirckheimer_gymnasium.blockly_robot.robot.logic.item.ItemController;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.actor.Image;
+import pi.Scene;
+import pi.actor.Image;
 
 public class GraphicalItemController implements ItemController
 {

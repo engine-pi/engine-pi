@@ -18,8 +18,8 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.actor;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.actor.Circle;
+import pi.Game;
+import pi.actor.Circle;
 
 /**
  * Demonstriert die Figur <b>Kreis</b> ({@link Circle}).

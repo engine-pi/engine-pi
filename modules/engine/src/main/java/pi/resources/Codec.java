@@ -1,0 +1,214 @@
+/*
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/io/Codec.java
+ *
+ * MIT License
+ *
+ * Copyright (c) 2016 - 2024 Gurkenlabs
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package pi.resources;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
+
+import pi.util.ImageUtil;
+
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
+public final class Codec
+{
+    private static final Logger log = Logger.getLogger(Codec.class.getName());
+
+    private Codec()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Decodes a previously encoded angle.
+     *
+     * @param encodedAngle The encoded angle.
+     *
+     * @return The decoded angle.
+     */
+    public static float decodeAngle(final byte encodedAngle)
+    {
+        float angle = encodedAngle;
+        angle += 127;
+        angle /= 256 / 360.0f;
+        angle += 360;
+        return angle % 360;
+    }
+
+    public static float decodeAngle(final short encodedAngle)
+    {
+        return decodeSmallFloatingPointNumber(encodedAngle, 2);
+    }
+
+    /**
+     * Decodes a small floating point number, previously encoded with
+     * {@link #encodeSmallFloatingPointNumber(float, int)
+     * encodeSmallFloatingPointNumber}.
+     *
+     * @param encodedNumber The encoded number
+     * @param precision The precision of the encoded number. The same precision,
+     *     used for encoding.
+     *
+     * @return The decoded small floating point number.
+     */
+    public static float decodeSmallFloatingPointNumber(
+            final short encodedNumber, final int precision)
+    {
+        return (float) ((encodedNumber + Short.MAX_VALUE)
+                / Math.pow(10, precision));
+    }
+
+    /**
+     * Encodes an angle, loosing some precision. The encoded / decoded values
+     * can differ at max. around 1.43 degrees from the original one.
+     *
+     * @param angle The angle
+     *
+     * @return The encoded angle.
+     */
+    public static byte encodeAngle(final float angle)
+    {
+        float encodedAngle = angle % 360;
+        encodedAngle *= 256 / 360.0f;
+        encodedAngle -= 127;
+        return (byte) encodedAngle;
+    }
+
+    public static short encodeAnglePrecise(final float angle)
+    {
+        float encodedAngle = angle;
+        if (encodedAngle < 0)
+        {
+            encodedAngle += 360;
+        }
+        encodedAngle %= 360;
+        return encodeSmallFloatingPointNumber(encodedAngle, 2);
+    }
+
+    /**
+     * Encodes positive numbers less than Short.MAX_VALUE * 2 / precision
+     * (6553.4 for precision = 1).
+     *
+     * @param smallNumber The small number to encode
+     * @param precision The comma precision for the encoding process.
+     *
+     * @return The encoded number.
+     */
+    public static short encodeSmallFloatingPointNumber(final float smallNumber,
+            final int precision)
+    {
+        if (smallNumber < 0 || (int) (smallNumber
+                * Math.pow(10, precision)) > Short.MAX_VALUE * 2)
+        {
+            throw new IllegalArgumentException(
+                    "The specified number is not within the range to encode.");
+        }
+        return (short) (smallNumber * Math.pow(10, precision)
+                - Short.MAX_VALUE);
+    }
+
+    public static BufferedImage decodeImage(final String imageString)
+    {
+        if (imageString == null)
+        {
+            return null;
+        }
+        BufferedImage image = null;
+        byte[] imageByte;
+        try
+        {
+            imageByte = decode(imageString);
+            final ByteArrayInputStream bis = new ByteArrayInputStream(
+                    imageByte);
+            image = ImageIO.read(bis);
+            bis.close();
+        }
+        catch (final Exception e)
+        {
+            log.log(Level.SEVERE, e.getMessage(), e);
+        }
+        return ImageUtil.toCompatibleImage(image);
+    }
+
+    public static String encode(final BufferedImage image)
+    {
+        return encode(image, ImageFormat.PNG);
+    }
+
+    public static String encode(final BufferedImage image,
+            ImageFormat imageFormat)
+    {
+        if (image == null)
+        {
+            return null;
+        }
+        String imageString = null;
+        final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try
+        {
+            ImageIO.write(image,
+                    imageFormat != ImageFormat.UNSUPPORTED
+                            ? imageFormat.toString()
+                            : ImageFormat.PNG.toString(),
+                    bos);
+            final byte[] imageBytes = bos.toByteArray();
+            imageString = encode(imageBytes);
+            bos.close();
+        }
+        catch (final IOException e)
+        {
+            log.log(Level.SEVERE, e.getMessage(), e);
+        }
+        return imageString;
+    }
+
+    public static String encode(byte[] data)
+    {
+        return Base64.getEncoder().encodeToString(data);
+    }
+
+    /**
+     * Decodes the specified {@code Base64} string to a byte array.
+     *
+     * @param base64 The Base64 string containing the encoded binary data.
+     *
+     * @return The decoded byte array.
+     *
+     * @see Base64
+     */
+    public static byte[] decode(String base64)
+    {
+        return Base64.getDecoder().decode(base64);
+    }
+}

@@ -20,9 +20,9 @@
  */
 package de.pirckheimer_gymnasium.demos.small_games.dude;
 
-import de.pirckheimer_gymnasium.engine_pi.Layer;
-import de.pirckheimer_gymnasium.engine_pi.actor.Actor;
-import de.pirckheimer_gymnasium.engine_pi.event.FrameUpdateListener;
+import pi.Layer;
+import pi.actor.Actor;
+import pi.event.FrameUpdateListener;
 
 /**
  * Das HUD gibt einige Spieldaten über dem Rest der Szenen-Objekte wieder

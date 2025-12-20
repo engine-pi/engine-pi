@@ -18,17 +18,16 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.event;
 
-import de.pirckheimer_gymnasium.engine_pi.Game;
-import de.pirckheimer_gymnasium.engine_pi.Scene;
-import de.pirckheimer_gymnasium.engine_pi.event.DefaultControl;
+import pi.Game;
+import pi.Scene;
+import pi.event.DefaultControl;
 
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die statischen Methoden
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#getDefaultControl()},
- * {@link de.pirckheimer_gymnasium.engine_pi.Game#setDefaultControl(de.pirckheimer_gymnasium.engine_pi.event.DefaultListener)}
- * und {@link de.pirckheimer_gymnasium.engine_pi.Game#removeDefaultControl()}.
+ * Demonstriert die statischen Methoden {@link pi.Game#getDefaultControl()},
+ * {@link pi.Game#setDefaultControl(pi.event.DefaultListener)} und
+ * {@link pi.Game#removeDefaultControl()}.
  */
 public class DefaultControlDemo
 {
