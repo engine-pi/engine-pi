@@ -23,7 +23,8 @@ import pi.Vector;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Definiert die Methoden, mit denen die Schildkröte gesteuert werden kann.
+ * Definiert die Methoden, mit denen die Schildkröte <b>gesteuert</b> werden
+ * kann.
  *
  * <p>
  * Es handelt sich um das absolute Minimun an Methoden um eine Turtlegrafik

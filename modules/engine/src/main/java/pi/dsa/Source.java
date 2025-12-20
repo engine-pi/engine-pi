@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Documented;
 
 /**
- * Quellenangaben für Graphen, Bäume, Listen etc.
+ * <b>Quellenangaben</b> für Graphen, Bäume, Listen etc.
  *
  * <p>
  * So können Methoden, die z.B. einen Graphen aus einem Schulbuch nachzeichnen,

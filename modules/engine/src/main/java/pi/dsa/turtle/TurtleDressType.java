@@ -21,8 +21,8 @@ package pi.dsa.turtle;
 // Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Die verschiedenen Arten, wie eine Schildkröte grafisch dargestellt werden
- * kann.
+ * Die verschiedenen <b>Arten</b>, wie eine Schildkröte <b>grafisch dargestellt
+ * </b>werden kann.
  *
  * @author Josef Friedrich
  *

@@ -18,7 +18,7 @@
  */
 
 /**
- * Ein Paket zum Zeichen von Turtle-Grafiken.
+ * Ein Paket zum Zeichen von <b>Turtle</b>-Grafiken.
  *
  * <p>
  * Viele Klassen aus diesem Paket dienen dazu, Funktionalität für die

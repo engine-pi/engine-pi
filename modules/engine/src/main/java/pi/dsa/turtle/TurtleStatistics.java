@@ -31,7 +31,7 @@ import pi.resources.FontStyle;
 import pi.util.TextUtil;
 
 /**
- * Sammelt statistische Information, wie zum Beispiel die zurückgelegte
+ * Sammelt <b>statistische</b> Information, wie zum Beispiel die zurückgelegte
  * Wegstrecker der Schilkröte und erstellt Textboxen, die dann in die Szene
  * eingezeichnet werden können.
  *
