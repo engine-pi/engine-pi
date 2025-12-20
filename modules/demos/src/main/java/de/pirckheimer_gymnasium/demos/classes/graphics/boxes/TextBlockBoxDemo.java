@@ -14,7 +14,7 @@ import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.TextBlockBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/TextBlockBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java
 
 public class TextBlockBoxDemo extends Graphics2DComponent
 {

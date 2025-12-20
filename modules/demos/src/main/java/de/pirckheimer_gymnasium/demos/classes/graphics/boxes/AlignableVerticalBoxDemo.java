@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.AlignableVerticalBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/VerticalBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/VerticalBox.java
 
 public class AlignableVerticalBoxDemo extends Graphics2DComponent
 {

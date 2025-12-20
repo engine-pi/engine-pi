@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.ImageBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/ImageBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/ImageBox.java
 
 public class ImageBoxDemo extends Graphics2DComponent
 {

@@ -10,7 +10,7 @@ import pi.graphics.boxes.CombinedChildBox;
 import pi.graphics.boxes.MarginBox;
 import pi.graphics.boxes.TextLineBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/graphics/boxes/MarginBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/MarginBox.java
 
 class MarginTestBox extends CombinedChildBox
 {
