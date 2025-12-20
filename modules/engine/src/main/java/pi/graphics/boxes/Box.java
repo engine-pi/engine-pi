@@ -367,4 +367,20 @@ public abstract class Box implements Iterable<Box>
         }
         doDrawing(g);
     }
+
+    public Box debug()
+    {
+        debug(0);
+        return this;
+    }
+
+    private Box debug(int depth)
+    {
+        System.out.println(" ".repeat(depth * 2) + getClass().getName());
+        for (Box box : childs)
+        {
+            box.debug(depth + 1);
+        }
+        return this;
+    }
 }
