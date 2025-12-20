@@ -1,6 +1,9 @@
 package de.pirckheimer_gymnasium.demos.classes.dsa.recursion;
 
-import pi.instant.Triangle;
+import pi.Configuration;
+import pi.Game;
+import pi.Scene;
+import pi.actor.Triangle;
 
 /**
  * Erzeugt das Sierpinski-Dreieck.
@@ -26,13 +29,15 @@ public class SierpinskiTriangle
      */
     public SierpinskiTriangle(int depth)
     {
+        Configuration.instantMode = true;
         double width = 100;
         double height = 75;
-        Triangle triangle = (Triangle) new Triangle(width, height)
-                .setColor("weiß");
-        triangle.focus();
-        triangle.getCamera().setMeter(7);
-        triangle.setMainSceneBackgroundColor("yellow");
+        Triangle triangle = new Triangle(width, height);
+        triangle.setColor("weiß");
+        Scene scene = Game.getStartedActiveScene();
+        scene.setBackgroundColor("yellow");
+        scene.getCamera().setMeter(7);
+        scene.getCamera().setFocus(triangle);
         makeStep(0, 0, width, height, depth);
     }
 

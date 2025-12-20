@@ -56,6 +56,11 @@ public final class Configuration
      * Im sogenannten <b>Instant-Modus</b> werden die erzeugten Figuren
      * <b>sofort</b> einer Szene hinzugefügt und diese Szene wird dann
      * <b>sofort</b> gestartet.
+     *
+     * <p>
+     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne das viel
+     * Code geschrieben werden muss.
+     * </p>
      */
     public static boolean instantMode = false;
 }

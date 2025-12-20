@@ -33,8 +33,6 @@ import pi.annotations.API;
  * </p>
  *
  * @author Josef Friedrich
- *
- * @see pi.instant.Triangle
  */
 public class Triangle extends Polygon
 {
@@ -42,7 +40,6 @@ public class Triangle extends Polygon
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
      *
-     * @see pi.instant.Triangle#Triangle()
      * @see ActorAdder#addTriangle()
      */
     public Triangle()
@@ -55,7 +52,6 @@ public class Triangle extends Polygon
      *
      * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
      *
-     * @see pi.instant.Triangle#Triangle(double)
      * @see ActorAdder#addTriangle(double)
      */
     public Triangle(double sideLength)
@@ -72,7 +68,6 @@ public class Triangle extends Polygon
      *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      *
-     * @see pi.instant.Triangle#Triangle(double, double)
      * @see ActorAdder#addTriangle(double, double)
      */
     public Triangle(double width, double height)
@@ -92,8 +87,6 @@ public class Triangle extends Polygon
      * @param x3 Die x-Koordinate des dritten Eckpunkts.
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
      *
-     * @see pi.instant.Triangle#Triangle(double, double, double, double, double,
-     *     double)
      * @see ActorAdder#addTriangle(double, double, double, double, double,
      *     double)
      */
@@ -111,7 +104,6 @@ public class Triangle extends Polygon
      * @param point2 Die Koordinate des zweiten Eckpunkts.
      * @param point3 Die Koordinate des dritten Eckpunkts.
      *
-     * @see pi.instant.Triangle#Triangle(Vector, Vector, Vector)
      * @see ActorAdder#addTriangle(Vector, Vector, Vector)
      */
     public Triangle(Vector point1, Vector point2, Vector point3)

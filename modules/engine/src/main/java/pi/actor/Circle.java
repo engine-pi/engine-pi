@@ -43,7 +43,6 @@ import pi.physics.FixtureData;
  * @author Michael Andonie
  * @author Niklas Keller
  *
- * @see pi.instant.Circle
  * @see ActorAdder
  */
 public class Circle extends Geometry
@@ -53,7 +52,6 @@ public class Circle extends Geometry
     /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
      *
-     * @see pi.instant.Circle#Circle()
      * @see ActorAdder#addCircle()
      *
      * @author Josef Friedrich
@@ -68,7 +66,6 @@ public class Circle extends Geometry
      *
      * @param diameter Der <b>Durchmesser</b> des Kreises.
      *
-     * @see pi.instant.Circle#Circle(double)
      * @see ActorAdder#addCircle(double)
      */
     public Circle(double diameter)

@@ -65,7 +65,6 @@ public class Rectangle extends Geometry
     /**
      * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
      *
-     * @see pi.instant.Rectangle#Rectangle()
      * @see ActorAdder#addRectangle()
      */
     @API
@@ -79,7 +78,6 @@ public class Rectangle extends Geometry
      *
      * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
      *
-     * @see pi.instant.Rectangle#Rectangle(double)
      * @see ActorAdder#addRectangle(double)
      *
      * @since 0.34.0
@@ -97,7 +95,6 @@ public class Rectangle extends Geometry
      * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      *
-     * @see pi.instant.Rectangle#Rectangle(double, double)
      * @see ActorAdder#addRectangle(double, double)
      */
     @API

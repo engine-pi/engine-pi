@@ -150,7 +150,6 @@ public interface ActorAdder
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Rectangle#Rectangle()
-     * @see pi.instant.Rectangle#Rectangle()
      */
     default Rectangle addRectangle()
     {
@@ -167,7 +166,6 @@ public interface ActorAdder
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Rectangle#Rectangle(double)
-     * @see pi.instant.Rectangle#Rectangle(double)
      */
     default Rectangle addRectangle(double sideLength)
     {
@@ -186,7 +184,6 @@ public interface ActorAdder
      * @return Ein Rechteck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Rectangle#Rectangle(double, double)
-     * @see pi.instant.Rectangle#Rectangle(double, double)
      */
     default Rectangle addRectangle(double width, double height)
     {
@@ -204,7 +201,6 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle()
-     * @see pi.instant.Triangle#Triangle()
      */
     default Triangle addTriangle()
     {
@@ -221,7 +217,6 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle(double)
-     * @see pi.instant.Triangle#Triangle(double)
      */
     default Triangle addTriangle(double sideLength)
     {
@@ -241,7 +236,6 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle(double, double)
-     * @see pi.instant.Triangle#Triangle(double, double)
      */
     default Triangle addTriangle(double width, double height)
     {
@@ -264,8 +258,6 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle(double, double, double, double, double, double)
-     * @see pi.instant.Triangle#Triangle(double, double, double, double, double,
-     *     double)
      */
     @API
     default Triangle addTriangle(double x1, double y1, double x2, double y2,
@@ -286,7 +278,6 @@ public interface ActorAdder
      * @return Ein Dreieck, das bereits zur Szene hinzugefügt wurde.
      *
      * @see Triangle#Triangle(Vector, Vector, Vector)
-     * @see pi.instant.Triangle#Triangle(Vector, Vector, Vector)
      */
     default Triangle addTriangle(Vector point1, Vector point2, Vector point3)
     {
@@ -346,7 +337,6 @@ public interface ActorAdder
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      *
      * @see Text#Text(String)
-     * @see pi.instant.Text#Text(String)
      */
     default Text addText(String content)
     {
@@ -363,7 +353,6 @@ public interface ActorAdder
      * @param height Die <b>Höhe</b> des Textes in Meter.
      *
      * @see Text#Text(String, double)
-     * @see pi.instant.Text#Text(String, double)
      */
     default Text addText(String content, double height)
     {
@@ -383,7 +372,6 @@ public interface ActorAdder
      *     dargestellt werden soll und nicht der Name der Schrift-Datei.
      *
      * @see Text#Text(String, double, String)
-     * @see pi.instant.Text#Text(String, double, String)
      */
     default Text addText(String content, double height, String fontName)
     {
@@ -410,7 +398,6 @@ public interface ActorAdder
      *     </ul>
      *
      * @see Text#Text(String, double, String, int)
-     * @see pi.instant.Text#Text(String, double, String, int)
      */
     default Text addText(String content, double height, String fontName,
             int style)
