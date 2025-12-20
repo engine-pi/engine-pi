@@ -2,6 +2,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.debug.ToStringFormatter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/ContainerBoxDemo.java
 
 /**
@@ -134,5 +136,32 @@ public class ContainerBox extends ChildBox
     void draw(Graphics2D g)
     {
         // do nothing
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("ContainerBox");
+
+        if (definedWidth > 0)
+        {
+            formatter.add("width", definedWidth);
+        }
+
+        if (definedHeight > 0)
+        {
+            formatter.add("height", definedHeight);
+        }
+
+        if (vAlign != VAlign.TOP)
+        {
+            formatter.add("vAlign", vAlign);
+        }
+
+        if (hAlign != HAlign.LEFT)
+        {
+            formatter.add("hAlign", hAlign);
+        }
+        return formatter.format();
     }
 }

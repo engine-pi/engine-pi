@@ -30,6 +30,7 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
+import pi.debug.ToStringFormatter;
 import pi.util.FontUtil;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
@@ -185,5 +186,28 @@ public class TextBlockBox extends TextBox
                     line.getLeading();
         }
         g.setColor(oldColor);
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("TextBlockBox");
+
+        if (content != null)
+        {
+            formatter.add("content", content);
+        }
+
+        if (width > 0)
+        {
+            formatter.add("width", width);
+        }
+
+        if (height > 0)
+        {
+            formatter.add("height", height);
+        }
+
+        return formatter.format();
     }
 }

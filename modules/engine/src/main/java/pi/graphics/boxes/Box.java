@@ -376,7 +376,7 @@ public abstract class Box implements Iterable<Box>
 
     private Box debug(int depth)
     {
-        System.out.println(" ".repeat(depth * 2) + getClass().getName());
+        System.out.println(" ".repeat(depth * 2) + this);
         for (Box box : childs)
         {
             box.debug(depth + 1);

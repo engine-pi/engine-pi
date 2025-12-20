@@ -34,6 +34,30 @@ import java.util.Map;
  * {@code Image [width=1.0m, height=1.0m, imageWidth=8px, imageHeight=8px, pixelPerMeter=8.0]}
  * </p>
  *
+ * <pre>
+ * {@code
+ * @Override
+ * public String toString()
+ * {
+ *     ToStringFormatter formatter = new ToStringFormatter("Image");
+ *     formatter.add("width", width, "m");
+ *     formatter.add("height", height, "m");
+ *     if (pixelPerMeter > 0)
+ *     {
+ *         formatter.add("pixelPerMeter", pixelPerMeter);
+ *     }
+ *     if (isFlippedHorizontally())
+ *     {
+ *         formatter.add("flippedHorizontally");
+ *     }
+ *     return formatter.format();
+ * }
+ * }
+ * </pre>
+ *
+ * @see <a href=
+ *     "https://github.com/apache/commons-lang/blob/master/src/main/java/org/apache/commons/lang3/builder/ToStringBuilder.java">org.apache.commons.lang3.builder.ToStringBuilder</a>
+ *
  * @author Josef Friedrich
  *
  * @since 0.25.0
@@ -45,7 +69,28 @@ public class ToStringFormatter
     private final String className;
 
     /**
-     * @param className Der Name der Klasse
+     * <pre>
+     * {@code
+     * @Override
+     * public String toString()
+     * {
+     *     ToStringFormatter formatter = new ToStringFormatter("Image");
+     *     formatter.add("width", width, "m");
+     *     formatter.add("height", height, "m");
+     *     if (pixelPerMeter > 0)
+     *     {
+     *         formatter.add("pixelPerMeter", pixelPerMeter);
+     *     }
+     *     if (isFlippedHorizontally())
+     *     {
+     *         formatter.add("flippedHorizontally");
+     *     }
+     *     return formatter.format();
+     * }
+     * }
+     * </pre>
+     *
+     * @param className Der Name der <b>Klasse</b>.
      */
     public ToStringFormatter(String className)
     {
@@ -55,8 +100,8 @@ public class ToStringFormatter
     /**
      * Fügt ein Schlüssel-Wert-Paar hinzu.
      *
-     * @param key Der Name des Schlüssels bzw. des Attributs.
-     * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
      */
     public void add(String key, Object value)
     {
@@ -64,12 +109,23 @@ public class ToStringFormatter
     }
 
     /**
-     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine Gleitkommazahl ist,
-     * die gerundet wird.
+     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine <b>Ganzzahl</b> ist.
      *
-     * @param key Der Name des Schlüssels bzw. des Attributs.
-     * @param value Der Wert des Schlüssels als Gleitkommazahl, die gerundet
-     *     werden soll.
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Schlüssels als Ganzzahl.
+     */
+    public void add(String key, int value)
+    {
+        map.put(key, value);
+    }
+
+    /**
+     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine
+     * <b>Gleitkommazahl</b> ist, die gerundet wird.
+     *
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Schlüssels als Gleitkommazahl, die
+     *     gerundet werden soll.
      */
     public void add(String key, double value)
     {
@@ -77,12 +133,25 @@ public class ToStringFormatter
     }
 
     /**
-     * Fügt ein Schlüssel-Wert-Paar mit Einheit hinzu.
+     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine
+     * <b>Gleitkommazahl</b> ist, die gerundet wird.
+     *
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Schlüssels als Gleitkommazahl, die
+     *     gerundet werden soll.
+     */
+    public void add(String key, String value)
+    {
+        map.put(key, "\"" + value + "\"");
+    }
+
+    /**
+     * Fügt ein Schlüssel-Wert-Paar mit <b>Einheit</b> hinzu.
      *
      * @param key Der Name des Schlüssels bzw. des Attributs.
-     * @param value Der Wert des Schlüssels in einem beliebigen Datentyp.
+     * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
      * @param unit Eine zusätzliche Zeichenkette, die an den Wert angehängt
-     *     wird, und als Einheit dienen kann.
+     *     wird, und als <b>Einheit</b> dienen kann.
      */
     public void add(String key, Object value, String unit)
     {
@@ -93,7 +162,7 @@ public class ToStringFormatter
      * Fügt lediglich einen Schlüssel beziehungsweise ein Attribut hinzu, das
      * den Wert zugewiesen bekommt.
      *
-     * @param key Der Name des Schlüssels bzw. des Attributs.
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
      */
     public void add(String key)
     {
@@ -111,5 +180,13 @@ public class ToStringFormatter
             entries.add(entry.getKey() + "=" + entry.getValue());
         }
         return String.format("%s [%s]", className, String.join(", ", entries));
+    }
+
+    /**
+     * @see #format()
+     */
+    public String toString()
+    {
+        return format();
     }
 }
