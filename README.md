@@ -42,7 +42,7 @@ Im Gegensatz zur Engine Alpha ist die
 
 ### BlueJ-Projekt
 
-Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>.jar` herunterladen (z. B. [engine-pi-0.25.0.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.25.0/engine-pi-0.25.0.jar)),
+Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>.jar` herunterladen (z. B. [engine-pi-0.41.0.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.41.0/engine-pi-0.41.0.jar)),
 einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
 
 ### Maven-Projekt
@@ -58,7 +58,7 @@ Abhängigkeit (`dependency`) hinterlegt.
     <dependency>
       <groupId>de.pirckheimer-gymnasium</groupId>
       <artifactId>engine-pi</artifactId>
-      <version>0.25.0</version>
+      <version>0.41.0</version>
     </dependency>
   </dependencies>
 </project>
