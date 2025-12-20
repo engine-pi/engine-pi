@@ -45,6 +45,7 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
 
 import pi.Bounds;
+import pi.Configuration;
 import pi.Game;
 import pi.Layer;
 import pi.Resources;
@@ -78,7 +79,7 @@ import pi.util.Graphics2DUtil;
 import pi.util.TextUtil;
 
 /**
- * Jedes Objekt auf der Zeichenebene ist ein {@link Actor}.
+ * Jede Figur auf der Zeichenebene ist ein {@link Actor}.
  *
  * <p>
  * Dies ist die absolute Superklasse aller grafischen Objekte. Umgekehrt kann
@@ -152,17 +153,22 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             createParentSupplier(Layer::getFrameUpdateListeners));
 
     /**
-     * Erstellt ein neues Objekt.
+     * Erstellt ein neue <b>Figur</b>.
      *
-     * @param defaultFixtureSupplier Ein Supplier, der die Default-Shape für
-     *     dieses Objekt generiert. Die ist in der Regel ein optimal gelegtes
-     *     Rechteck parallel zu den Axen bei Rotationswinkel 0.
+     * @param defaultFixtureSupplier Eine {@link Supplier}-Funktion, der den
+     *     {@link Shape Umriss} für diese Figur generiert. Dieser Umriss ist in
+     *     der Regel ein optimal gelegtes Rechteck parallel zu den Axen bei
+     *     einem Rotationswinkel von 0 Grad.
      */
     public Actor(Supplier<FixtureData> defaultFixtureSupplier)
     {
-        this.physicsHandler = new NullHandler(new PhysicsData(
+        physicsHandler = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
         EventListeners.registerListeners(this);
+        if (Configuration.instantMode)
+        {
+            Game.getStartedActiveScene().add(this);
+        }
     }
 
     /**

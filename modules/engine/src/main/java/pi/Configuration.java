@@ -54,7 +54,7 @@ public final class Configuration
 
     /**
      * Im sogenannten <b>Instant-Modus</b> werden die erzeugten Figuren
-     * <b>sofort</b> einer Szene hinzugefügt werden und diese Szene wird dann
+     * <b>sofort</b> einer Szene hinzugefügt und diese Szene wird dann
      * <b>sofort</b> gestartet.
      */
     public static boolean instantMode = false;

@@ -620,17 +620,45 @@ public final class Game
     }
 
     /**
-     * Gibt die gerade aktive Szene an.
+     * Gibt die gerade <b>aktive Szene</b> zurück.
      *
-     * @return Die gerade aktive Szene. Wurde das Spiel noch nicht gestartet,
-     *     ist die Rückgabe <code>null</code>.
+     * <p>
+     * Falls noch keine Szene existiert, wird eine neue Szene erstellt.
+     * </p>
      *
-     * @see pi.Scene
+     * @return Die gerade <b>aktive Szene</b>.
      */
     @API
     public static Scene getActiveScene()
     {
+        if (scene == null)
+        {
+            scene = new Scene();
+        }
         return scene;
+    }
+
+    /**
+     * Gibt die gerade <b>aktive Szene</b> zurück und startet diese Szene, falls
+     * sie noch nicht gestartet wurde.
+     *
+     * <p>
+     * Falls noch keine Szene existiert, wird eine neue Szene erstellt.
+     * </p>
+     *
+     * @return Die gerade <b>aktive Szene</b>.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public static Scene getStartedActiveScene()
+    {
+        Scene activeScene = getActiveScene();
+        if (!Game.isRunning())
+        {
+            Game.start(activeScene);
+        }
+        return activeScene;
     }
 
     /**
