@@ -77,6 +77,5 @@ public class BackgroundBox extends ChildBox
             g.fillRect(x, y, width, height);
             g.setColor(oldColor);
         }
-        child.draw(g);
     }
 }

@@ -13,7 +13,6 @@ import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 
 public class BorderBoxDemo extends Graphics2DComponent
 {
-
     public void render(Graphics2D g)
     {
         var defaultSettings = border(textLine("default"));

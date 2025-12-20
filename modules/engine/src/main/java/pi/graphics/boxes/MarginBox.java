@@ -18,6 +18,8 @@
  */
 package pi.graphics.boxes;
 
+import java.awt.Graphics2D;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/MarginBoxDemo.java
 
 /**
@@ -109,5 +111,11 @@ public class MarginBox extends ChildBox
     {
         child.x = x + left;
         child.y = y + top;
+    }
+
+    @Override
+    void draw(Graphics2D g)
+    {
+        // do nothing
     }
 }

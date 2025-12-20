@@ -1,5 +1,7 @@
 package pi.graphics.boxes;
 
+import java.awt.Graphics2D;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/ContainerBoxDemo.java
 
 /**
@@ -126,5 +128,11 @@ public class ContainerBox extends ChildBox
             child.y = y + freeV;
             break;
         }
+    }
+
+    @Override
+    void draw(Graphics2D g)
+    {
+        // do nothing
     }
 }

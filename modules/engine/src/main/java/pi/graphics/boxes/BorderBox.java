@@ -172,6 +172,5 @@ public class BorderBox extends ChildBox
                     child.height);
             g.setColor(oldColor);
         }
-        child.draw(g);
     }
 }

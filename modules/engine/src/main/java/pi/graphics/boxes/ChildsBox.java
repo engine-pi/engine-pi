@@ -67,9 +67,6 @@ abstract class ChildsBox extends Box
     @Override
     void draw(Graphics2D g)
     {
-        for (Box child : childs)
-        {
-            child.draw(g);
-        }
+        // do nothing
     }
 }

@@ -314,9 +314,7 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
-     * <b>Zeichnet</b> die eigene Box sowie alle Kind-Boxen.
-     *
-     * <h4>SingleChildContainer-Code-Beispiel</h4>
+     * <b>Zeichnet</b> die eigene Box.
      *
      * <pre>
      * {@code
@@ -326,21 +324,32 @@ public abstract class Box implements Iterable<Box>
      *     g.setColor(color);
      *     g.fillRect(x, y, width, height);
      *     g.setColor(oldColor);
-     *     child.draw(g);
      * }
      * }
      * </pre>
-     *
-     * <h4>MultipleChildContainer-Code-Beispiel</h4>
-     *
-     * <pre>
-     * {@code for (Box child : childs) { child.draw(g); } } </pre
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
      * @since 0.38.0
      */
     abstract void draw(Graphics2D g);
+
+    /**
+     * Ruft rekursive alle {@link #draw(Graphics2D)}-Methoden der Kinder-Boxen
+     * auf.
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @since 0.42.0
+     */
+    private void doDrawing(Graphics2D g)
+    {
+        draw(g);
+        for (Box box : childs)
+        {
+            box.doDrawing(g);
+        }
+    }
 
     /**
      * Berechnet die <b>Abmessungen</b> und <b>Ankerpunkte</b> und
@@ -356,6 +365,6 @@ public abstract class Box implements Iterable<Box>
         {
             measure();
         }
-        draw(g);
+        doDrawing(g);
     }
 }
