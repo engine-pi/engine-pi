@@ -24,7 +24,7 @@ public class TextTableBoxDemo extends Graphics2DComponent
             b.text.color("red");
             b.text.content("This is cell 0,0");
         });
-        table.padding(10);
+        table.padding(30);
         table.forEachColumnBox(1, b -> {
             b.hAlign(HAlign.RIGHT);
             b.text.color("green");

@@ -43,7 +43,7 @@ import pi.util.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
-    HAlign hAlignment = HAlign.LEFT;
+    HAlign hAlign = HAlign.LEFT;
 
     List<TextLayout> lines = new ArrayList<>();
 
@@ -61,9 +61,9 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
-    public TextBlockBox hAlign(HAlign hAlignment)
+    public TextBlockBox hAlign(HAlign hAlign)
     {
-        this.hAlignment = hAlignment;
+        this.hAlign = hAlign;
         return this;
     }
 
@@ -162,7 +162,7 @@ public class TextBlockBox extends TextBox
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
             // Vorschub des Zeichen ganz rechts.
             float lineWidth = line.getAdvance();
-            switch (hAlignment)
+            switch (hAlign)
             {
             case LEFT:
                 break;

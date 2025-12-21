@@ -64,6 +64,7 @@ public class TextBlockAlignBox extends CombinedChildBox
     public TextBlockAlignBox hAlign(HAlign hAlign)
     {
         container.hAlign(hAlign);
+        text.hAlign(hAlign);
         return this;
     }
 
