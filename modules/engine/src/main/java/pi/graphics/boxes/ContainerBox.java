@@ -141,18 +141,7 @@ public class ContainerBox extends ChildBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter(this);
-
-        if (definedWidth > 0)
-        {
-            formatter.add("width", definedWidth);
-        }
-
-        if (definedHeight > 0)
-        {
-            formatter.add("height", definedHeight);
-        }
-
+        ToStringFormatter formatter = getToStringFormatter();
         if (vAlign != VAlign.TOP)
         {
             formatter.add("vAlign", vAlign);

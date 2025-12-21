@@ -195,7 +195,7 @@ public class BorderBox extends ChildBox
     @Override
     public String toString()
     {
-        var formatter = toStringFormatter();
+        var formatter = getToStringFormatter();
         if (thickness > 0)
         {
             formatter.add("thickness", thickness);

@@ -393,22 +393,53 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
-    public void render(Graphics2D g)
+    public Box render(Graphics2D g)
     {
         if (!measured)
         {
             measure();
         }
         doDrawing(g);
+        return this;
     }
 
-    public ToStringFormatter toStringFormatter()
+    public ToStringFormatter getToStringFormatter()
     {
-        return new ToStringFormatter(this);
+        ToStringFormatter formatter = new ToStringFormatter(this);
+
+        if ((width == 0 || width == definedWidth) && definedWidth > 0)
+        {
+            formatter.add("dWidth", definedWidth);
+        }
+        else if (width > 0 && definedWidth == 0)
+        {
+            formatter.add("width", width);
+        }
+
+        if ((height == 0 || height == definedHeight) && definedHeight > 0)
+        {
+            formatter.add("dHeight", definedHeight);
+        }
+        else if (height > 0 && definedHeight == 0)
+        {
+            formatter.add("height", height);
+        }
+
+        if (x != 0)
+        {
+            formatter.add("x", x);
+        }
+
+        if (y != 0)
+        {
+            formatter.add("y", y);
+        }
+        return formatter;
     }
 
     public Box debug()
     {
+        System.out.println("");
         debug(0);
         return this;
     }

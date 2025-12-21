@@ -76,16 +76,7 @@ public class TextBlockAlignBox extends CombinedChildBox
     @Override
     public String toString()
     {
-        var formatter = toStringFormatter();
-        if (definedWidth > 0)
-        {
-            formatter.add("width", definedWidth);
-        }
-
-        if (definedHeight > 0)
-        {
-            formatter.add("height", definedHeight);
-        }
+        var formatter = getToStringFormatter();
         return formatter.format();
     }
 }

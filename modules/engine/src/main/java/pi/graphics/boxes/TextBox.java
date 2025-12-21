@@ -129,9 +129,9 @@ public abstract class TextBox extends LeafBox
     }
 
     @Override
-    public ToStringFormatter toStringFormatter()
+    public ToStringFormatter getToStringFormatter()
     {
-        var formatter = super.toStringFormatter();
+        var formatter = super.getToStringFormatter();
 
         if (content != null)
         {

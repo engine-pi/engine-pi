@@ -190,7 +190,7 @@ public class TextBlockBox extends TextBox
     @Override
     public String toString()
     {
-        var formatter = toStringFormatter();
+        var formatter = getToStringFormatter();
         if (lines.size() > 1)
         {
             formatter.add("lines", lines.size());
