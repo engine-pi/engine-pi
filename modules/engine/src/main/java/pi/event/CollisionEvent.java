@@ -206,12 +206,12 @@ public class CollisionEvent<E extends Actor>
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("CollisionEvent");
-        formatter.add("colliding", colliding.toString());
+        formatter.append("colliding", colliding.toString());
         List<Vector> points = getPoints();
-        formatter.add("points", points.toString());
+        formatter.append("points", points.toString());
         if (isIgnored())
         {
-            formatter.add("isIgnored");
+            formatter.append("isIgnored", true);
         }
         return formatter.format();
     }

@@ -193,7 +193,7 @@ public class TextBlockBox extends TextBox
         var formatter = getToStringFormatter();
         if (lines.size() > 1)
         {
-            formatter.add("lines", lines.size());
+            formatter.append("lines", lines.size());
         }
         return formatter.format();
     }

@@ -121,7 +121,7 @@ public class Counter extends Text
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Counter");
-        formatter.add("counter", Integer.toString(counter));
+        formatter.append("counter", Integer.toString(counter));
         return formatter.format();
     }
 

@@ -230,8 +230,8 @@ public class GridBox<T extends Box> extends PaddingBox
     public ToStringFormatter getToStringFormatter()
     {
         var formatter = super.getToStringFormatter();
-        formatter.add("columnCount", columnCount());
-        formatter.add("rowCount", rowCount());
+        formatter.append("columnCount", columnCount());
+        formatter.append("rowCount", rowCount());
         return formatter;
     }
 

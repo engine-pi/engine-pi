@@ -525,15 +525,15 @@ public final class Camera
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Camera");
-        formatter.add("meter", meter);
-        formatter.add("center", center);
+        formatter.append("meter", meter);
+        formatter.append("center", center);
         if (rotation != 0)
         {
-            formatter.add("rotation", rotation);
+            formatter.append("rotation", rotation);
         }
         if (focus != null)
         {
-            formatter.add("focus", focus);
+            formatter.append("focus", focus);
         }
         return formatter.format();
     }

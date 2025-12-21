@@ -18,6 +18,8 @@
  */
 package pi.graphics.boxes;
 
+import pi.debug.ToStringFormatter;
+
 /**
  * @author Josef Friedrich
  *
@@ -36,5 +38,16 @@ public abstract class PaddingBox extends ChildsBox
     {
         this.padding = padding;
         return this;
+    }
+
+    @Override
+    public ToStringFormatter getToStringFormatter()
+    {
+        var formatter = super.getToStringFormatter();
+        if (padding > 0)
+        {
+            formatter.prepend("padding", padding);
+        }
+        return formatter;
     }
 }

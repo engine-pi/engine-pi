@@ -29,7 +29,7 @@ public class TextTableBoxDemo extends Graphics2DComponent
             b.hAlign(HAlign.RIGHT);
             b.text.color("green");
         });
-        new BorderBox(table).color("black").debug().render(g).debug();
+        new BorderBox(table).color("black").render(g).debug();
     }
 
     public static void main(String[] args)

@@ -18,12 +18,40 @@
  */
 package pi.debug;
 
-import pi.util.TextUtil;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
+
+import pi.util.TextUtil;
+
+record Field(String name, Object value, String unit)
+{
+
+    private String formattedValue()
+    {
+        if (value instanceof String)
+        {
+            return "\"" + ((String) value).replace("\n", "\\n ") + "\"";
+        }
+        else if (value instanceof Double)
+        {
+            return TextUtil.roundNumber(value);
+        }
+        return String.valueOf(value);
+    }
+
+    public String format()
+    {
+        String output = name + "=" + AnsiColor.blue(formattedValue());
+        if (unit != null)
+        {
+            output += unit;
+        }
+        return output;
+    }
+}
 
 /**
  * Hilft die Textausgabe der {@link Object#toString()}-Methoden zu formatieren.
@@ -64,11 +92,17 @@ import java.util.Map;
  */
 public class ToStringFormatter
 {
-    private final HashMap<String, Object> map = new LinkedHashMap<>();
 
     private final String className;
 
     private String hashCode;
+
+    /**
+     * Eine sortiere Liste der Schlüsselnamen.
+     */
+    private List<String> fieldNames = new LinkedList<>();
+
+    private final HashMap<String, Field> map = new LinkedHashMap<>();
 
     /**
      * <pre>
@@ -105,76 +139,76 @@ public class ToStringFormatter
         hashCode = Integer.toHexString(System.identityHashCode(object));
     }
 
-    /**
-     * Fügt ein <b>Schlüssel-Wert-Paar</b> hinzu.
-     *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
-     * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
-     */
-    public void add(String key, Object value)
+    private ToStringFormatter add(boolean prepend, String fieldName,
+            Object value, String unit)
     {
-        map.put(key, value);
+        if (fieldNames.contains(fieldName))
+        {
+            throw new RuntimeException("Ein Feld mit dem Namen " + fieldName
+                    + "wurde bereits zum toString()-Formatter hinzugefügt");
+        }
+        map.put(fieldName, new Field(fieldName, value, unit));
+        if (prepend)
+        {
+            fieldNames.add(0, fieldName);
+        }
+        else
+        {
+            fieldNames.add(fieldName);
+        }
+        return this;
     }
 
     /**
-     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine <b>Ganzzahl</b> ist.
+     * Fügt das Schlüssel-Wert-Paar eines Felds am <b>Anfang</b> der Feldliste
+     * hinzu.
      *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
-     * @param value Der <b>Wert</b> des Schlüssels als Ganzzahl.
+     * @param fieldName Der Name des <b>Felds</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Felds in einem beliebigen Datentyp.
      */
-    public void add(String key, int value)
+    public void prepend(String fieldName, Object value)
     {
-        map.put(key, value);
+        prepend(fieldName, value, null);
     }
 
     /**
-     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine
-     * <b>Gleitkommazahl</b> ist, die gerundet wird.
+     * Fügt das Schlüssel-Wert-Paar eines Felds mit <b>Einheit</b> am
+     * <b>Anfang</b> der Feldliste hinzu.
      *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
-     * @param value Der <b>Wert</b> des Schlüssels als Gleitkommazahl, die
-     *     gerundet werden soll.
-     */
-    public void add(String key, double value)
-    {
-        map.put(key, TextUtil.roundNumber(value));
-    }
-
-    /**
-     * Fügt ein Schlüssel-Wert-Paar hinzu, dessen Wert eine
-     * <b>Gleitkommazahl</b> ist, die gerundet wird.
-     *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
-     * @param value Der <b>Wert</b> des Schlüssels als Gleitkommazahl, die
-     *     gerundet werden soll.
-     */
-    public void add(String key, String value)
-    {
-        map.put(key, "\"" + value + "\"");
-    }
-
-    /**
-     * Fügt ein Schlüssel-Wert-Paar mit <b>Einheit</b> hinzu.
-     *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
-     * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
+     * @param fieldName Der Name des <b>Felds</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Felds in einem beliebigen Datentyp.
      * @param unit Eine zusätzliche Zeichenkette, die an den Wert angehängt
      *     wird, und als <b>Einheit</b> dienen kann.
      */
-    public void add(String key, Object value, String unit)
+    public void prepend(String fieldName, Object value, String unit)
     {
-        map.put(key, String.format("%s%s", value, unit));
+        add(true, fieldName, value, unit);
     }
 
     /**
-     * Fügt lediglich einen <b>Schlüssel</b> beziehungsweise ein Attribut hinzu,
-     * das den Wert zugewiesen bekommt.
+     * Fügt das Schlüssel-Wert-Paar eines Felds ans <b>Ende</b> der Feldliste
+     * hinzu.
      *
-     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
+     * @param fieldName Der Name des <b>Felds</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Felds in einem beliebigen Datentyp.
      */
-    public void add(String key)
+    public void append(String fieldName, Object value)
     {
-        map.put(key, "true");
+        add(false, fieldName, value, null);
+    }
+
+    /**
+     * Fügt das Schlüssel-Wert-Paar eines Felds mit <b>Einheit</b> ans
+     * <b>Ende</b> der Feldliste hinzu.
+     *
+     * @param fieldName Der Name des <b>Felds</b> bzw. des Attributs.
+     * @param value Der <b>Wert</b> des Felds in einem beliebigen Datentyp.
+     * @param unit Eine zusätzliche Zeichenkette, die an den Wert angehängt
+     *     wird, und als <b>Einheit</b> dienen kann.
+     */
+    public void append(String fieldName, Object value, String unit)
+    {
+        add(false, fieldName, value, unit);
     }
 
     private String objectName()
@@ -194,11 +228,11 @@ public class ToStringFormatter
      */
     public String format()
     {
-        ArrayList<String> entries = new ArrayList<>();
-        for (Map.Entry<String, Object> entry : map.entrySet())
+        List<String> entries = new ArrayList<>();
+        for (String fieldName : fieldNames)
         {
-            entries.add(
-                    entry.getKey() + "=" + AnsiColor.blue(entry.getValue()));
+            Field field = map.get(fieldName);
+            entries.add(field.format());
         }
         return String.format("%s [%s]", objectName(),
                 String.join(", ", entries));

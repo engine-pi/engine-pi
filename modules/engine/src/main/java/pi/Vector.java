@@ -750,8 +750,8 @@ public final class Vector implements Cloneable
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Vector");
-        formatter.add("x", x);
-        formatter.add("y", y);
+        formatter.append("x", x);
+        formatter.append("y", y);
         return formatter.format();
     }
 }

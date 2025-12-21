@@ -1,6 +1,5 @@
 package de.pirckheimer_gymnasium.demos.graphics2d;
 
-import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -38,8 +37,7 @@ public abstract class Graphics2DComponent extends JComponent
     public void show()
     {
         JFrame frame = new JFrame("Graphics2D Demo");
-        Container cp = frame.getContentPane();
-        cp.add(this);
+        frame.getContentPane().add(this);
         frame.setSize(800, 600);
         frame.setVisible(true);
     }

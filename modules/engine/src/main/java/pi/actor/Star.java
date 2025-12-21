@@ -109,9 +109,9 @@ public class Star extends Polygon
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Star");
-        formatter.add("numPoints", numPoints);
-        formatter.add("radius", radius, "m");
-        formatter.add("innerRadius", innerRadius, "m");
+        formatter.append("numPoints", numPoints);
+        formatter.append("radius", radius, "m");
+        formatter.append("innerRadius", innerRadius, "m");
         return formatter.format();
     }
 }

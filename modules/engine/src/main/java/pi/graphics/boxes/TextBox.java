@@ -133,25 +133,15 @@ public abstract class TextBox extends LeafBox
     {
         var formatter = super.getToStringFormatter();
 
-        if (content != null)
-        {
-            formatter.add("content", content);
-        }
-
-        if (width > 0)
-        {
-            formatter.add("width", width);
-        }
-
-        if (height > 0)
-        {
-            formatter.add("height", height);
-        }
-
         if (fontSize != 16)
         {
-            formatter.add("fontSize", fontSize);
+            formatter.prepend("fontSize", fontSize);
         }
+        if (content != null)
+        {
+            formatter.prepend("content", content);
+        }
+
         return formatter;
     }
 }

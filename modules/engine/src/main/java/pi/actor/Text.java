@@ -397,7 +397,7 @@ public class Text extends Geometry
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Text");
-        formatter.add("content", content);
+        formatter.append("content", content);
         return formatter.format();
     }
 

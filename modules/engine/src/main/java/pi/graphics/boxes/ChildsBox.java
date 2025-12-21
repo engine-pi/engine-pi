@@ -20,6 +20,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.debug.ToStringFormatter;
+
 /**
  * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
  *
@@ -68,5 +70,16 @@ abstract class ChildsBox extends Box
     void draw(Graphics2D g)
     {
         // do nothing
+    }
+
+    @Override
+    public ToStringFormatter getToStringFormatter()
+    {
+        var formatter = super.getToStringFormatter();
+        if (numberOfChilds() > 0)
+        {
+            formatter.prepend("numberOfChilds", numberOfChilds());
+        }
+        return formatter;
     }
 }

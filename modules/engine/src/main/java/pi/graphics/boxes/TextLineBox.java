@@ -77,4 +77,10 @@ public class TextLineBox extends TextBox
         g.setColor(oldColor);
         g.setFont(oldFont);
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
 }

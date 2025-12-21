@@ -25,7 +25,7 @@ public class TextLineBoxDemo extends Graphics2DComponent
                 textLine("custom color").color("orange"),
                 textLine("custom content").content("updated content"));
         box.anchor(200, 100);
-        box.render(g);
+        box.render(g).debug();
     }
 
     public static void main(String[] args)

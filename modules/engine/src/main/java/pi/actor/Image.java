@@ -376,21 +376,21 @@ public class Image extends Actor
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("Image");
-        formatter.add("width", width, "m");
-        formatter.add("height", height, "m");
-        formatter.add("imageWidth", image.getWidth(), "px");
-        formatter.add("imageHeight", image.getHeight(), "px");
+        formatter.append("width", width, "m");
+        formatter.append("height", height, "m");
+        formatter.append("imageWidth", image.getWidth(), "px");
+        formatter.append("imageHeight", image.getHeight(), "px");
         if (pixelPerMeter > 0)
         {
-            formatter.add("pixelPerMeter", pixelPerMeter);
+            formatter.append("pixelPerMeter", pixelPerMeter);
         }
         if (isFlippedHorizontally())
         {
-            formatter.add("flippedHorizontally");
+            formatter.append("flippedHorizontally", true);
         }
         if (isFlippedVertically())
         {
-            formatter.add("flippedVertically");
+            formatter.append("flippedVertically", true);
         }
         return formatter.format();
     }

@@ -409,30 +409,30 @@ public abstract class Box implements Iterable<Box>
 
         if ((width == 0 || width == definedWidth) && definedWidth > 0)
         {
-            formatter.add("dWidth", definedWidth);
+            formatter.append("dWidth", definedWidth);
         }
         else if (width > 0 && definedWidth == 0)
         {
-            formatter.add("width", width);
+            formatter.append("width", width);
         }
 
         if ((height == 0 || height == definedHeight) && definedHeight > 0)
         {
-            formatter.add("dHeight", definedHeight);
+            formatter.append("dHeight", definedHeight);
         }
         else if (height > 0 && definedHeight == 0)
         {
-            formatter.add("height", height);
+            formatter.append("height", height);
         }
 
         if (x != 0)
         {
-            formatter.add("x", x);
+            formatter.append("x", x);
         }
 
         if (y != 0)
         {
-            formatter.add("y", y);
+            formatter.append("y", y);
         }
         return formatter;
     }

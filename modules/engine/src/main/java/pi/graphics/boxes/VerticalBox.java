@@ -72,4 +72,10 @@ public class VerticalBox extends PaddingBox
             yCursor += child.height + padding;
         }
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
 }

@@ -668,33 +668,33 @@ public class ImageFont
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("ImageFont");
-        formatter.add("basePath", basePath);
+        formatter.append("basePath", basePath);
         if (glyphWidth != 8 || glyphHeight != 8)
         {
-            formatter.add("glyphDimension",
+            formatter.append("glyphDimension",
                     String.format("%sx%s", glyphWidth, glyphHeight));
         }
         if (!extension.equals("png"))
         {
-            formatter.add("extension", extension);
+            formatter.append("extension", extension);
         }
         if (pixelMultiplication > 1)
         {
-            formatter.add("pixelMultiplication", pixelMultiplication);
+            formatter.append("pixelMultiplication", pixelMultiplication);
         }
         if (color != null)
         {
-            formatter.add("color", color);
+            formatter.append("color", color);
         }
         if (caseSensitivity != null)
         {
-            formatter.add("caseSensitivity", caseSensitivity);
+            formatter.append("caseSensitivity", caseSensitivity);
         }
         if (lineWidth > 0)
         {
-            formatter.add("lineWidth", lineWidth);
+            formatter.append("lineWidth", lineWidth);
         }
-        formatter.add("alignment", alignment);
+        formatter.append("alignment", alignment);
         return formatter.format();
     }
 }
