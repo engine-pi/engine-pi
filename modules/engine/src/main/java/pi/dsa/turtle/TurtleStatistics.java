@@ -64,12 +64,12 @@ public class TurtleStatistics
         table = new TextTableBox("Entfernung:",
                 TextUtil.roundNumber(traveledDistance), "aktuelle Ausrichtung:",
                 "000.00000");
-        table.allCells(cell -> {
-            cell.text.color("black");
-            cell.container.hAlign(HAlign.RIGHT);
+        table.forEachBox(box -> {
+            box.text.color("black");
+            box.container.hAlign(HAlign.RIGHT);
         });
         table.padding(3);
-        table.column(0, cell -> cell.text.font(Resources.fonts
+        table.forEachColumnBox(0, box -> box.text.font(Resources.fonts
                 .getDefault(FontStyle.BOLD).deriveFont((float) 16)));
         framedTable = new FramedBox(table);
         framedTable.background.color(colors.get("grey", 50));
@@ -95,9 +95,9 @@ public class TurtleStatistics
      */
     public void render(Graphics2D g)
     {
-        table.cell(0, 1, b -> b.text
+        table.forBox(0, 1, b -> b.text
                 .content(TextUtil.roundNumber(traveledDistance) + " m"));
-        table.cell(1, 1, b -> b.text
+        table.forBox(1, 1, b -> b.text
                 .content(TextUtil.roundNumber(pen.direction) + " °"));
         framedTable.measure();
         framedTable.render(g);

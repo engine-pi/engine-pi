@@ -48,9 +48,9 @@ public class GridBox<T extends Box> extends PaddingBox
     }
 
     /**
-     * Gibt die Anzahl an Spalten zurück.
+     * Gibt die <b>Spaltenanzahl</b> zurück.
      *
-     * @return Die Anzahl an Spalten.
+     * @return Die <b>Spaltenanzahl</b>.
      */
     public int columnCount()
     {
@@ -58,9 +58,9 @@ public class GridBox<T extends Box> extends PaddingBox
     }
 
     /**
-     * Gibt die Anzahl an Reihen zurück.
+     * Gibt die <b>Reihenanzahl</b> zurück.
      *
-     * @return Die Anzahl an Reihen.
+     * @return Die <b>Reihenanzahl</b>.
      */
     public int rowCount()
     {
@@ -97,7 +97,7 @@ public class GridBox<T extends Box> extends PaddingBox
         return grid.get(row);
     }
 
-    public GridBox<T> row(int row, Consumer<T> consumer)
+    public GridBox<T> forEachRowBox(int row, Consumer<T> consumer)
     {
         for (T box : getRow(row))
         {
@@ -132,7 +132,7 @@ public class GridBox<T extends Box> extends PaddingBox
         return childs;
     }
 
-    public GridBox<T> column(int column, Consumer<T> consumer)
+    public GridBox<T> forEachColumnBox(int column, Consumer<T> consumer)
     {
         for (T box : getColumn(column))
         {
@@ -144,7 +144,7 @@ public class GridBox<T extends Box> extends PaddingBox
         return this;
     }
 
-    public GridBox<T> cell(int row, int column, Consumer<T> consumer)
+    public GridBox<T> forBox(int row, int column, Consumer<T> consumer)
     {
         T box = grid.get(row).get(column);
         if (box != null)
@@ -154,7 +154,7 @@ public class GridBox<T extends Box> extends PaddingBox
         return this;
     }
 
-    public GridBox<T> allCells(Consumer<T> consumer)
+    public GridBox<T> forEachBox(Consumer<T> consumer)
     {
         for (int row = 0; row < rowCount(); row++)
         {
@@ -191,7 +191,7 @@ public class GridBox<T extends Box> extends PaddingBox
         {
             int maxWidth = getMaxWidthOfColumn(column);
             width += maxWidth;
-            column(column, b -> b.width(maxWidth));
+            forEachColumnBox(column, b -> b.width(maxWidth));
         }
 
         height = 0;
@@ -199,7 +199,7 @@ public class GridBox<T extends Box> extends PaddingBox
         {
             int maxHeight = getMaxHeightOfRow(row);
             height += maxHeight;
-            row(row, b -> b.height(maxHeight));
+            forEachRowBox(row, b -> b.height(maxHeight));
         }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;
@@ -230,15 +230,14 @@ public class GridBox<T extends Box> extends PaddingBox
     public ToStringFormatter getToStringFormatter()
     {
         var formatter = super.getToStringFormatter();
-        formatter.append("columnCount", columnCount());
-        formatter.append("rowCount", rowCount());
+        formatter.prepend("columnCount", columnCount());
+        formatter.prepend("rowCount", rowCount());
         return formatter;
     }
 
     @Override
     public String toString()
     {
-        var formatter = getToStringFormatter();
-        return formatter.format();
+        return getToStringFormatter().format();
     }
 }
