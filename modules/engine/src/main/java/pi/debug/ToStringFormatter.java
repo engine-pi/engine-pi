@@ -68,6 +68,8 @@ public class ToStringFormatter
 
     private final String className;
 
+    private String hashCode;
+
     /**
      * <pre>
      * {@code
@@ -97,8 +99,14 @@ public class ToStringFormatter
         this.className = className;
     }
 
+    public ToStringFormatter(Object object)
+    {
+        className = object.getClass().getSimpleName();
+        hashCode = Integer.toHexString(System.identityHashCode(object));
+    }
+
     /**
-     * Fügt ein Schlüssel-Wert-Paar hinzu.
+     * Fügt ein <b>Schlüssel-Wert-Paar</b> hinzu.
      *
      * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
      * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
@@ -148,7 +156,7 @@ public class ToStringFormatter
     /**
      * Fügt ein Schlüssel-Wert-Paar mit <b>Einheit</b> hinzu.
      *
-     * @param key Der Name des Schlüssels bzw. des Attributs.
+     * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
      * @param value Der <b>Wert</b> des Schlüssels in einem beliebigen Datentyp.
      * @param unit Eine zusätzliche Zeichenkette, die an den Wert angehängt
      *     wird, und als <b>Einheit</b> dienen kann.
@@ -159,8 +167,8 @@ public class ToStringFormatter
     }
 
     /**
-     * Fügt lediglich einen Schlüssel beziehungsweise ein Attribut hinzu, das
-     * den Wert zugewiesen bekommt.
+     * Fügt lediglich einen <b>Schlüssel</b> beziehungsweise ein Attribut hinzu,
+     * das den Wert zugewiesen bekommt.
      *
      * @param key Der Name des <b>Schlüssels</b> bzw. des Attributs.
      */
@@ -169,7 +177,19 @@ public class ToStringFormatter
         map.put(key, "true");
     }
 
+    private String objectName()
+    {
+        String objectName = AnsiColor.magenta(className);
+        if (hashCode != null)
+        {
+            objectName += "@" + AnsiColor.yellow(hashCode);
+        }
+        return objectName;
+    }
+
     /**
+     * Gibt die formatierte Zeichenkette aus.
+     *
      * @return Die formatierte Zeichenkette.
      */
     public String format()
@@ -177,9 +197,11 @@ public class ToStringFormatter
         ArrayList<String> entries = new ArrayList<>();
         for (Map.Entry<String, Object> entry : map.entrySet())
         {
-            entries.add(entry.getKey() + "=" + entry.getValue());
+            entries.add(
+                    entry.getKey() + "=" + AnsiColor.blue(entry.getValue()));
         }
-        return String.format("%s [%s]", className, String.join(", ", entries));
+        return String.format("%s [%s]", objectName(),
+                String.join(", ", entries));
     }
 
     /**

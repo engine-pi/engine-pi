@@ -24,6 +24,8 @@ import static pi.Resources.fonts;
 import java.awt.Color;
 import java.awt.Font;
 
+import pi.debug.ToStringFormatter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
 /**
@@ -78,7 +80,6 @@ public abstract class TextBox extends LeafBox
      *
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
-     *
      * @since 0.39.0
      */
     public TextBox content(Object content)
@@ -104,7 +105,9 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
-     * @param fontSize Die Schriftgröße in Punkten (Points pt)
+     * Setzt die <b>Schriftgröße</b> in Punkten (Points pt).
+     *
+     * @param fontSize Die <b>Schriftgröße</b> in Punkten (Points pt).
      */
     public TextBox fontSize(double fontSize)
     {
@@ -125,4 +128,30 @@ public abstract class TextBox extends LeafBox
         return this;
     }
 
+    @Override
+    public ToStringFormatter toStringFormatter()
+    {
+        var formatter = super.toStringFormatter();
+
+        if (content != null)
+        {
+            formatter.add("content", content);
+        }
+
+        if (width > 0)
+        {
+            formatter.add("width", width);
+        }
+
+        if (height > 0)
+        {
+            formatter.add("height", height);
+        }
+
+        if (fontSize != 16)
+        {
+            formatter.add("fontSize", fontSize);
+        }
+        return formatter;
+    }
 }

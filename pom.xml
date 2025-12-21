@@ -204,6 +204,13 @@
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
                     <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+                    <tagletArtifacts>
+                        <tagletArtifact>
+                            <groupId>rocks.friedrich</groupId>
+                            <artifactId>taglets</artifactId>
+                            <version>0.4.0</version>
+                        </tagletArtifact>
+                    </tagletArtifacts>
                 </configuration>
                 <dependencies>
                     <dependency>

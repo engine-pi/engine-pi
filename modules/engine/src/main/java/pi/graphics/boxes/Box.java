@@ -24,6 +24,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import pi.debug.ToStringFormatter;
+
 /**
  * Eine <b>Box</b> beschreibt eine rechteckige grafische Fläche, die weitere
  * Kinder-Boxen enthalten kann.
@@ -366,6 +368,11 @@ public abstract class Box implements Iterable<Box>
             measure();
         }
         doDrawing(g);
+    }
+
+    public ToStringFormatter toStringFormatter()
+    {
+        return new ToStringFormatter(this);
     }
 
     public Box debug()

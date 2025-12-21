@@ -18,8 +18,6 @@
  */
 package pi.graphics.boxes;
 
-import pi.debug.ToStringFormatter;
-
 public class TextBlockAlignBox extends CombinedChildBox
 {
     public ContainerBox container;
@@ -78,8 +76,7 @@ public class TextBlockAlignBox extends CombinedChildBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter(
-                "TextBlockAlignBox");
+        var formatter = toStringFormatter();
         if (definedWidth > 0)
         {
             formatter.add("width", definedWidth);

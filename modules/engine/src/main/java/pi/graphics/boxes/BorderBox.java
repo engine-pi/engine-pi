@@ -191,4 +191,19 @@ public class BorderBox extends ChildBox
             g.setColor(oldColor);
         }
     }
+
+    @Override
+    public String toString()
+    {
+        var formatter = toStringFormatter();
+        if (thickness > 0)
+        {
+            formatter.add("thickness", thickness);
+        }
+        if (color != null)
+        {
+            formatter.add("color", color);
+        }
+        return formatter.format();
+    }
 }

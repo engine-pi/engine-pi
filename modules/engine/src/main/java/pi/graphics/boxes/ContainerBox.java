@@ -141,7 +141,7 @@ public class ContainerBox extends ChildBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("ContainerBox");
+        ToStringFormatter formatter = new ToStringFormatter(this);
 
         if (definedWidth > 0)
         {

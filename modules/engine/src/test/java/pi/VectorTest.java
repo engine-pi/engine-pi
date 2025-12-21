@@ -29,6 +29,8 @@ import static java.lang.Math.PI;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import pi.debug.AnsiColor;
+
 public class VectorTest
 {
     @Test
@@ -263,7 +265,8 @@ public class VectorTest
     @Test
     public void testToString()
     {
-        assertEquals("Vector [x=1.0, y=1.0]", v(1, 1).toString());
+        assertEquals("Vector [x=1.0, y=1.0]",
+                AnsiColor.remove(v(1, 1).toString()));
     }
 
     @Nested

@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import pi.debug.ToStringFormatter;
+
 public class GridBox<T extends Box> extends PaddingBox
 {
     int columns = 2;
@@ -221,5 +223,21 @@ public class GridBox<T extends Box> extends PaddingBox
             }
             yCursor += getMaxHeightOfRow(row) + padding;
         }
+    }
+
+    @Override
+    public ToStringFormatter toStringFormatter()
+    {
+        var formatter = super.toStringFormatter();
+        formatter.add("columnCount", columnCount());
+        formatter.add("rowCount", rowCount());
+        return formatter;
+    }
+
+    @Override
+    public String toString()
+    {
+        var formatter = toStringFormatter();
+        return formatter.format();
     }
 }

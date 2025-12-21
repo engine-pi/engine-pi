@@ -30,7 +30,6 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
-import pi.debug.ToStringFormatter;
 import pi.util.FontUtil;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
@@ -49,7 +48,7 @@ public class TextBlockBox extends TextBox
     List<TextLayout> lines = new ArrayList<>();
 
     /**
-     * Erzeugt eineen <b>Text</b>block.
+     * Erzeugt eine mehrzeiligen <b>Textblock</b>.
      *
      * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
      *
@@ -191,23 +190,11 @@ public class TextBlockBox extends TextBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("TextBlockBox");
-
-        if (content != null)
+        var formatter = toStringFormatter();
+        if (lines.size() > 1)
         {
-            formatter.add("content", content);
+            formatter.add("lines", lines.size());
         }
-
-        if (width > 0)
-        {
-            formatter.add("width", width);
-        }
-
-        if (height > 0)
-        {
-            formatter.add("height", height);
-        }
-
         return formatter.format();
     }
 }
