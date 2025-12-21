@@ -196,13 +196,13 @@ public class BorderBox extends ChildBox
     public String toString()
     {
         var formatter = getToStringFormatter();
-        if (thickness > 0)
-        {
-            formatter.append("thickness", thickness);
-        }
         if (color != null)
         {
-            formatter.append("color", color);
+            formatter.prepend("color", color);
+        }
+        if (thickness > 0)
+        {
+            formatter.prepend("thickness", thickness);
         }
         return formatter.format();
     }

@@ -24,7 +24,8 @@ public class BackgroundBoxDemo extends Graphics2DComponent
                 background(textLine("nested")).color(colors.get("yellow"))))
                 .color(colors.get("green"));
 
-        vertical(defaultSettings, custom, nested).anchor(0, 0).render(g);
+        vertical(defaultSettings, custom, nested).anchor(0, 0).render(g)
+                .debug();
     }
 
     public static void main(String[] args)

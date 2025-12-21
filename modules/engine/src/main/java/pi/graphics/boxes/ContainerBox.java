@@ -142,14 +142,15 @@ public class ContainerBox extends ChildBox
     public String toString()
     {
         ToStringFormatter formatter = getToStringFormatter();
+
         if (vAlign != VAlign.TOP)
         {
-            formatter.append("vAlign", vAlign);
+            formatter.prepend("vAlign", vAlign);
         }
 
         if (hAlign != HAlign.LEFT)
         {
-            formatter.append("hAlign", hAlign);
+            formatter.prepend("hAlign", hAlign);
         }
         return formatter.format();
     }

@@ -48,7 +48,8 @@ public class MarginBoxDemo extends Graphics2DComponent
         allSides.margin.allSides(50);
         var different = box(".top(5).right(10).bottom(15).left(20)");
         different.margin.top(5).right(10).bottom(15).left(20);
-        vertical(defaultSettings, allSides, different).anchor(50, 50).render(g);
+        vertical(defaultSettings, allSides, different).anchor(50, 50).render(g)
+                .debug();
     }
 
     public static void main(String[] args)

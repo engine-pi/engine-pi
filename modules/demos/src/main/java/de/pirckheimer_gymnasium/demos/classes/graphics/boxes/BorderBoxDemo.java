@@ -20,7 +20,8 @@ public class BorderBoxDemo extends Graphics2DComponent
         var lineWidth = border(textLine("lineWidth")).thickness(5);
         var lineColor = border(textLine("lineColor")).color(colors.get("blue"));
 
-        vertical(defaultSettings, lineWidth, lineColor).anchor(0, 0).render(g);
+        vertical(defaultSettings, lineWidth, lineColor).anchor(0, 0).render(g)
+                .debug();
     }
 
     public static void main(String[] args)

@@ -31,14 +31,14 @@ public class ImageBox extends LeafBox
     BufferedImage image;
 
     /**
-     * Gibt an, ob das Objekt vertikal gespiegelt ist.
-     */
-    boolean flippedVertically = false;
-
-    /**
      * Gibt an, ob das Objekt horizontal gespiegelt ist.
      */
     boolean flippedHorizontally = false;
+
+    /**
+     * Gibt an, ob das Objekt vertikal gespiegelt ist.
+     */
+    boolean flippedVertically = false;
 
     public ImageBox(BufferedImage image)
     {
@@ -62,17 +62,6 @@ public class ImageBox extends LeafBox
         return this;
     }
 
-    public ImageBox flippedVertically(boolean flippedVertically)
-    {
-        this.flippedVertically = flippedVertically;
-        return this;
-    }
-
-    public ImageBox flippedVertically()
-    {
-        return flippedVertically(true);
-    }
-
     public ImageBox flippedHorizontally(boolean flippedHorizontally)
     {
         this.flippedHorizontally = flippedHorizontally;
@@ -82,6 +71,17 @@ public class ImageBox extends LeafBox
     public ImageBox flippedHorizontally()
     {
         return flippedHorizontally(true);
+    }
+
+    public ImageBox flippedVertically(boolean flippedVertically)
+    {
+        this.flippedVertically = flippedVertically;
+        return this;
+    }
+
+    public ImageBox flippedVertically()
+    {
+        return flippedVertically(true);
     }
 
     @Override
@@ -114,5 +114,20 @@ public class ImageBox extends LeafBox
                 (flippedHorizontally ? -1 : 1) * width,
                 (flippedVertically ? -1 : 1) * height, null);
         g.setTransform(oldTransfer);
+    }
+
+    @Override
+    public String toString()
+    {
+        var formatter = getToStringFormatter();
+        if (flippedHorizontally)
+        {
+            formatter.prepend("flippedHorizontally", true);
+        }
+        if (flippedVertically)
+        {
+            formatter.prepend("flippedVertically", true);
+        }
+        return formatter.format();
     }
 }

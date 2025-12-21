@@ -18,6 +18,7 @@
  */
 package pi.debug;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -38,6 +39,10 @@ record Field(String name, Object value, String unit)
         else if (value instanceof Double)
         {
             return TextUtil.roundNumber(value);
+        }
+        else if (value instanceof Color)
+        {
+            return String.valueOf(value).replace("java.awt.", "");
         }
         return String.valueOf(value);
     }

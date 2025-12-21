@@ -403,6 +403,11 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
+    /**
+     * Gibt einen vorkonfigurierten {@link ToStringFormatter} aus.
+     *
+     * @since 0.42.0
+     */
     public ToStringFormatter getToStringFormatter()
     {
         ToStringFormatter formatter = new ToStringFormatter(this);
@@ -437,6 +442,9 @@ public abstract class Box implements Iterable<Box>
         return formatter;
     }
 
+    /**
+     * @since 0.42.0
+     */
     public Box debug()
     {
         System.out.println("");
@@ -444,6 +452,9 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
+    /**
+     * @since 0.42.0
+     */
     private Box debug(int depth)
     {
         System.out.println(" ".repeat(depth * 2) + this);

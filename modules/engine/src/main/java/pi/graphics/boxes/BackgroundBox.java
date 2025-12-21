@@ -96,4 +96,15 @@ public class BackgroundBox extends ChildBox
             g.setColor(oldColor);
         }
     }
+
+    @Override
+    public String toString()
+    {
+        var formatter = getToStringFormatter();
+        if (color != null)
+        {
+            formatter.prepend("color", color);
+        }
+        return formatter.format();
+    }
 }

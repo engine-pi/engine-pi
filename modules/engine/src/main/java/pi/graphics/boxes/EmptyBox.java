@@ -36,4 +36,10 @@ public class EmptyBox extends LeafBox
     void draw(Graphics2D g)
     {
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
 }

@@ -20,6 +20,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.debug.ToStringFormatter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/MarginBoxDemo.java
 
 /**
@@ -117,5 +119,32 @@ public class MarginBox extends ChildBox
     void draw(Graphics2D g)
     {
         // do nothing
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = getToStringFormatter();
+
+        if (left > 0)
+        {
+            formatter.prepend("left", left);
+        }
+
+        if (bottom > 0)
+        {
+            formatter.prepend("bottom", bottom);
+        }
+
+        if (right > 0)
+        {
+            formatter.prepend("right", right);
+        }
+
+        if (top > 0)
+        {
+            formatter.prepend("top", top);
+        }
+        return formatter.format();
     }
 }

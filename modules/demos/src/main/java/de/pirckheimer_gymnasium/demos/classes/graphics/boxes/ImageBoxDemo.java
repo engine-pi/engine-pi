@@ -26,11 +26,11 @@ public class ImageBoxDemo extends Graphics2DComponent
     public void render(Graphics2D g)
     {
         vertical(box(), box().width(300).height(200),
-                box().width(16).height(16)).render(g);
+                box().width(16).height(16)).render(g).debug();
 
         vertical(car(), car().flippedVertically(), car().flippedHorizontally(),
                 car().flippedVertically().flippedHorizontally()).anchor(400, 0)
-                .render(g);
+                .render(g).debug();
     }
 
     public static void main(String[] args)
