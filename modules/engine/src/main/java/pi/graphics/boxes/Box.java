@@ -91,6 +91,20 @@ public abstract class Box implements Iterable<Box>
     protected boolean supportsDefinedDimension = false;
 
     /**
+     * Ist dieses Attribut wahr, so wird die
+     * {@link #calculateDimension()}-Methode zweimal hintereinander rekursive
+     * aufgerufen.
+     *
+     * <p>
+     * Falls in der {@link #calculateDimension()}-Methode die Abmessungen von
+     * Kinder-Boxen verändert werden, ist ein zweiter Messdurchgang nötig.
+     * </p>
+     *
+     * @see GridBox#calculateDimension()
+     */
+    protected boolean measureDimensionTwice = false;
+
+    /**
      * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
      *
      * @since 0.38.0
@@ -207,8 +221,8 @@ public abstract class Box implements Iterable<Box>
     public abstract int numberOfChilds();
 
     /**
-     * Berechnet rekursiv die <b>Abmessungen</b>, d.h. die Höhe und Breite der
-     * eigenen Box und aller Kind-Boxen.
+     * Berechnet rekursiv die <b>Abmessung</b> (die Höhe und Breite) der eigenen
+     * Box.
      *
      * <h4>Single-Child-Code-Beispiel</h4>
      *
@@ -244,6 +258,15 @@ public abstract class Box implements Iterable<Box>
      */
     protected abstract void calculateDimension();
 
+    /**
+     * Berechnet rekursiv die <b>Abmessung</b> (die Höhe und Breite) aller
+     * Kind-Boxen und dann die Abmessung eigenen Box.
+     *
+     * <p>
+     * Falls das Flag {@code measureDimensionTwice} gesetzt ist, werden diese
+     * Berechnungen zweimal durchgeführt.
+     * </p>
+     */
     protected void measureDimension()
     {
         for (Box child : childs)
@@ -251,6 +274,15 @@ public abstract class Box implements Iterable<Box>
             child.measureDimension();
         }
         calculateDimension();
+        // Zum Beispiel nötig in der Klasse GridBox
+        if (measureDimensionTwice)
+        {
+            for (Box child : childs)
+            {
+                child.measureDimension();
+            }
+            calculateDimension();
+        }
     }
 
     /**

@@ -15,8 +15,14 @@ import javax.swing.JFrame;
  */
 public abstract class Graphics2DComponent extends JComponent
 {
+    /**
+     * Wird mehrmals ausgeführt.
+     */
     public abstract void render(Graphics2D g);
 
+    /**
+     * Wird mehrmals ausgeführt.
+     */
     @Override
     public void paintComponent(Graphics graphics)
     {

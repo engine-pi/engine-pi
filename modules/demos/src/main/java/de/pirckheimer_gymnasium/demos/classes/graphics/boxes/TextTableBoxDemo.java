@@ -14,7 +14,7 @@ public class TextTableBoxDemo extends Graphics2DComponent
     public void render(Graphics2D g)
     {
         TextTableBox table = new TextTableBox("Cell 1", "Cell 2", "Cell 3",
-                "Cell 4");
+                "Cell 4\nhas\nmultiple lines");
         table.row(0, b -> b.width(300));
         table.column(0, b -> {
             b.hAlign(HAlign.RIGHT);

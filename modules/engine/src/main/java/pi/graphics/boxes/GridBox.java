@@ -36,6 +36,7 @@ public class GridBox<T extends Box> extends PaddingBox
     public GridBox(Box... childs)
     {
         super(childs);
+        measureDimensionTwice = true;
         buildGrid();
     }
 
