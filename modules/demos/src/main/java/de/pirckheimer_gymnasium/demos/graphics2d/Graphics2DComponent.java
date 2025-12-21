@@ -8,9 +8,9 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 /**
- * Übernimmt den Cast von Graphics zu Graphics2D und bietet wie die
- * Actor-Klassen eine render-Methode an. Außerdem eine show-Methode und eine
- * Fenster zum zeichnen.
+ * Übernimmt den Cast von {@link Graphics} zu {@link Graphics2D} und bietet wie
+ * die Actor-Klassen eine {@link #render(Graphics2D)}-Methode an. Außerdem eine
+ * {@link #show()}-Methode und eine Fenster zum zeichnen.
  */
 public abstract class Graphics2DComponent extends JComponent
 {
