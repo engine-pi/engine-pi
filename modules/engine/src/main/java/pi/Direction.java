@@ -73,7 +73,7 @@ public enum Direction
     NONE;
 
     /**
-     * Berechnet einen einfachen Vector (maximale Auslenkung bei jeder Achse 1 –
+     * Berechnet einen einfachen Vektor (maximale Auslenkung bei jeder Achse 1 –
      * positiv wie negativ).
      *
      * @return Vector, der mit einer einfachen Auslenkung (d.h. für

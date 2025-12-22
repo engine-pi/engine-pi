@@ -40,7 +40,6 @@ public class SierpinskiTriangleTurtleGraphics extends TurtleGraphics
         }
         for (int i = 0; i < 3; i++)
         {
-
             turtle.forward(sideLength);
             turtle.left(120);
             drawTriangle(sideLength / 2);
