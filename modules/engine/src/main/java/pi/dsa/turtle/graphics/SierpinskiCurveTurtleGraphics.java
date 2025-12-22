@@ -30,7 +30,6 @@ import pi.dsa.turtle.TurtleGraphics;
  */
 public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
 {
-
     /**
      * Die Linienlänge.
      */
