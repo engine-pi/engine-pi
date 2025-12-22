@@ -58,7 +58,7 @@ import pi.resources.ResourceLoader;
  *
  * Möglicherweise kann diese Klasse mit
  * https://central.sonatype.com/artifact/com.madgag/animated-gif-lib ersetzt
- * werden.s
+ * werden.
  *
  * @author Kevin Weiner, FM Software; LZW decoder adapted from John Cristy's
  *     ImageMagick.
