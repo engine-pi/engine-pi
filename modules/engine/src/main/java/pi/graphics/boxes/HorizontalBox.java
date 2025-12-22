@@ -18,6 +18,8 @@
  */
 package pi.graphics.boxes;
 
+import java.util.function.Consumer;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/HorizontalBoxDemo.java
 
 /**
@@ -28,7 +30,7 @@ package pi.graphics.boxes;
  *
  * @since 0.39.0
  */
-public class HorizontalBox extends PaddingBox
+public class HorizontalBox<T extends Box> extends PaddingBox
 {
     /**
      * Erzeugt eine neue <b>horizontale</b> Box.
@@ -43,6 +45,16 @@ public class HorizontalBox extends PaddingBox
     public HorizontalBox(Box... childs)
     {
         super(childs);
+    }
+
+    @SuppressWarnings("unchecked")
+    public HorizontalBox<T> forEachBox(Consumer<T> consumer)
+    {
+        for (Box box : childs)
+        {
+            consumer.accept((T) box);
+        }
+        return this;
     }
 
     @Override
@@ -72,5 +84,11 @@ public class HorizontalBox extends PaddingBox
             child.y = y + padding;
             xCursor += child.width + padding;
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
     }
 }

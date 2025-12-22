@@ -56,4 +56,10 @@ public class FramedBox extends CombinedChildBox
         margin = new MarginBox(border);
         addChild(margin);
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
 }

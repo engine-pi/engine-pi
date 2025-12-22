@@ -32,6 +32,13 @@ class MarginTestBox extends CombinedChildBox
         outerBorder.thickness(2).color("blue");
         addChild(outerBorder);
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
+
 }
 
 public class MarginBoxDemo extends Graphics2DComponent

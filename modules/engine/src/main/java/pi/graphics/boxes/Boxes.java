@@ -140,9 +140,9 @@ public final class Boxes
      *
      * @see HorizontalBox#HorizontalBox(Box...)
      */
-    public static HorizontalBox horizontal(Box... childs)
+    public static <T extends Box> HorizontalBox<T> horizontal(Box... childs)
     {
-        HorizontalBox box = new HorizontalBox(childs);
+        HorizontalBox<T> box = new HorizontalBox<>(childs);
         box.padding(10);
         return box;
     }
@@ -202,9 +202,9 @@ public final class Boxes
      *
      * @see VerticalBox#VerticalBox(Box...)
      */
-    public static VerticalBox vertical(Box... childs)
+    public static <T extends Box> VerticalBox<T> vertical(Box... childs)
     {
-        VerticalBox box = new VerticalBox(childs);
+        VerticalBox<T> box = new VerticalBox<>(childs);
         box.padding(10);
         return box;
     }

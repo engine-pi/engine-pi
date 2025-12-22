@@ -16,7 +16,7 @@ public class ContainerWidthHeightDemo extends Graphics2DComponent
     public void render(Graphics2D g)
     {
         background(container(empty()).width(200).height(200))
-                .color(colors.get("red")).render(g);
+                .color(colors.get("red")).render(g).debug();
     }
 
     public static void main(String[] args)

@@ -17,7 +17,7 @@ public class VerticalBoxDemo extends Graphics2DComponent
         var box = border(vertical(demo("Text 1"), demo("Text 2", 100, 70),
                 demo("Text 3")).padding(10));
         box.anchor(200, 100);
-        box.render(g);
+        box.render(g).debug();
     }
 
     public static void main(String[] args)

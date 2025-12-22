@@ -39,9 +39,9 @@ public class FramedTextBoxDemo extends Graphics2DComponent
         var onlyBorderSize = framedText("only borderSize");
         onlyBorderSize.border.thickness(13);
         vertical(allFeatures, onlyBackground, onlyBorderColor, onlyBorderSize)
-                .anchor(0, 0).render(g);
+                .anchor(0, 0).render(g).debug();
 
-        framedText("default").x(300).render(g);
+        framedText("default").x(300).render(g).debug();
     }
 
     public static void main(String[] args)

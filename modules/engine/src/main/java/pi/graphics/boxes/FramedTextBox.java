@@ -41,4 +41,10 @@ public class FramedTextBox extends FramedBox
         super(new TextLineBox(content));
         textLine = (TextLineBox) this.content;
     }
+
+    @Override
+    public String toString()
+    {
+        return getToStringFormatter().format();
+    }
 }

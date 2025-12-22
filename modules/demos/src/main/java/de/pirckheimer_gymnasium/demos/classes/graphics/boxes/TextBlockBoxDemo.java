@@ -50,7 +50,7 @@ public class TextBlockBoxDemo extends Graphics2DComponent
                 text("Zentriert: " + lorem, box -> box.hAlign(CENTER)),
                 // RIGHT
                 text("Rechtsbündig: " + lorem, box -> box.hAlign(RIGHT)))
-                .anchor(10, 10).render(g);
+                .anchor(10, 10).render(g).debug();
     }
 
     public static void main(String[] args)
