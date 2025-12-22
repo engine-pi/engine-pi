@@ -19,16 +19,17 @@
 package pi.dsa.turtle;
 
 import pi.Vector;
+import pi.annotations.Setter;
 
 /**
- * Speichert den <b>Startzustand</b> der Schildkröte, d. h. alle Einstellungen,
- * die die Schildkröte braucht, bevor sie beginnt mit eine Algorithmus eine
- * Turtle-Grafik zu zeichnen.
+ * Speichert den <b>Startzustand</b> der Schildkröte, d.h. alle Einstellungen,
+ * die die Schildkröte braucht, um mit einem Algorithmus eine Turtle-Grafik zu
+ * zeichnen.
  *
  * <p>
  * Diese Klasse kann dazu benutzt werden, um den Anfangszustand zu speichern,
  * wenn derselbe Algorithmus oder verschiedene Algorithmen mehrmals
- * hintereinander ausgeführt werden und die Schildkröte eine definierten
+ * hintereinander ausgeführt werden und die Schildkröte einen definierten
  * Anfangszustand braucht.
  * </p>
  *
@@ -77,8 +78,8 @@ public class InitialTurtleState
     private boolean warpMode = false;
 
     /**
-     * Ignoriert den Anfangszustand bei einer Ausführung des Algorithmus. Die
-     * Schildkröte bleibt in dem Zustand, wie sie den vorherigen Algorithmus
+     * <b>Ignoriert</b> den Anfangszustand bei einer Ausführung des Algorithmus.
+     * Die Schildkröte bleibt in dem Zustand, wie sie den vorherigen Algorithmus
      * verlassen hat.
      *
      * @since 0.40.0
@@ -109,6 +110,7 @@ public class InitialTurtleState
     /**
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState set(InitialTurtleState state)
     {
         copy(state, this);
@@ -127,6 +129,7 @@ public class InitialTurtleState
     /**
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState ignore()
     {
         ignore = true;
@@ -134,8 +137,14 @@ public class InitialTurtleState
     }
 
     /**
+     * Setzt die <b>Startposition</b> der Schildkröte als {@link Vector}.
+     *
+     * @param position Die <b>Startposition</b> der Schildkröte als
+     *     {@link Vector}.
+     *
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState position(Vector position)
     {
         this.position = position;
@@ -143,8 +152,14 @@ public class InitialTurtleState
     }
 
     /**
+     * Setzt die <b>Startposition</b> der Schildkröte als x- und y-Koordinate.
+     *
+     * @param x Die <b>x</b>-Koordinate der <b>Startposition</b>.
+     * @param y Die <b>y</b>-Koordinate der <b>Startposition</b>.
+     *
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState position(double x, double y)
     {
         position(new Vector(x, y));
@@ -152,8 +167,15 @@ public class InitialTurtleState
     }
 
     /**
+     * Setzt die <b>Blickrichtung</b> der Schildkröte.
+     *
+     * @param direction Die Blickrichtung der Schildkröte in Grad: 0°: nach
+     *     rechts (Osten), 90°: nach oben (Norden) 180°: nach links (Westen)
+     *     270°: nach unten (Süden)
+     *
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState direction(double direction)
     {
         this.direction = direction;
@@ -163,6 +185,7 @@ public class InitialTurtleState
     /**
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState drawLine(boolean drawLine)
     {
         this.penDown = drawLine;
@@ -170,8 +193,15 @@ public class InitialTurtleState
     }
 
     /**
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Schildkröte bewegt (in
+     * Meter pro Sekunde).
+     *
+     * @param speed die <b>Geschwindigkeit</b>, mit der sich die Schildkröte
+     *     bewegt (in Meter pro Sekunde).
+     *
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState speed(double speed)
     {
         this.speed = speed;
@@ -181,6 +211,7 @@ public class InitialTurtleState
     /**
      * @since 0.40.0
      */
+    @Setter
     public InitialTurtleState warpMode(boolean warpMode)
     {
         this.warpMode = warpMode;

@@ -1,9 +1,7 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/internal/annotations/API.java
- *
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2011 - 2014 Michael Andonie and contributors.
+ * Copyright (c) 2025 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,19 +19,27 @@
 package pi.annotations;
 
 import java.lang.annotation.Documented;
+import java.lang.annotation.Target;
+
+import java.lang.annotation.ElementType;
 
 /**
- * Diese Annotation markiert Methoden, die Schüler verwenden sollen. Methoden
- * ohne <code>@API</code> sollen nicht verwendet werden!
+ * Markiert eine Methode als Setter.
  *
  * <p>
- * Bisher müssen diese Methoden auch mit
- * <code>@SuppressWarnings("unused")</code> zusätzlich markiert werden.
+ * Die Engine Pi verwendet oftmals Methoden als Setter, die kein Präfix
+ * {@code set} haben. Diese Annotation hilft, diese Setter-Methoden von
+ * gleichnamigen Gettern zu unterscheiden.
  * </p>
  *
- * @author Niklas Keller
+ * @author Josef Friedrich
+ *
+ * @since 0.42.0
  */
 @Documented
-public @interface API
+@Target(
+{ ElementType.METHOD })
+public @interface Setter
 {
+
 }
