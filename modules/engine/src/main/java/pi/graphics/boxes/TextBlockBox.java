@@ -53,8 +53,6 @@ public class TextBlockBox extends TextBox
      * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
      *
      * @since 0.41.0
-     *
-     * @see Boxes#textBlock(Object)
      */
     public TextBlockBox(Object content)
     {

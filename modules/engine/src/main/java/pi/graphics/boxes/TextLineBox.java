@@ -46,8 +46,6 @@ public class TextLineBox extends TextBox
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
      * @since 0.39.0
-     *
-     * @see Boxes#textLine(Object)
      */
     public TextLineBox(Object content)
     {

@@ -1,8 +1,5 @@
 package pi.graphics.boxes;
 
-import static pi.graphics.boxes.Boxes.empty;
-import static pi.graphics.boxes.Boxes.grid;
-import static pi.graphics.boxes.Boxes.vertical;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -18,16 +15,16 @@ class ChildsBoxTest
     @Test
     void numberOfChilds()
     {
-        assertEquals(5, grid(empty(5)).numberOfChilds());
+        assertEquals(5, new GridBox<>(EmptyBox.create(5)).numberOfChilds());
     }
 
     @Test
     void iteratorReturnsChildrenInOrder()
     {
-        Box b1 = empty();
-        Box b2 = empty();
-        Box b3 = empty();
-        ChildsBox parent = vertical(b1, b2, b3);
+        Box b1 = new EmptyBox();
+        Box b2 = new EmptyBox();
+        Box b3 = new EmptyBox();
+        ChildsBox parent = new VerticalBox<>(b1, b2, b3);
         Iterator<Box> it = parent.iterator();
 
         assertSame(b1, it.next());
@@ -39,7 +36,7 @@ class ChildsBoxTest
     @Test
     void iteratorRemoveThrowsUnsupportedOperationException()
     {
-        ChildsBox parent = vertical(empty());
+        ChildsBox parent = new VerticalBox<>(new EmptyBox());
         Iterator<Box> it = parent.iterator();
         it.next();
         assertThrows(UnsupportedOperationException.class, it::remove);
@@ -48,7 +45,7 @@ class ChildsBoxTest
     @Test
     void forEach()
     {
-        ChildsBox parent = vertical(empty(), empty());
+        ChildsBox parent = new VerticalBox<>(new EmptyBox(), new EmptyBox());
         int counter = 0;
         for (Box box : parent)
         {

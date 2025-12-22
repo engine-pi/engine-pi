@@ -27,6 +27,17 @@ import java.awt.Graphics2D;
  */
 public class EmptyBox extends LeafBox
 {
+
+    public static EmptyBox[] create(int number)
+    {
+        EmptyBox[] boxes = new EmptyBox[number];
+        for (int i = 0; i < number; i++)
+        {
+            boxes[i] = new EmptyBox();
+        }
+        return boxes;
+    }
+
     @Override
     protected void calculateDimension()
     {
@@ -42,4 +53,5 @@ public class EmptyBox extends LeafBox
     {
         return getToStringFormatter().format();
     }
+
 }

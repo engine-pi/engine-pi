@@ -39,8 +39,6 @@ public class VerticalBox<T extends Box> extends PaddingBox
      *     angeordnet werden sollen.
      *
      * @since 0.38.0
-     *
-     * @see Boxes#vertical(Box...)
      */
     public VerticalBox(Box... childs)
     {

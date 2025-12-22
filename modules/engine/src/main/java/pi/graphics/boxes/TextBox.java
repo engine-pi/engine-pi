@@ -65,8 +65,6 @@ public abstract class TextBox extends LeafBox
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
      * @since 0.39.0
-     *
-     * @see Boxes#textLine(String)
      */
     public TextBox(Object content)
     {
