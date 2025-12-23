@@ -18,6 +18,8 @@
  */
 package pi.graphics.boxes;
 
+import pi.annotations.Setter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
 
 /**
@@ -55,6 +57,12 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
             }
             height += child.height;
         }
+
+        for (Box child : childs)
+        {
+            child.width(maxWidth);
+        }
+
         width = maxWidth + 2 * padding;
         height += (numberOfChilds() + 1) * padding;
     }
@@ -69,6 +77,13 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
             child.y = yCursor;
             yCursor += child.height + padding;
         }
+    }
+
+    @Setter
+    public VerticalBox<T> hAlign(HAlign hAlgin)
+    {
+        forEachCell(cell -> cell.cell.hAlign(hAlgin));
+        return this;
     }
 
     @Override

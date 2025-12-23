@@ -23,7 +23,7 @@ import java.awt.geom.AffineTransform;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.BorderBox;
-import pi.graphics.boxes.MarginBox;
+import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 
@@ -33,9 +33,9 @@ public class RotationDemo extends Graphics2DComponent
     public void render(Graphics2D g)
     {
         var defaultSettings = new BorderBox(
-                new MarginBox(new BorderBox(new TextLineBox("default"))));
+                new InsetBox(new BorderBox(new TextLineBox("default"))));
 
-        var manuel = new MarginBox(new TextLineBox("default")).allSides(50);
+        var manuel = new InsetBox(new TextLineBox("default")).allSides(50);
 
         AffineTransform oldTransform = g.getTransform();
 

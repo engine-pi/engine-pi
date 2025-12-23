@@ -31,12 +31,11 @@ public class GridBox<T extends Box> extends PaddingBox<T>
 {
     int columns = 2;
 
-    List<List<T>> grid;
+    List<List<CellBox>> grid;
 
     public GridBox(Box... childs)
     {
         super(childs);
-        measureDimensionTwice = true;
         buildGrid();
     }
 
@@ -81,30 +80,29 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private T getChild(int row, int column)
+    private CellBox getChild(int row, int column)
     {
         int index = row * columnCount() + column;
         if (index < numberOfChilds())
         {
-            return (T) childs.get(index).childs.get(0);
+            return (CellBox) childs.get(index);
         }
         return null;
     }
 
-    public List<T> getRow(int row)
+    public List<CellBox> getRow(int row)
     {
         return grid.get(row);
     }
 
-    @SuppressWarnings("unchecked")
-    public GridBox<T> forEachRowBox(int row, Consumer<T> consumer)
+    public GridBox<T> forEachRowBox(int row,
+            Consumer<PopulatedCell<T>> consumer)
     {
-        for (T box : getRow(row))
+        for (CellBox box : getRow(row))
         {
             if (box != null)
             {
-                consumer.accept((T) box.childs.get(0));
+                consumer.accept(new PopulatedCell<T>(box));
             }
         }
         return this;
@@ -123,37 +121,36 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return maxHeight;
     }
 
-    @SuppressWarnings("unchecked")
-    public List<T> getColumn(int column)
+    public List<CellBox> getColumn(int column)
     {
-        List<T> childs = new ArrayList<>(rowCount());
+        List<CellBox> childs = new ArrayList<>(rowCount());
         for (int row = 0; row < rowCount(); row++)
         {
-            childs.add((T) grid.get(row).get(column).childs.get(0));
+            childs.add((CellBox) grid.get(row).get(column));
         }
         return childs;
     }
 
-    @SuppressWarnings("unchecked")
-    public GridBox<T> forEachColumnBox(int column, Consumer<T> consumer)
+    public GridBox<T> forEachColumnBox(int column,
+            Consumer<PopulatedCell<T>> consumer)
     {
-        for (T box : getColumn(column))
+        for (CellBox box : getColumn(column))
         {
             if (box != null)
             {
-                consumer.accept((T) box.childs.get(0));
+                consumer.accept(new PopulatedCell<>(box));
             }
         }
         return this;
     }
 
-    @SuppressWarnings("unchecked")
-    public GridBox<T> forBox(int row, int column, Consumer<T> consumer)
+    public GridBox<T> forBox(int row, int column,
+            Consumer<PopulatedCell<T>> consumer)
     {
-        T box = (T) grid.get(row).get(column).childs.get(0);
+        CellBox box = grid.get(row).get(column);
         if (box != null)
         {
-            consumer.accept(box);
+            consumer.accept(new PopulatedCell<>(box));
         }
         return this;
     }
@@ -179,7 +176,7 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         {
             int maxWidth = getMaxWidthOfColumn(column);
             width += maxWidth;
-            forEachColumnBox(column, b -> b.width(maxWidth));
+            forEachColumnBox(column, b -> b.cell.width(maxWidth));
         }
 
         height = 0;
@@ -187,7 +184,7 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         {
             int maxHeight = getMaxHeightOfRow(row);
             height += maxHeight;
-            forEachRowBox(row, b -> b.height(maxHeight));
+            forEachRowBox(row, b -> b.cell.height(maxHeight));
         }
         width += (columnCount() + 1) * padding;
         height += (rowCount() + 1) * padding;

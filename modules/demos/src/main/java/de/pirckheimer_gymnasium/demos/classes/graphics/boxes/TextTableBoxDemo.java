@@ -33,19 +33,19 @@ public class TextTableBoxDemo extends Graphics2DComponent
     {
         TextTableBox table = new TextTableBox("Cell 1", "Cell 2", "Cell 3",
                 "Cell 4\nhas\nmultiple lines");
-        table.forEachRowBox(0, b -> b.width(300));
+        table.forEachRowBox(0, b -> b.cell.width(300));
         table.forEachColumnBox(0, b -> {
-            b.hAlign(HAlign.RIGHT);
-            b.text.color("green");
+            b.cell.hAlign(HAlign.RIGHT);
+            b.box.color("green");
         });
         table.forBox(0, 0, b -> {
-            b.text.color("red");
-            b.text.content("This is cell 0,0");
+            b.box.color("red");
+            b.box.content("This is cell 0,0");
         });
         table.padding(30);
         table.forEachColumnBox(1, b -> {
-            b.hAlign(HAlign.RIGHT);
-            b.text.color("green");
+            b.cell.hAlign(HAlign.RIGHT);
+            b.box.color("green");
         });
         new BorderBox(table).color("black").render(g).debug();
     }

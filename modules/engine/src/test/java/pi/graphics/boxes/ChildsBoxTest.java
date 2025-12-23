@@ -15,28 +15,28 @@ class ChildsBoxTest
     @Test
     void numberOfChilds()
     {
-        assertEquals(5, new GridBox<>(EmptyBox.create(5)).numberOfChilds());
+        assertEquals(5, new GridBox<>(DimensionBox.create(5)).numberOfChilds());
     }
 
     @Test
     void iteratorReturnsChildrenInOrder()
     {
-        Box b1 = new EmptyBox();
-        Box b2 = new EmptyBox();
-        Box b3 = new EmptyBox();
+        Box b1 = new DimensionBox();
+        Box b2 = new DimensionBox();
+        Box b3 = new DimensionBox();
         ChildsBox<Box> parent = new VerticalBox<>(b1, b2, b3);
         Iterator<Box> it = parent.iterator();
 
-        assertSame(b1, it.next());
-        assertSame(b2, it.next());
-        assertSame(b3, it.next());
+        assertSame(b1, it.next().childs.get(0));
+        assertSame(b2, it.next().childs.get(0));
+        assertSame(b3, it.next().childs.get(0));
         assertFalse(it.hasNext());
     }
 
     @Test
     void iteratorRemoveThrowsUnsupportedOperationException()
     {
-        ChildsBox<Box> parent = new VerticalBox<>(new EmptyBox());
+        ChildsBox<Box> parent = new VerticalBox<>(new DimensionBox());
         Iterator<Box> it = parent.iterator();
         it.next();
         assertThrows(UnsupportedOperationException.class, it::remove);
@@ -45,8 +45,8 @@ class ChildsBoxTest
     @Test
     void forEach()
     {
-        ChildsBox<Box> parent = new VerticalBox<>(new EmptyBox(),
-                new EmptyBox());
+        ChildsBox<Box> parent = new VerticalBox<>(new DimensionBox(),
+                new DimensionBox());
         int counter = 0;
         for (Box box : parent)
         {

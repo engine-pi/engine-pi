@@ -21,6 +21,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 import static de.pirckheimer_gymnasium.demos.classes.graphics.boxes.DemoBoxes.demo;
 import pi.graphics.boxes.VerticalBox;
 import pi.graphics.boxes.BorderBox;
+import pi.graphics.boxes.HAlign;
 
 import java.awt.Graphics2D;
 
@@ -32,8 +33,9 @@ public class VerticalBoxDemo extends Graphics2DComponent
 {
     public void render(Graphics2D g)
     {
-        var box = new BorderBox(new VerticalBox<>(demo("Text 1"),
-                demo("Text 2", 100, 70), demo("Text 3")).padding(10));
+        var box = new BorderBox(
+                new VerticalBox<>(demo("Text 1"), demo("Text 2 ...", 100, 70),
+                        demo("Text 3")).hAlign(HAlign.RIGHT).padding(10));
         box.anchor(200, 100);
         box.render(g).debug();
     }

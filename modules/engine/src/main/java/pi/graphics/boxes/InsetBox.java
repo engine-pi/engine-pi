@@ -22,7 +22,7 @@ import java.awt.Graphics2D;
 
 import pi.debug.ToStringFormatter;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/MarginBoxDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/InsetBoxDemo.java
 
 /**
  * Ein <b>Außenabstand</b> um die enthaltene Kind-Box.
@@ -30,8 +30,10 @@ import pi.debug.ToStringFormatter;
  * @author Josef Friedrich
  *
  * @since 0.40.0
+ *
+ * @see java.awt.Insets
  */
-public class MarginBox extends ChildBox
+public class InsetBox extends ChildBox
 {
     int top = 0;
 
@@ -49,7 +51,7 @@ public class MarginBox extends ChildBox
      *
      * @since 0.40.0
      */
-    public MarginBox(Box child)
+    public InsetBox(Box child)
     {
         super(child);
     }
@@ -68,7 +70,7 @@ public class MarginBox extends ChildBox
      *
      * @since 0.40.0
      */
-    public MarginBox allSides(int margin)
+    public InsetBox allSides(int margin)
     {
         top = margin;
         right = margin;
@@ -77,25 +79,25 @@ public class MarginBox extends ChildBox
         return this;
     }
 
-    public MarginBox top(int top)
+    public InsetBox top(int top)
     {
         this.top = top;
         return this;
     }
 
-    public MarginBox right(int right)
+    public InsetBox right(int right)
     {
         this.right = right;
         return this;
     }
 
-    public MarginBox bottom(int bottom)
+    public InsetBox bottom(int bottom)
     {
         this.bottom = bottom;
         return this;
     }
 
-    public MarginBox left(int left)
+    public InsetBox left(int left)
     {
         this.left = left;
         return this;

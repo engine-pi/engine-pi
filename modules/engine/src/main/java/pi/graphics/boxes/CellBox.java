@@ -17,13 +17,13 @@ import pi.debug.ToStringFormatter;
  * kann horizontal und vertikal ausgerichtet werden.
  * </p>
  */
-public class ContainerBox extends ChildBox
+public class CellBox extends ChildBox
 {
     HAlign hAlign = HAlign.LEFT;
 
     VAlign vAlign = VAlign.TOP;
 
-    public ContainerBox(Box child)
+    public CellBox(Box child)
     {
         super(child);
         supportsDefinedDimension = true;
@@ -47,25 +47,25 @@ public class ContainerBox extends ChildBox
         return 0;
     }
 
-    public ContainerBox width(int width)
+    public CellBox width(int width)
     {
         definedWidth = width;
         return this;
     }
 
-    public ContainerBox height(int height)
+    public CellBox height(int height)
     {
         definedHeight = height;
         return this;
     }
 
-    public ContainerBox hAlign(HAlign hAlign)
+    public CellBox hAlign(HAlign hAlign)
     {
         this.hAlign = hAlign;
         return this;
     }
 
-    public ContainerBox vAlign(VAlign vAlign)
+    public CellBox vAlign(VAlign vAlign)
     {
         this.vAlign = vAlign;
         return this;

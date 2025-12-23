@@ -21,19 +21,30 @@ package pi.graphics.boxes;
 import java.awt.Graphics2D;
 
 /**
- * Eine leere Abschlussbox, damit keine Null-Checks erforderlich sind.
+ * Eine leere Box, die auf bestimme Abmessungen gesetzt werden kann.
  *
  * @since 0.40.0
  */
-public class EmptyBox extends LeafBox
+public class DimensionBox extends LeafBox
 {
-
-    public static EmptyBox[] create(int number)
+    public DimensionBox()
     {
-        EmptyBox[] boxes = new EmptyBox[number];
+        super();
+    }
+
+    public DimensionBox(int width, int height)
+    {
+        this();
+        this.definedWidth = width;
+        this.definedHeight = height;
+    }
+
+    public static DimensionBox[] create(int number)
+    {
+        DimensionBox[] boxes = new DimensionBox[number];
         for (int i = 0; i < number; i++)
         {
-            boxes[i] = new EmptyBox();
+            boxes[i] = new DimensionBox();
         }
         return boxes;
     }

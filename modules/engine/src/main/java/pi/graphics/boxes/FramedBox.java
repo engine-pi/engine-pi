@@ -34,26 +34,26 @@ package pi.graphics.boxes;
  */
 public class FramedBox extends CombinedChildBox
 {
-    public final MarginBox margin;
+    public final InsetBox margin;
 
     public final BorderBox border;
 
     public final BackgroundBox background;
 
-    public final MarginBox padding;
+    public final InsetBox padding;
 
-    public final ContainerBox container;
+    public final CellBox container;
 
     public final Box content;
 
     public FramedBox(Box child)
     {
         content = child;
-        container = new ContainerBox(child);
-        padding = new MarginBox(container);
+        container = new CellBox(child);
+        padding = new InsetBox(container);
         background = new BackgroundBox(padding);
         border = new BorderBox(background);
-        margin = new MarginBox(border);
+        margin = new InsetBox(border);
         addChild(margin);
     }
 

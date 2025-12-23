@@ -20,7 +20,7 @@ package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
 import static pi.Resources.colors;
 import pi.graphics.boxes.BackgroundBox;
-import pi.graphics.boxes.MarginBox;
+import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 
@@ -40,7 +40,7 @@ public class BackgroundBoxDemo extends Graphics2DComponent
                 .color(colors.get("red"));
 
         var nested = new BackgroundBox(
-                new MarginBox(new BackgroundBox(new TextLineBox("nested"))
+                new InsetBox(new BackgroundBox(new TextLineBox("nested"))
                         .color(colors.get("yellow"))).allSides(10))
                 .color(colors.get("green"));
 

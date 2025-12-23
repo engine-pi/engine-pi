@@ -25,7 +25,7 @@ import pi.debug.ToStringFormatter;
 
 /**
  * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält und alle
- * Kinder-Boxen sind in einer {@link ContainerBox} enthalten.
+ * Kinder-Boxen werden in eine {@link CellBox} eingebettet.
  *
  * @author Josef Friedrich
  *
@@ -49,7 +49,7 @@ public class ChildsBox<T extends Box> extends Box
     {
         if (child != null)
         {
-            ContainerBox container = new ContainerBox(child);
+            CellBox container = new CellBox(child);
             this.childs.add(container);
             container.parent = this;
         }
@@ -57,7 +57,7 @@ public class ChildsBox<T extends Box> extends Box
 
     /**
      * Wendet eine {@link Consumer}-Funktion auf alle hinzugefügten Kinder-Boxen
-     * an, nicht jedoch auf die {@link ContainerBox}en, die die einzelnen
+     * an, nicht jedoch auf die {@link CellBox}en, die die einzelnen
      * Kinder-Boxen enthalten.
      */
     @SuppressWarnings("unchecked")
@@ -71,15 +71,14 @@ public class ChildsBox<T extends Box> extends Box
     }
 
     /**
-     * Wendet eine {@link Consumer}-Funktion auf alle {@link ContainerBox}en,
-     * die die einzelnen Kinder-Boxen enthalten.
+     * Wendet eine {@link Consumer}-Funktion auf alle {@link CellBox}en, die die
+     * einzelnen Kinder-Boxen enthalten.
      */
-    public ChildsBox<T> forEachContainer(
-            Consumer<ContainerizedChild<T>> consumer)
+    public ChildsBox<T> forEachCell(Consumer<PopulatedCell<T>> consumer)
     {
         for (Box box : childs)
         {
-            consumer.accept(new ContainerizedChild<T>((ContainerBox) box));
+            consumer.accept(new PopulatedCell<T>((CellBox) box));
         }
         return this;
     }

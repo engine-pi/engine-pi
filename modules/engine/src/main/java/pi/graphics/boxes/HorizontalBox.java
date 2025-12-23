@@ -82,7 +82,7 @@ public class HorizontalBox<T extends Box> extends PaddingBox<T>
     @Setter
     public HorizontalBox<T> vAlign(VAlign vAlgin)
     {
-        forEachContainer(cell -> cell.container.vAlign(vAlgin));
+        forEachCell(cell -> cell.cell.vAlign(vAlgin));
         return this;
     }
 

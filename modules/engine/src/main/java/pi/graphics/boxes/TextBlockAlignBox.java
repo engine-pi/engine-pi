@@ -20,7 +20,7 @@ package pi.graphics.boxes;
 
 public class TextBlockAlignBox extends CombinedChildBox
 {
-    public ContainerBox container;
+    public CellBox container;
 
     public TextBlockBox text;
 
@@ -32,7 +32,7 @@ public class TextBlockAlignBox extends CombinedChildBox
     public TextBlockAlignBox(Object content)
     {
         text = new TextBlockBox(content);
-        container = new ContainerBox(text);
+        container = new CellBox(text);
         addChild(container);
         supportsDefinedDimension = true;
     }

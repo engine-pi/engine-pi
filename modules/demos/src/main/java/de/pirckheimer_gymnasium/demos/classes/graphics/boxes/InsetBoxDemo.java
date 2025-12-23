@@ -18,34 +18,33 @@
  */
 package de.pirckheimer_gymnasium.demos.classes.graphics.boxes;
 
-import pi.graphics.boxes.VerticalBox;
-
 import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.BorderBox;
 import pi.graphics.boxes.CombinedChildBox;
-import pi.graphics.boxes.MarginBox;
+import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextLineBox;
+import pi.graphics.boxes.VerticalBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/MarginBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/InsetBox.java
 
-class MarginTestBox extends CombinedChildBox
+class InsetTestBox extends CombinedChildBox
 {
     BorderBox outerBorder;
 
-    MarginBox margin;
+    InsetBox margin;
 
     BorderBox innerBorder;
 
     TextLineBox textLine;
 
-    public MarginTestBox(String content)
+    public InsetTestBox(String content)
     {
         textLine = new TextLineBox(content);
         innerBorder = new BorderBox(textLine);
         innerBorder.thickness(1).color("gray");
-        margin = new MarginBox(innerBorder);
+        margin = new InsetBox(innerBorder);
         outerBorder = new BorderBox(margin);
         outerBorder.thickness(2).color("blue");
         addChild(outerBorder);
@@ -56,14 +55,13 @@ class MarginTestBox extends CombinedChildBox
     {
         return getToStringFormatter().format();
     }
-
 }
 
-public class MarginBoxDemo extends Graphics2DComponent
+public class InsetBoxDemo extends Graphics2DComponent
 {
-    private MarginTestBox box(String content)
+    private InsetTestBox box(String content)
     {
-        return new MarginTestBox(content);
+        return new InsetTestBox(content);
     }
 
     public void render(Graphics2D g)
@@ -79,6 +77,6 @@ public class MarginBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new MarginBoxDemo().show();
+        new InsetBoxDemo().show();
     }
 }

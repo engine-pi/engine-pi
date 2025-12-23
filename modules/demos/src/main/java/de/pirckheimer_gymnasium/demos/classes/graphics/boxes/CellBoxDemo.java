@@ -30,14 +30,14 @@ import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.BackgroundBox;
-import pi.graphics.boxes.ContainerBox;
+import pi.graphics.boxes.CellBox;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VAlign;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/ContainerBox.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/CellBox.java
 
-public class ContainerBoxDemo extends Graphics2DComponent
+public class CellBoxDemo extends Graphics2DComponent
 {
     private void makeBox(Graphics2D g, HAlign hAlign, VAlign vAlign)
     {
@@ -72,7 +72,7 @@ public class ContainerBoxDemo extends Graphics2DComponent
             break;
         }
 
-        new BackgroundBox(new ContainerBox(
+        new BackgroundBox(new CellBox(
                 new TextLineBox(String.format("%s %s", hAlign, vAlign)))
                 .hAlign(hAlign).vAlign(vAlign).width(180).height(150))
                 .color(colors.get("red")).anchor(x, y).render(g).debug();
@@ -95,6 +95,6 @@ public class ContainerBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new ContainerBoxDemo().show();
+        new CellBoxDemo().show();
     }
 }
