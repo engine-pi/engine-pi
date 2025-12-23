@@ -30,7 +30,7 @@ public class CompassBoxDemo extends Graphics2DComponent
 {
     private CompassBox compass(double direction)
     {
-        return new CompassBox(100).direction(direction);
+        return new CompassBox(100).direction(direction).showOuterCircle();
     }
 
     public void render(Graphics2D g)
@@ -39,7 +39,8 @@ public class CompassBoxDemo extends Graphics2DComponent
                 compass(180), compass(270));
         grid.padding(20).x(200).y(200).render(g).debug();
 
-        new CompassBox(200).direction(90).x(10).y(10).render(g).debug();
+        new CompassBox(200).direction(90).showOuterCircle().x(10).y(10)
+                .render(g).debug();
     }
 
     public static void main(String[] args)

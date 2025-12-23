@@ -27,8 +27,10 @@ import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.ChildsBox;
 import pi.graphics.boxes.CompassBox;
+import pi.graphics.boxes.FramedBox;
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.HorizontalBox;
+import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 
 /**
@@ -44,7 +46,7 @@ public final class InfoBoxDrawer
 
     FramedTextBox actorsCount;
 
-    FramedTextBox gravity;
+    TextLineBox gravity;
 
     CompassBox compass;
 
@@ -58,18 +60,20 @@ public final class InfoBoxDrawer
         actorsCount = new FramedTextBox(null);
         actorsCount.background.color("green");
 
-        gravity = new FramedTextBox(null);
-        gravity.background.color(Resources.colorScheme.getBluePurple());
-
-        var textBoxes = new ChildsBox<FramedTextBox>(fps, actorsCount, gravity);
+        var textBoxes = new ChildsBox<FramedTextBox>(fps, actorsCount);
         textBoxes.forEachChild(box -> {
             box.padding.allSides(5);
             box.textLine.fontSize(12);
         });
 
-        compass = new CompassBox(25);
-        verticalBox = new VerticalBox<>(fps, actorsCount,
+        gravity = new TextLineBox(null);
+
+        FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, compass));
+        gravityFrame.background.color(Resources.colorScheme.getBluePurple());
+
+        compass = new CompassBox(25);
+        verticalBox = new VerticalBox<>(fps, actorsCount, gravityFrame);
         verticalBox.padding(5);
     }
 

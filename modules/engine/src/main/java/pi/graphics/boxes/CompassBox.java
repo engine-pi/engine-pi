@@ -31,15 +31,19 @@ public class CompassBox extends LeafBox
 
     /**
      * Die <b>Höhe</b> des gleichschenkligen Dreiecks, das die
-     * <b>Pfeilspitze</b> bildet.
+     * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    int arrowHeight = 15;
+    final double arrowHeight = 0.15;
 
     /**
      * Die <b>Breite</b> der Basis des gleichschenkligen Dreiecks, das die
-     * <b>Pfeilspitze</b> bildet.
+     * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    int arrowWidth = 10;
+    final double arrowWidth = 0.07;
+
+    boolean showCenter = true;
+
+    boolean showOuterCircle = false;
 
     public CompassBox(int size)
     {
@@ -65,14 +69,33 @@ public class CompassBox extends LeafBox
         return this;
     }
 
+    @Setter
+    public CompassBox showCenter(boolean showCenter)
+    {
+        this.showCenter = showCenter;
+        return this;
+    }
+
+    @Setter
+    public CompassBox showOuterCircle(boolean showOuterCircle)
+    {
+        this.showOuterCircle = showOuterCircle;
+        return this;
+    }
+
+    @Setter
+    public CompassBox showOuterCircle()
+    {
+        return showOuterCircle(true);
+    }
+
     /**
      * Die Entfernung zur Mitte des Quadrats also die Hälfte der Seitenlänge des
      * Quadrats.
      */
-    private double centerDistanz()
+    private double radius()
     {
-        return (double) definedWidth / 2;
-
+        return (double) size / 2;
     }
 
     /**
@@ -82,7 +105,7 @@ public class CompassBox extends LeafBox
      */
     private Vector center()
     {
-        return new Vector(x + centerDistanz(), y + centerDistanz());
+        return new Vector(x + radius(), y + radius());
     }
 
     @Override
@@ -96,35 +119,42 @@ public class CompassBox extends LeafBox
     void draw(Graphics2D g)
     {
         Vector center = center();
-        double distance = centerDistanz();
+        double radius = radius();
 
         // Graphics2D hat einen andere Drehrichtung als die Engine Pi
         double normalizeDirection = -direction;
 
-        // Der äußere Kreis
-        g.drawOval(x, y, size, size);
-        // Kleiner Kreis als Mittelpunkt
-        g.drawOval(center.getX(1) - 1, center.getY(1) - 1, 2, 2);
-
+        if (showOuterCircle)
+        {
+            // Der äußere Kreis
+            g.drawOval(x, y, size, size);
+        }
+        if (showCenter)
+        {
+            // Kleiner Kreis als Mittelpunkt
+            g.drawOval(center.getX(1) - 1, center.getY(1) - 1, 2, 2);
+        }
         // Ursprung des Pfeils
-        Vector from = center.add(
-                Vector.ofAngle(normalizeDirection - 180).multiply(distance));
+        Vector from = center
+                .add(Vector.ofAngle(normalizeDirection - 180).multiply(radius));
 
         // Punkt der in bestimmte Richtung auf dem Einheitskreis zeigt.
         Vector toUnionCircle = Vector.ofAngle(normalizeDirection);
 
         // Endpunkt des Pfeils, wo die Pfeilspitze sitzt.
-        Vector to = center.add(toUnionCircle.multiply(distance));
+        Vector to = center.add(toUnionCircle.multiply(radius));
 
         // Die Mitte der Basis des Pfeildreiecks
-        Vector arrowBase = center
-                .add(toUnionCircle.multiply(distance - arrowHeight));
+        Vector arrowBase = center.add(
+
+                toUnionCircle.multiply(radius * (1 - arrowHeight * 2)));
+
+        double halfArrowBase = (double) radius * arrowWidth;
 
         Vector arrowLeft = arrowBase.add(Vector.ofAngle(normalizeDirection - 90)
-                .multiply((double) arrowWidth / 2));
-        Vector arrowRight = arrowBase
-                .add(Vector.ofAngle(normalizeDirection + 90)
-                        .multiply((double) arrowWidth / 2));
+                .multiply(halfArrowBase));
+        Vector arrowRight = arrowBase.add(Vector
+                .ofAngle(normalizeDirection + 90).multiply(halfArrowBase));
 
         // Die Spitze des Kompasspfeils als Dreieck gezeichnet.
         g.fillPolygon(
