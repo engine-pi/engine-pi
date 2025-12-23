@@ -102,7 +102,7 @@ public final class InfoBoxDrawer
 
         compass.direction(infos.gravity().getAngle());
 
-        verticalBox.remeasure().render(g).debug();
+        verticalBox.remeasure().render(g);
     }
 
     public static void main(String[] args)
