@@ -3,11 +3,11 @@
 
 # Über diese Game Engine
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/engine-pi/src/main/resources/logo/logo.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg)
 
 Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
 einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an
-allgemeinbildenden Schulen zwar mit englischen Bezeichnern jedoch mit [deutscher
+allgemeinbildenden Schulen mit [deutscher
 Dokumentation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi).
 
 Die Engine Pi ist eine Fortführung und Erweiterung (Fork) der
@@ -1402,15 +1402,15 @@ umzusetzen.
 
 Nehmen wir dieses Beispiel:
 
-| Zustand | Animiertes GIF                                                                                               |
-| ------- | ------------------------------------------------------------------------------------------------------------ |
-| Idle    | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/idle.gif)         |
-| Jumping | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_1up.gif)     |
-| Midair  | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_2midair.gif) |
-| Falling | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_3down.gif)   |
-| Landing | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/jump_4land.gif)   |
-| Walking | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/walk.gif)         |
-| Running | ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/traveler/run.gif)          |
+| Zustand | Animiertes GIF                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------- |
+| Idle    | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/idle.gif)         |
+| Jumping | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_1up.gif)     |
+| Midair  | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_2midair.gif) |
+| Falling | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_3down.gif)   |
+| Landing | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_4land.gif)   |
+| Walking | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/walk.gif)         |
+| Running | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/run.gif)          |
 
 <!-- ### Zustandsübergangsdiagramm für die Figur -->
 
