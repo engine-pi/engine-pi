@@ -25,7 +25,7 @@ import pi.debug.ToStringFormatter;
  *
  * @since 0.41.0
  */
-public abstract class PaddingBox extends ChildsBox
+public abstract class PaddingBox<T extends Box> extends ChildsBox<T>
 {
     int padding = 0;
 
@@ -34,7 +34,7 @@ public abstract class PaddingBox extends ChildsBox
         super(childs);
     }
 
-    public PaddingBox padding(int padding)
+    public PaddingBox<T> padding(int padding)
     {
         this.padding = padding;
         return this;

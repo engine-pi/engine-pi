@@ -24,7 +24,7 @@ class ChildsBoxTest
         Box b1 = new EmptyBox();
         Box b2 = new EmptyBox();
         Box b3 = new EmptyBox();
-        ChildsBox parent = new VerticalBox<>(b1, b2, b3);
+        ChildsBox<Box> parent = new VerticalBox<>(b1, b2, b3);
         Iterator<Box> it = parent.iterator();
 
         assertSame(b1, it.next());
@@ -36,7 +36,7 @@ class ChildsBoxTest
     @Test
     void iteratorRemoveThrowsUnsupportedOperationException()
     {
-        ChildsBox parent = new VerticalBox<>(new EmptyBox());
+        ChildsBox<Box> parent = new VerticalBox<>(new EmptyBox());
         Iterator<Box> it = parent.iterator();
         it.next();
         assertThrows(UnsupportedOperationException.class, it::remove);
@@ -45,7 +45,8 @@ class ChildsBoxTest
     @Test
     void forEach()
     {
-        ChildsBox parent = new VerticalBox<>(new EmptyBox(), new EmptyBox());
+        ChildsBox<Box> parent = new VerticalBox<>(new EmptyBox(),
+                new EmptyBox());
         int counter = 0;
         for (Box box : parent)
         {

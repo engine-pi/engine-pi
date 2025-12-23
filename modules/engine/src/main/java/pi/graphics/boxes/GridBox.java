@@ -27,7 +27,7 @@ import java.util.function.Consumer;
 
 import pi.debug.ToStringFormatter;
 
-public class GridBox<T extends Box> extends PaddingBox
+public class GridBox<T extends Box> extends PaddingBox<T>
 {
     int columns = 2;
 
@@ -87,7 +87,7 @@ public class GridBox<T extends Box> extends PaddingBox
         int index = row * columnCount() + column;
         if (index < numberOfChilds())
         {
-            return (T) childs.get(index);
+            return (T) childs.get(index).childs.get(0);
         }
         return null;
     }
@@ -97,13 +97,14 @@ public class GridBox<T extends Box> extends PaddingBox
         return grid.get(row);
     }
 
+    @SuppressWarnings("unchecked")
     public GridBox<T> forEachRowBox(int row, Consumer<T> consumer)
     {
         for (T box : getRow(row))
         {
             if (box != null)
             {
-                consumer.accept(box);
+                consumer.accept((T) box.childs.get(0));
             }
         }
         return this;
@@ -122,50 +123,37 @@ public class GridBox<T extends Box> extends PaddingBox
         return maxHeight;
     }
 
+    @SuppressWarnings("unchecked")
     public List<T> getColumn(int column)
     {
         List<T> childs = new ArrayList<>(rowCount());
         for (int row = 0; row < rowCount(); row++)
         {
-            childs.add(grid.get(row).get(column));
+            childs.add((T) grid.get(row).get(column).childs.get(0));
         }
         return childs;
     }
 
+    @SuppressWarnings("unchecked")
     public GridBox<T> forEachColumnBox(int column, Consumer<T> consumer)
     {
         for (T box : getColumn(column))
         {
             if (box != null)
             {
-                consumer.accept(box);
+                consumer.accept((T) box.childs.get(0));
             }
         }
         return this;
     }
 
+    @SuppressWarnings("unchecked")
     public GridBox<T> forBox(int row, int column, Consumer<T> consumer)
     {
-        T box = grid.get(row).get(column);
+        T box = (T) grid.get(row).get(column).childs.get(0);
         if (box != null)
         {
             consumer.accept(box);
-        }
-        return this;
-    }
-
-    public GridBox<T> forEachBox(Consumer<T> consumer)
-    {
-        for (int row = 0; row < rowCount(); row++)
-        {
-            for (int column = 0; column < columnCount(); column++)
-            {
-                T box = grid.get(row).get(column);
-                if (box != null)
-                {
-                    consumer.accept(box);
-                }
-            }
         }
         return this;
     }

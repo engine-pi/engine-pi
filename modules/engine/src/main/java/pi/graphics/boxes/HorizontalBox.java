@@ -18,7 +18,7 @@
  */
 package pi.graphics.boxes;
 
-import java.util.function.Consumer;
+import pi.annotations.Setter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/HorizontalBoxDemo.java
 
@@ -30,7 +30,7 @@ import java.util.function.Consumer;
  *
  * @since 0.39.0
  */
-public class HorizontalBox<T extends Box> extends PaddingBox
+public class HorizontalBox<T extends Box> extends PaddingBox<T>
 {
     /**
      * Erzeugt eine neue <b>horizontale</b> Box.
@@ -45,16 +45,6 @@ public class HorizontalBox<T extends Box> extends PaddingBox
         super(childs);
     }
 
-    @SuppressWarnings("unchecked")
-    public HorizontalBox<T> forEachBox(Consumer<T> consumer)
-    {
-        for (Box box : childs)
-        {
-            consumer.accept((T) box);
-        }
-        return this;
-    }
-
     @Override
     protected void calculateDimension()
     {
@@ -66,6 +56,11 @@ public class HorizontalBox<T extends Box> extends PaddingBox
             {
                 maxHeight = child.height;
             }
+        }
+
+        for (Box child : childs)
+        {
+            child.height(maxHeight);
         }
 
         width += (numberOfChilds() + 1) * padding;
@@ -82,6 +77,13 @@ public class HorizontalBox<T extends Box> extends PaddingBox
             child.y = y + padding;
             xCursor += child.width + padding;
         }
+    }
+
+    @Setter
+    public HorizontalBox<T> vAlign(VAlign vAlgin)
+    {
+        forEachContainer(cell -> cell.container.vAlign(vAlgin));
+        return this;
     }
 
     @Override

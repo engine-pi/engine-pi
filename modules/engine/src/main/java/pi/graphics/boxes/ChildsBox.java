@@ -19,23 +19,26 @@
 package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
+import java.util.function.Consumer;
 
 import pi.debug.ToStringFormatter;
 
 /**
- * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält.
+ * Eine Box, die <b>mehrere untergeordnete</b> Kinder-Boxen enthält und alle
+ * Kinder-Boxen sind in einer {@link ContainerBox} enthalten.
  *
  * @author Josef Friedrich
  *
- * @since 0.38.0
+ * @since 0.42.0
  */
-abstract class ChildsBox extends Box
+public class ChildsBox<T extends Box> extends Box
 {
     /**
-     * @since 0.38.0
+     * @since 0.42.0
      */
     public ChildsBox(Box... childs)
     {
+        measureDimensionTwice = true;
         for (Box child : childs)
         {
             addChild(child);
@@ -46,9 +49,39 @@ abstract class ChildsBox extends Box
     {
         if (child != null)
         {
-            this.childs.add(child);
-            child.parent = this;
+            ContainerBox container = new ContainerBox(child);
+            this.childs.add(container);
+            container.parent = this;
         }
+    }
+
+    /**
+     * Wendet eine {@link Consumer}-Funktion auf alle hinzugefügten Kinder-Boxen
+     * an, nicht jedoch auf die {@link ContainerBox}en, die die einzelnen
+     * Kinder-Boxen enthalten.
+     */
+    @SuppressWarnings("unchecked")
+    public ChildsBox<T> forEachChild(Consumer<T> consumer)
+    {
+        for (Box box : childs)
+        {
+            consumer.accept((T) box.childs.get(0));
+        }
+        return this;
+    }
+
+    /**
+     * Wendet eine {@link Consumer}-Funktion auf alle {@link ContainerBox}en,
+     * die die einzelnen Kinder-Boxen enthalten.
+     */
+    public ChildsBox<T> forEachContainer(
+            Consumer<ContainerizedChild<T>> consumer)
+    {
+        for (Box box : childs)
+        {
+            consumer.accept(new ContainerizedChild<T>((ContainerBox) box));
+        }
+        return this;
     }
 
     public int numberOfChilds()

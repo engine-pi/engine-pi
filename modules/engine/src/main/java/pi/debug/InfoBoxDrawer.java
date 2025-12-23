@@ -25,7 +25,7 @@ import pi.Resources;
 import pi.Scene;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
-import pi.graphics.boxes.ChildsContainerBox;
+import pi.graphics.boxes.ChildsBox;
 import pi.graphics.boxes.CompassBox;
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.HorizontalBox;
@@ -61,8 +61,7 @@ public final class InfoBoxDrawer
         gravity = new FramedTextBox(null);
         gravity.background.color(Resources.colorScheme.getBluePurple());
 
-        var textBoxes = new ChildsContainerBox<FramedTextBox>(fps, actorsCount,
-                gravity);
+        var textBoxes = new ChildsBox<FramedTextBox>(fps, actorsCount, gravity);
         textBoxes.forEachChild(box -> {
             box.padding.allSides(5);
             box.textLine.fontSize(12);

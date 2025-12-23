@@ -18,8 +18,6 @@
  */
 package pi.graphics.boxes;
 
-import java.util.function.Consumer;
-
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
 
 /**
@@ -30,7 +28,7 @@ import java.util.function.Consumer;
  *
  * @since 0.38.0
  */
-public class VerticalBox<T extends Box> extends PaddingBox
+public class VerticalBox<T extends Box> extends PaddingBox<T>
 {
     /**
      * Erzeugt eine neue <b>vertikale</b> Box.
@@ -43,16 +41,6 @@ public class VerticalBox<T extends Box> extends PaddingBox
     public VerticalBox(Box... childs)
     {
         super(childs);
-    }
-
-    @SuppressWarnings("unchecked")
-    public VerticalBox<T> forEachBox(Consumer<T> consumer)
-    {
-        for (Box box : childs)
-        {
-            consumer.accept((T) box);
-        }
-        return this;
     }
 
     @Override
