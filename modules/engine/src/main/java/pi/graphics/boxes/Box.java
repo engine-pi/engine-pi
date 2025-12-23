@@ -386,6 +386,22 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
+     * Setzt den Messstatus dieser Box auf „nicht gemessen“ zurück.
+     *
+     * <p>
+     * Dies zwingt die Box, ihre Dimensionen bei der nächsten Messung neu zu
+     * berechnen.
+     * </p>
+     *
+     * @return diese Box-Instanz für Method-Chaining
+     */
+    public Box remeasure()
+    {
+        measured = false;
+        return this;
+    }
+
+    /**
      * Berechnet die <b>Abmessungen</b> und <b>Ankerpunkte</b> und
      * <b>zeichnet</b> die Box.
      *

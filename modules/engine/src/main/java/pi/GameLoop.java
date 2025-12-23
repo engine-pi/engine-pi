@@ -76,12 +76,15 @@ public final class GameLoop
 
     private double frameDuration;
 
+    private InfoBoxDrawer infoBoxDrawer;
+
     public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
     {
         this.render = render;
         this.currentScene = currentScene;
         this.isDebug = isDebug;
+        infoBoxDrawer = new InfoBoxDrawer();
     }
 
     public void enqueue(Runnable runnable)
@@ -201,8 +204,7 @@ public final class GameLoop
         if (isDebug.get())
         {
             new CoordinateSystemDrawer(g, scene, width, height).draw();
-            InfoBoxDrawer.draw(g, scene, frameDuration,
-                    scene.getWorldHandler().getWorld().getBodyCount());
+            infoBoxDrawer.draw(g, scene, frameDuration);
         }
         g.dispose();
     }

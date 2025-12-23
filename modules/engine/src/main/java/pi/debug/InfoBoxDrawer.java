@@ -18,17 +18,17 @@
  */
 package pi.debug;
 
-import static pi.Resources.colors;
-
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 import pi.Game;
 import pi.Resources;
 import pi.Scene;
-import pi.Vector;
 import pi.annotations.Internal;
-import pi.util.Graphics2DUtil;
+import pi.graphics.boxes.Box;
+import pi.graphics.boxes.CompassBox;
+import pi.graphics.boxes.FramedTextBox;
+import pi.graphics.boxes.HorizontalBox;
+import pi.graphics.boxes.VerticalBox;
 
 /**
  * Zeichnet einige <b>Informationsboxen</b> in das linke obere Eck.
@@ -39,11 +39,37 @@ import pi.util.Graphics2DUtil;
  */
 public final class InfoBoxDrawer
 {
-    private static void drawGravityVector(Graphics2D g, int x, int y,
-            Vector gravity, Color color)
+    FramedTextBox fps;
+
+    FramedTextBox actorsCount;
+
+    FramedTextBox gravity;
+
+    CompassBox compass;
+
+    VerticalBox<Box> verticalBox;
+
+    public InfoBoxDrawer()
     {
-        Graphics2DUtil.drawArrowLine(g, x, y, x + (int) gravity.getX() * 2,
-                y + (int) gravity.getY() * -2, 5, 5, color);
+        fps = new FramedTextBox(null);
+        fps.background.color("blue");
+        fps.padding.allSides(5);
+        fps.textLine.fontSize(12);
+
+        actorsCount = new FramedTextBox(null);
+        actorsCount.background.color("green");
+        actorsCount.padding.allSides(5);
+        actorsCount.textLine.fontSize(12);
+
+        gravity = new FramedTextBox(null);
+        gravity.background.color(Resources.colorScheme.getBluePurple());
+        gravity.padding.allSides(5);
+        gravity.textLine.fontSize(12);
+
+        compass = new CompassBox(25);
+        verticalBox = new VerticalBox<>(fps, actorsCount,
+                new HorizontalBox<>(gravity, compass));
+        verticalBox.padding(5);
     }
 
     /**
@@ -54,25 +80,20 @@ public final class InfoBoxDrawer
      * @hidden
      */
     @Internal
-    public static void draw(Graphics2D g, Scene scene, double frameDuration,
-            int actorsCount)
+    public void draw(Graphics2D g, Scene scene, double frameDuration)
     {
+        var infos = new DebugInformations(scene, frameDuration);
+
         // Einzelbilder pro Sekunden
-        Graphics2DUtil.drawTextBox(g, "FPS: "
-                + (frameDuration == 0 ? "∞" : Math.round(1 / frameDuration)),
-                10, colors.getSafe("blue"));
+        fps.content("FPS: " + infos.fpsFormatted());
         // Anzahl an Figuren
-        Graphics2DUtil.drawTextBox(g, "Actors: " + actorsCount, 50,
-                colors.getSafe("green"));
+        actorsCount.content("Actors: " + infos.actorsCount());
         // Schwerkraft
-        Vector gravity = scene.getGravity();
-        Color gravityColor = Resources.colorScheme.getBluePurple();
-        if (!gravity.isNull())
-        {
-            Graphics2DUtil.drawTextBox(g, String.format("G(x,y): %.2f,%.2f",
-                    gravity.getX(), gravity.getY()), 90, gravityColor);
-            drawGravityVector(g, 40, 145, gravity, gravityColor);
-        }
+        gravity.content(infos.gravityFormatted());
+
+        compass.direction(infos.gravity().getAngle());
+
+        verticalBox.remeasure().render(g);
     }
 
     public static void main(String[] args)

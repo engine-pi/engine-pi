@@ -4,10 +4,8 @@ import static pi.Resources.colors;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
 
 import pi.Game;
 import pi.Scene;
@@ -15,15 +13,11 @@ import pi.Scene;
 /**
  * Eine Sammlung von statischen Hilfsmethoden um auf dem Graphics2D-Objekt zu
  * zeichnen.
+ *
+ * @author Josef Friedrich
  */
 public class Graphics2DUtil
 {
-    private static final int DEBUG_INFO_HEIGHT = 20;
-
-    private static final int DEBUG_INFO_LEFT = 10;
-
-    private static final int DEBUG_INFO_TEXT_OFFSET = 16;
-
     /**
      * Die Standard-Schriftgröße ist 12.
      */
@@ -163,39 +157,6 @@ public class Graphics2DUtil
     {
         setFont(g, size);
         g.drawString(text, x, y);
-    }
-
-    /**
-     * Zeichnet eine <b>Textbox</b>, die sich automatische an die Länge des
-     * Texts anpasst. Die Schriftfarbe ist {@link #FONT_COLOR}.
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param text Der Text, der in die Textbox gesetzt werden soll.
-     * @param y Die y-Koordinate in Pixel.
-     * @param background Ein Farbname wie er im
-     *     {@link pi.resources.ColorContainer ColorContainer} hinterlegt ist.
-     */
-    public static void drawTextBox(Graphics2D g, String text, int y,
-            Color background)
-    {
-        Font font = getFont();
-        FontMetrics fm = g.getFontMetrics(font);
-        Rectangle2D bounds;
-        bounds = fm.getStringBounds(text, g);
-        // Hintergrund
-        g.setColor(ColorUtil.changeAlpha(background, 150));
-        g.fillRect(DEBUG_INFO_LEFT, y,
-                (int) bounds.getWidth() + DEBUG_INFO_HEIGHT,
-                (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET);
-        // Rahmen
-        g.setColor(ColorUtil.changeAlpha(background.darker().darker(), 150));
-        g.drawRect(DEBUG_INFO_LEFT, y,
-                (int) bounds.getWidth() + DEBUG_INFO_HEIGHT - 1,
-                (int) bounds.getHeight() + DEBUG_INFO_TEXT_OFFSET - 1);
-        // Text
-        setFont(g, font);
-        g.drawString(text, DEBUG_INFO_LEFT + 10,
-                y + 8 + fm.getHeight() - fm.getDescent());
     }
 
     /**

@@ -17,26 +17,27 @@ import pi.annotations.Setter;
 public class CompassBox extends LeafBox
 {
     /**
-     * Die <b>Seitenlänge</b> des Quadrats in den der Kompasspfeil eingepasst
-     * ist bzw. der Durchmesser des Kreises auf dem die beiden Endpunkte des
+     * Die <b>Seitenlänge</b> des Quadrats, in das der Kompasspfeil eingepasst
+     * ist, bzw. der Durchmesser des Kreises, auf dem die beiden Endpunkte des
      * Pfeils liegen.
      */
     int size;
 
     /**
-     * Die Richtung, in der die Kompassnadel zeigt. 0 = nach rechts, 90 = nach
-     * oben, 180 = nach links, 270 = nach unten.
+     * Die Richtung in Grad, in der die Kompassnadel zeigt. 0 = nach rechts, 90
+     * = nach oben, 180 = nach links, 270 = nach unten.
      */
     double direction;
 
     /**
-     * Die Höhe des gleichschenkligen Dreiecks, das die Pfeilspitze bildet.
+     * Die <b>Höhe</b> des gleichschenkligen Dreiecks, das die
+     * <b>Pfeilspitze</b> bildet.
      */
     int arrowHeight = 15;
 
     /**
-     * Die Breite der Basis des gleichschenkligen Dreiecks, das die Pfeilspitze
-     * bildet.
+     * Die <b>Breite</b> der Basis des gleichschenkligen Dreiecks, das die
+     * <b>Pfeilspitze</b> bildet.
      */
     int arrowWidth = 10;
 
@@ -49,6 +50,13 @@ public class CompassBox extends LeafBox
         supportsDefinedDimension = true;
     }
 
+    /**
+     * Setzt die <b>Richtung</b> der Kompassnadel in Grad.
+     *
+     * @param direction Die <b>Richtung</b> in Grad, in der die Kompassnadel
+     *     zeigt. 0 = nach rechts, 90 = nach oben, 180 = nach links, 270 = nach
+     *     unten.
+     */
     @Setter
     public CompassBox direction(double direction)
     {

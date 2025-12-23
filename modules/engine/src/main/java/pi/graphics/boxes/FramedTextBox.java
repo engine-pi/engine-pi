@@ -21,13 +21,6 @@ package pi.graphics.boxes;
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/FramedTextBoxDemo.java
 
 /**
- * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.
- *
- * <p>
- * Die Konzeption der Klasse ist inspiriert von dem
- * <a href="https://en.wikipedia.org/wiki/CSS_box_model">CSS-Box-Model</a>.
- * </p>
- *
  * @author Josef Friedrich
  *
  * @since 0.40.0
@@ -40,6 +33,12 @@ public class FramedTextBox extends FramedBox
     {
         super(new TextLineBox(content));
         textLine = (TextLineBox) this.content;
+    }
+
+    public FramedTextBox content(Object content)
+    {
+        textLine.content(content);
+        return this;
     }
 
     @Override
