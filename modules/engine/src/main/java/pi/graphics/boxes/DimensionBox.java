@@ -30,6 +30,7 @@ public class DimensionBox extends LeafBox
     public DimensionBox()
     {
         super();
+        supportsDefinedDimension = true;
     }
 
     public DimensionBox(int width, int height)
@@ -52,6 +53,8 @@ public class DimensionBox extends LeafBox
     @Override
     protected void calculateDimension()
     {
+        width = definedWidth;
+        height = definedHeight;
     }
 
     @Override

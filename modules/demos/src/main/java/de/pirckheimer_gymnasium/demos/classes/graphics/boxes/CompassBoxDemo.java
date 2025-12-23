@@ -28,16 +28,27 @@ import pi.graphics.boxes.GridBox;
 
 public class CompassBoxDemo extends Graphics2DComponent
 {
-    private CompassBox compass(double direction)
+    private GridBox<CompassBox> getCompasses(int numberOfCompasses, int size,
+            int directionDelta)
     {
-        return new CompassBox(100).direction(direction).showOuterCircle();
+        int direction = 0;
+        CompassBox[] compasses = new CompassBox[numberOfCompasses];
+        for (int i = 0; i < numberOfCompasses; i++)
+        {
+            compasses[i] = new CompassBox(size).direction(direction)
+                    .showOuterCircle();
+            direction += directionDelta;
+        }
+        GridBox<CompassBox> grid = new GridBox<>(compasses);
+        grid.padding(5);
+        return grid;
     }
 
     public void render(Graphics2D g)
     {
-        GridBox<CompassBox> grid = new GridBox<>(compass(0), compass(90),
-                compass(180), compass(270));
-        grid.padding(20).x(200).y(200).render(g).debug();
+        getCompasses(4, 100, 90).x(200).y(200).render(g).debug();
+
+        getCompasses(9, 20, 30).x(500).y(300).render(g).debug();
 
         new CompassBox(200).direction(90).showOuterCircle().x(10).y(10)
                 .render(g).debug();

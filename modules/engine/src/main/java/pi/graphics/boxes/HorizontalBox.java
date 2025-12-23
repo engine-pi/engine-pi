@@ -48,6 +48,10 @@ public class HorizontalBox<T extends Box> extends PaddingBox<T>
     @Override
     protected void calculateDimension()
     {
+        // Die Methode wird mehrmals ausgeführt, falls calculateDimension
+        // gesetzt ist.
+        width = 0;
+        height = 0;
         int maxHeight = 0;
         for (Box child : childs)
         {

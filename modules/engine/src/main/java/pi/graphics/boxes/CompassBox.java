@@ -33,13 +33,13 @@ public class CompassBox extends LeafBox
      * Die <b>Höhe</b> des gleichschenkligen Dreiecks, das die
      * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    final double arrowHeight = 0.15;
+    final double arrowHeight = 0.3;
 
     /**
      * Die <b>Breite</b> der Basis des gleichschenkligen Dreiecks, das die
      * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    final double arrowWidth = 0.07;
+    final double arrowWidth = 0.3;
 
     boolean showCenter = true;
 
@@ -145,9 +145,8 @@ public class CompassBox extends LeafBox
         Vector to = center.add(toUnionCircle.multiply(radius));
 
         // Die Mitte der Basis des Pfeildreiecks
-        Vector arrowBase = center.add(
-
-                toUnionCircle.multiply(radius * (1 - arrowHeight * 2)));
+        Vector arrowBase = center
+                .add(toUnionCircle.multiply(radius * (1 - arrowHeight * 2)));
 
         double halfArrowBase = (double) radius * arrowWidth;
 

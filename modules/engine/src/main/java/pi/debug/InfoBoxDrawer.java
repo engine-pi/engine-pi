@@ -27,10 +27,12 @@ import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.ChildsBox;
 import pi.graphics.boxes.CompassBox;
+import pi.graphics.boxes.DimensionBox;
 import pi.graphics.boxes.FramedBox;
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.HorizontalBox;
 import pi.graphics.boxes.TextLineBox;
+import pi.graphics.boxes.VAlign;
 import pi.graphics.boxes.VerticalBox;
 
 /**
@@ -42,15 +44,15 @@ import pi.graphics.boxes.VerticalBox;
  */
 public final class InfoBoxDrawer
 {
-    FramedTextBox fps;
+    final FramedTextBox fps;
 
-    FramedTextBox actorsCount;
+    final FramedTextBox actorsCount;
 
-    TextLineBox gravity;
+    final TextLineBox gravity;
 
-    CompassBox compass;
+    final CompassBox compass;
 
-    VerticalBox<Box> verticalBox;
+    final VerticalBox<Box> verticalBox;
 
     public InfoBoxDrawer()
     {
@@ -66,13 +68,15 @@ public final class InfoBoxDrawer
             box.textLine.fontSize(12);
         });
 
-        gravity = new TextLineBox(null);
-
-        FramedBox gravityFrame = new FramedBox(
-                new HorizontalBox<>(gravity, compass));
-        gravityFrame.background.color(Resources.colorScheme.getBluePurple());
-
+        gravity = new TextLineBox("");
+        gravity.fontSize(12);
         compass = new CompassBox(25);
+        FramedBox gravityFrame = new FramedBox(
+                new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)
+                        .vAlign(VAlign.MIDDLE));
+        gravityFrame.background.color(Resources.colorScheme.getBluePurple());
+        gravityFrame.padding.allSides(5);
+
         verticalBox = new VerticalBox<>(fps, actorsCount, gravityFrame);
         verticalBox.padding(5);
     }
@@ -98,7 +102,7 @@ public final class InfoBoxDrawer
 
         compass.direction(infos.gravity().getAngle());
 
-        verticalBox.remeasure().render(g);
+        verticalBox.remeasure().render(g).debug();
     }
 
     public static void main(String[] args)
