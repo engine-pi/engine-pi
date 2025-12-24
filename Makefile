@@ -3,6 +3,8 @@ JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 
 ASSETS = "$(HOME)/.cache/engine-pi-assets"
 
+all: package
+
 deploy:
 	mvn deploy
 
