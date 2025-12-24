@@ -33,3 +33,11 @@ Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
 [Engine Alpha Wiki](https://engine-alpha.org), die unter der
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
+
+## Über diese Dokumentation
+
+Die Dokumentation der [Engine Pi](https://github.com/engine-pi/engine-pi) wurde realisiert
+mit [MkDocs](https://www.mkdocs.org) und dem
+Theme [Material](https://squidfunk.github.io/mkdocs-material) realisiert.
+
+Die Dokumentation ist unter folgender URL aufrufbar: https://engine-pi.github.io/engine-pi

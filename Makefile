@@ -47,3 +47,9 @@ pull_resources:
 	rsync -av --delete $(ASSETS)/blockly-robot/resources modules/games/blockly-robot/src/main
 	rsync -av --delete $(ASSETS)/pacman/resources modules/games/pacman/src/main
 	rsync -av --delete $(ASSETS)/tetris/resources modules/games/tetris/src/main
+
+mkdocs_deploy:
+	mkdocs gh-deploy
+
+mkdocs_serve:
+	mkdocs serve
