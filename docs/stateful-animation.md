@@ -25,7 +25,7 @@ Nehmen wir dieses Beispiel:
 
 Ein mögliches Zustandsübergangsdiagramm für die Figur:
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram.png)
 
 ### Die Zustände als Enumeration
 
@@ -129,7 +129,7 @@ Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
 sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
-![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
+![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Testbed.gif)
 
 Quellcode: [demos/stateful_animation/StatefulAnimationDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java)
 
@@ -171,13 +171,13 @@ Zustandsübergänge zu implementieren.
 
 ### Springen
 
-![Wir fokussieren uns nun auf die Übergänge zum Springen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_jumpstates.png)
+![Wir fokussieren uns nun auf die Übergänge zum Springen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_jumpstates.png)
 
 Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
 zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
 
-![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
+![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Jump.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
@@ -199,7 +199,7 @@ private void attemptJump()
 
 <!-- Fallen und Landen -->
 
-![Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vy_states.png)
+![Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vy_states.png)
 
 Als nächstes sorgen wir dafür, dass die Figur landen kann und schließlich zurück
 in den `IDLE`-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in
@@ -213,7 +213,7 @@ Unsere Spielfigur soll in jedem Einzelbild ihre eigene Y-Geschwidingkeit
 überprüfen. Dazu implementiert sie nun zusätzlich `FrameUpdateListener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
-![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Full_Jump2.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
 
@@ -256,7 +256,7 @@ die Physik-Engine gibt es viele Möglichkeiten, Bewegung im Spiel zu simulieren.
 Ein physikalisch korrekte Implementierung ist die kontinuierliche Anwendung
 einer Bewegungskraft:
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Player_Movement.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Player_Movement.png)
 
 Die (je nach Tastendruck gerichtete) Kraft beschleunigt die Spielfigur, bis die
 Reibung die wirkende Kraft ausgleicht. In der Methode `setupPhysics()` wurden
@@ -279,7 +279,7 @@ Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
 Methode `onFrameUpdate(double pastTime)` erweitert:
 
 ![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
-Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
+Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Base.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
@@ -304,7 +304,7 @@ else if (Game.isKeyPressed(KeyEvent.VK_D))
 <!-- Die Übergänge IDLE - WALKING - RUNNING -->
 
 ![Die letzten zu implementierenden Zustandsübergänge hängen von der
-Spielerbewegung ab.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vx_states.png)
+Spielerbewegung ab.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vx_states.png)
 
 Die Figur kann jetzt voll gesteuert werden. Die Zustände `WALKING` und `RUNNING`
 können nun eingebracht werden. Ist die Figur in einem der drei „bodenständigen“
@@ -335,7 +335,7 @@ geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
 die neue `onFrameUpdate(...)`:
 
 ![Die Figur ist mit ihren Zuständen und Übergängen
-vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
+vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Full.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
 

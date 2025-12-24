@@ -279,7 +279,7 @@ circle.setLayerPosition(-2);
 
 ### Tastatureingaben erstellen
 
-![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyStrokeCounter.png)
+![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyStrokeCounter.png)
 
 Der [folgende
 Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java)
@@ -351,7 +351,7 @@ Im [folgendem
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
-![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/KeyEventDemo.png)
+![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyEventDemo.png)
 
 Quellcode: [demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java#L23-L68)
 
@@ -451,7 +451,7 @@ public class KeyEventDisplayDemo extends Scene
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesDemo.gif)
+![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesDemo.gif)
 
 Das [folgende
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java)
@@ -514,7 +514,7 @@ für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
-![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/input/PaintingCirclesAdvancedDemo.gif)
+![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesAdvancedDemo.gif)
 
 Quellcode: [demos/input/mouse/PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesAdvancedDemo.java)
 
@@ -555,7 +555,7 @@ neue Kürzel gesetzt werden.
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![Der Engine Pi Game Loop](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/GameLoop.png)
+![Der Engine Pi Game Loop](https://raw.githubusercontent.com/engine-pi/assets/main/docs/GameLoop.png)
 
 Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
@@ -573,7 +573,7 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Minimal.gif)
+![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Minimal.gif)
 
 Quellcode: [demos/game_loop/SnakeMinimal.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java)
 
@@ -788,7 +788,7 @@ public void placeRandomGoodie()
 
 <!-- ### Anregung zum Experimentieren -->
 
-![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Snake_Advanced.gif)
+![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Advanced.gif)
 
 Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeAdvanced.java)
 
@@ -826,7 +826,7 @@ Methode `add(...)`.
 Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
 es die Methode `Game.transitionToScene(Scene)`.
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/scenes/Scene_Demonstration.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/scenes/Scene_Demonstration.png)
 
 <!-- #### Ein Pausenmenü -->
 
@@ -932,7 +932,7 @@ public class MainScene extends Scene implements KeyStrokeListener
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/scenes/Tutorial_Pause_Menu.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/scenes/Tutorial_Pause_Menu.gif)
 
 <!-- ### Die zwei Szenen -->
 
@@ -1118,7 +1118,7 @@ public class DominoesDemo extends Scene
 Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
 Dominosteine, und ein weißer Boden mit Wand.
 
-![Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_1-statisch.png)
+![Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_1-statisch.png)
 
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
 drückt sich in verschiedenen `BodyTypes` aus:
@@ -1154,7 +1154,7 @@ private void setupPhysics()
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
-![Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_2-dynamisch.gif)
+![Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_2-dynamisch.gif)
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
@@ -1168,7 +1168,7 @@ Zeit, die Dominos umzuschmeißen! Die Methode
 Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
 Ballwurf getestet werden.
 
-![Mit einem Methodenaufruf fliegt der Ball](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_3-Wurf.gif)
+![Mit einem Methodenaufruf fliegt der Ball](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_3-Wurf.gif)
 
 Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
 Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
@@ -1188,7 +1188,7 @@ private void setupAngle()
 }
 ```
 
-![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/Dominos_4-Wurfwinkel-Visualisierung.gif)
+![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_4-Wurfwinkel-Visualisierung.gif)
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
@@ -1416,7 +1416,7 @@ Nehmen wir dieses Beispiel:
 
 Ein mögliches Zustandsübergangsdiagramm für die Figur:
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram.png)
 
 <!-- Die Zustände als Enumeration -->
 
@@ -1520,7 +1520,7 @@ Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
 sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
-![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Testbed.gif)
+![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Testbed.gif)
 
 Quellcode: [demos/stateful_animation/StatefulAnimationDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java)
 
@@ -1562,13 +1562,13 @@ Zustandsübergänge zu implementieren.
 
 <!-- Springen -->
 
-![Wir fokussieren uns nun auf die Übergänge zum Springen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_jumpstates.png)
+![Wir fokussieren uns nun auf die Übergänge zum Springen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_jumpstates.png)
 
 Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
 zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
 
-![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_First_Jump.gif)
+![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Jump.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
@@ -1590,7 +1590,7 @@ private void attemptJump()
 
 <!-- Fallen und Landen -->
 
-![Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vy_states.png)
+![Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vy_states.png)
 
 Als nächstes sorgen wir dafür, dass die Figur landen kann und schließlich zurück
 in den `IDLE`-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in
@@ -1604,7 +1604,7 @@ Unsere Spielfigur soll in jedem Einzelbild ihre eigene Y-Geschwidingkeit
 überprüfen. Dazu implementiert sie nun zusätzlich `FrameUpdateListener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
-![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Full_Jump2.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
 
@@ -1647,7 +1647,7 @@ die Physik-Engine gibt es viele Möglichkeiten, Bewegung im Spiel zu simulieren.
 Ein physikalisch korrekte Implementierung ist die kontinuierliche Anwendung
 einer Bewegungskraft:
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Player_Movement.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Player_Movement.png)
 
 Die (je nach Tastendruck gerichtete) Kraft beschleunigt die Spielfigur, bis die
 Reibung die wirkende Kraft ausgleicht. In der Methode `setupPhysics()` wurden
@@ -1670,7 +1670,7 @@ Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
 Methode `onFrameUpdate(double pastTime)` erweitert:
 
 ![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
-Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Base.gif)
+Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Base.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
@@ -1695,7 +1695,7 @@ else if (Game.isKeyPressed(KeyEvent.VK_D))
 <!-- Die Übergänge IDLE - WALKING - RUNNING -->
 
 ![Die letzten zu implementierenden Zustandsübergänge hängen von der
-Spielerbewegung ab.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/TransitionDiagram_vx_states.png)
+Spielerbewegung ab.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vx_states.png)
 
 Die Figur kann jetzt voll gesteuert werden. Die Zustände `WALKING` und `RUNNING`
 können nun eingebracht werden. Ist die Figur in einem der drei „bodenständigen“
@@ -1726,7 +1726,7 @@ geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
 die neue `onFrameUpdate(...)`:
 
 ![Die Figur ist mit ihren Zuständen und Übergängen
-vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/stateful-animation/StatefulAnimation_Movement_Full.gif)
+vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Full.gif)
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
 
@@ -1991,7 +1991,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/FrogTutorial1.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/FrogTutorial1.gif)
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
@@ -2099,7 +2099,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Bilderschrift
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextMultilineDemo.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextMultilineDemo.png)
 
 Quellcode: [demos/actor/ImageFontTextMultilineDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextMultilineDemo.java)
 
@@ -2121,7 +2121,7 @@ public class ImageFontTextMultilineDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextAlignmentDemo.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextAlignmentDemo.png)
 
 Quellcode: [demos/actor/ImageFontTextAlignmentDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextAlignmentDemo.java)
 
@@ -2157,7 +2157,7 @@ public class ImageFontTextAlignmentDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextColorDemo.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextColorDemo.png)
 
 Quellcode: [demos/actor/ImageFontTextColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextColorDemo.java)
 
@@ -2188,7 +2188,7 @@ public class ImageFontTextColorDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextTetris.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextTetris.png)
 
 Quellcode: [tetris: scenes/CopyrightScene.java](https://github.com/engine-pi/tetris/blob/main/src/main/java/de/pirckheimer_gymnasium/tetris/scenes/CopyrightScene.java)
 
@@ -2240,7 +2240,7 @@ In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
 Reihe die Komplementärfarben der entsprechenden Bilder.
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_derived_complementary-color.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Images_derived_complementary-color.png)
 
 Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
@@ -2282,11 +2282,11 @@ public class ImageAverageColorDemo extends Scene
 
 `ALT + d` aktiviert den Debug-Modus: Die Bilder werden von Umrissen in den Komplementärfarben umrahmt.
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Images_shapes.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Images_shapes.png)
 
 `Alt + a` blendet die Figurenfüllungen aus. Es sind nur noch die Umrisse zu sehen.
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/color-complementary/Shapes-only.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Shapes-only.png)
 
 ## Java
 
