@@ -1,6 +1,6 @@
-## Java
+# Java
 
-### Java-Entwicklungsumgebung: IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
+## Java-Entwicklungsumgebung: IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
 
 Eine integrierte Entwicklungsumgebung (IDE, von englisch _integrated development
 environment_) ist eine Sammlung von Computerprogrammen, mit denen die Aufgaben
@@ -8,14 +8,14 @@ der Softwareentwicklung möglichst ohne Medienbrüche bearbeitet werden können.
 
 [^wikipedia-ide]: https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung
 
-#### Bekannte IDEs
+### Bekannte IDEs
 
 - [BlueJ](https://www.bluej.org/): Reduzierte IDE für pädagogische Zwecke
 - [Visual Studio Code](https://code.visualstudio.com): von Microsoft entwickelt, für alle Sprachen einsetzbar, wegen vieler Erweiterungen, läuft auf Google Chrome
 - [Eclipse](https://www.eclipse.org/downloads)
 - [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea): auf Java spezialisiert
 
-### Java-Paketnamen
+## Java-Paketnamen
 
 Um Pakete mit gleichem Namen zu vermeiden, haben sich in der Java-Welt folgende
 Konvention für Paketnamen herausgebildet:
@@ -35,7 +35,7 @@ der Paketname:
 
 <small>Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
 
-### Importe von Java-Klassen aus Paketen
+## Importe von Java-Klassen aus Paketen
 
 Java verfügt über unzählige vorgefertigte Klassen und Schnittstellen. Thematisch zusammengehörende Klassen und
 Schnittstellen werden zu einem Paket (_package_) zusammengefasst. Die so entstehende Java-Bibliothek ist riesig und
@@ -55,7 +55,7 @@ zu können, muss man sie in das gewünschte Projekt importieren. In Java funktio
 
 <small>Quelle: Klett, Informatik 2, 2021, Seite 275</small>
 
-### `super`-Schlüsselwort
+## `super`-Schlüsselwort
 
 Das Java-Schlüsselwort `super` hat drei explizite Verwendungsbereiche.
 
@@ -65,7 +65,7 @@ Das Java-Schlüsselwort `super` hat drei explizite Verwendungsbereiche.
 
 <small>Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/super-schlsselwort-in-java)</small>
 
-### Überladen von Methoden
+## Überladen von Methoden
 
 Überladen bedeutet, dass derselbe Methodenname mehrfach in einer Klasse verwendet werden kann.
 Damit das Überladen möglich ist, muss wenigstens eine der folgenden Vorraussetzungen erfüllt sein:
@@ -76,7 +76,7 @@ Damit das Überladen möglich ist, muss wenigstens eine der folgenden Vorrausset
 
 <small>Quelle: [Java-Tutorial.org ](https://www.java-tutorial.org/ueberladen_von_methoden.html)</small>
 
-### Lambda-Ausdrücken
+## Lambda-Ausdrücken
 
 Mit Lambda-Ausdrücken kann man sich viel Schreibarbeit sparen. Klassen, die eine
 sogenannten Funktionale Schnittstelle (Functional Interface) implementieren,
@@ -115,7 +115,7 @@ Als Lambda-Ausdruck (Name stammt vom [Lambda-Kalkül](https://de.wikipedia.org/w
 delay(3, () -> startTitleScene());
 ```
 
-### Entwurfsmuster [Schablonenmethode](https://de.wikipedia.org/wiki/Schablonenmethode)
+## Entwurfsmuster [Schablonenmethode](https://de.wikipedia.org/wiki/Schablonenmethode)
 
 Beim Schablonenmethoden-Entwurfsmuster wird in einer abstrakten Klasse das
 Skelett eines Algorithmus definiert. Die konkrete Ausformung der einzelnen
@@ -128,7 +128,7 @@ Einschubmethoden bezeichnet.
 
 Quelle: [Wikipedia](https://de.wikipedia.org/wiki/Schablonenmethode)
 
-### foreach-Schleife
+## foreach-Schleife
 
 for-each ist eine Art for-Schleife, die du verwendest, wenn du alle Elemente
 eines Arrays oder einer Collection verarbeiten musst. Allerdings wird der

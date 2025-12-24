@@ -1,8 +1,8 @@
-## Stateful Animation[^engine-alpha-wiki:stateful-animation]
+# Stateful Animation[^engine-alpha-wiki:stateful-animation]
 
 [^engine-alpha-wiki:stateful-animation]:
     Der Abschnitt stammt aus dem
-    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Stateful_Animation
+    Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
 Die
 [StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
