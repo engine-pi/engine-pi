@@ -28,4 +28,4 @@ def define_env(env) -> None:
     @env.macro
     def package_summary(package_path: str) -> str:
         package_path = _normalize_package_path(package_path)
-        return f"[{package_path}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}.html)"
+        return f"[{package_path}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"

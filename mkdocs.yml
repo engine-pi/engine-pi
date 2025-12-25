@@ -50,7 +50,9 @@ nav:
   - Über die Engine Pi: index.md
   - Referenz:
       - reference/koordinatensystem.md
-      - reference/figur.md
+      - Figuren:
+        - reference/figuren/figur.md
+        - reference/figuren/turtle.md
       - reference/kamera.md
       - reference/ressourcen.md
       - reference/bilderschriftart.md
