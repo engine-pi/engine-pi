@@ -43,9 +43,15 @@ watch:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
 nav:
   - Über die Engine Pi: index.md
-  - API-Refernenz:
+  - Referenz:
+    - reference/koordinatensystem.md
+    - reference/figur.md
+    - reference/kamera.md
+    - reference/ressourcen.md
     - reference/bilderschriftart.md
     - reference/zeitsteuerung.md
+    - reference/ereignissteuerung.md
+    - reference/physics.md
   - Tutorials:
     - tutorials/index.md
     - tutorials/01_hello-world.md
@@ -55,4 +61,6 @@ nav:
     - tutorials/05_physics.md
     - tutorials/06_stateful-animation.md
     - tutorials/07_collision.md
+  - API (javadocs): https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/index.html
   - java.md
+  - download.md

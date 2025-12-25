@@ -11,7 +11,7 @@
 
     <name>Parent Meta Project</name>
     <description>The parent meta package of the Engine Pi.</description>
-    <url>https://github.com/engine-pi/engine-pi</url>
+    <url>https://engine-pi.github.io/engine-pi</url>
     <licenses>
         <license>
             <name>The GNU General Public License, Version 3.0</name>
