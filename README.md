@@ -33,37 +33,6 @@ Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
 
-## Verwendung
-
-Im Gegensatz zur Engine Alpha ist die
-[Engine Pi](https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/engine-pi)
-über das wichtigste Repository für Java-Projekte das sogenannte
-[Maven Central Repository](https://central.sonatype.com) abrufbar.
-
-### BlueJ-Projekt
-
-Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>.jar` herunterladen (z. B. [engine-pi-0.41.0.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.41.0/engine-pi-0.41.0.jar)),
-einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
-
-### Maven-Projekt
-
-https://github.com/engine-pi/maven-boilerplate
-
-In der Projekt-Datei `pom.xml` ist die Engine Pi als
-Abhängigkeit (`dependency`) hinterlegt.
-
-```xml
-<project>
-  <dependencies>
-    <dependency>
-      <groupId>de.pirckheimer-gymnasium</groupId>
-      <artifactId>engine-pi</artifactId>
-      <version>0.41.0</version>
-    </dependency>
-  </dependencies>
-</project>
-```
-
 ## Entwicklung
 
 ### Aufbau des Projekts

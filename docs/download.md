@@ -1,6 +1,6 @@
 # Download
 
-[engine-pi-0.41.0-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.41.0/engine-pi-0.41.0-jar-with-dependencies.jar){ .md-button .md-button--primary }
+[engine-pi-{{ version }}-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-jar-with-dependencies.jar){ .md-button .md-button--primary }
 
 ## BlueJ-Projekt
 
@@ -10,12 +10,11 @@
 des Projekt kann die aktuelle Version der Engine als BlueJ-Vorlage
 heruntergeladen werden:
 
-[engine-pi-0.41.0-bluej-template.zip](https://github.com/engine-pi/engine-pi/releases/download/v0.41.0/engine-pi-0.41.0-bluej-template.zip){ .md-button .md-button--primary }
-
+[engine-pi-{{ version }}-bluej-template.zip](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-bluej-template.zip){ .md-button .md-button--primary }
 
 ### BlueJ-Projekt erstellen
 
-Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>-jar-with-dependencies.jar` herunterladen (z. B. [engine-pi-0.41.0-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v0.41.0/engine-pi-0.41.0-jar-with-dependencies.jar)),
+Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>-jar-with-dependencies.jar` herunterladen (z. B. [engine-pi-{{ version }}-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-jar-with-dependencies.jar)),
 einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
 
 ![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/download/Github-Release.png)
@@ -36,7 +35,7 @@ Im Gegensatz zur Engine Alpha ist die
     <dependency>
       <groupId>de.pirckheimer-gymnasium</groupId>
       <artifactId>engine-pi</artifactId>
-      <version>0.41.0</version>
+      <version>{{ version }}</version>
     </dependency>
   </dependencies>
 </project>

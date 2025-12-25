@@ -14,6 +14,10 @@ theme:
 repo_name: Engine Pi
 repo_url: https://github.com/engine-pi/engine-pi
 
+plugins:
+  # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
+  - macros
+
 markdown_extensions:
   # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
   - pymdownx.highlight:
@@ -44,23 +48,26 @@ watch:
 nav:
   - Über die Engine Pi: index.md
   - Referenz:
-    - reference/koordinatensystem.md
-    - reference/figur.md
-    - reference/kamera.md
-    - reference/ressourcen.md
-    - reference/bilderschriftart.md
-    - reference/zeitsteuerung.md
-    - reference/ereignissteuerung.md
-    - reference/physics.md
+      - reference/koordinatensystem.md
+      - reference/figur.md
+      - reference/kamera.md
+      - reference/ressourcen.md
+      - reference/bilderschriftart.md
+      - reference/zeitsteuerung.md
+      - reference/ereignissteuerung.md
+      - reference/physics.md
   - Tutorials:
-    - tutorials/index.md
-    - tutorials/01_hello-world.md
-    - tutorials/02_user-input.md
-    - tutorials/03_game-loop.md
-    - tutorials/04_scenes.md
-    - tutorials/05_physics.md
-    - tutorials/06_stateful-animation.md
-    - tutorials/07_collision.md
+      - tutorials/index.md
+      - tutorials/01_hello-world.md
+      - tutorials/02_user-input.md
+      - tutorials/03_game-loop.md
+      - tutorials/04_scenes.md
+      - tutorials/05_physics.md
+      - tutorials/06_stateful-animation.md
+      - tutorials/07_collision.md
   - API (javadocs): https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/index.html
   - java.md
   - download.md
+
+extra:
+    version: 0.41.0
