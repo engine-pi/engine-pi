@@ -17,7 +17,8 @@ repo_url: https://github.com/engine-pi/engine-pi
 plugins:
   # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
   - macros
-
+  # https://github.com/tuunit/mkdocs-drawio
+  - drawio
 markdown_extensions:
   # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
   - pymdownx.highlight:

@@ -16,3 +16,5 @@ Nachdem eine Figur erzeugt und zur Szene hinzugefügt wurde, befindet sie
 sich an der Koordinate (0|0), d. h. die linke untere Ecke der Figur -
 ihr Ankerpunkt - liegt an dem Punkt im Koordinatensystem, das 0 sowohl
 für den x- als auch den y-Wert der Koordinate hat.
+
+![](https://raw.githubusercontent.com/engine-pi/engine-pi/refs/heads/main/docs/drawio/Class-diagram_Actor.drawio)
