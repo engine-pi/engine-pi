@@ -37,13 +37,13 @@
     </properties>
 
     <modules>
-        <module>modules/engine</module>
-        <module>modules/demos</module>
-        <module>modules/cli</module>
-        <module>modules/games/blockly-robot</module>
-        <module>modules/games/pacman</module>
-        <module>modules/games/tetris</module>
-        <module>modules/build-tools</module>
+        <module>subprojects/engine</module>
+        <module>subprojects/demos</module>
+        <module>subprojects/cli</module>
+        <module>subprojects/games/blockly-robot</module>
+        <module>subprojects/games/pacman</module>
+        <module>subprojects/games/tetris</module>
+        <module>subprojects/build-tools</module>
     </modules>
 
     <dependencies>
