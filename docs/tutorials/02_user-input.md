@@ -6,7 +6,10 @@
 
 ## Tastatureingaben erstellen
 
-![Der Counter im Gange](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyStrokeCounter.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyStrokeCounter.png)
+/// caption
+Der Counter im Gange
+///
 
 Der [folgende
 Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java)
@@ -78,7 +81,10 @@ Im [folgendem
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
-![Das rote Rechteck bewegt sich mit WASD](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyEventDemo.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyEventDemo.png)
+/// caption
+Das rote Rechteck bewegt sich mit WASD
+///
 
 Quellcode: [demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java#L23-L68)
 
@@ -178,7 +184,10 @@ public class KeyEventDisplayDemo extends Scene
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-![Auf Mausklick reagieren: Kreise malen](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesDemo.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesDemo.gif)
+/// caption
+Auf Mausklick reagieren: Kreise malen
+///
 
 Das [folgende
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java)
@@ -241,6 +250,9 @@ für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
-![Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesAdvancedDemo.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesAdvancedDemo.gif)
+/// caption
+Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü
+///
 
 Quellcode: [demos/input/mouse/PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesAdvancedDemo.java)

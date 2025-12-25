@@ -9,7 +9,10 @@
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![Der Engine Pi Game Loop](https://raw.githubusercontent.com/engine-pi/assets/main/docs/GameLoop.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/GameLoop.png)
+/// caption
+Der Engine Pi Game Loop
+///
 
 Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
@@ -27,7 +30,10 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-![Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Minimal.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Minimal.gif)
+/// caption
+Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
+///
 
 Quellcode: [demos/game_loop/SnakeMinimal.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java)
 
@@ -242,7 +248,10 @@ public void placeRandomGoodie()
 
 ## Anregung zum Experimentieren
 
-![Eine Snake, die mit jedem Pickup wächst](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Advanced.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Advanced.gif)
+/// caption
+Eine Snake, die mit jedem Pickup wächst
+///
 
 Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeAdvanced.java)
 

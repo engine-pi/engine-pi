@@ -2,6 +2,7 @@ site_name: Engine Pi
 site_url: https://engine-pi.github.io/engine-pi/
 theme:
   name: material
+  logo: assets/logo.svg
   font:
     text: Cantarell
     code: Ubuntu Mono
@@ -14,6 +15,7 @@ repo_name: Engine Pi
 repo_url: https://github.com/engine-pi/engine-pi
 
 markdown_extensions:
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -21,6 +23,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  # https://squidfunk.github.io/mkdocs-material/reference/footnotes/
   - footnotes
   - pymdownx.magiclink
   # https://squidfunk.github.io/mkdocs-material/reference/images/
@@ -40,6 +43,9 @@ watch:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
 nav:
   - Über die Engine Pi: index.md
+  - API-Refernenz:
+    - reference/bilderschriftart.md
+    - reference/zeitsteuerung.md
   - Tutorials:
     - tutorials/index.md
     - tutorials/01_hello-world.md

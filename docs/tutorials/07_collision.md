@@ -9,8 +9,10 @@
 Ein Frosch soll fröhlich durch das Spiel springen und sich vom Boden abstoßen,
 wenn immer er die Chance dazu hat.
 
-Dieser Frosch soll durch das Spiel springen:
 ![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/froggy/Frog.png)
+/// caption
+Dieser Frosch soll durch das Spiel springen:
+///
 
 In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
@@ -125,9 +127,11 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
-Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 
 ![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/FrogTutorial1.gif)
+/// caption
+Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
+///
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 

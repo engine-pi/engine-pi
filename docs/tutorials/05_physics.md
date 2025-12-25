@@ -73,7 +73,10 @@ public class DominoesDemo extends Scene
 Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
 Dominosteine, und ein weißer Boden mit Wand.
 
-![Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_1-statisch.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_1-statisch.png)
+/// caption
+Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!
+///
 
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
 drückt sich in verschiedenen `BodyTypes` aus:
@@ -109,7 +112,10 @@ private void setupPhysics()
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
-![Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_2-dynamisch.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_2-dynamisch.gif)
+/// caption
+Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall
+///
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
@@ -123,7 +129,10 @@ Zeit, die Dominos umzuschmeißen! Die Methode
 Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
 Ballwurf getestet werden.
 
-![Mit einem Methodenaufruf fliegt der Ball](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_3-Wurf.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_3-Wurf.gif)
+/// caption
+Mit einem Methodenaufruf fliegt der Ball
+///
 
 Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
 Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
@@ -143,7 +152,10 @@ private void setupAngle()
 }
 ```
 
-![Visualisierung des Wurfwinkels](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_4-Wurfwinkel-Visualisierung.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_4-Wurfwinkel-Visualisierung.gif)
+/// caption
+Visualisierung des Wurfwinkels
+///
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
