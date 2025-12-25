@@ -42,7 +42,6 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
         addText("y:").setPosition(1, 0);
         y = addText("");
         y.setPosition(2, 0);
-        setBackgroundColor("white");
     }
 
     @Override
