@@ -1,0 +1,33 @@
+package demos.classes.dsa.turtle;
+
+import pi.Turtle;
+
+// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/dsa/turtle/TurtlePenController.java
+
+/**
+ * Demonstiert, wie mit <b>minimalen</b> Programmieraufwand eine
+ * <b>Turtle</b>-Grafik gezeichnet werden kann.
+ */
+public class TurtlePenControllerDemo
+{
+    public static void main(String[] args)
+    {
+        Turtle turtle = new Turtle();
+        turtle.pen.color("red").thickness(1);
+        turtle.forward(5);
+
+        turtle.pen.color("green").thickness(3);
+        turtle.left(120);
+        turtle.forward(5);
+
+        turtle.pen.color("blue").thickness(5);
+        turtle.left(120);
+        turtle.forward(5);
+
+        turtle.pen.lift();
+
+        turtle.forward(7);
+        turtle.pen.lower().color("brown");
+        turtle.forward(2);
+    }
+}
