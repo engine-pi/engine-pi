@@ -34,3 +34,5 @@ screenshot.jpg
 *.xml.versionsBackup
 
 site/
+
+__pycache__/
