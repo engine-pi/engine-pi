@@ -54,4 +54,4 @@ mkdocs_deploy:
 	mkdocs gh-deploy
 
 mkdocs_serve:
-	mkdocs serve
+	mkdocs serve --livereload

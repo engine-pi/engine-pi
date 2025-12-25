@@ -19,6 +19,14 @@ markdown_extensions:
   - pymdownx.superfences
   - footnotes
   - pymdownx.magiclink
+# https://squidfunk.github.io/mkdocs-material/reference/images/
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+
 
 extra_css:
   - stylesheets/extra.css
+
+watch:
+  - docs

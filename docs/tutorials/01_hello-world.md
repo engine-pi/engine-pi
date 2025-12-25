@@ -1,4 +1,4 @@
-# Tutorial: Hello World[^engine-alpha-wiki:hello-world]
+# Hello World[^engine-alpha-wiki:hello-world]
 
 [^engine-alpha-wiki:hello-world]:
     Der Abschnitt stammt aus dem
@@ -6,21 +6,22 @@
 
 ## Schritt 1: Grundlegender Aufbau
 
-Das grundlegendste Hello World sieht so aus:
-Das (noch wenig spannende) Ergebnis des Codes
+Das grundlegendste *Hello World* sieht so aus:
 
-Quellcode: [src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41](https://github.com/engine-pi/engine-pi/blob/123719a158c4d268875630251b67fefe448a5b66/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion1.java#L23-L41)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v1_basic.png)
+/// caption
+Das (noch wenig spannende) Ergebnis des Codes
+///
+
+Quellcode: [demos/tutorials/hello_world/HelloWorldVersion1.java#L27-L42](https://github.com/engine-pi/engine-pi/blob/7925c7a0511fa24080937f453073cf74b5af6cf1/subprojects/demos/src/main/java/demos/tutorials/hello_world/HelloWorldVersion1.java#L27-L42)
 
 ```java
-import pi.Game;
-import pi.Scene;
-import pi.actor.Text;
-
 public class HelloWorldVersion1 extends Scene
 {
     public HelloWorldVersion1()
     {
         Text helloWorld = new Text("Hello, World!", 2);
+        helloWorld.setColor("white");
         helloWorld.setCenter(0, 1);
         add(helloWorld);
         Game.debug();
@@ -28,12 +29,12 @@ public class HelloWorldVersion1 extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(400, 300, new HelloWorldVersion1());
+        Game.start(new HelloWorldVersion1(), 400, 300);
     }
 }
 ```
 
-## Szene
+### Szene
 
 Die `HelloWorldVersion1`-Klasse leitet sich aus der Klasse `Scene` der Engine
 ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre
@@ -45,7 +46,7 @@ eine Szene, in der „Hello World“ dargestellt werden soll:
 public class HelloWorldVersion1 extends Scene
 ```
 
-## Text
+### Text
 
 Wir wollen den Text *„Hello, World!“* darstellen. Die Klasse `Text` ist dafür
 zuständig. Ein Text mit Inhalt *„Hello, World!“* und Höhe 2 wird erstellt:
@@ -70,9 +71,12 @@ Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder
 Szene werden nur die Objekte gerendert, die auch an der Szene angemeldet
 sind.
 
-## Debug-Modus
+### Debug-Modus
 
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v1_debug.png)
+/// caption
 Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.
+///
 
 Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus
 der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
@@ -96,6 +100,11 @@ Game.start(400, 300, new HelloWorldVersion1());
 
 Beim nächste Codebeispiel handelt es sich um eine Erweiterung der Version 1 um
 geometrischen Figuren und Farbe.
+
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v2_geometry.png)
+/// caption
+Jetzt mit mehr Farbe und geometrischen Figuren
+///
 
 Quellcode: [demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
 
@@ -135,7 +144,7 @@ public class HelloWorldVersion2 extends Scene
 }
 ```
 
-## Geometrische Figuren
+### Geometrische Figuren
 
 Die Engine unterstützt diverse geometrische Figuren. Dazu gehören Rechtecke und
 Kreise. Der Code erstellt ein Rechteck mit Breite 12 und Höhe 3 sowie einen
@@ -146,7 +155,7 @@ Rectangle background = new Rectangle(12, 3);
 Circle circle = new Circle(8);
 ```
 
-## Farbe
+### Farbe
 
 Einige Objekte in der Engine können beliebig gefärbt werden. Text und
 geometrische Figuren gehören dazu. Mit `setColor(Color)` kann die Farbe als
@@ -158,10 +167,14 @@ background.setColor("green");
 circle.setColor("blue");
 ```
 
-## Ebenen-Position
+### Ebenen-Position
 
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v2_nolayer.png)
+/// caption
 So würde das Bild aussehen, wenn die Ebenen-Position nicht explizit gesetzt
 werden würde.
+///
+
 
 Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird.
 Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen,
