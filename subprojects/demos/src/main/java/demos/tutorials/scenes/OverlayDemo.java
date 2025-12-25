@@ -1,4 +1,4 @@
-package demos.classes.class_scene;
+package demos.tutorials.scenes;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

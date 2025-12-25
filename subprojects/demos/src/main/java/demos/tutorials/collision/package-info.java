@@ -1,4 +1,4 @@
 /**
  * Demonstiert die <b>Kollisionserkennung</b>.
  */
-package demos.collision;
+package demos.tutorials.collision;

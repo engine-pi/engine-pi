@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/PaintingCircles.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/TastenCounter.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -18,37 +18,43 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.event.mouse;
+package demos.tutorials.user_input;
+
+import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.Vector;
-import pi.actor.Circle;
-import pi.event.MouseButton;
-import pi.event.MouseClickListener;
+import pi.actor.Text;
+import pi.event.KeyStrokeListener;
 
-public class PaintingCirclesDemo extends Scene implements MouseClickListener
+public class KeyStrokeCounterDemo extends Scene
 {
-    public PaintingCirclesDemo()
+    public KeyStrokeCounterDemo()
     {
-        addMouseClickListener(this);
+        add(new CounterText());
     }
 
-    private void paintCircleAt(double mX, double mY, double diameter)
+    private class CounterText extends Text implements KeyStrokeListener
     {
-        Circle circle = new Circle(diameter);
-        circle.setCenter(mX, mY);
-        add(circle);
-    }
+        private int counter = 0;
 
-    @Override
-    public void onMouseDown(Vector position, MouseButton mouseButton)
-    {
-        paintCircleAt(position.getX(), position.getY(), 1);
+        public CounterText()
+        {
+            super("You pressed 0 keys.", 2);
+            setCenter(0, 0);
+        }
+
+        @Override
+        public void onKeyDown(KeyEvent keyEvent)
+        {
+            counter++;
+            setContent("You pressed " + counter + " keys.");
+            setCenter(0, 0);
+        }
     }
 
     public static void main(String[] args)
     {
-        Game.start(new PaintingCirclesDemo(), 600, 400);
+        Game.start(new KeyStrokeCounterDemo(), 700, 200);
     }
 }

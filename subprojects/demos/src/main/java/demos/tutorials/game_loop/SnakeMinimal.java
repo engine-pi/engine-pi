@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/gameloop/ActualSnake.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/gameloop/SnakeHead.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.game_loop;
+package demos.tutorials.game_loop;
 
 import java.awt.event.KeyEvent;
 
@@ -31,22 +31,19 @@ import pi.actor.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
+import pi.event.KeyStrokeListener;
 
-public class SnakeAdvanced extends Scene implements FrameUpdateListener
+public class SnakeMinimal extends Scene
 {
     private Text scoreText = new Text("Score: 0", 1.4);
 
     private int score = 0;
 
-    private Snake snakeHead = new Snake();
+    private Snake snake = new Snake();
 
-    private double snakeSpeed = 5;
-
-    private boolean makeNewHead = false;
-
-    public SnakeAdvanced()
+    public SnakeMinimal()
     {
-        add(snakeHead);
+        add(snake);
         scoreText.setPosition(-9, 5);
         add(scoreText);
         placeRandomGoodie();
@@ -55,7 +52,6 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public void setScore(int score)
     {
         this.score = score;
-        snakeSpeed = 5 + (score * 0.1);
         scoreText.setContent("Score: " + score);
     }
 
@@ -71,47 +67,13 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         Goodie goodie = new Goodie();
         goodie.setCenter(x, y);
         add(goodie);
-        goodie.addCollisionListener(snakeHead, goodie);
-    }
-
-    @Override
-    public void onFrameUpdate(double pastTime)
-    {
-        double dX = 0, dY = 0;
-        if (Game.isKeyPressed(KeyEvent.VK_W))
-        {
-            dY = snakeSpeed * pastTime;
-        }
-        if (Game.isKeyPressed(KeyEvent.VK_A))
-        {
-            dX = -snakeSpeed * pastTime;
-        }
-        if (Game.isKeyPressed(KeyEvent.VK_S))
-        {
-            dY = -snakeSpeed * pastTime;
-        }
-        if (Game.isKeyPressed(KeyEvent.VK_D))
-        {
-            dX = snakeSpeed * pastTime;
-        }
-        if (makeNewHead)
-        {
-            Snake newHead = new Snake();
-            newHead.setCenter(snakeHead.getCenter());
-            newHead.next = snakeHead;
-            add(newHead);
-            snakeHead = newHead;
-            makeNewHead = false;
-        }
-        else if (dX != 0 || dY != 0)
-        {
-            snakeHead.snakeHeadMove(dX, dY);
-        }
+        goodie.addCollisionListener(snake, goodie);
     }
 
     private class Snake extends Circle
+            implements FrameUpdateListener, KeyStrokeListener
     {
-        private Snake next = null;
+        private Vector movement = new Vector(0, 0);
 
         public Snake()
         {
@@ -119,23 +81,32 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
             setColor("green");
         }
 
-        private void snakeHeadMove(double dX, double dY)
+        @Override
+        public void onFrameUpdate(double pastTime)
         {
-            Vector mycenter = getCenter();
-            moveBy(dX, dY);
-            if (next != null)
-            {
-                next.snakeChildrenMove(mycenter);
-            }
+            moveBy(movement.multiply(pastTime));
         }
 
-        private void snakeChildrenMove(Vector newCenter)
+        @Override
+        public void onKeyDown(KeyEvent keyEvent)
         {
-            Vector mycenter = getCenter();
-            setCenter(newCenter);
-            if (next != null)
+            switch (keyEvent.getKeyCode())
             {
-                next.snakeChildrenMove(mycenter);
+            case KeyEvent.VK_W:
+                movement = new Vector(0, 5);
+                break;
+
+            case KeyEvent.VK_A:
+                movement = new Vector(-5, 0);
+                break;
+
+            case KeyEvent.VK_S:
+                movement = new Vector(0, -5);
+                break;
+
+            case KeyEvent.VK_D:
+                movement = new Vector(5, 0);
+                break;
             }
         }
     }
@@ -152,7 +123,6 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         public void onCollision(CollisionEvent<Snake> collisionEvent)
         {
             increaseScore();
-            makeNewHead = true;
             remove();
             placeRandomGoodie();
         }
@@ -160,6 +130,6 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(new SnakeAdvanced(), 600, 400);
+        Game.start(new SnakeMinimal(), 600, 400);
     }
 }

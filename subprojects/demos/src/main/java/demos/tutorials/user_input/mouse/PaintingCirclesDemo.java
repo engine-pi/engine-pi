@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/TastenCounter.java
+ * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/PaintingCircles.java
  *
  * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
  *
@@ -18,43 +18,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.event.keyboard;
-
-import java.awt.event.KeyEvent;
+package demos.tutorials.user_input.mouse;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
-import pi.event.KeyStrokeListener;
+import pi.Vector;
+import pi.actor.Circle;
+import pi.event.MouseButton;
+import pi.event.MouseClickListener;
 
-public class KeyStrokeCounterDemo extends Scene
+public class PaintingCirclesDemo extends Scene implements MouseClickListener
 {
-    public KeyStrokeCounterDemo()
+    public PaintingCirclesDemo()
     {
-        add(new CounterText());
+        addMouseClickListener(this);
     }
 
-    private class CounterText extends Text implements KeyStrokeListener
+    private void paintCircleAt(double mX, double mY, double diameter)
     {
-        private int counter = 0;
+        Circle circle = new Circle(diameter);
+        circle.setCenter(mX, mY);
+        add(circle);
+    }
 
-        public CounterText()
-        {
-            super("You pressed 0 keys.", 2);
-            setCenter(0, 0);
-        }
-
-        @Override
-        public void onKeyDown(KeyEvent keyEvent)
-        {
-            counter++;
-            setContent("You pressed " + counter + " keys.");
-            setCenter(0, 0);
-        }
+    @Override
+    public void onMouseDown(Vector position, MouseButton mouseButton)
+    {
+        paintCircleAt(position.getX(), position.getY(), 1);
     }
 
     public static void main(String[] args)
     {
-        Game.start(new KeyStrokeCounterDemo(), 700, 200);
+        Game.start(new PaintingCirclesDemo(), 600, 400);
     }
 }
