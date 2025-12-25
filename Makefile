@@ -9,14 +9,14 @@ deploy:
 	mvn deploy
 
 doc: install_build_tools
-	mvn --file modules/engine clean
-	mvn --file modules/engine javadoc:javadoc
-	xdg-open modules/engine/target/reports/apidocs/index.html
+	mvn --file subprojects/engine clean
+	mvn --file subprojects/engine javadoc:javadoc
+	xdg-open subprojects/engine/target/reports/apidocs/index.html
 
 doc_all: clean install
 	mvn javadoc:javadoc
-	xdg-open modules/engine/target/reports/apidocs/index.html
-	xdg-open modules/demos/target/reports/apidocs/index.html
+	xdg-open subprojects/engine/target/reports/apidocs/index.html
+	xdg-open subprojects/demos/target/reports/apidocs/index.html
 
 	mvn javadoc:aggregate
 	xdg-open target/reports/apidocs/index.html
@@ -46,9 +46,9 @@ pull_resources:
 	else \
 		git clone https://github.com/engine-pi/assets.git $(ASSETS); \
 	fi
-	rsync -av --delete $(ASSETS)/blockly-robot/resources modules/games/blockly-robot/src/main
-	rsync -av --delete $(ASSETS)/pacman/resources modules/games/pacman/src/main
-	rsync -av --delete $(ASSETS)/tetris/resources modules/games/tetris/src/main
+	rsync -av --delete $(ASSETS)/blockly-robot/resources subprojects/games/blockly-robot/src/main
+	rsync -av --delete $(ASSETS)/pacman/resources subprojects/games/pacman/src/main
+	rsync -av --delete $(ASSETS)/tetris/resources subprojects/games/tetris/src/main
 
 mkdocs_deploy:
 	mkdocs gh-deploy
