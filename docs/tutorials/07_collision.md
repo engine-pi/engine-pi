@@ -182,7 +182,7 @@ Engine-Kamera genutzt:
 ## Durch Platformen Springen: Kollisionen kontrollieren
 
 Das Interface
-[CollisionListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+[CollisionListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
 `CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
 überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere

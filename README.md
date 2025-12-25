@@ -81,14 +81,14 @@ Koordinatensystem an.[^engine-alpha-wiki:zeichnen-grafikfenster]
 Eine Figur (engl. Actor) ist ein grafisches Objekt, das sich bewegt bzw.
 das bewegt werden kann. In der Engine Pi gibt es eine Vielzahl
 verschiedener Figurenarten (z. B.
-[Image](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Image.html),
-[Text](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Text),
-[Rectangle](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Rectangle),
-[Circle](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Circle)). Alle
+[Image](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/Image.html),
+[Text](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/Text),
+[Rectangle](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/Rectangle),
+[Circle](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/Circle)). Alle
 diese Spezialisierungen sind abgeleitet von der Oberklasse
-[Actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/Actor.html)
+[Actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/Actor.html)
 Die API-Dokumentation des Pakets
-[pi.actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/package-summary.html)
+[pi.actor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/package-summary.html)
 listet alle verfügbaren Actor-Klassen auf.
 
 Nachdem eine Figur erzeugt und zur Szene hinzugefügt wurde, befindet sie
@@ -101,12 +101,12 @@ für den x- als auch den y-Wert der Koordinate hat.
 
 Die Engine registriert im Auslieferungszustand einige wenige [grundlegenden
 Maus- und
-Tastatur-Steuermöglichkeiten](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/event/DefaultControl.html).
+Tastatur-Steuermöglichkeiten](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/DefaultControl.html).
 
 Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
-[Game.removeDefaultControl()](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#removeDefaultControl()>)
+[Game.removeDefaultControl()](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html#removeDefaultControl()>)
 können diese Kürzel entfernt oder mit
-[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/Game.html#setDefaultControl(pi.event.DefaultListener)>)
+[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html#setDefaultControl(pi.event.DefaultListener)>)
 neue Kürzel gesetzt werden.
 
 - `ESCAPE` zum Schließen des Fensters.
@@ -284,10 +284,10 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 
 Die Klassen mit Farbbezug:
 
-- [resources.ColorContainer](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorContainer.html)
-- [resources.ColorScheme](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorScheme.html)
-- [resources.ColorSchemeSelection](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorSchemeSelection.html)
-- [resources.NamedColor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/NamedColor.html)
+- [resources.ColorContainer](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorContainer.html)
+- [resources.ColorScheme](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorScheme.html)
+- [resources.ColorSchemeSelection](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorSchemeSelection.html)
+- [resources.NamedColor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/NamedColor.html)
 - [Resources.COLORS](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#COLORS)
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der

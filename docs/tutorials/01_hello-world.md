@@ -160,7 +160,7 @@ Circle circle = new Circle(8);
 Einige Objekte in der Engine können beliebig gefärbt werden. Text und
 geometrische Figuren gehören dazu. Mit `setColor(Color)` kann die Farbe als
 AWT-Color-Objekt übergeben werden oder einfacher als
-[Zeichenkette](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/resources/ColorContainer.html):
+[Zeichenkette](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorContainer.html):
 
 ```java
 background.setColor("green");

@@ -1,10 +1,14 @@
 site_name: Engine Pi
-site_url: https://engine-pi.github.io/docs/
+site_url: https://engine-pi.github.io/engine-pi/
 theme:
   name: material
   font:
-      text: Cantarell
-      code: Ubuntu Mono
+    text: Cantarell
+    code: Ubuntu Mono
+  features:
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
+    # index.md in Ordner werden nicht doppelt angezeigt
+    - navigation.indexes
 
 repo_name: Engine Pi
 repo_url: https://github.com/engine-pi/engine-pi
@@ -19,14 +23,30 @@ markdown_extensions:
   - pymdownx.superfences
   - footnotes
   - pymdownx.magiclink
-# https://squidfunk.github.io/mkdocs-material/reference/images/
+  # https://squidfunk.github.io/mkdocs-material/reference/images/
   - attr_list
   - md_in_html
+  # https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/
+  # /// caption Caption ///
   - pymdownx.blocks.caption
-
 
 extra_css:
   - stylesheets/extra.css
 
 watch:
   - docs
+
+# https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
+nav:
+  - Über die Engine Pi: index.md
+  - Tutorials:
+    - tutorials/index.md
+    - tutorials/01_hello-world.md
+    - tutorials/02_user-input.md
+    - tutorials/03_game-loop.md
+    - tutorials/04_scenes.md
+    - tutorials/05_physics.md
+    - tutorials/06_stateful-animation.md
+    - tutorials/07_collision.md
+  - java.md

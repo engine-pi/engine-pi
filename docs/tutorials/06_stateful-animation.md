@@ -4,12 +4,26 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
+Dies ist ein Tutorial zur Klasse [StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html). In diesem Tutorial:
+
+* Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
+* Implementierst du funktionale Bewegungsmechanik für einen Platformer.
+* Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
+
+## Stateful Animations
+
 Die
-[StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
+[StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html)
 ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand
 umzusetzen.
 
-Nehmen wir dieses Beispiel:
+Nehmen wir dieses Beispiel:[^oop]
+
+[^oop]: Die Spielfigur stammt aus dem [Open Pixel
+Project](http://www.openpixelproject.com), aus dem Ordern
+[./sprites/humans/traveler/](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip)
+der Zip-Datei
+[opp-assets.zip](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip).
 
 | Zustand | Animiertes GIF                                                                                    |
 | ------- | ------------------------------------------------------------------------------------------------- |
@@ -21,11 +35,14 @@ Nehmen wir dieses Beispiel:
 | Walking | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/walk.gif)         |
 | Running | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/run.gif)          |
 
-### Zustandsübergangsdiagramm für die Figur
+## Zustandsübergangsdiagramm für die Figur
 
-Ein mögliches Zustandsübergangsdiagramm für die Figur:
+Bevor die Umsetzung beginnt, ist es sinnvoll, die Zustände und deren Übergänge zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für die Figur.
 
 ![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram.png)
+/// caption
+Zustandsübergangsdiagramm für die Figur
+///
 
 ### Die Zustände als Enumeration
 
@@ -115,7 +132,7 @@ Spielfigur eingepflegt, inklusive des Einladens der animierten GIFs.
 Zwei der Zustände bestehen nur aus einen Animationszyklus. Danach sollen sie in
 einen anderen Zustand übergehen: `MIDAIR` geht über zu `FALLING` und `LANDING`
 geht über zu `IDLE`. Diese Übergänge können direkt über die Methode
-[setStateTransition(...)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/de/pirckheimer_gymnasium/engine_pi/actor/StatefulAnimation.html)
+[setStateTransition(...)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html)
 umgesetzt werden.
 
 Schließlich wird in `setupPhysics()` die Figur über die Engine-Physik noch
@@ -129,7 +146,10 @@ Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
 sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
-![Der Zwischenstand: Noch passiert nicht viel.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Testbed.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Testbed.gif)
+/// caption
+Der Zwischenstand: Noch passiert nicht viel.
+///
 
 Quellcode: [demos/stateful_animation/StatefulAnimationDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java)
 
@@ -171,13 +191,19 @@ Zustandsübergänge zu implementieren.
 
 ### Springen
 
-![Wir fokussieren uns nun auf die Übergänge zum Springen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_jumpstates.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_jumpstates.png)
+/// caption
+Wir fokussieren uns nun auf die Übergänge zum Springen.
+///
 
 Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
 zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
 
-![Die Figur kann springen, aber nicht landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Jump.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Jump.gif)
+/// caption
+Die Figur kann springen, aber nicht landen.
+///
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
@@ -197,9 +223,12 @@ private void attemptJump()
 }
 ```
 
-<!-- Fallen und Landen -->
+### Fallen und Landen
 
-![Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vy_states.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vy_states.png)
+/// caption
+Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.
+///
 
 Als nächstes sorgen wir dafür, dass die Figur landen kann und schließlich zurück
 in den `IDLE`-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in
@@ -213,7 +242,10 @@ Unsere Spielfigur soll in jedem Einzelbild ihre eigene Y-Geschwidingkeit
 überprüfen. Dazu implementiert sie nun zusätzlich `FrameUpdateListener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
-![Die Figur hat jetzt einen vollen Sprungzyklus](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+/// caption
+Die Figur hat jetzt einen vollen Sprungzyklus
+///
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
 
@@ -257,6 +289,9 @@ Ein physikalisch korrekte Implementierung ist die kontinuierliche Anwendung
 einer Bewegungskraft:
 
 ![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Player_Movement.png)
+/// caption
+Player Movement
+///
 
 Die (je nach Tastendruck gerichtete) Kraft beschleunigt die Spielfigur, bis die
 Reibung die wirkende Kraft ausgleicht. In der Methode `setupPhysics()` wurden
@@ -278,8 +313,11 @@ private static final float FORCE = 16000;
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
 Methode `onFrameUpdate(double pastTime)` erweitert:
 
-![Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
-Zustandsänderung.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Base.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Base.gif)
+/// caption
+Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
+Zustandsänderung.
+///
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
 
@@ -301,10 +339,13 @@ else if (Game.isKeyPressed(KeyEvent.VK_D))
 }
 ```
 
-<!-- Die Übergänge IDLE - WALKING - RUNNING -->
+### Die Übergänge IDLE - WALKING - RUNNING
 
-![Die letzten zu implementierenden Zustandsübergänge hängen von der
-Spielerbewegung ab.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vx_states.png)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vx_states.png)
+/// caption
+Die letzten zu implementierenden Zustandsübergänge hängen von der
+Spielerbewegung ab.
+///
 
 Die Figur kann jetzt voll gesteuert werden. Die Zustände `WALKING` und `RUNNING`
 können nun eingebracht werden. Ist die Figur in einem der drei „bodenständigen“
@@ -334,8 +375,11 @@ Auf diese Grenzwerte wird jeden Frame in der `onFrameUpdate(...)` der Spielfigur
 geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
 die neue `onFrameUpdate(...)`:
 
-![Die Figur ist mit ihren Zuständen und Übergängen
-vollständig implementiert.](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Full.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Full.gif)
+/// caption
+Die Figur ist mit ihren Zuständen und Übergängen
+vollständig implementiert.
+///
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
 
@@ -411,3 +455,34 @@ public void onFrameUpdate(double dT)
 Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
 festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 `setFlipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
+
+## Anregung zum Experimentieren
+
+- __Different Settings, Different Game:__ Platformer werden fundamental anders,
+  wenn du an den Stellschrauben drehst: Ändere die Werte für Beschleunigung,
+  Entschleunigung, und Geschwindigkeit und überlege dir interessante
+  Herausforderungen. Ein Platformer mit langer Be-/Ent-Schleunigung eignet sich
+  weniger für viele präzise Sprünge, verlangt allerdings viel Überlegung und
+  Vorbereitung von Seiten des Spielers. Spiele mit den Werten und ändere das
+  Testbett und finde heraus, was dir Spaß macht.
+- __Still too simple:__ Die Geschwindigkeit wird derzeit "blind" interpoliert:
+  Sollte unsere Figur gegen eine Wand knallen, so wird die Geschwindigkeit im
+  folgenden Frame gleich wieder auf den gewünschten Laufwert gesetzt. Durch
+  smartes Reagieren auf Kollisionstests lässt sich die Figur in ihrer Bewegung
+  weiter verbessern.
+- __Create Something!__ Die Grundlage für einen Platformer ist geschaffen.
+  Bewegung ist da. Allerdings sonst noch nicht viel. Baue ein, worauf du Lust
+  hast, zum Beispiel:
+    - __Ein Level:__ Stelle Platformen zusammen, baue Schluchten,
+        Kletterparcours nach oben, was immer dein Jump n' Run Herz begehrt!
+    - __Kamera-Einbindung:__ Die Kamera kann sich dem Charakter anpassen, sodass
+        ein Level auch über die Sichtweite des Spielfensters hinaus ragen darf.
+    - __Pick-Ups:__ Bei Berührung erhält der Charakter einen Bonus (z.B.
+        zeitweise höhere Geschwindigkeit/Sprungkraft)
+    - __Gegner:__ Andere Akteure, die der Charakter besser nicht berühren
+        sollte; sie ziehen ihm Hit Points ab (oder beenden das Spiel direkt).
+        Vielleicht kann sich der Charakter mit einem Mario-Sprung auf den Kopf
+        der Gegner zur Wehr setzen?
+    - __Ein Ziel:__ Quo Vadis? Was ist das Ziel des Levels? Von Flagge am
+        rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
+    - etc, etc, etc.
