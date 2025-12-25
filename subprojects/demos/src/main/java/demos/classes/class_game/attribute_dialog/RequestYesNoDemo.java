@@ -16,20 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game;
+package demos.classes.class_game.attribute_dialog;
 
 import pi.Game;
 
 /**
- * Demonstriert die Methode {@link Game#showMessage(String, String)}.
+ * Demonstriert die Methode
+ * {@link pi.graphics.DialogLauncher#requestYesNo(String, String)}.
  */
-public class ShowMessageDemo
+public class RequestYesNoDemo
 {
     public static void main(String[] args)
     {
         Game.start();
         Game.addKeyStrokeListener((event) -> {
-            Game.showMessage("Das ist eine Nachricht", "Das ist der Titel");
+            Game.dialog.requestYesNo("Das ist eine Nachricht",
+                    "Das ist der Titel");
         });
     }
 }
