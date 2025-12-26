@@ -52,7 +52,7 @@ stets als [enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) 
 Diese enum definiert die Spielerzustände und speichert gleichzeitig die
 Dateipfade der zugehörigen GIF-Dateien.
 
-Quellcode: [demos/stateful_animation/PlayerState.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/PlayerState.java)
+{{ demo('tutorials/stateful_animation/PlayerState') }}
 
 ```java
 public enum PlayerState
@@ -83,7 +83,7 @@ erreichbar. Dies macht den Code deutlich wartbarer.
 Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter') }}
 
 ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
@@ -151,7 +151,8 @@ sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 Der Zwischenstand: Noch passiert nicht viel.
 ///
 
-Quellcode: [demos/stateful_animation/StatefulAnimationDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulAnimationDemo.java)
+{{ demo('tutorials/stateful_animation/StatefulAnimationDemo') }}
+
 
 ```java
 public class StatefulAnimationDemo extends Scene
@@ -207,6 +208,8 @@ Die Figur kann springen, aber nicht landen.
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L92-L104') }}
+
 ```java
 private void attemptJump()
 {
@@ -247,7 +250,7 @@ prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 Die Figur hat jetzt einen vollen Sprungzyklus
 ///
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L108-L133)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L107-L133') }}
 
 ```java
 @Override
@@ -303,7 +306,7 @@ bereits folgende Reibung für die Figur aktiviert:
 Die Maximalgeschwindigkeit sowie die konstant wirkende Kraft setzen wir als
 Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L41-L43)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L41-L43') }}
 
 ```java
 private static final Float MAX_SPEED = 20;
@@ -319,7 +322,7 @@ Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.
 ///
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L134-L146)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L133-L145') }}
 
 ```java
 //In: onFrameUpdate(double pastTime)
@@ -359,7 +362,7 @@ Zuständen nur vom Betrag ihrer Geschindigkeit ab:
 Um die Begriffe „langsam“ und „schnell“ greifbar zu machen, ist einen Grenzwert
 nötig. Dazu definieren wir Konstanten in der Figur:
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L37-L39)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L37-L39') }}
 
 ```java
 private static final double RUNNING_THRESHOLD = 10;
@@ -381,7 +384,7 @@ Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.
 ///
 
-Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172](https://github.com/engine-pi/engine-pi/blob/c196e1adb23228b21633277c0bffe11ae08f1e61/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/stateful_animation/StatefulPlayerCharacter.java#L107-L172)
+{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L107-L172') }}
 
 ```java
 @Override

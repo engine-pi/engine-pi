@@ -20,6 +20,8 @@ Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf
 
 Quellcode: [demos/physics/DominoesDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java)
 
+{{ demo('tutorials/physics/DominoesDemo') }}
+
 ```java
 public class DominoesDemo extends Scene
         implements FrameUpdateListener, MouseClickListener
@@ -98,6 +100,8 @@ In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt 
 die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 
 Quellcode: [demos/physics/DominoesDemo.java#L77-L83](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L77-L83)
+
+{{ demo('tutorials/physics/DominoesDemo', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L107-L172') }}
 
 ```java
 private void setupPhysics()
@@ -196,6 +200,5 @@ public void onMouseDown(Vector position, MouseButton button)
 - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
   Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
   Zerstörung.
-
 - Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position
   (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.

@@ -20,7 +20,7 @@ halt.
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
-Quellcode: [demos/collision/FroggyJump.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java)
+{{ demo('tutorials/collision/FroggyJump') }}
 
 ```java
 public class FroggyJump extends Scene
@@ -127,7 +127,6 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
-
 ![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/FrogTutorial1.gif)
 /// caption
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
@@ -205,7 +204,7 @@ unterschiedlich behandelt werden:
 
 Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
-Quellcode: [demos/collision/FroggyJump.java#L172-L197](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/collision/FroggyJump.java#L172-L197)
+{{ demo('tutorials/collision/FroggyJump', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L172-L197') }}
 
 ```java
 class Platform extends Rectangle implements CollisionListener<Frog>

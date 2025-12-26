@@ -10,7 +10,10 @@ theme:
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
     # index.md in Ordner werden nicht doppelt angezeigt
     - navigation.indexes
-
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button
+    - content.code.copy
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button
+    - content.code.select
 repo_name: Engine Pi
 repo_url: https://github.com/engine-pi/engine-pi
 
@@ -25,6 +28,7 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -51,8 +55,8 @@ nav:
   - Referenz:
       - reference/koordinatensystem.md
       - Figuren:
-        - reference/figuren/figur.md
-        - reference/figuren/turtle.md
+          - reference/figuren/figur.md
+          - reference/figuren/turtle.md
       - reference/kamera.md
       - reference/ressourcen.md
       - reference/bilderschriftart.md
@@ -74,4 +78,4 @@ nav:
   - download.md
 
 extra:
-    version: 0.41.0
+  version: 0.41.0

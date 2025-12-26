@@ -31,5 +31,9 @@ def define_env(env) -> None:
         return f"[{package_path}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
     @env.macro
-    def demo(relpath: str) -> str:
-        return f"<small>Zum Java-Code: [{relpath}.java](https://github.com/engine-pi/engine-pi/blob/main/subprojects/demos/src/main/java/demos/{relpath}.java)</small>"
+    def demo(relpath: str, hash: str = "main", lines: str | None = None) -> str:
+        if lines is None:
+            lines = ""
+        if not lines.startswith("#") and lines != "":
+            lines = '#' + lines
+        return f"<small>Zum Java-Code: [{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
