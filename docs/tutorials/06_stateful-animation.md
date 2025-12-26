@@ -20,7 +20,7 @@ umzusetzen.
 Nehmen wir dieses Beispiel:[^oop]
 
 [^oop]: Die Spielfigur stammt aus dem [Open Pixel
-Project](http://www.openpixelproject.com), aus dem Ordern
+Project](http://www.openpixelproject.com), aus dem Ordner
 [./sprites/humans/traveler/](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip)
 der Zip-Datei
 [opp-assets.zip](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip).

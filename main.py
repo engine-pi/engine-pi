@@ -29,3 +29,7 @@ def define_env(env) -> None:
     def package_summary(package_path: str) -> str:
         package_path = _normalize_package_path(package_path)
         return f"[{package_path}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
+
+    @env.macro
+    def demo(relpath: str) -> str:
+        return f"<small>Zum Java-Code: [{relpath}.java](https://github.com/engine-pi/engine-pi/blob/main/subprojects/demos/src/main/java/demos/{relpath}.java)</small>"
