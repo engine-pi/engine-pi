@@ -36,4 +36,4 @@ def define_env(env) -> None:
             lines = ""
         if not lines.startswith("#") and lines != "":
             lines = '#' + lines
-        return f"<small>Zum Java-Code: [{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
+        return f"<small>Zum Java-Code: [demos/{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
