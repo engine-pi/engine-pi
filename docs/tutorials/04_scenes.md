@@ -27,6 +27,8 @@ Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
 Quellcode: [demos/scenes/MainScene.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java)
 
+{{ demo('tutorials/scenes/MainScene') }}
+
 ```java
 public class MainScene extends Scene implements KeyStrokeListener
 {
@@ -137,7 +139,7 @@ Spiel stattfinden. Dieses Tutorial zeigt stattdessen eine kleine Animation.
 Die zweite Szene heißt `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
 kleinen Knopf, um das Menü wieder zu verlassen.
 
-Quellcode: [demos/scenes/MainScene.java#L36-L38](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L36-L38)
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L36-L38') }}
 
 ```java
 public class MainScene extends Scene
@@ -147,7 +149,7 @@ public class MainScene extends Scene
 }
 ```
 
-Quellcode: [demos/scenes/MainScene.java#L70-L72](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L70-L72)
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L70-L72') }}
 
 ```java
 private class PauseMenu extends Scene
@@ -160,7 +162,7 @@ private class PauseMenu extends Scene
 Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird
 die Transition ausgeführt:
 
-Quellcode: [demos/scenes/MainScene.java#L65-L68](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L65-L68)
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L65-L68') }}
 
 ```java
 private void gotoPause()
@@ -174,7 +176,7 @@ Steuerelement `MenuItem` wird dafür die entsprechende Methode aufgerufen, wann
 immer ein Mausklick auf dem Element landet - dies wird durch die Methode
 `contains(Vector)` geprüft:
 
-Quellcode: [demos/scenes/MainScene.java#L102-L108](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L102-L108)
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L102-L108') }}
 
 ```java
 @Override
@@ -193,7 +195,7 @@ In der Hauptszene findet eine interpolierte Rotationsanimation statt. Diese
 rotiert ein oranges Rechteck wiederholend um den Punkt `(0|0)`. Eine volle
 Rotation im Uhrzeigersinn dauert `8` Sekunden.
 
-Quellcode: [demos/scenes/MainScene.java#L43-L49][https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L43-L49]
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L43-L49') }}
 
 ```java
 Rectangle toAnimate = new Rectangle(5, 2);
@@ -210,7 +212,7 @@ Das Pausenmenü hat einen Hover-Effekt. Hierzu wird in jeden Einzelbild
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 `Game.getMousePositionInCurrentScene()` genutzt:
 
-Quellcode: [demos/scenes/MainScene.java#L111-L121](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java#L111-L121)
+{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L111-L121') }}
 
 ```java
 @Override

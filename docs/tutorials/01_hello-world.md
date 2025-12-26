@@ -13,7 +13,7 @@ Das grundlegendste *Hello World* sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
 ///
 
-Quellcode: [demos/tutorials/hello_world/HelloWorldVersion1.java#L27-L42](https://github.com/engine-pi/engine-pi/blob/7925c7a0511fa24080937f453073cf74b5af6cf1/subprojects/demos/src/main/java/demos/tutorials/hello_world/HelloWorldVersion1.java#L27-L42)
+{{ demo('tutorials/hello_world/HelloWorldVersion1', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L27-L42') }}
 
 ```java
 public class HelloWorldVersion1 extends Scene
@@ -106,7 +106,7 @@ geometrischen Figuren und Farbe.
 Jetzt mit mehr Farbe und geometrischen Figuren
 ///
 
-Quellcode: [demos/helloworld/HelloWorldVersion2.java#L23-L55](https://github.com/engine-pi/engine-pi/blob/d46b39b8f2ea0cc1bcdaa63cbeefec6fe42d6de9/src/test/java/de/pirckheimer_gymnasium/engine_pi/demos/helloworld/HelloWorldVersion2.java#L23-L55)
+{{ demo('tutorials/hello_world/HelloWorldVersion2', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L23-L55') }}
 
 ```java
 import pi.Game;

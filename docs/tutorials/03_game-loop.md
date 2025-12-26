@@ -35,7 +35,7 @@ Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
 ///
 
-Quellcode: [demos/game_loop/SnakeMinimal.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java)
+{{ demo('tutorials/game_loop/SnakeMinimal') }}
 
 ```java
 public class SnakeMinimal extends Scene
@@ -157,7 +157,7 @@ Hilfe! `v = s/t` und damit `s = v\*t`. Jeden Frame erhält die Snake die
 tatsächlich vergangene Zeit `t` seit dem letzten Frame-Update und verrechnet
 diese mit ihrer aktuellen Geschwindigkeit `v`:
 
-Quellcode: [demos/game_loop/SnakeMinimal.java#L86-L89](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L86-L89)
+{{ demo('tutorials/game_loop/SnakeMinimal', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L86-L89') }}
 
 ```java
 @Override
@@ -173,7 +173,7 @@ Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
 welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
 `KeyStrokeListener` gelöst wie im vorigen Tutorial:
 
-Quellcode: [demos/game_loop/SnakeMinimal.java#L92-L113](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L92-L113)
+{{ demo('tutorials/game_loop/SnakeMinimal', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L92-L113') }}
 
 ```java
 @Override
@@ -214,7 +214,7 @@ Vorteile hiervon kannst du in der Dokumentation durchstöbern.
 Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert,
 das Goodie entfernt, und ein neues Goodie platziert werden.
 
-Quellcode: [demos/game_loop/SnakeMinimal.java#L124-L130](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L124-L130)
+{{ demo('tutorials/game_loop/SnakeMinimal', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L124-L130') }}
 
 ```java
 @Override
@@ -232,7 +232,7 @@ Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf
 Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener
 spezifisch mit der Schlange angemeldet:
 
-Quellcode: [demos/game_loop/SnakeMinimal.java#L64-L72](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeMinimal.java#L64-L72)
+{{ demo('tutorials/game_loop/SnakeMinimal', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L64-L72') }}
 
 ```java
 public void placeRandomGoodie()
@@ -253,7 +253,7 @@ public void placeRandomGoodie()
 Eine Snake, die mit jedem Pickup wächst
 ///
 
-Quellcode: [demos/game_loop/SnakeAdvanced.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/game_loop/SnakeAdvanced.java)
+{{ demo('tutorials/game_loop/SnakeAdvanced') }}
 
 - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange

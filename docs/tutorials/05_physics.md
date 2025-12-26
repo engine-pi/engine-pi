@@ -97,8 +97,6 @@ hält den Fall
 In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
 die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 
-Quellcode: [demos/physics/DominoesDemo.java#L77-L83](https://github.com/engine-pi/engine-pi/blob/c1a0517e9940601ef0fb8fb06195c3c9444d1e12/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/DominoesDemo.java#L77-L83)
-
 {{ demo('tutorials/physics/DominoesDemo', '3c5fad40d3031ce6de9719deb41bf52f1a774022', 'L77-L83') }}
 
 ```java

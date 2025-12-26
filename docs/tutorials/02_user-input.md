@@ -16,7 +16,7 @@ Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/
 implementiert einen einfachen Zähler, der die Anzahl an gedrückten Tasten
 (vollkommen egal, welche) festhält.
 
-Quellcode: [demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java#L21-L60)
+{{ demo('tutorials/user_input/KeyStrokeCounterDemo', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L21-L60') }}
 
 ```java
 public class KeyStrokeCounterDemo extends Scene
@@ -86,7 +86,7 @@ wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 Das rote Rechteck bewegt sich mit WASD
 ///
 
-Quellcode: [demos/input/keyboard/KeyEventDemo.java#L23-L69](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java#L23-L68)
+{{ demo('tutorials/user_input/KeyEventDemo', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L23-L68') }}
 
 ```java
 import java.awt.event.KeyEvent;
@@ -147,7 +147,7 @@ zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.
 
-Quellcode: [demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDisplayDemo.java#L10-L40)
+{{ demo('tutorials/user_input/KeyEventDisplayDemo', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L10-L40') }}
 
 ```java
 public class KeyEventDisplayDemo extends Scene
@@ -195,7 +195,7 @@ malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen
 
-Quellcode: [demos/input/mouse/PaintingCirclesDemo.java#L23-L54](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java#L23-L54)
+{{ demo('tutorials/user_input/mouse/PaintingCirclesDemo', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L23-L54') }}
 
 ```java
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
@@ -255,4 +255,4 @@ für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü
 ///
 
-Quellcode: [demos/input/mouse/PaintingCirclesAdvancedDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesAdvancedDemo.java)
+{{ demo('tutorials/user_input/mouse/PaintingCirclesAdvancedDemo') }}
