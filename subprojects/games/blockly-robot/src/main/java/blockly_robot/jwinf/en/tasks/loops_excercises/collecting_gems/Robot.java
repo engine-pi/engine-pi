@@ -1,0 +1,33 @@
+package blockly_robot.jwinf.en.tasks.loops_excercises.collecting_gems;
+
+import blockly_robot.robot.logic.robot.RobotWrapper;
+
+/**
+ * https://jwinf.de/task/1139
+ */
+public class Robot extends RobotWrapper
+{
+    /**
+     * drehe nach links
+     */
+    public void turnLeft()
+    {
+        actor.turnLeft();
+    }
+
+    /**
+     * drehe nach rechts
+     */
+    public void turnRight()
+    {
+        actor.turnRight();
+    }
+
+    /**
+     * gehe vorwärts
+     */
+    public void forward()
+    {
+        actor.forward();
+    }
+}
