@@ -23,11 +23,54 @@ public class AllDialogsDemo extends Scene
         result.setColor("red");
         add(result);
 
-        new DialogOpener("Ja/Nein (mit Titel)",
-                () -> Game.dialog.requestYesNo("Message", "Title"), 0, 5);
+        // showMessage
 
-        new DialogOpener("Ja/Nein (ohne Titel)",
-                () -> Game.dialog.requestYesNo("Message"), 0, 4);
+        int x = -12;
+
+        int y1 = 3;
+        int y2 = 2;
+
+        int y3 = -2;
+        int y4 = -3;
+
+        // showMessage
+
+        new DialogOpener("showMessage(message)", () -> {
+            Game.dialog.showMessage("Message");
+            return null;
+        }, x, y1);
+
+        new DialogOpener("showMessage(message, title)", () -> {
+            Game.dialog.showMessage("Message", "Title");
+            return null;
+        }, x, y2);
+
+        // requestStringInput
+
+        new DialogOpener("requestStringInput(message)",
+                () -> Game.dialog.requestStringInput("Message"), x, y3);
+
+        new DialogOpener("requestStringInput(message, title)",
+                () -> Game.dialog.requestStringInput("Message", "Title"), x,
+                y4);
+
+        // requestYesNo
+
+        x = 2;
+
+        new DialogOpener("requestYesNo(message)",
+                () -> Game.dialog.requestYesNo("Message"), x, y1);
+
+        new DialogOpener("requestYesNo(message, title)",
+                () -> Game.dialog.requestYesNo("Message", "Title"), x, y2);
+
+        // requestOkCancel
+
+        new DialogOpener("requestOkCancel(message)",
+                () -> Game.dialog.requestOkCancel("Message"), x, y3);
+
+        new DialogOpener("requestYesNo(message, title)",
+                () -> Game.dialog.requestOkCancel("Message", "Title"), x, y4);
     }
 
     class DialogOpener extends Text implements MouseClickListener
