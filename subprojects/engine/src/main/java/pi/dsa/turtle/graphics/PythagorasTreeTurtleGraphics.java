@@ -29,7 +29,6 @@ import pi.dsa.turtle.TurtleGraphics;
  */
 public class PythagorasTreeTurtleGraphics extends TurtleGraphics
 {
-
     public PythagorasTreeTurtleGraphics()
     {
         initalState.speed(1000).position(-1.5, -5).direction(90)

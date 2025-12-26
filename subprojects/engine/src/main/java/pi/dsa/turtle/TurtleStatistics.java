@@ -70,11 +70,12 @@ public class TurtleStatistics
         });
         table.padding(3);
         table.forEachColumnBox(0, cell -> cell.box.font(Resources.fonts
-                .getDefault(FontStyle.BOLD).deriveFont((float) 16)));
+                .getDefault(FontStyle.BOLD).deriveFont((float) 12)));
+        table.forEachCell(cell -> cell.box.fontSize(12));
         framedTable = new FramedBox(table);
         framedTable.background.color(colors.get("grey", 50));
         framedTable.padding.allSides(5);
-        framedTable.anchor(20, 20);
+        framedTable.anchor(10, 10);
     }
 
     /**
