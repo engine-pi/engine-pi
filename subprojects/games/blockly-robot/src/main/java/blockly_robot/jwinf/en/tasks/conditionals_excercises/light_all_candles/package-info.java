@@ -1,10 +1,12 @@
 /**
- * Zünde alle Kerzen an
+ * <a href="https://jwinf.de/task/1835">Zünde alle Kerzen an</a>
  *
- * Programmiere den Roboter:
+ * <p>
+ * Programmiere den Roboter: Der Roboter soll alle Kerzen anzünden.
+ * </p>
  *
- * Der Roboter soll alle Kerzen anzünden.
- *
- * https://jwinf.de/task/1156
+ * <p>
+ * Alter Link: <a href="https://jwinf.de/task/1156">task/1156</a>
+ * </p>
  */
 package blockly_robot.jwinf.en.tasks.conditionals_excercises.light_all_candles;

@@ -1,7 +1,9 @@
-# Die Trainingsaufgaben des Jugendwettbewerbs Informatik in Java
+# Blockly Robot
+
+## Die Trainingsaufgaben des Jugendwettbewerbs Informatik in Java
 
 Ein Versuch die
-[Trainingsaufgaben](https://jwinf.de/contest/?filter=open) auf
+[Trainingsaufgaben](https://jwinf.de/contest/training) auf
 [jwinf.de](https://jwinf.de) (Jugendwettbewerb Informatik) in Java
 nachzuprogrammieren. Als Gaming Engine kommt die [Engine
 Alpha](https://engine-alpha.org) zum Einsatz.
@@ -15,7 +17,6 @@ France-ioi](https://www.france-ioi.org) bereit gestellt wird.
 Die meiste Spiellogik ist in dem Javascript-Module
 [blocklyRobot_lib-1.1.js](https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/blocklyRobot_lib-1.1.js)
 implementiert.
-
 
 # Task paths:
 
@@ -38,7 +39,7 @@ https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/quickAlgo/READM
 
 Eine Trainingsaufgabe ist in einer Javascript- und einer HTML-Datei definiert z. B.
 
-[Bedingte Anweisungen – Übungen / Zünde alle Kerzen an](https://jwinf.de/task/1156)
+[Bedingte Anweisungen – Übungen / Zünde alle Kerzen an](https://jwinf.de/task/1835)
 
 ### Javascript
 
