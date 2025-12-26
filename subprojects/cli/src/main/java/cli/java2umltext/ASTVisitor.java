@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext;
+package cli.java2umltext;
 
 import java.util.Optional;
 
@@ -45,14 +45,14 @@ import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-import de.pirckheimer_gymnasium.cli.java2umltext.Client.Config;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.ClassWrapper;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Document;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.FieldWrapper;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.MethodWrapper;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Relationship;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.UML;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Visibility;
+import cli.java2umltext.Client.Config;
+import cli.java2umltext.model.ClassWrapper;
+import cli.java2umltext.model.Document;
+import cli.java2umltext.model.FieldWrapper;
+import cli.java2umltext.model.MethodWrapper;
+import cli.java2umltext.model.Relationship;
+import cli.java2umltext.model.UML;
+import cli.java2umltext.model.Visibility;
 
 public class ASTVisitor extends VoidVisitorAdapter<UML>
 {

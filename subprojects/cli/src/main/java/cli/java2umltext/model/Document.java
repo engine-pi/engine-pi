@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.model;
+package cli.java2umltext.model;
 
 import java.util.ArrayList;
 import java.util.List;

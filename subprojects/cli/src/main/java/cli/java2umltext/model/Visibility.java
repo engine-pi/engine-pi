@@ -21,29 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.model;
+package cli.java2umltext.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public record ClassWrapper(Document document, String pkg, String type,
-        String name, ArrayList<FieldWrapper> fields,
-        ArrayList<MethodWrapper> methods, HashMap<String, String> imports)
-        implements UML
+public enum Visibility
 {
-    public ClassWrapper(Document document, String pkg, String type, String name)
+    PUBLIC('+'), PRIVATE('-'), PROTECTED('#'), DEFAULT('~');
+
+    private final char symbol;
+
+    Visibility(char symbol)
     {
-        this(document, pkg, type, name, new ArrayList<>(), new ArrayList<>(),
-                new HashMap<>());
+        this.symbol = symbol;
     }
 
-    public String pkgPrefix()
+    public char symbol()
     {
-        return ClassWrapper.pkgPrefix(pkg);
+        return symbol;
     }
 
-    public static String pkgPrefix(String pkg)
+    public static Visibility fromString(String name)
     {
-        return pkg == null || pkg.isBlank() ? "" : pkg + ".";
+        name = name.trim().toUpperCase();
+        if (name.equals(Visibility.PRIVATE.name()))
+        {
+            return Visibility.PRIVATE;
+        }
+        else if (name.equals(Visibility.PROTECTED.name()))
+        {
+            return Visibility.PROTECTED;
+        }
+        else if (name.equals(Visibility.PUBLIC.name()))
+        {
+            return Visibility.PUBLIC;
+        }
+        else if (name.equals(Visibility.DEFAULT.name()))
+        {
+            return Visibility.DEFAULT;
+        }
+        return null;
     }
 }

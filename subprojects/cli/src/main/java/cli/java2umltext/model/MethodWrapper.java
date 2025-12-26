@@ -21,8 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.model;
+package cli.java2umltext.model;
 
-public record Relationship(String type, String source, String target)
+import java.util.ArrayList;
+
+public record MethodWrapper(Visibility visibility, boolean isStatic,
+        boolean isAbstract, String returnType, String name,
+        ArrayList<String> parameters) implements UML
 {
+    public MethodWrapper(Visibility visibility, boolean isStatic,
+            boolean isAbstract, String returnType, String name)
+    {
+        this(visibility, isStatic, isAbstract, returnType, name,
+                new ArrayList<>());
+    }
 }

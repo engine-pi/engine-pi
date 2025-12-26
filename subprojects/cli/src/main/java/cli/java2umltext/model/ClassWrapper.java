@@ -21,18 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.model;
+package cli.java2umltext.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public record MethodWrapper(Visibility visibility, boolean isStatic,
-        boolean isAbstract, String returnType, String name,
-        ArrayList<String> parameters) implements UML
+public record ClassWrapper(Document document, String pkg, String type,
+        String name, ArrayList<FieldWrapper> fields,
+        ArrayList<MethodWrapper> methods, HashMap<String, String> imports)
+        implements UML
 {
-    public MethodWrapper(Visibility visibility, boolean isStatic,
-            boolean isAbstract, String returnType, String name)
+    public ClassWrapper(Document document, String pkg, String type, String name)
     {
-        this(visibility, isStatic, isAbstract, returnType, name,
-                new ArrayList<>());
+        this(document, pkg, type, name, new ArrayList<>(), new ArrayList<>(),
+                new HashMap<>());
+    }
+
+    public String pkgPrefix()
+    {
+        return ClassWrapper.pkgPrefix(pkg);
+    }
+
+    public static String pkgPrefix(String pkg)
+    {
+        return pkg == null || pkg.isBlank() ? "" : pkg + ".";
     }
 }

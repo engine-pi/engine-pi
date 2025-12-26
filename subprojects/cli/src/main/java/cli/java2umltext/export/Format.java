@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.export;
+package cli.java2umltext.export;
 
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Document;
+import cli.java2umltext.model.Document;
 
 public enum Format
 {

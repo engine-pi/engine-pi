@@ -6,4 +6,4 @@
  *
  * https://marketplace.visualstudio.com/items?itemName=NickvD.java-to-drawio-uml
  */
-package de.pirckheimer_gymnasium.cli.java2umltext;
+package cli.java2umltext;

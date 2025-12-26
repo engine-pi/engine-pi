@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.cli.java2umltext;
+package cli.java2umltext;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,10 +19,10 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.PackageDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitor;
 
-import de.pirckheimer_gymnasium.cli.java2umltext.export.Format;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Document;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.UML;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Visibility;
+import cli.java2umltext.export.Format;
+import cli.java2umltext.model.Document;
+import cli.java2umltext.model.UML;
+import cli.java2umltext.model.Visibility;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;

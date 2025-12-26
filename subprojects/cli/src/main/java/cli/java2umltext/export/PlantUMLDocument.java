@@ -21,73 +21,56 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.export;
+package cli.java2umltext.export;
 
 import java.util.stream.Collectors;
 
-import de.pirckheimer_gymnasium.cli.java2umltext.model.ClassWrapper;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Document;
-import de.pirckheimer_gymnasium.cli.java2umltext.model.Relationship;
+import cli.java2umltext.model.ClassWrapper;
+import cli.java2umltext.model.Document;
+import cli.java2umltext.model.Relationship;
 
-public class MermaidDocument extends Document
+public class PlantUMLDocument extends Document
 {
 
     @Override
     protected String getHeader()
     {
-        return "classDiagram\n";
+        return "@startuml\n";
     }
 
     @Override
     protected String getFooter()
     {
-        return "";
+        return "@enduml";
     }
 
     @Override
     protected String exportClass(ClassWrapper cw)
     {
-        String fullname = ((cw.pkg() == null || cw.pkg().isBlank()) ? ""
-                : (cw.pkg().replace(".", "_") + "_"))
-                + cw.name().replace(".", "_");
+        String fullname = ((cw.pkg() == null || cw.pkg().trim().equals("")) ? ""
+                : (cw.pkg() + ".")) + cw.name();
 
-        String str = "class " + fullname + " { ";
-
-        if (cw.type().contains("abstract"))
-        {
-            str += "\n<<abstract>>";
-        }
-        if (cw.type().contains("interface"))
-        {
-            str += "\n<<interface>>";
-        }
-        if (cw.type().contains("enum"))
-        {
-            str += "\n<<enum>>";
-        }
-        if (cw.type().contains("record"))
-        {
-            str += "\n<<record>>";
-        }
+        String str = (cw.type() == "record" ? "class" : cw.type()) + " "
+                + fullname + (cw.type() == "record" ? " <<record>>" : "")
+                + " {";
 
         str += cw.fields().isEmpty() ? ""
-                : "\n" + cw.fields().stream().map(f -> f.visibility().symbol()
-                        + " "
-                        + (f.type().isBlank() ? ""
-                                : f.type().replaceAll("[<>]", "~") + " ")
-                        + f.name() + (f.isStatic() ? "$" : ""))
+                : "\n" + cw.fields().stream()
+                        .map(f -> f.visibility().symbol() + " "
+                                + (f.isStatic() ? "{static} " : "")
+                                + (f.type().isBlank() ? "" : f.type() + " ")
+                                + f.name())
                         .collect(Collectors.joining("\n"));
 
         str += cw.methods().isEmpty() ? ""
                 : "\n" + cw.methods().stream()
                         .map(m -> m.visibility().symbol() + " "
-                                + m.returnType().replaceAll("[<>]", "~") + " "
-                                + m.name() + "("
+                                + (m.isStatic() ? "{static} " : "")
+                                + (m.isAbstract() ? "{abstract} " : "")
+                                + m.returnType() + " " + m.name() + "("
                                 + m.parameters().stream()
-                                        .map(p -> p.replaceAll("[<>]", "~"))
                                         .collect(Collectors.joining(","))
-                                + ")" + (m.isAbstract() ? "*" : "")
-                                + (m.isStatic() ? "$" : ""))
+                                + ")")
                         .collect(Collectors.joining("\n"));
 
         str += "\n}\n";
@@ -98,9 +81,6 @@ public class MermaidDocument extends Document
     @Override
     protected String exportRelationship(Relationship r)
     {
-        return r.source().replace(".", "_") + " "
-                + (r.type().equals("+..") ? "<.." : r.type()) + " "
-                + r.target().replace(".", "_")
-                + (r.type().equals("+..") ? " : << contains >>" : "");
+        return r.source() + " " + r.type() + " " + r.target();
     }
 }

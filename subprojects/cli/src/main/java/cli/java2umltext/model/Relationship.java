@@ -21,9 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package de.pirckheimer_gymnasium.cli.java2umltext.model;
+package cli.java2umltext.model;
 
-public record FieldWrapper(Visibility visibility, boolean isStatic, String type,
-        String name) implements UML
+public record Relationship(String type, String source, String target)
 {
 }
