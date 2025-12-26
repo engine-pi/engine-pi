@@ -2,9 +2,9 @@
 
 https://engine-alpha.org/wiki/Tutorials/Dialoge
 
-Ziel dieses Tutorials
+<!-- Ziel dieses Tutorials
 
-Nachdem du dieses Tutorial durchgearbeitet hast, kannst du die verschiedenen Dialog-Fenster einsetzen, die dir die Engine Alpha für die Interaktion mit dem Spieler zur Verfügung stellt. Beispielsweise kannst du es dem Spieler ermöglichen seinen Namen einzugeben.
+Nachdem du dieses Tutorial durchgearbeitet hast, kannst du die verschiedenen Dialog-Fenster einsetzen, die dir die Engine Alpha für die Interaktion mit dem Spieler zur Verfügung stellt. Beispielsweise kannst du es dem Spieler ermöglichen seinen Namen einzugeben. -->
 
 tutorial nachrichtSchicken.png
 
