@@ -59,6 +59,7 @@ nav:
       - reference/zeitsteuerung.md
       - reference/ereignissteuerung.md
       - reference/physics.md
+      - reference/dialogfenster.md
   - Tutorials:
       - tutorials/index.md
       - tutorials/01_hello-world.md

@@ -1,4 +1,4 @@
-# Dialog-Fenster
+# Dialogfenster
 
 https://engine-alpha.org/wiki/Tutorials/Dialoge
 
@@ -30,4 +30,7 @@ Methode 	Erklärung
 
 
 Achtung!
-Alle Dialog-Fenster drängen sich kompromisslos in den Vordergrund und die entsprechende Methode endet erst dann, wenn das Fenster wieder geschlossen wird. Deshalb solltest du vor dem Aufruf dieser Methoden das Spiel unbedingt anhalten!
+
+Alle Dialog-Fenster drängen sich kompromisslos in den Vordergrund und die
+entsprechende Methode endet erst dann, wenn das Fenster wieder geschlossen wird.
+<!-- Deshalb solltest du vor dem Aufruf dieser Methoden das Spiel unbedingt anhalten! -->
