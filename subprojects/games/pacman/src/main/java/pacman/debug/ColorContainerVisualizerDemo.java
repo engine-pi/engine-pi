@@ -1,9 +1,9 @@
-package de.pirckheimer_gymnasium.pacman.debug;
+package pacman.debug;
 
+import pacman.ColorManagement;
 import pi.Game;
 import pi.Scene;
 import pi.debug.ColorContainerVisualizer;
-import de.pirckheimer_gymnasium.pacman.ColorManagement;
 
 public class ColorContainerVisualizerDemo extends Scene
 {

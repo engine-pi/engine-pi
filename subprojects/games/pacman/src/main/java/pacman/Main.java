@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.pacman;
+package pacman;
 
 import pi.Direction;
 import pi.Game;

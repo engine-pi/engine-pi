@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.pacman.actors;
+package pacman.actors;
 
 import pi.Resources;
 import pi.actor.ImageFont;

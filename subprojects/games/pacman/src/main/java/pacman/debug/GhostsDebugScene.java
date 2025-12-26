@@ -1,21 +1,21 @@
-package de.pirckheimer_gymnasium.pacman.debug;
+package pacman.debug;
 
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.DOWN;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.LEFT;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.RIGHT;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.STAND;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.UP;
+import static pacman.actors.GhostState.DOWN;
+import static pacman.actors.GhostState.LEFT;
+import static pacman.actors.GhostState.RIGHT;
+import static pacman.actors.GhostState.STAND;
+import static pacman.actors.GhostState.UP;
 
 import java.awt.event.KeyEvent;
 
+import pacman.Main;
+import pacman.actors.Blinky;
+import pacman.actors.Clyde;
+import pacman.actors.Ghost;
+import pacman.actors.Inky;
+import pacman.actors.Pinky;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.pacman.Main;
-import de.pirckheimer_gymnasium.pacman.actors.Blinky;
-import de.pirckheimer_gymnasium.pacman.actors.Clyde;
-import de.pirckheimer_gymnasium.pacman.actors.Ghost;
-import de.pirckheimer_gymnasium.pacman.actors.Inky;
-import de.pirckheimer_gymnasium.pacman.actors.Pinky;
 
 public class GhostsDebugScene extends Scene implements KeyStrokeListener
 {

@@ -1,12 +1,12 @@
-package de.pirckheimer_gymnasium.pacman.scenes;
+package pacman.scenes;
 
-import de.pirckheimer_gymnasium.pacman.Main;
-import de.pirckheimer_gymnasium.pacman.actors.Blinky;
-import de.pirckheimer_gymnasium.pacman.actors.Clyde;
-import de.pirckheimer_gymnasium.pacman.actors.Ghost;
-import de.pirckheimer_gymnasium.pacman.actors.Inky;
-import de.pirckheimer_gymnasium.pacman.actors.Pinky;
-import de.pirckheimer_gymnasium.pacman.actors.Text;
+import pacman.Main;
+import pacman.actors.Blinky;
+import pacman.actors.Clyde;
+import pacman.actors.Ghost;
+import pacman.actors.Inky;
+import pacman.actors.Pinky;
+import pacman.actors.Text;
 
 public class InstructionScene extends BaseScene
 {

@@ -1,7 +1,7 @@
-package de.pirckheimer_gymnasium.pacman.scenes;
+package pacman.scenes;
 
+import pacman.ColorManagement;
 import pi.Scene;
-import de.pirckheimer_gymnasium.pacman.ColorManagement;
 
 public class BaseScene extends Scene
 {

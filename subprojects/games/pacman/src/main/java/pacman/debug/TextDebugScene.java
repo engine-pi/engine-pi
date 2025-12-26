@@ -1,8 +1,8 @@
-package de.pirckheimer_gymnasium.pacman.debug;
+package pacman.debug;
 
-import de.pirckheimer_gymnasium.pacman.Main;
-import de.pirckheimer_gymnasium.pacman.actors.Text;
-import de.pirckheimer_gymnasium.pacman.scenes.BaseScene;
+import pacman.Main;
+import pacman.actors.Text;
+import pacman.scenes.BaseScene;
 
 public class TextDebugScene extends BaseScene
 {

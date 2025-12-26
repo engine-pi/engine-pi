@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.pacman.actors;
+package pacman.actors;
 
 import java.awt.Color;
 

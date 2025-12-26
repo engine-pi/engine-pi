@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.pacman;
+package pacman;
 
 import pi.Resources;
 import pi.resources.ColorContainer;

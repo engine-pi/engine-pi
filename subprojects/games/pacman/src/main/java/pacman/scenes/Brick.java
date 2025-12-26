@@ -1,4 +1,4 @@
-package de.pirckheimer_gymnasium.pacman.scenes;
+package pacman.scenes;
 
 import pi.actor.Image;
 

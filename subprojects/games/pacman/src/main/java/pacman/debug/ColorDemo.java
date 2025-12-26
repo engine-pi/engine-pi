@@ -1,7 +1,7 @@
-package de.pirckheimer_gymnasium.pacman.debug;
+package pacman.debug;
 
+import pacman.scenes.BaseScene;
 import pi.Game;
-import de.pirckheimer_gymnasium.pacman.scenes.BaseScene;
 
 public class ColorDemo extends BaseScene
 {

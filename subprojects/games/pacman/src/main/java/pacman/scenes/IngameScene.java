@@ -1,28 +1,20 @@
-package de.pirckheimer_gymnasium.pacman.scenes;
+package pacman.scenes;
 
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.DOWN;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.LEFT;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.RIGHT;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.STAND;
-import static de.pirckheimer_gymnasium.pacman.actors.GhostState.UP;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.SINGLE_B;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.OUTER_CORNER_BL;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.OUTER_CORNER_BR;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.SINGLE_L;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.SINGLE_R;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.SINGLE_T;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.OUTER_CORNER_TL;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.OUTER_CORNER_TR;
-import static de.pirckheimer_gymnasium.pacman.scenes.Brick.*;
+import static pacman.actors.GhostState.DOWN;
+import static pacman.actors.GhostState.LEFT;
+import static pacman.actors.GhostState.RIGHT;
+import static pacman.actors.GhostState.STAND;
+import static pacman.actors.GhostState.UP;
+import static pacman.scenes.Brick.*;
 
 import java.awt.event.KeyEvent;
 
+import pacman.Main;
+import pacman.actors.Blinky;
+import pacman.actors.Ghost;
 import pi.Game;
 import pi.actor.Image;
 import pi.event.KeyStrokeListener;
-import de.pirckheimer_gymnasium.pacman.Main;
-import de.pirckheimer_gymnasium.pacman.actors.Blinky;
-import de.pirckheimer_gymnasium.pacman.actors.Ghost;
 
 public class IngameScene extends BaseScene implements KeyStrokeListener
 {
