@@ -48,6 +48,7 @@ import pi.event.MouseScrollEvent;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
 import pi.graphics.RenderSource;
+import pi.graphics.SceneInfoOverlay;
 import pi.physics.WorldHandler;
 import pi.resources.ColorContainer;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
@@ -89,7 +90,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>();
 
     /**
-     * Die Layer dieser Szene.
+     * Die Ebenen dieser Szene.
      */
     private final List<Layer> layers = new ArrayList<>();
 
@@ -107,49 +108,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     private static final int JOINT_RECTANGLE_SIDE = 12;
 
-    /**
-     * Der <b>Titel</b> der Szene.
-     *
-     * <p>
-     * Der Titel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.37.0
-     */
-    protected String title;
-
-    /**
-     * Der <b>Untertitel</b> der Szene.
-     *
-     * <p>
-     * Der Untertitel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.37.0
-     */
-    protected String subtitle;
-
-    /**
-     * Ein längerer <b>Beschreibungstext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.37.0
-     */
-    protected String description;
-
-    /**
-     * Ein <b>Hilfetext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.37.0
-     */
-    protected String help;
+    private SceneInfoOverlay info;
 
     /**
      * Erzeugt eine neue Szene.
@@ -168,68 +127,13 @@ public class Scene implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
     }
 
-    /**
-     * Setzt den <b>Titel</b> der Szene.
-     *
-     * <p>
-     * Der Titel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @param title Der <b>Titel</b> der Szene.
-     *
-     * @since 0.37.0
-     */
-    public void setTitle(String title)
+    public SceneInfoOverlay info()
     {
-        this.title = title;
-    }
-
-    /**
-     * Setzt den <b>Untertitel</b> der Szene.
-     *
-     * <p>
-     * Der Untertitel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @param subtitle Der <b>Untertitel</b> der Szene.
-     *
-     * @since 0.37.0
-     */
-    public void setSubtitle(String subtitle)
-    {
-        this.subtitle = subtitle;
-    }
-
-    /**
-     * Setzt den längerer <b>Beschreibungstext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @param description Ein längerer <b>Beschreibungstext</b> zur Szene.
-     *
-     * @since 0.37.0
-     */
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    /**
-     * Setzt den <b>Hilfetext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @param help Ein <b>Hilfetext</b> zur Szene.
-     *
-     * @since 0.37.0
-     */
-    public void setHelp(String help)
-    {
-        this.help = help;
+        if (info == null)
+        {
+            info = new SceneInfoOverlay();
+        }
+        return info;
     }
 
     /**
@@ -339,6 +243,10 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
         // Muss ganz zum Schluss erfolgen, damit zuerst gezeichnete Figuren
         // übermalt werden.
+        if (info != null)
+        {
+            info.render(g);
+        }
         renderOverlays(g, width, height);
     }
 

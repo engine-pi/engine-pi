@@ -25,6 +25,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import pi.debug.ToStringFormatter;
+import pi.resources.FontStyle;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
@@ -57,7 +58,7 @@ public abstract class TextBox extends LeafBox
      */
     protected Font font = fonts.getDefault().deriveFont((float) fontSize);
 
-    protected Color color;
+    protected Color color = colors.get("gray");
 
     /**
      * Erzeugt eine <b>Text</b>box.
@@ -82,6 +83,10 @@ public abstract class TextBox extends LeafBox
      */
     public TextBox content(Object content)
     {
+        if (content == null)
+        {
+            content = "";
+        }
         this.content = String.valueOf(content);
         calculateDimension();
         return this;
@@ -110,6 +115,26 @@ public abstract class TextBox extends LeafBox
     public TextBox fontSize(double fontSize)
     {
         font = font.deriveFont((float) fontSize);
+        calculateDimension();
+        return this;
+    }
+
+    /**
+     * @since 0.42.0
+     */
+    public TextBox fontStyle(FontStyle fontStyle)
+    {
+        font = font.deriveFont(fontStyle.getStyle());
+        calculateDimension();
+        return this;
+    }
+
+    /**
+     * @since 0.42.0
+     */
+    public TextBox fontStyle(int fontStyle)
+    {
+        font = font.deriveFont(fontStyle);
         calculateDimension();
         return this;
     }

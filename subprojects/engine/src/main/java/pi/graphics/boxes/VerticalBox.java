@@ -48,7 +48,7 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
     @Override
     protected void calculateDimension()
     {
-        // Die Methode wird mehrmals ausgeführt, falls calculateDimension
+        // Die Methode wird mehrmals ausgeführt, falls calculateDimensionTwice
         // gesetzt ist.
         width = 0;
         height = 0;

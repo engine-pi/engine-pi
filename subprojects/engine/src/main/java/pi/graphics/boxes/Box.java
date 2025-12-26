@@ -118,6 +118,8 @@ public abstract class Box implements Iterable<Box>
      */
     protected int y;
 
+    protected boolean disabled = false;
+
     /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.
      *
@@ -126,7 +128,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Ein Iterator über die direkten Kind-Boxen (leer wenn keine).
      *
-     * @since 0.40.0width
+     * @since 0.40.0
      */
     @Override
     public Iterator<Box> iterator()
@@ -208,6 +210,24 @@ public abstract class Box implements Iterable<Box>
     {
         this.x = x;
         this.y = y;
+        return this;
+    }
+
+    public Box disable(boolean disabled)
+    {
+        this.disabled = disabled;
+        return this;
+    }
+
+    public Box disable()
+    {
+        this.disabled = true;
+        return this;
+    }
+
+    public Box enable()
+    {
+        disabled = false;
         return this;
     }
 
@@ -378,6 +398,10 @@ public abstract class Box implements Iterable<Box>
      */
     private void doDrawing(Graphics2D g)
     {
+        if (disabled)
+        {
+            return;
+        }
         draw(g);
         for (Box box : childs)
         {
