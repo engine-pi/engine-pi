@@ -1,0 +1,44 @@
+---
+# https://cpina.github.io/push-to-another-repository-docs/
+name: Build aggregated javadocs and push the generated HTML files to the javadocs repo
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout the repository
+        uses: actions/checkout@v6
+
+      # https://github.com/actions/setup-java
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Package build-tools is requried by javadoc
+        run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Build the aggregated javadocs for all subprojects
+        run: mvn javadoc:aggregate
+
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: target/reports/apidocs/
+          destination-github-username: "engine-pi"
+          destination-repository-name: "javadocs"
+          user-email: josef@friedrich.rocks
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: main
+
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY

@@ -15,7 +15,8 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout the repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
+
       # https://github.com/actions/setup-java
       - uses: actions/setup-java@v5
         with:
@@ -26,15 +27,19 @@ jobs:
           # cat gpg_key.asc
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
+
       - name: Clone the repository https://github.com/engine-pi/assets and sync some resources folder (required by the tests)
         run: make pull_resources
+
       - name: Package build-tools is requried by javadoc
         run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
       - name: Package using Maven
         run: mvn package
       # https://github.com/softprops/action-gh-release
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
