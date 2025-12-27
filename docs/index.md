@@ -1,6 +1,6 @@
 # Über die Engine Pi
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg)
+{{ image('logo/logo.svg') }}
 
 Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
 einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an
@@ -8,6 +8,11 @@ allgemeinbildenden Schulen mit [deutscher
 Dokumentation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi).
 
 ## Bezug zur Engine Alpha
+
+{{ image('logo/engine-alpha/engine-alpha.png') }}
+/// caption
+Logo der Engine Alpha
+///
 
 Die Engine Pi ist eine Fortführung und Erweiterung (Fork) der
 [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von [Michael
@@ -20,7 +25,12 @@ Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
 ## Bezug zur LITIENGINE
 
-Da die [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
+{{ image('logo/litiengine/litiengine.png') }}
+/// caption
+Logo der LITIENGINE
+///
+
+Da die [Engine Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
 Audio-Wiedergabe unterstützt, wurde der Audio-Code der
 [LITIENGINE](https://github.com/gurkenlabs/litiengine) in die Engine Pi übernommen.
 Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
@@ -33,6 +43,11 @@ Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
 [Engine Alpha Wiki](https://engine-alpha.org), die unter der
 [Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
 Lizenz stehen.
+
+{{ image('logo/Logos-forked-Engines.svg') }}
+/// caption
+Engine Alpha + LITIENGINE = Engine Pi
+///
 
 ## Über diese Dokumentation
 

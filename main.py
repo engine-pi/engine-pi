@@ -37,3 +37,7 @@ def define_env(env) -> None:
         if not lines.startswith("#") and lines != "":
             lines = '#' + lines
         return f"<small>Zum Java-Code: [demos/{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
+
+    @env.macro
+    def image(relpath: str) -> str:
+        return f"![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath})"
