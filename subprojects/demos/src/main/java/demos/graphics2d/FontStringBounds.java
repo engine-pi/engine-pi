@@ -3,7 +3,7 @@ package demos.graphics2d;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
-import pi.util.FontUtil;
+import pi.resources.font.FontUtil;
 
 public class FontStringBounds extends Graphics2DComponent
 {

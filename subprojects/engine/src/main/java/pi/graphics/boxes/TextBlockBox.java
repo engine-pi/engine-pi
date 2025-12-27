@@ -30,7 +30,7 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
-import pi.util.FontUtil;
+import pi.resources.font.FontUtil;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 

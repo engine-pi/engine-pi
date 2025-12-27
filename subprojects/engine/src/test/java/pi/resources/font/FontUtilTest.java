@@ -1,4 +1,4 @@
-package pi.util;
+package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -29,5 +29,4 @@ public class FontUtilTest
         assertEquals(13.8, bounds.getHeight(), 10);
         assertEquals(11, bounds.getBaseline(), 10);
     }
-
 }

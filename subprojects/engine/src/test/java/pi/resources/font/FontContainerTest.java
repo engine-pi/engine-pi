@@ -1,4 +1,4 @@
-package pi.resources;
+package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

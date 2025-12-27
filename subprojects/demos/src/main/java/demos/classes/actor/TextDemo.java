@@ -25,7 +25,7 @@ import java.awt.Font;
 import pi.Game;
 import pi.Scene;
 import pi.actor.Text;
-import pi.resources.FontStyle;
+import pi.resources.font.FontStyle;
 
 /**
  * Demonstiert die Figur <b>Text</b>.

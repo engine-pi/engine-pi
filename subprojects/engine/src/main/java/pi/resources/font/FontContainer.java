@@ -25,7 +25,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.resources;
+package pi.resources.font;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -35,6 +35,8 @@ import java.io.InputStream;
 import java.net.URL;
 
 import pi.annotations.API;
+import pi.resources.ResourceLoader;
+import pi.resources.ResourcesContainer;
 
 /**
  * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link Font}.

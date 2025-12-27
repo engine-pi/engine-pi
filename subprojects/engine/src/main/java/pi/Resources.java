@@ -25,13 +25,13 @@
  */
 package pi;
 
-import pi.resources.FontContainer;
 import pi.resources.ImageContainer;
 import pi.resources.Resource;
 import pi.resources.ResourcesContainer;
 import pi.resources.color.ColorContainer;
 import pi.resources.color.ColorScheme;
 import pi.resources.color.ColorSchemeSelection;
+import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
 /**

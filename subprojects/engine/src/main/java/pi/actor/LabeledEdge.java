@@ -11,8 +11,8 @@ import pi.Resources;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
-import pi.util.FontStringBounds;
-import pi.util.FontUtil;
+import pi.resources.font.FontStringBounds;
+import pi.resources.font.FontUtil;
 
 /**
  * Eine beschriftete Kante

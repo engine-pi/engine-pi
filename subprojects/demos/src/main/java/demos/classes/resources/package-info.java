@@ -1,4 +1,4 @@
 /**
- * Demonstriert die Klassen des Pakets {@link pi.resources resources}.
+ * Demonstriert die Klassen des Pakets {@link pi.resources}.
  */
 package demos.classes.resources;

@@ -25,7 +25,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import pi.debug.ToStringFormatter;
-import pi.resources.FontStyle;
+import pi.resources.font.FontStyle;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
 

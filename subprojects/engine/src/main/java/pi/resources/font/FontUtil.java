@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.util;
+package pi.resources.font;
 
 import java.awt.Canvas;
 import java.awt.Font;

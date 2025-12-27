@@ -27,7 +27,7 @@ import pi.Turtle;
 import pi.graphics.boxes.FramedBox;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextTableBox;
-import pi.resources.FontStyle;
+import pi.resources.font.FontStyle;
 import pi.util.TextUtil;
 
 /**

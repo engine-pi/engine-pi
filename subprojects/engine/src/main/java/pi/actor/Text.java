@@ -31,7 +31,7 @@ import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
-import pi.util.FontUtil;
+import pi.resources.font.FontUtil;
 
 /**
  * Zur Darstellung von <b>Texten</b>.

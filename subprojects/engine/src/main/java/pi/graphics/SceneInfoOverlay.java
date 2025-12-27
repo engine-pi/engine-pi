@@ -9,7 +9,7 @@ import pi.graphics.boxes.TextBlockBox;
 import pi.graphics.boxes.TextBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
-import pi.resources.FontStyle;
+import pi.resources.font.FontStyle;
 
 /**
  * @author Josef Friedrich
