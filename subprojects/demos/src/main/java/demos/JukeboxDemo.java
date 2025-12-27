@@ -28,12 +28,12 @@ import pi.Jukebox;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.resources.ResourceLoader;
-import pi.sound.LoopedTrack;
-import pi.sound.MusicPlayback;
-import pi.sound.Playback;
-import pi.sound.SinglePlayTrack;
-import pi.sound.Sound;
-import pi.sound.Track;
+import pi.resources.sound.LoopedTrack;
+import pi.resources.sound.MusicPlayback;
+import pi.resources.sound.Playback;
+import pi.resources.sound.SinglePlayTrack;
+import pi.resources.sound.Sound;
+import pi.resources.sound.Track;
 
 /**
  * Demonstriert die Klasse <b>Jukebox</b>.

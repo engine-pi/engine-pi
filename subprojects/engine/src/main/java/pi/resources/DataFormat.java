@@ -36,13 +36,13 @@ import pi.util.FileUtil;
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
-final class DataFormat
+public final class DataFormat
 {
     private DataFormat()
     {
     }
 
-    protected static <T extends Enum<T>> T get(String format, T[] values,
+    public static <T extends Enum<T>> T get(String format, T[] values,
             T defaultValue)
     {
         if (format == null || format.isEmpty())
@@ -64,7 +64,7 @@ final class DataFormat
         return defaultValue;
     }
 
-    protected static <T extends Enum<T>> boolean isSupported(String fileName,
+    public static <T extends Enum<T>> boolean isSupported(String fileName,
             T[] values, T defaultValue)
     {
         String extension = FileUtil.getExtension(fileName);
@@ -82,7 +82,7 @@ final class DataFormat
         return false;
     }
 
-    protected static <T extends Enum<T>> String[] getAllExtensions(T[] values,
+    public static <T extends Enum<T>> String[] getAllExtensions(T[] values,
             T defaultValue)
     {
         ArrayList<String> arrList = new ArrayList<>();

@@ -23,10 +23,10 @@ import java.net.URL;
 
 import pi.Jukebox;
 import pi.Resources;
-import pi.sound.MusicPlayback;
-import pi.sound.Sound;
-import pi.sound.SoundEvent;
-import pi.sound.SoundPlaybackListener;
+import pi.resources.sound.MusicPlayback;
+import pi.resources.sound.Sound;
+import pi.resources.sound.SoundEvent;
+import pi.resources.sound.SoundPlaybackListener;
 
 public class SoundsContainerDemo
 {

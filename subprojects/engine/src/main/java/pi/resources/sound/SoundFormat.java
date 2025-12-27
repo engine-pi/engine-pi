@@ -23,9 +23,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.resources;
+package pi.resources.sound;
 
 import java.io.File;
+
+import pi.resources.DataFormat;
+import pi.resources.ImageFormat;
 
 /**
  * Contains all known audio file-formats supported by the engine.

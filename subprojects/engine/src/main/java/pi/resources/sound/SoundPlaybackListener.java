@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundPlayback.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundPlaybackListener.java
  *
  * MIT License
  *
@@ -23,57 +23,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
-import javax.sound.sampled.LineUnavailableException;
-
-import pi.Jukebox;
+import java.util.EventListener;
 
 /**
- * A {@code SoundPlayback} implementation for the playback of sound effects.
+ * Diese {@link EventListener}-Implementierung bietet Callbacks an, die darüber
+ * informiert, wenn eine {@link Playback} Instanz abgebrochen oder beendet wird.
  */
-public class SoundPlayback extends Playback
+public interface SoundPlaybackListener extends EventListener
 {
-    private final Sound sound;
-
-    private final boolean loop;
-
-    public SoundPlayback(Sound sound, boolean loop)
-            throws LineUnavailableException
+    /**
+     * This method gets called when a {@code SoundPlayback} is cancelled.
+     *
+     * @param event a {@link SoundEvent} object describing the event source and
+     *     the related {@link Sound}.
+     */
+    default void cancelled(SoundEvent event)
     {
-        super(sound.getFormat());
-        this.loop = loop;
-        this.sound = sound;
     }
 
-    @Override
-    public void run()
+    /**
+     * This method gets called when a {@code SoundPlayback} is finished.
+     *
+     * @param event a {@link SoundEvent} object describing the event source and
+     *     the related {@link Sound}.
+     */
+    default void finished(SoundEvent event)
     {
-        try
-        {
-            do
-            {
-                if (this.play(this.sound))
-                {
-                    return;
-                }
-            }
-            while (this.loop);
-        }
-        catch (LineUnavailableException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            this.finish();
-        }
-    }
-
-    @Override
-    protected void play()
-    {
-        super.play();
-        Jukebox.addSound(this);
     }
 }

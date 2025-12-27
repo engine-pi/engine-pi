@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundEvent.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/MusicPlayback.java
  *
  * MIT License
  *
@@ -23,42 +23,57 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
-import java.util.EventObject;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
- * This implementation is used for all events that need to pass a {@code Sound}
- * object to their listeners.
- *
- * @see Playback#cancel()
- * @see Playback#finish()
+ * Ermöglicht die Steuerung der Musikwiedergabe.
  */
-public class SoundEvent extends EventObject
+public class MusicPlayback extends Playback
 {
-    private static final long serialVersionUID = -2070316328855430839L;
+    private final Track track;
 
-    private final transient Sound sound;
+    private final VolumeControl musicVolume;
 
-    SoundEvent(Object source, Sound sound)
+    public MusicPlayback(Track track) throws LineUnavailableException
     {
-        super(source);
-        this.sound = sound;
-    }
-
-    /**
-     * Gets the related {@code Sound} instance.
-     *
-     * @return The sound object.
-     */
-    public Sound getSound()
-    {
-        return this.sound;
+        super(track.getFormat());
+        this.track = track;
+        this.musicVolume = this.createVolumeControl();
+        this.musicVolume.set(1);
     }
 
     @Override
-    public String toString()
+    public void run()
     {
-        return super.toString() + "[sound=" + this.sound.getName() + "]";
+        try
+        {
+            for (Sound sound : this.track)
+            {
+                if (this.play(sound))
+                {
+                    return;
+                }
+            }
+        }
+        catch (Throwable t)
+        {
+            t.printStackTrace();
+        }
+        finally
+        {
+            this.finish();
+        }
+    }
+
+    public Track getTrack()
+    {
+        return this.track;
+    }
+
+    void setMusicVolume(float volume)
+    {
+        this.musicVolume.set(volume);
     }
 }

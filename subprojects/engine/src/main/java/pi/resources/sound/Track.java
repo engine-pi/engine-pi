@@ -23,15 +23,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
 import javax.sound.sampled.AudioFormat;
 
-import pi.Jukebox;
-
 /**
  * Die Klasse {@link Track} definiert eine Reihenfolge, in der Klänge
- * ({@link Sound}s) von der {@link Jukebox} wiedergegeben werden sollen.
+ * ({@link Sound}s) von der {@link pi.Jukebox} wiedergegeben werden sollen.
  */
 public interface Track extends Iterable<Sound>
 {

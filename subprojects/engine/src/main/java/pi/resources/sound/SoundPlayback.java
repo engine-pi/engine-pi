@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/MusicPlayback.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundPlayback.java
  *
  * MIT License
  *
@@ -23,25 +23,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
 import javax.sound.sampled.LineUnavailableException;
 
+import pi.Jukebox;
+
 /**
- * Ermöglicht die Steuerung der Musikwiedergabe.
+ * A {@code SoundPlayback} implementation for the playback of sound effects.
  */
-public class MusicPlayback extends Playback
+public class SoundPlayback extends Playback
 {
-    private final Track track;
+    private final Sound sound;
 
-    private final VolumeControl musicVolume;
+    private final boolean loop;
 
-    public MusicPlayback(Track track) throws LineUnavailableException
+    public SoundPlayback(Sound sound, boolean loop)
+            throws LineUnavailableException
     {
-        super(track.getFormat());
-        this.track = track;
-        this.musicVolume = this.createVolumeControl();
-        this.musicVolume.set(1);
+        super(sound.getFormat());
+        this.loop = loop;
+        this.sound = sound;
     }
 
     @Override
@@ -49,17 +51,18 @@ public class MusicPlayback extends Playback
     {
         try
         {
-            for (Sound sound : this.track)
+            do
             {
-                if (this.play(sound))
+                if (this.play(this.sound))
                 {
                     return;
                 }
             }
+            while (this.loop);
         }
-        catch (Throwable t)
+        catch (LineUnavailableException e)
         {
-            t.printStackTrace();
+            e.printStackTrace();
         }
         finally
         {
@@ -67,13 +70,10 @@ public class MusicPlayback extends Playback
         }
     }
 
-    public Track getTrack()
+    @Override
+    protected void play()
     {
-        return this.track;
-    }
-
-    void setMusicVolume(float volume)
-    {
-        this.musicVolume.set(volume);
+        super.play();
+        Jukebox.addSound(this);
     }
 }

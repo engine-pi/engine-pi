@@ -27,6 +27,8 @@ package pi.resources;
 
 import java.io.File;
 
+import pi.resources.sound.SoundFormat;
+
 /**
  * Contains all known image file-formats supported by the engine.
  *

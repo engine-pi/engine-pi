@@ -1,4 +1,4 @@
 /**
- * Demonstriert die Klassen des Pakets {@link pi.sound sound}.
+ * Demonstriert die Klassen des Pakets {@link pi.resources.sound sound}.
  */
 package demos.sound;

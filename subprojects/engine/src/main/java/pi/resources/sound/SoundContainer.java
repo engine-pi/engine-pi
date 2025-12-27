@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.resources;
+package pi.resources.sound;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -34,7 +34,9 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import pi.sound.Sound;
+import pi.resources.Codec;
+import pi.resources.ResourceLoader;
+import pi.resources.ResourcesContainer;
 import pi.util.FileUtil;
 
 /**

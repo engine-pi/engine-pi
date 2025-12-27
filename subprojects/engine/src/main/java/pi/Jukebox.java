@@ -37,14 +37,14 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
 
-import pi.resources.SoundContainer;
-import pi.sound.IntroTrack;
-import pi.sound.LoopedTrack;
-import pi.sound.MusicPlayback;
-import pi.sound.Playback;
-import pi.sound.Sound;
-import pi.sound.SoundPlayback;
-import pi.sound.Track;
+import pi.resources.sound.IntroTrack;
+import pi.resources.sound.LoopedTrack;
+import pi.resources.sound.MusicPlayback;
+import pi.resources.sound.Playback;
+import pi.resources.sound.Sound;
+import pi.resources.sound.SoundContainer;
+import pi.resources.sound.SoundPlayback;
+import pi.resources.sound.Track;
 
 /**
  * Die {@link Jukebox}-Klasse bietet Methoden an, um <b>Klänge</b> (Sound) und

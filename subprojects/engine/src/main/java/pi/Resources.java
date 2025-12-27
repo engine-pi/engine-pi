@@ -32,7 +32,7 @@ import pi.resources.FontContainer;
 import pi.resources.ImageContainer;
 import pi.resources.Resource;
 import pi.resources.ResourcesContainer;
-import pi.resources.SoundContainer;
+import pi.resources.sound.SoundContainer;
 
 /**
  * Zur <b>Aufbewahrung</b> und <b>Verwaltung</b> verschiedener
@@ -70,8 +70,8 @@ public final class Resources
     public static final ImageContainer images = new ImageContainer();
 
     /**
-     * Ein Speicher für <b>Klänge</b> des Datentyps {@link pi.sound.Sound
-     * Sound}.
+     * Ein Speicher für <b>Klänge</b> des Datentyps
+     * {@link pi.resources.sound.Sound Sound}.
      */
     public static final SoundContainer sounds = new SoundContainer();
 
@@ -115,12 +115,13 @@ public final class Resources
 
     /**
      * Stellt den Zugriff auf den {@link SoundContainer Zwischenspeicher für
-     * Audio-Resourcen} vom Datentyp {@link pi.sound.Sound Sound} bereit.
+     * Audio-Resourcen} vom Datentyp {@link pi.resources.sound.Sound Sound}
+     * bereit.
      *
      * @author Josef Friedrich
      *
      * @return Ein {@link SoundContainer Zwischenspeicher für Audio-Ressourcen}
-     *     vom Datentyp {@link pi.sound.Sound Sound}.
+     *     vom Datentyp {@link pi.resources.sound.Sound Sound}.
      */
     public static SoundContainer getSounds()
     {

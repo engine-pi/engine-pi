@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/LoopedTrack.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SinglePlayTrack.java
  *
  * MIT License
  *
@@ -23,68 +23,88 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
 import java.util.Iterator;
-import java.util.Objects;
+import java.util.NoSuchElementException;
+
 import javax.sound.sampled.AudioFormat;
 
-public class LoopedTrack implements Track, Iterator<Sound>
+/**
+ * A {@code Track} that plays a sound once and then stops.
+ */
+public class SinglePlayTrack implements Track
 {
-    private final Sound track;
+    private Sound sound;
+
+    private class Iter implements Iterator<Sound>
+    {
+        private boolean hasNext = true;
+
+        @Override
+        public boolean hasNext()
+        {
+            return this.hasNext;
+        }
+
+        @Override
+        public Sound next()
+        {
+            if (!this.hasNext)
+            {
+                throw new NoSuchElementException();
+            }
+            this.hasNext = false;
+            return SinglePlayTrack.this.sound;
+        }
+    }
+    /**
+     * Initializes a new {@code SinglePlayTrack} for the specified sound.
+     *
+     * @param soundName The name of the sound to be played by this track.
+     */
+    // public SinglePlayTrack(String soundName) {
+    // this();
+    // }
 
     /**
-     * Initializes a new {@code LoopedTrack} for the specified sound.
+     * Initializes a new {@code SinglePlayTrack} for the specified sound.
      *
      * @param sound The sound to be played by this track.
      */
-    public LoopedTrack(Sound sound)
+    public SinglePlayTrack(Sound sound)
     {
-        this.track = Objects.requireNonNull(sound);
+        this.sound = sound;
     }
 
     @Override
     public Iterator<Sound> iterator()
     {
-        return this;
+        return new Iter();
     }
 
     @Override
     public AudioFormat getFormat()
     {
-        return this.track.getFormat();
-    }
-
-    // implement the iterator here to avoid allocating new objects
-    // they don't have any state data anyway
-    @Override
-    public boolean hasNext()
-    {
-        return true;
+        return this.sound.getFormat();
     }
 
     @Override
-    public Sound next()
+    public boolean equals(Object obj)
     {
-        return this.track;
-    }
-
-    @Override
-    public boolean equals(Object anObject)
-    {
-        return this == anObject || anObject instanceof LoopedTrack lt
-                && lt.track.equals(this.track);
+        return obj instanceof SinglePlayTrack spt && this.sound == spt.sound;
     }
 
     @Override
     public int hashCode()
     {
-        return this.track.hashCode();
+        // add a constant to avoid collisions with LoopedTrack
+        return this.sound.hashCode() + 0xdb9857d0;
     }
 
     @Override
     public String toString()
     {
-        return "looped track: " + this.track;
+        return "track: " + this.sound.getName() + " (not looped)";
     }
 }

@@ -23,14 +23,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.resources;
+package pi.resources.sound;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import pi.sound.Sound;
+import pi.resources.Codec;
+import pi.resources.NamedResource;
 
 /**
  * @author Steffen Wilke

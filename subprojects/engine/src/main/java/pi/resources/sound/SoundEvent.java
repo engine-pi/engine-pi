@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundPlaybackListener.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SoundEvent.java
  *
  * MIT License
  *
@@ -23,33 +23,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.sound;
+package pi.resources.sound;
 
-import java.util.EventListener;
+import java.util.EventObject;
 
 /**
- * Diese {@link EventListener}-Implementierung bietet Callbacks an, die darüber
- * informiert, wenn eine {@link Playback} Instanz abgebrochen oder beendet wird.
+ * This implementation is used for all events that need to pass a {@code Sound}
+ * object to their listeners.
+ *
+ * @see Playback#cancel()
+ * @see Playback#finish()
  */
-public interface SoundPlaybackListener extends EventListener
+public class SoundEvent extends EventObject
 {
-    /**
-     * This method gets called when a {@code SoundPlayback} is cancelled.
-     *
-     * @param event a {@link SoundEvent} object describing the event source and
-     *     the related {@link Sound}.
-     */
-    default void cancelled(SoundEvent event)
+    private static final long serialVersionUID = -2070316328855430839L;
+
+    private final transient Sound sound;
+
+    SoundEvent(Object source, Sound sound)
     {
+        super(source);
+        this.sound = sound;
     }
 
     /**
-     * This method gets called when a {@code SoundPlayback} is finished.
+     * Gets the related {@code Sound} instance.
      *
-     * @param event a {@link SoundEvent} object describing the event source and
-     *     the related {@link Sound}.
+     * @return The sound object.
      */
-    default void finished(SoundEvent event)
+    public Sound getSound()
     {
+        return this.sound;
+    }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + "[sound=" + this.sound.getName() + "]";
     }
 }

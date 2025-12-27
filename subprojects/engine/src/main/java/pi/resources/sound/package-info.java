@@ -1,4 +1,4 @@
 /**
  * Klassen zur <b>Audiowiedergabe</b>.
  */
-package pi.sound;
+package pi.resources.sound;
