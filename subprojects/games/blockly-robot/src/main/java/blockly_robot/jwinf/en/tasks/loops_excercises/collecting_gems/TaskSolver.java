@@ -7,6 +7,23 @@ import blockly_robot.robot.Solver;
  */
 public class TaskSolver extends Solver<Robot>
 {
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/easy_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/easy_solution.png"
+     * alt="">
+     */
     @Override
     public void easy(Robot robot)
     {
@@ -17,6 +34,23 @@ public class TaskSolver extends Solver<Robot>
         robot.forward();
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/medium_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/medium_solution.png"
+     * alt="">
+     */
     @Override
     public void medium(Robot robot)
     {
@@ -41,6 +75,23 @@ public class TaskSolver extends Solver<Robot>
         }
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/hard_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/collecting_gems/hard_solution.png"
+     * alt="">
+     */
     @Override
     public void hard(Robot robot)
     {

@@ -7,6 +7,23 @@ import blockly_robot.robot.Solver;
  */
 public class TaskSolver extends Solver<Robot>
 {
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/easy_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/easy_solution.png"
+     * alt="">
+     */
     @Override
     public void easy(Robot robot)
     {
@@ -21,6 +38,23 @@ public class TaskSolver extends Solver<Robot>
         robot.dropFirewood();
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/medium_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/medium_solution.png"
+     * alt="">
+     */
     @Override
     public void medium(Robot robot)
     {
@@ -42,6 +76,23 @@ public class TaskSolver extends Solver<Robot>
         }
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/hard_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/conditionals_excercises/heat_the_castle/hard_solution.png"
+     * alt="">
+     */
     @Override
     public void hard(Robot robot)
     {

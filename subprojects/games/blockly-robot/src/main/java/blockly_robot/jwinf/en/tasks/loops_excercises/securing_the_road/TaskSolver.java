@@ -7,6 +7,23 @@ import blockly_robot.robot.Solver;
  */
 public class TaskSolver extends Solver<Robot>
 {
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/easy_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/easy_solution.png"
+     * alt="">
+     */
     @Override
     public void easy(Robot robot)
     {
@@ -19,6 +36,23 @@ public class TaskSolver extends Solver<Robot>
         }
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/medium_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/medium_solution.png"
+     * alt="">
+     */
     @Override
     public void medium(Robot robot)
     {
@@ -37,6 +71,23 @@ public class TaskSolver extends Solver<Robot>
         }
     }
 
+    /**
+     * <p>
+     * Screenshot des Originals:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/hard_screenshot-orig.png"
+     * alt="">
+     *
+     * <p>
+     * Lösung in Blockly:
+     * </p>
+     *
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/blockly-robot/misc/solutions/loops_excercises/securing_the_road/hard_solution.png"
+     * alt="">
+     */
     @Override
     public void hard(Robot robot)
     {
