@@ -16,8 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+package demos.small_games.pong;
+
+import pi.actor.BodyType;
+import pi.actor.Rectangle;
 
 /**
- * https://www.learnj.de/doku.php?id=projects:pong:start
+ * Eine Abprallbalken als unsichtbares Rechteck am oberen und unteren
+ * Spielfeldrand, an denen der Ball abprallen kann.
+ *
+ * @author Josef Friedrich
  */
-package demos.small_games.pong;
+public class BounceBar extends Rectangle
+{
+    public BounceBar()
+    {
+        super(30, 1);
+        setBodyType(BodyType.STATIC);
+        setElasticity(1);
+        setVisible(false);
+    }
+}
