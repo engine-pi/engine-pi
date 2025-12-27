@@ -43,6 +43,8 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
+import pi.resources.color.ColorUtil;
+
 /**
  * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
  *

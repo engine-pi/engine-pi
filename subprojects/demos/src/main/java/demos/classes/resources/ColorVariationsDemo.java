@@ -27,8 +27,8 @@ import pi.actor.Actor;
 import pi.actor.Square;
 import pi.actor.Text;
 import pi.event.KeyStrokeListener;
-import pi.resources.ColorSchemeSelection;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorSchemeSelection;
+import pi.resources.color.ColorUtil;
 
 public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 {

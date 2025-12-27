@@ -24,8 +24,8 @@ import java.util.Map;
 import pi.Game;
 import pi.Resources;
 import pi.Scene;
-import pi.resources.ColorContainer;
-import pi.resources.NamedColor;
+import pi.resources.color.ColorContainer;
+import pi.resources.color.NamedColor;
 
 /**
  * <b>Visualisiert</b> den gegebenen <b>Speicher für Farben</b>.

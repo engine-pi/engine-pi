@@ -1,7 +1,7 @@
 package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
 import static pi.Resources.colorScheme;
-import static pi.util.ColorUtil.changeSaturation;
+import static pi.resources.color.ColorUtil.changeSaturation;
 import static pi.util.TimeUtil.sleep;
 
 import java.awt.Color;

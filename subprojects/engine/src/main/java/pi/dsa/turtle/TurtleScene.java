@@ -32,7 +32,7 @@ import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
 import pi.graphics.PaintingSurface;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorUtil;
 
 /*
  * Implementation so ähnlich wie <a href="https://github.com/engine-pi/engine-pi/blob/main/modules/games/blockly-robot/src/main/java/de/pirckheimer_gymnasium/blockly_robot/robot/gui/robot/ImageRobot.java">ImageRobot

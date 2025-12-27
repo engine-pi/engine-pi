@@ -18,7 +18,7 @@ package tetris;
 
 import java.awt.Color;
 
-import pi.util.ColorUtil;
+import pi.resources.color.ColorUtil;
 
 /**
  * Das klassische Gameboy-Spiel hat ein <b>Farbschema</b>, das aus nur <b>vier

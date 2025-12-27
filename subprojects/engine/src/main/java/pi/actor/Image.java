@@ -33,7 +33,7 @@ import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorUtil;
 
 /**
  * Ein Bild als grafische Repräsentation einer Bilddatei, die gezeichnet werden

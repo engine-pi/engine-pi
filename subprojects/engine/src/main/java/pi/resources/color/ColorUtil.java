@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.util;
+package pi.resources.color;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -31,6 +31,8 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+
+import pi.util.MathUtil;
 
 class HexColorString
 {

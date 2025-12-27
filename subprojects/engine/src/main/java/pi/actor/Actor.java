@@ -73,8 +73,8 @@ import pi.physics.NullHandler;
 import pi.physics.PhysicsData;
 import pi.physics.PhysicsHandler;
 import pi.physics.WorldHandler;
-import pi.resources.ColorContainer;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorContainer;
+import pi.resources.color.ColorUtil;
 import pi.util.Graphics2DUtil;
 import pi.util.TextUtil;
 
@@ -457,7 +457,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see pi.resources.ColorContainer#get(String)
+     * @see pi.resources.color.ColorContainer#get(String)
      */
     @API
     public Actor setColor(String color)

@@ -30,7 +30,7 @@ import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
 import pi.annotations.API;
 import pi.physics.FixtureData;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorUtil;
 
 /**
  * Ein Objekt, das aus n primitiven geometrischen Formen - <b>Dreiecken</b> -

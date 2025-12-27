@@ -28,7 +28,7 @@ import pi.actor.Actor;
 import pi.actor.Polygon;
 import pi.actor.Text;
 import pi.event.KeyStrokeListener;
-import pi.resources.ColorSchemeSelection;
+import pi.resources.color.ColorSchemeSelection;
 
 /**
  * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg

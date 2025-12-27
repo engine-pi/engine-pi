@@ -65,8 +65,9 @@ public class Graphics2DUtil
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      * @param size Die Größe der Schrift in pt (Points).
-     * @param color Ein Farbname wie er im {@link pi.resources.ColorContainer
-     *     ColorContainer} hinterlegt ist.
+     * @param color Ein Farbname wie er im
+     *     {@link pi.resources.color.ColorContainer ColorContainer} hinterlegt
+     *     ist.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
      *     wurde.
@@ -99,8 +100,9 @@ public class Graphics2DUtil
      * <b>Schriftfarbe</b>.
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param color Ein Farbname wie er im {@link pi.resources.ColorContainer
-     *     ColorContainer} hinterlegt ist.
+     * @param color Ein Farbname wie er im
+     *     {@link pi.resources.color.ColorContainer ColorContainer} hinterlegt
+     *     ist.
      *
      * @return Die Schriftart, die in das {@link Graphics2D}-Objekt gesetzt
      *     wurde.

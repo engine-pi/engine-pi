@@ -1,5 +1,7 @@
 package pi.resources;
 
+import pi.resources.color.ColorContainer;
+
 /**
  * Schnittstelle für die Ressourcenspeicher.
  *

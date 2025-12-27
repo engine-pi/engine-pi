@@ -42,7 +42,7 @@ import pi.actor.Rectangle;
 import pi.actor.Text;
 import pi.annotations.Internal;
 import pi.event.FrameUpdateListener;
-import pi.util.ColorUtil;
+import pi.resources.color.ColorUtil;
 
 /**
  * Zeigt eine <b>Animation</b>, wenn die <b>main</b>-Methode ausgeführt wird.

@@ -1,4 +1,4 @@
-package pi.resources;
+package pi.resources.color;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

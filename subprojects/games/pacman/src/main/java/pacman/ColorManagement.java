@@ -1,7 +1,7 @@
 package pacman;
 
 import pi.Resources;
-import pi.resources.ColorContainer;
+import pi.resources.color.ColorContainer;
 
 public class ColorManagement
 {
