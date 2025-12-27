@@ -27,7 +27,6 @@ package pi.graphics.boxes;
  */
 public abstract class LeafBox extends Box
 {
-
     public int numberOfChilds()
     {
         return 0;

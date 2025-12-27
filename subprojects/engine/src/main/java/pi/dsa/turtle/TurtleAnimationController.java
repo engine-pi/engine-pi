@@ -18,7 +18,7 @@
  */
 package pi.dsa.turtle;
 
-// Go to file: file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleAnimationControllerDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleAnimationControllerDemo.java
 
 /**
  * Steuert die <b>Animationen</b>, die während des Malprozesses der Schildkröte
