@@ -1,6 +1,4 @@
 [![Maven Central](https://img.shields.io/maven-central/v/de.pirckheimer-gymnasium/engine-pi.svg?style=flat)](https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/engine-pi)
-[![javadoc](https://javadoc.io/badge2/de.pirckheimer-gymnasium/engine-pi/javadoc.svg)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi)
-[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://engine-pi.github.io/engine-pi/)
 
 Dokumentation: https://engine-pi.github.io/engine-pi
 
@@ -8,7 +6,7 @@ Javadocs: https://engine-pi.github.io/javadocs/pi/package-summary.html
 
 # Über diese Game Engine
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg)
+[![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg)](https://engine-pi.github.io/engine-pi)
 
 Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
 einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an

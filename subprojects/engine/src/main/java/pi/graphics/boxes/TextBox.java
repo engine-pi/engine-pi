@@ -46,9 +46,6 @@ public abstract class TextBox extends LeafBox
      */
     protected String content;
 
-    /**
-     *
-     */
     protected double fontSize = 16;
 
     /**
@@ -85,7 +82,7 @@ public abstract class TextBox extends LeafBox
     {
         if (content == null)
         {
-            content = "";
+            content = " ";
         }
         this.content = String.valueOf(content);
         calculateDimension();
