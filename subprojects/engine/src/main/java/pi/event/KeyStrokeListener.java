@@ -41,8 +41,27 @@ public interface KeyStrokeListener
 {
     /**
      * Wird bei einem angemeldeten Beobachter aufgerufen, sobald eine Taste
-     * gedrückt wird. Die Methode wird erst dann wieder aufgerufen, wenn die
-     * Taste losgelassen und erneut gedrückt wurde.
+     * <b>gedrückt</b> wird. Die Methode wird erst dann wieder aufgerufen, wenn
+     * die Taste losgelassen und erneut gedrückt wurde.
+     *
+     * <pre>
+     * {@code
+     * @Override
+     * public void onKeyDown(KeyEvent e)
+     * {
+     *     switch (e.getKeyCode())
+     *     {
+     *     case KeyEvent.VK_UP:
+     *         circle.moveBy(0, 1);
+     *         break;
+     *
+     *     case KeyEvent.VK_RIGHT:
+     *         circle.moveBy(1, 0);
+     *         break;
+     *     }
+     * }
+     * }
+     * </pre>
      *
      * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
      *     welche Taste gedrückt würde. Die Tastennummer kann zum Beispiel über
@@ -53,7 +72,26 @@ public interface KeyStrokeListener
 
     /**
      * Wird bei einem angemeldeten Beobachter aufgerufen, sobald eine Taste
-     * losgelassen wurde, die vorher gedrückt war.
+     * <b>losgelassen</b> wurde, die vorher gedrückt war.
+     *
+     * <pre>
+     * {@code
+     * @Override
+     * public void onKeyUp(KeyEvent e)
+     * {
+     *     switch (e.getKeyCode())
+     *     {
+     *     case KeyEvent.VK_UP:
+     *         circle.moveBy(0, 1);
+     *         break;
+     *
+     *     case KeyEvent.VK_RIGHT:
+     *         circle.moveBy(1, 0);
+     *         break;
+     *     }
+     * }
+     * }
+     * </pre>
      *
      * @param event Ein {@link KeyEvent}-Objekt, das Informationen enthält,
      *     welche Taste gedrückt würde. Die Tastennummer kann zum Beispiel über

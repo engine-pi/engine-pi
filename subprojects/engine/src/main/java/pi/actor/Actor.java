@@ -1666,12 +1666,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Wirkt eine Kraft auf den <i>Schwerpunkt</i> des Objekts.
+     *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
      */
+    @API
     public final Actor applyForce(double forceX, double forceY)
     {
         applyForce(new Vector(forceX, forceY));
