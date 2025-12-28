@@ -18,6 +18,27 @@
  */
 
 /**
- * https://www.learnj.de/doku.php?id=projects:pong:start
+ * Implementation des Spielklassikers <b>Pong</b> auf der Engine Pi.
+ *
+ * <p>
+ * <a href="https://de.wikipedia.org/wiki/Pong">Pong</a> gilt als eines der
+ * ersten kommerziell erfolgreichen Computerspiele. Es wurde 1972 von
+ * <a href="https://de.wikipedia.org/wiki/Atari,_Inc._(1972)">Atari</a> unter
+ * der Leitung von <a href="https://de.wikipedia.org/wiki/Nolan_Bushnell">Nolan
+ * Bushnell</a> veröffentlicht und orientierte sich an einem einfachen
+ * Tischtennis-Spielprinzip. Zwei Spieler steuerten jeweils einen Schläger und
+ * versuchten, einen Ball über den Bildschirm hin- und herzuspielen.
+ * </p>
+ *
+ * <p>
+ * Weiterführende Links:
+ * </p>
+ *
+ * <ul>
+ * <li><a href="https://www.youtube.com/watch?v=N4mYYGykz7E">Video-Aufname auf
+ * einer originalen Spielautomaten</a></li>
+ * <li><a href="https://www.learnj.de/doku.php?id=projects:pong:start">Pong auf
+ * learnj.de</a></li>
+ * </ul>
  */
 package demos.small_games.pong;
