@@ -30,12 +30,12 @@ import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
 
 /**
- * Die Szene enthält zwei Schläger, einen Ball und zwei unsichtbare
+ * Der Ping-Pong-Tisch enthält zwei Schläger, einen Ball und zwei unsichtbare
  * Abprallflächen.
  *
  * @author Josef Friedrich
  */
-public class Pong extends Scene
+public class Table extends Scene
         implements KeyStrokeListener, FrameUpdateListener
 {
     /**
@@ -66,7 +66,7 @@ public class Pong extends Scene
     /**
      * Die sichtbare Fläche der Szene in Meter.
      */
-    private final Bounds table;
+    final Bounds bounds;
 
     /**
      * Damit man die Schläger mit gedrückter Taste bewegen kann und nicht
@@ -75,34 +75,34 @@ public class Pong extends Scene
      */
     private PressedKeyRepeater repeater;
 
-    public Pong()
+    public Table()
     {
-        table = getVisibleArea();
+        bounds = getVisibleArea();
 
-        left = new TableSide(Side.LEFT, table);
-        right = new TableSide(Side.RIGHT, table);
+        left = new TableSide(-1, this);
+        right = new TableSide(1, this);
 
         ball = new Ball();
         ball.setCenter(0, 0);
 
-        topBouncer = new BounceBar(table.width());
-        topBouncer.setPosition(table.xLeft(), table.yTop());
+        topBouncer = new BounceBar(bounds.width());
+        topBouncer.setPosition(bounds.xLeft(), bounds.yTop());
 
-        bottomBouncer = new BounceBar(table.width());
-        bottomBouncer.setPosition(table.xLeft(),
-                table.yBottom() - bottomBouncer.getHeight());
+        bottomBouncer = new BounceBar(bounds.width());
+        bottomBouncer.setPosition(bounds.xLeft(),
+                bounds.yBottom() - bottomBouncer.getHeight());
 
-        add(left.paddle, right.paddle, ball, topBouncer, bottomBouncer);
+        add(ball, topBouncer, bottomBouncer);
 
         repeater = new PressedKeyRepeater();
 
         // Steuerung für den linken Schläger
-        repeater.addListener(KeyEvent.VK_Q, () -> left.paddle.moveUp());
-        repeater.addListener(KeyEvent.VK_A, () -> left.paddle.moveDown());
+        repeater.addListener(KeyEvent.VK_Q, () -> left.movePaddleUp());
+        repeater.addListener(KeyEvent.VK_A, () -> left.movePaddleDown());
 
         // Steuerung für den rechten Schläger
-        repeater.addListener(KeyEvent.VK_UP, () -> right.paddle.moveUp());
-        repeater.addListener(KeyEvent.VK_DOWN, () -> right.paddle.moveDown());
+        repeater.addListener(KeyEvent.VK_UP, () -> right.movePaddleUp());
+        repeater.addListener(KeyEvent.VK_DOWN, () -> right.movePaddleDown());
     }
 
     /**
@@ -139,14 +139,21 @@ public class Pong extends Scene
     public void onFrameUpdate(double pastTime)
     {
         double x = ball.getCenter().getX();
-        if (x < table.xLeft() || x > table.xRight())
+        if (x < bounds.xLeft())
         {
+            left.increaseScore();
+            applyImpulseToBall();
+        }
+
+        else if (x > bounds.xRight())
+        {
+            right.increaseScore();
             applyImpulseToBall();
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(new Pong());
+        Game.start(new Table());
     }
 }

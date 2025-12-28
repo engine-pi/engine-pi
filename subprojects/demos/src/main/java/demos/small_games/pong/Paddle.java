@@ -18,7 +18,6 @@
  */
 package demos.small_games.pong;
 
-import pi.Bounds;
 import pi.Game;
 import pi.actor.BodyType;
 import pi.actor.Rectangle;
@@ -37,14 +36,9 @@ import pi.actor.Rectangle;
 public class Paddle extends Rectangle
 {
     /**
-     * Auf welcher Seite sich der Schläger befindet.
-     */
-    private final Side side;
-
-    /**
      * e Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    private final Bounds table;
+    private final Table table;
 
     /**
      * Entfernung, wie viele Meter ein Schläger bei einem Tastendruck nach oben
@@ -68,27 +62,24 @@ public class Paddle extends Rectangle
     private final boolean automatic = false;
 
     /**
+     * @param sideSign Gibt an, auf welcher Seite sich der Schläger befindet.
+     *
+     *     <p>
+     *     {@code +1} steht für rechts und {@code -1} für links. Da das Zentrum
+     *     des Koordinatensystems in der Mitte des Spielfensters liegt, kann
+     *     einfache Multiplikation mit diesem Attribut dazu verwendet werden, um
+     *     das Objekt richtig zu platzieren.
+     *     </p>
      * @param table Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    public Paddle(Side side, Bounds table)
+    public Paddle(int sideSign, Table table)
     {
         super(0.5, 5);
-        this.side = side;
         this.table = table;
         setColor("white");
         setBodyType(BodyType.STATIC);
         setElasticity(1);
-
-        double x;
-        if (side == Side.LEFT)
-        {
-            x = table.xLeft() + BORDER_PADDING;
-        }
-        else
-        {
-            x = table.xRight() - BORDER_PADDING - getWidth();
-        }
-        setPosition(x, 0);
+        setCenter(sideSign * (table.bounds.xRight() - BORDER_PADDING), 0);
     }
 
     public void moveUp()
@@ -99,8 +90,8 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() + getHeight() + MOVEMENT_DISTANCE - HIDDEN_LENGTH > table
-                .yTop())
+        if (getY() + getHeight() + MOVEMENT_DISTANCE
+                - HIDDEN_LENGTH > table.bounds.yTop())
         {
             return;
         }
@@ -116,7 +107,7 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < table.yBottom())
+        if (getY() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < table.bounds.yBottom())
         {
             return;
         }
@@ -126,6 +117,6 @@ public class Paddle extends Rectangle
 
     public static void main(String[] args)
     {
-        Game.start(new Pong());
+        Game.start(new Table());
     }
 }
