@@ -31,11 +31,13 @@ import demos.graphics2d.Graphics2DComponent;
 
 public class TextLineBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault().deriveFont(64f);
+    Font font = fonts.getDefault()
+            .deriveFont(64f);
 
     public void render(Graphics2D g)
     {
-        new TextLineBox("as standalone box").fontSize(32).anchor(500, 400)
+        new TextLineBox("as standalone box").fontSize(32)
+                .anchor(500, 400)
                 .render(g);
 
         var box = new VerticalBox<>(new TextLineBox("default"),
@@ -44,7 +46,8 @@ public class TextLineBoxDemo extends Graphics2DComponent
                 new TextLineBox("custom color").color("orange"),
                 new TextLineBox("custom content").content("updated content"));
         box.anchor(200, 100);
-        box.render(g).debug();
+        box.render(g)
+                .debug();
     }
 
     public static void main(String[] args)

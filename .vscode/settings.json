@@ -1,8 +1,9 @@
 {
-  "java.format.settings.url": "./subprojects/build-tools/src/main/resources/eclipse-formatter.xml",
+  "java.format.settings.url": "./subprojects/build-tools/src/main/resources/eclipse-formatter-ng.xml",
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
   "java.debug.settings.onBuildFailureProceed": true,
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx32G -Xms100m -Xlog:disable",
-  "editor.tabSize": 4,
   "java.dependency.packagePresentation": "hierarchical",
   "java.configuration.updateBuildConfiguration": "automatic",
   "maven.view": "flat",

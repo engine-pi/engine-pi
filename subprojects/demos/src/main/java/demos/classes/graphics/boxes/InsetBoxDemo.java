@@ -43,10 +43,12 @@ class InsetTestBox extends CombinedChildBox
     {
         textLine = new TextLineBox(content);
         innerBorder = new BorderBox(textLine);
-        innerBorder.thickness(1).color("gray");
+        innerBorder.thickness(1)
+                .color("gray");
         margin = new InsetBox(innerBorder);
         outerBorder = new BorderBox(margin);
-        outerBorder.thickness(2).color("blue");
+        outerBorder.thickness(2)
+                .color("blue");
         addChild(outerBorder);
     }
 
@@ -70,9 +72,13 @@ public class InsetBoxDemo extends Graphics2DComponent
         var allSides = box(".allSides(50)");
         allSides.margin.allSides(50);
         var different = box(".top(5).right(10).bottom(15).left(20)");
-        different.margin.top(5).right(10).bottom(15).left(20);
+        different.margin.top(5)
+                .right(10)
+                .bottom(15)
+                .left(20);
         new VerticalBox<>(defaultSettings, allSides, different).anchor(50, 50)
-                .render(g).debug();
+                .render(g)
+                .debug();
     }
 
     public static void main(String[] args)

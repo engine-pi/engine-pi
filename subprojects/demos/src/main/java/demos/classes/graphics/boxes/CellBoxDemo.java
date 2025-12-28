@@ -74,8 +74,13 @@ public class CellBoxDemo extends Graphics2DComponent
 
         new BackgroundBox(new CellBox(
                 new TextLineBox(String.format("%s %s", hAlign, vAlign)))
-                .hAlign(hAlign).vAlign(vAlign).width(180).height(150))
-                .color(colors.get("red")).anchor(x, y).render(g).debug();
+                .hAlign(hAlign)
+                .vAlign(vAlign)
+                .width(180)
+                .height(150)).color(colors.get("red"))
+                .anchor(x, y)
+                .render(g)
+                .debug();
     }
 
     public void render(Graphics2D g)
