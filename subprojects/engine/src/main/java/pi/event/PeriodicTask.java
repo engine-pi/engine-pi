@@ -26,7 +26,7 @@ package pi.event;
 public interface PeriodicTask
 {
     /**
-     * Die Methode wird bei jeder Wiederholung der Aufgabe ausgeführt.
+     * Diese Methode wird bei jeder Wiederholung der Aufgabe ausgeführt.
      *
      * @param counter Ein Zähler, der angibt, wie oft die Aufgabe bereits
      *     ausgeführt wurde.

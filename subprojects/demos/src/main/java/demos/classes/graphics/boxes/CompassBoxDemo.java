@@ -46,22 +46,12 @@ public class CompassBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        getCompasses(4, 100, 90).x(200)
-                .y(200)
-                .render(g)
-                .debug();
+        getCompasses(4, 100, 90).x(200).y(200).render(g).debug();
 
-        getCompasses(9, 20, 30).x(500)
-                .y(300)
-                .render(g)
-                .debug();
+        getCompasses(9, 20, 30).x(500).y(300).render(g).debug();
 
-        new CompassBox(200).direction(90)
-                .showOuterCircle()
-                .x(10)
-                .y(10)
-                .render(g)
-                .debug();
+        new CompassBox(200).direction(90).showOuterCircle().x(10).y(10)
+                .render(g).debug();
     }
 
     public static void main(String[] args)

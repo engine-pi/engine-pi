@@ -33,10 +33,9 @@ public class CellWidthHeightDemo extends Graphics2DComponent
 {
     public void render(Graphics2D g)
     {
-        new BackgroundBox(new CellBox(new DimensionBox()).width(200)
-                .height(200)).color(colors.get("red"))
-                .render(g)
-                .debug();
+        new BackgroundBox(
+                new CellBox(new DimensionBox()).width(200).height(200))
+                .color(colors.get("red")).render(g).debug();
     }
 
     public static void main(String[] args)

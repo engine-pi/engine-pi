@@ -50,11 +50,10 @@ public class GridBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        var box = new BorderBox(new GridBox<>(boxes(10)).columns(3)
-                .padding(10));
+        var box = new BorderBox(
+                new GridBox<>(boxes(10)).columns(3).padding(10));
         box.anchor(200, 100);
-        box.render(g)
-                .debug();
+        box.render(g).debug();
     }
 
     public static void main(String[] args)

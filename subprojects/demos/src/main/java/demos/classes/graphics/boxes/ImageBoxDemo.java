@@ -40,19 +40,13 @@ public class ImageBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        new VerticalBox<ImageBox>(box(), box().width(300)
-                .height(200),
-                box().width(16)
-                        .height(16))
-                .render(g)
-                .debug();
+        new VerticalBox<ImageBox>(box(), box().width(300).height(200),
+                box().width(16).height(16)).render(g).debug();
 
         new VerticalBox<ImageBox>(car(), car().flippedVertically(),
-                car().flippedHorizontally(), car().flippedVertically()
-                        .flippedHorizontally())
-                .anchor(400, 0)
-                .render(g)
-                .debug();
+                car().flippedHorizontally(),
+                car().flippedVertically().flippedHorizontally()).anchor(400, 0)
+                .render(g).debug();
     }
 
     public static void main(String[] args)

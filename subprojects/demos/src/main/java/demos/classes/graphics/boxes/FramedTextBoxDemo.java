@@ -35,8 +35,7 @@ import demos.graphics2d.Graphics2DComponent;
 
 public class FramedTextBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault()
-            .deriveFont(32f);
+    Font font = fonts.getDefault().deriveFont(32f);
 
     Color backgroundColor = colors.get("red");
 
@@ -60,13 +59,9 @@ public class FramedTextBoxDemo extends Graphics2DComponent
         var onlyBorderSize = new FramedTextBox("only borderSize");
         onlyBorderSize.border.thickness(13);
         new VerticalBox<Box>(allFeatures, onlyBackground, onlyBorderColor,
-                onlyBorderSize).anchor(0, 0)
-                .render(g)
-                .debug();
+                onlyBorderSize).anchor(0, 0).render(g).debug();
 
-        new FramedTextBox("default").x(300)
-                .render(g)
-                .debug();
+        new FramedTextBox("default").x(300).render(g).debug();
     }
 
     public static void main(String[] args)

@@ -35,15 +35,30 @@ import pi.event.KeyStrokeListener;
 public class Pong extends Scene
         implements KeyStrokeListener, FrameUpdateListener
 {
+    /**
+     * Der linke Schläger.
+     */
     private final Paddle paddleLeft;
 
+    /**
+     * Der rechte Schläger
+     */
     private final Paddle paddleRight;
 
+    /**
+     * Der Ball.
+     */
     private final Ball ball;
 
-    private final BounceBar topBorder;
+    /**
+     * Der obere unsichtbare Abprallbalken.
+     */
+    private final BounceBar topBouncer;
 
-    private final BounceBar bottomBorder;
+    /**
+     * Der untere unsichtbare Abprallbalken.
+     */
+    private final BounceBar bottomBouncer;
 
     /**
      * Die sichtbare Fläche der Szene in Meter.
@@ -54,23 +69,26 @@ public class Pong extends Scene
     {
         area = getVisibleArea();
 
+        double PADDLE_X_PADDING = 1;
+
         paddleLeft = new Paddle();
-        paddleLeft.setPosition(-11.5, 0);
+        paddleLeft.setPosition(area.xLeft() + PADDLE_X_PADDING, 0);
 
         paddleRight = new Paddle();
-        paddleRight.setPosition(11, 0);
+        paddleRight.setPosition(
+                area.xRight() - PADDLE_X_PADDING - paddleRight.getWidth(), 0);
 
         ball = new Ball();
         ball.setCenter(0, 0);
 
-        topBorder = new BounceBar(area.width()).debug();
-        topBorder.setPosition(area.xLeft(), area.yTop());
+        topBouncer = new BounceBar(area.width()).debug();
+        topBouncer.setPosition(area.xLeft(), area.yTop());
 
-        bottomBorder = new BounceBar(area.width()).debug();
-        bottomBorder.setPosition(area.xLeft(),
-                area.yBottom() - bottomBorder.getHeight());
+        bottomBouncer = new BounceBar(area.width()).debug();
+        bottomBouncer.setPosition(area.xLeft(),
+                area.yBottom() - bottomBouncer.getHeight());
 
-        add(paddleLeft, paddleRight, ball, topBorder, bottomBorder);
+        add(paddleLeft, paddleRight, ball, topBouncer, bottomBouncer);
     }
 
     @Override

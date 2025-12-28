@@ -42,8 +42,7 @@ public class BorderBoxDemo extends Graphics2DComponent
                 .color(colors.get("blue"));
 
         new VerticalBox<Box>(defaultSettings, lineWidth, lineColor).anchor(0, 0)
-                .render(g)
-                .debug();
+                .render(g).debug();
     }
 
     public static void main(String[] args)

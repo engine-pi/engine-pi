@@ -72,7 +72,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     private final List<PressedKeyExecutor> executors;
 
     /**
-     * Der Standardwert für das <b>Zeitintervall</b> (in Sekunden) nach dem die
+     * Der Standardwert für das <b>Zeitintervall</b> (in Sekunden), nach dem die
      * Aufgabe <b>wiederholt</b> wird.
      */
     private double DEFAULT_INTERVAL = 0.03;

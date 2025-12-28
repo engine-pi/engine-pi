@@ -1,5 +1,5 @@
 {
-  "java.format.settings.url": "./subprojects/build-tools/src/main/resources/eclipse-formatter-ng.xml",
+  "java.format.settings.url": "./subprojects/build-tools/src/main/resources/eclipse-formatter.xml",
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "java.debug.settings.onBuildFailureProceed": true,
