@@ -24,8 +24,11 @@ import pi.annotations.API;
 import pi.annotations.Internal;
 
 /**
- * Beschreibt eine Bewegung des Mausrads. Wird vom {@link MouseScrollListener}
- * genutzt.
+ * Beschreibt eine <b>Bewegung des Mausrads</b>.
+ *
+ * <p>
+ * Wird vom {@link MouseScrollListener} genutzt.
+ * </p>
  *
  * @author Michael Andonie
  *

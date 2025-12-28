@@ -74,7 +74,7 @@ nav:
       - tutorials/05_physics.md
       - tutorials/06_stateful-animation.md
       - tutorials/07_collision.md
-  - API (javadocs): https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/index.html
+  - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
   - java.md
   - download.md
 

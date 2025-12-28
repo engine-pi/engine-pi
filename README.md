@@ -11,14 +11,14 @@ Javadocs: https://engine-pi.github.io/javadocs/pi/package-summary.html
 ### Aufbau des Projekts
 
 Die Engine Pi nutzt das Build Tool [maven](https://maven.apache.org/). Das
-Projekt ist als sogenanntes [Multiple
-Modules](https://maven.apache.org/guides/mini/guide-multiple-modules.html)-Projekt
-strukturiert.
-Die eigentliche Engine befindet sich im Ordner `./subprojects/engine`.
+Projekt ist als sogenanntes [Multiple Modules bzw.
+Subprojects](https://maven.apache.org/guides/mini/guide-multiple-modules.html)-Projekt
+strukturiert. Die eigentliche Engine befindet sich im Ordner
+`./subprojects/engine`.
 
-| Pfad                          | artefactId              |
-| ----------------------------- | ----------------------- |
-| ./                            | engine-pi-meta          |
+| Pfad                              | artefactId              |
+| --------------------------------- | ----------------------- |
+| ./                                | engine-pi-meta          |
 | ./subprojects/engine              | engine-pi               |
 | ./subprojects/demos               | engine-pi-demos         |
 | ./subprojects/cli                 | engine-pi-cli           |

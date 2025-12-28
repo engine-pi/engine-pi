@@ -19,6 +19,8 @@
 package pi.event;
 
 /**
+ * Eine Schnittstelle für<b> regelmäßige Aufgaben</b>.
+ *
  * @author Josef Friedrich
  *
  * @since 0.5.0

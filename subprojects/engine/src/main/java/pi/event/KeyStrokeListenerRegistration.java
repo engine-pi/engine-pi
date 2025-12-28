@@ -22,6 +22,10 @@ package pi.event;
 
 import pi.annotations.API;
 
+/**
+ * Eine Schnittstelle zum <b>An- und Abmelden von Beobachtern</b>, die auf die
+ * <b>gedrückte Tasten</b> reagieren.
+ */
 public interface KeyStrokeListenerRegistration
 {
     EventListeners<KeyStrokeListener> getKeyStrokeListeners();

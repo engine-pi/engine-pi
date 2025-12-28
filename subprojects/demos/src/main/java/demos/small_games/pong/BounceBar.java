@@ -18,6 +18,7 @@
  */
 package demos.small_games.pong;
 
+import pi.Game;
 import pi.actor.BodyType;
 import pi.actor.Rectangle;
 
@@ -46,5 +47,10 @@ public class BounceBar extends Rectangle
         setVisible(true);
         setColor("gray");
         return this;
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new Pong());
     }
 }

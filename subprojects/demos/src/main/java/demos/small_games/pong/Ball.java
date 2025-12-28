@@ -18,6 +18,7 @@
  */
 package demos.small_games.pong;
 
+import pi.Game;
 import pi.actor.BodyType;
 import pi.actor.Circle;
 
@@ -34,5 +35,10 @@ public class Ball extends Circle
         setColor("white");
         setBodyType(BodyType.DYNAMIC);
         setElasticity(1);
+    }
+
+    public static void main(String[] args)
+    {
+        Game.start(new Pong());
     }
 }

@@ -25,8 +25,8 @@ import java.awt.event.KeyEvent;
 import pi.annotations.API;
 
 /**
- * Diese Schnittstelle wird implementiert, um auf gedrückte Tasten reagieren zu
- * können.
+ * Diese Schnittstelle wird implementiert, um auf <b>gedrückte Tasten</b>
+ * reagieren zu können.
  *
  * <p>
  * Diese Schnittstelle heißt nicht {@code KeyListener}, da es eine

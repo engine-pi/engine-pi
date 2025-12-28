@@ -25,6 +25,7 @@ import pi.Game;
 import pi.Scene;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.event.PressedKeyRepeater;
 
 /**
  * Die Szene enthält zwei Schläger, einen Ball und zwei unsichtbare
@@ -63,32 +64,43 @@ public class Pong extends Scene
     /**
      * Die sichtbare Fläche der Szene in Meter.
      */
-    private final Bounds area;
+    private final Bounds bounds;
+
+    /**
+     * Damit man die Schläger mit gedrückter Taste bewegen kann und nicht
+     * mehrmals auf einen Taste drücken muss, bis die Schläger an die bewünschte
+     * Position gelangen.
+     */
+    private PressedKeyRepeater repeater;
 
     public Pong()
     {
-        area = getVisibleArea();
+        bounds = getVisibleArea();
 
-        double PADDLE_X_PADDING = 1;
-
-        paddleLeft = new Paddle();
-        paddleLeft.setPosition(area.xLeft() + PADDLE_X_PADDING, 0);
-
-        paddleRight = new Paddle();
-        paddleRight.setPosition(
-                area.xRight() - PADDLE_X_PADDING - paddleRight.getWidth(), 0);
+        paddleLeft = new Paddle(Side.LEFT, bounds);
+        paddleRight = new Paddle(Side.RIGHT, bounds);
 
         ball = new Ball();
         ball.setCenter(0, 0);
 
-        topBouncer = new BounceBar(area.width()).debug();
-        topBouncer.setPosition(area.xLeft(), area.yTop());
+        topBouncer = new BounceBar(bounds.width());
+        topBouncer.setPosition(bounds.xLeft(), bounds.yTop());
 
-        bottomBouncer = new BounceBar(area.width()).debug();
-        bottomBouncer.setPosition(area.xLeft(),
-                area.yBottom() - bottomBouncer.getHeight());
+        bottomBouncer = new BounceBar(bounds.width());
+        bottomBouncer.setPosition(bounds.xLeft(),
+                bounds.yBottom() - bottomBouncer.getHeight());
 
         add(paddleLeft, paddleRight, ball, topBouncer, bottomBouncer);
+
+        repeater = new PressedKeyRepeater();
+
+        // Steuerung für den linken Schläger
+        repeater.addListener(KeyEvent.VK_Q, () -> paddleLeft.moveUp());
+        repeater.addListener(KeyEvent.VK_A, () -> paddleLeft.moveDown());
+
+        // Steuerung für den rechten Schläger
+        repeater.addListener(KeyEvent.VK_UP, () -> paddleRight.moveUp());
+        repeater.addListener(KeyEvent.VK_DOWN, () -> paddleRight.moveDown());
     }
 
     @Override
@@ -96,24 +108,6 @@ public class Pong extends Scene
     {
         switch (event.getKeyCode())
         {
-        // Steuerung für den linken Schläger
-        case KeyEvent.VK_Q:
-            paddleLeft.moveUp();
-            break;
-
-        case KeyEvent.VK_A:
-            paddleLeft.moveDown();
-            break;
-
-        // Steuerung für den rechten Schläger
-        case KeyEvent.VK_UP:
-            paddleRight.moveUp();
-            break;
-
-        case KeyEvent.VK_DOWN:
-            paddleRight.moveDown();
-            break;
-
         case KeyEvent.VK_ENTER:
             ball.applyImpulse(50, 100);
             break;
