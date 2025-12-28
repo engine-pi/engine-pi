@@ -27,6 +27,8 @@ import pi.annotations.Internal;
 
 /**
  * Diese Klasse liefert Methoden, die <b>zufällig verteilte Rückgaben</b> haben.
+ *
+ * @author Michael Andonie
  */
 @API
 public final class Random
@@ -58,9 +60,12 @@ public final class Random
 
     /**
      * Gibt einen <b>zufälligen</b> <code>int</code>-Wert zwischen
-     * <code>0</code> und einer festgelegten Obergrenze zurück.<br>
+     * <code>0</code> und einer festgelegten Obergrenze zurück.
+     *
+     * <p>
      * Die Wahrscheinlichkeiten für die Werte zwischen <code>0</code> und der
      * Obergrenze sind gleich groß.
+     * </p>
      *
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
@@ -81,9 +86,12 @@ public final class Random
 
     /**
      * Gibt einen <b>zufälligen</b> <code>int</code>-Wert zwischen einer
-     * festgelegten Unter- und Obergrenze zurück.<br>
+     * festgelegten Unter- und Obergrenze zurück.
+     *
+     * <p>
      * Die Wahrscheinlichkeiten für die Werte zwischen Unter- und Obergrenze
      * sind gleich groß.
+     * </p>
      *
      * @param lowerLimit Die niedrigste Zahl, die im Ergebnis vorkommen kann.
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
@@ -114,8 +122,12 @@ public final class Random
 
     /**
      * Gibt einen <b>zufälligen</b> <code>double</code>-Wert im Intervall
-     * <code>[0;1)</code> zurück. Die Wahrscheinlichkeit ist für alle möglichen
-     * Werte in diesem Intervall gleich groß.
+     * <code>[0;1]</code> zurück.
+     *
+     * <p>
+     * Die Wahrscheinlichkeit ist für alle möglichen Werte in diesem Intervall
+     * gleich groß.
+     * </p>
      *
      * @return Ein <code>double</code>Wert im Intervall <code>[0;1]</code>. Die
      *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
@@ -129,9 +141,12 @@ public final class Random
 
     /**
      * Gibt einen <b>zufälligen</b> <code>double</code>-Wert zwischen einer
-     * festgelegten Unter- und Obergrenze zurück.<br>
+     * festgelegten Unter- und Obergrenze zurück.
+     *
+     * <p>
      * Die Wahrscheinlichkeiten für die Werte zwischen Unter- und Obergrenze
      * sind gleich groß.
+     * </p>
      *
      * @param lowerLimit Die niedrigste Zahl, die im Ergebnis vorkommen kann.
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.

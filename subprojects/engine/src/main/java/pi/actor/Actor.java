@@ -1819,7 +1819,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * <p>
      * Damit werden alle (physikalischen) Bewegungen des Objektes zurückgesetzt.
      * Sollte eine konstante <i>Schwerkraft</i> (oder etwas Vergleichbares)
-     * existieren, wo wird dieses Objekt jedoch möglicherweise aus der Ruhelage
+     * existieren, wird dieses Objekt jedoch möglicherweise aus der Ruhelage
      * wieder in Bewegung versetzt.
      * </p>
      *

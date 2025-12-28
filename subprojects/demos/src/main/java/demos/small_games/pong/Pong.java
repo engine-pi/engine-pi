@@ -22,7 +22,9 @@ import java.awt.event.KeyEvent;
 
 import pi.Bounds;
 import pi.Game;
+import pi.Random;
 import pi.Scene;
+import pi.Vector;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
@@ -37,14 +39,14 @@ public class Pong extends Scene
         implements KeyStrokeListener, FrameUpdateListener
 {
     /**
-     * Der linke Schläger.
+     * Die linke Tischhälfte.
      */
-    private final Paddle paddleLeft;
+    private final TableSide left;
 
     /**
-     * Der rechte Schläger
+     * Die rechte Tischhälfte.
      */
-    private final Paddle paddleRight;
+    private final TableSide right;
 
     /**
      * Der Ball.
@@ -64,7 +66,7 @@ public class Pong extends Scene
     /**
      * Die sichtbare Fläche der Szene in Meter.
      */
-    private final Bounds bounds;
+    private final Bounds table;
 
     /**
      * Damit man die Schläger mit gedrückter Taste bewegen kann und nicht
@@ -75,32 +77,48 @@ public class Pong extends Scene
 
     public Pong()
     {
-        bounds = getVisibleArea();
+        table = getVisibleArea();
 
-        paddleLeft = new Paddle(Side.LEFT, bounds);
-        paddleRight = new Paddle(Side.RIGHT, bounds);
+        left = new TableSide(Side.LEFT, table);
+        right = new TableSide(Side.RIGHT, table);
 
         ball = new Ball();
         ball.setCenter(0, 0);
 
-        topBouncer = new BounceBar(bounds.width());
-        topBouncer.setPosition(bounds.xLeft(), bounds.yTop());
+        topBouncer = new BounceBar(table.width());
+        topBouncer.setPosition(table.xLeft(), table.yTop());
 
-        bottomBouncer = new BounceBar(bounds.width());
-        bottomBouncer.setPosition(bounds.xLeft(),
-                bounds.yBottom() - bottomBouncer.getHeight());
+        bottomBouncer = new BounceBar(table.width());
+        bottomBouncer.setPosition(table.xLeft(),
+                table.yBottom() - bottomBouncer.getHeight());
 
-        add(paddleLeft, paddleRight, ball, topBouncer, bottomBouncer);
+        add(left.paddle, right.paddle, ball, topBouncer, bottomBouncer);
 
         repeater = new PressedKeyRepeater();
 
         // Steuerung für den linken Schläger
-        repeater.addListener(KeyEvent.VK_Q, () -> paddleLeft.moveUp());
-        repeater.addListener(KeyEvent.VK_A, () -> paddleLeft.moveDown());
+        repeater.addListener(KeyEvent.VK_Q, () -> left.paddle.moveUp());
+        repeater.addListener(KeyEvent.VK_A, () -> left.paddle.moveDown());
 
         // Steuerung für den rechten Schläger
-        repeater.addListener(KeyEvent.VK_UP, () -> paddleRight.moveUp());
-        repeater.addListener(KeyEvent.VK_DOWN, () -> paddleRight.moveDown());
+        repeater.addListener(KeyEvent.VK_UP, () -> right.paddle.moveUp());
+        repeater.addListener(KeyEvent.VK_DOWN, () -> right.paddle.moveDown());
+    }
+
+    /**
+     * Wendet einen zufälligen Startimpuls auf den Ball an.
+     *
+     * <p>
+     * Der Ball wird zuerst in den Ruhezustand versetzt, dann auf die Position
+     * 0|0 und schießlich in eine zufällige Richtung geschleudert.
+     * </p>
+     */
+    public void applyImpulseToBall()
+    {
+        ball.resetMovement();
+        ball.setCenter(0, 0);
+        ball.applyImpulse(
+                Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
     }
 
     @Override
@@ -109,7 +127,7 @@ public class Pong extends Scene
         switch (event.getKeyCode())
         {
         case KeyEvent.VK_ENTER:
-            ball.applyImpulse(50, 100);
+            applyImpulseToBall();
             break;
 
         default:
@@ -120,6 +138,11 @@ public class Pong extends Scene
     @Override
     public void onFrameUpdate(double pastTime)
     {
+        double x = ball.getCenter().getX();
+        if (x < table.xLeft() || x > table.xRight())
+        {
+            applyImpulseToBall();
+        }
     }
 
     public static void main(String[] args)

@@ -24,7 +24,11 @@ import pi.actor.BodyType;
 import pi.actor.Rectangle;
 
 /**
- * Heißt im Deutschen oft Schläger
+ * Ein Schläger des Ping-Pong-Spiels.
+ *
+ * <p>
+ * Dieser Schläger wird als weißes Rechteck dargestellt.
+ * </p>
  *
  * @repolink https://github.com/MeghnaSaha/PongGame-JAVA/blob/master/Paddle.java
  *
@@ -38,9 +42,9 @@ public class Paddle extends Rectangle
     private final Side side;
 
     /**
-     * Die sichtbare Fläche der Szene in Meter.
+     * e Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    private final Bounds bounds;
+    private final Bounds table;
 
     /**
      * Entfernung, wie viele Meter ein Schläger bei einem Tastendruck nach oben
@@ -64,13 +68,13 @@ public class Paddle extends Rectangle
     private final boolean automatic = false;
 
     /**
-     * @param bounds Die sichtbare Fläche der Szene in Meter.
+     * @param table Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    public Paddle(Side side, Bounds bounds)
+    public Paddle(Side side, Bounds table)
     {
         super(0.5, 5);
         this.side = side;
-        this.bounds = bounds;
+        this.table = table;
         setColor("white");
         setBodyType(BodyType.STATIC);
         setElasticity(1);
@@ -78,11 +82,11 @@ public class Paddle extends Rectangle
         double x;
         if (side == Side.LEFT)
         {
-            x = bounds.xLeft() + BORDER_PADDING;
+            x = table.xLeft() + BORDER_PADDING;
         }
         else
         {
-            x = bounds.xRight() - BORDER_PADDING - getWidth();
+            x = table.xRight() - BORDER_PADDING - getWidth();
         }
         setPosition(x, 0);
     }
@@ -95,7 +99,7 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() + getHeight() + MOVEMENT_DISTANCE - HIDDEN_LENGTH > bounds
+        if (getY() + getHeight() + MOVEMENT_DISTANCE - HIDDEN_LENGTH > table
                 .yTop())
         {
             return;
@@ -112,7 +116,7 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < bounds.yBottom())
+        if (getY() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < table.yBottom())
         {
             return;
         }
