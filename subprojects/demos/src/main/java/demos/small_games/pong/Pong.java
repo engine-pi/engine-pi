@@ -20,8 +20,10 @@ package demos.small_games.pong;
 
 import java.awt.event.KeyEvent;
 
+import pi.Bounds;
 import pi.Game;
 import pi.Scene;
+import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 
 /**
@@ -30,20 +32,28 @@ import pi.event.KeyStrokeListener;
  *
  * @author Josef Friedrich
  */
-public class Pong extends Scene implements KeyStrokeListener
+public class Pong extends Scene
+        implements KeyStrokeListener, FrameUpdateListener
 {
-    Paddle paddleLeft;
+    private final Paddle paddleLeft;
 
-    Paddle paddleRight;
+    private final Paddle paddleRight;
 
-    Ball ball;
+    private final Ball ball;
 
-    BounceBar topBorder;
+    private final BounceBar topBorder;
 
-    BounceBar bottomBorder;
+    private final BounceBar bottomBorder;
+
+    /**
+     * Die sichtbare Fläche der Szene in Meter.
+     */
+    private final Bounds area;
 
     public Pong()
     {
+        area = getVisibleArea();
+
         paddleLeft = new Paddle();
         paddleLeft.setPosition(-11.5, 0);
 
@@ -53,11 +63,12 @@ public class Pong extends Scene implements KeyStrokeListener
         ball = new Ball();
         ball.setCenter(0, 0);
 
-        topBorder = new BounceBar();
-        topBorder.setPosition(-15, 9);
+        topBorder = new BounceBar(area.width()).debug();
+        topBorder.setPosition(area.xLeft(), area.yTop());
 
-        bottomBorder = new BounceBar();
-        bottomBorder.setPosition(-15, -10);
+        bottomBorder = new BounceBar(area.width()).debug();
+        bottomBorder.setPosition(area.xLeft(),
+                area.yBottom() - bottomBorder.getHeight());
 
         add(paddleLeft, paddleRight, ball, topBorder, bottomBorder);
     }
@@ -67,20 +78,22 @@ public class Pong extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
+        // Steuerung für den linken Schläger
         case KeyEvent.VK_Q:
-            paddleLeft.moveBy(0, 2);
+            paddleLeft.moveUp();
             break;
 
         case KeyEvent.VK_A:
-            paddleLeft.moveBy(0, -2);
+            paddleLeft.moveDown();
             break;
 
+        // Steuerung für den rechten Schläger
         case KeyEvent.VK_UP:
-            paddleRight.moveBy(0, 2);
+            paddleRight.moveUp();
             break;
 
         case KeyEvent.VK_DOWN:
-            paddleRight.moveBy(0, -2);
+            paddleRight.moveDown();
             break;
 
         case KeyEvent.VK_ENTER:
@@ -90,6 +103,11 @@ public class Pong extends Scene implements KeyStrokeListener
         default:
             break;
         }
+    }
+
+    @Override
+    public void onFrameUpdate(double pastTime)
+    {
     }
 
     public static void main(String[] args)

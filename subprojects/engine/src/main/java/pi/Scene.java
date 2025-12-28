@@ -299,6 +299,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Gibt die sichtbare Fläche auf der <b>Hauptebene</b> aus.
      *
+     * @param gameSizeInPixels Die Größe des Spielfensters in Pixel.
+     *
      * @return Die sichtbare Fläche auf der Hauptebene
      *
      * @see Game#getWindowSize()
@@ -307,6 +309,21 @@ public class Scene implements KeyStrokeListenerRegistration,
     public Bounds getVisibleArea(Vector gameSizeInPixels)
     {
         return mainLayer.getVisibleArea(gameSizeInPixels);
+    }
+
+    /**
+     * Gibt die sichtbare Fläche auf der <b>Hauptebene</b> aus.
+     *
+     * @return Die sichtbare Fläche auf der Hauptebene
+     *
+     * @see Game#getWindowSize()
+     *
+     * @since 0.42.0
+     */
+    @API
+    public Bounds getVisibleArea()
+    {
+        return mainLayer.getVisibleArea(Game.getWindowSize());
     }
 
     /**

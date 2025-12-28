@@ -30,11 +30,40 @@ import pi.actor.Rectangle;
  */
 public class Paddle extends Rectangle
 {
+    /**
+     * Entfernung, wie viele Meter ein Schläger bei einem Tastendruck nach oben
+     * oder nach unten bewegt werden soll.
+     */
+    private final double DISTANCE = 1.5;
+
+    /**
+     * Im automatischen Modus folgt der Schläger dem Ball.
+     */
+    private final boolean automatic = false;
+
     public Paddle()
     {
         super(0.5, 5);
         setColor("white");
         setBodyType(BodyType.STATIC);
         setElasticity(1);
+    }
+
+    public void moveUp()
+    {
+        if (automatic)
+        {
+            return;
+        }
+        moveBy(0, DISTANCE);
+    }
+
+    public void moveDown()
+    {
+        if (automatic)
+        {
+            return;
+        }
+        moveBy(0, -DISTANCE);
     }
 }

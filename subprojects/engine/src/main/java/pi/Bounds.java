@@ -21,6 +21,7 @@
 package pi;
 
 import pi.annotations.Internal;
+import pi.debug.ToStringFormatter;
 
 /**
  * Ein <b>nicht-grafisches Rechteck</b> auf der Zeichenebene, das eine
@@ -348,20 +349,6 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
-     * Gibt eine String-Repräsentation dieses Objektes aus.
-     *
-     * @return Die String-Repräsentation dieses Objektes. Hierin wird Auskunft
-     *     über alle 4 ausschlaggebenden Zahlen (<code>x</code>, <code>y</code>,
-     *     <code>getWidth</code> und <code>getHeight</code> gemacht).
-     */
-    @Override
-    public String toString()
-    {
-        return "Bounding-Rectangle: getX:" + x + " getY: " + y + " getWidth: "
-                + width + " getHeight: " + height;
-    }
-
-    /**
      * Gibt die <b>reelle</b> X-Koordinate der unteren linken Ecke aus.
      *
      * @return Die <b>reelle</b> X-Koordinate der unteren linken Ecke dieses
@@ -375,6 +362,34 @@ public record Bounds(double x, double y, double width, double height)
     public double x()
     {
         return x;
+    }
+
+    /**
+     * Die <b>x</b>-Koordinate der <b>linken</b> Ecken.
+     *
+     * <p>
+     * Dieser Wert entspricht {@link #x()}.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    public double xLeft()
+    {
+        return x;
+    }
+
+    /**
+     * Die <b>x</b>-Koordinate der <b>rechten</b> Ecken.
+     *
+     * <p>
+     * Dieser Wert entspricht {@link #x()} + {@link #width()}.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    public double xRight()
+    {
+        return x + width;
     }
 
     /**
@@ -394,13 +409,41 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * Die y-Koordinate der <b>oberen</b> Ecken.
+     *
+     * <p>
+     * Dieser Wert entspricht {@link #y()} + {@link #height()}.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    public double yTop()
+    {
+        return y + height;
+    }
+
+    /**
+     * Die <b>y</b>-Koordinate der <b>untern</b> Ecken.
+     *
+     * <p>
+     * Dieser Wert entspricht {@link #y()}
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    public double yBottom()
+    {
+        return y;
+    }
+
+    /**
      * Gibt die <b>reelle</b> Breite aus.
      *
      * @return Die <b>reelle</b> Breite dieses {@link Bounds}-Rechtecks.
      *
-     * @see #x ()
-     * @see #y ()
-     * @see #height ()
+     * @see #x()
+     * @see #y()
+     * @see #height()
      */
     @Override
     public double width()
@@ -413,9 +456,9 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @return Die <b>reelle</b> Höhe dieses {@link Bounds}-Rechtecks.
      *
-     * @see #x ()
-     * @see #y ()
-     * @see #width ()
+     * @see #x()
+     * @see #y()
+     * @see #width()
      */
     @Override
     public double height()
@@ -433,5 +476,16 @@ public record Bounds(double x, double y, double width, double height)
     public Vector getPosition()
     {
         return new Vector(x, y);
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter(this);
+        formatter.append("x", x, "m");
+        formatter.append("y", y, "m");
+        formatter.append("width", width, "m");
+        formatter.append("height", height, "m");
+        return formatter.format();
     }
 }

@@ -23,17 +23,28 @@ import pi.actor.Rectangle;
 
 /**
  * Eine Abprallbalken als unsichtbares Rechteck am oberen und unteren
- * Spielfeldrand, an denen der Ball abprallen kann.
+ * Spielfeldrand, an dem der Ball abprallen kann.
  *
  * @author Josef Friedrich
  */
 public class BounceBar extends Rectangle
 {
-    public BounceBar()
+    public BounceBar(double width)
     {
-        super(30, 1);
+        super(width, 1);
         setBodyType(BodyType.STATIC);
         setElasticity(1);
         setVisible(false);
+    }
+
+    /**
+     * Macht den Abprallbalken sichtbar, um überprüfen zu können, ob er richtig
+     * platziert ist.
+     */
+    public BounceBar debug()
+    {
+        setVisible(true);
+        setColor("gray");
+        return this;
     }
 }
