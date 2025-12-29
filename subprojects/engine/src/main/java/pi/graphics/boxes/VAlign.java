@@ -19,10 +19,28 @@
 package pi.graphics.boxes;
 
 /**
+ * Die <b>vertikale</b> Ausrichtung.
+ *
+ * @author Josef Friedrich
+ *
  * @see <a href=
- *     "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/vertical-align">CSS</a>
+ *     "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/vertical-align">CSS-Referenz:
+ *     vertical-align</a>
  */
 public enum VAlign
 {
-    TOP, MIDDLE, BOTTOM
+    /**
+     * Richtet die Box <b>oben</b> aus.
+     */
+    TOP,
+
+    /**
+     * Richtet die Box in der <b>Mitte</b> aus.
+     */
+    MIDDLE,
+
+    /**
+     * Richtet die Box <b>unten</b> aus.
+     */
+    BOTTOM
 }

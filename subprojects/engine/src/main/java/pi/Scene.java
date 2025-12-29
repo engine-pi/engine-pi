@@ -129,7 +129,7 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     /**
      * @return Eine <b>Infobox</b>, die <b>über</b> eine <b>Szene</b> gelegt
-     *     werden kann.
+     *     wird.
      *
      * @since 0.42.0
      */
@@ -140,6 +140,29 @@ public class Scene implements KeyStrokeListenerRegistration,
             info = new SceneInfoOverlay(this);
         }
         return info;
+    }
+
+    public SceneInfoOverlay info(String title)
+    {
+        return info().title(title);
+    }
+
+    public SceneInfoOverlay info(String title, String subtitle)
+    {
+        return info().title(title).subtitle(subtitle);
+    }
+
+    public SceneInfoOverlay info(String title, String subtitle,
+            String description)
+    {
+        return info().title(title).subtitle(subtitle).description(description);
+    }
+
+    public SceneInfoOverlay info(String title, String subtitle,
+            String description, String help)
+    {
+        return info().title(title).subtitle(subtitle).description(description)
+                .help(help);
     }
 
     /**

@@ -44,6 +44,10 @@ public class InsetBox extends ChildBox
 
     int left = 0;
 
+    public InsetBox()
+    {
+    }
+
     /**
      * Erzeugt einen neuen <b>Außenabstand</b> durch die Angabe der enthaltenen
      * Kind-Box. Rahmen

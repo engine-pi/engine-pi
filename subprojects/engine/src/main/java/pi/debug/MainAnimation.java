@@ -61,7 +61,7 @@ import pi.resources.color.ColorUtil;
  * @hidden
  */
 @Internal
-public final class MainAnimation extends Scene implements FrameUpdateListener
+public class MainAnimation extends Scene implements FrameUpdateListener
 {
     /**
      * Eine etwas dunklere Farbe, damit sich die kleinen Figuren vom Logo
@@ -109,10 +109,10 @@ public final class MainAnimation extends Scene implements FrameUpdateListener
             createCircleItem();
             createTriangleItem();
         }
-        Text text = new Text("Build #" + Version.getGitCommitIdAbbrev() + "   "
+        Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
-        text.setPosition(-10, 9);
-        text.setColor(Color.WHITE);
+        text.setPosition(-10, 8.5);
+        text.setColor("gray");
         text.makeStatic();
         add(text);
     }

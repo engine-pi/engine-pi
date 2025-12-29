@@ -18,16 +18,22 @@
  */
 package pi.graphics;
 
+import static pi.Resources.colors;
+
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.function.Function;
 
 import pi.Scene;
 import pi.annotations.API;
+import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.event.SingleTask;
+import pi.graphics.boxes.BackgroundBox;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.CellBox;
 import pi.graphics.boxes.HAlign;
+import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextBlockBox;
 import pi.graphics.boxes.TextBox;
 import pi.graphics.boxes.TextLineBox;
@@ -40,11 +46,28 @@ import pi.resources.font.FontStyle;
 /**
  * Eine <b>Infobox</b>, die <b>über</b> eine <b>Szene</b> gelegt werden kann.
  *
+ * <p>
  * Sie wird standardmäßig nach einer gewissen Zeit wieder ausgeblendet.
+ * </p>
+ *
+ * <p>
+ * Die Infobox kann vier Zeichenketten enthalten:
+ * </p>
+ *
+ * <ul>
+ * <li>{@link #title}: Der <b>Titel</b> der Szene.</li>
+ * <li>{@link #subtitle}: Der <b>Untertitel</b> der Szene.</li>
+ * <li>{@link #description}: Ein längerer, mehrzeiliger <b>Beschreibungstext</b>
+ * zur Szene.</li>
+ * <li>{@link #help}: Ein längerer, mehrzeiliger <b>Hilfetext</b> zur
+ * Szene.</li>
+ * </ul>
  *
  * @author Josef Friedrich
  *
  * @since 0.42.0
+ *
+ * @see Scene#info()
  */
 public class SceneInfoOverlay
 {
@@ -71,7 +94,7 @@ public class SceneInfoOverlay
     private TextBox subtitle = null;
 
     /**
-     * Ein längerer <b>Beschreibungstext</b> zur Szene.
+     * Ein längerer, mehrzeiliger <b>Beschreibungstext</b> zur Szene.
      *
      * <p>
      * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
@@ -82,7 +105,7 @@ public class SceneInfoOverlay
     private TextBox description = null;
 
     /**
-     * Ein <b>Hilfetext</b> zur Szene.
+     * Ein längerer, mehrzeiliger <b>Hilfetext</b> zur Szene.
      *
      * <p>
      * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
@@ -92,6 +115,8 @@ public class SceneInfoOverlay
      */
     private TextBox help = null;
 
+    private Color textColor = colors.get("black");
+
     /**
      * Die Infobox wird nicht nach einer gewissen Zeit ausgeblendet, sondern ist
      * <b>permanent</b> zu sehen.
@@ -99,15 +124,24 @@ public class SceneInfoOverlay
     private boolean permanent = false;
 
     /**
-     * Wie viele Sekunden die Infobox angezeigt werden soll.
+     * Die Anzeigedauer der Infobox in Sekunden.
      */
     private double duration = 5;
 
+    private CellBox cell;
+
+    public final InsetBox margin;
+
+    public final BackgroundBox background;
+
     private VerticalBox<Box> vertical;
 
-    private CellBox cell = new CellBox().hAlign(HAlign.RIGHT)
-            .vAlign(VAlign.TOP);
-
+    /**
+     * Die Referenz auf die übergeordnete Szene wird benötigt, um Zugriff auf
+     * die
+     * {@link pi.event.FrameUpdateListenerRegistration#delay(double, Runnable)
+     * delay}-Methode zu haben.
+     */
     private final Scene scene;
 
     /**
@@ -118,6 +152,9 @@ public class SceneInfoOverlay
     public SceneInfoOverlay(Scene scene)
     {
         this.scene = scene;
+        background = new BackgroundBox().color(colors.get("white", 150));
+        margin = new InsetBox(background).allSides(10);
+        cell = new CellBox(margin).hAlign(HAlign.RIGHT).vAlign(VAlign.TOP);
         startHideTask();
     }
 
@@ -155,7 +192,9 @@ public class SceneInfoOverlay
     }
 
     /**
-     * Baut den Boxenbaum neu auf.
+     * Setzt die Anzeigedauer der Infobox in Sekunden.
+     *
+     * @param duration Die Anzeigedauer der Infobox in Sekunden.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -177,6 +216,11 @@ public class SceneInfoOverlay
 
     /**
      * Baut den Boxenbaum neu auf.
+     *
+     * <p>
+     * Diese Methode muss jedes mal ausgeführt werden, wenn ein Text gesetzt
+     * wird.
+     * </p>
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -207,8 +251,7 @@ public class SceneInfoOverlay
         {
             vertical.addChild(help);
         }
-
-        cell.addChild(vertical);
+        background.addChild(vertical);
         return this;
     }
 
@@ -247,7 +290,7 @@ public class SceneInfoOverlay
     public SceneInfoOverlay title(String title)
     {
         this.title = setBox(title, content -> new TextLineBox(content)
-                .fontStyle(FontStyle.BOLD).fontSize(18));
+                .fontStyle(FontStyle.BOLD).fontSize(18)).color(textColor);
         return assemble();
     }
 
@@ -271,18 +314,20 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay subtitle(String subtitle)
     {
-        this.subtitle = setBox(subtitle, content -> new TextLineBox(content));
+        this.subtitle = setBox(subtitle, content -> new TextLineBox(content))
+                .color(textColor);;
         return assemble();
     }
 
     /**
-     * Setzt den längerer <b>Beschreibungstext</b> zur Szene.
+     * Setzt den längerer, mehrzeiliger <b>Beschreibungstext</b> zur Szene.
      *
      * <p>
      * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
      * </p>
      *
-     * @param description Ein längerer <b>Beschreibungstext</b> zur Szene.
+     * @param description Ein längerer, mehrzeiliger <b>Beschreibungstext</b>
+     *     zur Szene.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -296,7 +341,8 @@ public class SceneInfoOverlay
     public SceneInfoOverlay description(String description)
     {
         this.description = setBox(description,
-                content -> new TextBlockBox(description).fontSize(12));
+                content -> new TextBlockBox(description).fontSize(12))
+                .color(textColor);;
         return assemble();
     }
 
@@ -320,17 +366,63 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay help(String help)
     {
-        this.help = setBox(help,
-                content -> new TextBlockBox(help).fontSize(12));
+        this.help = setBox(help, content -> new TextBlockBox(help).fontSize(12))
+                .color(textColor);
         return assemble();
     }
 
     /**
+     * Setzt die <b>Textfarbe</b>.
+     *
+     * @param textColor die <b>Textfarbe</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
+     *     gekettete Setter festgelegt werden können, z. B.
+     *     {@code info().title(..).subtitle(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public SceneInfoOverlay textColor(Color textColor)
+    {
+        this.textColor = textColor;
+        if (title != null)
+        {
+            title.color(textColor);
+        }
+
+        if (subtitle != null)
+        {
+            subtitle.color(textColor);
+        }
+
+        if (description != null)
+        {
+            description.color(textColor);
+        }
+
+        if (help != null)
+        {
+            help.color(textColor);
+        }
+
+        return this;
+    }
+
+    /**
+     * Setzt die <b>horizonale</b> Ausrichtung der Infobox.
+     *
+     * @param hAlign Die <b>horizonale</b> Ausrichtung der Infobox.
+     *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
      *     gekettete Setter festgelegt werden können, z. B.
      *     {@code info().title(..).subtitle(..)}.
      */
+    @Setter
+    @API
     public SceneInfoOverlay hAlign(HAlign hAlign)
     {
         cell.hAlign(hAlign);
@@ -338,11 +430,17 @@ public class SceneInfoOverlay
     }
 
     /**
+     * Setzt die <b>vertikale</b> Ausrichtung der Infobox.
+     *
+     * @param vAlign Die <b>vertikale</b> Ausrichtung der Infobox.
+     *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
      *     gekettete Setter festgelegt werden können, z. B.
      *     {@code info().title(..).subtitle(..)}.
      */
+    @Setter
+    @API
     public SceneInfoOverlay vAlign(VAlign vAlign)
     {
         cell.vAlign(vAlign);
@@ -354,7 +452,10 @@ public class SceneInfoOverlay
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
      *     gekettete Setter festgelegt werden können, z. B.
      *     {@code info().title(..).subtitle(..)}.
+     *
+     * @hidden
      */
+    @Internal
     public SceneInfoOverlay render(Graphics2D g, int width, int height)
     {
         cell.width(width).height(height).remeasure().render(g);
@@ -369,6 +470,7 @@ public class SceneInfoOverlay
      *     gekettete Setter festgelegt werden können, z. B.
      *     {@code info().title(..).subtitle(..)}.
      */
+    @API
     public SceneInfoOverlay disable()
     {
         cell.disable();
@@ -376,7 +478,8 @@ public class SceneInfoOverlay
     }
 
     /**
-     * Schaltet zwischen dem Status deaktiviert und aktiviert hin- und her.
+     * Schaltet zwischen dem Status <b>deaktiviert</b> und <b>aktiviert</b>
+     * <b>hin</b>- und <b>her</b>.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -385,6 +488,7 @@ public class SceneInfoOverlay
      *
      * @since 0.42.0
      */
+    @API
     public SceneInfoOverlay toggle()
     {
         cell.toggle();

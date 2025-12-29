@@ -21,24 +21,65 @@ package demos.classes.graphics;
 import java.awt.event.KeyEvent;
 
 import pi.Game;
-import pi.Scene;
+import pi.debug.MainAnimation;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.VAlign;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/SceneInfoOverlay.java
 
-public class SceneInfoOverlayDemo extends Scene implements KeyStrokeListener
+public class SceneInfoOverlayDemo extends MainAnimation
+        implements KeyStrokeListener
 {
+    String lorem = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+
+    String descriptionText = "Ein längerer Beschreibungstext";
+
+    boolean showLongDescription = false;
+
+    String helpText = "Ein Hilfetext";
+
+    boolean showLongHelp = false;
+
     public SceneInfoOverlayDemo()
     {
         info().title("Der Titel der Szene")
                 //
                 .subtitle("Der Untertitel der Szene")
                 //
-                .description("Ein längerer Beschreibungstext")
+                .description(descriptionText)
                 //
-                .help("Ein Hilfetext").permanent();
+                .help(helpText).permanent();
+    }
+
+    public void toggleDescriptionText()
+    {
+        showLongDescription = !showLongDescription;
+        String description;
+        if (showLongDescription)
+        {
+            description = lorem;
+        }
+        else
+        {
+            description = descriptionText;
+        }
+        info().description(description);
+    }
+
+    public void toggleHelpText()
+    {
+        showLongHelp = !showLongHelp;
+        String help;
+        if (showLongHelp)
+        {
+            help = lorem;
+        }
+        else
+        {
+            help = helpText;
+        }
+        info().help(help);
     }
 
     @Override
@@ -70,8 +111,52 @@ public class SceneInfoOverlayDemo extends Scene implements KeyStrokeListener
             info().hAlign(HAlign.RIGHT);
             break;
 
+        case KeyEvent.VK_NUMPAD1:
+            info().hAlign(HAlign.LEFT).vAlign(VAlign.BOTTOM);
+            break;
+
+        case KeyEvent.VK_NUMPAD2:
+            info().hAlign(HAlign.CENTER).vAlign(VAlign.BOTTOM);
+            break;
+
+        case KeyEvent.VK_NUMPAD3:
+            info().hAlign(HAlign.RIGHT).vAlign(VAlign.BOTTOM);
+            break;
+
+        case KeyEvent.VK_NUMPAD4:
+            info().hAlign(HAlign.LEFT).vAlign(VAlign.MIDDLE);
+            break;
+
+        case KeyEvent.VK_NUMPAD5:
+            info().hAlign(HAlign.CENTER).vAlign(VAlign.MIDDLE);
+            break;
+
+        case KeyEvent.VK_NUMPAD6:
+            info().hAlign(HAlign.RIGHT).vAlign(VAlign.MIDDLE);
+            break;
+
+        case KeyEvent.VK_NUMPAD7:
+            info().hAlign(HAlign.LEFT).vAlign(VAlign.TOP);
+            break;
+
+        case KeyEvent.VK_NUMPAD8:
+            info().hAlign(HAlign.CENTER).vAlign(VAlign.TOP);
+            break;
+
+        case KeyEvent.VK_NUMPAD9:
+            info().hAlign(HAlign.RIGHT).vAlign(VAlign.TOP);
+            break;
+
         case KeyEvent.VK_T:
             info().toggle();
+            break;
+
+        case KeyEvent.VK_D:
+            toggleDescriptionText();
+            break;
+
+        case KeyEvent.VK_H:
+            toggleHelpText();
             break;
         }
     }

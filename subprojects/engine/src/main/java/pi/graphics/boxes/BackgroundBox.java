@@ -41,6 +41,10 @@ public class BackgroundBox extends ChildBox
      */
     Color color = null;
 
+    public BackgroundBox()
+    {
+    }
+
     public BackgroundBox(Box child)
     {
         super(child);
