@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 /**
@@ -118,6 +119,9 @@ public abstract class Box implements Iterable<Box>
      */
     protected int y;
 
+    /**
+     * Die Box wird nicht gezeichnet, wenn sie deaktiviert ist.
+     */
     protected boolean disabled = false;
 
     /**
@@ -138,6 +142,7 @@ public abstract class Box implements Iterable<Box>
 
     /* Setter */
 
+    @Setter
     public Box width(int width)
     {
         if (supportsDefinedDimension)
@@ -147,6 +152,7 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
+    @Setter
     public Box height(int height)
     {
         if (supportsDefinedDimension)
@@ -168,6 +174,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
+    @Setter
     public Box x(int x)
     {
         this.x = x;
@@ -186,6 +193,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
+    @Setter
     public Box y(int y)
     {
         this.y = y;
@@ -206,6 +214,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
+    @Setter
     public Box anchor(int x, int y)
     {
         this.x = x;
@@ -213,21 +222,69 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
-    public Box disable(boolean disabled)
+    /**
+     * Setzt den Deaktiviert-Stauts.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    public Box disabled(boolean disabled)
     {
         this.disabled = disabled;
         return this;
     }
 
+    /**
+     * <b>Deaktiviert</b> die Box.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.42.0
+     */
     public Box disable()
     {
         this.disabled = true;
         return this;
     }
 
+    /**
+     * <b>Aktiviert</b> die Box.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.42.0
+     */
     public Box enable()
     {
         disabled = false;
+        return this;
+    }
+
+    /**
+     * <b>Schaltet</b> zwischen dem Status <b>deaktiviert</b> und
+     * <b>aktiviert</b> <b>hin- und her</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.42.0
+     */
+    public Box toggle()
+    {
+        disabled = !disabled;
         return this;
     }
 
@@ -417,7 +474,10 @@ public abstract class Box implements Iterable<Box>
      * berechnen.
      * </p>
      *
-     * @return diese Box-Instanz für Method-Chaining
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
      */
     public Box remeasure()
     {
@@ -430,6 +490,11 @@ public abstract class Box implements Iterable<Box>
      * <b>zeichnet</b> die Box.
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
      *
      * @since 0.38.0
      */
@@ -484,6 +549,11 @@ public abstract class Box implements Iterable<Box>
 
     /**
      * @since 0.42.0
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
      */
     public Box debug()
     {
@@ -494,6 +564,11 @@ public abstract class Box implements Iterable<Box>
 
     /**
      * @since 0.42.0
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
      */
     private Box debug(int depth)
     {

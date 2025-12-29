@@ -25,6 +25,8 @@ import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/PressedKeyRepeater.java
+
 /**
  * Demonstriert die Klasse {@link pi.event.PressedKeyRepeater}.
  */

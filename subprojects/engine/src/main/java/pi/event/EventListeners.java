@@ -84,7 +84,7 @@ public final class EventListeners<T>
     }
 
     /**
-     * Meldet einen Beobachter ab.
+     * <b>Meldet</b> einen Beobachter <b>ab</b>.
      *
      * @param listener Der Beobachter, der abgemeldet werden soll.
      */
@@ -161,7 +161,7 @@ public final class EventListeners<T>
     }
 
     /**
-     * Löscht alle Beobachter aus der Instanz.
+     * <b>Löscht</b> alle Beobachter aus der Instanz.
      */
     @API
     public synchronized void clear()

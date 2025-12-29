@@ -52,7 +52,16 @@ abstract class ChildBox extends Box
         addChild(child);
     }
 
-    protected void addChild(Box child)
+    /**
+     * Fügt eine <b>Kind-Box</b> hinzu.
+     *
+     * <p>
+     * Die Zellbox wird dabei als Elternbox der Kind-Box gesetzt.
+     * </p>
+     *
+     * @param child Die Kind-Box.
+     */
+    public void addChild(Box child)
     {
         this.child = child;
         if (child != null)

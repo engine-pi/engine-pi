@@ -59,12 +59,18 @@ public interface FrameUpdateListenerRegistration
     }
 
     /**
-     * Führt das übergebene {@link Runnable} mit Verzögerung aus.
+     * Führt die übergebene {@link Runnable Aufgabe} mit Verzögerung aus.
      *
-     * @param runnable Wird im nächsten Frame ausgeführt.
+     * <p>
+     * Die {@link Runnable Aufgabe} wird erst beim nächsten Einzelbild
+     * ausgeführt.
+     * </p>
+     *
+     * @param task Die {@link Runnable Aufgabe}, die erst beim nächsten
+     *     Einzelbild ausgeführt wird.
      */
     @API
-    default void defer(Runnable runnable)
+    default void defer(Runnable task)
     {
         FrameUpdateListener frameUpdateListener = new FrameUpdateListener()
         {
@@ -72,27 +78,27 @@ public interface FrameUpdateListenerRegistration
             public void onFrameUpdate(double time)
             {
                 removeFrameUpdateListener(this);
-                runnable.run();
+                task.run();
             }
         };
         addFrameUpdateListener(frameUpdateListener);
     }
 
     /**
-     * Führt die übergebene Aufgabe mit einer vorgegebenen Verzögerung aus.
+     * Führt die übergebene {@link Runnable Aufgabe} mit einer vorgegebenen
+     * <b>Verzögerung</b> aus.
      *
-     * @param delay Die Verzögerung in Sekunden.
-     * @param task Die Aufgabe, die nach Ablauf der Verzögerung ausgeführt wird.
+     * @param delay Die <b>Verzögerung</b> in Sekunden.
+     * @param task Die <b>Aufgabe</b>, die nach Ablauf der Verzögerung
+     *     ausgeführt wird.
      *
      * @return Der Beobachter, der manuell abgemeldet werden kann, falls die
      *     Ausführung abgebrochen werden soll.
      */
     @API
-    default FrameUpdateListener delay(double delay, Runnable task)
+    default SingleTask delay(double delay, Runnable task)
     {
-        // Später können wir den Return-Type auf SingleTask ändern, falls das
-        // notwendig werden sollte
-        FrameUpdateListener singleTask = new SingleTask(delay, task, this);
+        SingleTask singleTask = new SingleTask(delay, task, this);
         addFrameUpdateListener(singleTask);
         return singleTask;
     }

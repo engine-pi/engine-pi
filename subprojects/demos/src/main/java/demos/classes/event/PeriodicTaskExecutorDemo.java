@@ -25,6 +25,8 @@ import pi.Scene;
 import pi.actor.Text;
 import pi.event.PeriodicTaskExecutor;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/PeriodicTaskExecutor.java
+
 /**
  * Demonstriert die Klasse {@link pi.event.PeriodicTaskExecutor}.
  *
@@ -35,13 +37,12 @@ import pi.event.PeriodicTaskExecutor;
  * <b>Fehlermeldung</b> (so gewollt) fehlschlägt.
  * </p>
  */
-public class PeriodicTaskDemo extends Scene
+public class PeriodicTaskExecutorDemo extends Scene
 {
     private PeriodicTaskExecutor task;
 
-    public PeriodicTaskDemo()
+    public PeriodicTaskExecutorDemo()
     {
-        setBackgroundColor("white");
         add(new CounterText());
     }
 
@@ -95,6 +96,6 @@ public class PeriodicTaskDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new PeriodicTaskDemo(), 400, 200);
+        Game.start(new PeriodicTaskExecutorDemo(), 400, 200);
     }
 }

@@ -2,6 +2,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/ContainerBoxDemo.java
@@ -23,12 +25,18 @@ public class CellBox extends ChildBox
 
     VAlign vAlign = VAlign.TOP;
 
-    public CellBox(Box child)
+    public CellBox()
     {
-        super(child);
         supportsDefinedDimension = true;
     }
 
+    public CellBox(Box child)
+    {
+        this();
+        addChild(child);
+    }
+
+    @Getter
     public int childWidth()
     {
         if (child != null)
@@ -38,6 +46,7 @@ public class CellBox extends ChildBox
         return 0;
     }
 
+    @Getter
     public int childHeight()
     {
         if (child != null)
@@ -47,24 +56,52 @@ public class CellBox extends ChildBox
         return 0;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public CellBox width(int width)
     {
         definedWidth = width;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public CellBox height(int height)
     {
         definedHeight = height;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public CellBox hAlign(HAlign hAlign)
     {
         this.hAlign = hAlign;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public CellBox vAlign(VAlign vAlign)
     {
         this.vAlign = vAlign;

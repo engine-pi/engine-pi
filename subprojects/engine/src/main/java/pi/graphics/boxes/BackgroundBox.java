@@ -23,6 +23,8 @@ import static pi.Resources.colors;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import pi.annotations.Setter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/BackgroundBoxDemo.java
 
 /**
@@ -64,6 +66,13 @@ public class BackgroundBox extends ChildBox
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public BackgroundBox color(String color)
     {
         this.color = colors.get(color);

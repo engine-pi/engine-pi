@@ -24,6 +24,7 @@ import static pi.Resources.fonts;
 import java.awt.Color;
 import java.awt.Font;
 
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.resources.font.FontStyle;
 
@@ -76,8 +77,14 @@ public abstract class TextBox extends LeafBox
      *
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
      *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.39.0
      */
+    @Setter
     public TextBox content(Object content)
     {
         if (content == null)
@@ -95,8 +102,14 @@ public abstract class TextBox extends LeafBox
      * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
      *     soll.
      *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.39.0
      */
+    @Setter
     public TextBox font(Font font)
     {
         this.font = font;
@@ -108,7 +121,13 @@ public abstract class TextBox extends LeafBox
      * Setzt die <b>Schriftgröße</b> in Punkten (Points pt).
      *
      * @param fontSize Die <b>Schriftgröße</b> in Punkten (Points pt).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
      */
+    @Setter
     public TextBox fontSize(double fontSize)
     {
         font = font.deriveFont((float) fontSize);
@@ -117,8 +136,14 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.42.0
      */
+    @Setter
     public TextBox fontStyle(FontStyle fontStyle)
     {
         font = font.deriveFont(fontStyle.getStyle());
@@ -127,8 +152,14 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
      * @since 0.42.0
      */
+    @Setter
     public TextBox fontStyle(int fontStyle)
     {
         font = font.deriveFont(fontStyle);
@@ -136,12 +167,26 @@ public abstract class TextBox extends LeafBox
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public TextBox color(Color color)
     {
         this.color = color;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public TextBox color(String color)
     {
         this.color = colors.get(color);

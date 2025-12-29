@@ -127,11 +127,17 @@ public class Scene implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
     }
 
+    /**
+     * @return Eine <b>Infobox</b>, die <b>über</b> eine <b>Szene</b> gelegt
+     *     werden kann.
+     *
+     * @since 0.42.0
+     */
     public SceneInfoOverlay info()
     {
         if (info == null)
         {
-            info = new SceneInfoOverlay();
+            info = new SceneInfoOverlay(this);
         }
         return info;
     }
@@ -245,7 +251,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         // übermalt werden.
         if (info != null)
         {
-            info.render(g);
+            info.render(g, width, height);
         }
         renderOverlays(g, width, height);
     }

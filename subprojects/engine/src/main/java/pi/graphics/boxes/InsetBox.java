@@ -20,6 +20,7 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/InsetBoxDemo.java
@@ -79,24 +80,52 @@ public class InsetBox extends ChildBox
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public InsetBox top(int top)
     {
         this.top = top;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public InsetBox right(int right)
     {
         this.right = right;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public InsetBox bottom(int bottom)
     {
         this.bottom = bottom;
         return this;
     }
 
+    /**
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
     public InsetBox left(int left)
     {
         this.left = left;

@@ -34,7 +34,6 @@ import pi.animation.interpolation.ReverseEaseDouble;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 
-@SuppressWarnings("MagicNumber")
 public class ParticlesDemo extends Scene implements KeyStrokeListener
 {
     private static final int WIDTH = 1240;

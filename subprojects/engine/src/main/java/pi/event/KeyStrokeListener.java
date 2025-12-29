@@ -47,9 +47,9 @@ public interface KeyStrokeListener
      * <pre>
      * {@code
      * @Override
-     * public void onKeyDown(KeyEvent e)
+     * public void onKeyDown(KeyEvent event)
      * {
-     *     switch (e.getKeyCode())
+     *     switch (event.getKeyCode())
      *     {
      *     case KeyEvent.VK_UP:
      *         circle.moveBy(0, 1);

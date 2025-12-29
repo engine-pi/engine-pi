@@ -21,18 +21,15 @@
 package pi.event;
 
 import pi.annotations.API;
-import pi.annotations.Internal;
 
 /**
- * Eine einfache Aufgabe, die einmalig mit Verzögerung ausgeführt wird.
+ * Eine einfache <b>Aufgabe</b>, die <b>einmalig</b> mit Verzögerung ausgeführt
+ * wird.
  *
  * @author Niklas Keller
  *
  * @see FrameUpdateListenerRegistration#delay(double, Runnable)
- *
- * @hidden
  */
-@Internal
 public final class SingleTask implements FrameUpdateListener
 {
     /**
@@ -94,6 +91,18 @@ public final class SingleTask implements FrameUpdateListener
     }
 
     /**
+     * <b>Bricht</b> die Ausführung der Aufgabe <b>ab</b>, bevor sie überhaupt
+     * ausgeführt wurde.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public void cancel()
+    {
+        parent.removeFrameUpdateListener(this);
+    }
+
+    /**
      * @param pastTime Die Zeit in Sekunden, die seit dem letzten Update
      *     vergangen
      *
@@ -103,10 +112,10 @@ public final class SingleTask implements FrameUpdateListener
     public void onFrameUpdate(double pastTime)
     {
         countdown -= pastTime;
-        if (!done && this.countdown < 0)
+        if (!done && countdown < 0)
         {
             task.run();
-            parent.removeFrameUpdateListener(this);
+            cancel();
             done = true;
         }
     }
