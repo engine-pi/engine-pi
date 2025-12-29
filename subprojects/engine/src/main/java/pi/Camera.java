@@ -485,8 +485,10 @@ public final class Camera
     }
 
     /**
-     * Implementiert den FrameUpdateListener nicht, da die Kamera an einem
-     * anderen Zeitpunkt aktualisiert wird.
+     * Implementiert den {@link pi.event.FrameUpdateListener} nicht, da die
+     * Kamera an einem anderen Zeitpunkt aktualisiert wird.
+     *
+     * @see pi.GameLoop#run()
      */
     public void onFrameUpdate()
     {

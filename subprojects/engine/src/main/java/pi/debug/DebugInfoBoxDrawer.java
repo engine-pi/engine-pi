@@ -21,8 +21,8 @@ package pi.debug;
 import java.awt.Graphics2D;
 
 import pi.Game;
+import pi.GameLoop;
 import pi.Resources;
-import pi.Scene;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.ChildsBox;
@@ -36,40 +36,59 @@ import pi.graphics.boxes.VAlign;
 import pi.graphics.boxes.VerticalBox;
 
 /**
- * Zeichnet einige <b>Informationsboxen</b> in das linke obere Eck.
+ * Zeichnet einige <b>Informationsboxen</b> mit Debug-Informationen in das linke
+ * obere Eck.
  *
  * @author Josef Friedrich
  *
  * @since 0.17.0
  */
-public final class InfoBoxDrawer
+public final class DebugInfoBoxDrawer
 {
+    /**
+     * Einzelbilder pro Sekunde
+     */
     final FramedTextBox fps;
 
+    /**
+     * Anzahl an Einzelbildern seit Spielstart
+     */
+    final FramedTextBox frameCounter;
+
+    /**
+     * Anzahl an Figuren
+     */
     final FramedTextBox actorsCount;
 
+    /**
+     * Schwerkraft
+     */
     final TextLineBox gravity;
 
     final CompassBox compass;
 
     final VerticalBox<Box> verticalBox;
 
-    public InfoBoxDrawer()
+    public DebugInfoBoxDrawer()
     {
         fps = new FramedTextBox(null);
         fps.background.color("blue");
 
+        frameCounter = new FramedTextBox(null);
+        frameCounter.background.color("purple");
+
         actorsCount = new FramedTextBox(null);
         actorsCount.background.color("green");
 
-        var textBoxes = new ChildsBox<FramedTextBox>(fps, actorsCount);
+        var textBoxes = new ChildsBox<FramedTextBox>(fps, frameCounter,
+                actorsCount);
         textBoxes.forEachChild(box -> {
             box.padding.allSides(5);
-            box.textLine.fontSize(12);
+            box.textLine.fontSize(12).color("white");
         });
 
         gravity = new TextLineBox("");
-        gravity.fontSize(12);
+        gravity.fontSize(12).color("white");
         compass = new CompassBox(25);
         FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)
@@ -77,7 +96,8 @@ public final class InfoBoxDrawer
         gravityFrame.background.color(Resources.colorScheme.getBluePurple());
         gravityFrame.padding.allSides(5);
 
-        verticalBox = new VerticalBox<>(fps, actorsCount, gravityFrame);
+        verticalBox = new VerticalBox<>(fps, frameCounter, actorsCount,
+                gravityFrame);
         verticalBox.padding(5);
     }
 
@@ -89,19 +109,14 @@ public final class InfoBoxDrawer
      * @hidden
      */
     @Internal
-    public void draw(Graphics2D g, Scene scene, double frameDuration)
+    public void draw(Graphics2D g, GameLoop loop)
     {
-        var infos = new DebugInformations(scene, frameDuration);
-
-        // Einzelbilder pro Sekunden
+        var infos = new DebugInformationPreparer(loop);
         fps.content("FPS: " + infos.fpsFormatted());
-        // Anzahl an Figuren
+        frameCounter.content("Frame counter: " + loop.getFrameCounter());
         actorsCount.content("Actors: " + infos.actorsCount());
-        // Schwerkraft
         gravity.content(infos.gravityFormatted());
-
         compass.direction(infos.gravity().getAngle());
-
         verticalBox.remeasure().render(g);
     }
 

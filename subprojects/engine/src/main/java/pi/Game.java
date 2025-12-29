@@ -22,7 +22,6 @@ package pi;
 
 import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -55,8 +54,6 @@ import pi.event.MouseScrollListener;
 import pi.event.SceneLaunchListener;
 import pi.graphics.DialogLauncher;
 import pi.graphics.RenderPanel;
-import pi.util.FileUtil;
-import pi.util.ImageUtil;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
@@ -1019,16 +1016,7 @@ public final class Game
     @API
     public static void takeScreenshot()
     {
-        BufferedImage screenshot = new BufferedImage(
-                Configuration.windowWidthPx, Configuration.windowHeightPx,
-                BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = (Graphics2D) screenshot.getGraphics();
-        loop.render(source -> source.render(g, Configuration.windowWidthPx,
-                Configuration.windowHeightPx));
-        String dir = FileUtil.getHome() + "/engine-pi";
-        FileUtil.createDir(dir);
-        ImageUtil.write(screenshot,
-                dir + "/screenshot_" + System.nanoTime() + ".png");
+        loop.takeScreenshot();
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

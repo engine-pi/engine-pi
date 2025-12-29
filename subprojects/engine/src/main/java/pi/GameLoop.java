@@ -23,6 +23,7 @@ package pi;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -30,12 +31,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
-import pi.debug.InfoBoxDrawer;
+import pi.debug.DebugInfoBoxDrawer;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.graphics.RenderTarget;
+import pi.util.FileUtil;
+import pi.util.ImageUtil;
 
 /**
  * Die <b>Ereignisschleife</b> der Engine.
@@ -51,7 +55,16 @@ import pi.graphics.RenderTarget;
  */
 public final class GameLoop
 {
+    /**
+     * Die <b>angestrebte Anzeigedauer</b> eines Einzelbilds in Sekunden.
+     */
     private static final double DESIRED_FRAME_DURATION = 0.016;
+
+    /**
+     * Die <b>tatsächliche Anzeigedauer</b> eines <b>Einzelbilds</b> in
+     * Sekunden.
+     */
+    private double frameDuration;
 
     private static final int NANOSECONDS_PER_SECOND = 1000000000;
 
@@ -74,9 +87,13 @@ public final class GameLoop
      */
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
-    private double frameDuration;
+    private DebugInfoBoxDrawer infoBoxDrawer;
 
-    private InfoBoxDrawer infoBoxDrawer;
+    /**
+     * Die <b>Anzahl</b> an <b>Einzelbilder</b>, die seit dem Start des Spiels
+     * berechnet wurden.
+     */
+    private long frameCounter;
 
     public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
@@ -84,31 +101,128 @@ public final class GameLoop
         this.render = render;
         this.currentScene = currentScene;
         this.isDebug = isDebug;
-        infoBoxDrawer = new InfoBoxDrawer();
+        infoBoxDrawer = new DebugInfoBoxDrawer();
     }
 
-    public void enqueue(Runnable runnable)
+    /**
+     * Gibt die <b>aktuelle Szene</b> aus.
+     *
+     * @return Die aktuelle Szene.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public Scene getCurrentScene()
     {
-        dispatchableQueue.add(runnable);
+        return currentScene.get();
     }
 
+    /**
+     * Gibt die <b>Anzahl</b> an <b>Einzelbilder</b> aus, die seit dem Start des
+     * Spiels berechnet wurden.
+     *
+     * @return Die <b>Anzahl</b> an <b>Einzelbilder</b>, die seit dem Start des
+     *     Spiels berechnet wurden.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public long getFrameCounter()
+    {
+        return frameCounter;
+    }
+
+    /**
+     * Gibt <b>tatsächliche Anzeigedauer</b> eines <b>Einzelbilds</b> in
+     * Sekunden aus.
+     *
+     * @return Die <b>tatsächliche Anzeigedauer</b> eines <b>Einzelbilds</b> in
+     *     Sekunden.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public double getFrameDuration()
+    {
+        return frameDuration;
+    }
+
+    /**
+     * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
+     * {@code ~/engine-pi}.
+     */
+    @Internal
+    public void takeScreenshot()
+    {
+        BufferedImage screenshot = new BufferedImage(
+                Configuration.windowWidthPx, Configuration.windowHeightPx,
+                BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = (Graphics2D) screenshot.getGraphics();
+        render(source -> source.render(g, Configuration.windowWidthPx,
+                Configuration.windowHeightPx));
+        String dir = FileUtil.getHome() + "/engine-pi";
+        FileUtil.createDir(dir);
+        ImageUtil.write(screenshot,
+                dir + "/screenshot_" + System.nanoTime() + ".png");
+    }
+
+    /**
+     * Fügt eine {@link Runnable Aufgabe} in die Warteschlange ein, um ihn
+     * später auszuführen.
+     *
+     * @param task Die auszuführende {@link Runnable Aufgabe}.
+     */
+    public void enqueue(Runnable task)
+    {
+        dispatchableQueue.add(task);
+    }
+
+    /**
+     * Führt die Haupt-Ereignisschleife aus, die kontinuierlich bis zur
+     * Unterbrechung des Threads läuft.
+     *
+     * Die Methode orchestriert den gesamten Spielzyklus:
+     * <ul>
+     * <li>Berechnet die verstrichene Zeit seit dem letzten Frame (maximal 2x
+     * die gewünschte Frame-Dauer)</li>
+     * <li>Aktualisiert die aktuelle Szene mit der verstrichenen Zeit</li>
+     * <li>Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.</li>
+     * <li>Aktualisiert die Kamera der aktuellen Szene</li>
+     * <li>Verarbeitet alle ausstehenden Aufgaben aus der Dispatch-Queue</li>
+     * <li>Rendert den aktuellen Frame</li>
+     * <li>Synchronisiert die Frame-Rate durch Sleep-Mechanismus, um die
+     * gewünschte Frame-Dauer einzuhalten</li>
+     * <li>Berechnet die tatsächliche Frame-Dauer für den nächsten Zyklus</li>
+     * </ul>
+     *
+     * Die Loop wird beendet, wenn der aktuelle Thread unterbrochen wird
+     * (InterruptedException). Nach Beendigung der Loop wird der Thread-Pool
+     * korrekt heruntergefahren und wartet maximal 3 Sekunden auf die
+     * Terminierung ausstehender Aufgaben.
+     *
+     * @throws RuntimeException wenn ein unerwarteter Fehler während der
+     *     Ausführung der Loop auftritt
+     */
     public void run()
     {
-        this.frameDuration = DESIRED_FRAME_DURATION;
+        frameDuration = DESIRED_FRAME_DURATION;
         long frameStart = System.nanoTime();
         long frameEnd;
         while (!Thread.currentThread().isInterrupted())
         {
-            Scene scene = this.currentScene.get();
+            Scene scene = getCurrentScene();
             try
             {
+                frameCounter++;
                 double pastTime = Math.min(2 * DESIRED_FRAME_DURATION,
                         frameDuration);
                 scene.step(pastTime, threadPoolExecutor::submit);
                 // Beobachter der Bildaktualisierung.
                 frameUpdateListeners
                         .invoke(listener -> listener.onFrameUpdate(pastTime));
+                // Aktualisiert die Kamera der aktuellen Szene
                 scene.getCamera().onFrameUpdate();
+                // Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.
                 scene.invokeFrameUpdateListeners(pastTime);
                 Runnable runnable = dispatchableQueue.poll();
                 while (runnable != null)
@@ -186,7 +300,7 @@ public final class GameLoop
     @Internal
     private void render(Graphics2D g, int width, int height)
     {
-        Scene scene = currentScene.get();
+        Scene scene = getCurrentScene();
         // have to be the same @ Game.screenshot!
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -204,7 +318,7 @@ public final class GameLoop
         if (isDebug.get())
         {
             new CoordinateSystemDrawer(g, scene, width, height).draw();
-            infoBoxDrawer.draw(g, scene, frameDuration);
+            infoBoxDrawer.draw(g, this);
         }
         g.dispose();
     }

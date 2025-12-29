@@ -73,6 +73,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     public CarDemo()
     {
+        info().title("Auto-Simulation").help(
+                "Tastenkürzel:\nl: vorwärts waren\nj: rückwärts fahren\nLeertaste: bremsen");
         setBackgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
         Rectangle blender = new Rectangle((double) WIDTH / ZOOM,
@@ -205,8 +207,6 @@ public class CarDemo extends Scene implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        info().title("Auto-Simulation").help(
-                "Tastenkürzel:\nl: vorwärts waren\nj: rückwärts fahren\nLeertaste: bremsen");
         boolean left = Game.isKeyPressed(KeyEvent.VK_J);
         boolean right = Game.isKeyPressed(KeyEvent.VK_L);
         // Antriebssteuerung
