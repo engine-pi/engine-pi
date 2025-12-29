@@ -23,7 +23,6 @@ package pi;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -35,11 +34,10 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
 import pi.debug.DebugInfoBoxDrawer;
+import pi.debug.Screenshot;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.graphics.RenderTarget;
-import pi.util.FileUtil;
-import pi.util.ImageUtil;
 
 /**
  * Die <b>Ereignisschleife</b> der Engine.
@@ -95,6 +93,8 @@ public final class GameLoop
      */
     private long frameCounter;
 
+    private Screenshot screenshot;
+
     public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
     {
@@ -102,6 +102,15 @@ public final class GameLoop
         this.currentScene = currentScene;
         this.isDebug = isDebug;
         infoBoxDrawer = new DebugInfoBoxDrawer();
+    }
+
+    private Screenshot screenshot()
+    {
+        if (screenshot == null)
+        {
+            screenshot = new Screenshot();
+        }
+        return screenshot;
     }
 
     /**
@@ -154,16 +163,10 @@ public final class GameLoop
     @Internal
     public void takeScreenshot()
     {
-        BufferedImage screenshot = new BufferedImage(
-                Configuration.windowWidthPx, Configuration.windowHeightPx,
-                BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = (Graphics2D) screenshot.getGraphics();
-        render(source -> source.render(g, Configuration.windowWidthPx,
-                Configuration.windowHeightPx));
-        String dir = FileUtil.getHome() + "/engine-pi";
-        FileUtil.createDir(dir);
-        ImageUtil.write(screenshot,
-                dir + "/screenshot_" + System.nanoTime() + ".png");
+        screenshot().take((g) -> {
+            render(source -> source.render(g, Configuration.windowWidthPx,
+                    Configuration.windowHeightPx));
+        });
     }
 
     /**
@@ -312,9 +315,10 @@ public final class GameLoop
         g.setColor(scene.getBackgroundColor());
         g.fillRect(0, 0, width, height);
         g.setClip(0, 0, width, height);
-        AffineTransform transform = g.getTransform();
+        AffineTransform oldTransform = g.getTransform();
         scene.render(g, width, height);
-        g.setTransform(transform);
+        // screenshot().take(g2 -> scene.render(g2, width, height));
+        g.setTransform(oldTransform);
         if (isDebug.get())
         {
             new CoordinateSystemDrawer(g, scene, width, height).draw();
