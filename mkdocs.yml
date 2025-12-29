@@ -2,7 +2,7 @@ site_name: Engine Pi
 site_url: https://engine-pi.github.io/engine-pi/
 theme:
   name: material
-  logo: assets/logo.svg
+  logo: _assets/logo.svg
   font:
     text: Cantarell
     code: Ubuntu Mono
@@ -43,7 +43,7 @@ markdown_extensions:
   - pymdownx.blocks.caption
 
 extra_css:
-  - stylesheets/extra.css
+  - _assets/extra.css
 
 watch:
   - docs
