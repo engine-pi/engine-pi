@@ -1019,7 +1019,7 @@ public final class Game
         loop.takeScreenshot();
     }
 
-    public static void takeScreenhotEveryNFrames(int screenshotEveryNFrames)
+    public static void takeScreenshotEveryNFrames(int screenshotEveryNFrames)
     {
         DebugConfiguration.screenshotEveryNFrames = screenshotEveryNFrames;
     }

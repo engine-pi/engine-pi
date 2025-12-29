@@ -334,7 +334,7 @@ public final class GameLoop
 
     public static void main(String[] args)
     {
-        Game.takeScreenhotEveryNFrames(1);
+        Game.takeScreenshotEveryNFrames(1);
         Game.start();
     }
 }
