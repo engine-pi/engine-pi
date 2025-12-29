@@ -28,6 +28,10 @@ package pi.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public class MathUtil
 {
     private MathUtil()

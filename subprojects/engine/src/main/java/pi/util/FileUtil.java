@@ -41,6 +41,25 @@ import java.util.logging.Logger;
 
 import pi.resources.ResourceLoader;
 
+/**
+ * Hilfsklasse für <b>Datei</b>- und Verzeichnisverwaltungsoperationen.
+ *
+ * <p>
+ * Diese Klasse bietet statische Methoden zum Löschen von Verzeichnissen, Suchen
+ * von Dateien nach Erweiterung oder Namen, Extrahieren von Dateinamen und
+ * Erweiterungen, Pfadverwaltung sowie Konvertierung von Dateigröße in lesbare
+ * Formate.
+ * </p>
+ *
+ * <p>
+ * Die Klasse ist nicht instanziierbar und kann nur über ihre statischen
+ * Methoden verwendet werden.
+ * </p>
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ * @author Josef Friedrich
+ */
 public final class FileUtil
 {
     private static final Logger log = Logger
@@ -58,6 +77,19 @@ public final class FileUtil
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * <b>Löscht</b> ein <b>Verzeichnis</b> und seinen gesamten Inhalt rekursiv.
+     *
+     * Diese Methode entfernt das angegebene Verzeichnis sowie alle darin
+     * enthaltenen Dateien und Unterverzeichnisse. Der Löschvorgang erfolgt
+     * rekursiv von unten nach oben.
+     *
+     * @param dir das zu löschende Verzeichnis
+     *
+     * @return {@code true}, wenn das Verzeichnis und sein gesamter Inhalt
+     *     erfolgreich gelöscht wurden; {@code false}, wenn ein Fehler beim
+     *     Löschen aufgetreten ist oder eine IOException geworfen wurde
+     */
     public static boolean deleteDir(final File dir)
     {
         if (dir.isDirectory())
@@ -84,6 +116,27 @@ public final class FileUtil
         return true;
     }
 
+    /**
+     * Sucht rekursiv nach Dateien mit einer bestimmten Dateiendung in einem
+     * Verzeichnis.
+     *
+     * Die Methode durchsucht das angegebene Verzeichnis und alle
+     * Unterverzeichnisse (außer blacklisteten Verzeichnissen) nach Dateien, die
+     * mit der angegebenen Endung übereinstimmen. Gefundene Dateien werden zur
+     * übergebenen Liste hinzugefügt.
+     *
+     * @param fileNames Die Liste, in der gefundene Dateipfade gesammelt werden.
+     *     Diese Liste wird mit absoluten Pfaden ergänzt.
+     * @param dir Das Startverzeichnis, ab dem die Suche beginnt
+     * @param extension Die gesuchte Dateiendung (z.B. ".java", ".txt"). Der
+     *     Vergleich erfolgt mit {@code endsWith()}
+     *
+     * @return Die übergebene {@code fileNames} Liste mit allen gefundenen
+     *     Dateien. Bei Fehler beim Lesen des Verzeichnisses wird die teilweise
+     *     gefüllte Liste zurückgegeben und der Fehler geloggt
+     *
+     * @see #isBlackListedDirectory(Path)
+     */
     public static List<String> findFilesByExtension(
             final List<String> fileNames, final Path dir,
             final String extension)
@@ -113,6 +166,19 @@ public final class FileUtil
         return fileNames;
     }
 
+    /**
+     * <b>Durchsucht</b> rekursiv ein <b>Verzeichnis</b> und seine
+     * Unterverzeichnisse nach Dateien mit bestimmten Namen.
+     *
+     * @param fileNames Eine Liste, in der die gefundenen Dateipfade gespeichert
+     *     werden.
+     * @param dir Das Startverzeichnis, das durchsucht werden soll.
+     * @param files Eine beliebige Anzahl von Dateinamen oder Dateisuffixen,
+     *     nach denen gesucht werden soll.
+     *
+     * @return die übergebene Liste {@code fileNames}, gefüllt mit den absoluten
+     *     Pfaden der gefundenen Dateien.
+     */
     public static List<String> findFiles(final List<String> fileNames,
             final Path dir, final String... files)
     {
@@ -147,11 +213,27 @@ public final class FileUtil
         return fileNames;
     }
 
+    /**
+     * Ermittelt die Dateiendung einer Datei.
+     *
+     * @param file Die Datei, deren Endung bestimmt werden soll.
+     *
+     * @return Die Dateiendung der angegebenen Datei.
+     */
     public static String getExtension(final File file)
     {
         return getExtension(file.getAbsolutePath());
     }
 
+    /**
+     * Extrahiert die Dateiendung aus einem gegebenen Dateipfad.
+     *
+     * @param path Der Dateipfad, aus dem die Endung extrahiert werden soll.
+     *
+     * @return Die Dateiendung ohne den Punkt (z.B. "txt", "java"), oder eine
+     *     leere Zeichenkette, falls keine Endung vorhanden ist oder ein Fehler
+     *     bei der Verarbeitung auftritt.
+     */
     public static String getExtension(final String path)
     {
         final String fileName = getFileName(path, true);
@@ -267,6 +349,24 @@ public final class FileUtil
         return getFileName(path.getPath());
     }
 
+    /**
+     * Gibt den Pfad des übergeordneten Verzeichnisses für den angegebenen URI
+     * oder Dateipfad zurück.
+     *
+     * <p>
+     * Die Methode versucht zunächst, den Input als URI zu interpretieren. Falls
+     * dies fehlschlägt, wird der Input als Dateipfad behandelt.
+     * </p>
+     *
+     * @param uri Der URI oder Dateipfad, dessen übergeordnetes Verzeichnis
+     *     bestimmt werden soll.
+     *
+     * @return Der Pfad des übergeordneten Verzeichnisses mit nachgestelltem
+     *     Dateitrenner, oder der ursprüngliche Input, falls dieser null oder
+     *     leer ist.
+     *
+     * @throws NullPointerException wenn das übergeordnete Verzeichnis null ist
+     */
     public static String getParentDirPath(final String uri)
     {
         if (uri == null || uri.isEmpty())
@@ -285,6 +385,18 @@ public final class FileUtil
         }
     }
 
+    /**
+     * Gibt den Pfad des übergeordneten Verzeichnisses einer URI zurück.
+     *
+     * Wenn der Pfad der URI mit einem Datei-Trennzeichen endet, wird das
+     * übergeordnete Verzeichnis durch Auflösen von ".." ermittelt. Ansonsten
+     * wird das aktuelle Verzeichnis durch Auflösen von "." verwendet.
+     *
+     * @param uri Die URI, deren übergeordnetes Verzeichnis ermittelt werden
+     *     soll.
+     *
+     * @return Der Pfad des übergeordneten Verzeichnisses als Zeichenkette.
+     */
     public static String getParentDirPath(final URI uri)
     {
         URI parent = uri.getPath().endsWith(FILE_SEPARATOR) ? uri.resolve("..")
@@ -293,13 +405,21 @@ public final class FileUtil
     }
 
     /**
-     * This method combines the specified basepath with the parts provided as
-     * arguments. The output will use the path separator of the current system;
+     * Diese Methode kombiniert den angegebenen Pfad mit den als Argumente
+     * übergebenen Pfadsegmenten.
      *
-     * @param basePath The base path for the combined path.
-     * @param paths The parts of the path to be constructed.
+     * <p>
+     * Der zurückgegeben Pfad verwendet das Pfadtrennzeichen des aktuellen
+     * Systems. Diese Methode normalisiert Windows-Pfadtrennzeichen zu
+     * Unix-Trennzeichen.
+     * </p>
      *
-     * @return The combined path.
+     * @param basePath der Basispfad, der als Ausgangspunkt dient (nicht null)
+     * @param paths variable Anzahl von Pfadkomponenten, die kombiniert werden
+     *     sollen. Null-Werte werden ignoriert.
+     *
+     * @return der kombinierte Pfad als String. Bei Auftreten einer
+     *     URISyntaxException wird der Basispfad zurückgegeben.
      */
     public static String combine(String basePath, final String... paths)
     {
@@ -393,6 +513,17 @@ public final class FileUtil
         return System.getProperty("user.home");
     }
 
+    /**
+     * Erstellt ein Verzeichnis unter dem angegebenen Pfad, falls dieses noch
+     * nicht existiert.
+     *
+     * <p>
+     * Wenn das Verzeichnis bereits vorhanden ist, wird keine Aktion ausgeführt.
+     * </p>
+     *
+     * @param dirpath Der Pfad des zu erstellenden Verzeichnisses als
+     *     Zeichenkette.
+     */
     public static void createDir(String dirpath)
     {
         Path path = Paths.get(dirpath);

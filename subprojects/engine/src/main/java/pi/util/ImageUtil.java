@@ -50,6 +50,9 @@ import pi.resources.color.ColorUtil;
  *
  * <a href=
  * "https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java">LITIENGINE</a>
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class ImageUtil
 {

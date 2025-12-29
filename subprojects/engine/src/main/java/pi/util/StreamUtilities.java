@@ -35,6 +35,10 @@ import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public final class StreamUtilities
 {
     private static final Logger log = Logger
