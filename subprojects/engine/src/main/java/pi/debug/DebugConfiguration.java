@@ -98,4 +98,11 @@ public class DebugConfiguration
         showPositions = !showPositions;
         return showPositions;
     }
+
+    /**
+     * Macht jedes n-te Einzelbild ein Bildschirmfoto.
+     *
+     * @since 0.42.0
+     */
+    public static int screenshotEveryNFrames = 0;
 }

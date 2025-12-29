@@ -35,6 +35,8 @@ public class Screenshot
 {
     String baseDir;
 
+    private int frameCounter = 0;
+
     public Screenshot()
     {
         baseDir = FileUtil.getHome() + "/engine-pi";
@@ -54,5 +56,23 @@ public class Screenshot
         consumer.accept(g);
         ImageUtil.write(screenshot,
                 baseDir + "/screenshot_" + System.nanoTime() + ".png");
+    }
+
+    /**
+     * Soll bei diesem Einzelbild ein Bildschirmfoto gemacht werden?
+     *
+     * @see DebugConfiguration#screenshotEveryNFrames
+     */
+    public boolean isFrameForScreenshot()
+    {
+        frameCounter++;
+        if (DebugConfiguration.screenshotEveryNFrames > 0
+                && frameCounter >= DebugConfiguration.screenshotEveryNFrames)
+        {
+            frameCounter = 0;
+            return true;
+        }
+        return false;
+
     }
 }

@@ -317,7 +317,12 @@ public final class GameLoop
         g.setClip(0, 0, width, height);
         AffineTransform oldTransform = g.getTransform();
         scene.render(g, width, height);
-        // screenshot().take(g2 -> scene.render(g2, width, height));
+        // Kann jedes Einzelbild ein Bildschirmfoto machen.
+        Screenshot screenshot = screenshot();
+        if (screenshot.isFrameForScreenshot())
+        {
+            screenshot().take(g2 -> scene.render(g2, width, height));
+        }
         g.setTransform(oldTransform);
         if (isDebug.get())
         {
@@ -329,7 +334,7 @@ public final class GameLoop
 
     public static void main(String[] args)
     {
-        Game.debug();
+        Game.takeScreenhotEveryNFrames(1);
         Game.start();
     }
 }

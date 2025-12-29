@@ -1019,6 +1019,11 @@ public final class Game
         loop.takeScreenshot();
     }
 
+    public static void takeScreenhotEveryNFrames(int screenshotEveryNFrames)
+    {
+        DebugConfiguration.screenshotEveryNFrames = screenshotEveryNFrames;
+    }
+
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")
     private static class MouseListener extends MouseAdapter
     {
