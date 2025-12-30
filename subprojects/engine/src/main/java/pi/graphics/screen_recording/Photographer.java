@@ -19,8 +19,6 @@
 package pi.graphics.screen_recording;
 
 import pi.Game;
-import pi.debug.DebugConfiguration;
-import pi.util.FileUtil;
 
 /**
  * Der Fotograph steuert, ob einzelne Bildschirmfotos gemacht werden sollen.
@@ -52,52 +50,74 @@ import pi.util.FileUtil;
  *
  * @see pi.graphics.RenderPanel
  */
-public class Photographer
+public final class Photographer
 {
+    private static Photographer photographer;
+
     String baseDir;
 
-    private int frameCounter = 0;
+    private ImageTask imageTask;
 
-    private String baseDir()
+    private VideoTask videoTask;
+
+    private Photographer()
     {
-        if (baseDir == null)
+
+    }
+
+    public static Photographer getPhotographer()
+    {
+        if (photographer == null)
         {
-            baseDir = FileUtil.getHome() + "/engine-pi";
-            FileUtil.createDir(baseDir);
+            photographer = new Photographer();
         }
-        return baseDir;
+        return photographer;
+    }
+
+    public void takeScreenshot()
+    {
+        if (imageTask == null)
+        {
+            imageTask = new ImageTask();
+        }
+    }
+
+    public void startScreenRecording()
+    {
+        if (videoTask == null)
+        {
+            videoTask = new VideoTask();
+        }
+    }
+
+    public VideoTask stopScreenRecording()
+    {
+        var old = videoTask;
+        videoTask = null;
+        return old;
+    }
+
+    public void toggleScreenRecording()
+    {
+        if (videoTask == null)
+        {
+            startScreenRecording();
+        }
+        else
+        {
+            stopScreenRecording();
+        }
     }
 
     /**
      * Soll bei diesem Einzelbild ein Bildschirmfoto gemacht werden?
-     *
-     * @see DebugConfiguration#screenRecording
-     * @see DebugConfiguration#screenRecordingNFrames
      */
     public boolean hasToTakeScreenshot()
     {
-        // Soll ein einzelnes Bild gemacht werden
-        if (DebugConfiguration.takeSingleScreenshot)
-        {
-            DebugConfiguration.takeSingleScreenshot = false;
-            return true;
-        }
-
-        // Sollen mehrere Bilder hintereinander gemachten werden?
-        frameCounter++;
-        if (DebugConfiguration.screenRecording
-                && frameCounter >= DebugConfiguration.screenRecordingNFrames)
-        {
-            frameCounter = 0;
-            return true;
-        }
-        return false;
+        return (imageTask != null && imageTask.hasToTakeScreenshot())
+                || (videoTask != null && videoTask.hasToTakeScreenshot());
     }
 
-    /**
-     * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
-     * {@code ~/engine-pi}.
-     */
     public ScreenshotImage createImage(int width, int height)
     {
         return new ScreenshotImage(width, height);
@@ -105,7 +125,16 @@ public class Photographer
 
     public void writeImage(ScreenshotImage image)
     {
-        image.write(baseDir() + "/screenshot_" + System.nanoTime() + ".png");
+        if (imageTask != null)
+        {
+            imageTask.writeImage(image);
+            imageTask = null;
+        }
+
+        if (videoTask != null)
+        {
+            videoTask.writeImage(image);
+        }
     }
 
     public static void main(String[] args)

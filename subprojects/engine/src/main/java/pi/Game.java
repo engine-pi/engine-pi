@@ -54,6 +54,7 @@ import pi.event.MouseScrollListener;
 import pi.event.SceneLaunchListener;
 import pi.graphics.DialogLauncher;
 import pi.graphics.RenderPanel;
+import pi.graphics.screen_recording.Photographer;
 
 /**
  * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
@@ -1016,18 +1017,7 @@ public final class Game
     @API
     public static void takeScreenshot()
     {
-        DebugConfiguration.takeSingleScreenshot = true;
-    }
-
-    /**
-     * Schaltet die <b>Bildschirmaufnahme</b> (in Form von Einzelbildern) ein
-     * oder aus.
-     */
-    @API
-    public static void recordScreen(int screenshotEveryNFrames)
-    {
-        recordScreen();
-        DebugConfiguration.screenRecordingNFrames = screenshotEveryNFrames;
+        Photographer.getPhotographer().takeScreenshot();
     }
 
     /**
@@ -1037,7 +1027,7 @@ public final class Game
     @API
     public static void recordScreen()
     {
-        DebugConfiguration.screenRecording = !DebugConfiguration.screenRecording;
+        Photographer.getPhotographer().toggleScreenRecording();
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

@@ -23,24 +23,6 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.util.List;
 
-enum SupportedAnimatedFormat
-{
-
-    GIF("gif"), APNG("apng"), WEBP("webp"), MP4("mp4"), WEBM("webm");
-
-    private String extension;
-
-    SupportedAnimatedFormat(String extension)
-    {
-        this.extension = extension;
-    }
-
-    public String extension()
-    {
-        return extension;
-    }
-}
-
 /**
  * Generiert animierte Bild- und Video-Dateien aus PNG-Bildschirmfotos mittels
  * ffmpeg.
@@ -49,7 +31,7 @@ enum SupportedAnimatedFormat
  *
  * @since 0.42.0
  */
-public class ImagesToVideoConverter
+class ImagesToVideoConverter
 {
     private final String screenshotDir;
 
@@ -62,7 +44,6 @@ public class ImagesToVideoConverter
      *
      * @param screenshotDir Das Verzeichnis mit den Screenshot-Dateien
      * @param outputPath Der Pfad zur Ausgabe-GIF-Datei
-     * @param framerate Die Anzahl der Bilder pro Sekunde (Standard: 10)
      */
     public ImagesToVideoConverter(String screenshotDir, String outputPath)
     {

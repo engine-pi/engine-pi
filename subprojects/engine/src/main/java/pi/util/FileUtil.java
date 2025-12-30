@@ -445,6 +445,18 @@ public final class FileUtil
         }
     }
 
+    /**
+     * Überprüft, ob ein Verzeichnispfad in der Blacklist enthalten ist.
+     *
+     * Diese Methode durchsucht die {@link #DIR_BLACKLIST} nach Einträgen und
+     * prüft, ob der absolute Pfad des gegebenen Verzeichnisses einen der
+     * blackgelisteten Strings enthält.
+     *
+     * @param path der zu überprüfende Verzeichnispfad
+     *
+     * @return {@code true} wenn das Verzeichnis blackgelistet ist,
+     *     {@code false} andernfalls
+     */
     private static boolean isBlackListedDirectory(Path path)
     {
         for (final String black : DIR_BLACKLIST)
@@ -457,11 +469,31 @@ public final class FileUtil
         return false;
     }
 
+    /**
+     * Wandelt eine Anzahl von Bytes in eine menschenlesbare Darstellung um.
+     *
+     * @param bytes die Anzahl der Bytes, die formatiert werden sollen
+     *
+     * @return eine menschenlesbare String-Darstellung der Bytegröße (z.B. "1.5
+     *     KB", "2.3 MB")
+     */
     public static String humanReadableByteCount(long bytes)
     {
         return humanReadableByteCount(bytes, false);
     }
 
+    /**
+     * Konvertiert eine <b>Byte-Anzahl</b> in eine <b>menschenlesbare</b>
+     * Darstellung mit entsprechenden Einheiten.
+     *
+     * @param bytes Die Anzahl der Bytes, die formatiert werden sollen
+     * @param decimal Wenn true, werden Dezimalpräfixe (1000er-Basis) verwendet
+     *     (KB, MB, GB, etc.), wenn false, werden Binärpräfixe (1024er-Basis)
+     *     verwendet (KiB, MiB, GiB, etc.)
+     *
+     * @return Eine formatierte Zeichenkette mit der Byte-Anzahl und der
+     *     entsprechenden Einheit. Beispiele: "1.5 KB", "2.3 GiB", "512 bytes"
+     */
     public static String humanReadableByteCount(long bytes, boolean decimal)
     {
         int unit = decimal ? 1000 : 1024;
@@ -492,6 +524,15 @@ public final class FileUtil
         return path.replace("\\", File.separator).replace("/", File.separator);
     }
 
+    /**
+     * Überprüft, ob eine Datei am angegebenen Dateipfad <b>existiert</b>.
+     *
+     * @param filePath Der Pfad zur zu überprüfenden Datei.
+     *
+     * @return {@code true}, wenn die Datei existiert; {@code false}, wenn die
+     *     Datei nicht existiert oder ein Fehler beim Laden der Resource
+     *     aufgetreten ist
+     */
     public static boolean exists(String filePath)
     {
         try
@@ -506,11 +547,27 @@ public final class FileUtil
     }
 
     /**
-     * https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/System.html#getProperties()
+     * Gibt das <b>Heimverzeichnis</b> des aktuellen Benutzers zurück.
+     *
+     * @return Das <b>Heimverzeichnis</b> des aktuellen Benutzers als
+     *     Zeichenkette
      */
-    public static String getHome()
+    public static String getHomeDir()
     {
         return System.getProperty("user.home");
+    }
+
+    /**
+     * Gibt den Pfad zum <b>temporären Verzeichnis</b> des Systems zurück.
+     *
+     * @return Der absolute Pfad zum <b>temporären Verzeichnis</b> als
+     *     Zeichenkette.
+     *
+     * @since 0.42.0
+     */
+    public static String getTmpDir()
+    {
+        return System.getProperty("java.io.tmpdir");
     }
 
     /**

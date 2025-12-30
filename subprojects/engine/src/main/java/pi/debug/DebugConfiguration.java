@@ -99,15 +99,6 @@ public class DebugConfiguration
         return showPositions;
     }
 
-    public static boolean takeSingleScreenshot = false;
-
-    /**
-     * Aktiviert das Erzeugen von Bildschirmfotos je Einzelbild (Frame)
-     *
-     * @since 0.42.0
-     */
-    public static boolean screenRecording = false;
-
     /**
      * Macht jedes n-te Einzelbild ein Bildschirmfoto.
      *
