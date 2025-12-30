@@ -2,7 +2,8 @@
 https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
 """
 
-JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
+JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
+# JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
 
 def define_env(env) -> None:
 
@@ -16,14 +17,14 @@ def define_env(env) -> None:
         """Convert a package path to a URL with slashes"""
         return package_path.replace(".", "/")
 
-    @env.macro
     def class_name(class_path: str) -> str:
         """
-        {{ class_name('actor.Actor') }} {{ class_name('pi.actor.Actor') }}
+        {{ class('actor.Actor') }} {{ class('pi.actor.Actor') }}
         """
         class_path = _normalize_package_path(class_path)
         class_name = class_path.split('.')[-1]
         return f"[{class_name}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
+    env.macro(class_name, 'class')
 
     @env.macro
     def package_summary(package_path: str) -> str:

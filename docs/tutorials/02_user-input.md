@@ -51,7 +51,7 @@ public class KeyStrokeCounterDemo extends Scene
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll, implementiert
 das Interface
-[KeyStrokeListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/KeyStrokeListener.html).
+{{ class('pi.event.KeyStrokeListener') }}
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.
@@ -223,7 +223,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 ## Schnittstelle `MouseClickListener`
 
 Das Interface
-[MouseClickListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/MouseClickListener.html)
+{{ class('pi.event.MouseClickListener') }}
 ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das
 Reagieren auf Loslassen der Maus.
 
@@ -242,7 +242,7 @@ public void onMouseDown(Vector position, MouseButton mouseButton)
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-[Vector](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Vector.html).
+{{ class('pi.Vector') }}.
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 

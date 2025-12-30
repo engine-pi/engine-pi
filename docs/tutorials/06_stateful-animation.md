@@ -4,36 +4,37 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
-Dies ist ein Tutorial zur Klasse [StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html). In diesem Tutorial:
+Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
 
-* Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
-* Implementierst du funktionale Bewegungsmechanik für einen Platformer.
-* Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
+- Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
+- Implementierst du funktionale Bewegungsmechanik für einen Platformer.
+- Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
 
 ## Stateful Animations
 
 Die
-[StatefulAnimation](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html)
+{{ class('pi.actor.StatefulAnimation') }}
 ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand
 umzusetzen.
 
 Nehmen wir dieses Beispiel:[^oop]
 
-[^oop]: Die Spielfigur stammt aus dem [Open Pixel
-Project](http://www.openpixelproject.com), aus dem Ordner
-[./sprites/humans/traveler/](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip)
-der Zip-Datei
-[opp-assets.zip](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip).
+[^oop]:
+    Die Spielfigur stammt aus dem [Open Pixel
+    Project](http://www.openpixelproject.com), aus dem Ordner
+    [./sprites/humans/traveler/](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip)
+    der Zip-Datei
+    [opp-assets.zip](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip).
 
-| Zustand | Animiertes GIF                                                                                    |
-| ------- | ------------------------------------------------------------------------------------------------- |
-| Idle    | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/idle.gif)         |
-| Jumping | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_1up.gif)     |
-| Midair  | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_2midair.gif) |
-| Falling | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_3down.gif)   |
-| Landing | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/jump_4land.gif)   |
-| Walking | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/walk.gif)         |
-| Running | ![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/traveler/run.gif)          |
+| Zustand | Animiertes GIF                           |
+| ------- | ---------------------------------------- |
+| Idle    | {{ image('traveler/idle.gif') }}         |
+| Jumping | {{ image('traveler/jump_1up.gif') }}     |
+| Midair  | {{ image('traveler/jump_2midair.gif') }} |
+| Falling | {{ image('traveler/jump_3down.gif') }}   |
+| Landing | {{ image('traveler/jump_4land.gif') }}   |
+| Walking | {{ image('traveler/walk.gif') }}         |
+| Running | {{ image('traveler/run.gif') }}          |
 
 ## Zustandsübergangsdiagramm für die Figur
 
@@ -152,7 +153,6 @@ Der Zwischenstand: Noch passiert nicht viel.
 ///
 
 {{ demo('tutorials/stateful_animation/StatefulAnimationDemo') }}
-
 
 ```java
 public class StatefulAnimationDemo extends Scene
@@ -461,31 +461,31 @@ festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 
 ## Anregung zum Experimentieren
 
-- __Different Settings, Different Game:__ Platformer werden fundamental anders,
+- **Different Settings, Different Game:** Platformer werden fundamental anders,
   wenn du an den Stellschrauben drehst: Ändere die Werte für Beschleunigung,
   Entschleunigung, und Geschwindigkeit und überlege dir interessante
   Herausforderungen. Ein Platformer mit langer Be-/Ent-Schleunigung eignet sich
   weniger für viele präzise Sprünge, verlangt allerdings viel Überlegung und
   Vorbereitung von Seiten des Spielers. Spiele mit den Werten und ändere das
   Testbett und finde heraus, was dir Spaß macht.
-- __Still too simple:__ Die Geschwindigkeit wird derzeit "blind" interpoliert:
+- **Still too simple:** Die Geschwindigkeit wird derzeit "blind" interpoliert:
   Sollte unsere Figur gegen eine Wand knallen, so wird die Geschwindigkeit im
   folgenden Frame gleich wieder auf den gewünschten Laufwert gesetzt. Durch
   smartes Reagieren auf Kollisionstests lässt sich die Figur in ihrer Bewegung
   weiter verbessern.
-- __Create Something!__ Die Grundlage für einen Platformer ist geschaffen.
+- **Create Something!** Die Grundlage für einen Platformer ist geschaffen.
   Bewegung ist da. Allerdings sonst noch nicht viel. Baue ein, worauf du Lust
   hast, zum Beispiel:
-    - __Ein Level:__ Stelle Platformen zusammen, baue Schluchten,
-        Kletterparcours nach oben, was immer dein Jump n' Run Herz begehrt!
-    - __Kamera-Einbindung:__ Die Kamera kann sich dem Charakter anpassen, sodass
-        ein Level auch über die Sichtweite des Spielfensters hinaus ragen darf.
-    - __Pick-Ups:__ Bei Berührung erhält der Charakter einen Bonus (z.B.
-        zeitweise höhere Geschwindigkeit/Sprungkraft)
-    - __Gegner:__ Andere Akteure, die der Charakter besser nicht berühren
-        sollte; sie ziehen ihm Hit Points ab (oder beenden das Spiel direkt).
-        Vielleicht kann sich der Charakter mit einem Mario-Sprung auf den Kopf
-        der Gegner zur Wehr setzen?
-    - __Ein Ziel:__ Quo Vadis? Was ist das Ziel des Levels? Von Flagge am
-        rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
-    - etc, etc, etc.
+  - **Ein Level:** Stelle Platformen zusammen, baue Schluchten,
+    Kletterparcours nach oben, was immer dein Jump n' Run Herz begehrt!
+  - **Kamera-Einbindung:** Die Kamera kann sich dem Charakter anpassen, sodass
+    ein Level auch über die Sichtweite des Spielfensters hinaus ragen darf.
+  - **Pick-Ups:** Bei Berührung erhält der Charakter einen Bonus (z.B.
+    zeitweise höhere Geschwindigkeit/Sprungkraft)
+  - **Gegner:** Andere Akteure, die der Charakter besser nicht berühren
+    sollte; sie ziehen ihm Hit Points ab (oder beenden das Spiel direkt).
+    Vielleicht kann sich der Charakter mit einem Mario-Sprung auf den Kopf
+    der Gegner zur Wehr setzen?
+  - **Ein Ziel:** Quo Vadis? Was ist das Ziel des Levels? Von Flagge am
+    rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
+  - etc, etc, etc.

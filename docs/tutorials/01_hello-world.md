@@ -8,7 +8,7 @@
 
 Das grundlegendste *Hello World* sieht so aus:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v1_basic.png)
+{{ image('docs/tutorials/hello-world/v1_basic.png') }}
 /// caption
 Das (noch wenig spannende) Ergebnis des Codes
 ///
@@ -73,7 +73,7 @@ sind.
 
 ### Debug-Modus
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v1_debug.png)
+{{ image('docs/tutorials/hello-world/v1_debug.png') }}
 /// caption
 Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.
 ///
@@ -101,7 +101,7 @@ Game.start(400, 300, new HelloWorldVersion1());
 Beim nächste Codebeispiel handelt es sich um eine Erweiterung der Version 1 um
 geometrischen Figuren und Farbe.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v2_geometry.png)
+{{ image('docs/tutorials/hello-world/v2_geometry.png') }}
 /// caption
 Jetzt mit mehr Farbe und geometrischen Figuren
 ///
@@ -169,7 +169,7 @@ circle.setColor("blue");
 
 ### Ebenen-Position
 
-![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/tutorials/hello-world/v2_nolayer.png)
+{{ image('docs/tutorials/hello-world/v2_nolayer.png') }}
 /// caption
 So würde das Bild aussehen, wenn die Ebenen-Position nicht explizit gesetzt
 werden würde.

@@ -4,10 +4,10 @@
 
 Die Klassen mit Farbbezug:
 
-- [resources.ColorContainer](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorContainer.html)
-- [resources.ColorScheme](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorScheme.html)
-- [resources.ColorSchemeSelection](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorSchemeSelection.html)
-- [resources.NamedColor](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/NamedColor.html)
+- {{ class('pi.resources.color.ColorContainer') }}
+- {{ class('pi.resources.color.ColorScheme') }}
+- {{ class('pi.resources.color.ColorSchemeSelection') }}
+- {{ class('pi.resources.color.NamedColor') }}
 - [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#colors)
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der

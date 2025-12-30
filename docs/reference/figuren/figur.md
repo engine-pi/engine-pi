@@ -3,12 +3,12 @@
 Eine Figur (engl. Actor) ist ein grafisches Objekt, das sich bewegt bzw.
 das bewegt werden kann. In der Engine Pi gibt es eine Vielzahl
 verschiedener Figurenarten (z. B.
-{{ class_name('actor.Image') }},
-{{ class_name('actor.Text') }},
-{{ class_name('actor.Rectangle') }},
-{{ class_name('actor.Circle') }}). Alle
+{{ class('actor.Image') }},
+{{ class('actor.Text') }},
+{{ class('actor.Rectangle') }},
+{{ class('actor.Circle') }}). Alle
 diese Spezialisierungen sind abgeleitet von der Oberklasse
-{{ class_name('actor.Actor') }}.
+{{ class('actor.Actor') }}.
 Die API-Dokumentation des Pakets {{ package_summary('pi.actor') }}
 listet alle verfügbaren Actor-Klassen auf.
 

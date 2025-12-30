@@ -1,5 +1,11 @@
 site_name: Engine Pi
 site_url: https://engine-pi.github.io/engine-pi/
+
+repo_name: Engine Pi
+repo_url: https://github.com/engine-pi/engine-pi
+# https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   logo: _assets/logo.svg
@@ -10,16 +16,23 @@ theme:
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
     # index.md in Ordner werden nicht doppelt angezeigt
     - navigation.indexes
+    # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#navigation
+    - navigation.footer
     # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button
     - content.code.copy
     # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button
     - content.code.select
-repo_name: Engine Pi
-repo_url: https://github.com/engine-pi/engine-pi
+    # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
+    - content.action.edit
+    # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
+    # - content.action.view
 
 plugins:
   # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
-  - macros
+  - macros:
+      # https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
+      module_name: docs/macros
+
   # https://github.com/tuunit/mkdocs-drawio
   - drawio
 markdown_extensions:

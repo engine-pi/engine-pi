@@ -184,12 +184,12 @@ Engine-Kamera genutzt:
 
 ## Durch Platformen Springen: Kollisionen kontrollieren
 
-Das Interface
-[CollisionListener](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/CollisionEvent.html) wurde bereits in seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
+Das Interface {{ class('event.CollisionListener') }} wurde bereits in
+seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
-`CollisionListener` kann mehr als nur melden, wenn zwei Actor-Objekte sich
-überschneiden. Um das `FroggyJump`-Spiel zu implementieren, nutzen wir weitere
-Features.
+{{ class('event.CollisionListener') }} kann mehr als nur melden, wenn zwei
+Actor-Objekte sich überschneiden. Um das `FroggyJump`-Spiel zu implementieren,
+nutzen wir weitere Features.
 
 Unser Frosch soll fähig sein, von unten „durch die Platform hindurch“ zu
 springen. Von oben fallend soll er natürlich auf der Platform stehen bleiben.

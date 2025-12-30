@@ -35,9 +35,9 @@ Die Kamera auf der Zeichenebene...
 ...und das Ergebnis auf dem Spielbildschirm
 ///
 
-Dies macht ein Objekt der Klasse [Camera](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Camera.html).
+Dies macht ein Objekt der Klasse {{ class('pi.Camera') }}.
 
-<!-- In der Klasse [Game](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html) gibt es eine Referenz auf die einzige aktive Kamera des
+<!-- In der Klasse {{ class('pi.Game') }} gibt es eine Referenz auf die einzige aktive Kamera des
 Spiels und diese ist so auch in der eigenen spielsteuernden Klasse über die
 Referenz cam erreichbar. -->
 
