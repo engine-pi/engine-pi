@@ -26,6 +26,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import pi.Resources;
+import pi.graphics.screen_recording.Photographer;
 
 /**
  * Ein Render-Panel, das als Zeichenfläche für die Engine dient.
@@ -52,6 +53,8 @@ import pi.Resources;
  */
 public final class RenderPanel extends Canvas implements RenderTarget
 {
+    private Photographer photographer;
+
     /**
      * Konstruktor für Objekte der Klasse {@link RenderPanel}
      *
@@ -65,6 +68,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
         setSize(width, height);
         setPreferredSize(getSize());
         setBackground(Resources.colors.getSafe("black"));
+        photographer = new Photographer();
     }
 
     /**
@@ -86,6 +90,15 @@ public final class RenderPanel extends Canvas implements RenderTarget
             {
                 source.render((Graphics2D) bufferStrategy.getDrawGraphics(),
                         getWidth(), getHeight());
+
+                // Kann von jedeem Einzelbild ein Bildschirmfoto machen.
+                if (photographer.hasToTakeScreenshot())
+                {
+                    var image = photographer.createImage(getWidth(),
+                            getHeight());
+                    source.render(image.g(), getWidth(), getHeight());
+                    photographer.writeImage(image);
+                }
             }
             while (bufferStrategy.contentsRestored()
                     && !Thread.currentThread().isInterrupted());

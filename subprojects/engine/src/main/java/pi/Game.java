@@ -1016,7 +1016,7 @@ public final class Game
     @API
     public static void takeScreenshot()
     {
-        loop.takeScreenshot();
+        DebugConfiguration.takeSingleScreenshot = true;
     }
 
     /**

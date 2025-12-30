@@ -43,7 +43,6 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
-
 import pi.Bounds;
 import pi.Configuration;
 import pi.Game;

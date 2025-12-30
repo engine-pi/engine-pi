@@ -20,6 +20,9 @@
  */
 package pi.graphics;
 
+/**
+ * Wird vom {@link RenderPanel} ({@link java.awt.Canvas}) implementiert.
+ */
 public interface RenderTarget
 {
     void render(RenderSource source);

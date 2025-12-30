@@ -33,7 +33,6 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
 import pi.debug.DebugInfoBoxDrawer;
-import pi.debug.ScreenRecorder;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.graphics.RenderTarget;
@@ -93,8 +92,6 @@ public final class GameLoop
      */
     private long frameCounter;
 
-    private ScreenRecorder screenshot;
-
     public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
     {
@@ -102,15 +99,6 @@ public final class GameLoop
         this.currentScene = currentScene;
         this.isDebug = isDebug;
         infoBoxDrawer = new DebugInfoBoxDrawer();
-    }
-
-    private ScreenRecorder screenshot()
-    {
-        if (screenshot == null)
-        {
-            screenshot = new ScreenRecorder();
-        }
-        return screenshot;
     }
 
     /**
@@ -154,19 +142,6 @@ public final class GameLoop
     public double getFrameDuration()
     {
         return frameDuration;
-    }
-
-    /**
-     * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
-     * {@code ~/engine-pi}.
-     */
-    @Internal
-    public void takeScreenshot()
-    {
-        screenshot().take((g) -> {
-            render(source -> source.render(g, Configuration.windowWidthPx,
-                    Configuration.windowHeightPx));
-        });
     }
 
     /**
@@ -312,12 +287,6 @@ public final class GameLoop
         g.setClip(0, 0, width, height);
         AffineTransform oldTransform = g.getTransform();
         scene.render(g, width, height);
-        // Kann jedes Einzelbild ein Bildschirmfoto machen.
-        ScreenRecorder screenshot = screenshot();
-        if (screenshot.isFrameForRecording())
-        {
-            screenshot().take(g2 -> scene.render(g2, width, height));
-        }
         g.setTransform(oldTransform);
         if (isDebug.get())
         {
@@ -329,7 +298,6 @@ public final class GameLoop
 
     public static void main(String[] args)
     {
-        Game.recordScreen(5);
         Game.start();
     }
 }

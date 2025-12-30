@@ -274,12 +274,17 @@ public class ImageUtil
     /**
      * Speichert ein Bild in das Dateisystem ab.
      *
-     * @author Michael Andonie
-     * @author Niklas Keller
+     * <p>
+     * Das Dateiformat wird anhand der Dateierweiterung erkannt. Folgende
+     * Formate werden unterstützt: png, jpg, gif
+     * </p>
      *
      * @param image Das Bild, das gespeichert werden soll.
-     * @param filePath Der Dateiname, unter dem das Bild gespeichert werden
-     *     soll.
+     * @param filePath der Pfad zur Zieldatei (unterstützte Formate: png, jpg,
+     *     gif)
+     *
+     * @throws RuntimeException wenn das Dateiformat nicht unterstützt wird oder
+     *     ein Fehler beim Schreiben auftritt
      */
     public static void write(BufferedImage image, String filePath)
     {
@@ -300,9 +305,8 @@ public class ImageUtil
             break;
 
         default:
-            Logger.error("IO",
+            throw new RuntimeException(
                     "Nicht unterstütztes Format. Nur png, jpg, gif ist unterstützt");
-            return;
         }
         try
         {

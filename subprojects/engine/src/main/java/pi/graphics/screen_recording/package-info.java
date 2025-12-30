@@ -1,9 +1,7 @@
 /*
- * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/internal/graphics/RenderSource.java
- *
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2011 - 2020 Michael Andonie and contributors.
+ * Copyright (c) 2025 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,25 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.graphics;
-
-import java.awt.Graphics2D;
 
 /**
- * Definiert eine Methode, um in eine Fläche zu zeichnen.
+ * Einzelne Bildschirmfotos (screenshot) oder Videoaufzeichnungen des
+ * Spielfensters (screen recording).
  *
  * <p>
- * Wird von der {@link pi.Scene} implementiert.
+ * Die Klasse {@link Photographer} macht einzelne Bildschirmfotos oder
+ * Bildschirmfotoserien für die Videoaufzeichnungen. Die Klasse
+ * {@link ImagesToVideoConverter} konvertiert diese Bildschirmfotoserien zu
+ * Videodatei mit Hilfe von ffmpeg (über die Kommandozeile)
  * </p>
  */
-public interface RenderSource
-{
-    /**
-     * Zeichnet in eine Fläche.
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param width Die <b>Breite</b> der Zeichenfläche in Pixel.
-     * @param height Die <b>Höhe</b> der Zeichenfläche in Pixel.
-     */
-    void render(Graphics2D g, int width, int height);
-}
+package pi.graphics.screen_recording;

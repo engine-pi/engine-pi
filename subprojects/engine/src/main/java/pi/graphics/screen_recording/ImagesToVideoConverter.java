@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.debug;
+package pi.graphics.screen_recording;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,7 +29,7 @@ import java.io.InputStreamReader;
  *
  * @since 0.42.0
  */
-public class GifGenerator
+public class ImagesToVideoConverter
 {
     private final String screenshotDir;
 
@@ -44,7 +44,8 @@ public class GifGenerator
      * @param outputFile Der Pfad zur Ausgabe-GIF-Datei
      * @param framerate Die Anzahl der Bilder pro Sekunde (Standard: 10)
      */
-    public GifGenerator(String screenshotDir, String outputFile, int framerate)
+    public ImagesToVideoConverter(String screenshotDir, String outputFile,
+            int framerate)
     {
         this.screenshotDir = screenshotDir;
         this.outputFile = outputFile;
@@ -54,7 +55,7 @@ public class GifGenerator
     /**
      * Erstellt einen neuen GIF-Generator mit Standard-Framerate von 10 FPS.
      */
-    public GifGenerator(String screenshotDir, String outputFile)
+    public ImagesToVideoConverter(String screenshotDir, String outputFile)
     {
         this(screenshotDir, outputFile, 10);
     }
