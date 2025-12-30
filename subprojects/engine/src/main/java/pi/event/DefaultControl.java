@@ -62,6 +62,9 @@ public class DefaultControl implements DefaultListener
         return Game.getActiveScene() == null;
     }
 
+    // Got to
+    // file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/reference/ereignissteuerung.md
+
     /**
      * Registriert <b>Standard-Tastenkürzel</b>.
      *
@@ -72,6 +75,8 @@ public class DefaultControl implements DefaultListener
      * <li>{@code ALT + d} zum An- und Abschalten des Debug-Modus.</li>
      * <li>{@code ALT + p} zum Ein- und Ausblenden der Figuren-Positionen (sehr
      * ressourcenintensiv).</li>
+     * <li>{@code ALT + r} zum Ein- oder Ausschalten der Bildschirmaufnahme (in
+     * Form von Einzelbildern).</li>
      * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
      * ~/engine-pi).</li>
      * <li>{@code ALT + PLUS} Hineinzoomen.</li>
@@ -98,6 +103,7 @@ public class DefaultControl implements DefaultListener
             case KeyEvent.VK_D -> Game.toggleDebug();
             case KeyEvent.VK_P -> DebugConfiguration.toogleShowPositions();
             case KeyEvent.VK_S -> Game.takeScreenshot();
+            case KeyEvent.VK_R -> Game.recordScreen();
             case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);
             case KeyEvent.VK_MINUS -> getCamera().zoomOut(zoomFactor);
             }

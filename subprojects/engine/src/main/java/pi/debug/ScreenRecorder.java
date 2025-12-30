@@ -23,7 +23,9 @@ import java.awt.image.BufferedImage;
 import java.util.function.Consumer;
 
 import pi.Configuration;
+import pi.Game;
 import pi.util.FileUtil;
+import pi.util.Graphics2DUtil;
 import pi.util.ImageUtil;
 
 /**
@@ -31,13 +33,13 @@ import pi.util.ImageUtil;
  *
  * @since 0.42.0
  */
-public class Screenshot
+public class ScreenRecorder
 {
     String baseDir;
 
     private int frameCounter = 0;
 
-    public Screenshot()
+    public ScreenRecorder()
     {
         baseDir = FileUtil.getHome() + "/engine-pi";
         FileUtil.createDir(baseDir);
@@ -53,26 +55,33 @@ public class Screenshot
                 Configuration.windowWidthPx, Configuration.windowHeightPx,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D g = (Graphics2D) screenshot.getGraphics();
+        Graphics2DUtil.setAntiAliasing(g, true);
         consumer.accept(g);
         ImageUtil.write(screenshot,
                 baseDir + "/screenshot_" + System.nanoTime() + ".png");
     }
 
     /**
-     * Soll bei diesem Einzelbild ein Bildschirmfoto gemacht werden?
+     * Soll bei diesem Einzelbild ein Bildschirmfoto für die Bildschirmaufnahme
+     * (screen recording) gemacht werden?
      *
-     * @see DebugConfiguration#screenshotEveryNFrames
+     * @see DebugConfiguration#screenRecording
+     * @see DebugConfiguration#screenRecordingNFrames
      */
-    public boolean isFrameForScreenshot()
+    public boolean isFrameForRecording()
     {
         frameCounter++;
-        if (DebugConfiguration.screenshotEveryNFrames > 0
-                && frameCounter >= DebugConfiguration.screenshotEveryNFrames)
+        if (DebugConfiguration.screenRecording
+                && frameCounter >= DebugConfiguration.screenRecordingNFrames)
         {
             frameCounter = 0;
             return true;
         }
         return false;
+    }
 
+    public static void main(String[] args)
+    {
+        Game.start();
     }
 }

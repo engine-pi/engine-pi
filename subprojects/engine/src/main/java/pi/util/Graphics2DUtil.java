@@ -204,9 +204,20 @@ public class Graphics2DUtil
      */
     public static void setAntiAliasing(Graphics2D g, boolean on)
     {
+        // Kantenglättung für Text einschalten.
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                on ? RenderingHints.VALUE_TEXT_ANTIALIAS_ON
+                        : RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+
+        // Kantenglättung für geometrische Formen
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 on ? RenderingHints.VALUE_ANTIALIAS_ON
                         : RenderingHints.VALUE_ANTIALIAS_OFF);
+
+        // Algorithmusauswahl eher auf Geschwindigkeit oder Qualität
+        // ausgerichtet
+        g.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_SPEED);
     }
 
     public static void main(String[] args)

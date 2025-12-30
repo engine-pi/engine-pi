@@ -1019,9 +1019,25 @@ public final class Game
         loop.takeScreenshot();
     }
 
-    public static void takeScreenshotEveryNFrames(int screenshotEveryNFrames)
+    /**
+     * Schaltet die <b>Bildschirmaufnahme</b> (in Form von Einzelbildern) ein
+     * oder aus.
+     */
+    @API
+    public static void recordScreen(int screenshotEveryNFrames)
     {
-        DebugConfiguration.screenshotEveryNFrames = screenshotEveryNFrames;
+        recordScreen();
+        DebugConfiguration.screenRecordingNFrames = screenshotEveryNFrames;
+    }
+
+    /**
+     * Schaltet die <b>Bildschirmaufnahme</b> (in Form von Einzelbildern) ein
+     * oder aus.
+     */
+    @API
+    public static void recordScreen()
+    {
+        DebugConfiguration.screenRecording = !DebugConfiguration.screenRecording;
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

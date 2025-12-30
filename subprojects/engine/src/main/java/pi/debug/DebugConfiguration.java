@@ -100,9 +100,16 @@ public class DebugConfiguration
     }
 
     /**
+     * Aktiviert das Erzeugen von Bildschirmfotos je Einzelbild (Frame)
+     *
+     * @since 0.42.0
+     */
+    public static boolean screenRecording = false;
+
+    /**
      * Macht jedes n-te Einzelbild ein Bildschirmfoto.
      *
      * @since 0.42.0
      */
-    public static int screenshotEveryNFrames = 0;
+    public static int screenRecordingNFrames = 2;
 }

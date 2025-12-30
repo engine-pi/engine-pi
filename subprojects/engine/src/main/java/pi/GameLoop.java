@@ -21,7 +21,6 @@
 package pi;
 
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -34,10 +33,11 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
 import pi.debug.DebugInfoBoxDrawer;
-import pi.debug.Screenshot;
+import pi.debug.ScreenRecorder;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.graphics.RenderTarget;
+import pi.util.Graphics2DUtil;
 
 /**
  * Die <b>Ereignisschleife</b> der Engine.
@@ -93,7 +93,7 @@ public final class GameLoop
      */
     private long frameCounter;
 
-    private Screenshot screenshot;
+    private ScreenRecorder screenshot;
 
     public GameLoop(RenderTarget render, Supplier<Scene> currentScene,
             Supplier<Boolean> isDebug)
@@ -104,11 +104,11 @@ public final class GameLoop
         infoBoxDrawer = new DebugInfoBoxDrawer();
     }
 
-    private Screenshot screenshot()
+    private ScreenRecorder screenshot()
     {
         if (screenshot == null)
         {
-            screenshot = new Screenshot();
+            screenshot = new ScreenRecorder();
         }
         return screenshot;
     }
@@ -305,12 +305,7 @@ public final class GameLoop
     {
         Scene scene = getCurrentScene();
         // have to be the same @ Game.screenshot!
-        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_SPEED);
+        Graphics2DUtil.setAntiAliasing(g, true);
         // Absoluter Hintergrund
         g.setColor(scene.getBackgroundColor());
         g.fillRect(0, 0, width, height);
@@ -318,8 +313,8 @@ public final class GameLoop
         AffineTransform oldTransform = g.getTransform();
         scene.render(g, width, height);
         // Kann jedes Einzelbild ein Bildschirmfoto machen.
-        Screenshot screenshot = screenshot();
-        if (screenshot.isFrameForScreenshot())
+        ScreenRecorder screenshot = screenshot();
+        if (screenshot.isFrameForRecording())
         {
             screenshot().take(g2 -> scene.render(g2, width, height));
         }
@@ -334,7 +329,7 @@ public final class GameLoop
 
     public static void main(String[] args)
     {
-        Game.takeScreenshotEveryNFrames(1);
+        Game.recordScreen(5);
         Game.start();
     }
 }

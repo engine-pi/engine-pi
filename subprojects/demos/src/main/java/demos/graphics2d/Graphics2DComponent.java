@@ -2,10 +2,11 @@ package demos.graphics2d;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+
+import pi.util.Graphics2DUtil;
 
 /**
  * Übernimmt den Cast von {@link Graphics} zu {@link Graphics2D} und bietet wie
@@ -28,8 +29,7 @@ public abstract class Graphics2DComponent extends JComponent
         if (graphics instanceof Graphics2D)
         {
             Graphics2D graphics2D = (Graphics2D) graphics;
-            graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
+            Graphics2DUtil.setAntiAliasing(graphics2D, true);
             render(graphics2D);
         }
     }

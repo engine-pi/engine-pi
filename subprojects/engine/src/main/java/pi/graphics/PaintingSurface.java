@@ -23,12 +23,12 @@ import static pi.Resources.colors;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
+import pi.util.Graphics2DUtil;
 
 /**
  * Eine <b>Malfläche</b>, in die gezeichnet werden kann.
@@ -101,8 +101,7 @@ public class PaintingSurface
         image = new BufferedImage((int) size.getX(), (int) size.getY(),
                 BufferedImage.TYPE_INT_ARGB);
         g = image.createGraphics();
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+        Graphics2DUtil.setAntiAliasing(g, true);
     }
 
     /**
