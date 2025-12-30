@@ -39,7 +39,7 @@ der Zip-Datei
 
 Bevor die Umsetzung beginnt, ist es sinnvoll, die Zustände und deren Übergänge zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für die Figur.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram.png)
+{{ image('docs/stateful-animation/TransitionDiagram.png') }}
 /// caption
 Zustandsübergangsdiagramm für die Figur
 ///
@@ -146,7 +146,7 @@ Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
 sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Testbed.gif)
+{{ image('docs/stateful-animation/StatefulAnimation_First_Testbed.gif') }}
 /// caption
 Der Zwischenstand: Noch passiert nicht viel.
 ///
@@ -192,7 +192,7 @@ Zustandsübergänge zu implementieren.
 
 ### Springen
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_jumpstates.png)
+{{ image('docs/stateful-animation/TransitionDiagram_jumpstates.png') }}
 /// caption
 Wir fokussieren uns nun auf die Übergänge zum Springen.
 ///
@@ -201,7 +201,7 @@ Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
 zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_First_Jump.gif)
+{{ image('docs/stateful-animation/StatefulAnimation_First_Jump.gif') }}
 /// caption
 Die Figur kann springen, aber nicht landen.
 ///
@@ -228,7 +228,7 @@ private void attemptJump()
 
 ### Fallen und Landen
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vy_states.png)
+{{ image('docs/stateful-animation/TransitionDiagram_vy_states.png') }}
 /// caption
 Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.
 ///
@@ -245,7 +245,7 @@ Unsere Spielfigur soll in jedem Einzelbild ihre eigene Y-Geschwidingkeit
 überprüfen. Dazu implementiert sie nun zusätzlich `FrameUpdateListener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Full_Jump2.gif)
+{{ image('docs/stateful-animation/StatefulAnimation_Full_Jump2.gif') }}
 /// caption
 Die Figur hat jetzt einen vollen Sprungzyklus
 ///
@@ -291,7 +291,7 @@ die Physik-Engine gibt es viele Möglichkeiten, Bewegung im Spiel zu simulieren.
 Ein physikalisch korrekte Implementierung ist die kontinuierliche Anwendung
 einer Bewegungskraft:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Player_Movement.png)
+{{ image('docs/stateful-animation/StatefulAnimation_Player_Movement.png') }}
 /// caption
 Player Movement
 ///
@@ -316,7 +316,7 @@ private static final float FORCE = 16000;
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
 Methode `onFrameUpdate(double pastTime)` erweitert:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Base.gif)
+{{ image('docs/stateful-animation/StatefulAnimation_Movement_Base.gif') }}
 /// caption
 Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.
@@ -344,7 +344,7 @@ else if (Game.isKeyPressed(KeyEvent.VK_D))
 
 ### Die Übergänge IDLE - WALKING - RUNNING
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/TransitionDiagram_vx_states.png)
+{{ image('docs/stateful-animation/TransitionDiagram_vx_states.png') }}
 /// caption
 Die letzten zu implementierenden Zustandsübergänge hängen von der
 Spielerbewegung ab.
@@ -378,7 +378,7 @@ Auf diese Grenzwerte wird jeden Frame in der `onFrameUpdate(...)` der Spielfigur
 geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
 die neue `onFrameUpdate(...)`:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/stateful-animation/StatefulAnimation_Movement_Full.gif)
+{{ image('docs/stateful-animation/StatefulAnimation_Movement_Full.gif') }}
 /// caption
 Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.

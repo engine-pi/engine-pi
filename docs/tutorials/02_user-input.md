@@ -6,7 +6,7 @@
 
 ## Tastatureingaben erstellen
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyStrokeCounter.png)
+{{ image('docs/input/KeyStrokeCounter.png') }}
 /// caption
 Der Counter im Gange
 ///
@@ -81,7 +81,7 @@ Im [folgendem
 Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/KeyEventDemo.png)
+{{ image('docs/input/KeyEventDemo.png') }}
 /// caption
 Das rote Rechteck bewegt sich mit WASD
 ///
@@ -184,7 +184,7 @@ public class KeyEventDisplayDemo extends Scene
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#MouseClickListener
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesDemo.gif)
+{{ image('docs/input/PaintingCirclesDemo.gif') }}
 /// caption
 Auf Mausklick reagieren: Kreise malen
 ///
@@ -250,7 +250,7 @@ für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/User_Input#Vector
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/input/PaintingCirclesAdvancedDemo.gif)
+{{ image('docs/input/PaintingCirclesAdvancedDemo.gif') }}
 /// caption
 Ein besseres Kreismalen: Auswählbare Größe und Farbe über ein kleines Menü
 ///

@@ -14,7 +14,7 @@ In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
 Reihe die Komplementärfarben der entsprechenden Bilder.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Images_derived_complementary-color.png)
+{{ image('docs/color-complementary/Images_derived_complementary-color.png') }}
 
 Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
@@ -56,8 +56,8 @@ public class ImageAverageColorDemo extends Scene
 
 `ALT + d` aktiviert den Debug-Modus: Die Bilder werden von Umrissen in den Komplementärfarben umrahmt.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Images_shapes.png)
+{{ image('docs/color-complementary/Images_shapes.png') }}
 
 `Alt + a` blendet die Figurenfüllungen aus. Es sind nur noch die Umrisse zu sehen.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/color-complementary/Shapes-only.png)
+{{ image('docs/color-complementary/Shapes-only.png') }}

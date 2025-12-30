@@ -17,7 +17,7 @@ heruntergeladen werden:
 Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>-jar-with-dependencies.jar` herunterladen (z. B. [engine-pi-{{ version }}-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-jar-with-dependencies.jar)),
 einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/download/Github-Release.png)
+{{ image('docs/download/Github-Release.png') }}
 /// caption
 Github Release
 ///
@@ -42,7 +42,7 @@ Im Gegensatz zur Engine Alpha ist die
 ```
 
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/download/Maven-Central.png)
+{{ image('docs/download/Maven-Central.png') }}
 /// caption
 Maven Central Repository
 ///

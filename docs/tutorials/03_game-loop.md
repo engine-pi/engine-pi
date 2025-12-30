@@ -9,7 +9,7 @@
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/GameLoop.png)
+{{ image('docs/GameLoop.png') }}
 /// caption
 Der Engine Pi Game Loop
 ///
@@ -30,7 +30,7 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Minimal.gif)
+{{ image('docs/Snake_Minimal.gif') }}
 /// caption
 Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
 ///
@@ -248,7 +248,7 @@ public void placeRandomGoodie()
 
 ## Anregung zum Experimentieren
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Snake_Advanced.gif)
+{{ image('docs/Snake_Advanced.gif') }}
 /// caption
 Eine Snake, die mit jedem Pickup wächst
 ///

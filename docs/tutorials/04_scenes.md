@@ -15,7 +15,7 @@ Methode `add(...)`.
 Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
 es die Methode `Game.transitionToScene(Scene)`.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/scenes/Scene_Demonstration.png)
+{{ image('docs/scenes/Scene_Demonstration.png') }}
 /// caption
 Szenen in der Engine: Beispiel mit Pausenmenü
 ///
@@ -126,7 +126,7 @@ public class MainScene extends Scene implements KeyStrokeListener
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/scenes/Tutorial_Pause_Menu.gif)
+{{ image('docs/scenes/Tutorial_Pause_Menu.gif') }}
 /// caption
 Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 ///

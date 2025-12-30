@@ -1,6 +1,6 @@
 # Bilderschriftart
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextMultilineDemo.png)
+{{ image('docs/actor/ImageFontTextMultilineDemo.png') }}
 
 Quellcode: [demos/actor/ImageFontTextMultilineDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextMultilineDemo.java)
 
@@ -22,7 +22,7 @@ public class ImageFontTextMultilineDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextAlignmentDemo.png)
+{{ image('docs/actor/ImageFontTextAlignmentDemo.png') }}
 
 Quellcode: [demos/actor/ImageFontTextAlignmentDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextAlignmentDemo.java)
 
@@ -58,7 +58,7 @@ public class ImageFontTextAlignmentDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextColorDemo.png)
+{{ image('docs/actor/ImageFontTextColorDemo.png') }}
 
 Quellcode: [demos/actor/ImageFontTextColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextColorDemo.java)
 
@@ -89,7 +89,7 @@ public class ImageFontTextColorDemo extends Scene
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/actor/ImageFontTextTetris.png)
+{{ image('docs/actor/ImageFontTextTetris.png') }}
 
 Quellcode: [tetris: scenes/CopyrightScene.java](https://github.com/engine-pi/tetris/blob/main/src/main/java/de/pirckheimer_gymnasium/tetris/scenes/CopyrightScene.java)
 

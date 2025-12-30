@@ -127,7 +127,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/FrogTutorial1.gif)
+{{ image('docs/FrogTutorial1.gif') }}
 /// caption
 Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
 ///

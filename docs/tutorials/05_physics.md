@@ -73,7 +73,7 @@ public class DominoesDemo extends Scene
 Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
 Dominosteine, und ein weißer Boden mit Wand.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_1-statisch.png)
+{{ image('docs/Dominos_1-statisch.png') }}
 /// caption
 Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!
 ///
@@ -112,7 +112,7 @@ private void setupPhysics()
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_2-dynamisch.gif)
+{{ image('docs/Dominos_2-dynamisch.gif') }}
 /// caption
 Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall
 ///
@@ -129,7 +129,7 @@ Zeit, die Dominos umzuschmeißen! Die Methode
 Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
 Ballwurf getestet werden.
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_3-Wurf.gif)
+{{ image('docs/Dominos_3-Wurf.gif') }}
 /// caption
 Mit einem Methodenaufruf fliegt der Ball
 ///
@@ -153,7 +153,7 @@ private void setupAngle()
 }
 ```
 
-![](https://raw.githubusercontent.com/engine-pi/assets/main/docs/Dominos_4-Wurfwinkel-Visualisierung.gif)
+{{ image('docs/Dominos_4-Wurfwinkel-Visualisierung.gif') }}
 /// caption
 Visualisierung des Wurfwinkels
 ///
