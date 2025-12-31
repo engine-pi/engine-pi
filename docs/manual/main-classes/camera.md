@@ -1,4 +1,4 @@
-# Kamera
+# `Camera` (Kamera)
 
 https://engine-alpha.org/wiki/Tutorials/Kamera
 

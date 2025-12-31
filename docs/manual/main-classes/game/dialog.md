@@ -1,4 +1,4 @@
-# Dialogfenster
+# `Game.dialog` (Dialogfenster)
 
 https://engine-alpha.org/wiki/Tutorials/Dialoge
 

@@ -1,6 +1,4 @@
-# Ressourcen
-
-## Farben
+# `colors` (Farben)
 
 Die Klassen mit Farbbezug:
 

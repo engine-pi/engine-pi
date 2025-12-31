@@ -1,4 +1,4 @@
-# Bilderschriftart
+# `ImageFont` (Bilderschriftart)
 
 {{ image('docs/actor/ImageFontTextMultilineDemo.png') }}
 

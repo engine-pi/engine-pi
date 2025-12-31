@@ -1,6 +1,4 @@
-# Ereignissteuerung
-
-## Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten
+# `shortcuts` (Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten)
 
 Die Engine registriert im Auslieferungszustand einige wenige [grundlegenden
 Maus- und

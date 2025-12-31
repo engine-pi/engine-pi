@@ -1,4 +1,4 @@
-# Kollisionen-Erkennung[^engine-alpha-wiki:collision]
+# `CollisionListener` (Kollisionen-Erkennung)[^engine-alpha-wiki:collision]
 
 [^engine-alpha-wiki:collision]:
     Der Abschnitt stammt aus dem

@@ -1,4 +1,4 @@
-## Zeitsteuerung
+## repeat (Wiederholung)
 
 Quellcode: [demos/event/RepeatDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/event/RepeatDemo.java)
 

@@ -1,4 +1,4 @@
-# Figur (Actor)
+# `Actor` (Figur)
 
 Eine Figur (engl. Actor) ist ein grafisches Objekt, das sich bewegt bzw.
 das bewegt werden kann. In der Engine Pi gibt es eine Vielzahl

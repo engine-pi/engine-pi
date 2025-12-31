@@ -18,9 +18,9 @@ theme:
     - navigation.indexes
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#navigation
     - navigation.footer
-    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button
+    # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/#code-copy-button
     - content.code.copy
-    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button
+    # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/#code-selection-button
     - content.code.select
     # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
     - content.action.edit
@@ -36,7 +36,7 @@ plugins:
   # https://github.com/tuunit/mkdocs-drawio
   - drawio
 markdown_extensions:
-  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
+  # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -45,15 +45,19 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  # https://squidfunk.github.io/mkdocs-material/reference/footnotes/
+  # https://squidfunk.github.io/mkdocs-material/manual/footnotes/
   - footnotes
   - pymdownx.magiclink
-  # https://squidfunk.github.io/mkdocs-material/reference/images/
+  # https://squidfunk.github.io/mkdocs-material/manual/images/
   - attr_list
   - md_in_html
   # https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/
   # /// caption Caption ///
   - pymdownx.blocks.caption
+
+  # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - admonition
+  - pymdownx.details
 
 extra_css:
   - _assets/extra.css
@@ -65,30 +69,51 @@ watch:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
 nav:
   - Über die Engine Pi: index.md
-  - Referenz:
-      - reference/koordinatensystem.md
-      - Figuren:
-          - reference/figuren/figur.md
-          - reference/figuren/turtle.md
-      - reference/kamera.md
-      - reference/ressourcen.md
-      - reference/bilderschriftart.md
-      - reference/zeitsteuerung.md
-      - reference/ereignissteuerung.md
-      - reference/physics.md
-      - reference/dialogfenster.md
-      - reference/programmierstil.md
-  - Tutorials:
-      - tutorials/index.md
-      - tutorials/01_hello-world.md
-      - tutorials/02_user-input.md
-      - tutorials/03_game-loop.md
-      - tutorials/04_scenes.md
-      - tutorials/05_physics.md
-      - tutorials/06_stateful-animation.md
-      - tutorials/07_collision.md
+  - Handbuch:
+      - Hauptklassen:
+          - manual/main-classes/index.md
+          - 'Actor (Figur)':
+              - manual/main-classes/actor/index.md
+              - manual/main-classes/actor/turtle.md
+              - manual/main-classes/actor/stateful-animation.md
+          - manual/main-classes/scene.md
+          - manual/main-classes/camera.md
+          - manual/main-classes/layer.md
+          - Game (Spiel):
+              - manual/main-classes/game/index.md
+              - manual/main-classes/game/dialog.md
+
+      - events (Ereignissteuerung):
+          - manual/events/index.md
+          - manual/events/key-stroke-listener.md
+          - manual/events/mouse-click-listener.md
+          - manual/events/collision-listener.md
+
+      - Ressourcenverwaltung:
+          - manual/resources/index.md
+          - manual/resources/colors.md
+          - manual/resources/fonts.md
+          - manual/resources/images.md
+          - manual/resources/sounds.md
+
+  #     - manual/koordinatensystem.md
+  #     - manual/kamera.md
+  #     - manual/ressourcen.md
+  #     - manual/bilderschriftart.md
+  #     - manual/zeitsteuerung.md
+  #     - manual/ereignissteuerung.md
+  #     - manual/physics.md
+  #     - manual/programmierstil.md
+  # - Tutorials:
+  #     - tutorials/index.md
+  #     - tutorials/01_hello-world.md
+  #     - tutorials/02_user-input.md
+  #     - tutorials/03_game-loop.md
+  #     - tutorials/04_scenes.md
+  #     - tutorials/05_physics.md
+  #     - tutorials/06_stateful-animation.md
+  #     - tutorials/07_collision.md
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
-  - java.md
   - download.md
 
 extra:

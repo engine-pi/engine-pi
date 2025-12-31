@@ -1,36 +1,6 @@
 # Über die Engine Pi
 
-<!-- ![](_assets/MainAnimation.webp)
-/// caption
-webp
-///
-
-![](_assets/MainAnimation.gif)
-/// caption
-gif
-///
-
-![](_assets/MainAnimation.apng)
-/// caption
-apng
-///
-
-<video autoplay loop muted>
-  <source src="_assets/MainAnimation.webm" type="video/webm" />
-</video>
-/// caption
-webm
-///
-
-<video autoplay loop muted>
-  <source src="_assets/MainAnimation.mp4" type="video/mp4" />
-</video>
-/// caption
-mp4
-/// -->
-
-
-{{ image('logo/logo.svg') }}
+{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}
 
 Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
 einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an
@@ -69,11 +39,6 @@ Die LITIENGINE ist eine Java-2D-Game-Engine der bayerischen Entwickler
 viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
 Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
-Diese README-Datei verwendet Dokumentationen, Tutorials und Bilder aus dem
-[Engine Alpha Wiki](https://engine-alpha.org), die unter der
-[Creative Commons „Namensnennung, Weitergabe unter gleichen Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/)
-Lizenz stehen.
-
 {{ image('logo/Logos-forked-Engines.svg') }}
 /// caption
 Engine Alpha + LITIENGINE = Engine Pi
@@ -81,8 +46,12 @@ Engine Alpha + LITIENGINE = Engine Pi
 
 ## Über diese Dokumentation
 
-Die Dokumentation der [Engine Pi](https://github.com/engine-pi/engine-pi) wurde realisiert
-mit [MkDocs](https://www.mkdocs.org) und dem
-Theme [Material](https://squidfunk.github.io/mkdocs-material) realisiert.
+Die Dokumentation der [Engine Pi](https://github.com/engine-pi/engine-pi) wurde
+mit [MkDocs](https://www.mkdocs.org) und dem Theme
+[Material](https://squidfunk.github.io/mkdocs-material) realisiert. Sie
+verwendet Tutorials und Bilder aus dem [Engine Alpha
+Wiki](https://engine-alpha.org), die unter der [Creative Commons „Namensnennung,
+Weitergabe unter gleichen
+Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/) Lizenz stehen.
 
 Die Dokumentation ist unter folgender URL aufrufbar: https://engine-pi.github.io/engine-pi
