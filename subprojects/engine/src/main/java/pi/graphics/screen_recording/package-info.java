@@ -18,14 +18,18 @@
  */
 
 /**
- * Einzelne Bildschirmfotos (screenshot) oder Videoaufzeichnungen des
- * Spielfensters (screen recording).
+ * Ein Paket zum Erstellen von einzelnen Bildschirmfotos (screenshot) oder
+ * Videoaufzeichnungen (screen recording) des Spielfensters.
  *
  * <p>
- * Die Klasse {@link Photographer} macht einzelne Bildschirmfotos oder
+ * Die Hauptklasse {@link Photographer} macht einzelne Bildschirmfotos oder
  * Bildschirmfotoserien für die Videoaufzeichnungen. Die Klasse
  * {@link ImagesToVideoConverter} konvertiert diese Bildschirmfotoserien zu
- * Videodatei mit Hilfe von ffmpeg (über die Kommandozeile)
+ * Videodatei mit Hilfe von ffmpeg (über die Kommandozeile).
  * </p>
+ *
+ * @since 0.42.0
+ *
+ * @author Josef Friedrich
  */
 package pi.graphics.screen_recording;

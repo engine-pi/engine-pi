@@ -34,20 +34,28 @@ abstract class PhotoshootingTask
 
     protected String baseDir;
 
-    public PhotoshootingTask()
+    PhotoshootingTask()
     {
         started = new Date();
     }
 
+    /**
+     * Formatiert die Startzeit des Fotoshooting-Tasks zu einer Zeichenkette,
+     * wie zum Beispiel {@code "2025-12-31_09-40-08_192"}.
+     *
+     * @return Ein formatierter Zeitstempel im Format
+     *     {@code "yyyy-MM-dd_HH-mm-ss_S"} basierend auf dem Startzeitpunkt der
+     *     Aufgabe.
+     */
     protected String getFormattedTime()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss_S");
         return sdf.format(started);
     }
 
-    protected abstract String getBaseDir();
+    abstract String getBaseDir();
 
-    public String baseDir()
+    String baseDir()
     {
         if (baseDir == null)
         {
@@ -57,14 +65,11 @@ abstract class PhotoshootingTask
         return baseDir;
     }
 
-    public String getFilename()
-    {
-        return "screenshot_" + System.nanoTime() + ".png";
-    }
+    abstract String getFilename();
 
     abstract boolean hasToTakeScreenshot();
 
-    public void writeImage(ScreenshotImage image)
+    void writeImage(ScreenshotImage image)
     {
         image.write(baseDir() + "/" + getFilename());
     }

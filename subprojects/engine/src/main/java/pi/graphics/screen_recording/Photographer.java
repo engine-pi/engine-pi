@@ -74,6 +74,18 @@ public final class Photographer
         return photographer;
     }
 
+    /**
+     * Erstellt ein <b>Bildschirmfoto</b> (Screenshot) des aktuellen
+     * Spielfensters.
+     *
+     * <p>
+     * Das Bild wird als PNG-Datei in das Bilder-Verzeichnis abgespeichert,
+     * beispielsweise
+     * {@code "~/Pictures/Engine-Pi_2025-12-31_09-40-08_192.png"}.
+     * </p>
+     *
+     * @since 0.42.0
+     */
     public void takeScreenshot()
     {
         if (imageTask == null)
@@ -92,6 +104,10 @@ public final class Photographer
 
     public VideoTask stopScreenRecording()
     {
+        if (videoTask != null)
+        {
+            videoTask.convertImagesToVideo();
+        }
         var old = videoTask;
         videoTask = null;
         return old;

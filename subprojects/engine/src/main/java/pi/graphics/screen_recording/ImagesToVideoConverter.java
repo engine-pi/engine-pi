@@ -18,14 +18,12 @@
  */
 package pi.graphics.screen_recording;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.util.List;
 
 /**
- * Generiert animierte Bild- und Video-Dateien aus PNG-Bildschirmfotos mittels
- * ffmpeg.
+ * Generiert verschiedene animierte Bild- und Video-Dateien aus
+ * PNG-Bildschirmfotos mittels ffmpeg.
  *
  * @author Josef Friedrich
  *
@@ -40,12 +38,12 @@ class ImagesToVideoConverter
     private int framerate = 30;
 
     /**
-     * Erstellt einen neuen GIF-Generator.
+     * Erstellt einen neuen Bilder-zu-Video-Konvertierer.
      *
      * @param screenshotDir Das Verzeichnis mit den Screenshot-Dateien
-     * @param outputPath Der Pfad zur Ausgabe-GIF-Datei
+     * @param outputPath Der Pfad zu den-Dateien (ohne Dateiendung)
      */
-    public ImagesToVideoConverter(String screenshotDir, String outputPath)
+    ImagesToVideoConverter(String screenshotDir, String outputPath)
     {
         this.screenshotDir = screenshotDir;
         this.outputPath = outputPath;
@@ -143,21 +141,7 @@ class ImagesToVideoConverter
         int exitCode = -1;
         try
         {
-            // Führe ffmpeg aus
-            System.out.println("Starte ffmpeg...");
             Process process = processBuilder.start();
-
-            // Lese die Ausgabe
-            try (BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(process.getInputStream())))
-            {
-                String line;
-                while ((line = reader.readLine()) != null)
-                {
-                    System.out.println(line);
-                }
-            }
-
             exitCode = process.waitFor();
         }
         catch (Exception e)
@@ -172,7 +156,7 @@ class ImagesToVideoConverter
         }
     }
 
-    public void generate(SupportedAnimatedFormat... format)
+    private void generate(SupportedAnimatedFormat... format)
     {
         // Prüfe, ob ffmpeg verfügbar ist
         if (!isFFmpegAvailable())
@@ -197,10 +181,6 @@ class ImagesToVideoConverter
                     "Keine PNG-Dateien im Verzeichnis gefunden: "
                             + screenshotDir);
         }
-
-        System.out.println(
-                "Gefunden: " + pngFiles.length + " Screenshot-Dateien");
-
         for (SupportedAnimatedFormat supportedAnimatedFormat : format)
         {
             generateFormat(supportedAnimatedFormat);
@@ -208,16 +188,10 @@ class ImagesToVideoConverter
 
     }
 
-    public void generate()
+    void generate()
     {
         generate(SupportedAnimatedFormat.GIF, SupportedAnimatedFormat.APNG,
                 SupportedAnimatedFormat.WEBP, SupportedAnimatedFormat.MP4,
                 SupportedAnimatedFormat.WEBM);
-    }
-
-    public static void main(String[] args)
-    {
-        new ImagesToVideoConverter("/home/jf/engine-pi",
-                "/home/jf/Downloads/screen-recording").generate();
     }
 }

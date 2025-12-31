@@ -27,18 +27,18 @@ import pi.util.FileUtil;
  *
  * @since 0.42.0
  */
-public class VideoTask extends PhotoshootingTask
+class VideoTask extends PhotoshootingTask
 {
     private int frameCounter = 0;
 
     int nFrames;
 
-    public VideoTask()
+    VideoTask()
     {
         this(2);
     }
 
-    public VideoTask(int nFrames)
+    VideoTask(int nFrames)
     {
         super();
         this.nFrames = nFrames;
@@ -48,6 +48,11 @@ public class VideoTask extends PhotoshootingTask
     {
         return FileUtil.getTmpDir() + "/engine-pi-screen-recording_"
                 + getFormattedTime();
+    }
+
+    String getFilename()
+    {
+        return "screenshot_" + System.nanoTime() + ".png";
     }
 
     @Override
@@ -60,5 +65,13 @@ public class VideoTask extends PhotoshootingTask
             return true;
         }
         return false;
+    }
+
+    void convertImagesToVideo()
+    {
+        new Thread(() -> {
+            new ImagesToVideoConverter(baseDir(), FileUtil.getVideosDir()
+                    + "/Engine-Pi_" + getFormattedTime()).generate();
+        }).start();
     }
 }

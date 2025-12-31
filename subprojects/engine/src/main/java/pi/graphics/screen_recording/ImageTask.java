@@ -21,7 +21,9 @@ package pi.graphics.screen_recording;
 import pi.util.FileUtil;
 
 /**
- * Erzeugt eine einziges Bild als Bildschirmfoto.@author Josef Friedrich
+ * Erzeugt eine einziges Bild als Bildschirmfoto.
+ *
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
@@ -29,9 +31,14 @@ class ImageTask extends PhotoshootingTask
 {
     private boolean isFinished = false;
 
-    public String getBaseDir()
+    String getBaseDir()
     {
-        return FileUtil.getHomeDir() + "/engine-pi";
+        return FileUtil.getPicturesDir();
+    }
+
+    String getFilename()
+    {
+        return "Engine-Pi_" + getFormattedTime() + ".png";
     }
 
     @Override
