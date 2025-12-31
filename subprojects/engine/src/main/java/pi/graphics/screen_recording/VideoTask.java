@@ -21,7 +21,9 @@ package pi.graphics.screen_recording;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import pi.Configuration;
 import pi.Game;
+import pi.debug.DebugConfiguration;
 import pi.util.FileUtil;
 
 /**
@@ -35,13 +37,19 @@ class VideoTask extends PhotoshootingTask
 {
     private int frameCounter = 0;
 
+    /**
+     * Wie oft ein Bildschirmfoto abgespeichert werden. Der Wert 2 macht
+     * beispielsweise jedes zweite Einzelbild ein Bildschirmfoto.
+     *
+     *
+     */
     int nFrames;
 
     private String oldTitle;
 
     VideoTask()
     {
-        this(2);
+        this(DebugConfiguration.screenRecordingNFrames);
     }
 
     VideoTask(int nFrames)
@@ -105,8 +113,11 @@ class VideoTask extends PhotoshootingTask
                     window.setTitle(oldTitle);
                 }
                 // Die Bilder zu Videos konvertieren
-                new ImagesToVideoConverter(baseDir(), FileUtil.getVideosDir()
-                        + "/Engine-Pi_" + getFormattedTime()).generate();
+                new ImagesToVideoConverter(baseDir(),
+                        FileUtil.getVideosDir() + "/Engine-Pi_"
+                                + getFormattedTime(),
+                        (int) Math.round((double) Configuration.fps / nFrames))
+                        .generate();
                 // Den temporären Ordner mit allen Bilder löschen.
                 FileUtil.deleteDir(baseDir());
             }

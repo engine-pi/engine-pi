@@ -265,7 +265,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     public static void main(String[] args) throws IOException
     {
         Game.start(new MainAnimation(false));
-        Game.recordScreen(10);
+        Game.recordScreen(20);
         Game.setTitle("Engine Pi " + Version.getVersion());
     }
 }

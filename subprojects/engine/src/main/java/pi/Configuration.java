@@ -43,6 +43,15 @@ public final class Configuration
     public static int windowHeightPx = 600;
 
     /**
+     * Die Framerate. (fps = Frames per Second).
+     *
+     * <p>
+     * Wie viele Bilder pro Sekunde sollen von der Engine Pi erzeugt werden.
+     * </p>
+     */
+    public static int fps = 60;
+
+    /**
      * Wie oft ein <b>Pixel vervielfältigt</b> werden soll.
      *
      * <p>

@@ -4,7 +4,7 @@ Dokumentation: https://engine-pi.github.io/engine-pi
 
 Javadocs: https://engine-pi.github.io/javadocs/pi/package-summary.html
 
-[![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg)](https://engine-pi.github.io/engine-pi)
+[![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/MainAnimation.webp)](https://engine-pi.github.io/engine-pi)
 
 ## Entwicklung
 

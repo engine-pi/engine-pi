@@ -55,7 +55,7 @@ public final class GameLoop
     /**
      * Die <b>angestrebte Anzeigedauer</b> eines Einzelbilds in Sekunden.
      */
-    private static final double DESIRED_FRAME_DURATION = 0.016;
+    private static double DESIRED_FRAME_DURATION = 1.0 / Configuration.fps;
 
     /**
      * Die <b>tatsächliche Anzeigedauer</b> eines <b>Einzelbilds</b> in

@@ -23,7 +23,8 @@ import java.util.List;
 
 /**
  * Generiert verschiedene animierte Bild- und Video-Dateien aus
- * PNG-Bildschirmfotos mittels ffmpeg.
+ * PNG-Bildschirmfotos mittels
+ * <a href="https://de.wikipedia.org/wiki/FFmpeg">ffmpeg</a>.
  *
  * @author Josef Friedrich
  *
@@ -31,26 +32,42 @@ import java.util.List;
  */
 class ImagesToVideoConverter
 {
+    /**
+     * Das Verzeichnis mit den Bildschirmfoto-Dateien im PNG-Format.
+     */
     private final String screenshotDir;
 
+    /**
+     * Der Datei-Pfad er resultierenden Video-Dateien (ohne Dateiendung).
+     */
     private final String outputPath;
 
-    private int framerate = 30;
+    /**
+     * Die Engine hat im Auslieferungszustand eine Framerate von 60 Bilder pro
+     * Sekunde. Standardmäßig wird jedes zweite Einzelbild. Das würde dann einen
+     * Framerate von 30 ergeben.
+     */
+    private int framerate;
 
     /**
      * Erstellt einen neuen Bilder-zu-Video-Konvertierer.
      *
-     * @param screenshotDir Das Verzeichnis mit den Screenshot-Dateien
-     * @param outputPath Der Pfad zu den-Dateien (ohne Dateiendung)
+     * @param screenshotDir Das Verzeichnis mit den Bildschirmfoto-Dateien im
+     *     PNG-Format.
+     * @param outputPath Der Datei-Pfad er resultierenden Video-Dateien (ohne
+     *     Dateiendung).
      */
-    ImagesToVideoConverter(String screenshotDir, String outputPath)
+    ImagesToVideoConverter(String screenshotDir, String outputPath,
+            int framerate)
     {
         this.screenshotDir = screenshotDir;
         this.outputPath = outputPath;
+        this.framerate = framerate;
     }
 
     /**
-     * Prüft, ob ffmpeg im System verfügbar ist.
+     * Prüft, ob <a href="https://de.wikipedia.org/wiki/FFmpeg">ffmpeg</a> im
+     * System verfügbar ist.
      */
     private boolean isFFmpegAvailable()
     {
@@ -162,12 +179,14 @@ class ImagesToVideoConverter
             command.add("-vcodec");
             command.add("webp");
             command.add("-lossless"); // Macht komische Streifen
-            command.add("0"); // 0 ist aus 1 ist an
-            // command.add("-preset"); // ausprobiert -> Streifen gehen nicht
-            // weg
+            command.add("1"); // 0 ist aus, 1 ist an
+
+            // ausprobiert -> Streifen gehen nicht weg
+            // command.add("-preset");
             // command.add("drawing");
-            // command.add("-quality"); // ausprobiert -> Streifen gehen nicht
-            // weg
+
+            // ausprobiert -> Streifen gehen nicht weg
+            // command.add("-quality");
             // command.add("100");
             command.add("-pix_fmt");
             command.add("bgra");
@@ -276,8 +295,22 @@ class ImagesToVideoConverter
 
     void generate()
     {
-        generate(SupportedAnimatedFormat.GIF, SupportedAnimatedFormat.APNG,
-                SupportedAnimatedFormat.WEBP, SupportedAnimatedFormat.MP4,
-                SupportedAnimatedFormat.WEBM);
+        generate(
+                // Sehr große Dateien
+                // SupportedAnimatedFormat.GIF,
+
+                // Verursacht flackern
+                // SupportedAnimatedFormat.APNG,
+
+                // Lossless keinen Streifen
+                SupportedAnimatedFormat.WEBP,
+
+                // Bestes Resultat
+                SupportedAnimatedFormat.MP4
+
+        // MP4 ist besser
+        // SupportedAnimatedFormat.WEBM
+
+        );
     }
 }
