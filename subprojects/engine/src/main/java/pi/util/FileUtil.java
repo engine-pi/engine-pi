@@ -80,9 +80,11 @@ public final class FileUtil
     /**
      * <b>Löscht</b> ein <b>Verzeichnis</b> und seinen gesamten Inhalt rekursiv.
      *
+     * <p>
      * Diese Methode entfernt das angegebene Verzeichnis sowie alle darin
      * enthaltenen Dateien und Unterverzeichnisse. Der Löschvorgang erfolgt
      * rekursiv von unten nach oben.
+     * </p>
      *
      * @param dir das zu löschende Verzeichnis
      *
@@ -120,10 +122,12 @@ public final class FileUtil
      * Sucht rekursiv nach Dateien mit einer bestimmten Dateiendung in einem
      * Verzeichnis.
      *
+     * <p>
      * Die Methode durchsucht das angegebene Verzeichnis und alle
      * Unterverzeichnisse (außer blacklisteten Verzeichnissen) nach Dateien, die
      * mit der angegebenen Endung übereinstimmen. Gefundene Dateien werden zur
      * übergebenen Liste hinzugefügt.
+     * </p>
      *
      * @param fileNames Die Liste, in der gefundene Dateipfade gesammelt werden.
      *     Diese Liste wird mit absoluten Pfaden ergänzt.
@@ -214,7 +218,7 @@ public final class FileUtil
     }
 
     /**
-     * Ermittelt die Dateiendung einer Datei.
+     * Ermittelt die <b>Dateiendung</b> einer Datei.
      *
      * @param file Die Datei, deren Endung bestimmt werden soll.
      *
@@ -388,9 +392,11 @@ public final class FileUtil
     /**
      * Gibt den Pfad des übergeordneten Verzeichnisses einer URI zurück.
      *
+     * <p>
      * Wenn der Pfad der URI mit einem Datei-Trennzeichen endet, wird das
      * übergeordnete Verzeichnis durch Auflösen von ".." ermittelt. Ansonsten
      * wird das aktuelle Verzeichnis durch Auflösen von "." verwendet.
+     * </p>
      *
      * @param uri Die URI, deren übergeordnetes Verzeichnis ermittelt werden
      *     soll.
@@ -448,9 +454,11 @@ public final class FileUtil
     /**
      * Überprüft, ob ein Verzeichnispfad in der Blacklist enthalten ist.
      *
+     * <p>
      * Diese Methode durchsucht die {@link #DIR_BLACKLIST} nach Einträgen und
      * prüft, ob der absolute Pfad des gegebenen Verzeichnisses einen der
      * blackgelisteten Strings enthält.
+     * </p>
      *
      * @param path der zu überprüfende Verzeichnispfad
      *
@@ -535,6 +543,14 @@ public final class FileUtil
      */
     public static boolean exists(String filePath)
     {
+        if (filePath == null)
+        {
+            return false;
+        }
+        if (filePath.equals(""))
+        {
+            return false;
+        }
         try
         {
             return Files.exists(
@@ -571,8 +587,88 @@ public final class FileUtil
     }
 
     /**
-     * Erstellt ein Verzeichnis unter dem angegebenen Pfad, falls dieses noch
-     * nicht existiert.
+     * Erstellt eine <b> temporäre Datei </b> im Standard-Temporärverzeichnis
+     * des Systems.
+     *
+     * @return Der absolute Pfad zur erstellten temporären Datei als String, zum
+     *     Beispiel {@code "/tmp/5601360254473891177.tmp"}
+     *
+     * @throws RuntimeException wenn ein {@link IOException} beim Erstellen der
+     *     Datei auftritt
+     */
+    public static String createTmpFile()
+    {
+        try
+        {
+            return Files.createTempFile(null, null).toString();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Ermittelt den Pfad zum <b>Bilderordner</b> des Benutzers.
+     *
+     * <p>
+     * Überprüft zunächst, ob ein <em>„Pictures“</em> oder <em>„Bilder“</em>
+     * Ordner im Benutzerverzeichnis existiert. Falls keiner der beiden Ordner
+     * existiert, wird automatisch ein <em>„Pictures“</em> Ordner erstellt.
+     * </p>
+     *
+     * @return Der absolute Pfad zum Bilderordner des Benutzers
+     *
+     * @since 0.42.0
+     */
+    public static String getPicturesDir()
+    {
+        String english = getHomeDir() + FILE_SEPARATOR + "Pictures";
+        if (exists(english))
+        {
+            return english;
+        }
+
+        String german = getHomeDir() + FILE_SEPARATOR + "Bilder";
+        if (exists(german))
+        {
+            return german;
+        }
+
+        createDir(english);
+        return english;
+    }
+
+    /**
+     * Ermittelt das <b>Verzeichnis für Videos</b> im Home-Verzeichnis des
+     * Benutzers.
+     *
+     * <p>
+     * Diese Methode überprüft, ob ein "Videos"-Ordner im Home-Verzeichnis
+     * existiert. Falls das Verzeichnis nicht vorhanden ist, wird es automatisch
+     * erstellt.
+     * </p>
+     *
+     * @return Der absolute Pfad zum Videos-Verzeichnis als Zeichenkette.
+     *
+     * @since 0.42.0
+     */
+    public static String getVideosDir()
+    {
+        String english = getHomeDir() + FILE_SEPARATOR + "Videos";
+
+        if (exists(english))
+        {
+            return english;
+        }
+
+        createDir(english);
+        return english;
+    }
+
+    /**
+     * <b>Erstellt</b> ein <b>Verzeichnis</b> unter dem angegebenen Pfad, falls
+     * dieses noch nicht existiert.
      *
      * <p>
      * Wenn das Verzeichnis bereits vorhanden ist, wird keine Aktion ausgeführt.
@@ -592,7 +688,7 @@ public final class FileUtil
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

@@ -1,6 +1,8 @@
 package pi.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -122,6 +124,52 @@ public class FileUtilTest
                     FileUtil.humanReadableByteCount(1000000000000000L, true));
             assertEquals("1.0 PiB",
                     FileUtil.humanReadableByteCount(1125899906842624L, false));
+        }
+    }
+
+    @Nested
+    class ExistsTest
+    {
+        @Test
+        void testExistingFolder()
+        {
+            assertTrue(FileUtil.exists(FileUtil.getHomeDir()));
+        }
+
+        @Test
+        void testExistingFile()
+        {
+            assertTrue(FileUtil.exists(FileUtil.createTmpFile()));
+        }
+
+        @Test
+        void testNonExistingFile()
+        {
+            assertFalse(FileUtil.exists("non-existing-file.txt"));
+        }
+
+        @Test
+        void testEmptyPath()
+        {
+            assertFalse(FileUtil.exists(""));
+        }
+
+        @Test
+        void testNullPath()
+        {
+            assertFalse(FileUtil.exists(null));
+        }
+
+        @Test
+        void testInvalidPath()
+        {
+            assertFalse(FileUtil.exists("invalid://path/to/file"));
+        }
+
+        @Test
+        void testPathWithSpaces()
+        {
+            assertFalse(FileUtil.exists("file with spaces.txt"));
         }
     }
 
