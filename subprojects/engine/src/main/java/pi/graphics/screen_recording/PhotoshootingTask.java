@@ -34,6 +34,8 @@ abstract class PhotoshootingTask
 
     protected String baseDir;
 
+    protected int imageCount = 0;
+
     PhotoshootingTask()
     {
         started = new Date();
@@ -72,5 +74,6 @@ abstract class PhotoshootingTask
     void writeImage(ScreenshotImage image)
     {
         image.write(baseDir() + "/" + getFilename());
+        imageCount++;
     }
 }

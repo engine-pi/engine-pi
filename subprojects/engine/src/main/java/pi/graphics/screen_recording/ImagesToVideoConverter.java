@@ -96,6 +96,23 @@ class ImagesToVideoConverter
         switch (format)
         {
         case GIF:
+            /* @formatter:off
+             *
+             * ffmpeg -h encoder=gif:
+             *
+             * Encoder gif [GIF (Graphics Interchange Format)]:
+             *     General capabilities: dr1
+             *     Threading capabilities: none
+             *     Supported pixel formats: rgb8 bgr8 rgb4_byte bgr4_byte gray pal8
+             * GIF encoder AVOptions:
+             *   -gifflags          <flags>      E..V....... set GIF flags (default offsetting+transdiff)
+             *      offsetting                   E..V....... enable picture offsetting
+             *      transdiff                    E..V....... enable transparency detection between frames
+             *   -gifimage          <boolean>    E..V....... enable encoding only images per frame (default false)
+             *   -global_palette    <boolean>    E..V....... write a palette to the global gif header where feasible (default true)
+             *
+             * @formatter:on */
+
             // -vf filtergraph (output) Create the filtergraph specified by
             // filtergraph and use it to filter the stream. This is an alias
             // for -filter:v, see the -filter option.
@@ -104,13 +121,82 @@ class ImagesToVideoConverter
             break;
 
         case WEBP:
+            /* @formatter:off
+             *
+             * ffmpeg -h encoder=webp:
+             *
+             * libwebp encoder AVOptions:
+             * -lossless          <int>        E..V....... Use lossless mode (from 0 to 1) (default 0)
+             * -preset            <int>        E..V....... Configuration preset (from -1 to 5) (default none)
+             *     none            -1           E..V....... do not use a preset
+             *     default         0            E..V....... default preset
+             *     picture         1            E..V....... digital picture, like portrait, inner shot
+             *     photo           2            E..V....... outdoor photograph, with natural lighting
+             *     drawing         3            E..V....... hand or line drawing, with high-contrast details
+             *     icon            4            E..V....... small-sized colorful images
+             *     text            5            E..V....... text-like
+             * -cr_threshold      <int>        E..V....... Conditional replenishment threshold (from 0 to INT_MAX) (default 0)
+             * -cr_size           <int>        E..V....... Conditional replenishment block size (from 0 to 256) (default 16)
+             * -quality           <float>      E..V....... Quality (from 0 to 100) (default 75)
+             *
+             * Encoder libwebp [libwebp WebP image]:
+             *     General capabilities: dr1
+             *     Threading capabilities: none
+             *     Supported pixel formats: bgra yuv420p yuva420p
+             * libwebp encoder AVOptions:
+             * -lossless          <int>        E..V....... Use lossless mode (from 0 to 1) (default 0)
+             * -preset            <int>        E..V....... Configuration preset (from -1 to 5) (default none)
+             *     none            -1           E..V....... do not use a preset
+             *     default         0            E..V....... default preset
+             *     picture         1            E..V....... digital picture, like portrait, inner shot
+             *     photo           2            E..V....... outdoor photograph, with natural lighting
+             *     drawing         3            E..V....... hand or line drawing, with high-contrast details
+             *     icon            4            E..V....... small-sized colorful images
+             *     text            5            E..V....... text-like
+             * -cr_threshold      <int>        E..V....... Conditional replenishment threshold (from 0 to INT_MAX) (default 0)
+             * -cr_size           <int>        E..V....... Conditional replenishment block size (from 0 to 256) (default 16)
+             * -quality           <float>      E..V....... Quality (from 0 to 100) (default 75)
+             *
+             * @formatter:on */
+
             command.add("-vcodec");
             command.add("webp");
+            command.add("-lossless"); // Macht komische Streifen
+            command.add("0"); // 0 ist aus 1 ist an
+            // command.add("-preset"); // ausprobiert -> Streifen gehen nicht
+            // weg
+            // command.add("drawing");
+            // command.add("-quality"); // ausprobiert -> Streifen gehen nicht
+            // weg
+            // command.add("100");
             command.add("-pix_fmt");
-            command.add("yuva420p");
+            command.add("bgra");
             break;
 
         case APNG:
+            /* @formatter:off
+             *
+             * ffmpeg -h encoder=apng:
+             *
+             * Encoder apng [APNG (Animated Portable Network Graphics) image]:
+             *     General capabilities: dr1 delay
+             *     Threading capabilities: none
+             *     Supported pixel formats: rgb24 rgba rgb48be rgba64be pal8 gray ya8 gray16be ya16be
+             * (A)PNG encoder AVOptions:
+             *   -dpi               <int>        E..V....... Set image resolution (in dots per inch) (from 0 to 65536) (default 0)
+             *   -dpm               <int>        E..V....... Set image resolution (in dots per meter) (from 0 to 65536) (default 0)
+             *   -pred              <int>        E..V....... Prediction method (from 0 to 5) (default none)
+             *      none            0            E..V.......
+             *      sub             1            E..V.......
+             *      up              2            E..V.......
+             *      avg             3            E..V.......
+             *      paeth           4            E..V.......
+             *      mixed           5            E..V.......
+             *
+             * @formatter:on */
+
+            // -plays repetitions: specify how many times to play the content, 0
+            // causes an infinite loop, with 1 there is no loop
             command.add("-plays");
             command.add("0");
             break;

@@ -865,7 +865,8 @@ public final class Game
     }
 
     /**
-     * Gibt die Zeichenfläche, in der alle Figuren eingezeichnet werden, zurück.
+     * Gibt die <b>Zeichenfläche</b>, in der alle Figuren eingezeichnet werden,
+     * zurück.
      *
      * @return Die Zeichenfläche, in der alle Figuren eingezeichnet werden.
      *
@@ -874,6 +875,18 @@ public final class Game
     public static RenderPanel getRenderPanel()
     {
         return renderPanel;
+    }
+
+    /**
+     * Gibt das <b>Spielfenster</b> zurück.
+     *
+     * @return Das <b>Spielfenster</b>.
+     *
+     * @since 0.42.0
+     */
+    public static Frame getWindow()
+    {
+        return frame;
     }
 
     /**
@@ -1028,6 +1041,17 @@ public final class Game
     public static void recordScreen()
     {
         Photographer.getPhotographer().toggleScreenRecording();
+    }
+
+    /**
+     * @param duration Die <b>Dauer</b> der Videoaufnahme in Sekunden.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public static void recordScreen(double duration)
+    {
+        Photographer.getPhotographer().toggleScreenRecording(duration);
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

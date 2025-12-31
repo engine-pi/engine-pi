@@ -18,6 +18,9 @@
  */
 package pi.graphics.screen_recording;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import pi.Game;
 
 /**
@@ -65,6 +68,9 @@ public final class Photographer
 
     }
 
+    /**
+     * @since 0.42.0
+     */
     public static Photographer getPhotographer()
     {
         if (photographer == null)
@@ -94,6 +100,20 @@ public final class Photographer
         }
     }
 
+    /**
+     * @param duration Die <b>Dauer</b> der Videoaufnahme in Sekunden.
+     *
+     * @since 0.42.0
+     */
+    public void startScreenRecording(double duration)
+    {
+        startScreenRecording();
+        scheduleStopScreenRecording(duration);
+    }
+
+    /**
+     * @since 0.42.0
+     */
     public void startScreenRecording()
     {
         if (videoTask == null)
@@ -102,17 +122,42 @@ public final class Photographer
         }
     }
 
+    /**
+     * @since 0.42.0
+     */
     public VideoTask stopScreenRecording()
     {
         if (videoTask != null)
         {
-            videoTask.convertImagesToVideo();
+            videoTask.onStopRecording();
         }
         var old = videoTask;
         videoTask = null;
         return old;
     }
 
+    /**
+     * @param duration Die <b>Dauer</b> der Videoaufnahme in Sekunden.
+     *
+     * @since 0.42.0
+     */
+    public void scheduleStopScreenRecording(double duration)
+    {
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                stopScreenRecording();
+            }
+        }, (long) (1000 * duration));
+    }
+
+    /**
+     * @since 0.42.0
+     */
     public void toggleScreenRecording()
     {
         if (videoTask == null)
@@ -126,7 +171,26 @@ public final class Photographer
     }
 
     /**
+     * @param duration Die <b>Dauer</b> der Videoaufnahme in Sekunden.
+     *
+     * @since 0.42.0
+     */
+    public void toggleScreenRecording(double duration)
+    {
+        if (videoTask == null)
+        {
+            startScreenRecording(duration);
+        }
+        else
+        {
+            stopScreenRecording();
+        }
+    }
+
+    /**
      * Soll bei diesem Einzelbild ein Bildschirmfoto gemacht werden?
+     *
+     * @since 0.42.0
      */
     public boolean hasToTakeScreenshot()
     {
@@ -134,11 +198,17 @@ public final class Photographer
                 || (videoTask != null && videoTask.hasToTakeScreenshot());
     }
 
+    /**
+     * @since 0.42.0
+     */
     public ScreenshotImage createImage(int width, int height)
     {
         return new ScreenshotImage(width, height);
     }
 
+    /**
+     * @since 0.42.0
+     */
     public void writeImage(ScreenshotImage image)
     {
         if (imageTask != null)

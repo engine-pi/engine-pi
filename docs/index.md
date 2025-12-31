@@ -1,5 +1,35 @@
 # Über die Engine Pi
 
+<!-- ![](_assets/MainAnimation.webp)
+/// caption
+webp
+///
+
+![](_assets/MainAnimation.gif)
+/// caption
+gif
+///
+
+![](_assets/MainAnimation.apng)
+/// caption
+apng
+///
+
+<video autoplay loop muted>
+  <source src="_assets/MainAnimation.webm" type="video/webm" />
+</video>
+/// caption
+webm
+///
+
+<video autoplay loop muted>
+  <source src="_assets/MainAnimation.mp4" type="video/mp4" />
+</video>
+/// caption
+mp4
+/// -->
+
+
 {{ image('logo/logo.svg') }}
 
 Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine

@@ -90,7 +90,27 @@ public class MainAnimation extends Scene implements FrameUpdateListener
 
     private double yMovementCircleI = 0.01;
 
+    /**
+     * Erstellt die <b>Hauptanimation</b>.
+     *
+     * <p>
+     * BuildInformationen werden dabei angezeigt.
+     * </p>
+     */
     public MainAnimation()
+    {
+        this(true);
+    }
+
+    /**
+     * Erstellt die <b>Hauptanimation</b>.
+     *
+     * @param showBuildInformations Gibt an, ob Build-Informationen angezeigt
+     *     werden sollen.
+     *
+     * @since 0.42.0
+     */
+    public MainAnimation(boolean showBuildInformations)
     {
         // https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/blob/master/schemas/org.gnome.desktop.interface.gschema.xml.in#L165
         // Font: https://cantarell.gnome.org/
@@ -109,6 +129,15 @@ public class MainAnimation extends Scene implements FrameUpdateListener
             createCircleItem();
             createTriangleItem();
         }
+
+        if (showBuildInformations)
+        {
+            addBuildInfos();
+        }
+    }
+
+    private void addBuildInfos()
+    {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
         text.setPosition(-10, 8.5);
@@ -235,7 +264,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
 
     public static void main(String[] args) throws IOException
     {
-        Game.start(new MainAnimation());
+        Game.start(new MainAnimation(false));
+        Game.recordScreen(10);
         Game.setTitle("Engine Pi " + Version.getVersion());
     }
 }

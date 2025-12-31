@@ -26,7 +26,11 @@ package pi.graphics.screen_recording;
 enum SupportedAnimatedFormat
 {
 
-    GIF("gif"), APNG("apng"), WEBP("webp"), MP4("mp4"), WEBM("webm");
+    GIF("gif"),
+    /**
+     * Animated Portable Network Graphics
+     */
+    APNG("apng"), WEBP("webp"), MP4("mp4"), WEBM("webm");
 
     private String extension;
 

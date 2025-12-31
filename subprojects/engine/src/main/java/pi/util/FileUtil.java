@@ -86,24 +86,16 @@ public final class FileUtil
      * rekursiv von unten nach oben.
      * </p>
      *
-     * @param dir das zu löschende Verzeichnis
-     *
-     * @return {@code true}, wenn das Verzeichnis und sein gesamter Inhalt
-     *     erfolgreich gelöscht wurden; {@code false}, wenn ein Fehler beim
-     *     Löschen aufgetreten ist oder eine IOException geworfen wurde
+     * @param dir Das zu löschende Verzeichnis.
      */
-    public static boolean deleteDir(final File dir)
+    public static void deleteDir(final File dir)
     {
         if (dir.isDirectory())
         {
             final String[] children = dir.list();
             for (int i = 0; i < children.length; i++)
             {
-                final boolean success = deleteDir(new File(dir, children[i]));
-                if (!success)
-                {
-                    return false;
-                }
+                deleteDir(new File(dir, children[i]));
             }
         }
         try
@@ -112,10 +104,26 @@ public final class FileUtil
         }
         catch (IOException e)
         {
-            log.log(Level.SEVERE, e.getMessage(), e);
-            return false;
+            throw new RuntimeException(e);
         }
-        return true;
+    }
+
+    /**
+     * <b>Löscht</b> ein <b>Verzeichnis</b> und seinen gesamten Inhalt rekursiv.
+     *
+     * <p>
+     * Diese Methode entfernt das angegebene Verzeichnis sowie alle darin
+     * enthaltenen Dateien und Unterverzeichnisse. Der Löschvorgang erfolgt
+     * rekursiv von unten nach oben.
+     * </p>
+     *
+     * @param dir Das zu löschende Verzeichnis als <b>Zeichenkette</b>.
+     *
+     * @since 0.42.0
+     */
+    public static void deleteDir(String dir)
+    {
+        deleteDir(new File(dir));
     }
 
     /**

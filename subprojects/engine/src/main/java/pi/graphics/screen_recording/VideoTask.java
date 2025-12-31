@@ -18,6 +18,10 @@
  */
 package pi.graphics.screen_recording;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import pi.Game;
 import pi.util.FileUtil;
 
 /**
@@ -32,6 +36,8 @@ class VideoTask extends PhotoshootingTask
     private int frameCounter = 0;
 
     int nFrames;
+
+    private String oldTitle;
 
     VideoTask()
     {
@@ -67,11 +73,44 @@ class VideoTask extends PhotoshootingTask
         return false;
     }
 
-    void convertImagesToVideo()
+    @Override
+    void writeImage(ScreenshotImage image)
     {
-        new Thread(() -> {
-            new ImagesToVideoConverter(baseDir(), FileUtil.getVideosDir()
-                    + "/Engine-Pi_" + getFormattedTime()).generate();
-        }).start();
+        super.writeImage(image);
+        var window = Game.getWindow();
+        if (window != null)
+        {
+            if (oldTitle == null)
+            {
+                oldTitle = window.getTitle();
+            }
+            window.setTitle("Bildschirmaufnahme: " + imageCount
+                    + " Einzelbilder aufgenommen");
+        }
+    }
+
+    void onStopRecording()
+    {
+        // Wir warten eine gewissen Zeit, bis das letzte Bild augenommen wurde.
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                // Den alten Titel wiederherstellen
+                var window = Game.getWindow();
+                if (window != null && oldTitle != null)
+                {
+                    window.setTitle(oldTitle);
+                }
+                // Die Bilder zu Videos konvertieren
+                new ImagesToVideoConverter(baseDir(), FileUtil.getVideosDir()
+                        + "/Engine-Pi_" + getFormattedTime()).generate();
+                // Den temporären Ordner mit allen Bilder löschen.
+                FileUtil.deleteDir(baseDir());
+            }
+
+        }, 100 /* 100 Millisekunden */);
     }
 }
