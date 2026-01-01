@@ -1,6 +1,5 @@
 package demos.classes.dsa.recursion;
 
-import pi.Configuration;
 import pi.Game;
 import pi.Scene;
 import pi.actor.Triangle;
@@ -29,7 +28,6 @@ public class SierpinskiTriangle
      */
     public SierpinskiTriangle(int depth)
     {
-        Configuration.instantMode = true;
         double width = 100;
         double height = 75;
         Triangle triangle = new Triangle(width, height);

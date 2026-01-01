@@ -50,10 +50,10 @@ import java.util.logging.Logger;
  *
  * @since 0.42.0
  */
-public class Configuration
+public class ConfigurationLoader
 {
     private static final Logger log = Logger
-            .getLogger(Configuration.class.getName());
+            .getLogger(ConfigurationLoader.class.getName());
 
     private static final String DEFAULT_CONFIGURATION_FILE_NAME = "config.properties";
 
@@ -67,7 +67,7 @@ public class Configuration
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public Configuration(final ConfigurationGroup... configurationGroups)
+    public ConfigurationLoader(final ConfigurationGroup... configurationGroups)
     {
         this(DEFAULT_CONFIGURATION_FILE_NAME, configurationGroups);
     }
@@ -82,7 +82,7 @@ public class Configuration
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public Configuration(final String path,
+    public ConfigurationLoader(final String path,
             final ConfigurationGroup... configurationGroups)
     {
         this(Path.of(path), configurationGroups);
@@ -95,7 +95,7 @@ public class Configuration
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public Configuration(final Path path,
+    public ConfigurationLoader(final Path path,
             final ConfigurationGroup... configurationGroups)
     {
         this.path = path;
@@ -193,9 +193,14 @@ public class Configuration
     }
 
     /**
-     * Tries to load the configuration from file in the application folder. If
-     * none exists, it tries to load the file from any resource folder. If none
-     * exists, it creates a new configuration file in the application folder.
+     * Versucht, die Konfiguration aus der Datei im Anwendungsordner zu
+     * <b>laden</b>.
+     *
+     * <p>
+     * Wenn keine vorhanden ist, versucht es, die Datei aus einem beliebigen
+     * Ressourcenordner zu laden. Wenn keine vorhanden ist, erstellt es eine
+     * neue Konfigurationsdatei im Anwendungsordner.
+     * </p>
      */
     public void load()
     {
@@ -228,7 +233,8 @@ public class Configuration
                 Properties properties = new Properties();
                 properties.load(bufferedStream);
                 initializeSettingsByProperties(properties);
-                log.log(Level.INFO, "Configuration {0} created", getPath());
+                log.log(Level.INFO, "Konfiguration aus der Datei „{0}“ geladen",
+                        getPath());
             }
             catch (IOException e)
             {
@@ -242,7 +248,7 @@ public class Configuration
      * instance (config.properties is the engines default config file).
      *
      * @see #getPath()
-     * @see Configuration#DEFAULT_CONFIGURATION_FILE_NAME
+     * @see ConfigurationLoader#DEFAULT_CONFIGURATION_FILE_NAME
      */
     public void save()
     {
@@ -288,6 +294,21 @@ public class Configuration
         }
     }
 
+    /**
+     * Erstellt eine Konfigurationsdatei durch Speicherung aller
+     * Konfigurationsgruppen.
+     *
+     * <p>
+     * Diese Methode iteriert über alle verfügbaren Konfigurationsgruppen und
+     * speichert jede Gruppe in den angegebenen {@link OutputStream}.
+     * </p>
+     *
+     * @param out Der {@link OutputStream}, in den die Konfigurationsgruppen
+     *     geschrieben werden sollen.
+     *
+     * @see #getConfigurationGroups()
+     * @see #storeConfigurationGroup(OutputStream, ConfigurationGroup)
+     */
     private void createDefaultSettingsFile(final OutputStream out)
     {
         for (final ConfigurationGroup group : getConfigurationGroups())

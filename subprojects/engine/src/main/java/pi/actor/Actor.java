@@ -165,7 +165,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         physicsHandler = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
         EventListeners.registerListeners(this);
-        if (Configuration.instantMode)
+        if (Configuration.get().game().instantMode())
         {
             Game.getStartedActiveScene().add(this);
         }

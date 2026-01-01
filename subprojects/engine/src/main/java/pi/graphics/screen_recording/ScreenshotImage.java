@@ -39,8 +39,9 @@ public class ScreenshotImage
 
     public ScreenshotImage(int width, int height)
     {
-        image = new BufferedImage(Configuration.windowWidthPx,
-                Configuration.windowHeightPx, BufferedImage.TYPE_INT_RGB);
+        var config = Configuration.get().graphics();
+        image = new BufferedImage(config.windowWidth(), config.windowHeight(),
+                BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();
         Graphics2DUtil.setAntiAliasing(g, true);
     }

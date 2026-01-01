@@ -61,6 +61,7 @@ import pi.graphics.screen_recording.Photographer;
  *
  * @author Michael Andonie
  * @author Niklas Keller
+ * @author Josef Friedrich
  */
 @SuppressWarnings("StaticVariableOfConcreteClass")
 public final class Game
@@ -128,6 +129,8 @@ public final class Game
      * Öffnet verschiedene Dialoge
      */
     public static final DialogLauncher dialog = new DialogLauncher(frame);
+
+    private static final Configuration config = Configuration.get();
 
     /**
      * Setzt den Titel des Spielfensters.
@@ -212,8 +215,7 @@ public final class Game
         setPixelMultiplication(pixelMultiplication);
         width *= pixelMultiplication;
         height *= pixelMultiplication;
-        Configuration.windowWidthPx = width;
-        Configuration.windowHeightPx = height;
+        config.graphics().windowDimension(width, height);
         Game.scene = scene;
         renderPanel = new RenderPanel(width, height);
         frame.setResizable(false);
@@ -331,8 +333,8 @@ public final class Game
     @API
     public static Scene start(Scene scene)
     {
-        return start(Configuration.windowWidthPx, Configuration.windowHeightPx,
-                scene);
+        return start(config.graphics().windowWidth(),
+                config.graphics().windowHeight(), scene);
     }
 
     /**
@@ -347,6 +349,7 @@ public final class Game
     @API
     public static Scene start()
     {
+        config.game().instantMode(false);
         return start(new MainAnimation());
     }
 
@@ -720,10 +723,9 @@ public final class Game
             throw new RuntimeException(
                     "Fenster-Resizing ist erst möglich, nachdem Game.start ausgeführt wurde.");
         }
-        int diffX = (width - Configuration.windowWidthPx) / 2;
-        int diffY = (height - Configuration.windowHeightPx) / 2;
-        Configuration.windowWidthPx = width;
-        Configuration.windowHeightPx = height;
+        int diffX = (width - config.graphics().windowWidth()) / 2;
+        int diffY = (height - config.graphics().windowHeight()) / 2;
+        config.graphics().windowDimension(width, height);
         renderPanel.setSize(width, height);
         renderPanel.setPreferredSize(new Dimension(width, height));
         frame.pack();
@@ -743,8 +745,8 @@ public final class Game
     @API
     public static Vector getWindowSize()
     {
-        return new Vector(Configuration.windowWidthPx,
-                Configuration.windowHeightPx);
+        return new Vector(config.graphics().windowWidth(),
+                config.graphics().windowHeight());
     }
 
     /**
@@ -842,16 +844,19 @@ public final class Game
         double zoom = camera.getMeter();
         double rotation = camera.getRotation();
         Vector position = camera.getCenter();
+
+        int windowWidth = config.graphics().windowWidth();
+        int windowHeight = config.graphics().windowHeight();
         return new Vector(
                 position.getX() + ((Math.cos(Math.toRadians(rotation))
-                        * (mousePosition.x - Configuration.windowWidthPx / 2.0)
-                        + Math.sin(Math.toRadians(rotation)) * (mousePosition.y
-                                - Configuration.windowHeightPx / 2.0)))
+                        * (mousePosition.x - windowWidth / 2.0)
+                        + Math.sin(Math.toRadians(rotation))
+                                * (mousePosition.y - windowHeight / 2.0)))
                         / zoom,
                 position.getY() + ((Math.sin(Math.toRadians(rotation))
-                        * (mousePosition.x - Configuration.windowWidthPx / 2.0)
-                        - Math.cos(Math.toRadians(rotation)) * (mousePosition.y
-                                - Configuration.windowHeightPx / 2.0)))
+                        * (mousePosition.x - windowWidth / 2.0)
+                        - Math.cos(Math.toRadians(rotation))
+                                * (mousePosition.y - windowHeight / 2.0)))
                         / zoom);
     }
 

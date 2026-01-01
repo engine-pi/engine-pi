@@ -18,8 +18,10 @@
  */
 package pi;
 
+import pi.configuration.MainConfiguration;
+
 /**
- * Speichert <b>Konfigurationen</b> als statische Attribute.
+ * Bietet Zugriff auf alle <b>Konfigurationen</b>
  *
  * <p>
  * Durch diese Klasse kann die Klasse {@link Game} etwas übersichtlicher und
@@ -30,17 +32,39 @@ package pi;
  *
  * @since 0.42.0
  */
-public final class Configuration
+public final class Configuration extends MainConfiguration
 {
-    /**
-     * Die <b>Breite</b> des Fensters in Pixel.
-     */
-    public static int windowWidthPx = 800;
+    private static Configuration configuration;
 
     /**
-     * Die <b>Höhe</b> des Fensters in Pixel.
+     * Der Konstruktor ist auf privat gesetzt, damit nach dem
+     * Singleton/Einzelner-Entwurfsmuster nur eine Instanz erzeugt werden kann.
      */
-    public static int windowHeightPx = 600;
+    private Configuration()
+    {
+
+    }
+
+    /**
+     * <b>Gibt</b> die Singleton/Einzelner-Instanz der Konfiguration zurück.
+     *
+     * <p>
+     * Falls noch keine Instanz existiert, wird diese erstellt und geladen.
+     * </p>
+     *
+     * @return Das global Konfigurationsobjekt.
+     *
+     * @since 0.42.0
+     */
+    public static Configuration get()
+    {
+        if (configuration == null)
+        {
+            configuration = new Configuration();
+            configuration.load();
+        }
+        return configuration;
+    }
 
     /**
      * Die Framerate. (fps = Frames per Second).
@@ -61,15 +85,9 @@ public final class Configuration
      */
     public static int pixelMultiplication = 1;
 
-    /**
-     * Im sogenannten <b>Instant-Modus</b> werden die erzeugten Figuren
-     * <b>sofort</b> einer Szene hinzugefügt und diese Szene wird dann
-     * <b>sofort</b> gestartet.
-     *
-     * <p>
-     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne das viel
-     * Code geschrieben werden muss.
-     * </p>
-     */
-    public static boolean instantMode = true;
+    public static void main(String[] args)
+    {
+        Configuration config = Configuration.get();
+        System.out.println(config.graphics().windowHeight());
+    }
 }

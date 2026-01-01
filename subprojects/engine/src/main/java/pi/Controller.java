@@ -16,68 +16,68 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.configuration;
+package pi;
 
 import pi.annotations.API;
-import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.configuration.GameConfiguration;
+import pi.configuration.GraphicsConfiguration;
 
 /**
- * @author Josef Friedrich
  *
- * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "game_")
-public class GameConfiguration extends ConfigurationGroup
+public class Controller
 {
+    private static final Configuration config = Configuration.get();
+
+    private static final GameConfiguration gameConfig = config.game();
+
+    private static final GraphicsConfiguration graphicsConfig = config
+            .graphics();
+
     /**
+     * Aktiviert oder deaktiviert den <b>Instant-Modus</b>.
+     *
+     * <p>
      * Im sogenannten <b>Instant-Modus</b> werden die erzeugten Figuren
      * <b>sofort</b> einer Szene hinzugefügt und diese Szene wird dann umgehend
      * gestartet.
+     * </p>
      *
      * <p>
      * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne das viel
      * Code geschrieben werden muss.
      * </p>
      *
-     * @since 0.42.0
-     */
-    public boolean instantMode = true;
-
-    /**
-     * Gibt zurück, ob der <b>Instant-Modus</b> aktiviert ist oder nicht.
      *
-     * @return {@code true} falls der <b>Instant-Modus</b> aktiviert ist, sonst
-     *     {@code false}.
-     *
-     * @since 0.42.0
-     */
-    @Getter
-    @API
-    public boolean instantMode()
-    {
-        return instantMode;
-    }
-
-    /**
-     * Aktiviert oder deaktiviert den <b>Instant-Modus</b>.
-     *
-     * @param instantMode Der Aktivierungsstatus des Instand-Modus, also
+     * @param instantMode Der Aktivierungsstatus des Instant-Modus, also
      *     {@code true} falls der <b>Instant-Modus</b> aktiviert werden soll,
      *     sonst {@code false}.
      *
-     * @return Eine Referenz auf die eigene Instanz der GameConfiguration, damit
-     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
-     *     GameConfiguration durch aneinander gekettete Setter festgelegt werden
-     *     können, z. B. {@code game().instantMode(..).xxx(..)}.
+     * @see GameConfiguration#instantMode(boolean)
      *
      * @since 0.42.0
      */
     @Setter
     @API
-    public GameConfiguration instantMode(boolean instantMode)
+    public static void instantMode(boolean instantMode)
     {
-        set("instantMode", instantMode);
-        return this;
+        gameConfig.instantMode(instantMode);
+    }
+
+    /**
+     * Setzt die <b>Abmessung</b>, also die <b>Breite</b> und die <b>Höhe</b>,
+     * des Fensters in Pixel.
+     *
+     * @param windowWidth Die <b>Breite</b> des Fensters in Pixel.
+     * @param windowHeight Die <b>Höhe</b> des Fensters in Pixel.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public static void windowDimension(int windowWidth, int windowHeight)
+    {
+        graphicsConfig.windowDimension(windowWidth, windowHeight);
     }
 }

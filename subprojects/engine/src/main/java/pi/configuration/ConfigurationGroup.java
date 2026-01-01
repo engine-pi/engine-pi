@@ -234,6 +234,7 @@ public abstract class ConfigurationGroup
             catch (IllegalArgumentException | IllegalAccessException e)
             {
                 log.log(Level.SEVERE, e.getMessage(), e);
+                throw new RuntimeException(e);
             }
         }
     }

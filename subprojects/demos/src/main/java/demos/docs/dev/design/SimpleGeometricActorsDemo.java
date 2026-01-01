@@ -19,7 +19,7 @@
 package demos.docs.dev.design;
 
 import pi.Circle;
-import pi.Configuration;
+import pi.Controller;
 import pi.Rectangle;
 import pi.Triangle;
 
@@ -35,8 +35,7 @@ public class SimpleGeometricActorsDemo
 {
     public static void main(String[] args)
     {
-        Configuration.windowWidthPx = 700;
-        Configuration.windowHeightPx = 300;
+        Controller.windowDimension(700, 300);
         new Circle(5).setCenter(-7, 0);
         new Rectangle(5).setCenter(0, 0);
         new Triangle(5).setCenter(7, 0);

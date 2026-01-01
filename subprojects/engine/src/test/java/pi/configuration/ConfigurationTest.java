@@ -39,16 +39,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ConfigurationTests
+public class ConfigurationTest
 {
 
-    private Configuration config;
+    private ConfigurationLoader config;
 
     @BeforeEach
     void setup()
     {
         Logger.getLogger(FileUtil.class.getName()).setUseParentHandlers(false);
-        Logger.getLogger(Configuration.class.getName())
+        Logger.getLogger(ConfigurationLoader.class.getName())
                 .setUseParentHandlers(false);
     }
 
@@ -69,7 +69,7 @@ class ConfigurationTests
         final TestConfigurationGroup group = new TestConfigurationGroup();
 
         // act
-        config = new Configuration(group);
+        config = new ConfigurationLoader(group);
         config.load();
 
         // assert
@@ -82,7 +82,7 @@ class ConfigurationTests
     void testDefaultFileCreation()
     {
         // arrange
-        config = new Configuration();
+        config = new ConfigurationLoader();
         config.load();
 
         // act, assert
@@ -97,7 +97,7 @@ class ConfigurationTests
                 + ".properties";
 
         // act
-        config = new Configuration(testFileName);
+        config = new ConfigurationLoader(testFileName);
         config.load();
 
         // assert
@@ -109,7 +109,7 @@ class ConfigurationTests
     {
         // arrange
         final TestConfigurationGroup group = new TestConfigurationGroup();
-        config = new Configuration(group);
+        config = new ConfigurationLoader(group);
 
         // act
         config.load();

@@ -36,25 +36,18 @@ import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.Test;
 
-class ConfigurationGroupTests
+public class ConfigurationGroupTest
 {
-
     @Test
     void testPropertyChangedGraphicsConfig()
     {
-        this.testConfigurationChanged(new GraphicConfiguration());
+        this.testConfigurationChanged(new GraphicsConfiguration());
     }
 
     @Test
     void testPropertyChangedSoundConfig()
     {
         this.testConfigurationChanged(new SoundConfiguration());
-    }
-
-    @Test
-    void testPropertyChangedInputConfig()
-    {
-        this.testConfigurationChanged(new InputConfiguration());
     }
 
     @Test
@@ -66,43 +59,34 @@ class ConfigurationGroupTests
     @Test
     void testPropertyChangedEventValues()
     {
-        GraphicConfiguration config = new GraphicConfiguration();
+        GraphicsConfiguration config = new GraphicsConfiguration();
         TestConfigurationChangedListener listener = new TestConfigurationChangedListener();
 
         config.onChanged(listener);
 
-        boolean old = config.antiAliasing();
-        config.setAntiAliasing(true);
+        int oldWidth = config.windowWidth();
+        config.windowWidth(99);
 
-        assertEquals("antiAliasing", listener.name);
-        assertEquals(true, listener.newVal);
-        assertEquals(old, listener.oldVal);
+        assertEquals("windowWidth", listener.name);
+        assertEquals(99, listener.newVal);
+        assertEquals(oldWidth, listener.oldVal);
         assertEquals(config, listener.source);
 
-        DisplayMode oldDisplayMode = config.getDisplayMode();
-        config.setDisplayMode(DisplayMode.FULLSCREEN);
+        int oldHeight = config.windowHeight();
+        config.windowHeight(101);
 
-        assertEquals("displayMode", listener.name);
-        assertEquals(DisplayMode.FULLSCREEN, listener.newVal);
-        assertEquals(oldDisplayMode, listener.oldVal);
+        assertEquals("windowHeight", listener.name);
+        assertEquals(101, listener.newVal);
+        assertEquals(oldHeight, listener.oldVal);
         assertEquals(config, listener.source);
     }
 
     @Test
     void testReflectionBasedSetters()
     {
-        GraphicConfiguration config = new GraphicConfiguration();
-        config.setAntiAliasing(true);
-        config.setColorInterpolation(true);
-        config.setDisplayMode(DisplayMode.FULLSCREEN);
-        config.setGraphicQuality(Quality.VERYLOW);
-        config.setResolutionHeight(123);
-
-        assertTrue(config.antiAliasing());
-        assertTrue(config.colorInterpolation());
-        assertEquals(DisplayMode.FULLSCREEN, config.getDisplayMode());
-        assertEquals(Quality.VERYLOW, config.getGraphicQuality());
-        assertEquals(123, config.getResolutionHeight());
+        GraphicsConfiguration config = new GraphicsConfiguration();
+        config.windowWidth(99);
+        assertEquals(99, config.windowWidth());
     }
 
     private <T extends ConfigurationGroup> void testConfigurationChanged(
