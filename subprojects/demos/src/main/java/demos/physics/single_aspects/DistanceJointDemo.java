@@ -18,7 +18,7 @@
  */
 package demos.physics.single_aspects;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 
 /**
@@ -38,7 +38,7 @@ public class DistanceJointDemo extends BaseJointScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new DistanceJointDemo());
+        Controller.instantMode(false);
+        Controller.start(new DistanceJointDemo());
     }
 }

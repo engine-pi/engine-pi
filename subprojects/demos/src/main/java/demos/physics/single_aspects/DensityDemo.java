@@ -20,10 +20,10 @@ package demos.physics.single_aspects;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
-import pi.Scene;
 import pi.Circle;
+import pi.Controller;
 import pi.Rectangle;
+import pi.Scene;
 import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 
@@ -88,7 +88,8 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new DensityDemo());
+        Controller.debug();
+        Controller.instantMode(false);
+        Controller.start(new DensityDemo());
     }
 }

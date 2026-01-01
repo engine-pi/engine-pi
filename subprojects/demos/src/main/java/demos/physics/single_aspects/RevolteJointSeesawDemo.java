@@ -22,12 +22,12 @@ package demos.physics.single_aspects;
 
 import static pi.Vector.v;
 
-import pi.Game;
+import pi.Circle;
+import pi.Controller;
+import pi.Rectangle;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Polygon;
-import pi.Rectangle;
-import pi.Circle;
 
 /**
  * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
@@ -41,19 +41,22 @@ public class RevolteJointSeesawDemo extends Scene
         Polygon base = new Polygon(v(0, 0), v(1, 0), v(0.5, 1));
         base.makeStatic();
         base.setColor("white");
+        add(base);
         Rectangle seesaw = new Rectangle(5, 0.4);
         seesaw.makeDynamic();
         seesaw.setCenter(0.5, 1);
         seesaw.setColor("gray");
         seesaw.createRevoluteJoint(base, v(2.5, 0.2));
-        new Circle().setPosition(-2, 2).makeDynamic();
-        new Circle().setPosition(2, 2.2).makeDynamic();
+        add(seesaw);
+        add(new Circle().setPosition(-2, 2).makeDynamic());
+        add(new Circle().setPosition(2, 2.2).makeDynamic());
         setGravityOfEarth();
     }
 
     public static void main(String[] args)
     {
-        Game.debug();
-        new RevolteJointSeesawDemo();
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new RevolteJointSeesawDemo());
     }
 }

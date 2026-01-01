@@ -18,7 +18,7 @@
  */
 package demos.physics.single_aspects;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 
 /**
@@ -38,7 +38,8 @@ public class WeldJointDemo extends BaseJointScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new WeldJointDemo());
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new WeldJointDemo());
     }
 }

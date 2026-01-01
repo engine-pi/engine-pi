@@ -20,10 +20,10 @@ package demos.physics.single_aspects;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
-import pi.Scene;
 import pi.Circle;
+import pi.Controller;
 import pi.Rectangle;
+import pi.Scene;
 import pi.event.KeyStrokeListener;
 
 /**
@@ -38,6 +38,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
         getCamera().setMeter(45);
         circle = new Circle();
         circle.makeDynamic();
+        add(circle);
         setGravity(0, -9.81);
         // oben
         createBorder(-5, 4.5, false);
@@ -55,6 +56,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
                 : new Rectangle(0.5, 10);
         rectangle.setPosition(x, y);
         rectangle.makeStatic();
+        add(rectangle);
         return rectangle;
     }
 
@@ -82,7 +84,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new GravityDemo());
+        Controller.instantMode(false);
+        Controller.start(new GravityDemo());
     }
 }

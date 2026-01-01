@@ -18,7 +18,7 @@
  */
 package demos.physics.single_aspects;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 
 /**
@@ -39,7 +39,8 @@ public class RopeJointDemo extends BaseJointScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new RopeJointDemo());
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new RopeJointDemo());
     }
 }

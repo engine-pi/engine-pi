@@ -20,10 +20,10 @@ package demos.physics.single_aspects;
 
 import java.text.DecimalFormat;
 
-import pi.Game;
-import pi.Scene;
 import pi.Circle;
+import pi.Controller;
 import pi.Rectangle;
+import pi.Scene;
 import pi.actor.Text;
 
 /**
@@ -70,6 +70,7 @@ public class ElasticityDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ElasticityDemo(), 600, 800);
+        Controller.instantMode(false);
+        Controller.start(new ElasticityDemo(), 600, 800);
     }
 }
