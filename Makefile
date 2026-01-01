@@ -1,8 +1,6 @@
 PACKAGE_PATH = engine-pi/src/main/java/org
 JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 
-ASSETS = ./assets
-
 all: package
 
 deploy:
@@ -41,9 +39,10 @@ clean:
 
 assets:
 	git submodule init
-	rsync -av --delete $(ASSETS)/blockly-robot/resources subprojects/games/blockly-robot/src/main
-	rsync -av --delete $(ASSETS)/pacman/resources subprojects/games/pacman/src/main
-	rsync -av --delete $(ASSETS)/tetris/resources subprojects/games/tetris/src/main
+	git submodule update
+	rsync -av --delete assets/blockly-robot/resources subprojects/games/blockly-robot/src/main
+	rsync -av --delete assets/pacman/resources subprojects/games/pacman/src/main
+	rsync -av --delete assets/tetris/resources subprojects/games/tetris/src/main
 .PHONY: assets
 
 mkdocs_deploy:
