@@ -107,5 +107,7 @@ public final class GameConfiguration extends Configuration
     {
         GameConfiguration game = new GameConfiguration();
         game.graphics().getResolutionWidth();
+        game.graphics().setResolutionWidth(999);
+        game.save();
     }
 }
