@@ -25,6 +25,18 @@
  */
 package pi;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import pi.resources.ImageContainer;
 import pi.resources.Resource;
 import pi.resources.ResourcesContainer;
@@ -51,6 +63,9 @@ import pi.resources.sound.SoundContainer;
  */
 public final class Resources
 {
+    private static final Logger log = Logger
+            .getLogger(Resources.class.getName());
+
     /**
      * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color
      * Color}.
@@ -138,5 +153,169 @@ public final class Resources
         fonts.clear();
         images.clear();
         sounds.clear();
+    }
+
+    /**
+     * Gets the specified file as InputStream from either a resource folder or
+     * the file system.
+     *
+     * @param file The path to the file.
+     *
+     * @return The contents of the specified file as {@code InputStream}.
+     *
+     * @see Resources
+     */
+    public static InputStream get(String file)
+    {
+        return get(getLocation(file));
+    }
+
+    /**
+     * Gets the specified file as InputStream from either a resource folder or
+     * the file system.
+     *
+     * @param file The path to the file.
+     *
+     * @return The contents of the specified file as {@code InputStream}.
+     *
+     * @see Resources
+     */
+    public static InputStream get(URL file)
+    {
+        InputStream stream = getResource(file);
+        if (stream == null)
+        {
+            return null;
+        }
+
+        return stream.markSupported() ? stream
+                : new BufferedInputStream(stream);
+    }
+
+    /**
+     * Reads the specified file as String from either a resource folder or the
+     * file system.<br>
+     * Since no {@code Charset} is specified with this overload, the
+     * implementation uses UTF-8 by default.
+     *
+     * @param file The path to the file.
+     *
+     * @return The contents of the specified file as {@code String}
+     */
+    public static String read(String file)
+    {
+        return read(file, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Reads the specified file as String from either a resource folder or the
+     * file system.<br>
+     *
+     * @param file The path to the file.
+     * @param charset The charset that is used to read the String from the file.
+     *
+     * @return The contents of the specified file as {@code String}
+     */
+    public static String read(String file, Charset charset)
+    {
+        final URL location = getLocation(file);
+        if (location == null)
+        {
+            return null;
+        }
+
+        return read(location, charset);
+    }
+
+    /**
+     * Reads the specified file as String from either a resource folder or the
+     * file system.<br>
+     * Since no {@code Charset} is specified with this overload, the
+     * implementation uses UTF-8 by default.
+     *
+     * @param file The path to the file.
+     *
+     * @return The contents of the specified file as {@code String}
+     */
+    public static String read(URL file)
+    {
+        return read(file, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Reads the specified file as String from either a resource folder or the
+     * file system.<br>
+     *
+     * @param file The path to the file.
+     * @param charset The charset that is used to read the String from the file.
+     *
+     * @return The contents of the specified file as {@code String}
+     */
+    public static String read(URL file, Charset charset)
+    {
+        try (Scanner scanner = new Scanner(file.openStream(), charset))
+        {
+            scanner.useDelimiter("\\A");
+            return scanner.hasNext() ? scanner.next() : null;
+        }
+        catch (IOException e)
+        {
+            log.log(Level.SEVERE, e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Gets the location of the specified resource. This method attempts to find
+     * the resource using the system class loader first. If the resource is not
+     * found, it tries to locate it as a file in the file system.
+     *
+     * @param name The name of the resource.
+     *
+     * @return The URL of the resource, or null if the resource could not be
+     *     found.
+     */
+    public static URL getLocation(String name)
+    {
+        URL fromClass = ClassLoader.getSystemResource(name);
+        if (fromClass != null)
+        {
+            return fromClass;
+        }
+        try
+        {
+            return new URL(name);
+        }
+        catch (MalformedURLException e)
+        {
+            try
+            {
+                return (Path.of(name).toUri().toURL());
+            }
+            catch (MalformedURLException e1)
+            {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * Retrieves an InputStream for the specified URL. This method attempts to
+     * open a stream to the resource located at the given URL.
+     *
+     * @param file The URL of the resource to be accessed.
+     *
+     * @return An InputStream to the resource, or null if an I/O error occurs.
+     */
+    private static InputStream getResource(final URL file)
+    {
+        try
+        {
+            return file.openStream();
+        }
+        catch (IOException e)
+        {
+            return null;
+        }
     }
 }
