@@ -10,6 +10,8 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout the repository
         uses: actions/checkout@v6
+        with:
+          submodules: true
 
       # https://github.com/actions/setup-java
       - uses: actions/setup-java@v5
@@ -19,7 +21,7 @@ jobs:
           cache: maven
 
       - name: Sync the assets with some resources folder
-        run: make assets
+        run: make assets_sync_resources
 
       - name: Run the tests using Maven
         run: mvn test

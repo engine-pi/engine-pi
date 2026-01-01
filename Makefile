@@ -37,12 +37,16 @@ package: install_build_tools
 clean:
 	mvn clean
 
-assets:
+assets_init:
 	git submodule init
 	git submodule update
+
+assets_sync_resources:
 	rsync -av --delete assets/blockly-robot/resources subprojects/games/blockly-robot/src/main
 	rsync -av --delete assets/pacman/resources subprojects/games/pacman/src/main
 	rsync -av --delete assets/tetris/resources subprojects/games/tetris/src/main
+
+assets: assets_init assets_sync_resources
 .PHONY: assets
 
 mkdocs_deploy:
