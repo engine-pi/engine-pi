@@ -8,6 +8,7 @@ import blockly_robot.robot.logic.level.Difficulty;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.robot.RobotWrapper;
 import blockly_robot.robot.utils.PackageClassLoader;
+import pi.Game;
 
 /**
  * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen Versionen
@@ -15,6 +16,12 @@ import blockly_robot.robot.utils.PackageClassLoader;
  */
 public abstract class Solver<T>
 {
+
+    static
+    {
+        Game.instantMode(false);
+    }
+
     public String taskPath;
 
     private static double zoom = 60;

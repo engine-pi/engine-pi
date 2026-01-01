@@ -14,6 +14,7 @@ public class ColorContainerVisualizerDemo extends Scene
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         ColorManagement.setColors();
         Game.start(new ColorContainerVisualizerDemo(), 1000, 1000);
     }

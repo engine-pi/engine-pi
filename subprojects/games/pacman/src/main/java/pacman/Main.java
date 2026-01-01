@@ -7,6 +7,11 @@ import pi.debug.DebugConfiguration;
 
 public class Main
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     public static void start(Scene scene, int pixelMultiplication)
     {
         DebugConfiguration.enableDebugMode = true;

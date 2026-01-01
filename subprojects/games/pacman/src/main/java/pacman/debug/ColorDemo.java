@@ -12,6 +12,7 @@ public class ColorDemo extends BaseScene
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new ColorDemo(), 1000, 1000);
     }
 }

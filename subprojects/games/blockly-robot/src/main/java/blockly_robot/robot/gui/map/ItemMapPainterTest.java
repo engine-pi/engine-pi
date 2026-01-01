@@ -6,6 +6,11 @@ import pi.Scene;
 
 public class ItemMapPainterTest extends Scene
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     public static void main(String[] args)
     {
         new ItemMapPainterTest();

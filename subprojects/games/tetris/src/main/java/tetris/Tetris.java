@@ -22,6 +22,11 @@ import tetris.scenes.CopyrightScene;
 
 public class Tetris
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     /**
      * Die Größe eines Blocks in Pixeln. In dem klassischen Gameboy-Tetris hat
      * ein Block die Größe {@code 8x8}, die Blockgröße beträgt also {@code 8}
@@ -109,7 +114,6 @@ public class Tetris
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
         Tetris.start();
     }
 }

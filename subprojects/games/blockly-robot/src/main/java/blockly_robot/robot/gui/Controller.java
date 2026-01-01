@@ -1,16 +1,20 @@
 package blockly_robot.robot.gui;
 
+import blockly_robot.robot.gui.scenes.WindowScene;
+import pi.Bounds;
 import pi.Camera;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
-import blockly_robot.robot.gui.scenes.WindowScene;
-import pi.Bounds;
 
 public class Controller
 {
+    static
+    {
+        Game.instantMode(false);
+    }
 
     public static void setDebug(boolean debug)
     {

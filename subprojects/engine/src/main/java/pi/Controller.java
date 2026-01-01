@@ -212,9 +212,8 @@ public class Controller
      */
     @API
     public static Scene start(Scene scene, int width, int height,
-            int pixelMultiplication, boolean instantMode)
+            int pixelMultiplication)
     {
-        config.game().instantMode(instantMode);
         if (renderPanel != null)
         {
             throw new IllegalStateException(
@@ -269,21 +268,6 @@ public class Controller
             setDefaultControl(defaultControl);
         }
         return scene;
-    }
-
-    @API
-    public static Scene start(Scene scene, int width, int height,
-            int pixelMultiplication)
-    {
-        return start(scene, width, height, pixelMultiplication, true);
-    }
-
-    @API
-    public static Scene start(Scene scene, boolean instantMode)
-    {
-        return start(scene, config.graphics().windowWidth(),
-                config.graphics().windowHeight(), getPixelMultiplication(),
-                instantMode);
     }
 
     /**
