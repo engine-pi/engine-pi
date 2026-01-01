@@ -1,8 +1,41 @@
 # `design` (Optisches Erscheinungsbild)
 
-
-
 ## Farbgebung der einfachen geometrischen Figuren
+
+[^blog.interface.com]:
+    https://blog.interface.com/de/004-farbenlehre-am-bauhaus
+    Die Harmonielehre Ittens besagt, dass sich Farben in einem harmonischen
+    Gleichgewicht befinden, wenn das Auge sie zu einer Totalität ergänzen kann und
+    wenn die Mischung zweier oder mehrerer Farben ein neutrales Grau ergibt. Itten
+    ordnete in seinen Untersuchungen zum Verhältnis zwischen Farbe und Form der
+    Farbe Rot das Quadrat, der Farbe Gelb das Dreieck und der Farbe Blau den Kreis
+    zu.
+
+Die Färbung der einfachen geometrischen Figuren {{ class('pi.actor.Circle',
+'Kreis') }}, {{ class('pi.actor.Rectangle', 'Rechteck') }} und {{
+class('pi.actor.Triangle', 'Dreieck') }} folgt der Farbenlehre am
+Bauhaus:[^blog.interface.com]
+
+[^blog.interface.com]:
+    https://blog.interface.com/de/004-farbenlehre-am-bauhaus
+    Die Harmonielehre Ittens besagt, dass sich Farben in einem harmonischen
+    Gleichgewicht befinden, wenn das Auge sie zu einer Totalität ergänzen kann und
+    wenn die Mischung zweier oder mehrerer Farben ein neutrales Grau ergibt. Itten
+    ordnete in seinen Untersuchungen zum Verhältnis zwischen Farbe und Form der
+    Farbe Rot das Quadrat, der Farbe Gelb das Dreieck und der Farbe Blau den Kreis
+    zu.
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/dev/design/SimpleGeometricActorsDemo.java -->
+
+{{ image('docs/dev/design/SimpleGeometricActorsDemo.png', 'Die einfachen geometrischen Figuren Kreis, Rechteck und Dreieck dargestellt durch die Figuren <code>Circle</code>, <code>Rectangle</code> und <code>Triangle</code>') }}
+
+```java
+new Circle(5).setCenter(-7, 0);
+new Rectangle(5).setCenter(0, 0);
+new Triangle(5).setCenter(7, 0);
+```
+
+{{ demo('docs/dev/design/SimpleGeometricActorsDemo.java') }}
 
 ### `Circle` (Kreis)
 
@@ -18,7 +51,8 @@ er sich ausdrückt. Der Kreis entspricht der Farbe Blau, da er ein Symbol der
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Rectangle.java -->
 
-Das {{ class('pi.actor.Rectangle', 'Rechteck') }} ist standardmäßig **rot** gefärbt. Die Farbe Rot stellt für
+Das {{ class('pi.actor.Rectangle', 'Rechteck') }} ist standardmäßig **rot**
+gefärbt. Die Farbe Rot stellt für
 [Itten](https://de.wikipedia.org/wiki/Johannes_Itten) die körperhafte Materie
 dar. Sie wirkt statisch und schwer. Er ordnet deshalb der Farbe die statische
 Form des Quadrates zu.
@@ -27,10 +61,11 @@ Form des Quadrates zu.
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Triangle.java -->
 
-Das {{ class('pi.actor.Triangle', 'Dreieck') }} ist standardmäßig **gelb** gefärbt. Gelb steht bei
-[Itten](https://de.wikipedia.org/wiki/Johannes_Itten) für den Geist und das
-Denken. Gelb zeigt sich kämpferisch und aggressiv, besitzt einen schwerelosen
-Charakter und diesem Charakter entspricht laut Itten das Dreieck.[^byk-instruments.com]
+Das {{ class('pi.actor.Triangle', 'Dreieck') }} ist standardmäßig **gelb**
+gefärbt. Gelb steht bei [Itten](https://de.wikipedia.org/wiki/Johannes_Itten)
+für den Geist und das Denken. Gelb zeigt sich kämpferisch und aggressiv, besitzt
+einen schwerelosen Charakter und diesem Charakter entspricht laut Itten das
+Dreieck.[^byk-instruments.com]
 
 [^byk-instruments.com]:
     https://www.byk-instruments.com/de/color-determines-shape

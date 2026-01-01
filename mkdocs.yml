@@ -120,6 +120,7 @@ nav:
       - dev/design.md
       - dev/coding-style.md
       - dev/javadoc.md
+      - dev/mkdocs.md
       - dev/setter-getter.md
 
   - download.md

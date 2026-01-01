@@ -16,14 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.docs.design;
+package demos.docs.dev.design;
 
 import pi.Circle;
 import pi.Configuration;
 import pi.Rectangle;
 import pi.Triangle;
 
-// Got to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/dev/design/SimpleGeometricActorsDemo.png
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/dev/design/SimpleGeometricActorsDemo.png
 
 /**
  * Demonstriert die einfachen, geometrischen Figuren {@link pi.Circle Kreis},

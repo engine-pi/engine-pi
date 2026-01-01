@@ -34,14 +34,4 @@ Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
 {{ image('logo/Logos-forked-Engines.svg', 'Engine Alpha + LITIENGINE = Engine Pi') }}
 
-## Über diese Dokumentation
-
-Die Dokumentation der [Engine Pi](https://github.com/engine-pi/engine-pi) wurde
-mit [MkDocs](https://www.mkdocs.org) und dem Theme
-[Material](https://squidfunk.github.io/mkdocs-material) realisiert. Sie
-verwendet Tutorials und Bilder aus dem [Engine Alpha
-Wiki](https://engine-alpha.org), die unter der [Creative Commons „Namensnennung,
-Weitergabe unter gleichen
-Bedingungen“](https://creativecommons.org/licenses/by-sa/3.0/) Lizenz stehen.
-
 Die Dokumentation ist unter folgender URL aufrufbar: https://engine-pi.github.io/engine-pi
