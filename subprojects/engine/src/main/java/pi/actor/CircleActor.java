@@ -48,18 +48,16 @@ import pi.physics.FixtureData;
  *
  * @see ActorAdder
  */
-public class Circle extends Geometry
+public class CircleActor extends Geometry
 {
     private double diameter;
 
     /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
      *
-     * @see ActorAdder#addCircle()
-     *
      * @author Josef Friedrich
      */
-    public Circle()
+    public CircleActor()
     {
         this(1);
     }
@@ -68,10 +66,8 @@ public class Circle extends Geometry
      * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
      *
      * @param diameter Der <b>Durchmesser</b> des Kreises.
-     *
-     * @see ActorAdder#addCircle(double)
      */
-    public Circle(double diameter)
+    public CircleActor(double diameter)
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;

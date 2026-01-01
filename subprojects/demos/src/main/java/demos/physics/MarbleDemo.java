@@ -28,8 +28,8 @@ import pi.Random;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.BodyType;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 

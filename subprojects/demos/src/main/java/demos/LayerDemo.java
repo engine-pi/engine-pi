@@ -4,7 +4,7 @@ import pi.Game;
 import pi.Layer;
 import pi.Scene;
 import pi.actor.Actor;
-import pi.actor.Circle;
+import pi.Circle;
 
 public class LayerDemo extends Scene
 {

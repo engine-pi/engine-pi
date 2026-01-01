@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
 public class StaticKeyStrokeListenerDemo extends Scene

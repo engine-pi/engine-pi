@@ -23,7 +23,7 @@ package demos.small_games.dude;
 import java.awt.Color;
 
 import pi.Layer;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.actor.Text;
 
 public class PauseLayer extends Layer

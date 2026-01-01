@@ -20,7 +20,7 @@ package demos.small_games.pong;
 
 import pi.Game;
 import pi.actor.BodyType;
-import pi.actor.Circle;
+import pi.Circle;
 
 /**
  * Der Ball des Pong-Spiels.

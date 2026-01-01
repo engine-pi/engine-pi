@@ -19,7 +19,7 @@
 package demos.classes.actor;
 
 import pi.Game;
-import pi.actor.Triangle;
+import pi.Triangle;
 
 /**
  * Demonstriert die Figur <b>Dreieck</b> ({@link Triangle}).

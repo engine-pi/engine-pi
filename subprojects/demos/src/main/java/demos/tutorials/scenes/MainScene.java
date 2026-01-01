@@ -25,7 +25,7 @@ import java.awt.event.KeyEvent;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.actor.Text;
 import pi.animation.CircleAnimation;
 import pi.event.FrameUpdateListener;

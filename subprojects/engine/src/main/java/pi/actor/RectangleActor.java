@@ -45,11 +45,11 @@ import pi.physics.FixtureData;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see Circle
- * @see Triangle
+ * @see CircleActor
+ * @see TriangleActor
  * @see pi.Rectangle
  */
-public class Rectangle extends Geometry
+public class RectangleActor extends Geometry
 {
     /**
      * Die <b>Breite</b> des Rechtecks in Meter.
@@ -68,11 +68,9 @@ public class Rectangle extends Geometry
 
     /**
      * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
-     *
-     * @see ActorAdder#addRectangle()
      */
     @API
-    public Rectangle()
+    public RectangleActor()
     {
         this(1, 1);
     }
@@ -82,12 +80,10 @@ public class Rectangle extends Geometry
      *
      * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
      *
-     * @see ActorAdder#addRectangle(double)
-     *
      * @since 0.34.0
      */
     @API
-    public Rectangle(double sideLength)
+    public RectangleActor(double sideLength)
     {
         this(sideLength, sideLength);
     }
@@ -98,11 +94,9 @@ public class Rectangle extends Geometry
      *
      * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
-     *
-     * @see ActorAdder#addRectangle(double, double)
      */
     @API
-    public Rectangle(double width, double height)
+    public RectangleActor(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
     }
@@ -115,7 +109,7 @@ public class Rectangle extends Geometry
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      * @param shapeSupplier Eine Lamda-Funktion, die den <b>Umriss</b> liefert.
      */
-    public Rectangle(double width, double height,
+    public RectangleActor(double width, double height,
             Supplier<FixtureData> shapeSupplier)
     {
         super(shapeSupplier);

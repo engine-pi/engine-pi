@@ -19,7 +19,7 @@
 package demos.classes.actor;
 
 import pi.Scene;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 
 abstract class ActorBaseScene extends Scene
 {

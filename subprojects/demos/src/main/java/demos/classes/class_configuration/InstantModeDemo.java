@@ -18,7 +18,7 @@
  */
 package demos.classes.class_configuration;
 
-import pi.actor.Circle;
+import pi.Circle;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/Configuration.java
 

@@ -18,7 +18,7 @@
  */
 package pi;
 
-import pi.actor.ActorAdder;
+import pi.actor.TriangleActor;
 import pi.annotations.API;
 
 /**
@@ -33,8 +33,8 @@ import pi.annotations.API;
  * </p>
  *
  * <p class="development-note">
- * Diese Klasse ist identisch mit {@link pi.actor.Triangle}. Sie steht hier,
- * damit sie über das Hauptpaket importiert werden kann, also
+ * Diese Klasse ist identisch mit {@link pi.actor.TriangleActor}. Sie steht
+ * hier, damit sie über das Hauptpaket importiert werden kann, also
  * {@code import pi.Triangle;}
  * </p>
  *
@@ -42,13 +42,11 @@ import pi.annotations.API;
  *
  * @since 0.42
  */
-public class Triangle extends pi.actor.Triangle
+public class Triangle extends TriangleActor
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
-     *
-     * @see ActorAdder#addTriangle()
      */
     public Triangle()
     {
@@ -59,8 +57,6 @@ public class Triangle extends pi.actor.Triangle
      * Erzeugt ein <b>gleichseitiges</b> Dreieck. Die Spitze zeigt nach oben.
      *
      * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
-     *
-     * @see ActorAdder#addTriangle(double)
      */
     public Triangle(double sideLength)
     {
@@ -75,8 +71,6 @@ public class Triangle extends pi.actor.Triangle
      * @param width Die Breite des gleichschenkligen Dreiecks - genauer gesagt
      *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
-     *
-     * @see ActorAdder#addTriangle(double, double)
      */
     public Triangle(double width, double height)
     {
@@ -94,9 +88,6 @@ public class Triangle extends pi.actor.Triangle
      * @param y2 Die y-Koordinate des zweiten Eckpunkts.
      * @param x3 Die x-Koordinate des dritten Eckpunkts.
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
-     *
-     * @see ActorAdder#addTriangle(double, double, double, double, double,
-     *     double)
      */
     @API
     public Triangle(double x1, double y1, double x2, double y2, double x3,
@@ -111,8 +102,6 @@ public class Triangle extends pi.actor.Triangle
      * @param point1 Die Koordinate des ersten Eckpunkts.
      * @param point2 Die Koordinate des zweiten Eckpunkts.
      * @param point3 Die Koordinate des dritten Eckpunkts.
-     *
-     * @see ActorAdder#addTriangle(Vector, Vector, Vector)
      */
     public Triangle(Vector point1, Vector point2, Vector point3)
     {

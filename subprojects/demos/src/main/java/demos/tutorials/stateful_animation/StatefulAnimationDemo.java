@@ -25,8 +25,8 @@ import java.util.ArrayList;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 

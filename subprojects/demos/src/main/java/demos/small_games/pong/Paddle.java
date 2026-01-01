@@ -20,7 +20,7 @@ package demos.small_games.pong;
 
 import pi.Game;
 import pi.actor.BodyType;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 
 /**
  * Ein Schläger des Ping-Pong-Spiels.

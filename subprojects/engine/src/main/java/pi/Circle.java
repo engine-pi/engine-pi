@@ -18,7 +18,7 @@
  */
 package pi;
 
-import pi.actor.ActorAdder;
+import pi.actor.CircleActor;
 
 /**
  * Beschreibt einen <b>Kreis</b>.
@@ -33,8 +33,8 @@ import pi.actor.ActorAdder;
  * </p>
  *
  * <p class="development-note">
- * Diese Klasse ist identisch mit {@link pi.actor.Circle}. Sie steht hier, damit
- * sie über das Hauptpaket importiert werden kann, also
+ * Diese Klasse ist identisch mit {@link pi.actor.CircleActor}. Sie steht hier,
+ * damit sie über das Hauptpaket importiert werden kann, also
  * {@code import pi.Circle;}
  * </p>
  *
@@ -42,12 +42,10 @@ import pi.actor.ActorAdder;
  *
  * @since 0.42
  */
-public class Circle extends pi.actor.Circle
+public class Circle extends CircleActor
 {
     /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
-     *
-     * @see ActorAdder#addCircle()
      *
      * @author Josef Friedrich
      */
@@ -60,8 +58,6 @@ public class Circle extends pi.actor.Circle
      * Erzeugt einen <b>Kreis</b> durch Angabe des <b>Durchmessers</b>.
      *
      * @param diameter Der <b>Durchmesser</b> des Kreises.
-     *
-     * @see ActorAdder#addCircle(double)
      */
     public Circle(double diameter)
     {

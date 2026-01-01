@@ -8,7 +8,7 @@ import java.awt.Color;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.actor.Image;
 import pi.actor.Square;
 

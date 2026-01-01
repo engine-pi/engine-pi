@@ -36,15 +36,13 @@ import pi.annotations.API;
  *
  * @author Josef Friedrich
  */
-public class Triangle extends Polygon
+public class TriangleActor extends Polygon
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
-     *
-     * @see ActorAdder#addTriangle()
      */
-    public Triangle()
+    public TriangleActor()
     {
         this(1);
     }
@@ -53,10 +51,8 @@ public class Triangle extends Polygon
      * Erzeugt ein <b>gleichseitiges</b> Dreieck. Die Spitze zeigt nach oben.
      *
      * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
-     *
-     * @see ActorAdder#addTriangle(double)
      */
-    public Triangle(double sideLength)
+    public TriangleActor(double sideLength)
     {
         this(new Vector(0, 0), new Vector(sideLength, 0),
                 new Vector(sideLength / 2.0, Math.sqrt(3) / 2.0 * sideLength));
@@ -69,10 +65,8 @@ public class Triangle extends Polygon
      * @param width Die Breite des gleichschenkligen Dreiecks - genauer gesagt
      *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
-     *
-     * @see ActorAdder#addTriangle(double, double)
      */
-    public Triangle(double width, double height)
+    public TriangleActor(double width, double height)
     {
         this(new Vector(0, 0), new Vector(width, 0),
                 new Vector(width / 2, height));
@@ -88,12 +82,9 @@ public class Triangle extends Polygon
      * @param y2 Die y-Koordinate des zweiten Eckpunkts.
      * @param x3 Die x-Koordinate des dritten Eckpunkts.
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
-     *
-     * @see ActorAdder#addTriangle(double, double, double, double, double,
-     *     double)
      */
     @API
-    public Triangle(double x1, double y1, double x2, double y2, double x3,
+    public TriangleActor(double x1, double y1, double x2, double y2, double x3,
             double y3)
     {
         this(new Vector(x1, y1), new Vector(x2, y2), new Vector(x3, y3));
@@ -105,10 +96,8 @@ public class Triangle extends Polygon
      * @param point1 Die Koordinate des ersten Eckpunkts.
      * @param point2 Die Koordinate des zweiten Eckpunkts.
      * @param point3 Die Koordinate des dritten Eckpunkts.
-     *
-     * @see ActorAdder#addTriangle(Vector, Vector, Vector)
      */
-    public Triangle(Vector point1, Vector point2, Vector point3)
+    public TriangleActor(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
         setColor("yellow");

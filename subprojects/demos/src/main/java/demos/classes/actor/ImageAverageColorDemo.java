@@ -18,7 +18,8 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
+import pi.Rectangle;
 import pi.Scene;
 
 public class ImageAverageColorDemo extends Scene
@@ -40,13 +41,15 @@ public class ImageAverageColorDemo extends Scene
     private void createImageWithAverageColor(String filepath, double x)
     {
         var image = addImage(filepath, 1, 1).setPosition(x, 0);
-        addRectangle(1.0, 1.0).setPosition(x, -1.2).setColor(image.getColor());
-        addRectangle(1.0, 0.5).setPosition(x, -1.9)
-                .setColor(image.getComplementaryColor());
+        add(new Rectangle(1.0, 1.0).setPosition(x, -1.2)
+                .setColor(image.getColor()));
+        add(new Rectangle(1.0, 0.5).setPosition(x, -1.9)
+                .setColor(image.getComplementaryColor()));
     }
 
     public static void main(String[] args)
     {
-        Game.start(new ImageAverageColorDemo());
+        Controller.instantMode(false);
+        Controller.start(new ImageAverageColorDemo());
     }
 }

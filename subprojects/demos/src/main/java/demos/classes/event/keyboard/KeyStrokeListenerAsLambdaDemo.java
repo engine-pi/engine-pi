@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
+import pi.Circle;
 
 public class KeyStrokeListenerAsLambdaDemo extends Scene
 {

@@ -25,7 +25,7 @@ import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Animation;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.actor.Polygon;
 import pi.annotations.API;
 import pi.annotations.Internal;

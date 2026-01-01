@@ -23,7 +23,7 @@ package demos.tutorials.user_input.mouse;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 

@@ -19,8 +19,8 @@ package tetris.debug;
 import java.awt.event.KeyEvent;
 
 import pi.Game;
+import pi.Rectangle;
 import pi.Vector;
-import pi.actor.Rectangle;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
@@ -263,10 +263,11 @@ public class GridDebugScene extends BaseScene
                 // 6. Zeile sichtbar
                 // 7. Zeile getilgt
                 // 8. Zeilen oberhalb nach unten gerutscht
-                Rectangle overlay = addRectangle(10, range.getRowCount());
+                Rectangle overlay = new Rectangle(10, range.getRowCount());
                 overlay.setPosition(0, range.getFrom());
                 overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
                 overlay.setVisible(false);
+                add(overlay);
                 showRangeOverlay = false;
                 repeat(0.167, 8, (counter) -> {
                     System.out.println(counter);

@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+import pi.Circle;
 import pi.Game;
 import pi.Scene;
 
@@ -222,13 +223,14 @@ public class Graphics2DUtil
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.debug();
         Game.start(new Scene()
         {
             {
                 // Damit wir den Pfeil sehen
                 setGravityOfEarth();
-                addCircle(7).setCenter(0, 0).makeStatic();
+                new Circle(7).setCenter(0, 0).makeStatic();
             }
         });
     }

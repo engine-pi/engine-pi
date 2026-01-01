@@ -23,8 +23,8 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
 public class ListenerOnActorsDemo extends Scene

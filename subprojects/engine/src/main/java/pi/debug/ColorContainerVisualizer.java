@@ -22,6 +22,7 @@ import java.awt.Color;
 import java.util.Map;
 
 import pi.Game;
+import pi.Rectangle;
 import pi.Resources;
 import pi.Scene;
 import pi.resources.color.ColorContainer;
@@ -53,8 +54,8 @@ public class ColorContainerVisualizer
         {
             NamedColor color = container.getNamedColor(entry.getKey());
             // Rechteck, das die Farbe als Füllfarbe demonstiert
-            scene.addRectangle(1, 1).setPosition(-12, y)
-                    .setColor(color.getColor());
+            scene.add(new Rectangle(1, 1).setPosition(-12, y)
+                    .setColor(color.getColor()));
             // Der dezimale Farbcode
             scene.addText(color.getColorDecFormatted()).setHeight(0.5)
                     .setFont("Monospaced").setPosition(-10, y + 0.25)
@@ -89,6 +90,7 @@ public class ColorContainerVisualizer
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new Scene()
         {
             {

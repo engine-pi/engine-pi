@@ -22,6 +22,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.Game;
+import pi.Rectangle;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
@@ -181,7 +182,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         Actor[] areas = new Actor[4];
         for (int i = 0; i < 4; i++)
         {
-            areas[i] = addRectangle(1, 1);
+            areas[i] = new Rectangle(1, 1);
             areas[i].setPosition(-8 + i, -8);
         }
         return areas;
@@ -240,6 +241,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new ColorWheelIttenDemo(), 520, 520);
     }
 }

@@ -27,7 +27,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Image;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.physics.FixtureBuilder;
 
 public class BasketballThrowDemo extends Scene

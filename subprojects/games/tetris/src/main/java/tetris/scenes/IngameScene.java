@@ -20,7 +20,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 import pi.Game;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 import pi.event.PeriodicTaskExecutor;
 import pi.event.PressedKeyRepeater;
@@ -325,10 +325,11 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     private void clearLines(FilledRowRange range)
     {
         isInAnimation = true;
-        Rectangle overlay = addRectangle(10, range.getRowCount());
+        Rectangle overlay = new Rectangle(10, range.getRowCount());
         overlay.setPosition(0, range.getFrom());
         overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
         overlay.setVisible(false);
+        add(overlay);
         periodicTask.pause();
         if (range.getRowCount() < 4)
         {

@@ -2,7 +2,7 @@ package demos.classes.dsa.recursion;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Triangle;
+import pi.Triangle;
 
 /**
  * Erzeugt das Sierpinski-Dreieck.

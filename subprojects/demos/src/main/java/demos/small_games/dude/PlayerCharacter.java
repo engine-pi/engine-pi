@@ -30,7 +30,7 @@ import pi.Random;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Animation;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.actor.StatefulAnimation;
 import pi.animation.Interpolator;
 import pi.animation.ValueAnimator;

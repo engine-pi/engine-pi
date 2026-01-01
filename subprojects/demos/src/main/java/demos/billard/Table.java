@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pi.actor.Actor;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.event.CollisionListener;
 
 public class Table

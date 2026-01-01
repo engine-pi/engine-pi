@@ -38,15 +38,15 @@ public class Logo implements ActorAdder
 
     private final Vector anchor;
 
-    public Rectangle rectangleP;
+    public RectangleActor rectangleP;
 
-    public Triangle triangleP;
+    public TriangleActor triangleP;
 
-    public Circle circleP;
+    public CircleActor circleP;
 
-    public Rectangle rectangleI;
+    public RectangleActor rectangleI;
 
-    public Circle circleI;
+    public CircleActor circleI;
 
     public Logo(Scene scene, Vector anchor, double factor)
     {
@@ -78,16 +78,18 @@ public class Logo implements ActorAdder
         return shift(0, 0);
     }
 
-    private Rectangle drawRectangle()
+    private RectangleActor drawRectangle()
     {
-        Rectangle rectangle = addRectangle(factor, 2.0 * factor);
+        RectangleActor rectangle = new RectangleActor(factor, 2.0 * factor);
+        scene.add(rectangle);
         applyPhysicSettings(rectangle);
         return rectangle;
     }
 
-    private Circle drawCircle()
+    private CircleActor drawCircle()
     {
-        Circle circle = addCircle(factor);
+        CircleActor circle = new CircleActor(factor);
+        scene.add(circle);
         applyPhysicSettings(circle);
         return circle;
     }
@@ -99,7 +101,8 @@ public class Logo implements ActorAdder
         rectangleP = drawRectangle();
         rectangleP.setPosition(shift());
         // Dreieck des Ps
-        triangleP = addTriangle(3 * factor);
+        triangleP = new TriangleActor(3 * factor);
+        scene.add(triangleP);
         applyPhysicSettings(triangleP);
         triangleP.rotateBy(-90).setPosition(shift(-0.25, 4));
         // Kreis des Ps

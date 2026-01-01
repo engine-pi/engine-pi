@@ -21,6 +21,7 @@ package pi.resources.color;
 import java.awt.Color;
 import java.util.Map.Entry;
 
+import pi.Circle;
 import pi.Game;
 import pi.Resources;
 import pi.Scene;
@@ -1465,7 +1466,8 @@ public class ColorScheme
                 for (Entry<String, Color> entry : Resources.colors.getAll()
                         .entrySet())
                 {
-                    addCircle().setPosition(x, 0).setColor(entry.getValue());
+                    add(new Circle().setPosition(x, 0)
+                            .setColor(entry.getValue()));
                     addText(entry.getKey(), 0.5).setPosition(x, labelY)
                             .setColor("white");
                     x += 2;

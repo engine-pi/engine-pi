@@ -1,13 +1,12 @@
 package demos.tutorials.scenes;
 
+import static pi.Resources.colors;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import pi.Game;
+import pi.Circle;
 import pi.Scene;
-import pi.actor.Circle;
-
-import static pi.Resources.colors;
 
 /**
  * Demonstriert die Methode {@link Scene#render(Graphics2D, int, int)}.
@@ -25,7 +24,7 @@ public class OverlayDemo extends Scene
 
     public OverlayDemo()
     {
-        Circle circle = addCircle(15);
+        Circle circle = new Circle(15);
         circle.setCenter(0, 0);
     }
 
@@ -49,7 +48,7 @@ public class OverlayDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new OverlayDemo());
+        new OverlayDemo();
     }
 
 }

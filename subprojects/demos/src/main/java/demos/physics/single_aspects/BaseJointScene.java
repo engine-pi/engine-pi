@@ -20,7 +20,7 @@ package demos.physics.single_aspects;
 
 import pi.Scene;
 import pi.actor.Joint;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 
 abstract class BaseJointScene extends Scene
 {
@@ -39,7 +39,6 @@ abstract class BaseJointScene extends Scene
         b = new Rectangle();
         b.setCenter(1, 0);
         b.makeDynamic();
-        add(a, b);
         delay(0.1, () -> {
             a.applyImpulse(1, 5);
             b.applyImpulse(-1, -5);

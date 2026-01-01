@@ -21,8 +21,8 @@ package demos.physics.single_aspects;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.actor.RevoluteJoint;
 
 /**
@@ -33,8 +33,8 @@ public class RevoluteJointDemo extends Scene
 {
     public RevoluteJointDemo()
     {
-        Rectangle rectangle = addRectangle(1, 1);
-        Circle circle = addCircle();
+        Rectangle rectangle = new Rectangle(1, 1);
+        Circle circle = new Circle();
         RevoluteJoint joint = rectangle.createRevoluteJoint(circle,
                 new Vector(0.25, 0.25));
         joint.addReleaseListener(() -> {
@@ -45,6 +45,6 @@ public class RevoluteJointDemo extends Scene
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start(new RevoluteJointDemo());
+        new RevoluteJointDemo();
     }
 }

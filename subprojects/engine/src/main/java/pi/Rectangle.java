@@ -20,7 +20,7 @@ package pi;
 
 import java.util.function.Supplier;
 
-import pi.actor.ActorAdder;
+import pi.actor.RectangleActor;
 import pi.annotations.API;
 import pi.physics.FixtureData;
 
@@ -35,8 +35,8 @@ import pi.physics.FixtureData;
  * </p>
  *
  * <p class="development-note">
- * Diese Klasse ist identisch mit {@link pi.actor.Rectangle}. Sie steht hier,
- * damit sie über das Hauptpaket importiert werden kann, also
+ * Diese Klasse ist identisch mit {@link pi.actor.RectangleActor}. Sie steht
+ * hier, damit sie über das Hauptpaket importiert werden kann, also
  * {@code import pi.Rectangle;}
  * </p>
  *
@@ -44,12 +44,10 @@ import pi.physics.FixtureData;
  *
  * @since 0.42
  */
-public class Rectangle extends pi.actor.Rectangle
+public class Rectangle extends RectangleActor
 {
     /**
      * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
-     *
-     * @see ActorAdder#addRectangle()
      */
     @API
     public Rectangle()
@@ -61,8 +59,6 @@ public class Rectangle extends pi.actor.Rectangle
      * Erzeugt ein <b>Quadrat</b> unter Angabe der <b>Seitenlänge</b>.
      *
      * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
-     *
-     * @see ActorAdder#addRectangle(double)
      *
      * @since 0.34.0
      */
@@ -78,8 +74,6 @@ public class Rectangle extends pi.actor.Rectangle
      *
      * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
-     *
-     * @see ActorAdder#addRectangle(double, double)
      */
     @API
     public Rectangle(double width, double height)

@@ -111,8 +111,8 @@ Jetzt mit mehr Farbe und geometrischen Figuren
 ```java
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.actor.Text;
 
 public class HelloWorldVersion2 extends Scene

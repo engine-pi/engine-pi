@@ -22,9 +22,9 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.actor.Group;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
 public class GroupDemo extends Scene implements KeyStrokeListener

@@ -19,7 +19,7 @@
 package demos.classes.actor;
 
 import pi.Game;
-import pi.actor.Circle;
+import pi.Circle;
 
 /**
  * Demonstriert die Figur <b>Kreis</b> ({@link Circle}).
@@ -34,20 +34,18 @@ public class CircleDemo extends ActorBaseScene
         Circle circle = new Circle();
         circle.setPosition(2, 1);
         circle.makeDynamic();
-        add(circle);
         // Konstruktor mit Angabe des Durchmessers
         Circle circle2 = new Circle(2);
         circle2.setPosition(-2, 0);
         circle2.makeStatic();
-        add(circle2);
-        // Mit Hilfe der create... Methoden erzeugen.
-        addCircle().setPosition(5, 3).makeStatic();
-        addCircle(3).setPosition(-6, -3).makeStatic();
+
+        new Circle().setPosition(5, 3).makeStatic();
+        new Circle(3).setPosition(-6, -3).makeStatic();
     }
 
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start(new CircleDemo());
+        new CircleDemo();
     }
 }

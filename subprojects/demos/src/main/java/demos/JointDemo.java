@@ -26,9 +26,9 @@ import java.awt.event.KeyEvent;
 import pi.Game;
 import pi.Vector;
 import pi.actor.BodyType;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.actor.Polygon;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
 /**

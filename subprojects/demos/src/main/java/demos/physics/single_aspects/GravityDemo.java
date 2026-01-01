@@ -22,8 +22,8 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Circle;
-import pi.actor.Rectangle;
+import pi.Circle;
+import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
 /**
@@ -36,7 +36,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
     public GravityDemo()
     {
         getCamera().setMeter(45);
-        circle = addCircle();
+        circle = new Circle();
         circle.makeDynamic();
         setGravity(0, -9.81);
         // oben
@@ -55,7 +55,6 @@ public class GravityDemo extends Scene implements KeyStrokeListener
                 : new Rectangle(0.5, 10);
         rectangle.setPosition(x, y);
         rectangle.makeStatic();
-        add(rectangle);
         return rectangle;
     }
 

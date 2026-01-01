@@ -23,7 +23,7 @@ package demos.billard;
 import java.awt.Color;
 
 import pi.Vector;
-import pi.actor.Circle;
+import pi.Circle;
 import pi.event.FrameUpdateListener;
 
 public class Ball extends Circle implements FrameUpdateListener

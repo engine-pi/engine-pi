@@ -20,9 +20,8 @@ package demos.physics.single_aspects;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Rectangle;
 import pi.Scene;
-import pi.actor.Rectangle;
 import pi.event.KeyStrokeListener;
 
 /**
@@ -37,7 +36,6 @@ public class ApplyForceDemo extends Scene implements KeyStrokeListener
         rectangle = new Rectangle(3, 3);
         rectangle.makeDynamic();
         setGravity(0, -1);
-        add(rectangle);
     }
 
     @Override
@@ -54,6 +52,6 @@ public class ApplyForceDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new ApplyForceDemo());
+        new ApplyForceDemo();
     }
 }

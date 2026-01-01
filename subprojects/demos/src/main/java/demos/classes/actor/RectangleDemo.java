@@ -19,7 +19,7 @@
 package demos.classes.actor;
 
 import pi.Game;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.physics.FixtureBuilder;
 
 /**

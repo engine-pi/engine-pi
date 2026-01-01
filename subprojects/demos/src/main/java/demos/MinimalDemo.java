@@ -26,7 +26,7 @@ import java.awt.event.KeyEvent;
 import pi.Game;
 import pi.Scene;
 import pi.actor.Animation;
-import pi.actor.Rectangle;
+import pi.Rectangle;
 import pi.actor.StatefulAnimation;
 import pi.actor.Text;
 import pi.event.FrameUpdateListener;

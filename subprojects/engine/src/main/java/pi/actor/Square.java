@@ -23,7 +23,7 @@ package pi.actor;
  *
  * @author Josef Friedrich
  */
-public class Square extends Rectangle
+public class Square extends RectangleActor
 {
 
     public Square()

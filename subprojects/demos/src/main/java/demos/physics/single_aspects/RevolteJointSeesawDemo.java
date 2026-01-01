@@ -26,7 +26,8 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Polygon;
-import pi.actor.Rectangle;
+import pi.Rectangle;
+import pi.Circle;
 
 /**
  * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
@@ -40,21 +41,19 @@ public class RevolteJointSeesawDemo extends Scene
         Polygon base = new Polygon(v(0, 0), v(1, 0), v(0.5, 1));
         base.makeStatic();
         base.setColor("white");
-        add(base);
         Rectangle seesaw = new Rectangle(5, 0.4);
         seesaw.makeDynamic();
         seesaw.setCenter(0.5, 1);
         seesaw.setColor("gray");
         seesaw.createRevoluteJoint(base, v(2.5, 0.2));
-        add(seesaw);
-        addCircle().setPosition(-2, 2).makeDynamic();
-        addCircle().setPosition(2, 2.2).makeDynamic();
+        new Circle().setPosition(-2, 2).makeDynamic();
+        new Circle().setPosition(2, 2.2).makeDynamic();
         setGravityOfEarth();
     }
 
     public static void main(String[] args)
     {
         Game.debug();
-        Game.start(new RevolteJointSeesawDemo());
+        new RevolteJointSeesawDemo();
     }
 }
