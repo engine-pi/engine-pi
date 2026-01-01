@@ -21,7 +21,6 @@ package pi.debug;
 import java.awt.Graphics2D;
 
 import pi.Game;
-import pi.GameLoop;
 import pi.Resources;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
@@ -34,6 +33,7 @@ import pi.graphics.boxes.HorizontalBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VAlign;
 import pi.graphics.boxes.VerticalBox;
+import pi.loop.GameLoop;
 
 /**
  * Zeichnet einige <b>Informationsboxen</b> mit Debug-Informationen in das linke

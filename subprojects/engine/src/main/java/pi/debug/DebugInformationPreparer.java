@@ -18,8 +18,8 @@
  */
 package pi.debug;
 
-import pi.GameLoop;
 import pi.Vector;
+import pi.loop.GameLoop;
 
 /**
  * Bereitet die Debuginformationen auf.

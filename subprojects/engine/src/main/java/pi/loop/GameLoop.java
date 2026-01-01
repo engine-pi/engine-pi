@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi;
+package pi.loop;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -29,6 +29,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
+import pi.Configuration;
+import pi.Game;
+import pi.Scene;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
