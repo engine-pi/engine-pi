@@ -18,8 +18,8 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Clone the repository https://github.com/engine-pi/assets and sync some resources folder
-        run: make pull_resources
+      - name: Sync the assets with some resources folder
+        run: make assets
 
       - name: Run the tests using Maven
         run: mvn test

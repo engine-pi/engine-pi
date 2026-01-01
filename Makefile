@@ -1,7 +1,7 @@
 PACKAGE_PATH = engine-pi/src/main/java/org
 JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 
-ASSETS = "$(HOME)/.cache/engine-pi-assets"
+ASSETS = ./assets
 
 all: package
 
@@ -39,16 +39,12 @@ package: install_build_tools
 clean:
 	mvn clean
 
-pull_resources:
-	 mkdir -p $(HOME)/.cache
-	if [ -d $(ASSETS) ]; then \
-		git -C $(ASSETS) pull; \
-	else \
-		git clone https://github.com/engine-pi/assets.git $(ASSETS); \
-	fi
+assets:
+	git submodule init
 	rsync -av --delete $(ASSETS)/blockly-robot/resources subprojects/games/blockly-robot/src/main
 	rsync -av --delete $(ASSETS)/pacman/resources subprojects/games/pacman/src/main
 	rsync -av --delete $(ASSETS)/tetris/resources subprojects/games/tetris/src/main
+.PHONY: assets
 
 mkdocs_deploy:
 	mkdocs gh-deploy
