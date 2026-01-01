@@ -29,15 +29,18 @@ import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.physics.FixtureData;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/development/design.md
+
 /**
  * Beschreibt einen <b>Kreis</b>.
  *
  * <p>
- * Das Kreis ist standardmäßig <b>blau</b> gefärbt. Die Farbe Blau wirkt für
+ * Der Kreis ist standardmäßig <b>blau</b> gefärbt. Die Farbe Blau wirkt für
  * <a href="https://www.byk-instruments.com/de/color-determines-shape">Itten</a>
- * rund, erweckt ein Gefühl der Entspanntheit und Bewegung und steht für den „in
- * sich bewegten Geist“, wie er sich ausdrückt. Der Kreis entspricht der Farbe
- * Blau, da er ein Symbol der „stetigen Bewegung“ darstelle.
+ * rund, erweckt ein Gefühl der Entspanntheit und Bewegung und steht für den
+ * <em>„in sich bewegten Geist“</em>, wie er sich ausdrückt. Der Kreis
+ * entspricht der Farbe Blau, da er ein Symbol der <em>„stetigen Bewegung“</em>
+ * darstelle.
  * </p>
  *
  * @author Michael Andonie

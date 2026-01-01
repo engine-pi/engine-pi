@@ -68,7 +68,6 @@ watch:
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
 nav:
-  - Über die Engine Pi: index.md
   - Handbuch:
       - Hauptklassen:
           - manual/main-classes/index.md
@@ -114,15 +113,15 @@ nav:
           - manual/java/index.md
           - manual/java/packages.md
 
-  - Entwicklung:
-      - development/index.md
-      - development/logo.md
-      - development/setter-getter.md
-      - development/coding-style.md
-
-
-
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
+
+  - Entwicklung:
+      - dev/index.md
+      - dev/design.md
+      - dev/coding-style.md
+      - dev/javadoc.md
+      - dev/setter-getter.md
+
   - download.md
 
 extra:

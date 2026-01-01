@@ -1,4 +1,4 @@
-# Programmierstil
+# `coding style` (Programmierstil)
 
 Die Engine Pi ist in einem eigenen
 [Programmierstil](https://de.wikipedia.org/wiki/Programmierstil) ([coding

@@ -1,1 +1,3 @@
 # `events` (Ereignissteuerung)
+
+{{ contribute() }}

@@ -9,7 +9,7 @@ verschiedener Figurenarten (z. B.
 {{ class('actor.Circle') }}). Alle
 diese Spezialisierungen sind abgeleitet von der Oberklasse
 {{ class('actor.Actor') }}.
-Die API-Dokumentation des Pakets {{ package_summary('pi.actor') }}
+Die API-Dokumentation des Pakets {{ package('pi.actor') }}
 listet alle verfügbaren Actor-Klassen auf.
 
 Nachdem eine Figur erzeugt und zur Szene hinzugefügt wurde, befindet sie

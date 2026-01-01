@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2025 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,12 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
+package pi;
 
-import pi.Vector;
+import pi.actor.ActorAdder;
 import pi.annotations.API;
-
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/development/design.md
 
 /**
  * Beschreibt ein <b>Dreieck</b>.
@@ -34,9 +32,17 @@ import pi.annotations.API;
  * Itten das Dreieck.
  * </p>
  *
+ * <p class="development-note">
+ * Diese Klasse ist identisch mit {@link pi.actor.Triangle}. Sie steht hier,
+ * damit sie über das Hauptpaket importiert werden kann, also
+ * {@code import pi.Triangle;}
+ * </p>
+ *
  * @author Josef Friedrich
+ *
+ * @since 0.42
  */
-public class Triangle extends Polygon
+public class Triangle extends pi.actor.Triangle
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
@@ -46,7 +52,7 @@ public class Triangle extends Polygon
      */
     public Triangle()
     {
-        this(1);
+        super(1);
     }
 
     /**
@@ -58,7 +64,7 @@ public class Triangle extends Polygon
      */
     public Triangle(double sideLength)
     {
-        this(new Vector(0, 0), new Vector(sideLength, 0),
+        super(new Vector(0, 0), new Vector(sideLength, 0),
                 new Vector(sideLength / 2.0, Math.sqrt(3) / 2.0 * sideLength));
     }
 
@@ -74,7 +80,7 @@ public class Triangle extends Polygon
      */
     public Triangle(double width, double height)
     {
-        this(new Vector(0, 0), new Vector(width, 0),
+        super(new Vector(0, 0), new Vector(width, 0),
                 new Vector(width / 2, height));
     }
 
@@ -96,7 +102,7 @@ public class Triangle extends Polygon
     public Triangle(double x1, double y1, double x2, double y2, double x3,
             double y3)
     {
-        this(new Vector(x1, y1), new Vector(x2, y2), new Vector(x3, y3));
+        super(new Vector(x1, y1), new Vector(x2, y2), new Vector(x3, y3));
     }
 
     /**
@@ -111,6 +117,6 @@ public class Triangle extends Polygon
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        setColor("yellow");
     }
+    // Mit Absicht leer
 }

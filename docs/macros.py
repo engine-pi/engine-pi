@@ -30,20 +30,23 @@ def _caption(content: str, caption: str | None = None) -> str:
 
 
 def define_env(env) -> None:
-    def class_name(class_path: str) -> str:
+    def class_name(class_path: str, link_title: str | None = None) -> str:
         """
         {{ class('actor.Actor') }} {{ class('pi.actor.Actor') }}
         """
         class_path = _normalize_package_path(class_path)
-        class_name = class_path.split(".")[-1]
-        return f"[{class_name}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
+        if link_title is None:
+            link_title = class_path.split(".")[-1]
+        return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
 
     env.macro(class_name, "class")
 
     @env.macro
-    def package_summary(package_path: str) -> str:
-        package_path = _normalize_package_path(package_path)
-        return f"[{package_path}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
+    def package(package_path: str, link_title: str | None = None) -> str:
+        if link_title is None:
+            link_title = package_path
+
+        return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
     @env.macro
     def demo(relpath: str, hash: str = "main", lines: str | None = None) -> str:
@@ -54,8 +57,11 @@ def define_env(env) -> None:
         return f"<small>Zum Java-Code: [demos/{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
 
     @env.macro
-    def image(relpath: str) -> str:
-        return f"![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath})"
+    def image(relpath: str, caption: str | None = None) -> str:
+        return _caption(
+            f'<img src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}">',
+            caption,
+        )
 
     @env.macro
     def video(relpath: str, caption: str | None = None) -> str:
@@ -76,3 +82,9 @@ def define_env(env) -> None:
 
     Diese Hilfeseite hat leider noch keinen Inhalt. Hilf mit und fülle diese Seite mit Inhalt.
 """
+
+    @env.macro
+    def repo_link(relpath: str, link_title: str | None = None) -> str:
+        if link_title is None:
+            link_title = relpath
+        return f"[{link_title}](https://github.com/engine-pi/engine-pi/blob/main/{relpath})"

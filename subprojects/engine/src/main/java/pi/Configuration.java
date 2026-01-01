@@ -71,5 +71,5 @@ public final class Configuration
      * Code geschrieben werden muss.
      * </p>
      */
-    public static boolean instantMode = false;
+    public static boolean instantMode = true;
 }

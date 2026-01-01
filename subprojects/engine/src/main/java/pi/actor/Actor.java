@@ -53,6 +53,7 @@ import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.annotations.API;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.debug.DebugConfiguration;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
@@ -2172,6 +2173,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #getCenter()
      */
     @API
+    @Setter
     public final Actor setCenter(double x, double y)
     {
         this.setCenter(new Vector(x, y));
@@ -2207,6 +2209,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #getCenter()
      */
     @API
+    @Setter
     public final Actor setCenter(Vector center)
     {
         moveBy(getCenter().negate().add(center));

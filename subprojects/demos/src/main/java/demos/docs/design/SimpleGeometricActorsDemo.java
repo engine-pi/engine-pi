@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2024, 2025 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,25 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.docs.design;
 
-import pi.Game;
-import pi.Scene;
+import pi.Circle;
+import pi.Configuration;
+import pi.Rectangle;
+import pi.Triangle;
 
-public class AllActorsDemo extends Scene
+/**
+ * Demonstriert die einfachen, geometrischen Figuren {@link pi.Circle Kreis},
+ * {@link pi.Rectangle Rechteck} und {@link pi.Triangle Dreieck}.
+ *
+ * @author Josef Friedrich
+ */
+public class SimpleGeometricActorsDemo
 {
-    public AllActorsDemo()
-    {
-        addTriangle(-6, 0);
-        addRectangle(-4, 0);
-        addPentagon(-2, 0);
-        addCircle();
-        getCamera().setMeter(120);
-    }
-
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new AllActorsDemo());
+        Configuration.windowWidthPx = 700;
+        Configuration.windowHeightPx = 300;
+        new Circle(5).setCenter(-7, 0);
+        new Rectangle(5).setCenter(0, 0);
+        new Triangle(5).setCenter(7, 0);
     }
 }

@@ -29,6 +29,8 @@ import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/development/design.md
+
 /**
  * Beschreibt ein <b>Rechteck</b>.
  *
@@ -41,9 +43,11 @@ import pi.physics.FixtureData;
  *
  * @author Michael Andonie
  * @author Niklas Keller
+ * @author Josef Friedrich
  *
  * @see Circle
  * @see Triangle
+ * @see pi.Rectangle
  */
 public class Rectangle extends Geometry
 {
