@@ -31,7 +31,7 @@ package pi.configuration;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "sfx_")
+@ConfigurationGroupInfo(prefix = "sound_")
 public class SoundConfiguration extends ConfigurationGroup
 {
 

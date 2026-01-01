@@ -41,7 +41,7 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "gfx_")
+@ConfigurationGroupInfo(prefix = "graphics_")
 public class GraphicsConfiguration extends ConfigurationGroup
 {
     /**
@@ -57,6 +57,12 @@ public class GraphicsConfiguration extends ConfigurationGroup
      * @since 0.42.0
      */
     private int windowHeight = 600;
+
+    /**
+     * Die <b>Bildfrequenz</b> (bzw. Bildwechselfrequenz) gibt an, wie viele
+     * Einzelbilder pro Sekunde berechnet werden soll.
+     */
+    private int framerate = 60;
 
     /**
      * Gibt die <b>Breite</b> des Fensters in Pixel zurück.
@@ -169,5 +175,40 @@ public class GraphicsConfiguration extends ConfigurationGroup
         set("windowWidth", windowWidth);
         set("windowHeight", windowHeight);
         return this;
+    }
+
+    /**
+     * Setzt die <b>Bildfrequenz</b>.
+     *
+     * @param framerate Die <b>Bildfrequenz</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public GraphicsConfiguration framerate(int framerate)
+    {
+        set("framerate", framerate);
+        return this;
+    }
+
+    /**
+     * Gibt die <b>Bildfrequenz</b> zurück.
+     *
+     * @return Die <b>Bildfrequenz</b>.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public int framerate()
+    {
+        return framerate;
     }
 }

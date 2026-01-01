@@ -116,7 +116,8 @@ class VideoTask extends PhotoshootingTask
                 new ImagesToVideoConverter(baseDir(),
                         FileUtil.getVideosDir() + "/Engine-Pi_"
                                 + getFormattedTime(),
-                        (int) Math.round((double) Configuration.fps / nFrames))
+                        (int) Math.round((double) Configuration.get().graphics()
+                                .framerate() / nFrames))
                         .generate();
                 // Den temporären Ordner mit allen Bilder löschen.
                 FileUtil.deleteDir(baseDir());

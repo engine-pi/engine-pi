@@ -213,7 +213,7 @@ public class ConfigurationLoader
                 {
                     createDefaultSettingsFile(out);
                 }
-                log.log(Level.INFO, "Default configuration {0} created",
+                log.log(Level.INFO, "Konfigurationsdatei „{0}“ erstellt",
                         getPath());
                 return;
             }

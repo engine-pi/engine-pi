@@ -56,6 +56,7 @@ public class MainConfiguration extends ConfigurationLoader
         graphics = new GraphicsConfiguration();
         debug = new DebugConfiguration();
         sound = new SoundConfiguration();
+        getConfigurationGroups().add(game);
         getConfigurationGroups().add(sound);
         getConfigurationGroups().add(graphics);
         getConfigurationGroups().add(debug);

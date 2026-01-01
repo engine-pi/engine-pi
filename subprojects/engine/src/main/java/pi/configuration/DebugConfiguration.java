@@ -35,7 +35,7 @@ import pi.Game;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "dbg_", debug = true)
+@ConfigurationGroupInfo(prefix = "debug_", debug = true)
 public class DebugConfiguration extends ConfigurationGroup
 {
     private boolean debugEnabled = false;
