@@ -23,6 +23,8 @@ import pi.Configuration;
 import pi.Rectangle;
 import pi.Triangle;
 
+// Got to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/dev/design/SimpleGeometricActorsDemo.png
+
 /**
  * Demonstriert die einfachen, geometrischen Figuren {@link pi.Circle Kreis},
  * {@link pi.Rectangle Rechteck} und {@link pi.Triangle Dreieck}.
