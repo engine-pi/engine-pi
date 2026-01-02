@@ -43,6 +43,7 @@ assets_init:
 
 assets_sync_resources:
 	rsync -av --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/
+	rsync -av --delete assets/demos/resources/ subprojects/demos/src/main/resources/
 	rsync -av --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
 	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 
