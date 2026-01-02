@@ -2,12 +2,13 @@ package pacman.debug;
 
 import pacman.scenes.BaseScene;
 import pi.Game;
+import pi.Text;
 
 public class ColorDemo extends BaseScene
 {
     public ColorDemo()
     {
-        addText("Blinky").setColor("teal");
+        add(new Text("Blinky").setColor("teal"));
     }
 
     public static void main(String[] args)

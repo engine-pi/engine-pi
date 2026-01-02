@@ -28,7 +28,7 @@ import pi.Scene;
 import pi.actor.Animation;
 import pi.Rectangle;
 import pi.actor.StatefulAnimation;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseScrollEvent;

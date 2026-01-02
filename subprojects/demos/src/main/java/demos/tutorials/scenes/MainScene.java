@@ -26,7 +26,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.Rectangle;
-import pi.actor.Text;
+import pi.Text;
 import pi.animation.CircleAnimation;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;

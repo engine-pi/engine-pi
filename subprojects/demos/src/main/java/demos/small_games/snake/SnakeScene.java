@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import pi.Game;
 import pi.Random;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.FrameUpdateListener;
 
 public class SnakeScene extends Scene implements FrameUpdateListener

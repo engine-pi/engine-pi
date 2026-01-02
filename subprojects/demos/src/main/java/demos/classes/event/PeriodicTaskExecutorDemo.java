@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.PeriodicTaskExecutor;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/PeriodicTaskExecutor.java

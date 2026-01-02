@@ -24,7 +24,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.KeyStrokeListener;
 
 public class KeyStrokeCounterDemo extends Scene

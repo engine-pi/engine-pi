@@ -21,7 +21,7 @@ package demos.classes.event;
 import pi.Game;
 import pi.Layer;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.FrameUpdateListener;
 
 /**

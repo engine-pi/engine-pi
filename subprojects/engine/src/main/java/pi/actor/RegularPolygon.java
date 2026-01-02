@@ -77,13 +77,14 @@ public class RegularPolygon extends Polygon
      */
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(scene -> {
             int x = -10;
             for (int i = 3; i < 8; i++)
             {
                 scene.addRegularPolygon(i, 2, x, 0);
-                scene.addText(i + "").setPosition(x - 0.25, -4)
-                        .setColor("white");
+                scene.add(new Text(i + "").setPosition(x - 0.25, -4)
+                        .setColor("white"));
                 x += 5;
             }
         });

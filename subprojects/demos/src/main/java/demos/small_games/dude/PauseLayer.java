@@ -24,7 +24,7 @@ import java.awt.Color;
 
 import pi.Layer;
 import pi.Rectangle;
-import pi.actor.Text;
+import pi.Text;
 
 public class PauseLayer extends Layer
 {

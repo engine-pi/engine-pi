@@ -18,7 +18,7 @@
  */
 package demos.small_games.snake;
 
-import pi.actor.Text;
+import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 

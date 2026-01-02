@@ -25,6 +25,7 @@ import pi.Game;
 import pi.Rectangle;
 import pi.Resources;
 import pi.Scene;
+import pi.Text;
 import pi.resources.color.ColorContainer;
 import pi.resources.color.NamedColor;
 
@@ -57,19 +58,19 @@ public class ColorContainerVisualizer
             scene.add(new Rectangle(1, 1).setPosition(-12, y)
                     .setColor(color.getColor()));
             // Der dezimale Farbcode
-            scene.addText(color.getColorDecFormatted()).setHeight(0.5)
+            scene.add(new Text(color.getColorDecFormatted()).setHeight(0.5)
                     .setFont("Monospaced").setPosition(-10, y + 0.25)
-                    .setColor(color.getColor());
+                    .setColor(color.getColor()));
             // Der hexadezimale Farbcode
-            scene.addText(color.getColorHexFormatted()).setHeight(0.5)
+            scene.add(new Text(color.getColorHexFormatted()).setHeight(0.5)
                     .setFont("Monospaced").setPosition(-6, y + 0.25)
-                    .setColor(color.getColor());
+                    .setColor(color.getColor()));
             // Der Hauptname der Farbe
-            scene.addText(color.getName()).setHeight(0.5)
-                    .setPosition(-3, y + 0.25).setColor(WHITE);
+            scene.add(new Text(color.getName()).setHeight(0.5)
+                    .setPosition(-3, y + 0.25).setColor(WHITE));
             // Die Aliasse
-            scene.addText(color.getAliasesFormatted()).setHeight(0.3)
-                    .setColor(WHITE).setPosition(1, y + 0.3);
+            scene.add(new Text(color.getAliasesFormatted()).setHeight(0.3)
+                    .setColor(WHITE).setPosition(1, y + 0.3));
             y--;
         }
     }

@@ -27,7 +27,7 @@ import pi.Random;
 import pi.Scene;
 import pi.Vector;
 import pi.Circle;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;

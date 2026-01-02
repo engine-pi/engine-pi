@@ -98,8 +98,6 @@ public class Text extends Geometry
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      *
      * @since 0.27.0
-     *
-     * @see pi.actor.ActorAdder#addText(String)
      */
     @API
     public Text(String content)
@@ -113,8 +111,6 @@ public class Text extends Geometry
      *
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      * @param height Die <b>Höhe</b> des Textes in Meter.
-     *
-     * @see pi.actor.ActorAdder#addText(String, double)
      */
     @API
     public Text(String content, double height)
@@ -132,8 +128,6 @@ public class Text extends Geometry
      * @param height Die <b>Höhe</b> des Textes in Meter.
      * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
-     *
-     * @see pi.actor.ActorAdder#addText(String, double, String)
      */
     @API
     public Text(String content, double height, String fontName)
@@ -157,8 +151,6 @@ public class Text extends Geometry
      *     <li>{@code 2}: Kursiv</li>
      *     <li>{@code 3}: Fett und Kursiv</li>
      *     </ul>
-     *
-     * @see pi.actor.ActorAdder#addText(String, double, String, int)
      */
     @API
     public Text(String content, double height, String fontName, int style)

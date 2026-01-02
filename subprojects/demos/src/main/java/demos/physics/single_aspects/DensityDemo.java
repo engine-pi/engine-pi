@@ -24,7 +24,7 @@ import pi.Circle;
 import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.KeyStrokeListener;
 
 /**

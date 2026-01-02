@@ -24,7 +24,7 @@ import java.awt.Font;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.resources.font.FontStyle;
 
 /**

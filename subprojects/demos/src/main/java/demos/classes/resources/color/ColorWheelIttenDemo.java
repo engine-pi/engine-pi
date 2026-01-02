@@ -24,10 +24,10 @@ import java.awt.event.KeyEvent;
 import pi.Game;
 import pi.Rectangle;
 import pi.Scene;
+import pi.Text;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Polygon;
-import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 import pi.resources.color.ColorSchemeSelection;
 
@@ -64,9 +64,10 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         PRIMARY_AREAS = drawPrimaryColors();
         SECONDARY_AREAS = drawSecondaryColors();
         EXTRA_AREAS = drawExtraColors();
-        NAME = addText("");
+        NAME = new Text("");
         NAME.setPosition(-8, 7);
         NAME.setColor("white");
+        add(NAME);
         setNextColorScheme();
         setBackgroundColor("#444444");
     }
@@ -119,9 +120,9 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         {
             double angle = (i * SEGMENT_ANGLE * -1) + 90;
             Vector textPosition = getCirclePoint(7.5, angle);
-            addText(i + "", 0.5)
+            add(new Text(i + "", 0.5)
                     .setPosition(textPosition.getX(), textPosition.getY())
-                    .setColor("weiß");
+                    .setColor("weiß"));
             areas[i] = createWheelArea(i, angle);
         }
         return areas;

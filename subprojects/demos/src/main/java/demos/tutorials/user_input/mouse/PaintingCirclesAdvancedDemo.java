@@ -27,7 +27,7 @@ import pi.Scene;
 import pi.Vector;
 import pi.Circle;
 import pi.Rectangle;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 

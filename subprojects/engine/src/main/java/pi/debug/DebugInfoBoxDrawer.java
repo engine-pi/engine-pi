@@ -18,6 +18,8 @@
  */
 package pi.debug;
 
+import static pi.Resources.colors;
+
 import java.awt.Graphics2D;
 
 import pi.Game;
@@ -72,23 +74,23 @@ public final class DebugInfoBoxDrawer
     public DebugInfoBoxDrawer()
     {
         fps = new FramedTextBox(null);
-        fps.background.color("blue");
+        fps.background.color(colors.getSafe("blue"));
 
         frameCounter = new FramedTextBox(null);
-        frameCounter.background.color("purple");
+        frameCounter.background.color(colors.getSafe("purple"));
 
         actorsCount = new FramedTextBox(null);
-        actorsCount.background.color("green");
+        actorsCount.background.color(colors.getSafe("green"));
 
         var textBoxes = new ChildsBox<FramedTextBox>(fps, frameCounter,
                 actorsCount);
         textBoxes.forEachChild(box -> {
             box.padding.allSides(5);
-            box.textLine.fontSize(12).color("white");
+            box.textLine.fontSize(12).color(colors.getSafe("white"));
         });
 
         gravity = new TextLineBox("");
-        gravity.fontSize(12).color("white");
+        gravity.fontSize(12).color(colors.getSafe("white"));
         compass = new CompassBox(25);
         FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)

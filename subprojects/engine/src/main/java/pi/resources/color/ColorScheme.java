@@ -25,6 +25,7 @@ import pi.Circle;
 import pi.Game;
 import pi.Resources;
 import pi.Scene;
+import pi.Text;
 
 /**
  * Beschreibt ein <b>Farbschema</b>.
@@ -1457,6 +1458,7 @@ public class ColorScheme
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new Scene()
         {
             {
@@ -1468,8 +1470,8 @@ public class ColorScheme
                 {
                     add(new Circle().setPosition(x, 0)
                             .setColor(entry.getValue()));
-                    addText(entry.getKey(), 0.5).setPosition(x, labelY)
-                            .setColor("white");
+                    add(new Text(entry.getKey(), 0.5).setPosition(x, labelY)
+                            .setColor("white"));
                     x += 2;
                     labelY -= 2;
                     if (labelY < -4)

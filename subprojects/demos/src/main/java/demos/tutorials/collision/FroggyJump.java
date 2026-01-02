@@ -30,7 +30,7 @@ import pi.Scene;
 import pi.Vector;
 import pi.actor.Image;
 import pi.Rectangle;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;

@@ -56,7 +56,7 @@ public abstract class TextBox extends LeafBox
      */
     protected Font font = fonts.getDefault().deriveFont((float) fontSize);
 
-    protected Color color = colors.get("gray");
+    protected Color color = colors.getSafe("gray");
 
     /**
      * Erzeugt eine <b>Text</b>box.

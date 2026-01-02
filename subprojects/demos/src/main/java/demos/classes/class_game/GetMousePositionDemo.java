@@ -20,8 +20,8 @@ package demos.classes.class_game;
 
 import pi.Game;
 import pi.Scene;
+import pi.Text;
 import pi.Vector;
-import pi.actor.Text;
 import pi.event.FrameUpdateListener;
 import pi.util.TextUtil;
 
@@ -36,12 +36,14 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
 
     public GetMousePositionDemo()
     {
-        addText("x:").setPosition(-3, 0);
-        x = addText("");
+        add(new Text("x:").setPosition(-3, 0));
+        x = new Text("");
         x.setPosition(-2, 0);
-        addText("y:").setPosition(1, 0);
-        y = addText("");
+        add(x);
+        add(new Text("y:").setPosition(1, 0));
+        y = new Text("");
         y.setPosition(2, 0);
+        add(y);
     }
 
     @Override
@@ -54,6 +56,7 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new GetMousePositionDemo());
     }
 }

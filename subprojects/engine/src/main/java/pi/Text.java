@@ -1,0 +1,79 @@
+package pi;
+
+import java.awt.Font;
+
+import pi.annotations.API;
+
+public class Text extends pi.actor.Text
+{
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
+     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @since 0.27.0
+     */
+    @API
+    public Text(String content)
+    {
+        super(content, 1);
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
+     * in <b>normaler, serifenfreier Standardschrift</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     */
+    @API
+    public Text(String content, double height)
+    {
+        super(content, height);
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
+     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
+     * Schriftstil</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     */
+    @API
+    public Text(String content, double height, String fontName)
+    {
+        this(content, height, fontName, 0);
+    }
+
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
+     * <b>Schriftart</b>, und <b>Schriftstil</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param height Die <b>Höhe</b> des Textes in Meter.
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
+     *     kursiv</b>).
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
+     */
+    @API
+    public Text(String content, double height, String fontName, int style)
+    {
+        super(content, height, fontName, style);
+    }
+
+    public Text(String content, double height, Font font, int style)
+    {
+        super(content, height, font, style);
+    }
+}

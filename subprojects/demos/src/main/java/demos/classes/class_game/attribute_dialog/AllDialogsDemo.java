@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;

@@ -23,8 +23,8 @@ import java.awt.event.KeyEvent;
 import pi.Camera;
 import pi.Game;
 import pi.Scene;
+import pi.Text;
 import pi.Vector;
-import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
@@ -42,9 +42,10 @@ public class CameraDemo extends Scene
     public CameraDemo()
     {
         camera = getCamera();
-        addText("Camera demo", 5).setColor("white");
-        focus = addText("Focus");
+        add(new Text("Camera demo", 5).setColor("white"));
+        focus = new Text("Focus");
         focus.setColor("yellow").setPosition(0, 4);
+        add(focus);
         camera.setFocus(focus);
     }
 

@@ -22,12 +22,18 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
+import pi.Text;
 
 class Scene1 extends Scene
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     public Scene1()
     {
-        addText("Scene 1").setColor("red");
+        add(new Text("Scene 1").setColor("red"));
     }
 }
 
@@ -35,7 +41,7 @@ class Scene2 extends Scene
 {
     public Scene2()
     {
-        addText("Scene 2").setColor("green");
+        add(new Text("Scene 2").setColor("green"));
     }
 }
 

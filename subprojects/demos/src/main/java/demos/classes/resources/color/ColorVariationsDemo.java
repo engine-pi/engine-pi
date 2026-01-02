@@ -23,16 +23,15 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
+import pi.Text;
 import pi.actor.Actor;
 import pi.actor.Square;
-import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 import pi.resources.color.ColorSchemeSelection;
 import pi.resources.color.ColorUtil;
 
 public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 {
-
     private final Actor[][] COLOR_AREAS;
 
     private final ColorSchemeSelection[] COLOR_SCHEMES = ColorSchemeSelection
@@ -56,9 +55,10 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
                 add(square);
             }
         }
-        NAME = addText("");
+        NAME = new Text("");
         NAME.setPosition(2, -2);
         NAME.setColor("white");
+        add(NAME);
         getCamera().setCenter(4, 4);
         setNextColorScheme();
         setBackgroundColor("#444444");
@@ -89,7 +89,6 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
             COLOR_AREAS[i][4].setColor(ColorUtil.setBrightness(color, 1));
             i++;
         }
-
     }
 
     private void setNextColorScheme()
@@ -105,6 +104,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new ColorVariationsDemo(), 520, 520);
     }
 }

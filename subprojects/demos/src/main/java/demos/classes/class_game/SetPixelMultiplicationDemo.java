@@ -20,6 +20,7 @@ package demos.classes.class_game;
 
 import pi.Game;
 import pi.Scene;
+import pi.Text;
 import pi.actor.Actor;
 
 public class SetPixelMultiplicationDemo extends Scene
@@ -31,7 +32,7 @@ public class SetPixelMultiplicationDemo extends Scene
 
     public SetPixelMultiplicationDemo()
     {
-        addText("Text").setPosition(0, -1);
+        add(new Text("Text").setPosition(0, -1));
         Actor image = addImage(
                 "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
                 1, 1);

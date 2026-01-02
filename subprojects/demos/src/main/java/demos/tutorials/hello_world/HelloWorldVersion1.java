@@ -22,7 +22,7 @@ package demos.tutorials.hello_world;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 
 public class HelloWorldVersion1 extends Scene
 {
