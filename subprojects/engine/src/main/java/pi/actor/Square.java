@@ -18,14 +18,15 @@
  */
 package pi.actor;
 
+import pi.Rectangle;
+
 /**
  * Ein <b>Quadarat</b>.
  *
  * @author Josef Friedrich
  */
-public class Square extends RectangleActor
+public class Square extends Rectangle
 {
-
     public Square()
     {
         super(1);

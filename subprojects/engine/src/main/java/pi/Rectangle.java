@@ -52,7 +52,7 @@ public class Rectangle extends RectangleActor
     @API
     public Rectangle()
     {
-        super();
+        this(1, 1);
     }
 
     /**
@@ -65,7 +65,7 @@ public class Rectangle extends RectangleActor
     @API
     public Rectangle(double sideLength)
     {
-        super(sideLength);
+        super(sideLength, sideLength);
     }
 
     /**

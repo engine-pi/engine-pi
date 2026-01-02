@@ -20,7 +20,10 @@ package pi.actor;
 
 import static pi.Vector.v;
 
+import pi.Circle;
+import pi.Rectangle;
 import pi.Scene;
+import pi.Triangle;
 import pi.Vector;
 
 /**
@@ -78,17 +81,17 @@ public class Logo implements ActorAdder
         return shift(0, 0);
     }
 
-    private RectangleActor drawRectangle()
+    private Rectangle drawRectangle()
     {
-        RectangleActor rectangle = new RectangleActor(factor, 2.0 * factor);
+        Rectangle rectangle = new Rectangle(factor, 2.0 * factor);
         scene.add(rectangle);
         applyPhysicSettings(rectangle);
         return rectangle;
     }
 
-    private CircleActor drawCircle()
+    private Circle drawCircle()
     {
-        CircleActor circle = new CircleActor(factor);
+        Circle circle = new Circle(factor);
         scene.add(circle);
         applyPhysicSettings(circle);
         return circle;
@@ -101,7 +104,7 @@ public class Logo implements ActorAdder
         rectangleP = drawRectangle();
         rectangleP.setPosition(shift());
         // Dreieck des Ps
-        triangleP = new TriangleActor(3 * factor);
+        triangleP = new Triangle(3 * factor);
         scene.add(triangleP);
         applyPhysicSettings(triangleP);
         triangleP.rotateBy(-90).setPosition(shift(-0.25, 4));

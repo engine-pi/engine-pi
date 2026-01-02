@@ -48,7 +48,7 @@ import pi.physics.FixtureData;
  *
  * @see ActorAdder
  */
-public class CircleActor extends Geometry
+public abstract class CircleActor extends Geometry
 {
     private double diameter;
 

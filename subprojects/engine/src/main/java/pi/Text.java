@@ -26,6 +26,12 @@ import pi.annotations.API;
 /**
  * Zur Darstellung von <b>Texten</b>.
  *
+ * <p class="development-note">
+ * Diese Klasse ist identisch mit {@link pi.actor.TextActor}. Sie steht hier,
+ * damit sie über das Hauptpaket importiert werden kann, also
+ * {@code import pi.Text;}
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.42.0

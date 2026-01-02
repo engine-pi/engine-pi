@@ -49,7 +49,7 @@ import pi.physics.FixtureData;
  * @see TriangleActor
  * @see pi.Rectangle
  */
-public class RectangleActor extends Geometry
+public abstract class RectangleActor extends Geometry
 {
     /**
      * Die <b>Breite</b> des Rechtecks in Meter.
@@ -65,28 +65,6 @@ public class RectangleActor extends Geometry
      * Für abgerundete Ecken, Prozent der Abrundung der kleineren Seite
      */
     private double borderRadius;
-
-    /**
-     * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.
-     */
-    @API
-    public RectangleActor()
-    {
-        this(1, 1);
-    }
-
-    /**
-     * Erzeugt ein <b>Quadrat</b> unter Angabe der <b>Seitenlänge</b>.
-     *
-     * @param sideLength Die <b>Seitenlänge</b> des Quadrats in Meter.
-     *
-     * @since 0.34.0
-     */
-    @API
-    public RectangleActor(double sideLength)
-    {
-        this(sideLength, sideLength);
-    }
 
     /**
      * Erzeugt ein <b>Rechteck</b> durch Angabe der <b>Breite</b> und

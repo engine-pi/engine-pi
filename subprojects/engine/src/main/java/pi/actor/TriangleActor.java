@@ -36,7 +36,7 @@ import pi.annotations.API;
  *
  * @author Josef Friedrich
  */
-public class TriangleActor extends Polygon
+public abstract class TriangleActor extends Polygon
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
