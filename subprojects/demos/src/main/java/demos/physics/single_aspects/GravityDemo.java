@@ -35,7 +35,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 
     public GravityDemo()
     {
-        getCamera().setMeter(45);
+        getCamera().meter(45);
         circle = new Circle();
         circle.makeDynamic();
         add(circle);

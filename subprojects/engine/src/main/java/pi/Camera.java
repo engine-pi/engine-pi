@@ -24,7 +24,9 @@ import java.awt.Point;
 
 import pi.actor.Actor;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 /**
@@ -41,7 +43,7 @@ import pi.debug.ToStringFormatter;
  *
  * <pre>{@code
  * Bounds bounds = new Bounds(0, 0, 1500, 1000);
- * camera.setBounds(bounds);
+ * camera.bounds(bounds);
  * }</pre>
  *
  * <p>
@@ -61,6 +63,7 @@ import pi.debug.ToStringFormatter;
  * </p>
  *
  * @author Michael Andonie
+ * @author Josef Friedrich
  */
 public final class Camera
 {
@@ -110,7 +113,7 @@ public final class Camera
     @Internal
     public Camera()
     {
-        this.center = new Vector(0, 0);
+        center = new Vector(0, 0);
     }
 
     /**
@@ -119,27 +122,40 @@ public final class Camera
      * <p>
      * Dieses Objekt ist ab dann im „Zentrum“ der Kamera. Die Art des Fokus
      * (rechts, links, oben, unten, mittig, etc.) kann über die Methode
-     * {@link #setOffset(Vector)} geändert werden. Soll das Fokusverhalten
-     * beendet werden, kann einfach {@code null} übergeben werden, dann bleibt
-     * die Kamera bis auf Weiteres in der aktuellen Position.
+     * {@link #offset(Vector)} geändert werden. Soll das Fokusverhalten beendet
+     * werden, kann einfach {@code null} übergeben werden, dann bleibt die
+     * Kamera bis auf Weiteres in der aktuellen Position.
      *
      * @param focus Die Figur, die fokussiert werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void setFocus(Actor focus)
+    @Setter
+    public Camera focus(Actor focus)
     {
         this.focus = focus;
+        return this;
     }
 
     /**
      * Entfernt die fokussierte Figur von der Kamera.
      *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
      * @since 0.28.0
      */
     @API
-    public void removeFocus()
+    public Camera removeFocus()
     {
         this.focus = null;
+        return this;
     }
 
     /**
@@ -148,7 +164,7 @@ public final class Camera
      * @return <code>true</code>, wenn die Kamera ein Fokus-Objekt hat, sonst
      *     <code>false</code>.
      *
-     * @see #setFocus(Actor)
+     * @see #focus(Actor)
      */
     @API
     public boolean hasFocus()
@@ -169,11 +185,18 @@ public final class Camera
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
      *     Fokus verschoben wird.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void setOffset(Vector offset)
+    @Setter
+    public Camera offset(Vector offset)
     {
         this.offset = offset;
+        return this;
     }
 
     /**
@@ -181,7 +204,7 @@ public final class Camera
      *
      * @return Der aktuelle Verzug der Kamera.
      *
-     * @see #setOffset(Vector)
+     * @see #offset(Vector)
      */
     @API
     public Vector getOffset()
@@ -199,12 +222,19 @@ public final class Camera
      *
      * @param bounds Das Rechteck, das die Grenzen der Kamera angibt.
      *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
      * @see #hasBounds()
      */
     @API
-    public void setBounds(Bounds bounds)
+    @Setter
+    public Camera bounds(Bounds bounds)
     {
         this.bounds = bounds;
+        return this;
     }
 
     /**
@@ -213,7 +243,7 @@ public final class Camera
      *
      * @return <code>true</code> falls ja, sonst <code>false</code>.
      *
-     * @see #setBounds(Bounds)
+     * @see #bounds(Bounds)
      */
     @API
     public boolean hasBounds()
@@ -234,10 +264,16 @@ public final class Camera
      *
      * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
      *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
      * @see Scene#setMeter(double)
      */
     @API
-    public void setMeter(double pixelCount)
+    @Setter
+    public Camera meter(double pixelCount)
     {
         if (pixelCount <= 0)
         {
@@ -245,76 +281,24 @@ public final class Camera
                     "Der Kamerazoom kann nicht kleiner oder gleich 0 sein.");
         }
         this.meter = pixelCount;
+        return this;
     }
 
     /**
-     * Die Kamera bewegt sich näher an das Spielfeld. Die Ansicht wird
-     * vergrößert.
-     *
-     * @param factor 1 verdoppelt die Pixelanzahl eines Meters, 0 keine
-     *     Veränderung.
-     *
-     * @since 0.28.0
-     */
-    @API
-    public void zoomIn(double factor)
-    {
-        meter += meter * factor;
-    }
-
-    /**
-     * Die Kamera bewegt sich um den Standard-Zoomfaktor näher an das Spielfeld.
-     * Die Ansicht wird vergrößert.
-     *
-     * @since 0.28.0
-     */
-    @API
-    public void zoomIn()
-    {
-        zoomIn(DEFAULT_ZOOM_FACTOR);
-    }
-
-    /**
-     * Die Kamera entfernt sich vom Spielfeld. Die Ansicht wird verkleinert.
-     *
-     * @param factor 0.5 halbiert die Pixelanzahl eines Meters, 0 keine
-     *     Veränderung.
-     *
-     * @since 0.28.0
-     */
-    @API
-    public void zoomOut(double factor)
-    {
-        meter -= meter * factor;
-    }
-
-    /**
-     * Die Kamera entfernt sich um den Standard-Zoomfaktor vom Spielfeld. Die
-     * Ansicht wird verkleinert.
-     *
-     * @since 0.28.0
-     */
-    @API
-    public void zoomOut()
-    {
-        zoomOut(DEFAULT_ZOOM_FACTOR);
-    }
-
-    /**
-     * Gibt die Anzahl an Pixel aus, die einem Meter entsprechen.
+     * Gibt die Anzahl an Pixel aus, die einem <b>Meter</b> entsprechen.
      *
      * <p>
      * Ist die Pixelvervielfältigung aktiviert, wird der Faktor der
      * Pixelvervielfältigung mit der Pixelanzahl multipliziert
      * </p>
      *
-     *
      * @return Die Anzahl an Pixel aus, die einem Meter entsprechen.
      *
      * @see Game#getPixelMultiplication()
      */
     @API
-    public double getMeter()
+    @Getter
+    public double meter()
     {
         if (Game.isPixelMultiplication())
         {
@@ -324,14 +308,97 @@ public final class Camera
     }
 
     /**
+     * Die Kamera bewegt sich näher an das Spielfeld. Die Ansicht wird
+     * vergrößert.
+     *
+     * @param factor 1 verdoppelt die Pixelanzahl eines Meters, 0 keine
+     *     Veränderung.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public Camera zoomIn(double factor)
+    {
+        meter += meter * factor;
+        return this;
+    }
+
+    /**
+     * Die Kamera bewegt sich um den Standard-Zoomfaktor näher an das Spielfeld.
+     * Die Ansicht wird vergrößert.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public Camera zoomIn()
+    {
+        zoomIn(DEFAULT_ZOOM_FACTOR);
+        return this;
+    }
+
+    /**
+     * Die Kamera entfernt sich vom Spielfeld. Die Ansicht wird verkleinert.
+     *
+     * @param factor 0.5 halbiert die Pixelanzahl eines Meters, 0 keine
+     *     Veränderung.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public Camera zoomOut(double factor)
+    {
+        meter -= meter * factor;
+        return this;
+    }
+
+    /**
+     * Die Kamera entfernt sich um den Standard-Zoomfaktor vom Spielfeld. Die
+     * Ansicht wird verkleinert.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @since 0.28.0
+     */
+    @API
+    public Camera zoomOut()
+    {
+        zoomOut(DEFAULT_ZOOM_FACTOR);
+        return this;
+    }
+
+    /**
      * <b>Verschiebt</b> die Kamera um einen bestimmten Vektor (<b>relativ</b>).
      *
      * @param vector Die Verschiebung als Vektor.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void moveBy(Vector vector)
+    public Camera moveBy(Vector vector)
     {
         center = center.add(vector);
+        return this;
     }
 
     /**
@@ -340,11 +407,17 @@ public final class Camera
      *
      * @param x Die Verschiebung in <code>x</code>-Richtung.
      * @param y Die Verschiebung in <code>y</code>-Richtung.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void moveBy(double x, double y)
+    public Camera moveBy(double x, double y)
     {
         moveBy(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -353,11 +426,17 @@ public final class Camera
      * Koordinaten im Zentrum des Bildes.
      *
      * @param vector Das neue Zentrum der Kamera.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void moveTo(Vector vector)
+    public Camera moveTo(Vector vector)
     {
         center = vector;
+        return this;
     }
 
     /**
@@ -367,11 +446,17 @@ public final class Camera
      *
      * @param x Die <code>x</code>-Koordinate des Zentrums des Bildes.
      * @param y Die <code>y</code>-Koordinate des Zentrums des Bildes.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void moveTo(int x, int y)
+    public Camera moveTo(int x, int y)
     {
         moveTo(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -388,12 +473,18 @@ public final class Camera
      *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
      *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
      *     </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void rotateBy(double angle)
+    public Camera rotateBy(double angle)
     {
         rotation += angle;
         rotation = rotation % 360;
+        return this;
     }
 
     /**
@@ -403,11 +494,17 @@ public final class Camera
      *
      * @param angle Der Winkel (in <b>Grad</b>), um die Kamera <b>von seiner
      *     Ausgangsposition bei Initialisierung</b> rotiert werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void rotateTo(double angle)
+    public Camera rotateTo(double angle)
     {
         rotation = angle % 360;
+        return this;
     }
 
     /**
@@ -416,12 +513,19 @@ public final class Camera
      * @param x Die neue X-Koordinate des Kamerazentrums.
      * @param y Die neue Y-Koordinate des Kamerazentrums.
      *
-     * @see #setCenter(double, double)
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     *
+     * @see #center(double, double)
      */
     @API
-    public void setPostion(double x, double y)
+    @Setter
+    public Camera position(double x, double y)
     {
-        setCenter(new Vector(x, y));
+        center(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -429,26 +533,40 @@ public final class Camera
      *
      * @param x Die neue X-Koordinate des Kamerazentrums.
      * @param y Die neue Y-Koordinate des Kamerazentrums.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.33.0
      *
-     * @see #setPostion(double, double)
+     * @see #position(double, double)
      */
     @API
-    public void setCenter(double x, double y)
+    @Setter
+    public Camera center(double x, double y)
     {
-        setCenter(new Vector(x, y));
+        center(new Vector(x, y));
+        return this;
     }
 
     /**
      * Setzt die aktuelle Position der Kamera.
      *
      * @param position Die neue Position der Kamera.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public void setCenter(Vector position)
+    @Setter
+    public Camera center(Vector position)
     {
         this.center = position;
+        return this;
     }
 
     /**
@@ -457,7 +575,8 @@ public final class Camera
      * @return Die aktuelle Position der Kamera.
      */
     @API
-    public Vector getCenter()
+    @Getter
+    public Vector center()
     {
         return moveIntoBounds(center.add(offset));
     }
@@ -489,7 +608,10 @@ public final class Camera
      * Kamera an einem anderen Zeitpunkt aktualisiert wird.
      *
      * @see pi.loop.GameLoop#run()
+     *
+     * @hidden
      */
+    @Internal
     public void onFrameUpdate()
     {
         if (hasFocus())
@@ -504,7 +626,9 @@ public final class Camera
      *
      * @return Die aktuelle Drehung.
      */
-    public double getRotation()
+    @Getter
+    @API
+    public double rotation()
     {
         return rotation;
     }

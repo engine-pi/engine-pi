@@ -72,9 +72,9 @@ public class DudeDemo extends Scene
         // Vector(0.1, 0.1));
         setGravity(new Vector(0, -13));
         setFocus(character);
-        getCamera().setOffset(new Vector(0, 3));
-        getCamera().setBounds(new Bounds(-2000, -3, 20000, 20000));
-        getCamera().setMeter(30);
+        getCamera().offset(new Vector(0, 3));
+        getCamera().bounds(new Bounds(-2000, -3, 20000, 20000));
+        getCamera().meter(30);
         setupPlayground();
         setupCosmeticLayers();
         // getMainLayer().setVisibleHeight(15, Game.getFrameSizeInPixels());

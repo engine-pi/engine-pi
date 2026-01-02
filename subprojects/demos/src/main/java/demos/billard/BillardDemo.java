@@ -52,7 +52,7 @@ public class BillardDemo extends Scene implements KeyStrokeListener
         whiteBall.setPosition(-200, 0);
         add(whiteBall);
         setFocus(table.getBorder());
-        getCamera().setMeter(1);
+        getCamera().meter(1);
     }
 
     private Vector calculatePosition(int i)

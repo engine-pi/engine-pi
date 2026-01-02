@@ -59,7 +59,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
         NAME.setPosition(2, -2);
         NAME.setColor("white");
         add(NAME);
-        getCamera().setCenter(4, 4);
+        getCamera().center(4, 4);
         setNextColorScheme();
         setBackgroundColor("#444444");
     }

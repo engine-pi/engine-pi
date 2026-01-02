@@ -99,11 +99,11 @@ public class MinimalDemo extends Scene
     @Override
     public void onMouseScrollMove(MouseScrollEvent event)
     {
-        double newZoom = getCamera().getMeter()
+        double newZoom = getCamera().meter()
                 + (event.getPreciseWheelRotation() * -0.2);
         if (newZoom > 0)
         {
-            getCamera().setMeter(newZoom);
+            getCamera().meter(newZoom);
         }
     }
 

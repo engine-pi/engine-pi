@@ -46,7 +46,7 @@ public class CameraDemo extends Scene
         focus = new Text("Focus");
         focus.setColor("yellow").setPosition(0, 4);
         add(focus);
-        camera.setFocus(focus);
+        camera.focus(focus);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CameraDemo extends Scene
     private void moveFocus(int dX, int dY)
     {
         focus.moveBy(dX, dY);
-        camera.setFocus(focus);
+        camera.focus(focus);
     }
 
     @Override

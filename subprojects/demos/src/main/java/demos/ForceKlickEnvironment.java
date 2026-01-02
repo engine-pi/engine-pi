@@ -165,7 +165,7 @@ public class ForceKlickEnvironment extends Scene implements
         add(links, rechts, oben);
         add(stab);
         add(atv);
-        getCamera().setMeter(1);
+        getCamera().meter(1);
     }
 
     /**

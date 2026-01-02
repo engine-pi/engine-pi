@@ -385,12 +385,12 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @param pixelCount Die neue Anzahl an Pixel, die einem Meter entsprechen.
      *
-     * @see Camera#setMeter(double)
+     * @see Camera#meter(double)
      */
     @API
     public void setMeter(double pixelCount)
     {
-        camera.setMeter(pixelCount);
+        camera.meter(pixelCount);
     }
 
     /**
@@ -399,7 +399,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      * <p>
      * Dieses Objekt ist ab dann im „Zentrum“ der Kamera. Die Art des Fokus
      * (rechts, links, oben, unten, mittig, etc.) kann über die Methode
-     * {@link Camera#setOffset(Vector)} geändert werden. Soll das Fokusverhalten
+     * {@link Camera#offset(Vector)} geändert werden. Soll das Fokusverhalten
      * beendet werden, kann einfach {@code null} übergeben werden, dann bleibt
      * die Kamera bis auf Weiteres in der aktuellen Position.
      *
@@ -414,7 +414,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @API
     public void setFocus(Actor focus)
     {
-        camera.setFocus(focus);
+        camera.focus(focus);
     }
 
     /**
@@ -755,7 +755,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     public void focusCenter()
     {
-        camera.setCenter(getCenter());
+        camera.center(getCenter());
     }
 
     @API

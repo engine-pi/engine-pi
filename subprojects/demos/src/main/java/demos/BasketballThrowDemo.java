@@ -43,7 +43,7 @@ public class BasketballThrowDemo extends Scene
     public BasketballThrowDemo()
     {
         setGravityOfEarth();
-        getCamera().setMeter(100);
+        getCamera().meter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
         getMainLayer()
                 .add(ball = new Ball(ballPosition.getX(), ballPosition.getY()));

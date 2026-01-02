@@ -46,7 +46,7 @@ public class EightQueensPuzzle
         queenPositions = new boolean[numberOfQueens][numberOfQueens];
         Scene scene = new Scene();
         scene.setMeter(50);
-        scene.getCamera().setCenter(4, 4);
+        scene.getCamera().center(4, 4);
         chessboard = new Chessboard(scene, numberOfQueens);
         // chessboard.disableHighlighting();
         foundSolutions = new Counter();

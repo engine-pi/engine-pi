@@ -31,7 +31,7 @@ public class GhostsDebugScene extends Scene implements KeyStrokeListener
 
     public GhostsDebugScene()
     {
-        getCamera().setMeter(16);
+        getCamera().meter(16);
         blinky = addGhost(Blinky.class, 2, 2);
         clyde = addGhost(Clyde.class, -2, 2);
         inky = addGhost(Inky.class, -2, -2);

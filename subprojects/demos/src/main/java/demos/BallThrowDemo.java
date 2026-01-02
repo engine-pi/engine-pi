@@ -132,7 +132,7 @@ public class BallThrowDemo extends Scene
         // Kollision zwischen Ball und Boden beobachten (Code ist uns egal, wir
         // kennen nur einen Kollisionsfall)
         ball.addCollisionListener(ground, this);
-        getCamera().setMeter(3);
+        getCamera().meter(3);
         setFocus(ground);
     }
 

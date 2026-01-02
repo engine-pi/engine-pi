@@ -153,15 +153,15 @@ public final class CoordinateSystemDrawer
         config = Configuration.get().coordinatesystem();
         pre = g.getTransform();
         Camera camera = scene.getCamera();
-        center = camera.getCenter();
-        double rotation = -camera.getRotation();
+        center = camera.center();
+        double rotation = -camera.rotation();
         g.setClip(0, 0, width, height);
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im
         // linken oberen Bildschirmviertel gezeichnet werden.
         // Damit der Mittelpunkt des Engine-Pi-Koordinatensystems mit dem
         // Mittelpunkt des {@link Graphics2D}-Objekts zusammenfällt.
         g.translate(width / 2, height / 2);
-        pixelPerMeter = camera.getMeter();
+        pixelPerMeter = camera.meter();
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-center.getX() * pixelPerMeter,
                 center.getY() * pixelPerMeter);

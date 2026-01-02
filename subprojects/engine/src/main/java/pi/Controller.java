@@ -172,7 +172,7 @@ public class Controller
      * @return Der Wert der Pixelvervielfältigung.
      *
      * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
-     * @see Camera#getMeter()
+     * @see Camera#meter()
      * @see pi.actor.Animation#createFromSpritesheet
      *
      * @since 0.25.0
@@ -849,9 +849,9 @@ public class Controller
             java.awt.Point mousePosition)
     {
         Camera camera = scene.getCamera();
-        double zoom = camera.getMeter();
-        double rotation = camera.getRotation();
-        Vector position = camera.getCenter();
+        double zoom = camera.meter();
+        double rotation = camera.rotation();
+        Vector position = camera.center();
 
         int windowWidth = config.graphics().windowWidth();
         int windowHeight = config.graphics().windowHeight();

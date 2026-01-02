@@ -56,10 +56,10 @@ public class Controller
     {
         Scene scene = (Scene) windowScene;
         Camera camera = scene.getCamera();
-        double pixelPerMeter = camera.getMeter();
+        double pixelPerMeter = camera.meter();
         Bounds bounds = windowScene.getWindowBounds();
         Vector center = bounds.getCenter();
-        camera.setPostion(center.getX(), center.getY());
+        camera.position(center.getX(), center.getY());
         Game.setTitle(windowScene.getTitle());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
                 (int) Math.round(pixelPerMeter * bounds.height()),

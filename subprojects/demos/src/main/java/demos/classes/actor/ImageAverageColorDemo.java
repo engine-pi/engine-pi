@@ -26,7 +26,7 @@ public class ImageAverageColorDemo extends Scene
 {
     public ImageAverageColorDemo()
     {
-        getCamera().setMeter(90);
+        getCamera().meter(90);
         double x = -4;
         for (String filepath : new String[] { "car/background-color-grass.png",
                 "car/wheel-back.png", "car/truck-240px.png",

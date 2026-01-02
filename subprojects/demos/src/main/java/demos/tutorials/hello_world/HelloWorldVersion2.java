@@ -45,7 +45,7 @@ public class HelloWorldVersion2 extends Scene
         circle.setCenter(0, 1);
         circle.setLayerPosition(-2);
         add(background, circle);
-        getCamera().setMeter(20);
+        getCamera().meter(20);
     }
 
     public static void main(String[] args)

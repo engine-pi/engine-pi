@@ -188,11 +188,11 @@ public class DefaultControl implements DefaultListener
         double rotation = event.getPreciseWheelRotation();
         double factor = rotation > 0 ? 1 + 0.3 * rotation
                 : 1 / (1 - 0.3 * rotation);
-        double newZoom = camera.getMeter() * factor;
+        double newZoom = camera.meter() * factor;
         if (newZoom <= 0)
         {
             return;
         }
-        camera.setMeter(newZoom);
+        camera.meter(newZoom);
     }
 }

@@ -18,7 +18,7 @@ public class GraphDrawerDemo extends Scene
 
         new GraphDrawer(this);
 
-        getCamera().setFocus(graphImage);
+        getCamera().focus(graphImage);
     }
 
     public static void main(String[] args)

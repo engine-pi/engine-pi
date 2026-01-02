@@ -52,7 +52,7 @@ public class ImageFontTextSetContentDemo extends Scene
                 "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 15,
                 TextAlignment.LEFT);
         add(textField);
-        getCamera().setPostion(10, 8);
+        getCamera().position(10, 8);
         setBackgroundColor("white");
     }
 

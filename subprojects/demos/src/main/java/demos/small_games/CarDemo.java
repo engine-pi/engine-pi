@@ -125,9 +125,9 @@ public class CarDemo extends Scene implements FrameUpdateListener
         // Wheels automatically add axes, and axes add the car body
         add(wheelFront, wheelBack);
         setGravity(vector(0, -9.81));
-        getCamera().setMeter(ZOOM);
+        getCamera().meter(ZOOM);
         setFocus(carBody);
-        getCamera().setOffset(vector(0, 3));
+        getCamera().offset(vector(0, 3));
     }
 
     private Actor createBackgroundTile(int x)

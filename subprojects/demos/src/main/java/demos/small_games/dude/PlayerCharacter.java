@@ -422,8 +422,8 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 Interpolator<Double> interpolator = new SinusDouble(0,
                         -0.0004 * getVelocity().getY());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
-                        y -> getLayer().getParent().getCamera().setOffset(
-                                originalOffset.add(new Vector(0, y))),
+                        y -> getLayer().getParent().getCamera()
+                                .offset(originalOffset.add(new Vector(0, y))),
                         interpolator, getLayer());
                 getLayer().addFrameUpdateListener(valueAnimator);
                 valueAnimator.addCompletionListener(value -> getLayer()

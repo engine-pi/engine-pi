@@ -70,7 +70,7 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
     {
         character = new Character();
         setFocus(character);
-        getCamera().setMeter(32);
+        getCamera().meter(32);
         character.setState(State.IDLE);
         add(character);
     }

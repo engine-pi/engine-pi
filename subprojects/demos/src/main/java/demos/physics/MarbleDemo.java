@@ -108,7 +108,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
         ground.makeStatic();
         add(ground);
-        getCamera().setMeter(0.5);
+        getCamera().meter(0.5);
     }
 
     @Override

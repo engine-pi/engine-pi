@@ -47,7 +47,7 @@ public class ImageFontTextAlignmentDemo extends Scene
 
     public ImageFontTextAlignmentDemo()
     {
-        getCamera().setMeter(32);
+        getCamera().meter(32);
         setBackgroundColor("white");
         createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
         createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);

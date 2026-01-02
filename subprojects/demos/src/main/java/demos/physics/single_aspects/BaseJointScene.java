@@ -32,7 +32,7 @@ abstract class BaseJointScene extends Scene
 
     public BaseJointScene()
     {
-        getCamera().setMeter(100);
+        getCamera().meter(100);
         a = new Rectangle();
         a.setCenter(-1, 0);
         a.makeDynamic();
