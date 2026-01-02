@@ -24,7 +24,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import pi.Game;
 import pi.Resources;
 import pi.annotations.API;
 import pi.annotations.Internal;
@@ -39,7 +38,7 @@ import pi.resources.font.FontUtil;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class Text extends Geometry
+public abstract class TextActor extends Geometry
 {
     /**
      * Needs to be large enough, so we don't have rounding errors due to
@@ -100,7 +99,7 @@ public class Text extends Geometry
      * @since 0.27.0
      */
     @API
-    public Text(String content)
+    public TextActor(String content)
     {
         this(content, 1);
     }
@@ -113,7 +112,7 @@ public class Text extends Geometry
      * @param height Die <b>Höhe</b> des Textes in Meter.
      */
     @API
-    public Text(String content, double height)
+    public TextActor(String content, double height)
     {
         this(content, height,
                 Resources.fonts.getDefault().deriveFont((float) SIZE), 0);
@@ -130,7 +129,7 @@ public class Text extends Geometry
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      */
     @API
-    public Text(String content, double height, String fontName)
+    public TextActor(String content, double height, String fontName)
     {
         this(content, height, fontName, 0);
     }
@@ -153,7 +152,7 @@ public class Text extends Geometry
      *     </ul>
      */
     @API
-    public Text(String content, double height, String fontName, int style)
+    public TextActor(String content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 Resources.fonts.get(fontName).deriveFont(style, SIZE)));
@@ -164,7 +163,7 @@ public class Text extends Geometry
         setColor("white");
     }
 
-    public Text(String content, double height, Font font, int style)
+    public TextActor(String content, double height, Font font, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 font.deriveFont(style, SIZE)));
@@ -185,7 +184,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setFont(Font font)
+    public TextActor setFont(Font font)
     {
         this.font = font.deriveFont(fontStyle, SIZE);
         update();
@@ -202,7 +201,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setFont(String fontName)
+    public TextActor setFont(String fontName)
     {
         setFont(Resources.fonts.get(fontName));
         return this;
@@ -223,7 +222,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setContent(String content)
+    public TextActor setContent(String content)
     {
         String normalizedContent = content;
         if (normalizedContent == null)
@@ -247,7 +246,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setContent(Object content)
+    public TextActor setContent(Object content)
     {
         setContent(String.valueOf(content));
         return this;
@@ -282,7 +281,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setStyle(int style)
+    public TextActor setStyle(int style)
     {
         if (style >= 0 && style <= 3 && style != fontStyle)
         {
@@ -308,7 +307,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setHeight(double height)
+    public TextActor setHeight(double height)
     {
         if (this.height != height)
         {
@@ -345,7 +344,7 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setWidth(double width)
+    public TextActor setWidth(double width)
     {
         var sizeInPixels = FontUtil.getStringBounds(content, font);
         setHeight(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());
@@ -391,12 +390,5 @@ public class Text extends Geometry
         ToStringFormatter formatter = new ToStringFormatter("Text");
         formatter.append("content", content);
         return formatter.format();
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(scene -> {
-            scene.add(new Text("Text"));
-        });
     }
 }

@@ -2,7 +2,7 @@ package blockly_robot.robot.gui;
 
 import blockly_robot.robot.logic.level.Difficulty;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 
 public class Painter
 {

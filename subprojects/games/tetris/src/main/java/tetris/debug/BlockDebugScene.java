@@ -20,7 +20,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.KeyStrokeListener;
 import tetris.Tetris;
 import tetris.tetrominos.Block;

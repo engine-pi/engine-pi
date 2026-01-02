@@ -19,6 +19,7 @@
 package pi.actor;
 
 import pi.Game;
+import pi.Text;
 import pi.Vector;
 
 /**

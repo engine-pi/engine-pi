@@ -31,7 +31,7 @@ import pi.debug.ToStringFormatter;
  *
  * @since 0.35.0
  */
-public class Counter extends Text
+public class Counter extends TextActor
 {
 
     /**

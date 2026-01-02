@@ -15,7 +15,7 @@ import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.level.LevelCollection;
 import blockly_robot.robot.logic.menu.TaskList;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import pi.event.KeyStrokeListener;
 import pi.Bounds;
 

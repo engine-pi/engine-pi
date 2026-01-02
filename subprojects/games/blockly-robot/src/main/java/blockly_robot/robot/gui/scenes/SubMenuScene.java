@@ -2,7 +2,7 @@ package blockly_robot.robot.gui.scenes;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Text;
+import pi.Text;
 import blockly_robot.robot.gui.Color;
 import blockly_robot.robot.gui.Controller;
 import blockly_robot.robot.gui.State;

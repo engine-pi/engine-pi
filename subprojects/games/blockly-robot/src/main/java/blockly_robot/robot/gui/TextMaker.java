@@ -2,7 +2,7 @@ package blockly_robot.robot.gui;
 
 import java.awt.Font;
 
-import pi.actor.Text;
+import pi.Text;
 import pi.Resources;
 
 public class TextMaker
