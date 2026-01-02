@@ -6,7 +6,7 @@ import pi.Camera;
 import pi.Configuration;
 import pi.Game;
 import pi.Scene;
-import pi.configuration.DebugConfiguration;
+import pi.config.DebugConfiguration;
 
 /**
  * Registriert im Auslieferungszustand einige wenige <b>grundlegenden Maus- und

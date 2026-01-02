@@ -30,7 +30,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.annotations.Internal;
-import pi.configuration.DebugConfiguration;
+import pi.config.CoordinatesystemConfiguration;
 
 /**
  * Zeichnet das <b>Koordinatensystem</b>.
@@ -132,7 +132,7 @@ public final class CoordinateSystemDrawer
      */
     private int stopY;
 
-    private DebugConfiguration config;
+    private CoordinatesystemConfiguration config;
 
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
@@ -150,7 +150,7 @@ public final class CoordinateSystemDrawer
         this.width = width;
         this.height = height;
 
-        config = Configuration.get().debug();
+        config = Configuration.get().coordinatesystem();
         pre = g.getTransform();
         Camera camera = scene.getCamera();
         center = camera.getCenter();
@@ -165,9 +165,9 @@ public final class CoordinateSystemDrawer
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-center.getX() * pixelPerMeter,
                 center.getY() * pixelPerMeter);
-        if (config.coordinateSystemLinesEveryNMeter() > 0)
+        if (config.linesNMeter() > 0)
         {
-            gridSizeInMeters = config.coordinateSystemLinesEveryNMeter();
+            gridSizeInMeters = config.linesNMeter();
         }
         else
         {
@@ -395,7 +395,7 @@ public final class CoordinateSystemDrawer
             drawHorizontalLines();
             drawHorizontalCoordinateLabels();
             drawVerticalCoordinateLabels();
-            if (config.coordinateSystemLabelsEachIntersectionGridLines())
+            if (config.labelsOnIntersections())
             {
                 drawCoordinateLabels();
             }
@@ -408,14 +408,15 @@ public final class CoordinateSystemDrawer
         Game.debug();
         Scene scene = Game.start();
         scene.addKeyStrokeListener((event) -> {
-            DebugConfiguration config = Configuration.get().debug();
+            CoordinatesystemConfiguration config = Configuration.get()
+                    .coordinatesystem();
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 -> config.coordinateSystemLinesEveryNMeter(1);
-            case KeyEvent.VK_2 -> config.coordinateSystemLinesEveryNMeter(2);
-            case KeyEvent.VK_3 -> config.coordinateSystemLinesEveryNMeter(3);
-            case KeyEvent.VK_4 -> config.coordinateSystemLinesEveryNMeter(4);
-            case KeyEvent.VK_5 -> config.coordinateSystemLinesEveryNMeter(5);
+            case KeyEvent.VK_1 -> config.linesNMeter(1);
+            case KeyEvent.VK_2 -> config.linesNMeter(2);
+            case KeyEvent.VK_3 -> config.linesNMeter(3);
+            case KeyEvent.VK_4 -> config.linesNMeter(4);
+            case KeyEvent.VK_5 -> config.linesNMeter(5);
             }
         });
     }

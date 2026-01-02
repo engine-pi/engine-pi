@@ -18,7 +18,7 @@
  */
 package pi;
 
-import pi.configuration.MainConfiguration;
+import pi.config.MainConfiguration;
 
 /**
  * Bietet Zugriff auf alle <b>Konfigurationen</b>

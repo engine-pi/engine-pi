@@ -1,0 +1,136 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package pi.config;
+
+import pi.annotations.API;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+
+/**
+ * Represents the graphic configuration settings. This class extends the
+ * ConfigurationGroup to provide specific settings for graphics.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.42.0
+ */
+@ConfigurationGroupInfo(prefix = "coordinatesystem_")
+public class CoordinatesystemConfiguration extends ConfigurationGroup
+{
+    CoordinatesystemConfiguration()
+    {
+        super();
+        // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
+        // „package private“ bleiben, damit die Konfigurationsgruppe nur in
+        // diesem Paket instanziert werden kann.
+        linesNMeter(-1);
+        labelsOnIntersections(false);
+    }
+
+    /* linesNMeter */
+
+    /**
+     * Zeichnet unabhängig vom Zoomfaktor jede <b>n-ten Meter</b> eine
+     * <b>Linie</b> in das Koordinatensystem.
+     */
+    private int linesNMeter;
+
+    /**
+     * Gibt an, auf welchen <b>n-ten Meter</b> eine <b>Linie</b> in das
+     * Koordinatensystem gezeichnet werden soll.
+     *
+     * @return Auf welchen <b>n-ten Meter</b> eine <b>Linie</b> in das
+     *     Koordinatensystem gezeichnet werden soll.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public int linesNMeter()
+    {
+        return linesNMeter;
+    }
+
+    /**
+     * Setzt auf welchen <b>n-ten Meter</b> eine <b>Linie</b> in das
+     * Koordinatensystem gezeichnet werden soll.
+     *
+     * @param linesNMeter Auf welchen <b>n-ten Meter</b> eine <b>Linie</b> in
+     *     das Koordinatensystem gezeichnet werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code coordinateSystem().linesNMeter(..).labelsOnIntersections(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public CoordinatesystemConfiguration linesNMeter(int linesNMeter)
+    {
+        set("linesNMeter", linesNMeter);
+        return this;
+    }
+
+    /* coordinateSystemLabelsEachIntersectionGridLines */
+
+    /**
+     * Zeichne Koordinatenbeschriftungen bei jeder Überschneidung der
+     * Gitterlinien ein.
+     */
+    private boolean labelsOnIntersections = false;
+
+    /**
+     * Gibt
+     *
+     * @return
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public boolean labelsOnIntersections()
+    {
+        return labelsOnIntersections;
+    }
+
+    /**
+     * Setzt
+     *
+     * @param labelsOnIntersections
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code coordinateSystem().linesNMeter(..).labelsOnIntersections(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public CoordinatesystemConfiguration labelsOnIntersections(
+            boolean labelsOnIntersections)
+    {
+        set("labelsOnIntersections", labelsOnIntersections);
+        return this;
+    }
+}

@@ -23,79 +23,74 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 /**
- * This class contains all default {@code ConfigurationGroups} that are provided
- * by the LITIENGINE. Additionally, it can be used to register and manage custom
- * settings that are specific to your game.
+ * Diese Klasse enthält alle Standard-{@link ConfigurationGroup
+ * Konfigurationsgruppen}, die von der Engine Pi bereitgestellt werden.
+ *
+ * <p>
+ * Darüber hinaus kann diese Klasse zum Registrieren und Verwalten von
+ * benutzerdefinierten {@link ConfigurationGroup Konfigurationsgruppen}
+ * verwendet werden.
+ * </p>
  *
  * @see ConfigurationGroup
- * @see ConfigurationLoader#add(ConfigurationGroup)
+ * @see ConfigurationLoader#add(ConfigurationGroup...)
  * @see ConfigurationLoader#getConfigurationGroup(Class)
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
 public class MainConfiguration extends ConfigurationLoader
 {
-    private final GameConfiguration game;
+    public final GameConfiguration game;
 
-    private final GraphicsConfiguration graphics;
+    public final GraphicsConfiguration graphics;
 
-    private final DebugConfiguration debug;
+    public final SoundConfiguration sound;
 
-    private final SoundConfiguration sound;
+    public final DebugConfiguration debug;
+
+    public final CoordinatesystemConfiguration coordinatesystem;
 
     public MainConfiguration(final ConfigurationGroup... groups)
     {
         super(groups);
         game = new GameConfiguration();
         graphics = new GraphicsConfiguration();
-        debug = new DebugConfiguration();
         sound = new SoundConfiguration();
-        getConfigurationGroups().add(game);
-        getConfigurationGroups().add(sound);
-        getConfigurationGroups().add(graphics);
-        getConfigurationGroups().add(debug);
+        debug = new DebugConfiguration();
+        coordinatesystem = new CoordinatesystemConfiguration();
+        add(game, graphics, sound, debug, coordinatesystem);
     }
 
     public GameConfiguration game()
     {
-        return this.game;
+        return game;
     }
 
-    /**
-     * Gets the configuration group with all default graphics settings. Elements
-     * in this group will allow you to adjust the game's rendering behavior.
-     *
-     * @return The graphics configuration.
-     */
     public GraphicsConfiguration graphics()
     {
-        return this.graphics;
+        return graphics;
     }
 
-    /**
-     * Gets the configuration group with all default debugging settings.
-     *
-     * @return The debugging configuration.
-     */
-    public DebugConfiguration debug()
-    {
-        return this.debug;
-    }
-
-    /**
-     * Gets the configuration group with all default sound settings.
-     *
-     * @return The sound configuration.
-     */
     public SoundConfiguration sound()
     {
-        return this.sound;
+        return sound;
+    }
+
+    public DebugConfiguration debug()
+    {
+        return debug;
+    }
+
+    public CoordinatesystemConfiguration coordinatesystem()
+    {
+        return coordinatesystem;
     }
 
     public static void main(String[] args)

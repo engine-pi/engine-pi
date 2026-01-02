@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -47,6 +47,10 @@ public class DebugConfiguration extends ConfigurationGroup
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
         // „package private“ bleiben, damit die Konfigurationsgruppe nur in
         // diesem Paket instanziert werden kann.
+        enabled(false);
+        verbose(false);
+        renderActors(true);
+        showPositions(true);
     }
 
     /* enabled */
@@ -54,7 +58,7 @@ public class DebugConfiguration extends ConfigurationGroup
     /**
      * Ob der Entwicklungsmodus aktiviert werden soll.
      */
-    private boolean enabled = false;
+    private boolean enabled;
 
     /**
      * Gibt zurück, ob der Entwicklungsmodus <b>aktiviert</b> ist oder nicht.
@@ -150,7 +154,7 @@ public class DebugConfiguration extends ConfigurationGroup
      * denn dann werden die Umrisse gezeichnet, jedoch nicht die Füllung.
      * </p>
      */
-    private boolean renderActors = true;
+    private boolean renderActors;
 
     /**
      * Gibt an, ob die <b>Figuren</b> <b>gezeichnet</b> werden sollen.
@@ -192,12 +196,14 @@ public class DebugConfiguration extends ConfigurationGroup
     /**
      * Ob die Ankerpunkte der Figuren gezeichnet werden sollen.
      */
-    private boolean showPositions = false;
+    private boolean showPositions;
 
     /**
-     * Gibt
+     * Gibt die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
+     * werden sollen, zurück.
      *
-     * @return
+     * @return Die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
+     *     werden sollen.
      *
      * @since 0.42.0
      */
@@ -209,24 +215,11 @@ public class DebugConfiguration extends ConfigurationGroup
     }
 
     /**
-     * Schaltet die Einstellung, ob die Ankerpunkte der Figuren gezeichnet
-     * werden sollen, ein oder aus.
+     * Setzt die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
+     * werden sollen.
      *
-     * @return Die Einstellung, ob die Ankerpunkte der Figuren gezeichnet werden
-     *     sollen, nach der Veränderung.
-     */
-    public boolean toogleShowPositions()
-    {
-        showPositions = !showPositions;
-        return showPositions;
-    }
-
-    /* renderActors */
-
-    /**
-     * Setzt
-     *
-     * @param showPositions
+     * @param showPositions Die Einstellung, ob die <b>Ankerpunkte</b> der
+     *     Figuren gezeichnet werden sollen.
      *
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
@@ -243,91 +236,18 @@ public class DebugConfiguration extends ConfigurationGroup
         return this;
     }
 
-    /* coordinateSystemLinesEveryNMeter */
-
     /**
-     * Zeichnet unabhängig vom Zoomfaktor jede n-te Linie in das
-     * Koordinatensystem.
-     */
-    private int coordinateSystemLinesEveryNMeter = -1;
-
-    /**
-     * Gibt
+     * Schaltet die Einstellung, ob die <b>Ankerpunkte</b> der Figuren
+     * gezeichnet werden sollen, ein oder aus.
      *
-     * @return
+     * @return Die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
+     *     werden sollen, nach der Veränderung.
      *
      * @since 0.42.0
      */
-    @Getter
-    @API
-    public int coordinateSystemLinesEveryNMeter()
+    public boolean toogleShowPositions()
     {
-        return coordinateSystemLinesEveryNMeter;
-    }
-
-    /**
-     * Setzt
-     *
-     * @param coordinateSystemLinesEveryNMeter
-     *
-     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
-     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
-     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
-     *
-     * @since 0.42.0
-     */
-    @Setter
-    @API
-    public DebugConfiguration coordinateSystemLinesEveryNMeter(
-            int coordinateSystemLinesEveryNMeter)
-    {
-        set("coordinateSystemLinesEveryNMeter",
-                coordinateSystemLinesEveryNMeter);
-        return this;
-    }
-
-    /* coordinateSystemLabelsEachIntersectionGridLines */
-
-    /**
-     * Zeichne Koordinatenbeschriftungen bei jeder Überschneidung der
-     * Gitterlinien ein.
-     */
-    private boolean coordinateSystemLabelsEachIntersectionGridLines = false;
-
-    /**
-     * Gibt
-     *
-     * @return
-     *
-     * @since 0.42.0
-     */
-    @Getter
-    @API
-    public boolean coordinateSystemLabelsEachIntersectionGridLines()
-    {
-        return coordinateSystemLabelsEachIntersectionGridLines;
-    }
-
-    /**
-     * Setzt
-     *
-     * @param coordinateSystemLabelsEachIntersectionGridLines
-     *
-     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
-     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
-     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
-     *
-     * @since 0.42.0
-     */
-    @Setter
-    @API
-    public DebugConfiguration coordinateSystemLabelsEachIntersectionGridLines(
-            boolean coordinateSystemLabelsEachIntersectionGridLines)
-    {
-        set("coordinateSystemLabelsEachIntersectionGridLines",
-                coordinateSystemLabelsEachIntersectionGridLines);
-        return this;
+        showPositions = !showPositions;
+        return showPositions;
     }
 }

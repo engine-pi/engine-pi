@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 import java.awt.Dimension;
 
@@ -51,6 +51,12 @@ public class GraphicsConfiguration extends ConfigurationGroup
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
         // „package private“ bleiben, damit die Konfigurationsgruppe nur in
         // diesem Paket instanziert werden kann.
+
+        windowWidth(800);
+        windowHeight(600);
+        windowPosition(Direction.NONE);
+        framerate(60);
+        screenRecordingNFrames(2);
     }
 
     /* windowWidth */
@@ -60,7 +66,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      *
      * @since 0.42.0
      */
-    private int windowWidth = 800;
+    private int windowWidth;
 
     /**
      * Gibt die <b>Breite</b> des Fensters in Pixel zurück.
@@ -104,7 +110,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      *
      * @since 0.42.0
      */
-    private int windowHeight = 600;
+    private int windowHeight;
 
     /**
      * Gibt die <b>Höhe</b> des Fensters in Pixel zurück.
@@ -229,7 +235,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      * Die <b>Bildfrequenz</b> (bzw. Bildwechselfrequenz) gibt an, wie viele
      * Einzelbilder pro Sekunde berechnet werden soll.
      */
-    private int framerate = 60;
+    private int framerate;
 
     /**
      * Gibt die <b>Bildfrequenz</b> zurück.
@@ -271,7 +277,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      *
      * @since 0.42.0
      */
-    private int screenRecordingNFrames = 2;
+    private int screenRecordingNFrames;
 
     /**
      * Gibt

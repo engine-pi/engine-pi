@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 /**
  * @author Steffen Wilke
@@ -34,11 +34,6 @@ package pi.configuration;
 @ConfigurationGroupInfo(prefix = "sound_")
 public class SoundConfiguration extends ConfigurationGroup
 {
-
-    private float musicVolume;
-
-    private float soundVolume;
-
     /**
      * Constructs a new SoundConfiguration with default volume settings.
      */
@@ -47,6 +42,10 @@ public class SoundConfiguration extends ConfigurationGroup
         this.setSoundVolume(0.5f);
         this.setMusicVolume(0.5f);
     }
+
+    private float musicVolume;
+
+    private float soundVolume;
 
     /**
      * Gets the current music volume.

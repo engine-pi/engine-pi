@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 import pi.Game;
 import pi.Resources;
@@ -167,17 +167,20 @@ public class ConfigurationLoader
      */
     public List<ConfigurationGroup> getConfigurationGroups()
     {
-        return this.configurationGroups;
+        return configurationGroups;
     }
 
     /**
      * Adds the specified configuration group to the configuration.
      *
-     * @param group The group to add.
+     * @param groups The group to add.
      */
-    public void add(ConfigurationGroup group)
+    public void add(ConfigurationGroup... groups)
     {
-        getConfigurationGroups().add(group);
+        for (ConfigurationGroup group : groups)
+        {
+            configurationGroups.add(group);
+        }
     }
 
     /**
@@ -189,7 +192,7 @@ public class ConfigurationLoader
      */
     public Path getPath()
     {
-        return this.path;
+        return path;
     }
 
     /**

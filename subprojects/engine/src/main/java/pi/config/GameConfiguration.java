@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.configuration;
+package pi.config;
 
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -36,6 +36,7 @@ public class GameConfiguration extends ConfigurationGroup
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
         // „package private“ bleiben, damit die Konfigurationsgruppe nur in
         // diesem Paket instanziert werden kann.
+        instantMode(true);
     }
 
     /* instantMode */
@@ -52,7 +53,7 @@ public class GameConfiguration extends ConfigurationGroup
      *
      * @since 0.42.0
      */
-    public boolean instantMode = true;
+    public boolean instantMode;
 
     /**
      * Gibt zurück, ob der <b>Instant-Modus</b> aktiviert ist oder nicht.

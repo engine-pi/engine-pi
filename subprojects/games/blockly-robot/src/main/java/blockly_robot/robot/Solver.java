@@ -18,7 +18,7 @@ public abstract class Solver<T>
     // Test are falling in Github Actions ?
     // static
     // {
-    //     Game.instantMode(false);
+    // Game.instantMode(false);
     // }
 
     public String taskPath;

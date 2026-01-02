@@ -23,25 +23,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.configuration;
+package pi.config;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import pi.configuration.ConfigurationGroup.ConfigurationChangedListener;
-import pi.util.ReflectionUtil;
 import java.beans.PropertyChangeEvent;
 import java.lang.reflect.Method;
+
 import org.junit.jupiter.api.Test;
+
+import pi.config.ConfigurationGroup.ConfigurationChangedListener;
+import pi.util.ReflectionUtil;
 
 public class ConfigurationGroupTest
 {
     @Test
     void testPropertyChangedGraphicsConfig()
     {
-        this.testConfigurationChanged(new GraphicsConfiguration());
+        this.testConfigurationChanged(new CoordinatesystemConfiguration());
     }
 
     @Test

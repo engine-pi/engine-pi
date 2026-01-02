@@ -14,9 +14,10 @@ public class Main
 
     public static void start(Scene scene, int pixelMultiplication)
     {
-        Configuration.get().debug().enabled(true)
-                .coordinateSystemLinesEveryNMeter(1);
-        Configuration.get().graphics().windowPosition(Direction.RIGHT);
+        Configuration config = Configuration.get();
+        config.debug.enabled(true);
+        config.coordinatesystem.linesNMeter(1);
+        config.graphics.windowPosition(Direction.RIGHT);
         scene.getCamera().setMeter(8);
         // 224 = 28 * 8
         // 288 = 36 * 8
