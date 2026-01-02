@@ -16,11 +16,10 @@ import pi.Game;
  */
 public abstract class Solver<T>
 {
-
-    static
-    {
-        Game.instantMode(false);
-    }
+    // static
+    // {
+    //     Game.instantMode(false);
+    // }
 
     public String taskPath;
 
