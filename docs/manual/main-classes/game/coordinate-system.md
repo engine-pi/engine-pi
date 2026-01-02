@@ -9,3 +9,6 @@ Koordinatensystem an.[^engine-alpha-wiki:zeichnen-grafikfenster]
 [^engine-alpha-wiki:zeichnen-grafikfenster]:
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster#Zeichnen_im_Grafikfenster
+
+
+{{ image('docs/main-classes/game/coordinate-system/coordinate-system.svg') }}

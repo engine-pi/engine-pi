@@ -1,4 +1,4 @@
-# Physics[^engine-alpha-wiki:physics]
+# impluse (Impuls)[^engine-alpha-wiki:physics]
 
 [^engine-alpha-wiki:physics]:
     Der Abschnitt stammt aus dem

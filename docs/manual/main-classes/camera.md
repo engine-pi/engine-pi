@@ -1,29 +1,31 @@
-# `Camera` (Kamera)
+# `Camera` (Kamera)[^engine-alpha]
 
-https://engine-alpha.org/wiki/Tutorials/Kamera
+[^engine-alpha]: https://engine-alpha.org/wiki/Tutorials/Kamera
 
-## Ziel des Tutorials
+<!-- ## Ziel des Tutorials
 
 In diesem Tutorial lernst du,
 
 - wie die Kamera-Struktur den zu zeigenden Ausschnitt der Zeichenebene bestimmt.
 - wie man die Kamera auf der Zeichenebene bewegen kann.
-- wie man Kamerafokus und Kameragrenzen benutzt.
+- wie man Kamerafokus und Kameragrenzen benutzt. -->
 
-## Was ist die Kamera?
+<!-- ## Was ist die Kamera? -->
 
 Spiele wie Pac-Man oder Pong haben einen statischen Bildschirm. Aber bei weit
 mehr Spielen bewegt sich das Bild, geht zum Beispiel mit der Hauptfigur und
 bleibt nicht statisch.
 
-Ich hole mal etwas weiter aus: Die ganze Zeichenebene ist unendlich weit in alle
+<!-- Ich hole mal etwas weiter aus:  -->
+
+Die <!-- ganze--> Zeichenebene ist unendlich weit in alle
 Richtungen, aber das Spielfenster nicht. Es kann also immer nur ein begrenzter
 rechteckiger Bereich der Zeichenebene im Fenster dargestellt werden.
 
 Dieser Bereich wird bestimmt von der Kamera. Die Kamera blickt auf die
-Zeichenebene. Sie "stanzt" ein Rechteck mit den Maßen des Fensters aus und
-projiziert dies auf den Bildschirm. Der Rest der Zeichenebene ist also nicht
-sichtbar.
+Zeichenebene. Sie „schneidet“ <!-- stanzt --> ein Rechteck mit den Maßen des
+Fensters aus und projiziert dies auf den Bildschirm. Der Rest der Zeichenebene
+ist also nicht sichtbar.
 
 ![]()
 /// caption
@@ -102,7 +104,6 @@ Aufruf der folgenden Methode kann man einen Verzug setzen:
 
 public void fokusVerzugSetzen(Vektor verzug)
 
-
 Hierbei wird die Kamera immer um den Verzug vom Zentrum des Fokus-Objektes wegbewegt.
 Kamera ohne Fokus-Verzug. Das Fokus-Objekt ist genau in der Mitte.
 
@@ -129,8 +130,7 @@ gilt:
 Sinnvolle Werte für die Kamera-Bounds sind solche, bei denen die Höhe und Breite
 größer als die des Spielfensters ist.
 
-
-# Es muss sich ja nicht alles verschieben: Statische grafische Objekte
+<!-- # Es muss sich ja nicht alles verschieben: Statische grafische Objekte
 
 Bei einigen grafischen Objekten macht es keinen Sinn, dass sie sich mit der
 Kamera verschieben. Dies sind zum Beispiel:
@@ -152,4 +152,4 @@ spielsteuernden Klasse kannst du auf die statische Wurzel direkt zugreifen. Die
 Referenz dafür heißt statischeWurzel.
 
 Füge hieran einfach alle deine Punkteanzeigen, Spielinformationen etc., von
-denen du nicht willst, dass sie sich mit der Kamera verschieben.
+denen du nicht willst, dass sie sich mit der Kamera verschieben. -->

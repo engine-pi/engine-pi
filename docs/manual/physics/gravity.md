@@ -1,4 +1,4 @@
-# `gravity` Schwerkraft
+# `gravity` (Schwerkraft)
 
 Quellcode: [demos/physics/single_aspects/GravityDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/physics/single_aspects/GravityDemo.java)
 
