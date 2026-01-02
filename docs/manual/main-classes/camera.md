@@ -22,10 +22,10 @@ Die <!-- ganze--> Zeichenebene ist unendlich weit in alle
 Richtungen, aber das Spielfenster nicht. Es kann also immer nur ein begrenzter
 rechteckiger Bereich der Zeichenebene im Fenster dargestellt werden.
 
-Dieser Bereich wird bestimmt von der Kamera. Die Kamera blickt auf die
-Zeichenebene. Sie „schneidet“ <!-- stanzt --> ein Rechteck mit den Maßen des
-Fensters aus und projiziert dies auf den Bildschirm. Der Rest der Zeichenebene
-ist also nicht sichtbar.
+Dieser Bereich wird bestimmt von der {{ class('pi.Camera', 'Kamera') }}. Die
+Kamera blickt auf die Zeichenebene. Sie „schneidet“ <!-- stanzt --> ein Rechteck
+mit den Maßen des Fensters aus und projiziert dies auf den Bildschirm. Der Rest
+der Zeichenebene ist also nicht sichtbar.
 
 ![]()
 /// caption
@@ -45,29 +45,30 @@ Referenz cam erreichbar. -->
 
 ## Verschieben der Kamera
 
-Die Kamera lässt sich einfach verschieben. Hierfür gibt es die selbe Methode,
-wie auch für ein Raum-Objekt:
+Die Kamera lässt sich <!-- einfach --> folgendermaßen verschieben:
+
+<!-- Hierfür gibt es die selbe Methode,
+wie auch für ein Raum-Objekt: -->
 
 ```java
-public void verschieben(Vektor verschiebung)
+public void moveBy(Vektor delta)
 
-public void verschieben(int x, int y)
+public void moveBy(double deltaX, double deltaY)
 ```
 
 Hiermit verschiebt man die Kamera. Im folgenden Beispiel wird die Kamera um
-(2|2) verschoben. Dies ist allerdings eine kaum merkbare Verschiebung. Man kann
+(2|2) verschoben.
+
+<!-- Dies ist allerdings eine kaum merkbare Verschiebung. Man kann
 natürlich auch größere Verschiebungswerte wählen.
 
-Das würde im Spiel so realisiert werden:
+Das würde im Spiel so realisiert werden: -->
 
 ```java
-/*
- * Irgendwo in der spielsteuernden Klasse...
- */
-cam.verschieben(new Vektor(2, 2));
+camera().moveBy(new Vektor(2, 2));
 
-//Oder alternativ:
-cam.verschieben(2, 2);
+// Oder alternativ:
+camera().moveBy(2, 2);
 ```
 
 Die Kamera wurde um (2|2) verschoben...
@@ -79,30 +80,38 @@ Die Kamera lässt sich also mit dieser Methode einfach und beliebig verschieben.
 ## Fokus
 
 Kaum ein Spiel verlangt eine unabhängige Bewegung der Kamera. Fast immer ist ein
-bestimmtes Objekt (in der Regel das, das gesteuert wird) dauerhaft im Fokus.
-Diese Fokus-Funktion steht auch in der Engine Alpha zur Verfügung. Hierfür gibt
-es die folgende Methode:
+bestimmtes Objekt (in der Regel das, das gesteuert wird) dauerhaft im Fokus:
+<!-- Diese Fokus-Funktion steht auch in der Engine Alpha zur Verfügung. Hierfür gibt
+es die folgende Methode: -->
 
-public void fokusSetzen(Raum fokusObjekt)
+```java
+public Camera focus(Actor focus)
+```
 
 Damit übergibt man der Kamera ein neues Fokus-Objekt. Dieses Objekt wird fortan
-immer in der Mitte des Bildes sein. Die Kamera und ein Objekt ohne
+immer in der Mitte des Bildes sein.
+
+<!-- Die Kamera und ein Objekt ohne
 Fokuseinstellung
 
-Das Objekt wurde in den Fokus genommen
+Das Objekt wurde in den Fokus genommen -->
 
 Die Fokuseinstellung lässt sich auch problemlos wieder beenden:
 
-public void fokusLoeschen()
+```java
+public Camera removeFocus()
+```
 
 Zusätzlich kann man das Fokusverhalten spezifizieren:
 
-# Fokus-Verzug
+## `offset` (Fokus-Verzug)
 
 Zum einen muss der Fokus nicht immer exakt im Zentrum des Bildes sein, über den
 Aufruf der folgenden Methode kann man einen Verzug setzen:
 
-public void fokusVerzugSetzen(Vektor verzug)
+```java
+public Camera offset(Vector offset)
+```
 
 Hierbei wird die Kamera immer um den Verzug vom Zentrum des Fokus-Objektes wegbewegt.
 Kamera ohne Fokus-Verzug. Das Fokus-Objekt ist genau in der Mitte.
@@ -111,21 +120,25 @@ Kamera ohne Fokus-Verzug. Das Fokus-Objekt ist genau in der Mitte.
 Bild vom eigentlichen Zentrum (gestrichelt) wegbewegt. Diese Einstellung bietet
 sich z.B. für Jump n' Run-Spiele an
 
-# Kameragrenzen
+## `bounds` (Kameragrenzen)
 
 Auch muss die Kamera dem Fokusobjekt nicht bis ins Nirvana folgen – oder sich
 manuell bis zur Unendlichkeit verschieben lassen; man kann der Kamera eine
 "Grenze" vorschreiben, über die sie niemals gehen wird. Diese Grenze wird als
 BoundingRechteck beschrieben.
 
-public void boundsSetzen(BoundingRechteck grenzen)
+```java
+public Camera bounds(Bounds bounds)
+```
 
-Dieses BoundingRechteck beschreibt die Fläche auf der Zeichenebene, die diese
+Dieses Bounding-Rechteck beschreibt die Fläche auf der Zeichenebene, die diese
 Kamera niemals übertreten wird. Die Grenzen der Kamera müssen natürlich
-ausreichend groß sein. Ein Spielraum mit der Höhe 10 Pixel und der Breite 2000
+ausreichend groß sein.
+
+<!-- Ein Spielraum mit der Höhe 10 Pixel und der Breite 2000
 Pixel funktioniert nicht, denn die Kamera selbst ist ja (im Regelfall) mit einer
 sehr viel größeren Breite (nämlich die des Spielfensters) ausgestattet, daher
-gilt:
+gilt: -->
 
 Sinnvolle Werte für die Kamera-Bounds sind solche, bei denen die Höhe und Breite
 größer als die des Spielfensters ist.

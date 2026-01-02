@@ -17,6 +17,45 @@ Attribute setzt, sind alle Getter- und Setter-Methoden in den javadocs mit den
 Annotationen {{ class('pi.annotations.Getter') }} und {{
 class('pi.annotations.Setter') }} markiert.
 
+Statt
+
+```java
+Circle particle = new Circle(size);
+particle.setBodyType(PARTICLE);
+particle.setLayerPosition(2);
+particle.setColor("red");
+particle.setCenter(1, 1);
+particle.setGravityScale(1);
+particle.setLinearDamping(range(18, 22));
+particle.setLayerPosition(-1);
+```
+
+kann dann geschrieben werden:
+
+```java
+Circle particle = new Circle(size);
+particle.bodyType(PARTICLE);
+particle.layerPosition(2);
+particle.color("red");
+particle.center(1, 1);
+particle.gravityScale(1);
+particle.linearDamping(range(18, 22));
+particle.layerPosition(-1);
+```
+
+Oder in Zusammenhang mit verketteten Methoden:
+
+```java
+Circle particle = new Circle(size);
+particle.bodyType(PARTICLE)
+    .layerPosition(2)
+    .color("red")
+    .center(1, 1)
+    .gravityScale(1)
+    .linearDamping(range(18, 22))
+    .layerPosition(-1);
+```
+
 [^gitconnected]:
     https://levelup.gitconnected.com/are-getters-and-setters-an-anti-pattern-c8cb5625ca8c
 

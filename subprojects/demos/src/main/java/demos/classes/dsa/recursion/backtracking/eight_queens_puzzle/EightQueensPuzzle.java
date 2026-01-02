@@ -20,7 +20,6 @@ import pi.actor.Counter;
  */
 public class EightQueensPuzzle
 {
-
     /**
      * Speichert die bisher gefundenen Lösungen.
      */
@@ -46,7 +45,7 @@ public class EightQueensPuzzle
         queenPositions = new boolean[numberOfQueens][numberOfQueens];
         Scene scene = new Scene();
         scene.setMeter(50);
-        scene.getCamera().center(4, 4);
+        scene.getCamera().moveTo(4, 4);
         chessboard = new Chessboard(scene, numberOfQueens);
         // chessboard.disableHighlighting();
         foundSolutions = new Counter();

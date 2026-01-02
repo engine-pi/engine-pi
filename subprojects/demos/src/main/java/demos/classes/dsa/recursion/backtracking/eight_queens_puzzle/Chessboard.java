@@ -150,7 +150,7 @@ public class Chessboard
     {
         Scene scene = new Scene();
         scene.setMeter(50);
-        scene.getCamera().center(4, 4);
+        scene.getCamera().moveTo(4, 4);
         new Chessboard(scene);
         Game.start(scene);
     }

@@ -387,7 +387,7 @@ public final class Camera
     /**
      * <b>Verschiebt</b> die Kamera um einen bestimmten Vektor (<b>relativ</b>).
      *
-     * @param vector Die Verschiebung als Vektor.
+     * @param delta Die Verschiebung als Vektor.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -395,9 +395,9 @@ public final class Camera
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public Camera moveBy(Vector vector)
+    public Camera moveBy(Vector delta)
     {
-        center = center.add(vector);
+        center = center.add(delta);
         return this;
     }
 
@@ -405,8 +405,8 @@ public final class Camera
      * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in <code>x</code>-
      * und <code>y</code>-Richtung (<b>relativ</b>).
      *
-     * @param x Die Verschiebung in <code>x</code>-Richtung.
-     * @param y Die Verschiebung in <code>y</code>-Richtung.
+     * @param deltaX Die Verschiebung in <code>x</code>-Richtung.
+     * @param deltaY Die Verschiebung in <code>y</code>-Richtung.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -414,9 +414,9 @@ public final class Camera
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public Camera moveBy(double x, double y)
+    public Camera moveBy(double deltaX, double deltaY)
     {
-        moveBy(new Vector(x, y));
+        moveBy(new Vector(deltaX, deltaY));
         return this;
     }
 
@@ -425,7 +425,7 @@ public final class Camera
      * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
      * Koordinaten im Zentrum des Bildes.
      *
-     * @param vector Das neue Zentrum der Kamera.
+     * @param center Das neue Zentrum der Kamera.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -433,9 +433,9 @@ public final class Camera
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
-    public Camera moveTo(Vector vector)
+    public Camera moveTo(Vector center)
     {
-        center = vector;
+        this.center = center;
         return this;
     }
 
