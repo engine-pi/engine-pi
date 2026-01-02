@@ -1,12 +1,18 @@
 package blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_destination;
 
 import blockly_robot.robot.Solver;
+import pi.Game;
 
 /**
  * https://jwinf.de/task/1157
  */
 public class TaskSolver extends Solver<Robot>
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     /**
      * <p>
      * Screenshot des Originals:
