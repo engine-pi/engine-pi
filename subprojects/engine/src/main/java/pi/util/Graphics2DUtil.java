@@ -10,6 +10,7 @@ import java.awt.RenderingHints;
 import pi.Circle;
 import pi.Game;
 import pi.Scene;
+import pi.Vector;
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden um auf dem Graphics2D-Objekt zu
@@ -195,6 +196,63 @@ public class Graphics2DUtil
         g.setColor(color);
         g.drawLine(x1, y1, x2, y2);
         g.fillPolygon(xPoints, yPoints, 3);
+    }
+
+    public static void drawLine(Graphics2D g, Vector from, Vector to)
+    {
+        drawLine(g, from, to, 1);
+    }
+
+    public static void drawLine(Graphics2D g, Vector from, Vector to,
+            double pixelPerMeter)
+    {
+        g.drawLine(from.getX(pixelPerMeter), from.getY(pixelPerMeter),
+                to.getX(pixelPerMeter), to.getY(pixelPerMeter));
+    }
+
+    /**
+     * Zeichnet an ein Ende der Linie ein Dreieck als Pfeilspitze.
+     *
+     * <p>
+     * Die Pfeilspitze wird als <a href=
+     * "https://de.wikipedia.org/wiki/Gleichschenkliges_Dreieck">Gleichschenkliges
+     * Dreieck</a> unter Verwendung der {@link Vector}-Klasse eingezeichnet.
+     * </p>
+     *
+     * <p>
+     * Die beiden gleich langen Seiten heißen Schenkel (legs), die dritte Seite
+     * heißt Basis (base). Der der Basis gegenüberliegende Winkel heißt γ =
+     * gamma (vertex angle). Die an der Basis anliegenden Winkel heißen
+     * Basiswinkel.
+     * </p>
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param from Der Ursprung der Line in Pixel.
+     * @param to An diesen Punkt wird die Pfeilspitze platziert (in Pixel)
+     * @param legsLength Die Länge der Schenkel (legs) des gleichseitigen
+     *     Dreiecks in Pixel.
+     * @param vertexAngle Der Winkel der Pfeilspitze in Grad (γ = gamma wird der
+     *     Winkel genannt, der an der Spitze des gleichschenkligen Dreiecks
+     *     liegt)
+     */
+    public static void drawArrow(Graphics2D g, Vector from, Vector to,
+            int legsLength, int vertexAngle)
+    {
+        // C ist die Spitze des gleichschenkligen Dreiecks.
+        Vector C = to;
+
+        // Winkel der Line zur x-Achse
+        double direction = from.add(to).getAngle();
+
+        System.out.println(direction);
+
+        Vector A = to.add(Vector.ofAngle(direction - vertexAngle / 2 - 180)
+                .multiply(legsLength));
+        Vector B = to.add(Vector.ofAngle(direction + vertexAngle / 2 - 180)
+                .multiply(legsLength));
+
+        drawLine(g, C, A);
+        drawLine(g, C, B);
     }
 
     /**

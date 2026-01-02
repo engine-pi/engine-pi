@@ -121,39 +121,39 @@ public class CompassBox extends LeafBox
         Vector center = center();
         double radius = radius();
 
-        // Graphics2D hat einen andere Drehrichtung als die Engine Pi
-        double normalizeDirection = -direction;
+        // Graphics2D hat einen andere Drehrichtung als die Engine Pi.
+        double normalizedDirection = -direction;
 
         if (showOuterCircle)
         {
-            // Der äußere Kreis
+            // Der äußere Kreis.
             g.drawOval(x, y, size, size);
         }
         if (showCenter)
         {
-            // Kleiner Kreis als Mittelpunkt
+            // Kleiner Kreis als Mittelpunkt.
             g.drawOval(center.getX(1) - 1, center.getY(1) - 1, 2, 2);
         }
-        // Ursprung des Pfeils
-        Vector from = center
-                .add(Vector.ofAngle(normalizeDirection - 180).multiply(radius));
+        // Ursprung des Pfeils.
+        Vector from = center.add(
+                Vector.ofAngle(normalizedDirection - 180).multiply(radius));
 
-        // Punkt der in bestimmte Richtung auf dem Einheitskreis zeigt.
-        Vector toUnionCircle = Vector.ofAngle(normalizeDirection);
+        // Punkt, der in eine bestimmte Richtung auf dem Einheitskreis zeigt.
+        Vector toUnionCircle = Vector.ofAngle(normalizedDirection);
 
         // Endpunkt des Pfeils, wo die Pfeilspitze sitzt.
         Vector to = center.add(toUnionCircle.multiply(radius));
 
-        // Die Mitte der Basis des Pfeildreiecks
+        // Die Mitte der Basis des Pfeildreiecks.
         Vector arrowBase = center
                 .add(toUnionCircle.multiply(radius * (1 - arrowHeight * 2)));
 
         double halfArrowBase = (double) radius * arrowWidth;
 
-        Vector arrowLeft = arrowBase.add(Vector.ofAngle(normalizeDirection - 90)
-                .multiply(halfArrowBase));
+        Vector arrowLeft = arrowBase.add(Vector
+                .ofAngle(normalizedDirection - 90).multiply(halfArrowBase));
         Vector arrowRight = arrowBase.add(Vector
-                .ofAngle(normalizeDirection + 90).multiply(halfArrowBase));
+                .ofAngle(normalizedDirection + 90).multiply(halfArrowBase));
 
         // Die Spitze des Kompasspfeils als Dreieck gezeichnet.
         g.fillPolygon(
@@ -162,7 +162,7 @@ public class CompassBox extends LeafBox
                 new int[]
                 { arrowLeft.getY(1), to.getY(1), arrowRight.getY(1) }, 3);
 
-        // Die Line des Compasspfeils
+        // Die Line des Kompasspfeils.
         g.drawLine(from.getX(1), from.getY(1), to.getX(1), to.getY(1));
     }
 

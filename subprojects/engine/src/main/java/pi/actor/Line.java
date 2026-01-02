@@ -9,6 +9,7 @@ import pi.Game;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
+import pi.util.Graphics2DUtil;
 
 /**
  * Eine <b>Linie</b> zwischen zwei Punkten.
@@ -77,8 +78,11 @@ public class Line extends Actor
                 BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
         g.setStroke(stroke);
         g.setColor(getColor());
-        g.drawLine(point1.getX(pixelPerMeter), point1.getY(pixelPerMeter),
-                point2.getX(pixelPerMeter), point2.getY(pixelPerMeter));
+
+        Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
+
+        Graphics2DUtil.drawArrow(g, point1.multiply(pixelPerMeter),
+                point2.multiply(pixelPerMeter), 50, 30);
         g.setTransform(at);
         g.setStroke(oldStroke);
     }

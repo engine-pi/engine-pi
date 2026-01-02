@@ -38,7 +38,7 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     public CameraDemo()
     {
         info("Kamera-Demo").description(
-                "Die Camera bewegt sich in die Richtung, die der Mitte des Fenster bis zur Mauszeigerspitze bildet.");
+                "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.");
         camera = getCamera();
         Image background = new Image("main-classes/camera/Fez.png", 32);
         background.setCenter(0, 0);
@@ -65,5 +65,4 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         Game.instantMode(false);
         Game.start(new CameraDemo());
     }
-
 }
