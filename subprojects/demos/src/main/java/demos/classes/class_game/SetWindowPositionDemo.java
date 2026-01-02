@@ -23,7 +23,6 @@ import java.awt.event.KeyEvent;
 import pi.Direction;
 import pi.Game;
 import pi.Scene;
-import pi.debug.DebugConfiguration;
 
 /**
  * Demonstriert die Methode {@link pi.Game#setWindowPosition(int, int)}
@@ -32,7 +31,7 @@ public class SetWindowPositionDemo
 {
     public static void main(String[] args)
     {
-        DebugConfiguration.windowPosition = Direction.UP_LEFT;
+        Game.setWindowPosition(Direction.UP_LEFT);
         Game.start(new Scene());
         Game.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())

@@ -3,9 +3,10 @@ package pi.event;
 import java.awt.event.KeyEvent;
 
 import pi.Camera;
+import pi.Configuration;
 import pi.Game;
 import pi.Scene;
-import pi.debug.DebugConfiguration;
+import pi.configuration.DebugConfiguration;
 
 /**
  * Registriert im Auslieferungszustand einige wenige <b>grundlegenden Maus- und
@@ -46,6 +47,8 @@ import pi.debug.DebugConfiguration;
 public class DefaultControl implements DefaultListener
 {
     private static final double CAMERA_SPEED = 7.0;
+
+    private DebugConfiguration config = Configuration.get().debug();
 
     private Camera getCamera()
     {
@@ -101,7 +104,7 @@ public class DefaultControl implements DefaultListener
             {
             case KeyEvent.VK_A -> Game.toggleRenderActors();
             case KeyEvent.VK_D -> Game.toggleDebug();
-            case KeyEvent.VK_P -> DebugConfiguration.toogleShowPositions();
+            case KeyEvent.VK_P -> config.toogleShowPositions();
             case KeyEvent.VK_S -> Game.takeScreenshot();
             case KeyEvent.VK_R -> Game.recordScreen();
             case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);

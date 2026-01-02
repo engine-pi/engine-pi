@@ -23,7 +23,6 @@ import java.util.TimerTask;
 
 import pi.Configuration;
 import pi.Game;
-import pi.debug.DebugConfiguration;
 import pi.util.FileUtil;
 
 /**
@@ -49,7 +48,7 @@ class VideoTask extends PhotoshootingTask
 
     VideoTask()
     {
-        this(DebugConfiguration.screenRecordingNFrames);
+        this(Configuration.get().graphics().screenRecordingNFrames());
     }
 
     VideoTask(int nFrames)

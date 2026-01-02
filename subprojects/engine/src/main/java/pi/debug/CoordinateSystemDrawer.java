@@ -18,15 +18,19 @@
  */
 package pi.debug;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.geom.AffineTransform;
+
 import pi.Camera;
+import pi.Configuration;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.annotations.Internal;
-
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.geom.AffineTransform;
+import pi.configuration.DebugConfiguration;
 
 /**
  * Zeichnet das <b>Koordinatensystem</b>.
@@ -128,6 +132,8 @@ public final class CoordinateSystemDrawer
      */
     private int stopY;
 
+    private DebugConfiguration config;
+
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
      *
@@ -143,6 +149,8 @@ public final class CoordinateSystemDrawer
         this.g = g;
         this.width = width;
         this.height = height;
+
+        config = Configuration.get().debug();
         pre = g.getTransform();
         Camera camera = scene.getCamera();
         center = camera.getCenter();
@@ -157,9 +165,9 @@ public final class CoordinateSystemDrawer
         g.rotate(Math.toRadians(rotation), 0, 0);
         g.translate(-center.getX() * pixelPerMeter,
                 center.getY() * pixelPerMeter);
-        if (DebugConfiguration.coordinateSystemLinesEveryNMeter > 0)
+        if (config.coordinateSystemLinesEveryNMeter() > 0)
         {
-            gridSizeInMeters = DebugConfiguration.coordinateSystemLinesEveryNMeter;
+            gridSizeInMeters = config.coordinateSystemLinesEveryNMeter();
         }
         else
         {
@@ -387,7 +395,7 @@ public final class CoordinateSystemDrawer
             drawHorizontalLines();
             drawHorizontalCoordinateLabels();
             drawVerticalCoordinateLabels();
-            if (DebugConfiguration.coordinateSystemLabelsEachIntersectionGridLines)
+            if (config.coordinateSystemLabelsEachIntersectionGridLines())
             {
                 drawCoordinateLabels();
             }
@@ -400,18 +408,14 @@ public final class CoordinateSystemDrawer
         Game.debug();
         Scene scene = Game.start();
         scene.addKeyStrokeListener((event) -> {
+            DebugConfiguration config = Configuration.get().debug();
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 ->
-                DebugConfiguration.coordinateSystemLinesEveryNMeter = 1;
-            case KeyEvent.VK_2 ->
-                DebugConfiguration.coordinateSystemLinesEveryNMeter = 2;
-            case KeyEvent.VK_3 ->
-                DebugConfiguration.coordinateSystemLinesEveryNMeter = 3;
-            case KeyEvent.VK_4 ->
-                DebugConfiguration.coordinateSystemLinesEveryNMeter = 4;
-            case KeyEvent.VK_5 ->
-                DebugConfiguration.coordinateSystemLinesEveryNMeter = 5;
+            case KeyEvent.VK_1 -> config.coordinateSystemLinesEveryNMeter(1);
+            case KeyEvent.VK_2 -> config.coordinateSystemLinesEveryNMeter(2);
+            case KeyEvent.VK_3 -> config.coordinateSystemLinesEveryNMeter(3);
+            case KeyEvent.VK_4 -> config.coordinateSystemLinesEveryNMeter(4);
+            case KeyEvent.VK_5 -> config.coordinateSystemLinesEveryNMeter(5);
             }
         });
     }

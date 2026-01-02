@@ -54,7 +54,6 @@ import pi.animation.interpolation.EaseInOutDouble;
 import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.debug.DebugConfiguration;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.EventListenerBundle;
@@ -845,7 +844,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        if (DebugConfiguration.showPositions)
+        if (Configuration.get().debug().showPositions())
         {
             Graphics2DUtil.drawText(g, actor.getPositionformatted(), 8, 5, 5);
         }

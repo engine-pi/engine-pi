@@ -30,6 +30,16 @@ import pi.annotations.Setter;
 @ConfigurationGroupInfo(prefix = "game_")
 public class GameConfiguration extends ConfigurationGroup
 {
+    GameConfiguration()
+    {
+        super();
+        // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
+        // „package private“ bleiben, damit die Konfigurationsgruppe nur in
+        // diesem Paket instanziert werden kann.
+    }
+
+    /* instantMode */
+
     /**
      * Im sogenannten <b>Instant-Modus</b> werden die erzeugten Figuren
      * <b>sofort</b> einer Szene hinzugefügt und diese Szene wird dann umgehend

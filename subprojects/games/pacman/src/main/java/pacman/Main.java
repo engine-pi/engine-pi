@@ -1,9 +1,9 @@
 package pacman;
 
+import pi.Configuration;
 import pi.Direction;
 import pi.Game;
 import pi.Scene;
-import pi.debug.DebugConfiguration;
 
 public class Main
 {
@@ -14,9 +14,9 @@ public class Main
 
     public static void start(Scene scene, int pixelMultiplication)
     {
-        DebugConfiguration.enableDebugMode = true;
-        DebugConfiguration.coordinateSystemLinesEveryNMeter = 1;
-        DebugConfiguration.windowPosition = Direction.RIGHT;
+        Configuration.get().debug().enabled(true)
+                .coordinateSystemLinesEveryNMeter(1);
+        Configuration.get().graphics().windowPosition(Direction.RIGHT);
         scene.getCamera().setMeter(8);
         // 224 = 28 * 8
         // 288 = 36 * 8

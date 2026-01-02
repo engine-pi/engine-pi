@@ -40,7 +40,7 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.configuration.GameConfiguration;
 import pi.configuration.GraphicsConfiguration;
-import pi.debug.DebugConfiguration;
+import pi.configuration.DebugConfiguration;
 import pi.debug.MainAnimation;
 import pi.event.DefaultControl;
 import pi.event.DefaultListener;
@@ -93,6 +93,8 @@ public class Controller
 
     private static final GraphicsConfiguration graphicsConfig = config
             .graphics();
+
+    private static final DebugConfiguration debugConfig = config.debug();
 
     /**
      * Eigentliches Fenster des Spiels.
@@ -230,9 +232,9 @@ public class Controller
         // pack() already allows to create the buffer strategy for rendering
         // (but not on Windows?)
         frame.pack();
-        if (DebugConfiguration.windowPosition != Direction.NONE)
+        if (graphicsConfig.windowPosition() != Direction.NONE)
         {
-            Controller.setWindowPosition(DebugConfiguration.windowPosition);
+            Controller.setWindowPosition(graphicsConfig.windowPosition());
         }
         else
         {
@@ -793,8 +795,6 @@ public class Controller
      *     <li>{@link Direction#UP_LEFT}: oben links</li>
      *     <li>{@link Direction#NONE}: mittig</li>
      *     </ul>
-     *
-     * @see DebugConfiguration#windowPosition
      */
     public static void setWindowPosition(Direction direction)
     {
@@ -935,7 +935,7 @@ public class Controller
     @API
     public static void setDebug(boolean value)
     {
-        DebugConfiguration.enableDebugMode = value;
+        debugConfig.enabled(value);
     }
 
     /**
@@ -949,7 +949,7 @@ public class Controller
     @API
     public static boolean isDebug()
     {
-        return DebugConfiguration.enableDebugMode;
+        return debugConfig.enabled();
     }
 
     /**
@@ -970,7 +970,7 @@ public class Controller
     @API
     public static void debug()
     {
-        DebugConfiguration.enableDebugMode = true;
+        debugConfig.enabled(true);
     }
 
     /**
@@ -981,7 +981,7 @@ public class Controller
     @API
     public static void setRenderActors(boolean value)
     {
-        DebugConfiguration.renderActors = value;
+        debugConfig.renderActors(value);
     }
 
     /**
@@ -992,7 +992,7 @@ public class Controller
     @API
     public static boolean getRenderActors()
     {
-        return DebugConfiguration.renderActors;
+        return debugConfig.renderActors();
     }
 
     /**
@@ -1016,7 +1016,7 @@ public class Controller
     @API
     public static boolean isVerbose()
     {
-        return DebugConfiguration.verbose;
+        return debugConfig.verbose();
     }
 
     /**
@@ -1033,7 +1033,7 @@ public class Controller
     @API
     public static void setVerbose(boolean value)
     {
-        DebugConfiguration.verbose = value;
+        debugConfig.verbose(value);
     }
 
     /**
