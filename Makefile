@@ -42,9 +42,9 @@ assets_init:
 	git submodule update
 
 assets_sync_resources:
-	rsync -av --delete assets/blockly-robot/resources subprojects/games/blockly-robot/src/main
-	rsync -av --delete assets/pacman/resources subprojects/games/pacman/src/main
-	rsync -av --delete assets/tetris/resources subprojects/games/tetris/src/main
+	rsync -av --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/
+	rsync -av --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
+	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 
 assets: assets_init assets_sync_resources
 .PHONY: assets
