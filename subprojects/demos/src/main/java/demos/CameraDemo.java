@@ -58,8 +58,8 @@ public class CameraDemo extends Scene
 
     private void moveFocus(int dX, int dY)
     {
-        camera.setFocus(focus);
         focus.moveBy(dX, dY);
+        camera.setFocus(focus);
     }
 
     @Override
@@ -86,6 +86,7 @@ public class CameraDemo extends Scene
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new CameraDemo());
     }
 }
