@@ -140,9 +140,10 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
-        text.setPosition(-10, 8.5);
+        text.setPosition(-10, 8.2);
         text.setColor("gray");
         text.makeStatic();
+        text.setDensity(0.1);
         add(text);
     }
 
@@ -264,6 +265,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
 
     public static void main(String[] args) throws IOException
     {
+        Game.instantMode(false);
         Game.start(new MainAnimation(false));
         Game.recordScreen(20);
         Game.setTitle("Engine Pi " + Version.getVersion());

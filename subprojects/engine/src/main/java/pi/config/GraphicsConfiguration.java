@@ -52,8 +52,10 @@ public class GraphicsConfiguration extends ConfigurationGroup
         // „package private“ bleiben, damit die Konfigurationsgruppe nur in
         // diesem Paket instanziert werden kann.
 
-        windowWidth(800);
-        windowHeight(600);
+        // 32 * 24 = 768
+        windowWidth(768);
+        // 32 * 18 = 576
+        windowHeight(576);
         windowPosition(Direction.NONE);
         framerate(60);
         screenRecordingNFrames(2);
