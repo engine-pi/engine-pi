@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://engine-pi.github.io/engine-pi/manual/main-classes/actor/turtle/" rel="canonical"/>
+<link href="../hello-world/" rel="prev"/>
+<link href="../image-font/" rel="next"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Turtle (Schildkröte) - Engine Pi</title>
+<link href="../../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Cantarell:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Cantarell";--md-code-font:"Ubuntu Mono"}</style>
+<link href="../../../../_assets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#turtle-schildkrote">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Engine Pi" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="Engine Pi">
+<img alt="logo" src="../../../../_assets/logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Engine Pi
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Turtle (Schildkröte)
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/engine-pi/engine-pi" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    Engine Pi
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Engine Pi" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="Engine Pi">
+<img alt="logo" src="../../../../_assets/logo.svg"/>
+</a>
+    Engine Pi
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/engine-pi/engine-pi" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    Engine Pi
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Handbuch
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Handbuch
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Hauptklassen
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Hauptklassen
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_1_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Actor (Figur)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1_2" id="__nav_1_1_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_1_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Actor (Figur)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hello-world/">
+<span class="md-ellipsis">
+    
+  
+    Hello World
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Turtle (Schildkröte)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../image-font/">
+<span class="md-ellipsis">
+    
+  
+    ImageFont (Bilderschriftart)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stateful-animation/">
+<span class="md-ellipsis">
+    
+  
+    Stateful Animation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../scene/">
+<span class="md-ellipsis">
+    
+  
+    Scene (Szene)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../camera/">
+<span class="md-ellipsis">
+    
+  
+    Camera (Kamera)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../layer/">
+<span class="md-ellipsis">
+    
+  
+    Layer (Ebene)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_1_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../game/">
+<span class="md-ellipsis">
+    
+  
+    Game (Spiel)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1_6" id="__nav_1_1_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_1_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Game (Spiel)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../game/game-loop/">
+<span class="md-ellipsis">
+    
+  
+    Game Loop
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../game/coordinate-system/">
+<span class="md-ellipsis">
+    
+  
+    Koordinatensystem
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../game/dialog/">
+<span class="md-ellipsis">
+    
+  
+    Game.dialog (Dialogfenster)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../events/">
+<span class="md-ellipsis">
+    
+  
+    events (Ereignissteuerung)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    events (Ereignissteuerung)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../events/key-stroke-listener/">
+<span class="md-ellipsis">
+    
+  
+    KeyStrokeListener (Tastatureingabe)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../events/mouse-click-listener/">
+<span class="md-ellipsis">
+    
+  
+    MouseClickListener (Mauseingaben)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../events/collision-listener/">
+<span class="md-ellipsis">
+    
+  
+    CollisionListener (Kollisionen-Erkennung)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../events/repeat/">
+<span class="md-ellipsis">
+    
+  
+    Repeat
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../events/shortcuts/">
+<span class="md-ellipsis">
+    
+  
+    shortcuts (Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../physics/">
+<span class="md-ellipsis">
+    
+  
+    physics (Physiksimulation)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    physics (Physiksimulation)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../physics/gravity/">
+<span class="md-ellipsis">
+    
+  
+    gravity (Schwerkraft)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../physics/density/">
+<span class="md-ellipsis">
+    
+  
+    density (Dichte)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../physics/elasticity/">
+<span class="md-ellipsis">
+    
+  
+    elasticity (Elastizität)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../physics/impulse/">
+<span class="md-ellipsis">
+    
+  
+    impluse (Impuls)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../resources/">
+<span class="md-ellipsis">
+    
+  
+    Ressourcenverwaltung
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Ressourcenverwaltung
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../resources/colors/">
+<span class="md-ellipsis">
+    
+  
+    colors (Farben)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../resources/fonts/">
+<span class="md-ellipsis">
+    
+  
+    fonts (Schriftarten)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../resources/images/">
+<span class="md-ellipsis">
+    
+  
+    images (Bilder)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../resources/sounds/">
+<span class="md-ellipsis">
+    
+  
+    sounds (Klänge)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../java/">
+<span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../java/packages/">
+<span class="md-ellipsis">
+    
+  
+    packages (Pakete)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://engine-pi.github.io/javadocs/pi/package-summary.html">
+<span class="md-ellipsis">
+    
+  
+    API (javadocs)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../../dev/">
+<span class="md-ellipsis">
+    
+  
+    Entwicklung
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwicklung
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/design/">
+<span class="md-ellipsis">
+    
+  
+    design (Optisches Erscheinungsbild)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/coding-style/">
+<span class="md-ellipsis">
+    
+  
+    coding style (Programmierstil)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/javadoc/">
+<span class="md-ellipsis">
+    
+  
+    javadoc (API-Dokumentation)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/mkdocs/">
+<span class="md-ellipsis">
+    
+  
+    mkdocs (Dokumentationsseite)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../dev/setter-getter/">
+<span class="md-ellipsis">
+    
+  
+    Getter und Setter ohne get and set Präfix
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../download/">
+<span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/engine-pi/engine-pi/edit/main/docs/manual/main-classes/actor/turtle.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="turtle-schildkrote"><code>Turtle</code> (Schildkröte)</h1>
+<figure>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 5, "resize": "1", "edit": "_blank", "highlight": null, "url": "https://raw.githubusercontent.com/engine-pi/engine-pi/refs/heads/main/docs/drawio/Class-diagram_Package_dsa.turtle.drawio"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<figcaption>
+<p>Klassen im Paket <code>pi.dsa.turtle</code></p>
+</figcaption>
+</figure>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Hello World" class="md-footer__link md-footer__link--prev" href="../hello-world/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Hello World
+              </div>
+</div>
+</a>
+<a aria-label="Next: ImageFont (Bilderschriftart)" class="md-footer__link md-footer__link--next" href="../image-font/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                ImageFont (Bilderschriftart)
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.indexes", "navigation.footer", "content.code.copy", "content.code.select", "content.action.edit"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.41.0"}</script>
+<script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>
