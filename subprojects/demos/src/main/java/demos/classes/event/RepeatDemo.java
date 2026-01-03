@@ -38,7 +38,7 @@ public class RepeatDemo extends Scene
 {
     public RepeatDemo()
     {
-        setBackgroundColor("white");
+        backgroundColor("white");
         add(new CounterText());
     }
 

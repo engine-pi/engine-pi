@@ -25,7 +25,7 @@ abstract class ActorBaseScene extends Scene
 {
     public ActorBaseScene()
     {
-        setGravityOfEarth();
+        gravityOfEarth();
         Rectangle ground = new Rectangle(20, 1);
         ground.setPosition(-10, -8);
         ground.makeStatic();

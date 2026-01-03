@@ -148,7 +148,7 @@ public class ForceKlickEnvironment extends Scene implements
         attack.setLayerPosition(-10);
         // Maus erstellen, Listener Anmelden.
         attack.addCollisionListener(this);
-        getKeyStrokeListeners().add(e -> {
+        keyStrokeListeners().add(e -> {
             if (e.getKeyCode() == KeyEvent.VK_E)
             {
                 boolean wasActive = walls[1].isVisible();
@@ -165,7 +165,7 @@ public class ForceKlickEnvironment extends Scene implements
         add(links, rechts, oben);
         add(stab);
         add(atv);
-        getCamera().meter(1);
+        camera().meter(1);
     }
 
     /**
@@ -221,7 +221,7 @@ public class ForceKlickEnvironment extends Scene implements
         // Visualisiere ggf. die Vectorstange
         if (klickMode == KlickMode.DIRECTION_INTENSITY)
         {
-            Vector currentMousePos = getMousePosition();
+            Vector currentMousePos = mousePosition();
             if (lastAttack == null)
             {
                 return;

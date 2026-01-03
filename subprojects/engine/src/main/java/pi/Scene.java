@@ -35,7 +35,9 @@ import java.util.function.Function;
 import pi.actor.Actor;
 import pi.actor.ActorAdder;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.event.FrameUpdateListenerRegistration;
@@ -122,7 +124,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         camera = new Camera();
         mainLayer = new Layer();
-        mainLayer.setLayerPosition(0);
+        mainLayer.layerPosition(0);
         addLayer(mainLayer);
         EventListeners.registerListeners(this);
     }
@@ -170,7 +172,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die Szene selbst.
      */
-    public Scene getScene()
+    @Getter
+    public Scene scene()
     {
         return this;
     }
@@ -181,7 +184,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @return Die Hauptebene dieser Szene.
      */
     @API
-    public Layer getMainLayer()
+    @Getter
+    public Layer mainLayer()
     {
         return mainLayer;
     }
@@ -293,7 +297,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     final void sortLayers()
     {
-        layers.sort(Comparator.comparingInt(Layer::getLayerPosition));
+        layers.sort(Comparator.comparingInt(Layer::layerPosition));
     }
 
     /**
@@ -306,7 +310,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         synchronized (this.layers)
         {
-            layer.setParent(this);
+            layer.parent(this);
             layers.add(layer);
             sortLayers();
         }
@@ -321,7 +325,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         synchronized (this.layers)
         {
             layers.remove(layer);
-            layer.setParent(null);
+            layer.parent(null);
         }
     }
 
@@ -335,9 +339,10 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see Game#getWindowSize()
      */
     @API
-    public Bounds getVisibleArea(Vector gameSizeInPixels)
+    @Getter
+    public Bounds visibleArea(Vector gameSizeInPixels)
     {
-        return mainLayer.getVisibleArea(gameSizeInPixels);
+        return mainLayer.visibleArea(gameSizeInPixels);
     }
 
     /**
@@ -350,9 +355,10 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @since 0.42.0
      */
     @API
-    public Bounds getVisibleArea()
+    @Getter
+    public Bounds visibleArea()
     {
-        return mainLayer.getVisibleArea(Game.getWindowSize());
+        return mainLayer.visibleArea(Game.getWindowSize());
     }
 
     /**
@@ -361,7 +367,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @return Die <b>Kamera</b> der Szene.
      */
     @API
-    public final Camera getCamera()
+    @Getter
+    public final Camera camera()
     {
         return camera;
     }
@@ -388,7 +395,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see Camera#meter(double)
      */
     @API
-    public void setMeter(double pixelCount)
+    @Setter
+    public void meter(double pixelCount)
     {
         camera.meter(pixelCount);
     }
@@ -412,7 +420,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param focus Die Figur, die fokussiert werden soll.
      */
     @API
-    public void setFocus(Actor focus)
+    @Setter
+    public void focus(Actor focus)
     {
         camera.focus(focus);
     }
@@ -426,7 +435,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         // Display Joints
         for (Layer layer : layers)
         {
-            Joint j = layer.getWorldHandler().getWorld().getJointList();
+            Joint j = layer.worldHandler().getWorld().getJointList();
             while (j != null)
             {
                 renderJoint(j, g, layer);
@@ -509,7 +518,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     public final WorldHandler getWorldHandler()
     {
-        return mainLayer.getWorldHandler();
+        return mainLayer.worldHandler();
     }
 
     /**
@@ -519,9 +528,10 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @return Die Schwerkraft, die momentan auf die Hauptebene wirkt, als
      *     Vektor in <b>[N]</b> bzw. <b>[m/s^2]</b>.
      */
-    public Vector getGravity()
+    @Getter
+    public Vector gravity()
     {
-        return mainLayer.getGravity();
+        return mainLayer.gravity();
     }
 
     /**
@@ -531,9 +541,9 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
      *     <b>[N]</b>.
      *
-     * @see #setGravity(double, double)
-     * @see Layer#setGravity(Vector)
-     * @see Layer#setGravity(double, double)
+     * @see #gravity(double, double)
+     * @see Layer#gravity(Vector)
+     * @see Layer#gravity(double, double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a>
@@ -542,9 +552,10 @@ public class Scene implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
-    public void setGravity(Vector gravity)
+    @Setter
+    public void gravity(Vector gravity)
     {
-        mainLayer.setGravity(gravity);
+        mainLayer.gravity(gravity);
     }
 
     /**
@@ -557,9 +568,9 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
      *     Einheit ist <b>[N]</b>.
      *
-     * @see #setGravity(Vector)
-     * @see Layer#setGravity(Vector)
-     * @see Layer#setGravity(double, double)
+     * @see #gravity(Vector)
+     * @see Layer#gravity(Vector)
+     * @see Layer#gravity(double, double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a> @box2d
@@ -567,21 +578,23 @@ public class Scene implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
-    public void setGravity(double gravityX, double gravityY)
+    @Setter
+    public void gravity(double gravityX, double gravityY)
     {
-        setGravity(new Vector(gravityX, gravityY));
+        gravity(new Vector(gravityX, gravityY));
     }
 
     /**
      * Setzt die Schwerkraft, die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
      * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
      *
-     * @see Layer#setGravityOfEarth
+     * @see Scene#gravityOfEarth()
      */
     @API
-    public void setGravityOfEarth()
+    @Setter
+    public void gravityOfEarth()
     {
-        setGravity(0, -9.81);
+        gravity(0, -9.81);
     }
 
     /**
@@ -595,9 +608,10 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see #isPhysicsPaused()
      */
     @API
-    public void setPhysicsPaused(boolean worldPaused)
+    @Setter
+    public void physicsPaused(boolean worldPaused)
     {
-        mainLayer.getWorldHandler().setWorldPaused(worldPaused);
+        mainLayer.worldHandler().setWorldPaused(worldPaused);
     }
 
     /**
@@ -606,12 +620,12 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @return <code>true</code>: Die Physik ist pausiert. <code>false</code>:
      *     Die Physik ist nicht pausiert.
      *
-     * @see #setPhysicsPaused(boolean)
+     * @see #physicsPaused(boolean)
      */
     @API
     public boolean isPhysicsPaused()
     {
-        return mainLayer.getWorldHandler().isWorldPaused();
+        return mainLayer.worldHandler().isWorldPaused();
     }
 
     /**
@@ -671,15 +685,16 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @since 0.37.0
      *
-     * @see Layer#getActors()
-     * @see #getAddedActors()
+     * @see Layer#actors()
+     * @see #addedActors()
      */
-    public List<Actor> getActors()
+    @Getter
+    public List<Actor> actors()
     {
         ArrayList<Actor> actors = new ArrayList<>();
         for (Layer layer : layers)
         {
-            actors.addAll(layer.getActors());
+            actors.addAll(layer.actors());
         }
         return actors;
     }
@@ -695,15 +710,16 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @since 0.37.0
      *
-     * @see Layer#getAddedActors()
-     * @see #getActors()
+     * @see Layer#addedActors()
+     * @see #actors()
      */
-    public List<Actor> getAddedActors()
+    @Getter
+    public List<Actor> addedActors()
     {
         ArrayList<Actor> actors = new ArrayList<>();
         for (Layer layer : layers)
         {
-            actors.addAll(layer.getAddedActors());
+            actors.addAll(layer.addedActors());
         }
         return actors;
     }
@@ -718,14 +734,15 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @since 0.37.0
      */
-    public Vector getCenter()
+    @Getter
+    public Vector center()
     {
         double minX = Double.MAX_VALUE;
         double minY = Double.MAX_VALUE;
         double maxX = Double.MIN_VALUE;
         double maxY = Double.MIN_VALUE;
 
-        for (Actor actor : getAddedActors())
+        for (Actor actor : addedActors())
         {
 
             Vector center = actor.getCenter();
@@ -769,29 +786,33 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     public void focusCenter()
     {
-        camera.focus(getCenter());
+        camera.focus(center());
     }
 
     @API
-    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
+    @Getter
+    public EventListeners<KeyStrokeListener> keyStrokeListeners()
     {
         return keyStrokeListeners;
     }
 
     @API
-    public EventListeners<MouseClickListener> getMouseClickListeners()
+    @Getter
+    public EventListeners<MouseClickListener> mouseClickListeners()
     {
         return mouseClickListeners;
     }
 
     @API
-    public EventListeners<MouseScrollListener> getMouseScrollListeners()
+    @Getter
+    public EventListeners<MouseScrollListener> mouseScrollListeners()
     {
         return mouseScrollListeners;
     }
 
     @API
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    @Getter
+    public EventListeners<FrameUpdateListener> frameUpdateListeners()
     {
         return frameUpdateListeners;
     }
@@ -875,7 +896,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @see Game#getMousePosition()
      */
     @API
-    public final Vector getMousePosition()
+    @Getter
+    public final Vector mousePosition()
     {
         return Game.convertMousePosition(this, Game.getMousePositionInFrame());
     }
@@ -885,7 +907,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die Hintergrundfarbe.
      */
-    public Color getBackgroundColor()
+    @Getter
+    public Color backgroundColor()
     {
         return backgroundColor;
     }
@@ -896,7 +919,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @param color Die Hintergrundfarbe.
      */
-    public void setBackgroundColor(Color color)
+    @Setter
+    public void backgroundColor(Color color)
     {
         backgroundColor = color;
     }
@@ -910,7 +934,8 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @see ColorContainer#get(String)
      */
-    public void setBackgroundColor(String color)
+    @Setter
+    public void backgroundColor(String color)
     {
         backgroundColor = Resources.colors.get(color);
     }

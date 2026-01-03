@@ -32,7 +32,7 @@ public class ActorRotationDemo extends Scene
         createPolygon().setColor("green").setRotation(90);
         createPolygon().setColor("red").setRotation(180);
         createPolygon().setColor("blue").setRotation(270);
-        getCamera().meter(60);
+        camera().meter(60);
     }
 
     private Polygon createPolygon()

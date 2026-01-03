@@ -47,8 +47,8 @@ public class ImageFontTextMultilineDemo extends Scene
                         + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
                 20, TextAlignment.LEFT);
         add(textField);
-        setBackgroundColor("white");
-        setFocus(textField);
+        backgroundColor("white");
+        focus(textField);
     }
 
     public static void main(String[] args)

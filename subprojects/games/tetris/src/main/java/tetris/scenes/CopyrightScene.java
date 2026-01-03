@@ -37,7 +37,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
     public CopyrightScene()
     {
         super(null);
-        setBackgroundColor(COLOR_SCHEME_GREEN.getWhite());
+        backgroundColor(COLOR_SCHEME_GREEN.getWhite());
         String origText = "\"TM and ©1987 ELORG,\n" + //
                 "Tetris licensed to\n" + //
                 "Bullet-Proof\n" + //

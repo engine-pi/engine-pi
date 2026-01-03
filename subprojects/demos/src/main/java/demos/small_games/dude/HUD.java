@@ -35,9 +35,9 @@ public class HUD extends Layer implements FrameUpdateListener
 
     public HUD(GameData gameData)
     {
-        this.setParallaxZoom(0);
-        this.setParallaxPosition(0, 0);
-        this.setParallaxRotation(0);
+        this.parallaxZoom(0);
+        this.parallaxPosition(0, 0);
+        this.parallaxRotation(0);
         this.gameData = gameData;
         this.display = new HUDDisplay(-DudeDemo.WIDTH / 2 + 20,
                 DudeDemo.HEIGHT / 2 - 130);

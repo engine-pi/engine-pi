@@ -30,7 +30,7 @@ import pi.annotations.API;
  */
 public interface MouseScrollListenerRegistration
 {
-    EventListeners<MouseScrollListener> getMouseScrollListeners();
+    EventListeners<MouseScrollListener> mouseScrollListeners();
 
     /**
      * Fügt einen Beobachter, der auf Bewegungen des Mausrads reagiert, zum
@@ -41,7 +41,7 @@ public interface MouseScrollListenerRegistration
     @API
     default void addMouseScrollListener(MouseScrollListener listener)
     {
-        getMouseScrollListeners().add(listener);
+        mouseScrollListeners().add(listener);
     }
 
     /**
@@ -53,6 +53,6 @@ public interface MouseScrollListenerRegistration
     @API
     default void removeMouseScrollListener(MouseScrollListener listener)
     {
-        getMouseScrollListeners().remove(listener);
+        mouseScrollListeners().remove(listener);
     }
 }

@@ -149,8 +149,8 @@ public class Chessboard
     public static void main(String[] args)
     {
         Scene scene = new Scene();
-        scene.setMeter(50);
-        scene.getCamera().focus(4, 4);
+        scene.meter(50);
+        scene.camera().focus(4, 4);
         new Chessboard(scene);
         Game.start(scene);
     }

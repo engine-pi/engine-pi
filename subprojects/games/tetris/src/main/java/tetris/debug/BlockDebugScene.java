@@ -103,7 +103,7 @@ public class BlockDebugScene extends Scene implements KeyStrokeListener
     public static void main(String[] args)
     {
         Scene scene = new BlockDebugScene();
-        scene.getCamera().focus(Tetris.WIDTH / 2, Tetris.HEIGHT / 2);
+        scene.camera().focus(Tetris.WIDTH / 2, Tetris.HEIGHT / 2);
         Tetris.start(scene, true);
     }
 }

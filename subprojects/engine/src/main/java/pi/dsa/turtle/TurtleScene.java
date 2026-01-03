@@ -88,7 +88,7 @@ public class TurtleScene extends PaintingSurfaceScene
      */
     public TurtleScene()
     {
-        setBackgroundColor(backgroundColor);
+        backgroundColor(backgroundColor);
         animation = new TurtleAnimationController();
         dress = new TurtleDressController(this);
         pen = new TurtlePenController();

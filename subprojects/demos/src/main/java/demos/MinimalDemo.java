@@ -99,11 +99,11 @@ public class MinimalDemo extends Scene
     @Override
     public void onMouseScrollMove(MouseScrollEvent event)
     {
-        double newZoom = getCamera().meter()
+        double newZoom = camera().meter()
                 + (event.getPreciseWheelRotation() * -0.2);
         if (newZoom > 0)
         {
-            getCamera().meter(newZoom);
+            camera().meter(newZoom);
         }
     }
 
@@ -115,19 +115,19 @@ public class MinimalDemo extends Scene
         if (Game.isKeyPressed(KeyEvent.VK_W))
         {
             // W ist gedrückt → Kamera nach oben bewegen.
-            getCamera().moveFocus(0, camSpeed * pastTime);
+            camera().moveFocus(0, camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_S))
         {
-            getCamera().moveFocus(0, -camSpeed * pastTime);
+            camera().moveFocus(0, -camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            getCamera().moveFocus(-camSpeed * pastTime, 0);
+            camera().moveFocus(-camSpeed * pastTime, 0);
         }
         if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            getCamera().moveFocus(camSpeed * pastTime, 0);
+            camera().moveFocus(camSpeed * pastTime, 0);
         }
     }
 

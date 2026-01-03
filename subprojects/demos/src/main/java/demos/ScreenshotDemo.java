@@ -35,8 +35,8 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
                 32);
         add(image);
         image.setCenter(0, 0);
-        getCamera().meter(320);
-        setBackgroundColor(Color.WHITE);
+        camera().meter(320);
+        backgroundColor(Color.WHITE);
     }
 
     @Override

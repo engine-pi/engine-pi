@@ -848,7 +848,7 @@ public class Controller
     public static Vector convertMousePosition(Scene scene,
             java.awt.Point mousePosition)
     {
-        Camera camera = scene.getCamera();
+        Camera camera = scene.camera();
         double zoom = camera.meter();
         double rotation = camera.rotation();
         Vector position = camera.focus();
@@ -915,12 +915,12 @@ public class Controller
      *
      * @return Die Position der Maus in der aktuellen Szene als Vektor in Meter.
      *
-     * @see Scene#getMousePosition()
+     * @see Scene#mousePosition()
      */
     @API
     public static Vector getMousePosition()
     {
-        return scene.getMousePosition();
+        return scene.mousePosition();
     }
 
     /**

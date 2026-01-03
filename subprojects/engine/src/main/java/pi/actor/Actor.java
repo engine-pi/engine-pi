@@ -140,16 +140,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     private final EventListenerBundle listeners = new EventListenerBundle();
 
     private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>(
-            createParentSupplier(Layer::getKeyStrokeListeners));
+            createParentSupplier(Layer::keyStrokeListeners));
 
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
-            createParentSupplier(Layer::getMouseClickListeners));
+            createParentSupplier(Layer::mouseClickListeners));
 
     private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>(
-            createParentSupplier(Layer::getMouseScrollListeners));
+            createParentSupplier(Layer::mouseScrollListeners));
 
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>(
-            createParentSupplier(Layer::getFrameUpdateListeners));
+            createParentSupplier(Layer::frameUpdateListeners));
 
     /**
      * Erstellt ein neue <b>Figur</b>.
@@ -1177,7 +1177,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link KeyStrokeListener}.
      */
     @API
-    public final EventListeners<KeyStrokeListener> getKeyStrokeListeners()
+    public final EventListeners<KeyStrokeListener> keyStrokeListeners()
     {
         return keyStrokeListeners;
     }
@@ -1186,7 +1186,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link MouseClickListener}.
      */
     @API
-    public final EventListeners<MouseClickListener> getMouseClickListeners()
+    public final EventListeners<MouseClickListener> mouseClickListeners()
     {
         return mouseClickListeners;
     }
@@ -1195,7 +1195,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link MouseScrollListener}.
      */
     @API
-    public final EventListeners<MouseScrollListener> getMouseScrollListeners()
+    public final EventListeners<MouseScrollListener> mouseScrollListeners()
     {
         return mouseScrollListeners;
     }
@@ -1204,7 +1204,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link FrameUpdateListener}.
      */
     @API
-    public final EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    public final EventListeners<FrameUpdateListener> frameUpdateListeners()
     {
         return frameUpdateListeners;
     }

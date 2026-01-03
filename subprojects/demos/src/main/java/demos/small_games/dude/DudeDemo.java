@@ -70,16 +70,16 @@ public class DudeDemo extends Scene
         // Vector(0.1, 0.1), 4);
         // character.createDistanceJoint(boxy, new Vector(0.3, 0.3), new
         // Vector(0.1, 0.1));
-        setGravity(new Vector(0, -13));
-        setFocus(character);
-        getCamera().offset(new Vector(0, 3));
-        getCamera().bounds(new Bounds(-2000, -3, 20000, 20000));
-        getCamera().meter(30);
+        gravity(new Vector(0, -13));
+        focus(character);
+        camera().offset(new Vector(0, 3));
+        camera().bounds(new Bounds(-2000, -3, 20000, 20000));
+        camera().meter(30);
         setupPlayground();
         setupCosmeticLayers();
         // getMainLayer().setVisibleHeight(15, Game.getFrameSizeInPixels());
         PauseLayer pauseLayer = new PauseLayer();
-        pauseLayer.setVisible(false);
+        pauseLayer.visible(false);
         addLayer(pauseLayer);
     }
 
@@ -108,16 +108,16 @@ public class DudeDemo extends Scene
     private void setupCosmeticLayers()
     {
         Layer middleBackground = new Layer();
-        middleBackground.setParallaxPosition(0.1, 0.1);
-        middleBackground.setLayerPosition(-200);
+        middleBackground.parallaxPosition(0.1, 0.1);
+        middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
         backgroundImage.setPosition(
-                -getVisibleArea(Game.getWindowSize()).width() / 2,
-                -getVisibleArea(Game.getWindowSize()).height() / 2);
+                -visibleArea(Game.getWindowSize()).width() / 2,
+                -visibleArea(Game.getWindowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
-        furtherBackground.setLayerPosition(-300);
-        furtherBackground.setParallaxPosition(0.05, 0.05);
+        furtherBackground.layerPosition(-300);
+        furtherBackground.parallaxPosition(0.05, 0.05);
         Image moon = new Image("dude/moon.png", 1, 1);
         furtherBackground.add(moon);
         moon.setPosition(300, 300);
@@ -133,8 +133,8 @@ public class DudeDemo extends Scene
             int layerLevel, double xParallax, double yParallax, double xOffset)
     {
         Layer clouds = new Layer();
-        clouds.setParallaxPosition(xParallax, yParallax);
-        clouds.setLayerPosition(layerLevel);
+        clouds.parallaxPosition(xParallax, yParallax);
+        clouds.layerPosition(layerLevel);
         final double SCALE = 0.08;
         TileRegistration cloudTiles = new TileRegistration(NUM_TILES, 1,
                 384 * SCALE, 216 * SCALE);
@@ -143,7 +143,7 @@ public class DudeDemo extends Scene
             cloudTiles.setTile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.setPosition(xOffset,
-                -getVisibleArea(Game.getWindowSize()).height() / 2 + 5);
+                -visibleArea(Game.getWindowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
     }

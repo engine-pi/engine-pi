@@ -109,8 +109,7 @@ public class PaintingSurface
      */
     private Vector translateCoordinates(Vector point)
     {
-        return scene.getMainLayer()
-                .translateWorldPointToFramePxCoordinates(point);
+        return scene.mainLayer().translateWorldPointToFramePxCoordinates(point);
     }
 
     /**

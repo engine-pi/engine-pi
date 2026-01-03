@@ -77,7 +77,7 @@ public class Table extends Scene
 
     public Table()
     {
-        bounds = getVisibleArea();
+        bounds = visibleArea();
 
         left = new TableSide(-1, this);
         right = new TableSide(1, this);

@@ -28,7 +28,7 @@ import pi.annotations.API;
  */
 public interface KeyStrokeListenerRegistration
 {
-    EventListeners<KeyStrokeListener> getKeyStrokeListeners();
+    EventListeners<KeyStrokeListener> keyStrokeListeners();
 
     /**
      * Fügt einen statisch {@link KeyStrokeListener} hinzu, d. h. dieser
@@ -92,7 +92,7 @@ public interface KeyStrokeListenerRegistration
     @API
     default void addKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyStrokeListeners().add(listener);
+        keyStrokeListeners().add(listener);
     }
 
     /**
@@ -105,6 +105,6 @@ public interface KeyStrokeListenerRegistration
     @API
     default void removeKeyStrokeListener(KeyStrokeListener listener)
     {
-        getKeyStrokeListeners().remove(listener);
+        keyStrokeListeners().remove(listener);
     }
 }

@@ -60,7 +60,7 @@ public class Logo implements ActorAdder
     }
 
     @Override
-    public Scene getScene()
+    public Scene scene()
     {
         return scene;
     }

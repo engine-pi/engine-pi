@@ -49,8 +49,7 @@ public class TetrominoDebugScene extends Scene implements KeyStrokeListener
         rotation.setColor(Color.WHITE);
         rotation.setPosition(2, (double) Tetris.HEIGHT / 2);
         grid = new Grid(Tetris.WIDTH, Tetris.HEIGHT);
-        getCamera().focus((double) Tetris.WIDTH / 2,
-                (double) Tetris.HEIGHT / 2);
+        camera().focus((double) Tetris.WIDTH / 2, (double) Tetris.HEIGHT / 2);
         add(rotation);
         t = new Tetromino[7];
         // L I J

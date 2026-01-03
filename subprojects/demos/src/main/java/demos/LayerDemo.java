@@ -40,7 +40,7 @@ public class LayerDemo extends Scene
         circle3.setColor("blue");
         layer3.add(circle3);
 
-        for (Actor actor : getAddedActors())
+        for (Actor actor : addedActors())
         {
             System.out.println("Zur Ebene hinzugefügt: " + actor);
             System.out.println(actor.getCenter());
@@ -49,7 +49,7 @@ public class LayerDemo extends Scene
         // Die Figuren werden mit Verzögerung zur Ebene bzw. zur Szene
         // hinzugefügt.
         delay(1, () -> {
-            for (Actor actor : getActors())
+            for (Actor actor : actors())
             {
                 System.out
                         .println("In der Physics-Engine registriert: " + actor);

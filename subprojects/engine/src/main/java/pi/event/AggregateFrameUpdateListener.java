@@ -57,7 +57,7 @@ public abstract class AggregateFrameUpdateListener
     }
 
     @Override
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    public EventListeners<FrameUpdateListener> frameUpdateListeners()
     {
         return listeners;
     }

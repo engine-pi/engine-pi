@@ -42,7 +42,7 @@ public class LineRandomDemo extends Scene
         repeat(2, () -> {
             createRandomLines();
         });
-        setBackgroundColor(colors.getSafe("#333333"));
+        backgroundColor(colors.getSafe("#333333"));
     }
 
     private void createRandomLines()

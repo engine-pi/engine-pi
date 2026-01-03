@@ -33,7 +33,7 @@ public class FrictionDemo extends Scene implements KeyStrokeListener
     {
         rectangle = new Rectangle(3, 3);
         rectangle.makeDynamic();
-        setGravity(0, -1);
+        gravity(0, -1);
         add(rectangle);
     }
 

@@ -362,7 +362,7 @@ public final class Camera
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code camera.offset(..).focus(..)}.
      *
-     * @see Scene#setMeter(double)
+     * @see Scene#meter(double)
      */
     @API
     @Setter

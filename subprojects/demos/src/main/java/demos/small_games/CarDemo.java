@@ -75,20 +75,20 @@ public class CarDemo extends Scene implements FrameUpdateListener
     {
         info().title("Auto-Simulation").help(
                 "Tastenkürzel:\nl: vorwärts waren\nj: rückwärts fahren\nLeertaste: bremsen");
-        setBackgroundColor(new Color(207, 239, 252));
+        backgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
         Rectangle blender = new Rectangle((double) WIDTH / ZOOM,
                 (double) HEIGHT / ZOOM);
         blender.setColor(Color.BLACK);
         blend.add(blender);
-        blend.setParallaxRotation(0);
-        blend.setParallaxPosition(0, 0);
-        blend.setLayerPosition(10);
+        blend.parallaxRotation(0);
+        blend.parallaxPosition(0, 0);
+        blend.layerPosition(10);
         addLayer(blend);
         delay(.2, () -> blender.animateOpacity(.3, 0));
         Layer background = new Layer();
-        background.setLayerPosition(-2);
-        background.setParallaxPosition(.5, -.025);
+        background.layerPosition(-2);
+        background.parallaxPosition(.5, -.025);
         Rectangle backgroundColor = new Rectangle(400, 100);
         backgroundColor.setPosition(-200, -105);
         backgroundColor.setColor(new Color(0, 194, 111));
@@ -109,7 +109,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         createHill(25, range(1, 2));
         createHill(45, range(1, 2));
         Layer decoration = new Layer();
-        decoration.setLayerPosition(-1);
+        decoration.layerPosition(-1);
         var tiles = new TileRegistration(27, 1, .5);
         tiles.setPosition(-9, -10);
         tiles.makeStatic();
@@ -124,10 +124,10 @@ public class CarDemo extends Scene implements FrameUpdateListener
         wheelBack = new Wheel(-1, -8.75, new Axle(-1, -8.6, carBody));
         // Wheels automatically add axes, and axes add the car body
         add(wheelFront, wheelBack);
-        setGravity(vector(0, -9.81));
-        getCamera().meter(ZOOM);
-        setFocus(carBody);
-        getCamera().offset(vector(0, 3));
+        gravity(vector(0, -9.81));
+        camera().meter(ZOOM);
+        focus(carBody);
+        camera().offset(vector(0, 3));
     }
 
     private Actor createBackgroundTile(int x)

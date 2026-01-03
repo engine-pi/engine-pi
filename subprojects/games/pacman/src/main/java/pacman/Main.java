@@ -18,7 +18,7 @@ public class Main
         config.debug.enabled(true);
         config.coordinatesystem.linesNMeter(1);
         config.graphics.windowPosition(Direction.RIGHT);
-        scene.getCamera().meter(8);
+        scene.camera().meter(8);
         // 224 = 28 * 8
         // 288 = 36 * 8
         Game.start(scene, 224, 288, pixelMultiplication);

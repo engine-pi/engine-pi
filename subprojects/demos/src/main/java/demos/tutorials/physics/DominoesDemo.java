@@ -79,7 +79,7 @@ public class DominoesDemo extends Scene
         ground.makeStatic();
         wall.makeDynamic();
         ball.makeDynamic();
-        setGravityOfEarth();
+        gravityOfEarth();
     }
 
     private void makeDominoes()
@@ -97,7 +97,7 @@ public class DominoesDemo extends Scene
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        Vector mousePosition = getMousePosition();
+        Vector mousePosition = mousePosition();
         Vector ballCenter = ball.getCenter();
         Vector distance = ballCenter.getDistance(mousePosition);
         angle.setPosition(ball.getCenter());

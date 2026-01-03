@@ -121,7 +121,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         enginePiText.setColor("white");
         enginePiText.setCenter(0, -7);
         add(enginePiText);
-        setGravityOfEarth();
+        gravityOfEarth();
         createGround();
         for (int i = 0; i < 3; i++)
         {

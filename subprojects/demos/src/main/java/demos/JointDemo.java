@@ -135,7 +135,7 @@ public class JointDemo extends ForceKlickEnvironment
         if (e.getKeyCode() == KeyEvent.VK_S)
         {
             isGravityActive = !isGravityActive;
-            setGravity(isGravityActive ? new Vector(0, -10) : Vector.NULL);
+            gravity(isGravityActive ? new Vector(0, -10) : Vector.NULL);
         }
     }
 

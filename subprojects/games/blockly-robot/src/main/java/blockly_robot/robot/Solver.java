@@ -89,7 +89,7 @@ public abstract class Solver<T>
     public void solve(Object difficutly, int test)
     {
         LevelsScene scene = new LevelsScene(taskPath, difficutly, test);
-        scene.getCamera().meter(zoom);
+        scene.camera().meter(zoom);
         Controller.launchScene((WindowScene) scene);
         scene.getAssembledLevels().forEach((level) -> {
             new Thread(() -> {

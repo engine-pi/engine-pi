@@ -8,7 +8,7 @@ public class ActorSetFixtureFromStringDemo extends Scene
 {
     public ActorSetFixtureFromStringDemo()
     {
-        setMeter(50);
+        meter(50);
         Image rectangle = new Image("dude/box/obj_box001.png", 1, 1);
         rectangle.setFixtures("R 0.25, 0.25, 0.5, 0.5");
         add(rectangle);

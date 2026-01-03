@@ -44,7 +44,7 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         info("Kamera-Demo").description(
                 "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.")
                 .disable();
-        camera = getCamera();
+        camera = camera();
         Image background = new Image("main-classes/camera/Fez.png", 32);
         background.setCenter(0, 0);
         add(background);
@@ -53,7 +53,7 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         line.setColor("red");
         add(line);
 
-        Bounds visible = getVisibleArea();
+        Bounds visible = visibleArea();
 
         Bounds cameraBounds = new Bounds(
                 background.getX() + visible.width() / 2,

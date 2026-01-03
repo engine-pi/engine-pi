@@ -38,14 +38,14 @@ import pi.Scene;
  */
 public interface ActorAdder
 {
-    Scene getScene();
+    Scene scene();
 
     /* ___ Hexagon (Sechseck) _____________________________________________ */
 
     default Hexagon addHexagon(double radius)
     {
         Hexagon actor = new Hexagon(radius);
-        getScene().add(actor);
+        scene().add(actor);
         return actor;
     }
 
@@ -79,14 +79,14 @@ public interface ActorAdder
     default Image addImage(String filePath, double pixelPerMeter)
     {
         Image actor = new Image(filePath, pixelPerMeter);
-        getScene().add(actor);
+        scene().add(actor);
         return actor;
     }
 
     default Image addImage(String filePath, double width, double height)
     {
         Image actor = new Image(filePath, width, height);
-        getScene().add(actor);
+        scene().add(actor);
         return actor;
     }
     /* ___ Pentagon (Fünfeck) _______________________________________________ */
@@ -94,7 +94,7 @@ public interface ActorAdder
     default Pentagon addPentagon(double radius)
     {
         Pentagon actor = new Pentagon(radius);
-        getScene().add(actor);
+        scene().add(actor);
         return actor;
     }
 
@@ -115,7 +115,7 @@ public interface ActorAdder
     default RegularPolygon addRegularPolygon(int numSides, double radius)
     {
         RegularPolygon actor = new RegularPolygon(numSides, radius);
-        getScene().add(actor);
+        scene().add(actor);
         return actor;
     }
 

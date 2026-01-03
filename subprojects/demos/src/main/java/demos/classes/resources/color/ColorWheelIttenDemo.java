@@ -69,7 +69,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         NAME.setColor("white");
         add(NAME);
         setNextColorScheme();
-        setBackgroundColor("#444444");
+        backgroundColor("#444444");
     }
 
     /**

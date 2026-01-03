@@ -55,7 +55,7 @@ public class DefaultControl implements DefaultListener
         Scene scene = Game.getActiveScene();
         if (scene != null)
         {
-            return scene.getCamera();
+            return scene.camera();
         }
         return null;
     }

@@ -132,8 +132,8 @@ public class BallThrowDemo extends Scene
         // Kollision zwischen Ball und Boden beobachten (Code ist uns egal, wir
         // kennen nur einen Kollisionsfall)
         ball.addCollisionListener(ground, this);
-        getCamera().meter(3);
-        setFocus(ground);
+        camera().meter(3);
+        focus(ground);
     }
 
     /**
@@ -165,7 +165,7 @@ public class BallThrowDemo extends Scene
         // Zeitmessung beginnen = Startzeit erheben
         startTime = System.currentTimeMillis();
         // Schwerkraft auf den Ball wirken lassen
-        setGravity(new Vector(0, -9.81));
+        gravity(new Vector(0, -9.81));
         // Impuls berechnen und auf den Ball wirken lassen
         Vector impuls = new Vector(Math.cos(Math.toRadians(WINKEL)) * IMPULS,
                 Math.sin(Math.toRadians(WINKEL)) * IMPULS);
@@ -179,7 +179,7 @@ public class BallThrowDemo extends Scene
      */
     private void reset()
     {
-        setGravity(new Vector(0, 0)); // Schwerkraft deaktivieren
+        gravity(new Vector(0, 0)); // Schwerkraft deaktivieren
         ball.setCenter(DISTANCE_LEFT, // Ballposition zurücksetzen
                 GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
                         + 0.5 * DURCHMESSER * PIXEL_PER_METER));

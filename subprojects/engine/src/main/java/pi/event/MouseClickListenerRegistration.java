@@ -29,15 +29,15 @@ package pi.event;
  */
 public interface MouseClickListenerRegistration
 {
-    EventListeners<MouseClickListener> getMouseClickListeners();
+    EventListeners<MouseClickListener> mouseClickListeners();
 
     default void addMouseClickListener(MouseClickListener listener)
     {
-        getMouseClickListeners().add(listener);
+        mouseClickListeners().add(listener);
     }
 
     default void removeMouseClickListener(MouseClickListener listener)
     {
-        getMouseClickListeners().remove(listener);
+        mouseClickListeners().remove(listener);
     }
 }

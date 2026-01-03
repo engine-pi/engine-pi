@@ -62,7 +62,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
                 .getLocalGraphicsEnvironment();
         systemFonts = ge.getAvailableFontFamilyNames();
         setFontsOfCurrentPage();
-        setBackgroundColor("white");
+        backgroundColor("white");
     }
 
     private void setFontsOfCurrentPage()

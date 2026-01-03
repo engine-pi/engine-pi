@@ -38,7 +38,7 @@ public interface FrameUpdateListenerRegistration
     /**
      * @return Liste der {@link FrameUpdateListener}
      */
-    EventListeners<FrameUpdateListener> getFrameUpdateListeners();
+    EventListeners<FrameUpdateListener> frameUpdateListeners();
 
     /**
      * Fügt einen neuen {@link FrameUpdateListener} hinzu.
@@ -46,7 +46,7 @@ public interface FrameUpdateListenerRegistration
     @API
     default void addFrameUpdateListener(FrameUpdateListener listener)
     {
-        getFrameUpdateListeners().add(listener);
+        frameUpdateListeners().add(listener);
     }
 
     /**
@@ -55,7 +55,7 @@ public interface FrameUpdateListenerRegistration
     @API
     default void removeFrameUpdateListener(FrameUpdateListener listener)
     {
-        getFrameUpdateListeners().remove(listener);
+        frameUpdateListeners().remove(listener);
     }
 
     /**

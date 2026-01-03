@@ -49,7 +49,7 @@ public class ColorContainerVisualizer
      */
     public ColorContainerVisualizer(ColorContainer container, Scene scene)
     {
-        scene.setBackgroundColor("#222222");
+        scene.backgroundColor("#222222");
         double y = 8;
         for (Map.Entry<String, Color> entry : container.getAll().entrySet())
         {

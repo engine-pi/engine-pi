@@ -50,7 +50,7 @@ public class RevolteJointSeesawDemo extends Scene
         add(seesaw);
         add(new Circle().setPosition(-2, 2).makeDynamic());
         add(new Circle().setPosition(2, 2.2).makeDynamic());
-        setGravityOfEarth();
+        gravityOfEarth();
     }
 
     public static void main(String[] args)

@@ -203,7 +203,7 @@ public final class GameLoop
                 frameUpdateListeners
                         .invoke(listener -> listener.onFrameUpdate(pastTime));
                 // Aktualisiert die Kamera der aktuellen Szene
-                scene.getCamera().onFrameUpdate();
+                scene.camera().onFrameUpdate();
                 // Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.
                 scene.invokeFrameUpdateListeners(pastTime);
                 Runnable runnable = dispatchableQueue.poll();
@@ -286,7 +286,7 @@ public final class GameLoop
         // have to be the same @ Game.screenshot!
         Graphics2DUtil.setAntiAliasing(g, true);
         // Absoluter Hintergrund
-        g.setColor(scene.getBackgroundColor());
+        g.setColor(scene.backgroundColor());
         g.fillRect(0, 0, width, height);
         g.setClip(0, 0, width, height);
         AffineTransform oldTransform = g.getTransform();

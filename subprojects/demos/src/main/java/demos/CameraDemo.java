@@ -43,7 +43,7 @@ public class CameraDemo extends Scene
 
     public CameraDemo()
     {
-        camera = getCamera();
+        camera = camera();
         add(new Text("Camera demo", 5).setColor("white"));
         focus = new Text("Focus");
         focus.setColor("yellow").setPosition(0, 4);

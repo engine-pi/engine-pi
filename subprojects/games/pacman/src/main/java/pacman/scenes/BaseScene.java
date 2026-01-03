@@ -8,6 +8,6 @@ public class BaseScene extends Scene
     public BaseScene()
     {
         ColorManagement.setColors();
-        getCamera().focus(14, 18);
+        camera().focus(14, 18);
     }
 }

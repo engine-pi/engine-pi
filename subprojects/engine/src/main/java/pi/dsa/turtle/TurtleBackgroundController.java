@@ -65,7 +65,7 @@ public class TurtleBackgroundController
      */
     public TurtleBackgroundController color(Color color)
     {
-        scene.setBackgroundColor(color);
+        scene.backgroundColor(color);
         return this;
     }
 
@@ -74,7 +74,7 @@ public class TurtleBackgroundController
      */
     public TurtleBackgroundController color(String color)
     {
-        scene.setBackgroundColor(color);
+        scene.backgroundColor(color);
         return this;
     }
 }

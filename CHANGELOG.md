@@ -341,7 +341,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add color schema ([22823d2](https://github.com/engine-pi/engine-pi/commit/22823d28cab4d001822ee7125171e99a077fdc7a) by Josef Friedrich).
 - Add constructor without arguments for the Rectangle class ([6ef6ad7](https://github.com/engine-pi/engine-pi/commit/6ef6ad74072ba8561380810bc1f315d194dde791) by Josef Friedrich).
-- Add new methods Scene#setGravityOfEarth and Layer#setGravityOfEarth ([1eefabd](https://github.com/engine-pi/engine-pi/commit/1eefabd511ec28d19fe018e6db74ddbc374c49cd) by Josef Friedrich).
+- Add new methods Scene#gravityOfEarth and Scene#gravityOfEarth ([1eefabd](https://github.com/engine-pi/engine-pi/commit/1eefabd511ec28d19fe018e6db74ddbc374c49cd) by Josef Friedrich).
 - Add new actor: Triangle ([ad1a803](https://github.com/engine-pi/engine-pi/commit/ad1a8035f2367969708e70e1022f76506eb29dc2) by Josef Friedrich).
 
 ### Changed

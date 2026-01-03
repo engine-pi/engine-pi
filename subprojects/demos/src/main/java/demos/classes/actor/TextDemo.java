@@ -39,7 +39,7 @@ public class TextDemo extends Scene
 
     public TextDemo()
     {
-        setBackgroundColor("green");
+        backgroundColor("green");
 
         add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
                 "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));

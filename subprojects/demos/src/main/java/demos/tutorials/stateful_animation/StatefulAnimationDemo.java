@@ -37,8 +37,8 @@ public class StatefulAnimationDemo extends Scene
         StatefulPlayerCharacter character = new StatefulPlayerCharacter();
         setupGround();
         add(character);
-        setFocus(character);
-        setGravityOfEarth();
+        focus(character);
+        gravityOfEarth();
     }
 
     private void setupGround()

@@ -417,17 +417,17 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             smashForce = Vector.NULL;
             if (smashing)
             {
-                Vector originalOffset = getLayer().getParent().getCamera()
+                Vector originalOffset = getLayer().parent().camera()
                         .getOffset();
                 Interpolator<Double> interpolator = new SinusDouble(0,
                         -0.0004 * getVelocity().getY());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
-                        y -> getLayer().getParent().getCamera()
+                        y -> getLayer().parent().camera()
                                 .offset(originalOffset.add(new Vector(0, y))),
                         interpolator, getLayer());
                 getLayer().addFrameUpdateListener(valueAnimator);
                 valueAnimator.addCompletionListener(value -> getLayer()
-                        .getFrameUpdateListeners().remove(valueAnimator));
+                        .frameUpdateListeners().remove(valueAnimator));
             }
             Vector speed = getPhysicsHandler().getVelocity();
             Vector transformedSpeed = Math.abs(speed.getX()) < .1

@@ -35,7 +35,7 @@ public class ImageFontTextDemo extends Scene
 
     public ImageFontTextDemo()
     {
-        setBackgroundColor("white");
+        backgroundColor("white");
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
         helloWorld = new ImageFontText(font, "Hello, World.\nHello, Universe");

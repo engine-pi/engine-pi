@@ -60,7 +60,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         right.setElasticity(15);
         add(right);
         addKeyStrokeListener(this);
-        repeat(1, (counter) -> createCircle(getMousePosition(), Color.YELLOW));
+        repeat(1, (counter) -> createCircle(mousePosition(), Color.YELLOW));
         Rectangle r1 = new Rectangle(WIDTH, 10);
         r1.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
         Rectangle r2 = new Rectangle(10, HEIGHT);
@@ -79,8 +79,8 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         r3.setColor(Color.DARK_GRAY);
         r4.setColor(Color.DARK_GRAY);
         r1.addCollisionListener((event) -> remove(event.getColliding()));
-        setGravity(new Vector(0, -600));
-        getCamera().meter(1);
+        gravity(new Vector(0, -600));
+        camera().meter(1);
         left.animateColor(5, Color.YELLOW);
         this.addFrameUpdateListener(new ValueAnimator<>(5, left::setX,
                 new ReverseEaseDouble(left.getX(), left.getX() + 200),
@@ -114,7 +114,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
     {
         if (e.getKeyCode() == KeyEvent.VK_LESS)
         {
-            getCamera().rotateBy(0.1);
+            camera().rotateBy(0.1);
         }
     }
 

@@ -27,7 +27,7 @@ import pi.Scene;
 import pi.event.KeyStrokeListener;
 
 /**
- * Demonstriert die Methode {@link pi.Scene#setGravity(double, double)}
+ * Demonstriert die Methode {@link pi.Scene#gravity(double, double)}
  */
 public class GravityDemo extends Scene implements KeyStrokeListener
 {
@@ -35,11 +35,11 @@ public class GravityDemo extends Scene implements KeyStrokeListener
 
     public GravityDemo()
     {
-        getCamera().meter(45);
+        camera().meter(45);
         circle = new Circle();
         circle.makeDynamic();
         add(circle);
-        setGravity(0, -9.81);
+        gravity(0, -9.81);
         // oben
         createBorder(-5, 4.5, false);
         // unten
@@ -65,21 +65,21 @@ public class GravityDemo extends Scene implements KeyStrokeListener
     {
         switch (e.getKeyCode())
         {
-        case KeyEvent.VK_UP -> setGravity(0, 9.81);
-        case KeyEvent.VK_DOWN -> setGravity(0, -9.81);
-        case KeyEvent.VK_RIGHT -> setGravity(9.81, 0);
-        case KeyEvent.VK_LEFT -> setGravity(-9.81, 0);
+        case KeyEvent.VK_UP -> gravity(0, 9.81);
+        case KeyEvent.VK_DOWN -> gravity(0, -9.81);
+        case KeyEvent.VK_RIGHT -> gravity(9.81, 0);
+        case KeyEvent.VK_LEFT -> gravity(-9.81, 0);
         case KeyEvent.VK_SPACE -> circle.sleep();
         }
     }
 
     @Override
-    public void setGravity(double x, double y)
+    public void gravity(double x, double y)
     {
         // Die Figur muss aufgeweckt werden, falls sie zur Ruhe gekommen ist.
         // Sonst wirkt eine Änderung der Gravitation nicht.
         circle.awake();
-        super.setGravity(x, y);
+        super.gravity(x, y);
     }
 
     public static void main(String[] args)

@@ -33,7 +33,9 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
 import pi.actor.Actor;
 import pi.actor.ActorAdder;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.event.FrameUpdateListenerRegistration;
@@ -66,7 +68,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     private <T> Supplier<T> createParentSupplier(Function<Scene, T> supplier)
     {
         return () -> {
-            Scene scene = getParent();
+            Scene scene = parent();
             if (scene == null)
             {
                 return null;
@@ -109,13 +111,13 @@ public class Layer implements KeyStrokeListenerRegistration,
     private final WorldHandler worldHandler;
 
     private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>(
-            createParentSupplier(Scene::getKeyStrokeListeners));
+            createParentSupplier(Scene::keyStrokeListeners));
 
     private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>(
-            createParentSupplier(Scene::getMouseClickListeners));
+            createParentSupplier(Scene::mouseClickListeners));
 
     private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>(
-            createParentSupplier(Scene::getMouseScrollListeners));
+            createParentSupplier(Scene::mouseScrollListeners));
 
     private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
@@ -131,12 +133,14 @@ public class Layer implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
     }
 
-    public Scene getParent()
+    @Getter
+    public Scene parent()
     {
         return parent;
     }
 
-    public Scene getScene()
+    @Getter
+    public Scene scene()
     {
         return parent;
     }
@@ -145,7 +149,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    void setParent(Scene parent)
+    @Setter
+    void parent(Scene parent)
     {
         if (parent != null && this.parent != null)
         {
@@ -176,7 +181,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     desto weiter vorne ist sie.
      */
     @API
-    public void setLayerPosition(int position)
+    @Setter
+    public void layerPosition(int position)
     {
         this.layerPosition = position;
         if (parent != null)
@@ -190,10 +196,11 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @return Der Wert, der die Position dieses Layers repräsentiert.
      *
-     * @see #setLayerPosition(int)
+     * @see #layerPosition(int)
      */
     @API
-    public int getLayerPosition()
+    @Getter
+    public int layerPosition()
     {
         return layerPosition;
     }
@@ -216,7 +223,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param parallaxY Der y-Wert der Parallaxen-Bewegung.
      */
     @API
-    public void setParallaxPosition(double parallaxX, double parallaxY)
+    @Setter
+    public void parallaxPosition(double parallaxX, double parallaxY)
     {
         this.parallaxX = parallaxX;
         this.parallaxY = parallaxY;
@@ -236,7 +244,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * </ul>
      */
     @API
-    public void setParallaxZoom(double parallaxZoom)
+    @Setter
+    public void parallaxZoom(double parallaxZoom)
     {
         this.parallaxZoom = parallaxZoom;
     }
@@ -248,7 +257,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param parallaxRotation Die Rotationsparallaxe.
      */
     @API
-    public void setParallaxRotation(double parallaxRotation)
+    @Setter
+    public void parallaxRotation(double parallaxRotation)
     {
         this.parallaxRotation = parallaxRotation;
     }
@@ -269,7 +279,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     </ul>
      */
     @API
-    public void setTimeDistort(double timeDistort)
+    @Setter
+    public void timeDistort(double timeDistort)
     {
         if (timeDistort < 0)
         {
@@ -287,9 +298,9 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
      *     <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
-     * @see #setGravity(double, double)
-     * @see Scene#setGravity(Vector)
-     * @see Scene#setGravity(double, double)
+     * @see #gravity(double, double)
+     * @see Scene#gravity(Vector)
+     * @see Scene#gravity(double, double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a>
@@ -298,9 +309,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
-    public void setGravity(Vector gravity)
+    @Setter
+    public void gravity(Vector gravity)
     {
-        getWorld().setGravity(gravity.toVec2());
+        world().setGravity(gravity.toVec2());
     }
 
     /**
@@ -312,9 +324,9 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
      *     Einheit ist <b>[N]</b> bzw. <b>[m/s^2]</b>.
      *
-     * @see #setGravity(Vector)
-     * @see Scene#setGravity(Vector)
-     * @see Scene#setGravity(double, double)
+     * @see #gravity(Vector)
+     * @see Scene#gravity(Vector)
+     * @see Scene#gravity(double, double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/World.java#L997-L1004">dynamics/World.java#L997-L1004</a>
@@ -323,21 +335,23 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_world.h#L312-L315">b2_world.h#L312-L315</a>
      */
     @API
-    public void setGravity(double gravityX, double gravityY)
+    @Setter
+    public void gravity(double gravityX, double gravityY)
     {
-        setGravity(new Vector(gravityX, gravityY));
+        gravity(new Vector(gravityX, gravityY));
     }
 
     /**
      * Setzt die Schwerkraft, die auf der Erde wirkt: 9.81 <b>[N]</b> bzw.
      * <b>[m/s^2]</b> nach unten (x: 0, y: -9.81).
      *
-     * @see Scene#setGravityOfEarth
+     * @see Scene#gravityOfEarth
      */
     @API
-    public void setGravityOfEarth()
+    @Setter
+    public void gravityOfEarth()
     {
-        setGravity(0, -9.81);
+        gravity(0, -9.81);
     }
 
     /**
@@ -347,9 +361,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @return Die Schwerkraft, die momentan auf diese Ebene wirkt, als Vektor
      *     in <b>[N]</b> bzw. <b>[m/s^2]</b>.
      */
-    public Vector getGravity()
+    @Getter
+    public Vector gravity()
     {
-        return Vector.of(getWorld().getGravity());
+        return Vector.of(world().getGravity());
     }
 
     /**
@@ -362,7 +377,8 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @see #isVisible()
      */
     @API
-    public void setVisible(boolean visible)
+    @Setter
+    public void visible(boolean visible)
     {
         this.visible = visible;
     }
@@ -373,7 +389,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @return <code>true</code>: Die Ebene ist sichtbar. <code>false</code>:
      *     Die Ebene ist nicht sichtbar.
      *
-     * @see #setVisible(boolean)
+     * @see #visible(boolean)
      */
     @API
     public boolean isVisible()
@@ -483,9 +499,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @since 0.37.0
      *
-     * @see #getAddedActors()
+     * @see #addedActors()
      */
-    public List<Actor> getActors()
+    @Getter
+    public List<Actor> actors()
     {
         return actors;
     }
@@ -500,9 +517,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @since 0.37.0
      *
-     * @see #getActors()
+     * @see #actors()
      */
-    public List<Actor> getAddedActors()
+    @Getter
+    public List<Actor> addedActors()
     {
         return addedActors;
     }
@@ -526,7 +544,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         Vector frameSize = Game.getWindowSize();
         Vector cameraPositionInPx = new Vector(frameSize.getX() / 2,
                 frameSize.getY() / 2);
-        Vector fromCamToPointInWorld = parent.getCamera().focus()
+        Vector fromCamToPointInWorld = parent.camera().focus()
                 .multiplyX(parallaxX).multiplyY(parallaxY)
                 .getDistance(worldPoint);
         return cameraPositionInPx.add(fromCamToPointInWorld.multiplyY(-1)
@@ -541,9 +559,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @see Game#getWindowSize()
      */
     @API
-    public Bounds getVisibleArea(Vector gameSizeInPixels)
+    @Getter
+    public Bounds visibleArea(Vector gameSizeInPixels)
     {
-        Vector center = parent.getCamera().focus();
+        Vector center = parent.camera().focus();
         double pixelPerMeter = calculatePixelPerMeter();
         return new Bounds(0, 0, gameSizeInPixels.getX() / pixelPerMeter,
                 gameSizeInPixels.getY() / pixelPerMeter)
@@ -557,15 +576,16 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param width Die Breite in Meter, auf die die Kamera im Fenster exakt zu
      *     setzen ist.
      *
-     * @see #setVisibleHeight(double, Vector)
+     * @see #visibleHeight(double, Vector)
      * @see Game#getWindowSize()
      */
     @API
-    public void setVisibleWidth(double width, Vector gameSizeInPixels)
+    @Getter
+    public void visibleWidth(double width, Vector gameSizeInPixels)
     {
         double desiredPixelPerMeter = gameSizeInPixels.getX() / width;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.getCamera().meter(desiredZoom);
+        parent.camera().meter(desiredZoom);
     }
 
     /**
@@ -575,15 +595,16 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param height Die Höhe in Meter, auf die die Kamera im Fenster exakt zu
      *     setzen ist.
      *
-     * @see #setVisibleWidth(double, Vector)
+     * @see #visibleWidth(double, Vector)
      * @see Game#getWindowSize()
      */
     @API
-    public void setVisibleHeight(double height, Vector gameSizeInPixels)
+    @Setter
+    public void visibleHeight(double height, Vector gameSizeInPixels)
     {
         double desiredPixelPerMeter = gameSizeInPixels.getY() / height;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.getCamera().meter(desiredZoom);
+        parent.camera().meter(desiredZoom);
     }
 
     /**
@@ -592,7 +613,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public double calculatePixelPerMeter()
     {
-        return 1 + (parent.getCamera().meter() - 1) * parallaxZoom;
+        return 1 + (parent.camera().meter() - 1) * parallaxZoom;
     }
 
     /**
@@ -647,12 +668,14 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public WorldHandler getWorldHandler()
+    @Getter
+    public WorldHandler worldHandler()
     {
         return worldHandler;
     }
 
-    private World getWorld()
+    @Getter
+    private World world()
     {
         return worldHandler.getWorld();
     }
@@ -670,25 +693,29 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     @API
-    public EventListeners<FrameUpdateListener> getFrameUpdateListeners()
+    @Getter
+    public EventListeners<FrameUpdateListener> frameUpdateListeners()
     {
         return frameUpdateListeners;
     }
 
     @API
-    public EventListeners<KeyStrokeListener> getKeyStrokeListeners()
+    @Getter
+    public EventListeners<KeyStrokeListener> keyStrokeListeners()
     {
         return keyStrokeListeners;
     }
 
     @API
-    public EventListeners<MouseClickListener> getMouseClickListeners()
+    @Getter
+    public EventListeners<MouseClickListener> mouseClickListeners()
     {
         return mouseClickListeners;
     }
 
     @API
-    public EventListeners<MouseScrollListener> getMouseScrollListeners()
+    @Getter
+    public EventListeners<MouseScrollListener> mouseScrollListeners()
     {
         return mouseScrollListeners;
     }

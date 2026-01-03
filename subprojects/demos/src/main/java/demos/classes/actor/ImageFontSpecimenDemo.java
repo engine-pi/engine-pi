@@ -35,7 +35,7 @@ public class ImageFontSpecimenDemo extends Scene
 {
     public ImageFontSpecimenDemo(String fontName)
     {
-        setBackgroundColor("white");
+        backgroundColor("white");
         ImageFont tetris = new ImageFont("image-font/" + fontName);
         new ImageFontSpecimen(this, tetris);
     }

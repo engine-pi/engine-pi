@@ -44,8 +44,8 @@ public class FroggyJump extends Scene
     {
         frog = new Frog();
         add(frog);
-        setGravity(Vector.DOWN.multiply(10));
-        Camera camera = getCamera();
+        gravity(Vector.DOWN.multiply(10));
+        Camera camera = camera();
         camera.focus(frog);
         camera.offset(new Vector(0, 4));
         makeLevel(40);
@@ -79,7 +79,7 @@ public class FroggyJump extends Scene
                 for (int j = 0; j < Random.range(3); j++)
                 {
                     SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
-                            Random.range() * 4 + 0.5 + 5 * i, getMainLayer());
+                            Random.range() * 4 + 0.5 + 5 * i, mainLayer());
                 }
             }
         }
@@ -91,7 +91,7 @@ class DeathScreen extends Scene implements KeyStrokeListener
     public DeathScreen()
     {
         Text message = new Text("You Died. Press any button to try again", .6);
-        message.setCenter(getCamera().focus());
+        message.setCenter(camera().focus());
         add(message);
     }
 

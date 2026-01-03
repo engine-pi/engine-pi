@@ -80,7 +80,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
                 add(r);
                 r.makeStatic();
             }
-            setGravity(new Vector(0, -30));
+            gravity(new Vector(0, -30));
             slantedLeft.setRotation(45);
             slatedRight.setRotation(-45);
         }
@@ -108,7 +108,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
         ground.makeStatic();
         add(ground);
-        getCamera().meter(0.5);
+        camera().meter(0.5);
     }
 
     @Override

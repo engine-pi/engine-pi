@@ -212,7 +212,7 @@ public final class Random
      */
     public static Vector vector(Scene scene)
     {
-        Bounds bounds = scene.getVisibleArea();
+        Bounds bounds = scene.visibleArea();
         return vector(bounds.xLeft(), bounds.xRight(), bounds.yBottom(),
                 bounds.yTop());
     }

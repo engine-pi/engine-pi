@@ -61,7 +61,7 @@ class DebugInformationPreparer
 
     public Vector gravity()
     {
-        return loop.getCurrentScene().getGravity();
+        return loop.getCurrentScene().gravity();
     }
 
     /**

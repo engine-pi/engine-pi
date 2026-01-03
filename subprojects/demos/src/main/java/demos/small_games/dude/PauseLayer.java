@@ -32,7 +32,7 @@ public class PauseLayer extends Layer
 
     public PauseLayer()
     {
-        setLayerPosition(1000);
+        layerPosition(1000);
         Rectangle back = new Rectangle(DudeDemo.WIDTH, DudeDemo.HEIGHT);
         back.setColor(BACKGROUND_COLOR);
         back.setCenter(0, 0);
@@ -40,8 +40,8 @@ public class PauseLayer extends Layer
         Text announce = new Text("Pause.", 10, "Monospaced");
         announce.setCenter(0, 0);
         add(announce);
-        setParallaxPosition(0, 0);
-        setParallaxZoom(0);
-        setParallaxRotation(0);
+        parallaxPosition(0, 0);
+        parallaxZoom(0);
+        parallaxRotation(0);
     }
 }

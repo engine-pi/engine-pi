@@ -35,7 +35,7 @@ public class ElasticityDemo extends Scene
 
     public ElasticityDemo()
     {
-        getCamera().meter(20);
+        camera().meter(20);
         // Ein Reckteck als Boden, auf dem die Kreise abprallen.
         ground = new Rectangle(24, 1);
         ground.setPosition(-12, -16);
@@ -43,7 +43,7 @@ public class ElasticityDemo extends Scene
         // Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
         ground.setElasticity(0);
         ground.makeStatic();
-        setGravity(0, -9.81);
+        gravity(0, -9.81);
         add(ground);
         double elasticity = 0;
         for (double x = -11.5; x < 12; x += 2)

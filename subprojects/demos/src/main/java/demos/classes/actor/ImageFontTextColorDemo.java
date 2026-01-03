@@ -43,7 +43,7 @@ public class ImageFontTextColorDemo extends Scene
 
     public ImageFontTextColorDemo()
     {
-        setBackgroundColor("#eeeeee");
+        backgroundColor("#eeeeee");
         int y = 9;
         for (Map.Entry<String, Color> entry : Resources.colors.getAll()
                 .entrySet())

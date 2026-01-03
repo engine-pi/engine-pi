@@ -51,7 +51,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
             x += 5;
             density += 10;
         }
-        setGravity(0, -9.81);
+        gravity(0, -9.81);
         ground = new Rectangle(20, 1);
         ground.setPosition(-10, -5);
         ground.makeStatic();

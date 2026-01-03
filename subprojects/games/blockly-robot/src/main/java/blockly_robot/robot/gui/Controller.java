@@ -36,7 +36,7 @@ public class Controller
     public static void launchScene(int width, int height, Scene scene,
             boolean debug)
     {
-        scene.setBackgroundColor(Color.WHITE);
+        scene.backgroundColor(Color.WHITE);
         if (!Game.isRunning())
         {
             Game.start(scene, width, height);
@@ -55,7 +55,7 @@ public class Controller
     public static void launchScene(WindowScene windowScene)
     {
         Scene scene = (Scene) windowScene;
-        Camera camera = scene.getCamera();
+        Camera camera = scene.camera();
         double pixelPerMeter = camera.meter();
         Bounds bounds = windowScene.getWindowBounds();
         Vector center = bounds.center();
