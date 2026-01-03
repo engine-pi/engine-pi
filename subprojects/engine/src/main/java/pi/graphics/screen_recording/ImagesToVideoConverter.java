@@ -296,21 +296,19 @@ class ImagesToVideoConverter
     void generate()
     {
         generate(
-                // Sehr große Dateien
-                // SupportedAnimatedFormat.GIF,
-
-                // Verursacht flackern
-                // SupportedAnimatedFormat.APNG,
-
-                // Lossless keinen Streifen
-                SupportedAnimatedFormat.WEBP,
-
                 // Bestes Resultat
-                SupportedAnimatedFormat.MP4
+                SupportedAnimatedFormat.MP4,
+                // Lossless keinen Streifen
+                SupportedAnimatedFormat.WEBP
+
+        // Sehr große Dateien
+        // SupportedAnimatedFormat.GIF,
+
+        // Verursacht flackern
+        // SupportedAnimatedFormat.APNG,
 
         // MP4 ist besser
         // SupportedAnimatedFormat.WEBM
-
         );
     }
 }

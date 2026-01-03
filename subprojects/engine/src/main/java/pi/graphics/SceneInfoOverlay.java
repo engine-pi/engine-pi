@@ -463,7 +463,11 @@ public class SceneInfoOverlay
     }
 
     /**
-     * Deaktiviert die Infobox.
+     * <b>Deaktiviert</b> die Infobox der Szene.
+     *
+     * <p>
+     * Die Infobox wird nicht angezeigt.
+     * </p>
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander

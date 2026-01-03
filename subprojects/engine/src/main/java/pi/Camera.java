@@ -29,6 +29,10 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/CameraDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/camera/CameraDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/camera.md
+
 /**
  * Die <b>Kamera</b> steuert, welcher <b>Ausschnitt</b> der Spielfläche
  * angezeigt wird.

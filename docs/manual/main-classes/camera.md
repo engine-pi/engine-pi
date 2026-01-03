@@ -2,6 +2,8 @@
 
 [^engine-alpha]: https://engine-alpha.org/wiki/Tutorials/Kamera
 
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->
+
 <!-- ## Ziel des Tutorials
 
 In diesem Tutorial lernst du,
@@ -12,22 +14,27 @@ In diesem Tutorial lernst du,
 
 <!-- ## Was ist die Kamera? -->
 
-Spiele wie Pac-Man oder Pong haben einen statischen Bildschirm. Aber bei weit
+<!-- Spiele wie Pac-Man oder Pong haben einen statischen Bildschirm. Aber bei weit
 mehr Spielen bewegt sich das Bild, geht zum Beispiel mit der Hauptfigur und
-bleibt nicht statisch.
+bleibt nicht statisch. -->
 
-<!-- Ich hole mal etwas weiter aus:  -->
-
-Die <!-- ganze--> Zeichenebene ist unendlich weit in alle
+Bei Spielen wie [Pac-Man](https://de.wikipedia.org/wiki/Pac-Man) oder
+[Pong](https://de.wikipedia.org/wiki/Pong) bleibt der Bildschirm statisch. Bei
+weit mehr Spielen hingegen bewegt sich das Bild mit der Hauptfigur mit.<!-- Ich hole mal etwas weiter aus: Die ganze Zeichenebene ist unendlich weit in alle
 Richtungen, aber das Spielfenster nicht. Es kann also immer nur ein begrenzter
-rechteckiger Bereich der Zeichenebene im Fenster dargestellt werden.
-
+rechteckiger Bereich der Zeichenebene im Fenster dargestellt werden. -->
+Die Zeichenebene ist unendlich weit, das Spielfenster jedoch nicht. Es kann also
+immer nur ein begrenzter, rechteckiger Bereich der Zeichenebene im Fenster
+dargestellt werden.<!--
+-->
 Dieser Bereich wird bestimmt von der {{ class('pi.Camera', 'Kamera') }}. Die
 Kamera blickt auf die Zeichenebene. Sie „schneidet“ <!-- stanzt --> ein Rechteck
 mit den Maßen des Fensters aus und projiziert dies auf den Bildschirm. Der Rest
 der Zeichenebene ist also nicht sichtbar.
 
-![]()
+{{ image('docs/main-classes/camera/Ausschnitt-durch-Kamera.svg') }}
+
+<!-- ![]()
 /// caption
 Die Kamera auf der Zeichenebene...
 ///
@@ -37,7 +44,7 @@ Die Kamera auf der Zeichenebene...
 ...und das Ergebnis auf dem Spielbildschirm
 ///
 
-Dies macht ein Objekt der Klasse {{ class('pi.Camera') }}.
+Dies macht ein Objekt der Klasse {{ class('pi.Camera') }}. -->
 
 <!-- In der Klasse {{ class('pi.Game') }} gibt es eine Referenz auf die einzige aktive Kamera des
 Spiels und diese ist so auch in der eigenen spielsteuernden Klasse über die
@@ -45,15 +52,17 @@ Referenz cam erreichbar. -->
 
 ## Verschieben der Kamera
 
+{{ video('docs/main-classes/camera/ohne-Bounds.mp4', 'Kamerafahrt ohne Bounds') }}
+
 Die Kamera lässt sich <!-- einfach --> folgendermaßen verschieben:
 
 <!-- Hierfür gibt es die selbe Methode,
 wie auch für ein Raum-Objekt: -->
 
 ```java
-public void moveBy(Vektor delta)
+public void moveFocus(Vektor delta)
 
-public void moveBy(double deltaX, double deltaY)
+public void moveFocus(double deltaX, double deltaY)
 ```
 
 Hiermit verschiebt man die Kamera. Im folgenden Beispiel wird die Kamera um
@@ -65,10 +74,10 @@ natürlich auch größere Verschiebungswerte wählen.
 Das würde im Spiel so realisiert werden: -->
 
 ```java
-camera().moveBy(new Vektor(2, 2));
+camera().moveFocus(new Vektor(2, 2));
 
 // Oder alternativ:
-camera().moveBy(2, 2);
+camera().moveFocus(2, 2);
 ```
 
 Die Kamera wurde um (2|2) verschoben...
@@ -81,6 +90,7 @@ Die Kamera lässt sich also mit dieser Methode einfach und beliebig verschieben.
 
 Kaum ein Spiel verlangt eine unabhängige Bewegung der Kamera. Fast immer ist ein
 bestimmtes Objekt (in der Regel das, das gesteuert wird) dauerhaft im Fokus:
+
 <!-- Diese Fokus-Funktion steht auch in der Engine Alpha zur Verfügung. Hierfür gibt
 es die folgende Methode: -->
 
@@ -130,6 +140,9 @@ BoundingRechteck beschrieben.
 ```java
 public Camera bounds(Bounds bounds)
 ```
+
+{{ video('docs/main-classes/camera/mit-Bounds.mp4', 'Kamerafahrt mit Bounds') }}
+
 
 Dieses Bounding-Rechteck beschreibt die Fläche auf der Zeichenebene, die diese
 Kamera niemals übertreten wird. Die Grenzen der Kamera müssen natürlich

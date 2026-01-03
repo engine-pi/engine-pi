@@ -27,6 +27,9 @@ import pi.actor.Image;
 import pi.actor.Line;
 import pi.event.FrameUpdateListener;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/camera.md
+
 /**
  * Demonstriert die Klasse {@link Camera}.
  */
@@ -39,7 +42,8 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     public CameraDemo()
     {
         info("Kamera-Demo").description(
-                "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.");
+                "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.")
+                .disable();
         camera = getCamera();
         Image background = new Image("main-classes/camera/Fez.png", 32);
         background.setCenter(0, 0);
@@ -51,10 +55,13 @@ public class CameraDemo extends Scene implements FrameUpdateListener
 
         Bounds visible = getVisibleArea();
 
-        camera.bounds(new Bounds(background.getX() + visible.width() / 2,
+        Bounds cameraBounds = new Bounds(
+                background.getX() + visible.width() / 2,
                 background.getY() + visible.height() / 2,
                 background.width() - visible.width(),
-                background.height() - visible.height()));
+                background.height() - visible.height());
+
+        camera.bounds(cameraBounds);
     }
 
     @Override

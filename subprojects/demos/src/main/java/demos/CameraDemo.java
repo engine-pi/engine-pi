@@ -29,6 +29,8 @@ import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
+
 /**
  * Demonstriert die Klasse {@link Camera}.
  */
