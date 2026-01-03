@@ -1,5 +1,7 @@
 package pi.actor;
 
+import static pi.Resources.colors;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -11,7 +13,8 @@ import pi.Vector;
 import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
-import static pi.Resources.colors;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/LineRandomDemo.java
 
 /**
  * Eine <b>Linie</b> zwischen zwei Punkten.
@@ -86,7 +89,7 @@ public class Line extends Actor
         Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
 
         Graphics2DUtil.drawArrow(g, point1.multiply(pixelPerMeter),
-                point2.multiply(pixelPerMeter), 50, 30);
+                point2.multiply(pixelPerMeter), 50, 45);
         g.setTransform(oldTransform);
         g.setStroke(oldStroke);
         g.setColor(oldColor);

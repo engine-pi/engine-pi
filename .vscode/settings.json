@@ -37,7 +37,7 @@
         "group": "Default"
     },
     {
-        "filePath": "docs",
+        "filePath": "subprojects/demos/src/main/java/demos",
         "group": "Default"
     },
     {
@@ -45,8 +45,9 @@
         "group": "Default"
     },
     {
-        "filePath": "subprojects/demos",
+        "filePath": "docs",
         "group": "Default"
     }
-]
+],
+"favorites.sortOrder": "MANUAL"
 }

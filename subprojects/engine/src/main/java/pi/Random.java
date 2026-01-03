@@ -177,16 +177,16 @@ public final class Random
     }
 
     /**
-     * Erzeugt einen zufälligen Vektor mit Komponenten in den angegebenen
-     * Bereichen.
+     * Erzeugt einen zufälligen {@link Vector Vektor} mit Komponenten in den
+     * angegebenen Bereichen.
      *
-     * @param lowerX die untere Grenze für die X-Komponente
-     * @param upperX die obere Grenze für die X-Komponente
-     * @param lowerY die untere Grenze für die Y-Komponente
-     * @param upperY die obere Grenze für die Y-Komponente
+     * @param lowerX Die untere Grenze für die X-Komponente.
+     * @param upperX Die obere Grenze für die X-Komponente.
+     * @param lowerY Die untere Grenze für die Y-Komponente.
+     * @param upperY Die obere Grenze für die Y-Komponente.
      *
-     * @return ein neuer Vektor mit zufälligen X- und Y-Komponenten innerhalb
-     *     der angegebenen Bereiche
+     * @return Ein neuer Vektor mit zufälligen X- und Y-Komponenten innerhalb
+     *     der angegebenen Bereiche.
      *
      * @since 0.42.0
      */
@@ -198,8 +198,8 @@ public final class Random
     }
 
     /**
-     * Erzeugt einen zufälligen <b>Vektor</b> innerhalb des sichtbaren Bereichs
-     * einer {@link Scene}.
+     * Erzeugt einen zufälligen {@link Vector Vektor} innerhalb des sichtbaren
+     * Bereichs einer {@link Scene}.
      *
      * <b>Die Grenzen werden aus dem {@link Bounds} der Szene übernommen.</b>
      *

@@ -210,6 +210,9 @@ public class Graphics2DUtil
                 to.getX(pixelPerMeter), to.getY(pixelPerMeter));
     }
 
+    // Go to
+    // file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/ArrowDemo.java
+
     /**
      * Zeichnet an ein Ende der Linie ein Dreieck als Pfeilspitze.
      *
@@ -236,18 +239,20 @@ public class Graphics2DUtil
      *     liegt)
      */
     public static void drawArrow(Graphics2D g, Vector from, Vector to,
-            int legsLength, int vertexAngle)
+            int legsLength, double vertexAngle)
     {
         // C ist die Spitze des gleichschenkligen Dreiecks.
         Vector C = to;
 
         // Winkel der Line zur x-Achse
-        double direction = from.add(to).getAngle();
-        Vector A = to.add(Vector.ofAngle(direction - vertexAngle / 2 - 180)
-                .multiply(legsLength));
-        Vector B = to.add(Vector.ofAngle(direction + vertexAngle / 2 - 180)
-                .multiply(legsLength));
+        double direction = from.subtract(to).getAngle();
 
+        vertexAngle = (360 - vertexAngle) / 2;
+        double directionA = direction - vertexAngle + 180;
+        double directionB = direction + vertexAngle + 180;
+
+        Vector A = to.add(Vector.ofAngle(directionA).multiply(legsLength));
+        Vector B = to.add(Vector.ofAngle(directionB).multiply(legsLength));
         drawLine(g, C, A);
         drawLine(g, C, B);
     }
@@ -285,7 +290,7 @@ public class Graphics2DUtil
             {
                 // Damit wir den Pfeil sehen
                 setGravityOfEarth();
-                new Circle(7).setCenter(0, 0).makeStatic();
+                add(new Circle(7).setCenter(0, 0).makeStatic());
             }
         });
     }
