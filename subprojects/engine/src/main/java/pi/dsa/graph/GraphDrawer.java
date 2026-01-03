@@ -91,7 +91,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
     private void placeNode(Vector position)
     {
         LabeledNode node = new LabeledNode();
-        node.setCenter(position);
+        node.center(position);
         scene.add(node);
         nodes.add(node);
         graph.addNode("", position.getX(), position.getY());

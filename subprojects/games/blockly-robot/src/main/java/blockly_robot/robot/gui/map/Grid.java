@@ -36,7 +36,7 @@ public class Grid extends Actor
         this(numX, numY, 1);
     }
 
-    public Actor setColor(Color color)
+    public Actor color(Color color)
     {
         this.color = color;
         return this;

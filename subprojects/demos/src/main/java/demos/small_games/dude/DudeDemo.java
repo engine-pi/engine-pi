@@ -50,8 +50,8 @@ public class DudeDemo extends Scene
         gameData = new GameData();
         addLayer(new HUD(gameData));
         character = new PlayerCharacter(gameData);
-        character.setPosition(0, 0);
-        character.setRotationLocked(true);
+        character.position(0, 0);
+        character.rotationLocked(true);
         character.makeDynamic();
         /*
          * weird = new Rectangle(2, 0.2); weird.setColor(Color.ORANGE);
@@ -92,14 +92,14 @@ public class DudeDemo extends Scene
         for (int i = 0; i < 15; i++)
         {
             Coin coin = new Coin();
-            coin.setPosition(6 + i, 6);
+            coin.position(6 + i, 6);
             coin.addCollisionListener(character, coin);
             add(coin);
         }
         for (int j = 0; j < 30; j++)
         {
             ManaPickup manaPickup = new ManaPickup();
-            manaPickup.setPosition(-j, 1);
+            manaPickup.position(-j, 1);
             manaPickup.addCollisionListener(character, manaPickup);
             add(manaPickup);
         }
@@ -111,8 +111,7 @@ public class DudeDemo extends Scene
         middleBackground.parallaxPosition(0.1, 0.1);
         middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
-        backgroundImage.setPosition(
-                -visibleArea(Game.getWindowSize()).width() / 2,
+        backgroundImage.position(-visibleArea(Game.getWindowSize()).width() / 2,
                 -visibleArea(Game.getWindowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
@@ -120,7 +119,7 @@ public class DudeDemo extends Scene
         furtherBackground.parallaxPosition(0.05, 0.05);
         Image moon = new Image("dude/moon.png", 1, 1);
         furtherBackground.add(moon);
-        moon.setPosition(300, 300);
+        moon.position(300, 300);
         addLayer(middleBackground);
         addLayer(furtherBackground);
         // CLOUDS
@@ -142,7 +141,7 @@ public class DudeDemo extends Scene
         {
             cloudTiles.setTile(i, 0, TileMap.createFromImage(tilePath));
         }
-        cloudTiles.setPosition(xOffset,
+        cloudTiles.position(xOffset,
                 -visibleArea(Game.getWindowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
@@ -151,7 +150,7 @@ public class DudeDemo extends Scene
     private void makePlatform(int length, double pX, double pY)
     {
         Platform platform = new Platform(length);
-        platform.setPosition(pX, pY);
+        platform.position(pX, pY);
         add(platform);
     }
 

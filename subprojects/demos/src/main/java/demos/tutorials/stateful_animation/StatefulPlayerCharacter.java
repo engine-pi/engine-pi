@@ -67,17 +67,17 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private void setupAutomaticTransitions()
     {
-        setStateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
-        setStateTransition(PlayerState.LANDING, PlayerState.IDLE);
+        stateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
+        stateTransition(PlayerState.LANDING, PlayerState.IDLE);
     }
 
     private void setupPhysics()
     {
         makeDynamic();
-        setRotationLocked(true);
-        setElasticity(0);
-        setFriction(30);
-        setLinearDamping(.3);
+        rotationLocked(true);
+        elasticity(0);
+        friction(30);
+        linearDamping(.3);
     }
 
     @Override
@@ -91,14 +91,14 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private void attemptJump()
     {
-        PlayerState state = getState();
+        PlayerState state = state();
         if (state == PlayerState.IDLE || state == PlayerState.WALKING
                 || state == PlayerState.RUNNING)
         {
             if (isGrounded())
             {
                 applyImpulse(new Vector(0, JUMP_IMPULSE));
-                setState(PlayerState.JUMPING);
+                state(PlayerState.JUMPING);
             }
         }
     }
@@ -106,20 +106,20 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     @Override
     public void onFrameUpdate(double dT)
     {
-        Vector velocity = getVelocity();
-        PlayerState state = getState();
+        Vector velocity = velocity();
+        PlayerState state = state();
         if (velocity.getY() < -THRESHOLD)
         {
             switch (state)
             {
             case JUMPING:
-                setState(PlayerState.MIDAIR);
+                state(PlayerState.MIDAIR);
                 break;
 
             case IDLE:
             case WALKING:
             case RUNNING:
-                setState(PlayerState.FALLING);
+                state(PlayerState.FALLING);
                 break;
 
             default:
@@ -128,11 +128,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         }
         else if (velocity.getY() < THRESHOLD && state == PlayerState.FALLING)
         {
-            setState(PlayerState.LANDING);
+            state(PlayerState.LANDING);
         }
         if (Math.abs(velocity.getX()) > MAX_SPEED)
         {
-            setVelocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED,
+            velocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED,
                     velocity.getY()));
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
@@ -162,11 +162,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         }
         if (velocity.getX() > 0)
         {
-            setFlipHorizontal(false);
+            flipHorizontal(false);
         }
         else if (velocity.getX() < 0)
         {
-            setFlipHorizontal(true);
+            flipHorizontal(true);
         }
     }
 }

@@ -33,8 +33,8 @@ public class CollisionTest extends Scene
 
     public CollisionTest()
     {
-        wall.setColor("orange");
-        ball.setColor("green");
+        wall.color("orange");
+        ball.color("green");
         // ball.position.set(-200, 0);
         // wall.position.set(200, -200);
         add(wall, ball);

@@ -471,7 +471,7 @@ public class BodyHandler implements PhysicsHandler
         {
             Actor corresponding = (Actor) fixture.getBody().getUserData();
             if (corresponding != null
-                    && corresponding.getBodyType() == BodyType.STATIC)
+                    && corresponding.bodyType() == BodyType.STATIC)
             {
                 return true;
             }

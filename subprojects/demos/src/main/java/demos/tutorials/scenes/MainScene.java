@@ -41,15 +41,15 @@ public class MainScene extends Scene implements KeyStrokeListener
     {
         pauseMenu = new PauseMenu(this);
         Rectangle toAnimate = new Rectangle(5, 2);
-        toAnimate.setCenter(0, -5);
-        toAnimate.setColor("orange");
+        toAnimate.center(0, -5);
+        toAnimate.color("orange");
         CircleAnimation animation = new CircleAnimation(toAnimate,
                 new Vector(0, 0), 8, true, true);
         addFrameUpdateListener(animation);
         add(toAnimate);
         addKeyStrokeListener(this);
         Text info = new Text("Pause mit P");
-        info.setCenter(-7, -5);
+        info.center(-7, -5);
         add(info);
     }
 
@@ -77,7 +77,7 @@ public class MainScene extends Scene implements KeyStrokeListener
             MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
             add(back, back.label);
             Text headline = new Text("Mach mal Pause.", 2);
-            headline.setCenter(0, 3);
+            headline.center(0, 3);
             add(headline);
         }
 
@@ -90,12 +90,12 @@ public class MainScene extends Scene implements KeyStrokeListener
             {
                 super(10, 1.5);
                 label = new Text(labelText, 1);
-                label.setLayerPosition(1);
-                label.setColor("black");
-                label.setCenter(center);
-                setLayerPosition(0);
-                setColor("blueGreen");
-                setCenter(center);
+                label.layerPosition(1);
+                label.color("black");
+                label.center(center);
+                layerPosition(0);
+                color("blueGreen");
+                center(center);
             }
 
             @Override
@@ -112,11 +112,11 @@ public class MainScene extends Scene implements KeyStrokeListener
             {
                 if (contains(Game.getMousePosition()))
                 {
-                    setColor("blue");
+                    color("blue");
                 }
                 else
                 {
-                    setColor("blueGreen");
+                    color("blueGreen");
                 }
             }
         }

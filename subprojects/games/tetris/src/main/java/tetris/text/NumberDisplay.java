@@ -30,14 +30,14 @@ public class NumberDisplay
     {
         font = new ImageFontText(Font.getFont(), "0", maxDigits,
                 TextAlignment.RIGHT);
-        font.setPosition(x, y);
+        font.position(x, y);
         scene.add(font);
         set(0);
     }
 
     public void write(int number)
     {
-        font.setContent(String.valueOf(number));
+        font.content(String.valueOf(number));
     }
 
     public void set(int number)

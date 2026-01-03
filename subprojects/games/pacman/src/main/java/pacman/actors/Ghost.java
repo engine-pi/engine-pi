@@ -57,21 +57,21 @@ public abstract class Ghost extends StatefulImagesAnimation<GhostState>
 
     public void reverse()
     {
-        switch (getState())
+        switch (state())
         {
         case STAND -> {
         }
-        case DOWN -> setState(GhostState.UP);
-        case UP -> setState(GhostState.DOWN);
-        case LEFT -> setState(GhostState.RIGHT);
-        case RIGHT -> setState(GhostState.LEFT);
+        case DOWN -> state(GhostState.UP);
+        case UP -> state(GhostState.DOWN);
+        case LEFT -> state(GhostState.RIGHT);
+        case RIGHT -> state(GhostState.LEFT);
         }
     }
 
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        switch (getState())
+        switch (state())
         {
         case STAND -> {
         }

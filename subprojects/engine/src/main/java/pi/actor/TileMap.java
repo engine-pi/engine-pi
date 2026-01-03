@@ -25,6 +25,7 @@ import java.awt.image.BufferedImage;
 
 import pi.Resources;
 import pi.annotations.API;
+import pi.annotations.Getter;
 
 /**
  * @author Michael Andonie
@@ -77,5 +78,6 @@ public interface TileMap
         return (x, y) -> tiles[x][y];
     }
 
-    Tile getTile(int x, int y);
+    @Getter
+    Tile tile(int x, int y);
 }

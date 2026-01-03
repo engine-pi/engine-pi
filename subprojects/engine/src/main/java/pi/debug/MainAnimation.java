@@ -118,8 +118,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         Text enginePiText = new Text("E   n   g   i   n   e         P   i", 2,
                 "fonts/Cantarell-Bold.ttf", 0);
         enginePiText.makeStatic();
-        enginePiText.setColor("white");
-        enginePiText.setCenter(0, -7);
+        enginePiText.color("white");
+        enginePiText.center(0, -7);
         add(enginePiText);
         gravityOfEarth();
         createGround();
@@ -140,10 +140,10 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
-        text.setPosition(-10, 8.2);
-        text.setColor("gray");
+        text.position(-10, 8.2);
+        text.color("gray");
         text.makeStatic();
-        text.setDensity(0.1);
+        text.density(0.1);
         add(text);
     }
 
@@ -156,10 +156,10 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     private void createGround()
     {
         Rectangle ground = new Rectangle(20, 0.2);
-        ground.setColor("white");
-        ground.setCenter(0, -6);
-        ground.setElasticity(.95);
-        ground.setFriction(.2);
+        ground.color("white");
+        ground.center(0, -6);
+        ground.elasticity(.95);
+        ground.friction(.2);
         ground.makeStatic();
         add(ground);
     }
@@ -167,18 +167,18 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     private void createRectangleItem()
     {
         Rectangle rectangle = new Rectangle(1, 2);
-        rectangle.setColor(rectangleItemColor);
-        rectangle.setPosition(-5, 10);
+        rectangle.color(rectangleItemColor);
+        rectangle.position(-5, 10);
         makeItemDynamic(rectangle);
-        rectangle.setRotation(30);
+        rectangle.rotation(30);
         dropDownItem(rectangle);
     }
 
     private void createCircleItem()
     {
         Circle circle = new Circle();
-        circle.setColor(circleItemColor);
-        circle.setPosition(5, 10);
+        circle.color(circleItemColor);
+        circle.position(5, 10);
         makeItemDynamic(circle);
         circle.applyImpulse(new Vector(Random.range(-100, 100), 0));
         dropDownItem(circle);
@@ -188,9 +188,9 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Polygon triangle = new Polygon(new Vector(0, 0), new Vector(1, 0),
                 new Vector(.5, -1));
-        triangle.setColor(triangleItemColor);
+        triangle.color(triangleItemColor);
         makeItemDynamic(triangle);
-        triangle.setRotation(-20);
+        triangle.rotation(-20);
         dropDownItem(triangle);
     }
 
@@ -202,8 +202,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
      */
     private void makeItemDynamic(Actor item)
     {
-        item.setElasticity(0.9);
-        item.setFriction(1);
+        item.elasticity(0.9);
+        item.friction(1);
         item.makeDynamic();
     }
 
@@ -216,7 +216,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         for (Actor item : items)
         {
-            if (item.getCenter().getY() < -10)
+            if (item.center().getY() < -10)
             {
                 dropDownItem(item);
             }
@@ -224,12 +224,12 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         // Den Kreis des i’s auf und ab bewegen, damit sich keine
         // kleinen Figuren zwischen dem P und dem i ansammeln. Somit endet die
         // Animation praktisch nie.
-        if (logo.circleI.getY() >= 4)
+        if (logo.circleI.y() >= 4)
         {
             // abwärts
             yMovementCircleI = -0.01;
         }
-        else if (logo.circleI.getY() <= 2)
+        else if (logo.circleI.y() <= 2)
         {
             // aufwärts
             yMovementCircleI = 0.01;
@@ -260,7 +260,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
             });
         }
         item.resetMovement();
-        item.setCenter(Random.range(-7, 7), Random.range(5, 8));
+        item.center(Random.range(-7, 7), Random.range(5, 8));
     }
 
     public static void main(String[] args) throws IOException

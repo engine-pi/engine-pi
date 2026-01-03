@@ -21,6 +21,8 @@
 package pi.actor;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Eine <b>Federverbindung</b>.
@@ -54,11 +56,12 @@ public final class PrismaticJoint extends
     private double maximumMotorForce;
 
     @API
-    public void setMaximumMotorForce(double maximumMotorForce)
+    @Setter
+    public void maximumMotorForce(double maximumMotorForce)
     {
         this.maximumMotorForce = maximumMotorForce;
         this.motorEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.setMaxMotorForce((float) maximumMotorForce);
@@ -67,23 +70,26 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public double getMaximumMotorForce()
+    @Getter
+    public double maximumMotorForce()
     {
         return maximumMotorForce;
     }
 
     @API
-    public double getLowerLimit()
+    @Getter
+    public double lowerLimit()
     {
         return lowerLimit;
     }
 
     @API
-    public void setLowerLimit(double lowerLimit)
+    @Setter
+    public void lowerLimit(double lowerLimit)
     {
         this.lowerLimit = lowerLimit;
         this.limitEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.setLimits((float) lowerLimit, (float) upperLimit);
@@ -92,17 +98,19 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public double getUpperLimit()
+    @Getter
+    public double upperLimit()
     {
         return upperLimit;
     }
 
     @API
-    public void setUpperLimit(double upperLimit)
+    @Setter
+    public void upperLimit(double upperLimit)
     {
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.setLimits((float) lowerLimit, (float) upperLimit);
@@ -111,9 +119,10 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public double getMotorSpeed()
+    @Getter
+    public double motorSpeed()
     {
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             return joint.getMotorSpeed();
@@ -122,11 +131,12 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public void setMotorSpeed(double motorSpeed)
+    @Setter
+    public void motorSpeed(double motorSpeed)
     {
         this.motorSpeed = motorSpeed;
         this.motorEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.setMotorSpeed((float) motorSpeed);
@@ -141,10 +151,11 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public void setMotorEnabled(boolean motorEnabled)
+    @Setter
+    public void motorEnabled(boolean motorEnabled)
     {
         this.motorEnabled = motorEnabled;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.enableMotor(motorEnabled);
@@ -158,10 +169,11 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public void setLimitEnabled(boolean limitEnabled)
+    @Setter
+    public void limitEnabled(boolean limitEnabled)
     {
         this.limitEnabled = limitEnabled;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint != null)
         {
             joint.enableLimit(limitEnabled);
@@ -169,16 +181,18 @@ public final class PrismaticJoint extends
     }
 
     @API
-    public void setLimits(double lower, double upper)
+    @Setter
+    public void limits(double lower, double upper)
     {
-        setLowerLimit(lower);
-        setUpperLimit(upper);
+        lowerLimit(lower);
+        upperLimit(upper);
     }
 
     @API
-    public double getTranslation()
+    @Getter
+    public double translation()
     {
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint joint = joint();
         if (joint == null)
         {
             return 0;

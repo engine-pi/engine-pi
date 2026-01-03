@@ -44,7 +44,7 @@ public class SnakeMinimal extends Scene
     public SnakeMinimal()
     {
         add(snake);
-        scoreText.setPosition(-9, 5);
+        scoreText.position(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }
@@ -52,7 +52,7 @@ public class SnakeMinimal extends Scene
     public void setScore(int score)
     {
         this.score = score;
-        scoreText.setContent("Score: " + score);
+        scoreText.content("Score: " + score);
     }
 
     public void increaseScore()
@@ -65,7 +65,7 @@ public class SnakeMinimal extends Scene
         double x = Random.range() * 10 - 5;
         double y = Random.range() * 10 - 5;
         Goodie goodie = new Goodie();
-        goodie.setCenter(x, y);
+        goodie.center(x, y);
         add(goodie);
         goodie.addCollisionListener(snake, goodie);
     }
@@ -78,7 +78,7 @@ public class SnakeMinimal extends Scene
         public Snake()
         {
             super(1);
-            setColor("green");
+            color("green");
         }
 
         @Override
@@ -116,7 +116,7 @@ public class SnakeMinimal extends Scene
         public Goodie()
         {
             super("Eat Me!", 1);
-            setColor("red");
+            color("red");
         }
 
         @Override

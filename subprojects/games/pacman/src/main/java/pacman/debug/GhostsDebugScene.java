@@ -43,16 +43,16 @@ public class GhostsDebugScene extends Scene implements KeyStrokeListener
     {
         Ghost ghost = Ghost.createGhost(clazz);
         assert ghost != null;
-        ghost.setPosition(x, y);
+        ghost.position(x, y);
         add(ghost);
         return ghost;
     }
 
     private void setCurrent(Ghost ghost)
     {
-        current.setState(STAND);
+        current.state(STAND);
         current = ghost;
-        current.setState(UP);
+        current.state(UP);
     }
 
     @Override
@@ -60,11 +60,11 @@ public class GhostsDebugScene extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_SPACE -> current.setState(STAND);
-        case KeyEvent.VK_DOWN -> current.setState(DOWN);
-        case KeyEvent.VK_UP -> current.setState(UP);
-        case KeyEvent.VK_LEFT -> current.setState(LEFT);
-        case KeyEvent.VK_RIGHT -> current.setState(RIGHT);
+        case KeyEvent.VK_SPACE -> current.state(STAND);
+        case KeyEvent.VK_DOWN -> current.state(DOWN);
+        case KeyEvent.VK_UP -> current.state(UP);
+        case KeyEvent.VK_LEFT -> current.state(LEFT);
+        case KeyEvent.VK_RIGHT -> current.state(RIGHT);
         case KeyEvent.VK_1 -> setCurrent(blinky);
         case KeyEvent.VK_2 -> setCurrent(clyde);
         case KeyEvent.VK_3 -> setCurrent(inky);

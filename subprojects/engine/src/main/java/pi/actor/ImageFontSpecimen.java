@@ -66,17 +66,17 @@ public class ImageFontSpecimen
     {
         double startX = x;
         int i = 0;
-        for (ImageFontGlyph glyph : font.getGlyphs())
+        for (ImageFontGlyph glyph : font.glyphs())
         {
-            ImageFontText text = new ImageFontText(font, glyph.getGlyph() + "");
-            text.setPosition(x, y);
+            ImageFontText text = new ImageFontText(font, glyph.glyph() + "");
+            text.position(x, y);
             scene.add(text);
-            scene.add(new Text(glyph.getContent(), 1).setPosition(x + 2, y)
-                    .setColor("gray"));
-            scene.add(new Text(glyph.getUnicodeName(), 0.3, "Monospaced")
-                    .setPosition(x, y - 0.4).setColor("gray"));
-            scene.add(new Text(glyph.getHexNumber(), 0.3, "Monospaced")
-                    .setPosition(x, y - 0.8).setColor("gray"));
+            scene.add(new Text(glyph.content(), 1).position(x + 2, y)
+                    .color("gray"));
+            scene.add(new Text(glyph.unicodeName(), 0.3, "Monospaced")
+                    .position(x, y - 0.4).color("gray"));
+            scene.add(new Text(glyph.hexNumber(), 0.3, "Monospaced")
+                    .position(x, y - 0.8).color("gray"));
             x += 4;
             i++;
             if (i % glyphsPerRow == 0)

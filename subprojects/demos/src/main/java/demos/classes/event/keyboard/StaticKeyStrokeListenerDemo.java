@@ -33,7 +33,7 @@ public class StaticKeyStrokeListenerDemo extends Scene
     public StaticKeyStrokeListenerDemo()
     {
         rectangle = new Rectangle(2, 2);
-        rectangle.setColor(Color.BLUE);
+        rectangle.color(Color.BLUE);
         add(rectangle);
     }
 

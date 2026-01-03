@@ -35,12 +35,12 @@ public class RectangleDemo extends ActorBaseScene
         Rectangle r1 = new Rectangle();
         // Durch Angabe von Breite und Höhe.
         Rectangle r2 = new Rectangle(2, 2);
-        r2.setPosition(3, 0);
+        r2.position(3, 0);
         //
         Rectangle r3 = new Rectangle(3, 3, () -> {
             return FixtureBuilder.rectangle(2, 2);
         });
-        r3.setPosition(7, 0);
+        r3.position(7, 0);
         add(r1, r2, r3);
     }
 

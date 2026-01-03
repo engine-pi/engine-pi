@@ -31,7 +31,7 @@ public class StarDemo extends ActorBaseScene
     public StarDemo()
     {
         Star star = new Star();
-        star.setPosition(2, 2);
+        star.position(2, 2);
         star.makeDynamic();
         star.rotateBy(45);
         add(star);

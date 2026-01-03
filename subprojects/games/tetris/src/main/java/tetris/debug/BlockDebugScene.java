@@ -37,8 +37,8 @@ public class BlockDebugScene extends Scene implements KeyStrokeListener
     public BlockDebugScene()
     {
         blockName = new Text("L", 2);
-        blockName.setColor(Color.WHITE);
-        blockName.setPosition(2, Tetris.HEIGHT / 2);
+        blockName.color(Color.WHITE);
+        blockName.position(2, Tetris.HEIGHT / 2);
         add(blockName);
         createBlock("L");
     }
@@ -50,7 +50,7 @@ public class BlockDebugScene extends Scene implements KeyStrokeListener
             block.remove();
         }
         block = new Block(this, imageName, Tetris.WIDTH / 2, Tetris.HEIGHT - 2);
-        blockName.setContent(imageName);
+        blockName.content(imageName);
     }
 
     @Override

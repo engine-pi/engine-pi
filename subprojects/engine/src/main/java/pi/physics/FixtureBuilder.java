@@ -164,7 +164,7 @@ public final class FixtureBuilder
      *     4</li>
      *     </ul>
      *
-     * @see pi.actor.Actor#setFixtures(String)
+     * @see pi.actor.Actor#fixtures(String)
      */
     public static Supplier<List<FixtureData>> fromString(String code)
     {

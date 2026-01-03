@@ -45,15 +45,15 @@ public class Table
         border = new Rectangle(
                 2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP + BORDER * 2,
                 Edge.WIDTH + 2 * DIAGONAL_GAP + BORDER * 2);
-        border.setPosition(-Edge.WIDTH - GAP - DIAGONAL_GAP - BORDER,
+        border.position(-Edge.WIDTH - GAP - DIAGONAL_GAP - BORDER,
                 -Edge.WIDTH / 2 - DIAGONAL_GAP - BORDER);
-        border.setColor(new Color(226, 228, 231));
+        border.color(new Color(226, 228, 231));
         Rectangle background = new Rectangle(
                 2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP,
                 Edge.WIDTH + 2 * DIAGONAL_GAP);
-        background.setPosition(-Edge.WIDTH - GAP - DIAGONAL_GAP,
+        background.position(-Edge.WIDTH - GAP - DIAGONAL_GAP,
                 -Edge.WIDTH / 2 - DIAGONAL_GAP);
-        background.setColor(new Color(68, 121, 43));
+        background.color(new Color(68, 121, 43));
         actors.add(border);
         actors.add(background);
         createEdges();

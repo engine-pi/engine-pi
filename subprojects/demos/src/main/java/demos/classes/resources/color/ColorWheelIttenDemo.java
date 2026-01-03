@@ -65,8 +65,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         SECONDARY_AREAS = drawSecondaryColors();
         EXTRA_AREAS = drawExtraColors();
         NAME = new Text("");
-        NAME.setPosition(-8, 7);
-        NAME.setColor("white");
+        NAME.position(-8, 7);
+        NAME.color("white");
         add(NAME);
         setNextColorScheme();
         backgroundColor("#444444");
@@ -121,8 +121,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
             double angle = (i * SEGMENT_ANGLE * -1) + 90;
             Vector textPosition = getCirclePoint(7.5, angle);
             add(new Text(i + "", 0.5)
-                    .setPosition(textPosition.getX(), textPosition.getY())
-                    .setColor("weiß"));
+                    .position(textPosition.getX(), textPosition.getY())
+                    .color("weiß"));
             areas[i] = createWheelArea(i, angle);
         }
         return areas;
@@ -184,7 +184,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         for (int i = 0; i < 4; i++)
         {
             areas[i] = new Rectangle(1, 1);
-            areas[i].setPosition(-8 + i, -8);
+            areas[i].position(-8 + i, -8);
         }
         return areas;
     }
@@ -201,30 +201,30 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private void setColorScheme(ColorSchemeSelection selection)
     {
-        NAME.setContent(selection.name());
+        NAME.content(selection.name());
         var scheme = selection.getScheme();
         int i = 0;
         for (Color color : scheme.getWheelColors())
         {
-            WHEEL_AREAS[i].setColor(color);
+            WHEEL_AREAS[i].color(color);
             i++;
         }
         i = 0;
         for (Color color : scheme.getPrimaryColors())
         {
-            PRIMARY_AREAS[i].setColor(color);
+            PRIMARY_AREAS[i].color(color);
             i++;
         }
         i = 0;
         for (Color color : scheme.getSecondaryColors())
         {
-            SECONDARY_AREAS[i].setColor(color);
+            SECONDARY_AREAS[i].color(color);
             i++;
         }
         i = 0;
         for (Color color : scheme.getExtraColors())
         {
-            EXTRA_AREAS[i].setColor(color);
+            EXTRA_AREAS[i].color(color);
             i++;
         }
     }

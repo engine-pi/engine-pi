@@ -36,13 +36,13 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
 
     public GetMousePositionDemo()
     {
-        add(new Text("x:").setPosition(-3, 0));
+        add(new Text("x:").position(-3, 0));
         x = new Text("");
-        x.setPosition(-2, 0);
+        x.position(-2, 0);
         add(x);
-        add(new Text("y:").setPosition(1, 0));
+        add(new Text("y:").position(1, 0));
         y = new Text("");
-        y.setPosition(2, 0);
+        y.position(2, 0);
         add(y);
     }
 
@@ -50,8 +50,8 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
     public void onFrameUpdate(double pastTime)
     {
         Vector position = Game.getMousePosition();
-        x.setContent(TextUtil.roundNumber(position.getX()));
-        y.setContent(TextUtil.roundNumber(position.getY()));
+        x.content(TextUtil.roundNumber(position.getX()));
+        y.content(TextUtil.roundNumber(position.getY()));
     }
 
     public static void main(String[] args)

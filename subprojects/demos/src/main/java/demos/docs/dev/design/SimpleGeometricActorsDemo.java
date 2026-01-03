@@ -36,8 +36,8 @@ public class SimpleGeometricActorsDemo
     public static void main(String[] args)
     {
         Controller.windowDimension(700, 300);
-        new Circle(5).setCenter(-7, 0);
-        new Rectangle(5).setCenter(0, 0);
-        new Triangle(5).setCenter(7, 0);
+        new Circle(5).center(-7, 0);
+        new Rectangle(5).center(0, 0);
+        new Triangle(5).center(7, 0);
     }
 }

@@ -83,14 +83,14 @@ public class Table extends Scene
         right = new TableSide(1, this);
 
         ball = new Ball();
-        ball.setCenter(0, 0);
+        ball.center(0, 0);
 
         topBouncer = new BounceBar(bounds.width());
-        topBouncer.setPosition(bounds.xLeft(), bounds.yTop());
+        topBouncer.position(bounds.xLeft(), bounds.yTop());
 
         bottomBouncer = new BounceBar(bounds.width());
-        bottomBouncer.setPosition(bounds.xLeft(),
-                bounds.yBottom() - bottomBouncer.getHeight());
+        bottomBouncer.position(bounds.xLeft(),
+                bounds.yBottom() - bottomBouncer.height());
 
         add(ball, topBouncer, bottomBouncer);
 
@@ -116,7 +116,7 @@ public class Table extends Scene
     public void applyImpulseToBall()
     {
         ball.resetMovement();
-        ball.setCenter(0, 0);
+        ball.center(0, 0);
         ball.applyImpulse(
                 Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
     }
@@ -138,7 +138,7 @@ public class Table extends Scene
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        double x = ball.getCenter().getX();
+        double x = ball.center().getX();
         if (x < bounds.xLeft())
         {
             left.increaseScore();

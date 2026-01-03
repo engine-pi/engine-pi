@@ -105,6 +105,9 @@ public class Star extends Polygon
         return vectors;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

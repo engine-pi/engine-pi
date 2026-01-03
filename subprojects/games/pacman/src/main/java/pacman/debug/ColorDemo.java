@@ -8,7 +8,7 @@ public class ColorDemo extends BaseScene
 {
     public ColorDemo()
     {
-        add(new Text("Blinky").setColor("teal"));
+        add(new Text("Blinky").color("teal"));
     }
 
     public static void main(String[] args)

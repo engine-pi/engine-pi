@@ -33,7 +33,7 @@ class Scene1 extends Scene
 
     public Scene1()
     {
-        add(new Text("Scene 1").setColor("red"));
+        add(new Text("Scene 1").color("red"));
     }
 }
 
@@ -41,7 +41,7 @@ class Scene2 extends Scene
 {
     public Scene2()
     {
-        add(new Text("Scene 2").setColor("green"));
+        add(new Text("Scene 2").color("green"));
     }
 }
 

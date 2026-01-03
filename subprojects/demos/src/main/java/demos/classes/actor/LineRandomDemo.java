@@ -51,7 +51,7 @@ public class LineRandomDemo extends Scene
         for (int i = 0; i < Random.range(10, 30); i++)
         {
             Line line = new Line(Random.vector(this), Random.vector(this));
-            line.setColor(colors.random());
+            line.color(colors.random());
             line.strokeWidth(Random.range(0.01, 0.5));
             add(line);
         }

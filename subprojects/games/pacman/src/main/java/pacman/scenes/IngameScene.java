@@ -25,7 +25,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     public IngameScene()
     {
         ghost = new Blinky();
-        ghost.setPosition(10, 10);
+        ghost.position(10, 10);
         ghost.addCollisionListener((event) -> {
             if (event.getColliding() instanceof Image)
             {
@@ -934,7 +934,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 DOUBLE_CORNER_BR // 27
         );
         screenshot = new Image("images/screenshots/IngameReady.png", 8);
-        screenshot.setVisible(false);
+        screenshot.visible(false);
         add(screenshot);
     }
 
@@ -953,7 +953,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     private void setBrick(Brick brick, double x, double y)
     {
         Image image = brick.getImage();
-        image.setPosition(x, y);
+        image.position(x, y);
         image.makeStatic();
         add(image);
     }
@@ -963,11 +963,11 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_SPACE -> ghost.setState(STAND);
-        case KeyEvent.VK_DOWN -> ghost.setState(DOWN);
-        case KeyEvent.VK_UP -> ghost.setState(UP);
-        case KeyEvent.VK_LEFT -> ghost.setState(LEFT);
-        case KeyEvent.VK_RIGHT -> ghost.setState(RIGHT);
+        case KeyEvent.VK_SPACE -> ghost.state(STAND);
+        case KeyEvent.VK_DOWN -> ghost.state(DOWN);
+        case KeyEvent.VK_UP -> ghost.state(UP);
+        case KeyEvent.VK_LEFT -> ghost.state(LEFT);
+        case KeyEvent.VK_RIGHT -> ghost.state(RIGHT);
         case KeyEvent.VK_S -> screenshot.toggleVisible();
         }
     }

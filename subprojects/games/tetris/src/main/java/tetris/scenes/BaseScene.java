@@ -52,7 +52,7 @@ public class BaseScene extends Scene
             // (0,0) steht.
             // Dadurch stimmen die Engine-Pi-Koordination mit den Indexen im
             // zweidimensionen Block-Array überein.
-            background.setPosition(-2, 0);
+            background.position(-2, 0);
             add(background);
         }
         camera().focus(8, 9);

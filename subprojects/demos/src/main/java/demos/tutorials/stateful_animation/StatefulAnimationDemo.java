@@ -44,18 +44,18 @@ public class StatefulAnimationDemo extends Scene
     private void setupGround()
     {
         Rectangle ground = makePlatform(200, 0.2);
-        ground.setCenter(0, -5);
-        ground.setColor(new Color(255, 195, 150));
-        makePlatform(12, 0.3).setCenter(16, -1);
-        makePlatform(7, 0.3).setCenter(25, 2);
-        makePlatform(20, 0.3).setCenter(35, 6);
-        makeBall(5).setCenter(15, 3);
+        ground.center(0, -5);
+        ground.color(new Color(255, 195, 150));
+        makePlatform(12, 0.3).center(16, -1);
+        makePlatform(7, 0.3).center(25, 2);
+        makePlatform(20, 0.3).center(35, 6);
+        makeBall(5).center(15, 3);
     }
 
     private Rectangle makePlatform(double w, double h)
     {
         Rectangle r = new Rectangle(w, h);
-        r.setColor(new Color(0, 194, 255));
+        r.color(new Color(0, 194, 255));
         r.makeStatic();
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(FixtureBuilder
@@ -78,7 +78,7 @@ public class StatefulAnimationDemo extends Scene
         platformFixtures.add(left);
         platformFixtures.add(right);
         platformFixtures.add(bottom);
-        r.setFixtures(() -> platformFixtures);
+        r.fixtures(() -> platformFixtures);
         add(r);
         return r;
     }

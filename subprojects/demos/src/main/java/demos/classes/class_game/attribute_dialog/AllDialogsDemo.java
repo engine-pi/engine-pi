@@ -42,8 +42,8 @@ public class AllDialogsDemo extends Scene
     public AllDialogsDemo()
     {
         result = new Text("Ergebnis");
-        result.setPosition(0, 6);
-        result.setColor("red");
+        result.position(0, 6);
+        result.color("red");
         add(result);
 
         int x = -12;
@@ -105,7 +105,7 @@ public class AllDialogsDemo extends Scene
             super(content);
             this.supplier = supplier;
             add(this);
-            setPosition(x, y);
+            position(x, y);
         }
 
         @Override
@@ -113,7 +113,7 @@ public class AllDialogsDemo extends Scene
         {
             if (contains(position))
             {
-                result.setContent(supplier.get());
+                result.content(supplier.get());
             }
         }
 
@@ -122,11 +122,11 @@ public class AllDialogsDemo extends Scene
         {
             if (contains(Game.getMousePosition()))
             {
-                setColor("blue");
+                color("blue");
             }
             else
             {
-                setColor("white");
+                color("white");
             }
         }
     }

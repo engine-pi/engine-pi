@@ -21,6 +21,8 @@ package pi.actor;
 import java.awt.Color;
 
 import pi.Resources;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.util.TextAlignment;
 
 /**
@@ -117,7 +119,7 @@ public class ImageFontText extends Image
             TextAlignment alignment, Color color, int pixelMultiplication)
     {
         this(imageFont, content, lineWidth, alignment, color,
-                pixelMultiplication, imageFont.getGlyphWidth());
+                pixelMultiplication, imageFont.glyphWidth());
     }
 
     /**
@@ -132,9 +134,8 @@ public class ImageFontText extends Image
      */
     public ImageFontText(ImageFont imageFont, String content, Color color)
     {
-        this(imageFont, content, imageFont.getLineWidth(),
-                imageFont.getAlignment(), color,
-                imageFont.getPixelMultiplication(), imageFont.getGlyphWidth());
+        this(imageFont, content, imageFont.lineWidth(), imageFont.alignment(),
+                color, imageFont.pixelMultiplication(), imageFont.glyphWidth());
     }
 
     /**
@@ -165,8 +166,8 @@ public class ImageFontText extends Image
     public ImageFontText(ImageFont imageFont, String content, int lineWidth,
             TextAlignment alignment)
     {
-        this(imageFont, content, lineWidth, alignment, imageFont.getColor(),
-                imageFont.getPixelMultiplication());
+        this(imageFont, content, lineWidth, alignment, imageFont.color(),
+                imageFont.pixelMultiplication());
     }
 
     /**
@@ -178,8 +179,7 @@ public class ImageFontText extends Image
      */
     public ImageFontText(ImageFont imageFont, String content)
     {
-        this(imageFont, content, imageFont.getLineWidth(),
-                imageFont.getAlignment());
+        this(imageFont, content, imageFont.lineWidth(), imageFont.alignment());
     }
 
     /**
@@ -196,10 +196,11 @@ public class ImageFontText extends Image
      *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
      *     Pixel der Abmessung {@code 3x3}.
      */
-    public void setContent(String content, int lineWidth,
-            TextAlignment alignment, Color color, int pixelMultiplication)
+    @Setter
+    public void content(String content, int lineWidth, TextAlignment alignment,
+            Color color, int pixelMultiplication)
     {
-        setImage(imageFont.render(content, lineWidth, alignment, color,
+        image(imageFont.render(content, lineWidth, alignment, color,
                 pixelMultiplication));
         this.content = content;
         this.lineWidth = lineWidth;
@@ -213,10 +214,10 @@ public class ImageFontText extends Image
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      */
-    public void setContent(String content)
+    @Setter
+    public void content(String content)
     {
-        setContent(content, lineWidth, alignment, color,
-                getPixelMultiplication());
+        content(content, lineWidth, alignment, color, pixelMultiplication());
     }
 
     /**
@@ -226,10 +227,10 @@ public class ImageFontText extends Image
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      */
-    public void setContent(String content, Color color)
+    @Setter
+    public void content(String content, Color color)
     {
-        setContent(content, lineWidth, alignment, color,
-                getPixelMultiplication());
+        content(content, lineWidth, alignment, color, pixelMultiplication());
     }
 
     /**
@@ -239,10 +240,11 @@ public class ImageFontText extends Image
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      */
-    public void setContent(String content, String color)
+    @Setter
+    public void content(String content, String color)
     {
-        setContent(content, lineWidth, alignment, Resources.colors.get(color),
-                getPixelMultiplication());
+        content(content, lineWidth, alignment, Resources.colors.get(color),
+                pixelMultiplication());
     }
 
     /**
@@ -252,7 +254,8 @@ public class ImageFontText extends Image
      *
      * @since 0.25.0
      */
-    public String getContent()
+    @Getter
+    public String content()
     {
         return content;
     }
@@ -266,11 +269,15 @@ public class ImageFontText extends Image
      *
      * @since 0.25.0
      */
-    public int getPixelMultiplication()
+    @Getter
+    public int pixelMultiplication()
     {
         return Math.max(pixelMultiplication, 1);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

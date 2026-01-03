@@ -78,7 +78,7 @@ public class Polygon extends Geometry
      *
      * @param points Neuer Streckenzug.
      *
-     * @see pi.actor.Actor#setFixtures(Supplier)
+     * @see pi.actor.Actor#fixtures(Supplier)
      */
     @API
     public void resetPoints(Vector... points)
@@ -97,7 +97,7 @@ public class Polygon extends Geometry
             px[i] = points[i].getX();
             py[i] = points[i].getY();
         }
-        setFixture(() -> FixtureBuilder.polygon(points));
+        fixture(() -> FixtureBuilder.polygon(points));
     }
 
     /**
@@ -114,7 +114,7 @@ public class Polygon extends Geometry
         }
         AffineTransform at = g.getTransform();
         g.scale(1, -1);
-        g.setColor(getColor());
+        g.setColor(color());
         g.fillPolygon(scaledPx, scaledPy, scaledPx.length);
         g.setTransform(at);
     }

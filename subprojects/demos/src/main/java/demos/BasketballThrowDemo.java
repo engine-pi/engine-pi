@@ -57,17 +57,17 @@ public class BasketballThrowDemo extends Scene
                 new Vector(.15, .15));
         mainLayer().add(ballShadow);
         basket = new Rectangle(1.5, 0.05);
-        basket.setColor(Color.RED);
-        basket.setPosition(3, 0.5);
+        basket.color(Color.RED);
+        basket.position(3, 0.5);
         basket.makeSensor();
-        basket.setGravityScale(0);
+        basket.gravityScale(0);
         basket.addCollisionListener(ball,
-                event -> defer(() -> basket.setX(-basket.getX())));
+                event -> defer(() -> basket.x(-basket.x())));
         mainLayer().add(basket);
         addKeyStrokeListener(e -> {
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
             {
-                ball.setVelocity(new Vector(Math.signum(basket.getX()) * 2, 6));
+                ball.velocity(new Vector(Math.signum(basket.x()) * 2, 6));
             }
         });
     }
@@ -77,11 +77,11 @@ public class BasketballThrowDemo extends Scene
         public Ball(double x, double y)
         {
             super("shots/ball.png", 0.3, 0.3);
-            setPosition(x + .15, y + .15);
-            setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
+            position(x + .15, y + .15);
+            fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeDynamic();
-            setElasticity(0.85);
-            setFriction(0.1);
+            elasticity(0.85);
+            friction(0.1);
         }
     }
 
@@ -90,11 +90,11 @@ public class BasketballThrowDemo extends Scene
         public BallShadow(double x, double y)
         {
             super("shots/shadow.png", 0.3, 0.3);
-            setPosition(x + .15, y + .15);
-            setFixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
+            position(x + .15, y + .15);
+            fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeSensor();
-            setGravityScale(0);
-            setRotationLocked(true);
+            gravityScale(0);
+            rotationLocked(true);
         }
     }
 
@@ -103,12 +103,12 @@ public class BasketballThrowDemo extends Scene
         public Wall(double x, double y, double width, double height)
         {
             super(width, height);
-            setPosition(x, y);
-            setColor(Color.WHITE);
+            position(x, y);
+            color(Color.WHITE);
             makeStatic();
-            setFriction(.05);
-            setElasticity(.3);
-            setDensity(150);
+            friction(.05);
+            elasticity(.3);
+            density(150);
         }
     }
 

@@ -54,7 +54,7 @@ public class GravityDemo extends Scene implements KeyStrokeListener
     {
         Rectangle rectangle = !vertical ? new Rectangle(10, 0.5)
                 : new Rectangle(0.5, 10);
-        rectangle.setPosition(x, y);
+        rectangle.position(x, y);
         rectangle.makeStatic();
         add(rectangle);
         return rectangle;

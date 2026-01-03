@@ -326,9 +326,9 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     {
         isInAnimation = true;
         Rectangle overlay = new Rectangle(10, range.getRowCount());
-        overlay.setPosition(0, range.getFrom());
-        overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
-        overlay.setVisible(false);
+        overlay.position(0, range.getFrom());
+        overlay.color(Tetris.COLOR_SCHEME_GREEN.getLight());
+        overlay.visible(false);
         add(overlay);
         periodicTask.pause();
         if (range.getRowCount() < 4)
@@ -353,13 +353,13 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
             case 1:
             case 3:
             case 5:
-                overlay.setVisible(true);
+                overlay.visible(true);
                 break;
 
             case 2:
             case 4:
             case 6:
-                overlay.setVisible(false);
+                overlay.visible(false);
                 break;
 
             case 7:

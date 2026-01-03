@@ -25,7 +25,9 @@ import java.util.function.Supplier;
 
 import pi.Resources;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 
@@ -94,7 +96,7 @@ public abstract class RectangleActor extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        setColor(Resources.colors.getSafe("red"));
+        color(Resources.colors.getSafe("red"));
     }
 
     /**
@@ -103,7 +105,8 @@ public abstract class RectangleActor extends Geometry
      * @return Die <b>Breite</b> des Rechtecks in Meter.
      */
     @API
-    public double getWidth()
+    @Getter
+    public double width()
     {
         return width;
     }
@@ -115,9 +118,10 @@ public abstract class RectangleActor extends Geometry
      * @param width Die neue <b>Breite</b> für das Rechteck in Meter.
      */
     @API
-    public void setWidth(double width)
+    @Setter
+    public void width(double width)
     {
-        setSize(width, getHeight());
+        size(width, height());
     }
 
     /**
@@ -126,7 +130,8 @@ public abstract class RectangleActor extends Geometry
      * @return Die <b>Höhe</b> des Rechtecks in Meter.
      */
     @API
-    public double getHeight()
+    @Getter
+    public double height()
     {
         return height;
     }
@@ -138,9 +143,10 @@ public abstract class RectangleActor extends Geometry
      * @param height Die neue <b>Höhe</b> für das Rechteck in Meter.
      */
     @API
-    public void setHeight(double height)
+    @Setter
+    public void height(double height)
     {
-        setSize(getWidth(), height);
+        size(width(), height);
     }
 
     /**
@@ -151,22 +157,25 @@ public abstract class RectangleActor extends Geometry
      * @param height Die neue <b>Höhe</b> für das Rechteck in Meter.
      */
     @API
-    public void setSize(double width, double height)
+    @Setter
+    public void size(double width, double height)
     {
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder.rectangle(width, height));
+        this.fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     @API
-    public double getBorderRadius()
+    @Getter
+    public double borderRadius()
     {
         return borderRadius;
     }
 
     @API
-    public void setBorderRadius(double percent)
+    @Setter
+    public void borderRadius(double percent)
     {
         if (percent < 0 || percent > 1)
         {
@@ -184,7 +193,7 @@ public abstract class RectangleActor extends Geometry
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        g.setColor(getColor());
+        g.setColor(color());
         if (borderRadius == 0)
         {
             g.fillRect(0, (int) (-height * pixelPerMeter),

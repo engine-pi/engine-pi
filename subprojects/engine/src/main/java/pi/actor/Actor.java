@@ -52,6 +52,7 @@ import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.event.CollisionEvent;
@@ -96,7 +97,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
     {
         return () -> {
-            Layer layer = getLayer();
+            Layer layer = layer();
             if (layer == null)
             {
                 return null;
@@ -257,10 +258,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #getLayerPosition()
+     * @see #layerPosition()
      */
     @API
-    public final Actor setLayerPosition(int position)
+    @Setter
+    public final Actor layerPosition(int position)
     {
         this.layerPosition = position;
         return this;
@@ -272,10 +274,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Der Ebenen-Index.
      *
-     * @see #setLayerPosition(int)
+     * @see #layerPosition(int)
      */
     @API
-    public final int getLayerPosition()
+    @Getter
+    public final int layerPosition()
     {
         return this.layerPosition;
     }
@@ -295,7 +298,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #toggleVisible()
      */
     @API
-    public final Actor setVisible(boolean visible)
+    @Setter
+    public final Actor visible(boolean visible)
     {
         this.visible = visible;
         return this;
@@ -310,7 +314,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      *
      * @see #isVisible()
-     * @see #setVisible(boolean)
+     * @see #visible(boolean)
      *
      * @since 0.27.0
      */
@@ -326,7 +330,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Ist <code>true</code>, wenn das Objekt zurzeit sichtbar ist.
      *
-     * @see #setVisible(boolean)
+     * @see #visible(boolean)
      */
     @API
     public final boolean isVisible()
@@ -342,14 +346,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setVisible(boolean)
+     * @see #visible(boolean)
      *
      * @since 0.35.0
      */
     @API
     public final Actor show()
     {
-        return setVisible(true);
+        return visible(true);
     }
 
     /**
@@ -360,14 +364,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setVisible(boolean)
+     * @see #visible(boolean)
      *
      * @since 0.35.0
      */
     @API
     public final Actor hide()
     {
-        return setVisible(false);
+        return visible(false);
     }
 
     /**
@@ -377,7 +381,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     zurück.
      */
     @API
-    public final double getOpacity()
+    @Getter
+    public final double opacity()
     {
         return opacity;
     }
@@ -398,7 +403,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setOpacity(double opacity)
+    @Setter
+    public final Actor opacity(double opacity)
     {
         this.opacity = opacity;
         return this;
@@ -410,7 +416,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die <b>Farbe</b> der Figur.
      */
     @API
-    public Color getColor()
+    @Getter
+    public Color color()
     {
         return color;
     }
@@ -421,7 +428,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die <b>Komplementärfarbe</b> der Figur.
      */
     @API
-    public Color getComplementaryColor()
+    @Getter
+    public Color complementaryColor()
     {
         return ColorUtil.getComplementary(color);
     }
@@ -437,7 +445,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public Actor setColor(Color color)
+    @Setter
+    public Actor color(Color color)
     {
         this.color = color;
         return this;
@@ -459,7 +468,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see pi.resources.color.ColorContainer#get(String)
      */
     @API
-    public Actor setColor(String color)
+    @Setter
+    public Actor color(String color)
     {
         this.color = Resources.colors.getSafe(color);
         return this;
@@ -498,7 +508,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final boolean overlaps(Actor other)
     {
         Body a = physicsHandler.body();
-        Body b = other.getPhysicsHandler().body();
+        Body b = other.physicsHandler().body();
         return WorldHandler.isBodyCollision(a, b);
     }
 
@@ -508,7 +518,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Eine Liste aus <b>Kollisionsereignissen</b>.
      */
     @API
-    public final List<CollisionEvent<Actor>> getCollisions()
+    @Getter
+    public final List<CollisionEvent<Actor>> collisions()
     {
         return physicsHandler.collisions();
     }
@@ -529,7 +540,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see BodyType
      */
     @API
-    public final Actor setBodyType(BodyType type)
+    @Setter
+    public final Actor bodyType(BodyType type)
     {
         Objects.requireNonNull(type, "Typ darf nicht null sein");
         this.physicsHandler.bodyType(type);
@@ -549,12 +561,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setBodyType(BodyType)
+     * @see #bodyType(BodyType)
      */
     @API
     public final Actor makeStatic()
     {
-        setBodyType(BodyType.STATIC);
+        bodyType(BodyType.STATIC);
         return this;
     }
 
@@ -572,12 +584,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setBodyType(BodyType)
+     * @see #bodyType(BodyType)
      */
     @API
     public final Actor makeDynamic()
     {
-        setBodyType(BodyType.DYNAMIC);
+        bodyType(BodyType.DYNAMIC);
         return this;
     }
 
@@ -595,12 +607,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setBodyType(BodyType)
+     * @see #bodyType(BodyType)
      */
     @API
     public final Actor makeKinematic()
     {
-        setBodyType(BodyType.KINEMATIC);
+        bodyType(BodyType.KINEMATIC);
         return this;
     }
 
@@ -618,12 +630,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}
      *
-     * @see #setBodyType(BodyType)
+     * @see #bodyType(BodyType)
      */
     @API
     public final Actor makeSensor()
     {
-        setBodyType(BodyType.SENSOR);
+        bodyType(BodyType.SENSOR);
         return this;
     }
 
@@ -643,12 +655,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setBodyType(BodyType)
+     * @see #bodyType(BodyType)
      */
     @API
     public final Actor makeParticle()
     {
-        setBodyType(BodyType.PARTICLE);
+        bodyType(BodyType.PARTICLE);
         return this;
     }
 
@@ -661,7 +673,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see BodyType
      */
     @API
-    public final BodyType getBodyType()
+    @Getter
+    public final BodyType bodyType()
     {
         return physicsHandler.bodyType();
     }
@@ -689,13 +702,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      *
      * @see FixtureBuilder#fromString(String)
-     * @see #setFixture(Supplier)
-     * @see #setFixtures(Supplier)
+     * @see #fixture(Supplier)
+     * @see #fixtures(Supplier)
      */
     @API
-    public final Actor setFixtures(String code)
+    @Setter
+    public final Actor fixtures(String code)
     {
-        this.setFixtures(FixtureBuilder.fromString(code));
+        this.fixtures(FixtureBuilder.fromString(code));
         return this;
     }
 
@@ -711,13 +725,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setFixtures(Supplier)
+     * @see #fixtures(Supplier)
      */
     @API
-    public final Actor setFixture(Supplier<FixtureData> fixtureSupplier)
+    @Setter
+    public final Actor fixture(Supplier<FixtureData> fixtureSupplier)
     {
-        this.setFixtures(
-                () -> Collections.singletonList(fixtureSupplier.get()));
+        this.fixtures(() -> Collections.singletonList(fixtureSupplier.get()));
         return this;
     }
 
@@ -732,10 +746,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setFixture(Supplier)
+     * @see #fixture(Supplier)
      */
     @API
-    public final Actor setFixtures(Supplier<List<FixtureData>> fixturesSupplier)
+    @Setter
+    public final Actor fixtures(Supplier<List<FixtureData>> fixturesSupplier)
     {
         this.physicsHandler.fixtures(fixturesSupplier);
         return this;
@@ -846,12 +861,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         g.drawOval(-1, -1, 2, 2);
         if (Configuration.get().debug().showPositions())
         {
-            Graphics2DUtil.drawText(g, actor.getPositionformatted(), 8, 5, 5);
+            Graphics2DUtil.drawText(g, actor.positionformatted(), 8, 5, 5);
         }
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
-        g.setColor(actor.color != null ? actor.getComplementaryColor()
+        g.setColor(actor.color != null ? actor.complementaryColor()
                 : Resources.colors.getSafe("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
@@ -918,7 +933,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public final PhysicsHandler getPhysicsHandler()
+    @Getter
+    public final PhysicsHandler physicsHandler()
     {
         return physicsHandler;
     }
@@ -1093,7 +1109,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public final Actor setPhysicsHandler(PhysicsHandler handler)
+    @Setter
+    public final Actor physicsHandler(PhysicsHandler handler)
     {
         WorldHandler worldHandler = handler.worldHandler();
         WorldHandler previousWorldHandler = physicsHandler.worldHandler();
@@ -1135,7 +1152,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die Ebene, an der das aktuelle Objekt angemeldet ist, sonst
      *     {@code null}.
      */
-    public final Layer getLayer()
+    @Getter
+    public final Layer layer()
     {
         WorldHandler worldHandler = physicsHandler.worldHandler();
         if (worldHandler == null)
@@ -1156,7 +1174,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     public final Actor remove()
     {
-        Layer layer = getLayer();
+        Layer layer = layer();
         if (layer != null)
         {
             layer.remove(this);
@@ -1168,7 +1186,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Liste der {@link MouseClickListener}.
      */
     @API
-    public final EventListenerBundle getListenerBundle()
+    @Getter
+    public final EventListenerBundle listenerBundle()
     {
         return listeners;
     }
@@ -1237,7 +1256,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #isRotationLocked()
      */
     @API
-    public final Actor setRotationLocked(boolean rotationLocked)
+    @Setter
+    public final Actor rotationLocked(boolean rotationLocked)
     {
         physicsHandler.rotationLocked(rotationLocked);
         return this;
@@ -1280,7 +1300,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return <code>true</code>, wenn die Rotation dieses Objekts derzeit
      *     innerhalb der physikalischen Simulation blockiert ist.
      *
-     * @see #setRotationLocked(boolean)
+     * @see #rotationLocked(boolean)
      */
     @API
     public final boolean isRotationLocked()
@@ -1295,7 +1315,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die Masse des Ziel-Objekts in <b>[kg]</b>.
      */
     @API
-    public final double getMass()
+    @Getter
+    public final double mass()
     {
         return physicsHandler.mass();
     }
@@ -1312,7 +1333,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setDensity(double density)
+    @Setter
+    public final Actor density(double density)
     {
         physicsHandler.density(density);
         return this;
@@ -1324,7 +1346,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die aktuelle Dichte des Objekts in <b>[kg/m^2]</b>.
      */
     @API
-    public final double getDensity()
+    @Getter
+    public final double density()
     {
         return physicsHandler.density();
     }
@@ -1340,7 +1363,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setGravityScale(double factor)
+    @Setter
+    public final Actor gravityScale(double factor)
     {
         physicsHandler.gravityScale(factor);
         return this;
@@ -1352,7 +1376,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Den Gravitationsfaktor.
      */
     @API
-    public final double getGravityScale()
+    @Getter
+    public final double gravityScale()
     {
         return physicsHandler.gravityScale();
     }
@@ -1369,10 +1394,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #getFriction()
+     * @see #friction()
      */
     @API
-    public final Actor setFriction(double friction)
+    @Setter
+    public final Actor friction(double friction)
     {
         physicsHandler.friction(friction);
         return this;
@@ -1384,10 +1410,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Der Reibungskoeffizient des Objekts. Ist in der Regel (in der
      *     Realität) ein Wert im Bereich <b>[0; 1]</b>.
      *
-     * @see #setFriction(double)
+     * @see #friction(double)
      */
     @API
-    public final double getFriction()
+    @Getter
+    public final double friction()
     {
         return physicsHandler.friction();
     }
@@ -1398,7 +1425,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @param damping Die Dämpfung der Rotationsgeschwindigkeit.
      */
     @API
-    public final Actor setAngularDamping(double damping)
+    @Setter
+    public final Actor angularDamping(double damping)
     {
         physicsHandler.angularDamping(damping);
         return this;
@@ -1410,7 +1438,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die Dämpfung der Rotationsgeschwindigkeit.
      */
     @API
-    public final double getAngularDamping()
+    @Getter
+    public final double angularDamping()
     {
         return physicsHandler.angularDamping();
     }
@@ -1426,7 +1455,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setLinearDamping(double damping)
+    @Setter
+    public final Actor linearDamping(double damping)
     {
         physicsHandler.linearDamping(damping);
         return this;
@@ -1438,7 +1468,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Dämpfung der Geschwindigkeit
      */
     @API
-    public final double getLinearDamping()
+    @Getter
+    public final double linearDamping()
     {
         return physicsHandler.linearDamping();
     }
@@ -1458,10 +1489,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #getVelocity()
+     * @see #velocity()
      */
     @API
-    public final Actor setVelocity(Vector velocity)
+    @Setter
+    public final Actor velocity(Vector velocity)
     {
         if (velocity.isNaN())
         {
@@ -1478,11 +1510,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die Geschwindigkeit, mit der sich dieses Objekt gerade (also in
      *     diesem Frame) bewegt. In <b>[m / s]</b>
      *
-     * @see #setVelocity(Vector)
-     * @see #getAngularVelocity()
+     * @see #velocity(Vector)
+     * @see #angularVelocity()
      */
     @API
-    public final Vector getVelocity()
+    @Getter
+    public final Vector velocity()
     {
         return physicsHandler.velocity();
     }
@@ -1492,12 +1525,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die aktuelle Drehgeschwindigkeit.
      *
-     * @see #setAngularVelocity(double)
-     * @see #getVelocity()
-     * @see #getAngularDamping()
+     * @see #angularVelocity(double)
+     * @see #velocity()
+     * @see #angularDamping()
      */
     @API
-    public final double getAngularVelocity()
+    @Getter
+    public final double angularVelocity()
     {
         return physicsHandler.angularVelocity();
     }
@@ -1515,12 +1549,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #getAngularVelocity()
-     * @see #setVelocity(Vector)
-     * @see #setAngularDamping(double)
+     * @see #angularVelocity()
+     * @see #velocity(Vector)
+     * @see #angularDamping(double)
      */
     @API
-    public final Actor setAngularVelocity(double rotationsPerSecond)
+    @Setter
+    public final Actor angularVelocity(double rotationsPerSecond)
     {
         if (Double.isNaN(rotationsPerSecond))
         {
@@ -1554,7 +1589,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #getElasticity()
+     * @see #elasticity()
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137">dynamics/FixtureDef.java#L132-L137</a>
@@ -1563,7 +1598,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L335-L338">b2_fixture.h#L335-L338</a>
      */
     @API
-    public final Actor setElasticity(double elasticity)
+    @Setter
+    public final Actor elasticity(double elasticity)
     {
         if (Double.isNaN(elasticity))
         {
@@ -1592,7 +1628,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
-     * @see #setElasticity(double)
+     * @see #elasticity(double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130">dynamics/FixtureDef.java#L125-L130</a>
@@ -1601,7 +1637,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     "https://github.com/erincatto/box2d/blob/411acc32eb6d4f2e96fc70ddbdf01fe5f9b16230/include/box2d/b2_fixture.h#L330-L333">b2_fixture.h#L330-L333</a>
      */
     @API
-    public final double getElasticity()
+    @Getter
+    public final double elasticity()
     {
         return physicsHandler.restitution();
     }
@@ -1896,7 +1933,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             RevoluteJointDef def = new RevoluteJointDef();
-            def.initialize(a, b, getPosition().add(anchor).toVec2());
+            def.initialize(a, b, position().add(anchor).toVec2());
             def.collideConnected = false;
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint) world
                     .createJoint(def);
@@ -1959,7 +1996,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             double angleInRadians = Math.toRadians(axisAngle);
             PrismaticJointDef def = new PrismaticJointDef();
-            def.initialize(a, b, getPosition().add(anchor).toVec2(),
+            def.initialize(a, b, position().add(anchor).toVec2(),
                     new Vec2((float) Math.cos(angleInRadians),
                             (float) Math.sin(angleInRadians)));
             def.collideConnected = false;
@@ -1998,9 +2035,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.bodyB = b;
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
-            Vector distanceBetweenBothActors = (this.getPosition()
-                    .add(anchorThis))
-                    .getDistance(other.getPosition().add(anchorOther));
+            Vector distanceBetweenBothActors = (this.position().add(anchorThis))
+                    .getDistance(other.position().add(anchorOther));
             def.length = (float) distanceBetweenBothActors.getLength();
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint) world
                     .createJoint(def);
@@ -2055,15 +2091,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setPosition(Vector)
-     * @see #setCenter(double, double)
-     * @see #setX(double)
-     * @see #setY(double)
+     * @see #position(Vector)
+     * @see #center(double, double)
+     * @see #x(double)
+     * @see #y(double)
      */
     @API
-    public final Actor setPosition(double x, double y)
+    @Setter
+    public final Actor position(double x, double y)
     {
-        setPosition(new Vector(x, y));
+        position(new Vector(x, y));
         return this;
     }
 
@@ -2079,15 +2116,16 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setPosition(double, double)
-     * @see #setCenter(double, double)
-     * @see #setX(double)
-     * @see #setY(double)
+     * @see #position(double, double)
+     * @see #center(double, double)
+     * @see #x(double)
+     * @see #y(double)
      */
     @API
-    public final Actor setPosition(Vector position)
+    @Setter
+    public final Actor position(Vector position)
     {
-        moveBy(position.subtract(getPosition()));
+        moveBy(position.subtract(position()));
         return this;
     }
 
@@ -2141,7 +2179,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * angegebenen Koordinaten hat.
      *
      * <p>
-     * Im Gegensatz zur {@link Actor#setCenter(Vector)}-Methode muss hier kein
+     * Im Gegensatz zur {@link Actor#center(Vector)}-Methode muss hier kein
      * neues {@link Vector}-Objekt erzeugt werden. Der Mittelpunkt ist durch
      * zwei einzelne Werte, nämlich die x- und die y-Koordinate, anzugeben.
      * </p>
@@ -2150,7 +2188,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Diese Methode ermittelt zuerst den aktuellen achsenparallelen
      * Begrenzungsrahmen (axis-aligned bounding box (AABB)) der Figur. Von
      * diesem Begrenzungsrahmen wird anschließend der Mittelpunkt bestimmt
-     * ({@link Actor#getCenter()}). Die Methode berechnet schließlich den
+     * ({@link Actor#center()}). Die Methode berechnet schließlich den
      * Differenzvektor zwischen dem aktuellen Mittelpunkt und dem gewünschten
      * neuen Mittelpunkt und verschiebt die Figur mit Hilfe dieses
      * Differenzvektors.
@@ -2164,18 +2202,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setCenter(Vector)
+     * @see #center(Vector)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #setPosition(double, double)
-     * @see #setPosition(Vector)
-     * @see #getCenter()
+     * @see #position(double, double)
+     * @see #position(Vector)
+     * @see #center()
      */
     @API
     @Setter
-    public final Actor setCenter(double x, double y)
+    public final Actor center(double x, double y)
     {
-        this.setCenter(new Vector(x, y));
+        this.center(new Vector(x, y));
         return this;
     }
 
@@ -2187,7 +2225,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Diese Methode ermittelt zuerst den aktuellen achsenparallelen
      * Begrenzungsrahmen (axis-aligned bounding box (AABB)) der Figur. Von
      * diesem Begrenzungsrahmen wird anschließend der Mittelpunkt bestimmt
-     * ({@link Actor#getCenter()}). Die Methode berechnet schließlich den
+     * ({@link Actor#center()}). Die Methode berechnet schließlich den
      * Differenzvektor zwischen dem aktuellen Mittelpunkt und dem gewünschten
      * neuen Mittelpunkt und verschiebt die Figur mit Hilfe dieses
      * Differenzvektors.
@@ -2200,18 +2238,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setCenter(double, double)
+     * @see #center(double, double)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #setPosition(double, double)
-     * @see #setPosition(Vector)
-     * @see #getCenter()
+     * @see #position(double, double)
+     * @see #position(Vector)
+     * @see #center()
      */
     @API
     @Setter
-    public final Actor setCenter(Vector center)
+    public final Actor center(Vector center)
     {
-        moveBy(getCenter().negate().add(center));
+        moveBy(center().negate().add(center));
         return this;
     }
 
@@ -2222,13 +2260,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return {@code x}-Koordinate
      *
-     * @see #getY()
-     * @see #getPosition()
+     * @see #y()
+     * @see #position()
      */
     @API
-    public final double getX()
+    @Getter
+    public final double x()
     {
-        return getPosition().getX();
+        return position().getX();
     }
 
     /**
@@ -2241,7 +2280,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Bei <b>allen</b> Objekten ist die eingegebene Position die linke, untere
      * Ecke des Rechtecks, das die Figur optimal umfasst. Das heißt, dass dies
      * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
-     * Sondermethode {@link #setCenter(double, double)}.
+     * Sondermethode {@link #center(double, double)}.
      *
      * @param x neue x-Koordinate
      *
@@ -2250,14 +2289,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setPosition(double, double)
-     * @see #setCenter(double, double)
-     * @see #setY(double)
+     * @see #position(double, double)
+     * @see #center(double, double)
+     * @see #y(double)
      */
     @API
-    public final Actor setX(double x)
+    @Setter
+    public final Actor x(double x)
     {
-        moveBy(x - getX(), 0);
+        moveBy(x - x(), 0);
         return this;
     }
 
@@ -2268,13 +2308,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die y-Koordinate
      *
-     * @see #getX()
-     * @see #getPosition()
+     * @see #x()
+     * @see #position()
      */
     @API
-    public final double getY()
+    @Getter
+    public final double y()
     {
-        return getPosition().getY();
+        return position().getY();
     }
 
     /**
@@ -2287,7 +2328,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Bei <b>allen</b> Objekten ist die eingegebene Position die linke, untere
      * Ecke des Rechtecks, das die Figur optimal umfasst. Das heißt, dass dies
      * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
-     * Sondermethode {@link #setCenter(double, double)}.
+     * Sondermethode {@link #center(double, double)}.
      *
      * @param y neue {@code y}-Koordinate
      *
@@ -2296,14 +2337,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setPosition(double, double)
-     * @see #setCenter(double, double)
-     * @see #setX(double)
+     * @see #position(double, double)
+     * @see #center(double, double)
+     * @see #x(double)
      */
     @API
-    public final Actor setY(double y)
+    public final Actor y(double y)
     {
-        moveBy(0, y - getY());
+        moveBy(0, y - y());
         return this;
     }
 
@@ -2312,10 +2353,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Koordinaten des Mittelpunktes des Objektes.
      *
-     * @see #getPosition()
+     * @see #position()
      */
     @API
-    public final Vector getCenter()
+    @Getter
+    public final Vector center()
     {
         return physicsHandler.center();
     }
@@ -2328,9 +2370,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     dessen Position (Anker links unkten).
      */
     @API
-    public final Vector getCenterRelative()
+    @Getter
+    public final Vector centerRelative()
     {
-        return getCenter().subtract(getPosition());
+        return center().subtract(position());
     }
 
     /**
@@ -2339,7 +2382,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die aktuelle Position dieses {@link Actor}-Objekts.
      */
     @API
-    public final Vector getPosition()
+    @Getter
+    public final Vector position()
     {
         return physicsHandler.position();
     }
@@ -2349,9 +2393,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Position als Zeichenkette im Format {@code 0.0|0.0}.
      */
-    public final String getPositionformatted()
+    @Getter
+    public final String positionformatted()
     {
-        Vector pos = getPosition();
+        Vector pos = position();
         return TextUtil.roundNumber(pos.getX()) + "|"
                 + TextUtil.roundNumber(pos.getY());
     }
@@ -2376,7 +2421,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.setColor(..).setPostion(..)}.
      *
-     * @see #setRotation(double)
+     * @see #rotation(double)
      */
     @API
     public final Actor rotateBy(double angle)
@@ -2390,11 +2435,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Der Winkel (in <b>Grad</b>), um den das Objekt derzeit rotiert
      *     ist. Jedes Objekt ist bei Initialisierung nicht rotiert
-     *     ({@link #getRotation()} gibt direkt ab Initialisierung <code>0</code>
+     *     ({@link #rotation()} gibt direkt ab Initialisierung <code>0</code>
      *     zurück).
      */
     @API
-    public final double getRotation()
+    @Getter
+    public final double rotation()
     {
         return physicsHandler.rotation();
     }
@@ -2414,7 +2460,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     {@code actor.setColor(..).setPostion(..)}.
      */
     @API
-    public final Actor setRotation(double winkel)
+    @Setter
+    public final Actor rotation(double winkel)
     {
         physicsHandler.rotation(winkel);
         return this;
@@ -2428,7 +2475,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final boolean isMounted()
     {
-        return getLayer() != null;
+        return layer() != null;
     }
 
     /**
@@ -2443,8 +2490,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final ValueAnimator<Double> animateParticle(double lifetime)
     {
-        setBodyType(BodyType.PARTICLE);
-        setOpacity(1);
+        bodyType(BodyType.PARTICLE);
+        opacity(1);
         ValueAnimator<Double> animator = animateOpacity(lifetime, 0);
         animator.addCompletionListener(value -> remove());
         return animator;
@@ -2454,8 +2501,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Animiert die Durchsichtigkeit dieses {@link Actor}-Objekts über einen
      * festen Zeitraum: Beginnend von der aktuellen Durchsichtigkeit, ändert sie
      * sich "smooth" (mit {@code EaseInOutDouble}-Interpolation) vom aktuellen
-     * Durchsichtigkeits-Wert (die Ausgabe von {@link #getOpacity()}) bis hin
-     * zum angegebenen Durchsichtigkeitswert.
+     * Durchsichtigkeits-Wert (die Ausgabe von {@link #opacity()}) bis hin zum
+     * angegebenen Durchsichtigkeitswert.
      *
      * @param time Die Animationszeit in Sekunden
      * @param toOpacityValue Der Durchsichtigkeit-Wert, zu dem innerhalb von
@@ -2472,8 +2519,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             double toOpacityValue)
     {
         ValueAnimator<Double> animator = new ValueAnimator<>(time,
-                this::setOpacity,
-                new EaseInOutDouble(getOpacity(), toOpacityValue), this);
+                this::opacity, new EaseInOutDouble(opacity(), toOpacityValue),
+                this);
         addFrameUpdateListener(animator);
         return animator;
     }

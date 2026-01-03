@@ -31,7 +31,7 @@ public class KeyStrokeListenerAsAnonymousClassDemo extends Scene
     public KeyStrokeListenerAsAnonymousClassDemo()
     {
         Circle circle = new Circle(2);
-        circle.setColor(Color.RED);
+        circle.color(Color.RED);
         circle.addKeyStrokeListener(new KeyStrokeListener()
         {
             @Override

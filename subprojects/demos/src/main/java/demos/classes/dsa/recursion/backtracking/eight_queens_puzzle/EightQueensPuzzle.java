@@ -49,8 +49,8 @@ public class EightQueensPuzzle
         chessboard = new Chessboard(scene, numberOfQueens);
         // chessboard.disableHighlighting();
         foundSolutions = new Counter();
-        foundSolutions.setPosition(10, 4);
-        foundSolutions.setColor("white");
+        foundSolutions.position(10, 4);
+        foundSolutions.color("white");
         scene.add(foundSolutions);
         Game.start(scene);
         makeStep(0);

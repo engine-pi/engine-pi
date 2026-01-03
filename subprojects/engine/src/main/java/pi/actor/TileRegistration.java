@@ -153,7 +153,7 @@ public class TileRegistration extends Actor implements TileMap
     }
 
     @Override
-    public Tile getTile(int x, int y)
+    public Tile tile(int x, int y)
     {
         return tiles[x][y];
     }

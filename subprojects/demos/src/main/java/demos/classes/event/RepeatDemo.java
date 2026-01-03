@@ -49,7 +49,7 @@ public class RepeatDemo extends Scene
         public CounterText()
         {
             super("0", 2);
-            setCenter(0, 0);
+            center(0, 0);
             start();
             addKeyStrokeListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
@@ -70,7 +70,7 @@ public class RepeatDemo extends Scene
         {
             task = repeat(1, (counter) -> {
                 counter++;
-                setContent(counter);
+                content(counter);
             });
         }
 

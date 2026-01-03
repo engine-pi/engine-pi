@@ -44,7 +44,7 @@ public class Line extends Actor
         super(() -> FixtureBuilder.line(point1, point2));
         this.point1 = point1;
         this.point2 = point2;
-        setColor(colors.getSafe("orange"));
+        color(colors.getSafe("orange"));
     }
 
     public Line point1(Vector point1)
@@ -84,7 +84,7 @@ public class Line extends Actor
         Stroke stroke = new BasicStroke((float) (strokeWidth * pixelPerMeter),
                 BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
         g.setStroke(stroke);
-        g.setColor(getColor());
+        g.setColor(color());
 
         Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
 
@@ -103,7 +103,7 @@ public class Line extends Actor
         Game.instantMode(false);
         Game.start((scene) -> {
             Line line = new Line(1, 1, 4, 5);
-            line.setColor("grün");
+            line.color("grün");
             scene.add(line);
         });
     }

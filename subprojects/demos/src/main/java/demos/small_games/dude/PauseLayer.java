@@ -34,11 +34,11 @@ public class PauseLayer extends Layer
     {
         layerPosition(1000);
         Rectangle back = new Rectangle(DudeDemo.WIDTH, DudeDemo.HEIGHT);
-        back.setColor(BACKGROUND_COLOR);
-        back.setCenter(0, 0);
+        back.color(BACKGROUND_COLOR);
+        back.center(0, 0);
         add(back);
         Text announce = new Text("Pause.", 10, "Monospaced");
-        announce.setCenter(0, 0);
+        announce.center(0, 0);
         add(announce);
         parallaxPosition(0, 0);
         parallaxZoom(0);

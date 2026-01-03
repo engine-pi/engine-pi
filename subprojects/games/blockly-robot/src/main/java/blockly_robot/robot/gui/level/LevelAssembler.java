@@ -26,7 +26,7 @@ public class LevelAssembler
     public Grid createGrid()
     {
         Grid grid = new Grid(level.getCols(), level.getRows());
-        grid.setColor(new Color(level.getBorderColor()));
+        grid.color(new Color(level.getBorderColor()));
         grid.setBackground(new Color(level.getTask().getBackgroundColor()));
         return grid;
     }
@@ -53,7 +53,7 @@ public class LevelAssembler
         AssembledLevel a = new AssembledLevel(level, scene, x, y);
         // Grid
         a.setGrid(createGrid());
-        a.getGrid().setPosition(x - SHIFT, y - SHIFT);
+        a.getGrid().position(x - SHIFT, y - SHIFT);
         scene.add(a.getGrid());
         // ItemGrid
         new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
@@ -64,7 +64,7 @@ public class LevelAssembler
             Vector robotPosition = a.translate.toVector(level.getInitItem().row,
                     level.getInitItem().col);
             ImageRobot robot = (ImageRobot) a.getRobot().actor;
-            robot.setCenter(robotPosition.getX(), robotPosition.getY());
+            robot.center(robotPosition.getX(), robotPosition.getY());
             scene.add(robot);
         }
         catch (Exception e)

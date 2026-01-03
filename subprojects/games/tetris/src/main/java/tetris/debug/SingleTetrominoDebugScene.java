@@ -41,8 +41,8 @@ public class SingleTetrominoDebugScene extends Scene
     public SingleTetrominoDebugScene()
     {
         rotation = new Text("0", 1);
-        rotation.setColor(Color.WHITE);
-        rotation.setPosition(0, 0);
+        rotation.color(Color.WHITE);
+        rotation.position(0, 0);
         grid = new Grid(20, 18);
         add(rotation);
         createTetromino("L");
@@ -104,7 +104,7 @@ public class SingleTetrominoDebugScene extends Scene
 
         case KeyEvent.VK_SPACE:
             tetromino.rotate();
-            rotation.setContent(tetromino.rotation + "");
+            rotation.content(tetromino.rotation + "");
             break;
         }
     }

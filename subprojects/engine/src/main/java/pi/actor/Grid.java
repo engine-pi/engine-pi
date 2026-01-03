@@ -25,6 +25,7 @@ import java.awt.Graphics2D;
 
 import pi.annotations.API;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 
 /**
@@ -106,7 +107,8 @@ public class Grid extends Actor
      * @param color Die Hintergrundfarbe.
      */
     @API
-    public void setBackground(Color color)
+    @Setter
+    public void background(Color color)
     {
         background = color;
     }

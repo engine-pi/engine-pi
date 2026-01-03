@@ -29,21 +29,21 @@ public class LayerDemo extends Scene
         addLayer(layer3);
 
         circle1 = new Circle(1);
-        circle1.setColor("red");
+        circle1.color("red");
         add(circle1);
 
         circle2 = new Circle(2);
-        circle2.setColor("green");
+        circle2.color("green");
         layer2.add(circle2);
 
         circle3 = new Circle(3);
-        circle3.setColor("blue");
+        circle3.color("blue");
         layer3.add(circle3);
 
         for (Actor actor : addedActors())
         {
             System.out.println("Zur Ebene hinzugefügt: " + actor);
-            System.out.println(actor.getCenter());
+            System.out.println(actor.center());
         }
 
         // Die Figuren werden mit Verzögerung zur Ebene bzw. zur Szene
@@ -53,7 +53,7 @@ public class LayerDemo extends Scene
             {
                 System.out
                         .println("In der Physics-Engine registriert: " + actor);
-                System.out.println(actor.getCenter());
+                System.out.println(actor.center());
             }
         });
     }

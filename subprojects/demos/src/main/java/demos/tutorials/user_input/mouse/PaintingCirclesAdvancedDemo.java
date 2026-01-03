@@ -45,17 +45,17 @@ public class PaintingCirclesAdvancedDemo extends Scene
         ColorRect blue = new ColorRect(Color.BLUE);
         ColorRect redPurple = new ColorRect(Color.PINK);
         ColorRect orange = new ColorRect(Color.ORANGE);
-        white.setPosition(-8, 5);
-        blue.setPosition(-6, 5);
-        redPurple.setPosition(-4, 5);
-        orange.setPosition(-2, 5);
+        white.position(-8, 5);
+        blue.position(-6, 5);
+        redPurple.position(-4, 5);
+        orange.position(-2, 5);
         add(white, blue, redPurple, orange);
         SizeText sizeText1 = new SizeText(1);
         SizeText sizeText2 = new SizeText(2);
         SizeText sizeText3 = new SizeText(3);
-        sizeText1.setPosition(0, 5);
-        sizeText2.setPosition(2, 5);
-        sizeText3.setPosition(4, 5);
+        sizeText1.position(0, 5);
+        sizeText2.position(2, 5);
+        sizeText3.position(4, 5);
         add(sizeText1, sizeText2, sizeText3);
     }
 
@@ -63,8 +63,8 @@ public class PaintingCirclesAdvancedDemo extends Scene
             Color color)
     {
         Circle circle = new Circle(diameter);
-        circle.setCenter(mX, mY);
-        circle.setColor(color);
+        circle.center(mX, mY);
+        circle.color(color);
         add(circle);
     }
 
@@ -87,7 +87,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
         {
             super(1, 1);
             this.color = color;
-            setColor(color);
+            color(color);
         }
 
         @Override
@@ -108,7 +108,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
         {
             super("" + diameter, 1);
             this.diameter = diameter;
-            setColor(Color.CYAN);
+            color(Color.CYAN);
         }
 
         @Override

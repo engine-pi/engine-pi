@@ -94,9 +94,9 @@ public class GridDebugScene extends BaseScene
     private Rectangle addOverlayRectangle(String color)
     {
         Rectangle rectangle = new Rectangle(10, 1);
-        rectangle.setColor(color);
-        rectangle.setOpacity(0.7);
-        rectangle.setLayerPosition(2);
+        rectangle.color(color);
+        rectangle.opacity(0.7);
+        rectangle.layerPosition(2);
         add(rectangle);
         return rectangle;
     }
@@ -251,7 +251,7 @@ public class GridDebugScene extends BaseScene
         switch (keyEvent.getKeyCode())
         {
         case KeyEvent.VK_ENTER -> {
-            RANGE_OVERLAY.setVisible(false);
+            RANGE_OVERLAY.visible(false);
             range = GRID.getFilledRowRange();
             if (range != null)
             {
@@ -264,9 +264,9 @@ public class GridDebugScene extends BaseScene
                 // 7. Zeile getilgt
                 // 8. Zeilen oberhalb nach unten gerutscht
                 Rectangle overlay = new Rectangle(10, range.getRowCount());
-                overlay.setPosition(0, range.getFrom());
-                overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
-                overlay.setVisible(false);
+                overlay.position(0, range.getFrom());
+                overlay.color(Tetris.COLOR_SCHEME_GREEN.getLight());
+                overlay.visible(false);
                 add(overlay);
                 showRangeOverlay = false;
                 repeat(0.167, 8, (counter) -> {
@@ -277,14 +277,14 @@ public class GridDebugScene extends BaseScene
                     case 3:
                     case 5:
                         System.out.println("Zeige graue Überblendung");
-                        overlay.setVisible(true);
+                        overlay.visible(true);
                         break;
 
                     case 2:
                     case 4:
                     case 6:
                         System.out.println("Zeige zu tilgende Zeilen.");
-                        overlay.setVisible(false);
+                        overlay.visible(false);
                         break;
 
                     case 7:
@@ -328,17 +328,17 @@ public class GridDebugScene extends BaseScene
         // Markiert eine Zeile über der sich die Maus befindet. Diese kann dann
         // durch einen Link-Klick getilgt werden.
         Vector position = Game.getMousePosition();
-        ROW_OVERLAY.setY((int) position.getY());
+        ROW_OVERLAY.y((int) position.getY());
         // Markiert die Zeilen, die getilgt werden können.
         if (range != null && showRangeOverlay)
         {
-            RANGE_OVERLAY.setVisible(true);
-            RANGE_OVERLAY.setHeight(range.getRowCount());
-            RANGE_OVERLAY.setY(range.getFrom());
+            RANGE_OVERLAY.visible(true);
+            RANGE_OVERLAY.height(range.getRowCount());
+            RANGE_OVERLAY.y(range.getFrom());
         }
         else
         {
-            RANGE_OVERLAY.setVisible(false);
+            RANGE_OVERLAY.visible(false);
         }
     }
 

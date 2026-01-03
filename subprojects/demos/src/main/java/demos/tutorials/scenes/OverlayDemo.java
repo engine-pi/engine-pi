@@ -25,7 +25,7 @@ public class OverlayDemo extends Scene
     public OverlayDemo()
     {
         Circle circle = new Circle(15);
-        circle.setCenter(0, 0);
+        circle.center(0, 0);
     }
 
     @Override

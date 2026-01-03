@@ -33,6 +33,8 @@ import java.util.Map;
 import java.util.Objects;
 
 import pi.Game;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.resources.ResourceLoader;
 import pi.util.ImageUtil;
@@ -150,17 +152,17 @@ public class ImageFont
                     ImageFontGlyph glyph = new ImageFontGlyph(path);
                     if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
                             || (glyphHeight > 0
-                                    && glyphHeight != glyph.getHeight()))
+                                    && glyphHeight != glyph.height()))
                     {
                         throw new Exception(
                                 "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
                     }
                     glyphWidth = glyph.getWidth();
-                    glyphHeight = glyph.getHeight();
-                    glyphsByFilename.put(glyph.getFilename(), glyph);
-                    if (glyph.getGlyph() != 0)
+                    glyphHeight = glyph.height();
+                    glyphsByFilename.put(glyph.filename(), glyph);
+                    if (glyph.glyph() != 0)
                     {
-                        glyphs.put(glyph.getGlyph(), glyph);
+                        glyphs.put(glyph.glyph(), glyph);
                     }
                 }
             }
@@ -209,7 +211,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setBasePath(String basePath)
+    @Setter
+    public ImageFont basePath(String basePath)
     {
         this.basePath = basePath;
         return this;
@@ -220,7 +223,8 @@ public class ImageFont
      *
      * @return Die Breite der Buchstabenbilder in Pixel.
      */
-    public int getGlyphWidth()
+    @Getter
+    public int glyphWidth()
     {
         return glyphWidth;
     }
@@ -235,7 +239,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setColor(Color color)
+    @Setter
+    public ImageFont color(Color color)
     {
         this.color = color;
         return this;
@@ -248,7 +253,8 @@ public class ImageFont
      * @return Die Farbe, in der die schwarze Farbe der Ausgangsbilder umgefärbt
      *     werden soll.
      */
-    public Color getColor()
+    @Getter
+    public Color color()
     {
         return color;
     }
@@ -261,7 +267,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setExtension(String extension)
+    @Setter
+    public ImageFont extension(String extension)
     {
         this.extension = extension;
         return this;
@@ -277,7 +284,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setPixelMultiplication(int pixelMultiplication)
+    @Setter
+    public ImageFont pixelMultiplication(int pixelMultiplication)
     {
         this.pixelMultiplication = pixelMultiplication;
         return this;
@@ -292,7 +300,8 @@ public class ImageFont
      *
      * @see Game#getPixelMultiplication
      */
-    public int getPixelMultiplication()
+    @Getter
+    public int pixelMultiplication()
     {
         return pixelMultiplication;
     }
@@ -305,8 +314,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setCaseSensitivity(
-            ImageFontCaseSensitivity caseSensitivity)
+    @Setter
+    public ImageFont caseSensitivity(ImageFontCaseSensitivity caseSensitivity)
     {
         this.caseSensitivity = caseSensitivity;
         return this;
@@ -321,7 +330,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setLineWidth(int lineWidth)
+    @Setter
+    public ImageFont lineWidth(int lineWidth)
     {
         this.lineWidth = lineWidth;
         return this;
@@ -333,7 +343,8 @@ public class ImageFont
      *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
-    public int getLineWidth()
+    @Getter
+    public int lineWidth()
     {
         return lineWidth;
     }
@@ -344,7 +355,8 @@ public class ImageFont
      *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
-    public int getLineWidth(String content)
+    @Getter
+    public int lineWidth(String content)
     {
         if (lineWidth == -1)
         {
@@ -359,7 +371,8 @@ public class ImageFont
      *
      * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
      */
-    public int getLineWidth(String content, int lineWidth)
+    @Getter
+    public int lineWidth(String content, int lineWidth)
     {
         if (lineWidth == -1)
         {
@@ -376,7 +389,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setAlignment(TextAlignment alignment)
+    @Setter
+    public ImageFont alignment(TextAlignment alignment)
     {
         this.alignment = alignment;
         return this;
@@ -387,7 +401,8 @@ public class ImageFont
      *
      * @return Die Textausrichtung.
      */
-    public TextAlignment getAlignment()
+    @Getter
+    public TextAlignment alignment()
     {
         return alignment;
     }
@@ -402,7 +417,8 @@ public class ImageFont
      * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
      *     Punktschreibweise verkettet werden können.
      */
-    public ImageFont setThrowException(boolean throwException)
+    @Setter
+    public ImageFont throwException(boolean throwException)
     {
         this.throwException = throwException;
         return this;
@@ -515,7 +531,8 @@ public class ImageFont
                 .addMapping('”', "201d_right-double-quotation-mark");
     }
 
-    public ImageFontGlyph[] getGlyphs()
+    @Getter
+    public ImageFontGlyph[] glyphs()
     {
         return glyphs.values().toArray(new ImageFontGlyph[0]);
     }
@@ -537,7 +554,7 @@ public class ImageFont
         ImageFontGlyph imageGlyph = glyphsByFilename.get(filename);
         if (imageGlyph != null)
         {
-            imageGlyph.setGlyph(glyph);
+            imageGlyph.glyph(glyph);
             glyphs.put(glyph, imageGlyph);
         }
         return this;
@@ -554,7 +571,8 @@ public class ImageFont
      *
      * @throws RuntimeException Falls das Zeichen kein entsprechendes Bild hat.
      */
-    private ImageFontGlyph getGlyph(char glyph, String content)
+    @Getter
+    private ImageFontGlyph glyph(char glyph, String content)
     {
         if (glyph == ' ')
         {
@@ -612,7 +630,7 @@ public class ImageFont
     public BufferedImage render(String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)
     {
-        lineWidth = getLineWidth(content, lineWidth);
+        lineWidth = lineWidth(content, lineWidth);
         content = processContent(content, lineWidth, alignment);
         int lineCount = TextUtil.getLineCount(content);
         int imageHeight = glyphHeight * lineCount;
@@ -630,10 +648,10 @@ public class ImageFont
             for (int j = 0; j < line.length(); j++)
             {
                 x = j * glyphWidth;
-                ImageFontGlyph glyph = getGlyph(line.charAt(j), content);
+                ImageFontGlyph glyph = glyph(line.charAt(j), content);
                 if (glyph != null)
                 {
-                    g.drawImage(glyph.getImage(), x, y, null);
+                    g.drawImage(glyph.image(), x, y, null);
                 }
             }
         }
@@ -657,7 +675,7 @@ public class ImageFont
      */
     public BufferedImage render(String content)
     {
-        return render(content, getLineWidth(content), alignment, color,
+        return render(content, lineWidth(content), alignment, color,
                 pixelMultiplication);
     }
 

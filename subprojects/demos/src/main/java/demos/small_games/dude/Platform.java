@@ -43,15 +43,14 @@ public class Platform extends TileRegistration
             throw new IllegalArgumentException(
                     "Number of tiles must be at least 2");
         }
-        setFixtures(
-                "R 0, " + (SIZE - 0.5) + "," + (SIZE * tileCount) + ", 0.5");
+        fixtures("R 0, " + (SIZE - 0.5) + "," + (SIZE * tileCount) + ", 0.5");
         String basePath = "dude/tiles/";
         setLeftTile(TileMap.createFromImage(basePath + "platform_l.png"));
         setMiddleTiles(TileMap.createFromImage(basePath + "platform_m.png"));
         setRightTile(TileMap.createFromImage(basePath + "platform_r.png"));
         makeStatic();
-        setFriction(FRICTION);
-        setElasticity(0);
+        friction(FRICTION);
+        elasticity(0);
     }
 
     private void setLeftTile(Tile tile)

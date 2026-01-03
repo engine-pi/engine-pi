@@ -114,10 +114,10 @@ public class BallThrowDemo extends Scene
     {
         ball = new Circle(DURCHMESSER * PIXEL_PER_METER);
         add(ball);
-        ball.setColor(Color.RED);
+        ball.color(Color.RED);
         ball.makeDynamic();
-        ball.setDensity(MASSE);
-        ball.setCenter(DISTANCE_LEFT,
+        ball.density(MASSE);
+        ball.center(DISTANCE_LEFT,
                 GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
                         + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         // Den Boden erstellen
@@ -125,9 +125,9 @@ public class BallThrowDemo extends Scene
          * Der Boden.
          */
         Rectangle ground = new Rectangle(100, 20);
-        ground.setPosition(0, GROUND_DEPTH);
+        ground.position(0, GROUND_DEPTH);
         add(ground);
-        ground.setColor(Color.WHITE);
+        ground.color(Color.WHITE);
         ground.makeStatic();
         // Kollision zwischen Ball und Boden beobachten (Code ist uns egal, wir
         // kennen nur einen Kollisionsfall)
@@ -180,7 +180,7 @@ public class BallThrowDemo extends Scene
     private void reset()
     {
         gravity(new Vector(0, 0)); // Schwerkraft deaktivieren
-        ball.setCenter(DISTANCE_LEFT, // Ballposition zurücksetzen
+        ball.center(DISTANCE_LEFT, // Ballposition zurücksetzen
                 GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
                         + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         ball.resetMovement(); // Ball in Ruhe versetzen
@@ -199,7 +199,7 @@ public class BallThrowDemo extends Scene
         long zeitdifferenz = endzeit - startTime;
         // Zurückgelegte Distanz seit Simulationsstart ausmessen
         // (Pixel-Differenz ausrechnen und auf Meter umrechnen)
-        double distanz = (ball.getCenter().getX() - DISTANCE_LEFT)
+        double distanz = (ball.center().getX() - DISTANCE_LEFT)
                 / PIXEL_PER_METER;
         // Messungen angeben
         System.out.println(

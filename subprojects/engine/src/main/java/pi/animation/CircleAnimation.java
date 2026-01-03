@@ -54,16 +54,16 @@ public class CircleAnimation extends AggregateFrameUpdateListener
             double durationInSeconds, boolean circleClockwise,
             boolean rotateActor)
     {
-        Vector currentActorCenter = actor.getCenter();
+        Vector currentActorCenter = actor.center();
         double radius = new Vector(rotationCenter, currentActorCenter)
                 .getLength();
         Vector rightPoint = rotationCenter.add(new Vector(radius, 0));
         ValueAnimator<Double> aX = new ValueAnimator<>(durationInSeconds,
-                x -> actor.setCenter(x, actor.getCenter().getY()),
+                x -> actor.center(x, actor.center().getY()),
                 new CosinusDouble(rightPoint.getX(), radius),
                 AnimationMode.REPEATED, this);
         ValueAnimator<Double> aY = new ValueAnimator<>(durationInSeconds,
-                y -> actor.setCenter(actor.getCenter().getX(), y),
+                y -> actor.center(actor.center().getX(), y),
                 new SinusDouble(rotationCenter.getY(),
                         circleClockwise ? -radius : radius),
                 AnimationMode.REPEATED, this);
@@ -87,7 +87,7 @@ public class CircleAnimation extends AggregateFrameUpdateListener
         {
             double rotationAngle = circleClockwise ? angle : -angle;
             ValueAnimator<Double> aR = new ValueAnimator<>(durationInSeconds,
-                    actor::setRotation,
+                    actor::rotation,
                     new LinearDouble(-rotationAngle,
                             -rotationAngle + 360 * (circleClockwise ? -1 : 1)),
                     AnimationMode.REPEATED, actor);

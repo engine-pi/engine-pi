@@ -29,7 +29,7 @@ class Goodie extends Text implements CollisionListener<SnakeHead>
     public Goodie(SnakeScene scene)
     {
         super("Eat Me!", 1);
-        setColor("red");
+        color("red");
         this.scene = scene;
     }
 

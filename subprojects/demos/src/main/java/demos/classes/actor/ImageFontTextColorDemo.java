@@ -56,7 +56,7 @@ public class ImageFontTextColorDemo extends Scene
     public void setImageFontText(String color, int x, int y)
     {
         ImageFontText textField = new ImageFontText(font, color, color);
-        textField.setPosition(x, y);
+        textField.position(x, y);
         add(textField);
     }
 

@@ -35,7 +35,7 @@ public class RotationDemo extends Scene implements KeyStrokeListener
     {
         triangle = new Polygon(new Vector(0, 0), new Vector(1, 0),
                 new Vector(.5, 3));
-        triangle.setColor(Color.BLUE);
+        triangle.color(Color.BLUE);
         add(triangle);
     }
 
@@ -55,19 +55,19 @@ public class RotationDemo extends Scene implements KeyStrokeListener
             break;
 
         case KeyEvent.VK_1:
-            triangle.setRotation(0);
+            triangle.rotation(0);
             break;
 
         case KeyEvent.VK_2:
-            triangle.setRotation(90);
+            triangle.rotation(90);
             break;
 
         case KeyEvent.VK_3:
-            triangle.setRotation(180);
+            triangle.rotation(180);
             break;
 
         case KeyEvent.VK_4:
-            triangle.setRotation(270);
+            triangle.rotation(270);
             break;
         }
     }

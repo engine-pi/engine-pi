@@ -63,7 +63,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         FrameUpdateListenerRegistration, ActorAdder
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
-            .comparingInt(Actor::getLayerPosition);
+            .comparingInt(Actor::layerPosition);
 
     private <T> Supplier<T> createParentSupplier(Function<Scene, T> supplier)
     {
@@ -415,7 +415,7 @@ public class Layer implements KeyStrokeListenerRegistration,
             {
                 if (actor.isMounted())
                 {
-                    if (actor.getLayer() != this)
+                    if (actor.layer() != this)
                     {
                         throw new IllegalArgumentException(
                                 "Ein Actor kann nur an einem Layer gleichzeitig angemeldet sein");
@@ -425,10 +425,10 @@ public class Layer implements KeyStrokeListenerRegistration,
                         return;
                     }
                 }
-                PhysicsHandler oldHandler = actor.getPhysicsHandler();
+                PhysicsHandler oldHandler = actor.physicsHandler();
                 PhysicsHandler newHandler = new BodyHandler(actor,
                         oldHandler.physicsData(), worldHandler);
-                actor.setPhysicsHandler(newHandler);
+                actor.physicsHandler(newHandler);
                 oldHandler.applyMountCallbacks(newHandler);
                 this.actors.add(actor);
             }
@@ -452,9 +452,8 @@ public class Layer implements KeyStrokeListenerRegistration,
             for (Actor actor : actors)
             {
                 this.actors.remove(actor);
-                PhysicsData physicsData = actor.getPhysicsHandler()
-                        .physicsData();
-                PhysicsHandler physicsHandler = actor.getPhysicsHandler();
+                PhysicsData physicsData = actor.physicsHandler().physicsData();
+                PhysicsHandler physicsHandler = actor.physicsHandler();
                 if (physicsHandler.worldHandler() == null)
                 {
                     return;
@@ -462,7 +461,7 @@ public class Layer implements KeyStrokeListenerRegistration,
                 Body body = physicsHandler.body();
                 worldHandler.removeAllInternalReferences(body);
                 worldHandler.world().destroyBody(body);
-                actor.setPhysicsHandler(new NullHandler(physicsData));
+                actor.physicsHandler(new NullHandler(physicsData));
             }
         });
     }
@@ -646,7 +645,7 @@ public class Layer implements KeyStrokeListenerRegistration,
                     pixelPerMeter);
             if (!needsSort)
             {
-                int actorPosition = actor.getLayerPosition();
+                int actorPosition = actor.layerPosition();
                 if (actorPosition < previousPosition)
                 {
                     needsSort = true;

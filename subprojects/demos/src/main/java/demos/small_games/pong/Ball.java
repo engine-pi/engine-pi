@@ -32,9 +32,9 @@ public class Ball extends Circle
     public Ball()
     {
         super();
-        setColor("white");
-        setBodyType(BodyType.DYNAMIC);
-        setElasticity(1);
+        color("white");
+        bodyType(BodyType.DYNAMIC);
+        elasticity(1);
     }
 
     public static void main(String[] args)

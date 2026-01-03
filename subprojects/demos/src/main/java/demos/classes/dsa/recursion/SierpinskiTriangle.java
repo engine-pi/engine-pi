@@ -31,7 +31,7 @@ public class SierpinskiTriangle
         double width = 100;
         double height = 75;
         Triangle triangle = new Triangle(width, height);
-        triangle.setColor("weiß");
+        triangle.color("weiß");
         Scene scene = Game.getStartedActiveScene();
         scene.backgroundColor("yellow");
         scene.camera().meter(7);
@@ -70,7 +70,7 @@ public class SierpinskiTriangle
         }
         else
         {
-            new Triangle(width, height).setColor("black").setPosition(x, y);
+            new Triangle(width, height).color("black").position(x, y);
         }
     }
 

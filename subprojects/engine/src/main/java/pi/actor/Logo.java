@@ -68,7 +68,7 @@ public class Logo implements ActorAdder
     public void applyPhysicSettings(Actor actor)
     {
         actor.makeStatic();
-        actor.setElasticity(0.97);
+        actor.elasticity(0.97);
     }
 
     private Vector shift(double x, double y)
@@ -102,20 +102,20 @@ public class Logo implements ActorAdder
         int iX = 2;
         // Rechteck des Ps
         rectangleP = drawRectangle();
-        rectangleP.setPosition(shift());
+        rectangleP.position(shift());
         // Dreieck des Ps
         triangleP = new Triangle(3 * factor);
         scene.add(triangleP);
         applyPhysicSettings(triangleP);
-        triangleP.rotateBy(-90).setPosition(shift(-0.25, 4));
+        triangleP.rotateBy(-90).position(shift(-0.25, 4));
         // Kreis des Ps
         circleP = drawCircle();
-        circleP.setPosition(shift(0, 2));
+        circleP.position(shift(0, 2));
         // Rechteck des Is
         rectangleI = drawRectangle();
-        rectangleI.setPosition(shift(iX, 0));
+        rectangleI.position(shift(iX, 0));
         // Kreis des Is
         circleI = drawCircle();
-        circleI.setPosition(shift(iX, 2.8));
+        circleI.position(shift(iX, 2.8));
     }
 }

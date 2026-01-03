@@ -34,11 +34,11 @@ abstract class BaseJointScene extends Scene
     {
         camera().meter(100);
         a = new Rectangle();
-        a.setCenter(-1, 0);
+        a.center(-1, 0);
         a.makeDynamic();
 
         b = new Rectangle();
-        b.setCenter(1, 0);
+        b.center(1, 0);
         b.makeDynamic();
         add(a, b);
         delay(0.1, () -> {

@@ -21,6 +21,7 @@ package pi.actor;
 import pi.Game;
 import pi.Text;
 import pi.Vector;
+import pi.annotations.Getter;
 
 /**
  * Beschreibt ein regelmäßiges <b>Vieleck</b> bzw{@literal .} reguläres
@@ -45,7 +46,7 @@ public class RegularPolygon extends Polygon
      */
     public RegularPolygon(int numSides, double radius)
     {
-        super(RegularPolygon.getVectors(numSides, radius));
+        super(RegularPolygon.vectors(numSides, radius));
     }
 
     /**
@@ -59,7 +60,8 @@ public class RegularPolygon extends Polygon
         this(numSides, 1);
     }
 
-    private static Vector[] getVectors(int numSides, double radius)
+    @Getter
+    private static Vector[] vectors(int numSides, double radius)
     {
         Vector[] vectors = new Vector[numSides];
         double angleStep = 360 / numSides;
@@ -84,8 +86,8 @@ public class RegularPolygon extends Polygon
             for (int i = 3; i < 8; i++)
             {
                 scene.addRegularPolygon(i, 2, x, 0);
-                scene.add(new Text(i + "").setPosition(x - 0.25, -4)
-                        .setColor("white"));
+                scene.add(
+                        new Text(i + "").position(x - 0.25, -4).color("white"));
                 x += 5;
             }
         });

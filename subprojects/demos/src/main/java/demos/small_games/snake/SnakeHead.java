@@ -7,7 +7,7 @@ public class SnakeHead extends Square
     public SnakeHead()
     {
         super(0.8);
-        setColor("grey");
+        color("grey");
     }
 
 }

@@ -35,8 +35,8 @@ public class Edge extends Polygon
     {
         super(new Vector(0, 0), new Vector(HEIGHT, HEIGHT),
                 new Vector(WIDTH - HEIGHT, HEIGHT), new Vector(WIDTH, 0));
-        setPosition(x, y);
-        setColor(new Color(45, 90, 40));
+        position(x, y);
+        color(new Color(45, 90, 40));
         makeStatic();
     }
 }

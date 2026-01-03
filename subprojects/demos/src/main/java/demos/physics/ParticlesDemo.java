@@ -46,44 +46,44 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
     public ParticlesDemo()
     {
         Rectangle left = new Rectangle(200, 10);
-        left.setPosition(-WIDTH / 6.0 - 150, -50);
+        left.position(-WIDTH / 6.0 - 150, -50);
         left.rotateBy(-21);
         left.makeStatic();
-        left.setColor(Color.white);
-        left.setElasticity(15f);
+        left.color(Color.white);
+        left.elasticity(15f);
         add(left);
         Rectangle right = new Rectangle(200, 10);
-        right.setPosition(WIDTH / 6.0, 0);
+        right.position(WIDTH / 6.0, 0);
         right.rotateBy(45);
         right.makeStatic();
-        right.setColor(Color.white);
-        right.setElasticity(15);
+        right.color(Color.white);
+        right.elasticity(15);
         add(right);
         addKeyStrokeListener(this);
         repeat(1, (counter) -> createCircle(mousePosition(), Color.YELLOW));
         Rectangle r1 = new Rectangle(WIDTH, 10);
-        r1.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
+        r1.position(-WIDTH / 2.0, -HEIGHT / 2.0);
         Rectangle r2 = new Rectangle(10, HEIGHT);
-        r2.setPosition(-WIDTH / 2.0, -HEIGHT / 2.0);
+        r2.position(-WIDTH / 2.0, -HEIGHT / 2.0);
         Rectangle r3 = new Rectangle(WIDTH, 10);
-        r3.setPosition(-WIDTH / 2.0, HEIGHT / 2.0 - 10);
+        r3.position(-WIDTH / 2.0, HEIGHT / 2.0 - 10);
         Rectangle r4 = new Rectangle(10, HEIGHT);
-        r4.setPosition(WIDTH / 2.0 - 10, -HEIGHT / 2.0);
+        r4.position(WIDTH / 2.0 - 10, -HEIGHT / 2.0);
         add(r1, r2, r3, r4);
         r1.makeStatic();
         r2.makeStatic();
         r3.makeStatic();
         r4.makeStatic();
-        r1.setColor(Color.DARK_GRAY);
-        r2.setColor(Color.DARK_GRAY);
-        r3.setColor(Color.DARK_GRAY);
-        r4.setColor(Color.DARK_GRAY);
+        r1.color(Color.DARK_GRAY);
+        r2.color(Color.DARK_GRAY);
+        r3.color(Color.DARK_GRAY);
+        r4.color(Color.DARK_GRAY);
         r1.addCollisionListener((event) -> remove(event.getColliding()));
         gravity(new Vector(0, -600));
         camera().meter(1);
         left.animateColor(5, Color.YELLOW);
-        this.addFrameUpdateListener(new ValueAnimator<>(5, left::setX,
-                new ReverseEaseDouble(left.getX(), left.getX() + 200),
+        this.addFrameUpdateListener(new ValueAnimator<>(5, left::x,
+                new ReverseEaseDouble(left.x(), left.x() + 200),
                 AnimationMode.REPEATED, this));
     }
 
@@ -92,9 +92,9 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         Circle circle = new Circle(6);
         FrameUpdateListener emitter = repeat(0.01, (counter) -> {
             Circle particle = new Circle(3);
-            particle.setPosition(circle.getCenter().subtract(new Vector(1, 1)));
-            particle.setColor(Color.RED);
-            particle.setLayerPosition(-1);
+            particle.position(circle.center().subtract(new Vector(1, 1)));
+            particle.color(Color.RED);
+            particle.layerPosition(-1);
             particle.animateParticle(.5);
             particle.animateColor(.25, Color.YELLOW);
             particle.applyImpulse(
@@ -102,9 +102,9 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
                             6000 * ((float) Math.random() - .5)));
             add(particle);
         });
-        circle.setPosition(position);
+        circle.position(position);
         circle.makeDynamic();
-        circle.setColor(color);
+        circle.color(color);
         circle.addFrameUpdateListener(emitter);
         add(circle);
     }

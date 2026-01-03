@@ -52,7 +52,7 @@ public interface ActorAdder
     default Hexagon addHexagon(double radius, double x, double y)
     {
         Hexagon actor = addHexagon(radius);
-        actor.setPosition(x, y);
+        actor.position(x, y);
         return actor;
     }
 
@@ -64,14 +64,14 @@ public interface ActorAdder
     default Hexagon addHexagon(double x, double y, String color)
     {
         Hexagon actor = addHexagon(x, y);
-        actor.setColor(color);
+        actor.color(color);
         return actor;
     }
 
     default Hexagon addHexagon(double radius, double x, double y, String color)
     {
         Hexagon actor = addHexagon(radius, x, y);
-        actor.setColor(color);
+        actor.color(color);
         return actor;
     }
     /* ___ Image (Bild) _____________________________________________________ */
@@ -101,7 +101,7 @@ public interface ActorAdder
     default Pentagon addPentagon(double radius, double x, double y)
     {
         Pentagon actor = addPentagon(radius);
-        actor.setPosition(x, y);
+        actor.position(x, y);
         return actor;
     }
 
@@ -128,7 +128,7 @@ public interface ActorAdder
             double x, double y)
     {
         RegularPolygon actor = addRegularPolygon(numSides, radius);
-        actor.setPosition(x, y);
+        actor.position(x, y);
         return actor;
     }
 

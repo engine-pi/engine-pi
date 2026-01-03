@@ -112,7 +112,7 @@ class TurtleDressController
         case ARROW:
             image = new Polygon(v(-size / 4, size / 4), v(size, 0),
                     v(-size / 4, -size / 4));
-            image.setColor("green");
+            image.color("green");
             break;
 
         case ANIMATED_IMAGE:
@@ -161,7 +161,7 @@ class TurtleDressController
     @Internal
     void setPosition(Vector position)
     {
-        image.setCenter(position);
+        image.center(position);
     }
 
     /**
@@ -170,7 +170,7 @@ class TurtleDressController
     @Internal
     void setDirection(double rotation)
     {
-        image.setRotation(rotation);
+        image.rotation(rotation);
     }
 
     /**

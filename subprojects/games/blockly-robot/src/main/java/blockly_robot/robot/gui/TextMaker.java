@@ -20,8 +20,8 @@ public class TextMaker
     public static Text createText(String content, double fontSize)
     {
         Text text = new Text(content, fontSize);
-        text.setFont(regular);
-        text.setColor(Color.BLACK);
+        text.font(regular);
+        text.color(Color.BLACK);
         return text;
     }
 

@@ -30,7 +30,7 @@ public class KeyStrokeListenerAsLambdaDemo extends Scene
     public KeyStrokeListenerAsLambdaDemo()
     {
         Circle circle = new Circle(2);
-        circle.setColor(Color.RED);
+        circle.color(Color.RED);
         circle.addKeyStrokeListener(e -> {
             switch (e.getKeyCode())
             {

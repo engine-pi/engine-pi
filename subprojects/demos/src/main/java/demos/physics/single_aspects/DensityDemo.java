@@ -28,7 +28,7 @@ import pi.Text;
 import pi.event.KeyStrokeListener;
 
 /**
- * Demonstriert die Methode {@link pi.actor.Actor#setDensity(double)}
+ * Demonstriert die Methode {@link pi.actor.Actor#density(double)}
  */
 public class DensityDemo extends Scene implements KeyStrokeListener
 {
@@ -53,7 +53,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
         }
         gravity(0, -9.81);
         ground = new Rectangle(20, 1);
-        ground.setPosition(-10, -5);
+        ground.position(-10, -5);
         ground.makeStatic();
         add(ground);
     }
@@ -61,8 +61,8 @@ public class DensityDemo extends Scene implements KeyStrokeListener
     private Circle createCircleWithDensity(double x, double density)
     {
         Circle circle = new Circle(1);
-        circle.setPosition(x, 5);
-        circle.setDensity(density);
+        circle.position(x, 5);
+        circle.density(density);
         circle.makeDynamic();
         add(circle);
         return circle;
@@ -71,7 +71,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
     private Text createDensityLables(int x, int density)
     {
         Text text = new Text(density + "", 1);
-        text.setPosition(x, -7);
+        text.position(x, -7);
         text.makeStatic();
         add(text);
         return text;

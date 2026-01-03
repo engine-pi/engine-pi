@@ -100,6 +100,6 @@ public abstract class TriangleActor extends Polygon
     public TriangleActor(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        setColor("yellow");
+        color("yellow");
     }
 }

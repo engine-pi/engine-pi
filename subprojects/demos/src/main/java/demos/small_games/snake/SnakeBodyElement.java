@@ -28,13 +28,13 @@ class SnakeBodyElement extends Square
     public SnakeBodyElement()
     {
         super(0.75);
-        setColor("white");
+        color("white");
     }
 
     void moveChildren(Vector newCenter)
     {
-        Vector oldCenter = getCenter();
-        setCenter(oldCenter.add(newCenter));
+        Vector oldCenter = center();
+        center(oldCenter.add(newCenter));
         // Je größer die Verzögerung, desto größer ist der Abstand zwischen den
         // einzelnen Körperteilen der Schlange
         delay(0.05, () -> {

@@ -66,8 +66,8 @@ public class TurtlePenController
      * <p>
      * Diese Position wird bewegt und das Zentrum der Figur wird auf diese
      * Position gesetzt. Es reicht nicht, die Stiftposition über die Methode
-     * {@link Actor#getCenter()} der Schildkrötenfigur zu bestimmen, denn bei
-     * einer Rotation ändert sich das Zentrum.
+     * {@link Actor#center()} der Schildkrötenfigur zu bestimmen, denn bei einer
+     * Rotation ändert sich das Zentrum.
      * </p>
      *
      * @since 0.40.0

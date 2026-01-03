@@ -41,8 +41,8 @@ public class MainMenuScene extends Scene implements WindowScene
             this.main = main;
             Rectangle rectangle = createRectangle();
             Text text = createText(main);
-            rectangle.setPosition(x - 1, y - FONT_SIZE / 2);
-            text.setPosition(x, y);
+            rectangle.position(x - 1, y - FONT_SIZE / 2);
+            text.position(x, y);
             add(rectangle, text);
         }
 
@@ -50,8 +50,8 @@ public class MainMenuScene extends Scene implements WindowScene
         {
             Rectangle rectangle = new Rectangle(RECTANGLE_WIDTH, FONT_SIZE * 2);
             double BORDER_RADIUS = 0.3f;
-            rectangle.setBorderRadius(BORDER_RADIUS);
-            rectangle.setColor(AREA_COLOR);
+            rectangle.borderRadius(BORDER_RADIUS);
+            rectangle.color(AREA_COLOR);
             rectangle.addMouseClickListener((vector, mouseButton) -> {
                 if (rectangle.contains(vector))
                 {
@@ -62,11 +62,11 @@ public class MainMenuScene extends Scene implements WindowScene
             rectangle.addFrameUpdateListener((deltaSeconds) -> {
                 if (rectangle.contains(Game.getMousePosition()))
                 {
-                    rectangle.setOpacity(0.5f);
+                    rectangle.opacity(0.5f);
                 }
                 else
                 {
-                    rectangle.setOpacity(1f);
+                    rectangle.opacity(1f);
                 }
             });
             return rectangle;
@@ -75,8 +75,8 @@ public class MainMenuScene extends Scene implements WindowScene
         private Text createText(String content)
         {
             Text text = new Text(content, FONT_SIZE);
-            text.setFont(TextMaker.bold);
-            text.setColor(Color.BLACK);
+            text.font(TextMaker.bold);
+            text.color(Color.BLACK);
             return text;
         }
     }

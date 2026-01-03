@@ -71,7 +71,7 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
         character = new Character();
         focus(character);
         camera().meter(32);
-        character.setState(State.IDLE);
+        character.state(State.IDLE);
         add(character);
     }
 
@@ -80,10 +80,10 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_LEFT -> character.setState(State.JUMP);
-        case KeyEvent.VK_RIGHT -> character.setState(State.HIT);
-        case KeyEvent.VK_UP -> character.setState(State.RUN);
-        case KeyEvent.VK_DOWN -> character.setState(State.DOUBLE_JUMP);
+        case KeyEvent.VK_LEFT -> character.state(State.JUMP);
+        case KeyEvent.VK_RIGHT -> character.state(State.HIT);
+        case KeyEvent.VK_UP -> character.state(State.RUN);
+        case KeyEvent.VK_DOWN -> character.state(State.DOUBLE_JUMP);
         }
     }
 

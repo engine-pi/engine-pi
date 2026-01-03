@@ -42,14 +42,13 @@ public class TextDemo extends Scene
         backgroundColor("green");
 
         add(new Text("Das ist die mitgelieferte Schrift Can\ntarell", 1,
-                "fonts/Cantarell-Regular.ttf").setPosition(-7, 0));
+                "fonts/Cantarell-Regular.ttf").position(-7, 0));
         Font cantarell = fonts.get("fonts/Cantarell-Regular.ttf");
 
         // Demonstiert, ob die Grundline zweier Text-Figuren mit gleicher
         // y-Koordinate übereinstimmt.
-        add(new Text("Mit Unterlängen", 2).setFont(cantarell).setPosition(-7,
-                -2));
-        add(new Text("... ohne", 2).setFont(cantarell).setPosition(4, -2));
+        add(new Text("Mit Unterlängen", 2).font(cantarell).position(-7, -2));
+        add(new Text("... ohne", 2).font(cantarell).position(4, -2));
 
         demonstrateFontStyle(0, 3);
         demonstrateFontStyle(1, 4);
@@ -60,7 +59,7 @@ public class TextDemo extends Scene
     public void demonstrateFontStyle(int style, int y)
     {
         add(new Text(FontStyle.getStyle(style).toString())
-                .setFont(fonts.getDefault(style)).setPosition(3, y));
+                .font(fonts.getDefault(style)).position(3, y));
     }
 
     public static void main(String[] args)

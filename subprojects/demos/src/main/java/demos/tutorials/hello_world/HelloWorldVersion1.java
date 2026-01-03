@@ -29,8 +29,8 @@ public class HelloWorldVersion1 extends Scene
     public HelloWorldVersion1()
     {
         Text helloWorld = new Text("Hello, World!", 2);
-        helloWorld.setColor("white");
-        helloWorld.setCenter(0, 1);
+        helloWorld.color("white");
+        helloWorld.center(0, 1);
         add(helloWorld);
         Game.debug();
     }

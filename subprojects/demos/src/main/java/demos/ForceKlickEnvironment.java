@@ -119,33 +119,33 @@ public class ForceKlickEnvironment extends Scene implements
         // | [R]eset | [S]chwerkraft | [E]insperren");
         // Boden
         Rectangle boden = new Rectangle(FIELD_WIDTH, 1);
-        boden.setPosition(0, FIELD_DEPTH);
-        boden.setColor(Color.WHITE);
+        boden.position(0, FIELD_DEPTH);
+        boden.color(Color.WHITE);
         boden.makeStatic();
         // Der Rest der Wände
         Rectangle links = new Rectangle(1, FIELD_DEPTH);
         Rectangle rechts = new Rectangle(1, FIELD_DEPTH);
-        rechts.setPosition(FIELD_WIDTH - 1, 0);
+        rechts.position(FIELD_WIDTH - 1, 0);
         Rectangle oben = new Rectangle(FIELD_WIDTH, 1);
         walls[1] = links;
         walls[2] = rechts;
         walls[3] = oben;
         for (int i = 1; i <= 3; i++)
         {
-            walls[i].setColor(Color.WHITE);
-            walls[i].setVisible(false);
+            walls[i].color(Color.WHITE);
+            walls[i].visible(false);
             walls[i].makeSensor();
         }
         // Vector-Visualisierung
         Rectangle stab = new Rectangle(1, 0.5);
-        stab.setColor(new Color(200, 50, 50));
+        stab.color(new Color(200, 50, 50));
         stange = stab;
-        stange.setLayerPosition(-10);
+        stange.layerPosition(-10);
         // Attack-Visualisierung
         Circle atv = new Circle(0.5);
-        atv.setColor(Color.RED);
+        atv.color(Color.RED);
         attack = atv;
-        attack.setLayerPosition(-10);
+        attack.layerPosition(-10);
         // Maus erstellen, Listener Anmelden.
         attack.addCollisionListener(this);
         keyStrokeListeners().add(e -> {
@@ -156,8 +156,8 @@ public class ForceKlickEnvironment extends Scene implements
                         : BodyType.STATIC;
                 for (int i = 0; i <= 3; i++)
                 {
-                    walls[i].setVisible(!wasActive);
-                    walls[i].setBodyType(newType);
+                    walls[i].visible(!wasActive);
+                    walls[i].bodyType(newType);
                 }
             }
         });
@@ -181,11 +181,11 @@ public class ForceKlickEnvironment extends Scene implements
         case ATTACK_POINT:
             lastAttack = p;
             // Visualize Attack Point
-            attack.setCenter(p);
-            attack.setVisible(true);
+            attack.center(p);
+            attack.visible(true);
             // Prepare Vector Stick
-            stange.setVisible(true);
-            stange.setPosition(p);
+            stange.visible(true);
+            stange.position(p);
             klickMode = KlickMode.DIRECTION_INTENSITY;
             break;
 
@@ -195,11 +195,11 @@ public class ForceKlickEnvironment extends Scene implements
                 klickMode = KlickMode.ATTACK_POINT;
                 return;
             }
-            attack.setVisible(false);
-            stange.setVisible(false);
+            attack.visible(false);
+            stange.visible(false);
             Vector distance = lastAttack.negate().add(p);
             if (attackedLast != null
-                    && attackedLast.getBodyType() == BodyType.DYNAMIC)
+                    && attackedLast.bodyType() == BodyType.DYNAMIC)
             {
                 attackedLast.applyImpulse(distance.multiply(1), lastAttack);
                 attackedLast = null;
@@ -232,7 +232,7 @@ public class ForceKlickEnvironment extends Scene implements
             {
                 return;
             }
-            stange.setSize(vectorLength, stange.getHeight());
+            stange.size(vectorLength, stange.height());
             double rot = Vector.RIGHT
                     .getAngle(lastAttack.negate().add(currentMousePos));
             if (Double.isNaN(rot))
@@ -243,7 +243,7 @@ public class ForceKlickEnvironment extends Scene implements
             {
                 rot = 360 - rot;
             }
-            stange.setRotation(rot);
+            stange.rotation(rot);
         }
     }
 

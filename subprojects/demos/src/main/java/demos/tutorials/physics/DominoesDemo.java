@@ -54,23 +54,23 @@ public class DominoesDemo extends Scene
     {
         // Boden auf dem die Dominosteine stehen
         ground = new Rectangle(200, 2);
-        ground.setCenter(0, -5);
-        ground.setColor("white");
+        ground.center(0, -5);
+        ground.color("white");
         add(ground);
         // Der Ball, der die Dominosteine umwerfen soll.
         ball = new Circle(0.5);
-        ball.setColor("red");
-        ball.setPosition(-10, -2);
+        ball.color("red");
+        ball.position(-10, -2);
         add(ball);
         // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
-        wall.setPosition(-14, -4);
+        wall.position(-14, -4);
     }
 
     private void setupAngle()
     {
         angle = new Rectangle(1, 0.1);
-        angle.setColor(Color.GREEN);
+        angle.color(Color.GREEN);
         add(angle);
     }
 
@@ -87,9 +87,9 @@ public class DominoesDemo extends Scene
         for (int i = 0; i < 20; i++)
         {
             Rectangle domino = new Rectangle(0.4, 3);
-            domino.setPosition(i * 3 * 0.4, -4);
+            domino.position(i * 3 * 0.4, -4);
             domino.makeDynamic();
-            domino.setColor("blue");
+            domino.color("blue");
             add(domino);
         }
     }
@@ -98,18 +98,18 @@ public class DominoesDemo extends Scene
     public void onFrameUpdate(double pastTime)
     {
         Vector mousePosition = mousePosition();
-        Vector ballCenter = ball.getCenter();
+        Vector ballCenter = ball.center();
         Vector distance = ballCenter.getDistance(mousePosition);
-        angle.setPosition(ball.getCenter());
-        angle.setWidth(distance.getLength());
+        angle.position(ball.center());
+        angle.width(distance.getLength());
         double rot = Vector.RIGHT.getAngle(distance);
-        angle.setRotation(rot);
+        angle.rotation(rot);
     }
 
     @Override
     public void onMouseDown(Vector position, MouseButton button)
     {
-        Vector impulse = ball.getCenter().getDistance(position).multiply(5);
+        Vector impulse = ball.center().getDistance(position).multiply(5);
         ball.applyImpulse(impulse);
     }
 

@@ -57,7 +57,7 @@ public class FroggyJump extends Scene
         for (int i = 0; i < heightLevel; i++)
         {
             Platform platform = new Platform(5, 1);
-            platform.setPosition(0, i * 4);
+            platform.position(0, i * 4);
             add(platform);
         }
     }
@@ -70,8 +70,8 @@ public class FroggyJump extends Scene
             for (int j = 0; j < numPlatforms; j++)
             {
                 Platform platform = new Platform(6 / numPlatforms, 1);
-                platform.setPosition(
-                        numPlatforms * (j + 1) * i * Random.range(), i * 4);
+                platform.position(numPlatforms * (j + 1) * i * Random.range(),
+                        i * 4);
                 add(platform);
             }
             if (i > 3)
@@ -91,7 +91,7 @@ class DeathScreen extends Scene implements KeyStrokeListener
     public DeathScreen()
     {
         Text message = new Text("You Died. Press any button to try again", .6);
-        message.setCenter(camera().focus());
+        message.center(camera().focus());
         add(message);
     }
 
@@ -112,7 +112,7 @@ class Frog extends Image implements FrameUpdateListener
     {
         super("froggy/Frog.png", 25);
         makeDynamic();
-        setRotationLocked(true);
+        rotationLocked(true);
     }
 
     public void setJumpEnabled(boolean jumpEnabled)
@@ -128,22 +128,22 @@ class Frog extends Image implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        Vector velocity = this.getVelocity();
+        Vector velocity = this.velocity();
         // A: Die Blickrichtung des Frosches steuern
         if (velocity.getX() < 0)
         {
-            setFlippedHorizontally(true);
+            flippedHorizontally(true);
         }
         else
         {
-            setFlippedHorizontally(false);
+            flippedHorizontally(false);
         }
         // B: Horizontale Bewegung steuern
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
             if (velocity.getX() > 0)
             {
-                setVelocity(new Vector(0, velocity.getY()));
+                velocity(new Vector(0, velocity.getY()));
             }
             applyForce(Vector.LEFT.multiply(600));
         }
@@ -151,19 +151,19 @@ class Frog extends Image implements FrameUpdateListener
         {
             if (velocity.getX() < 0)
             {
-                setVelocity(new Vector(0, velocity.getY()));
+                velocity(new Vector(0, velocity.getY()));
             }
             applyForce(Vector.RIGHT.multiply(600));
         }
         if (Math.abs(velocity.getX()) > MAX_SPEED)
         {
-            setVelocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
+            velocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
                     velocity.getY()));
         }
         // C: Wenn möglich den Frosch springen lassen
         if (isGrounded() && velocity.getY() <= 0 && canJump)
         {
-            setVelocity(new Vector(velocity.getX(), 0));
+            velocity(new Vector(velocity.getX(), 0));
             applyImpulse(Vector.UP.multiply(180));
         }
     }
@@ -181,8 +181,8 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
-        double frogY = collisionEvent.getColliding().getPosition().getY();
-        if (frogY < getY())
+        double frogY = collisionEvent.getColliding().position().getY();
+        if (frogY < y())
         {
             collisionEvent.ignoreCollision();
             collisionEvent.getColliding().setJumpEnabled(false);
@@ -207,32 +207,32 @@ class SpikeBall extends Image implements CollisionListener<Frog>
         {
             super(2, 8);
             this.ball = ball;
-            setVisible(false);
+            visible(false);
             makeSensor();
             addCollisionListener(Frog.class, this);
-            setGravityScale(0);
+            gravityScale(0);
         }
 
         @Override
         public void onCollision(CollisionEvent<Frog> collisionEvent)
         {
-            ball.setGravityScale(1);
+            ball.gravityScale(1);
         }
     }
 
     public SpikeBall()
     {
         super("froggy/Spiked-Ball.png", 40);
-        setGravityScale(0);
+        gravityScale(0);
         addCollisionListener(Frog.class, this);
     }
 
     public static SpikeBall setupSpikeBall(double x, double y, Layer layer)
     {
         SpikeBall ball = new SpikeBall();
-        ball.setCenter(x, y);
+        ball.center(x, y);
         SpikeSensor sensor = new SpikeSensor(ball);
-        sensor.setPosition(x - 1, y - 8);
+        sensor.position(x - 1, y - 8);
         layer.add(ball, sensor);
         return ball;
     }

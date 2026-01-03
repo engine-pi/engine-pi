@@ -33,9 +33,9 @@ public class BounceBar extends Rectangle
     public BounceBar(double width)
     {
         super(width, 1);
-        setBodyType(BodyType.STATIC);
-        setElasticity(1);
-        setVisible(false);
+        bodyType(BodyType.STATIC);
+        elasticity(1);
+        visible(false);
     }
 
     /**
@@ -44,8 +44,8 @@ public class BounceBar extends Rectangle
      */
     public BounceBar debug()
     {
-        setVisible(true);
-        setColor("gray");
+        visible(true);
+        color("gray");
         return this;
     }
 

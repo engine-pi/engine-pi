@@ -514,13 +514,13 @@ public class WorldHandler implements ContactListener
             CollisionListener<Actor> listener, Actor actor)
     {
         actor.addMountListener(() -> {
-            Body body = actor.getPhysicsHandler().body();
+            Body body = actor.physicsHandler().body();
             if (body == null)
             {
                 throw new IllegalStateException(
                         "Body is missing on an Actor with an existing WorldHandler");
             }
-            actor.getPhysicsHandler().worldHandler().generalCollisonListeners
+            actor.physicsHandler().worldHandler().generalCollisonListeners
                     .computeIfAbsent(body, key -> new CopyOnWriteArrayList<>())
                     .add(listener);
         });
@@ -542,8 +542,8 @@ public class WorldHandler implements ContactListener
             Actor actor, E collider, CollisionListener<E> listener)
     {
         addMountListener(actor, collider, (worldHandler) -> {
-            Body b1 = actor.getPhysicsHandler().body();
-            Body b2 = collider.getPhysicsHandler().body();
+            Body b1 = actor.physicsHandler().body();
+            Body b2 = collider.physicsHandler().body();
             if (b1 == null || b2 == null)
             {
                 Logger.error("Kollision",
@@ -577,9 +577,9 @@ public class WorldHandler implements ContactListener
             Wrapper wrapper)
     {
         List<Runnable> releaseCallbacks = addMountListener(a, b,
-                worldHandler -> wrapper.setJoint(jointBuilder.createJoint(
-                        worldHandler.world(), a.getPhysicsHandler().body(),
-                        b.getPhysicsHandler().body()), worldHandler));
+                worldHandler -> wrapper.joint(jointBuilder.createJoint(
+                        worldHandler.world(), a.physicsHandler().body(),
+                        b.physicsHandler().body()), worldHandler));
         releaseCallbacks.forEach(wrapper::addReleaseListener);
         return wrapper;
     }
@@ -594,17 +594,17 @@ public class WorldHandler implements ContactListener
         List<Runnable> releases = new ArrayList<>();
         AtomicBoolean skipListener = new AtomicBoolean(true);
         Runnable listenerA = () -> {
-            WorldHandler worldHandler = a.getPhysicsHandler().worldHandler();
+            WorldHandler worldHandler = a.physicsHandler().worldHandler();
             if (!skipListener.get() && b.isMounted()
-                    && b.getPhysicsHandler().worldHandler() == worldHandler)
+                    && b.physicsHandler().worldHandler() == worldHandler)
             {
                 runnable.accept(worldHandler);
             }
         };
         Runnable listenerB = () -> {
-            WorldHandler worldHandler = b.getPhysicsHandler().worldHandler();
+            WorldHandler worldHandler = b.physicsHandler().worldHandler();
             if (!skipListener.get() && a.isMounted()
-                    && a.getPhysicsHandler().worldHandler() == worldHandler)
+                    && a.physicsHandler().worldHandler() == worldHandler)
             {
                 runnable.accept(worldHandler);
             }
@@ -616,7 +616,7 @@ public class WorldHandler implements ContactListener
         releases.add(() -> b.removeMountListener(listenerB));
         if (a.isMounted() && b.isMounted())
         {
-            runnable.accept(a.getPhysicsHandler().worldHandler());
+            runnable.accept(a.physicsHandler().worldHandler());
         }
         return releases;
     }

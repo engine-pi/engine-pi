@@ -51,7 +51,7 @@ public class FrameUpdateListenerDemo extends Scene
         public TextActor()
         {
             super("Text Actor", 2);
-            setCenter(0, 0);
+            center(0, 0);
         }
 
         @Override

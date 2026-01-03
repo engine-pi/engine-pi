@@ -45,7 +45,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     public SnakeScene()
     {
         snake = new Snake(this);
-        scoreText.setPosition(-9, 5);
+        scoreText.position(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }
@@ -54,7 +54,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     {
         this.score = score;
         snakeSpeed = 5 + (score * 0.1);
-        scoreText.setContent("Score: " + score);
+        scoreText.content("Score: " + score);
     }
 
     public void increaseScore()
@@ -67,7 +67,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
         double x = Random.range() * 10 - 5;
         double y = Random.range() * 10 - 5;
         Goodie goodie = new Goodie(this);
-        goodie.setCenter(x, y);
+        goodie.center(x, y);
         add(goodie);
         goodie.addCollisionListener(SnakeHead.class, goodie);
     }

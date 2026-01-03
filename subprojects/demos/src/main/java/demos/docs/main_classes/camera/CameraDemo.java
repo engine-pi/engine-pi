@@ -46,18 +46,17 @@ public class CameraDemo extends Scene implements FrameUpdateListener
                 .disable();
         camera = camera();
         Image background = new Image("main-classes/camera/Fez.png", 32);
-        background.setCenter(0, 0);
+        background.center(0, 0);
         add(background);
 
         line = new Line(new Vector(0, 0), new Vector(1, 1));
-        line.setColor("red");
+        line.color("red");
         add(line);
 
         Bounds visible = visibleArea();
 
-        Bounds cameraBounds = new Bounds(
-                background.getX() + visible.width() / 2,
-                background.getY() + visible.height() / 2,
+        Bounds cameraBounds = new Bounds(background.x() + visible.width() / 2,
+                background.y() + visible.height() / 2,
                 background.width() - visible.width(),
                 background.height() - visible.height());
 

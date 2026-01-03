@@ -34,7 +34,9 @@ import java.util.List;
 import pi.Game;
 import pi.animation.AnimationFrame;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.physics.FixtureBuilder;
@@ -94,7 +96,7 @@ public class Animation extends Actor implements FrameUpdateListener
     /**
      * Falls wahr, werden die Einzelbilder nicht automatisch nach einer gewissen
      * Zeit weiter geschaltet, sondern über die Methoden
-     * {@link #setFrameIndex(int)} oder {@link #showNext(int)}.
+     * {@link #frameIndex(int)} oder {@link #showNext(int)}.
      */
     private boolean manualMode = false;
 
@@ -163,7 +165,7 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * <p>
      * Die Einzelbilder werden dann nicht automatisch nach einer gewissen Zeit
-     * weiter geschaltet, sondern über die Methoden {@link #setFrameIndex(int)}
+     * weiter geschaltet, sondern über die Methoden {@link #frameIndex(int)}
      * oder {@link #showNext()}.
      * </p>
      */
@@ -210,7 +212,8 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @since 0.38.0
      */
-    public void setFrameIndex(int index)
+    @Setter
+    public void frameIndex(int index)
     {
         if (!manualMode)
         {
@@ -228,7 +231,8 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @since 0.40.0
      */
-    public void setDuration(double duration)
+    @Setter
+    public void duration(double duration)
     {
         for (AnimationFrame animationFrame : frames)
         {
@@ -244,7 +248,8 @@ public class Animation extends Actor implements FrameUpdateListener
      * @hidden
      */
     @Internal
-    public AnimationFrame[] getFrames()
+    @Getter
+    public AnimationFrame[] frames()
     {
         return frames.clone();
     }
@@ -254,10 +259,11 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @return Die <b>Breite</b> der Animation in Meter.
      *
-     * @see #getHeight()
+     * @see #height()
      */
     @API
-    public double getWidth()
+    @Getter
+    public double width()
     {
         return width;
     }
@@ -267,10 +273,11 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @return Die <b>Höhe</b> der Animation in Meter.
      *
-     * @see #getWidth()
+     * @see #width()
      */
     @API
-    public double getHeight()
+    @Getter
+    public double height()
     {
         return height;
     }

@@ -37,7 +37,7 @@ public class KeyEventDisplayDemo extends Scene
         public KeyText()
         {
             super("Press a key", 1);
-            setCenter(0, 0);
+            center(0, 0);
         }
 
         @Override
@@ -46,8 +46,8 @@ public class KeyEventDisplayDemo extends Scene
             String text = KeyEvent.getKeyText(keyEvent.getKeyCode());
             text = text.replace(" ", "_");
             text = text.toUpperCase();
-            setContent("VK_" + text);
-            setCenter(0, 0);
+            content("VK_" + text);
+            center(0, 0);
         }
     }
 

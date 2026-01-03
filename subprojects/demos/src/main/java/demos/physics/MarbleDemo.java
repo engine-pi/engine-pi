@@ -63,26 +63,26 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         {
             // slanted
             Rectangle slantedLeft = new Rectangle(THICKNESS, LENGTH_SLANTED);
-            slantedLeft.setPosition(-NARROW_RADIUS + THICKNESS * 0.25,
+            slantedLeft.position(-NARROW_RADIUS + THICKNESS * 0.25,
                     LENGTH_VERTICAL - THICKNESS * 0.75);
             Rectangle slatedRight = new Rectangle(THICKNESS, LENGTH_SLANTED);
-            slatedRight.setPosition(NARROW_RADIUS, LENGTH_VERTICAL);
+            slatedRight.position(NARROW_RADIUS, LENGTH_VERTICAL);
             // vertical
             Rectangle verticalLeft = new Rectangle(THICKNESS, LENGTH_VERTICAL);
-            verticalLeft.setPosition(-NARROW_RADIUS, 0);
+            verticalLeft.position(-NARROW_RADIUS, 0);
             Rectangle verticalRight = new Rectangle(THICKNESS, LENGTH_VERTICAL);
-            verticalRight.setPosition(NARROW_RADIUS, 0);
+            verticalRight.position(NARROW_RADIUS, 0);
             Rectangle[] allRectangles = new Rectangle[] { slantedLeft,
                     slatedRight, verticalLeft, verticalRight };
             for (Rectangle r : allRectangles)
             {
-                r.setColor(Color.WHITE);
+                r.color(Color.WHITE);
                 add(r);
                 r.makeStatic();
             }
             gravity(new Vector(0, -30));
-            slantedLeft.setRotation(45);
-            slatedRight.setRotation(-45);
+            slantedLeft.rotation(45);
+            slatedRight.rotation(-45);
         }
     }
 
@@ -102,13 +102,13 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             Circle marble = makeMarble();
             add(marble);
             marble.makeDynamic();
-            marble.setPosition(0, 500);
+            marble.position(0, 500);
             marble.applyImpulse(new Vector(Random.range() * 200 - 100,
                     Random.range() * -300 - 100));
         });
         ground = new Rectangle(Funnel.NARROW_RADIUS * 2 + Funnel.THICKNESS,
                 Funnel.THICKNESS);
-        ground.setPosition(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
+        ground.position(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
         ground.makeStatic();
         add(ground);
         camera().meter(0.5);
@@ -117,15 +117,15 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        if (ground.getBodyType() == BodyType.STATIC)
+        if (ground.bodyType() == BodyType.STATIC)
         {
             ground.makeSensor();
-            ground.setColor(new Color(255, 255, 255, 100));
+            ground.color(new Color(255, 255, 255, 100));
         }
         else
         {
             ground.makeStatic();
-            ground.setColor(Color.WHITE);
+            ground.color(Color.WHITE);
         }
     }
 
@@ -146,7 +146,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             @Override
             public void onFrameUpdate(double pastTime)
             {
-                if (this.getCenter().getLength() > 1000)
+                if (this.center().getLength() > 1000)
                 {
                     MarbleDemo.this.remove(this);
                 }
@@ -154,8 +154,8 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         }
         Circle marble = new Marble(Random.range(20) + 10);
         marble.makeDynamic();
-        marble.setGravityScale(2);
-        marble.setColor(new Color(Random.range(255), Random.range(255),
+        marble.gravityScale(2);
+        marble.color(new Color(Random.range(255), Random.range(255),
                 Random.range(255)));
         return marble;
     }

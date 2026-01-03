@@ -560,7 +560,7 @@ public final class Camera
     {
         if (hasFocus())
         {
-            focus = actorInFocus.getCenter();
+            focus = actorInFocus.center();
         }
         focus = moveIntoBounds(focus);
     }

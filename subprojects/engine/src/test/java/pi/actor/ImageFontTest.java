@@ -45,31 +45,31 @@ public class ImageFontTest
     @Test
     public void testTextAlignmentCenter()
     {
-        imageFont.setAlignment(TextAlignment.CENTER);
+        imageFont.alignment(TextAlignment.CENTER);
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."), "center");
     }
 
     @Test
     public void testCaseSensitivity()
     {
-        imageFont.setCaseSensitivity(ImageFontCaseSensitivity.TO_LOWER);
+        imageFont.caseSensitivity(ImageFontCaseSensitivity.TO_LOWER);
         assertThrows(RuntimeException.class, () -> imageFont.render("hello"));
     }
 
     @Test
     public void testMethodChaining()
     {
-        write(imageFont.setBasePath("image-font/tetris").setExtension("png")
-                .setCaseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
-                .setAlignment(TextAlignment.LEFT).setThrowException(false)
-                .setPixelMultiplication(4).setColor(Color.BLUE).setLineWidth(20)
+        write(imageFont.basePath("image-font/tetris").extension("png")
+                .caseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
+                .alignment(TextAlignment.LEFT).throwException(false)
+                .pixelMultiplication(4).color(Color.BLUE).lineWidth(20)
                 .render("chaining"), "chaining");
     }
 
     @Test
     public void testThrowException()
     {
-        write(imageFont.setThrowException(false).render("!"), "throw-no-error");
+        write(imageFont.throwException(false).render("!"), "throw-no-error");
     }
 
     @Test

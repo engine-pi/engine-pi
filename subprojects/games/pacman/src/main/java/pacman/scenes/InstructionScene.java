@@ -39,14 +39,14 @@ public class InstructionScene extends BaseScene
     {
         Ghost ghost = Ghost.createGhost(clazz);
         assert ghost != null;
-        ghost.setPosition(4, y - 0.25);
+        ghost.position(4, y - 0.25);
         add(ghost);
     }
 
     public void addImageFontText(String content, String color, int x, int y)
     {
         Text text = new Text(content, color);
-        text.setPosition(x, y);
+        text.position(x, y);
         add(text);
     }
 

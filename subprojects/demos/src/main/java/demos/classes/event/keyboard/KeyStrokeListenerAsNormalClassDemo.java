@@ -68,7 +68,7 @@ public class KeyStrokeListenerAsNormalClassDemo extends Scene
     public KeyStrokeListenerAsNormalClassDemo()
     {
         circle = new Circle(2);
-        circle.setColor("red");
+        circle.color("red");
         keyStrokeListener = new MyKeyStrokeListener();
         circle.addKeyStrokeListener(keyStrokeListener);
         add(circle);

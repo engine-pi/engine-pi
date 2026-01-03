@@ -40,16 +40,16 @@ public class RevolteJointSeesawDemo extends Scene
     {
         Polygon base = new Polygon(v(0, 0), v(1, 0), v(0.5, 1));
         base.makeStatic();
-        base.setColor("white");
+        base.color("white");
         add(base);
         Rectangle seesaw = new Rectangle(5, 0.4);
         seesaw.makeDynamic();
-        seesaw.setCenter(0.5, 1);
-        seesaw.setColor("gray");
+        seesaw.center(0.5, 1);
+        seesaw.color("gray");
         seesaw.createRevoluteJoint(base, v(2.5, 0.2));
         add(seesaw);
-        add(new Circle().setPosition(-2, 2).makeDynamic());
-        add(new Circle().setPosition(2, 2.2).makeDynamic());
+        add(new Circle().position(-2, 2).makeDynamic());
+        add(new Circle().position(2, 2.2).makeDynamic());
         gravityOfEarth();
     }
 

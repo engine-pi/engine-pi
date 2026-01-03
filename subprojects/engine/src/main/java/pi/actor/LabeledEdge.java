@@ -67,7 +67,7 @@ public class LabeledEdge extends Actor
         this.from = from;
         this.to = to;
         this.label = label;
-        setColor("gray");
+        color("gray");
     }
 
     public void setLabel(String label)
@@ -96,7 +96,7 @@ public class LabeledEdge extends Actor
         Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
                 BasicStroke.JOIN_MITER);
         g.setStroke(stroke);
-        g.setColor(getColor());
+        g.setColor(color());
 
         if (label != null)
         {

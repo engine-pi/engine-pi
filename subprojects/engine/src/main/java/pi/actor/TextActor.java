@@ -26,7 +26,9 @@ import java.awt.geom.AffineTransform;
 
 import pi.Resources;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
@@ -159,8 +161,8 @@ public abstract class TextActor extends Geometry
         this.content = content == null ? "" : content;
         this.height = height;
         setStyle(style);
-        setFont(fontName);
-        setColor("white");
+        font(fontName);
+        color("white");
     }
 
     public TextActor(String content, double height, Font font, int style)
@@ -170,8 +172,8 @@ public abstract class TextActor extends Geometry
         this.content = content == null ? "" : content;
         this.height = height;
         setStyle(style);
-        setFont(font);
-        setColor("white");
+        font(font);
+        color("white");
     }
 
     /**
@@ -184,7 +186,8 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setFont(Font font)
+    @Setter
+    public TextActor font(Font font)
     {
         this.font = font.deriveFont(fontStyle, SIZE);
         update();
@@ -201,14 +204,16 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setFont(String fontName)
+    @Setter
+    public TextActor font(String fontName)
     {
-        setFont(Resources.fonts.get(fontName));
+        font(Resources.fonts.get(fontName));
         return this;
     }
 
     @API
-    public Font getFont()
+    @Getter
+    public Font font()
     {
         return font;
     }
@@ -222,7 +227,8 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setContent(String content)
+    @Setter
+    public TextActor content(String content)
     {
         String normalizedContent = content;
         if (normalizedContent == null)
@@ -246,9 +252,10 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setContent(Object content)
+    @Setter
+    public TextActor content(Object content)
     {
-        setContent(String.valueOf(content));
+        content(String.valueOf(content));
         return this;
     }
 
@@ -258,7 +265,8 @@ public abstract class TextActor extends Geometry
      * @return Der Textinhalt, der dargestellt werden soll.
      */
     @API
-    public String getContent()
+    @Getter
+    public String content()
     {
         return content;
     }
@@ -307,7 +315,8 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setHeight(double height)
+    @Setter
+    public TextActor height(double height)
     {
         if (this.height != height)
         {
@@ -318,7 +327,8 @@ public abstract class TextActor extends Geometry
     }
 
     @API
-    public double getHeight()
+    @Getter
+    public double height()
     {
         return height;
     }
@@ -329,7 +339,8 @@ public abstract class TextActor extends Geometry
      * @return Die <b>Breite</b> des Texts in Meter zurück.
      */
     @API
-    public double getWidth()
+    @Getter
+    public double width()
     {
         var sizeInPixels = FontUtil.getStringBounds(content, font);
         return sizeInPixels.getWidth() * height / sizeInPixels.getHeight();
@@ -347,7 +358,7 @@ public abstract class TextActor extends Geometry
     public TextActor setWidth(double width)
     {
         var sizeInPixels = FontUtil.getStringBounds(content, font);
-        setHeight(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());
+        height(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());
         return this;
     }
 
@@ -360,7 +371,7 @@ public abstract class TextActor extends Geometry
         var size = FontUtil.getStringBounds(content, font);
         cachedScaleFactor = height / size.getHeight();
         cachedDescent = FontUtil.getDescent(font);
-        setFixture(() -> createShape(content, height, font));
+        fixture(() -> createShape(content, height, font));
     }
 
     /**
@@ -372,7 +383,7 @@ public abstract class TextActor extends Geometry
     {
         AffineTransform pre = g.getTransform();
         Font preFont = g.getFont();
-        g.setColor(getColor());
+        g.setColor(color());
         g.scale(cachedScaleFactor * pixelPerMeter,
                 cachedScaleFactor * pixelPerMeter);
         g.setFont(font);

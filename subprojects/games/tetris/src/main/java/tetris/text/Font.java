@@ -14,8 +14,8 @@ public class Font
         if (font == null)
         {
             font = new ImageFont("images/image-font")
-                    .setCaseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
-                    .setColor(COLOR_SCHEME_GREEN.getBlack())
+                    .caseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
+                    .color(COLOR_SCHEME_GREEN.getBlack())
                     .addMapping('\uE000', "e000_quotation-mark-and-dot");
         }
         return font;

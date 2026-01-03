@@ -155,7 +155,7 @@ public class LabeledNode extends Geometry
         updateLabel();
         // Damit zuerst auf das statische Attribut COLOR zurückgegriffen wird.
         color = null;
-        setCenter(x, y);
+        center(x, y);
     }
 
     /**
@@ -235,7 +235,7 @@ public class LabeledNode extends Geometry
      *
      * @return Die <b>Hintergrundfarbe</b> des Knotens
      */
-    public Color getColor()
+    public Color color()
     {
         if (color == null)
         {
@@ -266,7 +266,7 @@ public class LabeledNode extends Geometry
         float upperLeftY = -nodeSize;
 
         // Kreis
-        g.setColor(getColor());
+        g.setColor(color());
         g.fillOval((int) upperLeftX, (int) upperLeftY, (int) nodeSize,
                 (int) nodeSize);
 
@@ -320,7 +320,7 @@ public class LabeledNode extends Geometry
 
             LabeledNode.COLOR = Resources.colors.get("orange");
             n2 = new LabeledNode("Node 2", 5, 5);
-            n2.setColor("green");
+            n2.color("green");
             s.add(n2);
 
             n3 = new LabeledNode("Node 3", 5, -5);

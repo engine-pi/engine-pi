@@ -59,6 +59,6 @@ public class ManaPickup extends Animation
     private void setActive(boolean b)
     {
         active = b;
-        setOpacity(b ? 1 : 0);
+        opacity(b ? 1 : 0);
     }
 }

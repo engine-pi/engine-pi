@@ -34,10 +34,10 @@ public class SubMenuScene extends Scene implements WindowScene
         this.main = main;
         State.menu.getSub(main).forEach((sub, id) -> {
             Text text = new Text(sub, FONT_SIZE);
-            text.setFont(TextMaker.regular);
+            text.font(TextMaker.regular);
             if (id != null)
             {
-                text.setColor(Color.BLACK);
+                text.color(Color.BLACK);
                 text.addMouseClickListener((vector, mouseButton) -> {
                     if (text.contains(vector))
                     {
@@ -47,19 +47,19 @@ public class SubMenuScene extends Scene implements WindowScene
                 text.addFrameUpdateListener((deltaSeconds) -> {
                     if (text.contains(Game.getMousePosition()))
                     {
-                        text.setOpacity(0.5f);
+                        text.opacity(0.5f);
                     }
                     else
                     {
-                        text.setOpacity(1f);
+                        text.opacity(1f);
                     }
                 });
             }
             else
             {
-                text.setColor(Color.GRAY);
+                text.color(Color.GRAY);
             }
-            text.setPosition(x, y);
+            text.position(x, y);
             add(text);
             y -= 2 * FONT_SIZE;
         });

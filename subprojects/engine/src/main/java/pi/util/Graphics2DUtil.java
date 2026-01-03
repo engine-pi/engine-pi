@@ -290,7 +290,7 @@ public class Graphics2DUtil
             {
                 // Damit wir den Pfeil sehen
                 gravityOfEarth();
-                add(new Circle(7).setCenter(0, 0).makeStatic());
+                add(new Circle(7).center(0, 0).makeStatic());
             }
         });
     }

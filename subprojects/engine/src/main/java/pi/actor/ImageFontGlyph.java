@@ -18,13 +18,15 @@
  */
 package pi.actor;
 
-import pi.Resources;
-import pi.util.FileUtil;
-import pi.util.ImageUtil;
-
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
+
+import pi.Resources;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+import pi.util.FileUtil;
+import pi.util.ImageUtil;
 
 /**
  * Stellt ein <b>Zeichen</b> dar, das durch ein <b>Bild</b> repräsentiert ist.
@@ -76,7 +78,8 @@ public class ImageFontGlyph
      *
      * @return Das Zeichen, das durch ein Bild dargestellt werden soll.
      */
-    public char getGlyph()
+    @Getter
+    public char glyph()
     {
         return glyph;
     }
@@ -88,7 +91,8 @@ public class ImageFontGlyph
      * @return Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
      *     als Zeichenkette.
      */
-    public String getContent()
+    @Getter
+    public String content()
     {
         return String.valueOf(glyph);
     }
@@ -99,7 +103,8 @@ public class ImageFontGlyph
      * @param glyph Das <b>Zeichen</b>, das durch ein Bild dargestellt werden
      *     soll.
      */
-    public void setGlyph(char glyph)
+    @Setter
+    public void glyph(char glyph)
     {
         this.glyph = glyph;
     }
@@ -111,7 +116,8 @@ public class ImageFontGlyph
      * @return Das in den Speicher geladene <b>Bild</b>, das ein Zeichen
      *     darstellt.
      */
-    public BufferedImage getImage()
+    @Getter
+    public BufferedImage image()
     {
         return image;
     }
@@ -131,7 +137,8 @@ public class ImageFontGlyph
      *
      * @return Die <b>Höhe</b> des Bilds in Pixel.
      */
-    public int getHeight()
+    @Getter
+    public int height()
     {
         return image.getHeight();
     }
@@ -141,7 +148,8 @@ public class ImageFontGlyph
      *
      * @return Der Dateiname des Bilds ohne Dateierweiterung.
      */
-    public String getFilename()
+    @Getter
+    public String filename()
     {
         return filename;
     }
@@ -152,7 +160,8 @@ public class ImageFontGlyph
      *
      * @return Den <b>Unicode-Namen</b> des Zeichens.
      */
-    public String getUnicodeName()
+    @Getter
+    public String unicodeName()
     {
         return filename.substring(5).replace("-", " ").toUpperCase();
     }
@@ -163,7 +172,8 @@ public class ImageFontGlyph
      *
      * @return Die vierstellige, hexadezimale Unicode-Nummer.
      */
-    public String getHexNumber()
+    @Getter
+    public String hexNumber()
     {
         return filename.substring(0, 4).toUpperCase();
     }

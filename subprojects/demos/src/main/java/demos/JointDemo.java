@@ -59,8 +59,8 @@ public class JointDemo extends ForceKlickEnvironment
         buildHoverHolder();
         ball = new Circle(1);
         add(ball);
-        ball.setColor(Color.BLUE);
-        ball.setPosition(new Vector(300, 200));
+        ball.color(Color.BLUE);
+        ball.position(new Vector(300, 200));
         ball.makeDynamic();
     }
 
@@ -73,14 +73,14 @@ public class JointDemo extends ForceKlickEnvironment
                 new Vector(75 * FACT, 50 * FACT),
                 new Vector(75 * FACT, 100 * FACT), new Vector(0, 100 * FACT));
         add(halter);
-        halter.setColor("blue green");
+        halter.color("blue green");
         halter.makeDynamic();
         Rectangle item = new Rectangle(35 * FACT, 20 * FACT);
         add(item);
-        item.setPosition(30 * FACT, 0);
-        item.setColor("red");
+        item.position(30 * FACT, 0);
+        item.color("red");
         item.makeDynamic();
-        halter.createDistanceJoint(item, halter.getCenter(), item.getCenter());
+        halter.createDistanceJoint(item, halter.center(), item.center());
     }
 
     /**
@@ -89,11 +89,11 @@ public class JointDemo extends ForceKlickEnvironment
     private void buildLeash()
     {
         Circle kx = new Circle(30);
-        kx.setColor("blue");
+        kx.color("blue");
         kx.makeDynamic();
         Circle ky = new Circle(50);
-        ky.setPosition(50, 0);
-        ky.setColor("green");
+        ky.position(50, 0);
+        ky.color("green");
         ky.makeDynamic();
         kx.createRopeJoint(ky, new Vector(15, 15), new Vector(25, 25), 4);
     }
@@ -111,8 +111,8 @@ public class JointDemo extends ForceKlickEnvironment
             chain[i] = new Rectangle(50, 10);
             Vector posrel = new Vector(45 * i, 30);
             chain[i].moveBy(posrel);
-            chain[i].setColor("green");
-            chain[i].setBodyType(i == 0 ? BodyType.STATIC : BodyType.DYNAMIC);
+            chain[i].color("green");
+            chain[i].bodyType(i == 0 ? BodyType.STATIC : BodyType.DYNAMIC);
             if (i != 0)
             {
                 chain[i - 1].createRevoluteJoint(chain[i],
@@ -121,10 +121,10 @@ public class JointDemo extends ForceKlickEnvironment
         }
         add(chain);
         Circle weight = new Circle(100);
-        weight.setColor(Color.WHITE);
+        weight.color(Color.WHITE);
         weight.makeDynamic();
         Vector vektor = new Vector(45 * chain.length, 35);
-        weight.setCenter(new Vector(vektor.getX(), vektor.getY()));
+        weight.center(new Vector(vektor.getX(), vektor.getY()));
         weight.createRevoluteJoint(chain[chain.length - 1], vektor);
         add(weight);
     }

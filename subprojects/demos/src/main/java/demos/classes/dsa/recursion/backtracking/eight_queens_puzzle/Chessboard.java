@@ -72,22 +72,22 @@ public class Chessboard
             for (int column = 0; column < numberOfSquares; column++)
             {
                 Square square = new Square();
-                square.setPosition(column, row);
-                square.setColor(((column + row) % 2 == 0 ? brown : brown2));
+                square.position(column, row);
+                square.color(((column + row) % 2 == 0 ? brown : brown2));
                 squares[row][column] = square;
                 scene.add(square);
 
                 Image queen = new Image("eight-queens-puzzle/queen-white.png",
                         120);
                 double shift = 0.2;
-                queen.setPosition(column + shift, row + shift);
+                queen.position(column + shift, row + shift);
                 queen.hide();
                 queens[row][column] = queen;
                 scene.add(queen);
 
                 Circle circle = new Circle(0.2);
                 shift = 0.4;
-                circle.setPosition(column + shift, row + shift);
+                circle.position(column + shift, row + shift);
                 circle.hide();
                 highlightingPoints[row][column] = circle;
                 scene.add(circle);
@@ -111,7 +111,7 @@ public class Chessboard
         {
             for (int column = 0; column < hasQueens[row].length; column++)
             {
-                queens[row][column].setVisible(hasQueens[row][column]);
+                queens[row][column].visible(hasQueens[row][column]);
             }
         }
         sleep(sleepMilliSeconds);

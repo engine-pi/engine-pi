@@ -745,7 +745,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         for (Actor actor : addedActors())
         {
 
-            Vector center = actor.getCenter();
+            Vector center = actor.center();
             double x = center.getX();
             double y = center.getY();
 

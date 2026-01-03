@@ -97,11 +97,11 @@ public class ImageRobot extends Image implements Robot
             return;
         }
         inMotion = true;
-        Vector from = getCenter();
+        Vector from = center();
         Vector vector = new Vector(from, to);
         double duration = (float) 1 / speed / 2;
         animate(duration, progress -> {
-            setCenter(from.add(vector.multiply(progress)));
+            center(from.add(vector.multiply(progress)));
         });
         inMotion = false;
     }
@@ -194,12 +194,12 @@ public class ImageRobot extends Image implements Robot
             return;
         }
         inMotion = true;
-        double rotation = getRotation();
-        Vector center = getCenter();
+        double rotation = rotation();
+        Vector center = center();
         wait(0.1);
         animate(duration, progress -> {
-            setRotation(rotation + progress);
-            setCenter(center);
+            rotation(rotation + progress);
+            center(center);
         }, new SinusDouble(0, 45));
         wait(0.1);
         inMotion = false;
@@ -212,18 +212,18 @@ public class ImageRobot extends Image implements Robot
             return;
         }
         inMotion = true;
-        Vector center = getCenter();
+        Vector center = center();
         // case EAST: 0;
         // case NORTH: 90;
         // case WEST: 180;
         // case SOUTH: 270;
         // To avoid high rotation numbers
-        double start = getRotation() % 360;
-        setRotation(start);
+        double start = rotation() % 360;
+        rotation(start);
         double duration = 1 / speed / 4;
         animate(duration, progress -> {
-            setRotation(start + progress * degree);
-            setCenter(center);
+            rotation(start + progress * degree);
+            center(center);
         });
         inMotion = false;
     }

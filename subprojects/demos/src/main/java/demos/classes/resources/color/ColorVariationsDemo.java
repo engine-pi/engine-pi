@@ -51,13 +51,13 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
             {
                 Square square = new Square();
                 COLOR_AREAS[i][j] = square;
-                square.setPosition(j, i);
+                square.position(j, i);
                 add(square);
             }
         }
         NAME = new Text("");
-        NAME.setPosition(2, -2);
-        NAME.setColor("white");
+        NAME.position(2, -2);
+        NAME.color("white");
         add(NAME);
         camera().focus(4, 4);
         setNextColorScheme();
@@ -76,17 +76,17 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 
     private void setColorScheme(ColorSchemeSelection selection)
     {
-        NAME.setContent(selection.name());
+        NAME.content(selection.name());
         var scheme = selection.getScheme();
         int i = 0;
 
         for (Color color : scheme.getWheelColors())
         {
-            COLOR_AREAS[i][0].setColor(ColorUtil.setBrightness(color, 0.2));
-            COLOR_AREAS[i][1].setColor(ColorUtil.setBrightness(color, 0.4));
-            COLOR_AREAS[i][2].setColor(ColorUtil.setBrightness(color, 0.6));
-            COLOR_AREAS[i][3].setColor(ColorUtil.setBrightness(color, 0.8));
-            COLOR_AREAS[i][4].setColor(ColorUtil.setBrightness(color, 1));
+            COLOR_AREAS[i][0].color(ColorUtil.setBrightness(color, 0.2));
+            COLOR_AREAS[i][1].color(ColorUtil.setBrightness(color, 0.4));
+            COLOR_AREAS[i][2].color(ColorUtil.setBrightness(color, 0.6));
+            COLOR_AREAS[i][3].color(ColorUtil.setBrightness(color, 0.8));
+            COLOR_AREAS[i][4].color(ColorUtil.setBrightness(color, 1));
             i++;
         }
     }

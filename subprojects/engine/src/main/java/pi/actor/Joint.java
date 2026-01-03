@@ -19,7 +19,9 @@
 package pi.actor;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.event.EventListeners;
 import pi.physics.WorldHandler;
 
@@ -51,7 +53,8 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
      * @hidden
      */
     @Internal
-    public final void setJoint(JointType joint, WorldHandler worldHandler)
+    @Setter
+    public final void joint(JointType joint, WorldHandler worldHandler)
     {
         this.joint = new JointRegistration<>(joint, worldHandler);
         updateCustomProperties(joint);
@@ -63,7 +66,8 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
      * @hidden
      */
     @Internal
-    protected final JointType getJoint()
+    @Getter
+    protected final JointType joint()
     {
         JointRegistration<JointType> joint = this.joint;
         if (joint == null)

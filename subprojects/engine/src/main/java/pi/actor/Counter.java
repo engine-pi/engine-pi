@@ -22,6 +22,8 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 /**
@@ -54,7 +56,7 @@ public class Counter extends TextActor
      */
     private void updateContent()
     {
-        setContent(counter);
+        content(counter);
     }
 
     /**
@@ -63,7 +65,8 @@ public class Counter extends TextActor
      *
      * @param counter Der neue Wert für den Zähler.
      */
-    public void setCounter(int counter)
+    @Setter
+    public void counter(int counter)
     {
         this.counter = counter;
         updateContent();
@@ -74,7 +77,8 @@ public class Counter extends TextActor
      *
      * @return Der aktuelle Wert des Zählers.
      */
-    public int getCounter()
+    @Getter
+    public int counter()
     {
         return counter;
     }
@@ -134,22 +138,22 @@ public class Counter extends TextActor
         {
             {
                 Counter c = new Counter();
-                c.setColor("white");
+                c.color("white");
                 add(c);
 
                 addKeyStrokeListener((event -> {
                     switch (event.getKeyCode())
                     {
-                    case KeyEvent.VK_1 -> c.setCounter(1);
-                    case KeyEvent.VK_2 -> c.setCounter(2);
-                    case KeyEvent.VK_3 -> c.setCounter(3);
-                    case KeyEvent.VK_4 -> c.setCounter(4);
-                    case KeyEvent.VK_5 -> c.setCounter(5);
-                    case KeyEvent.VK_6 -> c.setCounter(6);
-                    case KeyEvent.VK_7 -> c.setCounter(7);
-                    case KeyEvent.VK_8 -> c.setCounter(8);
-                    case KeyEvent.VK_9 -> c.setCounter(9);
-                    case KeyEvent.VK_0 -> c.setCounter(0);
+                    case KeyEvent.VK_1 -> c.counter(1);
+                    case KeyEvent.VK_2 -> c.counter(2);
+                    case KeyEvent.VK_3 -> c.counter(3);
+                    case KeyEvent.VK_4 -> c.counter(4);
+                    case KeyEvent.VK_5 -> c.counter(5);
+                    case KeyEvent.VK_6 -> c.counter(6);
+                    case KeyEvent.VK_7 -> c.counter(7);
+                    case KeyEvent.VK_8 -> c.counter(8);
+                    case KeyEvent.VK_9 -> c.counter(9);
+                    case KeyEvent.VK_0 -> c.counter(0);
                     case KeyEvent.VK_R -> c.reset();
                     case KeyEvent.VK_UP -> c.increase();
                     case KeyEvent.VK_DOWN -> c.decrease();

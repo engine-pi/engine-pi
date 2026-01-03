@@ -34,7 +34,7 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Fall (32x32).png",
                 32);
         add(image);
-        image.setCenter(0, 0);
+        image.center(0, 0);
         camera().meter(320);
         backgroundColor(Color.WHITE);
     }

@@ -37,7 +37,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
     private void paintCircleAt(double mX, double mY, double diameter)
     {
         Circle circle = new Circle(diameter);
-        circle.setCenter(mX, mY);
+        circle.center(mX, mY);
         add(circle);
     }
 

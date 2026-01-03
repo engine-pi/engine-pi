@@ -51,16 +51,16 @@ public class MinimalDemo extends Scene
     public MinimalDemo()
     {
         rectangle = new Rectangle(50, 100);
-        rectangle.setColor(Color.BLUE);
+        rectangle.color(Color.BLUE);
         add(rectangle);
         Animation animation = Animation.createFromAnimatedGif(
                 "game-assets/jump/fx_explosion_b_anim.gif", 1, 1);
-        animation.setPosition(200, 200);
+        animation.position(200, 200);
         // animation.setOneTimeOnly();
         add(animation);
         Text text = new Text("Hallo!", 2);
-        text.setPosition(-100, -100);
-        text.setColor(Color.MAGENTA);
+        text.position(-100, -100);
+        text.color(Color.MAGENTA);
         add(text);
         // Stateful Animation
         // "leerer Automat" → Erstellt StatefulAnimation ohne Zustände
@@ -81,7 +81,7 @@ public class MinimalDemo extends Scene
                 .createFromAnimatedGif(pathbase + "jump_3down_anim.gif", 1, 1));
         character.addState("landing", Animation
                 .createFromAnimatedGif(pathbase + "jump_4land_anim.gif", 1, 1));
-        character.setStateTransition("landing", "idle");
+        character.stateTransition("landing", "idle");
         add(character);
     }
 
@@ -92,7 +92,7 @@ public class MinimalDemo extends Scene
         {
         case KeyEvent.VK_RIGHT -> rectangle.moveBy(50, 0);
         case KeyEvent.VK_LEFT -> rectangle.moveBy(-50, 0);
-        case KeyEvent.VK_C -> character.setState("midair");
+        case KeyEvent.VK_C -> character.state("midair");
         }
     }
 

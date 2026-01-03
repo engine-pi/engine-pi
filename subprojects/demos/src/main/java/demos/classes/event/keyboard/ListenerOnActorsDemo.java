@@ -32,8 +32,8 @@ public class ListenerOnActorsDemo extends Scene
     public ListenerOnActorsDemo()
     {
         Rectangle rectangle = new Rectangle(2, 2);
-        rectangle.setColor(Color.BLUE);
-        rectangle.setPosition(-3, 0);
+        rectangle.color(Color.BLUE);
+        rectangle.position(-3, 0);
         rectangle.addKeyStrokeListener(new KeyStrokeListener()
         {
             @Override
@@ -62,8 +62,8 @@ public class ListenerOnActorsDemo extends Scene
         add(rectangle);
         // Ein zweiter Actor
         Circle circle = new Circle(2);
-        circle.setPosition(3, 0);
-        circle.setColor(Color.RED);
+        circle.position(3, 0);
+        circle.color(Color.RED);
         // Als Lambda-Ausdruck
         circle.addKeyStrokeListener(e -> {
             switch (e.getKeyCode())

@@ -32,13 +32,14 @@ import pi.Scene;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorUtil;
 
 /**
- * Ein Bild als grafische Repräsentation einer Bilddatei, die gezeichnet werden
- * kann.
+ * Ein <b>Bild</b> als grafische Repräsentation einer Bilddatei, die gezeichnet
+ * werden kann.
  *
  * @author Michael Andonie
  */
@@ -88,7 +89,7 @@ public class Image extends Actor
     public Image(String filepath, double width, double height)
     {
         super(null);
-        setImage(filepath, width, height);
+        image(filepath, width, height);
     }
 
     /**
@@ -101,7 +102,7 @@ public class Image extends Actor
     public Image(String filepath, final double pixelPerMeter)
     {
         super(null);
-        setImage(filepath, pixelPerMeter);
+        image(filepath, pixelPerMeter);
     }
 
     /**
@@ -115,7 +116,7 @@ public class Image extends Actor
     public Image(BufferedImage image, final double pixelPerMeter)
     {
         super(null);
-        setImage(image, pixelPerMeter);
+        image(image, pixelPerMeter);
     }
 
     @API
@@ -138,7 +139,8 @@ public class Image extends Actor
      * @hidden
      */
     @Internal
-    public Dimension getImageSizeInPx()
+    @Getter
+    public Dimension imageSizeInPx()
     {
         return new Dimension(image.getWidth(), image.getHeight());
     }
@@ -147,7 +149,8 @@ public class Image extends Actor
      * @return AWT-Repräsentation des Bildes
      */
     @API
-    public BufferedImage getImage()
+    @Getter
+    public BufferedImage image()
     {
         return image;
     }
@@ -160,14 +163,15 @@ public class Image extends Actor
      * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
      */
-    public void setImage(BufferedImage image, double width, double height)
+    @Setter
+    public void image(BufferedImage image, double width, double height)
     {
         assertViableSizes(width, height);
         this.image = image;
         this.width = width;
         this.height = height;
         color = ColorUtil.calculateAverage(image);
-        setFixture(() -> FixtureBuilder.rectangle(width, height));
+        fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     /**
@@ -177,9 +181,10 @@ public class Image extends Actor
      * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
      */
-    public void setImage(String filepath, double width, double height)
+    @Setter
+    public void image(String filepath, double width, double height)
     {
-        setImage(Resources.images.get(filepath), width, height);
+        image(Resources.images.get(filepath), width, height);
     }
 
     /**
@@ -188,11 +193,12 @@ public class Image extends Actor
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
      */
-    public void setImage(BufferedImage image)
+    @Setter
+    public void image(BufferedImage image)
     {
         if (pixelPerMeter > 0)
         {
-            setImage(image, pixelPerMeter);
+            image(image, pixelPerMeter);
         }
         else
         {
@@ -207,11 +213,12 @@ public class Image extends Actor
      *     {@link BufferedImage}.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
-    public void setImage(BufferedImage image, double pixelPerMeter)
+    @Setter
+    public void image(BufferedImage image, double pixelPerMeter)
     {
         assertViablePPM(pixelPerMeter);
         this.pixelPerMeter = pixelPerMeter;
-        setImage(image, image.getWidth() / pixelPerMeter,
+        image(image, image.getWidth() / pixelPerMeter,
                 image.getHeight() / pixelPerMeter);
     }
 
@@ -221,9 +228,10 @@ public class Image extends Actor
      * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
-    public void setImage(String filepath, double pixelPerMeter)
+    @Setter
+    public void image(String filepath, double pixelPerMeter)
     {
-        setImage(Resources.images.get(filepath), pixelPerMeter);
+        image(Resources.images.get(filepath), pixelPerMeter);
     }
 
     /**
@@ -234,14 +242,15 @@ public class Image extends Actor
      * @param width Die neue Breite des Bilds in Meter.
      * @param height Die neue Höhe des Bild in Meter.
      *
-     * @see #setImageSize(double)
+     * @see #imageSize(double)
      */
-    public void setImageSize(double width, double height)
+    @Setter
+    public void imageSize(double width, double height)
     {
         assertViableSizes(width, height);
         this.width = width;
         this.height = height;
-        setFixture(() -> FixtureBuilder.rectangle(width, height));
+        fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     /**
@@ -251,12 +260,13 @@ public class Image extends Actor
      *
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
-     * @see #setImageSize(double, double)
+     * @see #imageSize(double, double)
      */
-    public void setImageSize(double pixelPerMeter)
+    @Setter
+    public void imageSize(double pixelPerMeter)
     {
         assertViablePPM(pixelPerMeter);
-        setImageSize(image.getWidth() / pixelPerMeter,
+        imageSize(image.getWidth() / pixelPerMeter,
                 image.getHeight() / pixelPerMeter);
     }
 
@@ -306,7 +316,7 @@ public class Image extends Actor
      */
     public boolean flipVertically()
     {
-        setFlippedVertically(!isFlippedVertically());
+        flippedVertically(!isFlippedVertically());
         return isFlippedVertically();
     }
 
@@ -316,10 +326,11 @@ public class Image extends Actor
      * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
      *     werden soll.
      *
-     * @see #setFlippedVertically(boolean)
+     * @see #flippedVertically(boolean)
      */
     @API
-    public void setFlippedVertically(boolean flippedVertically)
+    @Setter
+    public void flippedVertically(boolean flippedVertically)
     {
         this.flippedVertically = flippedVertically;
     }
@@ -348,7 +359,7 @@ public class Image extends Actor
      */
     public boolean flipHorizontally()
     {
-        setFlippedHorizontally(!isFlippedHorizontally());
+        flippedHorizontally(!isFlippedHorizontally());
         return isFlippedHorizontally();
     }
 
@@ -360,10 +371,11 @@ public class Image extends Actor
      * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
      *     werden soll.
      *
-     * @see #setFlippedVertically(boolean)
+     * @see #flippedVertically(boolean)
      */
     @API
-    public void setFlippedHorizontally(boolean flippedHorizontally)
+    @Setter
+    public void flippedHorizontally(boolean flippedHorizontally)
     {
         this.flippedHorizontally = flippedHorizontally;
     }
@@ -424,7 +436,7 @@ public class Image extends Actor
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.
                 Image image = addImage("logo/logo.png", 40);
-                image.setCenter(0, 0);
+                image.center(0, 0);
                 addKeyStrokeListener((event -> {
                     switch (event.getKeyCode())
                     {

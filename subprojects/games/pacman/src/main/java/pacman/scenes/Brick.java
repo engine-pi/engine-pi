@@ -45,7 +45,7 @@ public enum Brick
     public Image getImage()
     {
         Image image = new Image("images/maze/" + name() + ".png", 8);
-        image.setFixtures(fixture);
+        image.fixtures(fixture);
         return image;
     }
 }

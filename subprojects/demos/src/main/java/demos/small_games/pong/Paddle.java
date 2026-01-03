@@ -76,10 +76,10 @@ public class Paddle extends Rectangle
     {
         super(0.5, 5);
         this.table = table;
-        setColor("white");
-        setBodyType(BodyType.STATIC);
-        setElasticity(1);
-        setCenter(sideSign * (table.bounds.xRight() - BORDER_PADDING), 0);
+        color("white");
+        bodyType(BodyType.STATIC);
+        elasticity(1);
+        center(sideSign * (table.bounds.xRight() - BORDER_PADDING), 0);
     }
 
     public void moveUp()
@@ -90,8 +90,8 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() + getHeight() + MOVEMENT_DISTANCE
-                - HIDDEN_LENGTH > table.bounds.yTop())
+        if (y() + height() + MOVEMENT_DISTANCE - HIDDEN_LENGTH > table.bounds
+                .yTop())
         {
             return;
         }
@@ -107,7 +107,7 @@ public class Paddle extends Rectangle
         }
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
-        if (getY() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < table.bounds.yBottom())
+        if (y() - MOVEMENT_DISTANCE + HIDDEN_LENGTH < table.bounds.yBottom())
         {
             return;
         }

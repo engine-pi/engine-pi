@@ -51,7 +51,7 @@ public class PeriodicTaskExecutorDemo extends Scene
         public CounterText()
         {
             super("0", 2);
-            setCenter(0, 0);
+            center(0, 0);
             start();
             addKeyStrokeListener((e) -> {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE)
@@ -82,7 +82,7 @@ public class PeriodicTaskExecutorDemo extends Scene
         public void start()
         {
             task = new PeriodicTaskExecutor(0.1, (counter) -> {
-                setContent(counter);
+                content(counter);
             });
             addFrameUpdateListener(task);
         }

@@ -24,8 +24,8 @@ import java.awt.Graphics2D;
 
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
-
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.physics.FixtureData;
 
@@ -71,7 +71,7 @@ public abstract class CircleActor extends Geometry
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
-        setColor("blue");
+        color("blue");
     }
 
     /**
@@ -80,7 +80,8 @@ public abstract class CircleActor extends Geometry
      * @return Der <b>Durchmesser</b> des Kreises.
      */
     @API
-    public double getDiameter()
+    @Getter
+    public double diameter()
     {
         return diameter;
     }
@@ -91,7 +92,8 @@ public abstract class CircleActor extends Geometry
      * @return Der <b>Radius</b> des Kreises.
      */
     @API
-    public double getRadius()
+    @Getter
+    public double radius()
     {
         return diameter / 2;
     }
@@ -103,7 +105,7 @@ public abstract class CircleActor extends Geometry
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        g.setColor(getColor());
+        g.setColor(color());
         g.fillOval(0, -(int) (diameter * pixelPerMeter),
                 (int) (diameter * pixelPerMeter),
                 (int) (diameter * pixelPerMeter));
@@ -119,11 +121,11 @@ public abstract class CircleActor extends Geometry
     public void resetRadius(double radius)
     {
         this.diameter = 2 * radius;
-        FixtureData[] fixtureData = this.getPhysicsHandler().physicsData()
+        FixtureData[] fixtureData = this.physicsHandler().physicsData()
                 .generateFixtureData();
         FixtureData thatoneCircle = fixtureData[0];
         thatoneCircle.setShape(createCircleShape(this.diameter));
-        this.setFixture(() -> thatoneCircle);
+        this.fixture(() -> thatoneCircle);
     }
 
     /**

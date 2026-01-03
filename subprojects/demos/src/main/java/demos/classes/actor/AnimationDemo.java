@@ -36,23 +36,23 @@ public class AnimationDemo extends Scene implements KeyStrokeListener
         switch (event.getKeyCode())
         {
         case KeyEvent.VK_1:
-            animation.setDuration(0.5);
+            animation.duration(0.5);
             break;
 
         case KeyEvent.VK_2:
-            animation.setDuration(0.25);
+            animation.duration(0.25);
             break;
 
         case KeyEvent.VK_3:
-            animation.setDuration(0.1);
+            animation.duration(0.1);
             break;
 
         case KeyEvent.VK_4:
-            animation.setDuration(0.05);
+            animation.duration(0.05);
             break;
 
         case KeyEvent.VK_5:
-            animation.setDuration(0.025);
+            animation.duration(0.025);
             break;
 
         case KeyEvent.VK_S:

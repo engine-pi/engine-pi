@@ -1468,10 +1468,9 @@ public class ColorScheme
                 for (Entry<String, Color> entry : Resources.colors.getAll()
                         .entrySet())
                 {
-                    add(new Circle().setPosition(x, 0)
-                            .setColor(entry.getValue()));
-                    add(new Text(entry.getKey(), 0.5).setPosition(x, labelY)
-                            .setColor("white"));
+                    add(new Circle().position(x, 0).color(entry.getValue()));
+                    add(new Text(entry.getKey(), 0.5).position(x, labelY)
+                            .color("white"));
                     x += 2;
                     labelY -= 2;
                     if (labelY < -4)

@@ -125,11 +125,11 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 .createFromAnimatedGif(basePath + "jump_4land_anim.gif", 1, 1));
         addState(PlayerState.Smashing, Animation
                 .createFromAnimatedGif(basePath + "jump_4land_anim.gif", 1, 1));
-        setStateTransition(PlayerState.Midair, PlayerState.Falling);
-        setStateTransition(PlayerState.Landing, PlayerState.Idle);
-        setFriction(FRICTION);
-        setElasticity(RESTITUTION);
-        setFixtures("C0.5,0.3,0.3&C0.5,0.6,0.3");
+        stateTransition(PlayerState.Midair, PlayerState.Falling);
+        stateTransition(PlayerState.Landing, PlayerState.Idle);
+        friction(FRICTION);
+        elasticity(RESTITUTION);
+        fixtures("C0.5,0.3,0.3&C0.5,0.6,0.3");
         /*
          * setFixtures(() -> { List<Shape> shapeList = new ArrayList<>(2);
          * shapeList.add(FixtureBuilder.createAxisParallelRectangularShape(0.2,
@@ -148,17 +148,17 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         if (isGrounded())
         {
             applyImpulse(new Vector(0, JUMP_FORCE));
-            setState(PlayerState.JumpingUp);
+            state(PlayerState.JumpingUp);
         }
         else if (!didDoubleJump && gameData.getMana() >= DOUBLE_JUMP_COST
-                && !getState().equals("smashing"))
+                && !state().equals("smashing"))
         {
             // Double Jump!
             didDoubleJump = true;
             gameData.consumeMana(DOUBLE_JUMP_COST);
-            setVelocity(new Vector(getVelocity().getX(), 0));
+            velocity(new Vector(velocity().getX(), 0));
             applyImpulse(new Vector(0, JUMP_FORCE * 0.8));
-            setState(PlayerState.JumpingUp);
+            state(PlayerState.JumpingUp);
         }
     }
 
@@ -167,11 +167,11 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         switch (state)
         {
         case LEFT:
-            setFlipHorizontal(true);
+            flipHorizontal(true);
             break;
 
         case RIGHT:
-            setFlipHorizontal(false);
+            flipHorizontal(false);
             break;
 
         default:
@@ -204,12 +204,12 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
 
     public void smash()
     {
-        PlayerState currentState = getState();
+        PlayerState currentState = state();
         if (currentState == PlayerState.Falling
                 || currentState == PlayerState.JumpingUp
                 || currentState == PlayerState.Midair)
         {
-            setState(PlayerState.Smashing);
+            state(PlayerState.Smashing);
             smashForce = new Vector(0, SMASH_FORCE);
         }
     }
@@ -217,7 +217,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        Vector velocity = getVelocity();
+        Vector velocity = velocity();
         gameData.setPlayerVelocity(velocity.getLength());
         // kümmere dich um die horizontale Bewegung
         double desiredVelocity = horizontalMovement.getTargetXVelocity();
@@ -225,7 +225,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         if (desiredVelocity == 0)
         {
             impulse = 0;
-            setVelocity(new Vector(velocity.getX() * 0.95, velocity.getY()));
+            velocity(new Vector(velocity.getX() * 0.95, velocity.getY()));
         }
         else
         {
@@ -237,10 +237,10 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             gameData.consumeMana(ROCKETCOST_PER_FRAME);
             applyImpulse(new Vector(0, 5));
             Circle particle = new Circle(0.1);
-            particle.setPosition(
-                    getCenter().subtract(new Vector(Math.random() * 0.1, .45)));
-            particle.setColor(Color.RED);
-            particle.setLayerPosition(-1);
+            particle.position(
+                    center().subtract(new Vector(Math.random() * 0.1, .45)));
+            particle.color(Color.RED);
+            particle.layerPosition(-1);
             particle.animateParticle(.5);
             particle.animateColor(.25, Color.YELLOW);
             particle.applyImpulse(
@@ -256,14 +256,14 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                     }
                 }
             });
-            getLayer().add(particle);
+            layer().add(particle);
         }
-        switch (getState())
+        switch (state())
         {
         case JumpingUp:
             if (velocity.getY() < 0)
             {
-                setState(PlayerState.Midair);
+                state(PlayerState.Midair);
             }
             break;
 
@@ -274,7 +274,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             didDoubleJump = false;
             if (velocity.getY() > 0.1)
             {
-                setState(PlayerState.Midair);
+                state(PlayerState.Midair);
             }
             else if (Math.abs(velocity.getX()) > 5.5)
             {
@@ -295,11 +295,11 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             // do nothing
         }
         applyForce(smashForce);
-        if (getY() < BOTTOM_OUT)
+        if (y() < BOTTOM_OUT)
         {
             resetMovement();
-            setPosition(0, 0);
-            setState(PlayerState.Falling);
+            position(0, 0);
+            state(PlayerState.Falling);
         }
     }
 
@@ -402,48 +402,47 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         if (collisionEvent.getColliding() instanceof Platform)
         {
             Platform platform = (Platform) collisionEvent.getColliding();
-            if (getVelocity().getY() > 0
+            if (velocity().getY() > 0
                     || ignoredPlatformForCollision.contains(platform))
             {
                 ignoredPlatformForCollision.add(platform);
                 collisionEvent.ignoreCollision();
             }
         }
-        boolean falling = getState() == PlayerState.Falling;
-        boolean smashing = getState() == PlayerState.Smashing;
+        boolean falling = state() == PlayerState.Falling;
+        boolean smashing = state() == PlayerState.Smashing;
         if ((falling || smashing) && isGrounded())
         {
-            setState(PlayerState.Landing);
+            state(PlayerState.Landing);
             smashForce = Vector.NULL;
             if (smashing)
             {
-                Vector originalOffset = getLayer().parent().camera()
-                        .getOffset();
+                Vector originalOffset = layer().parent().camera().getOffset();
                 Interpolator<Double> interpolator = new SinusDouble(0,
-                        -0.0004 * getVelocity().getY());
+                        -0.0004 * velocity().getY());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
-                        y -> getLayer().parent().camera()
+                        y -> layer().parent().camera()
                                 .offset(originalOffset.add(new Vector(0, y))),
-                        interpolator, getLayer());
-                getLayer().addFrameUpdateListener(valueAnimator);
-                valueAnimator.addCompletionListener(value -> getLayer()
+                        interpolator, layer());
+                layer().addFrameUpdateListener(valueAnimator);
+                valueAnimator.addCompletionListener(value -> layer()
                         .frameUpdateListeners().remove(valueAnimator));
             }
-            Vector speed = getPhysicsHandler().velocity();
+            Vector speed = physicsHandler().velocity();
             Vector transformedSpeed = Math.abs(speed.getX()) < .1
                     ? speed.add(100 * (Math.random() - .5), 0)
                     : speed;
             for (int i = 0; i < 100; i++)
             {
                 Circle particle = new Circle(Random.range() * .02 + .02);
-                particle.setPosition(getCenter().add(0, -32));
+                particle.position(center().add(0, -32));
                 particle.applyImpulse(
                         transformedSpeed.negate().multiply(Math.random() * 0.1)
                                 .multiplyY(Math.random() * 0.1));
-                particle.setColor(Color.GRAY);
-                particle.setLayerPosition(-1);
+                particle.color(Color.GRAY);
+                particle.layerPosition(-1);
                 particle.animateParticle(.5);
-                getLayer().add(particle);
+                layer().add(particle);
             }
         }
     }

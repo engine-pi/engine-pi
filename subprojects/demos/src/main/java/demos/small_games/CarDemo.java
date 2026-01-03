@@ -79,7 +79,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         Layer blend = new Layer();
         Rectangle blender = new Rectangle((double) WIDTH / ZOOM,
                 (double) HEIGHT / ZOOM);
-        blender.setColor(Color.BLACK);
+        blender.color(Color.BLACK);
         blend.add(blender);
         blend.parallaxRotation(0);
         blend.parallaxPosition(0, 0);
@@ -90,19 +90,19 @@ public class CarDemo extends Scene implements FrameUpdateListener
         background.layerPosition(-2);
         background.parallaxPosition(.5, -.025);
         Rectangle backgroundColor = new Rectangle(400, 100);
-        backgroundColor.setPosition(-200, -105);
-        backgroundColor.setColor(new Color(0, 194, 111));
+        backgroundColor.position(-200, -105);
+        backgroundColor.color(new Color(0, 194, 111));
         background.add(backgroundColor);
         for (int i = -200; i < 200; i += 10)
         {
             background.add(createBackgroundTile(i));
         }
         addLayer(background);
-        createGround(-70, -49).setColor(new Color(200, 104, 73));
+        createGround(-70, -49).color(new Color(200, 104, 73));
         Actor left = createGround(-50, -20);
         Actor middle = createGround(-10, 70);
         Actor right = createGround(85, 170);
-        createGround(169, 200).setColor(new Color(200, 104, 73));
+        createGround(169, 200).color(new Color(200, 104, 73));
         createRope(-20, -10, left, middle);
         createRope(70, 85, middle, right);
         createHill(5, range(1, 2));
@@ -111,7 +111,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         Layer decoration = new Layer();
         decoration.layerPosition(-1);
         var tiles = new TileRegistration(27, 1, .5);
-        tiles.setPosition(-9, -10);
+        tiles.position(-9, -10);
         tiles.makeStatic();
         for (int i = 0; i < tiles.getTileCountX(); i++)
         {
@@ -133,7 +133,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
     private Actor createBackgroundTile(int x)
     {
         Image image = new Image("car/background-color-grass.png", 10, 10);
-        image.setPosition(x, -7);
+        image.position(x, -7);
         image.makeStatic();
         return image;
     }
@@ -145,13 +145,13 @@ public class CarDemo extends Scene implements FrameUpdateListener
         for (int i = 0; i < length; i++)
         {
             rope[i] = new RopeSegment(.8, 0.2);
-            rope[i].setPosition(startX + i + 0.1, -10.2);
-            rope[i].setColor(new Color(175, 90, 30));
+            rope[i].position(startX + i + 0.1, -10.2);
+            rope[i].color(new Color(175, 90, 30));
             rope[i].makeDynamic();
-            rope[i].setDensity(150);
-            rope[i].setFriction(GROUND_FRICTION);
-            rope[i].setElasticity(GROUND_RESTITUTION);
-            rope[i].setBorderRadius(.5);
+            rope[i].density(150);
+            rope[i].friction(GROUND_FRICTION);
+            rope[i].elasticity(GROUND_RESTITUTION);
+            rope[i].borderRadius(.5);
             if (i == 0)
             {
                 rope[0].createRevoluteJoint(left, vector(-.1, .2)).setLimits(0,
@@ -196,10 +196,10 @@ public class CarDemo extends Scene implements FrameUpdateListener
                                     * height + height));
             ground.moveBy(0, -0.01);
             ground.makeStatic();
-            ground.setColor(GROUND_COLOR);
-            ground.setFriction(GROUND_FRICTION);
-            ground.setElasticity(GROUND_RESTITUTION);
-            ground.setDensity(50);
+            ground.color(GROUND_COLOR);
+            ground.friction(GROUND_FRICTION);
+            ground.elasticity(GROUND_RESTITUTION);
+            ground.density(50);
             add(ground);
         }
     }
@@ -225,19 +225,19 @@ public class CarDemo extends Scene implements FrameUpdateListener
             wheelFront.setMotorEnabled(false);
             wheelBack.setMotorEnabled(false);
         }
-        if (carBody.getCenter().getX() < -65)
+        if (carBody.center().getX() < -65)
         {
             carBody.applyForce(
-                    vector(10000 * (-65 - carBody.getCenter().getX()), 0),
-                    carBody.getCenter());
+                    vector(10000 * (-65 - carBody.center().getX()), 0),
+                    carBody.center());
         }
-        else if (carBody.getCenter().getX() > 195)
+        else if (carBody.center().getX() > 195)
         {
             carBody.applyForce(
-                    vector(10000 * (195 - carBody.getCenter().getX()), 0),
-                    carBody.getCenter());
+                    vector(10000 * (195 - carBody.center().getX()), 0),
+                    carBody.center());
         }
-        if (carBody.getCenter().getY() < -20)
+        if (carBody.center().getY() < -20)
         {
             Game.transitionToScene(new CarDemo());
         }
@@ -247,16 +247,16 @@ public class CarDemo extends Scene implements FrameUpdateListener
             Color initialColor, Vector impulse)
     {
         Circle particle = new Circle(size);
-        particle.setBodyType(BodyType.PARTICLE);
-        particle.setLayerPosition(2);
-        particle.setColor(initialColor);
-        particle.setCenter(center);
+        particle.bodyType(BodyType.PARTICLE);
+        particle.layerPosition(2);
+        particle.color(initialColor);
+        particle.center(center);
         particle.animateParticle(range(.1, 3f));
         particle.animateColor(range(.3, .6), Color.BLACK);
         particle.applyImpulse(impulse);
-        particle.setGravityScale(1);
-        particle.setLinearDamping(range(18, 22));
-        particle.setLayerPosition(-1);
+        particle.gravityScale(1);
+        particle.linearDamping(range(18, 22));
+        particle.layerPosition(-1);
         return particle;
     }
 
@@ -264,29 +264,29 @@ public class CarDemo extends Scene implements FrameUpdateListener
     {
         Polygon splitter = new Polygon(vector(0, 0), vector(0.15, 0),
                 vector(0.15, 0.05));
-        splitter.setBodyType(BodyType.PARTICLE);
+        splitter.bodyType(BodyType.PARTICLE);
         splitter.rotateBy(range(0, 360));
-        splitter.setLayerPosition(2);
-        splitter.setColor(new Color(119, 82, 54));
-        splitter.setCenter(center.add(range(-.2, .2), range(-.2, .2)));
+        splitter.layerPosition(2);
+        splitter.color(new Color(119, 82, 54));
+        splitter.center(center.add(range(-.2, .2), range(-.2, .2)));
         splitter.animateParticle(range(.1, 3f));
-        splitter.setGravityScale(1);
-        splitter.setLinearDamping(range(18, 22));
-        splitter.setLayerPosition(-1);
+        splitter.gravityScale(1);
+        splitter.linearDamping(range(18, 22));
+        splitter.layerPosition(-1);
         return splitter;
     }
 
     private static PeriodicTask createSplitterEmitter(Actor actor)
     {
         return (counter) -> {
-            for (CollisionEvent<Actor> collision : actor.getCollisions())
+            for (CollisionEvent<Actor> collision : actor.collisions())
             {
                 if (collision.getColliding() instanceof Wood
-                        && actor.getVelocity().getLength() > 1)
+                        && actor.velocity().getLength() > 1)
                 {
                     for (Vector point : collision.getPoints())
                     {
-                        Objects.requireNonNull(actor.getLayer())
+                        Objects.requireNonNull(actor.layer())
                                 .add(createSplitter(point));
                     }
                 }
@@ -299,13 +299,13 @@ public class CarDemo extends Scene implements FrameUpdateListener
         public Ground(double startX, double endX)
         {
             super(endX - startX, 10);
-            setPosition(startX, -20);
-            setColor(GROUND_COLOR);
+            position(startX, -20);
+            color(GROUND_COLOR);
             makeStatic();
-            setFriction(GROUND_FRICTION);
-            setElasticity(GROUND_RESTITUTION);
-            setDensity(150);
-            setBorderRadius(.1);
+            friction(GROUND_FRICTION);
+            elasticity(GROUND_RESTITUTION);
+            density(150);
+            borderRadius(.1);
         }
     }
 
@@ -326,27 +326,27 @@ public class CarDemo extends Scene implements FrameUpdateListener
         public Axle(double cx, double cy, CarBody carBody)
         {
             super(.2, .9);
-            setCenter(cx, cy);
+            center(cx, cy);
             makeDynamic();
-            setColor(new Color(255, 255, 255, 0));
-            setDensity(50);
+            color(new Color(255, 255, 255, 0));
+            density(50);
             this.carBody = carBody;
             spring = createPrismaticJoint(carBody,
-                    getCenterRelative().add(0, getHeight() / 2), 90);
-            spring.setLimits(-.15, .15);
+                    centerRelative().add(0, height() / 2), 90);
+            spring.limits(-.15, .15);
             addMountListener(
-                    () -> Objects.requireNonNull(getLayer()).add(carBody));
+                    () -> Objects.requireNonNull(layer()).add(carBody));
         }
 
         @Override
         public void onFrameUpdate(double pastTime)
         {
             // Federeffekt für die Achsen
-            double translation = spring.getTranslation();
-            spring.setMotorSpeed(Math
+            double translation = spring.translation();
+            spring.motorSpeed(Math
                     .sin(min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
                     * -.3);
-            spring.setMaximumMotorForce(5000);
+            spring.maximumMotorForce(5000);
         }
 
         public CarBody getCarBody()
@@ -362,32 +362,31 @@ public class CarDemo extends Scene implements FrameUpdateListener
         public Wheel(double cx, double cy, Axle axle)
         {
             super("car/wheel-back.png", 1.4, 1.4);
-            setFixture(() -> FixtureBuilder.circle(.7, .7, .7));
-            setCenter(cx, cy);
-            setDensity(100);
+            fixture(() -> FixtureBuilder.circle(.7, .7, .7));
+            center(cx, cy);
+            density(100);
             makeDynamic();
-            setFriction(.5);
-            setElasticity(.2);
-            setDensity(150);
-            setAngularDamping(1);
-            setLayerPosition(2);
-            motor = createRevoluteJoint(axle, getCenterRelative());
+            friction(.5);
+            elasticity(.2);
+            density(150);
+            angularDamping(1);
+            layerPosition(2);
+            motor = createRevoluteJoint(axle, centerRelative());
             motor.setMaximumMotorTorque(5000);
-            addMountListener(
-                    () -> Objects.requireNonNull(getLayer()).add(axle));
+            addMountListener(() -> Objects.requireNonNull(layer()).add(axle));
             addCollisionListener(axle.getCarBody(),
                     CollisionEvent::ignoreCollision);
             repeat(.025, (counter) -> {
-                for (CollisionEvent<Actor> collision : getCollisions())
+                for (CollisionEvent<Actor> collision : collisions())
                 {
                     if (collision.getColliding() instanceof Mud)
                     {
-                        double velocity = getVelocity().getLength();
+                        double velocity = velocity().getLength();
                         double overTwist = abs(
-                                getAngularVelocity() * Math.PI * 2 * 0.7)
+                                angularVelocity() * Math.PI * 2 * 0.7)
                                 / velocity;
-                        boolean slowMoving = abs(getVelocity().getX()) < 0.5
-                                && abs(getAngularVelocity()) < 0.3;
+                        boolean slowMoving = abs(velocity().getX()) < 0.5
+                                && abs(angularVelocity()) < 0.3;
                         if (overTwist > 0.95 && overTwist < 1.05 || slowMoving)
                         {
                             continue;
@@ -398,11 +397,11 @@ public class CarDemo extends Scene implements FrameUpdateListener
                         for (Vector point : collision.getPoints())
                         {
                             double size = range(0.05, .15);
-                            Vector center = point.add(point
-                                    .getDistance(getCenter()).multiply(size));
+                            Vector center = point.add(
+                                    point.getDistance(center()).multiply(size));
                             Color color = ((Mud) collision.getColliding())
-                                    .getColor();
-                            Objects.requireNonNull(getLayer())
+                                    .color();
+                            Objects.requireNonNull(layer())
                                     .add(createParticle(size, center, color,
                                             impulse.rotate(range(-15, 15))));
                         }
@@ -428,19 +427,19 @@ public class CarDemo extends Scene implements FrameUpdateListener
         public CarBody(double cx, double cy)
         {
             super("car/truck-240px.png", 4, 1.2);
-            setCenter(cx, cy);
+            center(cx, cy);
             makeDynamic();
-            setDensity(100);
-            setAngularDamping(0.3);
-            setFriction(0.5);
-            setFixtures(
+            density(100);
+            angularDamping(0.3);
+            friction(0.5);
+            fixtures(
                     "R0,.45,2,.45&P2,1.2,2.6,1.15,3.8,0.8,3.95,0.45,2,0.45&R1,0,2,0.6");
             repeat(.05, (counter) -> {
-                if (getVelocity().getLength() < 0.1)
+                if (velocity().getLength() < 0.1)
                 {
                     return;
                 }
-                for (CollisionEvent<Actor> collision : getCollisions())
+                for (CollisionEvent<Actor> collision : collisions())
                 {
                     if (collision.getColliding() instanceof Mud)
                     {
@@ -449,9 +448,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
                             double size = range(0.05, .15);
                             Vector impulse = vector(range(-1f, 1f),
                                     range(-1f, 1f));
-                            Objects.requireNonNull(getLayer())
-                                    .add(createParticle(size, point,
-                                            Color.YELLOW, impulse));
+                            Objects.requireNonNull(layer()).add(createParticle(
+                                    size, point, Color.YELLOW, impulse));
                         }
                     }
                 }
@@ -470,7 +468,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     private interface Mud
     {
-        Color getColor();
+        Color color();
     }
 
     private interface Wood

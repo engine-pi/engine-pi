@@ -58,7 +58,7 @@ public final class RevoluteJoint extends
     {
         this.maximumMotorTorque = maximumMotorTorque;
         this.motorEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.setMaxMotorTorque((float) maximumMotorTorque);
@@ -83,7 +83,7 @@ public final class RevoluteJoint extends
     {
         this.lowerLimit = lowerLimit;
         this.limitEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.setLimits((float) lowerLimit, (float) upperLimit);
@@ -102,7 +102,7 @@ public final class RevoluteJoint extends
     {
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.setLimits((float) lowerLimit, (float) upperLimit);
@@ -116,7 +116,7 @@ public final class RevoluteJoint extends
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
         this.limitEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.setLimits((float) lowerLimit, (float) upperLimit);
@@ -127,7 +127,7 @@ public final class RevoluteJoint extends
     @API
     public double getMotorSpeed()
     {
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             return Math.toDegrees(joint.getMotorSpeed()) / 360;
@@ -140,7 +140,7 @@ public final class RevoluteJoint extends
     {
         this.motorSpeed = motorSpeed;
         this.motorEnabled = true;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.setMotorSpeed((float) Math.toRadians(motorSpeed * 360));
@@ -158,7 +158,7 @@ public final class RevoluteJoint extends
     public void setMotorEnabled(boolean motorEnabled)
     {
         this.motorEnabled = motorEnabled;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.enableMotor(motorEnabled);
@@ -175,7 +175,7 @@ public final class RevoluteJoint extends
     public void setLimitEnabled(boolean limitEnabled)
     {
         this.limitEnabled = limitEnabled;
-        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = getJoint();
+        de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint joint = joint();
         if (joint != null)
         {
             joint.enableMotor(limitEnabled);

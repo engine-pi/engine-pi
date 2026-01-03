@@ -72,8 +72,8 @@ import pi.annotations.Internal;
  * sprühen.</li>
  * </ul>
  *
- * @see Actor#setBodyType(BodyType)
- * @see Actor#getBodyType()
+ * @see Actor#bodyType(BodyType)
+ * @see Actor#bodyType()
  *
  * @author Michael Andonie
  * @author Niklas Keller

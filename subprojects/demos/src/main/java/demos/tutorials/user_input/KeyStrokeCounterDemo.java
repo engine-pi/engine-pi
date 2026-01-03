@@ -41,15 +41,15 @@ public class KeyStrokeCounterDemo extends Scene
         public CounterText()
         {
             super("You pressed 0 keys.", 2);
-            setCenter(0, 0);
+            center(0, 0);
         }
 
         @Override
         public void onKeyDown(KeyEvent keyEvent)
         {
             counter++;
-            setContent("You pressed " + counter + " keys.");
-            setCenter(0, 0);
+            content("You pressed " + counter + " keys.");
+            center(0, 0);
         }
     }
 

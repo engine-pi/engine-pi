@@ -117,7 +117,7 @@ public class GraphVisualizer
         {
             GraphNode node = graph.getNode(i);
             LabeledNode labeledNode = new LabeledNode(node.getLabel());
-            labeledNode.setCenter(node.getPosition());
+            labeledNode.center(node.getPosition());
             scene.add(labeledNode);
             labeledNodes[i] = labeledNode;
         }
@@ -125,7 +125,7 @@ public class GraphVisualizer
 
     public void setNodeColor(int index, String color, int sleepMilliSeconds)
     {
-        labeledNodes[index].setColor(color);
+        labeledNodes[index].color(color);
         sleep(sleepMilliSeconds);
     }
 

@@ -21,6 +21,9 @@ package pi.actor;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+
 /**
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch
  * Buchstaben (letter) repräsentiert sind.
@@ -149,12 +152,14 @@ abstract class LetterTileMap
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
      *     (oberste) Zeile.
      */
-    protected Tile getTileFromCache(int x, int y)
+    @Getter
+    protected Tile tileFromCache(int x, int y)
     {
-        return tiles.get(getLetter(x, y));
+        return tiles.get(letter(x, y));
     }
 
-    protected final void setName(char letter, String name)
+    @Setter
+    protected final void name(char letter, String name)
     {
         if (namesToLetter.get(name) != null)
         {
@@ -181,7 +186,7 @@ abstract class LetterTileMap
         {
             name = filePath;
         }
-        setName(letter, name);
+        name(letter, name);
         checkLetterUnset(letter);
         letters.add(letter);
         createTile(letter, filePath);
@@ -198,7 +203,8 @@ abstract class LetterTileMap
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
      *     (oberste) Zeile.
      */
-    public final char getLetter(int x, int y)
+    @Getter
+    public final char letter(int x, int y)
     {
         return letterMap[x][y];
     }
@@ -263,7 +269,7 @@ abstract class LetterTileMap
         int currentRow = 0;
         for (String row : rows)
         {
-            setRow(currentRow, row);
+            row(currentRow, row);
             currentRow++;
         }
     }
@@ -280,7 +286,7 @@ abstract class LetterTileMap
         {
             for (int y = 0; y < height; y++)
             {
-                setTile(x, y, tile);
+                tile(x, y, tile);
             }
         }
     }
@@ -293,11 +299,12 @@ abstract class LetterTileMap
      * @param tile Der Buchstabe, der für ein bestimmtes Kachelbild registiert
      *     wurde.
      */
-    public void setTile(int x, int y, char tile)
+    @Setter
+    public void tile(int x, int y, char tile)
     {
         checkLetter(tile);
         letterMap[x][y] = tile;
-        container.setTile(x, y, getTileFromCache(x, y));
+        container.setTile(x, y, tileFromCache(x, y));
     }
 
     /**
@@ -306,12 +313,13 @@ abstract class LetterTileMap
      * @param y Die y-Position im Kachelgitter. 0 adressiert die erste,
      *     (oberste) Zeile.
      */
-    public final void setRow(int y, String row)
+    @Setter
+    public final void row(int y, String row)
     {
         checkWidth(row);
         for (int x = 0; x < row.length(); x++)
         {
-            setTile(x, y, row.charAt(x));
+            tile(x, y, row.charAt(x));
         }
     }
 
@@ -321,15 +329,17 @@ abstract class LetterTileMap
      * @param x Die x-Position im Kachelgitter. 0 adressiert die erste, (ganz am
      *     linken Rand gelegene) Spalte.
      */
-    public final void setColumn(int x, String column)
+    @Setter
+    public final void column(int x, String column)
     {
         for (int y = 0; y < column.length(); y++)
         {
-            setTile(x, y, column.charAt(y));
+            tile(x, y, column.charAt(y));
         }
     }
 
-    public void setPosition(int x, int y)
+    @Setter
+    public void position(int x, int y)
     {
         this.x = x;
         this.y = y;

@@ -27,7 +27,7 @@ import pi.Scene;
 import pi.Text;
 
 /**
- * Demonstriert die Methode {@link pi.actor.Actor#setElasticity(double)}
+ * Demonstriert die Methode {@link pi.actor.Actor#elasticity(double)}
  */
 public class ElasticityDemo extends Scene
 {
@@ -38,10 +38,10 @@ public class ElasticityDemo extends Scene
         camera().meter(20);
         // Ein Reckteck als Boden, auf dem die Kreise abprallen.
         ground = new Rectangle(24, 1);
-        ground.setPosition(-12, -16);
+        ground.position(-12, -16);
         // Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
         // Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
-        ground.setElasticity(0);
+        ground.elasticity(0);
         ground.makeStatic();
         gravity(0, -9.81);
         add(ground);
@@ -57,13 +57,13 @@ public class ElasticityDemo extends Scene
     {
         Circle circle = new Circle(1);
         add(circle);
-        circle.setElasticity(elasticity);
-        circle.setPosition(x, 5);
+        circle.elasticity(elasticity);
+        circle.position(x, 5);
         circle.makeDynamic();
         // Eine Beschriftung mit der Stoßzahl unterhalb des Kollisionsrechtecks
         DecimalFormat df = new DecimalFormat("0.00");
         Text label = new Text(df.format(elasticity), 0.8);
-        label.setPosition(x, -17);
+        label.position(x, -17);
         label.makeStatic();
         add(label);
     }

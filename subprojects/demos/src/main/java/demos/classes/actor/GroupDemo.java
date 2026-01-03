@@ -34,7 +34,7 @@ public class GroupDemo extends Scene implements KeyStrokeListener
     public GroupDemo()
     {
         Circle circle = new Circle(3);
-        circle.setPosition(3, 3);
+        circle.position(3, 3);
         Rectangle rectangle = new Rectangle(5, 1);
         group = new Group(this);
         group.add(circle, rectangle);

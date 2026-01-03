@@ -31,16 +31,16 @@ public class Snake
      */
     public void grow(double dX, double dY)
     {
-        Vector oldPosition = head.getCenter();
+        Vector oldPosition = head.center();
         SnakeBodyElement firstBodyElement = new SnakeBodyElement();
         scene.add(firstBodyElement);
-        firstBodyElement.setCenter(oldPosition);
+        firstBodyElement.center(oldPosition);
         scene.remove(head);
         SnakeBodyElement oldFirstBodyElement = body;
         body = firstBodyElement;
         firstBodyElement.next = oldFirstBodyElement;
         head = new SnakeHead();
-        head.setCenter(oldPosition);
+        head.center(oldPosition);
         scene.add(head);
         move(dX, dY);
     }

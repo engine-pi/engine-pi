@@ -367,7 +367,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Eine vordefinierte Farbe.
      *
-     * @see pi.actor.Actor#setColor(String)
+     * @see pi.actor.Actor#color(String)
      * @see pi.Scene#backgroundColor(String)
      */
     @API
@@ -449,7 +449,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Eine vordefinierte Farbe.
      *
-     * @see pi.actor.Actor#setColor(String)
+     * @see pi.actor.Actor#color(String)
      * @see pi.Scene#backgroundColor(String)
      */
     @API
@@ -494,7 +494,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Eine vordefinierte Farbe.
      *
-     * @see pi.actor.Actor#setColor(String)
+     * @see pi.actor.Actor#color(String)
      * @see pi.Scene#backgroundColor(String)
      *
      * @throws RuntimeException Fall die Farbe nicht definiert ist.

@@ -29,6 +29,7 @@ import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.physics.FixtureData;
 import pi.resources.color.ColorUtil;
 
@@ -57,7 +58,8 @@ public abstract class Geometry extends Actor
      * @return Die <b>Farbe</b> des Objekts.
      */
     @API
-    public Color getColor()
+    @Getter
+    public Color color()
     {
         return color;
     }
@@ -74,9 +76,9 @@ public abstract class Geometry extends Actor
     @API
     public ValueAnimator<Double> animateColor(double duration, Color color)
     {
-        Color originalColor = getColor();
+        Color originalColor = color();
         ValueAnimator<Double> animator = new ValueAnimator<>(duration,
-                progress -> setColor(
+                progress -> color(
                         ColorUtil.interpolate(originalColor, color, progress)),
                 new LinearDouble(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);

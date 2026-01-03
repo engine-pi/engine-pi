@@ -60,7 +60,7 @@ public class Block
         this.scene = scene;
         name = imageName;
         image = ImageLoader.get("images/blocks/" + imageName + ".png");
-        image.setPosition(x, y);
+        image.position(x, y);
         this.x = x;
         this.y = y;
         scene.add(image);
@@ -89,13 +89,13 @@ public class Block
 
     public int getX()
     {
-        assert (int) image.getX() == x;
+        assert (int) image.x() == x;
         return x;
     }
 
     public int getY()
     {
-        assert (int) image.getY() == y;
+        assert (int) image.y() == y;
         return y;
     }
 
@@ -105,8 +105,8 @@ public class Block
         x = x + (int) vector.getX();
         y = y + (int) vector.getY();
         // trigger assert
-        image.getX();
-        image.getY();
+        image.x();
+        image.y();
     }
 
     public void moveBy(int dX, int dY)

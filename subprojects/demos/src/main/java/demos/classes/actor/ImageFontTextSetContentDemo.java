@@ -27,7 +27,7 @@ import pi.util.TextAlignment;
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstiert die Methode {@link ImageFontText#setContent(String)} der Klasse
+ * Demonstiert die Methode {@link ImageFontText#content(String)} der Klasse
  * {@link ImageFontText}. Bei jedem Aufruf der Methode wird eine neues Bilder
  * erzeugt.
  *
@@ -58,7 +58,7 @@ public class ImageFontTextSetContentDemo extends Scene
 
     private void setContent(String content)
     {
-        textField.setContent(content);
+        textField.content(content);
     }
 
     @Override

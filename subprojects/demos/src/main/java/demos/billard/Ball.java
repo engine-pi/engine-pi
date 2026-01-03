@@ -33,22 +33,22 @@ public class Ball extends Circle implements FrameUpdateListener
     public Ball()
     {
         super(DIAMETER);
-        setColor(Color.YELLOW);
+        color(Color.YELLOW);
         makeDynamic();
-        setFriction(0);
-        setElasticity(0.9);
+        friction(0);
+        elasticity(0.9);
     }
 
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        if (getVelocity().getLength() < 0.2)
+        if (velocity().getLength() < 0.2)
         {
-            setVelocity(Vector.NULL);
+            velocity(Vector.NULL);
         }
         else
         {
-            applyForce(getVelocity().negate().multiply(10));
+            applyForce(velocity().negate().multiply(10));
             // TODO torque
         }
     }

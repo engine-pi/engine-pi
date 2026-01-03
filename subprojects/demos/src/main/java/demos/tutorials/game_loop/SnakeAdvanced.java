@@ -47,7 +47,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public SnakeAdvanced()
     {
         add(snakeHead);
-        scoreText.setPosition(-9, 5);
+        scoreText.position(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }
@@ -56,7 +56,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     {
         this.score = score;
         snakeSpeed = 5 + (score * 0.1);
-        scoreText.setContent("Score: " + score);
+        scoreText.content("Score: " + score);
     }
 
     public void increaseScore()
@@ -69,7 +69,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         double x = Random.range() * 10 - 5;
         double y = Random.range() * 10 - 5;
         Goodie goodie = new Goodie();
-        goodie.setCenter(x, y);
+        goodie.center(x, y);
         add(goodie);
         goodie.addCollisionListener(snakeHead, goodie);
     }
@@ -97,7 +97,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         if (makeNewHead)
         {
             Snake newHead = new Snake();
-            newHead.setCenter(snakeHead.getCenter());
+            newHead.center(snakeHead.center());
             newHead.next = snakeHead;
             add(newHead);
             snakeHead = newHead;
@@ -116,12 +116,12 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         public Snake()
         {
             super(1);
-            setColor("green");
+            color("green");
         }
 
         private void snakeHeadMove(double dX, double dY)
         {
-            Vector mycenter = getCenter();
+            Vector mycenter = center();
             moveBy(dX, dY);
             if (next != null)
             {
@@ -131,8 +131,8 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
         private void snakeChildrenMove(Vector newCenter)
         {
-            Vector mycenter = getCenter();
-            setCenter(newCenter);
+            Vector mycenter = center();
+            center(newCenter);
             if (next != null)
             {
                 next.snakeChildrenMove(mycenter);
@@ -145,7 +145,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
         public Goodie()
         {
             super("Eat Me!", 1);
-            setColor("red");
+            color("red");
         }
 
         @Override

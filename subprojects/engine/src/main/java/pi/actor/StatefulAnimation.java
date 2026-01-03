@@ -26,7 +26,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import pi.animation.AnimationFrame;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 
 /**
@@ -62,8 +64,7 @@ public class StatefulAnimation<State> extends Actor
     /**
      * Speichert den Übergang zum Folgezustand von jedem Zustand. Ordnet
      * standardmäßig jedem Zustand sich selbst als Folgezustand zu ("loop").
-     * Kann jedoch über {@link #setStateTransition(State, State)} angepasst
-     * werden.
+     * Kann jedoch über {@link #stateTransition(State, State)} angepasst werden.
      */
     private final Map<State, State> stateTransitions = new ConcurrentHashMap<>();
 
@@ -135,7 +136,8 @@ public class StatefulAnimation<State> extends Actor
      * @return Die Breite in Meter der animierten Figur.
      */
     @API
-    public double getWidth()
+    @Getter
+    public double width()
     {
         return width;
     }
@@ -146,7 +148,8 @@ public class StatefulAnimation<State> extends Actor
      * @return Die Höhe in Meter der animierten Figur.
      */
     @API
-    public double getHeight()
+    @Getter
+    public double height()
     {
         return height;
     }
@@ -170,7 +173,7 @@ public class StatefulAnimation<State> extends Actor
                     "Zustandsname wird bereits in diesem Objekt genutzt: "
                             + state);
         }
-        AnimationFrame[] frames = stateAnimation.getFrames();
+        AnimationFrame[] frames = stateAnimation.frames();
         states.put(state, frames);
         // Add default loop transition rule for state
         stateTransitions.put(state, state);
@@ -190,7 +193,8 @@ public class StatefulAnimation<State> extends Actor
      * @see #changeState(State)
      */
     @API
-    public void setState(State state)
+    @Setter
+    public void state(State state)
     {
         if (!states.containsKey(state))
         {
@@ -213,14 +217,14 @@ public class StatefulAnimation<State> extends Actor
      *
      * @param state Der Name des Zustands, der gesetzt werden soll.
      *
-     * @see #setState(State)
+     * @see #state(State)
      */
     @API
     public void changeState(State state)
     {
         if (!state.equals(this.state))
         {
-            setState(state);
+            state(state);
         }
     }
 
@@ -250,7 +254,8 @@ public class StatefulAnimation<State> extends Actor
      *     Zustände hat.
      */
     @API
-    public State getState()
+    @Getter
+    public State state()
     {
         return state;
     }
@@ -263,10 +268,11 @@ public class StatefulAnimation<State> extends Actor
      * @param flipHorizontal Ob die Animation horizontal geflippt dargestellt
      *     werden soll.
      *
-     * @see #setFlipVertical(boolean)
+     * @see #flipVertical(boolean)
      */
     @API
-    public void setFlipHorizontal(boolean flipHorizontal)
+    @Setter
+    public void flipHorizontal(boolean flipHorizontal)
     {
         this.flipHorizontal = flipHorizontal;
     }
@@ -277,10 +283,11 @@ public class StatefulAnimation<State> extends Actor
      * @param flipVertical Ob die Animation horizontal geflippt dargestellt
      *     werden soll.
      *
-     * @see #setFlipVertical(boolean)
+     * @see #flipVertical(boolean)
      */
     @API
-    public void setFlipVertical(boolean flipVertical)
+    @Setter
+    public void flipVertical(boolean flipVertical)
     {
         this.flipVertical = flipVertical;
     }
@@ -320,7 +327,8 @@ public class StatefulAnimation<State> extends Actor
      * @see #isAnimationPaused()
      */
     @API
-    public void setAnimationPaused(boolean animationPaused)
+    @Setter
+    public void animationPaused(boolean animationPaused)
     {
         this.animationPaused = animationPaused;
     }
@@ -331,7 +339,7 @@ public class StatefulAnimation<State> extends Actor
      * @return <code>true</code>, wenn die Animation gerade pausiert ist. Sonst
      *     <code>false</code>.
      *
-     * @see #setAnimationPaused(boolean)
+     * @see #animationPaused(boolean)
      */
     @API
     public boolean isAnimationPaused()
@@ -354,7 +362,8 @@ public class StatefulAnimation<State> extends Actor
      * @param stateTo Der Ziel-Zustand.
      */
     @API
-    public void setStateTransition(State stateFrom, State stateTo)
+    @Setter
+    public void stateTransition(State stateFrom, State stateTo)
     {
         if (!states.containsKey(stateFrom))
         {
@@ -383,7 +392,8 @@ public class StatefulAnimation<State> extends Actor
      *     gewechselt wird.
      */
     @API
-    public void setFrameDuration(State state, double frameDuration)
+    @Setter
+    public void frameDuration(State state, double frameDuration)
     {
         if (!states.containsKey(state))
         {
@@ -438,12 +448,13 @@ public class StatefulAnimation<State> extends Actor
      * @param height Neue Höhe für das Rechteck.
      */
     @API
-    public void setSize(double width, double height)
+    @Setter
+    public void size(double width, double height)
     {
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        this.setFixture(() -> FixtureBuilder.rectangle(width, height));
+        this.fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
     /**

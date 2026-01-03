@@ -31,7 +31,7 @@ public class Hole extends Circle
     public Hole(double x, double y)
     {
         super(RADIUS);
-        setPosition(x, y);
-        setColor(new Color(50, 50, 50));
+        position(x, y);
+        color(new Color(50, 50, 50));
     }
 }

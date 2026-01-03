@@ -50,7 +50,7 @@ public class ImageDemo extends Scene implements KeyStrokeListener
         box1 = new Image("dude/box/obj_box001.png", 30);
         add(box1);
         box2 = new Image("dude/box/obj_box002.png", 2, 1);
-        box2.setPosition(5, 0);
+        box2.position(5, 0);
         add(box2);
     }
 
@@ -59,9 +59,9 @@ public class ImageDemo extends Scene implements KeyStrokeListener
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_1 -> box1.setImage(image1);
-        case KeyEvent.VK_2 -> box1.setImage(image2);
-        case KeyEvent.VK_3 -> box1.setImage(image3);
+        case KeyEvent.VK_1 -> box1.image(image1);
+        case KeyEvent.VK_2 -> box1.image(image2);
+        case KeyEvent.VK_3 -> box1.image(image3);
         case KeyEvent.VK_V -> box1.flipVertically();
         case KeyEvent.VK_H -> box1.flipHorizontally();
         }
