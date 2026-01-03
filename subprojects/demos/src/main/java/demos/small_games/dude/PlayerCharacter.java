@@ -429,7 +429,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 valueAnimator.addCompletionListener(value -> getLayer()
                         .frameUpdateListeners().remove(valueAnimator));
             }
-            Vector speed = getPhysicsHandler().getVelocity();
+            Vector speed = getPhysicsHandler().velocity();
             Vector transformedSpeed = Math.abs(speed.getX()) < .1
                     ? speed.add(100 * (Math.random() - .5), 0)
                     : speed;

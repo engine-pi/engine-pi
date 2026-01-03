@@ -497,8 +497,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final boolean overlaps(Actor other)
     {
-        Body a = physicsHandler.getBody();
-        Body b = other.getPhysicsHandler().getBody();
+        Body a = physicsHandler.body();
+        Body b = other.getPhysicsHandler().body();
         return WorldHandler.isBodyCollision(a, b);
     }
 
@@ -510,7 +510,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final List<CollisionEvent<Actor>> getCollisions()
     {
-        return physicsHandler.getCollisions();
+        return physicsHandler.collisions();
     }
 
     /**
@@ -532,7 +532,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final Actor setBodyType(BodyType type)
     {
         Objects.requireNonNull(type, "Typ darf nicht null sein");
-        this.physicsHandler.setType(type);
+        this.physicsHandler.bodyType(type);
         return this;
     }
 
@@ -663,7 +663,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final BodyType getBodyType()
     {
-        return physicsHandler.getType();
+        return physicsHandler.bodyType();
     }
 
     /**
@@ -737,7 +737,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setFixtures(Supplier<List<FixtureData>> fixturesSupplier)
     {
-        this.physicsHandler.setFixtures(fixturesSupplier);
+        this.physicsHandler.fixtures(fixturesSupplier);
         return this;
     }
 
@@ -761,8 +761,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         if (visible && this.isWithinBounds(r))
         {
-            double rotation = physicsHandler.getRotation();
-            Vector position = physicsHandler.getPosition();
+            double rotation = physicsHandler.rotation();
+            Vector position = physicsHandler.position();
             // ____ Pre-Render ____
             AffineTransform transform = g.getTransform();
             g.rotate(-Math.toRadians(rotation), position.getX() * pixelPerMeter,
@@ -795,7 +795,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 synchronized (this)
                 {
                     // Visualisiere die Shape
-                    Body body = physicsHandler.getBody();
+                    Body body = physicsHandler.body();
                     if (body != null)
                     {
                         Fixture fixture = body.fixtureList;
@@ -1095,15 +1095,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Internal
     public final Actor setPhysicsHandler(PhysicsHandler handler)
     {
-        WorldHandler worldHandler = handler.getWorldHandler();
-        WorldHandler previousWorldHandler = physicsHandler.getWorldHandler();
+        WorldHandler worldHandler = handler.worldHandler();
+        WorldHandler previousWorldHandler = physicsHandler.worldHandler();
         if (worldHandler == null)
         {
             if (previousWorldHandler == null)
             {
                 return this;
             }
-            Layer layer = previousWorldHandler.getLayer();
+            Layer layer = previousWorldHandler.layer();
             keyStrokeListeners.invoke(layer::removeKeyStrokeListener);
             mouseClickListeners.invoke(layer::removeMouseClickListener);
             mouseScrollListeners.invoke(layer::removeMouseScrollListener);
@@ -1118,7 +1118,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 return this;
             }
             physicsHandler = handler;
-            Layer layer = worldHandler.getLayer();
+            Layer layer = worldHandler.layer();
             listeners.mount.invoke(Runnable::run);
             keyStrokeListeners.invoke(layer::addKeyStrokeListener);
             mouseClickListeners.invoke(layer::addMouseClickListener);
@@ -1137,12 +1137,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     public final Layer getLayer()
     {
-        WorldHandler worldHandler = physicsHandler.getWorldHandler();
+        WorldHandler worldHandler = physicsHandler.worldHandler();
         if (worldHandler == null)
         {
             return null;
         }
-        return worldHandler.getLayer();
+        return worldHandler.layer();
     }
 
     /**
@@ -1239,7 +1239,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setRotationLocked(boolean rotationLocked)
     {
-        physicsHandler.setRotationLocked(rotationLocked);
+        physicsHandler.rotationLocked(rotationLocked);
         return this;
     }
 
@@ -1269,7 +1269,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor lockRotation()
     {
-        physicsHandler.setRotationLocked(true);
+        physicsHandler.rotationLocked(true);
         return this;
     }
 
@@ -1297,7 +1297,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getMass()
     {
-        return physicsHandler.getMass();
+        return physicsHandler.mass();
     }
 
     /**
@@ -1314,7 +1314,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setDensity(double density)
     {
-        physicsHandler.setDensity(density);
+        physicsHandler.density(density);
         return this;
     }
 
@@ -1326,7 +1326,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getDensity()
     {
-        return physicsHandler.getDensity();
+        return physicsHandler.density();
     }
 
     /**
@@ -1342,7 +1342,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setGravityScale(double factor)
     {
-        physicsHandler.setGravityScale(factor);
+        physicsHandler.gravityScale(factor);
         return this;
     }
 
@@ -1354,7 +1354,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getGravityScale()
     {
-        return physicsHandler.getGravityScale();
+        return physicsHandler.gravityScale();
     }
 
     /**
@@ -1374,7 +1374,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setFriction(double friction)
     {
-        physicsHandler.setFriction(friction);
+        physicsHandler.friction(friction);
         return this;
     }
 
@@ -1389,7 +1389,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getFriction()
     {
-        return physicsHandler.getFriction();
+        return physicsHandler.friction();
     }
 
     /**
@@ -1400,7 +1400,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setAngularDamping(double damping)
     {
-        physicsHandler.setAngularDamping(damping);
+        physicsHandler.angularDamping(damping);
         return this;
     }
 
@@ -1412,7 +1412,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getAngularDamping()
     {
-        return physicsHandler.getAngularDamping();
+        return physicsHandler.angularDamping();
     }
 
     /**
@@ -1428,7 +1428,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setLinearDamping(double damping)
     {
-        physicsHandler.setLinearDamping(damping);
+        physicsHandler.linearDamping(damping);
         return this;
     }
 
@@ -1440,7 +1440,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getLinearDamping()
     {
-        return physicsHandler.getLinearDamping();
+        return physicsHandler.linearDamping();
     }
 
     /**
@@ -1467,7 +1467,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             return this;
         }
-        physicsHandler.setVelocity(velocity);
+        physicsHandler.velocity(velocity);
         return this;
     }
 
@@ -1484,7 +1484,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Vector getVelocity()
     {
-        return physicsHandler.getVelocity();
+        return physicsHandler.velocity();
     }
 
     /**
@@ -1499,7 +1499,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getAngularVelocity()
     {
-        return physicsHandler.getAngularVelocity();
+        return physicsHandler.angularVelocity();
     }
 
     /**
@@ -1526,7 +1526,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             return this;
         }
-        physicsHandler.setAngularVelocity(rotationsPerSecond);
+        physicsHandler.angularVelocity(rotationsPerSecond);
         return this;
     }
 
@@ -1569,7 +1569,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             throw new RuntimeException("Ungültige Stoßzahl: " + elasticity);
         }
-        physicsHandler.setRestitution(elasticity);
+        physicsHandler.restitution(elasticity);
         return this;
     }
 
@@ -1603,7 +1603,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getElasticity()
     {
-        return physicsHandler.getRestitution();
+        return physicsHandler.restitution();
     }
 
     /**
@@ -1737,7 +1737,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             return this; // ignore invalid impulses, they make box2d hang
         }
-        physicsHandler.applyImpulse(impulse, physicsHandler.getCenter());
+        physicsHandler.applyImpulse(impulse, physicsHandler.center());
         return this;
     }
 
@@ -2317,7 +2317,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Vector getCenter()
     {
-        return physicsHandler.getCenter();
+        return physicsHandler.center();
     }
 
     /**
@@ -2341,7 +2341,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Vector getPosition()
     {
-        return physicsHandler.getPosition();
+        return physicsHandler.position();
     }
 
     /**
@@ -2396,7 +2396,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final double getRotation()
     {
-        return physicsHandler.getRotation();
+        return physicsHandler.rotation();
     }
 
     /**
@@ -2416,7 +2416,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     public final Actor setRotation(double winkel)
     {
-        physicsHandler.setRotation(winkel);
+        physicsHandler.rotation(winkel);
         return this;
     }
 
@@ -2504,7 +2504,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     public Actor awake()
     {
-        physicsHandler.setAwake(true);
+        physicsHandler.awake(true);
         return this;
     }
 
@@ -2524,7 +2524,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     public Actor sleep()
     {
-        physicsHandler.setAwake(false);
+        physicsHandler.awake(false);
         return this;
     }
 }

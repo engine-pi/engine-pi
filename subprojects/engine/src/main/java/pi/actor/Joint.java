@@ -81,7 +81,7 @@ public abstract class Joint<JointType extends de.pirckheimer_gymnasium.jbox2d.dy
     {
         if (joint != null)
         {
-            joint.worldHandler().getWorld().destroyJoint(joint.joint());
+            joint.worldHandler().world().destroyJoint(joint.joint());
             joint = null;
         }
         releaseListeners.invoke(Runnable::run);

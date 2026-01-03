@@ -30,10 +30,11 @@ import java.util.function.Supplier;
 import de.pirckheimer_gymnasium.jbox2d.collision.AABB;
 import de.pirckheimer_gymnasium.jbox2d.common.Transform;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-
 import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.BodyType;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.event.CollisionEvent;
 
 /**
@@ -56,20 +57,21 @@ public class NullHandler implements PhysicsHandler
     @Override
     public void moveBy(Vector v)
     {
-        this.physicsData.setX(this.physicsData.getX() + v.getX());
-        this.physicsData.setY(this.physicsData.getY() + v.getY());
+        this.physicsData.x(this.physicsData.x() + v.getX());
+        this.physicsData.y(this.physicsData.y() + v.getY());
     }
 
     @Override
-    public Vector getCenter()
+    @Getter
+    public Vector center()
     {
         AABB bounds = null;
         AABB shapeBounds = new AABB();
         Transform transform = new Transform();
-        for (FixtureData fixtureData : physicsData.getFixtures().get())
+        for (FixtureData fixtureData : physicsData.fixtures().get())
         {
-            transform.set(getPosition().toVec2(),
-                    (float) Math.toRadians(getRotation()));
+            transform.set(position().toVec2(),
+                    (float) Math.toRadians(rotation()));
             fixtureData.getShape().computeAABB(shapeBounds, transform, 0);
             if (bounds != null)
             {
@@ -98,31 +100,35 @@ public class NullHandler implements PhysicsHandler
     }
 
     @Override
-    public Vector getPosition()
+    @Getter
+    public Vector position()
     {
-        return new Vector(this.physicsData.getX(), this.physicsData.getY());
+        return new Vector(this.physicsData.x(), this.physicsData.y());
     }
 
     @Override
-    public double getRotation()
+    @Getter
+    public double rotation()
     {
-        return this.physicsData.getRotation();
+        return this.physicsData.rotation();
     }
 
     @Override
     public void rotateBy(double degree)
     {
-        this.physicsData.setRotation(this.physicsData.getRotation() + degree);
+        this.physicsData.rotation(this.physicsData.rotation() + degree);
     }
 
     @Override
-    public void setRotation(double degree)
+    @Setter
+    public void rotation(double degree)
     {
-        this.physicsData.setRotation(degree);
+        this.physicsData.rotation(degree);
     }
 
     @Override
-    public void setDensity(double density)
+    @Setter
+    public void density(double density)
     {
         if (density <= 0)
         {
@@ -130,79 +136,91 @@ public class NullHandler implements PhysicsHandler
                     "Dichte kann nicht kleiner als 0 sein. Eingabe war "
                             + density + ".");
         }
-        this.physicsData.setGlobalDensity(density);
+        this.physicsData.globalDensity(density);
     }
 
     @Override
-    public double getDensity()
+    @Getter
+    public double density()
     {
-        return this.physicsData.getGlobalDensity();
+        return this.physicsData.globalDensity();
     }
 
     @Override
-    public void setGravityScale(double factor)
+    @Getter
+    public void gravityScale(double factor)
     {
-        this.physicsData.setGravityScale(factor);
+        this.physicsData.gravityScale(factor);
     }
 
     @Override
-    public double getGravityScale()
+    @Getter
+    public double gravityScale()
     {
-        return this.physicsData.getGravityScale();
+        return this.physicsData.gravityScale();
     }
 
     @Override
-    public void setFriction(double friction)
+    @Setter
+    public void friction(double friction)
     {
-        this.physicsData.setGlobalFriction(friction);
+        this.physicsData.globalFriction(friction);
     }
 
     @Override
-    public double getFriction()
+    @Getter
+    public double friction()
     {
-        return this.physicsData.getGlobalFriction();
+        return this.physicsData.globalFriction();
     }
 
     @Override
-    public void setRestitution(double elasticity)
+    @Setter
+    public void restitution(double elasticity)
     {
-        this.physicsData.setGlobalRestitution(elasticity);
+        this.physicsData.globalRestitution(elasticity);
     }
 
     @Override
-    public double getRestitution()
+    @Getter
+    public double restitution()
     {
-        return this.physicsData.getGlobalRestitution();
+        return this.physicsData.globalRestitution();
     }
 
     @Override
-    public void setLinearDamping(double damping)
+    @Setter
+    public void linearDamping(double damping)
     {
-        this.physicsData.setLinearDamping(damping);
+        this.physicsData.linearDamping(damping);
     }
 
     @Override
-    public double getLinearDamping()
+    @Getter
+    public double linearDamping()
     {
-        return physicsData.getLinearDamping();
+        return physicsData.linearDamping();
     }
 
     @Override
-    public void setAngularDamping(double damping)
+    @Setter
+    public void angularDamping(double damping)
     {
-        physicsData.setAngularDamping(damping);
+        physicsData.angularDamping(damping);
     }
 
     @Override
-    public double getAngularDamping()
+    @Getter
+    public double angularDamping()
     {
-        return physicsData.getAngularDamping();
+        return physicsData.angularDamping();
     }
 
     @Override
-    public double getMass()
+    @Getter
+    public double mass()
     {
-        Double mass = physicsData.getMass();
+        Double mass = physicsData.mass();
         return mass == null ? 0 : mass;
     }
 
@@ -227,15 +245,17 @@ public class NullHandler implements PhysicsHandler
     }
 
     @Override
-    public void setType(BodyType type)
+    @Setter
+    public void bodyType(BodyType type)
     {
-        this.physicsData.setType(type);
+        this.physicsData.bodyType(type);
     }
 
     @Override
-    public BodyType getType()
+    @Getter
+    public BodyType bodyType()
     {
-        return physicsData.getType();
+        return physicsData.bodyType();
     }
 
     @Override
@@ -253,13 +273,15 @@ public class NullHandler implements PhysicsHandler
     }
 
     @Override
-    public WorldHandler getWorldHandler()
+    @Getter
+    public WorldHandler worldHandler()
     {
         return null;
     }
 
     @Override
-    public Body getBody()
+    @Getter
+    public Body body()
     {
         return null;
     }
@@ -268,38 +290,42 @@ public class NullHandler implements PhysicsHandler
     public void resetMovement()
     {
         physicsData.setVelocity(Vector.NULL);
-        physicsData.setAngularVelocity(0);
+        physicsData.angularVelocity(0);
     }
 
     @Override
-    public void setVelocity(Vector metersPerSecond)
+    @Setter
+    public void velocity(Vector metersPerSecond)
     {
         physicsData.setVelocity(metersPerSecond);
     }
 
     @Override
-    public Vector getVelocity()
+    @Getter
+    public Vector velocity()
     {
-        return physicsData.getVelocity();
+        return physicsData.velocity();
     }
 
     @Override
-    public void setAngularVelocity(double rotationsPerSecond)
+    @Setter
+    public void angularVelocity(double rotationsPerSecond)
     {
-        physicsData
-                .setAngularVelocity(Math.toRadians(rotationsPerSecond * 360));
+        physicsData.angularVelocity(Math.toRadians(rotationsPerSecond * 360));
     }
 
     @Override
-    public double getAngularVelocity()
+    @Getter
+    public double angularVelocity()
     {
-        return physicsData.getAngularVelocity();
+        return physicsData.angularVelocity();
     }
 
     @Override
-    public void setRotationLocked(boolean locked)
+    @Setter
+    public void rotationLocked(boolean locked)
     {
-        this.physicsData.setRotationLocked(locked);
+        this.physicsData.rotationLocked(locked);
     }
 
     @Override
@@ -315,13 +341,15 @@ public class NullHandler implements PhysicsHandler
     }
 
     @Override
-    public void setFixtures(Supplier<List<FixtureData>> shapes)
+    @Setter
+    public void fixtures(Supplier<List<FixtureData>> shapes)
     {
-        physicsData.setFixtures(shapes);
+        physicsData.fixtures(shapes);
     }
 
     @Override
-    public PhysicsData getPhysicsData()
+    @Getter
+    public PhysicsData physicsData()
     {
         return this.physicsData;
     }
@@ -337,7 +365,8 @@ public class NullHandler implements PhysicsHandler
     }
 
     @Override
-    public List<CollisionEvent<Actor>> getCollisions()
+    @Getter
+    public List<CollisionEvent<Actor>> collisions()
     {
         return Collections.emptyList();
     }
@@ -354,7 +383,8 @@ public class NullHandler implements PhysicsHandler
      * @param value Der Schlafzustand des Körpers.
      */
     @Override
-    public void setAwake(boolean value)
+    @Setter
+    public void awake(boolean value)
     {
         // Mache nichts
     }

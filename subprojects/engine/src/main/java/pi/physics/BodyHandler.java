@@ -80,10 +80,10 @@ public class BodyHandler implements PhysicsHandler
     {
         this.worldHandler = worldHandler;
         this.body = physicsData.createBody(worldHandler, actor);
-        setType(physicsData.getType());
+        bodyType(physicsData.bodyType());
     }
 
-    public Body getBody()
+    public Body body()
     {
         return body;
     }
@@ -104,7 +104,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public Vector getCenter()
+    public Vector center()
     {
         if (type == BodyType.DYNAMIC || type == BodyType.PARTICLE)
         {
@@ -128,13 +128,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public Vector getPosition()
+    public Vector position()
     {
         return Vector.of(body.getPosition());
     }
 
     @Override
-    public double getRotation()
+    public double rotation()
     {
         return Math.toDegrees(body.getAngle());
     }
@@ -151,7 +151,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void setRotation(double degree)
+    public void rotation(double degree)
     {
         synchronized (worldHandler)
         {
@@ -162,7 +162,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void setDensity(double density)
+    public void density(double density)
     {
         synchronized (worldHandler)
         {
@@ -175,26 +175,26 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getDensity()
+    public double density()
     {
         return body.fixtureList.getDensity();
     }
 
     @Override
-    public void setGravityScale(double factor)
+    public void gravityScale(double factor)
     {
         body.setGravityScale((float) factor);
         body.setAwake(true);
     }
 
     @Override
-    public double getGravityScale()
+    public double gravityScale()
     {
         return body.getGravityScale();
     }
 
     @Override
-    public void setFriction(double friction)
+    public void friction(double friction)
     {
         synchronized (worldHandler)
         {
@@ -206,13 +206,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getFriction()
+    public double friction()
     {
         return body.fixtureList.getFriction();
     }
 
     @Override
-    public void setRestitution(double elasticity)
+    public void restitution(double elasticity)
     {
         synchronized (worldHandler)
         {
@@ -224,13 +224,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getRestitution()
+    public double restitution()
     {
         return body.fixtureList.getRestitution();
     }
 
     @Override
-    public void setLinearDamping(double damping)
+    public void linearDamping(double damping)
     {
         synchronized (worldHandler)
         {
@@ -239,13 +239,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getLinearDamping()
+    public double linearDamping()
     {
         return body.getLinearDamping();
     }
 
     @Override
-    public void setAngularDamping(double damping)
+    public void angularDamping(double damping)
     {
         synchronized (worldHandler)
         {
@@ -254,13 +254,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getAngularDamping()
+    public double angularDamping()
     {
         return body.getAngularDamping();
     }
 
     @Override
-    public double getMass()
+    public double mass()
     {
         return body.getMass();
     }
@@ -293,7 +293,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void setType(BodyType type)
+    public void bodyType(BodyType type)
     {
         synchronized (worldHandler)
         {
@@ -347,7 +347,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public BodyType getType()
+    public BodyType bodyType()
     {
         return type;
     }
@@ -382,7 +382,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void setVelocity(Vector metersPerSecond)
+    public void velocity(Vector metersPerSecond)
     {
         synchronized (worldHandler)
         {
@@ -391,13 +391,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public Vector getVelocity()
+    public Vector velocity()
     {
         return Vector.of(body.getLinearVelocity());
     }
 
     @Override
-    public void setAngularVelocity(double rotationsPerSecond)
+    public void angularVelocity(double rotationsPerSecond)
     {
         synchronized (worldHandler)
         {
@@ -407,13 +407,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public double getAngularVelocity()
+    public double angularVelocity()
     {
         return Math.toDegrees(body.getAngularVelocity()) / 360;
     }
 
     @Override
-    public void setRotationLocked(boolean locked)
+    public void rotationLocked(boolean locked)
     {
         synchronized (worldHandler)
         {
@@ -452,7 +452,7 @@ public class BodyHandler implements PhysicsHandler
     @Override
     public boolean isGrounded()
     {
-        if (this.getType() != BodyType.DYNAMIC)
+        if (this.bodyType() != BodyType.DYNAMIC)
         {
             throw new RuntimeException(
                     "Der Steh-Test ist nur für dynamische Objekte definiert");
@@ -480,11 +480,11 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void setFixtures(Supplier<List<FixtureData>> fixtures)
+    public void fixtures(Supplier<List<FixtureData>> fixtures)
     {
         synchronized (worldHandler)
         {
-            PhysicsData physicsData = this.getPhysicsData();
+            PhysicsData physicsData = this.physicsData();
             for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
                 body.destroyFixture(fixture);
@@ -501,9 +501,9 @@ public class BodyHandler implements PhysicsHandler
      */
     @Override
     @Internal
-    public PhysicsData getPhysicsData()
+    public PhysicsData physicsData()
     {
-        return PhysicsData.fromBody(body, getType());
+        return PhysicsData.fromBody(body, bodyType());
     }
 
     @Override
@@ -513,7 +513,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public List<CollisionEvent<Actor>> getCollisions()
+    public List<CollisionEvent<Actor>> collisions()
     {
         List<CollisionEvent<Actor>> contacts = new ArrayList<>();
         for (ContactEdge contact = body
@@ -531,7 +531,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public WorldHandler getWorldHandler()
+    public WorldHandler worldHandler()
     {
         return worldHandler;
     }
@@ -547,7 +547,7 @@ public class BodyHandler implements PhysicsHandler
      *
      * @param value Der Schlafzustand des Körpers.
      */
-    public void setAwake(boolean value)
+    public void awake(boolean value)
     {
         body.setAwake(value);
     }

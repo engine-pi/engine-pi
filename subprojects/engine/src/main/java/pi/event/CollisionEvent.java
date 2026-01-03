@@ -133,7 +133,7 @@ public class CollisionEvent<E extends Actor>
     public void ignoreCollision()
     {
         contact.setEnabled(false);
-        colliding.getPhysicsHandler().getWorldHandler()
+        colliding.getPhysicsHandler().worldHandler()
                 .addContactToBlacklist(contact);
     }
     /*

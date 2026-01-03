@@ -427,7 +427,7 @@ public class Layer implements KeyStrokeListenerRegistration,
                 }
                 PhysicsHandler oldHandler = actor.getPhysicsHandler();
                 PhysicsHandler newHandler = new BodyHandler(actor,
-                        oldHandler.getPhysicsData(), worldHandler);
+                        oldHandler.physicsData(), worldHandler);
                 actor.setPhysicsHandler(newHandler);
                 oldHandler.applyMountCallbacks(newHandler);
                 this.actors.add(actor);
@@ -453,15 +453,15 @@ public class Layer implements KeyStrokeListenerRegistration,
             {
                 this.actors.remove(actor);
                 PhysicsData physicsData = actor.getPhysicsHandler()
-                        .getPhysicsData();
+                        .physicsData();
                 PhysicsHandler physicsHandler = actor.getPhysicsHandler();
-                if (physicsHandler.getWorldHandler() == null)
+                if (physicsHandler.worldHandler() == null)
                 {
                     return;
                 }
-                Body body = physicsHandler.getBody();
+                Body body = physicsHandler.body();
                 worldHandler.removeAllInternalReferences(body);
-                worldHandler.getWorld().destroyBody(body);
+                worldHandler.world().destroyBody(body);
                 actor.setPhysicsHandler(new NullHandler(physicsData));
             }
         });
@@ -677,7 +677,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @Getter
     private World world()
     {
-        return worldHandler.getWorld();
+        return worldHandler.world();
     }
 
     /**

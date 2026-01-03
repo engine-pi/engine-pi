@@ -119,7 +119,7 @@ public abstract class CircleActor extends Geometry
     public void resetRadius(double radius)
     {
         this.diameter = 2 * radius;
-        FixtureData[] fixtureData = this.getPhysicsHandler().getPhysicsData()
+        FixtureData[] fixtureData = this.getPhysicsHandler().physicsData()
                 .generateFixtureData();
         FixtureData thatoneCircle = fixtureData[0];
         thatoneCircle.setShape(createCircleShape(this.diameter));

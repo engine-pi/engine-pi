@@ -42,10 +42,10 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.ContactEdge;
-
 import pi.Layer;
 import pi.actor.Actor;
 import pi.actor.Joint;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
@@ -130,7 +130,8 @@ public class WorldHandler implements ContactListener
      * @hidden
      */
     @Internal
-    public World getWorld()
+    @Getter
+    public World world()
     {
         return world;
     }
@@ -160,7 +161,7 @@ public class WorldHandler implements ContactListener
     @Internal
     public void assertNoWorldStep()
     {
-        if (getWorld().isLocked())
+        if (world().isLocked())
         {
             throw new RuntimeException(
                     "Die Operation kann nicht während des World-Step ausgeführt werden. "
@@ -405,7 +406,8 @@ public class WorldHandler implements ContactListener
         // Ignore that shit.
     }
 
-    public Layer getLayer()
+    @Getter
+    public Layer layer()
     {
         return layer;
     }
@@ -512,13 +514,13 @@ public class WorldHandler implements ContactListener
             CollisionListener<Actor> listener, Actor actor)
     {
         actor.addMountListener(() -> {
-            Body body = actor.getPhysicsHandler().getBody();
+            Body body = actor.getPhysicsHandler().body();
             if (body == null)
             {
                 throw new IllegalStateException(
                         "Body is missing on an Actor with an existing WorldHandler");
             }
-            actor.getPhysicsHandler().getWorldHandler().generalCollisonListeners
+            actor.getPhysicsHandler().worldHandler().generalCollisonListeners
                     .computeIfAbsent(body, key -> new CopyOnWriteArrayList<>())
                     .add(listener);
         });
@@ -540,8 +542,8 @@ public class WorldHandler implements ContactListener
             Actor actor, E collider, CollisionListener<E> listener)
     {
         addMountListener(actor, collider, (worldHandler) -> {
-            Body b1 = actor.getPhysicsHandler().getBody();
-            Body b2 = collider.getPhysicsHandler().getBody();
+            Body b1 = actor.getPhysicsHandler().body();
+            Body b2 = collider.getPhysicsHandler().body();
             if (b1 == null || b2 == null)
             {
                 Logger.error("Kollision",
@@ -575,11 +577,9 @@ public class WorldHandler implements ContactListener
             Wrapper wrapper)
     {
         List<Runnable> releaseCallbacks = addMountListener(a, b,
-                worldHandler -> wrapper.setJoint(
-                        jointBuilder.createJoint(worldHandler.getWorld(),
-                                a.getPhysicsHandler().getBody(),
-                                b.getPhysicsHandler().getBody()),
-                        worldHandler));
+                worldHandler -> wrapper.setJoint(jointBuilder.createJoint(
+                        worldHandler.world(), a.getPhysicsHandler().body(),
+                        b.getPhysicsHandler().body()), worldHandler));
         releaseCallbacks.forEach(wrapper::addReleaseListener);
         return wrapper;
     }
@@ -594,17 +594,17 @@ public class WorldHandler implements ContactListener
         List<Runnable> releases = new ArrayList<>();
         AtomicBoolean skipListener = new AtomicBoolean(true);
         Runnable listenerA = () -> {
-            WorldHandler worldHandler = a.getPhysicsHandler().getWorldHandler();
+            WorldHandler worldHandler = a.getPhysicsHandler().worldHandler();
             if (!skipListener.get() && b.isMounted()
-                    && b.getPhysicsHandler().getWorldHandler() == worldHandler)
+                    && b.getPhysicsHandler().worldHandler() == worldHandler)
             {
                 runnable.accept(worldHandler);
             }
         };
         Runnable listenerB = () -> {
-            WorldHandler worldHandler = b.getPhysicsHandler().getWorldHandler();
+            WorldHandler worldHandler = b.getPhysicsHandler().worldHandler();
             if (!skipListener.get() && a.isMounted()
-                    && a.getPhysicsHandler().getWorldHandler() == worldHandler)
+                    && a.getPhysicsHandler().worldHandler() == worldHandler)
             {
                 runnable.accept(worldHandler);
             }
@@ -616,7 +616,7 @@ public class WorldHandler implements ContactListener
         releases.add(() -> b.removeMountListener(listenerB));
         if (a.isMounted() && b.isMounted())
         {
-            runnable.accept(a.getPhysicsHandler().getWorldHandler());
+            runnable.accept(a.getPhysicsHandler().worldHandler());
         }
         return releases;
     }

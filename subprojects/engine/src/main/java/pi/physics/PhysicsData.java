@@ -33,7 +33,9 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.FixtureDef;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.BodyType;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines
@@ -93,20 +95,20 @@ public class PhysicsData
     {
         PhysicsData data = new PhysicsData(extractFixturesFromBody(body));
         // Global Fixture Vals are blindly taken from first Fixture
-        data.setGlobalDensity(body.fixtureList.density);
-        data.setGlobalFriction(body.fixtureList.friction);
-        data.setGlobalRestitution(body.fixtureList.restitution);
-        data.setRotationLocked(body.isFixedRotation());
-        data.setGravityScale(body.gravityScale);
-        data.setX(body.getPosition().x);
-        data.setY(body.getPosition().y);
-        data.setRotation(Math.toDegrees(body.getAngle()));
-        data.setTorque(body.torque);
+        data.globalDensity(body.fixtureList.density);
+        data.globalFriction(body.fixtureList.friction);
+        data.globalRestitution(body.fixtureList.restitution);
+        data.rotationLocked(body.isFixedRotation());
+        data.gravityScale(body.gravityScale);
+        data.x(body.getPosition().x);
+        data.y(body.getPosition().y);
+        data.rotation(Math.toDegrees(body.getAngle()));
+        data.torque(body.torque);
         data.setVelocity(Vector.of(body.linearVelocity));
-        data.setAngularVelocity(Math.toDegrees(body.angularVelocity) / 360);
-        data.setType(type);
-        data.setAngularDamping(body.getAngularDamping());
-        data.setLinearDamping(body.getLinearDamping());
+        data.angularVelocity(Math.toDegrees(body.angularVelocity) / 360);
+        data.bodyType(type);
+        data.angularDamping(body.getAngularDamping());
+        data.linearDamping(body.getLinearDamping());
         return data;
     }
 
@@ -128,7 +130,7 @@ public class PhysicsData
      */
     public PhysicsData(Supplier<List<FixtureData>> fixtures)
     {
-        setFixtures(fixtures);
+        fixtures(fixtures);
     }
 
     /**
@@ -137,7 +139,7 @@ public class PhysicsData
     public FixtureDef[] createFixtureDefs()
     {
         List<FixtureDef> fixtureDefs = new ArrayList<>();
-        List<FixtureData> fixtureList = this.getFixtures().get();
+        List<FixtureData> fixtureList = this.fixtures().get();
         for (FixtureData fixtureData : fixtureList)
         {
             fixtureDefs.add(fixtureData.createFixtureDef(this));
@@ -151,13 +153,13 @@ public class PhysicsData
     public BodyDef createBodyDef()
     {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.angle = (float) Math.toRadians(this.getRotation());
-        bodyDef.position.set(new Vec2((float) getX(), (float) getY()));
+        bodyDef.angle = (float) Math.toRadians(this.rotation());
+        bodyDef.position.set(new Vec2((float) x(), (float) y()));
         bodyDef.fixedRotation = isRotationLocked();
-        bodyDef.linearVelocity = getVelocity().toVec2();
+        bodyDef.linearVelocity = velocity().toVec2();
         bodyDef.angularVelocity = (float) Math
-                .toRadians(getAngularVelocity() * 360);
-        bodyDef.type = getType().toBox2D();
+                .toRadians(angularVelocity() * 360);
+        bodyDef.type = bodyType().toBox2D();
         bodyDef.active = true;
         bodyDef.gravityScale = (float) gravityScale;
         bodyDef.angularDamping = (float) angularDamping;
@@ -196,12 +198,14 @@ public class PhysicsData
         return data.toArray(new FixtureData[data.size()]);
     }
 
-    public void setMass(Double mass)
+    @Setter
+    public void mass(Double mass)
     {
         this.mass = mass;
     }
 
-    public Double getMass()
+    @Getter
+    public Double mass()
     {
         return mass;
     }
@@ -211,112 +215,132 @@ public class PhysicsData
         return rotationLocked;
     }
 
-    public void setRotationLocked(boolean rotationLocked)
+    @Setter
+    public void rotationLocked(boolean rotationLocked)
     {
         this.rotationLocked = rotationLocked;
     }
 
-    public double getX()
+    @Getter
+    public double x()
     {
         return x;
     }
 
-    public void setX(double x)
+    @Setter
+    public void x(double x)
     {
         this.x = x;
     }
 
-    public double getY()
+    @Getter
+    public double y()
     {
         return y;
     }
 
-    public void setY(double y)
+    @Setter
+    public void y(double y)
     {
         this.y = y;
     }
 
-    public double getRotation()
+    @Getter
+    public double rotation()
     {
         return rotation;
     }
 
-    public void setRotation(double rotation)
+    @Setter
+    public void rotation(double rotation)
     {
         this.rotation = rotation;
     }
 
-    public double getLinearDamping()
+    @Getter
+    public double linearDamping()
     {
         return linearDamping;
     }
 
-    public void setLinearDamping(double linearDamping)
+    @Setter
+    public void linearDamping(double linearDamping)
     {
         this.linearDamping = linearDamping;
     }
 
-    public double getAngularDamping()
+    @Getter
+    public double angularDamping()
     {
         return angularDamping;
     }
 
-    public void setAngularDamping(double angularDamping)
+    @Setter
+    public void angularDamping(double angularDamping)
     {
         this.angularDamping = angularDamping;
     }
 
-    public double getGlobalDensity()
+    @Getter
+    public double globalDensity()
     {
         return globalDensity;
     }
 
-    public void setGlobalDensity(double globalDensity)
+    public void globalDensity(double globalDensity)
     {
         this.globalDensity = globalDensity;
     }
 
-    public double getGravityScale()
+    @Getter
+    public double gravityScale()
     {
         return gravityScale;
     }
 
-    public void setGravityScale(double factor)
+    @Setter
+    public void gravityScale(double factor)
     {
         this.gravityScale = factor;
     }
 
-    public double getGlobalFriction()
+    @Getter
+    public double globalFriction()
     {
         return globalFriction;
     }
 
-    public void setGlobalFriction(double globalFriction)
+    public void globalFriction(double globalFriction)
     {
         this.globalFriction = globalFriction;
     }
 
-    public double getGlobalRestitution()
+    @Getter
+    public double globalRestitution()
     {
         return globalRestitution;
     }
 
-    public void setGlobalRestitution(double globalRestitution)
+    @Setter
+    public void globalRestitution(double globalRestitution)
     {
         this.globalRestitution = globalRestitution;
     }
 
-    public double getTorque()
+    @Getter
+    public double torque()
     {
         return torque;
     }
 
-    public void setTorque(double torque)
+    @Setter
+    public void torque(double torque)
     {
         this.torque = torque;
     }
 
-    public Vector getVelocity()
+    @Getter
+    public Vector velocity()
     {
         return velocity;
     }
@@ -326,32 +350,38 @@ public class PhysicsData
         this.velocity = velocity;
     }
 
-    public BodyType getType()
+    @Getter
+    public BodyType bodyType()
     {
         return type;
     }
 
-    public void setType(BodyType type)
+    @Setter
+    public void bodyType(BodyType type)
     {
         this.type = type;
     }
 
-    public Supplier<List<FixtureData>> getFixtures()
+    @Getter
+    public Supplier<List<FixtureData>> fixtures()
     {
         return fixtures;
     }
 
-    public void setFixtures(Supplier<List<FixtureData>> fixtures)
+    @Setter
+    public void fixtures(Supplier<List<FixtureData>> fixtures)
     {
         this.fixtures = fixtures;
     }
 
-    public double getAngularVelocity()
+    @Getter
+    public double angularVelocity()
     {
         return angularVelocity;
     }
 
-    public void setAngularVelocity(double angularVelocity)
+    @Setter
+    public void angularVelocity(double angularVelocity)
     {
         this.angularVelocity = angularVelocity;
     }

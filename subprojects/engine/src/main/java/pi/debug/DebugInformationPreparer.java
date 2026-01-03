@@ -39,8 +39,7 @@ class DebugInformationPreparer
 
     public int actorsCount()
     {
-        return loop.getCurrentScene().getWorldHandler().getWorld()
-                .getBodyCount();
+        return loop.getCurrentScene().getWorldHandler().world().getBodyCount();
     }
 
     /**

@@ -74,7 +74,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    Vector getCenter();
+    Vector center();
 
     /**
      * Gibt an, ob ein bestimmter Punkt auf der Zeichenebene innerhalb des
@@ -102,7 +102,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    Vector getPosition();
+    Vector position();
 
     /**
      * Gibt die aktuelle Rotation des Ziel-Objekts in <i>Grad</i> an. Bei
@@ -113,7 +113,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    double getRotation();
+    double rotation();
 
     /**
      * Rotiert das Ziel-Objekt um einen festen Winkel.
@@ -134,79 +134,79 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setRotation(double degree);
+    void rotation(double degree);
 
     /**
      * @hidden
      */
     @Internal
-    void setDensity(double density);
+    void density(double density);
 
     /**
      * @hidden
      */
     @Internal
-    double getDensity();
+    double density();
 
     /**
      * @hidden
      */
     @Internal
-    void setGravityScale(double factor);
+    void gravityScale(double factor);
 
     /**
      * @hidden
      */
     @Internal
-    double getGravityScale();
+    double gravityScale();
 
     /**
      * @hidden
      */
     @Internal
-    void setFriction(double friction);
+    void friction(double friction);
 
     /**
      * @hidden
      */
     @Internal
-    double getFriction();
+    double friction();
 
     /**
      * @hidden
      */
     @Internal
-    void setRestitution(double restitution);
+    void restitution(double restitution);
 
     /**
      * @hidden
      */
     @Internal
-    double getRestitution();
+    double restitution();
 
     /**
      * @hidden
      */
     @Internal
-    void setLinearDamping(double damping);
+    void linearDamping(double damping);
 
     /**
      * @hidden
      */
     @Internal
-    double getLinearDamping();
+    double linearDamping();
 
     /**
      * @hidden
      */
     @Internal
-    void setAngularDamping(double damping);
+    void angularDamping(double damping);
 
     /**
      * @hidden
      */
     @Internal
-    double getAngularDamping();
+    double angularDamping();
 
     /**
      * Gibt die Masse des Ziel-Objekts aus.
@@ -216,7 +216,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    double getMass();
+    double mass();
 
     /**
      * Übt eine Kraft auf das Ziel-Objekt (im Massenschwerpunkt) aus (sofern
@@ -260,13 +260,13 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setType(BodyType type);
+    void bodyType(BodyType type);
 
     /**
      * @hidden
      */
     @Internal
-    BodyType getType();
+    BodyType bodyType();
 
     /**
      * @hidden
@@ -294,7 +294,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    WorldHandler getWorldHandler();
+    WorldHandler worldHandler();
 
     /**
      * Wird intern zum Debuggen benutzt. Gibt den korrespondierenden Body aus.
@@ -304,7 +304,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    Body getBody();
+    Body body();
 
     /**
      * Setzt die Wirkung aller physikalischer Bewegungen (Geschwindigkeit und
@@ -324,7 +324,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setVelocity(Vector metersPerSecond);
+    void velocity(Vector metersPerSecond);
 
     /**
      * Gibt die aktuelle Geschwindigkeit aus.
@@ -334,7 +334,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    Vector getVelocity();
+    Vector velocity();
 
     /**
      * Setzt die Drehgeschwindigkeit für das Handler-Objekt.
@@ -345,7 +345,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setAngularVelocity(double rotationsPerSecond);
+    void angularVelocity(double rotationsPerSecond);
 
     /**
      * Gibt die aktuelle Drehgeschwindigkeit aus.
@@ -355,7 +355,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    double getAngularVelocity();
+    double angularVelocity();
 
     /**
      * Setzt, ob die Rotation blockiert sein soll.
@@ -363,7 +363,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setRotationLocked(boolean locked);
+    void rotationLocked(boolean locked);
 
     /**
      * @return Ob die Rotation des Objekts blockiert ist.
@@ -399,7 +399,7 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    void setFixtures(Supplier<List<FixtureData>> fixtures);
+    void fixtures(Supplier<List<FixtureData>> fixtures);
 
     /**
      * Gibt die Proxy-Daten des Actors aus.
@@ -410,11 +410,11 @@ public interface PhysicsHandler
      * @hidden
      */
     @Internal
-    PhysicsData getPhysicsData();
+    PhysicsData physicsData();
 
     void applyMountCallbacks(PhysicsHandler otherHandler);
 
-    List<CollisionEvent<Actor>> getCollisions();
+    List<CollisionEvent<Actor>> collisions();
 
     /**
      * Legt den Schlafzustand des Körpers fest. Ein schlafender Körper hat sehr
@@ -427,5 +427,5 @@ public interface PhysicsHandler
      *
      * @param value Der Schlafzustand des Körpers.
      */
-    void setAwake(boolean value);
+    void awake(boolean value);
 }

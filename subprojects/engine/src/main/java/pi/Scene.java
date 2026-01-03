@@ -435,7 +435,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         // Display Joints
         for (Layer layer : layers)
         {
-            Joint j = layer.worldHandler().getWorld().getJointList();
+            Joint j = layer.worldHandler().world().getJointList();
             while (j != null)
             {
                 renderJoint(j, g, layer);
