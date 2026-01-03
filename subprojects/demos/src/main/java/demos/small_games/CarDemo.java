@@ -480,6 +480,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new CarDemo(), WIDTH, HEIGHT);
     }
 }

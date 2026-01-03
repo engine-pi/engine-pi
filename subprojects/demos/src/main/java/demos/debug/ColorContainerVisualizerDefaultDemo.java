@@ -19,6 +19,7 @@ public class ColorContainerVisualizerDefaultDemo
 {
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new Scene()
         {
             {

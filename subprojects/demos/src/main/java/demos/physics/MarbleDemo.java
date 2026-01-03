@@ -93,6 +93,9 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
 
     public MarbleDemo()
     {
+        info().title("Murmel-Demo").description(
+                "Eine kleine Demo zum Verhalten vieler Partikel ähnlicher Physik-Objekte in der Engine.")
+                .help("Eine beliebige Taste öffnet den Trichter");
         // Trichter
         new Funnel();
         repeat(0.2, (counter) -> {
@@ -124,12 +127,6 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             ground.makeStatic();
             ground.setColor(Color.WHITE);
         }
-    }
-
-    @Override
-    public void onKeyUp(KeyEvent e)
-    {
-        // Ignore.
     }
 
     /**
@@ -165,6 +162,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new MarbleDemo(), 1000, 800);
     }
 }
