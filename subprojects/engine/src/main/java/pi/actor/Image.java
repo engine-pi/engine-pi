@@ -30,6 +30,7 @@ import pi.Game;
 import pi.Resources;
 import pi.Scene;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
@@ -115,6 +116,20 @@ public class Image extends Actor
     {
         super(null);
         setImage(image, pixelPerMeter);
+    }
+
+    @API
+    @Getter
+    public double width()
+    {
+        return width;
+    }
+
+    @API
+    @Getter
+    public double height()
+    {
+        return height;
     }
 
     /**
@@ -372,6 +387,10 @@ public class Image extends Actor
         g.setTransform(pre);
     }
 
+    /**
+     * @hidden
+     */
+    @Internal
     @Override
     public String toString()
     {

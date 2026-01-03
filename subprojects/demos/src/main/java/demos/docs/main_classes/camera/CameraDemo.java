@@ -18,6 +18,7 @@
  */
 package demos.docs.main_classes.camera;
 
+import pi.Bounds;
 import pi.Camera;
 import pi.Game;
 import pi.Scene;
@@ -43,9 +44,17 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         Image background = new Image("main-classes/camera/Fez.png", 32);
         background.setCenter(0, 0);
         add(background);
+
         line = new Line(new Vector(0, 0), new Vector(1, 1));
         line.setColor("red");
         add(line);
+
+        Bounds visible = getVisibleArea();
+
+        camera.bounds(new Bounds(background.getX() + visible.width() / 2,
+                background.getY() + visible.height() / 2,
+                background.width() - visible.width(),
+                background.height() - visible.height()));
     }
 
     @Override

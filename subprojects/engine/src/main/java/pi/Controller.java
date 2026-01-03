@@ -869,6 +869,8 @@ public class Controller
     }
 
     /**
+     * Gibt die Mausposition im Fenster in Pixel zurück.
+     *
      * @hidden
      */
     @Internal

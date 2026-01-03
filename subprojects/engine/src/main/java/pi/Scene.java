@@ -326,7 +326,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die sichtbare Fläche auf der <b>Hauptebene</b> aus.
+     * Gibt die <b>sichtbare Fläche</b> auf der Hauptebene aus.
      *
      * @param gameSizeInPixels Die Größe des Spielfensters in Pixel.
      *
@@ -341,9 +341,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die sichtbare Fläche auf der <b>Hauptebene</b> aus.
+     * Gibt die <b>sichtbare Fläche</b> auf der Hauptebene aus.
      *
-     * @return Die sichtbare Fläche auf der Hauptebene
+     * @return Die <b>sichtbare Fläche</b> im Meter auf der Hauptebene.
      *
      * @see Game#getWindowSize()
      *

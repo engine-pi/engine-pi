@@ -126,7 +126,7 @@ public class SceneInfoOverlay
     /**
      * Die Anzeigedauer der Infobox in Sekunden.
      */
-    private double duration = 5;
+    private double duration = 10;
 
     private CellBox cell;
 
