@@ -136,7 +136,7 @@ public class Animation extends Actor implements FrameUpdateListener
         });
         for (AnimationFrame frame : frames)
         {
-            if (frame.getDuration() <= 0)
+            if (frame.duration() <= 0)
             {
                 throw new RuntimeException(
                         "Ein Frame muss länger als 0 Sekunden sein.");
@@ -236,7 +236,7 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         for (AnimationFrame animationFrame : frames)
         {
-            animationFrame.setDuration(duration);
+            animationFrame.duration(duration);
         }
     }
 
@@ -339,9 +339,9 @@ public class Animation extends Actor implements FrameUpdateListener
         }
         currentTime += pastTime;
         AnimationFrame currentFrame = frames[currentIndex];
-        while (currentTime > currentFrame.getDuration())
+        while (currentTime > currentFrame.duration())
         {
-            currentTime -= currentFrame.getDuration();
+            currentTime -= currentFrame.duration();
             showNext();
         }
     }

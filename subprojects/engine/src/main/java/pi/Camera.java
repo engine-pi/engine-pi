@@ -272,8 +272,7 @@ public final class Camera
      * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
      * verschoben wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer
      * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
-     * Methode gesetzt wurde:
-     * <code>camera.setOffset(new Vector(0, -100));</code>
+     * Methode gesetzt wurde: <code>camera.offset(new Vector(0, -100));</code>
      * </p>
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des

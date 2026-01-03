@@ -386,7 +386,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Bei dieser Methode handelt es sich um eine Abkürzung. Statt
-     * {@code getCamera().setMeter(double)} braucht nur {@code setMeter(double)}
+     * {@code camera().meter(double)} braucht nur {@code meter(double)}
      * geschrieben werden.
      * </p>
      *
@@ -413,7 +413,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * <p>
      * Bei dieser Methode handelt es sich um eine Abkürzung. Statt
-     * {@code getCamera().setFocus(Actor)} braucht nur {@code setFocus(Actor)}
+     * {@code camera().focus(Actor)} braucht nur {@code focus(Actor)}
      * geschrieben werden.
      * </p>
      *

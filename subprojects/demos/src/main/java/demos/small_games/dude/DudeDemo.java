@@ -139,7 +139,7 @@ public class DudeDemo extends Scene
                 384 * SCALE, 216 * SCALE);
         for (int i = 0; i < NUM_TILES; i++)
         {
-            cloudTiles.setTile(i, 0, TileMap.createFromImage(tilePath));
+            cloudTiles.tile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.position(xOffset,
                 -visibleArea(Game.windowSize()).height() / 2 + 5);

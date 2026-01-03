@@ -101,7 +101,7 @@ public class PaintingSurface
         image = new BufferedImage((int) size.x(), (int) size.y(),
                 BufferedImage.TYPE_INT_ARGB);
         g = image.createGraphics();
-        Graphics2DUtil.setAntiAliasing(g, true);
+        Graphics2DUtil.antiAliasing(g, true);
     }
 
     /**

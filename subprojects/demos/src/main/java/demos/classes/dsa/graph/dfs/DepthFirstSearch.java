@@ -24,7 +24,7 @@ class DepthFirstSearch extends GraphArrayMatrix
      */
     public void visitNode(int nodeIndex)
     {
-        visualizer.setNodeColor(nodeIndex, "orange", 500);
+        visualizer.nodeColor(nodeIndex, "orange", 500);
         visited[nodeIndex] = true;
         for (int i = 0; i < nodeCount(); i++)
         {
@@ -35,6 +35,6 @@ class DepthFirstSearch extends GraphArrayMatrix
                 visitNode(i);
             }
         }
-        visualizer.setNodeColor(nodeIndex, "green", 500);
+        visualizer.nodeColor(nodeIndex, "green", 500);
     }
 }

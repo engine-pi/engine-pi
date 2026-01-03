@@ -306,7 +306,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellow(Color yellow)
@@ -327,7 +327,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellow(int r, int g, int b)
@@ -345,7 +345,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellow(String yellow)
@@ -380,7 +380,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowOrange(Color yellowOrange)
@@ -402,7 +402,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowOrange(int r, int g, int b)
@@ -422,7 +422,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowOrange(String yellowOrange)
@@ -460,7 +460,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme orange(Color orange)
@@ -482,7 +482,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     public ColorScheme orange(int r, int g, int b)
     {
@@ -501,7 +501,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme orange(String orange)
@@ -536,7 +536,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redOrange(Color redOrange)
@@ -558,7 +558,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redOrange(int r, int g, int b)
@@ -578,7 +578,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redOrange(String redOrange)
@@ -605,7 +605,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme red(Color red)
@@ -626,7 +626,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme red(int r, int g, int b)
@@ -644,7 +644,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme red(String red)
@@ -679,7 +679,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redPurple(Color redPurple)
@@ -701,7 +701,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redPurple(int r, int g, int b)
@@ -721,7 +721,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme redPurple(String redPurple)
@@ -759,7 +759,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme purple(Color purple)
@@ -781,7 +781,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme purple(int r, int g, int b)
@@ -801,7 +801,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme purple(String purple)
@@ -836,7 +836,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme bluePurple(Color bluePurple)
@@ -858,7 +858,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme bluePurple(int r, int g, int b)
@@ -878,7 +878,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme bluePurple(String bluePurple)
@@ -905,7 +905,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blue(Color blue)
@@ -926,7 +926,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blue(int r, int g, int b)
@@ -944,7 +944,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blue(String blue)
@@ -979,7 +979,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blueGreen(Color blueGreen)
@@ -1001,7 +1001,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blueGreen(int r, int g, int b)
@@ -1021,7 +1021,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme blueGreen(String blueGreen)
@@ -1056,7 +1056,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme green(Color green)
@@ -1077,7 +1077,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme green(int r, int g, int b)
@@ -1095,7 +1095,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme green(String green)
@@ -1130,7 +1130,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowGreen(Color yellowGreen)
@@ -1152,7 +1152,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowGreen(int r, int g, int b)
@@ -1172,7 +1172,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme yellowGreen(String yellowGreen)
@@ -1211,7 +1211,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme brown(Color brown)
@@ -1232,7 +1232,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme brown(int r, int g, int b)
@@ -1250,7 +1250,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme brown(String brown)
@@ -1277,7 +1277,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme white(Color white)
@@ -1298,7 +1298,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme white(int r, int g, int b)
@@ -1316,7 +1316,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme white(String white)
@@ -1343,7 +1343,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme gray(Color gray)
@@ -1364,7 +1364,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme gray(int r, int g, int b)
@@ -1382,7 +1382,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme gray(String gray)
@@ -1409,7 +1409,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme black(Color black)
@@ -1430,7 +1430,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme black(int r, int g, int b)
@@ -1448,7 +1448,7 @@ public class ColorScheme
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
-     *     {@code scheme.setGreen(..).setBlue(..)}.
+     *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
     public ColorScheme black(String black)

@@ -164,14 +164,14 @@ public class KeyFrames implements FrameUpdateListener
             // Progres = [time since last key frame] / [time between current and
             // next key frame]
             toAnimate.accept(currentInterpolator.interpolate(
-                    (currentAnimationTime - currentKeyframe.getTimecode())
+                    (currentAnimationTime - currentKeyframe.timecode())
                             / (currentInterpolationEndpoint
-                                    - currentKeyframe.getTimecode())));
+                                    - currentKeyframe.timecode())));
         }
         else
         {
             // Key Frame Update
-            setupKeyframeForInterpolation(currentKeyframe.getNext());
+            setupKeyframeForInterpolation(currentKeyframe.next());
         }
         // Time Update
         currentAnimationTime += pastTime;
@@ -186,15 +186,14 @@ public class KeyFrames implements FrameUpdateListener
         }
         currentAnimationTime = 0;
         KeyFrame<Double> first = keyFrames.get(0);
-        if (first.getTimecode() != 0)
+        if (first.timecode() != 0)
         {
             // Add Keyframe at t=0 with value of previously first keyframe.
-            addKeyframe(
-                    new KeyFrame<>(first.getValue(), KeyFrame.Type.LINEAR, 0));
+            addKeyframe(new KeyFrame<>(first.value(), KeyFrame.Type.LINEAR, 0));
         }
         for (int i = 0; i < keyFrames.size() - 1; i++)
         {
-            keyFrames.get(i).setNext(keyFrames.get(i + 1));
+            keyFrames.get(i).next(keyFrames.get(i + 1));
         }
         setupKeyframeForInterpolation(keyFrames.get(0));
         isLocked = true;
@@ -206,13 +205,12 @@ public class KeyFrames implements FrameUpdateListener
         if (keyFrame.hasNext())
         {
             currentInterpolator = keyFrame
-                    .generateInterpolator(keyFrame.getNext().getValue());
-            currentInterpolationEndpoint = keyFrame.getNext().getTimecode();
+                    .generateInterpolator(keyFrame.next().value());
+            currentInterpolationEndpoint = keyFrame.next().timecode();
         }
         else
         {
-            currentInterpolator = new ConstantInterpolator<>(
-                    keyFrame.getValue());
+            currentInterpolator = new ConstantInterpolator<>(keyFrame.value());
             currentInterpolationEndpoint = -1;
         }
     }

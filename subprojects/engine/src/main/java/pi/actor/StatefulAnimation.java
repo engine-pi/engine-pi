@@ -44,7 +44,7 @@ import pi.physics.FixtureBuilder;
  * "running");
  * sf.addState(Animation.createFromAnimatedGif("jumping.gif", "jumping");
  * scene.add(sf);
- * sf.setState("running");
+ * sf.state("running");
  * }</pre>
  *
  * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
@@ -402,7 +402,7 @@ public class StatefulAnimation<State> extends Actor
         }
         for (AnimationFrame frame : states.get(state))
         {
-            frame.setDuration(frameDuration);
+            frame.duration(frameDuration);
         }
     }
 
@@ -420,9 +420,9 @@ public class StatefulAnimation<State> extends Actor
         }
         time += frameDuration;
         AnimationFrame currentFrame = animation[index];
-        while (time > currentFrame.getDuration())
+        while (time > currentFrame.duration())
         {
-            time -= currentFrame.getDuration();
+            time -= currentFrame.duration();
             if (index + 1 == animation.length)
             {
                 // Animation cycle has ended. -> Transition to next state

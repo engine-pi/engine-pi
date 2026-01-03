@@ -113,9 +113,9 @@ public class CarDemo extends Scene implements FrameUpdateListener
         var tiles = new TileRegistration(27, 1, .5);
         tiles.position(-9, -10);
         tiles.makeStatic();
-        for (int i = 0; i < tiles.getTileCountX(); i++)
+        for (int i = 0; i < tiles.tileCountX(); i++)
         {
-            tiles.setTile(i, 0, TileMap.createFromImage("car/tile01.png"));
+            tiles.tile(i, 0, TileMap.createFromImage("car/tile01.png"));
         }
         decoration.add(tiles);
         addLayer(decoration);

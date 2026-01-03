@@ -23,6 +23,7 @@ import static pi.util.TimeUtil.sleep;
 import pi.Scene;
 import pi.actor.LabeledEdge;
 import pi.actor.LabeledNode;
+import pi.annotations.Setter;
 
 /**
  * <b>Zeichnet</b> einen <b>Graphen</b> in eine Szene.
@@ -123,24 +124,28 @@ public class GraphVisualizer
         }
     }
 
-    public void setNodeColor(int index, String color, int sleepMilliSeconds)
+    @Setter
+    public void nodeColor(int index, String color, int sleepMilliSeconds)
     {
         labeledNodes[index].color(color);
         sleep(sleepMilliSeconds);
     }
 
-    public void setNodeColor(int index, String color)
+    @Setter
+    public void nodeColor(int index, String color)
     {
-        setNodeColor(index, color, 0);
+        nodeColor(index, color, 0);
     }
 
-    public void setNodeColor(String label, String color, int sleepMilliSeconds)
+    @Setter
+    public void nodeColor(String label, String color, int sleepMilliSeconds)
     {
-        setNodeColor(graph.nodeIndex(label), color, sleepMilliSeconds);
+        nodeColor(graph.nodeIndex(label), color, sleepMilliSeconds);
     }
 
-    public void setNodeColor(String label, String color)
+    @Setter
+    public void nodeColor(String label, String color)
     {
-        setNodeColor(label, color, 0);
+        nodeColor(label, color, 0);
     }
 }

@@ -18,30 +18,30 @@
  */
 package pi.dsa.turtle.graphics;
 
+import pi.annotations.Setter;
 import pi.dsa.turtle.TurtleGraphics;
 
 /**
- * Zeichnet ein Plus-Zeichen, um die Methode
- * {@link pi.Turtle#setDirection(double) Turtle#setDirection(double)} zu
- * demonstieren.
+ * Zeichnet ein Plus-Zeichen, um die Methode {@link pi.Turtle#direction(double)
+ * Turtle#setDirection(double)} zu demonstieren.
  *
  * <pre>
  * {@code
  * private void setDirection(double direction)
  * {
  *     turtle.lowerPen();
- *     turtle.setPosition(0, 0);
- *     turtle.setDirection(direction);
+ *     turtle.position(0, 0);
+ *     turtle.direction(direction);
  *     turtle.forward(4);
  *     turtle.liftPen();
  * }
  *
  * public void draw()
  * {
- *     setDirection(0);
- *     setDirection(90);
- *     setDirection(180);
- *     setDirection(270);
+ *     direction(0);
+ *     direction(90);
+ *     direction(180);
+ *     direction(270);
  * }
  * }
  * </pre>
@@ -56,21 +56,22 @@ public class SetDirectionTurtleGraphics extends TurtleGraphics
         initalState.speed(2);
     }
 
-    private void setDirection(double direction)
+    @Setter
+    private void direction(double direction)
     {
         turtle.lowerPen();
-        turtle.setPosition(0, 0);
-        turtle.setDirection(direction);
+        turtle.position(0, 0);
+        turtle.direction(direction);
         turtle.forward(4);
         turtle.liftPen();
     }
 
     public void draw()
     {
-        setDirection(0);
-        setDirection(90);
-        setDirection(180);
-        setDirection(270);
+        direction(0);
+        direction(90);
+        direction(180);
+        direction(270);
     }
 
     public static void main(String[] args)

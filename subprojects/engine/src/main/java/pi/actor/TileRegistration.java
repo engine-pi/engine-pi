@@ -24,7 +24,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 
 /**
@@ -60,7 +62,7 @@ public class TileRegistration extends Actor implements TileMap
      * @param tileWidth Die Breite eines Tiles in Meter.
      * @param tileHeight Die Höhe eines Tiles in Meter.
      *
-     * @see #setTile(int, int, Tile)
+     * @see #tile(int, int, Tile)
      */
     @API
     public TileRegistration(int numX, int numY, double tileWidth,
@@ -83,12 +85,14 @@ public class TileRegistration extends Actor implements TileMap
         this.tiles = new Tile[numX][numY];
     }
 
-    public int getTileCountX()
+    @Getter
+    public int tileCountX()
     {
         return tiles.length;
     }
 
-    public int getTileCountY()
+    @Getter
+    public int tileCountY()
     {
         return tiles[0].length;
     }
@@ -101,7 +105,7 @@ public class TileRegistration extends Actor implements TileMap
      * @param numY Die Anzahl an Tiles in Y-Richtung.
      * @param tileSize Die Höhe <b>und</b> Breite eines Tiles in Pixel.
      *
-     * @see #setTile(int, int, Tile)
+     * @see #tile(int, int, Tile)
      */
     @API
     public TileRegistration(int numX, int numY, double tileSize)
@@ -118,7 +122,8 @@ public class TileRegistration extends Actor implements TileMap
      *     Tile leer.
      */
     @API
-    public void setTile(int x, int y, Tile tile)
+    @Setter
+    public void tile(int x, int y, Tile tile)
     {
         tiles[x][y] = tile;
     }

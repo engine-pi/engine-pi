@@ -24,7 +24,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 
 /**
  * Beschreibt ein Einzelbild einer {@link pi.actor.Animation}.
@@ -71,7 +73,8 @@ public final class AnimationFrame
      * @hidden
      */
     @Internal
-    public void setDuration(double duration)
+    @Setter
+    public void duration(double duration)
     {
         this.duration = duration;
     }
@@ -80,7 +83,8 @@ public final class AnimationFrame
      * @hidden
      */
     @Internal
-    public BufferedImage getImage()
+    @Getter
+    public BufferedImage image()
     {
         return image;
     }
@@ -94,7 +98,8 @@ public final class AnimationFrame
      * @hidden
      */
     @Internal
-    public double getDuration()
+    @Getter
+    public double duration()
     {
         return duration;
     }

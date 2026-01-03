@@ -55,19 +55,19 @@ public class Platform extends TileRegistration
 
     private void setLeftTile(Tile tile)
     {
-        setTile(0, 0, tile);
+        tile(0, 0, tile);
     }
 
     private void setMiddleTiles(Tile tile)
     {
-        for (int x = 1; x < getTileCountX() - 1; x++)
+        for (int x = 1; x < tileCountX() - 1; x++)
         {
-            setTile(x, 0, tile);
+            tile(x, 0, tile);
         }
     }
 
     private void setRightTile(Tile tile)
     {
-        setTile(getTileCountX() - 1, 0, tile);
+        tile(tileCountX() - 1, 0, tile);
     }
 }

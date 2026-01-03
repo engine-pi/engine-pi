@@ -29,7 +29,7 @@ public abstract class Graphics2DComponent extends JComponent
         if (graphics instanceof Graphics2D)
         {
             Graphics2D graphics2D = (Graphics2D) graphics;
-            Graphics2DUtil.setAntiAliasing(graphics2D, true);
+            Graphics2DUtil.antiAliasing(graphics2D, true);
             render(graphics2D);
         }
     }

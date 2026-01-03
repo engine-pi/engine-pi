@@ -72,28 +72,28 @@ public class HUDDisplay
         // Initialize Standard-Parts of backgrounds.
         for (int i = 0; i < 4; i++)
         {
-            background.setTile(0, i, ORB_ORANGE.tile(0, 0));
-            background.setTile(1, i, ORB_ORANGE.tile(1, 0));
-            background.setTile(4, i, ORB_ORANGE.tile(1, 0));
+            background.tile(0, i, ORB_ORANGE.tile(0, 0));
+            background.tile(1, i, ORB_ORANGE.tile(1, 0));
+            background.tile(4, i, ORB_ORANGE.tile(1, 0));
             for (int j = 0; j < VALUE_LENGTH; j++)
             {
-                background.setTile(5 + j, i, TILE_BACK);
+                background.tile(5 + j, i, TILE_BACK);
             }
-            background.setTile(VALUE_LENGTH + 5, i, ORB_ORANGE.tile(1, 0));
-            background.setTile(VALUE_LENGTH + 6, i, ORB_ORANGE.tile(2, 0));
+            background.tile(VALUE_LENGTH + 5, i, ORB_ORANGE.tile(1, 0));
+            background.tile(VALUE_LENGTH + 6, i, ORB_ORANGE.tile(2, 0));
         }
         // Line 0: HEALTH
-        background.setTile(2, 0, NUM_BLACK.tile(6, 2));
-        background.setTile(3, 0, NUM_BLACK.tile(7, 2));
+        background.tile(2, 0, NUM_BLACK.tile(6, 2));
+        background.tile(3, 0, NUM_BLACK.tile(7, 2));
         // Line 1: POWER
-        background.setTile(2, 1, NUM_BLACK.tile(8, 2));
-        background.setTile(3, 1, NUM_BLACK.tile(9, 2));
+        background.tile(2, 1, NUM_BLACK.tile(8, 2));
+        background.tile(3, 1, NUM_BLACK.tile(9, 2));
         // Line 2: XP
-        background.setTile(2, 2, NUM_BLACK.tile(4, 2));
-        background.setTile(3, 2, NUM_BLACK.tile(5, 2));
+        background.tile(2, 2, NUM_BLACK.tile(4, 2));
+        background.tile(3, 2, NUM_BLACK.tile(5, 2));
         // Line 3: Monneeeeyyy
-        background.setTile(2, 3, NUM_BLACK.tile(2, 2));
-        background.setTile(3, 3, NUM_BLACK.tile(3, 2));
+        background.tile(2, 3, NUM_BLACK.tile(2, 2));
+        background.tile(3, 3, NUM_BLACK.tile(3, 2));
         // LINE CONTENT
         lines = new TileRegistration(VALUE_LENGTH, 4, 8 * SCALE, 16 * SCALE);
         background.position(x, y);
@@ -116,8 +116,8 @@ public class HUDDisplay
         }
         int x = (numValue % 5) * 2;
         int y = numValue / 5;
-        lines.setTile(numIndex * 2, 3, NUM_BLACK.tile(x, y));
-        lines.setTile(numIndex * 2 + 1, 3, NUM_BLACK.tile(x + 1, y));
+        lines.tile(numIndex * 2, 3, NUM_BLACK.tile(x, y));
+        lines.tile(numIndex * 2 + 1, 3, NUM_BLACK.tile(x + 1, y));
     }
 
     /**
@@ -136,26 +136,24 @@ public class HUDDisplay
             if (i + 1 < lineValue)
             {
                 // Voll ausgemaltes HUD
-                lines.setTile(i, lineIndex, lineSources[lineIndex].tile(1, 0));
+                lines.tile(i, lineIndex, lineSources[lineIndex].tile(1, 0));
             }
             else if (i + 1 == lineValue)
             {
                 // Ende des Striches
                 if (fullCapFinal)
                 {
-                    lines.setTile(i, lineIndex,
-                            lineSources[lineIndex].tile(1, 0));
+                    lines.tile(i, lineIndex, lineSources[lineIndex].tile(1, 0));
                 }
                 else
                 {
-                    lines.setTile(i, lineIndex,
-                            lineSources[lineIndex].tile(2, 0));
+                    lines.tile(i, lineIndex, lineSources[lineIndex].tile(2, 0));
                 }
             }
             else
             {
                 // Nicht gebraucht -> unsichtbar
-                lines.setTile(i, lineIndex, null);
+                lines.tile(i, lineIndex, null);
             }
         }
     }

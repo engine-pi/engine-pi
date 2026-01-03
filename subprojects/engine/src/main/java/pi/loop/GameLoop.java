@@ -285,7 +285,7 @@ public final class GameLoop
     {
         Scene scene = currentScene();
         // have to be the same @ Game.screenshot!
-        Graphics2DUtil.setAntiAliasing(g, true);
+        Graphics2DUtil.antiAliasing(g, true);
         // Absoluter Hintergrund
         g.setColor(scene.backgroundColor());
         g.fillRect(0, 0, width, height);

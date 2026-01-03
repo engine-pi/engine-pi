@@ -31,6 +31,7 @@ import java.util.function.Consumer;
 import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
+import pi.annotations.Setter;
 import pi.graphics.PaintingSurface;
 import pi.resources.color.ColorUtil;
 
@@ -134,7 +135,7 @@ public class TurtleScene extends PaintingSurfaceScene
             animate(duration, progress -> {
                 lastPosition = pen.position;
                 pen.position = initial.add(movement.multiply(progress));
-                dress.setPosition(pen.position);
+                dress.position(pen.position);
                 dress.showNextAnimation();
                 drawLineInSurface(lastPosition, pen.position);
             });
@@ -155,19 +156,20 @@ public class TurtleScene extends PaintingSurfaceScene
         surface.drawLine(from, to, pen.color, pen.thickness);
     }
 
-    private void setCurrentDirection(double direction)
+    @Setter
+    private void currentDirection(double direction)
     {
         pen.direction = direction % 360;
     }
 
     private void doDirection(double direction)
     {
-        setCurrentDirection(direction);
+        currentDirection(direction);
         if (!animation.warpMode)
         {
-            dress.setDirection(direction);
+            dress.direction(direction);
             // die Rotation kann den Mittelpunkt verschieben.
-            dress.setPosition(pen.position);
+            dress.position(pen.position);
         }
     }
 
@@ -205,19 +207,21 @@ public class TurtleScene extends PaintingSurfaceScene
 
     /* Setter */
 
-    void setPosition(Vector position)
+    @Setter
+    void position(Vector position)
     {
         lastPosition = pen.position;
         pen.position = position;
-        dress.setPosition(position);
+        dress.position(position);
     }
 
-    void setDirection(double direction)
+    @Setter
+    void direction(double direction)
     {
-        setCurrentDirection(direction);
-        dress.setDirection(direction);
+        currentDirection(direction);
+        dress.direction(direction);
         // Unbedingt notwendig, da eine Rotation das Zentrum verändert
-        dress.setPosition(pen.position);
+        dress.position(pen.position);
     }
 
     /**

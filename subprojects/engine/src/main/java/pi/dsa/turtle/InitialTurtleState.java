@@ -229,8 +229,8 @@ public class InitialTurtleState
         {
             return;
         }
-        turtleScene.setPosition(position);
-        turtleScene.setDirection(direction);
+        turtleScene.position(position);
+        turtleScene.direction(direction);
         turtleScene.pen.set(penDown);
         turtleScene.animation.speed(speed);
         turtleScene.animation.warp(warpMode);

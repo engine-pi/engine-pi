@@ -23,7 +23,9 @@ package pi.animation;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 
 /**
  * Beschreibt einen Keyframe.
@@ -67,35 +69,40 @@ public class KeyFrame<Value extends Number>
     {
         this.value = value;
         this.type = type;
-        setTimecode(timecode);
+        timecode(timecode);
     }
 
     @API
-    public void setValue(Value value)
+    @Setter
+    public void value(Value value)
     {
         this.value = value;
     }
 
     @API
-    public Value getValue()
+    @Getter
+    public Value value()
     {
         return value;
     }
 
     @API
-    public void setType(Type type)
+    @Setter
+    public void type(Type type)
     {
         this.type = type;
     }
 
     @API
-    public Type getType()
+    @Getter
+    public Type type()
     {
         return type;
     }
 
     @API
-    public void setTimecode(double timecode)
+    @Setter
+    public void timecode(double timecode)
     {
         if (timecode < 0)
         {
@@ -107,7 +114,8 @@ public class KeyFrame<Value extends Number>
     }
 
     @API
-    public double getTimecode()
+    @Getter
+    public double timecode()
     {
         return timecode;
     }
@@ -116,7 +124,8 @@ public class KeyFrame<Value extends Number>
      * @hidden
      */
     @Internal
-    void setNext(KeyFrame<Value> next)
+    @Setter
+    void next(KeyFrame<Value> next)
     {
         this.next = next;
     }
@@ -124,7 +133,7 @@ public class KeyFrame<Value extends Number>
     @Override
     public int compareTo(KeyFrame<Value> o)
     {
-        return (int) ((this.getTimecode() - o.getTimecode()) * 1000);
+        return (int) ((this.timecode() - o.timecode()) * 1000);
     }
 
     /**
@@ -159,7 +168,8 @@ public class KeyFrame<Value extends Number>
      * @hidden
      */
     @Internal
-    KeyFrame<Value> getNext()
+    @Getter
+    KeyFrame<Value> next()
     {
         return next;
     }

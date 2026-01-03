@@ -29,6 +29,7 @@ import pi.Circle;
 import pi.actor.Polygon;
 import pi.annotations.API;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
@@ -85,7 +86,7 @@ class TurtleDressController
     {
         this.scene = scene;
         this.size = size;
-        setDressType(dress);
+        dressType(dress);
     }
 
     /**
@@ -96,8 +97,8 @@ class TurtleDressController
      *
      * @since 0.40.0
      */
-
-    public void setDressType(TurtleDressType dressType)
+    @Setter
+    public void dressType(TurtleDressType dressType)
     {
         if (image != null)
         {
@@ -139,7 +140,7 @@ class TurtleDressController
             if (dresses[i] == dressType)
                 break;
         }
-        setDressType(dresses[(i + 1) % dresses.length]);
+        dressType(dresses[(i + 1) % dresses.length]);
     }
 
     /**
@@ -159,7 +160,8 @@ class TurtleDressController
      * @since 0.40.0
      */
     @Internal
-    void setPosition(Vector position)
+    @Setter
+    void position(Vector position)
     {
         image.center(position);
     }
@@ -168,7 +170,8 @@ class TurtleDressController
      * @since 0.40.0
      */
     @Internal
-    void setDirection(double rotation)
+    @Setter
+    void direction(double rotation)
     {
         image.rotation(rotation);
     }

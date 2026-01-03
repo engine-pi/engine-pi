@@ -66,19 +66,19 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
         length2 = length * 1.414213562373095;
         length = length * 2.0;
         turtle.liftPen();
-        turtle.setPosition(x0, y0);
+        turtle.position(x0, y0);
         turtle.lowerPen();
         drawElementA(depth);
-        turtle.setDirection(315);
+        turtle.direction(315);
         turtle.forward(length2);
         drawElementB(depth);
-        turtle.setDirection(225);
+        turtle.direction(225);
         turtle.forward(length2);
         drawElementC(depth);
-        turtle.setDirection(135);
+        turtle.direction(135);
         turtle.forward(length2);
         drawElementD(depth);
-        turtle.setDirection(45);
+        turtle.direction(45);
         turtle.forward(length2);
     }
 
@@ -97,13 +97,13 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
         if (depth > 0)
         {
             drawElementA(depth - 1);
-            turtle.setDirection(315);
+            turtle.direction(315);
             turtle.forward(length2);
             drawElementB(depth - 1);
-            turtle.setDirection(0);
+            turtle.direction(0);
             turtle.forward(length);
             drawElementD(depth - 1);
-            turtle.setDirection(45);
+            turtle.direction(45);
             turtle.forward(length2);
             drawElementA(depth - 1);
         }
@@ -124,13 +124,13 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
         if (depth > 0)
         {
             drawElementB(depth - 1);
-            turtle.setDirection(225);
+            turtle.direction(225);
             turtle.forward(length2);
             drawElementC(depth - 1);
-            turtle.setDirection(270);
+            turtle.direction(270);
             turtle.forward(length);
             drawElementA(depth - 1);
-            turtle.setDirection(315);
+            turtle.direction(315);
             turtle.forward(length2);
             drawElementB(depth - 1);
         }
@@ -151,13 +151,13 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
         if (depth > 0)
         {
             drawElementC(depth - 1);
-            turtle.setDirection(135);
+            turtle.direction(135);
             turtle.forward(length2);
             drawElementD(depth - 1);
-            turtle.setDirection(180);
+            turtle.direction(180);
             turtle.forward(length);
             drawElementB(depth - 1);
-            turtle.setDirection(225);
+            turtle.direction(225);
             turtle.forward(length2);
             drawElementC(depth - 1);
         }
@@ -178,13 +178,13 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
         if (depth > 0)
         {
             drawElementD(depth - 1);
-            turtle.setDirection(45);
+            turtle.direction(45);
             turtle.forward(length2);
             drawElementA(depth - 1);
-            turtle.setDirection(90);
+            turtle.direction(90);
             turtle.forward(length);
             drawElementC(depth - 1);
-            turtle.setDirection(135);
+            turtle.direction(135);
             turtle.forward(length2);
             drawElementD(depth - 1);
         }

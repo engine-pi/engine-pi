@@ -56,7 +56,7 @@ public class SquareTreeTurtleGraphics extends TurtleGraphics
     public void draw()
     {
         // Damit der Baum nach oben wächst
-        turtle.setDirection(90);
+        turtle.direction(90);
         drawTree(5);
     }
 

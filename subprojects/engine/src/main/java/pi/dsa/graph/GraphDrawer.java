@@ -73,7 +73,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
         LabeledNode labeledNode = getCurrentLabeledNode();
         if (labeledNode != null)
         {
-            labeledNode.setLabel(currentLabel);
+            labeledNode.label(currentLabel);
         }
 
         GraphNode graphNode = getCurrentGraphNode();

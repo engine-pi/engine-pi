@@ -304,7 +304,7 @@ abstract class LetterTileMap
     {
         checkLetter(tile);
         letterMap[x][y] = tile;
-        container.setTile(x, y, tileFromCache(x, y));
+        container.tile(x, y, tileFromCache(x, y));
     }
 
     /**

@@ -10,6 +10,7 @@ import pi.Circle;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
+import pi.annotations.Setter;
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden um auf dem Graphics2D-Objekt zu
@@ -249,7 +250,8 @@ public class Graphics2DUtil
      * @param on Ist der Wert wahr, so wird die Kantenglättung eingeschaltet,
      *     sonst wird sie ausgeschaltet.
      */
-    public static void setAntiAliasing(Graphics2D g, boolean on)
+    @Setter
+    public static void antiAliasing(Graphics2D g, boolean on)
     {
         // Kantenglättung für Text einschalten.
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,

@@ -31,7 +31,7 @@ public class BreadthFirstSearch extends GraphArrayMatrix
 
     private void markVisited(int nodeIndex)
     {
-        visualizer.setNodeColor(nodeIndex, "orange", 500);
+        visualizer.nodeColor(nodeIndex, "orange", 500);
         visited[nodeIndex] = true;
         GraphNode node = node(nodeIndex);
         queue.add(node);

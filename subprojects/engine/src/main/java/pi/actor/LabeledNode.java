@@ -26,7 +26,9 @@ import java.awt.geom.AffineTransform;
 import pi.Game;
 import pi.Resources;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureData;
 import pi.resources.font.FontStringBounds;
 import pi.resources.font.FontUtil;
@@ -166,11 +168,12 @@ public class LabeledNode extends Geometry
     {
         if (label != null)
         {
-            cachedFontStringBounds = FontUtil.getStringBounds(label, getFont());
+            cachedFontStringBounds = FontUtil.getStringBounds(label, font());
         }
     }
 
-    public void setLabel(String label)
+    @Setter
+    public void label(String label)
     {
         this.label = label;
         updateLabel();
@@ -186,7 +189,8 @@ public class LabeledNode extends Geometry
      *
      * @return Die <b>Größe</b> des Knotens in Meter.
      */
-    private double getSize()
+    @Getter
+    private double size()
     {
         if (size == 0)
         {
@@ -201,9 +205,10 @@ public class LabeledNode extends Geometry
      * @param fontSize Die <b>Schriftgröße</b> des Bezeichners in Punkten (z.B.
      *     12pt).
      */
-    public void setFontSize(double fontSize)
+    @Setter
+    public void fontSize(double fontSize)
     {
-        setFont(getFont().deriveFont((float) fontSize));
+        font(font().deriveFont((float) fontSize));
     }
 
     /**
@@ -211,7 +216,8 @@ public class LabeledNode extends Geometry
      *
      * @param font Die <b>Schriftart</b> der Knotenbezeichnung.
      */
-    public void setFont(Font font)
+    @Setter
+    public void font(Font font)
     {
         this.font = font;
     }
@@ -221,7 +227,8 @@ public class LabeledNode extends Geometry
      *
      * @return Die <b>Schriftart</b> der Knotenbezeichnung.
      */
-    private Font getFont()
+    @Getter
+    private Font font()
     {
         if (font == null)
         {
@@ -256,7 +263,7 @@ public class LabeledNode extends Geometry
         // Text kann auch an float-Koordinaten eingezeichnet werden. Nicht
         // sicher ob das was bringt?
         // Die Größe des Knotens in Pixel
-        float nodeSize = (float) (getSize() * pixelPerMeter);
+        float nodeSize = (float) (size() * pixelPerMeter);
 
         // Die x-Koordinate der linken oberen Ecke.
         float upperLeftX = 0;
@@ -276,7 +283,7 @@ public class LabeledNode extends Geometry
             AffineTransform pre = g.getTransform();
             Font oldFont = g.getFont();
             g.setColor(Resources.colors.get("white"));
-            g.setFont(getFont());
+            g.setFont(font());
             var b = cachedFontStringBounds;
 
             // Der obere Abstand des Schriftrahmen zum Knotenrahmen.

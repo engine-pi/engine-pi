@@ -55,10 +55,10 @@ public enum ColorSchemeSelection
      */
     JAVA(new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)// Sekundärfarben
     // Orange passt nicht in das Schema, viel zu hell.
-    // .setOrange(Color.ORANGE)
+    // .orange(Color.ORANGE)
             .green(Color.GREEN)// Tertiärfarben
             .blueGreen(Color.CYAN)// Pink passt nicht in das Schema.
-            // .setRedPurple(Color.PINK)
+            // .redPurple(Color.PINK)
             .redPurple(Color.MAGENTA)// Andere
             .gray(Color.GRAY)),
     /**

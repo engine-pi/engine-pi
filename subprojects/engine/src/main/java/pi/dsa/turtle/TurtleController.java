@@ -19,6 +19,7 @@
 package pi.dsa.turtle;
 
 import pi.Vector;
+import pi.annotations.Setter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
@@ -217,9 +218,10 @@ public class TurtleController
      *
      * @since 0.38.0
      */
-    public void setPosition(Vector position)
+    @Setter
+    public void position(Vector position)
     {
-        scene.setPosition(position);
+        scene.position(position);
     }
 
     /**
@@ -238,9 +240,10 @@ public class TurtleController
      *
      * @since 0.38.0
      */
-    public void setPosition(double x, double y)
+    @Setter
+    public void position(double x, double y)
     {
-        scene.setPosition(new Vector(x, y));
+        scene.position(new Vector(x, y));
     }
 
     /**
@@ -299,9 +302,10 @@ public class TurtleController
      *
      * @since 0.38.0
      */
-    public void setDirection(double direction)
+    @Setter
+    public void direction(double direction)
     {
-        scene.setDirection(direction);
+        scene.direction(direction);
     }
 
     /**

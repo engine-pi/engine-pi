@@ -43,7 +43,7 @@ public class ScreenshotImage
         image = new BufferedImage(config.windowWidth(), config.windowHeight(),
                 BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();
-        Graphics2DUtil.setAntiAliasing(g, true);
+        Graphics2DUtil.antiAliasing(g, true);
     }
 
     @Getter

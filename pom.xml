@@ -9,7 +9,7 @@
     <version>0.41.0</version>
     <packaging>pom</packaging>
 
-    <name>Parent Meta Project</name>
+    <name>Engine Pi Project</name>
     <description>The parent meta package of the Engine Pi.</description>
     <url>https://engine-pi.github.io/engine-pi</url>
     <licenses>

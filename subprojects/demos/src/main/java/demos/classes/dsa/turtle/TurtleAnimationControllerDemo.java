@@ -15,7 +15,7 @@ public class TurtleAnimationControllerDemo
     public TurtleAnimationControllerDemo()
     {
         turtle = new Turtle();
-        turtle.setPosition(-4, -6);
+        turtle.position(-4, -6);
         drawPolygone(6, 5);
         turtle.animation.warp();
         turtle.pen.color("green").thickness(1);
