@@ -1,6 +1,7 @@
 package pi.actor;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
@@ -10,6 +11,7 @@ import pi.Vector;
 import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
+import static pi.Resources.colors;
 
 /**
  * Eine <b>Linie</b> zwischen zwei Punkten.
@@ -39,6 +41,7 @@ public class Line extends Actor
         super(() -> FixtureBuilder.line(point1, point2));
         this.point1 = point1;
         this.point2 = point2;
+        setColor(colors.getSafe("orange"));
     }
 
     public Line point1(Vector point1)
@@ -71,9 +74,10 @@ public class Line extends Actor
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        AffineTransform at = g.getTransform();
+        AffineTransform oldTransform = g.getTransform();
         g.scale(1, -1);
         Stroke oldStroke = g.getStroke();
+        Color oldColor = g.getColor();
         Stroke stroke = new BasicStroke((float) (strokeWidth * pixelPerMeter),
                 BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
         g.setStroke(stroke);
@@ -83,8 +87,9 @@ public class Line extends Actor
 
         Graphics2DUtil.drawArrow(g, point1.multiply(pixelPerMeter),
                 point2.multiply(pixelPerMeter), 50, 30);
-        g.setTransform(at);
+        g.setTransform(oldTransform);
         g.setStroke(oldStroke);
+        g.setColor(oldColor);
     }
 
     /**

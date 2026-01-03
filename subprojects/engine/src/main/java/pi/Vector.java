@@ -94,8 +94,8 @@ public final class Vector implements Cloneable
     /**
      * Erzeugt einen neuen Vektor.
      *
-     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
-     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
+     * @param x Der Bewegungsanteil in {@code x}-Richtung.
+     * @param y Der Bewegungsanteil in {@code y}-Richtung.
      */
     @API
     public Vector(double x, double y)
@@ -142,9 +142,9 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in <code>x</code>-Richtung zurück.
+     * Gibt den Bewegungsanteil in {@code x}-Richtung zurück.
      *
-     * @return Der Bewegungsanteil in <code>x</code>-Richtung.
+     * @return Der Bewegungsanteil in {@code x}-Richtung.
      */
     @API
     public double getX()
@@ -153,11 +153,11 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
-     * Pixel per Meter als Ganzzahl zurück.
+     * Gibt den Bewegungsanteil in {@code x}-Richtung multipliziert mit Pixel
+     * per Meter als Ganzzahl zurück.
      *
-     * @return Der Bewegungsanteil in <code>x</code>-Richtung multipliziert mit
-     *     Pixel per Meter.
+     * @return Der Bewegungsanteil in {@code x}-Richtung multipliziert mit Pixel
+     *     per Meter.
      *
      * @since 0.36.0
      */
@@ -168,9 +168,9 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in <code>y</code>-Richtung zurück.
+     * Gibt den Bewegungsanteil in {@code y}-Richtung zurück.
      *
-     * @return Der Bewegungsanteil in <code>y</code>-Richtung.
+     * @return Der Bewegungsanteil in {@code y}-Richtung.
      */
     @API
     public double getY()
@@ -179,11 +179,11 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in <code>y</code>-Richtung multipliziert mit
-     * Pixel per Meter zurück.
+     * Gibt den Bewegungsanteil in {@code y}-Richtung multipliziert mit Pixel
+     * per Meter zurück.
      *
-     * @return Der Bewegungsanteil in <code>y</code>-Richtung multipliziert mit
-     *     Pixel per Meter.
+     * @return Der Bewegungsanteil in {@code y}-Richtung multipliziert mit Pixel
+     *     per Meter.
      *
      * @since 0.36.0
      */
@@ -391,16 +391,16 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Multipliziert die effektiven Längen beider Anteile des Vektors
-     * (<code>x</code> und <code>y</code>) mit einem festen Faktor.
+     * Multipliziert die effektiven Längen beider Anteile des Vektors ({@code x}
+     * und {@code y}) mit einem festen Faktor.
      *
      * <p>
      * Dadurch entsteht ein neuer Vektor mit anderen Werten, welcher
      * zurückgegeben wird.
      * </p>
      *
-     * @param factor Der Faktor, mit dem die <code>x</code>- und
-     *     <code>y</code>-Werte des Vektors multipliziert werden.
+     * @param factor Der Faktor, mit dem die {@code x}- und {@code y}-Werte des
+     *     Vektors multipliziert werden.
      *
      * @return Der Vektor mit den multiplizierten Werten.
      *
@@ -474,7 +474,7 @@ public final class Vector implements Cloneable
 
     /**
      * Berechnet, ob dieser Vektor keine Wirkung hat. Dies ist der Fall, wenn
-     * beide Komponenten (<code>x</code> und <code>y</code>) 0 sind.
+     * beide Komponenten ({@code x} und {@code y}) 0 sind.
      *
      * @return <code>true</code>, wenn dieser keine Auswirkungen macht, sonst
      *     <code>false</code>.
@@ -528,8 +528,8 @@ public final class Vector implements Cloneable
     /**
      * Prüft, ob ein beliebiges Objekt gleich diesem Vektor ist. <br>
      * <br>
-     * Zwei Vektoren gelten als gleich, wenn <code>x</code> und <code>y</code>
-     * der beiden Vektoren übereinstimmen.
+     * Zwei Vektoren gelten als gleich, wenn {@code x} und {@code y} der beiden
+     * Vektoren übereinstimmen.
      *
      * @param object Das auf Gleichheit mit diesem zu überprüfende Objekt.
      *
@@ -689,8 +689,8 @@ public final class Vector implements Cloneable
      * geschrieben werden.
      * </p>
      *
-     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
-     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
+     * @param x Der Bewegungsanteil in {@code x}-Richtung.
+     * @param y Der Bewegungsanteil in {@code y}-Richtung.
      */
     public static Vector vector(double x, double y)
     {
@@ -729,8 +729,8 @@ public final class Vector implements Cloneable
      * geschrieben werden.
      * </p>
      *
-     * @param x Der Bewegungsanteil in <code>x</code>-Richtung.
-     * @param y Der Bewegungsanteil in <code>y</code>-Richtung.
+     * @param x Der Bewegungsanteil in {@code x}-Richtung.
+     * @param y Der Bewegungsanteil in {@code y}-Richtung.
      */
     public static Vector v(double x, double y)
     {

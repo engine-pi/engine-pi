@@ -2047,8 +2047,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
      * aktuellen Position an die neue.
      *
-     * @param x Die neue <code>x</code>-Koordinate.
-     * @param y Die neue <code>y</code>-Koordinate.
+     * @param x Die neue {@code x}-Koordinate.
+     * @param y Die neue {@code y}-Koordinate.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -2156,8 +2156,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Differenzvektors.
      * </p>
      *
-     * @param x Die <code>x</code>-Koordinate des neuen Mittelpunktes der Figur.
-     * @param y Die <code>y</code>-Koordinate des neuen Mittelpunktes der Figur.
+     * @param x Die {@code x}-Koordinate des neuen Mittelpunktes der Figur.
+     * @param y Die {@code y}-Koordinate des neuen Mittelpunktes der Figur.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -2220,7 +2220,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Raumobjekt nicht rechteckig sein, so wird die Position der linken unteren
      * Ecke des umschließenden Rechtecks genommen.
      *
-     * @return <code>x</code>-Koordinate
+     * @return {@code x}-Koordinate
      *
      * @see #getY()
      * @see #getPosition()
@@ -2289,7 +2289,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * bei Kreisen z.B. <b>nicht</b> der Mittelpunkt ist! Hierfür gibt es die
      * Sondermethode {@link #setCenter(double, double)}.
      *
-     * @param y neue <code>y</code>-Koordinate
+     * @param y neue {@code y}-Koordinate
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch

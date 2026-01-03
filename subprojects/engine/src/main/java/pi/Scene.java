@@ -643,6 +643,20 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * <b>Entfernt alle</b> {@link Actor Figuren} aus der Hauptebene.
+     *
+     * Diese Methode durchläuft die Liste der Figuren und entfernt jeden
+     * einzelnen von der Ebene.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public void clear()
+    {
+        mainLayer.clear();
+    }
+
+    /**
      * Gibt alle <b>Figuren</b> aller Ebenen, die <b>bereits in der
      * Physics-Engine</b> registriert sind, als Liste zurück.
      *

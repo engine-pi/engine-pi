@@ -402,11 +402,11 @@ public final class Camera
     }
 
     /**
-     * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in <code>x</code>-
-     * und <code>y</code>-Richtung (<b>relativ</b>).
+     * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in {@code x}- und
+     * {@code y}-Richtung (<b>relativ</b>).
      *
-     * @param deltaX Die Verschiebung in <code>x</code>-Richtung.
-     * @param deltaY Die Verschiebung in <code>y</code>-Richtung.
+     * @param deltaX Die Verschiebung in {@code x}-Richtung.
+     * @param deltaY Die Verschiebung in {@code y}-Richtung.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -444,8 +444,8 @@ public final class Camera
      * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
      * Koordinaten im Zentrum des Bildes.
      *
-     * @param x Die <code>x</code>-Koordinate des Zentrums des Bildes.
-     * @param y Die <code>y</code>-Koordinate des Zentrums des Bildes.
+     * @param x Die {@code x}-Koordinate des Zentrums des Bildes.
+     * @param y Die {@code y}-Koordinate des Zentrums des Bildes.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch

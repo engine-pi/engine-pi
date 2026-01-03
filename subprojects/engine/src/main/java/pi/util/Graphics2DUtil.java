@@ -243,9 +243,6 @@ public class Graphics2DUtil
 
         // Winkel der Line zur x-Achse
         double direction = from.add(to).getAngle();
-
-        System.out.println(direction);
-
         Vector A = to.add(Vector.ofAngle(direction - vertexAngle / 2 - 180)
                 .multiply(legsLength));
         Vector B = to.add(Vector.ofAngle(direction + vertexAngle / 2 - 180)

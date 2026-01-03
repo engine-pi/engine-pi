@@ -43,6 +43,10 @@
     {
         "filePath": "docs/dev/javadoc.md",
         "group": "Default"
+    },
+    {
+        "filePath": "subprojects/demos",
+        "group": "Default"
     }
 ]
 }

@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import pi.annotations.API;
 import pi.resources.Container;
 
 /**
@@ -119,6 +120,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      */
+    @API
     public Color add(String name, Color color)
     {
         resources.put(normalizeName(name), color);
@@ -143,6 +145,7 @@ public class ColorContainer implements Container<Color>
      *
      * @since 0.26.0
      */
+    @API
     public Color add(String name, int r, int g, int b, int a)
     {
         return add(name, new Color(r, g, b, a));
@@ -168,6 +171,7 @@ public class ColorContainer implements Container<Color>
      *
      * @since 0.26.0
      */
+    @API
     public Color add(String name, int r, int g, int b, int a, String... alias)
     {
         return add(name, new Color(r, g, b, a), alias);
@@ -186,6 +190,7 @@ public class ColorContainer implements Container<Color>
      *
      * @since 0.26.0
      */
+    @API
     public Color add(String name, int r, int g, int b)
     {
         return add(name, new Color(r, g, b));
@@ -206,6 +211,7 @@ public class ColorContainer implements Container<Color>
      *
      * @since 0.26.0
      */
+    @API
     public Color add(String name, int r, int g, int b, String... alias)
     {
         return add(name, new Color(r, g, b), alias);
@@ -220,6 +226,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      */
+    @API
     public Color add(String name, String color)
     {
         return add(normalizeName(name), ColorUtil.decode(color));
@@ -235,6 +242,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      */
+    @API
     public Color add(String name, Color color, String... alias)
     {
         addAlias(name, alias);
@@ -251,11 +259,21 @@ public class ColorContainer implements Container<Color>
      *
      * @return Die gleiche Farbe, die hinzugefügt wurde.
      */
+    @API
     public Color add(String name, String color, String... alias)
     {
         return add(normalizeName(name), ColorUtil.decode(color), alias);
     }
 
+    /**
+     * Fügt Aliase für einen Farbnamen hinzu.
+     *
+     * @param name Der primäre Farbnamen, dem die Aliase zugeordnet werden
+     *     sollen. Der Name wird normalisiert, bevor er verwendet wird.
+     * @param alias Ein oder mehrere alternative Namen (Aliase) für die Farbe.
+     *     Jeder Alias wird normalisiert und dem primären Namen zugeordnet.
+     */
+    @API
     public void addAlias(String name, String... alias)
     {
         name = normalizeName(name);
@@ -291,6 +309,7 @@ public class ColorContainer implements Container<Color>
      * @param schema Das Farbschema, dessen Farben in den Speicher für Farben
      *     abgelegt werden soll.
      */
+    @API
     public void addScheme(ColorScheme schema)
     {
         clear();
@@ -351,6 +370,7 @@ public class ColorContainer implements Container<Color>
      * @see pi.actor.Actor#setColor(String)
      * @see pi.Scene#setBackgroundColor(String)
      */
+    @API
     public Color getSafe(String name)
     {
         try
@@ -408,6 +428,31 @@ public class ColorContainer implements Container<Color>
         };
     }
 
+    /**
+     * Gibt <b>immer</b> eine <b>vordefinierte</b> Farbe zurück und wirft <b>nie
+     * eine Ausnahme</b>.
+     *
+     * <p>
+     * Die Farben können auch in hexadezimaler Schreibweise angegeben werden, z.
+     * B. {@code #ff0000}. Die Groß- und Kleinschreibung spielt keine Rolle.
+     * Auch Leerzeichen werden ignoriert.
+     * </p>
+     *
+     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
+     * @param alpha Der
+     *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
+     *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht
+     *     das Attribut <em>„vollständig transparent“</em>, d. h. unsichtbar.
+     *     {@code 255} entspricht <em>„nicht transparent“</em>.
+     *
+     * @return Eine vordefinierte Farbe.
+     *
+     * @see pi.actor.Actor#setColor(String)
+     * @see pi.Scene#setBackgroundColor(String)
+     */
+    @API
     public Color getSafe(String name, int alpha)
     {
         return ColorUtil.changeAlpha(getSafe(name), alpha);
@@ -418,6 +463,7 @@ public class ColorContainer implements Container<Color>
      *
      * @return Alle Farben samt der Farbnamen als {@link Map} zurück.
      */
+    @API
     public Map<String, Color> getAll()
     {
         return resources;
@@ -426,6 +472,7 @@ public class ColorContainer implements Container<Color>
     /**
      * <b>Leert</b> den Speicher für Farben samt der Aliasse.
      */
+    @API
     public void clear()
     {
         resources.clear();
@@ -452,6 +499,7 @@ public class ColorContainer implements Container<Color>
      *
      * @throws RuntimeException Fall die Farbe nicht definiert ist.
      */
+    @API
     public Color get(String name)
     {
         name = normalizeName(name);
@@ -475,6 +523,17 @@ public class ColorContainer implements Container<Color>
         return color;
     }
 
+    /**
+     * Ruft eine <b>benannte Farbe</b> anhand ihres Namens ab.
+     *
+     * @param name Der Name der Farbe. Der Name wird normalisiert, bevor die
+     *     Suche durchgeführt wird.
+     *
+     * @return Ein {@link NamedColor}-Objekt, das die gefundene Farbe, ihren
+     *     Namen und alle Aliase enthält, die auf diese Farbe verweisen. Wenn
+     *     die Farbe nicht gefunden wird, ist das Farbfeld null.
+     */
+    @API
     public NamedColor getNamedColor(String name)
     {
         name = normalizeName(name);
@@ -519,13 +578,39 @@ public class ColorContainer implements Container<Color>
      *
      * @return Eine vordefinierte Farbe.
      */
+    @API
     public Color get(String name, int alpha)
     {
         return ColorUtil.changeAlpha(get(name), alpha);
     }
 
+    /**
+     * Zählt die <b>Anzahl</b> der Farben in diesem Farbenspeicher.
+     *
+     * @return Die <b>Anzahl</b> der Farben.
+     */
     public int count()
     {
         return resources.size();
+    }
+
+    /**
+     * Gibt eine <b>zufällige</b> Farbe aus dem Farbenspeicher zurück.
+     *
+     * <p>
+     * Diese Methode wählt eine Farbe zufällig aus den verfügbaren Farben im
+     * Farbenspeicher aus und gibt sie zurück.
+     * </p>
+     *
+     * @return Eine zufällige Instanz von {@link Color} aus den Farbenspeicher.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public Color random()
+    {
+        return (Color) resources.values()
+                .toArray()[(int) (Math.random() * resources.size())];
+
     }
 }

@@ -20,6 +20,8 @@
  */
 package pi;
 
+import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
 
@@ -27,18 +29,16 @@ import pi.debug.ToStringFormatter;
  * Ein <b>nicht-grafisches Rechteck</b> auf der Zeichenebene, das eine
  * allgemeine Fläche beschreibt.
  *
- * @param x Die <code>x</code>-Koordinate der <i>unteren linken Ecke</i> des
+ * @param x Die {@code x}-Koordinate der <i>unteren linken Ecke</i> des
  *     Rechtecks.
- * @param y Die <code>y</code>-Koordinate der <i>unteren linken Ecke</i> des
+ * @param y Die {@code y}-Koordinate der <i>unteren linken Ecke</i> des
  *     Rechtecks.
- * @param width <b>Reelle</b> Breite des Rechtecks.
- * @param height <b>Reelle</b> Höhe des Rechtecks.
+ * @param width Die <b>Breite</b> des Rechtecks.
+ * @param height Die <b>Höhe</b> des Rechtecks.
  *
  * @author Michael Andonie
- *
- * @hidden
+ * @author Josef Friedrich
  */
-@Internal
 public record Bounds(double x, double y, double width, double height)
 {
     /**
@@ -47,9 +47,10 @@ public record Bounds(double x, double y, double width, double height)
      * @param bounds Das {@link Bounds}, an dessen Mitte auch die Mitte dieses
      *     Rechtecks angeglichen werden soll.
      */
+    @API
     public Bounds withCenterAtBoundsCenter(Bounds bounds)
     {
-        return withCenterPoint(bounds.getCenter());
+        return withCenterPoint(bounds.center());
     }
 
     /**
@@ -62,9 +63,10 @@ public record Bounds(double x, double y, double width, double height)
      *     jedoch so verschoben, dass es mit seiner Mitte im angegebenen Zentrum
      *     liegt.
      */
+    @API
     public Bounds withCenterPoint(Vector point)
     {
-        return moveBy(point.subtract(getCenter()));
+        return moveBy(point.subtract(center()));
     }
 
     /**
@@ -74,7 +76,9 @@ public record Bounds(double x, double y, double width, double height)
      * @return Der Punkt mit den Koordinaten, der im Zentrum des Rechtecks
      *     liegt.
      */
-    public Vector getCenter()
+    @API
+    @Getter
+    public Vector center()
     {
         return new Vector(x + (width / 2), y + (height / 2));
     }
@@ -89,6 +93,7 @@ public record Bounds(double x, double y, double width, double height)
      * @return Ein neues {@link Bounds}-Objekt, das dieselben Maße wie dieses
      *     hat, jedoch um die entsprechende Verschiebung verschoben ist.
      */
+    @API
     public Bounds moveBy(Vector v)
     {
         return new Bounds(x + v.getX(), y + v.getY(), width, height);
@@ -103,6 +108,7 @@ public record Bounds(double x, double y, double width, double height)
      * @return Ein neues {@link Bounds}, dass die beiden Rechtecke genau
      *     umfasst.
      */
+    @API
     public Bounds smallestCommon(Bounds bounds)
     {
         double x, y, dX, dY;
@@ -138,6 +144,7 @@ public record Bounds(double x, double y, double width, double height)
      *     jedem Fall über, oder auf der Grenze liegt, wenn es passt, ist es
      *     <code>this</code>.
      */
+    @API
     public Bounds above(double lowerBound)
     {
         if (y + height < lowerBound)
@@ -161,6 +168,7 @@ public record Bounds(double x, double y, double width, double height)
      *     jedem Fall unter oder auf der Grenze liegt, wenn es passt, ist es
      *     <code>this</code>.
      */
+    @API
     public Bounds below(double upperBound)
     {
         if (y > upperBound)
@@ -185,6 +193,7 @@ public record Bounds(double x, double y, double width, double height)
      *     Wenn diese Eigenschaften bereits von diesem Objekt erfüllt werden, so
      *     wird <code>this</code> zurückgegeben.
      */
+    @API
     public Bounds rightOf(double border)
     {
         if (x > border)
@@ -209,6 +218,7 @@ public record Bounds(double x, double y, double width, double height)
      *     Wenn diese Eigenschaften bereits von diesem Objekt erfüllt werden, so
      *     wird <code>this</code> zurückgegeben.
      */
+    @API
     public Bounds leftOf(double border)
     {
         if (x + width < border)
@@ -235,6 +245,7 @@ public record Bounds(double x, double y, double width, double height)
      * @return Ein neues {@link Bounds} mit der eingegebenen Position und
      *     derselben Breite und Höhe.
      */
+    @API
     public Bounds atPosition(double realX, double realY)
     {
         return new Bounds(realX, realY, width, height);
@@ -247,6 +258,7 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @return true, wenn der Punkt in dem {@link Bounds} ist
      */
+    @API
     public boolean contains(Vector v)
     {
         return (v.getX() >= this.x && v.getY() >= this.y
@@ -258,6 +270,7 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @return Array mit den vier Eckpunkten des umfassenden {@link Bounds}.
      */
+    @API
     public Vector[] points()
     {
         return new Vector[] { new Vector(x, y), new Vector(x + width, y),
@@ -277,6 +290,7 @@ public record Bounds(double x, double y, double width, double height)
      *     {@link Bounds}-Rechteck das als Argument übergebene {@link Bounds}
      *     voll enthält</b>, sonst <code>falsch</code>.
      */
+    @API
     public boolean contains(Bounds inner)
     {
         return (this.x <= inner.x && this.y <= inner.y
@@ -292,6 +306,7 @@ public record Bounds(double x, double y, double width, double height)
      * @return <code>wahr</code>, wenn dieses Rechteck rechts von dem anderen
      *     ist, sonst <code>falsch</code>.
      */
+    @API
     public boolean above(Bounds r)
     {
         return ((this.y) < (r.y));
@@ -315,6 +330,7 @@ public record Bounds(double x, double y, double width, double height)
      * @return Das Ergebnis-Rechteck, das sich im äußeren Rechteck befinden
      *     wird.
      */
+    @API
     public Bounds in(Bounds outer)
     {
         double realX = this.x, realY = this.y;
@@ -343,15 +359,16 @@ public record Bounds(double x, double y, double width, double height)
      * @return Ein neues {@link Bounds} mit genau demselben Zustand wie dieses.
      */
     @Override
+    @API
     public Bounds clone()
     {
         return new Bounds(x, y, width, height);
     }
 
     /**
-     * Gibt die <b>reelle</b> X-Koordinate der unteren linken Ecke aus.
+     * Gibt die X-Koordinate der unteren linken Ecke aus.
      *
-     * @return Die <b>reelle</b> X-Koordinate der unteren linken Ecke dieses
+     * @return Die X-Koordinate der unteren linken Ecke dieses
      *     BoundingRechtecks.
      *
      * @see #y ()
@@ -359,6 +376,7 @@ public record Bounds(double x, double y, double width, double height)
      * @see #height ()
      */
     @Override
+    @API
     public double x()
     {
         return x;
@@ -373,6 +391,7 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @since 0.42.0
      */
+    @API
     public double xLeft()
     {
         return x;
@@ -387,15 +406,16 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @since 0.42.0
      */
+    @API
     public double xRight()
     {
         return x + width;
     }
 
     /**
-     * Gibt die <b>reelle</b> Y-Koordinate der unteren linken Ecke aus.
+     * Gibt die Y-Koordinate der unteren linken Ecke aus.
      *
-     * @return Die <b>reelle</b> Y-Koordinate der unteren linken Ecke dieses
+     * @return Die Y-Koordinate der unteren linken Ecke dieses
      *     {@link Bounds}-Rechtecks.
      *
      * @see #x ()
@@ -403,6 +423,8 @@ public record Bounds(double x, double y, double width, double height)
      * @see #height ()
      */
     @Override
+    @Getter
+    @API
     public double y()
     {
         return y;
@@ -417,6 +439,7 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @since 0.42.0
      */
+    @API
     public double yTop()
     {
         return y + height;
@@ -431,53 +454,64 @@ public record Bounds(double x, double y, double width, double height)
      *
      * @since 0.42.0
      */
+    @API
     public double yBottom()
     {
         return y;
     }
 
     /**
-     * Gibt die <b>reelle</b> Breite aus.
+     * Gibt die <b>Breite</b> aus.
      *
-     * @return Die <b>reelle</b> Breite dieses {@link Bounds}-Rechtecks.
+     * @return Die <b>Breite</b> dieses {@link Bounds}-Rechtecks.
      *
      * @see #x()
      * @see #y()
      * @see #height()
      */
     @Override
+    @Getter
+    @API
     public double width()
     {
         return width;
     }
 
     /**
-     * Gibt die <b>reelle</b> Höhe aus.
+     * Gibt die <b>Höhe</b> aus.
      *
-     * @return Die <b>reelle</b> Höhe dieses {@link Bounds}-Rechtecks.
+     * @return Die <b>Höhe</b> dieses {@link Bounds}-Rechtecks.
      *
      * @see #x()
      * @see #y()
      * @see #width()
      */
     @Override
+    @Getter
+    @API
     public double height()
     {
         return height;
     }
 
     /**
-     * Gibt die exakte Position der linken unteren Ecke dieses
+     * Gibt die exakte <b>Position</b> der linken unteren Ecke dieses
      * {@link Bounds}-Rechtecks aus.
      *
-     * @return die Position des {@link Bounds}-Rechtecks, beschrieben durch den
-     *     Punkt der linken unteren Ecke dieses Objekts.
+     * @return die <b>Position</b> des {@link Bounds}-Rechtecks, beschrieben
+     *     durch den Punkt der linken unteren Ecke dieses Objekts.
      */
-    public Vector getPosition()
+    @Getter
+    @API
+    public Vector position()
     {
         return new Vector(x, y);
     }
 
+    /**
+     * @hidden
+     */
+    @Internal
     @Override
     public String toString()
     {

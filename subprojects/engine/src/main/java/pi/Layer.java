@@ -421,7 +421,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Entferne einen oder mehrere {@link Actor}-Objekte aus der Ebene.
+     * Entferne einen oder mehrere {@link Actor Figuren} aus der Ebene.
      *
      * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
@@ -449,6 +449,23 @@ public class Layer implements KeyStrokeListenerRegistration,
                 actor.setPhysicsHandler(new NullHandler(physicsData));
             }
         });
+    }
+
+    /**
+     * <b>Entfernt alle</b> {@link Actor Figuren} aus der Ebene.
+     *
+     * Diese Methode durchläuft die Liste der Figuren und entfernt jeden
+     * einzelnen von der Ebene.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public void clear()
+    {
+        for (Actor actor : actors)
+        {
+            remove(actor);
+        }
     }
 
     /**

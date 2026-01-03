@@ -76,9 +76,9 @@ public enum Direction
      * Berechnet einen einfachen Vektor (maximale Auslenkung bei jeder Achse 1 –
      * positiv wie negativ).
      *
-     * @return Vector, der mit einer einfachen Auslenkung (d.h. für
-     *     <code>x</code> und <code>y</code> je ein Wertebereich von {-1, 0, 1})
-     *     die entsprechende Bewegung macht.
+     * @return Vector, der mit einer einfachen Auslenkung (d.h. für {@code x}
+     *     und {@code y} je ein Wertebereich von {-1, 0, 1}) die entsprechende
+     *     Bewegung macht.
      */
     @API
     public Vector toVector()

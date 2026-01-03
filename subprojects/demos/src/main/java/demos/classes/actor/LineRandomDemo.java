@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2025 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,29 +18,46 @@
  */
 package demos.classes.actor;
 
+import static pi.Resources.colors;
+
 import pi.Game;
+import pi.Random;
+import pi.Scene;
 import pi.actor.Line;
 
 /**
- * Demonstriert die Figur <b>Linie</b> ({@link Line}).
+ * Demonstriert die Figur <b>Linie</b> ({@link Line}) indem zufällig Attribute
+ * gesetzt werden.
  *
  * @author Josef Friedrich
  */
-public class LineDemo extends ActorBaseScene
+public class LineRandomDemo extends Scene
 {
-    public LineDemo()
+    public LineRandomDemo()
     {
-        Line line = new Line(0, 0, 1, 1);
-        // line.setPosition(2, 2);
-        line.makeDynamic();
-        // line.rotateBy(45);
-        add(line);
+        createRandomLines();
+
+        repeat(2, () -> {
+            createRandomLines();
+        });
+        setBackgroundColor(colors.getSafe("#333333"));
+    }
+
+    private void createRandomLines()
+    {
+        clear();
+        for (int i = 0; i < Random.range(10, 30); i++)
+        {
+            Line line = new Line(Random.vector(this), Random.vector(this));
+            line.setColor(colors.random());
+            line.strokeWidth(Random.range(0.01, 0.5));
+            add(line);
+        }
     }
 
     public static void main(String[] args)
     {
         Game.instantMode(false);
-        Game.debug();
-        Game.start(new LineDemo());
+        Game.start(new LineRandomDemo());
     }
 }

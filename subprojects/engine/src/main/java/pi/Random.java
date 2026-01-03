@@ -29,6 +29,7 @@ import pi.annotations.Internal;
  * Diese Klasse liefert Methoden, die <b>zufällig verteilte Rückgaben</b> haben.
  *
  * @author Michael Andonie
+ * @author Josef Friedrich
  */
 @API
 public final class Random
@@ -69,7 +70,7 @@ public final class Random
      *
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
-     * @return Eine Zahl <code>x</code>, wobei
+     * @return Eine Zahl {@code x}, wobei
      *     <code>0 &lt;= x &lt;= upperLimit</code> gilt. Die Wahrscheinlichkeit
      *     für alle möglichen Rückgaben ist <i>gleich groß</i>.
      */
@@ -96,7 +97,7 @@ public final class Random
      * @param lowerLimit Die niedrigste Zahl, die im Ergebnis vorkommen kann.
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
-     * @return Eine Zahl <code>x</code>, wobei
+     * @return Eine Zahl {@code x}, wobei
      *     <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
      *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
      *     groß</i>.
@@ -151,7 +152,7 @@ public final class Random
      * @param lowerLimit Die niedrigste Zahl, die im Ergebnis vorkommen kann.
      * @param upperLimit Die höchste Zahl, die im Ergebnis vorkommen kann.
      *
-     * @return Eine Zahl <code>x</code>, wobei
+     * @return Eine Zahl {@code x}, wobei
      *     <code>lowerLimit &lt;= x &lt;= upperLimit</code> gilt. Die
      *     Wahrscheinlichkeit für alle möglichen Rückgaben ist <i>gleich
      *     groß</i>.
@@ -173,5 +174,46 @@ public final class Random
             return upperLimit + ThreadLocalRandom.current().nextDouble()
                     * (lowerLimit - upperLimit);
         }
+    }
+
+    /**
+     * Erzeugt einen zufälligen Vektor mit Komponenten in den angegebenen
+     * Bereichen.
+     *
+     * @param lowerX die untere Grenze für die X-Komponente
+     * @param upperX die obere Grenze für die X-Komponente
+     * @param lowerY die untere Grenze für die Y-Komponente
+     * @param upperY die obere Grenze für die Y-Komponente
+     *
+     * @return ein neuer Vektor mit zufälligen X- und Y-Komponenten innerhalb
+     *     der angegebenen Bereiche
+     *
+     * @since 0.42.0
+     */
+    @API
+    public static Vector vector(double lowerX, double upperX, double lowerY,
+            double upperY)
+    {
+        return new Vector(range(lowerX, upperX), range(lowerY, upperY));
+    }
+
+    /**
+     * Erzeugt einen zufälligen <b>Vektor</b> innerhalb des sichtbaren Bereichs
+     * einer {@link Scene}.
+     *
+     * <b>Die Grenzen werden aus dem {@link Bounds} der Szene übernommen.</b>
+     *
+     * @param scene Die <b>Szene</b>, deren sichtbarer Bereich als Grenzen
+     *     dient.
+     *
+     * @return ein {@link Vector} im jeweiligen Bereich der Szene
+     *
+     * @since 0.42.0
+     */
+    public static Vector vector(Scene scene)
+    {
+        Bounds bounds = scene.getVisibleArea();
+        return vector(bounds.xLeft(), bounds.xRight(), bounds.yBottom(),
+                bounds.yTop());
     }
 }

@@ -58,7 +58,7 @@ public class Controller
         Camera camera = scene.getCamera();
         double pixelPerMeter = camera.meter();
         Bounds bounds = windowScene.getWindowBounds();
-        Vector center = bounds.getCenter();
+        Vector center = bounds.center();
         camera.position(center.getX(), center.getY());
         Game.setTitle(windowScene.getTitle());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
