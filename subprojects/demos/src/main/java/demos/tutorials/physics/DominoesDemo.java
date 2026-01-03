@@ -99,17 +99,17 @@ public class DominoesDemo extends Scene
     {
         Vector mousePosition = mousePosition();
         Vector ballCenter = ball.center();
-        Vector distance = ballCenter.getDistance(mousePosition);
+        Vector distance = ballCenter.distance(mousePosition);
         angle.position(ball.center());
-        angle.width(distance.getLength());
-        double rot = Vector.RIGHT.getAngle(distance);
+        angle.width(distance.length());
+        double rot = Vector.RIGHT.angle(distance);
         angle.rotation(rot);
     }
 
     @Override
     public void onMouseDown(Vector position, MouseButton button)
     {
-        Vector impulse = ball.center().getDistance(position).multiply(5);
+        Vector impulse = ball.center().distance(position).multiply(5);
         ball.applyImpulse(impulse);
     }
 

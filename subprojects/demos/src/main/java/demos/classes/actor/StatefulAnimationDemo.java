@@ -89,7 +89,7 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.setPixelMultiplication(8);
+        Game.pixelMultiplication(8);
         Game.start(new StatefulAnimationDemo(), 50, 50);
     }
 }

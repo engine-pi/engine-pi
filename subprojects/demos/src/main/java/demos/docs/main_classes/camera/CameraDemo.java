@@ -66,13 +66,13 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        var position = Game.getMousePositionInFrame();
-        var size = Game.getWindowSize();
-        double x = position.getX() - (size.getX() / 2);
-        double y = -1 * (position.getY() - (size.getY() / 2));
+        var position = Game.mousePositionInFrame();
+        var size = Game.windowSize();
+        double x = position.getX() - (size.x() / 2);
+        double y = -1 * (position.getY() - (size.y() / 2));
         camera.moveFocus(new Vector(x, y).multiply(0.001));
         line.point1(camera.focus());
-        line.point2(Game.getMousePosition());
+        line.point2(Game.mousePosition());
     }
 
     public static void main(String[] args)

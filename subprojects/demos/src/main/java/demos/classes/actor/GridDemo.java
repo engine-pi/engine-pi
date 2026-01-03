@@ -36,8 +36,8 @@ public class GridDemo extends ActorBaseScene
         grid1.makeStatic();
         add(grid1);
         Grid grid2 = new Grid(5, 7, 1);
-        grid2.background(colorScheme.getOrange());
-        grid2.color(colorScheme.getRed());
+        grid2.background(colorScheme.orange());
+        grid2.color(colorScheme.red());
         grid2.rotateBy(-45);
         grid2.position(4, 0);
         grid2.makeDynamic();

@@ -102,8 +102,8 @@ public class Block
     public void moveBy(Vector vector)
     {
         image.moveBy(vector);
-        x = x + (int) vector.getX();
-        y = y + (int) vector.getY();
+        x = x + (int) vector.x();
+        y = y + (int) vector.y();
         // trigger assert
         image.x();
         image.y();

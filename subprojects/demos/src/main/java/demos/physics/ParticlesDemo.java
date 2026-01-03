@@ -78,7 +78,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         r2.color(Color.DARK_GRAY);
         r3.color(Color.DARK_GRAY);
         r4.color(Color.DARK_GRAY);
-        r1.addCollisionListener((event) -> remove(event.getColliding()));
+        r1.addCollisionListener((event) -> remove(event.colliding()));
         gravity(new Vector(0, -600));
         camera().meter(1);
         left.animateColor(5, Color.YELLOW);

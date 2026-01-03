@@ -132,7 +132,7 @@ public class CompassBox extends LeafBox
         if (showCenter)
         {
             // Kleiner Kreis als Mittelpunkt.
-            g.drawOval(center.getX(1) - 1, center.getY(1) - 1, 2, 2);
+            g.drawOval(center.x(1) - 1, center.y(1) - 1, 2, 2);
         }
         // Ursprung des Pfeils.
         Vector from = center.add(
@@ -156,14 +156,12 @@ public class CompassBox extends LeafBox
                 .ofAngle(normalizedDirection + 90).multiply(halfArrowBase));
 
         // Die Spitze des Kompasspfeils als Dreieck gezeichnet.
-        g.fillPolygon(
+        g.fillPolygon(new int[] { arrowLeft.x(1), to.x(1), arrowRight.x(1) },
                 new int[]
-                { arrowLeft.getX(1), to.getX(1), arrowRight.getX(1) },
-                new int[]
-                { arrowLeft.getY(1), to.getY(1), arrowRight.getY(1) }, 3);
+                { arrowLeft.y(1), to.y(1), arrowRight.y(1) }, 3);
 
         // Die Line des Kompasspfeils.
-        g.drawLine(from.getX(1), from.getY(1), to.getX(1), to.getY(1));
+        g.drawLine(from.x(1), from.y(1), to.x(1), to.y(1));
     }
 
     @Override

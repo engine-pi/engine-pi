@@ -18,7 +18,7 @@ public class Controller
 
     public static void setDebug(boolean debug)
     {
-        Game.setDebug(debug);
+        Game.debug(debug);
     }
 
     public static void toggleInterpolator()
@@ -42,13 +42,13 @@ public class Controller
             Game.start(scene, width, height);
             if (debug)
             {
-                Game.setDebug(true);
+                Game.debug(true);
             }
         }
         else
         {
             Game.transitionToScene(scene);
-            Game.setWindowSize(width, height);
+            Game.windowSize(width, height);
         }
     }
 
@@ -59,8 +59,8 @@ public class Controller
         double pixelPerMeter = camera.meter();
         Bounds bounds = windowScene.getWindowBounds();
         Vector center = bounds.center();
-        camera.focus(center.getX(), center.getY());
-        Game.setTitle(windowScene.getTitle());
+        camera.focus(center.x(), center.y());
+        Game.title(windowScene.getTitle());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
                 (int) Math.round(pixelPerMeter * bounds.height()),
                 (Scene) windowScene);

@@ -167,7 +167,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
         if (Configuration.get().game().instantMode())
         {
-            Game.getStartedActiveScene().add(this);
+            Game.startedActiveScene().add(this);
         }
     }
 
@@ -502,7 +502,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return <code>true</code>, wenn dieses {@link Actor}-Objekt sich mit
      *     <code>other</code> schneidet. Sonst <code>false</code>.
      *
-     * @see pi.Game#setDebug(boolean)
+     * @see pi.Game#debug(boolean)
      */
     @API
     public final boolean overlaps(Actor other)
@@ -780,10 +780,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             Vector position = physicsHandler.position();
             // ____ Pre-Render ____
             AffineTransform transform = g.getTransform();
-            g.rotate(-Math.toRadians(rotation), position.getX() * pixelPerMeter,
-                    -position.getY() * pixelPerMeter);
-            g.translate(position.getX() * pixelPerMeter,
-                    -position.getY() * pixelPerMeter);
+            g.rotate(-Math.toRadians(rotation), position.x() * pixelPerMeter,
+                    -position.y() * pixelPerMeter);
+            g.translate(position.x() * pixelPerMeter,
+                    -position.y() * pixelPerMeter);
             // Durchsichtigkeit
             Composite composite;
             if (opacity != 1)
@@ -798,7 +798,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             }
             // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
             // werden können.
-            if (Game.getRenderActors())
+            if (Game.renderActors())
             {
                 // Zeichnen der Füllungen der Figuren. Die einzelnen
                 // Unterklassen müssen die render-Methode implementieren, die
@@ -995,7 +995,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             @Override
             public void onCollision(CollisionEvent<Actor> collisionEvent)
             {
-                if (clazz.isInstance(collisionEvent.getColliding()))
+                if (clazz.isInstance(collisionEvent.colliding()))
                 {
                     // noinspection unchecked
                     listener.onCollision((CollisionEvent<E>) collisionEvent);
@@ -1006,7 +1006,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             @Override
             public void onCollisionEnd(CollisionEvent<Actor> collisionEvent)
             {
-                if (clazz.isInstance(collisionEvent.getColliding()))
+                if (clazz.isInstance(collisionEvent.colliding()))
                 {
                     // noinspection unchecked
                     listener.onCollisionEnd((CollisionEvent<E>) collisionEvent);
@@ -2036,8 +2036,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
             Vector distanceBetweenBothActors = (this.position().add(anchorThis))
-                    .getDistance(other.position().add(anchorOther));
-            def.length = (float) distanceBetweenBothActors.getLength();
+                    .distance(other.position().add(anchorOther));
+            def.length = (float) distanceBetweenBothActors.length();
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint) world
                     .createJoint(def);
         }, new DistanceJoint());
@@ -2267,7 +2267,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Getter
     public final double x()
     {
-        return position().getX();
+        return position().x();
     }
 
     /**
@@ -2315,7 +2315,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Getter
     public final double y()
     {
-        return position().getY();
+        return position().y();
     }
 
     /**
@@ -2397,8 +2397,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final String positionformatted()
     {
         Vector pos = position();
-        return TextUtil.roundNumber(pos.getX()) + "|"
-                + TextUtil.roundNumber(pos.getY());
+        return TextUtil.roundNumber(pos.x()) + "|"
+                + TextUtil.roundNumber(pos.y());
     }
 
     /**

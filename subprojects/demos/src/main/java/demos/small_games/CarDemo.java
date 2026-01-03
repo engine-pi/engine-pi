@@ -225,19 +225,17 @@ public class CarDemo extends Scene implements FrameUpdateListener
             wheelFront.setMotorEnabled(false);
             wheelBack.setMotorEnabled(false);
         }
-        if (carBody.center().getX() < -65)
+        if (carBody.center().x() < -65)
         {
-            carBody.applyForce(
-                    vector(10000 * (-65 - carBody.center().getX()), 0),
+            carBody.applyForce(vector(10000 * (-65 - carBody.center().x()), 0),
                     carBody.center());
         }
-        else if (carBody.center().getX() > 195)
+        else if (carBody.center().x() > 195)
         {
-            carBody.applyForce(
-                    vector(10000 * (195 - carBody.center().getX()), 0),
+            carBody.applyForce(vector(10000 * (195 - carBody.center().x()), 0),
                     carBody.center());
         }
-        if (carBody.center().getY() < -20)
+        if (carBody.center().y() < -20)
         {
             Game.transitionToScene(new CarDemo());
         }
@@ -281,10 +279,10 @@ public class CarDemo extends Scene implements FrameUpdateListener
         return (counter) -> {
             for (CollisionEvent<Actor> collision : actor.collisions())
             {
-                if (collision.getColliding() instanceof Wood
-                        && actor.velocity().getLength() > 1)
+                if (collision.colliding() instanceof Wood
+                        && actor.velocity().length() > 1)
                 {
-                    for (Vector point : collision.getPoints())
+                    for (Vector point : collision.points())
                     {
                         Objects.requireNonNull(actor.layer())
                                 .add(createSplitter(point));
@@ -379,28 +377,27 @@ public class CarDemo extends Scene implements FrameUpdateListener
             repeat(.025, (counter) -> {
                 for (CollisionEvent<Actor> collision : collisions())
                 {
-                    if (collision.getColliding() instanceof Mud)
+                    if (collision.colliding() instanceof Mud)
                     {
-                        double velocity = velocity().getLength();
+                        double velocity = velocity().length();
                         double overTwist = abs(
                                 angularVelocity() * Math.PI * 2 * 0.7)
                                 / velocity;
-                        boolean slowMoving = abs(velocity().getX()) < 0.5
+                        boolean slowMoving = abs(velocity().x()) < 0.5
                                 && abs(angularVelocity()) < 0.3;
                         if (overTwist > 0.95 && overTwist < 1.05 || slowMoving)
                         {
                             continue;
                         }
-                        Vector impulse = collision.getTangentNormal() //
+                        Vector impulse = collision.tangentNormal() //
                                 .rotate(90) //
                                 .multiply(min(max(-1, overTwist - 1), 1));
-                        for (Vector point : collision.getPoints())
+                        for (Vector point : collision.points())
                         {
                             double size = range(0.05, .15);
                             Vector center = point.add(
-                                    point.getDistance(center()).multiply(size));
-                            Color color = ((Mud) collision.getColliding())
-                                    .color();
+                                    point.distance(center()).multiply(size));
+                            Color color = ((Mud) collision.colliding()).color();
                             Objects.requireNonNull(layer())
                                     .add(createParticle(size, center, color,
                                             impulse.rotate(range(-15, 15))));
@@ -435,15 +432,15 @@ public class CarDemo extends Scene implements FrameUpdateListener
             fixtures(
                     "R0,.45,2,.45&P2,1.2,2.6,1.15,3.8,0.8,3.95,0.45,2,0.45&R1,0,2,0.6");
             repeat(.05, (counter) -> {
-                if (velocity().getLength() < 0.1)
+                if (velocity().length() < 0.1)
                 {
                     return;
                 }
                 for (CollisionEvent<Actor> collision : collisions())
                 {
-                    if (collision.getColliding() instanceof Mud)
+                    if (collision.colliding() instanceof Mud)
                     {
-                        for (Vector point : collision.getPoints())
+                        for (Vector point : collision.points())
                         {
                             double size = range(0.05, .15);
                             Vector impulse = vector(range(-1f, 1f),

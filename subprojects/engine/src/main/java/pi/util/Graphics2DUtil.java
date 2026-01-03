@@ -206,8 +206,8 @@ public class Graphics2DUtil
     public static void drawLine(Graphics2D g, Vector from, Vector to,
             double pixelPerMeter)
     {
-        g.drawLine(from.getX(pixelPerMeter), from.getY(pixelPerMeter),
-                to.getX(pixelPerMeter), to.getY(pixelPerMeter));
+        g.drawLine(from.x(pixelPerMeter), from.y(pixelPerMeter),
+                to.x(pixelPerMeter), to.y(pixelPerMeter));
     }
 
     // Go to
@@ -245,7 +245,7 @@ public class Graphics2DUtil
         Vector C = to;
 
         // Winkel der Line zur x-Achse
-        double direction = from.subtract(to).getAngle();
+        double direction = from.subtract(to).angle();
 
         vertexAngle = (360 - vertexAngle) / 2;
         double directionA = direction - vertexAngle + 180;

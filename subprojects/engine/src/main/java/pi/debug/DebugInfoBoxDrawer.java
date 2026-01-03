@@ -95,7 +95,7 @@ public final class DebugInfoBoxDrawer
         FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)
                         .vAlign(VAlign.MIDDLE));
-        gravityFrame.background.color(Resources.colorScheme.getBluePurple());
+        gravityFrame.background.color(Resources.colorScheme.bluePurple());
         gravityFrame.padding.allSides(5);
 
         verticalBox = new VerticalBox<>(fps, frameCounter, actorsCount,
@@ -115,10 +115,10 @@ public final class DebugInfoBoxDrawer
     {
         var infos = new DebugInformationPreparer(loop);
         fps.content("FPS: " + infos.fpsFormatted());
-        frameCounter.content("Frame counter: " + loop.getFrameCounter());
+        frameCounter.content("Frame counter: " + loop.frameCounter());
         actorsCount.content("Actors: " + infos.actorsCount());
         gravity.content(infos.gravityFormatted());
-        compass.direction(infos.gravity().getAngle());
+        compass.direction(infos.gravity().angle());
         verticalBox.remeasure().render(g);
     }
 

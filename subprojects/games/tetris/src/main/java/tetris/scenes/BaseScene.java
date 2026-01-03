@@ -31,7 +31,7 @@ public class BaseScene extends Scene
 {
     static
     {
-        Game.setPixelMultiplication(5);
+        Game.pixelMultiplication(5);
     }
 
     /**

@@ -1,5 +1,7 @@
 package pi.dsa.graph;
 
+import pi.annotations.Getter;
+
 class DirectedGraphEdge
 {
     /**
@@ -24,17 +26,20 @@ class DirectedGraphEdge
         this.weight = weight;
     }
 
-    public GraphNode getFrom()
+    @Getter
+    public GraphNode from()
     {
         return from;
     }
 
-    public GraphNode getTo()
+    @Getter
+    public GraphNode to()
     {
         return to;
     }
 
-    public int getWeight()
+    @Getter
+    public int weight()
     {
         return weight;
     }

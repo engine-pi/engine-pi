@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.resources.Container;
 
 /**
@@ -314,41 +315,41 @@ public class ColorContainer implements Container<Color>
     {
         clear();
         // Primärfarbe
-        add("yellow", schema.getYellow(), "Gelb", "Hellgelb");
+        add("yellow", schema.yellow(), "Gelb", "Hellgelb");
         // Tertiärfarbe
-        add("yellow orange", schema.getYellowOrange(), "orange yellow", "gold",
+        add("yellow orange", schema.yellowOrange(), "orange yellow", "gold",
                 "Gelb-Orange", "Orange-Gelb", "Golden", "Dunkelgelb");
         // Sekundärfarbe
-        add("orange", schema.getOrange());
+        add("orange", schema.orange());
         // Tertiärfarbe
-        add("red orange", schema.getRedOrange(), "orange red", "brick red",
+        add("red orange", schema.redOrange(), "orange red", "brick red",
                 "brick", "Rot-Orange", "Orange-Rot", "Ziegelrot", "Hellrot");
         // Primärfarbe
-        add("red", schema.getRed(), "Rot");
+        add("red", schema.red(), "Rot");
         // Tertiärfarbe
-        add("red purple", schema.getRedPurple(), "purple red", "magenta",
-                "pink", "Rot-Violett", "Violett-Rot", "Rosa");
+        add("red purple", schema.redPurple(), "purple red", "magenta", "pink",
+                "Rot-Violett", "Violett-Rot", "Rosa");
         // Sekundärfarbe
-        add("purple", schema.getPurple(), "Violet", "Violett", "Lila");
+        add("purple", schema.purple(), "Violet", "Violett", "Lila");
         // Tertiärfarbe
-        add("blue purple", schema.getBluePurple(), "purple blue", "indigo",
+        add("blue purple", schema.bluePurple(), "purple blue", "indigo",
                 "Violett Blau", "Blau Violett");
         // Primärfarbe
-        add("blue", schema.getBlue(), "Blau");
+        add("blue", schema.blue(), "Blau");
         // Tertiärfarbe
-        add("blue green", schema.getBlueGreen(), "green blue", "cyan",
-                "Blau-Grün", "Grün-Blau", "Türkis");
+        add("blue green", schema.blueGreen(), "green blue", "cyan", "Blau-Grün",
+                "Grün-Blau", "Türkis");
         // Sekundärfarbe
-        add("green", schema.getGreen(), "Grün");
+        add("green", schema.green(), "Grün");
         // Tertiärfarbe
-        add("yellow green", schema.getYellowGreen(), "green yellow", "lime",
+        add("yellow green", schema.yellowGreen(), "green yellow", "lime",
                 "lime green", "Gelb-Grün", "Grün-Gelb", "Limetten Grün",
                 "Limette", "Hellgrün");
         // andere Zusammensetzung, nicht nach Itten.
-        add("brown", schema.getBrown(), "Braun");
-        add("white", schema.getWhite(), "Weiß");
-        add("gray", schema.getGray(), "grey", "Grau");
-        add("black", schema.getBlack(), "Schwarz");
+        add("brown", schema.brown(), "Braun");
+        add("white", schema.white(), "Weiß");
+        add("gray", schema.gray(), "grey", "Grau");
+        add("black", schema.black(), "Schwarz");
     }
 
     /**
@@ -384,46 +385,46 @@ public class ColorContainer implements Container<Color>
         ColorScheme scheme = ColorSchemeSelection.GNOME.getScheme();
         return switch (normalizeName(name))
         {
-        case "yellow", "gelb", "hellgelb" -> scheme.getYellow();
+        case "yellow", "gelb", "hellgelb" -> scheme.yellow();
         // Tertiärfarbe
         case "yelloworange", "orangeyellow", "gold", "gelborange", "orangegelb",
                 "golden", "dunkelgelb" ->
-            scheme.getYellowOrange();
+            scheme.yellowOrange();
         // Sekundärfarbe
-        case "orange" -> scheme.getOrange();
+        case "orange" -> scheme.orange();
         // Tertiärfarbe
         case "redorange", "orangered", "brickred", "brick", "rotorange",
                 "orangerot", "ziegelrot", "hellrot" ->
-            scheme.getRedOrange();
+            scheme.redOrange();
         // Primärfarbe
-        case "red", "rot" -> scheme.getRed();
+        case "red", "rot" -> scheme.red();
         // Tertiärfarbe
         case "redpurple", "purplered", "magenta", "pink", "rotviolett",
                 "violettrot", "rosa" ->
-            scheme.getRedPurple();
+            scheme.redPurple();
         // Sekundärfarbe
-        case "purple", "violet", "violett", "lila" -> scheme.getPurple();
+        case "purple", "violet", "violett", "lila" -> scheme.purple();
         // Tertiärfarbe
         case "bluepurple", "purpleblue", "indigo", "violettblau",
                 "blauviolett" ->
-            scheme.getBluePurple();
+            scheme.bluePurple();
         // Primärfarbe
-        case "blue", "blau" -> scheme.getBlue();
+        case "blue", "blau" -> scheme.blue();
         // Tertiärfarbe
         case "bluegreen", "greenblue", "cyan", "blaugruen", "gruenblau",
                 "tuerkis" ->
-            scheme.getBlueGreen();
+            scheme.blueGreen();
         // Sekundärfarbe
-        case "green", "gruen" -> scheme.getGreen();
+        case "green", "gruen" -> scheme.green();
         // Tertiärfarbe
         case "yellowgreen", "greenyellow", "lime", "limegreen", "gelbgruen",
                 "gruengelb", "limettengruen", "limette", "hellgruen" ->
-            scheme.getYellowGreen();
+            scheme.yellowGreen();
         // andere Zusammensetzung, nicht nach Itten.
-        case "brown", "braun" -> scheme.getBrown();
-        case "white", "weiss" -> scheme.getWhite();
-        case "gray", "grey", "grau" -> scheme.getGray();
-        case "black", "schwarz" -> scheme.getBlack();
+        case "brown", "braun" -> scheme.brown();
+        case "white", "weiss" -> scheme.white();
+        case "gray", "grey", "grau" -> scheme.gray();
+        case "black", "schwarz" -> scheme.black();
         default -> Color.BLACK;
         };
     }
@@ -534,7 +535,8 @@ public class ColorContainer implements Container<Color>
      *     die Farbe nicht gefunden wird, ist das Farbfeld null.
      */
     @API
-    public NamedColor getNamedColor(String name)
+    @Getter
+    public NamedColor namedColor(String name)
     {
         name = normalizeName(name);
         Color color = resources.get(name);

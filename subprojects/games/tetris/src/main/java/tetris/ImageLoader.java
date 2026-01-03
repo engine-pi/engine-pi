@@ -53,7 +53,6 @@ public class ImageLoader
         BufferedImage image = Resources.images.get(pathname);
         image = ImageUtil.replaceColors(image, COLOR_SCHEME_GRAY.getColors(),
                 COLOR_SCHEME_GREEN.getColors());
-        return new Image(image,
-                Tetris.BLOCK_SIZE * Game.getPixelMultiplication());
+        return new Image(image, Tetris.BLOCK_SIZE * Game.pixelMultiplication());
     }
 }

@@ -97,27 +97,27 @@ public class GraphVisualizer
     {
         this.graph = graph;
         clear();
-        labeledNodes = new LabeledNode[graph.getNodeCount()];
-        labeledEdges = new LabeledEdge[graph.getEdgeCount()];
+        labeledNodes = new LabeledNode[graph.nodeCount()];
+        labeledEdges = new LabeledEdge[graph.edgeCount()];
         // Zuerst werden die Kanten eingezeichnet.
-        for (int i = 0; i < graph.getEdgeCount(); i++)
+        for (int i = 0; i < graph.edgeCount(); i++)
         {
-            GraphEdge edge = graph.getEdge(i);
-            LabeledEdge labledEdge = new LabeledEdge(
-                    edge.getFrom().getPosition(), edge.getTo().getPosition());
+            GraphEdge edge = graph.edge(i);
+            LabeledEdge labledEdge = new LabeledEdge(edge.getFrom().position(),
+                    edge.getTo().position());
             if (edge.getWeight() != 1)
             {
-                labledEdge.setLabel(String.valueOf(edge.getWeight()));
+                labledEdge.label(String.valueOf(edge.getWeight()));
             }
             scene.add(labledEdge);
             labeledEdges[i] = labledEdge;
         }
         // Dann die Knoten.
-        for (int i = 0; i < graph.getNodeCount(); i++)
+        for (int i = 0; i < graph.nodeCount(); i++)
         {
-            GraphNode node = graph.getNode(i);
-            LabeledNode labeledNode = new LabeledNode(node.getLabel());
-            labeledNode.center(node.getPosition());
+            GraphNode node = graph.node(i);
+            LabeledNode labeledNode = new LabeledNode(node.label());
+            labeledNode.center(node.position());
             scene.add(labeledNode);
             labeledNodes[i] = labeledNode;
         }
@@ -136,7 +136,7 @@ public class GraphVisualizer
 
     public void setNodeColor(String label, String color, int sleepMilliSeconds)
     {
-        setNodeColor(graph.getNodeIndex(label), color, sleepMilliSeconds);
+        setNodeColor(graph.nodeIndex(label), color, sleepMilliSeconds);
     }
 
     public void setNodeColor(String label, String color)

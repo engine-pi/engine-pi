@@ -163,8 +163,7 @@ public final class CoordinateSystemDrawer
         g.translate(width / 2, height / 2);
         pixelPerMeter = camera.meter();
         g.rotate(Math.toRadians(rotation), 0, 0);
-        g.translate(-center.getX() * pixelPerMeter,
-                center.getY() * pixelPerMeter);
+        g.translate(-center.x() * pixelPerMeter, center.y() * pixelPerMeter);
         if (config.linesNMeter() > 0)
         {
             gridSizeInMeters = config.linesNMeter();
@@ -336,13 +335,12 @@ public final class CoordinateSystemDrawer
     private void drawVerticalCoordinateLabels()
     {
         // y-Werte am linken Rand
-        drawOneLineVerticalCoordinateLabels(
-                center.getX() - getHalfWidthInMeter());
+        drawOneLineVerticalCoordinateLabels(center.x() - getHalfWidthInMeter());
         // y-Werte an der y-Achse
         drawOneLineVerticalCoordinateLabels(0);
         // y-Werte am rechten Rand
         drawOneLineVerticalCoordinateLabels(
-                center.getX() + getHalfWidthInMeter() - getWidthInMeter(0.04));
+                center.x() + getHalfWidthInMeter() - getWidthInMeter(0.04));
     }
 
     /**
@@ -364,12 +362,12 @@ public final class CoordinateSystemDrawer
     private void drawHorizontalCoordinateLabels()
     {
         // x-Werte am unteren Rand
-        drawOneLineHorizontalCoordinateLabels(center.getY()
-                - getHalfHeightInMeter() + getHeightInMeter(0.02));
+        drawOneLineHorizontalCoordinateLabels(
+                center.y() - getHalfHeightInMeter() + getHeightInMeter(0.02));
         // x-Werte an der x-Achse
         drawOneLineHorizontalCoordinateLabels(0);
         // x-Werte am oberen Rand
-        drawOneLineHorizontalCoordinateLabels((center.getY()
+        drawOneLineHorizontalCoordinateLabels((center.y()
                 + (getHalfHeightInMeter() - getHeightInMeter(0.04))));
     }
 
@@ -383,8 +381,8 @@ public final class CoordinateSystemDrawer
     {
         if (gridSizeInMeters > 0 && gridSizeInMeters < GRID_SIZE_METER_LIMIT)
         {
-            startX = calculateStartLinePosition(center.getX());
-            startY = calculateStartLinePosition(-1 * center.getY());
+            startX = calculateStartLinePosition(center.x());
+            startY = calculateStartLinePosition(-1 * center.y());
             stopX = calculateStopLinePosition(startX);
             stopY = calculateStopLinePosition(startY);
             // Setzen der Schriftart.

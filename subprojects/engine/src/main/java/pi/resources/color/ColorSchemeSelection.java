@@ -56,49 +56,49 @@ public enum ColorSchemeSelection
     JAVA(new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)// Sekundärfarben
     // Orange passt nicht in das Schema, viel zu hell.
     // .setOrange(Color.ORANGE)
-            .setGreen(Color.GREEN)// Tertiärfarben
-            .setBlueGreen(Color.CYAN)// Pink passt nicht in das Schema.
+            .green(Color.GREEN)// Tertiärfarben
+            .blueGreen(Color.CYAN)// Pink passt nicht in das Schema.
             // .setRedPurple(Color.PINK)
-            .setRedPurple(Color.MAGENTA)// Andere
-            .setGray(Color.GRAY)),
+            .redPurple(Color.MAGENTA)// Andere
+            .gray(Color.GRAY)),
     /**
      * Ein Farbschema nach den Farben des <a href=
      * "https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors">Android
      * Material-Designs </a>.
      */
     ANDROID(new ColorScheme()// Yellow 500
-            .setYellow("#FFEB3B")// Amber 500
-            .setYellowOrange("#FFC107")// Orange 500
-            .setOrange("#FF9800")// Deep Orange 500
-            .setRedOrange("#FF5722")// Red 500
-            .setRed("#F44336")// Pink 500
-            .setRedPurple("#E91E63")// Purple 500
-            .setPurple("#9C27B0")// Deep Purple 500
-            .setBluePurple("#673AB7")// Blue 500
-            .setBlue("#2196F3")// Teal 500
-            .setBlueGreen("#009688")// Green 500
-            .setGreen("#4CAF50")// Lime 500
-            .setYellowGreen("#CDDC39")// Brown 500
-            .setBrown("#795548")// Gray 500
-            .setGray("#9E9E9E")),
+            .yellow("#FFEB3B")// Amber 500
+            .yellowOrange("#FFC107")// Orange 500
+            .orange("#FF9800")// Deep Orange 500
+            .redOrange("#FF5722")// Red 500
+            .red("#F44336")// Pink 500
+            .redPurple("#E91E63")// Purple 500
+            .purple("#9C27B0")// Deep Purple 500
+            .bluePurple("#673AB7")// Blue 500
+            .blue("#2196F3")// Teal 500
+            .blueGreen("#009688")// Green 500
+            .green("#4CAF50")// Lime 500
+            .yellowGreen("#CDDC39")// Brown 500
+            .brown("#795548")// Gray 500
+            .gray("#9E9E9E")),
     /**
      * Ein Farbschema nach den Farben der <a href=
      * "https://developer.apple.com/design/human-interface-guidelines/color">IOS
      * Human Interface Guidelines</a> von Apple.
      */
     IOS(new ColorScheme()// Yellow Default (Light)
-            .setYellow(255, 204, 0)// Orange Accessible (Dark)
-            .setYellowOrange(255, 179, 64)// Orange Default (Light)
-            .setOrange(255, 149, 0)// Red Default (Light)
-            .setRed(255, 59, 48)// Pink Default (Light)
-            .setRedPurple(255, 45, 85)// Purple Default (Light)
-            .setPurple(175, 82, 222)// Indigo Default (Light)
-            .setBluePurple(88, 86, 214)// Blue Default (Light)
-            .setBlue(0, 122, 255)// Teal Default (Light)
-            .setBlueGreen(48, 176, 199)// Green Default (Light)
-            .setGreen(52, 199, 89)// Brown Default (Light)
-            .setBrown(162, 132, 94)// systemGray Default (Light)
-            .setGray(142, 142, 147));
+            .yellow(255, 204, 0)// Orange Accessible (Dark)
+            .yellowOrange(255, 179, 64)// Orange Default (Light)
+            .orange(255, 149, 0)// Red Default (Light)
+            .red(255, 59, 48)// Pink Default (Light)
+            .redPurple(255, 45, 85)// Purple Default (Light)
+            .purple(175, 82, 222)// Indigo Default (Light)
+            .bluePurple(88, 86, 214)// Blue Default (Light)
+            .blue(0, 122, 255)// Teal Default (Light)
+            .blueGreen(48, 176, 199)// Green Default (Light)
+            .green(52, 199, 89)// Brown Default (Light)
+            .brown(162, 132, 94)// systemGray Default (Light)
+            .gray(142, 142, 147));
 
     private ColorScheme scheme;
 

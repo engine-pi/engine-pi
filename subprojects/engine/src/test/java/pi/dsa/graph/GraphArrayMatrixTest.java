@@ -25,7 +25,7 @@ public class GraphArrayMatrixTest
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
-        assertEquals(2, g.getNodeCount());
+        assertEquals(2, g.nodeCount());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class GraphArrayMatrixTest
         g.addNode("E", 4, 4);
         // Matrix wird vergrößert
         g.addNode("F", 5, 5);
-        assertEquals(g.getNodeCount(), 6);
+        assertEquals(g.nodeCount(), 6);
     }
 
     @Test
@@ -99,8 +99,8 @@ public class GraphArrayMatrixTest
         EdgesOfNodePair AB = all.get(0);
         GraphNode[] nodes = AB.getNodes();
         // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
-        assertEquals("A", nodes[0].getLabel());
-        assertEquals("B", nodes[1].getLabel());
+        assertEquals("A", nodes[0].label());
+        assertEquals("B", nodes[1].label());
         assertEquals(10, AB.getWeight());
         assertTrue(AB.isDirected());
 
@@ -108,8 +108,8 @@ public class GraphArrayMatrixTest
         EdgesOfNodePair AC = all.get(1);
         nodes = AC.getNodes();
         // Muss sortiert sein, obwohl anders in die Matrix eingefügt.
-        assertEquals("A", nodes[0].getLabel());
-        assertEquals("C", nodes[1].getLabel());
+        assertEquals("A", nodes[0].label());
+        assertEquals("C", nodes[1].label());
         assertEquals(1, AC.getWeight());
         assertFalse(AC.isDirected());
     }

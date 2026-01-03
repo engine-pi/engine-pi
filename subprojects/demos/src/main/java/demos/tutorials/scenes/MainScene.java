@@ -110,7 +110,7 @@ public class MainScene extends Scene implements KeyStrokeListener
             @Override
             public void onFrameUpdate(double pastTime)
             {
-                if (contains(Game.getMousePosition()))
+                if (contains(Game.mousePosition()))
                 {
                     color("blue");
                 }

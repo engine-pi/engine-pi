@@ -26,6 +26,8 @@ import pi.Game;
 import pi.Resources;
 import pi.Scene;
 import pi.Text;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Beschreibt ein <b>Farbschema</b>.
@@ -291,7 +293,8 @@ public class ColorScheme
      *
      * @return Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) .
      */
-    public Color getYellow()
+    @Getter
+    public Color yellow()
     {
         return yellow;
     }
@@ -305,7 +308,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellow(Color yellow)
+    @Setter
+    public ColorScheme yellow(Color yellow)
     {
         this.yellow = yellow;
         return this;
@@ -325,7 +329,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellow(int r, int g, int b)
+    @Setter
+    public ColorScheme yellow(int r, int g, int b)
     {
         yellow = new Color(r, g, b);
         return this;
@@ -342,7 +347,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellow(String yellow)
+    @Setter
+    public ColorScheme yellow(String yellow)
     {
         this.yellow = decode(yellow);
         return this;
@@ -355,11 +361,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
      *     orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      */
-    public Color getYellowOrange()
+    @Getter
+    public Color yellowOrange()
     {
         if (yellowOrange == null)
         {
-            yellowOrange = mix(getYellow(), getOrange());
+            yellowOrange = mix(yellow(), orange());
         }
         return yellowOrange;
     }
@@ -375,7 +382,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowOrange(Color yellowOrange)
+    @Setter
+    public ColorScheme yellowOrange(Color yellowOrange)
     {
         this.yellowOrange = yellowOrange;
         return this;
@@ -396,7 +404,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowOrange(int r, int g, int b)
+    @Setter
+    public ColorScheme yellowOrange(int r, int g, int b)
     {
         yellowOrange = new Color(r, g, b);
         return this;
@@ -415,7 +424,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowOrange(String yellowOrange)
+    @Setter
+    public ColorScheme yellowOrange(String yellowOrange)
     {
         this.yellowOrange = decode(yellowOrange);
         return this;
@@ -431,11 +441,12 @@ public class ColorScheme
      * @return Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
      *     Mischung aus <b>Gelb</b> und <b>Rot</b>).
      */
-    public Color getOrange()
+    @Getter
+    public Color orange()
     {
         if (orange == null)
         {
-            orange = mix(getYellow(), getRed());
+            orange = mix(yellow(), red());
         }
         return orange;
     }
@@ -451,7 +462,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setOrange(Color orange)
+    @Setter
+    public ColorScheme orange(Color orange)
     {
         this.orange = orange;
         return this;
@@ -472,7 +484,7 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setOrange(int r, int g, int b)
+    public ColorScheme orange(int r, int g, int b)
     {
         orange = new Color(r, g, b);
         return this;
@@ -491,7 +503,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setOrange(String orange)
+    @Setter
+    public ColorScheme orange(String orange)
     {
         this.orange = decode(orange);
         return this;
@@ -504,11 +517,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red orange</b>,
      *     Mischung aus <b>Orange</b> und <b>Rot</b>).
      */
-    public Color getRedOrange()
+    @Getter
+    public Color redOrange()
     {
         if (redOrange == null)
         {
-            redOrange = mix(getOrange(), getRed());
+            redOrange = mix(orange(), red());
         }
         return redOrange;
     }
@@ -524,7 +538,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedOrange(Color redOrange)
+    @Setter
+    public ColorScheme redOrange(Color redOrange)
     {
         this.redOrange = redOrange;
         return this;
@@ -545,7 +560,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedOrange(int r, int g, int b)
+    @Setter
+    public ColorScheme redOrange(int r, int g, int b)
     {
         redOrange = new Color(r, g, b);
         return this;
@@ -564,7 +580,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedOrange(String redOrange)
+    @Setter
+    public ColorScheme redOrange(String redOrange)
     {
         this.redOrange = decode(redOrange);
         return this;
@@ -575,7 +592,8 @@ public class ColorScheme
      *
      * @return Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      */
-    public Color getRed()
+    @Getter
+    public Color red()
     {
         return red;
     }
@@ -589,7 +607,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRed(Color red)
+    @Setter
+    public ColorScheme red(Color red)
     {
         this.red = red;
         return this;
@@ -609,7 +628,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRed(int r, int g, int b)
+    @Setter
+    public ColorScheme red(int r, int g, int b)
     {
         red = new Color(r, g, b);
         return this;
@@ -626,7 +646,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRed(String red)
+    @Setter
+    public ColorScheme red(String red)
     {
         this.red = decode(red);
         return this;
@@ -639,11 +660,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
      *     Mischung aus <b>Rot</b> und <b>Violett</b>).
      */
-    public Color getRedPurple()
+    @Getter
+    public Color redPurple()
     {
         if (redPurple == null)
         {
-            redPurple = mix(getRed(), getPurple());
+            redPurple = mix(red(), purple());
         }
         return redPurple;
     }
@@ -659,7 +681,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedPurple(Color redPurple)
+    @Setter
+    public ColorScheme redPurple(Color redPurple)
     {
         this.redPurple = redPurple;
         return this;
@@ -680,7 +703,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedPurple(int r, int g, int b)
+    @Setter
+    public ColorScheme redPurple(int r, int g, int b)
     {
         redPurple = new Color(r, g, b);
         return this;
@@ -699,7 +723,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setRedPurple(String redPurple)
+    @Setter
+    public ColorScheme redPurple(String redPurple)
     {
         this.redPurple = decode(redPurple);
         return this;
@@ -715,11 +740,12 @@ public class ColorScheme
      * @return Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
      *     Mischung aus <b>Rot</b> und <b>Blau</b>).
      */
-    public Color getPurple()
+    @Getter
+    public Color purple()
     {
         if (purple == null)
         {
-            return purple = mix(getRed(), getBlue());
+            return purple = mix(red(), blue());
         }
         return purple;
     }
@@ -735,7 +761,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setPurple(Color purple)
+    @Setter
+    public ColorScheme purple(Color purple)
     {
         this.purple = purple;
         return this;
@@ -756,7 +783,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setPurple(int r, int g, int b)
+    @Setter
+    public ColorScheme purple(int r, int g, int b)
     {
         purple = new Color(r, g, b);
         return this;
@@ -775,7 +803,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setPurple(String purple)
+    @Setter
+    public ColorScheme purple(String purple)
     {
         this.purple = decode(purple);
         return this;
@@ -788,11 +817,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
      *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
      */
-    public Color getBluePurple()
+    @Getter
+    public Color bluePurple()
     {
         if (bluePurple == null)
         {
-            bluePurple = mix(getPurple(), getBlue());
+            bluePurple = mix(purple(), blue());
         }
         return bluePurple;
     }
@@ -808,7 +838,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBluePurple(Color bluePurple)
+    @Setter
+    public ColorScheme bluePurple(Color bluePurple)
     {
         this.bluePurple = bluePurple;
         return this;
@@ -829,7 +860,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBluePurple(int r, int g, int b)
+    @Setter
+    public ColorScheme bluePurple(int r, int g, int b)
     {
         bluePurple = new Color(r, g, b);
         return this;
@@ -848,7 +880,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBluePurple(String bluePurple)
+    @Setter
+    public ColorScheme bluePurple(String bluePurple)
     {
         this.bluePurple = decode(bluePurple);
         return this;
@@ -859,7 +892,8 @@ public class ColorScheme
      *
      * @return Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      */
-    public Color getBlue()
+    @Getter
+    public Color blue()
     {
         return blue;
     }
@@ -873,7 +907,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlue(Color blue)
+    @Setter
+    public ColorScheme blue(Color blue)
     {
         this.blue = blue;
         return this;
@@ -893,7 +928,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlue(int r, int g, int b)
+    @Setter
+    public ColorScheme blue(int r, int g, int b)
     {
         blue = new Color(r, g, b);
         return this;
@@ -910,7 +946,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlue(String blue)
+    @Setter
+    public ColorScheme blue(String blue)
     {
         this.blue = decode(blue);
         return this;
@@ -923,11 +960,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue green</b>,
      *     Mischung aus <b>Blau</b> und <b>Grün</b>).
      */
-    public Color getBlueGreen()
+    @Getter
+    public Color blueGreen()
     {
         if (blueGreen == null)
         {
-            blueGreen = mix(getBlue(), getGreen());
+            blueGreen = mix(blue(), green());
         }
         return blueGreen;
     }
@@ -943,7 +981,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlueGreen(Color blueGreen)
+    @Setter
+    public ColorScheme blueGreen(Color blueGreen)
     {
         this.blueGreen = blueGreen;
         return this;
@@ -964,7 +1003,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlueGreen(int r, int g, int b)
+    @Setter
+    public ColorScheme blueGreen(int r, int g, int b)
     {
         blueGreen = new Color(r, g, b);
         return this;
@@ -983,7 +1023,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlueGreen(String blueGreen)
+    @Setter
+    public ColorScheme blueGreen(String blueGreen)
     {
         this.blueGreen = decode(blueGreen);
         return this;
@@ -996,11 +1037,12 @@ public class ColorScheme
      * @return Die Sekundärfarbe <b>Grün</b> (englisch: <b>green</b>, Mischung
      *     aus <b>Gelb</b> und <b>Blau</b>).
      */
-    public Color getGreen()
+    @Getter
+    public Color green()
     {
         if (green == null)
         {
-            green = mix(getYellow(), getBlue());
+            green = mix(yellow(), blue());
         }
         return green;
     }
@@ -1016,7 +1058,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGreen(Color green)
+    @Setter
+    public ColorScheme green(Color green)
     {
         this.green = green;
         return this;
@@ -1036,7 +1079,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGreen(int r, int g, int b)
+    @Setter
+    public ColorScheme green(int r, int g, int b)
     {
         green = new Color(r, g, b);
         return this;
@@ -1053,7 +1097,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGreen(String green)
+    @Setter
+    public ColorScheme green(String green)
     {
         this.green = decode(green);
         return this;
@@ -1066,11 +1111,12 @@ public class ColorScheme
      * @return Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow green</b>,
      *     Mischung aus <b>Gelb</b> und <b>Grün</b>).
      */
-    public Color getYellowGreen()
+    @Getter
+    public Color yellowGreen()
     {
         if (yellowGreen == null)
         {
-            yellowGreen = mix(getYellow(), getGreen());
+            yellowGreen = mix(yellow(), green());
         }
         return yellowGreen;
     }
@@ -1086,7 +1132,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowGreen(Color yellowGreen)
+    @Setter
+    public ColorScheme yellowGreen(Color yellowGreen)
     {
         this.yellowGreen = yellowGreen;
         return this;
@@ -1107,7 +1154,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowGreen(int r, int g, int b)
+    @Setter
+    public ColorScheme yellowGreen(int r, int g, int b)
     {
         yellowGreen = new Color(r, g, b);
         return this;
@@ -1126,7 +1174,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setYellowGreen(String yellowGreen)
+    @Setter
+    public ColorScheme yellowGreen(String yellowGreen)
     {
         this.yellowGreen = decode(yellowGreen);
         return this;
@@ -1145,11 +1194,12 @@ public class ColorScheme
      *
      * @return Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      */
-    public Color getBrown()
+    @Getter
+    public Color brown()
     {
         if (brown == null)
         {
-            brown = mix(getRed(), getGreen(), 0.35);
+            brown = mix(red(), green(), 0.35);
         }
         return brown;
     }
@@ -1163,7 +1213,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBrown(Color brown)
+    @Setter
+    public ColorScheme brown(Color brown)
     {
         this.brown = brown;
         return this;
@@ -1183,7 +1234,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBrown(int r, int g, int b)
+    @Setter
+    public ColorScheme brown(int r, int g, int b)
     {
         brown = new Color(r, g, b);
         return this;
@@ -1200,7 +1252,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBrown(String brown)
+    @Setter
+    public ColorScheme brown(String brown)
     {
         this.brown = decode(brown);
         return this;
@@ -1211,7 +1264,8 @@ public class ColorScheme
      *
      * @return Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      */
-    public Color getWhite()
+    @Getter
+    public Color white()
     {
         return white;
     }
@@ -1225,7 +1279,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setWhite(Color white)
+    @Setter
+    public ColorScheme white(Color white)
     {
         this.white = white;
         return this;
@@ -1245,7 +1300,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setWhite(int r, int g, int b)
+    @Setter
+    public ColorScheme white(int r, int g, int b)
     {
         white = new Color(r, g, b);
         return this;
@@ -1262,7 +1318,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setWhite(String white)
+    @Setter
+    public ColorScheme white(String white)
     {
         this.white = decode(white);
         return this;
@@ -1273,7 +1330,8 @@ public class ColorScheme
      *
      * @return Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
      */
-    public Color getGray()
+    @Getter
+    public Color gray()
     {
         return gray;
     }
@@ -1287,7 +1345,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGray(Color gray)
+    @Setter
+    public ColorScheme gray(Color gray)
     {
         this.gray = gray;
         return this;
@@ -1307,7 +1366,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGray(int r, int g, int b)
+    @Setter
+    public ColorScheme gray(int r, int g, int b)
     {
         gray = new Color(r, g, b);
         return this;
@@ -1324,7 +1384,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setGray(String gray)
+    @Setter
+    public ColorScheme gray(String gray)
     {
         this.gray = decode(gray);
         return this;
@@ -1335,7 +1396,8 @@ public class ColorScheme
      *
      * @return Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      */
-    public Color getBlack()
+    @Getter
+    public Color black()
     {
         return black;
     }
@@ -1349,7 +1411,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlack(Color black)
+    @Setter
+    public ColorScheme black(Color black)
     {
         this.black = black;
         return this;
@@ -1369,7 +1432,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlack(int r, int g, int b)
+    @Setter
+    public ColorScheme black(int r, int g, int b)
     {
         black = new Color(r, g, b);
         return this;
@@ -1386,7 +1450,8 @@ public class ColorScheme
      *     Punktschreibweise hintereinander geschrieben werden können, z. B.
      *     {@code scheme.setGreen(..).setBlue(..)}.
      */
-    public ColorScheme setBlack(String black)
+    @Setter
+    public ColorScheme black(String black)
     {
         this.black = decode(black);
         return this;
@@ -1414,12 +1479,12 @@ public class ColorScheme
      * @return Die zwölf Farben des Farbkreises von Itten in der richtigen
      *     Reihenfolge.
      */
-    public Color[] getWheelColors()
+    @Getter
+    public Color[] wheelColors()
     {
-        return new Color[] { getYellow(), getYellowOrange(), getOrange(),
-                getRedOrange(), getRed(), getRedPurple(), getPurple(),
-                getBluePurple(), getBlue(), getBlueGreen(), getGreen(),
-                getYellowGreen() };
+        return new Color[] { yellow(), yellowOrange(), orange(), redOrange(),
+                red(), redPurple(), purple(), bluePurple(), blue(), blueGreen(),
+                green(), yellowGreen() };
     }
 
     /**
@@ -1428,9 +1493,10 @@ public class ColorScheme
      *
      * @return Die drei Primärfarben des Farbkreises.
      */
-    public Color[] getPrimaryColors()
+    @Getter
+    public Color[] primaryColors()
     {
-        return new Color[] { getYellow(), getRed(), getBlue() };
+        return new Color[] { yellow(), red(), blue() };
     }
 
     /**
@@ -1439,9 +1505,10 @@ public class ColorScheme
      *
      * @return Die drei Sekundärfarben des Farbkreises.
      */
-    public Color[] getSecondaryColors()
+    @Getter
+    public Color[] secondaryColors()
     {
-        return new Color[] { getOrange(), getPurple(), getGreen() };
+        return new Color[] { orange(), purple(), green() };
     }
 
     /**
@@ -1451,9 +1518,10 @@ public class ColorScheme
      * @return Die vier <b>zusätzlichen</b> Farben <b>Braun</b>, <b>Weiß</b>,
      *     <b>Grau</b> und <b>Schwarz</b>.
      */
-    public Color[] getExtraColors()
+    @Getter
+    public Color[] extraColors()
     {
-        return new Color[] { getBrown(), getWhite(), getGray(), getBlack() };
+        return new Color[] { brown(), white(), gray(), black() };
     }
 
     public static void main(String[] args)

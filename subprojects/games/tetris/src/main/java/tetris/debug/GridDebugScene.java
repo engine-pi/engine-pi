@@ -327,8 +327,8 @@ public class GridDebugScene extends BaseScene
     {
         // Markiert eine Zeile über der sich die Maus befindet. Diese kann dann
         // durch einen Link-Klick getilgt werden.
-        Vector position = Game.getMousePosition();
-        ROW_OVERLAY.y((int) position.getY());
+        Vector position = Game.mousePosition();
+        ROW_OVERLAY.y((int) position.y());
         // Markiert die Zeilen, die getilgt werden können.
         if (range != null && showRangeOverlay)
         {
@@ -349,7 +349,7 @@ public class GridDebugScene extends BaseScene
         // nicht - getilgt werden.
         if (button == MouseButton.LEFT)
         {
-            GRID.clearRow((int) position.getY());
+            GRID.clearRow((int) position.y());
         }
     }
 

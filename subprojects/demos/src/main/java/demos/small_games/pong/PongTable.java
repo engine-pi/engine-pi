@@ -145,7 +145,7 @@ public class PongTable extends Scene
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        double x = ball.center().getX();
+        double x = ball.center().x();
         if (x < bounds.xLeft())
         {
             left.increaseScore();

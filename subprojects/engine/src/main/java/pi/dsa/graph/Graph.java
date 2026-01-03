@@ -20,6 +20,8 @@ package pi.dsa.graph;
 
 import java.util.ArrayList;
 
+import pi.annotations.Getter;
+
 /**
  * Ein <b>Graph</b>.
  *
@@ -63,12 +65,12 @@ public abstract class Graph
      */
     public void importGraph(Graph graph)
     {
-        for (GraphNode node : graph.getNodes())
+        for (GraphNode node : graph.Nodes())
         {
             addNode(node);
         }
 
-        for (GraphEdge edge : graph.getEdges())
+        for (GraphEdge edge : graph.edges())
         {
             addEdge(edge);
         }
@@ -79,7 +81,8 @@ public abstract class Graph
      *
      * @return Die <b>Anzahl der Knoten</b>.
      */
-    public int getNodeCount()
+    @Getter
+    public int nodeCount()
     {
         return nodes.size();
     }
@@ -89,7 +92,8 @@ public abstract class Graph
      *
      * @return Die <b>Anzahl der Kanten</b>.
      */
-    public int getEdgeCount()
+    @Getter
+    public int edgeCount()
     {
         return edges.size();
     }
@@ -105,11 +109,12 @@ public abstract class Graph
      * @throws RuntimeException Falls kein Knoten über den gegeben Bezeichner
      *     gefunden werden konnte.
      */
-    public int getNodeIndex(String label)
+    @Getter
+    public int nodeIndex(String label)
     {
         for (int i = 0; i < nodes.size(); i++)
         {
-            if (nodes.get(i).getLabel().equals(label))
+            if (nodes.get(i).label().equals(label))
             {
                 return i;
             }
@@ -122,9 +127,10 @@ public abstract class Graph
     /**
      * @since 0.37.0
      */
-    public int getNodeIndex(GraphNode node)
+    @Getter
+    public int nodeIndex(GraphNode node)
     {
-        return getNodeIndex(node.getLabel());
+        return nodeIndex(node.label());
     }
 
     /**
@@ -136,12 +142,13 @@ public abstract class Graph
      * @return Die Indexnummer des Knotens im Knotenarray;
      *     {@code 0 &lt;= x &lt;= anzahl-1} bzw. {@code -1}
      */
-    public int getNodeIndexSafe(String label)
+    @Getter
+    public int nodeIndexSafe(String label)
     {
         int index = -1;
         try
         {
-            index = getNodeIndex(label);
+            index = nodeIndex(label);
         }
         catch (Exception e)
         {
@@ -150,12 +157,14 @@ public abstract class Graph
         return index;
     }
 
-    public GraphNode getNode(String label)
+    @Getter
+    public GraphNode node(String label)
     {
-        return nodes.get(getNodeIndex(label));
+        return nodes.get(nodeIndex(label));
     }
 
-    public GraphNode getNode(int index)
+    @Getter
+    public GraphNode node(int index)
     {
         return nodes.get(index);
     }
@@ -169,9 +178,10 @@ public abstract class Graph
      *
      * @return Der Bezeichner des Knoten.
      */
-    public String getNodeLabel(int index)
+    @Getter
+    public String nodeLabel(int index)
     {
-        return nodes.get(index).getLabel();
+        return nodes.get(index).label();
     }
 
     /**
@@ -206,7 +216,7 @@ public abstract class Graph
     public void addNode(String label, double x, double y)
     {
 
-        if (getNodeIndexSafe(label) > -1)
+        if (nodeIndexSafe(label) > -1)
         {
             throw new RuntimeException("Ein Knoten mit der Bezeichnung " + label
                     + " existiert bereits.");
@@ -241,7 +251,7 @@ public abstract class Graph
      */
     public void addNode(GraphNode node)
     {
-        addNode(node.getLabel(), node.getX(), node.getY());
+        addNode(node.label(), node.x(), node.y());
     }
 
     /**
@@ -275,7 +285,7 @@ public abstract class Graph
      */
     public void addEdge(String from, String to, int weight, boolean directed)
     {
-        edges.add(new GraphEdge(getNode(from), getNode(to), weight, directed));
+        edges.add(new GraphEdge(node(from), node(to), weight, directed));
         addEdgeIntoDataStructure(from, to, weight, directed);
     }
 
@@ -314,11 +324,12 @@ public abstract class Graph
 
     public void addEdge(GraphEdge edge)
     {
-        addEdge(edge.getFrom().getLabel(), edge.getTo().getLabel(),
-                edge.getWeight(), edge.isDirected());
+        addEdge(edge.getFrom().label(), edge.getTo().label(), edge.getWeight(),
+                edge.isDirected());
     }
 
-    public ArrayList<GraphNode> getNodes()
+    @Getter
+    public ArrayList<GraphNode> Nodes()
     {
         return nodes;
     }
@@ -333,7 +344,8 @@ public abstract class Graph
      * @throws IndexOutOfBoundsException wenn der Index außerhalb des gültigen
      *     Bereichs liegt
      */
-    public GraphEdge getEdge(int index)
+    @Getter
+    public GraphEdge edge(int index)
     {
         return edges.get(index);
     }
@@ -343,7 +355,8 @@ public abstract class Graph
      *
      * @return Die Liste aller Kanten dieses Graphen.
      */
-    public ArrayList<GraphEdge> getEdges()
+    @Getter
+    public ArrayList<GraphEdge> edges()
     {
         return edges;
     }
@@ -357,19 +370,19 @@ public abstract class Graph
     public String generateJavaCode()
     {
         ArrayList<String> lines = new ArrayList<>();
-        if (getNodeCount() > 0)
+        if (nodeCount() > 0)
         {
             lines.add("// Anlegen der Knoten");
 
-            for (GraphNode node : getNodes())
+            for (GraphNode node : Nodes())
             {
                 lines.add(node.generateJavaCode());
             }
         }
-        if (getEdgeCount() > 0)
+        if (edgeCount() > 0)
         {
             lines.add("// Anlegen der Kanten");
-            for (GraphEdge edge : getEdges())
+            for (GraphEdge edge : edges())
             {
                 lines.add(edge.generateJavaCode());
             }

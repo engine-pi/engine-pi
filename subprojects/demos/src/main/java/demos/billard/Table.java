@@ -74,9 +74,9 @@ public class Table
     {
         Hole hole;
         CollisionListener<Actor> collisionListener = (collisionEvent) -> {
-            if (collisionEvent.getColliding() instanceof Ball)
+            if (collisionEvent.colliding() instanceof Ball)
             {
-                collisionEvent.getColliding().remove();
+                collisionEvent.colliding().remove();
             }
         };
         // top left

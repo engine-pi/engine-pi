@@ -111,8 +111,8 @@ public class DudeDemo extends Scene
         middleBackground.parallaxPosition(0.1, 0.1);
         middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
-        backgroundImage.position(-visibleArea(Game.getWindowSize()).width() / 2,
-                -visibleArea(Game.getWindowSize()).height() / 2);
+        backgroundImage.position(-visibleArea(Game.windowSize()).width() / 2,
+                -visibleArea(Game.windowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
         furtherBackground.layerPosition(-300);
@@ -142,7 +142,7 @@ public class DudeDemo extends Scene
             cloudTiles.setTile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.position(xOffset,
-                -visibleArea(Game.getWindowSize()).height() / 2 + 5);
+                -visibleArea(Game.windowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
     }

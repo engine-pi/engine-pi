@@ -114,7 +114,7 @@ public class TetrominoDebugScene extends Scene implements KeyStrokeListener
     public static void start(boolean debug)
     {
         // Muss vorher gesetzt werden
-        Game.setDebug(debug);
+        Game.debug(debug);
         Tetris.start(new TetrominoDebugScene(), debug);
     }
 

@@ -71,9 +71,9 @@ public class PaintingCirclesAdvancedDemo extends Scene
     @Override
     public void onMouseDown(Vector position, MouseButton mouseButton)
     {
-        if (position.getY() < 5)
+        if (position.y() < 5)
         {
-            paintCircleAt(position.getX(), position.getY(), activeDiameter,
+            paintCircleAt(position.x(), position.y(), activeDiameter,
                     activeColor);
         }
     }

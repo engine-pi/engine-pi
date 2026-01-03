@@ -12,13 +12,13 @@ public class GraphEdgeTest
     @Test
     void testGetFrom()
     {
-        assertEquals(edge.getFrom().getLabel(), "a");
+        assertEquals(edge.getFrom().label(), "a");
     }
 
     @Test
     void testGetTo()
     {
-        assertEquals(edge.getTo().getLabel(), "b");
+        assertEquals(edge.getTo().label(), "b");
     }
 
     @Test

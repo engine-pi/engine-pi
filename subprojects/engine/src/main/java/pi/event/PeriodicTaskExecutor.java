@@ -21,7 +21,9 @@
 package pi.event;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PeriodicTaskExecutorDemo.java
 
@@ -182,7 +184,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      *     Sekunden.
      */
     @API
-    public double getInterval()
+    @Getter
+    public double interval()
     {
         return interval;
     }
@@ -195,7 +198,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
      *     Setter konfiguriert werden kann.
      */
-    public PeriodicTaskExecutor setRepetitions(int repetitions)
+    @Setter
+    public PeriodicTaskExecutor repetitions(int repetitions)
     {
         this.repetitions = repetitions;
         return this;
@@ -206,7 +210,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      *
      * @return Die <b>Anzahl an Wiederholungen</b> der Aufgabe.
      */
-    public int getRepetitions()
+    @Getter
+    public int repetitions()
     {
         return repetitions;
     }
@@ -219,7 +224,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
      *     Setter konfiguriert werden kann.
      */
-    public PeriodicTaskExecutor setTask(PeriodicTask task)
+    @Setter
+    public PeriodicTaskExecutor task(PeriodicTask task)
     {
         this.task = task;
         return this;
@@ -230,7 +236,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      *
      * @return Die <b>Aufgabe</b>, die regelmäßig ausgeführt wird.
      */
-    public PeriodicTask getTask()
+    @Getter
+    public PeriodicTask task()
     {
         return task;
     }
@@ -244,7 +251,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
      *     Setter konfiguriert werden kann.
      */
-    public PeriodicTaskExecutor setFinalTask(PeriodicTask finalTask)
+    @Setter
+    public PeriodicTaskExecutor finalTask(PeriodicTask finalTask)
     {
         this.finalTask = finalTask;
         return this;
@@ -255,7 +263,8 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      *
      * @return Die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird.
      */
-    public PeriodicTask getFinalTask()
+    @Getter
+    public PeriodicTask finalTask()
     {
         return finalTask;
     }

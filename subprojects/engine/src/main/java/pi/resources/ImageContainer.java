@@ -60,10 +60,9 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         {
             return null;
         }
-        if (Game.getPixelMultiplication() > 1)
+        if (Game.pixelMultiplication() > 1)
         {
-            image = ImageUtil.multiplyPixel(image,
-                    Game.getPixelMultiplication());
+            image = ImageUtil.multiplyPixel(image, Game.pixelMultiplication());
         }
         return ImageUtil.toCompatibleImage(image);
     }
@@ -130,6 +129,6 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, Game.getPixelMultiplication(), fromColors, toColors);
+        return get(name, Game.pixelMultiplication(), fromColors, toColors);
     }
 }

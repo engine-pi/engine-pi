@@ -30,7 +30,7 @@ class EdgesOfNodePair
             throw new RuntimeException(
                     "Die maximale Anzahl an Kanten ist erreicht. Es können nur maximal zwei hinzugefügt werden.");
         }
-        edges.add(new DirectedGraphEdge(graph.getNode(from), graph.getNode(to),
+        edges.add(new DirectedGraphEdge(graph.node(from), graph.node(to),
                 weight));
     }
 
@@ -58,7 +58,7 @@ class EdgesOfNodePair
             return new DirectedGraphEdge[] { edges.get(0) };
         }
 
-        if (getFirstNode().getLabel().equals(edges.get(0).getFrom().getLabel()))
+        if (getFirstNode().label().equals(edges.get(0).from().label()))
         {
             return new DirectedGraphEdge[] { edges.get(0), edges.get(1) };
         }
@@ -74,18 +74,18 @@ class EdgesOfNodePair
     {
         if (edges.size() == 1)
         {
-            return edges.get(0).getWeight();
+            return edges.get(0).weight();
         }
         if (edges.size() == 0)
         {
             throw new RuntimeException("Das Knotenpaar hat keine Kanten");
         }
-        if (edges.get(0).getWeight() != edges.get(1).getWeight())
+        if (edges.get(0).weight() != edges.get(1).weight())
         {
             throw new RuntimeException(
                     "Die zwei gerichteten Kanten haben unterschiedliche Gewichte und können deshalb nicht über diese Methode ermittelt werden.");
         }
-        return edges.get(0).getWeight();
+        return edges.get(0).weight();
     }
 
     /**
@@ -101,9 +101,9 @@ class EdgesOfNodePair
             throw new RuntimeException("Das Knotenpaar hat keine Kanten.");
         }
         DirectedGraphEdge edge = edges.get(0);
-        GraphNode node1 = edge.getFrom();
-        GraphNode node2 = edge.getTo();
-        if (node1.getLabel().compareTo(node2.getLabel()) <= 0)
+        GraphNode node1 = edge.from();
+        GraphNode node2 = edge.to();
+        if (node1.label().compareTo(node2.label()) <= 0)
         {
             return new GraphNode[] { node1, node2 };
         }

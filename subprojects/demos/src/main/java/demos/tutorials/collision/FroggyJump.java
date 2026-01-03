@@ -130,7 +130,7 @@ class Frog extends Image implements FrameUpdateListener
     {
         Vector velocity = this.velocity();
         // A: Die Blickrichtung des Frosches steuern
-        if (velocity.getX() < 0)
+        if (velocity.x() < 0)
         {
             flippedHorizontally(true);
         }
@@ -141,29 +141,29 @@ class Frog extends Image implements FrameUpdateListener
         // B: Horizontale Bewegung steuern
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            if (velocity.getX() > 0)
+            if (velocity.x() > 0)
             {
-                velocity(new Vector(0, velocity.getY()));
+                velocity(new Vector(0, velocity.y()));
             }
             applyForce(Vector.LEFT.multiply(600));
         }
         else if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            if (velocity.getX() < 0)
+            if (velocity.x() < 0)
             {
-                velocity(new Vector(0, velocity.getY()));
+                velocity(new Vector(0, velocity.y()));
             }
             applyForce(Vector.RIGHT.multiply(600));
         }
-        if (Math.abs(velocity.getX()) > MAX_SPEED)
+        if (Math.abs(velocity.x()) > MAX_SPEED)
         {
-            velocity(new Vector(MAX_SPEED * Math.signum(velocity.getX()),
-                    velocity.getY()));
+            velocity(new Vector(MAX_SPEED * Math.signum(velocity.x()),
+                    velocity.y()));
         }
         // C: Wenn möglich den Frosch springen lassen
-        if (isGrounded() && velocity.getY() <= 0 && canJump)
+        if (isGrounded() && velocity.y() <= 0 && canJump)
         {
-            velocity(new Vector(velocity.getX(), 0));
+            velocity(new Vector(velocity.x(), 0));
             applyImpulse(Vector.UP.multiply(180));
         }
     }
@@ -181,18 +181,18 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
-        double frogY = collisionEvent.getColliding().position().getY();
+        double frogY = collisionEvent.colliding().position().y();
         if (frogY < y())
         {
             collisionEvent.ignoreCollision();
-            collisionEvent.getColliding().setJumpEnabled(false);
+            collisionEvent.colliding().setJumpEnabled(false);
         }
     }
 
     @Override
     public void onCollisionEnd(CollisionEvent<Frog> collisionEvent)
     {
-        collisionEvent.getColliding().setJumpEnabled(true);
+        collisionEvent.colliding().setJumpEnabled(true);
     }
 }
 
@@ -240,7 +240,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
-        collisionEvent.getColliding().kill();
+        collisionEvent.colliding().kill();
     }
 
     public static void main(String[] args)

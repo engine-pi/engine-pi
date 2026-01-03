@@ -30,8 +30,8 @@ public class CoordinateSystemTranslatorTest
 
     private void assertVector(Vector vector, int x, int y)
     {
-        assertEquals(vector.getX(), x);
-        assertEquals(vector.getY(), y);
+        assertEquals(vector.x(), x);
+        assertEquals(vector.y(), y);
     }
 
     @Test

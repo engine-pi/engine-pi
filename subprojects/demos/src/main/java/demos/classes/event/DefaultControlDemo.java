@@ -25,8 +25,8 @@ import pi.event.DefaultControl;
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die statischen Methoden {@link pi.Game#getDefaultControl()},
- * {@link pi.Game#setDefaultControl(pi.event.DefaultListener)} und
+ * Demonstriert die statischen Methoden {@link pi.Game#defaultControl()},
+ * {@link pi.Game#defaultControl(pi.event.DefaultListener)} und
  * {@link pi.Game#removeDefaultControl()}.
  */
 public class DefaultControlDemo
@@ -38,9 +38,9 @@ public class DefaultControlDemo
         Game.addKeyStrokeListener((event) -> {
             if (event.getKeyCode() == KeyEvent.VK_SPACE)
             {
-                if (Game.getDefaultControl() == null)
+                if (Game.defaultControl() == null)
                 {
-                    Game.setDefaultControl(new DefaultControl());
+                    Game.defaultControl(new DefaultControl());
                 }
                 else
                 {

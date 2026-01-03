@@ -64,7 +64,7 @@ public class LevelAssembler
             Vector robotPosition = a.translate.toVector(level.getInitItem().row,
                     level.getInitItem().col);
             ImageRobot robot = (ImageRobot) a.getRobot().actor;
-            robot.center(robotPosition.getX(), robotPosition.getY());
+            robot.center(robotPosition.x(), robotPosition.y());
             scene.add(robot);
         }
         catch (Exception e)

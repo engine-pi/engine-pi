@@ -121,6 +121,6 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
     public static void main(String[] args)
     {
         Game.start(new TextAllSystemFonts(), 1020, 520);
-        Game.setTitle("Alle Schriftarten");
+        Game.title("Alle Schriftarten");
     }
 }

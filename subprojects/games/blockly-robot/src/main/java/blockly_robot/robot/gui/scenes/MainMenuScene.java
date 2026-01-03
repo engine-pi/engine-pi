@@ -60,7 +60,7 @@ public class MainMenuScene extends Scene implements WindowScene
                 }
             });
             rectangle.addFrameUpdateListener((deltaSeconds) -> {
-                if (rectangle.contains(Game.getMousePosition()))
+                if (rectangle.contains(Game.mousePosition()))
                 {
                     rectangle.opacity(0.5f);
                 }

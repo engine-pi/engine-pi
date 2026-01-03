@@ -32,7 +32,7 @@ public class SierpinskiTriangle
         double height = 75;
         Triangle triangle = new Triangle(width, height);
         triangle.color("weiß");
-        Scene scene = Game.getStartedActiveScene();
+        Scene scene = Game.startedActiveScene();
         scene.backgroundColor("yellow");
         scene.camera().meter(7);
         scene.camera().focus(triangle);

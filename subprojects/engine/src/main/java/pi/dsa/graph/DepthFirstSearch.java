@@ -53,7 +53,7 @@ public class DepthFirstSearch extends GraphArrayMatrix
     {
         visualizer.setNodeColor(nodeIndex, "orange", 500);
         visited[nodeIndex] = true;
-        for (int i = 0; i < getNodeCount(); i++)
+        for (int i = 0; i < nodeCount(); i++)
         {
             // es gibt eine Kante und deren Zielknoten ist noch nicht besucht
             if (matrix[nodeIndex][i] > 0 && !visited[i])

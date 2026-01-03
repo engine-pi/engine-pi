@@ -156,7 +156,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             // Double Jump!
             didDoubleJump = true;
             gameData.consumeMana(DOUBLE_JUMP_COST);
-            velocity(new Vector(velocity().getX(), 0));
+            velocity(new Vector(velocity().x(), 0));
             applyImpulse(new Vector(0, JUMP_FORCE * 0.8));
             state(PlayerState.JumpingUp);
         }
@@ -218,18 +218,18 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     public void onFrameUpdate(double pastTime)
     {
         Vector velocity = velocity();
-        gameData.setPlayerVelocity(velocity.getLength());
+        gameData.setPlayerVelocity(velocity.length());
         // kümmere dich um die horizontale Bewegung
         double desiredVelocity = horizontalMovement.getTargetXVelocity();
         double impulse;
         if (desiredVelocity == 0)
         {
             impulse = 0;
-            velocity(new Vector(velocity.getX() * 0.95, velocity.getY()));
+            velocity(new Vector(velocity.x() * 0.95, velocity.y()));
         }
         else
         {
-            impulse = (desiredVelocity - velocity.getX()) * 4;
+            impulse = (desiredVelocity - velocity.x()) * 4;
             applyForce(new Vector(impulse, 0));
         }
         if (rocketMode && (gameData.getMana() > 0 || GOD_MODE))
@@ -247,9 +247,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                     new Vector(0.005 * -impulse + (Math.random() - 0.5),
                             -2 * (Math.random())));
             particle.addCollisionListener((e) -> {
-                if (e.getColliding() instanceof Platform)
+                if (e.colliding() instanceof Platform)
                 {
-                    Platform platform = (Platform) e.getColliding();
+                    Platform platform = (Platform) e.colliding();
                     if (ignoredPlatformForCollision.contains(platform))
                     {
                         e.ignoreCollision();
@@ -261,7 +261,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         switch (state())
         {
         case JumpingUp:
-            if (velocity.getY() < 0)
+            if (velocity.y() < 0)
             {
                 state(PlayerState.Midair);
             }
@@ -272,15 +272,15 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         case Walking:
             // if(standing) {
             didDoubleJump = false;
-            if (velocity.getY() > 0.1)
+            if (velocity.y() > 0.1)
             {
                 state(PlayerState.Midair);
             }
-            else if (Math.abs(velocity.getX()) > 5.5)
+            else if (Math.abs(velocity.x()) > 5.5)
             {
                 changeState(PlayerState.Running);
             }
-            else if (Math.abs(velocity.getX()) > .1)
+            else if (Math.abs(velocity.x()) > .1)
             {
                 changeState(PlayerState.Walking);
             }
@@ -399,10 +399,10 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     @Override
     public void onCollision(CollisionEvent<Actor> collisionEvent)
     {
-        if (collisionEvent.getColliding() instanceof Platform)
+        if (collisionEvent.colliding() instanceof Platform)
         {
-            Platform platform = (Platform) collisionEvent.getColliding();
-            if (velocity().getY() > 0
+            Platform platform = (Platform) collisionEvent.colliding();
+            if (velocity().y() > 0
                     || ignoredPlatformForCollision.contains(platform))
             {
                 ignoredPlatformForCollision.add(platform);
@@ -419,7 +419,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             {
                 Vector originalOffset = layer().parent().camera().getOffset();
                 Interpolator<Double> interpolator = new SinusDouble(0,
-                        -0.0004 * velocity().getY());
+                        -0.0004 * velocity().y());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
                         y -> layer().parent().camera()
                                 .offset(originalOffset.add(new Vector(0, y))),
@@ -429,7 +429,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                         .frameUpdateListeners().remove(valueAnimator));
             }
             Vector speed = physicsHandler().velocity();
-            Vector transformedSpeed = Math.abs(speed.getX()) < .1
+            Vector transformedSpeed = Math.abs(speed.x()) < .1
                     ? speed.add(100 * (Math.random() - .5), 0)
                     : speed;
             for (int i = 0; i < 100; i++)
@@ -450,9 +450,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     @Override
     public void onCollisionEnd(CollisionEvent<Actor> collisionEvent)
     {
-        if (collisionEvent.getColliding() instanceof Platform)
+        if (collisionEvent.colliding() instanceof Platform)
         {
-            Platform platform = (Platform) collisionEvent.getColliding();
+            Platform platform = (Platform) collisionEvent.colliding();
             ignoredPlatformForCollision.remove(platform);
         }
     }

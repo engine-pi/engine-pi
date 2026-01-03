@@ -19,6 +19,8 @@
 package pi.dsa.graph;
 
 import pi.Vector;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Stellt einen <b>Knoten</b> in einem Graphen dar.
@@ -80,7 +82,8 @@ public class GraphNode
      *
      * @return Der Bezeichner des Knotens.
      */
-    public String getLabel()
+    @Getter
+    public String label()
     {
         return label;
     }
@@ -90,7 +93,8 @@ public class GraphNode
      *
      * @param label Der Bezeichner des Knotens.
      */
-    public void setLabel(String label)
+    @Setter
+    public void label(String label)
     {
         this.label = label;
     }
@@ -100,7 +104,8 @@ public class GraphNode
      *
      * @return Die <b>x-Koordinate</b> des Knotens in Meter.
      */
-    public double getX()
+    @Getter
+    public double x()
     {
         return x;
     }
@@ -110,12 +115,14 @@ public class GraphNode
      *
      * @return Die <b>y-Koordinate</b> des Knotens in Meter.
      */
-    public double getY()
+    @Getter
+    public double y()
     {
         return y;
     }
 
-    public Vector getPosition()
+    @Getter
+    public Vector position()
     {
         return new Vector(x, y);
     }
@@ -133,7 +140,8 @@ public class GraphNode
      *
      * @return formatierter Bezeichner
      */
-    public String getFormattedLabel(int width)
+    @Getter
+    public String formattedLabel(int width)
     {
         return (label + "               ").substring(0, width);
     }

@@ -15,7 +15,7 @@ import pi.config.DebugConfiguration;
  * <p>
  * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
  * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
- * {@link Game#setDefaultControl(DefaultListener)} neue Kürzel gesetzt werden.
+ * {@link Game#defaultControl(DefaultListener)} neue Kürzel gesetzt werden.
  * </p>
  *
  * <ul>
@@ -35,8 +35,8 @@ import pi.config.DebugConfiguration;
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
  *
- * @see Game#getDefaultControl()
- * @see Game#setDefaultControl(DefaultListener)
+ * @see Game#defaultControl()
+ * @see Game#defaultControl(DefaultListener)
  * @see Game#removeDefaultControl()
  * @see DefaultListener
  *
@@ -52,7 +52,7 @@ public class DefaultControl implements DefaultListener
 
     private Camera getCamera()
     {
-        Scene scene = Game.getActiveScene();
+        Scene scene = Game.activeScene();
         if (scene != null)
         {
             return scene.camera();
@@ -62,7 +62,7 @@ public class DefaultControl implements DefaultListener
 
     private boolean hasNoScene()
     {
-        return Game.getActiveScene() == null;
+        return Game.activeScene() == null;
     }
 
     // Got to
@@ -185,7 +185,7 @@ public class DefaultControl implements DefaultListener
         {
             return;
         }
-        double rotation = event.getPreciseWheelRotation();
+        double rotation = event.preciseWheelRotation();
         double factor = rotation > 0 ? 1 + 0.3 * rotation
                 : 1 / (1 - 0.3 * rotation);
         double newZoom = camera.meter() * factor;

@@ -14,33 +14,33 @@ public class GraphNodeTest
     @Test
     void testGetLabel()
     {
-        assertEquals(node.getLabel(), "test");
+        assertEquals(node.label(), "test");
     }
 
     @Test
     void testGetX()
     {
-        assertEquals(node.getX(), 1.2);
+        assertEquals(node.x(), 1.2);
     }
 
     @Test
     void testGetY()
     {
-        assertEquals(node.getY(), 3.4);
+        assertEquals(node.y(), 3.4);
     }
 
     @Test
     void testGetPosition()
     {
-        Vector pos = node.getPosition();
-        assertEquals(pos.getX(), 1.2);
-        assertEquals(pos.getY(), 3.4);
+        Vector pos = node.position();
+        assertEquals(pos.x(), 1.2);
+        assertEquals(pos.y(), 3.4);
     }
 
     @Test
     void testGetFormattedLabel()
     {
-        assertEquals(node.getFormattedLabel(8), "test    ");
+        assertEquals(node.formattedLabel(8), "test    ");
 
     }
 

@@ -57,8 +57,8 @@ public class NullHandler implements PhysicsHandler
     @Override
     public void moveBy(Vector v)
     {
-        this.physicsData.x(this.physicsData.x() + v.getX());
-        this.physicsData.y(this.physicsData.y() + v.getY());
+        this.physicsData.x(this.physicsData.x() + v.x());
+        this.physicsData.y(this.physicsData.y() + v.y());
     }
 
     @Override

@@ -99,17 +99,16 @@ public class RandomTest
         void test1()
         {
             Vector v = Random.vector(0, 10, 0, 10);
-            assert v.getX() >= 0 && v.getX() <= 10 : "X component out of range";
-            assert v.getY() >= 0 && v.getY() <= 10 : "Y component out of range";
+            assert v.x() >= 0 && v.x() <= 10 : "X component out of range";
+            assert v.y() >= 0 && v.y() <= 10 : "Y component out of range";
         }
 
         @Test
         void test2()
         {
             Vector v = Random.vector(-5, 5, -10, 10);
-            assert v.getX() >= -5 && v.getX() <= 5 : "X component out of range";
-            assert v.getY() >= -10 && v.getY() <= 10
-                    : "Y component out of range";
+            assert v.x() >= -5 && v.x() <= 5 : "X component out of range";
+            assert v.y() >= -10 && v.y() <= 10 : "Y component out of range";
         }
     }
 }

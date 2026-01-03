@@ -95,8 +95,8 @@ public final class FixtureBuilder
     public static FixtureData line(Vector point1, Vector point2)
     {
         EdgeShape edgeShape = new EdgeShape();
-        edgeShape.set(new Vec2((float) point1.getX(), (float) point1.getY()),
-                new Vec2((float) point2.getX(), (float) point2.getY()));
+        edgeShape.set(new Vec2((float) point1.x(), (float) point1.y()),
+                new Vec2((float) point2.x(), (float) point2.y()));
         return new FixtureData(edgeShape);
     }
 

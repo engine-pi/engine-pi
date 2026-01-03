@@ -39,6 +39,6 @@ public class LogoDemo extends Scene
     public static void main(String[] args)
     {
         Game.start(new LogoDemo(), 500, 500);
-        Game.setWindowPosition(2500, 0);
+        Game.windowPosition(2500, 0);
     }
 }

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pi.Game;
+import pi.annotations.Getter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PressedKeyRepeaterDemo.java
 
@@ -98,7 +99,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
         public PressedKeyExecutor(PressedKeyListener action)
         {
             this.action = action;
-            countdown = action.getInitialInterval();
+            countdown = action.initialInterval();
             Game.addKeyStrokeListener(this);
             Game.addFrameUpdateListener(this);
             action.runInitialTask();
@@ -112,7 +113,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
             if (countdown < 0)
             {
                 action.runRepeatedTask();
-                countdown = action.getInterval();
+                countdown = action.interval();
             }
         }
 
@@ -131,7 +132,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
         @Override
         public void onKeyUp(KeyEvent e)
         {
-            if (e.getKeyCode() == action.getKeyCode())
+            if (e.getKeyCode() == action.keyCode())
             {
                 stop();
                 executors.remove(this);
@@ -296,12 +297,14 @@ public class PressedKeyRepeater implements KeyStrokeListener
             this.finalTask = finalTask;
         }
 
-        public int getKeyCode()
+        @Getter
+        public int keyCode()
         {
             return keyCode;
         }
 
-        public double getInterval()
+        @Getter
+        public double interval()
         {
             if (interval == 0)
             {
@@ -331,7 +334,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
             }
         }
 
-        public double getInitialInterval()
+        @Getter
+        public double initialInterval()
         {
             if (initialInterval == 0.0)
             {
@@ -490,7 +494,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     {
         for (PressedKeyListener task : listeners)
         {
-            if (event.getKeyCode() == task.getKeyCode())
+            if (event.getKeyCode() == task.keyCode())
             {
                 executors.add(new PressedKeyExecutor(task));
             }

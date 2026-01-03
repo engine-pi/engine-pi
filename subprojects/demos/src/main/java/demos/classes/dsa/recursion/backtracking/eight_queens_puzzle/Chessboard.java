@@ -61,7 +61,7 @@ public class Chessboard
     public Chessboard(Scene scene, int numberOfSquares)
     {
         doHighlighting = true;
-        Color brown = colorScheme.getBrown();
+        Color brown = colorScheme.brown();
         Color brown2 = changeSaturation(brown, -0.2);
         squares = new Square[numberOfSquares][numberOfSquares];
         queens = new Image[numberOfSquares][numberOfSquares];

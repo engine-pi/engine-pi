@@ -100,7 +100,7 @@ public class MinimalDemo extends Scene
     public void onMouseScrollMove(MouseScrollEvent event)
     {
         double newZoom = camera().meter()
-                + (event.getPreciseWheelRotation() * -0.2);
+                + (event.preciseWheelRotation() * -0.2);
         if (newZoom > 0)
         {
             camera().meter(newZoom);
@@ -140,6 +140,6 @@ public class MinimalDemo extends Scene
     {
         Game.debug();
         Game.start(new MinimalDemo(), WIDTH, HEIGHT);
-        Game.setTitle("Minimale Demo");
+        Game.title("Minimale Demo");
     }
 }

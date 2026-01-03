@@ -540,12 +540,11 @@ public class Layer implements KeyStrokeListenerRegistration,
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
     {
         double pixelPerMeter = calculatePixelPerMeter();
-        Vector frameSize = Game.getWindowSize();
-        Vector cameraPositionInPx = new Vector(frameSize.getX() / 2,
-                frameSize.getY() / 2);
+        Vector frameSize = Game.windowSize();
+        Vector cameraPositionInPx = new Vector(frameSize.x() / 2,
+                frameSize.y() / 2);
         Vector fromCamToPointInWorld = parent.camera().focus()
-                .multiplyX(parallaxX).multiplyY(parallaxY)
-                .getDistance(worldPoint);
+                .multiplyX(parallaxX).multiplyY(parallaxY).distance(worldPoint);
         return cameraPositionInPx.add(fromCamToPointInWorld.multiplyY(-1)
                 .multiply(pixelPerMeter * parallaxZoom));
     }
@@ -555,7 +554,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @return Die sichtbare Fläche <b>mit Angaben in Meter</b>.
      *
-     * @see Game#getWindowSize()
+     * @see Game#windowSize()
      */
     @API
     @Getter
@@ -563,9 +562,8 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         Vector center = parent.camera().focus();
         double pixelPerMeter = calculatePixelPerMeter();
-        return new Bounds(0, 0, gameSizeInPixels.getX() / pixelPerMeter,
-                gameSizeInPixels.getY() / pixelPerMeter)
-                .withCenterPoint(center);
+        return new Bounds(0, 0, gameSizeInPixels.x() / pixelPerMeter,
+                gameSizeInPixels.y() / pixelPerMeter).withCenterPoint(center);
     }
 
     /**
@@ -576,13 +574,13 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     setzen ist.
      *
      * @see #visibleHeight(double, Vector)
-     * @see Game#getWindowSize()
+     * @see Game#windowSize()
      */
     @API
     @Getter
     public void visibleWidth(double width, Vector gameSizeInPixels)
     {
-        double desiredPixelPerMeter = gameSizeInPixels.getX() / width;
+        double desiredPixelPerMeter = gameSizeInPixels.x() / width;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
         parent.camera().meter(desiredZoom);
     }
@@ -595,13 +593,13 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     setzen ist.
      *
      * @see #visibleWidth(double, Vector)
-     * @see Game#getWindowSize()
+     * @see Game#windowSize()
      */
     @API
     @Setter
     public void visibleHeight(double height, Vector gameSizeInPixels)
     {
-        double desiredPixelPerMeter = gameSizeInPixels.getY() / height;
+        double desiredPixelPerMeter = gameSizeInPixels.y() / height;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
         parent.camera().meter(desiredZoom);
     }
@@ -631,18 +629,16 @@ public class Layer implements KeyStrokeListenerRegistration,
         g.translate(width / 2, height / 2);
         double pixelPerMeter = calculatePixelPerMeter();
         g.rotate(Math.toRadians(rotation) * parallaxRotation, 0, 0);
-        g.translate((-position.getX() * parallaxX) * pixelPerMeter,
-                (position.getY() * parallaxY) * pixelPerMeter);
+        g.translate((-position.x() * parallaxX) * pixelPerMeter,
+                (position.y() * parallaxY) * pixelPerMeter);
         // TODO: Calculate optimal bounds
         int size = Math.max(width, height);
         boolean needsSort = false;
         int previousPosition = Integer.MIN_VALUE;
         for (Actor actor : actors)
         {
-            actor.renderBasic(
-                    g, new Bounds(position.getX() - size,
-                            position.getY() - size, size * 2, size * 2),
-                    pixelPerMeter);
+            actor.renderBasic(g, new Bounds(position.x() - size,
+                    position.y() - size, size * 2, size * 2), pixelPerMeter);
             if (!needsSort)
             {
                 int actorPosition = actor.layerPosition();

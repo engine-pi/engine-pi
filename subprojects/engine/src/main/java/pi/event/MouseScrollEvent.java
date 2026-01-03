@@ -21,6 +21,7 @@
 package pi.event;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 
 /**
@@ -59,10 +60,11 @@ public class MouseScrollEvent
      *     <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
      *     <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
      *
-     * @see #getPreciseWheelRotation()
+     * @see #preciseWheelRotation()
      */
     @API
-    public int getWheelRotation()
+    @Getter
+    public int wheelRotation()
     {
         return (int) wheelRotation;
     }
@@ -76,10 +78,11 @@ public class MouseScrollEvent
      *     <b>Negative Werte:</b> Das Rad wurde weg vom Benutzer gedreht.
      *     <b>Positive Werte:</b> Das Rad wurde hin zum Benutzer gedreht.
      *
-     * @see #getWheelRotation()
+     * @see #wheelRotation()
      */
     @API
-    public double getPreciseWheelRotation()
+    @Getter
+    public double preciseWheelRotation()
     {
         return wheelRotation;
     }

@@ -120,7 +120,7 @@ public class AllDialogsDemo extends Scene
         @Override
         public void onFrameUpdate(double pastTime)
         {
-            if (contains(Game.getMousePosition()))
+            if (contains(Game.mousePosition()))
             {
                 color("blue");
             }

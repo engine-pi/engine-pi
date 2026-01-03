@@ -11,7 +11,7 @@ public class BoundsTest
     {
         Bounds bounds = new Bounds(0, 0, 1, 1);
         Vector vector = bounds.center();
-        assertEquals(vector.getX(), 0.5, 0);
-        assertEquals(vector.getY(), 0.5, 0);
+        assertEquals(vector.x(), 0.5, 0);
+        assertEquals(vector.y(), 0.5, 0);
     }
 }

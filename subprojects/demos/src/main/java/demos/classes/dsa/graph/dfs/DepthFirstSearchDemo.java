@@ -21,7 +21,7 @@ public class DepthFirstSearchDemo extends Scene
 
     public void visit(String label)
     {
-        dfs.visitNode(dfs.getNodeIndex(label));
+        dfs.visitNode(dfs.nodeIndex(label));
     }
 
     public static void main(String[] args)

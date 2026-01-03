@@ -55,25 +55,24 @@ public class CircleAnimation extends AggregateFrameUpdateListener
             boolean rotateActor)
     {
         Vector currentActorCenter = actor.center();
-        double radius = new Vector(rotationCenter, currentActorCenter)
-                .getLength();
+        double radius = new Vector(rotationCenter, currentActorCenter).length();
         Vector rightPoint = rotationCenter.add(new Vector(radius, 0));
         ValueAnimator<Double> aX = new ValueAnimator<>(durationInSeconds,
-                x -> actor.center(x, actor.center().getY()),
-                new CosinusDouble(rightPoint.getX(), radius),
+                x -> actor.center(x, actor.center().y()),
+                new CosinusDouble(rightPoint.x(), radius),
                 AnimationMode.REPEATED, this);
         ValueAnimator<Double> aY = new ValueAnimator<>(durationInSeconds,
-                y -> actor.center(actor.center().getX(), y),
-                new SinusDouble(rotationCenter.getY(),
+                y -> actor.center(actor.center().x(), y),
+                new SinusDouble(rotationCenter.y(),
                         circleClockwise ? -radius : radius),
                 AnimationMode.REPEATED, this);
         // Winkel zwischen gewünschtem Startpunkt und aktueller Actor-Position
         // (immer in [0;PI])
         double angle = rotationCenter.negate().add(rightPoint)
-                .getAngle(rotationCenter.negate().add(currentActorCenter));
-        if (circleClockwise && currentActorCenter.getY() > rotationCenter.getY()
+                .angle(rotationCenter.negate().add(currentActorCenter));
+        if (circleClockwise && currentActorCenter.y() > rotationCenter.y()
                 || !circleClockwise
-                        && currentActorCenter.getY() < rotationCenter.getY())
+                        && currentActorCenter.y() < rotationCenter.y())
         {
             // Gedrehter Winkel ist bereits über die Hälfte
             angle = 360 - angle;

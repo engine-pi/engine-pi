@@ -193,7 +193,7 @@ final public class Logger
      *
      * @since 11.04.2017
      *
-     * @see pi.Game#setVerbose(boolean)
+     * @see pi.Game#verbose(boolean)
      */
     public static void verboseInfo(String tag, String s)
     {

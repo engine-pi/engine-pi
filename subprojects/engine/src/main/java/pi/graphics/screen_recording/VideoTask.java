@@ -84,7 +84,7 @@ class VideoTask extends PhotoshootingTask
     void writeImage(ScreenshotImage image)
     {
         super.writeImage(image);
-        var window = Game.getWindow();
+        var window = Game.window();
         if (window != null)
         {
             if (oldTitle == null)
@@ -106,7 +106,7 @@ class VideoTask extends PhotoshootingTask
             public void run()
             {
                 // Den alten Titel wiederherstellen
-                var window = Game.getWindow();
+                var window = Game.window();
                 if (window != null && oldTitle != null)
                 {
                     window.setTitle(oldTitle);

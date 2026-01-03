@@ -10,7 +10,7 @@ class DirectionTest
     void toVector()
     {
         Vector vector = Direction.UP.toVector();
-        assertEquals(vector.getX(), 0);
-        assertEquals(vector.getY(), 1);
+        assertEquals(vector.x(), 0);
+        assertEquals(vector.y(), 1);
     }
 }

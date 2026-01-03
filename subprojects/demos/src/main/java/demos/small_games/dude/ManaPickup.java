@@ -49,7 +49,7 @@ public class ManaPickup extends Animation
             return;
         }
         // Ich wurde aufgesammelt!
-        collisionEvent.getColliding().gotItem(Item.ManaPickup);
+        collisionEvent.colliding().gotItem(Item.ManaPickup);
         this.setActive(false);
         active = false;
         delay(3, () -> setActive(true));

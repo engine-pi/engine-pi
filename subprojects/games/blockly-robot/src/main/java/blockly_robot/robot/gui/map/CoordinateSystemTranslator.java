@@ -80,7 +80,7 @@ public class CoordinateSystemTranslator
      */
     public Coords toPoint(Vector vector)
     {
-        return new Coords(toRow(vector.getY()), toCol(vector.getX()));
+        return new Coords(toRow(vector.y()), toCol(vector.x()));
     }
 
     public Coords toPoint(double x, double y)

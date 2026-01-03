@@ -53,23 +53,23 @@ public class ColorContainerVisualizer
         double y = 8;
         for (Map.Entry<String, Color> entry : container.getAll().entrySet())
         {
-            NamedColor color = container.getNamedColor(entry.getKey());
+            NamedColor color = container.namedColor(entry.getKey());
             // Rechteck, das die Farbe als Füllfarbe demonstiert
-            scene.add(new Rectangle(1, 1).position(-12, y)
-                    .color(color.getColor()));
+            scene.add(
+                    new Rectangle(1, 1).position(-12, y).color(color.color()));
             // Der dezimale Farbcode
-            scene.add(new Text(color.getColorDecFormatted()).height(0.5)
+            scene.add(new Text(color.colorDecFormatted()).height(0.5)
                     .font("Monospaced").position(-10, y + 0.25)
-                    .color(color.getColor()));
+                    .color(color.color()));
             // Der hexadezimale Farbcode
-            scene.add(new Text(color.getColorHexFormatted()).height(0.5)
+            scene.add(new Text(color.colorHexFormatted()).height(0.5)
                     .font("Monospaced").position(-6, y + 0.25)
-                    .color(color.getColor()));
+                    .color(color.color()));
             // Der Hauptname der Farbe
-            scene.add(new Text(color.getName()).height(0.5)
-                    .position(-3, y + 0.25).color(WHITE));
+            scene.add(new Text(color.name()).height(0.5).position(-3, y + 0.25)
+                    .color(WHITE));
             // Die Aliasse
-            scene.add(new Text(color.getAliasesFormatted()).height(0.3)
+            scene.add(new Text(color.aliasesFormatted()).height(0.3)
                     .color(WHITE).position(1, y + 0.3));
             y--;
         }

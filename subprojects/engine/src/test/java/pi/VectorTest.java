@@ -39,8 +39,8 @@ public class VectorTest
         Vector p1 = v(10, 10);
         Vector p2 = v(30, 20);
         Vector vector = new Vector(p1, p2);
-        assertEquals(vector.getX(), 20, 0.0001);
-        assertEquals(vector.getY(), 10, 0.0001);
+        assertEquals(vector.x(), 20, 0.0001);
+        assertEquals(vector.y(), 10, 0.0001);
     }
 
     @Nested
@@ -49,9 +49,9 @@ public class VectorTest
         private void assertOfAngle(double angle, double x, double y)
         {
             Vector a = Vector.ofAngle(angle);
-            assertEquals(a.getX(), x, 0.0001);
-            assertEquals(a.getY(), y, 0.0001);
-            assertEquals(a.getLength(), 1, 0.0001);
+            assertEquals(a.x(), x, 0.0001);
+            assertEquals(a.y(), y, 0.0001);
+            assertEquals(a.length(), 1, 0.0001);
         }
 
         @Test
@@ -89,14 +89,14 @@ public class VectorTest
     public void testGetX()
     {
         double x = .013;
-        assertEquals(v(x, 0).getX(), x, 0.00001);
+        assertEquals(v(x, 0).x(), x, 0.00001);
     }
 
     @Test
     public void testGetY()
     {
         double y = .013;
-        assertEquals(v(0, y).getY(), y, 0.00001);
+        assertEquals(v(0, y).y(), y, 0.00001);
     }
 
     @Test
@@ -147,7 +147,7 @@ public class VectorTest
     public void testNormalize()
     {
         Vector vector = v(10, 100);
-        assertEquals(vector.normalize().getLength(), 1, 0);
+        assertEquals(vector.normalize().length(), 1, 0);
     }
 
     @Test
@@ -159,7 +159,7 @@ public class VectorTest
     @Test
     public void testGetLength()
     {
-        assertEquals(v(1, 1).getLength(), Math.sqrt(2), 0.00001);
+        assertEquals(v(1, 1).length(), Math.sqrt(2), 0.00001);
     }
 
     @Nested
@@ -169,21 +169,21 @@ public class VectorTest
         public void testWithOther()
         {
             // distance between (1,2) and (4,6) is 5
-            assertEquals(5.0, v(1, 2).getLength(v(4, 6)), 1e-9);
+            assertEquals(5.0, v(1, 2).length(v(4, 6)), 1e-9);
         }
 
         @Test
         public void testWithOtherSameVector()
         {
             Vector a = v(2.5, -1.5);
-            assertEquals(0.0, a.getLength(a), 1e-9);
+            assertEquals(0.0, a.length(a), 1e-9);
         }
 
         @Test
         public void testWithOtherNullThrows()
         {
             assertThrows(NullPointerException.class,
-                    () -> v(0, 0).getLength(null));
+                    () -> v(0, 0).length(null));
         }
     }
 
@@ -224,7 +224,7 @@ public class VectorTest
         public void testSameVectorReturnsZero()
         {
             Vector v = v(1, 2);
-            assertEquals(360, v.getAngle(v), 1e-5);
+            assertEquals(360, v.angle(v), 1e-5);
         }
 
         @Test
@@ -232,8 +232,8 @@ public class VectorTest
         {
             Vector a = v(1, 0);
             Vector b = v(0, 1);
-            assertEquals(90.0, a.getAngle(b), 1e-9);
-            assertEquals(270.0, b.getAngle(a), 1e-9);
+            assertEquals(90.0, a.angle(b), 1e-9);
+            assertEquals(270.0, b.angle(a), 1e-9);
         }
 
         @Test
@@ -241,7 +241,7 @@ public class VectorTest
         {
             Vector a = v(1, 0);
             Vector b = v(-1, 0);
-            assertEquals(180.0, a.getAngle(b), 1e-9);
+            assertEquals(180.0, a.angle(b), 1e-9);
         }
 
         @Test
@@ -249,16 +249,15 @@ public class VectorTest
         {
             Vector a = v(1.0, 1.0);
             Vector b = v(2.0, 3.0);
-            double expected = Math.toDegrees(Math.acos(
-                    a.getScalarProduct(b) / (a.getLength() * b.getLength())));
-            assertEquals(expected, a.getAngle(b), 1e-9);
+            double expected = Math.toDegrees(Math
+                    .acos(a.getScalarProduct(b) / (a.length() * b.length())));
+            assertEquals(expected, a.angle(b), 1e-9);
         }
 
         @Test
         public void testNullThrowsException()
         {
-            assertThrows(NullPointerException.class,
-                    () -> v(0, 0).getAngle(null));
+            assertThrows(NullPointerException.class, () -> v(0, 0).angle(null));
         }
     }
 
@@ -277,7 +276,7 @@ public class VectorTest
 
         private void assertAngle(double expected, double x, double y)
         {
-            assertEquals(expected, v(x, y).getAngle(), delta);
+            assertEquals(expected, v(x, y).angle(), delta);
         }
 
         @Test
@@ -338,8 +337,8 @@ public class VectorTest
         public void testArbitraryVector()
         {
             Vector a = v(2.0, -3.0);
-            double expected = Math.toDegrees(Math.atan2(a.getY(), a.getX()));
-            assertEquals(expected, a.getAngle(), 1e-9);
+            double expected = Math.toDegrees(Math.atan2(a.y(), a.x()));
+            assertEquals(expected, a.angle(), 1e-9);
         }
     }
 
@@ -351,7 +350,7 @@ public class VectorTest
 
         private void assertRadians(double expected, double x, double y)
         {
-            assertEquals(expected, v(x, y).getRadians(), delta);
+            assertEquals(expected, v(x, y).radians(), delta);
         }
 
         @Test
@@ -412,8 +411,8 @@ public class VectorTest
         public void testArbitraryVector()
         {
             Vector a = v(2.0, -3.0);
-            double expected = Math.atan2(a.getY(), a.getX());
-            assertEquals(expected, a.getRadians(), 1e-9);
+            double expected = Math.atan2(a.y(), a.x());
+            assertEquals(expected, a.radians(), 1e-9);
         }
     }
 }

@@ -36,6 +36,7 @@ import java.util.function.Consumer;
 
 import de.pirckheimer_gymnasium.jbox2d.common.Settings;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.config.DebugConfiguration;
@@ -147,7 +148,8 @@ public class Controller
      * @param title Titel des Spielfensters.
      */
     @API
-    public static void setTitle(String title)
+    @Setter
+    public static void title(String title)
     {
         frame.setTitle(title);
     }
@@ -161,7 +163,8 @@ public class Controller
      *
      * @since 0.25.0
      */
-    public static void setPixelMultiplication(int pixelMultiplication)
+    @Setter
+    public static void pixelMultiplication(int pixelMultiplication)
     {
         Configuration.pixelMultiplication = pixelMultiplication;
     }
@@ -177,7 +180,8 @@ public class Controller
      *
      * @since 0.25.0
      */
-    public static int getPixelMultiplication()
+    @Getter
+    public static int pixelMultiplication()
     {
         return Configuration.pixelMultiplication;
     }
@@ -208,7 +212,7 @@ public class Controller
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
      *
-     * @see #setPixelMultiplication(int)
+     * @see #pixelMultiplication(int)
      *
      * @since 0.26.0 parameter pixelMultiplication
      */
@@ -221,7 +225,7 @@ public class Controller
             throw new IllegalStateException(
                     "Die Methode start() wurde bereits ausgeführt und kann nur einmal ausgeführt werden");
         }
-        setPixelMultiplication(pixelMultiplication);
+        pixelMultiplication(pixelMultiplication);
         width *= pixelMultiplication;
         height *= pixelMultiplication;
         config.graphics().windowDimension(width, height);
@@ -234,7 +238,7 @@ public class Controller
         frame.pack();
         if (graphicsConfig.windowPosition() != Direction.NONE)
         {
-            Controller.setWindowPosition(graphicsConfig.windowPosition());
+            Controller.windowPosition(graphicsConfig.windowPosition());
         }
         else
         {
@@ -267,7 +271,7 @@ public class Controller
         mainThread.setPriority(Thread.MAX_PRIORITY);
         if (defaultControl != null)
         {
-            setDefaultControl(defaultControl);
+            defaultControl(defaultControl);
         }
         return scene;
     }
@@ -282,13 +286,13 @@ public class Controller
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
      *
-     * @see #getPixelMultiplication()
+     * @see #pixelMultiplication()
      *
      * @deprecated use {@link #start(Scene, int, int)}
      */
     public static Scene start(int width, int height, Scene scene)
     {
-        return start(scene, width, height, getPixelMultiplication());
+        return start(scene, width, height, pixelMultiplication());
     }
 
     /**
@@ -390,7 +394,7 @@ public class Controller
     @API
     public static void transitionToScene(Scene scene)
     {
-        Scene previous = getActiveScene();
+        Scene previous = activeScene();
         if (scene == previous)
         {
             return;
@@ -406,10 +410,10 @@ public class Controller
 
     private static void run()
     {
-        loop = new GameLoop(renderPanel, Controller::getActiveScene,
+        loop = new GameLoop(renderPanel, Controller::activeScene,
                 Controller::isDebug);
         sceneLaunchListeners.invoke((listener) -> listener
-                .onSceneLaunch(Controller.getActiveScene(), null));
+                .onSceneLaunch(Controller.activeScene(), null));
         loop.run();
         frame.setVisible(false);
         frame.dispose();
@@ -423,7 +427,8 @@ public class Controller
      * @return Die registrierten, grundlegenden Maus- und
      *     Tastatur-Steuermöglichkeiten.
      */
-    public static DefaultListener getDefaultControl()
+    @Getter
+    public static DefaultListener defaultControl()
     {
         return defaultControl;
     }
@@ -433,7 +438,8 @@ public class Controller
      *
      * @param control Die grundlegenden Maus- und Tastatur-Steuermöglichkeiten.
      */
-    public static void setDefaultControl(DefaultListener control)
+    @Setter
+    public static void defaultControl(DefaultListener control)
     {
         defaultControl = control;
         if (control != null)
@@ -498,14 +504,14 @@ public class Controller
     {
         if (loop != null)
         {
-            loop.getFrameUpdateListener().add(listener);
+            loop.frameUpdateListener().add(listener);
         }
         else
         {
             addSceneLaunchListener((next, previous) -> {
                 if (previous == null)
                 {
-                    loop.getFrameUpdateListener().add(listener);
+                    loop.frameUpdateListener().add(listener);
                 }
             });
         }
@@ -522,7 +528,7 @@ public class Controller
      */
     public static void removeFrameUpdateListener(FrameUpdateListener listener)
     {
-        loop.getFrameUpdateListener().remove(listener);
+        loop.frameUpdateListener().remove(listener);
     }
 
     /**
@@ -644,7 +650,8 @@ public class Controller
      * @return Die gerade <b>aktive Szene</b>.
      */
     @API
-    public static Scene getActiveScene()
+    @Getter
+    public static Scene activeScene()
     {
         if (scene == null)
         {
@@ -666,9 +673,10 @@ public class Controller
      * @since 0.42.0
      */
     @API
-    public static Scene getStartedActiveScene()
+    @Getter
+    public static Scene startedActiveScene()
     {
-        Scene activeScene = getActiveScene();
+        Scene activeScene = activeScene();
         if (!Controller.isRunning())
         {
             Controller.start(activeScene);
@@ -716,11 +724,12 @@ public class Controller
      * @param width Die neue <b>Breite</b> des Engine-Fensters in Pixel.
      * @param height Die neue <b>Höhe</b> des Engine-Fensters in Pixel.
      *
-     * @see #getWindowSize()
-     * @see #setWindowPosition(int, int)
+     * @see #windowSize()
+     * @see #windowPosition(int, int)
      */
     @API
-    public static void setWindowSize(int width, int height)
+    @Setter
+    public static void windowSize(int width, int height)
     {
         if (width <= 0 || height <= 0)
         {
@@ -749,11 +758,12 @@ public class Controller
      * @return Ein Vektor-Objekt, dessen Höhe und Breite mit der Fensterhöhe und
      *     -breite übereinstimmt.
      *
-     * @see #setWindowPosition(int, int)
-     * @see #setWindowSize(int, int)
+     * @see #windowPosition(int, int)
+     * @see #windowSize(int, int)
      */
     @API
-    public static Vector getWindowSize()
+    @Getter
+    public static Vector windowSize()
     {
         return new Vector(config.graphics().windowWidth(),
                 config.graphics().windowHeight());
@@ -770,11 +780,12 @@ public class Controller
      * @param x Die x-Koordinate der linken oberen Ecke des Fensters in Pixel.
      * @param y Die y-Koordinate der linken oberen Ecke des Fensters in Pixel.
      *
-     * @see #getWindowSize()
-     * @see #setWindowSize(int, int)
+     * @see #windowSize()
+     * @see #windowSize(int, int)
      */
     @API
-    public static void setWindowPosition(int x, int y)
+    @Setter
+    public static void windowPosition(int x, int y)
     {
         frame.setLocation(x, y);
     }
@@ -796,30 +807,31 @@ public class Controller
      *     <li>{@link Direction#NONE}: mittig</li>
      *     </ul>
      */
-    public static void setWindowPosition(Direction direction)
+    @Setter
+    public static void windowPosition(Direction direction)
     {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-        Vector vector = Controller.getWindowSize();
-        int windowWidth = (int) vector.getX();
-        int windowHeight = (int) vector.getY();
+        Vector vector = Controller.windowSize();
+        int windowWidth = (int) vector.x();
+        int windowHeight = (int) vector.y();
         int diffWidth = screenWidth - windowWidth;
         int diffHeight = screenHeight - windowHeight;
         switch (direction)
         {
-        case UP -> Controller.setWindowPosition(diffWidth / 2, 0);
-        case UP_RIGHT -> Controller.setWindowPosition(diffWidth, 0);
-        case RIGHT -> Controller.setWindowPosition(diffWidth, diffHeight / 2);
-        case DOWN_RIGHT -> Controller.setWindowPosition(diffWidth, diffHeight);
-        case DOWN -> Controller.setWindowPosition(diffWidth / 2, diffHeight);
-        case DOWN_LEFT -> Controller.setWindowPosition(0, diffHeight);
-        case LEFT -> Controller.setWindowPosition(0, diffHeight / 2);
-        case UP_LEFT -> Controller.setWindowPosition(0, 0);
+        case UP -> Controller.windowPosition(diffWidth / 2, 0);
+        case UP_RIGHT -> Controller.windowPosition(diffWidth, 0);
+        case RIGHT -> Controller.windowPosition(diffWidth, diffHeight / 2);
+        case DOWN_RIGHT -> Controller.windowPosition(diffWidth, diffHeight);
+        case DOWN -> Controller.windowPosition(diffWidth / 2, diffHeight);
+        case DOWN_LEFT -> Controller.windowPosition(0, diffHeight);
+        case LEFT -> Controller.windowPosition(0, diffHeight / 2);
+        case UP_LEFT -> Controller.windowPosition(0, 0);
         case NONE ->
             // zentrieren
-            Controller.setWindowPosition(diffWidth / 2, diffHeight / 2);
+            Controller.windowPosition(diffWidth / 2, diffHeight / 2);
         }
     }
 
@@ -856,12 +868,12 @@ public class Controller
         int windowWidth = config.graphics().windowWidth();
         int windowHeight = config.graphics().windowHeight();
         return new Vector(
-                position.getX() + ((Math.cos(Math.toRadians(rotation))
+                position.x() + ((Math.cos(Math.toRadians(rotation))
                         * (mousePosition.x - windowWidth / 2.0)
                         + Math.sin(Math.toRadians(rotation))
                                 * (mousePosition.y - windowHeight / 2.0)))
                         / zoom,
-                position.getY() + ((Math.sin(Math.toRadians(rotation))
+                position.y() + ((Math.sin(Math.toRadians(rotation))
                         * (mousePosition.x - windowWidth / 2.0)
                         - Math.cos(Math.toRadians(rotation))
                                 * (mousePosition.y - windowHeight / 2.0)))
@@ -874,7 +886,8 @@ public class Controller
      * @hidden
      */
     @Internal
-    public static java.awt.Point getMousePositionInFrame()
+    @Getter
+    public static java.awt.Point mousePositionInFrame()
     {
         return mousePosition;
     }
@@ -887,7 +900,8 @@ public class Controller
      *
      * @since 0.38.0
      */
-    public static RenderPanel getRenderPanel()
+    @Getter
+    public static RenderPanel renderPanel()
     {
         return renderPanel;
     }
@@ -899,7 +913,8 @@ public class Controller
      *
      * @since 0.42.0
      */
-    public static Frame getWindow()
+    @Getter
+    public static Frame window()
     {
         return frame;
     }
@@ -918,7 +933,8 @@ public class Controller
      * @see Scene#mousePosition()
      */
     @API
-    public static Vector getMousePosition()
+    @Getter
+    public static Vector mousePosition()
     {
         return scene.mousePosition();
     }
@@ -935,7 +951,8 @@ public class Controller
      * @see #isDebug()
      */
     @API
-    public static void setDebug(boolean value)
+    @Setter
+    public static void debug(boolean value)
     {
         debugConfig.enabled(value);
     }
@@ -946,7 +963,7 @@ public class Controller
      * @return ist dieser Wert <code>true</code>, wird die Engine gerade im
      *     Debug-Modus ausgeführt. Sonst ist der Wert <code>false</code>.
      *
-     * @see #setDebug(boolean)
+     * @see #debug(boolean)
      */
     @API
     public static boolean isDebug()
@@ -961,7 +978,7 @@ public class Controller
     @API
     public static void toggleDebug()
     {
-        Controller.setDebug(!Controller.isDebug());
+        Controller.debug(!Controller.isDebug());
     }
 
     /**
@@ -978,10 +995,11 @@ public class Controller
     /**
      * Setzt, ob die Figuren gezeichnet werden sollen.
      *
-     * @see #getRenderActors()
+     * @see #renderActors()
      */
     @API
-    public static void setRenderActors(boolean value)
+    @Setter
+    public static void renderActors(boolean value)
     {
         debugConfig.renderActors(value);
     }
@@ -989,21 +1007,22 @@ public class Controller
     /**
      * Gibt an, ob die Figuren gezeichnet werden sollen.
      *
-     * @see #setRenderActors(boolean)
+     * @see #renderActors(boolean)
      */
     @API
-    public static boolean getRenderActors()
+    @Getter
+    public static boolean renderActors()
     {
         return debugConfig.renderActors();
     }
 
     /**
-     * @see #setRenderActors(boolean)
-     * @see #getRenderActors()
+     * @see #renderActors(boolean)
+     * @see #renderActors()
      */
     public static void toggleRenderActors()
     {
-        Controller.setRenderActors(!Controller.getRenderActors());
+        Controller.renderActors(!Controller.renderActors());
     }
 
     /**
@@ -1013,7 +1032,7 @@ public class Controller
      *     Logging-Informationen gespeichert. Sonst ist der Wert
      *     <code>false</code>.
      *
-     * @see #setVerbose(boolean)
+     * @see #verbose(boolean)
      */
     @API
     public static boolean isVerbose()
@@ -1030,10 +1049,11 @@ public class Controller
      *     ist hauptsächlich für das Debugging an der Engine selbst notwendig.
      *
      * @see #isVerbose()
-     * @see #setDebug(boolean)
+     * @see #debug(boolean)
      */
     @API
-    public static void setVerbose(boolean value)
+    @Setter
+    public static void verbose(boolean value)
     {
         debugConfig.verbose(value);
     }
@@ -1045,7 +1065,7 @@ public class Controller
     @API
     public static void takeScreenshot()
     {
-        Photographer.getPhotographer().takeScreenshot();
+        Photographer.get().takeScreenshot();
     }
 
     /**
@@ -1055,7 +1075,7 @@ public class Controller
     @API
     public static void recordScreen()
     {
-        Photographer.getPhotographer().toggleScreenRecording();
+        Photographer.get().toggleScreenRecording();
     }
 
     /**
@@ -1066,7 +1086,7 @@ public class Controller
     @API
     public static void recordScreen(double duration)
     {
-        Photographer.getPhotographer().toggleScreenRecording(duration);
+        Photographer.get().toggleScreenRecording(duration);
     }
 
     @SuppressWarnings("AssignmentToStaticFieldFromInstanceMethod")

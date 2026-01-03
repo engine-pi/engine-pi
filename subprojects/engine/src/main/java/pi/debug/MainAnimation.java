@@ -216,7 +216,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         for (Actor item : items)
         {
-            if (item.center().getY() < -10)
+            if (item.center().y() < -10)
             {
                 dropDownItem(item);
             }
@@ -268,6 +268,6 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         Game.instantMode(false);
         Game.start(new MainAnimation(false));
         Game.recordScreen(20);
-        Game.setTitle("Engine Pi " + Version.getVersion());
+        Game.title("Engine Pi " + Version.getVersion());
     }
 }

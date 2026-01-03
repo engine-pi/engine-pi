@@ -71,7 +71,7 @@ public final class Photographer
     /**
      * @since 0.42.0
      */
-    public static Photographer getPhotographer()
+    public static Photographer get()
     {
         if (photographer == null)
         {

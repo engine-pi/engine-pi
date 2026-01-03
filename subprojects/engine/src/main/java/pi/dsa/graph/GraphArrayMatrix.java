@@ -113,12 +113,12 @@ public class GraphArrayMatrix extends Graph
      */
     public int getEdgeWeight(String from, String to)
     {
-        return matrix[getNodeIndex(from)][getNodeIndex(to)];
+        return matrix[nodeIndex(from)][nodeIndex(to)];
     }
 
     protected void addNodeIntoDataStructure(String label, double x, double y)
     {
-        int index = getNodeCount() - 1;
+        int index = nodeCount() - 1;
         if (index >= matrix.length)
         {
             enlargeMatrix();
@@ -136,8 +136,8 @@ public class GraphArrayMatrix extends Graph
     protected void addEdgeIntoDataStructure(String from, String to, int weight,
             boolean directed)
     {
-        int fromIndex = getNodeIndex(from);
-        int toIndex = getNodeIndex(to);
+        int fromIndex = nodeIndex(from);
+        int toIndex = nodeIndex(to);
         if (fromIndex != toIndex)
         {
             matrix[fromIndex][toIndex] = weight;
@@ -151,7 +151,7 @@ public class GraphArrayMatrix extends Graph
     public ArrayList<EdgesOfNodePair> getAllEdgesOfNodePairs()
     {
         ArrayList<EdgesOfNodePair> all = new ArrayList<>();
-        for (int nodeIndex = 0; nodeIndex < getNodeCount(); nodeIndex++)
+        for (int nodeIndex = 0; nodeIndex < nodeCount(); nodeIndex++)
         {
             for (int i = 0; i < nodeIndex; i++)
             {
@@ -183,15 +183,15 @@ public class GraphArrayMatrix extends Graph
         String whiteSpace = " ".repeat(4);
         // Kopfzeile
         System.out.print(whiteSpace);
-        for (int i = 0; i < getNodeCount(); i++)
+        for (int i = 0; i < nodeCount(); i++)
         {
-            System.out.print(getNode(i).getFormattedLabel(width));
+            System.out.print(node(i).formattedLabel(width));
         }
         System.out.println();
-        for (int i = 0; i < getNodeCount(); i++)
+        for (int i = 0; i < nodeCount(); i++)
         {
-            System.out.print(getNode(i).getFormattedLabel(width));
-            for (int j = 0; j < getNodeCount(); j++)
+            System.out.print(node(i).formattedLabel(width));
+            for (int j = 0; j < nodeCount(); j++)
             {
                 if (matrix[i][j] != -1)
                 {

@@ -21,6 +21,9 @@ package pi.resources.color;
 import java.awt.Color;
 import java.util.List;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+
 /**
  * Speichert eine <b>Farbe</b> zusammen mit einem <b>Hauptnamen</b> und optional
  * mehreren <b>Aliassen</b>.
@@ -63,7 +66,8 @@ public class NamedColor
      *
      * @return Der <b>Hauptname</b> der Farbe.
      */
-    public String getName()
+    @Getter
+    public String name()
     {
         return name;
     }
@@ -73,43 +77,51 @@ public class NamedColor
      *
      * @param name Der <b>Hauptname</b> der Farbe.
      */
-    public void setName(String name)
+    @Setter
+    public void name(String name)
     {
         this.name = name;
     }
 
-    public Color getColor()
+    @Getter
+    public Color color()
     {
         return color;
     }
 
-    public String getColorDecFormatted()
+    @Getter
+    public String colorDecFormatted()
     {
         return String.format("%s, %s, %s", color.getRed(), color.getGreen(),
                 color.getBlue());
     }
 
-    public String getColorHexFormatted()
+    @Getter
+    public String colorHexFormatted()
     {
         return ColorUtil.encode(color);
     }
 
-    public void setColor(Color color)
+    @Setter
+    public void color(Color color)
     {
         this.color = color;
     }
 
-    public List<String> getAliases()
+    @Getter
+    public List<String> aliases()
     {
         return aliases;
     }
 
-    public String getAliasesFormatted()
+    @Getter
+    public String aliasesFormatted()
     {
         return String.join(", ", aliases);
     }
 
-    public void setAliases(List<String> aliases)
+    @Setter
+    public void aliases(List<String> aliases)
     {
         this.aliases = aliases;
     }

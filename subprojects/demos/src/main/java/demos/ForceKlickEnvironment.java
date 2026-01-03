@@ -76,13 +76,13 @@ public class ForceKlickEnvironment extends Scene implements
     @Override
     public void onCollision(CollisionEvent<Actor> event)
     {
-        attackedLast = event.getColliding();
+        attackedLast = event.colliding();
     }
 
     @Override
     public void onCollisionEnd(CollisionEvent<Actor> colliding)
     {
-        if (attackedLast == colliding.getColliding())
+        if (attackedLast == colliding.colliding())
         {
             attackedLast = null;
         }
@@ -227,19 +227,19 @@ public class ForceKlickEnvironment extends Scene implements
                 return;
             }
             double vectorLength = new Vector(lastAttack, currentMousePos)
-                    .getLength();
+                    .length();
             if (vectorLength <= 0)
             {
                 return;
             }
             stange.size(vectorLength, stange.height());
             double rot = Vector.RIGHT
-                    .getAngle(lastAttack.negate().add(currentMousePos));
+                    .angle(lastAttack.negate().add(currentMousePos));
             if (Double.isNaN(rot))
             {
                 return;
             }
-            if (currentMousePos.getY() < lastAttack.getY())
+            if (currentMousePos.y() < lastAttack.y())
             {
                 rot = 360 - rot;
             }

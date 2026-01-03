@@ -298,7 +298,7 @@ public class ImageFont
      *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
      *     Abmessung {@code 3x3}.
      *
-     * @see Game#getPixelMultiplication
+     * @see Game#pixelMultiplication()
      */
     @Getter
     public int pixelMultiplication()

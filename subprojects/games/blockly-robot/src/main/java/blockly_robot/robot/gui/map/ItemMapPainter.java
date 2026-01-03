@@ -42,7 +42,7 @@ public class ItemMapPainter
         var vector = translate.toVector(row, col);
         for (Item item : items)
         {
-            paintItem(scene, vector.getX(), vector.getY(), item);
+            paintItem(scene, vector.x(), vector.y(), item);
         }
     }
 

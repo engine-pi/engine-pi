@@ -27,7 +27,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         ghost = new Blinky();
         ghost.position(10, 10);
         ghost.addCollisionListener((event) -> {
-            if (event.getColliding() instanceof Image)
+            if (event.colliding() instanceof Image)
             {
                 ghost.reverse();
                 System.out.println(event);

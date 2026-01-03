@@ -39,7 +39,7 @@ class DebugInformationPreparer
 
     public int actorsCount()
     {
-        return loop.getCurrentScene().getWorldHandler().world().getBodyCount();
+        return loop.currentScene().getWorldHandler().world().getBodyCount();
     }
 
     /**
@@ -47,7 +47,7 @@ class DebugInformationPreparer
      */
     public String fpsFormatted()
     {
-        double frameDuration = loop.getFrameDuration();
+        double frameDuration = loop.frameDuration();
         if (frameDuration == 0)
         {
             return "∞";
@@ -60,7 +60,7 @@ class DebugInformationPreparer
 
     public Vector gravity()
     {
-        return loop.getCurrentScene().gravity();
+        return loop.currentScene().gravity();
     }
 
     /**
@@ -72,8 +72,7 @@ class DebugInformationPreparer
         Vector gravity = gravity();
         if (!gravity.isNull())
         {
-            return String.format("G(x,y): %.2f,%.2f", gravity.getX(),
-                    gravity.getY());
+            return String.format("G(x,y): %.2f,%.2f", gravity.x(), gravity.y());
         }
         return null;
     }

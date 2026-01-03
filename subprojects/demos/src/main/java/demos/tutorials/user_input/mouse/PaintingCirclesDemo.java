@@ -44,7 +44,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
     @Override
     public void onMouseDown(Vector position, MouseButton mouseButton)
     {
-        paintCircleAt(position.getX(), position.getY(), 1);
+        paintCircleAt(position.x(), position.y(), 1);
     }
 
     public static void main(String[] args)

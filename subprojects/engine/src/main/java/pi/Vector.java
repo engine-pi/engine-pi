@@ -20,11 +20,11 @@
  */
 package pi;
 
-import pi.debug.ToStringFormatter;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.debug.ToStringFormatter;
 
 /**
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese
@@ -114,8 +114,8 @@ public final class Vector implements Cloneable
     @API
     public Vector(Vector start, Vector end)
     {
-        this.x = end.getX() - start.getX();
-        this.y = end.getY() - start.getY();
+        this.x = end.x() - start.x();
+        this.y = end.y() - start.y();
     }
 
     /**
@@ -147,7 +147,8 @@ public final class Vector implements Cloneable
      * @return Der Bewegungsanteil in {@code x}-Richtung.
      */
     @API
-    public double getX()
+    @Getter
+    public double x()
     {
         return x;
     }
@@ -162,7 +163,8 @@ public final class Vector implements Cloneable
      * @since 0.36.0
      */
     @API
-    public int getX(double pixelPerMeter)
+    @Getter
+    public int x(double pixelPerMeter)
     {
         return (int) Math.round(x * pixelPerMeter);
     }
@@ -173,7 +175,8 @@ public final class Vector implements Cloneable
      * @return Der Bewegungsanteil in {@code y}-Richtung.
      */
     @API
-    public double getY()
+    @Getter
+    public double y()
     {
         return y;
     }
@@ -188,7 +191,8 @@ public final class Vector implements Cloneable
      * @since 0.36.0
      */
     @API
-    public int getY(double pixelPerMeter)
+    @Getter
+    public int y(double pixelPerMeter)
     {
         return (int) Math.round(y * pixelPerMeter);
     }
@@ -206,7 +210,7 @@ public final class Vector implements Cloneable
     @API
     public Vector normalize()
     {
-        return divide(getLength());
+        return divide(length());
     }
 
     /**
@@ -241,7 +245,8 @@ public final class Vector implements Cloneable
      * @return Die Länge des Vektors.
      */
     @API
-    public double getLength()
+    @Getter
+    public double length()
     {
         return Math.sqrt(x * x + y * y);
     }
@@ -258,7 +263,8 @@ public final class Vector implements Cloneable
      *
      * @since 0.37.0
      */
-    public double getLength(Vector other)
+    @Getter
+    public double length(Vector other)
     {
         Vector vector = subtract(other);
         return Math.hypot(vector.x, vector.y);
@@ -385,7 +391,8 @@ public final class Vector implements Cloneable
      *     <code>(v.x|v.y)</code>.
      */
     @API
-    public Vector getDistance(Vector other)
+    @Getter
+    public Vector distance(Vector other)
     {
         return other.subtract(this);
     }
@@ -504,7 +511,8 @@ public final class Vector implements Cloneable
      * @return Der Wert der Konstanten, die diese Bewegung widerspiegelt.
      */
     @API
-    public Direction getDirection()
+    @Getter
+    public Direction direction()
     {
         if (x == 0 && y == 0)
         {
@@ -564,7 +572,8 @@ public final class Vector implements Cloneable
      * @return Die Summe von delta X und delta Y des Vektors.
      */
     @API
-    public double getManhattanLength()
+    @Getter
+    public double manhattanLength()
     {
         double length = x + y;
         return length < 0 ? -length : length;
@@ -574,19 +583,20 @@ public final class Vector implements Cloneable
      * Gibt den <b>Winkel</b> dieses Vektors in <b>Grad</b> zurück.
      *
      * <p>
-     * Der Wert wird durch Umrechnung des von {@link #getRadians()} gelieferten
+     * Der Wert wird durch Umrechnung des von {@link #radians()} gelieferten
      * Winkels (Bogenmaß) mit {@link Math#toDegrees(double)} in Grad ermittelt.
-     * Der genaue Wertebereich hängt vom Rückgabewert von {@link #getRadians()}
-     * ab (z. B. (-π, π] → (-180°, 180°], [0, 2π) → [0°, 360°)).
+     * Der genaue Wertebereich hängt vom Rückgabewert von {@link #radians()} ab
+     * (z. B. (-π, π] → (-180°, 180°], [0, 2π) → [0°, 360°)).
      * </p>
      *
      * @return Winkel des Vektors in Grad
      *
      * @since 0.37.0
      */
-    public double getAngle()
+    @Getter
+    public double angle()
     {
-        return Math.toDegrees(getRadians());
+        return Math.toDegrees(radians());
     }
 
     /**
@@ -607,7 +617,8 @@ public final class Vector implements Cloneable
      *
      * @since 0.37.0
      */
-    public double getRadians()
+    @Getter
+    public double radians()
     {
         return Math.atan2(y, x);
     }
@@ -631,10 +642,11 @@ public final class Vector implements Cloneable
      *
      * @return Der Winkel zwischen diesem Vektor und dem zweiten.
      */
-    public double getAngle(Vector other)
+    @Getter
+    public double angle(Vector other)
     {
-        double degrees = Math.toDegrees(Math.acos(
-                getScalarProduct(other) / (getLength() * other.getLength())));
+        double degrees = Math.toDegrees(Math
+                .acos(getScalarProduct(other) / (length() * other.length())));
         if (y >= other.y)
         {
             return 360 - degrees;

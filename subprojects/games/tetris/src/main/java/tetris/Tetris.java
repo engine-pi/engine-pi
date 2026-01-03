@@ -62,7 +62,7 @@ public class Tetris
      * Tetris.
      *
      * <p>
-     * Die Methode ist eine Hüll-Methode um {@link Game#setDebug(boolean)}.
+     * Die Methode ist eine Hüll-Methode um {@link Game#debug(boolean)}.
      * </p>
      *
      * @param value ist dieser Wert true, wird Tetris ab sofort im Debug-Modus
@@ -70,7 +70,7 @@ public class Tetris
      */
     public static void setDebug(boolean value)
     {
-        Game.setDebug(value);
+        Game.debug(value);
     }
 
     /**
@@ -92,7 +92,7 @@ public class Tetris
      */
     public static void start(Scene scene)
     {
-        Game.setTitle("Tetris im Gameboy-Stil auf der Engine Pi");
+        Game.title("Tetris im Gameboy-Stil auf der Engine Pi");
         scene.camera().meter(Tetris.BLOCK_SIZE);
         if (Game.isRunning())
         {

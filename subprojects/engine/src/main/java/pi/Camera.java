@@ -387,7 +387,7 @@ public final class Camera
      *
      * @return Die Anzahl an Pixel aus, die einem Meter entsprechen.
      *
-     * @see Game#getPixelMultiplication()
+     * @see Game#pixelMultiplication()
      */
     @API
     @Getter
@@ -395,7 +395,7 @@ public final class Camera
     {
         if (Game.isPixelMultiplication())
         {
-            return meter * Game.getPixelMultiplication();
+            return meter * Game.pixelMultiplication();
         }
         return meter;
     }
@@ -541,10 +541,9 @@ public final class Camera
             double pixelPerMeter)
     {
         Vector cameraRelativeLocInPx = focus.multiply(pixelPerMeter);
-        Vector frameSize = Game.getWindowSize();
-        return new Point(
-                (int) (frameSize.getX() / 2 + cameraRelativeLocInPx.getX()),
-                (int) (frameSize.getY() / 2 + cameraRelativeLocInPx.getY()));
+        Vector frameSize = Game.windowSize();
+        return new Point((int) (frameSize.x() / 2 + cameraRelativeLocInPx.x()),
+                (int) (frameSize.y() / 2 + cameraRelativeLocInPx.y()));
     }
 
     /**
@@ -584,9 +583,9 @@ public final class Camera
             return position;
         }
         double x = Math.max(bounds.x(),
-                Math.min(position.getX(), bounds.x() + bounds.width()));
+                Math.min(position.x(), bounds.x() + bounds.width()));
         double y = Math.max(bounds.y(),
-                Math.min(position.getY(), bounds.y() + bounds.height()));
+                Math.min(position.y(), bounds.y() + bounds.height()));
         return new Vector(x, y);
     }
 

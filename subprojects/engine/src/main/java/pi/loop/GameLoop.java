@@ -113,7 +113,7 @@ public final class GameLoop
      * @since 0.42.0
      */
     @Getter
-    public Scene getCurrentScene()
+    public Scene currentScene()
     {
         return currentScene.get();
     }
@@ -128,7 +128,7 @@ public final class GameLoop
      * @since 0.42.0
      */
     @Getter
-    public long getFrameCounter()
+    public long frameCounter()
     {
         return frameCounter;
     }
@@ -143,7 +143,7 @@ public final class GameLoop
      * @since 0.42.0
      */
     @Getter
-    public double getFrameDuration()
+    public double frameDuration()
     {
         return frameDuration;
     }
@@ -192,7 +192,7 @@ public final class GameLoop
         long frameEnd;
         while (!Thread.currentThread().isInterrupted())
         {
-            Scene scene = getCurrentScene();
+            Scene scene = currentScene();
             try
             {
                 frameCounter++;
@@ -255,7 +255,8 @@ public final class GameLoop
         }
     }
 
-    public EventListeners<FrameUpdateListener> getFrameUpdateListener()
+    @Getter
+    public EventListeners<FrameUpdateListener> frameUpdateListener()
     {
         return frameUpdateListeners;
     }
@@ -282,7 +283,7 @@ public final class GameLoop
     @Internal
     private void render(Graphics2D g, int width, int height)
     {
-        Scene scene = getCurrentScene();
+        Scene scene = currentScene();
         // have to be the same @ Game.screenshot!
         Graphics2DUtil.setAntiAliasing(g, true);
         // Absoluter Hintergrund

@@ -80,7 +80,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
         var scheme = selection.getScheme();
         int i = 0;
 
-        for (Color color : scheme.getWheelColors())
+        for (Color color : scheme.wheelColors())
         {
             COLOR_AREAS[i][0].color(ColorUtil.setBrightness(color, 0.2));
             COLOR_AREAS[i][1].color(ColorUtil.setBrightness(color, 0.4));

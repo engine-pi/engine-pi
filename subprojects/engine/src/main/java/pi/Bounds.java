@@ -96,7 +96,7 @@ public record Bounds(double x, double y, double width, double height)
     @API
     public Bounds moveBy(Vector v)
     {
-        return new Bounds(x + v.getX(), y + v.getY(), width, height);
+        return new Bounds(x + v.x(), y + v.y(), width, height);
     }
 
     /**
@@ -261,8 +261,8 @@ public record Bounds(double x, double y, double width, double height)
     @API
     public boolean contains(Vector v)
     {
-        return (v.getX() >= this.x && v.getY() >= this.y
-                && v.getX() <= (x + width) && v.getY() <= (y + height));
+        return (v.x() >= this.x && v.y() >= this.y && v.x() <= (x + width)
+                && v.y() <= (y + height));
     }
 
     /**

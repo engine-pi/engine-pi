@@ -27,7 +27,7 @@ public class SetPixelMultiplicationDemo extends Scene
 {
     static
     {
-        Game.setPixelMultiplication(4);
+        Game.pixelMultiplication(4);
     }
 
     public SetPixelMultiplicationDemo()

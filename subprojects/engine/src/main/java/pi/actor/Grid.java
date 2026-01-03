@@ -77,7 +77,7 @@ public class Grid extends Actor
         this.cols = cols;
         this.rows = rows;
         this.size = size;
-        color = colorScheme.getGreen();
+        color = colorScheme.green();
     }
 
     /**

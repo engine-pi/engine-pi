@@ -97,8 +97,8 @@ public class PaintingSurface
 
     private void setNewImage()
     {
-        var size = Game.getWindowSize();
-        image = new BufferedImage((int) size.getX(), (int) size.getY(),
+        var size = Game.windowSize();
+        image = new BufferedImage((int) size.x(), (int) size.y(),
                 BufferedImage.TYPE_INT_ARGB);
         g = image.createGraphics();
         Graphics2DUtil.setAntiAliasing(g, true);
@@ -154,7 +154,7 @@ public class PaintingSurface
     private void drawCenteredCircle(Vector position, int size)
     {
         Vector px = translateCoordinates(position);
-        g.fillOval((int) px.getX() - size / 2, (int) px.getY() - size / 2, size,
+        g.fillOval((int) px.x() - size / 2, (int) px.y() - size / 2, size,
                 size);
     }
 
@@ -180,7 +180,7 @@ public class PaintingSurface
         g.setStroke(new BasicStroke((float) lineWidth));
         Vector px1 = translateCoordinates(point1);
         Vector px2 = translateCoordinates(point2);
-        g.drawLine(px1.getX(1), px1.getY(1), px2.getX(1), px2.getY(1));
+        g.drawLine(px1.x(1), px1.y(1), px2.x(1), px2.y(1));
     }
 
     public void drawLine(Vector point1, Vector point2, Color color)

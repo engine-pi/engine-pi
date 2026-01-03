@@ -65,7 +65,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
 
     private GraphNode getCurrentGraphNode()
     {
-        return graph.getNode(getCurrentNodexIndex());
+        return graph.node(getCurrentNodexIndex());
     }
 
     private void updateCurrentNodeLabel()
@@ -79,7 +79,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
         GraphNode graphNode = getCurrentGraphNode();
         if (graphNode != null)
         {
-            graphNode.setLabel(currentLabel);
+            graphNode.label(currentLabel);
         }
     }
 
@@ -94,7 +94,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
         node.center(position);
         scene.add(node);
         nodes.add(node);
-        graph.addNode("", position.getX(), position.getY());
+        graph.addNode("", position.x(), position.y());
     }
 
     public void onMouseDown(Vector position, MouseButton button)

@@ -445,7 +445,7 @@ public class Animation extends Actor implements FrameUpdateListener
      *
      * @since 0.25.0
      *
-     * @see Game#getPixelMultiplication()
+     * @see Game#pixelMultiplication()
      */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
@@ -454,10 +454,8 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         BufferedImage image = images.get(filePath);
         return createFromSpritesheet(frameDuration, image,
-                image.getWidth()
-                        / (spriteWidth * Game.getPixelMultiplication()),
-                image.getHeight()
-                        / (spriteHeight * Game.getPixelMultiplication()),
+                image.getWidth() / (spriteWidth * Game.pixelMultiplication()),
+                image.getHeight() / (spriteHeight * Game.pixelMultiplication()),
                 width, height);
     }
 

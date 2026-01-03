@@ -31,6 +31,7 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 
 /**
@@ -107,7 +108,8 @@ public class CollisionEvent<E extends Actor>
      *     {@link Actor} gegeben.
      */
     @API
-    public E getColliding()
+    @Getter
+    public E colliding()
     {
         return colliding;
     }
@@ -142,7 +144,8 @@ public class CollisionEvent<E extends Actor>
      */
 
     @API
-    public Vector getTangentNormal()
+    @Getter
+    public Vector tangentNormal()
     {
         WorldManifold worldManifold = CollisionEvent.worldManifold.get();
         contact.getWorldManifold(worldManifold);
@@ -164,7 +167,8 @@ public class CollisionEvent<E extends Actor>
      *     größer als 2 ist.
      */
     @API
-    public List<Vector> getPoints()
+    @Getter
+    public List<Vector> points()
     {
         WorldManifold worldManifold = CollisionEvent.worldManifold.get();
         contact.getWorldManifold(worldManifold);
@@ -207,7 +211,7 @@ public class CollisionEvent<E extends Actor>
     {
         ToStringFormatter formatter = new ToStringFormatter("CollisionEvent");
         formatter.append("colliding", colliding.toString());
-        List<Vector> points = getPoints();
+        List<Vector> points = points();
         formatter.append("points", points.toString());
         if (isIgnored())
         {

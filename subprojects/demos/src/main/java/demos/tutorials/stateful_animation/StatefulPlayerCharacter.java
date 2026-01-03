@@ -108,7 +108,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         Vector velocity = velocity();
         PlayerState state = state();
-        if (velocity.getY() < -THRESHOLD)
+        if (velocity.y() < -THRESHOLD)
         {
             switch (state)
             {
@@ -126,14 +126,14 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
                 break;
             }
         }
-        else if (velocity.getY() < THRESHOLD && state == PlayerState.FALLING)
+        else if (velocity.y() < THRESHOLD && state == PlayerState.FALLING)
         {
             state(PlayerState.LANDING);
         }
-        if (Math.abs(velocity.getX()) > MAX_SPEED)
+        if (Math.abs(velocity.x()) > MAX_SPEED)
         {
-            velocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED,
-                    velocity.getY()));
+            velocity(new Vector(Math.signum(velocity.x()) * MAX_SPEED,
+                    velocity.y()));
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
@@ -146,7 +146,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         if (state == PlayerState.IDLE || state == PlayerState.WALKING
                 || state == PlayerState.RUNNING)
         {
-            double velXTotal = Math.abs(velocity.getX());
+            double velXTotal = Math.abs(velocity.x());
             if (velXTotal > RUNNING_THRESHOLD)
             {
                 changeState(PlayerState.RUNNING);
@@ -160,11 +160,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
                 changeState(PlayerState.IDLE);
             }
         }
-        if (velocity.getX() > 0)
+        if (velocity.x() > 0)
         {
             flipHorizontal(false);
         }
-        else if (velocity.getX() < 0)
+        else if (velocity.x() < 0)
         {
             flipHorizontal(true);
         }

@@ -64,7 +64,7 @@ public class TextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.setTitle("Cantarell");
+        Game.title("Cantarell");
         Game.start(new TextDemo());
     }
 }

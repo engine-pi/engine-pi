@@ -37,19 +37,19 @@ public class TurtleWindowController
 
     public TurtleWindowController size(int width, int height)
     {
-        Game.setWindowSize(width, height);
+        Game.windowSize(width, height);
         return this;
     }
 
     public TurtleWindowController position(int x, int y)
     {
-        Game.setWindowPosition(x, y);
+        Game.windowPosition(x, y);
         return this;
     }
 
     public TurtleWindowController position(Direction direction)
     {
-        Game.setWindowPosition(direction);
+        Game.windowPosition(direction);
         return this;
     }
 }

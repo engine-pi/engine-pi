@@ -24,7 +24,7 @@ import pi.Scene;
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die Methode {@link Game#setWindowPosition(int, int)}
+ * Demonstriert die Methode {@link Game#windowPosition(int, int)}
  */
 public class SetWindowSizeDemo
 {
@@ -35,10 +35,10 @@ public class SetWindowSizeDemo
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> {
-                Game.setWindowSize(600, 400);
+                Game.windowSize(600, 400);
             }
             case KeyEvent.VK_2 -> {
-                Game.setWindowSize(300, 200);
+                Game.windowSize(300, 200);
             }
             }
         });

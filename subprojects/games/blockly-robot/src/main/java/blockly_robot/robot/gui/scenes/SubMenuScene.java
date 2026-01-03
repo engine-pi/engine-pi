@@ -45,7 +45,7 @@ public class SubMenuScene extends Scene implements WindowScene
                     }
                 });
                 text.addFrameUpdateListener((deltaSeconds) -> {
-                    if (text.contains(Game.getMousePosition()))
+                    if (text.contains(Game.mousePosition()))
                     {
                         text.opacity(0.5f);
                     }

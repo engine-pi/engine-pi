@@ -42,7 +42,7 @@ public class Coin extends Animation
     @Override
     public void onCollision(CollisionEvent<PlayerCharacter> collisionEvent)
     {
-        collisionEvent.getColliding().gotItem(Item.Coin);
+        collisionEvent.colliding().gotItem(Item.Coin);
         remove();
     }
 }

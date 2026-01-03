@@ -146,7 +146,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             @Override
             public void onFrameUpdate(double pastTime)
             {
-                if (this.center().getLength() > 1000)
+                if (this.center().length() > 1000)
                 {
                     MarbleDemo.this.remove(this);
                 }

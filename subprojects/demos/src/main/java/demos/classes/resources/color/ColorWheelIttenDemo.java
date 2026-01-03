@@ -121,7 +121,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
             double angle = (i * SEGMENT_ANGLE * -1) + 90;
             Vector textPosition = getCirclePoint(7.5, angle);
             add(new Text(i + "", 0.5)
-                    .position(textPosition.getX(), textPosition.getY())
+                    .position(textPosition.x(), textPosition.y())
                     .color("weiß"));
             areas[i] = createWheelArea(i, angle);
         }
@@ -204,25 +204,25 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         NAME.content(selection.name());
         var scheme = selection.getScheme();
         int i = 0;
-        for (Color color : scheme.getWheelColors())
+        for (Color color : scheme.wheelColors())
         {
             WHEEL_AREAS[i].color(color);
             i++;
         }
         i = 0;
-        for (Color color : scheme.getPrimaryColors())
+        for (Color color : scheme.primaryColors())
         {
             PRIMARY_AREAS[i].color(color);
             i++;
         }
         i = 0;
-        for (Color color : scheme.getSecondaryColors())
+        for (Color color : scheme.secondaryColors())
         {
             SECONDARY_AREAS[i].color(color);
             i++;
         }
         i = 0;
-        for (Color color : scheme.getExtraColors())
+        for (Color color : scheme.extraColors())
         {
             EXTRA_AREAS[i].color(color);
             i++;

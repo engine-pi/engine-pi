@@ -124,7 +124,7 @@ public class JointDemo extends ForceKlickEnvironment
         weight.color(Color.WHITE);
         weight.makeDynamic();
         Vector vektor = new Vector(45 * chain.length, 35);
-        weight.center(new Vector(vektor.getX(), vektor.getY()));
+        weight.center(new Vector(vektor.x(), vektor.y()));
         weight.createRevoluteJoint(chain[chain.length - 1], vektor);
         add(weight);
     }

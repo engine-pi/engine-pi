@@ -26,14 +26,14 @@ public class BreadthFirstSearch extends GraphArrayMatrix
     {
         super();
         this.visualizer = visualizer;
-        visited = new boolean[getNodeCount()];
+        visited = new boolean[nodeCount()];
     }
 
     private void markVisited(int nodeIndex)
     {
         visualizer.setNodeColor(nodeIndex, "orange", 500);
         visited[nodeIndex] = true;
-        GraphNode node = getNode(nodeIndex);
+        GraphNode node = node(nodeIndex);
         queue.add(node);
     }
 
@@ -43,10 +43,9 @@ public class BreadthFirstSearch extends GraphArrayMatrix
         while (!queue.isEmpty())
         {
             GraphNode node = queue.remove(0);
-            for (int i = 0; i <= getNodeCount() - 1; i++)
+            for (int i = 0; i <= nodeCount() - 1; i++)
             {
-                if (matrix[getNodeIndex(
-                        node)][i] != GraphEdge.NOT_REACHABLE_WEIGHT
+                if (matrix[nodeIndex(node)][i] != GraphEdge.NOT_REACHABLE_WEIGHT
                         && !visited[i])
                 {
                     markVisited(nodeIndex);

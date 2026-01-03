@@ -161,8 +161,8 @@ public class GraphEdge
         {
             additonalArguments = ", " + additonalArguments;
         }
-        return String.format("g.addEdge(\"%s\", \"%s\"%s);", to.getLabel(),
-                from.getLabel(), additonalArguments);
+        return String.format("g.addEdge(\"%s\", \"%s\"%s);", to.label(),
+                from.label(), additonalArguments);
     }
 
     /**

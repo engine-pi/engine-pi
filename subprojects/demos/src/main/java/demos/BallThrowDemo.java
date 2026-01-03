@@ -199,8 +199,7 @@ public class BallThrowDemo extends Scene
         long zeitdifferenz = endzeit - startTime;
         // Zurückgelegte Distanz seit Simulationsstart ausmessen
         // (Pixel-Differenz ausrechnen und auf Meter umrechnen)
-        double distanz = (ball.center().getX() - DISTANCE_LEFT)
-                / PIXEL_PER_METER;
+        double distanz = (ball.center().x() - DISTANCE_LEFT) / PIXEL_PER_METER;
         // Messungen angeben
         System.out.println(
                 "Der Ball ist auf dem Boden aufgeschlagen. Seit Simulationsstart sind "

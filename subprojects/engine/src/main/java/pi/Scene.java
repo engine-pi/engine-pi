@@ -336,7 +336,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die sichtbare Fläche auf der Hauptebene
      *
-     * @see Game#getWindowSize()
+     * @see Game#windowSize()
      */
     @API
     @Getter
@@ -350,7 +350,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die <b>sichtbare Fläche</b> im Meter auf der Hauptebene.
      *
-     * @see Game#getWindowSize()
+     * @see Game#windowSize()
      *
      * @since 0.42.0
      */
@@ -358,7 +358,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public Bounds visibleArea()
     {
-        return mainLayer.visibleArea(Game.getWindowSize());
+        return mainLayer.visibleArea(Game.windowSize());
     }
 
     /**
@@ -460,8 +460,8 @@ public class Scene implements KeyStrokeListenerRegistration,
         if (j instanceof RevoluteJoint)
         {
             g.setColor(REVOLUTE_JOINT_COLOR);
-            g.drawOval((int) aInPx.getX() - (JOINT_CIRCLE_RADIUS / 2),
-                    (int) aInPx.getY() - (JOINT_CIRCLE_RADIUS / 2),
+            g.drawOval((int) aInPx.x() - (JOINT_CIRCLE_RADIUS / 2),
+                    (int) aInPx.y() - (JOINT_CIRCLE_RADIUS / 2),
                     JOINT_CIRCLE_RADIUS, JOINT_CIRCLE_RADIUS);
         }
         else if (j instanceof RopeJoint)
@@ -493,19 +493,17 @@ public class Scene implements KeyStrokeListenerRegistration,
             Vector a, Vector b, double pixelPerMeter)
     {
         g.setColor(color);
-        g.drawRect((int) a.getX() - (JOINT_CIRCLE_RADIUS / 2),
-                (int) a.getY() - (JOINT_CIRCLE_RADIUS / 2),
-                JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
-        g.drawRect((int) b.getX() - (JOINT_CIRCLE_RADIUS / 2),
-                (int) b.getY() - (JOINT_CIRCLE_RADIUS / 2),
-                JOINT_RECTANGLE_SIDE, JOINT_RECTANGLE_SIDE);
-        g.drawLine((int) a.getX(), (int) a.getY(), (int) b.getX(),
-                (int) b.getY());
+        g.drawRect((int) a.x() - (JOINT_CIRCLE_RADIUS / 2),
+                (int) a.y() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE,
+                JOINT_RECTANGLE_SIDE);
+        g.drawRect((int) b.x() - (JOINT_CIRCLE_RADIUS / 2),
+                (int) b.y() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE,
+                JOINT_RECTANGLE_SIDE);
+        g.drawLine((int) a.x(), (int) a.y(), (int) b.x(), (int) b.y());
         Vector middle = a.add(b).divide(2);
         g.drawString(
-                String.valueOf(
-                        a.getDistance(b).divide(pixelPerMeter).getLength()),
-                (int) middle.getX(), (int) middle.getY());
+                String.valueOf(a.distance(b).divide(pixelPerMeter).length()),
+                (int) middle.x(), (int) middle.y());
     }
 
     /**
@@ -746,8 +744,8 @@ public class Scene implements KeyStrokeListenerRegistration,
         {
 
             Vector center = actor.center();
-            double x = center.getX();
-            double y = center.getY();
+            double x = center.x();
+            double y = center.y();
 
             if (x < minX)
             {
@@ -893,13 +891,13 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die Position der Maus in der Szene als Vektor in Meter.
      *
-     * @see Game#getMousePosition()
+     * @see Game#mousePosition()
      */
     @API
     @Getter
     public final Vector mousePosition()
     {
-        return Game.convertMousePosition(this, Game.getMousePositionInFrame());
+        return Game.convertMousePosition(this, Game.mousePositionInFrame());
     }
 
     /**
