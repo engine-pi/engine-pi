@@ -115,19 +115,19 @@ public class MinimalDemo extends Scene
         if (Game.isKeyPressed(KeyEvent.VK_W))
         {
             // W ist gedrückt → Kamera nach oben bewegen.
-            getCamera().moveBy(0, camSpeed * pastTime);
+            getCamera().moveFocus(0, camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_S))
         {
-            getCamera().moveBy(0, -camSpeed * pastTime);
+            getCamera().moveFocus(0, -camSpeed * pastTime);
         }
         if (Game.isKeyPressed(KeyEvent.VK_A))
         {
-            getCamera().moveBy(-camSpeed * pastTime, 0);
+            getCamera().moveFocus(-camSpeed * pastTime, 0);
         }
         if (Game.isKeyPressed(KeyEvent.VK_D))
         {
-            getCamera().moveBy(camSpeed * pastTime, 0);
+            getCamera().moveFocus(camSpeed * pastTime, 0);
         }
     }
 

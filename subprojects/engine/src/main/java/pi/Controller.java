@@ -851,7 +851,7 @@ public class Controller
         Camera camera = scene.getCamera();
         double zoom = camera.meter();
         double rotation = camera.rotation();
-        Vector position = camera.center();
+        Vector position = camera.focus();
 
         int windowWidth = config.graphics().windowWidth();
         int windowHeight = config.graphics().windowHeight();

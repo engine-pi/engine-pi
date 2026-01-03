@@ -157,7 +157,7 @@ public class DefaultControl implements DefaultListener
             }
             if (dX != 0 || dY != 0)
             {
-                camera.moveBy(dX, dY);
+                camera.moveFocus(dX, dY);
             }
         }
     }

@@ -153,7 +153,7 @@ public final class CoordinateSystemDrawer
         config = Configuration.get().coordinatesystem();
         pre = g.getTransform();
         Camera camera = scene.getCamera();
-        center = camera.center();
+        center = camera.focus();
         double rotation = -camera.rotation();
         g.setClip(0, 0, width, height);
         // Ohne diesen Methodenaufruf würde das Koordinatensystemgitter im

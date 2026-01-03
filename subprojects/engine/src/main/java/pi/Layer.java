@@ -526,7 +526,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         Vector frameSize = Game.getWindowSize();
         Vector cameraPositionInPx = new Vector(frameSize.getX() / 2,
                 frameSize.getY() / 2);
-        Vector fromCamToPointInWorld = parent.getCamera().center()
+        Vector fromCamToPointInWorld = parent.getCamera().focus()
                 .multiplyX(parallaxX).multiplyY(parallaxY)
                 .getDistance(worldPoint);
         return cameraPositionInPx.add(fromCamToPointInWorld.multiplyY(-1)
@@ -543,7 +543,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public Bounds getVisibleArea(Vector gameSizeInPixels)
     {
-        Vector center = parent.getCamera().center();
+        Vector center = parent.getCamera().focus();
         double pixelPerMeter = calculatePixelPerMeter();
         return new Bounds(0, 0, gameSizeInPixels.getX() / pixelPerMeter,
                 gameSizeInPixels.getY() / pixelPerMeter)
@@ -605,7 +605,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         {
             return;
         }
-        Vector position = camera.center();
+        Vector position = camera.focus();
         double rotation = -camera.rotation();
         g.setClip(0, 0, width, height);
         g.translate(width / 2, height / 2);

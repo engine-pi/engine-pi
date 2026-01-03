@@ -75,9 +75,9 @@ public final class Camera
     public static final double DEFAULT_ZOOM_FACTOR = 0.05;
 
     /**
-     * Aktuelle Position des Mittelpunkts der Kamera.
+     * Die aktuelle Position des Mittelpunkts der Kamera.
      */
-    private Vector center;
+    private Vector focus;
 
     /**
      * Die {@link Bounds} der Kamera (sofern vorhanden), die sie in der Bewegung
@@ -88,7 +88,7 @@ public final class Camera
     /**
      * Der eventuelle Fokus der Kamera.
      */
-    private Actor focus = null;
+    private Actor actorInFocus = null;
 
     /**
      * Der Kameraverzug.
@@ -113,7 +113,59 @@ public final class Camera
     @Internal
     public Camera()
     {
-        center = new Vector(0, 0);
+        focus = new Vector(0, 0);
+    }
+
+    /**
+     * Die aktuelle Position der Kamera.
+     *
+     * @return Die aktuelle Position der Kamera.
+     */
+    @API
+    @Getter
+    public Vector focus()
+    {
+        return moveIntoBounds(focus.add(offset));
+    }
+
+    /**
+     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
+     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
+     * Koordinaten im Zentrum des Bildes.
+     *
+     * @param focus Das neue Zentrum der Kamera.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     */
+    @API
+    @Setter
+    public Camera focus(Vector focus)
+    {
+        this.focus = focus;
+        return this;
+    }
+
+    /**
+     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
+     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
+     * Koordinaten im Zentrum des Bildes.
+     *
+     * @param x Die {@code x}-Koordinate des Zentrums des Bildes.
+     * @param y Die {@code y}-Koordinate des Zentrums des Bildes.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     */
+    @API
+    public Camera focus(double x, double y)
+    {
+        focus(new Vector(x, y));
+        return this;
     }
 
     /**
@@ -126,7 +178,7 @@ public final class Camera
      * werden, kann einfach {@code null} übergeben werden, dann bleibt die
      * Kamera bis auf Weiteres in der aktuellen Position.
      *
-     * @param focus Die Figur, die fokussiert werden soll.
+     * @param actor Die Figur, die fokussiert werden soll.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -135,14 +187,14 @@ public final class Camera
      */
     @API
     @Setter
-    public Camera focus(Actor focus)
+    public Camera focus(Actor actor)
     {
-        this.focus = focus;
+        actorInFocus = actor;
         return this;
     }
 
     /**
-     * Entfernt die fokussierte Figur von der Kamera.
+     * <b>Entfernt</b> die fokussierte <b>Figur</b> von der Kamera.
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
@@ -154,7 +206,43 @@ public final class Camera
     @API
     public Camera removeFocus()
     {
-        this.focus = null;
+        this.actorInFocus = null;
+        return this;
+    }
+
+    /**
+     * <b>Verschiebt</b> die Kamera um einen bestimmten Vektor (<b>relativ</b>).
+     *
+     * @param delta Die Verschiebung als Vektor.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     */
+    @API
+    public Camera moveFocus(Vector delta)
+    {
+        focus = focus.add(delta);
+        return this;
+    }
+
+    /**
+     * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in {@code x}- und
+     * {@code y}-Richtung (<b>relativ</b>).
+     *
+     * @param deltaX Die Verschiebung in {@code x}-Richtung.
+     * @param deltaY Die Verschiebung in {@code y}-Richtung.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code camera.offset(..).focus(..)}.
+     */
+    @API
+    public Camera moveFocus(double deltaX, double deltaY)
+    {
+        moveFocus(new Vector(deltaX, deltaY));
         return this;
     }
 
@@ -169,7 +257,7 @@ public final class Camera
     @API
     public boolean hasFocus()
     {
-        return focus != null;
+        return actorInFocus != null;
     }
 
     /**
@@ -177,10 +265,11 @@ public final class Camera
      * <code>(0, 0)</code>.
      *
      * <p>
-     * Der Verzug ist ein Vektor, um den der {@link #focus Fokus} verschoben
-     * wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer als im
-     * absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender Methode
-     * gesetzt wurde: <code>camera.setOffset(new Vector(0, -100));</code>
+     * Der Verzug ist ein Vektor, um den der {@link #actorInFocus Fokus}
+     * verschoben wird. Das heißt, dass eine Figur im Fokus um 100 Pixel tiefer
+     * als im absoluten Bildzentrum liegt, wenn der Fokus-Verzug mit folgender
+     * Methode gesetzt wurde:
+     * <code>camera.setOffset(new Vector(0, -100));</code>
      * </p>
      *
      * @param offset Der Vektor, um den ab sofort die Kamera vom Zentrum des
@@ -385,81 +474,6 @@ public final class Camera
     }
 
     /**
-     * <b>Verschiebt</b> die Kamera um einen bestimmten Vektor (<b>relativ</b>).
-     *
-     * @param delta Die Verschiebung als Vektor.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     */
-    @API
-    public Camera moveBy(Vector delta)
-    {
-        center = center.add(delta);
-        return this;
-    }
-
-    /**
-     * <b>Verschiebt</b> die Kamera um einen bestimmten Wert in {@code x}- und
-     * {@code y}-Richtung (<b>relativ</b>).
-     *
-     * @param deltaX Die Verschiebung in {@code x}-Richtung.
-     * @param deltaY Die Verschiebung in {@code y}-Richtung.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     */
-    @API
-    public Camera moveBy(double deltaX, double deltaY)
-    {
-        moveBy(new Vector(deltaX, deltaY));
-        return this;
-    }
-
-    /**
-     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
-     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
-     * Koordinaten im Zentrum des Bildes.
-     *
-     * @param center Das neue Zentrum der Kamera.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     */
-    @API
-    public Camera moveTo(Vector center)
-    {
-        this.center = center;
-        return this;
-    }
-
-    /**
-     * <b>Verschiebt</b> das Zentrum der Kamera <b>zur angegebenen Position</b>
-     * (absolute Verschiebung). Von nun an ist der Punkt mit den eingegebenen
-     * Koordinaten im Zentrum des Bildes.
-     *
-     * @param x Die {@code x}-Koordinate des Zentrums des Bildes.
-     * @param y Die {@code y}-Koordinate des Zentrums des Bildes.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     */
-    @API
-    public Camera moveTo(int x, int y)
-    {
-        moveTo(new Vector(x, y));
-        return this;
-    }
-
-    /**
      * <b>Rotiert</b> die Kamera um den angegebenen <b>Winkel</b>.
      *
      * <p>
@@ -508,80 +522,6 @@ public final class Camera
     }
 
     /**
-     * Setzt die aktuelle Position der Kamera.
-     *
-     * @param x Die neue X-Koordinate des Kamerazentrums.
-     * @param y Die neue Y-Koordinate des Kamerazentrums.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     *
-     * @see #center(double, double)
-     */
-    @API
-    @Setter
-    public Camera position(double x, double y)
-    {
-        center(new Vector(x, y));
-        return this;
-    }
-
-    /**
-     * Setzt die aktuelle Position der Kamera.
-     *
-     * @param x Die neue X-Koordinate des Kamerazentrums.
-     * @param y Die neue Y-Koordinate des Kamerazentrums.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     *
-     * @since 0.33.0
-     *
-     * @see #position(double, double)
-     */
-    @API
-    @Setter
-    public Camera center(double x, double y)
-    {
-        center(new Vector(x, y));
-        return this;
-    }
-
-    /**
-     * Setzt die aktuelle Position der Kamera.
-     *
-     * @param position Die neue Position der Kamera.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code camera.offset(..).focus(..)}.
-     */
-    @API
-    @Setter
-    public Camera center(Vector position)
-    {
-        this.center = position;
-        return this;
-    }
-
-    /**
-     * Die aktuelle Position der Kamera.
-     *
-     * @return Die aktuelle Position der Kamera.
-     */
-    @API
-    @Getter
-    public Vector center()
-    {
-        return moveIntoBounds(center.add(offset));
-    }
-
-    /**
      * Gibt die Position eines Punktes in der Welt an, relativ zu seiner aktuell
      * zu zeichnenden Position und in Pixel.
      *
@@ -596,7 +536,7 @@ public final class Camera
     public Point toScreenPixelLocation(Vector locationInWorld,
             double pixelPerMeter)
     {
-        Vector cameraRelativeLocInPx = center.multiply(pixelPerMeter);
+        Vector cameraRelativeLocInPx = focus.multiply(pixelPerMeter);
         Vector frameSize = Game.getWindowSize();
         return new Point(
                 (int) (frameSize.getX() / 2 + cameraRelativeLocInPx.getX()),
@@ -616,9 +556,9 @@ public final class Camera
     {
         if (hasFocus())
         {
-            center = focus.getCenter();
+            focus = actorInFocus.getCenter();
         }
-        center = moveIntoBounds(center);
+        focus = moveIntoBounds(focus);
     }
 
     /**
@@ -654,14 +594,14 @@ public final class Camera
     {
         ToStringFormatter formatter = new ToStringFormatter("Camera");
         formatter.append("meter", meter);
-        formatter.append("center", center);
+        formatter.append("focus", focus);
         if (rotation != 0)
         {
             formatter.append("rotation", rotation);
         }
-        if (focus != null)
+        if (actorInFocus != null)
         {
-            formatter.append("focus", focus);
+            formatter.append("actorInFocus", actorInFocus);
         }
         return formatter.format();
     }

@@ -53,7 +53,7 @@ public class CameraDemo extends Scene
     public void onMouseDown(Vector position, MouseButton button)
     {
         camera.removeFocus();
-        camera.moveTo(position);
+        camera.focus(position);
         System.out.println(camera);
     }
 
@@ -69,7 +69,7 @@ public class CameraDemo extends Scene
         switch (event.getKeyCode())
         {
         case KeyEvent.VK_1 -> {
-            camera.moveTo(new Vector(1, 1));
+            camera.focus(new Vector(1, 1));
         }
         case KeyEvent.VK_UP -> moveFocus(0, 1);
         case KeyEvent.VK_LEFT -> moveFocus(-1, 0);

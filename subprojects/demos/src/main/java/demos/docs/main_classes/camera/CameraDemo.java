@@ -64,8 +64,8 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         var size = Game.getWindowSize();
         double x = position.getX() - (size.getX() / 2);
         double y = -1 * (position.getY() - (size.getY() / 2));
-        camera.moveBy(new Vector(x, y).multiply(0.001));
-        line.point1(camera.center());
+        camera.moveFocus(new Vector(x, y).multiply(0.001));
+        line.point1(camera.focus());
         line.point2(Game.getMousePosition());
     }
 

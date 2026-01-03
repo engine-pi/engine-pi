@@ -769,7 +769,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      */
     public void focusCenter()
     {
-        camera.moveTo(getCenter());
+        camera.focus(getCenter());
     }
 
     @API
