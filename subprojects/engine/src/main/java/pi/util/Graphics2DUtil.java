@@ -2,7 +2,6 @@ package pi.util;
 
 import static pi.Resources.colors;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -163,41 +162,6 @@ public class Graphics2DUtil
         g.drawString(text, x, y);
     }
 
-    /**
-     * Draw an arrow line between two points.
-     *
-     * https://stackoverflow.com/a/27461352
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param x1 x-position of first point in Pixel.
-     * @param y1 y-position of first point in Pixel.
-     * @param x2 x-position of second point in Pixel.
-     * @param y2 y-position of second point in Pixel.
-     * @param arrowWidth the width of the arrow in Pixel.
-     * @param arrowHeight the height of the arrow in Pixel.
-     */
-    public static void drawArrowLine(Graphics2D g, int x1, int y1, int x2,
-            int y2, int arrowWidth, int arrowHeight, Color color)
-    {
-        int dx = x2 - x1;
-        int dy = y2 - y1;
-        double D = Math.sqrt(dx * dx + dy * dy);
-        double xm = D - arrowWidth, xn = xm, ym = arrowHeight,
-                yn = -arrowHeight, x;
-        double sin = dy / D, cos = dx / D;
-        x = xm * cos - ym * sin + x1;
-        ym = xm * sin + ym * cos + y1;
-        xm = x;
-        x = xn * cos - yn * sin + x1;
-        yn = xn * sin + yn * cos + y1;
-        xn = x;
-        int[] xPoints = { x2, (int) xm, (int) xn };
-        int[] yPoints = { y2, (int) ym, (int) yn };
-        g.setColor(color);
-        g.drawLine(x1, y1, x2, y2);
-        g.fillPolygon(xPoints, yPoints, 3);
-    }
-
     public static void drawLine(Graphics2D g, Vector from, Vector to)
     {
         drawLine(g, from, to, 1);
@@ -208,6 +172,18 @@ public class Graphics2DUtil
     {
         g.drawLine(from.x(pixelPerMeter), from.y(pixelPerMeter),
                 to.x(pixelPerMeter), to.y(pixelPerMeter));
+    }
+
+    public static void fillPolygon(Graphics2D g, Vector... points)
+    {
+        int[] x = new int[points.length];
+        int[] y = new int[points.length];
+        for (int i = 0; i < points.length; i++)
+        {
+            x[i] = points[i].x(1);
+            y[i] = points[i].y(1);
+        }
+        g.fillPolygon(x, y, points.length);
     }
 
     // Go to
@@ -237,9 +213,11 @@ public class Graphics2DUtil
      * @param vertexAngle Der Winkel der Pfeilspitze in Grad (γ = gamma wird der
      *     Winkel genannt, der an der Spitze des gleichschenkligen Dreiecks
      *     liegt)
+     * @param asTriangle Gibt an, ob die Pfeilspitze nicht als Winkel, sondern
+     *     als Dreieck eingezeichnet werden soll.
      */
     public static void drawArrow(Graphics2D g, Vector from, Vector to,
-            int legsLength, double vertexAngle)
+            int legsLength, double vertexAngle, boolean asTriangle)
     {
         // C ist die Spitze des gleichschenkligen Dreiecks.
         Vector C = to;
@@ -253,8 +231,16 @@ public class Graphics2DUtil
 
         Vector A = to.add(Vector.ofAngle(directionA).multiply(legsLength));
         Vector B = to.add(Vector.ofAngle(directionB).multiply(legsLength));
-        drawLine(g, C, A);
-        drawLine(g, C, B);
+
+        if (asTriangle)
+        {
+            fillPolygon(g, A, B, C);
+        }
+        else
+        {
+            drawLine(g, C, A);
+            drawLine(g, C, B);
+        }
     }
 
     /**

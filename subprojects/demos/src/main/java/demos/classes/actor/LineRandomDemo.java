@@ -23,6 +23,7 @@ import static pi.Resources.colors;
 import pi.Game;
 import pi.Random;
 import pi.Scene;
+import pi.actor.ArrowType;
 import pi.actor.Line;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java
@@ -53,6 +54,16 @@ public class LineRandomDemo extends Scene
             Line line = new Line(Random.vector(this), Random.vector(this));
             line.color(colors.random());
             line.strokeWidth(Random.range(0.01, 0.5));
+
+            if (Random.toggle())
+            {
+                line.arrow1(ArrowType.CHEVERON);
+            }
+
+            if (Random.toggle())
+            {
+                line.arrow2(ArrowType.TRIANGLE);
+            }
             add(line);
         }
     }

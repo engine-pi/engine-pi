@@ -38,7 +38,7 @@ public class ArrowDemo extends Graphics2DComponent
     private void drawArrow(Graphics2D g, Vector from, Vector to)
     {
         Graphics2DUtil.drawLine(g, from, to);
-        Graphics2DUtil.drawArrow(g, from, to, 45, 90);
+        Graphics2DUtil.drawArrow(g, from, to, 45, 90, false);
     }
 
     public static void main(String[] args)
