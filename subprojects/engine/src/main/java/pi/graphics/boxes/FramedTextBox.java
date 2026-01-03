@@ -44,6 +44,6 @@ public class FramedTextBox extends FramedBox
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 }

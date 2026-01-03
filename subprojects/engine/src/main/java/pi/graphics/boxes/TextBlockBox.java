@@ -188,7 +188,7 @@ public class TextBlockBox extends TextBox
     @Override
     public String toString()
     {
-        var formatter = getToStringFormatter();
+        var formatter = toStringFormatter();
         if (lines.size() > 1)
         {
             formatter.append("lines", lines.size());

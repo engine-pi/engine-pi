@@ -79,6 +79,6 @@ public class TextLineBox extends TextBox
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 }

@@ -119,7 +119,7 @@ public class ImageBox extends LeafBox
     @Override
     public String toString()
     {
-        var formatter = getToStringFormatter();
+        var formatter = toStringFormatter();
         if (flippedHorizontally)
         {
             formatter.prepend("flippedHorizontally", true);

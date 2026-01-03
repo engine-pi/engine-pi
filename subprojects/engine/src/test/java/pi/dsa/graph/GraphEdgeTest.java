@@ -12,19 +12,19 @@ public class GraphEdgeTest
     @Test
     void testGetFrom()
     {
-        assertEquals(edge.getFrom().label(), "a");
+        assertEquals(edge.from().label(), "a");
     }
 
     @Test
     void testGetTo()
     {
-        assertEquals(edge.getTo().label(), "b");
+        assertEquals(edge.to().label(), "b");
     }
 
     @Test
     void testGetWeight()
     {
-        assertEquals(edge.getWeight(), 2);
+        assertEquals(edge.weight(), 2);
     }
 
     @Test

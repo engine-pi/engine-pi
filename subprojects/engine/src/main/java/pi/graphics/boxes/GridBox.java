@@ -212,9 +212,9 @@ public class GridBox<T extends Box> extends PaddingBox<T>
     }
 
     @Override
-    public ToStringFormatter getToStringFormatter()
+    public ToStringFormatter toStringFormatter()
     {
-        var formatter = super.getToStringFormatter();
+        var formatter = super.toStringFormatter();
         formatter.prepend("columnCount", columnCount());
         formatter.prepend("rowCount", rowCount());
         return formatter;
@@ -223,6 +223,6 @@ public class GridBox<T extends Box> extends PaddingBox<T>
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 }

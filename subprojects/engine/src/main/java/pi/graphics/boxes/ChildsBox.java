@@ -21,6 +21,7 @@ package pi.graphics.boxes;
 import java.awt.Graphics2D;
 import java.util.function.Consumer;
 
+import pi.annotations.Getter;
 import pi.debug.ToStringFormatter;
 
 /**
@@ -105,9 +106,10 @@ public class ChildsBox<T extends Box> extends Box
     }
 
     @Override
-    public ToStringFormatter getToStringFormatter()
+    @Getter
+    public ToStringFormatter toStringFormatter()
     {
-        var formatter = super.getToStringFormatter();
+        var formatter = super.toStringFormatter();
         if (numberOfChilds() > 0)
         {
             formatter.prepend("numberOfChilds", numberOfChilds());

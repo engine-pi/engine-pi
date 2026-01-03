@@ -117,7 +117,7 @@ public abstract class TextActor extends Geometry
     public TextActor(String content, double height)
     {
         this(content, height,
-                Resources.fonts.getDefault().deriveFont((float) SIZE), 0);
+                Resources.fonts.defaultFont().deriveFont((float) SIZE), 0);
     }
 
     /**

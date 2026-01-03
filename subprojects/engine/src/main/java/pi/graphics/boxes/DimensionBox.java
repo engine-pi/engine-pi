@@ -65,7 +65,7 @@ public class DimensionBox extends LeafBox
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 
 }

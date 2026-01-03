@@ -93,6 +93,6 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 }

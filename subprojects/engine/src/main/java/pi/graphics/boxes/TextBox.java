@@ -54,7 +54,7 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.38.0
      */
-    protected Font font = fonts.getDefault().deriveFont((float) fontSize);
+    protected Font font = fonts.defaultFont().deriveFont((float) fontSize);
 
     protected Color color = colors.getSafe("gray");
 
@@ -194,9 +194,9 @@ public abstract class TextBox extends LeafBox
     }
 
     @Override
-    public ToStringFormatter getToStringFormatter()
+    public ToStringFormatter toStringFormatter()
     {
-        var formatter = super.getToStringFormatter();
+        var formatter = super.toStringFormatter();
 
         if (fontSize != 16)
         {

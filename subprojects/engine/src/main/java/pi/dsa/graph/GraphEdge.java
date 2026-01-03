@@ -18,6 +18,8 @@
  */
 package pi.dsa.graph;
 
+import pi.annotations.Getter;
+
 /**
  * Stellt eine <b>Kante</b> in einem Graphen dar.
  *
@@ -116,7 +118,8 @@ public class GraphEdge
      *
      * @return Der <b>Startknoten</b>.
      */
-    public GraphNode getFrom()
+    @Getter
+    public GraphNode from()
     {
         return from;
     }
@@ -126,7 +129,8 @@ public class GraphEdge
      *
      * @return Der <b>Endknoten</b>.
      */
-    public GraphNode getTo()
+    @Getter
+    public GraphNode to()
     {
         return to;
     }
@@ -136,7 +140,8 @@ public class GraphEdge
      *
      * @return Die <b>Gewichtung</b> der Kante.
      */
-    public int getWeight()
+    @Getter
+    public int weight()
     {
         return weight;
     }

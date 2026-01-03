@@ -77,6 +77,6 @@ public class TextBlockAlignBox extends CombinedChildBox
     @Override
     public String toString()
     {
-        return getToStringFormatter().format();
+        return toStringFormatter().format();
     }
 }

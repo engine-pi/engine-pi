@@ -59,7 +59,7 @@ public class TextDemo extends Scene
     public void demonstrateFontStyle(int style, int y)
     {
         add(new Text(FontStyle.getStyle(style).toString())
-                .font(fonts.getDefault(style)).position(3, y));
+                .font(fonts.defaultFont(style)).position(3, y));
     }
 
     public static void main(String[] args)

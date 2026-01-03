@@ -178,7 +178,7 @@ public class CellBox extends ChildBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = getToStringFormatter();
+        ToStringFormatter formatter = toStringFormatter();
 
         if (vAlign != VAlign.TOP)
         {

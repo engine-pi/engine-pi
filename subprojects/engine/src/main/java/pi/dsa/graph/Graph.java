@@ -324,7 +324,7 @@ public abstract class Graph
 
     public void addEdge(GraphEdge edge)
     {
-        addEdge(edge.getFrom().label(), edge.getTo().label(), edge.getWeight(),
+        addEdge(edge.from().label(), edge.to().label(), edge.weight(),
                 edge.isDirected());
     }
 

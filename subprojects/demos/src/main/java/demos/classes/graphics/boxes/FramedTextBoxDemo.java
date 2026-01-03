@@ -35,7 +35,7 @@ import demos.graphics2d.Graphics2DComponent;
 
 public class FramedTextBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault().deriveFont(32f);
+    Font font = fonts.defaultFont().deriveFont(32f);
 
     Color backgroundColor = colors.get("red");
 

@@ -159,7 +159,7 @@ public class InsetBox extends ChildBox
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = getToStringFormatter();
+        ToStringFormatter formatter = toStringFormatter();
 
         if (left > 0)
         {

@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.resources.ResourceLoader;
 import pi.resources.ResourcesContainer;
 
@@ -220,7 +221,8 @@ public final class FontContainer extends ResourcesContainer<Font>
      *
      * @since 0.37.0
      */
-    public Font getDefault(FontStyle style)
+    @Getter
+    public Font defaultFont(FontStyle style)
     {
         return super.get(defaultFontFiles[style.getStyle()])
                 .deriveFont(style.getStyle());
@@ -236,9 +238,10 @@ public final class FontContainer extends ResourcesContainer<Font>
      *
      * @since 0.39.0
      */
-    public Font getDefault(int style)
+    @Getter
+    public Font defaultFont(int style)
     {
-        return getDefault(FontStyle.getStyle(style));
+        return defaultFont(FontStyle.getStyle(style));
     }
 
     /**
@@ -249,9 +252,10 @@ public final class FontContainer extends ResourcesContainer<Font>
      *
      * @since 0.37.0
      */
-    public Font getDefault()
+    @Getter
+    public Font defaultFont()
     {
-        return getDefault(FontStyle.PLAIN);
+        return defaultFont(FontStyle.PLAIN);
     }
 
     /**

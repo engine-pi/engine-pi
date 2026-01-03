@@ -113,7 +113,7 @@ public class BackgroundBox extends ChildBox
     @Override
     public String toString()
     {
-        var formatter = getToStringFormatter();
+        var formatter = toStringFormatter();
         if (color != null)
         {
             formatter.prepend("color", color);

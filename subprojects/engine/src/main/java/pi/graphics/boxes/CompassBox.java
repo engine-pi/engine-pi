@@ -167,7 +167,7 @@ public class CompassBox extends LeafBox
     @Override
     public String toString()
     {
-        var formatter = getToStringFormatter();
+        var formatter = toStringFormatter();
 
         if (direction != 0)
         {

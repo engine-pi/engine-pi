@@ -104,11 +104,11 @@ public class GraphVisualizer
         for (int i = 0; i < graph.edgeCount(); i++)
         {
             GraphEdge edge = graph.edge(i);
-            LabeledEdge labledEdge = new LabeledEdge(edge.getFrom().position(),
-                    edge.getTo().position());
-            if (edge.getWeight() != 1)
+            LabeledEdge labledEdge = new LabeledEdge(edge.from().position(),
+                    edge.to().position());
+            if (edge.weight() != 1)
             {
-                labledEdge.label(String.valueOf(edge.getWeight()));
+                labledEdge.label(String.valueOf(edge.weight()));
             }
             scene.add(labledEdge);
             labeledEdges[i] = labledEdge;

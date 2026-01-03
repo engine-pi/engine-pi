@@ -7,6 +7,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.LabeledNode;
+import pi.annotations.Getter;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
@@ -53,30 +54,33 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
         graph = new GraphArrayMatrix();
     }
 
-    private int getCurrentNodexIndex()
+    @Getter
+    private int currentNodexIndex()
     {
         return nodes.size() - 1;
     }
 
-    private LabeledNode getCurrentLabeledNode()
+    @Getter
+    private LabeledNode currentLabeledNode()
     {
-        return nodes.get(getCurrentNodexIndex());
+        return nodes.get(currentNodexIndex());
     }
 
-    private GraphNode getCurrentGraphNode()
+    @Getter
+    private GraphNode currentGraphNode()
     {
-        return graph.node(getCurrentNodexIndex());
+        return graph.node(currentNodexIndex());
     }
 
     private void updateCurrentNodeLabel()
     {
-        LabeledNode labeledNode = getCurrentLabeledNode();
+        LabeledNode labeledNode = currentLabeledNode();
         if (labeledNode != null)
         {
             labeledNode.label(currentLabel);
         }
 
-        GraphNode graphNode = getCurrentGraphNode();
+        GraphNode graphNode = currentGraphNode();
         if (graphNode != null)
         {
             graphNode.label(currentLabel);

@@ -70,7 +70,7 @@ public class TurtleStatistics
         });
         table.padding(3);
         table.forEachColumnBox(0, cell -> cell.box.font(Resources.fonts
-                .getDefault(FontStyle.BOLD).deriveFont((float) 12)));
+                .defaultFont(FontStyle.BOLD).deriveFont((float) 12)));
         table.forEachCell(cell -> cell.box.fontSize(12));
         framedTable = new FramedBox(table);
         framedTable.background.color(colors.get("grey", 50));

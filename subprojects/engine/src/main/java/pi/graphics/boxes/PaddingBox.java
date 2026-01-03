@@ -41,9 +41,9 @@ public abstract class PaddingBox<T extends Box> extends ChildsBox<T>
     }
 
     @Override
-    public ToStringFormatter getToStringFormatter()
+    public ToStringFormatter toStringFormatter()
     {
-        var formatter = super.getToStringFormatter();
+        var formatter = super.toStringFormatter();
         if (padding > 0)
         {
             formatter.prepend("padding", padding);

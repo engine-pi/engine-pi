@@ -31,7 +31,7 @@ import demos.graphics2d.Graphics2DComponent;
 
 public class TextLineBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.getDefault().deriveFont(64f);
+    Font font = fonts.defaultFont().deriveFont(64f);
 
     public void render(Graphics2D g)
     {
