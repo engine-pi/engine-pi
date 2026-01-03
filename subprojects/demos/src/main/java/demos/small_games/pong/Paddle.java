@@ -35,10 +35,15 @@ import pi.Rectangle;
  */
 public class Paddle extends Rectangle
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     /**
      * e Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    private final Table table;
+    private final PongTable table;
 
     /**
      * Entfernung, wie viele Meter ein Schläger bei einem Tastendruck nach oben
@@ -72,7 +77,7 @@ public class Paddle extends Rectangle
      *     </p>
      * @param table Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    public Paddle(int sideSign, Table table)
+    public Paddle(int sideSign, PongTable table)
     {
         super(0.5, 5);
         this.table = table;
@@ -117,6 +122,6 @@ public class Paddle extends Rectangle
 
     public static void main(String[] args)
     {
-        Game.start(new Table());
+        Game.start(new PongTable());
     }
 }

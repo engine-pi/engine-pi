@@ -39,6 +39,6 @@ public class Ball extends Circle
 
     public static void main(String[] args)
     {
-        Game.start(new Table());
+        Game.start(new PongTable());
     }
 }

@@ -30,6 +30,11 @@ import pi.Rectangle;
  */
 public class BounceBar extends Rectangle
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     public BounceBar(double width)
     {
         super(width, 1);
@@ -51,6 +56,6 @@ public class BounceBar extends Rectangle
 
     public static void main(String[] args)
     {
-        Game.start(new Table());
+        Game.start(new PongTable());
     }
 }

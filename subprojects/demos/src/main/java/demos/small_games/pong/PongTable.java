@@ -35,9 +35,14 @@ import pi.event.PressedKeyRepeater;
  *
  * @author Josef Friedrich
  */
-public class Table extends Scene
+public class PongTable extends Scene
         implements KeyStrokeListener, FrameUpdateListener
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     /**
      * Die linke Tischhälfte.
      */
@@ -75,8 +80,10 @@ public class Table extends Scene
      */
     private PressedKeyRepeater repeater;
 
-    public Table()
+    public PongTable()
     {
+        info().title("Pong").help(
+                "Die Tasten „q“ und „a“ steuern den linken Schläger, die Pfeiltasten (aufwärts, abwärts) den rechten Schläger. Die Eingabetaste (Return) startet das Spiel.");
         bounds = visibleArea();
 
         left = new TableSide(-1, this);
@@ -154,6 +161,6 @@ public class Table extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new Table());
+        Game.start(new PongTable());
     }
 }

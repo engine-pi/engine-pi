@@ -8,8 +8,13 @@ import pi.actor.Counter;
  */
 public class TableSide
 {
+    static
+    {
+        Game.instantMode(false);
+    }
+
     /**
-     * Die Punktestand Anzeige.
+     * Die Punktestandsanzeige.
      */
     private Counter score;
 
@@ -30,7 +35,7 @@ public class TableSide
      *     </p>
      * @param table Die sichtbare Fläche der des Ping-Pong-Tisches in Meter.
      */
-    public TableSide(int sideSign, Table table)
+    public TableSide(int sideSign, PongTable table)
     {
         score = new Counter();
         score.center(sideSign * (table.bounds.xRight() - 5),
@@ -56,6 +61,6 @@ public class TableSide
 
     public static void main(String[] args)
     {
-        Game.start(new Table());
+        Game.start(new PongTable());
     }
 }
