@@ -11,9 +11,7 @@ JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 
 
 def _normalize_package_path(package_path: str) -> str:
-    if not package_path.startswith("pi."):
-        return "pi." + package_path
-    return package_path
+    return package_path.replace("/", ".")
 
 
 def _normalize_java_path(path: str) -> str:
@@ -24,8 +22,51 @@ def _normalize_java_path(path: str) -> str:
 
 
 def _to_url(package_path: str) -> str:
-    """Convert a package path to a URL with slashes"""
+    """Convert a package path to a URL with slashes
+
+    :param package_path: for example ``pi.actor.Actor``
+
+    """
     return package_path.replace(".", "/")
+
+
+# | Pfad                              | artefactId              |
+# | --------------------------------- | ----------------------- |
+# | ./                                | engine-pi-meta          |
+# | ./subprojects/engine              | engine-pi               |
+# | ./subprojects/demos               | engine-pi-demos         |
+# | ./subprojects/cli                 | engine-pi-cli           |
+# | ./subprojects/games/blockly-robot | engine-pi-blockly-robot |
+# | ./subprojects/games/pacman        | engine-pi-pacman        |
+# | ./subprojects/games/tetris        | engine-pi-tetris        |
+# | ./subprojects/build-tools         | engine-pi-build-tools   |
+
+subprojects = {
+    "pi": "engine",
+    "demos": "demos",
+    "blockly_robot": "games/blockly-robot",
+    "tetris": "games/tetris",
+    "pacman": "games/pacman",
+    "cli": "cli",
+}
+
+
+def _convert_class_path_to_relpath(class_path: str) -> str:
+    """:param package_path: for example ``pi.actor.Actor``
+
+    :return: ``subprojects/engine/src/main/java/pi/actor/Actor.java``
+    """
+    subproject = class_path.split(".")[0]
+    class_path = class_path.replace(".", "/")
+    return f"subprojects/{subprojects[subproject]}/src/main/java/{class_path}.java"
+
+
+def _check_class_path(class_path: str) -> None:
+    relpath = _convert_class_path_to_relpath(class_path)
+    if not Path(relpath).exists():
+        raise Exception(
+            f"The class Path “{class_path}” has no corresponding Java file in “{relpath}”"
+        )
 
 
 def _caption(content: str, caption: str | None = None) -> str:
@@ -104,9 +145,10 @@ class JavaFile:
 def define_env(env: Any) -> None:
     def class_name(class_path: str, link_title: str | None = None) -> str:
         """
-        {{ class('actor.Actor') }} {{ class('pi.actor.Actor') }}
+        ``{{ class('pi.actor.Actor') }}``
         """
         class_path = _normalize_package_path(class_path)
+        _check_class_path(class_path)
         if link_title is None:
             link_title = class_path.split(".")[-1]
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"

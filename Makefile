@@ -50,6 +50,9 @@ assets_sync_resources:
 assets: assets_init assets_sync_resources
 .PHONY: assets
 
+mkdocs_build:
+	mkdocs build
+
 mkdocs_deploy:
 	mkdocs gh-deploy
 

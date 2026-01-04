@@ -11,9 +11,9 @@
     Farbe Rot das Quadrat, der Farbe Gelb das Dreieck und der Farbe Blau den Kreis
     zu.
 
-Die Färbung der einfachen geometrischen Figuren {{ class('pi.actor.Circle',
-'Kreis') }}, {{ class('pi.actor.Rectangle', 'Rechteck') }} und {{
-class('pi.actor.Triangle', 'Dreieck') }} folgt der Farbenlehre am
+Die Färbung der einfachen geometrischen Figuren {{ class('pi.Circle',
+'Kreis') }}, {{ class('pi.Rectangle', 'Rechteck') }} und {{
+class('pi.Triangle', 'Dreieck') }} folgt der Farbenlehre am
 Bauhaus:[^blog.interface.com]
 
 [^blog.interface.com]:
@@ -41,7 +41,7 @@ new Triangle(5).setCenter(7, 0);
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Circle.java -->
 
-Der {{ class('pi.actor.Circle', 'Kreis') }} ist standardmäßig **blau** gefärbt. Die Farbe Blau wirkt für
+Der {{ class('pi.Circle', 'Kreis') }} ist standardmäßig **blau** gefärbt. Die Farbe Blau wirkt für
 [Itten](https://de.wikipedia.org/wiki/Johannes_Itten) rund, erweckt ein Gefühl
 der Entspanntheit und Bewegung und steht für den „in sich bewegten Geist“, wie
 er sich ausdrückt. Der Kreis entspricht der Farbe Blau, da er ein Symbol der
@@ -51,7 +51,7 @@ er sich ausdrückt. Der Kreis entspricht der Farbe Blau, da er ein Symbol der
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Rectangle.java -->
 
-Das {{ class('pi.actor.Rectangle', 'Rechteck') }} ist standardmäßig **rot**
+Das {{ class('pi.Rectangle', 'Rechteck') }} ist standardmäßig **rot**
 gefärbt. Die Farbe Rot stellt für
 [Itten](https://de.wikipedia.org/wiki/Johannes_Itten) die körperhafte Materie
 dar. Sie wirkt statisch und schwer. Er ordnet deshalb der Farbe die statische
@@ -61,7 +61,7 @@ Form des Quadrates zu.
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Triangle.java -->
 
-Das {{ class('pi.actor.Triangle', 'Dreieck') }} ist standardmäßig **gelb**
+Das {{ class('pi.Triangle', 'Dreieck') }} ist standardmäßig **gelb**
 gefärbt. Gelb steht bei [Itten](https://de.wikipedia.org/wiki/Johannes_Itten)
 für den Geist und das Denken. Gelb zeigt sich kämpferisch und aggressiv, besitzt
 einen schwerelosen Charakter und diesem Charakter entspricht laut Itten das
