@@ -113,7 +113,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
-import pi.actor.Text;
+import pi.Text;
 
 public class HelloWorldVersion2 extends Scene
 {

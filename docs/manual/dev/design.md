@@ -29,13 +29,7 @@ Bauhaus:[^blog.interface.com]
 
 {{ image('docs/dev/design/SimpleGeometricActorsDemo.png', 'Die einfachen geometrischen Figuren Kreis, Rechteck und Dreieck dargestellt durch die Figuren <code>Circle</code>, <code>Rectangle</code> und <code>Triangle</code>') }}
 
-```java
-new Circle(5).setCenter(-7, 0);
-new Rectangle(5).setCenter(0, 0);
-new Triangle(5).setCenter(7, 0);
-```
-
-{{ demo('docs/dev/design/SimpleGeometricActorsDemo.java') }}
+{{ code('docs/dev/design/SimpleGeometricActorsDemo', 39, 41) }}
 
 ### `Circle` (Kreis)
 
