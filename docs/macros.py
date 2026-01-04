@@ -65,8 +65,13 @@ def _check_class_path(class_path: str) -> None:
     relpath = _convert_class_path_to_relpath(class_path)
     if not Path(relpath).exists():
         raise Exception(
-            f"The class Path “{class_path}” has no corresponding Java file in “{relpath}”"
+            f"The class path “{class_path}” has no corresponding Java file in “{relpath}”!"
         )
+
+
+def _check_asset(relpath: str) -> None:
+    if not (Path("assets") / relpath).exists():
+        raise Exception(f"The asset “{relpath}” doesn’t exist!")
 
 
 def _caption(content: str, caption: str | None = None) -> str:
@@ -134,8 +139,16 @@ class JavaFile:
         lines = self.lines
         if end_line > 0:
             lines = lines[:end_line]
+            if lines[len(lines) - 1] == "":
+                raise Exception(
+                    f"End line no {end_line} of code {lines} is an empty string!"
+                )
         if start_line > 0:
             lines = lines[start_line - 1 :]
+            if lines[0] == "":
+                raise Exception(
+                    f"Start line no {start_line} of code {lines} is an empty string!"
+                )
         return "\n".join(lines)
 
     def url(self) -> str:
@@ -181,6 +194,7 @@ def define_env(env: Any) -> None:
 
     @env.macro
     def image(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+        _check_asset(relpath)
         return _caption(
             f'<img src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}">',
             caption,
@@ -188,6 +202,7 @@ def define_env(env: Any) -> None:
 
     @env.macro
     def video(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+        _check_asset(relpath)
         return _caption(
             f"""<video autoplay loop>
     <source src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}" type="video/mp4" />
