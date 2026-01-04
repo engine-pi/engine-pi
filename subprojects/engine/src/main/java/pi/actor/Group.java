@@ -19,20 +19,19 @@
 package pi.actor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import pi.Scene;
 import pi.Vector;
 import pi.annotations.API;
 
-import java.util.Arrays;
-
 /**
  * Eine <b>Gruppe</b> bestehend aus mehreren {@link Actor}-Objekten.
  *
  * @author Josef Friedrich
  */
-public class Group implements Actable
+public class Group
 {
     private final List<Actor> actors;
 
