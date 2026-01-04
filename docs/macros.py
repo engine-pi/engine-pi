@@ -2,6 +2,10 @@
 https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
 """
 
+from pathlib import Path
+from typing import Any
+
+
 JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
 
@@ -29,7 +33,7 @@ def _caption(content: str, caption: str | None = None) -> str:
 """
 
 
-def define_env(env) -> None:
+def define_env(env: Any) -> None:
     def class_name(class_path: str, link_title: str | None = None) -> str:
         """
         {{ class('actor.Actor') }} {{ class('pi.actor.Actor') }}
@@ -42,14 +46,14 @@ def define_env(env) -> None:
     env.macro(class_name, "class")
 
     @env.macro
-    def package(package_path: str, link_title: str | None = None) -> str:
+    def package(package_path: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
         if link_title is None:
             link_title = package_path
 
         return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
     @env.macro
-    def demo(relpath: str, hash: str = "main", lines: str | None = None) -> str:
+    def demo(relpath: str, hash: str = "main", lines: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
         if lines is None:
             lines = ""
         if not lines.startswith("#") and lines != "":
@@ -57,14 +61,14 @@ def define_env(env) -> None:
         return f"<small>Zum Java-Code: [demos/{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
 
     @env.macro
-    def image(relpath: str, caption: str | None = None) -> str:
+    def image(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
         return _caption(
             f'<img src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}">',
             caption,
         )
 
     @env.macro
-    def video(relpath: str, caption: str | None = None) -> str:
+    def video(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
         return _caption(
             f"""<video autoplay loop>
     <source src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}" type="video/mp4" />
@@ -77,14 +81,26 @@ def define_env(env) -> None:
         )
 
     @env.macro
-    def contribute() -> str:
+    def contribute() -> str:  # pyright: ignore[reportUnusedFunction]
         return """!!! warning
 
     Diese Hilfeseite hat leider noch keinen Inhalt. Hilf mit und fülle diese Seite mit Inhalt.
 """
 
     @env.macro
-    def repo_link(relpath: str, link_title: str | None = None) -> str:
+    def repo_link(relpath: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
         if link_title is None:
             link_title = relpath
         return f"[{link_title}](https://github.com/engine-pi/engine-pi/blob/main/{relpath})"
+
+    @env.macro
+    def snippet(relpath: str) -> str:  # pyright: ignore[reportUnusedFunction]
+        """
+        https://github.com/mkdocs/mkdocs/issues/692
+
+        https://pypi.org/project/mkdocs-snippets/
+        """
+
+        path = Path("subprojects", "demos", "src", "main", "java", "demos") / relpath
+
+        return "```java\n" + path.read_text() + "\n```"
