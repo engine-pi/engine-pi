@@ -35,5 +35,3 @@ Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 {{ image('logo/Logos-forked-Engines.svg', 'Engine Alpha + LITIENGINE = Engine Pi') }}
 
 Die Dokumentation ist unter folgender URL aufrufbar: https://engine-pi.github.io/engine-pi
-
-{{ snippet('RotationDemo.java') }}

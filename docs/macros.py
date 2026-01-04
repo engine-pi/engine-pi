@@ -47,13 +47,28 @@ def _fenced_code_block(code: str, language: str = "java", start_line: int = 0) -
     return "``` " + language + linesnums + "\n" + code + "\n```"
 
 
-def _demo_github_url(relpath: str, blob: str = "main", lines: str | None = None) -> str:
+def _demo_github_url(
+    relpath: str,
+    blob: str = "main",
+    lines: str | None = None,
+    start_line: int = 0,
+    end_line: int = 0,
+) -> str:
     """
     :param blob: The branch name or the commit id
     """
     relpath = _normalize_java_path(relpath)
+
+    if lines is not None and (start_line > 0 or end_line > 0):
+        raise Exception("Use lines OR start_line and end_line")
+
     if lines is None:
         lines = ""
+    if start_line > 0:
+        lines = f"L{start_line}"
+    if end_line > 0:
+        lines = f"{lines}-L{end_line}"
+
     if not lines.startswith("#") and lines != "":
         lines = "#" + lines
 
@@ -94,7 +109,7 @@ def define_env(env: Any) -> None:
         class_path = _normalize_package_path(class_path)
         if link_title is None:
             link_title = class_path.split(".")[-1]
-        return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
 
     env.macro(class_name, "class")
 
@@ -106,12 +121,20 @@ def define_env(env: Any) -> None:
         return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
     @env.macro
-    def demo(relpath: str, blob: str = "main", lines: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    def demo(
+        relpath: str,
+        blob: str = "main",
+        lines: str | None = None,
+        start_line: int = 0,
+        end_line: int = 0,
+    ) -> str:  # pyright: ignore[reportUnusedFunction]
         """
         :param blob: The branch name or the commit id
         """
         relpath = _normalize_java_path(relpath)
-        url = _demo_github_url(relpath, blob, lines)
+        url = _demo_github_url(
+            relpath, blob, lines=lines, start_line=start_line, end_line=end_line
+        )
         return f"<small>Zum Java-Code: [demos/{relpath}]({url})</small>"
 
     @env.macro
@@ -167,8 +190,10 @@ def define_env(env: Any) -> None:
 
         return (
             _fenced_code_block(
-                java_file.get_code(start_line, end_line), language="java", start_line=start_line_for_code_block
+                java_file.get_code(start_line, end_line),
+                language="java",
+                start_line=start_line_for_code_block,
             )
             + "\n"
-            + demo(relpath)
+            + demo(relpath, start_line=start_line, end_line=end_line)
         )

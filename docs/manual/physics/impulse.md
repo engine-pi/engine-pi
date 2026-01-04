@@ -11,12 +11,8 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
-{{ demo('tutorials/physics/DominoesDemo') }}
-
-
-
 ```java
-public class DominoesDemo extends Scene
+public class ImpulseDemo extends Scene
         implements FrameUpdateListener, MouseClickListener
 {
     private Rectangle ground;
@@ -27,38 +23,37 @@ public class DominoesDemo extends Scene
 
     private Rectangle angle;
 
-    public DominoesDemo()
+    public ImpulseDemo()
     {
         setupBasicObjects();
-        makeDominoes(20, 0.4, 3);
+        makeDominoes();
     }
 
     private void setupBasicObjects()
     {
         // Boden auf dem die Dominosteine stehen
         ground = new Rectangle(200, 2);
-        ground.setCenter(0, -5);
-        ground.setColor(Color.WHITE);
+        ground.center(0, -5);
+        ground.color("white");
         add(ground);
         // Der Ball, der die Dominosteine umwerfen soll.
         ball = new Circle(0.5);
-        ball.setColor(Color.RED);
-        ball.setPosition(-10, -2);
+        ball.color("red");
+        ball.position(-10, -2);
         add(ball);
         // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
-        wall.setPosition(-14, -4);
-        wall.setColor(Color.WHITE);
-        add(wall);
+        wall.position(-14, -4);
     }
 
-    private void makeDominoes(int num, double width, double height)
+    private void makeDominoes()
     {
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < 20; i++)
         {
-            Rectangle domino = new Rectangle(width, height);
-            domino.setPosition(i * 3 * width, -4);
-            domino.setColor(Color.BLUE);
+            Rectangle domino = new Rectangle(0.4, 3);
+            domino.position(i * 3 * 0.4, -4);
+            domino.makeDynamic();
+            domino.color("blue");
             add(domino);
         }
     }
@@ -74,7 +69,7 @@ Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zei
 ///
 
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
-drückt sich in verschiedenen `BodyTypes` aus:
+drückt sich in verschiedenen {{ class('pi.actor.BodyType') }}s  aus:
 
 - Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte:
   Der Ball prallt an den Dominos ab und die Steine fallen um. Diese `Actors` haben
@@ -83,28 +78,16 @@ drückt sich in verschiedenen `BodyTypes` aus:
   wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben.
   Diese `Actors` haben einen statischen Körper.
 
-Mit der Methode `Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
-eines `Actors` bestimmt. Zusätzlich wird mit `Scene.setGracity(Vector)` eine
+Mit der Methode `#!java Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
+eines `Actors` bestimmt. Zusätzlich wird mit `#!java Scene.setGracity(Vector)` eine
 Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
 Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden
 hält den Fall
 
-In einer `setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
+In einer `#!java setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
 die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 
-{{ demo('tutorials/physics/DominoesDemo', '3c5fad40d3031ce6de9719deb41bf52f1a774022', 'L77-L83') }}
-
-```java
-private void setupPhysics()
-{
-    ground.makeStatic();
-    wall.makeDynamic();
-    ball.makeDynamic();
-    setGravityOfEarth();
-}
-```
-
-{{ code('docs/physics/ImpulseDemo.java', 76, 83) }}
+{{ code('docs/physics/ImpulseDemo.java', 77, 83) }}
 
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
@@ -116,7 +99,7 @@ Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden häl
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
-in der Dokumentation von `BodyType` und eine vergleichende Übersicht in der
+in der Dokumentation von {{ class('pi.actor.BodyType') }} und eine vergleichende Übersicht in der
 dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
 
 Zeit, die Dominos umzuschmeißen! Die Methode
@@ -138,7 +121,7 @@ Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
 Impulses markiert:
 
-{{ code('docs/physics/ImpulseDemo.java', 69, 75) }}
+{{ code('docs/physics/ImpulseDemo.java', 70, 75) }}
 
 {{ image('docs/Dominos_4-Wurfwinkel-Visualisierung.gif') }}
 /// caption
