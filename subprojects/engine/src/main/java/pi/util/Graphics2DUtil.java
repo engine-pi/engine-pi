@@ -175,14 +175,15 @@ public class Graphics2DUtil
                 to.x(pixelPerMeter), to.y(pixelPerMeter));
     }
 
-    public static void fillPolygon(Graphics2D g, Vector... points)
+    public static void fillPolygon(Graphics2D g, double pixelPerMeter,
+            Vector... points)
     {
         int[] x = new int[points.length];
         int[] y = new int[points.length];
         for (int i = 0; i < points.length; i++)
         {
-            x[i] = points[i].x(1);
-            y[i] = points[i].y(1);
+            x[i] = points[i].x(pixelPerMeter);
+            y[i] = points[i].y(pixelPerMeter);
         }
         g.fillPolygon(x, y, points.length);
     }
@@ -235,7 +236,7 @@ public class Graphics2DUtil
 
         if (asTriangle)
         {
-            fillPolygon(g, A, B, C);
+            fillPolygon(g, 1, A, B, C);
         }
         else
         {

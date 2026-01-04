@@ -28,34 +28,21 @@ import pi.Vector;
 import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.physics.FixtureBuilder;
+import pi.util.Graphics2DUtil;
 
 /**
  * Beschreibt eine beliebige <b>polygonale</b> geometrische Form.
  *
  * @author Michael Andonie
+ * @author Josef Friedrich
  */
 @API
 public class Polygon extends Geometry
 {
     /**
-     * Die x-Koordinate der Punkte, die das Polygon beschreiben, in Meter.
+     * Der Streckenzug an Punkten, der das Polygon beschreibt.
      */
-    private double[] px;
-
-    /**
-     * Die y-Koordinate der Punkte, die das Polygon beschreiben, in Meter.
-     */
-    private double[] py;
-
-    /**
-     * Die x-Koordinate der Punkte, die das Polygon beschreiben, in Pixel.
-     */
-    private int[] scaledPx;
-
-    /**
-     * Die y-Koordinate der Punkte, die das Polygon beschreiben, in Pixel.
-     */
-    private int[] scaledPy;
+    private Vector[] points;
 
     /**
      * Erstellt ein neues Polygon. Seine Position ist der <b>Ursprung</b>.
@@ -66,6 +53,7 @@ public class Polygon extends Geometry
     public Polygon(Vector... points)
     {
         super(() -> FixtureBuilder.polygon(points));
+        this.points = points;
         resetPoints(points);
     }
 
@@ -88,15 +76,6 @@ public class Polygon extends Geometry
             throw new RuntimeException(
                     "Der Streckenzug muss mindestens aus 3 Punkten bestehen, um ein gültiges Polygon zu beschreiben.");
         }
-        px = new double[points.length];
-        py = new double[points.length];
-        scaledPx = new int[points.length];
-        scaledPy = new int[points.length];
-        for (int i = 0; i < points.length; i++)
-        {
-            px[i] = points[i].x();
-            py[i] = points[i].y();
-        }
         fixture(() -> FixtureBuilder.polygon(points));
     }
 
@@ -107,15 +86,10 @@ public class Polygon extends Geometry
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        for (int i = 0; i < scaledPx.length; i++)
-        {
-            scaledPx[i] = (int) (px[i] * pixelPerMeter);
-            scaledPy[i] = (int) (py[i] * pixelPerMeter);
-        }
-        AffineTransform at = g.getTransform();
+        AffineTransform oldTransform = g.getTransform();
         g.scale(1, -1);
         g.setColor(color());
-        g.fillPolygon(scaledPx, scaledPy, scaledPx.length);
-        g.setTransform(at);
+        Graphics2DUtil.fillPolygon(g, pixelPerMeter, points);
+        g.setTransform(oldTransform);
     }
 }
