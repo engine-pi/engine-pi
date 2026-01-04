@@ -40,40 +40,6 @@ public interface ActorAdder
 {
     Scene scene();
 
-    /* ___ Hexagon (Sechseck) _____________________________________________ */
-
-    default Hexagon addHexagon(double radius)
-    {
-        Hexagon actor = new Hexagon(radius);
-        scene().add(actor);
-        return actor;
-    }
-
-    default Hexagon addHexagon(double radius, double x, double y)
-    {
-        Hexagon actor = addHexagon(radius);
-        actor.position(x, y);
-        return actor;
-    }
-
-    default Hexagon addHexagon(double x, double y)
-    {
-        return addHexagon(0.5, x, y);
-    }
-
-    default Hexagon addHexagon(double x, double y, String color)
-    {
-        Hexagon actor = addHexagon(x, y);
-        actor.color(color);
-        return actor;
-    }
-
-    default Hexagon addHexagon(double radius, double x, double y, String color)
-    {
-        Hexagon actor = addHexagon(radius, x, y);
-        actor.color(color);
-        return actor;
-    }
     /* ___ Image (Bild) _____________________________________________________ */
 
     default Image addImage(String filePath, double pixelPerMeter)
@@ -88,26 +54,6 @@ public interface ActorAdder
         Image actor = new Image(filePath, width, height);
         scene().add(actor);
         return actor;
-    }
-    /* ___ Pentagon (Fünfeck) _______________________________________________ */
-
-    default Pentagon addPentagon(double radius)
-    {
-        Pentagon actor = new Pentagon(radius);
-        scene().add(actor);
-        return actor;
-    }
-
-    default Pentagon addPentagon(double radius, double x, double y)
-    {
-        Pentagon actor = addPentagon(radius);
-        actor.position(x, y);
-        return actor;
-    }
-
-    default Pentagon addPentagon(double x, double y)
-    {
-        return addPentagon(0.5, x, y);
     }
 
     /* ___ RegularPolygon (Reguläres Vieleck) _______________________________ */
