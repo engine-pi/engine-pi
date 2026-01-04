@@ -85,11 +85,12 @@ public class RegularPolygon extends Polygon
             int x = -10;
             for (int i = 3; i < 8; i++)
             {
-                scene.addRegularPolygon(i, 2, x, 0);
+                scene.add(new RegularPolygon(i, 2).position(x, 0));
                 scene.add(
                         new Text(i + "").position(x - 0.25, -4).color("white"));
                 x += 5;
             }
         });
+        Game.windowSize(1000, 500);
     }
 }

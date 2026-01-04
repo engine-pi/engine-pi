@@ -33,7 +33,6 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 
 import pi.actor.Actor;
-import pi.actor.ActorAdder;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -67,7 +66,7 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
  */
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration, ActorAdder, RenderSource
+        FrameUpdateListenerRegistration, RenderSource
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 

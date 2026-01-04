@@ -431,12 +431,14 @@ public class Image extends Actor
      */
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new Scene()
         {
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.
-                Image image = addImage("logo/logo.png", 40);
+                Image image = new Image("logo/logo.png", 40);
                 image.center(0, 0);
+                add(image);
                 addKeyStrokeListener((event -> {
                     switch (event.getKeyCode())
                     {

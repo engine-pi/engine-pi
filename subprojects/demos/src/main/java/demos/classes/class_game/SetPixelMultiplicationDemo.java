@@ -22,21 +22,24 @@ import pi.Game;
 import pi.Scene;
 import pi.Text;
 import pi.actor.Actor;
+import pi.actor.Image;
 
 public class SetPixelMultiplicationDemo extends Scene
 {
     static
     {
+        Game.instantMode(false);
         Game.pixelMultiplication(4);
     }
 
     public SetPixelMultiplicationDemo()
     {
         add(new Text("Text").position(0, -1));
-        Actor image = addImage(
+        Actor image = new Image(
                 "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
                 1, 1);
         focus(image);
+        add(image);
         backgroundColor("white");
     }
 

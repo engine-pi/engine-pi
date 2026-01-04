@@ -45,8 +45,6 @@ import pi.physics.FixtureData;
  *
  * @author Michael Andonie
  * @author Niklas Keller
- *
- * @see ActorAdder
  */
 public abstract class CircleActor extends Geometry
 {

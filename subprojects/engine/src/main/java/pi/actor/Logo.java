@@ -33,7 +33,7 @@ import pi.Vector;
  *
  * @since 0.20.0
  */
-public class Logo implements ActorAdder
+public class Logo
 {
     private final Scene scene;
 
@@ -57,12 +57,6 @@ public class Logo implements ActorAdder
         this.factor = factor;
         this.anchor = anchor;
         draw();
-    }
-
-    @Override
-    public Scene scene()
-    {
-        return scene;
     }
 
     public void applyPhysicSettings(Actor actor)
