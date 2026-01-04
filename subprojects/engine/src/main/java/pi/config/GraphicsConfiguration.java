@@ -27,14 +27,19 @@ package pi.config;
 
 import java.awt.Dimension;
 
+import pi.Camera;
 import pi.Direction;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
 /**
- * Represents the graphic configuration settings. This class extends the
- * ConfigurationGroup to provide specific settings for graphics.
+ * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.
+ *
+ * <p>
+ * Diese Klasse erweitert die {@link ConfigurationGroup}, um spezifische
+ * Einstellungen für Grafiken bereitzustellen.
+ * </p>
  *
  * @author Josef Friedrich
  * @author Steffen Wilke
@@ -273,6 +278,73 @@ public class GraphicsConfiguration extends ConfigurationGroup
         set("framerate", framerate);
         return this;
     }
+
+    /* pixelMultiplication */
+
+    /**
+     * Wie oft ein <b>Pixel vervielfältigt</b> werden soll.
+     *
+     * <p>
+     * Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel}
+     * der Abmessung {@code 3x3}.
+     * </p>
+     */
+    private int pixelMultiplication = 1;
+
+    /**
+     * Gibt den Wert der <b>Pixelvervielfältigung</b> zurück.
+     *
+     * @return Der Wert der <b>Pixelvervielfältigung</b>.
+     *
+     * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     * @see Camera#meter()
+     * @see pi.actor.Animation#createFromSpritesheet
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public int pixelMultiplication()
+    {
+        return pixelMultiplication;
+    }
+
+    /**
+     * Gibt wahr zurück, wenn die <b>Pixelvervielfältigung</b> aktiviert ist.
+     *
+     * @return Wahr, wenn die <b>Pixelvervielfältigung</b> aktiviert ist.
+     *
+     * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
+     *
+     * @since 0.25.0
+     */
+    public boolean isPixelMultiplication()
+    {
+        return pixelMultiplication > 1;
+    }
+
+    /**
+     * Setzt wie oft ein <b>Pixel vervielfältigt</b> werden soll.
+     *
+     * @param pixelMultiplication Der Wert der <b>Pixelvervielfältigung</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public GraphicsConfiguration pixelMultiplication(int pixelMultiplication)
+    {
+        set("pixelMultiplication", pixelMultiplication);
+        return this;
+    }
+
+    /* screenRecordingNFrames */
 
     /**
      * Macht jedes n-te Einzelbild ein Bildschirmfoto.

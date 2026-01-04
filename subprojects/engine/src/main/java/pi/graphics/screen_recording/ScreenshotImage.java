@@ -39,7 +39,7 @@ public class ScreenshotImage
 
     public ScreenshotImage(int width, int height)
     {
-        var config = Configuration.get().graphics();
+        var config = Configuration.get().graphics;
         image = new BufferedImage(config.windowWidth(), config.windowHeight(),
                 BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();

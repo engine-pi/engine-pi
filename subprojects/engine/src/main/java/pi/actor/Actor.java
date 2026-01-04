@@ -165,7 +165,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         physicsHandler = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
         EventListeners.registerListeners(this);
-        if (Configuration.get().game().instantMode())
+        if (Configuration.get().game.instantMode())
         {
             Game.startedActiveScene().add(this);
         }
@@ -859,7 +859,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        if (Configuration.get().debug().showPositions())
+        if (Configuration.get().debug.showPositions())
         {
             Graphics2DUtil.drawText(g, actor.positionformatted(), 8, 5, 5);
         }

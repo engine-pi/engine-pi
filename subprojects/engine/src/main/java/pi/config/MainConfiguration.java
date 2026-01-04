@@ -68,36 +68,11 @@ public class MainConfiguration extends ConfigurationLoader
         add(game, graphics, sound, debug, coordinatesystem);
     }
 
-    public GameConfiguration game()
-    {
-        return game;
-    }
-
-    public GraphicsConfiguration graphics()
-    {
-        return graphics;
-    }
-
-    public SoundConfiguration sound()
-    {
-        return sound;
-    }
-
-    public DebugConfiguration debug()
-    {
-        return debug;
-    }
-
-    public CoordinatesystemConfiguration coordinatesystem()
-    {
-        return coordinatesystem;
-    }
-
     public static void main(String[] args)
     {
         MainConfiguration game = new MainConfiguration();
         game.load();
-        int width = game.graphics().windowWidth();
+        int width = game.graphics.windowWidth();
         System.out.println(width);
     }
 }

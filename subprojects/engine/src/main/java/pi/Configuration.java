@@ -66,19 +66,9 @@ public final class Configuration extends MainConfiguration
         return configuration;
     }
 
-    /**
-     * Wie oft ein <b>Pixel vervielfältigt</b> werden soll.
-     *
-     * <p>
-     * Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel}
-     * der Abmessung {@code 3x3}.
-     * </p>
-     */
-    public static int pixelMultiplication = 1;
-
     public static void main(String[] args)
     {
         Configuration config = Configuration.get();
-        System.out.println(config.graphics().windowHeight());
+        System.out.println(config.graphics.windowHeight());
     }
 }

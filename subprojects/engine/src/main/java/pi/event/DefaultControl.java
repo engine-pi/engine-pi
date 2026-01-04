@@ -48,7 +48,7 @@ public class DefaultControl implements DefaultListener
 {
     private static final double CAMERA_SPEED = 7.0;
 
-    private DebugConfiguration config = Configuration.get().debug();
+    private DebugConfiguration config = Configuration.get().debug;
 
     private Camera getCamera()
     {

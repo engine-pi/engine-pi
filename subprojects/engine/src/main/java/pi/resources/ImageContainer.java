@@ -32,7 +32,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import pi.Game;
+import pi.Configuration;
 import pi.util.ImageUtil;
 
 /**
@@ -60,9 +60,11 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         {
             return null;
         }
-        if (Game.pixelMultiplication() > 1)
+        int pixelMultiplication = Configuration.get().graphics
+                .pixelMultiplication();
+        if (pixelMultiplication > 1)
         {
-            image = ImageUtil.multiplyPixel(image, Game.pixelMultiplication());
+            image = ImageUtil.multiplyPixel(image, pixelMultiplication);
         }
         return ImageUtil.toCompatibleImage(image);
     }
@@ -129,6 +131,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, Game.pixelMultiplication(), fromColors, toColors);
+        return get(name, Configuration.get().graphics.pixelMultiplication(),
+                fromColors, toColors);
     }
 }

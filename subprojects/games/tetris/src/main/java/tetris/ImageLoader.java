@@ -21,7 +21,7 @@ import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
 import java.awt.image.BufferedImage;
 
-import pi.Game;
+import pi.Configuration;
 import pi.Resources;
 import pi.actor.Image;
 import pi.util.ImageUtil;
@@ -53,6 +53,7 @@ public class ImageLoader
         BufferedImage image = Resources.images.get(pathname);
         image = ImageUtil.replaceColors(image, COLOR_SCHEME_GRAY.getColors(),
                 COLOR_SCHEME_GREEN.getColors());
-        return new Image(image, Tetris.BLOCK_SIZE * Game.pixelMultiplication());
+        return new Image(image, Tetris.BLOCK_SIZE
+                * Configuration.get().graphics.pixelMultiplication());
     }
 }

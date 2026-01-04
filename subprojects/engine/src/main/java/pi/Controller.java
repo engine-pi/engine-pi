@@ -28,7 +28,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
@@ -90,12 +89,11 @@ public class Controller
 
     private static final Configuration config = Configuration.get();
 
-    private static final GameConfiguration gameConfig = config.game();
+    private static final GameConfiguration gameConfig = config.game;
 
-    private static final GraphicsConfiguration graphicsConfig = config
-            .graphics();
+    private static final GraphicsConfiguration graphicsConfig = config.graphics;
 
-    private static final DebugConfiguration debugConfig = config.debug();
+    private static final DebugConfiguration debugConfig = config.debug;
 
     /**
      * Eigentliches Fenster des Spiels.
@@ -155,80 +153,27 @@ public class Controller
     }
 
     /**
-     * Setzt den Wert der Pixelvervielfältigung.
-     *
-     * @param pixelMultiplication Der Wert der Pixelvervielfältigung.
-     *
-     * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
-     *
-     * @since 0.25.0
-     */
-    @Setter
-    public static void pixelMultiplication(int pixelMultiplication)
-    {
-        Configuration.pixelMultiplication = pixelMultiplication;
-    }
-
-    /**
-     * Gibt den Wert der Pixelvervielfältigung zurück.
-     *
-     * @return Der Wert der Pixelvervielfältigung.
-     *
-     * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
-     * @see Camera#meter()
-     * @see pi.actor.Animation#createFromSpritesheet
-     *
-     * @since 0.25.0
-     */
-    @Getter
-    public static int pixelMultiplication()
-    {
-        return Configuration.pixelMultiplication;
-    }
-
-    /**
-     * Gibt wahr zurück, wenn die Pixelvervielfältigung aktiviert ist.
-     *
-     * @return Wahr, wenn die Pixelvervielfältigung aktiviert ist.
-     *
-     * @see pi.util.ImageUtil#multiplyPixel(BufferedImage, int)
-     *
-     * @since 0.25.0
-     */
-    public static boolean isPixelMultiplication()
-    {
-        return Configuration.pixelMultiplication > 1;
-    }
-
-    /**
      * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
      * <b>Höhe</b> und <b>Pixelvervielfältigung</b>.
      *
      * @param scene Die <b>Szene</b>, mit der das Spiel gestartet wird.
      * @param width Die <b>Breite</b> des Zeichenbereichs in Pixel.
      * @param height Die <b>Höhe</b> des Zeichenbereichs in Pixel.
-     * @param pixelMultiplication Wie oft ein <b>Pixel vervielfältigt</b> werden
-     *     soll.
      *
      * @return Die Szene, mit der das Spiel gestartet wurde.
-     *
-     * @see #pixelMultiplication(int)
-     *
-     * @since 0.26.0 parameter pixelMultiplication
      */
     @API
-    public static Scene start(Scene scene, int width, int height,
-            int pixelMultiplication)
+    public static Scene start(Scene scene, int width, int height)
     {
         if (renderPanel != null)
         {
             throw new IllegalStateException(
                     "Die Methode start() wurde bereits ausgeführt und kann nur einmal ausgeführt werden");
         }
-        pixelMultiplication(pixelMultiplication);
+        int pixelMultiplication = graphicsConfig.pixelMultiplication();
         width *= pixelMultiplication;
         height *= pixelMultiplication;
-        config.graphics().windowDimension(width, height);
+        graphicsConfig.windowDimension(width, height);
         Controller.scene = scene;
         renderPanel = new RenderPanel(width, height);
         frame.setResizable(false);
@@ -277,39 +222,6 @@ public class Controller
     }
 
     /**
-     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b>,
-     * <b>Höhe</b>
-     *
-     * @param width Die Breite des Zeichenbereichs in Pixel.
-     * @param height Die Höhe des Zeichenbereichs in Pixel.
-     * @param scene Die Szene, mit der das Spiel gestartet wird.
-     *
-     * @return Die Szene, mit der das Spiel gestartet wurde.
-     *
-     * @see #pixelMultiplication()
-     *
-     * @deprecated use {@link #start(Scene, int, int)}
-     */
-    public static Scene start(int width, int height, Scene scene)
-    {
-        return start(scene, width, height, pixelMultiplication());
-    }
-
-    /**
-     * Startet das Spiel in einem Fenster mit der angegebenen <b>Breite</b> und
-     * <b>Höhe</b>.
-     *
-     * @param scene Die Szene, mit der das Spiel gestartet wird.
-     *
-     * @return Die Szene, mit der das Spiel gestartet wurde.
-     */
-    @API
-    public static Scene start(Scene scene, int width, int height)
-    {
-        return start(width, height, scene);
-    }
-
-    /**
      * Startet das Spiel in einem Fenster mit den Standard-Abmessungen
      * ({@code 800x600} Pixel falls nicht anderweitig konfiguriert). Es wird
      * automatische eine Szene erzeugt und diese zur weiteren Verwendung an eine
@@ -346,8 +258,8 @@ public class Controller
     @API
     public static Scene start(Scene scene)
     {
-        return start(config.graphics().windowWidth(),
-                config.graphics().windowHeight(), scene);
+        return start(scene, graphicsConfig.windowWidth(),
+                graphicsConfig.windowHeight());
     }
 
     /**
@@ -362,7 +274,7 @@ public class Controller
     @API
     public static Scene start()
     {
-        config.game().instantMode(false);
+        gameConfig.instantMode(false);
         return start(new MainAnimation());
     }
 
@@ -709,8 +621,6 @@ public class Controller
      *
      * @return <code>true</code>, wenn das Spiel läuft, sonst
      *     <code>false</code>.
-     *
-     * @see #start(int, int, Scene)
      */
     @API
     public static boolean isRunning()
@@ -742,9 +652,9 @@ public class Controller
             throw new RuntimeException(
                     "Die Änderung der Fenstergröße ist erst möglich, nachdem die start()-Methode ausgeführt wurde.");
         }
-        int diffX = (width - config.graphics().windowWidth()) / 2;
-        int diffY = (height - config.graphics().windowHeight()) / 2;
-        config.graphics().windowDimension(width, height);
+        int diffX = (width - config.graphics.windowWidth()) / 2;
+        int diffY = (height - config.graphics.windowHeight()) / 2;
+        config.graphics.windowDimension(width, height);
         renderPanel.setSize(width, height);
         renderPanel.setPreferredSize(new Dimension(width, height));
         frame.pack();
@@ -765,8 +675,8 @@ public class Controller
     @Getter
     public static Vector windowSize()
     {
-        return new Vector(config.graphics().windowWidth(),
-                config.graphics().windowHeight());
+        return new Vector(config.graphics.windowWidth(),
+                config.graphics.windowHeight());
     }
 
     /**
@@ -865,8 +775,8 @@ public class Controller
         double rotation = camera.rotation();
         Vector position = camera.focus();
 
-        int windowWidth = config.graphics().windowWidth();
-        int windowHeight = config.graphics().windowHeight();
+        int windowWidth = config.graphics.windowWidth();
+        int windowHeight = config.graphics.windowHeight();
         return new Vector(
                 position.x() + ((Math.cos(Math.toRadians(rotation))
                         * (mousePosition.x - windowWidth / 2.0)

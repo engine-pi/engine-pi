@@ -21,7 +21,8 @@ public class Main
         scene.camera().meter(8);
         // 224 = 28 * 8
         // 288 = 36 * 8
-        Game.start(scene, 224, 288, pixelMultiplication);
+        Configuration.get().graphics.pixelMultiplication(pixelMultiplication);
+        Game.start(scene, 224, 288);
     }
 
     /**

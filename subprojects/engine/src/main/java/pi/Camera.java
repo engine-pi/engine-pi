@@ -385,18 +385,12 @@ public final class Camera
      * </p>
      *
      * @return Die Anzahl an Pixel aus, die einem Meter entsprechen.
-     *
-     * @see Game#pixelMultiplication()
      */
     @API
     @Getter
     public double meter()
     {
-        if (Game.isPixelMultiplication())
-        {
-            return meter * Game.pixelMultiplication();
-        }
-        return meter;
+        return meter * Configuration.get().graphics.pixelMultiplication();
     }
 
     /**

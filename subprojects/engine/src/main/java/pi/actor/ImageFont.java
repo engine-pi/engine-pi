@@ -32,7 +32,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import pi.Game;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -292,13 +291,11 @@ public class ImageFont
     }
 
     /**
-     * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
+     * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll. i
      *
      * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
      *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
      *     Abmessung {@code 3x3}.
-     *
-     * @see Game#pixelMultiplication()
      */
     @Getter
     public int pixelMultiplication()

@@ -48,7 +48,7 @@ class VideoTask extends PhotoshootingTask
 
     VideoTask()
     {
-        this(Configuration.get().graphics().screenRecordingNFrames());
+        this(Configuration.get().graphics.screenRecordingNFrames());
     }
 
     VideoTask(int nFrames)
@@ -115,7 +115,7 @@ class VideoTask extends PhotoshootingTask
                 new ImagesToVideoConverter(baseDir(),
                         FileUtil.getVideosDir() + "/Engine-Pi_"
                                 + getFormattedTime(),
-                        (int) Math.round((double) Configuration.get().graphics()
+                        (int) Math.round((double) Configuration.get().graphics
                                 .framerate() / nFrames))
                         .generate();
                 // Den temporären Ordner mit allen Bilder löschen.

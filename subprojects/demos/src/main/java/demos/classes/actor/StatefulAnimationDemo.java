@@ -18,6 +18,7 @@
  */
 package demos.classes.actor;
 
+import pi.Configuration;
 import pi.Game;
 import pi.Scene;
 import pi.actor.StatefulSpritesheetAnimation;
@@ -89,7 +90,7 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.pixelMultiplication(8);
+        Configuration.get().graphics.pixelMultiplication(8);
         Game.start(new StatefulAnimationDemo(), 50, 50);
     }
 }

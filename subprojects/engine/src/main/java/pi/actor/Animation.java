@@ -31,7 +31,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import pi.Game;
+import pi.Configuration;
 import pi.animation.AnimationFrame;
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -444,19 +444,19 @@ public class Animation extends Actor implements FrameUpdateListener
      * @return Eine mit Einzelbildern bestückte Animation.
      *
      * @since 0.25.0
-     *
-     * @see Game#pixelMultiplication()
      */
     @API
     public static Animation createFromSpritesheet(double frameDuration,
             String filePath, double width, double height, int spriteWidth,
             int spriteHeight)
     {
+        int pixelMultiplication = Configuration.get().graphics
+                .pixelMultiplication();
         BufferedImage image = images.get(filePath);
         return createFromSpritesheet(frameDuration, image,
-                image.getWidth() / (spriteWidth * Game.pixelMultiplication()),
-                image.getHeight() / (spriteHeight * Game.pixelMultiplication()),
-                width, height);
+                image.getWidth() / (spriteWidth * pixelMultiplication),
+                image.getHeight() / (spriteHeight * pixelMultiplication), width,
+                height);
     }
 
     /**

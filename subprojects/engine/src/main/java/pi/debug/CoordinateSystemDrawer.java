@@ -150,7 +150,7 @@ public final class CoordinateSystemDrawer
         this.width = width;
         this.height = height;
 
-        config = Configuration.get().coordinatesystem();
+        config = Configuration.get().coordinatesystem;
         pre = g.getTransform();
         Camera camera = scene.camera();
         center = camera.focus();
@@ -406,8 +406,8 @@ public final class CoordinateSystemDrawer
         Game.debug();
         Scene scene = Game.start();
         scene.addKeyStrokeListener((event) -> {
-            CoordinatesystemConfiguration config = Configuration.get()
-                    .coordinatesystem();
+            CoordinatesystemConfiguration config = Configuration
+                    .get().coordinatesystem;
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> config.linesNMeter(1);
