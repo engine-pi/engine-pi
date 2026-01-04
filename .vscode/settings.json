@@ -30,24 +30,29 @@
   },
   "java.project.explorer.showNonJavaResources": false,
   "java.dependency.syncWithFolderExplorer": true,
-"java.compile.nullAnalysis.mode": "disabled",
-"favorites.resources": [
+  "java.compile.nullAnalysis.mode": "disabled",
+  "favorites.resources": [
     {
-        "filePath": "subprojects/engine/src/main/java/pi",
-        "group": "Default"
+      "filePath": "subprojects/engine/src/main/java/pi",
+      "group": "Default"
     },
     {
-        "filePath": "subprojects/demos/src/main/java/demos",
-        "group": "Default"
+      "filePath": "subprojects/demos/src/main/java/demos",
+      "group": "Default"
     },
     {
-        "filePath": "docs/dev/javadoc.md",
-        "group": "Default"
+      "filePath": "docs/dev/javadoc.md",
+      "group": "Default"
     },
     {
-        "filePath": "docs",
-        "group": "Default"
+      "filePath": "docs",
+      "group": "Default"
     }
-],
-"favorites.sortOrder": "MANUAL"
+  ],
+  "favorites.sortOrder": "MANUAL",
+  "files.exclude": {
+    "**/__pycache__/": true,
+    ".idea/": true,
+    ".gitmodules": true
+  }
 }

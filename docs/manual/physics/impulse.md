@@ -4,14 +4,7 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Physics
 
-Die Engine Pi nutzt eine [Java-Version](http://jbox2d.org/) von [Box2D](https://box2d.org/). Diese mächtige
-und effiziente Physics-Engine ist in der Engine Pi leicht zu bedienen und
-ermöglicht es, mit wenig Aufwand mechanische Phänomene in ein Spiel zu bringen.
-
-Die Physics Engine basiert auf den Prinzipien der [klassischen
-Mechanik](https://de.wikipedia.org/wiki/Klassische_Mechanik).
-
-## Tutorial: Dominosteine umwerfen
+<!-- ## Tutorial: Dominosteine umwerfen -->
 
 Um die Grundlagen der Engine Pi Physics zu testen, bauen wir eine einfache
 Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
@@ -19,6 +12,8 @@ Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf:
 
 {{ demo('tutorials/physics/DominoesDemo') }}
+
+
 
 ```java
 public class DominoesDemo extends Scene
@@ -109,6 +104,8 @@ private void setupPhysics()
 }
 ```
 
+{{ code('docs/physics/ImpulseDemo.java', 76, 83) }}
+
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
@@ -141,17 +138,7 @@ Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
 Impulses markiert:
 
-{{ demo('tutorials/physics/DominoesDemo', '3c5fad40d3031ce6de9719deb41bf52f1a774022', 'L70-L75') }}
-
-
-```java
-private void setupAngle()
-{
-    angle = new Rectangle(1, 0.1);
-    angle.setColor(Color.GREEN);
-    add(angle);
-}
-```
+{{ code('docs/physics/ImpulseDemo.java', 69, 75) }}
 
 {{ image('docs/Dominos_4-Wurfwinkel-Visualisierung.gif') }}
 /// caption
@@ -164,38 +151,19 @@ Dafür implementiert die Dominoes-Klasse das Interface `FrameUpdateListener` und
 berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
 den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
-{{ demo('tutorials/physics/DominoesDemo', '3c5fad40d3031ce6de9719deb41bf52f1a774022', 'L98-L107') }}
-
-```java
-@Override
-public void onFrameUpdate(double pastTime)
-{
-    Vector mousePosition = getMousePosition();
-    Vector ballCenter = ball.getCenter();
-    Vector distance = ballCenter.getDistance(mousePosition);
-    angle.setPosition(ball.getCenter());
-    angle.setWidth(distance.getLength());
-    double rot = Vector.RIGHT.getAngle(distance);
-    angle.setRotation(rot);
-}
-```
+{{ code('docs/physics/ImpulseDemo.java', 97, 107) }}
 
 Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
 Interface `MouseClickListener` implementiert:
 
-{{ demo('tutorials/physics/DominoesDemo', '3c5fad40d3031ce6de9719deb41bf52f1a774022', 'L110-L114') }}
+{{ code('docs/physics/ImpulseDemo.java', 109, 114) }}
 
-```java
-@Override
-public void onMouseDown(Vector position, MouseButton button)
-{
-    Vector impulse = ball.getCenter().getDistance(position).multiply(5);
-    ball.applyImpulse(impulse);
-}
-```
-
-- Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
+<!-- - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
   Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der
   Zerstörung.
 - Reset Button: Ein Knopfdruck setzt den Ball auf seine Ursprüngliche Position
-  (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz.
+  (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz. -->
+
+## Der komplette Code
+
+{{ code('docs/physics/ImpulseDemo.java') }}

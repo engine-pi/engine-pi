@@ -18,9 +18,9 @@ theme:
     - navigation.indexes
     # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#navigation
     - navigation.footer
-    # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/#code-copy-button
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button
     - content.code.copy
-    # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/#code-selection-button
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button
     - content.code.select
     # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions
     - content.action.edit
@@ -36,7 +36,7 @@ plugins:
   # https://github.com/tuunit/mkdocs-drawio
   - drawio
 markdown_extensions:
-  # https://squidfunk.github.io/mkdocs-material/manual/code-blocks/
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -113,15 +113,15 @@ nav:
           - manual/java/index.md
           - manual/java/packages.md
 
-  - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
+      - Entwicklung:
+          - manual/dev/index.md
+          - manual/dev/design.md
+          - manual/dev/coding-style.md
+          - manual/dev/javadoc.md
+          - manual/dev/mkdocs.md
+          - manual/dev/setter-getter.md
 
-  - Entwicklung:
-      - dev/index.md
-      - dev/design.md
-      - dev/coding-style.md
-      - dev/javadoc.md
-      - dev/mkdocs.md
-      - dev/setter-getter.md
+  - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 
   - download.md
 

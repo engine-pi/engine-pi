@@ -16,6 +16,13 @@ def _normalize_package_path(package_path: str) -> str:
     return package_path
 
 
+def _normalize_java_path(path: str) -> str:
+    """Ensures that the path ends with .java"""
+    if not path.endswith(".java"):
+        return path + ".java"
+    return path
+
+
 def _to_url(package_path: str) -> str:
     """Convert a package path to a URL with slashes"""
     return package_path.replace(".", "/")
@@ -31,6 +38,52 @@ def _caption(content: str, caption: str | None = None) -> str:
     </figcaption>
 </figure>
 """
+
+
+def _fenced_code_block(code: str, language: str = "java", start_line: int = 0) -> str:
+    linesnums = ""
+    if start_line > 0:
+        linesnums = f' linenums="{start_line}"'
+    return "``` " + language + linesnums + "\n" + code + "\n```"
+
+
+def _demo_github_url(relpath: str, blob: str = "main", lines: str | None = None) -> str:
+    """
+    :param blob: The branch name or the commit id
+    """
+    relpath = _normalize_java_path(relpath)
+    if lines is None:
+        lines = ""
+    if not lines.startswith("#") and lines != "":
+        lines = "#" + lines
+
+    return f"https://github.com/engine-pi/engine-pi/blob/{blob}/subprojects/demos/src/main/java/demos/{relpath}{lines}"
+
+
+class JavaFile:
+    relpath: str
+    path: Path
+
+    lines: list[str]
+
+    def __init__(self, relpath: str) -> None:
+        self.relpath = _normalize_java_path(relpath)
+
+        self.path = (
+            Path("subprojects", "demos", "src", "main", "java", "demos") / self.relpath
+        )
+        self.lines = self.path.read_text().splitlines()
+
+    def get_code(self, start_line: int = 0, end_line: int = 0) -> str:
+        lines = self.lines
+        if end_line > 0:
+            lines = lines[:end_line]
+        if start_line > 0:
+            lines = lines[start_line - 1 :]
+        return "\n".join(lines)
+
+    def url(self) -> str:
+        return _demo_github_url(str(self.relpath))
 
 
 def define_env(env: Any) -> None:
@@ -53,12 +106,13 @@ def define_env(env: Any) -> None:
         return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
     @env.macro
-    def demo(relpath: str, hash: str = "main", lines: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
-        if lines is None:
-            lines = ""
-        if not lines.startswith("#") and lines != "":
-            lines = "#" + lines
-        return f"<small>Zum Java-Code: [demos/{relpath}.java](https://github.com/engine-pi/engine-pi/blob/{hash}/subprojects/demos/src/main/java/demos/{relpath}.java{lines})</small>"
+    def demo(relpath: str, blob: str = "main", lines: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+        """
+        :param blob: The branch name or the commit id
+        """
+        relpath = _normalize_java_path(relpath)
+        url = _demo_github_url(relpath, blob, lines)
+        return f"<small>Zum Java-Code: [demos/{relpath}]({url})</small>"
 
     @env.macro
     def image(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
@@ -94,13 +148,27 @@ def define_env(env: Any) -> None:
         return f"[{link_title}](https://github.com/engine-pi/engine-pi/blob/main/{relpath})"
 
     @env.macro
-    def snippet(relpath: str) -> str:  # pyright: ignore[reportUnusedFunction]
+    def code(relpath: str, start_line: int = 0, end_line: int = 0) -> str:  # pyright: ignore[reportUnusedFunction]
         """
+        :param start_line: 1 is the first line (including)
+        :param end_line: including
+
+
         https://github.com/mkdocs/mkdocs/issues/692
 
         https://pypi.org/project/mkdocs-snippets/
         """
 
-        path = Path("subprojects", "demos", "src", "main", "java", "demos") / relpath
+        java_file = JavaFile(relpath)
 
-        return "```java\n" + path.read_text() + "\n```"
+        start_line_for_code_block = 1
+        if start_line > 0:
+            start_line_for_code_block = start_line
+
+        return (
+            _fenced_code_block(
+                java_file.get_code(start_line, end_line), language="java", start_line=start_line_for_code_block
+            )
+            + "\n"
+            + demo(relpath)
+        )

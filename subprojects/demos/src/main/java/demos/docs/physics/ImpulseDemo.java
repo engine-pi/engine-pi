@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.physics;
+package demos.docs.physics;
 
 import java.awt.Color;
 
@@ -31,7 +31,7 @@ import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 
-public class DominoesDemo extends Scene
+public class ImpulseDemo extends Scene
         implements FrameUpdateListener, MouseClickListener
 {
     private Rectangle ground;
@@ -42,7 +42,7 @@ public class DominoesDemo extends Scene
 
     private Rectangle angle;
 
-    public DominoesDemo()
+    public ImpulseDemo()
     {
         setupBasicObjects();
         setupPhysics();
@@ -115,6 +115,7 @@ public class DominoesDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new DominoesDemo(), 800, 300);
+        Game.instantMode(false);
+        Game.start(new ImpulseDemo(), 800, 300);
     }
 }
