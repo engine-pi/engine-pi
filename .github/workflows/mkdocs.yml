@@ -12,6 +12,8 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout the repository
         uses: actions/checkout@v6
+        with:
+          submodules: true # macros.py checks files in ./assets
 
       - name: Configure Git Credentials
         run: |
