@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
+package pi.physics.joints;
 
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -26,7 +26,7 @@ import pi.event.EventListeners;
 import pi.physics.WorldHandler;
 
 /**
- * Eine Verbindung zwischen Objekten.
+ * Eine <b>Verbindung</b> zwischen Figuren.
  *
  * @param <JointType> Der Typ der Verbindung in der Box2D-Repräsentation.
  *

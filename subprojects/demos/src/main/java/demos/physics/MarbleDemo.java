@@ -27,11 +27,11 @@ import pi.Game;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.BodyType;
 import pi.Circle;
 import pi.Rectangle;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.physics.BodyType;
 
 /**
  * Eine kleine Demo zum Verhalten vieler Partikel ähnlicher Physik-Objekte in

@@ -16,22 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
 import pi.Controller;
 import pi.Vector;
 
 /**
- * Demonstriert die Klasse {@link pi.actor.RopeJoint} und die Methode
- * {@link pi.actor.Actor#createRopeJoint(pi.actor.Actor, Vector, Vector, double)}
+ * Demonstriert die Klasse {@link pi.physics.joints.PrismaticJoint} und die
+ * Methode
+ * {@link pi.actor.Actor#createPrismaticJoint(pi.actor.Actor, Vector, double)}
  */
-public class RopeJointDemo extends BaseJointScene
+public class PrismaticJointDemo extends BaseJointScene
 {
-    public RopeJointDemo()
+    public PrismaticJointDemo()
     {
-        super();
-        joint = a.createRopeJoint(b, new Vector(0.25, 0.25),
-                new Vector(0.75, 0.75), 3);
+        joint = a.createPrismaticJoint(b, new Vector(1, 0), 45);
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });
@@ -41,6 +40,6 @@ public class RopeJointDemo extends BaseJointScene
     {
         Controller.instantMode(false);
         Controller.debug();
-        Controller.start(new RopeJointDemo());
+        Controller.start(new PrismaticJointDemo());
     }
 }

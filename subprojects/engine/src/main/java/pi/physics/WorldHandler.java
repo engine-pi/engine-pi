@@ -44,11 +44,12 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.ContactEdge;
 import pi.Layer;
 import pi.actor.Actor;
-import pi.actor.Joint;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
+import pi.physics.joints.Joint;
+import pi.physics.joints.JointBuilder;
 import pi.util.Logger;
 
 /**

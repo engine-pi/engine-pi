@@ -16,10 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
 import pi.Scene;
-import pi.actor.Joint;
+import pi.physics.joints.Joint;
 import pi.Rectangle;
 
 abstract class BaseJointScene extends Scene

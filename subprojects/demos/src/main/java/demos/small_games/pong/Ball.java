@@ -19,7 +19,7 @@
 package demos.small_games.pong;
 
 import pi.Game;
-import pi.actor.BodyType;
+import pi.physics.BodyType;
 import pi.Circle;
 
 /**

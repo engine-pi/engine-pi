@@ -27,7 +27,6 @@ import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
-import pi.actor.BodyType;
 import pi.Circle;
 import pi.actor.Geometry;
 import pi.Rectangle;
@@ -36,6 +35,7 @@ import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.physics.BodyType;
 
 /**
  * Eine kleine Sandbox, in der man ein paar Grundfunktionen der EA-Physik (4.0)

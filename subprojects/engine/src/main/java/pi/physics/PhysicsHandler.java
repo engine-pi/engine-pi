@@ -27,7 +27,6 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 
 import pi.Vector;
 import pi.actor.Actor;
-import pi.actor.BodyType;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
 

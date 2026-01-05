@@ -35,19 +35,19 @@ import pi.Layer;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
-import pi.actor.BodyType;
 import pi.Circle;
 import pi.actor.Image;
 import pi.actor.Polygon;
-import pi.actor.PrismaticJoint;
 import pi.Rectangle;
-import pi.actor.RevoluteJoint;
 import pi.actor.TileRegistration;
 import pi.actor.TileMap;
 import pi.event.CollisionEvent;
 import pi.event.FrameUpdateListener;
 import pi.event.PeriodicTask;
+import pi.physics.BodyType;
 import pi.physics.FixtureBuilder;
+import pi.physics.joints.PrismaticJoint;
+import pi.physics.joints.RevoluteJoint;
 
 public class CarDemo extends Scene implements FrameUpdateListener
 {

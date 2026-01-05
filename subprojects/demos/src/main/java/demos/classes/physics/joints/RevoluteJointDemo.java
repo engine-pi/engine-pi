@@ -16,21 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
+import pi.Circle;
 import pi.Controller;
+import pi.Rectangle;
+import pi.Scene;
 import pi.Vector;
+import pi.physics.joints.RevoluteJoint;
 
 /**
- * Demonstriert die Klasse {@link pi.actor.DistanceJoint} und die Methode
- * {@link pi.actor.Actor#createDistanceJoint(pi.actor.Actor, Vector, Vector)}
+ * Demonstriert die Klasse {@link pi.physics.joints.RevoluteJoint} und die
+ * Methode {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)}
  */
-public class DistanceJointDemo extends BaseJointScene
+public class RevoluteJointDemo extends Scene
 {
-    public DistanceJointDemo()
+    public RevoluteJointDemo()
     {
-        joint = a.createDistanceJoint(b, new Vector(0.25, 0.25),
-                new Vector(0.75, 0.75));
+        Rectangle rectangle = new Rectangle(1, 1);
+        Circle circle = new Circle();
+        add(rectangle, circle);
+        RevoluteJoint joint = rectangle.createRevoluteJoint(circle,
+                new Vector(0.25, 0.25));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });
@@ -39,6 +46,7 @@ public class DistanceJointDemo extends BaseJointScene
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DistanceJointDemo());
+        Controller.debug();
+        Controller.start(new RevoluteJointDemo());
     }
 }

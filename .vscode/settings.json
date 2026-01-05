@@ -14,9 +14,8 @@
     // engine_pi/actor
     "Actor.java": "Actable.java, ActorAdder.java, BodyType.java, Group.java",
     "ImageFont.java": "ImageFontCaseSensitivity.java, ImageFontGlyph.java, ImageFontSpecimen.java, ImageFontText.java",
-    "Joint.java": "DistanceJoint.java, PrismaticJoint.java, RevoluteJoint.java, RopeJoint.java, WeldJoint.java",
     "LabeledNode.java": "LabeledEdge.java",
-    "Polygon.java": "Heptagon.java, Hexagon.java, Pentagon.java, RegularPolygon.java, Star.java, Triangle.java",
+    "Polygon.java": "RegularPolygon.java, Star.java, Triangle.java",
     "StatefulAnimation.java": "StatefulAnimatedGifAnimation.java,StatefulImagesAnimation.java, StatefulImagesPrefixAnimation.java, StatefulSpritesheetAnimation.java",
     "Tile.java": "LetterTileMap.java, TileMap.java, TileRegistration.java",
     // engine_pi/graphics/boxes

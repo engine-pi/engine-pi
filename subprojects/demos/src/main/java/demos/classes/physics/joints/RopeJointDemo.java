@@ -16,28 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
-import pi.Circle;
 import pi.Controller;
-import pi.Rectangle;
-import pi.Scene;
 import pi.Vector;
-import pi.actor.RevoluteJoint;
 
 /**
- * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
- * {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)}
+ * Demonstriert die Klasse {@link pi.physics.joints.RopeJoint} und die Methode
+ * {@link pi.actor.Actor#createRopeJoint(pi.actor.Actor, Vector, Vector, double)}
  */
-public class RevoluteJointDemo extends Scene
+public class RopeJointDemo extends BaseJointScene
 {
-    public RevoluteJointDemo()
+    public RopeJointDemo()
     {
-        Rectangle rectangle = new Rectangle(1, 1);
-        Circle circle = new Circle();
-        add(rectangle, circle);
-        RevoluteJoint joint = rectangle.createRevoluteJoint(circle,
-                new Vector(0.25, 0.25));
+        super();
+        joint = a.createRopeJoint(b, new Vector(0.25, 0.25),
+                new Vector(0.75, 0.75), 3);
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });
@@ -47,6 +41,6 @@ public class RevoluteJointDemo extends Scene
     {
         Controller.instantMode(false);
         Controller.debug();
-        Controller.start(new RevoluteJointDemo());
+        Controller.start(new RopeJointDemo());
     }
 }

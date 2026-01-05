@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
 import static pi.Vector.v;
 
@@ -30,9 +30,9 @@ import pi.Vector;
 import pi.actor.Polygon;
 
 /**
- * Demonstriert die Klasse {@link pi.actor.RevoluteJoint} und die Methode
- * {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)} anhand
- * einer Wippe.
+ * Demonstriert die Klasse {@link pi.physics.joints.RevoluteJoint} und die
+ * Methode {@link pi.actor.Actor#createRevoluteJoint(pi.actor.Actor, Vector)}
+ * anhand einer Wippe.
  */
 public class RevolteJointSeesawDemo extends Scene
 {

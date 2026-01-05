@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
+package pi.physics.joints;
 
 /**
  * Eine <b>Stabverbindung</b> zwingt zwei Punkte auf zwei Körpern dazu, in einem

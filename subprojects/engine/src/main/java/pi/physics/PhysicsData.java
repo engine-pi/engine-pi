@@ -32,7 +32,6 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.FixtureDef;
 
 import pi.Vector;
 import pi.actor.Actor;
-import pi.actor.BodyType;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;

@@ -16,20 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.physics.single_aspects;
+package demos.classes.physics.joints;
 
 import pi.Controller;
 import pi.Vector;
 
 /**
- * Demonstriert die Klasse {@link pi.actor.WeldJoint} und die Methode
- * {@link pi.actor.Actor#createWeldJoint(pi.actor.Actor, Vector, Vector)}
+ * Demonstriert die Klasse {@link pi.physics.joints.DistanceJoint} und die
+ * Methode
+ * {@link pi.actor.Actor#createDistanceJoint(pi.actor.Actor, Vector, Vector)}
  */
-public class WeldJointDemo extends BaseJointScene
+public class DistanceJointDemo extends BaseJointScene
 {
-    public WeldJointDemo()
+    public DistanceJointDemo()
     {
-        joint = a.createWeldJoint(b, new Vector(0.25, 0.25),
+        joint = a.createDistanceJoint(b, new Vector(0.25, 0.25),
                 new Vector(0.75, 0.75));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
@@ -39,7 +40,6 @@ public class WeldJointDemo extends BaseJointScene
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.debug();
-        Controller.start(new WeldJointDemo());
+        Controller.start(new DistanceJointDemo());
     }
 }

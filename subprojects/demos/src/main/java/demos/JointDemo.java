@@ -25,11 +25,11 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Vector;
-import pi.actor.BodyType;
 import pi.Circle;
 import pi.actor.Polygon;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
+import pi.physics.BodyType;
 
 /**
  * Demonstriert die <b>Verbindungen</b> (Joints) in der Engine.
