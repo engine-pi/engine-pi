@@ -21,7 +21,7 @@
 package demos.small_games.dude;
 
 import pi.Random;
-import pi.actor.Image;
+import pi.Image;
 
 public class Box extends Image
 {

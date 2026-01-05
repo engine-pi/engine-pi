@@ -1,6 +1,6 @@
 package pacman.scenes;
 
-import pi.actor.Image;
+import pi.Image;
 
 public enum Brick
 {

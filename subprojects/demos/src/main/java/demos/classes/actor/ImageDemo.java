@@ -22,7 +22,7 @@ import pi.Resources;
 import pi.Scene;
 import pi.Game;
 
-import pi.actor.Image;
+import pi.Image;
 import pi.event.KeyStrokeListener;
 
 import java.awt.event.KeyEvent;

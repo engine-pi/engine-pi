@@ -18,7 +18,7 @@ package tetris.scenes;
 
 import pi.Configuration;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 import tetris.ImageLoader;
 
 /**

@@ -4,7 +4,7 @@ import blockly_robot.robot.gui.level.LevelAssembler;
 import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.item.ItemController;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 
 public class GraphicalItemController implements ItemController
 {

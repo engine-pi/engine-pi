@@ -28,7 +28,7 @@ import pi.Layer;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Image;
+import pi.Image;
 import pi.Rectangle;
 import pi.Text;
 import pi.event.CollisionEvent;

@@ -13,7 +13,7 @@ import pacman.Main;
 import pacman.actors.Blinky;
 import pacman.actors.Ghost;
 import pi.Game;
-import pi.actor.Image;
+import pi.Image;
 import pi.event.KeyStrokeListener;
 
 public class IngameScene extends BaseScene implements KeyStrokeListener

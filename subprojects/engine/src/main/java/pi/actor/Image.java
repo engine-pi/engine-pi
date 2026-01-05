@@ -42,6 +42,7 @@ import pi.resources.color.ColorUtil;
  * werden kann.
  *
  * @author Michael Andonie
+ * @author Josef Friedrich
  */
 public class Image extends Actor
 {

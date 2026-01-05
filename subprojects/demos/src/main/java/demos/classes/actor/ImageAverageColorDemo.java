@@ -21,7 +21,7 @@ package demos.classes.actor;
 import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 
 public class ImageAverageColorDemo extends Scene
 {

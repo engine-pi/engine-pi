@@ -4,7 +4,7 @@ import blockly_robot.robot.logic.context.Context;
 import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.item.StackedItems;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 
 public class ItemMapPainter
 {

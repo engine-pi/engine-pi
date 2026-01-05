@@ -13,7 +13,7 @@ import blockly_robot.robot.logic.navigation.Coords;
 import blockly_robot.robot.logic.robot.Robot;
 import blockly_robot.robot.logic.robot.VirtualRobot;
 import pi.Vector;
-import pi.actor.Image;
+import pi.Image;
 import pi.animation.Interpolator;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.SinusDouble;

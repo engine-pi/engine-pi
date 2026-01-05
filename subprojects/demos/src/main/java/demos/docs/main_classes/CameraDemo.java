@@ -23,7 +23,7 @@ import pi.Camera;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Image;
+import pi.Image;
 import pi.actor.Line;
 import pi.event.FrameUpdateListener;
 

@@ -2,7 +2,7 @@ package demos.classes.dsa.graph.dfs;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 import pi.dsa.graph.GraphDrawer;
 
 public class GraphDrawerDemo extends Scene

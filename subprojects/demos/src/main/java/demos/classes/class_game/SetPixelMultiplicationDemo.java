@@ -23,7 +23,7 @@ import pi.Game;
 import pi.Scene;
 import pi.Text;
 import pi.actor.Actor;
-import pi.actor.Image;
+import pi.Image;
 
 public class SetPixelMultiplicationDemo extends Scene
 {

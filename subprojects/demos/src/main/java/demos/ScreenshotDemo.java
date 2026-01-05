@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 import pi.event.KeyStrokeListener;
 
 public class ScreenshotDemo extends Scene implements KeyStrokeListener

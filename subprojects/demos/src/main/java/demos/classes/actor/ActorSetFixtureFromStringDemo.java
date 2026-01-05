@@ -2,7 +2,7 @@ package demos.classes.actor;
 
 import pi.Game;
 import pi.Scene;
-import pi.actor.Image;
+import pi.Image;
 
 public class ActorSetFixtureFromStringDemo extends Scene
 {

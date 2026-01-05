@@ -9,7 +9,7 @@ import java.awt.Color;
 import pi.Game;
 import pi.Scene;
 import pi.Circle;
-import pi.actor.Image;
+import pi.Image;
 import pi.actor.Square;
 
 /**

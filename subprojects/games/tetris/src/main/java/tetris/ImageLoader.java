@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
 
 import pi.Configuration;
 import pi.Resources;
-import pi.actor.Image;
+import pi.Image;
 import pi.util.ImageUtil;
 
 /**

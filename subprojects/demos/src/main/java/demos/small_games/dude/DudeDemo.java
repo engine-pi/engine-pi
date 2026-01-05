@@ -25,7 +25,7 @@ import pi.Game;
 import pi.Layer;
 import pi.Scene;
 import pi.Vector;
-import pi.actor.Image;
+import pi.Image;
 import pi.actor.TileRegistration;
 import pi.actor.TileMap;
 

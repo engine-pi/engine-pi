@@ -36,7 +36,7 @@ import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
 import pi.Circle;
-import pi.actor.Image;
+import pi.Image;
 import pi.actor.Polygon;
 import pi.Rectangle;
 import pi.actor.TileRegistration;
