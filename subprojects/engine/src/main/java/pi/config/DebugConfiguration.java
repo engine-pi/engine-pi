@@ -30,7 +30,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 
 /**
- * Verwaltet die Einstellmöglichkeiten mit Bezug zum Entwicklungsmodus.
+ * Verwaltet die Einstellmöglichkeiten mit Bezug zum <b>Entwicklungs</b>modus.
  *
  * @author Josef Friedrich
  * @author Steffen Wilke
@@ -50,7 +50,7 @@ public class DebugConfiguration extends ConfigurationGroup
         enabled(false);
         verbose(false);
         renderActors(true);
-        showPositions(true);
+        actorCoordinates(false);
     }
 
     /* enabled */
@@ -191,35 +191,51 @@ public class DebugConfiguration extends ConfigurationGroup
         return this;
     }
 
-    /* showPositions */
+    /* actorCoordinates */
 
     /**
-     * Ob die Ankerpunkte der Figuren gezeichnet werden sollen.
+     * Die Einstellung, ob die <b>Figuren-Koordinaten</b> (z.B. {@code (3|3)})
+     * angezeigt werden sollen.
      */
-    private boolean showPositions;
+    private boolean actorCoordinates;
 
     /**
-     * Gibt die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
-     * werden sollen, zurück.
+     * Gibt die Einstellung, ob die <b>Figuren-Koordinaten</b> (z.B.
+     * {@code (3|3)}) angezeigt werden sollen, zurück.
      *
-     * @return Die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
-     *     werden sollen.
+     * <p>
+     * Bei den Figuren-Koordinaten handelt es sich um das linke untere Eck der
+     * Figur, also um den Ankerpunkt. Befinden sich viele Figuren auf der
+     * Spielfläche, dann kann die Aktivierung dieser Option das Spiel deutlich
+     * verlangsamen.
+     * </p>
+     *
+     * @return Die Einstellung, ob die <b>Figuren-Koordinaten</b> (z.B.
+     *     {@code (3|3)}) angezeigt werden sollen.
      *
      * @since 0.42.0
      */
     @Getter
     @API
-    public boolean showPositions()
+    public boolean actorCoordinates()
     {
-        return showPositions;
+        return actorCoordinates;
     }
 
     /**
-     * Setzt die Einstellung, ob die <b>Ankerpunkte</b> der Figuren gezeichnet
-     * werden sollen.
+     * Setzt die Einstellung, ob die <b>Figuren-Koordinaten</b> (z.B.
+     * {@code (3|3)}) angezeigt werden sollen.
      *
-     * @param showPositions Die Einstellung, ob die <b>Ankerpunkte</b> der
-     *     Figuren gezeichnet werden sollen.
+     * <p>
+     * Bei den Figuren-Koordinaten handelt es sich um das linke untere Eck der
+     * Figur, also um den Ankerpunkt. Befinden sich viele Figuren auf der
+     * Spielfläche, dann kann die Aktivierung dieser Option das Spiel deutlich
+     * verlangsamen.
+     * </p>
+     *
+     * @param actorCoordinates Die Einstellung, ob die
+     *     <b>Figuren-Koordinaten</b> (z.B. {@code (3|3)}) angezeigt werden
+     *     sollen
      *
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
@@ -230,9 +246,9 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration showPositions(boolean showPositions)
+    public DebugConfiguration actorCoordinates(boolean actorCoordinates)
     {
-        set("showPositions", showPositions);
+        set("actorCoordinates", actorCoordinates);
         return this;
     }
 
@@ -247,7 +263,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     public boolean toogleShowPositions()
     {
-        showPositions = !showPositions;
-        return showPositions;
+        actorCoordinates = !actorCoordinates;
+        return actorCoordinates;
     }
 }

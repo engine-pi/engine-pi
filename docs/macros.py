@@ -5,7 +5,6 @@ https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
 from pathlib import Path
 from typing import Any
 
-
 JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
 
@@ -121,6 +120,16 @@ def _demo_github_url(
     return f"https://github.com/engine-pi/engine-pi/blob/{blob}/subprojects/demos/src/main/java/demos/{relpath}{lines}"
 
 
+def _get_class_name(class_path: str) -> str:
+    """
+    :param class_path: For example ``pi.actor.Actor``
+
+    :return: For example ``Actor``
+    """
+
+    return class_path.split(".")[-1]
+
+
 class JavaFile:
     relpath: str
     path: Path
@@ -156,7 +165,7 @@ class JavaFile:
 
 
 def define_env(env: Any) -> None:
-    def class_name(class_path: str, link_title: str | None = None) -> str:
+    def macro_class(class_path: str, link_title: str | None = None) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
 
@@ -165,20 +174,22 @@ def define_env(env: Any) -> None:
         class_path = _normalize_package_path(class_path)
         _check_class_path(class_path)
         if link_title is None:
-            link_title = class_path.split(".")[-1]
+            link_title = _get_class_name(class_path)
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
 
-    env.macro(class_name, "class")
+    env.macro(macro_class, "class")
 
-    @env.macro
-    def package(package_path: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    def macro_package(package_path: str, link_title: str | None = None) -> str:
         if link_title is None:
             link_title = package_path
 
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
 
-    @env.macro
-    def method(class_path: str, method: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_package, "package")
+
+    def macro_method(
+        class_path: str, method: str, link_title: str | None = None
+    ) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
         :param method: For example ``color(java.awt.Color)``
@@ -190,8 +201,23 @@ def define_env(env: Any) -> None:
 
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{method})"
 
-    @env.macro
-    def attribute(class_path: str, attribute: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_method, "method")
+
+    def macro_methods(class_path: str, methods: list[str]) -> str:
+        """
+        :param class_path: For example ``pi.actor.Actor``
+        :param methods: For example ``['color(java.awt.Color)', 'color(String)']``
+        """
+        output: str = f"__Methoden in der Klasse {macro_class(class_path)}:__\n\n"
+        for m in methods:
+            output += "- " + macro_method(class_path, m) + "\n"
+        return output
+
+    env.macro(macro_methods, "methods")
+
+    def macro_attribute(
+        class_path: str, attribute: str, link_title: str | None = None
+    ) -> str:  # pyright: ignore[reportUnusedFunction]
         """
         :param class_path: For example ``pi.Resources``
         :param attribute: For example ``color``
@@ -199,12 +225,13 @@ def define_env(env: Any) -> None:
         """
 
         if link_title is None:
-            link_title = method
+            link_title = _get_class_name(class_path)
 
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{attribute})"
 
-    @env.macro
-    def demo(
+    env.macro(macro_attribute, "attribute")
+
+    def macro_demo(
         relpath: str,
         blob: str = "main",
         lines: str | None = None,
@@ -220,16 +247,19 @@ def define_env(env: Any) -> None:
         )
         return f"<small>Zum Java-Code: [demos/{relpath}]({url})</small>"
 
-    @env.macro
-    def image(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_demo, "demo")
+
+    def macro_image(relpath: str, caption: str | None = None) -> str:
         _check_asset(relpath)
         return _caption(
             f'<img src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}">',
             caption,
         )
 
+    env.macro(macro_image, "image")
+
     @env.macro
-    def video(relpath: str, caption: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    def macro_video(relpath: str, caption: str | None = None) -> str:
         _check_asset(relpath)
         return _caption(
             f"""<video autoplay loop>
@@ -242,21 +272,24 @@ def define_env(env: Any) -> None:
             caption,
         )
 
-    @env.macro
-    def contribute() -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_video, "video")
+
+    def macro_contribute() -> str:
         return """!!! warning
 
     Diese Hilfeseite hat leider noch keinen Inhalt. Hilf mit und fülle diese Seite mit Inhalt.
 """
 
-    @env.macro
-    def repo_link(relpath: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_contribute, "contribute")
+
+    def macro_repo_link(relpath: str, link_title: str | None = None) -> str:
         if link_title is None:
             link_title = relpath
         return f"[{link_title}](https://github.com/engine-pi/engine-pi/blob/main/{relpath})"
 
-    @env.macro
-    def code(relpath: str, start_line: int = 0, end_line: int = 0) -> str:  # pyright: ignore[reportUnusedFunction]
+    env.macro(macro_repo_link, "repo_link")
+
+    def macro_code(relpath: str, start_line: int = 0, end_line: int = 0) -> str:
         """
         :param start_line: 1 is the first line (including)
         :param end_line: including
@@ -280,5 +313,7 @@ def define_env(env: Any) -> None:
                 start_line=start_line_for_code_block,
             )
             + "\n"
-            + demo(relpath, start_line=start_line, end_line=end_line)
+            + macro_demo(relpath, start_line=start_line, end_line=end_line)
         )
+
+    env.macro(macro_code, "code")

@@ -513,17 +513,18 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public final WorldHandler getWorldHandler()
+    @Getter
+    public final WorldHandler worldHandler()
     {
         return mainLayer.worldHandler();
     }
 
     /**
-     * Gibt die Schwerkraft, die momentan auf die Hauptebene wirkt, als Vektor
-     * in <b>[N]</b> bzw. <b>[m/s^2]</b> zurück.
+     * Gibt die <b>Schwerkraft</b>, die momentan auf die Hauptebene wirkt, als
+     * Vektor in {@code [N]} bzw. {@code [m/s^2]} zurück.
      *
-     * @return Die Schwerkraft, die momentan auf die Hauptebene wirkt, als
-     *     Vektor in <b>[N]</b> bzw. <b>[m/s^2]</b>.
+     * @return Die <b>Schwerkraft</b>, die momentan auf die Hauptebene wirkt,
+     *     als Vektor in {@code [N]} bzw. {@code [m/s^2]}.
      */
     @Getter
     public Vector gravity()
@@ -532,11 +533,11 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Schwerkraft als Vektor, die auf <b>alle Objekte innerhalb der
-     * Hauptebene der Szene</b> wirkt.
+     * Setzt <b>Schwerkraft</b>, die momentan auf die Hauptebene wirkt, als
+     * Vektor in {@code [N]} bzw. {@code [m/s^2]} wirkt.
      *
      * @param gravity Die neue Schwerkraft als {@link Vector}. Die Einheit ist
-     *     <b>[N]</b>.
+     *     {@code [N]} bzw. {@code [m/s^2]}.
      *
      * @see #gravity(double, double)
      * @see Layer#gravity(Vector)
@@ -556,14 +557,14 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Schwerkraft durch zwei Eingabeparameter für die x- und
+     * Setzt die <b>Schwerkraft</b> durch zwei Eingabeparameter für die x- und
      * y-Richtung, die auf <b>alle Objekte innerhalb der Hauptebene der
      * Szene</b> wirkt.
      *
      * @param gravityX Die neue Schwerkraft, die in X-Richtung wirken soll. Die
-     *     Einheit ist <b>[N]</b>.
+     *     Einheit ist {@code [N]} bzw. {@code [m/s^2]}.
      * @param gravityY Die neue Schwerkraft, die in Y-Richtung wirken soll. Die
-     *     Einheit ist <b>[N]</b>.
+     *     Einheit ist {@code [N]} bzw. {@code [m/s^2]}.
      *
      * @see #gravity(Vector)
      * @see Layer#gravity(Vector)

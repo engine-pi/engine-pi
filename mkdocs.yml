@@ -65,8 +65,17 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#arithmatex
+  - pymdownx.arithmatex:
+      generic: true
+
 extra_css:
   - _assets/extra.css
+
+# https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#arithmatex-mkdocsyml
+extra_javascript:
+  - _assets/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
   - docs
@@ -102,6 +111,7 @@ nav:
 
       - physics (Physiksimulation):
           - manual/physics/index.md
+          - manual/physics/body-type.md
           - manual/physics/gravity.md
           - manual/physics/density.md
           - manual/physics/elasticity.md

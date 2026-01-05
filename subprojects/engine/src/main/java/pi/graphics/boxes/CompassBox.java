@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 
 import pi.Vector;
 import pi.annotations.Setter;
+import pi.util.Graphics2DUtil;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/CompassBoxDemo.java
 
@@ -90,8 +91,8 @@ public class CompassBox extends LeafBox
     }
 
     /**
-     * Die Entfernung zur Mitte des Quadrats also die Hälfte der Seitenlänge des
-     * Quadrats.
+     * Der Radius der äußeren Kreises, also die Entfernung zur Mitte des
+     * Quadrats, also die Hälfte der Seitenlänge des Quadrats.
      */
     private double radius()
     {
@@ -144,21 +145,8 @@ public class CompassBox extends LeafBox
         // Endpunkt des Pfeils, wo die Pfeilspitze sitzt.
         Vector to = center.add(toUnionCircle.multiply(radius));
 
-        // Die Mitte der Basis des Pfeildreiecks.
-        Vector arrowBase = center
-                .add(toUnionCircle.multiply(radius * (1 - arrowHeight * 2)));
-
-        double halfArrowBase = (double) radius * arrowWidth;
-
-        Vector arrowLeft = arrowBase.add(Vector
-                .ofAngle(normalizedDirection - 90).multiply(halfArrowBase));
-        Vector arrowRight = arrowBase.add(Vector
-                .ofAngle(normalizedDirection + 90).multiply(halfArrowBase));
-
-        // Die Spitze des Kompasspfeils als Dreieck gezeichnet.
-        g.fillPolygon(new int[] { arrowLeft.x(1), to.x(1), arrowRight.x(1) },
-                new int[]
-                { arrowLeft.y(1), to.y(1), arrowRight.y(1) }, 3);
+        // Die Spitze des Kompasspfeils als Winkel gezeichnet.
+        Graphics2DUtil.drawArrow(g, from, to, 8, 45, false);
 
         // Die Line des Kompasspfeils.
         g.drawLine(from.x(1), from.y(1), to.x(1), to.y(1));
