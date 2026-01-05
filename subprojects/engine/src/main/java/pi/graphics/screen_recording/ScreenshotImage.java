@@ -18,10 +18,11 @@
  */
 package pi.graphics.screen_recording;
 
+import static pi.Controller.config;
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import pi.Configuration;
 import pi.annotations.Getter;
 import pi.util.Graphics2DUtil;
 import pi.util.ImageUtil;
@@ -39,9 +40,8 @@ public class ScreenshotImage
 
     public ScreenshotImage(int width, int height)
     {
-        var config = Configuration.get().graphics;
-        image = new BufferedImage(config.windowWidth(), config.windowHeight(),
-                BufferedImage.TYPE_INT_RGB);
+        image = new BufferedImage(config.graphics.windowWidth(),
+                config.graphics.windowHeight(), BufferedImage.TYPE_INT_RGB);
         g = (Graphics2D) image.getGraphics();
         Graphics2DUtil.antiAliasing(g, true);
     }

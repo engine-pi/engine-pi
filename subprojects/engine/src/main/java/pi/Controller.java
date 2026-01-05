@@ -38,9 +38,8 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.config.DebugConfiguration;
+import pi.config.Configuration;
 import pi.config.GameConfiguration;
-import pi.config.GraphicsConfiguration;
 import pi.debug.MainAnimation;
 import pi.event.DefaultControl;
 import pi.event.DefaultListener;
@@ -87,13 +86,12 @@ public class Controller
         Settings.maxPolygonVertices = 20;
     }
 
-    private static final Configuration config = Configuration.get();
-
-    private static final GameConfiguration gameConfig = config.game;
-
-    private static final GraphicsConfiguration graphicsConfig = config.graphics;
-
-    private static final DebugConfiguration debugConfig = config.debug;
+    /**
+     * Bietet Zugriff auf das Konfigurationsobjekt der Engine.
+     *
+     * @since 0.42.0
+     */
+    public static final Configuration config = Configuration.get();
 
     /**
      * Eigentliches Fenster des Spiels.
@@ -170,10 +168,10 @@ public class Controller
             throw new IllegalStateException(
                     "Die Methode start() wurde bereits ausgeführt und kann nur einmal ausgeführt werden");
         }
-        int pixelMultiplication = graphicsConfig.pixelMultiplication();
+        int pixelMultiplication = config.graphics.pixelMultiplication();
         width *= pixelMultiplication;
         height *= pixelMultiplication;
-        graphicsConfig.windowDimension(width, height);
+        config.graphics.windowDimension(width, height);
         Controller.scene = scene;
         renderPanel = new RenderPanel(width, height);
         frame.setResizable(false);
@@ -181,9 +179,9 @@ public class Controller
         // pack() already allows to create the buffer strategy for rendering
         // (but not on Windows?)
         frame.pack();
-        if (graphicsConfig.windowPosition() != Direction.NONE)
+        if (config.graphics.windowPosition() != Direction.NONE)
         {
-            Controller.windowPosition(graphicsConfig.windowPosition());
+            Controller.windowPosition(config.graphics.windowPosition());
         }
         else
         {
@@ -258,8 +256,8 @@ public class Controller
     @API
     public static Scene start(Scene scene)
     {
-        return start(scene, graphicsConfig.windowWidth(),
-                graphicsConfig.windowHeight());
+        return start(scene, config.graphics.windowWidth(),
+                config.graphics.windowHeight());
     }
 
     /**
@@ -274,7 +272,7 @@ public class Controller
     @API
     public static Scene start()
     {
-        gameConfig.instantMode(false);
+        config.game.instantMode(false);
         return start(new MainAnimation());
     }
 
@@ -864,7 +862,7 @@ public class Controller
     @Setter
     public static void debug(boolean value)
     {
-        debugConfig.enabled(value);
+        config.debug.enabled(value);
     }
 
     /**
@@ -878,7 +876,7 @@ public class Controller
     @API
     public static boolean isDebug()
     {
-        return debugConfig.enabled();
+        return config.debug.enabled();
     }
 
     /**
@@ -899,7 +897,7 @@ public class Controller
     @API
     public static void debug()
     {
-        debugConfig.enabled(true);
+        config.debug.enabled(true);
     }
 
     /**
@@ -911,7 +909,7 @@ public class Controller
     @Setter
     public static void renderActors(boolean value)
     {
-        debugConfig.renderActors(value);
+        config.debug.renderActors(value);
     }
 
     /**
@@ -923,7 +921,7 @@ public class Controller
     @Getter
     public static boolean renderActors()
     {
-        return debugConfig.renderActors();
+        return config.debug.renderActors();
     }
 
     /**
@@ -947,7 +945,7 @@ public class Controller
     @API
     public static boolean isVerbose()
     {
-        return debugConfig.verbose();
+        return config.debug.verbose();
     }
 
     /**
@@ -965,7 +963,7 @@ public class Controller
     @Setter
     public static void verbose(boolean value)
     {
-        debugConfig.verbose(value);
+        config.debug.verbose(value);
     }
 
     /**
@@ -1141,7 +1139,7 @@ public class Controller
     @API
     public static void instantMode(boolean instantMode)
     {
-        gameConfig.instantMode(instantMode);
+        config.game.instantMode(instantMode);
     }
 
     /**
@@ -1157,6 +1155,6 @@ public class Controller
     @API
     public static void windowDimension(int windowWidth, int windowHeight)
     {
-        graphicsConfig.windowDimension(windowWidth, windowHeight);
+        config.graphics.windowDimension(windowWidth, windowHeight);
     }
 }

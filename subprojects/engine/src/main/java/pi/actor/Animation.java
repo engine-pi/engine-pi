@@ -20,6 +20,7 @@
  */
 package pi.actor;
 
+import static pi.Controller.config;
 import static pi.Resources.images;
 
 import java.awt.Graphics2D;
@@ -31,7 +32,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import pi.Configuration;
 import pi.animation.AnimationFrame;
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -450,8 +450,7 @@ public class Animation extends Actor implements FrameUpdateListener
             String filePath, double width, double height, int spriteWidth,
             int spriteHeight)
     {
-        int pixelMultiplication = Configuration.get().graphics
-                .pixelMultiplication();
+        int pixelMultiplication = config.graphics.pixelMultiplication();
         BufferedImage image = images.get(filePath);
         return createFromSpritesheet(frameDuration, image,
                 image.getWidth() / (spriteWidth * pixelMultiplication),

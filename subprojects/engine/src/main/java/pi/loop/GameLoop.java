@@ -20,6 +20,8 @@
  */
 package pi.loop;
 
+import static pi.Controller.config;
+
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.Queue;
@@ -29,7 +31,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-import pi.Configuration;
 import pi.Game;
 import pi.Scene;
 import pi.annotations.Getter;
@@ -59,7 +60,7 @@ public final class GameLoop
      * Die <b>angestrebte Anzeigedauer</b> eines Einzelbilds in Sekunden.
      */
     private static double DESIRED_FRAME_DURATION = 1.0
-            / Configuration.get().graphics.framerate();
+            / config.graphics.framerate();
 
     /**
      * Die <b>tatsächliche Anzeigedauer</b> eines <b>Einzelbilds</b> in

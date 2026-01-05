@@ -28,6 +28,7 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
+import static pi.Controller.config;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/CameraDemo.java
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/CameraDemo.java
@@ -390,7 +391,7 @@ public final class Camera
     @Getter
     public double meter()
     {
-        return meter * Configuration.get().graphics.pixelMultiplication();
+        return meter * config.graphics.pixelMultiplication();
     }
 
     /**

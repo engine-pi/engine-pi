@@ -18,13 +18,12 @@
  */
 package demos.classes.actor;
 
-import pi.Configuration;
+import java.awt.event.KeyEvent;
+
 import pi.Game;
 import pi.Scene;
 import pi.actor.StatefulSpritesheetAnimation;
 import pi.event.KeyStrokeListener;
-
-import java.awt.event.KeyEvent;
 
 enum State
 {
@@ -90,7 +89,8 @@ public class StatefulAnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Configuration.get().graphics.pixelMultiplication(8);
+        Game.instantMode(false);
+        Game.config.graphics.pixelMultiplication(8);
         Game.start(new StatefulAnimationDemo(), 50, 50);
     }
 }

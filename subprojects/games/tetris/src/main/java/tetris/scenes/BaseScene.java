@@ -16,9 +16,10 @@
  */
 package tetris.scenes;
 
-import pi.Configuration;
-import pi.Scene;
+import static pi.Controller.config;
+
 import pi.Image;
+import pi.Scene;
 import tetris.ImageLoader;
 
 /**
@@ -31,7 +32,7 @@ public class BaseScene extends Scene
 {
     static
     {
-        Configuration.get().graphics.pixelMultiplication(5);
+        config.graphics.pixelMultiplication(5);
     }
 
     /**

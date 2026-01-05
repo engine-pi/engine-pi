@@ -18,19 +18,18 @@
  */
 package demos.classes.class_game;
 
-import pi.Configuration;
 import pi.Game;
+import pi.Image;
 import pi.Scene;
 import pi.Text;
 import pi.actor.Actor;
-import pi.Image;
 
 public class SetPixelMultiplicationDemo extends Scene
 {
     static
     {
         Game.instantMode(false);
-        Configuration.get().graphics.pixelMultiplication(4);
+        Game.config.graphics.pixelMultiplication(4);
     }
 
     public SetPixelMultiplicationDemo()

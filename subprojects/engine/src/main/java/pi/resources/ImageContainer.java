@@ -25,6 +25,8 @@
  */
 package pi.resources;
 
+import static pi.Controller.config;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -32,7 +34,6 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import pi.Configuration;
 import pi.util.ImageUtil;
 
 /**
@@ -60,8 +61,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         {
             return null;
         }
-        int pixelMultiplication = Configuration.get().graphics
-                .pixelMultiplication();
+        int pixelMultiplication = config.graphics.pixelMultiplication();
         if (pixelMultiplication > 1)
         {
             image = ImageUtil.multiplyPixel(image, pixelMultiplication);
@@ -131,7 +131,7 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, Configuration.get().graphics.pixelMultiplication(),
-                fromColors, toColors);
+        return get(name, config.graphics.pixelMultiplication(), fromColors,
+                toColors);
     }
 }

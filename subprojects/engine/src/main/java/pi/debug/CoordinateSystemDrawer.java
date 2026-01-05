@@ -25,7 +25,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 
 import pi.Camera;
-import pi.Configuration;
+import pi.Controller;
 import pi.Game;
 import pi.Scene;
 import pi.Vector;
@@ -132,7 +132,7 @@ public final class CoordinateSystemDrawer
      */
     private int stopY;
 
-    private CoordinatesystemConfiguration config;
+    private CoordinatesystemConfiguration config = Controller.config.coordinatesystem;
 
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
@@ -150,7 +150,6 @@ public final class CoordinateSystemDrawer
         this.width = width;
         this.height = height;
 
-        config = Configuration.get().coordinatesystem;
         pre = g.getTransform();
         Camera camera = scene.camera();
         center = camera.focus();
@@ -406,8 +405,7 @@ public final class CoordinateSystemDrawer
         Game.debug();
         Scene scene = Game.start();
         scene.addKeyStrokeListener((event) -> {
-            CoordinatesystemConfiguration config = Configuration
-                    .get().coordinatesystem;
+            CoordinatesystemConfiguration config = Controller.config.coordinatesystem;
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> config.linesNMeter(1);

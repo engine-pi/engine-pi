@@ -44,7 +44,6 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
 import pi.Bounds;
-import pi.Configuration;
 import pi.Game;
 import pi.Layer;
 import pi.Resources;
@@ -171,7 +170,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         physics = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
         EventListeners.registerListeners(this);
-        if (Configuration.get().game.instantMode())
+        if (Game.config.game.instantMode())
         {
             Game.startedActiveScene().add(this);
         }
@@ -865,7 +864,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        if (Configuration.get().debug.actorCoordinates())
+        if (Game.config.debug.actorCoordinates())
         {
             Graphics2DUtil.drawText(g, actor.positionformatted(), 8, 5, 5);
         }

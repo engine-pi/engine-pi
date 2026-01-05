@@ -16,9 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi;
+package pi.config;
 
-import pi.config.MainConfiguration;
+import pi.Game;
 
 /**
  * Bietet Zugriff auf alle <b>Konfigurationen</b>

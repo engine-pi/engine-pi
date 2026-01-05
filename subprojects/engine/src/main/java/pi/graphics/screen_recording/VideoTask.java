@@ -18,10 +18,11 @@
  */
 package pi.graphics.screen_recording;
 
+import static pi.Controller.config;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pi.Configuration;
 import pi.Game;
 import pi.util.FileUtil;
 
@@ -48,7 +49,7 @@ class VideoTask extends PhotoshootingTask
 
     VideoTask()
     {
-        this(Configuration.get().graphics.screenRecordingNFrames());
+        this(config.graphics.screenRecordingNFrames());
     }
 
     VideoTask(int nFrames)
@@ -115,8 +116,8 @@ class VideoTask extends PhotoshootingTask
                 new ImagesToVideoConverter(baseDir(),
                         FileUtil.getVideosDir() + "/Engine-Pi_"
                                 + getFormattedTime(),
-                        (int) Math.round((double) Configuration.get().graphics
-                                .framerate() / nFrames))
+                        (int) Math.round(
+                                (double) config.graphics.framerate() / nFrames))
                         .generate();
                 // Den temporären Ordner mit allen Bilder löschen.
                 FileUtil.deleteDir(baseDir());
