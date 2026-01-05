@@ -211,6 +211,7 @@ public class BallThrowDemo extends Scene
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new BallThrowDemo(), WIDTH, HEIGHT);
     }
 }

@@ -249,6 +249,7 @@ public class ForceKlickEnvironment extends Scene implements
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new ForceKlickEnvironment(), 1000, 800);
     }
 }

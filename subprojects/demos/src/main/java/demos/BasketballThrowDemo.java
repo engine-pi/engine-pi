@@ -56,7 +56,7 @@ public class BasketballThrowDemo extends Scene
                 new Vector(.15, .15));
         mainLayer().add(ballShadow);
         basket = new Rectangle(1.5, 0.05);
-        basket.color(Color.RED);
+        basket.color("red");
         basket.position(3, 0.5);
         basket.makeSensor();
         basket.gravityScale(0);
@@ -113,6 +113,7 @@ public class BasketballThrowDemo extends Scene
 
     public static void main(String[] args)
     {
+        Game.instantMode(false);
         Game.start(new BasketballThrowDemo(), WIDTH, HEIGHT);
     }
 }
