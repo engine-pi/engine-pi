@@ -79,7 +79,7 @@ public class BasketballThrowDemo extends Scene
             position(x + .15, y + .15);
             fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeDynamic();
-            elasticity(0.85);
+            restitution(0.85);
             friction(0.1);
         }
     }
@@ -106,7 +106,7 @@ public class BasketballThrowDemo extends Scene
             color(Color.WHITE);
             makeStatic();
             friction(.05);
-            elasticity(.3);
+            restitution(.3);
             density(150);
         }
     }

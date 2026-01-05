@@ -62,7 +62,7 @@ public class Logo
     public void applyPhysicSettings(Actor actor)
     {
         actor.makeStatic();
-        actor.elasticity(0.97);
+        actor.restitution(0.97);
     }
 
     private Vector shift(double x, double y)

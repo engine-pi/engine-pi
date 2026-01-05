@@ -1,7 +1,7 @@
 PACKAGE_PATH = engine-pi/src/main/java/org
 JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
 
-all: package
+all: package mkdocs_build
 
 deploy:
 	mvn deploy
@@ -51,7 +51,7 @@ assets: assets_init assets_sync_resources
 .PHONY: assets
 
 mkdocs_build:
-	mkdocs build
+	mkdocs build --strict
 
 mkdocs_deploy:
 	mkdocs gh-deploy

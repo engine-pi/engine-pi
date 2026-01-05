@@ -39,7 +39,7 @@ public class BounceBar extends Rectangle
     {
         super(width, 1);
         bodyType(BodyType.STATIC);
-        elasticity(1);
+        restitution(1);
         visible(false);
     }
 

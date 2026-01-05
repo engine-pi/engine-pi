@@ -34,7 +34,7 @@ public class Ball extends Circle
         super();
         color("white");
         bodyType(BodyType.DYNAMIC);
-        elasticity(1);
+        restitution(1);
     }
 
     public static void main(String[] args)

@@ -158,7 +158,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         Rectangle ground = new Rectangle(20, 0.2);
         ground.color("white");
         ground.center(0, -6);
-        ground.elasticity(.95);
+        ground.restitution(.95);
         ground.friction(.2);
         ground.makeStatic();
         add(ground);
@@ -202,7 +202,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
      */
     private void makeItemDynamic(Actor item)
     {
-        item.elasticity(0.9);
+        item.restitution(0.9);
         item.friction(1);
         item.makeDynamic();
     }

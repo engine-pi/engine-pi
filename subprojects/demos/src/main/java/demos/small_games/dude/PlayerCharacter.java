@@ -128,7 +128,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         stateTransition(PlayerState.Midair, PlayerState.Falling);
         stateTransition(PlayerState.Landing, PlayerState.Idle);
         friction(FRICTION);
-        elasticity(RESTITUTION);
+        restitution(RESTITUTION);
         fixtures("C0.5,0.3,0.3&C0.5,0.6,0.3");
         /*
          * setFixtures(() -> { List<Shape> shapeList = new ArrayList<>(2);

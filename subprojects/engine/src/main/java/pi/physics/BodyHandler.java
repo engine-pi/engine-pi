@@ -211,13 +211,13 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public void restitution(double elasticity)
+    public void restitution(double restitution)
     {
         synchronized (worldHandler)
         {
             for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
             {
-                fixture.setRestitution((float) elasticity);
+                fixture.setRestitution((float) restitution);
             }
         }
     }

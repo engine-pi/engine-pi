@@ -50,7 +50,7 @@ public class Platform extends TileRegistration
         setRightTile(TileMap.createFromImage(basePath + "platform_r.png"));
         makeStatic();
         friction(FRICTION);
-        elasticity(0);
+        restitution(0);
     }
 
     private void setLeftTile(Tile tile)

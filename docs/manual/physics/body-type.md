@@ -1,7 +1,5 @@
 # `BodyType` (Verhalten von Figuren in der physikalischen Simulation)
 
-
-
 # Kinetisch
 
 <!-- Lastly, let's see what a 'kinematic' body is all about. As we have seen so far,
@@ -20,6 +18,5 @@ Körper ähnelt einem statischen Körper insofern, als er bei einer Kollision mi
 einem dynamischen Körper immer seine Position behält und den dynamischen Körper
 zwingt, aus dem Weg zu gehen. Der Hauptunterschied zum statischen Körper ist,
 dass sich ein kinematischer Körper bewegen kann.[^iforce2d]
-
 
 [^iforce2d]: https://www.iforce2d.net/b2dtut/bodies

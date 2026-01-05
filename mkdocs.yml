@@ -116,7 +116,7 @@ nav:
           - manual/physics/body-type.md
           - manual/physics/gravity.md
           - manual/physics/density.md
-          - manual/physics/elasticity.md
+          - manual/physics/restitution.md
           - manual/physics/impulse.md
           - manual/physics/joints.md
 

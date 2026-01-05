@@ -83,7 +83,7 @@ public class Paddle extends Rectangle
         this.table = table;
         color("white");
         bodyType(BodyType.STATIC);
-        elasticity(1);
+        restitution(1);
         center(sideSign * (table.bounds.xRight() - BORDER_PADDING), 0);
     }
 

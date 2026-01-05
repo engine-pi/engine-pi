@@ -75,7 +75,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         makeDynamic();
         rotationLocked(true);
-        elasticity(0);
+        restitution(0);
         friction(30);
         linearDamping(.3);
     }

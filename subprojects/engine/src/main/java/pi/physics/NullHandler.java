@@ -175,9 +175,9 @@ public class NullHandler implements PhysicsHandler
 
     @Override
     @Setter
-    public void restitution(double elasticity)
+    public void restitution(double restitution)
     {
-        this.physicsData.globalRestitution(elasticity);
+        this.physicsData.globalRestitution(restitution);
     }
 
     @Override

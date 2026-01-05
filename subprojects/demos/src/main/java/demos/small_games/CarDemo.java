@@ -150,7 +150,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             rope[i].makeDynamic();
             rope[i].density(150);
             rope[i].friction(GROUND_FRICTION);
-            rope[i].elasticity(GROUND_RESTITUTION);
+            rope[i].restitution(GROUND_RESTITUTION);
             rope[i].borderRadius(.5);
             if (i == 0)
             {
@@ -198,7 +198,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             ground.makeStatic();
             ground.color(GROUND_COLOR);
             ground.friction(GROUND_FRICTION);
-            ground.elasticity(GROUND_RESTITUTION);
+            ground.restitution(GROUND_RESTITUTION);
             ground.density(50);
             add(ground);
         }
@@ -301,7 +301,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             color(GROUND_COLOR);
             makeStatic();
             friction(GROUND_FRICTION);
-            elasticity(GROUND_RESTITUTION);
+            restitution(GROUND_RESTITUTION);
             density(150);
             borderRadius(.1);
         }
@@ -365,7 +365,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             density(100);
             makeDynamic();
             friction(.5);
-            elasticity(.2);
+            restitution(.2);
             density(150);
             angularDamping(1);
             layerPosition(2);

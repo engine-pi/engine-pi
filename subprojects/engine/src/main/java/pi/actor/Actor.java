@@ -1588,14 +1588,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Objekt nicht abprallen, so müssen beide Objekte auf 0 gesetzt werden.
      * </p>
      *
-     * @param elasticity Die Stoßzahl bzw. der Restitutionskoeffizient.
+     * @param restitution Die Stoßzahl bzw. der Restitutionskoeffizient.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.color(..).postion(..)}.
      *
-     * @see #elasticity()
+     * @see #restitution()
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L132-L137">dynamics/FixtureDef.java#L132-L137</a>
@@ -1605,13 +1605,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     @API
     @Setter
-    public final Actor elasticity(double elasticity)
+    public final Actor restitution(double restitution)
     {
-        if (Double.isNaN(elasticity))
+        if (Double.isNaN(restitution))
         {
-            throw new RuntimeException("Ungültige Stoßzahl: " + elasticity);
+            throw new RuntimeException("Ungültige Stoßzahl: " + restitution);
         }
-        physics.restitution(elasticity);
+        physics.restitution(restitution);
         return this;
     }
 
@@ -1634,7 +1634,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Stoßzahl bzw. den Restitutionskoeffizienten.
      *
-     * @see #elasticity(double)
+     * @see #restitution(double)
      *
      * @jbox2d <a href=
      *     "https://github.com/jbox2d/jbox2d/blob/94bb3e4a706a6d1a5d8728a722bf0af9924dde84/jbox2d-library/src/main/java/org/jbox2d/dynamics/FixtureDef.java#L125-L130">dynamics/FixtureDef.java#L125-L130</a>
@@ -1644,7 +1644,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     @API
     @Getter
-    public final double elasticity()
+    public final double restitution()
     {
         return physics.restitution();
     }

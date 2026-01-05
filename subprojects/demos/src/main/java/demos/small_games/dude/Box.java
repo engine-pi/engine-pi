@@ -39,7 +39,7 @@ public class Box extends Image
         super(getBoxPath(type), SIZE, SIZE);
         makeDynamic();
         // setMass(MASS_IN_KG);
-        elasticity(RESTITUTION);
+        restitution(RESTITUTION);
     }
 
     public static String getBoxPath(int type)

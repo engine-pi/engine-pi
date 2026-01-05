@@ -26,14 +26,16 @@ import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/physics/restitution.md
+
 /**
- * Demonstriert die Methode {@link pi.actor.Actor#elasticity(double)}
+ * Demonstriert die Methode {@link pi.actor.Actor#restitution(double)}
  */
-public class ElasticityDemo extends Scene
+public class RestitutionDemo extends Scene
 {
     private final Rectangle ground;
 
-    public ElasticityDemo()
+    public RestitutionDemo()
     {
         camera().meter(20);
         // Ein Reckteck als Boden, auf dem die Kreise abprallen.
@@ -41,28 +43,28 @@ public class ElasticityDemo extends Scene
         ground.position(-12, -16);
         // Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
         // Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
-        ground.elasticity(0);
+        ground.restitution(0);
         ground.makeStatic();
         gravity(0, -9.81);
         add(ground);
-        double elasticity = 0;
+        double restitution = 0;
         for (double x = -11.5; x < 12; x += 2)
         {
-            createCircleWithElasticity(x, elasticity);
-            elasticity += 0.1;
+            createCircleWithElasticity(x, restitution);
+            restitution += 0.1;
         }
     }
 
-    private void createCircleWithElasticity(double x, double elasticity)
+    private void createCircleWithElasticity(double x, double restitution)
     {
         Circle circle = new Circle(1);
         add(circle);
-        circle.elasticity(elasticity);
+        circle.restitution(restitution);
         circle.position(x, 5);
         circle.makeDynamic();
         // Eine Beschriftung mit der Stoßzahl unterhalb des Kollisionsrechtecks
         DecimalFormat df = new DecimalFormat("0.00");
-        Text label = new Text(df.format(elasticity), 0.8);
+        Text label = new Text(df.format(restitution), 0.8);
         label.position(x, -17);
         label.makeStatic();
         add(label);
@@ -72,6 +74,6 @@ public class ElasticityDemo extends Scene
     {
         Controller.instantMode(false);
         Controller.recordScreen();
-        Controller.start(new ElasticityDemo(), 600, 800);
+        Controller.start(new RestitutionDemo(), 600, 800);
     }
 }

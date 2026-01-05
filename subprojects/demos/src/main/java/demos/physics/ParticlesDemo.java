@@ -50,14 +50,14 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         left.rotateBy(-21);
         left.makeStatic();
         left.color(Color.white);
-        left.elasticity(15f);
+        left.restitution(15f);
         add(left);
         Rectangle right = new Rectangle(200, 10);
         right.position(WIDTH / 6.0, 0);
         right.rotateBy(45);
         right.makeStatic();
         right.color(Color.white);
-        right.elasticity(15);
+        right.restitution(15);
         add(right);
         addKeyStrokeListener(this);
         repeat(1, (counter) -> createCircle(mousePosition(), Color.YELLOW));
