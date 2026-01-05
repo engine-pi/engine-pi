@@ -26,8 +26,14 @@ import pi.util.Graphics2DUtil;
  */
 public class Line extends Actor
 {
+    /**
+     * Der <b>Punkt 1</b>.
+     */
     private Vector point1;
 
+    /**
+     * Der <b>Punkt 2</b>.
+     */
     private Vector point2;
 
     /**
@@ -113,6 +119,8 @@ public class Line extends Actor
     }
 
     /**
+     * Zeichnet eine Pfeilspitze ein.
+     *
      * @param arrowType Die Art der Pfeilspitze.
      * @param arrowTarget Der Punkt an dem die Pfeilspitze eingezeichnet werden
      *     soll.
@@ -129,6 +137,9 @@ public class Line extends Actor
         }
         else if (arrowType == ArrowType.TRIANGLE)
         {
+            // Bei dicken Linien verdeckt das Dreieck das Linienende nicht ganz.
+
+            // Wir schieben die Pfeilspitze etwas nach vorne.
             Graphics2DUtil.drawArrow(g, point1.multiply(pixelPerMeter),
                     point2.multiply(pixelPerMeter), 50, 45, true);
         }
@@ -158,6 +169,37 @@ public class Line extends Actor
         g.setTransform(oldTransform);
         g.setStroke(oldStroke);
         g.setColor(oldColor);
+    }
+
+    /**
+     * Die verschiedenen Arten einer <b>Pfeilspitze</b>.
+     *
+     * @author Josef Friedrich
+     *
+     * @since 0.42.0
+     */
+    public enum ArrowType
+    {
+        // https://google.github.io/guice/api-docs/4.2.2/javadoc/index.html?com/google/inject/grapher/graphviz/ArrowType.html
+
+        // https://docs.yworks.com/yfiles-html/api/ArrowType.html
+
+        /**
+         * <b>Keine</b> Pfeilspitze
+         */
+        NONE,
+
+        /**
+         * Eine Pfeilspitze in Form eines <b>Winkels</b> (nach dem französischen
+         * Wort Chevron (französisch chevron = „Winkel“, „Sparren“,
+         * „Zickzackleiste“) )
+         */
+        CHEVERON,
+
+        /**
+         * Eine Pfeilspitze in Form eines <b>Dreiecks</b>.
+         */
+        TRIANGLE
     }
 
     /**

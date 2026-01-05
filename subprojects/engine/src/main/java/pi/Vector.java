@@ -240,9 +240,9 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt die Länge des Vektors aus.
+     * Gibt die <b>Länge</b> des Vektors aus.
      *
-     * @return Die Länge des Vektors.
+     * @return Die <b>Länge</b> des Vektors.
      */
     @API
     @Getter
