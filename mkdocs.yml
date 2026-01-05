@@ -131,6 +131,7 @@ nav:
 
       - Entwicklung:
           - manual/dev/index.md
+          - manual/dev/monorepo.md
           - manual/dev/design.md
           - manual/dev/coding-style.md
           - manual/dev/javadoc.md

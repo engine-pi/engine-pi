@@ -16,7 +16,7 @@
     </parent>
 
     <name>Engine</name>
-    <description>A beginner-orientated 2D game engine with German documentation. Its main purpose is to develop enthusiasm for programming and computer science through fast, visible and strong achievements.</description>
+    <description>A beginner-orientated 2D game engine with German documentation.</description>
     <url>https://github.com/engine-pi/engine-pi</url>
 
     <dependencies>

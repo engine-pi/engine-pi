@@ -19,7 +19,7 @@ Da die Engine Pi ein Fork der
 anderer griechischer Buchstabe gewählt werden.
 [Pi](https://de.wikipedia.org/wiki/Kreiszahl) ($\pi$) ist ein in der Mathematik
 sehr häufig verwendetes Symbol und Pi lässt sich auch zu Pi(rckheimer)
-erweitern, oder zu Pi(rckheimer-Gymnasium) an dem die Engine entwickelt wird.
+erweitern, oder zu Pi(rckheimer-Gymnasium), an dem die Engine entwickelt wird.
 
 ## Bezug zur Engine Alpha
 
