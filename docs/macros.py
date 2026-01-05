@@ -158,6 +158,8 @@ class JavaFile:
 def define_env(env: Any) -> None:
     def class_name(class_path: str, link_title: str | None = None) -> str:
         """
+        :param class_path: For example ``pi.actor.Actor``
+
         ``{{ class('pi.actor.Actor') }}``
         """
         class_path = _normalize_package_path(class_path)
@@ -173,7 +175,33 @@ def define_env(env: Any) -> None:
         if link_title is None:
             link_title = package_path
 
-        return f"[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
+
+    @env.macro
+    def method(class_path: str, method: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+        """
+        :param class_path: For example ``pi.actor.Actor``
+        :param method: For example ``color(java.awt.Color)``
+        :return: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#color(java.awt.Color)``
+        """
+
+        if link_title is None:
+            link_title = method
+
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{method})"
+
+    @env.macro
+    def attribute(class_path: str, attribute: str, link_title: str | None = None) -> str:  # pyright: ignore[reportUnusedFunction]
+        """
+        :param class_path: For example ``pi.Resources``
+        :param attribute: For example ``color``
+        :return: ``https://engine-pi.github.io/javadocs/pi/Resources.html#colors``
+        """
+
+        if link_title is None:
+            link_title = method
+
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{attribute})"
 
     @env.macro
     def demo(
