@@ -86,7 +86,7 @@ class TurtleDressController
     {
         this.scene = scene;
         this.size = size;
-        dressType(dress);
+        dress(dress);
     }
 
     /**
@@ -98,13 +98,13 @@ class TurtleDressController
      * @since 0.40.0
      */
     @Setter
-    public void dressType(TurtleDressType dressType)
+    public void dress(TurtleDressType dress)
     {
         if (image != null)
         {
             scene.remove(image);
         }
-        switch (dressType)
+        switch (dress)
         {
         case DOT:
             image = new Circle(size / 10);
@@ -123,7 +123,7 @@ class TurtleDressController
             image = animation;
             break;
         }
-        this.dressType = dressType;
+        this.dressType = dress;
         scene.add(image);
     }
 
@@ -131,7 +131,8 @@ class TurtleDressController
      * @since 0.40.0
      */
     @API
-    public void setNextDress()
+    @Setter
+    public void nextDress()
     {
         TurtleDressType[] dresses = TurtleDressType.values();
         int i = 0;
@@ -140,7 +141,7 @@ class TurtleDressController
             if (dresses[i] == dressType)
                 break;
         }
-        dressType(dresses[(i + 1) % dresses.length]);
+        dress(dresses[(i + 1) % dresses.length]);
     }
 
     /**

@@ -40,7 +40,9 @@ import pi.annotations.Setter;
 public class TurtleController
 {
 
-    /* Öffentliche “Controller” als deligierte Klasse, alphabetisch sortiert */
+    /*
+     * Öffentliche “Controller” als delegierte Klassen, alphabetisch sortiert.
+     */
 
     /**
      * Steuert die <b>Animationen</b>, die während des Malprozesses der
@@ -74,6 +76,11 @@ public class TurtleController
     public final TurtlePenController pen;
 
     /**
+     * @since 0.42.0
+     */
+    public final TurtleStatisticsController stats;
+
+    /**
      * @since 0.41.0
      */
     public final TurtleWindowController window;
@@ -100,6 +107,7 @@ public class TurtleController
         pen = scene.pen;
         animation = scene.animation;
         dress = scene.dress;
+        stats = scene.stats;
         window = new TurtleWindowController();
     }
 

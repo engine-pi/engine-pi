@@ -34,19 +34,27 @@ import pi.Game;
  */
 public class TurtleWindowController
 {
-
+    /**
+     * @since 0.41.0
+     */
     public TurtleWindowController size(int width, int height)
     {
         Game.windowSize(width, height);
         return this;
     }
 
+    /**
+     * @since 0.41.0
+     */
     public TurtleWindowController position(int x, int y)
     {
         Game.windowPosition(x, y);
         return this;
     }
 
+    /**
+     * @since 0.41.0
+     */
     public TurtleWindowController position(Direction direction)
     {
         Game.windowPosition(direction);

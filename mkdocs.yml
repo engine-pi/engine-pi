@@ -86,20 +86,22 @@ nav:
   - Handbuch:
       - Hauptklassen:
           - manual/main-classes/index.md
+          - Controller bzw. Game (Spiel):
+              - manual/main-classes/game/index.md
+              - manual/main-classes/game/game-loop.md
+              - manual/main-classes/game/coordinate-system.md
+              - manual/main-classes/game/dialog.md
+          - manual/main-classes/scene.md
+          - manual/main-classes/camera.md
+          - manual/main-classes/layer.md
           - 'Actor (Figur)':
               - manual/main-classes/actor/index.md
               - manual/main-classes/actor/hello-world.md
               - manual/main-classes/actor/turtle.md
               - manual/main-classes/actor/image-font.md
               - manual/main-classes/actor/stateful-animation.md
-          - manual/main-classes/scene.md
-          - manual/main-classes/camera.md
-          - manual/main-classes/layer.md
-          - Game (Spiel):
-              - manual/main-classes/game/index.md
-              - manual/main-classes/game/game-loop.md
-              - manual/main-classes/game/coordinate-system.md
-              - manual/main-classes/game/dialog.md
+
+
 
       - events (Ereignissteuerung):
           - manual/events/index.md
@@ -144,3 +146,18 @@ nav:
 
 extra:
   version: 0.41.0
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#generator-notice
+  generator: false
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/engine-pi/engine-pi
+    - icon:  simple/forgejo
+      link: https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi
+    - icon: fontawesome/brands/java
+      link: https://engine-pi.github.io/javadocs/pi/package-summary.html
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:josef.friedrich@pirckheimer-gymnasium.de
+
+# https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice
+copyright: Copyright &copy; 2024 - 2025 Josef Friedrich

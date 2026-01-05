@@ -39,8 +39,13 @@ import pi.util.TextUtil;
  *
  * @since 0.40.0
  */
-public class TurtleStatistics
+public class TurtleStatisticsController
 {
+    /**
+     * Ob die Statistikinformationen angezeigt werden sollen.
+     */
+    private boolean show = true;
+
     /**
      * Die zurückgelegte Distanz der Schildkröte in Meter.
      *
@@ -57,7 +62,7 @@ public class TurtleStatistics
     /**
      * @since 0.40.0
      */
-    public TurtleStatistics(TurtlePenController pen)
+    TurtleStatisticsController(TurtlePenController pen)
     {
         this.pen = pen;
         traveledDistance = 0;
@@ -79,6 +84,42 @@ public class TurtleStatistics
     }
 
     /**
+     * @since 0.42.0
+     */
+    public TurtleStatisticsController show(boolean show)
+    {
+        this.show = show;
+        return this;
+    }
+
+    /**
+     * @since 0.42.0
+     */
+    public TurtleStatisticsController show()
+    {
+        show = true;
+        return this;
+    }
+
+    /**
+     * @since 0.42.0
+     */
+    public TurtleStatisticsController hide(boolean hide)
+    {
+        show = !hide;
+        return this;
+    }
+
+    /**
+     * @since 0.42.0
+     */
+    public TurtleStatisticsController hide()
+    {
+        show = false;
+        return this;
+    }
+
+    /**
      * Addierte eine Entfernung in Meter zu der bereits zurückgelegten Strecke
      * der Schildkröte.
      *
@@ -86,7 +127,7 @@ public class TurtleStatistics
      *
      * @since 0.40.0
      */
-    public void addTraveledDistance(double distance)
+    void addTraveledDistance(double distance)
     {
         traveledDistance += distance;
     }
@@ -94,8 +135,12 @@ public class TurtleStatistics
     /**
      * @since 0.40.0
      */
-    public void render(Graphics2D g)
+    void render(Graphics2D g)
     {
+        if (!show)
+        {
+            return;
+        }
         table.forBox(0, 1, cell -> cell.box
                 .content(TextUtil.roundNumber(traveledDistance) + " m"));
         table.forBox(1, 1, cell -> cell.box

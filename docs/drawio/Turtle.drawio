@@ -1,238 +1,203 @@
 <mxfile host="65bd71144e">
     <diagram id="fUqwYvK4Wff4LgY5sTU9" name="Page-1">
-        <mxGraphModel dx="2201" dy="459" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="3438" dy="1547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="89" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtlePenController&lt;/font&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-400" y="430" width="160" height="86" as="geometry"/>
-                </mxCell>
-                <mxCell id="90" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="89" vertex="1">
-                    <mxGeometry y="26" width="160" height="26" as="geometry"/>
+                    <mxGeometry x="-900" y="224" width="280" height="190" as="geometry"/>
                 </mxCell>
                 <mxCell id="91" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="89" vertex="1">
-                    <mxGeometry y="52" width="160" height="8" as="geometry"/>
+                    <mxGeometry y="26" width="280" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="92" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="89" vertex="1">
-                    <mxGeometry y="60" width="160" height="26" as="geometry"/>
+                <mxCell id="92" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ thickness(thickness)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="89" vertex="1">
+                    <mxGeometry y="34" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="93" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleScene&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-710" y="300" width="160" height="86" as="geometry"/>
+                <mxCell id="202" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ changeThickness(thickness)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="89">
+                    <mxGeometry y="60" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="94" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ field: type&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="93" vertex="1">
-                    <mxGeometry y="26" width="160" height="26" as="geometry"/>
+                <mxCell id="201" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ color(color)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="89">
+                    <mxGeometry y="86" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="95" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="93" vertex="1">
-                    <mxGeometry y="52" width="160" height="8" as="geometry"/>
+                <mxCell id="203" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ lower()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="89">
+                    <mxGeometry y="112" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="96" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ method(type): type&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="93" vertex="1">
-                    <mxGeometry y="60" width="160" height="26" as="geometry"/>
+                <mxCell id="204" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ lift()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="89">
+                    <mxGeometry y="138" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="101" value="PaintingSurfaceScene" style="swimlane;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;fontStyle=0" parent="1" vertex="1">
-                    <mxGeometry x="-735" y="110" width="210" height="86" as="geometry"/>
+                <mxCell id="205" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ set(isDown)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="89">
+                    <mxGeometry y="164" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="102" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;- paintingSurface: PaintingSurface&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="101" vertex="1">
-                    <mxGeometry y="26" width="210" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="103" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="101" vertex="1">
-                    <mxGeometry y="52" width="210" height="8" as="geometry"/>
-                </mxCell>
-                <mxCell id="104" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ render()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="101" vertex="1">
-                    <mxGeometry y="60" width="210" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="106" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" source="93" target="101" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="-530" y="610" as="sourcePoint"/>
-                        <mxPoint x="-370" y="610" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="107" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleStatistics&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-450" y="150" width="160" height="86" as="geometry"/>
-                </mxCell>
-                <mxCell id="108" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="107" vertex="1">
-                    <mxGeometry y="26" width="160" height="26" as="geometry"/>
+                <mxCell id="107" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleStatisticsController&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-1400" y="426" width="160" height="86" as="geometry"/>
                 </mxCell>
                 <mxCell id="109" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="107" vertex="1">
-                    <mxGeometry y="52" width="160" height="8" as="geometry"/>
+                    <mxGeometry y="26" width="160" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="110" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="107" vertex="1">
+                <mxCell id="198" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ show()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="107">
+                    <mxGeometry y="34" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ hide()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="107" vertex="1">
                     <mxGeometry y="60" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="113" value="- statistics" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="107" target="93" edge="1">
-                    <mxGeometry x="-0.2393" y="-47" relative="1" as="geometry">
-                        <mxPoint x="-430" y="400" as="sourcePoint"/>
-                        <mxPoint x="-270" y="400" as="targetPoint"/>
-                        <mxPoint as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="114" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="113" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="15" y="-10" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="115" value="- pen" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="89" target="93" edge="1">
+                <mxCell id="115" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="89" target="168" edge="1">
                     <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
-                        <mxPoint x="-620" y="530" as="sourcePoint"/>
-                        <mxPoint x="-620" y="396" as="targetPoint"/>
+                        <mxPoint x="-780" y="326" as="sourcePoint"/>
+                        <mxPoint x="-710" y="172.54838709677415" as="targetPoint"/>
                         <mxPoint as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="116" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="115" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="15" y="-10" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="117" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleDressController&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-470" y="272" width="160" height="86" as="geometry"/>
-                </mxCell>
-                <mxCell id="118" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="117" vertex="1">
-                    <mxGeometry y="26" width="160" height="26" as="geometry"/>
+                    <mxGeometry x="-1410" y="236" width="160" height="138" as="geometry"/>
                 </mxCell>
                 <mxCell id="119" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="117" vertex="1">
-                    <mxGeometry y="52" width="160" height="8" as="geometry"/>
+                    <mxGeometry y="26" width="160" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="120" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="117" vertex="1">
+                <mxCell id="120" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ dress(dress&lt;/font&gt;&lt;span style=&quot;color: rgb(63, 63, 63); font-family: Cantarell; background-color: transparent;&quot;&gt;)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="117" vertex="1">
+                    <mxGeometry y="34" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="207" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ nextDress()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="117">
                     <mxGeometry y="60" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="121" value="- image" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="117" target="93" edge="1">
-                    <mxGeometry x="0.1404" y="17" relative="1" as="geometry">
-                        <mxPoint x="-377" y="500" as="sourcePoint"/>
-                        <mxPoint x="-523" y="366" as="targetPoint"/>
-                        <mxPoint x="-1" as="offset"/>
-                    </mxGeometry>
+                <mxCell id="209" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ show()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="117">
+                    <mxGeometry y="86" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="122" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="121" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="15" y="-10" as="offset"/>
-                    </mxGeometry>
+                <mxCell id="208" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ hide()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="117">
+                    <mxGeometry y="112" width="160" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="128" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;TurtleDressType&lt;/b&gt;&lt;/p&gt;&lt;hr style=&quot;border-style:solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;ANIMATED_IMAGE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;ARROW&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;DOT&lt;/p&gt;&lt;hr style=&quot;border-style:solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
-                    <mxGeometry x="-160" y="272" width="190" height="114" as="geometry"/>
-                </mxCell>
-                <mxCell id="129" value="- dress" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="128" target="117" edge="1">
-                    <mxGeometry x="-0.2895" y="14" relative="1" as="geometry">
-                        <mxPoint x="-454" y="690" as="sourcePoint"/>
-                        <mxPoint x="-720" y="730" as="targetPoint"/>
-                        <mxPoint as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="130" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="129" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="-40" y="-10" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="135" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TurtleController&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;border-style:solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;forward(distance: double)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;backward(distance: double)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
-                    <mxGeometry x="-980" y="93" width="185" height="120" as="geometry"/>
+                    <mxGeometry x="-1660" y="166" width="190" height="114" as="geometry"/>
                 </mxCell>
                 <mxCell id="136" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;Turtle&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-980" y="440" width="160" height="86" as="geometry"/>
+                    <mxGeometry x="-1180" y="206" width="160" height="398" as="geometry"/>
                 </mxCell>
-                <mxCell id="137" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ field: type&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
+                <mxCell id="137" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ animation&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
                     <mxGeometry y="26" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="138" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="136" vertex="1">
-                    <mxGeometry y="52" width="160" height="8" as="geometry"/>
+                <mxCell id="166" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ background&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="52" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="139" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ method(type): type&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
+                <mxCell id="167" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ dress&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="78" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="168" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ pen&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="104" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="178" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ stats&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="130" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ window&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="156" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="136" vertex="1">
+                    <mxGeometry y="182" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ forward(distance)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
+                    <mxGeometry y="190" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="170" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ backward(distance)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="216" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ position(x, y)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="242" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="172" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ left(rotation)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="268" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ right(rotation)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="294" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ direction(direction)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="320" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ lowerPen()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="346" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="176" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ liftPen()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="136">
+                    <mxGeometry y="372" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="179" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="107" target="178">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1300" y="426" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="333" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="182" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="117" target="167">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1300" y="426" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="333" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="183" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleBackgroundController&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-940" y="66" width="160" height="86" as="geometry"/>
+                </mxCell>
+                <mxCell id="185" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="183">
+                    <mxGeometry y="26" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="186" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ clear()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="183">
+                    <mxGeometry y="34" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="206" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ color(color)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="183">
                     <mxGeometry y="60" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="140" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" parent="1" source="136" target="135" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="-630" y="570" as="sourcePoint"/>
-                        <mxPoint x="-470" y="570" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="141" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" parent="1" source="93" target="135" edge="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="-630" y="570" as="sourcePoint"/>
-                        <mxPoint x="-470" y="570" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="142" value="&lt;font face=&quot;Cantarell&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot;&gt;TurtleGraphics&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Cantarell&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; style=&quot;&quot;&gt;{abstract}&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1220" y="350" width="160" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="143" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="142" vertex="1">
-                    <mxGeometry y="40" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="144" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="142" vertex="1">
-                    <mxGeometry y="66" width="160" height="8" as="geometry"/>
-                </mxCell>
-                <mxCell id="145" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="142" vertex="1">
-                    <mxGeometry y="74" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="146" value="&lt;font face=&quot;Cantarell&quot;&gt;InitialTurtleState&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1300" y="160" width="160" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="147" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="146" vertex="1">
-                    <mxGeometry y="40" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="148" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="146" vertex="1">
-                    <mxGeometry y="66" width="160" height="8" as="geometry"/>
-                </mxCell>
-                <mxCell id="149" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;...&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="146" vertex="1">
-                    <mxGeometry y="74" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="150" value="- scene" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="93" target="136" edge="1">
-                    <mxGeometry x="-0.7414" y="9" relative="1" as="geometry">
-                        <mxPoint x="-390" y="449" as="sourcePoint"/>
-                        <mxPoint x="-540" y="387" as="targetPoint"/>
+                <mxCell id="187" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="183" target="166">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1300" y="321" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="307" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="151" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="150" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="15" y="-10" as="offset"/>
-                    </mxGeometry>
+                <mxCell id="188" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleAnimationController&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1450" y="40" width="210" height="112" as="geometry"/>
                 </mxCell>
-                <mxCell id="152" value="turtle" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="135" target="142" edge="1">
-                    <mxGeometry x="-0.7414" y="9" relative="1" as="geometry">
-                        <mxPoint x="-700" y="394" as="sourcePoint"/>
-                        <mxPoint x="-810" y="452" as="targetPoint"/>
+                <mxCell id="190" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="188">
+                    <mxGeometry y="26" width="210" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="211" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ speed(speed)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="188">
+                    <mxGeometry y="34" width="210" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="212" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ changeS&lt;/font&gt;&lt;span style=&quot;color: rgb(63, 63, 63); font-family: Cantarell; background-color: transparent;&quot;&gt;peed(speedChange)&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="188">
+                    <mxGeometry y="60" width="210" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ warp()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="188">
+                    <mxGeometry y="86" width="210" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="192" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="188" target="137">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1300" y="321" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="307" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="153" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="152" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="15" y="-10" as="offset"/>
-                    </mxGeometry>
+                <mxCell id="193" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;TurtleWindowController&lt;/font&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-890" y="486" width="160" height="112" as="geometry"/>
                 </mxCell>
-                <mxCell id="154" value="initialState" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=open;startFill=0;" parent="1" source="146" target="142" edge="1">
-                    <mxGeometry x="-0.6705" y="16" relative="1" as="geometry">
-                        <mxPoint x="-1350.0033291298864" y="298.7" as="sourcePoint"/>
-                        <mxPoint x="-1231.68" y="407.2999999999999" as="targetPoint"/>
+                <mxCell id="195" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="193">
+                    <mxGeometry y="26" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ size(width, height)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="193">
+                    <mxGeometry y="34" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="199" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ position(x, y)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="193">
+                    <mxGeometry y="60" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="200" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ position(direction)&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="193">
+                    <mxGeometry y="86" width="160" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="197" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="193" target="169">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1329" y="456" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="359" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="155" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="154" connectable="0" vertex="1">
-                    <mxGeometry x="-1" relative="1" as="geometry">
-                        <mxPoint x="-17" y="30" as="offset"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="156" value="&lt;font face=&quot;Cantarell&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot;&gt;TurtleGraphicsSeries&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Cantarell&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; style=&quot;&quot;&gt;{abstract}&lt;/font&gt;&lt;/div&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="-1220" y="580" width="160" height="178" as="geometry"/>
-                </mxCell>
-                <mxCell id="165" value="&lt;font face=&quot;Cantarell&quot;&gt;numberOfSeries: int&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="156">
-                    <mxGeometry y="40" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="158" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="156">
-                    <mxGeometry y="66" width="160" height="8" as="geometry"/>
-                </mxCell>
-                <mxCell id="161" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;beforeSeries()&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="156">
-                    <mxGeometry y="74" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="157" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;beforeEachDraw()&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="156">
-                    <mxGeometry y="100" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="163" value="&lt;font face=&quot;Cantarell&quot;&gt;afterEachDraw()&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="156">
-                    <mxGeometry y="126" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="162" value="&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;afterSeries()&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="156">
-                    <mxGeometry y="152" width="160" height="26" as="geometry"/>
-                </mxCell>
-                <mxCell id="160" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" edge="1" parent="1" source="156" target="142">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="-790" y="602" as="sourcePoint"/>
-                        <mxPoint x="-790" y="498" as="targetPoint"/>
+                <mxCell id="210" value="" style="endArrow=none;endFill=0;html=1;align=left;verticalAlign=top;rounded=0;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;startArrow=none;startFill=0;" edge="1" parent="1" source="117" target="128">
+                    <mxGeometry x="-0.5961" y="10" relative="1" as="geometry">
+                        <mxPoint x="-1300" y="337" as="sourcePoint"/>
+                        <mxPoint x="-1170" y="307" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
             </root>

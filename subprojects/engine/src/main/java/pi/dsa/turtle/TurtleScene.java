@@ -28,6 +28,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
+import pi.Game;
 import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
@@ -53,7 +54,6 @@ import pi.resources.color.ColorUtil;
  */
 public class TurtleScene extends PaintingSurfaceScene
 {
-
     final TurtleAnimationController animation;
 
     /**
@@ -63,7 +63,7 @@ public class TurtleScene extends PaintingSurfaceScene
 
     final TurtlePenController pen;
 
-    private final TurtleStatistics statistics;
+    final TurtleStatisticsController stats;
 
     /**
      * Die Hintergrundfarbe der Zeichenfläche.
@@ -89,11 +89,14 @@ public class TurtleScene extends PaintingSurfaceScene
      */
     public TurtleScene()
     {
+        // Den Instant-Modus deaktivieren, da wir die benötigten Figuren „von
+        // Hand“ hinzufügen.
+        Game.instantMode(false);
         backgroundColor(backgroundColor);
         animation = new TurtleAnimationController();
         dress = new TurtleDressController(this);
         pen = new TurtlePenController();
-        statistics = new TurtleStatistics(pen);
+        stats = new TurtleStatisticsController(pen);
     }
 
     /* Hauptmethoden */
@@ -140,7 +143,7 @@ public class TurtleScene extends PaintingSurfaceScene
                 drawLineInSurface(lastPosition, pen.position);
             });
         }
-        statistics.addTraveledDistance(distance);
+        stats.addTraveledDistance(distance);
     }
 
     private void drawLineInSurface(Vector from, Vector to)
@@ -283,6 +286,6 @@ public class TurtleScene extends PaintingSurfaceScene
 
     public void renderOverlay(Graphics2D g, int width, int height)
     {
-        statistics.render(g);
+        stats.render(g);
     }
 }

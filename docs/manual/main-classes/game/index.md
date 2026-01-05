@@ -1,3 +1,3 @@
-# `Game` (Spiel)
+# `Controller` bzw. `Game` (Spiel)
 
 {{ contribute() }}

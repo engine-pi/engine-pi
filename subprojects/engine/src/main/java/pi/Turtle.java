@@ -89,6 +89,7 @@ public class Turtle extends AutoStartTurtleController
     public static void main(String[] args)
     {
         Turtle turtle = new Turtle();
+        turtle.stats.hide();
         for (int i = 0; i < 3; i++)
         {
             turtle.lowerPen();
