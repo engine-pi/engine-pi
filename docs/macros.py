@@ -7,6 +7,8 @@ from typing import Any
 
 JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
+RAW_GITHUB_URL = "https://raw.githubusercontent.com/engine-pi"
+RAW_ASSETS_URL = f"{RAW_GITHUB_URL}/assets/refs/heads/main"
 
 
 def _normalize_package_path(package_path: str) -> str:
@@ -263,9 +265,9 @@ def define_env(env: Any) -> None:
         _check_asset(relpath)
         return _caption(
             f"""<video autoplay loop>
-    <source src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}" type="video/mp4" />
+    <source src="{RAW_ASSETS_URL}/{relpath}" type="video/mp4" />
     Download the
-    <a href="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/{relpath}">MP4</a>
+    <a href="{RAW_ASSETS_URL}/{relpath}">MP4</a>
     video.
 </video>
 """,
@@ -317,3 +319,11 @@ def define_env(env: Any) -> None:
         )
 
     env.macro(macro_code, "code")
+
+    def macro_drawio(basename: str) -> str:
+        """
+        :param basename: The filename without extension
+        """
+        return f"![]({RAW_GITHUB_URL}/engine-pi/refs/heads/main/docs/drawio/{basename}.drawio)"
+
+    env.macro(macro_drawio, "drawio")

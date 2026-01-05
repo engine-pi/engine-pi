@@ -116,7 +116,7 @@ nav:
           - manual/physics/density.md
           - manual/physics/elasticity.md
           - manual/physics/impulse.md
-
+          - manual/physics/joints.md
 
       - Ressourcenverwaltung:
           - manual/resources/index.md

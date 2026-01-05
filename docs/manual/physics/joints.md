@@ -1,0 +1,3 @@
+# `joints` (Verbindungen)
+
+{{ drawio('Joint') }}
