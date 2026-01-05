@@ -6,6 +6,21 @@ allgemeinbildenden Schulen mit {{ package('pi', 'deutscher Dokumentation') }}.
 
 {{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}
 
+## Betreuer des Projekts
+
+Josef Friedrich,
+josef.friedrich@pirckheimer-gymnasium.de,
+Fachschaftsleiter für Informatik am Pirckheimer-Gymnasium, Nürnberg
+
+## Über den Namen „Engine Pi“
+
+Da die Engine Pi ein Fork der
+[Engine-Alpha](https://github.com/engine-alpha/engine-alpha) ist, musste ein
+anderer griechischer Buchstabe gewählt werden.
+[Pi](https://de.wikipedia.org/wiki/Kreiszahl) ($\pi$) ist ein in der Mathematik
+sehr häufig verwendetes Symbol und Pi lässt sich auch zu Pi(rckheimer)
+erweitern, oder zu Pi(rckheimer-Gymnasium) an dem die Engine entwickelt wird.
+
 ## Bezug zur Engine Alpha
 
 {{ image('logo/engine-alpha/engine-alpha.png', 'Logo der Engine Alpha') }}
