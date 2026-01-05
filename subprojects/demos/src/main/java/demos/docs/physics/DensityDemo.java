@@ -40,6 +40,12 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 
     public DensityDemo()
     {
+        info("Dichte-Demo")
+                .subtitle("Demonstierte die Methode Actor#density(double)")
+                .description(
+                        "Drei Kreise mit unterschiedlicher Dichte fallen im selben Tempo zu Boden. "
+                                + "Über die Leertaste kann ein nach oben wirkender Impuls auf die Kreise angewandt werden. "
+                                + "Der linke Kreis mit der geringsten Dichte wird von dem Impuls am weitesten nach oben geschleudert.");
         circles = new Circle[3];
         densityLables = new Text[3];
         int density = 10;
@@ -80,15 +86,17 @@ public class DensityDemo extends Scene implements KeyStrokeListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        for (Circle circle : circles)
+        if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
-            circle.applyImpulse(0, 100);
+            for (Circle circle : circles)
+            {
+                circle.applyImpulse(0, 100);
+            }
         }
     }
 
     public static void main(String[] args)
     {
-        Controller.debug();
         Controller.instantMode(false);
         Controller.start(new DensityDemo());
     }

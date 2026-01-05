@@ -71,6 +71,7 @@ public class ElasticityDemo extends Scene
     public static void main(String[] args)
     {
         Controller.instantMode(false);
+        Controller.recordScreen();
         Controller.start(new ElasticityDemo(), 600, 800);
     }
 }
