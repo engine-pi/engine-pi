@@ -18,7 +18,6 @@
  */
 package pi;
 
-import pi.actor.TriangleActor;
 import pi.annotations.API;
 
 /**
@@ -33,8 +32,8 @@ import pi.annotations.API;
  * </p>
  *
  * <p class="development-note">
- * Diese Klasse ist identisch mit {@link pi.actor.TriangleActor}. Sie steht
- * hier, damit sie über das Hauptpaket importiert werden kann, also
+ * Diese Klasse ist identisch mit {@link pi.actor.Triangle}. Sie steht hier,
+ * damit sie über das Hauptpaket importiert werden kann, also
  * {@code import pi.Triangle;}
  * </p>
  *
@@ -42,7 +41,7 @@ import pi.annotations.API;
  *
  * @since 0.42
  */
-public class Triangle extends TriangleActor
+public class Triangle extends pi.actor.Triangle
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1

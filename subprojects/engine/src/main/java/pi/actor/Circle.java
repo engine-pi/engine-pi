@@ -46,7 +46,7 @@ import pi.physics.FixtureData;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public abstract class CircleActor extends Geometry
+public class Circle extends Geometry
 {
     private double diameter;
 
@@ -55,7 +55,7 @@ public abstract class CircleActor extends Geometry
      *
      * @author Josef Friedrich
      */
-    public CircleActor()
+    public Circle()
     {
         this(1);
     }
@@ -65,7 +65,7 @@ public abstract class CircleActor extends Geometry
      *
      * @param diameter Der <b>Durchmesser</b> des Kreises.
      */
-    public CircleActor(double diameter)
+    public Circle(double diameter)
     {
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;

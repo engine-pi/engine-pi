@@ -36,13 +36,13 @@ import pi.annotations.API;
  *
  * @author Josef Friedrich
  */
-public abstract class TriangleActor extends Polygon
+public class Triangle extends Polygon
 {
     /**
      * Erzeugt ein <b>gleichseitiges</b> Dreieck mit einer Seitenlänge von <b>1
      * Meter</b>. Die Spitze zeigt nach oben.
      */
-    public TriangleActor()
+    public Triangle()
     {
         this(1);
     }
@@ -52,7 +52,7 @@ public abstract class TriangleActor extends Polygon
      *
      * @param sideLength Die Seitenlänge des gleichseitigen Dreiecks.
      */
-    public TriangleActor(double sideLength)
+    public Triangle(double sideLength)
     {
         this(new Vector(0, 0), new Vector(sideLength, 0),
                 new Vector(sideLength / 2.0, Math.sqrt(3) / 2.0 * sideLength));
@@ -66,7 +66,7 @@ public abstract class TriangleActor extends Polygon
      *     die Länge der Basis.
      * @param height Die Höhe der Symmetrieachse.
      */
-    public TriangleActor(double width, double height)
+    public Triangle(double width, double height)
     {
         this(new Vector(0, 0), new Vector(width, 0),
                 new Vector(width / 2, height));
@@ -84,7 +84,7 @@ public abstract class TriangleActor extends Polygon
      * @param y3 Die y-Koordinate des dritten Eckpunkts.
      */
     @API
-    public TriangleActor(double x1, double y1, double x2, double y2, double x3,
+    public Triangle(double x1, double y1, double x2, double y2, double x3,
             double y3)
     {
         this(new Vector(x1, y1), new Vector(x2, y2), new Vector(x3, y3));
@@ -97,7 +97,7 @@ public abstract class TriangleActor extends Polygon
      * @param point2 Die Koordinate des zweiten Eckpunkts.
      * @param point3 Die Koordinate des dritten Eckpunkts.
      */
-    public TriangleActor(Vector point1, Vector point2, Vector point3)
+    public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
         color("yellow");

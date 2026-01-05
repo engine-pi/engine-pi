@@ -20,7 +20,6 @@ package pi;
 
 import java.util.function.Supplier;
 
-import pi.actor.RectangleActor;
 import pi.annotations.API;
 import pi.physics.FixtureData;
 
@@ -35,8 +34,8 @@ import pi.physics.FixtureData;
  * </p>
  *
  * <p class="development-note">
- * Diese Klasse ist identisch mit {@link pi.actor.RectangleActor}. Sie steht
- * hier, damit sie über das Hauptpaket importiert werden kann, also
+ * Diese Klasse ist identisch mit {@link pi.actor.Rectangle}. Sie steht hier,
+ * damit sie über das Hauptpaket importiert werden kann, also
  * {@code import pi.Rectangle;}
  * </p>
  *
@@ -44,7 +43,7 @@ import pi.physics.FixtureData;
  *
  * @since 0.42
  */
-public class Rectangle extends RectangleActor
+public class Rectangle extends pi.actor.Rectangle
 {
     /**
      * Erzeugt ein <b>Quadrat</b> mit der Seitenlängen von <b>einem Meter</b>.

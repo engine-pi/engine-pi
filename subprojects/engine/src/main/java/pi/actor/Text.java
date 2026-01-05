@@ -40,7 +40,7 @@ import pi.resources.font.FontUtil;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public abstract class TextActor extends Geometry
+public class Text extends Geometry
 {
     /**
      * Needs to be large enough, so we don't have rounding errors due to
@@ -101,7 +101,7 @@ public abstract class TextActor extends Geometry
      * @since 0.27.0
      */
     @API
-    public TextActor(String content)
+    public Text(String content)
     {
         this(content, 1);
     }
@@ -114,7 +114,7 @@ public abstract class TextActor extends Geometry
      * @param height Die <b>Höhe</b> des Textes in Meter.
      */
     @API
-    public TextActor(String content, double height)
+    public Text(String content, double height)
     {
         this(content, height,
                 Resources.fonts.defaultFont().deriveFont((float) SIZE), 0);
@@ -131,7 +131,7 @@ public abstract class TextActor extends Geometry
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      */
     @API
-    public TextActor(String content, double height, String fontName)
+    public Text(String content, double height, String fontName)
     {
         this(content, height, fontName, 0);
     }
@@ -154,7 +154,7 @@ public abstract class TextActor extends Geometry
      *     </ul>
      */
     @API
-    public TextActor(String content, double height, String fontName, int style)
+    public Text(String content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 Resources.fonts.get(fontName).deriveFont(style, SIZE)));
@@ -165,7 +165,7 @@ public abstract class TextActor extends Geometry
         color("white");
     }
 
-    public TextActor(String content, double height, Font font, int style)
+    public Text(String content, double height, Font font, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 font.deriveFont(style, SIZE)));
@@ -187,7 +187,7 @@ public abstract class TextActor extends Geometry
      */
     @API
     @Setter
-    public TextActor font(Font font)
+    public Text font(Font font)
     {
         this.font = font.deriveFont(fontStyle, SIZE);
         update();
@@ -205,7 +205,7 @@ public abstract class TextActor extends Geometry
      */
     @API
     @Setter
-    public TextActor font(String fontName)
+    public Text font(String fontName)
     {
         font(Resources.fonts.get(fontName));
         return this;
@@ -228,7 +228,7 @@ public abstract class TextActor extends Geometry
      */
     @API
     @Setter
-    public TextActor content(String content)
+    public Text content(String content)
     {
         String normalizedContent = content;
         if (normalizedContent == null)
@@ -253,7 +253,7 @@ public abstract class TextActor extends Geometry
      */
     @API
     @Setter
-    public TextActor content(Object content)
+    public Text content(Object content)
     {
         content(String.valueOf(content));
         return this;
@@ -289,7 +289,7 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setStyle(int style)
+    public Text setStyle(int style)
     {
         if (style >= 0 && style <= 3 && style != fontStyle)
         {
@@ -316,7 +316,7 @@ public abstract class TextActor extends Geometry
      */
     @API
     @Setter
-    public TextActor height(double height)
+    public Text height(double height)
     {
         if (this.height != height)
         {
@@ -355,7 +355,7 @@ public abstract class TextActor extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public TextActor setWidth(double width)
+    public Text setWidth(double width)
     {
         var sizeInPixels = FontUtil.getStringBounds(content, font);
         height(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());

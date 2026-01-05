@@ -47,11 +47,11 @@ import pi.physics.FixtureData;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see CircleActor
- * @see TriangleActor
+ * @see Circle
+ * @see Triangle
  * @see pi.Rectangle
  */
-public abstract class RectangleActor extends Geometry
+public class Rectangle extends Geometry
 {
     /**
      * Die <b>Breite</b> des Rechtecks in Meter.
@@ -76,7 +76,7 @@ public abstract class RectangleActor extends Geometry
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      */
     @API
-    public RectangleActor(double width, double height)
+    public Rectangle(double width, double height)
     {
         this(width, height, () -> FixtureBuilder.rectangle(width, height));
     }
@@ -89,7 +89,7 @@ public abstract class RectangleActor extends Geometry
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
      * @param shapeSupplier Eine Lamda-Funktion, die den <b>Umriss</b> liefert.
      */
-    public RectangleActor(double width, double height,
+    public Rectangle(double width, double height,
             Supplier<FixtureData> shapeSupplier)
     {
         super(shapeSupplier);

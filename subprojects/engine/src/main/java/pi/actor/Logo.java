@@ -41,15 +41,15 @@ public class Logo
 
     private final Vector anchor;
 
-    public RectangleActor rectangleP;
+    public Rectangle rectangleP;
 
-    public TriangleActor triangleP;
+    public Triangle triangleP;
 
-    public CircleActor circleP;
+    public Circle circleP;
 
-    public RectangleActor rectangleI;
+    public Rectangle rectangleI;
 
-    public CircleActor circleI;
+    public Circle circleI;
 
     public Logo(Scene scene, Vector anchor, double factor)
     {
