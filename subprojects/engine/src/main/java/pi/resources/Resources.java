@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi;
+package pi.resources;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -37,9 +37,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import pi.resources.ImageContainer;
-import pi.resources.Resource;
-import pi.resources.ResourcesContainer;
 import pi.resources.color.ColorContainer;
 import pi.resources.color.ColorScheme;
 import pi.resources.color.ColorSchemeSelection;

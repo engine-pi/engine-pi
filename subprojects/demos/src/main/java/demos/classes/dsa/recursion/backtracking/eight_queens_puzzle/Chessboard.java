@@ -1,6 +1,6 @@
 package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
-import static pi.Resources.colorScheme;
+import static pi.resources.Resources.colorScheme;
 import static pi.resources.color.ColorUtil.changeSaturation;
 import static pi.util.TimeUtil.sleep;
 

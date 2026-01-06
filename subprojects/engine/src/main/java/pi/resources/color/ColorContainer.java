@@ -80,7 +80,7 @@ import pi.resources.Container;
  * <li>{@code black}: „Schwarz“</li>
  * </ul>
  *
- * @see pi.Resources#colors
+ * @see pi.Controller#colors
  *
  * @author Josef Friedrich
  */

@@ -23,7 +23,7 @@ import static pi.Controller.colors;
 import java.awt.Graphics2D;
 
 import pi.Controller;
-import pi.Resources;
+import pi.resources.Resources;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.ChildsBox;

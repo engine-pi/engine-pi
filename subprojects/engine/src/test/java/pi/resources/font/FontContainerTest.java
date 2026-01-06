@@ -1,7 +1,6 @@
 package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static pi.Controller.fonts;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,10 +8,14 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import pi.resources.Resources;
+
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class FontContainerTest
 {
-    FontContainer container = fonts;
+    // Nicht von Controller importieren, da die Tests auf Github headless
+    // laufen.
+    FontContainer container = Resources.fonts;
 
     @BeforeEach
     @AfterEach

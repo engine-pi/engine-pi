@@ -3,7 +3,6 @@ package pi.resources.color;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pi.Controller.colors;
 
 import java.awt.Color;
 
@@ -11,9 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import pi.resources.Resources;
+
 public class ColorContainerTest
 {
-    ColorContainer container = colors;
+    // Nicht von Controller importieren, da die Tests auf Github headless
+    // laufen.
+    ColorContainer container = Resources.colors;
 
     @BeforeEach
     void clear()

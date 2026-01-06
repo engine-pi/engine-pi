@@ -26,7 +26,7 @@
 package pi.config;
 
 import pi.Controller;
-import pi.Resources;
+import pi.resources.Resources;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;

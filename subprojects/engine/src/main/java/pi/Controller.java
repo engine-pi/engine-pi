@@ -57,6 +57,7 @@ import pi.graphics.RenderPanel;
 import pi.graphics.screen_recording.Photographer;
 import pi.loop.GameLoop;
 import pi.resources.ImageContainer;
+import pi.resources.Resources;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;

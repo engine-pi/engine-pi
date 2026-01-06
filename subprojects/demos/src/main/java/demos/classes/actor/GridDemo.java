@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import static pi.Resources.colorScheme;
+import static pi.resources.Resources.colorScheme;
 
 import pi.Controller;
 import pi.actor.Grid;

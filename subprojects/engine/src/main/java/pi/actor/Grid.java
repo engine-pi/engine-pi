@@ -18,7 +18,7 @@
  */
 package pi.actor;
 
-import static pi.Resources.colorScheme;
+import static pi.resources.Resources.colorScheme;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
