@@ -10,7 +10,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     // engine_pi
-    "Game.java": "Bounds.java, Camera.java, Circle.java, Configuration.java, Controller.java, Direction.java, Image.java, Jukebox.java, Layer.java, Random.java, Rectangle.java, Resources.java, Scene.java, Text.java, Triangle.java, Turtle.java, Vector.java",
+    "Controller.java": "Bounds.java, Camera.java, Circle.java, Direction.java, Game.java, Image.java, Jukebox.java, Layer.java, Random.java, Rectangle.java, Scene.java, Text.java, Triangle.java, Turtle.java, Vector.java",
     // engine_pi/actor
     "ImageFont.java": "ImageFontCaseSensitivity.java, ImageFontGlyph.java, ImageFontSpecimen.java, ImageFontText.java",
     "LabeledNode.java": "LabeledEdge.java",

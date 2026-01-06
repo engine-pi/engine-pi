@@ -63,10 +63,18 @@ import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
 /**
- * Die Klassen {@link Controller} und {@link Controller} sind identisch.
+ * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
+ *
+ * <p>
+ * Die Klassen {@link Game} und {@link Controller} sind identisch.
  * {@link Controller} ist der neutralere Name und eignet sich besser für
  * Projekte, die kein Spiel darstellen (z.B. Projekte zur
  * Algorithmenvisualisierung, Physik-Simulation)
+ * </p>
+ *
+ * @author Michael Andonie
+ * @author Niklas Keller
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
@@ -226,7 +234,7 @@ public class Controller
     private static final EventListeners<SceneLaunchListener> sceneLaunchListeners = new EventListeners<>();
 
     /**
-     * Öffnet verschiedene Dialoge
+     * Öffnet verschiedene <b>Dialoge</b>.
      */
     public static final DialogLauncher dialog = new DialogLauncher(frame);
 
@@ -993,72 +1001,6 @@ public class Controller
     }
 
     /**
-     * Setzt, ob die Figuren gezeichnet werden sollen.
-     *
-     * @see #renderActors()
-     */
-    @API
-    @Setter
-    public static void renderActors(boolean value)
-    {
-        config.debug.renderActors(value);
-    }
-
-    /**
-     * Gibt an, ob die Figuren gezeichnet werden sollen.
-     *
-     * @see #renderActors(boolean)
-     */
-    @API
-    @Getter
-    public static boolean renderActors()
-    {
-        return config.debug.renderActors();
-    }
-
-    /**
-     * @see #renderActors(boolean)
-     * @see #renderActors()
-     */
-    public static void toggleRenderActors()
-    {
-        Controller.renderActors(!Controller.renderActors());
-    }
-
-    /**
-     * Gibt an, ob die laufende Instanz der Engine gerade verbose Output gibt.
-     *
-     * @return ist dieser Wert <code>true</code>, werden extrem ausführliche
-     *     Logging-Informationen gespeichert. Sonst ist der Wert
-     *     <code>false</code>.
-     *
-     * @see #verbose(boolean)
-     */
-    @API
-    public static boolean isVerbose()
-    {
-        return config.debug.verbose();
-    }
-
-    /**
-     * Setzt, ob die aktuell laufende Instanz der Engine verbose Output geben
-     * soll.
-     *
-     * @param value ist dieser Wert <code>true</code>, so wird ein äußerst
-     *     ausführliches Log über die Funktionalität der Engine geführt. Dies
-     *     ist hauptsächlich für das Debugging an der Engine selbst notwendig.
-     *
-     * @see #isVerbose()
-     * @see #debug(boolean)
-     */
-    @API
-    @Setter
-    public static void verbose(boolean value)
-    {
-        config.debug.verbose(value);
-    }
-
-    /**
      * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
      * {@code ~/engine-pi}.
      */
@@ -1217,7 +1159,6 @@ public class Controller
      * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne dass viel
      * Code geschrieben werden muss.
      * </p>
-     *
      *
      * @param instantMode Der Aktivierungsstatus des Instant-Modus, also
      *     {@code true} falls der <b>Instant-Modus</b> aktiviert werden soll,

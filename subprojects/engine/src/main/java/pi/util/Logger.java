@@ -20,6 +20,8 @@
  */
 package pi.util;
 
+import static pi.Controller.config;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -193,11 +195,10 @@ final public class Logger
      *
      * @since 11.04.2017
      *
-     * @see pi.Controller#verbose(boolean)
      */
     public static void verboseInfo(String tag, String s)
     {
-        if (pi.Controller.isVerbose())
+        if (config.debug.verbose())
         {
             StackTraceElement e = Thread.currentThread().getStackTrace()[2];
             write("VER", tag, e.getFileName(), e.getLineNumber(), s, false,

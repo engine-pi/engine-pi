@@ -21,6 +21,7 @@
 package pi.actor;
 
 import static pi.Controller.colors;
+import static pi.Controller.config;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -804,7 +805,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             }
             // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
             // werden können.
-            if (Controller.renderActors())
+            if (config.debug.renderActors())
             {
                 // Zeichnen der Füllungen der Figuren. Die einzelnen
                 // Unterklassen müssen die render-Methode implementieren, die

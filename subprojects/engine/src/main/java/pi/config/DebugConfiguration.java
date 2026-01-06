@@ -191,6 +191,25 @@ public class DebugConfiguration extends ConfigurationGroup
         return this;
     }
 
+    /**
+     * Schaltet zwischen den Zuständen, ob die <b>Figuren</b> <b>gezeichnet</b>
+     * werden sollen oder nicht, hin und her.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public DebugConfiguration toggleRenderActors()
+    {
+        renderActors(!renderActors());
+        return this;
+    }
+
     /* actorCoordinates */
 
     /**

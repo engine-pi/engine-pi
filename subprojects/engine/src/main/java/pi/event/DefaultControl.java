@@ -119,7 +119,7 @@ public class DefaultControl implements DefaultListener
             }
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_A -> Controller.toggleRenderActors();
+            case KeyEvent.VK_A -> config.debug.toggleRenderActors();
             case KeyEvent.VK_D -> Controller.toggleDebug();
             case KeyEvent.VK_P -> config.debug.toogleShowPositions();
             case KeyEvent.VK_S -> Controller.takeScreenshot();
@@ -211,5 +211,10 @@ public class DefaultControl implements DefaultListener
             return;
         }
         camera.meter(newZoom);
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.start();
     }
 }
