@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.game_loop;
+package demos.docs.main_classes.controller.game_loop;
 
 import java.awt.event.KeyEvent;
 
@@ -31,6 +31,8 @@ import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/controller/game-loop.md
 
 public class SnakeAdvanced extends Scene implements FrameUpdateListener
 {

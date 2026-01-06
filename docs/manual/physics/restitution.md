@@ -1,4 +1,4 @@
-# `restitution` (Stoßzahl bzw. den Restitutionskoeffizienten.)
+# `restitution` (Stoßzahl bzw. Restitutionskoeffizient)
 
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
