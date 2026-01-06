@@ -30,7 +30,7 @@ import java.awt.event.KeyEvent;
 import pacman.Main;
 import pacman.actors.Blinky;
 import pacman.actors.Ghost;
-import pi.Game;
+import pi.Controller;
 import pi.Image;
 import pi.event.KeyStrokeListener;
 
@@ -38,7 +38,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     Ghost ghost;
@@ -997,7 +997,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.debug();
+        Controller.debug();
         Main.start(new IngameScene(), 4);
     }
 }

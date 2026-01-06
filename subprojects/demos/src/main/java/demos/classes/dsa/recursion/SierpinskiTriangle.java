@@ -1,6 +1,6 @@
 package demos.classes.dsa.recursion;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Triangle;
 
@@ -32,7 +32,7 @@ public class SierpinskiTriangle
         double height = 75;
         Triangle triangle = new Triangle(width, height);
         triangle.color("weiß");
-        Scene scene = Game.startedActiveScene();
+        Scene scene = Controller.startedActiveScene();
         scene.backgroundColor("yellow");
         scene.camera().meter(7);
         scene.camera().focus(triangle);

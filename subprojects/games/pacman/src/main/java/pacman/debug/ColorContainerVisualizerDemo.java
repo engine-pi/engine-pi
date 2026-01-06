@@ -19,7 +19,7 @@
 package pacman.debug;
 
 import pacman.ColorManagement;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.debug.ColorContainerVisualizer;
 
@@ -32,8 +32,8 @@ public class ColorContainerVisualizerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
         ColorManagement.setColors();
-        Game.start(new ColorContainerVisualizerDemo(), 1000, 1000);
+        Controller.start(new ColorContainerVisualizerDemo(), 1000, 1000);
     }
 }

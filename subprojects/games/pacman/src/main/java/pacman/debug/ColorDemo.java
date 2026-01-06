@@ -19,7 +19,7 @@
 package pacman.debug;
 
 import pacman.scenes.BaseScene;
-import pi.Game;
+import pi.Controller;
 import pi.Text;
 
 public class ColorDemo extends BaseScene
@@ -31,7 +31,7 @@ public class ColorDemo extends BaseScene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new ColorDemo(), 1000, 1000);
+        Controller.instantMode(false);
+        Controller.start(new ColorDemo(), 1000, 1000);
     }
 }

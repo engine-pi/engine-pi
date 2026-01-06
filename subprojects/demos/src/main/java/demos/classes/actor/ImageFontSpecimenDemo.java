@@ -1,6 +1,6 @@
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontSpecimen;
@@ -42,6 +42,6 @@ public class ImageFontSpecimenDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontSpecimenDemo("tetris"), 1000, 1000);
+        Controller.start(new ImageFontSpecimenDemo("tetris"), 1000, 1000);
     }
 }

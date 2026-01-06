@@ -18,7 +18,7 @@
  */
 package demos.classes.class_controller.attribute_dialog;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Demonstriert die Methode
@@ -28,9 +28,9 @@ public class RequestOkCancelDemo
 {
     public static void main(String[] args)
     {
-        Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            Game.dialog.requestOkCancel("Das ist eine Nachricht",
+        Controller.start();
+        Controller.addKeyStrokeListener((event) -> {
+            Controller.dialog.requestOkCancel("Das ist eine Nachricht",
                     "Das ist der Titel");
         });
     }

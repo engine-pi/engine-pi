@@ -20,7 +20,7 @@ package pi.actor;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
@@ -134,7 +134,7 @@ public class Counter extends Text
      */
     public static void main(String[] args)
     {
-        Game.start(new Scene()
+        Controller.start(new Scene()
         {
             {
                 Counter c = new Counter();

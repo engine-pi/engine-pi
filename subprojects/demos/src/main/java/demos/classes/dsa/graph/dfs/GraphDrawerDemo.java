@@ -1,6 +1,6 @@
 package demos.classes.dsa.graph.dfs;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Image;
 import pi.dsa.graph.GraphDrawer;
@@ -23,7 +23,7 @@ public class GraphDrawerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new GraphDrawerDemo(), 1200, 800);
+        Controller.start(new GraphDrawerDemo(), 1200, 800);
     }
 
 }

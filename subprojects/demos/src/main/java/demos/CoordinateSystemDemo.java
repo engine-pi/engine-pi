@@ -18,14 +18,14 @@
  */
 package demos;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 public class CoordinateSystemDemo
 {
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new Scene());
+        Controller.debug();
+        Controller.start(new Scene());
     }
 }

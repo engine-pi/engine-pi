@@ -18,7 +18,7 @@
  */
 package demos.small_games.pong;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.physics.BodyType;
 
@@ -37,7 +37,7 @@ public class Paddle extends Rectangle
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     /**
@@ -122,6 +122,6 @@ public class Paddle extends Rectangle
 
     public static void main(String[] args)
     {
-        Game.start(new PongTable());
+        Controller.start(new PongTable());
     }
 }

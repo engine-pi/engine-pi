@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
@@ -51,6 +51,6 @@ public class ImageFontTextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextDemo());
+        Controller.start(new ImageFontTextDemo());
     }
 }

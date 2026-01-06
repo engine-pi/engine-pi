@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.actor.Star;
 
 /**
@@ -39,7 +39,7 @@ public class StarDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new StarDemo());
+        Controller.debug();
+        Controller.start(new StarDemo());
     }
 }

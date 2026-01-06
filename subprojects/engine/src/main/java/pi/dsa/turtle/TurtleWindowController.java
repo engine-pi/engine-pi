@@ -19,7 +19,7 @@
 package pi.dsa.turtle;
 
 import pi.Direction;
-import pi.Game;
+import pi.Controller;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleWindowControllerDemo.java
 
@@ -39,7 +39,7 @@ public class TurtleWindowController
      */
     public TurtleWindowController size(int width, int height)
     {
-        Game.windowSize(width, height);
+        Controller.windowSize(width, height);
         return this;
     }
 
@@ -48,7 +48,7 @@ public class TurtleWindowController
      */
     public TurtleWindowController position(int x, int y)
     {
-        Game.windowPosition(x, y);
+        Controller.windowPosition(x, y);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class TurtleWindowController
      */
     public TurtleWindowController position(Direction direction)
     {
-        Game.windowPosition(direction);
+        Controller.windowPosition(direction);
         return this;
     }
 }

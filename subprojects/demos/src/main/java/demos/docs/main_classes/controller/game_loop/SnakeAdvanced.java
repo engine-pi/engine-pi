@@ -22,7 +22,7 @@ package demos.docs.main_classes.controller.game_loop;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
@@ -80,19 +80,19 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public void onFrameUpdate(double pastTime)
     {
         double dX = 0, dY = 0;
-        if (Game.isKeyPressed(KeyEvent.VK_W))
+        if (Controller.isKeyPressed(KeyEvent.VK_W))
         {
             dY = snakeSpeed * pastTime;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             dX = -snakeSpeed * pastTime;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_S))
+        if (Controller.isKeyPressed(KeyEvent.VK_S))
         {
             dY = -snakeSpeed * pastTime;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_D))
+        if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             dX = snakeSpeed * pastTime;
         }
@@ -162,6 +162,6 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(new SnakeAdvanced(), 600, 400);
+        Controller.start(new SnakeAdvanced(), 600, 400);
     }
 }

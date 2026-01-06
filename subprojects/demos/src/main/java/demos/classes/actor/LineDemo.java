@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.actor.Line;
 
 /**
@@ -39,8 +39,8 @@ public class LineDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.debug();
-        Game.start(new LineDemo());
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new LineDemo());
     }
 }

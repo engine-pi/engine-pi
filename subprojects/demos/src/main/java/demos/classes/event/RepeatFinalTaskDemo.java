@@ -18,7 +18,7 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
@@ -33,7 +33,7 @@ public class RepeatFinalTaskDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene()
+        Controller.start(new Scene()
         {
             {
                 repeat(0.2, 5, (counter) -> System.out.println("task"),

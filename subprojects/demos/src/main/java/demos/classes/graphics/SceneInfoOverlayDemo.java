@@ -20,7 +20,7 @@ package demos.classes.graphics;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.debug.MainAnimation;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
@@ -163,7 +163,7 @@ public class SceneInfoOverlayDemo extends MainAnimation
 
     public static void main(String[] args)
     {
-        Game.start(new SceneInfoOverlayDemo());
+        Controller.start(new SceneInfoOverlayDemo());
     }
 
 }

@@ -1,12 +1,12 @@
 package demos.small_games.pong;
 
-import pi.Game;
+import pi.Controller;
 
 public class Pong
 {
 
     public static void main(String[] args)
     {
-        Game.start(new PongTable());
+        Controller.start(new PongTable());
     }
 }

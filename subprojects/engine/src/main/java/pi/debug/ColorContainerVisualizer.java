@@ -21,7 +21,7 @@ package pi.debug;
 import java.awt.Color;
 import java.util.Map;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.Resources;
 import pi.Scene;
@@ -91,8 +91,8 @@ public class ColorContainerVisualizer
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new Scene()
+        Controller.instantMode(false);
+        Controller.start(new Scene()
         {
             {
                 new ColorContainerVisualizer(this);

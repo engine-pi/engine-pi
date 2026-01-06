@@ -22,7 +22,7 @@ package demos.tutorials.user_input;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
@@ -55,6 +55,6 @@ public class KeyStrokeCounterDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new KeyStrokeCounterDemo(), 700, 200);
+        Controller.start(new KeyStrokeCounterDemo(), 700, 200);
     }
 }

@@ -23,7 +23,7 @@ import static pi.Controller.config;
 import java.awt.event.KeyEvent;
 
 import pi.Camera;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
@@ -32,8 +32,9 @@ import pi.Scene;
  *
  * <p>
  * Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
- * {@link Game#removeDefaultControl()} können diese Kürzel entfernt oder mit
- * {@link Game#defaultControl(DefaultListener)} neue Kürzel gesetzt werden.
+ * {@link Controller#removeDefaultControl()} können diese Kürzel entfernt oder
+ * mit {@link Controller#defaultControl(DefaultListener)} neue Kürzel gesetzt
+ * werden.
  * </p>
  *
  * <ul>
@@ -53,9 +54,9 @@ import pi.Scene;
  * <li>{@code ALT + Mausrad} zum Einstellen des Zoomfaktors.</li>
  * </ul>
  *
- * @see Game#defaultControl()
- * @see Game#defaultControl(DefaultListener)
- * @see Game#removeDefaultControl()
+ * @see Controller#defaultControl()
+ * @see Controller#defaultControl(DefaultListener)
+ * @see Controller#removeDefaultControl()
  * @see DefaultListener
  *
  * @since 0.15.0
@@ -68,7 +69,7 @@ public class DefaultControl implements DefaultListener
 
     private Camera getCamera()
     {
-        Scene scene = Game.activeScene();
+        Scene scene = Controller.activeScene();
         if (scene != null)
         {
             return scene.camera();
@@ -78,7 +79,7 @@ public class DefaultControl implements DefaultListener
 
     private boolean hasNoScene()
     {
-        return Game.activeScene() == null;
+        return Controller.activeScene() == null;
     }
 
     // Got to
@@ -109,27 +110,27 @@ public class DefaultControl implements DefaultListener
     @Override
     public void onKeyDown(KeyEvent event)
     {
-        if (Game.isKeyPressed(KeyEvent.VK_ALT))
+        if (Controller.isKeyPressed(KeyEvent.VK_ALT))
         {
             double zoomFactor = 0.05;
-            if (Game.isKeyPressed(KeyEvent.VK_SHIFT))
+            if (Controller.isKeyPressed(KeyEvent.VK_SHIFT))
             {
                 zoomFactor = 0.2;
             }
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_A -> Game.toggleRenderActors();
-            case KeyEvent.VK_D -> Game.toggleDebug();
+            case KeyEvent.VK_A -> Controller.toggleRenderActors();
+            case KeyEvent.VK_D -> Controller.toggleDebug();
             case KeyEvent.VK_P -> config.debug.toogleShowPositions();
-            case KeyEvent.VK_S -> Game.takeScreenshot();
-            case KeyEvent.VK_R -> Game.recordScreen();
+            case KeyEvent.VK_S -> Controller.takeScreenshot();
+            case KeyEvent.VK_R -> Controller.recordScreen();
             case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);
             case KeyEvent.VK_MINUS -> getCamera().zoomOut(zoomFactor);
             }
         }
         if (event.getKeyCode() == KeyEvent.VK_ESCAPE)
         {
-            Game.exit();
+            Controller.exit();
         }
     }
 
@@ -152,22 +153,22 @@ public class DefaultControl implements DefaultListener
         {
             return;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_ALT))
+        if (Controller.isKeyPressed(KeyEvent.VK_ALT))
         {
             double dX = 0, dY = 0;
-            if (Game.isKeyPressed(KeyEvent.VK_UP))
+            if (Controller.isKeyPressed(KeyEvent.VK_UP))
             {
                 dY = CAMERA_SPEED * pastTime;
             }
-            else if (Game.isKeyPressed(KeyEvent.VK_DOWN))
+            else if (Controller.isKeyPressed(KeyEvent.VK_DOWN))
             {
                 dY = -CAMERA_SPEED * pastTime;
             }
-            if (Game.isKeyPressed(KeyEvent.VK_LEFT))
+            if (Controller.isKeyPressed(KeyEvent.VK_LEFT))
             {
                 dX = -CAMERA_SPEED * pastTime;
             }
-            else if (Game.isKeyPressed(KeyEvent.VK_RIGHT))
+            else if (Controller.isKeyPressed(KeyEvent.VK_RIGHT))
             {
                 dX = CAMERA_SPEED * pastTime;
             }
@@ -188,7 +189,7 @@ public class DefaultControl implements DefaultListener
     @Override
     public void onMouseScrollMove(MouseScrollEvent event)
     {
-        if (!Game.isKeyPressed(KeyEvent.VK_ALT))
+        if (!Controller.isKeyPressed(KeyEvent.VK_ALT))
         {
             return;
         }

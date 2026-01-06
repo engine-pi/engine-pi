@@ -18,27 +18,27 @@
  */
 package demos.classes.class_controller;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die Methode {@link Game#windowPosition(int, int)}
+ * Demonstriert die Methode {@link Controller#windowPosition(int, int)}
  */
 public class SetWindowSizeDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
-        Game.addKeyStrokeListener((event) -> {
+        Controller.start(new Scene());
+        Controller.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> {
-                Game.windowSize(600, 400);
+                Controller.windowSize(600, 400);
             }
             case KeyEvent.VK_2 -> {
-                Game.windowSize(300, 200);
+                Controller.windowSize(300, 200);
             }
             }
         });

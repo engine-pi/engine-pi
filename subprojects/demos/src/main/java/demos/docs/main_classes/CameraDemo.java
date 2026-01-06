@@ -20,7 +20,7 @@ package demos.docs.main_classes;
 
 import pi.Bounds;
 import pi.Camera;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Image;
@@ -66,18 +66,18 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        var position = Game.mousePositionInFrame();
-        var size = Game.windowSize();
+        var position = Controller.mousePositionInFrame();
+        var size = Controller.windowSize();
         double x = position.getX() - (size.x() / 2);
         double y = -1 * (position.getY() - (size.y() / 2));
         camera.moveFocus(new Vector(x, y).multiply(0.001));
         line.point1(camera.focus());
-        line.point2(Game.mousePosition());
+        line.point2(Controller.mousePosition());
     }
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new CameraDemo());
+        Controller.instantMode(false);
+        Controller.start(new CameraDemo());
     }
 }

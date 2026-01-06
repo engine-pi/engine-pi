@@ -22,7 +22,7 @@ package demos.tutorials.user_input.mouse;
 
 import java.awt.Color;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Circle;
@@ -123,6 +123,6 @@ public class PaintingCirclesAdvancedDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new PaintingCirclesAdvancedDemo(), 600, 400);
+        Controller.start(new PaintingCirclesAdvancedDemo(), 600, 400);
     }
 }

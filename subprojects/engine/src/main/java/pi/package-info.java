@@ -1,5 +1,5 @@
 /**
- * Enthält die <b>Hauptklassen</b> wie zum Beispiel {@link Game} oder
+ * Enthält die <b>Hauptklassen</b> wie zum Beispiel {@link Controller} oder
  * {@link Scene}.
  *
  * <p>

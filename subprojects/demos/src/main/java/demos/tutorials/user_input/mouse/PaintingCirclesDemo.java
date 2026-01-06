@@ -20,7 +20,7 @@
  */
 package demos.tutorials.user_input.mouse;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Circle;
@@ -49,6 +49,6 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 
     public static void main(String[] args)
     {
-        Game.start(new PaintingCirclesDemo(), 600, 400);
+        Controller.start(new PaintingCirclesDemo(), 600, 400);
     }
 }

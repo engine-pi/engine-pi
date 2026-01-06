@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import pi.Circle;
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Rectangle;
 import pi.Scene;
@@ -265,9 +265,9 @@ public class MainAnimation extends Scene implements FrameUpdateListener
 
     public static void main(String[] args) throws IOException
     {
-        Game.instantMode(false);
-        Game.start(new MainAnimation(false));
-        Game.recordScreen(20);
-        Game.title("Engine Pi " + Version.getVersion());
+        Controller.instantMode(false);
+        Controller.start(new MainAnimation(false));
+        Controller.recordScreen(20);
+        Controller.title("Engine Pi " + Version.getVersion());
     }
 }

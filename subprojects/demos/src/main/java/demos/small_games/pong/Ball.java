@@ -18,7 +18,7 @@
  */
 package demos.small_games.pong;
 
-import pi.Game;
+import pi.Controller;
 import pi.physics.BodyType;
 import pi.Circle;
 
@@ -39,6 +39,6 @@ public class Ball extends Circle
 
     public static void main(String[] args)
     {
-        Game.start(new PongTable());
+        Controller.start(new PongTable());
     }
 }

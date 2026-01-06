@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.dsa.graph.Graph;
 import pi.dsa.graph.GraphArrayMatrix;
@@ -72,7 +72,7 @@ public class GraphCollectionDemo extends Scene implements KeyStrokeListener
     public static void main(String[] args)
     {
         GraphCollectionDemo scene = new GraphCollectionDemo();
-        Game.start(scene);
+        Controller.start(scene);
         scene.importNextGraph();
         // scene.importGraph("OldenburgKapitel10Aufgabe7Nr3");
     }

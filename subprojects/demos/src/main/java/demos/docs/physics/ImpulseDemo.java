@@ -22,7 +22,7 @@ package demos.docs.physics;
 
 import java.awt.Color;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Circle;
@@ -115,7 +115,7 @@ public class ImpulseDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new ImpulseDemo(), 800, 300);
+        Controller.instantMode(false);
+        Controller.start(new ImpulseDemo(), 800, 300);
     }
 }

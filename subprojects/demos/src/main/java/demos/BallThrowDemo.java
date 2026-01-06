@@ -23,7 +23,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
@@ -211,7 +211,7 @@ public class BallThrowDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new BallThrowDemo(), WIDTH, HEIGHT);
+        Controller.instantMode(false);
+        Controller.start(new BallThrowDemo(), WIDTH, HEIGHT);
     }
 }

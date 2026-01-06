@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.actor.Group;
@@ -54,6 +54,6 @@ public class GroupDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new GroupDemo());
+        Controller.start(new GroupDemo());
     }
 }

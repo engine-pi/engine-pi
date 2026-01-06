@@ -18,19 +18,19 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link pi.Game#addMouseClickListener(pi.event.MouseClickListener)}.
+ * {@link pi.Controller#addMouseClickListener(pi.event.MouseClickListener)}.
  */
 public class GlobalMouseClickListenerDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
-        Game.addMouseClickListener((vector, button) -> {
+        Controller.start(new Scene());
+        Controller.addMouseClickListener((vector, button) -> {
             System.err.println("x: %s, y: %s, button %s".formatted(vector.x(),
                     vector.y(), button));
         });

@@ -22,7 +22,7 @@ import static pi.Resources.fonts;
 
 import java.awt.Font;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.resources.font.FontStyle;
@@ -64,7 +64,7 @@ public class TextDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.title("Cantarell");
-        Game.start(new TextDemo());
+        Controller.title("Cantarell");
+        Controller.start(new TextDemo());
     }
 }

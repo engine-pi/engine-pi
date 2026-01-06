@@ -20,7 +20,7 @@ package demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
@@ -57,6 +57,6 @@ public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new PressedKeyRepeaterDemo(), 400, 300);
+        Controller.start(new PressedKeyRepeaterDemo(), 400, 300);
     }
 }

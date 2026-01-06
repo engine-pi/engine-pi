@@ -23,7 +23,7 @@ package demos.tutorials.collision;
 import java.awt.event.KeyEvent;
 
 import pi.Camera;
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Random;
 import pi.Scene;
@@ -98,7 +98,7 @@ class DeathScreen extends Scene implements KeyStrokeListener
     @Override
     public void onKeyDown(KeyEvent e)
     {
-        Game.transitionToScene(new FroggyJump());
+        Controller.transitionToScene(new FroggyJump());
     }
 }
 
@@ -122,7 +122,7 @@ class Frog extends Image implements FrameUpdateListener
 
     public void kill()
     {
-        Game.transitionToScene(new DeathScreen());
+        Controller.transitionToScene(new DeathScreen());
     }
 
     @Override
@@ -139,7 +139,7 @@ class Frog extends Image implements FrameUpdateListener
             flippedHorizontally(false);
         }
         // B: Horizontale Bewegung steuern
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             if (velocity.x() > 0)
             {
@@ -147,7 +147,7 @@ class Frog extends Image implements FrameUpdateListener
             }
             applyForce(Vector.LEFT.multiply(600));
         }
-        else if (Game.isKeyPressed(KeyEvent.VK_D))
+        else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             if (velocity.x() < 0)
             {
@@ -245,6 +245,6 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 
     public static void main(String[] args)
     {
-        Game.start(new FroggyJump(), 400, 600);
+        Controller.start(new FroggyJump(), 400, 600);
     }
 }

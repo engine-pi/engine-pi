@@ -20,7 +20,7 @@ package demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.event.PeriodicTaskExecutor;
@@ -83,6 +83,6 @@ public class RepeatDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new RepeatDemo());
+        Controller.start(new RepeatDemo());
     }
 }

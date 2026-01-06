@@ -21,7 +21,7 @@ package demos.classes.resources.color;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.actor.Actor;
@@ -104,7 +104,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new ColorVariationsDemo(), 520, 520);
+        Controller.instantMode(false);
+        Controller.start(new ColorVariationsDemo(), 520, 520);
     }
 }

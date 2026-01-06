@@ -21,7 +21,7 @@ package demos.classes.resources.color;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
@@ -242,7 +242,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new ColorWheelIttenDemo(), 520, 520);
+        Controller.instantMode(false);
+        Controller.start(new ColorWheelIttenDemo(), 520, 520);
     }
 }

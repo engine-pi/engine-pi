@@ -171,7 +171,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      * <li>{@link Direction#NONE}: mittig</li>
      * </ul>
      *
-     * @see pi.Game#windowPosition(Direction)
+     * @see pi.Controller#windowPosition(Direction)
      */
     private Direction windowPosition = Direction.NONE;
 

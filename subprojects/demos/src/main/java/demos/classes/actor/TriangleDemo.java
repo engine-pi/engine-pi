@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Triangle;
 
 /**
@@ -44,7 +44,7 @@ public class TriangleDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new TriangleDemo());
+        Controller.debug();
+        Controller.start(new TriangleDemo());
     }
 }

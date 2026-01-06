@@ -22,7 +22,7 @@ package demos.tutorials.stateful_animation;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 import pi.actor.Animation;
 import pi.actor.StatefulAnimation;
@@ -135,11 +135,11 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
             velocity(new Vector(Math.signum(velocity.x()) * MAX_SPEED,
                     velocity.y()));
         }
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             applyForce(new Vector(-FORCE, 0));
         }
-        else if (Game.isKeyPressed(KeyEvent.VK_D))
+        else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             applyForce(new Vector(FORCE, 0));
         }

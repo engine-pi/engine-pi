@@ -20,7 +20,7 @@ package demos.docs.main_classes.controller;
 
 import java.util.function.Supplier;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Text;
@@ -57,41 +57,43 @@ public class AllDialogsDemo extends Scene
         // showMessage
 
         new DialogOpener("showMessage(message)", () -> {
-            Game.dialog.showMessage("Message");
+            Controller.dialog.showMessage("Message");
             return null;
         }, x, y1);
 
         new DialogOpener("showMessage(message, title)", () -> {
-            Game.dialog.showMessage("Message", "Title");
+            Controller.dialog.showMessage("Message", "Title");
             return null;
         }, x, y2);
 
         // requestStringInput
 
         new DialogOpener("requestStringInput(message)",
-                () -> Game.dialog.requestStringInput("Message"), x, y3);
+                () -> Controller.dialog.requestStringInput("Message"), x, y3);
 
         new DialogOpener("requestStringInput(message, title)",
-                () -> Game.dialog.requestStringInput("Message", "Title"), x,
-                y4);
+                () -> Controller.dialog.requestStringInput("Message", "Title"),
+                x, y4);
 
         // requestYesNo
 
         x = 2;
 
         new DialogOpener("requestYesNo(message)",
-                () -> Game.dialog.requestYesNo("Message"), x, y1);
+                () -> Controller.dialog.requestYesNo("Message"), x, y1);
 
         new DialogOpener("requestYesNo(message, title)",
-                () -> Game.dialog.requestYesNo("Message", "Title"), x, y2);
+                () -> Controller.dialog.requestYesNo("Message", "Title"), x,
+                y2);
 
         // requestOkCancel
 
         new DialogOpener("requestOkCancel(message)",
-                () -> Game.dialog.requestOkCancel("Message"), x, y3);
+                () -> Controller.dialog.requestOkCancel("Message"), x, y3);
 
         new DialogOpener("requestYesNo(message, title)",
-                () -> Game.dialog.requestOkCancel("Message", "Title"), x, y4);
+                () -> Controller.dialog.requestOkCancel("Message", "Title"), x,
+                y4);
     }
 
     class DialogOpener extends Text
@@ -120,7 +122,7 @@ public class AllDialogsDemo extends Scene
         @Override
         public void onFrameUpdate(double pastTime)
         {
-            if (contains(Game.mousePosition()))
+            if (contains(Controller.mousePosition()))
             {
                 color("blue");
             }
@@ -133,6 +135,6 @@ public class AllDialogsDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new AllDialogsDemo());
+        Controller.start(new AllDialogsDemo());
     }
 }

@@ -535,7 +535,7 @@ public final class Camera
             double pixelPerMeter)
     {
         Vector cameraRelativeLocInPx = focus.multiply(pixelPerMeter);
-        Vector frameSize = Game.windowSize();
+        Vector frameSize = Controller.windowSize();
         return new Point((int) (frameSize.x() / 2 + cameraRelativeLocInPx.x()),
                 (int) (frameSize.y() / 2 + cameraRelativeLocInPx.y()));
     }

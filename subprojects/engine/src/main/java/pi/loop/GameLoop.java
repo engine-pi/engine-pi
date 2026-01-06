@@ -31,7 +31,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -304,6 +304,6 @@ public final class GameLoop
 
     public static void main(String[] args)
     {
-        Game.start();
+        Controller.start();
     }
 }

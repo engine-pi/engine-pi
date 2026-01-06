@@ -23,7 +23,7 @@ package demos.physics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Circle;
@@ -120,8 +120,8 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.debug();
-        Game.start(new ParticlesDemo(), WIDTH, HEIGHT);
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new ParticlesDemo(), WIDTH, HEIGHT);
     }
 }

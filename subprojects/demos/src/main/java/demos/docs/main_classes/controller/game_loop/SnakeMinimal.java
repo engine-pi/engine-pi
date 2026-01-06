@@ -22,7 +22,7 @@ package demos.docs.main_classes.controller.game_loop;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
@@ -132,6 +132,6 @@ public class SnakeMinimal extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new SnakeMinimal(), 600, 400);
+        Controller.start(new SnakeMinimal(), 600, 400);
     }
 }

@@ -21,14 +21,14 @@ package pacman;
 import static pi.Controller.config;
 
 import pi.Direction;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 public class Main
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     public static void start(Scene scene, int pixelMultiplication)
@@ -40,7 +40,7 @@ public class Main
         // 224 = 28 * 8
         // 288 = 36 * 8
         config.graphics.pixelMultiplication(pixelMultiplication);
-        Game.start(scene, 224, 288);
+        Controller.start(scene, 224, 288);
     }
 
     /**
@@ -55,6 +55,6 @@ public class Main
 
     public static void main(String[] args)
     {
-        Game.start();
+        Controller.start();
     }
 }

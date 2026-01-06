@@ -18,7 +18,7 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.Text;
@@ -69,7 +69,7 @@ public class FrameUpdateListenerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new FrameUpdateListenerDemo(), 700, 200);
+        Controller.debug();
+        Controller.start(new FrameUpdateListenerDemo(), 700, 200);
     }
 }

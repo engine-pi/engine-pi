@@ -20,7 +20,7 @@ package demos.classes.event;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 
@@ -28,7 +28,7 @@ class Scene1 extends Scene
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     public Scene1()
@@ -47,7 +47,7 @@ class Scene2 extends Scene
 
 /**
  * Demonstriert die statische Methode
- * {@link pi.Game#addSceneLaunchListener(pi.event.SceneLaunchListener)}.
+ * {@link pi.Controller#addSceneLaunchListener(pi.event.SceneLaunchListener)}.
  */
 public class GlobalSceneLaunchListenerDemo
 {
@@ -57,22 +57,22 @@ public class GlobalSceneLaunchListenerDemo
 
     public static void main(String[] args)
     {
-        Game.addSceneLaunchListener((scene, previous) -> {
+        Controller.addSceneLaunchListener((scene, previous) -> {
             System.out.println("scene: " + scene);
             System.out.println("previous: " + previous);
         });
 
-        Game.addKeyStrokeListener((event) -> {
+        Controller.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> {
-                Game.transitionToScene(scene1);
+                Controller.transitionToScene(scene1);
             }
             case KeyEvent.VK_2 -> {
-                Game.transitionToScene(scene2);
+                Controller.transitionToScene(scene2);
             }
             }
         });
-        Game.start(scene1);
+        Controller.start(scene1);
     }
 }

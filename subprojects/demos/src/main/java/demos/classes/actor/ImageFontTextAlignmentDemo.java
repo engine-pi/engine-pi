@@ -20,7 +20,7 @@ import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
 import static pi.util.TextAlignment.RIGHT;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
@@ -64,6 +64,6 @@ public class ImageFontTextAlignmentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextAlignmentDemo());
+        Controller.start(new ImageFontTextAlignmentDemo());
     }
 }

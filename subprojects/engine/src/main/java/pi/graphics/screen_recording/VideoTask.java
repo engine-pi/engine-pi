@@ -23,7 +23,7 @@ import static pi.Controller.config;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pi.Game;
+import pi.Controller;
 import pi.util.FileUtil;
 
 /**
@@ -85,7 +85,7 @@ class VideoTask extends PhotoshootingTask
     void writeImage(ScreenshotImage image)
     {
         super.writeImage(image);
-        var window = Game.window();
+        var window = Controller.window();
         if (window != null)
         {
             if (oldTitle == null)
@@ -107,7 +107,7 @@ class VideoTask extends PhotoshootingTask
             public void run()
             {
                 // Den alten Titel wiederherstellen
-                var window = Game.window();
+                var window = Controller.window();
                 if (window != null && oldTitle != null)
                 {
                     window.setTitle(oldTitle);

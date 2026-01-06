@@ -23,7 +23,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Animation;
 import pi.Rectangle;
@@ -112,20 +112,20 @@ public class MinimalDemo extends Scene
     {
         // Die Geschwindigkeit, in der sich die Kamera bewegt (pro Sekunde)
         float camSpeed = 600;
-        if (Game.isKeyPressed(KeyEvent.VK_W))
+        if (Controller.isKeyPressed(KeyEvent.VK_W))
         {
             // W ist gedrückt → Kamera nach oben bewegen.
             camera().moveFocus(0, camSpeed * pastTime);
         }
-        if (Game.isKeyPressed(KeyEvent.VK_S))
+        if (Controller.isKeyPressed(KeyEvent.VK_S))
         {
             camera().moveFocus(0, -camSpeed * pastTime);
         }
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             camera().moveFocus(-camSpeed * pastTime, 0);
         }
-        if (Game.isKeyPressed(KeyEvent.VK_D))
+        if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             camera().moveFocus(camSpeed * pastTime, 0);
         }
@@ -138,8 +138,8 @@ public class MinimalDemo extends Scene
      */
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new MinimalDemo(), WIDTH, HEIGHT);
-        Game.title("Minimale Demo");
+        Controller.debug();
+        Controller.start(new MinimalDemo(), WIDTH, HEIGHT);
+        Controller.title("Minimale Demo");
     }
 }

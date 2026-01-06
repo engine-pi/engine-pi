@@ -25,7 +25,7 @@ import java.awt.event.KeyEvent;
 import java.util.Collection;
 import java.util.HashSet;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Vector;
 import pi.actor.Actor;
@@ -357,7 +357,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             {
                 // Wir haben uns bisher nach links bewegt und das soll jetzt
                 // aufhören
-                if (Game.isKeyPressed(KeyEvent.VK_D))
+                if (Controller.isKeyPressed(KeyEvent.VK_D))
                 {
                     // D ist auch gedrückt, wir wollen also ab jetzt nach rechts
                     setHorizontalMovement(
@@ -376,7 +376,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             {
                 // Wir haben uns bisher nach rechts bewegt und das soll jetzt
                 // aufhören
-                if (Game.isKeyPressed(KeyEvent.VK_A))
+                if (Controller.isKeyPressed(KeyEvent.VK_A))
                 {
                     // A ist gedrückt, wir wollen also ab jetzt nach links
                     setHorizontalMovement(

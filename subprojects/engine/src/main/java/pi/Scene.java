@@ -269,7 +269,7 @@ public class Scene implements KeyStrokeListenerRegistration,
                 g.setTransform(base);
             }
         }
-        if (Game.isDebug())
+        if (Controller.isDebug())
         {
             renderJoints(g);
         }
@@ -335,7 +335,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die sichtbare Fläche auf der Hauptebene
      *
-     * @see Game#windowSize()
+     * @see Controller#windowSize()
      */
     @API
     @Getter
@@ -349,7 +349,7 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die <b>sichtbare Fläche</b> im Meter auf der Hauptebene.
      *
-     * @see Game#windowSize()
+     * @see Controller#windowSize()
      *
      * @since 0.42.0
      */
@@ -357,7 +357,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public Bounds visibleArea()
     {
-        return mainLayer.visibleArea(Game.windowSize());
+        return mainLayer.visibleArea(Controller.windowSize());
     }
 
     /**
@@ -893,13 +893,14 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @return Die Position der Maus in der Szene als Vektor in Meter.
      *
-     * @see Game#mousePosition()
+     * @see Controller#mousePosition()
      */
     @API
     @Getter
     public final Vector mousePosition()
     {
-        return Game.convertMousePosition(this, Game.mousePositionInFrame());
+        return Controller.convertMousePosition(this,
+                Controller.mousePositionInFrame());
     }
 
     /**

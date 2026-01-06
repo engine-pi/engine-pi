@@ -16,7 +16,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
@@ -74,6 +74,6 @@ public class ImageFontTextSetContentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextSetContentDemo());
+        Controller.start(new ImageFontTextSetContentDemo());
     }
 }

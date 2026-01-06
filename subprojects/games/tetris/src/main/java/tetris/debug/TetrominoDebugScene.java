@@ -19,7 +19,7 @@ package tetris.debug;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
@@ -34,7 +34,7 @@ public class TetrominoDebugScene extends Scene implements KeyStrokeListener
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     private final Text rotation;
@@ -114,7 +114,7 @@ public class TetrominoDebugScene extends Scene implements KeyStrokeListener
     public static void start(boolean debug)
     {
         // Muss vorher gesetzt werden
-        Game.debug(debug);
+        Controller.debug(debug);
         Tetris.start(new TetrominoDebugScene(), debug);
     }
 

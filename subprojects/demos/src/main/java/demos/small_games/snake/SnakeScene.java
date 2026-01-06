@@ -20,7 +20,7 @@ package demos.small_games.snake;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Text;
@@ -75,22 +75,22 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double timeInS)
     {
-        if (Game.isKeyPressed(KeyEvent.VK_W))
+        if (Controller.isKeyPressed(KeyEvent.VK_W))
         {
             dY = snakeSpeed * timeInS;
             dX = 0;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             dX = -snakeSpeed * timeInS;
             dY = 0;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_S))
+        if (Controller.isKeyPressed(KeyEvent.VK_S))
         {
             dY = -snakeSpeed * timeInS;
             dX = 0;
         }
-        if (Game.isKeyPressed(KeyEvent.VK_D))
+        if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             dX = snakeSpeed * timeInS;
             dY = 0;
@@ -108,6 +108,6 @@ public class SnakeScene extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.start(new SnakeScene(), 600, 400);
+        Controller.start(new SnakeScene(), 600, 400);
     }
 }

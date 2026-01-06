@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.physics.FixtureBuilder;
 
@@ -46,7 +46,7 @@ public class RectangleDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new RectangleDemo());
+        Controller.debug();
+        Controller.start(new RectangleDemo());
     }
 }

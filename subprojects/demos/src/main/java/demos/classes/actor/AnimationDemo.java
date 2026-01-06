@@ -2,7 +2,7 @@ package demos.classes.actor;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Animation;
 import pi.event.KeyStrokeListener;
@@ -66,7 +66,7 @@ public class AnimationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new AnimationDemo());
+        Controller.start(new AnimationDemo());
     }
 
 }

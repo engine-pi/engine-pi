@@ -20,7 +20,7 @@ package demos.sound;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Jukebox;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
@@ -83,6 +83,6 @@ public class JukeboxTetrisDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new JukeboxTetrisDemo());
+        Controller.start(new JukeboxTetrisDemo());
     }
 }

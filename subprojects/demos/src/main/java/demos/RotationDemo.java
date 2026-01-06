@@ -21,7 +21,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Polygon;
@@ -74,6 +74,6 @@ public class RotationDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new RotationDemo(), 600, 400);
+        Controller.start(new RotationDemo(), 600, 400);
     }
 }

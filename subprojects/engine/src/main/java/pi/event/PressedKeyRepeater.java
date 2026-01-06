@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import pi.Game;
+import pi.Controller;
 import pi.annotations.Getter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PressedKeyRepeaterDemo.java
@@ -100,8 +100,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
         {
             this.action = action;
             countdown = action.initialInterval();
-            Game.addKeyStrokeListener(this);
-            Game.addFrameUpdateListener(this);
+            Controller.addKeyStrokeListener(this);
+            Controller.addFrameUpdateListener(this);
             action.runInitialTask();
             action.runRepeatedTask();
         }
@@ -124,8 +124,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
 
         public void stop()
         {
-            Game.removeFrameUpdateListener(this);
-            Game.removeKeyStrokeListener(this);
+            Controller.removeFrameUpdateListener(this);
+            Controller.removeKeyStrokeListener(this);
             action.runFinalTask();
         }
 
@@ -367,7 +367,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
         }
         listeners = new ArrayList<>();
         executors = new ArrayList<>();
-        Game.addKeyStrokeListener(this);
+        Controller.addKeyStrokeListener(this);
     }
 
     /**

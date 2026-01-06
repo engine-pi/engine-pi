@@ -21,7 +21,7 @@ package pi.dsa.turtle;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import pi.Game;
+import pi.Controller;
 import pi.dsa.turtle.graphics.HilbertCurveTurtleGraphics;
 import pi.dsa.turtle.graphics.KochSnowflakeTurtleGraphics;
 import pi.dsa.turtle.graphics.LevyCCurveTurtleGraphics;
@@ -78,7 +78,7 @@ public class TurtleGraphicsCollection implements KeyStrokeListener
         graphics.add(new SierpinskiCurveTurtleGraphics());
         clearAll();
 
-        Game.addKeyStrokeListener(this);
+        Controller.addKeyStrokeListener(this);
     }
 
     /**

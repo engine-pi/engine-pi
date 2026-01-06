@@ -18,19 +18,19 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link pi.Game#addFrameUpdateListener(pi.event.FrameUpdateListener)}.
+ * {@link pi.Controller#addFrameUpdateListener(pi.event.FrameUpdateListener)}.
  */
 public class GlobalFrameUpdateListenerDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
-        Game.addFrameUpdateListener((delta) -> System.out
+        Controller.start(new Scene());
+        Controller.addFrameUpdateListener((delta) -> System.out
                 .println("Vergangene Zeit seit letztem Einzelbild: " + delta));
     }
 }

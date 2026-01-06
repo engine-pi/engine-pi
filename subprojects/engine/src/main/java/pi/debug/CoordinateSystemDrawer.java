@@ -26,7 +26,6 @@ import java.awt.geom.AffineTransform;
 
 import pi.Camera;
 import pi.Controller;
-import pi.Game;
 import pi.Scene;
 import pi.Vector;
 import pi.annotations.Internal;
@@ -402,8 +401,8 @@ public final class CoordinateSystemDrawer
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Scene scene = Game.start();
+        Controller.debug();
+        Scene scene = Controller.start();
         scene.addKeyStrokeListener((event) -> {
             CoordinatesystemConfiguration config = Controller.config.coordinatesystem;
             switch (event.getKeyCode())

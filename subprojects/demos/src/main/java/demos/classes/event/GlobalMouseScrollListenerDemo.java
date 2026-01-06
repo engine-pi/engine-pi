@@ -18,19 +18,19 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link pi.Game#addMouseScrollListener(pi.event.MouseScrollListener)}.
+ * {@link pi.Controller#addMouseScrollListener(pi.event.MouseScrollListener)}.
  */
 public class GlobalMouseScrollListenerDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
-        Game.addMouseScrollListener((event) -> {
+        Controller.start(new Scene());
+        Controller.addMouseScrollListener((event) -> {
             System.err.println("precise rotation: %s, rotation: %s".formatted(
                     event.preciseWheelRotation(), event.wheelRotation()));
         });

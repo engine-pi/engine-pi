@@ -28,7 +28,7 @@ package pi.tweening;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import pi.Game;
+import pi.Controller;
 import pi.event.FrameUpdateListener;
 
 /**
@@ -154,7 +154,7 @@ public class TweenEngine implements FrameUpdateListener
      */
     public void start()
     {
-        Game.addFrameUpdateListener(this);
+        Controller.addFrameUpdateListener(this);
     }
 
     /**
@@ -199,7 +199,7 @@ public class TweenEngine implements FrameUpdateListener
      */
     public void terminate()
     {
-        Game.removeFrameUpdateListener(this);
+        Controller.removeFrameUpdateListener(this);
     }
 
     /**

@@ -18,7 +18,7 @@
  */
 package demos.classes.class_controller;
 
-import pi.Game;
+import pi.Controller;
 import pi.Image;
 import pi.Scene;
 import pi.Text;
@@ -28,8 +28,8 @@ public class SetPixelMultiplicationDemo extends Scene
 {
     static
     {
-        Game.instantMode(false);
-        Game.config.graphics.pixelMultiplication(4);
+        Controller.instantMode(false);
+        Controller.config.graphics.pixelMultiplication(4);
     }
 
     public SetPixelMultiplicationDemo()
@@ -45,6 +45,6 @@ public class SetPixelMultiplicationDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new SetPixelMultiplicationDemo(), 125, 200);
+        Controller.start(new SetPixelMultiplicationDemo(), 125, 200);
     }
 }

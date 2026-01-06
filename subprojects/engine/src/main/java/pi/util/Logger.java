@@ -26,7 +26,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Logger für die Engine Pi, damit Probleme bei Anwendern auch von Entwicklern
@@ -193,11 +193,11 @@ final public class Logger
      *
      * @since 11.04.2017
      *
-     * @see pi.Game#verbose(boolean)
+     * @see pi.Controller#verbose(boolean)
      */
     public static void verboseInfo(String tag, String s)
     {
-        if (pi.Game.isVerbose())
+        if (pi.Controller.isVerbose())
         {
             StackTraceElement e = Thread.currentThread().getStackTrace()[2];
             write("VER", tag, e.getFileName(), e.getLineNumber(), s, false,
@@ -218,6 +218,6 @@ final public class Logger
     {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
         write("DEBUG", tag, e.getFileName(), e.getLineNumber(), s, false,
-                Game.isDebug());
+                Controller.isDebug());
     }
 }

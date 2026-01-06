@@ -21,7 +21,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Image;
 import pi.event.KeyStrokeListener;
@@ -44,12 +44,12 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
     {
         if (e.getKeyCode() == KeyEvent.VK_P)
         {
-            Game.takeScreenshot();
+            Controller.takeScreenshot();
         }
     }
 
     public static void main(String[] args)
     {
-        Game.start(new ScreenshotDemo());
+        Controller.start(new ScreenshotDemo());
     }
 }

@@ -25,7 +25,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.util.Graphics2DUtil;
@@ -97,7 +97,7 @@ public class PaintingSurface
 
     private void setNewImage()
     {
-        var size = Game.windowSize();
+        var size = Controller.windowSize();
         image = new BufferedImage((int) size.x(), (int) size.y(),
                 BufferedImage.TYPE_INT_ARGB);
         g = image.createGraphics();

@@ -21,7 +21,7 @@ package demos;
 import java.awt.event.KeyEvent;
 
 import pi.Camera;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.Vector;
@@ -89,7 +89,7 @@ public class CameraDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new CameraDemo());
+        Controller.instantMode(false);
+        Controller.start(new CameraDemo());
     }
 }

@@ -1,6 +1,6 @@
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Image;
 
@@ -20,7 +20,7 @@ public class ActorSetFixtureFromStringDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new ActorSetFixtureFromStringDemo());
+        Controller.debug();
+        Controller.start(new ActorSetFixtureFromStringDemo());
     }
 }

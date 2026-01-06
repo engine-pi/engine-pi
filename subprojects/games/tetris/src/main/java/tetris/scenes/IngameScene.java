@@ -19,7 +19,7 @@ package tetris.scenes;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 import pi.event.PeriodicTaskExecutor;
@@ -387,7 +387,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         {
             rotate();
         }
-        if (Game.isDebug())
+        if (Controller.isDebug())
         {
             grid.print();
         }

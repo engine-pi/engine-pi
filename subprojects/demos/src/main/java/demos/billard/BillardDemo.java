@@ -23,7 +23,7 @@ package demos.billard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
@@ -106,6 +106,6 @@ public class BillardDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new BillardDemo(), WIDTH, HEIGHT);
+        Controller.start(new BillardDemo(), WIDTH, HEIGHT);
     }
 }

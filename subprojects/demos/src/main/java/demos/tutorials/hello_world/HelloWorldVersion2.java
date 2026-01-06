@@ -20,7 +20,7 @@
  */
 package demos.tutorials.hello_world;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
@@ -50,6 +50,6 @@ public class HelloWorldVersion2 extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new HelloWorldVersion2(), 400, 300);
+        Controller.start(new HelloWorldVersion2(), 400, 300);
     }
 }

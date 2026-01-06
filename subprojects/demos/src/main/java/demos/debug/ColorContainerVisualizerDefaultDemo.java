@@ -1,6 +1,6 @@
 package demos.debug;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.debug.ColorContainerVisualizer;
 
@@ -19,8 +19,8 @@ public class ColorContainerVisualizerDefaultDemo
 {
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new Scene()
+        Controller.instantMode(false);
+        Controller.start(new Scene()
         {
             {
                 new ColorContainerVisualizer(this);

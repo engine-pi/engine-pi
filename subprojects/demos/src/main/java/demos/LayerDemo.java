@@ -1,6 +1,6 @@
 package demos;
 
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.actor.Actor;
@@ -60,6 +60,6 @@ public class LayerDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new LayerDemo());
+        Controller.start(new LayerDemo());
     }
 }

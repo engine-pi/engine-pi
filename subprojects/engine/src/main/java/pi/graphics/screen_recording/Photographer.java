@@ -21,7 +21,7 @@ package pi.graphics.screen_recording;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Der Fotograf steuert, ob einzelne Bildschirmfotos gemacht werden sollen.
@@ -225,7 +225,7 @@ public final class Photographer
 
     public static void main(String[] args)
     {
-        Game.start();
+        Controller.start();
     }
 
 }

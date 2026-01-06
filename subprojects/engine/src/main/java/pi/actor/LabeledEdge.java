@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.Vector;
 import pi.annotations.Internal;
@@ -133,8 +133,8 @@ public class LabeledEdge extends Actor
      */
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start((scene) -> {
+        Controller.debug();
+        Controller.start((scene) -> {
             LabeledEdge e1, e2;
             e1 = new LabeledEdge(1, 1, 4, 5, "label");
 

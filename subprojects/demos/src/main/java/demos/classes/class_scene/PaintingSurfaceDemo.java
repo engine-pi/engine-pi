@@ -5,7 +5,7 @@ import static pi.Resources.colors;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 import pi.dsa.turtle.PaintingSurfaceScene;
 import pi.event.KeyStrokeListener;
@@ -55,7 +55,7 @@ public class PaintingSurfaceDemo extends PaintingSurfaceScene
 
     public static void main(String[] args)
     {
-        Game.start(new PaintingSurfaceDemo());
+        Controller.start(new PaintingSurfaceDemo());
     }
 
 }

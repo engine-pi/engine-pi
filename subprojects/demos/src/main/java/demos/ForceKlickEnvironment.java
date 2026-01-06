@@ -23,7 +23,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.Actor;
@@ -249,7 +249,7 @@ public class ForceKlickEnvironment extends Scene implements
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new ForceKlickEnvironment(), 1000, 800);
+        Controller.instantMode(false);
+        Controller.start(new ForceKlickEnvironment(), 1000, 800);
     }
 }

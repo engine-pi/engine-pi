@@ -25,13 +25,13 @@ import pacman.actors.Ghost;
 import pacman.actors.Inky;
 import pacman.actors.Pinky;
 import pacman.actors.Text;
-import pi.Game;
+import pi.Controller;
 
 public class InstructionScene extends BaseScene
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     public InstructionScene()

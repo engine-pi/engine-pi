@@ -22,7 +22,7 @@ import java.awt.Color;
 import java.util.Map.Entry;
 
 import pi.Circle;
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.Scene;
 import pi.Text;
@@ -1526,8 +1526,8 @@ public class ColorScheme
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new Scene()
+        Controller.instantMode(false);
+        Controller.start(new Scene()
         {
             {
                 backgroundColor(Resources.colors.get("#444444"));

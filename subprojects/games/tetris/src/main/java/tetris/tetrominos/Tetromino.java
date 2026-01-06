@@ -16,7 +16,7 @@
  */
 package tetris.tetrominos;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
@@ -117,7 +117,7 @@ public abstract class Tetromino
     protected void addBlock(int index, int x, int y)
     {
         Block block;
-        if (Game.isDebug())
+        if (Controller.isDebug())
         {
             block = new Block(this.scene, "Debug-" + index, x, y);
         }

@@ -25,7 +25,7 @@
  */
 package pi.config;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -269,7 +269,7 @@ public class ConfigurationLoader
                 StandardOpenOption.CREATE_NEW))
         {
             getConfigurationGroups().stream()
-                    .filter(group -> Game.isDebug() || !group.isDebug())
+                    .filter(group -> Controller.isDebug() || !group.isDebug())
                     .forEach(group -> storeConfigurationGroup(out, group));
 
             log.log(Level.INFO, "Configuration {0} saved", getPath());

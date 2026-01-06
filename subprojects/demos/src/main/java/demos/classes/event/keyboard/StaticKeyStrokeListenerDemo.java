@@ -21,7 +21,7 @@ package demos.classes.event.keyboard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
@@ -50,8 +50,8 @@ public class StaticKeyStrokeListenerDemo extends Scene
     public static void main(String[] args)
     {
         StaticKeyStrokeListenerDemo scene = new StaticKeyStrokeListenerDemo();
-        Game.start(scene, 600, 400);
-        Game.addKeyStrokeListener(new KeyStrokeListener()
+        Controller.start(scene, 600, 400);
+        Controller.addKeyStrokeListener(new KeyStrokeListener()
         {
             public void onKeyDown(KeyEvent e)
             {

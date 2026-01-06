@@ -23,7 +23,7 @@ package demos.tutorials.stateful_animation;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
@@ -93,6 +93,6 @@ public class StatefulAnimationDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new StatefulAnimationDemo(), 1200, 820);
+        Controller.start(new StatefulAnimationDemo(), 1200, 820);
     }
 }

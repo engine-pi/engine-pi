@@ -18,19 +18,19 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
  * Demonstriert die statische Methode
- * {@link pi.Game#addKeyStrokeListener(pi.event.KeyStrokeListener)}.
+ * {@link pi.Controller#addKeyStrokeListener(pi.event.KeyStrokeListener)}.
  */
 public class GlobalKeyStrokeListenerDemo
 {
     public static void main(String[] args)
     {
-        Game.start(new Scene());
-        Game.addKeyStrokeListener((e) -> {
+        Controller.start(new Scene());
+        Controller.addKeyStrokeListener((e) -> {
             System.out.println("Tastendruck empfangen: " + e.paramString());
         });
     }

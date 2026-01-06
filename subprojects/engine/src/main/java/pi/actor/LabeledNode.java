@@ -23,7 +23,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -293,7 +293,7 @@ public class LabeledNode extends Geometry
 
             // Im Debug-Modus wird der Textrahmen um die Knotenbezeichnung
             // eingezeichnet.
-            if (Game.isDebug())
+            if (Controller.isDebug())
             {
                 g.drawRect((int) (upperLeftX + leftMargin),
                         (int) (upperLeftY + topMargin), b.width, b.height);
@@ -319,7 +319,7 @@ public class LabeledNode extends Geometry
 
     public static void main(String[] args)
     {
-        Game.start(s -> {
+        Controller.start(s -> {
             LabeledNode n1, n2, n3;
             LabeledNode.SIZE = 2;
             n1 = new LabeledNode("Node 1");

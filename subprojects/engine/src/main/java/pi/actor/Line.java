@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
@@ -238,8 +238,8 @@ public class Line extends Actor
      */
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start((scene) -> {
+        Controller.instantMode(false);
+        Controller.start((scene) -> {
             Line line = new Line(1, 1, 4, 5);
             line.color("grün");
             scene.add(line);

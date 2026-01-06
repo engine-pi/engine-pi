@@ -30,7 +30,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.Vector;
@@ -207,15 +207,15 @@ public class CarDemo extends Scene implements FrameUpdateListener
     @Override
     public void onFrameUpdate(double pastTime)
     {
-        boolean left = Game.isKeyPressed(KeyEvent.VK_J);
-        boolean right = Game.isKeyPressed(KeyEvent.VK_L);
+        boolean left = Controller.isKeyPressed(KeyEvent.VK_J);
+        boolean right = Controller.isKeyPressed(KeyEvent.VK_L);
         // Antriebssteuerung
         if (left ^ right)
         {
             wheelFront.setMotorSpeed(right ? MOTOR_SPEED : -MOTOR_SPEED);
             wheelBack.setMotorSpeed(right ? MOTOR_SPEED : -MOTOR_SPEED);
         }
-        else if (Game.isKeyPressed(KeyEvent.VK_SPACE))
+        else if (Controller.isKeyPressed(KeyEvent.VK_SPACE))
         {
             wheelFront.setMotorSpeed(0);
             wheelBack.setMotorSpeed(0);
@@ -237,7 +237,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         }
         if (carBody.center().y() < -20)
         {
-            Game.transitionToScene(new CarDemo());
+            Controller.transitionToScene(new CarDemo());
         }
     }
 
@@ -475,7 +475,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new CarDemo(), WIDTH, HEIGHT);
+        Controller.instantMode(false);
+        Controller.start(new CarDemo(), WIDTH, HEIGHT);
     }
 }

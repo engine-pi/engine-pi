@@ -26,7 +26,7 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.Scene;
 import pi.annotations.API;
@@ -432,8 +432,8 @@ public class Image extends Actor
      */
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new Scene()
+        Controller.instantMode(false);
+        Controller.start(new Scene()
         {
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.

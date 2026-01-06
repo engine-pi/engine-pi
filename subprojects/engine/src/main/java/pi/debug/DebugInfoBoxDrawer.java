@@ -22,7 +22,7 @@ import static pi.Resources.colors;
 
 import java.awt.Graphics2D;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
@@ -124,7 +124,7 @@ public final class DebugInfoBoxDrawer
 
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start();
+        Controller.debug();
+        Controller.start();
     }
 }

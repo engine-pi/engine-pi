@@ -3,7 +3,7 @@ package pi.dsa.graph;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.actor.LabeledNode;
@@ -155,7 +155,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(GraphDrawer::new);
+        Controller.start(GraphDrawer::new);
     }
 
 }

@@ -18,7 +18,7 @@
  */
 package demos.classes.class_controller.attribute_dialog;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Demonstriert die Methode
@@ -28,9 +28,9 @@ public class RequestStringInputDemo
 {
     public static void main(String[] args)
     {
-        Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            String input = Game.dialog.requestStringInput(
+        Controller.start();
+        Controller.addKeyStrokeListener((event) -> {
+            String input = Controller.dialog.requestStringInput(
                     "Das ist eine Nachricht", "Das ist der Titel");
             System.out.println(input);
         });

@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import pi.Resources;
 import pi.Scene;
-import pi.Game;
+import pi.Controller;
 
 import pi.Image;
 import pi.event.KeyStrokeListener;
@@ -70,6 +70,6 @@ public class ImageDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new ImageDemo());
+        Controller.start(new ImageDemo());
     }
 }

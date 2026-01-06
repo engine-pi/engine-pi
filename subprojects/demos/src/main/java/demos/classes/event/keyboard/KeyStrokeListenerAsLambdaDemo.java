@@ -21,7 +21,7 @@ package demos.classes.event.keyboard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 
@@ -56,6 +56,6 @@ public class KeyStrokeListenerAsLambdaDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new KeyStrokeListenerAsLambdaDemo(), 600, 400);
+        Controller.start(new KeyStrokeListenerAsLambdaDemo(), 600, 400);
     }
 }

@@ -18,7 +18,7 @@ package tetris.debug;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Rectangle;
 import pi.Vector;
 import pi.event.FrameUpdateListener;
@@ -327,7 +327,7 @@ public class GridDebugScene extends BaseScene
     {
         // Markiert eine Zeile über der sich die Maus befindet. Diese kann dann
         // durch einen Link-Klick getilgt werden.
-        Vector position = Game.mousePosition();
+        Vector position = Controller.mousePosition();
         ROW_OVERLAY.y((int) position.y());
         // Markiert die Zeilen, die getilgt werden können.
         if (range != null && showRangeOverlay)

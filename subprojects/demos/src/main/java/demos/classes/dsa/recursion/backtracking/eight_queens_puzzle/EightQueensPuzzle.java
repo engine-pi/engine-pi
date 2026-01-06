@@ -1,6 +1,6 @@
 package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Counter;
 
@@ -52,7 +52,7 @@ public class EightQueensPuzzle
         foundSolutions.position(10, 4);
         foundSolutions.color("white");
         scene.add(foundSolutions);
-        Game.start(scene);
+        Controller.start(scene);
         makeStep(0);
     }
 

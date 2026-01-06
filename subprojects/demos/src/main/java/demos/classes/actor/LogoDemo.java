@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import static pi.Vector.v;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Logo;
 
@@ -38,7 +38,7 @@ public class LogoDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new LogoDemo(), 500, 500);
-        Game.windowPosition(2500, 0);
+        Controller.start(new LogoDemo(), 500, 500);
+        Controller.windowPosition(2500, 0);
     }
 }

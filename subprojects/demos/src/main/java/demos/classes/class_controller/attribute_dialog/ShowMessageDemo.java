@@ -18,7 +18,7 @@
  */
 package demos.classes.class_controller.attribute_dialog;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Demonstriert die Methode
@@ -28,9 +28,9 @@ public class ShowMessageDemo
 {
     public static void main(String[] args)
     {
-        Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            Game.dialog.showMessage("Das ist eine Nachricht",
+        Controller.start();
+        Controller.addKeyStrokeListener((event) -> {
+            Controller.dialog.showMessage("Das ist eine Nachricht",
                     "Das ist der Titel");
         });
     }

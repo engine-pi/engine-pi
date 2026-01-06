@@ -18,17 +18,17 @@
  */
 package demos.classes.class_controller;
 
-import pi.Game;
+import pi.Controller;
 
 /**
- * Demonstriert die Methode {@link Game#isRunning()}.
+ * Demonstriert die Methode {@link Controller#isRunning()}.
  */
 public class IsRunningDemo
 {
     public static void main(String[] args)
     {
-        System.out.println(Game.isRunning());
-        Game.start();
-        System.out.println(Game.isRunning());
+        System.out.println(Controller.isRunning());
+        Controller.start();
+        System.out.println(Controller.isRunning());
     }
 }

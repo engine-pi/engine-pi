@@ -23,7 +23,7 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 import pi.Circle;
 import pi.actor.Polygon;
@@ -141,6 +141,6 @@ public class JointDemo extends ForceKlickEnvironment
 
     public static void main(String[] args)
     {
-        Game.start(new JointDemo(), 1000, 800);
+        Controller.start(new JointDemo(), 1000, 800);
     }
 }

@@ -44,7 +44,7 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
 import pi.Bounds;
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Resources;
 import pi.Vector;
@@ -170,9 +170,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         physics = new NullHandler(new PhysicsData(
                 () -> Collections.singletonList(defaultFixtureSupplier.get())));
         EventListeners.registerListeners(this);
-        if (Game.config.game.instantMode())
+        if (Controller.config.game.instantMode())
         {
-            Game.startedActiveScene().add(this);
+            Controller.startedActiveScene().add(this);
         }
     }
 
@@ -507,7 +507,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return <code>true</code>, wenn dieses {@link Actor}-Objekt sich mit
      *     <code>other</code> schneidet. Sonst <code>false</code>.
      *
-     * @see pi.Game#debug(boolean)
+     * @see pi.Controller#debug(boolean)
      */
     @API
     public final boolean overlaps(Actor other)
@@ -803,14 +803,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             }
             // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
             // werden können.
-            if (Game.renderActors())
+            if (Controller.renderActors())
             {
                 // Zeichnen der Füllungen der Figuren. Die einzelnen
                 // Unterklassen müssen die render-Methode implementieren, die
                 // dann das Zeichen der Füllungen übernimmt.
                 render(g, pixelPerMeter);
             }
-            if (Game.isDebug())
+            if (Controller.isDebug())
             {
                 synchronized (this)
                 {
@@ -864,7 +864,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Den Anker der Figur einzeichnen
         g.setColor(Resources.colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
-        if (Game.config.debug.actorCoordinates())
+        if (Controller.config.debug.actorCoordinates())
         {
             Graphics2DUtil.drawText(g, actor.positionformatted(), 8, 5, 5);
         }

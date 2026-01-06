@@ -20,7 +20,7 @@
  */
 package demos.tutorials.hello_world;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 
@@ -32,11 +32,11 @@ public class HelloWorldVersion1 extends Scene
         helloWorld.color("white");
         helloWorld.center(0, 1);
         add(helloWorld);
-        Game.debug();
+        Controller.debug();
     }
 
     public static void main(String[] args)
     {
-        Game.start(new HelloWorldVersion1(), 400, 300);
+        Controller.start(new HelloWorldVersion1(), 400, 300);
     }
 }

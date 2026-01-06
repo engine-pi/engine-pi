@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import static pi.Vector.v;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Polygon;
 
@@ -44,6 +44,6 @@ public class ActorRotationDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ActorRotationDemo());
+        Controller.start(new ActorRotationDemo());
     }
 }

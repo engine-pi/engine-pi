@@ -21,7 +21,7 @@ package demos.classes.event.keyboard;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
@@ -90,6 +90,6 @@ public class ListenerOnActorsDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ListenerOnActorsDemo(), 600, 400);
+        Controller.start(new ListenerOnActorsDemo(), 600, 400);
     }
 }

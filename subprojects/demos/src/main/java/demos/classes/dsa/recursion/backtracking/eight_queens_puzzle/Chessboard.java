@@ -6,7 +6,7 @@ import static pi.util.TimeUtil.sleep;
 
 import java.awt.Color;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Image;
@@ -152,6 +152,6 @@ public class Chessboard
         scene.meter(50);
         scene.camera().focus(4, 4);
         new Chessboard(scene);
-        Game.start(scene);
+        Controller.start(scene);
     }
 }

@@ -20,7 +20,7 @@ package demos.classes.event.keyboard;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.event.KeyStrokeListener;
@@ -76,6 +76,6 @@ public class KeyStrokeListenerAsNormalClassDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new KeyStrokeListenerAsNormalClassDemo(), 600, 400);
+        Controller.start(new KeyStrokeListenerAsNormalClassDemo(), 600, 400);
     }
 }

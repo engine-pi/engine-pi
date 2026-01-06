@@ -22,7 +22,7 @@ package demos.tutorials.scenes;
 
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.Rectangle;
@@ -64,7 +64,7 @@ public class MainScene extends Scene implements KeyStrokeListener
 
     private void gotoPause()
     {
-        Game.transitionToScene(pauseMenu);
+        Controller.transitionToScene(pauseMenu);
     }
 
     private static class PauseMenu extends Scene
@@ -103,14 +103,14 @@ public class MainScene extends Scene implements KeyStrokeListener
             {
                 if (contains(clickLoc))
                 {
-                    Game.transitionToScene(mainScene);
+                    Controller.transitionToScene(mainScene);
                 }
             }
 
             @Override
             public void onFrameUpdate(double pastTime)
             {
-                if (contains(Game.mousePosition()))
+                if (contains(Controller.mousePosition()))
                 {
                     color("blue");
                 }
@@ -124,6 +124,6 @@ public class MainScene extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new MainScene(), 600, 400);
+        Controller.start(new MainScene(), 600, 400);
     }
 }

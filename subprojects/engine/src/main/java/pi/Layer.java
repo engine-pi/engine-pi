@@ -539,7 +539,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     public Vector translateWorldPointToFramePxCoordinates(Vector worldPoint)
     {
         double pixelPerMeter = calculatePixelPerMeter();
-        Vector frameSize = Game.windowSize();
+        Vector frameSize = Controller.windowSize();
         Vector cameraPositionInPx = new Vector(frameSize.x() / 2,
                 frameSize.y() / 2);
         Vector fromCamToPointInWorld = parent.camera().focus()
@@ -553,7 +553,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *
      * @return Die sichtbare Fläche <b>mit Angaben in Meter</b>.
      *
-     * @see Game#windowSize()
+     * @see Controller#windowSize()
      */
     @API
     @Getter
@@ -573,7 +573,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     setzen ist.
      *
      * @see #visibleHeight(double, Vector)
-     * @see Game#windowSize()
+     * @see Controller#windowSize()
      */
     @API
     @Getter
@@ -592,7 +592,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      *     setzen ist.
      *
      * @see #visibleWidth(double, Vector)
-     * @see Game#windowSize()
+     * @see Controller#windowSize()
      */
     @API
     @Setter

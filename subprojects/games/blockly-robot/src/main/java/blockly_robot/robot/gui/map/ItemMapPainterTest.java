@@ -1,14 +1,14 @@
 package blockly_robot.robot.gui.map;
 
 import blockly_robot.robot.logic.Task;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 public class ItemMapPainterTest extends Scene
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     public static void main(String[] args)
@@ -18,14 +18,14 @@ public class ItemMapPainterTest extends Scene
 
     public ItemMapPainterTest()
     {
-        if (!Game.isRunning())
+        if (!Controller.isRunning())
         {
-            Game.start(this, 1000, 1000);
-            Game.debug(true);
+            Controller.start(this, 1000, 1000);
+            Controller.debug(true);
         }
         else
         {
-            Game.transitionToScene(this);
+            Controller.transitionToScene(this);
         }
         Task task = Task
                 .loadByTaskPath("conditionals_excercises/find_the_destination");

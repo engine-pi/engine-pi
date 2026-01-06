@@ -100,7 +100,7 @@ public interface KeyStrokeListenerRegistration
      *
      * @param listener Ein Objekt der Klasse {@link KeyStrokeListener}.
      *
-     * @see pi.Game#removeKeyStrokeListener(KeyStrokeListener)
+     * @see pi.Controller#removeKeyStrokeListener(KeyStrokeListener)
      */
     @API
     default void removeKeyStrokeListener(KeyStrokeListener listener)

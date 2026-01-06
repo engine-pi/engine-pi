@@ -58,7 +58,7 @@ import pi.graphics.screen_recording.Photographer;
 import pi.loop.GameLoop;
 
 /**
- * Die Klassen {@link Controller} und {@link Game} sind identisch.
+ * Die Klassen {@link Controller} und {@link Controller} sind identisch.
  * {@link Controller} ist der neutralere Name und eignet sich besser für
  * Projekte, die kein Spiel darstellen (z.B. Projekte zur
  * Algorithmenvisualisierung, Physik-Simulation)

@@ -23,7 +23,7 @@ package demos.physics;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
@@ -162,7 +162,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new MarbleDemo(), 1000, 800);
+        Controller.instantMode(false);
+        Controller.start(new MarbleDemo(), 1000, 800);
     }
 }

@@ -32,7 +32,7 @@ import pacman.actors.Clyde;
 import pacman.actors.Ghost;
 import pacman.actors.Inky;
 import pacman.actors.Pinky;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 
@@ -40,7 +40,7 @@ public class GhostsDebugScene extends Scene implements KeyStrokeListener
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     Ghost blinky;

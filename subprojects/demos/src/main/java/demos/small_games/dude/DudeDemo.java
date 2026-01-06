@@ -21,7 +21,7 @@
 package demos.small_games.dude;
 
 import pi.Bounds;
-import pi.Game;
+import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.Vector;
@@ -111,8 +111,9 @@ public class DudeDemo extends Scene
         middleBackground.parallaxPosition(0.1, 0.1);
         middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
-        backgroundImage.position(-visibleArea(Game.windowSize()).width() / 2,
-                -visibleArea(Game.windowSize()).height() / 2);
+        backgroundImage.position(
+                -visibleArea(Controller.windowSize()).width() / 2,
+                -visibleArea(Controller.windowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
         furtherBackground.layerPosition(-300);
@@ -142,7 +143,7 @@ public class DudeDemo extends Scene
             cloudTiles.tile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.position(xOffset,
-                -visibleArea(Game.windowSize()).height() / 2 + 5);
+                -visibleArea(Controller.windowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
     }
@@ -156,6 +157,6 @@ public class DudeDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new DudeDemo(), WIDTH, HEIGHT);
+        Controller.start(new DudeDemo(), WIDTH, HEIGHT);
     }
 }

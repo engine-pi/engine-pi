@@ -19,7 +19,7 @@ package demos.classes.actor;
 import java.awt.Color;
 import java.util.Map;
 
-import pi.Game;
+import pi.Controller;
 import pi.Resources;
 import pi.Scene;
 import pi.actor.ImageFont;
@@ -62,6 +62,6 @@ public class ImageFontTextColorDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextColorDemo(), 600, 800);
+        Controller.start(new ImageFontTextColorDemo(), 600, 800);
     }
 }

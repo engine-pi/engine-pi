@@ -21,7 +21,7 @@ package demos.classes.actor;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
@@ -120,7 +120,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(new TextAllSystemFonts(), 1020, 520);
-        Game.title("Alle Schriftarten");
+        Controller.start(new TextAllSystemFonts(), 1020, 520);
+        Controller.title("Alle Schriftarten");
     }
 }

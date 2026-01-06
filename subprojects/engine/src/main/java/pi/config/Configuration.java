@@ -18,14 +18,14 @@
  */
 package pi.config;
 
-import pi.Game;
+import pi.Controller;
 
 /**
  * Bietet Zugriff auf alle <b>Konfigurationen</b>
  *
  * <p>
- * Durch diese Klasse kann die Klasse {@link Game} etwas übersichtlicher und
- * weniger überladen gestaltet werden.
+ * Durch diese Klasse kann die Klasse {@link Controller} etwas übersichtlicher
+ * und weniger überladen gestaltet werden.
  * </p>
  *
  * @author Josef Friedrich

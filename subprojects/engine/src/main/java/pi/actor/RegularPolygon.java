@@ -18,7 +18,7 @@
  */
 package pi.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Text;
 import pi.Vector;
 import pi.annotations.Getter;
@@ -80,8 +80,8 @@ public class RegularPolygon extends Polygon
      */
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(scene -> {
+        Controller.instantMode(false);
+        Controller.start(scene -> {
             int x = -10;
             for (int i = 3; i < 8; i++)
             {
@@ -91,6 +91,6 @@ public class RegularPolygon extends Polygon
                 x += 5;
             }
         });
-        Game.windowSize(1000, 500);
+        Controller.windowSize(1000, 500);
     }
 }

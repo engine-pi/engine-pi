@@ -21,30 +21,32 @@ package demos.classes.class_controller;
 import java.awt.event.KeyEvent;
 
 import pi.Direction;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 
 /**
- * Demonstriert die Methode {@link pi.Game#windowPosition(int, int)}
+ * Demonstriert die Methode {@link pi.Controller#windowPosition(int, int)}
  */
 public class SetWindowPositionDemo
 {
     public static void main(String[] args)
     {
-        Game.windowPosition(Direction.UP_LEFT);
-        Game.start(new Scene());
-        Game.addKeyStrokeListener((event) -> {
+        Controller.windowPosition(Direction.UP_LEFT);
+        Controller.start(new Scene());
+        Controller.addKeyStrokeListener((event) -> {
             switch (event.getKeyCode())
             {
-            case KeyEvent.VK_1 -> Game.windowPosition(Direction.UP);
-            case KeyEvent.VK_2 -> Game.windowPosition(Direction.UP_RIGHT);
-            case KeyEvent.VK_3 -> Game.windowPosition(Direction.RIGHT);
-            case KeyEvent.VK_4 -> Game.windowPosition(Direction.DOWN_RIGHT);
-            case KeyEvent.VK_5 -> Game.windowPosition(Direction.DOWN);
-            case KeyEvent.VK_6 -> Game.windowPosition(Direction.DOWN_LEFT);
-            case KeyEvent.VK_7 -> Game.windowPosition(Direction.LEFT);
-            case KeyEvent.VK_8 -> Game.windowPosition(Direction.UP_LEFT);
-            case KeyEvent.VK_9 -> Game.windowPosition(Direction.NONE);
+            case KeyEvent.VK_1 -> Controller.windowPosition(Direction.UP);
+            case KeyEvent.VK_2 -> Controller.windowPosition(Direction.UP_RIGHT);
+            case KeyEvent.VK_3 -> Controller.windowPosition(Direction.RIGHT);
+            case KeyEvent.VK_4 ->
+                Controller.windowPosition(Direction.DOWN_RIGHT);
+            case KeyEvent.VK_5 -> Controller.windowPosition(Direction.DOWN);
+            case KeyEvent.VK_6 ->
+                Controller.windowPosition(Direction.DOWN_LEFT);
+            case KeyEvent.VK_7 -> Controller.windowPosition(Direction.LEFT);
+            case KeyEvent.VK_8 -> Controller.windowPosition(Direction.UP_LEFT);
+            case KeyEvent.VK_9 -> Controller.windowPosition(Direction.NONE);
             }
         });
     }

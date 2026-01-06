@@ -28,7 +28,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
-import pi.Game;
+import pi.Controller;
 import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
@@ -91,7 +91,7 @@ public class TurtleScene extends PaintingSurfaceScene
     {
         // Den Instant-Modus deaktivieren, da wir die benötigten Figuren „von
         // Hand“ hinzufügen.
-        Game.instantMode(false);
+        Controller.instantMode(false);
         backgroundColor(backgroundColor);
         animation = new TurtleAnimationController();
         dress = new TurtleDressController(this);

@@ -1,6 +1,6 @@
 package demos.classes.dsa.graph.dfs;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.dsa.graph.GraphCollection;
 import pi.dsa.graph.GraphVisualizer;
@@ -27,7 +27,7 @@ public class DepthFirstSearchDemo extends Scene
     public static void main(String[] args)
     {
         DepthFirstSearchDemo scene = new DepthFirstSearchDemo();
-        Game.start(scene);
+        Controller.start(scene);
         scene.focusCenter();
         scene.visit("H");
     }

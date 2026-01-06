@@ -9,10 +9,10 @@ package pi.event;
  *
  * <p>
  * Diese Klasse ist gedacht für ein Attribut {@code listeners} der Klassen
- * {@link pi.Game}, {@link pi.Scene}, {@link pi.Layer}, {@link pi.actor.Actor}.
- * In dieser Klasse werden für alle möglichen Arten von Beobachter Instanzen zur
- * Verwaltung erstellt, auch wenn sie gar nicht genutzt werden. Dieser kleine
- * Overhead wird in Kauf genommen.
+ * {@link pi.Controller}, {@link pi.Scene}, {@link pi.Layer},
+ * {@link pi.actor.Actor}. In dieser Klasse werden für alle möglichen Arten von
+ * Beobachter Instanzen zur Verwaltung erstellt, auch wenn sie gar nicht genutzt
+ * werden. Dieser kleine Overhead wird in Kauf genommen.
  * </p>
  */
 public class EventListenerBundle

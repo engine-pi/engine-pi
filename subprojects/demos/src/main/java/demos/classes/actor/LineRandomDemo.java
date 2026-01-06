@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import static pi.Resources.colors;
 
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.actor.Line;
@@ -70,7 +70,7 @@ public class LineRandomDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.start(new LineRandomDemo());
+        Controller.instantMode(false);
+        Controller.start(new LineRandomDemo());
     }
 }

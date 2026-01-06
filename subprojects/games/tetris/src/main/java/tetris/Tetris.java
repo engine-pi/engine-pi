@@ -16,7 +16,7 @@
  */
 package tetris;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import tetris.scenes.CopyrightScene;
 
@@ -24,7 +24,7 @@ public class Tetris
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     /**
@@ -62,7 +62,7 @@ public class Tetris
      * Tetris.
      *
      * <p>
-     * Die Methode ist eine Hüll-Methode um {@link Game#debug(boolean)}.
+     * Die Methode ist eine Hüll-Methode um {@link Controller#debug(boolean)}.
      * </p>
      *
      * @param value ist dieser Wert true, wird Tetris ab sofort im Debug-Modus
@@ -70,7 +70,7 @@ public class Tetris
      */
     public static void setDebug(boolean value)
     {
-        Game.debug(value);
+        Controller.debug(value);
     }
 
     /**
@@ -92,15 +92,15 @@ public class Tetris
      */
     public static void start(Scene scene)
     {
-        Game.title("Tetris im Gameboy-Stil auf der Engine Pi");
+        Controller.title("Tetris im Gameboy-Stil auf der Engine Pi");
         scene.camera().meter(Tetris.BLOCK_SIZE);
-        if (Game.isRunning())
+        if (Controller.isRunning())
         {
-            Game.transitionToScene(scene);
+            Controller.transitionToScene(scene);
         }
         else
         {
-            Game.start(scene, BLOCK_SIZE * WIDTH, BLOCK_SIZE * HEIGHT);
+            Controller.start(scene, BLOCK_SIZE * WIDTH, BLOCK_SIZE * HEIGHT);
         }
     }
 

@@ -21,7 +21,7 @@ package demos.small_games.pong;
 import java.awt.event.KeyEvent;
 
 import pi.Bounds;
-import pi.Game;
+import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Vector;
@@ -40,7 +40,7 @@ public class PongTable extends Scene
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     /**
@@ -161,6 +161,6 @@ public class PongTable extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new PongTable());
+        Controller.start(new PongTable());
     }
 }

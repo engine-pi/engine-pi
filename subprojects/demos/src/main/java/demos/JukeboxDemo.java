@@ -23,7 +23,7 @@ import java.io.IOException;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import pi.Game;
+import pi.Controller;
 import pi.Jukebox;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
@@ -50,7 +50,7 @@ public class JukeboxDemo extends Scene implements KeyStrokeListener
 
     public JukeboxDemo() throws IOException, UnsupportedAudioFileException
     {
-        Game.start(this, 200, 300);
+        Controller.start(this, 200, 300);
         casinoBling = Jukebox.createSoundPlayback(
                 "sounds/casino-bling-achievement.mp3", true);
         gameReached = loadSinglePlayTrack("game-bonus-reached.mp3");

@@ -18,33 +18,33 @@
  */
 package demos.classes.event;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.event.DefaultControl;
 
 import java.awt.event.KeyEvent;
 
 /**
- * Demonstriert die statischen Methoden {@link pi.Game#defaultControl()},
- * {@link pi.Game#defaultControl(pi.event.DefaultListener)} und
- * {@link pi.Game#removeDefaultControl()}.
+ * Demonstriert die statischen Methoden {@link pi.Controller#defaultControl()},
+ * {@link pi.Controller#defaultControl(pi.event.DefaultListener)} und
+ * {@link pi.Controller#removeDefaultControl()}.
  */
 public class DefaultControlDemo
 {
     public static void main(String[] args)
     {
-        Game.debug();
-        Game.start(new Scene());
-        Game.addKeyStrokeListener((event) -> {
+        Controller.debug();
+        Controller.start(new Scene());
+        Controller.addKeyStrokeListener((event) -> {
             if (event.getKeyCode() == KeyEvent.VK_SPACE)
             {
-                if (Game.defaultControl() == null)
+                if (Controller.defaultControl() == null)
                 {
-                    Game.defaultControl(new DefaultControl());
+                    Controller.defaultControl(new DefaultControl());
                 }
                 else
                 {
-                    Game.removeDefaultControl();
+                    Controller.removeDefaultControl();
                 }
             }
         });

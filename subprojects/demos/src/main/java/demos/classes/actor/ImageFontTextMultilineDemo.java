@@ -16,7 +16,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
@@ -53,6 +53,6 @@ public class ImageFontTextMultilineDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new ImageFontTextMultilineDemo());
+        Controller.start(new ImageFontTextMultilineDemo());
     }
 }

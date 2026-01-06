@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import pi.Game;
+import pi.Controller;
 import pi.Circle;
 
 /**
@@ -45,7 +45,7 @@ public class CircleDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.debug();
+        Controller.debug();
         new CircleDemo();
     }
 }

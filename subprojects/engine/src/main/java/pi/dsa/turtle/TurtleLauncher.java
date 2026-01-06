@@ -20,7 +20,7 @@ package pi.dsa.turtle;
 
 import java.lang.reflect.InvocationTargetException;
 
-import pi.Game;
+import pi.Controller;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
@@ -50,7 +50,7 @@ public class TurtleLauncher
         if (scene == null)
         {
             scene = new TurtleScene();
-            Game.startSafe(scene);
+            Controller.startSafe(scene);
         }
         return scene;
     }

@@ -1,6 +1,6 @@
 package demos.small_games.pong;
 
-import pi.Game;
+import pi.Controller;
 import pi.actor.Counter;
 
 /**
@@ -10,7 +10,7 @@ public class TableSide
 {
     static
     {
-        Game.instantMode(false);
+        Controller.instantMode(false);
     }
 
     /**
@@ -61,6 +61,6 @@ public class TableSide
 
     public static void main(String[] args)
     {
-        Game.start(new PongTable());
+        Controller.start(new PongTable());
     }
 }

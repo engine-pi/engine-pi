@@ -20,7 +20,7 @@
  */
 package demos;
 
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
@@ -49,6 +49,6 @@ public class CollisionTest extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new CollisionTest(), 500, 500);
+        Controller.start(new CollisionTest(), 500, 500);
     }
 }

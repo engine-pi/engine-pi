@@ -20,7 +20,7 @@ package demos.classes.actor;
 
 import static pi.Resources.colorScheme;
 
-import pi.Game;
+import pi.Controller;
 import pi.actor.Grid;
 
 /**
@@ -46,6 +46,6 @@ public class GridDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
-        Game.start(new GridDemo());
+        Controller.start(new GridDemo());
     }
 }

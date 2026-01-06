@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import pi.Circle;
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.Vector;
 import pi.annotations.Setter;
@@ -272,9 +272,9 @@ public class Graphics2DUtil
 
     public static void main(String[] args)
     {
-        Game.instantMode(false);
-        Game.debug();
-        Game.start(new Scene()
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new Scene()
         {
             {
                 // Damit wir den Pfeil sehen

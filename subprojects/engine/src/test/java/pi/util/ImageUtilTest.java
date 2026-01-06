@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-import pi.Game;
+import pi.Controller;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImageUtilTest
@@ -101,7 +101,7 @@ public class ImageUtilTest
         BufferedImage img = null;
         try
         {
-            img = ImageIO.read(Game.class.getResource("/logo/logo.png"));
+            img = ImageIO.read(Controller.class.getResource("/logo/logo.png"));
         }
         catch (Exception e)
         {
