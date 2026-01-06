@@ -1,12 +1,15 @@
 package pi.graphics;
 
 import pi.Vector;
+import pi.annotations.Getter;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/DirectedLineSegmentDemo.java
 
 /**
- * Eine gerichtete Strecke
+ * Eine <b>gerichtete Strecke</b>.
  *
  * <p>
- * Diese Strecke liegt auf der Linie, die durch die beiden Punkte festgelegt
+ * Diese Strecke liegt auf einer Linie, die durch die beiden Punkte festgelegt
  * ist.
  * </p>
  *
@@ -19,17 +22,29 @@ public class DirectedLineSegment
     /**
      * Der Ursprung (0)
      */
-    Vector from;
+    private Vector from;
 
     /**
      * Das Ziel (1)
      */
-    Vector to;
+    private Vector to;
 
     public DirectedLineSegment(Vector from, Vector to)
     {
         this.from = from;
         this.to = to;
+    }
+
+    @Getter
+    public Vector from()
+    {
+        return from;
+    }
+
+    @Getter
+    public Vector to()
+    {
+        return to;
     }
 
     /**
@@ -48,11 +63,11 @@ public class DirectedLineSegment
      */
     public Vector proportionalPoint(double factor)
     {
-        return difference().multiply(factor);
+        return from.add(difference().multiply(factor));
     }
 
     /**
-     * Ein Punkt, der in einer bestimmten Entfernung zum Ursprungs liegt.
+     * Ein Punkt, der in einer bestimmten Entfernung zum Ursprung liegt.
      *
      * <p>
      * Positive Entfernungen liegen in der Richtung des {@link #to Ziels}.
@@ -62,7 +77,7 @@ public class DirectedLineSegment
      */
     public Vector distancePoint(double distance)
     {
-        return difference().normalize().multiply(distance);
+        return from.add(difference().normalize().multiply(distance));
     }
 
     /**

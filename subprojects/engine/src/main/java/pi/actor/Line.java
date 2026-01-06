@@ -164,10 +164,13 @@ public class Line extends Actor
          */
         ArrowType arrow;
 
+        DirectedLineSegment lineSegment;
+
         LineEnd(Vector end, Vector opposite)
         {
             this.end = end;
             this.opposite = opposite;
+            lineSegment = new DirectedLineSegment(end, opposite);
             arrow = ArrowType.NONE;
         }
 
@@ -190,16 +193,11 @@ public class Line extends Actor
             else if (arrow == ArrowType.TRIANGLE)
             {
                 // Bei dicken Linien verdeckt das Dreieck das Linienende nicht
-                // ganz.
-
-                DirectedLineSegment segment = new DirectedLineSegment(end,
-                        opposite);
-                // Wir schieben die Pfeilspitze etwas nach vorne.
-
-                Vector shiftedEnd = segment.distancePoint(-strokeWidth);
-
+                // ganz. Wir schieben die Pfeilspitze etwas nach vorne.
+                // Die doppelte Liniedicke liefert ein gutes Ergebnis.
+                Vector shiftedEnd = lineSegment.distancePoint(-2 * strokeWidth);
                 Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        end.multiply(pixelPerMeter), 50, 45, true);
+                        shiftedEnd.multiply(pixelPerMeter), 50, 45, true);
             }
         }
     }

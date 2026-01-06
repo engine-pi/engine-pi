@@ -5,7 +5,7 @@ import static pi.Vector.v;
 
 import org.junit.jupiter.api.Test;
 
-public class LineSegmentTest
+public class DirectedLineSegmentTest
 {
     private DirectedLineSegment line(double aX, double aY, double bX, double bY)
     {
