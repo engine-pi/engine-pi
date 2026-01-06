@@ -32,6 +32,8 @@ import pi.Direction;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.resources.color.ColorScheme;
+import pi.resources.color.ColorSchemeSelection;
 
 /**
  * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.
@@ -63,6 +65,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
         windowHeight(576);
         windowPosition(Direction.NONE);
         framerate(60);
+        colorScheme(ColorSchemeSelection.GNOME);
         screenRecordingNFrames(2);
     }
 
@@ -279,6 +282,48 @@ public class GraphicsConfiguration extends ConfigurationGroup
         return this;
     }
 
+    /* colorScheme */
+
+    /**
+     * Das <b>Farbschema</b>.
+     */
+    private ColorSchemeSelection colorScheme;
+
+    /**
+     * Gibt das <b>Farbschema</b> zurück.
+     *
+     * @return Das <b>Farbschema</b>.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public ColorScheme colorScheme()
+    {
+        return colorScheme.getScheme();
+    }
+
+    /**
+     * Setzt das <b>Farbschema</b>.
+     *
+     * @param colorScheme Das <b>Farbschema</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public GraphicsConfiguration colorScheme(ColorSchemeSelection colorScheme)
+    {
+        set("colorScheme", colorScheme);
+        return this;
+    }
+
     /* pixelMultiplication */
 
     /**
@@ -433,4 +478,5 @@ public class GraphicsConfiguration extends ConfigurationGroup
         set("windowHeight", windowHeight);
         return this;
     }
+
 }
