@@ -57,12 +57,12 @@ public class LineRandomDemo extends Scene
 
             if (Random.toggle())
             {
-                line.arrow1(ArrowType.CHEVERON);
+                line.end1.arrow(ArrowType.CHEVERON);
             }
 
             if (Random.toggle())
             {
-                line.arrow2(ArrowType.TRIANGLE);
+                line.end2.arrow(ArrowType.TRIANGLE);
             }
             add(line);
         }

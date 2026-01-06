@@ -40,12 +40,12 @@ public class Line extends Actor
     /**
      * Das Linenende bei Punkt 1.
      */
-    private LineEnd end1;
+    public final LineEnd end1;
 
     /**
      * Das Linienende bei Punkt 2.
      */
-    private LineEnd end2;
+    public final LineEnd end2;
 
     /**
      * Die <b>Dicke</b> der <b>Linie</b> in Meter.
@@ -71,6 +71,8 @@ public class Line extends Actor
     public Line point1(Vector point1)
     {
         this.point1 = point1;
+        this.end1.end(point1);
+        this.end2.opposite(point1);
         return this;
     }
 
@@ -78,34 +80,8 @@ public class Line extends Actor
     public Line point2(Vector point2)
     {
         this.point2 = point2;
-        return this;
-    }
-
-    /**
-     * Setzt die Art der <b>Pfeilspitze</b> des Punkt <b>1</b>.
-     *
-     * @param arrow1 Die Art der <b>Pfeilspitze</b> des Punkt <b>1</b>.
-     *
-     * @since 0.42.0
-     */
-    @Setter
-    public Line arrow1(ArrowType arrow1)
-    {
-        this.end1.arrow = arrow1;
-        return this;
-    }
-
-    /**
-     * Setzt die Art der <b>Pfeilspitze</b> des Punkt <b>2</b>.
-     *
-     * @param arrow2 Die Art der <b>Pfeilspitze</b> des Punkt <b>2</b>.
-     *
-     * @since 0.42.0
-     */
-    @Setter
-    public Line arrow2(ArrowType arrow2)
-    {
-        this.end2.arrow = arrow2;
+        this.end2.end(point2);
+        this.end1.opposite(point2);
         return this;
     }
 
@@ -147,40 +123,91 @@ public class Line extends Actor
         g.setColor(oldColor);
     }
 
-    class LineEnd
+    /**
+     * Ein <b>Linienende</b>.
+     *
+     * @since 0.42.0
+     */
+    public class LineEnd
     {
         /**
-         * Der Punkt am Linienende.
+         * Der Punkt am <b>Linienende</b>.
          */
-        Vector end;
+        private Vector end;
 
         /**
-         * Der gegenüberliegende Punkt.
+         * Der diesem Linienende <b>gegenüberliegende</b> Punkt.
          */
-        Vector opposite;
+        private Vector opposite;
 
         /**
-         * Die Art der Pfeilspitze am Linienende.
+         * Die <b>Art der Pfeilspitze</b> am Linienende.
          */
-        ArrowType arrow;
+        ArrowType arrow = ArrowType.NONE;
 
+        /**
+         * Hilfsklasse, um Pfeilspitze etwas anderes positionieren zu können.
+         */
         DirectedLineSegment lineSegment;
 
+        /**
+         * @param end Der Punkt am <b>Linienende</b>.
+         * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
+         */
         LineEnd(Vector end, Vector opposite)
         {
             this.end = end;
             this.opposite = opposite;
+            setDirectedLineSegment();
+        }
+
+        private void setDirectedLineSegment()
+        {
             lineSegment = new DirectedLineSegment(end, opposite);
-            arrow = ArrowType.NONE;
+        }
+
+        /**
+         * Setzt den Punkt an <b>Linienende</b>.
+         *
+         * @param end Der Punkt am <b>Linienende</b>.
+         */
+        @Setter
+        public LineEnd end(Vector end)
+        {
+            this.end = end;
+            setDirectedLineSegment();
+            return this;
+        }
+
+        /**
+         * Setzt den diesem Linienende <b>gegenüberliegende</b> Punkt.
+         *
+         * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
+         */
+        @Setter
+        public LineEnd opposite(Vector opposite)
+        {
+            this.opposite = opposite;
+            setDirectedLineSegment();
+            return this;
+        }
+
+        /**
+         * Setzt die Art der <b>Pfeilspitze</b>.
+         *
+         * @param arrow Die Art der <b>Pfeilspitze</b>.
+         *
+         * @since 0.42.0
+         */
+        public LineEnd arrow(ArrowType arrow)
+        {
+            this.arrow = arrow;
+            return this;
         }
 
         /**
          * Zeichnet eine Pfeilspitze ein.
          *
-         * @param arrowType Die Art der Pfeilspitze.
-         * @param arrowTarget Der Punkt an dem die Pfeilspitze eingezeichnet
-         *     werden soll.
-         * @param from Der Punkt vom dem aus die Pfeilspitze wegzeigen soll.
          * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
          */
         void render(Graphics2D g, double pixelPerMeter)
