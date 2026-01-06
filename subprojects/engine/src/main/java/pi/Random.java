@@ -201,7 +201,9 @@ public final class Random
      * Erzeugt einen zufälligen {@link Vector Vektor} innerhalb des sichtbaren
      * Bereichs einer {@link Scene}.
      *
+     * <p>
      * <b>Die Grenzen werden aus dem {@link Bounds} der Szene übernommen.</b>
+     * </p>
      *
      * @param scene Die <b>Szene</b>, deren sichtbarer Bereich als Grenzen
      *     dient.

@@ -271,7 +271,7 @@ public final class Jukebox
     }
 
     /**
-     * Spielt zwei als Zeichenkette angegeben Audiodatei ab: Die Erste nur
+     * Spielt zwei als Zeichenkette angegeben Audiodateien ab: die Erste nur
      * einmalig und die darauf Folgende in einer Endlosschleife.
      *
      * @param intro Die Eingangsmusik als Zeichenkette angegeben.

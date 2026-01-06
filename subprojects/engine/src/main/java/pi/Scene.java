@@ -283,7 +283,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Sortiert die Ebenenen.
+     * Sortiert die Ebenen.
      *
      * <p>
      * Die Methode wird aufgerufen, wenn sich ein Ebenenzustand innerhalb dieser
@@ -657,8 +657,10 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * <b>Entfernt alle</b> {@link Actor Figuren} aus der Hauptebene.
      *
+     * <p>
      * Diese Methode durchläuft die Liste der Figuren und entfernt jeden
      * einzelnen von der Ebene.
+     * </p>
      *
      * @since 0.42.0
      */

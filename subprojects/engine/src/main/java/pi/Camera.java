@@ -57,7 +57,7 @@ import static pi.Controller.config;
  * </p>
  *
  * <p>
- * <b>!!Achtung!!</b>
+ * <b>Achtung!</b>
  * </p>
  *
  * <p>
@@ -351,7 +351,7 @@ public final class Camera
      * <p>
      * Die Anzahl an Pixel eines Meters bestimmt wie „nah“ oder „fern“ die
      * Kamera an der Zeichenebene ist. Der Standardwert eines Meters ist
-     * <code>32</code> Pixel. Größer Werte zoomen näher an die Spielfläche
+     * <code>32</code> Pixel. Größere Werte zoomen näher an die Spielfläche
      * heran, kleine Werte weiter von der Spielfläche weg.
      * </p>
      *
@@ -475,15 +475,15 @@ public final class Camera
      * <b>Rotiert</b> die Kamera um den angegebenen <b>Winkel</b>.
      *
      * <p>
-     * Positive Werte drehen die die Kamera gegen den Uhrzeigersinn, negative im
+     * Positive Werte drehen die Kamera gegen den Uhrzeigersinn, negative im
      * Uhrzeigersinn.
      * </p>
      *
      * @param angle Der Winkel (in <b>Grad</b>), um den die Kamera rotiert
      *     werden soll.
      *     <ul>
-     *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
-     *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *     <li>Werte &gt; 0: Drehung gegen Uhrzeigersinn</li>
+     *     <li>Werte &lt; 0: Drehung im Uhrzeigersinn</li>
      *     </ul>
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem

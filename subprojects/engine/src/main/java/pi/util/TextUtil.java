@@ -223,7 +223,7 @@ public class TextUtil
     }
 
     /**
-     * Bricht den gegebenen Text nach einer bestimmten <b>Zeilenbreite</b> und
+     * Bricht den gegebenen Text nach einer bestimmten <b>Zeilenbreite</b>, und
      * zwar <b>linksbündig</b> um.
      *
      * @param text Der Text, der nach einer bestimmten Zeilenbreite umgebrochen

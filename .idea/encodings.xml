@@ -23,5 +23,20 @@
     <file url="file://$PROJECT_DIR$/modules/games/tetris/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/build-tools/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/build-tools/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/cli/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/cli/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/demos/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/demos/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/engine/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/engine/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/engine/src/main/resources-filtered" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/blockly-robot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/blockly-robot/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/pacman/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/pacman/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/tetris/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subprojects/games/tetris/src/main/resources" charset="UTF-8" />
   </component>
 </project>

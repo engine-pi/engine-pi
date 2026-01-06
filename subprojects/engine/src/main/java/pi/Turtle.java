@@ -46,7 +46,7 @@ import pi.dsa.turtle.AutoStartTurtleController;
  * </ul>
  *
  * <p>
- * Folgendes Code-Beispiel demonstiert, wie mit <b>minimalen</b>
+ * Folgendes Code-Beispiel demonstriert, wie mit <b>minimalem</b>
  * Programmieraufwand eine <b>Turtle</b>-Grafik (hier ein Dreieck) gezeichnet
  * werden kann:
  * </p>
@@ -69,17 +69,17 @@ import pi.dsa.turtle.AutoStartTurtleController;
  * }</pre>
  *
  * <p>
- * Diese Klasse öffnet automatisch eine neues Fenster.
+ * Diese Klasse öffnet automatisch ein neues Fenster.
  * </p>
  *
  * <p>
  * Diese Klasse hat animierte Methoden, die künstlich verlangsamt werden, damit
  * der Malprozess nachvollzogen werden kann. Diese animierte Methoden blockieren
- * den aktuellen Thread solange, bis die Animation abgeschlossen ist. Das
+ * den aktuellen Thread so lange, bis die Animation abgeschlossen ist. Das
  * Zeichnen einer Turtle-Grafik kann unter Umständen sehr lange dauern. Deshalb
- * sollten keine animierten Methodenaufrufen in Konstruktoren geschrieben
- * werden, da das von diesem Konstruktor erzeugte Objekt unter Umständen lange
- * braucht, um erzeugt zu werden.
+ * sollten keine animierten Methodenaufrufe in Konstruktoren geschrieben werden,
+ * da das von diesem Konstruktor erzeugte Objekt unter Umständen lange braucht,
+ * um erzeugt zu werden.
  * </p>
  *
  * @see pi.dsa.turtle.TurtleController

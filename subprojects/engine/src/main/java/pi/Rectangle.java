@@ -86,7 +86,7 @@ public class Rectangle extends pi.actor.Rectangle
      *
      * @param width Die <b>Breite</b> des Rechtecks in Meter.
      * @param height Die <b>Höhe</b> des Rechtecks in Meter.
-     * @param shapeSupplier Eine Lamda-Funktion, die den <b>Umriss</b> liefert.
+     * @param shapeSupplier Eine Lambda-Funktion, die den <b>Umriss</b> liefert.
      */
     public Rectangle(double width, double height,
             Supplier<FixtureData> shapeSupplier)

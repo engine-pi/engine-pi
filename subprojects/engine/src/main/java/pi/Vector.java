@@ -201,7 +201,7 @@ public final class Vector implements Cloneable
      * Gibt eine <b>Normierung</b> des Vektors aus. Dies ist ein Vektor, der
      *
      * <ul>
-     * <li>in die selbe Richtung wie der ursprüngliche Vektor zeigt.</li>
+     * <li>in dieselbe Richtung wie der ursprüngliche Vektor zeigt.</li>
      * <li>eine Länge von (möglichst) exakt 1 hat.</li>
      * </ul>
      *
@@ -466,8 +466,10 @@ public final class Vector implements Cloneable
     /**
      * Berechnet das <b>Skalarprodukt</b> von diesem Vektor mit einem weiteren.
      *
+     * <p>
      * <b>Das Skalarprodukt für zweidimensionale Vektoren ist:
      * <code>(a, b) o (c, d) = a * b + c * d</code></b>
+     * </p>
      *
      * @param other Ein weiterer Vektor.
      *

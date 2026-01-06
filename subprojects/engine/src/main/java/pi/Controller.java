@@ -79,8 +79,8 @@ public class Controller
         System.setProperty("sun.java2d.ddscale", "true"); // ok, hardware
                                                           // accelerated image
                                                           // scaling on windows
-        /**
-         * Damit die Umrisse zum Beispiel bei der Klasse Star richtig gezeichnet
+        /*
+         * damit die Umrisse zum Beispiel bei der Klasse Star richtig gezeichnet
          * wird.
          */
         Settings.maxPolygonVertices = 20;
@@ -90,8 +90,8 @@ public class Controller
      * Bietet Zugriff auf das Konfigurationsobjekt der Engine.
      *
      * <p>
-     * Diese statische Attribute kann über über statischen Import eingebunden
-     * werden: {@code import static pi.Controller.config;}
+     * Dieses statische Attribut kann über statischen Import eingebunden werden:
+     * {@code import static pi.Controller.config;}
      * </p>
      *
      * @since 0.42.0

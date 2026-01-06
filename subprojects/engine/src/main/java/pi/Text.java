@@ -81,7 +81,7 @@ public class Text extends pi.actor.Text
 
     /**
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
-     * <b>Schriftart</b>, und <b>Schriftstil</b>.
+     * <b>Schriftart</b> und <b>Schriftstil</b>.
      *
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
      * @param height Die <b>Höhe</b> des Textes in Meter.

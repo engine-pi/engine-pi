@@ -22,6 +22,7 @@ package pi;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
@@ -83,7 +84,7 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     /**
      * Die bereits zur Ebene hinzugefügten und aber unter Umständen <b>noch
-     * nicht in der Physiks-Engine</b> registrierten Figuren.
+     * nicht in der Physics-Engine</b> registrierten Figuren.
      */
     private final List<Actor> addedActors;
 
@@ -212,7 +213,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * <li>Werte zwischen <code>0</code> und <code>1</code> schaffen einen
      * entfernten Effekt: Die Bewegung ist weniger als die der Kamera</li>
      * <li><code>0</code> bedeutet, die Bewegung der Kamera hat gar keinen
-     * Einfluss auf das Layer.</li>
+     * Einfluss auf die Ebene.</li>
      * <li>Negative Werte sorgen für Bewegung entgegen der Kamera</li>
      * <li>Werte <code>&gt; 1</code> verstärken die Bewegung der Kamera (z.B.
      * für Vordergrund).</li>
@@ -233,7 +234,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * Setzt den Parallaxen-Zoom für diese Ebene:
      * <ul>
      * <li><code>1</code>: Normaler Zoom mit der Kamera</li>
-     * <li><code>0</code>: Kamerazoom hat keinen Einfluss auf dieses Layer.</li>
+     * <li><code>0</code>: Kamerazoom hat keinen Einfluss auf diese Ebene.</li>
      * <li><code>0 &lt; parallaxZoom &lt; 1</code>: Der Zoomeffekt tritt
      * schwächer auf.</li>
      * <li><code>parallaxZoom &gt; 1</code>: Der Zoomeffekt tritt stärker
@@ -404,10 +405,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public void add(Actor... actors)
     {
-        for (Actor actor : actors)
-        {
-            addedActors.add(actor);
-        }
+        addedActors.addAll(Arrays.asList(actors));
         addedActors.sort(ACTOR_COMPARATOR);
         defer(() -> {
             for (Actor actor : actors)
@@ -468,8 +466,10 @@ public class Layer implements KeyStrokeListenerRegistration,
     /**
      * <b>Entfernt alle</b> {@link Actor Figuren} aus der Ebene.
      *
+     * <p>
      * Diese Methode durchläuft die Liste der Figuren und entfernt jeden
      * einzelnen von der Ebene.
+     * </p>
      *
      * @since 0.42.0
      */
@@ -507,11 +507,11 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     /**
      * Gibt alle <b>Figuren</b>, die bereits zur Ebene hinzugefügt und aber
-     * unter Umständen <b>noch nicht in der Physiks-Engine</b> registriert
+     * unter Umständen <b>noch nicht in der Physics-Engine</b> registriert
      * wurden, als Liste zurück.
      *
      * @return Alle <b>Figuren</b>, die bereits zur Ebene hinzugefügt und aber
-     *     unter Umständen <b>noch nicht in der Physiks-Engine</b> registriert
+     *     unter Umständen <b>noch nicht in der Physics-Engine</b> registriert
      *
      * @since 0.37.0
      *
