@@ -38,8 +38,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import pi.resources.color.ColorContainer;
-import pi.resources.color.ColorScheme;
-import pi.resources.color.ColorSchemeSelection;
 import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
@@ -87,12 +85,6 @@ public final class Resources
      */
     public static final SoundContainer sounds = new SoundContainer();
 
-    public static ColorScheme colorScheme;
-    static
-    {
-        setColorSchemeToPredefined(ColorSchemeSelection.GNOME);
-        colors.addScheme(colorScheme);
-    }
 
     /**
      * Der private Konstruktor verhindert, dass Instanzen von dieser Klasse
@@ -106,17 +98,6 @@ public final class Resources
         throw new UnsupportedOperationException();
     }
 
-    public static void setColorScheme(ColorScheme scheme)
-    {
-        colorScheme = scheme;
-        colors.addScheme(colorScheme);
-    }
-
-    public static void setColorSchemeToPredefined(
-            ColorSchemeSelection selection)
-    {
-        setColorScheme(selection.getScheme());
-    }
 
     /**
      * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für
