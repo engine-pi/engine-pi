@@ -94,6 +94,13 @@ public final class Resources
         colors.addScheme(colorScheme);
     }
 
+    /**
+     * Der private Konstruktor verhindert, dass Instanzen von dieser Klasse
+     * gemacht werden. Die Klassen, hat ausschließlich statischen Attributen und
+     * Methoden.
+     *
+     * @throws UnsupportedOperationException
+     */
     private Resources()
     {
         throw new UnsupportedOperationException();

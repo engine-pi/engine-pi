@@ -63,13 +63,23 @@ import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
 /**
- * Diese Klasse gibt Zugriff auf das aktuelle <b>Spiel</b>.
+ * <b>Steuert</b> das aktuelle Spiel bzw. Projekt.
+ *
+ * <p>
+ * Diese Klasse ist die Hauptklasse der Engine und dient nicht nur zur
+ * <b>Steuerung</b> des Spiels. Über statische Attribute kann auch auf die
+ * Konfiguration und die verschiedenen Ressourcen zugegriffen werden.
+ * </p>
+ *
+ * <p>
+ * Die Klasse hat ausschließlich statische Attribute und Methoden.
+ * </p>
  *
  * <p>
  * Die Klassen {@link Game} und {@link Controller} sind identisch.
  * {@link Controller} ist der neutralere Name und eignet sich besser für
  * Projekte, die kein Spiel darstellen (z.B. Projekte zur
- * Algorithmenvisualisierung, Physik-Simulation)
+ * Algorithmenvisualisierung oder Physik-Simulation).
  * </p>
  *
  * @author Michael Andonie
@@ -239,6 +249,18 @@ public class Controller
     public static final DialogLauncher dialog = new DialogLauncher(frame);
 
     /**
+     * Der geschützte Konstruktor verhindert, dass Instanzen von dieser Klasse
+     * gemacht werden. Die Klassen, hat ausschließlich statischen Attributen und
+     * Methoden.
+     *
+     * @throws UnsupportedOperationException
+     */
+    protected Controller()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Setzt den Titel des Spielfensters.
      *
      * @param title Titel des Spielfensters.
@@ -404,7 +426,7 @@ public class Controller
     @API
     public static void transitionToScene(Scene scene)
     {
-        Scene previous = activeScene();
+        Scene previous = scene();
         if (scene == previous)
         {
             return;
@@ -420,10 +442,10 @@ public class Controller
 
     private static void run()
     {
-        loop = new GameLoop(renderPanel, Controller::activeScene,
+        loop = new GameLoop(renderPanel, Controller::scene,
                 Controller::isDebug);
-        sceneLaunchListeners.invoke((listener) -> listener
-                .onSceneLaunch(Controller.activeScene(), null));
+        sceneLaunchListeners.invoke(
+                (listener) -> listener.onSceneLaunch(Controller.scene(), null));
         loop.run();
         frame.setVisible(false);
         frame.dispose();
@@ -661,7 +683,7 @@ public class Controller
      */
     @API
     @Getter
-    public static Scene activeScene()
+    public static Scene scene()
     {
         if (scene == null)
         {
@@ -684,9 +706,9 @@ public class Controller
      */
     @API
     @Getter
-    public static Scene startedActiveScene()
+    public static Scene startedScene()
     {
-        Scene activeScene = activeScene();
+        Scene activeScene = scene();
         if (!Controller.isRunning())
         {
             Controller.start(activeScene);

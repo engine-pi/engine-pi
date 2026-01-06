@@ -99,9 +99,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     private Color backgroundColor = Color.BLACK;
 
     /**
-     * Die Hauptebene (default-additions)
+     * Die <b>Hauptebene</b>.
      */
-    private final Layer mainLayer;
+    private final Layer layer;
 
     private static final int JOINT_CIRCLE_RADIUS = 10;
 
@@ -123,9 +123,9 @@ public class Scene implements KeyStrokeListenerRegistration,
     public Scene()
     {
         camera = new Camera();
-        mainLayer = new Layer();
-        mainLayer.layerPosition(0);
-        addLayer(mainLayer);
+        layer = new Layer();
+        layer.layerPosition(0);
+        addLayer(layer);
         EventListeners.registerListeners(this);
     }
 
@@ -179,15 +179,15 @@ public class Scene implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die Hauptebene dieser Szene aus.
+     * Gibt die <b>Hauptebene</b> dieser Szene aus.
      *
      * @return Die Hauptebene dieser Szene.
      */
     @API
     @Getter
-    public Layer mainLayer()
+    public Layer layer()
     {
-        return mainLayer;
+        return layer;
     }
 
     /**
@@ -310,7 +310,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         synchronized (this.layers)
         {
-            layer.parent(this);
+            layer.scene(this);
             layers.add(layer);
             sortLayers();
         }
@@ -325,7 +325,7 @@ public class Scene implements KeyStrokeListenerRegistration,
         synchronized (this.layers)
         {
             layers.remove(layer);
-            layer.parent(null);
+            layer.scene(null);
         }
     }
 
@@ -342,7 +342,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public Bounds visibleArea(Vector gameSizeInPixels)
     {
-        return mainLayer.visibleArea(gameSizeInPixels);
+        return layer.visibleArea(gameSizeInPixels);
     }
 
     /**
@@ -358,7 +358,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public Bounds visibleArea()
     {
-        return mainLayer.visibleArea(Controller.windowSize());
+        return layer.visibleArea(Controller.windowSize());
     }
 
     /**
@@ -517,7 +517,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public final WorldHandler worldHandler()
     {
-        return mainLayer.worldHandler();
+        return layer.worldHandler();
     }
 
     /**
@@ -530,7 +530,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Getter
     public Vector gravity()
     {
-        return mainLayer.gravity();
+        return layer.gravity();
     }
 
     /**
@@ -554,7 +554,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Setter
     public void gravity(Vector gravity)
     {
-        mainLayer.gravity(gravity);
+        layer.gravity(gravity);
     }
 
     /**
@@ -610,7 +610,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Setter
     public void physicsPaused(boolean worldPaused)
     {
-        mainLayer.worldHandler().setWorldPaused(worldPaused);
+        layer.worldHandler().setWorldPaused(worldPaused);
     }
 
     /**
@@ -624,7 +624,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @API
     public boolean isPhysicsPaused()
     {
-        return mainLayer.worldHandler().isWorldPaused();
+        return layer.worldHandler().isWorldPaused();
     }
 
     /**
@@ -637,7 +637,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         for (Actor actor : actors)
         {
-            mainLayer.add(actor);
+            layer.add(actor);
         }
     }
 
@@ -651,7 +651,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         for (Actor actor : actors)
         {
-            mainLayer.remove(actor);
+            layer.remove(actor);
         }
     }
 
@@ -668,7 +668,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @API
     public void clear()
     {
-        mainLayer.clear();
+        layer.clear();
     }
 
     /**

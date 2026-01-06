@@ -29,6 +29,11 @@ package pi;
  */
 public final class Game extends Controller
 {
+    private Game()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     public static void main(String[] args)
     {
         Controller.start();

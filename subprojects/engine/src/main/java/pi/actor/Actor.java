@@ -174,7 +174,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
         if (Controller.config.game.instantMode())
         {
-            Controller.startedActiveScene().add(this);
+            Controller.startedScene().add(this);
         }
     }
 

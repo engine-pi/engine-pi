@@ -45,16 +45,16 @@ public class BasketballThrowDemo extends Scene
         gravityOfEarth();
         camera().meter(100);
         Vector ballPosition = new Vector(-1.7, 0.5);
-        mainLayer().add(ball = new Ball(ballPosition.x(), ballPosition.y()));
-        mainLayer().add(new Wall(-6, -4.5, 12, 1));
-        mainLayer().add(new Wall(-6, 3.5, 12, 1));
-        mainLayer().add(new Wall(-6.5, -4.5, 1, 9));
-        mainLayer().add(new Wall(5.5, -4.5, 1, 9));
+        layer().add(ball = new Ball(ballPosition.x(), ballPosition.y()));
+        layer().add(new Wall(-6, -4.5, 12, 1));
+        layer().add(new Wall(-6, 3.5, 12, 1));
+        layer().add(new Wall(-6.5, -4.5, 1, 9));
+        layer().add(new Wall(5.5, -4.5, 1, 9));
         BallShadow ballShadow = new BallShadow(ballPosition.x(),
                 ballPosition.y());
         ball.createDistanceJoint(ballShadow, new Vector(.15, .15),
                 new Vector(.15, .15));
-        mainLayer().add(ballShadow);
+        layer().add(ballShadow);
         basket = new Rectangle(1.5, 0.05);
         basket.color("red");
         basket.position(3, 0.5);
@@ -62,7 +62,7 @@ public class BasketballThrowDemo extends Scene
         basket.gravityScale(0);
         basket.addCollisionListener(ball,
                 event -> defer(() -> basket.x(-basket.x())));
-        mainLayer().add(basket);
+        layer().add(basket);
         addKeyStrokeListener(e -> {
             if (e.getKeyCode() == KeyEvent.VK_SPACE)
             {

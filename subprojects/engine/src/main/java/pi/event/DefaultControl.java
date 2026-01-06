@@ -69,7 +69,7 @@ public class DefaultControl implements DefaultListener
 
     private Camera getCamera()
     {
-        Scene scene = Controller.activeScene();
+        Scene scene = Controller.scene();
         if (scene != null)
         {
             return scene.camera();
@@ -79,7 +79,7 @@ public class DefaultControl implements DefaultListener
 
     private boolean hasNoScene()
     {
-        return Controller.activeScene() == null;
+        return Controller.scene() == null;
     }
 
     // Got to

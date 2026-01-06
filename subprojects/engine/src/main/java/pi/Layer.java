@@ -68,7 +68,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     private <T> Supplier<T> createParentSupplier(Function<Scene, T> supplier)
     {
         return () -> {
-            Scene scene = parent();
+            Scene scene = scene();
             if (scene == null)
             {
                 return null;
@@ -99,14 +99,17 @@ public class Layer implements KeyStrokeListenerRegistration,
     private double timeDistort = 1;
 
     /**
-     * Bestimmt die Reihenfolge der Layer, kleinere Werte werden zuerst
+     * Bestimmt die Reihenfolge der Ebenen, kleinere Werte werden zuerst
      * gerendert, sind also weiter „hinten“.
      */
     private int layerPosition = -2;
 
     private boolean visible = true;
 
-    private Scene parent;
+    /**
+     * Die <b>Szene</b>, zu der diese Ebene gehört.
+     */
+    private Scene scene;
 
     private final WorldHandler worldHandler;
 
@@ -133,45 +136,48 @@ public class Layer implements KeyStrokeListenerRegistration,
         EventListeners.registerListeners(this);
     }
 
-    @Getter
-    public Scene parent()
-    {
-        return parent;
-    }
-
+    /**
+     * Gibt die <b>Szene</b>, zu der diese Ebene gehört, zurück.
+     *
+     * @return Die <b>Szene</b>, zu der diese Ebene gehört.
+     */
     @Getter
     public Scene scene()
     {
-        return parent;
+        return scene;
     }
 
     /**
+     * Setzt die <b>Szene</b>, zu der diese Ebene gehört.
+     *
+     * @param scene Die <b>Szene</b>, zu der diese Ebene gehört.
+     *
      * @hidden
      */
     @Internal
     @Setter
-    void parent(Scene parent)
+    void scene(Scene scene)
     {
-        if (parent != null && this.parent != null)
+        if (scene != null && this.scene != null)
         {
             throw new IllegalStateException(
                     "Die Ebene wurde bereits in einer Szene angemeldet.");
         }
-        if (parent != null)
+        if (scene != null)
         {
-            keyStrokeListeners.invoke(parent::addKeyStrokeListener);
-            mouseClickListeners.invoke(parent::addMouseClickListener);
-            mouseScrollListeners.invoke(parent::addMouseScrollListener);
-            frameUpdateListeners.invoke(parent::addFrameUpdateListener);
+            keyStrokeListeners.invoke(scene::addKeyStrokeListener);
+            mouseClickListeners.invoke(scene::addMouseClickListener);
+            mouseScrollListeners.invoke(scene::addMouseScrollListener);
+            frameUpdateListeners.invoke(scene::addFrameUpdateListener);
         }
         else
         {
-            keyStrokeListeners.invoke(this.parent::removeKeyStrokeListener);
-            mouseClickListeners.invoke(this.parent::removeMouseClickListener);
-            mouseScrollListeners.invoke(this.parent::removeMouseScrollListener);
-            frameUpdateListeners.invoke(this.parent::removeFrameUpdateListener);
+            keyStrokeListeners.invoke(this.scene::removeKeyStrokeListener);
+            mouseClickListeners.invoke(this.scene::removeMouseClickListener);
+            mouseScrollListeners.invoke(this.scene::removeMouseScrollListener);
+            frameUpdateListeners.invoke(this.scene::removeFrameUpdateListener);
         }
-        this.parent = parent;
+        this.scene = scene;
     }
 
     /**
@@ -185,9 +191,9 @@ public class Layer implements KeyStrokeListenerRegistration,
     public void layerPosition(int position)
     {
         this.layerPosition = position;
-        if (parent != null)
+        if (scene != null)
         {
-            parent.sortLayers();
+            scene.sortLayers();
         }
     }
 
@@ -368,7 +374,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt, ob diese Ebene sichtbar sein soll.
+     * Setzt, ob diese Ebene <b>sichtbar</b> sein soll.
      *
      * @param visible <code>true</code>: Die Ebene ist sichtbar, wenn es an
      *     einer Szene angemeldet ist. <code>false</code>: Die Ebene ist auch
@@ -542,7 +548,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         Vector frameSize = Controller.windowSize();
         Vector cameraPositionInPx = new Vector(frameSize.x() / 2,
                 frameSize.y() / 2);
-        Vector fromCamToPointInWorld = parent.camera().focus()
+        Vector fromCamToPointInWorld = scene.camera().focus()
                 .multiplyX(parallaxX).multiplyY(parallaxY).distance(worldPoint);
         return cameraPositionInPx.add(fromCamToPointInWorld.multiplyY(-1)
                 .multiply(pixelPerMeter * parallaxZoom));
@@ -559,7 +565,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @Getter
     public Bounds visibleArea(Vector gameSizeInPixels)
     {
-        Vector center = parent.camera().focus();
+        Vector center = scene.camera().focus();
         double pixelPerMeter = calculatePixelPerMeter();
         return new Bounds(0, 0, gameSizeInPixels.x() / pixelPerMeter,
                 gameSizeInPixels.y() / pixelPerMeter).withCenterPoint(center);
@@ -581,7 +587,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         double desiredPixelPerMeter = gameSizeInPixels.x() / width;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.camera().meter(desiredZoom);
+        scene.camera().meter(desiredZoom);
     }
 
     /**
@@ -600,7 +606,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         double desiredPixelPerMeter = gameSizeInPixels.y() / height;
         double desiredZoom = 1 + ((desiredPixelPerMeter - 1) / parallaxZoom);
-        parent.camera().meter(desiredZoom);
+        scene.camera().meter(desiredZoom);
     }
 
     /**
@@ -609,7 +615,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     @API
     public double calculatePixelPerMeter()
     {
-        return 1 + (parent.camera().meter() - 1) * parallaxZoom;
+        return 1 + (scene.camera().meter() - 1) * parallaxZoom;
     }
 
     /**

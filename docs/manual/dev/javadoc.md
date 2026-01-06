@@ -1,6 +1,6 @@
 # `javadoc` (API-Dokumentation)
 
-Im Subprojekt `build-tools` befindet sich eine  {{
+Im Subprojekt `build-tools` befindet sich eine {{
 repo_link('subprojects/build-tools/src/main/resources/javadoc-stylesheet.css',
 'CSS-Datei') }}, die verwendet wird, um das Aussehen der Dokumentation mit den
 Engine-Pi-Farbe (Gnome-Farben) und der Engine-Pi-Standard-Schrift (Cantarell)
@@ -57,6 +57,7 @@ Mehrzeilig:
 | Actor                            | Figur                                                  |
 | BodyType                         | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds                           | Schranken, Abgrenzung                                  |
+| Controller                       | Steuerung                                              |
 | DistanceJoint                    | Stabverbindung                                         |
 | Fixture                          | Halterung, Kollisionsform                              |
 | Frame                            | Einzelbild                                             |
