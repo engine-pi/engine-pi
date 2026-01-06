@@ -25,8 +25,8 @@ package pi.dsa.turtle;
  * zu sehen sind.
  *
  * <p>
- * Mit Hilfe dieser Klasse kann zum Beispiel die Geschwindigkeit eingestellt
- * oder der Warp-Modus eingeschaltet werden.
+ * Mithilfe dieser Klasse kann zum Beispiel die Geschwindigkeit eingestellt oder
+ * der Warp-Modus eingeschaltet werden.
  * </p>
  *
  * @author Josef Friedrich

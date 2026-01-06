@@ -93,9 +93,9 @@ public final class FileUtil
         if (dir.isDirectory())
         {
             final String[] children = dir.list();
-            for (int i = 0; i < children.length; i++)
+            for (String child : children)
             {
-                deleteDir(new File(dir, children[i]));
+                deleteDir(new File(dir, child));
             }
         }
         try
@@ -268,7 +268,7 @@ public final class FileUtil
      *
      * <p>
      * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
-     * Zeichenkette zurück gegeben.
+     * Zeichenkette zurückgegeben.
      * </p>
      *
      * @param path Der Dateipfad angegeben als Zeichenkette.
@@ -315,7 +315,7 @@ public final class FileUtil
      *
      * <p>
      * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
-     * Zeichenkette zurück gegeben.
+     * Zeichenkette zurückgegeben.
      * </p>
      *
      * @param path Der Dateipfad angegeben als Zeichenkette.
@@ -332,7 +332,7 @@ public final class FileUtil
      *
      * <p>
      * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
-     * Zeichenkette zurück gegeben.
+     * Zeichenkette zurückgegeben.
      * </p>
      *
      * @param path Der Dateipfad.
@@ -349,7 +349,7 @@ public final class FileUtil
      *
      * <p>
      * Endet der Pfad mit einem Pfadtrennzeichen, so wird eine leere
-     * Zeichenkette zurück gegeben.
+     * Zeichenkette zurückgegeben.
      * </p>
      *
      * @param path Der Dateipfad.
@@ -423,7 +423,7 @@ public final class FileUtil
      * übergebenen Pfadsegmenten.
      *
      * <p>
-     * Der zurückgegeben Pfad verwendet das Pfadtrennzeichen des aktuellen
+     * Der zurückgegebene Pfad verwendet das Pfadtrennzeichen des aktuellen
      * Systems. Diese Methode normalisiert Windows-Pfadtrennzeichen zu
      * Unix-Trennzeichen.
      * </p>
@@ -595,8 +595,8 @@ public final class FileUtil
     }
 
     /**
-     * Erstellt eine <b> temporäre Datei </b> im Standard-Temporärverzeichnis
-     * des Systems.
+     * Erstellt eine <b>temporäre Datei</b> im Standard-Temporärverzeichnis des
+     * Systems.
      *
      * @return Der absolute Pfad zur erstellten temporären Datei als String, zum
      *     Beispiel {@code "/tmp/5601360254473891177.tmp"}

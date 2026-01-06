@@ -41,7 +41,7 @@ public class TurtleBackgroundController
     /**
      * @since 0.40.0
      */
-    private TurtleScene scene;
+    private final TurtleScene scene;
 
     /**
      * @since 0.40.0

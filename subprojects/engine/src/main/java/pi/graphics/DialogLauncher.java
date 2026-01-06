@@ -30,7 +30,7 @@ import pi.annotations.Internal;
  */
 public class DialogLauncher
 {
-    private Component parent;
+    private final Component parent;
 
     /**
      * @hidden

@@ -703,7 +703,7 @@ public class GraphCollection
 
     /**
      * Gibt die Namen aller öffentlichen, statischen Methoden dieser Klasse
-     * zurück, mit Ausnahme der Methode {@link #getMethodNames()}.
+     * zurück, mit Ausnahme dieser Methode.
      *
      * @return Ein Array von Strings, das die Namen der Methoden enthält.
      */

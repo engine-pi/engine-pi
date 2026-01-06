@@ -24,8 +24,8 @@ import pi.dsa.turtle.TurtleGraphics;
  * Zeichnet den
  * <a href="https://de.wikipedia.org/wiki/Pythagoras-Baum">Pythagoras-Baum</a>.
  *
- * <a href=
- * "https://programmierkonzepte.ch/engl/index.php?inhalt_links=&inhalt_mitte=turtle/rekursionen.inc.php">https://programmierkonzepte.ch</a>
+ * @see <a href=
+ *     "https://programmierkonzepte.ch/engl/index.php?inhalt_links=&inhalt_mitte=turtle/rekursionen.inc.php">https://programmierkonzepte.ch</a>
  */
 public class PythagorasTreeTurtleGraphics extends TurtleGraphics
 {

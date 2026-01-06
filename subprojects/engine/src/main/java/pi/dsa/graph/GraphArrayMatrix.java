@@ -78,7 +78,7 @@ public class GraphArrayMatrix extends Graph
         int[][] newMatrix = new int[newSize][newSize];
 
         // Initialisiert die neue Matrix mit dem „nicht
-        // erreichtbar“-Standard-Wert
+        // erreichbar“-Standard-Wert
         for (int i = 0; i < newSize; i++)
         {
             for (int j = 0; j < newSize; j++)

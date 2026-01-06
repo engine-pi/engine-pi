@@ -13,14 +13,14 @@ import java.util.Vector;
  */
 public class BreadthFirstSearch extends GraphArrayMatrix
 {
-    private GraphVisualizer visualizer;
+    private final GraphVisualizer visualizer;
 
     /**
      * Eine Warteschlange
      */
     Vector<GraphNode> queue;
 
-    private boolean[] visited;
+    private final boolean[] visited;
 
     public BreadthFirstSearch(GraphVisualizer visualizer)
     {

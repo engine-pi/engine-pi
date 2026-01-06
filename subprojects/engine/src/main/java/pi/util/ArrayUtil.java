@@ -198,7 +198,7 @@ public final class ArrayUtil
      *
      * @param delimiterSeparatedString The string to split.
      *
-     * @return An double array with all separated elements of the specified
+     * @return A double array with all separated elements of the specified
      *     string.
      */
     public static double[] splitDouble(String delimiterSeparatedString)
@@ -212,7 +212,7 @@ public final class ArrayUtil
      * @param delimiterSeparatedString The string to split.
      * @param delimiter The delimiter by which to split the elements.
      *
-     * @return An double array with all separated elements of the specified
+     * @return A double array with all separated elements of the specified
      *     string.
      */
     public static double[] splitDouble(String delimiterSeparatedString,

@@ -25,7 +25,7 @@ import pi.Game;
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
- * Stellt eine {@link TurtleScene} bereit und kann mit Hilfe dieser
+ * Stellt eine {@link TurtleScene} bereit und kann mithilfe dieser
  * {@link TurtleScene} auch Turtle-Grafiken starten.
  *
  * @author Josef Friedrich

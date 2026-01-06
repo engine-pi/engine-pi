@@ -32,7 +32,7 @@ import pi.util.TextUtil;
 
 /**
  * Sammelt <b>statistische</b> Information, wie zum Beispiel die zurückgelegte
- * Wegstrecker der Schilkröte und erstellt Textboxen, die dann in die Szene
+ * Wegstrecker der Schildkröte und erstellt Textboxen, die dann in die Szene
  * eingezeichnet werden können.
  *
  * @author Josef Friedrich

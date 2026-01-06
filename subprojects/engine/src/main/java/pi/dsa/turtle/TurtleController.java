@@ -28,9 +28,9 @@ import pi.annotations.Setter;
  * kann.
  *
  * <p>
- * Es handelt sich um das absolute Minimun an Methoden um eine Turtlegrafik
+ * Es handelt sich um das absolute Minimum an Methoden um eine Turtlegrafik
  * zeichnen zu können. Methoden, die grafische Einstellungen vornehmen sind
- * nicht enhalten.
+ * nicht enthalten.
  * </p>
  *
  * @author Josef Friedrich
@@ -258,7 +258,7 @@ public class TurtleController
      * <b>Dreht</b> die Blickrichtung der Schildkröte nach <b>links</b>.
      *
      * @param rotation Der <b>Drehwinkel</b> in Grad. Negative Werte drehen die
-     *     Schilkröte nach rechts.
+     *     Schildkröte nach rechts.
      *
      * @since 0.38.0
      */
@@ -271,7 +271,7 @@ public class TurtleController
      * <b>Dreht</b> die Blickrichtung der Schildkröte nach <b>rechts</b>.
      *
      * @param rotation Der <b>Drehwinkel</b> in Grad. Negative Werte drehen die
-     *     Schilkröte nach links.
+     *     Schildkröte nach links.
      *
      * @since 0.40.0
      */

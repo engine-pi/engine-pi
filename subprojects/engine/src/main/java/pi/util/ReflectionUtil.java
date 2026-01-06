@@ -126,7 +126,7 @@ public final class ReflectionUtil
     }
 
     /**
-     * Recursively gets a method by the the specified name respecting the parent
+     * Recursively gets a method by the specified name respecting the parent
      * classes and the parameters of the declaration.
      *
      * @param name The name of the method.

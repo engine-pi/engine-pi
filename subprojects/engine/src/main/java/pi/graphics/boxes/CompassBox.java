@@ -91,7 +91,7 @@ public class CompassBox extends LeafBox
     }
 
     /**
-     * Der Radius der äußeren Kreises, also die Entfernung zur Mitte des
+     * Der Radius des äußeren Kreises, also die Entfernung zur Mitte des
      * Quadrats, also die Hälfte der Seitenlänge des Quadrats.
      */
     private double radius()

@@ -25,7 +25,7 @@ import pi.annotations.Internal;
 import pi.graphics.PaintingSurface;
 
 /**
- * Eine <b>Szenen</b> mit einer <b>Malfläche</b> als Hintergrund.
+ * Eine <b>Szene</b> mit einer <b>Malfläche</b> als Hintergrund.
  *
  * @author Josef Friedrich
  *

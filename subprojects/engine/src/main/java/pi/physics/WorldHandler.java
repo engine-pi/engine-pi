@@ -54,7 +54,7 @@ import pi.util.Logger;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
- * der JBox2D Engine und der Engine Omage. Sie ist verantwortlich für:
+ * der JBox2D Engine und der Engine Pi. Sie ist verantwortlich für:
  * <ul>
  * <li>Den globalen "World"-Parameter aus der JBox2D Engine.</li>
  * <li>Übersetzung zwischen JB2D-Vektoren (SI-Basiseinheiten) und denen der
@@ -505,7 +505,7 @@ public class WorldHandler implements ContactListener
      * Meldet einen allgemeinen Kollisionsbeobachter in der Physics-Welt an.
      *
      * @param listener Das anzumeldende Kollisionsbeobachter
-     * @param actor Kollisionsbeobachter wird informiert falls dieses
+     * @param actor Kollisionsbeobachter wird informiert, falls dieses
      *     {@link Actor}-Objekt mit einem anderen Objekt kollidiert.
      *
      * @hidden

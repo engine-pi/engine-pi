@@ -27,7 +27,6 @@ import pi.dsa.turtle.TurtleGraphics;
  */
 public class TriangleTurtleGraphics extends TurtleGraphics
 {
-
     @Override
     public void draw()
     {

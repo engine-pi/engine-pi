@@ -38,7 +38,7 @@ public class HilbertCurveTurtleGraphics extends TurtleGraphics
     /**
      * Die Rekursionstiefe.
      */
-    private int depth;
+    private final int depth;
 
     /**
      * Legt die Schildkröte an und startet die Zeichnung.

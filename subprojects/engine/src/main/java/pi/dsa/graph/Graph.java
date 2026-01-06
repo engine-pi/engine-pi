@@ -99,9 +99,9 @@ public abstract class Graph
     }
 
     /**
-     * Gibt den Index bzw {@literal .} die interne Nummer des Knoten zurück.
+     * Gibt den Index bzw {@literal .} die interne Nummer des Knotens zurück.
      *
-     * @param label Der <b>Bezeichner</b> des Knoten, der gesucht wird.
+     * @param label Der <b>Bezeichner</b> des Knotens, der gesucht wird.
      *
      * @return Die Indexnummer des Knotens im Knotenarray;
      *     {@code 0 &lt;= x &lt;= anzahl-1}
@@ -134,10 +134,10 @@ public abstract class Graph
     }
 
     /**
-     * Gibt den Index bzw{@literal .} die interne Nummer des Knoten zurück oder
+     * Gibt den Index bzw{@literal .} die interne Nummer des Knotens zurück oder
      * {@code -1} falls der Knoten nicht gefunden werden konnte.
      *
-     * @param label Der <b>Bezeichner</b> des Knoten, der gesucht wird.
+     * @param label Der <b>Bezeichner</b> des Knotens, der gesucht wird.
      *
      * @return Die Indexnummer des Knotens im Knotenarray;
      *     {@code 0 &lt;= x &lt;= anzahl-1} bzw. {@code -1}
@@ -176,7 +176,7 @@ public abstract class Graph
      *     {@code 0 &lt;= x &lt;=
      *     anzahl-1}
      *
-     * @return Der Bezeichner des Knoten.
+     * @return Der Bezeichner des Knotens.
      */
     @Getter
     public String nodeLabel(int index)
@@ -293,7 +293,7 @@ public abstract class Graph
      * <b>Einfügen</b> einer Kante in den Graphen.
      *
      * <p>
-     * Die Kante ist durch einen <b>Anfangsknoten</b> und einen <b>Endknoten</b>
+     * Die Kante ist durch einen <b>Anfangsknoten</b>, einen <b>Endknoten</b>
      * festgelegt, hat eine <b>Gewichtung</b> und ist <b>ungerichtet</b>.
      * </p>
      *

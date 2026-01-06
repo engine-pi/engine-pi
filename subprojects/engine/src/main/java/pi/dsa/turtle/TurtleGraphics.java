@@ -30,7 +30,7 @@ import pi.util.TimeUtil;
  * <p>
  * Diese abstrakte Klasse kann geerbt werden, um einen <b>Algorithmus</b> zur
  * Zeichnung einer Turtle-Grafik zu formulieren. Folgendes Code-Beispiel
- * illustiert die Verwendung dieser Hilfsklasse:
+ * illustriert die Verwendung dieser Hilfsklasse:
  * </p>
  *
  * <pre>{@code

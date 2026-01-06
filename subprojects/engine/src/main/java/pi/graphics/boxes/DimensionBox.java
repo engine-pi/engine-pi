@@ -21,7 +21,7 @@ package pi.graphics.boxes;
 import java.awt.Graphics2D;
 
 /**
- * Eine leere Box, die auf bestimme Abmessungen gesetzt werden kann.
+ * Eine leere Box, die auf bestimmte Abmessungen gesetzt werden kann.
  *
  * @since 0.40.0
  */

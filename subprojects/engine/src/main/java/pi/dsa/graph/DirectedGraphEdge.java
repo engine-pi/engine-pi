@@ -7,17 +7,17 @@ class DirectedGraphEdge
     /**
      * Der <b>Startknoten</b>.
      */
-    private GraphNode from;
+    private final GraphNode from;
 
     /**
      * Der <b>Endknoten</b>.
      */
-    private GraphNode to;
+    private final GraphNode to;
 
     /**
      * Die <b>Gewichtung</b> der Kante.
      */
-    private int weight;
+    private final int weight;
 
     public DirectedGraphEdge(GraphNode from, GraphNode to, int weight)
     {

@@ -40,7 +40,7 @@ public class GraphVisualizer
 
     private Graph graph;
 
-    private Scene scene;
+    private final Scene scene;
 
     public GraphVisualizer(Scene scene)
     {
@@ -78,7 +78,10 @@ public class GraphVisualizer
     /**
      * Setzt den Graphen neu und aktualisiert die Darstellung.
      *
+     * <p>
      * Die Methode führt folgende Schritte aus:
+     * </p>
+     *
      * <ul>
      * <li>Speichert den übergebenen Graphen in der Instanzvariable.</li>
      * <li>Räumt die aktuelle Szene auf.</li>
@@ -104,14 +107,14 @@ public class GraphVisualizer
         for (int i = 0; i < graph.edgeCount(); i++)
         {
             GraphEdge edge = graph.edge(i);
-            LabeledEdge labledEdge = new LabeledEdge(edge.from().position(),
+            LabeledEdge labeledEdge = new LabeledEdge(edge.from().position(),
                     edge.to().position());
             if (edge.weight() != 1)
             {
-                labledEdge.label(String.valueOf(edge.weight()));
+                labeledEdge.label(String.valueOf(edge.weight()));
             }
-            scene.add(labledEdge);
-            labeledEdges[i] = labledEdge;
+            scene.add(labeledEdge);
+            labeledEdges[i] = labeledEdge;
         }
         // Dann die Knoten.
         for (int i = 0; i < graph.nodeCount(); i++)

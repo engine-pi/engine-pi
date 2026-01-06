@@ -45,7 +45,7 @@ package pi.graphics.boxes;
  * </pre>
  *
  * <p>
- * Es handelt sich also um eine eine virtuelle, transparente Box, die keine
+ * Es handelt sich also um eine virtuelle, transparente Box, die keine
  * Zeichnenroutinen ausführt.
  * </p>
  *

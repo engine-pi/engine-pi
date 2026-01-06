@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * Klasse zwei gerichtete Kanten, nämlich von Knoten a zu Knoten b und von
  * Knoten b zu Knoten a.
  *
+ * <p>
  * Die Klasse ist als Datenstruktur zum Zeichen von Kanten gedacht.
+ * </p>
  */
 class EdgesOfNodePair
 {

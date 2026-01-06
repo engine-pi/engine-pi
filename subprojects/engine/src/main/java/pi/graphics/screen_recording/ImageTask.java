@@ -21,7 +21,7 @@ package pi.graphics.screen_recording;
 import pi.util.FileUtil;
 
 /**
- * Erzeugt eine einziges Bild als Bildschirmfoto.
+ * Erzeugt ein einziges Bild als Bildschirmfoto.
  *
  * @author Josef Friedrich
  *

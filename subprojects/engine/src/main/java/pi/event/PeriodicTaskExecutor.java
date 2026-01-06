@@ -246,7 +246,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Setzt die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt wird.
      *
      * @param finalTask Die Aufgabe, die als <b>letzte Aufgabe</b> ausgeführt
-     *     wird..
+     *     wird.
      *
      * @return Eine Instanz dieses Objekts, damit das Objekt über verkettete
      *     Setter konfiguriert werden kann.

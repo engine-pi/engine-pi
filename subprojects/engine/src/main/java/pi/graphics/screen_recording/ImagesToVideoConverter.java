@@ -47,7 +47,7 @@ class ImagesToVideoConverter
      * Sekunde. Standardmäßig wird jedes zweite Einzelbild. Das würde dann einen
      * Framerate von 30 ergeben.
      */
-    private int framerate;
+    private final int framerate;
 
     /**
      * Erstellt einen neuen Bilder-zu-Video-Konvertierer.

@@ -30,7 +30,7 @@ import pi.util.FileUtil;
  */
 abstract class PhotoshootingTask
 {
-    protected Date started = new Date();
+    protected Date started;
 
     protected String baseDir;
 

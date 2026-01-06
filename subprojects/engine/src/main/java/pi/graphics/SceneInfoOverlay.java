@@ -128,7 +128,7 @@ public class SceneInfoOverlay
      */
     private double duration = 10;
 
-    private CellBox cell;
+    private final CellBox cell;
 
     public final InsetBox margin;
 
@@ -169,7 +169,7 @@ public class SceneInfoOverlay
         {
             return;
         }
-        hideTask = scene.delay(duration, () -> disable());
+        hideTask = scene.delay(duration, this::disable);
     }
 
     /**
@@ -218,7 +218,7 @@ public class SceneInfoOverlay
      * Baut den Boxenbaum neu auf.
      *
      * <p>
-     * Diese Methode muss jedes mal ausgeführt werden, wenn ein Text gesetzt
+     * Diese Methode muss jedes Mal ausgeführt werden, wenn ein Text gesetzt
      * wird.
      * </p>
      *
@@ -257,7 +257,7 @@ public class SceneInfoOverlay
 
     private boolean isStringEmpty(String content)
     {
-        return content == null || content.equals("");
+        return content == null || content.isEmpty();
     }
 
     private TextBox setBox(String content, Function<String, TextBox> function)
@@ -314,8 +314,7 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay subtitle(String subtitle)
     {
-        this.subtitle = setBox(subtitle, content -> new TextLineBox(content))
-                .color(textColor);;
+        this.subtitle = setBox(subtitle, TextLineBox::new).color(textColor);
         return assemble();
     }
 
@@ -342,7 +341,7 @@ public class SceneInfoOverlay
     {
         this.description = setBox(description,
                 content -> new TextBlockBox(description).fontSize(12))
-                .color(textColor);;
+                .color(textColor);
         return assemble();
     }
 
@@ -412,9 +411,9 @@ public class SceneInfoOverlay
     }
 
     /**
-     * Setzt die <b>horizonale</b> Ausrichtung der Infobox.
+     * Setzt die <b>horizontale</b> Ausrichtung der Infobox.
      *
-     * @param hAlign Die <b>horizonale</b> Ausrichtung der Infobox.
+     * @param hAlign Die <b>horizontale</b> Ausrichtung der Infobox.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander

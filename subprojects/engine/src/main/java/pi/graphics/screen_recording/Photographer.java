@@ -24,11 +24,11 @@ import java.util.TimerTask;
 import pi.Game;
 
 /**
- * Der Fotograph steuert, ob einzelne Bildschirmfotos gemacht werden sollen.
+ * Der Fotograf steuert, ob einzelne Bildschirmfotos gemacht werden sollen.
  *
  * <p>
  * {@link java.awt.Canvas} beinhaltet keine Pixel-Daten, die man abgreifen
- * könnte und eine Bilddatei erstellen könnte. Ein Einzelbild von dem eine
+ * könnte und eine Bilddatei erstellen könnte. Ein Einzelbild, von dem ein
  * Bildschirmfoto gemacht werden soll, muss also zweimal gezeichnet werden. Die
  * Klasse wird in {@link pi.graphics.RenderPanel} als Attribut eingefügt.
  * </p>

@@ -48,7 +48,7 @@ public class TextBlockBox extends TextBox
     List<TextLayout> lines = new ArrayList<>();
 
     /**
-     * Erzeugt eine mehrzeiligen <b>Textblock</b>.
+     * Erzeugt einen mehrzeiligen <b>Textblock</b>.
      *
      * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
      *
@@ -118,7 +118,7 @@ public class TextBlockBox extends TextBox
         for (TextLayout line : lines)
         {
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
-            // Vorschub des Zeichen ganz rechts.
+            // Vorschub des Zeichens ganz rechts.
             float width = line.getAdvance();
             if (width > maxWidth)
             {
@@ -158,7 +158,7 @@ public class TextBlockBox extends TextBox
             yCursor += line.getAscent();
             float xCursor = (float) x;
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
-            // Vorschub des Zeichen ganz rechts.
+            // Vorschub des Zeichens ganz rechts.
             float lineWidth = line.getAdvance();
             switch (hAlign)
             {

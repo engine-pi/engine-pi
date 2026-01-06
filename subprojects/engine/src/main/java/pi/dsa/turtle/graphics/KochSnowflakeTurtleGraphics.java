@@ -28,7 +28,7 @@ import pi.dsa.turtle.TurtleGraphicsSeries;
  */
 public class KochSnowflakeTurtleGraphics extends TurtleGraphicsSeries
 {
-    private double length;
+    private final double length;
 
     private int depth;
 

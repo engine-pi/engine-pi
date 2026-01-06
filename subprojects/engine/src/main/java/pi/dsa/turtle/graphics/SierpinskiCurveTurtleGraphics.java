@@ -40,7 +40,7 @@ public class SierpinskiCurveTurtleGraphics extends TurtleGraphics
      */
     private double length2;
 
-    private int depth;
+    private final int depth;
 
     /**
      * Legt die Schildkröte an und startet die Zeichnung.

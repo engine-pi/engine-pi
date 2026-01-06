@@ -26,7 +26,7 @@ import pi.annotations.Setter;
  * Stellt einen <b>Knoten</b> in einem Graphen dar.
  *
  * <p>
- * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mit Hilfe der
+ * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mithilfe der
  * Klasse {@link pi.actor.LabeledNode} kann ein Knoten grafisch dargestellt
  * werden.
  * </p>
@@ -78,7 +78,7 @@ public class GraphNode
     }
 
     /**
-     * Gibt den Bezeichner des Knoten zurück.
+     * Gibt den Bezeichner des Knotens zurück.
      *
      * @return Der Bezeichner des Knotens.
      */
@@ -135,8 +135,8 @@ public class GraphNode
      * Leerzeichen aufgefüllt.
      * </p>
      *
-     * @param width Anzahl der Zeichen auf die der Bezeichner formatiert wird.
-     *     Maximal 15 Zeichen.
+     * @param width Die Anzahl der Zeichen, auf die der Bezeichner formatiert
+     *     wird. Maximal 15 Zeichen.
      *
      * @return formatierter Bezeichner
      */

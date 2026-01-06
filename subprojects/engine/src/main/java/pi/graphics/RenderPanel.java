@@ -91,7 +91,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
                 source.render((Graphics2D) bufferStrategy.getDrawGraphics(),
                         getWidth(), getHeight());
 
-                // Kann von jedeem Einzelbild ein Bildschirmfoto machen.
+                // Kann von jedem Einzelbild ein Bildschirmfoto machen.
                 if (photographer.hasToTakeScreenshot())
                 {
                     var image = photographer.createImage(getWidth(),

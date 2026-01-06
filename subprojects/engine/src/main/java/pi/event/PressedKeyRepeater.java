@@ -142,7 +142,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
 
     /**
      * Ein Beobachter, der auf länger gedrückte Tasten reagiert und dann in
-     * einem bestimmten Zeitintervall eine Aufgaben mehrmals wiederholt.
+     * einem bestimmten Zeitintervall eine Aufgabe mehrmals wiederholt.
      */
     private class PressedKeyListener
     {
@@ -162,8 +162,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
         private double interval;
 
         /**
-         * Die zeitliche Verzögerung (in Sekunden) zwischen dem <b>ersten
-         * Tastendruck</b> und der <b>ersten Wiederholung</b> der Aufgabe.
+         * Die Verzögerung (in Sekunden) zwischen dem <b>ersten Tastendruck</b>
+         * und der <b>ersten Wiederholung</b> der Aufgabe.
          */
         private double initialInterval;
 
@@ -192,7 +192,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
          * <p>
          * Dabei kann die <b>Tastennummer</b>, die sich <b>wiederholende
          * Aufgabe</b>, das <b>Zeitintervall der Wiederholung</b> und
-         * <b>anfängliche zeitliche Verzögerung</b> angegeben werden.
+         * <b>anfängliche Verzögerung</b> angegeben werden.
          * </p>
          *
          *
@@ -347,12 +347,12 @@ public class PressedKeyRepeater implements KeyStrokeListener
 
     /**
      * Erzeugt einen Wiederholer durch Angabe des <b>Zeitintervalls der
-     * Wiederholung</b> und der <b>anfänglichen zeitlichen Verzögerung</b>.
+     * Wiederholung</b> und der <b>anfänglichen Verzögerung</b>.
      *
      * @param interval Das <b>Zeitintervall</b> (in Sekunden) nach dem die
      *     Aufgabe <b>wiederholt</b> wird.
-     * @param initialInterval Die zeitliche Verzögerung (in Sekunden) zwischen
-     *     dem <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
+     * @param initialInterval Die Verzögerung (in Sekunden) zwischen dem
+     *     <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
      *     Aufgabe.
      */
     public PressedKeyRepeater(double interval, double initialInterval)
@@ -389,7 +389,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
      * Fügt einen <b>Beobachter</b> hinzu, der auf gedrückt gehaltene Tasten
      * reagiert; dabei kann die <b>Tastennummer</b>, die sich <b>wiederholende
      * Aufgabe</b>, das <b>Zeitintervall der Wiederholung</b> und <b>anfängliche
-     * zeitliche Verzögerung</b> angegeben werden.
+     * Verzögerung</b> angegeben werden.
      *
      * @param keyCode Die <b>Nummer der Taste</b>, durch die die Aufgaben
      *     gestartet werden. Beispielsweise kann mit dem statischen Attribut
@@ -398,8 +398,8 @@ public class PressedKeyRepeater implements KeyStrokeListener
      *     Zeitintervall <b>wiederholt</b> wird.
      * @param interval Das <b>Zeitintervall</b> (in Sekunden) nach dem die
      *     Aufgabe <b>wiederholt</b> wird.
-     * @param initialInterval Die zeitliche Verzögerung (in Sekunden) zwischen
-     *     dem <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
+     * @param initialInterval Die Verzögerung (in Sekunden) zwischen dem
+     *     <b>ersten Tastendruck</b> und der <b>ersten Wiederholung</b> der
      *     Aufgabe.
      */
     public void addListener(int keyCode, Runnable repeatedTask, double interval,

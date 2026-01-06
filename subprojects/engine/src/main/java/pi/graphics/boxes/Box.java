@@ -127,8 +127,10 @@ public abstract class Box implements Iterable<Box>
     /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.
      *
+     * <p>
      * Standardmäßig sind Boxen ohne Kinder definiert — Container-Subklassen
      * sollten diese Methode überschreiben, um tatsächliche Kinder zu liefern.
+     * </p>
      *
      * @return Ein Iterator über die direkten Kind-Boxen (leer wenn keine).
      *
@@ -223,7 +225,7 @@ public abstract class Box implements Iterable<Box>
     }
 
     /**
-     * Setzt den Deaktiviert-Stauts.
+     * Setzt den Deaktiviert-Status.
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch

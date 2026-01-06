@@ -39,7 +39,7 @@ import pi.annotations.Setter;
  *
  * <p>
  * Die Klasse verwaltet die grafische Repräsentation der Schildkröte. Die
- * Schildkröte kann verschieden dargestellt werden: Als animiertes Bild, als
+ * Schildkröte kann verschieden dargestellt werden: als animiertes Bild, als
  * Pfeil oder als Punkt.
  * </p>
  *
@@ -50,7 +50,7 @@ import pi.annotations.Setter;
 class TurtleDressController
 {
     /**
-     * Die <b>graphische Repräsentation</b> der Schildkröte.
+     * Die <b>grafische Repräsentation</b> der Schildkröte.
      *
      * @since 0.40.0
      */
@@ -69,7 +69,7 @@ class TurtleDressController
     /**
      * Die Größe der Schildkröte in Meter.
      */
-    private double size = 2;
+    private double size;
 
     /**
      * @since 0.40.0
@@ -90,10 +90,12 @@ class TurtleDressController
     }
 
     /**
-     * Setzt die Figur die die Schildkröte graphisch repräsentiert neu.
+     * Setzt die Figur, die die Schildkröte grafisch repräsentiert neu.
      *
+     * <p>
      * Ob die Schildkröte durch ein Bild gezeichnet werden soll. Falls falsch,
-     * dann wird eine Dreieck gezeichnet.
+     * dann wird ein Dreieck gezeichnet.
+     * </p>
      *
      * @since 0.40.0
      */

@@ -23,7 +23,7 @@ import pi.dsa.turtle.TurtleGraphics;
 
 /**
  * Zeichnet ein Plus-Zeichen, um die Methode {@link pi.Turtle#direction(double)
- * Turtle#setDirection(double)} zu demonstieren.
+ * Turtle#setDirection(double)} zu demonstrieren.
  *
  * <pre>
  * {@code

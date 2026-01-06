@@ -57,7 +57,7 @@ public class TurtleScene extends PaintingSurfaceScene
     final TurtleAnimationController animation;
 
     /**
-     * Die <b>graphische Repräsentation</b> der Schildkröte.
+     * Die <b>grafische Repräsentation</b> der Schildkröte.
      */
     final TurtleDressController dress;
 

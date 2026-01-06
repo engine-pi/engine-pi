@@ -34,9 +34,9 @@ import pi.util.ImageUtil;
  */
 public class ScreenshotImage
 {
-    private BufferedImage image;
+    private final BufferedImage image;
 
-    private Graphics2D g;
+    private final Graphics2D g;
 
     public ScreenshotImage(int width, int height)
     {

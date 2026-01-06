@@ -101,8 +101,8 @@ public class TurtlePenController
     }
 
     /**
-     * <b>Ändert</b> die aktuelle <b>Linienstärke</b> des Zeichenstifs um einen
-     * gegeben Wert.
+     * <b>Ändert</b> die aktuelle <b>Linienstärke</b> des Zeichenstifts um einen
+     * gegebenen Wert.
      *
      * <p>
      * Positive Werte erhöhen die Linienstärke, negative Werte verringern sie.
@@ -127,7 +127,7 @@ public class TurtlePenController
     }
 
     /**
-     * Setzt die <b>Farbe</b> des Zeichenstiftsals {@link Color}-Objekt.
+     * Setzt die <b>Farbe</b> des Zeichenstifts als {@link Color}-Objekt.
      *
      * @param color Die <b>Farbe</b> des Zeichenstifts.
      *

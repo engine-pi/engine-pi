@@ -26,13 +26,13 @@ import pi.annotations.Getter;
  * <p>
  * Wird ein Graph über eine Adjazenz-Matrix oder -Liste implementiert, ist diese
  * Klasse eigentlich nicht nötig. Beim Einfügen von Kanten in den Graphen wird
- * momentan zusätzlich zu den oben beschriebenen Datenstrukturen auch eine
- * Objekt dieser Klasse erzeugt. Dadurch entstehen Datendoppelungen. Jedoch wird
- * das Zeichnen von Kanten durch diese Klasse vereinfacht.
+ * momentan zusätzlich zu den oben beschriebenen Datenstrukturen auch ein Objekt
+ * dieser Klasse erzeugt. Dadurch entstehen Datendoppelungen. Jedoch wird das
+ * Zeichnen von Kanten durch diese Klasse vereinfacht.
  * </p>
  *
  * <p>
- * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mit Hilfe der
+ * Bei dieser Klasse handelt es sich um eine reine Datenklasse. Mithilfe der
  * Klasse {@link pi.actor.LabeledEdge} kann eine Kante grafisch dargestellt
  * werden.
  * </p>
@@ -49,25 +49,25 @@ public class GraphEdge
     /**
      * Der <b>Startknoten</b>.
      */
-    private GraphNode from;
+    private final GraphNode from;
 
     /**
      * Der <b>Endknoten</b>.
      */
-    private GraphNode to;
+    private final GraphNode to;
 
     /**
      * Die <b>Gewichtung</b> der Kante.
      */
-    private int weight;
+    private final int weight;
 
     /**
      * Wahr, falls die Kante <b>gerichtet</b> ist.
      */
-    private boolean directed;
+    private final boolean directed;
 
     /**
-     * Erzeugt einen Kante durch Angabe des <b>Startknoten</b>, des
+     * Erzeugt eine Kante durch Angabe des <b>Startknotens</b>, des
      * <b>Endknoten</b>, der <b>Gewichtung</b> und der Information, ob die Kante
      * <b>gerichtet</b> ist.
      *
@@ -85,7 +85,7 @@ public class GraphEdge
     }
 
     /**
-     * Erzeugt eine ungerichtete Kante durch Angabe des <b>Startknoten</b>, des
+     * Erzeugt eine ungerichtete Kante durch Angabe des <b>Startknotens</b>, des
      * <b>Endknoten</b> und der <b>Gewichtung</b>.
      *
      * @param from Der <b>Startknoten</b>.
@@ -101,7 +101,7 @@ public class GraphEdge
 
     /**
      * Erzeugt eine ungerichtete Kante mit der Gewichtung von 1 durch Angabe des
-     * <b>Startknoten</b> und des <b>Endknoten</b>.
+     * <b>Startknotens</b> und des <b>Endknotens</b>.
      *
      * @param from Der <b>Startknoten</b>.
      * @param to Der <b>Endknoten</b>.
@@ -156,18 +156,18 @@ public class GraphEdge
         return directed;
     }
 
-    private String generateJavaCodeToAndFrom(String additonalArguments)
+    private String generateJavaCodeToAndFrom(String additionalArguments)
     {
-        if (additonalArguments == null)
+        if (additionalArguments == null)
         {
-            additonalArguments = "";
+            additionalArguments = "";
         }
         else
         {
-            additonalArguments = ", " + additonalArguments;
+            additionalArguments = ", " + additionalArguments;
         }
         return String.format("g.addEdge(\"%s\", \"%s\"%s);", to.label(),
-                from.label(), additonalArguments);
+                from.label(), additionalArguments);
     }
 
     /**
@@ -186,6 +186,6 @@ public class GraphEdge
         {
             return generateJavaCodeToAndFrom(null);
         }
-        return generateJavaCodeToAndFrom("" + weight + ", " + directed);
+        return generateJavaCodeToAndFrom(weight + ", " + directed);
     }
 }

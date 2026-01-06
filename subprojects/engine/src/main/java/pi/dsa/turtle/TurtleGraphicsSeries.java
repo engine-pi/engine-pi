@@ -23,17 +23,17 @@ import java.util.function.Supplier;
 import pi.annotations.Internal;
 
 /**
- * Hilfsklasse, um eine <b>Reihe</b> von <b>Turtle-Grafik</b> zu zeichnen.
+ * Hilfsklasse, um eine <b>Reihe</b> von <b>Turtle-Grafiken</b> zu zeichnen.
  *
  * <p>
- * Diese Klasse ermöglich es, die {@link TurtleGraphics#draw() draw()}-Methode
+ * Diese Klasse ermöglicht es, die {@link TurtleGraphics#draw() draw()}-Methode
  * mehrmals hintereinander aufzurufen.
  * </p>
  *
  * <p>
  * Turtle-Grafiken werden oft rekursiv erstellt. Die Klasse ermöglicht es, ein
  * und denselben Algorithmus mehrmals zeichnen zu lassen und bei jeder
- * Wiederholung Attribute zum verändern, wie zum Beispiel die Rekursionstiefe.
+ * Wiederholung Attribute zu verändern, wie zum Beispiel die Rekursionstiefe.
  * </p>
  *
  * @author Josef Friedrich

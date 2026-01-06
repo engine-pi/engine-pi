@@ -19,7 +19,7 @@
 package pi.graphics.boxes;
 
 /**
- * Die <b>horizonale</b> Ausrichtung.
+ * Die <b>horizontale</b> Ausrichtung.
  *
  * @author Josef Friedrich
  *

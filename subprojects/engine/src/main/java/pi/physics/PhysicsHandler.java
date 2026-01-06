@@ -120,8 +120,8 @@ public interface PhysicsHandler
      * @param degree Der Winkel, um den das Ziel-Objekt gedreht werden soll (in
      *     <i>Grad</i>).
      *     <ul>
-     *     <li>Werte &gt; 0 : Drehung gegen Uhrzeigersinn</li>
-     *     <li>Werte &lt; 0 : Drehung im Uhrzeigersinn</li>
+     *     <li>Werte &gt; 0: Drehung gegen Uhrzeigersinn</li>
+     *     <li>Werte &lt; 0: Drehung im Uhrzeigersinn</li>
      *     </ul>
      *
      * @hidden

@@ -1,7 +1,6 @@
 package pi.graphics;
 
 import pi.Vector;
-import pi.annotations.Getter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/DirectedLineSegmentDemo.java
 
@@ -13,39 +12,15 @@ import pi.annotations.Getter;
  * ist.
  * </p>
  *
+ * @param from Der Ursprung (0)
+ * @param to Das Ziel (1)
+ *
  * @author Josef Friedrich
  *
  * @since 0.42.0
  */
-public class DirectedLineSegment
+public record DirectedLineSegment(Vector from, Vector to)
 {
-    /**
-     * Der Ursprung (0)
-     */
-    private Vector from;
-
-    /**
-     * Das Ziel (1)
-     */
-    private Vector to;
-
-    public DirectedLineSegment(Vector from, Vector to)
-    {
-        this.from = from;
-        this.to = to;
-    }
-
-    @Getter
-    public Vector from()
-    {
-        return from;
-    }
-
-    @Getter
-    public Vector to()
-    {
-        return to;
-    }
 
     /**
      * Der Differenzvektor von a nach b.

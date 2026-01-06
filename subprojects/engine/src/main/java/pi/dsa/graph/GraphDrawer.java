@@ -26,7 +26,7 @@ enum EditState
  * <ol>
  * <li>Erzeugen eines Knotens durch Mausklick.</li>
  * <li>Eingabe des Knoten-Bezeichners über die Tastatur. Durch Betätigung der
- * Eingabetaste kann ein neuer Knoten plaziert werden.</li>
+ * Eingabetaste kann ein neuer Knoten platziert werden.</li>
  * <li>{@code Strg + s} exportiert den Graphen als Java-Code auf der
  * Konsole.</li>
  * </ol>
@@ -88,9 +88,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
     }
 
     /**
-     * Erzeugt und plaziert einen neuen Knoten.
-     *
-     * @param position
+     * Erzeugt und platziert einen neuen Knoten.
      */
     private void placeNode(Vector position)
     {
@@ -157,9 +155,7 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Game.start(scene -> {
-            new GraphDrawer(scene);
-        });
+        Game.start(GraphDrawer::new);
     }
 
 }

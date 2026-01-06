@@ -32,9 +32,9 @@ package pi.dsa.graph;
  */
 public class DepthFirstSearch extends GraphArrayMatrix
 {
-    private GraphVisualizer visualizer;
+    private final GraphVisualizer visualizer;
 
-    private boolean[] visited;
+    private final boolean[] visited;
 
     public DepthFirstSearch(GraphVisualizer visualizer)
     {
