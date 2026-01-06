@@ -18,7 +18,7 @@
  */
 package demos.classes.graphics.boxes;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 import static pi.graphics.boxes.HAlign.CENTER;
 import static pi.graphics.boxes.HAlign.LEFT;
 import static pi.graphics.boxes.HAlign.RIGHT;

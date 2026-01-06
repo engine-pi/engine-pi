@@ -18,11 +18,12 @@
  */
 package pi.actor;
 
+import static pi.Controller.images;
+
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 
-import pi.Resources;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.util.FileUtil;
@@ -59,7 +60,7 @@ public class ImageFontGlyph
         filename = FileUtil.getFileName(path);
         try
         {
-            image = Resources.images.get(path.toUri().toURL());
+            image = images.get(path.toUri().toURL());
             image = ImageUtil.addAlphaChannel(image);
         }
         catch (MalformedURLException e)

@@ -18,7 +18,8 @@
  */
 package pacman.actors;
 
-import pi.Resources;
+import static pi.Controller.colors;
+
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
@@ -31,8 +32,7 @@ public class Text extends ImageFontText
 
     public Text(String content, String color)
     {
-        super(font, content, 28, TextAlignment.LEFT,
-                Resources.colors.get(color), 1, 8);
+        super(font, content, 28, TextAlignment.LEFT, colors.get(color), 1, 8);
     }
 
     public Text(String content)

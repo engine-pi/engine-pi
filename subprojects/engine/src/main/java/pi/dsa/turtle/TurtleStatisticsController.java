@@ -18,11 +18,11 @@
  */
 package pi.dsa.turtle;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
+import static pi.Controller.fonts;
 
 import java.awt.Graphics2D;
 
-import pi.Resources;
 import pi.Turtle;
 import pi.graphics.boxes.FramedBox;
 import pi.graphics.boxes.HAlign;
@@ -74,8 +74,8 @@ public class TurtleStatisticsController
             cell.cell.hAlign(HAlign.RIGHT);
         });
         table.padding(3);
-        table.forEachColumnBox(0, cell -> cell.box.font(Resources.fonts
-                .defaultFont(FontStyle.BOLD).deriveFont((float) 12)));
+        table.forEachColumnBox(0, cell -> cell.box.font(
+                fonts.defaultFont(FontStyle.BOLD).deriveFont((float) 12)));
         table.forEachCell(cell -> cell.box.fontSize(12));
         framedTable = new FramedBox(table);
         framedTable.background.color(colors.get("grey", 50));

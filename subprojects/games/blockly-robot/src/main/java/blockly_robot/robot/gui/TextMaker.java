@@ -1,16 +1,16 @@
 package blockly_robot.robot.gui;
 
+import static pi.Controller.fonts;
+
 import java.awt.Font;
 
 import pi.Text;
-import pi.Resources;
 
 public class TextMaker
 {
     public static Font loadTitillium(String style)
     {
-        return Resources.fonts
-                .get("fonts/titilium/TitilliumWeb-%s.ttf".formatted(style));
+        return fonts.get("fonts/titilium/TitilliumWeb-%s.ttf".formatted(style));
     }
 
     public static Font regular = loadTitillium("Regular");

@@ -16,11 +16,12 @@
  */
 package demos.classes.actor;
 
+import static pi.Controller.colors;
+
 import java.awt.Color;
 import java.util.Map;
 
 import pi.Controller;
-import pi.Resources;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
@@ -45,8 +46,7 @@ public class ImageFontTextColorDemo extends Scene
     {
         backgroundColor("#eeeeee");
         int y = 9;
-        for (Map.Entry<String, Color> entry : Resources.colors.getAll()
-                .entrySet())
+        for (Map.Entry<String, Color> entry : colors.getAll().entrySet())
         {
             setImageFontText(entry.getKey(), -5, y);
             y--;

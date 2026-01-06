@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import static pi.Resources.fonts;
+import static pi.Controller.fonts;
 
 import java.awt.Font;
 

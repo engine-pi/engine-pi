@@ -20,7 +20,7 @@
  */
 package pi.dsa.turtle;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

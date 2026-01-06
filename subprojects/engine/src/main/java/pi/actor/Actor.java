@@ -20,6 +20,8 @@
  */
 package pi.actor;
 
+import static pi.Controller.colors;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
@@ -46,7 +48,6 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
 import pi.Bounds;
 import pi.Controller;
 import pi.Layer;
-import pi.Resources;
 import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
@@ -476,7 +477,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Setter
     public Actor color(String color)
     {
-        this.color = Resources.colors.getSafe(color);
+        this.color = colors.get(color);
         return this;
     }
 
@@ -862,7 +863,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         AffineTransform pre = g.getTransform();
         Graphics2DUtil.antiAliasing(g, false);
         // Den Anker der Figur einzeichnen
-        g.setColor(Resources.colors.getSafe("yellow"));
+        g.setColor(colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
         if (Controller.config.debug.actorCoordinates())
         {
@@ -872,7 +873,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // gewählt.
         // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
         g.setColor(actor.color != null ? actor.complementaryColor()
-                : Resources.colors.getSafe("red"));
+                : colors.getSafe("red"));
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();

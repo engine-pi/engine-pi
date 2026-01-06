@@ -20,7 +20,7 @@
  */
 package pi.actor;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.util.function.Supplier;

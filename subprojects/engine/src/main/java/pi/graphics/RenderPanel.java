@@ -24,8 +24,8 @@ import java.awt.Canvas;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import static pi.Controller.colors;
 
-import pi.Resources;
 import pi.graphics.screen_recording.Photographer;
 
 /**
@@ -67,7 +67,7 @@ public final class RenderPanel extends Canvas implements RenderTarget
     {
         setSize(width, height);
         setPreferredSize(getSize());
-        setBackground(Resources.colors.getSafe("black"));
+        setBackground(colors.getSafe("black"));
         photographer = Photographer.get();
     }
 

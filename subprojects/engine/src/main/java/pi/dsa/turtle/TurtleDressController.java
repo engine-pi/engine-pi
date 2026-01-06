@@ -18,7 +18,7 @@
  */
 package pi.dsa.turtle;
 
-import static pi.Resources.images;
+import static pi.Controller.images;
 import static pi.Vector.v;
 
 import pi.Scene;

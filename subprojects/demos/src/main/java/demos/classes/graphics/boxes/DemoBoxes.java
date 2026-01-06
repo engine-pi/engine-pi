@@ -18,7 +18,7 @@
  */
 package demos.classes.graphics.boxes;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.HAlign;

@@ -25,6 +25,8 @@
  */
 package pi;
 
+import static pi.Controller.sounds;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.ConcurrentHashMap;
@@ -101,7 +103,7 @@ public final class Jukebox
     private static final Collection<SoundPlayback> allSounds = ConcurrentHashMap
             .newKeySet();
 
-    private static SoundContainer soundsContainer = Resources.sounds;
+    private static SoundContainer soundsContainer = sounds;
 
     private static boolean RESTART_DEFAULT = false;
 

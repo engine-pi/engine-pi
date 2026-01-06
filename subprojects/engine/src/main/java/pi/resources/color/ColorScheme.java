@@ -23,11 +23,11 @@ import java.util.Map.Entry;
 
 import pi.Circle;
 import pi.Controller;
-import pi.Resources;
 import pi.Scene;
 import pi.Text;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import static pi.Controller.colors;
 
 /**
  * Beschreibt ein <b>Farbschema</b>.
@@ -1530,11 +1530,10 @@ public class ColorScheme
         Controller.start(new Scene()
         {
             {
-                backgroundColor(Resources.colors.get("#444444"));
+                backgroundColor(colors.get("#444444"));
                 int x = -16;
                 int labelY = -2;
-                for (Entry<String, Color> entry : Resources.colors.getAll()
-                        .entrySet())
+                for (Entry<String, Color> entry : colors.getAll().entrySet())
                 {
                     add(new Circle().position(x, 0).color(entry.getValue()));
                     add(new Text(entry.getKey(), 0.5).position(x, labelY)

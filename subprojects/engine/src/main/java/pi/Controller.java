@@ -56,6 +56,10 @@ import pi.graphics.DialogLauncher;
 import pi.graphics.RenderPanel;
 import pi.graphics.screen_recording.Photographer;
 import pi.loop.GameLoop;
+import pi.resources.ImageContainer;
+import pi.resources.color.ColorContainer;
+import pi.resources.font.FontContainer;
+import pi.resources.sound.SoundContainer;
 
 /**
  * Die Klassen {@link Controller} und {@link Controller} sind identisch.
@@ -87,16 +91,98 @@ public class Controller
     }
 
     /**
-     * Bietet Zugriff auf das Konfigurationsobjekt der Engine.
+     * Bietet Zugriff auf das <b>Konfigurationsobjekt</b> der Engine.
      *
      * <p>
-     * Dieses statische Attribut kann über statischen Import eingebunden werden:
-     * {@code import static pi.Controller.config;}
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
      * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.config;
+     * }
+     * </pre>
      *
      * @since 0.42.0
      */
     public static final Configuration config = Configuration.get();
+
+    /**
+     * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color
+     * Color}.
+     *
+     * <p>
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.colors;
+     * }
+     * </pre>
+     *
+     * @since 0.42.0
+     */
+    public static final ColorContainer colors = Resources.colors;
+
+    /**
+     * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link java.awt.Font
+     * Font}.
+     *
+     * <p>
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.fonts;
+     * }
+     * </pre>
+     *
+     * @since 0.42.0
+     */
+    public static final FontContainer fonts = Resources.fonts;
+
+    /**
+     * Ein Speicher für <b>Bilder</b> des Datentyps
+     * {@link java.awt.image.BufferedImage BufferedImage}.
+     *
+     * <p>
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.images;
+     * }
+     * </pre>
+     *
+     * @since 0.42.0
+     */
+    public static final ImageContainer images = Resources.images;
+
+    /**
+     * Ein Speicher für <b>Klänge</b> des Datentyps
+     * {@link pi.resources.sound.Sound Sound}.
+     *
+     * <p>
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.sounds;
+     * }
+     * </pre>
+     *
+     * @since 0.42.0
+     */
+    public static final SoundContainer sounds = Resources.sounds;
 
     /**
      * Eigentliches Fenster des Spiels.
@@ -212,7 +298,7 @@ public class Controller
         renderPanel.addMouseMotionListener(mouseListener);
         renderPanel.addMouseListener(mouseListener);
         renderPanel.addMouseWheelListener(Controller::enqueueMouseScrollEvent);
-        frame.setIconImage(Resources.images.get("logo/logo.png"));
+        frame.setIconImage(images.get("logo/logo.png"));
         mousePosition = new java.awt.Point(width / 2, height / 2);
         Thread mainThread = new Thread(Controller::run, "pi.main");
         mainThread.start();

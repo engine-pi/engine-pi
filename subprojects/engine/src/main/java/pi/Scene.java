@@ -58,6 +58,7 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
+import static pi.Controller.colors;
 
 /**
  * Mithilfe von <b>Szenen</b> können verschiedene <b>Ansichten</b> eines Spiels
@@ -938,6 +939,6 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Setter
     public void backgroundColor(String color)
     {
-        backgroundColor = Resources.colors.get(color);
+        backgroundColor = colors.get(color);
     }
 }

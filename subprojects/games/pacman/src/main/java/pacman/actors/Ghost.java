@@ -18,11 +18,12 @@
  */
 package pacman.actors;
 
+import static pi.Controller.images;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 
-import pi.Resources;
 import pi.actor.StatefulImagesAnimation;
 import pi.event.FrameUpdateListener;
 import pi.util.ImageUtil;
@@ -65,12 +66,11 @@ public abstract class Ghost extends StatefulImagesAnimation<GhostState>
     {
         String realPath = state.getImagePath(no);
         String virtualPath = realPath + "__" + name;
-        if (Resources.images.contains(virtualPath))
+        if (images.contains(virtualPath))
         {
-            return Resources.images.get(virtualPath);
+            return images.get(virtualPath);
         }
-        return ImageUtil.replaceColor(Resources.images.get(realPath), fromColor,
-                color);
+        return ImageUtil.replaceColor(images.get(realPath), fromColor, color);
     }
 
     public void reverse()

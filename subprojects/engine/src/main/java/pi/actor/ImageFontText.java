@@ -18,9 +18,10 @@
  */
 package pi.actor;
 
+import static pi.Controller.colors;
+
 import java.awt.Color;
 
-import pi.Resources;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.util.TextAlignment;
@@ -150,7 +151,7 @@ public class ImageFontText extends Image
      */
     public ImageFontText(ImageFont imageFont, String content, String color)
     {
-        this(imageFont, content, Resources.colors.get(color));
+        this(imageFont, content, colors.get(color));
     }
 
     /**
@@ -243,7 +244,7 @@ public class ImageFontText extends Image
     @Setter
     public void content(String content, String color)
     {
-        content(content, lineWidth, alignment, Resources.colors.get(color),
+        content(content, lineWidth, alignment, colors.get(color),
                 pixelMultiplication());
     }
 

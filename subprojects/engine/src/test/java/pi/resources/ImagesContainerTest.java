@@ -2,6 +2,7 @@ package pi.resources;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static pi.Controller.images;
 
 import java.io.IOException;
 
@@ -10,12 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-import pi.Resources;
-
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ImagesContainerTest
 {
-    ImageContainer container = Resources.images;
+    ImageContainer container = images;
 
     @BeforeEach
     @AfterEach

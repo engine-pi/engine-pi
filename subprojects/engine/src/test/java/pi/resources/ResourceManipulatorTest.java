@@ -1,8 +1,8 @@
 package pi.resources;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static pi.Controller.images;
 
-import pi.Resources;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import pi.util.ImageUtil;
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 public class ResourceManipulatorTest
 {
-    ImageContainer container = Resources.images;
+    ImageContainer container = images;
 
     String resourceName = "Pixel-Adventure-1/Background/Blue.png";
 

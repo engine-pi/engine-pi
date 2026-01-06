@@ -18,8 +18,8 @@
  */
 package demos.classes.graphics.boxes;
 
-import static pi.Resources.colors;
-import static pi.Resources.fonts;
+import static pi.Controller.colors;
+import static pi.Controller.fonts;
 
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.FramedTextBox;

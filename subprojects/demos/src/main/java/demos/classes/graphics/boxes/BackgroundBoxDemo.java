@@ -18,7 +18,7 @@
  */
 package demos.classes.graphics.boxes;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 import pi.graphics.boxes.BackgroundBox;
 import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextLineBox;

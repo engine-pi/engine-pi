@@ -59,7 +59,7 @@ public final class Sound
      * <p>
      * Note that the constructor is private. In order to load files use the
      * static {@code
-     * Resources.sounds().get(String)} method.
+     * Controller.sounds.get(String)} method.
      *
      * @param is The input stream to load the sound from.
      * @param name The name of this sound file.

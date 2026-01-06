@@ -1,6 +1,6 @@
 package demos.classes.class_scene;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;

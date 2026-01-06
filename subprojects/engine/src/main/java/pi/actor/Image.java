@@ -20,6 +20,8 @@
  */
 package pi.actor;
 
+import static pi.Controller.images;
+
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -27,7 +29,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 import pi.Controller;
-import pi.Resources;
 import pi.Scene;
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -185,7 +186,7 @@ public class Image extends Actor
     @Setter
     public void image(String filepath, double width, double height)
     {
-        image(Resources.images.get(filepath), width, height);
+        image(images.get(filepath), width, height);
     }
 
     /**
@@ -232,7 +233,7 @@ public class Image extends Actor
     @Setter
     public void image(String filepath, double pixelPerMeter)
     {
-        image(Resources.images.get(filepath), pixelPerMeter);
+        image(images.get(filepath), pixelPerMeter);
     }
 
     /**

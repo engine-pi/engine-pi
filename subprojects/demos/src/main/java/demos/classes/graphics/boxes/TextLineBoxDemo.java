@@ -18,7 +18,7 @@
  */
 package demos.classes.graphics.boxes;
 
-import static pi.Resources.fonts;
+import static pi.Controller.fonts;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 

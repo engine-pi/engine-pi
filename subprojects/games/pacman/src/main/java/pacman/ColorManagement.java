@@ -18,29 +18,29 @@
  */
 package pacman;
 
-import pi.Resources;
+import static pi.Controller.colors;
+
 import pi.resources.color.ColorContainer;
 
 public class ColorManagement
 {
     public static ColorContainer setColors()
     {
-        ColorContainer container = Resources.colors;
-        container.clear();
+        colors.clear();
         // AllAssetsPalettes.png
-        container.add("Black", 0, 0, 0, "schwarz");
-        container.add("Red", 255, 0, 0, "rot");
-        container.add("Brown", 222, 151, 81, "braun");
-        container.add("Pink", 255, 183, 255, "rosa");
-        container.add("Cyan", 0, 255, 255, "blaugrün");
-        container.add("Blue", 71, 183, 255, "blau");
-        container.add("Orange", 255, 183, 81, "orange");
-        container.add("Yellow", 255, 255, 0, "gelb");
-        container.add("Indigo", 33, 33, 255, "indigo");
-        container.add("Green", 0, 255, 255, "grün");
-        container.add("Teal", 71, 183, 174, "türkis");
-        container.add("Salmon", 255, 183, 174, "lachsfarben");
-        container.add("White", 222, 222, 255, "weiß");
-        return container;
+        colors.add("Black", 0, 0, 0, "schwarz");
+        colors.add("Red", 255, 0, 0, "rot");
+        colors.add("Brown", 222, 151, 81, "braun");
+        colors.add("Pink", 255, 183, 255, "rosa");
+        colors.add("Cyan", 0, 255, 255, "blaugrün");
+        colors.add("Blue", 71, 183, 255, "blau");
+        colors.add("Orange", 255, 183, 81, "orange");
+        colors.add("Yellow", 255, 255, 0, "gelb");
+        colors.add("Indigo", 33, 33, 255, "indigo");
+        colors.add("Green", 0, 255, 255, "grün");
+        colors.add("Teal", 71, 183, 174, "türkis");
+        colors.add("Salmon", 255, 183, 174, "lachsfarben");
+        colors.add("White", 222, 222, 255, "weiß");
+        return colors;
     }
 }

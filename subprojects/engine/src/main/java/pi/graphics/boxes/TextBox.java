@@ -18,8 +18,8 @@
  */
 package pi.graphics.boxes;
 
-import static pi.Resources.colors;
-import static pi.Resources.fonts;
+import static pi.Controller.colors;
+import static pi.Controller.fonts;
 
 import java.awt.Color;
 import java.awt.Font;

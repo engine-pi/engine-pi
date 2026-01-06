@@ -18,7 +18,7 @@
  */
 package pi.graphics.boxes;
 
-import static pi.Resources.images;
+import static pi.Controller.images;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;

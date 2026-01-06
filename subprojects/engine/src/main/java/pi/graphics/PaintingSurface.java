@@ -18,7 +18,7 @@
  */
 package pi.graphics;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

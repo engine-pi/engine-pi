@@ -18,13 +18,17 @@
  */
 package pi.actor;
 
+import static pi.Controller.colors;
+import static pi.Controller.fonts;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
+import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import pi.Controller;
-import pi.Resources;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -32,8 +36,6 @@ import pi.annotations.Setter;
 import pi.physics.FixtureData;
 import pi.resources.font.FontStringBounds;
 import pi.resources.font.FontUtil;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 
 /**
  * Beschreibt einen <b>Knoten (node)</b> mit einer <b>Bezeichnung (label)</b>,
@@ -97,13 +99,13 @@ public class LabeledNode extends Geometry
      */
     public static double FONT_SIZE = 16;
 
-    public static Font FONT = Resources.fonts.get("fonts/Cantarell-Regular.ttf")
+    public static Font FONT = fonts.get("fonts/Cantarell-Regular.ttf")
             .deriveFont((float) FONT_SIZE);
 
     /**
      * Die <b>Hintergrundfarbe</b> des Knotens.
      */
-    public static Color COLOR = Resources.colors.get("blue");
+    public static Color COLOR = colors.getSafe("blue");
 
     private FontStringBounds cachedFontStringBounds;
 
@@ -282,7 +284,7 @@ public class LabeledNode extends Geometry
         {
             AffineTransform pre = g.getTransform();
             Font oldFont = g.getFont();
-            g.setColor(Resources.colors.get("white"));
+            g.setColor(colors.getSafe("white"));
             g.setFont(font());
             var b = cachedFontStringBounds;
 
@@ -325,7 +327,7 @@ public class LabeledNode extends Geometry
             n1 = new LabeledNode("Node 1");
             s.add(n1);
 
-            LabeledNode.COLOR = Resources.colors.get("orange");
+            LabeledNode.COLOR = colors.getSafe("orange");
             n2 = new LabeledNode("Node 2", 5, 5);
             n2.color("green");
             s.add(n2);

@@ -18,7 +18,7 @@
  */
 package pi.debug;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import java.awt.Graphics2D;
 

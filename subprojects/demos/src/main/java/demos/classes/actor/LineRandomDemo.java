@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import static pi.Resources.colors;
+import static pi.Controller.colors;
 
 import pi.Controller;
 import pi.Random;

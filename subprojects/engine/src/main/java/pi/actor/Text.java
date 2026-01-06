@@ -20,11 +20,12 @@
  */
 package pi.actor;
 
+import static pi.Controller.fonts;
+
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import pi.Resources;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -116,8 +117,7 @@ public class Text extends Geometry
     @API
     public Text(String content, double height)
     {
-        this(content, height,
-                Resources.fonts.defaultFont().deriveFont((float) SIZE), 0);
+        this(content, height, fonts.defaultFont().deriveFont((float) SIZE), 0);
     }
 
     /**
@@ -157,7 +157,7 @@ public class Text extends Geometry
     public Text(String content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
-                Resources.fonts.get(fontName).deriveFont(style, SIZE)));
+                fonts.get(fontName).deriveFont(style, SIZE)));
         this.content = content == null ? "" : content;
         this.height = height;
         setStyle(style);
@@ -207,7 +207,7 @@ public class Text extends Geometry
     @Setter
     public Text font(String fontName)
     {
-        font(Resources.fonts.get(fontName));
+        font(fonts.get(fontName));
         return this;
     }
 

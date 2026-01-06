@@ -23,11 +23,11 @@ import java.util.Map;
 
 import pi.Controller;
 import pi.Rectangle;
-import pi.Resources;
 import pi.Scene;
 import pi.Text;
 import pi.resources.color.ColorContainer;
 import pi.resources.color.NamedColor;
+import static pi.Controller.colors;
 
 /**
  * <b>Visualisiert</b> den gegebenen <b>Speicher für Farben</b>.
@@ -82,11 +82,11 @@ public class ColorContainerVisualizer
      * @param scene Die Szene in der die Visualisierung eingezeichnet werden
      *     soll.
      *
-     * @see Resources#colors
+     * @see Controller#colors
      */
     public ColorContainerVisualizer(Scene scene)
     {
-        this(Resources.colors, scene);
+        this(colors, scene);
     }
 
     public static void main(String[] args)

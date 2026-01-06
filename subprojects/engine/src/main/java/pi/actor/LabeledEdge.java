@@ -1,5 +1,7 @@
 package pi.actor;
 
+import static pi.Controller.fonts;
+
 import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -7,7 +9,6 @@ import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
 import pi.Controller;
-import pi.Resources;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
@@ -43,7 +44,7 @@ public class LabeledEdge extends Actor
      */
     public static double FONT_SIZE = 12;
 
-    public static Font FONT = Resources.fonts.get("fonts/Cantarell-Regular.ttf")
+    public static Font FONT = fonts.get("fonts/Cantarell-Regular.ttf")
             .deriveFont((float) FONT_SIZE);
 
     public LabeledEdge(double fromX, double fromY, double toX, double toY,

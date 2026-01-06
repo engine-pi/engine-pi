@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static pi.Controller.images;
 
 import java.awt.Color;
 import java.awt.GraphicsEnvironment;
@@ -14,7 +15,6 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import pi.Resources;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
@@ -36,7 +36,7 @@ public class ImageUtilTest
     @Test
     public void testCopy()
     {
-        BufferedImage image = Resources.images.get(
+        BufferedImage image = images.get(
                 "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
         BufferedImage copy = ImageUtil.copy(image);
         assertImageEquals(image, copy);
@@ -57,9 +57,9 @@ public class ImageUtilTest
 
         static Color blue = new Color(0, 0, 255);
 
-        static BufferedImage input = Resources.images.get("images/gray.png");
+        static BufferedImage input = images.get("images/gray.png");
 
-        static BufferedImage expected = Resources.images.get("images/rgb.png");
+        static BufferedImage expected = images.get("images/rgb.png");
 
         @Test
         public void testColorArray() throws IOException

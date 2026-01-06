@@ -17,13 +17,13 @@
 package tetris;
 
 import static pi.Controller.config;
+import static pi.Controller.images;
 import static tetris.Tetris.COLOR_SCHEME_GRAY;
 import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
 import java.awt.image.BufferedImage;
 
 import pi.Image;
-import pi.Resources;
 import pi.util.ImageUtil;
 
 /**
@@ -50,7 +50,7 @@ public class ImageLoader
      */
     public static Image get(String pathname)
     {
-        BufferedImage image = Resources.images.get(pathname);
+        BufferedImage image = images.get(pathname);
         image = ImageUtil.replaceColors(image, COLOR_SCHEME_GRAY.getColors(),
                 COLOR_SCHEME_GREEN.getColors());
         return new Image(image,

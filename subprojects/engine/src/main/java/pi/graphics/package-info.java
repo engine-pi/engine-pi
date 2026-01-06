@@ -25,7 +25,7 @@
  * </p>
  *
  * <pre>{@code
- * import static pi.Resources.images;
+ * import static pi.Controller.images;
  *
  * BufferedImage image = images.get("froggy/Frog.png");
  * }</pre>

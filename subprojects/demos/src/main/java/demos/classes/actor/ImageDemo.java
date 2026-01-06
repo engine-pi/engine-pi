@@ -18,15 +18,15 @@
  */
 package demos.classes.actor;
 
-import pi.Resources;
-import pi.Scene;
-import pi.Controller;
-
-import pi.Image;
-import pi.event.KeyStrokeListener;
+import static pi.Controller.images;
 
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+
+import pi.Controller;
+import pi.Image;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
 
 /**
  * Demonstriert die Figur <b>Bild</b> ({@link Image}).
@@ -39,11 +39,11 @@ public class ImageDemo extends Scene implements KeyStrokeListener
 
     Image box2;
 
-    BufferedImage image1 = Resources.images.get("dude/box/obj_box003.png");
+    BufferedImage image1 = images.get("dude/box/obj_box003.png");
 
-    BufferedImage image2 = Resources.images.get("dude/box/obj_box004.png", 2);
+    BufferedImage image2 = images.get("dude/box/obj_box004.png", 2);
 
-    BufferedImage image3 = Resources.images.get("dude/box/obj_box005.png", 3);
+    BufferedImage image3 = images.get("dude/box/obj_box005.png", 3);
 
     public ImageDemo()
     {

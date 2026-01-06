@@ -20,10 +20,11 @@
  */
 package pi.actor;
 
+import static pi.Controller.colors;
+
 import java.awt.Graphics2D;
 import java.util.function.Supplier;
 
-import pi.Resources;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -96,7 +97,7 @@ public class Rectangle extends Geometry
         assertPositiveWidthAndHeight(width, height);
         this.width = width;
         this.height = height;
-        color(Resources.colors.getSafe("red"));
+        color(colors.getSafe("red"));
     }
 
     /**
