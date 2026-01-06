@@ -16,22 +16,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game.attribute_dialog;
+package demos.classes.class_controller;
 
 import pi.Game;
 
 /**
- * Demonstriert die Methode
- * {@link pi.graphics.DialogLauncher#showMessage(String, String)}.
+ * Demonstriert die Methode {@link Game#isRunning()}.
  */
-public class ShowMessageDemo
+public class IsRunningDemo
 {
     public static void main(String[] args)
     {
+        System.out.println(Game.isRunning());
         Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            Game.dialog.showMessage("Das ist eine Nachricht",
-                    "Das ist der Titel");
-        });
+        System.out.println(Game.isRunning());
     }
 }

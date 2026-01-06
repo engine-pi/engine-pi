@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game;
+package demos.classes.class_controller;
 
 import pi.Game;
 import pi.Scene;

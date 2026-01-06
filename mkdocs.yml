@@ -86,11 +86,12 @@ nav:
   - Handbuch:
       - Hauptklassen:
           - manual/main-classes/index.md
-          - Controller bzw. Game (Spiel):
-              - manual/main-classes/game/index.md
-              - manual/main-classes/game/game-loop.md
-              - manual/main-classes/game/coordinate-system.md
-              - manual/main-classes/game/dialog.md
+          - Controller (Steuerung):
+              - manual/main-classes/controller/index.md
+              - manual/main-classes/controller/coordinate-system.md
+              - manual/main-classes/controller/instant-mode.md
+              - manual/main-classes/controller/game-loop.md
+              - manual/main-classes/controller/dialog.md
           - manual/main-classes/scene.md
           - manual/main-classes/camera.md
           - manual/main-classes/layer.md

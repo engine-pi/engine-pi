@@ -21,7 +21,6 @@ import pi.Vector;
  */
 public record DirectedLineSegment(Vector from, Vector to)
 {
-
     /**
      * Der Differenzvektor von a nach b.
      */

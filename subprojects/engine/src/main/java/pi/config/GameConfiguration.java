@@ -47,13 +47,13 @@ public class GameConfiguration extends ConfigurationGroup
      * gestartet.
      *
      * <p>
-     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne das viel
+     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne dass viel
      * Code geschrieben werden muss.
      * </p>
      *
      * @since 0.42.0
      */
-    public boolean instantMode;
+    private boolean instantMode;
 
     /**
      * Gibt zurück, ob der <b>Instant-Modus</b> aktiviert ist oder nicht.

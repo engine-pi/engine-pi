@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,23 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game.attribute_dialog;
+package demos.docs.main_classes.controller.instant_mode;
 
-import pi.Game;
+import pi.Circle;
 
-/**
- * Demonstriert die Methode
- * {@link pi.graphics.DialogLauncher#requestStringInput(String, String)}.
- */
-public class RequestStringInputDemo
+public class InstantModeEnabled
 {
     public static void main(String[] args)
     {
-        Game.start();
-        Game.addKeyStrokeListener((event) -> {
-            String input = Game.dialog.requestStringInput(
-                    "Das ist eine Nachricht", "Das ist der Titel");
-            System.out.println(input);
-        });
+        new Circle();
     }
 }

@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,19 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game;
+package demos.docs.main_classes.controller.instant_mode;
 
-import pi.Game;
+import pi.Circle;
+import pi.Controller;
+import pi.Scene;
 
-/**
- * Demonstriert die Methode {@link Game#isRunning()}.
- */
-public class IsRunningDemo
+public class InstantModeDisabledByStaticBlock extends Scene
 {
+    static
+    {
+        Controller.instantMode(false);
+    }
+
+    public InstantModeDisabledByStaticBlock()
+    {
+        add(new Circle());
+    }
+
     public static void main(String[] args)
     {
-        System.out.println(Game.isRunning());
-        Game.start();
-        System.out.println(Game.isRunning());
+        Controller.start(new InstantModeDisabled());
     }
 }

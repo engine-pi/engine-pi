@@ -1127,7 +1127,7 @@ public class Controller
      * </p>
      *
      * <p>
-     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne das viel
+     * Der <b>Instant-Modus</b> der Engine Pi startet ein Spiel, ohne dass viel
      * Code geschrieben werden muss.
      * </p>
      *

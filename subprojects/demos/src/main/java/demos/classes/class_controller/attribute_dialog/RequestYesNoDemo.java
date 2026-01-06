@@ -16,21 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.class_game.attribute_dialog;
+package demos.classes.class_controller.attribute_dialog;
 
 import pi.Game;
 
 /**
  * Demonstriert die Methode
- * {@link pi.graphics.DialogLauncher#requestOkCancel(String, String)}.
+ * {@link pi.graphics.DialogLauncher#requestYesNo(String, String)}.
  */
-public class RequestOkCancelDemo
+public class RequestYesNoDemo
 {
     public static void main(String[] args)
     {
         Game.start();
         Game.addKeyStrokeListener((event) -> {
-            Game.dialog.requestOkCancel("Das ist eine Nachricht",
+            Game.dialog.requestYesNo("Das ist eine Nachricht",
                     "Das ist der Titel");
         });
     }
