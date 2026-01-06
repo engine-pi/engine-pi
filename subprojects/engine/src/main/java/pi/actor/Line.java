@@ -12,6 +12,7 @@ import pi.Game;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.graphics.DirectedLineSegment;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 
@@ -37,14 +38,14 @@ public class Line extends Actor
     private Vector point2;
 
     /**
-     * Die Art der <b>Pfeilspitze</b> des Punkt <b>1</b>.
+     * Das Linenende bei Punkt 1.
      */
-    private ArrowType arrow1 = ArrowType.NONE;
+    private LineEnd end1;
 
     /**
-     * Die Art der <b>Pfeilspitze</b> des Punkt <b>2</b>.
+     * Das Linienende bei Punkt 2.
      */
-    private ArrowType arrow2 = ArrowType.NONE;
+    private LineEnd end2;
 
     /**
      * Die <b>Dicke</b> der <b>Linie</b> in Meter.
@@ -61,6 +62,8 @@ public class Line extends Actor
         super(() -> FixtureBuilder.line(point1, point2));
         this.point1 = point1;
         this.point2 = point2;
+        this.end1 = new LineEnd(point1, point2);
+        this.end2 = new LineEnd(point2, point1);
         color(colors.getSafe("orange"));
     }
 
@@ -88,7 +91,7 @@ public class Line extends Actor
     @Setter
     public Line arrow1(ArrowType arrow1)
     {
-        this.arrow1 = arrow1;
+        this.end1.arrow = arrow1;
         return this;
     }
 
@@ -102,7 +105,7 @@ public class Line extends Actor
     @Setter
     public Line arrow2(ArrowType arrow2)
     {
-        this.arrow2 = arrow2;
+        this.end2.arrow = arrow2;
         return this;
     }
 
@@ -116,33 +119,6 @@ public class Line extends Actor
     {
         this.strokeWidth = strokeWidth;
         return this;
-    }
-
-    /**
-     * Zeichnet eine Pfeilspitze ein.
-     *
-     * @param arrowType Die Art der Pfeilspitze.
-     * @param arrowTarget Der Punkt an dem die Pfeilspitze eingezeichnet werden
-     *     soll.
-     * @param from Der Punkt vom dem aus die Pfeilspitze wegzeigen soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     */
-    private void renderArrow(Graphics2D g, ArrowType arrowType,
-            Vector arrowTarget, Vector from, double pixelPerMeter)
-    {
-        if (arrowType == ArrowType.CHEVERON)
-        {
-            Graphics2DUtil.drawArrow(g, from.multiply(pixelPerMeter),
-                    arrowTarget.multiply(pixelPerMeter), 50, 45, false);
-        }
-        else if (arrowType == ArrowType.TRIANGLE)
-        {
-            // Bei dicken Linien verdeckt das Dreieck das Linienende nicht ganz.
-
-            // Wir schieben die Pfeilspitze etwas nach vorne.
-            Graphics2DUtil.drawArrow(g, point1.multiply(pixelPerMeter),
-                    point2.multiply(pixelPerMeter), 50, 45, true);
-        }
     }
 
     /**
@@ -163,12 +139,69 @@ public class Line extends Actor
 
         Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
 
-        renderArrow(g, arrow1, point1, point2, pixelPerMeter);
-        renderArrow(g, arrow2, point2, point1, pixelPerMeter);
+        end1.render(g, pixelPerMeter);
+        end2.render(g, pixelPerMeter);
 
         g.setTransform(oldTransform);
         g.setStroke(oldStroke);
         g.setColor(oldColor);
+    }
+
+    class LineEnd
+    {
+        /**
+         * Der Punkt am Linienende.
+         */
+        Vector end;
+
+        /**
+         * Der gegenüberliegende Punkt.
+         */
+        Vector opposite;
+
+        /**
+         * Die Art der Pfeilspitze am Linienende.
+         */
+        ArrowType arrow;
+
+        LineEnd(Vector end, Vector opposite)
+        {
+            this.end = end;
+            this.opposite = opposite;
+            arrow = ArrowType.NONE;
+        }
+
+        /**
+         * Zeichnet eine Pfeilspitze ein.
+         *
+         * @param arrowType Die Art der Pfeilspitze.
+         * @param arrowTarget Der Punkt an dem die Pfeilspitze eingezeichnet
+         *     werden soll.
+         * @param from Der Punkt vom dem aus die Pfeilspitze wegzeigen soll.
+         * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+         */
+        void render(Graphics2D g, double pixelPerMeter)
+        {
+            if (arrow == ArrowType.CHEVERON)
+            {
+                Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
+                        end.multiply(pixelPerMeter), 50, 45, false);
+            }
+            else if (arrow == ArrowType.TRIANGLE)
+            {
+                // Bei dicken Linien verdeckt das Dreieck das Linienende nicht
+                // ganz.
+
+                DirectedLineSegment segment = new DirectedLineSegment(end,
+                        opposite);
+                // Wir schieben die Pfeilspitze etwas nach vorne.
+
+                Vector shiftedEnd = segment.distancePoint(-strokeWidth);
+
+                Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
+                        end.multiply(pixelPerMeter), 50, 45, true);
+            }
+        }
     }
 
     /**
