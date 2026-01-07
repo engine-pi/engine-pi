@@ -64,6 +64,8 @@ public class LineRandomDemo extends Scene
             {
                 line.end2.arrow(ArrowType.TRIANGLE);
             }
+
+            line.dashed(Random.toggle());
             add(line);
         }
     }

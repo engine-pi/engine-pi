@@ -52,6 +52,11 @@ public class Line extends Actor
      */
     private double strokeWidth = 0.125;
 
+    /**
+     * Gibt an, ob eine gestrichelte Linie gezeichnet werden soll.
+     */
+    private boolean dashed = false;
+
     public Line(double x1, double y1, double x2, double y2)
     {
         this(new Vector(x1, y1), new Vector(x2, y2));
@@ -98,6 +103,18 @@ public class Line extends Actor
     }
 
     /**
+     * Setzt, ob eine gestrichelte Linie gezeichnet werden soll oder nicht.
+     *
+     * @param dashed Die <b>Dicke</b> der <b>Linie</b> in Meter.
+     */
+    @Setter
+    public Line dashed(boolean dashed)
+    {
+        this.dashed = dashed;
+        return this;
+    }
+
+    /**
      * @hidden
      */
     @Internal
@@ -108,9 +125,18 @@ public class Line extends Actor
         g.scale(1, -1);
         Stroke oldStroke = g.getStroke();
         Color oldColor = g.getColor();
-        Stroke stroke = new BasicStroke((float) (strokeWidth * pixelPerMeter),
-                BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
-        g.setStroke(stroke);
+
+        float[] dash = (float[]) (null);
+
+        float scaledStrokeWidth = (float) (strokeWidth * pixelPerMeter);
+
+        if (dashed)
+        {
+            dash = new float[] { scaledStrokeWidth * 6, scaledStrokeWidth * 3 };
+        }
+
+        g.setStroke(new BasicStroke(scaledStrokeWidth, BasicStroke.CAP_ROUND,
+                BasicStroke.JOIN_MITER, 10.0f, dash, 1f));
         g.setColor(color());
 
         Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
