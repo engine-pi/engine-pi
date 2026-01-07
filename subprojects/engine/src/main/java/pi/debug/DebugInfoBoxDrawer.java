@@ -23,7 +23,6 @@ import static pi.Controller.colors;
 import java.awt.Graphics2D;
 
 import pi.Controller;
-import pi.resources.Resources;
 import pi.annotations.Internal;
 import pi.graphics.boxes.Box;
 import pi.graphics.boxes.ChildsBox;
@@ -95,7 +94,7 @@ public final class DebugInfoBoxDrawer
         FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)
                         .vAlign(VAlign.MIDDLE));
-        gravityFrame.background.color(Resources.colorScheme.bluePurple());
+        gravityFrame.background.color(colors.getSafe("blue-purple"));
         gravityFrame.padding.allSides(5);
 
         verticalBox = new VerticalBox<>(fps, frameCounter, actorsCount,

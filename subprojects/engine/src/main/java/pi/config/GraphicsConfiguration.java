@@ -32,6 +32,7 @@ import pi.Direction;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.resources.Resources;
 import pi.resources.color.ColorScheme;
 import pi.resources.color.ColorSchemeSelection;
 
@@ -321,6 +322,8 @@ public class GraphicsConfiguration extends ConfigurationGroup
     public GraphicsConfiguration colorScheme(ColorSchemeSelection colorScheme)
     {
         set("colorScheme", colorScheme);
+        System.out.println(colorScheme);
+        Resources.colors.addScheme(colorScheme.getScheme());
         return this;
     }
 

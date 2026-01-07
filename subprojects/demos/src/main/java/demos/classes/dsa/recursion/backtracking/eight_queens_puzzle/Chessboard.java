@@ -1,6 +1,6 @@
 package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
 
-import static pi.resources.Resources.colorScheme;
+import static pi.Controller.colors;
 import static pi.resources.color.ColorUtil.changeSaturation;
 import static pi.util.TimeUtil.sleep;
 
@@ -61,7 +61,7 @@ public class Chessboard
     public Chessboard(Scene scene, int numberOfSquares)
     {
         doHighlighting = true;
-        Color brown = colorScheme.brown();
+        Color brown = colors.get("brown");
         Color brown2 = changeSaturation(brown, -0.2);
         squares = new Square[numberOfSquares][numberOfSquares];
         queens = new Image[numberOfSquares][numberOfSquares];

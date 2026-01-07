@@ -169,10 +169,10 @@ public class Graphics2DUtil
     }
 
     public static void drawLine(Graphics2D g, Vector from, Vector to,
-            double pixelPerMeter)
+            double scaleFactor)
     {
-        g.drawLine(from.x(pixelPerMeter), from.y(pixelPerMeter),
-                to.x(pixelPerMeter), to.y(pixelPerMeter));
+        g.drawLine(from.x(scaleFactor), from.y(scaleFactor), to.x(scaleFactor),
+                to.y(scaleFactor));
     }
 
     public static void fillPolygon(Graphics2D g, double pixelPerMeter,

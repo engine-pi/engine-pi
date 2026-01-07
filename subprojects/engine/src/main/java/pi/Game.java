@@ -36,6 +36,6 @@ public final class Game extends Controller
 
     public static void main(String[] args)
     {
-        Controller.start();
+        Game.start();
     }
 }

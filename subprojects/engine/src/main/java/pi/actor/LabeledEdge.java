@@ -134,6 +134,7 @@ public class LabeledEdge extends Actor
      */
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.debug();
         Controller.start((scene) -> {
             LabeledEdge e1, e2;

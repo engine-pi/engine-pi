@@ -1212,4 +1212,9 @@ public class Controller
     {
         config.graphics.windowDimension(windowWidth, windowHeight);
     }
+
+    public static void main(String[] args)
+    {
+        Controller.start();
+    }
 }
