@@ -8,12 +8,13 @@ import pi.Vector;
  * Eine <b>gerichtete Strecke</b>.
  *
  * <p>
- * Diese Strecke liegt auf einer Linie, die durch die beiden Punkte festgelegt
- * ist.
+ * Diese Strecke ist definiert durch zwei Punkte nämlich dem {@link #from
+ * Ursprung} und dem {@link #to Ziel}. Die Strecke liegt auf einer Linie, die
+ * durch die beiden Punkte festgelegt ist.
  * </p>
  *
- * @param from Der Ursprung (0)
- * @param to Das Ziel (1)
+ * @param from Der Ursprung (steht auch für die Zahl 0)
+ * @param to Das Ziel (steht auch für die Zahl 1)
  *
  * @author Josef Friedrich
  *
@@ -22,7 +23,7 @@ import pi.Vector;
 public record DirectedLineSegment(Vector from, Vector to)
 {
     /**
-     * Der Differenzvektor von a nach b.
+     * Der Differenzvektor von Urspung zum Ziel.
      */
     public Vector difference()
     {
@@ -30,10 +31,11 @@ public record DirectedLineSegment(Vector from, Vector to)
     }
 
     /**
-     * Ein beliebiger Punkt auf der Linie, der im Verhältnis zu den beiden
-     * Punkten der Strecke festgelegt ist.
+     * Gibt einen Punkt auf der Linie zurück, dessen Lage im <b>Verhältnis</b>
+     * zu den beiden Punkten der Strecke festgelegt ist.
      *
-     * @param factor 0 ist der Ursprung, 1 ist das Ziel
+     * @param factor Bei dem Faktor {@code 0} liegt der berechnete Punkt auf dem
+     *     Ursprung, bei {@code 1} auf dem Ziel.
      */
     public Vector proportionalPoint(double factor)
     {
@@ -41,13 +43,14 @@ public record DirectedLineSegment(Vector from, Vector to)
     }
 
     /**
-     * Ein Punkt, der in einer bestimmten Entfernung zum Ursprung liegt.
+     * Ein Punkt auf der Linie, der sich in einer bestimmten Entfernung vom
+     * Ursprung befindet.
      *
      * <p>
      * Positive Entfernungen liegen in der Richtung des {@link #to Ziels}.
      * </p>
      *
-     * @param distance Der Abstand vom Ursprung.
+     * @param distance Der <b>Abstand</b> vom Ursprung.
      */
     public Vector distancePoint(double distance)
     {

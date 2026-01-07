@@ -88,8 +88,6 @@ import static pi.Controller.colors;
  * <li>{@code black} (<b>Schwarz</b>)</li>
  * </ul>
  *
- * @see pi.resources.Resources#colorScheme
- *
  * @author Josef Friedrich
  */
 public class ColorScheme

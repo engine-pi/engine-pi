@@ -154,19 +154,20 @@ public final class Vector implements Cloneable
     }
 
     /**
-     * Gibt den Bewegungsanteil in {@code x}-Richtung multipliziert mit Pixel
-     * per Meter als Ganzzahl zurück.
+     * Gibt den Bewegungsanteil in {@code x}-Richtung als Ganzzahl zurück.
      *
-     * @return Der Bewegungsanteil in {@code x}-Richtung multipliziert mit Pixel
-     *     per Meter.
+     * @param scaleFactor Der Skalierungsfaktor, mit dem die
+     *     {@code x}-Koordinate multipliziert wird.
+     *
+     * @return Der gerundete skalierte Bewegungsanteil in {@code x}-Richtung.
      *
      * @since 0.36.0
      */
     @API
     @Getter
-    public int x(double pixelPerMeter)
+    public int x(double scaleFactor)
     {
-        return (int) Math.round(x * pixelPerMeter);
+        return (int) Math.round(x * scaleFactor);
     }
 
     /**
@@ -185,16 +186,18 @@ public final class Vector implements Cloneable
      * Gibt den Bewegungsanteil in {@code y}-Richtung multipliziert mit Pixel
      * per Meter zurück.
      *
-     * @return Der Bewegungsanteil in {@code y}-Richtung multipliziert mit Pixel
-     *     per Meter.
+     * @param scaleFactor Der Skalierungsfaktor, mit dem die
+     *     {@code y}-Koordinate multipliziert wird.
+     *
+     * @return Der gerundete skalierte Bewegungsanteil in {@code y}-Richtung.
      *
      * @since 0.36.0
      */
     @API
     @Getter
-    public int y(double pixelPerMeter)
+    public int y(double scaleFactor)
     {
-        return (int) Math.round(y * pixelPerMeter);
+        return (int) Math.round(y * scaleFactor);
     }
 
     /**

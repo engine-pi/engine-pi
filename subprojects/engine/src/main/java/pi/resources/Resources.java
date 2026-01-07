@@ -85,7 +85,6 @@ public final class Resources
      */
     public static final SoundContainer sounds = new SoundContainer();
 
-
     /**
      * Der private Konstruktor verhindert, dass Instanzen von dieser Klasse
      * gemacht werden. Die Klassen, hat ausschließlich statischen Attributen und
@@ -97,7 +96,6 @@ public final class Resources
     {
         throw new UnsupportedOperationException();
     }
-
 
     /**
      * Stellt den Zugriff auf den {@link ImageContainer Zwischenspeicher für

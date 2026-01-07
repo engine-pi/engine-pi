@@ -10,6 +10,7 @@ import java.awt.geom.AffineTransform;
 
 import pi.Controller;
 import pi.Vector;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.graphics.DirectedLineSegment;
@@ -27,16 +28,6 @@ import pi.util.Graphics2DUtil;
  */
 public class Line extends Actor
 {
-    /**
-     * Der <b>Punkt 1</b>.
-     */
-    private Vector point1;
-
-    /**
-     * Der <b>Punkt 2</b>.
-     */
-    private Vector point2;
-
     /**
      * Das Linenende bei Punkt 1.
      */
@@ -60,26 +51,34 @@ public class Line extends Actor
     public Line(Vector point1, Vector point2)
     {
         super(() -> FixtureBuilder.line(point1, point2));
-        this.point1 = point1;
-        this.point2 = point2;
         this.end1 = new LineEnd(point1, point2);
         this.end2 = new LineEnd(point2, point1);
         color(colors.getSafe("orange"));
     }
 
+    @Getter
+    public Vector point1()
+    {
+        return this.end1.end();
+    }
+
     @Setter
     public Line point1(Vector point1)
     {
-        this.point1 = point1;
         this.end1.end(point1);
         this.end2.opposite(point1);
         return this;
     }
 
+    @Getter
+    public Vector point2()
+    {
+        return this.end2.end();
+    }
+
     @Setter
     public Line point2(Vector point2)
     {
-        this.point2 = point2;
         this.end2.end(point2);
         this.end1.opposite(point2);
         return this;
@@ -113,7 +112,7 @@ public class Line extends Actor
         g.setStroke(stroke);
         g.setColor(color());
 
-        Graphics2DUtil.drawLine(g, point1, point2, pixelPerMeter);
+        Graphics2DUtil.drawLine(g, point1(), point2(), pixelPerMeter);
 
         end1.render(g, pixelPerMeter);
         end2.render(g, pixelPerMeter);
@@ -131,24 +130,38 @@ public class Line extends Actor
     public class LineEnd
     {
         /**
-         * Der Punkt am <b>Linienende</b>.
+         * Der Punkt am <b>Linienende</b> ohne Versatz.
          */
         private Vector end;
 
+        private Vector endWithOffset;
+
         /**
-         * Der diesem Linienende <b>gegenüberliegende</b> Punkt.
+         * Der diesem Linienende <b>gegenüberliegende</b> Punkt ohne Versatz.
          */
         private Vector opposite;
 
         /**
          * Die <b>Art der Pfeilspitze</b> am Linienende.
          */
-        ArrowType arrow = ArrowType.NONE;
+        private ArrowType arrow = ArrowType.NONE;
 
         /**
-         * Hilfsklasse, um Pfeilspitze etwas anderes positionieren zu können.
+         * Hilfsklasse, um z.B. die Pfeilspitze etwas anderes positionieren zu
+         * können oder einen Verzug des Linienendes zu berechnen.
+         *
+         * <p>
+         * Das {@link #end Linienende} ist dabei als
+         * {@link DirectedLineSegment#from() Ursprung} definiert.
+         * </p>
          */
-        DirectedLineSegment lineSegment;
+        private DirectedLineSegment lineSegment;
+
+        /**
+         * Ein <b>Versatz</b> des Linienendes in Richtung des gegenüberliegenden
+         * Punkts in Meter. Nützlich um Kanten zwischen Knoten einzuzeichnen.
+         */
+        private double offset;
 
         /**
          * @param end Der Punkt am <b>Linienende</b>.
@@ -158,12 +171,38 @@ public class Line extends Actor
         {
             this.end = end;
             this.opposite = opposite;
-            setDirectedLineSegment();
+            syncAttributes();
         }
 
-        private void setDirectedLineSegment()
+        private void syncAttributes()
         {
             lineSegment = new DirectedLineSegment(end, opposite);
+            if (offset != 0)
+            {
+                endWithOffset = lineSegment.distancePoint(offset);
+                lineSegment = new DirectedLineSegment(endWithOffset, opposite);
+            }
+            else
+            {
+                endWithOffset = end;
+            }
+        }
+
+        public LineEnd offset(double offset)
+        {
+            this.offset = offset;
+            syncAttributes();
+            return this;
+        }
+
+        /**
+         * Gibt den Punkt am <b>Linienende</b> mit Verzug zurück.
+         *
+         * @return Der Punkt am <b>Linienende</b>
+         */
+        public Vector end()
+        {
+            return endWithOffset;
         }
 
         /**
@@ -175,7 +214,7 @@ public class Line extends Actor
         public LineEnd end(Vector end)
         {
             this.end = end;
-            setDirectedLineSegment();
+            syncAttributes();
             return this;
         }
 
@@ -188,7 +227,7 @@ public class Line extends Actor
         public LineEnd opposite(Vector opposite)
         {
             this.opposite = opposite;
-            setDirectedLineSegment();
+            syncAttributes();
             return this;
         }
 
@@ -215,7 +254,7 @@ public class Line extends Actor
             if (arrow == ArrowType.CHEVERON)
             {
                 Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        end.multiply(pixelPerMeter), 50, 45, false);
+                        end().multiply(pixelPerMeter), 50, 45, false);
             }
             else if (arrow == ArrowType.TRIANGLE)
             {
