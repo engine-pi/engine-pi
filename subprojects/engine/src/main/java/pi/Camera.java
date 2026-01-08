@@ -122,9 +122,9 @@ public final class Camera
     }
 
     /**
-     * Die aktuelle Position der Kamera.
+     * Gibt die aktuelle Position des Kamerafokus zurück.
      *
-     * @return Die aktuelle Position der Kamera.
+     * @return Die aktuelle Position des Kamerafokus.
      */
     @API
     @Getter
@@ -300,7 +300,8 @@ public final class Camera
      * @see #offset(Vector)
      */
     @API
-    public Vector getOffset()
+    @Getter
+    public Vector offset()
     {
         return offset;
     }

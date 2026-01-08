@@ -133,3 +133,14 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 ```
 
 {{ repo_link('docs/macros.py') }}
+
+
+### `drawio(basename)`
+
+```jinja
+{% raw %}
+{{ drawio('main-classes') }}
+{% endraw %}
+```
+
+{{ drawio('main-classes') }}

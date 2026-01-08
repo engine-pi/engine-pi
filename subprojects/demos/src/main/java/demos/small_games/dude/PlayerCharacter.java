@@ -417,7 +417,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             smashForce = Vector.NULL;
             if (smashing)
             {
-                Vector originalOffset = layer().scene().camera().getOffset();
+                Vector originalOffset = layer().scene().camera().offset();
                 Interpolator<Double> interpolator = new SinusDouble(0,
                         -0.0004 * velocity().y());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
