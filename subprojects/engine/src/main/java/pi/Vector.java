@@ -206,14 +206,20 @@ public final class Vector implements Cloneable
      * <ul>
      * <li>in dieselbe Richtung wie der ursprüngliche Vektor zeigt.</li>
      * <li>eine Länge von (möglichst) exakt 1 hat.</li>
+     * <li>Der Null-Vektor bleibt der Null-Vektor.</li>
      * </ul>
      *
-     * @return Normierter Vektor zu diesem Vektor.
+     * @return Der Normierte Vektor zu diesem Vektor.
      */
     @API
     public Vector normalize()
     {
-        return divide(length());
+        double length = length();
+        if (length == 0)
+        {
+            return Vector.NULL;
+        }
+        return divide(length);
     }
 
     /**

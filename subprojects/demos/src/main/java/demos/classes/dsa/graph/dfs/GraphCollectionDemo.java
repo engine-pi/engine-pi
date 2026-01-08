@@ -12,6 +12,8 @@ import pi.dsa.graph.GraphCollection;
 import pi.dsa.graph.GraphVisualizer;
 import pi.event.KeyStrokeListener;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/dsa/graph/GraphCollection.java
+
 public class GraphCollectionDemo extends Scene implements KeyStrokeListener
 {
     private GraphVisualizer visualizer;

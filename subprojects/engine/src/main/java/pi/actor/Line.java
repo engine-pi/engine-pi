@@ -113,6 +113,13 @@ public class Line extends Actor
         return this;
     }
 
+    public Line offset(double offset)
+    {
+        end1.offset(offset);
+        end2.offset(offset);
+        return this;
+    }
+
     /**
      * @hidden
      */
@@ -271,16 +278,70 @@ public class Line extends Actor
         }
 
         /**
+         * Der <b>Winkel</b> der Pfeilspitze in Grad. Es handelt sich um den
+         * Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt. In
+         * der Mathematik wird dieser Winkel auch γ (gamma) genannt.
+         */
+        private double arrowAngle = 45;
+
+        /**
+         * Setzt den <b>Winkel</b> der Pfeilspitze in Grad. Es handelt sich um
+         * den Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt.
+         * In der Mathematik wird dieser Winkel auch γ (gamma) genannt.
+         *
+         * @param arrowAngle Der <b>Winkel</b> der Pfeilspitze in Grad.
+         */
+        public LineEnd arrowAngle(double arrowAngle)
+        {
+            this.arrowAngle = arrowAngle;
+            return this;
+        }
+
+        /**
+         * Die <b>Seitenlänge der Pfeilspitze</b> in Meter.
+         *
+         * <p>
+         * Die Pfeilspitze wird als gleichschenkliges Dreieck eingezeichnet. Die
+         * Seitenlänge bezieht sich auf die Länge der Schenkel des
+         * gleichseitigen Dreiecks.
+         * </p>
+         */
+        private double arrowSideLength = 0.1;
+
+        /**
+         * Setzt die <b>Seitenlänge der Pfeilspitze</b> in Meter.
+         *
+         * <p>
+         * Die Pfeilspitze wird als gleichschenkliges Dreieck eingezeichnet. Die
+         * Seitenlänge bezieht sich auf die Länge der Schenkel des
+         * gleichseitigen Dreiecks.
+         * </p>
+         *
+         * @param arrowSideLength Die <b>Seitenlänge der Pfeilspitze</b> in
+         *     Meter.
+         */
+        public LineEnd arrowSideLength(double arrowSideLength)
+        {
+            this.arrowSideLength = arrowSideLength;
+            return this;
+        }
+
+        /**
          * Zeichnet eine Pfeilspitze ein.
          *
          * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
          */
         void render(Graphics2D g, double pixelPerMeter)
         {
+
+            int sideLength = (int) Math
+                    .round(this.arrowSideLength * pixelPerMeter);
+
             if (arrow == ArrowType.CHEVERON)
             {
                 Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        end().multiply(pixelPerMeter), 50, 45, false);
+                        end().multiply(pixelPerMeter), sideLength, arrowAngle,
+                        false);
             }
             else if (arrow == ArrowType.TRIANGLE)
             {
@@ -289,7 +350,8 @@ public class Line extends Actor
                 // Die doppelte Liniedicke liefert ein gutes Ergebnis.
                 Vector shiftedEnd = lineSegment.distancePoint(-2 * strokeWidth);
                 Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        shiftedEnd.multiply(pixelPerMeter), 50, 45, true);
+                        shiftedEnd.multiply(pixelPerMeter), sideLength,
+                        arrowAngle, true);
             }
         }
     }

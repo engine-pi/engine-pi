@@ -12,7 +12,6 @@ import pi.Controller;
 import pi.Vector;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.physics.FixtureBuilder;
 import pi.resources.font.FontStringBounds;
 import pi.resources.font.FontUtil;
 
@@ -23,7 +22,7 @@ import pi.resources.font.FontUtil;
  *
  * @since 0.36.0
  */
-public class LabeledEdge extends Actor
+public class LabeledEdge extends Line
 {
     private Vector from;
 
@@ -65,9 +64,11 @@ public class LabeledEdge extends Actor
 
     public LabeledEdge(Vector from, Vector to, String label)
     {
-        super(() -> FixtureBuilder.line(from, to));
-        this.from = from;
-        this.to = to;
+        super(from, to);
+        end1.arrow(ArrowType.CHEVERON);
+        end2.arrow(ArrowType.CHEVERON);
+        offset(1);
+        strokeWidth(0.05);
         this.label = label;
         color("gray");
     }
@@ -81,53 +82,53 @@ public class LabeledEdge extends Actor
     /**
      * @hidden
      */
-    @Internal
-    @Override
-    public void render(Graphics2D g, double pixelPerMeter)
-    {
-        int fromX = from.x(pixelPerMeter);
-        int fromY = from.y(pixelPerMeter) * -1;
-        // In Pixel mit umgedrehter y-Richtung
-        Vector fromPx = new Vector(fromX, fromY);
 
-        int toX = to.x(pixelPerMeter);
-        int toY = to.y(pixelPerMeter) * -1;
-        // In Pixel mit umgedrehter y-Richtung
-        Vector toPx = new Vector(toX, toY);
+    // @Internal
+    // @Override
+    // public void render(Graphics2D g, double pixelPerMeter)
+    // {
+    // int fromX = from.x(pixelPerMeter);
+    // int fromY = from.y(pixelPerMeter) * -1;
+    // // In Pixel mit umgedrehter y-Richtung
+    // Vector fromPx = new Vector(fromX, fromY);
 
-        Stroke oldStroke = g.getStroke();
-        Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
-                BasicStroke.JOIN_MITER);
-        g.setStroke(stroke);
-        g.setColor(color());
+    // int toX = to.x(pixelPerMeter);
+    // int toY = to.y(pixelPerMeter) * -1;
+    // // In Pixel mit umgedrehter y-Richtung
+    // Vector toPx = new Vector(toX, toY);
 
-        if (label != null)
-        {
-            AffineTransform affineTransform = new AffineTransform();
+    // Stroke oldStroke = g.getStroke();
+    // Stroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND,
+    // BasicStroke.JOIN_MITER);
+    // g.setStroke(stroke);
+    // g.setColor(color());
 
-            FontStringBounds labelBounds = FontUtil.getStringBounds(label,
-                    FONT);
+    // if (label != null)
+    // {
+    // AffineTransform affineTransform = new AffineTransform();
+    // FontStringBounds labelBounds = FontUtil.getStringBounds(label,
+    // FONT);
 
-            // Der Differenzvektor
-            Vector edge = toPx.subtract(fromPx);
+    // // Der Differenzvektor
+    // Vector edge = toPx.subtract(fromPx);
 
-            double edgeLength = edge.length();
-            double labelMargin = (edgeLength - labelBounds.getWidth()) / 2;
+    // double edgeLength = edge.length();
+    // double labelMargin = (edgeLength - labelBounds.getWidth()) / 2;
 
-            Vector labelLineDistance = Vector.ofAngle(edge.angle() - 90)
-                    .multiply(LABEL_LINE_DISTANCE * pixelPerMeter);
+    // Vector labelLineDistance = Vector.ofAngle(edge.angle() - 90)
+    // .multiply(LABEL_LINE_DISTANCE * pixelPerMeter);
 
-            Vector labelAnchor = fromPx
-                    .add(edge.multiply(labelMargin / edgeLength))
-                    .add(labelLineDistance);
-            affineTransform.rotate(edge.radians(), 0, 0);
-            Font rotatedFont = FONT.deriveFont(affineTransform);
-            g.setFont(rotatedFont);
-            g.drawString(label, (int) labelAnchor.x(), (int) labelAnchor.y());
-        }
-        g.drawLine(fromX, fromY, toX, toY);
-        g.setStroke(oldStroke);
-    }
+    // Vector labelAnchor = fromPx
+    // .add(edge.multiply(labelMargin / edgeLength))
+    // .add(labelLineDistance);
+    // affineTransform.rotate(edge.radians(), 0, 0);
+    // Font rotatedFont = FONT.deriveFont(affineTransform);
+    // g.setFont(rotatedFont);
+    // g.drawString(label, (int) labelAnchor.x(), (int) labelAnchor.y());
+    // }
+    // g.drawLine(fromX, fromY, toX, toY);
+    // g.setStroke(oldStroke);
+    // }
 
     /**
      * @hidden

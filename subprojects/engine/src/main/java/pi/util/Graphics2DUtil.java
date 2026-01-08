@@ -196,7 +196,7 @@ public class Graphics2DUtil
      *
      * <p>
      * Die Pfeilspitze wird als <a href=
-     * "https://de.wikipedia.org/wiki/Gleichschenkliges_Dreieck">Gleichschenkliges
+     * "https://de.wikipedia.org/wiki/Gleichschenkliges_Dreieck">gleichschenkliges
      * Dreieck</a> unter Verwendung der {@link Vector}-Klasse eingezeichnet.
      * </p>
      *
@@ -212,11 +212,11 @@ public class Graphics2DUtil
      * @param to An diesen Punkt wird die Pfeilspitze platziert (in Pixel)
      * @param legsLength Die Länge der Schenkel (legs) des gleichseitigen
      *     Dreiecks in Pixel.
-     * @param vertexAngle Der Winkel der Pfeilspitze in Grad (γ = gamma wird der
-     *     Winkel genannt, der an der Spitze des gleichschenkligen Dreiecks
-     *     liegt)
+     * @param vertexAngle Der Winkel der Pfeilspitze in Grad. Es handelt sich um
+     *     den Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt.
+     *     In der Mathematik wird dieser Winkel auch γ (gamma) genannt.
      * @param asTriangle Gibt an, ob die Pfeilspitze nicht als Winkel, sondern
-     *     als Dreieck eingezeichnet werden soll.
+     *     als <b>Dreieck</b> eingezeichnet werden soll.
      */
     public static void drawArrow(Graphics2D g, Vector from, Vector to,
             int legsLength, double vertexAngle, boolean asTriangle)

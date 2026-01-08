@@ -24,6 +24,8 @@ import java.util.ArrayList;
 
 import pi.dsa.Source;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/graph/dfs/GraphCollectionDemo.java
+
 /**
  * Eine <b>Sammlung an Graphen</b>, die größtenteils aus Schulbüchern stammen.
  *
@@ -44,7 +46,6 @@ import pi.dsa.Source;
  */
 public class GraphCollection
 {
-
     /**
      * Entspricht der Graphdatenbank {@code Abiturfahrt.grdb} aus dem Schulbuch
      * des Cornelsen Verlags „Informatik 6 grundlegendes Niveau“ von 2024.
@@ -730,5 +731,4 @@ public class GraphCollection
         }
         return names.toArray(new String[0]);
     }
-
 }

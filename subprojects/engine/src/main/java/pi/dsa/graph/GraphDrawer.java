@@ -157,5 +157,4 @@ public class GraphDrawer implements MouseClickListener, KeyStrokeListener
     {
         Controller.start(GraphDrawer::new);
     }
-
 }
