@@ -4,6 +4,8 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Scenes
 
+{{ drawio('Scene') }}
+
 Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler
 während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung,
 Pausenmenüs, Inventare, Hauptmenüs, etc. Es wäre unnötig komplex, für den

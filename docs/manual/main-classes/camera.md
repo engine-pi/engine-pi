@@ -2,7 +2,7 @@
 
 [^engine-alpha]: https://engine-alpha.org/wiki/Tutorials/Kamera
 
-{{ drawio('camera') }}
+{{ drawio('Camera') }}
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->
 
