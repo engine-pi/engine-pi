@@ -20,6 +20,7 @@
  */
 package pi.actor;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.fonts;
 
 import java.awt.Font;
@@ -162,7 +163,7 @@ public class Text extends Geometry
         this.height = height;
         setStyle(style);
         font(fontName);
-        color("white");
+        color(colorScheme.get().white());
     }
 
     public Text(String content, double height, Font font, int style)
@@ -173,7 +174,7 @@ public class Text extends Geometry
         this.height = height;
         setStyle(style);
         font(font);
-        color("white");
+        color(colorScheme.get().white());
     }
 
     /**

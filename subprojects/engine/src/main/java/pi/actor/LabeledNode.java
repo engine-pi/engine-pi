@@ -20,6 +20,7 @@ package pi.actor;
 
 import static pi.Controller.colors;
 import static pi.Controller.fonts;
+import static pi.Controller.colorScheme;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -105,7 +106,7 @@ public class LabeledNode extends Geometry
     /**
      * Die <b>Hintergrundfarbe</b> des Knotens.
      */
-    public static Color COLOR = colors.getSafe("blue");
+    public static Color COLOR = colorScheme.get().blue();
 
     private FontStringBounds cachedFontStringBounds;
 

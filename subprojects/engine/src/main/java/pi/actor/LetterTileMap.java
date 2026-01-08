@@ -28,9 +28,11 @@ import pi.annotations.Setter;
  * Ein Kachelsatz (tile map), bei dem die einzelnen Kacheln (tile) durch
  * Buchstaben (letter) repräsentiert sind.
  *
+ * <p>
  * Die Größe der Kachel wird auf 1 x 1 Pixelmeter und die linke oberen Ecke an
- * die Position -0.5 x 0.5 im Engine-Alpha-Koordinatensystem gesetzt, sodass zum
+ * die Position -0.5 x 0.5 im Engine-Pi-Koordinatensystem gesetzt, sodass zum
  * Beispiel (0,0) die Mitte der ersten Kachel (links oben) adressiert.
+ * </p>
  *
  * @author Josef Friedrich
  *
@@ -43,14 +45,14 @@ abstract class LetterTileMap
     public TileRegistration container;
 
     /**
-     * x-Koordinate im Engine-Alpha Koordinatensystem. Bezieht sich auf die
-     * Mitte der linken oberen Kachel.
+     * x-Koordinate im Engine-Pi Koordinatensystem. Bezieht sich auf die Mitte
+     * der linken oberen Kachel.
      */
     int x;
 
     /**
-     * y-Koordinate im Engine-Alpha Koordinatensystem. Bezieht sich auf die
-     * Mitte der linken oberen Kachel.
+     * y-Koordinate im Engine-Pi Koordinatensystem. Bezieht sich auf die Mitte
+     * der linken oberen Kachel.
      */
     int y;
 

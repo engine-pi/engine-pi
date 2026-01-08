@@ -18,6 +18,7 @@
  */
 package pi.dsa.turtle;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.images;
 import static pi.Vector.v;
 
@@ -115,7 +116,7 @@ class TurtleDressController
         case ARROW:
             image = new Polygon(v(-size / 4, size / 4), v(size, 0),
                     v(-size / 4, -size / 4));
-            image.color("green");
+            image.color(colorScheme.get().green());
             break;
 
         case ANIMATED_IMAGE:

@@ -1,19 +1,31 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2025, 2026 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package pi.actor;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.fonts;
 
-import java.awt.BasicStroke;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
-import java.awt.geom.AffineTransform;
 
 import pi.Controller;
 import pi.Vector;
-import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.resources.font.FontStringBounds;
-import pi.resources.font.FontUtil;
 
 /**
  * Eine beschriftete Kante
@@ -70,7 +82,7 @@ public class LabeledEdge extends Line
         offset(1);
         strokeWidth(0.05);
         this.label = label;
-        color("gray");
+        color(colorScheme.get().gray());
     }
 
     @Setter

@@ -18,7 +18,7 @@
  */
 package pi.actor;
 
-import static pi.Controller.colors;
+import static pi.Controller.colorScheme;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -77,7 +77,7 @@ public class Grid extends Actor
         this.cols = cols;
         this.rows = rows;
         this.size = size;
-        color = colors.getSafe("green");
+        color = colorScheme.get().green();
     }
 
     /**

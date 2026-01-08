@@ -134,6 +134,7 @@ public class Counter extends Text
      */
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new Scene()
         {
             {

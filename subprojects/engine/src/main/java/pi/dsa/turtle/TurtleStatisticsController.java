@@ -18,6 +18,7 @@
  */
 package pi.dsa.turtle;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.colors;
 import static pi.Controller.fonts;
 
@@ -27,6 +28,7 @@ import pi.Turtle;
 import pi.graphics.boxes.FramedBox;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextTableBox;
+import pi.resources.color.ColorUtil;
 import pi.resources.font.FontStyle;
 import pi.util.TextUtil;
 
@@ -70,7 +72,7 @@ public class TurtleStatisticsController
                 TextUtil.roundNumber(traveledDistance), "aktuelle Ausrichtung:",
                 "000.00000");
         table.forEachCell(cell -> {
-            cell.box.color("black");
+            cell.box.color(colorScheme.get().black());
             cell.cell.hAlign(HAlign.RIGHT);
         });
         table.padding(3);
@@ -78,9 +80,11 @@ public class TurtleStatisticsController
                 fonts.defaultFont(FontStyle.BOLD).deriveFont((float) 12)));
         table.forEachCell(cell -> cell.box.fontSize(12));
         framedTable = new FramedBox(table);
-        framedTable.background.color(colors.get("grey", 50));
+        framedTable.background
+                .color(ColorUtil.changeAlpha(colorScheme.get().gray(), 50));
         framedTable.padding.allSides(5);
         framedTable.anchor(10, 10);
+
     }
 
     /**

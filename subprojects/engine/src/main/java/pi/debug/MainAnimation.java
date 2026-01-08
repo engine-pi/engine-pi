@@ -20,6 +20,7 @@
  */
 package pi.debug;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.colors;
 
 import java.awt.Color;
@@ -118,7 +119,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         Text enginePiText = new Text("E   n   g   i   n   e         P   i", 2,
                 "fonts/Cantarell-Bold.ttf", 0);
         enginePiText.makeStatic();
-        enginePiText.color("white");
+        enginePiText.color(colorScheme.get().white());
         enginePiText.center(0, -7);
         add(enginePiText);
         gravityOfEarth();
@@ -141,7 +142,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
         text.position(-10, 8.2);
-        text.color("gray");
+        text.color(colorScheme.get().gray());
         text.makeStatic();
         text.density(0.1);
         add(text);
@@ -156,7 +157,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     private void createGround()
     {
         Rectangle ground = new Rectangle(20, 0.2);
-        ground.color("white");
+        ground.color(colorScheme.get().white());
         ground.center(0, -6);
         ground.restitution(.95);
         ground.friction(.2);

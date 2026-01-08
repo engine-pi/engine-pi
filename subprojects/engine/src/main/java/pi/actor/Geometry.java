@@ -20,7 +20,7 @@
  */
 package pi.actor;
 
-import static pi.Controller.colors;
+import static pi.Controller.colorScheme;
 
 import java.awt.Color;
 import java.util.function.Supplier;
@@ -49,7 +49,7 @@ public abstract class Geometry extends Actor
     public Geometry(Supplier<FixtureData> fixtureSupplier)
     {
         super(fixtureSupplier);
-        color = colors.getSafe("green");
+        color = colorScheme.get().green();
     }
 
     /**
