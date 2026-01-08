@@ -4,15 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pi.Direction;
-import pi.resources.color.PredefinedColorScheme;
-import pi.resources.color.ColorUtil;
 
 public class GraphicsConfigurationTest
 {
@@ -55,10 +52,10 @@ public class GraphicsConfigurationTest
     @Test
     void testColorScheme()
     {
-        config.colorScheme(PredefinedColorScheme.JAVA);
-        assertEquals(Color.RED, config.colorScheme().red());
-        config.colorScheme(PredefinedColorScheme.ANDROID);
-        assertEquals(ColorUtil.decode("#F44336"), config.colorScheme().red());
+        config.colorScheme("Java");
+        assertEquals("Java", config.colorScheme());
+        config.colorScheme("Android");
+        assertEquals("Android", config.colorScheme());
     }
 
     @Test

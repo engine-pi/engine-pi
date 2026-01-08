@@ -32,9 +32,6 @@ import pi.Direction;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
-import pi.resources.Resources;
-import pi.resources.color.ColorScheme;
-import pi.resources.color.PredefinedColorScheme;
 
 /**
  * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.
@@ -66,7 +63,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
         windowHeight(576);
         windowPosition(Direction.NONE);
         framerate(60);
-        colorScheme(PredefinedColorScheme.GNOME);
+        colorScheme("Gnome");
         screenRecordingNFrames(2);
     }
 
@@ -286,9 +283,9 @@ public class GraphicsConfiguration extends ConfigurationGroup
     /* colorScheme */
 
     /**
-     * Das <b>Farbschema</b>.
+     * Das Names des <b>Farbschema</b>.
      */
-    private PredefinedColorScheme colorScheme;
+    private String colorScheme;
 
     /**
      * Gibt das <b>Farbschema</b> zurück.
@@ -299,15 +296,15 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Getter
     @API
-    public ColorScheme colorScheme()
+    public String colorScheme()
     {
-        return colorScheme.getScheme();
+        return colorScheme;
     }
 
     /**
-     * Setzt das <b>Farbschema</b>.
+     * Setzt den Namen des <b>Farbschema</b>.
      *
-     * @param colorScheme Das <b>Farbschema</b>.
+     * @param colorScheme Der Name des <b>Farbschema</b>.
      *
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
@@ -319,11 +316,9 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration colorScheme(PredefinedColorScheme colorScheme)
+    public GraphicsConfiguration colorScheme(String colorScheme)
     {
         set("colorScheme", colorScheme);
-        System.out.println(colorScheme);
-        Resources.colors.addScheme(colorScheme.getScheme());
         return this;
     }
 

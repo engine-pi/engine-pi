@@ -18,6 +18,8 @@
  */
 package pi.actor;
 
+import static pi.Controller.colorScheme;
+
 import pi.Vector;
 import pi.annotations.API;
 
@@ -100,6 +102,6 @@ public class Triangle extends Polygon
     public Triangle(Vector point1, Vector point2, Vector point3)
     {
         super(point1, point2, point3);
-        color("yellow");
+        color(colorScheme.get().yellow());
     }
 }

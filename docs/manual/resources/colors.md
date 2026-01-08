@@ -4,7 +4,7 @@ Die Klassen mit Farbbezug:
 
 - {{ class('pi.resources.color.ColorContainer') }}
 - {{ class('pi.resources.color.ColorScheme') }}
-- {{ class('pi.resources.color.ColorSchemeSelection') }}
+- {{ class('pi.resources.color.PredefinedColorScheme') }}
 - {{ class('pi.resources.color.NamedColor') }}
 - [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#colors)
 

@@ -59,6 +59,7 @@ import pi.loop.GameLoop;
 import pi.resources.ImageContainer;
 import pi.resources.Resources;
 import pi.resources.color.ColorContainer;
+import pi.resources.color.ColorSchemeContainer;
 import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
@@ -145,6 +146,32 @@ public class Controller
      * @since 0.42.0
      */
     public static final ColorContainer colors = Resources.colors;
+
+    /**
+     * Verwaltet eine Sammlung von <b>Farbschemata</b> und ermöglicht deren
+     * Verwaltung und Abruf anhand von Namen.
+     *
+     * <p>
+     * Dieses statische Attribut kann über einen statischen Import eingebunden
+     * werden:
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * import static pi.Controller.colorScheme;
+     * }
+     * </pre>
+     *
+     * @since 0.42.0
+     */
+    public static final ColorSchemeContainer colorScheme = ColorSchemeContainer
+            .getInstance();
+
+    static
+    {
+        // Wir befüllen den Farbenspeicher
+        colors.addScheme(colorScheme.get());
+    }
 
     /**
      * Ein Speicher für <b>Schriftarten</b> des Datentyps {@link java.awt.Font

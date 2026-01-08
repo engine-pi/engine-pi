@@ -32,6 +32,7 @@ import java.awt.Color;
  */
 public enum PredefinedColorScheme
 {
+
     /**
      * Ein Farbschema nach den Farben der
      * <a href= "https://developer.gnome.org/hig/reference/palette.html">GNOME

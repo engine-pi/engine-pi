@@ -84,7 +84,7 @@ Mehrzeilig:
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2025 Josef Friedrich and contributors.
+ * Copyright (c) 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
