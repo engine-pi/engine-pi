@@ -34,7 +34,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.resources.Resources;
 import pi.resources.color.ColorScheme;
-import pi.resources.color.ColorSchemeSelection;
+import pi.resources.color.PredefinedColorScheme;
 
 /**
  * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.
@@ -66,7 +66,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
         windowHeight(576);
         windowPosition(Direction.NONE);
         framerate(60);
-        colorScheme(ColorSchemeSelection.GNOME);
+        colorScheme(PredefinedColorScheme.GNOME);
         screenRecordingNFrames(2);
     }
 
@@ -288,7 +288,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
     /**
      * Das <b>Farbschema</b>.
      */
-    private ColorSchemeSelection colorScheme;
+    private PredefinedColorScheme colorScheme;
 
     /**
      * Gibt das <b>Farbschema</b> zurück.
@@ -319,7 +319,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration colorScheme(ColorSchemeSelection colorScheme)
+    public GraphicsConfiguration colorScheme(PredefinedColorScheme colorScheme)
     {
         set("colorScheme", colorScheme);
         System.out.println(colorScheme);

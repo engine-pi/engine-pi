@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pi.Direction;
-import pi.resources.color.ColorSchemeSelection;
+import pi.resources.color.PredefinedColorScheme;
 import pi.resources.color.ColorUtil;
 
 public class GraphicsConfigurationTest
@@ -55,9 +55,9 @@ public class GraphicsConfigurationTest
     @Test
     void testColorScheme()
     {
-        config.colorScheme(ColorSchemeSelection.JAVA);
+        config.colorScheme(PredefinedColorScheme.JAVA);
         assertEquals(Color.RED, config.colorScheme().red());
-        config.colorScheme(ColorSchemeSelection.ANDROID);
+        config.colorScheme(PredefinedColorScheme.ANDROID);
         assertEquals(ColorUtil.decode("#F44336"), config.colorScheme().red());
     }
 

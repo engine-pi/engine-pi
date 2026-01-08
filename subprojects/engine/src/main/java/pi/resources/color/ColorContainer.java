@@ -382,7 +382,7 @@ public class ColorContainer implements Container<Color>
         {
             // Ignore
         }
-        ColorScheme scheme = ColorSchemeSelection.GNOME.getScheme();
+        ColorScheme scheme = PredefinedColorScheme.GNOME.getScheme();
         return switch (normalizeName(name))
         {
         case "yellow", "gelb", "hellgelb" -> scheme.yellow();
@@ -613,6 +613,5 @@ public class ColorContainer implements Container<Color>
     {
         return (Color) resources.values()
                 .toArray()[(int) (Math.random() * resources.size())];
-
     }
 }

@@ -93,6 +93,13 @@ import static pi.Controller.colors;
 public class ColorScheme
 {
     /**
+     * Der <b>Name</b> des Farbschemas.
+     *
+     * @since 0.42.0
+     */
+    private final String name;
+
+    /**
      * Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      */
     private Color yellow;
@@ -187,8 +194,9 @@ public class ColorScheme
      * Erzeugt ein neues Farbschema aus den drei Primärfarben Gelb (255,255,0),
      * Rot (255,0,0) und Blue (0,0,255).
      */
-    public ColorScheme()
+    public ColorScheme(String name)
     {
+        this.name = name;
         this.yellow = new Color(255, 255, 0);
         this.red = new Color(255, 0, 0);
         this.blue = new Color(0, 0, 255);
@@ -203,12 +211,14 @@ public class ColorScheme
      * Itten</a> entnommen.
      * </p>
      *
+     * @param name Der <b>Name</b> des Farbschemas.
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param red Die Primärfarbe <b>Rot</b>.
      * @param blue Die Primärfarbe <b>Blau</b>.
      */
-    public ColorScheme(Color yellow, Color red, Color blue)
+    public ColorScheme(String name, Color yellow, Color red, Color blue)
     {
+        this.name = name;
         this.yellow = yellow;
         this.red = red;
         this.blue = blue;
@@ -224,6 +234,7 @@ public class ColorScheme
      * Itten</a> entnommen.
      * </p>
      *
+     * @param name Der <b>Name</b> des Farbschemas.
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
      *     und <b>Rot</b>).
@@ -234,10 +245,10 @@ public class ColorScheme
      * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
      *     <b>Blau</b>).
      */
-    public ColorScheme(Color yellow, Color orange, Color red, Color purple,
-            Color blue, Color green)
+    public ColorScheme(String name, Color yellow, Color orange, Color red,
+            Color purple, Color blue, Color green)
     {
-        this(yellow, red, blue);
+        this(name, yellow, red, blue);
         this.orange = orange;
         this.purple = purple;
         this.green = green;
@@ -253,6 +264,7 @@ public class ColorScheme
      * Itten</a> entnommen.
      * </p>
      *
+     * @param name Der <b>Name</b> des Farbschemas.
      * @param yellow Die Primärfarbe <b>Gelb</b>.
      * @param orange Die Sekundärfarbe <b>Orange</b> (Mischung aus <b>Gelb</b>
      *     und <b>Rot</b>).
@@ -264,10 +276,10 @@ public class ColorScheme
      *     <b>Blau</b>).
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      */
-    public ColorScheme(Color yellow, Color orange, Color red, Color purple,
-            Color blue, Color green, Color brown)
+    public ColorScheme(String name, Color yellow, Color orange, Color red,
+            Color purple, Color blue, Color green, Color brown)
     {
-        this(yellow, orange, red, purple, blue, green);
+        this(name, yellow, orange, red, purple, blue, green);
         this.brown = brown;
     }
 
@@ -284,6 +296,19 @@ public class ColorScheme
     private Color decode(String color)
     {
         return ColorUtil.decode(color);
+    }
+
+    /**
+     * Gibt dem <b>Name</b> des Farbschemas zurück.
+     *
+     * @return Der <b>Name</b> des Farbschemas.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public String name()
+    {
+        return name;
     }
 
     /**

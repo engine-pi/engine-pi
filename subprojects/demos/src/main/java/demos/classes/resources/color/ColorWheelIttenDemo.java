@@ -29,7 +29,7 @@ import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Polygon;
 import pi.event.KeyStrokeListener;
-import pi.resources.color.ColorSchemeSelection;
+import pi.resources.color.PredefinedColorScheme;
 
 /**
  * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg
@@ -50,7 +50,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private final Actor[] EXTRA_AREAS;
 
-    private final ColorSchemeSelection[] COLOR_SCHEMES = ColorSchemeSelection
+    private final PredefinedColorScheme[] COLOR_SCHEMES = PredefinedColorScheme
             .values();
 
     private int currentColorScheme = -1;
@@ -189,7 +189,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         return areas;
     }
 
-    private ColorSchemeSelection getNextColorScheme()
+    private PredefinedColorScheme getNextColorScheme()
     {
         currentColorScheme++;
         if (currentColorScheme >= COLOR_SCHEMES.length)
@@ -199,7 +199,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         return COLOR_SCHEMES[currentColorScheme];
     }
 
-    private void setColorScheme(ColorSchemeSelection selection)
+    private void setColorScheme(PredefinedColorScheme selection)
     {
         NAME.content(selection.name());
         var scheme = selection.getScheme();

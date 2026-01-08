@@ -27,14 +27,14 @@ import pi.Text;
 import pi.actor.Actor;
 import pi.actor.Square;
 import pi.event.KeyStrokeListener;
-import pi.resources.color.ColorSchemeSelection;
+import pi.resources.color.PredefinedColorScheme;
 import pi.resources.color.ColorUtil;
 
 public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 {
     private final Actor[][] COLOR_AREAS;
 
-    private final ColorSchemeSelection[] COLOR_SCHEMES = ColorSchemeSelection
+    private final PredefinedColorScheme[] COLOR_SCHEMES = PredefinedColorScheme
             .values();
 
     private int currentColorScheme = -1;
@@ -64,7 +64,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
         backgroundColor("#444444");
     }
 
-    private ColorSchemeSelection getNextColorScheme()
+    private PredefinedColorScheme getNextColorScheme()
     {
         currentColorScheme++;
         if (currentColorScheme >= COLOR_SCHEMES.length)
@@ -74,7 +74,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
         return COLOR_SCHEMES[currentColorScheme];
     }
 
-    private void setColorScheme(ColorSchemeSelection selection)
+    private void setColorScheme(PredefinedColorScheme selection)
     {
         NAME.content(selection.name());
         var scheme = selection.getScheme();

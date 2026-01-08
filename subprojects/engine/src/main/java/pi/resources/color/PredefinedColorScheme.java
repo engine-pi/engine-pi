@@ -22,19 +22,22 @@ import java.awt.Color;
 
 /**
  * Dieser Aufzählungstyp sammelt die Farbschemata, die die Engine Pi anbietet.
+ *
+ * <p>
  * Standardmäßig verwendet die Engine das
- * {@link ColorSchemeSelection#GNOME}-Farbschema.
+ * {@link PredefinedColorScheme#GNOME}-Farbschema.
+ * </p>
  *
  * @author Josef Friedrich
  */
-public enum ColorSchemeSelection
+public enum PredefinedColorScheme
 {
     /**
      * Ein Farbschema nach den Farben der
      * <a href= "https://developer.gnome.org/hig/reference/palette.html">GNOME
      * Human Interface Guidelines</a>.
      */
-    GNOME(new ColorScheme(
+    GNOME(new ColorScheme("Gnome",
             // yellow3
             new Color(246, 211, 45),
             // organe3
@@ -53,7 +56,7 @@ public enum ColorSchemeSelection
      * Ein Farbschema, das einige vordefinierten statischen Farbattribute der
      * JAVA-{@link Color}-Klasse verwendet.
      */
-    JAVA(new ColorScheme(Color.YELLOW, Color.RED, Color.BLUE)// Sekundärfarben
+    JAVA(new ColorScheme("Java", Color.YELLOW, Color.RED, Color.BLUE)// Sekundärfarben
     // Orange passt nicht in das Schema, viel zu hell.
     // .orange(Color.ORANGE)
             .green(Color.GREEN)// Tertiärfarben
@@ -66,7 +69,7 @@ public enum ColorSchemeSelection
      * "https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors">Android
      * Material-Designs </a>.
      */
-    ANDROID(new ColorScheme()// Yellow 500
+    ANDROID(new ColorScheme("Android")// Yellow 500
             .yellow("#FFEB3B")// Amber 500
             .yellowOrange("#FFC107")// Orange 500
             .orange("#FF9800")// Deep Orange 500
@@ -86,7 +89,7 @@ public enum ColorSchemeSelection
      * "https://developer.apple.com/design/human-interface-guidelines/color">IOS
      * Human Interface Guidelines</a> von Apple.
      */
-    IOS(new ColorScheme()// Yellow Default (Light)
+    IOS(new ColorScheme("iOS")// Yellow Default (Light)
             .yellow(255, 204, 0)// Orange Accessible (Dark)
             .yellowOrange(255, 179, 64)// Orange Default (Light)
             .orange(255, 149, 0)// Red Default (Light)
@@ -102,7 +105,7 @@ public enum ColorSchemeSelection
 
     private ColorScheme scheme;
 
-    private ColorSchemeSelection(ColorScheme scheme)
+    private PredefinedColorScheme(ColorScheme scheme)
     {
         this.scheme = scheme;
     }
