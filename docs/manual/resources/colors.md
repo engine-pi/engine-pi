@@ -16,13 +16,13 @@ Die Klassen mit Farbbezug:
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorSchemeContainer.java -->
 
-{{ video('docs/resources/colors/ColorScheme-Cycle.mp4') }}
+{{ video('docs/resources/colors/color-scheme/ColorScheme-Cycle.mp4') }}
 
-{{ image('docs/resources/colors/Gnome.png') }}
-{{ image('docs/resources/colors/Java.png') }}
-{{ image('docs/resources/colors/Android.png') }}
-{{ image('docs/resources/colors/iOS.png') }}
-{{ image('docs/resources/colors/Tailwind-CSS.png') }}
+{{ image('docs/resources/colors/color-scheme/Gnome.png') }}
+{{ image('docs/resources/colors/color-scheme/Java.png') }}
+{{ image('docs/resources/colors/color-scheme/Android.png') }}
+{{ image('docs/resources/colors/color-scheme/iOS.png') }}
+{{ image('docs/resources/colors/color-scheme/Tailwind-CSS.png') }}
 
 ## Farben in der Klasse {{ class('pi.actor.Actor', 'Actor') }}
 
@@ -30,7 +30,7 @@ In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
 Reihe die Komplementärfarben der entsprechenden Bilder.
 
-{{ image('docs/color-complementary/Images_derived_complementary-color.png') }}
+{{ image('docs/resources/colors/actor/Images_derived_complementary-color.png') }}
 
 Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
 
@@ -72,8 +72,8 @@ public class ImageAverageColorDemo extends Scene
 
 `ALT + d` aktiviert den Debug-Modus: Die Bilder werden von Umrissen in den Komplementärfarben umrahmt.
 
-{{ image('docs/color-complementary/Images_shapes.png') }}
+{{ image('docs/resources/colors/actor/Images_shapes.png') }}
 
 `Alt + a` blendet die Figurenfüllungen aus. Es sind nur noch die Umrisse zu sehen.
 
-{{ image('docs/color-complementary/Shapes-only.png') }}
+{{ image('docs/resources/colors/actor/Shapes-only.png') }}

@@ -38,6 +38,12 @@ public enum PredefinedColorScheme
      * Ein Farbschema nach den Farben der
      * <a href= "https://developer.gnome.org/hig/reference/palette.html">GNOME
      * Human Interface Guidelines</a>.
+     *
+     * <p>
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/resources/colors/color-scheme/Gnome.png"
+     * alt="Gnome">
+     * </p>
      */
     GNOME(new ColorScheme("Gnome",
 
@@ -65,6 +71,12 @@ public enum PredefinedColorScheme
     /**
      * Ein Farbschema, das einige vordefinierten statischen Farbattribute der
      * JAVA-{@link Color}-Klasse verwendet.
+     *
+     * <p>
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/resources/colors/color-scheme/Java.png"
+     * alt="Java">
+     * </p>
      */
     JAVA(new ColorScheme("Java", Color.YELLOW, Color.RED, Color.BLUE)
 
@@ -89,6 +101,12 @@ public enum PredefinedColorScheme
      * Ein Farbschema nach den Farben des <a href=
      * "https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors">Android
      * Material-Designs </a>.
+     *
+     * <p>
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/resources/colors/color-scheme/Android.png"
+     * alt="Android">
+     * </p>
      */
     ANDROID(new ColorScheme("Android")
 
@@ -138,6 +156,12 @@ public enum PredefinedColorScheme
      * Ein Farbschema nach den Farben der <a href=
      * "https://developer.apple.com/design/human-interface-guidelines/color">IOS
      * Human Interface Guidelines</a> von Apple.
+     *
+     * <p>
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/resources/colors/color-scheme/iOS.png"
+     * alt="iOS">
+     * </p>
      */
     IOS(new ColorScheme("iOS")
 
@@ -179,8 +203,14 @@ public enum PredefinedColorScheme
 
     /**
      * Ein Farbschema nach der
-     * <a href= "https://tailwindcss.com/docs/colors">Farbpallette</a> von
+     * <a href= "https://tailwindcss.com/docs/colors">Farbpalette</a> von
      * <a href="https://en.wikipedia.org/wiki/Tailwind_CSS">Tailwind CSS</a>.
+     *
+     * <p>
+     * <img src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/resources/colors/color-scheme/Tailwind-CSS.png"
+     * alt="Tailwind-CSS">
+     * </p>
      */
     TAILWIND(new ColorScheme("Tailwind CSS")
 
