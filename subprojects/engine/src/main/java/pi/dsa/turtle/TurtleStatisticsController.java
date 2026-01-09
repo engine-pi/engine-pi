@@ -19,7 +19,6 @@
 package pi.dsa.turtle;
 
 import static pi.Controller.colorScheme;
-import static pi.Controller.colors;
 import static pi.Controller.fonts;
 
 import java.awt.Graphics2D;

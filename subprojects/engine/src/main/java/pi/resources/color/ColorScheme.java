@@ -1481,8 +1481,8 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die zwölf Farben des Farbkreises von Itten in der Reihenfolge von
-     * Gelb ausgehend zurück.
+     * Gibt die zwölf Farben des <b>Farbkreises</b> von Itten in der Reihenfolge
+     * von Gelb ausgehend zurück.
      *
      * <ol>
      * <li>{@code yellow} (<b>Gelb</b>)</li>
@@ -1499,8 +1499,8 @@ public class ColorScheme
      * <li>{@code yellow green} (<b>Gelb-Grün</b>)</li>
      * </ol>
      *
-     * @return Die zwölf Farben des Farbkreises von Itten in der richtigen
-     *     Reihenfolge.
+     * @return Die zwölf Farben des <b>Farbkreises</b> von Itten in der
+     *     richtigen Reihenfolge.
      */
     @Getter
     public Color[] wheelColors()
@@ -1511,10 +1511,10 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die drei Primärfarben des Farbkreises von Itten in der Reihenfolge
-     * <b>Gelb</b>, <b>Rot</b> und <b>Blau</b> aus.
+     * Gibt die drei <b>Primärfarben</b> des Farbkreises von Itten in der
+     * Reihenfolge <b>Gelb</b>, <b>Rot</b> und <b>Blau</b> aus.
      *
-     * @return Die drei Primärfarben des Farbkreises.
+     * @return Die drei <b>Primärfarben</b> des Farbkreises.
      */
     @Getter
     public Color[] primaryColors()
@@ -1523,8 +1523,8 @@ public class ColorScheme
     }
 
     /**
-     * Gibt die drei Sekundärfarben des Farbkreises von Itten in der Reihenfolge
-     * <b>Orange</b>, <b>Violett</b> und <b>Grün</b> aus.
+     * Gibt die drei <b>Sekundärfarben</b> des Farbkreises von Itten in der
+     * Reihenfolge <b>Orange</b>, <b>Violett</b> und <b>Grün</b> aus.
      *
      * @return Die drei Sekundärfarben des Farbkreises.
      */
