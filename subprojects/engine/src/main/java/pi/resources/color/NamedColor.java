@@ -24,6 +24,8 @@ import java.util.List;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+
 /**
  * Speichert eine <b>Farbe</b> zusammen mit einem <b>Hauptnamen</b> und optional
  * mehreren <b>Aliassen</b>.

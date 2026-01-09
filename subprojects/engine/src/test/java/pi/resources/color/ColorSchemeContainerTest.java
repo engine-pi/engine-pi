@@ -18,10 +18,12 @@
  */
 package pi.resources.color;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class ColorSchemeContainerTest
@@ -74,5 +76,70 @@ public class ColorSchemeContainerTest
         ColorScheme newScheme = new ColorScheme("Java");
         container.add(newScheme);
         assertEquals(newScheme, container.get("Java"));
+    }
+
+    @Nested
+    class TestNames
+    {
+        @Test
+        void testNamesReturnsAllSchemeNames()
+        {
+            String[] expectedNames = { "Gnome", "Java", "Android", "iOS",
+                    "Tailwind CSS", "CustomScheme" };
+            ColorScheme customScheme = new ColorScheme("CustomScheme");
+            container.add(customScheme);
+            String[] actualNames = container.names();
+            assertArrayEquals(expectedNames, actualNames);
+        }
+
+        @Test
+        void testNamesReturnsEmptyArrayAfterClear()
+        {
+            container.clear();
+            String[] actualNames = container.names();
+            assertEquals(0, actualNames.length);
+        }
+    }
+
+    @Nested
+    class TestNext
+    {
+        @Test
+        void testNextReturnsFirstScheme()
+        {
+            ColorScheme firstScheme = container.next();
+            assertEquals("Gnome", firstScheme.name());
+        }
+
+        @Test
+        void testNextAdvancesToNextScheme()
+        {
+            container.next();
+            ColorScheme secondScheme = container.next();
+            assertEquals("Java", secondScheme.name());
+        }
+
+        @Test
+        void testNextCyclesBackToFirstScheme()
+        {
+            String[] schemeNames = container.names();
+            for (int i = 0; i < schemeNames.length; i++)
+            {
+                container.next();
+            }
+            ColorScheme cycledScheme = container.next();
+            assertEquals("Gnome", cycledScheme.name());
+        }
+
+        @Test
+        void testNextSequentialOrder()
+        {
+            String[] expectedNames = container.names();
+            for (String expectedName : expectedNames)
+            {
+                ColorScheme scheme = container.next();
+                assertEquals(expectedName, scheme.name());
+            }
+        }
     }
 }

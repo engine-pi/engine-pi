@@ -20,6 +20,8 @@ package pi.resources.color;
 
 import java.awt.Color;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+
 /**
  * Dieser Aufzählungstyp sammelt die Farbschemata, die die Engine Pi anbietet.
  *
@@ -38,20 +40,28 @@ public enum PredefinedColorScheme
      * Human Interface Guidelines</a>.
      */
     GNOME(new ColorScheme("Gnome",
+
             // yellow3
             new Color(246, 211, 45),
+
             // organe3
             new Color(255, 120, 0),
+
             // red3
             new Color(224, 27, 36),
+
             // purple3
             new Color(145, 65, 172),
+
             // blue3
             new Color(53, 132, 228),
+
             // green3
             new Color(51, 209, 122),
+
             // brown3
             new Color(152, 106, 68))),
+
     /**
      * Ein Farbschema, das einige vordefinierten statischen Farbattribute der
      * JAVA-{@link Color}-Klasse verwendet.
@@ -74,6 +84,7 @@ public enum PredefinedColorScheme
 
             // Andere
             .gray(Color.GRAY)),
+
     /**
      * Ein Farbschema nach den Farben des <a href=
      * "https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors">Android
@@ -122,6 +133,7 @@ public enum PredefinedColorScheme
 
             // Gray 500
             .gray("#9E9E9E")),
+
     /**
      * Ein Farbschema nach den Farben der <a href=
      * "https://developer.apple.com/design/human-interface-guidelines/color">IOS

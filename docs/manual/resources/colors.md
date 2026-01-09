@@ -8,6 +8,24 @@ Die Klassen mit Farbbezug:
 - {{ class('pi.resources.color.NamedColor') }}
 - [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#colors)
 
+## Farbschema
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorScheme.java -->
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/PredefinedColorScheme.java -->
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorSchemeContainer.java -->
+
+{{ video('docs/resources/colors/ColorScheme-Cycle.mp4') }}
+
+{{ image('docs/resources/colors/Gnome.png') }}
+{{ image('docs/resources/colors/Java.png') }}
+{{ image('docs/resources/colors/Android.png') }}
+{{ image('docs/resources/colors/iOS.png') }}
+{{ image('docs/resources/colors/Tailwind-CSS.png') }}
+
+## Farben in der Klasse {{ class('pi.actor.Actor', 'Actor') }}
+
 In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten
 Reihe die Komplementärfarben der entsprechenden Bilder.

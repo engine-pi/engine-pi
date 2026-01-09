@@ -28,6 +28,8 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.resources.Container;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+
 /**
  * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link Color}.
  *

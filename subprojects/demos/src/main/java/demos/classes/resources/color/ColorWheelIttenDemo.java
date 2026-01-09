@@ -18,6 +18,8 @@
  */
 package demos.classes.resources.color;
 
+import static pi.Controller.colorScheme;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
@@ -29,7 +31,7 @@ import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Polygon;
 import pi.event.KeyStrokeListener;
-import pi.resources.color.PredefinedColorScheme;
+import pi.resources.color.ColorScheme;
 
 /**
  * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg
@@ -42,19 +44,32 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private final double INNER_RADIUS = 5.0;
 
+    /**
+     * Die farbigen Segmente in der Form eines Trapezes mit einer der zwölf
+     * Farben des Farbkreises von Itten. Zwölf Segmente ergeben einen Kreis.
+     *
+     * @see Polygon
+     */
     private final Actor[] WHEEL_AREAS;
 
+    /**
+     * @see Polygon
+     */
     private final Actor[] PRIMARY_AREAS;
 
+    /**
+     * @see Polygon
+     */
     private final Actor[] SECONDARY_AREAS;
 
+    /**
+     * @see Rectangle
+     */
     private final Actor[] EXTRA_AREAS;
 
-    private final PredefinedColorScheme[] COLOR_SCHEMES = PredefinedColorScheme
-            .values();
-
-    private int currentColorScheme = -1;
-
+    /**
+     * Der Name des Farbschemas
+     */
     private final Text NAME;
 
     public ColorWheelIttenDemo()
@@ -111,7 +126,9 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * Zeichnet alle zwölf Farben des Farbkreises.
+     * Zeichnet alle zwölf Farben des <b>Farbkreises</b>.
+     *
+     * @see Polygon
      */
     private Actor[] drawWheelColors()
     {
@@ -129,7 +146,9 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * Zeichnet die drei Sekundärfarben.
+     * Zeichnet die drei <b>Sekundärfarben</b>.
+     *
+     * @see Polygon
      */
     private Actor[] drawSecondaryColors()
     {
@@ -152,7 +171,9 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     }
 
     /**
-     * Zeichnet die drei Pimärfarben.
+     * Zeichnet die drei <b>Pimärfarben</b>.
+     *
+     * @see Polygon
      */
     private Actor[] drawPrimaryColors()
     {
@@ -177,32 +198,25 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
     /**
      * Zeichnet die vier <b>zusätzlichen</b> Farben: Braun, Weiß, Grau und
      * Schwarz.
+     *
+     * @see Rectangle
      */
     private Actor[] drawExtraColors()
     {
         Actor[] areas = new Actor[4];
         for (int i = 0; i < 4; i++)
         {
-            areas[i] = new Rectangle(1, 1);
-            areas[i].position(-8 + i, -8);
+            Rectangle rectange = new Rectangle(1, 1);
+            rectange.position(-8 + i, -8);
+            areas[i] = rectange;
+            add(rectange);
         }
         return areas;
     }
 
-    private PredefinedColorScheme getNextColorScheme()
+    private void setColorScheme(ColorScheme scheme)
     {
-        currentColorScheme++;
-        if (currentColorScheme >= COLOR_SCHEMES.length)
-        {
-            currentColorScheme = 0;
-        }
-        return COLOR_SCHEMES[currentColorScheme];
-    }
-
-    private void setColorScheme(PredefinedColorScheme selection)
-    {
-        NAME.content(selection.name());
-        var scheme = selection.getScheme();
+        NAME.content(scheme.name());
         int i = 0;
         for (Color color : scheme.wheelColors())
         {
@@ -231,7 +245,7 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     private void setNextColorScheme()
     {
-        setColorScheme(getNextColorScheme());
+        setColorScheme(colorScheme.next());
     }
 
     @Override
@@ -240,9 +254,18 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
         setNextColorScheme();
     }
 
+    public void cycle()
+    {
+        repeat(1, () -> {
+            setNextColorScheme();
+        });
+    }
+
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new ColorWheelIttenDemo(), 520, 520);
+        ColorWheelIttenDemo demo = new ColorWheelIttenDemo();
+        Controller.start(demo, 520, 520);
+        // demo.cycle();
     }
 }

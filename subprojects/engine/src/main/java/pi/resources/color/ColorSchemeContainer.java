@@ -20,8 +20,10 @@ package pi.resources.color;
 
 import static pi.Controller.config;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
+import pi.annotations.Getter;
 
 /**
  * Ein Speicher für <b>Farbschemata</b>.
@@ -52,7 +54,11 @@ public class ColorSchemeContainer
 {
     private static ColorSchemeContainer container;
 
-    private final Map<String, ColorScheme> schemes = new HashMap<>();
+    /**
+     * Wir verwenden {@link LinkedHashMap}, damit die Einfügereihenfolge
+     * erhalten bleibt und die Farbschemata sortiert ausgegeben werden können.
+     */
+    private final Map<String, ColorScheme> schemes = new LinkedHashMap<>();
 
     /**
      * Initialisiert einen neuen ColorSchemeContainer mit allen vordefinierten
@@ -70,7 +76,8 @@ public class ColorSchemeContainer
     }
 
     /**
-     * Gibt die Singleton/Einzelner-Instanz {@link ColorSchemeContainer} zurück.
+     * <b>Gibt</b> die <b>Singleton/Einzelner-Instanz</b>
+     * {@link ColorSchemeContainer} zurück.
      *
      * <p>
      * Wenn noch keine Instanz existiert, wird eine neue erstellt. Bei weiteren
@@ -101,7 +108,7 @@ public class ColorSchemeContainer
     }
 
     /**
-     * Setzt das angegebene Farbschema als Standard und fügt es zum
+     * <b>Setzt</b> das angegebene Farbschema als Standard und fügt es zum
      * Farbschemaspeicher hinzu.
      *
      * @param scheme Das hinzuzufügende Farbschema.
@@ -136,7 +143,7 @@ public class ColorSchemeContainer
     }
 
     /**
-     * Gibt das aktuelle Farbschema aus der Konfiguration zurück.
+     * <b>Gibt</b> das aktuelle Farbschema aus der Konfiguration <b>zurück</b>.
      *
      * @return das Farbschema, das in der Grafikkonfiguration festgelegt ist
      *
@@ -148,7 +155,7 @@ public class ColorSchemeContainer
     }
 
     /**
-     * Ruft ein Farbschema anhand seines Namens sicher ab.
+     * <b>Ruft</b> ein Farbschema anhand seines Namens <b>sicher</b> <b>ab</b>.
      *
      * <p>
      * Bei der Suche wird die Groß-/Kleinschreibung ignoriert. Wenn das
@@ -175,7 +182,7 @@ public class ColorSchemeContainer
     }
 
     /**
-     * <b>Löscht</b> alle Farbschemata aus diesem Container.
+     * <b>Löscht</b> alle Farbschemata aus diesem Farbschemataspeicher.
      *
      * <p>
      * Nach dem Aufruf dieser Methode sind keine Farbschemata mehr vorhanden.
@@ -186,14 +193,17 @@ public class ColorSchemeContainer
     public void clear()
     {
         schemes.clear();
+        currentScheme = 0;
+
     }
 
     /**
-     * Setzt den Container auf seinen <b>Standardzustand</b> zurück.
+     * <b>Setzt</b> den Farbschemataspeicher auf seinen <b>Standardzustand</b>
+     * <b>zurück</b>.
      *
      * <p>
      * Löscht alle vorhandenen Farbschemen und lädt alle vordefinierten
-     * Farbschemen erneut in den Container.
+     * Farbschemen erneut in den Farbschemataspeicher.
      * </p>
      *
      * @since 0.42.0
@@ -208,4 +218,75 @@ public class ColorSchemeContainer
         }
     }
 
+    /**
+     * Gibt die Anzahl der Farbschemas in diesem Container zurück.
+     *
+     * @return die Anzahl der gespeicherten Farbschemas
+     *
+     * @since 0.42.0
+     */
+    public int size()
+    {
+        return schemes.size();
+    }
+
+    /**
+     * Gibt ein Array mit den Namen aller Farbschemen in diesem Container
+     * zurück.
+     *
+     * <p>
+     * Die Reihenfolge der Namen entspricht der Reihenfolge der Einträge in der
+     * zugrunde liegenden Map-Struktur.
+     * </p>
+     *
+     * @return Ein String-Array mit den Namen aller gespeicherten Farbschemen.
+     *     Das Array hat die gleiche Länge wie die Anzahl der Schemen.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public String[] names()
+    {
+        String[] names = new String[size()];
+        int counter = 0;
+        for (var entry : schemes.entrySet())
+        {
+            names[counter] = entry.getValue().name();
+            counter++;
+        }
+        return names;
+    }
+
+    /**
+     * Dieser Zähler wird für die Methode {@link #next()} benötigt.
+     */
+    private int currentScheme = 0;
+
+    /**
+     * Gibt das aktuelle Farbschema zurück und wechselt zum <b>nächsten</b>
+     * Schema.
+     *
+     * <p>
+     * Die Farbschemen werden in der Einfügereihenfolge ausgegeben. Wenn das
+     * letzte Schema in der Sammlung erreicht ist, wird wieder zum ersten Schema
+     * gewechselt (zirkuläres Verhalten).
+     * </p>
+     *
+     * @return das aktuelle {@link ColorScheme} vor dem Wechsel zum nächsten
+     *
+     * @since 0.42.0
+     */
+    public ColorScheme next()
+    {
+        ColorScheme scheme = get(names()[currentScheme]);
+        if (currentScheme == size() - 1)
+        {
+            currentScheme = 0;
+        }
+        else
+        {
+            currentScheme++;
+        }
+        return scheme;
+    }
 }
