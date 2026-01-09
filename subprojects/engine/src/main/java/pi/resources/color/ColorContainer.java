@@ -40,46 +40,49 @@ import pi.resources.Container;
  * </p>
  *
  * <p>
- * Bei den Farbnamen wird sowohl die Klein- und Großschreibung als auch
- * Leerzeichen ignoriert. In den Farbnamen können sowohl deutschen Umlaute
- * verwendet als auch umschrieben (z. B. ae, oe, ue, ss) werden. Der Binde- und
- * der Unterstrich werden ebenfalls nicht berücksichtigt.
+ * Bei den Farbnamen werden sowohl die Groß- und Kleinschreibung als auch
+ * Leerzeichen ignoriert. In den Farbnamen können deutsche Umlaute verwendet
+ * oder umschrieben werden (z. B. ae, oe, ue, ss). Der Binde- und der
+ * Unterstrich werden ebenfalls nicht berücksichtigt.
  * </p>
  *
  * <p>
- * Die zwölf Farben nach dem Farbkreis von Itten zusammen mit ihren Aliassen
- * bzw. Synonymen:
+ * Die zwölf Farben des Farbkreises von Itten zusammen mit ihren Aliassen bzw.
+ * Synonymen:
  * </p>
  *
  * <ol>
- * <li>{@code yellow}: „Gelb“, „Hellgelb“</li>
- * <li>{@code yellow orange}: „orange yellow“, „gold“, „Gelb-Orange“,
- * „Orange-Gelb“, „Golden“, „Dunkelgelb“</li>
- * <li>{@code orange}: „Orange“</li>
- * <li>{@code red orange}: „orange red“, „brick red“, „brick“, „Rot-Orange“,
- * „Orange-Rot“, „Ziegelrot“, „Hellrot“</li>
- * <li>{@code red}: „Rot“</li>
- * <li>{@code red purple}: „purple red“, „magenta“, „pink“, „Rot-Violett“,
- * „Violett-Rot“, „Rosa“</li>
- * <li>{@code purple}: „Violet“, „Violett“, „Lila“</li>
- * <li>{@code blue purple}: „purple blue“, „indigo“, „Violett Blau“, „Blau
- * Violett“</li>
- * <li>{@code blue}: „Blau“</li>
- * <li>{@code blue green}: „green blue“, „cyan“, „Blau-Grün“, „Grün-Blau“,
- * „Türkis“</li>
- * <li>{@code green}: „Grün“</li>
- * <li>{@code yellow green}: „green yellow“, „lime“, „lime green“, „Gelb-Grün“,
- * „Grün-Gelb“, „Limetten Grün“, „Limette“, „Hellgrün“</li>
+ * <li>{@code yellow}: {@code Gelb}, {@code Hellgelb}</li>
+ * <li>{@code yellow orange}: {@code orange yellow}, {@code gold},
+ * {@code Gelb-Orange}, {@code Orange-Gelb}, {@code Golden},
+ * {@code Dunkelgelb}</li>
+ * <li>{@code orange}: {@code Orange}</li>
+ * <li>{@code red orange}: {@code orange red}, {@code brick red}, {@code brick},
+ * {@code Rot-Orange}, {@code Orange-Rot}, {@code Ziegelrot},
+ * {@code Hellrot}</li>
+ * <li>{@code red}: {@code Rot}</li>
+ * <li>{@code red purple}: {@code purple red}, {@code magenta}, {@code pink},
+ * {@code Rot-Violett}, {@code Violett-Rot}, {@code Rosa}</li>
+ * <li>{@code purple}: {@code Violet}, {@code Violett}, {@code Lila}</li>
+ * <li>{@code blue purple}: {@code purple blue}, {@code indigo},
+ * {@code Violett Blau}, „Blau Violett“</li>
+ * <li>{@code blue}: {@code Blau}</li>
+ * <li>{@code blue green}: {@code green blue}, {@code cyan}, {@code Blau-Grün},
+ * {@code Grün-Blau}, {@code Türkis}</li>
+ * <li>{@code green}: {@code Grün}</li>
+ * <li>{@code yellow green}: {@code green yellow}, {@code lime},
+ * {@code lime green}, {@code Gelb-Grün}, {@code Grün-Gelb},
+ * {@code Limetten Grün}, {@code Limette}, {@code Hellgrün}</li>
  * </ol>
  *
  * Diese Farben sind ebenfalls im Speicher für Farben enthalten (gehören aber
  * nicht zum Farbkreis von Itten):
  *
  * <ul>
- * <li>{@code brown}: „Braun“</li>
- * <li>{@code white}: „Weiß“</li>
- * <li>{@code gray}: „grey“, „Grau“</li>
- * <li>{@code black}: „Schwarz“</li>
+ * <li>{@code brown}: {@code Braun}</li>
+ * <li>{@code white}: {@code Weiß}</li>
+ * <li>{@code gray}: {@code grey}, {@code Grau}</li>
+ * <li>{@code black}: {@code Schwarz}</li>
  * </ul>
  *
  * @see pi.Controller#colors

@@ -6,7 +6,7 @@
  * Javadoc with Gnome color
  */
 
- /* @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
 
 @import url("https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap");
@@ -77,8 +77,15 @@
 /* Additions */
 
 .development-note {
-    font-size: smaller;
-    color: var(--color-black1);
+  font-size: smaller;
+  color: var(--color-black1);
+}
+
+.block code {
+  background-color: var(--color-black1);
+  border-radius: 0.1rem;
+  font-size: 0.85em;
+  padding: 0 0.2941176471em;
 }
 
 /* Original CSS */

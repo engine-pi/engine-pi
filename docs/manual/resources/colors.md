@@ -1,5 +1,33 @@
 # `colors` (Farben)
 
+## Farbnamen
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorContainer.java -->
+
+Die zwölf Farben des Farbkreises von Itten zusammen mit ihren Aliassen bzw.
+Synonymen:
+
+- `yellow`: `Gelb`, `Hellgelb`
+- `yellow orange`: `orange yellow`, `gold`, `Gelb-Orange`, `Orange-Gelb`, `Golden`, `Dunkelgelb`
+- `orange`: `Orange`
+- `red orange`: `orange red`, `brick red`, `brick`, `Rot-Orange`, `Orange-Rot`, `Ziegelrot`, `Hellrot`
+- `red`: `Rot`
+- `red purple`: `purple red`, `magenta`, `pink`, `Rot-Violett`, `Violett-Rot`, `Rosa`
+- `purple`: `Violet`, `Violett`, `Lila`
+- `blue purple`: `purple blue`, `indigo`, `Violett Blau`, `Blau Violett`
+- `blue`: `Blau`
+- `blue green`: `green blue`, `cyan`, `Blau-Grün`, `Grün-Blau`, `Türkis`
+- `green`: `Grün`
+- `yellow green`: `green yellow`, `lime`, `lime green`, `Gelb-Grün`, `Grün-Gelb`, `Limetten Grün`, `Limette`, `Hellgrün`
+
+Diese Farben sind ebenfalls im Speicher für Farben enthalten (gehören aber nicht
+zum Farbkreis von Itten):
+
+- `brown`: `Braun`
+- `white`: `Weiß`
+- `gray`: `grey`, `Grau`
+- `black`: `Schwarz`
+
 Die Klassen mit Farbbezug:
 
 - {{ class('pi.resources.color.ColorContainer') }}
