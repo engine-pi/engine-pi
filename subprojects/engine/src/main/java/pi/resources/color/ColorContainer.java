@@ -65,7 +65,7 @@ import pi.resources.Container;
  * {@code Rot-Violett}, {@code Violett-Rot}, {@code Rosa}</li>
  * <li>{@code purple}: {@code Violet}, {@code Violett}, {@code Lila}</li>
  * <li>{@code blue purple}: {@code purple blue}, {@code indigo},
- * {@code Violett Blau}, „Blau Violett“</li>
+ * {@code Violett Blau}, {@code Blau Violett}</li>
  * <li>{@code blue}: {@code Blau}</li>
  * <li>{@code blue green}: {@code green blue}, {@code cyan}, {@code Blau-Grün},
  * {@code Grün-Blau}, {@code Türkis}</li>

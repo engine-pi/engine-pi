@@ -211,6 +211,7 @@
                             <version>0.4.0</version>
                         </tagletArtifact>
                     </tagletArtifacts>
+                    <bottom><![CDATA[Copyright 2024-2026, <a href="https://engine-pi.github.io/engine-pi">Josef Friedrich and contributors<a>]]></bottom>
                 </configuration>
                 <dependencies>
                     <dependency>
