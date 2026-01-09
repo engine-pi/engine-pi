@@ -16,17 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.docs.resources.color;
 
 import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Image;
 
+/**
+ * Demonstriert die Methoden {@link pi.actor.Actor#color()}
+ * {@link pi.actor.Actor#complementaryColor()}.
+ *
+ * @author Josef Friedrich
+ */
 public class ImageAverageColorDemo extends Scene
 {
     public ImageAverageColorDemo()
     {
+        info().title("Figurfarben-Demo").description(
+                "Demonstriert die Methoden Actor#color() und Actor#complementaryColor().")
+                .help("In der ersten Reihe sind die originalen Bilder zusehen, "
+                        + "in der zweiten Reihe die Durchschnittsfarbe und "
+                        + "in der dritten Reihe die Komplementärfarbe der Durchschnittsfarbe.");
         camera().meter(90);
         double x = -4;
         for (String filepath : new String[] { "car/background-color-grass.png",

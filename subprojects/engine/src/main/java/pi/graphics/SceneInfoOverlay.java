@@ -365,8 +365,8 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay help(String help)
     {
-        this.help = setBox(help, content -> new TextBlockBox(help).fontSize(12))
-                .color(textColor);
+        this.help = setBox(help, content -> new TextBlockBox(help).fontSize(12)
+                .fontStyle(FontStyle.ITALIC)).color(textColor);
         return assemble();
     }
 

@@ -18,6 +18,10 @@ Die Klassen mit Farbbezug:
 
 {{ video('docs/resources/colors/color-scheme/ColorScheme-Cycle.mp4') }}
 
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ColorWheelIttenDemo.java -->
+
+{{ code('docs/resources/color/ColorWheelIttenDemo', 52) }}
+
 {{ image('docs/resources/colors/color-scheme/Gnome.png') }}
 {{ image('docs/resources/colors/color-scheme/Java.png') }}
 {{ image('docs/resources/colors/color-scheme/Android.png') }}
@@ -32,43 +36,9 @@ Reihe die Komplementärfarben der entsprechenden Bilder.
 
 {{ image('docs/resources/colors/actor/Images_derived_complementary-color.png') }}
 
-Quellcode: [demos/actor/ImageAverageColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageAverageColorDemo.java)
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ImageAverageColorDemo.java -->
 
-```java
-import pi.Game;
-import pi.Scene;
-
-public class ImageAverageColorDemo extends Scene
-{
-    public ImageAverageColorDemo()
-    {
-        getCamera().setMeter(90);
-        double x = -4;
-        for (String filepath : new String[] { "car/background-color-grass.png",
-                "car/wheel-back.png", "car/truck-240px.png",
-                "dude/background/snow.png", "dude/box/obj_box001.png",
-                "dude/moon.png" })
-        {
-            createImageWithAverageColor(filepath, x);
-            x = x + 1.2;
-        }
-    }
-
-    private void createImageWithAverageColor(String filepath, double x)
-    {
-        var image = createImage(filepath, 1, 1).setPosition(x, 0);
-        createRectangle(1.0, 1.0).setPosition(x, -1.2)
-                .setColor(image.getColor());
-        createRectangle(1.0, 0.5).setPosition(x, -1.9)
-                .setColor(image.getComplementaryColor());
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(new ImageAverageColorDemo());
-    }
-}
-```
+{{ code('docs/resources/color/ImageAverageColorDemo', 32) }}
 
 `ALT + d` aktiviert den Debug-Modus: Die Bilder werden von Umrissen in den Komplementärfarben umrahmt.
 

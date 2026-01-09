@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.resources.color;
+package demos.docs.resources.color;
 
 import static pi.Controller.colorScheme;
 
@@ -34,7 +34,20 @@ import pi.event.KeyStrokeListener;
 import pi.resources.color.ColorScheme;
 
 /**
- * https://commons.wikimedia.org/wiki/File:Farbkreis_Itten_1961.svg
+ * Demonstiert die Farbschemata, die die Engine Pi mitliefert anhand des
+ * <b>Farbkreises von Itten</b>.
+ *
+ * <p>
+ * Folgende Grafik von Wikicommons diente als Vorlage für dieses Demo:
+ * </p>
+ *
+ * <p>
+ * <img src=
+ * "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Farbkreis_Itten_1961.svg/500px-Farbkreis_Itten_1961.svg.png"
+ * alt="Farbkreis Itten 1961">
+ * </p>
+ *
+ * @author Josef Friedrich
  */
 public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 {
@@ -74,6 +87,9 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     public ColorWheelIttenDemo()
     {
+        info().title("Farbschemata-Demo").description(
+                "Demonstiert die Farbschemata, die die Engine Pi mitliefert anhand des Farbkreises von Itten.")
+                .help("Ein beliebiger Tastendruck schalten zum nächsten Farbschema weiter.");
         WHEEL_AREAS = drawWheelColors();
         // Zuerst Primär, denn die müssen übermalt werden.
         PRIMARY_AREAS = drawPrimaryColors();
