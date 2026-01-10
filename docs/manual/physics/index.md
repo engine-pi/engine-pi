@@ -14,16 +14,25 @@ Mechanik](https://de.wikipedia.org/wiki/Klassische_Mechanik).[^engine-alpha-wiki
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Physics
 
-Du kannst Objekte der Engine Alpha mit wenigen Aktionen einer internen Physik
+<!-- Du kannst Objekte der Engine Alpha mit wenigen Aktionen einer internen Physik
 unterwerfen. Sie unterliegen dann wahlweise der Schwerkraft oder prallen
 voneinander ab. Hierzu werden von einer gemeinsamen Oberklasse namens EduActor
 diverse Methoden zur Verfügung gestellt, über die dann alle Objekte verfügen.
-Wir verwenden hier beispielhaft:
+Wir verwenden hier beispielhaft: -->
 
-- macheDynamisch() : Unterwirft das Objekt der Schwerkraft.
-- macheStatisch() : Lässt das Objekt wie eine "unendlich schwere Mauer" wirken. Dynamische Objekte prallen davon ab.
-- macheSensor() : Frisch erzeugte Objeke sind Senoren. Damit kann man "dynamisch" oder "statisch" wieder rückgängig machen.
-- setzeElastizitaet(double elastizitaet) : setzt die Elastizität der Objekte. Sie verhalten sich dann wie "Gummibälle".
-- setzeReibung(double reibungsKoeffizient) : Setzt den Reibungskoeffizienten der Objekte. Damit kann man "rutschen" oder "gleiten" beeinflussen.[^engine-alpha:grafikfenster]
+Die Figuren der Engine Pi können einer internen Physik unterworfen werden. Sie
+unterliegen dann wahlweise der Schwerkraft oder prallen voneinander ab. Hierzu
+stellt die gemeinsame Oberklasse {{ class('pi.actor.Actor') }} verschiedene
+Methoden zur Verfügung, über die alle Figuren verfügen.
 
-[^engine-alpha:grafikfenster] https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster
+## Die wichtigsten Physics-Methoden von Figuren:
+
+- {{ method('pi.actor.Actor', 'makeDynamic()') }}: Unterwirft die Figur der Schwerkraft.
+- {{ method('pi.actor.Actor', 'makeStatic()') }}: Lässt die Figur  wie eine „unendlich schwere Mauer“ wirken. Dynamische Figuren prallen davon ab.
+- {{ method('pi.actor.Actor', 'makeSensor()') }}: Frisch erzeugte Figuren sind Senoren. Damit kann man „dynamisch“ oder „statisch“ wieder rückgängig machen.
+- {{ method('pi.actor.Actor', 'restitution(double)') }}: setzt die Elastizität der Figuren. Sie verhalten sich dann wie „Gummibälle“.
+- {{ method('pi.actor.Actor', 'friction(double)') }}: Setzt den Reibungskoeffizienten der Objekte. Damit kann man „rutschen“ oder „gleiten“ beeinflussen.[^engine-alpha:grafikfenster]
+
+[^engine-alpha:grafikfenster]:
+    Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Das_Grafikfenster

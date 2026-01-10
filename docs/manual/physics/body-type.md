@@ -3,6 +3,8 @@
 <!-- http://127.0.0.1:8000/engine-pi/manual/physics/body-type/ -->
 <!-- https://engine-pi.github.io/engine-pi/manual/physics/body-type/ -->
 
+{{ class('pi.physics.BodyType') }}
+
 # Kinetisch
 
 <!-- Lastly, let's see what a 'kinematic' body is all about. As we have seen so far,

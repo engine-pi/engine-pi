@@ -106,9 +106,9 @@ nav:
 
       - events (Ereignissteuerung):
           - manual/events/index.md
-          - manual/events/key-stroke-listener.md
-          - manual/events/mouse-click-listener.md
-          - manual/events/collision-listener.md
+          - manual/events/key-stroke.md
+          - manual/events/mouse-click.md
+          - manual/events/collision.md
           - manual/events/repeat.md
           - manual/events/shortcuts.md
 
@@ -161,4 +161,4 @@ extra:
       link: mailto:josef.friedrich@pirckheimer-gymnasium.de
 
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice
-copyright: Copyright &copy; 2024 - 2025 Josef Friedrich
+copyright: Copyright &copy; 2024 - 2026 Josef Friedrich

@@ -4,21 +4,20 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Game_Loop
 
-## How-To Engine Code: Der Game Loop
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/main-classes/controller/game-loop/ -->
+
+<!-- ## How-To Engine Code: Der Game Loop -->
 
 Das Snake-Spiel ist ein erstes interaktives Spiel. Es nutzt den Game Loop der
 Engine. Dieser funktioniert folgendermaßen:
 
-{{ image('docs/GameLoop.png') }}
-/// caption
-Der Engine Pi Game Loop
-///
+{{ image('docs/main-classes/controller/game-loop/GameLoop.png', 'Der Engine Pi Game Loop') }}
 
-Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell hintereinander
+Ein Film besteht aus 24 bis 60 Bildern pro Sekunde, die schnell nacheinander
 abgespielt werden, um die Illusion von Bewegung zu erzeugen. Ähnlich werden bei
 (den meisten) Computerspielen 30 bis 60 Bilder pro Sekunde in Echtzeit
-gerendert, um die selbe Illusion von Bewegung zu erzeugen. Nach jedem Bild
-berechnet die Engine intern die nächsten Schritte und gibt die relevanten
+gerendert, um gleiche Illusion von Bewegung zu erzeugen. Nach jedem Bild
+berechnet die Engine die nächsten Schritte intern und gibt die relevanten
 Ereignisse (Tastendruck, Kollision, Frame-Update) an die entsprechenden Listener
 weiter.
 
@@ -30,10 +29,7 @@ Engine-Code ist verpackt in Interfaces nach Spiel-Logik.
 Das folgende Program implementiert ein einfaches Snake-Spiel mit einem
 Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
-{{ image('docs/Snake_Minimal.gif') }}
-/// caption
-Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte
-///
+{{ image('docs/main-classes/controller/game-loop/Snake_Minimal.gif', 'Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte') }}
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
@@ -100,16 +96,13 @@ spezifisch mit der Schlange angemeldet:
 
 ## Anregung zum Experimentieren
 
-{{ image('docs/Snake_Advanced.gif') }}
-/// caption
-Eine Snake, die mit jedem Pickup wächst
-///
+{{ image('docs/main-classes/controller/game-loop/Snake_Advanced.gif', 'Eine Snake, die mit jedem Pickup wächst') }}
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeAdvanced.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeAdvanced', 37) }}
 
-- Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
+<!-- - Deadly Pickups: Es gibt noch keine Gefahr für die Schlange. Ein giftiges
   Pick-Up tötet die Schlange und beendet das Spiel (oder zieht der Schlange
   einen von mehreren Hit Points ab).
 - Smoother Movement: Die aktuelle Implementierung für die Bewegung der Schlange
@@ -124,4 +117,4 @@ Eine Snake, die mit jedem Pickup wächst
   du Lust auf eine Herausforderung hast, kannst du aus dem Spiel ein echtes
   Snake machen: Beim aufnehmen eines Pick-Ups wird die Schlange um ein Glied
   länger. Die Glieder bewegen sich versetzt mit der Schlange weiter. Wenn die
-  Schlange sich selbst berührt, ist das Spiel beendet.
+  Schlange sich selbst berührt, ist das Spiel beendet. -->

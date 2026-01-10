@@ -9,10 +9,9 @@
 Ein Frosch soll fröhlich durch das Spiel springen und sich vom Boden abstoßen,
 wenn immer er die Chance dazu hat.
 
-![](https://raw.githubusercontent.com/engine-pi/engine-pi/main/src/test/resources/froggy/Frog.png)
-/// caption
-Dieser Frosch soll durch das Spiel springen:
-///
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/events/collision -->
+
+{{ image('docs/events/collision/Frog.png', 'Dieser Frosch soll durch das Spiel springen') }}
 
 In der Scene `FroggyJump` kann der Spieler ein
 Objekt der Klasse `Frog` steuern. Zusätzlich geben Objekte der Klasse `Platform`
@@ -20,9 +19,7 @@ halt.
 
 Damit ergibt sich das Codegerüst für das Spiel:
 
-{{ demo('tutorials/collision/FroggyJump') }}
-
-```java
+<!-- ```java
 public class FroggyJump extends Scene
 {
     private Frog frog;
@@ -125,12 +122,9 @@ class Platform extends Rectangle implements CollisionListener<Frog>
         makeStatic();
     }
 }
-```
+``` -->
 
-{{ image('docs/FrogTutorial1.gif') }}
-/// caption
-Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke
-///
+{{ image('docs/events/collision/FrogTutorial1.gif', 'Der Frosch kann sich bewegen, knallt aber unangenehmerweise noch gegen die Decke') }}
 
 Ein paar Erklärungen zum Codegerüst für `FroggyJump`:
 
@@ -204,9 +198,9 @@ unterschiedlich behandelt werden:
 
 Hierzu stellt das `CollisionEvent`-Objekt in der `onCollision`-Methode Funktionen bereit.
 
-{{ demo('tutorials/collision/FroggyJump', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L172-L197') }}
+{{ code('docs/events/collision/froggy_jump/Platform.java', 29) }}
 
-```java
+<!-- ```java
 class Platform extends Rectangle implements CollisionListener<Frog>
 {
     public Platform(double width, double height)
@@ -219,19 +213,38 @@ class Platform extends Rectangle implements CollisionListener<Frog>
     @Override
     public void onCollision(CollisionEvent<Frog> collisionEvent)
     {
-
-        double frogY = collisionEvent.getColliding().getPosition().getY();
-        if (frogY < getY())
+        double frogY = collisionEvent.colliding().position().y();
+        if (frogY < y())
         {
             collisionEvent.ignoreCollision();
-            collisionEvent.getColliding().setJumpEnabled(false);
+            collisionEvent.colliding().setJumpEnabled(false);
         }
     }
 
     @Override
     public void onCollisionEnd(CollisionEvent<Frog> collisionEvent)
     {
-        collisionEvent.getColliding().setJumpEnabled(true);
+        collisionEvent.colliding().setJumpEnabled(true);
     }
 }
-```
+``` -->
+
+## Kompletter Code
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/FroggyJump.java -->
+
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/package-info.java -->
+
+
+{{ code('docs/events/collision/froggy_jump/FroggyJump.java', 25) }}
+
+{{ code('docs/events/collision/froggy_jump/DeathScreen.java', 25) }}
+
+{{ code('docs/events/collision/froggy_jump/Frog.java', 25) }}
+
+{{ code('docs/events/collision/froggy_jump/Platform.java', 25) }}
+
+{{ code('docs/events/collision/froggy_jump/SpikeBall.java', 25) }}
+
+{{ code('docs/events/collision/froggy_jump/SpikeSensor.java', 25) }}
