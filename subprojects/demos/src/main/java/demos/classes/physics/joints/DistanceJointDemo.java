@@ -19,7 +19,7 @@
 package demos.classes.physics.joints;
 
 import pi.Controller;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 /**
  * Demonstriert die Klasse {@link pi.physics.joints.DistanceJoint} und die

@@ -18,11 +18,11 @@ package tetris.scenes;
 
 import java.awt.event.KeyEvent;
 
-import pi.Vector;
 import pi.actor.ImageFontText;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 import pi.util.TextAlignment;
 import tetris.Tetris;
 import tetris.text.Font;

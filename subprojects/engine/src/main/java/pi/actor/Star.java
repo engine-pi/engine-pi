@@ -18,8 +18,8 @@
  */
 package pi.actor;
 
-import pi.Vector;
 import pi.debug.ToStringFormatter;
+import pi.graphics.geom.Vector;
 
 /**
  * Ein regelmäßiger <b>Stern</b>.

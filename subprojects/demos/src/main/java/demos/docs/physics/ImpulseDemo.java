@@ -24,12 +24,12 @@ import java.awt.Color;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.Circle;
 import pi.Rectangle;
 import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 public class ImpulseDemo extends Scene
         implements FrameUpdateListener, MouseClickListener

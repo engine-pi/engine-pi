@@ -29,11 +29,11 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 
 import pi.Controller;
-import pi.Vector;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.LinearDouble;
 import pi.annotations.Setter;
 import pi.graphics.PaintingSurface;
+import pi.graphics.geom.Vector;
 import pi.resources.color.ColorUtil;
 
 /*

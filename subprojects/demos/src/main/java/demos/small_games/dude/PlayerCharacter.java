@@ -27,7 +27,6 @@ import java.util.HashSet;
 
 import pi.Controller;
 import pi.Random;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Animation;
 import pi.Circle;
@@ -39,6 +38,7 @@ import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         CollisionListener<Actor>, FrameUpdateListener, KeyStrokeListener

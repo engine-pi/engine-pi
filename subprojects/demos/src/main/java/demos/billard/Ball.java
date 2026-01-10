@@ -22,9 +22,9 @@ package demos.billard;
 
 import java.awt.Color;
 
-import pi.Vector;
 import pi.Circle;
 import pi.event.FrameUpdateListener;
+import pi.graphics.geom.Vector;
 
 public class Ball extends Circle implements FrameUpdateListener
 {

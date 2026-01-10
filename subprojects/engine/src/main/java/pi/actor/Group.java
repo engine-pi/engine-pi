@@ -23,8 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import pi.Scene;
-import pi.Vector;
 import pi.annotations.API;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine <b>Gruppe</b> bestehend aus mehreren {@link Actor}-Objekten.

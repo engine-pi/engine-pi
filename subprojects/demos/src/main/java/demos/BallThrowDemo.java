@@ -25,13 +25,13 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.Circle;
 import pi.Rectangle;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine einfache Demonstration der Engine-Physik durch eine

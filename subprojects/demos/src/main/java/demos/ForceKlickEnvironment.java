@@ -25,7 +25,6 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.Circle;
 import pi.actor.Geometry;
@@ -35,6 +34,7 @@ import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
 
 /**

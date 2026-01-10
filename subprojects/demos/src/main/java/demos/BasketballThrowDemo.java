@@ -25,7 +25,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 import pi.Image;
 import pi.Rectangle;
 import pi.physics.FixtureBuilder;

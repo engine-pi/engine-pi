@@ -20,8 +20,8 @@
  */
 package pi.event;
 
-import pi.Vector;
 import pi.annotations.API;
+import pi.graphics.geom.Vector;
 
 /**
  * Implementierende Klassen können auf jeden einzelnen Klick reagieren,

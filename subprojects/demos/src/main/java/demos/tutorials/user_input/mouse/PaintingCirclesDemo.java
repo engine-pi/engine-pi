@@ -22,10 +22,10 @@ package demos.tutorials.user_input.mouse;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.Circle;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 public class PaintingCirclesDemo extends Scene implements MouseClickListener
 {

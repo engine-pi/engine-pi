@@ -18,7 +18,7 @@
  */
 package pi.debug;
 
-import pi.Vector;
+import pi.graphics.geom.Vector;
 import pi.loop.GameLoop;
 
 /**

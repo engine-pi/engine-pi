@@ -18,8 +18,8 @@
  */
 package pi.dsa.turtle;
 
-import pi.Vector;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 /**
  * Speichert den <b>Startzustand</b> der Schildkröte, d.h. alle Einstellungen,

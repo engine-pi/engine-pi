@@ -24,10 +24,10 @@ import pi.Camera;
 import pi.Controller;
 import pi.Scene;
 import pi.Text;
-import pi.Vector;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
 

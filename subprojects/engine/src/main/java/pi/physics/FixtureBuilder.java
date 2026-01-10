@@ -30,8 +30,7 @@ import de.pirckheimer_gymnasium.jbox2d.collision.shapes.EdgeShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.PolygonShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine Sammlungen von statischen Methoden, die verschiedene Halterungen

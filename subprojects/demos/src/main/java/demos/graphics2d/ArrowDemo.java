@@ -1,11 +1,11 @@
 package demos.graphics2d;
 
+import static pi.graphics.geom.Vector.v;
+
 import java.awt.Graphics2D;
 
-import pi.Vector;
+import pi.graphics.geom.Vector;
 import pi.util.Graphics2DUtil;
-
-import static pi.Vector.v;
 
 /**
  * Demonstiert wie man eine Pfeilspitze einzeichnet als

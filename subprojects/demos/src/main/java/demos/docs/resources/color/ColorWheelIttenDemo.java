@@ -27,10 +27,10 @@ import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Polygon;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 import pi.resources.color.ColorScheme;
 
 /**

@@ -18,8 +18,8 @@
  */
 package demos.small_games.snake;
 
-import pi.Vector;
 import pi.actor.Square;
+import pi.graphics.geom.Vector;
 
 class SnakeBodyElement extends Square
 {

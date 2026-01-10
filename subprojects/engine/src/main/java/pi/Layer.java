@@ -30,7 +30,6 @@ import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
-
 import pi.actor.Actor;
 import pi.annotations.API;
 import pi.annotations.Getter;
@@ -46,6 +45,7 @@ import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
 import pi.graphics.geom.Bounds;
+import pi.graphics.geom.Vector;
 import pi.physics.BodyHandler;
 import pi.physics.NullHandler;
 import pi.physics.PhysicsData;

@@ -21,6 +21,8 @@ package pi;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import pi.graphics.geom.Vector;
+
 /**
  * @author Josef Friedrich
  */

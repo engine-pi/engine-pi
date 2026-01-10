@@ -26,11 +26,11 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.Vector;
 import pi.Circle;
 import pi.Rectangle;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
 
 /**

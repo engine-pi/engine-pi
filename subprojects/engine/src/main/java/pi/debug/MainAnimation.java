@@ -37,12 +37,12 @@ import pi.Random;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Logo;
 import pi.actor.Polygon;
 import pi.annotations.Internal;
 import pi.event.FrameUpdateListener;
+import pi.graphics.geom.Vector;
 import pi.resources.color.ColorUtil;
 
 /**

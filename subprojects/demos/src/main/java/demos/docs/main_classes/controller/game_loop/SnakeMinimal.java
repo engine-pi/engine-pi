@@ -25,13 +25,13 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.Vector;
 import pi.Circle;
 import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/controller/game-loop.md
 

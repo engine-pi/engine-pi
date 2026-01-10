@@ -24,11 +24,11 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Vector;
 import pi.Circle;
 import pi.actor.Polygon;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
 
 /**

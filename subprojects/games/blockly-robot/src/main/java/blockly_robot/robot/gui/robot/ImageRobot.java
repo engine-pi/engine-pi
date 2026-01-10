@@ -12,11 +12,11 @@ import blockly_robot.robot.logic.log.Movement;
 import blockly_robot.robot.logic.navigation.Coords;
 import blockly_robot.robot.logic.robot.Robot;
 import blockly_robot.robot.logic.robot.VirtualRobot;
-import pi.Vector;
 import pi.Image;
 import pi.animation.Interpolator;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.SinusDouble;
+import pi.graphics.geom.Vector;
 
 public class ImageRobot extends Image implements Robot
 {

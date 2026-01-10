@@ -26,8 +26,8 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.Vector;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 public class BillardDemo extends Scene implements KeyStrokeListener
 {

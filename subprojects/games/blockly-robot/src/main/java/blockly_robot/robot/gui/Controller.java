@@ -4,10 +4,10 @@ import blockly_robot.robot.gui.scenes.WindowScene;
 import pi.Camera;
 import pi.Game;
 import pi.Scene;
-import pi.Vector;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
 import pi.graphics.geom.Bounds;
+import pi.graphics.geom.Vector;
 
 public class Controller
 {

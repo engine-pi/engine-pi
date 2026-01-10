@@ -24,7 +24,6 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.Rectangle;
 import pi.Text;
 import pi.animation.CircleAnimation;
@@ -32,6 +31,7 @@ import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 public class MainScene extends Scene implements KeyStrokeListener
 {

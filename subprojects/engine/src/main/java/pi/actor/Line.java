@@ -27,11 +27,11 @@ import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 
 import pi.Controller;
-import pi.Vector;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.graphics.geom.DirectedLineSegment;
+import pi.graphics.geom.Vector;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 

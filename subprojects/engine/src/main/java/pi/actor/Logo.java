@@ -18,13 +18,13 @@
  */
 package pi.actor;
 
-import static pi.Vector.v;
+import static pi.graphics.geom.Vector.v;
 
 import pi.Circle;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Triangle;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 /**
  * Zeichnet das Engine Pi Logo in eine Szene.

@@ -20,7 +20,6 @@
  */
 package pi.graphics.geom;
 
-import pi.Vector;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;

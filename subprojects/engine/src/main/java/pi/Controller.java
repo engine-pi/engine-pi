@@ -55,6 +55,7 @@ import pi.event.SceneLaunchListener;
 import pi.graphics.DialogLauncher;
 import pi.graphics.RenderPanel;
 import pi.graphics.geom.Direction;
+import pi.graphics.geom.Vector;
 import pi.graphics.screen_recording.Photographer;
 import pi.loop.GameLoop;
 import pi.resources.ImageContainer;

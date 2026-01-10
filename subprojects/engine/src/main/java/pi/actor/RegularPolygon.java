@@ -20,8 +20,8 @@ package pi.actor;
 
 import pi.Controller;
 import pi.Text;
-import pi.Vector;
 import pi.annotations.Getter;
+import pi.graphics.geom.Vector;
 
 /**
  * Beschreibt ein regelmäßiges <b>Vieleck</b> bzw{@literal .} reguläres

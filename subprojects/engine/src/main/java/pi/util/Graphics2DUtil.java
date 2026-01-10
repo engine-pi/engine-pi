@@ -9,8 +9,8 @@ import java.awt.RenderingHints;
 import pi.Circle;
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden um auf dem Graphics2D-Objekt zu

@@ -6,11 +6,11 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Vector;
 import pi.dsa.turtle.PaintingSurfaceScene;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 public class PaintingSurfaceDemo extends PaintingSurfaceScene
         implements MouseClickListener, KeyStrokeListener

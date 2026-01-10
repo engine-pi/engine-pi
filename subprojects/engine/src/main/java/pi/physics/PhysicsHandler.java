@@ -24,11 +24,10 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-
-import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
+import pi.graphics.geom.Vector;
 
 /**
  * Beschreibt allgemein ein Objekt, dass die physikalischen Eigenschaften eines

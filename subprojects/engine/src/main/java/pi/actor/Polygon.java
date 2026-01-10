@@ -24,9 +24,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.util.function.Supplier;
 
-import pi.Vector;
 import pi.annotations.API;
 import pi.annotations.Internal;
+import pi.graphics.geom.Vector;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 

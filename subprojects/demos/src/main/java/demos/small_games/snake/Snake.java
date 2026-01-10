@@ -1,6 +1,6 @@
 package demos.small_games.snake;
 
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 /**
  *

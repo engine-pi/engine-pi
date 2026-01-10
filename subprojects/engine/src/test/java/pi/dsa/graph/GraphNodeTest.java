@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 public class GraphNodeTest
 {

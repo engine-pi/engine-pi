@@ -18,14 +18,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi;
+package pi.graphics.geom;
 
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
-import pi.graphics.geom.Direction;
 
 /**
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese

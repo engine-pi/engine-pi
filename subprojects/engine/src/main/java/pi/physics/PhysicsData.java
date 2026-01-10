@@ -29,12 +29,11 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.BodyDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.FixtureDef;
-
-import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 /**
  * Diese Klasse wrappt die wesentlichen physikalischen Eigenschaften eines

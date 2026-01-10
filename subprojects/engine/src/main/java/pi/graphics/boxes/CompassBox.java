@@ -2,8 +2,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
-import pi.Vector;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 import pi.util.Graphics2DUtil;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/CompassBoxDemo.java

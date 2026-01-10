@@ -21,8 +21,8 @@ package demos.classes.class_controller;
 import pi.Controller;
 import pi.Scene;
 import pi.Text;
-import pi.Vector;
 import pi.event.FrameUpdateListener;
+import pi.graphics.geom.Vector;
 import pi.util.TextUtil;
 
 /**

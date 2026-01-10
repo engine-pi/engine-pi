@@ -20,14 +20,14 @@
  */
 package demos.classes.physics.joints;
 
-import static pi.Vector.v;
+import static pi.graphics.geom.Vector.v;
 
 import pi.Circle;
 import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Polygon;
+import pi.graphics.geom.Vector;
 
 /**
  * Demonstriert die Klasse {@link pi.physics.joints.RevoluteJoint} und die

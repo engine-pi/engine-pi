@@ -20,10 +20,9 @@ package pi.dsa.turtle;
 
 import static pi.Controller.colorScheme;
 import static pi.Controller.images;
-import static pi.Vector.v;
+import static pi.graphics.geom.Vector.v;
 
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.actor.Animation;
 import pi.Circle;
@@ -31,6 +30,7 @@ import pi.actor.Polygon;
 import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 

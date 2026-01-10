@@ -23,11 +23,11 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.Vector;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
 import pi.graphics.geom.Bounds;
+import pi.graphics.geom.Vector;
 
 /**
  * Der Ping-Pong-Tisch enthält zwei Schläger, einen Ball und zwei unsichtbare

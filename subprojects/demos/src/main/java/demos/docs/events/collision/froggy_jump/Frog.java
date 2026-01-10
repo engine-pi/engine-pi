@@ -26,8 +26,8 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Image;
-import pi.Vector;
 import pi.event.FrameUpdateListener;
+import pi.graphics.geom.Vector;
 
 class Frog extends Image implements FrameUpdateListener
 {

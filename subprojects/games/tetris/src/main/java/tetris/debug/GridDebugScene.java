@@ -20,11 +20,11 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Rectangle;
-import pi.Vector;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 import tetris.Tetris;
 import tetris.scenes.BaseScene;
 import tetris.tetrominos.FilledRowRange;

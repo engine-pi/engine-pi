@@ -23,9 +23,9 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Polygon;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 public class RotationDemo extends Scene implements KeyStrokeListener
 {

@@ -21,7 +21,7 @@
 package demos.small_games;
 
 import static pi.Random.range;
-import static pi.Vector.vector;
+import static pi.graphics.geom.Vector.vector;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -33,7 +33,6 @@ import java.util.Objects;
 import pi.Controller;
 import pi.Layer;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.Circle;
 import pi.Image;
@@ -44,6 +43,7 @@ import pi.actor.TileMap;
 import pi.event.CollisionEvent;
 import pi.event.FrameUpdateListener;
 import pi.event.PeriodicTask;
+import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
 import pi.physics.FixtureBuilder;
 import pi.physics.joints.PrismaticJoint;

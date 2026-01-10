@@ -1,7 +1,6 @@
 package demos.classes.resources.color;
 
 import pi.Circle;
-import pi.Scene;
 
 public class ColorConfig
 {

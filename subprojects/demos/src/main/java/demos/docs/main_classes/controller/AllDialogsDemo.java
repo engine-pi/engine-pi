@@ -22,11 +22,11 @@ import java.util.function.Supplier;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.Text;
 import pi.event.FrameUpdateListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 /**
  * Demonstriert die Klasse {@link pi.graphics.DialogLauncher}.

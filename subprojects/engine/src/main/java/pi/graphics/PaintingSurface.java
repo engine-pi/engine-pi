@@ -27,7 +27,7 @@ import java.awt.image.BufferedImage;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 import pi.util.Graphics2DUtil;
 
 /**

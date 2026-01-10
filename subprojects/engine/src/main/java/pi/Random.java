@@ -25,6 +25,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.graphics.geom.Bounds;
+import pi.graphics.geom.Vector;
 
 /**
  * Diese Klasse liefert Methoden, die <b>zufällig verteilte Rückgaben</b> haben.

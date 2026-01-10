@@ -22,8 +22,8 @@ package demos.billard;
 
 import java.awt.Color;
 
-import pi.Vector;
 import pi.actor.Polygon;
+import pi.graphics.geom.Vector;
 
 public class Edge extends Polygon
 {

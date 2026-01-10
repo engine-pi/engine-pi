@@ -24,8 +24,8 @@ import static pi.Controller.fonts;
 import java.awt.Font;
 
 import pi.Controller;
-import pi.Vector;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine beschriftete Kante

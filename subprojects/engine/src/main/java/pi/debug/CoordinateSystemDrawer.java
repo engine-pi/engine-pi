@@ -27,9 +27,9 @@ import java.awt.geom.AffineTransform;
 import pi.Camera;
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.annotations.Internal;
 import pi.config.CoordinatesystemConfiguration;
+import pi.graphics.geom.Vector;
 
 /**
  * Zeichnet das <b>Koordinatensystem</b>.

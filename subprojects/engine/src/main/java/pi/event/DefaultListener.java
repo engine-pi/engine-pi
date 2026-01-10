@@ -1,8 +1,8 @@
 package pi.event;
 
-import pi.Vector;
-
 import java.awt.event.KeyEvent;
+
+import pi.graphics.geom.Vector;
 
 /**
  * Bietet Standard-Methoden für einige Beobachter-Schnittstellen an.

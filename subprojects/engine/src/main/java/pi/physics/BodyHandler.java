@@ -29,11 +29,10 @@ import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.ContactEdge;
-
-import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
+import pi.graphics.geom.Vector;
 
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische

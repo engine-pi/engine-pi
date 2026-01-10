@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.actor.LabeledNode;
 import pi.annotations.Getter;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
+import pi.graphics.geom.Vector;
 
 enum EditState
 {

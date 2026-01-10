@@ -18,9 +18,9 @@
  */
 package pi.dsa.graph;
 
-import pi.Vector;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.graphics.geom.Vector;
 
 /**
  * Stellt einen <b>Knoten</b> in einem Graphen dar.

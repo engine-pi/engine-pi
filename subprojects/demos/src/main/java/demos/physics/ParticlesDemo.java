@@ -25,7 +25,6 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Vector;
 import pi.Circle;
 import pi.Rectangle;
 import pi.animation.AnimationMode;
@@ -33,6 +32,7 @@ import pi.animation.ValueAnimator;
 import pi.animation.interpolation.ReverseEaseDouble;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 public class ParticlesDemo extends Scene implements KeyStrokeListener
 {

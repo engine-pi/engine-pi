@@ -21,8 +21,8 @@ Wikipedia: [Gravitation](https://de.wikipedia.org/wiki/Gravitation)
 
 {{ video('docs/physics/GravityDemo.mp4') }}
 
-{{ methods('pi.Scene', ['gravity()', 'gravity(pi.Vector)', 'gravity(double,double)', 'gravity(pi.Vector)']) }}
+{{ methods('pi.Scene', ['gravity()', 'gravity(pi.graphics.geom.Vector)', 'gravity(double,double)', 'gravity(pi.graphics.geom.Vector)']) }}
 
-{{ methods('pi.Layer', ['gravity()', 'gravity(pi.Vector)', 'gravity(double,double)', 'gravity(pi.Vector)']) }}
+{{ methods('pi.Layer', ['gravity()', 'gravity(pi.graphics.geom.Vector)', 'gravity(double,double)', 'gravity(pi.graphics.geom.Vector)']) }}
 
 {{ code('docs/physics/GravityDemo', 32) }}

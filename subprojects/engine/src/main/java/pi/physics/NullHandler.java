@@ -30,11 +30,11 @@ import java.util.function.Supplier;
 import de.pirckheimer_gymnasium.jbox2d.collision.AABB;
 import de.pirckheimer_gymnasium.jbox2d.common.Transform;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.event.CollisionEvent;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine Steuerungsklasse für Operationen an {@link Actor}-Objekten, die an

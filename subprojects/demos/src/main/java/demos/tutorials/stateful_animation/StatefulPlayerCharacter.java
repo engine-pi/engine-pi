@@ -23,11 +23,11 @@ package demos.tutorials.stateful_animation;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Vector;
 import pi.actor.Animation;
 import pi.actor.StatefulAnimation;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
+import pi.graphics.geom.Vector;
 
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         implements KeyStrokeListener, FrameUpdateListener

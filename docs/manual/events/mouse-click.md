@@ -62,7 +62,7 @@ public void onMouseDown(Vector position, MouseButton mouseButton)
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-{{ class('pi.Vector') }}.
+{{ class('pi.graphics.geom.Vector') }}.
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 

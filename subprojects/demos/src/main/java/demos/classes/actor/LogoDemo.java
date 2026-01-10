@@ -18,7 +18,7 @@
  */
 package demos.classes.actor;
 
-import static pi.Vector.v;
+import static pi.graphics.geom.Vector.v;
 
 import pi.Controller;
 import pi.Scene;

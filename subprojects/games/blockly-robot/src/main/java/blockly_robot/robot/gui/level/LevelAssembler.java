@@ -7,7 +7,7 @@ import blockly_robot.robot.gui.robot.ImageRobot;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.robot.RobotWrapper;
 import pi.Scene;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 /**
  * Klasse, die eine Version einer Trainingsaufgabe zusammenbaut.

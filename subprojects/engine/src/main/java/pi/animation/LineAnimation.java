@@ -20,10 +20,10 @@
  */
 package pi.animation;
 
-import pi.Vector;
 import pi.actor.Actor;
 import pi.animation.interpolation.LinearDouble;
 import pi.event.AggregateFrameUpdateListener;
+import pi.graphics.geom.Vector;
 
 /**
  * Eine Animation, die ein {@link Actor}-Objekt in einer Linie animiert.

@@ -20,13 +20,13 @@
  */
 package pi.animation;
 
-import pi.Vector;
 import pi.actor.Actor;
 import pi.animation.interpolation.CosinusDouble;
 import pi.animation.interpolation.LinearDouble;
 import pi.animation.interpolation.SinusDouble;
 import pi.annotations.API;
 import pi.event.AggregateFrameUpdateListener;
+import pi.graphics.geom.Vector;
 
 /**
  * Animiert einen Actor in einem Kreis.

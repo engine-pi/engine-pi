@@ -25,10 +25,9 @@ import java.util.Collections;
 import java.util.List;
 
 import pi.debug.ToStringFormatter;
+import pi.graphics.geom.Vector;
 import de.pirckheimer_gymnasium.jbox2d.collision.WorldManifold;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
-
-import pi.Vector;
 import pi.actor.Actor;
 import pi.annotations.API;
 import pi.annotations.Getter;

@@ -22,7 +22,7 @@ import pi.Circle;
 import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 import pi.physics.joints.RevoluteJoint;
 
 /**

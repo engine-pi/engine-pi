@@ -26,7 +26,7 @@ import pi.Camera;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.Vector;
+import pi.graphics.geom.Vector;
 
 public class FroggyJump extends Scene
 {

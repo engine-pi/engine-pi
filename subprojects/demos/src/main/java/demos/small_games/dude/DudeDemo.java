@@ -23,10 +23,10 @@ package demos.small_games.dude;
 import pi.Controller;
 import pi.Layer;
 import pi.Scene;
-import pi.Vector;
 import pi.Image;
 import pi.actor.TileRegistration;
 import pi.graphics.geom.Bounds;
+import pi.graphics.geom.Vector;
 import pi.actor.TileMap;
 
 /**

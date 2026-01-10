@@ -19,6 +19,7 @@
 package pi;
 
 import pi.annotations.API;
+import pi.graphics.geom.Vector;
 
 /**
  * Beschreibt ein <b>Dreieck</b>.

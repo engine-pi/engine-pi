@@ -16,16 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi;
+package pi.graphics.geom;
 
+import static java.lang.Math.PI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.graphics.geom.Vector.v;
 
-import static pi.Vector.v;
-import static java.lang.Math.PI;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
