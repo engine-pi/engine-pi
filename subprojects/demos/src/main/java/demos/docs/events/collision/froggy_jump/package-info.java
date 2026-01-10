@@ -1,5 +1,6 @@
 /**
- * Demonstiert die <b>Kollisionserkennung</b> anhand des kleinen Spiels „Froggy Jump“.
+ * Demonstiert die <b>Kollisionserkennung</b> anhand des kleinen Spiels „Froggy
+ * Jump“.
  */
 package demos.docs.events.collision.froggy_jump;
 

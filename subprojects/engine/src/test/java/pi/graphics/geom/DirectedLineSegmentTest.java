@@ -1,4 +1,4 @@
-package pi.graphics;
+package pi.graphics.geom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pi.Vector.v;

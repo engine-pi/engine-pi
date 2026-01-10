@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import pi.Vector;
-import pi.graphics.DirectedLineSegment;
+import pi.graphics.geom.DirectedLineSegment;
 
 public class DirectedLineSegmentDemo extends Graphics2DComponent
 {

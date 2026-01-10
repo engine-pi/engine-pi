@@ -31,7 +31,7 @@ import pi.Vector;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.graphics.DirectedLineSegment;
+import pi.graphics.geom.DirectedLineSegment;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 
