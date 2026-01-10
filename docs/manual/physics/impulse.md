@@ -1,5 +1,8 @@
 # impluse (Impuls)[^engine-alpha-wiki:physics]
 
+<!-- http://127.0.0.1:8000/engine-pi/manual/physics/impulse/ -->
+<!-- https://engine-pi.github.io/engine-pi/manual/physics/impulse/ -->
+
 [^engine-alpha-wiki:physics]:
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Physics
@@ -63,10 +66,7 @@ public class ImpulseDemo extends Scene
 Dieser Code baut ein einfaches Spielfeld auf: Ein roter Ball, ein paar
 Dominosteine, und ein weißer Boden mit Wand.
 
-{{ image('docs/Dominos_1-statisch.png') }}
-/// caption
-Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!
-///
+{{ image('docs/physics/impulse/Dominos_1-statisch.png', 'Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!') }}
 
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
 drückt sich in verschiedenen {{ class('pi.physics.BodyType') }}s  aus:
@@ -92,10 +92,7 @@ die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
 
-{{ image('docs/Dominos_2-dynamisch.gif') }}
-/// caption
-Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall
-///
+{{ image('docs/physics/impulse/Dominos_2-dynamisch.gif', 'Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden hält den Fall') }}
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
@@ -109,10 +106,7 @@ Zeit, die Dominos umzuschmeißen! Die Methode
 Mit der Zeile `ball.applyImpulse(new Vector(15, 12));` kannst der erste
 Ballwurf getestet werden.
 
-{{ image('docs/Dominos_3-Wurf.gif') }}
-/// caption
-Mit einem Methodenaufruf fliegt der Ball
-///
+{{ image('docs/physics/impulse/Dominos_3-Wurf.gif', 'Mit einem Methodenaufruf fliegt der Ball') }}
 
 Um hieraus eine Spielmechanik zu bauen, soll der Spieler Richtung und Stärke des
 Wurfes mit der Maus kontrollieren können: Per Mausklick wird der Ball in
@@ -121,12 +115,11 @@ Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
 Impulses markiert:
 
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+
 {{ code('docs/physics/ImpulseDemo.java', 70, 75) }}
 
-{{ image('docs/Dominos_4-Wurfwinkel-Visualisierung.gif') }}
-/// caption
-Visualisierung des Wurfwinkels
-///
+{{ image('docs/physics/impulse/Dominos_4-Wurfwinkel-Visualisierung.gif', 'Visualisierung des Wurfwinkels') }}
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
@@ -139,6 +132,8 @@ den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
 Interface `MouseClickListener` implementiert:
 
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+
 {{ code('docs/physics/ImpulseDemo.java', 109, 114) }}
 
 <!-- - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
@@ -148,5 +143,7 @@ Interface `MouseClickListener` implementiert:
   (und Geschwindigkeit) zurück; dabei werden all Dominos wieder neu aufgesetz. -->
 
 ## Der komplette Code
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
 
 {{ code('docs/physics/ImpulseDemo.java') }}

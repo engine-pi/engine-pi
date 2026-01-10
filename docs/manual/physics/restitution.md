@@ -1,5 +1,8 @@
 # `restitution` (Stoßzahl bzw. Restitutionskoeffizient)
 
+<!-- http://127.0.0.1:8000/engine-pi/manual/physics/restitution/ -->
+<!-- https://engine-pi.github.io/engine-pi/manual/physics/restitution/ -->
+
 Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
 Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
 

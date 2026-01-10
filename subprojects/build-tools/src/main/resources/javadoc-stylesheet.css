@@ -83,8 +83,8 @@
 
 dd code,
 .block code {
-  background-color: var(--color-white3);
-  border-radius: 0.1rem;
+  background-color: var(--color-white2);
+  border-radius: 0.2rem;
   font-size: 0.85em;
   padding: 0 0.2941176471em;
 }
