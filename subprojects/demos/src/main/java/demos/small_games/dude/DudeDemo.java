@@ -20,13 +20,13 @@
  */
 package demos.small_games.dude;
 
-import pi.Bounds;
 import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.Vector;
 import pi.Image;
 import pi.actor.TileRegistration;
+import pi.graphics.geom.Bounds;
 import pi.actor.TileMap;
 
 /**

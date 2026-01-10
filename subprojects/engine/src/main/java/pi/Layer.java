@@ -45,6 +45,7 @@ import pi.event.MouseClickListener;
 import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
+import pi.graphics.geom.Bounds;
 import pi.physics.BodyHandler;
 import pi.physics.NullHandler;
 import pi.physics.PhysicsData;

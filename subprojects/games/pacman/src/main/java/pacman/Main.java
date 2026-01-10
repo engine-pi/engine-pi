@@ -20,9 +20,9 @@ package pacman;
 
 import static pi.Controller.config;
 
-import pi.Direction;
 import pi.Controller;
 import pi.Scene;
+import pi.graphics.geom.Direction;
 
 public class Main
 {

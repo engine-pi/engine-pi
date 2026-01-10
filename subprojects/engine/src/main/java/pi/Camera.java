@@ -28,6 +28,8 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
+import pi.graphics.geom.Bounds;
+
 import static pi.Controller.config;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/CameraDemo.java

@@ -28,10 +28,10 @@ package pi.config;
 import java.awt.Dimension;
 
 import pi.Camera;
-import pi.Direction;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.graphics.geom.Direction;
 
 /**
  * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.

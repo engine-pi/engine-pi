@@ -1,11 +1,11 @@
 package blockly_robot.robot.logic.navigation;
 
-import static pi.Direction.DOWN;
-import static pi.Direction.LEFT;
-import static pi.Direction.RIGHT;
-import static pi.Direction.UP;
+import static pi.graphics.geom.Direction.DOWN;
+import static pi.graphics.geom.Direction.LEFT;
+import static pi.graphics.geom.Direction.RIGHT;
+import static pi.graphics.geom.Direction.UP;
 
-import pi.Direction;
+import pi.graphics.geom.Direction;
 
 /**
  * Rough direction of the four main cardinal points /

@@ -1,8 +1,10 @@
-package pi;
+package pi.graphics.geom;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import pi.Vector;
 
 class DirectionTest
 {

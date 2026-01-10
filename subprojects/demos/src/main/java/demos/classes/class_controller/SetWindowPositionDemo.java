@@ -20,9 +20,9 @@ package demos.classes.class_controller;
 
 import java.awt.event.KeyEvent;
 
-import pi.Direction;
 import pi.Controller;
 import pi.Scene;
+import pi.graphics.geom.Direction;
 
 /**
  * Demonstriert die Methode {@link pi.Controller#windowPosition(int, int)}

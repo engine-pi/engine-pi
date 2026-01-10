@@ -25,6 +25,7 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
+import pi.graphics.geom.Direction;
 
 /**
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese

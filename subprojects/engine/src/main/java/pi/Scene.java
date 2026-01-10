@@ -50,6 +50,7 @@ import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
 import pi.graphics.RenderSource;
 import pi.graphics.SceneInfoOverlay;
+import pi.graphics.geom.Bounds;
 import pi.physics.WorldHandler;
 import pi.resources.color.ColorContainer;
 import de.pirckheimer_gymnasium.jbox2d.common.Vec2;

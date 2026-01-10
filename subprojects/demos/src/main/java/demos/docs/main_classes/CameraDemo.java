@@ -18,7 +18,6 @@
  */
 package demos.docs.main_classes;
 
-import pi.Bounds;
 import pi.Camera;
 import pi.Controller;
 import pi.Scene;
@@ -26,6 +25,7 @@ import pi.Vector;
 import pi.Image;
 import pi.actor.Line;
 import pi.event.FrameUpdateListener;
+import pi.graphics.geom.Bounds;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/camera.md

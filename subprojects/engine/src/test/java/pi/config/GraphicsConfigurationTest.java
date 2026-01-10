@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pi.Direction;
+import pi.graphics.geom.Direction;
 
 public class GraphicsConfigurationTest
 {

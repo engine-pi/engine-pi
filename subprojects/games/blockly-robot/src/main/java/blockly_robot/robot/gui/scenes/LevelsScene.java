@@ -17,7 +17,7 @@ import blockly_robot.robot.logic.menu.TaskList;
 import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
-import pi.Bounds;
+import pi.graphics.geom.Bounds;
 
 public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
 {

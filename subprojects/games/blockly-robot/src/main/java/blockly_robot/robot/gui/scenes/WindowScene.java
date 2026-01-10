@@ -1,6 +1,6 @@
 package blockly_robot.robot.gui.scenes;
 
-import pi.Bounds;
+import pi.graphics.geom.Bounds;
 
 /**
  * Szene, die Informationen mitliefert, in welchem Fenster die Szene geöffnet
