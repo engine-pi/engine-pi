@@ -296,6 +296,28 @@ public class Line extends Actor
         }
 
         /**
+         * Setzt, ob eine <b>Pfeilspitze</b> (als Winkel) gezeichnet werden soll
+         * oder nicht.
+         *
+         * @param arrow Ob eine <b>Pfeilspitze</b> (als Winkel) gezeichnet
+         *     werden soll oder nicht.
+         *
+         * @since 0.42.0
+         */
+        public LineEnd arrow(boolean arrow)
+        {
+            if (arrow)
+            {
+                this.arrow = ArrowType.CHEVERON;
+            }
+            else
+            {
+                this.arrow = ArrowType.NONE;
+            }
+            return this;
+        }
+
+        /**
          * Der <b>Winkel</b> der Pfeilspitze in Grad. Es handelt sich um den
          * Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt. In
          * der Mathematik wird dieser Winkel auch γ (gamma) genannt.

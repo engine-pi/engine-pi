@@ -19,27 +19,98 @@
 package pi.graphics.geom;
 
 import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/DirectedLineSegmentDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/geom/DirectedLineSegmentDemo.java
 
 /**
  * Eine <b>gerichtete Strecke</b>.
  *
  * <p>
- * Diese Strecke ist definiert durch zwei Punkte nämlich dem {@link #from
- * Ursprung} und dem {@link #to Ziel}. Die Strecke liegt auf einer Linie, die
- * durch die beiden Punkte festgelegt ist.
+ * Diese Strecke ist definiert durch zwei Punkte: den {@link #from Ursprung} und
+ * das {@link #to Ziel}. Sie liegt auf einer Linie, die durch diese beiden
+ * Punkte festgelegt ist.
  * </p>
- *
- * @param from Der Ursprung (steht auch für die Zahl 0)
- * @param to Das Ziel (steht auch für die Zahl 1)
  *
  * @author Josef Friedrich
  *
  * @since 0.42.0
  */
-public record DirectedLineSegment(Vector from, Vector to)
+public class DirectedLineSegment
 {
+    /**
+     * Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     */
+    Vector from;
+
+    /**
+     * Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     */
+    Vector to;
+
+    public DirectedLineSegment(Vector from, Vector to)
+    {
+        this.from = from;
+        this.to = to;
+    }
+
+    /**
+     * Gibt den <b>Ursprung</b> (steht auch für die Zahl {@code 0}) zurück.
+     *
+     * @return Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     */
+    @Getter
+    public Vector from()
+    {
+        return from;
+    }
+
+    /**
+     * Setzt den <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     *
+     * @param from Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     *
+     * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Strecke durch aneinander gekettete Setter festgelegt werden können,
+     *     z. B. {@code lineSegment.from(..).to(..)}.
+     */
+    @Setter
+    public DirectedLineSegment from(Vector from)
+    {
+        this.from = from;
+        return this;
+    }
+
+    /**
+     * Gibt das <b>Ziel</b> (steht auch für die Zahl {@code 1}) zurück.
+     *
+     * @return Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     */
+    @Getter
+    public Vector to()
+    {
+        return to;
+    }
+
+    /**
+     * Setzt das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     *
+     * @param to Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     *
+     * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Strecke durch aneinander gekettete Setter festgelegt werden können,
+     *     z. B. {@code lineSegment.from(..).to(..)}.
+     */
+    @Setter
+    public DirectedLineSegment to(Vector to)
+    {
+        this.to = to;
+        return this;
+    }
+
     /**
      * Gibt den <b>Differenzvektor</b> von Urspung zum Ziel zurück.
      *
@@ -93,23 +164,41 @@ public record DirectedLineSegment(Vector from, Vector to)
      * Berechnet einen <b>Punkt</b> auf einer Linie, die zur Strecke um einen
      * Winkel gedreht ist.
      *
-     * <p>
-     * Positive Entfernungen liegen in der Richtung des {@link #to Ziels}.
-     * </p>
-     *
-     * @param distance Der <b>Abstand</b> vom Ursprung.
-     * @param angle Positive Werte drehen die Linien gegen den Uhrzeigersinn
+     * @param distance Der <b>Abstand</b> vom Ursprung. Positive Entfernungen
+     *     liegen in der Richtung des {@link #to Ziels}.
+     * @param deltaAngle Der <b>Winkel</b>, um den die Linie gedreht wird.
+     *     Positive Werte drehen die Linien gegen den Uhrzeigersinn.
      *
      * @return Ein <b>Punkt</b> auf der Linie, der sich in einer bestimmten
      *     Entfernung vom Ursprung befindet.
      *
      * @since 0.42.0
      */
-    public Vector distancePoint(double distance, double angle)
+    public Vector distancePoint(double distance, double deltaAngle)
     {
-        return from.add(difference().normalize().multiply(distance));
+        return from
+                .add(Vector.ofAngle(angle() + deltaAngle).multiply(distance));
     }
 
+    /**
+     * Gibt den <b>Winkel</b> dieser gerichteten Strecke zurück.
+     *
+     * <p>
+     * Zeigt die gerichtete Strecke nach ...
+     * </p>
+     *
+     * <ul>
+     * <li>rechts: {@code 0} Grad</li>
+     * <li>oben: {@code 90} Grad</li>
+     * <li>links: {@code 180} Grad</li>
+     * <li>unten: {@code -90} Grad</li>
+     * </ul>
+     *
+     * @return der <b>Winkel</b> dieser gerichteten Strecke in Grad.
+     *
+     * @since 0.42.0
+     */
+    @Getter
     public double angle()
     {
         return difference().angle();

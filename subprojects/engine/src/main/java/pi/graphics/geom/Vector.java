@@ -25,6 +25,7 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.debug.ToStringFormatter;
+import pi.util.TextUtil;
 
 /**
  * Beschreibt einen <b>zweidimensionalen Vektor</b> auf der Zeichenebene. Diese
@@ -766,6 +767,25 @@ public final class Vector implements Cloneable
     public static Vector v(double x, double y)
     {
         return new Vector(x, y);
+    }
+
+    /**
+     * <b>Formatiert</b> den Vektor als Zeichenkette in der Form {@code (x|y)}.
+     *
+     * <p>
+     * Die Koordinaten werden durch die Methode
+     * {@link TextUtil#roundNumber(Object)} gerundet, um eine lesbare Ausgabe zu
+     * erzeugen.
+     * </p>
+     *
+     * @return Eine <b>formatierte</b> Zeichenkette, die den Vektor darstellt.
+     *
+     * @since 0.42.0
+     */
+    public String format()
+    {
+        return "(" + TextUtil.roundNumber(x, 2) + "|"
+                + TextUtil.roundNumber(y, 2) + ")";
     }
 
     /**

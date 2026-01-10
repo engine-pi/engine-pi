@@ -3,6 +3,7 @@ package pi.graphics.geom;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pi.graphics.geom.Vector.v;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class DirectedLineSegmentTest
@@ -49,4 +50,37 @@ public class DirectedLineSegmentTest
         assertEquals(1.4142135623730951, line(0, 0, 1, 1).length());
         assertEquals(1.4142135623730951, line(1, 1, 0, 0).length());
     }
+
+    @Nested
+    class AngleTest
+    {
+        @Test
+        public void cardinal()
+        {
+            assertEquals(0.0, line(0, 0, 1, 0).angle(), 1e-12);
+            assertEquals(90.0, line(0, 0, 0, 1).angle(), 1e-12);
+            assertEquals(180.0, line(0, 0, -1, 0).angle(), 1e-12);
+            assertEquals(-90.0, line(0, 0, 0, -1).angle(), 1e-12);
+        }
+
+        @Test
+        public void diagonals()
+        {
+            assertEquals(45.0, line(0, 0, 1, 1).angle(), 1e-12);
+            assertEquals(135.0, line(0, 0, -1, 1).angle(), 1e-12);
+            assertEquals(-135.0, line(0, 0, -1, -1).angle(), 1e-12);
+            assertEquals(-45.0, line(0, 0, 1, -1).angle(), 1e-12);
+        }
+
+        @Test
+        public void arbitrary()
+        {
+            assertEquals(53.13010235415598, line(0, 0, 3, 4).angle(), 1e-12);
+            assertEquals(-126.86989764584402, line(0, 0, -3, -4).angle(),
+                    1e-12);
+            assertEquals(0.0, line(5, 5, 10, 5).angle(), 1e-12);
+            assertEquals(180.0, line(10, 5, 5, 5).angle(), 1e-12);
+        }
+    }
+
 }
