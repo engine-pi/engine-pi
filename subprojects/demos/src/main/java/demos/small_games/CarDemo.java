@@ -90,7 +90,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         background.layerPosition(-2);
         background.parallaxPosition(.5, -.025);
         Rectangle backgroundColor = new Rectangle(400, 100);
-        backgroundColor.position(-200, -105);
+        backgroundColor.anchor(-200, -105);
         backgroundColor.color(new Color(0, 194, 111));
         background.add(backgroundColor);
         for (int i = -200; i < 200; i += 10)
@@ -111,7 +111,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         Layer decoration = new Layer();
         decoration.layerPosition(-1);
         var tiles = new TileRegistration(27, 1, .5);
-        tiles.position(-9, -10);
+        tiles.anchor(-9, -10);
         tiles.makeStatic();
         for (int i = 0; i < tiles.tileCountX(); i++)
         {
@@ -133,7 +133,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
     private Actor createBackgroundTile(int x)
     {
         Image image = new Image("car/background-color-grass.png", 10, 10);
-        image.position(x, -7);
+        image.anchor(x, -7);
         image.makeStatic();
         return image;
     }
@@ -145,7 +145,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         for (int i = 0; i < length; i++)
         {
             rope[i] = new RopeSegment(.8, 0.2);
-            rope[i].position(startX + i + 0.1, -10.2);
+            rope[i].anchor(startX + i + 0.1, -10.2);
             rope[i].color(new Color(175, 90, 30));
             rope[i].makeDynamic();
             rope[i].density(150);
@@ -297,7 +297,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         public Ground(double startX, double endX)
         {
             super(endX - startX, 10);
-            position(startX, -20);
+            anchor(startX, -20);
             color(GROUND_COLOR);
             makeStatic();
             friction(GROUND_FRICTION);

@@ -96,8 +96,8 @@ public class HUDDisplay
         background.tile(3, 3, NUM_BLACK.tile(3, 2));
         // LINE CONTENT
         lines = new TileRegistration(VALUE_LENGTH, 4, 8 * SCALE, 16 * SCALE);
-        background.position(x, y);
-        lines.position(x, y);
+        background.anchor(x, y);
+        lines.anchor(x, y);
         lines.moveBy(5 * 8 * SCALE, 0);
         setLineValue(0, 10, true);
         setLineValue(1, 0, false);

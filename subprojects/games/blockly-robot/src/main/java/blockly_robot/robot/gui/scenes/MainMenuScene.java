@@ -41,8 +41,8 @@ public class MainMenuScene extends Scene implements WindowScene
             this.main = main;
             Rectangle rectangle = createRectangle();
             Text text = createText(main);
-            rectangle.position(x - 1, y - FONT_SIZE / 2);
-            text.position(x, y);
+            rectangle.anchor(x - 1, y - FONT_SIZE / 2);
+            text.anchor(x, y);
             add(rectangle, text);
         }
 

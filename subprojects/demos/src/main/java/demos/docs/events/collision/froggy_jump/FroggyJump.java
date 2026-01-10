@@ -53,7 +53,7 @@ public class FroggyJump extends Scene
         for (int i = 0; i < heightLevel; i++)
         {
             Platform platform = new Platform(5, PLATFORM_HEIGHT);
-            platform.position(0, i * 4);
+            platform.anchor(0, i * 4);
             add(platform);
         }
     }
@@ -67,7 +67,7 @@ public class FroggyJump extends Scene
             {
                 Platform platform = new Platform(6 / numPlatforms,
                         PLATFORM_HEIGHT);
-                platform.position(numPlatforms * (j + 1) * i * Random.range(),
+                platform.anchor(numPlatforms * (j + 1) * i * Random.range(),
                         i * 4);
                 add(platform);
             }

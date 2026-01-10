@@ -50,7 +50,7 @@ public class DudeDemo extends Scene
         gameData = new GameData();
         addLayer(new HUD(gameData));
         character = new PlayerCharacter(gameData);
-        character.position(0, 0);
+        character.anchor(0, 0);
         character.rotationLocked(true);
         character.makeDynamic();
         /*
@@ -92,14 +92,14 @@ public class DudeDemo extends Scene
         for (int i = 0; i < 15; i++)
         {
             Coin coin = new Coin();
-            coin.position(6 + i, 6);
+            coin.anchor(6 + i, 6);
             coin.addCollisionListener(character, coin);
             add(coin);
         }
         for (int j = 0; j < 30; j++)
         {
             ManaPickup manaPickup = new ManaPickup();
-            manaPickup.position(-j, 1);
+            manaPickup.anchor(-j, 1);
             manaPickup.addCollisionListener(character, manaPickup);
             add(manaPickup);
         }
@@ -111,7 +111,7 @@ public class DudeDemo extends Scene
         middleBackground.parallaxPosition(0.1, 0.1);
         middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
-        backgroundImage.position(
+        backgroundImage.anchor(
                 -visibleArea(Controller.windowSize()).width() / 2,
                 -visibleArea(Controller.windowSize()).height() / 2);
         middleBackground.add(backgroundImage);
@@ -120,7 +120,7 @@ public class DudeDemo extends Scene
         furtherBackground.parallaxPosition(0.05, 0.05);
         Image moon = new Image("dude/moon.png", 1, 1);
         furtherBackground.add(moon);
-        moon.position(300, 300);
+        moon.anchor(300, 300);
         addLayer(middleBackground);
         addLayer(furtherBackground);
         // CLOUDS
@@ -142,7 +142,7 @@ public class DudeDemo extends Scene
         {
             cloudTiles.tile(i, 0, TileMap.createFromImage(tilePath));
         }
-        cloudTiles.position(xOffset,
+        cloudTiles.anchor(xOffset,
                 -visibleArea(Controller.windowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
@@ -151,7 +151,7 @@ public class DudeDemo extends Scene
     private void makePlatform(int length, double pX, double pY)
     {
         Platform platform = new Platform(length);
-        platform.position(pX, pY);
+        platform.anchor(pX, pY);
         add(platform);
     }
 

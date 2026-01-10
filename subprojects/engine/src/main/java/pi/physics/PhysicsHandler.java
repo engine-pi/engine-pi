@@ -91,16 +91,16 @@ public interface PhysicsHandler
     boolean contains(Vector p);
 
     /**
-     * Gibt die aktuelle Position des Ziel-Objekts an.
+     * Gibt die aktuelle <b>Anker</b>-Position des Ziel-Objekts an.
      *
-     * @return Die aktuelle Position des Ziel-Objekts. Diese ist bei Erstellung
-     *     des Objekts zunächst immer <code>(0|0)</code> und wird mit Rotation
-     *     und Verschiebung verändert.
+     * @return Die aktuelle <b>Anker</b>-Position des Ziel-Objekts. Diese ist
+     *     bei Erstellung des Objekts zunächst immer <code>(0|0)</code> und wird
+     *     mit Rotation und Verschiebung verändert.
      *
      * @hidden
      */
     @Internal
-    Vector position();
+    Vector anchor();
 
     /**
      * Gibt die aktuelle Rotation des Ziel-Objekts in <i>Grad</i> an. Bei

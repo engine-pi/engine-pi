@@ -58,7 +58,7 @@ public class ImageFontTextAlignmentDemo extends Scene
     private void createTextLine(int y, String content, TextAlignment alignment)
     {
         ImageFontText line = new ImageFontText(font, content, 18, alignment);
-        line.position(-9, y);
+        line.anchor(-9, y);
         add(line);
     }
 

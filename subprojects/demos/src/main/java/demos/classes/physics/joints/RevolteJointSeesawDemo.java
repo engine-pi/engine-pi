@@ -48,8 +48,8 @@ public class RevolteJointSeesawDemo extends Scene
         seesaw.color("gray");
         seesaw.createRevoluteJoint(base, v(2.5, 0.2));
         add(seesaw);
-        add(new Circle().position(-2, 2).makeDynamic());
-        add(new Circle().position(2, 2.2).makeDynamic());
+        add(new Circle().anchor(-2, 2).makeDynamic());
+        add(new Circle().anchor(2, 2.2).makeDynamic());
         gravityOfEarth();
     }
 

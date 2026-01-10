@@ -63,15 +63,15 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         {
             // slanted
             Rectangle slantedLeft = new Rectangle(THICKNESS, LENGTH_SLANTED);
-            slantedLeft.position(-NARROW_RADIUS + THICKNESS * 0.25,
+            slantedLeft.anchor(-NARROW_RADIUS + THICKNESS * 0.25,
                     LENGTH_VERTICAL - THICKNESS * 0.75);
             Rectangle slatedRight = new Rectangle(THICKNESS, LENGTH_SLANTED);
-            slatedRight.position(NARROW_RADIUS, LENGTH_VERTICAL);
+            slatedRight.anchor(NARROW_RADIUS, LENGTH_VERTICAL);
             // vertical
             Rectangle verticalLeft = new Rectangle(THICKNESS, LENGTH_VERTICAL);
-            verticalLeft.position(-NARROW_RADIUS, 0);
+            verticalLeft.anchor(-NARROW_RADIUS, 0);
             Rectangle verticalRight = new Rectangle(THICKNESS, LENGTH_VERTICAL);
-            verticalRight.position(NARROW_RADIUS, 0);
+            verticalRight.anchor(NARROW_RADIUS, 0);
             Rectangle[] allRectangles = new Rectangle[] { slantedLeft,
                     slatedRight, verticalLeft, verticalRight };
             for (Rectangle r : allRectangles)
@@ -102,13 +102,13 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             Circle marble = makeMarble();
             add(marble);
             marble.makeDynamic();
-            marble.position(0, 500);
+            marble.anchor(0, 500);
             marble.applyImpulse(new Vector(Random.range() * 200 - 100,
                     Random.range() * -300 - 100));
         });
         ground = new Rectangle(Funnel.NARROW_RADIUS * 2 + Funnel.THICKNESS,
                 Funnel.THICKNESS);
-        ground.position(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
+        ground.anchor(-Funnel.NARROW_RADIUS, -Funnel.THICKNESS);
         ground.makeStatic();
         add(ground);
         camera().meter(0.5);

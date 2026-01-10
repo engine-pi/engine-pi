@@ -38,7 +38,7 @@ public class TriangleDemo extends ActorBaseScene
         // Der Anker ist links unten.
         Triangle triangle2 = new Triangle(5, 5);
         triangle2.makeStatic();
-        triangle2.position(5, 0);
+        triangle2.anchor(5, 0);
         add(triangle2);
     }
 

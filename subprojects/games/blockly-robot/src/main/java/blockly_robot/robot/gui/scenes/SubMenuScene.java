@@ -59,7 +59,7 @@ public class SubMenuScene extends Scene implements WindowScene
             {
                 text.color(Color.GRAY);
             }
-            text.position(x, y);
+            text.anchor(x, y);
             add(text);
             y -= 2 * FONT_SIZE;
         });

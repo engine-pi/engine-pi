@@ -70,7 +70,7 @@ public class SierpinskiTriangle
         }
         else
         {
-            new Triangle(width, height).color("black").position(x, y);
+            new Triangle(width, height).color("black").anchor(x, y);
         }
     }
 

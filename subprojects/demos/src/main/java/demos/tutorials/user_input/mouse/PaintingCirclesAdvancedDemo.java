@@ -45,17 +45,17 @@ public class PaintingCirclesAdvancedDemo extends Scene
         ColorRect blue = new ColorRect(Color.BLUE);
         ColorRect redPurple = new ColorRect(Color.PINK);
         ColorRect orange = new ColorRect(Color.ORANGE);
-        white.position(-8, 5);
-        blue.position(-6, 5);
-        redPurple.position(-4, 5);
-        orange.position(-2, 5);
+        white.anchor(-8, 5);
+        blue.anchor(-6, 5);
+        redPurple.anchor(-4, 5);
+        orange.anchor(-2, 5);
         add(white, blue, redPurple, orange);
         SizeText sizeText1 = new SizeText(1);
         SizeText sizeText2 = new SizeText(2);
         SizeText sizeText3 = new SizeText(3);
-        sizeText1.position(0, 5);
-        sizeText2.position(2, 5);
-        sizeText3.position(4, 5);
+        sizeText1.anchor(0, 5);
+        sizeText2.anchor(2, 5);
+        sizeText3.anchor(4, 5);
         add(sizeText1, sizeText2, sizeText3);
     }
 

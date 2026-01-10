@@ -42,7 +42,7 @@ public class AllDialogsDemo extends Scene
     public AllDialogsDemo()
     {
         result = new Text("Ergebnis");
-        result.position(0, 6);
+        result.anchor(0, 6);
         result.color("red");
         add(result);
 
@@ -107,7 +107,7 @@ public class AllDialogsDemo extends Scene
             super(content);
             this.supplier = supplier;
             add(this);
-            position(x, y);
+            anchor(x, y);
         }
 
         @Override

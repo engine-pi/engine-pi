@@ -122,7 +122,7 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
     {
         Text text = TextMaker.createText(
                 "Version " + "*".repeat(difficulty.getIndex() + 2), 1);
-        text.position(x - SHIFT, y - SHIFT);
+        text.anchor(x - SHIFT, y - SHIFT);
         setY(y - 1);
         add(text);
     }
@@ -137,7 +137,7 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
             }
             var text = TextMaker.createText(
                     "Test %d".formatted(level.getTestIndex() + 1), 0.75f);
-            text.position(x - SHIFT, y - SHIFT);
+            text.anchor(x - SHIFT, y - SHIFT);
             setY(y - 1);
             add(text);
         }

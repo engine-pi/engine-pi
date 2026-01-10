@@ -49,7 +49,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public SnakeAdvanced()
     {
         add(snakeHead);
-        scoreText.position(-9, 5);
+        scoreText.anchor(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }

@@ -45,7 +45,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     public SnakeScene()
     {
         snake = new Snake(this);
-        scoreText.position(-9, 5);
+        scoreText.anchor(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }

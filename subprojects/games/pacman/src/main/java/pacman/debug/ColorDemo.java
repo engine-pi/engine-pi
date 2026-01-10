@@ -26,7 +26,7 @@ public class ColorDemo extends BaseScene
 {
     public ColorDemo()
     {
-        add(new Text("Blinky").color("teal").position(10, 10));
+        add(new Text("Blinky").color("teal").anchor(10, 10));
     }
 
     public static void main(String[] args)

@@ -60,11 +60,11 @@ public class ImpulseDemo extends Scene
         // Der Ball, der die Dominosteine umwerfen soll.
         ball = new Circle(0.5);
         ball.color("red");
-        ball.position(-10, -2);
+        ball.anchor(-10, -2);
         add(ball);
         // Eine senkrechte Wand links der Simulation
         wall = new Rectangle(1, 40);
-        wall.position(-14, -4);
+        wall.anchor(-14, -4);
     }
 
     private void setupAngle()
@@ -87,7 +87,7 @@ public class ImpulseDemo extends Scene
         for (int i = 0; i < 20; i++)
         {
             Rectangle domino = new Rectangle(0.4, 3);
-            domino.position(i * 3 * 0.4, -4);
+            domino.anchor(i * 3 * 0.4, -4);
             domino.makeDynamic();
             domino.color("blue");
             add(domino);
@@ -100,7 +100,7 @@ public class ImpulseDemo extends Scene
         Vector mousePosition = mousePosition();
         Vector ballCenter = ball.center();
         Vector distance = ballCenter.distance(mousePosition);
-        angle.position(ball.center());
+        angle.anchor(ball.center());
         angle.width(distance.length());
         double rot = Vector.RIGHT.angle(distance);
         angle.rotation(rot);

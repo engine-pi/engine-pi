@@ -50,7 +50,7 @@ public class ImageDemo extends Scene implements KeyStrokeListener
         box1 = new Image("dude/box/obj_box001.png", 30);
         add(box1);
         box2 = new Image("dude/box/obj_box002.png", 2, 1);
-        box2.position(5, 0);
+        box2.anchor(5, 0);
         add(box2);
     }
 

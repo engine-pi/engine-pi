@@ -53,7 +53,7 @@ public class LevelAssembler
         AssembledLevel a = new AssembledLevel(level, scene, x, y);
         // Grid
         a.setGrid(createGrid());
-        a.getGrid().position(x - SHIFT, y - SHIFT);
+        a.getGrid().anchor(x - SHIFT, y - SHIFT);
         scene.add(a.getGrid());
         // ItemGrid
         new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,

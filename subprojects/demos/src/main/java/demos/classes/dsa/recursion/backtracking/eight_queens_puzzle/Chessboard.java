@@ -72,7 +72,7 @@ public class Chessboard
             for (int column = 0; column < numberOfSquares; column++)
             {
                 Square square = new Square();
-                square.position(column, row);
+                square.anchor(column, row);
                 square.color(((column + row) % 2 == 0 ? brown : brown2));
                 squares[row][column] = square;
                 scene.add(square);
@@ -80,14 +80,14 @@ public class Chessboard
                 Image queen = new Image("eight-queens-puzzle/queen-white.png",
                         120);
                 double shift = 0.2;
-                queen.position(column + shift, row + shift);
+                queen.anchor(column + shift, row + shift);
                 queen.hide();
                 queens[row][column] = queen;
                 scene.add(queen);
 
                 Circle circle = new Circle(0.2);
                 shift = 0.4;
-                circle.position(column + shift, row + shift);
+                circle.anchor(column + shift, row + shift);
                 circle.hide();
                 highlightingPoints[row][column] = circle;
                 scene.add(circle);

@@ -46,7 +46,7 @@ public class CameraDemo extends Scene
         camera = camera();
         add(new Text("Camera demo", 5).color("white"));
         focus = new Text("Focus");
-        focus.color("yellow").position(0, 4);
+        focus.color("yellow").anchor(0, 4);
         add(focus);
         camera.focus(focus);
     }

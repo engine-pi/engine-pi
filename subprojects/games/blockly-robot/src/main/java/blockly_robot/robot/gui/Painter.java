@@ -11,7 +11,7 @@ public class Painter
     {
         Text text = TextMaker.createText(
                 "Version " + "*".repeat(difficulty.getIndex() + 2), 1);
-        text.position(x, y);
+        text.anchor(x, y);
         scene.add(text);
     }
 }

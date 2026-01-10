@@ -61,12 +61,12 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
             {
                 Square square = new Square();
                 COLOR_AREAS[i][j] = square;
-                square.position(j, i);
+                square.anchor(j, i);
                 add(square);
             }
         }
         NAME = new Text("");
-        NAME.position(2, -2);
+        NAME.anchor(2, -2);
         NAME.color("white");
         add(NAME);
         camera().focus(4, 4);

@@ -119,13 +119,13 @@ public class ForceKlickEnvironment extends Scene implements
         // | [R]eset | [S]chwerkraft | [E]insperren");
         // Boden
         Rectangle boden = new Rectangle(FIELD_WIDTH, 1);
-        boden.position(0, FIELD_DEPTH);
+        boden.anchor(0, FIELD_DEPTH);
         boden.color(Color.WHITE);
         boden.makeStatic();
         // Der Rest der Wände
         Rectangle links = new Rectangle(1, FIELD_DEPTH);
         Rectangle rechts = new Rectangle(1, FIELD_DEPTH);
-        rechts.position(FIELD_WIDTH - 1, 0);
+        rechts.anchor(FIELD_WIDTH - 1, 0);
         Rectangle oben = new Rectangle(FIELD_WIDTH, 1);
         walls[1] = links;
         walls[2] = rechts;
@@ -185,7 +185,7 @@ public class ForceKlickEnvironment extends Scene implements
             attack.visible(true);
             // Prepare Vector Stick
             stange.visible(true);
-            stange.position(p);
+            stange.anchor(p);
             klickMode = KlickMode.DIRECTION_INTENSITY;
             break;
 

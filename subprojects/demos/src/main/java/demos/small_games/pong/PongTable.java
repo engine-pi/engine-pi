@@ -93,10 +93,10 @@ public class PongTable extends Scene
         ball.center(0, 0);
 
         topBouncer = new BounceBar(bounds.width());
-        topBouncer.position(bounds.xLeft(), bounds.yTop());
+        topBouncer.anchor(bounds.xLeft(), bounds.yTop());
 
         bottomBouncer = new BounceBar(bounds.width());
-        bottomBouncer.position(bounds.xLeft(),
+        bottomBouncer.anchor(bounds.xLeft(),
                 bounds.yBottom() - bottomBouncer.height());
 
         add(ball, topBouncer, bottomBouncer);

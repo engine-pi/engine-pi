@@ -42,7 +42,7 @@ public class SingleTetrominoDebugScene extends Scene
     {
         rotation = new Text("0", 1);
         rotation.color(Color.WHITE);
-        rotation.position(0, 0);
+        rotation.anchor(0, 0);
         grid = new Grid(20, 18);
         add(rotation);
         createTetromino("L");

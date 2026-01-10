@@ -72,7 +72,7 @@ public class BlockDeluxe
             this.secondImage = ImageLoader
                     .get("blocks/" + secondImageName + ".png");
         }
-        image.position(x, y);
+        image.anchor(x, y);
         this.x = x;
         this.y = y;
         scene.add(image);
@@ -169,7 +169,7 @@ public class BlockDeluxe
             secondImage = image;
             image = mainImage;
             scene.add(image);
-            image.position(x, y);
+            image.anchor(x, y);
             mainImage = null;
         }
         else if (image != null && secondImage != null)
@@ -178,7 +178,7 @@ public class BlockDeluxe
             mainImage = image;
             image = secondImage;
             scene.add(image);
-            image.position(x, y);
+            image.anchor(x, y);
             secondImage = null;
         }
     }

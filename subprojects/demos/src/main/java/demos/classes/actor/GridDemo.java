@@ -39,7 +39,7 @@ public class GridDemo extends ActorBaseScene
         grid2.background(colors.get("orange"));
         grid2.color(colors.get("red"));
         grid2.rotateBy(-45);
-        grid2.position(4, 0);
+        grid2.anchor(4, 0);
         grid2.makeDynamic();
         add(grid2);
     }

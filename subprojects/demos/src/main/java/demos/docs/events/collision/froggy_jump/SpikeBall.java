@@ -41,7 +41,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
         SpikeBall ball = new SpikeBall();
         ball.center(x, y);
         SpikeSensor sensor = new SpikeSensor(ball);
-        sensor.position(x - 1, y - 8);
+        sensor.anchor(x - 1, y - 8);
         layer.add(ball, sensor);
         return ball;
     }

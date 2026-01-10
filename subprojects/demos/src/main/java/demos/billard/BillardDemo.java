@@ -44,12 +44,12 @@ public class BillardDemo extends Scene implements KeyStrokeListener
         for (int i = 0; i < 10; i++)
         {
             Ball ball = new Ball();
-            ball.position(calculatePosition(i));
+            ball.anchor(calculatePosition(i));
             add(ball);
         }
         whiteBall = new Ball();
         whiteBall.color(Color.WHITE);
-        whiteBall.position(-200, 0);
+        whiteBall.anchor(-200, 0);
         add(whiteBall);
         focus(table.getBorder());
         camera().meter(1);

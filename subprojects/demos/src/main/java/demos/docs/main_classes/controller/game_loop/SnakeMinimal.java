@@ -46,7 +46,7 @@ public class SnakeMinimal extends Scene
     public SnakeMinimal()
     {
         add(snake);
-        scoreText.position(-9, 5);
+        scoreText.anchor(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }

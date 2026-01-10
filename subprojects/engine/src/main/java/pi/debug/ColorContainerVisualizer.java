@@ -55,22 +55,21 @@ public class ColorContainerVisualizer
         {
             NamedColor color = container.namedColor(entry.getKey());
             // Rechteck, das die Farbe als Füllfarbe demonstiert
-            scene.add(
-                    new Rectangle(1, 1).position(-12, y).color(color.color()));
+            scene.add(new Rectangle(1, 1).anchor(-12, y).color(color.color()));
             // Der dezimale Farbcode
             scene.add(new Text(color.colorDecFormatted()).height(0.5)
-                    .font("Monospaced").position(-10, y + 0.25)
+                    .font("Monospaced").anchor(-10, y + 0.25)
                     .color(color.color()));
             // Der hexadezimale Farbcode
             scene.add(new Text(color.colorHexFormatted()).height(0.5)
-                    .font("Monospaced").position(-6, y + 0.25)
+                    .font("Monospaced").anchor(-6, y + 0.25)
                     .color(color.color()));
             // Der Hauptname der Farbe
-            scene.add(new Text(color.name()).height(0.5).position(-3, y + 0.25)
+            scene.add(new Text(color.name()).height(0.5).anchor(-3, y + 0.25)
                     .color(WHITE));
             // Die Aliasse
             scene.add(new Text(color.aliasesFormatted()).height(0.3)
-                    .color(WHITE).position(1, y + 0.3));
+                    .color(WHITE).anchor(1, y + 0.3));
             y--;
         }
     }

@@ -55,11 +55,11 @@ public class MinimalDemo extends Scene
         add(rectangle);
         Animation animation = Animation.createFromAnimatedGif(
                 "game-assets/jump/fx_explosion_b_anim.gif", 1, 1);
-        animation.position(200, 200);
+        animation.anchor(200, 200);
         // animation.setOneTimeOnly();
         add(animation);
         Text text = new Text("Hallo!", 2);
-        text.position(-100, -100);
+        text.anchor(-100, -100);
         text.color(Color.MAGENTA);
         add(text);
         // Stateful Animation

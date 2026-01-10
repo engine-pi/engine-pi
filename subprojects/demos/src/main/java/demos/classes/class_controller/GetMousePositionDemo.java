@@ -36,13 +36,13 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
 
     public GetMousePositionDemo()
     {
-        add(new Text("x:").position(-3, 0));
+        add(new Text("x:").anchor(-3, 0));
         x = new Text("");
-        x.position(-2, 0);
+        x.anchor(-2, 0);
         add(x);
-        add(new Text("y:").position(1, 0));
+        add(new Text("y:").anchor(1, 0));
         y = new Text("");
-        y.position(2, 0);
+        y.anchor(2, 0);
         add(y);
     }
 

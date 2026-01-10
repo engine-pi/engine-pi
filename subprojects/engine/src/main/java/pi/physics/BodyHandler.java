@@ -126,7 +126,7 @@ public class BodyHandler implements PhysicsHandler
     }
 
     @Override
-    public Vector position()
+    public Vector anchor()
     {
         return Vector.of(body.getPosition());
     }

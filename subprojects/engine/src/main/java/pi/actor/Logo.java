@@ -96,20 +96,20 @@ public class Logo
         int iX = 2;
         // Rechteck des Ps
         rectangleP = drawRectangle();
-        rectangleP.position(shift());
+        rectangleP.anchor(shift());
         // Dreieck des Ps
         triangleP = new Triangle(3 * factor);
         scene.add(triangleP);
         applyPhysicSettings(triangleP);
-        triangleP.rotateBy(-90).position(shift(-0.25, 4));
+        triangleP.rotateBy(-90).anchor(shift(-0.25, 4));
         // Kreis des Ps
         circleP = drawCircle();
-        circleP.position(shift(0, 2));
+        circleP.anchor(shift(0, 2));
         // Rechteck des Is
         rectangleI = drawRectangle();
-        rectangleI.position(shift(iX, 0));
+        rectangleI.anchor(shift(iX, 0));
         // Kreis des Is
         circleI = drawCircle();
-        circleI.position(shift(iX, 2.8));
+        circleI.anchor(shift(iX, 2.8));
     }
 }

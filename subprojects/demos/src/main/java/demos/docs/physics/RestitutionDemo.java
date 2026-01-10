@@ -40,7 +40,7 @@ public class RestitutionDemo extends Scene
         camera().meter(20);
         // Ein Reckteck als Boden, auf dem die Kreise abprallen.
         ground = new Rectangle(24, 1);
-        ground.position(-12, -16);
+        ground.anchor(-12, -16);
         // Wir setzen die Elastizität auf 0, damit beim ersten Kreis mit der
         // Stoßzahl 0 demonstriert werden kann, dass dieser nicht abprallt.
         ground.restitution(0);
@@ -60,12 +60,12 @@ public class RestitutionDemo extends Scene
         Circle circle = new Circle(1);
         add(circle);
         circle.restitution(restitution);
-        circle.position(x, 5);
+        circle.anchor(x, 5);
         circle.makeDynamic();
         // Eine Beschriftung mit der Stoßzahl unterhalb des Kollisionsrechtecks
         DecimalFormat df = new DecimalFormat("0.00");
         Text label = new Text(df.format(restitution), 0.8);
-        label.position(x, -17);
+        label.anchor(x, -17);
         label.makeStatic();
         add(label);
     }

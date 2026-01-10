@@ -53,7 +53,7 @@ public class ItemMapPainter
         {
             return;
         }
-        image.position(x, y);
+        image.anchor(x, y);
         scene.add(image);
     }
 

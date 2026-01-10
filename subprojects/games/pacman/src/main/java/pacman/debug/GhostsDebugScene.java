@@ -67,7 +67,7 @@ public class GhostsDebugScene extends Scene implements KeyStrokeListener
     {
         Ghost ghost = Ghost.createGhost(clazz);
         assert ghost != null;
-        ghost.position(x, y);
+        ghost.anchor(x, y);
         add(ghost);
         return ghost;
     }

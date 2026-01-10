@@ -14,7 +14,7 @@ public class ActorSetFixtureFromStringDemo extends Scene
         add(rectangle);
         Image circle = new Image("dude/moon.png", 1, 1);
         circle.fixtures("C 0.5, 0.5, 0.3");
-        circle.position(1, 1);
+        circle.anchor(1, 1);
         add(circle);
     }
 

@@ -1560,8 +1560,8 @@ public class ColorScheme
                 int labelY = -2;
                 for (Entry<String, Color> entry : colors.getAll().entrySet())
                 {
-                    add(new Circle().position(x, 0).color(entry.getValue()));
-                    add(new Text(entry.getKey(), 0.5).position(x, labelY)
+                    add(new Circle().anchor(x, 0).color(entry.getValue()));
+                    add(new Text(entry.getKey(), 0.5).anchor(x, labelY)
                             .color("white"));
                     x += 2;
                     labelY -= 2;

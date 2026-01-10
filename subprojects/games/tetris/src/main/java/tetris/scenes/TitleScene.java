@@ -45,7 +45,7 @@ public class TitleScene extends BaseScene
     {
         ImageFontText actor = new ImageFontText(Font.getFont(), content, 20,
                 TextAlignment.CENTER);
-        actor.position(-2, y);
+        actor.anchor(-2, y);
         add(actor);
     }
 

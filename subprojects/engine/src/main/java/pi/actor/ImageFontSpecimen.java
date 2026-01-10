@@ -69,14 +69,14 @@ public class ImageFontSpecimen
         for (ImageFontGlyph glyph : font.glyphs())
         {
             ImageFontText text = new ImageFontText(font, glyph.glyph() + "");
-            text.position(x, y);
+            text.anchor(x, y);
             scene.add(text);
-            scene.add(new Text(glyph.content(), 1).position(x + 2, y)
+            scene.add(new Text(glyph.content(), 1).anchor(x + 2, y)
                     .color("gray"));
             scene.add(new Text(glyph.unicodeName(), 0.3, "Monospaced")
-                    .position(x, y - 0.4).color("gray"));
+                    .anchor(x, y - 0.4).color("gray"));
             scene.add(new Text(glyph.hexNumber(), 0.3, "Monospaced")
-                    .position(x, y - 0.8).color("gray"));
+                    .anchor(x, y - 0.8).color("gray"));
             x += 4;
             i++;
             if (i % glyphsPerRow == 0)

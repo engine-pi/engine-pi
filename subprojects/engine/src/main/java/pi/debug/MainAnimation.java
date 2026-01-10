@@ -141,7 +141,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
-        text.position(-10, 8.2);
+        text.anchor(-10, 8.2);
         text.color(colorScheme.get().gray());
         text.makeStatic();
         text.density(0.1);
@@ -169,7 +169,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Rectangle rectangle = new Rectangle(1, 2);
         rectangle.color(rectangleItemColor);
-        rectangle.position(-5, 10);
+        rectangle.anchor(-5, 10);
         makeItemDynamic(rectangle);
         rectangle.rotation(30);
         dropDownItem(rectangle);
@@ -179,7 +179,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Circle circle = new Circle();
         circle.color(circleItemColor);
-        circle.position(5, 10);
+        circle.anchor(5, 10);
         makeItemDynamic(circle);
         circle.applyImpulse(new Vector(Random.range(-100, 100), 0));
         dropDownItem(circle);

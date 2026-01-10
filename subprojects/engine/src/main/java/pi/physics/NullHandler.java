@@ -69,7 +69,7 @@ public class NullHandler implements PhysicsHandler
         Transform transform = new Transform();
         for (FixtureData fixtureData : physicsData.fixtures().get())
         {
-            transform.set(position().toVec2(),
+            transform.set(anchor().toVec2(),
                     (float) Math.toRadians(rotation()));
             fixtureData.getShape().computeAABB(shapeBounds, transform, 0);
             if (bounds != null)
@@ -100,7 +100,7 @@ public class NullHandler implements PhysicsHandler
 
     @Override
     @Getter
-    public Vector position()
+    public Vector anchor()
     {
         return new Vector(this.physicsData.x(), this.physicsData.y());
     }

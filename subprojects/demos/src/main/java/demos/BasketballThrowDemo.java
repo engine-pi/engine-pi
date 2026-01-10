@@ -57,7 +57,7 @@ public class BasketballThrowDemo extends Scene
         layer().add(ballShadow);
         basket = new Rectangle(1.5, 0.05);
         basket.color("red");
-        basket.position(3, 0.5);
+        basket.anchor(3, 0.5);
         basket.makeSensor();
         basket.gravityScale(0);
         basket.addCollisionListener(ball,
@@ -76,7 +76,7 @@ public class BasketballThrowDemo extends Scene
         public Ball(double x, double y)
         {
             super("shots/ball.png", 0.3, 0.3);
-            position(x + .15, y + .15);
+            anchor(x + .15, y + .15);
             fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeDynamic();
             restitution(0.85);
@@ -89,7 +89,7 @@ public class BasketballThrowDemo extends Scene
         public BallShadow(double x, double y)
         {
             super("shots/shadow.png", 0.3, 0.3);
-            position(x + .15, y + .15);
+            anchor(x + .15, y + .15);
             fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeSensor();
             gravityScale(0);
@@ -102,7 +102,7 @@ public class BasketballThrowDemo extends Scene
         public Wall(double x, double y, double width, double height)
         {
             super(width, height);
-            position(x, y);
+            anchor(x, y);
             color(Color.WHITE);
             makeStatic();
             friction(.05);

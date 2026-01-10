@@ -41,7 +41,7 @@ public class ImageFontTextDemo extends Scene
         helloWorld = new ImageFontText(font, "Hello, World.\nHello, Universe");
         AtomicInteger counter = new AtomicInteger();
         counterText = new ImageFontText(font, "0", 10, TextAlignment.RIGHT);
-        counterText.position(0, -4);
+        counterText.anchor(0, -4);
         add(helloWorld);
         repeat(0.05, () -> {
             counterText.content(String.valueOf(counter.getAndIncrement()));

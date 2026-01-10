@@ -784,7 +784,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         if (visible && this.isWithinBounds(r))
         {
             double rotation = physics.rotation();
-            Vector position = physics.position();
+            Vector position = physics.anchor();
             // ____ Pre-Render ____
             AffineTransform transform = g.getTransform();
             g.rotate(-Math.toRadians(rotation), position.x() * pixelPerMeter,
@@ -868,7 +868,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         g.drawOval(-1, -1, 2, 2);
         if (Controller.config.debug.actorCoordinates())
         {
-            Graphics2DUtil.drawText(g, actor.positionformatted(), 8, 5, 5);
+            Graphics2DUtil.drawText(g, actor.anchorformatted(), 8, 5, 5);
         }
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
@@ -1940,7 +1940,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             RevoluteJointDef def = new RevoluteJointDef();
-            def.initialize(a, b, position().add(anchor).toVec2());
+            def.initialize(a, b, anchor().add(anchor).toVec2());
             def.collideConnected = false;
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint) world
                     .createJoint(def);
@@ -2003,7 +2003,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             double angleInRadians = Math.toRadians(axisAngle);
             PrismaticJointDef def = new PrismaticJointDef();
-            def.initialize(a, b, position().add(anchor).toVec2(),
+            def.initialize(a, b, anchor().add(anchor).toVec2(),
                     new Vec2((float) Math.cos(angleInRadians),
                             (float) Math.sin(angleInRadians)));
             def.collideConnected = false;
@@ -2042,8 +2042,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.bodyB = b;
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
-            Vector distanceBetweenBothActors = (this.position().add(anchorThis))
-                    .distance(other.position().add(anchorOther));
+            Vector distanceBetweenBothActors = (this.anchor().add(anchorThis))
+                    .distance(other.anchor().add(anchorOther));
             def.length = (float) distanceBetweenBothActors.length();
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint) world
                     .createJoint(def);
@@ -2083,57 +2083,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint) world
                     .createJoint(def);
         }, new WeldJoint());
-    }
-
-    /**
-     * Setzt die Position des {@link Actor}-Objektes gänzlich neu auf der
-     * Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung von der
-     * aktuellen Position an die neue.
-     *
-     * @param x Die neue {@code x}-Koordinate.
-     * @param y Die neue {@code y}-Koordinate.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
-     *
-     * @see #position(Vector)
-     * @see #center(double, double)
-     * @see #x(double)
-     * @see #y(double)
-     */
-    @API
-    @Setter
-    public final Actor position(double x, double y)
-    {
-        position(new Vector(x, y));
-        return this;
-    }
-
-    /**
-     * Setzt die Position des Objektes gänzlich neu auf der Zeichenebene. Das
-     * Setzen ist technisch gesehen eine Verschiebung von der aktuellen Position
-     * an die neue.
-     *
-     * @param position Der neue Zielpunkt.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
-     *
-     * @see #position(double, double)
-     * @see #center(double, double)
-     * @see #x(double)
-     * @see #y(double)
-     */
-    @API
-    @Setter
-    public final Actor position(Vector position)
-    {
-        moveBy(position.subtract(position()));
-        return this;
     }
 
     /**
@@ -2212,8 +2161,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #center(Vector)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #position(double, double)
-     * @see #position(Vector)
+     * @see #anchor(double, double)
+     * @see #anchor(Vector)
      * @see #center()
      */
     @API
@@ -2248,8 +2197,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @see #center(double, double)
      * @see #moveBy(double, double)
      * @see #moveBy(Vector)
-     * @see #position(double, double)
-     * @see #position(Vector)
+     * @see #anchor(double, double)
+     * @see #anchor(Vector)
      * @see #center()
      */
     @API
@@ -2268,13 +2217,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return {@code x}-Koordinate
      *
      * @see #y()
-     * @see #position()
+     * @see #anchor()
      */
     @API
     @Getter
     public final double x()
     {
-        return position().x();
+        return anchor().x();
     }
 
     /**
@@ -2296,7 +2245,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.color(..).postion(..)}.
      *
-     * @see #position(double, double)
+     * @see #anchor(double, double)
      * @see #center(double, double)
      * @see #y(double)
      */
@@ -2316,13 +2265,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Die y-Koordinate
      *
      * @see #x()
-     * @see #position()
+     * @see #anchor()
      */
     @API
     @Getter
     public final double y()
     {
-        return position().y();
+        return anchor().y();
     }
 
     /**
@@ -2344,7 +2293,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code actor.color(..).postion(..)}.
      *
-     * @see #position(double, double)
+     * @see #anchor(double, double)
      * @see #center(double, double)
      * @see #x(double)
      */
@@ -2360,7 +2309,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * @return Die Koordinaten des Mittelpunktes des Objektes.
      *
-     * @see #position()
+     * @see #anchor()
      */
     @API
     @Getter
@@ -2380,32 +2329,84 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Getter
     public final Vector centerRelative()
     {
-        return center().subtract(position());
+        return center().subtract(anchor());
     }
 
     /**
-     * Gibt die Position dieses {@link Actor}-Objekts aus.
+     * Setzt die <b>Anker</b>-Position des {@link Actor}-Objektes gänzlich neu
+     * auf der Zeichenebene. Das Setzen ist technisch gesehen eine Verschiebung
+     * von der aktuellen <b>Anker</b>-Position an die neue.
      *
-     * @return Die aktuelle Position dieses {@link Actor}-Objekts.
+     * @param x Die neue {@code x}-Koordinate.
+     * @param y Die neue {@code y}-Koordinate.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @see #anchor(Vector)
+     * @see #center(double, double)
+     * @see #x(double)
+     * @see #y(double)
+     */
+    @API
+    @Setter
+    public final Actor anchor(double x, double y)
+    {
+        anchor(new Vector(x, y));
+        return this;
+    }
+
+    /**
+     * Setzt die Position des Objektes gänzlich neu auf der Zeichenebene. Das
+     * Setzen ist technisch gesehen eine Verschiebung von der aktuellen
+     * <b>Anker</b>-Position an die neue.
+     *
+     * @param anchor Der neue Zielpunkt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @see #anchor(double, double)
+     * @see #center(double, double)
+     * @see #x(double)
+     * @see #y(double)
+     */
+    @API
+    @Setter
+    public final Actor anchor(Vector anchor)
+    {
+        moveBy(anchor.subtract(anchor()));
+        return this;
+    }
+
+    /**
+     * Gibt die <b>Anker</b>-Position dieses {@link Actor}-Objekts aus.
+     *
+     * @return Die aktuelle <b>Anker</b>-Position dieses {@link Actor}-Objekts.
      */
     @API
     @Getter
-    public final Vector position()
+    public final Vector anchor()
     {
-        return physics.position();
+        return physics.anchor();
     }
 
     /**
-     * Gibt die Position formatiert als Zeichenkette aus.
+     * Gibt die <b>Anker</b>-Position formatiert als Zeichenkette aus.
      *
-     * @return Die Position als Zeichenkette im Format {@code 0.0|0.0}.
+     * @return Die <b>Anker</b>-Position als Zeichenkette im Format
+     *     {@code 0.0|0.0}.
      */
     @Getter
-    public final String positionformatted()
+    public final String anchorformatted()
     {
-        Vector pos = position();
-        return TextUtil.roundNumber(pos.x()) + "|"
-                + TextUtil.roundNumber(pos.y());
+        Vector anchor = anchor();
+        return TextUtil.roundNumber(anchor.x()) + "|"
+                + TextUtil.roundNumber(anchor.y());
     }
 
     /**

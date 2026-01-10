@@ -32,15 +32,15 @@ public class CircleDemo extends ActorBaseScene
     {
         // Konstruktor ohne Parameter
         Circle circle = new Circle();
-        circle.position(2, 1);
+        circle.anchor(2, 1);
         circle.makeDynamic();
         // Konstruktor mit Angabe des Durchmessers
         Circle circle2 = new Circle(2);
-        circle2.position(-2, 0);
+        circle2.anchor(-2, 0);
         circle2.makeStatic();
 
-        new Circle().position(5, 3).makeStatic();
-        new Circle(3).position(-6, -3).makeStatic();
+        new Circle().anchor(5, 3).makeStatic();
+        new Circle(3).anchor(-6, -3).makeStatic();
     }
 
     public static void main(String[] args)

@@ -48,7 +48,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     public IngameScene()
     {
         ghost = new Blinky();
-        ghost.position(10, 10);
+        ghost.anchor(10, 10);
         ghost.addCollisionListener((event) -> {
             if (event.colliding() instanceof Image)
             {
@@ -976,7 +976,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     private void setBrick(Brick brick, double x, double y)
     {
         Image image = brick.getImage();
-        image.position(x, y);
+        image.anchor(x, y);
         image.makeStatic();
         add(image);
     }

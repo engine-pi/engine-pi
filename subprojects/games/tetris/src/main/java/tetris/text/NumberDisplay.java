@@ -30,7 +30,7 @@ public class NumberDisplay
     {
         font = new ImageFontText(Font.getFont(), "0", maxDigits,
                 TextAlignment.RIGHT);
-        font.position(x, y);
+        font.anchor(x, y);
         scene.add(font);
         set(0);
     }

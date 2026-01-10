@@ -125,7 +125,7 @@ public class BallThrowDemo extends Scene
          * Der Boden.
          */
         Rectangle ground = new Rectangle(100, 20);
-        ground.position(0, GROUND_DEPTH);
+        ground.anchor(0, GROUND_DEPTH);
         add(ground);
         ground.color(Color.WHITE);
         ground.makeStatic();

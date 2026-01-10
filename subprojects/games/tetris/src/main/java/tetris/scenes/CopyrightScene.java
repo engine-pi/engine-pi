@@ -60,7 +60,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
                 "by Alexey Pazhitnov\uE000\n" + "\n";
         ImageFontText text = new ImageFontText(Font.getFont(), origText, 21,
                 TextAlignment.CENTER);
-        text.position(-2, 0);
+        text.anchor(-2, 0);
         add(text);
         delay(4, this::startTitleScene);
     }

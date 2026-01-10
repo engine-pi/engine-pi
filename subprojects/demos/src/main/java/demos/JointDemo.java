@@ -60,7 +60,7 @@ public class JointDemo extends ForceKlickEnvironment
         ball = new Circle(1);
         add(ball);
         ball.color(Color.BLUE);
-        ball.position(new Vector(300, 200));
+        ball.anchor(new Vector(300, 200));
         ball.makeDynamic();
     }
 
@@ -77,7 +77,7 @@ public class JointDemo extends ForceKlickEnvironment
         halter.makeDynamic();
         Rectangle item = new Rectangle(35 * FACT, 20 * FACT);
         add(item);
-        item.position(30 * FACT, 0);
+        item.anchor(30 * FACT, 0);
         item.color("red");
         item.makeDynamic();
         halter.createDistanceJoint(item, halter.center(), item.center());
@@ -92,7 +92,7 @@ public class JointDemo extends ForceKlickEnvironment
         kx.color("blue");
         kx.makeDynamic();
         Circle ky = new Circle(50);
-        ky.position(50, 0);
+        ky.anchor(50, 0);
         ky.color("green");
         ky.makeDynamic();
         kx.createRopeJoint(ky, new Vector(15, 15), new Vector(25, 25), 4);

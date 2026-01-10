@@ -237,7 +237,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             gameData.consumeMana(ROCKETCOST_PER_FRAME);
             applyImpulse(new Vector(0, 5));
             Circle particle = new Circle(0.1);
-            particle.position(
+            particle.anchor(
                     center().subtract(new Vector(Math.random() * 0.1, .45)));
             particle.color(Color.RED);
             particle.layerPosition(-1);
@@ -298,7 +298,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         if (y() < BOTTOM_OUT)
         {
             resetMovement();
-            position(0, 0);
+            anchor(0, 0);
             state(PlayerState.Falling);
         }
     }
@@ -435,7 +435,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             for (int i = 0; i < 100; i++)
             {
                 Circle particle = new Circle(Random.range() * .02 + .02);
-                particle.position(center().add(0, -32));
+                particle.anchor(center().add(0, -32));
                 particle.applyImpulse(
                         transformedSpeed.negate().multiply(Math.random() * 0.1)
                                 .multiplyY(Math.random() * 0.1));

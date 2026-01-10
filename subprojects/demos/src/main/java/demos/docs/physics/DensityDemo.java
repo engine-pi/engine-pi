@@ -59,7 +59,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
         }
         gravity(0, -9.81);
         ground = new Rectangle(20, 1);
-        ground.position(-10, -5);
+        ground.anchor(-10, -5);
         ground.makeStatic();
         add(ground);
     }
@@ -67,7 +67,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
     private Circle createCircleWithDensity(double x, double density)
     {
         Circle circle = new Circle(1);
-        circle.position(x, 5);
+        circle.anchor(x, 5);
         circle.density(density);
         circle.makeDynamic();
         add(circle);
@@ -77,7 +77,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
     private Text createDensityLables(int x, int density)
     {
         Text text = new Text(density + "", 1);
-        text.position(x, -7);
+        text.anchor(x, -7);
         text.makeStatic();
         add(text);
         return text;
