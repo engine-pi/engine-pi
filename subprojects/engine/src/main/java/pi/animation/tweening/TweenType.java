@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/tweening/TweenEquation.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/tweening/TweenType.java
  *
  * MIT License
  *
@@ -23,18 +23,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi.tweening;
+package pi.animation.tweening;
 
-/** An interface to generally apply a function to a value. */
-public interface TweenEquation
+/**
+ * The TweenType determines which values of a Tweenable} will be modified by a
+ * {@code Tween}.
+ */
+public enum TweenType
 {
-    /**
-     * Applies the function to the value and returns the result.
-     *
-     * @param progress the current value
-     *
-     * @return a {@code float} representing the result of applying the
-     *     {@code TweenEquation} to the value.
-     */
-    float compute(final float progress);
+    ANGLE, COLLISION_BOTH, COLLISION_HEIGHT, COLLISION_WIDTH, HITPOINTS,
+    LOCATION_X, LOCATION_XY, LOCATION_Y, SIZE_BOTH, SIZE_HEIGHT, SIZE_WIDTH,
+    UNDEFINED, VELOCITY, VOLUME, FONTSIZE, OPACITY
 }
