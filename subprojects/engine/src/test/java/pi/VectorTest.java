@@ -70,12 +70,14 @@ public class VectorTest
         public void test180()
         {
             assertOfAngle(180, -1.0, 0.0);
+            assertOfAngle(-180, -1.0, 0.0);
         }
 
         @Test
         public void test270()
         {
             assertOfAngle(270, 0.0, -1.0);
+            assertOfAngle(-90, 0.0, -1.0);
         }
 
         @Test
@@ -271,7 +273,6 @@ public class VectorTest
     @Nested
     class GetAngleOwnTest
     {
-
         double delta = 1e-9;
 
         private void assertAngle(double expected, double x, double y)
@@ -345,7 +346,6 @@ public class VectorTest
     @Nested
     class GetRadiansOwnTest
     {
-
         double delta = 1e-9;
 
         private void assertRadians(double expected, double x, double y)

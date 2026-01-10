@@ -123,14 +123,16 @@ public final class Vector implements Cloneable
      * entsprechenden Vektor.
      *
      * <ul>
-     * <li>Der Vektor für 0 Grad ist [x = 1; y = 0]</li>
-     * <li>Der Vektor für 90 Grad ist [x = 0; y = 1]</li>
-     * <li>Der Vektor für 180 Grad ist [x = -1; y = 0]</li>
-     * <li>Der Vektor für 270 Grad ist [x = 0; y = -1]</li>
-     * <li>Der Vektor für 360 Grad ist [x = 1; y = 0]</li>
+     * <li>Der Vektor für {@code 0} Grad ist {@code [x = 1; y = 0]}.</li>
+     * <li>Der Vektor für {@code 90} Grad ist {@code [x = 0; y = 1]}.</li>
+     * <li>Der Vektor für {@code 180} bzw. {@code -180} Grad ist
+     * {@code [x = -1; y = 0]}.</li>
+     * <li>Der Vektor für {@code 270} bzw. {@code -90} Grad ist
+     * {@code [x = 0; y = -1]}.</li>
+     * <li>Der Vektor für {@code 360} Grad ist {@code [x = 1; y = 0]}.</li>
      * </ul>
      *
-     * @param angle Der Winkel in Grad.
+     * @param angle Der <b>Winkel</b> in <b>Grad</b>.
      *
      * @return Der Vektor, der sich aus einem Winkel berechnet.
      */
@@ -594,13 +596,18 @@ public final class Vector implements Cloneable
      * Gibt den <b>Winkel</b> dieses Vektors in <b>Grad</b> zurück.
      *
      * <p>
-     * Der Wert wird durch Umrechnung des von {@link #radians()} gelieferten
-     * Winkels (Bogenmaß) mit {@link Math#toDegrees(double)} in Grad ermittelt.
-     * Der genaue Wertebereich hängt vom Rückgabewert von {@link #radians()} ab
-     * (z. B. (-π, π] → (-180°, 180°], [0, 2π) → [0°, 360°)).
+     * Der Winkel ist derjenige zwischen der positiven {@code x}-Achse und dem
+     * Vektor (x, y), gemessen gegen den Uhrzeigersinn. Der zurückgegebene Wert
+     * liegt im Bereich {@code [-180, 180]}.
      * </p>
      *
-     * @return Winkel des Vektors in Grad
+     * <p>
+     * Für den Nullvektor {@code (0, 0)} wird {@code 0} zurückgegeben.
+     * </p>
+     *
+     * @return <b>Winkel</b> des Vektors in <b>Grad</b>
+     *
+     * @see #radians()
      *
      * @since 0.37.0
      */
@@ -614,9 +621,9 @@ public final class Vector implements Cloneable
      * Gibt den <b>Winkel</b> dieses Vektors in <b>Bogenmaß</b> zurück.
      *
      * <p>
-     * Der Winkel ist derjenige zwischen der positiven x-Achse und dem Vektor
-     * (x, y), gemessen gegen den Uhrzeigersinn. Der zurückgegebene Wert liegt
-     * im Bereich {@code [-π, π]}.
+     * Der Winkel ist derjenige zwischen der positiven {@code x}-Achse und dem
+     * Vektor (x, y), gemessen gegen den Uhrzeigersinn. Der zurückgegebene Wert
+     * liegt im Bereich {@code [-π, π]}.
      * </p>
      *
      * <p>
@@ -625,6 +632,7 @@ public final class Vector implements Cloneable
      *
      * @return Winkel in Bogenmaß im Bereich {@code [-π, π]}
      *
+     * @see #angle()
      *
      * @since 0.37.0
      */
