@@ -23,7 +23,7 @@ erweitern, oder zu Pi(rckheimer-Gymnasium), an dem die Engine entwickelt wird.
 
 ## Bezug zur Engine Alpha
 
-{{ image('logo/engine-alpha/engine-alpha.png', 'Logo der Engine Alpha') }}
+{{ image('logo/related/Engine-Alpha.png', 'Logo der Engine Alpha') }}
 
 Die Engine Pi ist eine Fortführung und Erweiterung (Fork) der
 [Engine-Alpha](https://github.com/engine-alpha/engine-alpha) von [Michael
@@ -36,7 +36,7 @@ Version mit deutschen Java Bezeichnern wurde nicht geforkt.
 
 ## Bezug zur LITIENGINE
 
-{{ image('logo/litiengine/litiengine.png', 'Logo der LITIENGINE') }}
+{{ image('logo/related/LITIENGINE.png', 'Logo der LITIENGINE') }}
 
 Da die [Engine Alpha](https://github.com/engine-alpha/engine-alpha) momentan keine
 Audio-Wiedergabe unterstützt, wurde der Audio-Code der
@@ -48,5 +48,9 @@ viele Klassen zur Resourcen-Verwaltung, einige Hilfsklassen sowie das
 Tweening-Paket aus der LITIENGINE in der Engine Pi zum Einsatz.
 
 {{ image('logo/Logos-forked-Engines.svg', 'Engine Alpha + LITIENGINE = Engine Pi') }}
+
+## Standing on the shoulders of giants
+
+{{ image('logo/Standing-on-the-shoulders-of-giants.svg', 'Standing on the shoulders of giants') }}
 
 Die Dokumentation ist unter folgender URL aufrufbar: https://engine-pi.github.io/engine-pi
