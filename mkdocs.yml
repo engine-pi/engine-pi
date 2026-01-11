@@ -50,6 +50,7 @@ markdown_extensions:
   - pymdownx.magiclink
   # https://squidfunk.github.io/mkdocs-material/manual/images/
   - attr_list
+  # https://squidfunk.github.io/mkdocs-material/reference/grids/
   - md_in_html
   # https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/
   # /// caption Caption ///

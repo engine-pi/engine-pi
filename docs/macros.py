@@ -9,9 +9,19 @@ JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
 RAW_GITHUB_URL = "https://raw.githubusercontent.com/engine-pi"
 RAW_ASSETS_URL = f"{RAW_GITHUB_URL}/assets/refs/heads/main"
+ORACLE_URL_PREFIX = "https://docs.oracle.com/en/java/javase/17/docs/api"
 
 
 def _normalize_package_path(package_path: str) -> str:
+    """
+    Normalize a package path by converting forward slashes to dots.
+
+    :param package_path: A package path using forward slashes as separators
+                           (e.g., "com/example/module").
+
+    :return: The normalized package name using dots as separators
+             (e.g., "com.example.module").
+    """
     return package_path.replace("/", ".")
 
 
@@ -53,7 +63,15 @@ subprojects = {
 
 
 def _convert_class_path_to_relpath(class_path: str) -> str:
-    """:param package_path: for example ``pi.actor.Actor``
+    """:param class_path: for example ``java.awt.Color``
+
+    :return: ``java/awt/Color``
+    """
+    return class_path.replace(".", "/")
+
+
+def _convert_class_path_to_subproject_path(class_path: str) -> str:
+    """:param class_path: for example ``pi.actor.Actor``
 
     :return: ``subprojects/engine/src/main/java/pi/actor/Actor.java``
     """
@@ -63,7 +81,7 @@ def _convert_class_path_to_relpath(class_path: str) -> str:
 
 
 def _check_class_path(class_path: str) -> None:
-    relpath = _convert_class_path_to_relpath(class_path)
+    relpath = _convert_class_path_to_subproject_path(class_path)
     if not Path(relpath).exists():
         raise Exception(
             f"The class path “{class_path}” has no corresponding Java file in “{relpath}”!"
@@ -129,11 +147,12 @@ def _demo_github_url(
 
 def _get_class_name(class_path: str) -> str:
     """
-    :param class_path: For example ``pi.actor.Actor``
+    Extracts the class name from a fully qualified class path.
 
-    :return: For example ``Actor``
+    :param class_path: A fully qualified class path string (e.g., ``pi.actor.Actor``)
+
+    :return: The simple class name extracted from the path (e.g., ``Actor``)
     """
-
     return class_path.split(".")[-1]
 
 
@@ -185,6 +204,17 @@ def define_env(env: Any) -> None:
         return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
 
     env.macro(macro_class, "class")
+
+    def macro_java_class(
+        class_path: str,
+        link_title: str | None = None,
+        module: str = "java.base",
+    ) -> str:
+        if link_title is None:
+            link_title = _get_class_name(class_path)
+        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_convert_class_path_to_relpath(class_path)}.html)"
+
+    env.macro(macro_java_class, "java_class")
 
     def macro_package(package_path: str, link_title: str | None = None) -> str:
         if link_title is None:
