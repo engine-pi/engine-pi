@@ -102,8 +102,6 @@ nav:
               - manual/main-classes/actor/image-font.md
               - manual/main-classes/actor/stateful-animation.md
 
-
-
       - events (Ereignissteuerung):
           - manual/events/index.md
           - manual/events/key-stroke.md
@@ -140,6 +138,7 @@ nav:
           - manual/dev/javadoc.md
           - manual/dev/mkdocs.md
           - manual/dev/setter-getter.md
+          - manual/dev/versions.md
 
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 

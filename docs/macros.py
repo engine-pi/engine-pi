@@ -75,6 +75,11 @@ def _check_asset(relpath: str) -> None:
         raise Exception(f"The asset “{relpath}” doesn’t exist!")
 
 
+def _check_repo_path(relpath: str) -> None:
+    if not (Path(relpath)).exists():
+        raise Exception(f"The file “{relpath}” doesn’t exist!")
+
+
 def _caption(content: str, caption: str | None = None) -> str:
     if caption is None:
         return content
@@ -285,6 +290,7 @@ def define_env(env: Any) -> None:
     env.macro(macro_contribute, "contribute")
 
     def macro_repo_link(relpath: str, link_title: str | None = None) -> str:
+        _check_repo_path(relpath)
         if link_title is None:
             link_title = relpath
         return f"[{link_title}](https://github.com/engine-pi/engine-pi/blob/main/{relpath})"
