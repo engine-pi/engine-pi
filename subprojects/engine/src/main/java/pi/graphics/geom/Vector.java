@@ -121,7 +121,7 @@ public final class Vector implements Cloneable
 
     /**
      * Berechnet anhand eines <b>Winkels</b>, der in Grad angegeben ist, den
-     * entsprechenden Vektor.
+     * entsprechenden Vektor der Länge {@code 1}.
      *
      * <ul>
      * <li>Der Vektor für {@code 0} Grad ist {@code [x = 1; y = 0]}.</li>
@@ -135,7 +135,8 @@ public final class Vector implements Cloneable
      *
      * @param angle Der <b>Winkel</b> in <b>Grad</b>.
      *
-     * @return Der Vektor, der sich aus einem Winkel berechnet.
+     * @return Der Vektor mit der Länge {@code 1}, der sich aus einem Winkel
+     *     berechnet.
      */
     public static Vector ofAngle(double angle)
     {

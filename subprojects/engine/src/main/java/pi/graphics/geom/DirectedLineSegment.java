@@ -140,6 +140,12 @@ public class DirectedLineSegment
         return from.add(difference().multiply(factor));
     }
 
+    public Vector proportionalPoint(double factor, double deltaAngle)
+    {
+        return from.add(Vector.ofAngle(angle() + deltaAngle).multiply(length())
+                .multiply(factor));
+    }
+
     /**
      * Berechnet einen <b>Punkt</b> auf der Linie, der sich in einer bestimmten
      * Entfernung zum Ursprung befindet.
@@ -178,6 +184,22 @@ public class DirectedLineSegment
     {
         return from
                 .add(Vector.ofAngle(angle() + deltaAngle).multiply(distance));
+    }
+
+    /**
+     * Ein Punkt, der auf einer senkrechten (rechten Winkel zur kreuzenden) Line
+     * liegt.
+     *
+     * @param distanceOnLineSegment Der <b>Abstand</b> vom Ursprung. Positive
+     *     Entfernungen liegen in der Richtung des {@link #to Ziels}.
+     * @param distanceOnVertical
+     *
+     * @return
+     */
+    public Vector verticalPoint(double distanceOnLineSegment,
+            double distanceOnVertical)
+    {
+        return distancePoint(distanceOnLineSegment);
     }
 
     /**
