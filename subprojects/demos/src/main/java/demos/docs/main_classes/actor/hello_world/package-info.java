@@ -1,4 +1,4 @@
 /**
  * Code-Beispiele für das <b>Hello-World</b>-Tutorial.
  */
-package demos.tutorials.hello_world;
+package demos.docs.main_classes.actor.hello_world;

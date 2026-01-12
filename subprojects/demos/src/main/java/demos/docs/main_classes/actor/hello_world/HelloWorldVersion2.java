@@ -18,7 +18,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.hello_world;
+package demos.docs.main_classes.actor.hello_world;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/hello-world.md
 
 import pi.Controller;
 import pi.Scene;
@@ -50,6 +52,7 @@ public class HelloWorldVersion2 extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new HelloWorldVersion2(), 400, 300);
     }
 }

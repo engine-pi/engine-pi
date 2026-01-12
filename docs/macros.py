@@ -170,7 +170,29 @@ class JavaFile:
         )
         self.lines = self.path.read_text().splitlines()
 
-    def get_code(self, start_line: int = 0, end_line: int = 0) -> str:
+    def get_code(self, start_line: int = 0, end_line: int = 0, line: int = 0) -> str:
+        """
+        Extract a substring of code lines based on specified line numbers.
+
+        :param start_line: The starting line number (1-indexed). If 0, starts from the beginning.
+                           Defaults to 0.
+        :param end_line: The ending line number (1-indexed, inclusive). If 0, goes to the end.
+                         Defaults to 0.
+        :param line: A specific line number to extract (1-indexed). If greater than 0,
+                     overrides start_line and end_line to extract only that line.
+                     Defaults to 0.
+        :return: A string containing the extracted code lines joined by newline characters.
+
+        :raises Exception: If the end line is an empty string.
+        :raises Exception: If the start line is an empty string.
+
+        .. note::
+           If the `line` parameter is specified (> 0), it takes precedence over
+           `start_line` and `end_line` parameters.
+        """
+        if line > 0:
+            start_line = line
+            end_line = line
         lines = self.lines
         if end_line > 0:
             lines = lines[:end_line]
@@ -327,12 +349,31 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_repo_link, "repo_link")
 
-    def macro_code(relpath: str, start_line: int = 0, end_line: int = 0) -> str:
+    def macro_code(
+        relpath: str,
+        start_line: int = 0,
+        end_line: int = 0,
+        line: int = 0,
+        link: bool = True,
+    ) -> str:
         """
-        :param start_line: 1 is the first line (including)
-        :param end_line: including
+        Extract a substring of code lines based on specified line numbers.
 
+        :param start_line: The starting line number (1-indexed). If 0, starts from the beginning.
+                           Defaults to 0.
+        :param end_line: The ending line number (1-indexed, inclusive). If 0, goes to the end.
+                         Defaults to 0.
+        :param line: A specific line number to extract (1-indexed). If greater than 0,
+                     overrides start_line and end_line to extract only that line.
+                     Defaults to 0.
+        :return: A string containing the extracted code lines joined by newline characters.
 
+        :raises Exception: If the end line is an empty string.
+        :raises Exception: If the start line is an empty string.
+
+        .. note::
+           If the `line` parameter is specified (> 0), it takes precedence over
+           `start_line` and `end_line` parameters.
         https://github.com/mkdocs/mkdocs/issues/692
 
         https://pypi.org/project/mkdocs-snippets/
@@ -341,20 +382,33 @@ def define_env(env: Any) -> None:
         java_file = JavaFile(relpath)
 
         start_line_for_code_block = 1
+        if line > 0:
+            start_line_for_code_block = line
         if start_line > 0:
             start_line_for_code_block = start_line
 
-        return (
-            _fenced_code_block(
-                java_file.get_code(start_line, end_line),
-                language="java",
-                start_line=start_line_for_code_block,
-            )
-            + "\n"
-            + macro_demo(relpath, start_line=start_line, end_line=end_line)
+        output = _fenced_code_block(
+            java_file.get_code(start_line=start_line, end_line=end_line, line=line),
+            language="java",
+            start_line=start_line_for_code_block,
         )
 
+        if link:
+            output += "\n" + macro_demo(
+                relpath, start_line=start_line, end_line=end_line
+            )
+
+        return output
+
     env.macro(macro_code, "code")
+
+    def macro_line(
+        relpath: str,
+        line: int
+    ) -> str:
+        return macro_code(relpath=relpath, line=line, link=False)
+
+    env.macro(macro_line, "line")
 
     def macro_drawio(basename: str) -> str:
         """

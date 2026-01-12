@@ -1,4 +1,4 @@
-# Hello World[^engine-alpha-wiki:hello-world]
+# Tutorial „Hello World“[^engine-alpha-wiki:hello-world]
 
 [^engine-alpha-wiki:hello-world]:
     Der Abschnitt stammt aus dem
@@ -6,66 +6,81 @@
 
 ## Schritt 1: Grundlegender Aufbau
 
-Das grundlegendste *Hello World* sieht so aus:
+Das grundlegendste _Hello World_ sieht so aus:
 
 {{ image('docs/tutorials/hello-world/v1_basic.png') }}
 /// caption
 Das (noch wenig spannende) Ergebnis des Codes
 ///
 
-{{ demo('tutorials/hello_world/HelloWorldVersion1', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L27-L42') }}
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/hello_world/HelloWorldVersion1.java -->
 
-```java
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 25) }}
+
+<!-- ```java
+import pi.Controller;
+import pi.Scene;
+import pi.Text;
+
 public class HelloWorldVersion1 extends Scene
 {
     public HelloWorldVersion1()
     {
         Text helloWorld = new Text("Hello, World!", 2);
-        helloWorld.setColor("white");
-        helloWorld.setCenter(0, 1);
+        helloWorld.color("white");
+        helloWorld.center(0, 1);
         add(helloWorld);
-        Game.debug();
+        Controller.debug();
     }
 
     public static void main(String[] args)
     {
-        Game.start(new HelloWorldVersion1(), 400, 300);
+        Controller.start(new HelloWorldVersion1(), 400, 300);
     }
 }
-```
+``` -->
 
 ### Szene
 
-Die `HelloWorldVersion1`-Klasse leitet sich aus der Klasse `Scene` der Engine
+Die {{ class('demos.docs.main_classes.actor.hello_world.HelloWorldVersion1') }}-Klasse leitet sich aus der Klasse {{ class('pi.Scene') }} der Engine
 ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre
 eigenen grafischen (und sonstige) Objekte; Szenes werden unabhängig voneinander
 berechnet. Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
 eine Szene, in der „Hello World“ dargestellt werden soll:
 
-```java
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 29) }}
+
+<!--```java
 public class HelloWorldVersion1 extends Scene
-```
+```-->
 
 ### Text
 
-Wir wollen den Text *„Hello, World!“* darstellen. Die Klasse `Text` ist dafür
-zuständig. Ein Text mit Inhalt *„Hello, World!“* und Höhe 2 wird erstellt:
+Wir wollen den Text _„Hello, World!“_ darstellen. Die Klasse {{ class('pi.Text')
+}} ist dafür zuständig. Ein Text mit Inhalt _„Hello, World!“_ und Höhe 2 wird
+erstellt:
 
-```java
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 33) }}
+
+<!-- ```java
 Text helloWorld = new Text("Hello, World!", 2);
-```
+``` -->
 
-Der Text wird an Position (0|1) zentriert:
+Der Text wird an Position `(0|1)` zentriert:
 
-```java
-helloWorld.setCenter(0, 1);
-```
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 35) }}
+
+<!-- ```java
+        helloWorld.center(0, 1);
+``` -->
 
 Der Text wird an der Szene angemeldet:
 
-```java
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 36) }}
+
+<!-- ```java
 add(helloWorld);
-```
+``` -->
 
 Der letzte Schritt ist nötig, damit das Objekt auch sichtbar wird. In jeder
 Szene werden nur die Objekte gerendert, die auch an der Szene angemeldet
@@ -73,43 +88,53 @@ sind.
 
 ### Debug-Modus
 
-{{ image('docs/tutorials/hello-world/v1_debug.png') }}
-/// caption
-Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.
-///
+{{ image('docs/tutorials/hello-world/v1_debug.png', 'Der Debug-Modus zeigt das Koordinatensystem und weitere hilfreiche Informationen.') }}
 
 Um Überblick zu behalten und die Grafikebene zu verstehen, ist der Debug-Modus
 der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
 
-```java
-Game.debug();
-```
 
-Die Klasse `Game` enthält neben Debug-Modus weitere Features, die die
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 17) }}
+
+<!-- ```java
+        Controller.debug();
+``` -->
+
+Die Klasse {{ class('pi.Controller') }} enthält neben Debug-Modus weitere Features, die die
 Spielumgebung global betreffen.
 
-Die Klasse `Game` kontrolliert auch den Spielstart. Dazu muss lediglich die
-(zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem
-Fall 400 px Breite und 300 px Höhe):
+Da wir die Figuren „per Hand“, d.h. mithilfe der Methode {{ method('pi.Scene',
+'add(pi.actor.Actor...)', 'add()') }} zur Szene hinzugefügt haben, muss der Instant-Modus
+deaktiviert werden.
 
-```java
-Game.start(400, 300, new HelloWorldVersion1());
-```
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 42) }}
+
+<!-- ```java
+        Controller.instantMode(false);
+``` -->
+
+Die Klasse {{ class('pi.Controller') }} kontrolliert auch den Spielstart. Dazu muss lediglich die
+(zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem
+Fall `400` Pixel Breite und `300` Pixel Höhe):
+
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 43) }}
+
+
+<!-- ```java
+        Controller.start(new HelloWorldVersion1(), 400, 300);
+``` -->
 
 ## Schritt 2: Geometrie und Farbe
 
 Beim nächste Codebeispiel handelt es sich um eine Erweiterung der Version 1 um
 geometrischen Figuren und Farbe.
 
-{{ image('docs/tutorials/hello-world/v2_geometry.png') }}
-/// caption
-Jetzt mit mehr Farbe und geometrischen Figuren
-///
+{{ image('docs/tutorials/hello-world/v2_geometry.png', 'Jetzt mit mehr Farbe und geometrischen Figuren') }}
 
-{{ demo('tutorials/hello_world/HelloWorldVersion2', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L23-L55') }}
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion2.java', 25) }}
 
-```java
-import pi.Game;
+<!-- ```java
+import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
@@ -120,29 +145,30 @@ public class HelloWorldVersion2 extends Scene
     public HelloWorldVersion2()
     {
         Text helloworld = new Text("Hello, World!", 2);
-        helloworld.setCenter(0, 1);
+        helloworld.center(0, 1);
         add(helloworld);
-        helloworld.setColor("black");
+        helloworld.color("black");
         // Ein grünes Rechteck als Hintergrund
         Rectangle background = new Rectangle(12, 3);
-        background.setColor("green");
-        background.setCenter(0, 1);
-        background.setLayerPosition(-1);
+        background.color("green");
+        background.center(0, 1);
+        background.layerPosition(-1);
         // Ein blauer Kreis
         Circle circle = new Circle(8);
-        circle.setColor("blue");
-        circle.setCenter(0, 1);
-        circle.setLayerPosition(-2);
+        circle.color("blue");
+        circle.center(0, 1);
+        circle.layerPosition(-2);
         add(background, circle);
-        getCamera().setMeter(20);
+        camera().meter(20);
     }
 
     public static void main(String[] args)
     {
-        Game.start(400, 300, new HelloWorldVersion2());
+        Controller.instantMode(false);
+        Controller.start(new HelloWorldVersion2(), 400, 300);
     }
 }
-```
+``` -->
 
 ### Geometrische Figuren
 
@@ -163,18 +189,13 @@ AWT-Color-Objekt übergeben werden oder einfacher als
 [Zeichenkette](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/resources/ColorContainer.html):
 
 ```java
-background.setColor("green");
-circle.setColor("blue");
+background.color("green");
+circle.color("blue");
 ```
 
 ### Ebenen-Position
 
-{{ image('docs/tutorials/hello-world/v2_nolayer.png') }}
-/// caption
-So würde das Bild aussehen, wenn die Ebenen-Position nicht explizit gesetzt
-werden würde.
-///
-
+{{ image('docs/tutorials/hello-world/v2_nolayer.png', 'So würde das Bild aussehen, wenn die Ebenen-Position nicht explizit gesetzt werden würde.') }}
 
 Wir wollen explizit, dass der Text vor allen anderen Objekten dargestellt wird.
 Außerdem soll der Kreis noch hinter dem Rechteck sein. Um das sicherzustellen,
@@ -182,6 +203,6 @@ kann die Ebenen-Position explizit angegeben werden: Je höher die
 Ebenen-Position, desto weiter im Vordergrund ist das Objekt.
 
 ```java
-background.setLayerPosition(-1);
-circle.setLayerPosition(-2);
+background.layerPosition(-1);
+circle.layerPosition(-2);
 ```
