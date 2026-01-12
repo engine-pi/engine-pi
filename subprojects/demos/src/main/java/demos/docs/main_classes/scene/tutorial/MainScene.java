@@ -18,19 +18,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.scenes;
+package demos.docs.main_classes.scene.tutorial;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/scene.md
 
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Scene;
 import pi.Rectangle;
+import pi.Scene;
 import pi.Text;
 import pi.animation.CircleAnimation;
-import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
-import pi.event.MouseButton;
-import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
 
 public class MainScene extends Scene implements KeyStrokeListener
@@ -67,63 +66,9 @@ public class MainScene extends Scene implements KeyStrokeListener
         Controller.transitionToScene(pauseMenu);
     }
 
-    private static class PauseMenu extends Scene
-    {
-        private final Scene mainScene;
-
-        public PauseMenu(Scene mainScene)
-        {
-            this.mainScene = mainScene;
-            MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
-            add(back, back.label);
-            Text headline = new Text("Mach mal Pause.", 2);
-            headline.center(0, 3);
-            add(headline);
-        }
-
-        private class MenuItem extends Rectangle
-                implements MouseClickListener, FrameUpdateListener
-        {
-            private final Text label;
-
-            public MenuItem(Vector center, String labelText)
-            {
-                super(10, 1.5);
-                label = new Text(labelText, 1);
-                label.layerPosition(1);
-                label.color("black");
-                label.center(center);
-                layerPosition(0);
-                color("blueGreen");
-                center(center);
-            }
-
-            @Override
-            public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
-            {
-                if (contains(clickLoc))
-                {
-                    Controller.transitionToScene(mainScene);
-                }
-            }
-
-            @Override
-            public void onFrameUpdate(double pastTime)
-            {
-                if (contains(Controller.mousePosition()))
-                {
-                    color("blue");
-                }
-                else
-                {
-                    color("blueGreen");
-                }
-            }
-        }
-    }
-
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new MainScene(), 600, 400);
     }
 }

@@ -1,4 +1,4 @@
-package demos.tutorials.scenes;
+package demos.classes.class_scene;
 
 import static pi.Controller.colors;
 

@@ -100,9 +100,13 @@ Alle färbbaren Klassen (z. B. Text und alle Geometrie-Klassen) verfügen zum Fe
 
 ## Alpha-Werte
 
-Ein weiterer Vorteil der Klasse Farbe ist die Möglichkeit, Farben zu einem gewissen Anteil durchsichtig machen zu können. Die "Nichtdurchsichtigkeit" (oder auch Opacity) einer Farbe wird als Alpha-Helligkeit bezeichnet. Auch diese lässt sich mit einem Wert zwischen 0 und 255 beschreiben. Bei einem Wert von 255 ist die Farbe gänzlich sichtbar und bei einem Wert von 0 absolut durchsichtig, d. h. unsichtbar. Alle Werte dazwischen sorgen für eine unterschiedlich stark durchsichtige, geister- oder glasartige Farbe.[^engine-alpha-wiki:farben]
-
-
+Ein weiterer Vorteil der Klasse Farbe ist die Möglichkeit, Farben zu einem
+gewissen Anteil durchsichtig machen zu können. Die "Nichtdurchsichtigkeit" (oder
+auch Opacity) einer Farbe wird als Alpha-Helligkeit bezeichnet. Auch diese lässt
+sich mit einem Wert zwischen 0 und 255 beschreiben. Bei einem Wert von 255 ist
+die Farbe gänzlich sichtbar und bei einem Wert von 0 absolut durchsichtig, d. h.
+unsichtbar. Alle Werte dazwischen sorgen für eine unterschiedlich stark
+durchsichtige, geister- oder glasartige Farbe.[^engine-alpha-wiki:farben]
 
 Hierfür gibt es dann den vollen Konstruktor der Klasse Farbe:
 

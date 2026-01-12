@@ -17,179 +17,60 @@ Methode `add(...)`.
 Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
 es die Methode `Game.transitionToScene(Scene)`.
 
-{{ image('docs/scenes/Scene_Demonstration.png') }}
-/// caption
-Szenen in der Engine: Beispiel mit Pausenmenü
-///
+{{ image('docs/scenes/Scene_Demonstration.png', 'Szenen in der Engine: Beispiel mit Pausenmenü') }}
 
 ## Ein Pausenmenü
 
 Das folgende Beispiel enthält zwei Szenen: Eine einfache Animation und ein
 Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 
-Quellcode: [demos/scenes/MainScene.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/scenes/MainScene.java)
-
-{{ demo('tutorials/scenes/MainScene') }}
-
-```java
-public class MainScene extends Scene implements KeyStrokeListener
-{
-    private PauseMenu pauseMenu;
-
-    public MainScene()
-    {
-        pauseMenu = new PauseMenu(this);
-        Rectangle toAnimate = new Rectangle(5, 2);
-        toAnimate.setCenter(0, -5);
-        toAnimate.setColor("orange");
-        CircleAnimation animation = new CircleAnimation(toAnimate,
-                new Vector(0, 0), 8, true, true);
-        addFrameUpdateListener(animation);
-        add(toAnimate);
-        addKeyStrokeListener(this);
-        Text info = new Text("Pause mit P", 0.5);
-        info.setCenter(-7, -5);
-        add(info);
-    }
-
-    @Override
-    public void onKeyDown(KeyEvent keyEvent)
-    {
-        if (keyEvent.getKeyCode() == KeyEvent.VK_P)
-        {
-            gotoPause();
-        }
-    }
-
-    private void gotoPause()
-    {
-        Game.transitionToScene(pauseMenu);
-    }
-
-    private class PauseMenu extends Scene
-    {
-        private Scene mainScene;
-
-        public PauseMenu(Scene mainScene)
-        {
-            this.mainScene = mainScene;
-            MenuItem back = new MenuItem(new Vector(0, -5), "Zurück");
-            add(back, back.label);
-            Text headline = new Text("Mach mal Pause.", 2);
-            headline.setCenter(0, 3);
-            add(headline);
-        }
-
-        private class MenuItem extends Rectangle
-                implements MouseClickListener, FrameUpdateListener
-        {
-            private Text label;
-
-            public MenuItem(Vector center, String labelText)
-            {
-                super(10, 1.5);
-                label = new Text(labelText, 1);
-                label.setLayerPosition(1);
-                label.setColor("black");
-                label.setCenter(center);
-                setLayerPosition(0);
-                setColor("blueGreen");
-                setCenter(center);
-            }
-
-            @Override
-            public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
-            {
-                if (contains(clickLoc))
-                {
-                    Game.transitionToScene(mainScene);
-                }
-            }
-
-            @Override
-            public void onFrameUpdate(double pastTime)
-            {
-                if (contains(Game.getMousePositionInCurrentScene()))
-                {
-                    setColor("blue");
-                }
-                else
-                {
-                    setColor("blueGreen");
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        Game.start(600, 400, new MainScene());
-    }
-}
-```
-
-{{ image('docs/scenes/Tutorial_Pause_Menu.gif') }}
-/// caption
-Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
-///
+{{ image('docs/scenes/Tutorial_Pause_Menu.gif', 'Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück') }}
 
 ## Die zwei Szenen
 
 Die Hauptszene ist `MainScene`. Hier könnte ein Game Loop für ein
 Spiel stattfinden. Dieses Tutorial zeigt stattdessen eine kleine Animation.
 
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MainScene.java -->
+
+{{ code('docs/main_classes/scene/tutorial/MainScene.java', 25) }}
+
 Die zweite Szene heißt `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
 kleinen Knopf, um das Menü wieder zu verlassen.
 
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L36-L38') }}
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/PauseMenu.java -->
 
-```java
-public class MainScene extends Scene
-{
-    private Scene pauseMenu;
-    //...
-}
-```
-
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L70-L72') }}
-
-```java
-private class PauseMenu extends Scene
-{
-    private Scene mainScene;
-    //...
-}
-```
+{{ code('docs/main_classes/scene/tutorial/PauseMenu.java', 25) }}
 
 Die Haupt-Szene wird per Knopfdruck pausiert. Wird der P-Knopf gedrückt, wird
 die Transition ausgeführt:
 
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L65-L68') }}
+{{ code('docs/main_classes/scene/tutorial/MainScene.java', 64, 67) }}
 
-```java
-private void gotoPause()
-{
-    Game.transitionToScene(pauseMenu);
-}
-```
+<!-- ```java
+    private void gotoPause()
+    {
+        Controller.transitionToScene(pauseMenu);
+    }
+``` -->
 
 Das Pausenmenü wird statt mit Tastatur per Mausklick geschlossen. Im internen
 Steuerelement `MenuItem` wird dafür die entsprechende Methode aufgerufen, wann
 immer ein Mausklick auf dem Element landet - dies wird durch die Methode
 `contains(Vector)` geprüft:
 
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L102-L108') }}
+{{ code('docs/main_classes/scene/tutorial/MenuItem.java', 54, 61) }}
 
-```java
-@Override
-public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
-{
-    if (contains(clickLoc))
+<!-- ```java
+    @Override
+    public void onMouseDown(Vector clickLoc, MouseButton mouseButton)
     {
-        Game.transitionToScene(mainScene);
+        if (contains(clickLoc))
+        {
+            Controller.transitionToScene(mainScene);
+        }
     }
-}
-```
+``` -->
 
 ## Kosmetische Kleinigkeiten
 
@@ -197,39 +78,45 @@ In der Hauptszene findet eine interpolierte Rotationsanimation statt. Diese
 rotiert ein oranges Rechteck wiederholend um den Punkt `(0|0)`. Eine volle
 Rotation im Uhrzeigersinn dauert `8` Sekunden.
 
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L43-L49') }}
+{{ code('docs/main_classes/scene/tutorial/MainScene.java', 42, 48) }}
 
-```java
-Rectangle toAnimate = new Rectangle(5, 2);
-toAnimate.setCenter(0, -5);
-toAnimate.setColor("orange");
-CircleAnimation animation = new CircleAnimation(toAnimate,
-        new Vector(0, 0), 8, true, true);
-addFrameUpdateListener(animation);
-add(toAnimate);
-```
+<!-- ```java
+        Rectangle toAnimate = new Rectangle(5, 2);
+        toAnimate.center(0, -5);
+        toAnimate.color("orange");
+        CircleAnimation animation = new CircleAnimation(toAnimate,
+                new Vector(0, 0), 8, true, true);
+        addFrameUpdateListener(animation);
+        add(toAnimate);
+``` -->
 
 Das Pausenmenü hat einen Hover-Effekt. Hierzu wird in jeden Einzelbild
 überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 `Game.getMousePositionInCurrentScene()` genutzt:
 
-{{ demo('tutorials/scenes/MainScene', 'a010897d03ba56fa142466a40f00a7e6f12a71d7', 'L111-L121') }}
+{{ code('docs/main_classes/scene/tutorial/MenuItem.java', 63, 74) }}
 
-```java
-@Override
-public void onFrameUpdate(double pastTime)
-{
-    if (contains(Game.getMousePositionInCurrentScene()))
+<!-- ```java
+    @Override
+    public void onFrameUpdate(double pastTime)
     {
-        setColor("blue");
+        if (contains(Controller.mousePosition()))
+        {
+            color("blue");
+        }
+        else
+        {
+            color("blueGreen");
+        }
     }
-    else
-    {
-        setColor("blueGreen");
-    }
-}
-```
+``` -->
+
+Kompletter Code MenuItem
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MenuItem.java -->
+
+{{ code('docs/main_classes/scene/tutorial/MenuItem.java', 25) }}
 
 ## Anmerkungen und Beobachtungen
 
