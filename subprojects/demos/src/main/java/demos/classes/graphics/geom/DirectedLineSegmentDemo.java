@@ -76,7 +76,7 @@ public class DirectedLineSegmentDemo extends Scene
     private final Line positiveOffset;
 
     /**
-     * Die um einen positiven Winkel gedrehte Line;
+     * Die um einen negativen Winkel gedrehte Line;
      */
     private final Line negativeOffset;
 
