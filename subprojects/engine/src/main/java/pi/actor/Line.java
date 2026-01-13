@@ -230,7 +230,7 @@ public class Line extends Actor
             lineSegment = new DirectedLineSegment(end, opposite);
             if (offset != 0)
             {
-                endWithOffset = lineSegment.distancePoint(offset);
+                endWithOffset = lineSegment.fixedPoint(offset);
                 lineSegment = new DirectedLineSegment(endWithOffset, opposite);
             }
             else
@@ -388,7 +388,7 @@ public class Line extends Actor
                 // Bei dicken Linien verdeckt das Dreieck das Linienende nicht
                 // ganz. Wir schieben die Pfeilspitze etwas nach vorne.
                 // Die doppelte Liniedicke liefert ein gutes Ergebnis.
-                Vector shiftedEnd = lineSegment.distancePoint(-2 * strokeWidth);
+                Vector shiftedEnd = lineSegment.fixedPoint(-2 * strokeWidth);
                 Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
                         shiftedEnd.multiply(pixelPerMeter), sideLength,
                         arrowAngle, true);

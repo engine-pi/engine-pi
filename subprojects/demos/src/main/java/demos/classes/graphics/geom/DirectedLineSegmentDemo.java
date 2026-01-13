@@ -72,13 +72,21 @@ public class DirectedLineSegmentDemo extends Scene
 
     /**
      * Die um einen positiven Winkel gedrehte Line;
+     *
+     * @see DirectedLineSegment#fixedRotatedPoint(double, double)
      */
-    private final Line positiveOffset;
+    private final Line positiveFixedRotated;
 
     /**
      * Die um einen negativen Winkel gedrehte Line;
+     *
+     * @see DirectedLineSegment#fixedRotatedPoint(double, double)
      */
-    private final Line negativeOffset;
+    private final Line negativeFixedRotated;
+
+    private final Line positiveProportionalRotated;
+
+    private final Line negativeProportionalRotated;
 
     public DirectedLineSegmentDemo()
     {
@@ -103,9 +111,13 @@ public class DirectedLineSegmentDemo extends Scene
         arrowedLine.end2.arrow(true).arrowSideLength(0.5);
         add(arrowedLine);
 
-        positiveOffset = createRotatedLine(from, to);
-        negativeOffset = createRotatedLine(from, to);
-        add(positiveOffset, negativeOffset);
+        positiveFixedRotated = createRotatedLine(from, to, "green");
+        negativeFixedRotated = createRotatedLine(from, to, "green");
+        add(positiveFixedRotated, negativeFixedRotated);
+
+        positiveProportionalRotated = createRotatedLine(from, to, "yellow");
+        negativeProportionalRotated = createRotatedLine(from, to, "yellow");
+        add(positiveProportionalRotated, negativeProportionalRotated);
 
         table = new TextTableBox("length():", "0.0", "angle():", "0.0", "to():",
                 "(0|0)");
@@ -118,10 +130,10 @@ public class DirectedLineSegmentDemo extends Scene
         return new Circle(0.3);
     }
 
-    private Line createRotatedLine(Vector from, Vector to)
+    private Line createRotatedLine(Vector from, Vector to, String color)
     {
         Line line = new Line(from, to);
-        line.color("green");
+        line.color(color);
         line.strokeWidth(0.02);
         return line;
     }
@@ -130,11 +142,16 @@ public class DirectedLineSegmentDemo extends Scene
     {
         lineSegment.to(to);
         arrowedLine.point2(to);
-        longLine.point1(lineSegment.distancePoint(-20));
-        longLine.point2(lineSegment.distancePoint(20));
+        longLine.point1(lineSegment.fixedPoint(-20));
+        longLine.point2(lineSegment.fixedPoint(20));
 
-        positiveOffset.point2(lineSegment.distancePoint(-2, 45));
-        negativeOffset.point2(lineSegment.distancePoint(-2, -45));
+        positiveFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, 45));
+        negativeFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, -45));
+
+        positiveProportionalRotated
+                .point2(lineSegment.proportionalRotatedPoint(-0.5, 20));
+        negativeProportionalRotated
+                .point2(lineSegment.proportionalRotatedPoint(-0.5, -20));
 
         point_0_5.center(lineSegment.proportionalPoint(0.5));
         point_2.center(lineSegment.proportionalPoint(2));
