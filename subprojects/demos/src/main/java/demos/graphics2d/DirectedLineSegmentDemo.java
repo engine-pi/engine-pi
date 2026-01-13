@@ -23,7 +23,7 @@ public class DirectedLineSegmentDemo extends Graphics2DComponent
 
         g.setColor(Color.RED);
 
-        Vector distance = line.distancePoint(100);
+        Vector distance = line.fixedPoint(100);
         g.fillOval(distance.x(1), distance.y(1), 3, 3);
     }
 

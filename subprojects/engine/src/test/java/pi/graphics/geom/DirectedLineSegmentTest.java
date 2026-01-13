@@ -34,14 +34,14 @@ public class DirectedLineSegmentTest
     public void distancePoint()
     {
         DirectedLineSegment l = line(0, 0, 1, 1);
-        assertEquals(v(0, 0), l.distancePoint(0));
-        assertEquals(v(1, 1).normalize(), l.distancePoint(1));
-        assertEquals(v(1, 1).normalize().multiply(2), l.distancePoint(2));
+        assertEquals(v(0, 0), l.fixedPoint(0));
+        assertEquals(v(1, 1).normalize(), l.fixedPoint(1));
+        assertEquals(v(1, 1).normalize().multiply(2), l.fixedPoint(2));
 
         DirectedLineSegment l2 = line(0, 0, 3, 4);
-        assertEquals(v(0, 0), l2.distancePoint(0));
-        assertEquals(v(0.6, 0.8), l2.distancePoint(1));
-        assertEquals(v(1.2, 1.6), l2.distancePoint(2));
+        assertEquals(v(0, 0), l2.fixedPoint(0));
+        assertEquals(v(0.6, 0.8), l2.fixedPoint(1));
+        assertEquals(v(1.2, 1.6), l2.fixedPoint(2));
     }
 
     @Test

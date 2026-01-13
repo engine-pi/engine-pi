@@ -140,7 +140,7 @@ public class DirectedLineSegment
         return from.add(difference().multiply(factor));
     }
 
-    public Vector proportionalPoint(double factor, double deltaAngle)
+    public Vector proportionalRotatedPoint(double factor, double deltaAngle)
     {
         return from.add(Vector.ofAngle(angle() + deltaAngle).multiply(length())
                 .multiply(factor));
@@ -161,7 +161,7 @@ public class DirectedLineSegment
      *
      * @since 0.42.0
      */
-    public Vector distancePoint(double distance)
+    public Vector fixedPoint(double distance)
     {
         return from.add(difference().normalize().multiply(distance));
     }
@@ -180,7 +180,7 @@ public class DirectedLineSegment
      *
      * @since 0.42.0
      */
-    public Vector distancePoint(double distance, double deltaAngle)
+    public Vector fixedRotatedPoint(double distance, double deltaAngle)
     {
         return from
                 .add(Vector.ofAngle(angle() + deltaAngle).multiply(distance));
@@ -199,7 +199,7 @@ public class DirectedLineSegment
     public Vector verticalPoint(double distanceOnLineSegment,
             double distanceOnVertical)
     {
-        return distancePoint(distanceOnLineSegment);
+        return fixedPoint(distanceOnLineSegment);
     }
 
     /**
