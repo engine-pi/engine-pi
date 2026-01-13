@@ -24,10 +24,10 @@ public class DirectedLineSegmentTest
     public void proportionalPoint()
     {
         DirectedLineSegment l = line(0, 0, 1, 1);
-        assertEquals(v(1, 1), l.proportionalPoint(1));
-        assertEquals(v(0, 0), l.proportionalPoint(0));
-        assertEquals(v(2, 2), l.proportionalPoint(2));
-        assertEquals(v(0.5, 0.5), l.proportionalPoint(0.5));
+        assertEquals(v(1, 1), l.relativePoint(1));
+        assertEquals(v(0, 0), l.relativePoint(0));
+        assertEquals(v(2, 2), l.relativePoint(2));
+        assertEquals(v(0.5, 0.5), l.relativePoint(0.5));
     }
 
     @Test

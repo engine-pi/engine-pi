@@ -18,7 +18,7 @@ public class DirectedLineSegmentDemo extends Graphics2DComponent
 
         g.drawLine(from.x(1), from.y(1), to.x(1), to.y(1));
 
-        Vector half = line.proportionalPoint(0.5);
+        Vector half = line.relativePoint(0.5);
         g.fillOval(half.x(1), half.y(1), 3, 3);
 
         g.setColor(Color.RED);

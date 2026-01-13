@@ -200,9 +200,21 @@ public class DirectedLineSegmentDemo extends Scene
         minusRelativeRotated
                 .point2(lineSegment.relativeRotatedPoint(-0.5, -20));
 
-        point_0_5.center(lineSegment.proportionalPoint(0.5));
-        point_2.center(lineSegment.proportionalPoint(2));
-        point_minus_1.center(lineSegment.proportionalPoint(-1));
+        plusFixedVertical.point1(lineSegment.fixedPoint(1));
+        plusFixedVertical.point2(lineSegment.fixedVerticalPoint(1, 1));
+        minusFixedVertical.point1(lineSegment.fixedPoint(-2));
+        minusFixedVertical.point2(lineSegment.fixedVerticalPoint(-2, -2));
+
+        plusRelativeVertical.point1(lineSegment.relativePoint(0.75));
+        plusRelativeVertical
+                .point2(lineSegment.relativeVerticalPoint(0.75, 0.25));
+        minusRelativeVertical.point1(lineSegment.relativePoint(-0.5));
+        minusRelativeVertical
+                .point2(lineSegment.relativeVerticalPoint(-0.5, -0.1));
+
+        point_0_5.center(lineSegment.relativePoint(0.5));
+        point_2.center(lineSegment.relativePoint(2));
+        point_minus_1.center(lineSegment.relativePoint(-1));
 
         table.forBox(0, 1, cell -> cell.box
                 .content(TextUtil.roundNumber(lineSegment.length(), 2) + " m"));

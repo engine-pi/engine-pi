@@ -135,15 +135,15 @@ public class DirectedLineSegment
      *
      * @since 0.42.0
      */
-    public Vector proportionalPoint(double factor)
+    public Vector relativePoint(double factor)
     {
         return from.add(difference().multiply(factor));
     }
 
     public Vector relativeRotatedPoint(double factor, double deltaAngle)
     {
-        return from.add(Vector.ofAngle(angle() + deltaAngle).multiply(length())
-                .multiply(factor));
+        return from.add(
+                rotatedVector(deltaAngle).multiply(length()).multiply(factor));
     }
 
     /**
@@ -182,37 +182,69 @@ public class DirectedLineSegment
      */
     public Vector fixedRotatedPoint(double distance, double deltaAngle)
     {
-        return from
-                .add(Vector.ofAngle(angle() + deltaAngle).multiply(distance));
-    }
-
-    public Vector relativeVerticalPoint(double distanceOnLineSegment,
-            double distanceOnVertical)
-    {
-        return fixedPoint(distanceOnLineSegment);
+        return from.add(rotatedVector(deltaAngle).multiply(distance));
     }
 
     /**
-     * Ein Punkt, der auf einer senkrechten (rechten Winkel zur kreuzenden) Line
-     * liegt.
-     *
-     * @param distanceOnLineSegment Der <b>Abstand</b> vom Ursprung. Positive
-     *     Entfernungen liegen in der Richtung des {@link #to Ziels}.
-     * @param distanceOnVertical
-     *
-     * @return
-     */
-    public Vector fixedVerticalPoint(double distanceOnLineSegment,
-            double distanceOnVertical)
-    {
-        return fixedPoint(distanceOnLineSegment);
-    }
-
-    /**
-     * Gibt den <b>Winkel</b> dieser gerichteten Strecke zurück.
+     * Gibt einen Vektor der Länge {@code 1} zurück, der um den angegebenen
+     * Winkel gedreht ist.
      *
      * <p>
-     * Zeigt die gerichtete Strecke nach ...
+     * Positive Werte drehen gegen den Uhrzeigersinn.
+     * </p>
+     *
+     * @param deltaAngle Der Rotationswinkel in Grad, um den der Vektor gedreht
+     *     werden soll.
+     *
+     * @return Ein neuer Vektor mit dem Winkel des aktuellen Vektors plus
+     *     deltaAngle
+     */
+    public Vector rotatedVector(double deltaAngle)
+    {
+        return Vector.ofAngle(angle() + deltaAngle);
+    }
+
+    /**
+     * Berechnet einen Vektor der Länge <b>1</b>, der senkrecht zu dieser
+     * gerichteten Strecke steht.
+     *
+     * <p>
+     * Der resultierende Vektor ist um 90 Grad gegen den Uhrzeigersinn gedreht.
+     * </p>
+     *
+     * @return Ein Vektor der Länge <b>1</b>, der senkrecht zu dieser
+     *     gerichteten Strecke steht.
+     */
+    public Vector verticalVector()
+    {
+        return Vector.ofAngle(angle() + 90);
+    }
+
+    public Vector relativeVerticalPoint(double factor, double factorVertical)
+    {
+        return relativePoint(factor)
+                .add(verticalVector().multiply(length() * factorVertical));
+    }
+
+    /**
+     * Ein Punkt, der auf einer senkrechten Line zur gerichteten Strecke liegt.
+     *
+     * @param distanceOn Der <b>Abstand</b> vom Ursprung auf der gerichteten
+     *     Strecke. Positive Entfernungen liegen in der Richtung des {@link #to
+     *     Ziels}.
+     * @param distanceFrom Der Abstand von der gerichteten Strecke.
+     */
+    public Vector fixedVerticalPoint(double distanceOn, double distanceFrom)
+    {
+        return fixedPoint(distanceOn)
+                .add(verticalVector().multiply(distanceFrom));
+    }
+
+    /**
+     * Gibt den <b>Winkel</b> zurück, den die Strecke mit der x-Achse bildet.
+     *
+     * <p>
+     * Zeigt die Strecke nach ...
      * </p>
      *
      * <ul>
@@ -222,7 +254,7 @@ public class DirectedLineSegment
      * <li>unten: {@code -90} Grad</li>
      * </ul>
      *
-     * @return der <b>Winkel</b> dieser gerichteten Strecke in Grad.
+     * @return der <b>Winkel</b> dieser Strecke in Grad.
      *
      * @since 0.42.0
      */
