@@ -70,23 +70,61 @@ public class DirectedLineSegmentDemo extends Scene
      */
     private final Circle point_minus_1;
 
+    /* Rotated */
+
+    /* fixed */
+
     /**
      * Die um einen positiven Winkel gedrehte Line;
      *
      * @see DirectedLineSegment#fixedRotatedPoint(double, double)
      */
-    private final Line positiveFixedRotated;
+    private final Line plusFixedRotated;
 
     /**
      * Die um einen negativen Winkel gedrehte Line;
      *
      * @see DirectedLineSegment#fixedRotatedPoint(double, double)
      */
-    private final Line negativeFixedRotated;
+    private final Line minusFixedRotated;
 
-    private final Line positiveProportionalRotated;
+    /* relative */
 
-    private final Line negativeProportionalRotated;
+    /**
+     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
+     */
+    private final Line plusRelativeRotated;
+
+    /**
+     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
+     */
+    private final Line minusRelativeRotated;
+
+    /* Vertical */
+
+    /* fixed */
+
+    /**
+     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
+     */
+    private final Line plusFixedVertical;
+
+    /**
+     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
+     */
+    private final Line minusFixedVertical;
+
+    /* relative */
+
+    /**
+     * @see DirectedLineSegment#relativeVerticalPoint(double, double)
+     */
+    private final Line plusRelativeVertical;
+
+    /**
+     * @see DirectedLineSegment#relativeVerticalPoint(double, double)
+     */
+    private final Line minusRelativeVertical;
 
     public DirectedLineSegmentDemo()
     {
@@ -111,13 +149,21 @@ public class DirectedLineSegmentDemo extends Scene
         arrowedLine.end2.arrow(true).arrowSideLength(0.5);
         add(arrowedLine);
 
-        positiveFixedRotated = createRotatedLine(from, to, "green");
-        negativeFixedRotated = createRotatedLine(from, to, "green");
-        add(positiveFixedRotated, negativeFixedRotated);
+        plusFixedRotated = createRotatedLine(from, to, "green");
+        minusFixedRotated = createRotatedLine(from, to, "green");
+        add(plusFixedRotated, minusFixedRotated);
 
-        positiveProportionalRotated = createRotatedLine(from, to, "yellow");
-        negativeProportionalRotated = createRotatedLine(from, to, "yellow");
-        add(positiveProportionalRotated, negativeProportionalRotated);
+        plusRelativeRotated = createRotatedLine(from, to, "yellow");
+        minusRelativeRotated = createRotatedLine(from, to, "yellow");
+        add(plusRelativeRotated, minusRelativeRotated);
+
+        plusRelativeVertical = createRotatedLine(from, to, "brown");
+        minusRelativeVertical = createRotatedLine(from, to, "brown");
+        add(plusRelativeVertical, minusRelativeVertical);
+
+        plusFixedVertical = createRotatedLine(from, to, "red");
+        minusFixedVertical = createRotatedLine(from, to, "red");
+        add(plusFixedVertical, minusFixedVertical);
 
         table = new TextTableBox("length():", "0.0", "angle():", "0.0", "to():",
                 "(0|0)");
@@ -145,13 +191,14 @@ public class DirectedLineSegmentDemo extends Scene
         longLine.point1(lineSegment.fixedPoint(-20));
         longLine.point2(lineSegment.fixedPoint(20));
 
-        positiveFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, 45));
-        negativeFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, -45));
+        // Fixed rotated
+        plusFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, 45));
+        minusFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, -45));
 
-        positiveProportionalRotated
-                .point2(lineSegment.proportionalRotatedPoint(-0.5, 20));
-        negativeProportionalRotated
-                .point2(lineSegment.proportionalRotatedPoint(-0.5, -20));
+        // Proportional rotated
+        plusRelativeRotated.point2(lineSegment.relativeRotatedPoint(-0.5, 20));
+        minusRelativeRotated
+                .point2(lineSegment.relativeRotatedPoint(-0.5, -20));
 
         point_0_5.center(lineSegment.proportionalPoint(0.5));
         point_2.center(lineSegment.proportionalPoint(2));

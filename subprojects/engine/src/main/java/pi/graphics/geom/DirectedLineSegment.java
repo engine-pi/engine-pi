@@ -140,7 +140,7 @@ public class DirectedLineSegment
         return from.add(difference().multiply(factor));
     }
 
-    public Vector proportionalRotatedPoint(double factor, double deltaAngle)
+    public Vector relativeRotatedPoint(double factor, double deltaAngle)
     {
         return from.add(Vector.ofAngle(angle() + deltaAngle).multiply(length())
                 .multiply(factor));
@@ -186,6 +186,12 @@ public class DirectedLineSegment
                 .add(Vector.ofAngle(angle() + deltaAngle).multiply(distance));
     }
 
+    public Vector relativeVerticalPoint(double distanceOnLineSegment,
+            double distanceOnVertical)
+    {
+        return fixedPoint(distanceOnLineSegment);
+    }
+
     /**
      * Ein Punkt, der auf einer senkrechten (rechten Winkel zur kreuzenden) Line
      * liegt.
@@ -196,7 +202,7 @@ public class DirectedLineSegment
      *
      * @return
      */
-    public Vector verticalPoint(double distanceOnLineSegment,
+    public Vector fixedVerticalPoint(double distanceOnLineSegment,
             double distanceOnVertical)
     {
         return fixedPoint(distanceOnLineSegment);
