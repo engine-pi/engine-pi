@@ -72,6 +72,18 @@ public class DirectedLineSegmentDemo extends Scene
 
     /* Rotated */
 
+    /* relative */
+
+    /**
+     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
+     */
+    private final Line plusRelativeRotated;
+
+    /**
+     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
+     */
+    private final Line minusRelativeRotated;
+
     /* fixed */
 
     /**
@@ -88,31 +100,7 @@ public class DirectedLineSegmentDemo extends Scene
      */
     private final Line minusFixedRotated;
 
-    /* relative */
-
-    /**
-     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
-     */
-    private final Line plusRelativeRotated;
-
-    /**
-     * @see DirectedLineSegment#relativeRotatedPoint(double, double)
-     */
-    private final Line minusRelativeRotated;
-
     /* Vertical */
-
-    /* fixed */
-
-    /**
-     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
-     */
-    private final Line plusFixedVertical;
-
-    /**
-     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
-     */
-    private final Line minusFixedVertical;
 
     /* relative */
 
@@ -126,8 +114,21 @@ public class DirectedLineSegmentDemo extends Scene
      */
     private final Line minusRelativeVertical;
 
+    /* fixed */
+
+    /**
+     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
+     */
+    private final Line plusFixedVertical;
+
+    /**
+     * @see DirectedLineSegment#fixedVerticalPoint(double, double)
+     */
+    private final Line minusFixedVertical;
+
     public DirectedLineSegmentDemo()
     {
+        info().title("Demonstriert die Klasse DirectedLineSegment");
         Vector from = new Vector(0, 0);
         Vector to = new Vector(1, 1);
 

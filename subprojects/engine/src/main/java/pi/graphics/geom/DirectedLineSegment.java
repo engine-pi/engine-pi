@@ -25,12 +25,12 @@ import pi.annotations.Setter;
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/geom/DirectedLineSegmentDemo.java
 
 /**
- * Eine <b>gerichtete Strecke</b>.
+ * Eine <b>gerichtete Strecke</b>, die durch zwei Punkte definiert ist: den
+ * {@link #from Ursprung} und das {@link #to Ziel}.
  *
  * <p>
- * Diese Strecke ist definiert durch zwei Punkte: den {@link #from Ursprung} und
- * das {@link #to Ziel}. Sie liegt auf einer Linie, die durch diese beiden
- * Punkte festgelegt ist.
+ * Die Strecke liegt auf einer Linie, die durch diese beiden Punkte festgelegt
+ * ist.
  * </p>
  *
  * @author Josef Friedrich
@@ -40,15 +40,27 @@ import pi.annotations.Setter;
 public class DirectedLineSegment
 {
     /**
-     * Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     * Der <b>Ursprung</b>.
+     *
+     * @since 0.42.0
      */
     Vector from;
 
     /**
-     * Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     * Das <b>Ziel</b>.
+     *
+     * @since 0.42.0
      */
     Vector to;
 
+    /**
+     * Erstellt ein neue gerichtete Strecke zwischen zwei Punkten.
+     *
+     * @param from Der <b>Ursprung</b>.
+     * @param to Das <b>Ziel</b>.
+     *
+     * @since 0.42.0
+     */
     public DirectedLineSegment(Vector from, Vector to)
     {
         this.from = from;
@@ -56,9 +68,11 @@ public class DirectedLineSegment
     }
 
     /**
-     * Gibt den <b>Ursprung</b> (steht auch für die Zahl {@code 0}) zurück.
+     * Gibt den <b>Ursprung</b> zurück.
      *
-     * @return Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     * @return Der <b>Ursprung</b>.
+     *
+     * @since 0.42.0
      */
     @Getter
     public Vector from()
@@ -67,14 +81,16 @@ public class DirectedLineSegment
     }
 
     /**
-     * Setzt den <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     * Setzt den <b>Ursprung</b>.
      *
-     * @param from Der <b>Ursprung</b> (steht auch für die Zahl {@code 0}).
+     * @param from Der <b>Ursprung</b>.
      *
      * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Strecke durch aneinander gekettete Setter festgelegt werden können,
      *     z. B. {@code lineSegment.from(..).to(..)}.
+     *
+     * @since 0.42.0
      */
     @Setter
     public DirectedLineSegment from(Vector from)
@@ -84,9 +100,11 @@ public class DirectedLineSegment
     }
 
     /**
-     * Gibt das <b>Ziel</b> (steht auch für die Zahl {@code 1}) zurück.
+     * Gibt das <b>Ziel</b> zurück.
      *
-     * @return Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     * @return Das <b>Ziel</b>.
+     *
+     * @since 0.42.0
      */
     @Getter
     public Vector to()
@@ -95,14 +113,16 @@ public class DirectedLineSegment
     }
 
     /**
-     * Setzt das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     * Setzt das <b>Ziel</b>.
      *
-     * @param to Das <b>Ziel</b> (steht auch für die Zahl {@code 1}).
+     * @param to Das <b>Ziel</b>.
      *
      * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Strecke durch aneinander gekettete Setter festgelegt werden können,
      *     z. B. {@code lineSegment.from(..).to(..)}.
+     *
+     * @since 0.42.0
      */
     @Setter
     public DirectedLineSegment to(Vector to)
@@ -124,6 +144,53 @@ public class DirectedLineSegment
     }
 
     /**
+     * Gibt den <b>Winkel</b> zurück, den die Strecke mit der x-Achse bildet.
+     *
+     * <p>
+     * Zeigt die Strecke nach ...
+     * </p>
+     *
+     * <ul>
+     * <li>rechts: {@code 0} Grad</li>
+     * <li>oben: {@code 90} Grad</li>
+     * <li>links: {@code 180} Grad</li>
+     * <li>unten: {@code -90} Grad</li>
+     * </ul>
+     *
+     * @return der <b>Winkel</b> dieser Strecke in Grad.
+     *
+     * @since 0.42.0
+     */
+    public double angle()
+    {
+        return difference().angle();
+    }
+
+    /**
+     * Gibt die <b>Länge</b> der Strecke zurück.
+     *
+     * @return Die <b>Länge</b> der Strecke.
+     *
+     * @since 0.42.0
+     */
+    public double length()
+    {
+        return difference().length();
+    }
+
+    /**
+     * Gibt eine in die <b>andere Richtung</b> verlaufende Strecke zurück.
+     *
+     * @return Eine in die <b>andere Richtung</b> verlaufende Strecke.
+     *
+     * @since 0.42.0
+     */
+    public DirectedLineSegment negate()
+    {
+        return new DirectedLineSegment(to, from);
+    }
+
+    /**
      * Berechnet einen <b>Punkt</b> auf der Linie, dessen Lage im
      * <b>Verhältnis</b> zu den beiden Punkten der Strecke festgelegt ist.
      *
@@ -138,12 +205,6 @@ public class DirectedLineSegment
     public Vector relativePoint(double factor)
     {
         return from.add(difference().multiply(factor));
-    }
-
-    public Vector relativeRotatedPoint(double factor, double deltaAngle)
-    {
-        return from.add(
-                rotatedVector(deltaAngle).multiply(length()).multiply(factor));
     }
 
     /**
@@ -166,24 +227,7 @@ public class DirectedLineSegment
         return from.add(difference().normalize().multiply(distance));
     }
 
-    /**
-     * Berechnet einen <b>Punkt</b> auf einer Linie, die zur Strecke um einen
-     * Winkel gedreht ist.
-     *
-     * @param distance Der <b>Abstand</b> vom Ursprung. Positive Entfernungen
-     *     liegen in der Richtung des {@link #to Ziels}.
-     * @param deltaAngle Der <b>Winkel</b>, um den die Linie gedreht wird.
-     *     Positive Werte drehen die Linien gegen den Uhrzeigersinn.
-     *
-     * @return Ein <b>Punkt</b> auf der Linie, der sich in einer bestimmten
-     *     Entfernung vom Ursprung befindet.
-     *
-     * @since 0.42.0
-     */
-    public Vector fixedRotatedPoint(double distance, double deltaAngle)
-    {
-        return from.add(rotatedVector(deltaAngle).multiply(distance));
-    }
+    /* rotated */
 
     /**
      * Gibt einen Vektor der Länge {@code 1} zurück, der um den angegebenen
@@ -205,6 +249,47 @@ public class DirectedLineSegment
     }
 
     /**
+     * Berechnet einen Punkt relativ zum Starttpunkt dieser gerichteten
+     * Linienstrecke, indem der Richtungsvektor um einen gegebenen Winkel
+     * rotiert wird.
+     *
+     * @param factor ein Skalierungsfaktor zwischen 0 und 1, der bestimmt, wie
+     *     weit entlang der rotierten Strecke der Punkt liegt
+     * @param deltaAngle der Rotationswinkel in Grad, um den der Richtungsvektor
+     *     rotiert wird
+     *
+     * @return ein neuer Vektor, der den berechneten Punkt darstellt
+     *
+     * @since 0.42.0
+     */
+    public Vector relativeRotatedPoint(double factor, double deltaAngle)
+    {
+        return from.add(
+                rotatedVector(deltaAngle).multiply(length()).multiply(factor));
+    }
+
+    /**
+     * Berechnet einen <b>Punkt</b> auf einer Linie, die zur Strecke um einen
+     * Winkel gedreht ist.
+     *
+     * @param distance Der <b>Abstand</b> vom Ursprung. Positive Entfernungen
+     *     liegen in der Richtung des {@link #to Ziels}.
+     * @param deltaAngle Der <b>Winkel</b>, um den die Linie gedreht wird.
+     *     Positive Werte drehen die Linien gegen den Uhrzeigersinn.
+     *
+     * @return Ein <b>Punkt</b> auf der Linie, der sich in einer bestimmten
+     *     Entfernung vom Ursprung befindet.
+     *
+     * @since 0.42.0
+     */
+    public Vector fixedRotatedPoint(double distance, double deltaAngle)
+    {
+        return from.add(rotatedVector(deltaAngle).multiply(distance));
+    }
+
+    /* vertical */
+
+    /**
      * Berechnet einen Vektor der Länge <b>1</b>, der senkrecht zu dieser
      * gerichteten Strecke steht.
      *
@@ -220,6 +305,20 @@ public class DirectedLineSegment
         return Vector.ofAngle(angle() + 90);
     }
 
+    /**
+     * Berechnet einen Punkt relativ zum Liniensegment mit vertikaler
+     * Versetzung.
+     *
+     * @param factor der Faktor für die Position entlang des Liniensegments (0.0
+     *     bis 1.0)
+     * @param factorVertical der Faktor für die vertikale Versetzung relativ zur
+     *     Länge des Segments
+     *
+     * @return ein neuer Vektor, der den berechneten Punkt mit vertikaler
+     *     Versetzung darstellt
+     *
+     * @since 0.42.0
+     */
     public Vector relativeVerticalPoint(double factor, double factorVertical)
     {
         return relativePoint(factor)
@@ -233,59 +332,12 @@ public class DirectedLineSegment
      *     Strecke. Positive Entfernungen liegen in der Richtung des {@link #to
      *     Ziels}.
      * @param distanceFrom Der Abstand von der gerichteten Strecke.
+     *
+     * @since 0.42.0
      */
     public Vector fixedVerticalPoint(double distanceOn, double distanceFrom)
     {
         return fixedPoint(distanceOn)
                 .add(verticalVector().multiply(distanceFrom));
-    }
-
-    /**
-     * Gibt den <b>Winkel</b> zurück, den die Strecke mit der x-Achse bildet.
-     *
-     * <p>
-     * Zeigt die Strecke nach ...
-     * </p>
-     *
-     * <ul>
-     * <li>rechts: {@code 0} Grad</li>
-     * <li>oben: {@code 90} Grad</li>
-     * <li>links: {@code 180} Grad</li>
-     * <li>unten: {@code -90} Grad</li>
-     * </ul>
-     *
-     * @return der <b>Winkel</b> dieser Strecke in Grad.
-     *
-     * @since 0.42.0
-     */
-    @Getter
-    public double angle()
-    {
-        return difference().angle();
-    }
-
-    /**
-     * Gibt die <b>Länge</b> der Strecke zurück.
-     *
-     * @return Die <b>Länge</b> der Strecke.
-     *
-     * @since 0.42.0
-     */
-    @Getter
-    public double length()
-    {
-        return difference().length();
-    }
-
-    /**
-     * Gibt eine in die <b>andere Richtung</b> verlaufende Strecke zurück.
-     *
-     * @return Eine in die <b>andere Richtung</b> verlaufende Strecke.
-     *
-     * @since 0.42.0
-     */
-    public DirectedLineSegment negate()
-    {
-        return new DirectedLineSegment(to, from);
     }
 }
