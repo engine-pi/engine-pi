@@ -105,6 +105,7 @@ nav:
 
       - events (Ereignissteuerung):
           - manual/events/index.md
+          - manual/events/key-event.md
           - manual/events/key-stroke.md
           - manual/events/mouse-click.md
           - manual/events/collision.md

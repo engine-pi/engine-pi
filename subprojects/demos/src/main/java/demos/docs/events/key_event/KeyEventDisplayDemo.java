@@ -1,9 +1,7 @@
 /*
- * Source: https://github.com/engine-alpha/tutorials/blob/master/src/eatutorials/userinput/TastenCounter.java
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Engine Alpha ist eine anfängerorientierte 2D-Gaming Engine.
- *
- * Copyright (c) 2011 - 2024 Michael Andonie and contributors.
+ * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.user_input;
+package demos.docs.events.key_event;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/events/key-event.md
 
 import java.awt.event.KeyEvent;
 
@@ -27,34 +27,35 @@ import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
 
-public class KeyStrokeCounterDemo extends Scene
+public class KeyEventDisplayDemo extends Scene
 {
-    public KeyStrokeCounterDemo()
+    public KeyEventDisplayDemo()
     {
-        add(new CounterText());
+        add(new KeyText());
     }
 
-    private class CounterText extends Text implements KeyStrokeListener
+    private class KeyText extends Text implements KeyStrokeListener
     {
-        private int counter = 0;
-
-        public CounterText()
+        public KeyText()
         {
-            super("You pressed 0 keys.", 2);
+            super("Press a key", 1);
             center(0, 0);
         }
 
         @Override
         public void onKeyDown(KeyEvent keyEvent)
         {
-            counter++;
-            content("You pressed " + counter + " keys.");
+            String text = KeyEvent.getKeyText(keyEvent.getKeyCode());
+            text = text.replace(" ", "_");
+            text = text.toUpperCase();
+            content("VK_" + text);
             center(0, 0);
         }
     }
 
     public static void main(String[] args)
     {
-        Controller.start(new KeyStrokeCounterDemo(), 700, 200);
+        Controller.instantMode(false);
+        Controller.start(new KeyEventDisplayDemo());
     }
 }

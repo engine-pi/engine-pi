@@ -18,7 +18,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.stateful_animation;
+package demos.docs.main_classes.actor.stateful_animation;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
 
 public enum PlayerState
 {

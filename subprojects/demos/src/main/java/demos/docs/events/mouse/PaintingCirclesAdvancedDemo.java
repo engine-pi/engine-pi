@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.user_input.mouse;
+package demos.docs.events.mouse;
 
 import java.awt.Color;
 
@@ -123,6 +123,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new PaintingCirclesAdvancedDemo(), 600, 400);
     }
 }

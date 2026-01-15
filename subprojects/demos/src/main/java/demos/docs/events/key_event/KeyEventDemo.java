@@ -18,7 +18,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.tutorials.user_input;
+package demos.docs.events.key_event;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/events/key-event.md
 
 import java.awt.event.KeyEvent;
 

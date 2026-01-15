@@ -117,7 +117,7 @@ def _fenced_code_block(code: str, language: str = "java", start_line: int = 0) -
     return "``` " + language + linesnums + "\n" + code + "\n```"
 
 
-def _demo_github_url(
+def _github_code_url(
     relpath: str,
     blob: str = "main",
     lines: str | None = None,
@@ -125,7 +125,15 @@ def _demo_github_url(
     end_line: int = 0,
 ) -> str:
     """
-    :param blob: The branch name or the commit id
+    Generate a GitHub URL pointing to a specific file and optional line range.
+
+    :param relpath: Relative path to the file in the repository
+    :param blob: The branch name or the commit id (default: "main")
+    :param lines: Line range specification (e.g., "L10-L20"), mutually exclusive with start_line/end_line
+    :param start_line: Starting line number for the range (use with end_line, not with lines)
+    :param end_line: Ending line number for the range (use with start_line, not with lines)
+    :return: A complete GitHub URL to the file with optional line anchor
+    :raises Exception: If both lines and start_line/end_line parameters are provided simultaneously
     """
     relpath = _normalize_java_path(relpath)
 
@@ -142,7 +150,7 @@ def _demo_github_url(
     if not lines.startswith("#") and lines != "":
         lines = "#" + lines
 
-    return f"https://github.com/engine-pi/engine-pi/blob/{blob}/subprojects/demos/src/main/java/demos/{relpath}{lines}"
+    return f"https://github.com/engine-pi/engine-pi/blob/{blob}/{relpath}{lines}"
 
 
 def _get_class_name(class_path: str) -> str:
@@ -157,17 +165,20 @@ def _get_class_name(class_path: str) -> str:
 
 
 class JavaFile:
-    relpath: str
     path: Path
 
     lines: list[str]
 
-    def __init__(self, relpath: str) -> None:
-        self.relpath = _normalize_java_path(relpath)
-
-        self.path = (
-            Path("subprojects", "demos", "src", "main", "java", "demos") / self.relpath
-        )
+    def __init__(self, path: str) -> None:
+        """
+        :param path: A class path or a file path relative to subprojects/demos/src/main/java/demos
+        """
+        if "/" not in path:
+            self.path = Path(_convert_class_path_to_subproject_path(path))
+        else:
+            self.path = Path(
+                "subprojects", "demos", "src", "main", "java", "demos"
+            ) / _normalize_java_path(path)
         self.lines = self.path.read_text().splitlines()
 
     def get_code(self, start_line: int = 0, end_line: int = 0, line: int = 0) -> str:
@@ -209,7 +220,7 @@ class JavaFile:
         return "\n".join(lines)
 
     def url(self) -> str:
-        return _demo_github_url(str(self.relpath))
+        return _github_code_url(str(self.path))
 
 
 def define_env(env: Any) -> None:
@@ -301,7 +312,7 @@ def define_env(env: Any) -> None:
         :param blob: The branch name or the commit id
         """
         relpath = _normalize_java_path(relpath)
-        url = _demo_github_url(
+        url = _github_code_url(
             relpath, blob, lines=lines, start_line=start_line, end_line=end_line
         )
         return f"<small>Zum Java-Code: [demos/{relpath}]({url})</small>"
@@ -350,7 +361,7 @@ def define_env(env: Any) -> None:
     env.macro(macro_repo_link, "repo_link")
 
     def macro_code(
-        relpath: str,
+        path: str,
         start_line: int = 0,
         end_line: int = 0,
         line: int = 0,
@@ -379,7 +390,7 @@ def define_env(env: Any) -> None:
         https://pypi.org/project/mkdocs-snippets/
         """
 
-        java_file = JavaFile(relpath)
+        java_file = JavaFile(path)
 
         start_line_for_code_block = 1
         if line > 0:
@@ -395,18 +406,15 @@ def define_env(env: Any) -> None:
 
         if link:
             output += "\n" + macro_demo(
-                relpath, start_line=start_line, end_line=end_line
+                str(java_file.path), start_line=start_line, end_line=end_line
             )
 
         return output
 
     env.macro(macro_code, "code")
 
-    def macro_line(
-        relpath: str,
-        line: int
-    ) -> str:
-        return macro_code(relpath=relpath, line=line, link=False)
+    def macro_line(relpath: str, line: int) -> str:
+        return macro_code(path=relpath, line=line, link=False)
 
     env.macro(macro_line, "line")
 
