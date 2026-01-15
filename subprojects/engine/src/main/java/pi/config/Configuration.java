@@ -56,7 +56,7 @@ public final class Configuration extends MainConfiguration
      *
      * @since 0.42.0
      */
-    public static Configuration get()
+    public static Configuration getInstance()
     {
         if (configuration == null)
         {
@@ -64,11 +64,5 @@ public final class Configuration extends MainConfiguration
             configuration.load();
         }
         return configuration;
-    }
-
-    public static void main(String[] args)
-    {
-        Configuration config = Configuration.get();
-        System.out.println(config.graphics.windowHeight());
     }
 }

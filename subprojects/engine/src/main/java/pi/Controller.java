@@ -128,7 +128,7 @@ public class Controller
      *
      * @since 0.42.0
      */
-    public static final Configuration config = Configuration.get();
+    public static final Configuration config = Configuration.getInstance();
 
     /**
      * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color

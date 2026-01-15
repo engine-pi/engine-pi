@@ -28,10 +28,17 @@ coordinatesystem_labelsOnIntersections=false
 coordinatesystem_linesNMeter=-1
 ```
 
-Die Konfigurationen sind in Konfigurationsgruppen mit
-jeweils einem Präfix organisiert.
+Die Konfigurationen sind in Konfigurationsgruppen mit jeweils einem Präfix
+organisiert.
 
-Sie können auch benutzerdefinierte Gruppen bereitstellen, die nur für Ihr
-spezielles Spiel relevante Konfigurationen enthalten.[^litiengine:configuration]
+## Benutzerdefinierte Konfigurationsgruppen
+
+Die Engine Pi bietet die Möglichkeit, eigene Konfigurationsgruppen zu
+definieren, die für ein bestimmtes Projekt Konfigurationen
+enthalten.[^litiengine:configuration]
+
+{{ code('demos.docs.resources.config.MyCustomConfigurationGroup') }}
+
+{{ code('demos.docs.resources.config.CustomConfigGroupDemo') }}
 
 [^litiengine:configuration]: https://litiengine.com/docs/configuration/

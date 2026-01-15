@@ -132,12 +132,14 @@ public class ConfigurationLoader
     }
 
     /**
-     * Gets the configuration group with the specified prefix.
+     * Ruft eine Konfigurationsgruppe basierend auf ihrem Präfix ab.
      *
-     * @param prefix The prefix of the configuration group to retrieve.
+     * @param prefix das Präfix der gesuchten Konfigurationsgruppe
      *
-     * @return The configuration group with the specified prefix, or null if
-     *     none can be found.
+     * @return die gefundene {@link ConfigurationGroup}
+     *
+     * @throws RuntimeException wenn keine Konfigurationsgruppe mit dem
+     *     angegebenen Präfix gefunden wird
      */
     public ConfigurationGroup getConfigurationGroup(final String prefix)
     {
@@ -157,7 +159,8 @@ public class ConfigurationLoader
             }
         }
 
-        return null;
+        throw new RuntimeException("Die Konfigurationsgruppe mit dem Präfix "
+                + prefix + " konnte nicht gefunden werden.");
     }
 
     /**
