@@ -55,7 +55,7 @@ public class ConfigurationLoader
     private static final Logger log = Logger
             .getLogger(ConfigurationLoader.class.getName());
 
-    private static final String DEFAULT_CONFIGURATION_FILE_NAME = "config.properties";
+    private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
 
     private final List<ConfigurationGroup> configurationGroups;
 
@@ -248,7 +248,7 @@ public class ConfigurationLoader
 
     /**
      * Saves this configuration to a file with the specified name of this
-     * instance (config.properties is the engines default config file).
+     * instance (engine-pi.properties is the engines default config file).
      *
      * @see #getPath()
      * @see ConfigurationLoader#DEFAULT_CONFIGURATION_FILE_NAME

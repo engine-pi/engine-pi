@@ -127,6 +127,7 @@ nav:
           - manual/resources/fonts.md
           - manual/resources/images.md
           - manual/resources/sounds.md
+          - manual/resources/config.md
 
       - Java:
           - manual/java/index.md
