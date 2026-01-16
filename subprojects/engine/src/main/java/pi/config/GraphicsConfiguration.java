@@ -62,6 +62,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
         // 32 * 18 = 576
         windowHeight(576);
         windowPosition(Direction.NONE);
+
         framerate(60);
         colorScheme("Gnome");
         screenRecordingNFrames(2);
@@ -234,6 +235,97 @@ public class GraphicsConfiguration extends ConfigurationGroup
     public GraphicsConfiguration windowPosition(Direction windowPosition)
     {
         set("windowPosition", windowPosition);
+        return this;
+    }
+
+    /* pixelPerMeter */
+
+    /**
+     * Die <b>Pixelanzahl</b> eines <b>Meters</b>.
+     */
+    private double pixelPerMeter = 32;
+
+    /**
+     * Gibt die <b>Pixelanzahl</b> eines <b>Meters</b> zurück.
+     *
+     * @return Die <b>Pixelanzahl</b> eines <b>Meters</b>.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public double pixelPerMeter()
+    {
+        return pixelPerMeter;
+    }
+
+    /**
+     * Setzt die <b>Pixelanzahl</b> eines <b>Meters</b>.
+     *
+     * @param pixelPerMeter Die <b>Pixelanzahl</b> eines <b>Meters</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public GraphicsConfiguration pixelPerMeter(double pixelPerMeter)
+    {
+        set("pixelPerMeter", pixelPerMeter);
+        return this;
+    }
+
+    /* zoomChange */
+
+    /**
+     * Um wie viel der <b>Zoomfaktor</b> der Kamera <b>geändert</b> werden soll.
+     *
+     * @see pi.Camera#zoomIn()
+     * @see pi.Camera#zoomOut()
+     */
+    private double zoomChange = 0.05;
+
+    /**
+     * Gibt zurück, um wie viel der <b>Zoomfaktor</b> der Kamera <b>geändert</b>
+     * werden soll.
+     *
+     * @return Um wie viel der <b>Zoomfaktor</b> der Kamera <b>geändert</b>
+     *     werden soll.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    @API
+    public double zoomChange()
+    {
+        return zoomChange;
+    }
+
+    /**
+     * Setzt um wie viel der <b>Zoomfaktor</b> der Kamera <b>geändert</b> werden
+     * soll.
+     *
+     * @param zoomChange Um wie viel der <b>Zoomfaktor</b> der Kamera
+     *     <b>geändert</b> werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z. B.
+     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    @API
+    public GraphicsConfiguration zoomChange(double zoomChange)
+    {
+        set("zoomChange", zoomChange);
         return this;
     }
 
@@ -481,5 +573,4 @@ public class GraphicsConfiguration extends ConfigurationGroup
         set("windowHeight", windowHeight);
         return this;
     }
-
 }

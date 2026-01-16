@@ -31,7 +31,7 @@ coordinatesystem_linesNMeter=-1
 Die Konfigurationen sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
 organisiert:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/MainConfiguration.java -->
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
 
 - `game_`: {{ class('pi.config.GameConfiguration') }}
 - `graphics_`: {{ class('pi.config.GraphicsConfiguration') }}
@@ -39,7 +39,7 @@ organisiert:
 - `debug_`: {{ class('pi.config.DebugConfiguration') }}
 - `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfiguration') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/AllConfigurationTest.java -->
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
 
 ```java
 import static pi.Controller.config;

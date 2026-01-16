@@ -47,7 +47,6 @@ package pi.config;
  */
 public class Configuration extends ConfigurationLoader
 {
-
     /**
      * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b>
      * oder Projekt.

@@ -43,7 +43,6 @@ import pi.util.FileUtil;
 
 public class ConfigurationLoaderTest
 {
-
     private ConfigurationLoader config;
 
     @BeforeEach

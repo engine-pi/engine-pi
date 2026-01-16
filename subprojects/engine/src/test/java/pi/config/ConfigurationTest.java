@@ -8,7 +8,6 @@ import pi.graphics.geom.Direction;
 
 public class ConfigurationTest
 {
-
     Configuration config = Configuration.getInstance();
 
     @Test
@@ -37,5 +36,4 @@ public class ConfigurationTest
         assertEquals(-1, config.coordinatesystem.linesNMeter());
         assertEquals(false, config.coordinatesystem.labelsOnIntersections());
     }
-
 }
