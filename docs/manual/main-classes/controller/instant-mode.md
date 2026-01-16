@@ -8,7 +8,7 @@ geschrieben werden muss.
 
 {{ methods('pi.Controller', ['instantMode(boolean)']) }}
 
-{{ methods('pi.config.GameConfiguration', ['instantMode()', 'instantMode(boolean)']) }}
+{{ methods('pi.config.GameConfig', ['instantMode()', 'instantMode(boolean)']) }}
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeEnabled.java -->
 

@@ -54,10 +54,11 @@ public class Text extends Geometry
      * @hidden
      */
     @Internal
-    private static FixtureData createShape(String content, double height,
+    private static FixtureData createShape(Object content, double height,
             Font font)
     {
-        var sizeInPixels = FontUtil.getStringBounds(content, font);
+        var sizeInPixels = FontUtil.getStringBounds(String.valueOf(content),
+                font);
         return FixtureBuilder.rectangle(
                 sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
                 height);
@@ -103,7 +104,7 @@ public class Text extends Geometry
      * @since 0.27.0
      */
     @API
-    public Text(String content)
+    public Text(Object content)
     {
         this(content, 1);
     }
@@ -116,7 +117,7 @@ public class Text extends Geometry
      * @param height Die <b>Höhe</b> des Textes in Meter.
      */
     @API
-    public Text(String content, double height)
+    public Text(Object content, double height)
     {
         this(content, height, fonts.defaultFont().deriveFont((float) SIZE), 0);
     }
@@ -132,7 +133,7 @@ public class Text extends Geometry
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      */
     @API
-    public Text(String content, double height, String fontName)
+    public Text(Object content, double height, String fontName)
     {
         this(content, height, fontName, 0);
     }
@@ -155,22 +156,22 @@ public class Text extends Geometry
      *     </ul>
      */
     @API
-    public Text(String content, double height, String fontName, int style)
+    public Text(Object content, double height, String fontName, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 fonts.get(fontName).deriveFont(style, SIZE)));
-        this.content = content == null ? "" : content;
+        this.content = content == null ? "" : String.valueOf(content);
         this.height = height;
         setStyle(style);
         font(fontName);
         color(colorScheme.get().white());
     }
 
-    public Text(String content, double height, Font font, int style)
+    public Text(Object content, double height, Font font, int style)
     {
         super(() -> createShape(content == null ? "" : content, height,
                 font.deriveFont(style, SIZE)));
-        this.content = content == null ? "" : content;
+        this.content = content == null ? "" : String.valueOf(content);
         this.height = height;
         setStyle(style);
         font(font);
@@ -229,9 +230,9 @@ public class Text extends Geometry
      */
     @API
     @Setter
-    public Text content(String content)
+    public Text content(Object content)
     {
-        String normalizedContent = content;
+        String normalizedContent = String.valueOf(content);
         if (normalizedContent == null)
         {
             normalizedContent = "";
@@ -241,22 +242,6 @@ public class Text extends Geometry
             this.content = normalizedContent;
             update();
         }
-        return this;
-    }
-
-    /**
-     * Setzt den Inhalt des Textes durch Angabe eines beliebigen Datentyps.
-     *
-     * @param content Der neue Inhalt des Textes in einem beliebigen Datentyp.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
-     */
-    @API
-    @Setter
-    public Text content(Object content)
-    {
-        content(String.valueOf(content));
         return this;
     }
 
@@ -356,7 +341,8 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setWidth(double width)
+    @Setter
+    public Text width(double width)
     {
         var sizeInPixels = FontUtil.getStringBounds(content, font);
         height(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());

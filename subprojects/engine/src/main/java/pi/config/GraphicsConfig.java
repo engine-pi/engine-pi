@@ -37,8 +37,8 @@ import pi.graphics.geom.Direction;
  * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
  *
  * <p>
- * Diese Klasse erweitert die {@link ConfigurationGroup}, um spezifische
- * Einstellungen für Grafiken bereitzustellen.
+ * Diese Klasse erweitert die {@link ConfigGroup}, um spezifische Einstellungen
+ * für Grafiken bereitzustellen.
  * </p>
  *
  * @author Josef Friedrich
@@ -47,10 +47,10 @@ import pi.graphics.geom.Direction;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "graphics_")
-public class GraphicsConfiguration extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "graphics_")
+public class GraphicsConfig extends ConfigGroup
 {
-    GraphicsConfiguration()
+    GraphicsConfig()
     {
         super();
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
@@ -107,7 +107,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration windowWidth(int windowWidth)
+    public GraphicsConfig windowWidth(int windowWidth)
     {
         set("windowWidth", windowWidth);
         return this;
@@ -151,7 +151,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration windowHeight(int windowHeight)
+    public GraphicsConfig windowHeight(int windowHeight)
     {
         set("windowHeight", windowHeight);
         return this;
@@ -233,7 +233,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration windowPosition(Direction windowPosition)
+    public GraphicsConfig windowPosition(Direction windowPosition)
     {
         set("windowPosition", windowPosition);
         return this;
@@ -275,7 +275,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration pixelPerMeter(double pixelPerMeter)
+    public GraphicsConfig pixelPerMeter(double pixelPerMeter)
     {
         set("pixelPerMeter", pixelPerMeter);
         return this;
@@ -324,7 +324,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration zoomChange(double zoomChange)
+    public GraphicsConfig zoomChange(double zoomChange)
     {
         set("zoomChange", zoomChange);
         return this;
@@ -367,7 +367,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration framerate(int framerate)
+    public GraphicsConfig framerate(int framerate)
     {
         set("framerate", framerate);
         return this;
@@ -409,7 +409,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration colorScheme(String colorScheme)
+    public GraphicsConfig colorScheme(String colorScheme)
     {
         set("colorScheme", colorScheme);
         return this;
@@ -474,7 +474,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration pixelMultiplication(int pixelMultiplication)
+    public GraphicsConfig pixelMultiplication(int pixelMultiplication)
     {
         set("pixelMultiplication", pixelMultiplication);
         return this;
@@ -523,8 +523,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration screenRecordingNFrames(
-            int screenRecordingNFrames)
+    public GraphicsConfig screenRecordingNFrames(int screenRecordingNFrames)
     {
         set("screenRecordingNFrames", screenRecordingNFrames);
         return this;
@@ -567,8 +566,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GraphicsConfiguration windowDimension(int windowWidth,
-            int windowHeight)
+    public GraphicsConfig windowDimension(int windowWidth, int windowHeight)
     {
         set("windowWidth", windowWidth);
         set("windowHeight", windowHeight);

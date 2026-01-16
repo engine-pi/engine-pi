@@ -38,10 +38,10 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "debug_", debug = true)
-public class DebugConfiguration extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "debug_", debug = true)
+public class DebugConfig extends ConfigGroup
 {
-    DebugConfiguration()
+    DebugConfig()
     {
         super();
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
@@ -89,7 +89,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration enabled(boolean enabled)
+    public DebugConfig enabled(boolean enabled)
     {
         set("enabled", enabled);
         return this;
@@ -137,7 +137,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration verbose(boolean verbose)
+    public DebugConfig verbose(boolean verbose)
     {
         set("verbose", verbose);
         return this;
@@ -185,7 +185,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration renderActors(boolean renderActors)
+    public DebugConfig renderActors(boolean renderActors)
     {
         set("renderActors", renderActors);
         return this;
@@ -204,7 +204,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration toggleRenderActors()
+    public DebugConfig toggleRenderActors()
     {
         renderActors(!renderActors());
         return this;
@@ -265,7 +265,7 @@ public class DebugConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public DebugConfiguration actorCoordinates(boolean actorCoordinates)
+    public DebugConfig actorCoordinates(boolean actorCoordinates)
     {
         set("actorCoordinates", actorCoordinates);
         return this;

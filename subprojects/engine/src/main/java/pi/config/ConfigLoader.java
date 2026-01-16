@@ -50,14 +50,14 @@ import java.util.logging.Logger;
  *
  * @since 0.42.0
  */
-public class ConfigurationLoader
+public class ConfigLoader
 {
     private static final Logger log = Logger
-            .getLogger(ConfigurationLoader.class.getName());
+            .getLogger(ConfigLoader.class.getName());
 
     private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
 
-    private final List<ConfigurationGroup> configurationGroups;
+    private final List<ConfigGroup> configurationGroups;
 
     private final Path path;
 
@@ -67,7 +67,7 @@ public class ConfigurationLoader
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public ConfigurationLoader(final ConfigurationGroup... configurationGroups)
+    public ConfigLoader(final ConfigGroup... configurationGroups)
     {
         this(DEFAULT_CONFIGURATION_FILE_NAME, configurationGroups);
     }
@@ -82,8 +82,8 @@ public class ConfigurationLoader
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public ConfigurationLoader(final String path,
-            final ConfigurationGroup... configurationGroups)
+    public ConfigLoader(final String path,
+            final ConfigGroup... configurationGroups)
     {
         this(Path.of(path), configurationGroups);
     }
@@ -95,8 +95,8 @@ public class ConfigurationLoader
      * @param configurationGroups The configuration groups managed by this
      *     instance.
      */
-    public ConfigurationLoader(final Path path,
-            final ConfigurationGroup... configurationGroups)
+    public ConfigLoader(final Path path,
+            final ConfigGroup... configurationGroups)
     {
         this.path = path;
         this.configurationGroups = new ArrayList<>();
@@ -117,10 +117,9 @@ public class ConfigurationLoader
      * @return The configuration group of the specified type or null if none can
      *     be found.
      */
-    public <T extends ConfigurationGroup> T getConfigurationGroup(
-            final Class<T> groupClass)
+    public <T extends ConfigGroup> T getGroup(final Class<T> groupClass)
     {
-        for (final ConfigurationGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : getConfigurationGroups())
         {
             if (group.getClass().equals(groupClass))
             {
@@ -136,18 +135,18 @@ public class ConfigurationLoader
      *
      * @param prefix das Präfix der gesuchten Konfigurationsgruppe
      *
-     * @return die gefundene {@link ConfigurationGroup}
+     * @return die gefundene {@link ConfigGroup}
      *
      * @throws RuntimeException wenn keine Konfigurationsgruppe mit dem
      *     angegebenen Präfix gefunden wird
      */
-    public ConfigurationGroup getConfigurationGroup(final String prefix)
+    public ConfigGroup getGroup(final String prefix)
     {
-        for (final ConfigurationGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : getConfigurationGroups())
         {
 
-            final ConfigurationGroupInfo info = group.getClass()
-                    .getAnnotation(ConfigurationGroupInfo.class);
+            final ConfigGroupInfo info = group.getClass()
+                    .getAnnotation(ConfigGroupInfo.class);
             if (info == null)
             {
                 continue;
@@ -168,7 +167,7 @@ public class ConfigurationLoader
      *
      * @return All config groups.
      */
-    public List<ConfigurationGroup> getConfigurationGroups()
+    public List<ConfigGroup> getConfigurationGroups()
     {
         return configurationGroups;
     }
@@ -178,9 +177,9 @@ public class ConfigurationLoader
      *
      * @param groups The group to add.
      */
-    public void add(ConfigurationGroup... groups)
+    public void add(ConfigGroup... groups)
     {
-        for (ConfigurationGroup group : groups)
+        for (ConfigGroup group : groups)
         {
             configurationGroups.add(group);
         }
@@ -254,7 +253,7 @@ public class ConfigurationLoader
      * instance (engine-pi.properties is the engines default config file).
      *
      * @see #getPath()
-     * @see ConfigurationLoader#DEFAULT_CONFIGURATION_FILE_NAME
+     * @see ConfigLoader#DEFAULT_CONFIGURATION_FILE_NAME
      */
     public void save()
     {
@@ -285,7 +284,7 @@ public class ConfigurationLoader
     }
 
     private static void storeConfigurationGroup(final OutputStream out,
-            final ConfigurationGroup group)
+            final ConfigGroup group)
     {
         try
         {
@@ -313,11 +312,11 @@ public class ConfigurationLoader
      *     geschrieben werden sollen.
      *
      * @see #getConfigurationGroups()
-     * @see #storeConfigurationGroup(OutputStream, ConfigurationGroup)
+     * @see #storeConfigurationGroup(OutputStream, ConfigGroup)
      */
     private void createDefaultSettingsFile(final OutputStream out)
     {
-        for (final ConfigurationGroup group : getConfigurationGroups())
+        for (final ConfigGroup group : getConfigurationGroups())
         {
             storeConfigurationGroup(out, group);
         }
@@ -327,7 +326,7 @@ public class ConfigurationLoader
     {
         for (final String key : properties.stringPropertyNames())
         {
-            for (final ConfigurationGroup group : getConfigurationGroups())
+            for (final ConfigGroup group : getConfigurationGroups())
             {
                 if (key.startsWith(group.getPrefix()))
                 {

@@ -45,7 +45,7 @@ public class Text extends pi.actor.Text
      * @since 0.27.0
      */
     @API
-    public Text(String content)
+    public Text(Object content)
     {
         super(content, 1);
     }
@@ -58,7 +58,7 @@ public class Text extends pi.actor.Text
      * @param height Die <b>Höhe</b> des Textes in Meter.
      */
     @API
-    public Text(String content, double height)
+    public Text(Object content, double height)
     {
         super(content, height);
     }
@@ -74,7 +74,7 @@ public class Text extends pi.actor.Text
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      */
     @API
-    public Text(String content, double height, String fontName)
+    public Text(Object content, double height, String fontName)
     {
         this(content, height, fontName, 0);
     }
@@ -97,12 +97,12 @@ public class Text extends pi.actor.Text
      *     </ul>
      */
     @API
-    public Text(String content, double height, String fontName, int style)
+    public Text(Object content, double height, String fontName, int style)
     {
         super(content, height, fontName, style);
     }
 
-    public Text(String content, double height, Font font, int style)
+    public Text(Object content, double height, Font font, int style)
     {
         super(content, height, font, style);
     }

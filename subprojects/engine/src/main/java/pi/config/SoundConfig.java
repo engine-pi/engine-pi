@@ -37,13 +37,13 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "sound_")
-public class SoundConfiguration extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "sound_")
+public class SoundConfig extends ConfigGroup
 {
     /**
      * Constructs a new SoundConfiguration with default volume settings.
      */
-    SoundConfiguration()
+    SoundConfig()
     {
         this.soundVolume(0.5);
         this.musicVolume(0.5);

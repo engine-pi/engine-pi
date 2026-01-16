@@ -7,7 +7,7 @@ es sich um eine
 also ein sehr einfaches, selbsterklärend Format. Beim Starten eines Projekts
 sucht die Engine Pi im Ausführungsorder der Anwendung nach dieser Datei. Falls
 keine solche Datei vorhanden ist, erstellt die Engine eine
-`engine-pi.properties` mit den Standardwerten.
+`engine-pi.properties` mit den Standardwerten:
 
 ```properties
 game_instantMode=true
@@ -32,18 +32,33 @@ coordinatesystem_linesNMeter=-1
 coordinatesystem_labelsOnIntersections=false
 ```
 
-Die Konfigurationen sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
+Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
 organisiert:
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
 
-- `game_`: {{ class('pi.config.GameConfiguration') }}
-- `graphics_`: {{ class('pi.config.GraphicsConfiguration') }}
-- `sound_`: {{ class('pi.config.SoundConfiguration') }}
-- `debug_`: {{ class('pi.config.DebugConfiguration') }}
-- `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfiguration') }}
+- `game_`: {{ class('pi.config.GameConfig') }}
+- `graphics_`: {{ class('pi.config.GraphicsConfig') }}
+- `sound_`: {{ class('pi.config.SoundConfig') }}
+- `debug_`: {{ class('pi.config.DebugConfig') }}
+- `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfig') }}
+
+Das statische Attribut {{ method('pi.Controller', 'config', 'Controller.config')
+}} der Klasse {{ class('pi.Controller') }} bietet Zugriff alle
+Einstellmöglichkeiten.
+
+```java
+import pi.Controller;
+// Controller.config.graphics.windowWidth()
+```
+
+Das `config`-Objekt kann auch über einen statischen Import eingebunden werden:
+`#!java import static pi.Controller.config;`. Statt `#!java Controller.config`
+kann dann etwas kürzer `#!java config` geschrieben werden.
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
+
+Das folgende Codebeispiel testet alle Einstellmöglichkeit mit den Standardwerten:
 
 ```java
 import static pi.Controller.config;
@@ -74,10 +89,19 @@ assertEquals(false, config.coordinatesystem.labelsOnIntersections());
 
 ## Benutzerdefinierte Konfigurationsgruppen
 
-Die Engine Pi bietet die Möglichkeit, eigene Konfigurationsgruppen zu
-definieren.[^litiengine:configuration]
+Die Engine Pi bietet die Möglichkeit, auch eigene Konfigurationsgruppen zu
+definieren und dem {{ method('pi.Controller', 'config') }}-Objekt
+hinzuzufügen.[^litiengine:configuration] Die Klasse {{
+class('demos.docs.resources.config.MyConfigGroup') }} definierte eine
+Einstellmöglichkeit in Form eines Attributs mit dem Namen `myInt`. Die
+dazugehörenden Getter- und Setter-Methoden haben - wie in der Engine Pi üblich -
+kein `get`- bzw. `set`-Präfix:
 
-{{ code('demos.docs.resources.config.MyCustomConfigurationGroup', from_import=True) }}
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java -->
+
+{{ code('demos.docs.resources.config.MyConfigGroup', from_import=True) }}
+
+<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
 
 {{ code('demos.docs.resources.config.CustomConfigGroupDemo', from_import=True) }}
 

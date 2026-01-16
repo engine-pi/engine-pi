@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 
 import pi.graphics.geom.Direction;
 
-public class GraphicsConfigurationTest
+public class GraphicsConfigTest
 {
-    GraphicsConfiguration config;
+    GraphicsConfig config;
 
     @BeforeEach
     void setup()
     {
-        config = new GraphicsConfiguration();
+        config = new GraphicsConfig();
     }
 
     @Test

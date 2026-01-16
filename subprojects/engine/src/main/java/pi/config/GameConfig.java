@@ -30,10 +30,10 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "game_")
-public class GameConfiguration extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "game_")
+public class GameConfig extends ConfigGroup
 {
-    GameConfiguration()
+    GameConfig()
     {
         super();
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
@@ -89,7 +89,7 @@ public class GameConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public GameConfiguration instantMode(boolean instantMode)
+    public GameConfig instantMode(boolean instantMode)
     {
         set("instantMode", instantMode);
         return this;

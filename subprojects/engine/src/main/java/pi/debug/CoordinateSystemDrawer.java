@@ -28,7 +28,7 @@ import pi.Camera;
 import pi.Controller;
 import pi.Scene;
 import pi.annotations.Internal;
-import pi.config.CoordinatesystemConfiguration;
+import pi.config.CoordinatesystemConfig;
 import pi.graphics.geom.Vector;
 
 /**
@@ -131,7 +131,7 @@ public final class CoordinateSystemDrawer
      */
     private int stopY;
 
-    private CoordinatesystemConfiguration config = Controller.config.coordinatesystem;
+    private CoordinatesystemConfig config = Controller.config.coordinatesystem;
 
     /**
      * Zeichnet das <b>Koordinatensystem</b>.
@@ -404,7 +404,7 @@ public final class CoordinateSystemDrawer
         Controller.debug();
         Scene scene = Controller.start();
         scene.addKeyStrokeListener((event) -> {
-            CoordinatesystemConfiguration config = Controller.config.coordinatesystem;
+            CoordinatesystemConfig config = Controller.config.coordinatesystem;
             switch (event.getKeyCode())
             {
             case KeyEvent.VK_1 -> config.linesNMeter(1);

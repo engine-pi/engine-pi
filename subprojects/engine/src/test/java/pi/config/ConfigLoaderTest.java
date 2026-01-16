@@ -41,15 +41,15 @@ import org.junit.jupiter.api.Test;
 
 import pi.util.FileUtil;
 
-public class ConfigurationLoaderTest
+public class ConfigLoaderTest
 {
-    private ConfigurationLoader config;
+    private ConfigLoader config;
 
     @BeforeEach
     void setup()
     {
         Logger.getLogger(FileUtil.class.getName()).setUseParentHandlers(false);
-        Logger.getLogger(ConfigurationLoader.class.getName())
+        Logger.getLogger(ConfigLoader.class.getName())
                 .setUseParentHandlers(false);
     }
 
@@ -70,20 +70,20 @@ public class ConfigurationLoaderTest
         final TestConfigurationGroup group = new TestConfigurationGroup();
 
         // act
-        config = new ConfigurationLoader(group);
+        config = new ConfigLoader(group);
         config.load();
 
         // assert
-        assertEquals(group, config.getConfigurationGroup(group.getClass()));
+        assertEquals(group, config.getGroup(group.getClass()));
         assertEquals("test-prefix", group.getPrefix());
-        assertEquals(group, config.getConfigurationGroup("test-prefix"));
+        assertEquals(group, config.getGroup("test-prefix"));
     }
 
     @Test
     void testDefaultFileCreation()
     {
         // arrange
-        config = new ConfigurationLoader();
+        config = new ConfigLoader();
         config.load();
 
         // act, assert
@@ -98,7 +98,7 @@ public class ConfigurationLoaderTest
                 + ".properties";
 
         // act
-        config = new ConfigurationLoader(testFileName);
+        config = new ConfigLoader(testFileName);
         config.load();
 
         // assert
@@ -110,12 +110,12 @@ public class ConfigurationLoaderTest
     {
         // arrange
         final TestConfigurationGroup group = new TestConfigurationGroup();
-        config = new ConfigurationLoader(group);
+        config = new ConfigLoader(group);
 
         // act
         config.load();
         final TestConfigurationGroup configGroup = config
-                .getConfigurationGroup(TestConfigurationGroup.class);
+                .getGroup(TestConfigurationGroup.class);
 
         // assert
         assertEquals(100, configGroup.getTestInt());
@@ -137,9 +137,9 @@ public class ConfigurationLoaderTest
         TEST1, TEST2;
     }
 
-    @ConfigurationGroupInfo(prefix = "test-prefix")
+    @ConfigGroupInfo(prefix = "test-prefix")
     @SuppressWarnings("unused")
-    private class TestConfigurationGroup extends ConfigurationGroup
+    private class TestConfigurationGroup extends ConfigGroup
     {
         private int testInt = 100;
 

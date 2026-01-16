@@ -18,13 +18,15 @@
  */
 package demos.docs.resources.config;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/config.md
+
 import pi.annotations.Getter;
 import pi.annotations.Setter;
-import pi.config.ConfigurationGroup;
-import pi.config.ConfigurationGroupInfo;
+import pi.config.ConfigGroup;
+import pi.config.ConfigGroupInfo;
 
-@ConfigurationGroupInfo(prefix = "custom_")
-public class MyCustomConfigurationGroup extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "custom_")
+public class MyConfigGroup extends ConfigGroup
 {
     private int myInt = 23;
 

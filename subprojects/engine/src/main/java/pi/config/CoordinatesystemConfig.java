@@ -30,10 +30,10 @@ import pi.annotations.Setter;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo(prefix = "coordinatesystem_")
-public class CoordinatesystemConfiguration extends ConfigurationGroup
+@ConfigGroupInfo(prefix = "coordinatesystem_")
+public class CoordinatesystemConfig extends ConfigGroup
 {
-    CoordinatesystemConfiguration()
+    CoordinatesystemConfig()
     {
         super();
         // Der Konstruktor sollte nicht auf „public“ gesetzt werden, sondern
@@ -84,7 +84,7 @@ public class CoordinatesystemConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public CoordinatesystemConfiguration linesNMeter(int linesNMeter)
+    public CoordinatesystemConfig linesNMeter(int linesNMeter)
     {
         set("linesNMeter", linesNMeter);
         return this;
@@ -132,7 +132,7 @@ public class CoordinatesystemConfiguration extends ConfigurationGroup
      */
     @Setter
     @API
-    public CoordinatesystemConfiguration labelsOnIntersections(
+    public CoordinatesystemConfig labelsOnIntersections(
             boolean labelsOnIntersections)
     {
         set("labelsOnIntersections", labelsOnIntersections);

@@ -26,18 +26,18 @@
 package pi.config;
 
 /**
- * Diese Klasse enthält alle Standard-{@link ConfigurationGroup
- * Konfigurationsgruppen}, die von der <b>Engine</b> Pi bereitgestellt werden.
+ * Diese Klasse enthält alle Standard-{@link ConfigGroup Konfigurationsgruppen},
+ * die von der <b>Engine</b> Pi bereitgestellt werden.
  *
  * <p>
  * Darüber hinaus kann diese Klasse zum Registrieren und Verwalten von
- * benutzerdefinierten {@link ConfigurationGroup Konfigurationsgruppen}
- * verwendet werden.
+ * benutzerdefinierten {@link ConfigGroup Konfigurationsgruppen} verwendet
+ * werden.
  * </p>
  *
- * @see ConfigurationGroup
- * @see ConfigurationLoader#add(ConfigurationGroup...)
- * @see ConfigurationLoader#getConfigurationGroup(Class)
+ * @see ConfigGroup
+ * @see ConfigLoader#add(ConfigGroup...)
+ * @see ConfigLoader#getGroup(Class)
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -45,35 +45,35 @@ package pi.config;
  *
  * @since 0.42.0
  */
-public class Configuration extends ConfigurationLoader
+public class Configuration extends ConfigLoader
 {
     /**
      * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b>
      * oder Projekt.
      */
-    public final GameConfiguration game;
+    public final GameConfig game;
 
     /**
      * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
      */
-    public final GraphicsConfiguration graphics;
+    public final GraphicsConfig graphics;
 
     /**
      * Verwaltet die <b>Audio</b>-Einstellungsmöglichkeiten.
      */
-    public final SoundConfiguration sound;
+    public final SoundConfig sound;
 
     /**
      * Verwaltet die Einstellmöglichkeiten mit Bezug zum
      * <b>Entwicklungs</b>modus.
      */
-    public final DebugConfiguration debug;
+    public final DebugConfig debug;
 
     /**
      * Verwaltet die Einstellungsmöglichkeiten, wie das <b>Koordinatensystem</b>
      * im Entwicklungsmodus gezeichnet werden soll.
      */
-    public final CoordinatesystemConfiguration coordinatesystem;
+    public final CoordinatesystemConfig coordinatesystem;
 
     private static Configuration configuration;
 
@@ -84,11 +84,11 @@ public class Configuration extends ConfigurationLoader
     private Configuration()
     {
         super();
-        game = new GameConfiguration();
-        graphics = new GraphicsConfiguration();
-        sound = new SoundConfiguration();
-        debug = new DebugConfiguration();
-        coordinatesystem = new CoordinatesystemConfiguration();
+        game = new GameConfig();
+        graphics = new GraphicsConfig();
+        sound = new SoundConfig();
+        debug = new DebugConfig();
+        coordinatesystem = new CoordinatesystemConfig();
         add(game, graphics, sound, debug, coordinatesystem);
     }
 

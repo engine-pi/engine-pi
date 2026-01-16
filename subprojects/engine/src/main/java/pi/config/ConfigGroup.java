@@ -47,11 +47,11 @@ import java.util.logging.Logger;
  *
  * @since 0.42.0
  */
-@ConfigurationGroupInfo
-public abstract class ConfigurationGroup
+@ConfigGroupInfo
+public abstract class ConfigGroup
 {
     private static final Logger log = Logger
-            .getLogger(ConfigurationGroup.class.getName());
+            .getLogger(ConfigGroup.class.getName());
 
     private final Collection<ConfigurationChangedListener> listeners = ConcurrentHashMap
             .newKeySet();
@@ -63,10 +63,10 @@ public abstract class ConfigurationGroup
     /**
      * Initializes a new instance of the {@code ConfigurationGroup} class.
      */
-    protected ConfigurationGroup()
+    protected ConfigGroup()
     {
-        final ConfigurationGroupInfo info = this.getClass()
-                .getAnnotation(ConfigurationGroupInfo.class);
+        final ConfigGroupInfo info = this.getClass()
+                .getAnnotation(ConfigGroupInfo.class);
         this.prefix = info.prefix();
         this.debug = info.debug();
     }
@@ -87,7 +87,7 @@ public abstract class ConfigurationGroup
      *
      * @param listener The listener to add.
      *
-     * @see ConfigurationGroup#set(String, Object)
+     * @see ConfigGroup#set(String, Object)
      */
     public void onChanged(ConfigurationChangedListener listener)
     {
@@ -243,15 +243,15 @@ public abstract class ConfigurationGroup
      * This listener interface receives events when any property of the
      * configuration changed.
      *
-     * @see ConfigurationGroup#onChanged(ConfigurationChangedListener)
+     * @see ConfigGroup#onChanged(ConfigurationChangedListener)
      */
     @FunctionalInterface
     public interface ConfigurationChangedListener extends EventListener
     {
         /**
          * Invoked when a property of the configuration has been changed using
-         * the {@link ConfigurationGroup#set(String, Object)} method to support
-         * this event.
+         * the {@link ConfigGroup#set(String, Object)} method to support this
+         * event.
          *
          * @param event The property changed event.
          */

@@ -35,33 +35,33 @@ import java.lang.reflect.Method;
 
 import org.junit.jupiter.api.Test;
 
-import pi.config.ConfigurationGroup.ConfigurationChangedListener;
+import pi.config.ConfigGroup.ConfigurationChangedListener;
 import pi.util.ReflectionUtil;
 
-public class ConfigurationGroupTest
+public class ConfigGroupTest
 {
     @Test
     void testPropertyChangedGraphicsConfig()
     {
-        this.testConfigurationChanged(new CoordinatesystemConfiguration());
+        this.testConfigurationChanged(new CoordinatesystemConfig());
     }
 
     @Test
     void testPropertyChangedSoundConfig()
     {
-        this.testConfigurationChanged(new SoundConfiguration());
+        this.testConfigurationChanged(new SoundConfig());
     }
 
     @Test
     void testPropertyChangedDebugConfig()
     {
-        this.testConfigurationChanged(new DebugConfiguration());
+        this.testConfigurationChanged(new DebugConfig());
     }
 
     @Test
     void testPropertyChangedEventValues()
     {
-        GraphicsConfiguration config = new GraphicsConfiguration();
+        GraphicsConfig config = new GraphicsConfig();
         TestConfigurationChangedListener listener = new TestConfigurationChangedListener();
 
         config.onChanged(listener);
@@ -86,13 +86,12 @@ public class ConfigurationGroupTest
     @Test
     void testReflectionBasedSetters()
     {
-        GraphicsConfiguration config = new GraphicsConfiguration();
+        GraphicsConfig config = new GraphicsConfig();
         config.windowWidth(99);
         assertEquals(99, config.windowWidth());
     }
 
-    private <T extends ConfigurationGroup> void testConfigurationChanged(
-            T instance)
+    private <T extends ConfigGroup> void testConfigurationChanged(T instance)
     {
         TestConfigurationChangedListener listener = new TestConfigurationChangedListener();
 

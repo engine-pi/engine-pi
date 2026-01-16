@@ -39,7 +39,7 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.config.Configuration;
-import pi.config.GameConfiguration;
+import pi.config.GameConfig;
 import pi.debug.MainAnimation;
 import pi.event.DefaultControl;
 import pi.event.DefaultListener;
@@ -1215,7 +1215,7 @@ public class Controller
      *     {@code true} falls der <b>Instant-Modus</b> aktiviert werden soll,
      *     sonst {@code false}.
      *
-     * @see GameConfiguration#instantMode(boolean)
+     * @see GameConfig#instantMode(boolean)
      *
      * @since 0.42.0
      */

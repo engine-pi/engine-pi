@@ -18,6 +18,10 @@
  */
 package demos.docs.resources.config;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/config.md
+
+import static pi.Controller.config;
+
 import pi.Controller;
 import pi.Scene;
 import pi.Text;
@@ -26,21 +30,23 @@ public class CustomConfigGroupDemo extends Scene
 {
     static
     {
-        MyCustomConfigurationGroup customConfig = new MyCustomConfigurationGroup();
-        Controller.config.add(customConfig);
-        customConfig.myInt(42);
+        MyConfigGroup custom = new MyConfigGroup();
+        config.add(custom);
+        custom.myInt(42);
     }
 
     public CustomConfigGroupDemo()
     {
-        MyCustomConfigurationGroup customConfig = (MyCustomConfigurationGroup) Controller.config
-                .getConfigurationGroup("custom_");
-        add(new Text(String.valueOf(customConfig.myInt())));
+        MyConfigGroup custom = config.getGroup(MyConfigGroup.class);
+        // Oder:
+        // MyConfigGroup custom = (MyConfigGroup) config.getGroup("custom_");
+        add(new Text(custom.myInt()).center(0, 0));
     }
 
     public static void main(String[] args)
     {
-        Controller.instantMode(false);
+        config.game.instantMode(false);
+        config.graphics.pixelPerMeter(512);
         Controller.start(new CustomConfigGroupDemo());
     }
 }
