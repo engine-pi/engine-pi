@@ -20,6 +20,8 @@ public class ConfigurationTest
         assertEquals(768, config.graphics.windowWidth());
         assertEquals(576, config.graphics.windowHeight());
         assertEquals(Direction.NONE, config.graphics.windowPosition());
+        assertEquals(32.0, config.graphics.pixelPerMeter());
+        assertEquals(0.05, config.graphics.zoomChange());
         assertEquals(60, config.graphics.framerate());
         assertEquals("Gnome", config.graphics.colorScheme());
         assertEquals(1, config.graphics.pixelMultiplication());

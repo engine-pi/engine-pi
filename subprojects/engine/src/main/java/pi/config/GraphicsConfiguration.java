@@ -62,7 +62,8 @@ public class GraphicsConfiguration extends ConfigurationGroup
         // 32 * 18 = 576
         windowHeight(576);
         windowPosition(Direction.NONE);
-
+        pixelPerMeter(32);
+        zoomChange(0.05);
         framerate(60);
         colorScheme("Gnome");
         screenRecordingNFrames(2);
@@ -243,7 +244,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
     /**
      * Die <b>Pixelanzahl</b> eines <b>Meters</b>.
      */
-    private double pixelPerMeter = 32;
+    private double pixelPerMeter;
 
     /**
      * Gibt die <b>Pixelanzahl</b> eines <b>Meters</b> zurück.
@@ -288,7 +289,7 @@ public class GraphicsConfiguration extends ConfigurationGroup
      * @see pi.Camera#zoomIn()
      * @see pi.Camera#zoomOut()
      */
-    private double zoomChange = 0.05;
+    private double zoomChange;
 
     /**
      * Gibt zurück, um wie viel der <b>Zoomfaktor</b> der Kamera <b>geändert</b>

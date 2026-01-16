@@ -11,21 +11,25 @@ keine solche Datei vorhanden ist, erstellt die Engine eine
 
 ```properties
 game_instantMode=true
+
 graphics_framerate=60
-graphics_windowPosition=NONE
+graphics_windowWidth=768
 graphics_windowHeight=576
+graphics_windowPosition=NONE
 graphics_colorScheme=Gnome
 graphics_pixelMultiplication=1
 graphics_screenRecordingNFrames=2
-graphics_windowWidth=768
-sound_musicVolume=0.5
+
 sound_soundVolume=0.5
-debug_verbose=false
-debug_actorCoordinates=false
+sound_musicVolume=0.5
+
 debug_enabled=false
+debug_verbose=false
 debug_renderActors=true
-coordinatesystem_labelsOnIntersections=false
+debug_actorCoordinates=false
+
 coordinatesystem_linesNMeter=-1
+coordinatesystem_labelsOnIntersections=false
 ```
 
 Die Konfigurationen sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
@@ -49,6 +53,8 @@ assertEquals(true, config.game.instantMode());
 assertEquals(768, config.graphics.windowWidth());
 assertEquals(576, config.graphics.windowHeight());
 assertEquals(Direction.NONE, config.graphics.windowPosition());
+assertEquals(32.0, config.graphics.pixelPerMeter());
+assertEquals(0.05, config.graphics.zoomChange());
 assertEquals(60, config.graphics.framerate());
 assertEquals("Gnome", config.graphics.colorScheme());
 assertEquals(1, config.graphics.pixelMultiplication());

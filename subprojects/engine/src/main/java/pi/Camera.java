@@ -76,13 +76,6 @@ import pi.graphics.geom.Vector;
 public final class Camera
 {
     /**
-     * Der Standardwert für die Anzahl an Pixel eines Meters.
-     */
-    public static final double DEFAULT_METER = 32;
-
-    public static final double DEFAULT_ZOOM_FACTOR = 0.05;
-
-    /**
      * Die aktuelle Position des Mittelpunkts der Kamera.
      */
     private Vector focus;
@@ -106,7 +99,7 @@ public final class Camera
     /**
      * Die aktuelle Pixelanzahl eines Meters.
      */
-    private double meter = DEFAULT_METER;
+    private double meter = config.graphics.pixelPerMeter();
 
     /**
      * Die aktuelle Drehung in Grad.
@@ -433,7 +426,7 @@ public final class Camera
     @API
     public Camera zoomIn()
     {
-        zoomIn(DEFAULT_ZOOM_FACTOR);
+        zoomIn(config.graphics.zoomChange());
         return this;
     }
 
@@ -471,7 +464,7 @@ public final class Camera
     @API
     public Camera zoomOut()
     {
-        zoomOut(DEFAULT_ZOOM_FACTOR);
+        zoomOut(config.graphics.zoomChange());
         return this;
     }
 
