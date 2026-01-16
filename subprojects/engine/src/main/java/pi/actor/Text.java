@@ -50,47 +50,6 @@ public class Text extends Geometry
      */
     private static final int SIZE = 1000;
 
-    /**
-     * @hidden
-     */
-    @Internal
-    private static FixtureData createShape(Object content, double height,
-            Font font)
-    {
-        var sizeInPixels = FontUtil.getStringBounds(String.valueOf(content),
-                font);
-        return FixtureBuilder.rectangle(
-                sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
-                height);
-    }
-
-    /**
-     * Die Höhe des Textes in Meter.
-     */
-    private double height;
-
-    /**
-     * Der Stil der Schriftart (<b>fett, kursiv, oder fett und kursiv</b>).
-     *
-     * <ul>
-     * <li>{@code 0}: Normaler Text</li>
-     * <li>{@code 1}: Fett</li>
-     * <li>{@code 2}: Kursiv</li>
-     * <li>{@code 3}: Fett und Kursiv</li>
-     * </ul>
-     */
-    private int fontStyle;
-
-    /**
-     * Der Textinhalt, der dargestellt werden soll.
-     */
-    private String content;
-
-    /**
-     * Die Schriftart, in der der Text dargestellt werden soll.
-     */
-    private Font font;
-
     private transient int cachedDescent;
 
     private transient double cachedScaleFactor;
@@ -162,7 +121,7 @@ public class Text extends Geometry
                 fonts.get(fontName).deriveFont(style, SIZE)));
         this.content = content == null ? "" : String.valueOf(content);
         this.height = height;
-        setStyle(style);
+        style(style);
         font(fontName);
         color(colorScheme.get().white());
     }
@@ -173,52 +132,31 @@ public class Text extends Geometry
                 font.deriveFont(style, SIZE)));
         this.content = content == null ? "" : String.valueOf(content);
         this.height = height;
-        setStyle(style);
+        style(style);
         font(font);
         color(colorScheme.get().white());
     }
 
     /**
-     * Setzt eine neue Schriftart durch Angabe einer bereits geladenen
-     * Schriftart.
-     *
-     * @param font Eine bereits geladene Schriftart.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
+     * @hidden
      */
-    @API
-    @Setter
-    public Text font(Font font)
+    @Internal
+    private static FixtureData createShape(Object content, double height,
+            Font font)
     {
-        this.font = font.deriveFont(fontStyle, SIZE);
-        update();
-        return this;
+        var sizeInPixels = FontUtil.getStringBounds(String.valueOf(content),
+                font);
+        return FixtureBuilder.rectangle(
+                sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
+                height);
     }
+
+    /* content */
 
     /**
-     * Setzt eine neue Schriftart für den Text durch Angabe des Names.
-     *
-     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
-     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
+     * Der Textinhalt, der dargestellt werden soll.
      */
-    @API
-    @Setter
-    public Text font(String fontName)
-    {
-        font(fonts.get(fontName));
-        return this;
-    }
-
-    @API
-    @Getter
-    public Font font()
-    {
-        return font;
-    }
+    private String content;
 
     /**
      * Setzt den Textinhalt, der dargestellt werden soll.
@@ -257,12 +195,76 @@ public class Text extends Geometry
         return content;
     }
 
+    /* font */
+
     /**
-     * Setzt den Stil der Schriftart (<b>fett, kursiv, oder fett und
-     * kursiv</b>).
+     * Die Schriftart, in der der Text dargestellt werden soll.
+     */
+    private Font font;
+
+    @API
+    @Getter
+    public Font font()
+    {
+        return font;
+    }
+
+    /**
+     * Setzt eine neue Schriftart durch Angabe einer bereits geladenen
+     * Schriftart.
      *
-     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
-     *     kursiv</b>).
+     * @param font Eine bereits geladene Schriftart.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *     Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    @Setter
+    public Text font(Font font)
+    {
+        this.font = font.deriveFont(style, SIZE);
+        update();
+        return this;
+    }
+
+    /**
+     * Setzt eine neue Schriftart für den Text durch Angabe des Names.
+     *
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *     Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    @Setter
+    public Text font(String fontName)
+    {
+        font(fonts.get(fontName));
+        return this;
+    }
+
+    /* style */
+
+    /**
+     * Der <b>Stil</b> der Schriftart (<i>fett, kursiv, oder fett und
+     * kursiv</i>).
+     *
+     * <ul>
+     * <li>{@code 0}: Normaler Text</li>
+     * <li>{@code 1}: Fett</li>
+     * <li>{@code 2}: Kursiv</li>
+     * <li>{@code 3}: Fett und Kursiv</li>
+     * </ul>
+     */
+    private int style;
+
+    /**
+     * Setzt den <b>Stil</b> der Schriftart (<i>fett, kursiv, oder fett und
+     * kursiv</i>).
+     *
+     * @param style Der Stil der Schriftart (<i>fett, kursiv, oder fett und
+     *     kursiv</i>)..
      *
      *     <ul>
      *     <li>{@code 0}: Normaler Text</li>
@@ -275,11 +277,12 @@ public class Text extends Geometry
      *     Punktschreibweise aneinander gekettet werden können.
      */
     @API
-    public Text setStyle(int style)
+    @Setter
+    public Text style(int style)
     {
-        if (style >= 0 && style <= 3 && style != fontStyle)
+        if (style >= 0 && style <= 3 && this.style != style)
         {
-            fontStyle = style;
+            this.style = style;
             font = font.deriveFont(style, SIZE);
             update();
         }
@@ -287,37 +290,16 @@ public class Text extends Geometry
     }
 
     @API
-    public int getStyle()
-    {
-        return fontStyle;
-    }
-
-    /**
-     * Setzt die <b>Höhe</b> des Tests in Meter.
-     *
-     * @param height Die Höhe des Texts in Meter.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
-     */
-    @API
-    @Setter
-    public Text height(double height)
-    {
-        if (this.height != height)
-        {
-            this.height = height;
-            update();
-        }
-        return this;
-    }
-
-    @API
     @Getter
-    public double height()
+    public int style()
     {
-        return height;
+        return style;
     }
+
+    /* width */
+
+    @SuppressWarnings("unused")
+    private double width;
 
     /**
      * Gibt die <b>Breite</b> des Texts in Meter zurück.
@@ -344,8 +326,43 @@ public class Text extends Geometry
     @Setter
     public Text width(double width)
     {
+        this.width = width;
         var sizeInPixels = FontUtil.getStringBounds(content, font);
         height(width / sizeInPixels.getWidth() * sizeInPixels.getHeight());
+        return this;
+    }
+
+    /* height */
+
+    /**
+     * Die Höhe des Textes in Meter.
+     */
+    private double height;
+
+    @API
+    @Getter
+    public double height()
+    {
+        return height;
+    }
+
+    /**
+     * Setzt die <b>Höhe</b> des Tests in Meter.
+     *
+     * @param height Die Höhe des Texts in Meter.
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *     Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    @Setter
+    public Text height(double height)
+    {
+        if (this.height != height)
+        {
+            this.height = height;
+            update();
+        }
         return this;
     }
 
