@@ -32,13 +32,12 @@ def _normalize_java_path(path: str) -> str:
     return path
 
 
-def _to_url(package_path: str) -> str:
-    """Convert a package path to a URL with slashes
+def _convert_class_path_to_relpath(class_path: str) -> str:
+    """:param class_path: for example ``java.awt.Color``
 
-    :param package_path: for example ``pi.actor.Actor``
-
+    :return: ``java/awt/Color``
     """
-    return package_path.replace(".", "/")
+    return class_path.replace(".", "/")
 
 
 # | Pfad                              | artefactId              |
@@ -60,14 +59,6 @@ subprojects = {
     "pacman": "games/pacman",
     "cli": "cli",
 }
-
-
-def _convert_class_path_to_relpath(class_path: str) -> str:
-    """:param class_path: for example ``java.awt.Color``
-
-    :return: ``java/awt/Color``
-    """
-    return class_path.replace(".", "/")
 
 
 def _convert_class_path_to_subproject_path(class_path: str) -> str:
@@ -181,7 +172,13 @@ class JavaFile:
             ) / _normalize_java_path(path)
         self.lines = self.path.read_text().splitlines()
 
-    def get_code(self, start_line: int = 0, end_line: int = 0, line: int = 0) -> str:
+    def get_code(
+        self,
+        start_line: int = 0,
+        end_line: int = 0,
+        line: int = 0,
+        from_import: bool = False,
+    ) -> str:
         """
         Extract a substring of code lines based on specified line numbers.
 
@@ -234,7 +231,7 @@ def define_env(env: Any) -> None:
         _check_class_path(class_path)
         if link_title is None:
             link_title = _get_class_name(class_path)
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html)"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html)"
 
     env.macro(macro_class, "class")
 
@@ -253,7 +250,7 @@ def define_env(env: Any) -> None:
         if link_title is None:
             link_title = package_path
 
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(package_path)}/package-summary.html)"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(package_path)}/package-summary.html)"
 
     env.macro(macro_package, "package")
 
@@ -269,7 +266,7 @@ def define_env(env: Any) -> None:
         if link_title is None:
             link_title = method
 
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{method})"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html#{method})"
 
     env.macro(macro_method, "method")
 
@@ -297,7 +294,7 @@ def define_env(env: Any) -> None:
         if link_title is None:
             link_title = _get_class_name(class_path)
 
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_to_url(class_path)}.html#{attribute})"
+        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html#{attribute})"
 
     env.macro(macro_attribute, "attribute")
 
