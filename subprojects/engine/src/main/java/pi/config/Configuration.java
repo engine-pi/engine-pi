@@ -1,39 +1,81 @@
 /*
- * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/configuration/GameConfiguration.java
  *
- * Copyright (c) 2025 Josef Friedrich and contributors.
+ * MIT License
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * any later version.
+ * Copyright (c) 2016 - 2025 Gurkenlabs
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 package pi.config;
 
-import pi.Controller;
-
 /**
- * Bietet Zugriff auf alle <b>Konfigurationen</b>
+ * Diese Klasse enthält alle Standard-{@link ConfigurationGroup
+ * Konfigurationsgruppen}, die von der <b>Engine</b> Pi bereitgestellt werden.
  *
  * <p>
- * Durch diese Klasse kann die Klasse {@link Controller} etwas übersichtlicher
- * und weniger überladen gestaltet werden.
+ * Darüber hinaus kann diese Klasse zum Registrieren und Verwalten von
+ * benutzerdefinierten {@link ConfigurationGroup Konfigurationsgruppen}
+ * verwendet werden.
  * </p>
  *
+ * @see ConfigurationGroup
+ * @see ConfigurationLoader#add(ConfigurationGroup...)
+ * @see ConfigurationLoader#getConfigurationGroup(Class)
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  * @author Josef Friedrich
  *
  * @since 0.42.0
  */
-public final class Configuration extends EngineConfiguration
+public class Configuration extends ConfigurationLoader
 {
+
+    /**
+     * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b>
+     * oder Projekt.
+     */
+    public final GameConfiguration game;
+
+    /**
+     * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
+     */
+    public final GraphicsConfiguration graphics;
+
+    /**
+     * Verwaltet die <b>Audio</b>-Einstellungsmöglichkeiten.
+     */
+    public final SoundConfiguration sound;
+
+    /**
+     * Verwaltet die Einstellmöglichkeiten mit Bezug zum
+     * <b>Entwicklungs</b>modus.
+     */
+    public final DebugConfiguration debug;
+
+    /**
+     * Verwaltet die Einstellungsmöglichkeiten, wie das <b>Koordinatensystem</b>
+     * im Entwicklungsmodus gezeichnet werden soll.
+     */
+    public final CoordinatesystemConfiguration coordinatesystem;
+
     private static Configuration configuration;
 
     /**
@@ -42,7 +84,13 @@ public final class Configuration extends EngineConfiguration
      */
     private Configuration()
     {
-
+        super();
+        game = new GameConfiguration();
+        graphics = new GraphicsConfiguration();
+        sound = new SoundConfiguration();
+        debug = new DebugConfiguration();
+        coordinatesystem = new CoordinatesystemConfiguration();
+        add(game, graphics, sound, debug, coordinatesystem);
     }
 
     /**
