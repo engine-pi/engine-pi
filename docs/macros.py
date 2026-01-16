@@ -155,6 +155,35 @@ def _get_class_name(class_path: str) -> str:
     return class_path.split(".")[-1]
 
 
+class CodeSample:
+    java_file: "JavaFile"
+
+    start_line: int = 0
+
+    end_line: int = 0
+
+    def __init__(
+        self,
+        java_file: "JavaFile",
+        start_line: int = 1,
+        end_line: int = 0,
+    ) -> None:
+        self.java_file = java_file
+        self.start_line = start_line
+        self.end_line = end_line
+
+    @property
+    def lines(self) -> list[str]:
+        return self.java_file.lines[self.start_line - 1 : self.end_line]
+
+    def fenced_code_block(self) -> str:
+        return _fenced_code_block(
+            "\n".join(self.lines),
+            language="java",
+            start_line=self.start_line,
+        )
+
+
 class JavaFile:
     path: Path
 
@@ -172,13 +201,21 @@ class JavaFile:
             ) / _normalize_java_path(path)
         self.lines = self.path.read_text().splitlines()
 
-    def get_code(
+    def get_first_import_statement(self) -> int:
+        counter = 1
+        for line in self.lines:
+            if line.startswith("import "):
+                return counter
+            counter += 1
+        return counter
+
+    def get_code_sample(
         self,
         start_line: int = 0,
         end_line: int = 0,
         line: int = 0,
         from_import: bool = False,
-    ) -> str:
+    ) -> CodeSample:
         """
         Extract a substring of code lines based on specified line numbers.
 
@@ -198,6 +235,13 @@ class JavaFile:
            If the `line` parameter is specified (> 0), it takes precedence over
            `start_line` and `end_line` parameters.
         """
+
+        if from_import and (start_line > 0 or end_line > 0 or line > 0):
+            raise Exception("from_import is an exclusive option")
+
+        if from_import:
+            start_line = self.get_first_import_statement()
+
         if line > 0:
             start_line = line
             end_line = line
@@ -214,7 +258,12 @@ class JavaFile:
                 raise Exception(
                     f"Start line no {start_line} of code {lines} is an empty string!"
                 )
-        return "\n".join(lines)
+
+        if start_line == 0:
+            start_line = 1
+        if end_line == 0:
+            end_line = len(self.lines)
+        return CodeSample(java_file=self, start_line=start_line, end_line=end_line)
 
     def url(self) -> str:
         return _github_code_url(str(self.path))
@@ -363,6 +412,7 @@ def define_env(env: Any) -> None:
         end_line: int = 0,
         line: int = 0,
         link: bool = True,
+        from_import: bool = False,
     ) -> str:
         """
         Extract a substring of code lines based on specified line numbers.
@@ -389,17 +439,9 @@ def define_env(env: Any) -> None:
 
         java_file = JavaFile(path)
 
-        start_line_for_code_block = 1
-        if line > 0:
-            start_line_for_code_block = line
-        if start_line > 0:
-            start_line_for_code_block = start_line
-
-        output = _fenced_code_block(
-            java_file.get_code(start_line=start_line, end_line=end_line, line=line),
-            language="java",
-            start_line=start_line_for_code_block,
-        )
+        output = java_file.get_code_sample(
+            start_line=start_line, end_line=end_line, line=line, from_import=from_import
+        ).fenced_code_block()
 
         if link:
             output += "\n" + macro_demo(

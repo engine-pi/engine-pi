@@ -56,7 +56,7 @@ public class DebugConfiguration extends ConfigurationGroup
     /* enabled */
 
     /**
-     * Ob der Entwicklungsmodus aktiviert werden soll.
+     * Ob der Entwicklungsmodus <b>aktiviert</b> werden soll.
      */
     private boolean enabled;
 

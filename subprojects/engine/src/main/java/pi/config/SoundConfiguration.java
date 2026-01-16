@@ -25,9 +25,15 @@
  */
 package pi.config;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+
 /**
+ * Verwaltet die <b>Audio</b>-Einstellungsmöglichkeiten.
+ *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
@@ -39,42 +45,23 @@ public class SoundConfiguration extends ConfigurationGroup
      */
     SoundConfiguration()
     {
-        this.setSoundVolume(0.5f);
-        this.setMusicVolume(0.5f);
+        this.soundVolume(0.5);
+        this.musicVolume(0.5);
     }
 
-    private float musicVolume;
+    /* soundVolume */
 
-    private float soundVolume;
-
-    /**
-     * Gets the current music volume.
-     *
-     * @return the music volume.
-     */
-    public float getMusicVolume()
-    {
-        return this.musicVolume;
-    }
+    private double soundVolume;
 
     /**
      * Gets the current sound volume.
      *
      * @return the sound volume.
      */
-    public float getSoundVolume()
+    @Getter
+    public double soundVolume()
     {
-        return this.soundVolume;
-    }
-
-    /**
-     * Sets the music volume.
-     *
-     * @param musicVolume the new music volume.
-     */
-    public void setMusicVolume(final float musicVolume)
-    {
-        this.set("musicVolume", musicVolume);
+        return soundVolume;
     }
 
     /**
@@ -82,8 +69,35 @@ public class SoundConfiguration extends ConfigurationGroup
      *
      * @param soundVolume the new sound volume.
      */
-    public void setSoundVolume(final float soundVolume)
+    @Setter
+    public void soundVolume(final double soundVolume)
     {
-        this.set("soundVolume", soundVolume);
+        set("soundVolume", soundVolume);
+    }
+
+    /* musicVolume */
+
+    private double musicVolume;
+
+    /**
+     * Gets the current music volume.
+     *
+     * @return the music volume.
+     */
+    @Getter
+    public double musicVolume()
+    {
+        return musicVolume;
+    }
+
+    /**
+     * Sets the music volume.
+     *
+     * @param musicVolume the new music volume.
+     */
+    @Setter
+    public void musicVolume(final double musicVolume)
+    {
+        set("musicVolume", musicVolume);
     }
 }

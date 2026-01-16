@@ -15,3 +15,9 @@ API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 ### Anordnung der Konstruktoren
 
 Oben stehen die Konstruktoren mit wenigen Parametern unten die mit vielen.
+
+### Anordnung Getter Setter
+
+1. Attribute
+2. Getter
+3. Setter

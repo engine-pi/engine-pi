@@ -27,7 +27,7 @@ package pi.config;
 
 /**
  * Diese Klasse enthält alle Standard-{@link ConfigurationGroup
- * Konfigurationsgruppen}, die von der Engine Pi bereitgestellt werden.
+ * Konfigurationsgruppen}, die von der <b>Engine</b> Pi bereitgestellt werden.
  *
  * <p>
  * Darüber hinaus kann diese Klasse zum Registrieren und Verwalten von
@@ -45,19 +45,37 @@ package pi.config;
  *
  * @since 0.42.0
  */
-public class MainConfiguration extends ConfigurationLoader
+public class EngineConfiguration extends ConfigurationLoader
 {
+    /**
+     * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b>
+     * oder Projekt.
+     */
     public final GameConfiguration game;
 
+    /**
+     * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
+     */
     public final GraphicsConfiguration graphics;
 
+    /**
+     * Verwaltet die <b>Audio</b>-Einstellungsmöglichkeiten.
+     */
     public final SoundConfiguration sound;
 
+    /**
+     * Verwaltet die Einstellmöglichkeiten mit Bezug zum
+     * <b>Entwicklungs</b>modus.
+     */
     public final DebugConfiguration debug;
 
+    /**
+     * Verwaltet die Einstellungsmöglichkeiten, wie das <b>Koordinatensystem</b>
+     * im Entwicklungsmodus gezeichnet werden soll.
+     */
     public final CoordinatesystemConfiguration coordinatesystem;
 
-    public MainConfiguration(final ConfigurationGroup... groups)
+    public EngineConfiguration(final ConfigurationGroup... groups)
     {
         super(groups);
         game = new GameConfiguration();
@@ -70,7 +88,7 @@ public class MainConfiguration extends ConfigurationLoader
 
     public static void main(String[] args)
     {
-        MainConfiguration game = new MainConfiguration();
+        EngineConfiguration game = new EngineConfiguration();
         game.load();
         int width = game.graphics.windowWidth();
         System.out.println(width);

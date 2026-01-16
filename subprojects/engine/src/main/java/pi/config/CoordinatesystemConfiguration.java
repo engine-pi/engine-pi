@@ -23,8 +23,8 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 
 /**
- * Represents the graphic configuration settings. This class extends the
- * ConfigurationGroup to provide specific settings for graphics.
+ * Verwaltet die Einstellungsmöglichkeiten, wie das <b>Koordinatensystem</b> im
+ * Entwicklungsmodus gezeichnet werden soll.
  *
  * @author Josef Friedrich
  *
@@ -90,18 +90,20 @@ public class CoordinatesystemConfiguration extends ConfigurationGroup
         return this;
     }
 
-    /* coordinateSystemLabelsEachIntersectionGridLines */
+    /* labelsOnIntersections */
 
     /**
-     * Zeichne Koordinatenbeschriftungen bei jeder Überschneidung der
-     * Gitterlinien ein.
+     * Ob Koordinatenbeschriftungen bei jeder <b>Überschneidung</b> der
+     * <b>Gitterlinien</b> eingezeichnet werden sollen.
      */
-    private boolean labelsOnIntersections = false;
+    private boolean labelsOnIntersections;
 
     /**
-     * Gibt
+     * Gibt zurück, ob Koordinatenbeschriftungen bei jeder <b>Überschneidung</b>
+     * der <b>Gitterlinien</b> eingezeichnet werden sollen.
      *
-     * @return
+     * @return Ob Koordinatenbeschriftungen bei jeder <b>Überschneidung</b> der
+     *     <b>Gitterlinien</b> eingezeichnet werden sollen.
      *
      * @since 0.42.0
      */
@@ -113,9 +115,12 @@ public class CoordinatesystemConfiguration extends ConfigurationGroup
     }
 
     /**
-     * Setzt
+     * Setzt ob Koordinatenbeschriftungen bei jeder <b>Überschneidung</b> der
+     * <b>Gitterlinien</b> eingezeichnet werden sollen.
      *
-     * @param labelsOnIntersections
+     * @param labelsOnIntersections Ob Koordinatenbeschriftungen bei jeder
+     *     <b>Überschneidung</b> der <b>Gitterlinien</b> eingezeichnet werden
+     *     sollen.
      *
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der

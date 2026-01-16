@@ -34,7 +34,7 @@ import pi.annotations.Setter;
 import pi.graphics.geom.Direction;
 
 /**
- * Stellt die <b>grafischen</b> Konfigurationseinstellungen dar.
+ * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
  *
  * <p>
  * Diese Klasse erweitert die {@link ConfigurationGroup}, um spezifische
@@ -390,16 +390,19 @@ public class GraphicsConfiguration extends ConfigurationGroup
     /* screenRecordingNFrames */
 
     /**
-     * Macht jedes n-te Einzelbild ein Bildschirmfoto.
+     * Wie oft jedes <b>n-te Einzelbild</b> ein Bildschirmfoto für die
+     * <b>Bildschirmaufnahme</b> gemacht werden soll.
      *
      * @since 0.42.0
      */
     private int screenRecordingNFrames;
 
     /**
-     * Gibt
+     * Gibt zurück, wie oft jedes <b>n-te Einzelbild</b> ein Bildschirmfoto für
+     * die <b>Bildschirmaufnahme</b> gemacht werden soll.
      *
-     * @return
+     * @return Wie oft jedes <b>n-te Einzelbild</b> ein Bildschirmfoto für die
+     *     <b>Bildschirmaufnahme</b> gemacht werden soll.
      *
      * @since 0.42.0
      */
@@ -411,9 +414,11 @@ public class GraphicsConfiguration extends ConfigurationGroup
     }
 
     /**
-     * Setzt
+     * Setzt wie oft jedes <b>n-te Einzelbild</b> ein Bildschirmfoto für die
+     * <b>Bildschirmaufnahme</b> gemacht werden soll.
      *
-     * @param screenRecordingNFrames
+     * @param screenRecordingNFrames Wie oft jedes <b>n-te Einzelbild</b> ein
+     *     Bildschirmfoto für die <b>Bildschirmaufnahme</b> gemacht werden soll.
      *
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der

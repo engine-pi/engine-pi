@@ -32,7 +32,7 @@ import pi.Controller;
  *
  * @since 0.42.0
  */
-public final class Configuration extends MainConfiguration
+public final class Configuration extends EngineConfiguration
 {
     private static Configuration configuration;
 

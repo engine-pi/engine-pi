@@ -23,6 +23,9 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 
 /**
+ * Verwaltet die Einstellungsmöglichkeiten mit Bezug zu einem <b>Spiel</b> oder
+ * Projekt.
+ *
  * @author Josef Friedrich
  *
  * @since 0.42.0

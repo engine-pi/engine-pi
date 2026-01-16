@@ -101,5 +101,4 @@ public class GraphicsConfigurationTest
         assertEquals(60, config.framerate());
         assertEquals(2, config.pixelMultiplication());
     }
-
 }
