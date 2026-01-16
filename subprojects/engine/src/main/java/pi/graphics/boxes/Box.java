@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
@@ -142,7 +143,13 @@ public abstract class Box implements Iterable<Box>
         return Collections.unmodifiableList(childs).iterator();
     }
 
-    /* Setter */
+    /* Getter Setter */
+
+    @Getter
+    public int width()
+    {
+        return width;
+    }
 
     @Setter
     public Box width(int width)
@@ -152,6 +159,12 @@ public abstract class Box implements Iterable<Box>
             this.definedWidth = width;
         }
         return this;
+    }
+
+    @Getter
+    public int height()
+    {
+        return height;
     }
 
     @Setter

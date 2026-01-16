@@ -36,6 +36,8 @@ import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 import pi.resources.font.FontUtil;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
+
 /**
  * Zur Darstellung von <b>Texten</b>.
  *
@@ -63,8 +65,7 @@ public class Text extends Geometry
     @API
     public Text(Object content)
     {
-        super(() -> createShape(String.valueOf(content), 1,
-                fonts.defaultFont().deriveFont((float) SIZE)));
+        super(null);
         this.content = content == null ? "" : String.valueOf(content);
         color(colorScheme.get().white());
         syncAttributes();
