@@ -1,6 +1,7 @@
 package blockly_robot.jwinf.en.tasks.loops_excercises.securing_the_road;
 
 import blockly_robot.robot.Solver;
+import pi.Controller;
 
 /**
  * https://jwinf.de/task/1140
@@ -111,6 +112,7 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new TaskSolver().solve();
     }
 }

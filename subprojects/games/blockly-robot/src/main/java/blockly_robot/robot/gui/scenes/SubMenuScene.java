@@ -33,8 +33,8 @@ public class SubMenuScene extends Scene implements WindowScene
     {
         this.main = main;
         State.menu.getSub(main).forEach((sub, id) -> {
-            Text text = new Text(sub, FONT_SIZE);
-            text.font(TextMaker.regular);
+            Text text = new Text(sub);
+            text.height(FONT_SIZE).font(TextMaker.regular);
             if (id != null)
             {
                 text.color(Color.BLACK);

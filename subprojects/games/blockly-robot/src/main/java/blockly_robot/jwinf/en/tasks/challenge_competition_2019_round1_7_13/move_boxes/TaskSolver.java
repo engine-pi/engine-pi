@@ -1,6 +1,7 @@
 package blockly_robot.jwinf.en.tasks.challenge_competition_2019_round1_7_13.move_boxes;
 
 import blockly_robot.robot.Solver;
+import pi.Controller;
 
 /**
  * https://jwinf.de/task/975
@@ -24,6 +25,7 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new TaskSolver().solve();
     }
 }

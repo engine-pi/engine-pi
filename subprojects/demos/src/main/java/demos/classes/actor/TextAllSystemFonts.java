@@ -53,7 +53,8 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
 
     public TextAllSystemFonts()
     {
-        Text überschrift = new Text("Alle System-Schriftarten", 2f);
+        Text überschrift = (Text) new Text("Alle System-Schriftarten")
+                .height(2);
         überschrift.anchor(-12, 3);
         überschrift.color("black");
         fonts = new Text[fontsCountPerPage];
@@ -81,7 +82,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
         for (int i = startIndex; i < startIndex + fontsCountPerPage; i++)
         {
             String fontName = systemFonts[i];
-            Text text = new Text(fontName, 1, fontName);
+            Text text = (Text) new Text(fontName).font(fontName);
             text.anchor(-12, -1 * x);
             text.color("black");
             fonts[x] = text;
@@ -120,6 +121,7 @@ public class TextAllSystemFonts extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new TextAllSystemFonts(), 1020, 520);
         Controller.title("Alle Schriftarten");
     }

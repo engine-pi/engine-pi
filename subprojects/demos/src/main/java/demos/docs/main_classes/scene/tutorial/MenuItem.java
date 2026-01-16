@@ -42,7 +42,7 @@ public class MenuItem extends Rectangle
     {
         super(10, 1.5);
         this.mainScene = mainScene;
-        label = new Text(labelText, 1);
+        label = new Text(labelText);
         label.layerPosition(1);
         label.color("black");
         label.center(center);

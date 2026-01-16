@@ -1,6 +1,7 @@
 package blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_destination;
 
 import blockly_robot.robot.Solver;
+import pi.Controller;
 
 /**
  * https://jwinf.de/task/1157
@@ -124,6 +125,7 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new TaskSolver().solve();
     }
 }

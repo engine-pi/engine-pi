@@ -64,7 +64,8 @@ public class RestitutionDemo extends Scene
         circle.makeDynamic();
         // Eine Beschriftung mit der Stoßzahl unterhalb des Kollisionsrechtecks
         DecimalFormat df = new DecimalFormat("0.00");
-        Text label = new Text(df.format(restitution), 0.8);
+        Text label = new Text(df.format(restitution));
+        label.height(0.8);
         label.anchor(x, -17);
         label.makeStatic();
         add(label);
@@ -73,7 +74,6 @@ public class RestitutionDemo extends Scene
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.recordScreen();
         Controller.start(new RestitutionDemo(), 600, 800);
     }
 }

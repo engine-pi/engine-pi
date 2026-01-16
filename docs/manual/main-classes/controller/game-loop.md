@@ -55,7 +55,6 @@ diese mit ihrer aktuellen Geschwindigkeit `v`:
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 86, 90) }}
 
-
 ## Bewegungsgeschwindigkeit festlegen
 
 Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,

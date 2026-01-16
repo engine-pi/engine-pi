@@ -116,9 +116,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         // https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/blob/master/schemas/org.gnome.desktop.interface.gschema.xml.in#L165
         // Font: https://cantarell.gnome.org/
         logo = new Logo(this, new Vector(-4, -5), 2.3);
-        Text enginePiText = new Text("E   n   g   i   n   e         P   i", 2,
-                "fonts/Cantarell-Bold.ttf", 0);
-        enginePiText.makeStatic();
+        Text enginePiText = new Text("E   n   g   i   n   e         P   i");
+        enginePiText.height(2).font("fonts/Cantarell-Bold.ttf").makeStatic();
         enginePiText.color(colorScheme.get().white());
         enginePiText.center(0, -7);
         add(enginePiText);
@@ -140,8 +139,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     private void addBuildInfos()
     {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
-                + formatBuildTime(), .5, "fonts/Cantarell-Regular.ttf");
-        text.anchor(-10, 8.2);
+                + formatBuildTime());
+        text.height(.5).font("fonts/Cantarell-Regular.ttf").anchor(-10, 8.2);
         text.color(colorScheme.get().gray());
         text.makeStatic();
         text.density(0.1);
@@ -267,8 +266,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     public static void main(String[] args) throws IOException
     {
         Controller.instantMode(false);
-        Controller.start(new MainAnimation(false));
-        Controller.recordScreen(20);
+        Controller.start(new MainAnimation(true));
         Controller.title("Engine Pi " + Version.getVersion());
     }
 }

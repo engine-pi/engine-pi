@@ -48,7 +48,9 @@ public class RepeatDemo extends Scene
 
         public CounterText()
         {
-            super("0", 2);
+            super("1");
+            height(2);
+            color("black");
             center(0, 0);
             start();
             addKeyStrokeListener((e) -> {
@@ -83,6 +85,7 @@ public class RepeatDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new RepeatDemo());
     }
 }

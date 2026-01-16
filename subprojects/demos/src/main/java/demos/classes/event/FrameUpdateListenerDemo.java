@@ -50,7 +50,8 @@ public class FrameUpdateListenerDemo extends Scene
     {
         public TextActor()
         {
-            super("Text Actor", 2);
+            super("Text Actor");
+            height(2);
             center(0, 0);
         }
 

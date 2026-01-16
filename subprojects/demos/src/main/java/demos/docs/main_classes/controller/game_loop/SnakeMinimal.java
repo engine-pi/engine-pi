@@ -37,7 +37,7 @@ import pi.graphics.geom.Vector;
 
 public class SnakeMinimal extends Scene
 {
-    private Text scoreText = new Text("Score: 0", 1.4);
+    private Text scoreText = new Text("Score: 0");
 
     private int score = 0;
 
@@ -46,7 +46,7 @@ public class SnakeMinimal extends Scene
     public SnakeMinimal()
     {
         add(snake);
-        scoreText.anchor(-9, 5);
+        scoreText.height(1.4).anchor(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }
@@ -117,7 +117,7 @@ public class SnakeMinimal extends Scene
     {
         public Goodie()
         {
-            super("Eat Me!", 1);
+            super("Eat Me!");
             color("red");
         }
 
@@ -132,6 +132,7 @@ public class SnakeMinimal extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new SnakeMinimal(), 600, 400);
     }
 }

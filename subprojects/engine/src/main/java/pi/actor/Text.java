@@ -55,86 +55,19 @@ public class Text extends Geometry
     private transient double cachedScaleFactor;
 
     /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> in <b>normaler,
-     * serifenfreier Standardschrift</b> mit <b>einem Meter Höhe</b>.
-     *
-     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
-     *
-     * @since 0.27.0
-     */
-    @API
-    public Text(Object content)
-    {
-        this(content, 1);
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b> und <b>Höhe</b>
-     * in <b>normaler, serifenfreier Standardschrift</b>.
-     *
-     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
-     * @param height Die <b>Höhe</b> des Textes in Meter.
-     */
-    @API
-    public Text(Object content, double height)
-    {
-        this(content, height, fonts.defaultFont().deriveFont((float) SIZE), 0);
-    }
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>
-     * und <b>Schriftart</b> in <b>nicht fettem und nicht kursiven
-     * Schriftstil</b>.
-     *
-     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
-     * @param height Die <b>Höhe</b> des Textes in Meter.
-     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
-     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
-     */
-    @API
-    public Text(Object content, double height, String fontName)
-    {
-        this(content, height, fontName, 0);
-    }
-
-    /**
      * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>, <b>Höhe</b>,
      * <b>Schriftart</b>, und <b>Schriftstil</b>.
      *
      * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
-     * @param height Die <b>Höhe</b> des Textes in Meter.
-     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
-     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
-     * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
-     *     kursiv</b>).
-     *     <ul>
-     *     <li>{@code 0}: Normaler Text</li>
-     *     <li>{@code 1}: Fett</li>
-     *     <li>{@code 2}: Kursiv</li>
-     *     <li>{@code 3}: Fett und Kursiv</li>
-     *     </ul>
      */
     @API
-    public Text(Object content, double height, String fontName, int style)
+    public Text(Object content)
     {
-        super(() -> createShape(content == null ? "" : content, height,
-                fonts.get(fontName).deriveFont(style, SIZE)));
+        super(() -> createShape(String.valueOf(content), 1,
+                fonts.defaultFont().deriveFont((float) SIZE)));
         this.content = content == null ? "" : String.valueOf(content);
-        this.height = height;
-        style(style);
-        font(fontName);
         color(colorScheme.get().white());
-    }
-
-    public Text(Object content, double height, Font font, int style)
-    {
-        super(() -> createShape(content == null ? "" : content, height,
-                font.deriveFont(style, SIZE)));
-        this.content = content == null ? "" : String.valueOf(content);
-        this.height = height;
-        style(style);
-        font(font);
-        color(colorScheme.get().white());
+        syncAttributes();
     }
 
     /**
@@ -178,8 +111,8 @@ public class Text extends Geometry
         if (!this.content.equals(normalizedContent))
         {
             this.content = normalizedContent;
-            update();
         }
+        syncAttributes();
         return this;
     }
 
@@ -200,7 +133,7 @@ public class Text extends Geometry
     /**
      * Die Schriftart, in der der Text dargestellt werden soll.
      */
-    private Font font;
+    private Font font = fonts.defaultFont().deriveFont((float) SIZE);
 
     @API
     @Getter
@@ -223,7 +156,7 @@ public class Text extends Geometry
     public Text font(Font font)
     {
         this.font = font.deriveFont(style, SIZE);
-        update();
+        syncAttributes();
         return this;
     }
 
@@ -284,7 +217,7 @@ public class Text extends Geometry
         {
             this.style = style;
             font = font.deriveFont(style, SIZE);
-            update();
+            syncAttributes();
         }
         return this;
     }
@@ -337,7 +270,7 @@ public class Text extends Geometry
     /**
      * Die Höhe des Textes in Meter.
      */
-    private double height;
+    private double height = 1;
 
     @API
     @Getter
@@ -361,7 +294,7 @@ public class Text extends Geometry
         if (this.height != height)
         {
             this.height = height;
-            update();
+            syncAttributes();
         }
         return this;
     }
@@ -370,7 +303,7 @@ public class Text extends Geometry
      * @hidden
      */
     @Internal
-    private void update()
+    private void syncAttributes()
     {
         var size = FontUtil.getStringBounds(content, font);
         cachedScaleFactor = height / size.getHeight();

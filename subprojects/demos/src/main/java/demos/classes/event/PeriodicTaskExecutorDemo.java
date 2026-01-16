@@ -50,7 +50,8 @@ public class PeriodicTaskExecutorDemo extends Scene
     {
         public CounterText()
         {
-            super("0", 2);
+            super("0");
+            height(2);
             center(0, 0);
             start();
             addKeyStrokeListener((e) -> {
@@ -96,6 +97,7 @@ public class PeriodicTaskExecutorDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new PeriodicTaskExecutorDemo(), 400, 200);
     }
 }

@@ -36,7 +36,7 @@ import pi.graphics.geom.Vector;
 
 public class SnakeAdvanced extends Scene implements FrameUpdateListener
 {
-    private Text scoreText = new Text("Score: 0", 1.4);
+    private Text scoreText = new Text("Score: 0");
 
     private int score = 0;
 
@@ -49,7 +49,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     public SnakeAdvanced()
     {
         add(snakeHead);
-        scoreText.anchor(-9, 5);
+        scoreText.height(1.4).anchor(-9, 5);
         add(scoreText);
         placeRandomGoodie();
     }
@@ -146,7 +146,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     {
         public Goodie()
         {
-            super("Eat Me!", 1);
+            super("Eat Me!");
             color("red");
         }
 
@@ -162,6 +162,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new SnakeAdvanced(), 600, 400);
     }
 }

@@ -19,6 +19,7 @@ package tetris.debug;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import pi.Controller;
 import pi.Scene;
 import pi.Text;
 import pi.event.KeyStrokeListener;
@@ -30,15 +31,19 @@ import tetris.tetrominos.Block;
  */
 public class BlockDebugScene extends Scene implements KeyStrokeListener
 {
+    static
+    {
+        Controller.instantMode(false);
+    }
+
     private Block block;
 
     private Text blockName;
 
     public BlockDebugScene()
     {
-        blockName = new Text("L", 2);
-        blockName.color(Color.WHITE);
-        blockName.anchor(2, Tetris.HEIGHT / 2);
+        blockName = new Text("L");
+        blockName.height(2).color(Color.WHITE).anchor(2, Tetris.HEIGHT / 2);
         add(blockName);
         createBlock("L");
     }

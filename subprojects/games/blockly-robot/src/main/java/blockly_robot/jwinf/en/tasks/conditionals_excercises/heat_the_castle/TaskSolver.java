@@ -1,6 +1,7 @@
 package blockly_robot.jwinf.en.tasks.conditionals_excercises.heat_the_castle;
 
 import blockly_robot.robot.Solver;
+import pi.Controller;
 
 /**
  * https://jwinf.de/task/1159
@@ -134,6 +135,7 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new TaskSolver().solve();
     }
 }

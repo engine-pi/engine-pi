@@ -37,8 +37,8 @@ public class PauseLayer extends Layer
         back.color(BACKGROUND_COLOR);
         back.center(0, 0);
         add(back);
-        Text announce = new Text("Pause.", 10, "Monospaced");
-        announce.center(0, 0);
+        Text announce = new Text("Pause.");
+        announce.height(10).font("Monospaced").center(0, 0);
         add(announce);
         parallaxPosition(0, 0);
         parallaxZoom(0);

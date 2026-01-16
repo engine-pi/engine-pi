@@ -76,7 +76,7 @@ public class DensityDemo extends Scene implements KeyStrokeListener
 
     private Text createDensityLables(int x, int density)
     {
-        Text text = new Text(density + "", 1);
+        Text text = new Text("");
         text.anchor(x, -7);
         text.makeStatic();
         add(text);

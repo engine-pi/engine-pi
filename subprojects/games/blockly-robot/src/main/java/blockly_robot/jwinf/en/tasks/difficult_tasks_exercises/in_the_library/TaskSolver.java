@@ -1,6 +1,7 @@
 package blockly_robot.jwinf.en.tasks.difficult_tasks_exercises.in_the_library;
 
 import blockly_robot.robot.Solver;
+import pi.Controller;
 
 /**
  * https://jwinf.de/task/1188
@@ -75,6 +76,7 @@ public class TaskSolver extends Solver<Robot>
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new TaskSolver().solve();
     }
 }

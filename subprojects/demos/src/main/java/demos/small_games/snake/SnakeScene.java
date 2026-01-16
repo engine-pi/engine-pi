@@ -28,7 +28,7 @@ import pi.event.FrameUpdateListener;
 
 public class SnakeScene extends Scene implements FrameUpdateListener
 {
-    private Text scoreText = new Text("Score: 0", 1.4);
+    private Text scoreText = new Text("Score: 0");
 
     private int score = 0;
 
@@ -45,8 +45,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     public SnakeScene()
     {
         snake = new Snake(this);
-        scoreText.anchor(-9, 5);
-        add(scoreText);
+        add(scoreText.height(1.4).anchor(-9, 5));
         placeRandomGoodie();
     }
 

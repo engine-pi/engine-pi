@@ -106,7 +106,7 @@ public class PaintingCirclesAdvancedDemo extends Scene
 
         public SizeText(double diameter)
         {
-            super("" + diameter, 1);
+            super(diameter);
             this.diameter = diameter;
             color(Color.CYAN);
         }

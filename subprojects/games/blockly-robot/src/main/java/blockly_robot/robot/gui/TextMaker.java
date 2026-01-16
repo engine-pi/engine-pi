@@ -19,9 +19,8 @@ public class TextMaker
 
     public static Text createText(String content, double fontSize)
     {
-        Text text = new Text(content, fontSize);
-        text.font(regular);
-        text.color(Color.BLACK);
+        Text text = new Text(content);
+        text.height(fontSize).font(regular).color(Color.BLACK);
         return text;
     }
 

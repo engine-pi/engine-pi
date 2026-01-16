@@ -32,7 +32,8 @@ public class HelloWorldVersion2 extends Scene
 {
     public HelloWorldVersion2()
     {
-        Text helloworld = new Text("Hello, World!", 2);
+        Text helloworld = new Text("Hello, World!");
+        helloworld.height(2);
         helloworld.center(0, 1);
         add(helloworld);
         helloworld.color("black");

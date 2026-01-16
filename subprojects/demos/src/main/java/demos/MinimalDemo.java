@@ -58,7 +58,8 @@ public class MinimalDemo extends Scene
         animation.anchor(200, 200);
         // animation.setOneTimeOnly();
         add(animation);
-        Text text = new Text("Hallo!", 2);
+        Text text = new Text("Hallo!");
+        text.height(2);
         text.anchor(-100, -100);
         text.color(Color.MAGENTA);
         add(text);
@@ -138,6 +139,7 @@ public class MinimalDemo extends Scene
      */
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.debug();
         Controller.start(new MinimalDemo(), WIDTH, HEIGHT);
         Controller.title("Minimale Demo");

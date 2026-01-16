@@ -38,7 +38,7 @@ public class KeyEventDisplayDemo extends Scene
     {
         public KeyText()
         {
-            super("Press a key", 1);
+            super("Press a key");
             center(0, 0);
         }
 

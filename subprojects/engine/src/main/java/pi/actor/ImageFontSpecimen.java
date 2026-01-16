@@ -71,11 +71,10 @@ public class ImageFontSpecimen
             ImageFontText text = new ImageFontText(font, glyph.glyph() + "");
             text.anchor(x, y);
             scene.add(text);
-            scene.add(new Text(glyph.content(), 1).anchor(x + 2, y)
-                    .color("gray"));
-            scene.add(new Text(glyph.unicodeName(), 0.3, "Monospaced")
-                    .anchor(x, y - 0.4).color("gray"));
-            scene.add(new Text(glyph.hexNumber(), 0.3, "Monospaced")
+            scene.add(new Text(glyph.content()).anchor(x + 2, y).color("gray"));
+            scene.add(new Text(glyph.unicodeName()).height(0.3)
+                    .font("Monospaced").anchor(x, y - 0.4).color("gray"));
+            scene.add(new Text(glyph.hexNumber()).height(0.3).font("Monospaced")
                     .anchor(x, y - 0.8).color("gray"));
             x += 4;
             i++;

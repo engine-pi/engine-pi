@@ -42,7 +42,8 @@ public class KeyStrokeCounterDemo extends Scene
 
         public CounterText()
         {
-            super("You pressed 0 keys.", 2);
+            super("You pressed 0 keys.");
+            height(2);
             center(0, 0);
         }
 

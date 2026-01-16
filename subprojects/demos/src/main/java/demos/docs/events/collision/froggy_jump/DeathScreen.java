@@ -33,7 +33,8 @@ class DeathScreen extends Scene implements KeyStrokeListener
 {
     public DeathScreen()
     {
-        Text message = new Text("You Died. Press any button to try again", .6);
+        Text message = new Text("You Died. Press any button to try again");
+        message.height(.6);
         message.center(camera().focus());
         add(message);
     }

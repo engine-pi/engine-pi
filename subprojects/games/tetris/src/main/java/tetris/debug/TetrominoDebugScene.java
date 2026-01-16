@@ -32,6 +32,7 @@ import tetris.tetrominos.Tetromino;
  */
 public class TetrominoDebugScene extends Scene implements KeyStrokeListener
 {
+
     static
     {
         Controller.instantMode(false);
@@ -45,9 +46,9 @@ public class TetrominoDebugScene extends Scene implements KeyStrokeListener
 
     public TetrominoDebugScene()
     {
-        rotation = new Text("0", 2);
-        rotation.color(Color.WHITE);
-        rotation.anchor(2, (double) Tetris.HEIGHT / 2);
+        rotation = new Text("0");
+        rotation.height(2).color(Color.WHITE).anchor(2,
+                (double) Tetris.HEIGHT / 2);
         grid = new Grid(Tetris.WIDTH, Tetris.HEIGHT);
         camera().focus((double) Tetris.WIDTH / 2, (double) Tetris.HEIGHT / 2);
         add(rotation);

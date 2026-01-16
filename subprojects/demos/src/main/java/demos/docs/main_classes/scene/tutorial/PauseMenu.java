@@ -32,7 +32,8 @@ public class PauseMenu extends Scene
     {
         MenuItem back = new MenuItem(mainScene, new Vector(0, -5), "Zurück");
         add(back, back.label);
-        Text headline = new Text("Mach mal Pause.", 2);
+        Text headline = new Text("Mach mal Pause.");
+        headline.height(2);
         headline.center(0, 3);
         add(headline);
     }
