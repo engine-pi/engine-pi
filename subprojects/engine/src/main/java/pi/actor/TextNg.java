@@ -40,8 +40,6 @@ public class TextNg extends Geometry
         box = new TextLineBox(content);
         Color color = colorScheme.get().white();
         box.color(color);
-
-        box.fontSize(1000);
         color(color);
         syncAttributes();
     }
@@ -49,12 +47,12 @@ public class TextNg extends Geometry
     /* width */
 
     /**
-     * Die <b>Breite</b> in Meter.
+     * Die <b>gesetzte Breite</b> in Meter.
      */
     private double definedWidth = 0;
 
     /**
-     * Die berechnete Breite in Meter.
+     * Die <b>berechnete Breite</b> in Meter.
      */
     private double width = 0;
 
@@ -79,8 +77,14 @@ public class TextNg extends Geometry
 
     /* height */
 
+    /**
+     * Die <b>gesetzte Höhe</b> in Meter.
+     */
     private double definedHeight = 0;
 
+    /**
+     * Die <b>berechnete Höhe</b> in Meter.
+     */
     private double height = 0;
 
     @API
@@ -122,13 +126,13 @@ public class TextNg extends Geometry
         }
         else if (definedHeight == 0)
         {
-            height = box.height() * definedWidth / box.width();
             width = definedWidth;
+            height = box.height() * definedWidth / box.width();
         }
         else
         {
-            height = definedHeight;
             width = definedWidth;
+            height = definedHeight;
         }
 
         scaleFactorX = width / (double) box.width();
