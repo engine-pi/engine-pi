@@ -395,7 +395,7 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
+     * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe, die als
      * <b>Zeichenkette</b> angegeben werden kann.
      *
      * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
@@ -420,7 +420,7 @@ public class Text extends Geometry
     }
 
     /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
+     * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe.
      *
      * @param color Die neue <b>Farbe</b>.
      *

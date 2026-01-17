@@ -1,11 +1,29 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2026 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package demos.docs.main_classes.actor.text;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
 
 import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
 
 import pi.Controller;
 import pi.Scene;
@@ -14,6 +32,13 @@ import pi.event.KeyStrokeListener;
 import pi.resources.font.FontContainer;
 import pi.resources.font.FontStyle;
 
+/**
+ * Demonstriert die <b>Schriftstile</b> der Figur „Text“.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.42.0
+ */
 public class TextStyleDemo extends Scene implements KeyStrokeListener
 {
     private String[] systemFonts;
@@ -48,19 +73,25 @@ public class TextStyleDemo extends Scene implements KeyStrokeListener
         fontNameClear.height(1).font("Arial").y(5);
 
         plain = createText("Normal");
-        plain.style(FontStyle.PLAIN);
-        plain.y(0);
-
         bold = createText("Fett");
-        bold.style(FontStyle.BOLD);
-        bold.y(-3);
-
         italic = createText("Kursiv");
-        italic.style(FontStyle.ITALIC);
-        italic.y(-6);
-
         boldItalic = createText("Fett und kursiv");
+
+        // Mithilfe des Aufzählungstyps FontStyle
+        plain.style(FontStyle.PLAIN);
+        bold.style(FontStyle.BOLD);
+        italic.style(FontStyle.ITALIC);
         boldItalic.style(FontStyle.BOLD_ITALIC);
+
+        // Oder als Ganzzahl
+        plain.style(0);
+        bold.style(1);
+        italic.style(2);
+        boldItalic.style(3);
+
+        plain.y(0);
+        bold.y(-3);
+        italic.y(-6);
         boldItalic.y(-9);
 
         backgroundColor("#666666");
@@ -105,6 +136,5 @@ public class TextStyleDemo extends Scene implements KeyStrokeListener
     {
         Controller.instantMode(false);
         Controller.start(new TextStyleDemo());
-        Controller.recordScreen(15);
     }
 }
