@@ -38,6 +38,7 @@ import pi.resources.font.FontStyle;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
 
 /**
  * Zur Darstellung von einzeiligen <b>Texten</b>.
@@ -237,70 +238,6 @@ public class Text extends Geometry
         return this;
     }
 
-    /* color */
-
-    /**
-     * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe.
-     *
-     * @return Die <b>Farbe</b> des Textes.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Getter
-    @Override
-    public Color color()
-    {
-        return box.color();
-    }
-
-    /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
-     *
-     * @param color Die neue <b>Farbe</b>.
-     *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Setter
-    @Override
-    public Text color(Color color)
-    {
-        super.color(color);
-        box.color(color);
-        return this;
-    }
-
-    /**
-     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
-     * <b>Zeichenkette</b> angegeben werden kann.
-     *
-     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
-     *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
-     *
-     * @since 0.42.0
-     *
-     * @see pi.resources.color.ColorContainer#get(String)
-     */
-    @API
-    @Setter
-    @Override
-    public Text color(String color)
-    {
-        return color(colors.get(color));
-    }
-
     /* font */
 
     /**
@@ -386,6 +323,33 @@ public class Text extends Geometry
     }
 
     /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Ganzzahl</b>.
+     *
+     * @param style Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i>
+     *     oder <i>fett und kursiv</i>) als Ganzzahl.
+     *
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     */
+    @API
+    @Setter
+    public Text style(int style)
+    {
+        box.fontStyle(style);
+        syncAttributes();
+        return this;
+    }
+
+    /**
      * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
      *
      * @param style Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i>
@@ -413,30 +377,67 @@ public class Text extends Geometry
         return this;
     }
 
+    /* color */
+
     /**
-     * Setzt den <b>Stil</b> der Schriftart als <b>Ganzzahl</b>.
+     * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe.
      *
-     * @param style Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i>
-     *     oder <i>fett und kursiv</i>) als Ganzzahl.
+     * @return Die <b>Farbe</b> des Textes.
      *
-     *     <ul>
-     *     <li>{@code 0}: Normaler Text</li>
-     *     <li>{@code 1}: Fett</li>
-     *     <li>{@code 2}: Kursiv</li>
-     *     <li>{@code 3}: Fett und Kursiv</li>
-     *     </ul>
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    @Override
+    public Color color()
+    {
+        return box.color();
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
+     * <b>Zeichenkette</b> angegeben werden kann.
+     *
+     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
      *
      * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
+     *
+     * @see pi.resources.color.ColorContainer#get(String)
      */
     @API
     @Setter
-    public Text style(int style)
+    @Override
+    public Text color(String color)
     {
-        box.fontStyle(style);
-        syncAttributes();
+        return color(colors.get(color));
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
+     *
+     * @param color Die neue <b>Farbe</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Setter
+    @Override
+    public Text color(Color color)
+    {
+        super.color(color);
+        box.color(color);
         return this;
     }
 

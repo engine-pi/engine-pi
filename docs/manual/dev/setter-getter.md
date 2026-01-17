@@ -55,6 +55,47 @@ particle.bodyType(PARTICLE)
     .linearDamping(range(18, 22))
     .layerPosition(-1);
 ```
+### Anordnung der Getter und Setter Quellcode
+
+1. Attribute
+2. Getter
+3. Setter
+
+```java
+    /* color */
+
+    protected Color color = colors.getSafe("gray");
+
+    /**
+     * Gibt die <b>Farbe</b> des Textes zurück.
+     *
+     * @return Die <b>Farbe</b> des Textes.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public Color color()
+    {
+        return color;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> des Textes.
+     *
+     * @param color Die <b>Farbe</b> des Textes.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @Setter
+    public TextBox color(Color color)
+    {
+        this.color = color;
+        return this;
+    }
+```
 
 [^gitconnected]:
     https://levelup.gitconnected.com/are-getters-and-setters-an-anti-pattern-c8cb5625ca8c

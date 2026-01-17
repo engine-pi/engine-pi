@@ -3,6 +3,20 @@
 <!-- http://127.0.0.1:8000/engine-pi/manual/physics/body-type/ -->
 <!-- https://engine-pi.github.io/engine-pi/manual/physics/body-type/ -->
 
+## Vergleich[^engine-alpha-wiki:body-types]
+
+|                                                                             | STATIC | DYNAMIC | KINEMATIC | SENSOR | PARTICLE |
+| --------------------------------------------------------------------------- | ------ | ------- | --------- | ------ | -------- |
+| Kann mit Actor.anchor() bewegt werden                                       | ✔      | ✔       | ✔         | ✔      | ✔        |
+| Beeinflusst von Schwerkraft                                                 |        | ✔       |           | ✔      | ✔        |
+| Kann Impulse erhalten                                                       |        | ✔       |           | ✔      | ✔        |
+| Kann eine Geschwindigkeit haben                                             |        | ✔       | ✔         | ✔      | ✔        |
+| Hat physikalische Eigenschaften wie Masse/Dichte oder Reibungskoeffizienten |        | ✔       |           | ✔      | ✔        |
+
+[^engine-alpha-wiki:body-types]:
+    Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/4.x/Body_Types
+
 {{ class('pi.physics.BodyType') }}
 
 # Kinetisch

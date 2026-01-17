@@ -99,6 +99,7 @@ nav:
           - 'Actor (Figur)':
               - manual/main-classes/actor/index.md
               - manual/main-classes/actor/hello-world.md
+              - manual/main-classes/actor/text.md
               - manual/main-classes/actor/turtle.md
               - manual/main-classes/actor/image-font.md
               - manual/main-classes/actor/stateful-animation.md
