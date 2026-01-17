@@ -28,8 +28,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Statische Hilfsmethoden um Abmessungen von Zeichenketten in bestimmten
- * Schriftarten zu bestimmen.
+ * Statische <b>Hilfsmethoden</b>, mit denen sich die Abmessungen von
+ * Zeichenketten in bestimmten <b>Schriftarten</b> bestimmen lassen.
  */
 public final class FontUtil
 {
@@ -91,5 +91,4 @@ public final class FontUtil
         return new FontStringBounds(canvas.getFontMetrics(font)
                 .getStringBounds(content, getGraphics()));
     }
-
 }

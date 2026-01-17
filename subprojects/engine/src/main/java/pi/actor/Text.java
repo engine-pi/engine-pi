@@ -181,7 +181,7 @@ public class Text extends Geometry
     /* style */
 
     /**
-     * Der <b>Stil</b> der Schriftart (<i>fett, kursiv, oder fett und
+     * Der <b>Stil</b> der Schriftart (<i>fett, kursiv oder fett und
      * kursiv</i>).
      *
      * <ul>

@@ -12,24 +12,33 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.graphics.boxes.TextLineBox;
 import pi.physics.FixtureBuilder;
+import pi.resources.font.FontStyle;
 
 public class TextNg extends Geometry
 {
     private TextLineBox box;
 
     /**
-     * Wir erzeugen eine Box mit einer zu großen Schriftart. Mithilfe dieses
+     * Der Skalierungsfaktor in x-Richtung.
+     *
+     * <p>
+     * Wir erzeugen eine Box der Standardschriftgröße. Mithilfe dieses
      * Skalierungsfaktors wird die Box dann auf die gewünschte Größe skaliert.
      * Damit die Abmessungen einer Zeichenkette nicht bei jedem Einzelbild
      * erneut bestimmt werden müssen, dient dieses Attribut als Cache.
+     * </p>
      */
     private double scaleFactorX;
 
     /**
-     * Wir erzeugen eine Box mit einer zu großen Schriftart. Mithilfe dieses
+     * Der Skalierungsfaktor in x-Richtung.
+     *
+     * <p>
+     * Wir erzeugen eine Box der Standardschriftgröße. Mithilfe dieses
      * Skalierungsfaktors wird die Box dann auf die gewünschte Größe skaliert.
      * Damit die Abmessungen einer Zeichenkette nicht bei jedem Einzelbild
      * erneut bestimmt werden müssen, dient dieses Attribut als Cache.
+     * </p>
      */
     private double scaleFactorY;
 
@@ -104,6 +113,82 @@ public class TextNg extends Geometry
             syncAttributes();
         }
         return this;
+    }
+
+    /* style */
+
+    /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
+     *
+     * @param style Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i>
+     *     oder <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *     Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    @Setter
+    public TextNg style(FontStyle style)
+    {
+        box.fontStyle(style);
+        syncAttributes();
+        return this;
+    }
+
+    /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Ganzzahl</b>.
+     *
+     * @param style Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i>
+     *     oder <i>fett und kursiv</i>) als Ganzzahl.
+     *
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
+     *
+     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
+     *     Punktschreibweise aneinander gekettet werden können.
+     */
+    @API
+    @Setter
+    public TextNg style(int style)
+    {
+        box.fontStyle(style);
+        syncAttributes();
+        return this;
+    }
+
+    /**
+     * Gibt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b> zurück.
+     *
+     * @return Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i> oder
+     *     <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    public FontStyle style()
+    {
+        return box.fontStyle();
     }
 
     /**

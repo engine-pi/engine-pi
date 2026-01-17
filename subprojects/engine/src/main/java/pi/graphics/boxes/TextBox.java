@@ -24,6 +24,7 @@ import static pi.Controller.fonts;
 import java.awt.Color;
 import java.awt.Font;
 
+import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.resources.font.FontStyle;
@@ -136,6 +137,19 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
+     *
+     * @param fontStyle Der <b>Stil</b> der Schriftart (<i>fett</i>,
+     *     <i>kursiv</i> oder <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
@@ -152,6 +166,18 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Ganzzahl</b>.
+     *
+     * @param fontStyle Der <b>Stil</b> der Schriftart (<i>fett</i>,
+     *     <i>kursiv</i> oder <i>fett und kursiv</i>) als Ganzzahl.
+     *
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
+     *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
@@ -165,6 +191,28 @@ public abstract class TextBox extends LeafBox
         font = font.deriveFont(fontStyle);
         calculateDimension();
         return this;
+    }
+
+    /**
+     * Gibt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b> zurück.
+     *
+     * @return Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i> oder
+     *     <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public FontStyle fontStyle()
+    {
+        return FontStyle.getStyle(font.getStyle());
     }
 
     /**

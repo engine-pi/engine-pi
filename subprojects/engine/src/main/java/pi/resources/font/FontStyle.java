@@ -19,9 +19,13 @@
 package pi.resources.font;
 
 /**
- * Repräsentiert die verfügbaren Schrift<b>stile</b> bzw. Schriftschnitte.
+ * Repräsentiert die verfügbaren Schrift<b>stile</b> bzw{@literal .}
+ * Schriftschnitte.
  *
+ * <p>
  * Verfügbare Werte:
+ * </p>
+ *
  * <ul>
  * <li>{@link #PLAIN} — normaler Text ({@code 0})</li>
  * <li>{@link #BOLD} — fetter Text ({@code 1})</li>
@@ -59,14 +63,15 @@ public enum FontStyle
     BOLD_ITALIC(3);
 
     /**
-     * Der aktuelle Schriftstil als Ganzzahl.
+     * Der aktuelle <b>Schriftstil</b> als <b>Ganzzahl</b>.
      */
     private final int style;
 
     /**
-     * Erzeugt ein {@link FontStyle}-Objekt mit dem übergebenen Stilwert.
+     * Erzeugt ein {@link FontStyle}-Objekt mit dem übergebenen <b>Stilwert</b>.
      *
-     * @param style Eine Ganzzahl, die den Schriftstil repräsentiert.
+     * @param style Eine <b>Ganzzahl</b>, die den <b>Schriftstil</b>
+     *     repräsentiert.
      */
     FontStyle(int style)
     {
@@ -74,17 +79,17 @@ public enum FontStyle
     }
 
     /**
-     * Gibt den aktuellen Schriftstil als Ganzzahl zurück.
+     * Gibt den aktuellen <b>Schriftstil</b> als <b>Ganzzahl</b> zurück.
      *
      * <p>
      * Die Zuordnung ist wie folgt:
      * </p>
      *
      * <ul>
-     * <li>0: {@link #PLAIN} (normal)</li>
-     * <li>1: {@link #BOLD} (fett)</li>
-     * <li>2: {@link #ITALIC} (kursiv)</li>
-     * <li>3: {@link #BOLD_ITALIC} (fett und kursiv)</li>
+     * <li>{@code 0}: {@link #PLAIN} (normal)</li>
+     * <li>{@code 1}: {@link #BOLD} (fett)</li>
+     * <li>{@code 2}: {@link #ITALIC} (kursiv)</li>
+     * <li>{@code 3}: {@link #BOLD_ITALIC} (fett und kursiv)</li>
      * </ul>
      *
      * @return Eine Ganzzahl, die den Schriftstil repräsentiert.
@@ -95,23 +100,25 @@ public enum FontStyle
     }
 
     /**
-     * Gibt den zu einem numerischen Stilwert passenden Aufzählungstyp
-     * {@link FontStyle} zurück.
+     * Gibt den zu einem numerischen <b>Stilwert</b> passenden
+     * <b>Aufzählungstyp</b> {@link FontStyle} zurück.
      *
      * <p>
      * Die Zuordnung ist wie folgt:
      * </p>
      *
      * <ul>
-     * <li>0: {@link #PLAIN} (normal)</li>
-     * <li>1: {@link #BOLD} (fett)</li>
-     * <li>2: {@link #ITALIC} (kursiv)</li>
-     * <li>3: {@link #BOLD_ITALIC} (fett und kursiv)</li>
+     * <li>{@code 0}: {@link #PLAIN} (normal)</li>
+     * <li>{@code 1}: {@link #BOLD} (fett)</li>
+     * <li>{@code 2}: {@link #ITALIC} (kursiv)</li>
+     * <li>{@code 3}: {@link #BOLD_ITALIC} (fett und kursiv)</li>
      * </ul>
      *
-     * @param style Der numerische Wert des Schriftstils (erwartet 0–3).
+     * @param style Der <b>numerische</b> Wert des <b>Schriftstils</b> (erwartet
+     *     0–3).
      *
-     * @return Das entsprechende Wert des Aufzählungstyps {@link FontStyle}.
+     * @return Das entsprechende Wert des <b>Aufzählungstyps</b>
+     *     {@link FontStyle}.
      *
      * @throws RuntimeException Wenn der übergebene Wert nicht einer der
      *     erwarteten Werte (0–3) ist.
@@ -140,6 +147,5 @@ public enum FontStyle
                             + style
                             + " Mögliche Werte sind (0: normal, 1: fett, 2: kursiv, 3: fett und kursiv).");
         }
-
     }
 }

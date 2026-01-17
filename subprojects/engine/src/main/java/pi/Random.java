@@ -26,6 +26,7 @@ import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
+import pi.resources.font.FontStyle;
 
 /**
  * Diese Klasse liefert Methoden, die <b>zufällig verteilte Rückgaben</b> haben.
@@ -210,7 +211,7 @@ public final class Random
      * @param scene Die <b>Szene</b>, deren sichtbarer Bereich als Grenzen
      *     dient.
      *
-     * @return ein {@link Vector} im jeweiligen Bereich der Szene
+     * @return Ein {@link Vector} im jeweiligen Bereich der Szene.
      *
      * @since 0.42.0
      */
@@ -219,5 +220,38 @@ public final class Random
         Bounds bounds = scene.visibleArea();
         return vector(bounds.xLeft(), bounds.xRight(), bounds.yBottom(),
                 bounds.yTop());
+    }
+
+    /**
+     * Gibt einen zufälligen <b>Schriftstil</b> als <b>Ganzzahl</b> zurück.
+     *
+     * @return Eine zufällige Ganzzahl im Bereich von 0 (einschließlich) bis 3
+     *     (ausschließlich), die einen Schriftstil darstellt.
+     *
+     * @since 0.42.0
+     */
+    public static int fontStyleAsInt()
+    {
+        return range(0, 3);
+    }
+
+    /**
+     * Gibt den aktuellen Schriftstil als {@link FontStyle} Enum-Wert zurück.
+     *
+     * <p>
+     * Diese Methode konvertiert den internen Integer-Wert des Schriftstils in
+     * den entsprechenden {@link FontStyle} Enum-Typ.
+     * </p>
+     *
+     * @return Der aktuelle Schriftstil als {@link FontStyle} Enum-Konstante.
+     *
+     * @see #fontStyleAsInt()
+     * @see FontStyle#getStyle(int)
+     *
+     * @since 0.42.0
+     */
+    public static FontStyle fontStyleAsEnum()
+    {
+        return FontStyle.getStyle(fontStyleAsInt());
     }
 }

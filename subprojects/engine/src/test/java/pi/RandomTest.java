@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.graphics.geom.Vector;
+import pi.resources.font.FontStyle;
 
 /**
  * @author Josef Friedrich
@@ -111,6 +112,95 @@ public class RandomTest
             Vector v = Random.vector(-5, 5, -10, 10);
             assert v.x() >= -5 && v.x() <= 5 : "X component out of range";
             assert v.y() >= -10 && v.y() <= 10 : "Y component out of range";
+        }
+    }
+
+    @Nested
+    class FontStyleAsIntTest
+    {
+        @Test
+        void testReturnsIntInRange()
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                int result = Random.fontStyleAsInt();
+                assert result >= 0 && result < 4
+                        : "fontStyleAsInt() should return a value between 0 and 3 (inclusive)";
+            }
+        }
+
+        @Test
+        void testDistributionAcrossRange()
+        {
+            boolean[] seen = new boolean[4];
+            for (int i = 0; i < 1000; i++)
+            {
+                int result = Random.fontStyleAsInt();
+                seen[result] = true;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                assert seen[i]
+                        : "Should generate all values 0-3 across multiple calls";
+            }
+        }
+
+        @Test
+        void testMultipleCalls()
+        {
+            for (int i = 0; i < 500; i++)
+            {
+                int result = Random.fontStyleAsInt();
+                assert result >= 0 && result <= 3
+                        : "Each call should return a valid font style integer";
+            }
+        }
+    }
+
+    @Nested
+    class FontStyleAsEnumTest
+    {
+        @Test
+        void testReturnsNonNull()
+        {
+            FontStyle style = Random.fontStyleAsEnum();
+            assert style != null : "fontStyleAsEnum() should not return null";
+        }
+
+        @Test
+        void testReturnsFontStyleEnum()
+        {
+            FontStyle style = Random.fontStyleAsEnum();
+            assert style instanceof FontStyle
+                    : "Should return a FontStyle enum value";
+        }
+
+        @Test
+        void testMultipleCalls()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                FontStyle style = Random.fontStyleAsEnum();
+                assert style != null
+                        : "Each call should return a valid FontStyle";
+            }
+        }
+
+        @Test
+        void testVariety()
+        {
+            java.util.Set<FontStyle> foundStyles = new java.util.HashSet<>();
+            for (int i = 0; i < 1000; i++)
+            {
+                FontStyle style = Random.fontStyleAsEnum();
+                foundStyles.add(style);
+                if (foundStyles.size() > 1)
+                {
+                    break;
+                }
+            }
+            assert foundStyles.size() > 1
+                    : "Should return different FontStyle values over multiple calls";
         }
     }
 }
