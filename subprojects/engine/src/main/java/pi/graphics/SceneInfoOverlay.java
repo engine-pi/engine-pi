@@ -152,7 +152,7 @@ public class SceneInfoOverlay
     public SceneInfoOverlay(Scene scene)
     {
         this.scene = scene;
-        background = new BackgroundBox().color(colors.get("white", 150));
+        background = new BackgroundBox().color(colors.get("white", 200));
         margin = new InsetBox(background).allSides(10);
         cell = new CellBox(margin).hAlign(HAlign.RIGHT).vAlign(VAlign.TOP);
         startHideTask();

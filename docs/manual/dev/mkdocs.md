@@ -142,5 +142,6 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 {{ drawio('main-classes') }}
 {% endraw %}
 ```
-
 {{ drawio('main-classes') }}
+
+{{ macros_info() }}

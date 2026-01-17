@@ -374,7 +374,6 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_image, "image")
 
-    @env.macro
     def macro_video(relpath: str, caption: str | None = None) -> str:
         _check_asset(relpath)
         return _caption(
