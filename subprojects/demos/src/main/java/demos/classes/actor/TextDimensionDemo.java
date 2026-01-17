@@ -20,25 +20,25 @@ package demos.classes.actor;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.TextNg;
+import pi.actor.Text;
 
 /**
  * @author Josef Friedrich
  *
  * @since 0.42.0
  */
-public class TextNgDemo extends Scene
+public class TextDimensionDemo extends Scene
 {
 
-    public TextNgDemo()
+    public TextDimensionDemo()
     {
         backgroundColor("green");
-        add(new TextNg("Das ist ein Test").width(10).height(5));
+        add(new Text("Das ist ein Test").width(10).height(5));
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new TextNgDemo());
+        Controller.start(new TextDimensionDemo());
     }
 }

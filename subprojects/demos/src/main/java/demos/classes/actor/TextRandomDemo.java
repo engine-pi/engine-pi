@@ -23,7 +23,7 @@ import static pi.Controller.colors;
 import pi.Controller;
 import pi.Random;
 import pi.Scene;
-import pi.actor.TextNg;
+import pi.actor.Text;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/TextNg.java
 
@@ -48,7 +48,7 @@ public class TextRandomDemo extends Scene
         for (int i = 0; i < Random.range(10, 100); i++)
         {
             String font = Random.systemFont();
-            TextNg text = new TextNg(font);
+            Text text = new Text(font);
 
             text.height(Random.range(0.2, 3.0))
                 .font(font)
