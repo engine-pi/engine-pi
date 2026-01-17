@@ -26,6 +26,7 @@ import pi.annotations.API;
 import pi.annotations.Internal;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
+import pi.resources.font.FontContainer;
 import pi.resources.font.FontStyle;
 
 /**
@@ -225,8 +226,8 @@ public final class Random
     /**
      * Gibt einen zufälligen <b>Schriftstil</b> als <b>Ganzzahl</b> zurück.
      *
-     * @return Eine zufällige Ganzzahl im Bereich von 0 (einschließlich) bis 3
-     *     (ausschließlich), die einen Schriftstil darstellt.
+     * @return Eine zufällige Ganzzahl im Bereich von 0 bis 3 (einschließlich),
+     *     die einen Schriftstil darstellt.
      *
      * @since 0.42.0
      */
@@ -236,14 +237,11 @@ public final class Random
     }
 
     /**
-     * Gibt den aktuellen Schriftstil als {@link FontStyle} Enum-Wert zurück.
+     * Gibt einen zufälligen <b>Schriftstil</b> als {@link FontStyle} Enum-Wert
+     * zurück.
      *
-     * <p>
-     * Diese Methode konvertiert den internen Integer-Wert des Schriftstils in
-     * den entsprechenden {@link FontStyle} Enum-Typ.
-     * </p>
-     *
-     * @return Der aktuelle Schriftstil als {@link FontStyle} Enum-Konstante.
+     * @return Ein zufälliger <b>Schriftstil</b> als {@link FontStyle}
+     *     Enum-Wert.
      *
      * @see #fontStyleAsInt()
      * @see FontStyle#getStyle(int)
@@ -253,5 +251,20 @@ public final class Random
     public static FontStyle fontStyleAsEnum()
     {
         return FontStyle.getStyle(fontStyleAsInt());
+    }
+
+    /**
+     * Gibt einen zufälligen Schriftnamen aus den verfügbaren
+     * <b>Systemschriften</b> zurück.
+     *
+     * @return Ein zufälliger Systemschriftname.
+     *
+     * @since 0.42.0
+     */
+    @API
+    public static String systemFont()
+    {
+        String[] fonts = FontContainer.systemFonts();
+        return fonts[range(fonts.length - 1)];
     }
 }

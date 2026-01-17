@@ -2459,7 +2459,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * Grad <b>gegen</b> den Uhrzeigersinn, {@code setRotation(-90)} um 90 Grad
      * <b>im</b> Uhrzeigersinn.
      *
-     * @param winkel Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
+     * @param rotation Der Winkel (in <b>Grad</b>), um den das Objekt <b>von
      *     seiner Ausgangsposition bei Initialisierung</b> rotiert werden soll.
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
@@ -2469,9 +2469,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     @API
     @Setter
-    public final Actor rotation(double winkel)
+    public final Actor rotation(double rotation)
     {
-        physics.rotation(winkel);
+        physics.rotation(rotation);
         return this;
     }
 

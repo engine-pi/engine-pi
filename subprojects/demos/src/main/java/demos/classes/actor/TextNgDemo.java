@@ -33,7 +33,6 @@ public class TextNgDemo extends Scene
     public TextNgDemo()
     {
         backgroundColor("green");
-
         add(new TextNg("Das ist ein Test").width(10).height(5));
     }
 

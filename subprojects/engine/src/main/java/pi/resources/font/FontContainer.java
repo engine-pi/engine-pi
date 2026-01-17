@@ -103,10 +103,11 @@ public final class FontContainer extends ResourcesContainer<Font>
     /**
      * Gibt eine Namesliste der <b>Systemschriftarten</b> zurück.
      *
-     * @return Liste mit Systemschriftarten.
+     * @return Eine Namesliste der <b>Systemschriftarten</b>.
      */
     @API
-    public static String[] getSystemFonts()
+    @Getter
+    public static String[] systemFonts()
     {
         return systemFonts.clone();
     }

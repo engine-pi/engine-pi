@@ -3,6 +3,7 @@ package pi.actor;
 import static pi.Controller.colorScheme;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
@@ -10,9 +11,14 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.graphics.boxes.TextBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.physics.FixtureBuilder;
+import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
+import static pi.Controller.colors;
+
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
 
 public class TextNg extends Geometry
 {
@@ -112,6 +118,94 @@ public class TextNg extends Geometry
             definedHeight = height;
             syncAttributes();
         }
+        return this;
+    }
+
+    /* color */
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
+     *
+     * @param color Die neue <b>Farbe</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     */
+    @API
+    @Setter
+    public TextNg color(Color color)
+    {
+        super.color(color);
+        box.color(color);
+        return this;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe, die als
+     * <b>Zeichenkette</b> angegeben werden kann.
+     *
+     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
+     *     {@code #ff0000}).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @see pi.resources.color.ColorContainer#get(String)
+     */
+    @API
+    @Setter
+    public TextNg color(String color)
+    {
+        return color(colors.get(color));
+    }
+
+    /* font */
+
+    /**
+     * Setzt eine neue <b>Schriftart</b> durch Angabe des <b>Names</b>.
+     *
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Setter
+    public TextNg font(String fontName)
+    {
+        box.font(fontName);
+        syncAttributes();
+        return this;
+    }
+
+    /**
+     * Setzt die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
+     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
+     *     soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.42.0
+     */
+    @Setter
+    public TextNg font(Font font)
+    {
+        box.font(font);
+        syncAttributes();
         return this;
     }
 

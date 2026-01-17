@@ -24,6 +24,7 @@ import static pi.Controller.fonts;
 import java.awt.Color;
 import java.awt.Font;
 
+import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -94,6 +95,27 @@ public abstract class TextBox extends LeafBox
         }
         this.content = String.valueOf(content);
         calculateDimension();
+        return this;
+    }
+
+    /**
+     * Setzt eine neue <b>Schriftart</b> durch Angabe des <b>Names</b>.
+     *
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Setter
+    public TextBox font(String fontName)
+    {
+        font(fonts.get(fontName));
         return this;
     }
 
