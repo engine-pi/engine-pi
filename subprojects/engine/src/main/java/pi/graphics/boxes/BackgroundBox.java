@@ -71,6 +71,10 @@ public class BackgroundBox extends ChildBox
     }
 
     /**
+     * @param color Ein Farbname, ein Farbalias
+     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.

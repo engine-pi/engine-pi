@@ -42,23 +42,7 @@ import pi.resources.font.FontStyle;
  */
 public abstract class TextBox extends LeafBox
 {
-    /**
-     * Der <b>Inhalt</b> der Textbox als Zeichenkette.
-     *
-     * @since 0.38.0
-     */
-    protected String content;
-
-    protected double fontSize = 16;
-
-    /**
-     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
-     *
-     * @since 0.38.0
-     */
-    protected Font font = fonts.defaultFont().deriveFont((float) fontSize);
-
-    protected Color color = colors.getSafe("gray");
+    private static double DEFAULT_FONT_SIZE = 16;
 
     /**
      * Erzeugt eine <b>Text</b>box.
@@ -72,7 +56,27 @@ public abstract class TextBox extends LeafBox
         content(content);
     }
 
-    /* Setter */
+    /* content */
+
+    /**
+     * Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @since 0.38.0
+     */
+    protected String content;
+
+    /**
+     * Gibt den <b>Inhalt</b> der Textbox als Zeichenkette zurück.
+     *
+     * @return Der <b>Inhalt</b> der Textbox als Zeichenkette.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public String content()
+    {
+        return content;
+    }
 
     /**
      * Setzt den <b>Inhalt</b> und berechnet dabei die Abmessungen neu.
@@ -96,6 +100,30 @@ public abstract class TextBox extends LeafBox
         this.content = String.valueOf(content);
         calculateDimension();
         return this;
+    }
+
+    /* font */
+
+    /**
+     * Die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
+     * @since 0.38.0
+     */
+    protected Font font = fonts.defaultFont()
+        .deriveFont((float) DEFAULT_FONT_SIZE);
+
+    /**
+     * Gibt die <b>Schriftart</b> zurück, in der der Inhalt dargestellt wird.
+     *
+     * @return Die <b>Schriftart</b>, in der der Inhalt dargestellt wird.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    public Font font()
+    {
+        return font;
     }
 
     /**
@@ -135,10 +163,14 @@ public abstract class TextBox extends LeafBox
     @Setter
     public TextBox font(Font font)
     {
-        this.font = font;
+        this.font = font.deriveFont(fontStyle, (float) fontSize);
         calculateDimension();
         return this;
     }
+
+    /* fontSize */
+
+    protected double fontSize = DEFAULT_FONT_SIZE;
 
     /**
      * Setzt die <b>Schriftgröße</b> in Punkten (Points pt).
@@ -157,6 +189,10 @@ public abstract class TextBox extends LeafBox
         calculateDimension();
         return this;
     }
+
+    /* fontStyle */
+
+    protected int fontStyle;
 
     /**
      * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
@@ -182,7 +218,8 @@ public abstract class TextBox extends LeafBox
     @Setter
     public TextBox fontStyle(FontStyle fontStyle)
     {
-        font = font.deriveFont(fontStyle.getStyle());
+        this.fontStyle = fontStyle.getStyle();
+        font = font.deriveFont(this.fontStyle);
         calculateDimension();
         return this;
     }
@@ -210,6 +247,7 @@ public abstract class TextBox extends LeafBox
     @Setter
     public TextBox fontStyle(int fontStyle)
     {
+        this.fontStyle = fontStyle;
         font = font.deriveFont(fontStyle);
         calculateDimension();
         return this;
@@ -234,10 +272,31 @@ public abstract class TextBox extends LeafBox
     @Getter
     public FontStyle fontStyle()
     {
-        return FontStyle.getStyle(font.getStyle());
+        return FontStyle.getStyle(fontStyle);
+    }
+
+    /* color */
+
+    protected Color color = colors.getSafe("gray");
+
+    /**
+     * Gibt die <b>Farbe</b> des Textes zurück.
+     *
+     * @return Die <b>Farbe</b> des Textes.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public Color color()
+    {
+        return color;
     }
 
     /**
+     * Setzt die <b>Farbe</b> des Textes.
+     *
+     * @param color Die <b>Farbe</b> des Textes.
+     *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
@@ -251,10 +310,18 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
+     * Setzt die <b>Farbe</b> des Textes als Zeichenkette.
+     *
+     * @param color Ein Farbname, ein Farbalias
+     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
      *     aneinander gekettete Setter festgelegt werden können, z. B.
      *     {@code box.x(..).y(..)}.
+     *
+     * @see pi.resources.color.ColorContainer
      */
     @Setter
     public TextBox color(String color)

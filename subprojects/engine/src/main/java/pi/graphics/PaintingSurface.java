@@ -129,7 +129,8 @@ public class PaintingSurface
      *
      * @param color Der <b>Name der Farbe</b> als Zeichenkette, die zum Füllen
      *     verwendet werden soll. Die Farbe muss in der Farbzuordnung vorhanden
-     *     sein.
+     *     sein ({@link pi.resources.color.ColorContainer siehe Auflistung})
+     *     oder eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
      */
     public void fill(String color)
     {

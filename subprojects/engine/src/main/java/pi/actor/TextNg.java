@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2026 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package pi.actor;
 
 import static pi.Controller.colorScheme;
@@ -12,13 +30,22 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 import pi.graphics.boxes.TextLineBox;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
 
+// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
 
+/**
+ * Zur Darstellung von einzeiligen <b>Texten</b>.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.42.0
+ */
 public class TextNg extends Geometry
 {
     private TextLineBox box;
@@ -47,6 +74,13 @@ public class TextNg extends Geometry
      */
     private double scaleFactorY;
 
+    /**
+     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @since 0.42.0
+     */
     @API
     public TextNg(Object content)
     {
@@ -56,6 +90,51 @@ public class TextNg extends Geometry
         box.color(color);
         color(color);
         syncAttributes();
+    }
+
+    /* content */
+
+    /**
+     * Gibt den <b>Textinhalt</b>, der dargestellt werden soll, zurück.
+     *
+     * @return Der <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    public String content()
+    {
+        return box.content();
+    }
+
+    /**
+     * Setzt den <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Setter
+    public TextNg content(Object content)
+    {
+        String normalizedContent = String.valueOf(content);
+        if (normalizedContent == null)
+        {
+            normalizedContent = "";
+        }
+        if (!box.content().equals(normalizedContent))
+        {
+            box.content(normalizedContent);
+            syncAttributes();
+        }
+        return this;
     }
 
     /* width */
@@ -70,6 +149,13 @@ public class TextNg extends Geometry
      */
     private double width = 0;
 
+    /**
+     * Gibt die <b>Breite</b> des Texts in Meter zurück.
+     *
+     * @return Die <b>Breite</b> des Texts in Meter zurück.
+     *
+     * @since 0.42.0
+     */
     @API
     @Getter
     public double width()
@@ -77,6 +163,18 @@ public class TextNg extends Geometry
         return definedWidth;
     }
 
+    /**
+     * Setzt die <b>Breite</b> des Texts in Meter.
+     *
+     * @param width Die <b>Breite</b> des Texts in Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
+     */
     @API
     @Setter
     public TextNg width(double width)
@@ -101,6 +199,13 @@ public class TextNg extends Geometry
      */
     private double height = 0;
 
+    /**
+     * Gibt die <b>Höhe</b> des Texts in Meter zurück.
+     *
+     * @return Die <b>Höhe</b> des Texts in Meter.
+     *
+     * @since 0.42.0
+     */
     @API
     @Getter
     public double height()
@@ -108,6 +213,18 @@ public class TextNg extends Geometry
         return definedHeight;
     }
 
+    /**
+     * Setzt die <b>Höhe</b> des Texts in Meter.
+     *
+     * @param height Die <b>Höhe</b> des Texts in Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
+     */
     @API
     @Setter
     public TextNg height(double height)
@@ -123,17 +240,35 @@ public class TextNg extends Geometry
     /* color */
 
     /**
+     * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe.
+     *
+     * @return Die <b>Farbe</b> des Textes.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    @Override
+    public Color color()
+    {
+        return box.color();
+    }
+
+    /**
      * Setzt die <b>Farbe</b> der Figur auf eine bestimmte Farbe.
      *
      * @param color Die neue <b>Farbe</b>.
      *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
      */
     @API
     @Setter
+    @Override
     public TextNg color(Color color)
     {
         super.color(color);
@@ -149,15 +284,18 @@ public class TextNg extends Geometry
      *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
      *     {@code #ff0000}).
      *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
+     *
+     * @since 0.42.0
      *
      * @see pi.resources.color.ColorContainer#get(String)
      */
     @API
     @Setter
+    @Override
     public TextNg color(String color)
     {
         return color(colors.get(color));
@@ -166,15 +304,29 @@ public class TextNg extends Geometry
     /* font */
 
     /**
+     * Gibt die <b>Schriftart</b> zurück, in der der Inhalt dargestellt wird.
+     *
+     * @return Die <b>Schriftart</b>, in der der Inhalt dargestellt wird.
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    public Font font()
+    {
+        return box.font();
+    }
+
+    /**
      * Setzt eine neue <b>Schriftart</b> durch Angabe des <b>Names</b>.
      *
      * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
      *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
      *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
      *
      * @since 0.42.0
      */
@@ -193,10 +345,10 @@ public class TextNg extends Geometry
      * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
      *     soll.
      *
-     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code actor.color(..).postion(..)}.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
      *
      * @since 0.42.0
      */
@@ -209,6 +361,29 @@ public class TextNg extends Geometry
     }
 
     /* style */
+
+    /**
+     * Gibt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b> zurück.
+     *
+     * @return Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i> oder
+     *     <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @since 0.42.0
+     */
+    @API
+    @Getter
+    public FontStyle style()
+    {
+        return box.fontStyle();
+    }
 
     /**
      * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
@@ -224,8 +399,10 @@ public class TextNg extends Geometry
      *     ({@code 3})</li>
      *     </ul>
      *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
      */
     @API
     @Setter
@@ -249,8 +426,10 @@ public class TextNg extends Geometry
      *     <li>{@code 3}: Fett und Kursiv</li>
      *     </ul>
      *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
+     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).height(..)}.
      */
     @API
     @Setter
@@ -259,29 +438,6 @@ public class TextNg extends Geometry
         box.fontStyle(style);
         syncAttributes();
         return this;
-    }
-
-    /**
-     * Gibt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b> zurück.
-     *
-     * @return Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i> oder
-     *     <i>fett und kursiv</i>) als Aufzählungstyp.
-     *
-     *     <ul>
-     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
-     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
-     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
-     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
-     *     ({@code 3})</li>
-     *     </ul>
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Getter
-    public FontStyle style()
-    {
-        return box.fontStyle();
     }
 
     /**
@@ -330,5 +486,16 @@ public class TextNg extends Geometry
         g.scale(scaleFactorX * pixelPerMeter, scaleFactorY * pixelPerMeter);
         box.render(g);
         g.setTransform(oldTransform);
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Text");
+        formatter.append("content", content());
+        return formatter.format();
     }
 }

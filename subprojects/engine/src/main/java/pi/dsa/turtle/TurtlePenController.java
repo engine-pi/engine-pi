@@ -142,7 +142,9 @@ public class TurtlePenController
     /**
      * Setzt die <b>Farbe</b> des Zeichenstifts als Zeichenkette.
      *
-     * @param color Die <b>Farbe</b> des Zeichenstifts.
+     * @param color Ein Farbname, ein Farbalias
+     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
      *
      * @since 0.40.0
      */

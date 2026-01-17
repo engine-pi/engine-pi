@@ -235,11 +235,6 @@ public class Text extends Geometry
     @SuppressWarnings("unused")
     private double width;
 
-    /**
-     * Gibt die <b>Breite</b> des Texts in Meter zurück.
-     *
-     * @return Die <b>Breite</b> des Texts in Meter zurück.
-     */
     @API
     @Getter
     public double width()
@@ -248,14 +243,6 @@ public class Text extends Geometry
         return sizeInPixels.getWidth() * height / sizeInPixels.getHeight();
     }
 
-    /**
-     * Setzt die <b>Breite</b> des Texts in Meter.
-     *
-     * @param width Die Breite des Texts in Meter.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
-     */
     @API
     @Setter
     public Text width(double width)
@@ -280,14 +267,6 @@ public class Text extends Geometry
         return height;
     }
 
-    /**
-     * Setzt die <b>Höhe</b> des Tests in Meter.
-     *
-     * @param height Die Höhe des Texts in Meter.
-     *
-     * @return Eine Instanz dieser Textfigur, damit mehrere Setter durch die
-     *     Punktschreibweise aneinander gekettet werden können.
-     */
     @API
     @Setter
     public Text height(double height)
