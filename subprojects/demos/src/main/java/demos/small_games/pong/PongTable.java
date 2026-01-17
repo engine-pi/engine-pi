@@ -82,7 +82,8 @@ public class PongTable extends Scene
 
     public PongTable()
     {
-        info().title("Pong").help(
+        info().title("Pong")
+            .help(
                 "Die Tasten „q“ und „a“ steuern den linken Schläger, die Pfeiltasten (aufwärts, abwärts) den rechten Schläger. Die Eingabetaste (Return) startet das Spiel.");
         bounds = visibleArea();
 
@@ -97,7 +98,7 @@ public class PongTable extends Scene
 
         bottomBouncer = new BounceBar(bounds.width());
         bottomBouncer.anchor(bounds.xLeft(),
-                bounds.yBottom() - bottomBouncer.height());
+            bounds.yBottom() - bottomBouncer.height());
 
         add(ball, topBouncer, bottomBouncer);
 
@@ -125,7 +126,7 @@ public class PongTable extends Scene
         ball.resetMovement();
         ball.center(0, 0);
         ball.applyImpulse(
-                Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
+            Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
     }
 
     @Override

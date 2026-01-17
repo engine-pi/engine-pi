@@ -166,7 +166,8 @@ abstract class LetterTileMap
         if (namesToLetter.get(name) != null)
         {
             throw new IllegalArgumentException(String.format(
-                    "Eine Kachel mit dem Namen „%s“ existiert bereits!", name));
+                "Eine Kachel mit dem Namen „%s“ existiert bereits!",
+                name));
         }
         namesToLetter.put(name, letter);
         names.put(letter, name);
@@ -177,8 +178,8 @@ abstract class LetterTileMap
         if (letters.contains(letter))
         {
             throw new IllegalArgumentException(String.format(
-                    "Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
-                    letter));
+                "Eine Kachel mit dem Buchstaben „%s“ existiert bereits!",
+                letter));
         }
     }
 
@@ -235,8 +236,9 @@ abstract class LetterTileMap
         if (row.length() > width)
         {
             throw new IllegalArgumentException(String.format(
-                    "Anzahl der Zeichen in einer Reihe (%s) muss kleiner gleich numX (%s) sein!",
-                    row, width));
+                "Anzahl der Zeichen in einer Reihe (%s) muss kleiner gleich numX (%s) sein!",
+                row,
+                width));
         }
     }
 
@@ -248,8 +250,9 @@ abstract class LetterTileMap
         if (rows.length > height)
         {
             throw new IllegalArgumentException(String.format(
-                    "Anzahl der Reihen (%s) muss kleiner gleich numY (%s) sein!",
-                    rows.length, height));
+                "Anzahl der Reihen (%s) muss kleiner gleich numY (%s) sein!",
+                rows.length,
+                height));
         }
     }
 
@@ -260,8 +263,8 @@ abstract class LetterTileMap
     {
         if (!existsTile(letter))
         {
-            throw new IllegalArgumentException(String.format(
-                    "Unbekannte Kachel mit dem Buchstaben “%s”!", letter));
+            throw new IllegalArgumentException(String
+                .format("Unbekannte Kachel mit dem Buchstaben “%s”!", letter));
         }
     }
 

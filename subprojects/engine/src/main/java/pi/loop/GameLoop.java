@@ -71,7 +71,7 @@ public final class GameLoop
     private static final int NANOSECONDS_PER_SECOND = 1000000000;
 
     private final ExecutorService threadPoolExecutor = Executors
-            .newCachedThreadPool();
+        .newCachedThreadPool();
 
     private final RenderTarget render;
 
@@ -198,11 +198,11 @@ public final class GameLoop
             {
                 frameCounter++;
                 double pastTime = Math.min(2 * DESIRED_FRAME_DURATION,
-                        frameDuration);
+                    frameDuration);
                 scene.step(pastTime, threadPoolExecutor::submit);
                 // Beobachter der Bildaktualisierung.
                 frameUpdateListeners
-                        .invoke(listener -> listener.onFrameUpdate(pastTime));
+                    .invoke(listener -> listener.onFrameUpdate(pastTime));
                 // Aktualisiert die Kamera der aktuellen Szene
                 scene.camera().onFrameUpdate();
                 // Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.
@@ -222,8 +222,8 @@ public final class GameLoop
                     try
                     {
                         // noinspection BusyWait
-                        Thread.sleep((int) (1000
-                                * (DESIRED_FRAME_DURATION - duration)));
+                        Thread.sleep(
+                            (int) (1000 * (DESIRED_FRAME_DURATION - duration)));
                     }
                     catch (InterruptedException e)
                     {

@@ -129,12 +129,15 @@ public class LevelCollection
     public Map<Difficulty, List<Level>> filter(Predicate<Difficulty> difficulty,
             Predicate<Level> level)
     {
-        return levels.entrySet().stream()
-                .filter((entry) -> difficulty.test(entry.getKey()))
-                .collect(Collectors.toMap(map -> map.getKey(), map -> {
-                    return map.getValue().stream().filter(l -> level.test(l))
-                            .collect(Collectors.toList());
-                }));
+        return levels.entrySet()
+            .stream()
+            .filter((entry) -> difficulty.test(entry.getKey()))
+            .collect(Collectors.toMap(map -> map.getKey(), map -> {
+                return map.getValue()
+                    .stream()
+                    .filter(l -> level.test(l))
+                    .collect(Collectors.toList());
+            }));
     }
 
     public Map<Difficulty, List<Level>> filter(Predicate<Difficulty> difficulty)

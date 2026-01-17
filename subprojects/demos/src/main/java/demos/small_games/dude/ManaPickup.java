@@ -37,8 +37,8 @@ public class ManaPickup extends Animation
 
     public ManaPickup()
     {
-        super(Animation.createFromSpritesheet(.1, "dude/gem_blue.png", 6, 1,
-                SIZE, SIZE));
+        super(Animation
+            .createFromSpritesheet(.1, "dude/gem_blue.png", 6, 1, SIZE, SIZE));
     }
 
     @Override

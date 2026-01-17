@@ -120,8 +120,11 @@ class TurtleDressController
             break;
 
         case ANIMATED_IMAGE:
-            Animation animation = Animation.createFromImages(0.1, size, size,
-                    images.get("turtle.png"), images.get("turtle2.png"));
+            Animation animation = Animation.createFromImages(0.1,
+                size,
+                size,
+                images.get("turtle.png"),
+                images.get("turtle2.png"));
             animation.enableManualMode();
             image = animation;
             break;

@@ -41,10 +41,10 @@ public class ColorSchemeContainerTest
     void testInitializationWithPredefinedSchemes()
     {
         for (PredefinedColorScheme predefinedScheme : PredefinedColorScheme
-                .values())
+            .values())
         {
             assertEquals(predefinedScheme.getScheme(),
-                    container.get(predefinedScheme.getScheme().name()));
+                container.get(predefinedScheme.getScheme().name()));
         }
     }
 

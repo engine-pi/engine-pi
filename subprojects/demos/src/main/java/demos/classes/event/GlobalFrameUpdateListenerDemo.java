@@ -31,6 +31,6 @@ public class GlobalFrameUpdateListenerDemo
     {
         Controller.start(new Scene());
         Controller.addFrameUpdateListener((delta) -> System.out
-                .println("Vergangene Zeit seit letztem Einzelbild: " + delta));
+            .println("Vergangene Zeit seit letztem Einzelbild: " + delta));
     }
 }

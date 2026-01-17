@@ -51,8 +51,9 @@ public class ImageLoader
     public static Image get(String pathname)
     {
         BufferedImage image = images.get(pathname);
-        image = ImageUtil.replaceColors(image, COLOR_SCHEME_GRAY.getColors(),
-                COLOR_SCHEME_GREEN.getColors());
+        image = ImageUtil.replaceColors(image,
+            COLOR_SCHEME_GRAY.getColors(),
+            COLOR_SCHEME_GREEN.getColors());
         return new Image(image,
                 Tetris.BLOCK_SIZE * config.graphics.pixelMultiplication());
     }

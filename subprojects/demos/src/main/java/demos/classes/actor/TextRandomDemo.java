@@ -50,9 +50,12 @@ public class TextRandomDemo extends Scene
             String font = Random.systemFont();
             TextNg text = new TextNg(font);
 
-            text.height(Random.range(0.2, 3.0)).font(font)
-                    .style(Random.fontStyleAsEnum()).color(colors.random())
-                    .anchor(Random.vector(this)).rotation(Random.range(0, 360));
+            text.height(Random.range(0.2, 3.0))
+                .font(font)
+                .style(Random.fontStyleAsEnum())
+                .color(colors.random())
+                .anchor(Random.vector(this))
+                .rotation(Random.range(0, 360));
             add(text);
         }
     }

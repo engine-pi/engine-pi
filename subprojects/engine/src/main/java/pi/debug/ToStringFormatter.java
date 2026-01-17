@@ -239,8 +239,8 @@ public class ToStringFormatter
             Field field = map.get(fieldName);
             entries.add(field.format());
         }
-        return String.format("%s [%s]", objectName(),
-                String.join(", ", entries));
+        return String
+            .format("%s [%s]", objectName(), String.join(", ", entries));
     }
 
     /**

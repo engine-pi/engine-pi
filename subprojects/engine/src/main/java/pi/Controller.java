@@ -167,7 +167,7 @@ public class Controller
      * @since 0.42.0
      */
     public static final ColorSchemeContainer colorScheme = ColorSchemeContainer
-            .getInstance();
+        .getInstance();
 
     static
     {
@@ -255,7 +255,7 @@ public class Controller
      * Wert <code>false</code>.
      */
     private static final Collection<Integer> pressedKeys = ConcurrentHashMap
-            .newKeySet();
+        .newKeySet();
 
     private static DefaultListener defaultControl = new DefaultControl();
 
@@ -407,8 +407,9 @@ public class Controller
     @API
     public static Scene start(Scene scene)
     {
-        return start(scene, config.graphics.windowWidth(),
-                config.graphics.windowHeight());
+        return start(scene,
+            config.graphics.windowWidth(),
+            config.graphics.windowHeight());
     }
 
     /**
@@ -463,8 +464,8 @@ public class Controller
         final Scene next;
         next = Objects.requireNonNullElseGet(scene, Scene::new);
         loop.enqueue(() -> {
-            sceneLaunchListeners.invoke(
-                    (listener) -> listener.onSceneLaunch(next, previous));
+            sceneLaunchListeners
+                .invoke((listener) -> listener.onSceneLaunch(next, previous));
             Controller.scene = next;
         });
     }
@@ -474,7 +475,7 @@ public class Controller
         loop = new GameLoop(renderPanel, Controller::scene,
                 Controller::isDebug);
         sceneLaunchListeners.invoke(
-                (listener) -> listener.onSceneLaunch(Controller.scene(), null));
+            (listener) -> listener.onSceneLaunch(Controller.scene(), null));
         loop.run();
         frame.setVisible(false);
         frame.dispose();
@@ -542,7 +543,7 @@ public class Controller
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
             mouseScrollListeners.invoke(
-                    (listener) -> listener.onMouseScrollMove(mouseScrollEvent));
+                (listener) -> listener.onMouseScrollMove(mouseScrollEvent));
             scene.invokeMouseScrollListeners(mouseScrollEvent);
         });
     }
@@ -808,7 +809,7 @@ public class Controller
         renderPanel.setPreferredSize(new Dimension(width, height));
         frame.pack();
         frame.setLocation(frame.getLocation().x - diffX,
-                frame.getLocation().y - diffY);
+            frame.getLocation().y - diffY);
     }
 
     /**
@@ -1137,13 +1138,13 @@ public class Controller
                 if (down)
                 {
                     mouseClickListeners.invoke(
-                            listener -> listener.onMouseDown(position, button));
+                        listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseDownListeners(position, button);
                 }
                 else
                 {
                     mouseClickListeners.invoke(
-                            listener -> listener.onMouseDown(position, button));
+                        listener -> listener.onMouseDown(position, button));
                     scene.invokeMouseUpListeners(position, button);
                 }
             });
@@ -1183,14 +1184,14 @@ public class Controller
             loop.enqueue(() -> {
                 if (down)
                 {
-                    keyStrokeListeners.invoke(
-                            keyListener -> keyListener.onKeyDown(event));
+                    keyStrokeListeners
+                        .invoke(keyListener -> keyListener.onKeyDown(event));
                     scene.invokeKeyDownListeners(event);
                 }
                 else
                 {
                     keyStrokeListeners
-                            .invoke(keyListener -> keyListener.onKeyUp(event));
+                        .invoke(keyListener -> keyListener.onKeyUp(event));
                     scene.invokeKeyUpListeners(event);
                 }
             });

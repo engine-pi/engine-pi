@@ -14,6 +14,6 @@ public class SolverTest
     void testTaskPath()
     {
         assertEquals(solver.taskPath,
-                "conditionals_excercises/find_the_way_to_the_lake");
+            "conditionals_excercises/find_the_way_to_the_lake");
     }
 }

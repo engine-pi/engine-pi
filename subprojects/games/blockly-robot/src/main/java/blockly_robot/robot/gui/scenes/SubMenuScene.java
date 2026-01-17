@@ -77,7 +77,7 @@ public class SubMenuScene extends Scene implements WindowScene
 
     public static void main(String[] args)
     {
-        Controller.launchScene((WindowScene) new SubMenuScene(
-                "Bedingte Anweisungen – Übungen"));
+        Controller.launchScene(
+            (WindowScene) new SubMenuScene("Bedingte Anweisungen – Übungen"));
     }
 }

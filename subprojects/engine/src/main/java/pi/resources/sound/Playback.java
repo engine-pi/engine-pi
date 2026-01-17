@@ -59,10 +59,10 @@ public abstract class Playback implements Runnable
     private volatile boolean cancelled = false;
 
     private final Collection<SoundPlaybackListener> listeners = ConcurrentHashMap
-            .newKeySet();
+        .newKeySet();
 
     private final Collection<VolumeControl> volumeControls = Collections
-            .synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
+        .synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
 
     private final VolumeControl masterVolume;
 
@@ -77,9 +77,9 @@ public abstract class Playback implements Runnable
         this.line.open();
         this.line.start();
         this.gainControl = (FloatControl) this.line
-                .getControl(FloatControl.Type.MASTER_GAIN);
+            .getControl(FloatControl.Type.MASTER_GAIN);
         this.muteControl = (BooleanControl) this.line
-                .getControl(BooleanControl.Type.MUTE);
+            .getControl(BooleanControl.Type.MUTE);
         this.masterVolume = this.createVolumeControl();
     }
 
@@ -275,8 +275,8 @@ public abstract class Playback implements Runnable
         // needs to be an integral
         // number of sample frames
         len = (this.line.getBufferSize() / len / 2 + 1) * len;
-        for (int i = 0; i < data.length; i += this.line.write(data, i,
-                Math.min(len, data.length - i)))
+        for (int i = 0; i < data.length; i += this.line
+            .write(data, i, Math.min(len, data.length - i)))
         {
             if (this.cancelled || !line.isOpen())
             {
@@ -374,9 +374,9 @@ public abstract class Playback implements Runnable
         {
             // clean up the instance without affecting the volume
             Playback.this.miscVolume.accumulateAndGet(
-                    Float.floatToRawIntBits(this.value),
-                    (a, b) -> Float.floatToRawIntBits(
-                            Float.intBitsToFloat(a) * Float.intBitsToFloat(b)));
+                Float.floatToRawIntBits(this.value),
+                (a, b) -> Float.floatToRawIntBits(
+                    Float.intBitsToFloat(a) * Float.intBitsToFloat(b)));
         }
     }
 }

@@ -64,8 +64,8 @@ public class ColorUtilTest
     private static Stream<Arguments> getColorFromHexString()
     {
         return Stream.of(Arguments.of("#ff0000", Color.RED),
-                Arguments.of("#00ff00", Color.GREEN),
-                Arguments.of("#0000ff", Color.BLUE));
+            Arguments.of("#00ff00", Color.GREEN),
+            Arguments.of("#0000ff", Color.BLUE));
     }
 
     @Nested
@@ -124,9 +124,10 @@ public class ColorUtilTest
     private static Stream<Arguments> getSolidColorFromAlphaHexString()
     {
         return Stream.of(Arguments.of("#ff0000c8", true, new Color(228, 0, 0)),
-                Arguments.of("#00ff00c8", true, new Color(0, 228, 0)),
-                Arguments.of("#0000ffc8", true, new Color(0, 0, 228)),
-                Arguments.of("", true, null), Arguments.of(null, true, null));
+            Arguments.of("#00ff00c8", true, new Color(0, 228, 0)),
+            Arguments.of("#0000ffc8", true, new Color(0, 0, 228)),
+            Arguments.of("", true, null),
+            Arguments.of(null, true, null));
     }
 
     @ParameterizedTest
@@ -140,8 +141,9 @@ public class ColorUtilTest
     private static Stream<Arguments> getHexStringWithoutHashtag()
     {
         return Stream.of(Arguments.of("ff0000", Color.RED),
-                Arguments.of("00ff00", Color.GREEN),
-                Arguments.of("0000ff", Color.BLUE), Arguments.of("000", null));
+            Arguments.of("00ff00", Color.GREEN),
+            Arguments.of("0000ff", Color.BLUE),
+            Arguments.of("000", null));
     }
 
     @Test

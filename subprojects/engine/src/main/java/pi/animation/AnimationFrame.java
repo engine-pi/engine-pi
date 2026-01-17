@@ -118,10 +118,12 @@ public final class AnimationFrame
     {
         AffineTransform pre = g.getTransform();
         g.scale(width / this.image.getWidth(), height / this.image.getHeight());
-        g.drawImage(image, flipHorizontal ? image.getWidth() : 0,
-                -image.getHeight() + (flipVertical ? image.getHeight() : 0),
-                (flipHorizontal ? -1 : 1) * image.getWidth(),
-                (flipVertical ? -1 : 1) * image.getHeight(), null);
+        g.drawImage(image,
+            flipHorizontal ? image.getWidth() : 0,
+            -image.getHeight() + (flipVertical ? image.getHeight() : 0),
+            (flipHorizontal ? -1 : 1) * image.getWidth(),
+            (flipVertical ? -1 : 1) * image.getHeight(),
+            null);
         g.setTransform(pre);
     }
 }

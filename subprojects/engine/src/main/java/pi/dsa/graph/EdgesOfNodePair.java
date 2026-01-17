@@ -32,8 +32,8 @@ class EdgesOfNodePair
             throw new RuntimeException(
                     "Die maximale Anzahl an Kanten ist erreicht. Es können nur maximal zwei hinzugefügt werden.");
         }
-        edges.add(new DirectedGraphEdge(graph.node(from), graph.node(to),
-                weight));
+        edges.add(
+            new DirectedGraphEdge(graph.node(from), graph.node(to), weight));
     }
 
     /**

@@ -1561,8 +1561,9 @@ public class ColorScheme
                 for (Entry<String, Color> entry : colors.getAll().entrySet())
                 {
                     add(new Circle().anchor(x, 0).color(entry.getValue()));
-                    add(new Text(entry.getKey()).height(0.5).anchor(x, labelY)
-                            .color("white"));
+                    add(new Text(entry.getKey()).height(0.5)
+                        .anchor(x, labelY)
+                        .color("white"));
                     x += 2;
                     labelY -= 2;
                     if (labelY < -4)

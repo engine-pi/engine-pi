@@ -51,8 +51,9 @@ public class ImageFontTextAlignmentDemo extends Scene
         backgroundColor("white");
         createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
         createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
-        createTextLine(-7, "Dieser Text ist rechtsbuendig ausgerichtet.",
-                RIGHT);
+        createTextLine(-7,
+            "Dieser Text ist rechtsbuendig ausgerichtet.",
+            RIGHT);
     }
 
     private void createTextLine(int y, String content, TextAlignment alignment)

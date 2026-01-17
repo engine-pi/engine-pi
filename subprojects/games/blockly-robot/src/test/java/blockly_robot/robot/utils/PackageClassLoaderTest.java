@@ -17,10 +17,10 @@ class PackageClassLoaderTest
             throws ReflectiveOperationException
     {
         var sampleClass = PackageClassLoader.<Robot>instantiateClass(
-                "en.tasks.conditionals_excercises.find_the_destination.Robot");
+            "en.tasks.conditionals_excercises.find_the_destination.Robot");
         assertNotNull(sampleClass);
         assertEquals(sampleClass.getClass().getName(),
-                "blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_destination.Robot");
+            "blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_destination.Robot");
     }
 
     @Test

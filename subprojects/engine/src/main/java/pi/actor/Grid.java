@@ -126,8 +126,10 @@ public class Grid extends Actor
         if (background != null)
         {
             g.setColor(background);
-            g.fillRect(0, -Math.round(cellSize * rows),
-                    Math.round(cellSize * cols), Math.round(cellSize * rows));
+            g.fillRect(0,
+                -Math.round(cellSize * rows),
+                Math.round(cellSize * cols),
+                Math.round(cellSize * rows));
         }
         g.setColor(color);
         // Die Dicke der Linie in Pixel.
@@ -141,16 +143,20 @@ public class Grid extends Actor
         for (int x = 0; x <= cols; x++)
         {
             // Zeichnen der vertikalen Linien von links nach rechts.
-            g.fillRect(Math.round(x * cellSize), -lengthVertical, thickness,
-                    lengthVertical);
+            g.fillRect(Math.round(x * cellSize),
+                -lengthVertical,
+                thickness,
+                lengthVertical);
         }
         // Länge der horizontalen Linien.
         int lengthHorizontal = Math.round(cols * cellSize);
         for (int y = 0; y <= rows; y++)
         {
             // Zeichnen der horizontalen Linien von unten nach oben.
-            g.fillRect(0, -Math.round(y * cellSize), lengthHorizontal,
-                    thickness);
+            g.fillRect(0,
+                -Math.round(y * cellSize),
+                lengthHorizontal,
+                thickness);
         }
     }
 }

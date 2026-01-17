@@ -76,8 +76,9 @@ public class DirectedLineSegmentTest
         public void arbitrary()
         {
             assertEquals(53.13010235415598, line(0, 0, 3, 4).angle(), 1e-12);
-            assertEquals(-126.86989764584402, line(0, 0, -3, -4).angle(),
-                    1e-12);
+            assertEquals(-126.86989764584402,
+                line(0, 0, -3, -4).angle(),
+                1e-12);
             assertEquals(0.0, line(5, 5, 10, 5).angle(), 1e-12);
             assertEquals(180.0, line(10, 5, 5, 5).angle(), 1e-12);
         }

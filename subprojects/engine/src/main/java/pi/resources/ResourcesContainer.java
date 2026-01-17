@@ -62,7 +62,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
     // the number of resources
     // in use
     private static final ExecutorService ASYNC_POOL = Executors
-            .newWorkStealingPool();
+        .newWorkStealingPool();
 
     private final Map<String, T> resources = new ConcurrentHashMap<>();
 
@@ -408,7 +408,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
     public Future<T> getAsync(String name)
     {
         return this
-                .getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
+            .getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
     }
 
     /**

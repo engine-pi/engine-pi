@@ -16,7 +16,7 @@ class JsonLoaderTest
             throws StreamReadException, DatabindException, IOException
     {
         var task = JsonLoader.loadTask(
-                "data/tasks/conditionals_excercises/light_all_candles.json");
+            "data/tasks/conditionals_excercises/light_all_candles.json");
         assertEquals(task.id, "20-DE-13-Kerzen-einfach");
     }
 
@@ -26,9 +26,9 @@ class JsonLoaderTest
     {
         var menu = JsonLoader.loadMenu();
         assertEquals(
-                menu.get("Bedingte Anweisungen – Übungen")
-                        .get("Zünde alle Kerzen an"),
-                "conditionals_excercises/light_all_candles");
+            menu.get("Bedingte Anweisungen – Übungen")
+                .get("Zünde alle Kerzen an"),
+            "conditionals_excercises/light_all_candles");
     }
 
     @Test

@@ -118,8 +118,8 @@ public class BallThrowDemo extends Scene
         ball.makeDynamic();
         ball.density(MASSE);
         ball.center(DISTANCE_LEFT,
-                GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
-                        + 0.5 * DURCHMESSER * PIXEL_PER_METER));
+            GROUND_DEPTH + (HOEHE_UEBER_BODEN * PIXEL_PER_METER
+                    + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         // Den Boden erstellen
         /**
          * Der Boden.
@@ -181,8 +181,8 @@ public class BallThrowDemo extends Scene
     {
         gravity(new Vector(0, 0)); // Schwerkraft deaktivieren
         ball.center(DISTANCE_LEFT, // Ballposition zurücksetzen
-                GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
-                        + 0.5 * DURCHMESSER * PIXEL_PER_METER));
+            GROUND_DEPTH - (HOEHE_UEBER_BODEN * PIXEL_PER_METER
+                    + 0.5 * DURCHMESSER * PIXEL_PER_METER));
         ball.resetMovement(); // Ball in Ruhe versetzen
     }
 
@@ -202,11 +202,10 @@ public class BallThrowDemo extends Scene
         double distanz = (ball.center().x() - DISTANCE_LEFT) / PIXEL_PER_METER;
         // Messungen angeben
         System.out.println(
-                "Der Ball ist auf dem Boden aufgeschlagen. Seit Simulationsstart sind "
-                        + +(zeitdifferenz / 1000) + " Sekunden und "
-                        + (zeitdifferenz % 1000) + " Millisekunden vergangen.\n"
-                        + "Der Ball diese Distanz zurückgelegt: " + distanz
-                        + " m");
+            "Der Ball ist auf dem Boden aufgeschlagen. Seit Simulationsstart sind "
+                    + +(zeitdifferenz / 1000) + " Sekunden und "
+                    + (zeitdifferenz % 1000) + " Millisekunden vergangen.\n"
+                    + "Der Ball diese Distanz zurückgelegt: " + distanz + " m");
     }
 
     public static void main(String[] args)

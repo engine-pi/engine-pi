@@ -79,16 +79,16 @@ import pi.resources.sound.Track;
 public final class Jukebox
 {
     public static final ExecutorService EXECUTOR = Executors
-            .newCachedThreadPool(new ThreadFactory()
-            {
-                private int id = 0;
+        .newCachedThreadPool(new ThreadFactory()
+        {
+            private int id = 0;
 
-                @Override
-                public Thread newThread(Runnable r)
-                {
-                    return new Thread(r, "Sound Playback Thread " + ++id);
-                }
-            });
+            @Override
+            public Thread newThread(Runnable r)
+            {
+                return new Thread(r, "Sound Playback Thread " + ++id);
+            }
+        });
 
     private static final Logger log = Logger.getLogger(Jukebox.class.getName());
 
@@ -98,10 +98,10 @@ public final class Jukebox
     private static MusicPlayback music;
 
     private static final Collection<MusicPlayback> allMusic = ConcurrentHashMap
-            .newKeySet();
+        .newKeySet();
 
     private static final Collection<SoundPlayback> allSounds = ConcurrentHashMap
-            .newKeySet();
+        .newKeySet();
 
     private static SoundContainer soundsContainer = sounds;
 

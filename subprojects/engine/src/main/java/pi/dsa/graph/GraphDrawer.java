@@ -14,7 +14,8 @@ import pi.graphics.geom.Vector;
 
 enum EditState
 {
-    PLACE_NODE, ADD_NODE_LABEL
+    PLACE_NODE,
+    ADD_NODE_LABEL
 }
 
 /**

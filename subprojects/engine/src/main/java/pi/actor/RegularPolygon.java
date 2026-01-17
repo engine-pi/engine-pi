@@ -69,8 +69,9 @@ public class RegularPolygon extends Polygon
         {
             vectors[i] = Vector.ofAngle(i * angleStep
                     // Damit unten keine Spitze ist.
-                    - (180 - angleStep) / 2).multiply(radius)
-                    .add(radius, radius);
+                    - (180 - angleStep) / 2)
+                .multiply(radius)
+                .add(radius, radius);
         }
         return vectors;
     }

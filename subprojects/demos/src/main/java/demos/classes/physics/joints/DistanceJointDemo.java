@@ -30,8 +30,9 @@ public class DistanceJointDemo extends BaseJointScene
 {
     public DistanceJointDemo()
     {
-        joint = a.createDistanceJoint(b, new Vector(0.25, 0.25),
-                new Vector(0.75, 0.75));
+        joint = a.createDistanceJoint(b,
+            new Vector(0.25, 0.25),
+            new Vector(0.75, 0.75));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });

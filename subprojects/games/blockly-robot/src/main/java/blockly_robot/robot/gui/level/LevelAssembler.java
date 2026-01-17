@@ -34,10 +34,12 @@ public class LevelAssembler
     public RobotWrapper createRobot(AssembledLevel l) throws Exception
     {
         String className = "blockly_robot.jwinf.en.tasks.%s.Robot"
-                .formatted(level.getTask().getTaskPath().replace("/", "."));
+            .formatted(level.getTask().getTaskPath().replace("/", "."));
         RobotWrapper robot = RobotWrapper.class.getClassLoader()
-                .loadClass(className).asSubclass(RobotWrapper.class)
-                .getDeclaredConstructor().newInstance();
+            .loadClass(className)
+            .asSubclass(RobotWrapper.class)
+            .getDeclaredConstructor()
+            .newInstance();
         var context = level.getContext();
         robot.actor = new ImageRobot("images/robots/robot.png",
                 context.getRobot(), l);
@@ -56,13 +58,13 @@ public class LevelAssembler
         a.getGrid().anchor(x - SHIFT, y - SHIFT);
         scene.add(a.getGrid());
         // ItemGrid
-        new ItemMapPainter(level.getContext()).paint(scene, x - SHIFT,
-                y - SHIFT);
+        new ItemMapPainter(level.getContext())
+            .paint(scene, x - SHIFT, y - SHIFT);
         try
         {
             a.setRobot(createRobot(a));
             Vector robotPosition = a.translate.toVector(level.getInitItem().row,
-                    level.getInitItem().col);
+                level.getInitItem().col);
             ImageRobot robot = (ImageRobot) a.getRobot().actor;
             robot.center(robotPosition.x(), robotPosition.y());
             scene.add(robot);

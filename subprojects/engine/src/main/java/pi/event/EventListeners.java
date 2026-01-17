@@ -70,7 +70,7 @@ public final class EventListeners<T>
         if (iterating)
         {
             pendingCopyModifications
-                    .add(() -> listenerIterationCopy.add(listener));
+                .add(() -> listenerIterationCopy.add(listener));
         }
         else
         {
@@ -95,7 +95,7 @@ public final class EventListeners<T>
         if (iterating)
         {
             pendingCopyModifications
-                    .add(() -> listenerIterationCopy.remove(listener));
+                .add(() -> listenerIterationCopy.remove(listener));
         }
         else
         {
@@ -180,22 +180,22 @@ public final class EventListeners<T>
         if (target instanceof KeyStrokeListener)
         {
             ((KeyStrokeListenerRegistration) target)
-                    .addKeyStrokeListener((KeyStrokeListener) target);
+                .addKeyStrokeListener((KeyStrokeListener) target);
         }
         if (target instanceof MouseClickListener)
         {
             ((MouseClickListenerRegistration) target)
-                    .addMouseClickListener((MouseClickListener) target);
+                .addMouseClickListener((MouseClickListener) target);
         }
         if (target instanceof MouseScrollListener)
         {
             ((MouseScrollListenerRegistration) target)
-                    .addMouseScrollListener((MouseScrollListener) target);
+                .addMouseScrollListener((MouseScrollListener) target);
         }
         if (target instanceof FrameUpdateListener)
         {
             ((FrameUpdateListenerRegistration) target)
-                    .addFrameUpdateListener((FrameUpdateListener) target);
+                .addFrameUpdateListener((FrameUpdateListener) target);
         }
     }
 }

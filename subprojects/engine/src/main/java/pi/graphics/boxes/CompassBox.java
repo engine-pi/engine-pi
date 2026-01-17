@@ -136,8 +136,8 @@ public class CompassBox extends LeafBox
             g.drawOval(center.x(1) - 1, center.y(1) - 1, 2, 2);
         }
         // Ursprung des Pfeils.
-        Vector from = center.add(
-                Vector.ofAngle(normalizedDirection - 180).multiply(radius));
+        Vector from = center
+            .add(Vector.ofAngle(normalizedDirection - 180).multiply(radius));
 
         // Punkt, der in eine bestimmte Richtung auf dem Einheitskreis zeigt.
         Vector toUnionCircle = Vector.ofAngle(normalizedDirection);

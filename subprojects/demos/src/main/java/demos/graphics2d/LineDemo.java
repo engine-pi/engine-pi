@@ -24,14 +24,14 @@ public class LineDemo extends Graphics2DComponent
 
         // Gestrichelte Linie
         g.setStroke(
-                new BasicStroke(3, CAP_BUTT, JOIN_MITER, 10, new float[]
-                { 10, 5 }, 0));
+            new BasicStroke(3, CAP_BUTT, JOIN_MITER, 10, new float[]
+            { 10, 5 }, 0));
         g.drawLine(10, 130, 300, 170);
 
         // Gepunktete Linie
         g.setStroke(
-                new BasicStroke(2, CAP_ROUND, JOIN_ROUND, 1, new float[]
-                { 2, 10 }, 0));
+            new BasicStroke(2, CAP_ROUND, JOIN_ROUND, 1, new float[]
+            { 2, 10 }, 0));
         g.drawLine(10, 190, 300, 230);
 
         // Dicke Linie mit runden Ecken

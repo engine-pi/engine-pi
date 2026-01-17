@@ -94,8 +94,10 @@ public class NamedColor
     @Getter
     public String colorDecFormatted()
     {
-        return String.format("%s, %s, %s", color.getRed(), color.getGreen(),
-                color.getBlue());
+        return String.format("%s, %s, %s",
+            color.getRed(),
+            color.getGreen(),
+            color.getBlue());
     }
 
     @Getter

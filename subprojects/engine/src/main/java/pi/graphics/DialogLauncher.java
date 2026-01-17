@@ -69,8 +69,10 @@ public class DialogLauncher
     @API
     public void showMessage(String message, String title)
     {
-        JOptionPane.showMessageDialog(parent, message, title,
-                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(parent,
+            message,
+            title,
+            JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -109,8 +111,8 @@ public class DialogLauncher
     @API
     public String requestStringInput(String message, String title)
     {
-        return JOptionPane.showInputDialog(parent, message, title,
-                JOptionPane.PLAIN_MESSAGE);
+        return JOptionPane
+            .showInputDialog(parent, message, title, JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
@@ -155,9 +157,11 @@ public class DialogLauncher
     @API
     public boolean requestYesNo(String message, String title)
     {
-        return JOptionPane.showConfirmDialog(parent, message, title,
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE) == JOptionPane.YES_OPTION;
+        return JOptionPane.showConfirmDialog(parent,
+            message,
+            title,
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.PLAIN_MESSAGE) == JOptionPane.YES_OPTION;
     }
 
     /**
@@ -202,8 +206,10 @@ public class DialogLauncher
     @API
     public boolean requestOkCancel(String message, String title)
     {
-        return JOptionPane.showConfirmDialog(parent, message, title,
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
+        return JOptionPane.showConfirmDialog(parent,
+            message,
+            title,
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.PLAIN_MESSAGE) == JOptionPane.OK_OPTION;
     }
 }

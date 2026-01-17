@@ -42,7 +42,7 @@ import java.util.logging.Logger;
 public final class StreamUtilities
 {
     private static final Logger log = Logger
-            .getLogger(StreamUtilities.class.getName());
+        .getLogger(StreamUtilities.class.getName());
 
     private StreamUtilities()
     {

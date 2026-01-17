@@ -54,22 +54,27 @@ public class Grid extends Actor
         if (background != null)
         {
             g.setColor(background);
-            g.fillRect(0, -Math.round(gridSize * numY),
-                    Math.round(gridSize * numX), Math.round(gridSize * numY));
+            g.fillRect(0,
+                -Math.round(gridSize * numY),
+                Math.round(gridSize * numX),
+                Math.round(gridSize * numY));
         }
         g.setColor(color);
         // Zeichnen der vertikalen Linien von links nach rechts.
         for (int gridX = 0; gridX <= numX; gridX++)
         {
             g.fillRect(Math.round(gridX * gridSize),
-                    -Math.round(numY * gridSize), 1,
-                    Math.round(numY * gridSize));
+                -Math.round(numY * gridSize),
+                1,
+                Math.round(numY * gridSize));
         }
         // Zeichnen der horizontalen Linien von unten nach oben.
         for (int gridY = 0; gridY <= numY; gridY++)
         {
-            g.fillRect(0, -Math.round(gridY * gridSize),
-                    Math.round(numX * gridSize), 1);
+            g.fillRect(0,
+                -Math.round(gridY * gridSize),
+                Math.round(numX * gridSize),
+                1);
         }
     }
 }

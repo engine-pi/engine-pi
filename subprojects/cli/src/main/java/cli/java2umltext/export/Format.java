@@ -27,7 +27,8 @@ import cli.java2umltext.model.Document;
 
 public enum Format
 {
-    PLANTUML, MERMAID;
+    PLANTUML,
+    MERMAID;
 
     public Document newDocument()
     {

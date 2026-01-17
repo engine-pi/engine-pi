@@ -61,7 +61,7 @@ public class StatefulAnimationDemo extends Scene
         r.makeStatic();
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(FixtureBuilder
-                .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
+            .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
         top.setFriction(.2);
         top.setRestitution(0);
         FixtureData left = new FixtureData(

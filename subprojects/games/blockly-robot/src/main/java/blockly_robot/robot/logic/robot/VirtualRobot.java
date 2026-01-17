@@ -172,7 +172,7 @@ public class VirtualRobot implements Robot
     public void addObstaclesMovementListener()
     {
         addMovementListener(
-                (Compass direction) -> !isInFrontOfObstacle(direction));
+            (Compass direction) -> !isInFrontOfObstacle(direction));
     }
 
     public void addDefaultMovementListener()
@@ -271,8 +271,9 @@ public class VirtualRobot implements Robot
     public boolean platformInFront()
     {
         Coords coords = coordsInFront(dir);
-        return hasOn(coords.getRow() + 1, coords.getCol(),
-                item -> item.isObstacle());
+        return hasOn(coords.getRow() + 1,
+            coords.getCol(),
+            item -> item.isObstacle());
     }
 
     /**
@@ -323,8 +324,9 @@ public class VirtualRobot implements Robot
         {
             return mov.setError(ErrorMessages.JUMP_OUTSIDE_GRID);
         }
-        if (hasOn(row - 2, col,
-                item -> item.isObstacle() || item.isProjectile()))
+        if (hasOn(row - 2,
+            col,
+            item -> item.isObstacle() || item.isProjectile()))
         {
             return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
         }
@@ -349,7 +351,7 @@ public class VirtualRobot implements Robot
     public ItemRelocation dropWithdrawable(int itemNum)
     {
         return log(
-                context.getBagPacker().dropWithdrawable(getCoords(), itemNum));
+            context.getBagPacker().dropWithdrawable(getCoords(), itemNum));
     }
 
     public ItemRelocation drop()
@@ -370,8 +372,8 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformInFront()
     {
-        return log(context.getPlatformBuilder().dropPlatform(
-                coordsInFront(dir).south(), "dropPlatformInFront"));
+        return log(context.getPlatformBuilder()
+            .dropPlatform(coordsInFront(dir).south(), "dropPlatformInFront"));
     }
 
     /**
@@ -382,7 +384,7 @@ public class VirtualRobot implements Robot
     public ItemRelocation dropPlatformAbove()
     {
         return log(context.getPlatformBuilder()
-                .dropPlatform(getCoords().north(), "dropPlatformAbove"));
+            .dropPlatform(getCoords().north(), "dropPlatformAbove"));
     }
 
     public Movement turnLeft()
@@ -455,8 +457,9 @@ public class VirtualRobot implements Robot
                         && fallMov.getTo().getRow() != inFront.getRow())
                 {
                     mov.setNext(fallMov);
-                    move(fallMov.getTo().getRow(), fallMov.getTo().getCol(),
-                            dir);
+                    move(fallMov.getTo().getRow(),
+                        fallMov.getTo().getCol(),
+                        dir);
                     return mov.setTo(inFront);
                 }
             }

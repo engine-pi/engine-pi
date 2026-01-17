@@ -220,8 +220,9 @@ public class Image extends Actor
     {
         assertViablePPM(pixelPerMeter);
         this.pixelPerMeter = pixelPerMeter;
-        image(image, image.getWidth() / pixelPerMeter,
-                image.getHeight() / pixelPerMeter);
+        image(image,
+            image.getWidth() / pixelPerMeter,
+            image.getHeight() / pixelPerMeter);
     }
 
     /**
@@ -269,7 +270,7 @@ public class Image extends Actor
     {
         assertViablePPM(pixelPerMeter);
         imageSize(image.getWidth() / pixelPerMeter,
-                image.getHeight() / pixelPerMeter);
+            image.getHeight() / pixelPerMeter);
     }
 
     private void assertViableSizes(double width, double height)
@@ -393,11 +394,13 @@ public class Image extends Actor
         int imageH = image.getHeight();
         int imageW = image.getWidth();
         g.scale(width * pixelPerMeter / imageW,
-                height * pixelPerMeter / imageH);
-        g.drawImage(image, flippedHorizontally ? imageW : 0,
-                -imageH + (flippedVertically ? imageH : 0),
-                (flippedHorizontally ? -1 : 1) * imageW,
-                (flippedVertically ? -1 : 1) * imageH, null);
+            height * pixelPerMeter / imageH);
+        g.drawImage(image,
+            flippedHorizontally ? imageW : 0,
+            -imageH + (flippedVertically ? imageH : 0),
+            (flippedHorizontally ? -1 : 1) * imageW,
+            (flippedVertically ? -1 : 1) * imageH,
+            null);
         g.setTransform(pre);
     }
 

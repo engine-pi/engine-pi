@@ -18,8 +18,8 @@ public class PackageClassLoader
     public static <O> O instantiateClass(String relClassPath)
             throws ReflectiveOperationException
     {
-        Class<?> cls = Class.forName(
-                "blockly_robot.jwinf." + relClassPath.replace("/", "."));
+        Class<?> cls = Class
+            .forName("blockly_robot.jwinf." + relClassPath.replace("/", "."));
         O object = (O) cls.getDeclaredConstructor().newInstance();
         return object;
     }

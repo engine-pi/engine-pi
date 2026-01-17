@@ -39,7 +39,7 @@ public class TableSide
     {
         score = new Counter();
         score.center(sideSign * (table.bounds.xRight() - 5),
-                table.bounds.yTop() - 2);
+            table.bounds.yTop() - 2);
         paddle = new Paddle(sideSign, table);
         table.add(score, paddle);
     }

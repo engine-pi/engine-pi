@@ -97,9 +97,9 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
             particle.layerPosition(-1);
             particle.animateParticle(.5);
             particle.animateColor(.25, Color.YELLOW);
-            particle.applyImpulse(
-                    new Vector(6000 * ((float) Math.random() - .5),
-                            6000 * ((float) Math.random() - .5)));
+            particle
+                .applyImpulse(new Vector(6000 * ((float) Math.random() - .5),
+                        6000 * ((float) Math.random() - .5)));
             add(particle);
         });
         circle.anchor(position);

@@ -468,7 +468,10 @@ public class StatefulAnimation<State> extends Actor
         {
             return; // we don't have a state yet
         }
-        animation[index].render(g, width * pixelPerMeter,
-                height * pixelPerMeter, flipHorizontal, flipVertical);
+        animation[index].render(g,
+            width * pixelPerMeter,
+            height * pixelPerMeter,
+            flipHorizontal,
+            flipVertical);
     }
 }

@@ -109,10 +109,12 @@ public class ImageBox extends LeafBox
     void draw(Graphics2D g)
     {
         AffineTransform oldTransfer = g.getTransform();
-        g.drawImage(image, flippedHorizontally ? x + width : x,
-                flippedVertically ? y + height : y,
-                (flippedHorizontally ? -1 : 1) * width,
-                (flippedVertically ? -1 : 1) * height, null);
+        g.drawImage(image,
+            flippedHorizontally ? x + width : x,
+            flippedVertically ? y + height : y,
+            (flippedHorizontally ? -1 : 1) * width,
+            (flippedVertically ? -1 : 1) * height,
+            null);
         g.setTransform(oldTransfer);
     }
 

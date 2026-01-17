@@ -169,7 +169,7 @@ public final class CoordinateSystemDrawer
         else
         {
             gridSizeInMeters = (int) Math
-                    .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
+                .round(GRID_SIZE_IN_PIXELS / pixelPerMeter);
         }
         gridSizeInPixels = gridSizeInMeters * pixelPerMeter;
         maxWindowSideInPixels = Math.max(width, height);
@@ -247,9 +247,9 @@ public final class CoordinateSystemDrawer
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
             g.fillRect((int) ((startX - 1) * pixelPerMeter),
-                    (int) (y * pixelPerMeter - 1),
-                    (int) (maxWindowSideInPixels + 3 * gridSizeInPixels),
-                    getLineThickness(y));
+                (int) (y * pixelPerMeter - 1),
+                (int) (maxWindowSideInPixels + 3 * gridSizeInPixels),
+                getLineThickness(y));
         }
     }
 
@@ -261,8 +261,9 @@ public final class CoordinateSystemDrawer
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
             g.fillRect((int) (x * pixelPerMeter) - 1,
-                    (int) ((startY - 1) * pixelPerMeter), getLineThickness(x),
-                    (int) (maxWindowSideInPixels + 3 * gridSizeInPixels));
+                (int) ((startY - 1) * pixelPerMeter),
+                getLineThickness(x),
+                (int) (maxWindowSideInPixels + 3 * gridSizeInPixels));
         }
     }
 
@@ -308,8 +309,9 @@ public final class CoordinateSystemDrawer
         {
             for (int y = startY; y <= stopY; y += gridSizeInMeters)
             {
-                g.drawString(x + "|" + -y, (int) (x * pixelPerMeter + 5),
-                        (int) (y * pixelPerMeter - 5));
+                g.drawString(x + "|" + -y,
+                    (int) (x * pixelPerMeter + 5),
+                    (int) (y * pixelPerMeter - 5));
             }
         }
     }
@@ -321,8 +323,9 @@ public final class CoordinateSystemDrawer
     {
         for (int y = startY; y <= stopY; y += gridSizeInMeters)
         {
-            g.drawString(-y + "", (int) (x * pixelPerMeter + LABEL_SHIFT),
-                    (int) (y * pixelPerMeter - LABEL_SHIFT));
+            g.drawString(-y + "",
+                (int) (x * pixelPerMeter + LABEL_SHIFT),
+                (int) (y * pixelPerMeter - LABEL_SHIFT));
         }
     }
 
@@ -338,7 +341,7 @@ public final class CoordinateSystemDrawer
         drawOneLineVerticalCoordinateLabels(0);
         // y-Werte am rechten Rand
         drawOneLineVerticalCoordinateLabels(
-                center.x() + getHalfWidthInMeter() - getWidthInMeter(0.04));
+            center.x() + getHalfWidthInMeter() - getWidthInMeter(0.04));
     }
 
     /**
@@ -348,8 +351,9 @@ public final class CoordinateSystemDrawer
     {
         for (int x = startX; x <= stopX; x += gridSizeInMeters)
         {
-            g.drawString(x + "", (int) (x * pixelPerMeter + LABEL_SHIFT),
-                    (int) (-1 * y * pixelPerMeter - LABEL_SHIFT));
+            g.drawString(x + "",
+                (int) (x * pixelPerMeter + LABEL_SHIFT),
+                (int) (-1 * y * pixelPerMeter - LABEL_SHIFT));
         }
     }
 
@@ -361,12 +365,12 @@ public final class CoordinateSystemDrawer
     {
         // x-Werte am unteren Rand
         drawOneLineHorizontalCoordinateLabels(
-                center.y() - getHalfHeightInMeter() + getHeightInMeter(0.02));
+            center.y() - getHalfHeightInMeter() + getHeightInMeter(0.02));
         // x-Werte an der x-Achse
         drawOneLineHorizontalCoordinateLabels(0);
         // x-Werte am oberen Rand
-        drawOneLineHorizontalCoordinateLabels((center.y()
-                + (getHalfHeightInMeter() - getHeightInMeter(0.04))));
+        drawOneLineHorizontalCoordinateLabels(
+            (center.y() + (getHalfHeightInMeter() - getHeightInMeter(0.04))));
     }
 
     /**

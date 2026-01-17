@@ -1,6 +1,7 @@
 package pi.actor;
 
 import static pi.Controller.colorScheme;
+import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,12 +12,10 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.graphics.boxes.TextBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
-import static pi.Controller.colors;
 
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
 

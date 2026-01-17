@@ -353,8 +353,11 @@ public class Animation extends Actor implements FrameUpdateListener
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
-        this.frames[currentIndex].render(g, width * pixelPerMeter,
-                height * pixelPerMeter, false, false);
+        this.frames[currentIndex].render(g,
+            width * pixelPerMeter,
+            height * pixelPerMeter,
+            false,
+            false);
     }
 
     /**
@@ -384,14 +387,16 @@ public class Animation extends Actor implements FrameUpdateListener
         if (image.getWidth() % x != 0)
         {
             throw new RuntimeException(String.format(
-                    "Spritesheet hat nicht die richtigen Maße (Breite: %d) um es auf %d Elemente in getX-Richtung aufzuteilen.",
-                    image.getWidth(), x));
+                "Spritesheet hat nicht die richtigen Maße (Breite: %d) um es auf %d Elemente in getX-Richtung aufzuteilen.",
+                image.getWidth(),
+                x));
         }
         if (image.getHeight() % y != 0)
         {
             throw new RuntimeException(String.format(
-                    "Spritesheet hat nicht die richtigen Maße (Höhe: %d) um es auf %d Elemente in getY-Richtung aufzuteilen.",
-                    image.getHeight(), y));
+                "Spritesheet hat nicht die richtigen Maße (Höhe: %d) um es auf %d Elemente in getY-Richtung aufzuteilen.",
+                image.getHeight(),
+                y));
         }
         int imageWidth = image.getWidth() / x;
         int imageHeight = image.getHeight() / y;
@@ -401,8 +406,9 @@ public class Animation extends Actor implements FrameUpdateListener
             for (int i = 0; i < x; i++)
             {
                 frames.add(new AnimationFrame(image.getSubimage(i * imageWidth,
-                        j * imageHeight, imageWidth, imageHeight),
-                        frameDuration));
+                    j * imageHeight,
+                    imageWidth,
+                    imageHeight), frameDuration));
             }
         }
         return new Animation(frames.toArray(new AnimationFrame[0]), width,
@@ -426,8 +432,12 @@ public class Animation extends Actor implements FrameUpdateListener
     public static Animation createFromSpritesheet(double frameDuration,
             String filePath, int x, int y, double width, double height)
     {
-        return createFromSpritesheet(frameDuration, images.get(filePath), x, y,
-                width, height);
+        return createFromSpritesheet(frameDuration,
+            images.get(filePath),
+            x,
+            y,
+            width,
+            height);
     }
 
     /**
@@ -452,10 +462,12 @@ public class Animation extends Actor implements FrameUpdateListener
     {
         int pixelMultiplication = config.graphics.pixelMultiplication();
         BufferedImage image = images.get(filePath);
-        return createFromSpritesheet(frameDuration, image,
-                image.getWidth() / (spriteWidth * pixelMultiplication),
-                image.getHeight() / (spriteHeight * pixelMultiplication), width,
-                height);
+        return createFromSpritesheet(frameDuration,
+            image,
+            image.getWidth() / (spriteWidth * pixelMultiplication),
+            image.getHeight() / (spriteHeight * pixelMultiplication),
+            width,
+            height);
     }
 
     /**
@@ -507,8 +519,10 @@ public class Animation extends Actor implements FrameUpdateListener
     public static Animation createFromImages(double frameDuration, double width,
             double height, String... filePaths)
     {
-        return createFromImages(frameDuration, width, height,
-                images.getMultiple(filePaths));
+        return createFromImages(frameDuration,
+            width,
+            height,
+            images.getMultiple(filePaths));
     }
 
     /**
@@ -559,8 +573,10 @@ public class Animation extends Actor implements FrameUpdateListener
                     + prefix + "\" im Verzeichnis \"" + directoryPath
                     + "\" finden.");
         }
-        return createFromImages(frameDuration, width, height,
-                allPaths.toArray(new String[0]));
+        return createFromImages(frameDuration,
+            width,
+            height,
+            allPaths.toArray(new String[0]));
     }
 
     /**

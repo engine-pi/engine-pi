@@ -9,8 +9,8 @@ public class Painter
     public static void paintVersionHeading(Scene scene, double x, double y,
             Difficulty difficulty)
     {
-        Text text = TextMaker.createText(
-                "Version " + "*".repeat(difficulty.getIndex() + 2), 1);
+        Text text = TextMaker
+            .createText("Version " + "*".repeat(difficulty.getIndex() + 2), 1);
         text.anchor(x, y);
         scene.add(text);
     }

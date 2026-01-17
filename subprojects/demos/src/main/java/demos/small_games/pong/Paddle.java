@@ -96,7 +96,7 @@ public class Paddle extends Rectangle
 
         // Damit die Schläger nicht aus dem Spielfeld bewegt werden.
         if (y() + height() + MOVEMENT_DISTANCE - HIDDEN_LENGTH > table.bounds
-                .yTop())
+            .yTop())
         {
             return;
         }

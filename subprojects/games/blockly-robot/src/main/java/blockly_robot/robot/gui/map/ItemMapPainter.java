@@ -64,7 +64,7 @@ public class ItemMapPainter
         {
             Image image = new Image(filePath, 1, 1);
             item.setController(
-                    new GraphicalItemController(item, image, translate, scene));
+                new GraphicalItemController(item, image, translate, scene));
             return image;
         }
         return null;

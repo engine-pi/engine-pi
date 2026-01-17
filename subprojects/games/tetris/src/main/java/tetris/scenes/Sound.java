@@ -20,7 +20,7 @@ public class Sound
     public static void playTitle()
     {
         Jukebox.playIntroTrack("sounds/Title_intro.mp3",
-                "sounds/Title_loop.mp3");
+            "sounds/Title_loop.mp3");
     }
 
     public static void playKorobeiniki()

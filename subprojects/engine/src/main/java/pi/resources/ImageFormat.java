@@ -39,7 +39,11 @@ import pi.resources.sound.SoundFormat;
  */
 public enum ImageFormat
 {
-    UNSUPPORTED, PNG, GIF, BMP, JPG;
+    UNSUPPORTED,
+    PNG,
+    GIF,
+    BMP,
+    JPG;
 
     /**
      * Gets the {@code ImageFormat} of the specified format string.

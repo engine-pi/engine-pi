@@ -53,7 +53,7 @@ public abstract class Solver<T>
     public RobotWrapper createRobot(Level level) throws Exception
     {
         RobotWrapper robot = PackageClassLoader
-                .instantiateClass("en.tasks.%s.Robot".formatted(taskPath));
+            .instantiateClass("en.tasks.%s.Robot".formatted(taskPath));
         var context = level.getContext();
         robot.actor = context.getRobot();
         return robot;

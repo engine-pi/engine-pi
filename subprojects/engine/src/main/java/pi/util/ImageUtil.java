@@ -79,7 +79,7 @@ public class ImageUtil
         ColorModel cm = image.getColorModel();
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
         WritableRaster raster = image
-                .copyData(image.getRaster().createCompatibleWritableRaster());
+            .copyData(image.getRaster().createCompatibleWritableRaster());
         return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
     }
 
@@ -159,8 +159,9 @@ public class ImageUtil
     public static BufferedImage replaceColors(final BufferedImage bufferedImage,
             String[] from, String[] to)
     {
-        return replaceColors(bufferedImage, ColorUtil.decode(from),
-                ColorUtil.decode(to));
+        return replaceColors(bufferedImage,
+            ColorUtil.decode(from),
+            ColorUtil.decode(to));
     }
 
     /**
@@ -217,9 +218,11 @@ public class ImageUtil
     public static BufferedImage replaceColor(final BufferedImage bufferedImage,
             String from, String to)
     {
-        return replaceColors(bufferedImage, new String[] { from },
-                new String[]
-                { to });
+        return replaceColors(bufferedImage,
+            new String[]
+            { from },
+            new String[]
+            { to });
     }
 
     /**
@@ -235,9 +238,11 @@ public class ImageUtil
     public static BufferedImage replaceColor(final BufferedImage bufferedImage,
             Color from, Color to)
     {
-        return replaceColors(bufferedImage, new Color[] { from },
-                new Color[]
-                { to });
+        return replaceColors(bufferedImage,
+            new Color[]
+            { from },
+            new Color[]
+            { to });
     }
 
     /**
@@ -310,8 +315,9 @@ public class ImageUtil
         }
         try
         {
-            ImageIO.write(image, formatName,
-                    new File(FileUtil.normalizePath(filePath)));
+            ImageIO.write(image,
+                formatName,
+                new File(FileUtil.normalizePath(filePath)));
         }
         catch (IOException e)
         {
@@ -338,12 +344,12 @@ public class ImageUtil
         if (graphicsConfig == null)
         {
             final GraphicsEnvironment env = GraphicsEnvironment
-                    .getLocalGraphicsEnvironment();
+                .getLocalGraphicsEnvironment();
             final GraphicsDevice device = env.getDefaultScreenDevice();
             graphicsConfig = device.getDefaultConfiguration();
         }
-        return graphicsConfig.createCompatibleImage(width, height,
-                Transparency.TRANSLUCENT);
+        return graphicsConfig
+            .createCompatibleImage(width, height, Transparency.TRANSLUCENT);
     }
 
     /**
@@ -362,7 +368,7 @@ public class ImageUtil
             return image;
         }
         final BufferedImage compatibleImg = getCompatibleImage(image.getWidth(),
-                image.getHeight());
+            image.getHeight());
         if (compatibleImg == null)
         {
             return null;

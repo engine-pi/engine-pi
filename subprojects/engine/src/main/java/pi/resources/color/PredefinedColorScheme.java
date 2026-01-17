@@ -84,18 +84,18 @@ public enum PredefinedColorScheme
     // Orange passt nicht in das Schema, viel zu hell.
     // .orange(Color.ORANGE)
 
-            .green(Color.GREEN)
+        .green(Color.GREEN)
 
-            // Tertiärfarben
-            .blueGreen(Color.CYAN)
+        // Tertiärfarben
+        .blueGreen(Color.CYAN)
 
-            // Pink passt nicht in das Schema.
-            // .redPurple(Color.PINK)
+        // Pink passt nicht in das Schema.
+        // .redPurple(Color.PINK)
 
-            .redPurple(Color.MAGENTA)
+        .redPurple(Color.MAGENTA)
 
-            // Andere
-            .gray(Color.GRAY)),
+        // Andere
+        .gray(Color.GRAY)),
 
     /**
      * Ein Farbschema nach den Farben des <a href=
@@ -111,46 +111,46 @@ public enum PredefinedColorScheme
     ANDROID(new ColorScheme("Android")
 
     // Yellow 500
-            .yellow("#FFEB3B")
+        .yellow("#FFEB3B")
 
-            // Amber 500
-            .yellowOrange("#FFC107")
+        // Amber 500
+        .yellowOrange("#FFC107")
 
-            // Orange 500
-            .orange("#FF9800")
+        // Orange 500
+        .orange("#FF9800")
 
-            // Deep Orange 500
-            .redOrange("#FF5722")
+        // Deep Orange 500
+        .redOrange("#FF5722")
 
-            // Red 500
-            .red("#F44336")
+        // Red 500
+        .red("#F44336")
 
-            // Pink 500
-            .redPurple("#E91E63")
+        // Pink 500
+        .redPurple("#E91E63")
 
-            // Purple 500
-            .purple("#9C27B0")
+        // Purple 500
+        .purple("#9C27B0")
 
-            // Deep Purple 500
-            .bluePurple("#673AB7")
+        // Deep Purple 500
+        .bluePurple("#673AB7")
 
-            // Blue 500
-            .blue("#2196F3")
+        // Blue 500
+        .blue("#2196F3")
 
-            // Teal 500
-            .blueGreen("#009688")
+        // Teal 500
+        .blueGreen("#009688")
 
-            // Green 500
-            .green("#4CAF50")
+        // Green 500
+        .green("#4CAF50")
 
-            // Lime 500
-            .yellowGreen("#CDDC39")
+        // Lime 500
+        .yellowGreen("#CDDC39")
 
-            // Brown 500
-            .brown("#795548")
+        // Brown 500
+        .brown("#795548")
 
-            // Gray 500
-            .gray("#9E9E9E")),
+        // Gray 500
+        .gray("#9E9E9E")),
 
     /**
      * Ein Farbschema nach den Farben der <a href=
@@ -166,40 +166,40 @@ public enum PredefinedColorScheme
     IOS(new ColorScheme("iOS")
 
     // Yellow Default (Light)
-            .yellow(255, 204, 0)
+        .yellow(255, 204, 0)
 
-            // Orange Accessible (Dark)
-            .yellowOrange(255, 179, 64)
+        // Orange Accessible (Dark)
+        .yellowOrange(255, 179, 64)
 
-            // Orange Default (Light)
-            .orange(255, 149, 0)
+        // Orange Default (Light)
+        .orange(255, 149, 0)
 
-            // Red Default (Light)
-            .red(255, 59, 48)
+        // Red Default (Light)
+        .red(255, 59, 48)
 
-            // Pink Default (Light)
-            .redPurple(255, 45, 85)
+        // Pink Default (Light)
+        .redPurple(255, 45, 85)
 
-            // Purple Default (Light)
-            .purple(175, 82, 222)
+        // Purple Default (Light)
+        .purple(175, 82, 222)
 
-            // Indigo Default (Light)
-            .bluePurple(88, 86, 214)
+        // Indigo Default (Light)
+        .bluePurple(88, 86, 214)
 
-            // Blue Default (Light)
-            .blue(0, 122, 255)
+        // Blue Default (Light)
+        .blue(0, 122, 255)
 
-            // Teal Default (Light)
-            .blueGreen(48, 176, 199)
+        // Teal Default (Light)
+        .blueGreen(48, 176, 199)
 
-            // Green Default (Light)
-            .green(52, 199, 89)
+        // Green Default (Light)
+        .green(52, 199, 89)
 
-            // Brown Default (Light)
-            .brown(162, 132, 94)
+        // Brown Default (Light)
+        .brown(162, 132, 94)
 
-            // systemGray Default (Light)
-            .gray(142, 142, 147)),
+        // systemGray Default (Light)
+        .gray(142, 142, 147)),
 
     /**
      * Ein Farbschema nach der
@@ -215,43 +215,43 @@ public enum PredefinedColorScheme
     TAILWIND(new ColorScheme("Tailwind CSS")
 
     // Yellow 500 oklch(79.5% 0.184 86.047)
-            .yellow(239, 177, 0)
+        .yellow(239, 177, 0)
 
-            // Amber 500 oklch(76.9% 0.188 70.08)
-            .yellowOrange(253, 154, 0)
+        // Amber 500 oklch(76.9% 0.188 70.08)
+        .yellowOrange(253, 154, 0)
 
-            // Orange 500 oklch(70.5% 0.213 47.604)
-            .orange(255, 105, 0)
+        // Orange 500 oklch(70.5% 0.213 47.604)
+        .orange(255, 105, 0)
 
-            // .redOrange(1,1,1)
+        // .redOrange(1,1,1)
 
-            // Red 500 oklch(63.7% 0.237 25.331)
-            .red(251, 44, 54)
+        // Red 500 oklch(63.7% 0.237 25.331)
+        .red(251, 44, 54)
 
-            // Ping 500 oklch(65.6% 0.241 354.308)
-            .redPurple(246, 51, 154)
+        // Ping 500 oklch(65.6% 0.241 354.308)
+        .redPurple(246, 51, 154)
 
-            // Purple 500 oklch(62.7% 0.265 303.9)
-            .purple(173, 70, 255)
+        // Purple 500 oklch(62.7% 0.265 303.9)
+        .purple(173, 70, 255)
 
-            //.bluePurple(88, 86, 214)
+        //.bluePurple(88, 86, 214)
 
-            // Blue 500 oklch(62.3% 0.214 259.815)
-            .blue(43, 127, 255)
+        // Blue 500 oklch(62.3% 0.214 259.815)
+        .blue(43, 127, 255)
 
-            // Teal 500 oklch(70.4% 0.14 182.503)
-            .blueGreen(0, 187, 167)
+        // Teal 500 oklch(70.4% 0.14 182.503)
+        .blueGreen(0, 187, 167)
 
-            // Green 500 oklch(72.3% 0.219 149.579)
-            .green(0, 201, 81)
+        // Green 500 oklch(72.3% 0.219 149.579)
+        .green(0, 201, 81)
 
-            // Lime 500 oklch(76.8% 0.233 130.85)
-            .yellowGreen(124, 207, 0)
+        // Lime 500 oklch(76.8% 0.233 130.85)
+        .yellowGreen(124, 207, 0)
 
-            //.brown(162, 132, 94)
+        //.brown(162, 132, 94)
 
-            // oklch(70.7% 0.022 261.325)
-            .gray(153, 161, 175));
+        // oklch(70.7% 0.022 261.325)
+        .gray(153, 161, 175));
 
     private ColorScheme scheme;
 

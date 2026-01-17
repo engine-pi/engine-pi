@@ -264,8 +264,8 @@ public class DirectedLineSegment
      */
     public Vector relativeRotatedPoint(double factor, double deltaAngle)
     {
-        return from.add(
-                rotatedVector(deltaAngle).multiply(length()).multiply(factor));
+        return from
+            .add(rotatedVector(deltaAngle).multiply(length()).multiply(factor));
     }
 
     /**
@@ -322,7 +322,7 @@ public class DirectedLineSegment
     public Vector relativeVerticalPoint(double factor, double factorVertical)
     {
         return relativePoint(factor)
-                .add(verticalVector().multiply(length() * factorVertical));
+            .add(verticalVector().multiply(length() * factorVertical));
     }
 
     /**
@@ -338,6 +338,6 @@ public class DirectedLineSegment
     public Vector fixedVerticalPoint(double distanceOn, double distanceFrom)
     {
         return fixedPoint(distanceOn)
-                .add(verticalVector().multiply(distanceFrom));
+            .add(verticalVector().multiply(distanceFrom));
     }
 }

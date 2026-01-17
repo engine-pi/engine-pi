@@ -57,14 +57,18 @@ public interface TileMap
         if (image.getWidth() % sizeX != 0)
         {
             throw new IllegalArgumentException(String.format(
-                    "Kann die Kacheln mit der Breite von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildbreite (%spx) ein Vielfaches der Kachelbreite sein muss.",
-                    sizeX, path, image.getWidth()));
+                "Kann die Kacheln mit der Breite von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildbreite (%spx) ein Vielfaches der Kachelbreite sein muss.",
+                sizeX,
+                path,
+                image.getWidth()));
         }
         if (image.getHeight() % sizeY != 0)
         {
             throw new IllegalArgumentException(String.format(
-                    "Kann die Kacheln mit der Höhe von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildhöhe (%spx) ein Vielfaches der Kachelhöhe sein muss.",
-                    sizeY, path, image.getHeight()));
+                "Kann die Kacheln mit der Höhe von %spx nicht aus der Bilddatei (%s) ausschneiden, da die Bildhöhe (%spx) ein Vielfaches der Kachelhöhe sein muss.",
+                sizeY,
+                path,
+                image.getHeight()));
         }
         Tile[][] tiles = new Tile[image.getWidth() / sizeX][image.getHeight()
                 / sizeY];
@@ -73,7 +77,7 @@ public interface TileMap
             for (int posY = 0; posY < image.getHeight(); posY += sizeY)
             {
                 tiles[posX / sizeX][posY / sizeY] = createFromImage(
-                        image.getSubimage(posX, posY, sizeX, sizeY));
+                    image.getSubimage(posX, posY, sizeX, sizeY));
             }
         }
         return (x, y) -> tiles[x][y];

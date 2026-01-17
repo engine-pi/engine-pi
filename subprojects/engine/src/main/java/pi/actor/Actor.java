@@ -787,17 +787,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             Vector position = physics.anchor();
             // ____ Pre-Render ____
             AffineTransform transform = g.getTransform();
-            g.rotate(-Math.toRadians(rotation), position.x() * pixelPerMeter,
-                    -position.y() * pixelPerMeter);
+            g.rotate(-Math.toRadians(rotation),
+                position.x() * pixelPerMeter,
+                -position.y() * pixelPerMeter);
             g.translate(position.x() * pixelPerMeter,
-                    -position.y() * pixelPerMeter);
+                -position.y() * pixelPerMeter);
             // Durchsichtigkeit
             Composite composite;
             if (opacity != 1)
             {
                 composite = g.getComposite();
                 g.setComposite(AlphaComposite
-                        .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
+                    .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
             }
             else
             {
@@ -891,19 +892,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             double diameter = (circleShape.radius * 2);
             g.drawOval(
-                    (int) ((circleShape.p.x - circleShape.radius)
-                            * pixelPerMeter),
-                    (int) ((-circleShape.p.y - circleShape.radius)
-                            * pixelPerMeter),
-                    (int) (diameter * pixelPerMeter),
-                    (int) (diameter * pixelPerMeter));
+                (int) ((circleShape.p.x - circleShape.radius) * pixelPerMeter),
+                (int) ((-circleShape.p.y - circleShape.radius) * pixelPerMeter),
+                (int) (diameter * pixelPerMeter),
+                (int) (diameter * pixelPerMeter));
         }
         else if (shape instanceof EdgeShape edgeShape)
         {
             g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
-                    (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
-                    (int) (edgeShape.vertex2.x * pixelPerMeter),
-                    (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
+                (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
+                (int) (edgeShape.vertex2.x * pixelPerMeter),
+                (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
         }
         else
         {
@@ -1088,9 +1087,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      *
      * <pre>{@code
      * g.drawLine((int) (point1.getX() * pixelPerMeter),
-     *         (int) (point1.getY() * pixelPerMeter),
-     *         (int) (point2.getX() * pixelPerMeter),
-     *         (int) (point2.getY() * pixelPerMeter));
+     *     (int) (point1.getY() * pixelPerMeter),
+     *     (int) (point2.getX() * pixelPerMeter),
+     *     (int) (point2.getY() * pixelPerMeter));
      * }</pre>
      *
      * <p>
@@ -1943,7 +1942,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.initialize(a, b, anchor().add(anchor).toVec2());
             def.collideConnected = false;
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint) world
-                    .createJoint(def);
+                .createJoint(def);
         }, new RevoluteJoint());
     }
 
@@ -1983,7 +1982,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.collideConnected = true;
             def.maxLength = (float) ropeLength;
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint) world
-                    .createJoint(def);
+                .createJoint(def);
         }, new RopeJoint());
     }
 
@@ -2003,12 +2002,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return WorldHandler.createJoint(this, other, (world, a, b) -> {
             double angleInRadians = Math.toRadians(axisAngle);
             PrismaticJointDef def = new PrismaticJointDef();
-            def.initialize(a, b, anchor().add(anchor).toVec2(),
-                    new Vec2((float) Math.cos(angleInRadians),
-                            (float) Math.sin(angleInRadians)));
+            def.initialize(a,
+                b,
+                anchor().add(anchor).toVec2(),
+                new Vec2((float) Math.cos(angleInRadians),
+                        (float) Math.sin(angleInRadians)));
             def.collideConnected = false;
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint) world
-                    .createJoint(def);
+                .createJoint(def);
         }, new PrismaticJoint());
     }
 
@@ -2043,10 +2044,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
             Vector distanceBetweenBothActors = (this.anchor().add(anchorThis))
-                    .distance(other.anchor().add(anchorOther));
+                .distance(other.anchor().add(anchorOther));
             def.length = (float) distanceBetweenBothActors.length();
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint) world
-                    .createJoint(def);
+                .createJoint(def);
         }, new DistanceJoint());
     }
 
@@ -2081,7 +2082,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
             return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint) world
-                    .createJoint(def);
+                .createJoint(def);
         }, new WeldJoint());
     }
 

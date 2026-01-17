@@ -124,7 +124,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         if (mode == AnimationMode.SINGLE)
         {
             addCompletionListener(
-                    (v) -> parent.removeFrameUpdateListener(this));
+                (v) -> parent.removeFrameUpdateListener(this));
         }
     }
 
@@ -223,7 +223,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
                     complete = true;
                     Value finalValue = this.interpolator.interpolate(1);
                     completionListeners
-                            .invoke(listener -> listener.accept(finalValue));
+                        .invoke(listener -> listener.accept(finalValue));
                     break;
 
                 case PING_PONG:

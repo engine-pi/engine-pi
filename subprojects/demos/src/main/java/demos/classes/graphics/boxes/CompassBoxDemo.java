@@ -36,7 +36,7 @@ public class CompassBoxDemo extends Graphics2DComponent
         for (int i = 0; i < numberOfCompasses; i++)
         {
             compasses[i] = new CompassBox(size).direction(direction)
-                    .showOuterCircle();
+                .showOuterCircle();
             direction += directionDelta;
         }
         GridBox<CompassBox> grid = new GridBox<>(compasses);
@@ -50,8 +50,12 @@ public class CompassBoxDemo extends Graphics2DComponent
 
         getCompasses(9, 20, 30).x(500).y(300).render(g).debug();
 
-        new CompassBox(200).direction(90).showOuterCircle().x(10).y(10)
-                .render(g).debug();
+        new CompassBox(200).direction(90)
+            .showOuterCircle()
+            .x(10)
+            .y(10)
+            .render(g)
+            .debug();
     }
 
     public static void main(String[] args)

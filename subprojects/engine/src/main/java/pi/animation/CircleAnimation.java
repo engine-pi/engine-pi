@@ -68,8 +68,9 @@ public class CircleAnimation extends AggregateFrameUpdateListener
                 AnimationMode.REPEATED, this);
         // Winkel zwischen gewünschtem Startpunkt und aktueller Actor-Position
         // (immer in [0;PI])
-        double angle = rotationCenter.negate().add(rightPoint)
-                .angle(rotationCenter.negate().add(currentActorCenter));
+        double angle = rotationCenter.negate()
+            .add(rightPoint)
+            .angle(rotationCenter.negate().add(currentActorCenter));
         if (circleClockwise && currentActorCenter.y() > rotationCenter.y()
                 || !circleClockwise
                         && currentActorCenter.y() < rotationCenter.y())

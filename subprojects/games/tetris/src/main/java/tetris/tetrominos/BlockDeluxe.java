@@ -70,7 +70,7 @@ public class BlockDeluxe
         if (secondImageName != null)
         {
             this.secondImage = ImageLoader
-                    .get("blocks/" + secondImageName + ".png");
+                .get("blocks/" + secondImageName + ".png");
         }
         image.anchor(x, y);
         this.x = x;

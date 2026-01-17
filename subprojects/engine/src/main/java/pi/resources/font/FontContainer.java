@@ -54,7 +54,7 @@ public final class FontContainer extends ResourcesContainer<Font>
     private static final int DEFAULT_SIZE = 12;
 
     private static GraphicsEnvironment ge = GraphicsEnvironment
-            .getLocalGraphicsEnvironment();
+        .getLocalGraphicsEnvironment();
 
     /**
      * Folgende Pfade führen zu den mitgelieferten Schriftstilen der
@@ -226,7 +226,7 @@ public final class FontContainer extends ResourcesContainer<Font>
     public Font defaultFont(FontStyle style)
     {
         return super.get(defaultFontFiles[style.getStyle()])
-                .deriveFont(style.getStyle());
+            .deriveFont(style.getStyle());
     }
 
     /**
@@ -287,8 +287,8 @@ public final class FontContainer extends ResourcesContainer<Font>
             if (fontStream == null)
             {
                 throw new RuntimeException(String.format(
-                        "Die Schrift %s konnte nicht geladen werden.",
-                        resourceName));
+                    "Die Schrift %s konnte nicht geladen werden.",
+                    resourceName));
             }
             return Font.createFont(Font.TRUETYPE_FONT, fontStream);
         }
@@ -296,7 +296,7 @@ public final class FontContainer extends ResourcesContainer<Font>
         {
             throw new RuntimeException(
                     String.format("Die Schrift %s konnte nicht geladen werden.",
-                            resourceName));
+                        resourceName));
         }
     }
 }

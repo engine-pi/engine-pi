@@ -22,5 +22,12 @@ package demos.small_games.dude;
 
 public enum PlayerState
 {
-    Idle, Walking, Running, JumpingUp, Midair, Falling, Landing, Smashing;
+    Idle,
+    Walking,
+    Running,
+    JumpingUp,
+    Midair,
+    Falling,
+    Landing,
+    Smashing;
 }

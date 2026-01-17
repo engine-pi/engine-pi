@@ -89,8 +89,9 @@ class ArrayUtilTests
         double[] arr3 = ArrayUtil.concat(arr1, arr2);
 
         assertArrayEquals(
-                new double[]
-                { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 }, arr3);
+            new double[]
+            { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 },
+            arr3);
     }
 
     @Test
@@ -136,16 +137,16 @@ class ArrayUtilTests
         String testDelimiterEmpty = ",";
 
         double[] doublesFromString = ArrayUtil
-                .splitDouble(testStringWithDoubles);
+            .splitDouble(testStringWithDoubles);
         double[] stringWithoutDoubles = ArrayUtil
-                .splitDouble(testStringWithoutDoubles);
+            .splitDouble(testStringWithoutDoubles);
         double[] nullString = ArrayUtil.splitDouble(testNull);
         double[] emptyString = ArrayUtil.splitDouble(testEmpty);
         double[] emptyDelimiterString = ArrayUtil
-                .splitDouble(testDelimiterEmpty);
+            .splitDouble(testDelimiterEmpty);
 
         assertArrayEquals(new double[] { 100.1, 200.2, 300.3, 1.4, 2.5, 3.6 },
-                doublesFromString);
+            doublesFromString);
         assertArrayEquals(new double[] { 0, 0, 0 }, stringWithoutDoubles);
         assertArrayEquals(new double[] {}, nullString);
         assertArrayEquals(new double[] {}, emptyString);
@@ -221,7 +222,7 @@ class ArrayUtilTests
                 3.0 };
         String testStringWithDoubleDelimiter = ArrayUtil.join(doubleArr, ";");
         assertEquals("100.0;200.0;300.0;1.0;2.0;3.0",
-                testStringWithDoubleDelimiter);
+            testStringWithDoubleDelimiter);
     }
 
     @Test
@@ -247,7 +248,7 @@ class ArrayUtilTests
                 3.0f };
         String testStringWithFloatDelimiter = ArrayUtil.join(floatArr, ";");
         assertEquals("100.0;200.0;300.0;1.0;2.0;3.0",
-                testStringWithFloatDelimiter);
+            testStringWithFloatDelimiter);
     }
 
     @Test
@@ -348,7 +349,7 @@ class ArrayUtilTests
     {
         List<String> collectionArr = Arrays.asList("test", "test2", "test3");
         String testStringWithCollectionDelimiter = ArrayUtil.join(collectionArr,
-                ";");
+            ";");
         assertEquals("test;test2;test3", testStringWithCollectionDelimiter);
     }
 
@@ -364,7 +365,7 @@ class ArrayUtilTests
     {
         List<String> collectionArr = Arrays.asList("test", "test2", "test3");
         String testStringWithCollectionDelimiter = ArrayUtil.join(collectionArr,
-                ";");
+            ";");
         assertEquals("test;test2;test3", testStringWithCollectionDelimiter);
     }
 
@@ -379,14 +380,14 @@ class ArrayUtilTests
         for (int i = 0; i < list.size(); i++)
         {
             assertEquals(expectedValue.get(i).intValue(),
-                    list.get(i).intValue());
+                list.get(i).intValue());
         }
     }
 
     private static Stream<Arguments> getArray()
     {
         return Stream
-                .of(Arguments.of(Arrays.asList(0, 0, 0, 1, 1, 1, 2, 2, 2)));
+            .of(Arguments.of(Arrays.asList(0, 0, 0, 1, 1, 1, 2, 2, 2)));
     }
 
     @Test
@@ -418,16 +419,16 @@ class ArrayUtilTests
     private static Stream<Arguments> getContains()
     {
         return Stream
-                .of(Arguments.of(new Object[]
-                { 1, 2, 3, 4, 5, null }, 2, true),
-                        Arguments.of(new Object[]
-                        { 1, 2, 3, 4, 5, null }, null, true),
-                        Arguments.of(new Object[]
-                        {}, "", false),
-                        Arguments.of(new Object[]
-                        { null }, null, true),
-                        Arguments.of(new Object[]
-                        { 4 }, 4, true));
+            .of(Arguments.of(new Object[]
+            { 1, 2, 3, 4, 5, null }, 2, true),
+                Arguments.of(new Object[]
+                { 1, 2, 3, 4, 5, null }, null, true),
+                Arguments.of(new Object[]
+                {}, "", false),
+                Arguments.of(new Object[]
+                { null }, null, true),
+                Arguments.of(new Object[]
+                { 4 }, 4, true));
     }
 
     @ParameterizedTest
@@ -436,33 +437,33 @@ class ArrayUtilTests
             Boolean ignoreCase, Boolean expected)
     {
         assertEquals(expected,
-                ArrayUtil.contains(string, argument, ignoreCase));
+            ArrayUtil.contains(string, argument, ignoreCase));
     }
 
     private static Stream<Arguments> getContainsString()
     {
         return Stream
-                .of(Arguments.of(new String[]
-                { "test", "test123" }, "Test", true, true),
-                        Arguments.of(new String[]
-                        { "test", "test123" }, "Test", false, false),
-                        Arguments.of(new String[]
-                        { "test", "test123", null, "" }, "Test", false, false),
-                        Arguments.of(new String[]
-                        { "test", "test123", null, "" }, null, false, false),
-                        Arguments.of(new String[]
-                        {}, "", true, false),
-                        Arguments.of(new String[]
-                        {}, "", true, false),
-                        Arguments.of(new String[]
-                        { null }, null, false, false),
-                        Arguments.of(new String[]
-                        { null }, null, true, false),
-                        Arguments.of(new String[]
-                        { "test" }, "Test", true, true),
-                        Arguments.of(new String[]
-                        { "test" }, "test", false, true),
-                        Arguments.of(null, null, false, false));
+            .of(Arguments.of(new String[]
+            { "test", "test123" }, "Test", true, true),
+                Arguments.of(new String[]
+                { "test", "test123" }, "Test", false, false),
+                Arguments.of(new String[]
+                { "test", "test123", null, "" }, "Test", false, false),
+                Arguments.of(new String[]
+                { "test", "test123", null, "" }, null, false, false),
+                Arguments.of(new String[]
+                {}, "", true, false),
+                Arguments.of(new String[]
+                {}, "", true, false),
+                Arguments.of(new String[]
+                { null }, null, false, false),
+                Arguments.of(new String[]
+                { null }, null, true, false),
+                Arguments.of(new String[]
+                { "test" }, "Test", true, true),
+                Arguments.of(new String[]
+                { "test" }, "test", false, true),
+                Arguments.of(null, null, false, false));
     }
 
     @Test

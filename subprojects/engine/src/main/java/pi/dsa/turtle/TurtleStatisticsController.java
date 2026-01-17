@@ -75,12 +75,13 @@ public class TurtleStatisticsController
             cell.cell.hAlign(HAlign.RIGHT);
         });
         table.padding(3);
-        table.forEachColumnBox(0, cell -> cell.box.font(
+        table.forEachColumnBox(0,
+            cell -> cell.box.font(
                 fonts.defaultFont(FontStyle.BOLD).deriveFont((float) 12)));
         table.forEachCell(cell -> cell.box.fontSize(12));
         framedTable = new FramedBox(table);
         framedTable.background
-                .color(ColorUtil.changeAlpha(colorScheme.get().gray(), 50));
+            .color(ColorUtil.changeAlpha(colorScheme.get().gray(), 50));
         framedTable.padding.allSides(5);
         framedTable.anchor(10, 10);
 
@@ -144,9 +145,13 @@ public class TurtleStatisticsController
         {
             return;
         }
-        table.forBox(0, 1, cell -> cell.box
+        table.forBox(0,
+            1,
+            cell -> cell.box
                 .content(TextUtil.roundNumber(traveledDistance) + " m"));
-        table.forBox(1, 1, cell -> cell.box
+        table.forBox(1,
+            1,
+            cell -> cell.box
                 .content(TextUtil.roundNumber(pen.direction) + " °"));
         framedTable.measure();
         framedTable.render(g);

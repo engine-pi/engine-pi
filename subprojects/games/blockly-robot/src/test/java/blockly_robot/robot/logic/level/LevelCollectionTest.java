@@ -17,7 +17,7 @@ class LevelCollectionTest
     static void getLevel()
     {
         levels = loadTask("conditionals_excercises/light_all_candles")
-                .getLevelCollection();
+            .getLevelCollection();
     }
 
     @Test
@@ -80,7 +80,7 @@ class LevelCollectionTest
         void testFilterByDifficultyAndTestIndex()
         {
             var map = levels.filter(difficulty -> difficulty == EASY,
-                    level -> level.getTestIndex() == 0);
+                level -> level.getTestIndex() == 0);
             assertEquals(map.size(), 1);
             var level = map.get(EASY).get(0);
             assertEquals(level.getBorderColor(), "#b4ccc7");
@@ -115,15 +115,15 @@ class LevelCollectionTest
         void testFilterByDifficultyAsIntegerAndTestIndex()
         {
             assertEquals(levels.filter(0, 0).get(EASY).get(0).getBorderColor(),
-                    "#b4ccc7");
+                "#b4ccc7");
         }
 
         @Test
         void testFilterByDifficultyAsStringAndTestIndex()
         {
             assertEquals(
-                    levels.filter("easy", 0).get(EASY).get(0).getBorderColor(),
-                    "#b4ccc7");
+                levels.filter("easy", 0).get(EASY).get(0).getBorderColor(),
+                "#b4ccc7");
         }
 
         @Test

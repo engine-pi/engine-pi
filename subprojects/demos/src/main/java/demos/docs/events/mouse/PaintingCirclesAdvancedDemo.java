@@ -73,8 +73,10 @@ public class PaintingCirclesAdvancedDemo extends Scene
     {
         if (position.y() < 5)
         {
-            paintCircleAt(position.x(), position.y(), activeDiameter,
-                    activeColor);
+            paintCircleAt(position.x(),
+                position.y(),
+                activeDiameter,
+                activeColor);
         }
     }
 

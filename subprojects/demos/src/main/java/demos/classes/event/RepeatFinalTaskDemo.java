@@ -36,8 +36,10 @@ public class RepeatFinalTaskDemo
         Controller.start(new Scene()
         {
             {
-                repeat(0.2, 5, (counter) -> System.out.println("task"),
-                        (counter) -> System.out.println("final task"));
+                repeat(0.2,
+                    5,
+                    (counter) -> System.out.println("task"),
+                    (counter) -> System.out.println("final task"));
             }
         });
     }

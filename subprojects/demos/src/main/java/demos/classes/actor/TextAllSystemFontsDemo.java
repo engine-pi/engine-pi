@@ -53,7 +53,8 @@ public class TextAllSystemFontsDemo extends Scene implements KeyStrokeListener
 
     public TextAllSystemFontsDemo()
     {
-        info().title("Alle Systemschriftarten").help(
+        info().title("Alle Systemschriftarten")
+            .help(
                 "Mit den Pfeiltasten (nach oben, nach unten) durch alle Schriftarten blättern.");
         Text heading = new Text("Alle System-Schriftarten");
         heading.height(2).anchor(-10, 6).color("black");

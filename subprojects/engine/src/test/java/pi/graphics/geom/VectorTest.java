@@ -185,7 +185,7 @@ public class VectorTest
         public void testWithOtherNullThrows()
         {
             assertThrows(NullPointerException.class,
-                    () -> v(0, 0).length(null));
+                () -> v(0, 0).length(null));
         }
     }
 
@@ -251,8 +251,8 @@ public class VectorTest
         {
             Vector a = v(1.0, 1.0);
             Vector b = v(2.0, 3.0);
-            double expected = Math.toDegrees(Math
-                    .acos(a.getScalarProduct(b) / (a.length() * b.length())));
+            double expected = Math.toDegrees(
+                Math.acos(a.getScalarProduct(b) / (a.length() * b.length())));
             assertEquals(expected, a.angle(b), 1e-9);
         }
 
@@ -267,7 +267,7 @@ public class VectorTest
     public void testToString()
     {
         assertEquals("Vector [x=1.0, y=1.0]",
-                AnsiColor.remove(v(1, 1).toString()));
+            AnsiColor.remove(v(1, 1).toString()));
     }
 
     @Nested

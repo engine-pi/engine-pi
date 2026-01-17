@@ -61,8 +61,10 @@ public class OverlayDemo extends Scene
 
         // Durchsichtiges Rechteck rechts
         g.setColor(colors.get("green", 100));
-        g.fillRect(2 * margin + rectangleWidth, margin, rectangleWidth,
-                rectangleHeight);
+        g.fillRect(2 * margin + rectangleWidth,
+            margin,
+            rectangleWidth,
+            rectangleHeight);
         g.setColor(old);
     }
 

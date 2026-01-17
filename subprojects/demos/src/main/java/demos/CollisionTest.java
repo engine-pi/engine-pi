@@ -39,7 +39,7 @@ public class CollisionTest extends Scene
         // wall.position.set(200, -200);
         add(wall, ball);
         ball.addCollisionListener(wall,
-                (collisionEvent) -> System.out.println("COLLISION"));
+            (collisionEvent) -> System.out.println("COLLISION"));
         if (ball.overlaps(wall))
         {
             System.out.println("OVERLAP");

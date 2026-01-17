@@ -53,7 +53,7 @@ import java.util.logging.Logger;
 public class ConfigLoader
 {
     private static final Logger log = Logger
-            .getLogger(ConfigLoader.class.getName());
+        .getLogger(ConfigLoader.class.getName());
 
     private static final String DEFAULT_CONFIGURATION_FILE_NAME = "engine-pi.properties";
 
@@ -146,7 +146,7 @@ public class ConfigLoader
         {
 
             final ConfigGroupInfo info = group.getClass()
-                    .getAnnotation(ConfigGroupInfo.class);
+                .getAnnotation(ConfigGroupInfo.class);
             if (info == null)
             {
                 continue;
@@ -218,8 +218,9 @@ public class ConfigLoader
                 {
                     createDefaultSettingsFile(out);
                 }
-                log.log(Level.INFO, "Konfigurationsdatei „{0}“ erstellt",
-                        getPath());
+                log.log(Level.INFO,
+                    "Konfigurationsdatei „{0}“ erstellt",
+                    getPath());
                 return;
             }
         }
@@ -238,8 +239,9 @@ public class ConfigLoader
                 Properties properties = new Properties();
                 properties.load(bufferedStream);
                 initializeSettingsByProperties(properties);
-                log.log(Level.INFO, "Konfiguration aus der Datei „{0}“ geladen",
-                        getPath());
+                log.log(Level.INFO,
+                    "Konfiguration aus der Datei „{0}“ geladen",
+                    getPath());
             }
             catch (IOException e)
             {
@@ -268,18 +270,19 @@ public class ConfigLoader
         }
 
         try (OutputStream out = Files.newOutputStream(getPath(),
-                StandardOpenOption.CREATE_NEW))
+            StandardOpenOption.CREATE_NEW))
         {
             getConfigurationGroups().stream()
-                    .filter(group -> Controller.isDebug() || !group.isDebug())
-                    .forEach(group -> storeConfigurationGroup(out, group));
+                .filter(group -> Controller.isDebug() || !group.isDebug())
+                .forEach(group -> storeConfigurationGroup(out, group));
 
             log.log(Level.INFO, "Configuration {0} saved", getPath());
         }
         catch (IOException e)
         {
             log.log(Level.SEVERE,
-                    "Failed to save configuration: " + e.getMessage(), e);
+                "Failed to save configuration: " + e.getMessage(),
+                e);
         }
     }
 
@@ -331,7 +334,7 @@ public class ConfigLoader
                 if (key.startsWith(group.getPrefix()))
                 {
                     group.initializeByProperty(key,
-                            properties.getProperty(key));
+                        properties.getProperty(key));
                 }
             }
         }

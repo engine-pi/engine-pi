@@ -54,13 +54,13 @@ public class HUDDisplay
     };
 
     private static final Tile TILE_BACK = TileMap
-            .createFromImage("dude/hud/back.png");
+        .createFromImage("dude/hud/back.png");
 
     private static final TileMap NUM_BLACK = TileMap
-            .createFromImage("dude/hud/num_black.png", 8, 16);
+        .createFromImage("dude/hud/num_black.png", 8, 16);
 
     private static final TileMap ORB_ORANGE = TileMap
-            .createFromImage("dude/hud/orb_orange.png", 8, 16);
+        .createFromImage("dude/hud/orb_orange.png", 8, 16);
 
     /**
      * Konstruktor für Objekte der Klasse ActorGroup

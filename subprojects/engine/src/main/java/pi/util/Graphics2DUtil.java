@@ -171,8 +171,10 @@ public class Graphics2DUtil
     public static void drawLine(Graphics2D g, Vector from, Vector to,
             double scaleFactor)
     {
-        g.drawLine(from.x(scaleFactor), from.y(scaleFactor), to.x(scaleFactor),
-                to.y(scaleFactor));
+        g.drawLine(from.x(scaleFactor),
+            from.y(scaleFactor),
+            to.x(scaleFactor),
+            to.y(scaleFactor));
     }
 
     public static void fillPolygon(Graphics2D g, double pixelPerMeter,
@@ -256,18 +258,18 @@ public class Graphics2DUtil
     {
         // Kantenglättung für Text einschalten.
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-                on ? RenderingHints.VALUE_TEXT_ANTIALIAS_ON
-                        : RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+            on ? RenderingHints.VALUE_TEXT_ANTIALIAS_ON
+                    : RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 
         // Kantenglättung für geometrische Formen
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                on ? RenderingHints.VALUE_ANTIALIAS_ON
-                        : RenderingHints.VALUE_ANTIALIAS_OFF);
+            on ? RenderingHints.VALUE_ANTIALIAS_ON
+                    : RenderingHints.VALUE_ANTIALIAS_OFF);
 
         // Algorithmusauswahl eher auf Geschwindigkeit oder Qualität
         // ausgerichtet
         g.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_SPEED);
+            RenderingHints.VALUE_RENDER_SPEED);
     }
 
     public static void main(String[] args)

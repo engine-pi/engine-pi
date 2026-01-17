@@ -37,15 +37,16 @@ public class BackgroundBoxDemo extends Graphics2DComponent
         var defaultSettings = new BackgroundBox(new TextLineBox("default"));
 
         var custom = new BackgroundBox(new TextLineBox("custom"))
-                .color(colors.get("red"));
+            .color(colors.get("red"));
 
         var nested = new BackgroundBox(
                 new InsetBox(new BackgroundBox(new TextLineBox("nested"))
-                        .color(colors.get("yellow"))).allSides(10))
-                .color(colors.get("green"));
+                    .color(colors.get("yellow"))).allSides(10))
+                        .color(colors.get("green"));
 
         new VerticalBox<>(defaultSettings, custom, nested).anchor(0, 0)
-                .render(g).debug();
+            .render(g)
+            .debug();
     }
 
     public static void main(String[] args)

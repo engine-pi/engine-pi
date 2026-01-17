@@ -128,8 +128,11 @@ public class Movement extends Action
             return "Movement [name=%s, error=%s]".formatted(name, error);
         }
         return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
-                .formatted(name, from.getSummary(), to.getSummary(), relocated,
-                        rotation);
+            .formatted(name,
+                from.getSummary(),
+                to.getSummary(),
+                relocated,
+                rotation);
     }
 
     @Override

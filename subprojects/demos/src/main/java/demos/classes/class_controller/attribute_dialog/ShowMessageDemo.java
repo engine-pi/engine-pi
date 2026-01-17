@@ -31,7 +31,7 @@ public class ShowMessageDemo
         Controller.start();
         Controller.addKeyStrokeListener((event) -> {
             Controller.dialog.showMessage("Das ist eine Nachricht",
-                    "Das ist der Titel");
+                "Das ist der Titel");
         });
     }
 }

@@ -63,7 +63,7 @@ import pi.resources.ResourceLoader;
 public final class FileUtil
 {
     private static final Logger log = Logger
-            .getLogger(FileUtil.class.getName());
+        .getLogger(FileUtil.class.getName());
 
     private static final String[] DIR_BLACKLIST = new String[] { "\\bin",
             "\\screenshots" };
@@ -518,8 +518,8 @@ public final class FileUtil
         int exp = (int) (Math.log(bytes) / Math.log(unit));
         String pre = new String[] { "K", "M", "G", "T", "P", "E" }[exp - 1];
         pre = decimal ? pre : pre + "i";
-        return String.format(Locale.ROOT, "%.1f %sB",
-                bytes / Math.pow(unit, exp), pre);
+        return String
+            .format(Locale.ROOT, "%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
     /**
@@ -562,7 +562,7 @@ public final class FileUtil
         try
         {
             return Files.exists(
-                    Paths.get(ResourceLoader.getLocation(filePath).toURI()));
+                Paths.get(ResourceLoader.getLocation(filePath).toURI()));
         }
         catch (URISyntaxException e)
         {

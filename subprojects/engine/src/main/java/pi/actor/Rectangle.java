@@ -197,17 +197,21 @@ public class Rectangle extends Geometry
         g.setColor(color());
         if (borderRadius == 0)
         {
-            g.fillRect(0, (int) (-height * pixelPerMeter),
-                    (int) (width * pixelPerMeter),
-                    (int) (height * pixelPerMeter));
+            g.fillRect(0,
+                (int) (-height * pixelPerMeter),
+                (int) (width * pixelPerMeter),
+                (int) (height * pixelPerMeter));
         }
         else
         {
             int borderRadius = (int) (Math.min(width, height) * pixelPerMeter
                     * this.borderRadius);
-            g.fillRoundRect(0, (int) (-height * pixelPerMeter),
-                    (int) (width * pixelPerMeter),
-                    (int) (height * pixelPerMeter), borderRadius, borderRadius);
+            g.fillRoundRect(0,
+                (int) (-height * pixelPerMeter),
+                (int) (width * pixelPerMeter),
+                (int) (height * pixelPerMeter),
+                borderRadius,
+                borderRadius);
         }
     }
 }

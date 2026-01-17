@@ -31,7 +31,7 @@ public class RequestYesNoDemo
         Controller.start();
         Controller.addKeyStrokeListener((event) -> {
             Controller.dialog.requestYesNo("Das ist eine Nachricht",
-                    "Das ist der Titel");
+                "Das ist der Titel");
         });
     }
 }

@@ -69,7 +69,7 @@ public class TileRegistration extends Actor implements TileMap
             double tileHeight)
     {
         super(() -> FixtureBuilder.rectangle(tileWidth * numX,
-                tileHeight * numY));
+            tileHeight * numY));
         if (numX <= 0 || numY <= 0)
         {
             throw new IllegalArgumentException(
@@ -149,8 +149,9 @@ public class TileRegistration extends Actor implements TileMap
                 double tx = tileWidth * x * pixelPerMeter;
                 double ty = tileHeight * y * pixelPerMeter;
                 g.translate(tx, ty);
-                tiles[x][y].render(g, tileWidth * pixelPerMeter,
-                        tileHeight * pixelPerMeter);
+                tiles[x][y].render(g,
+                    tileWidth * pixelPerMeter,
+                    tileHeight * pixelPerMeter);
                 g.translate(-tx, -ty);
             }
         }

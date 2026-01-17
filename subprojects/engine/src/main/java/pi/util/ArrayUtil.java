@@ -52,7 +52,7 @@ public final class ArrayUtil
     public static final String DEFAULT_STRING_DELIMITER = ",";
 
     private static final Logger log = Logger
-            .getLogger(ArrayUtil.class.getName());
+        .getLogger(ArrayUtil.class.getName());
 
     private ArrayUtil()
     {
@@ -561,8 +561,8 @@ public final class ArrayUtil
         }
 
         result.removeAll(Collections.singleton(null));
-        return result.toArray((T[]) Array.newInstance(
-                input.getClass().getComponentType(), result.size()));
+        return result.toArray((T[]) Array
+            .newInstance(input.getClass().getComponentType(), result.size()));
     }
 
     /**
@@ -581,8 +581,8 @@ public final class ArrayUtil
         List<T> result = new ArrayList<>(Arrays.asList(input));
         result.add(addItem);
 
-        return result.toArray((T[]) Array.newInstance(
-                input.getClass().getComponentType(), result.size()));
+        return result.toArray((T[]) Array
+            .newInstance(input.getClass().getComponentType(), result.size()));
     }
 
     /**
@@ -604,7 +604,7 @@ public final class ArrayUtil
         hash.addAll(secondList);
 
         return hash.toArray((T[]) Array
-                .newInstance(first.getClass().getComponentType(), hash.size()));
+            .newInstance(first.getClass().getComponentType(), hash.size()));
     }
 
     /**

@@ -49,9 +49,9 @@ public class HUD extends Layer implements FrameUpdateListener
     {
         display.setLineDisplay(0, 1);
         display.setLineDisplay(1,
-                (float) gameData.getMana() / GameData.MAX_MANA);
+            (float) gameData.getMana() / GameData.MAX_MANA);
         display.setLineDisplay(2,
-                Math.min(1, gameData.getPlayerVelocity() / 80));
+            Math.min(1, gameData.getPlayerVelocity() / 80));
         display.setDisplayNumber(gameData.getMoney());
     }
 }

@@ -42,7 +42,7 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
     private final Actor[][] COLOR_AREAS;
 
     private final PredefinedColorScheme[] COLOR_SCHEMES = PredefinedColorScheme
-            .values();
+        .values();
 
     private int currentColorScheme = -1;
 
@@ -50,9 +50,11 @@ public class ColorVariationsDemo extends Scene implements KeyStrokeListener
 
     public ColorVariationsDemo()
     {
-        info().title("Farbvariationen-Demo").description(
+        info().title("Farbvariationen-Demo")
+            .description(
                 "Demonstriert die Methode ColorUtil#changeBrightness(Color, double).")
-                .help("Ein beliebiger Tastendruck schaltet zum nächsten Farbschema weiter.");
+            .help(
+                "Ein beliebiger Tastendruck schaltet zum nächsten Farbschema weiter.");
         COLOR_AREAS = new Actor[12][5];
 
         for (int i = 0; i < COLOR_AREAS.length; i++)

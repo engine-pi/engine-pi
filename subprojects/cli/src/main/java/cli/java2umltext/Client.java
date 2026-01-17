@@ -91,7 +91,7 @@ public class Client
         {
             Document doc = format.newDocument();
             StaticJavaParser.getParserConfiguration()
-                    .setLanguageLevel(languageLevel);
+                .setLanguageLevel(languageLevel);
 
             // Extract diagram elements
             try
@@ -99,9 +99,9 @@ public class Client
                 for (Path source : multiWalk(sources, List.of(".java")))
                 {
                     CompilationUnit cu = StaticJavaParser
-                            .parse(source.toFile());
+                        .parse(source.toFile());
                     Optional<PackageDeclaration> pd = cu
-                            .getPackageDeclaration();
+                        .getPackageDeclaration();
                     VoidVisitor<UML> v = new ASTVisitor(
                             pd.isPresent() ? pd.get().getNameAsString() : "",
                             this);
@@ -134,8 +134,9 @@ public class Client
 
                 try
                 {
-                    Files.writeString(outFilePath.get().toPath(), doc.export(),
-                            StandardCharsets.UTF_8);
+                    Files.writeString(outFilePath.get().toPath(),
+                        doc.export(),
+                        StandardCharsets.UTF_8);
                 }
                 catch (IOException e)
                 {
@@ -157,17 +158,20 @@ public class Client
                 {
                     return Stream.empty();
                 }
-            }).filter(p -> extensions.stream()
-                    .anyMatch(e -> p.toString().endsWith(e))).map(p -> {
-                        try
-                        {
-                            return p.toRealPath();
-                        }
-                        catch (IOException e)
-                        {
-                            return p;
-                        }
-                    }).collect(Collectors.toSet());
+            })
+                .filter(p -> extensions.stream()
+                    .anyMatch(e -> p.toString().endsWith(e)))
+                .map(p -> {
+                    try
+                    {
+                        return p.toRealPath();
+                    }
+                    catch (IOException e)
+                    {
+                        return p;
+                    }
+                })
+                .collect(Collectors.toSet());
         }
     }
 
@@ -190,9 +194,9 @@ public class Client
             cmd = new CommandLine(new Config());
             cmd.setCaseInsensitiveEnumValuesAllowed(true);
             int exitCode = cmd
-                    .setDefaultValueProvider(
-                            new PropertiesDefaultProvider(defaults.configPath))
-                    .execute(args);
+                .setDefaultValueProvider(
+                    new PropertiesDefaultProvider(defaults.configPath))
+                .execute(args);
             System.exit(exitCode);
         }
     }

@@ -55,11 +55,11 @@ public final class FixtureBuilder
     public static FixtureData rectangle(double width, double height)
     {
         PolygonShape shape = new PolygonShape();
-        shape.set(
-                new Vec2[]
-                { new Vec2(0, 0), new Vec2(0, (float) height),
-                        new Vec2((float) width, (float) height),
-                        new Vec2((float) width, 0) },
+        shape
+            .set(new Vec2[]
+            { new Vec2(0, 0), new Vec2(0, (float) height),
+                    new Vec2((float) width, (float) height),
+                    new Vec2((float) width, 0) },
                 4);
         shape.centroid.set(new Vec2((float) width / 2, (float) height / 2));
         return new FixtureData(shape);
@@ -95,7 +95,7 @@ public final class FixtureBuilder
     {
         EdgeShape edgeShape = new EdgeShape();
         edgeShape.set(new Vec2((float) point1.x(), (float) point1.y()),
-                new Vec2((float) point2.x(), (float) point2.y()));
+            new Vec2((float) point2.x(), (float) point2.y()));
         return new FixtureData(edgeShape);
     }
 
@@ -138,11 +138,12 @@ public final class FixtureBuilder
     {
         PolygonShape rectShape = new PolygonShape();
         rectShape
-                .set(new Vec2[]
-                { new Vec2((float) sx, (float) sy),
-                        new Vec2((float) sx, (float) (sy + height)),
-                        new Vec2((float) (sx + width), (float) (sy + height)),
-                        new Vec2((float) (sx + width), (float) sy) }, 4);
+            .set(new Vec2[]
+            { new Vec2((float) sx, (float) sy),
+                    new Vec2((float) sx, (float) (sy + height)),
+                    new Vec2((float) (sx + width), (float) (sy + height)),
+                    new Vec2((float) (sx + width), (float) sy) },
+                4);
         return rectShape;
     }
 
@@ -222,7 +223,7 @@ public final class FixtureBuilder
             }
             CircleShape circleShape = new CircleShape();
             circleShape.p.set(Float.parseFloat(split[0]),
-                    Float.parseFloat(split[1]));
+                Float.parseFloat(split[1]));
             circleShape.setRadius(Float.parseFloat(split[2]));
             return circleShape;
 

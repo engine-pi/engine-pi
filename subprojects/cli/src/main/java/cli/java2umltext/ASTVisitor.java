@@ -112,8 +112,9 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
             return;
         }
         ClassWrapper cw = (ClassWrapper) el;
-        cw.fields().add(new FieldWrapper(Visibility.PUBLIC, true, "",
-                ecd.getNameAsString()));
+        cw.fields()
+            .add(new FieldWrapper(Visibility.PUBLIC, true, "",
+                    ecd.getNameAsString()));
     }
 
     @Override
@@ -127,8 +128,9 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         ClassWrapper cw = (ClassWrapper) el;
         if (cw.type().equals("record"))
         {
-            cw.fields().add(new FieldWrapper(Visibility.PUBLIC, false,
-                    p.getTypeAsString(), p.getNameAsString()));
+            cw.fields()
+                .add(new FieldWrapper(Visibility.PUBLIC, false,
+                        p.getTypeAsString(), p.getNameAsString()));
         }
     }
 
@@ -145,10 +147,14 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         if (config.fieldModifiers.contains(v))
         {
             boolean isStatic = field.isStatic();
-            String type = field.getVariables().getFirst().get()
-                    .getTypeAsString();
-            String name = field.getVariables().getFirst().get()
-                    .getNameAsString();
+            String type = field.getVariables()
+                .getFirst()
+                .get()
+                .getTypeAsString();
+            String name = field.getVariables()
+                .getFirst()
+                .get()
+                .getNameAsString();
             cw.fields().add(new FieldWrapper(v, isStatic, type, name));
 
             if (config.showFieldRelationships)
@@ -251,21 +257,21 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         {
             for (ImportDeclaration id : ((CompilationUnit) node).getImports())
             {
-                cw.imports().put(id.getName().getIdentifier(),
-                        id.getName().toString());
+                cw.imports()
+                    .put(id.getName().getIdentifier(), id.getName().toString());
             }
         }
 
         // add inheritance & interfaces
         for (ClassOrInterfaceType cit : ((NodeWithImplements<?>) td)
-                .getImplementedTypes())
+            .getImplementedTypes())
         {
             addRelationship("<|..", cit.getElementType(), cw);
         }
         if (td instanceof ClassOrInterfaceDeclaration)
         {
             for (ClassOrInterfaceType cit : ((ClassOrInterfaceDeclaration) td)
-                    .getExtendedTypes())
+                .getExtendedTypes())
             {
                 addRelationship("<|--", cit.getElementType(), cw);
             }
@@ -278,12 +284,12 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         if (td instanceof EnumDeclaration)
         {
             ((EnumDeclaration) td).getEntries()
-                    .forEach(e -> e.accept(this, cw));
+                .forEach(e -> e.accept(this, cw));
         }
         if (td instanceof RecordDeclaration)
         {
             ((RecordDeclaration) td).getParameters()
-                    .forEach(p -> p.accept(this, cw));
+                .forEach(p -> p.accept(this, cw));
         }
     }
 
@@ -293,9 +299,9 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         if (type instanceof ClassOrInterfaceType)
         {
             ClassOrInterfaceType classOrInterfaceType = type
-                    .asClassOrInterfaceType();
+                .asClassOrInterfaceType();
             Optional<NodeList<Type>> typeArguments = classOrInterfaceType
-                    .getTypeArguments();
+                .getTypeArguments();
             if (typeArguments.isPresent())
             {
                 type = typeArguments.get().get(0);
@@ -310,8 +316,8 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
         }
 
         String target = cw.pkgPrefix() + cw.name();
-        cw.document().addRelationship(
-                new Relationship(relationship, source, target));
+        cw.document()
+            .addRelationship(new Relationship(relationship, source, target));
     }
 
     private static String getDeclarationType(TypeDeclaration<?> td)
@@ -325,9 +331,13 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
             }
             else
             {
-                return (cid.getModifiers().stream().map(Modifier::toString)
-                        .filter(m -> m.contains("abstract")).findAny()
-                        .orElse("").trim() + " class").trim();
+                return (cid.getModifiers()
+                    .stream()
+                    .map(Modifier::toString)
+                    .filter(m -> m.contains("abstract"))
+                    .findAny()
+                    .orElse("")
+                    .trim() + " class").trim();
             }
         }
         else if (td instanceof EnumDeclaration)
@@ -344,8 +354,11 @@ public class ASTVisitor extends VoidVisitorAdapter<UML>
     private static <T extends Node> Visibility getVisibility(
             NodeWithModifiers<T> node)
     {
-        return node.getModifiers().stream().map(Modifier::toString)
-                .map(Visibility::fromString).findFirst()
-                .orElse(Visibility.DEFAULT);
+        return node.getModifiers()
+            .stream()
+            .map(Modifier::toString)
+            .map(Visibility::fromString)
+            .findFirst()
+            .orElse(Visibility.DEFAULT);
     }
 }

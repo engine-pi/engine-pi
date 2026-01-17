@@ -574,9 +574,9 @@ public final class Camera
             return position;
         }
         double x = Math.max(bounds.x(),
-                Math.min(position.x(), bounds.x() + bounds.width()));
+            Math.min(position.x(), bounds.x() + bounds.width()));
         double y = Math.max(bounds.y(),
-                Math.min(position.y(), bounds.y() + bounds.height()));
+            Math.min(position.y(), bounds.y() + bounds.height()));
         return new Vector(x, y);
     }
 

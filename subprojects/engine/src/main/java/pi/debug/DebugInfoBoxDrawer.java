@@ -93,7 +93,7 @@ public final class DebugInfoBoxDrawer
         compass = new CompassBox(25);
         FramedBox gravityFrame = new FramedBox(
                 new HorizontalBox<>(gravity, new DimensionBox(5, 0), compass)
-                        .vAlign(VAlign.MIDDLE));
+                    .vAlign(VAlign.MIDDLE));
         gravityFrame.background.color(colors.getSafe("blue-purple"));
         gravityFrame.padding.allSides(5);
 

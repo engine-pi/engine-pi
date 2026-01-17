@@ -31,8 +31,8 @@ public class GlobalMouseClickListenerDemo
     {
         Controller.start(new Scene());
         Controller.addMouseClickListener((vector, button) -> {
-            System.err.println("x: %s, y: %s, button %s".formatted(vector.x(),
-                    vector.y(), button));
+            System.err.println("x: %s, y: %s, button %s"
+                .formatted(vector.x(), vector.y(), button));
         });
     }
 }

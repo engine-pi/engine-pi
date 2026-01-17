@@ -64,7 +64,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             // slanted
             Rectangle slantedLeft = new Rectangle(THICKNESS, LENGTH_SLANTED);
             slantedLeft.anchor(-NARROW_RADIUS + THICKNESS * 0.25,
-                    LENGTH_VERTICAL - THICKNESS * 0.75);
+                LENGTH_VERTICAL - THICKNESS * 0.75);
             Rectangle slatedRight = new Rectangle(THICKNESS, LENGTH_SLANTED);
             slatedRight.anchor(NARROW_RADIUS, LENGTH_VERTICAL);
             // vertical
@@ -93,9 +93,10 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
 
     public MarbleDemo()
     {
-        info().title("Murmel-Demo").description(
+        info().title("Murmel-Demo")
+            .description(
                 "Eine kleine Demo zum Verhalten vieler Partikel ähnlicher Physik-Objekte in der Engine.")
-                .help("Eine beliebige Taste öffnet den Trichter");
+            .help("Eine beliebige Taste öffnet den Trichter");
         // Trichter
         new Funnel();
         repeat(0.2, (counter) -> {
@@ -155,8 +156,8 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
         Circle marble = new Marble(Random.range(20) + 10);
         marble.makeDynamic();
         marble.gravityScale(2);
-        marble.color(new Color(Random.range(255), Random.range(255),
-                Random.range(255)));
+        marble.color(
+            new Color(Random.range(255), Random.range(255), Random.range(255)));
         return marble;
     }
 

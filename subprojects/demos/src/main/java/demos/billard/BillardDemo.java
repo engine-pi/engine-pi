@@ -100,7 +100,7 @@ public class BillardDemo extends Scene implements KeyStrokeListener
         if (e.getKeyCode() == KeyEvent.VK_SPACE)
         {
             whiteBall.applyImpulse(
-                    new Vector(1000000000, (Random.range() - .5) * 2));
+                new Vector(1000000000, (Random.range() - .5) * 2));
         }
     }
 

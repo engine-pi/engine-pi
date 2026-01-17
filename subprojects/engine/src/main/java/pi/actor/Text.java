@@ -79,10 +79,10 @@ public class Text extends Geometry
             Font font)
     {
         var sizeInPixels = FontUtil.getStringBounds(String.valueOf(content),
-                font);
+            font);
         return FixtureBuilder.rectangle(
-                sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
-                height);
+            sizeInPixels.getWidth() * height / sizeInPixels.getHeight(),
+            height);
     }
 
     /* content */
@@ -323,7 +323,7 @@ public class Text extends Geometry
         Font preFont = g.getFont();
         g.setColor(color());
         g.scale(cachedScaleFactor * pixelPerMeter,
-                cachedScaleFactor * pixelPerMeter);
+            cachedScaleFactor * pixelPerMeter);
         g.setFont(font);
         g.drawString(content, 0, -cachedDescent);
         g.setFont(preFont);

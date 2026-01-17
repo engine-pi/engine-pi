@@ -112,8 +112,8 @@ public class DudeDemo extends Scene
         middleBackground.layerPosition(-200);
         Image backgroundImage = new Image("dude/background/snow.png", 25f);
         backgroundImage.anchor(
-                -visibleArea(Controller.windowSize()).width() / 2,
-                -visibleArea(Controller.windowSize()).height() / 2);
+            -visibleArea(Controller.windowSize()).width() / 2,
+            -visibleArea(Controller.windowSize()).height() / 2);
         middleBackground.add(backgroundImage);
         Layer furtherBackground = new Layer();
         furtherBackground.layerPosition(-300);
@@ -143,7 +143,7 @@ public class DudeDemo extends Scene
             cloudTiles.tile(i, 0, TileMap.createFromImage(tilePath));
         }
         cloudTiles.anchor(xOffset,
-                -visibleArea(Controller.windowSize()).height() / 2 + 5);
+            -visibleArea(Controller.windowSize()).height() / 2 + 5);
         clouds.add(cloudTiles);
         addLayer(clouds);
     }

@@ -31,7 +31,8 @@ public class RequestStringInputDemo
         Controller.start();
         Controller.addKeyStrokeListener((event) -> {
             String input = Controller.dialog.requestStringInput(
-                    "Das ist eine Nachricht", "Das ist der Titel");
+                "Das ist eine Nachricht",
+                "Das ist der Titel");
             System.out.println(input);
         });
     }

@@ -100,14 +100,15 @@ public class ConfigGroupTest
         for (Method method : ReflectionUtil.getSetters(instance.getClass()))
         {
             Object value = ReflectionUtil
-                    .getDefaultValue(method.getParameters()[0].getType());
+                .getDefaultValue(method.getParameters()[0].getType());
             assertDoesNotThrow(() -> method.invoke(instance, value));
             assertNotNull(method.getName());
             assertNotNull(listener.name, method.getName());
             assertTrue(
-                    method.getName().toLowerCase()
-                            .contains(listener.name.toLowerCase()),
-                    method.getName() + " == " + listener.name);
+                method.getName()
+                    .toLowerCase()
+                    .contains(listener.name.toLowerCase()),
+                method.getName() + " == " + listener.name);
         }
     }
 

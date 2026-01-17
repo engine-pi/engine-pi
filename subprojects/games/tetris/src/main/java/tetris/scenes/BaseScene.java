@@ -45,7 +45,7 @@ public class BaseScene extends Scene
         if (imageFilename != null)
         {
             background = ImageLoader
-                    .get("images/fullscreen/" + imageFilename + ".png");
+                .get("images/fullscreen/" + imageFilename + ".png");
             // Wir setzten alle Hintergrundbilder auf die Position (-2, 0),
             // damit
             // im Hauptspiel die linke untere Ecke des Blockrasters an der

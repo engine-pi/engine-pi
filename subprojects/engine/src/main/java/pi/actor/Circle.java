@@ -106,9 +106,10 @@ public class Circle extends Geometry
     public void render(Graphics2D g, double pixelPerMeter)
     {
         g.setColor(color());
-        g.fillOval(0, -(int) (diameter * pixelPerMeter),
-                (int) (diameter * pixelPerMeter),
-                (int) (diameter * pixelPerMeter));
+        g.fillOval(0,
+            -(int) (diameter * pixelPerMeter),
+            (int) (diameter * pixelPerMeter),
+            (int) (diameter * pixelPerMeter));
     }
 
     /**
@@ -121,8 +122,9 @@ public class Circle extends Geometry
     public void resetRadius(double radius)
     {
         this.diameter = 2 * radius;
-        FixtureData[] fixtureData = this.physicsHandler().physicsData()
-                .generateFixtureData();
+        FixtureData[] fixtureData = this.physicsHandler()
+            .physicsData()
+            .generateFixtureData();
         FixtureData thatoneCircle = fixtureData[0];
         thatoneCircle.setShape(createCircleShape(this.diameter));
         this.fixture(() -> thatoneCircle);

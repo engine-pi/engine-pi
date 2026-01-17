@@ -43,7 +43,7 @@ import java.util.logging.Logger;
 public final class ReflectionUtil
 {
     private static final Logger log = Logger
-            .getLogger(ReflectionUtil.class.getName());
+        .getLogger(ReflectionUtil.class.getName());
 
     private ReflectionUtil()
     {
@@ -77,9 +77,9 @@ public final class ReflectionUtil
         }
 
         log.log(Level.WARNING,
-                "Could not find field [{0}] on class [{1}] or its parents.",
-                new Object[]
-                { fieldName, cls });
+            "Could not find field [{0}] on class [{1}] or its parents.",
+            new Object[]
+            { fieldName, cls });
         return null;
     }
 
@@ -180,9 +180,9 @@ public final class ReflectionUtil
                     if (field.getName().equals(fieldName)
                             && (field.getType() == value.getClass()
                                     || isWrapperType(field.getType(),
-                                            value.getClass())
+                                        value.getClass())
                                     || isWrapperType(value.getClass(),
-                                            field.getType())))
+                                        field.getType())))
                     {
                         if (!field.canAccess(instance))
                         {
@@ -198,8 +198,9 @@ public final class ReflectionUtil
         catch (final SecurityException | IllegalAccessException
                 | IllegalArgumentException | InvocationTargetException e)
         {
-            log.log(Level.SEVERE, String.format("%s (%s-%s)", e.getMessage(),
-                    fieldName, value), e);
+            log.log(Level.SEVERE,
+                String.format("%s (%s-%s)", e.getMessage(), fieldName, value),
+                e);
         }
 
         return false;
@@ -216,8 +217,10 @@ public final class ReflectionUtil
             if (enumConst != null
                     && enumConst.toString().equalsIgnoreCase(value))
             {
-                return ReflectionUtil.setValue(cls, instance, propertyName,
-                        field.getType().cast(enumConst));
+                return ReflectionUtil.setValue(cls,
+                    instance,
+                    propertyName,
+                    field.getType().cast(enumConst));
             }
         }
 
@@ -334,38 +337,52 @@ public final class ReflectionUtil
         {
             if (field.getType().equals(boolean.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Boolean.parseBoolean(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Boolean.parseBoolean(value));
             }
             else if (field.getType().equals(int.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Integer.parseInt(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Integer.parseInt(value));
             }
             else if (field.getType().equals(float.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Float.parseFloat(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Float.parseFloat(value));
             }
             else if (field.getType().equals(double.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Double.parseDouble(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Double.parseDouble(value));
             }
             else if (field.getType().equals(short.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Short.parseShort(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Short.parseShort(value));
             }
             else if (field.getType().equals(byte.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Byte.parseByte(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Byte.parseByte(value));
             }
             else if (field.getType().equals(long.class))
             {
-                return setValue(cls, instance, fieldName,
-                        Long.parseLong(value));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    Long.parseLong(value));
             }
             else if (field.getType().equals(String.class))
             {
@@ -377,18 +394,25 @@ public final class ReflectionUtil
             }
             else if (field.getType().equals(int[].class))
             {
-                return setValue(cls, instance, fieldName,
-                        ArrayUtil.splitInt(value, ","));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    ArrayUtil.splitInt(value, ","));
             }
             else if (field.getType().equals(double[].class))
             {
-                return setValue(cls, instance, fieldName,
-                        ArrayUtil.splitDouble(value, ","));
+                return setValue(cls,
+                    instance,
+                    fieldName,
+                    ArrayUtil.splitDouble(value, ","));
             }
             else if (field.getType().isEnum())
             {
-                return setEnumPropertyValue(cls, instance, field, fieldName,
-                        value);
+                return setEnumPropertyValue(cls,
+                    instance,
+                    field,
+                    fieldName,
+                    value);
             }
             // else if (field.getType().equals(Material.class)) {
             // return setValue(cls, instance, fieldName, Material.get(value));
@@ -470,7 +494,7 @@ public final class ReflectionUtil
                     if (EventListener.class.isAssignableFrom(paramtype)
                             && (method.getName().startsWith(eventAddPrefix)
                                     || method.getName()
-                                            .startsWith(eventOnPrefix)))
+                                        .startsWith(eventOnPrefix)))
                     {
                         events.add(method);
                     }

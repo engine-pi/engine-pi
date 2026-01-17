@@ -59,7 +59,7 @@ import pi.resources.sound.SoundContainer;
 public final class Resources
 {
     private static final Logger log = Logger
-            .getLogger(Resources.class.getName());
+        .getLogger(Resources.class.getName());
 
     /**
      * Ein <b>Speicher</b> für <b>Farben</b> des Datentyps {@link java.awt.Color

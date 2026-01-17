@@ -25,7 +25,10 @@ package cli.java2umltext.model;
 
 public enum Visibility
 {
-    PUBLIC('+'), PRIVATE('-'), PROTECTED('#'), DEFAULT('~');
+    PUBLIC('+'),
+    PRIVATE('-'),
+    PROTECTED('#'),
+    DEFAULT('~');
 
     private final char symbol;
 

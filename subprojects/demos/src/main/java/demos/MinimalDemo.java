@@ -54,7 +54,9 @@ public class MinimalDemo extends Scene
         rectangle.color(Color.BLUE);
         add(rectangle);
         Animation animation = Animation.createFromAnimatedGif(
-                "game-assets/jump/fx_explosion_b_anim.gif", 1, 1);
+            "game-assets/jump/fx_explosion_b_anim.gif",
+            1,
+            1);
         animation.anchor(200, 200);
         // animation.setOneTimeOnly();
         add(animation);
@@ -68,19 +70,24 @@ public class MinimalDemo extends Scene
         character = new StatefulAnimation<>(64, 64);
         final String pathbase = "game-assets/dude/char/spr_m_traveler_";
         Animation idle = Animation
-                .createFromAnimatedGif(pathbase + "idle_anim.gif", 1, 1);
+            .createFromAnimatedGif(pathbase + "idle_anim.gif", 1, 1);
         character.addState("idle", idle);
-        character.addState("walking", Animation
-                .createFromAnimatedGif(pathbase + "walk_anim.gif", 1, 1));
-        character.addState("running", Animation
-                .createFromAnimatedGif(pathbase + "run_anim.gif", 1, 1));
-        character.addState("jumpingUp", Animation
+        character.addState("walking",
+            Animation.createFromAnimatedGif(pathbase + "walk_anim.gif", 1, 1));
+        character.addState("running",
+            Animation.createFromAnimatedGif(pathbase + "run_anim.gif", 1, 1));
+        character.addState("jumpingUp",
+            Animation
                 .createFromAnimatedGif(pathbase + "jump_1up_anim.gif", 1, 1));
-        character.addState("midair", Animation.createFromAnimatedGif(
-                pathbase + "jump_2midair_anim.gif", 1, 1));
-        character.addState("falling", Animation
+        character.addState("midair",
+            Animation.createFromAnimatedGif(pathbase + "jump_2midair_anim.gif",
+                1,
+                1));
+        character.addState("falling",
+            Animation
                 .createFromAnimatedGif(pathbase + "jump_3down_anim.gif", 1, 1));
-        character.addState("landing", Animation
+        character.addState("landing",
+            Animation
                 .createFromAnimatedGif(pathbase + "jump_4land_anim.gif", 1, 1));
         character.stateTransition("landing", "idle");
         add(character);

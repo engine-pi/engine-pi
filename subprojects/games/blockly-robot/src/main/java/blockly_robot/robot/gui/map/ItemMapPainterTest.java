@@ -28,7 +28,7 @@ public class ItemMapPainterTest extends Scene
             Controller.transitionToScene(this);
         }
         Task task = Task
-                .loadByTaskPath("conditionals_excercises/find_the_destination");
+            .loadByTaskPath("conditionals_excercises/find_the_destination");
         ItemMapPainter painter = new ItemMapPainter(task.getContextData());
         painter.paint(this);
     }

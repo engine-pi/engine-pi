@@ -149,8 +149,8 @@ public class MainAnimation extends Scene implements FrameUpdateListener
 
     private Color darkenColor(String color)
     {
-        return ColorUtil.interpolate(colors.get(color), colors.get("black"),
-                0.5);
+        return ColorUtil
+            .interpolate(colors.get(color), colors.get("black"), 0.5);
     }
 
     private void createGround()

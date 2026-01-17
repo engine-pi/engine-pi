@@ -79,7 +79,7 @@ public abstract class Geometry extends Actor
         Color originalColor = color();
         ValueAnimator<Double> animator = new ValueAnimator<>(duration,
                 progress -> color(
-                        ColorUtil.interpolate(originalColor, color, progress)),
+                    ColorUtil.interpolate(originalColor, color, progress)),
                 new LinearDouble(0, 1), AnimationMode.SINGLE, this);
         addFrameUpdateListener(animator);
         return animator;

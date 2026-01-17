@@ -71,24 +71,27 @@ public class MermaidDocument extends Document
         }
 
         str += cw.fields().isEmpty() ? ""
-                : "\n" + cw.fields().stream().map(f -> f.visibility().symbol()
-                        + " "
-                        + (f.type().isBlank() ? ""
-                                : f.type().replaceAll("[<>]", "~") + " ")
-                        + f.name() + (f.isStatic() ? "$" : ""))
-                        .collect(Collectors.joining("\n"));
+                : "\n" + cw.fields()
+                    .stream()
+                    .map(f -> f.visibility().symbol() + " "
+                            + (f.type().isBlank() ? ""
+                                    : f.type().replaceAll("[<>]", "~") + " ")
+                            + f.name() + (f.isStatic() ? "$" : ""))
+                    .collect(Collectors.joining("\n"));
 
         str += cw.methods().isEmpty() ? ""
-                : "\n" + cw.methods().stream()
-                        .map(m -> m.visibility().symbol() + " "
-                                + m.returnType().replaceAll("[<>]", "~") + " "
-                                + m.name() + "("
-                                + m.parameters().stream()
-                                        .map(p -> p.replaceAll("[<>]", "~"))
-                                        .collect(Collectors.joining(","))
-                                + ")" + (m.isAbstract() ? "*" : "")
-                                + (m.isStatic() ? "$" : ""))
-                        .collect(Collectors.joining("\n"));
+                : "\n" + cw.methods()
+                    .stream()
+                    .map(m -> m.visibility().symbol() + " "
+                            + m.returnType().replaceAll("[<>]", "~") + " "
+                            + m.name() + "("
+                            + m.parameters()
+                                .stream()
+                                .map(p -> p.replaceAll("[<>]", "~"))
+                                .collect(Collectors.joining(","))
+                            + ")" + (m.isAbstract() ? "*" : "")
+                            + (m.isStatic() ? "$" : ""))
+                    .collect(Collectors.joining("\n"));
 
         str += "\n}\n";
 

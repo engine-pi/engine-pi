@@ -120,8 +120,8 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
 
     private void writeVersionHeading(Difficulty difficulty)
     {
-        Text text = TextMaker.createText(
-                "Version " + "*".repeat(difficulty.getIndex() + 2), 1);
+        Text text = TextMaker
+            .createText("Version " + "*".repeat(difficulty.getIndex() + 2), 1);
         text.anchor(x - SHIFT, y - SHIFT);
         setY(y - 1);
         add(text);
@@ -136,7 +136,8 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
                 setY(y - 1);
             }
             var text = TextMaker.createText(
-                    "Test %d".formatted(level.getTestIndex() + 1), 0.75f);
+                "Test %d".formatted(level.getTestIndex() + 1),
+                0.75f);
             text.anchor(x - SHIFT, y - SHIFT);
             setY(y - 1);
             add(text);

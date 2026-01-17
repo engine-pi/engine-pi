@@ -47,8 +47,8 @@ class ReflectionUtilTests
     void testSetValue()
     {
         var test = new TestImpl();
-        assertDoesNotThrow(() -> ReflectionUtil.setValue(TestImpl.class, test,
-                "integerField", 12));
+        assertDoesNotThrow(() -> ReflectionUtil
+            .setValue(TestImpl.class, test, "integerField", 12));
         assertEquals(12, test.integerField);
     }
 
@@ -78,21 +78,21 @@ class ReflectionUtilTests
     {
         // arrange
         return Stream.of(Arguments.of(boolean.class, Boolean.class),
-                Arguments.of(char.class, Character.class),
-                Arguments.of(byte.class, Byte.class),
-                Arguments.of(short.class, Short.class),
-                Arguments.of(int.class, Integer.class),
-                Arguments.of(long.class, Long.class),
-                Arguments.of(float.class, Float.class),
-                Arguments.of(double.class, Double.class),
-                Arguments.of(void.class, Void.class));
+            Arguments.of(char.class, Character.class),
+            Arguments.of(byte.class, Byte.class),
+            Arguments.of(short.class, Short.class),
+            Arguments.of(int.class, Integer.class),
+            Arguments.of(long.class, Long.class),
+            Arguments.of(float.class, Float.class),
+            Arguments.of(double.class, Double.class),
+            Arguments.of(void.class, Void.class));
     }
 
     private static Stream<Arguments> getNonWrapperParameters()
     {
         // arrange
         return Stream.of(Arguments.of(Boolean.class, boolean.class),
-                Arguments.of(char.class, Byte.class));
+            Arguments.of(char.class, Byte.class));
     }
 
     private class TestImpl

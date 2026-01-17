@@ -165,8 +165,10 @@ public class Scene implements KeyStrokeListenerRegistration,
     public SceneInfoOverlay info(String title, String subtitle,
             String description, String help)
     {
-        return info().title(title).subtitle(subtitle).description(description)
-                .help(help);
+        return info().title(title)
+            .subtitle(subtitle)
+            .description(description)
+            .help(help);
     }
 
     /**
@@ -456,30 +458,40 @@ public class Scene implements KeyStrokeListenerRegistration,
         j.getAnchorA(anchorA);
         j.getAnchorB(anchorB);
         Vector aInPx = layer
-                .translateWorldPointToFramePxCoordinates(Vector.of(anchorA));
+            .translateWorldPointToFramePxCoordinates(Vector.of(anchorA));
         Vector bInPx = layer
-                .translateWorldPointToFramePxCoordinates(Vector.of(anchorB));
+            .translateWorldPointToFramePxCoordinates(Vector.of(anchorB));
         if (j instanceof RevoluteJoint)
         {
             g.setColor(REVOLUTE_JOINT_COLOR);
             g.drawOval((int) aInPx.x() - (JOINT_CIRCLE_RADIUS / 2),
-                    (int) aInPx.y() - (JOINT_CIRCLE_RADIUS / 2),
-                    JOINT_CIRCLE_RADIUS, JOINT_CIRCLE_RADIUS);
+                (int) aInPx.y() - (JOINT_CIRCLE_RADIUS / 2),
+                JOINT_CIRCLE_RADIUS,
+                JOINT_CIRCLE_RADIUS);
         }
         else if (j instanceof RopeJoint)
         {
-            renderJointRectangle(g, ROPE_JOINT_COLOR, aInPx, bInPx,
-                    layer.calculatePixelPerMeter());
+            renderJointRectangle(g,
+                ROPE_JOINT_COLOR,
+                aInPx,
+                bInPx,
+                layer.calculatePixelPerMeter());
         }
         else if (j instanceof DistanceJoint)
         {
-            renderJointRectangle(g, DISTANCE_JOINT_COLOR, aInPx, bInPx,
-                    layer.calculatePixelPerMeter());
+            renderJointRectangle(g,
+                DISTANCE_JOINT_COLOR,
+                aInPx,
+                bInPx,
+                layer.calculatePixelPerMeter());
         }
         else if (j instanceof PrismaticJoint)
         {
-            renderJointRectangle(g, PRISMATIC_JOINT_COLOR, aInPx, bInPx,
-                    layer.calculatePixelPerMeter());
+            renderJointRectangle(g,
+                PRISMATIC_JOINT_COLOR,
+                aInPx,
+                bInPx,
+                layer.calculatePixelPerMeter());
         }
     }
 
@@ -496,16 +508,19 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         g.setColor(color);
         g.drawRect((int) a.x() - (JOINT_CIRCLE_RADIUS / 2),
-                (int) a.y() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE,
-                JOINT_RECTANGLE_SIDE);
+            (int) a.y() - (JOINT_CIRCLE_RADIUS / 2),
+            JOINT_RECTANGLE_SIDE,
+            JOINT_RECTANGLE_SIDE);
         g.drawRect((int) b.x() - (JOINT_CIRCLE_RADIUS / 2),
-                (int) b.y() - (JOINT_CIRCLE_RADIUS / 2), JOINT_RECTANGLE_SIDE,
-                JOINT_RECTANGLE_SIDE);
+            (int) b.y() - (JOINT_CIRCLE_RADIUS / 2),
+            JOINT_RECTANGLE_SIDE,
+            JOINT_RECTANGLE_SIDE);
         g.drawLine((int) a.x(), (int) a.y(), (int) b.x(), (int) b.y());
         Vector middle = a.add(b).divide(2);
         g.drawString(
-                String.valueOf(a.distance(b).divide(pixelPerMeter).length()),
-                (int) middle.x(), (int) middle.y());
+            String.valueOf(a.distance(b).divide(pixelPerMeter).length()),
+            (int) middle.x(),
+            (int) middle.y());
     }
 
     /**
@@ -826,8 +841,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     @Internal
     public final void invokeFrameUpdateListeners(double pastTime)
     {
-        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
-                .onFrameUpdate(pastTime));
+        frameUpdateListeners.invoke(
+            frameUpdateListener -> frameUpdateListener.onFrameUpdate(pastTime));
         synchronized (layers)
         {
             for (Layer layer : layers)
@@ -862,7 +877,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     final void invokeMouseDownListeners(Vector position, MouseButton button)
     {
         mouseClickListeners
-                .invoke(listener -> listener.onMouseDown(position, button));
+            .invoke(listener -> listener.onMouseDown(position, button));
     }
 
     /**
@@ -872,7 +887,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     final void invokeMouseUpListeners(Vector position, MouseButton button)
     {
         mouseClickListeners
-                .invoke(listener -> listener.onMouseUp(position, button));
+            .invoke(listener -> listener.onMouseUp(position, button));
     }
 
     /**
@@ -882,7 +897,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     final void invokeMouseScrollListeners(MouseScrollEvent event)
     {
         mouseScrollListeners
-                .invoke(listener -> listener.onMouseScrollMove(event));
+            .invoke(listener -> listener.onMouseScrollMove(event));
     }
 
     /**
@@ -903,7 +918,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     public final Vector mousePosition()
     {
         return Controller.convertMousePosition(this,
-                Controller.mousePositionInFrame());
+            Controller.mousePositionInFrame());
     }
 
     /**

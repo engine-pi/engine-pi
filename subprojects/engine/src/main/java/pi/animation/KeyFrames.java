@@ -163,10 +163,10 @@ public class KeyFrames implements FrameUpdateListener
             // Business as usual: Interpolation
             // Progres = [time since last key frame] / [time between current and
             // next key frame]
-            toAnimate.accept(currentInterpolator.interpolate(
-                    (currentAnimationTime - currentKeyframe.timecode())
-                            / (currentInterpolationEndpoint
-                                    - currentKeyframe.timecode())));
+            toAnimate.accept(currentInterpolator
+                .interpolate((currentAnimationTime - currentKeyframe.timecode())
+                        / (currentInterpolationEndpoint
+                                - currentKeyframe.timecode())));
         }
         else
         {
@@ -205,7 +205,7 @@ public class KeyFrames implements FrameUpdateListener
         if (keyFrame.hasNext())
         {
             currentInterpolator = keyFrame
-                    .generateInterpolator(keyFrame.next().value());
+                .generateInterpolator(keyFrame.next().value());
             currentInterpolationEndpoint = keyFrame.next().timecode();
         }
         else

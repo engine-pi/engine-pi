@@ -296,10 +296,10 @@ class ImagesToVideoConverter
     void generate()
     {
         generate(
-                // Bestes Resultat
-                SupportedAnimatedFormat.MP4,
-                // Lossless keinen Streifen
-                SupportedAnimatedFormat.WEBP
+            // Bestes Resultat
+            SupportedAnimatedFormat.MP4,
+            // Lossless keinen Streifen
+            SupportedAnimatedFormat.WEBP
 
         // Sehr große Dateien
         // SupportedAnimatedFormat.GIF,

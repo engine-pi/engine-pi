@@ -63,8 +63,9 @@ public class BagPacker extends ItemRelocator implements Iterable<Item>
 
     public ItemRelocation dropWithdrawable(Coords coords, int itemNum)
     {
-        return dropWithdrawable(coords, createItem(itemNum),
-                "dropWithdrawable");
+        return dropWithdrawable(coords,
+            createItem(itemNum),
+            "dropWithdrawable");
     }
 
     public ItemRelocation dropFromBag(Coords coords)
@@ -100,12 +101,12 @@ public class BagPacker extends ItemRelocator implements Iterable<Item>
         if (item == null)
         {
             return (ItemRelocation) action
-                    .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
+                .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
         }
         if (context.getTask().getBagSize() < bag.size() + 1)
         {
             return (ItemRelocation) action
-                    .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
+                .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
         }
         item.withdraw();
         bag.add(item);

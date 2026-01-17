@@ -56,7 +56,7 @@ public class LabeledEdge extends Line
     public static double FONT_SIZE = 12;
 
     public static Font FONT = fonts.get("fonts/Cantarell-Regular.ttf")
-            .deriveFont((float) FONT_SIZE);
+        .deriveFont((float) FONT_SIZE);
 
     public LabeledEdge(double fromX, double fromY, double toX, double toY,
             String label)

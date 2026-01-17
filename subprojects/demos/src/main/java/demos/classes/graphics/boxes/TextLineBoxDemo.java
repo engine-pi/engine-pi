@@ -35,8 +35,9 @@ public class TextLineBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-        new TextLineBox("as standalone box").fontSize(32).anchor(500, 400)
-                .render(g);
+        new TextLineBox("as standalone box").fontSize(32)
+            .anchor(500, 400)
+            .render(g);
 
         var box = new VerticalBox<>(new TextLineBox("default"),
                 new TextLineBox("different fontSize").fontSize(42),

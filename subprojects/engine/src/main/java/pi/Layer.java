@@ -64,7 +64,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         FrameUpdateListenerRegistration
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
-            .comparingInt(Actor::layerPosition);
+        .comparingInt(Actor::layerPosition);
 
     private <T> Supplier<T> createParentSupplier(Function<Scene, T> supplier)
     {
@@ -549,10 +549,13 @@ public class Layer implements KeyStrokeListenerRegistration,
         Vector frameSize = Controller.windowSize();
         Vector cameraPositionInPx = new Vector(frameSize.x() / 2,
                 frameSize.y() / 2);
-        Vector fromCamToPointInWorld = scene.camera().focus()
-                .multiplyX(parallaxX).multiplyY(parallaxY).distance(worldPoint);
+        Vector fromCamToPointInWorld = scene.camera()
+            .focus()
+            .multiplyX(parallaxX)
+            .multiplyY(parallaxY)
+            .distance(worldPoint);
         return cameraPositionInPx.add(fromCamToPointInWorld.multiplyY(-1)
-                .multiply(pixelPerMeter * parallaxZoom));
+            .multiply(pixelPerMeter * parallaxZoom));
     }
 
     /**
@@ -636,15 +639,17 @@ public class Layer implements KeyStrokeListenerRegistration,
         double pixelPerMeter = calculatePixelPerMeter();
         g.rotate(Math.toRadians(rotation) * parallaxRotation, 0, 0);
         g.translate((-position.x() * parallaxX) * pixelPerMeter,
-                (position.y() * parallaxY) * pixelPerMeter);
+            (position.y() * parallaxY) * pixelPerMeter);
         // TODO: Calculate optimal bounds
         int size = Math.max(width, height);
         boolean needsSort = false;
         int previousPosition = Integer.MIN_VALUE;
         for (Actor actor : actors)
         {
-            actor.renderBasic(g, new Bounds(position.x() - size,
-                    position.y() - size, size * 2, size * 2), pixelPerMeter);
+            actor.renderBasic(g,
+                new Bounds(position.x() - size, position.y() - size, size * 2,
+                        size * 2),
+                pixelPerMeter);
             if (!needsSort)
             {
                 int actorPosition = actor.layerPosition();
@@ -729,6 +734,6 @@ public class Layer implements KeyStrokeListenerRegistration,
     {
         double scaledSeconds = pastTime * timeDistort;
         frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
-                .onFrameUpdate(scaledSeconds));
+            .onFrameUpdate(scaledSeconds));
     }
 }

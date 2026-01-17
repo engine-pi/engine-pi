@@ -57,8 +57,8 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
     public void addState(State state, double frameDuration,
             BufferedImage... images)
     {
-        addState(state, Animation.createFromImages(frameDuration, width, height,
-                images));
+        addState(state,
+            Animation.createFromImages(frameDuration, width, height, images));
     }
 
     /**
@@ -84,8 +84,9 @@ public class StatefulImagesAnimation<State> extends StatefulAnimation<State>
      */
     public void addState(State state, double frameDuration, String... filePaths)
     {
-        addState(state, Animation.createFromImages(frameDuration, width, height,
-                filePaths));
+        addState(state,
+            Animation
+                .createFromImages(frameDuration, width, height, filePaths));
     }
 
     /**

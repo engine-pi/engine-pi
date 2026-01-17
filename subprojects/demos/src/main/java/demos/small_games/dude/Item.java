@@ -22,5 +22,6 @@ package demos.small_games.dude;
 
 public enum Item
 {
-    Coin, ManaPickup
+    Coin,
+    ManaPickup
 }

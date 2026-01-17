@@ -34,7 +34,7 @@ import java.awt.geom.Rectangle2D;
 public final class FontUtil
 {
     private static final ThreadLocal<Canvas> canvas = ThreadLocal
-            .withInitial(Canvas::new);
+        .withInitial(Canvas::new);
 
     /**
      * Bestimmt den <b>Unterlängenabstand</b> der Schriftart.
@@ -89,6 +89,6 @@ public final class FontUtil
     {
         Canvas canvas = getCanvas();
         return new FontStringBounds(canvas.getFontMetrics(font)
-                .getStringBounds(content, getGraphics()));
+            .getStringBounds(content, getGraphics()));
     }
 }

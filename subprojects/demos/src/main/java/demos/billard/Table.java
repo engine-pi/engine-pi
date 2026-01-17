@@ -46,13 +46,13 @@ public class Table
                 2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP + BORDER * 2,
                 Edge.WIDTH + 2 * DIAGONAL_GAP + BORDER * 2);
         border.anchor(-Edge.WIDTH - GAP - DIAGONAL_GAP - BORDER,
-                -Edge.WIDTH / 2 - DIAGONAL_GAP - BORDER);
+            -Edge.WIDTH / 2 - DIAGONAL_GAP - BORDER);
         border.color(new Color(226, 228, 231));
         Rectangle background = new Rectangle(
                 2 * Edge.WIDTH + 2 * GAP + 2 * DIAGONAL_GAP,
                 Edge.WIDTH + 2 * DIAGONAL_GAP);
         background.anchor(-Edge.WIDTH - GAP - DIAGONAL_GAP,
-                -Edge.WIDTH / 2 - DIAGONAL_GAP);
+            -Edge.WIDTH / 2 - DIAGONAL_GAP);
         background.color(new Color(68, 121, 43));
         actors.add(border);
         actors.add(background);

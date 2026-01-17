@@ -94,7 +94,8 @@ public class ForceKlickEnvironment extends Scene implements
      */
     private enum KlickMode
     {
-        ATTACK_POINT, DIRECTION_INTENSITY
+        ATTACK_POINT,
+        DIRECTION_INTENSITY
     }
 
     private final Actor attack;
@@ -227,14 +228,14 @@ public class ForceKlickEnvironment extends Scene implements
                 return;
             }
             double vectorLength = new Vector(lastAttack, currentMousePos)
-                    .length();
+                .length();
             if (vectorLength <= 0)
             {
                 return;
             }
             stange.size(vectorLength, stange.height());
             double rot = Vector.RIGHT
-                    .angle(lastAttack.negate().add(currentMousePos));
+                .angle(lastAttack.negate().add(currentMousePos));
             if (Double.isNaN(rot))
             {
                 return;

@@ -62,8 +62,8 @@ public class Controller
         camera.focus(center.x(), center.y());
         Game.title(windowScene.getTitle());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
-                (int) Math.round(pixelPerMeter * bounds.height()),
-                (Scene) windowScene);
+            (int) Math.round(pixelPerMeter * bounds.height()),
+            (Scene) windowScene);
     }
 
     public static void launchScene(Scene scene, boolean debug)

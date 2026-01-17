@@ -69,7 +69,7 @@ public class TurtleScene extends PaintingSurfaceScene
      * Die Hintergrundfarbe der Zeichenfläche.
      */
     private Color backgroundColor = ColorUtil
-            .changeSaturation(colors.get("yellow"), 0.7);
+        .changeSaturation(colors.get("yellow"), 0.7);
 
     /**
      * Die <b>Malfläche</b>, in die die Schildkröte zeichnet.

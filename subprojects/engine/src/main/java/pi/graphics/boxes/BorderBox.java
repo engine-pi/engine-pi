@@ -163,40 +163,40 @@ public class BorderBox extends ChildBox
             g.setColor(color);
             // oben
             g.fillRect(// x
-                    x,
-                    // y
-                    y,
-                    // width
-                    width,
-                    // height
-                    thickness);
+                x,
+                // y
+                y,
+                // width
+                width,
+                // height
+                thickness);
             // rechts
             g.fillRect(// x
-                    x + thickness + child.width,
-                    // y
-                    y + thickness,
-                    // width
-                    thickness,
-                    // height
-                    child.height);
+                x + thickness + child.width,
+                // y
+                y + thickness,
+                // width
+                thickness,
+                // height
+                child.height);
             // unten
             g.fillRect(// x
-                    x,
-                    // y
-                    y + thickness + child.height,
-                    // width
-                    width,
-                    // height
-                    thickness);
+                x,
+                // y
+                y + thickness + child.height,
+                // width
+                width,
+                // height
+                thickness);
             // links
             g.fillRect(// x
-                    x,
-                    // y
-                    y + thickness,
-                    // width
-                    thickness,
-                    // height
-                    child.height);
+                x,
+                // y
+                y + thickness,
+                // width
+                thickness,
+                // height
+                child.height);
             g.setColor(oldColor);
         }
     }

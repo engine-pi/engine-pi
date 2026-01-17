@@ -48,7 +48,7 @@ import pi.util.FileUtil;
 public final class SoundContainer extends ResourcesContainer<Sound>
 {
     private static final Logger log = Logger
-            .getLogger(SoundContainer.class.getName());
+        .getLogger(SoundContainer.class.getName());
 
     public SoundContainer()
     {
@@ -77,9 +77,10 @@ public final class SoundContainer extends ResourcesContainer<Sound>
         }
         catch (IOException | UnsupportedAudioFileException e)
         {
-            log.log(Level.SEVERE, "The audio file {0} could not be loaded.",
-                    new Object[]
-                    { resource.getName() });
+            log.log(Level.SEVERE,
+                "The audio file {0} could not be loaded.",
+                new Object[]
+                { resource.getName() });
         }
         return null;
     }
@@ -99,9 +100,10 @@ public final class SoundContainer extends ResourcesContainer<Sound>
         {
             if (is == null)
             {
-                log.log(Level.SEVERE, "The audio file {0} could not be loaded.",
-                        new Object[]
-                        { name });
+                log.log(Level.SEVERE,
+                    "The audio file {0} could not be loaded.",
+                    new Object[]
+                    { name });
                 return null;
             }
             return new Sound(is, FileUtil.getFileName(name));

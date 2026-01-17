@@ -62,7 +62,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         for (PlayerState state : PlayerState.values())
         {
             Animation animationOfState = Animation
-                    .createFromAnimatedGif(state.getGifFileLocation(), 3, 3);
+                .createFromAnimatedGif(state.getGifFileLocation(), 3, 3);
             addState(state, animationOfState);
         }
     }

@@ -154,8 +154,10 @@ public class PaintingSurface
     private void drawCenteredCircle(Vector position, int size)
     {
         Vector px = translateCoordinates(position);
-        g.fillOval((int) px.x() - size / 2, (int) px.y() - size / 2, size,
-                size);
+        g.fillOval((int) px.x() - size / 2,
+            (int) px.y() - size / 2,
+            size,
+            size);
     }
 
     public void drawPoint(Vector position)

@@ -166,8 +166,10 @@ public class GraphEdge
         {
             additionalArguments = ", " + additionalArguments;
         }
-        return String.format("g.addEdge(\"%s\", \"%s\"%s);", to.label(),
-                from.label(), additionalArguments);
+        return String.format("g.addEdge(\"%s\", \"%s\"%s);",
+            to.label(),
+            from.label(),
+            additionalArguments);
     }
 
     /**

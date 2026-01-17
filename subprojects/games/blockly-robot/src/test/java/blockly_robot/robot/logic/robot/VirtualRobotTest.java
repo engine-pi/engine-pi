@@ -25,7 +25,7 @@ public class VirtualRobotTest
     public void setUp()
     {
         robot = loadVirtualRobot(
-                "conditionals_excercises/find_the_way_to_the_lake");
+            "conditionals_excercises/find_the_way_to_the_lake");
     }
 
     private void assertMovement(Movement movement, int row, int col,

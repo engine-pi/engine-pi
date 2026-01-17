@@ -93,8 +93,10 @@ public class GraphicsConfigTest
     @Test
     void testBuilderPattern()
     {
-        config.windowWidth(1280).windowHeight(720).framerate(60)
-                .pixelMultiplication(2);
+        config.windowWidth(1280)
+            .windowHeight(720)
+            .framerate(60)
+            .pixelMultiplication(2);
 
         assertEquals(1280, config.windowWidth());
         assertEquals(720, config.windowHeight());

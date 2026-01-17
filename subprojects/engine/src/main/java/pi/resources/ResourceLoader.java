@@ -47,7 +47,7 @@ import pi.util.FileUtil;
 final public class ResourceLoader
 {
     private static final Logger log = Logger
-            .getLogger(Resources.class.getName());
+        .getLogger(Resources.class.getName());
 
     private ResourceLoader()
     {
@@ -79,7 +79,7 @@ final public class ResourceLoader
         if (ResourceLoader.class.getResource("/" + normalizedFilename) != null)
         {
             return ResourceLoader.class
-                    .getResourceAsStream("/" + normalizedFilename);
+                .getResourceAsStream("/" + normalizedFilename);
         }
         return new FileInputStream(FileUtil.normalizePath(normalizedFilename));
     }

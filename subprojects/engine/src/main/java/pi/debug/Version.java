@@ -46,7 +46,8 @@ public final class Version
     {
         String className = MainAnimation.class.getName().replace('.', '/');
         String classJar = MainAnimation.class
-                .getResource("/" + className + ".class").toString();
+            .getResource("/" + className + ".class")
+            .toString();
         return classJar.startsWith("jar:");
     }
 
@@ -61,7 +62,8 @@ public final class Version
     {
         String className = MainAnimation.class.getName().replace('.', '/');
         String classJar = MainAnimation.class
-                .getResource("/" + className + ".class").toString();
+            .getResource("/" + className + ".class")
+            .toString();
         if (classJar.startsWith("jar:"))
         {
             String[] values = classJar.split("/");
@@ -72,8 +74,8 @@ public final class Version
                     try
                     {
                         return java.net.URLDecoder.decode(
-                                value.substring(0, value.length() - 1),
-                                StandardCharsets.UTF_8);
+                            value.substring(0, value.length() - 1),
+                            StandardCharsets.UTF_8);
                     }
                     catch (Exception e)
                     {
@@ -100,9 +102,11 @@ public final class Version
             String uri = MainAnimation.class.getName().replace('.', '/')
                     + ".class";
             JarURLConnection j = (JarURLConnection) ClassLoader
-                    .getSystemResource(uri).openConnection();
-            long time = j.getJarFile().getEntry("META-INF/MANIFEST.MF")
-                    .getTime();
+                .getSystemResource(uri)
+                .openConnection();
+            long time = j.getJarFile()
+                .getEntry("META-INF/MANIFEST.MF")
+                .getTime();
             return time > 0 ? time : System.currentTimeMillis();
         }
         catch (Exception e)

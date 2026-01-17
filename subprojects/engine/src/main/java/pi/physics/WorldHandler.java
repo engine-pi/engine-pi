@@ -239,7 +239,7 @@ public class WorldHandler implements ContactListener
     public void addContactToBlacklist(Contact contact)
     {
         contactsToIgnore
-                .add(new FixturePair(contact.fixtureA, contact.fixtureB));
+            .add(new FixturePair(contact.fixtureA, contact.fixtureB));
     }
     /* ____________ CONTACT LISTENER INTERFACE ____________ */
 
@@ -284,7 +284,7 @@ public class WorldHandler implements ContactListener
         {
             // Hashes sind gleich (blöde Sache!) -> beide Varianten probieren.
             List<Checkup<? extends Actor>> result1 = specificCollisionListeners
-                    .get(b1);
+                .get(b1);
             if (result1 != null)
             {
                 for (Checkup<? extends Actor> c : result1)
@@ -293,7 +293,7 @@ public class WorldHandler implements ContactListener
                 }
             }
             List<Checkup<? extends Actor>> result2 = specificCollisionListeners
-                    .get(b2);
+                .get(b2);
             if (result2 != null)
             {
                 for (Checkup<? extends Actor> c : result2)
@@ -317,7 +317,7 @@ public class WorldHandler implements ContactListener
                 higher = b1;
             }
             List<Checkup<? extends Actor>> result = specificCollisionListeners
-                    .get(lower);
+                .get(lower);
             if (result != null)
             {
                 for (Checkup<? extends Actor> c : result)
@@ -436,7 +436,7 @@ public class WorldHandler implements ContactListener
             return false;
         }
         for (ContactEdge contact = a
-                .getContactList(); contact != null; contact = contact.next)
+            .getContactList(); contact != null; contact = contact.next)
         {
             if (contact.other == b)
             {
@@ -522,8 +522,8 @@ public class WorldHandler implements ContactListener
                         "Body is missing on an Actor with an existing WorldHandler");
             }
             actor.physicsHandler().worldHandler().generalCollisonListeners
-                    .computeIfAbsent(body, key -> new CopyOnWriteArrayList<>())
-                    .add(listener);
+                .computeIfAbsent(body, key -> new CopyOnWriteArrayList<>())
+                .add(listener);
         });
     }
 
@@ -548,7 +548,7 @@ public class WorldHandler implements ContactListener
             if (b1 == null || b2 == null)
             {
                 Logger.error("Kollision",
-                        "Ein {@link Actor}-Objekt ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
+                    "Ein {@link Actor}-Objekt ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
                 return;
             }
             Body lower, higher;
@@ -564,8 +564,8 @@ public class WorldHandler implements ContactListener
             }
             Checkup<E> checkup = new Checkup<>(listener, higher, collider);
             worldHandler.specificCollisionListeners
-                    .computeIfAbsent(lower, key -> new CopyOnWriteArrayList<>())
-                    .add(checkup);
+                .computeIfAbsent(lower, key -> new CopyOnWriteArrayList<>())
+                .add(checkup);
         });
     }
 
@@ -577,10 +577,12 @@ public class WorldHandler implements ContactListener
             Actor a, Actor b, JointBuilder<JointType> jointBuilder,
             Wrapper wrapper)
     {
-        List<Runnable> releaseCallbacks = addMountListener(a, b,
-                worldHandler -> wrapper.joint(jointBuilder.createJoint(
-                        worldHandler.world(), a.physicsHandler().body(),
-                        b.physicsHandler().body()), worldHandler));
+        List<Runnable> releaseCallbacks = addMountListener(a,
+            b,
+            worldHandler -> wrapper
+                .joint(jointBuilder.createJoint(worldHandler.world(),
+                    a.physicsHandler().body(),
+                    b.physicsHandler().body()), worldHandler));
         releaseCallbacks.forEach(wrapper::addReleaseListener);
         return wrapper;
     }

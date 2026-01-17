@@ -199,7 +199,7 @@ public class DirectedLineSegmentDemo extends Scene
         // Proportional rotated
         plusRelativeRotated.point2(lineSegment.relativeRotatedPoint(-0.5, 20));
         minusRelativeRotated
-                .point2(lineSegment.relativeRotatedPoint(-0.5, -20));
+            .point2(lineSegment.relativeRotatedPoint(-0.5, -20));
 
         plusFixedVertical.point1(lineSegment.fixedPoint(1));
         plusFixedVertical.point2(lineSegment.fixedVerticalPoint(1, 1));
@@ -208,18 +208,22 @@ public class DirectedLineSegmentDemo extends Scene
 
         plusRelativeVertical.point1(lineSegment.relativePoint(0.75));
         plusRelativeVertical
-                .point2(lineSegment.relativeVerticalPoint(0.75, 0.25));
+            .point2(lineSegment.relativeVerticalPoint(0.75, 0.25));
         minusRelativeVertical.point1(lineSegment.relativePoint(-0.5));
         minusRelativeVertical
-                .point2(lineSegment.relativeVerticalPoint(-0.5, -0.1));
+            .point2(lineSegment.relativeVerticalPoint(-0.5, -0.1));
 
         point_0_5.center(lineSegment.relativePoint(0.5));
         point_2.center(lineSegment.relativePoint(2));
         point_minus_1.center(lineSegment.relativePoint(-1));
 
-        table.forBox(0, 1, cell -> cell.box
+        table.forBox(0,
+            1,
+            cell -> cell.box
                 .content(TextUtil.roundNumber(lineSegment.length(), 2) + " m"));
-        table.forBox(1, 1, cell -> cell.box
+        table.forBox(1,
+            1,
+            cell -> cell.box
                 .content(TextUtil.roundNumber(lineSegment.angle(), 2) + " °"));
         table.forBox(2, 1, cell -> cell.box.content(lineSegment.to().format()));
     }

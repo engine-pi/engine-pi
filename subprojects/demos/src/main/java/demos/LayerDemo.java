@@ -52,7 +52,7 @@ public class LayerDemo extends Scene
             for (Actor actor : actors())
             {
                 System.out
-                        .println("In der Physics-Engine registriert: " + actor);
+                    .println("In der Physics-Engine registriert: " + actor);
                 System.out.println(actor.center());
             }
         });

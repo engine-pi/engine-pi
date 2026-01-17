@@ -17,7 +17,7 @@ public class MovementTest
     void setUp()
     {
         Task task = Task
-                .loadByTaskPath("conditionals_excercises/find_the_destination");
+            .loadByTaskPath("conditionals_excercises/find_the_destination");
         robot = task.getVirtualRobot();
     }
 

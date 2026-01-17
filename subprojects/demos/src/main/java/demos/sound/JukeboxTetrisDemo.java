@@ -44,14 +44,14 @@ class Player
 
     public static void korobeinikiStopFalse()
     {
-        Jukebox.playMusic(getPath("A-Type-Music_Korobeiniki.ogg"), false,
-                false);
+        Jukebox
+            .playMusic(getPath("A-Type-Music_Korobeiniki.ogg"), false, false);
     }
 
     public static void title()
     {
         Jukebox.playIntroTrack(getPath("Title_Intro.ogg"),
-                getPath("Title_Loop.ogg"));
+            getPath("Title_Loop.ogg"));
     }
 
     public static void blockMove()

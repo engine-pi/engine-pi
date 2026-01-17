@@ -68,8 +68,10 @@ public class TextBlockBox extends TextBox
     protected void calculateDimension()
     {
         width = definedWidth > 0 ? definedWidth : 300;
-        lines = splitIntoLines(content, FontUtil.getFontRenderContext(), font,
-                width);
+        lines = splitIntoLines(content,
+            FontUtil.getFontRenderContext(),
+            font,
+            width);
         var dim = measureLines(lines);
         width = dim.width;
         height = dim.height;
@@ -92,7 +94,7 @@ public class TextBlockBox extends TextBox
             final AttributedString styledText = new AttributedString(line);
             styledText.addAttribute(TextAttribute.FONT, font);
             final AttributedCharacterIterator iterator = styledText
-                    .getIterator();
+                .getIterator();
             final LineBreakMeasurer measurer = new LineBreakMeasurer(iterator,
                     context);
             while (true)

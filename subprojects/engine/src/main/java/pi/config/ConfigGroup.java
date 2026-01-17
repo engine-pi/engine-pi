@@ -51,10 +51,10 @@ import java.util.logging.Logger;
 public abstract class ConfigGroup
 {
     private static final Logger log = Logger
-            .getLogger(ConfigGroup.class.getName());
+        .getLogger(ConfigGroup.class.getName());
 
     private final Collection<ConfigurationChangedListener> listeners = ConcurrentHashMap
-            .newKeySet();
+        .newKeySet();
 
     private final String prefix;
 
@@ -66,7 +66,7 @@ public abstract class ConfigGroup
     protected ConfigGroup()
     {
         final ConfigGroupInfo info = this.getClass()
-                .getAnnotation(ConfigGroupInfo.class);
+            .getAnnotation(ConfigGroupInfo.class);
         this.prefix = info.prefix();
         this.debug = info.debug();
     }
@@ -144,8 +144,8 @@ public abstract class ConfigGroup
     protected void initializeByProperty(final String key, final String value)
     {
         final String propertyName = key.substring(this.getPrefix().length());
-        ReflectionUtil.setFieldValue(this.getClass(), this, propertyName,
-                value);
+        ReflectionUtil
+            .setFieldValue(this.getClass(), this, propertyName, value);
     }
 
     /**
@@ -185,8 +185,8 @@ public abstract class ConfigGroup
                 }
                 else if (value instanceof String[])
                 {
-                    properties.setProperty(propertyKey, String
-                            .join(",", (String[]) value).replace("null", ""));
+                    properties.setProperty(propertyKey,
+                        String.join(",", (String[]) value).replace("null", ""));
                 }
                 else if (field.getType().isEnum())
                 {

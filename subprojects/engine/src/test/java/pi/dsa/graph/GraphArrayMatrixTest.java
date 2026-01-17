@@ -76,10 +76,10 @@ public class GraphArrayMatrixTest
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
         RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> g.addEdge("A", "C", 10, false));
+            () -> g.addEdge("A", "C", 10, false));
         assertEquals(
-                "Es konnte kein Knoten mit dem Bezeichner „C“ gefunden werden.",
-                exception.getMessage());
+            "Es konnte kein Knoten mit dem Bezeichner „C“ gefunden werden.",
+            exception.getMessage());
         assertThrows(RuntimeException.class, () -> g.getEdgeWeight("A", "C"));
     }
 

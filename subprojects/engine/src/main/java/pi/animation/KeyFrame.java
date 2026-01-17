@@ -186,6 +186,7 @@ public class KeyFrame<Value extends Number>
     @API
     public enum Type
     {
-        SMOOTHED_SIN, LINEAR;
+        SMOOTHED_SIN,
+        LINEAR;
     }
 }

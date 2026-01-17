@@ -139,14 +139,15 @@ public class ImageFont
         this.alignment = alignment;
         glyphWidth = 0;
         glyphHeight = 0;
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(
-                Objects.requireNonNull(ResourceLoader.getLocation(basePath))
-                        .toURI())))
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths
+            .get(Objects.requireNonNull(ResourceLoader.getLocation(basePath))
+                .toURI())))
         {
             for (Path path : stream)
             {
-                if (!Files.isDirectory(path) && path.toString().toLowerCase()
-                        .endsWith("." + this.extension.toLowerCase()))
+                if (!Files.isDirectory(path) && path.toString()
+                    .toLowerCase()
+                    .endsWith("." + this.extension.toLowerCase()))
                 {
                     ImageFontGlyph glyph = new ImageFontGlyph(path);
                     if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
@@ -429,103 +430,103 @@ public class ImageFont
     {
         // https://de.wikipedia.org/wiki/Unicodeblock_Basis-Lateinisch
         addMapping(' ', "0020_space") //
-                .addMapping('!', "0021_exclamation-mark") //
-                .addMapping('"', "0022_quotation-mark") //
-                .addMapping('#', "0023_number-sign") //
-                .addMapping('$', "0024_dollar-sign") //
-                .addMapping('%', "0025_percent-sign") //
-                .addMapping('&', "0026_ampersand") //
-                .addMapping('\'', "0027_apostrophe") //
-                .addMapping('(', "0028_left-parenthesis") //
-                .addMapping(')', "0029_right-parenthesis") //
-                .addMapping('*', "002a_asterisk") //
-                .addMapping('+', "002b_plus-sign") //
-                .addMapping(',', "002c_comma") //
-                .addMapping('-', "002d_hyphen-minus") //
-                .addMapping('.', "002e_full-stop") //
-                .addMapping('/', "002f_solidus") //
-                .addMapping('0', "0030_digit-zero") //
-                .addMapping('1', "0031_digit-one") //
-                .addMapping('2', "0032_digit-two") //
-                .addMapping('3', "0033_digit-three") //
-                .addMapping('4', "0034_digit-four") //
-                .addMapping('5', "0035_digit-five") //
-                .addMapping('6', "0036_digit-six") //
-                .addMapping('7', "0037_digit-seven") //
-                .addMapping('8', "0038_digit-eight") //
-                .addMapping('9', "0039_digit-nine") //
-                .addMapping(':', "003a_colon") //
-                .addMapping(';', "003b_semicolon") //
-                .addMapping('<', "003c_less-than-sign") //
-                .addMapping('=', "003d_equals-sign") //
-                .addMapping('>', "003e_greater-than-sign") //
-                .addMapping('?', "003f_question-mark") //
-                .addMapping('@', "0040_commercial-at") //
-                .addMapping('A', "0041_latin-capital-letter-a") //
-                .addMapping('B', "0042_latin-capital-letter-b") //
-                .addMapping('C', "0043_latin-capital-letter-c") //
-                .addMapping('D', "0044_latin-capital-letter-d") //
-                .addMapping('E', "0045_latin-capital-letter-e") //
-                .addMapping('F', "0046_latin-capital-letter-f") //
-                .addMapping('G', "0047_latin-capital-letter-g") //
-                .addMapping('H', "0048_latin-capital-letter-h") //
-                .addMapping('I', "0049_latin-capital-letter-i") //
-                .addMapping('J', "004a_latin-capital-letter-j") //
-                .addMapping('K', "004b_latin-capital-letter-k") //
-                .addMapping('L', "004c_latin-capital-letter-l") //
-                .addMapping('M', "004d_latin-capital-letter-m") //
-                .addMapping('N', "004e_latin-capital-letter-n") //
-                .addMapping('O', "004f_latin-capital-letter-o") //
-                .addMapping('P', "0050_latin-capital-letter-p") //
-                .addMapping('Q', "0051_latin-capital-letter-q") //
-                .addMapping('R', "0052_latin-capital-letter-r") //
-                .addMapping('S', "0053_latin-capital-letter-s") //
-                .addMapping('T', "0054_latin-capital-letter-t") //
-                .addMapping('U', "0055_latin-capital-letter-u") //
-                .addMapping('V', "0056_latin-capital-letter-v") //
-                .addMapping('W', "0057_latin-capital-letter-w") //
-                .addMapping('X', "0058_latin-capital-letter-x") //
-                .addMapping('Y', "0059_latin-capital-letter-y") //
-                .addMapping('Z', "005a_latin-capital-letter-z") //
-                .addMapping('[', "005b_left-square-bracket") //
-                .addMapping('\\', "005c_reverse-solidus") //
-                .addMapping(']', "005d_right-square-bracket") //
-                .addMapping('^', "005e_circumflex-accent") //
-                .addMapping('_', "005f_low-line") //
-                .addMapping('`', "0060_grave-accent") //
-                .addMapping('a', "0061_latin-small-letter-a") //
-                .addMapping('b', "0062_latin-small-letter-b") //
-                .addMapping('c', "0063_latin-small-letter-c") //
-                .addMapping('d', "0064_latin-small-letter-d") //
-                .addMapping('e', "0065_latin-small-letter-e") //
-                .addMapping('f', "0066_latin-small-letter-f") //
-                .addMapping('g', "0067_latin-small-letter-g") //
-                .addMapping('h', "0068_latin-small-letter-h") //
-                .addMapping('i', "0069_latin-small-letter-i") //
-                .addMapping('j', "006a_latin-small-letter-j") //
-                .addMapping('k', "006b_latin-small-letter-k") //
-                .addMapping('l', "006c_latin-small-letter-l") //
-                .addMapping('m', "006d_latin-small-letter-m") //
-                .addMapping('n', "006e_latin-small-letter-n") //
-                .addMapping('o', "006f_latin-small-letter-o") //
-                .addMapping('p', "0070_latin-small-letter-p") //
-                .addMapping('q', "0071_latin-small-letter-q") //
-                .addMapping('r', "0072_latin-small-letter-r") //
-                .addMapping('s', "0073_latin-small-letter-s") //
-                .addMapping('t', "0074_latin-small-letter-t") //
-                .addMapping('u', "0075_latin-small-letter-u") //
-                .addMapping('v', "0076_latin-small-letter-v") //
-                .addMapping('w', "0077_latin-small-letter-w") //
-                .addMapping('x', "0078_latin-small-letter-x") //
-                .addMapping('y', "0079_latin-small-letter-y") //
-                .addMapping('z', "007a_latin-small-letter-z") //
-                .addMapping('{', "007b_left-curly-bracket") //
-                .addMapping('|', "007c_vertical-line") //
-                .addMapping('}', "007d_right-curly-bracket") //
-                .addMapping('~', "007e_tilde") //
-                .addMapping('©', "00a9_copyright-sign") //
-                .addMapping('“', "201c_left-double-quotation-mark") //
-                .addMapping('”', "201d_right-double-quotation-mark");
+            .addMapping('!', "0021_exclamation-mark") //
+            .addMapping('"', "0022_quotation-mark") //
+            .addMapping('#', "0023_number-sign") //
+            .addMapping('$', "0024_dollar-sign") //
+            .addMapping('%', "0025_percent-sign") //
+            .addMapping('&', "0026_ampersand") //
+            .addMapping('\'', "0027_apostrophe") //
+            .addMapping('(', "0028_left-parenthesis") //
+            .addMapping(')', "0029_right-parenthesis") //
+            .addMapping('*', "002a_asterisk") //
+            .addMapping('+', "002b_plus-sign") //
+            .addMapping(',', "002c_comma") //
+            .addMapping('-', "002d_hyphen-minus") //
+            .addMapping('.', "002e_full-stop") //
+            .addMapping('/', "002f_solidus") //
+            .addMapping('0', "0030_digit-zero") //
+            .addMapping('1', "0031_digit-one") //
+            .addMapping('2', "0032_digit-two") //
+            .addMapping('3', "0033_digit-three") //
+            .addMapping('4', "0034_digit-four") //
+            .addMapping('5', "0035_digit-five") //
+            .addMapping('6', "0036_digit-six") //
+            .addMapping('7', "0037_digit-seven") //
+            .addMapping('8', "0038_digit-eight") //
+            .addMapping('9', "0039_digit-nine") //
+            .addMapping(':', "003a_colon") //
+            .addMapping(';', "003b_semicolon") //
+            .addMapping('<', "003c_less-than-sign") //
+            .addMapping('=', "003d_equals-sign") //
+            .addMapping('>', "003e_greater-than-sign") //
+            .addMapping('?', "003f_question-mark") //
+            .addMapping('@', "0040_commercial-at") //
+            .addMapping('A', "0041_latin-capital-letter-a") //
+            .addMapping('B', "0042_latin-capital-letter-b") //
+            .addMapping('C', "0043_latin-capital-letter-c") //
+            .addMapping('D', "0044_latin-capital-letter-d") //
+            .addMapping('E', "0045_latin-capital-letter-e") //
+            .addMapping('F', "0046_latin-capital-letter-f") //
+            .addMapping('G', "0047_latin-capital-letter-g") //
+            .addMapping('H', "0048_latin-capital-letter-h") //
+            .addMapping('I', "0049_latin-capital-letter-i") //
+            .addMapping('J', "004a_latin-capital-letter-j") //
+            .addMapping('K', "004b_latin-capital-letter-k") //
+            .addMapping('L', "004c_latin-capital-letter-l") //
+            .addMapping('M', "004d_latin-capital-letter-m") //
+            .addMapping('N', "004e_latin-capital-letter-n") //
+            .addMapping('O', "004f_latin-capital-letter-o") //
+            .addMapping('P', "0050_latin-capital-letter-p") //
+            .addMapping('Q', "0051_latin-capital-letter-q") //
+            .addMapping('R', "0052_latin-capital-letter-r") //
+            .addMapping('S', "0053_latin-capital-letter-s") //
+            .addMapping('T', "0054_latin-capital-letter-t") //
+            .addMapping('U', "0055_latin-capital-letter-u") //
+            .addMapping('V', "0056_latin-capital-letter-v") //
+            .addMapping('W', "0057_latin-capital-letter-w") //
+            .addMapping('X', "0058_latin-capital-letter-x") //
+            .addMapping('Y', "0059_latin-capital-letter-y") //
+            .addMapping('Z', "005a_latin-capital-letter-z") //
+            .addMapping('[', "005b_left-square-bracket") //
+            .addMapping('\\', "005c_reverse-solidus") //
+            .addMapping(']', "005d_right-square-bracket") //
+            .addMapping('^', "005e_circumflex-accent") //
+            .addMapping('_', "005f_low-line") //
+            .addMapping('`', "0060_grave-accent") //
+            .addMapping('a', "0061_latin-small-letter-a") //
+            .addMapping('b', "0062_latin-small-letter-b") //
+            .addMapping('c', "0063_latin-small-letter-c") //
+            .addMapping('d', "0064_latin-small-letter-d") //
+            .addMapping('e', "0065_latin-small-letter-e") //
+            .addMapping('f', "0066_latin-small-letter-f") //
+            .addMapping('g', "0067_latin-small-letter-g") //
+            .addMapping('h', "0068_latin-small-letter-h") //
+            .addMapping('i', "0069_latin-small-letter-i") //
+            .addMapping('j', "006a_latin-small-letter-j") //
+            .addMapping('k', "006b_latin-small-letter-k") //
+            .addMapping('l', "006c_latin-small-letter-l") //
+            .addMapping('m', "006d_latin-small-letter-m") //
+            .addMapping('n', "006e_latin-small-letter-n") //
+            .addMapping('o', "006f_latin-small-letter-o") //
+            .addMapping('p', "0070_latin-small-letter-p") //
+            .addMapping('q', "0071_latin-small-letter-q") //
+            .addMapping('r', "0072_latin-small-letter-r") //
+            .addMapping('s', "0073_latin-small-letter-s") //
+            .addMapping('t', "0074_latin-small-letter-t") //
+            .addMapping('u', "0075_latin-small-letter-u") //
+            .addMapping('v', "0076_latin-small-letter-v") //
+            .addMapping('w', "0077_latin-small-letter-w") //
+            .addMapping('x', "0078_latin-small-letter-x") //
+            .addMapping('y', "0079_latin-small-letter-y") //
+            .addMapping('z', "007a_latin-small-letter-z") //
+            .addMapping('{', "007b_left-curly-bracket") //
+            .addMapping('|', "007c_vertical-line") //
+            .addMapping('}', "007d_right-curly-bracket") //
+            .addMapping('~', "007e_tilde") //
+            .addMapping('©', "00a9_copyright-sign") //
+            .addMapping('“', "201c_left-double-quotation-mark") //
+            .addMapping('”', "201d_right-double-quotation-mark");
     }
 
     @Getter
@@ -672,8 +673,11 @@ public class ImageFont
      */
     public BufferedImage render(String content)
     {
-        return render(content, lineWidth(content), alignment, color,
-                pixelMultiplication);
+        return render(content,
+            lineWidth(content),
+            alignment,
+            color,
+            pixelMultiplication);
     }
 
     /**
@@ -687,7 +691,7 @@ public class ImageFont
         if (glyphWidth != 8 || glyphHeight != 8)
         {
             formatter.append("glyphDimension",
-                    String.format("%sx%s", glyphWidth, glyphHeight));
+                String.format("%sx%s", glyphWidth, glyphHeight));
         }
         if (!extension.equals("png"))
         {

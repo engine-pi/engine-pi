@@ -24,8 +24,11 @@ public class AnimationDemo extends Scene implements KeyStrokeListener
     public AnimationDemo()
     {
         animation = Animation.createFromSpritesheet(0.1,
-                "Pixel-Adventure-1/Main Characters/Pink Man/Run (32x32).png",
-                12, 1, 10.0, 10.0);
+            "Pixel-Adventure-1/Main Characters/Pink Man/Run (32x32).png",
+            12,
+            1,
+            10.0,
+            10.0);
         add(animation);
         focusCenter();
     }

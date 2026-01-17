@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class ItemCreatorTest
 {
     ItemCreator items = loadItemCreator(
-            "conditionals_excercises/find_the_destination");
+        "conditionals_excercises/find_the_destination");
 
     @Test
     public void testCreateItemByNum()

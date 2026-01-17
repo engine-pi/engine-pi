@@ -18,7 +18,8 @@ public class DrawImage extends Graphics2DComponent
     {
         BufferedImage image = images.get("froggy/Frog.png");
         System.out.println(String.format("Breite: %d Höhe: %d",
-                image.getWidth(), image.getHeight()));
+            image.getWidth(),
+            image.getHeight()));
 
         g.drawImage(image, 50, 50, null);
 

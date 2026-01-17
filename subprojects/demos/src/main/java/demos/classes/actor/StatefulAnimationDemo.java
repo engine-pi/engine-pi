@@ -27,8 +27,13 @@ import pi.event.KeyStrokeListener;
 
 enum State
 {
-    DOUBLE_JUMP("Double Jump"), FALL("Fall"), HIT("Hit"), IDLE("Idle"),
-    JUMP("Jump"), RUN("Run"), WALL_JUMP("Wall Jump");
+    DOUBLE_JUMP("Double Jump"),
+    FALL("Fall"),
+    HIT("Hit"),
+    IDLE("Idle"),
+    JUMP("Jump"),
+    RUN("Run"),
+    WALL_JUMP("Wall Jump");
 
     private final String fileName;
 
@@ -57,7 +62,6 @@ class Character extends StatefulSpritesheetAnimation<State>
 }
 
 /**
- * Demonstriert eine <b>animierte</b> Figur, die <b>mehrere Zustände</b> haben
  * kann ({@link StatefulSpritesheetAnimation}).
  *
  * @author Josef Friedrich

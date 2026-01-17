@@ -156,7 +156,7 @@ public class PhysicsData
         bodyDef.fixedRotation = isRotationLocked();
         bodyDef.linearVelocity = velocity().toVec2();
         bodyDef.angularVelocity = (float) Math
-                .toRadians(angularVelocity() * 360);
+            .toRadians(angularVelocity() * 360);
         bodyDef.type = bodyType().toBox2D();
         bodyDef.active = true;
         bodyDef.gravityScale = (float) gravityScale;

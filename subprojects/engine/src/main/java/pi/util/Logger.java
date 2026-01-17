@@ -58,19 +58,19 @@ final public class Logger
             if (log.isDirectory())
             {
                 System.err.println(
-                        "Logger konnte nicht initialisiert werden, da 'engine-pi.log' ein Verzeichnis ist!");
+                    "Logger konnte nicht initialisiert werden, da 'engine-pi.log' ein Verzeichnis ist!");
                 System.exit(1);
             }
             else if (!log.canWrite())
             {
                 System.err.println(
-                        "Logger konnte nicht initialisiert werden, da 'engine-pi.log' nicht beschreibbar ist!");
+                    "Logger konnte nicht initialisiert werden, da 'engine-pi.log' nicht beschreibbar ist!");
                 System.exit(1);
             }
             else
             {
                 System.err.println(
-                        "Logger konnte aus unbekannten Gründen nicht initialisiert werden!");
+                    "Logger konnte aus unbekannten Gründen nicht initialisiert werden!");
                 System.exit(1);
             }
         }
@@ -110,8 +110,13 @@ final public class Logger
     private static String write(String type, String tag, String filename,
             int line, String message, boolean error, boolean printOnConsole)
     {
-        String str = String.format("[%s][%s][%s] %s (%s:%s)", getTime(), type,
-                tag, message, filename, line);
+        String str = String.format("[%s][%s][%s] %s (%s:%s)",
+            getTime(),
+            type,
+            tag,
+            message,
+            filename,
+            line);
         if (printOnConsole)
         {
             if (error)
@@ -155,7 +160,7 @@ final public class Logger
         catch (IOException e)
         {
             System.err.println(
-                    "Logger konnte folgende Zeile nicht schreiben:\n" + text);
+                "Logger konnte folgende Zeile nicht schreiben:\n" + text);
             return null;
         }
     }
@@ -201,8 +206,13 @@ final public class Logger
         if (config.debug.verbose())
         {
             StackTraceElement e = Thread.currentThread().getStackTrace()[2];
-            write("VER", tag, e.getFileName(), e.getLineNumber(), s, false,
-                    false);
+            write("VER",
+                tag,
+                e.getFileName(),
+                e.getLineNumber(),
+                s,
+                false,
+                false);
         }
     }
 
@@ -218,7 +228,12 @@ final public class Logger
     public static void debug(String tag, String s)
     {
         StackTraceElement e = Thread.currentThread().getStackTrace()[2];
-        write("DEBUG", tag, e.getFileName(), e.getLineNumber(), s, false,
-                Controller.isDebug());
+        write("DEBUG",
+            tag,
+            e.getFileName(),
+            e.getLineNumber(),
+            s,
+            false,
+            Controller.isDebug());
     }
 }

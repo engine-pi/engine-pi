@@ -30,8 +30,10 @@ public class RopeJointDemo extends BaseJointScene
     public RopeJointDemo()
     {
         super();
-        joint = a.createRopeJoint(b, new Vector(0.25, 0.25),
-                new Vector(0.75, 0.75), 3);
+        joint = a.createRopeJoint(b,
+            new Vector(0.25, 0.25),
+            new Vector(0.75, 0.75),
+            3);
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });

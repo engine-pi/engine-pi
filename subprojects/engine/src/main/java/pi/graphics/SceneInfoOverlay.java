@@ -289,8 +289,9 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay title(String title)
     {
-        this.title = setBox(title, content -> new TextLineBox(content)
-                .fontStyle(FontStyle.BOLD).fontSize(18)).color(textColor);
+        this.title = setBox(title,
+            content -> new TextLineBox(content).fontStyle(FontStyle.BOLD)
+                .fontSize(18)).color(textColor);
         return assemble();
     }
 
@@ -340,7 +341,7 @@ public class SceneInfoOverlay
     public SceneInfoOverlay description(String description)
     {
         this.description = setBox(description,
-                content -> new TextBlockBox(description).fontSize(12))
+            content -> new TextBlockBox(description).fontSize(12))
                 .color(textColor);
         return assemble();
     }
@@ -365,7 +366,8 @@ public class SceneInfoOverlay
     @API
     public SceneInfoOverlay help(String help)
     {
-        this.help = setBox(help, content -> new TextBlockBox(help).fontSize(12)
+        this.help = setBox(help,
+            content -> new TextBlockBox(help).fontSize(12)
                 .fontStyle(FontStyle.ITALIC)).color(textColor);
         return assemble();
     }

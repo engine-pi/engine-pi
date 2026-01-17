@@ -48,6 +48,6 @@ public class GraphNodeTest
     void testGenerateJavaCode()
     {
         assertEquals(node.generateJavaCode(),
-                "g.addNode(\"test\", 1.20, 3.40);");
+            "g.addNode(\"test\", 1.20, 3.40);");
     }
 }

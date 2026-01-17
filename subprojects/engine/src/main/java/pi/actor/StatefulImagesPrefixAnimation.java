@@ -60,8 +60,12 @@ public class StatefulImagesPrefixAnimation<State>
     public void addState(State state, double frameDuration,
             String directoryPath, String prefix)
     {
-        addState(state, Animation.createFromImagesPrefix(frameDuration, width,
-                height, directoryPath, prefix));
+        addState(state,
+            Animation.createFromImagesPrefix(frameDuration,
+                width,
+                height,
+                directoryPath,
+                prefix));
     }
 
     /**
@@ -77,7 +81,11 @@ public class StatefulImagesPrefixAnimation<State>
      */
     public void addState(State state, String directoryPath, String prefix)
     {
-        addState(state, Animation.createFromImagesPrefix(frameDuration, width,
-                height, directoryPath, prefix));
+        addState(state,
+            Animation.createFromImagesPrefix(frameDuration,
+                width,
+                height,
+                directoryPath,
+                prefix));
     }
 }

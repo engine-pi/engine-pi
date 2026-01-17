@@ -58,18 +58,22 @@ public class ColorContainerVisualizer
             scene.add(new Rectangle(1, 1).anchor(-12, y).color(color.color()));
             // Der dezimale Farbcode
             scene.add(new Text(color.colorDecFormatted()).height(0.5)
-                    .font("Monospaced").anchor(-10, y + 0.25)
-                    .color(color.color()));
+                .font("Monospaced")
+                .anchor(-10, y + 0.25)
+                .color(color.color()));
             // Der hexadezimale Farbcode
             scene.add(new Text(color.colorHexFormatted()).height(0.5)
-                    .font("Monospaced").anchor(-6, y + 0.25)
-                    .color(color.color()));
+                .font("Monospaced")
+                .anchor(-6, y + 0.25)
+                .color(color.color()));
             // Der Hauptname der Farbe
-            scene.add(new Text(color.name()).height(0.5).anchor(-3, y + 0.25)
-                    .color(WHITE));
+            scene.add(new Text(color.name()).height(0.5)
+                .anchor(-3, y + 0.25)
+                .color(WHITE));
             // Die Aliasse
             scene.add(new Text(color.aliasesFormatted()).height(0.3)
-                    .color(WHITE).anchor(1, y + 0.3));
+                .color(WHITE)
+                .anchor(1, y + 0.3));
             y--;
         }
     }

@@ -56,14 +56,14 @@ public class TextUtilTest
         void testLeft()
         {
             assertEquals(align(text, LEFT),
-                    "Lorem ipsum\n" + "dolor sit\n" + "amet.");
+                "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
         void testWidth()
         {
             assertEquals(align(text, 15, LEFT),
-                    "Lorem ipsum\n" + "dolor sit\n" + "amet.");
+                "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
@@ -76,14 +76,14 @@ public class TextUtilTest
         void testRight()
         {
             assertEquals(align(text, RIGHT),
-                    "Lorem ipsum\n" + "  dolor sit\n" + "      amet.");
+                "Lorem ipsum\n" + "  dolor sit\n" + "      amet.");
         }
 
         @Test
         void testCenter()
         {
             assertEquals(align(text, CENTER),
-                    "Lorem ipsum\n" + " dolor sit\n" + "   amet.");
+                "Lorem ipsum\n" + " dolor sit\n" + "   amet.");
         }
     }
 
@@ -102,14 +102,14 @@ public class TextUtilTest
         void testCenter()
         {
             assertEquals(wrap(text, 10, CENTER),
-                    "  Lorem\n" + "  ipsum\n" + "dolor sit");
+                "  Lorem\n" + "  ipsum\n" + "dolor sit");
         }
 
         @Test
         void testRight()
         {
             assertEquals(wrap(text, 10, RIGHT),
-                    "     Lorem\n" + "     ipsum\n" + " dolor sit");
+                "     Lorem\n" + "     ipsum\n" + " dolor sit");
         }
 
         @Test
@@ -128,7 +128,7 @@ public class TextUtilTest
         void testInputWithNewlines()
         {
             assertEquals(wrap("Lorem\nipsum\ndolor\nsit", 10),
-                    "Lorem\nipsum\ndolor\nsit");
+                "Lorem\nipsum\ndolor\nsit");
         }
     }
 }

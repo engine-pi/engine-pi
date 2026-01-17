@@ -47,6 +47,6 @@ public class StatefulAnimatedGifAnimation<State>
     public void addState(State state, String filepath)
     {
         addState(state,
-                Animation.createFromAnimatedGif(filepath, width, height));
+            Animation.createFromAnimatedGif(filepath, width, height));
     }
 }

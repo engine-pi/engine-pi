@@ -36,7 +36,8 @@ public class FroggyJump extends Scene
 
     public FroggyJump()
     {
-        info().title("Spiel „Froggy Jump“").help(
+        info().title("Spiel „Froggy Jump“")
+            .help(
                 "Tastenkürzel: a bewegt den Frosch nach links, d bewegt den Frosch nach rechts.");
         frog = new Frog();
         add(frog);
@@ -68,7 +69,7 @@ public class FroggyJump extends Scene
                 Platform platform = new Platform(6 / numPlatforms,
                         PLATFORM_HEIGHT);
                 platform.anchor(numPlatforms * (j + 1) * i * Random.range(),
-                        i * 4);
+                    i * 4);
                 add(platform);
             }
             if (i > 3)
@@ -76,7 +77,8 @@ public class FroggyJump extends Scene
                 for (int j = 0; j < Random.range(3); j++)
                 {
                     SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
-                            Random.range() * 4 + 0.5 + 5 * i, layer());
+                        Random.range() * 4 + 0.5 + 5 * i,
+                        layer());
                 }
             }
         }

@@ -52,10 +52,10 @@ public class Tetris
     public static final int GRID_WIDTH = 10;
 
     public static final ColorScheme COLOR_SCHEME_GRAY = ColorScheme
-            .createGrayColorScheme();
+        .createGrayColorScheme();
 
     public static final ColorScheme COLOR_SCHEME_GREEN = ColorScheme
-            .createGreenColorScheme();
+        .createGreenColorScheme();
 
     /**
      * Aktiviert und deaktiviert den Debug-Modus der Engine Pi und des Spiels

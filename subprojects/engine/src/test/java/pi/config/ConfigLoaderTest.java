@@ -50,7 +50,7 @@ public class ConfigLoaderTest
     {
         Logger.getLogger(FileUtil.class.getName()).setUseParentHandlers(false);
         Logger.getLogger(ConfigLoader.class.getName())
-                .setUseParentHandlers(false);
+            .setUseParentHandlers(false);
     }
 
     @AfterEach
@@ -115,7 +115,7 @@ public class ConfigLoaderTest
         // act
         config.load();
         final TestConfigurationGroup configGroup = config
-                .getGroup(TestConfigurationGroup.class);
+            .getGroup(TestConfigurationGroup.class);
 
         // assert
         assertEquals(100, configGroup.getTestInt());
@@ -129,12 +129,13 @@ public class ConfigLoaderTest
         assertEquals(TEST.TEST1, configGroup.getTestEnum());
         assertEquals("", configGroup.getTestWithNoSetter());
         assertArrayEquals(new String[] { "test", "testicle" },
-                configGroup.getTestStringArray());
+            configGroup.getTestStringArray());
     }
 
     private enum TEST
     {
-        TEST1, TEST2;
+        TEST1,
+        TEST2;
     }
 
     @ConfigGroupInfo(prefix = "test-prefix")

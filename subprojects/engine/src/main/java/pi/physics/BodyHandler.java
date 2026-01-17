@@ -94,7 +94,7 @@ public class BodyHandler implements PhysicsHandler
             worldHandler.assertNoWorldStep();
             Vec2 vector = meters.toVec2();
             body.setTransform(vector.addLocal(body.getPosition()),
-                    body.getAngle());
+                body.getAngle());
             // Wake up body, ensures in-engine (JB2D) adjustments will happen,
             // e.g. collision rejustment
             body.setAwake(true);
@@ -144,7 +144,7 @@ public class BodyHandler implements PhysicsHandler
         {
             worldHandler.assertNoWorldStep();
             body.setTransform(body.getPosition(),
-                    (float) (body.getAngle() + Math.toRadians(degree)));
+                (float) (body.getAngle() + Math.toRadians(degree)));
         }
     }
 
@@ -155,7 +155,7 @@ public class BodyHandler implements PhysicsHandler
         {
             worldHandler.assertNoWorldStep();
             body.setTransform(body.getPosition(),
-                    (float) Math.toRadians(degree));
+                (float) Math.toRadians(degree));
         }
     }
 
@@ -365,7 +365,8 @@ public class BodyHandler implements PhysicsHandler
         synchronized (worldHandler)
         {
             body.applyLinearImpulse(impulseInNs.toVec2(),
-                    globalLocation.toVec2(), true);
+                globalLocation.toVec2(),
+                true);
         }
     }
 
@@ -400,7 +401,7 @@ public class BodyHandler implements PhysicsHandler
         synchronized (worldHandler)
         {
             body.setAngularVelocity(
-                    (float) Math.toRadians(rotationsPerSecond * 360));
+                (float) Math.toRadians(rotationsPerSecond * 360));
         }
     }
 
@@ -461,9 +462,9 @@ public class BodyHandler implements PhysicsHandler
         AABB testAABB = new AABB();
         final double epsilon = 0.0001;
         testAABB.lowerBound.set(bodyBounds.lowerBound.x,
-                bodyBounds.lowerBound.y);
+            bodyBounds.lowerBound.y);
         testAABB.upperBound.set(bodyBounds.upperBound.x,
-                (float) (bodyBounds.lowerBound.y + epsilon));
+            (float) (bodyBounds.lowerBound.y + epsilon));
         Fixture[] groundCandidates = worldHandler.queryAABB(testAABB);
         for (Fixture fixture : groundCandidates)
         {
@@ -515,7 +516,7 @@ public class BodyHandler implements PhysicsHandler
     {
         List<CollisionEvent<Actor>> contacts = new ArrayList<>();
         for (ContactEdge contact = body
-                .getContactList(); contact != null; contact = contact.next)
+            .getContactList(); contact != null; contact = contact.next)
         {
             // Contact exists with other Body. Next, check if they are actually
             // touching

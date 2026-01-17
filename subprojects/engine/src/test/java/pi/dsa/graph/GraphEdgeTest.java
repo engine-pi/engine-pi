@@ -37,6 +37,6 @@ public class GraphEdgeTest
     void testGenerateJavaCode()
     {
         assertEquals(edge.generateJavaCode(),
-                "g.addEdge(\"b\", \"a\", 2, true);");
+            "g.addEdge(\"b\", \"a\", 2, true);");
     }
 }

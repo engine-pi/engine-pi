@@ -227,7 +227,7 @@ public final class GifDecoder
     {
         // expose destination image's pixels as int array
         int[] dest = ((DataBufferInt) image.getRaster().getDataBuffer())
-                .getData();
+            .getData();
         // fill in starting image contents based on last image's dispose code
         if (lastDispose > 0)
         {
@@ -247,7 +247,7 @@ public final class GifDecoder
             if (lastImage != null)
             {
                 int[] prev = ((DataBufferInt) lastImage.getRaster()
-                        .getDataBuffer()).getData();
+                    .getDataBuffer()).getData();
                 System.arraycopy(prev, 0, dest, 0, width * height);
                 // copy pixels
                 if (lastDispose == 2)

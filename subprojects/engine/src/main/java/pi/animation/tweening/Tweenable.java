@@ -46,10 +46,12 @@ public interface Tweenable
      */
     default float[] getTweenValues(final TweenType tweenType)
     {
-        Logger.getLogger(this.getClass().getName()).log(Level.WARNING,
+        Logger.getLogger(this.getClass().getName())
+            .log(Level.WARNING,
                 () -> String.format(
-                        "TweenType %s unsupported for Tweenable '%s'",
-                        tweenType.name(), this.getClass().getName()));
+                    "TweenType %s unsupported for Tweenable '%s'",
+                    tweenType.name(),
+                    this.getClass().getName()));
         return new float[0];
     }
 
@@ -64,9 +66,11 @@ public interface Tweenable
     default void setTweenValues(final TweenType tweenType,
             final float[] newValues)
     {
-        Logger.getLogger(this.getClass().getName()).log(Level.WARNING,
+        Logger.getLogger(this.getClass().getName())
+            .log(Level.WARNING,
                 () -> String.format(
-                        "TweenType %s unsupported for Tweenable '%s'",
-                        tweenType.name(), this.getClass().getName()));
+                    "TweenType %s unsupported for Tweenable '%s'",
+                    tweenType.name(),
+                    this.getClass().getName()));
     }
 }

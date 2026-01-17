@@ -87,9 +87,11 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
 
     public ColorWheelIttenDemo()
     {
-        info().title("Farbschemata-Demo").description(
+        info().title("Farbschemata-Demo")
+            .description(
                 "Demonstiert die Farbschemata, die die Engine Pi mitliefert anhand des Farbkreises von Itten.")
-                .help("Ein beliebiger Tastendruck schaltet zum nächsten Farbschema weiter.");
+            .help(
+                "Ein beliebiger Tastendruck schaltet zum nächsten Farbschema weiter.");
         WHEEL_AREAS = drawWheelColors();
         // Zuerst Primär, denn die müssen übermalt werden.
         PRIMARY_AREAS = drawPrimaryColors();
@@ -154,7 +156,8 @@ public class ColorWheelIttenDemo extends Scene implements KeyStrokeListener
             double angle = (i * SEGMENT_ANGLE * -1) + 90;
             Vector textPosition = getCirclePoint(7.5, angle);
             add(new Text(i + "").height(0.5)
-                    .anchor(textPosition.x(), textPosition.y()).color("weiß"));
+                .anchor(textPosition.x(), textPosition.y())
+                .color("weiß"));
             areas[i] = createWheelArea(i, angle);
         }
         return areas;

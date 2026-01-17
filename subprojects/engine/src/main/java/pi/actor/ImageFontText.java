@@ -91,8 +91,9 @@ public class ImageFontText extends Image
             TextAlignment alignment, Color color, int pixelMultiplication,
             int pixelPerMeter)
     {
-        super(imageFont.render(content, lineWidth, alignment, color,
-                pixelMultiplication), pixelPerMeter);
+        super(imageFont
+            .render(content, lineWidth, alignment, color, pixelMultiplication),
+                pixelPerMeter);
         this.imageFont = imageFont;
         this.content = content;
         this.lineWidth = lineWidth;
@@ -201,8 +202,8 @@ public class ImageFontText extends Image
     public void content(String content, int lineWidth, TextAlignment alignment,
             Color color, int pixelMultiplication)
     {
-        image(imageFont.render(content, lineWidth, alignment, color,
-                pixelMultiplication));
+        image(imageFont
+            .render(content, lineWidth, alignment, color, pixelMultiplication));
         this.content = content;
         this.lineWidth = lineWidth;
         this.alignment = alignment;
@@ -244,8 +245,11 @@ public class ImageFontText extends Image
     @Setter
     public void content(String content, String color)
     {
-        content(content, lineWidth, alignment, colors.get(color),
-                pixelMultiplication());
+        content(content,
+            lineWidth,
+            alignment,
+            colors.get(color),
+            pixelMultiplication());
     }
 
     /**
@@ -282,7 +286,8 @@ public class ImageFontText extends Image
     @Override
     public String toString()
     {
-        return String.format("ImageFontText[\n  %s,\n  %s\n]", imageFont,
-                super.toString());
+        return String.format("ImageFontText[\n  %s,\n  %s\n]",
+            imageFont,
+            super.toString());
     }
 }

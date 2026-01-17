@@ -41,7 +41,7 @@ class HexColorString
     private static final String HEX_WEBCOLOR_PATTERN = "^#[a-fA-F0-9]+$";
 
     private static final Pattern pattern = Pattern
-            .compile(HEX_WEBCOLOR_PATTERN);
+        .compile(HEX_WEBCOLOR_PATTERN);
 
     /**
      * Überprüft, ob die gegebene Zeichenketten eine Farbe in hexadezimaler
@@ -69,7 +69,7 @@ class HexColorString
 public final class ColorUtil
 {
     private static final Logger log = Logger
-            .getLogger(ColorUtil.class.getName());
+        .getLogger(ColorUtil.class.getName());
 
     private static final int HEX_STRING_LENGTH = 7;
 
@@ -114,8 +114,10 @@ public final class ColorUtil
         {
             return null;
         }
-        String colorString = "#" + String.format("%02x%02x%02x", color.getRed(),
-                color.getGreen(), color.getBlue());
+        String colorString = "#" + String.format("%02x%02x%02x",
+            color.getRed(),
+            color.getGreen(),
+            color.getBlue());
         if (color.getAlpha() < MAX_RGB_VALUE)
         {
             colorString += String.format("%02x", color.getAlpha());
@@ -186,8 +188,8 @@ public final class ColorUtil
             else
             {
                 log.log(Level.SEVERE,
-                        "Could not parse color string \"{0}\". A color string needs to start with a \"#\" character.",
-                        hex);
+                    "Could not parse color string \"{0}\". A color string needs to start with a \"#\" character.",
+                    hex);
                 return null;
             }
         }
@@ -201,10 +203,10 @@ public final class ColorUtil
 
         default:
             log.log(Level.SEVERE,
-                    "Could not parse color string \"{0}\". Invalid string length \"{1}\"!\nAccepted lengths:\n\t{2} for Colors without Alpha (#ff0000)\n\t{3} for Colors with Alpha (#ff0000c8)",
-                    new Object[]
-                    { hex, hex.length(), HEX_STRING_LENGTH,
-                            HEX_STRING_LENGTH_ALPHA });
+                "Could not parse color string \"{0}\". Invalid string length \"{1}\"!\nAccepted lengths:\n\t{2} for Colors without Alpha (#ff0000)\n\t{3} for Colors with Alpha (#ff0000c8)",
+                new Object[]
+                { hex, hex.length(), HEX_STRING_LENGTH,
+                        HEX_STRING_LENGTH_ALPHA });
             return null;
         }
     }
@@ -454,8 +456,8 @@ public final class ColorUtil
      */
     public static Color chanceHSB(Color color, HSBColorVariant variant)
     {
-        float[] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(),
-                color.getBlue(), null);
+        float[] hsb = Color
+            .RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         hsb = variant.change(hsb);
         return Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
     }

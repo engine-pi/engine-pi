@@ -44,12 +44,13 @@ public class SceneInfoOverlayDemo extends MainAnimation
     public SceneInfoOverlayDemo()
     {
         info().title("Der Titel der Szene")
-                //
-                .subtitle("Der Untertitel der Szene")
-                //
-                .description(descriptionText)
-                //
-                .help(helpText).permanent();
+            //
+            .subtitle("Der Untertitel der Szene")
+            //
+            .description(descriptionText)
+            //
+            .help(helpText)
+            .permanent();
     }
 
     public void toggleDescriptionText()

@@ -55,23 +55,26 @@ public class PlantUMLDocument extends Document
                 + " {";
 
         str += cw.fields().isEmpty() ? ""
-                : "\n" + cw.fields().stream()
-                        .map(f -> f.visibility().symbol() + " "
-                                + (f.isStatic() ? "{static} " : "")
-                                + (f.type().isBlank() ? "" : f.type() + " ")
-                                + f.name())
-                        .collect(Collectors.joining("\n"));
+                : "\n" + cw.fields()
+                    .stream()
+                    .map(f -> f.visibility().symbol() + " "
+                            + (f.isStatic() ? "{static} " : "")
+                            + (f.type().isBlank() ? "" : f.type() + " ")
+                            + f.name())
+                    .collect(Collectors.joining("\n"));
 
         str += cw.methods().isEmpty() ? ""
-                : "\n" + cw.methods().stream()
-                        .map(m -> m.visibility().symbol() + " "
-                                + (m.isStatic() ? "{static} " : "")
-                                + (m.isAbstract() ? "{abstract} " : "")
-                                + m.returnType() + " " + m.name() + "("
-                                + m.parameters().stream()
-                                        .collect(Collectors.joining(","))
-                                + ")")
-                        .collect(Collectors.joining("\n"));
+                : "\n" + cw.methods()
+                    .stream()
+                    .map(m -> m.visibility().symbol() + " "
+                            + (m.isStatic() ? "{static} " : "")
+                            + (m.isAbstract() ? "{abstract} " : "")
+                            + m.returnType() + " " + m.name() + "("
+                            + m.parameters()
+                                .stream()
+                                .collect(Collectors.joining(","))
+                            + ")")
+                    .collect(Collectors.joining("\n"));
 
         str += "\n}\n";
 

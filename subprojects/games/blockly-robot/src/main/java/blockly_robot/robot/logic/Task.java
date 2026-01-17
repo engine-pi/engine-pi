@@ -33,9 +33,12 @@ public class Task
 
     public static String extractTaskPath(String path)
     {
-        path = path.replace(".json", "").replace(".class", "").replace(".", "/")
-                .replaceAll(".*/tasks/", "").replaceAll("^/", "")
-                .replaceAll("/$", "");
+        path = path.replace(".json", "")
+            .replace(".class", "")
+            .replace(".", "/")
+            .replaceAll(".*/tasks/", "")
+            .replaceAll("^/", "")
+            .replaceAll("/$", "");
         String[] segments = path.split("/");
         return "%s/%s".formatted(segments[0], segments[1]);
     }

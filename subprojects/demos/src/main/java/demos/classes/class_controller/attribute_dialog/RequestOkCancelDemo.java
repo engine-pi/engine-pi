@@ -31,7 +31,7 @@ public class RequestOkCancelDemo
         Controller.start();
         Controller.addKeyStrokeListener((event) -> {
             Controller.dialog.requestOkCancel("Das ist eine Nachricht",
-                    "Das ist der Titel");
+                "Das ist der Titel");
         });
     }
 }

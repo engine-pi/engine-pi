@@ -33,11 +33,12 @@ public class ImageAverageColorDemo extends Scene
 {
     public ImageAverageColorDemo()
     {
-        info().title("Figurfarben-Demo").description(
+        info().title("Figurfarben-Demo")
+            .description(
                 "Demonstriert die Methoden Actor#color() und Actor#complementaryColor().")
-                .help("In der ersten Reihe sind die originalen Bilder zusehen, "
-                        + "in der zweiten Reihe die Durchschnittsfarbe und "
-                        + "in der dritten Reihe die Komplementärfarbe der Durchschnittsfarbe.");
+            .help("In der ersten Reihe sind die originalen Bilder zusehen, "
+                    + "in der zweiten Reihe die Durchschnittsfarbe und "
+                    + "in der dritten Reihe die Komplementärfarbe der Durchschnittsfarbe.");
         camera().meter(90);
         double x = -4;
         for (String filepath : new String[] { "car/background-color-grass.png",
@@ -56,7 +57,7 @@ public class ImageAverageColorDemo extends Scene
         add(image);
         add(new Rectangle(1.0, 1.0).anchor(x, -1.2).color(image.color()));
         add(new Rectangle(1.0, 0.5).anchor(x, -1.9)
-                .color(image.complementaryColor()));
+            .color(image.complementaryColor()));
     }
 
     public static void main(String[] args)

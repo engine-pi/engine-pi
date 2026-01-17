@@ -120,8 +120,8 @@ public abstract class Graph
             }
         }
         throw new RuntimeException(String.format(
-                "Es konnte kein Knoten mit dem Bezeichner „%s“ gefunden werden.",
-                label));
+            "Es konnte kein Knoten mit dem Bezeichner „%s“ gefunden werden.",
+            label));
     }
 
     /**
@@ -324,8 +324,10 @@ public abstract class Graph
 
     public void addEdge(GraphEdge edge)
     {
-        addEdge(edge.from().label(), edge.to().label(), edge.weight(),
-                edge.isDirected());
+        addEdge(edge.from().label(),
+            edge.to().label(),
+            edge.weight(),
+            edge.isDirected());
     }
 
     @Getter

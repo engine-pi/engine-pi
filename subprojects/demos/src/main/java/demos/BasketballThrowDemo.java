@@ -52,8 +52,9 @@ public class BasketballThrowDemo extends Scene
         layer().add(new Wall(5.5, -4.5, 1, 9));
         BallShadow ballShadow = new BallShadow(ballPosition.x(),
                 ballPosition.y());
-        ball.createDistanceJoint(ballShadow, new Vector(.15, .15),
-                new Vector(.15, .15));
+        ball.createDistanceJoint(ballShadow,
+            new Vector(.15, .15),
+            new Vector(.15, .15));
         layer().add(ballShadow);
         basket = new Rectangle(1.5, 0.05);
         basket.color("red");
@@ -61,7 +62,7 @@ public class BasketballThrowDemo extends Scene
         basket.makeSensor();
         basket.gravityScale(0);
         basket.addCollisionListener(ball,
-                event -> defer(() -> basket.x(-basket.x())));
+            event -> defer(() -> basket.x(-basket.x())));
         layer().add(basket);
         addKeyStrokeListener(e -> {
             if (e.getKeyCode() == KeyEvent.VK_SPACE)

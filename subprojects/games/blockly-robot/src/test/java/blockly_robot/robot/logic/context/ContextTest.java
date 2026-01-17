@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class ContextTest
 {
     private Context context = loadContext(
-            "conditionals_excercises/gems_and_obstacles");
+        "conditionals_excercises/gems_and_obstacles");
 
     @Test
     public void testGetRows()
@@ -33,7 +33,7 @@ public class ContextTest
     public void testGetTask()
     {
         assertEquals(context.getTask().getTitle(),
-                "Edelsteine und Hindernisse");
+            "Edelsteine und Hindernisse");
     }
 
     @Test

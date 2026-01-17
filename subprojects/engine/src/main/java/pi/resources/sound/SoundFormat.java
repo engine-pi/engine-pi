@@ -40,7 +40,10 @@ import pi.resources.ImageFormat;
  */
 public enum SoundFormat
 {
-    UNSUPPORTED, OGG, MP3, WAV;
+    UNSUPPORTED,
+    OGG,
+    MP3,
+    WAV;
 
     /**
      * Gets the {@code SoundFormat} of the specified format string.

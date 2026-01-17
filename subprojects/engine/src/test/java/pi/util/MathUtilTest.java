@@ -64,11 +64,11 @@ public class MathUtilTest
         long toHigh = 11000000000L;
         long inRange = 6600000000L;
         assertEquals(5000000000L,
-                MathUtil.clamp(toLow, 5000000000L, 10000000000L));
+            MathUtil.clamp(toLow, 5000000000L, 10000000000L));
         assertEquals(10000000000L,
-                MathUtil.clamp(toHigh, 5000000000L, 10000000000L));
+            MathUtil.clamp(toHigh, 5000000000L, 10000000000L));
         assertEquals(6600000000L,
-                MathUtil.clamp(inRange, 5000000000L, 10000000000L));
+            MathUtil.clamp(inRange, 5000000000L, 10000000000L));
     }
 
     @Test
@@ -120,8 +120,8 @@ public class MathUtilTest
     {
         int avg = MathUtil.getAverage(new int[] { 2, 2, 1, 1, 1, 2 });
         int avg2 = MathUtil
-                .getAverage(new int[]
-                { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            .getAverage(new int[]
+            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         assertEquals(1, avg);
         assertEquals(5, avg2);
     }
@@ -131,8 +131,8 @@ public class MathUtilTest
     {
         double avg = MathUtil.getAverage(new double[] { 2, 2, 1, 1, 1, 2 });
         double avg2 = MathUtil
-                .getAverage(new double[]
-                { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            .getAverage(new double[]
+            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         assertEquals(1.5, avg, 0.0001);
         assertEquals(5.5, avg2, 0.0001);
     }
@@ -142,8 +142,8 @@ public class MathUtilTest
     {
         float avg = MathUtil.getAverage(new float[] { 2, 2, 1, 1, 1, 2 });
         float avg2 = MathUtil
-                .getAverage(new float[]
-                { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            .getAverage(new float[]
+            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
         assertEquals(1.5f, avg, 0.0001);
         assertEquals(5.5f, avg2, 0.0001);
     }

@@ -33,8 +33,9 @@ public class TaskTester<T>
             int endCol, String... args) throws Exception
     {
         var w = solver.solveVirtual(difficulty, test);
-        assertArrayEquals(w.actor.reportActions(), args,
-                "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
+        assertArrayEquals(w.actor.reportActions(),
+            args,
+            "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
         Coords p = w.actor.getCoords();
         assertEquals(p.getRow(), endRow, "row");
         assertEquals(p.getCol(), endCol, "col");

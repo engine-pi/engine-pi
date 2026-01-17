@@ -178,10 +178,9 @@ public final class Codec
         try
         {
             ImageIO.write(image,
-                    imageFormat != ImageFormat.UNSUPPORTED
-                            ? imageFormat.toString()
-                            : ImageFormat.PNG.toString(),
-                    bos);
+                imageFormat != ImageFormat.UNSUPPORTED ? imageFormat.toString()
+                        : ImageFormat.PNG.toString(),
+                bos);
             final byte[] imageBytes = bos.toByteArray();
             imageString = encode(imageBytes);
             bos.close();

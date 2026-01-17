@@ -68,7 +68,7 @@ import pi.annotations.Internal;
 public class CollisionEvent<E extends Actor>
 {
     private static final ThreadLocal<WorldManifold> worldManifold = ThreadLocal
-            .withInitial(WorldManifold::new);
+        .withInitial(WorldManifold::new);
 
     /**
      * Der JBox2D-Kontakt. Zur Manipulation der Kollision und zur Abfrage.
@@ -134,8 +134,9 @@ public class CollisionEvent<E extends Actor>
     public void ignoreCollision()
     {
         contact.setEnabled(false);
-        colliding.physicsHandler().worldHandler()
-                .addContactToBlacklist(contact);
+        colliding.physicsHandler()
+            .worldHandler()
+            .addContactToBlacklist(contact);
     }
     /*
      * @API public double getTangentSpeed() { return contact.getTangentSpeed();
@@ -179,12 +180,12 @@ public class CollisionEvent<E extends Actor>
         else if (pointCount == 1)
         {
             return Collections
-                    .singletonList(Vector.of(worldManifold.points[0]));
+                .singletonList(Vector.of(worldManifold.points[0]));
         }
         else if (pointCount == 2)
         {
             return Arrays.asList(Vector.of(worldManifold.points[0]),
-                    Vector.of(worldManifold.points[1]));
+                Vector.of(worldManifold.points[1]));
         }
         else
         {

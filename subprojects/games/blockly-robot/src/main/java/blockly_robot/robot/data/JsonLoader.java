@@ -20,7 +20,7 @@ public class JsonLoader
     {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(ResourceLoader.loadAsStream(filePath),
-                TaskData.class);
+            TaskData.class);
     }
 
     public static LinkedHashMap<String, LinkedHashMap<String, String>> loadMenu()
@@ -28,7 +28,8 @@ public class JsonLoader
     {
         ObjectMapper mapper = new ObjectMapper();
         var menu = mapper.readValue(
-                ResourceLoader.loadAsStream("data/menu.json"), MenuData.class);
+            ResourceLoader.loadAsStream("data/menu.json"),
+            MenuData.class);
         return menu.menu;
     }
 
@@ -37,9 +38,9 @@ public class JsonLoader
     {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(
-                ResourceLoader.loadAsStream("data/contextParams.json"),
-                new TypeReference<LinkedHashMap<String, GridInfosData>>()
-                {
-                });
+            ResourceLoader.loadAsStream("data/contextParams.json"),
+            new TypeReference<LinkedHashMap<String, GridInfosData>>()
+            {
+            });
     }
 }

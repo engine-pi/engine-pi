@@ -39,7 +39,7 @@ public class ImageFontTest
     public void testMultiLine()
     {
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."),
-                "multi-line");
+            "multi-line");
     }
 
     @Test
@@ -59,11 +59,17 @@ public class ImageFontTest
     @Test
     public void testMethodChaining()
     {
-        write(imageFont.basePath("image-font/tetris").extension("png")
+        write(
+            imageFont.basePath("image-font/tetris")
+                .extension("png")
                 .caseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
-                .alignment(TextAlignment.LEFT).throwException(false)
-                .pixelMultiplication(4).color(Color.BLUE).lineWidth(20)
-                .render("chaining"), "chaining");
+                .alignment(TextAlignment.LEFT)
+                .throwException(false)
+                .pixelMultiplication(4)
+                .color(Color.BLUE)
+                .lineWidth(20)
+                .render("chaining"),
+            "chaining");
     }
 
     @Test

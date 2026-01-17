@@ -112,9 +112,14 @@ public class ColorContainer implements Container<Color>
      */
     private String normalizeName(String name)
     {
-        return name.toLowerCase().replaceAll("\\s", "").replaceAll("-", "")
-                .replaceAll("_", "").replaceAll("ä", "ae").replaceAll("ö", "oe")
-                .replaceAll("ü", "ue").replaceAll("ß", "ss");
+        return name.toLowerCase()
+            .replaceAll("\\s", "")
+            .replaceAll("-", "")
+            .replaceAll("_", "")
+            .replaceAll("ä", "ae")
+            .replaceAll("ö", "oe")
+            .replaceAll("ü", "ue")
+            .replaceAll("ß", "ss");
     }
 
     /**
@@ -322,34 +327,69 @@ public class ColorContainer implements Container<Color>
         // Primärfarbe
         add("yellow", schema.yellow(), "Gelb", "Hellgelb");
         // Tertiärfarbe
-        add("yellow orange", schema.yellowOrange(), "orange yellow", "gold",
-                "Gelb-Orange", "Orange-Gelb", "Golden", "Dunkelgelb");
+        add("yellow orange",
+            schema.yellowOrange(),
+            "orange yellow",
+            "gold",
+            "Gelb-Orange",
+            "Orange-Gelb",
+            "Golden",
+            "Dunkelgelb");
         // Sekundärfarbe
         add("orange", schema.orange());
         // Tertiärfarbe
-        add("red orange", schema.redOrange(), "orange red", "brick red",
-                "brick", "Rot-Orange", "Orange-Rot", "Ziegelrot", "Hellrot");
+        add("red orange",
+            schema.redOrange(),
+            "orange red",
+            "brick red",
+            "brick",
+            "Rot-Orange",
+            "Orange-Rot",
+            "Ziegelrot",
+            "Hellrot");
         // Primärfarbe
         add("red", schema.red(), "Rot");
         // Tertiärfarbe
-        add("red purple", schema.redPurple(), "purple red", "magenta", "pink",
-                "Rot-Violett", "Violett-Rot", "Rosa");
+        add("red purple",
+            schema.redPurple(),
+            "purple red",
+            "magenta",
+            "pink",
+            "Rot-Violett",
+            "Violett-Rot",
+            "Rosa");
         // Sekundärfarbe
         add("purple", schema.purple(), "Violet", "Violett", "Lila");
         // Tertiärfarbe
-        add("blue purple", schema.bluePurple(), "purple blue", "indigo",
-                "Violett Blau", "Blau Violett");
+        add("blue purple",
+            schema.bluePurple(),
+            "purple blue",
+            "indigo",
+            "Violett Blau",
+            "Blau Violett");
         // Primärfarbe
         add("blue", schema.blue(), "Blau");
         // Tertiärfarbe
-        add("blue green", schema.blueGreen(), "green blue", "cyan", "Blau-Grün",
-                "Grün-Blau", "Türkis");
+        add("blue green",
+            schema.blueGreen(),
+            "green blue",
+            "cyan",
+            "Blau-Grün",
+            "Grün-Blau",
+            "Türkis");
         // Sekundärfarbe
         add("green", schema.green(), "Grün");
         // Tertiärfarbe
-        add("yellow green", schema.yellowGreen(), "green yellow", "lime",
-                "lime green", "Gelb-Grün", "Grün-Gelb", "Limetten Grün",
-                "Limette", "Hellgrün");
+        add("yellow green",
+            schema.yellowGreen(),
+            "green yellow",
+            "lime",
+            "lime green",
+            "Gelb-Grün",
+            "Grün-Gelb",
+            "Limetten Grün",
+            "Limette",
+            "Hellgrün");
         // andere Zusammensetzung, nicht nach Itten.
         add("brown", schema.brown(), "Braun");
         add("white", schema.white(), "Weiß");
@@ -617,6 +657,6 @@ public class ColorContainer implements Container<Color>
     public Color random()
     {
         return (Color) resources.values()
-                .toArray()[(int) (Math.random() * resources.size())];
+            .toArray()[(int) (Math.random() * resources.size())];
     }
 }

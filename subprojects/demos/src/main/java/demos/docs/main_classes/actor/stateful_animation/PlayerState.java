@@ -24,8 +24,13 @@ package demos.docs.main_classes.actor.stateful_animation;
 
 public enum PlayerState
 {
-    IDLE("idle"), WALKING("walk"), RUNNING("run"), JUMPING("jump_1up"),
-    MIDAIR("jump_2midair"), FALLING("jump_3down"), LANDING("jump_4land");
+    IDLE("idle"),
+    WALKING("walk"),
+    RUNNING("run"),
+    JUMPING("jump_1up"),
+    MIDAIR("jump_2midair"),
+    FALLING("jump_3down"),
+    LANDING("jump_4land");
 
     private final String filename;
 

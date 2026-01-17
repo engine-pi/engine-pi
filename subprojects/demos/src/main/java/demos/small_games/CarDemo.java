@@ -73,7 +73,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     public CarDemo()
     {
-        info().title("Auto-Simulation").help(
+        info().title("Auto-Simulation")
+            .help(
                 "Tastenkürzel:\nl: vorwärts waren\nj: rückwärts fahren\nLeertaste: bremsen");
         backgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
@@ -154,18 +155,18 @@ public class CarDemo extends Scene implements FrameUpdateListener
             rope[i].borderRadius(.5);
             if (i == 0)
             {
-                rope[0].createRevoluteJoint(left, vector(-.1, .2)).setLimits(0,
-                        0.1);
+                rope[0].createRevoluteJoint(left, vector(-.1, .2))
+                    .setLimits(0, 0.1);
             }
             else
             {
                 if (i == length - 1)
                 {
                     rope[length - 1].createRevoluteJoint(right, vector(.9, .2))
-                            .setLimits(0, 0.1);
+                        .setLimits(0, 0.1);
                 }
                 rope[i - 1].createRevoluteJoint(rope[i], vector(.9, .2))
-                        .setLimits(0, 0.1);
+                    .setLimits(0, 0.1);
             }
         }
         add(rope);
@@ -183,17 +184,15 @@ public class CarDemo extends Scene implements FrameUpdateListener
         double offset = 180;
         for (int j = 0; j < 40 - 1; j += 1)
         {
-            Polygon ground = new HillSegment(
-                    vector(x + j / 2f, -10), vector(x + j / 2f
-                            + 1, -10),
+            Polygon ground = new HillSegment(vector(x + j / 2f, -10),
+                    vector(x + j / 2f + 1, -10),
                     vector(x + (j + 1) / 2f,
-                            -10 + Math
-                                    .cos(Math.toRadians(
-                                            ((j + 1) / 2f) * 18 + offset))
-                                    * height + height),
+                        -10 + Math
+                            .cos(Math.toRadians(((j + 1) / 2f) * 18 + offset))
+                                * height + height),
                     vector(x + j / 2f,
-                            -10 + Math.cos(Math.toRadians(j / 2f * 18 + offset))
-                                    * height + height));
+                        -10 + Math.cos(Math.toRadians(j / 2f * 18 + offset))
+                                * height + height));
             ground.moveBy(0, -0.01);
             ground.makeStatic();
             ground.color(GROUND_COLOR);
@@ -228,12 +227,12 @@ public class CarDemo extends Scene implements FrameUpdateListener
         if (carBody.center().x() < -65)
         {
             carBody.applyForce(vector(10000 * (-65 - carBody.center().x()), 0),
-                    carBody.center());
+                carBody.center());
         }
         else if (carBody.center().x() > 195)
         {
             carBody.applyForce(vector(10000 * (195 - carBody.center().x()), 0),
-                    carBody.center());
+                carBody.center());
         }
         if (carBody.center().y() < -20)
         {
@@ -285,7 +284,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
                     for (Vector point : collision.points())
                     {
                         Objects.requireNonNull(actor.layer())
-                                .add(createSplitter(point));
+                            .add(createSplitter(point));
                     }
                 }
             }
@@ -330,10 +329,11 @@ public class CarDemo extends Scene implements FrameUpdateListener
             density(50);
             this.carBody = carBody;
             spring = createPrismaticJoint(carBody,
-                    centerRelative().add(0, height() / 2), 90);
+                centerRelative().add(0, height() / 2),
+                90);
             spring.limits(-.15, .15);
             addMountListener(
-                    () -> Objects.requireNonNull(layer()).add(carBody));
+                () -> Objects.requireNonNull(layer()).add(carBody));
         }
 
         @Override
@@ -341,9 +341,9 @@ public class CarDemo extends Scene implements FrameUpdateListener
         {
             // Federeffekt für die Achsen
             double translation = spring.translation();
-            spring.motorSpeed(Math
-                    .sin(min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
-                    * -.3);
+            spring.motorSpeed(
+                Math.sin(min(max(-0.15, translation), 0.15) / .15 * Math.PI / 2)
+                        * -.3);
             spring.maximumMotorForce(5000);
         }
 
@@ -373,7 +373,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             motor.setMaximumMotorTorque(5000);
             addMountListener(() -> Objects.requireNonNull(layer()).add(axle));
             addCollisionListener(axle.getCarBody(),
-                    CollisionEvent::ignoreCollision);
+                CollisionEvent::ignoreCollision);
             repeat(.025, (counter) -> {
                 for (CollisionEvent<Actor> collision : collisions())
                 {
@@ -381,8 +381,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
                     {
                         double velocity = velocity().length();
                         double overTwist = abs(
-                                angularVelocity() * Math.PI * 2 * 0.7)
-                                / velocity;
+                            angularVelocity() * Math.PI * 2 * 0.7) / velocity;
                         boolean slowMoving = abs(velocity().x()) < 0.5
                                 && abs(angularVelocity()) < 0.3;
                         if (overTwist > 0.95 && overTwist < 1.05 || slowMoving)
@@ -390,17 +389,19 @@ public class CarDemo extends Scene implements FrameUpdateListener
                             continue;
                         }
                         Vector impulse = collision.tangentNormal() //
-                                .rotate(90) //
-                                .multiply(min(max(-1, overTwist - 1), 1));
+                            .rotate(90) //
+                            .multiply(min(max(-1, overTwist - 1), 1));
                         for (Vector point : collision.points())
                         {
                             double size = range(0.05, .15);
-                            Vector center = point.add(
-                                    point.distance(center()).multiply(size));
+                            Vector center = point
+                                .add(point.distance(center()).multiply(size));
                             Color color = ((Mud) collision.colliding()).color();
                             Objects.requireNonNull(layer())
-                                    .add(createParticle(size, center, color,
-                                            impulse.rotate(range(-15, 15))));
+                                .add(createParticle(size,
+                                    center,
+                                    color,
+                                    impulse.rotate(range(-15, 15))));
                         }
                     }
                 }
@@ -430,7 +431,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
             angularDamping(0.3);
             friction(0.5);
             fixtures(
-                    "R0,.45,2,.45&P2,1.2,2.6,1.15,3.8,0.8,3.95,0.45,2,0.45&R1,0,2,0.6");
+                "R0,.45,2,.45&P2,1.2,2.6,1.15,3.8,0.8,3.95,0.45,2,0.45&R1,0,2,0.6");
             repeat(.05, (counter) -> {
                 if (velocity().length() < 0.1)
                 {
@@ -444,9 +445,12 @@ public class CarDemo extends Scene implements FrameUpdateListener
                         {
                             double size = range(0.05, .15);
                             Vector impulse = vector(range(-1f, 1f),
-                                    range(-1f, 1f));
-                            Objects.requireNonNull(layer()).add(createParticle(
-                                    size, point, Color.YELLOW, impulse));
+                                range(-1f, 1f));
+                            Objects.requireNonNull(layer())
+                                .add(createParticle(size,
+                                    point,
+                                    Color.YELLOW,
+                                    impulse));
                         }
                     }
                 }

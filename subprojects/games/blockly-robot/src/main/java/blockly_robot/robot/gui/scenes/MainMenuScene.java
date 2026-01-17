@@ -56,7 +56,7 @@ public class MainMenuScene extends Scene implements WindowScene
                 if (rectangle.contains(vector))
                 {
                     Controller
-                            .launchScene((WindowScene) new SubMenuScene(main));
+                        .launchScene((WindowScene) new SubMenuScene(main));
                 }
             });
             rectangle.addFrameUpdateListener((deltaSeconds) -> {

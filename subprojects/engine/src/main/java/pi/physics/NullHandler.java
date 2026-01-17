@@ -70,7 +70,7 @@ public class NullHandler implements PhysicsHandler
         for (FixtureData fixtureData : physicsData.fixtures().get())
         {
             transform.set(anchor().toVec2(),
-                    (float) Math.toRadians(rotation()));
+                (float) Math.toRadians(rotation()));
             fixtureData.getShape().computeAABB(shapeBounds, transform, 0);
             if (bounds != null)
             {
@@ -233,14 +233,14 @@ public class NullHandler implements PhysicsHandler
     public void applyTorque(double torque)
     {
         mountCallbacks
-                .add(physicsHandler -> physicsHandler.applyTorque(torque));
+            .add(physicsHandler -> physicsHandler.applyTorque(torque));
     }
 
     @Override
     public void applyRotationImpulse(double rotationImpulse)
     {
         mountCallbacks.add(physicsHandler -> physicsHandler
-                .applyRotationImpulse(rotationImpulse));
+            .applyRotationImpulse(rotationImpulse));
     }
 
     @Override
@@ -260,15 +260,15 @@ public class NullHandler implements PhysicsHandler
     @Override
     public void applyForce(Vector force, Vector globalLocation)
     {
-        mountCallbacks.add(physicsHandler -> physicsHandler.applyForce(force,
-                globalLocation));
+        mountCallbacks.add(
+            physicsHandler -> physicsHandler.applyForce(force, globalLocation));
     }
 
     @Override
     public void applyImpulse(Vector impulse, Vector globalLocation)
     {
         mountCallbacks.add(physicsHandler -> physicsHandler
-                .applyImpulse(impulse, globalLocation));
+            .applyImpulse(impulse, globalLocation));
     }
 
     @Override

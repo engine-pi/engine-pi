@@ -101,7 +101,7 @@ public class LabeledNode extends Geometry
     public static double FONT_SIZE = 16;
 
     public static Font FONT = fonts.get("fonts/Cantarell-Regular.ttf")
-            .deriveFont((float) FONT_SIZE);
+        .deriveFont((float) FONT_SIZE);
 
     /**
      * Die <b>Hintergrundfarbe</b> des Knotens.
@@ -277,8 +277,10 @@ public class LabeledNode extends Geometry
 
         // Kreis
         g.setColor(color());
-        g.fillOval((int) upperLeftX, (int) upperLeftY, (int) nodeSize,
-                (int) nodeSize);
+        g.fillOval((int) upperLeftX,
+            (int) upperLeftY,
+            (int) nodeSize,
+            (int) nodeSize);
 
         // Bezeichnung
         if (label != null)
@@ -299,10 +301,13 @@ public class LabeledNode extends Geometry
             if (Controller.isDebug())
             {
                 g.drawRect((int) (upperLeftX + leftMargin),
-                        (int) (upperLeftY + topMargin), b.width, b.height);
+                    (int) (upperLeftY + topMargin),
+                    b.width,
+                    b.height);
             }
-            g.drawString(label, upperLeftX + leftMargin,
-                    upperLeftY + topMargin + b.baseline);
+            g.drawString(label,
+                upperLeftX + leftMargin,
+                upperLeftY + topMargin + b.baseline);
             g.setFont(oldFont);
             g.setTransform(pre);
         }

@@ -18,7 +18,7 @@ import blockly_robot.robot.logic.menu.TaskList;
 class TaskTest
 {
     Task task = Task
-            .loadByTaskPath("conditionals_excercises/light_all_candles");
+        .loadByTaskPath("conditionals_excercises/light_all_candles");
 
     @Test
     void testLoadByRelPath()
@@ -26,7 +26,7 @@ class TaskTest
         // Assuming that the relative path
         // "conditionals_excercises/light_all_candles" is valid
         final Task loadedTask = Task
-                .loadByTaskPath("conditionals_excercises/light_all_candles");
+            .loadByTaskPath("conditionals_excercises/light_all_candles");
         assertNotNull(loadedTask);
         assertEquals(loadedTask.getTitle(), "Kerzen anzünden");
     }
@@ -44,16 +44,16 @@ class TaskTest
         void testJsonFile()
         {
             assertPath(
-                    "/home/xxx/repos/github/jwinf-java/src/main/resources/data/tasks/conditionals_excercises/find_the_way_to_the_lake.json",
-                    "conditionals_excercises/find_the_way_to_the_lake");
+                "/home/xxx/repos/github/jwinf-java/src/main/resources/data/tasks/conditionals_excercises/find_the_way_to_the_lake.json",
+                "conditionals_excercises/find_the_way_to_the_lake");
         }
 
         @Test
         void testClassFile()
         {
             assertPath(
-                    "blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake.TaskSolver.class",
-                    "conditionals_excercises/find_the_way_to_the_lake");
+                "blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake.TaskSolver.class",
+                "conditionals_excercises/find_the_way_to_the_lake");
         }
     }
 
@@ -66,8 +66,9 @@ class TaskTest
     @Test
     void testIntro()
     {
-        assertEquals(task.getIntro(), "Programmiere den Roboter:\n"
-                + "Der Roboter soll alle Kerzen anzünden.");
+        assertEquals(task.getIntro(),
+            "Programmiere den Roboter:\n"
+                    + "Der Roboter soll alle Kerzen anzünden.");
     }
 
     @Test
@@ -80,7 +81,7 @@ class TaskTest
     void testGetTaskPath()
     {
         assertEquals(task.getTaskPath(),
-                "conditionals_excercises/light_all_candles");
+            "conditionals_excercises/light_all_candles");
     }
 
     @Test

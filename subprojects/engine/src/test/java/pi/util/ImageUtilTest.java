@@ -27,9 +27,9 @@ public class ImageUtilTest
     void assertImageEquals(BufferedImage expected, BufferedImage actual)
     {
         int[] expectedPixels = ((DataBufferInt) expected.getData()
-                .getDataBuffer()).getData();
+            .getDataBuffer()).getData();
         int[] actualPixels = ((DataBufferInt) actual.getData().getDataBuffer())
-                .getData();
+            .getData();
         assertArrayEquals(expectedPixels, actualPixels);
     }
 
@@ -37,7 +37,7 @@ public class ImageUtilTest
     public void testCopy()
     {
         BufferedImage image = images.get(
-                "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
+            "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
         BufferedImage copy = ImageUtil.copy(image);
         assertImageEquals(image, copy);
     }
@@ -65,8 +65,10 @@ public class ImageUtilTest
         public void testColorArray() throws IOException
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
-                    new Color[]
-                    { white, gray, black }, new Color[] { red, green, blue });
+                new Color[]
+                { white, gray, black },
+                new Color[]
+                { red, green, blue });
             assertImageEquals(expected, actual);
         }
 
@@ -74,10 +76,10 @@ public class ImageUtilTest
         public void testStringArray() throws IOException
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
-                    new String[]
-                    { "#ffffff", "#7F7F7F", "#000000" },
-                    new String[]
-                    { "#FF0000", "#00FF00", "#0000Ff" });
+                new String[]
+                { "#ffffff", "#7F7F7F", "#000000" },
+                new String[]
+                { "#FF0000", "#00FF00", "#0000Ff" });
             assertImageEquals(expected, actual);
         }
 

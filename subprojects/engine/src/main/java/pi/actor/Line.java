@@ -375,13 +375,16 @@ public class Line extends Actor
         {
 
             int sideLength = (int) Math
-                    .round(this.arrowSideLength * pixelPerMeter);
+                .round(this.arrowSideLength * pixelPerMeter);
 
             if (arrow == ArrowType.CHEVERON)
             {
-                Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        end().multiply(pixelPerMeter), sideLength, arrowAngle,
-                        false);
+                Graphics2DUtil.drawArrow(g,
+                    opposite.multiply(pixelPerMeter),
+                    end().multiply(pixelPerMeter),
+                    sideLength,
+                    arrowAngle,
+                    false);
             }
             else if (arrow == ArrowType.TRIANGLE)
             {
@@ -389,9 +392,12 @@ public class Line extends Actor
                 // ganz. Wir schieben die Pfeilspitze etwas nach vorne.
                 // Die doppelte Liniedicke liefert ein gutes Ergebnis.
                 Vector shiftedEnd = lineSegment.fixedPoint(-2 * strokeWidth);
-                Graphics2DUtil.drawArrow(g, opposite.multiply(pixelPerMeter),
-                        shiftedEnd.multiply(pixelPerMeter), sideLength,
-                        arrowAngle, true);
+                Graphics2DUtil.drawArrow(g,
+                    opposite.multiply(pixelPerMeter),
+                    shiftedEnd.multiply(pixelPerMeter),
+                    sideLength,
+                    arrowAngle,
+                    true);
             }
         }
     }

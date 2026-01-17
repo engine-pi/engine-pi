@@ -21,37 +21,104 @@ public class TaskSolverTest extends TaskTester<Robot>
     @Test
     void testEasy0() throws Exception
     {
-        assertActions(EASY, 0, 1, 4, "turnLeft", "turnRight", "forward",
-                "turnLeft", "turnRight", "forward", "turnLeft", "turnRight",
-                "forward", "turnLeft", "forward");
+        assertActions(EASY,
+            0,
+            1,
+            4,
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "forward");
     }
 
     @Test
     void testEasy1() throws Exception
     {
-        assertActions(EASY, 1, 1, 6, "turnLeft", "turnRight", "forward",
-                "turnLeft", "turnRight", "forward", "turnLeft", "turnRight",
-                "forward", "turnLeft", "turnRight", "forward", "turnLeft",
-                "turnRight", "forward", "turnLeft", "forward");
+        assertActions(EASY,
+            1,
+            1,
+            6,
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "forward",
+            "turnLeft",
+            "forward");
     }
 
     @Test
     void testMedium() throws Exception
     {
-        assertActions(MEDIUM, 0, 3, 4, "turnLeft", "turnRight", "turnRight",
-                "turnLeft", "forward", "turnLeft", "turnRight", "turnRight",
-                "turnLeft", "forward", "turnLeft", "turnRight", "turnRight",
-                "turnLeft", "forward", "turnLeft", "turnRight", "turnRight",
-                "forward");
+        assertActions(MEDIUM,
+            0,
+            3,
+            4,
+            "turnLeft",
+            "turnRight",
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnLeft",
+            "turnRight",
+            "turnRight",
+            "forward");
     }
 
     @Test
     void testHard() throws Exception
     {
-        assertActions(HARD, 0, 3, 4, "turnRight", "turnLeft", "forward",
-                "turnRight", "forward", "turnRight", "turnLeft", "turnLeft",
-                "turnRight", "turnLeft", "turnLeft", "turnRight", "turnLeft",
-                "forward", "turnRight", "forward", "turnRight", "turnLeft",
-                "forward", "turnRight", "forward");
+        assertActions(HARD,
+            0,
+            3,
+            4,
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnRight",
+            "forward",
+            "turnRight",
+            "turnLeft",
+            "turnLeft",
+            "turnRight",
+            "turnLeft",
+            "turnLeft",
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnRight",
+            "forward",
+            "turnRight",
+            "turnLeft",
+            "forward",
+            "turnRight",
+            "forward");
     }
 }

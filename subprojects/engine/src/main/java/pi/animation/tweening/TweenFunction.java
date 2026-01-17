@@ -60,7 +60,8 @@ public enum TweenFunction
         final float k = 1.70158F;
         return (float) (1f
                 + Math.pow(time - 1f, 2) * ((time - 1f) * (k + 1f) + k));
-    }), BACK_INOUT(time -> {
+    }),
+    BACK_INOUT(time -> {
         final float k2 = 1.70158F * 1.525F;
         return (float) (time < .5f
                 ? Math.pow(time, 2) * 2.0F * (time * 2.0F * (k2 + 1.0F) - k2)
@@ -99,7 +100,8 @@ public enum TweenFunction
             final float t = time - BOUNCE_K6;
             return BOUNCE_K0 * t * t + 0.984375F;
         }
-    }), BOUNCE_IN(time -> 1f - BOUNCE_OUT.equation.compute(1f - time)),
+    }),
+    BOUNCE_IN(time -> 1f - BOUNCE_OUT.equation.compute(1f - time)),
     BOUNCE_INOUT(time -> time * 2f < 1f
             ? 0.5F - 0.5F * BOUNCE_OUT.equation.compute(1.0F - time * 2)
             : 0.5F + 0.5F * BOUNCE_OUT.equation.compute(time * 2 - 1.0F)),

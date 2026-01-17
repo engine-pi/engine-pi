@@ -29,8 +29,8 @@ public class WeldJointDemo extends BaseJointScene
 {
     public WeldJointDemo()
     {
-        joint = a.createWeldJoint(b, new Vector(0.25, 0.25),
-                new Vector(0.75, 0.75));
+        joint = a
+            .createWeldJoint(b, new Vector(0.25, 0.25), new Vector(0.75, 0.75));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });

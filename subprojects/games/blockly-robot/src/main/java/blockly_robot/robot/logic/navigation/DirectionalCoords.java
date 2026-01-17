@@ -24,8 +24,8 @@ public class DirectionalCoords extends Coords
 
     public String toString()
     {
-        return "DirectionalPoint [row=%s, col=%s, dir=%s]".formatted(row, col,
-                dir);
+        return "DirectionalPoint [row=%s, col=%s, dir=%s]"
+            .formatted(row, col, dir);
     }
 
     public String getSummary()

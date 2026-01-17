@@ -48,8 +48,13 @@ public class StatefulSpritesheetAnimation<State>
      */
     public void addState(State state, String filepath, int x, int y)
     {
-        addState(state, Animation.createFromSpritesheet(frameDuration, filepath,
-                x, y, width, height));
+        addState(state,
+            Animation.createFromSpritesheet(frameDuration,
+                filepath,
+                x,
+                y,
+                width,
+                height));
     }
 
     /**
@@ -61,7 +66,12 @@ public class StatefulSpritesheetAnimation<State>
     public void addState(State state, int spriteWidth, int spriteHeight,
             String filePath)
     {
-        addState(state, Animation.createFromSpritesheet(frameDuration, filePath,
-                width, height, spriteWidth, spriteHeight));
+        addState(state,
+            Animation.createFromSpritesheet(frameDuration,
+                filePath,
+                width,
+                height,
+                spriteWidth,
+                spriteHeight));
     }
 }

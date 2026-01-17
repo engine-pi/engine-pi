@@ -32,7 +32,8 @@ public class GlobalMouseScrollListenerDemo
         Controller.start(new Scene());
         Controller.addMouseScrollListener((event) -> {
             System.err.println("precise rotation: %s, rotation: %s".formatted(
-                    event.preciseWheelRotation(), event.wheelRotation()));
+                event.preciseWheelRotation(),
+                event.wheelRotation()));
         });
     }
 }

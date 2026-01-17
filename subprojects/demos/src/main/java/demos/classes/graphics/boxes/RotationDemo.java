@@ -43,8 +43,9 @@ public class RotationDemo extends Graphics2DComponent
         newTransform.rotate(Math.toRadians(-45));
         g.setTransform(newTransform);
 
-        new VerticalBox<>(defaultSettings, manuel).anchor(-100, 100).render(g)
-                .debug();
+        new VerticalBox<>(defaultSettings, manuel).anchor(-100, 100)
+            .render(g)
+            .debug();
         g.setTransform(oldTransform);
     }
 

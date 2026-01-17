@@ -26,13 +26,13 @@ public class PlatformBuilder extends ItemRelocator
         ItemRelocation action = reportItemRelocation(actionName, null);
         if (numberOfPlatforms == 0)
         {
-            return (ItemRelocation) action.setError(
-                    ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
+            return (ItemRelocation) action
+                .setError(ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
         }
         if (context.isObstacle(coords))
         {
             return (ItemRelocation) action
-                    .setError(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
+                .setError(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
         }
         Item platform = drop(coords, "platform");
         if (platform != null)

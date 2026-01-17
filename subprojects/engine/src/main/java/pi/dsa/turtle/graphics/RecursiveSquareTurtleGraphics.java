@@ -162,8 +162,9 @@ public class RecursiveSquareTurtleGraphics extends TurtleGraphics
             turtle.forward(radius);
             turtle.lowerPen();
             turtle.left(180);
-            drawSquareCircleWithRadius(numberOfSquares, remainingSquares - 1,
-                    radius);
+            drawSquareCircleWithRadius(numberOfSquares,
+                remainingSquares - 1,
+                radius);
         }
     }
 
@@ -182,8 +183,9 @@ public class RecursiveSquareTurtleGraphics extends TurtleGraphics
     {
         if (radius >= 1)
         {
-            drawSquareCircleWithRadius(numberOfSquares, numberOfSquares,
-                    radius);
+            drawSquareCircleWithRadius(numberOfSquares,
+                numberOfSquares,
+                radius);
             drawMultipleSquareCircles(numberOfSquares, radius / 2);
         }
     }

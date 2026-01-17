@@ -131,7 +131,9 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
      */
     public BufferedImage get(String name, Color[] fromColors, Color[] toColors)
     {
-        return get(name, config.graphics.pixelMultiplication(), fromColors,
-                toColors);
+        return get(name,
+            config.graphics.pixelMultiplication(),
+            fromColors,
+            toColors);
     }
 }

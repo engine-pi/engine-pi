@@ -116,7 +116,7 @@ public class JointDemo extends ForceKlickEnvironment
             if (i != 0)
             {
                 chain[i - 1].createRevoluteJoint(chain[i],
-                        new Vector(0, 5).add(posrel));
+                    new Vector(0, 5).add(posrel));
             }
         }
         add(chain);

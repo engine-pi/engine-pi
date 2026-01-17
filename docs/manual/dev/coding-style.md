@@ -59,9 +59,13 @@ sehr komplex, sodass es sich empfiehlt die Eclipse IDE zu verwenden, um einen
 eigenen Programmierstil zu definieren (`Window` > `Preferences` > `Java` > `Code
 Style` > `Formatter`).
 
-
-Wrapping settings → Function calls → Arguments → “Wrap all elements, except first element if not necessary”
-Wrapping settings → Function calls → Qualified invocations → “Wrap all elements, every element on a new line”[^jqno.nl]
+- Line Wrapping
+    - Wrapping Settings
+        - Function calls
+            - Arguments → *Wrap all elements, except first element if not necessary*
+            - Qualified invocations → *Wrap all elements, except first element if not necessary*[^jqno.nl]
+        - 'enum' declaration
+            - Constants → *Force split, even if line shorter than maximum line width*
 
 [^jqno.nl]: https://jqno.nl/post/2024/08/24/why-are-there-no-decent-code-formatters-for-java/#eclipse-jdt-formatter
 

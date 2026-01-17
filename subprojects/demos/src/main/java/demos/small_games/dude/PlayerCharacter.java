@@ -83,7 +83,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
      */
     private enum HorizontalMovement
     {
-        LEFT(-MAX_SPEED), RIGHT(MAX_SPEED), IDLE(0);
+        LEFT(-MAX_SPEED),
+        RIGHT(MAX_SPEED),
+        IDLE(0);
 
         private final double targetVelocityX;
 
@@ -109,21 +111,27 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
         // Alle einzuladenden Dateien teilen den Großteil des Paths (Ordner
         // sowie gemeinsame Dateipräfixe)
         String basePath = "dude/char/spr_m_traveler_";
-        addState(PlayerState.Idle, Animation
-                .createFromAnimatedGif(basePath + "idle_anim.gif", 1, 1));
-        addState(PlayerState.Walking, Animation
-                .createFromAnimatedGif(basePath + "walk_anim.gif", 1, 1));
-        addState(PlayerState.Running, Animation
-                .createFromAnimatedGif(basePath + "run_anim.gif", 1, 1));
-        addState(PlayerState.JumpingUp, Animation
+        addState(PlayerState.Idle,
+            Animation.createFromAnimatedGif(basePath + "idle_anim.gif", 1, 1));
+        addState(PlayerState.Walking,
+            Animation.createFromAnimatedGif(basePath + "walk_anim.gif", 1, 1));
+        addState(PlayerState.Running,
+            Animation.createFromAnimatedGif(basePath + "run_anim.gif", 1, 1));
+        addState(PlayerState.JumpingUp,
+            Animation
                 .createFromAnimatedGif(basePath + "jump_1up_anim.gif", 1, 1));
-        addState(PlayerState.Midair, Animation.createFromAnimatedGif(
-                basePath + "jump_2midair_anim.gif", 1, 1));
-        addState(PlayerState.Falling, Animation
+        addState(PlayerState.Midair,
+            Animation.createFromAnimatedGif(basePath + "jump_2midair_anim.gif",
+                1,
+                1));
+        addState(PlayerState.Falling,
+            Animation
                 .createFromAnimatedGif(basePath + "jump_3down_anim.gif", 1, 1));
-        addState(PlayerState.Landing, Animation
+        addState(PlayerState.Landing,
+            Animation
                 .createFromAnimatedGif(basePath + "jump_4land_anim.gif", 1, 1));
-        addState(PlayerState.Smashing, Animation
+        addState(PlayerState.Smashing,
+            Animation
                 .createFromAnimatedGif(basePath + "jump_4land_anim.gif", 1, 1));
         stateTransition(PlayerState.Midair, PlayerState.Falling);
         stateTransition(PlayerState.Landing, PlayerState.Idle);
@@ -238,14 +246,14 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             applyImpulse(new Vector(0, 5));
             Circle particle = new Circle(0.1);
             particle.anchor(
-                    center().subtract(new Vector(Math.random() * 0.1, .45)));
+                center().subtract(new Vector(Math.random() * 0.1, .45)));
             particle.color(Color.RED);
             particle.layerPosition(-1);
             particle.animateParticle(.5);
             particle.animateColor(.25, Color.YELLOW);
             particle.applyImpulse(
-                    new Vector(0.005 * -impulse + (Math.random() - 0.5),
-                            -2 * (Math.random())));
+                new Vector(0.005 * -impulse + (Math.random() - 0.5),
+                        -2 * (Math.random())));
             particle.addCollisionListener((e) -> {
                 if (e.colliding() instanceof Platform)
                 {
@@ -361,12 +369,12 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 {
                     // D ist auch gedrückt, wir wollen also ab jetzt nach rechts
                     setHorizontalMovement(
-                            PlayerCharacter.HorizontalMovement.RIGHT);
+                        PlayerCharacter.HorizontalMovement.RIGHT);
                 }
                 else
                 {
                     setHorizontalMovement(
-                            PlayerCharacter.HorizontalMovement.IDLE);
+                        PlayerCharacter.HorizontalMovement.IDLE);
                 }
             }
             break;
@@ -380,12 +388,12 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 {
                     // A ist gedrückt, wir wollen also ab jetzt nach links
                     setHorizontalMovement(
-                            PlayerCharacter.HorizontalMovement.LEFT);
+                        PlayerCharacter.HorizontalMovement.LEFT);
                 }
                 else
                 {
                     setHorizontalMovement(
-                            PlayerCharacter.HorizontalMovement.IDLE);
+                        PlayerCharacter.HorizontalMovement.IDLE);
                 }
             }
             break;
@@ -421,12 +429,14 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                 Interpolator<Double> interpolator = new SinusDouble(0,
                         -0.0004 * velocity().y());
                 ValueAnimator<Double> valueAnimator = new ValueAnimator<>(.1,
-                        y -> layer().scene().camera()
-                                .offset(originalOffset.add(new Vector(0, y))),
+                        y -> layer().scene()
+                            .camera()
+                            .offset(originalOffset.add(new Vector(0, y))),
                         interpolator, layer());
                 layer().addFrameUpdateListener(valueAnimator);
-                valueAnimator.addCompletionListener(value -> layer()
-                        .frameUpdateListeners().remove(valueAnimator));
+                valueAnimator.addCompletionListener(
+                    value -> layer().frameUpdateListeners()
+                        .remove(valueAnimator));
             }
             Vector speed = physicsHandler().velocity();
             Vector transformedSpeed = Math.abs(speed.x()) < .1
@@ -436,9 +446,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
             {
                 Circle particle = new Circle(Random.range() * .02 + .02);
                 particle.anchor(center().add(0, -32));
-                particle.applyImpulse(
-                        transformedSpeed.negate().multiply(Math.random() * 0.1)
-                                .multiplyY(Math.random() * 0.1));
+                particle.applyImpulse(transformedSpeed.negate()
+                    .multiply(Math.random() * 0.1)
+                    .multiplyY(Math.random() * 0.1));
                 particle.color(Color.GRAY);
                 particle.layerPosition(-1);
                 particle.animateParticle(.5);

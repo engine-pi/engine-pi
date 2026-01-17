@@ -41,9 +41,9 @@ public class PressedKeyRepeaterDemo extends Scene implements KeyStrokeListener
             System.out.println("right");
         });
         repeater.addListener(KeyEvent.VK_LEFT,
-                () -> System.out.println("left initial"),
-                () -> System.out.println("left"),
-                () -> System.out.println("left final"));
+            () -> System.out.println("left initial"),
+            () -> System.out.println("left"),
+            () -> System.out.println("left final"));
     }
 
     public void onKeyDown(KeyEvent e)

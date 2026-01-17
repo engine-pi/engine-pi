@@ -26,16 +26,18 @@ public class TaskList
     public static TaskList readFromResources() throws IOException
     {
         try (Stream<Path> stream = Files
-                .walk(ResourceLoader.loadAsFile("data/tasks").toPath()))
+            .walk(ResourceLoader.loadAsFile("data/tasks").toPath()))
         {
             var ids = stream.filter((path) -> {
                 File file = path.toFile();
                 return !file.isDirectory()
                         && !file.getName().equals("_template.json");
-            }).map(Path::toAbsolutePath).map(Path::toString)
-                    .map((String fileName) -> fileName.replace(".json", ""))
-                    .map((absPath) -> absPath.replaceAll(".*data/tasks/", ""))
-                    .collect(Collectors.toList());
+            })
+                .map(Path::toAbsolutePath)
+                .map(Path::toString)
+                .map((String fileName) -> fileName.replace(".json", ""))
+                .map((absPath) -> absPath.replaceAll(".*data/tasks/", ""))
+                .collect(Collectors.toList());
             ids.sort(String::compareTo);
             return new TaskList(ids);
         }

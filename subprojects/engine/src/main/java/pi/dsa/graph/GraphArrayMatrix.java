@@ -195,8 +195,8 @@ public class GraphArrayMatrix extends Graph
             {
                 if (matrix[i][j] != -1)
                 {
-                    System.out.print(
-                            (matrix[i][j] + whiteSpace).substring(0, width));
+                    System.out
+                        .print((matrix[i][j] + whiteSpace).substring(0, width));
                 }
                 else
                 {

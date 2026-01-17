@@ -116,12 +116,12 @@ public final class Random
         else if (lowerLimit < upperLimit)
         {
             return lowerLimit + ThreadLocalRandom.current()
-                    .nextInt(upperLimit - lowerLimit + 1);
+                .nextInt(upperLimit - lowerLimit + 1);
         }
         else
         {
             return upperLimit + ThreadLocalRandom.current()
-                    .nextInt(lowerLimit - upperLimit + 1);
+                .nextInt(lowerLimit - upperLimit + 1);
         }
     }
 
@@ -219,8 +219,10 @@ public final class Random
     public static Vector vector(Scene scene)
     {
         Bounds bounds = scene.visibleArea();
-        return vector(bounds.xLeft(), bounds.xRight(), bounds.yBottom(),
-                bounds.yTop());
+        return vector(bounds.xLeft(),
+            bounds.xRight(),
+            bounds.yBottom(),
+            bounds.yTop());
     }
 
     /**

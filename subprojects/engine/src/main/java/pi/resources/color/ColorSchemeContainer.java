@@ -212,7 +212,7 @@ public class ColorSchemeContainer
     {
         clear();
         for (PredefinedColorScheme predefinedScheme : PredefinedColorScheme
-                .values())
+            .values())
         {
             add(predefinedScheme.getScheme());
         }

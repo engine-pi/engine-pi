@@ -666,8 +666,8 @@ public final class Vector implements Cloneable
     @Getter
     public double angle(Vector other)
     {
-        double degrees = Math.toDegrees(Math
-                .acos(getScalarProduct(other) / (length() * other.length())));
+        double degrees = Math.toDegrees(
+            Math.acos(getScalarProduct(other) / (length() * other.length())));
         if (y >= other.y)
         {
             return 360 - degrees;

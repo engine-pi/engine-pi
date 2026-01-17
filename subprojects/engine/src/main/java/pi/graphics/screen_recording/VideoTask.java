@@ -117,8 +117,8 @@ class VideoTask extends PhotoshootingTask
                         FileUtil.getVideosDir() + "/Engine-Pi_"
                                 + getFormattedTime(),
                         (int) Math.round(
-                                (double) config.graphics.framerate() / nFrames))
-                        .generate();
+                            (double) config.graphics.framerate() / nFrames))
+                                .generate();
                 // Den temporären Ordner mit allen Bilder löschen.
                 FileUtil.deleteDir(baseDir());
             }

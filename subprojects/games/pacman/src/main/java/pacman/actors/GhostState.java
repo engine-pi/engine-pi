@@ -20,7 +20,11 @@ package pacman.actors;
 
 public enum GhostState
 {
-    STAND("right"), UP("up"), LEFT("left"), RIGHT("right"), DOWN("down");
+    STAND("right"),
+    UP("up"),
+    LEFT("left"),
+    RIGHT("right"),
+    DOWN("down");
 
     private final String fileName;
 

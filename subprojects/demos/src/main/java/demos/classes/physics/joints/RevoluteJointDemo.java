@@ -37,7 +37,7 @@ public class RevoluteJointDemo extends Scene
         Circle circle = new Circle();
         add(rectangle, circle);
         RevoluteJoint joint = rectangle.createRevoluteJoint(circle,
-                new Vector(0.25, 0.25));
+            new Vector(0.25, 0.25));
         joint.addReleaseListener(() -> {
             System.out.println("Verbindung wurde gelöst");
         });

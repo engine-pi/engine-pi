@@ -67,7 +67,7 @@ public class TweenEngine implements FrameUpdateListener
         if (tween == null)
         {
             tween = new Tween(target, type, duration)
-                    .ease(TweenFunction.QUAD_INOUT);
+                .ease(TweenFunction.QUAD_INOUT);
             this.getTweens().get(target).put(type, tween);
         }
         else
@@ -223,17 +223,17 @@ public class TweenEngine implements FrameUpdateListener
                     continue;
                 }
                 final float[] currentValues = new float[tween
-                        .getTargetValues().length];
+                    .getTargetValues().length];
                 for (int i = 0; i < tween.getTargetValues().length; i++)
                 {
                     currentValues[i] = tween.getStartValues()[i]
-                            + tween.getEquation().compute(
-                                    elapsed / (float) tween.getDuration())
+                            + tween.getEquation()
+                                .compute(elapsed / (float) tween.getDuration())
                                     * (tween.getTargetValues()[i]
                                             - tween.getStartValues()[i]);
                 }
-                tween.getTarget().setTweenValues(tween.getType(),
-                        currentValues);
+                tween.getTarget()
+                    .setTweenValues(tween.getType(), currentValues);
             }
         }
     }

@@ -44,8 +44,8 @@ public abstract class Document implements UML
     public void addRelationship(Relationship r)
     {
         if (relationshipList.stream()
-                .noneMatch(i -> r.source().equals(i.source())
-                        && r.target().equals(i.target())))
+            .noneMatch(i -> r.source().equals(i.source())
+                    && r.target().equals(i.target())))
         {
             relationshipList.add(r);
         }
@@ -57,20 +57,22 @@ public abstract class Document implements UML
      */
     public void removeForeignRelations()
     {
-        relationshipList.removeIf(r -> classList.stream()
-                .noneMatch(c -> r.source().equals(c.name()))
-                || classList.stream()
+        relationshipList.removeIf(
+            r -> classList.stream().noneMatch(c -> r.source().equals(c.name()))
+                    || classList.stream()
                         .noneMatch(c -> r.target().equals(c.name())));
     }
 
     public String export()
     {
         return getHeader()
-                + classList.stream().map(c -> exportClass(c))
-                        .collect(Collectors.joining("\n"))
+                + classList.stream()
+                    .map(c -> exportClass(c))
+                    .collect(Collectors.joining("\n"))
                 + "\n"
-                + relationshipList.stream().map(r -> exportRelationship(r))
-                        .collect(Collectors.joining("\n"))
+                + relationshipList.stream()
+                    .map(r -> exportRelationship(r))
+                    .collect(Collectors.joining("\n"))
                 + "\n" + getFooter();
     }
 

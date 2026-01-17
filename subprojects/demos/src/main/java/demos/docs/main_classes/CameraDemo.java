@@ -42,8 +42,8 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     public CameraDemo()
     {
         info("Kamera-Demo").description(
-                "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.")
-                .disable();
+            "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.")
+            .disable();
         camera = camera();
         Image background = new Image("main-classes/camera/Fez.png", 32);
         background.center(0, 0);

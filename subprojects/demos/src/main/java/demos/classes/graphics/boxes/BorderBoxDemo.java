@@ -37,12 +37,13 @@ public class BorderBoxDemo extends Graphics2DComponent
         var defaultSettings = new BorderBox(new TextLineBox("default"));
 
         var lineWidth = new BorderBox(new TextLineBox("lineWidth"))
-                .thickness(5);
+            .thickness(5);
         var lineColor = new BorderBox(new TextLineBox("lineColor"))
-                .color(colors.get("blue"));
+            .color(colors.get("blue"));
 
         new VerticalBox<Box>(defaultSettings, lineWidth, lineColor).anchor(0, 0)
-                .render(g).debug();
+            .render(g)
+            .debug();
     }
 
     public static void main(String[] args)
