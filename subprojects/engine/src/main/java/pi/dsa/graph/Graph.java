@@ -27,7 +27,7 @@ import pi.annotations.Getter;
  *
  * <p>
  * Eine abstrakte Basisklasse als Grundlage zum Vererben für unterschiedliche
- * Graph-Implementationen, z. B. eine Implementation eines Graphen durch eine
+ * Graph-Implementationen, z.B. eine Implementation eines Graphen durch eine
  * Adjazenzmatrix oder durch eine Adjazenzliste. Diese Klasse wird auch als
  * Datenbasis zum grafischen Zeichnen des Graphen verwendet.
  * </p>
@@ -185,7 +185,7 @@ public abstract class Graph
     }
 
     /**
-     * <b>Fügt</b> einen neuen Knoten in den Datenstruktur (z. B. Matrix oder
+     * <b>Fügt</b> einen neuen Knoten in den Datenstruktur (z.B. Matrix oder
      * Liste) der aktuellen Graph-Implementation <b>ein</b>.
      *
      * <p>

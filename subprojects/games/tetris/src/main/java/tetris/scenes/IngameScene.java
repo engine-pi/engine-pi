@@ -113,7 +113,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     /**
      * Dadurch kann die Bewegung der Tetrominos gesperrt werden, wenn sich das
-     * Spiel gerade in einer Animation (z. B. Tilgung von Zeilen) befindet.
+     * Spiel gerade in einer Animation (z.B. Tilgung von Zeilen) befindet.
      */
     private boolean isInAnimation = false;
 
@@ -277,7 +277,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 // Muss oberhalb von keyRepeater.stop() stehen.
                 score.add(softDrop.getDistance());
             }
-            // Wir stoppen alle Tastenwiederholer (z. B. ausgelöst durch einen
+            // Wir stoppen alle Tastenwiederholer (z.B. ausgelöst durch einen
             // Soft drop), wenn sich ein Tetromino nicht
             // mehr weiter nach unten bewegen kann. Würden wir den Wiederholer
             // nicht stoppen, dann hätte das neue Tetromino gleich nach dem

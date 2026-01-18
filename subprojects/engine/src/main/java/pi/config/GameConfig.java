@@ -83,7 +83,7 @@ public class GameConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der GameConfiguration, damit
      *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     GameConfiguration durch aneinander gekettete Setter festgelegt werden
-     *     können, z. B. {@code game().instantMode(..).xxx(..)}.
+     *     können, z.B. {@code game().instantMode(..).xxx(..)}.
      *
      * @since 0.42.0
      */

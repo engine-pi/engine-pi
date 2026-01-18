@@ -86,7 +86,7 @@ particle.bodyType(PARTICLE)
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter

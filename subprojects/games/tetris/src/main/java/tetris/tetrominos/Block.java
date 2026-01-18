@@ -49,7 +49,7 @@ public class Block
      * @param scene Eine Referenz auf die {@link Scene Szene}, in der der Block
      *     angezeigt werden soll.
      * @param imageName Das Hauptbild angegeben als Dateiname ohne die
-     *     Dateierweiterung, z. B. {@code "L"} oder {@code "I_h_left"}.
+     *     Dateierweiterung, z.B. {@code "L"} oder {@code "I_h_left"}.
      * @param x Die X-Koordinate der Startposition, auf die der Block gesetzt
      *     werden soll.
      * @param y Die Y-Koordinate der Startposition, auf die der Block gesetzt
@@ -69,7 +69,7 @@ public class Block
     /**
      * Gibt den Namen des Blocks zurück.
      *
-     * @return Der Name des Blocks z. B. {@code "L"} oder {@code "I_h_left"}.
+     * @return Der Name des Blocks z.B. {@code "L"} oder {@code "I_h_left"}.
      */
     public String getName()
     {
@@ -79,7 +79,7 @@ public class Block
     /**
      * Gibt den ersten Buchstaben des Blocknamens zurück.
      *
-     * @return Der erste Buchstabe des Blocknamens des Blocks z. B. {@code 'L'}
+     * @return Der erste Buchstabe des Blocknamens des Blocks z.B. {@code 'L'}
      *     oder {@code 'I'}.
      */
     public char getChar()

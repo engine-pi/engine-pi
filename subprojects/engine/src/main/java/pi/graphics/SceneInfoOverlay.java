@@ -177,7 +177,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -198,7 +198,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -224,7 +224,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
     private SceneInfoOverlay assemble()
@@ -280,7 +280,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -306,7 +306,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -331,7 +331,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -357,7 +357,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -379,7 +379,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0
@@ -419,7 +419,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
     @Setter
@@ -437,7 +437,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
     @Setter
@@ -451,7 +451,7 @@ public class SceneInfoOverlay
     /**
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @hidden
@@ -472,7 +472,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
     @API
@@ -488,7 +488,7 @@ public class SceneInfoOverlay
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
-     *     gekettete Setter festgelegt werden können, z. B.
+     *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      *
      * @since 0.42.0

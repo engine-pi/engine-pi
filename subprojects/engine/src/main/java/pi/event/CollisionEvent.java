@@ -51,7 +51,7 @@ import pi.annotations.Internal;
  * Ereignis angegeben.</li>
  *
  * <li><b>Ausführliche Informationsquelle</b>: Hierüber sind Informationen zur
- * Kollision erhältlich, z. B. über die Härte des Aufpralls.</li>
+ * Kollision erhältlich, z.B. über die Härte des Aufpralls.</li>
  *
  * <li><b>Kontrolle der Kollisionsauflösung</b>: Der Nutzer kann entscheiden, ob
  * die Kollision aufgelöst werden soll oder ignoriert werden soll. Hiermit

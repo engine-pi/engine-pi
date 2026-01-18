@@ -250,4 +250,20 @@ public class ToStringFormatter
     {
         return format();
     }
+
+    /**
+     * Bereinigt die angegeben {@code toString()}-Zeichenkette, indem alle
+     * ANSI-Farbcodes und {@code @hashCodes} entfernt werden.
+     *
+     * @param toString Der zu bereinigende Format-String.
+     *
+     * @return Ein bereinigter Format-String ohne ANSI-Farbcodes und
+     *     Hexadezimalzahlen.
+     *
+     * @since 0.42.0
+     */
+    public static String clean(String toString)
+    {
+        return AnsiColor.remove(toString).replaceAll("@[0-9a-f]+", "");
+    }
 }

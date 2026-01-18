@@ -77,7 +77,7 @@ public class CoordinatesystemConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
+     *     werden können, z.B.
      *     {@code coordinateSystem().linesNMeter(..).labelsOnIntersections(..)}.
      *
      * @since 0.42.0
@@ -125,7 +125,7 @@ public class CoordinatesystemConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
+     *     werden können, z.B.
      *     {@code coordinateSystem().linesNMeter(..).labelsOnIntersections(..)}.
      *
      * @since 0.42.0

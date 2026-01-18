@@ -398,9 +398,8 @@ public class Text extends Geometry
      * Setzt die <b>Farbe</b> des Textes auf eine bestimmte Farbe, die als
      * <b>Zeichenkette</b> angegeben werden kann.
      *
-     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param color Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch

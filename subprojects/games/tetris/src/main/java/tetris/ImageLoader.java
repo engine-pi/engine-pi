@@ -37,7 +37,7 @@ public class ImageLoader
      * <p>
      * Die Ausgangsbilder haben als Farben vier verschiedene Grautöne bzw. zwei
      * Grautöne und schwarz und weiß. Mit Hilfe dieser Methode ist es möglich,
-     * die Bilder z. B. grünlich einzufärben, sodass sie dem klassischen
+     * die Bilder z.B. grünlich einzufärben, sodass sie dem klassischen
      * Gameboy-Farben ähneln. So müssen wir uns nicht für ein bestimmtes
      * Farbschema entscheiden und dann viele Bilddateien erstellen, die dann
      * wieder geändert werden müssten, wenn wir ein anderes Fahrschema nutzen

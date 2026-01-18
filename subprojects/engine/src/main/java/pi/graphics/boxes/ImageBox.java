@@ -24,21 +24,13 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import pi.annotations.Setter;
+
 // Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/ImageBoxDemo.java
 
 public class ImageBox extends LeafBox
 {
     BufferedImage image;
-
-    /**
-     * Gibt an, ob das Objekt horizontal gespiegelt ist.
-     */
-    boolean flippedHorizontally = false;
-
-    /**
-     * Gibt an, ob das Objekt vertikal gespiegelt ist.
-     */
-    boolean flippedVertically = false;
 
     public ImageBox(BufferedImage image)
     {
@@ -50,35 +42,71 @@ public class ImageBox extends LeafBox
         this(images.get(image));
     }
 
+    /**
+     * Setzt die <b>Breite</b> des Bildes in Pixel.
+     *
+     * @param width Die <b>Breite</b> des Bildes in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code image.width(..).height(..)}.
+     */
+    @Setter
     public ImageBox width(int width)
     {
         definedWidth = width;
         return this;
     }
 
+    /**
+     * Setzt die <b>Höhe</b> des Bildes in Pixel.
+     *
+     * @param height Die <b>Höhe</b> des Bildes in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildes, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildes durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code image.width(..).height(..)}.
+     */
+    @Setter
     public ImageBox height(int height)
     {
         definedHeight = height;
         return this;
     }
 
+    /**
+     * Gibt an, ob das Objekt horizontal gespiegelt ist.
+     */
+    boolean flippedHorizontally = false;
+
+    @Setter
     public ImageBox flippedHorizontally(boolean flippedHorizontally)
     {
         this.flippedHorizontally = flippedHorizontally;
         return this;
     }
 
+    @Setter
     public ImageBox flippedHorizontally()
     {
         return flippedHorizontally(true);
     }
 
+    /**
+     * Gibt an, ob das Objekt vertikal gespiegelt ist.
+     */
+    boolean flippedVertically = false;
+
+    @Setter
     public ImageBox flippedVertically(boolean flippedVertically)
     {
         this.flippedVertically = flippedVertically;
         return this;
     }
 
+    @Setter
     public ImageBox flippedVertically()
     {
         return flippedVertically(true);

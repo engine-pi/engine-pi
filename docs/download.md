@@ -14,7 +14,7 @@ heruntergeladen werden:
 
 ### BlueJ-Projekt erstellen
 
-Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>-jar-with-dependencies.jar` herunterladen (z. B. [engine-pi-{{ version }}-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-jar-with-dependencies.jar)),
+Auf [Github Releases](https://github.com/engine-pi/engine-pi/releases) gehen und die aktuelle Version `engine-pi-<version>-jar-with-dependencies.jar` herunterladen (z.B. [engine-pi-{{ version }}-jar-with-dependencies.jar](https://github.com/engine-pi/engine-pi/releases/download/v{{ version }}/engine-pi-{{ version }}-jar-with-dependencies.jar)),
 einen `+libs` Ordner erstellen und die JAR-Datei hineinkopieren.
 
 {{ image('docs/download/Github-Release.png') }}

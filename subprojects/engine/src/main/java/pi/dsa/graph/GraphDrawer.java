@@ -20,7 +20,7 @@ enum EditState
 
 /**
  * Per Mausklick und Tastatureingaben einen Graphen zeichnen, der dann als
- * Java-Code exportiert werden kann. So können Graphen-Bilder (z. B. aus
+ * Java-Code exportiert werden kann. So können Graphen-Bilder (z.B. aus
  * Schulbüchern) nachgezeichnet werden und dadurch die Koordinaten bestimmt
  * werden.
  *

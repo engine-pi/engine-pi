@@ -83,7 +83,7 @@ public class DebugConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
      *
      * @since 0.42.0
      */
@@ -131,7 +131,7 @@ public class DebugConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
      *
      * @since 0.42.0
      */
@@ -179,7 +179,7 @@ public class DebugConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
      *
      * @since 0.42.0
      */
@@ -198,7 +198,7 @@ public class DebugConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
      *
      * @since 0.42.0
      */
@@ -259,7 +259,7 @@ public class DebugConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B. {@code debug.enabled(..).renderActors(..)}.
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
      *
      * @since 0.42.0
      */

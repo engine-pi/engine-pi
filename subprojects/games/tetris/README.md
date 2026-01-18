@@ -83,7 +83,7 @@ Gameboy läuft mit einer Framerate von `59.73` Bildern pro Sekunde.
 Diese Tabelle befindet sich bei Byte `1B06h` in der ROM; `XXXh` steht für eine
 hexadezimale Zahl `XXX`. Eine andere Schreibweise wäre `0xXXX`.
 Jeder Eintrag ist um eins
-kleiner als die tatsächliche Anzahl der Frames. So wird z. B. bei Level `1` `49`
+kleiner als die tatsächliche Anzahl der Frames. So wird z.B. bei Level `1` `49`
 (= `31h`) Frames als `30h` gespeichert.[^harddrop]
 
 https://github.com/alexsteb/tetris_disassembly/blob/b4bbceb3cc086121ab4fe9bf4dad6752fe956ec0/main.asm#L4558-L4559
@@ -249,7 +249,7 @@ veröffentlicht. Der Quellcode ist über
 [Github](https://github.com/mgba-emu/mgba) abrufbar.
 
 Um das Spiel in einem Emulator laufen zu lassen, ist eine sogenanntes
-ROM notwendig, z. B. von
+ROM notwendig, z.B. von
 [emulatorgames.net](https://www.emulatorgames.net/roms/gameboy/tetris-jue-v11/)
 oder aus diesem
 [Repository](https://github.com/Josef-Friedrich/tetris/raw/main/misc/Tetris-ROM.gb).

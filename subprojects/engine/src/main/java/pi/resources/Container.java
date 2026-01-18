@@ -11,7 +11,7 @@ import pi.resources.color.ColorContainer;
  * {@link ColorContainer} implementiert.
  * </p>
  *
- * @param <T> Die Ressource, z. B. BufferedImage, Sound, Color
+ * @param <T> Die Ressource, z.B. BufferedImage, Sound, Color
  *
  * @author Steffen Wilke
  * @author Matthias Wilke

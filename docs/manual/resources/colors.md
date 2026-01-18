@@ -93,7 +93,7 @@ Natürlich sind auch alle anderen Zahlenkombinationen mit Werten zwischen 0 und 
 
 ## Methoden zum Färben
 
-Alle färbbaren Klassen (z. B. Text und alle Geometrie-Klassen) verfügen zum Festlegen der Farbe über nachfolgende zwei Methoden:[^engine-alpha-wiki:farben]
+Alle färbbaren Klassen (z.B. Text und alle Geometrie-Klassen) verfügen zum Festlegen der Farbe über nachfolgende zwei Methoden:[^engine-alpha-wiki:farben]
 
 - {{ method('pi.actor.Actor', 'color(java.lang.String)', 'color(String color)') }}
 - {{ method('pi.actor.Actor', 'color(java.awt.Color)', 'color(Color color)') }}

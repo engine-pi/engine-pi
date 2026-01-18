@@ -2,7 +2,7 @@
 
 Eine Figur (engl. Actor) ist ein grafisches Objekt, das sich bewegt bzw.
 das bewegt werden kann. In der Engine Pi gibt es eine Vielzahl
-verschiedener Figurenarten (z. B.
+verschiedener Figurenarten (z.B.
 {{ class('pi.Image') }},
 {{ class('pi.Text') }},
 {{ class('pi.Rectangle') }},

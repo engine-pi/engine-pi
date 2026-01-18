@@ -70,7 +70,7 @@ public class InsetBox extends ChildBox
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.40.0
@@ -87,7 +87,7 @@ public class InsetBox extends ChildBox
     /**
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter
@@ -100,7 +100,7 @@ public class InsetBox extends ChildBox
     /**
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter
@@ -113,7 +113,7 @@ public class InsetBox extends ChildBox
     /**
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter
@@ -126,7 +126,7 @@ public class InsetBox extends ChildBox
     /**
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter

@@ -88,7 +88,7 @@ public class DirectedLineSegment
      * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Strecke durch aneinander gekettete Setter festgelegt werden können,
-     *     z. B. {@code lineSegment.from(..).to(..)}.
+     *     z.B. {@code lineSegment.from(..).to(..)}.
      *
      * @since 0.42.0
      */
@@ -120,7 +120,7 @@ public class DirectedLineSegment
      * @return Eine Referenz auf die eigene Instanz der gerichteten Strecke,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Strecke durch aneinander gekettete Setter festgelegt werden können,
-     *     z. B. {@code lineSegment.from(..).to(..)}.
+     *     z.B. {@code lineSegment.from(..).to(..)}.
      *
      * @since 0.42.0
      */

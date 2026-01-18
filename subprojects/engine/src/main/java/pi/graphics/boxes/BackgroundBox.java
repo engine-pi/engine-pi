@@ -34,12 +34,6 @@ import pi.annotations.Setter;
  */
 public class BackgroundBox extends ChildBox
 {
-    /**
-     * Die <b>Hintergrundfarbe</b>.
-     *
-     * @since 0.38.0
-     */
-    Color color = null;
 
     public BackgroundBox()
     {
@@ -50,34 +44,21 @@ public class BackgroundBox extends ChildBox
         super(child);
     }
 
-    /* Setter */
-
     /**
-     * Setzt die <b>Hintergrundfarbe</b>.
+     * Die <b>Hintergrundfarbe</b>.
      *
-     * @param color Die <b>Hintergrundfarbe</b>.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
-     *     {@code box.x(..).y(..)}.
-     *
-     * @since 0.40.0
+     * @since 0.38.0
      */
-    public BackgroundBox color(Color color)
-    {
-        this.color = color;
-        return this;
-    }
+    Color color = null;
 
     /**
-     * @param color Ein Farbname, ein Farbalias
-     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
-     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * @param color Ein Farbname ({@link pi.resources.color.ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.B.
+     *     {@code #ff0000}).
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter
@@ -86,7 +67,25 @@ public class BackgroundBox extends ChildBox
         this.color = colors.get(color);
         return this;
     }
-    /* Getter */
+
+    /**
+     * Setzt die <b>Hintergrundfarbe</b>.
+     *
+     * @param color Die <b>Hintergrundfarbe</b>.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.40.0
+     */
+    @Setter
+    public BackgroundBox color(Color color)
+    {
+        this.color = color;
+        return this;
+    }
 
     @Override
     protected void calculateDimension()

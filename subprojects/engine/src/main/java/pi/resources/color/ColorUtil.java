@@ -45,12 +45,12 @@ class HexColorString
 
     /**
      * Überprüft, ob die gegebene Zeichenketten eine Farbe in hexadezimaler
-     * Notation (z. B. {@code #ff0000}) codiert.
+     * Notation (z.B. {@code #ff0000}) codiert.
      *
      * @param color Eine Zeichenkette, die überprüft werden soll.
      *
      * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
-     *     Notation (z. B. {@code #ff0000}) korrekt codiert.
+     *     Notation (z.B. {@code #ff0000}) korrekt codiert.
      */
     public static boolean isValid(final String colorCode)
     {
@@ -228,12 +228,12 @@ public final class ColorUtil
 
     /**
      * Überprüft, ob die gegebene Zeichenketten eine Farbe in hexadezimaler
-     * Notation (z. B. {@code #ff0000}) codiert.
+     * Notation (z.B. {@code #ff0000}) codiert.
      *
      * @param color Eine Zeichenkette, die überprüft werden soll.
      *
      * @return Wahr, falls die Zeichenketten eine Farbe in hexadezimaler
-     *     Notation (z. B. {@code #ff0000}) korrekt codiert.
+     *     Notation (z.B. {@code #ff0000}) korrekt codiert.
      */
     public static boolean isHexColorString(String color)
     {

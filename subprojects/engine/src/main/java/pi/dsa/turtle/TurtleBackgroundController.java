@@ -70,9 +70,9 @@ public class TurtleBackgroundController
     }
 
     /**
-     * @param color Ein Farbname, ein Farbalias
-     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
-     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * @param color Ein Farbname ({@link pi.resources.color.ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.B.
+     *     {@code #ff0000}).
      *
      * @since 0.40.0
      */

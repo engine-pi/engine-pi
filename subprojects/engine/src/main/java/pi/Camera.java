@@ -138,7 +138,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -159,7 +159,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -183,7 +183,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -199,7 +199,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.28.0
@@ -218,7 +218,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -237,7 +237,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -277,7 +277,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -314,7 +314,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @see #hasBounds()
@@ -356,7 +356,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @see Scene#meter(double)
@@ -400,7 +400,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.28.0
@@ -418,7 +418,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.28.0
@@ -438,7 +438,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.28.0
@@ -456,7 +456,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      *
      * @since 0.28.0
@@ -485,7 +485,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API
@@ -506,7 +506,7 @@ public final class Camera
      *
      * @return Eine Referenz auf die eigene Instanz der Kamera, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Kamera durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code camera.offset(..).focus(..)}.
      */
     @API

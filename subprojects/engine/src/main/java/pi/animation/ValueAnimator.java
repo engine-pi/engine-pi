@@ -56,7 +56,7 @@ import pi.event.FrameUpdateListenerRegistration;
  * im {@link AnimationMode#SINGLE SINGLE}-Modus) aufgerufen werden.
  * </p>
  *
- * @param <Value> Der Typ der Werte, die animiert werden, z. B. {@link Double}
+ * @param <Value> Der Typ der Werte, die animiert werden, z.B. {@link Double}
  *
  * @see Interpolator
  * @see AnimationMode

@@ -100,8 +100,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -144,8 +143,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -226,8 +224,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -268,8 +265,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -317,8 +313,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -360,8 +355,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -402,8 +396,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -467,8 +460,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -516,8 +508,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @since 0.42.0
      */
@@ -557,8 +548,7 @@ public class GraphicsConfig extends ConfigGroup
      * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
      *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
      *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z. B.
-     *     {@code graphic.windowWidth(..).windowHeight(..)}.
+     *     werden können, z.B. {@code graphic.windowWidth(..).windowHeight(..)}.
      *
      * @see pi.Controller#windowDimension(int, int)
      *

@@ -72,11 +72,13 @@ public class AnsiColor
     }
 
     /**
-     * Entferne die ANSI-Farben wieder.
+     * Entfernt die ANSI-Farben wieder.
      *
      * @param colored Eine Zeichenketten mit ANSI-Escapesequenzen.
      *
      * @return Eine Zeichenkette ohne Farbe.
+     *
+     * @since 0.42.0
      */
     public static String remove(String colored)
     {

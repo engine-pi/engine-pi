@@ -42,8 +42,8 @@ import pi.resources.Container;
  * <p>
  * Bei den Farbnamen werden sowohl die Groß- und Kleinschreibung als auch
  * Leerzeichen ignoriert. In den Farbnamen können deutsche Umlaute verwendet
- * oder umschrieben werden (z. B. ae, oe, ue, ss). Der Binde- und der
- * Unterstrich werden ebenfalls nicht berücksichtigt.
+ * oder umschrieben werden (z.B. ae, oe, ue, ss). Der Binde- und der Unterstrich
+ * werden ebenfalls nicht berücksichtigt.
  * </p>
  *
  * <p>
@@ -407,9 +407,8 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param name Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Eine vordefinierte Farbe.
      *
@@ -484,9 +483,8 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param name Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      * @param alpha Der
      *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
      *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht
@@ -534,9 +532,8 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param name Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Eine vordefinierte Farbe.
      *
@@ -614,9 +611,8 @@ public class ColorContainer implements Container<Color>
      * Auch Leerzeichen werden ignoriert.
      * </p>
      *
-     * @param name Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param name Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      * @param alpha Der
      *     <a href="https://de.wikipedia.org/wiki/Alphakanal">Alphakanal</a> als
      *     Ganzzahl von {@code 0} bis {@code 255}. Dem Wert {@code 0} entspricht

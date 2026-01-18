@@ -128,8 +128,8 @@ public final class FontContainer extends ResourcesContainer<Font>
      * Gibt eine Schriftart zurück, die durch einen <b>Namen</b> oder
      * <b>Dateipfad</b> ermittelt wird.
      *
-     * @param name Der Name einer Systemschriftart (z. B. {@code "Arial"}) oder
-     *     der Dateipfad zu einer Schriftdatei (z. B.
+     * @param name Der Name einer Systemschriftart (z.B. {@code "Arial"}) oder
+     *     der Dateipfad zu einer Schriftdatei (z.B.
      *     {@code "fonts/Cantarell-Regular.ttf"}).
      *
      * @return Die Schriftart.
@@ -148,8 +148,8 @@ public final class FontContainer extends ResourcesContainer<Font>
      * <b>Dateipfad</b> ermittelt wird, und mit den gewünschten
      * <b>Stil</b>attribut versehen ist.
      *
-     * @param name Der Name einer Systemschriftart (z. B. {@code "Arial"}) oder
-     *     der Dateipfad zu einer Schriftdatei (z. B.
+     * @param name Der Name einer Systemschriftart (z.B. {@code "Arial"}) oder
+     *     der Dateipfad zu einer Schriftdatei (z.B.
      *     {@code "fonts/Cantarell-Regular.ttf"}).
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *     kursiv</b>).
@@ -172,10 +172,10 @@ public final class FontContainer extends ResourcesContainer<Font>
      * <b>Dateipfad</b> ermittelt wird, und mit den gewünschten
      * <b>Größen</b>attribut versehen ist.
      *
-     * @param name Der Name einer Systemschriftart (z. B. {@code "Arial"}) oder
-     *     der Dateipfad zu einer Schriftdatei (z. B.
+     * @param name Der Name einer Systemschriftart (z.B. {@code "Arial"}) oder
+     *     der Dateipfad zu einer Schriftdatei (z.B.
      *     {@code "fonts/Cantarell-Regular.ttf"}).
-     * @param size Die Schriftgröße in Punkten (pt, Points), z. B. {@code 12.0}
+     * @param size Die Schriftgröße in Punkten (pt, Points), z.B. {@code 12.0}
      *     für <em>12pt</em>.
      *
      * @return Die Schriftart, die die angegebenen Größeneinstellungen besitzt.
@@ -190,8 +190,8 @@ public final class FontContainer extends ResourcesContainer<Font>
      * <b>Dateipfad</b> ermittelt wird, und mit den gewünschten <b>Stil</b>- und
      * <b>Größen</b>attributen versehen ist.
      *
-     * @param name Der Name einer Systemschriftart (z. B. {@code "Arial"}) oder
-     *     der Dateipfad zu einer Schriftdatei (z. B.
+     * @param name Der Name einer Systemschriftart (z.B. {@code "Arial"}) oder
+     *     der Dateipfad zu einer Schriftdatei (z.B.
      *     {@code "fonts/Cantarell-Regular.ttf"}).
      * @param style Der Stil der Schriftart (<b>fett, kursiv, oder fett und
      *     kursiv</b>).
@@ -201,7 +201,7 @@ public final class FontContainer extends ResourcesContainer<Font>
      *     <li>{@code 2}: Kursiv</li>
      *     <li>{@code 3}: Fett und Kursiv</li>
      *     </ul>
-     * @param size Die Schriftgröße in Punkten (pt, Points), z. B. {@code 12.0}
+     * @param size Die Schriftgröße in Punkten (pt, Points), z.B. {@code 12.0}
      *     für <em>12pt</em>.
      *
      * @return Die Schriftart, die die angegebenen Stil- und Größeneinstellungen

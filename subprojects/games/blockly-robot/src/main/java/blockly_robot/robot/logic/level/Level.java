@@ -11,7 +11,7 @@ import blockly_robot.robot.logic.robot.VirtualRobot;
  * Schwierigkeit.
  *
  * Eine Trainingsaufgabe kann mehrere Versionen unterschiedlicher
- * Schwierigkeitsgrade haben, z. B. eine Zweistern- (<code>Version**</code>,
+ * Schwierigkeitsgrade haben, z.B. eine Zweistern- (<code>Version**</code>,
  * <em>easy</em>), Dreistern-(<code>Version***</code>, <em>medium</em>), und
  * eine Vierstern-Version (<code>Version****</code>, <em>hard</em>).
  */

@@ -184,7 +184,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.38.0
@@ -203,7 +203,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.38.0
@@ -224,7 +224,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.38.0
@@ -242,7 +242,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.42.0
@@ -259,7 +259,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.42.0
@@ -275,7 +275,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.42.0
@@ -292,7 +292,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.42.0
@@ -491,7 +491,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     public Box remeasure()
@@ -508,7 +508,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.38.0
@@ -567,7 +567,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     public Box debug()
@@ -582,7 +582,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     private Box debug(int depth)

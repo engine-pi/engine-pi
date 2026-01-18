@@ -37,7 +37,7 @@ https://github.com/France-ioi/bebras-modules/blob/master/pemFioi/quickAlgo/READM
 
 ## Umsetzung einer Trainingsaufgabe auf jwinf.de:
 
-Eine Trainingsaufgabe ist in einer Javascript- und einer HTML-Datei definiert z. B.
+Eine Trainingsaufgabe ist in einer Javascript- und einer HTML-Datei definiert z.B.
 
 [Bedingte Anweisungen – Übungen / Zünde alle Kerzen an](https://jwinf.de/task/1835)
 

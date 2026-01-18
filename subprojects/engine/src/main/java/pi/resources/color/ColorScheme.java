@@ -330,7 +330,7 @@ public class ColorScheme
      * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -351,7 +351,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -363,13 +363,13 @@ public class ColorScheme
 
     /**
      * Setzt die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) in
-     * hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @param yellow Die Primärfarbe <b>Gelb</b> (englisch: <b>yellow</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -404,7 +404,7 @@ public class ColorScheme
      *     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -426,7 +426,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -439,14 +439,14 @@ public class ColorScheme
     /**
      * Setzt die Tertiärfarbe <b>Gelb-Orange</b> (englisch: <b>yellow
      * orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param yellowOrange Die Tertiärfarbe <b>Gelb-Orange</b> (englisch:
      *     <b>yellow orange</b>, Mischung aus <b>Gelb</b> und <b>Orange</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -484,7 +484,7 @@ public class ColorScheme
      *     Mischung aus <b>Gelb</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -506,7 +506,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     public ColorScheme orange(int r, int g, int b)
@@ -517,15 +517,15 @@ public class ColorScheme
 
     /**
      * Setzt die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>, Mischung
-     * aus <b>Gelb</b> und <b>Rot</b>) in hexadezimaler Codierung (z. B.
+     * aus <b>Gelb</b> und <b>Rot</b>) in hexadezimaler Codierung (z.B.
      * {@code #ff0000}).
      *
      * @param orange Die Sekundärfarbe <b>Orange</b> (englisch: <b>orange</b>,
      *     Mischung aus <b>Gelb</b> und <b>Rot</b>) in hexadezimaler Codierung
-     *     (z. B. {@code #ff0000}).
+     *     (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -560,7 +560,7 @@ public class ColorScheme
      *     orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -582,7 +582,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -599,10 +599,10 @@ public class ColorScheme
      *
      * @param redOrange Die Tertiärfarbe <b>Rot-Orange</b> (englisch: <b>red
      *     orange</b>, Mischung aus <b>Orange</b> und <b>Rot</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -629,7 +629,7 @@ public class ColorScheme
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -650,7 +650,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -662,13 +662,13 @@ public class ColorScheme
 
     /**
      * Setzt die Primärfarbe <b>Rot</b> (englisch: <b>red</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param red Die Primärfarbe <b>Rot</b> (englisch: <b>red</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -703,7 +703,7 @@ public class ColorScheme
      *     purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -725,7 +725,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -738,14 +738,14 @@ public class ColorScheme
     /**
      * Setzt die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red purple</b>,
      * Mischung aus <b>Rot</b> und <b>Violett</b>) in hexadezimaler Codierung
-     * (z. B. {@code #ff0000}).
+     * (z.B. {@code #ff0000}).
      *
      * @param redPurple Die Tertiärfarbe <b>Rot-Violett</b> (englisch: <b>red
      *     purple</b>, Mischung aus <b>Rot</b> und <b>Violett</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -783,7 +783,7 @@ public class ColorScheme
      *     Mischung aus <b>Rot</b> und <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -805,7 +805,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -817,15 +817,15 @@ public class ColorScheme
 
     /**
      * Setzt die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>, Mischung
-     * aus <b>Rot</b> und <b>Blau</b>) in hexadezimaler Codierung (z. B.
+     * aus <b>Rot</b> und <b>Blau</b>) in hexadezimaler Codierung (z.B.
      * {@code #ff0000}).
      *
      * @param purple Die Sekundärfarbe <b>Violett</b> (englisch: <b>purple</b>,
      *     Mischung aus <b>Rot</b> und <b>Blau</b>) in hexadezimaler Codierung
-     *     (z. B. {@code #ff0000}).
+     *     (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -860,7 +860,7 @@ public class ColorScheme
      *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -882,7 +882,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -895,14 +895,14 @@ public class ColorScheme
     /**
      * Setzt die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue purple</b>,
      * Mischung aus <b>Violett</b> und <b>Blau</b>) in hexadezimaler Codierung
-     * (z. B. {@code #ff0000}).
+     * (z.B. {@code #ff0000}).
      *
      * @param bluePurple Die Tertiärfarbe <b>Blau-Violett</b> (englisch: <b>blue
      *     purple</b>, Mischung aus <b>Violett</b> und <b>Blau</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -929,7 +929,7 @@ public class ColorScheme
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -950,7 +950,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -962,13 +962,13 @@ public class ColorScheme
 
     /**
      * Setzt die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>) in
-     * hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @param blue Die Primärfarbe <b>Blau</b> (englisch: <b>blue</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1003,7 +1003,7 @@ public class ColorScheme
      *     green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1025,7 +1025,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1042,10 +1042,10 @@ public class ColorScheme
      *
      * @param blueGreen Die Tertiärfarbe <b>Blau-Grün</b> (englisch: <b>blue
      *     green</b>, Mischung aus <b>Blau</b> und <b>Grün</b>) in hexadezimaler
-     *     Codierung (z. B. {@code #ff0000}).
+     *     Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1080,7 +1080,7 @@ public class ColorScheme
      *     <b>Blau</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1101,7 +1101,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1113,13 +1113,13 @@ public class ColorScheme
 
     /**
      * Setzt die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     * <b>Blau</b>) in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * <b>Blau</b>) in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @param green Die Sekundärfarbe <b>Grün</b> (Mischung aus <b>Gelb</b> und
-     *     <b>Blau</b>) in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     <b>Blau</b>) in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1154,7 +1154,7 @@ public class ColorScheme
      *     green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1176,7 +1176,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1193,10 +1193,10 @@ public class ColorScheme
      *
      * @param yellowGreen Die Tertiärfarbe <b>Gelb-Grün</b> (englisch: <b>yellow
      *     green</b>, Mischung aus <b>Gelb</b> und <b>Grün</b>) in hexadezimaler
-     *     Codierung (z. B. {@code #ff0000}).
+     *     Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1235,7 +1235,7 @@ public class ColorScheme
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1256,7 +1256,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1268,13 +1268,13 @@ public class ColorScheme
 
     /**
      * Setzt die Farbe <b>Braun</b> (englisch: <b>brown</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param brown Die Farbe <b>Braun</b> (englisch: <b>brown</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1301,7 +1301,7 @@ public class ColorScheme
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1322,7 +1322,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1334,13 +1334,13 @@ public class ColorScheme
 
     /**
      * Setzt die Farbe <b>Weiß</b> (englisch: <b>white</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param white Die Farbe <b>Weiß</b> (englisch: <b>white</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1367,7 +1367,7 @@ public class ColorScheme
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1388,7 +1388,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1400,13 +1400,13 @@ public class ColorScheme
 
     /**
      * Setzt die Farbe <b>Grau</b> (englisch: <b>gray</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param gray Die Farbe <b>Grau</b> (englisch: <b>gray</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1433,7 +1433,7 @@ public class ColorScheme
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1454,7 +1454,7 @@ public class ColorScheme
      *     {@code 255}.
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter
@@ -1466,13 +1466,13 @@ public class ColorScheme
 
     /**
      * Setzt die Farbe <b>Schwarz</b> (englisch: <b>black</b>) in hexadezimaler
-     * Codierung (z. B. {@code #ff0000}).
+     * Codierung (z.B. {@code #ff0000}).
      *
      * @param black Die Farbe <b>Schwarz</b> (englisch: <b>black</b>) in
-     *     hexadezimaler Codierung (z. B. {@code #ff0000}).
+     *     hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @return Die Instanz dieses Farbschemas, damit mehrere Setter mit der
-     *     Punktschreibweise hintereinander geschrieben werden können, z. B.
+     *     Punktschreibweise hintereinander geschrieben werden können, z.B.
      *     {@code scheme.green(..).blue(..)}.
      */
     @Setter

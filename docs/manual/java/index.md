@@ -105,7 +105,7 @@ for (type itVar : array)
 
 Wobei type der Typ der Iterator-Variable ist (der dem Datentyp der Elemente im
 Array entspricht!), itVar ihr Name und array ein Array (andere Datenstrukturen
-sind auch erlaubt, z. B. eine Collection, wie ArrayList), d. h. das Objekt, auf
+sind auch erlaubt, z.B. eine Collection, wie ArrayList), d. h. das Objekt, auf
 dem die Schleife ausgeführt wird. Wie du siehst, wird bei diesem Konstrukt kein
 Zähler verwendet: Die Iterator-Variable iteriert einfach über die Elemente des
 Arrays oder der Collection. Wenn eine solche Schleife ausgeführt wird, wird der

@@ -947,9 +947,8 @@ public class Scene implements KeyStrokeListenerRegistration,
     /**
      * Setzt die <b>Hintergrundfarbe</b> als <b>Zeichenkette</b>.
      *
-     * @param color Ein Farbname, ein Farbalias ({@link ColorContainer siehe
-     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z. B.
-     *     {@code #ff0000}).
+     * @param color Ein Farbname ({@link ColorContainer siehe Auflistung}) oder
+     *     eine Farbe in hexadezimaler Codierung (z.B. {@code #ff0000}).
      *
      * @see ColorContainer#get(String)
      */

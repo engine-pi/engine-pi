@@ -70,7 +70,7 @@ public class BorderBox extends ChildBox
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.40.0
@@ -93,7 +93,7 @@ public class BorderBox extends ChildBox
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      *
      * @since 0.40.0
@@ -109,13 +109,13 @@ public class BorderBox extends ChildBox
     }
 
     /**
-     * @param color Ein Farbname, ein Farbalias
-     *     ({@link pi.resources.color.ColorContainer siehe Auflistung}) oder
-     *     eine Farbe in hexadezimaler Codierung (z. B. {@code #ff0000}).
+     * @param color Ein Farbname ({@link pi.resources.color.ColorContainer siehe
+     *     Auflistung}) oder eine Farbe in hexadezimaler Codierung (z.B.
+     *     {@code #ff0000}).
      *
      * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z. B.
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
     @Setter
