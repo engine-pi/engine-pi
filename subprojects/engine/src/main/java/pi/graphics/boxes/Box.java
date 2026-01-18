@@ -59,34 +59,6 @@ public abstract class Box implements Iterable<Box>
     private boolean measured;
 
     /**
-     * Die <b>Breite</b> der Box in Pixel.
-     *
-     * @since 0.40.0
-     */
-    protected int width;
-
-    /**
-     * Die <b>Höhe</b> der Box in Pixel.
-     *
-     * @since 0.40.0
-     */
-    protected int height;
-
-    /**
-     * Die <b>gesetzte Breite</b> in Pixel. Im Gegensatz zu {@link #width} wird
-     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
-     * berechnet.
-     */
-    protected int definedWidth;
-
-    /**
-     * Die <b>gesetzte Höhe</b> in Pixel. Im Gegensatz zu {@link #height} wird
-     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
-     * berechnet.
-     */
-    protected int definedHeight;
-
-    /**
      * Gibt an, ob bei dieser Box die Abmessungen gesetzt werden können oder ob
      * die Abmessungen nur automatisch bestimmt werden können.
      */
@@ -107,25 +79,6 @@ public abstract class Box implements Iterable<Box>
     protected boolean measureDimensionTwice = false;
 
     /**
-     * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
-     *
-     * @since 0.38.0
-     */
-    protected int x;
-
-    /**
-     * Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
-     *
-     * @since 0.38.0
-     */
-    protected int y;
-
-    /**
-     * Die Box wird nicht gezeichnet, wenn sie deaktiviert ist.
-     */
-    protected boolean disabled = false;
-
-    /**
      * Liefert einen Iterator über die direkten Kinder dieser Box.
      *
      * <p>
@@ -143,7 +96,21 @@ public abstract class Box implements Iterable<Box>
         return Collections.unmodifiableList(childs).iterator();
     }
 
-    /* Getter Setter */
+    /* width */
+
+    /**
+     * Die <b>Breite</b> der Box in Pixel.
+     *
+     * @since 0.40.0
+     */
+    protected int width;
+
+    /**
+     * Die <b>gesetzte Breite</b> in Pixel. Im Gegensatz zu {@link #width} wird
+     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
+     * berechnet.
+     */
+    protected int definedWidth;
 
     @Getter
     public int width()
@@ -161,6 +128,22 @@ public abstract class Box implements Iterable<Box>
         return this;
     }
 
+    /* height */
+
+    /**
+     * Die <b>Höhe</b> der Box in Pixel.
+     *
+     * @since 0.40.0
+     */
+    protected int height;
+
+    /**
+     * Die <b>gesetzte Höhe</b> in Pixel. Im Gegensatz zu {@link #height} wird
+     * dieses Attribut gesetzt und nicht durch {@link #calculateDimension()}
+     * berechnet.
+     */
+    protected int definedHeight;
+
     @Getter
     public int height()
     {
@@ -175,6 +158,27 @@ public abstract class Box implements Iterable<Box>
             this.definedHeight = height;
         }
         return this;
+    }
+
+    /* x */
+
+    /**
+     * Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
+     *
+     * @since 0.38.0
+     */
+    protected int x;
+
+    /**
+     * Gibt die <b>x</b>-Koordinate der linken oberen Ecke in Pixel zurück.
+     *
+     * @return Die <b>x</b>-Koordinate der linken oberen Ecke in Pixel.
+     *
+     * @since 0.42.0
+     */
+    public int x()
+    {
+        return x;
     }
 
     /**
@@ -194,6 +198,27 @@ public abstract class Box implements Iterable<Box>
     {
         this.x = x;
         return this;
+    }
+
+    /* y */
+
+    /**
+     * Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
+     *
+     * @since 0.38.0
+     */
+    protected int y;
+
+    /**
+     * Gibt die <b>y</b>-Koordinate der linken oberen Ecke in Pixel zurück.
+     *
+     * @return Die <b>y</b>-Koordinate der linken oberen Ecke in Pixel.
+     *
+     * @since 0.42.0
+     */
+    public int y()
+    {
+        return y;
     }
 
     /**
@@ -236,6 +261,11 @@ public abstract class Box implements Iterable<Box>
         this.y = y;
         return this;
     }
+
+    /**
+     * Die Box wird nicht gezeichnet, wenn sie deaktiviert ist.
+     */
+    protected boolean disabled = false;
 
     /**
      * Setzt den Deaktiviert-Status.
@@ -593,5 +623,31 @@ public abstract class Box implements Iterable<Box>
             box.debug(depth + 1);
         }
         return this;
+    }
+
+    /**
+     * Bietet die Möglichkeit, die {@code toString()}-Ausgabe der Box-Objekte zu
+     * bereinigen.
+     *
+     * <p>
+     * Ist die Bereinigung aktiv, so werden die ANSI-Farbcodes und die Hashcodes
+     * von der Zeichenkette entfernt. Diese Methode ist vor allem für den
+     * Einsatz in den Tests gedacht.
+     * </p>
+     *
+     * @param clean Wenn {@code true}, dann wird die Ausgabe mit dem bereinigt.
+     *
+     * @return Die String-Darstellung des Objekts, entweder bereinigt oder im
+     *     ursprünglichen Format.
+     *
+     * @since 0.42.0
+     */
+    public String toString(boolean clean)
+    {
+        if (clean)
+        {
+            return ToStringFormatter.clean(toString());
+        }
+        return toString();
     }
 }

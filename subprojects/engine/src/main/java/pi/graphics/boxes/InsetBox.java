@@ -20,6 +20,7 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
@@ -36,13 +37,6 @@ import pi.debug.ToStringFormatter;
  */
 public class InsetBox extends ChildBox
 {
-    int top = 0;
-
-    int right = 0;
-
-    int bottom = 0;
-
-    int left = 0;
 
     public InsetBox()
     {
@@ -61,20 +55,159 @@ public class InsetBox extends ChildBox
         super(child);
     }
 
-    /* Setter */
+    /* In der Reihenfolge der CSS padding oder margin Attribute */
+
+    /* */
+
+    int top = 0;
 
     /**
-     * Setzt den <b>Außenabstand</b> in Pixel.
+     * Gibt den <b>oberen</b> Außenabstand in Pixel zurück.
      *
-     * @param margin Der <b>Außenabstand</b> in Pixel.
+     * @return Der <b>obere</b> Außenabstand in Pixel.
      *
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
+     * @since 0.42.0
+     */
+    @Getter
+    public int top()
+    {
+        return top;
+    }
+
+    /**
+     * Setzt den <b>oberen</b> Außenabstand in Pixel.
+     *
+     * @param top Der <b>obere</b> Außenabstand in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Außenabstand-Box, damit
+     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
+     *     können, z.B. {@code inset.top(..).right(..)}.
+     */
+    @Setter
+    public InsetBox top(int top)
+    {
+        this.top = top;
+        return this;
+    }
+
+    /* right */
+
+    int right = 0;
+
+    /**
+     * Gibt den <b>rechten</b> Außenabstand in Pixel zurück.
+     *
+     * @return Der <b>rechten</b> Außenabstand in Pixel.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public int right()
+    {
+        return right;
+    }
+
+    /**
+     * Setzt den <b>rechten</b> Außenabstand in Pixel.
+     *
+     * @param right Der <b>rechten</b> Außenabstand in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Außenabstand-Box, damit
+     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
+     *     können, z.B. {@code inset.top(..).right(..)}.
+     */
+    @Setter
+    public InsetBox right(int right)
+    {
+        this.right = right;
+        return this;
+    }
+
+    /* bottom */
+
+    int bottom = 0;
+
+    /**
+     * Gibt den <b>unteren</b> Außenabstand in Pixel zurück.
+     *
+     * @return Der <b>unteren</b> Außenabstand in Pixel.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public int bottom()
+    {
+        return bottom;
+    }
+
+    /**
+     * Setzt den <b>unteren</b> Außenabstand in Pixel.
+     *
+     * @param bottom Der <b>unteren</b> Außenabstand in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Außenabstand-Box, damit
+     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
+     *     können, z.B. {@code inset.top(..).right(..)}.
+     */
+    @Setter
+    public InsetBox bottom(int bottom)
+    {
+        this.bottom = bottom;
+        return this;
+    }
+
+    /* left */
+
+    int left = 0;
+
+    /**
+     * Gibt den <b>linken</b> Außenabstand in Pixel zurück.
+     *
+     * @return Der <b>linken</b> Außenabstand in Pixel.
+     *
+     * @since 0.42.0
+     */
+    @Getter
+    public int left()
+    {
+        return left;
+    }
+
+    /**
+     * Setzt den <b>linken</b> Außenabstand in Pixel.
+     *
+     * @param left Der <b>linken</b> Außenabstand in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Außenabstand-Box, damit
+     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
+     *     können, z.B. {@code inset.top(..).right(..)}.
+     */
+    @Setter
+    public InsetBox left(int left)
+    {
+        this.left = left;
+        return this;
+    }
+
+    /* allSides */
+
+    /**
+     * Setzt den Außenabstand <b>aller Seiten</b> in Pixel.
+     *
+     * @param margin Der Außenabstand <b>aller Seiten</b> in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Außenabstand-Box, damit
+     *     nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
+     *     können, z.B. {@code inset.top(..).right(..)}.
      *
      * @since 0.40.0
      */
+    @Setter
     public InsetBox allSides(int margin)
     {
         top = margin;
@@ -85,57 +218,8 @@ public class InsetBox extends ChildBox
     }
 
     /**
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
+     * @hidden
      */
-    @Setter
-    public InsetBox top(int top)
-    {
-        this.top = top;
-        return this;
-    }
-
-    /**
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
-     */
-    @Setter
-    public InsetBox right(int right)
-    {
-        this.right = right;
-        return this;
-    }
-
-    /**
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
-     */
-    @Setter
-    public InsetBox bottom(int bottom)
-    {
-        this.bottom = bottom;
-        return this;
-    }
-
-    /**
-     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code box.x(..).y(..)}.
-     */
-    @Setter
-    public InsetBox left(int left)
-    {
-        this.left = left;
-        return this;
-    }
-
     @Override
     protected void calculateDimension()
     {
@@ -143,6 +227,9 @@ public class InsetBox extends ChildBox
         height = top + child.height + bottom;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     protected void calculateAnchors()
     {
@@ -150,12 +237,18 @@ public class InsetBox extends ChildBox
         child.y = y + top;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     void draw(Graphics2D g)
     {
         // do nothing
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

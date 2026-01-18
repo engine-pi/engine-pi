@@ -143,6 +143,7 @@ nav:
           - manual/dev/mkdocs.md
           - manual/dev/setter-getter.md
           - manual/dev/versions.md
+          - manual/dev/tests.md
 
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 
