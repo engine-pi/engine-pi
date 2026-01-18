@@ -22,8 +22,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,11 +45,43 @@ public class EllipseBoxTest
     @BeforeEach
     void setup()
     {
-        ellipse = new EllipseBox(100, 50);
+        ellipse = new EllipseBox(100, 50).color(Color.RED);
     }
 
     @Test
-    void testCalculateDimension()
+    void width()
+    {
+        assertSame(ellipse, ellipse.width(150));
+        ellipse.calculateDimension();
+        assertEquals(150, ellipse.width());
+    }
+
+    @Test
+    void height()
+    {
+        assertSame(ellipse, ellipse.height(75));
+        ellipse.calculateDimension();
+        assertEquals(75, ellipse.height());
+    }
+
+    @Test
+    void color()
+    {
+        EllipseBox result = ellipse.color(Color.BLUE);
+        assertSame(ellipse, result);
+        assertEquals(Color.BLUE, ellipse.color());
+    }
+
+    @Test
+    void testDraw()
+    {
+        Graphics2D g = mock(Graphics2D.class);
+        ellipse.draw(g);
+        verify(g).fillOval(0, 0, 100, 50);
+    }
+
+    @Test
+    void calculateDimension()
     {
         assertEquals(0, ellipse.width());
         assertEquals(0, ellipse.height());
@@ -56,52 +91,13 @@ public class EllipseBoxTest
     }
 
     @Test
-    void testColor()
-    {
-        EllipseBox result = ellipse.color("red");
-        assertSame(ellipse, result);
-    }
-
-    @Test
-    void testColor2()
-    {
-        Color testColor = Color.BLUE;
-        EllipseBox result = ellipse.color(testColor);
-        assertSame(ellipse, result);
-    }
-
-    // @Test
-    // void testDraw()
-    // {
-    // EllipseBox ellipse = new EllipseBox(100, 50);
-    // Graphics2D g = mock(Graphics2D.class);
-    // ellipse.draw(g);
-    // verify(g).drawOval(0, 0, 100, 50);
-    // }
-
-    @Test
-    void testWidth()
-    {
-        assertSame(ellipse, ellipse.width(150));
-        ellipse.calculateDimension();
-        assertEquals(150, ellipse.width());
-    }
-
-    @Test
-    void testHeight()
-    {
-        assertSame(ellipse, ellipse.height(75));
-        ellipse.calculateDimension();
-        assertEquals(75, ellipse.height());
-    }
-
-    @Test
     void testToString()
     {
         String result = ellipse.toString();
         assertNotNull(result);
         assertFalse(result.isEmpty());
-        assertEquals("EllipseBox [dWidth=100, dHeight=50]",
+        assertEquals(
+            "EllipseBox [color=Color[r=255,g=0,b=0], dWidth=100, dHeight=50]",
             ToStringFormatter.clean(result));
     }
 }

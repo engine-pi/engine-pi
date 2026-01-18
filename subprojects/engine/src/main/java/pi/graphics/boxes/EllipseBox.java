@@ -24,6 +24,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 
 /**
  * Eine <b>Ellipse</b>.
@@ -97,6 +98,18 @@ public class EllipseBox extends LeafBox
     Color color = null;
 
     /**
+     * Gibt die <b>Farbe</b> der Ellipse zurück.
+     *
+     * @return die <b>Farbe</b> der Ellipse
+     *
+     * @since 0.42.0
+     */
+    public Color color()
+    {
+        return color;
+    }
+
+    /**
      * Setzt die <b>Farbe</b> der Ellipse als Zeichenkette.
      *
      * @param color Ein Farbname ({@link pi.resources.color.ColorContainer siehe
@@ -152,7 +165,13 @@ public class EllipseBox extends LeafBox
     @Override
     void draw(Graphics2D g)
     {
-        g.drawOval(x, y, definedWidth, definedHeight);
+        if (color != null)
+        {
+            Color oldColor = g.getColor();
+            g.setColor(color);
+            g.fillOval(x, y, definedWidth, definedHeight);
+            g.setColor(oldColor);
+        }
     }
 
     /**
@@ -161,6 +180,13 @@ public class EllipseBox extends LeafBox
     @Override
     public String toString()
     {
-        return toStringFormatter().format();
+        ToStringFormatter formatter = toStringFormatter();
+
+        if (color != null)
+        {
+            formatter.prepend("color", color);
+        }
+
+        return formatter.toString();
     }
 }
