@@ -233,9 +233,25 @@ public class Controller
     public static final SoundContainer sounds = Resources.sounds;
 
     /**
-     * Eigentliches Fenster des Spiels.
+     * Das <b>Fenster</b> des Projekt.
      */
-    private static final Frame frame = new Frame("Engine Pi");
+    private static Frame frame;
+
+    /**
+     * Gibt das <b>Fenster</b> des Projekts zurück.
+     *
+     * @return Das <b>Fenster</b> des Projekts.
+     *
+     * @since 0.42.0
+     */
+    public static Frame frame()
+    {
+        if (frame == null)
+        {
+            frame = new Frame("Engine Pi");
+        }
+        return frame;
+    }
 
     /**
      * Die Zeichenfläche, in der alle Figuren eingezeichnet werden.
@@ -275,7 +291,24 @@ public class Controller
     /**
      * Öffnet verschiedene <b>Dialoge</b>.
      */
-    public static final DialogLauncher dialog = new DialogLauncher(frame);
+    private static DialogLauncher dialog;
+
+    /**
+     * Öffnet verschiedene <b>Dialoge</b>.
+     *
+     * @return Eine Instanz von {@link DialogLauncher}, um verschiedene
+     *     <b>Dialoge</b> öffnen zu können.
+     *
+     * @since 0.42.0
+     */
+    public static DialogLauncher dialog()
+    {
+        if (dialog == null)
+        {
+            dialog = new DialogLauncher(frame());
+        }
+        return dialog;
+    }
 
     /**
      * Der geschützte Konstruktor verhindert, dass Instanzen von dieser Klasse
@@ -298,7 +331,7 @@ public class Controller
     @Setter
     public static void title(String title)
     {
-        frame.setTitle(title);
+        frame().setTitle(title);
     }
 
     /**
@@ -325,11 +358,11 @@ public class Controller
         config.graphics.windowDimension(width, height);
         Controller.scene = scene;
         renderPanel = new RenderPanel(width, height);
-        frame.setResizable(false);
-        frame.add(renderPanel);
+        frame().setResizable(false);
+        frame().add(renderPanel);
         // pack() already allows to create the buffer strategy for rendering
         // (but not on Windows?)
-        frame.pack();
+        frame().pack();
         if (config.graphics.windowPosition() != Direction.NONE)
         {
             Controller.windowPosition(config.graphics.windowPosition());
@@ -338,11 +371,11 @@ public class Controller
         {
             // Zentriert das Fenster auf dem Bildschirm -
             // https://stackoverflow.com/a/144893/2373138
-            frame.setLocationRelativeTo(null);
+            frame().setLocationRelativeTo(null);
         }
-        frame.setVisible(true);
+        frame().setVisible(true);
         renderPanel.allocateBuffers();
-        frame.addWindowListener(new WindowAdapter()
+        frame().addWindowListener(new WindowAdapter()
         {
             @Override
             public void windowClosing(WindowEvent e)
@@ -351,14 +384,14 @@ public class Controller
             }
         });
         KeyListener keyListener = new KeyListener();
-        frame.addKeyListener(keyListener);
+        frame().addKeyListener(keyListener);
         renderPanel.addKeyListener(keyListener);
         renderPanel.setFocusable(true);
         MouseAdapter mouseListener = new MouseListener();
         renderPanel.addMouseMotionListener(mouseListener);
         renderPanel.addMouseListener(mouseListener);
         renderPanel.addMouseWheelListener(Controller::enqueueMouseScrollEvent);
-        frame.setIconImage(images.get("logo/logo.png"));
+        frame().setIconImage(images.get("logo/logo.png"));
         mousePosition = new java.awt.Point(width / 2, height / 2);
         Thread mainThread = new Thread(Controller::run, "pi.main");
         mainThread.start();
@@ -477,8 +510,8 @@ public class Controller
         sceneLaunchListeners.invoke(
             (listener) -> listener.onSceneLaunch(Controller.scene(), null));
         loop.run();
-        frame.setVisible(false);
-        frame.dispose();
+        frame().setVisible(false);
+        frame().dispose();
         System.exit(0);
     }
 
@@ -775,7 +808,7 @@ public class Controller
     @API
     public static boolean isRunning()
     {
-        return frame.isVisible();
+        return frame().isVisible();
     }
 
     /**
@@ -807,9 +840,9 @@ public class Controller
         config.graphics.windowDimension(width, height);
         renderPanel.setSize(width, height);
         renderPanel.setPreferredSize(new Dimension(width, height));
-        frame.pack();
-        frame.setLocation(frame.getLocation().x - diffX,
-            frame.getLocation().y - diffY);
+        frame().pack();
+        frame().setLocation(frame().getLocation().x - diffX,
+            frame().getLocation().y - diffY);
     }
 
     /**
@@ -847,7 +880,7 @@ public class Controller
     @Setter
     public static void windowPosition(int x, int y)
     {
-        frame.setLocation(x, y);
+        frame().setLocation(x, y);
     }
 
     /**

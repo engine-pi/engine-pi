@@ -57,22 +57,23 @@ public class AllDialogsDemo extends Scene
         // showMessage
 
         new DialogOpener("showMessage(message)", () -> {
-            Controller.dialog.showMessage("Message");
+            Controller.dialog().showMessage("Message");
             return null;
         }, x, y1);
 
         new DialogOpener("showMessage(message, title)", () -> {
-            Controller.dialog.showMessage("Message", "Title");
+            Controller.dialog().showMessage("Message", "Title");
             return null;
         }, x, y2);
 
         // requestStringInput
 
         new DialogOpener("requestStringInput(message)",
-                () -> Controller.dialog.requestStringInput("Message"), x, y3);
+                () -> Controller.dialog().requestStringInput("Message"), x, y3);
 
         new DialogOpener("requestStringInput(message, title)",
-                () -> Controller.dialog.requestStringInput("Message", "Title"),
+                () -> Controller.dialog()
+                    .requestStringInput("Message", "Title"),
                 x, y4);
 
         // requestYesNo
@@ -80,20 +81,20 @@ public class AllDialogsDemo extends Scene
         x = 2;
 
         new DialogOpener("requestYesNo(message)",
-                () -> Controller.dialog.requestYesNo("Message"), x, y1);
+                () -> Controller.dialog().requestYesNo("Message"), x, y1);
 
         new DialogOpener("requestYesNo(message, title)",
-                () -> Controller.dialog.requestYesNo("Message", "Title"), x,
+                () -> Controller.dialog().requestYesNo("Message", "Title"), x,
                 y2);
 
         // requestOkCancel
 
         new DialogOpener("requestOkCancel(message)",
-                () -> Controller.dialog.requestOkCancel("Message"), x, y3);
+                () -> Controller.dialog().requestOkCancel("Message"), x, y3);
 
         new DialogOpener("requestYesNo(message, title)",
-                () -> Controller.dialog.requestOkCancel("Message", "Title"), x,
-                y4);
+                () -> Controller.dialog().requestOkCancel("Message", "Title"),
+                x, y4);
     }
 
     class DialogOpener extends Text
@@ -135,6 +136,7 @@ public class AllDialogsDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new AllDialogsDemo());
     }
 }
