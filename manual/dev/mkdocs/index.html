@@ -1,0 +1,2335 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://engine-pi.github.io/engine-pi/manual/dev/mkdocs/" rel="canonical"/>
+<link href="../javadoc/" rel="prev"/>
+<link href="../setter-getter/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>mkdocs (Dokumentationsseite) - Engine Pi</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Cantarell:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Cantarell";--md-code-font:"Ubuntu Mono"}</style>
+<link href="../../../_assets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#mkdocs-dokumentationsseite">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Engine Pi" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Engine Pi">
+<img alt="logo" src="../../../_assets/logo.svg"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Engine Pi
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              mkdocs (Dokumentationsseite)
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/engine-pi/engine-pi" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    Engine Pi
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Engine Pi" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Engine Pi">
+<img alt="logo" src="../../../_assets/logo.svg"/>
+</a>
+    Engine Pi
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/engine-pi/engine-pi" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    Engine Pi
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Handbuch
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Handbuch
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_1" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../main-classes/">
+<span class="md-ellipsis">
+    
+  
+    Hauptklassen
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Hauptklassen
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_1_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../main-classes/controller/">
+<span class="md-ellipsis">
+    
+  
+    Controller (Steuerung)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1_2" id="__nav_1_1_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_1_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Controller (Steuerung)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/controller/coordinate-system/">
+<span class="md-ellipsis">
+    
+  
+    Koordinatensystem
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/controller/instant-mode/">
+<span class="md-ellipsis">
+    
+  
+    instantMode (Instant-Modus)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/controller/game-loop/">
+<span class="md-ellipsis">
+    
+  
+    Game Loop
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/controller/dialog/">
+<span class="md-ellipsis">
+    
+  
+    Game.dialog (Dialogfenster)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/scene/">
+<span class="md-ellipsis">
+    
+  
+    Scene (Szene)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/camera/">
+<span class="md-ellipsis">
+    
+  
+    Camera (Kamera)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/layer/">
+<span class="md-ellipsis">
+    
+  
+    Layer (Ebene)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_1_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../main-classes/actor/">
+<span class="md-ellipsis">
+    
+  
+    Actor (Figur)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_1_6" id="__nav_1_1_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_1_6_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_1_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Actor (Figur)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/actor/hello-world/">
+<span class="md-ellipsis">
+    
+  
+    Tutorial „Hello World“
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/actor/text/">
+<span class="md-ellipsis">
+    
+  
+    Text (einzeiliger Text)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/actor/turtle/">
+<span class="md-ellipsis">
+    
+  
+    Turtle (Schildkröte)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/actor/image-font/">
+<span class="md-ellipsis">
+    
+  
+    ImageFont (Bilderschriftart)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../main-classes/actor/stateful-animation/">
+<span class="md-ellipsis">
+    
+  
+    Stateful Animation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../events/">
+<span class="md-ellipsis">
+    
+  
+    events (Ereignissteuerung)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    events (Ereignissteuerung)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/key-event/">
+<span class="md-ellipsis">
+    
+  
+    KeyEvent
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/key-stroke/">
+<span class="md-ellipsis">
+    
+  
+    KeyStrokeListener (Tastatureingabe)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/mouse-click/">
+<span class="md-ellipsis">
+    
+  
+    MouseClickListener (Mauseingaben)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/collision/">
+<span class="md-ellipsis">
+    
+  
+    CollisionListener (Kollisionen-Erkennung)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/repeat/">
+<span class="md-ellipsis">
+    
+  
+    Repeat
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../events/shortcuts/">
+<span class="md-ellipsis">
+    
+  
+    shortcuts (Voreingestellte Tastenkürzel und Steuerungsmöglichkeiten)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../physics/">
+<span class="md-ellipsis">
+    
+  
+    physics (Physiksimulation)
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    physics (Physiksimulation)
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/body-type/">
+<span class="md-ellipsis">
+    
+  
+    BodyType (Verhalten von Figuren in der physikalischen Simulation)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/gravity/">
+<span class="md-ellipsis">
+    
+  
+    gravity (Schwerkraft)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/density/">
+<span class="md-ellipsis">
+    
+  
+    density (Dichte)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/restitution/">
+<span class="md-ellipsis">
+    
+  
+    restitution (Stoßzahl bzw. Restitutionskoeffizient)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/impulse/">
+<span class="md-ellipsis">
+    
+  
+    impluse (Impuls)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../physics/joints/">
+<span class="md-ellipsis">
+    
+  
+    joints (Verbindungen)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../resources/">
+<span class="md-ellipsis">
+    
+  
+    Ressourcenverwaltung
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Ressourcenverwaltung
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/colors/">
+<span class="md-ellipsis">
+    
+  
+    colors (Farben)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/fonts/">
+<span class="md-ellipsis">
+    
+  
+    fonts (Schriftarten)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/images/">
+<span class="md-ellipsis">
+    
+  
+    images (Bilder)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/sounds/">
+<span class="md-ellipsis">
+    
+  
+    sounds (Klänge)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../resources/config/">
+<span class="md-ellipsis">
+    
+  
+    config (Konfiguration)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../java/">
+<span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../java/packages/">
+<span class="md-ellipsis">
+    
+  
+    packages (Pakete)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Entwicklung
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwicklung
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../monorepo/">
+<span class="md-ellipsis">
+    
+  
+    monorepo (Aufbau des Repository)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../design/">
+<span class="md-ellipsis">
+    
+  
+    design (Optisches Erscheinungsbild)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../coding-style/">
+<span class="md-ellipsis">
+    
+  
+    coding style (Programmierstil)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../javadoc/">
+<span class="md-ellipsis">
+    
+  
+    javadoc (API-Dokumentation)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    mkdocs (Dokumentationsseite)
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    mkdocs (Dokumentationsseite)
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makros">
+<span class="md-ellipsis">
+      
+        Makros:
+      
+    </span>
+</a>
+<nav aria-label="Makros:" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#java-spezifisch">
+<span class="md-ellipsis">
+      
+        Java spezifisch
+      
+    </span>
+</a>
+<nav aria-label="Java spezifisch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#packagepackage_path-link_title">
+<span class="md-ellipsis">
+      
+        package(package_path, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classclass_path-link_title">
+<span class="md-ellipsis">
+      
+        class(class_path, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#methodclass_path-method-link_title">
+<span class="md-ellipsis">
+      
+        method(class_path, method, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attributeclass_path-attribute-link_title">
+<span class="md-ellipsis">
+      
+        attribute(class_path, attribute, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demorelpath-hash-lines">
+<span class="md-ellipsis">
+      
+        demo(relpath, hash?, lines?)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#assets-mediendaten">
+<span class="md-ellipsis">
+      
+        assets (Mediendaten)
+      
+    </span>
+</a>
+<nav aria-label="assets (Mediendaten)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imagerelpath-caption">
+<span class="md-ellipsis">
+      
+        image(relpath, caption?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#videorelpath-caption">
+<span class="md-ellipsis">
+      
+        video(relpath, caption?)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#projekt-spezifisch">
+<span class="md-ellipsis">
+      
+        Projekt spezifisch
+      
+    </span>
+</a>
+<nav aria-label="Projekt spezifisch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contribute">
+<span class="md-ellipsis">
+      
+        contribute()
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repo_linkrelpath-link_title">
+<span class="md-ellipsis">
+      
+        repo_link(relpath, link_title)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#drawiobasename">
+<span class="md-ellipsis">
+      
+        drawio(basename)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vom-macros-plugin-bereit-gestellt">
+<span class="md-ellipsis">
+      
+        Vom Macros-Plugin bereit gestellt.
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macros-plugin-environment">
+<span class="md-ellipsis">
+      
+        Macros Plugin Environment
+      
+    </span>
+</a>
+<nav aria-label="Macros Plugin Environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-list">
+<span class="md-ellipsis">
+      
+        General List
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#config-information">
+<span class="md-ellipsis">
+      
+        Config Information
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macros">
+<span class="md-ellipsis">
+      
+        Macros
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-information">
+<span class="md-ellipsis">
+      
+        Git Information
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#page-attributes">
+<span class="md-ellipsis">
+      
+        Page Attributes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plugin-filters">
+<span class="md-ellipsis">
+      
+        Plugin Filters
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#builtin-jinja2-filters">
+<span class="md-ellipsis">
+      
+        Builtin Jinja2 Filters
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setter-getter/">
+<span class="md-ellipsis">
+    
+  
+    Getter und Setter ohne get and set Präfix
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../versions/">
+<span class="md-ellipsis">
+    
+  
+    versions (Versionsverwaltung)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/">
+<span class="md-ellipsis">
+    
+  
+    tests (Unittests)
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://engine-pi.github.io/javadocs/pi/package-summary.html">
+<span class="md-ellipsis">
+    
+  
+    API (javadocs)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../download/">
+<span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makros">
+<span class="md-ellipsis">
+      
+        Makros:
+      
+    </span>
+</a>
+<nav aria-label="Makros:" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#java-spezifisch">
+<span class="md-ellipsis">
+      
+        Java spezifisch
+      
+    </span>
+</a>
+<nav aria-label="Java spezifisch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#packagepackage_path-link_title">
+<span class="md-ellipsis">
+      
+        package(package_path, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#classclass_path-link_title">
+<span class="md-ellipsis">
+      
+        class(class_path, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#methodclass_path-method-link_title">
+<span class="md-ellipsis">
+      
+        method(class_path, method, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attributeclass_path-attribute-link_title">
+<span class="md-ellipsis">
+      
+        attribute(class_path, attribute, link_title?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#demorelpath-hash-lines">
+<span class="md-ellipsis">
+      
+        demo(relpath, hash?, lines?)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#assets-mediendaten">
+<span class="md-ellipsis">
+      
+        assets (Mediendaten)
+      
+    </span>
+</a>
+<nav aria-label="assets (Mediendaten)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#imagerelpath-caption">
+<span class="md-ellipsis">
+      
+        image(relpath, caption?)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#videorelpath-caption">
+<span class="md-ellipsis">
+      
+        video(relpath, caption?)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#projekt-spezifisch">
+<span class="md-ellipsis">
+      
+        Projekt spezifisch
+      
+    </span>
+</a>
+<nav aria-label="Projekt spezifisch" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#contribute">
+<span class="md-ellipsis">
+      
+        contribute()
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#repo_linkrelpath-link_title">
+<span class="md-ellipsis">
+      
+        repo_link(relpath, link_title)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#drawiobasename">
+<span class="md-ellipsis">
+      
+        drawio(basename)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vom-macros-plugin-bereit-gestellt">
+<span class="md-ellipsis">
+      
+        Vom Macros-Plugin bereit gestellt.
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macros-plugin-environment">
+<span class="md-ellipsis">
+      
+        Macros Plugin Environment
+      
+    </span>
+</a>
+<nav aria-label="Macros Plugin Environment" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#general-list">
+<span class="md-ellipsis">
+      
+        General List
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#config-information">
+<span class="md-ellipsis">
+      
+        Config Information
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#macros">
+<span class="md-ellipsis">
+      
+        Macros
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#git-information">
+<span class="md-ellipsis">
+      
+        Git Information
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#page-attributes">
+<span class="md-ellipsis">
+      
+        Page Attributes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plugin-filters">
+<span class="md-ellipsis">
+      
+        Plugin Filters
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#builtin-jinja2-filters">
+<span class="md-ellipsis">
+      
+        Builtin Jinja2 Filters
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/engine-pi/engine-pi/edit/main/docs/manual/dev/mkdocs.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="mkdocs-dokumentationsseite"><code>mkdocs</code> (Dokumentationsseite)</h1>
+<p>Die Dokumentation der <a href="https://github.com/engine-pi/engine-pi">Engine Pi</a> ist
+mit <a href="https://www.mkdocs.org">MkDocs</a> und dem Theme
+<a href="https://squidfunk.github.io/mkdocs-material">Material</a> realisiert. Sie
+verwendet Tutorials und Bilder aus dem <a href="https://engine-alpha.org">Engine Alpha
+Wiki</a>, die unter der <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons „Namensnennung,
+Weitergabe unter gleichen
+Bedingungen“</a> Lizenz stehen.</p>
+<h2 id="makros">Makros:</h2>
+<p>Das MkDocs-Plugin
+<a href="https://github.com/fralau/mkdocs-macros-plugin">Mkdocs-Macros</a> ermöglicht den
+Einsatz von Makros. Die Makros sind in der Datei <a href="https://github.com/engine-pi/engine-pi/blob/main/docs/macros.py">docs/macros.py</a> definiert. Folgende Makros können verwendet werden:</p>
+<h3 id="java-spezifisch">Java spezifisch</h3>
+<h4 id="packagepackage_path-link_title"><code>package(package_path, link_title?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">{{</span> <span class="nv">package</span><span class="o">(</span><span class="s1">'pi'</span><span class="o">,</span> <span class="s1">'Haupt-Paket'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><span class="twemoji"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1m-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296.1 53.2 242.9 0 242.9 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2M307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3m-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4m47.1 62.3s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4M124.5 396c-78.7 22 47.9 67.4 148.1 24.5q-14.7-5.7-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2m179.8 97.2C225.6 508 128.5 506.3 71 496.8c0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7M260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8"></path></svg></span><a href="https://engine-pi.github.io/javadocs/pi/package-summary.html">Haupt-Paket</a></p>
+<hr/>
+<h4 id="classclass_path-link_title"><code>class(class_path, link_title?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">{{</span> <span class="nv">class</span><span class="o">(</span><span class="s1">'pi.Game'</span><span class="o">,</span> <span class="s1">'Spiel'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><span class="twemoji"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1m-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296.1 53.2 242.9 0 242.9 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2M307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3m-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4m47.1 62.3s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4M124.5 396c-78.7 22 47.9 67.4 148.1 24.5q-14.7-5.7-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2m179.8 97.2C225.6 508 128.5 506.3 71 496.8c0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7M260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8"></path></svg></span><a href="https://engine-pi.github.io/javadocs/pi/Game.html">Spiel</a></p>
+<h4 id="methodclass_path-method-link_title"><code>method(class_path, method, link_title?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">{{</span> <span class="nv">method</span><span class="o">(</span><span class="s1">'pi.actor.Actor'</span><span class="o">,</span> <span class="s1">'color(java.awt.Color)'</span><span class="o">,</span> <span class="s1">'color()'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><span class="twemoji"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1m-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296.1 53.2 242.9 0 242.9 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2M307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3m-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4m47.1 62.3s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4M124.5 396c-78.7 22 47.9 67.4 148.1 24.5q-14.7-5.7-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2m179.8 97.2C225.6 508 128.5 506.3 71 496.8c0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7M260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8"></path></svg></span><a href="https://engine-pi.github.io/javadocs/pi/actor/Actor.html#color(java.awt.Color)">color()</a></p>
+<hr/>
+<h4 id="attributeclass_path-attribute-link_title"><code>attribute(class_path, attribute, link_title?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">{{</span> <span class="nv">attribute</span><span class="o">(</span><span class="s1">'pi.Controller'</span><span class="o">,</span> <span class="s1">'colors'</span><span class="o">,</span> <span class="s1">'statisches Attribute colors'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><span class="twemoji"><svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1m-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296.1 53.2 242.9 0 242.9 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2M307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3m-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4m47.1 62.3s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4M124.5 396c-78.7 22 47.9 67.4 148.1 24.5q-14.7-5.7-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2m179.8 97.2C225.6 508 128.5 506.3 71 496.8c0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7M260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8"></path></svg></span><a href="https://engine-pi.github.io/javadocs/pi/Controller.html#colors">statisches Attribute colors</a></p>
+<hr/>
+<h4 id="demorelpath-hash-lines"><code>demo(relpath, hash?, lines?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cp">{{</span> <span class="nv">demo</span><span class="o">(</span><span class="s1">'docs/dev/design/SimpleGeometricActorsDemo'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><small>Zum Java-Code: <a href="https://github.com/engine-pi/engine-pi/blob/main/docs/dev/design/SimpleGeometricActorsDemo.java">demos/docs/dev/design/SimpleGeometricActorsDemo.java</a></small></p>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="cp">{{</span> <span class="nv">demo</span><span class="o">(</span><span class="s1">'docs/dev/design/SimpleGeometricActorsDemo'</span><span class="o">,</span> <span class="s1">'d9e92a3759dce13923528f62a1afa8328be5126e'</span><span class="o">,</span> <span class="s1">'L38-L42'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><small>Zum Java-Code: <a href="https://github.com/engine-pi/engine-pi/blob/d9e92a3759dce13923528f62a1afa8328be5126e/docs/dev/design/SimpleGeometricActorsDemo.java#L38-L42">demos/docs/dev/design/SimpleGeometricActorsDemo.java</a></small></p>
+<hr/>
+<h3 id="assets-mediendaten">assets (Mediendaten)</h3>
+<h4 id="imagerelpath-caption"><code>image(relpath, caption?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cp">{{</span> <span class="nv">image</span><span class="o">(</span><span class="s1">'logo/logo.svg'</span><span class="o">,</span> <span class="s1">'Das Logo der Engine Pi'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<figure>
+<p><img src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/logo/logo.svg"/></p>
+<figcaption>
+<p>Das Logo der Engine Pi</p>
+</figcaption>
+</figure>
+<hr/>
+<h4 id="videorelpath-caption"><code>video(relpath, caption?)</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cp">{{</span> <span class="nv">video</span><span class="o">(</span><span class="s1">'docs/MainAnimation.mp4'</span><span class="o">,</span> <span class="s1">'Die Hauptanimation der Engine Pi. &lt;br&gt;Sie erscheint, wenn &lt;code&gt;Game.start()&lt;/code&gt; ohne Szene ausgeführt wird.'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<figure>
+<p><video autoplay="" loop="">
+<source src="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/MainAnimation.mp4" type="video/mp4"/>
+    Download the
+    <a href="https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/MainAnimation.mp4">MP4</a>
+    video.
+</video>
+</p>
+<figcaption>
+<p>Die Hauptanimation der Engine Pi. <br/>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.</p>
+</figcaption>
+</figure>
+<hr/>
+<h3 id="projekt-spezifisch">Projekt spezifisch</h3>
+<h4 id="contribute"><code>contribute()</code></h4>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cp">{{</span> <span class="nv">contribute</span><span class="o">()</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Diese Hilfeseite hat leider noch keinen Inhalt. Hilf mit und fülle diese Seite mit Inhalt.</p>
+</div>
+<hr/>
+<h3 id="repo_linkrelpath-link_title"><code>repo_link(relpath, link_title)</code></h3>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">{{</span> <span class="nv">repo_link</span><span class="o">(</span><span class="s1">'docs/macros.py'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><a href="https://github.com/engine-pi/engine-pi/blob/main/docs/macros.py">docs/macros.py</a></p>
+<h3 id="drawiobasename"><code>drawio(basename)</code></h3>
+<div class="language-jinja highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">{{</span> <span class="nv">drawio</span><span class="o">(</span><span class="s1">'main-classes'</span><span class="o">)</span> <span class="cp">}}</span>
+</span></code></pre></div>
+<p><div class="mxgraph" data-mxgraph='{"toolbar-position": "bottom", "toolbar-nohide": "0", "tooltips": "1", "border": 5, "resize": "1", "edit": "_blank", "lightbox": "1", "toolbar": "pages tags zoom layers lightbox", "url": "https://raw.githubusercontent.com/engine-pi/engine-pi/refs/heads/main/docs/drawio/main-classes.drawio"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<hr/>
+<h2 id="vom-macros-plugin-bereit-gestellt">Vom Macros-Plugin bereit gestellt.</h2>
+<h2 id="macros-plugin-environment">Macros Plugin Environment</h2>
+<h3 id="general-list">General List</h3>
+<p>All available variables and filters within the macros plugin:</p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>extra</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">version = '0.41.0', generator = False, social = [{'icon': 'fontawesome/brands/github', 'link': 'https://github.com/engine-pi/engine-pi'}, {'icon': 'simple/forgejo', 'link': 'https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi'}, {'icon': 'fontawesome/brands/java', 'link': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, {'icon': 'fontawesome/solid/paper-plane', 'link': 'mailto:josef.friedrich@pirckheimer-gymnasium.de'}]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>config</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>MkDocsConfig</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">{'config_file_path': '/home/runner/work/engine-pi/engine-pi/mkdocs.yml', 'site_name': 'Engine Pi', 'nav': [{'Handbuch': [{'Hauptklassen': ['manual/main-classes/index.md', {'Controller (Steuerung)': ['manual/main-classes/controller/index.md', 'manual/main-classes/controller/coordinate-system.md', 'manual/main-classes/controller/instant-mode.md', 'manual/main-classes/controller/game-loop.md', 'manual/main-classes/controller/dialog.md']}, 'manual/main-classes/scene.md', 'manual/main-classes/camera.md', 'manual/main-classes/layer.md', {'Actor (Figur)': ['manual/main-classes/actor/index.md', 'manual/main-classes/actor/hello-world.md', 'manual/main-classes/actor/text.md', 'manual/main-classes/actor/turtle.md', 'manual/main-classes/actor/image-font.md', 'manual/main-classes/actor/stateful-animation.md']}]}, {'events (Ereignissteuerung)': ['manual/events/index.md', 'manual/events/key-event.md', 'manual/events/key-stroke.md', 'manual/events/mouse-click.md', 'manual/events/collision.md', 'manual/events/repeat.md', 'manual/events/shortcuts.md']}, {'physics (Physiksimulation)': ['manual/physics/index.md', 'manual/physics/body-type.md', 'manual/physics/gravity.md', 'manual/physics/density.md', 'manual/physics/restitution.md', 'manual/physics/impulse.md', 'manual/physics/joints.md']}, {'Ressourcenverwaltung': ['manual/resources/index.md', 'manual/resources/colors.md', 'manual/resources/fonts.md', 'manual/resources/images.md', 'manual/resources/sounds.md', 'manual/resources/config.md']}, {'Java': ['manual/java/index.md', 'manual/java/packages.md']}, {'Entwicklung': ['manual/dev/index.md', 'manual/dev/monorepo.md', 'manual/dev/design.md', 'manual/dev/coding-style.md', 'manual/dev/javadoc.md', 'manual/dev/mkdocs.md', 'manual/dev/setter-getter.md', 'manual/dev/versions.md', 'manual/dev/tests.md']}]}, {'API (javadocs)': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, 'download.md'], 'pages': None, 'exclude_docs': None, 'draft_docs': None, 'not_in_nav': None, 'site_url': 'https://engine-pi.github.io/engine-pi/', 'site_description': None, 'site_author': None, 'theme': Theme(name='material', dirs=['/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/material/templates', '/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs/templates'], static_templates={'sitemap.xml', '404.html'}, name='material', locale=Locale('en'), language='en', direction=None, features=['navigation.indexes', 'navigation.footer', 'content.code.copy', 'content.code.select', 'content.action.edit'], font={'text': 'Cantarell', 'code': 'Ubuntu Mono'}, icon=None, favicon='assets/images/favicon.png', logo='_assets/logo.svg'), 'docs_dir': '/home/runner/work/engine-pi/engine-pi/docs', 'site_dir': '/home/runner/work/engine-pi/engine-pi/site', 'copyright': 'Copyright © 2024 - 2026 Josef Friedrich', 'google_analytics': None, 'dev_addr': _IpAddressValue(host='127.0.0.1', port=8000), 'use_directory_urls': True, 'repo_url': 'https://github.com/engine-pi/engine-pi', 'repo_name': 'Engine Pi', 'edit_uri_template': None, 'edit_uri': 'edit/main/docs/', 'extra_css': ['_assets/extra.css'], 'extra_javascript': ['_assets/mathjax.js', 'https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js'], 'extra_templates': [], 'markdown_extensions': ['toc', 'tables', 'fenced_code', 'pymdownx.highlight', 'pymdownx.inlinehilite', 'pymdownx.snippets', 'pymdownx.superfences', 'footnotes', 'pymdownx.magiclink', 'attr_list', 'md_in_html', 'pymdownx.blocks.caption', 'admonition', 'pymdownx.details', 'pymdownx.emoji', 'pymdownx.arithmatex'], 'mdx_configs': {'pymdownx.highlight': {'anchor_linenums': True, 'line_spans': '__span', 'pygments_lang_class': True}, 'pymdownx.emoji': {'emoji_index': <function 0x7f5ae3d8c5c0="" at="" twemoji="">, 'emoji_generator': <function 0x7f5ae3bb66c0="" at="" to_svg="">}, 'pymdownx.arithmatex': {'generic': True}}, 'strict': True, 'remote_branch': 'gh-pages', 'remote_name': 'origin', 'extra': {'version': '0.41.0', 'generator': False, 'social': [{'icon': 'fontawesome/brands/github', 'link': 'https://github.com/engine-pi/engine-pi'}, {'icon': 'simple/forgejo', 'link': 'https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi'}, {'icon': 'fontawesome/brands/java', 'link': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, {'icon': 'fontawesome/solid/paper-plane', 'link': 'mailto:josef.friedrich@pirckheimer-gymnasium.de'}]}, 'plugins': {'macros': <mkdocs_macros.plugin.macrosplugin 0x7f5ae379e660="" at="" object="">, 'drawio': <mkdocs_drawio.plugin.drawioplugin 0x7f5ae2734050="" at="" object="">}, 'hooks': {}, 'watch': ['/home/runner/work/engine-pi/engine-pi/docs'], 'validation': {'nav': {'omitted_files': 20, 'not_found': 30, 'absolute_links': 20}, 'links': {'not_found': 30, 'absolute_links': 20, 'unrecognized_links': 20, 'anchors': 20}}}</mkdocs_drawio.plugin.drawioplugin></mkdocs_macros.plugin.macrosplugin></function></function></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>environment</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">system = 'Linux', system_version = '6.11.0-1018-azure', python_version = '3.14.2', mkdocs_version = '1.6.1', macros_plugin_version = '1.5.0', jinja2_version = '3.1.6'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>plugin</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>LegacyConfig</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">{'module_name': 'docs/macros', 'modules': [], 'render_by_default': True, 'force_render_paths': '', 'include_dir': '', 'include_yaml': [], 'j2_block_start_string': '', 'j2_block_end_string': '', 'j2_variable_start_string': '', 'j2_variable_end_string': '', 'j2_comment_start_string': '', 'j2_comment_end_string': '', 'j2_extensions': [], 'on_undefined': 'keep', 'on_error_fail': False, 'verbose': False}</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>git</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">status = True, <b>date</b> [<i>datetime</i>], short_commit = 'c696ebf', commit = 'c696ebfb689aeed9ab4e99239209f1e305938c48', tag = '', short_tag = '', author = 'Josef Friedrich', author_email = 'josef@friedrich.rocks', committer = 'Josef Friedrich', committer_email = 'josef@friedrich.rocks', date_ISO = 'Sun Jan 18 14:51:23 2026 +0100', message = 'Add more tests', raw = 'commit c696ebfb689aeed9ab4e99239209f1e305938c48\nAuthor: Josef Friedrich <josef@friedrich.rocks>\nDate:   Sun Jan 18 14:51:23 2026 +0100\n\n    Add more tests', root_dir = '/home/runner/work/engine-pi/engine-pi'</josef@friedrich.rocks></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>version</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'0.41.0'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>generator</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>bool</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">False</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>social</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>SuperList</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">[{'icon': 'fontawesome/brands/github', 'link': 'https://github.com/engine-pi/engine-pi'}, {'icon': 'simple/forgejo', 'link': 'https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi'}, {'icon': 'fontawesome/brands/java', 'link': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, {'icon': 'fontawesome/solid/paper-plane', 'link': 'mailto:josef.friedrich@pirckheimer-gymnasium.de'}]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>macros</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>SuperDict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>context</b> [<i>function</i>], <b>macros_info</b> [<i>function</i>], <b>now</b> [<i>function</i>], <b>fix_url</b> [<i>function</i>], <b>class</b> [<i>function</i>], <b>java_class</b> [<i>function</i>], <b>package</b> [<i>function</i>], <b>method</b> [<i>function</i>], <b>methods</b> [<i>function</i>], <b>attribute</b> [<i>function</i>], <b>demo</b> [<i>function</i>], <b>image</b> [<i>function</i>], <b>video</b> [<i>function</i>], <b>contribute</b> [<i>function</i>], <b>repo_link</b> [<i>function</i>], <b>code</b> [<i>function</i>], <b>line</b> [<i>function</i>], <b>drawio</b> [<i>function</i>]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>filters</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>pretty</b> [<i>function</i>], <b>relative_url</b> [<i>function</i>]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>filters_builtin</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>abs</b> [<i>builtin_function_or_method</i>], <b>attr</b> [<i>function</i>], <b>batch</b> [<i>function</i>], <b>capitalize</b> [<i>function</i>], <b>center</b> [<i>function</i>], <b>count</b> [<i>builtin_function_or_method</i>], <b>d</b> [<i>function</i>], <b>default</b> [<i>function</i>], <b>dictsort</b> [<i>function</i>], <b>e</b> [<i>function</i>], <b>escape</b> [<i>function</i>], <b>filesizeformat</b> [<i>function</i>], <b>first</b> [<i>function</i>], <b>float</b> [<i>function</i>], <b>forceescape</b> [<i>function</i>], <b>format</b> [<i>function</i>], <b>groupby</b> [<i>function</i>], <b>indent</b> [<i>function</i>], <b>int</b> [<i>function</i>], <b>join</b> [<i>function</i>], <b>last</b> [<i>function</i>], <b>length</b> [<i>builtin_function_or_method</i>], <b>list</b> [<i>function</i>], <b>lower</b> [<i>function</i>], <b>items</b> [<i>function</i>], <b>map</b> [<i>function</i>], <b>min</b> [<i>function</i>], <b>max</b> [<i>function</i>], <b>pprint</b> [<i>function</i>], <b>random</b> [<i>function</i>], <b>reject</b> [<i>function</i>], <b>rejectattr</b> [<i>function</i>], <b>replace</b> [<i>function</i>], <b>reverse</b> [<i>function</i>], <b>round</b> [<i>function</i>], <b>safe</b> [<i>function</i>], <b>select</b> [<i>function</i>], <b>selectattr</b> [<i>function</i>], <b>slice</b> [<i>function</i>], <b>sort</b> [<i>function</i>], <b>string</b> [<i>function</i>], <b>striptags</b> [<i>function</i>], <b>sum</b> [<i>function</i>], <b>title</b> [<i>function</i>], <b>trim</b> [<i>function</i>], <b>truncate</b> [<i>function</i>], <b>unique</b> [<i>function</i>], <b>upper</b> [<i>function</i>], <b>urlencode</b> [<i>function</i>], <b>urlize</b> [<i>function</i>], <b>wordcount</b> [<i>function</i>], <b>wordwrap</b> [<i>function</i>], <b>xmlattr</b> [<i>function</i>], <b>tojson</b> [<i>function</i>]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>navigation</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Navigation</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><mkdocs.structure.nav.navigation 0x7f5ae2736270="" at="" object=""></mkdocs.structure.nav.navigation></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>files</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Files</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><mkdocs.structure.files.files 0x7f5ae2735940="" at="" object=""></mkdocs.structure.files.files></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>page</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Page</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">Page(title='`mkdocs` (Dokumentationsseite)', url='/engine-pi/manual/dev/mkdocs/')</td>
+</tr>
+</table>
+<h3 id="config-information">Config Information</h3>
+<p>Standard MkDocs configuration information. Do not try to modify.</p>
+<p>e.g. <code>{{ config.docs_dir }}</code></p>
+<p>See also the <a href="https://www.MkDocs.org/user-guide/custom-themes/#config">MkDocs documentation on the config object</a>.</p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>config_file_path</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'/home/runner/work/engine-pi/engine-pi/mkdocs.yml'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>site_name</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Engine Pi'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>nav</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">[{'Handbuch': [{'Hauptklassen': ['manual/main-classes/index.md', {'Controller (Steuerung)': ['manual/main-classes/controller/index.md', 'manual/main-classes/controller/coordinate-system.md', 'manual/main-classes/controller/instant-mode.md', 'manual/main-classes/controller/game-loop.md', 'manual/main-classes/controller/dialog.md']}, 'manual/main-classes/scene.md', 'manual/main-classes/camera.md', 'manual/main-classes/layer.md', {'Actor (Figur)': ['manual/main-classes/actor/index.md', 'manual/main-classes/actor/hello-world.md', 'manual/main-classes/actor/text.md', 'manual/main-classes/actor/turtle.md', 'manual/main-classes/actor/image-font.md', 'manual/main-classes/actor/stateful-animation.md']}]}, {'events (Ereignissteuerung)': ['manual/events/index.md', 'manual/events/key-event.md', 'manual/events/key-stroke.md', 'manual/events/mouse-click.md', 'manual/events/collision.md', 'manual/events/repeat.md', 'manual/events/shortcuts.md']}, {'physics (Physiksimulation)': ['manual/physics/index.md', 'manual/physics/body-type.md', 'manual/physics/gravity.md', 'manual/physics/density.md', 'manual/physics/restitution.md', 'manual/physics/impulse.md', 'manual/physics/joints.md']}, {'Ressourcenverwaltung': ['manual/resources/index.md', 'manual/resources/colors.md', 'manual/resources/fonts.md', 'manual/resources/images.md', 'manual/resources/sounds.md', 'manual/resources/config.md']}, {'Java': ['manual/java/index.md', 'manual/java/packages.md']}, {'Entwicklung': ['manual/dev/index.md', 'manual/dev/monorepo.md', 'manual/dev/design.md', 'manual/dev/coding-style.md', 'manual/dev/javadoc.md', 'manual/dev/mkdocs.md', 'manual/dev/setter-getter.md', 'manual/dev/versions.md', 'manual/dev/tests.md']}]}, {'API (javadocs)': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, 'download.md']</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>pages</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>exclude_docs</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>draft_docs</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>not_in_nav</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>site_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'https://engine-pi.github.io/engine-pi/'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>site_description</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>site_author</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>theme</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Theme</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">Theme(name='material', dirs=['/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/material/templates', '/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/mkdocs/templates'], static_templates={'sitemap.xml', '404.html'}, name='material', locale=Locale('en'), language='en', direction=None, features=['navigation.indexes', 'navigation.footer', 'content.code.copy', 'content.code.select', 'content.action.edit'], font={'text': 'Cantarell', 'code': 'Ubuntu Mono'}, icon=None, favicon='assets/images/favicon.png', logo='_assets/logo.svg')</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>docs_dir</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'/home/runner/work/engine-pi/engine-pi/docs'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>site_dir</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'/home/runner/work/engine-pi/engine-pi/site'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>copyright</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Copyright © 2024 - 2026 Josef Friedrich'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>google_analytics</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>dev_addr</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>_IpAddressValue</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">_IpAddressValue(host='127.0.0.1', port=8000)</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>use_directory_urls</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>bool</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">True</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>repo_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'https://github.com/engine-pi/engine-pi'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>repo_name</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Engine Pi'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>edit_uri_template</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>edit_uri</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'edit/main/docs/'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>extra_css</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">['_assets/extra.css']</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>extra_javascript</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">['_assets/mathjax.js', 'https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js']</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>extra_templates</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">[]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>markdown_extensions</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">['toc', 'tables', 'fenced_code', 'pymdownx.highlight', 'pymdownx.inlinehilite', 'pymdownx.snippets', 'pymdownx.superfences', 'footnotes', 'pymdownx.magiclink', 'attr_list', 'md_in_html', 'pymdownx.blocks.caption', 'admonition', 'pymdownx.details', 'pymdownx.emoji', 'pymdownx.arithmatex']</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>mdx_configs</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>pymdownx.highlight</b> [<i>dict</i>], <b>pymdownx.emoji</b> [<i>dict</i>], <b>pymdownx.arithmatex</b> [<i>dict</i>]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>strict</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>bool</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">True</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>remote_branch</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'gh-pages'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>remote_name</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'origin'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>extra</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>LegacyConfig</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">{'version': '0.41.0', 'generator': False, 'social': [{'icon': 'fontawesome/brands/github', 'link': 'https://github.com/engine-pi/engine-pi'}, {'icon': 'simple/forgejo', 'link': 'https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi'}, {'icon': 'fontawesome/brands/java', 'link': 'https://engine-pi.github.io/javadocs/pi/package-summary.html'}, {'icon': 'fontawesome/solid/paper-plane', 'link': 'mailto:josef.friedrich@pirckheimer-gymnasium.de'}]}</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>plugins</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>PluginCollection</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>macros</b> [<i>MacrosPlugin</i>], <b>drawio</b> [<i>DrawioPlugin</i>]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>hooks</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>watch</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">['/home/runner/work/engine-pi/engine-pi/docs']</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>validation</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Validation</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">{'nav': {'omitted_files': 20, 'not_found': 30, 'absolute_links': 20}, 'links': {'not_found': 30, 'absolute_links': 20, 'unrecognized_links': 20, 'anchors': 20}}</td>
+</tr>
+</table>
+<h3 id="macros">Macros</h3>
+<p>These macros have been defined programmatically for this environment
+(module or pluglets). </p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>{
+  context:
+    '''
+    Function: (obj: dict = None) 
+    *Default Mkdocs-Macro*: List an object
+    (by default the variables)
+
+    '''
+  macros_info:
+    '''
+    Function: () 
+    *Test/debug function*:
+    list useful documentation on the mkdocs_macro environment.
+
+    '''
+  now:
+    '''
+    Function: () 
+    *Default Mkdocs-Macro*:
+    Get the current time (at the moment of the project build).
+    It returns a datetime object. 
+    Used alone, it provides a timestamp.
+    To get the year use `now().year`, for the month number 
+    `now().month`, etc.
+
+    '''
+  fix_url:
+    '''
+    Function: (url) 
+    If url is relative, fix it so that it points to the docs directory.
+    This is necessary because relative links in markdown must be adapted
+    in html ('img/foo.png' =&gt; '../img/img.png').
+
+    '''
+  class:
+    '''
+    Function: (class_path: str, link_title: str | None = None) -&gt; str 
+    :param class_path: For example ``pi.actor.Actor``
+
+    ``{{ class('pi.actor.Actor') }}``
+
+    '''
+  java_class: Function: (class_path: str, link_title: str | None = None, module: str = 'java.base') -&gt; str None
+  package: Function: (package_path: str, link_title: str | None = None) -&gt; str None
+  method:
+    '''
+    Function: (class_path: str, method: str, link_title: str | None = None) -&gt; str 
+    :param class_path: For example ``pi.actor.Actor``
+    :param method: For example ``color(java.awt.Color)``
+    :return: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#color(java.awt.Color)``
+
+    '''
+  methods:
+    '''
+    Function: (class_path: str, methods: list[str]) -&gt; str 
+    :param class_path: For example ``pi.actor.Actor``
+    :param methods: For example ``['color(java.awt.Color)', 'color(String)']``
+
+    '''
+  attribute:
+    '''
+    Function: (class_path: str, attribute: str, link_title: str | None = None) -&gt; str 
+    :param class_path: For example ``pi.Resources``
+    :param attribute: For example ``color``
+    :return: ``https://engine-pi.github.io/javadocs/pi/Resources.html#colors``
+
+    '''
+  demo:
+    '''
+    Function: (relpath: str, blob: str = 'main', lines: str | None = None, start_line: int = 0, end_line: int = 0) -&gt; str 
+    :param blob: The branch name or the commit id
+
+    '''
+  image: Function: (relpath: str, caption: str | None = None) -&gt; str None
+  video: Function: (relpath: str, caption: str | None = None) -&gt; str None
+  contribute: Function: () -&gt; str None
+  repo_link: Function: (relpath: str, link_title: str | None = None) -&gt; str None
+  code:
+    '''
+    Function: (path: str, start_line: int = 0, end_line: int = 0, line: int = 0, link: bool = True, from_import: bool = False) -&gt; str 
+    Extract a substring of code lines based on specified line numbers.
+
+    :param start_line: The starting line number (1-indexed). If 0, starts from the beginning.
+                       Defaults to 0.
+    :param end_line: The ending line number (1-indexed, inclusive). If 0, goes to the end.
+                     Defaults to 0.
+    :param line: A specific line number to extract (1-indexed). If greater than 0,
+                 overrides start_line and end_line to extract only that line.
+                 Defaults to 0.
+    :return: A string containing the extracted code lines joined by newline characters.
+
+    :raises Exception: If the end line is an empty string.
+    :raises Exception: If the start line is an empty string.
+
+    .. note::
+       If the `line` parameter is specified (&gt; 0), it takes precedence over
+       `start_line` and `end_line` parameters.
+    https://github.com/mkdocs/mkdocs/issues/692
+
+    https://pypi.org/project/mkdocs-snippets/
+
+    '''
+  line: Function: (relpath: str, line: int) -&gt; str None
+  drawio:
+    '''
+    Function: (basename: str) -&gt; str 
+    :param basename: The filename without extension
+
+    '''
+}</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>SuperDict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">{'context': <function define_env.<locals="">.context at 0x7f5ae327d640&gt;, 'macros_info': <function define_env.<locals="">.macros_info at 0x7f5ae2f014e0&gt;, 'now': <function define_env.<locals="">.now at 0x7f5ae2f01590&gt;, 'fix_url': <function 0x7f5ae3522c40="" at="" fix_url="">, 'class': <function define_env.<locals="">.macro_class at 0x7f5ae273a820&gt;, 'java_class': <function define_env.<locals="">.macro_java_class at 0x7f5ae273a980&gt;, 'package': <function define_env.<locals="">.macro_package at 0x7f5ae273aae0&gt;, 'method': <function define_env.<locals="">.macro_method at 0x7f5ae273ac40&gt;, 'methods': <function define_env.<locals="">.macro_methods at 0x7f5ae273ada0&gt;, 'attribute': <function define_env.<locals="">.macro_attribute at 0x7f5ae273af00&gt;, 'demo': <function define_env.<locals="">.macro_demo at 0x7f5ae273b060&gt;, 'image': <function define_env.<locals="">.macro_image at 0x7f5ae273b1c0&gt;, 'video': <function define_env.<locals="">.macro_video at 0x7f5ae273b320&gt;, 'contribute': <function define_env.<locals="">.macro_contribute at 0x7f5ae273b480&gt;, 'repo_link': <function define_env.<locals="">.macro_repo_link at 0x7f5ae273b5e0&gt;, 'code': <function define_env.<locals="">.macro_code at 0x7f5ae273b740&gt;, 'line': <function define_env.<locals="">.macro_line at 0x7f5ae273b8a0&gt;, 'drawio': <function define_env.<locals="">.macro_drawio at 0x7f5ae273ba00&gt;}</function></function></function></function></function></function></function></function></function></function></function></function></function></function></function></function></function></function></td>
+</tr>
+</table>
+<h3 id="git-information">Git Information</h3>
+<p>Information available on the last commit and the git repository containing the
+documentation project:</p>
+<p>e.g. <code>{{ git.message }}</code></p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>status</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>bool</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">True</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>date</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>datetime</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">datetime.datetime(2026, 1, 18, 14, 51, 23, tzinfo=tzoffset(None, 3600))</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>short_commit</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'c696ebf'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>commit</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'c696ebfb689aeed9ab4e99239209f1e305938c48'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>tag</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">''</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>short_tag</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">''</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>author</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Josef Friedrich'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>author_email</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'josef@friedrich.rocks'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>committer</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Josef Friedrich'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>committer_email</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'josef@friedrich.rocks'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>date_ISO</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Sun Jan 18 14:51:23 2026 +0100'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>message</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'Add more tests'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>raw</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'commit c696ebfb689aeed9ab4e99239209f1e305938c48\nAuthor: Josef Friedrich <josef@friedrich.rocks>\nDate:   Sun Jan 18 14:51:23 2026 +0100\n\n    Add more tests'</josef@friedrich.rocks></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>root_dir</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'/home/runner/work/engine-pi/engine-pi'</td>
+</tr>
+</table>
+<h3 id="page-attributes">Page Attributes</h3>
+<p>Provided by MkDocs. These attributes change for every page
+(the attributes shown are for this page).</p>
+<p>e.g. <code>{{ page.title }}</code></p>
+<p>See also the <a href="https://www.MkDocs.org/user-guide/custom-themes/#page">MkDocs documentation on the page object</a>.</p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>file</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>File</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">src_uri = 'manual/dev/mkdocs.md', src_dir = '/home/runner/work/engine-pi/engine-pi/docs', dest_dir = '/home/runner/work/engine-pi/engine-pi/site', use_directory_urls = True, <b>inclusion</b> [<i>InclusionLevel</i>], name = 'mkdocs', dest_uri = 'manual/dev/mkdocs/index.html', <b>page</b> [<i>Page</i>], url = 'manual/dev/mkdocs/', abs_src_path = '/home/runner/work/engine-pi/engine-pi/docs/manual/dev/mkdocs.md'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>children</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>previous_page</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Page</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">Page(title='javadoc (API-Dokumentation)', url='/engine-pi/manual/dev/javadoc/')</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>next_page</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Page</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">Page(title=[blank], url='/engine-pi/manual/dev/setter-getter/')</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>_Page__active</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>bool</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">False</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>update_date</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'2026-01-18'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>canonical_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'https://engine-pi.github.io/engine-pi/manual/dev/mkdocs/'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>abs_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'/engine-pi/manual/dev/mkdocs/'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>edit_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">'https://github.com/engine-pi/engine-pi/edit/main/docs/manual/dev/mkdocs.md'</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>markdown</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>str</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">"# `mkdocs` (Dokumentationsseite)\n\nDie Dokumentation der [Engine Pi](https://github.com/engine-pi/engine-pi) ist\nmit [MkDocs](https://www.mkdocs.org) und dem Theme\n[Material](https://squidfunk.github.io/mkdocs-material) realisiert. Sie\nverwendet Tutorials und Bilder aus dem [Engine Alpha\nWiki](https://engine-alpha.org), die unter der [Creative Commons „Namensnennung,\nWeitergabe unter gleichen\nBedingungen“](https://creativecommons.org/licenses/by-sa/3.0/) Lizenz stehen.\n\n## Makros:\n\nDas MkDocs-Plugin\n[Mkdocs-Macros](https://github.com/fralau/mkdocs-macros-plugin) ermöglicht den\nEinsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')\n}} definiert. Folgende Makros können verwendet werden:\n\n### Java spezifisch\n\n#### `package(package_path, link_title?)`\n\n```jinja\n{% raw %}\n{{ package('pi', 'Haupt-Paket') }}\n{% endraw %}\n```\n\n{{ package('pi', 'Haupt-Paket') }}\n\n---\n\n#### `class(class_path, link_title?)`\n\n```jinja\n{% raw %}\n{{ class('pi.Game', 'Spiel') }}\n{% endraw %}\n```\n\n{{ class('pi.Game', 'Spiel') }}\n\n#### `method(class_path, method, link_title?)`\n\n```jinja\n{% raw %}\n{{ method('pi.actor.Actor', 'color(java.awt.Color)', 'color()') }}\n{% endraw %}\n```\n\n{{ method('pi.actor.Actor', 'color(java.awt.Color)', 'color()') }}\n\n---\n\n#### `attribute(class_path, attribute, link_title?)`\n\n```jinja\n{% raw %}\n{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}\n{% endraw %}\n```\n\n{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}\n\n---\n\n#### `demo(relpath, hash?, lines?)`\n\n```jinja\n{% raw %}\n{{ demo('docs/dev/design/SimpleGeometricActorsDemo') }}\n{% endraw %}\n```\n\n{{ demo('docs/dev/design/SimpleGeometricActorsDemo') }}\n\n```jinja\n{% raw %}\n{{ demo('docs/dev/design/SimpleGeometricActorsDemo', 'd9e92a3759dce13923528f62a1afa8328be5126e', 'L38-L42') }}\n{% endraw %}\n```\n\n{{ demo('docs/dev/design/SimpleGeometricActorsDemo', 'd9e92a3759dce13923528f62a1afa8328be5126e', 'L38-L42') }}\n\n---\n\n### assets (Mediendaten)\n\n\n#### `image(relpath, caption?)`\n\n```jinja\n{% raw %}\n{{ image('logo/logo.svg', 'Das Logo der Engine Pi') }}\n{% endraw %}\n```\n\n{{ image('logo/logo.svg', 'Das Logo der Engine Pi') }}\n\n---\n\n#### `video(relpath, caption?)`\n\n```jinja\n{% raw %}\n{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br/>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}\n{% endraw %}\n```\n\n{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br/>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}\n\n---\n\n### Projekt spezifisch\n\n#### `contribute()`\n\n```jinja\n{% raw %}\n{{ contribute() }}\n{% endraw %}\n```\n\n{{ contribute() }}\n\n---\n\n### `repo_link(relpath, link_title)`\n\n```jinja\n{% raw %}\n{{ repo_link('docs/macros.py') }}\n{% endraw %}\n```\n\n{{ repo_link('docs/macros.py') }}\n\n\n### `drawio(basename)`\n\n```jinja\n{% raw %}\n{{ drawio('main-classes') }}\n{% endraw %}\n```\n\n{{ drawio('main-classes') }}\n\n----\n\n## Vom Macros-Plugin bereit gestellt.\n\n{{ macros_info() }}\n"</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>_title_from_render</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>content</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>NoneType</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">None</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>toc</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>list</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">[]</td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>meta</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>dict</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>parent</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>Section</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">title = 'Entwicklung', children = [Page(title='Entwicklung', url='/engine-pi/manual/dev/'), Page(title=[blank], url='/engine-pi/manual/dev/monorepo/'), Page(title='design (Optisches Erscheinungsbild)', url='/engine-pi/manual/dev/design/'), Page(title='coding style (Programmierstil)', url='/engine-pi/manual/dev/coding-style/'), Page(title='javadoc (API-Dokumentation)', url='/engine-pi/manual/dev/javadoc/'), Page(title='`mkdocs` (Dokumentationsseite)', url='/engine-pi/manual/dev/mkdocs/'), Page(title=[blank], url='/engine-pi/manual/dev/setter-getter/'), Page(title=[blank], url='/engine-pi/manual/dev/versions/'), Page(title=[blank], url='/engine-pi/manual/dev/tests/')], _Section__active = False, <b>parent</b> [<i>Section</i>]</td>
+</tr>
+</table>
+<p>To have all titles of all pages, use:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>{% for page in navigation.pages %}
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>- {{ page.title }}
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>{% endfor %}
+</span></code></pre></div>
+<h3 id="plugin-filters">Plugin Filters</h3>
+<p>These filters are provided as a standard by the macros plugin.</p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>pretty</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>var_list, var, var_type, content, rows, header, e</i>)<br> <p><em>Default Mkdocs-Macro</em>: Prettify a dictionary or object  (used for environment documentation, or debugging).</p></br></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>relative_url</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>path</i>)<br> <p><em>Default Mkdocs-Macro</em>: convert the path of any page according to MkDoc's internal logic, into a URL relative to the current page (implements the <code>normalize_url()</code> function from <code>mkdocs.util</code>). Typically used to manage custom navigation: <code>{{ page.url | relative_url }}</code>.</p></br></td>
+</tr>
+</table>
+<h3 id="builtin-jinja2-filters">Builtin Jinja2 Filters</h3>
+<p>These filters are provided by Jinja2 as a standard.</p>
+<p>See also the <a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filterss">Jinja2 documentation on builtin filters</a>.</p>
+<table class="macros-tb" style="background-color: #F0FFFF; color:#000000; border:1px solid #DCDCDC; padding: 5px">
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Variable</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Type</th>
+<th style="color:#000000; border:1px solid #DCDCDC; padding: 5px">Content</th>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>abs</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>builtin_function_or_method</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><p>Return the absolute value of the argument.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>attr</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, obj, name</i>)<br> <p>Get an attribute of an object. <code>foo|attr("bar")</code> works like <code>foo.bar</code>, but returns undefined instead of falling back to <code>foo["bar"]</code> if the attribute doesn't exist.</p></br></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>batch</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, linecount, fill_with, tmp, item</i>)<br/> <p>A filter that batches items. It works pretty much like <code>slice</code> just the other way round. It returns a list of lists with the given number of items. If you provide a second parameter this is used to fill up missing items. See this example.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>capitalize</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Capitalize a value. The first character will be uppercase, all others lowercase.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>center</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, width</i>)<br/> <p>Centers the value in a field of a given width.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>count</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>builtin_function_or_method</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><p>Return the number of items in a container.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>d</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, default_value, boolean</i>)<br/> <p>If the value is undefined it will return the passed default value, otherwise the value of the variable.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>default</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, default_value, boolean</i>)<br/> <p>If the value is undefined it will return the passed default value, otherwise the value of the variable.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>dictsort</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, case_sensitive, by, reverse, sort_func</i>)<br/> <p>Sort a dict and yield (key, value) pairs. Python dicts may not be in the order you want to display them in, so sort them first.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>e</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Replace the characters <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>'</code>, and <code>"</code> in the string with HTML-safe sequences. Use this if you need to display text that might contain such characters in HTML.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>escape</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Replace the characters <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>'</code>, and <code>"</code> in the string with HTML-safe sequences. Use this if you need to display text that might contain such characters in HTML.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>filesizeformat</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, binary, bytes, base, prefixes, i, prefix, unit</i>)<br/> <p>Format the value like a 'human-readable' file size (i.e. 13 kB, 4.1 MB, 102 Bytes, etc).  Per default decimal prefixes are used (Mega, Giga, etc.), if the second parameter is set to <code>True</code> the binary prefixes are used (Mebi, Gibi).</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>first</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Return the first item of a sequence.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>float</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, default</i>)<br/> <p>Convert the value into a floating point number. If the conversion doesn't work it will return <code>0.0</code>. You can override this default using the first parameter.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>forceescape</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value</i>)<br/> <p>Enforce HTML escaping.  This will probably double escape variables.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>format</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, args, kwargs</i>)<br/> <p>Apply the given values to a <code>printf-style</code>_ format string, like <code>string % values</code>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>groupby</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Group a sequence of objects by an attribute using Python's :func:<code>itertools.groupby</code>. The attribute can use dot notation for nested access, like <code>"address.city"</code>. Unlike Python's <code>groupby</code>, the values are sorted first so only one group is returned for each unique value.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>indent</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s, width, first, blank, newline, rv, lines</i>)<br/> <p>Return a copy of the string with each line indented by 4 spaces. The first line and blank lines are not indented by default.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>int</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, default, base</i>)<br/> <p>Convert the value into an integer. If the conversion doesn't work it will return <code>0</code>. You can override this default using the first parameter. You can also override the default base (10) in the second parameter, which handles input with prefixes such as 0b, 0o and 0x for bases 2, 8 and 16 respectively. The base is ignored for decimal numbers and non-string values.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>join</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Return a string which is the concatenation of the strings in the sequence. The separator between elements is an empty string per default, you can define it with the optional parameter.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>last</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, seq</i>)<br/> <p>Return the last item of a sequence.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>length</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>builtin_function_or_method</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><p>Return the number of items in a container.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>list</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Convert the value into a list.  If it was a string the returned list will be a list of characters.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>lower</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Convert a value to lowercase.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>items</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value</i>)<br/> <p>Return an iterator over the <code>(key, value)</code> items of a mapping.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>map</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Applies a filter on a sequence of objects or looks up an attribute. This is useful when dealing with lists of objects but you are really only interested in a certain value of it.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>min</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, value, case_sensitive, attribute</i>)<br/> <p>Return the smallest item from the sequence.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>max</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, value, case_sensitive, attribute</i>)<br/> <p>Return the largest item from the sequence.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>pprint</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value</i>)<br/> <p>Pretty print a variable. Useful for debugging.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>random</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>context, seq</i>)<br/> <p>Return a random item from the sequence.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>reject</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Filters a sequence of objects by applying a test to each object, and rejecting the objects with the test succeeding.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>rejectattr</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Filters a sequence of objects by applying a test to the specified attribute of each object, and rejecting the objects with the test succeeding.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>replace</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>eval_ctx, s, old, new, count</i>)<br/> <p>Return a copy of the value with all occurrences of a substring replaced with a new one. The first argument is the substring that should be replaced, the second is the replacement string. If the optional third argument <code>count</code> is given, only the first <code>count</code> occurrences are replaced.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>reverse</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, rv, e</i>)<br/> <p>Reverse the object or return an iterator that iterates over it the other way round.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>round</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, precision, method, func</i>)<br/> <p>Round the number to a given precision. The first parameter specifies the precision (default is <code>0</code>), the second the rounding method.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>safe</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value</i>)<br/> <p>Mark the value as safe which means that in an environment with automatic escaping enabled this variable will not be escaped.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>select</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Filters a sequence of objects by applying a test to each object, and only selecting the objects with the test succeeding.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>selectattr</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Filters a sequence of objects by applying a test to the specified attribute of each object, and only selecting the objects with the test succeeding.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>slice</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Slice an iterator and return a list of lists containing those items. Useful if you want to create a div containing three ul tags that represent columns.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>sort</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, value, reverse, case_sensitive, attribute, key_func</i>)<br/> <p>Sort an iterable using Python's :func:<code>sorted</code>.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>string</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Convert an object to a string if it isn't already. This preserves a :class:<code>Markup</code> string rather than converting it back to a basic string, so it will still be marked as safe and won't be escaped again.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>striptags</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value</i>)<br/> <p>Strip SGML/XML tags and replace adjacent whitespace by one space.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>sum</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Returns the sum of a sequence of numbers plus the value of parameter 'start' (which defaults to 0).  When the sequence is empty it returns start.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>title</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s, item</i>)<br/> <p>Return a titlecased version of the value. I.e. words will start with uppercase letters, all remaining characters are lowercase.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>trim</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, chars</i>)<br/> <p>Strip leading and trailing characters, by default whitespace.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>truncate</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>env, s, length, killwords, end, leeway, result</i>)<br/> <p>Return a truncated copy of the string. The length is specified with the first parameter which defaults to <code>255</code>. If the second parameter is <code>true</code> the filter will cut the text at length. Otherwise it will discard the last word. If the text was in fact truncated it will append an ellipsis sign (<code>"..."</code>). If you want a different ellipsis sign than <code>"..."</code> you can specify it using the third parameter. Strings that only exceed the length by the tolerance margin given in the fourth parameter will not be truncated.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>unique</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>args, kwargs, b</i>)<br/> <p>Returns a list of unique items from the given iterable.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>upper</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Convert a value to uppercase.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>urlencode</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>value, items</i>)<br/> <p>Quote data for use in a URL path or query using UTF-8.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>urlize</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>eval_ctx, value, trim_url_limit, nofollow, target, rel, extra_schemes, policies, rel_parts, scheme, rv</i>)<br/> <p>Convert URLs in text into clickable links.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>wordcount</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>s</i>)<br/> <p>Count the words in that string.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>wordwrap</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>environment, s, width, break_long_words, wrapstring, break_on_hyphens, textwrap, line</i>)<br/> <p>Wrap a string to the given width. Existing newlines are treated as paragraphs to be wrapped separately.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>xmlattr</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>eval_ctx, d, autospace, items, key, value, rv</i>)<br/> <p>Create an SGML/XML attribute string based on the items in a dict.</p></td>
+</tr>
+<tr>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><b>tojson</b></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px"><i>function</i></td>
+<td style="vertical-align:top; color:#000000; border:1px solid #DCDCDC; padding: 5px">(<i>eval_ctx, value, indent, policies, dumps, kwargs</i>)<br/> <p>Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.</p></td>
+</tr>
+</table>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: javadoc (API-Dokumentation)" class="md-footer__link md-footer__link--prev" href="../javadoc/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                javadoc (API-Dokumentation)
+              </div>
+</div>
+</a>
+<a aria-label="Next: Getter und Setter ohne get and set Präfix" class="md-footer__link md-footer__link--next" href="../setter-getter/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                Getter und Setter ohne get and set Präfix
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2024 - 2026 Josef Friedrich
+    </div>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/engine-pi/engine-pi" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi" rel="noopener" target="_blank" title="inf.pirckheimer-gymnasium.de">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.777 0a2.9 2.9 0 1 1-2.529 4.322H12.91a4.266 4.266 0 0 0-4.265 4.195v2.118a7.08 7.08 0 0 1 4.147-1.42l.118-.002h1.338a2.9 2.9 0 0 1 5.43 1.422 2.9 2.9 0 0 1-5.43 1.422H12.91a4.266 4.266 0 0 0-4.265 4.195v2.319A2.9 2.9 0 0 1 7.222 24 2.9 2.9 0 0 1 5.8 18.57V8.589a7.11 7.11 0 0 1 6.991-7.108l.118-.001h1.338A2.9 2.9 0 0 1 16.778 0M7.223 19.905a1.194 1.194 0 1 0 0 2.389 1.194 1.194 0 0 0 0-2.389m9.554-10.464a1.194 1.194 0 1 0 0 2.389 1.194 1.194 0 0 0 0-2.39m0-7.735a1.194 1.194 0 1 0 0 2.389 1.194 1.194 0 0 0 0-2.389"></path></svg>
+</a>
+<a class="md-social__link" href="https://engine-pi.github.io/javadocs/pi/package-summary.html" rel="noopener" target="_blank" title="engine-pi.github.io">
+<svg viewbox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M277.8 312.9c9.8-6.7 23.4-12.5 23.4-12.5s-38.7 7-77.2 10.2c-47.1 3.9-97.7 4.7-123.1 1.3-60.1-8 33-30.1 33-30.1s-36.1-2.4-80.6 19c-52.5 25.4 130 37 224.5 12.1m-85.4-32.1c-19-42.7-83.1-80.2 0-145.8C296.1 53.2 242.9 0 242.9 0c21.5 84.5-75.6 110.1-110.7 162.6-23.9 35.9 11.7 74.4 60.2 118.2M307 104.6c.1 0-175.2 43.8-91.5 140.2 24.7 28.4-6.5 54-6.5 54s62.7-32.4 33.9-72.9c-26.9-37.8-47.5-56.6 64.1-121.3m-6.1 270.5c-.5 1-1.2 1.8-2 2.6 128.3-33.7 81.1-118.9 19.8-97.3-3.3 1.2-6.2 3.4-8.2 6.3 3.6-1.3 7.3-2.3 11-3 31-6.5 75.5 41.5-20.6 91.4m47.1 62.3s14.5 11.9-15.9 21.2c-57.9 17.5-240.8 22.8-291.6.7-18.3-7.9 16-19 26.8-21.3 11.2-2.4 17.7-2 17.7-2-20.3-14.3-131.3 28.1-56.4 40.2C232.8 509.4 401 461.3 348 437.4M124.5 396c-78.7 22 47.9 67.4 148.1 24.5q-14.7-5.7-28.2-13.8c-44.7 8.5-65.4 9.1-106 4.5-33.5-3.8-13.9-15.2-13.9-15.2m179.8 97.2C225.6 508 128.5 506.3 71 496.8c0-.1 11.8 9.7 72.4 13.6 92.2 5.9 233.8-3.3 237.1-46.9 0 0-6.4 16.5-76.2 29.7M260.7 353c-59.2 11.4-93.5 11.1-136.8 6.6-33.5-3.5-11.6-19.7-11.6-19.7-86.8 28.8 48.2 61.4 169.5 25.9-7.8-2.8-15-7.1-21.1-12.8"></path></svg>
+</a>
+<a class="md-social__link" href="mailto:josef.friedrich@pirckheimer-gymnasium.de" rel="noopener" target="_blank" title="">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.footer", "content.code.copy", "content.code.select", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.41.0"}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../../_assets/mathjax.js"></script>
+<script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>

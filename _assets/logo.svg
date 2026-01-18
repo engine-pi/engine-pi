@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500mm"
+   height="500mm"
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="pi.png"
+   inkscape:export-xdpi="70.555557"
+   inkscape:export-ydpi="70.555557"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.30531831"
+     inkscape:cx="519.13034"
+     inkscape:cy="954.74128"
+     inkscape:window-width="1920"
+     inkscape:window-height="1536"
+     inkscape:window-x="1920"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g8"
+     showgrid="true"
+     showguides="true"
+     inkscape:lockguides="false">
+    <sodipodi:guide
+       position="178.43528,399.05552"
+       orientation="0,680.31496"
+       id="guide8"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="367.74736,399.05552"
+       orientation="680.31496,0"
+       id="guide9"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="367.74736,209.74344"
+       orientation="0,-680.31496"
+       id="guide10"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="178.43528,209.74344"
+       orientation="-680.31496,0"
+       id="guide11"
+       inkscape:locked="false" />
+    <inkscape:page
+       x="0"
+       y="0"
+       width="500"
+       height="500"
+       id="page2"
+       margin="0 0 0 0"
+       bleed="0"
+       inkscape:export-filename="pi.png"
+       inkscape:export-xdpi="25.4"
+       inkscape:export-ydpi="25.4" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(170.07149,96.021002)">
+    <g
+       id="g8"
+       transform="translate(12.97347,2.601024)">
+      <rect
+         style="fill:#e01b24;fill-opacity:1;stroke:none;stroke-width:0.251001"
+         id="rect1"
+         width="100"
+         height="200"
+         x="-71.080109"
+         y="156.73526" />
+      <rect
+         style="fill:#e01b24;fill-opacity:1;stroke:none;stroke-width:0.251"
+         id="rect2"
+         width="100"
+         height="200"
+         x="126.16058"
+         y="156.73526" />
+      <circle
+         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251001"
+         id="path3"
+         cx="176.16058"
+         cy="-4.5425696"
+         r="50" />
+      <path
+         sodipodi:type="star"
+         style="fill:#f6d32d;fill-opacity:1;stroke:none;stroke-width:0.0419429"
+         id="path8"
+         inkscape:flatsided="true"
+         sodipodi:sides="3"
+         sodipodi:cx="84.999992"
+         sodipodi:cy="155"
+         sodipodi:r1="30.000002"
+         sodipodi:r2="15"
+         sodipodi:arg1="0"
+         sodipodi:arg2="1.0471976"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 114.99999,155 -44.999999,25.98076 0,-51.96152 z"
+         inkscape:transform-center-x="-46.042855"
+         transform="matrix(6.1390472,0,0,5.8335354,-521.98375,-806.61759)"
+         inkscape:transform-center-y="6.443928e-05" />
+      <circle
+         style="fill:#3584e4;fill-opacity:1;stroke:none;stroke-width:0.251001"
+         id="path3-5"
+         cx="-21.080112"
+         cy="97.580399"
+         r="50" />
+    </g>
+  </g>
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
