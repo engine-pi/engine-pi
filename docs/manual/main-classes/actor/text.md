@@ -28,9 +28,18 @@ Folgendes Codebeispiel verwendet alle Setter der Figur {{ class('pi.actor.Text')
 
 ## Schriftstil
 
-{{ class('pi.actor.Text', 'style(int)') }}
+Der Stil der Schriftart (*fett*, *kursiv* oder *fett und kursiv*) kann entweder
+als Ganzzahl oder als Aufzählungstyp (enum) angegeben werden. Die Methode {{
+class('pi.actor.Text', 'style(int)') }} akzeptiert Ganzzahlen als
+Eingabeparameter und die überladene Methode {{ class('pi.actor.Text',
+'style(pi.resources.font.FontStyle)') }} den Aufzählungstyp {{
+class('pi.resources.font.FontStyle') }}. Folgende Aufzählung stellt dar, welche
+Ganzzahl welchem Aufzählungstyp entspricht:
 
-{{ class('pi.actor.Text', 'style(pi.resources.font.FontStyle)') }}
+- `0`: {{ method('pi.resources.font.FontStyle', 'PLAIN') }} (normaler Text)
+- `1`: {{ method('pi.resources.font.FontStyle', 'BOLD') }} (fetter Text)
+- `2`: {{ method('pi.resources.font.FontStyle', 'ITALIC') }} (kursiver Text)
+- `3`: {{ method('pi.resources.font.FontStyle', 'BOLD_ITALIC') }} (fett und kursiv kombiniert)
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/main-classes/actor/text/TextStyleDemo.mp4 -->
 

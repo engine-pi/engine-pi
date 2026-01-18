@@ -41,7 +41,7 @@ assets_init:
 	git submodule init
 	git submodule update
 	cd assets; git checkout main
-	git pull origin main
+	git pull
 
 assets_sync_resources:
 	rsync -av --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/

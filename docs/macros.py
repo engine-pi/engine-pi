@@ -32,14 +32,6 @@ def _normalize_java_path(path: str) -> str:
     return path
 
 
-def _convert_class_path_to_relpath(class_path: str) -> str:
-    """:param class_path: for example ``java.awt.Color``
-
-    :return: ``java/awt/Color``
-    """
-    return class_path.replace(".", "/")
-
-
 # | Pfad                              | artefactId              |
 # | --------------------------------- | ----------------------- |
 # | ./                                | engine-pi-meta          |
@@ -61,22 +53,47 @@ subprojects = {
 }
 
 
-def _convert_class_path_to_subproject_path(class_path: str) -> str:
-    """:param class_path: for example ``pi.actor.Actor``
-
-    :return: ``subprojects/engine/src/main/java/pi/actor/Actor.java``
-    """
-    subproject = class_path.split(".")[0]
-    class_path = class_path.replace(".", "/")
-    return f"subprojects/{subprojects[subproject]}/src/main/java/{class_path}.java"
-
-
 def _check_class_path(class_path: str) -> None:
     relpath = _convert_class_path_to_subproject_path(class_path)
     if not Path(relpath).exists():
         raise Exception(
             f"The class path “{class_path}” has no corresponding Java file in “{relpath}”!"
         )
+
+
+def _convert_class_path_to_subproject_path(class_path: str, check: bool = True) -> str:
+    """:param class_path: for example ``pi.actor.Actor``
+
+    :return: ``subprojects/engine/src/main/java/pi/actor/Actor.java``
+    """
+    class_path_orig = class_path
+    class_path = class_path.replace("/", ".")
+    class_path = class_path.replace(".java", "")
+    subproject = class_path.split(".")[0]
+    class_name = class_path.split(".")[-1]
+
+    class_path = class_path.replace(".", "/")
+
+    if class_name[0].isupper():
+        class_path += ".java"
+    subproject_path = (
+        f"subprojects/{subprojects[subproject]}/src/main/java/{class_path}"
+    )
+    if check and not Path(subproject_path).exists():
+        raise Exception(
+            f"The class path “{class_path_orig}” has no corresponding Java file in “{subproject_path}”!"
+        )
+    return subproject_path
+
+
+def _convert_class_path_to_relpath(class_path: str, check: bool = True) -> str:
+    """:param class_path: for example ``java.awt.Color``
+
+    :return: ``java/awt/Color``
+    """
+    if check:
+        _convert_class_path_to_subproject_path(class_path, True)
+    return class_path.replace(".", "/")
 
 
 def _check_asset(relpath: str) -> None:
@@ -291,7 +308,7 @@ def define_env(env: Any) -> None:
     ) -> str:
         if link_title is None:
             link_title = _get_class_name(class_path)
-        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_convert_class_path_to_relpath(class_path)}.html)"
+        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_convert_class_path_to_relpath(class_path, False)}.html)"
 
     env.macro(macro_java_class, "java_class")
 

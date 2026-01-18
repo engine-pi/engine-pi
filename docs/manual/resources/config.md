@@ -44,17 +44,22 @@ organisiert:
 - `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfig') }}
 
 Das statische Attribut {{ method('pi.Controller', 'config', 'Controller.config')
-}} der Klasse {{ class('pi.Controller') }} bietet Zugriff alle
+}} der Klasse {{ class('pi.Controller') }} bietet Zugriff auf alle
 Einstellmöglichkeiten.
 
 ```java
 import pi.Controller;
-// Controller.config.graphics.windowWidth()
+Controller.config.graphics.windowWidth()
 ```
 
 Das `config`-Objekt kann auch über einen statischen Import eingebunden werden:
 `#!java import static pi.Controller.config;`. Statt `#!java Controller.config`
 kann dann etwas kürzer `#!java config` geschrieben werden.
+
+```java
+import static pi.Controller.config;
+config.graphics.windowWidth()
+```
 
 <!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
 

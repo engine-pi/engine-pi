@@ -55,11 +55,11 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ```jinja
 {% raw %}
-{{ attribute('pi.Resources', 'colors', 'statisches Attribute colors') }}
+{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}
 {% endraw %}
 ```
 
-{{ attribute('pi.Resources', 'colors', 'statisches Attribute colors') }}
+{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}
 
 ---
 
@@ -142,6 +142,11 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 {{ drawio('main-classes') }}
 {% endraw %}
 ```
+
 {{ drawio('main-classes') }}
+
+----
+
+## Vom Macros-Plugin bereit gestellt.
 
 {{ macros_info() }}
