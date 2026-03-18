@@ -6,6 +6,7 @@ import pi.Rectangle;
  * Eierkarton
  *
  * @author Johannes Neumeyer
+ * @author Josef Friedrich
  *
  * @version 1.0
  */
@@ -16,7 +17,7 @@ class Eierkarton extends Rectangle
      */
     Eierkarton()
     {
-        size(1, 0.2);
+        size(3, 0.5);
         color("gelb");
     }
 }

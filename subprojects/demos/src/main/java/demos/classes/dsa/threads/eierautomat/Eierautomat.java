@@ -9,6 +9,7 @@ import pi.Scene;
  * Eierautomat auf dem Lande
  *
  * @author Johannes Neumeyer
+ * @author Josef Friedrich
  *
  * @version 1.0
  */
@@ -27,7 +28,7 @@ class Eierautomat
     Eierautomat(Scene scene)
     {
         Rectangle automat = new Rectangle();
-        automat.size(2, 8);
+        automat.size(4, 10);
         automat.color("grau");
         automat.center(0, 0);
         eierkartons = new ArrayList<Eierkarton>();
@@ -35,21 +36,37 @@ class Eierautomat
         scene.add(automat);
     }
 
+    protected void fügeEierkartonHinzu(int fach)
+    {
+        Eierkarton eierkarton = new Eierkarton();
+        eierkarton.center(0, 4 - 0.8 * fach);
+        scene.add(eierkarton);
+        eierkartons.add(eierkarton);
+    }
+
+    /**
+     * Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung aus dem
+     * Zeichenfenster
+     */
+    protected Eierkarton entferneEierkarton()
+    {
+        //
+        Eierkarton gekaufterKarton = eierkartons.remove(0);
+        scene.remove(gekaufterKarton);
+        return gekaufterKarton;
+    }
+
     /**
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
-    synchronized void Befüllen()
+    synchronized void befülle()
     {
         if (eierkartons.size() == 0)
         {
             // Der leere Automat wird mit zehn neuen Kartons befüllt.
-            for (int zähler = 0; zähler < 10; zähler++)
+            for (int i = 0; i < 10; i++)
             {
-                Eierkarton eierkarton = new Eierkarton();
-                eierkarton.center(0, 0 - 0.4 * zähler);
-                scene.add(eierkarton);
-                eierkartons.add(eierkarton);
-                eierkartons.get(zähler);
+                fügeEierkartonHinzu(i);
             }
         }
     }
@@ -59,17 +76,11 @@ class Eierautomat
      *
      * @return Eierkarton oder null bei Fehlversuch
      */
-    synchronized Eierkarton EierHolen()
+    synchronized Eierkarton holeEier()
     {
         if (eierkartons.size() > 0)
         {
-            // Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung
-            // aus dem Zeichenfenster
-            Eierkarton gekaufterKarton = eierkartons.remove(0);
-            scene.remove(gekaufterKarton);
-
-            // Rueckgabe des gekauften Kartons
-            return gekaufterKarton;
+            return entferneEierkarton();
         }
         return null;
     }

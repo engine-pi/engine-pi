@@ -6,6 +6,7 @@ import pi.Scene;
  * Besserer Eierautomat auf dem Lande
  *
  * @author Johannes Neumeyer
+ * @author Josef Friedrich
  *
  * @version 1.0
  */
@@ -23,7 +24,7 @@ class BessererEierautomat extends Eierautomat
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
     @Override
-    synchronized void Befüllen()
+    synchronized void befülle()
     {
         // So lange der Automat noch Eierkartons enthält, muss mit dem Befüllen
         // gewartet werden.
@@ -39,13 +40,9 @@ class BessererEierautomat extends Eierautomat
         }
 
         // Der leere Automat wird mit zehn neuen Kartons befüllt.
-        for (int zähler = 0; zähler < 10; zähler++)
+        for (int i = 0; i < 10; i++)
         {
-            Eierkarton eierkarton = new Eierkarton();
-            eierkarton.center(0, 0 - 0.4 * zähler);
-            scene.add(eierkarton);
-            eierkartons.add(eierkarton);
-            eierkartons.get(zähler);
+            fügeEierkartonHinzu(i);
         }
 
         // Der Zustand der Variable in der Wartebedingung hat sich verändert.
@@ -59,7 +56,7 @@ class BessererEierautomat extends Eierautomat
      * @return Eierkarton oder null bei Fehlversuch
      */
     @Override
-    synchronized Eierkarton EierHolen()
+    synchronized Eierkarton holeEier()
     {
         // solange eine bestimmte Bedingung gilt, müssen Abholer abwarten
         if (eierkartons.size() == 0)
@@ -73,17 +70,13 @@ class BessererEierautomat extends Eierautomat
             }
         }
 
-        // Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung
-        // aus dem Zeichenfenster
-        Eierkarton gekaufterKarton = eierkartons.remove(0);
-        scene.remove(gekaufterKarton);
+        Eierkarton gekaufterKarton = entferneEierkarton();
 
         if (eierkartons.size() == 0)
         {
             notify();
         }
 
-        // Rueckgabe des gekauften Kartons
         return gekaufterKarton;
     }
 }

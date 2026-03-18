@@ -9,6 +9,7 @@ import pi.Text;
  * Bäuerin, die einen Eierautomaten betreibt
  *
  * @author Johannes Neumeyer
+ * @author Josef Friedrich
  *
  * @version 1.0
  */
@@ -27,7 +28,7 @@ class Baeuerin extends Thread
     /**
      * Textanzeige
      */
-    Text ausgabeBäuerin;
+    Text text;
 
     /**
      * der zu verwendene Eierautomat
@@ -41,13 +42,12 @@ class Baeuerin extends Thread
      */
     Baeuerin(Scene scene, Eierautomat eierautomat)
     {
-        super();
         automat = eierautomat;
         zufallsgenerator = new Random();
-        ausgabeBäuerin = new Text("");
-        ausgabeBäuerin.center(-10, 2);
+        text = new Text("");
+        text.center(-10, 2);
         anzahlVersuche = 0;
-        scene.add(ausgabeBäuerin);
+        scene.add(text);
     }
 
     /**
@@ -61,16 +61,16 @@ class Baeuerin extends Thread
         {
             // Textausgabe
             anzahlVersuche += 1;
-            ausgabeBäuerin.content(anzahlVersuche + ". Befüllbesuch");
+            text.content(anzahlVersuche + ". Befüllbesuch");
 
             // Automatenbefüllversuch
-            automat.Befüllen();
+            automat.befülle();
 
             // Simulation der Zeitdauer zwischen zwei Befüllversuchen
             try
             {
-                sleep(zufallsgenerator.nextInt(4000)); // Zufallszahl aus dem
-                                                       // Bereich [0; 4000[
+                // Zufallszahl aus dem Bereich [500; 4500[
+                sleep(500 + zufallsgenerator.nextInt(4000));
             }
             catch (InterruptedException e)
             {
