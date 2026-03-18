@@ -49,7 +49,7 @@ class Eierautomat
                 eierkarton.center(0, 0 - 0.4 * zähler);
                 scene.add(eierkarton);
                 eierkartons.add(eierkarton);
-                // eierkartons.get(zähler);
+                eierkartons.get(zähler);
             }
         }
     }
@@ -66,7 +66,7 @@ class Eierautomat
             // Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung
             // aus dem Zeichenfenster
             Eierkarton gekaufterKarton = eierkartons.remove(0);
-            scene.defer(() -> gekaufterKarton.remove());
+            scene.remove(gekaufterKarton);
 
             // Rueckgabe des gekauften Kartons
             return gekaufterKarton;

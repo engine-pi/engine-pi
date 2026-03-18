@@ -27,7 +27,7 @@ class BessererEierautomat extends Eierautomat
     {
         // So lange der Automat noch Eierkartons enthält, muss mit dem Befüllen
         // gewartet werden.
-        while (eierkartons.size() > 0)
+        if (eierkartons.size() > 0)
         {
             try
             {
@@ -62,25 +62,28 @@ class BessererEierautomat extends Eierautomat
     synchronized Eierkarton EierHolen()
     {
         // solange eine bestimmte Bedingung gilt, müssen Abholer abwarten
-        // --- HIER PROGRAMMCODE ERGÄNZEN
-        // --- HINWEIS: Die Bedingung um die folgenden Anweisungen könnte dann
-        // entfernt werden,
-        // --- ebenso die Rückgabe der leeren Referenz.
-
-        if (eierkartons.size() > 0)
+        if (eierkartons.size() == 0)
         {
-            // Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung
-            // aus dem Zeichenfenster
-            Eierkarton gekaufterKarton = eierkartons.remove(0);
-            gekaufterKarton.remove();
-
-            // Unter einer bestimmten Bedingung muss die Baeuerin informiert
-            // werden
-            // --- HIER PROGRAMMCODE ERGÄNZEN
-
-            // Rueckgabe des gekauften Kartons
-            return gekaufterKarton;
+            try
+            {
+                wait(); // Der Thread wechselt in einen Wartezustand.
+            }
+            catch (InterruptedException e)
+            {
+            }
         }
-        return null;
+
+        // Ein Eierkarton wird aus dem Feld entfernt und seine Darstellung
+        // aus dem Zeichenfenster
+        Eierkarton gekaufterKarton = eierkartons.remove(0);
+        scene.remove(gekaufterKarton);
+
+        if (eierkartons.size() == 0)
+        {
+            notify();
+        }
+
+        // Rueckgabe des gekauften Kartons
+        return gekaufterKarton;
     }
 }

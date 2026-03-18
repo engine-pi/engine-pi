@@ -45,7 +45,7 @@ class Leo extends Thread
         automat = eierautomat;
         zufallsgenerator = new Random();
         ausgabeAnna = new Text("");
-        ausgabeAnna.center(5.5, 2);
+        ausgabeAnna.center(4, 2);
         scene.add(ausgabeAnna);
         anzahlVersuche = 0;
     }

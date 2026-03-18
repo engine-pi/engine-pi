@@ -45,7 +45,7 @@ class Baeuerin extends Thread
         automat = eierautomat;
         zufallsgenerator = new Random();
         ausgabeBäuerin = new Text("");
-        ausgabeBäuerin.center(0.050, 0.200);
+        ausgabeBäuerin.center(-10, 2);
         anzahlVersuche = 0;
         scene.add(ausgabeBäuerin);
     }

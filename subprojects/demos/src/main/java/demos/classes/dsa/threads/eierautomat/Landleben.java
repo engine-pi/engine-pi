@@ -17,8 +17,8 @@ class Landleben extends Scene
      */
     Landleben()
     {
-        // Eierautomat automat = new Eierautomat();
-        Eierautomat automat = new BessererEierautomat(this);
+        Eierautomat automat = new Eierautomat(this);
+        // Eierautomat automat = new BessererEierautomat(this);
         Baeuerin b = new Baeuerin(this, automat);
         Leo l = new Leo(this, automat);
         b.start();
