@@ -3,7 +3,7 @@ package demos.classes.dsa.threads.eierautomat;
 import java.util.Random;
 
 import pi.Scene;
-import pi.Text;
+import pi.actor.Counter;
 
 /**
  * Leo, ein extremer Eierkonsument
@@ -23,16 +23,9 @@ class Leo extends Thread
     /**
      * Zähler für die Anzahl der Zugriffsversuche
      */
-    int anzahlVersuche;
+    Counter versuche;
 
-    /**
-     * Textanzeige
-     */
-    Text text;
-
-    int anzahlVergeblicheVersuche;
-
-    Text textVergeblich;
+    Counter vergeblicheVersuche;
 
     /**
      * der zu verwendene Eierautomat
@@ -49,13 +42,15 @@ class Leo extends Thread
         automat = eierautomat;
         zufallsgenerator = new Random();
 
-        text = new Text("");
-        text.center(3, 2);
+        versuche = new Counter().suffix(". Eierholbesuch");
+        versuche.anchor(3, 2);
 
-        textVergeblich = new Text("");
-        textVergeblich.height(0.8).center(3, 0).color("rot");
+        vergeblicheVersuche = new Counter()
+            .suffix(". vergeblicher Eierholbesuch")
+            .updateContent();
+        vergeblicheVersuche.height(0.8).anchor(3, 0).color("rot");
 
-        scene.add(text, textVergeblich);
+        scene.add(versuche, vergeblicheVersuche);
     }
 
     /**
@@ -67,18 +62,14 @@ class Leo extends Thread
     {
         while (true)
         {
-            // Textausgabe
-            anzahlVersuche += 1;
-            text.content(anzahlVersuche + ". Eierholbesuch");
-
             // Eierholversuch
             Eierkarton karton = automat.holeEier();
 
+            versuche.increase();
+
             if (karton == null)
             {
-                anzahlVergeblicheVersuche++;
-                textVergeblich.content(
-                    anzahlVergeblicheVersuche + ". vergeblicher Eierholbesuch");
+                vergeblicheVersuche.increase();
             }
 
             // Simulation der Zeitdauer zwischen zwei Eierholversuchen

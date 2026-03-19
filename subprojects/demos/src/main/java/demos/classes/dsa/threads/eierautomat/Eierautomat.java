@@ -50,7 +50,6 @@ class Eierautomat
      */
     protected Eierkarton entferneEierkarton()
     {
-        //
         Eierkarton gekaufterKarton = eierkartons.remove(0);
         scene.remove(gekaufterKarton);
         return gekaufterKarton;

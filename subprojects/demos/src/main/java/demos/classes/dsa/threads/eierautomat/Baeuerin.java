@@ -3,7 +3,7 @@ package demos.classes.dsa.threads.eierautomat;
 import java.util.Random;
 
 import pi.Scene;
-import pi.Text;
+import pi.actor.Counter;
 
 /**
  * Bäuerin, die einen Eierautomaten betreibt
@@ -23,12 +23,7 @@ class Baeuerin extends Thread
     /**
      * Zähler für die Anzahl der Zugriffsversuche
      */
-    int anzahlVersuche;
-
-    /**
-     * Textanzeige
-     */
-    Text text;
+    Counter versuche;
 
     /**
      * der zu verwendene Eierautomat
@@ -44,10 +39,9 @@ class Baeuerin extends Thread
     {
         automat = eierautomat;
         zufallsgenerator = new Random();
-        text = new Text("");
-        text.center(-10, 2);
-        anzahlVersuche = 0;
-        scene.add(text);
+        versuche = new Counter().suffix(". Befüllbesuch");
+        versuche.anchor(-10, 2);
+        scene.add(versuche);
     }
 
     /**
@@ -59,12 +53,10 @@ class Baeuerin extends Thread
     {
         while (true)
         {
-            // Textausgabe
-            anzahlVersuche += 1;
-            text.content(anzahlVersuche + ". Befüllbesuch");
-
             // Automatenbefüllversuch
             automat.befülle();
+
+            versuche.increase();
 
             // Simulation der Zeitdauer zwischen zwei Befüllversuchen
             try

@@ -27,7 +27,7 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 /**
- * Ein ganzzahliger Zähler.
+ * Ein ganzzahliger <b>Zähler</b>.
  *
  * @author Josef Friedrich
  *
@@ -35,28 +35,88 @@ import pi.debug.ToStringFormatter;
  */
 public class Counter extends Text
 {
-
     /**
-     * Der Zähler, der den aktuellen Wert speichert.
+     * Der <b>Zähler</b>, der den aktuellen Wert speichert.
      */
     private int counter;
+
+    /**
+     * Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     *
+     * @since 0.43.0
+     */
+    private String prefix;
+
+    /**
+     * Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit dem
+     * aktuellen Zähler ersetzt wird.
+     *
+     * @since 0.43.0
+     */
+    private String template;
+
+    /**
+     * Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
+     *
+     * @since 0.43.0
+     */
+    private String suffix;
 
     /**
      * Initialisiert den Zähler mit dem Wert 0 und setzt die Anzeige auf "0".
      */
     public Counter()
     {
-        super("0");
-        counter = 0;
+        super("");
+        updateContent();
+    }
+
+    public Counter(int counter, String prefix, String template, String suffix)
+    {
+        super("");
+        this.counter = counter;
+        this.prefix = prefix;
+        this.template = template;
+        this.suffix = suffix;
+        updateContent();
     }
 
     /**
-     * Aktualisiert den Inhalt des Counters, indem der aktuelle Zählerwert
+     * Aktualisiert den Inhalt des Zählers, indem der aktuelle Zählerwert
      * (counter) gesetzt wird.
      */
-    private void updateContent()
+    public Counter updateContent()
     {
-        content(counter);
+        String content;
+
+        if (template != null)
+        {
+            if (template.indexOf("{counter}") == -1)
+            {
+                throw new RuntimeException(
+                        "Die Zeichenkette enthält keinen Platzhalter {counter} für den Zähler.");
+            }
+            content = template.replaceAll("\\{counter\\}",
+                String.valueOf(counter));
+
+        }
+        else
+        {
+            content = String.valueOf(counter);
+        }
+
+        if (prefix != null)
+        {
+            content = prefix + content;
+        }
+
+        if (suffix != null)
+        {
+            content = content + suffix;
+        }
+
+        content(content);
+        return this;
     }
 
     /**
@@ -66,10 +126,11 @@ public class Counter extends Text
      * @param counter Der neue Wert für den Zähler.
      */
     @Setter
-    public void counter(int counter)
+    public Counter counter(int counter)
     {
         this.counter = counter;
         updateContent();
+        return this;
     }
 
     /**
@@ -81,6 +142,94 @@ public class Counter extends Text
     public int counter()
     {
         return counter;
+    }
+
+    /**
+     * <b>Setzt</b> die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     *
+     * @param prefix Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     *
+     * @since 0.43.0
+     */
+    @Setter
+    public Counter prefix(String prefix)
+    {
+        this.prefix = prefix;
+        return this;
+    }
+
+    /**
+     * <b>Gibt</b> eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird,
+     * zurück.
+     *
+     * @return Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     *
+     * @since 0.43.0
+     */
+    @Getter
+    public String prefix()
+    {
+        return prefix;
+    }
+
+    /**
+     * <b>Setzt</b> eine Zeichenkette, in dem die Zeichenkette {@code {counter}}
+     * mit dem aktuellen Zähler ersetzt wird.
+     *
+     * @param template Eine Zeichenkette, in dem die Zeichenkette
+     *     {@code {counter}} mit dem aktuellen Zähler ersetzt wird.
+     *
+     * @since 0.43.0
+     */
+    @Setter
+    public Counter template(String template)
+    {
+        this.template = template;
+        return this;
+    }
+
+    /**
+     * <b>Gibt</b> eine Zeichenkette, in dem die Zeichenkette {@code {counter}}
+     * mit dem aktuellen Zähler ersetzt wird.
+     *
+     * @return Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit
+     *     dem aktuellen Zähler ersetzt wird.
+     *
+     * @since 0.43.0
+     */
+    @Getter
+    public String template()
+    {
+        return template;
+    }
+
+    /**
+     * <b>Setzt</b> eine Zeichenkette, die <b>nach</b> dem Zähler angehängt
+     * wird.
+     *
+     * @param suffix Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt
+     *     wird.
+     *
+     * @since 0.43.0
+     */
+    @Setter
+    public Counter suffix(String suffix)
+    {
+        this.suffix = suffix;
+        return this;
+    }
+
+    /**
+     * <b>Gibt</b> eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
+     *
+     * @return Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
+     *
+     * @since 0.43.0
+     */
+    @Getter
+    public String suffix()
+    {
+        return suffix;
     }
 
     /**
@@ -126,6 +275,20 @@ public class Counter extends Text
     {
         ToStringFormatter formatter = new ToStringFormatter("Counter");
         formatter.append("counter", Integer.toString(counter));
+        if (prefix != null)
+        {
+            formatter.append("prefix", prefix);
+        }
+
+        if (template != null)
+        {
+            formatter.append("template", template);
+        }
+
+        if (suffix != null)
+        {
+            formatter.append("suffix", suffix);
+        }
         return formatter.format();
     }
 
@@ -138,7 +301,10 @@ public class Counter extends Text
         Controller.start(new Scene()
         {
             {
-                Counter c = new Counter();
+                Counter c = new Counter().prefix("„")
+                    .template("{counter}. Zähler")
+                    .suffix("“")
+                    .updateContent();
                 c.color("white");
                 add(c);
 
