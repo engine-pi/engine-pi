@@ -41,7 +41,6 @@ Im Gegensatz zur Engine Alpha ist die
 </project>
 ```
 
-
 {{ image('docs/download/Maven-Central.png') }}
 /// caption
 Maven Central Repository
