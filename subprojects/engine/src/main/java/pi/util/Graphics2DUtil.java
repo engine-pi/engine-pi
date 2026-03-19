@@ -191,7 +191,7 @@ public class Graphics2DUtil
     }
 
     // Go to
-    // file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/ArrowDemo.java
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/graphics2d/ArrowDemo.java
 
     /**
      * Zeichnet an ein Ende der Linie ein Dreieck als Pfeilspitze.

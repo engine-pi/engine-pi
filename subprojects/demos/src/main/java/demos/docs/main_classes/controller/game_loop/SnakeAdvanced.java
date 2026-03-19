@@ -32,7 +32,7 @@ import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/controller/game-loop.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/controller/game-loop.md
 
 public class SnakeAdvanced extends Scene implements FrameUpdateListener
 {

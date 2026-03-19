@@ -20,7 +20,7 @@
  */
 package demos.docs.events.key_event;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/events/key-event.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/key-event.md
 
 import java.awt.event.KeyEvent;
 

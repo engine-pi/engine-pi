@@ -10,11 +10,11 @@ geschrieben werden muss.
 
 {{ methods('pi.config.GameConfig', ['instantMode()', 'instantMode(boolean)']) }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeEnabled.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeEnabled.java -->
 
 {{ code('docs/main_classes/controller/instant_mode/InstantModeEnabled.java', line=27) }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeDisabled.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeDisabled.java -->
 
 Bei deaktivieren Instant-Modus muss wesentlich mehr Code geschrieben werden, um
 das gleiche Ergebnis wie im obigen Code-Beispiel zu erzielen.
@@ -26,7 +26,7 @@ Instant-Modus mittels `Controller.instantMode(false)` zu deaktiveren.
 
 Möglicherweise kann ein statischer Block Abhilfe schaffen:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeDisabledByStaticBlock.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeDisabledByStaticBlock.java -->
 
 {{ code('docs/main_classes/controller/instant_mode/InstantModeDisabledByStaticBlock.java', 25) }}
 

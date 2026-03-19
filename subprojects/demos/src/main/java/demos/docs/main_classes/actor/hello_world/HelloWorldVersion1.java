@@ -20,7 +20,7 @@
  */
 package demos.docs.main_classes.actor.hello_world;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/hello-world.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/hello-world.md
 
 import pi.Controller;
 import pi.Scene;

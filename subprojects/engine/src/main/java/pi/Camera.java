@@ -33,9 +33,9 @@ import pi.debug.ToStringFormatter;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/CameraDemo.java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/CameraDemo.java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/camera.md
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/CameraDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/CameraDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/camera.md
 
 /**
  * Die <b>Kamera</b> steuert, welcher <b>Ausschnitt</b> der Spielfläche

@@ -41,7 +41,7 @@ import pi.graphics.boxes.VAlign;
 import pi.graphics.boxes.VerticalBox;
 import pi.resources.font.FontStyle;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/SceneInfoOverlayDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/SceneInfoOverlayDemo.java
 
 /**
  * Eine <b>Infobox</b>, die <b>über</b> eine <b>Szene</b> gelegt werden kann.

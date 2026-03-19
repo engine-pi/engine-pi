@@ -25,7 +25,7 @@ import pi.graphics.boxes.BorderBox;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextTableBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/TextTableBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextTableBox.java
 
 public class TextTableBoxDemo extends Graphics2DComponent
 {

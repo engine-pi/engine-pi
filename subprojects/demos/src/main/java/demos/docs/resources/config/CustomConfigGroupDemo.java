@@ -18,7 +18,7 @@
  */
 package demos.docs.resources.config;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/config.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
 
 import static pi.Controller.config;
 

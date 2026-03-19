@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 import pi.dsa.Source;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/graph/dfs/GraphCollectionDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/graph/dfs/GraphCollectionDemo.java
 
 /**
  * Eine <b>Sammlung an Graphen</b>, die größtenteils aus Schulbüchern stammen.

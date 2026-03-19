@@ -20,7 +20,7 @@
  */
 package demos.docs.main_classes.scene.tutorial;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/scene.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/scene.md
 
 import pi.Scene;
 import pi.Text;

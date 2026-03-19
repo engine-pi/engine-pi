@@ -20,7 +20,7 @@
  */
 package demos.docs.events.key_stroke;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/key_stroke/KeyStrokeCounterDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/key_stroke/KeyStrokeCounterDemo.java
 
 import java.awt.event.KeyEvent;
 

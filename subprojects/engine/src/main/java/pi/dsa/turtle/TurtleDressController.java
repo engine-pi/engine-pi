@@ -32,7 +32,7 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Steuert die <b>Kleidung</b> der Schildkröte, d. h. das Aussehen der

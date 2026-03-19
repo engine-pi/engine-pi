@@ -36,9 +36,9 @@ import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
 
 /**
  * Zur Darstellung von einzeiligen <b>Texten</b>.

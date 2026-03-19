@@ -31,14 +31,14 @@ Pausenmenü. Ein Wechsel zwischen Hauptszene zu Pausenmenü und wieder zurück
 Die Hauptszene ist `MainScene`. Hier könnte ein Game Loop für ein
 Spiel stattfinden. Dieses Tutorial zeigt stattdessen eine kleine Animation.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MainScene.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MainScene.java -->
 
 {{ code('docs/main_classes/scene/tutorial/MainScene.java', 25) }}
 
 Die zweite Szene heißt `PauseMenu`. In ihr gibt es eine Textbotschaft und einen
 kleinen Knopf, um das Menü wieder zu verlassen.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/PauseMenu.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/PauseMenu.java -->
 
 {{ code('docs/main_classes/scene/tutorial/PauseMenu.java', 25) }}
 
@@ -114,7 +114,7 @@ davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 
 Kompletter Code MenuItem
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MenuItem.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/scene/tutorial/MenuItem.java -->
 
 {{ code('docs/main_classes/scene/tutorial/MenuItem.java', 25) }}
 

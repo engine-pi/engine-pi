@@ -4,7 +4,7 @@
 
 {{ drawio('Camera') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->
 
 <!-- ## Ziel des Tutorials
 

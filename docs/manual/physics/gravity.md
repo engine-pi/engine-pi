@@ -17,7 +17,7 @@ Wikipedia: [Gravitation](https://de.wikipedia.org/wiki/Gravitation)
 
 [^google:aimode]: https://share.google/aimode/hnAeb5oBR90fVXIgl
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/physics -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/physics -->
 
 {{ video('docs/physics/GravityDemo.mp4') }}
 

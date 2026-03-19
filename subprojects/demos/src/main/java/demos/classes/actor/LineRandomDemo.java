@@ -26,7 +26,7 @@ import pi.Scene;
 import pi.actor.Line;
 import pi.actor.Line.ArrowType;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java
 
 /**
  * Demonstriert die Figur <b>Linie</b> ({@link Line}) indem zufällig Attribute

@@ -27,7 +27,7 @@ import pi.graphics.boxes.InsetBox;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/InsetBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/InsetBox.java
 
 class InsetTestBox extends CombinedChildBox
 {

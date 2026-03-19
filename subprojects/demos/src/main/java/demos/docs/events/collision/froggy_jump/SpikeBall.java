@@ -20,7 +20,7 @@
  */
 package demos.docs.events.collision.froggy_jump;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/events/collision.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
 
 import pi.Image;
 import pi.Layer;

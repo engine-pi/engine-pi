@@ -24,7 +24,7 @@ import demos.graphics2d.Graphics2DComponent;
 import pi.graphics.boxes.CompassBox;
 import pi.graphics.boxes.GridBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/CompassBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/CompassBox.java
 
 public class CompassBoxDemo extends Graphics2DComponent
 {

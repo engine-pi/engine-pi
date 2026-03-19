@@ -6,7 +6,7 @@ import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 import pi.util.Graphics2DUtil;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/CompassBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/CompassBoxDemo.java
 
 /**
  * Ein <b>Kompasspfeil</b>, der in der Mitte eines Quadrats angebracht ist.

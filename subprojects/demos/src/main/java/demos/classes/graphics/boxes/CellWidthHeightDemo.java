@@ -27,7 +27,7 @@ import pi.graphics.boxes.BackgroundBox;
 import pi.graphics.boxes.CellBox;
 import pi.graphics.boxes.DimensionBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/CellBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/CellBox.java
 
 public class CellWidthHeightDemo extends Graphics2DComponent
 {

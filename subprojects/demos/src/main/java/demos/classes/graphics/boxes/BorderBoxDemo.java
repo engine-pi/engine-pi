@@ -28,7 +28,7 @@ import pi.graphics.boxes.Box;
 import pi.graphics.boxes.TextLineBox;
 import pi.graphics.boxes.VerticalBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/BorderBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/BorderBox.java
 
 public class BorderBoxDemo extends Graphics2DComponent
 {

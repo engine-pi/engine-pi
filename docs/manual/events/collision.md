@@ -9,7 +9,7 @@
 Ein Frosch soll fröhlich durch das Spiel springen und sich vom Boden abstoßen,
 wenn immer er die Chance dazu hat.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/events/collision -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/events/collision -->
 
 {{ image('docs/events/collision/Frog.png', 'Dieser Frosch soll durch das Spiel springen') }}
 
@@ -231,10 +231,10 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Kompletter Code
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/FroggyJump.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/FroggyJump.java -->
 
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/package-info.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/package-info.java -->
 
 
 {{ code('docs/events/collision/froggy_jump/FroggyJump.java', 25) }}

@@ -29,7 +29,7 @@ import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
 
 /**
  * Demonstriert die Klasse {@link Camera}.

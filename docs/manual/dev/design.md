@@ -25,7 +25,7 @@ Bauhaus:[^blog.interface.com]
     Farbe Rot das Quadrat, der Farbe Gelb das Dreieck und der Farbe Blau den Kreis
     zu.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/dev/design/SimpleGeometricActorsDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/dev/design/SimpleGeometricActorsDemo.java -->
 
 {{ image('docs/dev/design/SimpleGeometricActorsDemo.png', 'Die einfachen geometrischen Figuren Kreis, Rechteck und Dreieck dargestellt durch die Figuren <code>Circle</code>, <code>Rectangle</code> und <code>Triangle</code>') }}
 
@@ -33,7 +33,7 @@ Bauhaus:[^blog.interface.com]
 
 ### `Circle` (Kreis)
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Circle.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Circle.java -->
 
 Der {{ class('pi.Circle', 'Kreis') }} ist standardmäßig **blau** gefärbt. Die Farbe Blau wirkt für
 [Itten](https://de.wikipedia.org/wiki/Johannes_Itten) rund, erweckt ein Gefühl
@@ -43,7 +43,7 @@ er sich ausdrückt. Der Kreis entspricht der Farbe Blau, da er ein Symbol der
 
 ### `Rectangle` (Rechteck)
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Rectangle.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Rectangle.java -->
 
 Das {{ class('pi.Rectangle', 'Rechteck') }} ist standardmäßig **rot**
 gefärbt. Die Farbe Rot stellt für
@@ -53,7 +53,7 @@ Form des Quadrates zu.
 
 ### `Triangle` (Dreieck)
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Triangle.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Triangle.java -->
 
 Das {{ class('pi.Triangle', 'Dreieck') }} ist standardmäßig **gelb**
 gefärbt. Gelb steht bei [Itten](https://de.wikipedia.org/wiki/Johannes_Itten)

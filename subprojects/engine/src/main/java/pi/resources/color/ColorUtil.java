@@ -25,7 +25,7 @@
  */
 package pi.resources.color;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/colors.md
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

@@ -25,7 +25,7 @@ import pi.graphics.boxes.BorderBox;
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.GridBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/GridBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/GridBox.java
 
 public class GridBoxDemo extends Graphics2DComponent
 {

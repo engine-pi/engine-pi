@@ -23,7 +23,7 @@ import pi.Controller;
 import pi.Rectangle;
 import pi.Triangle;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/dev/design/SimpleGeometricActorsDemo.png
+// Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/dev/design/SimpleGeometricActorsDemo.png
 
 /**
  * Demonstriert die einfachen, geometrischen Figuren {@link pi.Circle Kreis},

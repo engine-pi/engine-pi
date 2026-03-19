@@ -20,7 +20,7 @@ package pi.resources.color;
 
 import java.awt.Color;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/colors.md
 
 /**
  * Dieser Aufzählungstyp sammelt die Farbschemata, die die Engine Pi anbietet.

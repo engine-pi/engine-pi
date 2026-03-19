@@ -18,7 +18,7 @@
  */
 package demos.docs.main_classes.actor.text;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
 
 import static pi.Controller.colors;
 

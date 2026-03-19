@@ -115,7 +115,7 @@ Richtung des Mauscursors katapultiert. Das Angle-Objekt hilft dem Spieler
 Hierzu wird ein weiteres Rechteck angle eingeführt, das die Richtung des
 Impulses markiert:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
 
 {{ code('docs/physics/ImpulseDemo.java', 70, 75) }}
 
@@ -132,7 +132,7 @@ den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
 Interface `MouseClickListener` implementiert:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
 
 {{ code('docs/physics/ImpulseDemo.java', 109, 114) }}
 
@@ -144,6 +144,6 @@ Interface `MouseClickListener` implementiert:
 
 ## Der komplette Code
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
 
 {{ code('docs/physics/ImpulseDemo.java') }}

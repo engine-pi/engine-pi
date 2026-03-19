@@ -4,7 +4,7 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Game_Loop
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/main-classes/controller/game-loop/ -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/main-classes/controller/game-loop/ -->
 
 <!-- ## How-To Engine Code: Der Game Loop -->
 
@@ -31,7 +31,7 @@ Steuerbaren Kreis und dem Ziel, Goodies zu sammeln.
 
 {{ image('docs/main-classes/controller/game-loop/Snake_Minimal.gif', 'Das Snake-Spiel: Der Kreis jagt die willkürlich auftauchenden Texte') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 38) }}
 
@@ -51,7 +51,7 @@ Hilfe! `v = s/t` und damit `s = v\*t`. Jeden Frame erhält die Snake die
 tatsächlich vergangene Zeit `t` seit dem letzten Frame-Update und verrechnet
 diese mit ihrer aktuellen Geschwindigkeit `v`:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 86, 90) }}
 
@@ -61,7 +61,7 @@ Was die tatsächliche Bewegungsgeschwindigkeit der Snake ist, hängt davon ab,
 welche Taste der Nutzer zuletzt runtergedrückt hat und ist in der Snake über
 `KeyStrokeListener` gelöst wie im vorigen Tutorial:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 93, 114) }}
 
@@ -79,7 +79,7 @@ Vorteile hiervon kannst du in der Dokumentation durchstöbern.
 Wenn das Goodie mit der Schlange kollidiert, so soll der Punktestand geändert,
 das Goodie entfernt, und ein neues Goodie platziert werden.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 125, 130) }}
 
@@ -89,7 +89,7 @@ Goodie nur auf Kollision mit der Schlange reagieren soll (und nicht z.B. auf
 Kollision mit dem "Score"-Text), wird es abschließend als Collision-Listener
 spezifisch mit der Schlange angemeldet:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeMinimal.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeMinimal', 65, 73) }}
 
@@ -97,7 +97,7 @@ spezifisch mit der Schlange angemeldet:
 
 {{ image('docs/main-classes/controller/game-loop/Snake_Advanced.gif', 'Eine Snake, die mit jedem Pickup wächst') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeAdvanced.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/game_loop/SnakeAdvanced.java -->
 
 {{ code('docs/main_classes/controller/game_loop/SnakeAdvanced', 37) }}
 

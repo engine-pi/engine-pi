@@ -18,7 +18,7 @@
  */
 package pi.dsa.turtle;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Die verschiedenen <b>Arten</b>, wie eine Schildkröte <b>grafisch dargestellt

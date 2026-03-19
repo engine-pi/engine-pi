@@ -27,8 +27,8 @@ import pi.event.FrameUpdateListener;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/camera.md
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/camera.md
 
 /**
  * Demonstriert die Klasse {@link Camera}.

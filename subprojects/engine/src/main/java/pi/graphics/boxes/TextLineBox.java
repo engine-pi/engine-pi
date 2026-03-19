@@ -24,7 +24,7 @@ import java.awt.Graphics2D;
 
 import pi.resources.font.FontUtil;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
 /**
  * Eine einzeilige <b>Text</b>box.

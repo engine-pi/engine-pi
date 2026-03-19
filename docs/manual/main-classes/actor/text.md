@@ -1,6 +1,6 @@
 # `Text` (einzeiliger Text)
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Text.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Text.java -->
 
 ## Klassendiagramm
 
@@ -41,7 +41,7 @@ Ganzzahl welchem Aufzählungstyp entspricht:
 - `2`: {{ method('pi.resources.font.FontStyle', 'ITALIC') }} (kursiver Text)
 - `3`: {{ method('pi.resources.font.FontStyle', 'BOLD_ITALIC') }} (fett und kursiv kombiniert)
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/assets/docs/main-classes/actor/text/TextStyleDemo.mp4 -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/main-classes/actor/text/TextStyleDemo.mp4 -->
 
 {{ video('docs/main-classes/actor/text/TextStyleDemo.mp4') }}
 

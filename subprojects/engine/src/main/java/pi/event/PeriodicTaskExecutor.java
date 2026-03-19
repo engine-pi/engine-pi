@@ -25,7 +25,7 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PeriodicTaskExecutorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PeriodicTaskExecutorDemo.java
 
 /**
  * Führt <b>Aufgaben regelmäßig</b> aus.

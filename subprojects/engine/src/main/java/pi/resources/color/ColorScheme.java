@@ -29,7 +29,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import static pi.Controller.colors;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/colors.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/colors.md
 
 /**
  * Beschreibt ein <b>Farbschema</b>.

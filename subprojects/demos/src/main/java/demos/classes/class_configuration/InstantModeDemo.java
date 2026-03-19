@@ -20,7 +20,7 @@ package demos.classes.class_configuration;
 
 import pi.Circle;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/Configuration.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Configuration.java
 
 /**
  * Demonstriert den <b>Instant-Modus</b>.

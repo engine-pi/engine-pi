@@ -27,7 +27,7 @@ import java.awt.Graphics2D;
 
 import demos.graphics2d.Graphics2DComponent;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/VerticalBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/VerticalBox.java
 
 public class VerticalBoxDemo extends Graphics2DComponent
 {

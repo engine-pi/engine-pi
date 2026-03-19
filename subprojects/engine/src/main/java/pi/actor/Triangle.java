@@ -23,7 +23,7 @@ import static pi.Controller.colorScheme;
 import pi.annotations.API;
 import pi.graphics.geom.Vector;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/development/design.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/development/design.md
 
 /**
  * Beschreibt ein <b>Dreieck</b>.

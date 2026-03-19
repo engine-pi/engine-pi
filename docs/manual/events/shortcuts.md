@@ -10,7 +10,7 @@ können diese Kürzel entfernt oder mit
 [Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html#setDefaultControl(pi.event.DefaultListener)>)
 neue Kürzel gesetzt werden.
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/DefaultControl.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/DefaultControl.java -->
 
 - `ESCAPE` zum Schließen des Fensters.
 - `ALT + a` zum An- und Abschalten der Figuren-Zeichenroutine (Es

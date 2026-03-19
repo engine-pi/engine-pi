@@ -26,7 +26,7 @@ import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/physics/restitution.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/physics/restitution.md
 
 /**
  * Demonstriert die Methode {@link pi.actor.Actor#restitution(double)}

@@ -4,7 +4,7 @@
 
 Folgende Zeichenketten repräsentieren die entsprechende Farbe in der Engine:[^engine-alpha-wiki:farben]
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorContainer.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorContainer.java -->
 
 Die zwölf Farben des Farbkreises von Itten zusammen mit ihren Aliassen bzw.
 Synonymen:
@@ -139,15 +139,15 @@ wurzel.add(recht);
 
 ## Farbschema
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorScheme.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorScheme.java -->
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/PredefinedColorScheme.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/PredefinedColorScheme.java -->
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorSchemeContainer.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/color/ColorSchemeContainer.java -->
 
 {{ video('docs/resources/colors/color-scheme/ColorScheme-Cycle.mp4') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ColorWheelIttenDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ColorWheelIttenDemo.java -->
 
 {{ code('docs/resources/color/ColorWheelIttenDemo', 52) }}
 
@@ -170,7 +170,7 @@ Reihe die Komplementärfarben der entsprechenden Bilder.
 
 {{ image('docs/resources/colors/actor/Images_derived_complementary-color.png') }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ImageAverageColorDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/color/ImageAverageColorDemo.java -->
 
 {{ code('docs/resources/color/ImageAverageColorDemo', 32) }}
 

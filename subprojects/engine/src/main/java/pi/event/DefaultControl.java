@@ -83,7 +83,7 @@ public class DefaultControl implements DefaultListener
     }
 
     // Got to
-    // file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/reference/ereignissteuerung.md
+    // file:///data/school/repos/inf/java/engine-pi/docs/reference/ereignissteuerung.md
 
     /**
      * Registriert <b>Standard-Tastenkürzel</b>.

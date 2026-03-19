@@ -31,7 +31,7 @@ import pi.graphics.boxes.Box;
 import pi.graphics.boxes.GridBox;
 import pi.graphics.boxes.TextBlockBox;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java
 
 public class TextBlockBoxDemo extends Graphics2DComponent
 {

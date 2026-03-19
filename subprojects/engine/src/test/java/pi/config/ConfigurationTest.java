@@ -35,7 +35,7 @@ public class ConfigurationTest
     public void all()
     {
         // Go to
-        // file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/resources/config.md
+        // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
         assertEquals(true, config.game.instantMode());
 
         assertEquals(768, config.graphics.windowWidth());

@@ -13,7 +13,7 @@ Das grundlegendste _Hello World_ sieht so aus:
 Das (noch wenig spannende) Ergebnis des Codes
 ///
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/hello_world/HelloWorldVersion1.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/hello_world/HelloWorldVersion1.java -->
 
 {{ code('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 25) }}
 

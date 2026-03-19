@@ -20,7 +20,7 @@
  */
 package demos.docs.main_classes.actor.stateful_animation;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
 
 import java.awt.event.KeyEvent;
 

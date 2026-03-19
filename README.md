@@ -9,7 +9,7 @@ API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 ### File Link zu den Demos:
 
 ```java
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 ```
 
 ### Anordnung der Konstruktoren

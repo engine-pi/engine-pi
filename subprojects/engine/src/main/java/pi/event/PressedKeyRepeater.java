@@ -25,7 +25,7 @@ import java.util.List;
 import pi.Controller;
 import pi.annotations.Getter;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PressedKeyRepeaterDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/event/PressedKeyRepeaterDemo.java
 
 /**
  * Führt bei <b>gedrückter Taste mehrmals</b> die <b>gleiche Aufgabe</b> in

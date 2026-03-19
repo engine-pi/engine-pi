@@ -35,7 +35,7 @@ coordinatesystem_labelsOnIntersections=false
 Die einzelnen Einstellmöglichkeiten sind in Konfigurationsgruppen, die jeweils ein Präfix haben,
 organisiert:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
 
 - `game_`: {{ class('pi.config.GameConfig') }}
 - `graphics_`: {{ class('pi.config.GraphicsConfig') }}
@@ -61,7 +61,7 @@ import static pi.Controller.config;
 config.graphics.windowWidth()
 ```
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java -->
 
 Das folgende Codebeispiel testet alle Einstellmöglichkeit mit den Standardwerten:
 
@@ -102,11 +102,11 @@ Einstellmöglichkeit in Form eines Attributs mit dem Namen `myInt`. Die
 dazugehörenden Getter- und Setter-Methoden haben - wie in der Engine Pi üblich -
 kein `get`- bzw. `set`-Präfix:
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/MyConfigGroup.java -->
 
 {{ code('demos.docs.resources.config.MyConfigGroup', from_import=True) }}
 
-<!-- Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/resources/config/CustomConfigGroupDemo.java -->
 
 {{ code('demos.docs.resources.config.CustomConfigGroupDemo', from_import=True) }}
 

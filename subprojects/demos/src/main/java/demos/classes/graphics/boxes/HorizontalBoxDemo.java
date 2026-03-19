@@ -27,7 +27,7 @@ import pi.graphics.boxes.BorderBox;
 import pi.graphics.boxes.HorizontalBox;
 import pi.graphics.boxes.VAlign;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/engine/src/main/java/pi/graphics/boxes/HorizontalBox.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/HorizontalBox.java
 
 public class HorizontalBoxDemo extends Graphics2DComponent
 {

@@ -26,7 +26,7 @@ import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.VAlign;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/SceneInfoOverlay.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/SceneInfoOverlay.java
 
 public class SceneInfoOverlayDemo extends MainAnimation
         implements KeyStrokeListener

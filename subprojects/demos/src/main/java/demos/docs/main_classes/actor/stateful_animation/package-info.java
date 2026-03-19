@@ -1,4 +1,4 @@
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
 
 /**
  * Demonstiert eine <b>animierte Figur</b>, die <b>mehrere Zustände</b> haben

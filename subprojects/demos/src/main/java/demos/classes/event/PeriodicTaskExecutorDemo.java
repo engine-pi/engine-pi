@@ -25,7 +25,7 @@ import pi.Scene;
 import pi.Text;
 import pi.event.PeriodicTaskExecutor;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/PeriodicTaskExecutor.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/PeriodicTaskExecutor.java
 
 /**
  * Demonstriert die Klasse {@link pi.event.PeriodicTaskExecutor}.

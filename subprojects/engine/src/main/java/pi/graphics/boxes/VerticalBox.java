@@ -20,7 +20,7 @@ package pi.graphics.boxes;
 
 import pi.annotations.Setter;
 
-// Go to file:///home/jf/repos/school/monorepo/inf/java/engine-pi/modules/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/VerticalBoxDemo.java
 
 /**
  * Eine <b>vertikale</b> Box, die die enthaltenen Kinder-Boxen vertikal von oben
