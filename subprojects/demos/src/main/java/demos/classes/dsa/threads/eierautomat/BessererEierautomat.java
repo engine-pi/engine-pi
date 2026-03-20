@@ -28,7 +28,7 @@ class BessererEierautomat extends Eierautomat
     {
         // So lange der Automat noch Eierkartons enthält, muss mit dem Befüllen
         // gewartet werden.
-        if (eierkartons.size() > 0)
+        while (eierkartons.size() > 0)
         {
             try
             {
@@ -59,7 +59,7 @@ class BessererEierautomat extends Eierautomat
     synchronized Eierkarton holeEier()
     {
         // solange eine bestimmte Bedingung gilt, müssen Abholer abwarten
-        if (eierkartons.size() == 0)
+        while (eierkartons.size() == 0)
         {
             try
             {
