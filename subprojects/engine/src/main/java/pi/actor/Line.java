@@ -222,10 +222,13 @@ public class Line extends Actor
         {
             this.end = end;
             this.opposite = opposite;
-            syncAttributes();
+            update();
         }
 
-        private void syncAttributes()
+        /**
+         * Kann nicht überschrieben werden, da die Klasse nicht vom Actor erbt.
+         */
+        private void update()
         {
             lineSegment = new DirectedLineSegment(end, opposite);
             if (offset != 0)
@@ -242,7 +245,7 @@ public class Line extends Actor
         public LineEnd offset(double offset)
         {
             this.offset = offset;
-            syncAttributes();
+            update();
             return this;
         }
 
@@ -265,7 +268,7 @@ public class Line extends Actor
         public LineEnd end(Vector end)
         {
             this.end = end;
-            syncAttributes();
+            update();
             return this;
         }
 
@@ -278,7 +281,7 @@ public class Line extends Actor
         public LineEnd opposite(Vector opposite)
         {
             this.opposite = opposite;
-            syncAttributes();
+            update();
             return this;
         }
 

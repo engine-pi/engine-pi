@@ -90,7 +90,7 @@ public class Text extends Geometry
         Color color = colorScheme.get().white();
         box.color(color);
         color(color);
-        syncAttributes();
+        update();
     }
 
     /* content */
@@ -133,7 +133,7 @@ public class Text extends Geometry
         if (!box.content().equals(normalizedContent))
         {
             box.content(normalizedContent);
-            syncAttributes();
+            update();
         }
         return this;
     }
@@ -183,7 +183,7 @@ public class Text extends Geometry
         if (definedWidth != width)
         {
             definedWidth = width;
-            syncAttributes();
+            update();
         }
         return this;
     }
@@ -233,7 +233,7 @@ public class Text extends Geometry
         if (definedHeight != height)
         {
             definedHeight = height;
-            syncAttributes();
+            update();
         }
         return this;
     }
@@ -272,7 +272,7 @@ public class Text extends Geometry
     public Text font(String fontName)
     {
         box.font(fontName);
-        syncAttributes();
+        update();
         return this;
     }
 
@@ -293,7 +293,7 @@ public class Text extends Geometry
     public Text font(Font font)
     {
         box.font(font);
-        syncAttributes();
+        update();
         return this;
     }
 
@@ -345,7 +345,7 @@ public class Text extends Geometry
     public Text style(int style)
     {
         box.fontStyle(style);
-        syncAttributes();
+        update();
         return this;
     }
 
@@ -373,7 +373,7 @@ public class Text extends Geometry
     public Text style(FontStyle style)
     {
         box.fontStyle(style);
-        syncAttributes();
+        update();
         return this;
     }
 
@@ -444,7 +444,8 @@ public class Text extends Geometry
      * @hidden
      */
     @Internal
-    private void syncAttributes()
+    @Override
+    public void update()
     {
         box.measure();
 

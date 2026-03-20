@@ -12,7 +12,6 @@ import pi.physics.FixtureBuilder;
 
 public class TextBlock extends Geometry
 {
-
     TextBlockBox box;
 
     /**
@@ -30,14 +29,15 @@ public class TextBlock extends Geometry
         box.color(color);
         box.fontSize(1000);
         color(color);
-        syncAttributes();
+        update();
     }
 
     /**
      * @hidden
      */
     @Internal
-    private void syncAttributes()
+    @Override
+    public void update()
     {
         box.measure();
 
