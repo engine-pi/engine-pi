@@ -1,6 +1,6 @@
 package demos.classes.dsa.threads.eierautomat;
 
-import pi.Rectangle;
+import pi.Image;
 
 /**
  * Eierkarton
@@ -10,14 +10,13 @@ import pi.Rectangle;
  *
  * @version 1.0
  */
-class Eierkarton extends Rectangle
+class Eierkarton extends Image
 {
     /**
      * Legt das Aussehen des Kartons fest
      */
     Eierkarton()
     {
-        size(3, 0.5);
-        color("gelb");
+        super("eierautomat/eierkarton.png", 3, 1.4);
     }
 }

@@ -4,6 +4,7 @@ import java.util.Random;
 
 import pi.Scene;
 import pi.actor.Counter;
+import pi.Image;
 
 /**
  * Leo, ein extremer Eierkonsument
@@ -43,13 +44,15 @@ class Leo extends Thread
         zufallsgenerator = new Random();
 
         versuche = new Counter().suffix(". Eierholbesuch");
-        versuche.anchor(3, 2);
+        versuche.anchor(3, 0);
 
         vergeblicheVersuche = new Counter()
             .suffix(". vergeblicher Eierholbesuch");
-        vergeblicheVersuche.height(0.8).anchor(3, 0).color("rot").update();
-
+        vergeblicheVersuche.update();
+        vergeblicheVersuche.height(0.8).anchor(3, -2).color("rot");
         scene.add(versuche, vergeblicheVersuche);
+        scene.add(new Image("eierautomat/leo.png", 4, 4).center(6, 5));
+
     }
 
     /**
@@ -74,8 +77,8 @@ class Leo extends Thread
             // Simulation der Zeitdauer zwischen zwei Eierholversuchen
             try
             {
-                // Zufallszahl aus dem Bereich [10; 160[
-                sleep(10 + zufallsgenerator.nextInt(150));
+                // Zufallszahl aus dem Bereich [50; 250[
+                sleep(50 + zufallsgenerator.nextInt(200));
             }
             catch (InterruptedException e)
             {

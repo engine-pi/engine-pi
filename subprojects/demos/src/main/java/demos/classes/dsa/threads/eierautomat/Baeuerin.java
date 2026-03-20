@@ -1,5 +1,6 @@
 package demos.classes.dsa.threads.eierautomat;
 
+import pi.Image;
 import java.util.Random;
 
 import pi.Scene;
@@ -40,8 +41,9 @@ class Baeuerin extends Thread
         automat = eierautomat;
         zufallsgenerator = new Random();
         versuche = new Counter().suffix(". Befüllbesuch");
-        versuche.anchor(-10, 2);
+        versuche.anchor(-9, 0);
         scene.add(versuche);
+        scene.add(new Image("eierautomat/baeuerin.png", 6, 6).center(-7, 5));
     }
 
     /**

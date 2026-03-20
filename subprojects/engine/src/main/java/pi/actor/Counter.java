@@ -100,6 +100,7 @@ public class Counter extends Text
     {
         super("");
         update();
+
     }
 
     /**
@@ -129,6 +130,7 @@ public class Counter extends Text
     @Override
     public void update()
     {
+        super.update();
         String content;
 
         if (template != null)
@@ -380,7 +382,6 @@ public class Counter extends Text
                     .template("{counter}. Zähler")
                     .suffix("“");
                 c.color("white");
-                c.update();
                 add(c);
 
                 addKeyStrokeListener((event -> {
