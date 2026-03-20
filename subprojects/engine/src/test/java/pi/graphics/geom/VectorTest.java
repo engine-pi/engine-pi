@@ -28,7 +28,9 @@ import static pi.graphics.geom.Vector.v;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+import pi.EnLocale;
 import pi.debug.AnsiColor;
 
 public class VectorTest
@@ -263,6 +265,7 @@ public class VectorTest
         }
     }
 
+    @ExtendWith(EnLocale.class)
     @Test
     public void testToString()
     {

@@ -27,6 +27,9 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import pi.EnLocale;
 
 /**
  * @author Josef Friedrich
@@ -135,6 +138,7 @@ public class GraphArrayMatrixTest
         assertFalse(AC.isDirected());
     }
 
+    @ExtendWith(EnLocale.class)
     @Test
     public void testGenerateJavaCodes()
     {

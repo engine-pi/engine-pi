@@ -30,19 +30,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import pi.EnLocale;
 
 public class TextUtilTest
 {
-    @Test
-    void testRoundNumber()
+    @ExtendWith(EnLocale.class)
+    @Nested
+    class RoundNumberTest
     {
-        assertEquals(TextUtil.roundNumber(1.2345), "1.2");
-    }
 
-    @Test
-    void testRoundNumberWithDecimalPlaces()
-    {
-        assertEquals(TextUtil.roundNumber(1.2345, 3), "1.234");
+        @Test
+        void testWithoutDecimalPlaces()
+        {
+            assertEquals(TextUtil.roundNumber(1.2345), "1.2");
+        }
+
+        @Test
+        void testWithDecimalPlaces()
+        {
+            assertEquals(TextUtil.roundNumber(1.2345, 3), "1.234");
+        }
     }
 
     @Test

@@ -21,7 +21,9 @@ package pi.dsa.graph;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+import pi.EnLocale;
 import pi.graphics.geom.Vector;
 
 /**
@@ -65,6 +67,7 @@ public class GraphNodeTest
 
     }
 
+    @ExtendWith(EnLocale.class)
     @Test
     void testGenerateJavaCode()
     {
