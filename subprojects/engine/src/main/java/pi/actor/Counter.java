@@ -126,7 +126,8 @@ public class Counter extends Text
      * Aktualisiert den Inhalt des Zählers, indem der aktuelle Zählerwert
      * (counter) gesetzt wird.
      */
-    public Counter update()
+    @Override
+    public void update()
     {
         String content;
 
@@ -157,7 +158,6 @@ public class Counter extends Text
         }
 
         content(content);
-        return this;
     }
 
     /**
@@ -378,9 +378,9 @@ public class Counter extends Text
             {
                 Counter c = new Counter().prefix("„")
                     .template("{counter}. Zähler")
-                    .suffix("“")
-                    .update();
+                    .suffix("“");
                 c.color("white");
+                c.update();
                 add(c);
 
                 addKeyStrokeListener((event -> {
