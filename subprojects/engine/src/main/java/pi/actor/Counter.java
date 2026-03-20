@@ -41,6 +41,11 @@ public class Counter extends Text
     private int counter;
 
     /**
+     * Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     */
+    private int amount = 1;
+
+    /**
      * Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
      *
      * @since 0.43.0
@@ -145,6 +150,30 @@ public class Counter extends Text
     }
 
     /**
+     * Setzt den <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     *
+     * @param amount Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt
+     *     wird.
+     */
+    @Setter
+    public Counter amount(int amount)
+    {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Gibt den <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     *
+     * @return Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     */
+    @Getter
+    public int amount()
+    {
+        return amount;
+    }
+
+    /**
      * <b>Setzt</b> die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
      *
      * @param prefix Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
@@ -240,7 +269,7 @@ public class Counter extends Text
      */
     public int increase()
     {
-        counter++;
+        counter += amount;
         updateContent();
         return counter;
     }
@@ -253,7 +282,7 @@ public class Counter extends Text
      */
     public int decrease()
     {
-        counter--;
+        counter -= amount;
         updateContent();
         return counter;
     }
@@ -275,6 +304,12 @@ public class Counter extends Text
     {
         ToStringFormatter formatter = new ToStringFormatter("Counter");
         formatter.append("counter", Integer.toString(counter));
+
+        if (amount != 1)
+        {
+            formatter.append("amount", amount);
+        }
+
         if (prefix != null)
         {
             formatter.append("prefix", prefix);
