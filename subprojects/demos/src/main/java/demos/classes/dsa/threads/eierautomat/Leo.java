@@ -47,7 +47,7 @@ class Leo extends Thread
 
         vergeblicheVersuche = new Counter()
             .suffix(". vergeblicher Eierholbesuch")
-            .updateContent();
+            .update();
         vergeblicheVersuche.height(0.8).anchor(3, 0).color("rot");
 
         scene.add(versuche, vergeblicheVersuche);

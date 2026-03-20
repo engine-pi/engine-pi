@@ -29,6 +29,32 @@ import pi.debug.ToStringFormatter;
 /**
  * Ein ganzzahliger <b>Zähler</b>.
  *
+ * <p>
+ * Diese Klasse ist eine spezialisierte {@link Text}-Figur, die einen
+ * numerischen Zähler verwaltet und darstellt.
+ * </p>
+ *
+ * <p>
+ * Der Zähler kann um einen konfigurierbaren Betrag erhöht oder verringert
+ * werden. Die Anzeige des Zählers kann durch ein Präfix, ein Template mit
+ * Platzhalter und ein Suffix angepasst werden.
+ * </p>
+ *
+ * <p>
+ * <b>Verwendungsbeispiel:</b>
+ * </p>
+ *
+ * <pre>
+ * Counter counter = new Counter().prefix("Zähler: ")
+ *     .template("{counter}")
+ *     .suffix(" Items");
+ * counter.increase();
+ * counter.decrease();
+ * counter.reset();
+ * </pre>
+ *
+ * @see Text
+ *
  * @author Josef Friedrich
  *
  * @since 0.35.0
@@ -54,7 +80,7 @@ public class Counter extends Text
 
     /**
      * Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit dem
-     * aktuellen Zähler ersetzt wird.
+     * aktuellen Zähler <b>ersetzt</b> wird.
      *
      * @since 0.43.0
      */
@@ -73,9 +99,19 @@ public class Counter extends Text
     public Counter()
     {
         super("");
-        updateContent();
+        update();
     }
 
+    /**
+     * Initialisiert den Zähler mit einem Startwert.
+     *
+     * @param counter Der Startwert des Zählers.
+     * @param prefix Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     * @param template Eine Zeichenkette, in dem die Zeichenkette
+     *     {@code {counter}} mit dem aktuellen Zähler <b>ersetzt</b> wird.
+     * @param suffix Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt
+     *     wird.
+     */
     public Counter(int counter, String prefix, String template, String suffix)
     {
         super("");
@@ -83,14 +119,14 @@ public class Counter extends Text
         this.prefix = prefix;
         this.template = template;
         this.suffix = suffix;
-        updateContent();
+        update();
     }
 
     /**
      * Aktualisiert den Inhalt des Zählers, indem der aktuelle Zählerwert
      * (counter) gesetzt wird.
      */
-    public Counter updateContent()
+    public Counter update()
     {
         String content;
 
@@ -134,7 +170,7 @@ public class Counter extends Text
     public Counter counter(int counter)
     {
         this.counter = counter;
-        updateContent();
+        update();
         return this;
     }
 
@@ -159,6 +195,7 @@ public class Counter extends Text
     public Counter amount(int amount)
     {
         this.amount = amount;
+        update();
         return this;
     }
 
@@ -184,6 +221,7 @@ public class Counter extends Text
     public Counter prefix(String prefix)
     {
         this.prefix = prefix;
+        update();
         return this;
     }
 
@@ -214,6 +252,7 @@ public class Counter extends Text
     public Counter template(String template)
     {
         this.template = template;
+        update();
         return this;
     }
 
@@ -245,6 +284,7 @@ public class Counter extends Text
     public Counter suffix(String suffix)
     {
         this.suffix = suffix;
+        update();
         return this;
     }
 
@@ -270,7 +310,7 @@ public class Counter extends Text
     public int increase()
     {
         counter += amount;
-        updateContent();
+        update();
         return counter;
     }
 
@@ -283,7 +323,7 @@ public class Counter extends Text
     public int decrease()
     {
         counter -= amount;
-        updateContent();
+        update();
         return counter;
     }
 
@@ -293,7 +333,7 @@ public class Counter extends Text
     public void reset()
     {
         counter = 0;
-        updateContent();
+        update();
     }
 
     /**
@@ -339,7 +379,7 @@ public class Counter extends Text
                 Counter c = new Counter().prefix("„")
                     .template("{counter}. Zähler")
                     .suffix("“")
-                    .updateContent();
+                    .update();
                 c.color("white");
                 add(c);
 

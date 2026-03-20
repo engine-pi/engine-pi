@@ -104,7 +104,7 @@ public class CounterTest
     public void testPrefix()
     {
         counter.prefix("Zähler: ");
-        counter.updateContent();
+        counter.update();
         assertEquals("Zähler: 0", counter.content());
     }
 
@@ -112,7 +112,7 @@ public class CounterTest
     public void testSuffix()
     {
         counter.suffix(" Punkte");
-        counter.updateContent();
+        counter.update();
         assertEquals("0 Punkte", counter.content());
     }
 
@@ -120,7 +120,7 @@ public class CounterTest
     public void testTemplate()
     {
         counter.template("Score: {counter}");
-        counter.updateContent();
+        counter.update();
         assertEquals("Score: 0", counter.content());
     }
 
@@ -129,15 +129,14 @@ public class CounterTest
     {
         counter.prefix("[").template("{counter}/10").suffix("]");
         counter.counter(5);
-        counter.updateContent();
+        counter.update();
         assertEquals("[5/10]", counter.content());
     }
 
     @Test
     public void testTemplateWithoutPlaceholder()
     {
-        counter.template("Invalid");
-        assertThrows(RuntimeException.class, counter::updateContent);
+        assertThrows(RuntimeException.class, () -> counter.template("Invalid"));
     }
 
     @Test
@@ -159,5 +158,7 @@ public class CounterTest
         assertEquals("_suf", counter.suffix());
         assertEquals("{counter}", counter.template());
         assertEquals(3, counter.amount());
+        counter.increase();
+        assertEquals("pre_3_suf", counter.content());
     }
 }
