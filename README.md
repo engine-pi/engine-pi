@@ -11,7 +11,3 @@ API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 ```java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
 ```
-
-### Anordnung der Konstruktoren
-
-Oben stehen die Konstruktoren mit wenigen Parametern unten die mit vielen.

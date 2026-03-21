@@ -55,7 +55,7 @@ particle.bodyType(PARTICLE)
     .linearDamping(range(18, 22))
     .layerPosition(-1);
 ```
-### Anordnung der Getter und Setter Quellcode
+### Anordnung der Getter und Setter im Quellcode
 
 1. Attribute
 2. Getter

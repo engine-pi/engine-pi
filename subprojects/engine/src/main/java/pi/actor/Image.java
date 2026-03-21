@@ -48,33 +48,6 @@ import pi.resources.color.ColorUtil;
 public class Image extends Actor
 {
     /**
-     * Das {@link BufferedImage}, das dieses Bild darstellt.
-     */
-    private BufferedImage image;
-
-    /**
-     * Die Breite des Bilds in Meter.
-     */
-    private double width;
-
-    /**
-     * Die Höhe des Bilds in Meter.
-     */
-    private double height;
-
-    private double pixelPerMeter;
-
-    /**
-     * Gibt an, ob das Objekt vertikal gespiegelt ist.
-     */
-    private boolean flippedVertically = false;
-
-    /**
-     * Gibt an, ob das Objekt horizontal gespiegelt ist.
-     */
-    private boolean flippedHorizontally = false;
-
-    /**
      * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b> und der
      * <b>Abmessungen</b> in <b>Meter</b>.
      *
@@ -121,31 +94,12 @@ public class Image extends Actor
         image(image, pixelPerMeter);
     }
 
-    @API
-    @Getter
-    public double width()
-    {
-        return width;
-    }
-
-    @API
-    @Getter
-    public double height()
-    {
-        return height;
-    }
+    /* image */
 
     /**
-     * @return Die Größe des Bildes in Pixeln.
-     *
-     * @hidden
+     * Das {@link BufferedImage}, das dieses Bild darstellt.
      */
-    @Internal
-    @Getter
-    public Dimension imageSizeInPx()
-    {
-        return new Dimension(image.getWidth(), image.getHeight());
-    }
+    private BufferedImage image;
 
     /**
      * @return AWT-Repräsentation des Bildes
@@ -237,6 +191,169 @@ public class Image extends Actor
         image(images.get(filepath), pixelPerMeter);
     }
 
+    /* width */
+
+    /**
+     * Die <b>Breite</b> des Bilds in Meter.
+     */
+    private double width;
+
+    /**
+     * Gibt die <b>Breite</b> des Bilds in Meter.
+     *
+     * @return Die <b>Breite</b> des Bilds in Meter.
+     */
+    @API
+    @Getter
+    public double width()
+    {
+        return width;
+    }
+
+    /* height */
+
+    /**
+     * Die <b>Höhe</b> des Bilds in Meter.
+     */
+    private double height;
+
+    /**
+     * Gibt die <b>Höhe</b> des Bilds in Meter.
+     *
+     * @return Die <b>Höhe</b> des Bilds in Meter.
+     */
+    @API
+    @Getter
+    public double height()
+    {
+        return height;
+    }
+
+    /* pixelPerMeter */
+
+    private double pixelPerMeter;
+
+    /* flippedVertically */
+
+    /**
+     * Gibt an, ob das Objekt vertikal gespiegelt ist.
+     */
+    private boolean flippedVertically = false;
+
+    /**
+     * Gibt an, ob das Bild in vertikaler Richtung gekippt, das heißt an
+     * horizontaler Achse gespiegelt ist.
+     *
+     * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
+     *     Sonst <code>false</code>.
+     */
+    @API
+    @Getter
+    public boolean isFlippedVertically()
+    {
+        return flippedVertically;
+    }
+
+    /**
+     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
+     * gespiegelt.
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.24.0
+     */
+    @Setter
+    @API
+    public boolean flipVertically()
+    {
+        flippedVertically(!isFlippedVertically());
+        return isFlippedVertically();
+    }
+
+    /**
+     * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
+     *
+     * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
+     *     werden soll.
+     *
+     * @see #flippedVertically(boolean)
+     */
+    @API
+    @Setter
+    public void flippedVertically(boolean flippedVertically)
+    {
+        this.flippedVertically = flippedVertically;
+    }
+
+    /* flippedHorizontally */
+
+    /**
+     * Gibt an, ob das Bild in horizontaler Richtung gekippt, das heißt an der
+     * vertikalen Achse gespiegelt ist.
+     *
+     * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
+     *     ist. Sonst <code>false</code>.
+     */
+    @API
+    public boolean isFlippedHorizontally()
+    {
+        return flippedHorizontally;
+    }
+
+    /**
+     * Kippt das Bild in horizontaler Richtung. Es wird an der vertikalen Achse
+     * gespiegelt.
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.24.0
+     */
+    @API
+    @Setter
+    public boolean flipHorizontally()
+    {
+        flippedHorizontally(!isFlippedHorizontally());
+        return isFlippedHorizontally();
+    }
+
+    /**
+     * Setzt, ob dieses Bild horizontaler Richtung umgedreht, das heißt an der
+     * vertikalen Achse gespiegelt werden soll. Hiermit lassen sich zum Beispiel
+     * Bewegungsrichtungen (links/rechts) einfach umsetzen.
+     *
+     * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
+     *     werden soll.
+     *
+     * @see #flippedVertically(boolean)
+     */
+    @API
+    @Setter
+    public void flippedHorizontally(boolean flippedHorizontally)
+    {
+        this.flippedHorizontally = flippedHorizontally;
+    }
+
+    /* End getter setter */
+
+    /**
+     * Gibt an, ob das Objekt horizontal gespiegelt ist.
+     */
+    private boolean flippedHorizontally = false;
+
+    /**
+     * @return Die Größe des Bildes in Pixeln.
+     *
+     * @hidden
+     */
+    @Internal
+    @Getter
+    public Dimension imageSizeInPx()
+    {
+        return new Dimension(image.getWidth(), image.getHeight());
+    }
+
     /**
      * Setzt die Größe des Bildes innerhalb der Physik neu. Ändert die
      * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
@@ -293,94 +410,6 @@ public class Image extends Actor
                     "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
                             + pixelPerMeter);
         }
-    }
-
-    /**
-     * Gibt an, ob das Bild in vertikaler Richtung gekippt, das heißt an
-     * horizontaler Achse gespiegelt ist.
-     *
-     * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
-     *     Sonst <code>false</code>.
-     */
-    @API
-    public boolean isFlippedVertically()
-    {
-        return flippedVertically;
-    }
-
-    /**
-     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
-     * gespiegelt.
-     *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
-     *
-     * @since 0.24.0
-     */
-    public boolean flipVertically()
-    {
-        flippedVertically(!isFlippedVertically());
-        return isFlippedVertically();
-    }
-
-    /**
-     * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
-     *
-     * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
-     *     werden soll.
-     *
-     * @see #flippedVertically(boolean)
-     */
-    @API
-    @Setter
-    public void flippedVertically(boolean flippedVertically)
-    {
-        this.flippedVertically = flippedVertically;
-    }
-
-    /**
-     * Gibt an, ob das Bild in horizontaler Richtung gekippt, das heißt an der
-     * vertikalen Achse gespiegelt ist.
-     *
-     * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
-     *     ist. Sonst <code>false</code>.
-     */
-    @API
-    public boolean isFlippedHorizontally()
-    {
-        return flippedHorizontally;
-    }
-
-    /**
-     * Kippt das Bild in horizontaler Richtung. Es wird an der vertikalen Achse
-     * gespiegelt.
-     *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
-     *
-     * @since 0.24.0
-     */
-    public boolean flipHorizontally()
-    {
-        flippedHorizontally(!isFlippedHorizontally());
-        return isFlippedHorizontally();
-    }
-
-    /**
-     * Setzt, ob dieses Bild horizontaler Richtung umgedreht, das heißt an der
-     * vertikalen Achse gespiegelt werden soll. Hiermit lassen sich zum Beispiel
-     * Bewegungsrichtungen (links/rechts) einfach umsetzen.
-     *
-     * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
-     *     werden soll.
-     *
-     * @see #flippedVertically(boolean)
-     */
-    @API
-    @Setter
-    public void flippedHorizontally(boolean flippedHorizontally)
-    {
-        this.flippedHorizontally = flippedHorizontally;
     }
 
     /**
