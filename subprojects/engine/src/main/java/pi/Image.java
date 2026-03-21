@@ -82,5 +82,4 @@ public class Image extends pi.actor.Image
     {
         super(image, pixelPerMeter);
     }
-
 }

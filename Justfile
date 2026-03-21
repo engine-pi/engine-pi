@@ -1,13 +1,17 @@
+# The default recipe runs 'git pull', syncs the assets, runs 'mvn package' and generate the mkdocs site
 default: pull assets package mkdocs_build
 
+# Run 'mvn deploy'
 deploy:
 	mvn deploy
 
+# Generate the Javadoc API for the engine only and open the generated documentation in a browser.
 doc: install_build_tools
 	mvn --file subprojects/engine clean
 	mvn --file subprojects/engine javadoc:javadoc
 	xdg-open subprojects/engine/target/reports/apidocs/index.html
 
+# Generate the Javadoc API for all subprojects, then open the generated documentation for the engine, demos and aggregated APIs in a browser using xdg-open.
 doc_all: clean install
 	mvn javadoc:javadoc
 	xdg-open subprojects/engine/target/reports/apidocs/index.html
@@ -31,9 +35,11 @@ package: install_build_tools
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 	mvn package
 
+# Run 'git pull'
 pull:
 	git pull
 
+# Run 'mvn clean'
 clean:
 	mvn clean
 
