@@ -20,6 +20,7 @@
  */
 package pi.actor;
 
+import static pi.Controller.config;
 import static pi.Controller.images;
 
 import java.awt.Dimension;
@@ -37,6 +38,8 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorUtil;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/ImageDemo.java
 
 /**
  * Ein <b>Bild</b> als grafische Repräsentation einer Bilddatei, die gezeichnet
@@ -59,6 +62,8 @@ public class Image extends Actor
      * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
      * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
+     *
+     * @deprecated
      */
     @API
     public Image(String filepath, double width, double height)
@@ -72,6 +77,8 @@ public class Image extends Actor
      *
      * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @deprecated
      */
     @API
     public Image(String filepath, final double pixelPerMeter)
@@ -80,10 +87,28 @@ public class Image extends Actor
         image(filepath, pixelPerMeter);
     }
 
+    /**
+     * Erzeugt ein Bild durch Angabe eines bereits im Speicher vorhandenen Bilds
+     * vom Datentyp {@link BufferedImage}.
+     *
+     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
+     *     {@link BufferedImage}.
+     */
     public Image(BufferedImage image)
     {
         super(null);
-        image(image, pixelPerMeter);
+        image(image);
+    }
+
+    /**
+     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b>.
+     *
+     * @param image Der Verzeichnispfad des Bilds, das geladen werden soll.
+     */
+    public Image(String image)
+    {
+        super(null);
+        image(images.get(image));
     }
 
     /**
@@ -92,6 +117,8 @@ public class Image extends Actor
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @deprecated
      */
     @API
     public Image(BufferedImage image, final double pixelPerMeter)
@@ -108,7 +135,9 @@ public class Image extends Actor
     private BufferedImage image;
 
     /**
-     * @return AWT-Repräsentation des Bildes
+     * Gibt das {@link BufferedImage}, das dieses Bild darstellt.
+     *
+     * @return Das {@link BufferedImage}, das dieses Bild darstellt.
      */
     @API
     @Getter
@@ -124,6 +153,8 @@ public class Image extends Actor
      *     {@link BufferedImage}.
      * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
+     *
+     * @deprecated
      */
     @Setter
     public void image(BufferedImage image, double width, double height)
@@ -142,6 +173,8 @@ public class Image extends Actor
      * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
      * @param width Die Breite des Bilds in Meter.
      * @param height Die Höhe des Bilds in Meter.
+     *
+     * @deprecated
      */
     @Setter
     public void image(String filepath, double width, double height)
@@ -174,6 +207,8 @@ public class Image extends Actor
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @deprecated
      */
     @Setter
     public void image(BufferedImage image, double pixelPerMeter)
@@ -190,6 +225,8 @@ public class Image extends Actor
      *
      * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @deprecated
      */
     @Setter
     public void image(String filepath, double pixelPerMeter)
@@ -203,6 +240,8 @@ public class Image extends Actor
      * Die <b>Breite</b> des Bilds in Meter.
      */
     private double width;
+
+    private double definedWidth;
 
     /**
      * Gibt die <b>Breite</b> des Bilds in Meter.
@@ -225,7 +264,12 @@ public class Image extends Actor
     @Setter
     public Image width(double width)
     {
-        this.width = width;
+        if (width <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Breite des Bilds muss größer als 0 sein.");
+        }
+        definedWidth = width;
         update();
         return this;
     }
@@ -236,6 +280,8 @@ public class Image extends Actor
      * Die <b>Höhe</b> des Bilds in Meter.
      */
     private double height;
+
+    private double definedHeight;
 
     /**
      * Gibt die <b>Höhe</b> des Bilds in Meter.
@@ -258,7 +304,12 @@ public class Image extends Actor
     @Setter
     public Image height(double height)
     {
-        this.height = height;
+        if (height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Höhe des Bilds müssen größer als 0 sein.");
+        }
+        definedHeight = height;
         update();
         return this;
     }
@@ -280,63 +331,37 @@ public class Image extends Actor
     @Setter
     public Image pixelPerMeter(double pixelPerMeter)
     {
-        assertViablePPM(pixelPerMeter);
-        size(image.getWidth() / pixelPerMeter,
-            image.getHeight() / pixelPerMeter);
+        if (pixelPerMeter <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
+                            + pixelPerMeter);
+        }
+        this.pixelPerMeter = pixelPerMeter;
+        update();
         return this;
     }
 
-    /* flippedVertically */
-
-    /**
-     * Gibt an, ob das Objekt vertikal gespiegelt ist.
-     */
-    private boolean flippedVertically = false;
-
-    /**
-     * Gibt an, ob das Bild in vertikaler Richtung gekippt, das heißt an
-     * horizontaler Achse gespiegelt ist.
-     *
-     * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
-     *     Sonst <code>false</code>.
-     */
     @API
     @Getter
-    public boolean flippedVertically()
+    public double pixelPerMeter()
     {
-        return flippedVertically;
-    }
+        double ppm;
+        if (pixelPerMeter > 0)
+        {
+            ppm = pixelPerMeter;
+        }
+        else
+        {
+            ppm = config.graphics.pixelPerMeter();
+        }
 
-    /**
-     * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
-     *
-     * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
-     *     werden soll.
-     *
-     * @see #flippedVertically(boolean)
-     */
-    @API
-    @Setter
-    public Image flippedVertically(boolean flippedVertically)
-    {
-        this.flippedVertically = flippedVertically;
-        return this;
-    }
-
-    /**
-     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
-     * gespiegelt.
-     *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
-     *
-     * @since 0.24.0
-     */
-    @API
-    public boolean toggleFlipVertically()
-    {
-        flippedVertically(!flippedVertically());
-        return flippedVertically();
+        if (ppm <= 0)
+        {
+            throw new RuntimeException(
+                    "Pixel per Meter darf nicht kleiner gleich 0 sein.");
+        }
+        return ppm;
     }
 
     /* flippedHorizontally */
@@ -394,6 +419,59 @@ public class Image extends Actor
         return flippedHorizontally();
     }
 
+    /* flippedVertically */
+
+    /**
+     * Gibt an, ob das Objekt vertikal gespiegelt ist.
+     */
+    private boolean flippedVertically = false;
+
+    /**
+     * Gibt an, ob das Bild in vertikaler Richtung gekippt, das heißt an
+     * horizontaler Achse gespiegelt ist.
+     *
+     * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
+     *     Sonst <code>false</code>.
+     */
+    @API
+    @Getter
+    public boolean flippedVertically()
+    {
+        return flippedVertically;
+    }
+
+    /**
+     * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
+     *
+     * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
+     *     werden soll.
+     *
+     * @see #flippedVertically(boolean)
+     */
+    @API
+    @Setter
+    public Image flippedVertically(boolean flippedVertically)
+    {
+        this.flippedVertically = flippedVertically;
+        return this;
+    }
+
+    /**
+     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
+     * gespiegelt.
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.24.0
+     */
+    @API
+    public boolean toggleFlipVertically()
+    {
+        flippedVertically(!flippedVertically());
+        return flippedVertically();
+    }
+
     /* End getter setter */
 
     /**
@@ -421,8 +499,18 @@ public class Image extends Actor
     @Setter
     public Image size(double width, double height)
     {
-        this.width = width;
-        this.height = height;
+        if (width <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Breite des Bilds muss größer als 0 sein.");
+        }
+        this.definedWidth = width;
+        if (height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Höhe des Bilds müssen größer als 0 sein.");
+        }
+        this.definedHeight = height;
         update();
         return this;
     }
@@ -430,17 +518,57 @@ public class Image extends Actor
     @Override
     public void update()
     {
-        if (width <= 0)
+        if (image == null)
         {
-            throw new IllegalArgumentException(
-                    "Die Breite des Bilds muss größer als 0 sein.");
+            throw new RuntimeException("Kein Bild gesetzt.");
         }
-        if (height <= 0)
+
+        int widthPx = image.getWidth();
+        int heightPx = image.getHeight();
+        color = ColorUtil.calculateAverage(image);
+
+        if (definedWidth == 0 && definedHeight == 0)
         {
-            throw new IllegalArgumentException(
-                    "Die Höhe des Bilds müssen größer als 0 sein.");
+            width = widthPx / pixelPerMeter();
+            height = heightPx / pixelPerMeter();
+        }
+        else if (definedWidth > 0 && definedHeight == 0)
+        {
+            width = definedWidth;
+            height = heightPx / widthPx * definedWidth;
+        }
+        else if (definedWidth == 0 && definedHeight > 0)
+        {
+            width = widthPx / heightPx * definedHeight;
+            height = definedHeight;
+        }
+        else
+        {
+            width = definedWidth;
+            height = definedHeight;
         }
         fixture(() -> FixtureBuilder.rectangle(width, height));
+    }
+
+    public double aspectRatio()
+    {
+        if (width <= 0 || height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Höhe und Breite müssen größer als 0 sein.");
+        }
+
+        return width / height;
+    }
+
+    public void reset()
+    {
+        definedWidth = 0;
+        definedHeight = 0;
+        pixelPerMeter = 0;
+        flippedHorizontally = false;
+        flippedVertically = false;
+        update();
     }
 
     private void assertViableSizes(double width, double height)
