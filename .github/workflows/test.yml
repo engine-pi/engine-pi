@@ -20,8 +20,11 @@ jobs:
           distribution: "temurin"
           cache: maven
 
+      # https://github.com/marketplace/actions/setup-just
+      - uses: extractions/setup-just@v3
+
       - name: Sync the assets with some resources folder
-        run: make assets_sync_resources
+        run: just assets_sync_resources
 
       - name: Run the tests using Maven
         run: mvn test

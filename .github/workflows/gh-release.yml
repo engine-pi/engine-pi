@@ -30,6 +30,10 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: GPG_PASSPHRASE # env variable for GPG private key passphrase
 
+
+      # https://github.com/marketplace/actions/setup-just
+      - uses: extractions/setup-just@v3
+
       - name: Sync the assets with some resources folder
         run: make assets_sync_resources
 
