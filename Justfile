@@ -1,4 +1,4 @@
-all: package mkdocs_build
+default: pull assets package mkdocs_build
 
 deploy:
 	mvn deploy
@@ -30,6 +30,9 @@ package: install_build_tools
 	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 	mvn package
+
+pull:
+	git pull
 
 clean:
 	mvn clean
