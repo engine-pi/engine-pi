@@ -80,6 +80,12 @@ public class Image extends Actor
         image(filepath, pixelPerMeter);
     }
 
+    public Image(BufferedImage image)
+    {
+        super(null);
+        image(image, pixelPerMeter);
+    }
+
     /**
      * Konstruktor für ein Bildobjekt.
      *
@@ -217,10 +223,11 @@ public class Image extends Actor
      */
     @API
     @Setter
-    public void width(double width)
+    public Image width(double width)
     {
         this.width = width;
         update();
+        return this;
     }
 
     /* height */
@@ -249,15 +256,35 @@ public class Image extends Actor
      */
     @API
     @Setter
-    public void height(double height)
+    public Image height(double height)
     {
         this.height = height;
         update();
+        return this;
     }
 
     /* pixelPerMeter */
 
     private double pixelPerMeter;
+
+    /**
+     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
+     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
+     * Eigenschaften des Bildes.
+     *
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @see #size(double, double)
+     */
+    @API
+    @Setter
+    public Image pixelPerMeter(double pixelPerMeter)
+    {
+        assertViablePPM(pixelPerMeter);
+        size(image.getWidth() / pixelPerMeter,
+            image.getHeight() / pixelPerMeter);
+        return this;
+    }
 
     /* flippedVertically */
 
@@ -275,26 +302,9 @@ public class Image extends Actor
      */
     @API
     @Getter
-    public boolean isFlippedVertically()
+    public boolean flippedVertically()
     {
         return flippedVertically;
-    }
-
-    /**
-     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
-     * gespiegelt.
-     *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
-     *
-     * @since 0.24.0
-     */
-    @Setter
-    @API
-    public boolean flipVertically()
-    {
-        flippedVertically(!isFlippedVertically());
-        return isFlippedVertically();
     }
 
     /**
@@ -307,12 +317,34 @@ public class Image extends Actor
      */
     @API
     @Setter
-    public void flippedVertically(boolean flippedVertically)
+    public Image flippedVertically(boolean flippedVertically)
     {
         this.flippedVertically = flippedVertically;
+        return this;
+    }
+
+    /**
+     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
+     * gespiegelt.
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.24.0
+     */
+    @API
+    public boolean toggleFlipVertically()
+    {
+        flippedVertically(!flippedVertically());
+        return flippedVertically();
     }
 
     /* flippedHorizontally */
+
+    /**
+     * Gibt an, ob das Objekt horizontal gespiegelt ist.
+     */
+    private boolean flippedHorizontally = false;
 
     /**
      * Gibt an, ob das Bild in horizontaler Richtung gekippt, das heißt an der
@@ -322,26 +354,10 @@ public class Image extends Actor
      *     ist. Sonst <code>false</code>.
      */
     @API
-    public boolean isFlippedHorizontally()
+    @Getter
+    public boolean flippedHorizontally()
     {
         return flippedHorizontally;
-    }
-
-    /**
-     * Kippt das Bild in horizontaler Richtung. Es wird an der vertikalen Achse
-     * gespiegelt.
-     *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
-     *
-     * @since 0.24.0
-     */
-    @API
-    @Setter
-    public boolean flipHorizontally()
-    {
-        flippedHorizontally(!isFlippedHorizontally());
-        return isFlippedHorizontally();
     }
 
     /**
@@ -356,17 +372,29 @@ public class Image extends Actor
      */
     @API
     @Setter
-    public void flippedHorizontally(boolean flippedHorizontally)
+    public Image flippedHorizontally(boolean flippedHorizontally)
     {
         this.flippedHorizontally = flippedHorizontally;
+        return this;
+    }
+
+    /**
+     * Kippt das Bild in horizontaler Richtung. Es wird an der vertikalen Achse
+     * gespiegelt.
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.24.0
+     */
+    @API
+    public boolean toggleFlipHorizontally()
+    {
+        flippedHorizontally(!flippedHorizontally());
+        return flippedHorizontally();
     }
 
     /* End getter setter */
-
-    /**
-     * Gibt an, ob das Objekt horizontal gespiegelt ist.
-     */
-    private boolean flippedHorizontally = false;
 
     /**
      * @return Die Größe des Bildes in Pixeln.
@@ -375,7 +403,7 @@ public class Image extends Actor
      */
     @Internal
     @Getter
-    public Dimension imageSizeInPx()
+    public Dimension sizeInPx()
     {
         return new Dimension(image.getWidth(), image.getHeight());
     }
@@ -388,14 +416,15 @@ public class Image extends Actor
      * @param width Die neue Breite des Bilds in Meter.
      * @param height Die neue Höhe des Bild in Meter.
      *
-     * @see #imageSize(double)
+     * @see #pixelPerMeter(double)
      */
     @Setter
-    public void imageSize(double width, double height)
+    public Image size(double width, double height)
     {
         this.width = width;
         this.height = height;
         update();
+        return this;
     }
 
     @Override
@@ -412,23 +441,6 @@ public class Image extends Actor
                     "Die Höhe des Bilds müssen größer als 0 sein.");
         }
         fixture(() -> FixtureBuilder.rectangle(width, height));
-    }
-
-    /**
-     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
-     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
-     * Eigenschaften des Bildes.
-     *
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @see #imageSize(double, double)
-     */
-    @Setter
-    public void imageSize(double pixelPerMeter)
-    {
-        assertViablePPM(pixelPerMeter);
-        imageSize(image.getWidth() / pixelPerMeter,
-            image.getHeight() / pixelPerMeter);
     }
 
     private void assertViableSizes(double width, double height)
@@ -490,11 +502,11 @@ public class Image extends Actor
         {
             formatter.append("pixelPerMeter", pixelPerMeter);
         }
-        if (isFlippedHorizontally())
+        if (flippedHorizontally())
         {
             formatter.append("flippedHorizontally", true);
         }
-        if (isFlippedVertically())
+        if (flippedVertically())
         {
             formatter.append("flippedVertically", true);
         }
@@ -518,9 +530,9 @@ public class Image extends Actor
                     switch (event.getKeyCode())
                     {
                     case KeyEvent.VK_V ->
-                        System.out.println(image.flipVertically());
+                        System.out.println(image.toggleFlipVertically());
                     case KeyEvent.VK_H ->
-                        System.out.println(image.flipHorizontally());
+                        System.out.println(image.toggleFlipHorizontally());
                     }
                     System.out.println(image);
                 }));

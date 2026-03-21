@@ -62,8 +62,8 @@ public class ImageDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_1 -> box1.image(image1);
         case KeyEvent.VK_2 -> box1.image(image2);
         case KeyEvent.VK_3 -> box1.image(image3);
-        case KeyEvent.VK_V -> box1.flipVertically();
-        case KeyEvent.VK_H -> box1.flipHorizontally();
+        case KeyEvent.VK_V -> box1.toggleFlipVertically();
+        case KeyEvent.VK_H -> box1.toggleFlipHorizontally();
         }
         System.out.println(box1);
     }

@@ -84,7 +84,7 @@ public class ImageTest
     public void testImageSizeInPixels()
     {
         image = new Image(bufferedImage, 50.0);
-        Dimension dim = image.imageSizeInPx();
+        Dimension dim = image.sizeInPx();
         assertEquals(100, dim.width);
         assertEquals(50, dim.height);
     }
@@ -93,7 +93,7 @@ public class ImageTest
     public void testImageSizeSetterWithDimensions()
     {
         image = new Image(bufferedImage, 50.0);
-        image.imageSize(3.0, 2.0);
+        image.size(3.0, 2.0);
         assertEquals(3.0, image.width(), 0.01);
         assertEquals(2.0, image.height(), 0.01);
     }
@@ -102,7 +102,7 @@ public class ImageTest
     public void testImageSizeSetterWithPixelPerMeter()
     {
         image = new Image(bufferedImage, 50.0);
-        image.imageSize(25.0);
+        image.pixelPerMeter(25.0);
         assertEquals(4.0, image.width(), 0.01);
         assertEquals(2.0, image.height(), 0.01);
     }
@@ -111,18 +111,18 @@ public class ImageTest
     public void testFlipVertically()
     {
         image = new Image(bufferedImage, 50.0);
-        assertFalse(image.isFlippedVertically());
-        image.flipVertically();
-        assertTrue(image.isFlippedVertically());
+        assertFalse(image.flippedVertically());
+        image.toggleFlipVertically();
+        assertTrue(image.flippedVertically());
     }
 
     @Test
     public void testFlippedVerticallyToggle()
     {
         image = new Image(bufferedImage, 50.0);
-        image.flipVertically();
-        image.flipVertically();
-        assertFalse(image.isFlippedVertically());
+        image.toggleFlipVertically();
+        image.toggleFlipVertically();
+        assertFalse(image.flippedVertically());
     }
 
     @Test
@@ -130,7 +130,7 @@ public class ImageTest
     {
         image = new Image(bufferedImage, 50.0);
         image.flippedVertically(true);
-        assertTrue(image.isFlippedVertically());
+        assertTrue(image.flippedVertically());
     }
 
     @Test
@@ -139,25 +139,25 @@ public class ImageTest
         image = new Image(bufferedImage, 50.0);
         image.flippedVertically(true);
         image.flippedVertically(false);
-        assertFalse(image.isFlippedVertically());
+        assertFalse(image.flippedVertically());
     }
 
     @Test
     public void testFlipHorizontally()
     {
         image = new Image(bufferedImage, 50.0);
-        assertFalse(image.isFlippedHorizontally());
-        image.flipHorizontally();
-        assertTrue(image.isFlippedHorizontally());
+        assertFalse(image.flippedHorizontally());
+        image.toggleFlipHorizontally();
+        assertTrue(image.flippedHorizontally());
     }
 
     @Test
     public void testFlippedHorizontallyToggle()
     {
         image = new Image(bufferedImage, 50.0);
-        image.flipHorizontally();
-        image.flipHorizontally();
-        assertFalse(image.isFlippedHorizontally());
+        image.toggleFlipHorizontally();
+        image.toggleFlipHorizontally();
+        assertFalse(image.flippedHorizontally());
     }
 
     @Test
@@ -165,7 +165,7 @@ public class ImageTest
     {
         image = new Image(bufferedImage, 50.0);
         image.flippedHorizontally(true);
-        assertTrue(image.isFlippedHorizontally());
+        assertTrue(image.flippedHorizontally());
     }
 
     @Test
@@ -174,7 +174,7 @@ public class ImageTest
         image = new Image(bufferedImage, 50.0);
         image.flippedHorizontally(true);
         image.flippedHorizontally(false);
-        assertFalse(image.isFlippedHorizontally());
+        assertFalse(image.flippedHorizontally());
     }
 
     // @Test(expected = IllegalArgumentException.class)
