@@ -35,7 +35,7 @@ jobs:
       - uses: extractions/setup-just@v3
 
       - name: Sync the assets with some resources folder
-        run: make assets_sync_resources
+        run: just assets_sync_resources
 
       - name: Package build-tools is requried by javadoc
         run: mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
@@ -51,5 +51,5 @@ jobs:
         with:
           # The action uses the javascript glob library
           files: |
-            modules/engine/target/*.jar
-            modules/engine/target/*.zip
+            subprojects/engine/target/*.jar
+            subprojects/engine/target/*.zip
