@@ -22,6 +22,8 @@ import java.awt.image.BufferedImage;
 
 import pi.annotations.API;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/ImageDemo.java
+
 /**
  * Ein <b>Bild</b> als grafische Repräsentation einer Bilddatei, die gezeichnet
  * werden kann.

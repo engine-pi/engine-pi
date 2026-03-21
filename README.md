@@ -5,9 +5,3 @@ Dokumentation: https://engine-pi.github.io/engine-pi
 API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 
 [![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/MainAnimation.webp)](https://engine-pi.github.io/engine-pi)
-
-### File Link zu den Demos:
-
-```java
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
-```

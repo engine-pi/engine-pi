@@ -144,6 +144,7 @@ nav:
           - manual/dev/setter-getter.md
           - manual/dev/versions.md
           - manual/dev/tests.md
+          - manual/dev/go-to-file.md
 
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 
