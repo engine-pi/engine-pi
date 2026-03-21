@@ -112,8 +112,6 @@ public class Image extends Actor
      * Setzt oder ersetzt das Bild.
      *
      * @param image Der Verzeichnispfad des Bildes, das geladen werden soll.
-     *
-     * @deprecated
      */
     @Setter
     public void image(String image)
@@ -211,8 +209,6 @@ public class Image extends Actor
      * Eigenschaften des Bildes.
      *
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @see #size(double, double)
      */
     @API
     @Setter
@@ -362,18 +358,6 @@ public class Image extends Actor
     /* End getter setter */
 
     /**
-     * @return Die Größe des Bildes in Pixeln.
-     *
-     * @hidden
-     */
-    @Internal
-    @Getter
-    public Dimension sizeInPx()
-    {
-        return new Dimension(image.getWidth(), image.getHeight());
-    }
-
-    /**
      * Setzt die Größe des Bildes innerhalb der Physik neu. Ändert die
      * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
      * verzerrt.
@@ -405,6 +389,49 @@ public class Image extends Actor
         this.definedHeight = height;
         update();
         return this;
+    }
+
+    /**
+     * Berechnet das <b>Seitenverhältnis</b> des Bildes.
+     *
+     * @return Das Seitenverhältnis als Quotient von Breite und Höhe
+     *
+     * @throws IllegalArgumentException wenn die Breite oder Höhe kleiner oder
+     *     gleich 0 ist
+     */
+    public double aspectRatio()
+    {
+        if (width <= 0 || height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Höhe und Breite müssen größer als 0 sein.");
+        }
+        return width / height;
+    }
+
+    /**
+     * Setzt alle Bildeinstellungen auf ihre <b>Standardwerte zurück</b>.
+     */
+    public void reset()
+    {
+        definedWidth = 0;
+        definedHeight = 0;
+        pixelPerMeter = 0;
+        flippedHorizontally = false;
+        flippedVertically = false;
+        update();
+    }
+
+    /**
+     * @return Die Größe des Bildes in Pixeln.
+     *
+     * @hidden
+     */
+    @Internal
+    @Getter
+    public Dimension sizeInPx()
+    {
+        return new Dimension(image.getWidth(), image.getHeight());
     }
 
     @Override
@@ -440,27 +467,6 @@ public class Image extends Actor
             height = definedHeight;
         }
         fixture(() -> FixtureBuilder.rectangle(width, height));
-    }
-
-    public double aspectRatio()
-    {
-        if (width <= 0 || height <= 0)
-        {
-            throw new IllegalArgumentException(
-                    "Höhe und Breite müssen größer als 0 sein.");
-        }
-
-        return width / height;
-    }
-
-    public void reset()
-    {
-        definedWidth = 0;
-        definedHeight = 0;
-        pixelPerMeter = 0;
-        flippedHorizontally = false;
-        flippedVertically = false;
-        update();
     }
 
     /**
