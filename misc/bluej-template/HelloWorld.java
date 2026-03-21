@@ -1,4 +1,4 @@
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Text;
 
@@ -6,15 +6,13 @@ public class HelloWorld extends Scene
 {
     public HelloWorld()
     {
-        Text helloWorld = new Text("Hello, World!", 2);
-        helloWorld.setColor("white");
-        helloWorld.setCenter(0, 1);
-        add(helloWorld);
-        Game.debug();
+        add(new Text("Hello, World!").height(2).color("white").center(0, 1));
     }
 
     public static void main(String[] args)
     {
-        Game.start(new HelloWorld(), 400, 300);
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new HelloWorld(), 400, 300);
     }
 }
