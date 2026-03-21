@@ -210,6 +210,19 @@ public class Image extends Actor
         return width;
     }
 
+    /**
+     * Setzt die <b>Breite</b> des Bilds in Meter.
+     *
+     * @param width Die <b>Breite</b> des Bilds in Meter.
+     */
+    @API
+    @Setter
+    public void width(double width)
+    {
+        this.width = width;
+        update();
+    }
+
     /* height */
 
     /**
@@ -227,6 +240,19 @@ public class Image extends Actor
     public double height()
     {
         return height;
+    }
+
+    /**
+     * Setzt die <b>Höhe</b> des Bilds in Meter.
+     *
+     * @param height Die <b>Höhe</b> des Bilds in Meter.
+     */
+    @API
+    @Setter
+    public void height(double height)
+    {
+        this.height = height;
+        update();
     }
 
     /* pixelPerMeter */
@@ -367,9 +393,24 @@ public class Image extends Actor
     @Setter
     public void imageSize(double width, double height)
     {
-        assertViableSizes(width, height);
         this.width = width;
         this.height = height;
+        update();
+    }
+
+    @Override
+    public void update()
+    {
+        if (width <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Breite des Bilds muss größer als 0 sein.");
+        }
+        if (height <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Höhe des Bilds müssen größer als 0 sein.");
+        }
         fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
