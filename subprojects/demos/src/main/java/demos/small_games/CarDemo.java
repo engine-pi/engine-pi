@@ -133,7 +133,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
     private Actor createBackgroundTile(int x)
     {
-        Image image = new Image("car/background-color-grass.png", 10, 10);
+        Image image = new Image("car/background-color-grass.png");
+        image.size(10, 10);
         image.anchor(x, -7);
         image.makeStatic();
         return image;
@@ -359,7 +360,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
 
         public Wheel(double cx, double cy, Axle axle)
         {
-            super("car/wheel-back.png", 1.4, 1.4);
+            super("car/wheel-back.png");
+            size(1.4, 1.4);
             fixture(() -> FixtureBuilder.circle(.7, .7, .7));
             center(cx, cy);
             density(100);
@@ -424,7 +426,8 @@ public class CarDemo extends Scene implements FrameUpdateListener
     {
         public CarBody(double cx, double cy)
         {
-            super("car/truck-240px.png", 4, 1.2);
+            super("car/truck-240px.png");
+            size(4, 1.2);
             center(cx, cy);
             makeDynamic();
             density(100);

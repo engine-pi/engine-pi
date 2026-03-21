@@ -27,7 +27,7 @@ import java.awt.Color;
 import pi.Controller;
 import pi.Scene;
 import pi.Circle;
-import pi.Image;
+import pi.actor.Image;
 import pi.actor.Square;
 
 /**
@@ -95,8 +95,8 @@ public class Chessboard
                 squares[row][column] = square;
                 scene.add(square);
 
-                Image queen = new Image("eight-queens-puzzle/queen-white.png",
-                        120);
+                Image queen = new Image("eight-queens-puzzle/queen-white.png")
+                    .pixelPerMeter(120);
                 double shift = 0.2;
                 queen.anchor(column + shift, row + shift);
                 queen.hide();

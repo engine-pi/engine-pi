@@ -36,8 +36,8 @@ public class SetPixelMultiplicationDemo extends Scene
     {
         add(new Text("Text").anchor(0, -1));
         Actor image = new Image(
-                "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png",
-                1, 1);
+                "Pixel-Adventure-1/Main Characters/Pink Man/Jump (32x32).png")
+                    .size(1, 1);
         focus(image);
         add(image);
         backgroundColor("white");

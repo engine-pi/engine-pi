@@ -4,7 +4,7 @@ import blockly_robot.robot.logic.context.Context;
 import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.item.StackedItems;
 import pi.Scene;
-import pi.Image;
+import pi.actor.Image;
 
 public class ItemMapPainter
 {
@@ -62,7 +62,7 @@ public class ItemMapPainter
         String filePath = item.getFilePath();
         if (filePath != null)
         {
-            Image image = new Image(filePath, 1, 1);
+            Image image = new Image(filePath).size(1, 1);
             item.setController(
                 new GraphicalItemController(item, image, translate, scene));
             return image;

@@ -40,46 +40,27 @@ import pi.annotations.API;
 public class Image extends pi.actor.Image
 {
     /**
-     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b> und der
-     * <b>Abmessungen</b> in <b>Meter</b>.
+     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b>.
      *
-     * <p>
-     * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
-     * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
-     * </p>
-     *
-     * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
-     * @param width Die Breite des Bilds in Meter.
-     * @param height Die Höhe des Bilds in Meter.
+     * @param image Der <b>Verzeichnispfad</b> des Bilds, das geladen werden
+     *     soll.
      */
     @API
-    public Image(String filepath, double width, double height)
+    public Image(String image)
     {
-        super(filepath, width, height);
+        super(image);
     }
 
     /**
-     * Konstruktor für ein Bildobjekt.
-     *
-     * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     */
-    @API
-    public Image(String filepath, final double pixelPerMeter)
-    {
-        super(filepath, pixelPerMeter);
-    }
-
-    /**
-     * Konstruktor für ein Bildobjekt.
+     * Erzeugt ein Bild durch Angabe eines bereits im Speicher vorhandenen Bilds
+     * vom Datentyp {@link BufferedImage}.
      *
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      */
     @API
-    public Image(BufferedImage image, final double pixelPerMeter)
+    public Image(BufferedImage image)
     {
-        super(image, pixelPerMeter);
+        super(image);
     }
 }

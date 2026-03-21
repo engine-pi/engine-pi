@@ -21,7 +21,7 @@ package demos.docs.main_classes;
 import pi.Camera;
 import pi.Controller;
 import pi.Scene;
-import pi.Image;
+import pi.actor.Image;
 import pi.actor.Line;
 import pi.event.FrameUpdateListener;
 import pi.graphics.geom.Bounds;
@@ -45,7 +45,8 @@ public class CameraDemo extends Scene implements FrameUpdateListener
             "Bewege den Mauszeiger im Fenster. Es ist ein Pfeil von der Fenstermitte zum Mauszeiger zu sehen. In diese Richtung bewegt sich die Kamera.")
             .disable();
         camera = camera();
-        Image background = new Image("main-classes/camera/Fez.png", 32);
+        Image background = new Image("main-classes/camera/Fez.png")
+            .pixelPerMeter(32);
         background.center(0, 0);
         add(background);
 

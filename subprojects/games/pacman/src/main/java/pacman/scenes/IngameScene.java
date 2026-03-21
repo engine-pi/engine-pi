@@ -31,7 +31,7 @@ import pacman.Main;
 import pacman.actors.Blinky;
 import pacman.actors.Ghost;
 import pi.Controller;
-import pi.Image;
+import pi.actor.Image;
 import pi.event.KeyStrokeListener;
 
 public class IngameScene extends BaseScene implements KeyStrokeListener
@@ -987,7 +987,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
             DOUBLE_B, // 26
             DOUBLE_CORNER_BR // 27
         );
-        screenshot = new Image("images/screenshots/IngameReady.png", 8);
+        screenshot = new Image("images/screenshots/IngameReady.png")
+            .pixelPerMeter(8);
         screenshot.visible(false);
         add(screenshot);
     }

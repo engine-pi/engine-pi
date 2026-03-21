@@ -23,7 +23,7 @@ package demos.small_games.dude;
 import pi.Controller;
 import pi.Layer;
 import pi.Scene;
-import pi.Image;
+import pi.actor.Image;
 import pi.actor.TileRegistration;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
@@ -110,7 +110,8 @@ public class DudeDemo extends Scene
         Layer middleBackground = new Layer();
         middleBackground.parallaxPosition(0.1, 0.1);
         middleBackground.layerPosition(-200);
-        Image backgroundImage = new Image("dude/background/snow.png", 25f);
+        Image backgroundImage = new Image("dude/background/snow.png")
+            .pixelPerMeter(25);
         backgroundImage.anchor(
             -visibleArea(Controller.windowSize()).width() / 2,
             -visibleArea(Controller.windowSize()).height() / 2);
@@ -118,7 +119,7 @@ public class DudeDemo extends Scene
         Layer furtherBackground = new Layer();
         furtherBackground.layerPosition(-300);
         furtherBackground.parallaxPosition(0.05, 0.05);
-        Image moon = new Image("dude/moon.png", 1, 1);
+        Image moon = new Image("dude/moon.png").size(1, 1);
         furtherBackground.add(moon);
         moon.anchor(300, 300);
         addLayer(middleBackground);

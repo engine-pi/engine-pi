@@ -43,7 +43,8 @@ class Baeuerin extends Thread
         versuche = new Counter().suffix(". Befüllbesuch");
         versuche.anchor(-9, 0);
         scene.add(versuche);
-        scene.add(new Image("eierautomat/baeuerin.png", 6, 6).center(-7, 5));
+        scene.add(
+            new Image("eierautomat/baeuerin.png").size(6, 6).center(-7, 5));
     }
 
     /**

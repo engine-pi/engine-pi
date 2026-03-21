@@ -35,7 +35,8 @@ public class ImageRobot extends Image implements Robot
     public ImageRobot(String filepath, VirtualRobot virtual,
             AssembledLevel level)
     {
-        super(filepath, 1, 1);
+        super(filepath);
+        size(1, 1);
         this.virtual = virtual;
         this.level = level;
     }

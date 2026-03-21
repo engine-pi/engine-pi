@@ -4,7 +4,7 @@ import blockly_robot.robot.gui.level.LevelAssembler;
 import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.item.ItemController;
 import pi.Scene;
-import pi.Image;
+import pi.actor.Image;
 
 public class GraphicalItemController implements ItemController
 {
@@ -39,7 +39,7 @@ public class GraphicalItemController implements ItemController
         var vector = translate.toVector(row, col);
         if (image == null)
         {
-            image = new Image(item.getFilePath(), 1, 1);
+            image = new Image(item.getFilePath()).size(1, 1);
         }
         image.anchor(Math.round(vector.x()) - LevelAssembler.SHIFT,
             Math.round(vector.y()) - LevelAssembler.SHIFT);

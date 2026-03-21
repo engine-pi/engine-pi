@@ -18,7 +18,7 @@
  */
 package pacman.scenes;
 
-import pi.Image;
+import pi.actor.Image;
 
 public enum Brick
 {
@@ -70,7 +70,8 @@ public enum Brick
 
     public Image getImage()
     {
-        Image image = new Image("images/maze/" + name() + ".png", 8);
+        Image image = new Image("images/maze/" + name() + ".png")
+            .pixelPerMeter(8);
         image.fixtures(fixture);
         return image;
     }

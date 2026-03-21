@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Image;
+import pi.actor.Image;
 import pi.event.KeyStrokeListener;
 
 public class ScreenshotDemo extends Scene implements KeyStrokeListener
@@ -31,8 +31,8 @@ public class ScreenshotDemo extends Scene implements KeyStrokeListener
     public ScreenshotDemo()
     {
         Image image = new Image(
-                "Pixel-Adventure-1/Main Characters/Virtual Guy/Fall (32x32).png",
-                32);
+                "Pixel-Adventure-1/Main Characters/Virtual Guy/Fall (32x32).png")
+                    .pixelPerMeter(32);
         add(image);
         image.center(0, 0);
         camera().meter(320);

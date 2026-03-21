@@ -36,7 +36,8 @@ public class Box extends Image
 
     public Box(int type)
     {
-        super(getBoxPath(type), SIZE, SIZE);
+        super(getBoxPath(type));
+        size(SIZE, SIZE);
         makeDynamic();
         // setMass(MASS_IN_KG);
         restitution(RESTITUTION);

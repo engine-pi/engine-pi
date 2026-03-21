@@ -18,7 +18,7 @@ package tetris.tetrominos;
 
 import pi.Scene;
 import pi.graphics.geom.Vector;
-import pi.Image;
+import pi.actor.Image;
 import tetris.ImageLoader;
 
 /**

@@ -51,7 +51,7 @@ class Leo extends Thread
         vergeblicheVersuche.update();
         vergeblicheVersuche.height(0.8).anchor(3, -2).color("rot");
         scene.add(versuche, vergeblicheVersuche);
-        scene.add(new Image("eierautomat/leo.png", 4, 4).center(6, 5));
+        scene.add(new Image("eierautomat/leo.png").size(4, 4).center(6, 5));
 
     }
 

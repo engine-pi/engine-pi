@@ -51,40 +51,15 @@ import pi.resources.color.ColorUtil;
 public class Image extends Actor
 {
     /**
-     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b> und der
-     * <b>Abmessungen</b> in <b>Meter</b>.
+     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b>.
      *
-     * <p>
-     * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
-     * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
-     * </p>
-     *
-     * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
-     * @param width Die Breite des Bilds in Meter.
-     * @param height Die Höhe des Bilds in Meter.
-     *
-     * @deprecated
+     * @param image Der <b>Verzeichnispfad</b> des Bilds, das geladen werden
+     *     soll.
      */
     @API
-    public Image(String filepath, double width, double height)
+    public Image(String image)
     {
-        super(null);
-        image(filepath, width, height);
-    }
-
-    /**
-     * Konstruktor für ein Bildobjekt.
-     *
-     * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @deprecated
-     */
-    @API
-    public Image(String filepath, final double pixelPerMeter)
-    {
-        super(null);
-        image(filepath, pixelPerMeter);
+        this(images.get(image));
     }
 
     /**
@@ -94,37 +69,11 @@ public class Image extends Actor
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
      */
+    @API
     public Image(BufferedImage image)
     {
         super(null);
-        image(image);
-    }
-
-    /**
-     * Erzeugt ein Bild durch Angabe des <b>Verzeichnispfads</b>.
-     *
-     * @param image Der Verzeichnispfad des Bilds, das geladen werden soll.
-     */
-    public Image(String image)
-    {
-        super(null);
-        image(images.get(image));
-    }
-
-    /**
-     * Konstruktor für ein Bildobjekt.
-     *
-     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
-     *     {@link BufferedImage}.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @deprecated
-     */
-    @API
-    public Image(BufferedImage image, final double pixelPerMeter)
-    {
-        super(null);
-        image(image, pixelPerMeter);
+        this.image = image;
     }
 
     /* image */
@@ -151,87 +100,25 @@ public class Image extends Actor
      *
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
-     * @param width Die Breite des Bilds in Meter.
-     * @param height Die Höhe des Bilds in Meter.
-     *
-     * @deprecated
-     */
-    @Setter
-    public void image(BufferedImage image, double width, double height)
-    {
-        assertViableSizes(width, height);
-        this.image = image;
-        this.width = width;
-        this.height = height;
-        color = ColorUtil.calculateAverage(image);
-        fixture(() -> FixtureBuilder.rectangle(width, height));
-    }
-
-    /**
-     * Setzt oder ersetzt das Bild.
-     *
-     * @param filepath Der Verzeichnispfad des Bilds, das geladen werden soll.
-     * @param width Die Breite des Bilds in Meter.
-     * @param height Die Höhe des Bilds in Meter.
-     *
-     * @deprecated
-     */
-    @Setter
-    public void image(String filepath, double width, double height)
-    {
-        image(images.get(filepath), width, height);
-    }
-
-    /**
-     * Setzt oder ersetzt das Bild.
-     *
-     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
-     *     {@link BufferedImage}.
      */
     @Setter
     public void image(BufferedImage image)
     {
-        if (pixelPerMeter > 0)
-        {
-            image(image, pixelPerMeter);
-        }
-        else
-        {
-            this.image = image;
-        }
+        this.image = image;
+        update();
     }
 
     /**
      * Setzt oder ersetzt das Bild.
      *
-     * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
-     *     {@link BufferedImage}.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     * @param image Der Verzeichnispfad des Bildes, das geladen werden soll.
      *
      * @deprecated
      */
     @Setter
-    public void image(BufferedImage image, double pixelPerMeter)
+    public void image(String image)
     {
-        assertViablePPM(pixelPerMeter);
-        this.pixelPerMeter = pixelPerMeter;
-        image(image,
-            image.getWidth() / pixelPerMeter,
-            image.getHeight() / pixelPerMeter);
-    }
-
-    /**
-     * Setzt oder ersetzt das Bild.
-     *
-     * @param filepath Der Verzeichnispfad des Bildes, das geladen werden soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @deprecated
-     */
-    @Setter
-    public void image(String filepath, double pixelPerMeter)
-    {
-        image(images.get(filepath), pixelPerMeter);
+        image(images.get(image));
     }
 
     /* width */
@@ -491,6 +378,11 @@ public class Image extends Actor
      * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
      * verzerrt.
      *
+     * <p>
+     * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
+     * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
+     * </p>
+     *
      * @param width Die neue Breite des Bilds in Meter.
      * @param height Die neue Höhe des Bild in Meter.
      *
@@ -571,28 +463,6 @@ public class Image extends Actor
         update();
     }
 
-    private void assertViableSizes(double width, double height)
-    {
-        if (width <= 0 || height <= 0)
-        {
-            throw new IllegalArgumentException(
-                    "Bildhöhe und Breite müssen größer als 0 sein.");
-        }
-    }
-
-    /**
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     */
-    private void assertViablePPM(double pixelPerMeter)
-    {
-        if (pixelPerMeter <= 0)
-        {
-            throw new IllegalArgumentException(
-                    "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
-                            + pixelPerMeter);
-        }
-    }
-
     /**
      * @hidden
      */
@@ -651,7 +521,7 @@ public class Image extends Actor
         {
             {
                 // Erzeugen mit Hilfe der createImage()-Methode.
-                Image image = new Image("logo/logo.png", 40);
+                Image image = new Image("logo/logo.png").pixelPerMeter(40);
                 image.center(0, 0);
                 add(image);
                 addKeyStrokeListener((event -> {

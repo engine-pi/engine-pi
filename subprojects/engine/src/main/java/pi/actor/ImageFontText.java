@@ -92,8 +92,8 @@ public class ImageFontText extends Image
             int pixelPerMeter)
     {
         super(imageFont
-            .render(content, lineWidth, alignment, color, pixelMultiplication),
-                pixelPerMeter);
+            .render(content, lineWidth, alignment, color, pixelMultiplication));
+        pixelPerMeter(pixelPerMeter);
         this.imageFont = imageFont;
         this.content = content;
         this.lineWidth = lineWidth;

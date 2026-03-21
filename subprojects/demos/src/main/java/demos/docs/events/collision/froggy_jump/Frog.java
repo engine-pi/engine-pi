@@ -37,7 +37,8 @@ class Frog extends Image implements FrameUpdateListener
 
     public Frog()
     {
-        super("froggy/Frog.png", 25);
+        super("froggy/Frog.png");
+        pixelPerMeter(25);
         makeDynamic();
         rotationLocked(true);
     }

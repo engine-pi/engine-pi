@@ -76,7 +76,8 @@ public class BasketballThrowDemo extends Scene
     {
         public Ball(double x, double y)
         {
-            super("shots/ball.png", 0.3, 0.3);
+            super("shots/ball.png");
+            size(0.3, 0.3);
             anchor(x + .15, y + .15);
             fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeDynamic();
@@ -89,7 +90,8 @@ public class BasketballThrowDemo extends Scene
     {
         public BallShadow(double x, double y)
         {
-            super("shots/shadow.png", 0.3, 0.3);
+            super("shots/shadow.png");
+            size(0.3, 0.3);
             anchor(x + .15, y + .15);
             fixture(() -> FixtureBuilder.circle(0.15, 0.15, 0.15));
             makeSensor();

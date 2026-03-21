@@ -24,7 +24,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import pi.Controller;
-import pi.Image;
+import pi.actor.Image;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 
@@ -54,10 +54,10 @@ public class ImageDemo extends Scene implements KeyStrokeListener
                     + "2: pixelMultiplication = 2\n"
                     + "3: pixelMultiplication = 3\n" + "v: vertikal spiegeln\n"
                     + "h: horizontal spiegeln\n");
-        box1 = new Image("dude/box/obj_box004.png", 30);
+        box1 = new Image("dude/box/obj_box004.png").pixelPerMeter(30);
         box1.x(-7).y(-3);
         add(box1);
-        box2 = new Image("dude/box/obj_box005.png", 2, 1);
+        box2 = new Image("dude/box/obj_box005.png").size(2, 1);
         box2.anchor(5, 0);
         add(box2);
     }

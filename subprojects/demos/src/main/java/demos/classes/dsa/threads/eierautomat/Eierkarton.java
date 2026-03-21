@@ -17,6 +17,7 @@ class Eierkarton extends Image
      */
     Eierkarton()
     {
-        super("eierautomat/eierkarton.png", 3, 1.4);
+        super("eierautomat/eierkarton.png");
+        size(3, 1.4);
     }
 }
