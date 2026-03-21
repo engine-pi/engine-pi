@@ -1,6 +1,3 @@
-PACKAGE_PATH = engine-pi/src/main/java/org
-JBOX2D_PATH = $(PACKAGE_PATH)/jbox2d
-
 all: package mkdocs_build
 
 deploy:
@@ -23,7 +20,7 @@ format:
 	mvn process-sources
 
 install_build_tools:
-# Package build-tools is requried by javadoc
+	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 
 install: install_build_tools
@@ -50,7 +47,6 @@ assets_sync_resources:
 	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 
 assets: assets_init assets_sync_resources
-.PHONY: assets
 
 mkdocs_build:
 	mkdocs build --strict
