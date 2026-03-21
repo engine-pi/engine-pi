@@ -28,6 +28,8 @@ import pi.Image;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Image.java
+
 /**
  * Demonstriert die Figur <b>Bild</b> ({@link Image}).
  *
@@ -39,17 +41,23 @@ public class ImageDemo extends Scene implements KeyStrokeListener
 
     Image box2;
 
-    BufferedImage image1 = images.get("dude/box/obj_box003.png");
+    BufferedImage image1 = images.get("dude/box/obj_box001.png");
 
-    BufferedImage image2 = images.get("dude/box/obj_box004.png", 2);
+    BufferedImage image2 = images.get("dude/box/obj_box002.png", 2);
 
-    BufferedImage image3 = images.get("dude/box/obj_box005.png", 3);
+    BufferedImage image3 = images.get("dude/box/obj_box003.png", 3);
 
     public ImageDemo()
     {
-        box1 = new Image("dude/box/obj_box001.png", 30);
+        info().title("Demonstriert die Figur Image")
+            .help("Tastenkürzel: \n" + "1: pixelMultiplication = 1\n"
+                    + "2: pixelMultiplication = 2\n"
+                    + "3: pixelMultiplication = 3\n" + "v: vertikal spiegeln\n"
+                    + "h: horizontal spiegeln\n");
+        box1 = new Image("dude/box/obj_box004.png", 30);
+        box1.x(-7).y(-3);
         add(box1);
-        box2 = new Image("dude/box/obj_box002.png", 2, 1);
+        box2 = new Image("dude/box/obj_box005.png", 2, 1);
         box2.anchor(5, 0);
         add(box2);
     }
@@ -70,6 +78,7 @@ public class ImageDemo extends Scene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new ImageDemo());
     }
 }
