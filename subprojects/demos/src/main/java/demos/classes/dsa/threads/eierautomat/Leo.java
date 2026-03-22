@@ -22,10 +22,13 @@ class Leo extends Thread
     Random zufallsgenerator;
 
     /**
-     * Zähler für die Anzahl der Zugriffsversuche
+     * Zähler für die Anzahl aller Eierholbesuche
      */
     Counter versuche;
 
+    /**
+     * Zähler für die Anzahl der vergeblichen Eierholbesuche
+     */
     Counter vergeblicheVersuche;
 
     /**

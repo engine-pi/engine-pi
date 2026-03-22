@@ -1,6 +1,6 @@
 package demos.classes.dsa.threads.eierautomat;
 
-import pi.Image;
+import pi.actor.Image;
 
 /**
  * Eierkarton
