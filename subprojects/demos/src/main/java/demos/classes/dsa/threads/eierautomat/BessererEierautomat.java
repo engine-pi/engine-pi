@@ -24,7 +24,7 @@ class BessererEierautomat extends Eierautomat
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
     @Override
-    synchronized void befülle()
+    synchronized boolean befülle()
     {
         // So lange der Automat noch Eierkartons enthält, muss mit dem Befüllen
         // gewartet werden.
@@ -48,6 +48,7 @@ class BessererEierautomat extends Eierautomat
         // Der Zustand der Variable in der Wartebedingung hat sich verändert.
         // Ein wartender Thread wird benachrichtigt.
         notify();
+        return true;
     }
 
     /**

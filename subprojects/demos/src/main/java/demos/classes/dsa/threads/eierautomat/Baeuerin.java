@@ -27,6 +27,11 @@ class Baeuerin extends Thread
     Counter versuche;
 
     /**
+     * Zähler für die Anzahl der Zugriffsversuche
+     */
+    Counter vergeblicheVersuche;
+
+    /**
      * der zu verwendene Eierautomat
      */
     Eierautomat automat;
@@ -40,11 +45,21 @@ class Baeuerin extends Thread
     {
         automat = eierautomat;
         zufallsgenerator = new Random();
-        versuche = new Counter().suffix(". Befüllbesuch");
-        versuche.anchor(-9, 0);
-        scene.add(versuche);
+
+        // Bild der Bäuerin
         scene.add(
-            new Image("eierautomat/baeuerin.png").size(6, 6).center(-7, 5));
+            new Image("eierautomat/baeuerin.png").size(6, 6).center(-7, 3));
+
+        // Zähler aller Befüllbesuche
+        versuche = new Counter().suffix(". Befüllbesuch");
+        versuche.anchor(-11, -2);
+        scene.add(versuche);
+
+        // Zähler vergebliche Befüllbesuche
+        vergeblicheVersuche = new Counter()
+            .suffix(". vergeblicher Befüllbesuch");
+        vergeblicheVersuche.height(0.8).color("green").anchor(-11, -4);
+        scene.add(vergeblicheVersuche);
     }
 
     /**
@@ -57,7 +72,12 @@ class Baeuerin extends Thread
         while (true)
         {
             // Automatenbefüllversuch
-            automat.befülle();
+            boolean erfolgreich = automat.befülle();
+            if (!erfolgreich)
+            {
+                vergeblicheVersuche.increase();
+                vergeblicheVersuche.color("red");
+            }
 
             versuche.increase();
 

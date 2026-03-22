@@ -58,7 +58,7 @@ class Eierautomat
     /**
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
-    synchronized void befülle()
+    synchronized boolean befülle()
     {
         if (eierkartons.size() == 0)
         {
@@ -67,7 +67,9 @@ class Eierautomat
             {
                 fügeEierkartonHinzu(i);
             }
+            return true;
         }
+        return false;
     }
 
     /**

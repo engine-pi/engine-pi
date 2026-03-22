@@ -43,16 +43,19 @@ class Leo extends Thread
         automat = eierautomat;
         zufallsgenerator = new Random();
 
-        versuche = new Counter().suffix(". Eierholbesuch");
-        versuche.anchor(3, 0);
+        // Bild von Leo
+        scene.add(new Image("eierautomat/leo.png").size(4, 4).center(6, 3));
 
+        // Zähler aller Eierholbesuche
+        versuche = new Counter().suffix(". Eierholbesuch");
+        versuche.anchor(3, -2);
+        scene.add(versuche);
+
+        // Zähler der vergeblichen Eierholbesuche
         vergeblicheVersuche = new Counter()
             .suffix(". vergeblicher Eierholbesuch");
-        vergeblicheVersuche.update();
-        vergeblicheVersuche.height(0.8).anchor(3, -2).color("rot");
-        scene.add(versuche, vergeblicheVersuche);
-        scene.add(new Image("eierautomat/leo.png").size(4, 4).center(6, 5));
-
+        vergeblicheVersuche.height(0.8).anchor(3, -4).color("green");
+        scene.add(vergeblicheVersuche);
     }
 
     /**
@@ -72,6 +75,7 @@ class Leo extends Thread
             if (karton == null)
             {
                 vergeblicheVersuche.increase();
+                vergeblicheVersuche.color("red");
             }
 
             // Simulation der Zeitdauer zwischen zwei Eierholversuchen
