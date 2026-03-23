@@ -85,7 +85,7 @@ public class Image extends Actor
     private BufferedImage image;
 
     /**
-     * Gibt das {@link BufferedImage}, das dieses Bild darstellt.
+     * Gibt das {@link BufferedImage}, das dieses <b>Bild</b> darstellt.
      *
      * @return Das {@link BufferedImage}, das dieses Bild darstellt.
      */
@@ -115,7 +115,8 @@ public class Image extends Actor
     /**
      * Setzt oder ersetzt das <b>Bild</b>.
      *
-     * @param image Der Verzeichnispfad des Bildes, das geladen werden soll.
+     * @param image Der <b>Verzeichnispfad</b> des Bildes, das geladen werden
+     *     soll.
      */
     @API
     @Setter
@@ -150,6 +151,12 @@ public class Image extends Actor
     /**
      * Setzt die <b>Breite</b> des Bilds in Meter.
      *
+     * <p>
+     * Der vorher durch die Methode {@link pi.actor.Image#pixelPerMeter(double)}
+     * gesetzte Umrechnungsfaktor von Pixel zu Meter wird durch diese Methode
+     * zurückgesetzt und ist somit unwirksam.
+     * </p>
+     *
      * @param width Die <b>Breite</b> des Bilds in Meter.
      */
     @API
@@ -163,6 +170,7 @@ public class Image extends Actor
                     "Die Breite des Bilds muss größer als 0 sein.");
         }
         definedWidth = width;
+        pixelPerMeter = 0;
         update();
         return this;
     }
@@ -191,6 +199,12 @@ public class Image extends Actor
     /**
      * Setzt die <b>Höhe</b> des Bilds in Meter.
      *
+     * <p>
+     * Der vorher durch die Methode {@link pi.actor.Image#pixelPerMeter(double)}
+     * gesetzte Umrechnungsfaktor von Pixel zu Meter wird durch diese Methode
+     * zurückgesetzt und ist somit unwirksam.
+     * </p>
+     *
      * @param height Die <b>Höhe</b> des Bilds in Meter.
      */
     @API
@@ -204,6 +218,7 @@ public class Image extends Actor
                     "Die Höhe des Bilds müssen größer als 0 sein.");
         }
         definedHeight = height;
+        pixelPerMeter = 0;
         update();
         return this;
     }
@@ -212,6 +227,17 @@ public class Image extends Actor
 
     private double pixelPerMeter;
 
+    /**
+     * Gibt den Umrechnungsfaktor von <b>Pixel zu Meter</b> zurück.
+     *
+     * <p>
+     * Ist der Umrechnungsfaktor bisher noch nicht gesetzt worden, wird der
+     * konfigurierte Wert {@link pi.config.GraphicsConfig#pixelPerMeter()}
+     * verwenden.
+     * </p>
+     *
+     * @return
+     */
     @API
     @Getter
     public double pixelPerMeter()
@@ -235,11 +261,26 @@ public class Image extends Actor
     }
 
     /**
-     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
-     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
-     * Eigenschaften des Bildes.
+     * Setzt den Umrechnungsfaktor von <b>Pixel zu Meter</b>.
      *
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     * Wenn das Bild beispielsweise {@code 300} Pixel breit und {@code 200}
+     * Pixel hoch ist und der Umrechnungsfaktor {@code 100} Pixel pro Meter
+     * beträgt, wird es mit einer Größe von {@code 3 x 2} Metern dargestellt.
+     *
+     * <p>
+     * Die Größe des Bildobjekts wird so geändert, dass sie dem angegebenen
+     * Umrechnungsfaktor entspricht. Dies hat auch Auswirkungen auf die
+     * physikalischen Eigenschaften des Bildes.
+     * </p>
+     *
+     * <p>
+     * Die vorher durch die Methoden {@link pi.actor.Image#width(double)}
+     * {@link pi.actor.Image#height(double)} oder
+     * {@link pi.actor.Image#size(double, double)} gesetzte Breite und Höhe des
+     * Bilds werden durch diese Methode zurückgesetzt und sind somit unwirksam.
+     * </p>
+     *
+     * @param pixelPerMeter Wie viele <b>Pixel ein Meter</b> misst.
      */
     @API
     @Setter
@@ -253,6 +294,8 @@ public class Image extends Actor
                             + pixelPerMeter);
         }
         this.pixelPerMeter = pixelPerMeter;
+        this.definedWidth = 0;
+        this.definedHeight = 0;
         update();
         return this;
     }
@@ -260,16 +303,16 @@ public class Image extends Actor
     /* flippedHorizontally */
 
     /**
-     * Gibt an, ob das Objekt horizontal gespiegelt ist.
+     * Gibt an, ob das Bild <b>horizontal gespiegelt</b> ist.
      */
     private boolean flippedHorizontally = false;
 
     /**
-     * Gibt an, ob das Bild in horizontaler Richtung gekippt, das heißt an der
-     * vertikalen Achse gespiegelt ist.
+     * Gibt an, ob das Bild <b>horizontal gespiegelt</b>, das heißt an der
+     * verticalen Achse gespiegelt ist.
      *
-     * @return <code>true</code>, wenn das Objekt gerade horizontal gespiegelt
-     *     ist. Sonst <code>false</code>.
+     * @return <code>true</code>, wenn das Objekt gerade <b>horizontal
+     *     gespiegelt</b> ist. Sonst <code>false</code>.
      */
     @API
     @Getter
@@ -279,12 +322,15 @@ public class Image extends Actor
     }
 
     /**
-     * Setzt, ob dieses Bild horizontaler Richtung umgedreht, das heißt an der
-     * vertikalen Achse gespiegelt werden soll. Hiermit lassen sich zum Beispiel
-     * Bewegungsrichtungen (links/rechts) einfach umsetzen.
+     * Setzt, ob dieses Bild <b>horizontal gespiegelt</b> werden soll.
      *
-     * @param flippedHorizontally Ob das Bild horizontal gespiegelt dargestellt
-     *     werden soll.
+     * <p>
+     * Hiermit lassen sich zum Beispiel Bewegungsrichtungen (links/rechts)
+     * einfach umsetzen.
+     * </p>
+     *
+     * @param flippedHorizontally Ob das Bild <b>horizontal gespiegelt</b>
+     *     dargestellt werden soll.
      *
      * @see #flippedVertically(boolean)
      */
@@ -298,11 +344,14 @@ public class Image extends Actor
     }
 
     /**
-     * Kippt das Bild in horizontaler Richtung. Es wird an der vertikalen Achse
-     * gespiegelt.
+     * <b>Spiegelt</b> das Bild in <b>horizontaler</b> Richtung.
      *
-     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
-     *     wenn es im Originalzustand angezeigt wird.
+     * <p>
+     * Es wird an der vertikalen Achse gespiegelt.
+     * </p>
+     *
+     * @return Wahr, wenn es <b>horizontale gespiegelt</b> wurde, falsch, wenn
+     *     es im Originalzustand angezeigt wird.
      *
      * @since 0.24.0
      */
@@ -316,12 +365,12 @@ public class Image extends Actor
     /* flippedVertically */
 
     /**
-     * Gibt an, ob das Objekt vertikal gespiegelt ist.
+     * Gibt an, ob das Bild <b>vertikal gespiegelt</b> ist.
      */
     private boolean flippedVertically = false;
 
     /**
-     * Gibt an, ob das Bild in vertikaler Richtung gekippt, das heißt an
+     * Gibt an, ob das Bild <b>vertikal gespiegelt</b> ist, das heißt an der
      * horizontaler Achse gespiegelt ist.
      *
      * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
@@ -335,7 +384,7 @@ public class Image extends Actor
     }
 
     /**
-     * Setzt, ob das Bild vertikal gespiegelt dargestellt werden sollen.
+     * Setzt, ob das Bild <b>vertikal gespiegelt</b> werden sollen.
      *
      * @param flippedVertically Ob die Animation horizontal geflippt dargestellt
      *     werden soll.
@@ -352,8 +401,11 @@ public class Image extends Actor
     }
 
     /**
-     * Kippt das Bild in vertikaler Richtung. Es wird an der horizontalen Achse
-     * gespiegelt.
+     * <b>Spiegelt</b> das Bild in <b>vertikaler</b> Richtung.
+     *
+     * <p>
+     * Es wird an der horizontaler Achse gespiegelt.
+     * </p>
      *
      * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
      *     wenn es im Originalzustand angezeigt wird.
@@ -370,13 +422,23 @@ public class Image extends Actor
     /* End getter setter */
 
     /**
-     * Setzt die Größe des Bildes innerhalb der Physik neu. Ändert die
-     * physikalischen Eigenschaften. Das Bild füllt die neuen Maße und wird ggf.
-     * verzerrt.
+     * Setzt die <b>Größe</b> des Bildes innerhalb der Physik neu.
+     *
+     * <p>
+     * Ändert die physikalischen Eigenschaften. Das Bild füllt die neuen Maße
+     * und wird ggf. verzerrt.
+     * </p>
      *
      * <p>
      * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
      * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
+     * </p>
+     *
+     * *
+     * <p>
+     * Der vorher durch die Methode {@link pi.actor.Image#pixelPerMeter(double)}
+     * gesetzte Umrechnungsfaktor von Pixel zu Meter wird durch diese Methode
+     * zurückgesetzt und ist somit unwirksam.
      * </p>
      *
      * @param width Die neue Breite des Bilds in Meter.
@@ -394,13 +456,14 @@ public class Image extends Actor
             throw new IllegalArgumentException(
                     "Die Breite des Bilds muss größer als 0 sein.");
         }
-        this.definedWidth = width;
+        definedWidth = width;
         if (height <= 0)
         {
             throw new IllegalArgumentException(
                     "Die Höhe des Bilds müssen größer als 0 sein.");
         }
-        this.definedHeight = height;
+        definedHeight = height;
+        pixelPerMeter = 0;
         update();
         return this;
     }
