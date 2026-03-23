@@ -5,14 +5,17 @@ default: pull assets package mkdocs_build
 deploy:
 	mvn deploy
 
+# Generate the Javadoc API for the engine and MkDocs site.
+doc: javadoc_engine mkdocs_build
+
 # Generate the Javadoc API for the engine only and open the generated documentation in a browser.
-doc: install_build_tools
+javadoc_engine: install_build_tools
 	mvn --file subprojects/engine clean
 	mvn --file subprojects/engine javadoc:javadoc
 	xdg-open subprojects/engine/target/reports/apidocs/index.html
 
 # Generate the Javadoc API for all subprojects, then open the generated documentation for the engine, demos and aggregated APIs in a browser using xdg-open.
-doc_all: clean install
+javadoc_all: clean install
 	mvn javadoc:javadoc
 	xdg-open subprojects/engine/target/reports/apidocs/index.html
 	xdg-open subprojects/demos/target/reports/apidocs/index.html
@@ -59,6 +62,7 @@ assets: assets_init assets_sync_resources
 
 mkdocs_build:
 	mkdocs build --strict
+	xdg-open site/index.html
 
 mkdocs_deploy:
 	mkdocs gh-deploy

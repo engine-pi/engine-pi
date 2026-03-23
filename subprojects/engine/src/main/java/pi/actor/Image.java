@@ -32,6 +32,7 @@ import java.awt.image.BufferedImage;
 import pi.Controller;
 import pi.Scene;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
@@ -79,7 +80,7 @@ public class Image extends Actor
     /* image */
 
     /**
-     * Das {@link BufferedImage}, das dieses Bild darstellt.
+     * Das {@link BufferedImage}, das dieses <b>Bild</b> darstellt.
      */
     private BufferedImage image;
 
@@ -96,27 +97,33 @@ public class Image extends Actor
     }
 
     /**
-     * Setzt oder ersetzt das Bild.
+     * Setzt oder ersetzt das <b>Bild</b>.
      *
      * @param image Ein bereits im Speicher vorhandenes Bild vom Datentyp
      *     {@link BufferedImage}.
      */
+    @API
     @Setter
-    public void image(BufferedImage image)
+    @ChainableMethod
+    public Image image(BufferedImage image)
     {
         this.image = image;
         update();
+        return this;
     }
 
     /**
-     * Setzt oder ersetzt das Bild.
+     * Setzt oder ersetzt das <b>Bild</b>.
      *
      * @param image Der Verzeichnispfad des Bildes, das geladen werden soll.
      */
+    @API
     @Setter
-    public void image(String image)
+    @ChainableMethod
+    public Image image(String image)
     {
         image(images.get(image));
+        return this;
     }
 
     /* width */
@@ -147,6 +154,7 @@ public class Image extends Actor
      */
     @API
     @Setter
+    @ChainableMethod
     public Image width(double width)
     {
         if (width <= 0)
@@ -187,6 +195,7 @@ public class Image extends Actor
      */
     @API
     @Setter
+    @ChainableMethod
     public Image height(double height)
     {
         if (height <= 0)
@@ -202,28 +211,6 @@ public class Image extends Actor
     /* pixelPerMeter */
 
     private double pixelPerMeter;
-
-    /**
-     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
-     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
-     * Eigenschaften des Bildes.
-     *
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     */
-    @API
-    @Setter
-    public Image pixelPerMeter(double pixelPerMeter)
-    {
-        if (pixelPerMeter <= 0)
-        {
-            throw new IllegalArgumentException(
-                    "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
-                            + pixelPerMeter);
-        }
-        this.pixelPerMeter = pixelPerMeter;
-        update();
-        return this;
-    }
 
     @API
     @Getter
@@ -245,6 +232,29 @@ public class Image extends Actor
                     "Pixel per Meter darf nicht kleiner gleich 0 sein.");
         }
         return ppm;
+    }
+
+    /**
+     * Ändert die Größe des Bildobjektes, sodass es dem angegebenen
+     * Umrechnungsfaktor entspricht. Ändert auch die physikalischen
+     * Eigenschaften des Bildes.
+     *
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Image pixelPerMeter(double pixelPerMeter)
+    {
+        if (pixelPerMeter <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Umrechnungszahl für Pixel pro Meter darf nicht negativ sein. War "
+                            + pixelPerMeter);
+        }
+        this.pixelPerMeter = pixelPerMeter;
+        update();
+        return this;
     }
 
     /* flippedHorizontally */
@@ -280,6 +290,7 @@ public class Image extends Actor
      */
     @API
     @Setter
+    @ChainableMethod
     public Image flippedHorizontally(boolean flippedHorizontally)
     {
         this.flippedHorizontally = flippedHorizontally;
@@ -333,6 +344,7 @@ public class Image extends Actor
      */
     @API
     @Setter
+    @ChainableMethod
     public Image flippedVertically(boolean flippedVertically)
     {
         this.flippedVertically = flippedVertically;
@@ -372,7 +384,9 @@ public class Image extends Actor
      *
      * @see #pixelPerMeter(double)
      */
+    @API
     @Setter
+    @ChainableMethod
     public Image size(double width, double height)
     {
         if (width <= 0)
@@ -399,6 +413,7 @@ public class Image extends Actor
      * @throws IllegalArgumentException wenn die Breite oder Höhe kleiner oder
      *     gleich 0 ist
      */
+    @API
     public double aspectRatio()
     {
         if (width <= 0 || height <= 0)
@@ -412,6 +427,7 @@ public class Image extends Actor
     /**
      * Setzt alle Bildeinstellungen auf ihre <b>Standardwerte zurück</b>.
      */
+    @API
     public void reset()
     {
         definedWidth = 0;
@@ -434,7 +450,11 @@ public class Image extends Actor
         return new Dimension(image.getWidth(), image.getHeight());
     }
 
+    /**
+     * @hidden
+     */
     @Override
+    @Internal
     public void update()
     {
         if (image == null)
