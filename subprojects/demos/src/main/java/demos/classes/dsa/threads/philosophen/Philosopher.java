@@ -13,7 +13,7 @@ import pi.actor.Circle;
  * @version 1.0
  */
 @SuppressWarnings("unused")
-class Philosoph extends Thread
+class Philosopher extends Thread
 {
     /**
      * Id des Philosophen
@@ -24,52 +24,52 @@ class Philosoph extends Thread
      * Zeitangabe in ms als Grundlage für die Bestimmung zufälliger Ess- und
      * Wartezeiten
      */
-    private int wartezeit;
+    private int waitingTime;
 
     /**
      * Teller des Philosophen
      */
-    private Circle teller;
+    private Circle plate;
 
     /**
      * Farbe des Tellers
      */
-    private String tellerfarbe;
+    private String plateColor;
 
     /**
      * Referenz auf die linke Gabel
      */
-    private Gabel gabelLinks;
+    private Fork leftFork;
 
     /**
      * Referenz auf die rechte Gabel
      */
-    private Gabel gabelRechts;
+    private Fork rightFork;
 
     /**
      * Zufallsgenerator
      */
-    private Random ran;
+    private Random random;
 
     /**
      * Konstruktor für Objekte der Klasse Philosoph
      *
-     * @param philosophenId Id des Philosophen
-     * @param tellerNeu der Teller, von dem der Philosoph speist
-     * @param tellerfarbeNeu Farbe des Tellers
-     * @param links die linke Gabel, die der Philosoph nutzt
-     * @param rechts die rechte Gabel, die der Philosoph nutzt
+     * @param philosopherId Id des Philosophen
+     * @param plate der Teller, von dem der Philosoph speist
+     * @param plateColor Farbe des Tellers
+     * @param left die linke Gabel, die der Philosoph nutzt
+     * @param right die rechte Gabel, die der Philosoph nutzt
      */
-    Philosoph(int philosophenId, Circle tellerNeu, String tellerfarbeNeu,
-            Gabel links, Gabel rechts)
+    Philosopher(int philosopherId, Circle plate, String plateColor, Fork left,
+            Fork right)
     {
-        wartezeit = 10;
-        id = philosophenId;
-        teller = tellerNeu;
-        tellerfarbe = tellerfarbeNeu;
-        gabelLinks = links;
-        gabelRechts = rechts;
-        ran = new Random();
+        waitingTime = 100;
+        id = philosopherId;
+        this.plate = plate;
+        this.plateColor = plateColor;
+        leftFork = left;
+        rightFork = right;
+        random = new Random();
     }
 
     /**
@@ -82,24 +82,26 @@ class Philosoph extends Thread
     {
         while (true)
         {
+            // denken
             try
             {
-                sleep(ran.nextInt(wartezeit));
+                sleep(random.nextInt(waitingTime));
             }
             catch (InterruptedException e)
             {
-            } ; // denken
-            gabelLinks.Aufnehmen(tellerfarbe);
-            gabelRechts.Aufnehmen(tellerfarbe);
+            }
+            leftFork.pickUp(plateColor);
+            rightFork.pickUp(plateColor);
+            // essen
             try
             {
-                sleep(ran.nextInt(wartezeit));
+                sleep(random.nextInt(waitingTime));
             }
             catch (InterruptedException e)
             {
-            } ; // essen
-            gabelLinks.Ablegen();
-            gabelRechts.Ablegen();
+            }
+            leftFork.putDown();
+            rightFork.putDown();
         }
     }
 }

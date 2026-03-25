@@ -1,7 +1,6 @@
 package demos.classes.dsa.threads.philosophen;
 
-import pi.Scene;
-import pi.actor.Rectangle;
+import pi.actor.Line;
 
 /**
  * Gabel zwischen zwei Philosophen
@@ -11,12 +10,12 @@ import pi.actor.Rectangle;
  *
  * @version 1.0
  */
-class Gabel
+class Fork
 {
     /**
      * gibt an, ob die Gabel aktuell genutzt wird
      */
-    private boolean inBenutzung;
+    private boolean used;
 
     /**
      * Id der Gabel
@@ -26,33 +25,31 @@ class Gabel
     /**
      * Darstellung der Gabel
      */
-    private Rectangle symbol;
+    private Line line;
 
     /**
      * Konstruktor für Objekte der Klasse Gabel
      *
-     * @param gabelId Id der Gabel
+     * @param id Id der Gabel
      */
-    Gabel(Scene scene, int gabelId)
+    Fork(int id, Line line)
     {
         super();
-        inBenutzung = false;
-        symbol = new Rectangle(1, 2);
-        symbol.color("schwarz");
-        scene.add(symbol);
-        id = gabelId;
+        used = false;
+        this.line = line;
+        this.id = id;
     }
 
     /**
      * Es wird gewartet, bis die Gabel nicht mehr in Benutzung ist; dann wird
      * sie aufgenommen.
      *
-     * @param eigeneFarbe Die Farbe des Philosophen, der die Gabel aufnehmen
-     *     möchte; die Gabel wird dann auf diese Farbe gesetzt.
+     * @param color Die Farbe des Philosophen, der die Gabel aufnehmen möchte;
+     *     die Gabel wird dann auf diese Farbe gesetzt.
      */
-    synchronized void Aufnehmen(String eigeneFarbe)
+    synchronized void pickUp(String color)
     {
-        while (inBenutzung)
+        while (used)
         {
             try
             {
@@ -62,18 +59,18 @@ class Gabel
             {
             }
         }
-        inBenutzung = true;
-        symbol.color(eigeneFarbe);
+        used = true;
+        line.color(color);
     }
 
     /**
      * Die Gabel wird abgelegt; da sie dann keinen Besitzer mehr hat, wird ihre
      * Farbe auf "schwarz" gesetzt.
      */
-    synchronized void Ablegen()
+    synchronized void putDown()
     {
-        inBenutzung = false;
-        symbol.color("schwarz");
+        used = false;
+        line.color("schwarz");
         notify();
     }
 
@@ -82,18 +79,8 @@ class Gabel
      *
      * @return Id der Gabel
      */
-    int IdGeben()
+    int id()
     {
         return id;
-    }
-
-    /**
-     * Liefert das Symbol der Gabel.
-     *
-     * @return Symbol der Gabel
-     */
-    Rectangle SymbolGeben()
-    {
-        return symbol;
     }
 }
