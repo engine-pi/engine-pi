@@ -1,5 +1,6 @@
 package demos.classes.dsa.threads.philosophen;
 
+import pi.Scene;
 import pi.actor.Rectangle;
 
 /**
@@ -32,12 +33,13 @@ class Gabel
      *
      * @param gabelId Id der Gabel
      */
-    Gabel(int gabelId)
+    Gabel(Scene scene, int gabelId)
     {
         super();
         inBenutzung = false;
         symbol = new Rectangle(1, 2);
         symbol.color("schwarz");
+        scene.add(symbol);
         id = gabelId;
     }
 

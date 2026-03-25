@@ -2,8 +2,9 @@ package demos.classes.dsa.threads.philosophen;
 
 import java.util.ArrayList;
 
+import pi.Controller;
+import pi.Scene;
 import pi.actor.Circle;
-import pi.actor.Text;
 
 /**
  * Visualisierung des Problems der speisenden Philosophen
@@ -13,7 +14,7 @@ import pi.actor.Text;
  *
  * @version 1.0
  */
-class SpeisendePhilosophen
+class SpeisendePhilosophen extends Scene
 {
     /**
      * verwaltet alle Gabeln
@@ -36,16 +37,13 @@ class SpeisendePhilosophen
     private ArrayList<Philosoph> philosophen;
 
     /**
-     * instruierender Text oben im Zeichenfenster
-     */
-    private Text anleitung;
-
-    /**
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
      * erstellt und die Philosophenthreads gestartet.
      */
     SpeisendePhilosophen()
     {
+        info().description(
+            "Abgelegte Gabeln sind schwarz, aufgenommene Gabeln haben die Farbe ihres aktuellen Besitzers.");
         gabeln = new ArrayList<Gabel>();
         teller = new ArrayList<Circle>();
         tellerfarben = new ArrayList<String>();
@@ -55,15 +53,10 @@ class SpeisendePhilosophen
         tellerfarben.add("magenta");
         tellerfarben.add("grau");
         philosophen = new ArrayList<Philosoph>();
-        anleitung = new Text("");
-        anleitung.content(
-            "Abgelegte Gabeln sind schwarz, aufgenommene Gabeln haben die Farbe ihres aktuellen Besitzers.");
-        anleitung.anchor(10, 50);
-        anleitung.height(17);
 
         for (int zähler = 0; zähler < 5; zähler++)
         {
-            gabeln.add(new Gabel(zähler));
+            gabeln.add(new Gabel(this, zähler));
             gabeln.get(zähler).SymbolGeben().size(100, 10);
             gabeln.get(zähler)
                 .SymbolGeben()
@@ -74,15 +67,16 @@ class SpeisendePhilosophen
                             * Math.sin(Math.toRadians(54 + 72 * zähler))));
             gabeln.get(zähler).SymbolGeben().rotation(54 + 72 * zähler);
 
+            Circle circle = new Circle();
+            add(circle);
+            circle.color(tellerfarben.get(zähler));
             teller.add(new Circle());
-            teller.get(zähler);
-            teller.get(zähler).color(tellerfarben.get(zähler));
-            teller.get(zähler)
-                .anchor(
-                    400 + (int) (175
-                            * Math.cos(Math.toRadians(18 + 72 * zähler))),
-                    300 - (int) (175
-                            * Math.sin(Math.toRadians(18 + 72 * zähler))));
+
+            circle.anchor(
+                400 + (int) (175 * Math.cos(Math.toRadians(18 + 72 * zähler))),
+                300 - (int) (175 * Math.sin(Math.toRadians(18 + 72 * zähler))));
+
+            teller.add(circle);
         }
 
         for (int zähler = 0; zähler < 5; zähler++)
@@ -96,6 +90,7 @@ class SpeisendePhilosophen
 
     public static void main(String[] args)
     {
-        new SpeisendePhilosophen();
+        Controller.instantMode(false);
+        Controller.start(new SpeisendePhilosophen());
     }
 }

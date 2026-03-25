@@ -13,7 +13,6 @@ import pi.actor.Circle;
  * @version 1.0
  */
 @SuppressWarnings("unused")
-
 class Philosoph extends Thread
 {
     /**
