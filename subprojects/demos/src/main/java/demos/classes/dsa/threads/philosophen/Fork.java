@@ -3,7 +3,7 @@ package demos.classes.dsa.threads.philosophen;
 import pi.actor.Line;
 
 /**
- * Gabel zwischen zwei Philosophen
+ * Die Gabel zwischen zwei Philosophen.
  *
  * @author Johannes Neumeyer
  * @author Josef Friedrich
@@ -13,17 +13,17 @@ import pi.actor.Line;
 class Fork
 {
     /**
-     * gibt an, ob die Gabel aktuell genutzt wird
+     * Gibt an, ob die Gabel aktuell benutzt wird.
      */
     private boolean used;
 
     /**
-     * Id der Gabel
+     * Die ID der Gabel.
      */
     private int id;
 
     /**
-     * Darstellung der Gabel
+     * Doe Darstellung der Gabel als Linie.
      */
     private Line line;
 
@@ -64,6 +64,40 @@ class Fork
     }
 
     /**
+     * Es wird mit kurzen Wartepausen immer wieder versucht, eine Gabel
+     * aufzunehmen. Gelingt dies nicht, wird die Methode nach maximal 100
+     * Versuchen beendet.
+     *
+     * @param color Die Farbe des Philosophen, der die Gabel aufnehmen möchte;
+     *     die Gabel wird bei erfolgreicher Aufnahme auf diese Farbe gesetzt.
+     */
+    synchronized boolean tryPickUp(String color)
+    {
+        int i = 0;
+        while (i < 100)
+        {
+            if (!used)
+            {
+                used = true;
+                line.color(color);
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    wait(10);
+                }
+                catch (InterruptedException e)
+                {
+                }
+                i++;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Die Gabel wird abgelegt; da sie dann keinen Besitzer mehr hat, wird ihre
      * Farbe auf "schwarz" gesetzt.
      */
@@ -75,9 +109,9 @@ class Fork
     }
 
     /**
-     * Liefert die Id der Gabel.
+     * Liefert die ID der Gabel.
      *
-     * @return Id der Gabel
+     * @return Die ID der Gabel.
      */
     int id()
     {

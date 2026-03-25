@@ -2,8 +2,6 @@ package demos.classes.dsa.threads.philosophen;
 
 import java.util.Random;
 
-import pi.actor.Circle;
-
 /**
  * Speisender Philosoph
  *
@@ -12,7 +10,6 @@ import pi.actor.Circle;
  *
  * @version 1.0
  */
-@SuppressWarnings("unused")
 class Philosopher extends Thread
 {
     /**
@@ -27,27 +24,22 @@ class Philosopher extends Thread
     private int waitingTime;
 
     /**
-     * Teller des Philosophen
-     */
-    private Circle plate;
-
-    /**
-     * Farbe des Tellers
+     * Die Farbe des Tellers.
      */
     private String plateColor;
 
     /**
-     * Referenz auf die linke Gabel
+     * Die linke Gabel.
      */
     private Fork leftFork;
 
     /**
-     * Referenz auf die rechte Gabel
+     * Die rechte Gabel.
      */
     private Fork rightFork;
 
     /**
-     * Zufallsgenerator
+     * Der Zufallsgenerator.
      */
     private Random random;
 
@@ -55,21 +47,93 @@ class Philosopher extends Thread
      * Konstruktor für Objekte der Klasse Philosoph
      *
      * @param philosopherId Id des Philosophen
-     * @param plate der Teller, von dem der Philosoph speist
      * @param plateColor Farbe des Tellers
      * @param left die linke Gabel, die der Philosoph nutzt
      * @param right die rechte Gabel, die der Philosoph nutzt
      */
-    Philosopher(int philosopherId, Circle plate, String plateColor, Fork left,
-            Fork right)
+    Philosopher(int philosopherId, String plateColor, Fork left, Fork right)
     {
-        waitingTime = 100;
+        waitingTime = 50;
         id = philosopherId;
-        this.plate = plate;
         this.plateColor = plateColor;
         leftFork = left;
         rightFork = right;
         random = new Random();
+    }
+
+    public int id()
+    {
+        return id;
+    }
+
+    private void sleepRandomly(int milliseconds)
+    {
+        try
+        {
+            sleep(random.nextInt(milliseconds));
+        }
+        catch (InterruptedException e)
+        {
+        }
+    }
+
+    /**
+     * Erfülle alle Coffman-Bedingungen.
+     */
+    public void fullfilCoffman()
+    {
+        // denken
+        sleepRandomly(waitingTime);
+        leftFork.pickUp(plateColor);
+        rightFork.pickUp(plateColor);
+
+        // essen
+        sleepRandomly(waitingTime);
+        leftFork.putDown();
+        rightFork.putDown();
+    }
+
+    /**
+     * Verletzte die Coffman-Bedingung 4 („Zyklisches Warten”)
+     */
+    public void violateCoffman4()
+    {
+        // denken
+        sleepRandomly(waitingTime);
+        leftFork.pickUp(plateColor);
+        if (rightFork.id() > leftFork.id())
+        {
+            rightFork.pickUp(plateColor);
+        }
+        else
+        {
+            leftFork.putDown();
+            rightFork.putDown();
+            leftFork.putDown();
+        }
+
+        // essen
+        sleepRandomly(waitingTime);
+        leftFork.putDown();
+        rightFork.putDown();
+    }
+
+    /**
+     * Verletze die Coffman-Bedingung 2 („Halten und Warten“)
+     */
+    public void violateCoffmann2()
+    {
+        // denken
+        sleepRandomly(waitingTime);
+        leftFork.pickUp(plateColor);
+
+        if (rightFork.tryPickUp(plateColor))
+        {
+            // essen
+            sleepRandomly(waitingTime);
+            rightFork.putDown();
+        }
+        leftFork.putDown();
     }
 
     /**
@@ -82,26 +146,9 @@ class Philosopher extends Thread
     {
         while (true)
         {
-            // denken
-            try
-            {
-                sleep(random.nextInt(waitingTime));
-            }
-            catch (InterruptedException e)
-            {
-            }
-            leftFork.pickUp(plateColor);
-            rightFork.pickUp(plateColor);
-            // essen
-            try
-            {
-                sleep(random.nextInt(waitingTime));
-            }
-            catch (InterruptedException e)
-            {
-            }
-            leftFork.putDown();
-            rightFork.putDown();
+            fullfilCoffman();
+            // violateCoffman4();
+            // violateCoffmann2();
         }
     }
 }

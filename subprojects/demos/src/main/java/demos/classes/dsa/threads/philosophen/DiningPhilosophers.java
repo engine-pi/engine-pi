@@ -58,7 +58,6 @@ class DiningPhilosophers extends Scene
 
         for (int i = 0; i < 5; i++)
         {
-
             // Gabeln
             Line line = new Line(Vector.ofAngle(36 + 72 * i).multiply(4),
                     Vector.ofAngle(36 + 72 * i).multiply(6));
@@ -77,9 +76,8 @@ class DiningPhilosophers extends Scene
 
         for (int i = 0; i < 5; i++)
         {
-            philosophers
-                .add(new Philosopher(i, plates.get(i), plateColors.get(i),
-                        forks.get((i - 1 + 5) % 5), forks.get(i)));
+            philosophers.add(new Philosopher(i, plateColors.get(i),
+                    forks.get((i - 1 + 5) % 5), forks.get(i)));
             philosophers.get(i).start();
         }
     }
