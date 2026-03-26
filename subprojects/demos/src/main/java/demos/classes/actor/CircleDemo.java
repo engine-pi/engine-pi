@@ -41,6 +41,7 @@ public class CircleDemo extends ActorBaseScene
 
         new Circle().anchor(5, 3).makeStatic();
         new Circle(3).anchor(-6, -3).makeStatic();
+
     }
 
     public static void main(String[] args)

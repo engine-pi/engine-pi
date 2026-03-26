@@ -27,11 +27,14 @@ import java.awt.Graphics2D;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
 import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.physics.FixtureData;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/development/design.md
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/CircleDemo.java
 
 /**
  * Beschreibt einen <b>Kreis</b>.
@@ -50,8 +53,6 @@ import pi.physics.FixtureData;
  */
 public class Circle extends Geometry
 {
-    private double diameter;
-
     /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.
      *
@@ -72,7 +73,12 @@ public class Circle extends Geometry
         super(() -> new FixtureData(createCircleShape(diameter)));
         this.diameter = diameter;
         color(colorScheme.get().blue());
+        update();
     }
+
+    /* diameter */
+
+    private double diameter;
 
     /**
      * Gibt den <b>Durchmesser</b> des Kreises aus.
@@ -86,6 +92,18 @@ public class Circle extends Geometry
         return diameter;
     }
 
+    @API
+    @Setter
+    @ChainableMethod
+    public Circle diameter(double diameter)
+    {
+        this.diameter = diameter;
+        update();
+        return this;
+    }
+
+    /* radius */
+
     /**
      * Gibt den <b>Radius</b> des Kreises aus.
      *
@@ -96,6 +114,22 @@ public class Circle extends Geometry
     public double radius()
     {
         return diameter / 2;
+    }
+
+    /**
+     * Setzt den Radius des Kreises neu. Ändert damit die physikalischen
+     * Eigenschaften des Objekts.
+     *
+     * @param radius Der neue Radius des Kreises.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Circle radius(double radius)
+    {
+        diameter = 2 * radius;
+        update();
+        return this;
     }
 
     /**
@@ -112,22 +146,14 @@ public class Circle extends Geometry
             (int) (diameter * pixelPerMeter));
     }
 
-    /**
-     * Setzt den Radius des Kreises neu. Ändert damit die physikalischen
-     * Eigenschaften des Objekts.
-     *
-     * @param radius Der neue Radius des Kreises.
-     */
-    @API
-    public void resetRadius(double radius)
+    @Override
+    public void update()
     {
-        this.diameter = 2 * radius;
-        FixtureData[] fixtureData = this.physicsHandler()
+        FixtureData fixtureData = this.physicsHandler()
             .physicsData()
-            .generateFixtureData();
-        FixtureData thatoneCircle = fixtureData[0];
-        thatoneCircle.setShape(createCircleShape(this.diameter));
-        this.fixture(() -> thatoneCircle);
+            .generateFixtureData()[0];
+        fixtureData.setShape(createCircleShape(diameter));
+        this.fixture(() -> fixtureData);
     }
 
     /**
