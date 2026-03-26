@@ -19,6 +19,7 @@
 package demos.classes.actor;
 
 import pi.Controller;
+
 import pi.Circle;
 
 /**
@@ -39,14 +40,17 @@ public class CircleDemo extends ActorBaseScene
         circle2.anchor(-2, 0);
         circle2.makeStatic();
 
-        new Circle().anchor(5, 3).makeStatic();
-        new Circle(3).anchor(-6, -3).makeStatic();
+        add(circle, circle2);
+
+        add(new Circle().anchor(5, 3).makeStatic());
+        add(new Circle(3).anchor(-6, -3).makeStatic());
 
     }
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.debug();
-        new CircleDemo();
+        Controller.start(new CircleDemo());
     }
 }

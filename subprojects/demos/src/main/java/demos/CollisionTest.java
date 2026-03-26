@@ -49,6 +49,7 @@ public class CollisionTest extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new CollisionTest(), 500, 500);
     }
 }

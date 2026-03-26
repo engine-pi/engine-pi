@@ -93,6 +93,15 @@ public class Circle extends Geometry
     }
 
     /**
+     * Setzt den <b>Durchmesser</b> des Kreises.
+     *
+     * @param diameter Der <b>Durchmesser</b> des Kreises.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kreises, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kreises durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code circle.radius(..).color(..)}.
+     *
      * @since 0.44.0
      */
     @API
@@ -120,10 +129,18 @@ public class Circle extends Geometry
     }
 
     /**
-     * Setzt den Radius des Kreises neu. Ändert damit die physikalischen
-     * Eigenschaften des Objekts.
+     * Setzt den <b>Radius</b> des Kreises.
      *
-     * @param radius Der neue Radius des Kreises.
+     * <p>
+     * Ändert damit die physikalischen Eigenschaften des Objekts.
+     * </p>
+     *
+     * @param radius Der neue <b>Radius</b> des Kreises.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Kreises, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Kreises durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code circle.radius(..).color(..)}.
      *
      * @since 0.44.0
      */

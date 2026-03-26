@@ -141,6 +141,7 @@ public class JointDemo extends ForceKlickEnvironment
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new JointDemo(), 1000, 800);
     }
 }

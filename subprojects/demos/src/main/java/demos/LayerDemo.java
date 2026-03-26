@@ -8,7 +8,6 @@ import pi.Circle;
 
 public class LayerDemo extends Scene
 {
-
     Layer layer2;
 
     Layer layer3;
@@ -60,6 +59,7 @@ public class LayerDemo extends Scene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new LayerDemo());
     }
 }

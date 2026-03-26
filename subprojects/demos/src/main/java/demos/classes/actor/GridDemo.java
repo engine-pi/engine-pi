@@ -46,6 +46,7 @@ public class GridDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new GridDemo());
     }
 }
