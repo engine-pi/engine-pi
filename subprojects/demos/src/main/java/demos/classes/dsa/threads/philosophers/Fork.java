@@ -1,5 +1,6 @@
-package demos.classes.dsa.threads.philosophen;
+package demos.classes.dsa.threads.philosophers;
 
+import pi.Controller;
 import pi.actor.Line;
 
 /**
@@ -116,5 +117,11 @@ class Fork
     int id()
     {
         return id;
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new DiningPhilosophers());
     }
 }

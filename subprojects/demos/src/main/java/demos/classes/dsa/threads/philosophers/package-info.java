@@ -7,4 +7,4 @@
  *
  * https://static.vecteezy.com/system/resources/previews/024/888/037/large_2x/kids-characters-collection-set-of-26-great-philosophers-and-thinkers-of-history-in-cartoon-style-vector.jpg
  */
-package demos.classes.dsa.threads.philosophen;
+package demos.classes.dsa.threads.philosophers;
