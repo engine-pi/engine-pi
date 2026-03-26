@@ -22,16 +22,6 @@ class DiningPhilosophers extends Scene
     private Fork[] forks;
 
     /**
-     * Verwaltet alle Teller.
-     */
-    private Circle[] plates;
-
-    /**
-     * Verwaltet alle Tellerfarben.
-     */
-    private String[] plateColors;
-
-    /**
      * Verwaltet alle Philosophen.
      */
     private Philosopher[] philosophers;
@@ -45,8 +35,6 @@ class DiningPhilosophers extends Scene
         info().description(
             "Abgelegte Gabeln sind schwarz, aufgenommene Gabeln haben die Farbe ihres aktuellen Besitzers.");
         forks = new Fork[5];
-        plates = new Circle[5];
-        plateColors = new String[] { "rot", "blau", "grün", "magenta", "grau" };
         philosophers = new Philosopher[5];
 
         add(new Circle(13).center(0, 0).color("braun"));
@@ -61,27 +49,30 @@ class DiningPhilosophers extends Scene
             line.strokeWidth(0.5);
             add(line);
             forks[i] = new Fork(i, line);
-
-            // Teller
-            Circle circle = new Circle(2);
-            circle.color(plateColors[i])
-                .center(Vector.ofAngle(72 * i).multiply(5));
-            add(circle);
-            plates[i] = circle;
         }
+
+        createPhilosopher(0, "Konfuzius", "#961b2d");
+        createPhilosopher(1, "Sokrates", "#e9eae4");
+        createPhilosopher(2, "Voltaire", "#845ca5");
+        createPhilosopher(3, "Kant", "#767733");
+        createPhilosopher(4, "Nietzsche", "#293133");
 
         for (int i = 0; i < 5; i++)
         {
-            Philosopher philosopher = new Philosopher(i, plateColors[i],
-                    forks[(i - 1 + 5) % 5], forks[i]);
-            philosopher.start();
-            philosophers[i] = philosopher;
+            philosophers[i].start();
         }
+    }
+
+    private void createPhilosopher(int id, String name, String color)
+    {
+        philosophers[id] = new Philosopher(this, id, name, color,
+                forks[(id + 4) % 5], forks[id]);
+
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers());
+        Controller.start(new DiningPhilosophers(), 950, 950);
     }
 }

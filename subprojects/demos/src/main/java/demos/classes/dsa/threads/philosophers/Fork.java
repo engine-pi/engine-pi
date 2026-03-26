@@ -122,6 +122,6 @@ class Fork
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers());
+        Controller.start(new DiningPhilosophers(), 950, 950);
     }
 }

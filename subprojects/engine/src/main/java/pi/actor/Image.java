@@ -75,6 +75,7 @@ public class Image extends Actor
     {
         super(null);
         this.image = image;
+        update();
     }
 
     /* image */

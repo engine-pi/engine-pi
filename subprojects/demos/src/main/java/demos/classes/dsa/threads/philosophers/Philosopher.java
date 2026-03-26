@@ -3,6 +3,10 @@ package demos.classes.dsa.threads.philosophers;
 import java.util.Random;
 
 import pi.Controller;
+import pi.actor.Image;
+import pi.Scene;
+import pi.actor.Circle;
+import pi.graphics.geom.Vector;
 
 /**
  * Ein speisender Philosoph.
@@ -28,7 +32,7 @@ class Philosopher extends Thread
     /**
      * Die Farbe des Tellers.
      */
-    private String plateColor;
+    private String color;
 
     /**
      * Die linke Gabel.
@@ -48,19 +52,28 @@ class Philosopher extends Thread
     /**
      * Konstruktor für Objekte der Klasse Philosoph.
      *
-     * @param philosopherId Die ID des Philosophen.
-     * @param plateColor Die Farbe des Tellers.
+     * @param id Die ID des Philosophen.
+     * @param color Die Farbe des Tellers.
      * @param left Die linke Gabel, die der Philosoph nutzt.
      * @param right Die rechte Gabel, die der Philosoph nutzt.
      */
-    Philosopher(int philosopherId, String plateColor, Fork left, Fork right)
+    Philosopher(Scene scene, int id, String name, String color, Fork left,
+            Fork right)
     {
         waitingTime = 50;
-        id = philosopherId;
-        this.plateColor = plateColor;
+        this.id = id;
+        this.color = color;
         leftFork = left;
         rightFork = right;
         random = new Random();
+
+        // Teller
+        scene.add(new Circle(2).color(color)
+            .center(Vector.ofAngle(72 * id).multiply(5)));
+        // Bild des Philosophen
+        scene.add(new Image("philosophers/" + name + ".jpg").pixelPerMeter(50)
+            .center(Vector.ofAngle(72 * id).multiply(11)));
+
     }
 
     public int id()
@@ -88,8 +101,8 @@ class Philosopher extends Thread
         sleep();
 
         // essen
-        leftFork.pickUp(plateColor);
-        rightFork.pickUp(plateColor);
+        leftFork.pickUp(color);
+        rightFork.pickUp(color);
         sleep();
         leftFork.putDown();
         rightFork.putDown();
@@ -104,10 +117,10 @@ class Philosopher extends Thread
         sleep();
 
         // essen
-        leftFork.pickUp(plateColor);
+        leftFork.pickUp(color);
         if (rightFork.id() > leftFork.id())
         {
-            rightFork.pickUp(plateColor);
+            rightFork.pickUp(color);
         }
         else
         {
@@ -129,10 +142,9 @@ class Philosopher extends Thread
         sleep();
 
         // essen
-        leftFork.pickUp(plateColor);
-        if (rightFork.tryPickUp(plateColor))
+        leftFork.pickUp(color);
+        if (rightFork.tryPickUp(color))
         {
-
             sleep();
             rightFork.putDown();
         }
@@ -158,6 +170,6 @@ class Philosopher extends Thread
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers());
+        Controller.start(new DiningPhilosophers(), 950, 950);
     }
 }
