@@ -92,6 +92,9 @@ public class Circle extends Geometry
         return diameter;
     }
 
+    /**
+     * @since 0.44.0
+     */
     @API
     @Setter
     @ChainableMethod
@@ -121,6 +124,8 @@ public class Circle extends Geometry
      * Eigenschaften des Objekts.
      *
      * @param radius Der neue Radius des Kreises.
+     *
+     * @since 0.44.0
      */
     @API
     @Setter

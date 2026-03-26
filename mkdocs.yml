@@ -151,7 +151,7 @@ nav:
   - download.md
 
 extra:
-  version: 0.43.0
+  version: 0.44.0
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#generator-notice
   generator: false
 
