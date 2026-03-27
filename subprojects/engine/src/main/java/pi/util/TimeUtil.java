@@ -53,4 +53,64 @@ public class TimeUtil
             e.printStackTrace();
         }
     }
+
+    /**
+     * <b>Formatiert</b> ein <b>Zeitintervall</b> in Millisekunden in ein
+     * lesbares Zeitformat.
+     *
+     * <p>
+     * Das Intervall wird in Stunden, Minuten, Sekunden und Millisekunden
+     * aufgeteilt und gemäß dem angegebenen Format-Zeichenkette formatiert.
+     * </p>
+     *
+     * @param intervalMilliseconds Die Zeitdauer in Millisekunden.
+     * @param format Eine Format-Zeichenkette mit vier Platzhaltern für Stunden
+     *     ({@code %d}), Minuten ({@code %d}), Sekunden ({@code %d}) und
+     *     Millisekunden ({@code %d}). Der Aufbau dieser Zeichenkette kann der
+     *     Dokumentation der Java-Klasse {@link java.util.Formatter Formatter}
+     *     entnommen werden. Beispiel: {@code %02d:%02d:%02d.%03d} für
+     *     {@code HH:MM:SS.mmm}
+     *
+     * @return Eine formatierte Zeichenkette, der das Zeitintervall darstellt.
+     *
+     * @since 0.45.0
+     */
+    public static String formatInterval(final long intervalMilliseconds,
+            String format)
+    {
+        final long hr = TimeUnit.MILLISECONDS.toHours(intervalMilliseconds);
+        final long min = TimeUnit.MILLISECONDS
+            .toMinutes(intervalMilliseconds - TimeUnit.HOURS.toMillis(hr));
+        final long sec = TimeUnit.MILLISECONDS.toSeconds(intervalMilliseconds
+                - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min));
+        final long ms = TimeUnit.MILLISECONDS.toMillis(intervalMilliseconds
+                - TimeUnit.HOURS.toMillis(hr) - TimeUnit.MINUTES.toMillis(min)
+                - TimeUnit.SECONDS.toMillis(sec));
+        return String.format(format, hr, min, sec, ms);
+    }
+
+    /**
+     * <b>Formatiert</b> ein <b>Zeitintervall</b> in Millisekunden in ein
+     * lesbares Zeitformat.
+     *
+     * Das Intervall wird im Format "HH:MM:SS.mmm" dargestellt, wobei:
+     *
+     * <ul>
+     * <li>HH die Stunden (zweistellig mit führender Null)</li>
+     * <li>MM die Minuten (zweistellig mit führender Null)</li>
+     * <li>SS die Sekunden (zweistellig mit führender Null)</li>
+     * <li>mmm die Millisekunden (dreistellig mit führenden Nullen)</li>
+     * </ul>
+     *
+     * @param intervalMilliseconds Die Zeitdauer in Millisekunden.
+     *
+     * @return Eine formatierte Zeichenkette des Zeitintervalls im Format
+     *     {@code %02d:%02d:%02d.%03d}
+     *
+     * @since 0.45.0
+     */
+    public static String formatInterval(final long intervalMilliseconds)
+    {
+        return formatInterval(intervalMilliseconds, "%02d:%02d:%02d.%03d");
+    }
 }
