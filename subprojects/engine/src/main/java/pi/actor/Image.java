@@ -492,7 +492,8 @@ public class Image extends Actor
      * Setzt alle Bildeinstellungen auf ihre <b>Standardwerte zurück</b>.
      */
     @API
-    public void reset()
+    @ChainableMethod
+    public Image reset()
     {
         definedWidth = 0;
         definedHeight = 0;
@@ -500,6 +501,7 @@ public class Image extends Actor
         flippedHorizontally = false;
         flippedVertically = false;
         update();
+        return this;
     }
 
     /**
@@ -526,8 +528,8 @@ public class Image extends Actor
             throw new RuntimeException("Kein Bild gesetzt.");
         }
 
-        int widthPx = image.getWidth();
-        int heightPx = image.getHeight();
+        double widthPx = (double) image.getWidth();
+        double heightPx = (double) image.getHeight();
         color = ColorUtil.calculateAverage(image);
 
         if (definedWidth == 0 && definedHeight == 0)
@@ -539,11 +541,13 @@ public class Image extends Actor
         {
             width = definedWidth;
             height = heightPx / widthPx * definedWidth;
+            System.out.println("width" + width + " " + height);
         }
         else if (definedWidth == 0 && definedHeight > 0)
         {
             width = widthPx / heightPx * definedHeight;
             height = definedHeight;
+            System.out.println("height" + width + " " + height);
         }
         else
         {
