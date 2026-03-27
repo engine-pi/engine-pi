@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReflectionUtilTests
 {
     @Test
-    void testGetField()
+    void getField()
     {
         assertNotNull(ReflectionUtil.getField(TestImpl.class, "integerField"));
         assertNotNull(ReflectionUtil.getField(ChildImpl.class, "integerField"));
@@ -44,7 +44,7 @@ class ReflectionUtilTests
     }
 
     @Test
-    void testSetValue()
+    void setValue()
     {
         var test = new TestImpl();
         assertDoesNotThrow(() -> ReflectionUtil
@@ -54,7 +54,7 @@ class ReflectionUtilTests
 
     @ParameterizedTest
     @MethodSource("getWrapperParameters")
-    void testIsWrapperTypeTrue(Class<?> primitive, Class<?> wrapper)
+    void isWrapperTypeTrue(Class<?> primitive, Class<?> wrapper)
     {
         // act
         boolean isWrapper = ReflectionUtil.isWrapperType(primitive, wrapper);
@@ -65,7 +65,7 @@ class ReflectionUtilTests
 
     @ParameterizedTest
     @MethodSource("getNonWrapperParameters")
-    void testIsWrapperTypeFalse(Class<?> primitive, Class<?> wrapper)
+    void isWrapperTypeFalse(Class<?> primitive, Class<?> wrapper)
     {
         // act
         boolean isWrapper = ReflectionUtil.isWrapperType(primitive, wrapper);

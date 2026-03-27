@@ -36,7 +36,7 @@ import pi.debug.AnsiColor;
 public class VectorTest
 {
     @Test
-    public void testVectorOfVectors()
+    public void vectorOfVectors()
     {
         Vector p1 = v(10, 10);
         Vector p2 = v(30, 20);
@@ -90,32 +90,32 @@ public class VectorTest
     }
 
     @Test
-    public void testGetX()
+    public void x()
     {
         double x = .013;
         assertEquals(v(x, 0).x(), x, 0.00001);
     }
 
     @Test
-    public void testGetY()
+    public void y()
     {
         double y = .013;
         assertEquals(v(0, y).y(), y, 0.00001);
     }
 
     @Test
-    public void testGetScalarProduct()
+    public void scalarProduct()
     {
         Vector v1 = v(1, 0);
         Vector v2 = v(0, 1);
         Vector v3 = v(2, 1);
-        assertEquals(v1.getScalarProduct(v2), 0, 0);
-        assertNotEquals(v1.getScalarProduct(v3), 0, 0);
-        assertNotEquals(v2.getScalarProduct(v3), 0, 0);
+        assertEquals(v1.scalarProduct(v2), 0, 0);
+        assertNotEquals(v1.scalarProduct(v3), 0, 0);
+        assertNotEquals(v2.scalarProduct(v3), 0, 0);
     }
 
     @Test
-    public void testEquals()
+    public void equals()
     {
         Vector v1 = v(1, 1);
         Vector p1 = v(1, 1);
@@ -123,7 +123,7 @@ public class VectorTest
     }
 
     @Test
-    public void testNotEquals()
+    public void notEquals()
     {
         Vector vector = v(1, 1);
         assertNotEquals(v(1, 0), vector);
@@ -133,7 +133,7 @@ public class VectorTest
     }
 
     @Test
-    public void testSubtract()
+    public void subtract()
     {
         Vector v1 = v(3, 3);
         Vector v2 = v(2, 2);
@@ -141,27 +141,27 @@ public class VectorTest
     }
 
     @Test
-    public void testMultiply()
+    public void multiply()
     {
         Vector vector = v(1, 2);
         assertEquals(vector.multiply(2), v(2, 4));
     }
 
     @Test
-    public void testNormalize()
+    public void normalize()
     {
         Vector vector = v(10, 100);
         assertEquals(vector.normalize().length(), 1, 0);
     }
 
     @Test
-    public void testDivideThrowsException()
+    public void divideThrowsException()
     {
         assertThrows(ArithmeticException.class, () -> v(0, 0).divide(0));
     }
 
     @Test
-    public void testGetLength()
+    public void length()
     {
         assertEquals(v(1, 1).length(), Math.sqrt(2), 0.00001);
     }
@@ -170,21 +170,21 @@ public class VectorTest
     class GetLengthOtherTest
     {
         @Test
-        public void testWithOther()
+        public void withOther()
         {
             // distance between (1,2) and (4,6) is 5
             assertEquals(5.0, v(1, 2).length(v(4, 6)), 1e-9);
         }
 
         @Test
-        public void testWithOtherSameVector()
+        public void withOtherSameVector()
         {
             Vector a = v(2.5, -1.5);
             assertEquals(0.0, a.length(a), 1e-9);
         }
 
         @Test
-        public void testWithOtherNullThrows()
+        public void withOtherNullThrows()
         {
             assertThrows(NullPointerException.class,
                 () -> v(0, 0).length(null));
@@ -192,19 +192,19 @@ public class VectorTest
     }
 
     @Test
-    public void testNegate()
+    public void negate()
     {
         assertEquals(v(1, 1).negate(), v(-1, -1));
     }
 
     @Test
-    public void testAdd()
+    public void add()
     {
         assertEquals(v(1, 1).add(v(1, 1)), v(2, 2));
     }
 
     @Test
-    public void testIsNull()
+    public void isNull()
     {
         assertFalse(v(1, 1).isNull());
         assertFalse(v(1, 0).isNull());
@@ -213,7 +213,7 @@ public class VectorTest
     }
 
     @Test
-    public void testIsIntegral()
+    public void isIntegral()
     {
         assertTrue(v(1, 1).isIntegral());
         assertFalse(v(.5, .5).isIntegral());
@@ -225,14 +225,14 @@ public class VectorTest
     class GetAngleTest
     {
         @Test
-        public void testSameVectorReturnsZero()
+        public void sameVectorReturnsZero()
         {
             Vector v = v(1, 2);
             assertEquals(360, v.angle(v), 1e-5);
         }
 
         @Test
-        public void testOrthogonalIsNinety()
+        public void orthogonalIsNinety()
         {
             Vector a = v(1, 0);
             Vector b = v(0, 1);
@@ -241,7 +241,7 @@ public class VectorTest
         }
 
         @Test
-        public void testOppositeIsOneEighty()
+        public void oppositeIsOneEighty()
         {
             Vector a = v(1, 0);
             Vector b = v(-1, 0);
@@ -249,17 +249,17 @@ public class VectorTest
         }
 
         @Test
-        public void testArbitraryVectors()
+        public void arbitraryVectors()
         {
             Vector a = v(1.0, 1.0);
             Vector b = v(2.0, 3.0);
             double expected = Math.toDegrees(
-                Math.acos(a.getScalarProduct(b) / (a.length() * b.length())));
+                Math.acos(a.scalarProduct(b) / (a.length() * b.length())));
             assertEquals(expected, a.angle(b), 1e-9);
         }
 
         @Test
-        public void testNullThrowsException()
+        public void nullThrowsException()
         {
             assertThrows(NullPointerException.class, () -> v(0, 0).angle(null));
         }
@@ -267,7 +267,7 @@ public class VectorTest
 
     @ExtendWith(EnLocale.class)
     @Test
-    public void testToString()
+    public void toStringFormatter()
     {
         assertEquals("Vector [x=1.0, y=1.0]",
             AnsiColor.remove(v(1, 1).toString()));
@@ -284,61 +284,61 @@ public class VectorTest
         }
 
         @Test
-        public void testZero()
+        public void zero()
         {
             assertAngle(0.0, 0, 0);
         }
 
         @Test
-        public void testEast()
+        public void east()
         {
             assertAngle(0.0, 1, 0);
         }
 
         @Test
-        public void testEastNorth()
+        public void eastNorth()
         {
             assertAngle(45, 1, 1);
         }
 
         @Test
-        public void testNorth()
+        public void north()
         {
             assertAngle(90, 0, 1);
         }
 
         @Test
-        public void testNorthWest()
+        public void northWest()
         {
             assertAngle(135, -1, 1);
         }
 
         @Test
-        public void testWest()
+        public void west()
         {
             assertAngle(180, -1, 0);
         }
 
         @Test
-        public void testWestSouth()
+        public void westSouth()
         {
             assertAngle(-135, -1, -1);
         }
 
         @Test
-        public void testSouth()
+        public void south()
         {
             assertAngle(-90, 0, -1);
         }
 
         @Test
-        public void testSouthEast()
+        public void southEast()
         {
             assertAngle(-45, 1, -1);
         }
 
         @Test
-        public void testArbitraryVector()
+        public void arbitraryVector()
         {
             Vector a = v(2.0, -3.0);
             double expected = Math.toDegrees(Math.atan2(a.y(), a.x()));
@@ -357,61 +357,61 @@ public class VectorTest
         }
 
         @Test
-        public void testZero()
+        public void zero()
         {
             assertRadians(0.0, 0, 0);
         }
 
         @Test
-        public void testEast()
+        public void aast()
         {
             assertRadians(0.0, 1, 0);
         }
 
         @Test
-        public void testEastNorth()
+        public void eastNorth()
         {
             assertRadians(PI / 4, 1, 1);
         }
 
         @Test
-        public void testNorth()
+        public void north()
         {
             assertRadians(PI / 2, 0, 1);
         }
 
         @Test
-        public void testNorthWest()
+        public void northWest()
         {
             assertRadians(PI / 2 + PI / 4, -1, 1);
         }
 
         @Test
-        public void testWest()
+        public void west()
         {
             assertRadians(PI, -1, 0);
         }
 
         @Test
-        public void testWestSouth()
+        public void westSouth()
         {
             assertRadians(-PI / 2 - PI / 4, -1, -1);
         }
 
         @Test
-        public void testSouth()
+        public void south()
         {
             assertRadians(-PI / 2, 0, -1);
         }
 
         @Test
-        public void testSouthEast()
+        public void southEast()
         {
             assertRadians(-PI / 4, 1, -1);
         }
 
         @Test
-        public void testArbitraryVector()
+        public void arbitraryVector()
         {
             Vector a = v(2.0, -3.0);
             double expected = Math.atan2(a.y(), a.x());

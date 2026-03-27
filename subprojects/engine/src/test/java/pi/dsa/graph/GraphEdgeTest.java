@@ -31,31 +31,31 @@ public class GraphEdgeTest
             true);
 
     @Test
-    void testGetFrom()
+    void from()
     {
         assertEquals(edge.from().label(), "a");
     }
 
     @Test
-    void testGetTo()
+    void to()
     {
         assertEquals(edge.to().label(), "b");
     }
 
     @Test
-    void testGetWeight()
+    void weight()
     {
         assertEquals(edge.weight(), 2);
     }
 
     @Test
-    void testIsDirected()
+    void isDirected()
     {
         assertEquals(edge.isDirected(), true);
     }
 
     @Test
-    void testGenerateJavaCode()
+    void generateJavaCode()
     {
         assertEquals(edge.generateJavaCode(),
             "g.addEdge(\"b\", \"a\", 2, true);");

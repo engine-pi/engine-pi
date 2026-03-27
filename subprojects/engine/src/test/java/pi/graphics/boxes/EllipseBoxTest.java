@@ -39,7 +39,7 @@ public class EllipseBoxTest
     EllipseBox ellipse;
 
     @BeforeEach
-    void beforeEach()
+    void setUp()
     {
         ellipse = new EllipseBox(100, 50).color(Color.RED);
     }

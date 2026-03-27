@@ -39,7 +39,7 @@ public class ImageFontTest
     ImageFont imageFont;
 
     @BeforeEach
-    public void createImageFont()
+    public void setUp()
     {
         imageFont = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
@@ -51,34 +51,34 @@ public class ImageFontTest
     }
 
     @Test
-    public void testSingleLine()
+    public void singleLine()
     {
         write(imageFont.render("Hello, World."), "single-line");
     }
 
     @Test
-    public void testMultiLine()
+    public void multiLine()
     {
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."),
             "multi-line");
     }
 
     @Test
-    public void testTextAlignmentCenter()
+    public void textAlignmentCenter()
     {
         imageFont.alignment(TextAlignment.CENTER);
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."), "center");
     }
 
     @Test
-    public void testCaseSensitivity()
+    public void caseSensitivity()
     {
         imageFont.caseSensitivity(ImageFontCaseSensitivity.TO_LOWER);
         assertThrows(RuntimeException.class, () -> imageFont.render("hello"));
     }
 
     @Test
-    public void testMethodChaining()
+    public void methodChaining()
     {
         write(
             imageFont.basePath("image-font/tetris")
@@ -94,13 +94,13 @@ public class ImageFontTest
     }
 
     @Test
-    public void testThrowException()
+    public void throwExceptionFalse()
     {
         write(imageFont.throwException(false).render("!"), "throw-no-error");
     }
 
     @Test
-    public void testThrows()
+    public void throwExceptionTrue()
     {
         assertThrows(RuntimeException.class, () -> imageFont.render("!"));
     }

@@ -1,12 +1,15 @@
 # `tests` (Unittests)
 
-[JUnit](https://junit.org/)
+Als Test-Framework kommt [JUnit](https://junit.org) in der Version 5 zu Einsatz,
+als [Mocking](https://de.wikipedia.org/wiki/Mock-Objekt)-Framework
+[Mockito](https://site.mockito.org).
 
-[Mockito](https://site.mockito.org/)
-
-- Testmethoden ohne `test`-Präfix
-- Testmethoden in der Reihenfolge der zu testenden Methoden.
-- Test-Klassenname endet mit `Test`
+Die Testmethoden werden ohne das Präfix `test` formuliert, um kürze
+Methodennamen zu erhalten. Dass es sich um einen Testmethode handelt ist durch
+die Annoation `@Test` ersichtlich. Die Anordnung der Testmethoden erfolgt in der
+gleichen Reihenfolge wie die der zu testenden Methoden, um die
+Nachvollziehbarkeit zu erleichtern. Der Name der Testklasse endet stets mit dem
+Suffix `Test`, sodass ihre Funktion eindeutig erkennbar ist.
 
 ```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,7 +37,7 @@ public class EllipseBoxTest
     EllipseBox ellipse;
 
     @BeforeEach
-    void beforeEach()
+    void setUp()
     {
         ellipse = new EllipseBox(100, 50).color(Color.RED);
     }

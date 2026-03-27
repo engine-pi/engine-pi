@@ -34,7 +34,7 @@ public class FileUtilTest
     class GetFileNameTest
     {
         @Test
-        void testUrl() throws MalformedURLException
+        void url() throws MalformedURLException
         {
             assertEquals(
                 FileUtil.getFileName(new URL("file:/home/pi/test.png")),
@@ -42,13 +42,13 @@ public class FileUtilTest
         }
 
         @Test
-        void testString()
+        void string()
         {
             assertEquals(FileUtil.getFileName("/home/pi/test.png"), "test");
         }
 
         @Test
-        void testExtension()
+        void extension()
         {
             String path = "/home/pi/test.png";
             assertEquals(FileUtil.getFileName(path, false), "test");
@@ -60,7 +60,7 @@ public class FileUtilTest
     class HumanReadableByteCountTest
     {
         @Test
-        void testBytesLessThanUnit()
+        void bytesLessThanUnit()
         {
             assertEquals("0 bytes", FileUtil.humanReadableByteCount(0));
             assertEquals("1 bytes", FileUtil.humanReadableByteCount(1));
@@ -69,7 +69,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testKilobytesDecimal()
+        void kilobytesDecimal()
         {
             assertEquals("1.0 KB", FileUtil.humanReadableByteCount(1000, true));
             assertEquals("1.5 KB", FileUtil.humanReadableByteCount(1500, true));
@@ -78,7 +78,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testKilobytesBinary()
+        void kilobytesBinary()
         {
             assertEquals("1.0 KiB",
                 FileUtil.humanReadableByteCount(1024, false));
@@ -89,7 +89,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testMegabytesDecimal()
+        void megabytesDecimal()
         {
             assertEquals("1.0 MB",
                 FileUtil.humanReadableByteCount(1000000, true));
@@ -98,7 +98,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testMegabytesBinary()
+        void megabytesBinary()
         {
             assertEquals("1.0 MiB",
                 FileUtil.humanReadableByteCount(1048576, false));
@@ -107,7 +107,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testGigabytesDecimal()
+        void gigabytesDecimal()
         {
             assertEquals("1.0 GB",
                 FileUtil.humanReadableByteCount(1000000000L, true));
@@ -116,7 +116,7 @@ public class FileUtilTest
         }
 
         @Test
-        void testGigabytesBinary()
+        void gigabytesBinary()
         {
             assertEquals("1.0 GiB",
                 FileUtil.humanReadableByteCount(1073741824L, false));
@@ -125,14 +125,14 @@ public class FileUtilTest
         }
 
         @Test
-        void testDefaultDecimalFalse()
+        void defaultDecimalFalse()
         {
             assertEquals("1.0 KiB", FileUtil.humanReadableByteCount(1024));
             assertEquals("1.0 MiB", FileUtil.humanReadableByteCount(1048576));
         }
 
         @Test
-        void testLargeValues()
+        void largeValues()
         {
             assertEquals("1.0 TB",
                 FileUtil.humanReadableByteCount(1000000000000L, true));
@@ -149,56 +149,56 @@ public class FileUtilTest
     class ExistsTest
     {
         @Test
-        void testExistingFolder()
+        void existingFolder()
         {
             assertTrue(FileUtil.exists(FileUtil.getHomeDir()));
         }
 
         @Test
-        void testExistingFile()
+        void existingFile()
         {
             assertTrue(FileUtil.exists(FileUtil.createTmpFile()));
         }
 
         @Test
-        void testNonExistingFile()
+        void nonExistingFile()
         {
             assertFalse(FileUtil.exists("non-existing-file.txt"));
         }
 
         @Test
-        void testEmptyPath()
+        void emptyPath()
         {
             assertFalse(FileUtil.exists(""));
         }
 
         @Test
-        void testNullPath()
+        void nullPath()
         {
             assertFalse(FileUtil.exists(null));
         }
 
         @Test
-        void testInvalidPath()
+        void invalidPath()
         {
             assertFalse(FileUtil.exists("invalid://path/to/file"));
         }
 
         @Test
-        void testPathWithSpaces()
+        void pathWithSpaces()
         {
             assertFalse(FileUtil.exists("file with spaces.txt"));
         }
     }
 
     @Test
-    void testGetHomeDir()
+    void getHomeDir()
     {
         assertEquals(FileUtil.getHomeDir(), System.getProperty("user.home"));
     }
 
     @Test
-    void testGetTmpDir()
+    void getTmpDir()
     {
         assertEquals(FileUtil.getTmpDir(),
             System.getProperty("java.io.tmpdir"));

@@ -33,7 +33,7 @@ public class InsetBoxTest
     InsetBox inset;
 
     @BeforeEach
-    void beforeEach()
+    void setUp()
     {
         inset = new InsetBox(new DimensionBox(42, 23)).top(1)
             .right(2)
@@ -101,7 +101,7 @@ public class InsetBoxTest
     }
 
     @Test
-    void testToStringFormatter()
+    void toStringFormatter()
     {
         assertEquals("InsetBox [top=1, right=2, bottom=3, left=4]",
             inset.toString(true));

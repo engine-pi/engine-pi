@@ -35,7 +35,7 @@ public class CoordinateSystemTranslatorTest
     }
 
     @Test
-    public void testRowsAndCols()
+    public void rowsAndCols()
     {
         var translator = create(4, 5);
         assertEquals(translator.rows, 4);
@@ -47,31 +47,31 @@ public class CoordinateSystemTranslatorTest
     class TranslateToPoint
     {
         @Test
-        void testAllPositive()
+        void allPositive()
         {
             assertPoint(translate(3, 4, 3, 2).toPoint(5, 3), 1, 2);
         }
 
         @Test
-        void testXYnegative()
+        void xYnegative()
         {
             assertPoint(translate(3, 4, -3, -2).toPoint(-1, -1), 1, 2);
         }
 
         @Test
-        void testYNegative()
+        void yNegative()
         {
             assertPoint(translate(3, 4, 5, -5).toPoint(7, -4), 1, 2);
         }
 
         @Test
-        void testXY0()
+        void xY0()
         {
             assertPoint(translate(3, 4, 0, 0).toPoint(2, 1), 1, 2);
         }
 
         @Test
-        void testDifferentRowsCols()
+        void differentRowsCols()
         {
             assertPoint(translate(10, 10, -5, -5).toPoint(4, 4), 0, 9);
         }
@@ -82,19 +82,19 @@ public class CoordinateSystemTranslatorTest
     class TranslateToVector
     {
         @Test
-        void testAllPositive()
+        void allPositive()
         {
             assertVector(translate(3, 4, 3, 2).toVector(2, 0), 3, 2);
         }
 
         @Test
-        void testXYnegative()
+        void xYnegative()
         {
             assertVector(translate(3, 4, -3, -2).toVector(2, 0), -3, -2);
         }
 
         @Test
-        void testXY0()
+        void xY0()
         {
             assertVector(translate(3, 4, 0, 0).toVector(0, 0), 0, 2);
         }

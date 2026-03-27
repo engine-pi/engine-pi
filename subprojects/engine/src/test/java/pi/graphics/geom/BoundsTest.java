@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 public class BoundsTest
 {
     @Test
-    public void testGetCenter()
+    public void center()
     {
         Bounds bounds = new Bounds(0, 0, 1, 1);
         Vector vector = bounds.center();

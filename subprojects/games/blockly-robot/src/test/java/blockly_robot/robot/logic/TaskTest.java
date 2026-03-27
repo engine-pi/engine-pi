@@ -21,7 +21,7 @@ class TaskTest
         .loadByTaskPath("conditionals_excercises/light_all_candles");
 
     @Test
-    void testLoadByRelPath()
+    void loadByRelPath()
     {
         // Assuming that the relative path
         // "conditionals_excercises/light_all_candles" is valid
@@ -41,7 +41,7 @@ class TaskTest
         }
 
         @Test
-        void testJsonFile()
+        void jsonFile()
         {
             assertPath(
                 "/home/xxx/repos/github/jwinf-java/src/main/resources/data/tasks/conditionals_excercises/find_the_way_to_the_lake.json",
@@ -49,7 +49,7 @@ class TaskTest
         }
 
         @Test
-        void testClassFile()
+        void classFile()
         {
             assertPath(
                 "blockly_robot.jwinf.en.tasks.conditionals_excercises.find_the_way_to_the_lake.TaskSolver.class",
@@ -58,13 +58,13 @@ class TaskTest
     }
 
     @Test
-    void testTitle()
+    void title()
     {
         assertEquals(task.getTitle(), "Kerzen anzünden");
     }
 
     @Test
-    void testIntro()
+    void intro()
     {
         assertEquals(task.getIntro(),
             "Programmiere den Roboter:\n"
@@ -72,26 +72,26 @@ class TaskTest
     }
 
     @Test
-    void testGetNumberOfLevels()
+    void getNumberOfLevels()
     {
         assertEquals(task.getNumberOfLevels(), 3);
     }
 
     @Test
-    void testGetTaskPath()
+    void getTaskPath()
     {
         assertEquals(task.getTaskPath(),
             "conditionals_excercises/light_all_candles");
     }
 
     @Test
-    void testGetMaxCols()
+    void getMaxCols()
     {
         assertEquals(task.getMaxCols(), 10);
     }
 
     @Test
-    void testGetMaxRows()
+    void getMaxRows()
     {
         assertEquals(task.getMaxRows(), 6);
     }
@@ -108,44 +108,44 @@ class TaskTest
     }
 
     @Test
-    void testGetBackgroundColor()
+    void getBackgroundColor()
     {
         assertEquals(task.getBackgroundColor(), "#c5e2dd");
     }
 
     @Test
-    void testGetBorderColor()
+    void getBorderColor()
     {
         assertEquals(task.getBorderColor(), "#b4ccc7");
     }
 
     @Test
-    void testGetLevelIntDifficulty()
+    void getLevelIntDifficulty()
     {
         assertEquals(task.getLevel(0).getDifficulty(), EASY);
     }
 
     @Test
-    void testGetLevelEnumDifficulty()
+    void getLevelEnumDifficulty()
     {
         assertEquals(task.getLevel(MEDIUM).getDifficulty(), MEDIUM);
     }
 
     @Test
-    void testGetLevelDifficultyAndTestIndex()
+    void getLevelDifficultyAndTestIndex()
     {
         assertEquals(task.getLevel(HARD, 0).getDifficulty(), HARD);
     }
 
     @Test
-    void testGetMaxLevelsPerDifficulty()
+    void getMaxLevelsPerDifficulty()
     {
         // Assuming that the maximum levels per difficulty is 3
         assertEquals(task.getMaxLevelsPerDifficulty(), 1);
     }
 
     @Test
-    void testGetNumberOfDifficulties()
+    void getNumberOfDifficulties()
     {
         // Assuming that the number of difficulties is 3 (EASY, MEDIUM, HARD)
         assertEquals(task.getNumberOfDifficulties(), 3);
@@ -157,25 +157,25 @@ class TaskTest
         Task task = Task.loadByTaskPath("loops_excercises/collecting_gems");
 
         @Test
-        void testGetBackgroundColor()
+        void getBackgroundColor()
         {
             assertEquals(task.getBackgroundColor(), "#BF5E47");
         }
 
         @Test
-        void testGetBorderColor()
+        void getBorderColor()
         {
             assertEquals(task.getBorderColor(), "#96413B");
         }
 
         @Test
-        void testGetItemCreator()
+        void getItemCreator()
         {
             assertEquals(task.getItemCreator().create("gem").getType(), "gem");
         }
 
         @Test
-        void testGetBagSize()
+        void getBagSize()
         {
             assertEquals(task.getBagSize(), 100);
         }

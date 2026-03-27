@@ -25,21 +25,21 @@ public class FontContainerTest
     }
 
     @Test
-    public void testLoadFromResources()
+    public void loadFromResources()
     {
         var font = container.get("fonts/Cantarell-Bold.ttf");
         assertEquals(font.getName(), "Cantarell Bold");
     }
 
     @Test
-    public void testLoadSystemFonts()
+    public void loadSystemFonts()
     {
         var font = container.get("DejaVu Serif");
         assertEquals(font.getName(), "DejaVu Serif");
     }
 
     @Test
-    public void testDefaultFont()
+    public void defaultFont()
     {
         var font = container.defaultFont(FontStyle.PLAIN);
 
@@ -57,25 +57,25 @@ public class FontContainerTest
         }
 
         @Test
-        public void testPlain()
+        public void plain()
         {
             assertEquals(0, getStyle(FontStyle.PLAIN));
         }
 
         @Test
-        public void testBold()
+        public void bold()
         {
             assertEquals(1, getStyle(FontStyle.BOLD));
         }
 
         @Test
-        public void testItalic()
+        public void italic()
         {
             assertEquals(2, getStyle(FontStyle.ITALIC));
         }
 
         @Test
-        public void testBoldItalic()
+        public void boldItalic()
         {
             assertEquals(3, getStyle(FontStyle.BOLD_ITALIC));
         }

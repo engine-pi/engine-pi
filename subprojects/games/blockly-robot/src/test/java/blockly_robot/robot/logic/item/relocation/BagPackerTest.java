@@ -10,7 +10,7 @@ public class BagPackerTest
     BagPacker bagPacker = loadBagPacker("loops_excercises/securing_the_road");
 
     @Test
-    void testGetBagSize()
+    void getBagSize()
     {
         assertEquals(bagPacker.getBagSize(), 200);
     }

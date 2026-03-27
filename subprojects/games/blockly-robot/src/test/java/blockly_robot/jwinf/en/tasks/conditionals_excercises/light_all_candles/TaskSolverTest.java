@@ -19,7 +19,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     }
 
     @Test
-    void testEasy() throws Exception
+    void easy() throws Exception
     {
         assertActions(EASY,
             0,
@@ -35,7 +35,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     }
 
     @Test
-    void testMedium() throws Exception
+    void medium() throws Exception
     {
         assertActions(MEDIUM,
             0,
@@ -94,7 +94,7 @@ public class TaskSolverTest extends TaskTester<Robot>
     }
 
     @Test
-    void testHard() throws Exception
+    void hard() throws Exception
     {
         assertActions(HARD,
             0,

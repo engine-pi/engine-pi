@@ -24,14 +24,14 @@ public class ImagesContainerTest
     }
 
     @Test
-    public void testLoad()
+    public void load()
     {
         var image = container.get("Pixel-Adventure-1/Background/Blue.png");
         assertEquals(64, image.getWidth());
     }
 
     @Test
-    public void testLoadFromCache() throws IOException
+    public void loadFromCache() throws IOException
     {
         var image1 = container.get("Pixel-Adventure-1/Background/Blue.png");
         var image2 = container.get("Pixel-Adventure-1/Background/Blue.png");

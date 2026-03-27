@@ -42,7 +42,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class ColorUtilTest
 {
     @Test
-    public void testMalformedColorHexString()
+    public void malformedColorHexString()
     {
         Logger.getLogger(ColorUtil.class.getName()).setUseParentHandlers(false);
         String red = "~#ff0000";
@@ -55,7 +55,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getColorFromHexString")
-    public void testColorFromHexString(String colorHex, Color expectedColor)
+    public void colorFromHexString(String colorHex, Color expectedColor)
     {
         Color colorDecoded = ColorUtil.decode(colorHex);
         assertEquals(expectedColor, colorDecoded);
@@ -78,31 +78,31 @@ public class ColorUtilTest
         Color alphaRed = new Color(255, 0, 0, 200);
 
         @Test
-        public void testRedFromAlphaHexString()
+        public void redFromAlphaHexString()
         {
             assertEquals(alphaRed.getRed(), redDecoded.getRed());
         }
 
         @Test
-        public void testGreenFromAlphaHexString()
+        public void greenFromAlphaHexString()
         {
             assertEquals(alphaRed.getGreen(), redDecoded.getGreen());
         }
 
         @Test
-        public void testBlueFromAlphaHexString()
+        public void blueFromAlphaHexString()
         {
             assertEquals(alphaRed.getBlue(), redDecoded.getBlue());
         }
 
         @Test
-        public void testAlphaFromAlphaHexString()
+        public void alphaFromAlphaHexString()
         {
             assertEquals(alphaRed.getAlpha(), redDecoded.getAlpha());
         }
 
         @Test
-        public void testStringArray()
+        public void stringArray()
         {
             Color color = ColorUtil.decode(new String[] { "#ff0000ff" })[0];
             assertEquals(color.getRed(), 255);
@@ -114,7 +114,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getSolidColorFromAlphaHexString")
-    public void testSolidColorFromAlphaHexString(String color, Boolean isSolid,
+    public void solidColorFromAlphaHexString(String color, Boolean isSolid,
             Color solidColor)
     {
         Color colorDecoded = ColorUtil.decode(color, isSolid);
@@ -132,7 +132,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getHexStringWithoutHashtag")
-    public void testHexStringWithoutHashtag(String color, Color expectedColor)
+    public void hexStringWithoutHashtag(String color, Color expectedColor)
     {
         Color colorDecoded = ColorUtil.decode(color);
         assertEquals(expectedColor, colorDecoded);
@@ -147,7 +147,7 @@ public class ColorUtilTest
     }
 
     @Test
-    public void testEncodeColor()
+    public void encodeColor()
     {
         String redEncoded = ColorUtil.encode(Color.RED);
         String greenEncoded = ColorUtil.encode(Color.GREEN);
@@ -161,7 +161,7 @@ public class ColorUtilTest
     }
 
     @Test
-    public void testEncodeAlphaColor()
+    public void encodeAlphaColor()
     {
         String redEncoded = ColorUtil.encode(new Color(255, 0, 0, 200));
         String greenEncoded = ColorUtil.encode(new Color(0, 255, 0, 200));
@@ -175,7 +175,7 @@ public class ColorUtilTest
     @CsvSource(
     { "Negative, -10, 0", "Zero, 0, 0", "InRange, 158, 158", "Max, 255, 255",
             "OutOfRange, 300, 255" })
-    public void testRgbBounds(String rgbBound, int colorValue, int expectedRgb)
+    public void rgbBounds(String rgbBound, int colorValue, int expectedRgb)
     {
         // arrange, act
         int actualRgb = ColorUtil.ensureColorValueRange(colorValue);
@@ -184,14 +184,14 @@ public class ColorUtilTest
     }
 
     @Test
-    public void testPremultiply()
+    public void premultiply()
     {
         Color color = new Color(225, 0, 0);
         assertEquals(new Color(225, 0, 0), ColorUtil.premultiply(color));
     }
 
     @Test
-    public void testChangeHSB()
+    public void changeHSB()
     {
         Color color = new Color(225, 0, 0);
         assertEquals(new Color(225, 0, 0), ColorUtil.chanceHSB(color, (hsb) -> {

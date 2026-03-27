@@ -24,33 +24,33 @@ public class TaskListTest
     }
 
     @Test
-    public void testReadFromResources() throws IOException
+    public void readFromResources() throws IOException
     {
         TaskList list = TaskList.readFromResources();
         assertTrue(list.size() > 0);
     }
 
     @Test
-    public void testReadFromMenu() throws IOException
+    public void readFromMenu() throws IOException
     {
         TaskList list = TaskList.readFromMenu();
         assertEquals(list.size(), 6);
     }
 
     @Test
-    public void testGetId()
+    public void getId()
     {
         assertTrue(list.getId(0) instanceof String);
     }
 
     @Test
-    public void testNext()
+    public void next()
     {
         assertTrue(list.next().indexOf("/") > 0);
     }
 
     @Test
-    public void testPrevious()
+    public void previous()
     {
         assertTrue(list.next().indexOf("/") > 0);
     }

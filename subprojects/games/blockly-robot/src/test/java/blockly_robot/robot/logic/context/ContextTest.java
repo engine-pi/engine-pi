@@ -12,32 +12,32 @@ public class ContextTest
         "conditionals_excercises/gems_and_obstacles");
 
     @Test
-    public void testGetRows()
+    public void getRows()
     {
         assertEquals(context.getRows(), 7);
     }
 
     @Test
-    public void testGetCols()
+    public void getCols()
     {
         assertEquals(context.getCols(), 7);
     }
 
     @Test
-    public void testGetRobot()
+    public void getRobot()
     {
         assertEquals(context.getRobot().getRow(), 5);
     }
 
     @Test
-    public void testGetTask()
+    public void getTask()
     {
         assertEquals(context.getTask().getTitle(),
             "Edelsteine und Hindernisse");
     }
 
     @Test
-    public void testGetLevel()
+    public void getLevel()
     {
         assertEquals(context.getLevel().getDifficulty(), EASY);
     }

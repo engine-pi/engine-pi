@@ -54,7 +54,7 @@ public class ImageTest
     }
 
     @Test
-    public void testImageConstructorWithDimensions()
+    public void constructorWithDimensions()
     {
         assertEquals(2.0, image.width(), 0.01);
         assertEquals(1.0, image.height(), 0.01);
@@ -226,7 +226,7 @@ public class ImageTest
     }
 
     @Test
-    public void testToString()
+    public void toStringFormatter()
     {
         String result = image.toString();
         assertNotNull(result);

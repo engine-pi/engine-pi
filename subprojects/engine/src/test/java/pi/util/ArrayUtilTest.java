@@ -42,13 +42,13 @@ class ArrayUtilTests
 {
 
     @BeforeEach
-    public void setup()
+    public void setUp()
     {
         Logger.getLogger(ArrayUtil.class.getName()).setUseParentHandlers(false);
     }
 
     @Test
-    void testByteArrayConcat()
+    void byteArrayConcat()
     {
         byte[] arr1 = new byte[] { 1, 2, 3, 4, 5 };
         byte[] arr2 = new byte[] { 6, 7, 8, 9 };
@@ -59,7 +59,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testIntArrayConcat()
+    void intArrayConcat()
     {
         int[] arr1 = new int[] { 1, 2, 3, 4, 5 };
         int[] arr2 = new int[] { 6, 7, 8, 9 };
@@ -70,7 +70,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testLongArrayConcat()
+    void longArrayConcat()
     {
         long[] arr1 = new long[] { 1, 2, 3, 4, 5 };
         long[] arr2 = new long[] { 6, 7, 8, 9 };
@@ -81,7 +81,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testDoubleArrayConcat()
+    void doubleArrayConcat()
     {
         double[] arr1 = new double[] { 1.0, 2.0, 3.0, 4.0, 5.0 };
         double[] arr2 = new double[] { 6.0, 7.0, 8.0, 9.0 };
@@ -95,7 +95,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testTArrayConcat()
+    void tArrayConcat()
     {
         Integer[] arr1 = { 1, 2, 3, 4, 5 };
         Integer[] arr2 = { 6, 7, 8, 9 };
@@ -106,7 +106,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testIntegerArrayFromCommaSeparatedString()
+    void integerArrayFromCommaSeparatedString()
     {
         String testStringWithInts = "100,200,300,1,2,3";
         String testStringWithoutInts = "paslikodja,2asdasd,sadasd";
@@ -128,7 +128,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testDoubleArrayFromCommaSeparatedString()
+    void doubleArrayFromCommaSeparatedString()
     {
         String testStringWithDoubles = "100.1,200.2,300.3,1.4,2.5,3.6";
         String testStringWithoutDoubles = "paslikodja,2asdasd,sadasd";
@@ -154,7 +154,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromIntegerArray()
+    void commaSeparatedStringFromIntegerArray()
     {
         int[] intsArr = new int[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithInts = ArrayUtil.join(intsArr);
@@ -162,14 +162,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromIntegerArrayEmpty()
+    void commaSeparatedStringFromIntegerArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new int[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromIntegerArrayDelimiter()
+    void commaSeparatedStringFromIntegerArrayDelimiter()
     {
         int[] intsArr = new int[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithIntsDelimiter = ArrayUtil.join(intsArr, ";");
@@ -177,7 +177,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromBooleanArray()
+    void commaSeparatedStringFromBooleanArray()
     {
         boolean[] boolArr = new boolean[] { true, false, true };
         String testStringWithBool = ArrayUtil.join(boolArr);
@@ -185,14 +185,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromBooleanEmpty()
+    void commaSeparatedStringFromBooleanEmpty()
     {
         String testEmpty = ArrayUtil.join(new boolean[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromBooleanArrayDelimiter()
+    void commaSeparatedStringFromBooleanArrayDelimiter()
     {
         boolean[] boolArr = new boolean[] { true, false, true };
         String testStringWithBoolDelimiter = ArrayUtil.join(boolArr, ";");
@@ -200,7 +200,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromDoubleArray()
+    void commaSeparatedStringFromDoubleArray()
     {
         double[] doubleArr = new double[] { 100.0, 200.0, 300.0, 1.0, 2.0,
                 3.0 };
@@ -209,14 +209,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromDoubleArrayEmpty()
+    void commaSeparatedStringFromDoubleArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new double[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromDoubleArrayDelimiter()
+    void commaSeparatedStringFromDoubleArrayDelimiter()
     {
         double[] doubleArr = new double[] { 100.0, 200.0, 300.0, 1.0, 2.0,
                 3.0 };
@@ -226,7 +226,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromFloatArray()
+    void commaSeparatedStringFromFloatArray()
     {
         float[] floatArr = new float[] { 100.0f, 200.0f, 300.0f, 1.0f, 2.0f,
                 3.0f };
@@ -235,14 +235,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromFloatArrayEmpty()
+    void commaSeparatedStringFromFloatArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new double[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromFloatArrayDelimiter()
+    void commaSeparatedStringFromFloatArrayDelimiter()
     {
         float[] floatArr = new float[] { 100.0f, 200.0f, 300.0f, 1.0f, 2.0f,
                 3.0f };
@@ -252,7 +252,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromStringArray()
+    void commaSeparatedStringFromStringArray()
     {
         String[] stringArr = new String[] { "test", "test2", "test3" };
         String testStringWithString = ArrayUtil.join(stringArr);
@@ -260,14 +260,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromStringArrayEmpty()
+    void commaSeparatedStringFromStringArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new String[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromStringArrayDelimiter()
+    void commaSeparatedStringFromStringArrayDelimiter()
     {
         String[] stringArr = new String[] { "test", "test2", "test3" };
         String testStringWithStringDelimiter = ArrayUtil.join(stringArr, ";");
@@ -275,7 +275,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromShortArray()
+    void commaSeparatedStringFromShortArray()
     {
         short[] shortArr = new short[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithShort = ArrayUtil.join(shortArr);
@@ -283,14 +283,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromShortArrayEmpty()
+    void commaSeparatedStringFromShortArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new short[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromShortArrayDelimiter()
+    void commaSeparatedStringFromShortArrayDelimiter()
     {
         short[] shortArr = new short[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithShortDelimiter = ArrayUtil.join(shortArr, ";");
@@ -298,7 +298,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromLongArray()
+    void commaSeparatedStringFromLongArray()
     {
         long[] longArr = new long[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithLong = ArrayUtil.join(longArr);
@@ -306,7 +306,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromLongArrayEmpty()
+    void commaSeparatedStringFromLongArrayEmpty()
     {
         long[] longArr = new long[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithLongDelimiter = ArrayUtil.join(longArr, ";");
@@ -314,7 +314,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromLongArrayDelimiter()
+    void commaSeparatedStringFromLongArrayDelimiter()
     {
         long[] longArr = new long[] { 100, 200, 300, 1, 2, 3 };
         String testStringWithLongDelimiter = ArrayUtil.join(longArr, ";");
@@ -322,7 +322,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromByteArray()
+    void commaSeparatedStringFromByteArray()
     {
         byte[] byteArr = new byte[] { 100, 127, -128, 1, 2, 3 };
         String testStringWithByte = ArrayUtil.join(byteArr);
@@ -330,14 +330,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromByteArrayEmpty()
+    void commaSeparatedStringFromByteArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new byte[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromByteArrayDelimiter()
+    void commaSeparatedStringFromByteArrayDelimiter()
     {
         byte[] byteArr = new byte[] { 100, 127, -128, 1, 2, 3 };
         String testStringWithByteDelimiter = ArrayUtil.join(byteArr, ";");
@@ -345,7 +345,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromCollectionArray()
+    void commaSeparatedStringFromCollectionArray()
     {
         List<String> collectionArr = Arrays.asList("test", "test2", "test3");
         String testStringWithCollectionDelimiter = ArrayUtil.join(collectionArr,
@@ -354,14 +354,14 @@ class ArrayUtilTests
     }
 
     @Test
-    void testCommaSeparatedStringFromCollectionArrayEmpty()
+    void commaSeparatedStringFromCollectionArrayEmpty()
     {
         String testEmpty = ArrayUtil.join(new String[] {});
         assertEquals("", testEmpty);
     }
 
     @Test
-    void testCommaSeparatedStringFromCollectionArrayDelimiter()
+    void commaSeparatedStringFromCollectionArrayDelimiter()
     {
         List<String> collectionArr = Arrays.asList("test", "test2", "test3");
         String testStringWithCollectionDelimiter = ArrayUtil.join(collectionArr,
@@ -371,7 +371,7 @@ class ArrayUtilTests
 
     @ParameterizedTest
     @MethodSource("getArray")
-    void testTwoDimensionalArrayToList(List<Integer> expectedValue)
+    void twoDimensionalArrayToList(List<Integer> expectedValue)
     {
         Integer[][] arr = new Integer[][] { { 0, 0, 0, }, { 1, 1, 1, },
                 { 2, 2, 2, }, };
@@ -391,7 +391,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testAppend()
+    void append()
     {
         Integer[] test = new Integer[] { 1, 2, 3, 4, 5 };
         Integer[] result = ArrayUtil.append(test, 6);
@@ -400,7 +400,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testDistinct()
+    void distinct()
     {
         Integer[] first = new Integer[] { 1, 2, 3, 4, 5 };
         Integer[] second = new Integer[] { 1, 2, 3, 4, 5, 6 };
@@ -411,7 +411,7 @@ class ArrayUtilTests
 
     @ParameterizedTest
     @MethodSource("getContains")
-    void testContains(Object[] array, Object value, Boolean expected)
+    void contains(Object[] array, Object value, Boolean expected)
     {
         assertEquals(expected, ArrayUtil.contains(array, value));
     }
@@ -433,8 +433,8 @@ class ArrayUtilTests
 
     @ParameterizedTest
     @MethodSource("getContainsString")
-    void testContainsString(String[] string, String argument,
-            Boolean ignoreCase, Boolean expected)
+    void containsString(String[] string, String argument, Boolean ignoreCase,
+            Boolean expected)
     {
         assertEquals(expected,
             ArrayUtil.contains(string, argument, ignoreCase));
@@ -467,7 +467,7 @@ class ArrayUtilTests
     }
 
     @Test
-    void testRemove()
+    void remove()
     {
         Integer[] test = new Integer[] { 1, 2, 3, 4, 5 };
         Integer[] result = ArrayUtil.remove(test, 6);

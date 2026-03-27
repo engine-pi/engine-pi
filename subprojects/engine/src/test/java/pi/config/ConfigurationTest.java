@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.graphics.geom.Direction;
@@ -37,7 +38,7 @@ public class ConfigurationTest
     Configuration config;
 
     @BeforeEach
-    void setup()
+    void setUp()
     {
         Configuration.reset(true);
         config = Configuration.getInstance();
@@ -74,41 +75,45 @@ public class ConfigurationTest
         assertFalse(config.coordinatesystem.labelsOnIntersections());
     }
 
-    @Test
-    public void resetHardDeletesConfigFile()
+    @Nested
+    class ResetTest
     {
-        Configuration config1 = Configuration.getInstance();
-        Configuration.reset(true);
-        Configuration config2 = Configuration.getInstance();
+        @Test
+        public void hardDeletesConfigFile()
+        {
+            Configuration config1 = Configuration.getInstance();
+            Configuration.reset(true);
+            Configuration config2 = Configuration.getInstance();
 
-        assertNotEquals(config1, config2);
-    }
+            assertNotEquals(config1, config2);
+        }
 
-    @Test
-    public void resetSoftKeepsConfigFile()
-    {
-        Configuration config1 = Configuration.getInstance();
-        Configuration.reset(false);
-        Configuration config2 = Configuration.getInstance();
+        @Test
+        public void softKeepsConfigFile()
+        {
+            Configuration config1 = Configuration.getInstance();
+            Configuration.reset(false);
+            Configuration config2 = Configuration.getInstance();
 
-        assertNotEquals(config1, config2);
-    }
+            assertNotEquals(config1, config2);
+        }
 
-    @Test
-    public void resetWithoutParameterIsDefault()
-    {
-        Configuration config1 = Configuration.getInstance();
-        Configuration.reset();
-        Configuration config2 = Configuration.getInstance();
+        @Test
+        public void withoutParameterIsDefault()
+        {
+            Configuration config1 = Configuration.getInstance();
+            Configuration.reset();
+            Configuration config2 = Configuration.getInstance();
 
-        assertNotEquals(config1, config2);
-    }
+            assertNotEquals(config1, config2);
+        }
 
-    @Test
-    public void resetMakesInstanceNull()
-    {
-        Configuration.getInstance();
-        Configuration.reset(false);
-        assertNotNull(Configuration.getInstance());
+        @Test
+        public void makesInstanceNull()
+        {
+            Configuration.getInstance();
+            Configuration.reset(false);
+            assertNotNull(Configuration.getInstance());
+        }
     }
 }

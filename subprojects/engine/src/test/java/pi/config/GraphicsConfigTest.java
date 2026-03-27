@@ -37,41 +37,41 @@ public class GraphicsConfigTest
     GraphicsConfig config;
 
     @BeforeEach
-    void setup()
+    void setUp()
     {
         config = new GraphicsConfig();
     }
 
     @Test
-    void testWindowWidth()
+    void windowWidth()
     {
         config.windowWidth(1024);
         assertEquals(1024, config.windowWidth());
     }
 
     @Test
-    void testWindowHeight()
+    void windowHeight()
     {
         config.windowHeight(768);
         assertEquals(768, config.windowHeight());
     }
 
     @Test
-    void testWindowPosition()
+    void windowPosition()
     {
         config.windowPosition(Direction.UP);
         assertEquals(Direction.UP, config.windowPosition());
     }
 
     @Test
-    void testFramerate()
+    void framerate()
     {
         config.framerate(120);
         assertEquals(120, config.framerate());
     }
 
     @Test
-    void testColorScheme()
+    void colorScheme()
     {
         config.colorScheme("Java");
         assertEquals("Java", config.colorScheme());
@@ -80,7 +80,7 @@ public class GraphicsConfigTest
     }
 
     @Test
-    void testPixelMultiplication()
+    void pixelMultiplication()
     {
         config.pixelMultiplication(3);
         assertEquals(3, config.pixelMultiplication());
@@ -88,7 +88,7 @@ public class GraphicsConfigTest
     }
 
     @Test
-    void testPixelMultiplicationDisabled()
+    void pixelMultiplicationDisabled()
     {
         config.pixelMultiplication(1);
         assertEquals(1, config.pixelMultiplication());
@@ -96,14 +96,14 @@ public class GraphicsConfigTest
     }
 
     @Test
-    void testScreenRecordingNFrames()
+    void screenRecordingNFrames()
     {
         config.screenRecordingNFrames(5);
         assertEquals(5, config.screenRecordingNFrames());
     }
 
     @Test
-    void testWindowDimension()
+    void windowDimension()
     {
         config.windowDimension(800, 600);
         assertEquals(800, config.windowWidth());
@@ -112,7 +112,7 @@ public class GraphicsConfigTest
     }
 
     @Test
-    void testBuilderPattern()
+    void builderPattern()
     {
         config.windowWidth(1280)
             .windowHeight(720)

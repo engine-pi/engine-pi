@@ -30,7 +30,7 @@ public class LoggerTest
     }
 
     @Test
-    public void testFileExists()
+    public void fileExists()
     {
         Logger.error("LoggerTest", "lorem ipsum");
         assertTrue(errStreamCaptor.toString().contains("lorem ipsum"));

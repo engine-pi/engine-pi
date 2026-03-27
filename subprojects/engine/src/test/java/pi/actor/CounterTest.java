@@ -37,14 +37,14 @@ public class CounterTest
     }
 
     @Test
-    public void testCounterInitialization()
+    public void initialization()
     {
         assertEquals(0, counter.counter());
         assertEquals("0", counter.content());
     }
 
     @Test
-    public void testCounterWithParameters()
+    public void constructorWithParameters()
     {
         Counter c = new Counter(5, "prefix_", "{counter}_template", "_suffix");
         assertEquals(5, c.counter());
@@ -52,7 +52,7 @@ public class CounterTest
     }
 
     @Test
-    public void testSetCounter()
+    public void counter()
     {
         counter.counter(10);
         assertEquals(10, counter.counter());
@@ -60,14 +60,14 @@ public class CounterTest
     }
 
     @Test
-    public void testIncrease()
+    public void increase()
     {
         assertEquals(1, counter.increase());
         assertEquals(1, counter.counter());
     }
 
     @Test
-    public void testIncreaseWithCustomAmount()
+    public void increaseWithCustomAmount()
     {
         counter.amount(5);
         assertEquals(5, counter.increase());
@@ -75,7 +75,7 @@ public class CounterTest
     }
 
     @Test
-    public void testDecrease()
+    public void decrease()
     {
         counter.counter(10);
         assertEquals(9, counter.decrease());
@@ -83,7 +83,7 @@ public class CounterTest
     }
 
     @Test
-    public void testDecreaseWithCustomAmount()
+    public void decreaseWithCustomAmount()
     {
         counter.counter(20);
         counter.amount(3);
@@ -92,7 +92,7 @@ public class CounterTest
     }
 
     @Test
-    public void testReset()
+    public void reset()
     {
         counter.counter(100);
         counter.reset();
@@ -101,7 +101,7 @@ public class CounterTest
     }
 
     @Test
-    public void testPrefix()
+    public void prefix()
     {
         counter.prefix("Zähler: ");
         counter.update();
@@ -109,7 +109,7 @@ public class CounterTest
     }
 
     @Test
-    public void testSuffix()
+    public void suffix()
     {
         counter.suffix(" Punkte");
         counter.update();
@@ -117,7 +117,7 @@ public class CounterTest
     }
 
     @Test
-    public void testTemplate()
+    public void template()
     {
         counter.template("Score: {counter}");
         counter.update();
@@ -125,7 +125,7 @@ public class CounterTest
     }
 
     @Test
-    public void testTemplateWithPrefixAndSuffix()
+    public void templateWithPrefixAndSuffix()
     {
         counter.prefix("[").template("{counter}/10").suffix("]");
         counter.counter(5);
@@ -134,20 +134,20 @@ public class CounterTest
     }
 
     @Test
-    public void testTemplateWithoutPlaceholder()
+    public void templateWithoutPlaceholder()
     {
         assertThrows(RuntimeException.class, () -> counter.template("Invalid"));
     }
 
     @Test
-    public void testAmount()
+    public void amount()
     {
         counter.amount(7);
         assertEquals(7, counter.amount());
     }
 
     @Test
-    public void testGettersAndSetters()
+    public void gettersAndSetters()
     {
         counter.prefix("pre_");
         counter.suffix("_suf");

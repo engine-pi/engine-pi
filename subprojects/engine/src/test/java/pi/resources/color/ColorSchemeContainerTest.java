@@ -31,14 +31,14 @@ public class ColorSchemeContainerTest
     ColorSchemeContainer container;
 
     @BeforeEach
-    void setup()
+    void setUp()
     {
         container = ColorSchemeContainer.getInstance();
         container.reset();
     }
 
     @Test
-    void testInitializationWithPredefinedSchemes()
+    void initializationWithPredefinedSchemes()
     {
         for (PredefinedColorScheme predefinedScheme : PredefinedColorScheme
             .values())
@@ -49,7 +49,7 @@ public class ColorSchemeContainerTest
     }
 
     @Test
-    void testAddAndGetColorScheme()
+    void addAndGetColorScheme()
     {
         ColorScheme customScheme = new ColorScheme("CustomScheme");
         container.add(customScheme);
@@ -57,7 +57,7 @@ public class ColorSchemeContainerTest
     }
 
     @Test
-    void testGetNonExistentScheme()
+    void getNonExistentScheme()
     {
         assertThrows(RuntimeException.class, () -> {
             container.get("NonExistentScheme");
@@ -65,13 +65,13 @@ public class ColorSchemeContainerTest
     }
 
     @Test
-    void testGetPredefinedScheme()
+    void getPredefinedScheme()
     {
         assertEquals("Java", container.get("Java").name());
     }
 
     @Test
-    void testOverwriteExistingScheme()
+    void overwriteExistingScheme()
     {
         ColorScheme newScheme = new ColorScheme("Java");
         container.add(newScheme);
@@ -82,7 +82,7 @@ public class ColorSchemeContainerTest
     class TestNames
     {
         @Test
-        void testNamesReturnsAllSchemeNames()
+        void namesReturnsAllSchemeNames()
         {
             String[] expectedNames = { "Gnome", "Java", "Android", "iOS",
                     "Tailwind CSS", "CustomScheme" };
@@ -93,7 +93,7 @@ public class ColorSchemeContainerTest
         }
 
         @Test
-        void testNamesReturnsEmptyArrayAfterClear()
+        void namesReturnsEmptyArrayAfterClear()
         {
             container.clear();
             String[] actualNames = container.names();
@@ -105,14 +105,14 @@ public class ColorSchemeContainerTest
     class TestNext
     {
         @Test
-        void testNextReturnsFirstScheme()
+        void nextReturnsFirstScheme()
         {
             ColorScheme firstScheme = container.next();
             assertEquals("Gnome", firstScheme.name());
         }
 
         @Test
-        void testNextAdvancesToNextScheme()
+        void nextAdvancesToNextScheme()
         {
             container.next();
             ColorScheme secondScheme = container.next();
@@ -120,7 +120,7 @@ public class ColorSchemeContainerTest
         }
 
         @Test
-        void testNextCyclesBackToFirstScheme()
+        void nextCyclesBackToFirstScheme()
         {
             String[] schemeNames = container.names();
             for (int i = 0; i < schemeNames.length; i++)
@@ -132,7 +132,7 @@ public class ColorSchemeContainerTest
         }
 
         @Test
-        void testNextSequentialOrder()
+        void nextSequentialOrder()
         {
             String[] expectedNames = container.names();
             for (String expectedName : expectedNames)

@@ -14,7 +14,7 @@ public class DifficultyTest
     }
 
     @Test
-    void testIndexOf()
+    void indexOfMethod()
     {
         assertEasy(indexOf(0));
         assertEasy(indexOf("easy"));

@@ -33,7 +33,7 @@ public class RandomTest
     class ToggleTest
     {
         @Test
-        void testDistribution()
+        void distribution()
         {
             int trueCount = 0;
             int iterations = 1000;
@@ -52,7 +52,7 @@ public class RandomTest
         }
 
         @Test
-        void testReturnsBoolean()
+        void returnsBoolean()
         {
             boolean result = Random.toggle();
             assert result == true || result == false
@@ -60,7 +60,7 @@ public class RandomTest
         }
 
         @Test
-        void testMultipleCalls()
+        void multipleCalls()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -71,7 +71,7 @@ public class RandomTest
         }
 
         @Test
-        void testVariety()
+        void variety()
         {
             boolean foundTrue = false;
             boolean foundFalse = false;
@@ -119,7 +119,7 @@ public class RandomTest
     class FontStyleAsIntTest
     {
         @Test
-        void testReturnsIntInRange()
+        void returnsIntInRange()
         {
             for (int i = 0; i < 1000; i++)
             {
@@ -130,7 +130,7 @@ public class RandomTest
         }
 
         @Test
-        void testDistributionAcrossRange()
+        void distributionAcrossRange()
         {
             boolean[] seen = new boolean[4];
             for (int i = 0; i < 1000; i++)
@@ -146,7 +146,7 @@ public class RandomTest
         }
 
         @Test
-        void testMultipleCalls()
+        void multipleCalls()
         {
             for (int i = 0; i < 500; i++)
             {
@@ -161,14 +161,14 @@ public class RandomTest
     class FontStyleAsEnumTest
     {
         @Test
-        void testReturnsNonNull()
+        void returnsNonNull()
         {
             FontStyle style = Random.fontStyleAsEnum();
             assert style != null : "fontStyleAsEnum() should not return null";
         }
 
         @Test
-        void testReturnsFontStyleEnum()
+        void returnsFontStyleEnum()
         {
             FontStyle style = Random.fontStyleAsEnum();
             assert style instanceof FontStyle
@@ -176,7 +176,7 @@ public class RandomTest
         }
 
         @Test
-        void testMultipleCalls()
+        void multipleCalls()
         {
             for (int i = 0; i < 100; i++)
             {
@@ -187,7 +187,7 @@ public class RandomTest
         }
 
         @Test
-        void testVariety()
+        void variety()
         {
             java.util.Set<FontStyle> foundStyles = new java.util.HashSet<>();
             for (int i = 0; i < 1000; i++)

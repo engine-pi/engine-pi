@@ -13,7 +13,7 @@ class PackageClassLoaderTest
 {
     @Test
     @DisplayName("Test instantiateClass with valid class path")
-    void testInstantiateClassWithValidClassPath()
+    void instantiateClassWithValidClassPath()
             throws ReflectiveOperationException
     {
         var sampleClass = PackageClassLoader.<Robot>instantiateClass(
@@ -25,7 +25,7 @@ class PackageClassLoaderTest
 
     @Test
     @DisplayName("Test instantiateClass with invalid class path")
-    void testInstantiateClassWithInvalidClassPath()
+    void instantiateClassWithInvalidClassPath()
     {
         assertThrows(ReflectiveOperationException.class, () -> {
             PackageClassLoader.instantiateClass("invalid.class.path");

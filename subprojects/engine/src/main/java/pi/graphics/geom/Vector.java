@@ -489,7 +489,7 @@ public final class Vector implements Cloneable
      * @return Skalarprodukt dieser Vektoren mit dem Vektor <code>v</code>.
      */
     @API
-    public double getScalarProduct(Vector other)
+    public double scalarProduct(Vector other)
     {
         return x * other.x + y * other.y;
     }
@@ -667,7 +667,7 @@ public final class Vector implements Cloneable
     public double angle(Vector other)
     {
         double degrees = Math.toDegrees(
-            Math.acos(getScalarProduct(other) / (length() * other.length())));
+            Math.acos(scalarProduct(other) / (length() * other.length())));
         if (y >= other.y)
         {
             return 360 - degrees;

@@ -22,62 +22,62 @@ public class MovementTest
     }
 
     @Test
-    void testRotationTurnLeft()
+    void rotationTurnLeft()
     {
         assertEquals(robot.turnLeft().getRotation(), -1);
     }
 
     @Test
-    void testRotationTurnRight()
+    void rotationTurnRight()
     {
         assertEquals(robot.turnRight().getRotation(), 1);
     }
 
     @Test
-    void testRotationTurnAround()
+    void rotationTurnAround()
     {
         assertEquals(robot.turnAround().getRotation(), 2);
     }
 
     @Test
-    void testRotationEast()
+    void rotationEast()
     {
         assertEquals(robot.east().getRotation(), 0);
     }
 
     @Test
-    void testRotationWest()
+    void rotationWest()
     {
         assertEquals(robot.west().getRotation(), 0);
     }
 
     @Test
-    void testRotationSouth()
+    void rotationSouth()
     {
         assertEquals(robot.south().getRotation(), 0);
     }
 
     @Test
-    void testRotationNorth()
+    void rotationNorth()
     {
         assertEquals(robot.north().getRotation(), 0);
     }
 
     @Test
-    void testRelocatedTrue()
+    void relocatedTrue()
     {
         assertTrue(robot.forward().isRelocated());
     }
 
     @Test
-    void testRelocatedFalse()
+    void relocatedFalse()
     {
         robot.turnLeft();
         assertFalse(robot.forward().isRelocated());
     }
 
     @Test
-    void testRelocatedFalseRotation()
+    void relocatedFalseRotation()
     {
         assertFalse(robot.turnLeft().isRelocated());
     }

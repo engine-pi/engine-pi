@@ -41,25 +41,25 @@ import pi.util.ReflectionUtil;
 public class ConfigGroupTest
 {
     @Test
-    void testPropertyChangedGraphicsConfig()
+    void propertyChangedGraphicsConfig()
     {
-        this.testConfigurationChanged(new CoordinatesystemConfig());
+        configurationChanged(new CoordinatesystemConfig());
     }
 
     @Test
-    void testPropertyChangedSoundConfig()
+    void propertyChangedSoundConfig()
     {
-        this.testConfigurationChanged(new SoundConfig());
+        configurationChanged(new SoundConfig());
     }
 
     @Test
-    void testPropertyChangedDebugConfig()
+    void propertyChangedDebugConfig()
     {
-        this.testConfigurationChanged(new DebugConfig());
+        configurationChanged(new DebugConfig());
     }
 
     @Test
-    void testPropertyChangedEventValues()
+    void propertyChangedEventValues()
     {
         GraphicsConfig config = new GraphicsConfig();
         TestConfigurationChangedListener listener = new TestConfigurationChangedListener();
@@ -84,14 +84,14 @@ public class ConfigGroupTest
     }
 
     @Test
-    void testReflectionBasedSetters()
+    void reflectionBasedSetters()
     {
         GraphicsConfig config = new GraphicsConfig();
         config.windowWidth(99);
         assertEquals(99, config.windowWidth());
     }
 
-    private <T extends ConfigGroup> void testConfigurationChanged(T instance)
+    private <T extends ConfigGroup> void configurationChanged(T instance)
     {
         TestConfigurationChangedListener listener = new TestConfigurationChangedListener();
 

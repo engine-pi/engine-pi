@@ -11,7 +11,7 @@ public class SolverTest
     TaskSolver solver = new TaskSolver();
 
     @Test
-    void testTaskPath()
+    void taskPath()
     {
         assertEquals(solver.taskPath,
             "conditionals_excercises/find_the_way_to_the_lake");

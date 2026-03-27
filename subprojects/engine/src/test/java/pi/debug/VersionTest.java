@@ -29,19 +29,19 @@ import org.junit.jupiter.api.Test;
 public class VersionTest
 {
     @Test
-    void testGetJarName()
+    void getJarName()
     {
         assertEquals(Version.getJarName(), null);
     }
 
     @Test
-    void testGetVersion()
+    void getVersion()
     {
         assertTrue(Version.getVersion().length() > 0);
     }
 
     @Test
-    void testGetGitCommitIdAbbrev()
+    void getGitCommitIdAbbrev()
     {
         assertEquals(Version.getGitCommitIdAbbrev().length(), 7);
     }

@@ -47,31 +47,31 @@ public class ColorContainerTest
     class GetColorSafeTest
     {
         @Test
-        public void testPrimaryName()
+        public void primaryName()
         {
             assertNotNull(container.getSafe("blue"));
         }
 
         @Test
-        public void testAlias()
+        public void alias()
         {
             assertNotNull(container.getSafe("blau"));
         }
 
         @Test
-        public void testCaseInsensitivity()
+        public void caseInsensitivity()
         {
             assertNotNull(container.getSafe("BLUE"));
         }
 
         @Test
-        public void testWhiteSpaces()
+        public void whiteSpaces()
         {
             assertNotNull(container.getSafe("b l u e"));
         }
 
         @Test
-        public void testHexCode()
+        public void hexCode()
         {
             Color actual = container.getSafe("#aabbccdd");
             Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
@@ -82,7 +82,7 @@ public class ColorContainerTest
         }
 
         @Test
-        public void testNoException()
+        public void noException()
         {
             assertNotNull(container.getSafe("XXX"));
         }
@@ -92,31 +92,31 @@ public class ColorContainerTest
     class GetColorTest
     {
         @Test
-        public void testPrimaryName()
+        public void primaryName()
         {
             assertNotNull(container.get("blue"));
         }
 
         @Test
-        public void testAlias()
+        public void alias()
         {
             assertNotNull(container.get("blau"));
         }
 
         @Test
-        public void testCaseInsensitivity()
+        public void caseInsensitivity()
         {
             assertNotNull(container.get("BLUE"));
         }
 
         @Test
-        public void testWhiteSpaces()
+        public void whiteSpaces()
         {
             assertNotNull(container.get("b l u e"));
         }
 
         @Test
-        public void testHexCode()
+        public void hexCode()
         {
             Color actual = container.get("#aabbccdd");
             Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
@@ -127,7 +127,7 @@ public class ColorContainerTest
         }
 
         @Test
-        public void testException()
+        public void exception()
         {
             assertThrows(RuntimeException.class, () -> container.get("XXX"));
         }

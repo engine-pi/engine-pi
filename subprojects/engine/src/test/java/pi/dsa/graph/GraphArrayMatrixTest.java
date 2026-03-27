@@ -45,7 +45,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAddNode()
+    public void addNode()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -53,7 +53,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAddEdge()
+    public void addEdge()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -63,7 +63,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAddDirectedEdge()
+    public void addDirectedEdge()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -73,7 +73,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testGetEdgeWeightInvalidNodes()
+    public void getEdgeWeightInvalidNodes()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -82,7 +82,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAddNodeExceedingLimit()
+    public void addNodeExceedingLimit()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -95,7 +95,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAddEdgeInvalidNodes()
+    public void addEdgeInvalidNodes()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);
@@ -108,7 +108,7 @@ public class GraphArrayMatrixTest
     }
 
     @Test
-    public void testAllEdgesOfNodePairs()
+    public void allEdgesOfNodePairs()
     {
         g.addNode("B");
         g.addNode("A");
@@ -140,7 +140,7 @@ public class GraphArrayMatrixTest
 
     @ExtendWith(EnLocale.class)
     @Test
-    public void testGenerateJavaCodes()
+    public void generateJavaCodes()
     {
         g.addNode("A", 0, 0);
         g.addNode("B", 1, 1);

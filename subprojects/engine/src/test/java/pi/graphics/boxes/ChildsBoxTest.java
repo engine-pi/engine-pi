@@ -32,7 +32,6 @@ import org.junit.jupiter.api.Test;
  */
 class ChildsBoxTest
 {
-
     @Test
     void numberOfChilds()
     {

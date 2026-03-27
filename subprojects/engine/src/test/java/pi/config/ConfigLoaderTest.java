@@ -48,7 +48,7 @@ public class ConfigLoaderTest
     private ConfigLoader config;
 
     @BeforeEach
-    void setup()
+    void setUp()
     {
         Logger.getLogger(FileUtil.class.getName()).setUseParentHandlers(false);
         Logger.getLogger(ConfigLoader.class.getName())
@@ -66,60 +66,49 @@ public class ConfigLoaderTest
     }
 
     @Test
-    void testConfigurationGroupInitialization()
+    void configurationGroupInitialization()
     {
-        // arrange
         final TestConfigurationGroup group = new TestConfigurationGroup();
 
-        // act
         config = new ConfigLoader(group);
         config.load();
 
-        // assert
         assertEquals(group, config.getGroup(group.getClass()));
         assertEquals("test-prefix", group.getPrefix());
         assertEquals(group, config.getGroup("test-prefix"));
     }
 
     @Test
-    void testDefaultFileCreation()
+    void defaultFileCreation()
     {
-        // arrange
         config = new ConfigLoader();
         config.load();
 
-        // act, assert
         assertTrue(Files.exists(config.path()));
     }
 
     @Test
-    void testCustomFileName()
+    void customFileName()
     {
-        // arrange
         final String testFileName = UUID.randomUUID().toString()
                 + ".properties";
 
-        // act
         config = new ConfigLoader(testFileName);
         config.load();
 
-        // assert
         assertTrue(Files.exists(Path.of(testFileName)));
     }
 
     @Test
-    void testFieldInitialization()
+    void fieldInitialization()
     {
-        // arrange
         final TestConfigurationGroup group = new TestConfigurationGroup();
         config = new ConfigLoader(group);
 
-        // act
         config.load();
         final TestConfigurationGroup configGroup = config
             .getGroup(TestConfigurationGroup.class);
 
-        // assert
         assertEquals(100, configGroup.getTestInt());
         assertEquals(101, configGroup.getTestByte());
         assertEquals(102, configGroup.getTestShort());

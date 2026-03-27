@@ -42,26 +42,26 @@ public class TextUtilTest
     {
 
         @Test
-        void testWithoutDecimalPlaces()
+        void withoutDecimalPlaces()
         {
             assertEquals(TextUtil.roundNumber(1.2345), "1.2");
         }
 
         @Test
-        void testWithDecimalPlaces()
+        void withDecimalPlaces()
         {
             assertEquals(TextUtil.roundNumber(1.2345, 3), "1.234");
         }
     }
 
     @Test
-    void testGetLineWidth()
+    void getLineWidthMethod()
     {
         assertEquals(getLineWidth("Lorem\nipsum\ndolor sit"), 9);
     }
 
     @Test
-    void testGetLineCount()
+    void getLineCountMethod()
     {
         assertEquals(getLineCount("Lorem\nipsum\ndolor sit"), 3);
     }
@@ -74,40 +74,40 @@ public class TextUtilTest
         String oneLine = "Lorem ipsum";
 
         @Test
-        void testOneLine()
+        void oneLine()
         {
             assertEquals(align(oneLine, LEFT), "Lorem ipsum");
         }
 
         @Test
-        void testLeft()
+        void left()
         {
             assertEquals(align(text, LEFT),
                 "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
-        void testWidth()
+        void width()
         {
             assertEquals(align(text, 15, LEFT),
                 "Lorem ipsum\n" + "dolor sit\n" + "amet.");
         }
 
         @Test
-        void testWidthOnOneLine()
+        void widthOnOneLine()
         {
             assertEquals(align(oneLine, 15, LEFT), "Lorem ipsum");
         }
 
         @Test
-        void testRight()
+        void right()
         {
             assertEquals(align(text, RIGHT),
                 "Lorem ipsum\n" + "  dolor sit\n" + "      amet.");
         }
 
         @Test
-        void testCenter()
+        void center()
         {
             assertEquals(align(text, CENTER),
                 "Lorem ipsum\n" + " dolor sit\n" + "   amet.");
@@ -120,39 +120,39 @@ public class TextUtilTest
         String text = "Lorem ipsum dolor sit";
 
         @Test
-        void testLeft()
+        void left()
         {
             assertEquals(wrap(text, 10, LEFT), "Lorem\nipsum\ndolor sit");
         }
 
         @Test
-        void testCenter()
+        void center()
         {
             assertEquals(wrap(text, 10, CENTER),
                 "  Lorem\n" + "  ipsum\n" + "dolor sit");
         }
 
         @Test
-        void testRight()
+        void right()
         {
             assertEquals(wrap(text, 10, RIGHT),
                 "     Lorem\n" + "     ipsum\n" + " dolor sit");
         }
 
         @Test
-        void testWidthNotToSmall()
+        void widthNotToSmall()
         {
             assertEquals(wrap(text, 10), "Lorem\nipsum\ndolor sit");
         }
 
         @Test
-        void testWidthToSmall()
+        void widthToSmall()
         {
             assertThrows(IllegalArgumentException.class, () -> wrap(text, 4));
         }
 
         @Test
-        void testInputWithNewlines()
+        void inputWithNewlines()
         {
             assertEquals(wrap("Lorem\nipsum\ndolor\nsit", 10),
                 "Lorem\nipsum\ndolor\nsit");

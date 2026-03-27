@@ -21,31 +21,31 @@ class LevelCollectionTest
     }
 
     @Test
-    void testGetLevels()
+    void getLevels()
     {
         assertEquals(levels.getLevels().size(), 3);
     }
 
     @Test
-    void testGetNumberOfLevels()
+    void getNumberOfLevels()
     {
         assertEquals(levels.getNumberOfLevels(), 3);
     }
 
     @Test
-    void testGetMaxRows()
+    void getMaxRows()
     {
         assertEquals(levels.getMaxRows(), 6);
     }
 
     @Test
-    void testGetMaxCols()
+    void getMaxCols()
     {
         assertEquals(levels.getMaxCols(), 10);
     }
 
     @Test
-    void testGetNumberOfDifficulties()
+    void getNumberOfDifficulties()
     {
         assertEquals(levels.getNumberOfDifficulties(), 3);
     }
@@ -55,19 +55,19 @@ class LevelCollectionTest
     class GetLevelTest
     {
         @Test
-        void testAllParameters()
+        void allParameters()
         {
             assertEquals(levels.getLevel(Difficulty.EASY, 0).getTestIndex(), 0);
         }
 
         @Test
-        void testDifficultyAsEnum()
+        void difficultyAsEnum()
         {
             assertEquals(levels.getLevel(Difficulty.EASY).getTestIndex(), 0);
         }
 
         @Test
-        void testDifficultyAsInt()
+        void difficultyAsInt()
         {
             assertEquals(levels.getLevel(0).getTestIndex(), 0);
         }
@@ -77,7 +77,7 @@ class LevelCollectionTest
     class FilterTest
     {
         @Test
-        void testFilterByDifficultyAndTestIndex()
+        void filterByDifficultyAndTestIndex()
         {
             var map = levels.filter(difficulty -> difficulty == EASY,
                 level -> level.getTestIndex() == 0);
@@ -87,39 +87,39 @@ class LevelCollectionTest
         }
 
         @Test
-        void testFilterByDifficulty()
+        void filterByDifficulty()
         {
             var list = levels.filter(difficulty -> difficulty == EASY);
             assertEquals(list.size(), 1);
         }
 
         @Test
-        void testFilter()
+        void filter()
         {
             assertEquals(levels.filter().size(), 3);
         }
 
         @Test
-        void testFilterByDifficultyAsString()
+        void filterByDifficultyAsString()
         {
             assertEquals(levels.filter("easy").size(), 1);
         }
 
         @Test
-        void testFilterByDifficultyAsInteger()
+        void filterByDifficultyAsInteger()
         {
             assertEquals(levels.filter(0).size(), 1);
         }
 
         @Test
-        void testFilterByDifficultyAsIntegerAndTestIndex()
+        void filterByDifficultyAsIntegerAndTestIndex()
         {
             assertEquals(levels.filter(0, 0).get(EASY).get(0).getBorderColor(),
                 "#b4ccc7");
         }
 
         @Test
-        void testFilterByDifficultyAsStringAndTestIndex()
+        void filterByDifficultyAsStringAndTestIndex()
         {
             assertEquals(
                 levels.filter("easy", 0).get(EASY).get(0).getBorderColor(),
@@ -127,19 +127,19 @@ class LevelCollectionTest
         }
 
         @Test
-        void testFilterByDifficultyAll()
+        void filterByDifficultyAll()
         {
             assertEquals(levels.filter("all").size(), 3);
         }
 
         @Test
-        void testFilterByDifficultyNull()
+        void filterByDifficultyNull()
         {
             assertEquals(levels.filter(null, 0).size(), 3);
         }
 
         @Test
-        void testFilterByDifficultyAsEnum()
+        void filterByDifficultyAsEnum()
         {
             assertEquals(levels.filter(EASY).size(), 1);
         }

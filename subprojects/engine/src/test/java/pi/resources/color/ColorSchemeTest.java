@@ -32,13 +32,13 @@ public class ColorSchemeTest
     ColorScheme scheme;
 
     @BeforeEach
-    void setup()
+    void setUp()
     {
         scheme = new ColorScheme("Test Scheme");
     }
 
     @Test
-    void testName()
+    void name()
     {
         ColorScheme scheme = new ColorScheme("Test Scheme");
         assertEquals("Test Scheme", scheme.name());
@@ -48,14 +48,14 @@ public class ColorSchemeTest
     class YellowTest
     {
         @Test
-        void testYellow()
+        void yellow()
         {
             assertNotNull(scheme.yellow());
             assertEquals(new Color(255, 255, 0), scheme.yellow());
         }
 
         @Test
-        void testYellow2()
+        void yellow2()
         {
             Color custom = new Color(200, 200, 0);
             scheme.yellow(custom);
@@ -63,14 +63,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testYellow3()
+        void yellow3()
         {
             scheme.yellow(100, 100, 50);
             assertEquals(new Color(100, 100, 50), scheme.yellow());
         }
 
         @Test
-        void testYellow4()
+        void yellow4()
         {
             scheme.yellow("#ffff00");
             assertNotNull(scheme.yellow());
@@ -81,13 +81,13 @@ public class ColorSchemeTest
     class YellowOrangeTest
     {
         @Test
-        void testYellowOrange()
+        void yellowOrange()
         {
             assertNotNull(scheme.yellowOrange());
         }
 
         @Test
-        void testYellowOrange2()
+        void yellowOrange2()
         {
             Color custom = new Color(255, 200, 0);
             scheme.yellowOrange(custom);
@@ -95,14 +95,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testYellowOrange3()
+        void yellowOrange3()
         {
             scheme.yellowOrange(255, 200, 0);
             assertEquals(new Color(255, 200, 0), scheme.yellowOrange());
         }
 
         @Test
-        void testYellowOrange4()
+        void yellowOrange4()
         {
             scheme.yellowOrange("#ffc800");
             assertNotNull(scheme.yellowOrange());
@@ -114,13 +114,13 @@ public class ColorSchemeTest
     {
 
         @Test
-        void testOrange()
+        void orange()
         {
             assertNotNull(scheme.orange());
         }
 
         @Test
-        void testOrange2()
+        void orange2()
         {
             Color custom = new Color(255, 128, 0);
             scheme.orange(custom);
@@ -128,14 +128,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testOrange3()
+        void orange3()
         {
             scheme.orange(255, 128, 0);
             assertEquals(new Color(255, 128, 0), scheme.orange());
         }
 
         @Test
-        void testOrange4()
+        void orange4()
         {
             scheme.orange("#ff8000");
             assertNotNull(scheme.orange());
@@ -146,13 +146,13 @@ public class ColorSchemeTest
     class RedOrangeTest
     {
         @Test
-        void testRedOrange()
+        void redOrange()
         {
             assertNotNull(scheme.redOrange());
         }
 
         @Test
-        void testRedOrange2()
+        void redOrange2()
         {
             Color custom = new Color(255, 100, 0);
             scheme.redOrange(custom);
@@ -160,14 +160,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testRedOrange3()
+        void redOrange3()
         {
             scheme.redOrange(255, 100, 0);
             assertEquals(new Color(255, 100, 0), scheme.redOrange());
         }
 
         @Test
-        void testRedOrange4()
+        void redOrange4()
         {
             scheme.redOrange("#ff6400");
             assertNotNull(scheme.redOrange());
@@ -178,14 +178,14 @@ public class ColorSchemeTest
     class RedTest
     {
         @Test
-        void testRed()
+        void red()
         {
             assertNotNull(scheme.red());
             assertEquals(new Color(255, 0, 0), scheme.red());
         }
 
         @Test
-        void testRed2()
+        void red2()
         {
             Color custom = new Color(200, 0, 0);
             scheme.red(custom);
@@ -193,14 +193,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testRed3()
+        void red3()
         {
             scheme.red(150, 0, 0);
             assertEquals(new Color(150, 0, 0), scheme.red());
         }
 
         @Test
-        void testRed4()
+        void red4()
         {
             scheme.red("#ff0000");
             assertNotNull(scheme.red());
@@ -211,13 +211,13 @@ public class ColorSchemeTest
     class RedPurpleTest
     {
         @Test
-        void testRedPurple()
+        void redPurple()
         {
             assertNotNull(scheme.redPurple());
         }
 
         @Test
-        void testRedPurple2()
+        void redPurple2()
         {
             Color custom = new Color(200, 0, 100);
             scheme.redPurple(custom);
@@ -225,14 +225,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testRedPurple3()
+        void redPurple3()
         {
             scheme.redPurple(200, 0, 100);
             assertEquals(new Color(200, 0, 100), scheme.redPurple());
         }
 
         @Test
-        void testRedPurple4()
+        void redPurple4()
         {
             scheme.redPurple("#c80064");
             assertNotNull(scheme.redPurple());
@@ -243,13 +243,13 @@ public class ColorSchemeTest
     class PurpleTest
     {
         @Test
-        void testPurple()
+        void purple()
         {
             assertNotNull(scheme.purple());
         }
 
         @Test
-        void testPurple2()
+        void purple2()
         {
             Color custom = new Color(128, 0, 128);
             scheme.purple(custom);
@@ -257,14 +257,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testPurple3()
+        void purple3()
         {
             scheme.purple(100, 0, 100);
             assertEquals(new Color(100, 0, 100), scheme.purple());
         }
 
         @Test
-        void testPurple4()
+        void purple4()
         {
             scheme.purple("#800080");
             assertNotNull(scheme.purple());
@@ -275,13 +275,13 @@ public class ColorSchemeTest
     class BluePurpleTest
     {
         @Test
-        void testBluePurple()
+        void bluePurple()
         {
             assertNotNull(scheme.bluePurple());
         }
 
         @Test
-        void testBluePurple2()
+        void bluePurple2()
         {
             Color custom = new Color(100, 0, 200);
             scheme.bluePurple(custom);
@@ -289,14 +289,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testBluePurple3()
+        void bluePurple3()
         {
             scheme.bluePurple(100, 0, 200);
             assertEquals(new Color(100, 0, 200), scheme.bluePurple());
         }
 
         @Test
-        void testBluePurple4()
+        void bluePurple4()
         {
             scheme.bluePurple("#6400c8");
             assertNotNull(scheme.bluePurple());
@@ -307,13 +307,13 @@ public class ColorSchemeTest
     class BlueGreenTest
     {
         @Test
-        void testBlueGreen()
+        void blueGreen()
         {
             assertNotNull(scheme.blueGreen());
         }
 
         @Test
-        void testBlueGreen2()
+        void blueGreen2()
         {
             Color custom = new Color(0, 128, 200);
             scheme.blueGreen(custom);
@@ -321,14 +321,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testBlueGreen3()
+        void blueGreen3()
         {
             scheme.blueGreen(0, 128, 200);
             assertEquals(new Color(0, 128, 200), scheme.blueGreen());
         }
 
         @Test
-        void testBlueGreen4()
+        void blueGreen4()
         {
             scheme.blueGreen("#0080c8");
             assertNotNull(scheme.blueGreen());
@@ -340,14 +340,14 @@ public class ColorSchemeTest
     {
 
         @Test
-        void testBlue()
+        void blue()
         {
             assertNotNull(scheme.blue());
             assertEquals(new Color(0, 0, 255), scheme.blue());
         }
 
         @Test
-        void testBlue2()
+        void blue2()
         {
             Color custom = new Color(0, 0, 200);
             scheme.blue(custom);
@@ -355,14 +355,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testBlue3()
+        void blue3()
         {
             scheme.blue(0, 0, 150);
             assertEquals(new Color(0, 0, 150), scheme.blue());
         }
 
         @Test
-        void testBlue4()
+        void blue4()
         {
             scheme.blue("#0000ff");
             assertNotNull(scheme.blue());
@@ -373,13 +373,13 @@ public class ColorSchemeTest
     class GreenTest
     {
         @Test
-        void testGreen()
+        void green()
         {
             assertNotNull(scheme.green());
         }
 
         @Test
-        void testGreen2()
+        void green2()
         {
             Color custom = new Color(0, 255, 0);
             scheme.green(custom);
@@ -387,14 +387,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testGreen3()
+        void green3()
         {
             scheme.green(0, 200, 0);
             assertEquals(new Color(0, 200, 0), scheme.green());
         }
 
         @Test
-        void testGreen4()
+        void green4()
         {
             scheme.green("#00ff00");
             assertNotNull(scheme.green());
@@ -405,13 +405,13 @@ public class ColorSchemeTest
     class YelloGreenTest
     {
         @Test
-        void testYellowGreen()
+        void yellowGreen()
         {
             assertNotNull(scheme.yellowGreen());
         }
 
         @Test
-        void testYellowGreen2()
+        void yellowGreen2()
         {
             Color custom = new Color(128, 255, 0);
             scheme.yellowGreen(custom);
@@ -419,14 +419,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testYellowGreen3()
+        void yellowGreen3()
         {
             scheme.yellowGreen(128, 255, 0);
             assertEquals(new Color(128, 255, 0), scheme.yellowGreen());
         }
 
         @Test
-        void testYellowGreen4()
+        void yellowGreen4()
         {
             scheme.yellowGreen("#80ff00");
             assertNotNull(scheme.yellowGreen());
@@ -438,13 +438,13 @@ public class ColorSchemeTest
     {
 
         @Test
-        void testBrown()
+        void brown()
         {
             assertNotNull(scheme.brown());
         }
 
         @Test
-        void testBrown2()
+        void brown2()
         {
             Color custom = new Color(165, 42, 42);
             scheme.brown(custom);
@@ -452,14 +452,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testBrown3()
+        void brown3()
         {
             scheme.brown(139, 69, 19);
             assertEquals(new Color(139, 69, 19), scheme.brown());
         }
 
         @Test
-        void testBrown4()
+        void brown4()
         {
             scheme.brown("#8b4513");
             assertNotNull(scheme.brown());
@@ -470,14 +470,14 @@ public class ColorSchemeTest
     class WhiteTest
     {
         @Test
-        void testWhite()
+        void white()
         {
             assertNotNull(scheme.white());
             assertEquals(Color.WHITE, scheme.white());
         }
 
         @Test
-        void testWhite2()
+        void white2()
         {
             Color custom = new Color(240, 240, 240);
             scheme.white(custom);
@@ -485,14 +485,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testWhite3()
+        void white3()
         {
             scheme.white(250, 250, 250);
             assertEquals(new Color(250, 250, 250), scheme.white());
         }
 
         @Test
-        void testWhite4()
+        void white4()
         {
             scheme.white("#ffffff");
             assertNotNull(scheme.white());
@@ -503,14 +503,14 @@ public class ColorSchemeTest
     class GrayTest
     {
         @Test
-        void testGray()
+        void gray()
         {
             assertNotNull(scheme.gray());
             assertEquals(Color.GRAY, scheme.gray());
         }
 
         @Test
-        void testGray2()
+        void gray2()
         {
             Color custom = new Color(128, 128, 128);
             scheme.gray(custom);
@@ -518,14 +518,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testGray3()
+        void gray3()
         {
             scheme.gray(100, 100, 100);
             assertEquals(new Color(100, 100, 100), scheme.gray());
         }
 
         @Test
-        void testGray4()
+        void gray4()
         {
             scheme.gray("#808080");
             assertNotNull(scheme.gray());
@@ -536,14 +536,14 @@ public class ColorSchemeTest
     class BlackTest
     {
         @Test
-        void testBlack()
+        void black()
         {
             assertNotNull(scheme.black());
             assertEquals(Color.BLACK, scheme.black());
         }
 
         @Test
-        void testBlack2()
+        void black2()
         {
             Color custom = new Color(0, 0, 0);
             scheme.black(custom);
@@ -551,14 +551,14 @@ public class ColorSchemeTest
         }
 
         @Test
-        void testBlack3()
+        void black3()
         {
             scheme.black(10, 10, 10);
             assertEquals(new Color(10, 10, 10), scheme.black());
         }
 
         @Test
-        void testBlack4()
+        void black4()
         {
             scheme.black("#000000");
             assertNotNull(scheme.black());
@@ -566,7 +566,7 @@ public class ColorSchemeTest
     }
 
     @Test
-    void testPrimaryColors()
+    void primaryColors()
     {
         Color[] primary = scheme.primaryColors();
         assertEquals(3, primary.length);
@@ -576,7 +576,7 @@ public class ColorSchemeTest
     }
 
     @Test
-    void testSecondaryColors()
+    void secondaryColors()
     {
         Color[] secondary = scheme.secondaryColors();
         assertEquals(3, secondary.length);
@@ -586,7 +586,7 @@ public class ColorSchemeTest
     }
 
     @Test
-    void testWheelColors()
+    void wheelColors()
     {
         Color[] wheel = scheme.wheelColors();
         assertEquals(12, wheel.length);
@@ -595,7 +595,7 @@ public class ColorSchemeTest
     }
 
     @Test
-    void testExtraColors()
+    void extraColors()
     {
         Color[] extra = scheme.extraColors();
         assertEquals(4, extra.length);

@@ -26,7 +26,7 @@ public class ResourceManipulatorTest
     }
 
     @Test
-    public void testDoNotManipulateReturnNull()
+    public void doNotManipulateReturnNull()
     {
         container.addManipulator((resourceName, image) -> {
             return null;
@@ -36,7 +36,7 @@ public class ResourceManipulatorTest
     }
 
     @Test
-    public void testManipulation()
+    public void manipulation()
     {
         container.addManipulator((resourceName, image) -> {
             return ImageUtil.multiplyPixel(image, 2);

@@ -38,25 +38,25 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void testRow()
+    public void row()
     {
         assertEquals(robot.getRow(), 8);
     }
 
     @Test
-    public void testCol()
+    public void col()
     {
         assertEquals(robot.getCol(), 1);
     }
 
     @Test
-    public void testDir()
+    public void dir()
     {
         assertEquals(robot.dir, EAST);
     }
 
     @Test
-    public void testEast()
+    public void east()
     {
         assertMovement(robot.east(), 8, 2, EAST, true);
         assertEquals(robot.getRow(), 8);
@@ -64,13 +64,13 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void testSouth()
+    public void south()
     {
         assertMovement(robot.south(), 8, 1, EAST, false);
     }
 
     @Test
-    public void testWest()
+    public void west()
     {
         assertMovement(robot.west(), 8, 0, WEST, true);
         assertEquals(robot.getRow(), 8);
@@ -78,7 +78,7 @@ public class VirtualRobotTest
     }
 
     @Test
-    public void testNorth()
+    public void north()
     {
         assertMovement(robot.north(), 8, 1, EAST, false);
     }
@@ -94,7 +94,7 @@ public class VirtualRobotTest
 
     @Test
     @DisplayName("Can't move if on the edge")
-    public void testCantMoveOnTheEdge()
+    public void cantMoveOnTheEdge()
     {
         robot.west();
         assertTrue(robot.movementSuccessful);
@@ -104,7 +104,7 @@ public class VirtualRobotTest
 
     @Test
     @DisplayName("Can't move if obstacle in front")
-    public void testObstacleInFront()
+    public void obstacleInFront()
     {
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();

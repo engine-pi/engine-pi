@@ -14,14 +14,14 @@ public class FontUtilTest
     String content = "Hello, World!";
 
     @Test
-    void testGetDescent()
+    void getDescent()
     {
         int descent = FontUtil.getDescent(font);
         assertEquals(3, descent);
     }
 
     @Test
-    void testGetStringBounds()
+    void getStringBounds()
     {
         var bounds = FontUtil.getStringBounds(content, font);
         assertNotNull(bounds);
