@@ -26,6 +26,7 @@
 package pi.config;
 
 import pi.Controller;
+import pi.annotations.Getter;
 import pi.resources.Resources;
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -42,11 +43,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Configuration class that manages multiple configuration groups and handles
- * loading and saving settings.
+ * Konfigurationsklasse, die mehrere Konfigurationsgruppen verwaltet und das
+ * Laden und Speichern von Einstellungen übernimmt.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  *
  * @since 0.42.0
  */
@@ -186,13 +188,15 @@ public class ConfigLoader
     }
 
     /**
-     * Gets the path of the file to which this configuration is saved.
+     * Ruft den <b>Pfad</b> der Datei ab, in der diese Konfiguration gespeichert
+     * ist.
      *
-     * @return The path of the configuration file.
+     * @return Der <b>Pfad</b> zur Konfigurationsdatei.
      *
      * @see #save()
      */
-    public Path getPath()
+    @Getter
+    public Path path()
     {
         return path;
     }
@@ -209,18 +213,18 @@ public class ConfigLoader
      */
     public void load()
     {
-        try (InputStream settingsStream = Resources.get(getPath().toString()))
+        try (InputStream settingsStream = Resources.get(path().toString()))
         {
-            if (!Files.exists(getPath()) || !Files.isRegularFile(getPath())
+            if (!Files.exists(path()) || !Files.isRegularFile(path())
                     || settingsStream == null)
             {
-                try (OutputStream out = Files.newOutputStream(getPath()))
+                try (OutputStream out = Files.newOutputStream(path()))
                 {
                     createDefaultSettingsFile(out);
                 }
                 log.log(Level.INFO,
                     "Konfigurationsdatei „{0}“ erstellt",
-                    getPath());
+                    path());
                 return;
             }
         }
@@ -229,9 +233,9 @@ public class ConfigLoader
             log.log(Level.SEVERE, e.getMessage(), e);
         }
 
-        if (Files.exists(getPath()))
+        if (Files.exists(path()))
         {
-            try (InputStream settingsStream = Files.newInputStream(getPath());
+            try (InputStream settingsStream = Files.newInputStream(path());
                     BufferedInputStream bufferedStream = new BufferedInputStream(
                             settingsStream))
             {
@@ -241,7 +245,7 @@ public class ConfigLoader
                 initializeSettingsByProperties(properties);
                 log.log(Level.INFO,
                     "Konfiguration aus der Datei „{0}“ geladen",
-                    getPath());
+                    path());
             }
             catch (IOException e)
             {
@@ -254,35 +258,51 @@ public class ConfigLoader
      * Saves this configuration to a file with the specified name of this
      * instance (engine-pi.properties is the engines default config file).
      *
-     * @see #getPath()
+     * @see #path()
      * @see ConfigLoader#DEFAULT_CONFIGURATION_FILE_NAME
      */
     public void save()
     {
-        try
-        {
-            Files.deleteIfExists(getPath());
-        }
-        catch (IOException e)
-        {
-            throw new RuntimeException(
-                    "Failed to delete existing configuration file", e);
-        }
+        deleteConfigFile();
 
-        try (OutputStream out = Files.newOutputStream(getPath(),
+        try (OutputStream out = Files.newOutputStream(path(),
             StandardOpenOption.CREATE_NEW))
         {
             getConfigurationGroups().stream()
                 .filter(group -> Controller.isDebug() || !group.isDebug())
                 .forEach(group -> storeConfigurationGroup(out, group));
 
-            log.log(Level.INFO, "Configuration {0} saved", getPath());
+            log.log(Level.INFO, "Configuration {0} saved", path());
         }
         catch (IOException e)
         {
             log.log(Level.SEVERE,
                 "Failed to save configuration: " + e.getMessage(),
                 e);
+        }
+    }
+
+    /**
+     * <b>Löscht</b> die Konfigurationsdatei, falls sie existiert.
+     *
+     * <p>
+     * Diese Methode versucht, die Konfigurationsdatei unter dem durch
+     * {@link #path()} definierten Pfad zu löschen. Falls die Datei nicht
+     * existiert, wird keine Aktion durchgeführt.
+     * </p>
+     *
+     * @throws RuntimeException falls beim Löschen der Datei ein Fehler auftritt
+     */
+    public void deleteConfigFile()
+    {
+        try
+        {
+            Files.deleteIfExists(path());
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(
+                    "Failed to delete existing configuration file", e);
         }
     }
 

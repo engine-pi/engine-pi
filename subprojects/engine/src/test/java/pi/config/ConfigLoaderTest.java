@@ -27,6 +27,7 @@ package pi.config;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ import java.util.logging.Logger;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.util.FileUtil;
@@ -58,7 +60,7 @@ public class ConfigLoaderTest
     {
         if (config != null)
         {
-            final Path configFile = config.getPath();
+            final Path configFile = config.path();
             Files.deleteIfExists(configFile);
         }
     }
@@ -87,7 +89,7 @@ public class ConfigLoaderTest
         config.load();
 
         // act, assert
-        assertTrue(Files.exists(config.getPath()));
+        assertTrue(Files.exists(config.path()));
     }
 
     @Test
@@ -130,6 +132,47 @@ public class ConfigLoaderTest
         assertEquals("", configGroup.getTestWithNoSetter());
         assertArrayEquals(new String[] { "test", "testicle" },
             configGroup.getTestStringArray());
+    }
+
+    @Nested
+    class DeleteConfigFileTest
+    {
+        @Test
+        void whenFileExists() throws IOException
+        {
+            config = new ConfigLoader();
+            config.load();
+            assertTrue(Files.exists(config.path()));
+
+            config.deleteConfigFile();
+
+            assertFalse(Files.exists(config.path()));
+        }
+
+        @Test
+        void whenFileDoesNotExist()
+        {
+            final String testFileName = UUID.randomUUID().toString()
+                    + ".properties";
+            config = new ConfigLoader(testFileName);
+            assertFalse(Files.exists(config.path()));
+
+            config.deleteConfigFile();
+            assertFalse(Files.exists(config.path()));
+        }
+
+        @Test
+        void multipleTimes() throws IOException
+        {
+            config = new ConfigLoader();
+            config.load();
+
+            config.deleteConfigFile();
+            assertFalse(Files.exists(config.path()));
+
+            config.deleteConfigFile();
+            assertFalse(Files.exists(config.path()));
+        }
     }
 
     private enum TEST

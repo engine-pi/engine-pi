@@ -19,7 +19,12 @@
 package pi.config;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import pi.graphics.geom.Direction;
@@ -29,14 +34,23 @@ import pi.graphics.geom.Direction;
  */
 public class ConfigurationTest
 {
-    Configuration config = Configuration.getInstance();
+    Configuration config;
+
+    @BeforeEach
+    void setup()
+    {
+        Configuration.reset(true);
+        config = Configuration.getInstance();
+    }
 
     @Test
     public void all()
     {
+        assertEquals("engine-pi.properties", String.valueOf(config.path()));
+
         // Go to
         // file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
-        assertEquals(true, config.game.instantMode());
+        assertTrue(config.game.instantMode());
 
         assertEquals(768, config.graphics.windowWidth());
         assertEquals(576, config.graphics.windowHeight());
@@ -51,12 +65,50 @@ public class ConfigurationTest
         assertEquals(0.5, config.sound.soundVolume());
         assertEquals(0.5, config.sound.musicVolume());
 
-        assertEquals(false, config.debug.enabled());
-        assertEquals(false, config.debug.verbose());
-        assertEquals(true, config.debug.renderActors());
-        assertEquals(false, config.debug.actorCoordinates());
+        assertFalse(config.debug.enabled());
+        assertFalse(config.debug.verbose());
+        assertTrue(config.debug.renderActors());
+        assertFalse(config.debug.actorCoordinates());
 
         assertEquals(-1, config.coordinatesystem.linesNMeter());
-        assertEquals(false, config.coordinatesystem.labelsOnIntersections());
+        assertFalse(config.coordinatesystem.labelsOnIntersections());
+    }
+
+    @Test
+    public void resetHardDeletesConfigFile()
+    {
+        Configuration config1 = Configuration.getInstance();
+        Configuration.reset(true);
+        Configuration config2 = Configuration.getInstance();
+
+        assertNotEquals(config1, config2);
+    }
+
+    @Test
+    public void resetSoftKeepsConfigFile()
+    {
+        Configuration config1 = Configuration.getInstance();
+        Configuration.reset(false);
+        Configuration config2 = Configuration.getInstance();
+
+        assertNotEquals(config1, config2);
+    }
+
+    @Test
+    public void resetWithoutParameterIsDefault()
+    {
+        Configuration config1 = Configuration.getInstance();
+        Configuration.reset();
+        Configuration config2 = Configuration.getInstance();
+
+        assertNotEquals(config1, config2);
+    }
+
+    @Test
+    public void resetMakesInstanceNull()
+    {
+        Configuration.getInstance();
+        Configuration.reset(false);
+        assertNotNull(Configuration.getInstance());
     }
 }

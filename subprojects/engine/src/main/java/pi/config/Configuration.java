@@ -112,4 +112,69 @@ public class Configuration extends ConfigLoader
         }
         return configuration;
     }
+
+    /**
+     * <b>Setzt</b> die Konfiguration <b>zurück</b>.
+     *
+     * @param hard Wenn {@code true}, wird die Konfigurationsdatei gelöscht und
+     *     die Konfiguration vollständig zurückgesetzt. Wenn {@code false}, wird
+     *     nur die Konfigurationsinstanz auf {@code null} gesetzt und neu
+     *     geladen.
+     *
+     * @since 0.45.0
+     */
+    public static void reset(boolean hard)
+    {
+        if (hard)
+        {
+            getInstance().deleteConfigFile();
+        }
+        configuration = null;
+    }
+
+    /**
+     * <b>Setzt</b> die Konfiguration auf ihre Standardwerte <b>zurück</b>.
+     *
+     * <p>
+     * Diese Methode ruft {@link #reset(boolean)} mit dem Parameter
+     * {@code false} auf, um die Konfiguration zurückzusetzen, ohne dabei die
+     * Konfigurationsdatei zu löschen.
+     * </p>
+     *
+     * @since 0.45.0
+     */
+    public static void reset()
+    {
+        reset(false);
+    }
+
+    /**
+     * <b>Lädt</b> die Konfiguration <b>neu</b>.
+     *
+     * @param hard {@code true}, um einen harten Reset durchzuführen und die
+     *     Konfigurationsdatei zu löschen; {@code false}, um nur die
+     *     Konfiguration neu zu laden
+     *
+     * @return Die neu geladene {@link Configuration}-Instanz.
+     *
+     * @since 0.45.0
+     */
+    public Configuration reload(boolean hard)
+    {
+        reset(hard);
+        return getInstance();
+    }
+
+    /**
+     * Dies ist eine Convenience-Methode, die {@link #reload(boolean)} mit dem
+     * Wert {@code false} aufruft.
+     *
+     * @return Die neu geladene {@link Configuration}-Instanz.
+     *
+     * @since 0.45.0
+     */
+    public Configuration reload()
+    {
+        return reload(false);
+    }
 }
