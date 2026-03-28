@@ -27,6 +27,7 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.actor.Animation;
 import pi.actor.StatefulAnimation;
+import pi.actor.Text;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
@@ -46,12 +47,14 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final double JUMP_IMPULSE = 1100;
 
-    public StatefulPlayerCharacter()
+    private Text text;
+
+    public StatefulPlayerCharacter(Text text)
     {
         // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche
-        // Breite
-        // und Höhe. Wir verwenden drei Meter.
+        // Breite und Höhe. Wir verwenden drei Meter.
         super(3, 3);
+        this.text = text;
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();
@@ -62,7 +65,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         for (PlayerState state : PlayerState.values())
         {
             Animation animationOfState = Animation
-                .createFromAnimatedGif(state.getGifFileLocation(), 3, 3);
+                .createFromAnimatedGif(state.gifFileLocation(), 3, 3);
             addState(state, animationOfState);
         }
     }
@@ -110,6 +113,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         Vector velocity = velocity();
         PlayerState state = state();
+        text.content(state);
         if (velocity.y() < -THRESHOLD)
         {
             switch (state)

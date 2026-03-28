@@ -26,15 +26,15 @@ Nehmen wir dieses Beispiel:[^oop]
     der Zip-Datei
     [opp-assets.zip](https://www.openpixelproject.com/wp-content/uploads/opp-assets.zip).
 
-| Zustand | Animiertes GIF                           |
-| ------- | ---------------------------------------- |
-| Idle    | {{ image('traveler/idle.gif') }}         |
-| Jumping | {{ image('traveler/jump_1up.gif') }}     |
-| Midair  | {{ image('traveler/jump_2midair.gif') }} |
-| Falling | {{ image('traveler/jump_3down.gif') }}   |
-| Landing | {{ image('traveler/jump_4land.gif') }}   |
-| Walking | {{ image('traveler/walk.gif') }}         |
-| Running | {{ image('traveler/run.gif') }}          |
+| Zustand | Animiertes GIF                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------ |
+| Idle    | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_idle_anim.gif') }}         |
+| Jumping | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_jump_1up_anim.gif') }}     |
+| Midair  | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_jump_2midair_anim.gif') }} |
+| Falling | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_jump_3down_anim.gif') }}   |
+| Landing | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_jump_4land_anim.gif') }}   |
+| Walking | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_walk_anim.gif') }}         |
+| Running | {{ image('demos/resources/openpixelproject/sprites/humans/traveler/spr_m_traveler_run_anim.gif') }}          |
 
 ## Zustandsübergangsdiagramm für die Figur
 

@@ -20,6 +20,8 @@
  */
 package demos.docs.main_classes.actor.stateful_animation;
 
+import pi.annotations.Getter;
+
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/stateful-animation.md
 
 public enum PlayerState
@@ -39,8 +41,10 @@ public enum PlayerState
         this.filename = filename;
     }
 
-    public String getGifFileLocation()
+    @Getter
+    public String gifFileLocation()
     {
-        return "traveler/" + filename + ".gif";
+        return "openpixelproject/sprites/humans/traveler/spr_m_traveler_"
+                + filename + "_anim.gif";
     }
 }
