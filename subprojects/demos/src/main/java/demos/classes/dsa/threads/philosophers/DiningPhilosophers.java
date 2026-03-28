@@ -5,7 +5,7 @@ import pi.Scene;
 import pi.actor.Circle;
 import pi.actor.Line;
 import pi.graphics.geom.Vector;
-
+import pi.actor.StopWatch;
 /**
  * Visualisierung des Problems der speisenden Philosophen.
  *
@@ -61,13 +61,13 @@ class DiningPhilosophers extends Scene
         {
             philosophers[i].start();
         }
+        add(new StopWatch().start().anchor(-13, 13).color("black"));
     }
 
     private void createPhilosopher(int id, String name, String color)
     {
         philosophers[id] = new Philosopher(this, id, name, color,
                 forks[(id + 4) % 5], forks[id]);
-
     }
 
     public static void main(String[] args)
