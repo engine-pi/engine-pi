@@ -1,4 +1,6 @@
 /*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
  * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.classes.actor.image_font;
 
 import static pi.Controller.colors;
 
@@ -27,6 +29,8 @@ import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+
 /**
  * Demonstriert wie Bilderschriftarttexte <b>eingefärbt</b> werden können.
  *
@@ -37,12 +41,12 @@ import pi.actor.ImageFontText;
  *
  * @author Josef Friedrich
  */
-public class ImageFontTextColorDemo extends Scene
+public class ColorDemo extends Scene
 {
     ImageFont font = new ImageFont("image-font/tetris",
             ImageFontCaseSensitivity.TO_UPPER);
 
-    public ImageFontTextColorDemo()
+    public ColorDemo()
     {
         backgroundColor("#eeeeee");
         int y = 9;
@@ -62,6 +66,7 @@ public class ImageFontTextColorDemo extends Scene
 
     public static void main(String[] args)
     {
-        Controller.start(new ImageFontTextColorDemo(), 600, 800);
+        Controller.instantMode(false);
+        Controller.start(new ColorDemo(), 600, 800);
     }
 }

@@ -1,4 +1,6 @@
 /*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
  * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.classes.actor.image_font;
 
 import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
@@ -26,6 +28,8 @@ import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
 import pi.util.TextAlignment;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
 
 /**
  * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
@@ -40,23 +44,21 @@ import pi.util.TextAlignment;
  * @see pi.util.TextAlignment
  * @see pi.actor.ImageFontText
  */
-public class ImageFontTextAlignmentDemo extends Scene
+public class AlignmentDemo extends Scene
 {
     ImageFont font = new ImageFont("image-font/tetris",
             ImageFontCaseSensitivity.TO_UPPER);
 
-    public ImageFontTextAlignmentDemo()
+    public AlignmentDemo()
     {
         camera().meter(32);
-        backgroundColor("white");
-        createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
-        createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
-        createTextLine(-7,
-            "Dieser Text ist rechtsbuendig ausgerichtet.",
-            RIGHT);
+        backgroundColor("blue");
+        createText(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
+        createText(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
+        createText(-7, "Dieser Text ist rechtsbuendig ausgerichtet.", RIGHT);
     }
 
-    private void createTextLine(int y, String content, TextAlignment alignment)
+    private void createText(int y, String content, TextAlignment alignment)
     {
         ImageFontText line = new ImageFontText(font, content, 18, alignment);
         line.anchor(-9, y);
@@ -65,6 +67,7 @@ public class ImageFontTextAlignmentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Controller.start(new ImageFontTextAlignmentDemo());
+        Controller.instantMode(false);
+        Controller.start(new AlignmentDemo());
     }
 }

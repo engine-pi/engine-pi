@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.classes.actor.image_font;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,30 +27,34 @@ import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
 import pi.util.TextAlignment;
 
-public class ImageFontTextDemo extends Scene
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+
+/**
+ * Demonstriert die Schriftart {@link pi.actor.ImageFont ImageFont} und die
+ * Figur {@link pi.actor.ImageFontText} anhand eines <b>Zählers</b>.
+ */
+public class CounterDemo extends Scene
 {
-    ImageFontText helloWorld;
+    ImageFontText text;
 
-    ImageFontText counterText;
-
-    public ImageFontTextDemo()
+    public CounterDemo()
     {
-        backgroundColor("white");
-        ImageFont font = new ImageFont("image-font/tetris",
-                ImageFontCaseSensitivity.TO_UPPER);
-        helloWorld = new ImageFontText(font, "Hello, World.\nHello, Universe");
+        backgroundColor("yellow");
         AtomicInteger counter = new AtomicInteger();
-        counterText = new ImageFontText(font, "0", 10, TextAlignment.RIGHT);
-        counterText.anchor(0, -4);
-        add(helloWorld);
+        text = new ImageFontText(
+                new ImageFont("image-font/pacman",
+                        ImageFontCaseSensitivity.TO_UPPER),
+                "0", 5, TextAlignment.RIGHT);
+        text.center(-1, 0);
         repeat(0.05, () -> {
-            counterText.content(String.valueOf(counter.getAndIncrement()));
+            text.content(String.valueOf(counter.getAndIncrement()));
         });
-        add(counterText);
+        add(text);
     }
 
     public static void main(String[] args)
     {
-        Controller.start(new ImageFontTextDemo());
+        Controller.instantMode(false);
+        Controller.start(new CounterDemo(), 400, 300);
     }
 }

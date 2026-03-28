@@ -1,4 +1,6 @@
 /*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
  * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.classes.actor.image_font;
 
 import pi.Controller;
 import pi.Scene;
@@ -22,6 +24,8 @@ import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
 import pi.util.TextAlignment;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
 
 /**
  * Demonstriert den <b>automatischen</b> und <b>erzwungen Zeilenumbruch</b>
@@ -36,9 +40,9 @@ import pi.util.TextAlignment;
  *
  * @see ImageFontText
  */
-public class ImageFontTextMultilineDemo extends Scene
+public class MultilineDemo extends Scene
 {
-    public ImageFontTextMultilineDemo()
+    public MultilineDemo()
     {
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
@@ -53,6 +57,7 @@ public class ImageFontTextMultilineDemo extends Scene
 
     public static void main(String[] args)
     {
-        Controller.start(new ImageFontTextMultilineDemo());
+        Controller.instantMode(false);
+        Controller.start(new MultilineDemo());
     }
 }

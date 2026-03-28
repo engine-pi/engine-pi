@@ -86,22 +86,22 @@ Ist beispielsweise das GIF des Zustandes
 `#!java JUMPING` gefragt, so ist es jederzeit mit `#!java JUMPING.gifFileLocation()`
 erreichbar. Dies macht den Code deutlich wartbarer.
 
-### Die Klasse für den Player Character
+### Die Klasse der Spielfigur
 
 Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter') }}
-
-```java
+<!-- ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
+        implements KeyStrokeListener, FrameUpdateListener
 {
 
-    public StatefulPlayerCharacter()
+    public StatefulPlayerCharacter(Text text)
     {
-        // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche Breite
-        // und Höhe. Wir verwenden drei Meter.
+        // Alle Bilder haben die Abmessung 64x64px und deshalb die gleiche
+        // Breite und Höhe. Wir verwenden drei Meter.
         super(3, 3);
+        this.text = text;
         setupPlayerStates();
         setupAutomaticTransitions();
         setupPhysics();
@@ -112,85 +112,94 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         for (PlayerState state : PlayerState.values())
         {
             Animation animationOfState = Animation
-                    .createFromAnimatedGif(state.getGifFileLocation(), 3, 3);
+                .createFromAnimatedGif(state.gifFileLocation(), 3, 3);
             addState(state, animationOfState);
         }
     }
 
     private void setupAutomaticTransitions()
     {
-        setStateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
-        setStateTransition(PlayerState.LANDING, PlayerState.IDLE);
+        stateTransition(PlayerState.MIDAIR, PlayerState.FALLING);
+        stateTransition(PlayerState.LANDING, PlayerState.IDLE);
     }
 
     private void setupPhysics()
     {
         makeDynamic();
-        setRotationLocked(true);
-        setElasticity(0);
-        setFriction(30);
-        setLinearDamping(.3);
+        rotationLocked(true);
+        restitution(0);
+        friction(30);
+        linearDamping(0.3);
     }
 }
-```
+``` -->
 
-In `setupPlayerStates()` werden alle in `PlayerState` definierten Zustände der
-Spielfigur eingepflegt, inklusive des Einladens der animierten GIFs.
+{{ code('docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java', start_line=35, end_line=85) }}
+
+
+In `#!java setupPlayerStates()` werden alle in `#!java PlayerState` definierten
+Zustände der Spielfigur eingepflegt, inklusive des Einladens der animierten
+GIFs.
 
 Zwei der Zustände bestehen nur aus einen Animationszyklus. Danach sollen sie in
-einen anderen Zustand übergehen: `MIDAIR` geht über zu `FALLING` und `LANDING`
-geht über zu `IDLE`. Diese Übergänge können direkt über die Methode
-[setStateTransition(...)](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/actor/StatefulAnimation.html)
-umgesetzt werden.
+einen anderen Zustand übergehen: `#!java MIDAIR` geht über zu `#!java FALLING`
+und `#!java LANDING` geht über zu `#!java IDLE`. Diese Übergänge können direkt
+über die Methode {{ method('pi.actor.StatefulAnimation',
+'stateTransition(State,State)', 'stateTransition()') }} umgesetzt werden.
 
-Schließlich wird in `setupPhysics()` die Figur über die Engine-Physik noch
-dynamisch gesetzt und bereit gemacht, sich als Platformer-Figur der Schwerkraft
-auszusetzen. Der hohe Reibungswert `setFriction(30)` sorgt dafür, dass die Figur
-später schnell auf dem Boden abbremsen kann, sobald sie sich nicht mehr bewegt.
-Ein Verhalten, dass bei den meisten Platformern erwünscht ist.
+Schließlich wird in `#!java setupPhysics()` die Figur über die Engine-Physik
+noch dynamisch gesetzt und bereit gemacht, sich als Platformer-Figur der
+Schwerkraft auszusetzen. Der hohe Reibungswert `#!java friction(30)` sorgt
+dafür, dass die Figur später schnell auf dem Boden abbremsen kann, sobald sie
+sich nicht mehr bewegt. Ein Verhalten, dass bei den meisten Platformern
+erwünscht ist.
 
-### Testbed
+### Einbetten in eine Szene
 
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
-sie. In einer `Scene` bekommt sie einen Boden zum Laufen:
+sie. In einer {{ class('pi.Scene') }} bekommt sie einen Boden zum Laufen:
 
 {{ image('docs/stateful-animation/StatefulAnimation_First_Testbed.gif') }}
 /// caption
 Der Zwischenstand: Noch passiert nicht viel.
 ///
 
-{{ demo('tutorials/stateful_animation/StatefulAnimationDemo') }}
-
-```java
+<!--```java
 public class StatefulAnimationDemo extends Scene
 {
     public StatefulAnimationDemo()
     {
-        StatefulPlayerCharacter character = new StatefulPlayerCharacter();
+        Text text = new Text("State");
+        text.anchor(-10, 5);
+        text.makeStatic();
+        add(text);
+        StatefulPlayerCharacter character = new StatefulPlayerCharacter(text);
         setupGround();
         add(character);
-        setFocus(character);
-        setGravityOfEarth();
+        focus(character);
+        gravityOfEarth();
     }
 
     private void setupGround()
     {
         Rectangle ground = makePlatform(200, 0.2);
-        ground.setCenter(0, -5);
-        ground.setColor(new Color(255, 195, 150));
-        makePlatform(12, 0.3).setCenter(16, -1);
-        makePlatform(7, 0.3).setCenter(25, 2);
-        makePlatform(20, 0.3).setCenter(35, 6);
-        makeBall(5).setCenter(15, 3);
+        ground.center(0, -5);
+        ground.color(new Color(255, 195, 150));
+        makePlatform(12, 0.3).center(16, -1);
+        makePlatform(7, 0.3).center(25, 2);
+        makePlatform(20, 0.3).center(35, 6);
+        makeBall(5).center(15, 3);
     }
-
 
     public static void main(String[] args)
     {
-        Game.start(1200, 820, new StatefulAnimationDemo());
+        Controller.instantMode(false);
+        Controller.start(new StatefulAnimationDemo(), 1200, 820);
     }
 }
-```
+```-->
+
+{{ code('docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java', start_line=36) }}
 
 Die Figur bleibt im IDLE-Zustand hängen. Nun gilt es, die übrigen
 Zustandsübergänge zu implementieren.

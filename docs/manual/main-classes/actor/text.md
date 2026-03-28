@@ -2,11 +2,11 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Text.java -->
 
-## Klassendiagramm
+## Klassenkarte
 
 {{ drawio('Text') }}
 /// caption
-Das Klassendiagramm der Figur `Text` mit dem Konstruktor und allen Settern.
+Das Klassenkarte der Figur `Text` mit dem Konstruktor und allen Settern.
 ///
 
 ## Setter

@@ -1,4 +1,6 @@
 /*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
  * Copyright (c) 2024 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.classes.actor.image_font;
 
 import pi.Controller;
 import pi.Scene;
@@ -26,15 +28,19 @@ import pi.util.TextAlignment;
 
 import java.awt.event.KeyEvent;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+
 /**
  * Demonstiert die Methode {@link ImageFontText#content(String)} der Klasse
- * {@link ImageFontText}. Bei jedem Aufruf der Methode wird eine neues Bilder
- * erzeugt.
+ * {@link ImageFontText}.
+ *
+ * <p>
+ * Bei jedem Aufruf der Methode wird eine neues Bilder erzeugt.
+ * </p>
  *
  * @author Josef Friedrich
  */
-public class ImageFontTextSetContentDemo extends Scene
-        implements KeyStrokeListener
+public class ContentDemo extends Scene implements KeyStrokeListener
 {
     ImageFontText textField;
 
@@ -44,7 +50,7 @@ public class ImageFontTextSetContentDemo extends Scene
 
     String text3 = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
 
-    public ImageFontTextSetContentDemo()
+    public ContentDemo()
     {
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
@@ -74,6 +80,7 @@ public class ImageFontTextSetContentDemo extends Scene
 
     public static void main(String[] args)
     {
-        Controller.start(new ImageFontTextSetContentDemo());
+        Controller.instantMode(false);
+        Controller.start(new ContentDemo());
     }
 }

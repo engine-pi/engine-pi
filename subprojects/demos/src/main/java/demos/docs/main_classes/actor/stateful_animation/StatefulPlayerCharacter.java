@@ -64,9 +64,8 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     {
         for (PlayerState state : PlayerState.values())
         {
-            Animation animationOfState = Animation
-                .createFromAnimatedGif(state.gifFileLocation(), 3, 3);
-            addState(state, animationOfState);
+            addState(state,
+                Animation.createFromAnimatedGif(state.gifFileLocation(), 3, 3));
         }
     }
 
@@ -82,7 +81,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
         rotationLocked(true);
         restitution(0);
         friction(30);
-        linearDamping(.3);
+        linearDamping(0.3);
     }
 
     @Override

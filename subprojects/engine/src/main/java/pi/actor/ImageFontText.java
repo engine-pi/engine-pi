@@ -22,6 +22,7 @@ import static pi.Controller.colors;
 
 import java.awt.Color;
 
+import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.util.TextAlignment;
@@ -41,11 +42,6 @@ public class ImageFontText extends Image
      * Die Bilderschriftart.
      */
     private final ImageFont imageFont;
-
-    /**
-     * Der Textinhalt, der in das Bild geschrieben werden soll.
-     */
-    private String content;
 
     /**
      * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
@@ -75,7 +71,8 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *     kann.
      * @param alignment Die Textausrichtung.
@@ -107,7 +104,8 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *     kann.
      * @param alignment Die Textausrichtung.
@@ -129,7 +127,8 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      *
@@ -145,7 +144,8 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      *
@@ -160,7 +160,8 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *     kann.
      * @param alignment Die Textausrichtung.
@@ -177,18 +178,27 @@ public class ImageFontText extends Image
      * dargestellt wird.
      *
      * @param imageFont Die Bilderschriftart.
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      */
     public ImageFontText(ImageFont imageFont, String content)
     {
         this(imageFont, content, imageFont.lineWidth(), imageFont.alignment());
     }
 
+    /* content */
+
+    /**
+     * Der <b>Textinhalt</b>, der in das Bild geschrieben werden soll.
+     */
+    private String content;
+
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *     kann.
      * @param alignment Die Textausrichtung.
@@ -198,6 +208,7 @@ public class ImageFontText extends Image
      *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
      *     Pixel der Abmessung {@code 3x3}.
      */
+    @API
     @Setter
     public void content(String content, int lineWidth, TextAlignment alignment,
             Color color, int pixelMultiplication)
@@ -216,6 +227,7 @@ public class ImageFontText extends Image
      *
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      */
+    @API
     @Setter
     public void content(String content)
     {
@@ -229,6 +241,7 @@ public class ImageFontText extends Image
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      */
+    @API
     @Setter
     public void content(String content, Color color)
     {
@@ -242,6 +255,7 @@ public class ImageFontText extends Image
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      */
+    @API
     @Setter
     public void content(String content, String color)
     {
@@ -259,6 +273,7 @@ public class ImageFontText extends Image
      *
      * @since 0.25.0
      */
+    @API
     @Getter
     public String content()
     {
@@ -274,6 +289,7 @@ public class ImageFontText extends Image
      *
      * @since 0.25.0
      */
+    @API
     @Getter
     public int pixelMultiplication()
     {

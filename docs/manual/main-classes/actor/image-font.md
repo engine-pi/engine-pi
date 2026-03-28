@@ -1,13 +1,13 @@
 # `ImageFont` (Bilderschriftart)
 
+## `multiline` (mehrzeilig)
+
 {{ image('docs/actor/ImageFontTextMultilineDemo.png') }}
 
-Quellcode: [demos/actor/ImageFontTextMultilineDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextMultilineDemo.java)
-
-```java
-public class ImageFontTextMultilineDemo extends Scene
+<!-- ```java
+public class MultilineDemo extends Scene
 {
-    public ImageFontTextMultilineDemo()
+    public MultilineDemo()
     {
         ImageFont font = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
@@ -16,64 +16,89 @@ public class ImageFontTextMultilineDemo extends Scene
                         + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
                 20, TextAlignment.LEFT);
         add(textField);
-        setBackgroundColor("white");
-        setFocus(textField);
+        backgroundColor("white");
+        focus(textField);
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new MultilineDemo());
     }
 }
-```
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_font/MultilineDemo.java -->
+
+{{ code('demos.classes.actor.image_font.MultilineDemo', start_line=43) }}
+
+## `TextAlignment` (Textausrichtung)
 
 {{ image('docs/actor/ImageFontTextAlignmentDemo.png') }}
 
-Quellcode: [demos/actor/ImageFontTextAlignmentDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextAlignmentDemo.java)
+<!-- ```java
+import static pi.util.TextAlignment.CENTER;
+import static pi.util.TextAlignment.LEFT;
+import static pi.util.TextAlignment.RIGHT;
 
-```java
-import pi.Game;
+import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageFont;
 import pi.actor.ImageFontCaseSensitivity;
 import pi.actor.ImageFontText;
 import pi.util.TextAlignment;
 
-public class ImageFontTextAlignmentDemo extends Scene
+public class AlignmentDemo extends Scene
 {
     ImageFont font = new ImageFont("image-font/tetris",
             ImageFontCaseSensitivity.TO_UPPER);
 
-    public ImageFontTextAlignmentDemo()
+    public AlignmentDemo()
     {
-        getCamera().setMeter(32);
-        setBackgroundColor("white");
-        createTextLine(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
-        createTextLine(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
-        createTextLine(-7, "Dieser Text ist rechtsbuendig ausgerichtet.",
-                RIGHT);
+        camera().meter(32);
+        backgroundColor("blue");
+        createText(3, "Dieser Text ist linksbuendig ausgerichtet.", LEFT);
+        createText(-2, "Dieser Text ist zentriert ausgerichtet.", CENTER);
+        createText(-7,
+            "Dieser Text ist rechtsbuendig ausgerichtet.",
+            RIGHT);
     }
 
-    private void createTextLine(int y, String content, TextAlignment alignment)
+    private void createText(int y, String content, TextAlignment alignment)
     {
         ImageFontText line = new ImageFontText(font, content, 18, alignment);
-        line.setPosition(-9, y);
+        line.anchor(-9, y);
         add(line);
     }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new AlignmentDemo());
+    }
 }
-```
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_font/AlignmentDemo.java -->
+
+{{ code('demos.classes.actor.image_font.AlignmentDemo', start_line=47) }}
+
+## `color` (Farbe)
+
 
 {{ image('docs/actor/ImageFontTextColorDemo.png') }}
 
-Quellcode: [demos/actor/ImageFontTextColorDemo.java](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/actor/ImageFontTextColorDemo.java)
-
-```java
-public class ImageFontTextColorDemo extends Scene
+<!-- ```java
+public class ColorDemo extends Scene
 {
     ImageFont font = new ImageFont("image-font/tetris",
             ImageFontCaseSensitivity.TO_UPPER);
 
-    public ImageFontTextColorDemo()
+    public ColorDemo()
     {
-        setBackgroundColor("#eeeeee");
+        backgroundColor("#eeeeee");
         int y = 9;
-        for (Map.Entry<String, Color> entry : Resources.COLORS.getAll()
-                .entrySet())
+        for (Map.Entry<String, Color> entry : colors.getAll().entrySet())
         {
             setImageFontText(entry.getKey(), -5, y);
             y--;
@@ -83,23 +108,33 @@ public class ImageFontTextColorDemo extends Scene
     public void setImageFontText(String color, int x, int y)
     {
         ImageFontText textField = new ImageFontText(font, color, color);
-        textField.setPosition(x, y);
+        textField.anchor(x, y);
         add(textField);
     }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new ColorDemo(), 600, 800);
+    }
 }
-```
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_font/ColorDemo.java -->
+
+{{ code('demos.classes.actor.image_font.ColorDemo', start_line=44) }}
+
+## `real-world example` (Beispiel aus der Praxis)
 
 {{ image('docs/actor/ImageFontTextTetris.png') }}
 
-Quellcode: [tetris: scenes/CopyrightScene.java](https://github.com/engine-pi/tetris/blob/main/src/main/java/de/pirckheimer_gymnasium/tetris/scenes/CopyrightScene.java)
-
-```java
+<!-- ```java
 public class CopyrightScene extends BaseScene implements KeyStrokeListener
 {
     public CopyrightScene()
     {
         super(null);
-        setBackgroundColor(Tetris.COLOR_SCHEME_GREEN.getWhite());
+        backgroundColor(COLOR_SCHEME_GREEN.getWhite());
         String origText = "\"TM and ©1987 ELORG,\n" + //
                 "Tetris licensed to\n" + //
                 "Bullet-Proof\n" + //
@@ -116,13 +151,38 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
                 "original concept\n" + //
                 "design and programm\n" + //
                 // Im Original: by Alexey Pazhitnov."
-                // ." kann mit ImageFont nicht als ein Zeichen dargestellt werden.
-                "by Alexey Pazhitnov\"\n" + "\n";
+                // ." kann mit ImageFont nicht als ein Zeichen dargestellt
+                // werden.
+                // U+E000..U+F8FF BMP (0) Private Use Area
+                "by Alexey Pazhitnov\uE000\n" + "\n";
         ImageFontText text = new ImageFontText(Font.getFont(), origText, 21,
                 TextAlignment.CENTER);
-        text.setPosition(-2, 0);
+        text.anchor(-2, 0);
         add(text);
         delay(4, this::startTitleScene);
     }
+
+    public void startTitleScene()
+    {
+        Tetris.start(new TitleScene());
+    }
+
+    /**
+     * Wenn eine beliebige Taste gedrückt wird, wird zum nächsten Bildschirm,
+     * der Titelszene, gesprungen.
+     */
+    public void onKeyDown(KeyEvent keyEvent)
+    {
+        startTitleScene();
+    }
+
+    public static void main(String[] args)
+    {
+        Tetris.start(new CopyrightScene());
+    }
 }
-```
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_font/ColorDemo.java -->
+
+{{ code('tetris.scenes.CopyrightScene', start_line=35) }}
