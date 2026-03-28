@@ -96,6 +96,8 @@ public class Counter extends Text
     /**
      * Aktualisiert den Inhalt des Zählers, indem der aktuelle Zählerwert
      * (counter) gesetzt wird.
+     *
+     * @hidden
      */
     @Override
     public void update()
