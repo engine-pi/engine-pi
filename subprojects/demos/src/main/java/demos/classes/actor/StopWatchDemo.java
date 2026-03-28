@@ -59,7 +59,6 @@ public class StopWatchDemo extends Scene
         case KeyEvent.VK_S -> watch.start();
         case KeyEvent.VK_T -> watch.toggle();
         case KeyEvent.VK_I -> watch.time(3723456);
-
         }
     }
 

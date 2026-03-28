@@ -350,7 +350,8 @@ public class Controller
         if (renderPanel != null)
         {
             throw new IllegalStateException(
-                    "Die Methode start() wurde bereits ausgeführt und kann nur einmal ausgeführt werden");
+                    "Die Methode start() kann nur einmal ausgeführt werden. "
+                            + "Möglicherweise muss der Instant-Moduls deaktiviert werden: https://engine-pi.github.io/engine-pi/manual/main-classes/controller/instant-mode/#instant-modus-deaktivieren");
         }
         int pixelMultiplication = config.graphics.pixelMultiplication();
         width *= pixelMultiplication;
@@ -639,42 +640,22 @@ public class Controller
      * <ol>
      * <li>Als normale Klasse:
      *
-     * <pre>{@code
-     * class MyKeyStrokelistener implements KeyStrokeListener
-     * {
-     *     @Override
-     *     public void onKeyDown(KeyEvent e)
-     *     {
-     *         // Code here
-     *     }
-     * }
-     * obj.addKeyStrokeListener(new MyKeyStrokelistener());
-     * }</pre>
+     * <pre>{@code class MyKeyStrokelistener implements KeyStrokeListener
+     * { @Override public void onKeyDown(KeyEvent e) { // Code here } }
+     * obj.addKeyStrokeListener(new MyKeyStrokelistener()); }</pre>
      *
      * </li>
      *
      * <li>Als anonyme Klasse:
      *
-     * <pre>{@code
-     * obj.addKeyStrokeListener(new KeyStrokeListener()
-     * {
-     *     @Override
-     *     public void onKeyDown(KeyEvent e)
-     *     {
-     *         // Code here
-     *     }
-     * });
-     * }</pre>
+     * <pre>{@code obj.addKeyStrokeListener(new KeyStrokeListener() { @Override
+     * public void onKeyDown(KeyEvent e) { // Code here } }); }</pre>
      *
      * </li>
      *
      * <li>Oder als Lambda-Ausdruck:
      *
-     * <pre>{@code
-     * obj.addKeyStrokeListener(e -> {
-     *     // Code here
-     * });
-     * }</pre>
+     * <pre>{@code obj.addKeyStrokeListener(e -> { // Code here }); }</pre>
      *
      * </li>
      * </ol>

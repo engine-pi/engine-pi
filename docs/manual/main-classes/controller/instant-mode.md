@@ -21,17 +21,23 @@ das gleiche Ergebnis wie im obigen Code-Beispiel zu erzielen.
 
 {{ code('docs/main_classes/controller/instant_mode/InstantModeDisabled.java', 25) }}
 
-Manchmal ist es nicht ausreichend, direkt vor `Controller.start()` den
-Instant-Modus mittels `Controller.instantMode(false)` zu deaktiveren.
+## Instant-Modus deaktivieren
 
-Möglicherweise kann ein statischer Block Abhilfe schaffen:
+Der Instant-Modus kann deaktiviert werden, indem vor `#!java Controller.start()`
+die Methode `#!java Controller.instantMode(false)` aufgerufen wird.
+
+{{ code('docs/main_classes/controller/instant_mode/InstantModeDisabled.java', 32, 36) }}
+
+Manchmal ist es jedoch nicht ausreichend, direkt vor `#!java Controller.start()` den
+Instant-Modus mittels `#!java Controller.instantMode(false)` zu deaktiveren.
+Möglicherweise kann dann ein statischer Block Abhilfe schaffen:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/controller/instant_mode/InstantModeDisabledByStaticBlock.java -->
 
 {{ code('docs/main_classes/controller/instant_mode/InstantModeDisabledByStaticBlock.java', 25) }}
 
-Oder der Instant-Modus wird über die Konfigurationsdatei `engine-pi.properties`
-deaktiviert:
+Der Instant-Modus lässt sich auch über die Konfigurationsdatei `engine-pi.properties`
+deaktivieren:
 
 ```properties
 game_instantMode=true
