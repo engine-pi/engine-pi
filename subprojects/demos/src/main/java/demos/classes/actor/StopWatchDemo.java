@@ -74,5 +74,4 @@ public class StopWatchDemo extends Scene
         Controller.instantMode(false);
         Controller.start(new StopWatchDemo());
     }
-
 }
