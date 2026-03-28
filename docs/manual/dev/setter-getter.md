@@ -73,6 +73,7 @@ particle.bodyType(PARTICLE)
      *
      * @since 0.42.0
      */
+    @API
     @Getter
     public Color color()
     {
@@ -89,6 +90,7 @@ particle.bodyType(PARTICLE)
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
+    @API
     @Setter
     public TextBox color(Color color)
     {

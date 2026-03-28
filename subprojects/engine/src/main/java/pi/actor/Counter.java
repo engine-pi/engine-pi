@@ -22,6 +22,8 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -61,38 +63,6 @@ import pi.debug.ToStringFormatter;
  */
 public class Counter extends Text
 {
-    /**
-     * Der <b>Zähler</b>, der den aktuellen Wert speichert.
-     */
-    private int counter;
-
-    /**
-     * Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
-     */
-    private int amount = 1;
-
-    /**
-     * Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
-     *
-     * @since 0.43.0
-     */
-    private String prefix;
-
-    /**
-     * Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit dem
-     * aktuellen Zähler <b>ersetzt</b> wird.
-     *
-     * @since 0.43.0
-     */
-    private String template;
-
-    /**
-     * Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
-     *
-     * @since 0.43.0
-     */
-    private String suffix;
-
     /**
      * Initialisiert den Zähler mit dem Wert 0 und setzt die Anzeige auf "0".
      */
@@ -162,13 +132,34 @@ public class Counter extends Text
         content(content);
     }
 
+    /* counter */
+
+    /**
+     * Der <b>Zähler</b>, der den aktuellen Wert speichert.
+     */
+    private int counter;
+
+    /**
+     * <b>Gibt</b> den aktuellen <b>Wert des Zählers</b> zurück.
+     *
+     * @return Der aktuelle Wert des Zählers.
+     */
+    @API
+    @Getter
+    public int counter()
+    {
+        return counter;
+    }
+
     /**
      * <b>Setzt</b> den Zähler auf den angegebenen Wert und aktualisiert den
      * Inhalt.
      *
      * @param counter Der neue Wert für den Zähler.
      */
+    @API
     @Setter
+    @ChainableMethod
     public Counter counter(int counter)
     {
         this.counter = counter;
@@ -176,15 +167,23 @@ public class Counter extends Text
         return this;
     }
 
+    /* amount */
+
     /**
-     * <b>Gibt</b> den aktuellen <b>Wert des Zählers</b> zurück.
-     *
-     * @return Der aktuelle Wert des Zählers.
+     * Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
      */
+    private int amount = 1;
+
+    /**
+     * Gibt den <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     *
+     * @return Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     */
+    @API
     @Getter
-    public int counter()
+    public int amount()
     {
-        return counter;
+        return amount;
     }
 
     /**
@@ -193,7 +192,9 @@ public class Counter extends Text
      * @param amount Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt
      *     wird.
      */
+    @API
     @Setter
+    @ChainableMethod
     public Counter amount(int amount)
     {
         this.amount = amount;
@@ -201,25 +202,40 @@ public class Counter extends Text
         return this;
     }
 
+    /* prefix */
+
     /**
-     * Gibt den <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     * Die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
      *
-     * @return Der <b>Betrag</b>, um den der Zähler erhöht oder erniedrigt wird.
+     * @since 0.43.0
      */
+    private String prefix;
+
+    /**
+     * <b>Gibt</b> die Zeichenkette, die <b>vor</b> den Zähler angefügt wird,
+     * zurück.
+     *
+     * @return Die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     *
+     * @since 0.43.0
+     */
+    @API
     @Getter
-    public int amount()
+    public String prefix()
     {
-        return amount;
+        return prefix;
     }
 
     /**
      * <b>Setzt</b> die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
      *
-     * @param prefix Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     * @param prefix Die Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
      *
      * @since 0.43.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public Counter prefix(String prefix)
     {
         this.prefix = prefix;
@@ -227,18 +243,30 @@ public class Counter extends Text
         return this;
     }
 
+    /* template */
+
     /**
-     * <b>Gibt</b> eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird,
-     * zurück.
-     *
-     * @return Eine Zeichenkette, die <b>vor</b> den Zähler angefügt wird.
+     * Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit dem
+     * aktuellen Zähler <b>ersetzt</b> wird.
      *
      * @since 0.43.0
      */
+    private String template;
+
+    /**
+     * <b>Gibt</b> eine Zeichenkette, in dem die Zeichenkette {@code {counter}}
+     * mit dem aktuellen Zähler ersetzt wird.
+     *
+     * @return Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit
+     *     dem aktuellen Zähler ersetzt wird.
+     *
+     * @since 0.43.0
+     */
+    @API
     @Getter
-    public String prefix()
+    public String template()
     {
-        return prefix;
+        return template;
     }
 
     /**
@@ -250,7 +278,9 @@ public class Counter extends Text
      *
      * @since 0.43.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public Counter template(String template)
     {
         this.template = template;
@@ -258,19 +288,27 @@ public class Counter extends Text
         return this;
     }
 
+    /* suffix */
+
     /**
-     * <b>Gibt</b> eine Zeichenkette, in dem die Zeichenkette {@code {counter}}
-     * mit dem aktuellen Zähler ersetzt wird.
-     *
-     * @return Eine Zeichenkette, in dem die Zeichenkette {@code {counter}} mit
-     *     dem aktuellen Zähler ersetzt wird.
+     * Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
      *
      * @since 0.43.0
      */
+    private String suffix;
+
+    /**
+     * <b>Gibt</b> eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
+     *
+     * @return Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
+     *
+     * @since 0.43.0
+     */
+    @API
     @Getter
-    public String template()
+    public String suffix()
     {
-        return template;
+        return suffix;
     }
 
     /**
@@ -282,7 +320,9 @@ public class Counter extends Text
      *
      * @since 0.43.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public Counter suffix(String suffix)
     {
         this.suffix = suffix;
@@ -290,18 +330,7 @@ public class Counter extends Text
         return this;
     }
 
-    /**
-     * <b>Gibt</b> eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
-     *
-     * @return Eine Zeichenkette, die <b>nach</b> dem Zähler angehängt wird.
-     *
-     * @since 0.43.0
-     */
-    @Getter
-    public String suffix()
-    {
-        return suffix;
-    }
+    /* Ende Getter Setter */
 
     /**
      * <b>Erhöht</b> den Zähler um eins, aktualisiert den Inhalt und gibt den
@@ -309,6 +338,7 @@ public class Counter extends Text
      *
      * @return Der neue Wert des Zählers nach der Erhöhung.
      */
+    @API
     public int increase()
     {
         counter += amount;
@@ -322,6 +352,7 @@ public class Counter extends Text
      *
      * @return Der neue Wert des Zählers nach der Verringerung.
      */
+    @API
     public int decrease()
     {
         counter -= amount;
@@ -332,10 +363,13 @@ public class Counter extends Text
     /**
      * Setzt den Zähler auf <b>0</b> zurück und aktualisiert den Inhalt.
      */
-    public void reset()
+    @API
+    @ChainableMethod
+    public Counter reset()
     {
         counter = 0;
         update();
+        return this;
     }
 
     /**

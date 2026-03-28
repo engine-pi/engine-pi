@@ -49,7 +49,7 @@ clean:
 assets_init:
 	git submodule init
 	git submodule update
-	cd assets; git checkout main
+	cd assets; git checkout main; git pull
 	git pull
 
 assets_sync_resources:
