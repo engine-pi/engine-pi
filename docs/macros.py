@@ -378,7 +378,7 @@ def define_env(env: Any) -> None:
         url = _github_code_url(
             relpath, blob, lines=lines, start_line=start_line, end_line=end_line
         )
-        return f"<small>Zum Java-Code: [demos/{relpath}]({url})</small>"
+        return f"<small class=\"demo-link\">Zum Java-Code: <a href=\"{url}\" title=\"Die Quelldatei des Code-Beispiels auf Github aufrufen.\" target=\"_blank\">demos/{relpath}</a></small>"
 
     env.macro(macro_demo, "demo")
 

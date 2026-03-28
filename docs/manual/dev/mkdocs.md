@@ -83,8 +83,66 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ---
 
-### assets (Mediendaten)
+#### `code(path, start_line?, end_line?, line?, link?, from_import?)`
 
+```jinja
+{% raw %}
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion2.java', 25) }}
+{% endraw %}
+```
+
+##### Ohne Argumente
+
+Ohne Argumente wird die komplette Java-Datei eingebunden.
+
+```jinja
+{% raw %}
+{{ code('docs/HelloWorldVersion.java') }}
+{% endraw %}
+```
+
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion2.java') }}
+
+##### from_import=true
+
+Ist das Argument `from_import` auf wahr gesetzt, so wird der Quelltext ab dem ersten import-Statement angezeigt.
+
+```jinja
+{% raw %}
+{{ code('docs/HelloWorldVersion.java', from_import=true) }}
+{% endraw %}
+```
+
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion2.java', from_import=true) }}
+
+---
+
+##### link=false
+
+Das Argument `link` steuert, ob eine Link zum Github-Repository angehängt werden
+soll.
+
+```jinja
+{% raw %}
+{{ code('docs/HelloWorldVersion.java', link=false) }}
+{% endraw %}
+```
+
+{{ code('docs/main_classes/actor/hello_world/HelloWorldVersion2.java', line=57, link=false) }}
+
+---
+
+#### `line(relpath, line)`
+
+```jinja
+{% raw %}
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 42) }}
+{% endraw %}
+```
+
+{{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 44) }}
+
+### assets (Mediendaten)
 
 #### `image(relpath, caption?)`
 
@@ -134,7 +192,6 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 {{ repo_link('docs/macros.py') }}
 
-
 ### `drawio(basename)`
 
 ```jinja
@@ -145,7 +202,7 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 {{ drawio('main-classes') }}
 
-----
+---
 
 ## Vom Macros-Plugin bereit gestellt.
 

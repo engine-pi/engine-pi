@@ -1,21 +1,18 @@
-# Stateful Animation[^engine-alpha-wiki:stateful-animation]
+# `StatefulAnimation` (Zustandsbehaftete Animation)[^engine-alpha-wiki:stateful-animation]
 
 [^engine-alpha-wiki:stateful-animation]:
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
-Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
+<!-- Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
 
 - Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
 - Implementierst du funktionale Bewegungsmechanik für einen Platformer.
 - Setzt eine komplexe Spielfigur bestehend aus mehreren Animationen in einer Spielumgebung zusammen.
 
-## Stateful Animations
+## Stateful Animations -->
 
-Die
-{{ class('pi.actor.StatefulAnimation') }}
-ist eine elegante Möglichkeit, komplexe Spielfiguren mit wenig Aufwand
-umzusetzen.
+Mit der Figur {{ class('pi.actor.StatefulAnimation') }} lassen sich komplexe Spielfiguren mit wenig Aufwand umsetzen.
 
 Nehmen wir dieses Beispiel:[^oop]
 
@@ -38,45 +35,55 @@ Nehmen wir dieses Beispiel:[^oop]
 
 ## Zustandsübergangsdiagramm für die Figur
 
-Bevor die Umsetzung beginnt, ist es sinnvoll, die Zustände und deren Übergänge zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für die Figur.
+Bevor mit der Umsetzung begonnen wird, ist es sinnvoll, die Zustände und deren
+Übergänge zu modellieren. Hier ist ein mögliches Zustandsübergangsdiagramm für
+die Figur.
 
 {{ image('docs/stateful-animation/TransitionDiagram.png') }}
 /// caption
 Zustandsübergangsdiagramm für die Figur
 ///
 
-### Die Zustände als Enumeration
+### Die Zustände als Aufzählungstyp (Enumeration)
 
-Zustände einer Figur werden in der Engine
-stets als [enum](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html) implementiert.
+Die Zustände einer Figur werden in der Engine stets als [Aufzählungstyp
+(enum)](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
+implementiert. Dieser Aufzählungstyp definiert die Spielerzustände und speichert
+gleichzeitig die Dateipfade der zugehörigen GIF-Dateien.
 
-Diese enum definiert die Spielerzustände und speichert gleichzeitig die
-Dateipfade der zugehörigen GIF-Dateien.
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/PlayerState.java -->
 
-{{ demo('tutorials/stateful_animation/PlayerState') }}
-
-```java
+<!-- ```java
 public enum PlayerState
 {
-    IDLE("idle"), WALKING("walk"), RUNNING("run"), JUMPING("jump_1up"),
-    MIDAIR("jump_2midair"), FALLING("jump_3down"), LANDING("jump_4land");
+    IDLE("idle"),
+    WALKING("walk"),
+    RUNNING("run"),
+    JUMPING("jump_1up"),
+    MIDAIR("jump_2midair"),
+    FALLING("jump_3down"),
+    LANDING("jump_4land");
 
-    private String filename;
+    private final String filename;
 
     PlayerState(String filename)
     {
         this.filename = filename;
     }
 
-    public String getGifFileLocation()
+    @Getter
+    public String gifFileLocation()
     {
-        return "traveler/" + filename + ".gif";
+        return "openpixelproject/sprites/humans/traveler/spr_m_traveler_"
+                + filename + "_anim.gif";
     }
 }
-```
+``` -->
+
+{{ code('docs/main_classes/actor/stateful_animation/PlayerState.java', start_line=27) }}
 
 Ist beispielsweise das GIF des Zustandes
-`JUMPING` gefragt, so ist es jederzeit mit `JUMPING.getGifFileLocation()`
+`#!java JUMPING` gefragt, so ist es jederzeit mit `#!java JUMPING.gifFileLocation()`
 erreichbar. Dies macht den Code deutlich wartbarer.
 
 ### Die Klasse für den Player Character
@@ -459,7 +466,7 @@ Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
 festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
 `setFlipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
 
-## Anregung zum Experimentieren
+<!-- ## Anregung zum Experimentieren
 
 - **Different Settings, Different Game:** Platformer werden fundamental anders,
   wenn du an den Stellschrauben drehst: Ändere die Werte für Beschleunigung,
@@ -488,4 +495,4 @@ festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
     der Gegner zur Wehr setzen?
   - **Ein Ziel:** Quo Vadis? Was ist das Ziel des Levels? Von Flagge am
     rechten Levelrand über Bossgegner und Collectibles ist alles möglich.
-  - etc, etc, etc.
+  - etc, etc, etc. -->

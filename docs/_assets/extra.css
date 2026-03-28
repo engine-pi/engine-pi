@@ -1,6 +1,6 @@
 /* https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/_colors.scss */
 
-:root>* {
+:root > * {
   /* https://developer.gnome.org/hig/reference/palette.html */
   /* Blue 3 */
   --md-primary-fg-color: #1c71d8;
@@ -8,4 +8,8 @@
   --md-primary-fg-color--light: #3584e4;
   /* Blue 5 */
   --md-primary-fg-color--dark: #1a5fb4;
+}
+
+small.demo-link {
+  font-size: 8pt;
 }

@@ -59,35 +59,58 @@ public class StatefulAnimationDemo extends Scene
         makeBall(5).center(15, 3);
     }
 
-    private Rectangle makePlatform(double w, double h)
+    /**
+     * Erstellt eine statische Plattform als Rechteck mit definierten Rändern
+     * und Kollisionseigenschaften.
+     *
+     * Die Plattform besteht aus vier Fixture-Komponenten:
+     * <ul>
+     *
+     * <li>Oberkante: Mit Reibung (0.2) und ohne Rückprallverhalten für
+     * interaktive Oberfläche</li>
+     *
+     * <li>Linke Kante: Ohne Reibung und ohne Rückprallverhalten</li>
+     *
+     * <li>Rechte Kante: Ohne Reibung und ohne Rückprallverhalten</li>
+     *
+     * <li>Unterkante: Ohne Reibung und ohne Rückprallverhalten</li>
+     * </ul>
+     *
+     * @param width Die Breite der Plattform in Meter.
+     * @param height Die Höhe der Plattform in Meter.
+     *
+     * @return Das erstellte und der Szene hinzugefügte statische
+     *     Rechteck-Objekt
+     */
+    private Rectangle makePlatform(double width, double height)
     {
-        Rectangle r = new Rectangle(w, h);
-        r.color(new Color(0, 194, 255));
-        r.makeStatic();
+        Rectangle rectangle = new Rectangle(width, height);
+        rectangle.color(new Color(0, 194, 255));
+        rectangle.makeStatic();
         ArrayList<FixtureData> platformFixtures = new ArrayList<>();
         FixtureData top = new FixtureData(FixtureBuilder
-            .axisParallelRectangular(.1, h - 0.1, w - .2, 0.1));
-        top.setFriction(.2);
+            .axisParallelRectangular(0.1, height - 0.1, width - 0.2, 0.1));
+        top.setFriction(0.2);
         top.setRestitution(0);
         FixtureData left = new FixtureData(
-                FixtureBuilder.axisParallelRectangular(0, 0, 0.1, h));
+                FixtureBuilder.axisParallelRectangular(0, 0, 0.1, height));
         left.setFriction(0);
         left.setRestitution(0);
-        FixtureData right = new FixtureData(
-                FixtureBuilder.axisParallelRectangular(w - .1, 0, 0.1, h));
+        FixtureData right = new FixtureData(FixtureBuilder
+            .axisParallelRectangular(width - 0.1, 0, 0.1, height));
         right.setFriction(0);
         right.setRestitution(0);
         FixtureData bottom = new FixtureData(
-                FixtureBuilder.axisParallelRectangular(0, 0, w, .1));
+                FixtureBuilder.axisParallelRectangular(0, 0, width, 0.1));
         bottom.setFriction(0);
         bottom.setRestitution(0);
         platformFixtures.add(top);
         platformFixtures.add(left);
         platformFixtures.add(right);
         platformFixtures.add(bottom);
-        r.fixtures(() -> platformFixtures);
-        add(r);
-        return r;
+        rectangle.fixtures(() -> platformFixtures);
+        add(rectangle);
+        return rectangle;
     }
 
     private Circle makeBall(double d)
