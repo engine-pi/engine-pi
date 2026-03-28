@@ -18,7 +18,6 @@
  */
 package pi.actor;
 
-import static pi.Controller.colorScheme;
 import static pi.Controller.colors;
 
 import java.awt.Color;
@@ -31,26 +30,19 @@ import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
-import pi.debug.ToStringFormatter;
-import pi.graphics.boxes.TextLineBox;
+import pi.graphics.boxes.TextBox;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
-
 /**
- * Zur Darstellung von einzeiligen <b>Texten</b>.
- *
  * @author Josef Friedrich
  *
- * @since 0.42.0
+ * @since 0.45.0
  */
-public class Text extends Geometry
+public abstract class TextActor<T extends TextBox> extends Geometry
 {
-    private TextLineBox box;
+    protected T box;
 
     /**
      * Der Skalierungsfaktor in x-Richtung.
@@ -84,14 +76,9 @@ public class Text extends Geometry
      * @since 0.42.0
      */
     @API
-    public Text(Object content)
+    public TextActor(Object content)
     {
         super(null);
-        box = new TextLineBox(content);
-        Color color = colorScheme.get().white();
-        box.color(color);
-        color(color);
-        update();
     }
 
     /* content */
@@ -125,7 +112,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text content(Object content)
+    public TextActor<T> content(Object content)
     {
         String normalizedContent = String.valueOf(content);
         if (normalizedContent == null)
@@ -181,7 +168,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text width(double width)
+    public TextActor<T> width(double width)
     {
         if (definedWidth != width)
         {
@@ -232,7 +219,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text height(double height)
+    public TextActor<T> height(double height)
     {
         if (definedHeight != height)
         {
@@ -274,7 +261,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text font(String fontName)
+    public TextActor<T> font(String fontName)
     {
         box.font(fontName);
         update();
@@ -297,7 +284,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text font(Font font)
+    public TextActor<T> font(Font font)
     {
         box.font(font);
         update();
@@ -350,7 +337,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text style(int style)
+    public TextActor<T> style(int style)
     {
         box.fontStyle(style);
         update();
@@ -379,7 +366,7 @@ public class Text extends Geometry
     @API
     @Setter
     @ChainableMethod
-    public Text style(FontStyle style)
+    public TextActor<T> style(FontStyle style)
     {
         box.fontStyle(style);
         update();
@@ -423,7 +410,7 @@ public class Text extends Geometry
     @Setter
     @Override
     @ChainableMethod
-    public Text color(String color)
+    public TextActor<T> color(String color)
     {
         return color(colors.get(color));
     }
@@ -443,7 +430,7 @@ public class Text extends Geometry
     @API
     @Setter
     @Override
-    public Text color(Color color)
+    public TextActor<T> color(Color color)
     {
         super.color(color);
         box.color(color);
@@ -500,16 +487,5 @@ public class Text extends Geometry
         g.scale(scaleFactorX * pixelPerMeter, scaleFactorY * pixelPerMeter);
         box.render(g);
         g.setTransform(oldTransform);
-    }
-
-    /**
-     * @hidden
-     */
-    @Override
-    public String toString()
-    {
-        ToStringFormatter formatter = new ToStringFormatter("Text");
-        formatter.append("content", content());
-        return formatter.format();
     }
 }

@@ -25,7 +25,7 @@ import pi.Random;
 import pi.Scene;
 import pi.actor.Text;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/TextNg.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Text.java
 
 /**
  * @author Josef Friedrich

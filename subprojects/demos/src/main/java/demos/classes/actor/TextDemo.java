@@ -36,7 +36,6 @@ import pi.resources.font.FontStyle;
  */
 public class TextDemo extends Scene
 {
-
     public TextDemo()
     {
         backgroundColor("green");

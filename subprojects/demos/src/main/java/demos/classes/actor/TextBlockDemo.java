@@ -16,36 +16,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
+package demos.classes.actor;
 
-import static pi.Controller.colorScheme;
-
-import java.awt.Color;
-
-import pi.annotations.API;
-import pi.graphics.boxes.TextBlockBox;
-
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextBlockDemo.java
+import pi.Controller;
+import pi.Scene;
+import pi.actor.TextBlock;
 
 /**
- * Ein mehrzeiliger Textblock.
+ * Demonstiert die Figur {@link TextBlock}.
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.45.0
  */
-public class TextBlock extends TextActor<TextBlockBox>
+public class TextBlockDemo extends Scene
 {
-    /**
-     * Erstellt einen mehrzeiligen <b>Textblock</b>.
-     *
-     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
-     */
-    @API
-    public TextBlock(Object content)
+    public TextBlockDemo()
     {
-        super(null);
-        box = new TextBlockBox(content);
-        Color color = colorScheme.get().white();
-        box.color(color);
-        color(color);
-        update();
+        backgroundColor("brown");
+
+        TextBlock text = new TextBlock("Lorem ipsum\ndolor sit.");
+        text.width(5).height(5);
+        add(text);
+
     }
 
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new TextBlockDemo());
+    }
 }
