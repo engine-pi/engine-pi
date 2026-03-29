@@ -1,3 +1,4 @@
+
 # The default recipe runs 'git pull', syncs the assets, runs 'mvn package' and generate the mkdocs site
 default: pull assets package mkdocs_build
 
@@ -59,6 +60,8 @@ assets_sync_resources:
 	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 
 assets: assets_init assets_sync_resources
+
+export NO_MKDOCS_2_WARNING := "true"
 
 mkdocs_build:
 	mkdocs build --strict
