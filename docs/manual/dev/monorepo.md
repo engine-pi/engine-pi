@@ -17,11 +17,11 @@ sondern auch die Dokumentation ({{ repo_link('docs') }}) und die Mediendateien
 
 ## `java` (Java-Code)
 
-Das Projekt nutzt das Build Tool [maven](https://maven.apache.org/) und ist
-ist als sogenanntes [Multiple Modules bzw.
+Das Projekt nutzt das Build Tool [maven](https://maven.apache.org/) und ist als
+sogenanntes [Multiple Modules bzw.
 Subprojects](https://maven.apache.org/guides/mini/guide-multiple-modules.html)-Projekt
-strukturiert. Die eigentliche Engine befindet sich im Ordner
-{{ repo_link('subprojects/engine') }}.
+strukturiert. Die eigentliche Engine befindet sich im Ordner {{
+repo_link('subprojects/engine') }}.
 
 | Pfad                                               | artefactId              |
 | -------------------------------------------------- | ----------------------- |

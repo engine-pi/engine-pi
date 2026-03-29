@@ -85,6 +85,7 @@ watch:
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages
 nav:
   - Handbuch:
+      - index.md
       - Hauptklassen:
           - manual/main-classes/index.md
           - Controller (Steuerung):
@@ -105,6 +106,7 @@ nav:
               - manual/main-classes/actor/stateful-animation.md
               - manual/main-classes/actor/stop-watch.md
               - manual/main-classes/actor/text.md
+              - manual/main-classes/actor/text-block.md
               - manual/main-classes/actor/turtle.md
 
       - events (Ereignissteuerung):
