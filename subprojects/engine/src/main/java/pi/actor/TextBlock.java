@@ -47,5 +47,4 @@ public class TextBlock extends TextActor<TextBlockBox>
         color(color);
         update();
     }
-
 }
