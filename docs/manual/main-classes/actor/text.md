@@ -28,7 +28,7 @@ Folgendes Codebeispiel verwendet alle Setter der Figur {{ class('pi.actor.Text')
 
 ## Schriftstil
 
-Der Stil der Schriftart (*fett*, *kursiv* oder *fett und kursiv*) kann entweder
+Der Stil der Schriftart (_fett_, _kursiv_ oder _fett und kursiv_) kann entweder
 als Ganzzahl oder als Aufzählungstyp (enum) angegeben werden. Die Methode {{
 class('pi.actor.Text', 'style(int)') }} akzeptiert Ganzzahlen als
 Eingabeparameter und die überladene Methode {{ class('pi.actor.Text',
@@ -62,3 +62,36 @@ Ganzzahl welchem Aufzählungstyp entspricht:
         italic.style(2);
         boldItalic.style(3);
 ``` -->
+
+## Text in der Physik-Simulation
+
+{{ video('docs/main-classes/actor/text/TextPhysicsDemo.mp4') }}
+
+Wie alle anderen Figuren kann auch die {{ class('pi.actor.Text') }}-Figur in
+einer Physik-Simulation verwendet werden. Das folgende Beispiel lässt den
+Beispieltext auf einer Ebene abprallen. Damit der Text aus dem Spielfenster
+fliegt, wird seine Fallrichtung mit einem nach links gerichteten Impuls
+(`#!java applyImpulse(new Vector(-100, 0))`) beeinflusst.
+
+<!-- ```java
+    public TextPhysicsDemo()
+    {
+        backgroundColor("blue");
+        gravityOfEarth();
+
+        add(new Text("Text").font(new Font(Font.SERIF, 1, 10))
+            .height(6)
+            .density(1)
+            .restitution(0.95)
+            .center(9, 7)
+            .rotateBy(60)
+            .makeDynamic()
+            .applyImpulse(new Vector(-100, 0)));
+
+        add(new Rectangle(15, 1).center(0, -7).makeStatic());
+    }
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text/TextPhysicsDemo.java -->
+
+{{ code('demos.docs.main_classes.actor.text.TextPhysicsDemo', 42, 57) }}

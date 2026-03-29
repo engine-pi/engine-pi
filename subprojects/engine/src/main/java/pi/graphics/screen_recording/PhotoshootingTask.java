@@ -51,8 +51,7 @@ abstract class PhotoshootingTask
      */
     protected String getFormattedTime()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss_S");
-        return sdf.format(started);
+        return new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss_S").format(started);
     }
 
     abstract String getBaseDir();

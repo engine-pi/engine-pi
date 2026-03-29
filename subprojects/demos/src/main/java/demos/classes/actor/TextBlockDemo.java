@@ -38,7 +38,6 @@ public class TextBlockDemo extends Scene
         TextBlock text = new TextBlock("Lorem ipsum\ndolor sit.");
         text.width(5).height(5);
         add(text);
-
     }
 
     public static void main(String[] args)

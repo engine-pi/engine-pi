@@ -82,8 +82,11 @@ public class DefaultControl implements DefaultListener
         return Controller.scene() == null;
     }
 
-    // Got to
-    // file:///data/school/repos/inf/java/engine-pi/docs/reference/ereignissteuerung.md
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/events/shortcuts.md
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/screen-recording.md
 
     /**
      * Registriert <b>Standard-Tastenkürzel</b>.
@@ -95,10 +98,10 @@ public class DefaultControl implements DefaultListener
      * <li>{@code ALT + d} zum An- und Abschalten des Debug-Modus.</li>
      * <li>{@code ALT + p} zum Ein- und Ausblenden der Figuren-Positionen (sehr
      * ressourcenintensiv).</li>
-     * <li>{@code ALT + r} zum Ein- oder Ausschalten der Bildschirmaufnahme (in
-     * Form von Einzelbildern).</li>
      * <li>{@code ALT + s} zum Speichern eines Bildschirmfotos (unter
-     * ~/engine-pi).</li>
+     * {@code ~/Bilder} bzw. {@code ~/Pictures}).</li>
+     * <li>{@code ALT + r} zum Ein- oder Ausschalten der Bildschirmaufnahme
+     * (unter {@code ~/Videos}).</li>
      * <li>{@code ALT + PLUS} Hineinzoomen.</li>
      * <li>{@code ALT + MINUS} Herauszoomen.</li>
      * <li>{@code ALT + SHIFT + PLUS} schnelles Hineinzoomen.</li>
@@ -121,11 +124,11 @@ public class DefaultControl implements DefaultListener
             {
             case KeyEvent.VK_A -> config.debug.toggleRenderActors();
             case KeyEvent.VK_D -> Controller.toggleDebug();
-            case KeyEvent.VK_P -> config.debug.toogleShowPositions();
-            case KeyEvent.VK_S -> Controller.takeScreenshot();
-            case KeyEvent.VK_R -> Controller.recordScreen();
-            case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);
             case KeyEvent.VK_MINUS -> getCamera().zoomOut(zoomFactor);
+            case KeyEvent.VK_P -> config.debug.toogleShowPositions();
+            case KeyEvent.VK_PLUS -> getCamera().zoomIn(zoomFactor);
+            case KeyEvent.VK_R -> Controller.recordScreen();
+            case KeyEvent.VK_S -> Controller.takeScreenshot();
             }
         }
         if (event.getKeyCode() == KeyEvent.VK_ESCAPE)

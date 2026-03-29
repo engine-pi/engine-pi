@@ -34,7 +34,7 @@ import pi.Controller;
  * </p>
  *
  * <p>
- * Diese drei Methoden sind die Methode
+ * Diese drei Methoden sind in die Methode
  * {@link pi.graphics.RenderPanel#render(pi.graphics.RenderSource)} eingebettet:
  * </p>
  *
@@ -227,5 +227,4 @@ public final class Photographer
     {
         Controller.start();
     }
-
 }

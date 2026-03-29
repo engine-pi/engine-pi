@@ -11,6 +11,7 @@ können diese Kürzel entfernt oder mit
 neue Kürzel gesetzt werden.
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/DefaultControl.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/screen-recording.md -->
 
 - `ESCAPE` zum Schließen des Fensters.
 - `ALT + a` zum An- und Abschalten der Figuren-Zeichenroutine (Es
@@ -18,8 +19,8 @@ neue Kürzel gesetzt werden.
 - `ALT + d` zum An- und Abschalten des Debug-Modus.
 - `ALT + p` zum Ein- und Ausblenden der Figuren-Positionen (sehr
   ressourcenintensiv).
-- `ALT + r` zum Ein- oder Ausschalten der Bildschirmaufnahme (in Form von Einzelbildern).
-- `ALT + s` zum Speichern eines Bildschirmfotos (unter `~/engine-pi`).
+- `ALT + r` zum Ein- oder Ausschalten der Bildschirmaufnahme (unter `~/Videos`).
+- `ALT + s` zum Speichern eines Bildschirmfotos (unter `~/Bilder` bzw. `~/Pictures`).
 - `ALT + PLUS` Hineinzoomen.
 - `ALT + MINUS` Herauszoomen.
 - `ALT + SHIFT + PLUS` schnelles Hineinzoomen.

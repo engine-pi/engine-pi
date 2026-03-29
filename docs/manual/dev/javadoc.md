@@ -73,6 +73,8 @@ Mehrzeilig:
 | Rigid Body                       | Starrer Körper                                         |
 | RopeJoint                        | Seilverbindung                                         |
 | Scene                            | Szene                                                  |
+| ScreenRecording                  | Bildschirmaufnahme                                     |
+| Screenshot                       | Bildschirmfoto                                         |
 | Shape                            | Umriss                                                 |
 | Square                           | Quadrat                                                |
 | TurboFire                        | Dauerfeuer                                             |

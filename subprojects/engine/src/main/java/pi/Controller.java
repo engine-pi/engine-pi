@@ -1066,9 +1066,12 @@ public class Controller
         config.debug.enabled(true);
     }
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/screen-recording.md
+
     /**
-     * Speichert ein Bildschirmfoto des aktuellen Spielfensters in den Ordner
-     * {@code ~/engine-pi}.
+     * Speichert ein <b>Bildschirmfoto</b> des aktuellen Spielfensters in den
+     * Ordner {@code ~/Bilder} bzw. {@code ~/Pictures}.
      */
     @API
     public static void takeScreenshot()
@@ -1076,15 +1079,20 @@ public class Controller
         Photographer.get().takeScreenshot();
     }
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/screen-recording.md
+
     /**
-     * Schaltet die <b>Bildschirmaufnahme</b> (in Form von Einzelbildern) ein
-     * oder aus.
+     * Schaltet die <b>Bildschirmaufnahme</b> ein oder aus.
      */
     @API
     public static void recordScreen()
     {
         Photographer.get().toggleScreenRecording();
     }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/screen-recording.md
 
     /**
      * @param duration Die <b>Dauer</b> der Videoaufnahme in Sekunden.
