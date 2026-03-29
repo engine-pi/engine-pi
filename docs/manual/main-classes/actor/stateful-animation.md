@@ -51,8 +51,6 @@ Die Zustände einer Figur werden in der Engine stets als [Aufzählungstyp
 implementiert. Dieser Aufzählungstyp definiert die Spielerzustände und speichert
 gleichzeitig die Dateipfade der zugehörigen GIF-Dateien.
 
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/PlayerState.java -->
-
 <!-- ```java
 public enum PlayerState
 {
@@ -80,7 +78,9 @@ public enum PlayerState
 }
 ``` -->
 
-{{ code('docs/main_classes/actor/stateful_animation/PlayerState.java', start_line=27) }}
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/PlayerState.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.PlayerState.java', start_line=27) }}
 
 Ist beispielsweise das GIF des Zustandes
 `#!java JUMPING` gefragt, so ist es jederzeit mit `#!java JUMPING.gifFileLocation()`
@@ -88,7 +88,7 @@ erreichbar. Dies macht den Code deutlich wartbarer.
 
 ### Die Klasse der Spielfigur
 
-Mit den definierten Zuständen in `PlayerState` kann nun die Implementierung der
+Mit den definierten Zuständen in `#!java PlayerState` kann nun die Implementierung der
 eigentlichen Spielfigur beginnen:
 
 <!-- ```java
@@ -134,8 +134,9 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 }
 ``` -->
 
-{{ code('docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java', start_line=35, end_line=85) }}
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
 
+{{ code('docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java', start_line=35, end_line=85) }}
 
 In `#!java setupPlayerStates()` werden alle in `#!java PlayerState` definierten
 Zustände der Spielfigur eingepflegt, inklusive des Einladens der animierten
@@ -199,6 +200,8 @@ public class StatefulAnimationDemo extends Scene
 }
 ```-->
 
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java -->
+
 {{ code('docs/main_classes/actor/stateful_animation/StatefulAnimationDemo.java', start_line=36) }}
 
 Die Figur bleibt im IDLE-Zustand hängen. Nun gilt es, die übrigen
@@ -215,12 +218,14 @@ Wir fokussieren uns nun auf die Übergänge zum Springen.
 
 Auf Tastendruck (Leertaste) soll die Spielfigur
 springen, wenn sie auf festem Boden steht. Die Spielfigur implementiert nun
-zusätzlich den `KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
+zusätzlich den `#!java KeyStrokeListener` und führt auf Leertastendruck die Sprungroutine aus:
 
 {{ image('docs/stateful-animation/StatefulAnimation_First_Jump.gif') }}
 /// caption
 Die Figur kann springen, aber nicht landen.
 ///
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
 
 Quellcode: [demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104](https://github.com/engine-pi/engine-pi/blob/f99a9f20e7d08584472978d54105162e3466672b/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/stateful_animation/StatefulPlayerCharacter.java#L92-L104)
 
@@ -250,15 +255,15 @@ Die nächsten Übergänge, die wir umsetzen, sind für das Fallen und Landen.
 ///
 
 Als nächstes sorgen wir dafür, dass die Figur landen kann und schließlich zurück
-in den `IDLE`-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in
-Y-Richtung wichtig. Im Zustandsübergangsdiagramm haben wir dafür `v_y < 0` als
-Fallen definiert und `v_y = 0` als Stehen. Das ist im Modell in Ordnung,
+in den `#!java IDLE`-Zustand kommt. Dafür ist die Geschwindigkeit der Figur in
+`Y`-Richtung wichtig. Im Zustandsübergangsdiagramm haben wir dafür `#!java v_y < 0` als
+Fallen definiert und `#!java v_y = 0` als Stehen. Das ist im Modell in Ordnung,
 allerdings ist die Physik mit Fließkomma-Zahlen nicht ideal für „harte“
 Schwellwerte. Stattdessen definieren wir einen Grenzwert, innerhalb dessen wir
-auf 0 runden. (`private static final float THRESHOLD = 0.01;`).
+auf `0` runden. (`#!java private static final float THRESHOLD = 0.01;`).
 
-Unsere Spielfigur soll in jedem Einzelbild ihre eigene Y-Geschwidingkeit
-überprüfen. Dazu implementiert sie nun zusätzlich `FrameUpdateListener` und
+Unsere Spielfigur soll in jedem Einzelbild ihre eigene `Y`-Geschwidingkeit
+überprüfen. Dazu implementiert sie nun zusätzlich `#!java FrameUpdateListener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Full_Jump2.gif') }}
@@ -266,39 +271,40 @@ prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 Die Figur hat jetzt einen vollen Sprungzyklus
 ///
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L107-L133') }}
-
-```java
-@Override
-    public void onFrameUpdate(double dT)
+<!-- ```java
+    @Override
+    public void onFrameUpdate(double pastTime)
     {
-        Vector velocity = getVelocity();
-        PlayerState state = getCurrentState();
-        if (velocity.getY() < -THRESHOLD)
+        Vector velocity = velocity();
+        PlayerState state = state();
+        text.content(state);
+        if (velocity.y() < -THRESHOLD)
         {
             switch (state)
             {
             case JUMPING:
-                setState(PlayerState.MIDAIR);
+                state(PlayerState.MIDAIR);
                 break;
 
             case IDLE:
             case WALKING:
             case RUNNING:
-                setState(PlayerState.FALLING);
+                state(PlayerState.FALLING);
                 break;
 
             default:
                 break;
             }
         }
-        else if (velocity.getY() < THRESHOLD && state == PlayerState.FALLING)
+        else if (velocity.y() < THRESHOLD && state == PlayerState.FALLING)
         {
-            setState(PlayerState.LANDING);
+            state(PlayerState.LANDING);
         }
+``` -->
 
-    }
-```
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=110, end_line=137) }}
 
 ### Player Movement
 
@@ -313,24 +319,27 @@ Player Movement
 ///
 
 Die (je nach Tastendruck gerichtete) Kraft beschleunigt die Spielfigur, bis die
-Reibung die wirkende Kraft ausgleicht. In der Methode `setupPhysics()` wurden
+Reibung die wirkende Kraft ausgleicht. In der Methode `#!java setupPhysics()` wurden
 bereits folgende Reibung für die Figur aktiviert:
 
-- Luftreibung (gesetzt mit `setLinearDamping(.3)`)
-- Kontaktreibung, z. B mit Platformen (gesetzt mit `setFriction(30)`)
+- Luftreibung (gesetzt mit `#!java setLinearDamping(.3)`)
+- Kontaktreibung, z. B. mit Plattformen (gesetzt mit `#!java setFriction(30)`)
 
 Die Maximalgeschwindigkeit sowie die konstant wirkende Kraft setzen wir als
 Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L41-L43') }}
+<!-- ```java
+    private static final double MAX_SPEED = 20;
 
-```java
-private static final Float MAX_SPEED = 20;
-private static final float FORCE = 16000;
-```
+    private static final double FORCE = 16000;
+``` -->
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=44, end_line=46) }}
 
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
-Methode `onFrameUpdate(double pastTime)` erweitert:
+Methode `#!java onFrameUpdate(double pastTime)` erweitert:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Movement_Base.gif') }}
 /// caption
@@ -338,25 +347,27 @@ Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.
 ///
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L133-L145') }}
+In der Methode `#!java onFrameUpdate()`:
 
-```java
-//In: onFrameUpdate(double pastTime)
+<!-- ```java
+        if (Math.abs(velocity.x()) > MAX_SPEED)
+        {
+            velocity(new Vector(Math.signum(velocity.x()) * MAX_SPEED,
+                    velocity.y()));
+        }
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
+        {
+            applyForce(new Vector(-FORCE, 0));
+        }
+        else if (Controller.isKeyPressed(KeyEvent.VK_D))
+        {
+            applyForce(new Vector(FORCE, 0));
+        }
+``` -->
 
-if (Math.abs(velocity.getX()) > MAX_SPEED)
-{
-    setVelocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED,
-            velocity.getY()));
-}
-if (Game.isKeyPressed(KeyEvent.VK_A))
-{
-    applyForce(new Vector(-FORCE, 0));
-}
-else if (Game.isKeyPressed(KeyEvent.VK_D))
-{
-    applyForce(new Vector(FORCE, 0));
-}
-```
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=138, end_line=150) }}
 
 ### Die Übergänge IDLE - WALKING - RUNNING
 
@@ -366,33 +377,35 @@ Die letzten zu implementierenden Zustandsübergänge hängen von der
 Spielerbewegung ab.
 ///
 
-Die Figur kann jetzt voll gesteuert werden. Die Zustände `WALKING` und `RUNNING`
+Die Figur kann jetzt voll gesteuert werden. Die Zustände `#!java WALKING` und `#!java RUNNING`
 können nun eingebracht werden. Ist die Figur in einem der drei „bodenständigen“
-Zustände (`IDLE`, `WALKING`, `RUNNING`), so hängt der Übergang zwischen diesen
+Zustände (`#!java IDLE`, `#!java WALKING`, `#!java RUNNING`), so hängt der Übergang zwischen diesen
 Zuständen nur vom Betrag ihrer Geschindigkeit ab:
 
-- Bewegt sich die Figur „langsam“, so ist sie `WALKING`.
-- Bewegt sich die Figur „schnell“, so ist sie `RUNNING`.
-- Bewegt sich die Figur „gar nicht“, so ist sie `IDLE`.
+- Bewegt sich die Figur „langsam“, so ist sie `#!java WALKING`.
+- Bewegt sich die Figur „schnell“, so ist sie `#!java RUNNING`.
+- Bewegt sich die Figur „gar nicht“, so ist sie `#!java IDLE`.
 
-Um die Begriffe „langsam“ und „schnell“ greifbar zu machen, ist einen Grenzwert
+Um die Begriffe *„langsam“* und *„schnell“* greifbar zu machen, ist einen Grenzwert
 nötig. Dazu definieren wir Konstanten in der Figur:
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L37-L39') }}
-
-```java
+<!-- ```java
 private static final double RUNNING_THRESHOLD = 10;
 
 private static final double WALKING_THRESHOLD = 1;
-```
+``` -->
 
-Sobald sich die Figur mindestens 1 Meter pro Sekunde bewegt, zählt sie als `WALKING`,
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=40, end_line=42) }}
+
+Sobald sich die Figur mindestens 1 Meter pro Sekunde bewegt, zählt sie als `#!java WALKING`,
 sobald sie sich mindestens 10 Meter pro Sekunde bewegt (die Hälfte der maximalen
-Geschwindigkeit), so zählt sie als `RUNNING`.
+Geschwindigkeit), so zählt sie als `#!java RUNNING`.
 
-Auf diese Grenzwerte wird jeden Frame in der `onFrameUpdate(...)` der Spielfigur
+Auf diese Grenzwerte wird jeden Frame in der `#!java onFrameUpdate(...)` der Spielfigur
 geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
-die neue `onFrameUpdate(...)`:
+die neue `#!java onFrameUpdate(...)`:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Movement_Full.gif') }}
 /// caption
@@ -400,80 +413,83 @@ Die Figur ist mit ihren Zuständen und Übergängen
 vollständig implementiert.
 ///
 
-{{ demo('tutorials/stateful_animation/StatefulPlayerCharacter', '90cfff6e267a902bc3783c2ce7d223558a7c1289', 'L107-L172') }}
+<!-- ```java
+    @Override
+    public void onFrameUpdate(double pastTime)
+    {
+        Vector velocity = velocity();
+        PlayerState state = state();
+        text.content(state);
+        if (velocity.y() < -THRESHOLD)
+        {
+            switch (state)
+            {
+            case JUMPING:
+                state(PlayerState.MIDAIR);
+                break;
 
-```java
-@Override
-public void onFrameUpdate(double dT)
-{
-    Vector velocity = getVelocity();
-    PlayerState state = getCurrentState();
-    if (velocity.getY() < -THRESHOLD)
-    {
-        switch (state)
-        {
-        case JUMPING:
-            setState(PlayerState.MIDAIR);
-            break;
+            case IDLE:
+            case WALKING:
+            case RUNNING:
+                state(PlayerState.FALLING);
+                break;
 
-        case IDLE:
-        case WALKING:
-        case RUNNING:
-            setState(PlayerState.FALLING);
-            break;
+            default:
+                break;
+            }
+        }
+        else if (velocity.y() < THRESHOLD && state == PlayerState.FALLING)
+        {
+            state(PlayerState.LANDING);
+        }
+        if (Math.abs(velocity.x()) > MAX_SPEED)
+        {
+            velocity(new Vector(Math.signum(velocity.x()) * MAX_SPEED,
+                    velocity.y()));
+        }
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
+        {
+            applyForce(new Vector(-FORCE, 0));
+        }
+        else if (Controller.isKeyPressed(KeyEvent.VK_D))
+        {
+            applyForce(new Vector(FORCE, 0));
+        }
+        if (state == PlayerState.IDLE || state == PlayerState.WALKING
+                || state == PlayerState.RUNNING)
+        {
+            double velXTotal = Math.abs(velocity.x());
+            if (velXTotal > RUNNING_THRESHOLD)
+            {
+                changeState(PlayerState.RUNNING);
+            }
+            else if (velXTotal > WALKING_THRESHOLD)
+            {
+                changeState(PlayerState.WALKING);
+            }
+            else
+            {
+                changeState(PlayerState.IDLE);
+            }
+        }
+        if (velocity.x() > 0)
+        {
+            flipHorizontal(false);
+        }
+        else if (velocity.x() < 0)
+        {
+            flipHorizontal(true);
+        }
+    }
+``` -->
 
-        default:
-            break;
-        }
-    }
-    else if (velocity.getY() < THRESHOLD && state == PlayerState.FALLING)
-    {
-        setState(PlayerState.LANDING);
-    }
-    if (Math.abs(velocity.getX()) > MAX_SPEED)
-    {
-        setVelocity(new Vector(Math.signum(velocity.getX()) * MAX_SPEED,
-                velocity.getY()));
-    }
-    if (Game.isKeyPressed(KeyEvent.VK_A))
-    {
-        applyForce(new Vector(-FORCE, 0));
-    }
-    else if (Game.isKeyPressed(KeyEvent.VK_D))
-    {
-        applyForce(new Vector(FORCE, 0));
-    }
-    if (state == PlayerState.IDLE || state == PlayerState.WALKING
-            || state == PlayerState.RUNNING)
-    {
-        double velXTotal = Math.abs(velocity.getX());
-        if (velXTotal > RUNNING_THRESHOLD)
-        {
-            changeState(PlayerState.RUNNING);
-        }
-        else if (velXTotal > WALKING_THRESHOLD)
-        {
-            changeState(PlayerState.WALKING);
-        }
-        else
-        {
-            changeState(PlayerState.IDLE);
-        }
-    }
-    if (velocity.getX() > 0)
-    {
-        setFlipHorizontal(false);
-    }
-    else if (velocity.getX() < 0)
-    {
-        setFlipHorizontal(true);
-    }
-}
-```
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/stateful_animation/StatefulPlayerCharacter.java -->
+
+{{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=110, end_line=176) }}
 
 Die letzte Überprüfung der X-Geschwindigkeit dient dazu, die Bewegungsrichtung
 festzustellen. Mit dieser Info kann zum richtigen Zeitpunkt über
-`setFlipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
+`#!java setFlipHorizontal(boolean flip)` die Blickrichtung der Figur angepasst werden.
 
 <!-- ## Anregung zum Experimentieren
 

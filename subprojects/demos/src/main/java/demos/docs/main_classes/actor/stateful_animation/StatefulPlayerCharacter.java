@@ -41,7 +41,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
 
     private static final double WALKING_THRESHOLD = 1;
 
-    private static final Float MAX_SPEED = 20f;
+    private static final double MAX_SPEED = 20;
 
     private static final double FORCE = 16000;
 
@@ -108,7 +108,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     }
 
     @Override
-    public void onFrameUpdate(double dT)
+    public void onFrameUpdate(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();

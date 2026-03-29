@@ -30,8 +30,8 @@ import pi.annotations.API;
 public interface FrameUpdateListener
 {
     /**
-     * Diese Methode wird bei einem (angemeldeten) Objekt bei jedem Einzelbild
-     * erneut aufgerufen.
+     * Diese Methode wird bei jedem Einzelbild eines angemeldeten Objekts erneut
+     * aufgerufen.
      *
      * @param pastTime Die Zeit <b>in Sekunden</b>, die seit der letzten
      *     Aktualisierung vergangen ist.
