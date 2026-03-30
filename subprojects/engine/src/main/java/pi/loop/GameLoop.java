@@ -285,7 +285,7 @@ public final class GameLoop
     private void render(Graphics2D g, int width, int height)
     {
         Scene scene = currentScene();
-        // have to be the same @ Game.screenshot!
+        // have to be the same @ Controller.screenshot!
         Graphics2DUtil.antiAliasing(g, true);
         // Absoluter Hintergrund
         g.setColor(scene.backgroundColor());

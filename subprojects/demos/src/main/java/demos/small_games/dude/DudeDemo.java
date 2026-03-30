@@ -77,7 +77,8 @@ public class DudeDemo extends Scene
         camera().meter(30);
         setupPlayground();
         setupCosmeticLayers();
-        // getMainLayer().setVisibleHeight(15, Game.getFrameSizeInPixels());
+        // getMainLayer().setVisibleHeight(15,
+        // Controller.getFrameSizeInPixels());
         PauseLayer pauseLayer = new PauseLayer();
         pauseLayer.visible(false);
         addLayer(pauseLayer);

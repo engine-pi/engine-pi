@@ -11,7 +11,7 @@ public class TaskSolver extends Solver<Robot>
     // Test laufen nicht in Github actions
     // static
     // {
-    // Game.instantMode(false);
+    // Controller.instantMode(false);
     // }
 
     /**

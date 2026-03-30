@@ -79,10 +79,10 @@ import pi.resources.sound.SoundContainer;
  * </p>
  *
  * <p>
- * Die Klassen {@link Game} und {@link Controller} sind identisch.
- * {@link Controller} ist der neutralere Name und eignet sich besser für
- * Projekte, die kein Spiel darstellen (z.B. Projekte zur
- * Algorithmenvisualisierung oder Physik-Simulation).
+ * In der Engine Alpha heißt diese Klasse {@code Game}. {@link Controller} ist
+ * der neutralere Name und eignet sich besser für Projekte, die kein Spiel
+ * darstellen (z.B. Projekte zur Algorithmenvisualisierung oder
+ * Physik-Simulation).
  * </p>
  *
  * @author Michael Andonie

@@ -52,7 +52,7 @@ public class RepeatDemo extends Scene
 
     public static void main(String[] args)
     {
-        Game.start(new RepeatDemo());
+        Controller.start(new RepeatDemo());
     }
 }
 ```

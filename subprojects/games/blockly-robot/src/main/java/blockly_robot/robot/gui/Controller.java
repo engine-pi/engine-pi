@@ -2,7 +2,6 @@ package blockly_robot.robot.gui;
 
 import blockly_robot.robot.gui.scenes.WindowScene;
 import pi.Camera;
-import pi.Game;
 import pi.Scene;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
@@ -13,12 +12,12 @@ public class Controller
 {
     static
     {
-        Game.instantMode(false);
+        pi.Controller.instantMode(false);
     }
 
     public static void setDebug(boolean debug)
     {
-        Game.debug(debug);
+        pi.Controller.debug(debug);
     }
 
     public static void toggleInterpolator()
@@ -37,18 +36,18 @@ public class Controller
             boolean debug)
     {
         scene.backgroundColor(Color.WHITE);
-        if (!Game.isRunning())
+        if (!pi.Controller.isRunning())
         {
-            Game.start(scene, width, height);
+            pi.Controller.start(scene, width, height);
             if (debug)
             {
-                Game.debug(true);
+                pi.Controller.debug(true);
             }
         }
         else
         {
-            Game.transitionToScene(scene);
-            Game.windowSize(width, height);
+            pi.Controller.transitionToScene(scene);
+            pi.Controller.windowSize(width, height);
         }
     }
 
@@ -60,7 +59,7 @@ public class Controller
         Bounds bounds = windowScene.getWindowBounds();
         Vector center = bounds.center();
         camera.focus(center.x(), center.y());
-        Game.title(windowScene.getTitle());
+        pi.Controller.title(windowScene.getTitle());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
             (int) Math.round(pixelPerMeter * bounds.height()),
             (Scene) windowScene);

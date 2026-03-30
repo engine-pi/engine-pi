@@ -1,4 +1,4 @@
-# `Game.dialog` (Dialogfenster)
+# `Controller.dialog` (Dialogfenster)
 
 https://engine-alpha.org/wiki/Tutorials/Dialoge
 

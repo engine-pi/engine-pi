@@ -1,6 +1,5 @@
 package blockly_robot.robot.gui.scenes;
 
-import pi.Game;
 import pi.Scene;
 import pi.Rectangle;
 import pi.Text;
@@ -60,7 +59,7 @@ public class MainMenuScene extends Scene implements WindowScene
                 }
             });
             rectangle.addFrameUpdateListener((deltaSeconds) -> {
-                if (rectangle.contains(Game.mousePosition()))
+                if (rectangle.contains(pi.Controller.mousePosition()))
                 {
                     rectangle.opacity(0.5f);
                 }

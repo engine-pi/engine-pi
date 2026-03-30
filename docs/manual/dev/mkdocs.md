@@ -33,11 +33,11 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ```jinja
 {% raw %}
-{{ class('pi.Game', 'Spiel') }}
+{{ class('pi.Controller', 'Spiel') }}
 {% endraw %}
 ```
 
-{{ class('pi.Game', 'Spiel') }}
+{{ class('pi.Controller', 'Spiel') }}
 
 #### `method(class_path, method, link_title?)`
 
@@ -160,11 +160,11 @@ soll.
 
 ```jinja
 {% raw %}
-{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}
+{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Controller.start()</code> ohne Szene ausgeführt wird.') }}
 {% endraw %}
 ```
 
-{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}
+{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Controller.start()</code> ohne Szene ausgeführt wird.') }}
 
 ---
 

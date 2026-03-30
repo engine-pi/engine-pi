@@ -67,7 +67,7 @@ class Frog extends Image implements FrameUpdateListener
 
     public void kill()
     {
-        Game.transitionToScene(new DeathScreen());
+        Controller.transitionToScene(new DeathScreen());
     }
 
     @Override
@@ -84,7 +84,7 @@ class Frog extends Image implements FrameUpdateListener
             setFlipHorizontal(false);
         }
         // B: Horizontale Bewegung steuern
-        if (Game.isKeyPressed(KeyEvent.VK_A))
+        if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
             if (velocity.getX() > 0)
             {
@@ -92,7 +92,7 @@ class Frog extends Image implements FrameUpdateListener
             }
             applyForce(Vector.LEFT.multiply(600));
         }
-        else if (Game.isKeyPressed(KeyEvent.VK_D))
+        else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
             if (velocity.getX() < 0)
             {

@@ -110,7 +110,7 @@ spezifisch mit der Schlange angemeldet:
   KeyStrokeListener-Interfaces, kann die Schlange in ihrer
   onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key
   heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die
-  Methode ea.Game.isKeyPressed(int keycode) ist hierfür hilfreich.
+  Methode Controller.isKeyPressed(int keycode) ist hierfür hilfreich.
 - Escalating Difficulty: Je mehr Pick-Ups gesammelt wurden (und damit desto
   höher der Score), desto schneller bewegt sich die Schlange. Actual Snake: Wenn
   du Lust auf eine Herausforderung hast, kannst du aus dem Spiel ein echtes

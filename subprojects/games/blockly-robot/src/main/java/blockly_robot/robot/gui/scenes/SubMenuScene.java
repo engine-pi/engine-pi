@@ -1,6 +1,5 @@
 package blockly_robot.robot.gui.scenes;
 
-import pi.Game;
 import pi.Scene;
 import pi.Text;
 import pi.graphics.geom.Bounds;
@@ -45,7 +44,7 @@ public class SubMenuScene extends Scene implements WindowScene
                     }
                 });
                 text.addFrameUpdateListener((deltaSeconds) -> {
-                    if (text.contains(Game.mousePosition()))
+                    if (text.contains(pi.Controller.mousePosition()))
                     {
                         text.opacity(0.5f);
                     }

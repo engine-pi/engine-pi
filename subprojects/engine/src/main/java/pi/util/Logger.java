@@ -218,7 +218,7 @@ final public class Logger
 
     /**
      * Logger-Funktion für Debug-Informationen. Log wird nur ausgeführt, wenn
-     * <code>Game.debug();</code> ausgeführt wurde.
+     * <code>Controller.debug();</code> ausgeführt wurde.
      *
      * @param tag Der Tag der Debug-Message.
      * @param s Text der Information

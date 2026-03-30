@@ -14,8 +14,8 @@ wieder neu aufzubauen. Stattdessen werden alle grafischen Objekte in einer
 `Scene` hinzugefügt. Dies passiert - wie in den vorigen Tutorials - über die
 Methode `add(...)`.
 
-Über die Klasse `Game` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
-es die Methode `Game.transitionToScene(Scene)`.
+Über die Klasse `Controller` kann schnell zwischen Szenen gewechselt werden. Dazu gibt
+es die Methode `Controller.transitionToScene(Scene)`.
 
 {{ image('docs/scenes/Scene_Demonstration.png', 'Szenen in der Engine: Beispiel mit Pausenmenü') }}
 
@@ -93,7 +93,7 @@ Rotation im Uhrzeigersinn dauert `8` Sekunden.
 Das Pausenmenü hat einen Hover-Effekt. Hierzu wird in jeden Einzelbild
 überprüft, ob die Maus derzeit innerhalb des Steuerelementes liegt und abhängig
 davon die Rechtecksfarbe ändert. Hierzu wird die Methode
-`Game.getMousePositionInCurrentScene()` genutzt:
+`Controller.getMousePositionInCurrentScene()` genutzt:
 
 {{ code('docs/main_classes/scene/tutorial/MenuItem.java', 63, 74) }}
 

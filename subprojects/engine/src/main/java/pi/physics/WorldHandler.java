@@ -166,7 +166,7 @@ public class WorldHandler implements ContactListener
         {
             throw new RuntimeException(
                     "Die Operation kann nicht während des World-Step ausgeführt werden. "
-                            + "Ggf. mit Game.afterWorldStep wrappen.");
+                            + "Ggf. mit Controller.afterWorldStep wrappen.");
         }
     }
 

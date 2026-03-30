@@ -5,9 +5,9 @@ Maus- und
 Tastatur-Steuermöglichkeiten](https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/event/DefaultControl.html).
 
 Diese sind hoffentlich beim Entwickeln hilfreich. Mit den statischen Methoden
-[Game.removeDefaultControl()](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html#removeDefaultControl()>)
+{{ method('pi.Controller', 'removeDefaultControl()') }}
 können diese Kürzel entfernt oder mit
-[Game.setDefaultControl(DefaultControl)](<https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest/pi/Game.html#setDefaultControl(pi.event.DefaultListener)>)
+{{ method('pi.Controller', 'defaultControl(pi.event.DefaultListener)') }}
 neue Kürzel gesetzt werden.
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/event/DefaultControl.java -->
