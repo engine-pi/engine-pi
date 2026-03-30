@@ -68,7 +68,7 @@ import pi.resources.font.FontUtil;
  *
  * @author Josef Friedrich
  */
-public class LabeledNode extends Geometry
+public class LabeledNode extends Actor
 {
     /**
      * Die <b>Bezeichnung</b> des Knotens.

@@ -37,7 +37,7 @@ import pi.util.Graphics2DUtil;
  * @author Josef Friedrich
  */
 @API
-public class Polygon extends Geometry
+public class Polygon extends Actor
 {
     /**
      * Der Streckenzug an Punkten, der das Polygon beschreibt.

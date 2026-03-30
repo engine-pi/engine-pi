@@ -51,7 +51,7 @@ import pi.physics.FixtureData;
  * @author Michael Andonie
  * @author Niklas Keller
  */
-public class Circle extends Geometry
+public class Circle extends Actor
 {
     /**
      * Erzeugt einen <b>Kreis</b> mit <b>einem Meter Durchmesser</b>.

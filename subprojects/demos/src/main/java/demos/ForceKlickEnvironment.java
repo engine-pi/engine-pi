@@ -23,12 +23,11 @@ package demos;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import pi.Circle;
 import pi.Controller;
+import pi.Rectangle;
 import pi.Scene;
 import pi.actor.Actor;
-import pi.Circle;
-import pi.actor.Geometry;
-import pi.Rectangle;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.FrameUpdateListener;
@@ -100,7 +99,7 @@ public class ForceKlickEnvironment extends Scene implements
 
     private final Actor attack;
 
-    private final Geometry[] walls = new Geometry[4];
+    private final Actor[] walls = new Actor[4];
 
     private Actor attackedLast = null;
 

@@ -40,7 +40,7 @@ import pi.resources.font.FontStyle;
  *
  * @since 0.45.0
  */
-public abstract class TextActor<T extends TextBox> extends Geometry
+public abstract class TextActor<T extends TextBox> extends Actor
 {
     protected T box;
 

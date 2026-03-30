@@ -52,7 +52,7 @@ import pi.physics.FixtureData;
  * @see Triangle
  * @see pi.Rectangle
  */
-public class Rectangle extends Geometry
+public class Rectangle extends Actor
 {
     /**
      * Die <b>Breite</b> des Rechtecks in Meter.
