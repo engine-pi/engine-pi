@@ -18,45 +18,54 @@
  */
 package demos.classes.actor;
 
+import java.awt.event.KeyEvent;
+
 import pi.Controller;
-import pi.Rectangle;
 import pi.Scene;
 import pi.actor.BoxActor;
+import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.FramedTextBox;
 import pi.graphics.boxes.HorizontalBox;
-import pi.graphics.geom.Vector;
 
 /**
  * @author Josef Friedrich
  *
  * @since 0.45.0
  */
-public class BoxActorPhysicsDemo extends Scene
+public class BoxActorFlipDemo extends Scene implements KeyStrokeListener
 {
     BoxActor<HorizontalBox<FramedTextBox>> actor;
 
-    public BoxActorPhysicsDemo()
+    public BoxActorFlipDemo()
     {
         backgroundColor("white");
-        gravityOfEarth();
-
         actor = new BoxActor<>(new HorizontalBox<>(
                 new FramedTextBox("Box 1").border.color("blue"),
                 new FramedTextBox("Box 2").border.color("red")));
 
-        actor.size(8, 5)
-            .applyImpulse(new Vector(10, 0))
-            .makeDynamic()
-            .center(5, 10);
+        actor.size(8, 5).center(0, 0);
         add(actor);
 
-        add(new Rectangle(15, 1).color("magenta").center(0, -7).makeStatic());
+    }
+
+    @Override
+    public void onKeyDown(KeyEvent event)
+    {
+        switch (event.getKeyCode())
+        {
+        case KeyEvent.VK_H:
+            actor.toggleHFlip();
+            break;
+
+        case KeyEvent.VK_V:
+            actor.toggleVFlip();
+            break;
+        }
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new BoxActorPhysicsDemo());
+        Controller.start(new BoxActorFlipDemo());
     }
-
 }

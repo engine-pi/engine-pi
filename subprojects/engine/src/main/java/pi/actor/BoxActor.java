@@ -31,6 +31,9 @@ import pi.annotations.Setter;
 import pi.graphics.boxes.Box;
 import pi.physics.FixtureBuilder;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/BoxActorPhysicsDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/BoxActorFlipDemo.java
+
 /**
  * Eine Figur, die eine {@link Box} enthält und diese in der Größe anpassen
  * kann.
@@ -47,6 +50,8 @@ public class BoxActor<T extends Box> extends Actor
      * jedem Einzelbild erneut bestimmt werden müssen. Mithilfe dieses
      * Skalierungsfaktors wird die Box auf die gewünschte Größe skaliert.
      * </p>
+     *
+     * @since 0.45.0
      */
     protected double scaleFactorX;
 
@@ -58,6 +63,8 @@ public class BoxActor<T extends Box> extends Actor
      * jedem Einzelbild erneut bestimmt werden müssen. Mithilfe dieses
      * Skalierungsfaktors wird die Box auf die gewünschte Größe skaliert.
      * </p>
+     *
+     * @since 0.45.0
      */
     protected double scaleFactorY;
 
@@ -72,11 +79,15 @@ public class BoxActor<T extends Box> extends Actor
 
     /**
      * Die <b>gesetzte Breite</b> in Meter.
+     *
+     * @since 0.45.0
      */
     private double definedWidth = 0;
 
     /**
      * Die <b>berechnete Breite</b> in Meter.
+     *
+     * @since 0.45.0
      */
     private double width = 0;
 
@@ -131,11 +142,15 @@ public class BoxActor<T extends Box> extends Actor
 
     /**
      * Die <b>gesetzte Höhe</b> in Meter.
+     *
+     * @since 0.45.0
      */
     private double definedHeight = 0;
 
     /**
      * Die <b>berechnete Höhe</b> in Meter.
+     *
+     * @since 0.45.0
      */
     private double height = 0;
 
@@ -198,7 +213,7 @@ public class BoxActor<T extends Box> extends Actor
      * verwenden.
      * </p>
      *
-     * @return
+     * @since 0.45.0
      */
     @API
     @Getter
@@ -242,6 +257,8 @@ public class BoxActor<T extends Box> extends Actor
      * </p>
      *
      * @param pixelPerMeter Wie viele <b>Pixel ein Meter</b> misst.
+     *
+     * @since 0.45.0
      */
     @API
     @Setter
@@ -279,6 +296,8 @@ public class BoxActor<T extends Box> extends Actor
      * @param height Die neue <b>Höhe</b> in Meter.
      *
      * @see #pixelPerMeter(double)
+     *
+     * @since 0.45.0
      */
     @API
     @Setter
@@ -288,13 +307,13 @@ public class BoxActor<T extends Box> extends Actor
         if (width <= 0)
         {
             throw new IllegalArgumentException(
-                    "Die Breite des Bilds muss größer als 0 sein.");
+                    "Die Breite der Box muss größer als 0 sein.");
         }
         definedWidth = width;
         if (height <= 0)
         {
             throw new IllegalArgumentException(
-                    "Die Höhe des Bilds müssen größer als 0 sein.");
+                    "Die Höhe der Box muss größer als 0 sein.");
         }
         definedHeight = height;
         pixelPerMeter = 0;
@@ -309,6 +328,8 @@ public class BoxActor<T extends Box> extends Actor
      *
      * @throws IllegalArgumentException wenn die Breite oder Höhe kleiner oder
      *     gleich 0 ist
+     *
+     * @since 0.45.0
      */
     @API
     public double aspectRatio()
@@ -319,6 +340,131 @@ public class BoxActor<T extends Box> extends Actor
                     "Höhe und Breite müssen größer als 0 sein.");
         }
         return width / height;
+    }
+
+    /* flippedHorizontally */
+
+    /**
+     * Gibt an, ob die Box <b>horizontal gespiegelt</b> ist.
+     */
+    private boolean hFlip = false;
+
+    /**
+     * Gibt an, ob die Box <b>horizontal gespiegelt</b>, das heißt an der
+     * verticalen Achse gespiegelt ist.
+     *
+     * @return <code>true</code>, wenn das Objekt gerade <b>horizontal
+     *     gespiegelt</b> ist. Sonst <code>false</code>.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public boolean hFlip()
+    {
+        return hFlip;
+    }
+
+    /**
+     * Setzt, ob die Box <b>horizontal gespiegelt</b> werden soll.
+     *
+     * <p>
+     * Hiermit lassen sich zum Beispiel Bewegungsrichtungen (links/rechts)
+     * einfach umsetzen.
+     * </p>
+     *
+     * @param hFlip Ob die Box <b>horizontal gespiegelt</b> dargestellt werden
+     *     soll.
+     *
+     * @see #vFlip(boolean)
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public BoxActor<T> hFlip(boolean hFlip)
+    {
+        this.hFlip = hFlip;
+        return this;
+    }
+
+    /**
+     * <b>Spiegelt</b> die Box in <b>horizontaler</b> Richtung.
+     *
+     * <p>
+     * Es wird an der vertikalen Achse gespiegelt.
+     * </p>
+     *
+     * @return Wahr, wenn es <b>horizontale gespiegelt</b> wurde, falsch, wenn
+     *     es im Originalzustand angezeigt wird.
+     *
+     * @since 0.45.0
+     */
+    @API
+    public boolean toggleHFlip()
+    {
+        hFlip(!hFlip());
+        return hFlip();
+    }
+
+    /* flippedVertically */
+
+    /**
+     * Gibt an, ob die Box <b>vertikal gespiegelt</b> ist.
+     */
+    private boolean vFlip = false;
+
+    /**
+     * Gibt an, ob die Box<b>vertikal gespiegelt</b> ist, das heißt an der
+     * horizontaler Achse gespiegelt ist.
+     *
+     * @return <code>true</code>, wenn das Objekt gerade vertikal gekippt ist.
+     *     Sonst <code>false</code>.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public boolean vFlip()
+    {
+        return vFlip;
+    }
+
+    /**
+     * Setzt, ob die Box <b>vertikal gespiegelt</b> werden sollen.
+     *
+     * @param vFlip Ob die Animation horizontal geflippt dargestellt werden
+     *     soll.
+     *
+     * @see #vFlip(boolean)
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public BoxActor<T> vFlip(boolean vFlip)
+    {
+        this.vFlip = vFlip;
+        return this;
+    }
+
+    /**
+     * <b>Spiegelt</b> die Box in <b>vertikaler</b> Richtung.
+     *
+     * <p>
+     * Es wird an der horizontaler Achse gespiegelt.
+     * </p>
+     *
+     * @return Wahr, wenn es in horizontaler Richtung gekippt wurde, falsch,
+     *     wenn es im Originalzustand angezeigt wird.
+     *
+     * @since 0.45.0
+     */
+    @API
+    public boolean toggleVFlip()
+    {
+        vFlip(!vFlip());
+        return vFlip();
     }
 
     /**
@@ -359,11 +505,21 @@ public class BoxActor<T extends Box> extends Actor
         fixture(() -> FixtureBuilder.rectangle(width, height));
     }
 
+    /**
+     * @hidden
+     */
+    @Internal
     @Override
     public void render(Graphics2D g, double pixelPerMeter)
     {
         AffineTransform oldTransform = g.getTransform();
         g.translate(0, -height * pixelPerMeter);
+        if (hFlip || vFlip)
+        {
+            g.scale(hFlip ? -1 : 1, vFlip ? -1 : 1);
+            g.translate(hFlip ? -width * pixelPerMeter : 0,
+                vFlip ? -height * pixelPerMeter : 0);
+        }
         g.scale(scaleFactorX * pixelPerMeter, scaleFactorY * pixelPerMeter);
         box.render(g);
         g.setTransform(oldTransform);
