@@ -4,7 +4,7 @@ Die [Engine Pi](https://github.com/engine-pi/engine-pi) ist eine
 einsteigerfreundliche Java-Game-Engine für den Informatik-Unterricht an
 allgemeinbildenden Schulen mit {{ package('pi', 'deutscher Dokumentation') }}.
 
-{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Game.start()</code> ohne Szene ausgeführt wird.') }}
+{{ video('docs/MainAnimation.mp4', 'Die Hauptanimation der Engine Pi. <br>Sie erscheint, wenn <code>Controller.start()</code> ohne Szene ausgeführt wird.') }}
 
 ## Betreuer des Projekts
 

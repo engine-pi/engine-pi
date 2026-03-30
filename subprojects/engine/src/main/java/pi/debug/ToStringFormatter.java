@@ -27,9 +27,17 @@ import java.util.List;
 
 import pi.util.TextUtil;
 
+/**
+ * Repräsentiert ein Feld mit Name, Wert und optionaler Einheit für die
+ * formatierte Ausgabe.
+ *
+ * @param name Der Name des Feldes.
+ * @param value Der Wert des Feldes ({@code String}, {@code Double}, Color oder
+ *     andere Typen)
+ * @param unit Die optionale Einheit des Feldes (kann {@code null} sein)
+ */
 record Field(String name, Object value, String unit)
 {
-
     private String formattedValue()
     {
         if (value instanceof String)
@@ -47,6 +55,12 @@ record Field(String name, Object value, String unit)
         return String.valueOf(value);
     }
 
+    /**
+     * Formatiert die Ausgabe mit dem Namen, dem formatierten Wert und optional
+     * der Einheit. Der Wert wird in blauer ANSI-Farbe dargestellt.
+     *
+     * @return die formatierte Zeichenkette im Format {@code name=wert[einheit]}
+     */
     public String format()
     {
         String output = name + "=" + AnsiColor.blue(formattedValue());
@@ -58,18 +72,21 @@ record Field(String name, Object value, String unit)
     }
 }
 
+// Ähnliche Klasse im Apache Commons Lang Paket:
+// org.apache.commons.lang3.builder.ToStringBuilder
+// https://github.com/apache/commons-lang/blob/master/src/main/java/org/apache/commons/lang3/builder/ToStringBuilder.java
+
 /**
  * Hilft die Textausgabe der {@link Object#toString()}-Methoden zu formatieren.
  *
  * <p>
- * Wird die Figur Image mit der Methode {@code System.out.println(String)}
- * ausgegeben so erscheint folgende Zeichenkette:
+ * Wird zum Beispiel die Figur Image mit der Methode
+ * {@code System.out.println(String)} ausgegeben so erscheint folgende
+ * Zeichenkette:
  * {@code Image [width=1.0m, height=1.0m, imageWidth=8px, imageHeight=8px, pixelPerMeter=8.0]}
  * </p>
  *
- * <pre>
- * {@code
- * @Override
+ * <pre>{@code
  * public String toString()
  * {
  *     ToStringFormatter formatter = new ToStringFormatter("Image");
@@ -85,11 +102,26 @@ record Field(String name, Object value, String unit)
  *     }
  *     return formatter.format();
  * }
+ * }</pre>
+ *
+ * <p>
+ * Beispiel wie der ToStringFormatter in einer Klassenhierarchie eingesetzt
+ * werden kann:
+ * </p>
+ *
+ * <pre>
+ * {@code
+ * public ToStringFormatter toStringFormatter()
+ * {
+ *     var formatter = super.toStringFormatter();
+ *     if (numberOfChilds() > 0)
+ *     {
+ *         formatter.prepend("numberOfChilds", numberOfChilds());
+ *     }
+ *     return formatter;
+ * }
  * }
  * </pre>
- *
- * @see <a href=
- *     "https://github.com/apache/commons-lang/blob/master/src/main/java/org/apache/commons/lang3/builder/ToStringBuilder.java">org.apache.commons.lang3.builder.ToStringBuilder</a>
  *
  * @author Josef Friedrich
  *
@@ -97,7 +129,6 @@ record Field(String name, Object value, String unit)
  */
 public class ToStringFormatter
 {
-
     private final String className;
 
     private String hashCode;
@@ -110,6 +141,9 @@ public class ToStringFormatter
     private final HashMap<String, Field> map = new LinkedHashMap<>();
 
     /**
+     * Initialisiert einen neuen {@link ToStringFormatter} mit dem gegebenen
+     * <b>Klassenname</b>.
+     *
      * <pre>
      * {@code
      * @Override
@@ -131,13 +165,26 @@ public class ToStringFormatter
      * }
      * </pre>
      *
-     * @param className Der Name der <b>Klasse</b>.
+     * @param className Der <b>Klassenname</b>.
      */
     public ToStringFormatter(String className)
     {
         this.className = className;
     }
 
+    /**
+     * Initialisiert einen neuen {@link ToStringFormatter} mit dem gegebenen
+     * <b>Objekt</b>.
+     *
+     * <p>
+     * Extrahiert den einfachen Klassennamen und berechnet den
+     * Hexadezimal-Hashcode des Objekts basierend auf seiner Identität im
+     * Speicher.
+     * </p>
+     *
+     * @param object Das <b>Objekt</b>, für das die String-Repräsentation
+     *     formatiert werden soll.
+     */
     public ToStringFormatter(Object object)
     {
         className = object.getClass().getSimpleName();
@@ -227,7 +274,7 @@ public class ToStringFormatter
     }
 
     /**
-     * Gibt die formatierte Zeichenkette aus.
+     * Gibt die <b>formatierte</b> Zeichenkette aus.
      *
      * @return Die formatierte Zeichenkette.
      */
@@ -252,8 +299,8 @@ public class ToStringFormatter
     }
 
     /**
-     * Bereinigt die angegeben {@code toString()}-Zeichenkette, indem alle
-     * ANSI-Farbcodes und {@code @hashCodes} entfernt werden.
+     * <b>Bereinigt</b> die angegeben {@code toString()}-Zeichenkette, indem
+     * alle ANSI-Farbcodes und {@code @hashCodes} entfernt werden.
      *
      * @param toString Der zu bereinigende Format-String.
      *
