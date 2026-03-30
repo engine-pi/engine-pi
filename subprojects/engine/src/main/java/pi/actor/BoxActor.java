@@ -35,7 +35,7 @@ import pi.physics.FixtureBuilder;
  * Eine Figur, die eine {@link Box} enthält und diese in der Größe anpassen
  * kann.
  */
-public class SizeableBoxActor<T extends Box> extends Actor
+public class BoxActor<T extends Box> extends Actor
 {
     protected T box;
 
@@ -61,7 +61,7 @@ public class SizeableBoxActor<T extends Box> extends Actor
      */
     protected double scaleFactorY;
 
-    public SizeableBoxActor(T box)
+    public BoxActor(T box)
     {
         super(null);
         this.box = box;
@@ -81,9 +81,9 @@ public class SizeableBoxActor<T extends Box> extends Actor
     private double width = 0;
 
     /**
-     * Gibt die <b>Breite</b> des Texts in Meter zurück.
+     * Gibt die <b>Breite</b> in Meter zurück.
      *
-     * @return Die <b>Breite</b> des Texts in Meter zurück.
+     * @return Die <b>Breite</b> in Meter zurück.
      *
      * @since 0.45.0
      */
@@ -95,21 +95,27 @@ public class SizeableBoxActor<T extends Box> extends Actor
     }
 
     /**
-     * Setzt die <b>Breite</b> des Texts in Meter.
+     * Setzt die <b>Breite</b> in Meter.
      *
-     * @param width Die <b>Breite</b> des Texts in Meter.
+     * <p>
+     * Diese Methode setzt die Höhe zurück. Um sowohl die Breite als auch die
+     * Höhe zu setzen, steht die Methode {@link #size(double, double)} zur
+     * Verfügung.
+     * </p>
      *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     * @param width Die <b>Breite</b> in Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
+     *     {@code actor.content(..).height(..)}.
      *
      * @since 0.45.0
      */
     @API
     @Setter
     @ChainableMethod
-    public SizeableBoxActor<T> width(double width)
+    public BoxActor<T> width(double width)
     {
         definedHeight = 0;
         if (definedWidth != width)
@@ -150,19 +156,25 @@ public class SizeableBoxActor<T extends Box> extends Actor
     /**
      * Setzt die <b>Höhe</b> in Meter.
      *
+     * <p>
+     * Diese Methode setzt die Breite zurück. Um sowohl die Breite als auch die
+     * Höhe zu setzen, steht die Methode {@link #size(double, double)} zur
+     * Verfügung.
+     * </p>
+     *
      * @param height Die <b>Höhe</b> in Meter.
      *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
+     *     {@code actor.content(..).height(..)}.
      *
      * @since 0.45.0
      */
     @API
     @Setter
     @ChainableMethod
-    public SizeableBoxActor<T> height(double height)
+    public BoxActor<T> height(double height)
     {
         definedWidth = 0;
         if (definedHeight != height)
@@ -213,21 +225,20 @@ public class SizeableBoxActor<T extends Box> extends Actor
     /**
      * Setzt den Umrechnungsfaktor von <b>Pixel zu Meter</b>.
      *
-     * Wenn das Bild beispielsweise {@code 300} Pixel breit und {@code 200}
+     * Wenn die Figur beispielsweise {@code 300} Pixel breit und {@code 200}
      * Pixel hoch ist und der Umrechnungsfaktor {@code 100} Pixel pro Meter
-     * beträgt, wird es mit einer Größe von {@code 3 x 2} Metern dargestellt.
+     * beträgt, wird sie mit einer Größe von {@code 3 x 2} Metern dargestellt.
      *
      * <p>
-     * Die Größe des Bildobjekts wird so geändert, dass sie dem angegebenen
+     * Die Größe der Figur wird so geändert, dass sie dem angegebenen
      * Umrechnungsfaktor entspricht. Dies hat auch Auswirkungen auf die
-     * physikalischen Eigenschaften des Bildes.
+     * physikalischen Eigenschaften der Figur.
      * </p>
      *
      * <p>
-     * Die vorher durch die Methoden {@link pi.actor.Image#width(double)}
-     * {@link pi.actor.Image#height(double)} oder
-     * {@link pi.actor.Image#size(double, double)} gesetzte Breite und Höhe des
-     * Bilds werden durch diese Methode zurückgesetzt und sind somit unwirksam.
+     * Die durch die Methoden {@link #width(double)} {@link #height(double)}
+     * oder {@link #size(double, double)} gesetzte Breite und Höhe des Figur
+     * werden durch diese Methode zurückgesetzt und sind somit unwirksam.
      * </p>
      *
      * @param pixelPerMeter Wie viele <b>Pixel ein Meter</b> misst.
@@ -235,7 +246,7 @@ public class SizeableBoxActor<T extends Box> extends Actor
     @API
     @Setter
     @ChainableMethod
-    public SizeableBoxActor<T> pixelPerMeter(double pixelPerMeter)
+    public BoxActor<T> pixelPerMeter(double pixelPerMeter)
     {
         if (pixelPerMeter <= 0)
         {
@@ -251,34 +262,28 @@ public class SizeableBoxActor<T extends Box> extends Actor
     }
 
     /**
-     * Setzt die <b>Größe</b> des Bildes innerhalb der Physik neu.
+     * Setzt die <b>Größe</b> innerhalb der Physik neu.
      *
      * <p>
-     * Ändert die physikalischen Eigenschaften. Das Bild füllt die neuen Maße
+     * Ändert die physikalischen Eigenschaften. Das Figur füllt die neuen Maße
      * und wird ggf. verzerrt.
      * </p>
      *
      * <p>
-     * <b>Entsprechen die Eingabeparameter für Breite und Höhe nicht den
-     * Abmessungen des Bildes, dann wird das Bild verzerrt dargestellt.</b>
-     * </p>
-     *
-     * *
-     * <p>
-     * Der vorher durch die Methode {@link pi.actor.Image#pixelPerMeter(double)}
-     * gesetzte Umrechnungsfaktor von Pixel zu Meter wird durch diese Methode
+     * Der durch die Methode {@link #pixelPerMeter(double)} gesetzte
+     * Umrechnungsfaktor von Pixel zu Meter wird durch diese Methode
      * zurückgesetzt und ist somit unwirksam.
      * </p>
      *
-     * @param width Die neue Breite des Bilds in Meter.
-     * @param height Die neue Höhe des Bild in Meter.
+     * @param width Die neue <b>Breite</b> in Meter.
+     * @param height Die neue <b>Höhe</b> in Meter.
      *
      * @see #pixelPerMeter(double)
      */
     @API
     @Setter
     @ChainableMethod
-    public SizeableBoxActor<T> size(double width, double height)
+    public BoxActor<T> size(double width, double height)
     {
         if (width <= 0)
         {
@@ -298,7 +303,7 @@ public class SizeableBoxActor<T extends Box> extends Actor
     }
 
     /**
-     * Berechnet das <b>Seitenverhältnis</b> des Bildes.
+     * Berechnet das <b>Seitenverhältnis</b> der Figur.
      *
      * @return Das Seitenverhältnis als Quotient von Breite und Höhe
      *
