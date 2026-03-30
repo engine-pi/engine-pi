@@ -222,7 +222,7 @@ public class ConfigLoader
                 {
                     createDefaultSettingsFile(out);
                 }
-                log.log(Level.INFO,
+                log.log(Level.CONFIG,
                     "Konfigurationsdatei „{0}“ erstellt",
                     path());
                 return;
@@ -243,7 +243,7 @@ public class ConfigLoader
                 Properties properties = new Properties();
                 properties.load(bufferedStream);
                 initializeSettingsByProperties(properties);
-                log.log(Level.INFO,
+                log.log(Level.CONFIG,
                     "Konfiguration aus der Datei „{0}“ geladen",
                     path());
             }
@@ -272,7 +272,7 @@ public class ConfigLoader
                 .filter(group -> Controller.isDebug() || !group.isDebug())
                 .forEach(group -> storeConfigurationGroup(out, group));
 
-            log.log(Level.INFO, "Configuration {0} saved", path());
+            log.log(Level.CONFIG, "Configuration {0} saved", path());
         }
         catch (IOException e)
         {

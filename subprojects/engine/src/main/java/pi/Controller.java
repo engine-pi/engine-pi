@@ -32,6 +32,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 
 import de.pirckheimer_gymnasium.jbox2d.common.Settings;
 import pi.annotations.API;
@@ -40,6 +41,7 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.config.Configuration;
 import pi.config.GameConfig;
+import pi.debug.LogSetup;
 import pi.debug.MainAnimation;
 import pi.event.DefaultControl;
 import pi.event.DefaultListener;
@@ -110,6 +112,8 @@ public class Controller
          * wird.
          */
         Settings.maxPolygonVertices = 20;
+
+        LogSetup.init();
     }
 
     /**
@@ -236,6 +240,13 @@ public class Controller
      * Das <b>Fenster</b> des Projekt.
      */
     private static Frame frame;
+
+    static
+    {
+        LogSetup.init();
+    }
+
+    public static final Logger log = LogSetup.log();
 
     /**
      * Gibt das <b>Fenster</b> des Projekts zurück.
