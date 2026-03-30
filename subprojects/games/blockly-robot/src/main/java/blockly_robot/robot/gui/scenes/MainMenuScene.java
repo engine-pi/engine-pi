@@ -75,7 +75,7 @@ public class MainMenuScene extends Scene implements WindowScene
         private Text createText(String content)
         {
             Text text = new Text(content);
-            text.height(FONT_SIZE).font(TextMaker.bold).color(Color.BLACK);
+            text.font(TextMaker.bold).height(FONT_SIZE).color(Color.BLACK);
             return text;
         }
     }

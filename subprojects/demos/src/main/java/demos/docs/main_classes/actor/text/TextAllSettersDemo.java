@@ -38,11 +38,11 @@ public class TextAllSettersDemo extends Scene
         info().title("Alle Setter der Figur „Text“")
             .description("Die Demo verwendet alle Setter der Figur „Text“.");
 
-        add(new Text("Alter Inhalt").content("Alle Attribute")
+        add(new Text("Alter Inhalt").font("Arial")
+            .style(1)
+            .content("Alle Attribute")
             .width(15.5)
             .height(3.2)
-            .font("Arial")
-            .style(1)
             .color("green")
             .center(0, 0));
     }

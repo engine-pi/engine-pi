@@ -20,7 +20,7 @@ public class TextMaker
     public static Text createText(String content, double fontSize)
     {
         Text text = new Text(content);
-        text.height(fontSize).font(regular).color(Color.BLACK);
+        text.font(regular).height(fontSize).color(Color.BLACK);
         return text;
     }
 

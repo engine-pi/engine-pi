@@ -47,10 +47,10 @@ public class TextDemo extends Scene
 
         // Demonstiert, ob die Grundline zweier Text-Figuren mit gleicher
         // y-Koordinate übereinstimmt.
-        add(new Text("Mit Unterlängen").height(2)
-            .font(cantarell)
+        add(new Text("Mit Unterlängen").font(cantarell)
+            .height(2)
             .anchor(-7, -2));
-        add(new Text("... ohne").height(2).font(cantarell).anchor(4, -2));
+        add(new Text("... ohne").font(cantarell).height(2).anchor(4, -2));
 
         demonstrateFontStyle(0, 3);
         demonstrateFontStyle(1, 4);

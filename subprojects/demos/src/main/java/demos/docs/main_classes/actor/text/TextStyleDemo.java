@@ -70,7 +70,7 @@ public class TextStyleDemo extends Scene implements KeyStrokeListener
         fontName.style(FontStyle.BOLD).y(6);
 
         fontNameClear = createText("(Times New Roman)");
-        fontNameClear.height(1).font("Arial").y(5);
+        fontNameClear.font("Arial").height(1).y(5);
 
         plain = createText("Normal");
         bold = createText("Fett");
@@ -100,7 +100,7 @@ public class TextStyleDemo extends Scene implements KeyStrokeListener
     private Text createText(String content)
     {
         Text text = new Text(content);
-        text.height(3).font("Times New Roman").x(-11);
+        text.font("Times New Roman").height(3).x(-11);
         add(text);
         return text;
     }

@@ -52,8 +52,7 @@ public class Text extends TextActor<TextLineBox>
     @API
     public Text(Object content)
     {
-        super(null);
-        box = new TextLineBox(content);
+        super(new TextLineBox(content));
         Color color = colorScheme.get().white();
         box.color(color);
         color(color);

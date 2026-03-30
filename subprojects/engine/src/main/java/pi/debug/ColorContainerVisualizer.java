@@ -57,13 +57,13 @@ public class ColorContainerVisualizer
             // Rechteck, das die Farbe als Füllfarbe demonstiert
             scene.add(new Rectangle(1, 1).anchor(-12, y).color(color.color()));
             // Der dezimale Farbcode
-            scene.add(new Text(color.colorDecFormatted()).height(0.5)
-                .font("Monospaced")
+            scene.add(new Text(color.colorDecFormatted()).font("Monospaced")
+                .height(0.5)
                 .anchor(-10, y + 0.25)
                 .color(color.color()));
             // Der hexadezimale Farbcode
-            scene.add(new Text(color.colorHexFormatted()).height(0.5)
-                .font("Monospaced")
+            scene.add(new Text(color.colorHexFormatted()).font("Monospaced")
+                .height(0.5)
                 .anchor(-6, y + 0.25)
                 .color(color.color()));
             // Der Hauptname der Farbe

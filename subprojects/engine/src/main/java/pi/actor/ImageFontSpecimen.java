@@ -72,12 +72,12 @@ public class ImageFontSpecimen
             text.anchor(x, y);
             scene.add(text);
             scene.add(new Text(glyph.content()).anchor(x + 2, y).color("gray"));
-            scene.add(new Text(glyph.unicodeName()).height(0.3)
-                .font("Monospaced")
+            scene.add(new Text(glyph.unicodeName()).font("Monospaced")
+                .height(0.3)
                 .anchor(x, y - 0.4)
                 .color("gray"));
-            scene.add(new Text(glyph.hexNumber()).height(0.3)
-                .font("Monospaced")
+            scene.add(new Text(glyph.hexNumber()).font("Monospaced")
+                .height(0.3)
                 .anchor(x, y - 0.8)
                 .color("gray"));
             x += 4;

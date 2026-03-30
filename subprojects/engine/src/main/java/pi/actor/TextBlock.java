@@ -40,8 +40,7 @@ public class TextBlock extends TextActor<TextBlockBox>
     @API
     public TextBlock(Object content)
     {
-        super(null);
-        box = new TextBlockBox(content);
+        super(new TextBlockBox(content));
         Color color = colorScheme.get().white();
         box.color(color);
         color(color);

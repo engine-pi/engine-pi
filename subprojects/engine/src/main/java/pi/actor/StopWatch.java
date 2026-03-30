@@ -69,6 +69,7 @@ public class StopWatch extends Text implements FrameUpdateListener
         isRunning = false;
         contentToZeroMilliSeconds();
         font(new Font(Font.MONOSPACED, Font.PLAIN, 1000));
+        update();
     }
 
     /* time */

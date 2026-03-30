@@ -22,63 +22,35 @@ import static pi.Controller.colors;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
-import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.graphics.boxes.TextBox;
-import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
 
 /**
+ * Die Superklasse für {@link Text} und {@link TextBlock}.
+ *
  * @author Josef Friedrich
  *
  * @since 0.45.0
  */
-public abstract class TextActor<T extends TextBox> extends Actor
+public abstract class TextActor<T extends TextBox> extends BoxActor<T>
 {
-    protected T box;
-
     /**
-     * Der Skalierungsfaktor in x-Richtung.
+     * Erstellt einen <b>Text</b>.
      *
-     * <p>
-     * Wir erzeugen eine Box der Standardschriftgröße. Mithilfe dieses
-     * Skalierungsfaktors wird die Box dann auf die gewünschte Größe skaliert.
-     * Damit die Abmessungen einer Zeichenkette nicht bei jedem Einzelbild
-     * erneut bestimmt werden müssen, dient dieses Attribut als Cache.
-     * </p>
-     */
-    private double scaleFactorX;
-
-    /**
-     * Der Skalierungsfaktor in x-Richtung.
-     *
-     * <p>
-     * Wir erzeugen eine Box der Standardschriftgröße. Mithilfe dieses
-     * Skalierungsfaktors wird die Box dann auf die gewünschte Größe skaliert.
-     * Damit die Abmessungen einer Zeichenkette nicht bei jedem Einzelbild
-     * erneut bestimmt werden müssen, dient dieses Attribut als Cache.
-     * </p>
-     */
-    private double scaleFactorY;
-
-    /**
-     * Erstellt einen <b>Text</b> mit spezifischem <b>Inhalt</b>.
-     *
-     * @param content Der <b>Textinhalt</b>, der dargestellt werden soll.
+     * @param box Die <b>Textbox</b>, die den Inhalt darstellen soll.
      *
      * @since 0.42.0
      */
     @API
-    public TextActor(Object content)
+    public TextActor(T box)
     {
-        super(null);
+        super(box);
     }
 
     /* content */
@@ -122,108 +94,6 @@ public abstract class TextActor<T extends TextBox> extends Actor
         if (!box.content().equals(normalizedContent))
         {
             box.content(normalizedContent);
-            update();
-        }
-        return this;
-    }
-
-    /* width */
-
-    /**
-     * Die <b>gesetzte Breite</b> in Meter.
-     */
-    private double definedWidth = 0;
-
-    /**
-     * Die <b>berechnete Breite</b> in Meter.
-     */
-    private double width = 0;
-
-    /**
-     * Gibt die <b>Breite</b> des Texts in Meter zurück.
-     *
-     * @return Die <b>Breite</b> des Texts in Meter zurück.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Getter
-    public double width()
-    {
-        return definedWidth;
-    }
-
-    /**
-     * Setzt die <b>Breite</b> des Texts in Meter.
-     *
-     * @param width Die <b>Breite</b> des Texts in Meter.
-     *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Setter
-    @ChainableMethod
-    public TextActor<T> width(double width)
-    {
-        if (definedWidth != width)
-        {
-            definedWidth = width;
-            update();
-        }
-        return this;
-    }
-
-    /* height */
-
-    /**
-     * Die <b>gesetzte Höhe</b> in Meter.
-     */
-    private double definedHeight = 0;
-
-    /**
-     * Die <b>berechnete Höhe</b> in Meter.
-     */
-    private double height = 0;
-
-    /**
-     * Gibt die <b>Höhe</b> des Texts in Meter zurück.
-     *
-     * @return Die <b>Höhe</b> des Texts in Meter.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Getter
-    public double height()
-    {
-        return definedHeight;
-    }
-
-    /**
-     * Setzt die <b>Höhe</b> des Texts in Meter.
-     *
-     * @param height Die <b>Höhe</b> des Texts in Meter.
-     *
-     * @return Eine Referenz auf die eigene Instanz des Textes, damit nach dem
-     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften des Textes durch
-     *     aneinander gekettete Setter festgelegt werden können, z.B.
-     *     {@code text.content(..).height(..)}.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Setter
-    @ChainableMethod
-    public TextActor<T> height(double height)
-    {
-        if (definedHeight != height)
-        {
-            definedHeight = height;
             update();
         }
         return this;
@@ -435,57 +305,5 @@ public abstract class TextActor<T extends TextBox> extends Actor
         super.color(color);
         box.color(color);
         return this;
-    }
-
-    /**
-     * @hidden
-     */
-    @Internal
-    @Override
-    public void update()
-    {
-        box.measure();
-
-        double widthPx = (double) box.width();
-        double heightPx = (double) box.height();
-
-        if (definedWidth == 0 && definedHeight == 0)
-        {
-            height = 1;
-            width = widthPx * height / heightPx;
-        }
-        else if (definedWidth == 0)
-        {
-            width = widthPx * definedHeight / heightPx;
-            height = definedHeight;
-        }
-        else if (definedHeight == 0)
-        {
-            width = definedWidth;
-            height = heightPx * definedWidth / widthPx;
-        }
-        else
-        {
-            width = definedWidth;
-            height = definedHeight;
-        }
-
-        scaleFactorX = width / widthPx;
-        scaleFactorY = height / heightPx;
-        fixture(() -> FixtureBuilder.rectangle(width, height));
-    }
-
-    /**
-     * @hidden
-     */
-    @Override
-    @Internal
-    public void render(Graphics2D g, double pixelPerMeter)
-    {
-        AffineTransform oldTransform = g.getTransform();
-        g.translate(0, -height * pixelPerMeter);
-        g.scale(scaleFactorX * pixelPerMeter, scaleFactorY * pixelPerMeter);
-        box.render(g);
-        g.setTransform(oldTransform);
     }
 }

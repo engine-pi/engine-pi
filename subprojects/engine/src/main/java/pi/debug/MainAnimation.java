@@ -117,7 +117,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         // Font: https://cantarell.gnome.org/
         logo = new Logo(this, new Vector(-4, -5), 2.3);
         Text enginePiText = new Text("E   n   g   i   n   e         P   i");
-        enginePiText.height(2).font("fonts/Cantarell-Bold.ttf").makeStatic();
+        enginePiText.font("fonts/Cantarell-Bold.ttf").height(2).makeStatic();
         enginePiText.color(colorScheme.get().white());
         enginePiText.center(0, -7);
         add(enginePiText);
@@ -140,7 +140,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
     {
         Text text = new Text("Build " + Version.getGitCommitIdAbbrev() + "   "
                 + formatBuildTime());
-        text.height(.5).font("fonts/Cantarell-Regular.ttf").anchor(-10, 8.2);
+        text.font("fonts/Cantarell-Regular.ttf").height(.5).anchor(-10, 8.2);
         text.color(colorScheme.get().gray());
         text.makeStatic();
         text.density(0.1);

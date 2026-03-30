@@ -70,7 +70,6 @@ public class Counter extends Text
     {
         super("");
         update();
-
     }
 
     /**
