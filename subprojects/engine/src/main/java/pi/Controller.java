@@ -246,7 +246,13 @@ public class Controller
         LogSetup.init();
     }
 
-    public static final Logger log = LogSetup.log();
+    /**
+     * Ein statischer Logger, um Informationen, Warnungen und Fehler zu
+     * protokollieren.
+     *
+     * @since 0.45.0
+     */
+    public static final Logger logger = LogSetup.log();
 
     /**
      * Gibt das <b>Fenster</b> des Projekts zurück.

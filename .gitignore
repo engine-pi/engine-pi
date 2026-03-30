@@ -39,3 +39,7 @@ __pycache__/
 
 config.properties
 engine-pi.properties
+
+*.log
+*.log.*
+logging.properties

@@ -37,7 +37,7 @@ import java.util.logging.SimpleFormatter;
  * prevents the necessity to create custom logger instances and provides a
  * simplified way to quickly log events.
  *
- * @see pi.Controller#log
+ * @see pi.Controller#logger
  *
  * @since 0.45.0
  */
