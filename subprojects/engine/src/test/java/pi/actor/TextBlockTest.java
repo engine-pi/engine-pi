@@ -28,15 +28,15 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class TextTest
+public class TextBlockTest
 {
-    Text text;
+    TextBlock text;
 
     @BeforeEach
     void setUp()
     {
         Controller.instantMode(false);
-        text = new Text("Hello World");
+        text = new TextBlock("Hello World");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class TextTest
     @Test
     void nullContent()
     {
-        Text text = new Text(null);
+        TextBlock text = new TextBlock(null);
         assertNotNull(text);
     }
 
@@ -59,7 +59,7 @@ public class TextTest
         void content()
         {
             String result = clean(text.toString());
-            assertTrue(result.contains("Text"));
+            assertTrue(result.contains("TextBlock"));
             assertTrue(result.contains("content=\"Hello World\""));
         }
 

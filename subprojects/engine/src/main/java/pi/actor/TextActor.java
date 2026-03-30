@@ -27,6 +27,7 @@ import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 import pi.graphics.boxes.TextBox;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontStyle;
@@ -305,5 +306,16 @@ public abstract class TextActor<T extends TextBox> extends BoxActor<T>
         super.color(color);
         box.color(color);
         return this;
+    }
+
+    protected ToStringFormatter toStringFormatter()
+    {
+        var formatter = super.toStringFormatter();
+        formatter.append("content", content());
+        if (style() != FontStyle.PLAIN)
+        {
+            formatter.append("style", style());
+        }
+        return formatter;
     }
 }

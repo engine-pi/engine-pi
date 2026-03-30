@@ -46,4 +46,13 @@ public class TextBlock extends TextActor<TextBlockBox>
         color(color);
         update();
     }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        return super.toStringFormatter().className(this).format();
+    }
 }

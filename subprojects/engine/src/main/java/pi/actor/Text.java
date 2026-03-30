@@ -23,10 +23,12 @@ import static pi.Controller.colorScheme;
 import java.awt.Color;
 
 import pi.annotations.API;
-import pi.debug.ToStringFormatter;
 import pi.graphics.boxes.TextLineBox;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text.md
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/actor/TextTest.java
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextRandomDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text/TextAllSettersDemo.java
@@ -65,8 +67,6 @@ public class Text extends TextActor<TextLineBox>
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Text");
-        formatter.append("content", content());
-        return formatter.format();
+        return super.toStringFormatter().className(this).format();
     }
 }

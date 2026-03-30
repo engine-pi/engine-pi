@@ -25,6 +25,9 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Setter;
 import pi.util.TextUtil;
 
 /**
@@ -80,10 +83,10 @@ record Field(String name, Object value, String unit)
  * Hilft die Textausgabe der {@link Object#toString()}-Methoden zu formatieren.
  *
  * <p>
- * Wird zum Beispiel die Figur Image mit der Methode
- * {@code System.out.println(String)} ausgegeben so erscheint folgende
- * Zeichenkette:
- * {@code Image [width=1.0m, height=1.0m, imageWidth=8px, imageHeight=8px, pixelPerMeter=8.0]}
+ * Wird zum Beispiel die Figur Image mit der Methode {@code
+ * System.out.println(String)} ausgegeben so erscheint folgende Zeichenkette:
+ * {@code Image [width=1.0m, height=1.0m, imageWidth=8px, imageHeight=8px,
+ * pixelPerMeter=8.0]}
  * </p>
  *
  * <pre>{@code
@@ -109,8 +112,7 @@ record Field(String name, Object value, String unit)
  * werden kann:
  * </p>
  *
- * <pre>
- * {@code
+ * <pre> {@code
  * public ToStringFormatter toStringFormatter()
  * {
  *     var formatter = super.toStringFormatter();
@@ -120,8 +122,7 @@ record Field(String name, Object value, String unit)
  *     }
  *     return formatter;
  * }
- * }
- * </pre>
+ * } </pre>
  *
  * @author Josef Friedrich
  *
@@ -129,7 +130,7 @@ record Field(String name, Object value, String unit)
  */
 public class ToStringFormatter
 {
-    private final String className;
+    private String className;
 
     private String hashCode;
 
@@ -187,8 +188,34 @@ public class ToStringFormatter
      */
     public ToStringFormatter(Object object)
     {
+        className(object);
+    }
+
+    /**
+     * Setzt den <b>Klassennamen</b> und Hash-Code basierend auf dem übergebenen
+     * Objekt.
+     *
+     * <p>
+     * Der einfache Klassenname wird aus dem Objekt extrahiert und der Hash-Code
+     * wird als hexadezimale Darstellung der Identitäts-Hash-Code des Objekts
+     * gespeichert.
+     * </p>
+     *
+     * @param object Das <b>Objekt</b>, dessen Klassenname und
+     *     Identitäts-Hash-Code gespeichert werden sollen.
+     *
+     * @return diese {@code ToStringFormatter} Instanz für Method Chaining
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ToStringFormatter className(Object object)
+    {
         className = object.getClass().getSimpleName();
         hashCode = Integer.toHexString(System.identityHashCode(object));
+        return this;
     }
 
     private ToStringFormatter add(boolean prepend, String fieldName,

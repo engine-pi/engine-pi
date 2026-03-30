@@ -56,6 +56,7 @@ import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.EventListenerBundle;
@@ -2627,5 +2628,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         physics.awake(false);
         return this;
+    }
+
+    protected ToStringFormatter toStringFormatter()
+    {
+        ToStringFormatter formatter = new ToStringFormatter("Actor");
+        formatter.append("x", x());
+        formatter.append("y", y());
+        return formatter;
     }
 }
