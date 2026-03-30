@@ -48,8 +48,10 @@ import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
 import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
 import pi.Controller;
 import pi.Layer;
+import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
+import pi.animation.interpolation.LinearDouble;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -112,33 +114,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             return supplier.apply(layer);
         };
     }
-
-    /**
-     * Gibt an, ob das Objekt zurzeit überhaupt sichtbar sein soll.<br>
-     * Ist dies nicht der Fall, so wird die Zeichenroutine direkt übergangen.
-     */
-    private boolean visible = true;
-
-    /**
-     * Die Farbe der Figur.
-     */
-    protected Color color;
-
-    /**
-     * Z-Index des Objekts, je höher, desto weiter im Vordergrund wird das
-     * Objekt gezeichnet.
-     */
-    private int layerPosition = 1;
-
-    /**
-     * Opacity = Durchsichtigkeit des Objekts
-     * <p>
-     * <ul>
-     * <li><code>0.0</code> entspricht einem komplett durchsichtigen Bild.</li>
-     * <li><code>1.0</code> entspricht einem undurchsichtigem Bild.</li>
-     * </ul>
-     */
-    private double opacity = 1;
 
     /**
      * Der JB2D-Handler für dieses spezifische Objekt.
@@ -269,6 +244,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return this;
     }
 
+    /* layerPosition */
+
+    /**
+     * Z-Index des Objekts, je höher, desto weiter im Vordergrund wird das
+     * Objekt gezeichnet.
+     */
+    private int layerPosition = 1;
+
     /**
      * Setzt die Ebenenposition dieses Objekts. Je größer, desto weiter vorne
      * wird das Objekt gezeichnet.
@@ -304,6 +287,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         return this.layerPosition;
     }
+
+    /* visible */
+
+    /**
+     * Gibt an, ob das Objekt zurzeit überhaupt sichtbar sein soll.<br>
+     * Ist dies nicht der Fall, so wird die Zeichenroutine direkt übergangen.
+     */
+    private boolean visible = true;
 
     /**
      * Setzt die <b>Sichtbarkeit</b> des Objektes.
@@ -396,6 +387,18 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return visible(false);
     }
 
+    /* opacity */
+
+    /**
+     * Opacity = Durchsichtigkeit des Objekts
+     * <p>
+     * <ul>
+     * <li><code>0.0</code> entspricht einem komplett durchsichtigen Bild.</li>
+     * <li><code>1.0</code> entspricht einem undurchsichtigem Bild.</li>
+     * </ul>
+     */
+    private double opacity = 1;
+
     /**
      * Gibt die aktuelle Durchsichtigkeit des {@link Actor}-Objekts zurück.
      *
@@ -431,6 +434,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         this.opacity = opacity;
         return this;
     }
+
+    /* color */
+
+    /**
+     * Die Farbe der Figur.
+     */
+    protected Color color;
 
     /**
      * Gibt die <b>Farbe</b> der Figur zurück.
@@ -494,6 +504,27 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         this.color = colors.get(color);
         return this;
+    }
+
+    /**
+     * Animiert die Farbe des aktuellen Objekts.
+     *
+     * @param duration Dauer der Animation in Sekunden
+     * @param color Neue Farbe des Objekts
+     *
+     * @return Animations-Objekt, das die weitere Steuerung der Animation
+     *     erlaubt
+     */
+    @API
+    public ValueAnimator<Double> animateColor(double duration, Color color)
+    {
+        Color originalColor = color();
+        ValueAnimator<Double> animator = new ValueAnimator<>(duration,
+                progress -> color(
+                    ColorUtil.interpolate(originalColor, color, progress)),
+                new LinearDouble(0, 1), AnimationMode.SINGLE, this);
+        addFrameUpdateListener(animator);
+        return animator;
     }
 
     /**
