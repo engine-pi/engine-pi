@@ -212,8 +212,9 @@ public class TextUtil
                 index = stringBuilder.lastIndexOf(" ", index + width);
                 if (index == -1)
                 {
-                    throw new IllegalArgumentException("impossible to slice "
-                            + stringBuilder.substring(0, width));
+                    throw new IllegalArgumentException(
+                            "Kann den Text nicht umbrechen, da es ein Wort gibt, das länger als die Zeilenbreite ist: "
+                                    + stringBuilder.substring(0, width));
                 }
                 stringBuilder.replace(index, index + 1, "\n");
                 index++;

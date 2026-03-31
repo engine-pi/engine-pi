@@ -35,7 +35,7 @@ import pi.graphics.boxes.TextBlockBox;
 
 public class TextBlockBoxDemo extends Graphics2DComponent
 {
-    String lorem = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
+    String lorem = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.";
 
     private Box text(String content, Consumer<TextBlockBox> consumer)
     {
@@ -66,7 +66,13 @@ public class TextBlockBoxDemo extends Graphics2DComponent
                 // CENTER
                 text("Zentriert: " + lorem, box -> box.hAlign(CENTER)),
                 // RIGHT
-                text("Rechtsbündig: " + lorem, box -> box.hAlign(RIGHT)))
+                text("Rechtsbündig: " + lorem, box -> box.hAlign(RIGHT)),
+                // lineWidth(10)
+                // text(".lineWidth(10) " + lorem, box -> box.lineWidth(10)),
+                // lineWidth(20)
+                text(".lineWidth(20) " + lorem, box -> box.lineWidth(20)),
+                // lineWidth(30)
+                text(".lineWidth(30) " + lorem, box -> box.lineWidth(30)))
                     .padding(10)
                     .anchor(10, 10)
                     .render(g)

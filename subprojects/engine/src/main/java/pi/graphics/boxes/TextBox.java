@@ -73,6 +73,7 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.42.0
      */
+    @API
     @Getter
     public String content()
     {

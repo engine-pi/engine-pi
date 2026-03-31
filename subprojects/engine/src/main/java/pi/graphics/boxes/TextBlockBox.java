@@ -32,8 +32,10 @@ import java.util.List;
 
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.resources.font.FontUtil;
+import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 
@@ -46,6 +48,9 @@ import pi.resources.font.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
+
+    private static final long WRAPPING_WIDTH_PX = 300;
+
     /**
      * Eine Zeile des Textblocks.
      *
@@ -77,6 +82,58 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
+    /* content */
+
+    /**
+     * Setzt den Inhalt dieses {@code TextBlockBox}-Objekts
+     *
+     * @param content Der zu setzende Inhalt; kann beliebig typisiert sein und
+     *     wird über {@code String.valueOf(content)} in Text umgewandelt
+     *
+     * @return diese Instanz zur Verkettung weiterer Methodenaufrufe (Fluent
+     *     API)
+     *
+     * @since 0.45.0
+     */
+    public TextBlockBox content(Object content)
+    {
+        super.content(content);
+        if (lineWidth > 0)
+        {
+            this.content = TextUtil.wrap(this.content, lineWidth);
+        }
+        calculateDimension();
+        return this;
+    }
+
+    /* lineWidth */
+
+    private int lineWidth = 0;
+
+    /**
+     * Setzt die Zeichenbreite des Textblocks für den Zeilenumbruch.
+     *
+     * @param lineWidth Die maximale Breite an Zeichen einer Zeile für den
+     *     Umbruch.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextBlockBox lineWidth(int lineWidth)
+    {
+        if (lineWidth < 1)
+        {
+            throw new IllegalArgumentException(
+                    "Die Zeilenbreite muss mindestens 1 Zeichen betragen, damit der Text umbrochen werden kann.");
+        }
+        this.lineWidth = lineWidth;
+        // Damit wird die Zeilenbreite für die automatische Berechnung der
+        // Box-Breite verwendet.
+        definedWidth = 0;
+        content(this.content);
+        return this;
+    }
+
     /* lines */
 
     private List<TextLayoutLine> lines = new ArrayList<>();
@@ -88,6 +145,8 @@ public class TextBlockBox extends TextBox
      *
      * @since 0.45.0
      */
+    @API
+    @Getter
     public List<TextLayoutLine> lines()
     {
         return lines;
@@ -100,6 +159,7 @@ public class TextBlockBox extends TextBox
      *
      * @since 0.45.0
      */
+    @API
     public String[] linesText()
     {
         return lines.stream()
@@ -114,6 +174,7 @@ public class TextBlockBox extends TextBox
      *
      * @since 0.45.0
      */
+    @API
     public int linesCount()
     {
         return lines.size();
@@ -141,11 +202,24 @@ public class TextBlockBox extends TextBox
 
     protected void calculateDimension()
     {
-        width = definedWidth > 0 ? definedWidth : 300;
+        float wrappingWidth;
+
+        if (lineWidth == 0 && definedWidth == 0)
+        {
+            wrappingWidth = WRAPPING_WIDTH_PX;
+        }
+        else if (lineWidth > 0)
+        {
+            wrappingWidth = Float.MAX_VALUE;
+        }
+        else
+        {
+            wrappingWidth = definedWidth;
+        }
         lines = splitIntoLines(content,
             FontUtil.getFontRenderContext(),
             font,
-            width);
+            wrappingWidth);
         var dim = measureLines(lines);
         width = dim.width;
         height = dim.height;
@@ -163,7 +237,14 @@ public class TextBlockBox extends TextBox
     @ChainableMethod
     public TextBlockBox width(int width)
     {
+        if (width < 1)
+        {
+            throw new IllegalArgumentException(
+                    "Die Breite des Textblocks muss mindestens 1 Pixel betragen.");
+        }
         definedWidth = width;
+        lineWidth = 0;
+        calculateDimension();
         return this;
     }
 
