@@ -268,3 +268,104 @@ index 06b945a2..37a0c151 100644
          g.setColor(oldColor);
      }
 ```
+
+## GPT-5.3-Codex • 0.9x
+
+> Im Repository befinden sind in Java- und Markdown-Dateien Links zu anderen
+> Dateien. Diese Links sind an dem Präfix file:// zu erkennen. Schreibe ein
+> Kommandozeilenwerkzeug, das alle Java und Markdown-Datei nach diesen Links
+> durchsucht und überprüft, ob die Zieldateien tatsächlich vorhanden sind.
+
+Ich prüfe kurz die bestehende CLI-Struktur im Repository und ergänze dann ein neues Kommandozeilenwerkzeug, das -Links in Java- und Markdown-Dateien validiert.
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli)
+
+Searched for files matching `engine-pi` · `subprojects/cli/src/**/*.java`, 13 matches
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/pom.xml)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/Client.java)
+
+Als Nächstes lege ich ein eigenständiges CLI-Tool im bestehenden Modul cli an, mit rekursivem Scan von `.java`/`.md`, URI-Parsing für  und Exit-Code `1` bei defekten Links.
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/package-info.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/pom.xml)
+
+Ich implementiere jetzt die neue CLI-Klasse inklusive Link-Erkennung, URI-Normalisierung (inkl. `#fragment`) und Ergebnisausgabe mit Exit-Code, danach kompiliere ich das Modul kurz zur Verifikation.
+
+Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks)
+
+Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
+
+Generating patch (22 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
+
+
+```
+
+```
+Die Implementierung ist drin; ich kompiliere jetzt das CLI-Modul und führe das Tool einmal gegen das Repository aus, um Verhalten und Ausgabe zu prüfen.
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
+
+Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 30
+
+Ich habe bei der Validierung noch Rauschen erkannt (z. B.  in Codebeispielen/Regexen). Ich schärfe deshalb die Erkennung auf echte absolute `file:///...`-Links und teste erneut.
+
+Generating patch (7 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
+
+
+```
+
+```
+
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
+
+Kurzes Delta: Es gibt noch einen Fehlalarm aus einem Java-Regex-String. Ich schränke die Java-Prüfung jetzt auf Kommentarbereiche ein, weil die -Verweise im Repository in Java-Dateien als Kommentar-Links vorkommen.
+
+Generating patch (86 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
+
+
+```
+
+```
+
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
+
+Read changed files in the active git repository
+
+Fertig. Ich habe ein neues Kommandozeilenwerkzeug erstellt, das alle Java- und Markdown-Dateien rekursiv scannt, file:///-Links findet und prüft, ob die Zieldateien existieren.
+
+Geänderte Dateien:
+- FileLinkChecker.java
+- README.md
+
+Was das Tool macht:
+1. Scannt .java, .md und .markdown.
+2. Prüft in Java-Dateien nur Kommentarbereiche (vermeidet Fehlalarme aus String-Literalen).
+3. Erkennt absolute file:///-URIs, entfernt ggf. Fragmentteile wie #L10.
+4. Meldet defekte Links mit Quelldatei und Zeilennummer.
+5. Exit-Code 0 bei Erfolg, 1 bei mindestens einem defekten Link.
+
+Verifikation:
+1. Modul kompiliert erfolgreich.
+2. Tool wurde gegen das Repository ausgeführt.
+3. Ergebnis: 214 file://-Links geprüft, 15 defekte Ziele gefunden.
+
+Ausführen (Repository-Root):
+mvn -pl subprojects/cli -DskipTests compile
+mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp
+java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.checklinks.FileLinkChecker .
+
+Optional mit Ausgabe auch gültiger Links:
+java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.checklinks.FileLinkChecker -v .
+
+Wenn du willst, kann ich im nächsten Schritt die 15 gemeldeten defekten Links automatisch auflisten und passende Korrekturvorschläge je Datei machen.
+
+Made changes.
