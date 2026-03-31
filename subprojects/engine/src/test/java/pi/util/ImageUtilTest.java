@@ -125,7 +125,7 @@ public class ImageUtilTest
         }
         catch (Exception e)
         {
-            Logger.error("OptimizerTest", e.getLocalizedMessage());
+
         }
         assertNotNull(img);
         BufferedImage opt = ImageUtil.toCompatibleImage(img);

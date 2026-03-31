@@ -29,6 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 
 import de.pirckheimer_gymnasium.jbox2d.callbacks.ContactImpulse;
 import de.pirckheimer_gymnasium.jbox2d.callbacks.ContactListener;
@@ -50,7 +51,6 @@ import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.physics.joints.Joint;
 import pi.physics.joints.JointBuilder;
-import pi.util.Logger;
 
 /**
  * Die WorldHandler-Klasse ist die (nicht objektgebundene) Middleware zwischen
@@ -63,6 +63,9 @@ import pi.util.Logger;
  */
 public class WorldHandler implements ContactListener
 {
+    private static final Logger log = Logger
+        .getLogger(WorldHandler.class.getName());
+
     public static final int CATEGORY_PASSIVE = 1;
 
     public static final int CATEGORY_STATIC = 2;
@@ -271,7 +274,7 @@ public class WorldHandler implements ContactListener
         if (b1 == b2)
         {
             // Gleicher Body, don't care
-            Logger.error("Collision", "Inter-Body Collision!");
+            log.severe("Inter-Body Collision!");
             return;
         }
         /*
@@ -547,8 +550,8 @@ public class WorldHandler implements ContactListener
             Body b2 = collider.physicsHandler().body();
             if (b1 == null || b2 == null)
             {
-                Logger.error("Kollision",
-                    "Ein {@link Actor}-Objekt ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
+                log.severe(
+                    "Kollision: Eine Figur ohne physikalischen Body wurde zur Kollisionsüberwachung angemeldet.");
                 return;
             }
             Body lower, higher;
