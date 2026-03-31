@@ -50,7 +50,7 @@ public class TextBlockBox extends TextBox
      * Eine Zeile des Textblocks.
      *
      * @param layout Das vom Font-Renderer berechnete Layout der Zeile.
-     * @param lineContent Der tatsächliche Textinhalt dieser Zeile.
+     * @param lineContent Der Textinhalt dieser Zeile.
      * @param parentContent Der ursprüngliche vollständige Inhalt des
      *     Textblocks.
      * @param startIndex Der Startindex (inklusive) innerhalb des vollständigen
@@ -77,12 +77,16 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
+    /* lines */
+
     private List<TextLayoutLine> lines = new ArrayList<>();
 
     /**
-     * Gibt die intern berechneten, umgebrochenen Textzeilen zurück.
+     * Gibt die intern berechneten, umgebrochenen <b>Textzeilen</b> zurück.
      *
      * @return Eine Liste aus Layout-/Text-Paaren je Zeile.
+     *
+     * @since 0.45.0
      */
     public List<TextLayoutLine> lines()
     {
@@ -90,9 +94,11 @@ public class TextBlockBox extends TextBox
     }
 
     /**
-     * Gibt den Textinhalt der einzelnen Zeilen zurück.
+     * Gibt den <b>Textinhalt</b> der einzelnen Zeilen zurück.
      *
      * @return Eine Liste aus Layout-/Text-Paaren je Zeile.
+     *
+     * @since 0.45.0
      */
     public String[] linesText()
     {
@@ -101,14 +107,26 @@ public class TextBlockBox extends TextBox
             .toArray(String[]::new);
     }
 
+    /**
+     * Gibt die <b>Anzahl der Zeilen</b> in diesem Textblock zurück.
+     *
+     * @return Die <b>Anzahl der Zeilen</b>.
+     *
+     * @since 0.45.0
+     */
+    public int linesCount()
+    {
+        return lines.size();
+    }
+
     /* hAlign */
 
     private HAlign hAlign = HAlign.LEFT;
 
     /**
-     * Setzt die horizontale Ausrichtung der einzelnen Textzeilen.
+     * Setzt die <b>horizontale</b> Ausrichtung der einzelnen Textzeilen.
      *
-     * @param hAlign Die gewünschte Ausrichtung.
+     * @param hAlign Die gewünschte <b>horizontale</b> Ausrichtung.
      *
      * @return Dieses Objekt für Methodenverkettung.
      */

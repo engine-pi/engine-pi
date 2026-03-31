@@ -85,6 +85,15 @@ public class TextBlockBoxTest
         List<TextBlockBox.TextLayoutLine> lines = box.lines();
 
         assertEquals(3, lines.size());
+
+        TextBlockBox.TextLayoutLine line1 = lines.get(0);
+
+        assertEquals("Line 1", line1.lineContent());
+        assertEquals(0, line1.startIndex());
+        assertEquals(6, line1.endIndex());
+        assertEquals("Line 1\nLine 2\nLine 3", line1.parentContent());
+        assertEquals("Line 2", lines.get(1).lineContent());
+        assertEquals("Line 3", lines.get(2).lineContent());
     }
 
     @Test
@@ -123,5 +132,4 @@ public class TextBlockBoxTest
         TextBlockBox result = box.width(150);
         assertSame(result, box);
     }
-
 }
