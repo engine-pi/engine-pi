@@ -220,6 +220,9 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         return formatter;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

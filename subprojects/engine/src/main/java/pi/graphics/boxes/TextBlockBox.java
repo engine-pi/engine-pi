@@ -30,6 +30,9 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Setter;
 import pi.resources.font.FontUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
@@ -43,8 +46,6 @@ import pi.resources.font.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
-    HAlign hAlign = HAlign.LEFT;
-
     List<TextLayout> lines = new ArrayList<>();
 
     /**
@@ -59,6 +60,13 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
+    /* hAlign */
+
+    HAlign hAlign = HAlign.LEFT;
+
+    @API
+    @Setter
+    @ChainableMethod
     public TextBlockBox hAlign(HAlign hAlign)
     {
         this.hAlign = hAlign;
@@ -77,6 +85,9 @@ public class TextBlockBox extends TextBox
         height = dim.height;
     }
 
+    @API
+    @Setter
+    @ChainableMethod
     public TextBlockBox width(int width)
     {
         definedWidth = width;
@@ -187,6 +198,9 @@ public class TextBlockBox extends TextBox
         g.setColor(oldColor);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

@@ -25,6 +25,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -90,7 +91,9 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox content(Object content)
     {
         if (content == null)
@@ -141,6 +144,7 @@ public abstract class TextBox extends LeafBox
      */
     @API
     @Setter
+    @ChainableMethod
     public TextBox font(String fontName)
     {
         font(fonts.get(fontName));
@@ -160,7 +164,9 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox font(Font font)
     {
         this.font = font.deriveFont(fontStyle, (float) fontSize);
@@ -182,7 +188,9 @@ public abstract class TextBox extends LeafBox
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox fontSize(double fontSize)
     {
         font = font.deriveFont((float) fontSize);
@@ -215,7 +223,9 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.42.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox fontStyle(FontStyle fontStyle)
     {
         this.fontStyle = fontStyle.getStyle();
@@ -244,7 +254,9 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.42.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox fontStyle(int fontStyle)
     {
         this.fontStyle = fontStyle;
@@ -302,7 +314,9 @@ public abstract class TextBox extends LeafBox
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code box.x(..).y(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox color(Color color)
     {
         this.color = color;
@@ -323,15 +337,20 @@ public abstract class TextBox extends LeafBox
      *
      * @see pi.resources.color.ColorContainer
      */
+    @API
     @Setter
+    @ChainableMethod
     public TextBox color(String color)
     {
         this.color = colors.get(color);
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
-    public ToStringFormatter toStringFormatter()
+    protected ToStringFormatter toStringFormatter()
     {
         var formatter = super.toStringFormatter();
 

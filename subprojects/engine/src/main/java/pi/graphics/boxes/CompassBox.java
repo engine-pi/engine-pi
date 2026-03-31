@@ -152,6 +152,9 @@ public class CompassBox extends LeafBox
         g.drawLine(from.x(1), from.y(1), to.x(1), to.y(1));
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

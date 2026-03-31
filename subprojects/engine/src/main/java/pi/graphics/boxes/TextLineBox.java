@@ -76,6 +76,9 @@ public class TextLineBox extends TextBox
         g.setFont(oldFont);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

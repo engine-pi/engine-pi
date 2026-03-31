@@ -558,7 +558,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.42.0
      */
-    public ToStringFormatter toStringFormatter()
+    protected ToStringFormatter toStringFormatter()
     {
         ToStringFormatter formatter = new ToStringFormatter(this);
 

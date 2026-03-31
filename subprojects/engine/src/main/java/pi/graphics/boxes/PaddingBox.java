@@ -40,6 +40,9 @@ public abstract class PaddingBox<T extends Box> extends ChildsBox<T>
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public ToStringFormatter toStringFormatter()
     {

@@ -74,6 +74,9 @@ public class TextBlockAlignBox extends CombinedChildBox
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

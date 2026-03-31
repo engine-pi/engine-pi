@@ -33,6 +33,7 @@ public enum HAlign
      * Richtet die Box <b>links</b> aus.
      */
     LEFT,
+
     /**
      * Richtet die Box <b>zentriert</b> aus.
      */

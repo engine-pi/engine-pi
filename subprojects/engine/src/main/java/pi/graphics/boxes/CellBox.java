@@ -175,6 +175,9 @@ public class CellBox extends ChildBox
         // do nothing
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

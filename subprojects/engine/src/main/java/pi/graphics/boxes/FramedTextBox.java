@@ -41,6 +41,9 @@ public class FramedTextBox extends FramedBox
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

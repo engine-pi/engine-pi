@@ -146,6 +146,9 @@ public class ImageBox extends LeafBox
         g.setTransform(oldTransfer);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

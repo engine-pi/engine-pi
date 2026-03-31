@@ -90,6 +90,9 @@ public class VerticalBox<T extends Box> extends PaddingBox<T>
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

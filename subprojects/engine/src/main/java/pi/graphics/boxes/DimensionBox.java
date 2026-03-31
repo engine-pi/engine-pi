@@ -62,10 +62,12 @@ public class DimensionBox extends LeafBox
     {
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {
         return toStringFormatter().format();
     }
-
 }

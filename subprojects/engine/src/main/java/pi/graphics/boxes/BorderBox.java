@@ -205,6 +205,9 @@ public class BorderBox extends ChildBox
         }
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

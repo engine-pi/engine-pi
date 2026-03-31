@@ -105,6 +105,9 @@ public class ChildsBox<T extends Box> extends Box
         // do nothing
     }
 
+    /**
+     * @hidden
+     */
     @Override
     @Getter
     public ToStringFormatter toStringFormatter()

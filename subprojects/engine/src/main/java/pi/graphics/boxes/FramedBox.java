@@ -57,6 +57,9 @@ public class FramedBox extends CombinedChildBox
         addChild(margin);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

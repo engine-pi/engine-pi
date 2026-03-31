@@ -113,6 +113,9 @@ public class BackgroundBox extends ChildBox
         }
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {
