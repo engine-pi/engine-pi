@@ -32,7 +32,7 @@ import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/development/design.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/design.md
 
 /**
  * Beschreibt ein <b>Rechteck</b>.

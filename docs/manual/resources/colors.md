@@ -135,7 +135,7 @@ wurzel.add(recht);
 - {{ class('pi.resources.color.ColorScheme') }}
 - {{ class('pi.resources.color.PredefinedColorScheme') }}
 - {{ class('pi.resources.color.NamedColor') }}
-- [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/de/pirckheimer_gymnasium/engine_pi/Resources.html#colors)
+- [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/pi/Resources.html#colors)
 
 ## Farbschema
 

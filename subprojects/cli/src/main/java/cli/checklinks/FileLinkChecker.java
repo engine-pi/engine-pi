@@ -23,8 +23,13 @@ import picocli.CommandLine.Parameters;
 @Command(name = "checklinks", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
 public class FileLinkChecker implements Callable<Integer>
 {
-    private static final Pattern FILE_URI_PATTERN = Pattern
-        .compile("file:///[^\\s\"'<>`]+", Pattern.CASE_INSENSITIVE);
+    private static final CommandLine.Help.Ansi ANSI = CommandLine.Help.Ansi.AUTO;
+
+    private static final String BASE_PATH_STRING = "/data/school/repos/inf/java/engine-pi/";
+
+    private static final Pattern FILE_URI_PATTERN = Pattern.compile(
+        "file://" + BASE_PATH_STRING + "[^\\s\"'<>`]+",
+        Pattern.CASE_INSENSITIVE);
 
     private static final Set<String> SUPPORTED_EXTENSIONS = Set
         .of(".java", ".md", ".markdown");
@@ -82,7 +87,8 @@ public class FileLinkChecker implements Callable<Integer>
                             }
                             else if (verbose)
                             {
-                                System.out.printf("OK: %s:%d -> %s%n",
+                                System.out.printf("%s: %s:%d -> %s%n",
+                                    color("@|green,bold OK|@"),
                                     sourceFile.normalize(),
                                     lineNumber,
                                     result.targetPath().normalize());
@@ -106,17 +112,19 @@ public class FileLinkChecker implements Callable<Integer>
                 System.out.println(report);
             }
             System.out.printf(
-                "%nChecked %d file:// links in %d files, %d issue(s) found.%n",
+                "%n%s %d file:// links in %d files, %d issue(s) found.%n",
+                color("@|red,bold Checked|@"),
                 linksChecked,
                 files.size(),
                 brokenReports.size());
             return 1;
         }
 
-        System.out.printf(
-            "Checked %d file:// links in %d files. No missing target files found.%n",
+        System.out.printf("%s %d file:// links in %d files. %s%n",
+            color("@|green,bold Checked|@"),
             linksChecked,
-            files.size());
+            files.size(),
+            color("@|green,bold No missing target files found.|@"));
         return 0;
     }
 
@@ -125,17 +133,19 @@ public class FileLinkChecker implements Callable<Integer>
     {
         if (result.error() != null)
         {
-            return String.format("BROKEN: %s:%d -> %s (%s)",
+            return String.format("%s: %s:%d -> %s (%s)",
+                color("@|red,bold BROKEN|@"),
                 sourceFile.normalize(),
                 lineNumber,
                 rawLink,
                 result.error());
         }
-        return String.format("BROKEN: %s:%d -> %s -> %s (missing)",
+        return String.format("%s: file://%s :%d -> %s (%s)",
+            color("@|red,bold BROKEN|@"),
             sourceFile.normalize(),
             lineNumber,
             rawLink,
-            result.targetPath().normalize());
+            color("@|red MISSING|@"));
     }
 
     private static LinkCheckResult resolveLink(String rawLink, Path sourceFile)
@@ -191,7 +201,8 @@ public class FileLinkChecker implements Callable<Integer>
             }
             catch (IOException e)
             {
-                System.out.printf("WARN: Could not scan %s (%s)%n",
+                System.out.printf("%s: Could not scan %s (%s)%n",
+                    color("@|yellow,bold WARN|@"),
                     root.toAbsolutePath().normalize(),
                     e.getMessage());
             }
@@ -277,6 +288,11 @@ public class FileLinkChecker implements Callable<Integer>
         return value.substring(0, end);
     }
 
+    private static String color(String markup)
+    {
+        return ANSI.string(markup);
+    }
+
     private record LinkCheckResult(Path targetPath, boolean broken,
             String error)
     {
@@ -284,7 +300,6 @@ public class FileLinkChecker implements Callable<Integer>
 
     public static void main(String[] args)
     {
-        int exitCode = new CommandLine(new FileLinkChecker()).execute(args);
-        System.exit(exitCode);
+        System.exit(new CommandLine(new FileLinkChecker()).execute(args));
     }
 }

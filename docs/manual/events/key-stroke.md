@@ -12,7 +12,7 @@ Der Counter im Gange
 ///
 
 Der [folgende
-Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyStrokeCounterDemo.java)
+Code](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/pi_demos/input/keyboard/KeyStrokeCounterDemo.java)
 implementiert einen einfachen Zähler, der die Anzahl an gedrückten Tasten
 (vollkommen egal, welche) festhält.
 
@@ -78,7 +78,7 @@ Alle Informationen über den Tastendruck sind im Objekt `keyEvent` der Klasse
 gespeichert. Die Engine nutzt hier dieselbe Schnittstelle wie Java.
 
 Im [folgendem
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/pi_demos/input/keyboard/KeyEventDemo.java)
 wird mit Hilfe der vier Cursor-Tasten ein kleines Rechteck bewegt:
 
 {{ image('docs/input/KeyEventDemo.png') }}
@@ -142,7 +142,7 @@ Key`](https://stackoverflow.com/a/70191567). Diese Klassenattribute können in
 einer `switch`-Kontrollstruktur zur Fallunterscheidung verwendet werden.
 
 Das [nächste
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/keyboard/KeyEventDisplayDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/pi_demos/input/keyboard/KeyEventDisplayDemo.java)
 zeigt den entsprechenden Namen des `VK`-Klassenattributs an, nachdem eine Taste
 gedrückt wurde. Wird zum Beispiel die Leertaste gedrückt, erscheint der Text
 `VK_SPACE`.

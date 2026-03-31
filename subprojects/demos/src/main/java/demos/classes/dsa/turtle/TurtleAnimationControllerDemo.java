@@ -20,7 +20,7 @@ package demos.classes.dsa.turtle;
 
 import pi.Turtle;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/de/pirckheimer_gymnasium/engine_pi/dsa/turtle/TurtleAnimationController.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/dsa/turtle/TurtleAnimationController.java
 
 /**
  * Demonstiert, wie mit <b>minimalen</b> Programmieraufwand eine

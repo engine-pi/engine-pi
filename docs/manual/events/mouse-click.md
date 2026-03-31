@@ -10,7 +10,7 @@ Auf Mausklick reagieren: Kreise malen
 ///
 
 Das [folgende
-Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/de/pirckheimer_gymnasium/engine_pi_demos/input/mouse/PaintingCirclesDemo.java)
+Beispiel](https://github.com/engine-pi/engine-pi/blob/main/engine-pi-demos/src/main/java/pi_demos/input/mouse/PaintingCirclesDemo.java)
 malt bei jedem Knopfdruck einen Kreis.[^mausklick-kreise-malen]
 
 [^mausklick-kreise-malen]: https://engine-alpha.org/wiki/v4.x/User_Input#Auf_Mausklick_reagieren:_Kreise_malen

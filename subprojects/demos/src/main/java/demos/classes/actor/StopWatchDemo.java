@@ -26,7 +26,7 @@ import pi.actor.StopWatch;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/StopWatch.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/StopWatch.java
 
 /**
  * @author Josef Friedrich

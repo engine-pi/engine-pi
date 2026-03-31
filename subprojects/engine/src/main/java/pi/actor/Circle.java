@@ -33,7 +33,7 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.physics.FixtureData;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/development/design.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/design.md
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/CircleDemo.java
 
 /**

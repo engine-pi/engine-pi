@@ -74,5 +74,6 @@ mkdocs_serve:
 	mkdocs serve --livereload
 
 # Execute the cli command
-cli:
-    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client
+cli *args:
+    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
+    # java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
