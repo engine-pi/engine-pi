@@ -18,7 +18,7 @@
  */
 package pi.graphics.boxes;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/FramedTextBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/FramedTextBoxDemo.java
 
 /**
  * @author Josef Friedrich

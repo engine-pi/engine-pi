@@ -25,7 +25,7 @@ import java.awt.Graphics2D;
 
 import pi.annotations.Setter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/BorderBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/BorderBoxDemo.java
 
 /**
  * Legt einen <b>Rahmen</b> um eine enthaltene Kind-Box.

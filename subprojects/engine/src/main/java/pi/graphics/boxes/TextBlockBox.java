@@ -35,10 +35,10 @@ import pi.annotations.ChainableMethod;
 import pi.annotations.Setter;
 import pi.resources.font.FontUtil;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 
 /**
- * Ein mehrzeiliger Textblock
+ * Ein mehrzeiliger <b>Textblock</b>.
  *
  * @author Josef Friedrich
  *
@@ -46,7 +46,24 @@ import pi.resources.font.FontUtil;
  */
 public class TextBlockBox extends TextBox
 {
-    List<TextLayout> lines = new ArrayList<>();
+    /**
+     * Eine Zeile des Textblocks.
+     *
+     * @param layout Das vom Font-Renderer berechnete Layout der Zeile.
+     * @param lineContent Der tatsächliche Textinhalt dieser Zeile.
+     * @param parentContent Der ursprüngliche vollständige Inhalt des
+     *     Textblocks.
+     * @param startIndex Der Startindex (inklusive) innerhalb des vollständigen
+     *     Inhalts.
+     * @param endIndex Der Endindex (exklusive) innerhalb des vollständigen
+     *     Inhalts.
+     *
+     * @since 0.45.0
+     */
+    public static record TextLayoutLine(TextLayout layout, String lineContent,
+            String parentContent, int startIndex, int endIndex)
+    {
+    }
 
     /**
      * Erzeugt einen mehrzeiligen <b>Textblock</b>.
@@ -60,10 +77,29 @@ public class TextBlockBox extends TextBox
         super(content);
     }
 
+    private List<TextLayoutLine> lines = new ArrayList<>();
+
+    /**
+     * Gibt die intern berechneten, umgebrochenen Textzeilen zurück.
+     *
+     * @return Eine Liste aus Layout-/Text-Paaren je Zeile.
+     */
+    public List<TextLayoutLine> lines()
+    {
+        return lines;
+    }
+
     /* hAlign */
 
-    HAlign hAlign = HAlign.LEFT;
+    private HAlign hAlign = HAlign.LEFT;
 
+    /**
+     * Setzt die horizontale Ausrichtung der einzelnen Textzeilen.
+     *
+     * @param hAlign Die gewünschte Ausrichtung.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
+     */
     @API
     @Setter
     @ChainableMethod
@@ -85,6 +121,13 @@ public class TextBlockBox extends TextBox
         height = dim.height;
     }
 
+    /**
+     * Setzt die Breite des Textblocks für den Zeilenumbruch.
+     *
+     * @param width Die Zielbreite in Pixeln.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
+     */
     @API
     @Setter
     @ChainableMethod
@@ -94,12 +137,12 @@ public class TextBlockBox extends TextBox
         return this;
     }
 
-    private static List<TextLayout> splitIntoLines(String content,
+    private static List<TextLayoutLine> splitIntoLines(String content,
             FontRenderContext context, Font font, float wrappingWidth)
     {
         // Source:
         // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
-        ArrayList<TextLayout> lines = new ArrayList<>();
+        ArrayList<TextLayoutLine> lines = new ArrayList<>();
         for (String line : content.split(System.lineSeparator()))
         {
             final AttributedString styledText = new AttributedString(line);
@@ -111,7 +154,21 @@ public class TextBlockBox extends TextBox
             while (true)
             {
                 TextLayout nextLayout = measurer.nextLayout(wrappingWidth);
-                lines.add(nextLayout);
+
+                // Die Klasse „TextLayout“ bietet keine direkte Methode zum
+                // Extrahieren der ursprünglichen Zeichenfolge. Wir haben jedoch
+                // Zugriff auf den „AttributedCharacterIterator“, der die
+                // Positionen der Zeichen enthält. Indem wir die Start- und
+                // Endpositionen des aktuellen Layouts verwenden, können wir den
+                // entsprechenden Abschnitt der ursprünglichen Zeichenfolge
+                // extrahieren, um den tatsächlichen Textinhalt der Zeile zu
+                // erhalten.
+                int end = measurer.getPosition();
+                int start = end - nextLayout.getCharacterCount();
+                String lineContent = line.substring(start, end);
+                lines.add(new TextLayoutLine(nextLayout, lineContent, content,
+                        start, end));
+
                 if (measurer.getPosition() >= line.length())
                 {
                     break;
@@ -121,18 +178,19 @@ public class TextBlockBox extends TextBox
         return lines;
     }
 
-    private static PixelDimension measureLines(List<TextLayout> lines)
+    private static PixelDimension measureLines(List<TextLayoutLine> lines)
     {
         // Source:
         // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
         PixelDimension dim = new PixelDimension();
         float maxWidth = 0;
         float height = 0;
-        for (TextLayout line : lines)
+        for (TextLayoutLine line : lines)
         {
+            TextLayout layout = line.layout();
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
             // Vorschub des Zeichens ganz rechts.
-            float width = line.getAdvance();
+            float width = layout.getAdvance();
             if (width > maxWidth)
             {
                 maxWidth = width;
@@ -140,15 +198,14 @@ public class TextBlockBox extends TextBox
             height +=
                     // Ascent: der Abstand von der oberen rechten Ecke des
                     // Textlayouts zur Grundlinie.
-                    line.getAscent() +
+                    layout.getAscent() +
                     // Descent: Entfernung von der Grundlinie zum unteren linken
-                    // Rand
-                    // des Textlayouts
-                            line.getDescent() +
+                    // Rand des Textlayouts
+                            layout.getDescent() +
                             // Leading: empfohlener Zeilenabstand relativ zur
                             // Grundlinie.
                             // Scheint meistens 0.0 zu sein?
-                            line.getLeading();
+                            layout.getLeading();
         }
         dim.width = (int) Math.ceil(maxWidth);
         dim.height = (int) Math.ceil(height);
@@ -164,15 +221,16 @@ public class TextBlockBox extends TextBox
             g.setColor(color);
         }
         float yCursor = (float) y;
-        for (TextLayout line : lines)
+        for (TextLayoutLine line : lines)
         {
+            TextLayout layout = line.layout();
             // Ascent: der Abstand von der oberen rechten Ecke des
             // Textlayouts zur Grundlinie.
-            yCursor += line.getAscent();
+            yCursor += layout.getAscent();
             float xCursor = (float) x;
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
             // Vorschub des Zeichens ganz rechts.
-            float lineWidth = line.getAdvance();
+            float lineWidth = layout.getAdvance();
             switch (hAlign)
             {
             case LEFT:
@@ -187,13 +245,13 @@ public class TextBlockBox extends TextBox
                 break;
             }
 
-            line.draw(g, xCursor, yCursor);
+            layout.draw(g, xCursor, yCursor);
             // Descent: Entfernung von der Grundlinie zum unteren linken Rand
             // des Textlayouts
-            yCursor += line.getDescent() +
+            yCursor += layout.getDescent() +
             // Leading: empfohlener Zeilenabstand relativ zur Grundlinie.
             // Scheint meistens 0.0 zu sein?
-                    line.getLeading();
+                    layout.getLeading();
         }
         g.setColor(oldColor);
     }

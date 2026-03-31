@@ -20,7 +20,7 @@ package pi.graphics.boxes;
 
 import java.util.ArrayList;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/GridBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/GridBoxDemo.java
 
 import java.util.List;
 import java.util.function.Consumer;

@@ -20,7 +20,7 @@ package pi;
 
 import pi.dsa.turtle.AutoStartTurtleController;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Eine <b>Schildkröte</b> um Turtle-Grafiken zu zeichnen.

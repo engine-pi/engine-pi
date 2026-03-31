@@ -41,7 +41,7 @@ import pi.resources.color.ColorUtil;
  * </a>in Blockly Robot
  */
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/turtle/TurtleDemo.java
 
 /**
  * Vereint alle Teil-Klassen in einer <b>Szene</b>.

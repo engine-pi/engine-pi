@@ -31,7 +31,7 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.resources.font.FontStyle;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextLineBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
 /**
  * Eine Box, die sich um die Verwaltung einer Zeichenkette, einer Schriftart und

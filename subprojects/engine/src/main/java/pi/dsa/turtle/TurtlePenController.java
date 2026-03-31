@@ -25,7 +25,7 @@ import java.awt.Color;
 import pi.actor.Actor;
 import pi.graphics.geom.Vector;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtlePenControllerDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/turtle/TurtlePenControllerDemo.java
 
 /**
  * Steuert den <b>Zeichenstift</b> der Schildkröte.

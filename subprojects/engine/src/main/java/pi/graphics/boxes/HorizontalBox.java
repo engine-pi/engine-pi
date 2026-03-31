@@ -20,7 +20,7 @@ package pi.graphics.boxes;
 
 import pi.annotations.Setter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/HorizontalBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/HorizontalBoxDemo.java
 
 /**
  * Eine <b>horizontale</b> Box, die die enthaltenen Kinder-Boxen horizontal von

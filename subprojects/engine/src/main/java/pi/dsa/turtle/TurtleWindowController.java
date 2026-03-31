@@ -21,7 +21,7 @@ package pi.dsa.turtle;
 import pi.Controller;
 import pi.graphics.geom.Direction;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/dsa/turtle/TurtleWindowControllerDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/dsa/turtle/TurtleWindowControllerDemo.java
 
 /**
  * Steuert das <b>Fenster</b>, in das die Schildkröte malt.
