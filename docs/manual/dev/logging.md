@@ -12,34 +12,9 @@ Die Engine Pi nutzt das
 [java.util.logging](https://docs.oracle.com/en/java/javase/17/docs/api/java.logging/java/util/logging/package-summary.html)-Framework,
 um Informationen und Fehler zu protokollieren. Die Ausgabe der Protokollierung
 lässt sich konfigurieren, indem man eine Datei namens [logging.properties](https://logging.properties/) im
-Ausführungsverzeichnis des Spiels ablegt. Weitere Informationen hierzu finden
-Sie auf
-[docs.oracle.com](https://docs.oracle.com/en/java/javase/25/core/java-logging-overview.html#GUID-84971801-F327-4F96-8F35-DA4D6737F857).
+Ausführungsverzeichnis des Spiels ablegt. Diese Datei definiert, wohin Logs geschrieben werden (Handlers) und wie detailliert diese sein sollen (Levels).[^gemini][^loggly][^esb-dev][^javabeginners][^oracle-logging-overview][^oracle-logging-config][^stackoverflow][^dash0][^youtube][^papertrail][^sematext]
 
-## Beispiel einer logging.properties-Datei
-
-```ini
-handlers=java.util.logging.FileHandler, java.util.logging.ConsoleHandler
-
-java.util.logging.ConsoleHandler.level=WARNING
-java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
-
-java.util.logging.FileHandler.level=WARNING
-java.util.logging.FileHandler.pattern=game.log
-java.util.logging.FileHandler.formatter=java.util.logging.SimpleFormatter
-java.util.logging.FileHandler.append=true
-java.util.logging.FileHandler.limit = 50000
-java.util.logging.FileHandler.count = 1
-```
-
-
-In Java wird das standardmäßige Logging-Framework JUL (java.util.logging) über eine logging.properties-Datei gesteuert.[^loggly.com] [^esb-dev.github.io]
-
-## Die logging.properties erstellen
-
-Erstellen Sie eine Textdatei mit dem Namen logging.properties. Diese Datei definiert, wohin Logs geschrieben werden (Handlers) und wie detailliert diese sein sollen (Levels). [^loggly.com] [ 3, 4, 5] [^esb-dev.github.io]
-
-## Beispielkonfiguration:
+## logging.properties-Datei
 
 ```ini
 # Globale Handler definieren (Konsole und Datei)
@@ -59,34 +34,99 @@ java.util.logging.FileHandler.count = 1
 java.util.logging.FileHandler.formatter = java.util.logging.XMLFormatter
 ```
 
+Das Logging kann global über die Datei
+`#!bash $JAVA_HOME/conf/logging.properties` konfiguriert werden.[^last9]
+Auf Linux ist beispielsweise ist diese `logging.properties`-Datei im Verzeichnis
+`/usr/lib/jvm/java-17-openjdk-amd64/conf/logging.properties` zu finden, wenn das
+OpenJDK 17 installiert ist. Diese globale `logging.properties`-Datei ist
+folgendermaßen aufgebaut:
+
+```ini
+############################################################
+#  	Default Logging Configuration File
+#
+# You can use a different file by specifying a filename
+# with the java.util.logging.config.file system property.
+# For example, java -Djava.util.logging.config.file=myfile
+############################################################
+
+############################################################
+#  	Global properties
+############################################################
+
+# "handlers" specifies a comma-separated list of log Handler
+# classes.  These handlers will be installed during VM startup.
+# Note that these classes must be on the system classpath.
+# By default we only configure a ConsoleHandler, which will only
+# show messages at the INFO and above levels.
+handlers= java.util.logging.ConsoleHandler
+
+# To also add the FileHandler, use the following line instead.
+#handlers= java.util.logging.FileHandler, java.util.logging.ConsoleHandler
+
+# Default global logging level.
+# This specifies which kinds of events are logged across
+# all loggers.  For any given facility this global level
+# can be overridden by a facility-specific level
+# Note that the ConsoleHandler also has a separate level
+# setting to limit messages printed to the console.
+.level= INFO
+
+############################################################
+# Handler specific properties.
+# Describes specific configuration info for Handlers.
+############################################################
+
+# default file output is in user's home directory.
+java.util.logging.FileHandler.pattern = %h/java%u.log
+java.util.logging.FileHandler.limit = 50000
+java.util.logging.FileHandler.count = 1
+# Default number of locks FileHandler can obtain synchronously.
+# This specifies maximum number of attempts to obtain lock file by FileHandler
+# implemented by incrementing the unique field %u as per FileHandler API documentation.
+java.util.logging.FileHandler.maxLocks = 100
+java.util.logging.FileHandler.formatter = java.util.logging.XMLFormatter
+
+# Limit the messages that are printed on the console to INFO and above.
+java.util.logging.ConsoleHandler.level = INFO
+java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
+
+# Example to customize the SimpleFormatter output format
+# to print one-line log message like this:
+#     <level>: <log message> [<date/time>]
+#
+# java.util.logging.SimpleFormatter.format=%4$s: %5$s [%1$tc]%n
+
+############################################################
+# Facility-specific properties.
+# Provides extra control for each logger.
+############################################################
+
+# For example, set the com.xyz.foo logger to only log SEVERE
+# messages:
+# com.xyz.foo.level = SEVERE
+```
+
 ## Wichtige Konfigurationsoptionen
 
 * Handlers: Bestimmen das Ziel der Logs (z. B. ConsoleHandler für den Bildschirm, FileHandler für Dateien).
 * Levels: Steuern die Granularität. Häufige Stufen sind SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST.
 * Formatter: Legen das Layout fest (z. B. SimpleFormatter für Text oder XMLFormatter).
-* FileHandler Patterns: %h steht für das Home-Verzeichnis des Nutzers, %t für den temporären Ordner. [7, 8, 9, 10, 11, 12]
+* FileHandler Patterns: %h steht für das Home-Verzeichnis des Nutzers, %t für den temporären Ordner.
 
 ## Logging im Code verwenden
 
-Nachdem die Konfiguration geladen wurde, nutzen Sie den Logger wie gewohnt:
-
 {{ code("demos.classes.class_controller.LoggingDemo", from_import=true) }}
 
-Möchten Sie erfahren, wie Sie für bestimmte Pakete (z. B. nur für Datenbank-Abfragen)
-https://share.google/aimode/z6DIbXRAaOnEVUWVI
-
-
-[^loggly.com]: https://www.loggly.com/ultimate-guide/java-logging-basics/
-[^esb-dev.github.io]: https://esb-dev.github.io/mat/logging.pdf
-
-
-[4] [https://javabeginners.de](https://javabeginners.de/Allgemeines/Logging/Logging_mit_Properties-Datei.php#:~:text=Javabeginners%20%2D%20Logging%20mit%20Properties%2DDatei.)
-[5] [https://www.youtube.com](https://www.youtube.com/watch?v=9UCwNuiBDps&t=433)
-[6] [https://esb-dev.github.io](https://esb-dev.github.io/mat/logging.pdf)
-[7] [https://stackoverflow.com](https://stackoverflow.com/questions/960099/how-to-set-up-java-logging-using-a-properties-file-java-util-logging)
-[8] [https://www.dash0.com](https://translate.google.com/translate?u=https://www.dash0.com/faq/java-util-logging-jul-the-complete-guide-to-built-in-java-logging&hl=de&sl=en&tl=de&client=sge#:~:text=Kernkomponenten%20der%20Java%2DUtil%2DProtokollierung%20Logger:%20Die%20zentrale%20Klasse%2C,Protokolleintr%C3%A4ge%20in%20formatierte%20Zeichenketten%20f%C3%BCr%20die%20Ausgabe.)
-[9] [https://sematext.com](https://sematext.com/blog/java-logging/)
-[10] [https://www.papertrail.com](https://translate.google.com/translate?u=https://www.papertrail.com/solution/tips/logging-in-java-best-practices-and-tips/&hl=de&sl=en&tl=de&client=sge#:~:text=Das%20in%20Java%20integrierte%20Logging%2DFramework%20%28java.util.logging%29%20bietet,Dies%20sind%20die%20vom%20Java%2DFramework%20definierten%20Standard%2DProtokollierungsstufen.)
-[11] [https://last9.io](https://last9.io/blog/java-util-logging-configuration/)
-[12] [https://docs.oracle.com](https://docs.oracle.com/cd/E57471_01/bigData.100/data_processing_bdd/src/rdp_logging_config.html)
-[13] [https://javabeginners.de](https://javabeginners.de/Allgemeines/Logging/Logging_mit_Properties-Datei.php)
+[^gemini]: https://share.google/aimode/z6DIbXRAaOnEVUWVI
+[^loggly]: https://www.loggly.com/ultimate-guide/java-logging-basics/
+[^esb-dev]: https://esb-dev.github.io/mat/logging.pdf
+[^javabeginners]: https://javabeginners.de/Allgemeines/Logging/Logging_mit_Properties-Datei.php
+[^oracle-logging-overview]: https://docs.oracle.com/en/java/javase/17/core/java-logging-overview.html#GUID-B83B652C-17EA-48D9-93D2-563AE1FF8EDA
+[^oracle-logging-config]: https://docs.oracle.com/cd/E57471_01/bigData.100/data_processing_bdd/src/rdp_logging_config.html
+[^stackoverflow]: https://stackoverflow.com/questions/960099/how-to-set-up-java-logging-using-a-properties-file-java-util-logging
+[^dash0]: https://www.dash0.com/faq/java-util-logging-jul-the-complete-guide-to-built-in-java-logging
+[^youtube]: https://www.youtube.com/watch?v=9UCwNuiBDps&t=433
+[^papertrail]: https://www.papertrail.com/solution/tips/logging-in-java-best-practices-and-tips
+[^sematext]:(https://sematext.com/blog/java-logging)
+[^last9]: https://last9.io/blog/java-util-logging-configuration
