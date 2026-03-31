@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2026 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package cli.checklinks;
 
 import java.io.IOException;
@@ -20,6 +38,59 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
+/**
+ * Ein Kommando-Zeilenwerkzeug zur Überprüfung von {@code file://}-Links in
+ * Java- und Markdown-Dateien.
+ *
+ * <p>
+ * Diese Klasse implementiert einen Link-Checker, der rekursiv durch Dateien und
+ * Verzeichnisse geht und alle {@code file://}-URIs validiert. Sie überprüft, ob
+ * die Zieldateien existieren und gibt detaillierte Berichte über fehlerhafte
+ * oder fehlende Links aus.
+ * </p>
+ *
+ * <h2>Funktionsweise</h2>
+ *
+ * <ul>
+ * <li>Sammelt alle unterstützten Quelldateien (Java und Markdown) aus den
+ * angegebenen Verzeichnissen</li>
+ * <li>Durchsucht jede Datei nach {@code file://}-Links mittels regulärer
+ * Ausdrücke</li>
+ * <li>Für Java-Dateien: Extrahiert Links nur aus Kommentaren (Zeilen- und
+ * Blockkommentare)</li>
+ * <li>Für Markdown-Dateien: Scannt den gesamten Inhalt</li>
+ * <li>Validiert jeden gefundenen Link und meldet fehlerhafte oder fehlende
+ * Ziele</li>
+ * </ul>
+ *
+ * <h2>Verwendung</h2>
+ *
+ * <pre>
+ * java cli.checklinks.FileLinkChecker [OPTIONS] [ROOT...]
+ * </pre>
+ *
+ * <h2>Optionen</h2>
+ * <ul>
+ * <li>{@code -v, --verbose}: Gibt auch gültige Links aus</li>
+ * <li>{@code -h, --help}: Zeigt die Hilfemeldung an</li>
+ * </ul>
+ *
+ * <h2>Parameter</h2>
+ * <ul>
+ * <li>{@code ROOT}: Optionale Liste von Dateien oder Verzeichnissen zum
+ * Scannen. Standardmäßig wird das aktuelle Verzeichnis verwendet</li>
+ * </ul>
+ *
+ * <h2>Rückgabeverte</h2>
+ * <ul>
+ * <li>0: Alle Links sind gültig</li>
+ * <li>1: Ein oder mehrere fehlerhafte oder fehlende Links wurden gefunden</li>
+ * </ul>
+ *
+ * @author Josef Friedrich
+ *
+ * @since 0.45.0
+ */
 @Command(name = "checklinks", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
 public class FileLinkChecker implements Callable<Integer>
 {
@@ -31,8 +102,8 @@ public class FileLinkChecker implements Callable<Integer>
         "file://" + BASE_PATH_STRING + "[^\\s\"'<>`]+",
         Pattern.CASE_INSENSITIVE);
 
-    private static final Set<String> SUPPORTED_EXTENSIONS = Set
-        .of(".java", ".md", ".markdown");
+    private static final Set<String> SUPPORTED_EXTENSIONS = Set.of(".java",
+        ".md");
 
     @Parameters(arity = "0..*", paramLabel = "ROOT", description = "Files or directories to scan. Defaults to current directory.")
     private List<Path> roots = new ArrayList<>();
@@ -41,6 +112,46 @@ public class FileLinkChecker implements Callable<Integer>
             "--verbose" }, description = "Print valid links too")
     private boolean verbose;
 
+    /**
+     * Führt die Überprüfung von Dateiverknüpfungen durch.
+     *
+     * <p>
+     * Diese Methode scannt alle Quelldateien in den angegebenen
+     * Wurzelverzeichnissen auf {@code file://} URIs und überprüft, ob die
+     * referenzierten Ziele existieren.
+     * </p>
+     *
+     * <p>
+     * Der Prozess umfasst folgende Schritte:
+     * </p>
+     *
+     * <ul>
+     * <li>Sammlung aller Quelldateien aus den Wurzelverzeichnissen</li>
+     * <li>Zeilenweise Verarbeitung jeder Datei mit UTF-8 Codierung</li>
+     * <li>Filterung von Kommentarbereichen (Block-Kommentare werden
+     * ignoriert)</li>
+     * <li>Extraktion und Validierung von {@code file://} URI-Mustern</li>
+     * <li>Bereinigung von nachfolgenden Satzzeichen</li>
+     * <li>Auflösung und Überprüfung der Verknüpfungsziele</li>
+     * </ul>
+     *
+     * <p>
+     * Für jede überprüfte Verknüpfung wird überprüft:
+     * </p>
+     *
+     * <ul>
+     * <li>Ob das Ziel existiert (broken flag)</li>
+     * <li>Im ausführlichen Modus werden erfolgreiche Links grün angezeigt</li>
+     * <li>Fehlerhafte Verknüpfungen werden gesammelt und am Ende angezeigt</li>
+     * </ul>
+     *
+     * <p>
+     * Fehler beim Dateizugriff werden ebenfalls erfasst und in den Bericht
+     * aufgenommen.
+     * </p>
+     *
+     * @return 0, wenn keine fehlerhaften Verknüpfungen gefunden wurden; 1 sonst
+     */
     @Override
     public Integer call()
     {
@@ -128,12 +239,31 @@ public class FileLinkChecker implements Callable<Integer>
         return 0;
     }
 
+    /**
+     * Formatiert eine Meldung für einen fehlerhaften Link.
+     *
+     * @param sourceFile Der Pfad der Quelldatei, die den fehlerhaften Link
+     *     enthält.
+     * @param lineNumber Die Zeilennummer, in der der fehlerhafte Link gefunden
+     *     wurde.-
+     * @param rawLink Der Link mit {@code file://}-Präfix.
+     * @param result das Ergebnis der Link-Überprüfung, das Fehlerinformationen
+     *     enthält
+     *
+     * @return eine formatierte Zeichenkette mit farblicher Hervorhebung, die
+     *     den fehlerhaften Link und den Grund des Fehlers (Fehler oder fehlende
+     *     Datei) anzeigt. Das Format ist:
+     *     {@code BROKEN: <sourceFile> :<lineNumber> ->
+     *     <rawLink> (<error oder MISSING>)"}
+     *
+     * @since 0.45.0
+     */
     private static String formatBroken(Path sourceFile, int lineNumber,
             String rawLink, LinkCheckResult result)
     {
         if (result.error() != null)
         {
-            return String.format("%s: %s:%d -> %s (%s)",
+            return String.format("%s: file://%s :%d -> %s (%s)",
                 color("@|red,bold BROKEN|@"),
                 sourceFile.normalize(),
                 lineNumber,
@@ -148,6 +278,23 @@ public class FileLinkChecker implements Callable<Integer>
             color("@|red MISSING|@"));
     }
 
+    /**
+     * Löst einen Link zu einer Datei auf und überprüft, ob die Zieldatei
+     * existiert.
+     *
+     * @param rawLink Der zu verarbeitende Link als String (kann ein URI mit
+     *     Fragment sein).
+     * @param sourceFile der Pfad der Quellendatei, relativ zu der der Link
+     *     aufgelöst wird
+     *
+     * @return ein {@link LinkCheckResult} Objekt, das die aufgelöste Zielpfad,
+     *     einen Fehler-Flag (true falls Datei nicht existiert) und eine
+     *     optionale Fehlermeldung enthält. Gibt {@code null} zurück, wenn der
+     *     Link kein "file"-URI ist oder kein Schema hat
+     *
+     * @throws keine - Exceptions werden abgefangen und in LinkCheckResult
+     *     gekapselt
+     */
     private static LinkCheckResult resolveLink(String rawLink, Path sourceFile)
     {
         try
@@ -175,6 +322,39 @@ public class FileLinkChecker implements Callable<Integer>
         }
     }
 
+    /**
+     * Sammelt alle unterstützten Quelldateien aus den angegebenen
+     * Verzeichnissen.
+     *
+     * <p>
+     * Diese Methode durchsucht die gegebenen Pfade und sammelt alle regulären
+     * Dateien, die vom System unterstützt werden. Für jede Eingabe wird
+     * überprüft, ob es sich um eine existierende Datei oder um ein Verzeichnis
+     * handelt:
+     * </p>
+     *
+     * <ul>
+     * <li>Existiert der Pfad nicht, wird er übersprungen</li>
+     * <li>Ist es eine Datei und wird unterstützt, wird sie hinzugefügt</li>
+     * <li>Ist es ein Verzeichnis, werden alle unterstützten Dateien rekursiv
+     * gesammelt</li>
+     * </ul>
+     *
+     * <p>
+     * Alle gesammelten Pfade werden normalisiert und in absolute Pfade
+     * konvertiert. Bei Scan-Fehlern werden Warnmeldungen ausgegeben, aber die
+     * Verarbeitung wird fortgesetzt.
+     * </p>
+     *
+     * @param roots Liste der zu durchsuchenden Wurzelpfade (Dateien oder
+     *     Verzeichnisse)
+     *
+     * @return ein Set aller gefundenen unterstützten Quelldateien als
+     *     normalisierte absolute Pfade, oder ein leeres Set, wenn keine Dateien
+     *     gefunden werden
+     *
+     * @since 0.45.0
+     */
     private static Set<Path> collectSourceFiles(List<Path> roots)
     {
         Set<Path> result = new LinkedHashSet<>();
