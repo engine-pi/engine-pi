@@ -2,18 +2,23 @@
 
 Diese Seite dokumentiert den Einsatz der AI beim Entwickeln der Engine.
 
+## 2026-03-31 Claude Haiku 4.5 • 0.3x
 
-## 2026-03-31
+https://github.com/engine-pi/engine-pi/commit/61abb42fc8a8287da6159877971a1189b8fb9e7f
 
-> Get the String content of a TextLayout object
+> Get the String content of a TextLayout object!
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#1-1), lines 1 to 100
+<!-- Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#1-1), lines 1 to 100
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#100-100), lines 100 to 200
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#100-100), lines 100 to 200 -->
 
-Looking at your code, I can see you're trying to get the text content from a `TextLayout` object. Unfortunately, `TextLayout.toString()` doesn't return the text content—it returns the object representation.
+Looking at your code, I can see you're trying to get the text content from a
+`TextLayout` object. Unfortunately, `TextLayout.toString()` doesn't return the
+text content—it returns the object representation.
 
-The `TextLayout` class doesn't provide a direct method to extract the original string. However, since you have access to the `AttributedCharacterIterator` when creating the layout, here are your options:
+The `TextLayout` class doesn't provide a direct method to extract the original
+string. However, since you have access to the `AttributedCharacterIterator` when
+creating the layout, here are your options:
 
 **Option 1: Extract from the iterator (at creation time)**
 
@@ -60,21 +65,17 @@ Which approach would work best for your use case?
 
 > 3
 
+I'll implement Option 3 for you. First, let me create a wrapper class to store
+both the `TextLayout` and its extracted text, then update the code:
 
-I'll implement Option 3 for you. First, let me create a wrapper class to store both the `TextLayout` and its extracted text, then update the code:
-
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#40-40), lines 40 to 50
+<!-- Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#40-40), lines 40 to 50
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#200-200), lines 200 to 220
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java#220-220), lines 220 to 224
 
-Replacing 120 lines with 134 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java)
+Replacing 120 lines with 134 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java) -->
 
-
-```
-
-```
 Done! I've implemented Option 3. Here's what changed:
 
 1. **Added a wrapper class** `TextLayoutLine` that stores both the `TextLayout` and its extracted text
@@ -87,7 +88,8 @@ Done! I've implemented Option 3. Here's what changed:
    ```
 4. **Updated all methods** (`measureLines()` and `draw()`) to extract the layout from the wrapper
 
-Now you can easily access the text content of any line via `line.text` throughout the class.
+Now you can easily access the text content of any line via `line.text`
+throughout the class.
 
 Made changes.
 
