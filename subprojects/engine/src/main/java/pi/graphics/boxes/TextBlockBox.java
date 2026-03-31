@@ -89,6 +89,18 @@ public class TextBlockBox extends TextBox
         return lines;
     }
 
+    /**
+     * Gibt den Textinhalt der einzelnen Zeilen zurück.
+     *
+     * @return Eine Liste aus Layout-/Text-Paaren je Zeile.
+     */
+    public String[] linesText()
+    {
+        return lines.stream()
+            .map(TextLayoutLine::lineContent)
+            .toArray(String[]::new);
+    }
+
     /* hAlign */
 
     private HAlign hAlign = HAlign.LEFT;
