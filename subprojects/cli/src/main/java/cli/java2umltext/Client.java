@@ -45,7 +45,7 @@ public class Client
         List<String> remainder;
     }
 
-    @Command(name = "java2umltext", mixinStandardHelpOptions = true, version = "java2umltext 0.1", description = "Create UML Class Diagrams in text formats from Java source")
+    @Command(name = "java-to-umltext", mixinStandardHelpOptions = true, version = "java2umltext 0.1", description = "Create UML Class Diagrams in text formats from Java source")
     public static class Config implements Callable<Integer>
     {
         @Option(names = { "-c",

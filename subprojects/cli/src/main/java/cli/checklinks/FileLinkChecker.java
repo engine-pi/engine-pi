@@ -91,7 +91,7 @@ import picocli.CommandLine.Parameters;
  *
  * @since 0.45.0
  */
-@Command(name = "checklinks", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
+@Command(name = "check-file-links", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
 public class FileLinkChecker implements Callable<Integer>
 {
     private static final CommandLine.Help.Ansi ANSI = CommandLine.Help.Ansi.AUTO;
@@ -167,19 +167,16 @@ public class FileLinkChecker implements Callable<Integer>
             try (Stream<String> stream = Files.lines(sourceFile,
                 StandardCharsets.UTF_8))
             {
-                boolean[] inBlockComment = new boolean[] { false };
                 int lineNumber = 0;
                 for (String line : (Iterable<String>) stream::iterator)
                 {
                     lineNumber++;
-                    String scanText = textToScan(sourceFile,
-                        line,
-                        inBlockComment);
-                    if (scanText == null || scanText.isBlank())
+
+                    if (line == null || line.isBlank())
                     {
                         continue;
                     }
-                    Matcher matcher = FILE_URI_PATTERN.matcher(scanText);
+                    Matcher matcher = FILE_URI_PATTERN.matcher(line);
                     while (matcher.find())
                     {
                         String rawLink = stripTrailingPunctuation(
@@ -390,65 +387,31 @@ public class FileLinkChecker implements Callable<Integer>
         return result;
     }
 
+    /**
+     * Prüft, ob die angegebene Datei ein unterstützter Dateityp ist.
+     *
+     * @param path Der Pfad zur zu prüfenden Datei.
+     *
+     * @return {@code true}, wenn die Datei eine der unterstützten Erweiterungen
+     *     hat, {@code false} andernfalls.
+     */
     private static boolean isSupportedFile(Path path)
     {
         String lower = path.getFileName().toString().toLowerCase();
         return SUPPORTED_EXTENSIONS.stream().anyMatch(lower::endsWith);
     }
 
-    private static String textToScan(Path sourceFile, String line,
-            boolean[] inBlockComment)
-    {
-        String lower = sourceFile.getFileName().toString().toLowerCase();
-        if (lower.endsWith(".md") || lower.endsWith(".markdown"))
-        {
-            return line;
-        }
-
-        // For Java files only comments are relevant for file:// links.
-        if (!lower.endsWith(".java"))
-        {
-            return null;
-        }
-
-        if (inBlockComment[0])
-        {
-            int blockEnd = line.indexOf("*/");
-            if (blockEnd >= 0)
-            {
-                inBlockComment[0] = false;
-                return line.substring(0, blockEnd + 2);
-            }
-            return line;
-        }
-
-        int lineComment = line.indexOf("//");
-        int blockStart = line.indexOf("/*");
-
-        if (lineComment < 0 && blockStart < 0)
-        {
-            return null;
-        }
-
-        if (lineComment >= 0 && (blockStart < 0 || lineComment < blockStart))
-        {
-            return line.substring(lineComment);
-        }
-
-        if (blockStart >= 0)
-        {
-            int blockEnd = line.indexOf("*/", blockStart + 2);
-            if (blockEnd < 0)
-            {
-                inBlockComment[0] = true;
-                return line.substring(blockStart);
-            }
-            return line.substring(blockStart, blockEnd + 2);
-        }
-
-        return null;
-    }
-
+    /**
+     * Entfernt Satzzeichen vom Ende einer Zeichenkette.
+     *
+     * Diese Methode entfernt nachfolgende Satzzeichen wie Punkte, Kommas,
+     * Klammern und andere Interpunktionszeichen vom Ende des übergebenen
+     * Strings.
+     *
+     * @param value die Zeichenkette, von der Satzzeichen entfernt werden sollen
+     *
+     * @return die Zeichenkette ohne Satzzeichen am Ende
+     */
     private static String stripTrailingPunctuation(String value)
     {
         int end = value.length();
@@ -468,11 +431,32 @@ public class FileLinkChecker implements Callable<Integer>
         return value.substring(0, end);
     }
 
+    /**
+     * Konvertiert eine Zeichenkette in eine ANSI-gefärbte Zeichenkette.
+     *
+     * @param markup Die Zeichenkette, die in ANSI-Farbcodes konvertiert werden
+     *     soll.
+     *
+     * @return Die konvertierte Zeichenkette mit ANSI-Farbcodes.
+     *
+     * @since 0.45.0
+     */
     private static String color(String markup)
     {
         return ANSI.string(markup);
     }
 
+    /**
+     * Ergebnis der Überprüfung eines Links in einer Datei.
+     *
+     * @param targetPath Der Pfad zum Ziel des Links
+     * @param broken {@code true}, wenn der Link unterbrochen ist, {@code false}
+     *     sonst.
+     * @param error Die Fehlermeldung, falls ein Fehler auftrat, oder
+     *     {@code null} wenn kein Fehler auftrat.
+     *
+     * @since 0.45.0
+     */
     private record LinkCheckResult(Path targetPath, boolean broken,
             String error)
     {

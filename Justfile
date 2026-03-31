@@ -1,6 +1,6 @@
 
 # The default recipe runs 'git pull', syncs the assets, runs 'mvn package' and generate the mkdocs site
-default: pull assets package mkdocs_build
+default: pull assets check_file_links package mkdocs_build
 
 # Run 'mvn deploy'
 deploy:
@@ -73,7 +73,10 @@ mkdocs_deploy:
 mkdocs_serve:
 	mkdocs serve --livereload
 
-# Execute the cli command
+# Execute the cli command (subprojects/cli) with the provided arguments.
 cli *args:
     mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
     # java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
+
+check_file_links: (cli "check-file-links")
+    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker

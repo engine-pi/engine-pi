@@ -6,7 +6,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/ContainerBoxDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/CellBoxDemo.java
 
 /**
  * Eine äußere (größere) <b>Behälter</b>-Box, die eine kleinere (innere) Box

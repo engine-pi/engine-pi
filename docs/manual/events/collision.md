@@ -231,7 +231,7 @@ class Platform extends Rectangle implements CollisionListener<Frog>
 
 ## Kompletter Code
 
-<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/FroggyJump.java -->
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/FroggyJump.java -->
 
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/events/collision/froggy_jump/package-info.java -->

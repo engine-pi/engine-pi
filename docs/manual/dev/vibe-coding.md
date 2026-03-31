@@ -102,7 +102,7 @@ index 06b945a2..37a0c151 100644
  import pi.annotations.Setter;
  import pi.resources.font.FontUtil;
 
--// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/de/pirckheimer_gymnasium/demos/classes/graphics/boxes/TextBlockBoxDemo.java
+-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 +// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 
  /**
