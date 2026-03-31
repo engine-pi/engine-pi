@@ -151,6 +151,8 @@ public class FileLinkChecker implements Callable<Integer>
      * </p>
      *
      * @return 0, wenn keine fehlerhaften Verknüpfungen gefunden wurden; 1 sonst
+     *
+     * @since 0.45.0
      */
     @Override
     public Integer call()
@@ -291,6 +293,8 @@ public class FileLinkChecker implements Callable<Integer>
      *
      * @throws keine - Exceptions werden abgefangen und in LinkCheckResult
      *     gekapselt
+     *
+     * @since 0.45.0
      */
     private static LinkCheckResult resolveLink(String rawLink, Path sourceFile)
     {
@@ -394,6 +398,8 @@ public class FileLinkChecker implements Callable<Integer>
      *
      * @return {@code true}, wenn die Datei eine der unterstützten Erweiterungen
      *     hat, {@code false} andernfalls.
+     *
+     * @since 0.45.0
      */
     private static boolean isSupportedFile(Path path)
     {
@@ -411,6 +417,8 @@ public class FileLinkChecker implements Callable<Integer>
      * @param value die Zeichenkette, von der Satzzeichen entfernt werden sollen
      *
      * @return die Zeichenkette ohne Satzzeichen am Ende
+     *
+     * @since 0.45.0
      */
     private static String stripTrailingPunctuation(String value)
     {
