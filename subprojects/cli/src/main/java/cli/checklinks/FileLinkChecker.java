@@ -20,7 +20,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "check-file-links", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
+@Command(name = "checklinks", mixinStandardHelpOptions = true, description = "Checks file:// links in Java and Markdown files")
 public class FileLinkChecker implements Callable<Integer>
 {
     private static final Pattern FILE_URI_PATTERN = Pattern

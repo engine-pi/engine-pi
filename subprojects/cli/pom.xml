@@ -61,5 +61,41 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.8.0</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <!-- Set to false to exclude the assembly id from the assembly final
+                            name, and
+                    to create the resultant assembly artifacts without classifier. As such, an
+                    assembly artifact having the same format as the packaging of the current Maven
+                    project will replace the file for this main project artifact. -->
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <mainClass>
+                                        cli.Client</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>

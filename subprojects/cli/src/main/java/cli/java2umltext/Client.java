@@ -29,6 +29,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.PropertiesDefaultProvider;
 import picocli.CommandLine.Unmatched;
+import java.util.concurrent.Callable;
 
 public class Client
 {
@@ -45,7 +46,7 @@ public class Client
     }
 
     @Command(name = "java2umltext", mixinStandardHelpOptions = true, version = "java2umltext 0.1", description = "Create UML Class Diagrams in text formats from Java source")
-    static class Config implements Runnable
+    public static class Config implements Callable<Integer>
     {
         @Option(names = { "-c",
                 "--config" }, description = "Set options via a config file.")
@@ -87,7 +88,7 @@ public class Client
         List<Path> sources;
 
         @Override
-        public void run()
+        public Integer call()
         {
             Document doc = format.newDocument();
             StaticJavaParser.getParserConfiguration()
@@ -111,7 +112,7 @@ public class Client
             catch (FileNotFoundException e)
             {
                 System.out.println(e.getMessage());
-                System.exit(1);
+                return 1;
             }
             doc.removeForeignRelations();
 
@@ -125,7 +126,7 @@ public class Client
                 if (outFilePath.get().isDirectory())
                 {
                     System.out.println("Error: output path is a directory.");
-                    System.exit(1);
+                    return 1;
                 }
                 else if (!outFilePath.get().getParentFile().exists())
                 {
@@ -141,9 +142,10 @@ public class Client
                 catch (IOException e)
                 {
                     System.out.println(e.getMessage());
-                    System.exit(1);
+                    return 1;
                 }
             }
+            return 0;
         }
 
         private static Set<Path> multiWalk(Collection<Path> paths,

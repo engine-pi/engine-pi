@@ -72,3 +72,7 @@ mkdocs_deploy:
 
 mkdocs_serve:
 	mkdocs serve --livereload
+
+# Execute the cli command
+cli:
+    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client

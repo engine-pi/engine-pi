@@ -371,3 +371,109 @@ java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.checklinks
 Wenn du willst, kann ich im nächsten Schritt die 15 gemeldeten defekten Links automatisch auflisten und passende Korrekturvorschläge je Datei machen.
 
 Made changes.
+
+## 2026-03-31 Unify cli command GPT-5.3-Codex • 0.9x
+
+> Vereinige die beiden Kommandozeilen-Programme checklinks und java2umltext zu
+> einem Kommandozeilenprogramm, das auch picoli verwendet. Die beiden
+> Unterprogramme sollen über die Argumente checklinks und java2umltext
+> aufgerufen werden.
+
+Ich schaue mir zuerst den aktuellen Stand von FileLinkChecker.java und der bestehenden java2umltext-CLI an, dann baue ich daraus eine gemeinsame Haupt-CLI mit Subcommands `checklinks` und `java2umltext`.
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/Client.java)
+
+Ich stelle jetzt die Kommandonamen um (`checklinks`) und baue eine gemeinsame Hauptklasse mit Picocli-Subcommands; dabei passe ich `java2umltext` so an, dass es als Unterbefehl sauber Exit-Codes zurückgibt.
+
+Generating patch (7 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
+
+
+```
+
+```
+
+
+Generating patch (51 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/Client.java)
+
+
+```
+
+```
+
+
+Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
+
+Generating patch (38 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
+
+
+```
+
+```
+Die Umstellung ist umgesetzt; jetzt kompiliere ich das CLI-Modul und prüfe die neuen Subcommands `checklinks` und `java2umltext` direkt über die gemeinsame Hauptklasse.
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
+
+Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client checklinks --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client java2umltext --help | head -n 30
+
+Read changed files in the active git repository
+
+Ich ergänze noch die Konfigurationsdatei-Unterstützung für das Subcommand `java2umltext` im neuen Root-Command, damit das bisherige Verhalten mit `java2umltext.properties` erhalten bleibt.
+
+Generating patch (34 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
+
+
+```
+
+```
+
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
+
+Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
+
+Ich habe noch einen kleinen UX-Punkt gefunden: Der Root-Help zeigt aktuell eine Warnung, wenn keine `java2umltext.properties` existiert. Ich behebe das kurz, indem der Provider nur bei vorhandener Datei gesetzt wird.
+
+Generating patch (18 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
+
+
+```
+
+```
+
+
+Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
+
+Erledigt: Die beiden Tools sind jetzt zu einem gemeinsamen Picocli-Programm mit Subcommands zusammengeführt.
+
+Umgesetzt in:
+- Client.java
+- FileLinkChecker.java
+- Client.java
+- README.md
+
+Was geändert wurde:
+1. Neues Root-CLI erstellt: `cli.Client` mit Subcommands `checklinks` und `java2umltext`.
+2. `checklinks`-Kommando umbenannt von `check-file-links` auf `checklinks`.
+3. `java2umltext`-Command (`Config`) auf `Callable<Integer>` umgestellt, damit es als Subcommand sauber Exit-Codes liefert (ohne `System.exit` in der Business-Logik).
+4. Unterstützung für `java2umltext.properties` im neuen Root-CLI beibehalten (nur wenn Datei vorhanden/lesbar, damit keine Picocli-Warnung erscheint).
+5. README auf die neue einheitliche Nutzung aktualisiert.
+
+Verifiziert:
+1. `mvn -pl subprojects/cli -DskipTests compile` läuft erfolgreich.
+2. `cli.Client --help` zeigt beide Unterprogramme korrekt:
+   - `checklinks`
+   - `java2umltext`
+
+Beispielaufrufe:
+1. `java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.Client checklinks .`
+2. `java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.Client java2umltext plantuml subprojects/engine/src/main/java`
+
+Wenn du möchtest, kann ich als nächsten Schritt noch einen kleinen Alias-Launcher (z. B. Shell-Skript) hinzufügen, damit der Aufruf ohne langen Classpath möglich ist.
+
+Made changes.
