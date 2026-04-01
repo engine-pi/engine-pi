@@ -70,9 +70,9 @@ public class TextBlockBoxDemo extends Graphics2DComponent
                 // lineWidth(10)
                 // text(".lineWidth(10) " + lorem, box -> box.lineWidth(10)),
                 // lineWidth(20)
-                text(".lineWidth(20) " + lorem, box -> box.lineWidth(20)),
+                text(".lineWidth(20) " + lorem, box -> box.charsPerLine(20)),
                 // lineWidth(30)
-                text(".lineWidth(30) " + lorem, box -> box.lineWidth(30)))
+                text(".lineWidth(30) " + lorem, box -> box.charsPerLine(30)))
                     .padding(10)
                     .anchor(10, 10)
                     .render(g)

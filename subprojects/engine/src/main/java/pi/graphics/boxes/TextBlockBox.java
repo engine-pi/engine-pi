@@ -98,39 +98,107 @@ public class TextBlockBox extends TextBox
     public TextBlockBox content(Object content)
     {
         super.content(content);
-        if (lineWidth > 0)
+        if (charsPerLine > 0)
         {
-            this.content = TextUtil.wrap(this.content, lineWidth);
+            this.content = TextUtil.wrap(this.content, charsPerLine);
         }
         calculateDimension();
         return this;
     }
 
-    /* lineWidth */
-
-    private int lineWidth = 0;
+    /* width */
 
     /**
-     * Setzt die Zeichenbreite des Textblocks für den Zeilenumbruch.
+     * Setzt die <b>Breite</b> des Textblocks.
      *
-     * @param lineWidth Die maximale Breite an Zeichen einer Zeile für den
-     *     Umbruch.
+     * @param width Die <b>Breite</b> des Textblocks in Pixeln.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
      */
     @API
     @Setter
     @ChainableMethod
-    public TextBlockBox lineWidth(int lineWidth)
+    public TextBlockBox width(int width)
     {
-        if (lineWidth < 1)
+        if (width < 1)
+        {
+            throw new IllegalArgumentException(
+                    "Die Breite des Textblocks muss mindestens 1 Pixel betragen.");
+        }
+        definedWidth = width;
+        charsPerLine = 0;
+        calculateDimension();
+        return this;
+    }
+
+    /* charsPerLine */
+
+    private int charsPerLine = 0;
+
+    /**
+     * Gibt die maximale Zeichenbreite pro Zeile des Textblocks.
+     *
+     * @return Die maximale Zeichenbreite pro Zeile.
+     */
+    @API
+    @Getter
+    public int charsPerLine()
+    {
+        return charsPerLine;
+    }
+
+    /**
+     * Setzt die maximale Zeichenbreite pro Zeile des Textblocks.
+     *
+     * @param charsPerLine Die maximale Zeichenbreite pro Zeile.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextBlockBox charsPerLine(int charsPerLine)
+    {
+        if (charsPerLine < 1)
         {
             throw new IllegalArgumentException(
                     "Die Zeilenbreite muss mindestens 1 Zeichen betragen, damit der Text umbrochen werden kann.");
         }
-        this.lineWidth = lineWidth;
+        this.charsPerLine = charsPerLine;
         // Damit wird die Zeilenbreite für die automatische Berechnung der
         // Box-Breite verwendet.
         definedWidth = 0;
         content(this.content);
+        return this;
+    }
+
+    /* hAlign */
+
+    private HAlign hAlign = HAlign.LEFT;
+
+    /**
+     * Gibt die <b>horizontale</b> Ausrichtung der einzelnen Textzeilen.
+     *
+     * @return Die <b>horizontale</b> Ausrichtung.
+     */
+    @API
+    @Getter
+    public HAlign hAlign()
+    {
+        return hAlign;
+    }
+
+    /**
+     * Setzt die <b>horizontale</b> Ausrichtung der einzelnen Textzeilen.
+     *
+     * @param hAlign Die gewünschte <b>horizontale</b> Ausrichtung.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextBlockBox hAlign(HAlign hAlign)
+    {
+        this.hAlign = hAlign;
         return this;
     }
 
@@ -180,35 +248,15 @@ public class TextBlockBox extends TextBox
         return lines.size();
     }
 
-    /* hAlign */
-
-    private HAlign hAlign = HAlign.LEFT;
-
-    /**
-     * Setzt die <b>horizontale</b> Ausrichtung der einzelnen Textzeilen.
-     *
-     * @param hAlign Die gewünschte <b>horizontale</b> Ausrichtung.
-     *
-     * @return Dieses Objekt für Methodenverkettung.
-     */
-    @API
-    @Setter
-    @ChainableMethod
-    public TextBlockBox hAlign(HAlign hAlign)
-    {
-        this.hAlign = hAlign;
-        return this;
-    }
-
     protected void calculateDimension()
     {
         float wrappingWidth;
 
-        if (lineWidth == 0 && definedWidth == 0)
+        if (charsPerLine == 0 && definedWidth == 0)
         {
             wrappingWidth = WRAPPING_WIDTH_PX;
         }
-        else if (lineWidth > 0)
+        else if (charsPerLine > 0)
         {
             wrappingWidth = Float.MAX_VALUE;
         }
@@ -223,29 +271,6 @@ public class TextBlockBox extends TextBox
         var dim = measureLines(lines);
         width = dim.width;
         height = dim.height;
-    }
-
-    /**
-     * Setzt die Breite des Textblocks für den Zeilenumbruch.
-     *
-     * @param width Die Zielbreite in Pixeln.
-     *
-     * @return Dieses Objekt für Methodenverkettung.
-     */
-    @API
-    @Setter
-    @ChainableMethod
-    public TextBlockBox width(int width)
-    {
-        if (width < 1)
-        {
-            throw new IllegalArgumentException(
-                    "Die Breite des Textblocks muss mindestens 1 Pixel betragen.");
-        }
-        definedWidth = width;
-        lineWidth = 0;
-        calculateDimension();
-        return this;
     }
 
     private static List<TextLayoutLine> splitIntoLines(String content,
@@ -374,9 +399,9 @@ public class TextBlockBox extends TextBox
     public String toString()
     {
         var formatter = toStringFormatter();
-        if (lines.size() > 1)
+        if (linesCount() > 1)
         {
-            formatter.append("lines", lines.size());
+            formatter.append("linesCount", linesCount());
         }
         return formatter.format();
     }
