@@ -25,7 +25,7 @@ import pi.Scene;
 import pi.actor.Text;
 
 /**
- * Demonstriert <b>alle Setter</b> der Figur „Text“.
+ * Demonstriert <b>alle Setter</b> der Figur {@link Text}.
  *
  * @author Josef Friedrich
  *

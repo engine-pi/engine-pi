@@ -176,7 +176,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/engine-pi/engine-pi
-    - icon:  simple/forgejo
+    - icon: simple/forgejo
       link: https://inf.pirckheimer-gymnasium.de/engine-pi/engine-pi
     - icon: fontawesome/brands/java
       link: https://engine-pi.github.io/javadocs/pi/package-summary.html

@@ -28,7 +28,7 @@ import pi.graphics.geom.Vector;
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text-block.md
 
 /**
- * Demonstiert, wie sich die Figur <b>Text</b> in einer Physik-Simulation
+ * Demonstiert, wie sich die Figur {@link TextBlock} in einer Physik-Simulation
  * verhält.
  *
  * @author Josef Friedrich
@@ -58,7 +58,6 @@ public class TextBlockPhysicsDemo extends Scene
     {
         Controller.instantMode(false);
         Controller.start(new TextBlockPhysicsDemo());
-        Controller.recordScreen();
         Controller.windowPosition(Direction.UP_RIGHT);
     }
 }

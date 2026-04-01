@@ -33,7 +33,7 @@ import pi.resources.font.FontContainer;
 import pi.resources.font.FontStyle;
 
 /**
- * Demonstriert die <b>Schriftstile</b> der Figur „Text“.
+ * Demonstriert die <b>Schriftstile</b> der Figur {@link Text}.
  *
  * @author Josef Friedrich
  *
