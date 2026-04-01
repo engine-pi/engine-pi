@@ -18,31 +18,44 @@
  */
 package pi.actor;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
+import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.graphics.geom.Vector;
 
 /**
  * Ein regelmäßiger <b>Stern</b>.
  *
+ * Ein Stern wird durch die {@link Star#numPoints() Anzahl der Zacken}, einen
+ * {@link Star#radius() äußeren Radius} und einen {@link Star#innerRadius()
+ * inneren Radius} definiert.
+ *
+ * <h2>Standard-Werte</h2>
+ * <ul>
+ * <li>Anzahl der Zacken: 7</li>
+ * <li>Äußerer Radius: 2 Meter</li>
+ * <li>Innerer Radius: 1 Meter</li>
+ * </ul>
+ *
+ * <h2>Verwendungsbeispiel</h2>
+ *
+ * <pre>{@code
+ * Star star = new Star();
+ * star.numPoints(5).radius(3).innerRadius(1.5);
+ * }</pre>
+ *
  * @author Josef Friedrich
  */
 public class Star extends Polygon
 {
+    private static final int DEFAULT_NUM_POINTS = 7;
 
-    /**
-     * Die <b>Anzahl der Zacken</b> des Sterns.
-     */
-    private int numPoints;
+    private static final double DEFAULT_RADIUS = 2;
 
-    /**
-     * Der <b>äußere Radius</b> des Sterns.
-     */
-    private double radius;
-
-    /**
-     * Der <b>innere Radius</b> des Sterns.
-     */
-    private double innerRadius;
+    private static final double DEFAULT_INNER_RADIUS = 1;
 
     /**
      * Erstellt einen Stern mit einem <b>äußeren Radius vom 2 Meter</b>, einem
@@ -50,7 +63,7 @@ public class Star extends Polygon
      */
     public Star()
     {
-        this(7, 2, 1);
+        this(DEFAULT_NUM_POINTS, DEFAULT_RADIUS, DEFAULT_INNER_RADIUS);
     }
 
     /**
@@ -69,7 +82,131 @@ public class Star extends Polygon
         this.numPoints = numPoints;
         this.radius = radius;
         this.innerRadius = innerRadius;
+        update();
+    }
 
+    /* numPoints */
+
+    /**
+     * Die <b>Anzahl der Zacken</b> des Sterns.
+     */
+    private int numPoints = DEFAULT_NUM_POINTS;
+
+    /**
+     * Gibt die <b>Anzahl der Zacken</b> des Sterns zurück.
+     *
+     * @return Die <b>Anzahl der Zacken</b>.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public int numPoints()
+    {
+        return numPoints;
+    }
+
+    /**
+     * Setzt die <b>Anzahl der Zacken</b> des Sterns.
+     *
+     * @param numPoints Die neue <b>Anzahl der Zacken</b>.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Star numPoints(int numPoints)
+    {
+        this.numPoints = numPoints;
+        update();
+        return this;
+    }
+
+    /* radius */
+
+    /**
+     * Der <b>äußere Radius</b> des Sterns.
+     */
+    private double radius = DEFAULT_RADIUS;
+
+    /**
+     * Gibt den <b>äußeren Radius</b> des Sterns zurück.
+     *
+     * @return Der äußere Radius in Metern.
+     *
+     * @since 0.45.0
+     */
+
+    @API
+    @Getter
+    public double radius()
+    {
+        return radius;
+    }
+
+    /**
+     * Setzt den <b>äußeren Radius</b> des Sterns.
+     *
+     * @param radius Der neue äußere Radius in Metern.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Star radius(double radius)
+    {
+        this.radius = radius;
+        update();
+        return this;
+    }
+
+    /* innerRadius */
+
+    /**
+     * Der <b>innere Radius</b> des Sterns.
+     */
+    private double innerRadius = DEFAULT_INNER_RADIUS;
+
+    /**
+     * Gibt den <b>inneren Radius</b> des Sterns zurück.
+     *
+     * @return Der innere Radius in Metern.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public double innerRadius()
+    {
+        return innerRadius;
+    }
+
+    /**
+     * Setzt den <b>inneren Radius</b> des Sterns.
+     *
+     * @param innerRadius Der neue innere Radius in Metern.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Star innerRadius(double innerRadius)
+    {
+        this.innerRadius = innerRadius;
+        update();
+        return this;
+    }
+
+    /**
+     * @hidden
+     */
+    @Internal
+    public void update()
+    {
+        points(Star.calculateVectors(numPoints, radius, innerRadius));
     }
 
     /**
@@ -111,7 +248,7 @@ public class Star extends Polygon
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Star");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("numPoints", numPoints);
         formatter.append("radius", radius, "m");
         formatter.append("innerRadius", innerRadius, "m");

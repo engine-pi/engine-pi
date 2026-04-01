@@ -39,6 +39,7 @@ public class StarDemo extends ActorBaseScene
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.debug();
         Controller.start(new StarDemo());
     }

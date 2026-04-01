@@ -25,7 +25,9 @@ import java.awt.geom.AffineTransform;
 import java.util.function.Supplier;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Internal;
+import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
@@ -52,31 +54,37 @@ public class Polygon extends Actor
     @API
     public Polygon(Vector... points)
     {
-        super(() -> FixtureBuilder.polygon(points));
+        super(null);
         this.points = points;
-        resetPoints(points);
+        points(points);
     }
 
     /**
-     * Setzt den Streckenzug neu, der dieses Polygon beschreibt. <b>Ändert die
-     * physikalischen Eigenschaften</b> des Polygons. <i>Konkave Streckenzüge
-     * werden durch die kleinste konvexe Körperform beschrieben, die den
-     * Streckenzug umspannt.</i> Komplexere Formen können über
+     * Setzt den Streckenzug neu, der dieses Polygon beschreibt.
+     *
+     * <p>
+     * <b>Ändert die physikalischen Eigenschaften</b> des Polygons. <i>Konkave
+     * Streckenzüge werden durch die kleinste konvexe Körperform beschrieben,
+     * die den Streckenzug umspannt.</i> Komplexere Formen können über
      * {@code setFixtures(Supplier)} physikalisch präzise umgesetzt werden.
+     * </p>
      *
      * @param points Neuer Streckenzug.
      *
      * @see pi.actor.Actor#fixtures(Supplier)
      */
     @API
-    public void resetPoints(Vector... points)
+    @Setter
+    @ChainableMethod
+    public Polygon points(Vector... points)
     {
         if (points.length < 3)
         {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Der Streckenzug muss mindestens aus 3 Punkten bestehen, um ein gültiges Polygon zu beschreiben.");
         }
         fixture(() -> FixtureBuilder.polygon(points));
+        return this;
     }
 
     /**

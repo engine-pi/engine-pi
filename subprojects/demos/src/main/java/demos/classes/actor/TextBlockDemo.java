@@ -36,7 +36,7 @@ public class TextBlockDemo extends Scene
         backgroundColor("brown");
 
         TextBlock text = new TextBlock("Lorem ipsum\ndolor sit.");
-        text.width(5).height(5);
+        text.size(5, 5);
         add(text);
     }
 

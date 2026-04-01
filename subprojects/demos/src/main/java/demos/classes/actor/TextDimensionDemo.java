@@ -33,7 +33,7 @@ public class TextDimensionDemo extends Scene
     public TextDimensionDemo()
     {
         backgroundColor("green");
-        add(new Text("Das ist ein Test").width(10).height(5));
+        add(new Text("Das ist ein Test").size(10, 5));
     }
 
     public static void main(String[] args)
