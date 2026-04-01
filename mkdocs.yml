@@ -99,14 +99,24 @@ nav:
           - manual/main-classes/layer.md
           - 'Actor (Figur)':
               - manual/main-classes/actor/index.md
-              - manual/main-classes/actor/hello-world.md
 
+              - manual/main-classes/actor/animation.md
+              - manual/main-classes/actor/circle.md
               - manual/main-classes/actor/counter.md
+              - manual/main-classes/actor/grid.md
               - manual/main-classes/actor/image-font.md
+              - manual/main-classes/actor/image.md
+              - manual/main-classes/actor/line.md
+              - manual/main-classes/actor/polygon.md
+              - manual/main-classes/actor/rectangle.md
+              - manual/main-classes/actor/square.md
+              - manual/main-classes/actor/star.md
               - manual/main-classes/actor/stateful-animation.md
               - manual/main-classes/actor/stop-watch.md
-              - manual/main-classes/actor/text.md
               - manual/main-classes/actor/text-block.md
+              - manual/main-classes/actor/text.md
+              - manual/main-classes/actor/tile-map.md
+              - manual/main-classes/actor/triangle.md
               - manual/main-classes/actor/turtle.md
 
       - events (Ereignissteuerung):

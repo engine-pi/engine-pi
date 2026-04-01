@@ -1,5 +1,7 @@
 # `Actor` (Figur)
 
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/package-info.java -->
+
 Eine Figur (engl. Actor) ist ein grafisches Objekt, das sich bewegt bzw.
 das bewegt werden kann. In der Engine Pi gibt es eine Vielzahl
 verschiedener Figurenarten (z.B.
