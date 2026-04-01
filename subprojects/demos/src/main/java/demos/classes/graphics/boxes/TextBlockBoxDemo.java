@@ -57,26 +57,43 @@ public class TextBlockBoxDemo extends Graphics2DComponent
     {
         new GridBox<>(// width(300)
                 text("Breite: 300px: " + lorem, box -> box.width(300)),
+
                 // width(200)
                 text("Breite: 200px: " + lorem, box -> box.width(200)),
+
                 // \n
                 text("Manueller\nUmbruch\ndurch\n\\n"),
+
                 // LEFT
                 text("Linksbündig: " + lorem, box -> box.hAlign(LEFT)),
+
                 // CENTER
                 text("Zentriert: " + lorem, box -> box.hAlign(CENTER)),
+
                 // RIGHT
                 text("Rechtsbündig: " + lorem, box -> box.hAlign(RIGHT)),
-                // lineWidth(10)
-                // text(".lineWidth(10) " + lorem, box -> box.lineWidth(10)),
-                // lineWidth(20)
-                text(".lineWidth(20) " + lorem, box -> box.charsPerLine(20)),
-                // lineWidth(30)
-                text(".lineWidth(30) " + lorem, box -> box.charsPerLine(30)))
-                    .padding(10)
-                    .anchor(10, 10)
-                    .render(g)
-                    .debug();
+
+                // charsPerLine(10)
+                // text(".charsPerLine(10) " + lorem, box ->
+                // box.charsPerLine(10)),
+
+                // charsPerLine(20)
+                text(".charsPerLine(20) " + lorem, box -> box.charsPerLine(20)),
+
+                // charsPerLine(30)
+                text(".charsPerLine(30) " + lorem, box -> box.charsPerLine(30)),
+
+                // lineSpacing(0.5)
+                text(".lineSpacing(0.5) " + lorem, box -> box.lineSpacing(0.5)),
+
+                // lineSpacing(1.5)
+                text(".lineSpacing(1.5) " + lorem, box -> box.lineSpacing(1.5)),
+
+                // lineSpacing(2)
+                text(".lineSpacing(2) " + lorem, box -> box.lineSpacing(2))
+
+        // End
+        ).columns(3).padding(10).anchor(10, 10).render(g).debug();
     }
 
     public static void main(String[] args)

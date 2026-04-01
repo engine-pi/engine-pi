@@ -153,6 +153,50 @@ public class TextBlockBoxTest
     }
 
     @Nested
+    class LineSpacingTest
+    {
+        TextBlockBox box;
+
+        @BeforeEach
+        void setUp()
+        {
+            box = new TextBlockBox("Line 1\nLine 2\nLine 3");
+            box.calculateDimension();
+        }
+
+        @Test
+        void getter()
+        {
+            assertEquals(1.0, box.lineSpacing(), 0.0);
+            box.lineSpacing(1.5);
+            assertEquals(1.5, box.lineSpacing(), 0.0);
+        }
+
+        @Test
+        void setter()
+        {
+            TextBlockBox result = box.lineSpacing(1.5);
+            assertSame(result, box);
+        }
+
+        @Test
+        void height()
+        {
+            assertEquals(34, box.lineSpacing(0.5).height());
+            assertEquals(68, box.lineSpacing(1).height());
+            assertEquals(102, box.lineSpacing(1.5).height());
+            assertEquals(136, box.lineSpacing(2).height());
+        }
+
+        @Test
+        void exception()
+        {
+            assertThrows(IllegalArgumentException.class,
+                () -> box.lineSpacing(0));
+        }
+    }
+
+    @Nested
     class LinesTest
     {
         TextBlockBox box;

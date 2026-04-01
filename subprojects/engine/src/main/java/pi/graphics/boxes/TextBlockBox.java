@@ -202,6 +202,54 @@ public class TextBlockBox extends TextBox
         return this;
     }
 
+    /* lineSpacing */
+
+    private double lineSpacing = 1;
+
+    /**
+     * Gibt den <b>Zeilenabstand</b>.
+     *
+     * @return Der <b>Zeilenabstand</b>.
+     */
+    @API
+    @Getter
+    public double lineSpacing()
+    {
+        return lineSpacing;
+    }
+
+    /**
+     * Setzt den <b>Zeilenabstand</b>.
+     *
+     * <p>
+     * Er ist ein Faktor, der den Abstand zwischen den Zeilen relativ zum
+     * Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den normalen
+     * Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand, während
+     * Werte zwischen {@code 0} und {@code 1} den Abstand verringern. Zum
+     * Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um {@code 50%}
+     * erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand um
+     * {@code 25%} verringern würde.
+     * </p>
+     *
+     * @param lineSpacing Der <b>Zeilenabstand</b>.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextBlockBox lineSpacing(double lineSpacing)
+    {
+        if (lineSpacing <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Der Zeilenabstand muss ein positiver Wert sein.");
+        }
+        this.lineSpacing = lineSpacing;
+        calculateDimension();
+        return this;
+    }
+
     /* lines */
 
     private List<TextLayoutLine> lines = new ArrayList<>();
@@ -273,7 +321,7 @@ public class TextBlockBox extends TextBox
         height = dim.height;
     }
 
-    private static List<TextLayoutLine> splitIntoLines(String content,
+    private List<TextLayoutLine> splitIntoLines(String content,
             FontRenderContext context, Font font, float wrappingWidth)
     {
         // Source:
@@ -314,7 +362,7 @@ public class TextBlockBox extends TextBox
         return lines;
     }
 
-    private static PixelDimension measureLines(List<TextLayoutLine> lines)
+    private PixelDimension measureLines(List<TextLayoutLine> lines)
     {
         // Source:
         // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
@@ -334,14 +382,14 @@ public class TextBlockBox extends TextBox
             height +=
                     // Ascent: der Abstand von der oberen rechten Ecke des
                     // Textlayouts zur Grundlinie.
-                    layout.getAscent() +
+                    layout.getAscent() * lineSpacing +
                     // Descent: Entfernung von der Grundlinie zum unteren linken
                     // Rand des Textlayouts
-                            layout.getDescent() +
+                            layout.getDescent() * lineSpacing +
                             // Leading: empfohlener Zeilenabstand relativ zur
                             // Grundlinie.
                             // Scheint meistens 0.0 zu sein?
-                            layout.getLeading();
+                            layout.getLeading() * lineSpacing;
         }
         dim.width = (int) Math.ceil(maxWidth);
         dim.height = (int) Math.ceil(height);
@@ -362,7 +410,7 @@ public class TextBlockBox extends TextBox
             TextLayout layout = line.layout();
             // Ascent: der Abstand von der oberen rechten Ecke des
             // Textlayouts zur Grundlinie.
-            yCursor += layout.getAscent();
+            yCursor += layout.getAscent() * lineSpacing;
             float xCursor = (float) x;
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
             // Vorschub des Zeichens ganz rechts.
@@ -384,10 +432,10 @@ public class TextBlockBox extends TextBox
             layout.draw(g, xCursor, yCursor);
             // Descent: Entfernung von der Grundlinie zum unteren linken Rand
             // des Textlayouts
-            yCursor += layout.getDescent() +
+            yCursor += layout.getDescent() * lineSpacing +
             // Leading: empfohlener Zeilenabstand relativ zur Grundlinie.
             // Scheint meistens 0.0 zu sein?
-                    layout.getLeading();
+                    layout.getLeading() * lineSpacing;
         }
         g.setColor(oldColor);
     }
