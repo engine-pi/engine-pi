@@ -46,7 +46,7 @@ Die wichtigsten Eigenschaften des Engine-Pi-Programmierstil sind:
 
 - Zur Einrückung werden __Leerzeichen__ (_spaces_: ` `) und keine Tabulatorzeichen
   (_tabs_: `\t`) verwendet.
-- Einen Einrückung ist __vier__ Leerzeichen breit.
+- Eine Einrückung ist __vier__ Leerzeichen breit.
 - Beginnende geschweifte Klammern (`{`) stehen in einer __neuen Zeile__.
 
 ## Eclipse Formatter

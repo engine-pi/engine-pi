@@ -67,17 +67,16 @@ import pi.resources.color.ColorSchemeContainer;
 import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/controller/index.md
+
 /**
  * <b>Steuert</b> das aktuelle Spiel bzw. Projekt.
  *
  * <p>
- * Diese Klasse ist die Hauptklasse der Engine und dient nicht nur zur
- * <b>Steuerung</b> des Spiels. Über statische Attribute kann auch auf die
- * Konfiguration und die verschiedenen Ressourcen zugegriffen werden.
- * </p>
- *
- * <p>
- * Die Klasse hat ausschließlich statische Attribute und Methoden.
+ * Die Hauptklasse der Engine hat ausschließlich statische Attribute und
+ * Methoden und dient nicht nur zur <b>Steuerung</b> des Spiels. Über statische
+ * Attribute kann auch auf die Konfiguration und die verschiedenen Ressourcen
+ * zugegriffen werden.
  * </p>
  *
  * <p>

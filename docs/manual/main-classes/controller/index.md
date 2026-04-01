@@ -2,4 +2,9 @@
 
 {{ drawio('Controller') }}
 
-{{ contribute() }}
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Controller.java -->
+
+Die Steuerklasse {{ class('pi.Controller') }} der Engine hat ausschließlich
+statische Attribute und Methoden und dient nicht nur zur **Steuerung** des
+Spiels. Über statische Attribute kann auch auf die Konfiguration und die
+verschiedenen Ressourcen zugegriffencwerden.
