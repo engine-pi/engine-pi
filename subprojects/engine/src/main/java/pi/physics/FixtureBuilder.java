@@ -100,9 +100,12 @@ public final class FixtureBuilder
     }
 
     /**
-     * Erstellt eine <b>polygonale</b> Form. Kann nur konvexe Formen erstellen.
-     * Konkave Formen werden automatisch zur umspannenden konvexen Form
-     * formatiert.
+     * Erstellt eine <b>polygonale</b> Form.
+     *
+     * <p>
+     * Die Methode kann nur konvexe Formen erstellen. Konkave Formen werden
+     * automatisch zur umspannenden konvexen Form formatiert.
+     * </p>
      *
      * @param points Eine Reihe an Punkten, die nacheinander diese Form
      *     beschreiben (mindestens 3 Punkte).

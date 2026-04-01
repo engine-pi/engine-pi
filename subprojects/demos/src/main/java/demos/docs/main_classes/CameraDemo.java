@@ -72,8 +72,8 @@ public class CameraDemo extends Scene implements FrameUpdateListener
         double x = position.getX() - (size.x() / 2);
         double y = -1 * (position.getY() - (size.y() / 2));
         camera.moveFocus(new Vector(x, y).multiply(0.001));
-        line.point1(camera.focus());
-        line.point2(Controller.mousePosition());
+        line.end1(camera.focus());
+        line.end2(Controller.mousePosition());
     }
 
     public static void main(String[] args)

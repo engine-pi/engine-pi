@@ -306,10 +306,10 @@ public class DirectedLineSegment
     }
 
     /**
-     * Berechnet einen Punkt relativ zum Liniensegment mit vertikaler
+     * Berechnet einen Punkt relativ zum Liniensegment mit relativer vertikaler
      * Versetzung.
      *
-     * @param factor der Faktor für die Position entlang des Liniensegments (0.0
+     * @param factor Der Faktor für die Position entlang des Liniensegments (0.0
      *     bis 1.0)
      * @param factorVertical der Faktor für die vertikale Versetzung relativ zur
      *     Länge des Segments
@@ -323,6 +323,27 @@ public class DirectedLineSegment
     {
         return relativePoint(factor)
             .add(verticalVector().multiply(length() * factorVertical));
+    }
+
+    /**
+     * Berechnet einen Punkt relativ zum Liniensegment mit festgelegtem
+     * vertikalen Versatz.
+     *
+     * @param factor Der Faktor für die Position entlang des Liniensegments (0.0
+     *     bis 1.0)
+     * @param distanceFrom Der Abstand von der gerichteten Strecke.
+     *
+     *
+     * @return ein neuer Vektor, der den berechneten Punkt mit vertikaler
+     *     Versetzung darstellt
+     *
+     * @since 0.42.0
+     */
+    public Vector relativeVerticalPointFixedOffset(double factor,
+            double distanceFrom)
+    {
+        return relativePoint(factor)
+            .add(verticalVector().multiply(distanceFrom));
     }
 
     /**

@@ -58,11 +58,14 @@ public class LineRandomDemo extends Scene
             if (Random.toggle())
             {
                 line.end1.arrow(ArrowType.CHEVERON);
+                line.end1.arrowSideLength(1);
             }
 
             if (Random.toggle())
             {
                 line.end2.arrow(ArrowType.TRIANGLE);
+                line.end2.arrowSideLength(1);
+
             }
 
             line.dashed(Random.toggle());

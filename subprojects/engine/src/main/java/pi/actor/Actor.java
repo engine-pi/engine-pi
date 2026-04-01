@@ -909,7 +909,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             return;
         }
         AffineTransform pre = g.getTransform();
-        Graphics2DUtil.antiAliasing(g, false);
+        // Graphics2DUtil.antiAliasing(g, false);
         // Den Anker der Figur einzeichnen
         g.setColor(colors.getSafe("yellow"));
         g.drawOval(-1, -1, 2, 2);
@@ -955,7 +955,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             throw new RuntimeException("Konnte den Umriss (" + shape
                     + ") nicht zeichnen, unerwarteter Umriss");
         }
-        Graphics2DUtil.antiAliasing(g, true);
+        // Graphics2DUtil.antiAliasing(g, true);
         g.setTransform(pre);
     }
 

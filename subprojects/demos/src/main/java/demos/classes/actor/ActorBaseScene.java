@@ -21,12 +21,15 @@ package demos.classes.actor;
 import pi.Scene;
 import pi.Rectangle;
 
-abstract class ActorBaseScene extends Scene
+public abstract class ActorBaseScene extends Scene
 {
+
+    protected Rectangle ground;
+
     public ActorBaseScene()
     {
         gravityOfEarth();
-        Rectangle ground = new Rectangle(20, 1);
+        ground = new Rectangle(20, 1);
         ground.anchor(-10, -8);
         ground.makeStatic();
         add(ground);

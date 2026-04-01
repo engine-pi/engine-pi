@@ -188,30 +188,29 @@ public class DirectedLineSegmentDemo extends Scene
     private void syncPoints(Vector to)
     {
         lineSegment.to(to);
-        arrowedLine.point2(to);
-        longLine.point1(lineSegment.fixedPoint(-20));
-        longLine.point2(lineSegment.fixedPoint(20));
+        arrowedLine.end2(to);
+        longLine.end1(lineSegment.fixedPoint(-20));
+        longLine.end2(lineSegment.fixedPoint(20));
 
         // Fixed rotated
-        plusFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, 45));
-        minusFixedRotated.point2(lineSegment.fixedRotatedPoint(-2, -45));
+        plusFixedRotated.end2(lineSegment.fixedRotatedPoint(-2, 45));
+        minusFixedRotated.end2(lineSegment.fixedRotatedPoint(-2, -45));
 
         // Proportional rotated
-        plusRelativeRotated.point2(lineSegment.relativeRotatedPoint(-0.5, 20));
-        minusRelativeRotated
-            .point2(lineSegment.relativeRotatedPoint(-0.5, -20));
+        plusRelativeRotated.end2(lineSegment.relativeRotatedPoint(-0.5, 20));
+        minusRelativeRotated.end2(lineSegment.relativeRotatedPoint(-0.5, -20));
 
-        plusFixedVertical.point1(lineSegment.fixedPoint(1));
-        plusFixedVertical.point2(lineSegment.fixedVerticalPoint(1, 1));
-        minusFixedVertical.point1(lineSegment.fixedPoint(-2));
-        minusFixedVertical.point2(lineSegment.fixedVerticalPoint(-2, -2));
+        plusFixedVertical.end1(lineSegment.fixedPoint(1));
+        plusFixedVertical.end2(lineSegment.fixedVerticalPoint(1, 1));
+        minusFixedVertical.end1(lineSegment.fixedPoint(-2));
+        minusFixedVertical.end2(lineSegment.fixedVerticalPoint(-2, -2));
 
-        plusRelativeVertical.point1(lineSegment.relativePoint(0.75));
+        plusRelativeVertical.end1(lineSegment.relativePoint(0.75));
         plusRelativeVertical
-            .point2(lineSegment.relativeVerticalPoint(0.75, 0.25));
-        minusRelativeVertical.point1(lineSegment.relativePoint(-0.5));
+            .end2(lineSegment.relativeVerticalPoint(0.75, 0.25));
+        minusRelativeVertical.end1(lineSegment.relativePoint(-0.5));
         minusRelativeVertical
-            .point2(lineSegment.relativeVerticalPoint(-0.5, -0.1));
+            .end2(lineSegment.relativeVerticalPoint(-0.5, -0.1));
 
         point_0_5.center(lineSegment.relativePoint(0.5));
         point_2.center(lineSegment.relativePoint(2));
