@@ -18,6 +18,7 @@
  */
 package pi.actor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pi.debug.ToStringFormatter.clean;
@@ -50,6 +51,49 @@ public class TextBlockTest
     {
         TextBlock text = new TextBlock(null);
         assertNotNull(text);
+    }
+
+    /**
+     * Testet die lines()-Methode der TextBlock-Klasse.
+     *
+     * <p>
+     * Überprüft die korrekte Aufteilung von Textinhalten in einzelne Zeilen und
+     * validiert das Verhalten bei verschiedenen Eingabeszenarien.
+     * </p>
+     */
+    @Nested
+    class LinesTest
+    {
+        @Test
+        void singleLine()
+        {
+            String[] lines = text.lines();
+            assertNotNull(lines);
+            assertEquals(1, lines.length);
+        }
+
+        @Test
+        void multipleLines()
+        {
+            String[] lines = new TextBlock("Line 1\nLine 2\nLine 3").lines();
+            assertNotNull(lines);
+            assertEquals(3, lines.length);
+            assertEquals("Line 1", lines[0]);
+            assertEquals("Line 2", lines[1]);
+            assertEquals("Line 3", lines[2]);
+        }
+
+        @Test
+        void nullContent()
+        {
+            assertNotNull(new TextBlock(null).lines());
+        }
+
+        @Test
+        void emptyContent()
+        {
+            assertNotNull(new TextBlock("").lines());
+        }
     }
 
     @Nested

@@ -97,8 +97,18 @@ public abstract class TextBox extends LeafBox
     @ChainableMethod
     public TextBox content(Object content)
     {
-        if (content == null)
+        if (content == null || String.valueOf(content).isEmpty())
         {
+            // Um diesen Fehler zu vermeiden, setzen wir einen einzelnen
+            // Leerzeichen als Inhalt, damit die Textbox trotzdem eine Höhe und
+            // Breite hat, auch wenn kein sichtbarer Text vorhanden ist.
+
+            // java.lang.IllegalArgumentException: Can't add attribute to
+            // 0-length text
+            // at
+            // java.base/java.text.AttributedString.addAttribute(AttributedString.java:322)
+            // at
+            // pi.graphics.boxes.TextBlockBox.splitIntoLines(TextBlockBox.java:333)
             content = " ";
         }
         this.content = String.valueOf(content);

@@ -23,9 +23,14 @@ import static pi.Controller.colorScheme;
 import java.awt.Color;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.graphics.boxes.TextBlockBox;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextBlockDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text_block/TextBlockLineSpacingDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text_block/TextBlockPhysicsDemo.java
 
 /**
  * Ein mehrzeiliger Textblock.
@@ -45,6 +50,77 @@ public class TextBlock extends TextActor<TextBlockBox>
         box.color(color);
         color(color);
         update();
+    }
+
+    /* lineSpacing */
+
+    /**
+     * Gibt den <b>Zeilenabstand</b>.
+     *
+     * <p>
+     * Der Zeilenabstand ist ein Faktor, der den Abstand zwischen den Zeilen
+     * relativ zum Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den
+     * normalen Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand,
+     * während Werte zwischen {@code 0} und {@code 1} den Abstand verringern.
+     * Zum Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um
+     * {@code 50%} erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand
+     * um {@code 25%} verringern würde.
+     * </p>
+     *
+     * @return Der <b>Zeilenabstand</b>.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public double lineSpacing()
+    {
+        return box.lineSpacing();
+    }
+
+    /**
+     * Setzt den <b>Zeilenabstand</b>.
+     *
+     * <p>
+     * Der Zeilenabstand ist ein Faktor, der den Abstand zwischen den Zeilen
+     * relativ zum Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den
+     * normalen Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand,
+     * während Werte zwischen {@code 0} und {@code 1} den Abstand verringern.
+     * Zum Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um
+     * {@code 50%} erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand
+     * um {@code 25%} verringern würde.
+     * </p>
+     *
+     * @param lineSpacing Der <b>Zeilenabstand</b>.
+     *
+     * @return Dieses Objekt für Methodenverkettung.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextBlock lineSpacing(double lineSpacing)
+    {
+        box.lineSpacing(lineSpacing);
+        update();
+        return this;
+    }
+
+    /* lines */
+
+    /**
+     * Gibt den <b>Textinhalt</b> der einzelnen Zeilen zurück.
+     *
+     * @return Jede Zeile ist ein Element des Arrays.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public String[] lines()
+    {
+        return box.linesText();
     }
 
     /**

@@ -7,4 +7,4 @@
 Die Steuerklasse {{ class('pi.Controller') }} der Engine hat ausschließlich
 statische Attribute und Methoden und dient nicht nur zur **Steuerung** des
 Spiels. Über statische Attribute kann auch auf die Konfiguration und die
-verschiedenen Ressourcen zugegriffencwerden.
+verschiedenen Ressourcen zugegriffen werden.

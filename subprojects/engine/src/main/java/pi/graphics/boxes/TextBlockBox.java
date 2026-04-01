@@ -48,7 +48,6 @@ import pi.util.TextUtil;
  */
 public class TextBlockBox extends TextBox
 {
-
     private static final long WRAPPING_WIDTH_PX = 300;
 
     /**
@@ -209,6 +208,16 @@ public class TextBlockBox extends TextBox
     /**
      * Gibt den <b>Zeilenabstand</b>.
      *
+     * <p>
+     * Der Zeilenabstand ist ein Faktor, der den Abstand zwischen den Zeilen
+     * relativ zum Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den
+     * normalen Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand,
+     * während Werte zwischen {@code 0} und {@code 1} den Abstand verringern.
+     * Zum Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um
+     * {@code 50%} erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand
+     * um {@code 25%} verringern würde.
+     * </p>
+     *
      * @return Der <b>Zeilenabstand</b>.
      */
     @API
@@ -222,13 +231,13 @@ public class TextBlockBox extends TextBox
      * Setzt den <b>Zeilenabstand</b>.
      *
      * <p>
-     * Er ist ein Faktor, der den Abstand zwischen den Zeilen relativ zum
-     * Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den normalen
-     * Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand, während
-     * Werte zwischen {@code 0} und {@code 1} den Abstand verringern. Zum
-     * Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um {@code 50%}
-     * erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand um
-     * {@code 25%} verringern würde.
+     * Der Zeilenabstand ist ein Faktor, der den Abstand zwischen den Zeilen
+     * relativ zum Standardabstand bestimmt. Ein Wert von {@code 1} bedeutet den
+     * normalen Zeilenabstand, Werte größer als {@code 1} erhöhen den Abstand,
+     * während Werte zwischen {@code 0} und {@code 1} den Abstand verringern.
+     * Zum Beispiel würde ein Wert von {@code 1.5} den Zeilenabstand um
+     * {@code 50%} erhöhen, während ein Wert von {@code 0.75} den Zeilenabstand
+     * um {@code 25%} verringern würde.
      * </p>
      *
      * @param lineSpacing Der <b>Zeilenabstand</b>.
@@ -271,7 +280,7 @@ public class TextBlockBox extends TextBox
     /**
      * Gibt den <b>Textinhalt</b> der einzelnen Zeilen zurück.
      *
-     * @return Eine Liste aus Layout-/Text-Paaren je Zeile.
+     * @return Jede Zeile ist ein Element des Arrays.
      *
      * @since 0.45.0
      */

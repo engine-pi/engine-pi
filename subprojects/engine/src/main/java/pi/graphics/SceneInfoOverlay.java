@@ -320,7 +320,7 @@ public class SceneInfoOverlay
     }
 
     /**
-     * Setzt den längerer, mehrzeiliger <b>Beschreibungstext</b> zur Szene.
+     * Setzt den längeren, mehrzeiligen <b>Beschreibungstext</b> zur Szene.
      *
      * <p>
      * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
