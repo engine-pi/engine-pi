@@ -2,7 +2,10 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Polygon.java -->
 
-{{ class('pi.actor.Polygon') }}
+Die Klasse {{ class('pi.actor.Polygon') }} ist im
+Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
+`#!java import pi.actor.Polygon;`
+importiert werden.
 
 ## Ein Polygon in der Physik-Simulation
 

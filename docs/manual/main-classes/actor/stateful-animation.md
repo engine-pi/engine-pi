@@ -4,6 +4,11 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
+Die Klasse {{ class('pi.actor.StatefulAnimation') }} ist im
+Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
+`#!java import pi.actor.StatefulAnimation;`
+importiert werden.
+
 <!-- Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
 
 - Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.

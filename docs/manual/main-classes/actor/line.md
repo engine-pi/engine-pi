@@ -2,8 +2,13 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java -->
 
-Die Figur {{ class('pi.actor.Line') }} ermöglicht es einen Linie zwischen zwei
+Die Figur {{ class('pi.actor.Line') }} ermöglicht es eine Linie zwischen zwei
 Endpunkten zu zeichnen.
+
+Die Klasse {{ class('pi.actor.Line') }} ist im
+Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
+`#!java import pi.actor.Line;`
+importiert werden.
 
 ## Klassenkarte
 
