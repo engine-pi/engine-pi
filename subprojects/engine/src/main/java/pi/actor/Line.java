@@ -54,10 +54,10 @@ public class Line extends Actor
      * Erstellt eine neue Linie mit den angegebenen <b>Koordinaten</b> der zwei
      * Endpunkte.
      *
-     * @param x1 die x-Koordinate des ersten Endpunkts
-     * @param y1 die y-Koordinate des ersten Endpunkts
-     * @param x2 die x-Koordinate des zweiten Endpunkts
-     * @param y2 die y-Koordinate des zweiten Endpunkts
+     * @param x1 Die <b>x</b>-Koordinate des <b>ersten</b> Endpunkts.
+     * @param y1 Die <b>y</b>-Koordinate des <b>ersten</b> Endpunkts.
+     * @param x2 Die <b>x</b>-Koordinate des <b>zweiten</b> Endpunkts.
+     * @param y2 Die <b>y</b>-Koordinate des <b>zweiten</b> Endpunkts.
      */
     public Line(double x1, double y1, double x2, double y2)
     {
@@ -67,8 +67,8 @@ public class Line extends Actor
     /**
      * Erstellt eine neue Linie zwischen zwei Endpunkten als <b>Vektoren</b>.
      *
-     * @param end1 Der erste Endpunkt der Linie als Vektor.
-     * @param end2 Der zweite Endpunkt der Linie als Vektor.
+     * @param end1 Der <b>erste Endpunkt</b> der Linie als Vektor.
+     * @param end2 Der <b>zweite Endpunkt</b> der Linie als Vektor.
      */
     public Line(Vector end1, Vector end2)
     {
@@ -317,12 +317,70 @@ public class Line extends Actor
          * @param end Der Punkt am <b>Linienende</b>.
          * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
          */
-        LineEnd(Vector end, Vector opposite)
+        private LineEnd(Vector end, Vector opposite)
         {
             this.end = end;
             this.opposite = opposite;
             update();
         }
+
+        /* end */
+
+        /**
+         * Der Punkt am <b>Linienende</b> ohne Versatz.
+         */
+        private Vector end;
+
+        /**
+         * Der Punkt am <b>Linienende</b> mit Versatz.
+         */
+        private Vector endWithOffset;
+
+        /**
+         * Gibt den Punkt am <b>Linienende</b> mit Verzug zurück.
+         *
+         * @return Der Punkt am <b>Linienende</b>
+         */
+        @Internal
+        Vector end()
+        {
+            return endWithOffset;
+        }
+
+        /**
+         * Setzt den Punkt an <b>Linienende</b>.
+         *
+         * @param end Der Punkt am <b>Linienende</b>.
+         */
+        @Internal
+        LineEnd end(Vector end)
+        {
+            this.end = end;
+            update();
+            return this;
+        }
+
+        /* opposite */
+
+        /**
+         * Der diesem Linienende <b>gegenüberliegende</b> Punkt ohne Versatz.
+         */
+        Vector opposite;
+
+        /**
+         * Setzt den diesem Linienende <b>gegenüberliegende</b> Punkt.
+         *
+         * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
+         */
+        @Internal
+        LineEnd opposite(Vector opposite)
+        {
+            this.opposite = opposite;
+            update();
+            return this;
+        }
+
+        /* offset */
 
         /**
          * Ein <b>Versatz</b> des Linienendes in Richtung des gegenüberliegenden
@@ -369,57 +427,6 @@ public class Line extends Actor
             return this;
         }
 
-        /* end */
-
-        private Vector endWithOffset;
-
-        /**
-         * Der Punkt am <b>Linienende</b> ohne Versatz.
-         */
-        private Vector end;
-
-        /**
-         * Gibt den Punkt am <b>Linienende</b> mit Verzug zurück.
-         *
-         * @return Der Punkt am <b>Linienende</b>
-         */
-        public Vector end()
-        {
-            return endWithOffset;
-        }
-
-        /**
-         * Setzt den Punkt an <b>Linienende</b>.
-         *
-         * @param end Der Punkt am <b>Linienende</b>.
-         */
-        @Setter
-        public LineEnd end(Vector end)
-        {
-            this.end = end;
-            update();
-            return this;
-        }
-
-        /* opposite */
-
-        /**
-         * Der diesem Linienende <b>gegenüberliegende</b> Punkt ohne Versatz.
-         */
-        private Vector opposite;
-
-        /**
-         * Setzt den diesem Linienende <b>gegenüberliegende</b> Punkt.
-         *
-         * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
-         */
-        private LineEnd opposite(Vector opposite)
-        {
-            this.opposite = opposite;
-            update();
-            return this;
-        }
-
         /* arrow */
 
         /**
@@ -428,12 +435,29 @@ public class Line extends Actor
         private ArrowType arrow = ArrowType.NONE;
 
         /**
+         * Gibt die Art der <b>Pfeilspitze</b> zurück.
+         *
+         * @return Die Art der <b>Pfeilspitze</b>.
+         *
+         * @since 0.45.0
+         */
+        @API
+        @Getter
+        public ArrowType arrow()
+        {
+            return arrow;
+        }
+
+        /**
          * Setzt die Art der <b>Pfeilspitze</b>.
          *
          * @param arrow Die Art der <b>Pfeilspitze</b>.
          *
          * @since 0.42.0
          */
+        @API
+        @Setter
+        @ChainableMethod
         public LineEnd arrow(ArrowType arrow)
         {
             this.arrow = arrow;
@@ -449,11 +473,14 @@ public class Line extends Actor
          *
          * @since 0.42.0
          */
+        @API
+        @Setter
+        @ChainableMethod
         public LineEnd arrow(boolean arrow)
         {
             if (arrow)
             {
-                this.arrow = ArrowType.CHEVERON;
+                this.arrow = ArrowType.CHEVRON;
             }
             else
             {
@@ -465,19 +492,44 @@ public class Line extends Actor
         /* arrowAngle */
 
         /**
-         * Der <b>Winkel</b> der Pfeilspitze in Grad. Es handelt sich um den
-         * Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt. In
-         * der Mathematik wird dieser Winkel auch γ (gamma) genannt.
+         * Der <b>Winkel</b> der Pfeilspitze in Grad.
          */
         private double arrowAngle = 45;
 
         /**
-         * Setzt den <b>Winkel</b> der Pfeilspitze in Grad. Es handelt sich um
-         * den Winkel, der an der Spitze eines gleichschenkligen Dreiecks liegt.
-         * In der Mathematik wird dieser Winkel auch γ (gamma) genannt.
+         * Gibt den <b>Winkel</b> der Pfeilspitze in Grad zurück.
+         *
+         * <p>
+         * Es handelt sich um den Winkel, der an der Spitze eines
+         * gleichschenkligen Dreiecks liegt. In der Mathematik wird dieser
+         * Winkel auch γ (gamma) genannt. Der Standardwert für diesen Winkel
+         * beträgt {@code 45} Grad.
+         * </p>
+         *
+         * @return Der <b>Winkel</b> der Pfeilspitze in Grad.
+         */
+        @API
+        @Getter
+        public double arrowAngle()
+        {
+            return arrowAngle;
+        }
+
+        /**
+         * Setzt den <b>Winkel</b> der Pfeilspitze in Grad.
+         *
+         * <p>
+         * Es handelt sich um den Winkel, der an der Spitze eines
+         * gleichschenkligen Dreiecks liegt. In der Mathematik wird dieser
+         * Winkel auch γ (gamma) genannt. Der Standardwert für diesen Winkel
+         * beträgt {@code 45} Grad.
+         * </p>
          *
          * @param arrowAngle Der <b>Winkel</b> der Pfeilspitze in Grad.
          */
+        @API
+        @Setter
+        @ChainableMethod
         public LineEnd arrowAngle(double arrowAngle)
         {
             this.arrowAngle = arrowAngle;
@@ -488,14 +540,27 @@ public class Line extends Actor
 
         /**
          * Die <b>Seitenlänge der Pfeilspitze</b> in Meter.
+         */
+        private double arrowSideLength = 0.5;
+
+        /**
+         * Gibt die <b>Seitenlänge der Pfeilspitze</b> in Meter zurück.
          *
          * <p>
          * Die Pfeilspitze wird als gleichschenkliges Dreieck eingezeichnet. Die
          * Seitenlänge bezieht sich auf die Länge der Schenkel des
-         * gleichseitigen Dreiecks.
+         * gleichseitigen Dreiecks. Standardmäßig ist die Seitenlänge der
+         * Pfeilspitze {@code 0.5} Meter lang.
          * </p>
+         *
+         * @return Die <b>Seitenlänge der Pfeilspitze</b> in Meter.
          */
-        private double arrowSideLength = 0.5;
+        @API
+        @Getter
+        public double arrowSideLength()
+        {
+            return arrowSideLength;
+        }
 
         /**
          * Setzt die <b>Seitenlänge der Pfeilspitze</b> in Meter.
@@ -503,12 +568,16 @@ public class Line extends Actor
          * <p>
          * Die Pfeilspitze wird als gleichschenkliges Dreieck eingezeichnet. Die
          * Seitenlänge bezieht sich auf die Länge der Schenkel des
-         * gleichseitigen Dreiecks.
+         * gleichseitigen Dreiecks. Standardmäßig ist die Seitenlänge der
+         * Pfeilspitze {@code 0.5} Meter lang.
          * </p>
          *
          * @param arrowSideLength Die <b>Seitenlänge der Pfeilspitze</b> in
          *     Meter.
          */
+        @API
+        @Setter
+        @ChainableMethod
         public LineEnd arrowSideLength(double arrowSideLength)
         {
             this.arrowSideLength = arrowSideLength;
@@ -558,7 +627,7 @@ public class Line extends Actor
             int sideLength = (int) Math
                 .round(this.arrowSideLength * pixelPerMeter);
 
-            if (arrow == ArrowType.CHEVERON)
+            if (arrow == ArrowType.CHEVRON)
             {
                 Graphics2DUtil.drawArrow(g,
                     opposite.multiply(pixelPerMeter),
@@ -592,8 +661,31 @@ public class Line extends Actor
      */
     public enum ArrowType
     {
+        // GraphViz array types: BOX
+        // CROW
+        // CURVE
+        // ICURVE
+        // DIAMOND
+        // DOT
+        // INV
+        // NONE
+        // NORMAL
+        // TEE
+        // VEE
+        // https://www.graphviz.org/doc/info/arrows.html
         // https://google.github.io/guice/api-docs/4.2.2/javadoc/index.html?com/google/inject/grapher/graphviz/ArrowType.html
 
+        // yFiles array types:
+        // CHEVRON
+        // CROSS
+        // DELTOID
+        // DIAMOND
+        // ELLIPSE
+        // KITE
+        // NONE
+        // OPEN
+        // STEALTH
+        // TRIANGLE
         // https://docs.yworks.com/yfiles-html/api/ArrowType.html
 
         /**
@@ -606,7 +698,7 @@ public class Line extends Actor
          * Wort Chevron (französisch chevron = „Winkel“, „Sparren“,
          * „Zickzackleiste“) )
          */
-        CHEVERON,
+        CHEVRON,
 
         /**
          * Eine Pfeilspitze in Form eines <b>Dreiecks</b>.

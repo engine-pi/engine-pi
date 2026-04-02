@@ -57,7 +57,7 @@ public class LineRandomDemo extends Scene
 
             if (Random.toggle())
             {
-                line.end1.arrow(ArrowType.CHEVERON);
+                line.end1.arrow(ArrowType.CHEVRON);
                 line.end1.arrowSideLength(1);
             }
 

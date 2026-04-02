@@ -2,7 +2,15 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java -->
 
-{{ class('pi.actor.Line') }}
+Die Figur {{ class('pi.actor.Line') }} ermöglicht es einen Linie zwischen zwei
+Endpunkten zu zeichnen.
+
+## Klassenkarte
+
+{{ drawio('Line') }}
+/// caption
+Das Klassendiagramm der Figur `Line` zusammen mit der inneren Klasse `Line.LineEnd` und dem Aufzählungstyp `Line.ArrowType`.
+///
 
 ## Eine Linie in der Physik-Simulation
 

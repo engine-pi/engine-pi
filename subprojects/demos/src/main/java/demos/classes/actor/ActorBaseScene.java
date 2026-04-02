@@ -23,7 +23,6 @@ import pi.Rectangle;
 
 public abstract class ActorBaseScene extends Scene
 {
-
     protected Rectangle ground;
 
     public ActorBaseScene()

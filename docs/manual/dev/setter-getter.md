@@ -92,12 +92,17 @@ particle.bodyType(PARTICLE)
      */
     @API
     @Setter
+    @ChainableMethod
     public TextBox color(Color color)
     {
         this.color = color;
         return this;
     }
 ```
+
+### Getter und Setter im UML-Klassendiagramm
+
+https://stackoverflow.com/a/28141950
 
 [^gitconnected]:
     https://levelup.gitconnected.com/are-getters-and-setters-an-anti-pattern-c8cb5625ca8c

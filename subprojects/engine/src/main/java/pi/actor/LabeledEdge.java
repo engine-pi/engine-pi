@@ -77,8 +77,8 @@ public class LabeledEdge extends Line
     public LabeledEdge(Vector from, Vector to, String label)
     {
         super(from, to);
-        end1.arrow(ArrowType.CHEVERON);
-        end2.arrow(ArrowType.CHEVERON);
+        end1.arrow(ArrowType.CHEVRON);
+        end2.arrow(ArrowType.CHEVRON);
         offset(1);
         strokeWidth(0.05);
         this.label = label;

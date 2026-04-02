@@ -19,9 +19,11 @@
 package pi.actor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.Controller;
@@ -97,5 +99,77 @@ public class LineTest
         line.end2.offset(2);
 
         assertThrows(RuntimeException.class, () -> line.offset());
+    }
+
+    @Nested
+    class LineEndTest
+    {
+        @Test
+        void endGetterSetter()
+        {
+            Line.LineEnd returned = line.end1.end(new Vector(10, 20));
+            assertSame(line.end1, returned);
+
+            Vector end = line.end1.end();
+            assertEquals(10, end.x(), 0.001);
+            assertEquals(20, end.y(), 0.001);
+
+            Vector lineEnd = line.end1();
+            assertEquals(10, lineEnd.x(), 0.001);
+            assertEquals(20, lineEnd.y(), 0.001);
+        }
+
+        @Test
+        void offsetGetterSetter()
+        {
+            assertEquals(0, line.end1.offset(), 0.001);
+
+            Line.LineEnd returned = line.end1.offset(0.75);
+            assertSame(line.end1, returned);
+            assertEquals(0.75, line.end1.offset(), 0.001);
+
+            double expected = 1 + 0.75 / Math.sqrt(2);
+            assertEquals(expected, line.end1().x(), 0.001);
+            assertEquals(2 + 0.75 / Math.sqrt(2), line.end1().y(), 0.001);
+        }
+
+        @Nested
+        class ArrowTest
+        {
+            @Test
+            void getterSetterWithEnum()
+            {
+                line.end1.arrow(Line.ArrowType.TRIANGLE);
+                assertEquals(Line.ArrowType.TRIANGLE, line.end1.arrow());
+            }
+
+            @Test
+            void getterSetterWithBoolean()
+            {
+                line.end1.arrow(true);
+                assertEquals(Line.ArrowType.CHEVRON, line.end1.arrow());
+
+                line.end1.arrow(false);
+                assertEquals(Line.ArrowType.NONE, line.end1.arrow());
+            }
+        }
+
+        @Test
+        void arrowAngleGetterSetter()
+        {
+            assertEquals(45, line.end1.arrowAngle(), 0.001);
+
+            Line.LineEnd returned = line.end1.arrowAngle(30);
+            assertSame(line.end1, returned);
+            assertEquals(30, line.end1.arrowAngle(), 0.001);
+        }
+
+        @Test
+        void arrowSideLengthSetter()
+        {
+            Line.LineEnd returned = line.end1.arrowSideLength(1.25);
+            assertSame(line.end1, returned);
+            assertEquals(1.25, line.end1.arrowSideLength(), 0.001);
+        }
     }
 }
