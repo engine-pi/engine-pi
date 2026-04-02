@@ -42,7 +42,7 @@ import pi.util.Graphics2DUtil;
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/geom/DirectedLineSegmentDemo.java
 
 /**
- * Eine <b>Linie</b> zwischen zwei Punkten.
+ * Eine <b>Linie</b> zwischen zwei Endpunkten.
  *
  * @author Josef Friedrich
  *
@@ -50,11 +50,26 @@ import pi.util.Graphics2DUtil;
  */
 public class Line extends Actor
 {
+    /**
+     * Erstellt eine neue Linie mit den angegebenen <b>Koordinaten</b> der zwei
+     * Endpunkte.
+     *
+     * @param x1 die x-Koordinate des ersten Endpunkts
+     * @param y1 die y-Koordinate des ersten Endpunkts
+     * @param x2 die x-Koordinate des zweiten Endpunkts
+     * @param y2 die y-Koordinate des zweiten Endpunkts
+     */
     public Line(double x1, double y1, double x2, double y2)
     {
         this(new Vector(x1, y1), new Vector(x2, y2));
     }
 
+    /**
+     * Erstellt eine neue Linie zwischen zwei Endpunkten als <b>Vektoren</b>.
+     *
+     * @param end1 Der erste Endpunkt der Linie als Vektor.
+     * @param end2 Der zweite Endpunkt der Linie als Vektor.
+     */
     public Line(Vector end1, Vector end2)
     {
         super(null);
@@ -71,6 +86,11 @@ public class Line extends Actor
      */
     public final LineEnd end1;
 
+    /**
+     * Gibt <b>ersten Endpunkt</b> der Linie zurück.
+     *
+     * @return Der <b>ersten Endpunkt</b> der Linie.
+     */
     @API
     @Getter
     public Vector end1()
@@ -78,6 +98,13 @@ public class Line extends Actor
         return this.end1.end();
     }
 
+    /**
+     * Setzt den <b>ersten Endpunkt</b> der Linie.
+     *
+     * @param end1 Der neue <b>erste Endpunkt</b> als {@link Vector}.
+     *
+     * @return diese {@link Line} Instanz für Method Chaining
+     */
     @API
     @Setter
     @ChainableMethod
@@ -96,6 +123,11 @@ public class Line extends Actor
      */
     public final LineEnd end2;
 
+    /**
+     * Gibt <b>zweiten Endpunkt</b> der Linie zurück.
+     *
+     * @return Der <b>zweiten Endpunkt</b> der Linie.
+     */
     @API
     @Getter
     public Vector end2()
@@ -103,6 +135,13 @@ public class Line extends Actor
         return this.end2.end();
     }
 
+    /**
+     * Setzt den <b>zweiten Endpunkt</b> der Linie.
+     *
+     * @param end2 Der neue <b>zweite Endpunkt</b> als {@link Vector}.
+     *
+     * @return diese {@link Line} Instanz für Method Chaining
+     */
     @API
     @Setter
     @ChainableMethod
@@ -120,6 +159,16 @@ public class Line extends Actor
      * Die <b>Dicke</b> der <b>Linie</b> in Meter.
      */
     private double strokeWidth = 0.125;
+
+    /**
+     * Gibt die <b>Dicke</b> der <b>Linie</b> in Meter.
+     */
+    @API
+    @Getter
+    public double strokeWidth()
+    {
+        return strokeWidth;
+    }
 
     /**
      * Setzt die <b>Dicke</b> der <b>Linie</b> in Meter.
@@ -159,6 +208,44 @@ public class Line extends Actor
 
     /* offset */
 
+    /**
+     * Gibt den <b>Versatz</b> beider Linienenden in Richtung des
+     * gegenüberliegenden Punkts in Meter zurück.
+     *
+     * <b>Dieser Versatz ist beispielsweise nützlich, um Kanten zwischen Knoten
+     * einzuzeichnen. Werden die Knoten als Kreise dargestellt, kann der Radius
+     * der Knoten als Versatz verwendet werden.</b>
+     *
+     * @return Der <b>Versatz</b> beider Linienende in Richtung des
+     *     gegenüberliegenden Punkts in Meter.
+     *
+     * @throws RuntimeException Falls die beiden Linienenden einen
+     *     unterschiedlichen Versatz haben.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public double offset()
+    {
+        if (end1.offset() != end2.offset())
+        {
+            throw new RuntimeException(
+                    "Die beiden Endpunkt der Linien haben einen unterschiedlichen Versatz.");
+        }
+        return end1.offset();
+    }
+
+    /**
+     * Setzt den <b>Versatz</b> beider Linienenden in Richtung des
+     * gegenüberliegenden Punkts in Meter.
+     *
+     * <b>Dieser Versatz ist beispielsweise nützlich, um Kanten zwischen Knoten
+     * einzuzeichnen. Werden die Knoten als Kreise dargestellt, kann der Radius
+     * der Knoten als Versatz verwendet werden.</b>
+     *
+     * @param offset Der <b>Versatz</b> beider Linienenden in Richtung des
+     *     gegenüberliegenden Punkts in Meter.
+     */
     @API
     @Setter
     @ChainableMethod
@@ -226,9 +313,6 @@ public class Line extends Actor
      */
     public class LineEnd
     {
-
-        private Vector endWithOffset;
-
         /**
          * @param end Der Punkt am <b>Linienende</b>.
          * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
@@ -242,10 +326,42 @@ public class Line extends Actor
 
         /**
          * Ein <b>Versatz</b> des Linienendes in Richtung des gegenüberliegenden
-         * Punkts in Meter. Nützlich um Kanten zwischen Knoten einzuzeichnen.
+         * Punkts in Meter.
          */
         private double offset;
 
+        /**
+         * Gibt den <b>Versatz</b> des Linienendes in Richtung des
+         * gegenüberliegenden Punkts in Meter zurück.
+         *
+         * <b>Dieser Versatz ist beispielsweise nützlich, um Kanten zwischen
+         * Knoten einzuzeichnen. Werden die Knoten als Kreise dargestellt, kann
+         * der Radius der Knoten als Versatz verwendet werden.</b>
+         *
+         * @return Der <b>Versatz</b> des Linienendes in Richtung des
+         *     gegenüberliegenden Punkts in Meter.
+         */
+        @API
+        @Getter
+        public double offset()
+        {
+            return offset;
+        }
+
+        /**
+         * Setzt den <b>Versatz</b> des Linienendes in Richtung des
+         * gegenüberliegenden Punkts in Meter.
+         *
+         * <b>Dieser Versatz ist beispielsweise nützlich, um Kanten zwischen
+         * Knoten einzuzeichnen. Werden die Knoten als Kreise dargestellt, kann
+         * der Radius der Knoten als Versatz verwendet werden.</b>
+         *
+         * @param offset Der <b>Versatz</b> des Linienendes in Richtung des
+         *     gegenüberliegenden Punkts in Meter.
+         */
+        @API
+        @Setter
+        @ChainableMethod
         public LineEnd offset(double offset)
         {
             this.offset = offset;
@@ -254,6 +370,8 @@ public class Line extends Actor
         }
 
         /* end */
+
+        private Vector endWithOffset;
 
         /**
          * Der Punkt am <b>Linienende</b> ohne Versatz.
@@ -295,8 +413,7 @@ public class Line extends Actor
          *
          * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
          */
-        @Setter
-        public LineEnd opposite(Vector opposite)
+        private LineEnd opposite(Vector opposite)
         {
             this.opposite = opposite;
             update();
@@ -409,9 +526,7 @@ public class Line extends Actor
          */
         private DirectedLineSegment lineSegment;
 
-        @API
-        @Getter
-        public DirectedLineSegment lineSegment()
+        private DirectedLineSegment lineSegment()
         {
             return lineSegment;
         }

@@ -1,4 +1,3 @@
-
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
