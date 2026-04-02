@@ -19,7 +19,10 @@
 package demos.small_games.pong;
 
 import pi.Controller;
+import pi.Jukebox;
 import pi.Rectangle;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
 import pi.physics.BodyType;
 
 /**
@@ -33,7 +36,7 @@ import pi.physics.BodyType;
  *
  * @author Josef Friedrich
  */
-public class Paddle extends Rectangle
+public class Paddle extends Rectangle implements CollisionListener<Ball>
 {
     static
     {
@@ -85,6 +88,7 @@ public class Paddle extends Rectangle
         bodyType(BodyType.STATIC);
         restitution(1);
         center(sideSign * (table.bounds.xRight() - BORDER_PADDING), 0);
+        addCollisionListener(Ball.class, this);
     }
 
     public void moveUp()
@@ -118,6 +122,12 @@ public class Paddle extends Rectangle
         }
 
         moveBy(0, -MOVEMENT_DISTANCE);
+    }
+
+    @Override
+    public void onCollision(CollisionEvent<Ball> collisionEvent)
+    {
+        Jukebox.playSound("pong/short-high.wav");
     }
 
     public static void main(String[] args)

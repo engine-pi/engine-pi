@@ -43,13 +43,13 @@ class Platform extends Rectangle implements CollisionListener<Frog>
         if (frogY < y())
         {
             collisionEvent.ignoreCollision();
-            collisionEvent.colliding().setJumpEnabled(false);
+            collisionEvent.colliding().jumpEnabled(false);
         }
     }
 
     @Override
     public void onCollisionEnd(CollisionEvent<Frog> collisionEvent)
     {
-        collisionEvent.colliding().setJumpEnabled(true);
+        collisionEvent.colliding().jumpEnabled(true);
     }
 }

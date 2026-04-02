@@ -21,8 +21,10 @@ package demos.small_games.pong;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
+import pi.Jukebox;
 import pi.Random;
 import pi.Scene;
+import pi.actor.Line;
 import pi.event.FrameUpdateListener;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
@@ -52,6 +54,16 @@ public class PongTable extends Scene
      * Die rechte Tischhälfte.
      */
     private final TableSide right;
+
+    /**
+     * Die Mittellinie des Tischtennis-Spielfelds.
+     *
+     * <p>
+     * Sie ist von rein optischer Natur und hat keinen Einfluss aus die
+     * Spielmechanik.
+     * </p>
+     */
+    private final Line centerLine;
 
     /**
      * Der Ball.
@@ -90,6 +102,9 @@ public class PongTable extends Scene
         left = new TableSide(-1, this);
         right = new TableSide(1, this);
 
+        centerLine = new Line(0, bounds.yBottom(), 0, bounds.yTop());
+        centerLine.dashed(true).strokeWidth(0.06).color("white");
+
         ball = new Ball();
         ball.center(0, 0);
 
@@ -100,7 +115,7 @@ public class PongTable extends Scene
         bottomBouncer.anchor(bounds.xLeft(),
             bounds.yBottom() - bottomBouncer.height());
 
-        add(ball, topBouncer, bottomBouncer);
+        add(centerLine, ball, topBouncer, bottomBouncer);
 
         repeater = new PressedKeyRepeater();
 
@@ -123,10 +138,10 @@ public class PongTable extends Scene
      */
     public void applyImpulseToBall()
     {
-        ball.resetMovement();
-        ball.center(0, 0);
-        ball.applyImpulse(
-            Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
+        ball.resetMovement()
+            .center(0, 0)
+            .applyImpulse(
+                Vector.ofAngle(Random.range(0.0, 360.0)).multiply(100));
     }
 
     @Override
@@ -151,12 +166,14 @@ public class PongTable extends Scene
         {
             left.increaseScore();
             applyImpulseToBall();
+            Jukebox.playSound("pong/long.wav");
         }
 
         else if (x > bounds.xRight())
         {
             right.increaseScore();
             applyImpulseToBall();
+            Jukebox.playSound("pong/long.wav");
         }
     }
 

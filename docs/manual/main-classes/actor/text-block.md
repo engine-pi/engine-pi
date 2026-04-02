@@ -7,6 +7,13 @@ Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
 `#!java import pi.actor.TextBlock;`
 importiert werden.
 
+## Klassendiagramm
+
+{{ drawio('TextBlock') }}
+/// caption
+Die Klasse `TextBlock` und ihr Vererbungshierachie.
+///
+
 ## `lineSpacing` (Zeilenabstand)
 
 Durch die Methode {{ method('pi.actor.TextBlock', 'lineSpacing(double)') }} kann

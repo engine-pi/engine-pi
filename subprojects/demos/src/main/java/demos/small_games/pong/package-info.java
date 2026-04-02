@@ -35,8 +35,8 @@
  * </p>
  *
  * <ul>
- * <li><a href="https://www.youtube.com/watch?v=N4mYYGykz7E">Video-aufnahme auf
- * einer originalen Spielautomaten</a></li>
+ * <li><a href="https://www.youtube.com/watch?v=N4mYYGykz7E">Videoaufnahme auf
+ * einen originalen Spielautomaten</a></li>
  * <li><a href="https://www.learnj.de/doku.php?id=projects:pong:start">Pong auf
  * learnj.de</a></li>
  * </ul>

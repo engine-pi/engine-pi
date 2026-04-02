@@ -43,9 +43,9 @@ class Frog extends Image implements FrameUpdateListener
         rotationLocked(true);
     }
 
-    public void setJumpEnabled(boolean jumpEnabled)
+    public void jumpEnabled(boolean jumpEnabled)
     {
-        this.canJump = jumpEnabled;
+        canJump = jumpEnabled;
     }
 
     public void kill()

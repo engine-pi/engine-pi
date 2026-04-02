@@ -19,7 +19,10 @@
 package demos.small_games.pong;
 
 import pi.Controller;
+import pi.Jukebox;
 import pi.Rectangle;
+import pi.event.CollisionEvent;
+import pi.event.CollisionListener;
 import pi.physics.BodyType;
 
 /**
@@ -28,7 +31,7 @@ import pi.physics.BodyType;
  *
  * @author Josef Friedrich
  */
-public class BounceBar extends Rectangle
+public class BounceBar extends Rectangle implements CollisionListener<Ball>
 {
     static
     {
@@ -41,6 +44,7 @@ public class BounceBar extends Rectangle
         bodyType(BodyType.STATIC);
         restitution(1);
         visible(false);
+        addCollisionListener(Ball.class, this);
     }
 
     /**
@@ -52,6 +56,12 @@ public class BounceBar extends Rectangle
         visible(true);
         color("gray");
         return this;
+    }
+
+    @Override
+    public void onCollision(CollisionEvent<Ball> collisionEvent)
+    {
+        Jukebox.playSound("pong/short-low.wav");
     }
 
     public static void main(String[] args)

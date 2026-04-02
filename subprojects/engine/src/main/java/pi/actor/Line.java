@@ -162,6 +162,10 @@ public class Line extends Actor
 
     /**
      * Gibt die <b>Dicke</b> der <b>Linie</b> in Meter.
+     *
+     * <p>
+     * Der voreingestellt Standardwert beträgt {@code 0.125} Meter.
+     * </p>
      */
     @API
     @Getter
@@ -172,6 +176,10 @@ public class Line extends Actor
 
     /**
      * Setzt die <b>Dicke</b> der <b>Linie</b> in Meter.
+     *
+     * <p>
+     * Der voreingestellt Standardwert beträgt {@code 0.125} Meter.
+     * </p>
      *
      * @param strokeWidth Die <b>Dicke</b> der <b>Linie</b> in Meter.
      */

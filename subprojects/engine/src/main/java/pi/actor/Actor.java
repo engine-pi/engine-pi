@@ -991,6 +991,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         return physics;
     }
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
+
     /**
      * Meldet einen neuen {@link CollisionListener} an, der auf alle Kollisionen
      * zwischen diesem Actor und dem Actor <code>collider</code> reagiert.
@@ -1040,7 +1043,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     public final <E extends Actor> Actor addCollisionListener(Class<E> clazz,
             CollisionListener<E> listener)
     {
-        // noinspection OverlyComplexAnonymousInnerClass
         WorldHandler.addGenericCollisionListener(new CollisionListener<>()
         {
             @SuppressWarnings("unchecked")
@@ -1049,7 +1051,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             {
                 if (clazz.isInstance(collisionEvent.colliding()))
                 {
-                    // noinspection unchecked
                     listener.onCollision((CollisionEvent<E>) collisionEvent);
                 }
             }
@@ -1060,7 +1061,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             {
                 if (clazz.isInstance(collisionEvent.colliding()))
                 {
-                    // noinspection unchecked
                     listener.onCollisionEnd((CollisionEvent<E>) collisionEvent);
                 }
             }
