@@ -18,6 +18,9 @@
  */
 package pi.resources.font;
 
+import pi.annotations.API;
+import pi.annotations.Getter;
+
 /**
  * Repräsentiert die verfügbaren Schrift<b>stile</b> bzw{@literal .}
  * Schriftschnitte.
@@ -35,7 +38,7 @@ package pi.resources.font;
  *
  * <p>
  * Dieser Aufzählungstyp dient dazu, die Schriftstile eindeutig zu benennen und
- * den zugehörigen numerischen Wert über {@link #getStyle()} bereitzustellen.
+ * den zugehörigen numerischen Wert über {@link #style()} bereitzustellen.
  * </p>
  *
  * @author Josef Friedrich
@@ -94,7 +97,9 @@ public enum FontStyle
      *
      * @return Eine Ganzzahl, die den Schriftstil repräsentiert.
      */
-    public int getStyle()
+    @API
+    @Getter
+    public int style()
     {
         return style;
     }
@@ -125,7 +130,7 @@ public enum FontStyle
      *
      * @since 0.39.0
      */
-    public static FontStyle getStyle(int style)
+    public static FontStyle style(int style)
     {
         switch (style)
         {

@@ -60,7 +60,7 @@ public class TextDemo extends Scene
 
     public void demonstrateFontStyle(int style, int y)
     {
-        add(new Text(FontStyle.getStyle(style).toString())
+        add(new Text(FontStyle.style(style).toString())
             .font(fonts.defaultFont(style))
             .anchor(3, y));
     }

@@ -239,7 +239,7 @@ public abstract class TextBox extends LeafBox
     @ChainableMethod
     public TextBox fontStyle(FontStyle fontStyle)
     {
-        this.fontStyle = fontStyle.getStyle();
+        this.fontStyle = fontStyle.style();
         font = font.deriveFont(this.fontStyle);
         calculateDimension();
         return this;
@@ -295,7 +295,7 @@ public abstract class TextBox extends LeafBox
     @Getter
     public FontStyle fontStyle()
     {
-        return FontStyle.getStyle(fontStyle);
+        return FontStyle.style(fontStyle);
     }
 
     /* color */

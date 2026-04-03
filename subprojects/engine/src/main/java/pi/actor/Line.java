@@ -193,12 +193,81 @@ public class Line extends Actor
         return this;
     }
 
+    /* rounded */
+
+    private boolean rounded = false;
+
+    @API
+    @Getter
+    public boolean rounded()
+    {
+        return rounded;
+    }
+
+    @API
+    @Setter
+    @ChainableMethod
+    public Line rounded(boolean rounded)
+    {
+        this.rounded = rounded;
+        return this;
+    }
+
+    private Cap cap = null;
+
+    /* cap */
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/line/LineCapPatternDemo.java
+
+    @API
+    @Getter
+    public Cap cap()
+    {
+        if (cap != null)
+        {
+            return cap;
+        }
+
+        if (rounded())
+        {
+            return Cap.ROUND;
+        }
+        return Cap.BUTT;
+    }
+
+    @API
+    @Setter
+    public Line cap(Cap cap)
+    {
+        this.cap = cap;
+        if (cap != Cap.ROUND)
+        {
+            rounded = false;
+        }
+        return this;
+    }
+
     /* dashed */
 
     /**
      * Gibt an, ob eine gestrichelte Linie gezeichnet werden soll.
      */
     private boolean dashed = false;
+
+    /**
+     * Gibt an, ob die Linie <b>gestrichelt</b> oder durchgezogen gezeichnet
+     * wird.
+     *
+     * @return Ob die Linie <b>gestrichelt</b> oder durchgezogen gezeichnet
+     *     wird.
+     */
+    @API
+    @Getter
+    public boolean dashed()
+    {
+        return dashed;
+    }
 
     /**
      * Setzt, ob eine gestrichelte Linie gezeichnet werden soll oder nicht.
@@ -211,6 +280,49 @@ public class Line extends Actor
     public Line dashed(boolean dashed)
     {
         this.dashed = dashed;
+        return this;
+    }
+
+    /* dashPattern */
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/line/LineDashPatternDemo.java
+
+    private double[] dashPattern = new double[] {};
+
+    public double[] dashPattern()
+    {
+        return dashPattern;
+    }
+
+    /**
+     * Legt das Strichmuster für die Darstellung dieser Linie fest.
+     *
+     * <p>
+     * Die übergebenen Werte definieren abwechselnd sichtbare und ausgelassene
+     * Abschnittslängen (z. B. {@code 5, 3} für 5 Einheiten Strich, 3 Einheiten
+     * Lücke).
+     * </p>
+     *
+     * @param dashPattern Ein Strichmuster als Folge von Abschnittslängen.
+     *
+     * @return diese {@code Line}-Instanz zur Verkettung weiterer Aufrufe
+     *     (Fluent API)
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Line dashPattern(double... dashPattern)
+    {
+        if (dashPattern.length < 1)
+        {
+            throw new IllegalArgumentException(
+                    "Ein Strichmuster muss mindestens aus einem Abschnitt bestehen.");
+        }
+        this.dashPattern = dashPattern;
+        dashed = true;
         return this;
     }
 
@@ -297,10 +409,23 @@ public class Line extends Actor
 
         if (dashed)
         {
-            dash = new float[] { scaledStrokeWidth * 6, scaledStrokeWidth * 3 };
+            if (this.dashPattern.length > 1)
+            {
+                dash = new float[this.dashPattern.length];
+                for (int i = 0; i < this.dashPattern.length; i++)
+                {
+                    dash[i] = (float) (this.dashPattern[i] * pixelPerMeter);
+                }
+
+            }
+            else
+            {
+                dash = new float[] { scaledStrokeWidth * 6,
+                        scaledStrokeWidth * 3 };
+            }
         }
 
-        g.setStroke(new BasicStroke(scaledStrokeWidth, BasicStroke.CAP_ROUND,
+        g.setStroke(new BasicStroke(scaledStrokeWidth, cap().cap(),
                 BasicStroke.JOIN_MITER, 10.0f, dash, 1f));
         g.setColor(color());
 
@@ -712,6 +837,52 @@ public class Line extends Actor
          * Eine Pfeilspitze in Form eines <b>Dreiecks</b>.
          */
         TRIANGLE
+    }
+
+    /**
+     * Definiert die Form der Endkappen einer Linie.
+     *
+     * <p>
+     * Die Endkappe bestimmt, wie der Anfangs- und Endpunkt einer gezeichneten
+     * Linie visuell abgeschlossen wird:
+     * </p>
+     *
+     * <ul>
+     * <li>{@link #BUTT}: Gerade abgeschnitten, exakt am Endpunkt.</li>
+     * <li>{@link #ROUND}: Abgerundet mit halbrunder Kappe am Endpunkt.</li>
+     * <li>{@link #SQUARE}: Rechteckig verlängert über den Endpunkt hinaus.</li>
+     * </ul>
+     *
+     * @since 0.45.0
+     */
+    public enum Cap
+    {
+        /**
+         * Gerade abgeschnitten, exakt am Endpunkt.
+         */
+        BUTT(0),
+
+        /**
+         * Abgerundet mit halbrunder Kappe am Endpunkt.
+         */
+        ROUND(1),
+
+        /**
+         * Rechteckig verlängert über den Endpunkt hinaus.
+         */
+        SQUARE(2);
+
+        private final int cap;
+
+        Cap(int cap)
+        {
+            this.cap = cap;
+        }
+
+        public int cap()
+        {
+            return cap;
+        }
     }
 
     /**

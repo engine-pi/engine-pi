@@ -225,8 +225,8 @@ public final class FontContainer extends ResourcesContainer<Font>
     @Getter
     public Font defaultFont(FontStyle style)
     {
-        return super.get(defaultFontFiles[style.getStyle()])
-            .deriveFont(style.getStyle());
+        return super.get(defaultFontFiles[style.style()])
+            .deriveFont(style.style());
     }
 
     /**
@@ -242,7 +242,7 @@ public final class FontContainer extends ResourcesContainer<Font>
     @Getter
     public Font defaultFont(int style)
     {
-        return defaultFont(FontStyle.getStyle(style));
+        return defaultFont(FontStyle.style(style));
     }
 
     /**

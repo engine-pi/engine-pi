@@ -246,13 +246,13 @@ public final class Random
      *     Enum-Wert.
      *
      * @see #fontStyleAsInt()
-     * @see FontStyle#getStyle(int)
+     * @see FontStyle#style(int)
      *
      * @since 0.42.0
      */
     public static FontStyle fontStyleAsEnum()
     {
-        return FontStyle.getStyle(fontStyleAsInt());
+        return FontStyle.style(fontStyleAsInt());
     }
 
     /**
