@@ -19,8 +19,10 @@
 package pi.actor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -85,6 +87,106 @@ public class LineTest
     {
         line.strokeWidth(1);
         assertEquals(1, line.strokeWidth(), 0.001);
+    }
+
+    @Nested
+    class RoundedTest
+    {
+        @Test
+        void defaultGetterReturnsFalse()
+        {
+            assertFalse(line.rounded());
+        }
+
+        @Test
+        void setterReturnsSameInstanceAndSetsTrue()
+        {
+            Line returned = line.rounded(true);
+
+            assertSame(line, returned);
+            assertTrue(line.rounded());
+            assertEquals(Line.Cap.ROUND, line.cap());
+        }
+
+        @Test
+        void roundedTrueOverridesPreviouslySetNonRoundCap()
+        {
+            line.cap(Line.Cap.BUTT);
+            assertEquals(Line.Cap.BUTT, line.cap());
+            assertFalse(line.rounded());
+
+            line.rounded(true);
+
+            assertTrue(line.rounded());
+            assertEquals(Line.Cap.ROUND, line.cap());
+        }
+
+        @Test
+        void roundedFalseKeepsExplicitNonRoundCap()
+        {
+            line.cap(Line.Cap.SQUARE);
+            assertEquals(Line.Cap.SQUARE, line.cap());
+
+            Line returned = line.rounded(false);
+
+            assertSame(line, returned);
+            assertFalse(line.rounded());
+            assertEquals(Line.Cap.SQUARE, line.cap());
+        }
+    }
+
+    @Nested
+    class CapRoundedTest
+    {
+        @Test
+        void defaultGetterReturnsButt()
+        {
+            assertEquals(Line.Cap.BUTT, line.cap());
+        }
+
+        @Test
+        void getterSetter()
+        {
+            Line returned = line.cap(Line.Cap.SQUARE);
+            assertSame(line, returned);
+            assertEquals(Line.Cap.SQUARE, line.cap());
+        }
+
+        @Test
+        void roundCapSetsRounded()
+        {
+            assertFalse(line.rounded());
+
+            Line returned = line.cap(Line.Cap.ROUND);
+
+            assertSame(line, returned);
+            assertEquals(Line.Cap.ROUND, line.cap());
+            assertTrue(line.rounded());
+        }
+
+        @Test
+        void roundedTrueAlsoMakesCapRound()
+        {
+            Line returned = line.rounded(true);
+
+            assertSame(line, returned);
+            assertTrue(line.rounded());
+            assertEquals(Line.Cap.ROUND, line.cap());
+        }
+
+        @Test
+        void nonRoundCapResetsRounded()
+        {
+            line.rounded(true);
+            assertTrue(line.rounded());
+            assertEquals(Line.Cap.ROUND, line.cap());
+
+            Line returned = line.cap(Line.Cap.BUTT);
+
+            assertSame(line, returned);
+            assertEquals(Line.Cap.BUTT, line.cap());
+            assertFalse(line.rounded());
+        }
     }
 
     @Test

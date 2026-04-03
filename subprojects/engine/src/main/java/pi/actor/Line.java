@@ -197,6 +197,14 @@ public class Line extends Actor
 
     private boolean rounded = false;
 
+    /**
+     * Gibt zurück, ob die Enden der Linie abgerundet dargestellt werden.
+     *
+     * @return {@code true}, wenn die Linienenden abgerundet sind, andernfalls
+     *     {@code false}
+     *
+     * @since 0.45.0
+     */
     @API
     @Getter
     public boolean rounded()
@@ -204,22 +212,56 @@ public class Line extends Actor
         return rounded;
     }
 
+    /**
+     * Legt fest, ob die Linie mit abgerundeten Enden dargestellt wird.
+     *
+     * <p>
+     * Ist {@code rounded} {@code true}, wird der Linienabschluss automatisch
+     * auf {@link Cap#ROUND} gesetzt.
+     *
+     * @param rounded {@code true} für abgerundete Linienenden, sonst
+     *     {@code false}
+     *
+     * @return diese {@link Line}-Instanz zur Verkettung weiterer Aufrufe
+     *
+     * @since 0.45.0
+     */
     @API
     @Setter
     @ChainableMethod
     public Line rounded(boolean rounded)
     {
         this.rounded = rounded;
+        if (rounded)
+        {
+            cap = Cap.ROUND;
+        }
         return this;
     }
-
-    private Cap cap = null;
 
     /* cap */
 
     // Go to
     // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/line/LineCapPatternDemo.java
 
+    /**
+     * Der Linienabschluss.
+     */
+    private Cap cap = null;
+
+    /**
+     * Gibt den <b>Linienabschluss</b> zurück.
+     *
+     * <p>
+     * Wenn ein Linienabschluss gesetzt wurde, wird dieser zurückgegeben.
+     * Andernfalls wird {@link Cap#ROUND} zurückgegeben, falls die Linie
+     * abgerundet ist, oder {@link Cap#BUTT}, falls keine Abrundung vorliegt.
+     * </p>
+     *
+     * @return Den <b>Linienabschluss</b>.
+     *
+     * @since 0.45.0
+     */
     @API
     @Getter
     public Cap cap()
@@ -236,14 +278,28 @@ public class Line extends Actor
         return Cap.BUTT;
     }
 
+    /**
+     * Setzt den <b>Linienabschluss</b>.
+     *
+     * @param cap Der <b>Linienabschluss</b>
+     *
+     * @return diese Instanz zur Verkettung von Methodenaufrufen.
+     *
+     * @since 0.45.0
+     */
     @API
     @Setter
+    @ChainableMethod
     public Line cap(Cap cap)
     {
         this.cap = cap;
         if (cap != Cap.ROUND)
         {
             rounded = false;
+        }
+        else
+        {
+            rounded = true;
         }
         return this;
     }
