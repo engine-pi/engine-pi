@@ -32,24 +32,50 @@ import pi.actor.Text;
  */
 public class LineDashPatternDemo extends Scene
 {
-    int yCursor = 8;
+    final int START = -8;
+
+    final int END = 8;
+
+    int yCursor = 7;
 
     public LineDashPatternDemo()
     {
-        createDashedLine(1);
-        createDashedLine(0.5);
+
+        add(new Text(".dashed(true)").anchor(START, yCursor));
+        yCursor--;
+        createDashedLine(0.05);
+        createDashedLine(0.1);
         createDashedLine(0.25);
-        createDashedLine(1, 1);
-        createDashedLine(1, 2);
-        createDashedLine(0.5, 0.5);
-        createDashedLine(0.5, 1);
-        createDashedLine(0.1, 0.2, 0.3);
+        createDashedLine(0.5);
+        createDashedLine(1);
+        yCursor--;
+        add(new Text(".dashPattern(...)").anchor(START, yCursor));
+        yCursor--;
+
+        createDashPatternLine(1);
+        createDashPatternLine(0.5);
+        createDashPatternLine(0.25);
+        createDashPatternLine(1, 1);
+        createDashPatternLine(1, 2);
+        createDashPatternLine(0.5, 0.5);
+        createDashPatternLine(0.5, 1);
+        createDashPatternLine(0.1, 0.2, 0.3);
+
     }
 
-    private void createDashedLine(double... dashPattern)
+    private void createDashedLine(double strokeWidth)
+    {
+        add(new Text(strokeWidth).height(0.5)
+            .anchor(START - 3, yCursor - 0.25));
+        add(new Line(START, yCursor, END, yCursor).strokeWidth(strokeWidth)
+            .dashed(true));
+        yCursor--;
+    }
+
+    private void createDashPatternLine(double... dashPattern)
     {
         add(new Text(dashPattern).height(0.5).anchor(-11, yCursor - 0.25));
-        add(new Line(-8, yCursor, 8, yCursor).dashPattern(dashPattern));
+        add(new Line(START, yCursor, END, yCursor).dashPattern(dashPattern));
         yCursor--;
     }
 
