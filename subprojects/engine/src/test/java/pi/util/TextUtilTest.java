@@ -18,15 +18,23 @@
  */
 package pi.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
 import static pi.util.TextAlignment.RIGHT;
 import static pi.util.TextUtil.align;
+import static pi.util.TextUtil.convertToString;
 import static pi.util.TextUtil.getLineCount;
 import static pi.util.TextUtil.getLineWidth;
 import static pi.util.TextUtil.wrap;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -156,6 +164,180 @@ public class TextUtilTest
         {
             assertEquals(wrap("Lorem\nipsum\ndolor\nsit", 10),
                 "Lorem\nipsum\ndolor\nsit");
+        }
+    }
+
+    @Nested
+    class ConvertToStringTest
+    {
+        @Test
+        void nullValue()
+        {
+            assertEquals(convertToString(null), "null");
+        }
+
+        @Test
+        void simpleString()
+        {
+            assertEquals(convertToString("hello"), "hello");
+        }
+
+        @Test
+        void integer()
+        {
+            assertEquals(convertToString(42), "42");
+        }
+
+        @Test
+        void doubleValue()
+        {
+            assertEquals(convertToString(3.14), "3.14");
+        }
+
+        @Test
+        void emptyList()
+        {
+            assertEquals(convertToString(List.of()), "[]");
+        }
+
+        @Test
+        void listWithStrings()
+        {
+            assertEquals(convertToString(List.of("a", "b", "c")), "[a, b, c]");
+        }
+
+        @Test
+        void listWithIntegers()
+        {
+            assertEquals(convertToString(List.of(1, 2, 3)), "[1, 2, 3]");
+        }
+
+        @Test
+        void listWithMixedTypes()
+        {
+            assertEquals(convertToString(List.of("a", 1, "b", 2)),
+                "[a, 1, b, 2]");
+        }
+
+        @Test
+        void listWithNullElement()
+        {
+            List<Object> list = new ArrayList<>();
+            list.add("a");
+            list.add(null);
+            list.add("b");
+            assertEquals(convertToString(list), "[a, null, b]");
+        }
+
+        @Test
+        void emptySet()
+        {
+            assertEquals(convertToString(Set.of()), "[]");
+        }
+
+        @Test
+        void setWithElements()
+        {
+            String result = convertToString(Set.of("x", "y", "z"));
+            assertEquals(result.startsWith("["), true);
+            assertEquals(result.endsWith("]"), true);
+            assertEquals(result.contains("x"), true);
+            assertEquals(result.contains("y"), true);
+            assertEquals(result.contains("z"), true);
+        }
+
+        @Test
+        void emptyMap()
+        {
+            assertEquals(convertToString(Map.of()), "{}");
+        }
+
+        @Test
+        void mapWithOneEntry()
+        {
+            assertEquals(convertToString(Map.of("key", "value")),
+                "{key=value}");
+        }
+
+        @Test
+        void mapWithMultipleEntries()
+        {
+            Map<String, String> map = new HashMap<>();
+            map.put("a", "1");
+            map.put("b", "2");
+            String result = convertToString(map);
+            assertEquals(result.startsWith("{"), true);
+            assertEquals(result.endsWith("}"), true);
+            assertEquals(result.contains("a=1"), true);
+            assertEquals(result.contains("b=2"), true);
+        }
+
+        @Test
+        void mapWithIntegerValues()
+        {
+            String result = convertToString(Map.of("x", 10, "y", 20));
+            assertTrue(
+                result.equals("{x=10, y=20}") || result.equals("{y=20, x=10}"));
+        }
+
+        @Test
+        void objectArrayWithStrings()
+        {
+            String[] array = { "a", "b", "c" };
+            assertEquals(convertToString(array), "[a, b, c]");
+        }
+
+        @Test
+        void objectArrayWithIntegers()
+        {
+            int[] array = { 1, 2, 3 };
+            assertEquals(convertToString(array), "[1, 2, 3]");
+        }
+
+        @Test
+        void objectArrayEmpty()
+        {
+            double[] array = {};
+            assertEquals(convertToString(array), "[]");
+        }
+
+        @Test
+        void nestedList()
+        {
+            List<String> inner = List.of("x", "y");
+            List<Object> outer = new ArrayList<>();
+            outer.add("a");
+            outer.add(inner);
+            outer.add("b");
+            assertEquals(convertToString(outer), "[a, [x, y], b]");
+        }
+
+        @Test
+        void nestedMap()
+        {
+            Map<String, Object> inner = new HashMap<>();
+            inner.put("key1", "val1");
+            Map<String, Object> outer = new HashMap<>();
+            outer.put("nested", inner);
+            String result = convertToString(outer);
+            assertEquals(result.contains("nested={"), true);
+            assertEquals(result.contains("key1=val1"), true);
+        }
+
+        @Test
+        void listInsideMap()
+        {
+            Map<String, Object> map = new HashMap<>();
+            map.put("items", List.of(1, 2, 3));
+            String result = convertToString(map);
+            assertEquals(result.contains("items=[1, 2, 3]"), true);
+        }
+
+        @Test
+        void arrayWithNull()
+        {
+            Object[] array = { "a", null, "b" };
+            assertEquals(convertToString(array), "[a, null, b]");
         }
     }
 }

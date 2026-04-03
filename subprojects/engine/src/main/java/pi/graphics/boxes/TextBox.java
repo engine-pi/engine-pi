@@ -30,6 +30,7 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.resources.font.FontStyle;
+import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextLineBoxDemo.java
 
@@ -111,7 +112,7 @@ public abstract class TextBox extends LeafBox
             // pi.graphics.boxes.TextBlockBox.splitIntoLines(TextBlockBox.java:333)
             content = " ";
         }
-        this.content = String.valueOf(content);
+        this.content = TextUtil.convertToString(content);
         calculateDimension();
         return this;
     }

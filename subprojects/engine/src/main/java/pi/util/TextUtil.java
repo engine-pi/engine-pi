@@ -22,6 +22,7 @@ import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
 import static pi.util.TextAlignment.RIGHT;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
@@ -260,5 +261,105 @@ public class TextUtil
     public static String wrap(String text, int width)
     {
         return wrap(text, width, LEFT);
+    }
+
+    /**
+     * Konvertiert ein Objekt zu einer Zeichenkette. Für Arrays, Listen, Sets
+     * und Karten werden die einzelnen Elemente in die resultierende
+     * Zeichenkette konvertiert.
+     *
+     * <p>
+     * Beispiele:
+     * </p>
+     * <ul>
+     * <li>{@code null} → {@code "null"}
+     * <li>{@code "text"} → {@code "text"}
+     * <li>{@code [1, 2, 3]} → {@code "[1, 2, 3]"}
+     * <li>{@code [1.5, 2.5]} → {@code "[1.5, 2.5]"}
+     * <li>{@code List.of("a", "b")} → {@code "[a, b]"}
+     * <li>{@code Map.of("key", "value")} → {@code "{key=value}"}
+     * </ul>
+     *
+     * @param object Das Objekt, das konvertiert werden soll.
+     *
+     * @return Die Zeichenketten-Repräsentation des Objekts mit konvertierten
+     *     Elementen für Sammlungstypen.
+     *
+     * @since 0.45.0
+     */
+    public static String convertToString(Object object)
+    {
+        if (object == null)
+        {
+            return "null";
+        }
+
+        if (object instanceof java.util.Map<?, ?> map)
+        {
+            StringBuilder sb = new StringBuilder("{");
+            var entries = map.entrySet().iterator();
+            while (entries.hasNext())
+            {
+                var entry = entries.next();
+                sb.append(convertToString(entry.getKey()))
+                    .append("=")
+                    .append(convertToString(entry.getValue()));
+                if (entries.hasNext())
+                {
+                    sb.append(", ");
+                }
+            }
+            sb.append("}");
+            return sb.toString();
+        }
+
+        if (object instanceof java.util.Set<?> set)
+        {
+            StringBuilder sb = new StringBuilder("[");
+            var iterator = set.iterator();
+            while (iterator.hasNext())
+            {
+                sb.append(convertToString(iterator.next()));
+                if (iterator.hasNext())
+                {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+
+        if (object instanceof java.util.List<?> list)
+        {
+            StringBuilder sb = new StringBuilder("[");
+            for (int i = 0; i < list.size(); i++)
+            {
+                sb.append(convertToString(list.get(i)));
+                if (i < list.size() - 1)
+                {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+
+        if (object.getClass().isArray())
+        {
+            StringBuilder sb = new StringBuilder("[");
+            int length = Array.getLength(object);
+            for (int i = 0; i < length; i++)
+            {
+                sb.append(convertToString(Array.get(object, i)));
+                if (i < length - 1)
+                {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
+        }
+
+        return object.toString();
     }
 }

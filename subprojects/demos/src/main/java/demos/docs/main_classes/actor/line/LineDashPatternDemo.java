@@ -36,15 +36,19 @@ public class LineDashPatternDemo extends Scene
 
     public LineDashPatternDemo()
     {
-        createDashedLine(0.1, 0.2, 0.3);
-        createDashedLine(0.5, 0.25);
+        createDashedLine(1);
+        createDashedLine(0.5);
+        createDashedLine(0.25);
+        createDashedLine(1, 1);
         createDashedLine(1, 2);
-        createDashedLine(0.1);
+        createDashedLine(0.5, 0.5);
+        createDashedLine(0.5, 1);
+        createDashedLine(0.1, 0.2, 0.3);
     }
 
     private void createDashedLine(double... dashPattern)
     {
-        add(new Text(dashPattern).height(0.5).anchor(-7, yCursor));
+        add(new Text(dashPattern).height(0.5).anchor(-11, yCursor - 0.25));
         add(new Line(-8, yCursor, 8, yCursor).dashPattern(dashPattern));
         yCursor--;
     }

@@ -465,7 +465,7 @@ public class Line extends Actor
 
         if (dashed)
         {
-            if (this.dashPattern.length > 1)
+            if (this.dashPattern.length > 0)
             {
                 dash = new float[this.dashPattern.length];
                 for (int i = 0; i < this.dashPattern.length; i++)
