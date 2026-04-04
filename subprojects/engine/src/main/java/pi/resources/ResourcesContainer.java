@@ -518,7 +518,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
         }
         catch (Exception e)
         {
-            throw new ResourceLoadException(e);
+            throw new ResourceLoadException(
+                    "Die Ressource konnte nicht geladen werden: " + identifier);
         }
         String alias = this.alias(identifier, newResource);
         if (alias != null)

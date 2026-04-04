@@ -1,6 +1,7 @@
 package pi.resources.font;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import pi.resources.ResourceLoadException;
 import pi.resources.Resources;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
@@ -42,7 +44,6 @@ public class FontContainerTest
     public void defaultFont()
     {
         var font = container.defaultFont(FontStyle.PLAIN);
-
         assertEquals("Cantarell Regular", font.getName());
         assertEquals(0, font.getStyle());
     }
@@ -79,5 +80,15 @@ public class FontContainerTest
         {
             assertEquals(3, getStyle(FontStyle.BOLD_ITALIC));
         }
+    }
+
+    @Test
+    public void throwsException()
+    {
+        ResourceLoadException exception = assertThrows(
+            ResourceLoadException.class,
+            () -> container.get("xxx"));
+        assertEquals("Die Ressource konnte nicht geladen werden: xxx",
+            exception.getMessage());;
     }
 }
