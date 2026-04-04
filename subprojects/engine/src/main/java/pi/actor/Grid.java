@@ -24,9 +24,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/actor/GridTest.java
 
 /**
  * Beschreibt ein <b>Gitter</b> aus quadratischen Zellen.
@@ -36,25 +40,28 @@ import pi.physics.FixtureBuilder;
 public class Grid extends Actor
 {
     /**
-     * Die Anzahl der Spalten in x-Richtung.
+     * Die Anzahl der <b>Spalten</b> in x-Richtung.
      */
     int cols;
 
     /**
-     * Die Anzahl der Reihen in y-Richtung.
+     * Die Anzahl der <b>Reihen</b> in y-Richtung.
      */
     int rows;
 
     /**
-     * Die Größe einer Zelle bzw. eines Quadrats in Pixelmeter. Ist
-     * beispielsweise die Einheit Pixelmeter auf 60 Pixel und dieses Attribut
-     * auf 2 gesetzt, dann werden die vom Gitter eingeschlossenen Quadrate 120
-     * auf 120 Pixel groß.
+     * Die Größe einer Zelle bzw. eines Quadrats in Meter.
+     *
+     * <p>
+     * Ist beispielsweise die Einheit Meter auf 60 Pixel und dieses Attribut auf
+     * 2 gesetzt, dann werden die vom Gitter eingeschlossenen Quadrate 120 auf
+     * 120 Pixel groß.
+     * </p>
      */
     double size = 1;
 
     /**
-     * Die Dicke der Linien in Pixelmeter.
+     * Die Dicke der Linien in Meter.
      */
     double lineThickness = 0.02;
 
@@ -66,22 +73,23 @@ public class Grid extends Actor
     /**
      * @param cols Die Anzahl der Spalten in x-Richtung.
      * @param rows Die Anzahl der Reihen in y-Richtung.
-     * @param size Die Größe einer Zelle bzw. eines Quadrats in Pixelmeter. Ist
-     *     beispielsweise die Einheit Pixelmeter auf 60 Pixel und dieses
-     *     Attribut auf 2 gesetzt, dann werden die vom Gitter eingeschlossenen
-     *     Quadrate 120 auf 120 Pixel groß.
+     * @param size Die Größe einer Zelle bzw. eines Quadrats in Meter. Ist
+     *     beispielsweise die Einheit Meter auf 60 Pixel und dieses Attribut auf
+     *     2 gesetzt, dann werden die vom Gitter eingeschlossenen Quadrate 120
+     *     auf 120 Pixel groß.
      */
     public Grid(int cols, int rows, double size)
     {
-        super(() -> FixtureBuilder.rectangle(cols * size, rows * size));
+        super(null);
         this.cols = cols;
         this.rows = rows;
         this.size = size;
         color = colorScheme.get().green();
+        update();
     }
 
     /**
-     * Erstellt ein Gitter mit der Zellengröße von einem Pixelmeter.
+     * Erstellt ein Gitter mit der Zellengröße von einem Meter.
      *
      * @param cols Die Anzahl der Spalten in x-Richtung.
      * @param rows Die Anzahl der Reihen in y-Richtung.
@@ -91,26 +99,157 @@ public class Grid extends Actor
         this(cols, rows, 1);
     }
 
+    /* cols */
+
     /**
-     * Setzt die Dicke der Linien in Pixelmeter.
+     * Gibt die <b>Anzahl der Spalten</b> in x-Richtung zurück.
      *
-     * @param lineThickness Die Dicke der Linien in Pixelmeter.
+     * @return Die {@code Anzahl der Spalten} in x-Richtung.
      */
-    public void setLineThickness(double lineThickness)
+    @API
+    @Getter
+    public int cols()
     {
-        this.lineThickness = lineThickness;
+        return cols;
     }
 
     /**
-     * Setzt die Hintergrundfarbe.
+     * Setzt die <b>Anzahl der Spalten</b> in x-Richtung.
      *
-     * @param color Die Hintergrundfarbe.
+     * @param cols Die {@code Anzahl der Spalten} in x-Richtung.
      */
     @API
     @Setter
-    public void background(Color color)
+    @ChainableMethod
+    public Grid cols(int cols)
     {
-        background = color;
+        this.cols = cols;
+        update();
+
+        return this;
+    }
+
+    /* rows */
+
+    /**
+     * Gibt die <b>Anzahl der Reihen</b> in y-Richtung zurück.
+     *
+     * @return Die {@code Anzahl der Reihen} in y-Richtung.
+     */
+    @API
+    @Getter
+    public int rows()
+    {
+        return rows;
+    }
+
+    /**
+     * Setzt die <b>Anzahl der Reihen</b> in y-Richtung.
+     *
+     * @param rows Die {@code Anzahl der Reihen} in y-Richtung.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Grid rows(int rows)
+    {
+        this.rows = rows;
+        update();
+
+        return this;
+    }
+
+    /* size */
+
+    /**
+     * Gibt die <b>Größe einer Zelle bzw. eines Quadrats</b> in Meter zurück.
+     *
+     * @return Die {@code Größe einer Zelle bzw. eines Quadrats} in Meter.
+     */
+    @API
+    @Getter
+    public double size()
+    {
+        return size;
+    }
+
+    /**
+     * Setzt die <b>Größe einer Zelle bzw. eines Quadrats</b> in Meter.
+     *
+     * @param size Die {@code Größe einer Zelle bzw. eines Quadrats} in Meter.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Grid size(double size)
+    {
+        this.size = size;
+        update();
+        return this;
+    }
+
+    /* lineThickness */
+
+    /**
+     * Gibt die <b>Dicke der Linien</b> in Meter zurück.
+     *
+     * @return Die {@code Dicke der Linien} in Meter.
+     */
+    @API
+    @Getter
+    public double lineThickness()
+    {
+        return lineThickness;
+    }
+
+    /**
+     * Setzt die <b>Dicke der Linien</b> in Meter.
+     *
+     * @param lineThickness Die {@code Dicke der Linien} in Meter.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Grid lineThickness(double lineThickness)
+    {
+        this.lineThickness = lineThickness;
+        return this;
+    }
+
+    /* background */
+
+    /**
+     * Gibt die <b>Hintergrundfarbe</b> zurück.
+     *
+     * @return Die <b>Hintergrundfarbe</b>.
+     */
+    @API
+    @Getter
+    public Color background()
+    {
+        return background;
+    }
+
+    /**
+     * Setzt die <b>Hintergrundfarbe</b>.
+     *
+     * @param background Die <b>Hintergrundfarbe</b>.
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public void background(Color background)
+    {
+        this.background = background;
+    }
+
+    /**
+     * @hidden
+     */
+    @Internal
+    public void update()
+    {
+        fixture(() -> FixtureBuilder.rectangle(cols * size, rows * size));
     }
 
     /**

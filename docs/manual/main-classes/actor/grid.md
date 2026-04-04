@@ -7,4 +7,11 @@ Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
 `#!java import pi.actor.Grid;`
 importiert werden.
 
+## Klassenkarte
+
+{{ drawio('Grid') }}
+/// caption
+Die Klassenkarte der Figur `Gird` mit den Konstruktoren und allen Settern/Gettern.
+///
+
 {{ contribute() }}

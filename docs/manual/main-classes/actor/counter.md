@@ -11,5 +11,5 @@ importiert werden.
 
 {{ drawio('StopWatch') }}
 /// caption
-Das Klassenkarte der Figur `Counter` mit dem Konstruktor und allen Settern.
+Die Klassenkarte der Figur `Counter` mit dem Konstruktor und allen Settern.
 ///
