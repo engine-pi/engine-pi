@@ -33,5 +33,5 @@ import javax.sound.sampled.AudioFormat;
  */
 public interface Track extends Iterable<Sound>
 {
-    AudioFormat getFormat();
+    AudioFormat format();
 }

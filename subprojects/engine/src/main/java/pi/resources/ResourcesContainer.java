@@ -89,7 +89,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
     public ResourcesContainerListener<T> addContainerListener(
             ResourcesContainerListener<T> listener)
     {
-        this.listeners.add(listener);
+        listeners.add(listener);
         return listener;
     }
 
@@ -103,7 +103,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public void removeContainerListener(ResourcesContainerListener<T> listener)
     {
-        this.listeners.remove(listener);
+        listeners.remove(listener);
     }
 
     /**
@@ -116,7 +116,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public void addClearedListener(ResourcesContainerClearedListener listener)
     {
-        this.clearedListeners.add(listener);
+        clearedListeners.add(listener);
     }
 
     /**
@@ -130,7 +130,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
     public void removeClearedListener(
             ResourcesContainerClearedListener listener)
     {
-        this.clearedListeners.remove(listener);
+        clearedListeners.remove(listener);
     }
 
     /**
@@ -200,8 +200,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public void clear()
     {
-        this.resources.clear();
-        for (ResourcesContainerListener<T> listener : this.listeners)
+        resources.clear();
+        for (ResourcesContainerListener<T> listener : listeners)
         {
             listener.cleared();
         }
@@ -222,12 +222,12 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public boolean contains(String name)
     {
-        return this.resources.containsKey(this.getIdentifier(name));
+        return resources.containsKey(identifier(name));
     }
 
     public boolean contains(URL name)
     {
-        return this.contains(name.toString());
+        return contains(name.toString());
     }
 
     /**
@@ -240,7 +240,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public boolean contains(T resource)
     {
-        return this.resources.containsValue(resource);
+        return resources.containsValue(resource);
     }
 
     /**
@@ -250,7 +250,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public int count()
     {
-        return this.resources.size();
+        return resources.size();
     }
 
     /**
@@ -267,7 +267,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         {
             return new ArrayList<>();
         }
-        return this.resources.values().stream().filter(pred).toList();
+        return resources.values().stream().filter(pred).toList();
     }
 
     /**
@@ -292,12 +292,12 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public T get(String name)
     {
-        return this.get(this.getIdentifier(name), false);
+        return get(identifier(name), false);
     }
 
     public T get(URL name)
     {
-        return this.get(name, false);
+        return get(name, false);
     }
 
     /**
@@ -316,7 +316,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public T get(String name, Supplier<? extends T> loadCallback)
     {
-        Optional<T> opt = this.tryGet(name);
+        Optional<T> opt = tryGet(name);
         if (opt.isPresent())
         {
             return opt.get();
@@ -324,7 +324,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         T resource = loadCallback.get();
         if (resource != null)
         {
-            return this.add(name, resource);
+            return add(name, resource);
         }
         throw new ResourceLoadException(
                 "Die Ressource " + name + " konnte nicht geladen werden.");
@@ -332,7 +332,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
 
     public T get(URL name, Supplier<? extends T> loadCallback)
     {
-        return this.get(name.toString(), loadCallback);
+        return get(name.toString(), loadCallback);
     }
 
     /**
@@ -355,23 +355,23 @@ public abstract class ResourcesContainer<T> implements Container<T>
             throw new IllegalArgumentException(
                     "Der Name der Ressource darf nicht null sein.");
         }
-        T resource = this.resources.get(name);
+        T resource = resources.get(name);
         if (forceLoad || resource == null)
         {
-            resource = this.loadResource(name);
+            resource = loadResource(name);
             if (resource == null)
             {
                 throw new ResourceLoadException("Die Ressource " + name
                         + " konnte nicht geladen werden.");
             }
-            return this.add(name, resource);
+            return add(name, resource);
         }
         return resource;
     }
 
     public T get(URL name, boolean forceLoad)
     {
-        return this.get(name.toString(), forceLoad);
+        return get(name.toString(), forceLoad);
     }
 
     @SuppressWarnings("unchecked")
@@ -397,7 +397,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public Future<T> getAsync(URL location)
     {
-        return ASYNC_POOL.submit(() -> this.get(location));
+        return ASYNC_POOL.submit(() -> get(location));
     }
 
     /**
@@ -412,7 +412,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public Future<T> getAsync(String name)
     {
-        return this.getAsync(ResourceLoader.location(this.getIdentifier(name)));
+        return getAsync(ResourceLoader.location(identifier(name)));
     }
 
     /**
@@ -422,7 +422,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public Collection<T> getAll()
     {
-        return this.resources.values();
+        return resources.values();
     }
 
     /**
@@ -434,10 +434,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public T remove(String name)
     {
-        T removedResource = this.resources.remove(name);
+        T removedResource = resources.remove(name);
         if (removedResource != null)
         {
-            for (ResourcesContainerListener<? super T> listener : this.listeners)
+            for (ResourcesContainerListener<? super T> listener : listeners)
             {
                 listener.removed(name, removedResource);
             }
@@ -447,7 +447,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
 
     public T remove(URL name)
     {
-        return this.remove(name.toString());
+        return remove(name.toString());
     }
 
     /**
@@ -471,16 +471,16 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public Optional<T> tryGet(String name)
     {
-        if (this.contains(name))
+        if (contains(name))
         {
-            return Optional.of(this.get(name));
+            return Optional.of(get(name));
         }
         return Optional.empty();
     }
 
     public Optional<T> tryGet(URL name)
     {
-        return this.tryGet(name.getPath());
+        return tryGet(name.getPath());
     }
 
     protected abstract T load(URL name) throws Exception;
@@ -506,7 +506,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
 
     protected Map<String, T> getResources()
     {
-        return this.resources;
+        return resources;
     }
 
     protected T loadResource(String identifier)
@@ -514,23 +514,24 @@ public abstract class ResourcesContainer<T> implements Container<T>
         T newResource;
         try
         {
-            newResource = this.load(ResourceLoader.location(identifier));
+            newResource = load(ResourceLoader.location(identifier));
         }
         catch (Exception e)
         {
             throw new ResourceLoadException(
                     "Die Ressource konnte nicht geladen werden: " + identifier);
         }
-        String alias = this.alias(identifier, newResource);
+        String alias = alias(identifier, newResource);
         if (alias != null)
         {
-            this.aliases.put(alias, identifier);
+            aliases.put(alias, identifier);
         }
         return newResource;
     }
 
-    private String getIdentifier(String name)
+    @Getter
+    private String identifier(String name)
     {
-        return this.aliases.getOrDefault(name, name);
+        return aliases.getOrDefault(name, name);
     }
 }

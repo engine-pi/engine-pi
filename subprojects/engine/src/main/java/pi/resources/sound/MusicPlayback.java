@@ -38,7 +38,7 @@ public class MusicPlayback extends Playback
 
     public MusicPlayback(Track track) throws LineUnavailableException
     {
-        super(track.getFormat());
+        super(track.format());
         this.track = track;
         this.musicVolume = this.createVolumeControl();
         this.musicVolume.set(1);

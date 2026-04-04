@@ -50,7 +50,7 @@ public class LoopedTrack implements Track, Iterator<Sound>
     }
 
     @Override
-    public AudioFormat getFormat()
+    public AudioFormat format()
     {
         return this.track.getFormat();
     }

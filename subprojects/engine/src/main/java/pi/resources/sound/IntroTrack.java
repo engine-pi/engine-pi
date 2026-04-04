@@ -29,6 +29,8 @@ import java.util.Iterator;
 import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
+import pi.annotations.Getter;
+
 /**
  * Eine Audiospur, die einmalig eine Eingangsmusik und die darauf folgende Musik
  * in einer Endlosschleife abspielt.
@@ -72,9 +74,9 @@ public class IntroTrack implements Track
         @Override
         public Sound next()
         {
-            if (this.first)
+            if (first)
             {
-                this.first = false;
+                first = false;
                 return IntroTrack.this.intro;
             }
             return IntroTrack.this.loop;
@@ -87,20 +89,23 @@ public class IntroTrack implements Track
         return new Iter();
     }
 
+    @Getter
     @Override
-    public AudioFormat getFormat()
+    public AudioFormat format()
     {
-        return this.loop.getFormat();
+        return loop.getFormat();
     }
 
-    public Sound getIntro()
+    @Getter
+    public Sound intro()
     {
-        return this.intro;
+        return intro;
     }
 
-    public Sound getLoop()
+    @Getter
+    public Sound loop()
     {
-        return this.loop;
+        return loop;
     }
 
     @Override
@@ -112,7 +117,7 @@ public class IntroTrack implements Track
         }
         if (anObject instanceof IntroTrack it)
         {
-            return this.intro == it.intro && this.loop == it.loop;
+            return intro == it.intro && loop == it.loop;
         }
         return false;
     }
@@ -120,12 +125,12 @@ public class IntroTrack implements Track
     @Override
     public int hashCode()
     {
-        return this.loop.hashCode() * 31 + this.intro.hashCode();
+        return loop.hashCode() * 31 + intro.hashCode();
     }
 
     @Override
     public String toString()
     {
-        return "looped track: " + this.loop + ", with intro: " + this.intro;
+        return "looped track: " + loop + ", with intro: " + intro;
     }
 }

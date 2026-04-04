@@ -84,7 +84,7 @@ public class SinglePlayTrack implements Track
     }
 
     @Override
-    public AudioFormat getFormat()
+    public AudioFormat format()
     {
         return this.sound.getFormat();
     }
