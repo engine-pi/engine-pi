@@ -40,7 +40,7 @@ public abstract class NamedResource implements Resource
     @Override
     public String name()
     {
-        return this.name;
+        return name;
     }
 
     @Setter

@@ -290,7 +290,7 @@ Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/pom.xml)
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/Client.java)
 
-Als Nächstes lege ich ein eigenständiges CLI-Tool im bestehenden Modul cli an, mit rekursivem Scan von `.java`/`.md`, URI-Parsing für  und Exit-Code `1` bei defekten Links.
+Als Nächstes lege ich ein eigenständiges CLI-Tool im bestehenden Modul cli an, mit rekursivem Scan von `.java`/`.md`, URI-Parsing für und Exit-Code `1` bei defekten Links.
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli)
 
@@ -306,49 +306,47 @@ Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main
 
 Generating patch (22 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
 
-
 ```
 
 ```
+
 Die Implementierung ist drin; ich kompiliere jetzt das CLI-Modul und führe das Tool einmal gegen das Repository aus, um Verhalten und Ausgabe zu prüfen.
 
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile
 
-Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 30
+Ran terminal command: mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 30
 
-Ich habe bei der Validierung noch Rauschen erkannt (z. B.  in Codebeispielen/Regexen). Ich schärfe deshalb die Erkennung auf echte absolute `file:///...`-Links und teste erneut.
+Ich habe bei der Validierung noch Rauschen erkannt (z. B. in Codebeispielen/Regexen). Ich schärfe deshalb die Erkennung auf echte absolute `file:///...`-Links und teste erneut.
 
 Generating patch (7 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
 
-
 ```
 
 ```
 
-
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
 
 Kurzes Delta: Es gibt noch einen Fehlalarm aus einem Java-Regex-String. Ich schränke die Java-Prüfung jetzt auf Kommentarbereiche ein, weil die -Verweise im Repository in Java-Dateien als Kommentar-Links vorkommen.
 
 Generating patch (86 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
 
-
 ```
 
 ```
 
-
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.checklinks.FileLinkChecker . | head -n 25
 
 Read changed files in the active git repository
 
 Fertig. Ich habe ein neues Kommandozeilenwerkzeug erstellt, das alle Java- und Markdown-Dateien rekursiv scannt, file:///-Links findet und prüft, ob die Zieldateien existieren.
 
 Geänderte Dateien:
+
 - FileLinkChecker.java
 - README.md
 
 Was das Tool macht:
+
 1. Scannt .java, .md und .markdown.
 2. Prüft in Java-Dateien nur Kommentarbereiche (vermeidet Fehlalarme aus String-Literalen).
 3. Erkennt absolute file:///-URIs, entfernt ggf. Fragmentteile wie #L10.
@@ -356,6 +354,7 @@ Was das Tool macht:
 5. Exit-Code 0 bei Erfolg, 1 bei mindestens einem defekten Link.
 
 Verifikation:
+
 1. Modul kompiliert erfolgreich.
 2. Tool wurde gegen das Repository ausgeführt.
 3. Ergebnis: 214 file://-Links geprüft, 15 defekte Ziele gefunden.
@@ -393,19 +392,15 @@ Ich stelle jetzt die Kommandonamen um (`checklinks`) und baue eine gemeinsame Ha
 
 Generating patch (7 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/checklinks/FileLinkChecker.java)
 
-
 ```
 
 ```
-
 
 Generating patch (51 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/java2umltext/Client.java)
 
-
 ```
 
 ```
-
 
 Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
 
@@ -413,15 +408,15 @@ Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
 
 Generating patch (38 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/README.md)
 
-
 ```
 
 ```
+
 Die Umstellung ist umgesetzt; jetzt kompiliere ich das CLI-Modul und prüfe die neuen Subcommands `checklinks` und `java2umltext` direkt über die gemeinsame Hauptklasse.
 
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile
 
-Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client checklinks --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client java2umltext --help | head -n 30
+Ran terminal command: mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client checklinks --help && echo '---' && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client java2umltext --help | head -n 30
 
 Read changed files in the active git repository
 
@@ -429,37 +424,35 @@ Ich ergänze noch die Konfigurationsdatei-Unterstützung für das Subcommand `ja
 
 Generating patch (34 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
 
-
 ```
 
 ```
 
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile
 
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile
-
-Ran terminal command:  mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
+Ran terminal command: mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
 
 Ich habe noch einen kleinen UX-Punkt gefunden: Der Root-Help zeigt aktuell eine Warnung, wenn keine `java2umltext.properties` existiert. Ich behebe das kurz, indem der Provider nur bei vorhandener Datei gesetzt wird.
 
 Generating patch (18 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/cli/src/main/java/cli/Client.java)
 
-
 ```
 
 ```
 
-
-Ran terminal command:  mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
+Ran terminal command: mvn -pl subprojects/cli -DskipTests compile && mvn -q -pl subprojects/cli -DincludeScope=runtime dependency:build-classpath -Dmdep.outputFile=/tmp/engine-pi-cli.cp && java -cp "subprojects/cli/target/classes:$(cat /tmp/engine-pi-cli.cp)" cli.Client --help
 
 Erledigt: Die beiden Tools sind jetzt zu einem gemeinsamen Picocli-Programm mit Subcommands zusammengeführt.
 
 Umgesetzt in:
+
 - Client.java
 - FileLinkChecker.java
 - Client.java
 - README.md
 
 Was geändert wurde:
+
 1. Neues Root-CLI erstellt: `cli.Client` mit Subcommands `checklinks` und `java2umltext`.
 2. `checklinks`-Kommando umbenannt von `check-file-links` auf `checklinks`.
 3. `java2umltext`-Command (`Config`) auf `Callable<Integer>` umgestellt, damit es als Subcommand sauber Exit-Codes liefert (ohne `System.exit` in der Business-Logik).
@@ -467,12 +460,14 @@ Was geändert wurde:
 5. README auf die neue einheitliche Nutzung aktualisiert.
 
 Verifiziert:
+
 1. `mvn -pl subprojects/cli -DskipTests compile` läuft erfolgreich.
 2. `cli.Client --help` zeigt beide Unterprogramme korrekt:
    - `checklinks`
    - `java2umltext`
 
 Beispielaufrufe:
+
 1. `java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.Client checklinks .`
 2. `java -cp "subprojects/cli/target/classes:$(cat engine-pi-cli.cp)" cli.Client java2umltext plantuml subprojects/engine/src/main/java`
 
@@ -490,16 +485,14 @@ Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main
 
 Searched for regex `class TextBox|class ToStringFormatter|public.*String|static.*String` (`engine-pi` · `subprojects/engine/src/main/java/pi/graphics/boxes/TextBox.java`), 4 results
 
-
 Completed with input: {
-  "query": "ToStringFormatter"
+"query": "ToStringFormatter"
 }
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/debug/ToStringFormatter.java#1-1), lines 1 to 200
 
-
 Completed with input: {
-  "query": "TextUtil"
+"query": "TextUtil"
 }
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/util/TextUtil.java#1-1), lines 1 to 150
@@ -510,19 +503,21 @@ Based on the codebase structure, I'll add a method to the `TextUtil` class that 
 
 Replacing 5 lines with 105 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/util/TextUtil.java)
 
-
 ```
 
 ```
+
 Perfect! I've added the `convertToString()` method to the `TextUtil` class. This method:
 
 ✅ **Handles all collection types:**
+
 - **Maps**: Converts to `{key=value, key2=value2}` format
 - **Sets**: Converts to `[element1, element2]` format
 - **Lists**: Converts to `[element1, element2]` format
 - **Arrays**: Converts to `[element1, element2]` format
 
 ✅ **Features:**
+
 - Recursively converts each element to string
 - Handles `null` gracefully (returns `"null"`)
 - Falls back to `toString()` for other object types
@@ -530,6 +525,7 @@ Perfect! I've added the `convertToString()` method to the `TextUtil` class. This
 - Supports primitive and object arrays via casting
 
 ✅ **Usage examples:**
+
 ```java
 TextUtil.convertToString(List.of("a", "b", "c"))  // "[a, b, c]"
 TextUtil.convertToString(Map.of("x", 1, "y", 2))  // "{x=1, y=2}"
@@ -645,7 +641,6 @@ Made changes.
 
 ### Add Tests /test junit5
 
-
 > /test junit5
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/util/TextUtil.java#200-200), lines 200 to 310
@@ -660,18 +655,16 @@ Now I'll add comprehensive JUnit 5 tests for the `convertToString()` method:
 
 Replacing 9 lines with 17 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java)
 
-
 ```
 
 ```
-
 
 Replacing 8 lines with 175 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java)
 
-
 ```
 
 ```
+
 Now let me run the JUnit 5 tests:
 
 41/43 tests passed (95.3%)
@@ -680,11 +673,9 @@ I need to fix the failing tests. The issue is that `List.of()` doesn't allow nul
 
 Replacing 5 lines with 9 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java)
 
-
 ```
 
 ```
-
 
 Replacing 8 lines with 8 lines in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java)
 
@@ -696,16 +687,17 @@ Perfect! ✅ All **43 JUnit 5 tests pass**, including **23 comprehensive tests**
 
 **Test Coverage:**
 
-| Category | Tests |
-|----------|-------|
-| Null & Basic Types | 3 (null, string, integer, double) |
-| Lists | 5 (empty, strings, integers, mixed types, null elements) |
-| Sets | 2 (empty, multiple elements) |
-| Maps | 3 (empty, single entry, multiple entries) |
-| Arrays | 3 (strings, integers, empty, with null) |
-| Nested Structures | 3 (nested list, nested map, list in map) |
+| Category           | Tests                                                    |
+| ------------------ | -------------------------------------------------------- |
+| Null & Basic Types | 3 (null, string, integer, double)                        |
+| Lists              | 5 (empty, strings, integers, mixed types, null elements) |
+| Sets               | 2 (empty, multiple elements)                             |
+| Maps               | 3 (empty, single entry, multiple entries)                |
+| Arrays             | 3 (strings, integers, empty, with null)                  |
+| Nested Structures  | 3 (nested list, nested map, list in map)                 |
 
 All tests validate:
+
 - ✅ Proper formatting with square brackets for collections
 - ✅ Proper formatting with curly braces for maps
 - ✅ Correct handling of null values
@@ -891,9 +883,7 @@ Made changes.
     }
 ```
 
-
-
-## 2026-04-04 ResourcesContainerTest
+## 2026-04-04 ResourcesContainerTest GPT-5.3-Codex • 0.9x
 
 Read skill [java-lsp-tools](file:///home/jf/.vscode/extensions/vscjava.vscode-java-dependency-0.27.2026040100/resources/skills/java-lsp-tools/SKILL.md?vscodeLinkType%3Dskill)
 
@@ -901,12 +891,12 @@ I’m going to add JUnit 5 tests in this Java workspace, starting by inspecting 
 
 Searched for files matching `**/*Test.java`, 66 matches
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainer.java#1-1), lines 1 to 260
+<!-- Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainer.java#1-1), lines 1 to 260
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/pom.xml)
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/pom.xml) -->
 
 I found the target class and confirmed there’s an established JUnit 5 test suite in the `engine` module. Next I’m inspecting existing resource-related tests and the remaining `ResourcesContainer` methods to design tests that fit the current style and cover behavior, not implementation details.
-
+<!--
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainer.java#260-260), lines 260 to 527
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ImagesContainerTest.java)
@@ -921,46 +911,45 @@ Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceLoadException.java)
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceManipulator.java)
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceManipulator.java) -->
 
 Searched for regex `junit|jupiter|surefire` (`**/pom.xml`), 21 results
 
 I’ve identified enough behavior to test in `ResourcesContainer` (cache behavior, supplier loading, aliasing, listener/manipulator hooks, and error wrapping). I’ll now create a dedicated JUnit 5 test class under resources and then run just that test file.
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainerClearedListener.java)
+<!-- Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainerClearedListener.java)
 
 Read [](file:///data/school/repos/inf/java/engine-pi/pom.xml#1-1), lines 1 to 180
 
-Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java)
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java) -->
 
 I’ve mapped out concrete, passing test scenarios for `ResourcesContainer` and I’m now creating a new test class that uses a small in-test container subclass to verify caching, force-reload, alias resolution, supplier behavior, listener/manipulator hooks, and exception wrapping.
 
-Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+<!-- Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java) -->
 
-Ran terminal command:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
-Completed with input:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+Ran terminal command: mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+Completed with input: mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
 
 The first test run exposed a real Java type-erasure clash when specializing `ResourcesContainer<String>`. I’m updating the tests to use a custom value type instead of `String`, then I’ll rerun the same test target.
 
-Generating patch (171 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+<!-- Generating patch (171 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
 
 Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
 
-Generating patch (175 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
-
-
-```
+Generating patch (175 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java) -->
 
 ```
 
+```
 
-Ran terminal command:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+Ran terminal command: mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
 
 Read changed files in the active git repository
 
 Added a new JUnit 5 test class for the resource container behavior at ResourcesContainerTest.java.
 
 What is covered:
+
 1. Cache behavior for get(name) and forced reload via get(name, true).
 2. Lazy loading with get(name, supplier) and supplier call count.
 3. Resource manipulation through addManipulator.
@@ -969,6 +958,7 @@ What is covered:
 6. Exception wrapping to ResourceLoadException when load fails.
 
 Validation:
+
 1. Ran: mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
 2. Result: 6 tests run, 0 failures, 0 errors, build success.
 
@@ -1130,4 +1120,127 @@ public class ResourcesContainerTest
         }
     }
 }
-``
+```
+
+## 2026-04-04 ResourceLoaderTest GPT-5.3-Codex • 0.9x
+
+Read skill [java-lsp-tools](file:///home/jf/.vscode/extensions/vscjava.vscode-java-dependency-0.27.2026040100/resources/skills/java-lsp-tools/SKILL.md?vscodeLinkType%3Dskill)
+
+I’m adding another set of JUnit 5 tests, and I’ll target the currently active resource-loading area by checking existing `ResourceLoader` coverage first, then implementing missing behavior tests and verifying them with Maven.
+
+Searched for files matching `**/subprojects/engine/src/test/java/pi/resources/*Test.java`, 3 matches
+
+Searched for files matching `**/ResourceLoader*`, 1 match
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceLoader.java)
+
+I confirmed there is no existing `ResourceLoader` test yet, so I’m now adding a focused JUnit 5 class with filesystem-based cases for `load`, `loadAsStream`, `loadAsFile`, `get`, and `read` behavior, then I’ll run that test class only.
+
+Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourceLoaderTest.java)
+
+Ran terminal command:  mvn -pl subprojects/engine -Dtest=ResourceLoaderTest test
+
+Added JUnit 5 tests for `ResourceLoader` in ResourceLoaderTest.java.
+
+Covered behaviors:
+1. `load(String)` reads raw bytes from filesystem files.
+2. `loadAsStream(String)` returns a readable stream for filesystem files.
+3. `loadAsFile(String)` resolves to an existing file.
+4. `get(URL)` wraps non-mark-supported streams in `BufferedInputStream`.
+5. `read(String, Charset)` reads encoded content correctly.
+6. `read(String)` returns `null` for missing files.
+
+Validation:
+1. Ran `mvn -pl subprojects/engine -Dtest=ResourceLoaderTest test`.
+2. Result: 6 tests run, 0 failures, 0 errors.
+
+There was one expected `SEVERE` log line during the missing-file test, which verifies the current error path behavior.
+
+Made changes.
+
+```java
+
+public class ResourceLoaderTest
+{
+    @TempDir
+    Path tempDir;
+
+    @Test
+    public void loadReadsBytesFromFileSystem() throws IOException
+    {
+        Path file = tempDir.resolve("data.bin");
+        byte[] content = new byte[] { 1, 2, 3, 4 };
+        Files.write(file, content);
+
+        byte[] loaded = ResourceLoader.load(file.toString());
+
+        assertArrayEquals(content, loaded);
+    }
+
+    @Test
+    public void loadAsStreamReadsFileSystemFile() throws IOException
+    {
+        Path file = tempDir.resolve("stream.txt");
+        Files.writeString(file, "hello", StandardCharsets.UTF_8);
+
+        try (InputStream stream = ResourceLoader.loadAsStream(file.toString()))
+        {
+            assertNotNull(stream);
+            assertEquals("hello",
+                new String(stream.readAllBytes(), StandardCharsets.UTF_8));
+        }
+    }
+
+    @Test
+    public void loadAsFileReturnsExistingFile() throws IOException
+    {
+        Path file = tempDir.resolve("asset.txt");
+        Files.writeString(file, "engine", StandardCharsets.UTF_8);
+
+        File loaded = ResourceLoader.loadAsFile(file.toString());
+
+        assertTrue(loaded.exists());
+        assertEquals(file.toFile().getCanonicalPath(),
+            loaded.getCanonicalPath());
+    }
+
+    @Test
+    public void getWrapsNonMarkableStreams() throws IOException
+    {
+        Path file = tempDir.resolve("wrapped.txt");
+        Files.writeString(file, "abc", StandardCharsets.UTF_8);
+
+        URL location = ResourceLoader.getLocation(file.toString());
+        try (InputStream stream = ResourceLoader.get(location))
+        {
+            assertNotNull(stream);
+            assertTrue(stream instanceof BufferedInputStream);
+            assertEquals("abc",
+                new String(stream.readAllBytes(), StandardCharsets.UTF_8));
+        }
+    }
+
+    @Test
+    public void readWithCharsetReadsContent() throws IOException
+    {
+        Path file = tempDir.resolve("latin1.txt");
+        byte[] bytes = "gr\u00FCn".getBytes(StandardCharsets.ISO_8859_1);
+        Files.write(file, bytes);
+
+        String content = ResourceLoader.read(file.toString(),
+            StandardCharsets.ISO_8859_1);
+
+        assertEquals("gr\u00FCn", content);
+    }
+
+    @Test
+    public void readReturnsNullForMissingFile()
+    {
+        String missing = tempDir.resolve("missing.txt").toString();
+
+        String content = ResourceLoader.read(missing);
+
+        assertNull(content);
+    }
+}
+```
