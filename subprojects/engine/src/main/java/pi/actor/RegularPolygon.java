@@ -23,6 +23,8 @@ import pi.Text;
 import pi.annotations.Getter;
 import pi.graphics.geom.Vector;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/regular-polygon.md
+
 /**
  * Beschreibt ein regelmäßiges <b>Vieleck</b> bzw{@literal .} reguläres
  * <b>Polygon</b>.

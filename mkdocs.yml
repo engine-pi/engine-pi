@@ -109,6 +109,7 @@ nav:
               - manual/main-classes/actor/line.md
               - manual/main-classes/actor/polygon.md
               - manual/main-classes/actor/rectangle.md
+              - manual/main-classes/actor/regular-polygon.md
               - manual/main-classes/actor/square.md
               - manual/main-classes/actor/star.md
               - manual/main-classes/actor/stateful-animation.md

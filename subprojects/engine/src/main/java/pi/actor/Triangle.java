@@ -23,6 +23,8 @@ import static pi.Controller.colorScheme;
 import pi.annotations.API;
 import pi.graphics.geom.Vector;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/triangle.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/design.md
 
 /**

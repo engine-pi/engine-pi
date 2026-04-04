@@ -40,6 +40,8 @@ import pi.debug.ToStringFormatter;
 import pi.physics.FixtureBuilder;
 import pi.resources.color.ColorUtil;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/ImageDemo.java
 
 /**

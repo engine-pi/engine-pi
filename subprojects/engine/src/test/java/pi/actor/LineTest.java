@@ -209,7 +209,7 @@ public class LineTest
         @Test
         void endGetterSetter()
         {
-            Line.LineEnd returned = line.end1.end(new Vector(10, 20));
+            Line.End returned = line.end1.end(new Vector(10, 20));
             assertSame(line.end1, returned);
 
             Vector end = line.end1.end();
@@ -226,7 +226,7 @@ public class LineTest
         {
             assertEquals(0, line.end1.offset(), 0.001);
 
-            Line.LineEnd returned = line.end1.offset(0.75);
+            Line.End returned = line.end1.offset(0.75);
             assertSame(line.end1, returned);
             assertEquals(0.75, line.end1.offset(), 0.001);
 
@@ -261,7 +261,7 @@ public class LineTest
         {
             assertEquals(45, line.end1.arrowAngle(), 0.001);
 
-            Line.LineEnd returned = line.end1.arrowAngle(30);
+            Line.End returned = line.end1.arrowAngle(30);
             assertSame(line.end1, returned);
             assertEquals(30, line.end1.arrowAngle(), 0.001);
         }
@@ -269,7 +269,7 @@ public class LineTest
         @Test
         void arrowSideLengthSetter()
         {
-            Line.LineEnd returned = line.end1.arrowSideLength(1.25);
+            Line.End returned = line.end1.arrowSideLength(1.25);
             assertSame(line.end1, returned);
             assertEquals(1.25, line.end1.arrowSideLength(), 0.001);
         }

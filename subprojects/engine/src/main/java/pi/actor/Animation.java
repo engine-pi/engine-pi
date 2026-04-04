@@ -44,6 +44,8 @@ import pi.resources.ResourceLoader;
 import pi.util.FileUtil;
 import pi.util.GifDecoder;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/animation.md
+
 /**
  * Eine Animation ist eine {@link Actor Figur}, die aus mehreren
  * {@link AnimationFrame Einzelbildern} (Frames) besteht.

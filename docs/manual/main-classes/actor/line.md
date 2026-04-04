@@ -14,7 +14,7 @@ importiert werden.
 
 {{ drawio('Line') }}
 /// caption
-Das Klassendiagramm der Figur `Line` zusammen mit der inneren Klasse `Line.LineEnd` und dem Aufzählungstyp `Line.ArrowType`.
+Das Klassendiagramm der Figur `Line` zusammen mit der inneren Klasse `Line.End` und dem Aufzählungstyp `Line.ArrowType`.
 ///
 
 ## Eine Linie in der Physik-Simulation

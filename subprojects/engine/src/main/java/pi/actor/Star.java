@@ -26,6 +26,8 @@ import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.graphics.geom.Vector;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/star.md
+
 /**
  * Ein regelmäßiger <b>Stern</b>.
  *

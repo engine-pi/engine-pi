@@ -32,6 +32,8 @@ import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 import pi.physics.FixtureData;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/rectangle.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/dev/design.md
 
 /**

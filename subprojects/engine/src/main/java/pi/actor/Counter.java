@@ -28,6 +28,8 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/counter.md
+
 /**
  * Ein ganzzahliger <b>Zähler</b>.
  *

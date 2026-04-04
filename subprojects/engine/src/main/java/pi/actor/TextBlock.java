@@ -28,6 +28,8 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.graphics.boxes.TextBlockBox;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/text-block.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/TextBlockDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text_block/TextBlockLineSpacingDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text_block/TextBlockPhysicsDemo.java

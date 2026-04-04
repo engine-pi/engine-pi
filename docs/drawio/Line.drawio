@@ -7,10 +7,10 @@
                 <mxCell id="136" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;Line&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-1660" y="140" width="350" height="346" as="geometry"/>
                 </mxCell>
-                <mxCell id="190" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ end1: Line.LineEnd&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
+                <mxCell id="190" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;+ end1: Line.End&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
                     <mxGeometry y="26" width="350" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="191" value="&lt;span style=&quot;color: rgb(63, 63, 63); font-family: Cantarell;&quot;&gt;+ end2: Line.LineEnd&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
+                <mxCell id="191" value="&lt;span style=&quot;color: rgb(63, 63, 63); font-family: Cantarell;&quot;&gt;+ end2: Line.End&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="136" vertex="1">
                     <mxGeometry y="52" width="350" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="138" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="136" vertex="1">
@@ -56,7 +56,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="192" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;Line.LineEnd&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="192" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cantarell&quot; face=&quot;Cantarell&quot;&gt;Line.End&lt;/font&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-1242" y="106" width="320" height="164" as="geometry"/>
                 </mxCell>
                 <mxCell id="195" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="192" vertex="1">

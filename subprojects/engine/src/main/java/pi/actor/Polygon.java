@@ -32,6 +32,8 @@ import pi.graphics.geom.Vector;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/polygon.md
+
 /**
  * Beschreibt eine beliebige <b>polygonale</b> geometrische Form.
  *

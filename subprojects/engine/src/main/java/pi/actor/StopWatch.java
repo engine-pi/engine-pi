@@ -28,6 +28,8 @@ import pi.debug.ToStringFormatter;
 import pi.event.FrameUpdateListener;
 import pi.util.TimeUtil;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/stop-watch.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StopWatchDemo.java
 
 /**

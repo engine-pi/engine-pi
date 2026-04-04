@@ -37,6 +37,8 @@ import pi.graphics.geom.Vector;
 import pi.physics.FixtureBuilder;
 import pi.util.Graphics2DUtil;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/line.md
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/line/LinePhysicsDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/LineRandomDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/geom/DirectedLineSegmentDemo.java
@@ -73,8 +75,8 @@ public class Line extends Actor
     public Line(Vector end1, Vector end2)
     {
         super(null);
-        this.end1 = new LineEnd(end1, end2);
-        this.end2 = new LineEnd(end2, end1);
+        this.end1 = new End(end1, end2);
+        this.end2 = new End(end2, end1);
         color(colorScheme.get().orange());
         update();
     }
@@ -84,7 +86,7 @@ public class Line extends Actor
     /**
      * Das Linenende bei Endpunkt 1.
      */
-    public final LineEnd end1;
+    public final End end1;
 
     /**
      * Gibt <b>ersten Endpunkt</b> der Linie zurück.
@@ -121,7 +123,7 @@ public class Line extends Actor
     /**
      * Das Linienende bei Endpunkt 2.
      */
-    public final LineEnd end2;
+    public final End end2;
 
     /**
      * Gibt <b>zweiten Endpunkt</b> der Linie zurück.
@@ -500,13 +502,13 @@ public class Line extends Actor
      *
      * @since 0.42.0
      */
-    public class LineEnd
+    public class End
     {
         /**
          * @param end Der Punkt am <b>Linienende</b>.
          * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
          */
-        private LineEnd(Vector end, Vector opposite)
+        private End(Vector end, Vector opposite)
         {
             this.end = end;
             this.opposite = opposite;
@@ -542,7 +544,7 @@ public class Line extends Actor
          * @param end Der Punkt am <b>Linienende</b>.
          */
         @Internal
-        LineEnd end(Vector end)
+        End end(Vector end)
         {
             this.end = end;
             update();
@@ -562,7 +564,7 @@ public class Line extends Actor
          * @param opposite Der diesem Linienende <b>gegenüberliegende</b> Punkt.
          */
         @Internal
-        LineEnd opposite(Vector opposite)
+        End opposite(Vector opposite)
         {
             this.opposite = opposite;
             update();
@@ -609,7 +611,7 @@ public class Line extends Actor
         @API
         @Setter
         @ChainableMethod
-        public LineEnd offset(double offset)
+        public End offset(double offset)
         {
             this.offset = offset;
             update();
@@ -647,7 +649,7 @@ public class Line extends Actor
         @API
         @Setter
         @ChainableMethod
-        public LineEnd arrow(ArrowType arrow)
+        public End arrow(ArrowType arrow)
         {
             this.arrow = arrow;
             return this;
@@ -665,7 +667,7 @@ public class Line extends Actor
         @API
         @Setter
         @ChainableMethod
-        public LineEnd arrow(boolean arrow)
+        public End arrow(boolean arrow)
         {
             if (arrow)
             {
@@ -719,7 +721,7 @@ public class Line extends Actor
         @API
         @Setter
         @ChainableMethod
-        public LineEnd arrowAngle(double arrowAngle)
+        public End arrowAngle(double arrowAngle)
         {
             this.arrowAngle = arrowAngle;
             return this;
@@ -767,7 +769,7 @@ public class Line extends Actor
         @API
         @Setter
         @ChainableMethod
-        public LineEnd arrowSideLength(double arrowSideLength)
+        public End arrowSideLength(double arrowSideLength)
         {
             this.arrowSideLength = arrowSideLength;
             return this;

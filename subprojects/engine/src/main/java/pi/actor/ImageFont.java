@@ -40,6 +40,8 @@ import pi.util.ImageUtil;
 import pi.util.TextAlignment;
 import pi.util.TextUtil;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+
 /**
  * Eine <b>Schriftart</b>, bei der die einzelnen <b>Buchstaben</b> durch ein
  * <b>Bild</b> repräsentiert sind.
