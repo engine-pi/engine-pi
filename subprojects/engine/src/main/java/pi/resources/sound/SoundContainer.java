@@ -29,12 +29,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import pi.resources.Codec;
+import pi.resources.ResourceLoadException;
 import pi.resources.ResourceLoader;
 import pi.resources.ResourcesContainer;
 import pi.util.FileUtil;
@@ -47,13 +46,6 @@ import pi.util.FileUtil;
  */
 public final class SoundContainer extends ResourcesContainer<Sound>
 {
-    private static final Logger log = Logger
-        .getLogger(SoundContainer.class.getName());
-
-    public SoundContainer()
-    {
-    }
-
     /**
      * Loads a sound from the specified XML resource.
      *
@@ -77,12 +69,9 @@ public final class SoundContainer extends ResourcesContainer<Sound>
         }
         catch (IOException | UnsupportedAudioFileException e)
         {
-            log.log(Level.SEVERE,
-                "The audio file {0} could not be loaded.",
-                new Object[]
-                { resource.name() });
+            throw new ResourceLoadException("Die Audio-Datei " + resource.name()
+                    + " konnte nicht geladen werden.");
         }
-        return null;
     }
 
     /**
@@ -100,11 +89,8 @@ public final class SoundContainer extends ResourcesContainer<Sound>
         {
             if (is == null)
             {
-                log.log(Level.SEVERE,
-                    "The audio file {0} could not be loaded.",
-                    new Object[]
-                    { name });
-                return null;
+                throw new ResourceLoadException("Die Audio-Datei " + name
+                        + " konnte nicht geladen werden.");
             }
             return new Sound(is, FileUtil.getFileName(name));
         }

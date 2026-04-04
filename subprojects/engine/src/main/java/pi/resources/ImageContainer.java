@@ -59,7 +59,8 @@ public final class ImageContainer extends ResourcesContainer<BufferedImage>
         BufferedImage image = ImageIO.read(name);
         if (image == null)
         {
-            return null;
+            throw new ResourceLoadException(
+                    "Die Bild-Datei " + name + " konnte nicht geladen werden.");
         }
         int pixelMultiplication = config.graphics.pixelMultiplication();
         if (pixelMultiplication > 1)

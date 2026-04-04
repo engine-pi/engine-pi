@@ -130,7 +130,7 @@ public class ResourcesContainerTest
         }
 
         @Override
-        protected String getAlias(String name, TestResource resource)
+        protected String alias(String name, TestResource resource)
         {
             if (useAlias)
             {

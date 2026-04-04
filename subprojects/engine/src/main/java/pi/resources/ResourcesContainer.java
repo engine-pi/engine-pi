@@ -39,6 +39,8 @@ import java.util.concurrent.Future;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import pi.annotations.Getter;
+
 /**
  * Eine abstrakte Implementierung für Unterklassen, die einen bestimmten Typ von
  * Ressourcen (z. b. Bilder, Klänge) bereitstellen wollen. Diese Klasse bietet
@@ -324,7 +326,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
         {
             return this.add(name, resource);
         }
-        return null;
+        throw new ResourceLoadException(
+                "Die Ressource " + name + " konnte nicht geladen werden.");
     }
 
     public T get(URL name, Supplier<? extends T> loadCallback)
@@ -349,7 +352,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
     {
         if (name == null)
         {
-            return null;
+            throw new IllegalArgumentException(
+                    "Der Name der Ressource darf nicht null sein.");
         }
         T resource = this.resources.get(name);
         if (forceLoad || resource == null)
@@ -357,7 +361,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
             resource = this.loadResource(name);
             if (resource == null)
             {
-                return null;
+                throw new ResourceLoadException("Die Ressource " + name
+                        + " konnte nicht geladen werden.");
             }
             return this.add(name, resource);
         }
@@ -481,17 +486,22 @@ public abstract class ResourcesContainer<T> implements Container<T>
     protected abstract T load(URL name) throws Exception;
 
     /**
-     * Gets an alias for the specified resourceName. Note that the process of
-     * providing an alias is up to the ResourceContainer implementation.
+     * Ruft einen Alias für den angegebenen resourceName ab. Die Bereitstellung
+     * eines Alias hängt von der jeweiligen ResourceContainer-Implementierung
+     * ab.
      *
      * @param name Der Name, unter dem die Ressource verwaltet wird.
      * @param resource The resource.
      *
      * @return An alias for the specified resource.
      */
-    protected String getAlias(String name, T resource)
+    @Getter
+    protected String alias(String name, T resource)
     {
         return null;
+        // throw new UnsupportedOperationException(
+        // "Die Methode ist nicht implmementiert für den Ressourcentyp "
+        // + resource);
     }
 
     protected Map<String, T> getResources()
@@ -510,7 +520,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         {
             throw new ResourceLoadException(e);
         }
-        String alias = this.getAlias(identifier, newResource);
+        String alias = this.alias(identifier, newResource);
         if (alias != null)
         {
             this.aliases.put(alias, identifier);

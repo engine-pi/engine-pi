@@ -25,9 +25,6 @@
  */
 package pi.config;
 
-import pi.Controller;
-import pi.annotations.Getter;
-import pi.resources.Resources;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,6 +38,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import pi.Controller;
+import pi.annotations.Getter;
+import pi.resources.ResourceLoader;
 
 /**
  * Konfigurationsklasse, die mehrere Konfigurationsgruppen verwaltet und das
@@ -213,7 +214,18 @@ public class ConfigLoader
      */
     public void load()
     {
-        try (InputStream settingsStream = Resources.get(path().toString()))
+        InputStream settingsStream = null;
+
+        try
+        {
+            settingsStream = ResourceLoader.get(path().toString());
+        }
+        catch (Exception e)
+        {
+            // Ignore
+        }
+
+        try
         {
             if (!Files.exists(path()) || !Files.isRegularFile(path())
                     || settingsStream == null)
@@ -235,9 +247,9 @@ public class ConfigLoader
 
         if (Files.exists(path()))
         {
-            try (InputStream settingsStream = Files.newInputStream(path());
+            try (InputStream settingsStream2 = Files.newInputStream(path());
                     BufferedInputStream bufferedStream = new BufferedInputStream(
-                            settingsStream))
+                            settingsStream2))
             {
 
                 Properties properties = new Properties();

@@ -34,8 +34,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import pi.annotations.Getter;
 import pi.util.FileUtil;
@@ -47,8 +45,6 @@ import pi.util.FileUtil;
  */
 final public class ResourceLoader
 {
-    private static final Logger log = Logger
-        .getLogger(Resources.class.getName());
 
     private ResourceLoader()
     {
@@ -98,7 +94,6 @@ final public class ResourceLoader
             }
             catch (URISyntaxException e)
             {
-                log.log(Level.WARNING, "IO " + filename, e);
                 throw new ResourceLoadException(filename, e);
             }
         }
@@ -218,7 +213,6 @@ final public class ResourceLoader
         }
         catch (IOException e)
         {
-            log.log(Level.SEVERE, e.getMessage());
             throw new ResourceLoadException(String.valueOf(file), e);
         }
     }
@@ -263,7 +257,6 @@ final public class ResourceLoader
             }
             catch (MalformedURLException e1)
             {
-                log.log(Level.SEVERE, e1.getMessage());
                 throw new ResourceLoadException(name, e1);
             }
         }
@@ -280,7 +273,6 @@ final public class ResourceLoader
      *     kann
      *
      * @author Steffen Wilke
-     *
      * @author Matthias Wilke
      */
     @Getter
@@ -292,7 +284,6 @@ final public class ResourceLoader
         }
         catch (IOException e)
         {
-            log.log(Level.SEVERE, e.getMessage());
             throw new ResourceLoadException(String.valueOf(file), e);
         }
     }
