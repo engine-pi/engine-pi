@@ -179,8 +179,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
                 resource = r;
             }
         }
-        this.resources.put(name, resource);
-        for (ResourcesContainerListener<T> listener : this.listeners)
+        resources.put(name, resource);
+        for (ResourcesContainerListener<T> listener : listeners)
         {
             listener.added(name, resource);
         }
@@ -189,7 +189,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
 
     public T add(URL name, T resource)
     {
-        return this.add(name.toString(), resource);
+        return add(name.toString(), resource);
     }
 
     /**

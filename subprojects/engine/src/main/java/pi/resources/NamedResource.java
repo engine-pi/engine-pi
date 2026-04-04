@@ -25,6 +25,9 @@
  */
 package pi.resources;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
+
 /**
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -33,14 +36,16 @@ public abstract class NamedResource implements Resource
 {
     private String name;
 
+    @Getter
     @Override
-    public String getName()
+    public String name()
     {
         return this.name;
     }
 
-    public void setName(final String n)
+    @Setter
+    public void name(final String name)
     {
-        this.name = n;
+        this.name = name;
     }
 }

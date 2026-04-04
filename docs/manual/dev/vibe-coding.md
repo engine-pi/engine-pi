@@ -890,3 +890,244 @@ Made changes.
         }
     }
 ```
+
+
+
+## 2026-04-04 ResourcesContainerTest
+
+Read skill [java-lsp-tools](file:///home/jf/.vscode/extensions/vscjava.vscode-java-dependency-0.27.2026040100/resources/skills/java-lsp-tools/SKILL.md?vscodeLinkType%3Dskill)
+
+I’m going to add JUnit 5 tests in this Java workspace, starting by inspecting `ResourcesContainer` and existing test patterns so the new tests match the project’s conventions. Next I’ll implement focused tests and run them to verify they pass.I’m gathering the current class behavior and the existing test setup to target realistic, maintainable test cases.
+
+Searched for files matching `**/*Test.java`, 66 matches
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainer.java#1-1), lines 1 to 260
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/pom.xml)
+
+I found the target class and confirmed there’s an established JUnit 5 test suite in the `engine` module. Next I’m inspecting existing resource-related tests and the remaining `ResourcesContainer` methods to design tests that fit the current style and cover behavior, not implementation details.
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainer.java#260-260), lines 260 to 527
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ImagesContainerTest.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourceManipulatorTest.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/Container.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainerListener.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceLoader.java#1-1), lines 1 to 260
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceLoadException.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourceManipulator.java)
+
+Searched for regex `junit|jupiter|surefire` (`**/pom.xml`), 21 results
+
+I’ve identified enough behavior to test in `ResourcesContainer` (cache behavior, supplier loading, aliasing, listener/manipulator hooks, and error wrapping). I’ll now create a dedicated JUnit 5 test class under resources and then run just that test file.
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/resources/ResourcesContainerClearedListener.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/pom.xml#1-1), lines 1 to 180
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/config/ConfigurationTest.java)
+
+I’ve mapped out concrete, passing test scenarios for `ResourcesContainer` and I’m now creating a new test class that uses a small in-test container subclass to verify caching, force-reload, alias resolution, supplier behavior, listener/manipulator hooks, and exception wrapping.
+
+Created [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+
+Ran terminal command:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+Completed with input:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+
+The first test run exposed a real Java type-erasure clash when specializing `ResourcesContainer<String>`. I’m updating the tests to use a custom value type instead of `String`, then I’ll rerun the same test target.
+
+Generating patch (171 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+
+Read [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+
+Generating patch (175 lines) in [](file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/resources/ResourcesContainerTest.java)
+
+
+```
+
+```
+
+
+Ran terminal command:  mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+
+Read changed files in the active git repository
+
+Added a new JUnit 5 test class for the resource container behavior at ResourcesContainerTest.java.
+
+What is covered:
+1. Cache behavior for get(name) and forced reload via get(name, true).
+2. Lazy loading with get(name, supplier) and supplier call count.
+3. Resource manipulation through addManipulator.
+4. Listener callbacks for add and remove.
+5. Alias resolution via getAlias.
+6. Exception wrapping to ResourceLoadException when load fails.
+
+Validation:
+1. Ran: mvn -pl subprojects/engine -Dtest=ResourcesContainerTest test
+2. Result: 6 tests run, 0 failures, 0 errors, build success.
+
+I also left all unrelated existing workspace changes untouched.
+
+Made changes.
+
+```java
+public class ResourcesContainerTest
+{
+    @Test
+    public void getCachesAndForceLoadReloads()
+    {
+        var container = new TestContainer();
+
+        TestResource first = container.get("hero");
+        TestResource second = container.get("hero");
+        TestResource reloaded = container.get("hero", true);
+
+        assertSame(first, second);
+        assertEquals(new TestResource("resource-1"), first);
+        assertEquals(new TestResource("resource-2"), reloaded);
+        assertEquals(2, container.loadCount);
+    }
+
+    @Test
+    public void getWithSupplierLoadsOnlyOnce()
+    {
+        var container = new TestContainer();
+        var supplierCalls = new AtomicInteger();
+
+        TestResource first = container.get("coin", () -> {
+            supplierCalls.incrementAndGet();
+            return new TestResource("coin-resource");
+        });
+        TestResource second = container.get("coin", () -> {
+            supplierCalls.incrementAndGet();
+            return new TestResource("other-resource");
+        });
+
+        assertSame(first, second);
+        assertEquals(new TestResource("coin-resource"), first);
+        assertEquals(1, supplierCalls.get());
+    }
+
+    @Test
+    public void addManipulatorTransformsResourceAndListenerGetsTransformedValue()
+    {
+        var container = new TestContainer();
+        var listener = new RecordingListener();
+        container.addContainerListener(listener);
+        container.addManipulator(
+            (name, resource) -> new TestResource(resource.value() + "-m"));
+
+        TestResource added = container.add("x", new TestResource("payload"));
+
+        assertEquals(new TestResource("payload-m"), added);
+        assertTrue(container.contains("x"));
+        assertEquals("x", listener.addedName);
+        assertEquals(new TestResource("payload-m"), listener.addedResource);
+    }
+
+    @Test
+    public void removeNotifiesListener()
+    {
+        var container = new TestContainer();
+        var listener = new RecordingListener();
+        container.addContainerListener(listener);
+        container.add("to-remove", new TestResource("data"));
+
+        TestResource removed = container.remove("to-remove");
+
+        assertEquals(new TestResource("data"), removed);
+        assertFalse(container.contains("to-remove"));
+        assertEquals("to-remove", listener.removedName);
+        assertEquals(new TestResource("data"), listener.removedResource);
+    }
+
+    @Test
+    public void aliasCanResolveLoadedResource()
+    {
+        var container = new TestContainer();
+        container.useAlias = true;
+
+        TestResource byName = container.get("tree");
+        TestResource byAlias = container.get("alias:tree");
+
+        assertNotNull(byName);
+        assertSame(byName, byAlias);
+    }
+
+    @Test
+    public void loadExceptionIsWrapped()
+    {
+        var container = new TestContainer();
+        container.throwOnLoad = true;
+
+        assertThrows(ResourceLoadException.class,
+            () -> container.get("missing", true));
+    }
+
+    record TestResource(String value)
+    {
+    }
+
+    static class TestContainer extends ResourcesContainer<TestResource>
+    {
+        int loadCount;
+
+        boolean useAlias;
+
+        boolean throwOnLoad;
+
+        @Override
+        protected TestResource load(URL name) throws Exception
+        {
+            loadCount++;
+            if (throwOnLoad)
+            {
+                throw new IOException("load failed");
+            }
+            return new TestResource("resource-" + loadCount);
+        }
+
+        @Override
+        protected String getAlias(String name, TestResource resource)
+        {
+            if (useAlias)
+            {
+                return "alias:" + name;
+            }
+            return null;
+        }
+    }
+
+    static class RecordingListener
+            implements ResourcesContainerListener<TestResource>
+    {
+        String addedName;
+
+        TestResource addedResource;
+
+        String removedName;
+
+        TestResource removedResource;
+
+        @Override
+        public void added(String resourceName, TestResource resource)
+        {
+            this.addedName = resourceName;
+            this.addedResource = resource;
+        }
+
+        @Override
+        public void removed(String resourceName, TestResource resource)
+        {
+            this.removedName = resourceName;
+            this.removedResource = resource;
+        }
+    }
+}
+``

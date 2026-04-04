@@ -25,6 +25,8 @@
  */
 package pi.resources;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.util.AlphanumComparator;
 
 /**
@@ -38,13 +40,15 @@ public interface Resource extends Comparable<Resource>
      *
      * @return the name
      */
-    String getName();
+    @Getter
+    String name();
 
-    void setName(String name);
+    @Setter
+    void name(String name);
 
     @Override
     default int compareTo(Resource obj)
     {
-        return AlphanumComparator.compareTo(this.getName(), obj.getName());
+        return AlphanumComparator.compareTo(name(), obj.name());
     }
 }

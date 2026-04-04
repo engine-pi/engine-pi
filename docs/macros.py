@@ -326,6 +326,8 @@ def define_env(env: Any) -> None:
         """
         :param class_path: For example ``pi.actor.Actor``
         :param method: For example ``color(java.awt.Color)``
+        :param link_title: Alternatively to the method signature, a custom link title can be specified. For example ``color()`` or ``color(Color)``.
+
         :return: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#color(java.awt.Color)``
         """
 

@@ -71,8 +71,8 @@ public final class SoundContainer extends ResourcesContainer<Sound>
         Sound sound;
         try
         {
-            sound = new Sound(input, resource.getName());
-            this.add(resource.getName(), sound);
+            sound = new Sound(input, resource.name());
+            this.add(resource.name(), sound);
             return sound;
         }
         catch (IOException | UnsupportedAudioFileException e)
@@ -80,7 +80,7 @@ public final class SoundContainer extends ResourcesContainer<Sound>
             log.log(Level.SEVERE,
                 "The audio file {0} could not be loaded.",
                 new Object[]
-                { resource.getName() });
+                { resource.name() });
         }
         return null;
     }

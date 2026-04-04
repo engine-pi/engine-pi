@@ -50,7 +50,7 @@ public class SoundResource extends NamedResource
 
     public SoundResource(Sound sound, SoundFormat format)
     {
-        this.setName(sound.getName());
+        this.name(sound.getName());
         this.data = Codec.encode(sound.getRawData());
         this.format = format;
     }

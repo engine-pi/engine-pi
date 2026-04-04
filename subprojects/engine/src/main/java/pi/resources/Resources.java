@@ -37,6 +37,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import pi.annotations.Getter;
 import pi.resources.color.ColorContainer;
 import pi.resources.font.FontContainer;
 import pi.resources.sound.SoundContainer;
@@ -106,7 +107,8 @@ public final class Resources
      * @return Ein Zwischenspeicher für Bild-Ressourcen vom Datentyp
      *     {@link java.awt.image.BufferedImage}.
      */
-    public static ImageContainer getImages()
+    @Getter
+    public static ImageContainer images()
     {
         return images;
     }
@@ -121,7 +123,8 @@ public final class Resources
      * @return Ein {@link SoundContainer Zwischenspeicher für Audio-Ressourcen}
      *     vom Datentyp {@link pi.resources.sound.Sound Sound}.
      */
-    public static SoundContainer getSounds()
+    @Getter
+    public static SoundContainer sounds()
     {
         return sounds;
     }
