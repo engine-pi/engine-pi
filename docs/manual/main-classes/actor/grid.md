@@ -11,7 +11,13 @@ importiert werden.
 
 {{ drawio('Grid') }}
 /// caption
-Die Klassenkarte der Figur `Gird` mit den Konstruktoren und allen Settern/Gettern.
+Die Klassenkarte der Figur `Grid` mit den Konstruktoren und allen Settern/Gettern.
 ///
+
+{{ video('docs/main-classes/actor/grid/BlocklyRobotLake.mp4') }}
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/games/blockly-robot/src/main/java/blockly_robot/robot/gui/level/LevelAssembler.java -->
+
+{{ code('blockly_robot.robot.gui.level.LevelAssembler.java', 26, 32) }}
 
 {{ contribute() }}
