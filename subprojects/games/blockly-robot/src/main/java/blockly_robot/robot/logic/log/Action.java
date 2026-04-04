@@ -13,7 +13,7 @@ public class Action
         this.name = name;
     }
 
-    public Action setError(ErrorMessages error)
+    public Action error(ErrorMessages error)
     {
         this.error = error;
         return this;
@@ -24,7 +24,7 @@ public class Action
         return error != null;
     }
 
-    public String getName()
+    public String name()
     {
         return name;
     }

@@ -28,7 +28,7 @@ class TaskTest
         final Task loadedTask = Task
             .loadByTaskPath("conditionals_excercises/light_all_candles");
         assertNotNull(loadedTask);
-        assertEquals(loadedTask.getTitle(), "Kerzen anzünden");
+        assertEquals(loadedTask.title(), "Kerzen anzünden");
     }
 
     @Nested
@@ -60,13 +60,13 @@ class TaskTest
     @Test
     void title()
     {
-        assertEquals(task.getTitle(), "Kerzen anzünden");
+        assertEquals(task.title(), "Kerzen anzünden");
     }
 
     @Test
     void intro()
     {
-        assertEquals(task.getIntro(),
+        assertEquals(task.intro(),
             "Programmiere den Roboter:\n"
                     + "Der Roboter soll alle Kerzen anzünden.");
     }
@@ -74,26 +74,26 @@ class TaskTest
     @Test
     void getNumberOfLevels()
     {
-        assertEquals(task.getNumberOfLevels(), 3);
+        assertEquals(task.numberOfLevels(), 3);
     }
 
     @Test
     void getTaskPath()
     {
-        assertEquals(task.getTaskPath(),
+        assertEquals(task.taskPath(),
             "conditionals_excercises/light_all_candles");
     }
 
     @Test
     void getMaxCols()
     {
-        assertEquals(task.getMaxCols(), 10);
+        assertEquals(task.maxCols(), 10);
     }
 
     @Test
     void getMaxRows()
     {
-        assertEquals(task.getMaxRows(), 6);
+        assertEquals(task.maxRows(), 6);
     }
 
     @Test
@@ -103,52 +103,52 @@ class TaskTest
         for (final String id : list.getRelPaths())
         {
             final Task task = Task.loadByTaskPath(id);
-            assertTrue(task.getTitle() != null);
+            assertTrue(task.title() != null);
         }
     }
 
     @Test
     void getBackgroundColor()
     {
-        assertEquals(task.getBackgroundColor(), "#c5e2dd");
+        assertEquals(task.backgroundColor(), "#c5e2dd");
     }
 
     @Test
     void getBorderColor()
     {
-        assertEquals(task.getBorderColor(), "#b4ccc7");
+        assertEquals(task.borderColor(), "#b4ccc7");
     }
 
     @Test
     void getLevelIntDifficulty()
     {
-        assertEquals(task.getLevel(0).getDifficulty(), EASY);
+        assertEquals(task.level(0).difficulty(), EASY);
     }
 
     @Test
     void getLevelEnumDifficulty()
     {
-        assertEquals(task.getLevel(MEDIUM).getDifficulty(), MEDIUM);
+        assertEquals(task.level(MEDIUM).difficulty(), MEDIUM);
     }
 
     @Test
     void getLevelDifficultyAndTestIndex()
     {
-        assertEquals(task.getLevel(HARD, 0).getDifficulty(), HARD);
+        assertEquals(task.level(HARD, 0).difficulty(), HARD);
     }
 
     @Test
     void getMaxLevelsPerDifficulty()
     {
         // Assuming that the maximum levels per difficulty is 3
-        assertEquals(task.getMaxLevelsPerDifficulty(), 1);
+        assertEquals(task.maxLevelsPerDifficulty(), 1);
     }
 
     @Test
     void getNumberOfDifficulties()
     {
         // Assuming that the number of difficulties is 3 (EASY, MEDIUM, HARD)
-        assertEquals(task.getNumberOfDifficulties(), 3);
+        assertEquals(task.numberOfDifficulties(), 3);
     }
 
     @Nested
@@ -159,25 +159,25 @@ class TaskTest
         @Test
         void getBackgroundColor()
         {
-            assertEquals(task.getBackgroundColor(), "#BF5E47");
+            assertEquals(task.backgroundColor(), "#BF5E47");
         }
 
         @Test
         void getBorderColor()
         {
-            assertEquals(task.getBorderColor(), "#96413B");
+            assertEquals(task.borderColor(), "#96413B");
         }
 
         @Test
         void getItemCreator()
         {
-            assertEquals(task.getItemCreator().create("gem").getType(), "gem");
+            assertEquals(task.itemCreator().create("gem").getType(), "gem");
         }
 
         @Test
         void getBagSize()
         {
-            assertEquals(task.getBagSize(), 100);
+            assertEquals(task.bagSize(), 100);
         }
     }
 }

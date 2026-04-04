@@ -15,6 +15,7 @@ import blockly_robot.robot.logic.level.Difficulty;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.level.LevelCollection;
 import blockly_robot.robot.logic.robot.VirtualRobot;
+import pi.annotations.Getter;
 
 /**
  * Eine Trainingsaufgabe (Task) besteht aus mehreren (in der Regel 3)
@@ -123,27 +124,32 @@ public class Task
         return null;
     }
 
-    public String getTaskPath()
+    @Getter
+    public String taskPath()
     {
         return taskPath;
     }
 
-    public TaskData getData()
+    @Getter
+    public TaskData data()
     {
         return data;
     }
 
-    public String getTitle()
+    @Getter
+    public String title()
     {
         return title;
     }
 
-    public String getIntro()
+    @Getter
+    public String intro()
     {
         return intro;
     }
 
-    public ItemCreator getItemCreator()
+    @Getter
+    public ItemCreator itemCreator()
     {
         return itemCreator;
     }
@@ -153,7 +159,8 @@ public class Task
      *
      * @return the grid color as a String.
      */
-    public String getBorderColor()
+    @Getter
+    public String borderColor()
     {
         if (borderColor != null)
         {
@@ -179,7 +186,8 @@ public class Task
      *
      * @return the background color as a String.
      */
-    public String getBackgroundColor()
+    @Getter
+    public String backgroundColor()
     {
         if (backgroundColor != null)
         {
@@ -200,7 +208,8 @@ public class Task
         return backgroundColor;
     }
 
-    public int getBagSize()
+    @Getter
+    public int bagSize()
     {
         if (bagSize > 0)
         {
@@ -217,7 +226,8 @@ public class Task
         return bagSize;
     }
 
-    public int getMaxFallAltitude()
+    @Getter
+    public int maxFallAltitude()
     {
         int max = data.gridInfos.maxFallAltitude;
         if (max == 0)
@@ -227,7 +237,8 @@ public class Task
         return max;
     }
 
-    public int getNbPlatforms()
+    @Getter
+    public int nbPlatforms()
     {
         return data.gridInfos.nbPlatforms;
     }
@@ -239,9 +250,10 @@ public class Task
      * @return the map of difficulty levels and their corresponding list of
      *     levels
      */
-    public Map<Difficulty, List<Level>> getLevels()
+    @Getter
+    public Map<Difficulty, List<Level>> levels()
     {
-        return levels.getLevels();
+        return levels.levels();
     }
 
     /**
@@ -252,9 +264,10 @@ public class Task
      *
      * @return the level corresponding to the given difficulty and test
      */
-    public Level getLevel(Difficulty difficulty, int test)
+    @Getter
+    public Level level(Difficulty difficulty, int test)
     {
-        return levels.getLevel(difficulty, test);
+        return levels.level(difficulty, test);
     }
 
     /**
@@ -264,9 +277,10 @@ public class Task
      *
      * @return the level associated with the difficulty
      */
-    public Level getLevel(Difficulty difficulty)
+    @Getter
+    public Level level(Difficulty difficulty)
     {
-        return getLevel(difficulty, 0);
+        return level(difficulty, 0);
     }
 
     /**
@@ -277,9 +291,10 @@ public class Task
      *
      * @return the corresponding level
      */
-    public Level getLevel(int difficulty)
+    @Getter
+    public Level level(int difficulty)
     {
-        return getLevel(Difficulty.indexOf(difficulty), 0);
+        return level(Difficulty.indexOf(difficulty), 0);
     }
 
     /**
@@ -289,19 +304,22 @@ public class Task
      * <i>Gibt die erste Version einer Trainingsaufgabe mit dem leichtesten
      * Schwierigkeitsgrad zurück.</i>
      */
-    public Level getLevel()
+    @Getter
+    public Level level()
     {
-        return getLevel(Difficulty.EASY, 0);
+        return level(Difficulty.EASY, 0);
     }
 
-    public LevelCollection getLevelCollection()
+    @Getter
+    public LevelCollection levelCollection()
     {
         return levels;
     }
 
-    public Context getContextData()
+    @Getter
+    public Context contextData()
     {
-        return getLevel().getContext();
+        return level().context();
     }
 
     /**
@@ -311,43 +329,48 @@ public class Task
      * <i>Gibt einen virtuellen Roboter der erste Version einer Trainingsaufgabe
      * mit dem leichtesten Schwierigkeitsgrad zurück.</i>
      */
-    public VirtualRobot getVirtualRobot()
+    @Getter
+    public VirtualRobot virtualRobot()
     {
-        return getLevel().getContext().getRobot();
+        return level().context().robot();
     }
 
     /**
      * Die Anzahl der Kacheln einer Spalte, des Tests (Level) mit der größten
      * horizontalen Ausdehnung.
      */
-    public int getMaxCols()
+    @Getter
+    public int maxCols()
     {
-        return levels.getMaxCols();
+        return levels.maxCols();
     }
 
     /**
      * Die Anzahl der Kacheln einer Zeile, des Tests (Level) mit der größten
      * vertikalen Ausdehnung.
      */
-    public int getMaxRows()
+    @Getter
+    public int maxRows()
     {
-        return levels.getMaxRows();
+        return levels.maxRows();
     }
 
     /**
      * Die Anzahl an Schwierigkeitsgraden (In der Regel 3).
      */
-    public int getNumberOfDifficulties()
+    @Getter
+    public int numberOfDifficulties()
     {
-        return levels.getNumberOfDifficulties();
+        return levels.numberOfDifficulties();
     }
 
     /**
      * Die Anzahl der Tests des Schwierigkeitsgrads mit den meisten Tests.
      */
-    public int getMaxLevelsPerDifficulty()
+    @Getter
+    public int maxLevelsPerDifficulty()
     {
-        getLevels().forEach((difficulty, levels) -> {
+        levels().forEach((difficulty, levels) -> {
             if (maxLevelsPerDifficulty < levels.size())
             {
                 maxLevelsPerDifficulty = levels.size();
@@ -359,9 +382,10 @@ public class Task
     /**
      * Die Anzahl aller Tests (Level).
      */
-    public int getNumberOfLevels()
+    @Getter
+    public int numberOfLevels()
     {
-        return levels.getNumberOfLevels();
+        return levels.numberOfLevels();
     }
 
     public boolean hasGravity()
@@ -369,7 +393,8 @@ public class Task
         return data.gridInfos.hasGravity;
     }
 
-    public boolean getAutoWithdraw()
+    @Getter
+    public boolean autoWithdraw()
     {
         if (autoWithdraw)
         {
@@ -383,7 +408,8 @@ public class Task
         return autoWithdraw;
     }
 
-    public BagInit getBagInit()
+    @Getter
+    public BagInit bagInit()
     {
         if (data.gridInfos.bagInit != null)
         {

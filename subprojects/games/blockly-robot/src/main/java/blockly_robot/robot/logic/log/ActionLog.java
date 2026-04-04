@@ -27,7 +27,7 @@ public class ActionLog
         String[] result = new String[actions.size()];
         for (int i = 0; i < actions.size(); i++)
         {
-            result[i] = actions.get(i).getName();
+            result[i] = actions.get(i).name();
         }
         return result;
     }

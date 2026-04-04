@@ -3,6 +3,8 @@ package blockly_robot.robot.logic.level;
 import java.util.HashMap;
 import java.util.Map;
 
+import pi.annotations.Getter;
+
 /**
  * Der Schwierigkeitsgrad
  */
@@ -90,7 +92,8 @@ public enum Difficulty
      *
      * @return the index of the difficulty level
      */
-    public int getIndex()
+    @Getter
+    public int index()
     {
         return index;
     }

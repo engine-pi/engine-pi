@@ -5,6 +5,7 @@ import blockly_robot.robot.data.model.LevelData;
 import blockly_robot.robot.logic.Task;
 import blockly_robot.robot.logic.context.Context;
 import blockly_robot.robot.logic.robot.VirtualRobot;
+import pi.annotations.Getter;
 
 /**
  * Ein Test bzw. eine Version einer Trainingsaufgabe in einer bestimmen
@@ -40,61 +41,70 @@ public class Level
     {
         var robot = new VirtualRobot(this);
         robot.addDefaultMovementListener();
-        robot.setInitPosition(getInitItem());
+        robot.initPosition(initItem());
         return robot;
     }
 
     private Context createContext(Task task)
     {
         VirtualRobot robot = createRobot();
-        Context context = new Context(data.tiles, task.getItemCreator(), robot,
+        Context context = new Context(data.tiles, task.itemCreator(), robot,
                 task, this);
-        robot.setContext(context);
+        robot.context(context);
         return context;
     }
 
-    public Task getTask()
+    @Getter
+    public Task task()
     {
         return task;
     }
 
-    public Difficulty getDifficulty()
+    @Getter
+    public Difficulty difficulty()
     {
         return difficulty;
     }
 
-    public int getTestIndex()
+    @Getter
+    public int testIndex()
     {
         return testIndex;
     }
 
-    public Context getContext()
+    @Getter
+    public Context context()
     {
         return context;
     }
 
-    public int getRows()
+    @Getter
+    public int rows()
     {
-        return context.getRows();
+        return context.rows();
     }
 
-    public int getCols()
+    @Getter
+    public int cols()
     {
-        return context.getCols();
+        return context.cols();
     }
 
-    public ItemData getInitItem()
+    @Getter
+    public ItemData initItem()
     {
-        return data.getInitItem();
+        return data.initItem();
     }
 
-    public String getBorderColor()
+    @Getter
+    public String borderColor()
     {
-        return task.getBorderColor();
+        return task.borderColor();
     }
 
-    public String getBackgroundColor()
+    @Getter
+    public String backgroundColor()
     {
-        return task.getBackgroundColor();
+        return task.backgroundColor();
     }
 }

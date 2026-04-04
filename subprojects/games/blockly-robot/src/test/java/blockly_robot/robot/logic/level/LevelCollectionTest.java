@@ -17,37 +17,37 @@ class LevelCollectionTest
     static void getLevel()
     {
         levels = loadTask("conditionals_excercises/light_all_candles")
-            .getLevelCollection();
+            .levelCollection();
     }
 
     @Test
     void getLevels()
     {
-        assertEquals(levels.getLevels().size(), 3);
+        assertEquals(levels.levels().size(), 3);
     }
 
     @Test
     void getNumberOfLevels()
     {
-        assertEquals(levels.getNumberOfLevels(), 3);
+        assertEquals(levels.numberOfLevels(), 3);
     }
 
     @Test
     void getMaxRows()
     {
-        assertEquals(levels.getMaxRows(), 6);
+        assertEquals(levels.maxRows(), 6);
     }
 
     @Test
     void getMaxCols()
     {
-        assertEquals(levels.getMaxCols(), 10);
+        assertEquals(levels.maxCols(), 10);
     }
 
     @Test
     void getNumberOfDifficulties()
     {
-        assertEquals(levels.getNumberOfDifficulties(), 3);
+        assertEquals(levels.numberOfDifficulties(), 3);
     }
 
     @Nested
@@ -57,19 +57,19 @@ class LevelCollectionTest
         @Test
         void allParameters()
         {
-            assertEquals(levels.getLevel(Difficulty.EASY, 0).getTestIndex(), 0);
+            assertEquals(levels.level(Difficulty.EASY, 0).testIndex(), 0);
         }
 
         @Test
         void difficultyAsEnum()
         {
-            assertEquals(levels.getLevel(Difficulty.EASY).getTestIndex(), 0);
+            assertEquals(levels.level(Difficulty.EASY).testIndex(), 0);
         }
 
         @Test
         void difficultyAsInt()
         {
-            assertEquals(levels.getLevel(0).getTestIndex(), 0);
+            assertEquals(levels.level(0).testIndex(), 0);
         }
     }
 
@@ -80,10 +80,10 @@ class LevelCollectionTest
         void filterByDifficultyAndTestIndex()
         {
             var map = levels.filter(difficulty -> difficulty == EASY,
-                level -> level.getTestIndex() == 0);
+                level -> level.testIndex() == 0);
             assertEquals(map.size(), 1);
             var level = map.get(EASY).get(0);
-            assertEquals(level.getBorderColor(), "#b4ccc7");
+            assertEquals(level.borderColor(), "#b4ccc7");
         }
 
         @Test
@@ -114,7 +114,7 @@ class LevelCollectionTest
         @Test
         void filterByDifficultyAsIntegerAndTestIndex()
         {
-            assertEquals(levels.filter(0, 0).get(EASY).get(0).getBorderColor(),
+            assertEquals(levels.filter(0, 0).get(EASY).get(0).borderColor(),
                 "#b4ccc7");
         }
 
@@ -122,7 +122,7 @@ class LevelCollectionTest
         void filterByDifficultyAsStringAndTestIndex()
         {
             assertEquals(
-                levels.filter("easy", 0).get(EASY).get(0).getBorderColor(),
+                levels.filter("easy", 0).get(EASY).get(0).borderColor(),
                 "#b4ccc7");
         }
 

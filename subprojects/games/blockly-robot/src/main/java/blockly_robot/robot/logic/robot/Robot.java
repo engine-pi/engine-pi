@@ -13,7 +13,7 @@ public interface Robot
      *
      * @return the row number of the robot's current position
      */
-    public int getRow();
+    public int row();
 
     /**
      * Returns the column of the robot's current position. |
@@ -22,14 +22,14 @@ public interface Robot
      *
      * @return the column of the robot's current position
      */
-    public int getCol();
+    public int col();
 
     /**
      * Returns the current position of the robot as a Point object. deutsch u
      *
      * @return the current position of the robot
      */
-    public Coords getCoords();
+    public Coords coords();
 
     public String[] reportActions();
 

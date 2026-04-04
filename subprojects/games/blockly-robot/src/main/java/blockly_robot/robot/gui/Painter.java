@@ -10,7 +10,7 @@ public class Painter
             Difficulty difficulty)
     {
         Text text = TextMaker
-            .createText("Version " + "*".repeat(difficulty.getIndex() + 2), 1);
+            .createText("Version " + "*".repeat(difficulty.index() + 2), 1);
         text.anchor(x, y);
         scene.add(text);
     }

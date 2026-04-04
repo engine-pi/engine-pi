@@ -15,7 +15,7 @@ abstract class ItemRelocator
     public ItemRelocator(Context context)
     {
         this.context = context;
-        this.itemCreator = context.getItemCreator();
+        this.itemCreator = context.itemCreator();
     }
 
     protected ItemRelocation reportItemRelocation(String name, Item item)
@@ -46,8 +46,8 @@ abstract class ItemRelocator
 
     protected Item drop(Coords coords, Item item)
     {
-        item.setPosition(coords.getRow(), coords.getCol());
-        context.get(coords.getRow(), coords.getCol()).add(item);
+        item.position(coords.row(), coords.col());
+        context.get(coords.row(), coords.col()).add(item);
         return item;
     }
 }

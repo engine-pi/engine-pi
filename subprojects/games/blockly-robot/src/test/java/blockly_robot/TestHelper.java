@@ -17,26 +17,26 @@ public class TestHelper
 
     public static Level loadLevel(String taskPath)
     {
-        return loadTask(taskPath).getLevel(Difficulty.EASY);
+        return loadTask(taskPath).level(Difficulty.EASY);
     }
 
     public static Context loadContext(String taskPath)
     {
-        return loadLevel(taskPath).getContext();
+        return loadLevel(taskPath).context();
     }
 
     public static BagPacker loadBagPacker(String taskPath)
     {
-        return loadContext(taskPath).getBagPacker();
+        return loadContext(taskPath).bagPacker();
     }
 
     public static VirtualRobot loadVirtualRobot(String taskPath)
     {
-        return loadContext(taskPath).getRobot();
+        return loadContext(taskPath).robot();
     }
 
     public static ItemCreator loadItemCreator(String taskPath)
     {
-        return loadTask(taskPath).getItemCreator();
+        return loadTask(taskPath).itemCreator();
     }
 }

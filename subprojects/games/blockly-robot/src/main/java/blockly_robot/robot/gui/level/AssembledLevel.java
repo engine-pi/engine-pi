@@ -7,6 +7,8 @@ import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.robot.RobotWrapper;
 import pi.Scene;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Die Figuren und Hintergründe, die erzeugt wurden, um eine Version einer
@@ -28,41 +30,47 @@ public class AssembledLevel
     {
         this.level = level;
         this.scene = scene;
-        var context = level.getContext();
-        translate = new CoordinateSystemTranslator(context.getRows(),
-                context.getCols(), x, y);
-        for (Item item : context.getBagPacker())
+        var context = level.context();
+        translate = new CoordinateSystemTranslator(context.rows(),
+                context.cols(), x, y);
+        for (Item item : context.bagPacker())
         {
-            item.setController(getItemController(item));
+            item.controller(itemController(item));
         }
     }
 
-    public Level getLevel()
+    @Getter
+    public Level level()
     {
         return level;
     }
 
-    public Grid getGrid()
+    @Getter
+    public Grid grid()
     {
         return grid;
     }
 
-    public void setGrid(Grid grid)
+    @Setter
+    public void grid(Grid grid)
     {
         this.grid = grid;
     }
 
-    public RobotWrapper getRobot()
+    @Getter
+    public RobotWrapper robot()
     {
         return robot;
     }
 
-    public void setRobot(RobotWrapper robot)
+    @Setter
+    public void robot(RobotWrapper robot)
     {
         this.robot = robot;
     }
 
-    public GraphicalItemController getItemController(Item item)
+    @Getter
+    public GraphicalItemController itemController(Item item)
     {
         return new GraphicalItemController(item, translate, scene);
     }

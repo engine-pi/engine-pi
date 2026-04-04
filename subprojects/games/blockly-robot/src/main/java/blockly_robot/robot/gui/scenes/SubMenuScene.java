@@ -31,7 +31,7 @@ public class SubMenuScene extends Scene implements WindowScene
     public SubMenuScene(String main)
     {
         this.main = main;
-        State.menu.getSub(main).forEach((sub, id) -> {
+        State.menu.sub(main).forEach((sub, id) -> {
             Text text = new Text(sub);
             text.font(TextMaker.regular).height(FONT_SIZE);
             if (id != null)
@@ -64,12 +64,12 @@ public class SubMenuScene extends Scene implements WindowScene
         });
     }
 
-    public Bounds getWindowBounds()
+    public Bounds windowBounds()
     {
         return new Bounds(INITIAL_X - 2, y, 12, INITIAL_Y - y + 2);
     }
 
-    public String getTitle()
+    public String title()
     {
         return main;
     }

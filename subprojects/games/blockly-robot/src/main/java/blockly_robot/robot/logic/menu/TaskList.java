@@ -47,7 +47,7 @@ public class TaskList
     {
         Menu menu = new Menu();
         List<String> relPaths = new ArrayList<>();
-        menu.getMain().forEach((main, sub) -> {
+        menu.main().forEach((main, sub) -> {
             sub.forEach((subMenu, relPath) -> {
                 if (relPath != null)
                 {

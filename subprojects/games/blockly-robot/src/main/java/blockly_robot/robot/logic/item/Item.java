@@ -1,6 +1,7 @@
 package blockly_robot.robot.logic.item;
 
 import blockly_robot.robot.data.model.ItemData;
+import pi.annotations.Setter;
 
 /**
  * Ein Gegenstand auf dem Gitter.
@@ -29,7 +30,8 @@ public class Item
         }
     }
 
-    public void setPosition(int row, int col)
+    @Setter
+    public void position(int row, int col)
     {
         this.row = row;
         this.col = col;
@@ -119,7 +121,8 @@ public class Item
         return data.isPushable;
     }
 
-    public void setController(ItemController controller)
+    @Setter
+    public void controller(ItemController controller)
     {
         if (this.controller != null)
         {

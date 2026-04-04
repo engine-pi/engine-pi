@@ -81,19 +81,19 @@ public class MainMenuScene extends Scene implements WindowScene
 
     public MainMenuScene()
     {
-        State.menu.getMain().forEach((main, submenu) -> {
+        State.menu.main().forEach((main, submenu) -> {
             new ColoredArea(main, x, y);
             y -= (float) (2.5 * FONT_SIZE);
         });
     }
 
-    public Bounds getWindowBounds()
+    public Bounds windowBounds()
     {
         return new Bounds(INITIAL_X - 2, y, RECTANGLE_WIDTH + 2,
                 INITIAL_Y - y + 2);
     }
 
-    public String getTitle()
+    public String title()
     {
         return "Trainingsaufgaben";
     }

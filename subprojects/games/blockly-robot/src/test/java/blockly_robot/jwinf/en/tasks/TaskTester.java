@@ -36,8 +36,8 @@ public class TaskTester<T>
         assertArrayEquals(w.actor.reportActions(),
             args,
             "\"" + String.join("\", \"", w.actor.reportActions()) + "\"");
-        Coords p = w.actor.getCoords();
-        assertEquals(p.getRow(), endRow, "row");
-        assertEquals(p.getCol(), endCol, "col");
+        Coords p = w.actor.coords();
+        assertEquals(p.row(), endRow, "row");
+        assertEquals(p.col(), endCol, "col");
     }
 }

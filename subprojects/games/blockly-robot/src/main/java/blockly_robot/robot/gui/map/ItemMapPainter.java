@@ -15,16 +15,16 @@ public class ItemMapPainter
     public ItemMapPainter(Context context)
     {
         this.context = context;
-        translate = new CoordinateSystemTranslator(context.getRows(),
-                context.getCols());
+        translate = new CoordinateSystemTranslator(context.rows(),
+                context.cols());
     }
 
     public void paint(Scene scene, double x, double y)
     {
-        translate.setPosition(x, y);
-        for (int row = 0; row < context.getRows(); row++)
+        translate.position(x, y);
+        for (int row = 0; row < context.rows(); row++)
         {
-            for (int col = 0; col < context.getCols(); col++)
+            for (int col = 0; col < context.cols(); col++)
             {
                 paintStackedItems(scene, col, row, context.get(row, col));
             }
@@ -63,7 +63,7 @@ public class ItemMapPainter
         if (filePath != null)
         {
             Image image = new Image(filePath).size(1, 1);
-            item.setController(
+            item.controller(
                 new GraphicalItemController(item, image, translate, scene));
             return image;
         }

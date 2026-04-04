@@ -1,5 +1,7 @@
 package blockly_robot.robot.logic.navigation;
 
+import pi.annotations.Getter;
+
 /**
  * Ein Punkt auf dem Gitter. Der Ursprung ist links oben (Reihe 0 und Spalte 0).
  */
@@ -15,12 +17,14 @@ public class Coords
         this.col = col;
     }
 
-    public int getRow()
+    @Getter
+    public int row()
     {
         return row;
     }
 
-    public int getCol()
+    @Getter
+    public int col()
     {
         return col;
     }

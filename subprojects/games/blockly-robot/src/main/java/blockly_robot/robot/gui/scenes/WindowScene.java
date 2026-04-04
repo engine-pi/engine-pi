@@ -1,5 +1,6 @@
 package blockly_robot.robot.gui.scenes;
 
+import pi.annotations.Getter;
 import pi.graphics.geom.Bounds;
 
 /**
@@ -12,10 +13,12 @@ public interface WindowScene
      * @return Eine Zeichenkette, die als Title im Fenster angezeigt werden
      *     soll.
      */
-    public String getTitle();
+    @Getter
+    public String title();
 
     /**
      * @return Die Begrenzungen, die das Fenster umschließen soll.
      */
-    public Bounds getWindowBounds();
+    @Getter
+    public Bounds windowBounds();
 }

@@ -25,7 +25,7 @@ public class BagPacker extends ItemRelocator implements Iterable<Item>
     public BagPacker(Context context)
     {
         super(context);
-        var bagInit = context.getTask().getBagInit();
+        var bagInit = context.task().bagInit();
         if (bagInit != null)
         {
             for (int i = 0; i < bagInit.count; i++)
@@ -56,7 +56,7 @@ public class BagPacker extends ItemRelocator implements Iterable<Item>
         }
         else
         {
-            action.setItem(null);
+            action.item(null);
         }
         return action;
     }
@@ -101,12 +101,12 @@ public class BagPacker extends ItemRelocator implements Iterable<Item>
         if (item == null)
         {
             return (ItemRelocation) action
-                .setError(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
+                .error(ErrorMessages.WITHDRAWABLES_NOTHING_TO_PICK_UP);
         }
-        if (context.getTask().getBagSize() < bag.size() + 1)
+        if (context.task().bagSize() < bag.size() + 1)
         {
             return (ItemRelocation) action
-                .setError(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
+                .error(ErrorMessages.WITHDRAWABLES_TOO_MANY_OBJECTS);
         }
         item.withdraw();
         bag.add(item);

@@ -20,54 +20,54 @@ class LevelTest
     @Test
     void getTask()
     {
-        assertEquals(level.getTask().getTitle(), "Kerzen anzünden");
+        assertEquals(level.task().title(), "Kerzen anzünden");
     }
 
     @Test
     void getDifficulty()
     {
-        assertEquals(level.getDifficulty(), EASY);
+        assertEquals(level.difficulty(), EASY);
     }
 
     @Test
     void getTestIndex()
     {
-        assertEquals(level.getTestIndex(), 0);
+        assertEquals(level.testIndex(), 0);
     }
 
     @Test
     void getContext()
     {
-        assertEquals(level.getContext().getCols(), 9);
+        assertEquals(level.context().cols(), 9);
     }
 
     @Test
     void getRows()
     {
-        assertEquals(level.getRows(), 6);
+        assertEquals(level.rows(), 6);
     }
 
     @Test
     void getCols()
     {
-        assertEquals(level.getCols(), 9);
+        assertEquals(level.cols(), 9);
     }
 
     @Test
     void getInitItem()
     {
-        assertEquals(level.getInitItem().row, 5);
+        assertEquals(level.initItem().row, 5);
     }
 
     @Test
     void getBorderColor()
     {
-        assertEquals(level.getBorderColor(), "#b4ccc7");
+        assertEquals(level.borderColor(), "#b4ccc7");
     }
 
     @Test
     void getBackgroundColor()
     {
-        assertEquals(level.getBackgroundColor(), "#c5e2dd");
+        assertEquals(level.backgroundColor(), "#c5e2dd");
     }
 }

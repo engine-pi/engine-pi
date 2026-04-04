@@ -8,6 +8,7 @@ import blockly_robot.robot.logic.level.Difficulty;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.robot.RobotWrapper;
 import blockly_robot.robot.utils.PackageClassLoader;
+import pi.annotations.Setter;
 
 /**
  * Klasse, die verschiedene Methoden beinhaltet, die die verschiedenen Versionen
@@ -54,8 +55,8 @@ public abstract class Solver<T>
     {
         RobotWrapper robot = PackageClassLoader
             .instantiateClass("en.tasks.%s.Robot".formatted(taskPath));
-        var context = level.getContext();
-        robot.actor = context.getRobot();
+        var context = level.context();
+        robot.actor = context.robot();
         return robot;
     }
 
@@ -91,20 +92,20 @@ public abstract class Solver<T>
         LevelsScene scene = new LevelsScene(taskPath, difficutly, test);
         scene.camera().meter(zoom);
         Controller.launchScene((WindowScene) scene);
-        scene.getAssembledLevels().forEach((level) -> {
+        scene.assembledLevels().forEach((level) -> {
             new Thread(() -> {
-                switch (level.getLevel().getDifficulty())
+                switch (level.level().difficulty())
                 {
                 case EASY:
-                    easy((T) level.getRobot());
+                    easy((T) level.robot());
                     break;
 
                 case MEDIUM:
-                    medium((T) level.getRobot());
+                    medium((T) level.robot());
                     break;
 
                 case HARD:
-                    hard((T) level.getRobot());
+                    hard((T) level.robot());
                     break;
 
                 default:
@@ -119,7 +120,7 @@ public abstract class Solver<T>
             throws Exception
     {
         Task task = Task.loadByTaskPath(taskPath);
-        Level level = task.getLevel(difficulty, test);
+        Level level = task.level(difficulty, test);
         RobotWrapper robot = createRobot(level);
         switch (difficulty)
         {
@@ -146,8 +147,9 @@ public abstract class Solver<T>
         Solver.zoom = zoom;
     }
 
-    public static void setDebug(boolean debug)
+    @Setter
+    public static void debug(boolean debug)
     {
-        Controller.setDebug(debug);
+        Controller.debug(debug);
     }
 }

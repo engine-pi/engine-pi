@@ -5,6 +5,8 @@ import blockly_robot.robot.logic.navigation.Coords;
 import blockly_robot.robot.logic.navigation.DirectionalCoords;
 import blockly_robot.robot.logic.robot.ErrorMessages;
 import blockly_robot.robot.logic.robot.VirtualRobot;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Represents a movement made by a robot.
@@ -45,11 +47,12 @@ public class Movement extends Action
     public Movement(String name, VirtualRobot robot)
     {
         super(name);
-        from = new DirectionalCoords(robot.getRow(), robot.getCol(), robot.dir);
+        from = new DirectionalCoords(robot.row(), robot.col(), robot.dir);
         this.robot = robot;
     }
 
-    public DirectionalCoords getTo()
+    @Getter
+    public DirectionalCoords to()
     {
         return to;
     }
@@ -60,17 +63,16 @@ public class Movement extends Action
      *
      * @return the updated Movement object
      */
-    public Movement setTo()
+    public Movement updateTo()
     {
-        return setTo(robot.getRow(), robot.getCol(), robot.dir);
+        return updateTo(robot.row(), robot.col(), robot.dir);
     }
 
-    public Movement setTo(int toRow, int toCol, Compass toDir)
+    public Movement updateTo(int toRow, int toCol, Compass toDir)
     {
         to = new DirectionalCoords(toRow, toCol, toDir);
-        relocated = from.getRow() != toRow || from.getCol() != toCol;
-        rotation = ((toDir.getNumber() - from.getDir().getNumber() + 1) % 4)
-                - 1;
+        relocated = from.row() != toRow || from.col() != toCol;
+        rotation = ((toDir.number() - from.dir().number() + 1) % 4) - 1;
         return this;
     }
 
@@ -79,29 +81,34 @@ public class Movement extends Action
         return next != null;
     }
 
-    public void setNext(Movement next)
+    @Setter
+    public void next(Movement next)
     {
         this.next = next;
     }
 
-    public Movement getNext()
+    @Getter
+    public Movement next()
     {
         return next;
     }
 
-    public int getRotation()
+    @Getter
+    public int rotation()
     {
         return rotation;
     }
 
-    public Movement setTo(int toRow, int toCol)
+    @Setter
+    public Movement to(int toRow, int toCol)
     {
-        return setTo(toRow, toCol, from.getDir());
+        return updateTo(toRow, toCol, from.dir());
     }
 
-    public Movement setTo(Coords to)
+    @Setter
+    public Movement to(Coords to)
     {
-        return setTo(to.getRow(), to.getCol());
+        return to(to.row(), to.col());
     }
 
     public boolean isRelocated()
@@ -109,9 +116,10 @@ public class Movement extends Action
         return relocated;
     }
 
-    public Movement setError(ErrorMessages error)
+    @Setter
+    public Movement error(ErrorMessages error)
     {
-        setTo();
+        updateTo();
         this.error = error;
         return this;
     }
@@ -128,15 +136,12 @@ public class Movement extends Action
             return "Movement [name=%s, error=%s]".formatted(name, error);
         }
         return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
-            .formatted(name,
-                from.getSummary(),
-                to.getSummary(),
-                relocated,
-                rotation);
+            .formatted(name, from.summary(), to.summary(), relocated, rotation);
     }
 
+    @Getter
     @Override
-    public String getName()
+    public String name()
     {
         if (!relocated && !name.equals("turnLeft") && !name.equals("turnRight")
                 && !name.equals("turnAround"))

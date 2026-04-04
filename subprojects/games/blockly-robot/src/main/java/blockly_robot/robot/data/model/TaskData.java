@@ -1,6 +1,7 @@
 package blockly_robot.robot.data.model;
 
 import blockly_robot.robot.logic.level.Difficulty;
+import pi.annotations.Getter;
 
 public class TaskData
 {
@@ -55,18 +56,21 @@ public class TaskData
 
     public LevelCollectionData data;
 
-    public LevelData getLevel(Difficulty difficulty, int test)
+    @Getter
+    public LevelData level(Difficulty difficulty, int test)
     {
         return data.getLevel(difficulty, test);
     }
 
-    public LevelData getLevel(Difficulty difficulty)
+    @Getter
+    public LevelData level(Difficulty difficulty)
     {
-        return getLevel(difficulty, 0);
+        return level(difficulty, 0);
     }
 
-    public LevelData getLevel(int difficulty)
+    @Getter
+    public LevelData level(int difficulty)
     {
-        return getLevel(Difficulty.indexOf(difficulty), 0);
+        return level(Difficulty.indexOf(difficulty), 0);
     }
 }

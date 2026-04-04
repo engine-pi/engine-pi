@@ -16,6 +16,7 @@ import pi.Image;
 import pi.animation.Interpolator;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.SinusDouble;
+import pi.annotations.Getter;
 import pi.graphics.geom.Vector;
 
 public class ImageRobot extends Image implements Robot
@@ -41,19 +42,20 @@ public class ImageRobot extends Image implements Robot
         this.level = level;
     }
 
-    public int getRow()
+    @Getter
+    public int row()
     {
-        return virtual.getRow();
+        return virtual.row();
     }
 
-    public int getCol()
+    public int col()
     {
-        return virtual.getCol();
+        return virtual.col();
     }
 
-    public Coords getCoords()
+    public Coords coords()
     {
-        return virtual.getCoords();
+        return virtual.coords();
     }
 
     public String[] reportActions()
@@ -109,17 +111,17 @@ public class ImageRobot extends Image implements Robot
 
     private Movement performMovement(Movement movement)
     {
-        if (movement.getRotation() != 0)
+        if (movement.rotation() != 0)
         {
-            rotateByAnimated(movement.getRotation() * -90);
+            rotateByAnimated(movement.rotation() * -90);
         }
         if (movement.isRelocated())
         {
-            relocateAnimated(level.translate.toVector(movement.getTo()));
+            relocateAnimated(level.translate.toVector(movement.to()));
         }
         if (movement.hasNext())
         {
-            performMovement(movement.getNext());
+            performMovement(movement.next());
         }
         if (movement.hasError())
         {
@@ -243,7 +245,7 @@ public class ImageRobot extends Image implements Robot
     {
         if (item != null)
         {
-            item.setController(level.getItemController(item));
+            item.controller(level.itemController(item));
             item.add();
         }
         return item;
@@ -254,7 +256,7 @@ public class ImageRobot extends Image implements Robot
         if (relocation != null)
         {
             wait(0.5 / speed);
-            paintItem(relocation.getItem());
+            paintItem(relocation.item());
             wait(0.5 / speed);
         }
         return relocation;
@@ -263,14 +265,14 @@ public class ImageRobot extends Image implements Robot
     public ItemRelocation dropWithdrawable(int itemNum)
     {
         ItemRelocation action = virtual.dropWithdrawable(itemNum);
-        paintItem(action.getItem());
+        paintItem(action.item());
         return action;
     }
 
     public ItemRelocation drop()
     {
         ItemRelocation action = virtual.drop();
-        action.getItem().add();
+        action.item().add();
         return action;
     }
 

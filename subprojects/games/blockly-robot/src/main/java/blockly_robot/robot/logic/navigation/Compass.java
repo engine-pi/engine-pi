@@ -5,6 +5,7 @@ import static pi.graphics.geom.Direction.LEFT;
 import static pi.graphics.geom.Direction.RIGHT;
 import static pi.graphics.geom.Direction.UP;
 
+import pi.annotations.Getter;
 import pi.graphics.geom.Direction;
 
 /**
@@ -48,7 +49,8 @@ public enum Compass
      *
      * @return the number associated with the cardinal point
      */
-    public int getNumber()
+    @Getter
+    public int number()
     {
         return number;
     }

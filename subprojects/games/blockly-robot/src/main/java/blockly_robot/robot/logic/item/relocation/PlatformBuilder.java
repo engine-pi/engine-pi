@@ -13,7 +13,7 @@ public class PlatformBuilder extends ItemRelocator
     public PlatformBuilder(Context context)
     {
         super(context);
-        numberOfPlatforms = context.getTask().getNbPlatforms();
+        numberOfPlatforms = context.task().nbPlatforms();
     }
 
     /**
@@ -27,18 +27,18 @@ public class PlatformBuilder extends ItemRelocator
         if (numberOfPlatforms == 0)
         {
             return (ItemRelocation) action
-                .setError(ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
+                .error(ErrorMessages.PLATFORMS_FAILURE_NOT_ENOUGH_PLATFORM);
         }
         if (context.isObstacle(coords))
         {
             return (ItemRelocation) action
-                .setError(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
+                .error(ErrorMessages.PLATFORMS_FAILURE_DROP_PLATFORM);
         }
         Item platform = drop(coords, "platform");
         if (platform != null)
         {
             numberOfPlatforms--;
         }
-        return action.setItem(platform);
+        return action.item(platform);
     }
 }

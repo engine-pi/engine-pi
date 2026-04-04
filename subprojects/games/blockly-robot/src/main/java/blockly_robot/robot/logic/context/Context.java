@@ -9,6 +9,7 @@ import blockly_robot.robot.logic.item.relocation.PlatformBuilder;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.navigation.Coords;
 import blockly_robot.robot.logic.robot.VirtualRobot;
+import pi.annotations.Getter;
 
 /**
  * Sammlung aller wichtigen Objekte die zum Lösen einer Trainingsaufgabenversion
@@ -71,7 +72,8 @@ public class Context
         platformBuilder = new PlatformBuilder(this);
     }
 
-    public ItemCreator getItemCreator()
+    @Getter
+    public ItemCreator itemCreator()
     {
         return itemCreator;
     }
@@ -79,7 +81,8 @@ public class Context
     /**
      * Anzahl an Reihen (y-Richtung bzw. Höhe)
      */
-    public int getRows()
+    @Getter
+    public int rows()
     {
         return rows;
     }
@@ -87,32 +90,38 @@ public class Context
     /**
      * Anzahl an Spalten (x-Richtung bzw. Breite)
      */
-    public int getCols()
+    @Getter
+    public int cols()
     {
         return cols;
     }
 
-    public VirtualRobot getRobot()
+    @Getter
+    public VirtualRobot robot()
     {
         return robot;
     }
 
-    public Task getTask()
+    @Getter
+    public Task task()
     {
         return task;
     }
 
-    public Level getLevel()
+    @Getter
+    public Level level()
     {
         return level;
     }
 
-    public BagPacker getBagPacker()
+    @Getter
+    public BagPacker bagPacker()
     {
         return bagPacker;
     }
 
-    public PlatformBuilder getPlatformBuilder()
+    @Getter
+    public PlatformBuilder platformBuilder()
     {
         return platformBuilder;
     }
@@ -124,7 +133,7 @@ public class Context
 
     public StackedItems get(Coords coords)
     {
-        return get(coords.getRow(), coords.getCol());
+        return get(coords.row(), coords.col());
     }
 
     public Item bottom(int row, int col)
@@ -143,7 +152,7 @@ public class Context
 
     public boolean isObstacle(Coords coords)
     {
-        return isObstacle(coords.getRow(), coords.getCol());
+        return isObstacle(coords.row(), coords.col());
     }
 
     /**

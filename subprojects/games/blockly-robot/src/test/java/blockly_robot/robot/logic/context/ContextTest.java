@@ -14,31 +14,30 @@ public class ContextTest
     @Test
     public void getRows()
     {
-        assertEquals(context.getRows(), 7);
+        assertEquals(context.rows(), 7);
     }
 
     @Test
     public void getCols()
     {
-        assertEquals(context.getCols(), 7);
+        assertEquals(context.cols(), 7);
     }
 
     @Test
     public void getRobot()
     {
-        assertEquals(context.getRobot().getRow(), 5);
+        assertEquals(context.robot().row(), 5);
     }
 
     @Test
     public void getTask()
     {
-        assertEquals(context.getTask().getTitle(),
-            "Edelsteine und Hindernisse");
+        assertEquals(context.task().title(), "Edelsteine und Hindernisse");
     }
 
     @Test
     public void getLevel()
     {
-        assertEquals(context.getLevel().getDifficulty(), EASY);
+        assertEquals(context.level().difficulty(), EASY);
     }
 }

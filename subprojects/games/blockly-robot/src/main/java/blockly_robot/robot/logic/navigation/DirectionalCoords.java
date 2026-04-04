@@ -1,5 +1,6 @@
 package blockly_robot.robot.logic.navigation;
 
+import pi.annotations.Getter;
 import pi.graphics.geom.Direction;
 
 public class DirectionalCoords extends Coords
@@ -12,12 +13,14 @@ public class DirectionalCoords extends Coords
         this.dir = dir;
     }
 
-    public Compass getDir()
+    @Getter
+    public Compass dir()
     {
         return dir;
     }
 
-    public Direction getDirection()
+    @Getter
+    public Direction direction()
     {
         return Compass.toDirection(dir);
     }
@@ -28,7 +31,8 @@ public class DirectionalCoords extends Coords
             .formatted(row, col, dir);
     }
 
-    public String getSummary()
+    @Getter
+    public String summary()
     {
         return "(%s,%s;%s)".formatted(row, col, dir);
     }

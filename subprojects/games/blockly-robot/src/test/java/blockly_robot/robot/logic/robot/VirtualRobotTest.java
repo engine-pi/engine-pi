@@ -31,22 +31,22 @@ public class VirtualRobotTest
     private void assertMovement(Movement movement, int row, int col,
             Compass dir, boolean successful)
     {
-        assertEquals(movement.getTo().getRow(), row);
-        assertEquals(movement.getTo().getCol(), col);
-        assertEquals(movement.getTo().getDir(), dir);
+        assertEquals(movement.to().row(), row);
+        assertEquals(movement.to().col(), col);
+        assertEquals(movement.to().dir(), dir);
         assertEquals(movement.isRelocated(), successful);
     }
 
     @Test
     public void row()
     {
-        assertEquals(robot.getRow(), 8);
+        assertEquals(robot.row(), 8);
     }
 
     @Test
     public void col()
     {
-        assertEquals(robot.getCol(), 1);
+        assertEquals(robot.col(), 1);
     }
 
     @Test
@@ -59,8 +59,8 @@ public class VirtualRobotTest
     public void east()
     {
         assertMovement(robot.east(), 8, 2, EAST, true);
-        assertEquals(robot.getRow(), 8);
-        assertEquals(robot.getCol(), 2);
+        assertEquals(robot.row(), 8);
+        assertEquals(robot.col(), 2);
     }
 
     @Test
@@ -73,8 +73,8 @@ public class VirtualRobotTest
     public void west()
     {
         assertMovement(robot.west(), 8, 0, WEST, true);
-        assertEquals(robot.getRow(), 8);
-        assertEquals(robot.getCol(), 0);
+        assertEquals(robot.row(), 8);
+        assertEquals(robot.col(), 0);
     }
 
     @Test
@@ -108,14 +108,14 @@ public class VirtualRobotTest
     {
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();
-        assertEquals(robot.getCol(), 1);
-        assertEquals(robot.getRow(), 8);
+        assertEquals(robot.col(), 1);
+        assertEquals(robot.row(), 8);
         assertTrue(robot.obstacleInFront());
         robot.turnLeft();
         assertFalse(robot.obstacleInFront());
         robot.turnLeft();
         assertTrue(robot.obstacleInFront());
-        assertEquals(robot.getCol(), 1);
-        assertEquals(robot.getRow(), 8);
+        assertEquals(robot.col(), 1);
+        assertEquals(robot.row(), 8);
     }
 }

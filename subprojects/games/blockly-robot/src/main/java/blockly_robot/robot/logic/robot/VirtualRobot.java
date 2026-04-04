@@ -22,6 +22,8 @@ import blockly_robot.robot.logic.log.Movement;
 import blockly_robot.robot.logic.navigation.Compass;
 import blockly_robot.robot.logic.navigation.Coords;
 import blockly_robot.robot.logic.navigation.DirectionalCoords;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Ein Roboter der nicht grafisch dargestellt ist, sondern der sich nur im
@@ -69,32 +71,38 @@ public class VirtualRobot implements Robot
         actionLog = new ActionLog();
     }
 
-    public void setContext(Context context)
+    @Setter
+    public void context(Context context)
     {
         this.context = context;
     }
 
-    public int getRow()
+    @Getter
+    public int row()
     {
         return row;
     }
 
-    public int getCol()
+    @Getter
+    public int col()
     {
         return col;
     }
 
-    public Task getTask()
+    @Getter
+    public Task task()
     {
-        return level.getTask();
+        return level.task();
     }
 
-    public Coords getCoords()
+    @Getter
+    public Coords coords()
     {
         return new Coords(row, col);
     }
 
-    public void setInitPosition(ItemData init)
+    @Setter
+    public void initPosition(ItemData init)
     {
         row = init.row;
         col = init.col;
@@ -104,9 +112,9 @@ public class VirtualRobot implements Robot
 
     public void resetInitPosition()
     {
-        row = initPosition.getRow();
-        col = initPosition.getCol();
-        dir = initPosition.getDir();
+        row = initPosition.row();
+        col = initPosition.col();
+        dir = initPosition.dir();
     }
 
     public void addMovementListener(Predicate<Compass> listener)
@@ -120,10 +128,10 @@ public class VirtualRobot implements Robot
             switch (direction)
             {
             case EAST:
-                return col < context.getCols() - 1;
+                return col < context.cols() - 1;
 
             case SOUTH:
-                return row < context.getRows() - 1;
+                return row < context.rows() - 1;
 
             case WEST:
                 return col > 0;
@@ -214,8 +222,8 @@ public class VirtualRobot implements Robot
         int[][] delta = new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 },
                 new int[]
                 { 0, -1 }, new int[] { -1, 0 } };
-        return new Coords(row + delta[dir.getNumber()][0] * mult,
-                col + delta[dir.getNumber()][1] * mult);
+        return new Coords(row + delta[dir.number()][0] * mult,
+                col + delta[dir.number()][1] * mult);
     }
 
     public Coords coordsInFront(Compass dir)
@@ -240,7 +248,7 @@ public class VirtualRobot implements Robot
      */
     private boolean hasOn(Coords point, Predicate<Item> predicate)
     {
-        return hasOn(point.getRow(), point.getCol(), predicate);
+        return hasOn(point.row(), point.col(), predicate);
     }
 
     /**
@@ -271,9 +279,7 @@ public class VirtualRobot implements Robot
     public boolean platformInFront()
     {
         Coords coords = coordsInFront(dir);
-        return hasOn(coords.getRow() + 1,
-            coords.getCol(),
-            item -> item.isObstacle());
+        return hasOn(coords.row() + 1, coords.col(), item -> item.isObstacle());
     }
 
     /**
@@ -294,69 +300,68 @@ public class VirtualRobot implements Robot
     private Movement fall(Coords from)
     {
         var mov = reportMovement("fall");
-        int fallRow = from.getRow();
-        int startRow = from.getRow();
-        boolean canFall = context.canFall(fallRow + 1, from.getCol());
+        int fallRow = from.row();
+        int startRow = from.row();
+        boolean canFall = context.canFall(fallRow + 1, from.col());
         while (canFall)
         {
             fallRow++;
-            canFall = context.canFall(fallRow + 1, from.getCol());
+            canFall = context.canFall(fallRow + 1, from.col());
         }
-        if (!context.isInGrid(fallRow + 1, from.getCol()))
+        if (!context.isInGrid(fallRow + 1, from.col()))
         {
-            return mov.setError(ErrorMessages.FALL_FALLS);
+            return mov.error(ErrorMessages.FALL_FALLS);
         }
-        if (fallRow - startRow > getTask().getMaxFallAltitude())
+        if (fallRow - startRow > task().maxFallAltitude())
         {
-            return mov.setError(ErrorMessages.FALL_WILL_FALL_AND_CRASH);
+            return mov.error(ErrorMessages.FALL_WILL_FALL_AND_CRASH);
         }
-        return mov.setTo(fallRow, from.getCol(), dir);
+        return mov.updateTo(fallRow, from.col(), dir);
     }
 
     public Movement jump()
     {
         var mov = reportMovement("jump");
-        if (!level.getTask().hasGravity())
+        if (!level.task().hasGravity())
         {
-            return mov.setError(ErrorMessages.JUMP_WITHOUT_GRAVITY);
+            return mov.error(ErrorMessages.JUMP_WITHOUT_GRAVITY);
         }
         if (!context.isInGrid(row - 1, col))
         {
-            return mov.setError(ErrorMessages.JUMP_OUTSIDE_GRID);
+            return mov.error(ErrorMessages.JUMP_OUTSIDE_GRID);
         }
         if (hasOn(row - 2,
             col,
             item -> item.isObstacle() || item.isProjectile()))
         {
-            return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
+            return mov.error(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
         }
         if (!hasOn(row - 1, col, item -> item.isObstacle()))
         {
-            return mov.setError(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
+            return mov.error(ErrorMessages.JUMP_OBSTACLE_BLOCKING);
         }
         move(row - 2, col, dir);
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     public ItemRelocation withdrawAuto()
     {
-        return log(context.getBagPacker().withdrawAuto(getCoords()));
+        return log(context.bagPacker().withdrawAuto(coords()));
     }
 
     public ItemRelocation withdraw()
     {
-        return log(context.getBagPacker().withdraw(getCoords()));
+        return log(context.bagPacker().withdraw(coords()));
     }
 
     public ItemRelocation dropWithdrawable(int itemNum)
     {
-        return log(
-            context.getBagPacker().dropWithdrawable(getCoords(), itemNum));
+        return log(context.bagPacker().dropWithdrawable(coords(), itemNum));
     }
 
     public ItemRelocation drop()
     {
-        return log(context.getBagPacker().dropFromBag(getCoords()));
+        return log(context.bagPacker().dropFromBag(coords()));
     }
 
     private <T> T log(T action)
@@ -372,7 +377,7 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformInFront()
     {
-        return log(context.getPlatformBuilder()
+        return log(context.platformBuilder()
             .dropPlatform(coordsInFront(dir).south(), "dropPlatformInFront"));
     }
 
@@ -383,29 +388,29 @@ public class VirtualRobot implements Robot
      */
     public ItemRelocation dropPlatformAbove()
     {
-        return log(context.getPlatformBuilder()
-            .dropPlatform(getCoords().north(), "dropPlatformAbove"));
+        return log(context.platformBuilder()
+            .dropPlatform(coords().north(), "dropPlatformAbove"));
     }
 
     public Movement turnLeft()
     {
         var mov = reportMovement("turnLeft");
         dir = dir.rotate(3);
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     public Movement turnRight()
     {
         var mov = reportMovement("turnRight");
         dir = dir.rotate(1);
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     public Movement turnAround()
     {
         var mov = reportMovement("turnAround");
         dir = dir.rotate(2);
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     /**
@@ -438,7 +443,7 @@ public class VirtualRobot implements Robot
         row = newRow;
         col = newCol;
         dir = newDir;
-        if (getTask().getAutoWithdraw())
+        if (task().autoWithdraw())
         {
             withdrawAuto();
         }
@@ -450,23 +455,20 @@ public class VirtualRobot implements Robot
         if (tryToBeOn(dir))
         {
             Coords inFront = coordsInFront(direction);
-            if (getTask().hasGravity())
+            if (task().hasGravity())
             {
                 Movement fallMov = fall(inFront);
-                if (fallMov.getTo() != null
-                        && fallMov.getTo().getRow() != inFront.getRow())
+                if (fallMov.to() != null && fallMov.to().row() != inFront.row())
                 {
-                    mov.setNext(fallMov);
-                    move(fallMov.getTo().getRow(),
-                        fallMov.getTo().getCol(),
-                        dir);
-                    return mov.setTo(inFront);
+                    mov.next(fallMov);
+                    move(fallMov.to().row(), fallMov.to().col(), dir);
+                    return mov.to(inFront);
                 }
             }
-            move(inFront.getRow(), inFront.getCol(), dir);
+            move(inFront.row(), inFront.col(), dir);
             numberOfMovements++;
         }
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     /**
@@ -498,7 +500,7 @@ public class VirtualRobot implements Robot
             move(newRow, newCol, dir);
             numberOfMovements++;
         }
-        return mov.setTo();
+        return mov.updateTo();
     }
 
     public Movement east()

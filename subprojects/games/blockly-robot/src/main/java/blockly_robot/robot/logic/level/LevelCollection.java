@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import blockly_robot.robot.data.model.LevelCollectionData;
 import blockly_robot.robot.data.model.LevelData;
 import blockly_robot.robot.logic.Task;
+import pi.annotations.Getter;
 
 /**
  * Die Tests (Level) nach Schwierigkeitsgraden geordnet.
@@ -53,38 +54,43 @@ public class LevelCollection
     {
         for (Level level : list)
         {
-            if (level.getCols() > maxCols)
+            if (level.cols() > maxCols)
             {
-                maxCols = level.getCols();
+                maxCols = level.cols();
             }
-            if (level.getRows() > maxRows)
+            if (level.rows() > maxRows)
             {
-                maxRows = level.getRows();
+                maxRows = level.rows();
             }
         }
     }
 
-    public Map<Difficulty, List<Level>> getLevels()
+    @Getter
+    public Map<Difficulty, List<Level>> levels()
     {
         return levels;
     }
 
-    public int getNumberOfLevels()
+    @Getter
+    public int numberOfLevels()
     {
         return numberOfLevels;
     }
 
-    public int getMaxRows()
+    @Getter
+    public int maxRows()
     {
         return maxRows;
     }
 
-    public int getMaxCols()
+    @Getter
+    public int maxCols()
     {
         return maxCols;
     }
 
-    public int getNumberOfDifficulties()
+    @Getter
+    public int numberOfDifficulties()
     {
         return levels.size();
     }
@@ -97,7 +103,8 @@ public class LevelCollection
      *
      * @return the level corresponding to the given difficulty and test index
      */
-    public Level getLevel(Difficulty difficulty, int testIndex)
+    @Getter
+    public Level level(Difficulty difficulty, int testIndex)
     {
         return levels.get(difficulty).get(testIndex);
     }
@@ -109,9 +116,10 @@ public class LevelCollection
      *
      * @return the level for the specified difficulty
      */
-    public Level getLevel(Difficulty difficulty)
+    @Getter
+    public Level level(Difficulty difficulty)
     {
-        return getLevel(difficulty, 0);
+        return level(difficulty, 0);
     }
 
     /**
@@ -121,9 +129,10 @@ public class LevelCollection
      *
      * @return the level with the specified difficulty
      */
-    public Level getLevel(int difficulty)
+    @Getter
+    public Level level(int difficulty)
     {
-        return getLevel(Difficulty.indexOf(difficulty), 0);
+        return level(Difficulty.indexOf(difficulty), 0);
     }
 
     public Map<Difficulty, List<Level>> filter(Predicate<Difficulty> difficulty,
@@ -162,7 +171,7 @@ public class LevelCollection
         else
         {
             difficultyFilter = d -> d == Difficulty.indexOf(difficulty);
-            levelFilter = l -> l.getTestIndex() == testIndex;
+            levelFilter = l -> l.testIndex() == testIndex;
         }
         return filter(difficultyFilter, levelFilter);
     }
@@ -172,14 +181,14 @@ public class LevelCollection
         return filter(difficulty, 0);
     }
 
-    public static int getMaxColsOfList(List<Level> levels)
+    public static int maxColsOfList(List<Level> levels)
     {
         int maxCols = 0;
         for (Level level : levels)
         {
-            if (level.getCols() > maxCols)
+            if (level.cols() > maxCols)
             {
-                maxCols = level.getCols();
+                maxCols = level.cols();
             }
         }
         return maxCols;

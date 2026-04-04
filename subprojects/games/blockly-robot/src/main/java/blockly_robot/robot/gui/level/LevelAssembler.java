@@ -25,24 +25,24 @@ public class LevelAssembler
 
     public Grid createGrid()
     {
-        Grid grid = new Grid(level.getCols(), level.getRows());
-        grid.color(new Color(level.getBorderColor()));
-        grid.setBackground(new Color(level.getTask().getBackgroundColor()));
+        Grid grid = new Grid(level.cols(), level.rows());
+        grid.color(new Color(level.borderColor()));
+        grid.background(new Color(level.task().backgroundColor()));
         return grid;
     }
 
     public RobotWrapper createRobot(AssembledLevel l) throws Exception
     {
         String className = "blockly_robot.jwinf.en.tasks.%s.Robot"
-            .formatted(level.getTask().getTaskPath().replace("/", "."));
+            .formatted(level.task().taskPath().replace("/", "."));
         RobotWrapper robot = RobotWrapper.class.getClassLoader()
             .loadClass(className)
             .asSubclass(RobotWrapper.class)
             .getDeclaredConstructor()
             .newInstance();
-        var context = level.getContext();
-        robot.actor = new ImageRobot("images/robots/robot.png",
-                context.getRobot(), l);
+        var context = level.context();
+        robot.actor = new ImageRobot("images/robots/robot.png", context.robot(),
+                l);
         return robot;
     }
 
@@ -54,18 +54,17 @@ public class LevelAssembler
     {
         AssembledLevel a = new AssembledLevel(level, scene, x, y);
         // Grid
-        a.setGrid(createGrid());
-        a.getGrid().anchor(x - SHIFT, y - SHIFT);
-        scene.add(a.getGrid());
+        a.grid(createGrid());
+        a.grid().anchor(x - SHIFT, y - SHIFT);
+        scene.add(a.grid());
         // ItemGrid
-        new ItemMapPainter(level.getContext())
-            .paint(scene, x - SHIFT, y - SHIFT);
+        new ItemMapPainter(level.context()).paint(scene, x - SHIFT, y - SHIFT);
         try
         {
-            a.setRobot(createRobot(a));
-            Vector robotPosition = a.translate.toVector(level.getInitItem().row,
-                level.getInitItem().col);
-            ImageRobot robot = (ImageRobot) a.getRobot().actor;
+            a.robot(createRobot(a));
+            Vector robotPosition = a.translate.toVector(level.initItem().row,
+                level.initItem().col);
+            ImageRobot robot = (ImageRobot) a.robot().actor;
             robot.center(robotPosition.x(), robotPosition.y());
             scene.add(robot);
         }

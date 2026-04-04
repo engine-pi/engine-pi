@@ -5,6 +5,7 @@ import pi.Camera;
 import pi.Scene;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
+import pi.annotations.Setter;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 
@@ -15,7 +16,8 @@ public class Controller
         pi.Controller.instantMode(false);
     }
 
-    public static void setDebug(boolean debug)
+    @Setter
+    public static void debug(boolean debug)
     {
         pi.Controller.debug(debug);
     }
@@ -56,10 +58,10 @@ public class Controller
         Scene scene = (Scene) windowScene;
         Camera camera = scene.camera();
         double pixelPerMeter = camera.meter();
-        Bounds bounds = windowScene.getWindowBounds();
+        Bounds bounds = windowScene.windowBounds();
         Vector center = bounds.center();
         camera.focus(center.x(), center.y());
-        pi.Controller.title(windowScene.getTitle());
+        pi.Controller.title(windowScene.title());
         launchScene((int) Math.round(pixelPerMeter * bounds.width()),
             (int) Math.round(pixelPerMeter * bounds.height()),
             (Scene) windowScene);

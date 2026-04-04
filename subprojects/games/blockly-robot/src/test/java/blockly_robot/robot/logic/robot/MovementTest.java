@@ -18,49 +18,49 @@ public class MovementTest
     {
         Task task = Task
             .loadByTaskPath("conditionals_excercises/find_the_destination");
-        robot = task.getVirtualRobot();
+        robot = task.virtualRobot();
     }
 
     @Test
     void rotationTurnLeft()
     {
-        assertEquals(robot.turnLeft().getRotation(), -1);
+        assertEquals(robot.turnLeft().rotation(), -1);
     }
 
     @Test
     void rotationTurnRight()
     {
-        assertEquals(robot.turnRight().getRotation(), 1);
+        assertEquals(robot.turnRight().rotation(), 1);
     }
 
     @Test
     void rotationTurnAround()
     {
-        assertEquals(robot.turnAround().getRotation(), 2);
+        assertEquals(robot.turnAround().rotation(), 2);
     }
 
     @Test
     void rotationEast()
     {
-        assertEquals(robot.east().getRotation(), 0);
+        assertEquals(robot.east().rotation(), 0);
     }
 
     @Test
     void rotationWest()
     {
-        assertEquals(robot.west().getRotation(), 0);
+        assertEquals(robot.west().rotation(), 0);
     }
 
     @Test
     void rotationSouth()
     {
-        assertEquals(robot.south().getRotation(), 0);
+        assertEquals(robot.south().rotation(), 0);
     }
 
     @Test
     void rotationNorth()
     {
-        assertEquals(robot.north().getRotation(), 0);
+        assertEquals(robot.north().rotation(), 0);
     }
 
     @Test

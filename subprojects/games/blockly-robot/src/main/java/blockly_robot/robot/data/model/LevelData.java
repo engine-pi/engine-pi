@@ -1,6 +1,7 @@
 package blockly_robot.robot.data.model;
 
 import blockly_robot.robot.logic.level.Difficulty;
+import pi.annotations.Getter;
 
 /**
  * Die Daten einer Version einer Trainingsaufgabe.
@@ -37,17 +38,20 @@ public class LevelData
 
     public int testIndex;
 
-    public int getCols()
+    @Getter
+    public int cols()
     {
         return tiles[0].length;
     }
 
-    public int getRows()
+    @Getter
+    public int rows()
     {
         return tiles.length;
     }
 
-    public ItemData getInitItem()
+    @Getter
+    public ItemData initItem()
     {
         return initItems[0];
     }

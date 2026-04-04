@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
 import blockly_robot.robot.data.JsonLoader;
+import pi.annotations.Getter;
 
 /**
  * Represents a menu that contains main and sub menus. The menu data is loaded
@@ -44,7 +45,8 @@ public class Menu
      *
      * @return the main menu as a LinkedHashMap
      */
-    public LinkedHashMap<String, LinkedHashMap<String, String>> getMain()
+    @Getter
+    public LinkedHashMap<String, LinkedHashMap<String, String>> main()
     {
         return data;
     }
@@ -56,7 +58,8 @@ public class Menu
      *
      * @return the sub menu as a LinkedHashMap
      */
-    public LinkedHashMap<String, String> getSub(String menu)
+    @Getter
+    public LinkedHashMap<String, String> sub(String menu)
     {
         return data.get(menu);
     }
@@ -69,7 +72,8 @@ public class Menu
      *
      * @return the ID of the submenu as a String
      */
-    public String getId(String menu, String submenu)
+    @Getter
+    public String id(String menu, String submenu)
     {
         return data.get(menu).get(submenu);
     }

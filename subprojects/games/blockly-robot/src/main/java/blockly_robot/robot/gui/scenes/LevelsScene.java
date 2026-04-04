@@ -16,6 +16,7 @@ import blockly_robot.robot.logic.level.LevelCollection;
 import blockly_robot.robot.logic.menu.TaskList;
 import pi.Scene;
 import pi.Text;
+import pi.annotations.Getter;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Bounds;
 
@@ -57,7 +58,7 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
     public LevelsScene(Task task, Object difficulty, int testIndex)
     {
         this.task = task;
-        levels = task.getLevelCollection().filter(difficulty, testIndex);
+        levels = task.levelCollection().filter(difficulty, testIndex);
         paintLevels();
     }
 
@@ -91,29 +92,30 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
 
     public double getWidth()
     {
-        int numDiff = task.getNumberOfDifficulties();
-        return (task.getMaxCols() * numDiff) + (MARGIN * numDiff - 1);
+        int numDiff = task.numberOfDifficulties();
+        return (task.maxCols() * numDiff) + (MARGIN * numDiff - 1);
     }
 
     public double getHeight()
     {
-        int numLevels = task.getMaxLevelsPerDifficulty();
-        return (task.getMaxRows() * numLevels) + (MARGIN * numLevels - 1);
+        int numLevels = task.maxLevelsPerDifficulty();
+        return (task.maxRows() * numLevels) + (MARGIN * numLevels - 1);
     }
 
-    public String getTitle()
+    public String title()
     {
-        return task.getTitle();
+        return task.title();
     }
 
-    public Bounds getWindowBounds()
+    public Bounds windowBounds()
     {
         double shift = SHIFT * 2;
         return new Bounds(INITIAL_X - shift, yMin - shift, xMax,
                 (yMin * -1) + shift + SHIFT);
     }
 
-    public List<AssembledLevel> getAssembledLevels()
+    @Getter
+    public List<AssembledLevel> assembledLevels()
     {
         return assembledLevels;
     }
@@ -121,7 +123,7 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
     private void writeVersionHeading(Difficulty difficulty)
     {
         Text text = TextMaker
-            .createText("Version " + "*".repeat(difficulty.getIndex() + 2), 1);
+            .createText("Version " + "*".repeat(difficulty.index() + 2), 1);
         text.anchor(x - SHIFT, y - SHIFT);
         setY(y - 1);
         add(text);
@@ -131,13 +133,12 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
     {
         if (levelList.size() > 1)
         {
-            if (level.getTestIndex() > 0)
+            if (level.testIndex() > 0)
             {
                 setY(y - 1);
             }
-            var text = TextMaker.createText(
-                "Test %d".formatted(level.getTestIndex() + 1),
-                0.75f);
+            var text = TextMaker
+                .createText("Test %d".formatted(level.testIndex() + 1), 0.75f);
             text.anchor(x - SHIFT, y - SHIFT);
             setY(y - 1);
             add(text);
@@ -153,10 +154,10 @@ public class LevelsScene extends Scene implements WindowScene, KeyStrokeListener
             levelList.forEach((level) -> {
                 writeTestIndexHeading(levelList, level);
                 var assembler = new LevelAssembler(level);
-                setY(y - (level.getRows() - 1));
+                setY(y - (level.rows() - 1));
                 assembledLevels.add(assembler.placeActorsInScene(this, x, y));
             });
-            setX(x + LevelCollection.getMaxColsOfList(levelList) + 1);
+            setX(x + LevelCollection.maxColsOfList(levelList) + 1);
         });
     }
 

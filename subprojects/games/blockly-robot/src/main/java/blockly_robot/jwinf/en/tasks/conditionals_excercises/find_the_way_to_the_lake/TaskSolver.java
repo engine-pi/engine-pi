@@ -123,6 +123,6 @@ public class TaskSolver extends Solver<Robot>
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        new TaskSolver().solve();
+        new TaskSolver().solve("easy");
     }
 }

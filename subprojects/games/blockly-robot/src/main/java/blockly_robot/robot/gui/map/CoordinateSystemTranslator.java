@@ -1,6 +1,7 @@
 package blockly_robot.robot.gui.map;
 
 import blockly_robot.robot.logic.navigation.Coords;
+import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 
 public class CoordinateSystemTranslator
@@ -41,7 +42,8 @@ public class CoordinateSystemTranslator
         this.cols = cols;
     }
 
-    public void setPosition(double x, double y)
+    @Setter
+    public void position(double x, double y)
     {
         this.x = x;
         this.y = y;
@@ -90,7 +92,7 @@ public class CoordinateSystemTranslator
 
     public Vector toVector(Coords point)
     {
-        return new Vector(toX(point.getCol()), toY(point.getRow()));
+        return new Vector(toX(point.col()), toY(point.row()));
     }
 
     public Vector toVector(int row, int col)

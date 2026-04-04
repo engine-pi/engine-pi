@@ -29,7 +29,7 @@ public class ItemMapPainterTest extends Scene
         }
         Task task = Task
             .loadByTaskPath("conditionals_excercises/find_the_destination");
-        ItemMapPainter painter = new ItemMapPainter(task.getContextData());
+        ItemMapPainter painter = new ItemMapPainter(task.contextData());
         painter.paint(this);
     }
 }

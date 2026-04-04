@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import pi.actor.Actor;
+import pi.annotations.Setter;
 import pi.physics.FixtureBuilder;
 
 public class Grid extends Actor
@@ -42,9 +43,10 @@ public class Grid extends Actor
         return this;
     }
 
-    public void setBackground(Color color)
+    @Setter
+    public void background(Color background)
     {
-        background = color;
+        this.background = background;
     }
 
     @Override
