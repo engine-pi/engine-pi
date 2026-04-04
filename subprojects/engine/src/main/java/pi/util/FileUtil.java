@@ -561,8 +561,8 @@ public final class FileUtil
         }
         try
         {
-            return Files.exists(
-                Paths.get(ResourceLoader.getLocation(filePath).toURI()));
+            return Files
+                .exists(Paths.get(ResourceLoader.location(filePath).toURI()));
         }
         catch (URISyntaxException e)
         {

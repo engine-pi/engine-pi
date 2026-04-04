@@ -141,9 +141,8 @@ public class ImageFont
         this.alignment = alignment;
         glyphWidth = 0;
         glyphHeight = 0;
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths
-            .get(Objects.requireNonNull(ResourceLoader.getLocation(basePath))
-                .toURI())))
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(
+            Objects.requireNonNull(ResourceLoader.location(basePath)).toURI())))
         {
             for (Path path : stream)
             {

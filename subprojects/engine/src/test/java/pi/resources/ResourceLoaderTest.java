@@ -3,7 +3,7 @@ package pi.resources;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedInputStream;
@@ -68,7 +68,7 @@ public class ResourceLoaderTest
         Path file = tempDir.resolve("wrapped.txt");
         Files.writeString(file, "abc", StandardCharsets.UTF_8);
 
-        URL location = ResourceLoader.getLocation(file.toString());
+        URL location = ResourceLoader.location(file.toString());
         try (InputStream stream = ResourceLoader.get(location))
         {
             assertNotNull(stream);
@@ -96,8 +96,7 @@ public class ResourceLoaderTest
     {
         String missing = tempDir.resolve("missing.txt").toString();
 
-        String content = ResourceLoader.read(missing);
-
-        assertNull(content);
+        assertThrows(ResourceLoadException.class,
+            () -> ResourceLoader.read(missing));
     }
 }

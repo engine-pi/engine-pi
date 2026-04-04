@@ -37,6 +37,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import pi.annotations.Getter;
 import pi.util.FileUtil;
 
 /**
@@ -67,7 +68,8 @@ final public class ResourceLoader
             }
             catch (URISyntaxException e)
             {
-                throw new IOException("Could not convert URL to URI", e);
+                throw new ResourceLoadException("Could not convert URL to URI",
+                        e);
             }
         }
         return Files.readAllBytes(path);
@@ -97,6 +99,7 @@ final public class ResourceLoader
             catch (URISyntaxException e)
             {
                 log.log(Level.WARNING, "IO " + filename, e);
+                throw new ResourceLoadException(filename, e);
             }
         }
         return new File(FileUtil.normalizePath(normalizedFilename));
@@ -117,7 +120,7 @@ final public class ResourceLoader
      */
     public static InputStream get(String file)
     {
-        return get(getLocation(file));
+        return get(location(file));
     }
 
     /**
@@ -135,11 +138,7 @@ final public class ResourceLoader
      */
     public static InputStream get(URL file)
     {
-        InputStream stream = getResource(file);
-        if (stream == null)
-        {
-            return null;
-        }
+        InputStream stream = resource(file);
         return stream.markSupported() ? stream
                 : new BufferedInputStream(stream);
     }
@@ -176,12 +175,7 @@ final public class ResourceLoader
      */
     public static String read(String file, Charset charset)
     {
-        final URL location = getLocation(file);
-        if (location == null)
-        {
-            return null;
-        }
-        return read(location, charset);
+        return read(location(file), charset);
     }
 
     /**
@@ -225,15 +219,32 @@ final public class ResourceLoader
         catch (IOException e)
         {
             log.log(Level.SEVERE, e.getMessage());
-            return null;
+            throw new ResourceLoadException(String.valueOf(file), e);
         }
     }
 
     /**
+     * Ermittelt die {@link URL} zu einer angegebenen Ressource oder Datei.
+     *
+     * <p>
+     * Zuerst wird versucht, die Ressource über den System-Klassenlader zu
+     * finden. Falls dies nicht gelingt, wird der übergebene Name als URL
+     * interpretiert. Ist auch das nicht möglich, wird der Name als Dateipfad
+     * behandelt und in eine URL umgewandelt.
+     *
+     * @param name Name der Ressource, URL oder Dateipfad
+     *
+     * @return die gefundene oder erzeugte URL
+     *
+     * @throws ResourceLoadException wenn der angegebene Wert weder als
+     *     Ressource, noch als URL oder gültiger Dateipfad verarbeitet werden
+     *     kann
+     *
      * @author Steffen Wilke
      * @author Matthias Wilke
      */
-    public static URL getLocation(String name)
+    @Getter
+    public static URL location(String name)
     {
         URL fromClass = ClassLoader.getSystemResource(name);
         if (fromClass != null)
@@ -252,16 +263,28 @@ final public class ResourceLoader
             }
             catch (MalformedURLException e1)
             {
-                return null;
+                log.log(Level.SEVERE, e1.getMessage());
+                throw new ResourceLoadException(name, e1);
             }
         }
     }
 
     /**
+     * Öffnet einen Input-Stream für die angegebene Ressourcen-URL.
+     *
+     * @param file die URL der zu ladenden Ressource
+     *
+     * @return ein InputStream für die Ressource
+     *
+     * @throws ResourceLoadException wenn die Ressource nicht geöffnet werden
+     *     kann
+     *
      * @author Steffen Wilke
+     *
      * @author Matthias Wilke
      */
-    private static InputStream getResource(final URL file)
+    @Getter
+    private static InputStream resource(final URL file)
     {
         try
         {
@@ -269,7 +292,8 @@ final public class ResourceLoader
         }
         catch (IOException e)
         {
-            return null;
+            log.log(Level.SEVERE, e.getMessage());
+            throw new ResourceLoadException(String.valueOf(file), e);
         }
     }
 }

@@ -407,8 +407,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      */
     public Future<T> getAsync(String name)
     {
-        return this
-            .getAsync(ResourceLoader.getLocation(this.getIdentifier(name)));
+        return this.getAsync(ResourceLoader.location(this.getIdentifier(name)));
     }
 
     /**
@@ -505,7 +504,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
         T newResource;
         try
         {
-            newResource = this.load(ResourceLoader.getLocation(identifier));
+            newResource = this.load(ResourceLoader.location(identifier));
         }
         catch (Exception e)
         {
