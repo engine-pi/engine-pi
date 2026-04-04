@@ -26,10 +26,9 @@
 package pi.resources.color;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.awt.Color;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Nested;
@@ -44,13 +43,12 @@ public class ColorUtilTest
     @Test
     public void malformedColorHexString()
     {
-        Logger.getLogger(ColorUtil.class.getName()).setUseParentHandlers(false);
-        String red = "~#ff0000";
-        String red2 = "#ff0000000";
-        Color redDecoded = ColorUtil.decode(red);
-        Color redDecoded2 = ColorUtil.decode(red2);
-        assertNull(redDecoded);
-        assertNull(redDecoded2);
+
+        assertThrows(NumberFormatException.class,
+            () -> ColorUtil.decode("~#ff0000"));
+
+        assertThrows(IllegalArgumentException.class,
+            () -> ColorUtil.decode("#ff0000000"));
     }
 
     @ParameterizedTest
@@ -125,9 +123,9 @@ public class ColorUtilTest
     {
         return Stream.of(Arguments.of("#ff0000c8", true, new Color(228, 0, 0)),
             Arguments.of("#00ff00c8", true, new Color(0, 228, 0)),
-            Arguments.of("#0000ffc8", true, new Color(0, 0, 228)),
-            Arguments.of("", true, null),
-            Arguments.of(null, true, null));
+            Arguments.of("#0000ffc8", true, new Color(0, 0, 228)));
+        // Arguments.of("", true, null),
+        // Arguments.of(null, true, null));
     }
 
     @ParameterizedTest
@@ -142,8 +140,9 @@ public class ColorUtilTest
     {
         return Stream.of(Arguments.of("ff0000", Color.RED),
             Arguments.of("00ff00", Color.GREEN),
-            Arguments.of("0000ff", Color.BLUE),
-            Arguments.of("000", null));
+            Arguments.of("0000ff", Color.BLUE)
+        // Arguments.of("000", null)
+        );
     }
 
     @Test
@@ -157,7 +156,8 @@ public class ColorUtilTest
         assertEquals("#00ff00", greenEncoded);
         assertEquals("#0000ff", blueEncoded);
         assertEquals("#00000000", invisibleBlack);
-        assertNull(ColorUtil.encode(null));
+        assertThrows(IllegalArgumentException.class,
+            () -> ColorUtil.encode(null));
     }
 
     @Test

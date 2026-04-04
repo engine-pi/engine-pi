@@ -30,8 +30,6 @@ package pi.resources.color;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import pi.util.MathUtil;
@@ -68,9 +66,6 @@ class HexColorString
  */
 public final class ColorUtil
 {
-    private static final Logger log = Logger
-        .getLogger(ColorUtil.class.getName());
-
     private static final int HEX_STRING_LENGTH = 7;
 
     private static final int HEX_STRING_LENGTH_ALPHA = 9;
@@ -112,8 +107,10 @@ public final class ColorUtil
     {
         if (color == null)
         {
-            return null;
+            throw new IllegalArgumentException(
+                    "Konnte Farbe nicht kodieren, da die Eingabe null war.");
         }
+
         String colorString = "#" + String.format("%02x%02x%02x",
             color.getRed(),
             color.getGreen(),
@@ -174,10 +171,17 @@ public final class ColorUtil
      */
     public static Color decode(String hex, boolean solid)
     {
-        if (hex == null || hex.isEmpty())
+        if (hex == null)
         {
-            return null;
+            throw new IllegalArgumentException(
+                    "Konnte Farbe nicht dekodieren, da die Eingabe null war.");
         }
+        if (hex.isEmpty())
+        {
+            throw new IllegalArgumentException(
+                    "Konnte Farbe nicht kodieren, da die Eingabe eine leere Zeichenkette war.");
+        }
+
         if (!hex.startsWith("#"))
         {
             if (hex.length() == HEX_STRING_LENGTH - 1
@@ -187,10 +191,9 @@ public final class ColorUtil
             }
             else
             {
-                log.log(Level.SEVERE,
-                    "Could not parse color string \"{0}\". A color string needs to start with a \"#\" character.",
-                    hex);
-                return null;
+                throw new IllegalArgumentException(
+                        "Could not parse color string \"" + hex
+                                + "\". A color string needs to start with a \"#\" character.");
             }
         }
         switch (hex.length())
@@ -202,12 +205,12 @@ public final class ColorUtil
             return decodeHexStringWithAlpha(hex, solid);
 
         default:
-            log.log(Level.SEVERE,
-                "Could not parse color string \"{0}\". Invalid string length \"{1}\"!\nAccepted lengths:\n\t{2} for Colors without Alpha (#ff0000)\n\t{3} for Colors with Alpha (#ff0000c8)",
-                new Object[]
-                { hex, hex.length(), HEX_STRING_LENGTH,
-                        HEX_STRING_LENGTH_ALPHA });
-            return null;
+            throw new IllegalArgumentException("Could not parse color string \""
+                    + hex + "\". Invalid string length \"" + hex.length()
+                    + "!\nAccepted lengths:\n\t" + HEX_STRING_LENGTH
+                    + " for Colors without Alpha (#ff0000)\n\t"
+                    + HEX_STRING_LENGTH_ALPHA
+                    + " for Colors with Alpha (#ff0000c8)");
         }
     }
 
@@ -319,15 +322,7 @@ public final class ColorUtil
 
     private static Color decodeWellformedHexString(String hex)
     {
-        try
-        {
-            return Color.decode(hex);
-        }
-        catch (NumberFormatException e)
-        {
-            log.log(Level.SEVERE, e.getMessage(), e);
-        }
-        return null;
+        return Color.decode(hex);
     }
 
     private static int premultiply(int value, int alpha)
@@ -347,23 +342,11 @@ public final class ColorUtil
     {
         String alpha = hex.substring(7, 9);
         int alphaValue;
-        try
-        {
-            alphaValue = ensureColorValueRange(Integer.parseInt(alpha, 16));
-        }
-        catch (NumberFormatException e)
-        {
-            log.log(Level.SEVERE, e.getMessage(), e);
-            return null;
-        }
+        alphaValue = ensureColorValueRange(Integer.parseInt(alpha, 16));
         StringBuilder sb = new StringBuilder(hex);
         sb.replace(7, 9, "");
         String baseColorString = sb.toString();
         Color baseColor = decodeWellformedHexString(baseColorString);
-        if (baseColor == null)
-        {
-            return null;
-        }
         baseColor = new Color(baseColor.getRGB() & 0xffffff | alphaValue << 24,
                 true);
         if (solid)

@@ -138,11 +138,31 @@ public final class Codec
                 - Short.MAX_VALUE);
     }
 
+    /**
+     * Dekodiert einen als String codierten Bildinhalt in ein
+     * {@link BufferedImage} und konvertiert das Ergebnis in ein
+     * plattformkompatibles Bildformat.
+     *
+     * <p>
+     * Der Eingabestring wird zunächst in ein Byte-Array dekodiert und
+     * anschließend über {@link javax.imageio.ImageIO} eingelesen. Tritt während
+     * der Verarbeitung ein Fehler auf, wird dieser protokolliert.
+     *
+     * @param imageString der codierte Bildinhalt (z. B. Base64); darf nicht
+     *     {@code null} sein
+     *
+     * @return das dekodierte, kompatible Bild; kann je nach Fehlerfall
+     *     {@code null} sein
+     *
+     * @throws IllegalArgumentException wenn {@code imageString == null}
+     * @throws RuntimeException wenn
+     */
     public static BufferedImage decodeImage(final String imageString)
     {
         if (imageString == null)
         {
-            return null;
+            throw new IllegalArgumentException(
+                    "Das Bild konnte nicht dekodiert werden, da der Eingabeparameter null war.");
         }
         BufferedImage image = null;
         byte[] imageByte;
@@ -157,6 +177,8 @@ public final class Codec
         catch (final Exception e)
         {
             log.log(Level.SEVERE, e.getMessage(), e);
+            throw new RuntimeException(
+                    "Bild konnte nicht dekodiert werden: " + imageString);
         }
         return ImageUtil.toCompatibleImage(image);
     }
@@ -166,12 +188,31 @@ public final class Codec
         return encode(image, ImageFormat.PNG);
     }
 
+    /**
+     * Kodiert ein {@link BufferedImage} in eine Base64-String-Repräsentation
+     * anhand des angegebenen Bildformats.
+     * <p>
+     * Ist das übergebene {@code imageFormat} {@link ImageFormat#UNSUPPORTED},
+     * wird stattdessen {@link ImageFormat#PNG} als Standardformat verwendet.
+     * Tritt während der Bildverarbeitung ein {@link java.io.IOException} auf,
+     * wird der Fehler protokolliert und es kann {@code null} zurückgegeben
+     * werden.
+     *
+     * @param image das zu kodierende Bild; darf nicht {@code null} sein
+     * @param imageFormat das gewünschte Bildformat für die Kodierung
+     *
+     * @return die kodierte Base64-Repräsentation des Bildes oder {@code null},
+     *     falls die Kodierung aufgrund eines Fehlers nicht erfolgreich war
+     *
+     * @throws IllegalArgumentException wenn {@code image} {@code null} ist
+     */
     public static String encode(final BufferedImage image,
             ImageFormat imageFormat)
     {
         if (image == null)
         {
-            return null;
+            throw new IllegalArgumentException(
+                    "Das Bild konnte nicht kodiert werden, da der Eingabeparameter null war.");
         }
         String imageString = null;
         final ByteArrayOutputStream bos = new ByteArrayOutputStream();
