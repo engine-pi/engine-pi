@@ -28,6 +28,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import pi.resources.ResourceLoadException;
 import pi.resources.Resources;
 
 public class ColorContainerTest
@@ -127,9 +128,12 @@ public class ColorContainerTest
         }
 
         @Test
-        public void exception()
+        public void throwsException()
         {
-            assertThrows(RuntimeException.class, () -> container.get("XXX"));
+            ResourceLoadException exception = assertThrows(
+                ResourceLoadException.class,
+                () -> container.get("xxx"));
+            assertEquals("Unbekannte Farbe: xxx", exception.getMessage());;
         }
     }
 }

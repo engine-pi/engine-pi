@@ -27,6 +27,7 @@ import java.util.Map;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.resources.Container;
+import pi.resources.ResourceLoadException;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/colors.md
 
@@ -561,7 +562,7 @@ public class ColorContainer implements Container<Color>
         }
         if (color == null)
         {
-            throw new RuntimeException("Unbekannte Farbe: " + name);
+            throw new ResourceLoadException("Unbekannte Farbe: " + name);
         }
         return color;
     }
