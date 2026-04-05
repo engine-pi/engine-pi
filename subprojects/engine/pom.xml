@@ -1,187 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>engine-pi</artifactId>
+  <parent>
+    <groupId>de.pirckheimer-gymnasium</groupId>
+    <artifactId>engine-pi-meta</artifactId>
     <version>0.44.0</version>
-    <packaging>jar</packaging>
+    <relativePath>../..</relativePath>
+  </parent>
 
-    <parent>
-        <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
-        <relativePath>../..</relativePath>
-    </parent>
+  <artifactId>engine-pi</artifactId>
+  <version>0.44.0</version>
+  <packaging>jar</packaging>
 
-    <name>Engine</name>
-    <description>A beginner-orientated 2D game engine with German documentation.</description>
-    <url>https://github.com/engine-pi/engine-pi</url>
+  <name>Engine</name>
+  <description>A beginner-orientated 2D game engine with German documentation.</description>
+  <url>https://github.com/engine-pi/engine-pi</url>
 
-    <dependencies>
-        <dependency>
-            <groupId>de.pirckheimer-gymnasium</groupId>
-            <artifactId>jbox2d-library</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.soundlibs</groupId>
-            <artifactId>jorbis</artifactId>
-            <version>0.0.17.4</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.soundlibs</groupId>
-            <artifactId>tritonus-share</artifactId>
-            <version>0.3.7.4</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.soundlibs</groupId>
-            <artifactId>vorbisspi</artifactId>
-            <version>1.0.3.3</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.soundlibs</groupId>
-            <artifactId>mp3spi</artifactId>
-            <version>1.9.5.4</version>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>de.pirckheimer-gymnasium</groupId>
+      <artifactId>jbox2d-library</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.soundlibs</groupId>
+      <artifactId>jorbis</artifactId>
+      <version>0.0.17.4</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.soundlibs</groupId>
+      <artifactId>tritonus-share</artifactId>
+      <version>0.3.7.4</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.soundlibs</groupId>
+      <artifactId>vorbisspi</artifactId>
+      <version>1.0.3.3</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.soundlibs</groupId>
+      <artifactId>mp3spi</artifactId>
+      <version>1.9.5.4</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <!-- https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources-filtered</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <pluginManagement>
-            <plugins>
-                <!--
+  <build>
+    <!-- https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html -->
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources-filtered</directory>
+      </resource>
+    </resources>
+    <pluginManagement>
+      <plugins>
+        <!--
                 https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>de.pirckheimer-gymnasium</groupId>
-                            <artifactId>engine-pi-build-tools</artifactId>
-                            <version>0.2.0</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugin>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <dependencies>
+            <dependency>
+              <groupId>de.pirckheimer-gymnasium</groupId>
+              <artifactId>engine-pi-build-tools</artifactId>
+              <version>0.2.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
 
-        <plugins>
-            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
-            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.8.0</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <!-- Set to false to exclude the assembly id from the assembly final
+    <plugins>
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.8.0</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <!-- Set to false to exclude the assembly id from the assembly final
                             name, and
                     to create the resultant assembly artifacts without classifier. As such, an
                     assembly artifact having the same format as the packaging of the current Maven
                     project will replace the file for this main project artifact. -->
-                            <appendAssemblyId>true</appendAssemblyId>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <addClasspath>true</addClasspath>
-                                    <mainClass>
-                                        pi.debug.MainAnimation</mainClass>
-                                </manifest>
-                            </archive>
-                        </configuration>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>make-bluej-zip</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <!-- if true appends <inlineDescriptors> <inlineDescriptor>
+              <appendAssemblyId>true</appendAssemblyId>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>pi.debug.MainAnimation</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>make-bluej-zip</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <!-- if true appends <inlineDescriptors> <inlineDescriptor>
                             <id>bluej-template</id>-->
-                            <appendAssemblyId>true</appendAssemblyId>
-                            <!--
+              <appendAssemblyId>true</appendAssemblyId>
+              <!--
                             https://maven.apache.org/plugins/maven-assembly-plugin/examples/using-inline-descriptors.html -->
-                            <inlineDescriptors>
-                                <inlineDescriptor>
-                                    <id>bluej-template</id>
-                                    <formats>
-                                        <format>zip</format>
-                                    </formats>
-                                    <!-- Includes a base directory in the final archive. For
+              <inlineDescriptors>
+                <inlineDescriptor>
+                  <id>bluej-template</id>
+                  <formats>
+                    <format>zip</format>
+                  </formats>
+                  <!-- Includes a base directory in the final archive. For
                                     example, if you are creating an assembly named "your-app",
                                     setting includeBaseDirectory to true will create an archive that
                                     includes this base directory. If this option is set to false the
                                     archive created will unzip its content to the current directory.  -->
-                                    <includeBaseDirectory>false</includeBaseDirectory>
-                                    <fileSets>
-                                        <fileSet>
-                                            <directory>target</directory>
-                                            <includes>
-                                                <include>
-                                                    engine-pi-${project.version}-jar-with-dependencies.jar</include>
-                                                <include>
-                                                    engine-pi-${project.version}-sources.jar</include>
-                                            </includes>
-                                            <outputDirectory>+libs/</outputDirectory>
-                                        </fileSet>
-                                        <fileSet>
-                                            <directory>../../misc/bluej-template</directory>
-                                            <outputDirectory>/</outputDirectory>
-                                        </fileSet>
-                                    </fileSets>
-                                </inlineDescriptor>
-                            </inlineDescriptors>
-                        </configuration>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <!-- https://github.com/git-commit-id/git-commit-id-maven-plugin -->
-                <groupId>io.github.git-commit-id</groupId>
-                <artifactId>git-commit-id-maven-plugin</artifactId>
-                <version>9.0.2</version>
-                <executions>
-                    <execution>
-                        <id>get-the-git-infos</id>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                        <phase>validate</phase>
-                    </execution>
-                </executions>
-                <!--
+                  <includeBaseDirectory>false</includeBaseDirectory>
+                  <fileSets>
+                    <fileSet>
+                      <directory>target</directory>
+                      <includes>
+                        <include>engine-pi-${project.version}-jar-with-dependencies.jar</include>
+                        <include>engine-pi-${project.version}-sources.jar</include>
+                      </includes>
+                      <outputDirectory>+libs/</outputDirectory>
+                    </fileSet>
+                    <fileSet>
+                      <directory>../../misc/bluej-template</directory>
+                      <outputDirectory>/</outputDirectory>
+                    </fileSet>
+                  </fileSets>
+                </inlineDescriptor>
+              </inlineDescriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <!-- https://github.com/git-commit-id/git-commit-id-maven-plugin -->
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
+        <version>9.0.2</version>
+        <!--
                 https://github.com/git-commit-id/git-commit-id-plugin-core/blob/master/src/main/java/pl/project13/core/GitCommitPropertyConstant.java -->
-                <configuration>
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
-                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <configuration>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+          <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+          <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

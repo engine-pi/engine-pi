@@ -1,248 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-meta</artifactId>
-    <version>0.44.0</version>
-    <packaging>pom</packaging>
+  <groupId>de.pirckheimer-gymnasium</groupId>
+  <artifactId>engine-pi-meta</artifactId>
+  <version>0.44.0</version>
+  <packaging>pom</packaging>
 
-    <name>Engine Pi Project</name>
-    <description>The parent meta package of the Engine Pi.</description>
-    <url>https://engine-pi.github.io/engine-pi</url>
-    <licenses>
-        <license>
-            <name>The GNU General Public License, Version 3.0</name>
-            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <name>Josef Friedrich</name>
-            <email>josef.friedrich@pirckheimer-gymnasium.de</email>
-            <organizationUrl>https://pirckheimer-gymnasium.de</organizationUrl>
-        </developer>
-    </developers>
-    <scm>
-        <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
-        <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
-        <url>https://github.com/engine-pi/engine-pi</url>
-    </scm>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+  <name>Engine Pi Project</name>
+  <description>The parent meta package of the Engine Pi.</description>
+  <url>https://engine-pi.github.io/engine-pi</url>
+  <licenses>
+    <license>
+      <name>The GNU General Public License, Version 3.0</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Josef Friedrich</name>
+      <email>josef.friedrich@pirckheimer-gymnasium.de</email>
+      <organizationUrl>https://pirckheimer-gymnasium.de</organizationUrl>
+    </developer>
+  </developers>
 
-    <modules>
-        <module>subprojects/engine</module>
-        <module>subprojects/demos</module>
-        <module>subprojects/cli</module>
-        <module>subprojects/games/blockly-robot</module>
-        <module>subprojects/games/pacman</module>
-        <module>subprojects/games/tetris</module>
-        <module>subprojects/build-tools</module>
-        <!-- javah not found  -->
-        <!-- now removed -->
-        <!-- <module>subprojects/jbox2d/jni-broadphase</module> -->
-        <module>subprojects/jbox2d/library</module>
-        <!-- Requires sudo apt install protobuf-compiler -->
-        <module>subprojects/jbox2d/serialization</module>
-        <module>subprojects/jbox2d/testbed</module>
-        <module>subprojects/jbox2d/testbed-javafx</module>
-        <module>subprojects/jbox2d/testbed-jogl</module>
-    </modules>
+  <modules>
+    <module>subprojects/engine</module>
+    <module>subprojects/demos</module>
+    <module>subprojects/cli</module>
+    <module>subprojects/games/blockly-robot</module>
+    <module>subprojects/games/pacman</module>
+    <module>subprojects/games/tetris</module>
+    <module>subprojects/build-tools</module>
+    <!-- javah not found  -->
+    <!-- now removed -->
+    <!-- <module>subprojects/jbox2d/jni-broadphase</module> -->
+    <module>subprojects/jbox2d/library</module>
+    <!-- Requires sudo apt install protobuf-compiler -->
+    <module>subprojects/jbox2d/serialization</module>
+    <module>subprojects/jbox2d/testbed</module>
+    <module>subprojects/jbox2d/testbed-javafx</module>
+    <module>subprojects/jbox2d/testbed-jogl</module>
+  </modules>
+  <scm>
+    <connection>scm:git:git://github.com/engine-pi/engine-pi.git</connection>
+    <developerConnection>scm:git:ssh://github.com:engine-pi/engine-pi.git</developerConnection>
+    <url>https://github.com/engine-pi/engine-pi</url>
+  </scm>
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
+  <dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.14.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.21.0</version>
-            <scope>test</scope>
-        </dependency>
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.12.0</version>
+      </dependency>
     </dependencies>
+  </dependencyManagement>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.12.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.14.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>5.21.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <!-- Default is ${project.artifactId}-${project.version}, to get jar files without the
+  <build>
+    <!-- Default is ${project.artifactId}-${project.version}, to get jar files without the
         version use ${project.artifactId} -->
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <!-- https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <version>2.29.0</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.4</version>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- https://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.8</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                        <configuration>
-                            <!-- This is necessary for gpg to not try to use the pinentry programs -->
-                            <gpgArguments>
-                                <arg>--pinentry-mode</arg>
-                                <arg>loopback</arg>
-                            </gpgArguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- https://central.sonatype.org/publish/publish-portal-maven/ -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.9.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <!-- see ~/.m2/settings.xml -->
-                    <publishingServerId>central</publishingServerId>
-                    <tokenAuth>true</tokenAuth>
-                    <autoPublish>true</autoPublish>
-                    <!-- The plugin can ignore, or more specifically not add, components that have
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <!-- https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <version>2.29.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.4</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- https://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.2.8</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <phase>verify</phase>
+            <configuration>
+              <!-- This is necessary for gpg to not try to use the pinentry programs -->
+              <gpgArguments>
+                <arg>--pinentry-mode</arg>
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- https://central.sonatype.org/publish/publish-portal-maven/ -->
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.9.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <!-- see ~/.m2/settings.xml -->
+          <publishingServerId>central</publishingServerId>
+          <tokenAuth>true</tokenAuth>
+          <autoPublish>true</autoPublish>
+          <!-- The plugin can ignore, or more specifically not add, components that have
                     already been published in the past to the bundle that will be uploaded and
                     published.
                     https://central.sonatype.org/publish/publish-portal-maven/#ignorepublishedcomponents -->
-                    <ignorePublishedComponents>true</ignorePublishedComponents>
-                </configuration>
-            </plugin>
-            <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.19.1</version>
-            </plugin>
-            <!--
+          <ignorePublishedComponents>true</ignorePublishedComponents>
+        </configuration>
+      </plugin>
+      <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.19.1</version>
+      </plugin>
+      <!--
             https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-            <plugin>
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <configuration>
-                    <configFile>eclipse-formatter.xml</configFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/index.html -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.12.0</version>
-                <configuration>
-                    <!-- to disable the "missing" warnings -->
-                    <doclint>all,-missing</doclint>
-                    <!--
+      <plugin>
+        <groupId>net.revelc.code.formatter</groupId>
+        <artifactId>formatter-maven-plugin</artifactId>
+        <configuration>
+          <configFile>eclipse-formatter.xml</configFile>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/index.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.12.0</version>
+        <configuration>
+          <!-- to disable the "missing" warnings -->
+          <doclint>all,-missing</doclint>
+          <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/tag-configuration.html -->
-                    <tags>
-                        <tag>
-                            <name>jbox2d</name>
-                            <placement>a</placement>
-                            <head>JBox2D source code:</head>
-                        </tag>
-                        <tag>
-                            <name>box2d</name>
-                            <placement>a</placement>
-                            <head>Box2D source code:</head>
-                        </tag>
-                        <tag>
-                            <name>warning</name>
-                            <placement>a</placement>
-                            <head>Warning:</head>
-                        </tag>
-                    </tags>
-                    <!--
+          <tags>
+            <tag>
+              <name>jbox2d</name>
+              <placement>a</placement>
+              <head>JBox2D source code:</head>
+            </tag>
+            <tag>
+              <name>box2d</name>
+              <placement>a</placement>
+              <head>Box2D source code:</head>
+            </tag>
+            <tag>
+              <name>warning</name>
+              <placement>a</placement>
+              <head>Warning:</head>
+            </tag>
+          </tags>
+          <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
-                    <!-- <links>
+          <!-- <links>
                         <link>https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi-demos/latest</link>
                     </links> -->
-                    <!--
+          <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
-                    <!-- <excludePackageNames>org.jbox2d.*</excludePackageNames> -->
-                    <!--
+          <!-- <excludePackageNames>org.jbox2d.*</excludePackageNames> -->
+          <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
-                    <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
-                    <tagletArtifacts>
-                        <tagletArtifact>
-                            <groupId>rocks.friedrich</groupId>
-                            <artifactId>taglets</artifactId>
-                            <version>0.4.0</version>
-                        </tagletArtifact>
-                    </tagletArtifacts>
-                    <bottom><![CDATA[Copyright 2024-2026, <a href="https://engine-pi.github.io/engine-pi">Josef Friedrich and contributors<a>]]></bottom>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>de.pirckheimer-gymnasium</groupId>
-                        <artifactId>engine-pi-build-tools</artifactId>
-                        <version>0.2.0</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+          <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+          <tagletArtifacts>
+            <tagletArtifact>
+              <groupId>rocks.friedrich</groupId>
+              <artifactId>taglets</artifactId>
+              <version>0.4.0</version>
+            </tagletArtifact>
+          </tagletArtifacts>
+          <bottom><![CDATA[Copyright 2024-2026, <a href="https://engine-pi.github.io/engine-pi">Josef Friedrich and contributors<a>]]></bottom>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>de.pirckheimer-gymnasium</groupId>
+            <artifactId>engine-pi-build-tools</artifactId>
+            <version>0.2.0</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.github.ekryd.sortpom</groupId>
+        <artifactId>sortpom-maven-plugin</artifactId>
+        <version>4.0.0</version>
+        <!-- https://github.com/Ekryd/sortpom/wiki/Recommended-configuration -->
+        <configuration>
+          <!-- https://github.com/Ekryd/sortpom/wiki/Parameters -->
+          <createBackupFile>false</createBackupFile>
+          <lineSeparator>\n</lineSeparator>
+          <sortProperties>true</sortProperties>
+          <!-- <sortDependencies>scope,groupId,artifactId</sortDependencies> -->
+          <nrOfIndentSpace>2</nrOfIndentSpace>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>sort</goal>
+            </goals>
+          </execution>
+
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

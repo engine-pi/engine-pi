@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
     <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-pacman</artifactId>
-    <version>0.1.0</version>
+    <artifactId>engine-pi-meta</artifactId>
+    <version>0.44.0</version>
+    <relativePath>../../..</relativePath>
+  </parent>
 
-    <name>Pacman</name>
-    <description>Replica of the game Pacman using the Engine Pi.</description>
-    <parent>
-        <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
-        <relativePath>../../..</relativePath>
-    </parent>
+  <groupId>de.pirckheimer-gymnasium</groupId>
+  <artifactId>engine-pi-pacman</artifactId>
+  <version>0.1.0</version>
 
-    <dependencies>
-        <dependency>
-            <groupId>de.pirckheimer-gymnasium</groupId>
-            <artifactId>engine-pi</artifactId>
-            <version>0.44.0</version>
-        </dependency>
-    </dependencies>
+  <name>Pacman</name>
+  <description>Replica of the game Pacman using the Engine Pi.</description>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!--
+  <dependencies>
+    <dependency>
+      <groupId>de.pirckheimer-gymnasium</groupId>
+      <artifactId>engine-pi</artifactId>
+      <version>0.44.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!--
                 https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>de.pirckheimer-gymnasium</groupId>
-                            <artifactId>engine-pi-build-tools</artifactId>
-                            <version>0.2.0</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+        <plugin>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <dependencies>
+            <dependency>
+              <groupId>de.pirckheimer-gymnasium</groupId>
+              <artifactId>engine-pi-build-tools</artifactId>
+              <version>0.2.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>

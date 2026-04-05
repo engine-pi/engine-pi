@@ -1,89 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>engine-pi-cli</artifactId>
-    <version>0.1.0</version>
-    <packaging>jar</packaging>
+  <parent>
+    <groupId>de.pirckheimer-gymnasium</groupId>
+    <artifactId>engine-pi-meta</artifactId>
+    <version>0.44.0</version>
+    <relativePath>../..</relativePath>
+  </parent>
 
-    <parent>
-        <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
-        <relativePath>../..</relativePath>
-    </parent>
+  <artifactId>engine-pi-cli</artifactId>
+  <version>0.1.0</version>
+  <packaging>jar</packaging>
 
-    <name>Command Line Tool</name>
-    <description>Command line tool for the Engine Pi development</description>
+  <name>Command Line Tool</name>
+  <description>Command line tool for the Engine Pi development</description>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.javaparser</groupId>
-            <artifactId>javaparser-symbol-solver-core</artifactId>
-            <version>3.27.1</version>
-        </dependency>
-        <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>4.7.7</version>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.github.javaparser</groupId>
+      <artifactId>javaparser-symbol-solver-core</artifactId>
+      <version>3.27.1</version>
+    </dependency>
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli</artifactId>
+      <version>4.7.7</version>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!--
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!--
                 https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>de.pirckheimer-gymnasium</groupId>
-                            <artifactId>engine-pi-build-tools</artifactId>
-                            <version>0.2.0</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
-            <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.8.0</version>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <!-- Set to false to exclude the assembly id from the assembly final
+        <plugin>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <dependencies>
+            <dependency>
+              <groupId>de.pirckheimer-gymnasium</groupId>
+              <artifactId>engine-pi-build-tools</artifactId>
+              <version>0.2.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/usage.html -->
+      <!-- https://maven.apache.org/plugins/maven-assembly-plugin/single-mojo.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.8.0</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <!-- Set to false to exclude the assembly id from the assembly final
                             name, and
                     to create the resultant assembly artifacts without classifier. As such, an
                     assembly artifact having the same format as the packaging of the current Maven
                     project will replace the file for this main project artifact. -->
-                            <appendAssemblyId>true</appendAssemblyId>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <addClasspath>true</addClasspath>
-                                    <mainClass>
-                                        cli.Client</mainClass>
-                                </manifest>
-                            </archive>
-                        </configuration>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+              <appendAssemblyId>true</appendAssemblyId>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainClass>cli.Client</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

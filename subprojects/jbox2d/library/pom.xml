@@ -1,50 +1,49 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jbox2d-library</artifactId>
-    <name>jbox2d-library</name>
-    <version>4.0.0</version>
-    <packaging>jar</packaging>
+  <parent>
+    <groupId>de.pirckheimer-gymnasium</groupId>
+    <artifactId>engine-pi-meta</artifactId>
+    <version>0.44.0</version>
+    <relativePath>../../..</relativePath>
+  </parent>
 
-    <parent>
-        <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
-        <relativePath>../../..</relativePath>
-    </parent>
+  <artifactId>jbox2d-library</artifactId>
+  <version>4.0.0</version>
+  <packaging>jar</packaging>
+  <name>jbox2d-library</name>
 
-    <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
-    <url>https://github.com/engine-pi/jbox2d</url>
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!--
+  <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
+  <url>https://github.com/engine-pi/jbox2d</url>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!--
                 https://code.revelc.net/formatter-maven-plugin/examples.html#Multimodule_Configuration -->
-                <plugin>
-                    <groupId>net.revelc.code.formatter</groupId>
-                    <artifactId>formatter-maven-plugin</artifactId>
-                    <dependencies>
-                        <dependency>
-                            <groupId>de.pirckheimer-gymnasium</groupId>
-                            <artifactId>engine-pi-build-tools</artifactId>
-                            <version>0.2.0</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/gwtemul/**</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <plugin>
+          <groupId>net.revelc.code.formatter</groupId>
+          <artifactId>formatter-maven-plugin</artifactId>
+          <dependencies>
+            <dependency>
+              <groupId>de.pirckheimer-gymnasium</groupId>
+              <artifactId>engine-pi-build-tools</artifactId>
+              <version>0.2.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>**/gwtemul/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
