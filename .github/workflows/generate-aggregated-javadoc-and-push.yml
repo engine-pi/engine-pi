@@ -2,7 +2,10 @@
 # https://cpina.github.io/push-to-another-repository-docs/
 name: Build aggregated javadocs and push the generated HTML files to the javadocs repo
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:

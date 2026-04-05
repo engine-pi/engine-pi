@@ -27,8 +27,8 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
+import org.jbox2d.collision.shapes.CircleShape;
+import org.jbox2d.collision.shapes.Shape;
 import pi.Controller;
 import pi.annotations.API;
 import pi.annotations.Getter;

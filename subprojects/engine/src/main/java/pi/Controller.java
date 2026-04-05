@@ -34,7 +34,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
-import de.pirckheimer_gymnasium.jbox2d.common.Settings;
+import org.jbox2d.common.Settings;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;

@@ -20,7 +20,7 @@
  */
 package pi.graphics.geom;
 
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
+import org.jbox2d.common.Vec2;
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;

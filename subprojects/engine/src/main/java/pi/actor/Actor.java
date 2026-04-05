@@ -34,18 +34,18 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.EdgeShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.PolygonShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJointDef;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJointDef;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJointDef;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJointDef;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJointDef;
+import org.jbox2d.collision.shapes.CircleShape;
+import org.jbox2d.collision.shapes.EdgeShape;
+import org.jbox2d.collision.shapes.PolygonShape;
+import org.jbox2d.collision.shapes.Shape;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.Fixture;
+import org.jbox2d.dynamics.joints.DistanceJointDef;
+import org.jbox2d.dynamics.joints.PrismaticJointDef;
+import org.jbox2d.dynamics.joints.RevoluteJointDef;
+import org.jbox2d.dynamics.joints.RopeJointDef;
+import org.jbox2d.dynamics.joints.WeldJointDef;
 import pi.Controller;
 import pi.Layer;
 import pi.animation.AnimationMode;
@@ -1761,7 +1761,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
      *     werden kann.
      *
-     * @see de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint
+     * @see org.jbox2d.dynamics.joints.RevoluteJoint
      */
     @API
     public final RevoluteJoint createRevoluteJoint(Actor other, Vector anchor)
@@ -1770,7 +1770,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             RevoluteJointDef def = new RevoluteJointDef();
             def.initialize(a, b, anchor().add(anchor).toVec2());
             def.collideConnected = false;
-            return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint) world
+            return (org.jbox2d.dynamics.joints.RevoluteJoint) world
                 .createJoint(def);
         }, new RevoluteJoint());
     }
@@ -1796,7 +1796,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Ein <code>Joint</code>-Objekt, mit dem der Joint weiter gesteuert
      *     werden kann.
      *
-     * @see de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint
+     * @see org.jbox2d.dynamics.joints.RopeJoint
      */
     @API
     public final RopeJoint createRopeJoint(Actor other, Vector anchorThis,
@@ -1810,7 +1810,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.localAnchorB.set(anchorOther.toVec2());
             def.collideConnected = true;
             def.maxLength = (float) ropeLength;
-            return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint) world
+            return (org.jbox2d.dynamics.joints.RopeJoint) world
                 .createJoint(def);
         }, new RopeJoint());
     }
@@ -1837,7 +1837,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 new Vec2((float) Math.cos(angleInRadians),
                         (float) Math.sin(angleInRadians)));
             def.collideConnected = false;
-            return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint) world
+            return (org.jbox2d.dynamics.joints.PrismaticJoint) world
                 .createJoint(def);
         }, new PrismaticJoint());
     }
@@ -1860,7 +1860,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Ein {@link DistanceJoint}-Objekt, mit dem die Verbindung weiter
      *     gesteuert werden kann.
      *
-     * @see de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint
+     * @see org.jbox2d.dynamics.joints.DistanceJoint
      */
     @API
     public final DistanceJoint createDistanceJoint(Actor other,
@@ -1875,7 +1875,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             Vector distanceBetweenBothActors = (this.anchor().add(anchorThis))
                 .distance(other.anchor().add(anchorOther));
             def.length = (float) distanceBetweenBothActors.length();
-            return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint) world
+            return (org.jbox2d.dynamics.joints.DistanceJoint) world
                 .createJoint(def);
         }, new DistanceJoint());
     }
@@ -1898,7 +1898,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @return Ein {@link WeldJoint}-Objekt, mit dem die Verbindung weiter
      *     gesteuert werden kann.
      *
-     * @see de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint
+     * @see org.jbox2d.dynamics.joints.WeldJoint
      */
     @API
     public final WeldJoint createWeldJoint(Actor other, Vector anchorThis,
@@ -1910,7 +1910,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             def.bodyB = b;
             def.localAnchorA.set(anchorThis.toVec2());
             def.localAnchorB.set(anchorOther.toVec2());
-            return (de.pirckheimer_gymnasium.jbox2d.dynamics.joints.WeldJoint) world
+            return (org.jbox2d.dynamics.joints.WeldJoint) world
                 .createJoint(def);
         }, new WeldJoint());
     }

@@ -20,9 +20,9 @@
  */
 package pi.physics.joints;
 
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.World;
+import org.jbox2d.dynamics.joints.Joint;
 
 public interface JointBuilder<JointType extends Joint>
 {

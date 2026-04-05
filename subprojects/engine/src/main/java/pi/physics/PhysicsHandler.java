@@ -23,7 +23,7 @@ package pi.physics;
 import java.util.List;
 import java.util.function.Supplier;
 
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.Body;
 import pi.actor.Actor;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
