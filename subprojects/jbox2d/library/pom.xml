@@ -17,15 +17,6 @@
 
     <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
     <url>https://github.com/engine-pi/jbox2d</url>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <type>jar</type>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
     <build>
         <pluginManagement>
             <plugins>

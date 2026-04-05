@@ -45,6 +45,7 @@
         <module>subprojects/games/tetris</module>
         <module>subprojects/build-tools</module>
         <!-- javah not found  -->
+        <!-- now removed -->
         <!-- <module>subprojects/jbox2d/jni-broadphase</module> -->
         <module>subprojects/jbox2d/library</module>
         <!-- Requires sudo apt install protobuf-compiler -->
@@ -57,14 +58,8 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.14.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.14.1</version>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.14.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>

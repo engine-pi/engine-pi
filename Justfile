@@ -6,6 +6,14 @@ default: pull assets check_file_links package mkdocs_build
 deploy:
 	mvn deploy
 
+# Run 'mvn test' for the specified subproject, or for all subprojects if no subproject is specified.
+test subproject='':
+	if [ -n "{{subproject}}" ]; then \
+		mvn --projects de.pirckheimer-gymnasium:{{subproject}} test; \
+	else \
+		mvn test; \
+	fi
+
 # Generate the Javadoc API for the engine and MkDocs site.
 doc: javadoc_engine mkdocs_build
 
@@ -75,8 +83,8 @@ mkdocs_serve:
 
 # Execute the cli command (subprojects/cli) with the provided arguments.
 cli *args:
-    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
-    # java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
+	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
+	# java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
 
 check_file_links: (cli "check-file-links")
-    mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker
+	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker
