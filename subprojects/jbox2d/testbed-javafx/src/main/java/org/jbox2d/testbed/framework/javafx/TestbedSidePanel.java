@@ -18,9 +18,6 @@
  */
 package org.jbox2d.testbed.framework.javafx;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ListDataEvent;
@@ -98,13 +95,17 @@ public class TestbedSidePanel extends BorderPane
         });
     }
 
-    private void updateTests(ComboBoxModel<ListItem> model)
+    private void updateTests(ComboBoxModel<?> model)
     {
         ObservableList<ListItem> list = tests.itemsProperty().get();
         list.clear();
         for (int i = 0; i < model.getSize(); i++)
         {
-            list.add((ListItem) model.getElementAt(i));
+            Object element = model.getElementAt(i);
+            if (element instanceof ListItem)
+            {
+                list.add((ListItem) element);
+            }
         }
     }
 
@@ -117,29 +118,29 @@ public class TestbedSidePanel extends BorderPane
         // top.setBorder(BorderFactory.createCompoundBorder(new
         // EtchedBorder(EtchedBorder.LOWERED),
         // BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-        DefaultComboBoxModel testList = model.getComboModel();
+        DefaultComboBoxModel<ListItem> testList = model.getComboModel();
         testList.addListDataListener(new ListDataListener()
         {
             @Override
             public void intervalRemoved(ListDataEvent e)
             {
-                updateTests((ComboBoxModel<ListItem>) e.getSource());
+                updateTests(testList);
             }
 
             @Override
             public void intervalAdded(ListDataEvent e)
             {
-                updateTests((ComboBoxModel<ListItem>) e.getSource());
+                updateTests(testList);
             }
 
             @Override
             public void contentsChanged(ListDataEvent e)
             {
-                updateTests((ComboBoxModel<ListItem>) e.getSource());
+                updateTests(testList);
             }
         });
         tests = new ComboBox<>();
-        updateTests((ComboBoxModel<TestbedModel.ListItem>) testList);
+        updateTests(testList);
         tests.setOnAction((actionEvent) -> {
             testSelected();
         });
@@ -276,26 +277,22 @@ public class TestbedSidePanel extends BorderPane
         }
     }
 
-    private <T> T getClientProperty(Control control, String tag)
+    private <T> T getClientProperty(Control control, String tag, Class<T> type)
     {
-        Map<String, Object> map = (Map<String, Object>) control.getUserData();
-        return (map != null ? (T) map.get(tag) : null);
+        Object value = control.getProperties().get(tag);
+        return (value != null ? type.cast(value) : null);
     }
 
     private void putClientProperty(Control control, String tag, Object o)
     {
-        Map<String, Object> map = (Map<String, Object>) control.getUserData();
-        if (map == null)
-        {
-            map = new HashMap<>();
-            control.setUserData(map);
-        }
-        map.put(tag, o);
+        control.getProperties().put(tag, o);
     }
 
     public void stateChanged(Control control)
     {
-        TestbedSetting setting = getClientProperty(control, SETTING_TAG);
+        TestbedSetting setting = getClientProperty(control,
+            SETTING_TAG,
+            TestbedSetting.class);
         switch (setting.constraintType)
         {
         case BOOLEAN:
@@ -306,7 +303,7 @@ public class TestbedSidePanel extends BorderPane
         case RANGE:
             Slider slider = (Slider) control;
             setting.value = (int) slider.getValue();
-            Label label = getClientProperty(slider, LABEL_TAG);
+            Label label = getClientProperty(slider, LABEL_TAG, Label.class);
             label.setText(setting.name + ": " + setting.value);
             break;
         }

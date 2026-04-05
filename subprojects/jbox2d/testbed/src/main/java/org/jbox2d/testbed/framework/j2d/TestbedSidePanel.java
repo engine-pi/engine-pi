@@ -107,18 +107,17 @@ public class TestbedSidePanel extends JPanel
         tests.setMaximumRowCount(30);
         tests.setMaximumSize(new Dimension(250, 20));
         tests.addActionListener(this);
-        tests.setRenderer(new ListCellRenderer()
+        tests.setRenderer(new ListCellRenderer<ListItem>()
         {
             JLabel categoryLabel = null;
 
             JLabel testLabel = null;
 
             @Override
-            public Component getListCellRendererComponent(JList list,
-                    Object objectValue, int index, boolean isSelected,
-                    boolean cellHasFocus)
+            public Component getListCellRendererComponent(
+                    JList<? extends ListItem> list, ListItem value, int index,
+                    boolean isSelected, boolean cellHasFocus)
             {
-                ListItem value = (ListItem) objectValue;
                 if (value.isCategory())
                 {
                     if (categoryLabel == null)
