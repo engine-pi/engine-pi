@@ -810,156 +810,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Die Basiszeichenmethode.
-     *
-     * <p>
-     * Sie schließt eine Fallabfrage zur Sichtbarkeit ein.
-     * </p>
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param r Das Bounds, dass die Kameraperspektive repräsentiert.<br>
-     *     Hierbei soll zunächst getestet werden, ob das Objekt innerhalb der
-     *     Kamera liegt, und erst dann gezeichnet werden.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @hidden
-     */
-    @Internal
-    public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
-    {
-        if (visible && this.isWithinBounds(r))
-        {
-            double rotation = physics.rotation();
-            Vector position = physics.anchor();
-            // ____ Pre-Render ____
-            AffineTransform transform = g.getTransform();
-            g.rotate(-Math.toRadians(rotation),
-                position.x() * pixelPerMeter,
-                -position.y() * pixelPerMeter);
-            g.translate(position.x() * pixelPerMeter,
-                -position.y() * pixelPerMeter);
-            // Durchsichtigkeit
-            Composite composite;
-            if (opacity != 1)
-            {
-                composite = g.getComposite();
-                g.setComposite(AlphaComposite
-                    .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
-            }
-            else
-            {
-                composite = null;
-            }
-            // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
-            // werden können.
-            if (config.debug.renderActors())
-            {
-                // Zeichnen der Füllungen der Figuren. Die einzelnen
-                // Unterklassen müssen die render-Methode implementieren, die
-                // dann das Zeichen der Füllungen übernimmt.
-                render(g, pixelPerMeter);
-            }
-            if (Controller.isDebug())
-            {
-                synchronized (this)
-                {
-                    // Visualisiere die Shape
-                    Body body = physics.body();
-                    if (body != null)
-                    {
-                        Fixture fixture = body.fixtureList;
-                        while (fixture != null && fixture.shape != null)
-                        {
-                            renderShape(fixture.shape, g, pixelPerMeter, this);
-                            fixture = fixture.next;
-                        }
-                    }
-                }
-            }
-            // ____ Post-Render ____
-            // Opacity Update
-            if (composite != null)
-            {
-                g.setComposite(composite);
-            }
-            // Transform zurücksetzen
-            g.setTransform(transform);
-        }
-    }
-
-    /**
-     * Rendert eine Shape von JBox2D nach den gegebenen Voreinstellungen im
-     * {@link Graphics2D}-Objekt.
-     *
-     * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
-     * übernimmt nur das direkte rendern.
-     *
-     * @param shape Die Shape, die zu rendern ist.
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @hidden
-     */
-    @Internal
-    private static void renderShape(Shape shape, Graphics2D g,
-            double pixelPerMeter, Actor actor)
-    {
-        if (shape == null)
-        {
-            return;
-        }
-        AffineTransform pre = g.getTransform();
-        // Graphics2DUtil.antiAliasing(g, false);
-        // Den Anker der Figur einzeichnen
-        g.setColor(colors.getSafe("yellow"));
-        g.drawOval(-1, -1, 2, 2);
-        if (Controller.config.debug.actorCoordinates())
-        {
-            Graphics2DUtil.drawText(g, actor.anchorformatted(), 8, 5, 5);
-        }
-        // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
-        // gewählt.
-        // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
-        g.setColor(actor.color != null ? actor.complementaryColor()
-                : colors.getSafe("red"));
-        if (shape instanceof PolygonShape polygonShape)
-        {
-            Vec2[] vec2s = polygonShape.getVertices();
-            int[] xs = new int[polygonShape.getVertexCount()],
-                    ys = new int[polygonShape.getVertexCount()];
-            for (int i = 0; i < xs.length; i++)
-            {
-                xs[i] = (int) (vec2s[i].x * pixelPerMeter);
-                ys[i] = (-1) * (int) (vec2s[i].y * pixelPerMeter);
-            }
-            g.drawPolygon(xs, ys, xs.length);
-        }
-        else if (shape instanceof CircleShape circleShape)
-        {
-            double diameter = (circleShape.radius * 2);
-            g.drawOval(
-                (int) ((circleShape.p.x - circleShape.radius) * pixelPerMeter),
-                (int) ((-circleShape.p.y - circleShape.radius) * pixelPerMeter),
-                (int) (diameter * pixelPerMeter),
-                (int) (diameter * pixelPerMeter));
-        }
-        else if (shape instanceof EdgeShape edgeShape)
-        {
-            g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
-                (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
-                (int) (edgeShape.vertex2.x * pixelPerMeter),
-                (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
-        }
-        else
-        {
-            throw new RuntimeException("Konnte den Umriss (" + shape
-                    + ") nicht zeichnen, unerwarteter Umriss");
-        }
-        // Graphics2DUtil.antiAliasing(g, true);
-        g.setTransform(pre);
-    }
-
-    /**
      * Interne Methode. Prüft, ob das anliegende Objekt (teilweise) innerhalb
      * des sichtbaren Bereichs liegt.
      *
@@ -1089,73 +939,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         WorldHandler.addGenericCollisionListener(listener, this);
         return this;
     }
-
-    /**
-     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
-     * {@code 0}.
-     *
-     * <p>
-     * <b>Koordinatensystem anpassen:</b>
-     * </p>
-     *
-     * <p>
-     * Der Ursprung des Koordinatensystems ist in <b>Java links oben</b>, in der
-     * <b>Engine Pi links unten</b>. In Java zeigt die y-Achse nach unten in der
-     * Engine Pi nach oben. Um beispielsweise ein Rechteck mit der Breite
-     * {@code width} und der Höhe {@code height} an der Position {@code (0|0)}
-     * zu zeichnen, ist folgender Code notwendig:
-     * </p>
-     *
-     * <pre>{@code
-     * g.fillRect(0, -height, width, height);
-     * }</pre>
-     *
-     * Oder es kann mit Hilfe der Klasse {@link AffineTransform} eine Spiegelung
-     * an der x-Achse vorgenommen werden:
-     *
-     * <pre>{@code
-     * AffineTransform at = g.getTransform();
-     * g.scale(1, -1);
-     * g.setTransform(at);
-     * }</pre>
-     *
-     * <p>
-     * <b>Meter in Pixel umrechnen:</b>
-     * </p>
-     *
-     * <p>
-     * Um einen Meter in Pixel umzurechnen, muss mit dem Parameter
-     * {@code pixelPerMeter} multipliziert werden. Soll beispielsweise ein
-     * Rechteck mit der Breite von {@code 2} Metern und der Höhe von {@code 1}
-     * Meter gezeichnet werden, so ist die Breite {@code 2 * pixelPerMeter} und
-     * die Höhe {@code 1 * pixelPerMeter} Pixel.
-     * </p>
-     *
-     * <pre>{@code
-     * g.drawLine((int) (point1.getX() * pixelPerMeter),
-     *     (int) (point1.getY() * pixelPerMeter),
-     *     (int) (point2.getX() * pixelPerMeter),
-     *     (int) (point2.getY() * pixelPerMeter));
-     * }</pre>
-     *
-     * <p>
-     * <b>Farbe setzen:</b>
-     * </p>
-     *
-     * <pre>
-     * {@code
-     * g.setColor(getColor());
-     * }
-     * </pre>
-     *
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     *
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @hidden
-     */
-    @Internal
-    public abstract void render(Graphics2D g, double pixelPerMeter);
 
     /**
      * @hidden
@@ -2628,6 +2411,223 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         physics.awake(false);
         return this;
+    }
+
+    /**
+     * Rendert eine Shape von JBox2D nach den gegebenen Voreinstellungen im
+     * {@link Graphics2D}-Objekt.
+     *
+     * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
+     * übernimmt nur das direkte rendern.
+     *
+     * @param shape Die Shape, die zu rendern ist.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
+     */
+    @Internal
+    private static void renderShape(Shape shape, Graphics2D g,
+            double pixelPerMeter, Actor actor)
+    {
+        if (shape == null)
+        {
+            return;
+        }
+        AffineTransform oldTransform = g.getTransform();
+        // Graphics2DUtil.antiAliasing(g, false);
+        // Den Anker der Figur einzeichnen
+        g.setColor(colors.getSafe("yellow"));
+        g.drawOval(-1, -1, 2, 2);
+        if (Controller.config.debug.actorCoordinates())
+        {
+            Graphics2DUtil.drawText(g, actor.anchorformatted(), 8, 5, 5);
+        }
+        // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
+        // gewählt.
+        // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
+        g.setColor(actor.color != null ? actor.complementaryColor()
+                : colors.getSafe("red"));
+        if (shape instanceof PolygonShape polygonShape)
+        {
+            Vec2[] vec2s = polygonShape.getVertices();
+            int[] xs = new int[polygonShape.getVertexCount()],
+                    ys = new int[polygonShape.getVertexCount()];
+            for (int i = 0; i < xs.length; i++)
+            {
+                xs[i] = (int) (vec2s[i].x * pixelPerMeter);
+                ys[i] = (-1) * (int) (vec2s[i].y * pixelPerMeter);
+            }
+            g.drawPolygon(xs, ys, xs.length);
+        }
+        else if (shape instanceof CircleShape circleShape)
+        {
+            double diameter = (circleShape.radius * 2);
+            g.drawOval(
+                (int) ((circleShape.p.x - circleShape.radius) * pixelPerMeter),
+                (int) ((-circleShape.p.y - circleShape.radius) * pixelPerMeter),
+                (int) (diameter * pixelPerMeter),
+                (int) (diameter * pixelPerMeter));
+        }
+        else if (shape instanceof EdgeShape edgeShape)
+        {
+            g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
+                (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
+                (int) (edgeShape.vertex2.x * pixelPerMeter),
+                (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
+        }
+        else
+        {
+            throw new RuntimeException("Konnte den Umriss (" + shape
+                    + ") nicht zeichnen, unerwarteter Umriss");
+        }
+        // Graphics2DUtil.antiAliasing(g, true);
+        g.setTransform(oldTransform);
+    }
+
+    /**
+     * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
+     * {@code 0}.
+     *
+     * <p>
+     * <b>Koordinatensystem anpassen:</b>
+     * </p>
+     *
+     * <p>
+     * Der Ursprung des Koordinatensystems ist in <b>Java links oben</b>, in der
+     * <b>Engine Pi links unten</b>. In Java zeigt die y-Achse nach unten in der
+     * Engine Pi nach oben. Um beispielsweise ein Rechteck mit der Breite
+     * {@code width} und der Höhe {@code height} an der Position {@code (0|0)}
+     * zu zeichnen, ist folgender Code notwendig:
+     * </p>
+     *
+     * <pre>{@code
+     * g.fillRect(0, -height, width, height);
+     * }</pre>
+     *
+     * Oder es kann mit Hilfe der Klasse {@link AffineTransform} eine Spiegelung
+     * an der x-Achse vorgenommen werden:
+     *
+     * <pre>{@code
+     * AffineTransform at = g.getTransform();
+     * g.scale(1, -1);
+     * g.setTransform(at);
+     * }</pre>
+     *
+     * <p>
+     * <b>Meter in Pixel umrechnen:</b>
+     * </p>
+     *
+     * <p>
+     * Um einen Meter in Pixel umzurechnen, muss mit dem Parameter
+     * {@code pixelPerMeter} multipliziert werden. Soll beispielsweise ein
+     * Rechteck mit der Breite von {@code 2} Metern und der Höhe von {@code 1}
+     * Meter gezeichnet werden, so ist die Breite {@code 2 * pixelPerMeter} und
+     * die Höhe {@code 1 * pixelPerMeter} Pixel.
+     * </p>
+     *
+     * <pre>{@code
+     * g.drawLine((int) (point1.getX() * pixelPerMeter),
+     *     (int) (point1.getY() * pixelPerMeter),
+     *     (int) (point2.getX() * pixelPerMeter),
+     *     (int) (point2.getY() * pixelPerMeter));
+     * }</pre>
+     *
+     * <p>
+     * <b>Farbe setzen:</b>
+     * </p>
+     *
+     * <pre>
+     * {@code
+     * g.setColor(getColor());
+     * }
+     * </pre>
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     *
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
+     */
+    @Internal
+    public abstract void render(Graphics2D g, double pixelPerMeter);
+
+    /**
+     * Die Basiszeichenmethode.
+     *
+     * <p>
+     * Sie schließt eine Fallabfrage zur Sichtbarkeit ein.
+     * </p>
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param r Das Bounds, dass die Kameraperspektive repräsentiert.<br>
+     *     Hierbei soll zunächst getestet werden, ob das Objekt innerhalb der
+     *     Kamera liegt, und erst dann gezeichnet werden.
+     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
+     *
+     * @hidden
+     */
+    @Internal
+    public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
+    {
+        if (visible && this.isWithinBounds(r))
+        {
+            double rotation = physics.rotation();
+            Vector anchor = physics.anchor();
+            // ____ Pre-Render ____
+            AffineTransform oldTransform = g.getTransform();
+            g.rotate(-Math.toRadians(rotation),
+                anchor.x() * pixelPerMeter,
+                -anchor.y() * pixelPerMeter);
+            g.translate(anchor.x() * pixelPerMeter,
+                -anchor.y() * pixelPerMeter);
+            // Durchsichtigkeit
+            Composite composite;
+            if (opacity != 1)
+            {
+                composite = g.getComposite();
+                g.setComposite(AlphaComposite
+                    .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
+            }
+            else
+            {
+                composite = null;
+            }
+            // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
+            // werden können.
+            if (config.debug.renderActors())
+            {
+                // Zeichnen der Füllungen der Figuren. Die einzelnen
+                // Unterklassen müssen die render-Methode implementieren, die
+                // dann das Zeichen der Füllungen übernimmt.
+                render(g, pixelPerMeter);
+            }
+            if (Controller.isDebug())
+            {
+                synchronized (this)
+                {
+                    // Visualisiere die Shape
+                    Body body = physics.body();
+                    if (body != null)
+                    {
+                        Fixture fixture = body.fixtureList;
+                        while (fixture != null && fixture.shape != null)
+                        {
+                            renderShape(fixture.shape, g, pixelPerMeter, this);
+                            fixture = fixture.next;
+                        }
+                    }
+                }
+            }
+            // ____ Post-Render ____
+            // Opacity Update
+            if (composite != null)
+            {
+                g.setComposite(composite);
+            }
+            // Transform zurücksetzen
+            g.setTransform(oldTransform);
+        }
     }
 
     protected ToStringFormatter toStringFormatter()
