@@ -52,7 +52,7 @@ public class LoopedTrack implements Track, Iterator<Sound>
     @Override
     public AudioFormat format()
     {
-        return this.track.getFormat();
+        return this.track.format();
     }
 
     // implement the iterator here to avoid allocating new objects

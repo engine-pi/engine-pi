@@ -27,6 +27,8 @@ package pi.resources.sound;
 
 import java.io.File;
 
+import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.resources.DataFormat;
 import pi.resources.ImageFormat;
 
@@ -84,7 +86,9 @@ public enum SoundFormat
         return DataFormat.isSupported(fileName, values(), UNSUPPORTED);
     }
 
-    public static String[] getAllExtensions()
+    @API
+    @Getter
+    public static String[] allExtensions()
     {
         return DataFormat.getAllExtensions(values(), UNSUPPORTED);
     }
@@ -99,12 +103,12 @@ public enum SoundFormat
      */
     public String toFileExtension()
     {
-        return "." + this.name().toLowerCase();
+        return "." + name().toLowerCase();
     }
 
     @Override
     public String toString()
     {
-        return this.name().toLowerCase();
+        return name().toLowerCase();
     }
 }

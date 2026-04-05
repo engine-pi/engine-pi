@@ -27,6 +27,9 @@ package pi.resources.sound;
 
 import java.util.EventObject;
 
+import pi.annotations.API;
+import pi.annotations.Getter;
+
 /**
  * This implementation is used for all events that need to pass a {@code Sound}
  * object to their listeners.
@@ -51,14 +54,16 @@ public class SoundEvent extends EventObject
      *
      * @return The sound object.
      */
-    public Sound getSound()
+    @API
+    @Getter
+    public Sound sound()
     {
-        return this.sound;
+        return sound;
     }
 
     @Override
     public String toString()
     {
-        return super.toString() + "[sound=" + this.sound.getName() + "]";
+        return super.toString() + "[sound=" + sound.name() + "]";
     }
 }

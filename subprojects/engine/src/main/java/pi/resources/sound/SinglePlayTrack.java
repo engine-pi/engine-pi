@@ -30,6 +30,8 @@ import java.util.NoSuchElementException;
 
 import javax.sound.sampled.AudioFormat;
 
+import pi.annotations.Getter;
+
 /**
  * A {@code Track} that plays a sound once and then stops.
  */
@@ -44,17 +46,17 @@ public class SinglePlayTrack implements Track
         @Override
         public boolean hasNext()
         {
-            return this.hasNext;
+            return hasNext;
         }
 
         @Override
         public Sound next()
         {
-            if (!this.hasNext)
+            if (!hasNext)
             {
                 throw new NoSuchElementException();
             }
-            this.hasNext = false;
+            hasNext = false;
             return SinglePlayTrack.this.sound;
         }
     }
@@ -83,28 +85,29 @@ public class SinglePlayTrack implements Track
         return new Iter();
     }
 
+    @Getter
     @Override
     public AudioFormat format()
     {
-        return this.sound.getFormat();
+        return sound.format();
     }
 
     @Override
     public boolean equals(Object obj)
     {
-        return obj instanceof SinglePlayTrack spt && this.sound == spt.sound;
+        return obj instanceof SinglePlayTrack spt && sound == spt.sound;
     }
 
     @Override
     public int hashCode()
     {
         // add a constant to avoid collisions with LoopedTrack
-        return this.sound.hashCode() + 0xdb9857d0;
+        return sound.hashCode() + 0xdb9857d0;
     }
 
     @Override
     public String toString()
     {
-        return "track: " + this.sound.getName() + " (not looped)";
+        return "track: " + sound.name() + " (not looped)";
     }
 }

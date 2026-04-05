@@ -41,7 +41,7 @@ public class SoundPlayback extends Playback
     public SoundPlayback(Sound sound, boolean loop)
             throws LineUnavailableException
     {
-        super(sound.getFormat());
+        super(sound.format());
         this.loop = loop;
         this.sound = sound;
     }
@@ -53,12 +53,12 @@ public class SoundPlayback extends Playback
         {
             do
             {
-                if (this.play(this.sound))
+                if (play(sound))
                 {
                     return;
                 }
             }
-            while (this.loop);
+            while (loop);
         }
         catch (LineUnavailableException e)
         {
@@ -66,7 +66,7 @@ public class SoundPlayback extends Playback
         }
         finally
         {
-            this.finish();
+            finish();
         }
     }
 

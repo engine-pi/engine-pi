@@ -33,6 +33,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import pi.annotations.API;
+import pi.annotations.Getter;
 import pi.util.StreamUtilities;
 
 /**
@@ -41,15 +43,8 @@ import pi.util.StreamUtilities;
  */
 public final class Sound
 {
-    private AudioFormat format;
-
-    private final String name;
 
     private AudioInputStream stream;
-
-    private byte[] streamData;
-
-    private byte[] data;
 
     /**
      * Creates a new Sound instance by the specified file path. Loads the sound
@@ -72,29 +67,39 @@ public final class Sound
             throws IOException, UnsupportedAudioFileException
     {
         this.name = name;
-        this.data = StreamUtilities.getBytes(is);
+        data = StreamUtilities.getBytes(is);
         AudioInputStream in = AudioSystem.getAudioInputStream(is);
         if (in != null)
         {
             final AudioFormat baseFormat = in.getFormat();
-            final AudioFormat decodedFormat = getOutFormat(baseFormat);
+            final AudioFormat decodedFormat = outFormat(baseFormat);
             // Get AudioInputStream that will be decoded by underlying VorbisSPI
             in = AudioSystem.getAudioInputStream(decodedFormat, in);
-            this.stream = in;
-            this.streamData = StreamUtilities.getBytes(this.stream);
-            this.format = this.stream.getFormat();
+            stream = in;
+            streamData = StreamUtilities.getBytes(stream);
+            format = stream.getFormat();
         }
     }
+
+    /* format */
+
+    private AudioFormat format;
 
     /**
      * Gets the audio format of this sound instance.
      *
      * @return The audio format of this instance.
      */
-    public AudioFormat getFormat()
+    @API
+    @Getter
+    public AudioFormat format()
     {
-        return this.format;
+        return format;
     }
+
+    /* name */
+
+    private final String name;
 
     /**
      * Gets the name of this instance that is used to uniquely identify the
@@ -102,10 +107,16 @@ public final class Sound
      *
      * @return The name of this sound.
      */
-    public String getName()
+    @API
+    @Getter
+    public String name()
     {
-        return this.name;
+        return name;
     }
+
+    /* data */
+
+    private byte[] data;
 
     /**
      * Gets the raw data of this sound as byte array.
@@ -115,21 +126,27 @@ public final class Sound
      *
      * @return The raw data of this sound as byte array.
      */
-    public byte[] getRawData()
+    public byte[] rawData()
     {
-        return this.data;
+        return data;
     }
 
-    byte[] getStreamData()
+    /* streamData */
+
+    private byte[] streamData;
+
+    @Getter
+    byte[] streamData()
     {
-        if (this.streamData == null)
+        if (streamData == null)
         {
             return new byte[0];
         }
-        return this.streamData.clone();
+        return streamData.clone();
     }
 
-    private static AudioFormat getOutFormat(final AudioFormat inFormat)
+    @Getter
+    private static AudioFormat outFormat(final AudioFormat inFormat)
     {
         final int ch = inFormat.getChannels();
         final float rate = inFormat.getSampleRate();
@@ -140,6 +157,6 @@ public final class Sound
     @Override
     public String toString()
     {
-        return this.getName();
+        return name();
     }
 }

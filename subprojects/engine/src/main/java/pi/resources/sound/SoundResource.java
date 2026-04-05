@@ -30,6 +30,10 @@ import java.io.InputStream;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.resources.Codec;
 import pi.resources.NamedResource;
 
@@ -39,19 +43,10 @@ import pi.resources.NamedResource;
  */
 public class SoundResource extends NamedResource
 {
-    private String data;
-
-    private SoundFormat format = SoundFormat.UNSUPPORTED;
-
-    public SoundResource()
-    {
-        // keep for xml serialization
-    }
-
     public SoundResource(Sound sound, SoundFormat format)
     {
-        this.name(sound.getName());
-        this.data = Codec.encode(sound.getRawData());
+        name(sound.name());
+        data = Codec.encode(sound.rawData());
         this.format = format;
     }
 
@@ -61,22 +56,36 @@ public class SoundResource extends NamedResource
         this(new Sound(data, name), format);
     }
 
-    public String getData()
+    private String data;
+
+    @API
+    @Getter
+    public String data()
     {
-        return this.data;
+        return data;
     }
 
-    public SoundFormat getFormat()
-    {
-        return this.format;
-    }
-
-    public void setData(String data)
+    @API
+    @Setter
+    @ChainableMethod
+    public void data(String data)
     {
         this.data = data;
     }
 
-    public void setFormat(SoundFormat format)
+    private SoundFormat format = SoundFormat.UNSUPPORTED;
+
+    @API
+    @Getter
+    public SoundFormat format()
+    {
+        return format;
+    }
+
+    @API
+    @Setter
+    @ChainableMethod
+    public void format(SoundFormat format)
     {
         this.format = format;
     }

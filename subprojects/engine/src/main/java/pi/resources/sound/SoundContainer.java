@@ -58,7 +58,7 @@ public final class SoundContainer extends ResourcesContainer<Sound>
      */
     public Sound load(final SoundResource resource)
     {
-        byte[] data = Codec.decode(resource.getData());
+        byte[] data = Codec.decode(resource.data());
         ByteArrayInputStream input = new ByteArrayInputStream(data);
         Sound sound;
         try

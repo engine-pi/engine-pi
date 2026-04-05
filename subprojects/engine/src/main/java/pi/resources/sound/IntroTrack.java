@@ -52,10 +52,10 @@ public class IntroTrack implements Track
     {
         Objects.requireNonNull(intro);
         Objects.requireNonNull(loop);
-        if (!intro.getFormat().matches(loop.getFormat()))
+        if (!intro.format().matches(loop.format()))
         {
             throw new IllegalArgumentException(
-                    intro.getFormat() + " does not match " + loop.getFormat());
+                    intro.format() + " does not match " + loop.format());
         }
         this.intro = intro;
         this.loop = loop;
@@ -93,7 +93,7 @@ public class IntroTrack implements Track
     @Override
     public AudioFormat format()
     {
-        return loop.getFormat();
+        return loop.format();
     }
 
     @Getter

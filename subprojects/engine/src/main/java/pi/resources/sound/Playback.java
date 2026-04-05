@@ -269,7 +269,7 @@ public abstract class Playback implements Runnable
     {
         this.line.open();
         this.line.start();
-        byte[] data = sound.getStreamData();
+        byte[] data = sound.streamData();
         int len = this.line.getFormat().getFrameSize();
         // math hacks here: we're getting just over half the buffer size, but it
         // needs to be an integral
