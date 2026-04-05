@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-meta</artifactId>
-    <version>0.44.0</version>
-    <relativePath>../..</relativePath>
-  </parent>
+    <parent>
+        <groupId>de.pirckheimer-gymnasium</groupId>
+        <artifactId>engine-pi-meta</artifactId>
+        <version>0.44.0</version>
+        <relativePath>../..</relativePath>
+    </parent>
 
-  <artifactId>engine-pi-build-tools</artifactId>
-  <version>0.2.0</version>
-  <packaging>jar</packaging>
+    <artifactId>engine-pi-build-tools</artifactId>
+    <version>0.2.0</version>
+    <packaging>jar</packaging>
 
-  <name>Build Tool Resources</name>
-  <description>Resources for the build tools, for example elipse-formatter.xml, javadoc-stylesheet.css</description>
+    <name>Build Tool Resources</name>
+    <description>Resources for the build tools, for example elipse-formatter.xml, javadoc-stylesheet.css</description>
 
 </project>
