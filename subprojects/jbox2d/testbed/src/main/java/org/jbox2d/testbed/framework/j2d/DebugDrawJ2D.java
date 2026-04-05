@@ -94,8 +94,10 @@ public class DebugDrawJ2D extends DebugDraw
         g.setColor(c);
         sp1.x -= argRadiusOnScreen;
         sp1.y -= argRadiusOnScreen;
-        g.fillOval((int) sp1.x, (int) sp1.y, (int) argRadiusOnScreen * 2,
-                (int) argRadiusOnScreen * 2);
+        g.fillOval((int) sp1.x,
+            (int) sp1.y,
+            (int) argRadiusOnScreen * 2,
+            (int) argRadiusOnScreen * 2);
     }
 
     private final Vec2 sp1 = new Vec2();
@@ -145,8 +147,12 @@ public class DebugDrawJ2D extends DebugDraw
         Vec2 vc = viewportTransform.getCenter();
         Mat22 vt = viewportTransform.getMat22Representation();
         int flip = yFlip ? -1 : 1;
-        tr.setTransform(vt.ex.x, flip * vt.ex.y, vt.ey.x, flip * vt.ey.y, e.x,
-                e.y);
+        tr.setTransform(vt.ex.x,
+            flip * vt.ex.y,
+            vt.ey.x,
+            flip * vt.ey.y,
+            e.x,
+            e.y);
         tr.translate(-vc.x, -vc.y);
         tr.translate(center.x, center.y);
         g.transform(tr);
@@ -231,8 +237,10 @@ public class DebugDrawJ2D extends DebugDraw
             else
             {
                 ParticleColor c = colors[i];
-                color = colorPool.getColor(c.r * 1f / 127, c.g * 1f / 127,
-                        c.b * 1f / 127, c.a * 1f / 127);
+                color = colorPool.getColor(c.r * 1f / 127,
+                    c.g * 1f / 127,
+                    c.b * 1f / 127,
+                    c.a * 1f / 127);
             }
             AffineTransform old = g.getTransform();
             g.translate(center.x, center.y);

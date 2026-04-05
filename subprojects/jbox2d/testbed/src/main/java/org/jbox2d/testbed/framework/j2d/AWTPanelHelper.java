@@ -85,7 +85,7 @@ public class AWTPanelHelper
                         && !mouseJointButtonDown)
                 {
                     controller.queueMouseUp(new Vec2(arg0.getX(), arg0.getY()),
-                            TestbedTest.BOMB_SPAWN_BUTTON);
+                        TestbedTest.BOMB_SPAWN_BUTTON);
                 }
                 else
                 {
@@ -94,7 +94,7 @@ public class AWTPanelHelper
                         mouseJointButtonDown = false;
                     }
                     controller.queueMouseUp(new Vec2(arg0.getX(), arg0.getY()),
-                            arg0.getButton());
+                        arg0.getButton());
                 }
             }
 
@@ -109,8 +109,8 @@ public class AWTPanelHelper
                 else if (model.getCodedKeys()[KeyEvent.VK_SHIFT])
                 {
                     controller.queueMouseDown(
-                            new Vec2(arg0.getX(), arg0.getY()),
-                            TestbedTest.BOMB_SPAWN_BUTTON);
+                        new Vec2(arg0.getX(), arg0.getY()),
+                        TestbedTest.BOMB_SPAWN_BUTTON);
                 }
                 else
                 {
@@ -119,8 +119,8 @@ public class AWTPanelHelper
                         mouseJointButtonDown = true;
                     }
                     controller.queueMouseDown(
-                            new Vec2(arg0.getX(), arg0.getY()),
-                            arg0.getButton());
+                        new Vec2(arg0.getX(), arg0.getY()),
+                        arg0.getButton());
                 }
             }
         });
@@ -151,18 +151,18 @@ public class AWTPanelHelper
                 else if (mouseJointButtonDown)
                 {
                     controller.queueMouseDrag(new Vec2(mouse),
-                            TestbedTest.MOUSE_JOINT_BUTTON);
+                        TestbedTest.MOUSE_JOINT_BUTTON);
                 }
                 else if (model.getCodedKeys()[KeyEvent.VK_SHIFT])
                 {
                     controller.queueMouseDrag(
-                            new Vec2(arg0.getX(), arg0.getY()),
-                            TestbedTest.BOMB_SPAWN_BUTTON);
+                        new Vec2(arg0.getX(), arg0.getY()),
+                        TestbedTest.BOMB_SPAWN_BUTTON);
                 }
                 else
                 {
                     controller.queueMouseDrag(new Vec2(mouse),
-                            arg0.getButton());
+                        arg0.getButton());
                 }
             }
         });
@@ -172,7 +172,7 @@ public class AWTPanelHelper
             public void keyReleased(KeyEvent arg0)
             {
                 controller.queueKeyReleased(arg0.getKeyChar(),
-                        arg0.getKeyCode());
+                    arg0.getKeyCode());
             }
 
             @Override

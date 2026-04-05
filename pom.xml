@@ -44,9 +44,11 @@
         <module>subprojects/games/pacman</module>
         <module>subprojects/games/tetris</module>
         <module>subprojects/build-tools</module>
-        <module>subprojects/jbox2d/jni-broadphase</module>
+        <!-- javah not found  -->
+        <!-- <module>subprojects/jbox2d/jni-broadphase</module> -->
         <module>subprojects/jbox2d/library</module>
-        <module>subprojects/jbox2d/serialization</module>
+        <!-- Requires sudo apt install protobuf-compiler -->
+        <!-- <module>subprojects/jbox2d/serialization</module> -->
         <module>subprojects/jbox2d/testbed</module>
         <module>subprojects/jbox2d/testbed-javafx</module>
         <module>subprojects/jbox2d/testbed-jogl</module>
@@ -204,6 +206,11 @@
                             <placement>a</placement>
                             <head>Box2D source code:</head>
                         </tag>
+                        <tag>
+                            <name>warning</name>
+                            <placement>a</placement>
+                            <head>Warning:</head>
+                        </tag>
                     </tags>
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/links-configuration.html -->
@@ -212,7 +219,7 @@
                     </links> -->
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/exclude-package-names.html -->
-                    <excludePackageNames>org.jbox2d.*</excludePackageNames>
+                    <!-- <excludePackageNames>org.jbox2d.*</excludePackageNames> -->
                     <!--
                     https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
                     <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>

@@ -34,8 +34,8 @@ package pi.physics.joints;
  * @see RopeJoint
  * @see WeldJoint
  */
-public class DistanceJoint extends
-        Joint<org.jbox2d.dynamics.joints.DistanceJoint>
+public class DistanceJoint
+        extends Joint<org.jbox2d.dynamics.joints.DistanceJoint>
 {
     @Override
     protected void updateCustomProperties(

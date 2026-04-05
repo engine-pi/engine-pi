@@ -101,8 +101,8 @@ public class TestbedSidePanel extends JPanel
         JPanel top = new JPanel();
         top.setLayout(new GridLayout(0, 1));
         top.setBorder(BorderFactory.createCompoundBorder(
-                new EtchedBorder(EtchedBorder.LOWERED),
-                BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            new EtchedBorder(EtchedBorder.LOWERED),
+            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         tests = new JComboBox<>(model.getComboModel());
         tests.setMaximumRowCount(30);
         tests.setMaximumSize(new Dimension(250, 20));
@@ -128,9 +128,9 @@ public class TestbedSidePanel extends JPanel
                         categoryLabel.setBackground(new Color(.5f, .5f, .6f));
                         categoryLabel.setForeground(Color.white);
                         categoryLabel
-                                .setHorizontalAlignment(SwingConstants.CENTER);
+                            .setHorizontalAlignment(SwingConstants.CENTER);
                         categoryLabel.setBorder(
-                                BorderFactory.createEmptyBorder(1, 1, 1, 1));
+                            BorderFactory.createEmptyBorder(1, 1, 1, 1));
                     }
                     categoryLabel.setText(value.category);
                     return categoryLabel;
@@ -141,7 +141,7 @@ public class TestbedSidePanel extends JPanel
                     {
                         testLabel = new JLabel();
                         testLabel.setBorder(
-                                BorderFactory.createEmptyBorder(0, 5, 1, 0));
+                            BorderFactory.createEmptyBorder(0, 5, 1, 0));
                     }
                     testLabel.setText(value.test.getTestName());
                     if (isSelected)
@@ -165,8 +165,8 @@ public class TestbedSidePanel extends JPanel
         JPanel middle = new JPanel();
         middle.setLayout(new GridLayout(0, 1));
         middle.setBorder(BorderFactory.createCompoundBorder(
-                new EtchedBorder(EtchedBorder.LOWERED),
-                BorderFactory.createEmptyBorder(5, 10, 5, 10)));
+            new EtchedBorder(EtchedBorder.LOWERED),
+            BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         addSettings(middle, settings, SettingType.ENGINE);
         add(middle, "Center");
         pauseButton.setAlignmentX(CENTER_ALIGNMENT);
@@ -263,7 +263,7 @@ public class TestbedSidePanel extends JPanel
     {
         JComponent component = (JComponent) e.getSource();
         TestbedSetting setting = (TestbedSetting) component
-                .getClientProperty(SETTING_TAG);
+            .getClientProperty(SETTING_TAG);
         switch (setting.constraintType)
         {
         case BOOLEAN:

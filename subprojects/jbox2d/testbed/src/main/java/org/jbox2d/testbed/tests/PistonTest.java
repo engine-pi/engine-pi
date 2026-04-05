@@ -98,9 +98,9 @@ public class PistonTest extends TestbedTest
                 fd.friction = .1f;
                 fd.restitution = .9f;
                 float xPos = radius * (float) Math
-                        .cos(2f * Math.PI * (i / (float) (numPieces)));
+                    .cos(2f * Math.PI * (i / (float) (numPieces)));
                 float yPos = radius * (float) Math
-                        .sin(2f * Math.PI * (i / (float) (numPieces)));
+                    .sin(2f * Math.PI * (i / (float) (numPieces)));
                 cd.p.set(xPos, yPos);
                 body.createFixture(fd);
             }
@@ -164,8 +164,10 @@ public class PistonTest extends TestbedTest
                 rjd.initialize(prevBody, body, new Vec2(0.0f, 17.0f));
                 getWorld().createJoint(rjd);
                 PrismaticJointDef pjd = new PrismaticJointDef();
-                pjd.initialize(ground, body, new Vec2(0.0f, 17.0f),
-                        new Vec2(0.0f, 1.0f));
+                pjd.initialize(ground,
+                    body,
+                    new Vec2(0.0f, 17.0f),
+                    new Vec2(0.0f, 1.0f));
                 pjd.maxMotorForce = 1000.0f;
                 pjd.enableMotor = true;
                 getWorld().createJoint(pjd);

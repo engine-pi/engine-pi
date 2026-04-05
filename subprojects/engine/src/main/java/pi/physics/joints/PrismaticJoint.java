@@ -37,8 +37,8 @@ import pi.annotations.Setter;
  * @see RopeJoint
  * @see WeldJoint
  */
-public final class PrismaticJoint extends
-        Joint<org.jbox2d.dynamics.joints.PrismaticJoint>
+public final class PrismaticJoint
+        extends Joint<org.jbox2d.dynamics.joints.PrismaticJoint>
 {
     private double lowerLimit;
 

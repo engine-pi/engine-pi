@@ -49,7 +49,9 @@ public class OneSidedTest extends TestbedTest
 
     enum State
     {
-        unknown, above, below,
+        unknown,
+        above,
+        below,
     };
 
     float radius, top, bottom;

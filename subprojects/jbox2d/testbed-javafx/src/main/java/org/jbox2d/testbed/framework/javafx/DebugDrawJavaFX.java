@@ -87,8 +87,10 @@ public class DebugDrawJavaFX extends DebugDraw
         g.setStroke(c);
         sp1.x -= argRadiusOnScreen;
         sp1.y -= argRadiusOnScreen;
-        g.fillOval((int) sp1.x, (int) sp1.y, (int) argRadiusOnScreen * 2,
-                (int) argRadiusOnScreen * 2);
+        g.fillOval((int) sp1.x,
+            (int) sp1.y,
+            (int) argRadiusOnScreen * 2,
+            (int) argRadiusOnScreen * 2);
     }
 
     private final Vec2 sp1 = new Vec2();
@@ -136,8 +138,12 @@ public class DebugDrawJavaFX extends DebugDraw
         Vec2 vc = viewportTransform.getCenter();
         Mat22 vt = viewportTransform.getMat22Representation();
         int flip = yFlip ? -1 : 1;
-        tr.setToTransform(vt.ex.x, flip * vt.ex.y, e.x, vt.ey.x, flip * vt.ey.y,
-                e.y);
+        tr.setToTransform(vt.ex.x,
+            flip * vt.ex.y,
+            e.x,
+            vt.ey.x,
+            flip * vt.ey.y,
+            e.y);
         tr.appendTranslation(-vc.x, -vc.y);
         tr.appendTranslation(center.x, center.y);
         g.setTransform(tr);
@@ -154,8 +160,10 @@ public class DebugDrawJavaFX extends DebugDraw
         g.setLineWidth(stroke / scaling);
         g.scale(radius, radius);
         g.setStroke(s);
-        g.strokeOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                circle.getHeight());
+        g.strokeOval(circle.getMinX(),
+            circle.getMinX(),
+            circle.getWidth(),
+            circle.getHeight());
         restoreState(g);
     }
 
@@ -169,8 +177,10 @@ public class DebugDrawJavaFX extends DebugDraw
         g.setLineWidth(stroke / scaling);
         g.scale(radius, radius);
         g.setStroke(s);
-        g.strokeOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                circle.getHeight());
+        g.strokeOval(circle.getMinX(),
+            circle.getMinX(),
+            circle.getWidth(),
+            circle.getHeight());
         if (axis != null)
         {
             g.rotate(MathUtils.atan2(axis.y, axis.x));
@@ -191,11 +201,15 @@ public class DebugDrawJavaFX extends DebugDraw
         g.setLineWidth(stroke / scaling);
         g.scale(radius, radius);
         g.setFill(f);
-        g.fillOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                circle.getHeight());
+        g.fillOval(circle.getMinX(),
+            circle.getMinX(),
+            circle.getWidth(),
+            circle.getHeight());
         g.setStroke(s);
-        g.strokeOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                circle.getHeight());
+        g.strokeOval(circle.getMinX(),
+            circle.getMinX(),
+            circle.getWidth(),
+            circle.getHeight());
         if (axis != null)
         {
             g.rotate(MathUtils.atan2(axis.y, axis.x));
@@ -227,15 +241,19 @@ public class DebugDrawJavaFX extends DebugDraw
             else
             {
                 ParticleColor c = colors[i];
-                color = cpool.getColor(c.r * 1f / 127, c.g * 1f / 127,
-                        c.b * 1f / 127, c.a * 1f / 127);
+                color = cpool.getColor(c.r * 1f / 127,
+                    c.g * 1f / 127,
+                    c.b * 1f / 127,
+                    c.a * 1f / 127);
             }
             Affine old = g.getTransform();
             g.translate(center.x, center.y);
             g.scale(radius, radius);
             g.setFill(color);
-            g.fillOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                    circle.getHeight());
+            g.fillOval(circle.getMinX(),
+                circle.getMinX(),
+                circle.getWidth(),
+                circle.getHeight());
             g.setTransform(old);
         }
         restoreState(g);
@@ -270,8 +288,10 @@ public class DebugDrawJavaFX extends DebugDraw
             g.translate(center.x, center.y);
             g.scale(radius, radius);
             g.setStroke(color);
-            g.strokeOval(circle.getMinX(), circle.getMinX(), circle.getWidth(),
-                    circle.getHeight());
+            g.strokeOval(circle.getMinX(),
+                circle.getMinX(),
+                circle.getWidth(),
+                circle.getHeight());
             g.setTransform(old);
         }
         restoreState(g);

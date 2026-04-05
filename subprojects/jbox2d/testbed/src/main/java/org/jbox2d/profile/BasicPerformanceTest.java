@@ -38,7 +38,8 @@ public abstract class BasicPerformanceTest
     public enum ResultFormat
     {
         MILLISECONDS(1000000, "Milliseconds"),
-        MICROSECONDS(1000, "Microseconds"), NANOSECONDS(1, "Nanoseconds");
+        MICROSECONDS(1000, "Microseconds"),
+        NANOSECONDS(1, "Nanoseconds");
 
         private final int divisor;
 
@@ -130,8 +131,11 @@ public abstract class BasicPerformanceTest
 
     public void printResults()
     {
-        printf("%-20s%20s%20s%20s\n", "Test Name", format.name + " Avg",
-                "StdDev", "95% Interval");
+        printf("%-20s%20s%20s%20s\n",
+            "Test Name",
+            format.name + " Avg",
+            "StdDev",
+            "95% Interval");
         for (int i = 0; i < numTests; i++)
         {
             double mean = stats[i].getMean() / format.divisor;
@@ -139,8 +143,12 @@ public abstract class BasicPerformanceTest
                     / format.divisor;
             double diff = 1.96 * standardDeviation
                     / MathUtils.sqrt(stats[i].getN());
-            printf("%-20s%20.3f%20.3f  (%7.3f,%7.3f)\n", getTestName(i), mean,
-                    standardDeviation, mean - diff, mean + diff);
+            printf("%-20s%20.3f%20.3f  (%7.3f,%7.3f)\n",
+                getTestName(i),
+                mean,
+                standardDeviation,
+                mean - diff,
+                mean + diff);
         }
     }
 

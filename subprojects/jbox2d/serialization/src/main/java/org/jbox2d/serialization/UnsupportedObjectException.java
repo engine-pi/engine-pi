@@ -39,7 +39,10 @@ public class UnsupportedObjectException extends RuntimeException
 
     public enum Type
     {
-        BODY, JOINT, SHAPE, OTHER
+        BODY,
+        JOINT,
+        SHAPE,
+        OTHER
     }
 
     public Type type;

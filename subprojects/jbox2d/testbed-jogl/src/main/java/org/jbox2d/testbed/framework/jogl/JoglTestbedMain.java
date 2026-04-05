@@ -58,9 +58,10 @@ public class JoglTestbedMain
                     @Override
                     public void serializationError(Exception e, String message)
                     {
-                        JOptionPane.showMessageDialog(null, message,
-                                "Serialization Error",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,
+                            message,
+                            "Serialization Error",
+                            JOptionPane.ERROR_MESSAGE);
                     }
                 });
         JoglPanel panel = new JoglPanel(model, controller);
@@ -68,7 +69,7 @@ public class JoglTestbedMain
         model.setPanel(panel);
         TestList.populateModel(model);
         model.getSettings()
-                .getSetting(TestbedSettings.DrawWireframe).enabled = false;
+            .getSetting(TestbedSettings.DrawWireframe).enabled = false;
         JFrame testbed = new JFrame();
         testbed.setTitle("JBox2D Testbed");
         testbed.setLayout(new BorderLayout());

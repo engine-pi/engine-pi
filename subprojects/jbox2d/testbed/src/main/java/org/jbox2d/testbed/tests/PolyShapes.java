@@ -206,8 +206,8 @@ public class PolyShapes extends TestbedTest
         callback.circle.computeAABB(aabb, callback.transform, 0);
         getWorld().queryAABB(callback, aabb);
         Color3f color = new Color3f(0.4f, 0.7f, 0.8f);
-        getDebugDraw().drawCircle(callback.circle.p, callback.circle.radius,
-                color);
+        getDebugDraw()
+            .drawCircle(callback.circle.p, callback.circle.radius, color);
         addTextLine("Press 1-5 to drop stuff");
         addTextLine("Press 'a' to (de)activate some bodies");
         addTextLine("Press 'd' to destroy a body");
@@ -294,8 +294,8 @@ class PolyShapesCallback implements QueryCallback
         }
         Body body = fixture.getBody();
         Shape shape = fixture.getShape();
-        boolean overlap = p.getCollision().testOverlap(shape, 0, circle, 0,
-                body.getTransform(), transform);
+        boolean overlap = p.getCollision()
+            .testOverlap(shape, 0, circle, 0, body.getTransform(), transform);
         if (overlap)
         {
             DrawFixture(fixture);

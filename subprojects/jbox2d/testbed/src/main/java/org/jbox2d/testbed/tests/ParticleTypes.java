@@ -130,13 +130,13 @@ public class ParticleTypes extends TestbedTest
         }
         addTextLine("'a' Clear");
         addTextLine(
-                "'e' Elastic " + ((flags & ParticleType.elasticParticle) != 0));
+            "'e' Elastic " + ((flags & ParticleType.elasticParticle) != 0));
         addTextLine(
-                "'q' Powder  " + ((flags & ParticleType.powderParticle) != 0));
+            "'q' Powder  " + ((flags & ParticleType.powderParticle) != 0));
         addTextLine(
-                "'t' Tensile " + ((flags & ParticleType.tensileParticle) != 0));
+            "'t' Tensile " + ((flags & ParticleType.tensileParticle) != 0));
         addTextLine(
-                "'v' Viscous " + ((flags & ParticleType.viscousParticle) != 0));
+            "'v' Viscous " + ((flags & ParticleType.viscousParticle) != 0));
     }
 
     @Override

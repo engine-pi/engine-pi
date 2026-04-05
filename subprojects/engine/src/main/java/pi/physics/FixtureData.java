@@ -28,8 +28,7 @@ import org.jbox2d.dynamics.FixtureDef;
 import pi.annotations.Internal;
 
 /**
- * Wrapper-Klasse für
- * {@link org.jbox2d.dynamics.FixtureDef} zur Übersetzung
+ * Wrapper-Klasse für {@link org.jbox2d.dynamics.FixtureDef} zur Übersetzung
  * zwischen Engine-Features und JBox2D-Features.
  *
  * @author Michael Andonie

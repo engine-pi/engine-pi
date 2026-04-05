@@ -144,20 +144,20 @@ public class TestbedSidePanel extends BorderPane
             testSelected();
         });
         tests.setCellFactory(
-                (ListView<ListItem> param) -> new ListCell<ListItem>()
+            (ListView<ListItem> param) -> new ListCell<ListItem>()
+            {
+                @Override
+                public void updateItem(ListItem item, boolean empty)
                 {
-                    @Override
-                    public void updateItem(ListItem item, boolean empty)
+                    super.updateItem(item, empty);
+                    if (item != null)
                     {
-                        super.updateItem(item, empty);
-                        if (item != null)
-                        {
-                            setText(item.isCategory() ? item.category
-                                    : item.test.getTestName());
-                            setDisable(item.isCategory());
-                        }
+                        setText(item.isCategory() ? item.category
+                                : item.test.getTestName());
+                        setDisable(item.isCategory());
                     }
-                });
+                }
+            });
         top.getChildren().add(new Label("Choose a test:"));
         top.getChildren().add(tests);
         addSettings(top, settings, SettingType.DRAWING);
@@ -252,9 +252,9 @@ public class TestbedSidePanel extends BorderPane
                         setting.value);
                 // slider.setMaximumSize(new Dimension(200, 20));
                 slider.valueProperty()
-                        .addListener((prop, oldValue, newValue) -> {
-                            stateChanged(slider);
-                        });
+                    .addListener((prop, oldValue, newValue) -> {
+                        stateChanged(slider);
+                    });
                 putClientProperty(slider, "name", setting.name);
                 putClientProperty(slider, SETTING_TAG, setting);
                 putClientProperty(slider, LABEL_TAG, text);
@@ -266,9 +266,9 @@ public class TestbedSidePanel extends BorderPane
                 CheckBox checkbox = new CheckBox(setting.name);
                 checkbox.setSelected(setting.enabled);
                 checkbox.selectedProperty()
-                        .addListener((prop, oldValue, newValue) -> {
-                            stateChanged(checkbox);
-                        });
+                    .addListener((prop, oldValue, newValue) -> {
+                        stateChanged(checkbox);
+                    });
                 putClientProperty(checkbox, SETTING_TAG, setting);
                 argPanel.getChildren().add(checkbox);
                 break;

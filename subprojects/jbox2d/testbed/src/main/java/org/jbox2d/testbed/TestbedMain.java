@@ -56,9 +56,10 @@ public class TestbedMain
                     @Override
                     public void serializationError(Exception e, String message)
                     {
-                        JOptionPane.showMessageDialog(null, message,
-                                "Serialization Error",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,
+                            message,
+                            "Serialization Error",
+                            JOptionPane.ERROR_MESSAGE);
                     }
                 });
         TestPanelJ2D panel = new TestPanelJ2D(model, controller);

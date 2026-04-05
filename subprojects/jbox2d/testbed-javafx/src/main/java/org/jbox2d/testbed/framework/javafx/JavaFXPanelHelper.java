@@ -67,19 +67,19 @@ public class JavaFXPanelHelper
                     && !mouseJointButtonDown)
             {
                 controller.queueMouseUp(toVec(mouseEvent),
-                        TestbedTest.BOMB_SPAWN_BUTTON);
+                    TestbedTest.BOMB_SPAWN_BUTTON);
             }
             else
             {
-                if (toInt(mouseEvent
-                        .getButton()) == TestbedTest.MOUSE_JOINT_BUTTON)
+                if (toInt(
+                    mouseEvent.getButton()) == TestbedTest.MOUSE_JOINT_BUTTON)
                 {
                     mouseJointButtonDown = false;
                 }
                 controller.queueMouseUp(
-                        new Vec2((float) mouseEvent.getX(),
-                                (float) mouseEvent.getY()),
-                        toInt(mouseEvent.getButton()));
+                    new Vec2((float) mouseEvent.getX(),
+                            (float) mouseEvent.getY()),
+                    toInt(mouseEvent.getButton()));
             }
         });
         panel.setOnMousePressed((mouseEvent) -> {
@@ -92,17 +92,17 @@ public class JavaFXPanelHelper
             else if (model.getCodedKeys()[toInt(KeyCode.SHIFT)])
             {
                 controller.queueMouseDown(toVec(mouseEvent),
-                        TestbedTest.BOMB_SPAWN_BUTTON);
+                    TestbedTest.BOMB_SPAWN_BUTTON);
             }
             else
             {
-                if (toInt(mouseEvent
-                        .getButton()) == TestbedTest.MOUSE_JOINT_BUTTON)
+                if (toInt(
+                    mouseEvent.getButton()) == TestbedTest.MOUSE_JOINT_BUTTON)
                 {
                     mouseJointButtonDown = true;
                 }
                 controller.queueMouseDown(toVec(mouseEvent),
-                        toInt(mouseEvent.getButton()));
+                    toInt(mouseEvent.getButton()));
             }
         });
         panel.setOnMouseMoved((mouseEvent) -> {
@@ -125,17 +125,17 @@ public class JavaFXPanelHelper
             else if (mouseJointButtonDown)
             {
                 controller.queueMouseDrag(new Vec2(mouse),
-                        TestbedTest.MOUSE_JOINT_BUTTON);
+                    TestbedTest.MOUSE_JOINT_BUTTON);
             }
             else if (model.getCodedKeys()[toInt(KeyCode.SHIFT)])
             {
                 controller.queueMouseDrag(toVec(mouseEvent),
-                        TestbedTest.BOMB_SPAWN_BUTTON);
+                    TestbedTest.BOMB_SPAWN_BUTTON);
             }
             else
             {
                 controller.queueMouseDrag(toVec(mouseEvent),
-                        toInt(mouseEvent.getButton()));
+                    toInt(mouseEvent.getButton()));
             }
         });
         panel.setOnKeyReleased((keyEvent) -> {

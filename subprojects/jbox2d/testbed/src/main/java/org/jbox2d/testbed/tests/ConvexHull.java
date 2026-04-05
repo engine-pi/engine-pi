@@ -99,9 +99,8 @@ public class ConvexHull extends TestbedTest
         for (int i = 0; i < memberCount; ++i)
         {
             getDebugDraw().drawPoint(memberPoints[i], 2.0f, color2);
-            getDebugDraw().drawString(
-                    memberPoints[i].add(new Vec2(0.05f, 0.05f)), i + "",
-                    Color3f.WHITE);
+            getDebugDraw().drawString(memberPoints[i]
+                .add(new Vec2(0.05f, 0.05f)), i + "", Color3f.WHITE);
         }
         assert (shape.validate());
         if (auto)

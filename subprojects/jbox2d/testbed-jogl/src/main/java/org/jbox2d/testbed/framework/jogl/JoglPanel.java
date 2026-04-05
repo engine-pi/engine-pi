@@ -59,8 +59,10 @@ public class JoglPanel extends GLJPanel implements TestbedPanel, GLEventListener
         setPreferredSize(new Dimension(600, 600));
         setAutoSwapBufferMode(true);
         addGLEventListener(this);
-        AWTPanelHelper.addHelpAndPanelListeners(this, model, controller,
-                SCREEN_DRAG_BUTTON);
+        AWTPanelHelper.addHelpAndPanelListeners(this,
+            model,
+            controller,
+            SCREEN_DRAG_BUTTON);
     }
 
     @Override
@@ -93,8 +95,8 @@ public class JoglPanel extends GLJPanel implements TestbedPanel, GLEventListener
     {
         getGL().getGL2().glLineWidth(1f);
         getGL().getGL2().glEnable(GL2.GL_BLEND);
-        getGL().getGL2().glBlendFunc(GL2.GL_SRC_ALPHA,
-                GL2.GL_ONE_MINUS_SRC_ALPHA);
+        getGL().getGL2()
+            .glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     @Override

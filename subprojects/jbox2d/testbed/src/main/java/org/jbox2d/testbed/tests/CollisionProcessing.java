@@ -83,7 +83,7 @@ public class CollisionProcessing extends TestbedTest
         BodyDef triangleBodyDef = new BodyDef();
         triangleBodyDef.type = BodyType.DYNAMIC;
         triangleBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body1 = getWorld().createBody(triangleBodyDef);
         body1.createFixture(triangleShapeDef);
         // Large triangle (recycle definitions)
@@ -92,7 +92,7 @@ public class CollisionProcessing extends TestbedTest
         vertices[2].mulLocal(2.0f);
         polygon.set(vertices, 3);
         triangleBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body2 = getWorld().createBody(triangleBodyDef);
         body2.createFixture(triangleShapeDef);
         // Small box
@@ -103,13 +103,13 @@ public class CollisionProcessing extends TestbedTest
         BodyDef boxBodyDef = new BodyDef();
         boxBodyDef.type = BodyType.DYNAMIC;
         boxBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body3 = getWorld().createBody(boxBodyDef);
         body3.createFixture(boxShapeDef);
         // Large box (recycle definitions)
         polygon.setAsBox(2.0f, 1.0f);
         boxBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body4 = getWorld().createBody(boxBodyDef);
         body4.createFixture(boxShapeDef);
         // Small circle
@@ -121,13 +121,13 @@ public class CollisionProcessing extends TestbedTest
         BodyDef circleBodyDef = new BodyDef();
         circleBodyDef.type = BodyType.DYNAMIC;
         circleBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body5 = getWorld().createBody(circleBodyDef);
         body5.createFixture(circleShapeDef);
         // Large circle
         circle.radius *= 2.0f;
         circleBodyDef.position.set(MathUtils.randomFloat(xLo, xHi),
-                MathUtils.randomFloat(yLo, yHi));
+            MathUtils.randomFloat(yLo, yHi));
         Body body6 = getWorld().createBody(circleBodyDef);
         body6.createFixture(circleShapeDef);
     }

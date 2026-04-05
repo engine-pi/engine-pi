@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
 public class TestPanelJ2D extends JPanel implements TestbedPanel
 {
     private static final Logger log = LoggerFactory
-            .getLogger(TestPanelJ2D.class);
+        .getLogger(TestPanelJ2D.class);
 
     public static final int SCREEN_DRAG_BUTTON = 3;
 
@@ -68,8 +68,10 @@ public class TestPanelJ2D extends JPanel implements TestbedPanel
         setBackground(Color.black);
         setPreferredSize(new Dimension(INIT_WIDTH, INIT_HEIGHT));
         updateSize(INIT_WIDTH, INIT_HEIGHT);
-        AWTPanelHelper.addHelpAndPanelListeners(this, model, controller,
-                SCREEN_DRAG_BUTTON);
+        AWTPanelHelper.addHelpAndPanelListeners(this,
+            model,
+            controller,
+            SCREEN_DRAG_BUTTON);
         addComponentListener(new ComponentAdapter()
         {
             @Override

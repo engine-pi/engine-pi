@@ -35,8 +35,8 @@ import pi.annotations.API;
  * @see RopeJoint
  * @see WeldJoint
  */
-public final class RevoluteJoint extends
-        Joint<org.jbox2d.dynamics.joints.RevoluteJoint>
+public final class RevoluteJoint
+        extends Joint<org.jbox2d.dynamics.joints.RevoluteJoint>
 {
     private double lowerLimit;
 

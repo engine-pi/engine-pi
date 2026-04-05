@@ -33,8 +33,7 @@ package pi.physics.joints;
  * @see RevoluteJoint
  * @see RopeJoint
  */
-public class WeldJoint
-        extends Joint<org.jbox2d.dynamics.joints.WeldJoint>
+public class WeldJoint extends Joint<org.jbox2d.dynamics.joints.WeldJoint>
 {
     @Override
     protected void updateCustomProperties(

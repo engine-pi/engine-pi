@@ -407,8 +407,9 @@ public class PbSerializer implements JbSerializer
             Map<Body, Integer> argBodyIndexMap,
             Map<Joint, Integer> argJointIndexMap)
     {
-        PbJoint.Builder builder = serializeJoint(argJoint, argBodyIndexMap,
-                argJointIndexMap);
+        PbJoint.Builder builder = serializeJoint(argJoint,
+            argBodyIndexMap,
+            argJointIndexMap);
         if (builder == null)
         {
             return null;

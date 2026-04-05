@@ -60,8 +60,8 @@ public class TestbedMain extends Application
         model.setDebugDraw(new DebugDrawJavaFX(panel, true));
         TestList.populateModel(model);
         testbed.setCenter(panel);
-        testbed.setRight(
-                new ScrollPane(new TestbedSidePanel(model, controller)));
+        testbed
+            .setRight(new ScrollPane(new TestbedSidePanel(model, controller)));
         Scene scene = new Scene(testbed, TestPanelJavaFX.INIT_WIDTH + 175,
                 TestPanelJavaFX.INIT_HEIGHT);
         primaryStage.setScene(scene);

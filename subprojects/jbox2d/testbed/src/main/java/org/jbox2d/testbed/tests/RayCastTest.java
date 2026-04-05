@@ -48,7 +48,9 @@ public class RayCastTest extends TestbedTest
 
     enum Mode
     {
-        closest, any, multiple
+        closest,
+        any,
+        multiple
     };
 
     int bodyIndex;
@@ -169,19 +171,22 @@ public class RayCastTest extends TestbedTest
             getWorld().raycast(ccallback, point1, point2);
             if (ccallback.hit)
             {
-                getDebugDraw().drawPoint(ccallback.point, 5.0f,
-                        new Color3f(0.4f, 0.9f, 0.4f));
-                getDebugDraw().drawSegment(point1, ccallback.point,
-                        new Color3f(0.8f, 0.8f, 0.8f));
+                getDebugDraw().drawPoint(ccallback.point,
+                    5.0f,
+                    new Color3f(0.4f, 0.9f, 0.4f));
+                getDebugDraw().drawSegment(point1,
+                    ccallback.point,
+                    new Color3f(0.8f, 0.8f, 0.8f));
                 pooledHead.set(ccallback.normal);
                 pooledHead.mulLocal(.5f).addLocal(ccallback.point);
-                getDebugDraw().drawSegment(ccallback.point, pooledHead,
-                        new Color3f(0.9f, 0.9f, 0.4f));
+                getDebugDraw().drawSegment(ccallback.point,
+                    pooledHead,
+                    new Color3f(0.9f, 0.9f, 0.4f));
             }
             else
             {
-                getDebugDraw().drawSegment(point1, point2,
-                        new Color3f(0.8f, 0.8f, 0.8f));
+                getDebugDraw()
+                    .drawSegment(point1, point2, new Color3f(0.8f, 0.8f, 0.8f));
             }
         }
         else if (mode == Mode.any)
@@ -190,39 +195,42 @@ public class RayCastTest extends TestbedTest
             getWorld().raycast(acallback, point1, point2);
             if (acallback.hit)
             {
-                getDebugDraw().drawPoint(acallback.point, 5.0f,
-                        new Color3f(0.4f, 0.9f, 0.4f));
-                getDebugDraw().drawSegment(point1, acallback.point,
-                        new Color3f(0.8f, 0.8f, 0.8f));
+                getDebugDraw().drawPoint(acallback.point,
+                    5.0f,
+                    new Color3f(0.4f, 0.9f, 0.4f));
+                getDebugDraw().drawSegment(point1,
+                    acallback.point,
+                    new Color3f(0.8f, 0.8f, 0.8f));
                 pooledHead.set(acallback.normal);
                 pooledHead.mulLocal(.5f).addLocal(acallback.point);
-                getDebugDraw().drawSegment(acallback.point, pooledHead,
-                        new Color3f(0.9f, 0.9f, 0.4f));
+                getDebugDraw().drawSegment(acallback.point,
+                    pooledHead,
+                    new Color3f(0.9f, 0.9f, 0.4f));
             }
             else
             {
-                getDebugDraw().drawSegment(point1, point2,
-                        new Color3f(0.8f, 0.8f, 0.8f));
+                getDebugDraw()
+                    .drawSegment(point1, point2, new Color3f(0.8f, 0.8f, 0.8f));
             }
         }
         else if (mode == Mode.multiple)
         {
             mcallback.init();
             getWorld().raycast(mcallback, point1, point2);
-            getDebugDraw().drawSegment(point1, point2,
-                    new Color3f(0.8f, 0.8f, 0.8f));
+            getDebugDraw()
+                .drawSegment(point1, point2, new Color3f(0.8f, 0.8f, 0.8f));
             for (int i = 0; i < mcallback.count; ++i)
             {
                 Vec2 p = mcallback.points[i];
                 Vec2 n = mcallback.normals[i];
-                getDebugDraw().drawPoint(p, 5.0f,
-                        new Color3f(0.4f, 0.9f, 0.4f));
-                getDebugDraw().drawSegment(point1, p,
-                        new Color3f(0.8f, 0.8f, 0.8f));
+                getDebugDraw()
+                    .drawPoint(p, 5.0f, new Color3f(0.4f, 0.9f, 0.4f));
+                getDebugDraw()
+                    .drawSegment(point1, p, new Color3f(0.8f, 0.8f, 0.8f));
                 pooledHead.set(n);
                 pooledHead.mulLocal(.5f).addLocal(p);
-                getDebugDraw().drawSegment(p, pooledHead,
-                        new Color3f(0.9f, 0.9f, 0.4f));
+                getDebugDraw()
+                    .drawSegment(p, pooledHead, new Color3f(0.9f, 0.9f, 0.4f));
             }
         }
         if (advanceRay)

@@ -147,10 +147,8 @@ public enum BodyType
         return switch (this)
         {
         case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
-        case DYNAMIC, SENSOR, PARTICLE ->
-            org.jbox2d.dynamics.BodyType.DYNAMIC;
-        case KINEMATIC ->
-            org.jbox2d.dynamics.BodyType.KINEMATIC;
+        case DYNAMIC, SENSOR, PARTICLE -> org.jbox2d.dynamics.BodyType.DYNAMIC;
+        case KINEMATIC -> org.jbox2d.dynamics.BodyType.KINEMATIC;
         };
     }
 

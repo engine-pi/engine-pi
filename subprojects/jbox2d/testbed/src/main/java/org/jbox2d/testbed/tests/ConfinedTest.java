@@ -95,7 +95,7 @@ public class ConfinedTest extends TestbedTest
                 BodyDef bd = new BodyDef();
                 bd.type = BodyType.DYNAMIC;
                 bd.position.set(-10.0f + (2.1f * j + 1.0f + 0.01f * i) * radius,
-                        (2.0f * i + 1.0f) * radius);
+                    (2.0f * i + 1.0f) * radius);
                 Body body = getWorld().createBody(bd);
                 body.createFixture(fd);
             }

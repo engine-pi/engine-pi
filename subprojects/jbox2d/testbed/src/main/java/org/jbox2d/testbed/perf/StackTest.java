@@ -61,7 +61,7 @@ public class StackTest extends BasicPerformanceTest
     public float op(Vec2 argVec)
     {
         argVec.set(MathUtils.randomFloat(-100, 100),
-                MathUtils.randomFloat(-100, 100));
+            MathUtils.randomFloat(-100, 100));
         argVec.mulLocal(3.2f);
         float s = argVec.length();
         argVec.normalize();

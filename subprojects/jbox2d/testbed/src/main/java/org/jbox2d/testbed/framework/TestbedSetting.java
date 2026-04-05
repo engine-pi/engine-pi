@@ -35,7 +35,8 @@ public class TestbedSetting
      */
     public enum SettingType
     {
-        DRAWING, ENGINE
+        DRAWING,
+        ENGINE
     }
 
     /**
@@ -43,7 +44,8 @@ public class TestbedSetting
      */
     public enum ConstraintType
     {
-        BOOLEAN, RANGE
+        BOOLEAN,
+        RANGE
     }
 
     public final String name;

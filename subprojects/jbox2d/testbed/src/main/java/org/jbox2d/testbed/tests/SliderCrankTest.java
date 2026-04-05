@@ -109,8 +109,10 @@ public class SliderCrankTest extends TestbedTest
                 rjd.initialize(prevBody, body, new Vec2(0.0f, 17.0f));
                 getWorld().createJoint(rjd);
                 PrismaticJointDef pjd = new PrismaticJointDef();
-                pjd.initialize(ground, body, new Vec2(0.0f, 17.0f),
-                        new Vec2(0.0f, 1.0f));
+                pjd.initialize(ground,
+                    body,
+                    new Vec2(0.0f, 17.0f),
+                    new Vec2(0.0f, 1.0f));
                 pjd.maxMotorForce = 1000.0f;
                 pjd.enableMotor = false;
                 joint2 = (PrismaticJoint) getWorld().createJoint(pjd);
@@ -136,7 +138,8 @@ public class SliderCrankTest extends TestbedTest
         float torque = joint1.getMotorTorque(1);
         Formatter f = new Formatter();
         addTextLine(f.format("Friction: %b, Motor Force = %5.0f, ",
-                joint2.isMotorEnabled(), torque).toString());
+            joint2.isMotorEnabled(),
+            torque).toString());
         f.close();
     }
 

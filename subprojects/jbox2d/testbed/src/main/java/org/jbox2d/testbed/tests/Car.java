@@ -380,7 +380,7 @@ public class Car extends TestbedTest
     {
         super.step(settings);
         addTextLine(
-                "Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
+            "Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
         addTextLine("frequency = " + hz + " hz, damping ratio = " + zeta);
         getCamera().setCamera(car.getPosition());
     }

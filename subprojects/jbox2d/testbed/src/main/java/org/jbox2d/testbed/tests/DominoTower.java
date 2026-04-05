@@ -146,21 +146,29 @@ public class DominoTower extends TestbedTest
                     if (i == 0)
                     {
                         makeDomino(currX - (1.25f * dheight) + .5f * dwidth,
-                                currY - dwidth, false, world);
+                            currY - dwidth,
+                            false,
+                            world);
                     }
                     if (i == baseCount - j - 1)
                     {
                         // if (j != 1) //djm: why is this here? it makes it off
                         // balance
                         makeDomino(currX + (1.25f * dheight) - .5f * dwidth,
-                                currY - dwidth, false, world);
+                            currY - dwidth,
+                            false,
+                            world);
                     }
                     ddensity /= 2.5f;
                     makeDomino(currX, currY, false, world);
-                    makeDomino(currX, currY + .5f * (dwidth + dheight), true,
-                            world);
-                    makeDomino(currX, currY - .5f * (dwidth + dheight), true,
-                            world);
+                    makeDomino(currX,
+                        currY + .5f * (dwidth + dheight),
+                        true,
+                        world);
+                    makeDomino(currX,
+                        currY - .5f * (dwidth + dheight),
+                        true,
+                        world);
                 }
             }
         }

@@ -136,10 +136,10 @@ public class ContinuousTest extends TestbedTest
         if (Distance.GJK_CALLS > 0)
         {
             addTextLine(String.format(
-                    "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",
-                    Distance.GJK_CALLS,
-                    Distance.GJK_ITERS * 1. / Distance.GJK_CALLS,
-                    Distance.GJK_MAX_ITERS));
+                "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",
+                Distance.GJK_CALLS,
+                Distance.GJK_ITERS * 1. / Distance.GJK_CALLS,
+                Distance.GJK_MAX_ITERS));
         }
         if (TimeOfImpact.toiCalls > 0)
         {
@@ -149,11 +149,14 @@ public class ContinuousTest extends TestbedTest
             int toiRootIters = TimeOfImpact.toiRootIters;
             int toiMaxRootIters = TimeOfImpact.toiMaxRootIters;
             addTextLine(String.format(
-                    "toi calls = %d, ave toi iters = %3.1f, max toi iters = %d",
-                    toiCalls, toiIters * 1. / toiCalls, toiMaxIters));
+                "toi calls = %d, ave toi iters = %3.1f, max toi iters = %d",
+                toiCalls,
+                toiIters * 1. / toiCalls,
+                toiMaxIters));
             addTextLine(String.format(
-                    "ave toi root iters = %3.1f, max toi root iters = %d",
-                    toiRootIters * 1. / toiCalls, toiMaxRootIters));
+                "ave toi root iters = %3.1f, max toi root iters = %d",
+                toiRootIters * 1. / toiCalls,
+                toiMaxRootIters));
         }
         addTextLine("Press 'c' to change launch shape");
         if (getStepCount() % 60 == 0)

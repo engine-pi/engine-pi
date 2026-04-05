@@ -195,7 +195,7 @@ public class TheoJansen extends TestbedTest
         createLeg(-1.0f, wheelAnchor);
         createLeg(1.0f, wheelAnchor);
         wheel.setTransform(wheel.getPosition(),
-                -120.0f * MathUtils.PI / 180.0f);
+            -120.0f * MathUtils.PI / 180.0f);
         createLeg(-1.0f, wheelAnchor);
         createLeg(1.0f, wheelAnchor);
     }

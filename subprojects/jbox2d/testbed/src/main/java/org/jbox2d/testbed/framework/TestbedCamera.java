@@ -34,7 +34,8 @@ public class TestbedCamera
 {
     public enum ZoomType
     {
-        ZOOM_IN, ZOOM_OUT
+        ZOOM_IN,
+        ZOOM_OUT
     }
 
     private final Vec2 initPosition = new Vec2();
@@ -51,7 +52,8 @@ public class TestbedCamera
             float zoomScaleDiff)
     {
         Preconditions.checkArgument(zoomScaleDiff > 0,
-                "Zoom scale %d must be > 0", zoomScaleDiff);
+            "Zoom scale %d must be > 0",
+            zoomScaleDiff);
         this.transform = new OBBViewportTransform();
         transform.setCamera(initPosition.x, initPosition.y, initScale);
         this.initPosition.set(initPosition);

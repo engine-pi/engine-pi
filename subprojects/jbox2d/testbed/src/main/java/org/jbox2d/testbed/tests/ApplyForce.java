@@ -161,22 +161,22 @@ public class ApplyForce extends TestbedTest
         if (getModel().getKeys()['w'])
         {
             Vec2 f = body.getWorldVector(new Vec2(0.0f, -30.0f));
-            Vec2 p = body.getWorldPoint(
-                    body.getLocalCenter().add(new Vec2(0.0f, 2.0f)));
+            Vec2 p = body
+                .getWorldPoint(body.getLocalCenter().add(new Vec2(0.0f, 2.0f)));
             body.applyForce(f, p);
         }
         else if (getModel().getKeys()['q'])
         {
             Vec2 f = body.getWorldVector(new Vec2(0.0f, -30.0f));
-            Vec2 p = body.getWorldPoint(
-                    body.getLocalCenter().add(new Vec2(-.2f, 0f)));
+            Vec2 p = body
+                .getWorldPoint(body.getLocalCenter().add(new Vec2(-.2f, 0f)));
             body.applyForce(f, p);
         }
         else if (getModel().getKeys()['e'])
         {
             Vec2 f = body.getWorldVector(new Vec2(0.0f, -30.0f));
-            Vec2 p = body.getWorldPoint(
-                    body.getLocalCenter().add(new Vec2(.2f, 0f)));
+            Vec2 p = body
+                .getWorldPoint(body.getLocalCenter().add(new Vec2(.2f, 0f)));
             body.applyForce(f, p);
         }
         else if (getModel().getKeys()['s'])

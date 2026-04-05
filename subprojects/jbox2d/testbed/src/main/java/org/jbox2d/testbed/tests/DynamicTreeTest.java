@@ -177,7 +177,8 @@ public class DynamicTreeTest extends TestbedTest
         {
             Color3f cr = new Color3f(0.2f, 0.2f, 0.9f);
             Vec2 p = rayCastInput.p2.sub(rayCastInput.p1)
-                    .mulLocal(rayActor.fraction).addLocal(rayCastInput.p1);
+                .mulLocal(rayActor.fraction)
+                .addLocal(rayCastInput.p1);
             getDebugDraw().drawPoint(p, 6.0f, cr);
         }
         ++stepCount;
@@ -185,8 +186,10 @@ public class DynamicTreeTest extends TestbedTest
         {
             tree.drawTree(getDebugDraw());
         }
-        getDebugDraw().drawString(5, 30,
-                "(c)reate proxy, (d)estroy proxy, (a)utomate", Color3f.WHITE);
+        getDebugDraw().drawString(5,
+            30,
+            "(c)reate proxy, (d)estroy proxy, (a)utomate",
+            Color3f.WHITE);
     }
 
     public boolean treeCallback(int proxyId)
@@ -228,10 +231,10 @@ public class DynamicTreeTest extends TestbedTest
         w.set(2.0f * proxyExtent, 2.0f * proxyExtent);
         // aabb.lowerBound.x = -proxyExtent;
         // aabb.lowerBound.y = -proxyExtent + worldExtent;
-        aabb.lowerBound.x = MathUtils.randomFloat(rand, -worldExtent,
-                worldExtent);
-        aabb.lowerBound.y = MathUtils.randomFloat(rand, 0.0f,
-                2.0f * worldExtent);
+        aabb.lowerBound.x = MathUtils
+            .randomFloat(rand, -worldExtent, worldExtent);
+        aabb.lowerBound.y = MathUtils
+            .randomFloat(rand, 0.0f, 2.0f * worldExtent);
         aabb.upperBound.set(aabb.lowerBound).addLocal(w);
     }
 
@@ -351,8 +354,8 @@ public class DynamicTreeTest extends TestbedTest
                 continue;
             }
             RayCastOutput output = new RayCastOutput();
-            boolean hit = actors[i].aabb.raycast(output, input,
-                    getWorld().getPool());
+            boolean hit = actors[i].aabb
+                .raycast(output, input, getWorld().getPool());
             if (hit)
             {
                 bruteActor = actors[i];

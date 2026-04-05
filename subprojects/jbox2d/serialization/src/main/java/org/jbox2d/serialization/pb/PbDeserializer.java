@@ -141,8 +141,10 @@ public class PbDeserializer implements JbDeserializer
             PbJoint pbJoint = pbWorld.getJoints(i);
             if (isIndependentJoint(pbJoint.getType()))
             {
-                Joint joint = deserializeJoint(world, pbJoint, bodyMap,
-                        jointMap);
+                Joint joint = deserializeJoint(world,
+                    pbJoint,
+                    bodyMap,
+                    jointMap);
                 jointMap.put(cnt, joint);
                 cnt++;
             }
@@ -153,8 +155,10 @@ public class PbDeserializer implements JbDeserializer
             PbJoint pbJoint = pbWorld.getJoints(i);
             if (!isIndependentJoint(pbJoint.getType()))
             {
-                Joint joint = deserializeJoint(world, pbJoint, bodyMap,
-                        jointMap);
+                Joint joint = deserializeJoint(world,
+                    pbJoint,
+                    bodyMap,
+                    jointMap);
                 jointMap.put(cnt, joint);
                 cnt++;
             }
@@ -517,7 +521,7 @@ public class PbDeserializer implements JbDeserializer
                             "Joints for constant volume joint must be distance joints");
                 }
                 def.addBodyAndJoint(argBodyMap.get(body),
-                        (DistanceJoint) djoint);
+                    (DistanceJoint) djoint);
             }
             break;
         }

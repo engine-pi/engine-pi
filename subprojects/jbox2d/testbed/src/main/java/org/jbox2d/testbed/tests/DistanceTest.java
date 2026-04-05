@@ -117,14 +117,14 @@ public class DistanceTest extends TestbedTest
         {
             for (int i = 0; i < polygonA.count; ++i)
             {
-                Transform.mulToOutUnsafe(transformA, polygonA.vertices[i],
-                        v[i]);
+                Transform
+                    .mulToOutUnsafe(transformA, polygonA.vertices[i], v[i]);
             }
             getDebugDraw().drawPolygon(v, polygonA.count, color);
             for (int i = 0; i < polygonB.count; ++i)
             {
-                Transform.mulToOutUnsafe(transformB, polygonB.vertices[i],
-                        v[i]);
+                Transform
+                    .mulToOutUnsafe(transformB, polygonB.vertices[i], v[i]);
             }
             getDebugDraw().drawPolygon(v, polygonB.count, color);
         }

@@ -488,8 +488,10 @@ public abstract class TestbedTest implements ContactListener, ObjectListener,
         textLine = 20;
         if (title != null)
         {
-            debugDraw.drawString(camera.getTransform().getExtents().x, 15,
-                    title, Color3f.WHITE);
+            debugDraw.drawString(camera.getTransform().getExtents().x,
+                15,
+                title,
+                Color3f.WHITE);
             textLine += TEXT_LINE_SPACE;
         }
         if (settings.pause)
@@ -526,17 +528,17 @@ public abstract class TestbedTest implements ContactListener, ObjectListener,
                 : 0;
         debugDraw.setFlags(flags);
         world.setAllowSleep(
-                settings.getSetting(TestbedSettings.AllowSleep).enabled);
+            settings.getSetting(TestbedSettings.AllowSleep).enabled);
         world.setWarmStarting(
-                settings.getSetting(TestbedSettings.WarmStarting).enabled);
+            settings.getSetting(TestbedSettings.WarmStarting).enabled);
         world.setSubStepping(
-                settings.getSetting(TestbedSettings.SubStepping).enabled);
-        world.setContinuousPhysics(settings
-                .getSetting(TestbedSettings.ContinuousCollision).enabled);
+            settings.getSetting(TestbedSettings.SubStepping).enabled);
+        world.setContinuousPhysics(
+            settings.getSetting(TestbedSettings.ContinuousCollision).enabled);
         pointCount = 0;
         world.step(timeStep,
-                settings.getSetting(TestbedSettings.VelocityIterations).value,
-                settings.getSetting(TestbedSettings.PositionIterations).value);
+            settings.getSetting(TestbedSettings.VelocityIterations).value,
+            settings.getSetting(TestbedSettings.PositionIterations).value);
         world.drawDebugData();
         if (timeStep > 0f)
         {
@@ -544,24 +546,28 @@ public abstract class TestbedTest implements ContactListener, ObjectListener,
         }
         debugDraw.drawString(5, textLine, "Engine Info", color4);
         textLine += TEXT_LINE_SPACE;
-        debugDraw.drawString(5, textLine,
-                "Framerate: " + (int) model.getCalculatedFps(), Color3f.WHITE);
+        debugDraw.drawString(5,
+            textLine,
+            "Framerate: " + (int) model.getCalculatedFps(),
+            Color3f.WHITE);
         textLine += TEXT_LINE_SPACE;
         if (settings.getSetting(TestbedSettings.DrawStats).enabled)
         {
             int particleCount = world.getParticleCount();
             int groupCount = world.getParticleGroupCount();
-            debugDraw.drawString(5, textLine,
-                    "bodies/contacts/joints/proxies/particles/groups = "
-                            + world.getBodyCount() + "/"
-                            + world.getContactCount() + "/"
-                            + world.getJointCount() + "/"
-                            + world.getProxyCount() + "/" + particleCount + "/"
-                            + groupCount,
-                    Color3f.WHITE);
+            debugDraw.drawString(5,
+                textLine,
+                "bodies/contacts/joints/proxies/particles/groups = "
+                        + world.getBodyCount() + "/" + world.getContactCount()
+                        + "/" + world.getJointCount() + "/"
+                        + world.getProxyCount() + "/" + particleCount + "/"
+                        + groupCount,
+                Color3f.WHITE);
             textLine += TEXT_LINE_SPACE;
-            debugDraw.drawString(5, textLine,
-                    "World mouse position: " + mouseWorld, Color3f.WHITE);
+            debugDraw.drawString(5,
+                textLine,
+                "World mouse position: " + mouseWorld,
+                Color3f.WHITE);
             textLine += TEXT_LINE_SPACE;
             statsList.clear();
             Profile p = getWorld().getProfile();
@@ -623,8 +629,8 @@ public abstract class TestbedTest implements ContactListener, ObjectListener,
         }
         if (bombSpawning)
         {
-            debugDraw.drawSegment(bombSpawnPoint, bombMousePoint,
-                    Color3f.WHITE);
+            debugDraw
+                .drawSegment(bombSpawnPoint, bombMousePoint, Color3f.WHITE);
         }
         if (settings.getSetting(TestbedSettings.DrawContactPoints).enabled)
         {
@@ -642,27 +648,31 @@ public abstract class TestbedTest implements ContactListener, ObjectListener,
                     debugDraw.drawPoint(point.position, 5f, color2);
                 }
                 if (settings
-                        .getSetting(TestbedSettings.DrawContactNormals).enabled)
+                    .getSetting(TestbedSettings.DrawContactNormals).enabled)
                 {
                     p1.set(point.position);
                     p2.set(point.normal).mulLocal(axisScale).addLocal(p1);
                     debugDraw.drawSegment(p1, p2, color3);
                 }
-                else if (settings.getSetting(
-                        TestbedSettings.DrawContactImpulses).enabled)
+                else if (settings
+                    .getSetting(TestbedSettings.DrawContactImpulses).enabled)
                 {
                     p1.set(point.position);
-                    p2.set(point.normal).mulLocal(impulseScale)
-                            .mulLocal(point.normalImpulse).addLocal(p1);
+                    p2.set(point.normal)
+                        .mulLocal(impulseScale)
+                        .mulLocal(point.normalImpulse)
+                        .addLocal(p1);
                     debugDraw.drawSegment(p1, p2, color5);
                 }
-                if (settings.getSetting(
-                        TestbedSettings.DrawFrictionImpulses).enabled)
+                if (settings
+                    .getSetting(TestbedSettings.DrawFrictionImpulses).enabled)
                 {
                     Vec2.crossToOutUnsafe(point.normal, 1, tangent);
                     p1.set(point.position);
-                    p2.set(tangent).mulLocal(impulseScale)
-                            .mulLocal(point.tangentImpulse).addLocal(p1);
+                    p2.set(tangent)
+                        .mulLocal(impulseScale)
+                        .mulLocal(point.tangentImpulse)
+                        .addLocal(p1);
                     debugDraw.drawSegment(p1, p2, color5);
                 }
             }

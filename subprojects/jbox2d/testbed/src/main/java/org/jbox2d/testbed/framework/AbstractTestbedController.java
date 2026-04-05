@@ -46,16 +46,18 @@ import com.google.common.collect.Lists;
 public abstract class AbstractTestbedController
 {
     private static final Logger log = LoggerFactory
-            .getLogger(AbstractTestbedController.class);
+        .getLogger(AbstractTestbedController.class);
 
     public enum UpdateBehavior
     {
-        UPDATE_CALLED, UPDATE_IGNORED
+        UPDATE_CALLED,
+        UPDATE_IGNORED
     }
 
     public enum MouseBehavior
     {
-        NORMAL, FORCE_Y_FLIP
+        NORMAL,
+        FORCE_Y_FLIP
     }
 
     public static final int DEFAULT_FPS = 60;
@@ -145,8 +147,8 @@ public abstract class AbstractTestbedController
     {
         synchronized (inputQueue)
         {
-            inputQueue.add(
-                    new QueueItem(QueueItemType.MouseUp, screenPos, button));
+            inputQueue
+                .add(new QueueItem(QueueItemType.MouseUp, screenPos, button));
         }
     }
 
@@ -154,8 +156,8 @@ public abstract class AbstractTestbedController
     {
         synchronized (inputQueue)
         {
-            inputQueue.add(
-                    new QueueItem(QueueItemType.MouseDown, screenPos, button));
+            inputQueue
+                .add(new QueueItem(QueueItemType.MouseDown, screenPos, button));
         }
     }
 
@@ -164,7 +166,7 @@ public abstract class AbstractTestbedController
         synchronized (inputQueue)
         {
             inputQueue
-                    .add(new QueueItem(QueueItemType.MouseMove, screenPos, 0));
+                .add(new QueueItem(QueueItemType.MouseMove, screenPos, 0));
         }
     }
 
@@ -172,8 +174,8 @@ public abstract class AbstractTestbedController
     {
         synchronized (inputQueue)
         {
-            inputQueue.add(
-                    new QueueItem(QueueItemType.MouseDrag, screenPos, button));
+            inputQueue
+                .add(new QueueItem(QueueItemType.MouseDrag, screenPos, button));
         }
     }
 
@@ -199,8 +201,9 @@ public abstract class AbstractTestbedController
         viewportHalfWidth = halfWidth;
         if (currTest != null)
         {
-            currTest.getCamera().getTransform().setExtents(halfWidth,
-                    halfHeight);
+            currTest.getCamera()
+                .getTransform()
+                .setExtents(halfWidth, halfHeight);
         }
     }
 
@@ -216,8 +219,9 @@ public abstract class AbstractTestbedController
     private void initTest(TestbedTest test)
     {
         test.init(model);
-        test.getCamera().getTransform().setExtents(viewportHalfWidth,
-                viewportHalfHeight);
+        test.getCamera()
+            .getTransform()
+            .setExtents(viewportHalfWidth, viewportHalfHeight);
         model.getPanel().grabFocus();
     }
 
@@ -520,7 +524,7 @@ public abstract class AbstractTestbedController
             log.error("Error serializing world", e1);
             if (errorHandler != null)
                 errorHandler.serializationError(e1,
-                        "Error serializing the object: " + e1);
+                    "Error serializing the object: " + e1);
             return;
         }
         try
@@ -535,15 +539,15 @@ public abstract class AbstractTestbedController
             log.error("File not found exception while saving", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
-                        "File not found exception while saving: "
-                                + currTest.getFilename());
+                    "File not found exception while saving: "
+                            + currTest.getFilename());
         }
         catch (IOException e)
         {
             log.error("Exception while writing world", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
-                        "Error while writing world: " + e);
+                    "Error while writing world: " + e);
         }
         log.debug("Serialized world to {}", currTest.getFilename());
     }
@@ -562,8 +566,8 @@ public abstract class AbstractTestbedController
             log.error("File not found error while loading", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
-                        "File not found exception while loading: "
-                                + currTest.getFilename());
+                    "File not found exception while loading: "
+                            + currTest.getFilename());
             return;
         }
         catch (UnsupportedObjectException e)
@@ -571,7 +575,7 @@ public abstract class AbstractTestbedController
             log.error("Error deserializing object", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
-                        "Error deserializing the object: " + e);
+                    "Error deserializing the object: " + e);
             return;
         }
         catch (IOException e)
@@ -579,7 +583,7 @@ public abstract class AbstractTestbedController
             log.error("Exception while reading world", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
-                        "Error while reading world: " + e);
+                    "Error while reading world: " + e);
             return;
         }
         log.debug("Deserialized world from {}", currTest.getFilename());
@@ -589,8 +593,14 @@ public abstract class AbstractTestbedController
 
 enum QueueItemType
 {
-    MouseDown, MouseMove, MouseUp, MouseDrag, KeyPressed, KeyReleased,
-    LaunchBomb, Pause
+    MouseDown,
+    MouseMove,
+    MouseUp,
+    MouseDrag,
+    KeyPressed,
+    KeyReleased,
+    LaunchBomb,
+    Pause
 }
 
 class QueueItem

@@ -115,8 +115,13 @@ public class Pulleys extends TestbedTest
             Vec2 anchor2 = new Vec2(10.0f, y + b);
             Vec2 groundAnchor1 = new Vec2(-10.0f, y + b + L);
             Vec2 groundAnchor2 = new Vec2(10.0f, y + b + L);
-            pulleyDef.initialize(body1, body2, groundAnchor1, groundAnchor2,
-                    anchor1, anchor2, 2.0f);
+            pulleyDef.initialize(body1,
+                body2,
+                groundAnchor1,
+                groundAnchor2,
+                anchor1,
+                anchor2,
+                2.0f);
             joint1 = (PulleyJoint) getWorld().createJoint(pulleyDef);
         }
     }

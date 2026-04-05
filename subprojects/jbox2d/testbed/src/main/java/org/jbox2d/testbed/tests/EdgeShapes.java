@@ -211,18 +211,20 @@ public class EdgeShapes extends TestbedTest
         getWorld().raycast(callback, point1, point2);
         if (callback.fixture != null)
         {
-            getDebugDraw().drawPoint(callback.point, 5.0f,
-                    new Color3f(0.4f, 0.9f, 0.4f));
-            getDebugDraw().drawSegment(point1, callback.point,
-                    new Color3f(0.8f, 0.8f, 0.8f));
+            getDebugDraw()
+                .drawPoint(callback.point, 5.0f, new Color3f(0.4f, 0.9f, 0.4f));
+            getDebugDraw().drawSegment(point1,
+                callback.point,
+                new Color3f(0.8f, 0.8f, 0.8f));
             Vec2 head = callback.normal.mul(.5f).addLocal(callback.point);
-            getDebugDraw().drawSegment(callback.point, head,
-                    new Color3f(0.9f, 0.9f, 0.4f));
+            getDebugDraw().drawSegment(callback.point,
+                head,
+                new Color3f(0.9f, 0.9f, 0.4f));
         }
         else
         {
-            getDebugDraw().drawSegment(point1, point2,
-                    new Color3f(0.8f, 0.8f, 0.8f));
+            getDebugDraw()
+                .drawSegment(point1, point2, new Color3f(0.8f, 0.8f, 0.8f));
         }
         if (advanceRay)
         {

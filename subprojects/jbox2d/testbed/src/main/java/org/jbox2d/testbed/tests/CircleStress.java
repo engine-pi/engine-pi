@@ -151,9 +151,9 @@ public class CircleStress extends TestbedTest
             fd.friction = .1f;
             fd.restitution = .9f;
             float xPos = radius * (float) Math
-                    .cos(2f * Math.PI * (i / (float) (numPieces)));
+                .cos(2f * Math.PI * (i / (float) (numPieces)));
             float yPos = radius * (float) Math
-                    .sin(2f * Math.PI * (i / (float) (numPieces)));
+                .sin(2f * Math.PI * (i / (float) (numPieces)));
             cd.p.set(xPos, yPos);
             body.createFixture(fd);
         }

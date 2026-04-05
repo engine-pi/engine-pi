@@ -130,9 +130,9 @@ public class Breakable extends TestbedTest
         Vec2 center1 = body1.getWorldCenter();
         Vec2 center2 = body2.getWorldCenter();
         Vec2 velocity1 = velocity
-                .add(Vec2.cross(angularVelocity, center1.sub(center)));
+            .add(Vec2.cross(angularVelocity, center1.sub(center)));
         Vec2 velocity2 = velocity
-                .add(Vec2.cross(angularVelocity, center2.sub(center)));
+            .add(Vec2.cross(angularVelocity, center2.sub(center)));
         body1.setAngularVelocity(angularVelocity);
         body1.setLinearVelocity(velocity1);
         body2.setAngularVelocity(angularVelocity);

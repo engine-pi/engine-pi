@@ -121,8 +121,10 @@ public class BodyTypes extends TestbedTest
             bd.position.set(-4.0f, 5.0f);
             platform = getWorld().createBody(bd);
             PolygonShape shape = new PolygonShape();
-            shape.setAsBox(0.5f, 4.0f, new Vec2(4.0f, 0.0f),
-                    0.5f * MathUtils.PI);
+            shape.setAsBox(0.5f,
+                4.0f,
+                new Vec2(4.0f, 0.0f),
+                0.5f * MathUtils.PI);
             FixtureDef fd = new FixtureDef();
             fd.shape = shape;
             fd.friction = 0.6f;
@@ -134,8 +136,10 @@ public class BodyTypes extends TestbedTest
             rjd.enableMotor = true;
             getWorld().createJoint(rjd);
             PrismaticJointDef pjd = new PrismaticJointDef();
-            pjd.initialize(ground, platform, new Vec2(0.0f, 5.0f),
-                    new Vec2(1.0f, 0.0f));
+            pjd.initialize(ground,
+                platform,
+                new Vec2(0.0f, 5.0f),
+                new Vec2(1.0f, 0.0f));
             pjd.maxMotorForce = 1000.0f;
             pjd.enableMotor = true;
             pjd.lowerTranslation = -10.0f;

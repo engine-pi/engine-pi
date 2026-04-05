@@ -41,10 +41,10 @@ import javafx.scene.text.Font;
 public class TestPanelJavaFX extends Canvas implements TestbedPanel
 {
     private static final Logger log = LoggerFactory
-            .getLogger(TestPanelJavaFX.class);
+        .getLogger(TestPanelJavaFX.class);
 
     public static final int SCREEN_DRAG_BUTTON = MouseButton.SECONDARY
-            .ordinal();
+        .ordinal();
 
     public static final int INIT_WIDTH = 600;
 
@@ -67,8 +67,10 @@ public class TestPanelJavaFX extends Canvas implements TestbedPanel
         super(INIT_WIDTH, INIT_HEIGHT);
         this.controller = controller;
         updateSize(INIT_WIDTH, INIT_HEIGHT);
-        JavaFXPanelHelper.addHelpAndPanelListeners(this, model, controller,
-                SCREEN_DRAG_BUTTON);
+        JavaFXPanelHelper.addHelpAndPanelListeners(this,
+            model,
+            controller,
+            SCREEN_DRAG_BUTTON);
         ChangeListener<Number> sizeListener = (prop, oldValue, newValue) -> {
             updateSize(getWidth(), getHeight());
         };
@@ -104,8 +106,10 @@ public class TestPanelJavaFX extends Canvas implements TestbedPanel
         GraphicsContext dbg = getDBGraphics();
         dbg.setFill(Color.BLACK);
         Bounds bounds = getBoundsInLocal();
-        dbg.fillRect(bounds.getMinX(), bounds.getMinX(), bounds.getWidth(),
-                bounds.getHeight());
+        dbg.fillRect(bounds.getMinX(),
+            bounds.getMinX(),
+            bounds.getWidth(),
+            bounds.getHeight());
         return true;
     }
 

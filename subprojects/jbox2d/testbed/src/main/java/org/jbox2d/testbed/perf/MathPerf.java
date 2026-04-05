@@ -78,7 +78,7 @@ public class MathPerf extends BasicPerformanceTest
     public void step(int argNum)
     {
         float random = MathUtils.randomFloat(-Float.MAX_VALUE / 3,
-                Float.MAX_VALUE / 3);
+            Float.MAX_VALUE / 3);
         switch (argNum)
         {
         case 0:
@@ -146,14 +146,14 @@ public class MathPerf extends BasicPerformanceTest
     public void runPowTest(float argRandom)
     {
         float a = (float) StrictMath.pow(argRandom,
-                MathUtils.randomFloat(-100, 100));
+            MathUtils.randomFloat(-100, 100));
         aStore += a;
     }
 
     public void runFastPowTest(float argRandom)
     {
         float a = MathUtils.fastPow(argRandom,
-                MathUtils.randomFloat(-100, 100));
+            MathUtils.randomFloat(-100, 100));
         aStore += a;
     }
 
@@ -184,14 +184,14 @@ public class MathPerf extends BasicPerformanceTest
     public void runAtan2Test(float argRandom)
     {
         float a = (float) StrictMath.atan2(argRandom,
-                MathUtils.randomFloat(-10000, 10000));
+            MathUtils.randomFloat(-10000, 10000));
         aStore += a;
     }
 
     public void runFastAtan2Test(float argRandom)
     {
         float a = MathUtils.fastAtan2(argRandom,
-                MathUtils.randomFloat(-10000, 10000));
+            MathUtils.randomFloat(-10000, 10000));
         aStore += a;
     }
 

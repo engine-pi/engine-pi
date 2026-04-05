@@ -101,16 +101,16 @@ public class TestbedSettings
                 1, 100));
         addSetting(new TestbedSetting(AllowSleep, SettingType.ENGINE, true));
         addSetting(new TestbedSetting(WarmStarting, SettingType.ENGINE, true));
-        addSetting(new TestbedSetting(ContinuousCollision, SettingType.ENGINE,
-                true));
+        addSetting(
+            new TestbedSetting(ContinuousCollision, SettingType.ENGINE, true));
         addSetting(new TestbedSetting(SubStepping, SettingType.ENGINE, false));
         addSetting(new TestbedSetting(DrawShapes, SettingType.DRAWING, true));
         addSetting(new TestbedSetting(DrawJoints, SettingType.DRAWING, true));
         addSetting(new TestbedSetting(DrawAABBs, SettingType.DRAWING, false));
-        addSetting(new TestbedSetting(DrawContactPoints, SettingType.DRAWING,
-                false));
-        addSetting(new TestbedSetting(DrawContactNormals, SettingType.DRAWING,
-                false));
+        addSetting(
+            new TestbedSetting(DrawContactPoints, SettingType.DRAWING, false));
+        addSetting(
+            new TestbedSetting(DrawContactNormals, SettingType.DRAWING, false));
         addSetting(new TestbedSetting(DrawContactImpulses, SettingType.DRAWING,
                 false));
         addSetting(new TestbedSetting(DrawFrictionImpulses, SettingType.DRAWING,
@@ -120,7 +120,7 @@ public class TestbedSettings
         addSetting(new TestbedSetting(DrawHelp, SettingType.DRAWING, false));
         addSetting(new TestbedSetting(DrawTree, SettingType.DRAWING, false));
         addSetting(
-                new TestbedSetting(DrawWireframe, SettingType.DRAWING, true));
+            new TestbedSetting(DrawWireframe, SettingType.DRAWING, true));
     }
 
     /**

@@ -67,11 +67,11 @@ public class SinCosTest
         catch (Exception e)
         {
             System.out.println(
-                    "Parameters: <number of tables to use> <most precise table value (smallest)> "
-                            + "<least precise table value> <number of accuracy test iterations> <number of speed test trials>"
-                            + "<number of speed test iterations> <number of overall speed test sets>");
-            System.out.println(
-                    "Sample parameters: 200 .00001 .01 100000 20 5000 2");
+                "Parameters: <number of tables to use> <most precise table value (smallest)> "
+                        + "<least precise table value> <number of accuracy test iterations> <number of speed test trials>"
+                        + "<number of speed test iterations> <number of overall speed test sets>");
+            System.out
+                .println("Sample parameters: 200 .00001 .01 100000 20 5000 2");
             // return;
         }
         System.out.println("Tables: " + numTables);
@@ -169,15 +169,17 @@ public class SinCosTest
         // without lerp
         for (int i = 0; i < numTables; i++)
         {
-            speedResults[i][0] = speedTest(tables[i], speedIterations,
-                    speedTrials);
+            speedResults[i][0] = speedTest(tables[i],
+                speedIterations,
+                speedTrials);
         }
         SinCosTable.LERP_LOOKUP = true;
         // with lerp
         for (int i = 0; i < numTables; i++)
         {
-            speedResults[i][1] = speedTest(tables[i], speedIterations,
-                    speedTrials);
+            speedResults[i][1] = speedTest(tables[i],
+                speedIterations,
+                speedTrials);
         }
         // with the Math calls
         for (int i = 0; i < numTables; i++)
@@ -191,7 +193,7 @@ public class SinCosTest
         if (print)
         {
             System.out.println(
-                    "Speed results, in iterations per second (higher number means faster)");
+                "Speed results, in iterations per second (higher number means faster)");
             String header[] = { "Not lerped", "Lerped", "Difference",
                     "Java Math" };
             String side[] = new String[numTables + 1];
@@ -247,7 +249,7 @@ public class SinCosTest
                 for (int i = 0; i < results.length; i++)
                 {
                     colLength = (formatDecimal(results[i][j], NUM_DECIMALS))
-                            .length() + COLUMN_PADDING;
+                        .length() + COLUMN_PADDING;
                     if (colLength > colLengths[j + 1])
                     {
                         colLengths[j + 1] = colLength;
@@ -269,7 +271,7 @@ public class SinCosTest
                 if (j == -1)
                 {
                     System.out
-                            .print(spaceString(side[i + 1], colLengths[j + 1]));
+                        .print(spaceString(side[i + 1], colLengths[j + 1]));
                 }
                 else
                 {

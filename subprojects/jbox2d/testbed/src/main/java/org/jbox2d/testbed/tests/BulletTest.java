@@ -96,22 +96,22 @@ public class BulletTest extends TestbedTest
         if (Distance.GJK_CALLS > 0)
         {
             addTextLine(String.format(
-                    "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",
-                    Distance.GJK_CALLS,
-                    Distance.GJK_ITERS * 1.0 / (Distance.GJK_CALLS),
-                    Distance.GJK_MAX_ITERS));
+                "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",
+                Distance.GJK_CALLS,
+                Distance.GJK_ITERS * 1.0 / (Distance.GJK_CALLS),
+                Distance.GJK_MAX_ITERS));
         }
         if (TimeOfImpact.toiCalls > 0)
         {
             addTextLine(String.format(
-                    "toi calls = %d, ave toi iters = %3.1f, max toi iters = %d",
-                    TimeOfImpact.toiCalls,
-                    TimeOfImpact.toiIters * 1f / (TimeOfImpact.toiCalls),
-                    TimeOfImpact.toiMaxRootIters));
+                "toi calls = %d, ave toi iters = %3.1f, max toi iters = %d",
+                TimeOfImpact.toiCalls,
+                TimeOfImpact.toiIters * 1f / (TimeOfImpact.toiCalls),
+                TimeOfImpact.toiMaxRootIters));
             addTextLine(String.format(
-                    "ave toi root iters = %3.1f, max toi root iters = %d",
-                    TimeOfImpact.toiRootIters * 1f / (TimeOfImpact.toiCalls),
-                    TimeOfImpact.toiMaxRootIters));
+                "ave toi root iters = %3.1f, max toi root iters = %d",
+                TimeOfImpact.toiRootIters * 1f / (TimeOfImpact.toiCalls),
+                TimeOfImpact.toiMaxRootIters));
         }
         if (getStepCount() % 60 == 0)
         {

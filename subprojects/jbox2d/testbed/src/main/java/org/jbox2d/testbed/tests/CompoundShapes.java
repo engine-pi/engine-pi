@@ -86,8 +86,10 @@ public class CompoundShapes extends TestbedTest
             PolygonShape polygon1 = new PolygonShape();
             polygon1.setAsBox(0.25f, 0.5f);
             PolygonShape polygon2 = new PolygonShape();
-            polygon2.setAsBox(0.25f, 0.5f, new Vec2(0.0f, -0.5f),
-                    0.5f * MathUtils.PI);
+            polygon2.setAsBox(0.25f,
+                0.5f,
+                new Vec2(0.0f, -0.5f),
+                0.5f * MathUtils.PI);
             for (int i = 0; i < 10; ++i)
             {
                 float x = MathUtils.randomFloat(-0.1f, 0.1f);

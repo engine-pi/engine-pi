@@ -257,9 +257,9 @@ public class CharacterCollision extends TestbedTest
         super.step(settings);
         addTextLine("This tests various character collision shapes");
         addTextLine(
-                "Limitation: square and hexagon can snag on aligned boxes.");
+            "Limitation: square and hexagon can snag on aligned boxes.");
         addTextLine(
-                "Feature: edge chains have smooth collision inside and out.");
+            "Feature: edge chains have smooth collision inside and out.");
     }
 
     @Override
