@@ -34,6 +34,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import org.jbox2d.collision.AABB;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.EdgeShape;
 import org.jbox2d.collision.shapes.PolygonShape;
@@ -2414,14 +2415,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Rendert eine Shape von JBox2D nach den gegebenen Voreinstellungen im
-     * {@link Graphics2D}-Objekt.
+     * Zeichnet einen JBox2D-{@link Shape Umriss} nach den gegebenen
+     * Voreinstellungen im {@link Graphics2D}-Objekt.
      *
      * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
      * übernimmt nur das direkte rendern.
      *
-     * @param shape Die Shape, die zu rendern ist.
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param shape Der Umriss, der einzuzeichnen ist.
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden
+     *     soll.Umriss
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
      * @hidden
@@ -2430,6 +2432,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     private static void renderShape(Shape shape, Graphics2D g,
             double pixelPerMeter, Actor actor)
     {
+        // Die Methode ist statisch, weil sie in einem synchronized-Block
+        // verwendet wird. Deshalb brauchen wir als Eingabeparameter auch den
+        // actor.
         if (shape == null)
         {
             return;
@@ -2552,6 +2557,21 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Internal
     public abstract void render(Graphics2D g, double pixelPerMeter);
 
+    private final void renderAABB(Graphics2D g, double pixelPerMeter)
+    {
+        AABB aabb = physics.aabb();
+        Color oldColor = g.getColor();
+        // Setzt die Rahmenfarbe auf einen etwas dunklere Komplementärfarbe
+        g.setColor(ColorUtil.changeBrightness(complementaryColor(), -0.05));
+
+        Bounds b = Bounds.fromAABB(aabb);
+        g.drawRect(b.xLeft(pixelPerMeter),
+            -b.yTop(pixelPerMeter),
+            b.width(pixelPerMeter),
+            b.height(pixelPerMeter));
+        g.setColor(oldColor);
+    }
+
     /**
      * Die Basiszeichenmethode.
      *
@@ -2574,8 +2594,15 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         {
             double rotation = physics.rotation();
             Vector anchor = physics.anchor();
+
+            if (Controller.isDebug() && config.debug.renderAABBs())
+            {
+                renderAABB(g, pixelPerMeter);
+            }
+
             // ____ Pre-Render ____
             AffineTransform oldTransform = g.getTransform();
+
             g.rotate(-Math.toRadians(rotation),
                 anchor.x() * pixelPerMeter,
                 -anchor.y() * pixelPerMeter);

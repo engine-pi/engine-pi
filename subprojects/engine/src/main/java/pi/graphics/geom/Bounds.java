@@ -20,6 +20,9 @@
  */
 package pi.graphics.geom;
 
+import org.jbox2d.collision.AABB;
+import org.jbox2d.common.Vec2;
+
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
@@ -398,6 +401,23 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * Gibt die <b>skalierte und gerundete linke x-Koordinate als Ganzzahl</b>
+     * aus.
+     *
+     * @param scaleFactor Der <b>Skalierungsfaktor</b>, mit dem die x-Koordinate
+     *     multipliziert wird.
+     *
+     * @return Die <b>skalierte und gerundete linke x-Koordinate als
+     *     Ganzzahl</b>.
+     *
+     * @since 0.45.0
+     */
+    public int xLeft(double scaleFactor)
+    {
+        return (int) Math.round(x * scaleFactor);
+    }
+
+    /**
      * Die <b>x</b>-Koordinate der <b>rechten</b> Ecken.
      *
      * <p>
@@ -446,6 +466,23 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * Gibt die <b>skalierte und gerundete obere y-Koordinate als Ganzzahl</b>
+     * aus.
+     *
+     * @param scaleFactor Der <b>Skalierungsfaktor</b>, mit dem die obere
+     *     y-Koordinate multipliziert wird.
+     *
+     * @return Die <b>skalierte und gerundete obere y-Koordinate als
+     *     Ganzzahl</b>.
+     *
+     * @since 0.45.0
+     */
+    public int yTop(double scaleFactor)
+    {
+        return (int) Math.round(yTop() * scaleFactor);
+    }
+
+    /**
      * Die <b>y</b>-Koordinate der <b>untern</b> Ecken.
      *
      * <p>
@@ -478,6 +515,22 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * Gibt die <b>skalierte und gerundete Breite als Ganzzahl</b> aus.
+     *
+     * @param scaleFactor Der <b>Skalierungsfaktor</b>, mit dem die Breite
+     *     multipliziert wird.
+     *
+     * @return Die <b>skalierte und gerundete Breite als Ganzzahl</b> als
+     *     Ganzzahl.
+     *
+     * @since 0.45.0
+     */
+    public int width(double scaleFactor)
+    {
+        return (int) Math.round(width * scaleFactor);
+    }
+
+    /**
      * Gibt die <b>Höhe</b> aus.
      *
      * @return Die <b>Höhe</b> dieses {@link Bounds}-Rechtecks.
@@ -495,6 +548,22 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * Gibt die <b>skalierte und gerundete Höhe als Ganzzahl</b> aus.
+     *
+     * @param scaleFactor Der <b>Skalierungsfaktor</b>, mit dem die Höhe
+     *     multipliziert wird.
+     *
+     * @return Die <b>skalierte und gerundete Höhe als Ganzzahl</b> als
+     *     Ganzzahl.
+     *
+     * @since 0.45.0
+     */
+    public int height(double scaleFactor)
+    {
+        return (int) Math.round(height * scaleFactor);
+    }
+
+    /**
      * Gibt die exakte <b>Position</b> der linken unteren Ecke dieses
      * {@link Bounds}-Rechtecks aus.
      *
@@ -506,6 +575,14 @@ public record Bounds(double x, double y, double width, double height)
     public Vector position()
     {
         return new Vector(x, y);
+    }
+
+    public static Bounds fromAABB(AABB aabb)
+    {
+        Vec2 lowerLeft = aabb.lowerBound;
+        Vec2 upperRight = aabb.upperBound;
+        return new Bounds(lowerLeft.x, lowerLeft.y, upperRight.x - lowerLeft.x,
+                upperRight.y - lowerLeft.y);
     }
 
     /**

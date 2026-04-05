@@ -62,7 +62,7 @@ public class NullHandler implements PhysicsHandler
 
     @Override
     @Getter
-    public Vector center()
+    public AABB aabb()
     {
         AABB bounds = null;
         AABB shapeBounds = new AABB();
@@ -82,7 +82,14 @@ public class NullHandler implements PhysicsHandler
                 bounds.set(shapeBounds);
             }
         }
-        return Vector.of(bounds.getCenter());
+        return bounds;
+    }
+
+    @Override
+    @Getter
+    public Vector center()
+    {
+        return Vector.of(aabb().getCenter());
     }
 
     /**

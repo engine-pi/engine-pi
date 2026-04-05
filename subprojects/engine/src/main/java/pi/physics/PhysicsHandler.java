@@ -23,6 +23,7 @@ package pi.physics;
 import java.util.List;
 import java.util.function.Supplier;
 
+import org.jbox2d.collision.AABB;
 import org.jbox2d.dynamics.Body;
 import pi.actor.Actor;
 import pi.annotations.Internal;
@@ -62,6 +63,8 @@ public interface PhysicsHandler
      */
     @Internal
     void moveBy(Vector v);
+
+    AABB aabb();
 
     /**
      * Gibt den <b>Gewichtsmittelpunkt</b> dieses {@link Actor}-Objekts aus.

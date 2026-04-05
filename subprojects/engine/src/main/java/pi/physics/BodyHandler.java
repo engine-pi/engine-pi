@@ -29,6 +29,7 @@ import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.Fixture;
 import org.jbox2d.dynamics.contacts.ContactEdge;
+
 import pi.actor.Actor;
 import pi.annotations.Internal;
 import pi.event.CollisionEvent;
@@ -37,6 +38,7 @@ import pi.graphics.geom.Vector;
 /**
  * Ein <code>Body-Handler</code> kümmert sich um die <i>physikalische
  * Darstellung</i> eines {@link Actor}-Objekts.
+ *
  * <p>
  * Er übernimmt zwei wesentliche Aufgaben:
  * </p>
@@ -44,6 +46,7 @@ import pi.graphics.geom.Vector;
  * <ul>
  * <li>Die Kontrolle und Steuerung innerhalb der <b>Physics-Engine</b> aus Sicht
  * des respektiven {@link Actor}-Objekts.</li>
+ *
  * <li>Die Speicherung der <i>räumlichen Eigenschaften</i> (Position und
  * Rotation) des respektiven {@link Actor}-Objekts.</li>
  * </ul>
@@ -101,6 +104,28 @@ public class BodyHandler implements PhysicsHandler
         }
     }
 
+    /**
+     * Berechnet den achsenparallelen Begrenzungsrahmen (axis-aligned bounding
+     * box (AABB)) dieses Körpers.
+     *
+     * @return Der achsenparallele Begrenzungsrahmen (axis-aligned bounding box
+     *     (AABB)) dieses Körpers.
+     */
+    public AABB aabb()
+    {
+        AABB bodyBounds = new AABB();
+        bodyBounds.lowerBound.x = Float.MAX_VALUE;
+        bodyBounds.lowerBound.y = Float.MAX_VALUE;
+        bodyBounds.upperBound.x = -Float.MAX_VALUE;
+        bodyBounds.upperBound.y = -Float.MAX_VALUE;
+        for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
+        {
+            // TODO Include chain shapes (more than one child)
+            bodyBounds.combine(bodyBounds, fixture.getAABB(0));
+        }
+        return bodyBounds;
+    }
+
     @Override
     public Vector center()
     {
@@ -108,7 +133,7 @@ public class BodyHandler implements PhysicsHandler
         {
             return Vector.of(body.getWorldCenter());
         }
-        return Vector.of(calculateBodyAABB().getCenter());
+        return Vector.of(aabb().getCenter());
     }
 
     @Override
@@ -426,28 +451,6 @@ public class BodyHandler implements PhysicsHandler
         return body.isFixedRotation();
     }
 
-    /**
-     * Berechnet den achsenparallelen Begrenzungsrahmen (axis-aligned bounding
-     * box (AABB)) dieses Körpers.
-     *
-     * @return Der achsenparallele Begrenzungsrahmen (axis-aligned bounding box
-     *     (AABB)) dieses Körpers.
-     */
-    private AABB calculateBodyAABB()
-    {
-        AABB bodyBounds = new AABB();
-        bodyBounds.lowerBound.x = Float.MAX_VALUE;
-        bodyBounds.lowerBound.y = Float.MAX_VALUE;
-        bodyBounds.upperBound.x = -Float.MAX_VALUE;
-        bodyBounds.upperBound.y = -Float.MAX_VALUE;
-        for (Fixture fixture = body.fixtureList; fixture != null; fixture = fixture.next)
-        {
-            // TODO Include chain shapes (more than one child)
-            bodyBounds.combine(bodyBounds, fixture.getAABB(0));
-        }
-        return bodyBounds;
-    }
-
     @Override
     public boolean isGrounded()
     {
@@ -456,7 +459,7 @@ public class BodyHandler implements PhysicsHandler
             throw new RuntimeException(
                     "Der Steh-Test ist nur für dynamische Objekte definiert");
         }
-        AABB bodyBounds = calculateBodyAABB();
+        AABB bodyBounds = aabb();
         // Test-AABB: Should be a rectangle right below the body
         // Minimal height, width of the body
         AABB testAABB = new AABB();
