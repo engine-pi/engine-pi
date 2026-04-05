@@ -48,7 +48,7 @@
         <!-- <module>subprojects/jbox2d/jni-broadphase</module> -->
         <module>subprojects/jbox2d/library</module>
         <!-- Requires sudo apt install protobuf-compiler -->
-        <!-- <module>subprojects/jbox2d/serialization</module> -->
+        <module>subprojects/jbox2d/serialization</module>
         <module>subprojects/jbox2d/testbed</module>
         <module>subprojects/jbox2d/testbed-javafx</module>
         <module>subprojects/jbox2d/testbed-jogl</module>

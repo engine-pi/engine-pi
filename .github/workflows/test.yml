@@ -26,5 +26,8 @@ jobs:
       - name: Sync the assets with some resources folder
         run: just assets_sync_resources
 
+      - name: Install protobuf-compiler for jbox2d serialization module
+        run: sudo apt install -y sudo apt install protobuf-compiler
+
       - name: Run the tests using Maven
         run: mvn test
