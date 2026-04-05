@@ -25,11 +25,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.EdgeShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.PolygonShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
+import org.jbox2d.collision.shapes.CircleShape;
+import org.jbox2d.collision.shapes.EdgeShape;
+import org.jbox2d.collision.shapes.PolygonShape;
+import org.jbox2d.collision.shapes.Shape;
+import org.jbox2d.common.Vec2;
 import pi.graphics.geom.Vector;
 
 /**

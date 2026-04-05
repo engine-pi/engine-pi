@@ -44,6 +44,12 @@
         <module>subprojects/games/pacman</module>
         <module>subprojects/games/tetris</module>
         <module>subprojects/build-tools</module>
+        <module>subprojects/jbox2d/jni-broadphase</module>
+        <module>subprojects/jbox2d/library</module>
+        <module>subprojects/jbox2d/serialization</module>
+        <module>subprojects/jbox2d/testbed</module>
+        <module>subprojects/jbox2d/testbed-javafx</module>
+        <module>subprojects/jbox2d/testbed-jogl</module>
     </modules>
 
     <dependencies>

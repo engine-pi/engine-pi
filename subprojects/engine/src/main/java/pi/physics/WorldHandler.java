@@ -31,18 +31,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
-import de.pirckheimer_gymnasium.jbox2d.callbacks.ContactImpulse;
-import de.pirckheimer_gymnasium.jbox2d.callbacks.ContactListener;
-import de.pirckheimer_gymnasium.jbox2d.callbacks.QueryCallback;
-import de.pirckheimer_gymnasium.jbox2d.collision.AABB;
-import de.pirckheimer_gymnasium.jbox2d.collision.Manifold;
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Body;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.BodyDef;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.Fixture;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.World;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.Contact;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.contacts.ContactEdge;
+import org.jbox2d.callbacks.ContactImpulse;
+import org.jbox2d.callbacks.ContactListener;
+import org.jbox2d.callbacks.QueryCallback;
+import org.jbox2d.collision.AABB;
+import org.jbox2d.collision.Manifold;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.Fixture;
+import org.jbox2d.dynamics.World;
+import org.jbox2d.dynamics.contacts.Contact;
+import org.jbox2d.dynamics.contacts.ContactEdge;
 import pi.Layer;
 import pi.actor.Actor;
 import pi.annotations.Getter;
@@ -576,7 +576,7 @@ public class WorldHandler implements ContactListener
      * @hidden
      */
     @Internal
-    public static <JointType extends de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint, Wrapper extends Joint<JointType>> Wrapper createJoint(
+    public static <JointType extends org.jbox2d.dynamics.joints.Joint, Wrapper extends Joint<JointType>> Wrapper createJoint(
             Actor a, Actor b, JointBuilder<JointType> jointBuilder,
             Wrapper wrapper)
     {

@@ -24,8 +24,8 @@ import static pi.Controller.colorScheme;
 
 import java.awt.Graphics2D;
 
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.CircleShape;
-import de.pirckheimer_gymnasium.jbox2d.collision.shapes.Shape;
+import org.jbox2d.collision.shapes.CircleShape;
+import org.jbox2d.collision.shapes.Shape;
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;

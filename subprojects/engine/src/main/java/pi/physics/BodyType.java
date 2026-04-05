@@ -142,15 +142,15 @@ public enum BodyType
      * @hidden
      */
     @Internal
-    public de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType toBox2D()
+    public org.jbox2d.dynamics.BodyType toBox2D()
     {
         return switch (this)
         {
-        case STATIC -> de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.STATIC;
+        case STATIC -> org.jbox2d.dynamics.BodyType.STATIC;
         case DYNAMIC, SENSOR, PARTICLE ->
-            de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.DYNAMIC;
+            org.jbox2d.dynamics.BodyType.DYNAMIC;
         case KINEMATIC ->
-            de.pirckheimer_gymnasium.jbox2d.dynamics.BodyType.KINEMATIC;
+            org.jbox2d.dynamics.BodyType.KINEMATIC;
         };
     }
 

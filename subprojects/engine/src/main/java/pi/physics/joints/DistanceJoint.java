@@ -35,11 +35,11 @@ package pi.physics.joints;
  * @see WeldJoint
  */
 public class DistanceJoint extends
-        Joint<de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint>
+        Joint<org.jbox2d.dynamics.joints.DistanceJoint>
 {
     @Override
     protected void updateCustomProperties(
-            de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint joint)
+            org.jbox2d.dynamics.joints.DistanceJoint joint)
     {
         // nothing to do
     }

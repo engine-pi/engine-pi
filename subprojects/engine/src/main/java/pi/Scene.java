@@ -54,12 +54,12 @@ import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.physics.WorldHandler;
 import pi.resources.color.ColorContainer;
-import de.pirckheimer_gymnasium.jbox2d.common.Vec2;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.DistanceJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.Joint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.PrismaticJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RevoluteJoint;
-import de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.joints.DistanceJoint;
+import org.jbox2d.dynamics.joints.Joint;
+import org.jbox2d.dynamics.joints.PrismaticJoint;
+import org.jbox2d.dynamics.joints.RevoluteJoint;
+import org.jbox2d.dynamics.joints.RopeJoint;
 import static pi.Controller.colors;
 
 /**

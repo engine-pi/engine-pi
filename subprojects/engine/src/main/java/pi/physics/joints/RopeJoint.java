@@ -34,11 +34,11 @@ package pi.physics.joints;
  * @see WeldJoint
  */
 public final class RopeJoint
-        extends Joint<de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint>
+        extends Joint<org.jbox2d.dynamics.joints.RopeJoint>
 {
     @Override
     protected void updateCustomProperties(
-            de.pirckheimer_gymnasium.jbox2d.dynamics.joints.RopeJoint joint)
+            org.jbox2d.dynamics.joints.RopeJoint joint)
     {
         // nothing to do
     }
