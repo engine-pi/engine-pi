@@ -28,22 +28,22 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JPanel;
 
 import org.jbox2d.testbed.framework.AbstractTestbedController;
 import org.jbox2d.testbed.framework.TestbedModel;
 import org.jbox2d.testbed.framework.TestbedPanel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author Daniel Murphy
  */
 public class TestPanelJ2D extends JPanel implements TestbedPanel
 {
-    private static final Logger log = LoggerFactory
-        .getLogger(TestPanelJ2D.class);
+    private static final Logger log = Logger
+        .getLogger(AbstractTestbedController.class.getName());
 
     public static final int SCREEN_DRAG_BUTTON = 3;
 
@@ -99,7 +99,7 @@ public class TestPanelJ2D extends JPanel implements TestbedPanel
     {
         if (dbImage == null)
         {
-            log.debug("dbImage is null, creating a new one");
+            log.fine("dbImage is null, creating a new one");
             if (panelWidth <= 0 || panelHeight <= 0)
             {
                 return false;
@@ -107,7 +107,7 @@ public class TestPanelJ2D extends JPanel implements TestbedPanel
             dbImage = createImage(panelWidth, panelHeight);
             if (dbImage == null)
             {
-                log.error("dbImage is still null, ignoring render call");
+                log.severe("dbImage is still null, ignoring render call");
                 return false;
             }
             dbg = (Graphics2D) dbImage.getGraphics();
@@ -132,7 +132,7 @@ public class TestPanelJ2D extends JPanel implements TestbedPanel
         }
         catch (AWTError e)
         {
-            log.error("Graphics context error", e);
+            log.log(Level.SEVERE, "Graphics context error", e);
         }
     }
 }

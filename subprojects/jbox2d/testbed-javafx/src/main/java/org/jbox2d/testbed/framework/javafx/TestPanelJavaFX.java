@@ -21,8 +21,6 @@ package org.jbox2d.testbed.framework.javafx;
 import org.jbox2d.testbed.framework.AbstractTestbedController;
 import org.jbox2d.testbed.framework.TestbedModel;
 import org.jbox2d.testbed.framework.TestbedPanel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -40,8 +38,6 @@ import javafx.scene.text.Font;
 @SuppressWarnings("serial")
 public class TestPanelJavaFX extends Canvas implements TestbedPanel
 {
-    private static final Logger log = LoggerFactory
-        .getLogger(TestPanelJavaFX.class);
 
     public static final int SCREEN_DRAG_BUTTON = MouseButton.SECONDARY
         .ordinal();

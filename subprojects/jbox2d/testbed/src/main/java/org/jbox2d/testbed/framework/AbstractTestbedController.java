@@ -24,15 +24,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.jbox2d.common.IViewportTransform;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 import org.jbox2d.serialization.SerializationResult;
 import org.jbox2d.serialization.UnsupportedObjectException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
@@ -45,8 +44,8 @@ import com.google.common.collect.Lists;
  */
 public abstract class AbstractTestbedController
 {
-    private static final Logger log = LoggerFactory
-        .getLogger(AbstractTestbedController.class);
+    private static final Logger log = Logger
+        .getLogger(AbstractTestbedController.class.getName());
 
     public enum UpdateBehavior
     {
@@ -442,7 +441,7 @@ public abstract class AbstractTestbedController
         }
         else
         {
-            log.warn("Animation is already animating.");
+            log.warning("Animation is already animating.");
         }
     }
 
@@ -521,7 +520,7 @@ public abstract class AbstractTestbedController
         }
         catch (UnsupportedObjectException e1)
         {
-            log.error("Error serializing world", e1);
+            log.log(Level.SEVERE, "Error serializing world", e1);
             if (errorHandler != null)
                 errorHandler.serializationError(e1,
                     "Error serializing the object: " + e1);
@@ -536,7 +535,7 @@ public abstract class AbstractTestbedController
         }
         catch (FileNotFoundException e)
         {
-            log.error("File not found exception while saving", e);
+            log.log(Level.SEVERE, "Error serializing world", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
                     "File not found exception while saving: "
@@ -544,12 +543,12 @@ public abstract class AbstractTestbedController
         }
         catch (IOException e)
         {
-            log.error("Exception while writing world", e);
+            log.log(Level.SEVERE, "Exception while writing world", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
                     "Error while writing world: " + e);
         }
-        log.debug("Serialized world to {}", currTest.getFilename());
+        log.log(Level.FINE, "Serialized world to {0}", currTest.getFilename());
     }
 
     private void _load()
@@ -563,7 +562,7 @@ public abstract class AbstractTestbedController
         }
         catch (FileNotFoundException e)
         {
-            log.error("File not found error while loading", e);
+            log.log(Level.SEVERE, "File not found error while loading", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
                     "File not found exception while loading: "
@@ -572,7 +571,7 @@ public abstract class AbstractTestbedController
         }
         catch (UnsupportedObjectException e)
         {
-            log.error("Error deserializing object", e);
+            log.log(Level.SEVERE, "Error deserializing object", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
                     "Error deserializing the object: " + e);
@@ -580,13 +579,15 @@ public abstract class AbstractTestbedController
         }
         catch (IOException e)
         {
-            log.error("Exception while reading world", e);
+            log.log(Level.SEVERE, "Exception while reading world", e);
             if (errorHandler != null)
                 errorHandler.serializationError(e,
                     "Error while reading world: " + e);
             return;
         }
-        log.debug("Deserialized world from {}", currTest.getFilename());
+        log.log(Level.FINE,
+            "Deserialized world from {0}",
+            currTest.getFilename());
         currTest.init(w, true);
     }
 }
