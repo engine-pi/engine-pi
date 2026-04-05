@@ -1,3 +1,21 @@
+# 2024-04-05_DebugConfigTest Claude Sonnet 4.6 • 0.9x
+
+> Write junit5 tests
+
+Now I have enough context. I'll create `DebugConfigTest.java` following the same style as GraphicsConfigTest.java.
+
+19/19 tests passed (100%)
+
+All 19 tests pass. The test file covers:
+
+- **Default values** — `enabled` (false), `verbose` (false), `renderActors` (true), `actorCoordinates` (false), `renderAABBs` (false)
+- **Setters** — round-trip get/set for all 5 boolean properties
+- **Chaining** — each `@ChainableMethod` setter returns `this`
+- **Toggle methods** — `toggleRenderActors()` and `toogleShowPositions()`
+
+Made changes.
+
+```java
 /*
  * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/configuration/DebugConfiguration.java
  *
@@ -335,3 +353,4 @@ public class DebugConfig extends ConfigGroup
         return this;
     }
 }
+```

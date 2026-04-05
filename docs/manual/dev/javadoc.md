@@ -53,7 +53,7 @@ Mehrzeilig:
 
 | englisch                         | deutsch                                                |
 | -------------------------------- | ------------------------------------------------------ |
-| AABB (axis-aligned bounding box) | achsenparallelen Begrenzungsrahmen                     |
+| AABB (axis-aligned bounding box) | achsenparalleler Begrenzungsrahmen                     |
 | Actor                            | Figur                                                  |
 | BodyType                         | Verhalten einer Figur in der physikalischen Simulation |
 | Bounds                           | Schranken, Abgrenzung                                  |
@@ -64,6 +64,7 @@ Mehrzeilig:
 | Handler                          | Steuerungsklasse                                       |
 | Joint                            | Verbindung                                             |
 | Layer                            | Ebene                                                  |
+| LineCap                          | Linienabschluss                                        |
 | Listener                         | Beobachter                                             |
 | Loop                             | Schleife                                               |
 | Offset                           | Verzug                                                 |
