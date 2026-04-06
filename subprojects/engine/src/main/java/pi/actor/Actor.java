@@ -32,6 +32,7 @@ import java.awt.geom.AffineTransform;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -72,6 +73,8 @@ import pi.event.MouseClickListener;
 import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
+import pi.graphics.boxes.TextBlockBox;
+import pi.graphics.boxes.TextBox;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -2694,6 +2697,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             // Transform zurücksetzen
             g.setTransform(oldTransform);
         }
+
     }
 
     protected ToStringFormatter toStringFormatter()
@@ -2702,5 +2706,24 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         formatter.append("x", x());
         formatter.append("y", y());
         return formatter;
+    }
+
+    /* labels */
+
+    private List<Label> labels = new CopyOnWriteArrayList<>();
+
+    /**
+     * Eine Beschriftung für eine Figur.
+     *
+     * @since 0.45.0
+     */
+    public class Label
+    {
+        private TextBlockBox box;
+
+        public Label(Object content)
+        {
+            box = new TextBlockBox(content);
+        }
     }
 }
