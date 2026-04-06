@@ -623,6 +623,9 @@ public class Layer implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * @param width Die Breite des Fensters in Pixel.
+     * @param height Die Höhe des Fensters in Pixel.
+     *
      * @hidden
      */
     @Internal
@@ -632,14 +635,15 @@ public class Layer implements KeyStrokeListenerRegistration,
         {
             return;
         }
-        Vector position = camera.focus();
+
+        Vector cameraFocus = camera.focus();
         double rotation = -camera.rotation();
         g.setClip(0, 0, width, height);
         g.translate(width / 2, height / 2);
         double pixelPerMeter = calculatePixelPerMeter();
         g.rotate(Math.toRadians(rotation) * parallaxRotation, 0, 0);
-        g.translate((-position.x() * parallaxX) * pixelPerMeter,
-            (position.y() * parallaxY) * pixelPerMeter);
+        g.translate((-cameraFocus.x() * parallaxX) * pixelPerMeter,
+            (cameraFocus.y() * parallaxY) * pixelPerMeter);
         // TODO: Calculate optimal bounds
         int size = Math.max(width, height);
         boolean needsSort = false;
@@ -647,8 +651,8 @@ public class Layer implements KeyStrokeListenerRegistration,
         for (Actor actor : actors)
         {
             actor.renderBasic(g,
-                new Bounds(position.x() - size, position.y() - size, size * 2,
-                        size * 2),
+                new Bounds(cameraFocus.x() - size, cameraFocus.y() - size,
+                        size * 2, size * 2),
                 pixelPerMeter);
             if (!needsSort)
             {
@@ -662,7 +666,7 @@ public class Layer implements KeyStrokeListenerRegistration,
         }
         if (needsSort)
         {
-            this.actors.sort(ACTOR_COMPARATOR);
+            actors.sort(ACTOR_COMPARATOR);
         }
     }
 

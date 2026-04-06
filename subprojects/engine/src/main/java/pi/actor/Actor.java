@@ -20,6 +20,7 @@
  */
 package pi.actor;
 
+import static pi.Controller.colorScheme;
 import static pi.Controller.colors;
 import static pi.Controller.config;
 
@@ -442,7 +443,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * Die Farbe der Figur.
      */
-    protected Color color;
+    protected Color color = colorScheme.get().red();
 
     /**
      * Gibt die <b>Farbe</b> der Figur zurück.
@@ -2450,9 +2451,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         }
         // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
         // gewählt.
-        // Hat die Figure keine Farbe, so wird der Umriss rot gezeichnet.
-        g.setColor(actor.color != null ? actor.complementaryColor()
-                : colors.getSafe("red"));
+        g.setColor(actor.complementaryColor());
         if (shape instanceof PolygonShape polygonShape)
         {
             Vec2[] vec2s = polygonShape.getVertices();
@@ -2557,6 +2556,22 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Internal
     public abstract void render(Graphics2D g, double pixelPerMeter);
 
+    /**
+     * Zeichnet die Axis-Aligned Bounding Box (AABB) dieses Actors als Rechteck
+     * in den angegebenen {@link Graphics2D}-Kontext.
+     *
+     * <p>
+     * Die AABB wird aus der Physik-Komponente ermittelt, in
+     * Bildschirmkoordinaten umgerechnet und mit einer leicht abgedunkelten
+     * Komplementärfarbe dargestellt. Anschließend wird die zuvor gesetzte
+     * Zeichenfarbe wiederhergestellt.
+     *
+     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
+     * @param pixelPerMeter Umrechnungsfaktor von Weltkoordinaten (Meter) zu
+     *     Pixeln
+     *
+     * @since 0.45.0
+     */
     private final void renderAABB(Graphics2D g, double pixelPerMeter)
     {
         AABB aabb = physics.aabb();
@@ -2580,7 +2595,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * </p>
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param r Das Bounds, dass die Kameraperspektive repräsentiert.<br>
+     * @param cameraBounds Das Bounds, dass die Kameraperspektive
+     *     repräsentiert.<br>
      *     Hierbei soll zunächst getestet werden, ob das Objekt innerhalb der
      *     Kamera liegt, und erst dann gezeichnet werden.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
@@ -2588,9 +2604,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public final void renderBasic(Graphics2D g, Bounds r, double pixelPerMeter)
+    public final void renderBasic(Graphics2D g, Bounds cameraBounds,
+            double pixelPerMeter)
     {
-        if (visible && this.isWithinBounds(r))
+        if (visible && isWithinBounds(cameraBounds))
         {
             double rotation = physics.rotation();
             Vector anchor = physics.anchor();
@@ -2608,6 +2625,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 -anchor.y() * pixelPerMeter);
             g.translate(anchor.x() * pixelPerMeter,
                 -anchor.y() * pixelPerMeter);
+
             // Durchsichtigkeit
             Composite composite;
             if (opacity != 1)
