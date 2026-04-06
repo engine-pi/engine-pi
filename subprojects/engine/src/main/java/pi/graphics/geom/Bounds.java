@@ -498,6 +498,15 @@ public record Bounds(double x, double y, double width, double height)
     }
 
     /**
+     * @since 0.45.0
+     */
+    @API
+    public int yBottom(double scaleFactor)
+    {
+        return round(y * scaleFactor);
+    }
+
+    /**
      * Gibt die <b>Breite</b> aus.
      *
      * @return Die <b>Breite</b> dieses {@link Bounds}-Rechtecks.
@@ -527,7 +536,7 @@ public record Bounds(double x, double y, double width, double height)
      */
     public int width(double scaleFactor)
     {
-        return (int) Math.round(width * scaleFactor);
+        return round(width * scaleFactor);
     }
 
     /**
@@ -560,7 +569,7 @@ public record Bounds(double x, double y, double width, double height)
      */
     public int height(double scaleFactor)
     {
-        return (int) Math.round(height * scaleFactor);
+        return round(height * scaleFactor);
     }
 
     /**
@@ -583,6 +592,12 @@ public record Bounds(double x, double y, double width, double height)
         Vec2 upperRight = aabb.upperBound;
         return new Bounds(lowerLeft.x, lowerLeft.y, upperRight.x - lowerLeft.x,
                 upperRight.y - lowerLeft.y);
+    }
+
+    private int round(double value)
+    {
+        return (int) Math.round(value);
+
     }
 
     /**

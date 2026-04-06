@@ -49,6 +49,7 @@ import org.jbox2d.dynamics.joints.PrismaticJointDef;
 import org.jbox2d.dynamics.joints.RevoluteJointDef;
 import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
+
 import pi.Controller;
 import pi.Layer;
 import pi.animation.AnimationMode;
@@ -74,7 +75,6 @@ import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
 import pi.graphics.boxes.TextBlockBox;
-import pi.graphics.boxes.TextBox;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -2580,6 +2580,22 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @Internal
     public abstract void render(Graphics2D g, double pixelPerMeter);
 
+    private void renderLabels(Graphics2D g, double pixelPerMeter)
+    {
+        if (!labels.isEmpty())
+        {
+            AABB aabb = physics.aabb();
+            Bounds b = Bounds.fromAABB(aabb);
+
+            for (Label label : labels)
+            {
+                label.box.x(b.xLeft(pixelPerMeter))
+                    .y(-b.yBottom(pixelPerMeter))
+                    .render(g);
+            }
+        }
+    }
+
     /**
      * Zeichnet die Axis-Aligned Bounding Box (AABB) dieses Actors als Rechteck
      * in den angegebenen {@link Graphics2D}-Kontext.
@@ -2641,6 +2657,11 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 renderAABB(g, pixelPerMeter);
             }
 
+            if (!labels.isEmpty())
+            {
+                renderLabels(g, pixelPerMeter);
+            }
+
             // ____ Pre-Render ____
             AffineTransform oldTransform = g.getTransform();
 
@@ -2675,7 +2696,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             {
                 synchronized (this)
                 {
-                    // Visualisiere die Shape
+                    // Visualisiere den Umriss
                     Body body = physics.body();
                     if (body != null)
                     {
@@ -2711,6 +2732,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /* labels */
 
     private List<Label> labels = new CopyOnWriteArrayList<>();
+
+    public Actor label(Object content)
+    {
+        labels.add(new Label(content));
+        return this;
+    }
 
     /**
      * Eine Beschriftung für eine Figur.

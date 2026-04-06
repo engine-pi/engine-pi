@@ -20,57 +20,77 @@ package pi.actor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import pi.Scene;
-import pi.annotations.API;
-import pi.graphics.geom.Vector;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/GroupDemo.java
 
 /**
  * Eine <b>Gruppe</b> bestehend aus mehreren {@link Actor}-Objekten.
  *
+ * <p>
+ * Über eine Gruppe lassen sich mehrere Akteure gemeinsam verwalten, z. B.
+ * gleichzeitig bewegen oder einer Szene hinzufügen. Die Gruppe implementiert
+ * {@link Iterable}, sodass sie direkt in einer {@code for}-Schleife verwendet
+ * werden kann.
+ * </p>
+ *
+ * @param <T> der Typ der enthaltenen {@link Actor}-Objekte
+ *
  * @author Josef Friedrich
  */
-public class Group
+public class Group<T extends Actor> implements Iterable<T>
 {
-    private final List<Actor> actors;
+    private final List<T> actors;
 
-    private Scene scene;
-
-    public Group(Actor... actors)
+    /**
+     * Erstellt eine neue Gruppe mit den angegebenen {@link Actor}-Objekten.
+     *
+     * @param actors Die Figuren, aus denen die Gruppe besteht.
+     */
+    @SafeVarargs
+    public Group(T... actors)
     {
-        this.actors = new ArrayList<Actor>(Arrays.asList(actors));
+        this.actors = new ArrayList<>(Arrays.asList(actors));
     }
 
-    public Group(Scene scene)
+    /**
+     * Gibt einen Iterator über alle {@link Actor Figuren} dieser Gruppe zurück.
+     *
+     * <p>
+     * Die zurückgegebene Liste ist schreibgeschützt; Änderungen an der Gruppe
+     * müssen über die Methoden der Gruppe selbst vorgenommen werden.
+     * </p>
+     *
+     * @return Ein Iterator über alle Figuren der Gruppe.
+     *
+     * @since 0.45.0
+     */
+    @Override
+    public Iterator<T> iterator()
     {
-        this();
-        this.scene = scene;
+        return Collections.unmodifiableList(actors).iterator();
     }
 
-    public void addtoScene(Scene scene)
+    /**
+     * <b>Fügt</b> alle {@link Actor Figuren} dieser Gruppe der angegebenen
+     * <b>{@link Scene} hinzu</b>.
+     *
+     * @param scene Die Szene, der die Figuren hinzugefügt werden sollen.
+     *
+     * @return diese Gruppe (für Method-Chaining)
+     *
+     * @since 0.45.0
+     */
+    public Group<T> addToScene(Scene scene)
     {
-        this.scene = scene;
-        actors.forEach((actor) -> scene.add(actor));
-    }
-
-    public void add(Actor... actors)
-    {
-        this.actors.addAll(Arrays.asList(actors));
-        if (scene != null)
+        for (T actor : actors)
         {
-            this.actors.forEach((actor) -> scene.add(actor));
+            scene.add(actor);
         }
-    }
-
-    @API
-    public final void moveBy(Vector vector)
-    {
-        actors.forEach((actor) -> actor.moveBy(vector));
-    }
-
-    public final void moveBy(double dX, double dY)
-    {
-        moveBy(new Vector(dX, dY));
+        return this;
     }
 }

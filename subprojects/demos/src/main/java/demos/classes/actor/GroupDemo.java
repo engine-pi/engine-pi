@@ -23,21 +23,35 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Scene;
 import pi.Circle;
+import pi.actor.Actor;
 import pi.actor.Group;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
+/**
+ * Demonstriert die Klasse {@link Group}.
+ *
+ * @author Josef Friedrich
+ */
 public class GroupDemo extends Scene implements KeyStrokeListener
 {
-    private final Group group;
+    private final Group<Actor> group;
 
     public GroupDemo()
     {
-        Circle circle = new Circle(3);
-        circle.anchor(3, 3);
-        Rectangle rectangle = new Rectangle(5, 1);
-        group = new Group(this);
-        group.add(circle, rectangle);
+        Circle leftEye = new Circle(3);
+        leftEye.center(-5, 5);
+
+        Circle rightEye = new Circle(3);
+        rightEye.center(5, 5);
+
+        Rectangle nose = new Rectangle(1, 5);
+        nose.center(0, 2);
+
+        Rectangle mouth = new Rectangle(5, 1);
+        mouth.center(0, -4);
+
+        group = new Group<>(leftEye, rightEye, nose, mouth).addToScene(this);
     }
 
     @Override
@@ -45,15 +59,16 @@ public class GroupDemo extends Scene implements KeyStrokeListener
     {
         switch (e.getKeyCode())
         {
-        case KeyEvent.VK_UP -> group.moveBy(0, 1);
-        case KeyEvent.VK_DOWN -> group.moveBy(0, -1);
-        case KeyEvent.VK_RIGHT -> group.moveBy(1, 0);
-        case KeyEvent.VK_LEFT -> group.moveBy(-1, 0);
+        case KeyEvent.VK_UP -> group.forEach(actor -> actor.moveBy(0, 1));
+        case KeyEvent.VK_DOWN -> group.forEach(actor -> actor.moveBy(0, -1));
+        case KeyEvent.VK_RIGHT -> group.forEach(actor -> actor.moveBy(1, 0));
+        case KeyEvent.VK_LEFT -> group.forEach(actor -> actor.moveBy(-1, 0));
         }
     }
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         Controller.start(new GroupDemo());
     }
 }

@@ -66,5 +66,4 @@ public class ActorOpacityDemo extends Scene
         Controller.instantMode(false);
         Controller.start(new ActorOpacityDemo(), 1200, 400);
     }
-
 }
