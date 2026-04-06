@@ -15,7 +15,7 @@
     <name>jbox2d-library</name>
 
     <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
-    <url>https://github.com/engine-pi/jbox2d</url>
+    <url>https://engine-pi.github.io/engine-pi</url>
     <build>
         <pluginManagement>
             <plugins>

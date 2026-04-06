@@ -15,7 +15,7 @@
 
     <name>Demos</name>
     <description>A collection of small demos to show the capabilities of the Engine Pi.</description>
-    <url>https://github.com/engine-pi/engine-pi</url>
+    <url>https://engine-pi.github.io/engine-pi</url>
 
     <dependencies>
         <dependency>

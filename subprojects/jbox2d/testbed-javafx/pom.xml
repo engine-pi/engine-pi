@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
     <name>jbox2d-testbed-javafx</name>
     <description>The testbed for JBox2D, a 2d java physics engine, ported from the C++ Box2d engine.</description>
-    <url>https://github.com/engine-pi/jbox2d</url>
+    <url>https://engine-pi.github.io/engine-pi</url>
 
     <properties>
         <mainClass>org.jbox2d.testbed.TestbedMain</mainClass>

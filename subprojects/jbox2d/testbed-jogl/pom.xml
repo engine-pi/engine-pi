@@ -10,8 +10,8 @@
     <artifactId>jbox2d-testbed-jogl</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <description>Project for making a jogl panel for the testbed</description>
-    <url>http://code.google.com/p/jbox2d/</url>
+    <description>Project for making a jogl (Java Bindings for OpenGL) panel for the testbed</description>
+    <url>https://engine-pi.github.io/engine-pi</url>
     <dependencies>
         <dependency>
             <groupId>de.pirckheimer-gymnasium</groupId>

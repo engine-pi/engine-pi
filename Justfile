@@ -1,6 +1,6 @@
 
 # The default recipe runs 'git pull', syncs the assets, runs 'mvn package' and generate the mkdocs site
-default: pull assets check_file_links package mkdocs_build
+default: pull assets install_cli check_file_links package mkdocs_build
 
 # Run 'mvn deploy'
 deploy:
@@ -38,6 +38,9 @@ format:
 install_build_tools:
 	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
+
+install_cli:
+	mvn install --projects de.pirckheimer-gymnasium:engine-pi-cli
 
 install: install_build_tools
 	mvn install

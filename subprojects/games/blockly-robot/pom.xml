@@ -14,6 +14,8 @@
 
     <name>Blockly Robot</name>
     <description>An attempt to reprogram the training tasks on jwinf.de (youth computer science competition) in Java.</description>
+    <url>https://engine-pi.github.io/engine-pi</url>
+
     <dependencies>
 
         <dependency>

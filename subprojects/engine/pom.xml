@@ -15,7 +15,7 @@
 
     <name>Engine</name>
     <description>A beginner-orientated 2D game engine with German documentation.</description>
-    <url>https://github.com/engine-pi/engine-pi</url>
+    <url>https://engine-pi.github.io/engine-pi</url>
 
     <dependencies>
         <dependency>

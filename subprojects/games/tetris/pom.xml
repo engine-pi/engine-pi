@@ -15,6 +15,7 @@
 
     <name>Tetris</name>
     <description>Replica of the game Tetris on the classic Gameboy using the Engine Pi.</description>
+    <url>https://engine-pi.github.io/engine-pi</url>
 
     <dependencies>
         <dependency>
