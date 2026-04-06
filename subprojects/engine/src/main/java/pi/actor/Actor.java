@@ -55,6 +55,7 @@ import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
 import pi.animation.interpolation.LinearDouble;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
@@ -392,21 +393,32 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /* opacity */
 
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/ActorOpacityDemo.java
+
     /**
-     * Opacity = Durchsichtigkeit des Objekts
-     * <p>
+     * Die <b>Durchsichtigkeit</b> (Deckkraft) der Figur.
+     *
      * <ul>
-     * <li><code>0.0</code> entspricht einem komplett durchsichtigen Bild.</li>
-     * <li><code>1.0</code> entspricht einem undurchsichtigem Bild.</li>
+     * <li>{@code 0.0} entspricht einer komplett durchsichtigen (transparenten)
+     * Figur.</li>
+     * <li>{@code 1.0} entspricht einer undurchsichtigen Figur.</li>
      * </ul>
      */
     private double opacity = 1;
 
     /**
-     * Gibt die aktuelle Durchsichtigkeit des {@link Actor}-Objekts zurück.
+     * Gibt die <b>Durchsichtigkeit</b> (Deckkraft) der Figur zurück.
      *
-     * @return Gibt die aktuelle Durchsichtigkeit des {@link Actor}-Objekts
-     *     zurück.
+     * <ul>
+     * <li>{@code 0.0} entspricht einer komplett durchsichtigen (transparenten)
+     * Figur.</li>
+     * <li>{@code 1.0} entspricht einer undurchsichtigen Figur.</li>
+     * </ul>
+     *
+     * @return Die <b>Durchsichtigkeit</b> (Deckkraft) der Figur.
+     *
+     * @see #opacity(double)
      */
     @API
     @Getter
@@ -416,24 +428,33 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Durchsichtigkeit des Objekts.
+     * Setzt die <b>Durchsichtigkeit</b> (Deckkraft) der Figur.
      *
      * @param opacity
      *     <ul>
-     *     <li><code>0.0</code> entspricht einem komplett durchsichtigen
-     *     (transparenten) Objekt.</li>
-     *     <li><code>1.0</code> entspricht einem undurchsichtigen Objekt.</li>
+     *     <li>{@code 0.0} entspricht einer komplett durchsichtigen
+     *     (transparenten) Figur.</li>
+     *     <li>{@code 1.0} entspricht einer undurchsichtigen Figur.</li>
      *     </ul>
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
      *     aneinander gekettete Setter festgelegt werden können, z.B.
      *     {@code actor.color(..).postion(..)}.
+     *
+     * @see #opacity()
      */
     @API
     @Setter
+    @ChainableMethod
     public final Actor opacity(double opacity)
     {
+        if (opacity < 0 || opacity > 1)
+        {
+            throw new IllegalArgumentException(
+                    "Die Durchsichtigkeit (opacity) der Figur darf nur Werte von einschließlich 0 bis 1 annehmen, nicht: "
+                            + opacity());
+        }
         this.opacity = opacity;
         return this;
     }

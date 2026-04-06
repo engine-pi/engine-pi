@@ -11,7 +11,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-35ffd6f676c55b0126ac01a3b0351a161abbf025) by Josef Friedrich).
 - Add animated gifs ([daf7ff2](https://github.com/engine-pi/jbox2d/commit/daf7ff2ee13a101109616875a3f5b1d6040f8536) by Josef Friedrich).
 - Add some permalinks ([55c5fc1](https://github.com/engine-pi/jbox2d/commit/55c5fc17c2fa352e494dae26e5c3505d643948f2) by Josef Friedrich).
 

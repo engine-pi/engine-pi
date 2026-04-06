@@ -68,6 +68,7 @@ Mehrzeilig:
 | Listener                         | Beobachter                                             |
 | Loop                             | Schleife                                               |
 | Offset                           | Verzug                                                 |
+| Opacity                          | Durchsichtigkeit (Deckkraft)                           |
 | PrismaticJoint                   | Federverbindung                                        |
 | Rectangle                        | Rechteck                                               |
 | RevoluteJoint                    | Gelenkverbindung                                       |
