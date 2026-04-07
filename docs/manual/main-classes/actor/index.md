@@ -11,7 +11,7 @@ verschiedener Figurenarten (z.B.
 {{ javadoc('pi.Circle') }}). Alle
 diese Spezialisierungen sind abgeleitet von der Oberklasse
 {{ javadoc('pi.actor.Actor') }}.
-Die API-Dokumentation des Pakets {{ package('pi.actor') }}
+Die API-Dokumentation des Pakets {{ javadoc('pi.actor') }}
 listet alle verfügbaren Actor-Klassen auf.
 
 {{ import_admonition('pi.actor.Actor') }}

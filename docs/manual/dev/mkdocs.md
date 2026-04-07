@@ -39,18 +39,6 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ---
 
-#### `attribute(class_path, attribute, link_title?)`
-
-```jinja
-{% raw %}
-{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}
-{% endraw %}
-```
-
-{{ attribute('pi.Controller', 'colors', 'statisches Attribute colors') }}
-
----
-
 #### `demo(relpath, hash?, lines?)`
 
 ```jinja

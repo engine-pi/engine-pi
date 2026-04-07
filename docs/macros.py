@@ -250,9 +250,6 @@ def _get_class_name(class_path: str) -> str:
     return class_path.split(".")[-1]
 
 
-
-
-
 class CodeSample:
     java_file: "JavaFile"
 
@@ -388,14 +385,6 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_java_class, "java_class")
 
-    def macro_package(package_path: str, link_title: str | None = None) -> str:
-        if link_title is None:
-            link_title = package_path
-
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(package_path)}/package-summary.html)"
-
-    env.macro(macro_package, "package")
-
     def macro_methods(class_path: str, methods: list[str]) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
@@ -407,22 +396,6 @@ def define_env(env: Any) -> None:
         return output
 
     env.macro(macro_methods, "methods")
-
-    def macro_attribute(
-        class_path: str, attribute: str, link_title: str | None = None
-    ) -> str:  # pyright: ignore[reportUnusedFunction]
-        """
-        :param class_path: For example ``pi.Resources``
-        :param attribute: For example ``color``
-        :return: ``https://engine-pi.github.io/javadocs/pi/Resources.html#colors``
-        """
-
-        if link_title is None:
-            link_title = _get_class_name(class_path)
-
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html#{attribute})"
-
-    env.macro(macro_attribute, "attribute")
 
     def macro_demo(
         relpath: str,
