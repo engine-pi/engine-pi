@@ -23,16 +23,20 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 import pi.Scene;
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/GroupDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/group/GroupDemo.java
 
 /**
  * Eine <b>Gruppe</b> bestehend aus mehreren {@link Actor}-Objekten.
  *
  * <p>
- * Über eine Gruppe lassen sich mehrere Akteure gemeinsam verwalten, z. B.
+ * Über eine Gruppe lassen sich mehrere Figure gemeinsam verwalten, z.B.
  * gleichzeitig bewegen oder einer Szene hinzufügen. Die Gruppe implementiert
  * {@link Iterable}, sodass sie direkt in einer {@code for}-Schleife verwendet
  * werden kann.
@@ -85,11 +89,67 @@ public class Group<T extends Actor> implements Iterable<T>
      *
      * @since 0.45.0
      */
+    @API
+    @ChainableMethod
     public Group<T> addToScene(Scene scene)
     {
         for (T actor : actors)
         {
             scene.add(actor);
+        }
+        return this;
+    }
+
+    /**
+     * <b>Führt</b> eine <b>Aktion</b> für <b>alle</b> {@link Actor Figuren}
+     * aus.
+     *
+     * Da die Klasse {@link Group} die Schnittstelle {@link Iterable}
+     * implementiert, gibt es bereits eine {@code forEach}-Methode. Diese
+     * Methode ist jedoch {@link ChainableMethod verkettbar}.
+     *
+     * @param action Die Aktion, die für jede passende Figur ausgeführt wird.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @ChainableMethod
+    public Group<T> forEachActor(Consumer<? super T> action)
+    {
+        Objects.requireNonNull(action,
+            "Der Eingabeparameter 'action' darf nicht null sein.");
+        for (T actor : actors)
+        {
+            action.accept(actor);
+        }
+        return this;
+    }
+
+    /**
+     * <b>Führt</b> eine <b>Aktion</b> für alle {@link Actor Figuren} aus, die
+     * Instanzen der angegebenen <b>Unterklasse</b> sind.
+     *
+     * @param <S> Die gesuchte Unterklasse.
+     * @param clazz Die Unterklasse, nach der gefiltert werden soll.
+     * @param action Die Aktion, die für jede passende Figur ausgeführt wird.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @ChainableMethod
+    public <S extends T> Group<T> forEach(Class<S> clazz,
+            Consumer<? super S> action)
+    {
+        Objects.requireNonNull(clazz,
+            "Der Eingabeparameter 'clazz' darf nicht null sein.");
+        Objects.requireNonNull(action,
+            "Der Eingabeparameter 'action' darf nicht null sein.");
+        for (T actor : actors)
+        {
+            if (clazz.isInstance(actor))
+            {
+                action.accept(clazz.cast(actor));
+            }
         }
         return this;
     }

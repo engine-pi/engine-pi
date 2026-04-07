@@ -16,8 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor;
+package demos.docs.main_classes.actor.group;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
@@ -28,10 +29,16 @@ import pi.actor.Group;
 import pi.Rectangle;
 import pi.event.KeyStrokeListener;
 
+import static pi.Controller.colors;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/group.md
+
 /**
  * Demonstriert die Klasse {@link Group}.
  *
  * @author Josef Friedrich
+ *
+ * @since 0.45.0
  */
 public class GroupDemo extends Scene implements KeyStrokeListener
 {
@@ -39,6 +46,13 @@ public class GroupDemo extends Scene implements KeyStrokeListener
 
     public GroupDemo()
     {
+        info().title("Demonstriert die Klasse Group")
+            .help(
+                "Cursor: Die Pfeiltasten (Cursor-Tasten) bewegen alle Figuren.\n"
+                        + "c: Färbt die Kreise (Circle)\n"
+                        + "r: Färbt die Rechtecke")
+            .disable();
+        backgroundColor("#cccccc");
         Circle leftEye = new Circle(3);
         leftEye.center(-5, 5);
 
@@ -52,17 +66,27 @@ public class GroupDemo extends Scene implements KeyStrokeListener
         mouth.center(0, -4);
 
         group = new Group<>(leftEye, rightEye, nose, mouth).addToScene(this);
+
+        for (Actor actor : group)
+        {
+            System.out.println(actor);
+        }
     }
 
     @Override
     public void onKeyDown(KeyEvent e)
     {
+        Color color = colors.random();
         switch (e.getKeyCode())
         {
         case KeyEvent.VK_UP -> group.forEach(actor -> actor.moveBy(0, 1));
         case KeyEvent.VK_DOWN -> group.forEach(actor -> actor.moveBy(0, -1));
         case KeyEvent.VK_RIGHT -> group.forEach(actor -> actor.moveBy(1, 0));
         case KeyEvent.VK_LEFT -> group.forEach(actor -> actor.moveBy(-1, 0));
+        case KeyEvent.VK_R ->
+            group.forEach(Rectangle.class, actor -> actor.color(color));
+        case KeyEvent.VK_C ->
+            group.forEach(Circle.class, actor -> actor.color(color));
         }
     }
 
