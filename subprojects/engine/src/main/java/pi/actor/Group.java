@@ -29,6 +29,9 @@ import java.util.function.Consumer;
 import pi.Scene;
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
+import pi.annotations.Getter;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/group.md
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/group/GroupDemo.java
 
@@ -48,7 +51,6 @@ import pi.annotations.ChainableMethod;
  */
 public class Group<T extends Actor> implements Iterable<T>
 {
-    private final List<T> actors;
 
     /**
      * Erstellt eine neue Gruppe mit den angegebenen {@link Actor}-Objekten.
@@ -59,6 +61,27 @@ public class Group<T extends Actor> implements Iterable<T>
     public Group(T... actors)
     {
         this.actors = new ArrayList<>(Arrays.asList(actors));
+    }
+
+    /* actors */
+
+    /**
+     * Eine Liste, die alle {@link Actor Figuren} enthält.
+     */
+    private final List<T> actors;
+
+    /**
+     * Gibt die Liste zurück, die alle {@link Actor Figuren} enthält.
+     *
+     * @return Die Liste, die alle {@link Actor Figuren} enthält.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Getter
+    public List<T> actors()
+    {
+        return actors;
     }
 
     /**
@@ -77,6 +100,62 @@ public class Group<T extends Actor> implements Iterable<T>
     public Iterator<T> iterator()
     {
         return Collections.unmodifiableList(actors).iterator();
+    }
+
+    /**
+     * <b>Fügt</b> eine {@link Actor Figur} zur Gruppe hinzu.
+     *
+     * @param actor Die Figur, die hinzugefügt werden soll.
+     *
+     * @return diese Gruppe (für Method-Chaining)
+     */
+    @API
+    @ChainableMethod
+    public Group<T> add(T actor)
+    {
+        Objects.requireNonNull(actor,
+            "Der Eingabeparameter 'actor' darf nicht null sein.");
+        actors.add(actor);
+        return this;
+    }
+
+    /**
+     * <b>Entfernt</b> eine {@link Actor Figur} aus der Gruppe.
+     *
+     * @param actor Die Figur, die entfernt werden soll.
+     *
+     * @return diese Gruppe (für Method-Chaining)
+     */
+    @API
+    @ChainableMethod
+    public Group<T> remove(T actor)
+    {
+        Objects.requireNonNull(actor,
+            "Der Eingabeparameter 'actor' darf nicht null sein.");
+        actors.remove(actor);
+        return this;
+    }
+
+    /**
+     * Gibt die <b>Anzahl</b> der enthaltenen {@link Actor Figuren} zurück.
+     *
+     * @return Die Anzahl der Figuren in dieser Gruppe.
+     */
+    @API
+    public int size()
+    {
+        return actors.size();
+    }
+
+    /**
+     * Prüft, ob diese Gruppe <b>keine</b> {@link Actor Figuren} enthält.
+     *
+     * @return {@code true}, wenn die Gruppe leer ist, sonst {@code false}.
+     */
+    @API
+    public boolean isEmpty()
+    {
+        return actors.isEmpty();
     }
 
     /**

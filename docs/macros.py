@@ -50,6 +50,7 @@ subprojects = {
     "tetris": "games/tetris",
     "pacman": "games/pacman",
     "cli": "cli",
+    "java": "",
 }
 
 
@@ -84,6 +85,61 @@ def _convert_class_path_to_subproject_path(class_path: str, check: bool = True) 
             f"The class path “{class_path_orig}” has no corresponding Java file in “{subproject_path}”!"
         )
     return subproject_path
+
+
+def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None) -> str:
+    """:param class_path: for example
+      ``pi.actor.Actor#center(double,double)``
+      ``java.lang.String#indexOf(java.lang.String,int)``
+      ``java.lang.Runnable#run()``
+
+
+        https://engine-pi.github.io/javadocs/subprojects/engine/src/main/java/pi/actor/Group.java.html
+    :return:
+      ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#center(double,double)`` or
+      ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#indexOf(java.lang.String,int)``
+      ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html#run()``
+    """
+
+    class_path: str = ""
+    """for example ``pi.actor.Actor``
+    """
+
+    member = ""
+    """for example ``#center(double,double)``
+    """
+
+    if "#" in spec:
+        class_path = spec.split("#")[0]
+        member = "#" + spec.split("#")[1]
+    else:
+        class_path = spec
+
+    is_java = False
+    if class_path.startswith("java"):
+        is_java = True
+
+    class_relpath = _convert_class_path_to_relpath(class_path, check=not is_java)
+
+    class_name = _get_class_name(class_path)
+
+    if class_name == class_name.lower():
+        class_relpath = class_relpath + "/package-summary"
+
+    if link_title is None:
+        link_title = class_name + member
+
+    url_prefix: str
+    if is_java:
+        url_prefix = ORACLE_URL_PREFIX
+    else:
+        url_prefix = JAVADOC_URL_PREFIX
+
+    module = ""
+    if class_path.startswith("java"):
+        module = "java.base/"
+
+    return f":fontawesome-brands-java:[{link_title}]({url_prefix}/{module}{class_relpath}.html{member})"
 
 
 def _convert_class_path_to_relpath(class_path: str, check: bool = True) -> str:
@@ -287,6 +343,15 @@ class JavaFile:
 
 
 def define_env(env: Any) -> None:
+
+    def macro_javadoc(
+        spec: str,
+        link_title: str | None = None,
+    ) -> str:
+        return _convert_class_path_to_javadoc_url(spec=spec, link_title=link_title)
+
+    env.macro(macro_javadoc, "javadoc")
+
     def macro_class(class_path: str, link_title: str | None = None) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
@@ -380,7 +445,7 @@ def define_env(env: Any) -> None:
         url = _github_code_url(
             relpath, blob, lines=lines, start_line=start_line, end_line=end_line
         )
-        return f"<small class=\"demo-link\">Zum Java-Code: <a href=\"{url}\" title=\"Die Quelldatei des Code-Beispiels auf Github aufrufen.\" target=\"_blank\">demos/{relpath}</a></small>"
+        return f'<small class="demo-link">Zum Java-Code: <a href="{url}" title="Die Quelldatei des Code-Beispiels auf Github aufrufen." target="_blank">demos/{relpath}</a></small>'
 
     env.macro(macro_demo, "demo")
 
