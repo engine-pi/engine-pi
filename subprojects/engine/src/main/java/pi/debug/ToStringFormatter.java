@@ -25,55 +25,13 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Setter;
 import pi.util.TextUtil;
-
-/**
- * Repräsentiert ein Feld mit Name, Wert und optionaler Einheit für die
- * formatierte Ausgabe.
- *
- * @param name Der Name des Feldes.
- * @param value Der Wert des Feldes ({@code String}, {@code Double}, Color oder
- *     andere Typen)
- * @param unit Die optionale Einheit des Feldes (kann {@code null} sein)
- */
-record Field(String name, Object value, String unit)
-{
-    private String formattedValue()
-    {
-        if (value instanceof String)
-        {
-            return "\"" + ((String) value).replace("\n", "\\n ") + "\"";
-        }
-        else if (value instanceof Double)
-        {
-            return TextUtil.roundNumber(value);
-        }
-        else if (value instanceof Color)
-        {
-            return String.valueOf(value).replace("java.awt.", "");
-        }
-        return String.valueOf(value);
-    }
-
-    /**
-     * Formatiert die Ausgabe mit dem Namen, dem formatierten Wert und optional
-     * der Einheit. Der Wert wird in blauer ANSI-Farbe dargestellt.
-     *
-     * @return die formatierte Zeichenkette im Format {@code name=wert[einheit]}
-     */
-    public String format()
-    {
-        String output = name + "=" + AnsiColor.blue(formattedValue());
-        if (unit != null)
-        {
-            output += unit;
-        }
-        return output;
-    }
-}
 
 // Ähnliche Klasse im Apache Commons Lang Paket:
 // org.apache.commons.lang3.builder.ToStringBuilder
@@ -339,5 +297,52 @@ public class ToStringFormatter
     public static String clean(String toString)
     {
         return AnsiColor.remove(toString).replaceAll("@[0-9a-f]+", "");
+    }
+
+    /**
+     * Repräsentiert ein <b>Feld</b> mit Name, Wert und optionaler Einheit für
+     * die formatierte Ausgabe.
+     *
+     * @param name Der Name des Feldes.
+     * @param value Der Wert des Feldes ({@code String}, {@code Double}, Color
+     *     oder andere Typen)
+     * @param unit Die optionale Einheit des Feldes (kann {@code null} sein)
+     */
+    public record Field(@NonNull String name, Object value,
+            @Nullable String unit)
+    {
+        private String formattedValue()
+        {
+            if (value instanceof String)
+            {
+                return "\"" + ((String) value).replace("\n", "\\n ") + "\"";
+            }
+            else if (value instanceof Double)
+            {
+                return TextUtil.roundNumber(value);
+            }
+            else if (value instanceof Color)
+            {
+                return String.valueOf(value).replace("java.awt.", "");
+            }
+            return String.valueOf(value);
+        }
+
+        /**
+         * Formatiert die Ausgabe mit dem Namen, dem formatierten Wert und
+         * optional der Einheit. Der Wert wird in blauer ANSI-Farbe dargestellt.
+         *
+         * @return die formatierte Zeichenkette im Format
+         *     {@code name=wert[einheit]}
+         */
+        public String format()
+        {
+            String output = name + "=" + AnsiColor.blue(formattedValue());
+            if (unit != null)
+            {
+                output += unit;
+            }
+            return output;
+        }
     }
 }

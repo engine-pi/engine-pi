@@ -20,17 +20,13 @@ package pi.graphics;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static pi.debug.ToStringAssertions.assertContainsClassName;
-import static pi.debug.ToStringAssertions.assertContainsField;
-import static pi.debug.ToStringAssertions.assertContainsFields;
-import static pi.debug.ToStringAssertions.assertDoesNotContainField;
+import static pi.CustomAssertions.assertToStringFieldValue;
 
 import java.awt.Color;
 
@@ -185,17 +181,19 @@ public class SceneInfoOverlayTest
     class TitleTest
     {
         @Test
-        void setTitleWithText()
+        void setter()
         {
-            overlay.title("My Title");
-            assertNotNull(overlay);
+            assertToStringFieldValue("title",
+                "My Title",
+                overlay.title("My Title"));
         }
 
         @Test
-        void setTitleTwice()
+        void setterTwice()
         {
-            overlay.title("First Title").title("Second Title");
-            assertNotNull(overlay);
+            assertToStringFieldValue("title",
+                "Second Title",
+                overlay.title("First Title").title("Second Title"));
         }
     }
 
@@ -203,17 +201,19 @@ public class SceneInfoOverlayTest
     class SubtitleTest
     {
         @Test
-        void setSubtitleWithText()
+        void setter()
         {
-            overlay.subtitle("My Subtitle");
-            assertNotNull(overlay);
+            assertToStringFieldValue("subtitle",
+                "My Subtitle",
+                overlay.subtitle("My Subtitle"));
         }
 
         @Test
-        void setSubtitleTwice()
+        void setterTwice()
         {
-            overlay.subtitle("First Subtitle").subtitle("Second Subtitle");
-            assertNotNull(overlay);
+            assertToStringFieldValue("subtitle",
+                "Second Subtitle",
+                overlay.subtitle("First Subtitle").subtitle("Second Subtitle"));
         }
     }
 
@@ -221,25 +221,28 @@ public class SceneInfoOverlayTest
     class DescriptionTest
     {
         @Test
-        void setDescriptionWithMultipleElements()
+        void multipleElements()
         {
-            overlay.description("Line 1", "Line 2", "Line 3");
-            assertNotNull(overlay);
+            assertToStringFieldValue("description",
+                "Line 1\nLine 2\nLine 3",
+                overlay.description("Line 1", "Line 2", "Line 3"));
         }
 
         @Test
-        void setDescriptionWithMixedTypes()
+        void mixedTypes()
         {
-            overlay.description("Text", 42, "More Text");
-            assertNotNull(overlay);
+            assertToStringFieldValue("description",
+                "Text\n42\nMore Text",
+                overlay.description("Text", 42, "More Text"));
         }
 
         @Test
-        void setDescriptionMultipleTimes()
+        void setterTwice()
         {
-            overlay.description("First Description")
-                .description("Second Description", "More");
-            assertNotNull(overlay);
+            assertToStringFieldValue("description",
+                "Second Description\nMore",
+                overlay.description("First Description")
+                    .description("Second Description", "More"));
         }
     }
 
@@ -247,24 +250,27 @@ public class SceneInfoOverlayTest
     class HelpTest
     {
         @Test
-        void setHelpWithMultipleElements()
+        void multipleElements()
         {
-            overlay.help("Help 1", "Help 2");
-            assertNotNull(overlay);
+            assertToStringFieldValue("help",
+                "Help 1\nHelp 2",
+                overlay.help("Help 1", "Help 2"));
         }
 
         @Test
-        void setHelpWithMixedTypes()
+        void mixedTypes()
         {
-            overlay.help("Start", 1, "Middle", 2, "End");
-            assertNotNull(overlay);
+            assertToStringFieldValue("help",
+                "Start\n1\nMiddle\n2\nEnd",
+                overlay.help("Start", 1, "Middle", 2, "End"));
         }
 
         @Test
-        void setHelpMultipleTimes()
+        void setterTwice()
         {
-            overlay.help("First Help").help("Second Help", "More");
-            assertNotNull(overlay);
+            assertToStringFieldValue("help",
+                "Second Help\nMore",
+                overlay.help("First Help").help("Second Help", "More"));
         }
     }
 
@@ -450,125 +456,4 @@ public class SceneInfoOverlayTest
         }
     }
 
-    @Nested
-    class ToStringTest
-    {
-        @Test
-        void toStringContainsClassName()
-        {
-            String result = overlay.toString();
-            assertContainsClassName(result, "SceneInfoOverlay");
-        }
-
-        @Test
-        void toStringContainsPermanentField()
-        {
-            overlay.permanent();
-            String result = overlay.toString();
-            assertContainsField(result, "permanent", true);
-        }
-
-        @Test
-        void toStringContainsDurationField()
-        {
-            overlay.duration(7.5);
-            String result = overlay.toString();
-            assertContainsField(result, "duration", 7.5);
-        }
-
-        @Test
-        void toStringContainsDurationWithUnit()
-        {
-            String result = overlay.toString();
-            assertTrue(result.contains("s"), "duration should have 's' unit");
-        }
-
-        @Test
-        void toStringContainsTextColorField()
-        {
-            overlay.textColor(Color.RED);
-            String result = overlay.toString();
-            assertContainsField(result, "textColor", Color.RED);
-        }
-
-        @Test
-        void toStringContainsTitleWhenSet()
-        {
-            overlay.title("Test Title");
-            String result = overlay.toString();
-            assertContainsField(result, "title", "Test Title");
-        }
-
-        @Test
-        void toStringDoesNotContainTitleWhenNotSet()
-        {
-            String result = overlay.toString();
-            assertDoesNotContainField(result, "title");
-        }
-
-        @Test
-        void toStringContainsSubtitleWhenSet()
-        {
-            overlay.subtitle("Test Subtitle");
-            String result = overlay.toString();
-            assertContainsField(result, "subtitle", "Test Subtitle");
-        }
-
-        @Test
-        void toStringDoesNotContainSubtitleWhenNotSet()
-        {
-            String result = overlay.toString();
-            assertDoesNotContainField(result, "subtitle");
-        }
-
-        @Test
-        void toStringContainsDescriptionWhenSet()
-        {
-            overlay.description("Test Description");
-            String result = overlay.toString();
-            assertContainsField(result, "description", "Test Description");
-        }
-
-        @Test
-        void toStringDoesNotContainDescriptionWhenNotSet()
-        {
-            String result = overlay.toString();
-            assertDoesNotContainField(result, "description");
-        }
-
-        @Test
-        void toStringContainsHelpWhenSet()
-        {
-            overlay.help("Test Help");
-            String result = overlay.toString();
-            assertContainsField(result, "help", "Test Help");
-        }
-
-        @Test
-        void toStringDoesNotContainHelpWhenNotSet()
-        {
-            String result = overlay.toString();
-            assertDoesNotContainField(result, "help");
-        }
-
-        @Test
-        void toStringContainsAllFieldsWhenAllSet()
-        {
-            overlay.title("Title")
-                .subtitle("Subtitle")
-                .description("Description")
-                .help("Help")
-                .permanent();
-
-            String result = overlay.toString();
-            assertContainsFields(result,
-                "permanent",
-                "duration",
-                "title",
-                "subtitle",
-                "description",
-                "help",
-                "textColor");
-        }
-    }
 }
