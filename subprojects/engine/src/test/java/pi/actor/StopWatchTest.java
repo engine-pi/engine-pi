@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -121,5 +122,11 @@ public class StopWatchTest
         watch.start();
         watch.time(5000);
         assertTrue(watch.time() > 0);
+    }
+
+    @Test
+    void toStringFormatter()
+    {
+        assertToStringClassName(watch);
     }
 }

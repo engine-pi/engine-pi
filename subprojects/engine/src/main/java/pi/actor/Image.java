@@ -543,13 +543,11 @@ public class Image extends Actor
         {
             width = definedWidth;
             height = heightPx / widthPx * definedWidth;
-            System.out.println("width" + width + " " + height);
         }
         else if (definedWidth == 0 && definedHeight > 0)
         {
             width = widthPx / heightPx * definedHeight;
             height = definedHeight;
-            System.out.println("height" + width + " " + height);
         }
         else
         {

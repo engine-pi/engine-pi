@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
 
 import pi.Controller;
 
@@ -125,13 +126,23 @@ public class StarTest
         assertEquals(1.5, star.innerRadius());
     }
 
-    @Test
-    public void toStringMethod()
+    @Nested
+    class ToStringTest
     {
-        String result = star.toString();
-        assertNotNull(result);
-        assertTrue(result.contains("numPoints"));
-        assertTrue(result.contains("radius"));
-        assertTrue(result.contains("innerRadius"));
+        @Test
+        void className()
+        {
+            assertToStringClassName(star);
+        }
+
+        @Test
+        public void toStringMethod()
+        {
+            String result = star.toString();
+            assertNotNull(result);
+            assertTrue(result.contains("numPoints"));
+            assertTrue(result.contains("radius"));
+            assertTrue(result.contains("innerRadius"));
+        }
     }
 }

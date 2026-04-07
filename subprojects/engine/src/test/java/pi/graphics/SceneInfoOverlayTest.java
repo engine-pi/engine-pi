@@ -26,6 +26,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static pi.CustomAssertions.assertToStringClassName;
 import static pi.CustomAssertions.assertToStringFieldValue;
 
 import java.awt.Color;
@@ -456,4 +457,9 @@ public class SceneInfoOverlayTest
         }
     }
 
+    @Test
+    void toStringFormatter()
+    {
+        assertToStringClassName(overlay);
+    }
 }

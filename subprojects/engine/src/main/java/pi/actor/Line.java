@@ -943,6 +943,12 @@ public class Line extends Actor
         }
     }
 
+    @Override
+    public String toString()
+    {
+        return toStringFormatter().className(this).format();
+    }
+
     /**
      * @hidden
      */

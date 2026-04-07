@@ -20,9 +20,9 @@ package pi.actor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -228,9 +228,6 @@ public class ImageTest
     @Test
     public void toStringFormatter()
     {
-        String result = image.toString();
-        assertNotNull(result);
-        assertTrue(result.contains("Image"));
+        assertToStringClassName(image);
     }
-
 }

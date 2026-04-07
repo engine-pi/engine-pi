@@ -34,15 +34,16 @@ public class CustomAssertions
         throw new UnsupportedOperationException();
     }
 
-    public static void assertToStringClassName(String expected, Object actual)
+    public static void assertToStringClassName(Object actual)
     {
+        String className = actual.getClass().getSimpleName();
         String toStringActual = getToString(actual);
         {
-            if (!toStringActual.startsWith(expected + " "))
-                fail(expected,
+            if (!toStringActual.startsWith(className + " ["))
+                fail(className,
                     toStringActual,
                     "ToStringFormatter output should start with class name: "
-                            + expected);
+                            + className);
         }
     }
 

@@ -21,6 +21,7 @@ package pi.actor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
 import static pi.debug.ToStringFormatter.clean;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -99,6 +100,12 @@ public class TextBlockTest
     @Nested
     class ToStringTest
     {
+        @Test
+        void className()
+        {
+            assertToStringClassName(text);
+        }
+
         @Test
         void content()
         {

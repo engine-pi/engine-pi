@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -272,6 +273,16 @@ public class LineTest
             Line.End returned = line.end1.arrowSideLength(1.25);
             assertSame(line.end1, returned);
             assertEquals(1.25, line.end1.arrowSideLength(), 0.001);
+        }
+    }
+
+    @Nested
+    class ToStringTest
+    {
+        @Test
+        void className()
+        {
+            assertToStringClassName(line);
         }
     }
 }
