@@ -131,10 +131,10 @@ wurzel.add(recht);
 
 ## Die Klassen mit Farbbezug:
 
-- {{ class('pi.resources.color.ColorContainer') }}
-- {{ class('pi.resources.color.ColorScheme') }}
-- {{ class('pi.resources.color.PredefinedColorScheme') }}
-- {{ class('pi.resources.color.NamedColor') }}
+- {{ javadoc('pi.resources.color.ColorContainer') }}
+- {{ javadoc('pi.resources.color.ColorScheme') }}
+- {{ javadoc('pi.resources.color.PredefinedColorScheme') }}
+- {{ javadoc('pi.resources.color.NamedColor') }}
 - [Resources.colors](https://javadoc.io/static/de.pirckheimer-gymnasium/engine-pi/0.31.0/pi/Resources.html#colors)
 
 ## Farbschema
@@ -162,7 +162,7 @@ wurzel.add(recht);
 
 </div>
 
-## Farben in der Klasse {{ class('pi.actor.Actor', 'Actor') }}
+## Farben in der Klasse {{ javadoc('pi.actor.Actor', 'Actor') }}
 
 In der ersten Reihe sind mehrere Bilder zu sehen, in der
 Reihe unterhalb Rechtecke mit der Durchschnittsfarbe der Bilder, in der letzten

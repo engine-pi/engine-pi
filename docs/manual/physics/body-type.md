@@ -17,7 +17,7 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/4.x/Body_Types
 
-{{ class('pi.physics.BodyType') }}
+{{ javadoc('pi.physics.BodyType') }}
 
 # Kinetisch
 

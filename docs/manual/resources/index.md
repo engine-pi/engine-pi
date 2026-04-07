@@ -14,11 +14,11 @@ different types of ResourcesContainers and is used by different (loading)
 mechanisms to make resources available during runtime. LITIENGINE supports
 various different resource types, including: -->
 
-Die statische Klasse {{ class('pi.Controller') }} ist der Einstiegspunkt der
+Die statische Klasse {{ javadoc('pi.Controller') }} ist der Einstiegspunkt der
 Engine für den Zugriff auf alle Arten von Ressourcen. Eine Ressource ist jede
 nicht ausführbare Datei, die zusammen mit Ihrem Spiel bereitgestellt wird. Die
-Klasse {{ class('pi.Controller') }} bietet Zugriff auf verschiedene Arten von {{
-class('pi.resources.ResourcesContainer') }} und wird von verschiedenen
+Klasse {{ javadoc('pi.Controller') }} bietet Zugriff auf verschiedene Arten von {{
+javadoc('pi.resources.ResourcesContainer') }} und wird von verschiedenen
 (Lade-)Mechanismen genutzt, um Ressourcen zur Laufzeit verfügbar zu machen. Die
 Engine Pi unterstützt verschiedene Ressourcentypen, darunter:
 
@@ -33,7 +33,7 @@ Engine Pi unterstützt verschiedene Ressourcentypen, darunter:
 certain resource type. Basically, it’s an in-memory cache of the resources and
 provides access to manage the resources. -->
 
-{{ class('pi.resources.ResourcesContainer') }} ist eine abstrakte Oberklasse für
+{{ javadoc('pi.resources.ResourcesContainer') }} ist eine abstrakte Oberklasse für
 alle Klassen, die einen bestimmten Ressourcentyp enthalten. Im Grunde handelt es
 sich um einen In-Memory-Cache der Ressourcen, der Zugriff zur Verwaltung der
 Ressourcen bietet.
@@ -66,9 +66,9 @@ removeContainerListener(ResourcesContainerListener<T> listener) -->
 Mit der Methode
 {{ javadoc('pi.resources.ResourcesContainer#addContainerListener(pi.resources.ResourcesContainerListener)', 'addContainerListener(ResourcesContainerListener&lt;T&gt; listener)') }}
 der Klasse
-{{ class('pi.resources.ResourcesContainer') }}
+{{ javadoc('pi.resources.ResourcesContainer') }}
 lassen sich
-{{ class('pi.resources.ResourcesContainerListener') }}
+{{ javadoc('pi.resources.ResourcesContainerListener') }}
 registrieren , um
 benachrichtigt zu werden, sobald eine Ressource zu einem ResourcesContainer
 hinzugefügt oder entfernt wurde. Das Entfernen von Listenern funktioniert

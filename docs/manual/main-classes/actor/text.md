@@ -56,7 +56,7 @@ public class HelloWorldVersion1 extends Scene
 
 #### Szene
 
-Die {{ class('demos.docs.main_classes.actor.hello_world.HelloWorldVersion1') }}-Klasse leitet sich aus der Klasse {{ class('pi.Scene') }} der Engine
+Die {{ javadoc('demos.docs.main_classes.actor.hello_world.HelloWorldVersion1') }}-Klasse leitet sich aus der Klasse {{ javadoc('pi.Scene') }} der Engine
 ab. Szenen in der Engine sind eigenständige Spielbereiche. Jede Szene hat ihre
 eigenen grafischen (und sonstige) Objekte; Szenes werden unabhängig voneinander
 berechnet. Ein Spiel besteht aus einer oder mehreren Szenen und wir erstellen
@@ -70,7 +70,7 @@ public class HelloWorldVersion1 extends Scene
 
 #### Text
 
-Wir wollen den Text _„Hello, World!“_ darstellen. Die Klasse {{ class('pi.Text')
+Wir wollen den Text _„Hello, World!“_ darstellen. Die Klasse {{ javadoc('pi.Text')
 }} ist dafür zuständig. Ein Text mit Inhalt _„Hello, World!“_ und Höhe 2 wird
 erstellt:
 
@@ -114,7 +114,7 @@ der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
         Controller.debug();
 ``` -->
 
-Die Klasse {{ class('pi.Controller') }} enthält neben Debug-Modus weitere Features, die die
+Die Klasse {{ javadoc('pi.Controller') }} enthält neben Debug-Modus weitere Features, die die
 Spielumgebung global betreffen.
 
 Da wir die Figuren „per Hand“, d.h. mithilfe der Methode
@@ -127,7 +127,7 @@ deaktiviert werden.
         Controller.instantMode(false);
 ``` -->
 
-Die Klasse {{ class('pi.Controller') }} kontrolliert auch den Spielstart. Dazu muss lediglich die
+Die Klasse {{ javadoc('pi.Controller') }} kontrolliert auch den Spielstart. Dazu muss lediglich die
 (zuerst) darzustellende Szene angegeben werden, sowie die Fenstermaße (in diesem
 Fall `400` Pixel Breite und `300` Pixel Höhe):
 
@@ -223,7 +223,7 @@ circle.layerPosition(-2);
 
 ## Setter
 
-Folgendes Codebeispiel verwendet alle Setter der Figur {{ class('pi.actor.Text') }}:
+Folgendes Codebeispiel verwendet alle Setter der Figur {{ javadoc('pi.actor.Text') }}:
 
 <!-- /home/jf/repos/school/monorepo/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/text/TextAllSettersDemo.java -->
 
@@ -242,10 +242,10 @@ Folgendes Codebeispiel verwendet alle Setter der Figur {{ class('pi.actor.Text')
 
 Der Stil der Schriftart (_fett_, _kursiv_ oder _fett und kursiv_) kann entweder
 als Ganzzahl oder als Aufzählungstyp (enum) angegeben werden. Die Methode {{
-class('pi.actor.Text', 'style(int)') }} akzeptiert Ganzzahlen als
-Eingabeparameter und die überladene Methode {{ class('pi.actor.Text',
+javadoc('pi.actor.Text#style(int)') }} akzeptiert Ganzzahlen als
+Eingabeparameter und die überladene Methode {{ javadoc('pi.actor.Text',
 'style(pi.resources.font.FontStyle)') }} den Aufzählungstyp {{
-class('pi.resources.font.FontStyle') }}. Folgende Aufzählung stellt dar, welche
+javadoc('pi.resources.font.FontStyle') }}. Folgende Aufzählung stellt dar, welche
 Ganzzahl welchem Aufzählungstyp entspricht:
 
 - `0`: {{ javadoc('pi.resources.font.FontStyle#PLAIN') }} (normaler Text)
@@ -279,7 +279,7 @@ Ganzzahl welchem Aufzählungstyp entspricht:
 
 {{ video('docs/main-classes/actor/text/TextPhysicsDemo.mp4') }}
 
-Wie alle anderen Figuren kann auch die {{ class('pi.actor.Text') }}-Figur in
+Wie alle anderen Figuren kann auch die {{ javadoc('pi.actor.Text') }}-Figur in
 einer Physik-Simulation verwendet werden. Das folgende Beispiel lässt den
 Beispieltext auf einer Ebene abprallen. Damit der Text aus dem Spielfenster
 fliegt, wird seine Fallrichtung mit einem nach links gerichteten Impuls

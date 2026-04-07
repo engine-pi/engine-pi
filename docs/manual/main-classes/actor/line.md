@@ -2,7 +2,7 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Line.java -->
 
-Die Figur {{ class('pi.actor.Line') }} ermöglicht es eine Linie zwischen zwei
+Die Figur {{ javadoc('pi.actor.Line') }} ermöglicht es eine Linie zwischen zwei
 Endpunkten zu zeichnen.
 
 {{ import_admonition('pi.actor.Line') }}
@@ -18,7 +18,7 @@ Das Klassendiagramm der Figur `Line` zusammen mit der inneren Klasse `Line.End` 
 
 {{ video('docs/main-classes/actor/line/LinePhysicsDemo.mp4') }}
 
-Wie alle anderen Figuren kann auch die {{ class('pi.actor.Line') }}-Figur in
+Wie alle anderen Figuren kann auch die {{ javadoc('pi.actor.Line') }}-Figur in
 einer Physik-Simulation verwendet werden. Das folgende Beispiel lässt die Linie
 bzw. den Pfeil in einem Bogen nach oben schießen. Damit sich der Pfeil umdreht
 und mit der Pfeilspitze auf dem Boden landet, wird seine Fallrichtung mit einem

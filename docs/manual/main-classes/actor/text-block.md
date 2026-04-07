@@ -35,7 +35,7 @@ von `0.75` den Zeilenabstand um `25%` verringern würde.
 
 {{ video('docs/main-classes/actor/text-block/TextBlockPhysicsDemo.mp4') }}
 
-Wie alle anderen Figuren kann auch die {{ class('pi.actor.TextBlock') }}-Figur in
+Wie alle anderen Figuren kann auch die {{ javadoc('pi.actor.TextBlock') }}-Figur in
 einer Physik-Simulation verwendet werden. Das folgende Beispiel lässt den
 Beispieltext auf einer Ebene abprallen. Damit der Text aus dem Spielfenster
 fliegt, wird seine Fallrichtung mit einem nach rechts gerichteten Impuls

@@ -8,7 +8,7 @@
 
 {{ video('docs/main-classes/actor/polygon/PolygonPhysicsDemo.mp4') }}
 
-Wie alle anderen Figuren kann auch die {{ class('pi.actor.Polygon') }}-Figur in
+Wie alle anderen Figuren kann auch die {{ javadoc('pi.actor.Polygon') }}-Figur in
 einer Physik-Simulation verwendet werden. Das folgende Beispiel lässt das
 Polygon auf einer Ebene abprallen. Damit das Polygon aus dem Spielfenster fliegt,
 wird seine Fallrichtung mit einem nach rechts gerichteten Impuls

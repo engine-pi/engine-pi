@@ -39,18 +39,6 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ---
 
-#### `class(class_path, link_title?)`
-
-```jinja
-{% raw %}
-{{ class('pi.Controller', 'Spiel') }}
-{% endraw %}
-```
-
-{{ class('pi.Controller', 'Spiel') }}
-
----
-
 #### `attribute(class_path, attribute, link_title?)`
 
 ```jinja

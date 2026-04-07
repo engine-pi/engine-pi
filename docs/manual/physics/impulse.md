@@ -69,7 +69,7 @@ Dominosteine, und ein weißer Boden mit Wand.
 {{ image('docs/physics/impulse/Dominos_1-statisch.png', 'Das Spielbrett ist aufgebaut, allerdings passiert noch nichts interessantes. Zeit für Physik!') }}
 
 Wir erwarten verschiedenes Verhalten von den physikalischen Objekten. Dies
-drückt sich in verschiedenen {{ class('pi.physics.BodyType') }}s  aus:
+drückt sich in verschiedenen {{ javadoc('pi.physics.BodyType') }}s  aus:
 
 - Der Ball und die Dominos sollen sich verhalten wie normale physische Objekte:
   Der Ball prallt an den Dominos ab und die Steine fallen um. Diese `Actors` haben
@@ -96,7 +96,7 @@ eingerichtet.
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
-in der Dokumentation von {{ class('pi.physics.BodyType') }} und eine vergleichende Übersicht in der
+in der Dokumentation von {{ javadoc('pi.physics.BodyType') }} und eine vergleichende Übersicht in der
 dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
 
 Zeit, die Dominos umzuschmeißen! Die Methode

@@ -51,7 +51,7 @@ public class KeyStrokeCounterDemo extends Scene
 
 Eine Klasse, die auf Tastatur-Eingaben des Nutzers reagieren soll, implementiert
 das Interface
-{{ class('pi.event.KeyStrokeListener') }}
+{{ javadoc('pi.event.KeyStrokeListener') }}
 Die Engine nutzt das
 [Observer(Beobachter)-Entwurfsmuster](<https://de.wikipedia.org/wiki/Beobachter_(Entwurfsmuster)>),
 um auf alle eingehenden Ereignisse reagieren zu können.

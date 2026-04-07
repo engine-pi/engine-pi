@@ -43,7 +43,7 @@ public class PaintingCirclesDemo extends Scene implements MouseClickListener
 ## Schnittstelle `MouseClickListener`
 
 Das Interface
-{{ class('pi.event.MouseClickListener') }}
+{{ javadoc('pi.event.MouseClickListener') }}
 ermöglicht das Reagieren auf Mausklicks des Nutzers. Ebenso ermöglicht es das
 Reagieren auf Loslassen der Maus.
 
@@ -62,7 +62,7 @@ public void onMouseDown(Vector position, MouseButton mouseButton)
 
 Statt zwei `double`-Parametern für die X/Y-Koordinaten des Klicks, nutzt die
 Engine hier die interne Klasse
-{{ class('pi.graphics.geom.Vector') }}.
+{{ javadoc('pi.graphics.geom.Vector') }}.
 Die Klasse `Vector` wird in der Engine durchgehend verwendet und ist essentiell
 für die Arbeit mit der Engine.[^engine-alpha-wiki:vector]
 

@@ -377,20 +377,6 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_javadoc, "javadoc")
 
-    def macro_class(class_path: str, link_title: str | None = None) -> str:
-        """
-        :param class_path: For example ``pi.actor.Actor``
-
-        ``{{ class('pi.actor.Actor') }}``
-        """
-        class_path = _normalize_package_path(class_path)
-        _check_class_path(class_path)
-        if link_title is None:
-            link_title = _get_class_name(class_path)
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html)"
-
-    env.macro(macro_class, "class")
-
     def macro_java_class(
         class_path: str,
         link_title: str | None = None,
@@ -415,9 +401,9 @@ def define_env(env: Any) -> None:
         :param class_path: For example ``pi.actor.Actor``
         :param methods: For example ``['color(java.awt.Color)', 'color(String)']``
         """
-        output: str = f"__Methoden in der Klasse {macro_class(class_path)}:__\n\n"
+        output: str = f"__Methoden in der Klasse {macro_javadoc(class_path)}:__\n\n"
         for m in methods:
-            output += "- " + macro_javadoc(class_path, m) + "\n"
+            output += "- " + macro_javadoc(class_path + '#' + m) + "\n"
         return output
 
     env.macro(macro_methods, "methods")

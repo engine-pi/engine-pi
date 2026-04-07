@@ -4,6 +4,6 @@
 
 {{ import_admonition('pi.actor.TileMap') }}
 
-{{ class('pi.actor.TileMap') }}
+{{ javadoc('pi.actor.TileMap') }}
 
 {{ contribute() }}

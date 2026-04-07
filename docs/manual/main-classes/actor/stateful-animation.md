@@ -6,7 +6,7 @@
 
 {{ import_admonition('pi.actor.StatefulAnimation') }}
 
-<!-- Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
+<!-- Dies ist ein Tutorial zur Klasse {{ javadoc('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
 
 - Konzipierst du eine komplexe Spielfigur mit Zustandsübergängen.
 - Implementierst du funktionale Bewegungsmechanik für einen Platformer.
@@ -14,7 +14,7 @@
 
 ## Stateful Animations -->
 
-Mit der Figur {{ class('pi.actor.StatefulAnimation') }} lassen sich komplexe Spielfiguren mit wenig Aufwand umsetzen.
+Mit der Figur {{ javadoc('pi.actor.StatefulAnimation') }} lassen sich komplexe Spielfiguren mit wenig Aufwand umsetzen.
 
 Nehmen wir dieses Beispiel:[^oop]
 
@@ -160,7 +160,7 @@ erwünscht ist.
 ### Einbetten in eine Szene
 
 Damit die Figur getestet werden kann, schreiben wir ein schnelles Testbett für
-sie. In einer {{ class('pi.Scene') }} bekommt sie einen Boden zum Laufen:
+sie. In einer {{ javadoc('pi.Scene') }} bekommt sie einen Boden zum Laufen:
 
 {{ image('docs/stateful-animation/StatefulAnimation_First_Testbed.gif') }}
 /// caption

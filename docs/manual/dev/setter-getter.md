@@ -14,8 +14,8 @@ Setter](https://de.wikipedia.org/wiki/Zugriffsfunktion) ohne die üblichen
 
 Um zu verdeutlichen welche Methode Attributwerte gibt und welche Methode
 Attribute setzt, sind alle Getter- und Setter-Methoden in den javadocs mit den
-Annotationen {{ class('pi.annotations.Getter') }} und {{
-class('pi.annotations.Setter') }} markiert.
+Annotationen {{ javadoc('pi.annotations.Getter') }} und {{
+javadoc('pi.annotations.Setter') }} markiert.
 
 Statt
 

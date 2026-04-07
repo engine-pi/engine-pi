@@ -37,14 +37,14 @@ organisiert:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/config/Configuration.java -->
 
-- `game_`: {{ class('pi.config.GameConfig') }}
-- `graphics_`: {{ class('pi.config.GraphicsConfig') }}
-- `sound_`: {{ class('pi.config.SoundConfig') }}
-- `debug_`: {{ class('pi.config.DebugConfig') }}
-- `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfig') }}
+- `game_`: {{ javadoc('pi.config.GameConfig') }}
+- `graphics_`: {{ javadoc('pi.config.GraphicsConfig') }}
+- `sound_`: {{ javadoc('pi.config.SoundConfig') }}
+- `debug_`: {{ javadoc('pi.config.DebugConfig') }}
+- `coordinatesystem_`: {{ javadoc('pi.config.CoordinatesystemConfig') }}
 
 Das statische Attribut {{ javadoc('pi.Controller#config', 'Controller.config')
-}} der Klasse {{ class('pi.Controller') }} bietet Zugriff auf alle
+}} der Klasse {{ javadoc('pi.Controller') }} bietet Zugriff auf alle
 Einstellmöglichkeiten.
 
 ```java
@@ -97,7 +97,7 @@ assertEquals(false, config.coordinatesystem.labelsOnIntersections());
 Die Engine Pi bietet die Möglichkeit, auch eigene Konfigurationsgruppen zu
 definieren und dem {{ javadoc('pi.Controller#config') }}-Objekt
 hinzuzufügen.[^litiengine:configuration] Die Klasse {{
-class('demos.docs.resources.config.MyConfigGroup') }} definierte eine
+javadoc('demos.docs.resources.config.MyConfigGroup') }} definierte eine
 Einstellmöglichkeit in Form eines Attributs mit dem Namen `myInt`. Die
 dazugehörenden Getter- und Setter-Methoden haben - wie in der Engine Pi üblich -
 kein `get`- bzw. `set`-Präfix:

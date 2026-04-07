@@ -31,7 +31,7 @@ Die Zeichenebene ist unendlich weit, das Spielfenster jedoch nicht. Es kann also
 immer nur ein begrenzter, rechteckiger Bereich der Zeichenebene im Fenster
 dargestellt werden.<!--
 -->
-Dieser Bereich wird bestimmt von der {{ class('pi.Camera', 'Kamera') }}. Die
+Dieser Bereich wird bestimmt von der {{ javadoc('pi.Camera', 'Kamera') }}. Die
 Kamera blickt auf die Zeichenebene. Sie „schneidet“ <!-- stanzt --> ein Rechteck
 mit den Maßen des Fensters aus und projiziert dies auf den Bildschirm. Der Rest
 der Zeichenebene ist also nicht sichtbar.
@@ -48,9 +48,9 @@ Die Kamera auf der Zeichenebene...
 ...und das Ergebnis auf dem Spielbildschirm
 ///
 
-Dies macht ein Objekt der Klasse {{ class('pi.Camera') }}. -->
+Dies macht ein Objekt der Klasse {{ javadoc('pi.Camera') }}. -->
 
-<!-- In der Klasse {{ class('pi.Controller') }} gibt es eine Referenz auf die einzige aktive Kamera des
+<!-- In der Klasse {{ javadoc('pi.Controller') }} gibt es eine Referenz auf die einzige aktive Kamera des
 Spiels und diese ist so auch in der eigenen spielsteuernden Klasse über die
 Referenz cam erreichbar. -->
 

@@ -22,7 +22,7 @@ Wir verwenden hier beispielhaft: -->
 
 Die Figuren der Engine Pi können einer internen Physik unterworfen werden. Sie
 unterliegen dann wahlweise der Schwerkraft oder prallen voneinander ab. Hierzu
-stellt die gemeinsame Oberklasse {{ class('pi.actor.Actor') }} verschiedene
+stellt die gemeinsame Oberklasse {{ javadoc('pi.actor.Actor') }} verschiedene
 Methoden zur Verfügung, über die alle Figuren verfügen.
 
 ## Die wichtigsten Physics-Methoden von Figuren:

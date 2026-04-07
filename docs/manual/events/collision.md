@@ -178,10 +178,10 @@ Engine-Kamera genutzt:
 
 ## Durch Platformen Springen: Kollisionen kontrollieren
 
-Das Interface {{ class('pi.event.CollisionListener') }} wurde bereits in
+Das Interface {{ javadoc('pi.event.CollisionListener') }} wurde bereits in
 seiner grundlegenden Form im Nutzereingabe-Tutorial benutzt.
 
-{{ class('pi.event.CollisionListener') }} kann mehr als nur melden, wenn zwei
+{{ javadoc('pi.event.CollisionListener') }} kann mehr als nur melden, wenn zwei
 Actor-Objekte sich überschneiden. Um das `FroggyJump`-Spiel zu implementieren,
 nutzen wir weitere Features.
 

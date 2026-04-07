@@ -6,7 +6,7 @@
 
 {{ import_admonition('pi.Controller') }}
 
-Die Steuerklasse {{ class('pi.Controller') }} der Engine hat ausschließlich
+Die Steuerklasse {{ javadoc('pi.Controller') }} der Engine hat ausschließlich
 statische Attribute und Methoden und dient nicht nur zur **Steuerung** des
 Spiels. Über statische Attribute kann auch auf die Konfiguration und die
 verschiedenen Ressourcen zugegriffen werden.

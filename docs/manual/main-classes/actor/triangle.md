@@ -4,6 +4,6 @@
 
 {{ import_admonition('pi.actor.Triangle') }}
 
-{{ class('pi.actor.Triangle') }}
+{{ javadoc('pi.actor.Triangle') }}
 
 {{ contribute() }}
