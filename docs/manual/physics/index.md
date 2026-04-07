@@ -27,11 +27,11 @@ Methoden zur Verfügung, über die alle Figuren verfügen.
 
 ## Die wichtigsten Physics-Methoden von Figuren:
 
-- {{ method('pi.actor.Actor', 'makeDynamic()') }}: Unterwirft die Figur der Schwerkraft.
-- {{ method('pi.actor.Actor', 'makeStatic()') }}: Lässt die Figur  wie eine „unendlich schwere Mauer“ wirken. Dynamische Figuren prallen davon ab.
-- {{ method('pi.actor.Actor', 'makeSensor()') }}: Frisch erzeugte Figuren sind Senoren. Damit kann man „dynamisch“ oder „statisch“ wieder rückgängig machen.
-- {{ method('pi.actor.Actor', 'restitution(double)') }}: setzt die Elastizität der Figuren. Sie verhalten sich dann wie „Gummibälle“.
-- {{ method('pi.actor.Actor', 'friction(double)') }}: Setzt den Reibungskoeffizienten der Objekte. Damit kann man „rutschen“ oder „gleiten“ beeinflussen.[^engine-alpha:grafikfenster]
+- {{ javadoc('pi.actor.Actor#makeDynamic()') }}: Unterwirft die Figur der Schwerkraft.
+- {{ javadoc('pi.actor.Actor#makeStatic()') }}: Lässt die Figur  wie eine „unendlich schwere Mauer“ wirken. Dynamische Figuren prallen davon ab.
+- {{ javadoc('pi.actor.Actor#makeSensor()') }}: Frisch erzeugte Figuren sind Senoren. Damit kann man „dynamisch“ oder „statisch“ wieder rückgängig machen.
+- {{ javadoc('pi.actor.Actor#restitution(double)') }}: setzt die Elastizität der Figuren. Sie verhalten sich dann wie „Gummibälle“.
+- {{ javadoc('pi.actor.Actor#friction(double)') }}: Setzt den Reibungskoeffizienten der Objekte. Damit kann man „rutschen“ oder „gleiten“ beeinflussen.[^engine-alpha:grafikfenster]
 
 [^engine-alpha:grafikfenster]:
     Der Abschnitt stammt aus dem

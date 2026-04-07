@@ -2,10 +2,7 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/Text.java -->
 
-Die Klasse {{ class('pi.actor.Text') }} ist im
-Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
-`#!java import pi.actor.Text;`
-importiert werden.
+{{ import_admonition('pi.actor.Text') }}
 
 ## Klassenkarte
 
@@ -120,8 +117,8 @@ der Engine hilfreich. Diese Zeile aktiviert den Debug Modus:
 Die Klasse {{ class('pi.Controller') }} enthält neben Debug-Modus weitere Features, die die
 Spielumgebung global betreffen.
 
-Da wir die Figuren „per Hand“, d.h. mithilfe der Methode {{ method('pi.Scene',
-'add(pi.actor.Actor...)', 'add()') }} zur Szene hinzugefügt haben, muss der Instant-Modus
+Da wir die Figuren „per Hand“, d.h. mithilfe der Methode
+{{ javadoc('pi.Scene#add(pi.actor.Actor...)', 'add()') }} zur Szene hinzugefügt haben, muss der Instant-Modus
 deaktiviert werden.
 
 {{ line('docs/main_classes/actor/hello_world/HelloWorldVersion1.java', 42) }}
@@ -251,10 +248,10 @@ Eingabeparameter und die überladene Methode {{ class('pi.actor.Text',
 class('pi.resources.font.FontStyle') }}. Folgende Aufzählung stellt dar, welche
 Ganzzahl welchem Aufzählungstyp entspricht:
 
-- `0`: {{ method('pi.resources.font.FontStyle', 'PLAIN') }} (normaler Text)
-- `1`: {{ method('pi.resources.font.FontStyle', 'BOLD') }} (fetter Text)
-- `2`: {{ method('pi.resources.font.FontStyle', 'ITALIC') }} (kursiver Text)
-- `3`: {{ method('pi.resources.font.FontStyle', 'BOLD_ITALIC') }} (fett und kursiv kombiniert)
+- `0`: {{ javadoc('pi.resources.font.FontStyle#PLAIN') }} (normaler Text)
+- `1`: {{ javadoc('pi.resources.font.FontStyle#BOLD') }} (fetter Text)
+- `2`: {{ javadoc('pi.resources.font.FontStyle#ITALIC') }} (kursiver Text)
+- `3`: {{ javadoc('pi.resources.font.FontStyle#BOLD_ITALIC') }} (fett und kursiv kombiniert)
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/assets/docs/main-classes/actor/text/TextStyleDemo.mp4 -->
 

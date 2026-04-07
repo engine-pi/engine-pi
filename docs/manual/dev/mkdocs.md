@@ -17,15 +17,25 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 
 ### Java spezifisch
 
-#### `package(package_path, link_title?)`
+#### `javadoc(spec, link_title?)`
 
 ```jinja
 {% raw %}
-{{ package('pi', 'Haupt-Paket') }}
+{{ javadoc('pi', 'Haupt-Paket') }}
 {% endraw %}
 ```
 
-{{ package('pi', 'Haupt-Paket') }}
+- Klasse:
+    - Engine Pi: {{ javadoc('pi.actor.Actor') }}
+    - Java: {{ javadoc('java.lang.Iterable') }}
+- Paket:
+    - Engine Pi: {{ javadoc('pi.actor') }}
+    - Java: {{ javadoc('java.util') }}
+- Methode:
+    - Engine Pi: {{ javadoc('pi.actor.Group#forEach(java.lang.Class,java.util.function.Consumer)', 'forEach(Class&lt;S&gt; clazz, Consumer&lt;? super S&gt; action)') }}
+    - Java: {{ javadoc('java.lang.String#equals(java.lang.Object)') }}
+- Attribute:
+    - Engine Pi: {{ javadoc('pi.Controller#config') }}
 
 ---
 
@@ -38,16 +48,6 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 ```
 
 {{ class('pi.Controller', 'Spiel') }}
-
-#### `method(class_path, method, link_title?)`
-
-```jinja
-{% raw %}
-{{ method('pi.actor.Actor', 'color(java.awt.Color)', 'color()') }}
-{% endraw %}
-```
-
-{{ method('pi.actor.Actor', 'color(java.awt.Color)', 'color()') }}
 
 ---
 
@@ -80,6 +80,16 @@ Einsatz von Makros. Die Makros sind in der Datei {{ repo_link('docs/macros.py')
 ```
 
 {{ demo('docs/dev/design/SimpleGeometricActorsDemo', 'd9e92a3759dce13923528f62a1afa8328be5126e', 'L38-L42') }}
+
+#### `import_admonition(class_path)`
+
+```jinja
+{% raw %}
+{{ import_admonition('pi.actor.Group') }}
+{% endraw %}
+```
+
+{{ import_admonition('pi.actor.Group') }}
 
 ---
 

@@ -4,6 +4,8 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: https://engine-alpha.org/wiki/v4.x/Scenes
 
+{{ import_admonition('pi.Scene') }}
+
 {{ drawio('Scene') }}
 
 Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler

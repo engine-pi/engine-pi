@@ -43,7 +43,7 @@ organisiert:
 - `debug_`: {{ class('pi.config.DebugConfig') }}
 - `coordinatesystem_`: {{ class('pi.config.CoordinatesystemConfig') }}
 
-Das statische Attribut {{ method('pi.Controller', 'config', 'Controller.config')
+Das statische Attribut {{ javadoc('pi.Controller#config', 'Controller.config')
 }} der Klasse {{ class('pi.Controller') }} bietet Zugriff auf alle
 Einstellmöglichkeiten.
 
@@ -95,7 +95,7 @@ assertEquals(false, config.coordinatesystem.labelsOnIntersections());
 ## Benutzerdefinierte Konfigurationsgruppen
 
 Die Engine Pi bietet die Möglichkeit, auch eigene Konfigurationsgruppen zu
-definieren und dem {{ method('pi.Controller', 'config') }}-Objekt
+definieren und dem {{ javadoc('pi.Controller#config') }}-Objekt
 hinzuzufügen.[^litiengine:configuration] Die Klasse {{
 class('demos.docs.resources.config.MyConfigGroup') }} definierte eine
 Einstellmöglichkeit in Form eines Attributs mit dem Namen `myInt`. Die

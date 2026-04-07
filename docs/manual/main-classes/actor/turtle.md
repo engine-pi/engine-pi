@@ -2,10 +2,7 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Turtle.java -->
 
-Die Klasse {{ class('pi.Turtle') }} ist im
-Haupt-Paket {{ package('pi') }} enthalten und kann über die Anweisung
-`#!java import pi.Turtle;`
-importiert werden.
+{{ import_admonition('pi.Turtle') }}
 
 {{ drawio('Turtle') }}
 /// caption

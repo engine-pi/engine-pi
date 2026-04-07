@@ -2,10 +2,7 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/TextBlock.java -->
 
-Die Klasse {{ class('pi.actor.TextBlock') }} ist im
-Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
-`#!java import pi.actor.TextBlock;`
-importiert werden.
+{{ import_admonition('pi.actor.TextBlock') }}
 
 ## Klassendiagramm
 
@@ -16,7 +13,8 @@ Die Klasse `TextBlock` und ihr Vererbungshierachie.
 
 ## `lineSpacing` (Zeilenabstand)
 
-Durch die Methode {{ method('pi.actor.TextBlock', 'lineSpacing(double)') }} kann
+Durch die Methode
+{{ javadoc('pi.actor.TextBlock#lineSpacing(double)') }} kann
 der Zeilenabstand des Textblocks einstellt werden.
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/TextBlock.java -->
 <!-- Go to /data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextBlockBox.java -->

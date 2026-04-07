@@ -22,6 +22,7 @@ Hintergrund läuft und die aufgenommenen Einzelbilder zu einem Video konvertiert
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Controller.java -->
 
-Mit der Methode {{ method('pi.Controller', 'recordScreen()',
-'Controller.recordScreen()') }} kann die Bildschirmaufnahme auch programmatisch
+Mit der Methode
+{{ javadoc('pi.Controller#recordScreen()', 'Controller.recordScreen()') }}
+kann die Bildschirmaufnahme auch programmatisch
 gesteuert werden.

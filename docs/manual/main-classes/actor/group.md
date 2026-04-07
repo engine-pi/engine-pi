@@ -4,20 +4,15 @@
 
 Über eine {{ javadoc('pi.actor.Group', 'Gruppe') }} lassen sich mehrere Figuren
 gemeinsam verwalten, z.B. gleichzeitig bewegen, einfärben oder einer Szene
-hinzufügen. Eine Gruppe ist hilfreich, wenn mehrere Objekte als Einheit
+hinzufügen. Eine Gruppe ist hilfreich, wenn mehrere Figuren als Einheit
 behandelt werden sollen.
-
 {{ javadoc('pi.actor.Group') }} ist keine Unterklasse von {{
 javadoc('pi.actor.Actor') }}. Die Klasse {{ javadoc('pi.actor.Group') }} kann jedoch
-mehrere {{ javadoc('pi.actor.Actor', 'Figuren') }} enhälten
+mehrere {{ javadoc('pi.actor.Actor', 'Figuren') }} enhälten.
+Die Klasse implementiert {{ javadoc('java.lang.Iterable') }}.
+Dadurch kann eine Gruppe direkt in einer `for`-Schleife verwendet werden.
 
-Die Klasse implementiert {{ javadoc('java.lang.Iterable') }}. Dadurch kann eine Gruppe direkt in einer
-`for`-Schleife verwendet werden.
-
-Die Klasse {{ class('pi.actor.Group') }} ist im
-Paket {{ javadoc('pi.actor') }} enthalten und kann über die Anweisung
-`#!java import pi.actor.Group;`
-importiert werden.
+{{ import_admonition('pi.actor.Group') }}
 
 <!-- file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/group/GroupDemo.java -->
 
@@ -36,12 +31,16 @@ Circle leftEye = new Circle(3);
 Circle rightEye = new Circle(3);
 Rectangle nose = new Rectangle(1, 5);
 
-Group<Actor> face = new Group<>(leftEye, rightEye, nose);
+Group<Actor> group = new Group<>(leftEye, rightEye, nose);
 ```
 
-## Elemente verwalten
+## Figuren verwalten
 
-Mit `add(...)` und `remove(...)`  werden Figuren zur Gruppe hinzugefügt oder
+Mit
+{{ javadoc('pi.actor.Group#add(T)', 'add(T)') }}
+und
+{{ javadoc('pi.actor.Group#remove(T)', 'remove(T)') }}
+werden Figuren zur Gruppe hinzugefügt oder
 aus ihr entfernt. Beide Methoden sind _chainable_, liefern also wieder die
 gleiche Gruppeninstanz zurück.
 
@@ -49,12 +48,16 @@ gleiche Gruppeninstanz zurück.
 Group<Actor> group = new Group<>();
 
 group.add(new Circle())
-	.add(new Rectangle(2, 1));
+    .add(new Rectangle(2, 1));
 
 group.remove(someActor);
 ```
 
-Zusätzlich stehen `size()` und `isEmpty()` zur Verfügung:
+Zusätzlich stehen
+{{ javadoc('pi.actor.Group#size()', 'size()') }}
+und
+{{ javadoc('pi.actor.Group#isEmpty()', 'isEmpty()') }}
+zur Verfügung:
 
 ```java
 int amount = group.size();
@@ -63,15 +66,17 @@ boolean empty = group.isEmpty();
 
 ## Aktionen auf alle Figuren anwenden
 
-Mit `forEachActor(...)` lässt sich dieselbe Aktion auf alle Elemente der Gruppe
-anwenden.
+Mit der Methode
+{{ javadoc('pi.actor.Group#forEachActor(java.util.function.Consumer)', 'forEachActor(action)') }}
+lässt sich dieselbe Aktion auf alle Figuren der Gruppe anwenden.
 
 ```java
 group.forEachActor(actor -> actor.moveBy(1, 0));
 ```
 
-Mit {{ javadoc('pi.actor.Group#forEach(java.lang.Class,java.util.function.Consumer)', 'forEach(Class&lt;S&gt; clazz, Consumer&lt;? super S&gt; action)') }} kann auf einen
-bestimmten Figurtyp gefiltert werden:
+Mit der Methode
+{{ javadoc('pi.actor.Group#forEach(java.lang.Class,java.util.function.Consumer)', 'forEach(Class&lt;S&gt; clazz, Consumer&lt;? super S&gt; action)') }}
+kann nach einem bestimmten Figurtyp gefiltert werden:
 
 ```java
 group.forEach(Circle.class, circle -> circle.color("blue"));
@@ -80,12 +85,13 @@ group.forEach(Rectangle.class, rectangle -> rectangle.color("red"));
 
 ## Gruppe zur Szene hinzufügen
 
-Mit `addToScene(scene)` werden alle Figuren der Gruppe in einem Schritt zur
+Mit der Methode
+{{ javadoc('pi.actor.Group#addToScene(pi.Scene)', 'addToScene(scene)') }}
+werden alle Figuren der Gruppe in einem Schritt zur
 angegebenen Szene hinzugefügt.
 
 ```java
-Group<Actor> group = new Group<>(leftEye, rightEye, nose, mouth)
-	.addToScene(this);
+new Group<>(leftEye, rightEye, nose, mouth).addToScene(this);
 ```
 
 ## Iteration
@@ -95,7 +101,7 @@ Da {{ javadoc('pi.actor.Group') }} {{ javadoc('java.lang.Iterable') }} implement
 ```java
 for (Actor actor : group)
 {
-	System.out.println(actor);
+    System.out.println(actor);
 }
 ```
 

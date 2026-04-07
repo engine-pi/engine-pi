@@ -5,10 +5,7 @@
 Die Figur {{ class('pi.actor.Line') }} ermöglicht es eine Linie zwischen zwei
 Endpunkten zu zeichnen.
 
-Die Klasse {{ class('pi.actor.Line') }} ist im
-Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
-`#!java import pi.actor.Line;`
-importiert werden.
+{{ import_admonition('pi.actor.Line') }}
 
 ## Klassenkarte
 
@@ -54,7 +51,8 @@ Drehimpuls (`#!java applyRotationImpulse(-7)`) beeinflusst.
 
 {{ code('demos.docs.main_classes.actor.line.LineDashPatternDemo', 41, 80) }}
 
-Mit der Setter-Methode {{ method('pi.actor.Line', 'dashPattern(double...)') }} kann das Muster der gestrichelten Linie festgelegt werden.
+Mit der Setter-Methode
+{{ javadoc('pi.actor.Line#dashPattern(double...)') }} kann das Muster der gestrichelten Linie festgelegt werden.
 
 `#!java dashPattern(double... dashPattern)` – beschreibt die **Längen der Abschnitte** im Wechsel:
 

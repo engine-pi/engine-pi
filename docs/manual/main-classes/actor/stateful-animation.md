@@ -4,10 +4,7 @@
     Der Abschnitt stammt aus dem
     Engine-Alpha-Wiki: [engine-alpha.org/wiki/v4.x/Stateful_Animation](https://engine-alpha.org/wiki/v4.x/Stateful_Animation)
 
-Die Klasse {{ class('pi.actor.StatefulAnimation') }} ist im
-Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
-`#!java import pi.actor.StatefulAnimation;`
-importiert werden.
+{{ import_admonition('pi.actor.StatefulAnimation') }}
 
 <!-- Dies ist ein Tutorial zur Klasse {{ class('pi.actor.StatefulAnimation') }}. In diesem Tutorial:
 
@@ -150,8 +147,8 @@ GIFs.
 Zwei der Zustände bestehen nur aus einen Animationszyklus. Danach sollen sie in
 einen anderen Zustand übergehen: `#!java MIDAIR` geht über zu `#!java FALLING`
 und `#!java LANDING` geht über zu `#!java IDLE`. Diese Übergänge können direkt
-über die Methode {{ method('pi.actor.StatefulAnimation',
-'stateTransition(State,State)', 'stateTransition()') }} umgesetzt werden.
+über die Methode
+{{ javadoc('pi.actor.StatefulAnimation#stateTransition(State,State)', 'stateTransition()') }} umgesetzt werden.
 
 Schließlich wird in `#!java setupPhysics()` die Figur über die Engine-Physik
 noch dynamisch gesetzt und bereit gemacht, sich als Platformer-Figur der

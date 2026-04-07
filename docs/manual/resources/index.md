@@ -64,7 +64,7 @@ Removing listeners works analogically with
 removeContainerListener(ResourcesContainerListener<T> listener) -->
 
 Mit der Methode
-{{ method('pi.resources.ResourcesContainer', 'addContainerListener(pi.resources.ResourcesContainerListener)', 'addContainerListener(ResourcesContainerListener&lt;T&gt; listener)') }}
+{{ javadoc('pi.resources.ResourcesContainer#addContainerListener(pi.resources.ResourcesContainerListener)', 'addContainerListener(ResourcesContainerListener&lt;T&gt; listener)') }}
 der Klasse
 {{ class('pi.resources.ResourcesContainer') }}
 lassen sich
@@ -73,4 +73,4 @@ registrieren , um
 benachrichtigt zu werden, sobald eine Ressource zu einem ResourcesContainer
 hinzugefügt oder entfernt wurde. Das Entfernen von Listenern funktioniert
 analog mit
-{{ method('pi.resources.ResourcesContainer', 'removeContainerListener(pi.resources.ResourcesContainerListener)', 'removeContainerListener(ResourcesContainerListener&lt;T&gt; listener)') }}.
+{{ javadoc('pi.resources.ResourcesContainer#removeContainerListener(pi.resources.ResourcesContainerListener)', 'removeContainerListener(ResourcesContainerListener&lt;T&gt; listener)') }}.

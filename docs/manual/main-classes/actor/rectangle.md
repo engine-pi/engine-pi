@@ -7,4 +7,6 @@ Paket {{ package('pi.actor') }} enthalten und kann über die Anweisung
 `#!java import pi.actor.Rectangle;`
 importiert werden.
 
+{{ import_admonition('pi.actor.Rectangle') }}
+
 {{ contribute() }}

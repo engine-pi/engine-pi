@@ -2,6 +2,8 @@
 
 [^engine-alpha]: https://engine-alpha.org/wiki/Tutorials/Kamera
 
+{{ import_admonition('pi.Camera') }}
+
 {{ drawio('Camera') }}
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->

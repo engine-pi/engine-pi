@@ -123,11 +123,17 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
 
     class_name = _get_class_name(class_path)
 
+    is_package = False
+
     if class_name == class_name.lower():
+        is_package = True
         class_relpath = class_relpath + "/package-summary"
 
     if link_title is None:
-        link_title = class_name + member
+        if is_package:
+            link_title = class_path
+        else:
+            link_title = class_name + member
 
     url_prefix: str
     if is_java:
@@ -136,7 +142,7 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
         url_prefix = JAVADOC_URL_PREFIX
 
     module = ""
-    if class_path.startswith("java"):
+    if is_java:
         module = "java.base/"
 
     return f":fontawesome-brands-java:[{link_title}]({url_prefix}/{module}{class_relpath}.html{member})"
@@ -150,6 +156,22 @@ def _convert_class_path_to_relpath(class_path: str, check: bool = True) -> str:
     if check:
         _convert_class_path_to_subproject_path(class_path, True)
     return class_path.replace(".", "/")
+
+def _convert_class_path_to_package_path(class_path: str, check: bool = True) -> str:
+    """:param class_path: for example ``java.awt.Color``
+
+    :return: ``java.awt``
+    """
+    class_path = _normalize_package_path(class_path)
+    class_path = class_path.replace(".java", "")
+
+    if check:
+        _check_class_path(class_path)
+
+    parts = class_path.split(".")
+    if len(parts) <= 1:
+        return ""
+    return ".".join(parts[:-1])
 
 
 def _check_asset(relpath: str) -> None:
@@ -226,6 +248,9 @@ def _get_class_name(class_path: str) -> str:
     :return: The simple class name extracted from the path (e.g., ``Actor``)
     """
     return class_path.split(".")[-1]
+
+
+
 
 
 class CodeSample:
@@ -385,24 +410,6 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_package, "package")
 
-    def macro_method(
-        class_path: str, method: str, link_title: str | None = None
-    ) -> str:
-        """
-        :param class_path: For example ``pi.actor.Actor``
-        :param method: For example ``color(java.awt.Color)``
-        :param link_title: Alternatively to the method signature, a custom link title can be specified. For example ``color()`` or ``color(Color)``.
-
-        :return: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#color(java.awt.Color)``
-        """
-
-        if link_title is None:
-            link_title = method
-
-        return f":fontawesome-brands-java:[{link_title}]({JAVADOC_URL_PREFIX}/{_convert_class_path_to_relpath(class_path)}.html#{method})"
-
-    env.macro(macro_method, "method")
-
     def macro_methods(class_path: str, methods: list[str]) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
@@ -410,7 +417,7 @@ def define_env(env: Any) -> None:
         """
         output: str = f"__Methoden in der Klasse {macro_class(class_path)}:__\n\n"
         for m in methods:
-            output += "- " + macro_method(class_path, m) + "\n"
+            output += "- " + macro_javadoc(class_path, m) + "\n"
         return output
 
     env.macro(macro_methods, "methods")
@@ -480,6 +487,29 @@ def define_env(env: Any) -> None:
 """
 
     env.macro(macro_contribute, "contribute")
+
+
+    def macro_import_statement(class_path: str) -> str:
+        """:param class_path: for example ``pi.actor.Group``"""
+
+        return f"""!!! import
+
+    Die Klasse
+    {_convert_class_path_to_javadoc_url(class_path)} ist im
+    Paket
+    {_convert_class_path_to_javadoc_url(_convert_class_path_to_package_path(class_path))} enthalten und kann über die Anweisung
+
+    ```java
+    import {class_path};
+    ```
+
+    importiert werden.
+"""
+
+    env.macro(macro_import_statement, "import_admonition")
+
+
+
 
     def macro_repo_link(relpath: str, link_title: str | None = None) -> str:
         _check_repo_path(relpath)

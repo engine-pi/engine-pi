@@ -14,6 +14,8 @@ diese Spezialisierungen sind abgeleitet von der Oberklasse
 Die API-Dokumentation des Pakets {{ package('pi.actor') }}
 listet alle verfügbaren Actor-Klassen auf.
 
+{{ import_admonition('pi.actor.Actor') }}
+
 Nachdem eine Figur erzeugt und zur Szene hinzugefügt wurde, befindet sie
 sich an der Koordinate `(0|0)`, d.h. die linke untere Ecke der Figur -
 ihr Ankerpunkt - liegt an dem Punkt im Koordinatensystem, das `0` sowohl
@@ -26,11 +28,15 @@ Vererbungshierarchie `Actor`
 
 ## `opacity` (Durchsichtigkeit)
 
-Über den Setter {{ method('pi.actor.Actor', 'opacity(double)') }} dann die
+Über den Setter
+{{ javadoc('pi.actor.Actor#opacity(double)') }}
+dann die
 Durchsichtigkeit bzw. Deckkraft der Figur eingestellt werden. Der
 Eingabeparameter akzeptiert Kommazahlen (`double`) im Bereich von `0` bis `1`.
 Bei `1` ist die Figur undurchsichtig, bei `0` komplett transparent. Der
-gleichlautende Getter {{ method('pi.actor.Actor', 'opacity()') }} liefert den
+gleichlautende Getter
+{{ javadoc('pi.actor.Actor#opacity()') }}
+liefert den
 aktuellen `opacity`-Wert. Neu erzeugte Figuren haben den `opacity`-Wert von `1`.
 Sie sind also undurchsichtig.
 

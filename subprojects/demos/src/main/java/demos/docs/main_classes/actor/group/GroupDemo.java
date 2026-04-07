@@ -42,7 +42,7 @@ import static pi.Controller.colors;
  */
 public class GroupDemo extends Scene implements KeyStrokeListener
 {
-    private final Group<Actor> face;
+    private final Group<Actor> group;
 
     public GroupDemo()
     {
@@ -64,9 +64,9 @@ public class GroupDemo extends Scene implements KeyStrokeListener
         Rectangle mouth = new Rectangle(5, 1);
         mouth.center(0, -4);
 
-        face = new Group<>(leftEye, rightEye, nose, mouth).addToScene(this);
+        group = new Group<>(leftEye, rightEye, nose, mouth).addToScene(this);
 
-        for (Actor actor : face)
+        for (Actor actor : group)
         {
             System.out.println(actor);
         }
@@ -78,14 +78,14 @@ public class GroupDemo extends Scene implements KeyStrokeListener
         Color color = colors.random();
         switch (e.getKeyCode())
         {
-        case KeyEvent.VK_UP -> face.forEach(actor -> actor.moveBy(0, 1));
-        case KeyEvent.VK_DOWN -> face.forEach(actor -> actor.moveBy(0, -1));
-        case KeyEvent.VK_RIGHT -> face.forEach(actor -> actor.moveBy(1, 0));
-        case KeyEvent.VK_LEFT -> face.forEach(actor -> actor.moveBy(-1, 0));
+        case KeyEvent.VK_UP -> group.forEach(actor -> actor.moveBy(0, 1));
+        case KeyEvent.VK_DOWN -> group.forEach(actor -> actor.moveBy(0, -1));
+        case KeyEvent.VK_RIGHT -> group.forEach(actor -> actor.moveBy(1, 0));
+        case KeyEvent.VK_LEFT -> group.forEach(actor -> actor.moveBy(-1, 0));
         case KeyEvent.VK_R ->
-            face.forEach(Rectangle.class, rectangle -> rectangle.color(color));
+            group.forEach(Rectangle.class, rectangle -> rectangle.color(color));
         case KeyEvent.VK_C ->
-            face.forEach(Circle.class, circle -> circle.color(color));
+            group.forEach(Circle.class, circle -> circle.color(color));
         }
     }
 
