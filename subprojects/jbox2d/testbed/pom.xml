@@ -10,7 +10,7 @@
     <artifactId>jbox2d-testbed</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <name>jbox2d-testbed</name>
+    <name>JBox2D Testbed</name>
     <description>The testbed for JBox2D, a 2d java physics engine, ported from the C++ Box2d engine.</description>
     <url>https://engine-pi.github.io/engine-pi</url>
     <dependencies>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>33.2.1-jre</version>
+            <version>33.5.0-jre</version>
         </dependency>
     </dependencies>
     <build>

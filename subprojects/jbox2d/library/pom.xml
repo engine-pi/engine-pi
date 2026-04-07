@@ -12,7 +12,7 @@
     <artifactId>jbox2d-library</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <name>jbox2d-library</name>
+    <name>JBox2D Library</name>
 
     <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
     <url>https://engine-pi.github.io/engine-pi</url>
@@ -35,9 +35,11 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.15.0</version>
                 <configuration>
                     <excludes>
                         <exclude>**/gwtemul/**</exclude>

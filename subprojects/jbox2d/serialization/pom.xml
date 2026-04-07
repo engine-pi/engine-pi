@@ -10,7 +10,7 @@
     <artifactId>jbox2d-serialization</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <name>jbox2d-serialization</name>
+    <name>JBox2D Serialization</name>
     <description>Serialization library for jbox2d</description>
     <url>https://engine-pi.github.io/engine-pi</url>
 

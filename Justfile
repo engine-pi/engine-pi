@@ -6,6 +6,13 @@ default: pull assets install_cli check_file_links package mkdocs_build
 deploy:
 	mvn deploy
 
+# Run 'mvn compile'
+compile:
+	mvn compile
+
+#  Run 'mvn compile'
+alias build := compile
+
 # Run 'mvn test' for the specified subproject, or for all subprojects if no subproject is specified.
 test subproject='':
 	if [ -n "{{subproject}}" ]; then \

@@ -10,7 +10,7 @@
     <artifactId>jbox2d-testbed-javafx</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <name>jbox2d-testbed-javafx</name>
+    <name>JBox2D Testbed JavaFX</name>
     <description>The testbed for JBox2D, a 2d java physics engine, ported from the C++ Box2d engine.</description>
     <url>https://engine-pi.github.io/engine-pi</url>
 

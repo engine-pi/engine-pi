@@ -10,7 +10,8 @@
     <artifactId>jbox2d-testbed-jogl</artifactId>
     <version>4.0.0</version>
     <packaging>jar</packaging>
-    <description>Project for making a jogl (Java Bindings for OpenGL) panel for the testbed</description>
+    <name>JBox2D Testbed JOGL</name>
+    <description>Project for making a JOGL (Java Bindings for OpenGL) panel for the testbed</description>
     <url>https://engine-pi.github.io/engine-pi</url>
     <dependencies>
         <dependency>
