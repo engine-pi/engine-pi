@@ -46,6 +46,31 @@ import org.junit.jupiter.api.Test;
 public class TextBlockBoxTest
 {
     @Nested
+    class ConstructorTest
+    {
+        @Test
+        void noArgument()
+        {
+            assertEquals(" ", new TextBlockBox().content());
+        }
+
+        @Test
+        void singleArgument()
+        {
+            assertEquals("Test", new TextBlockBox("Test").content());
+        }
+
+        @Test
+        void multipleArguments()
+        {
+            assertEquals("Line 1\n" + //
+                    "1\n" + //
+                    "true",
+                new TextBlockBox("Line 1", 1, true).content());
+        }
+    }
+
+    @Nested
     class ContentTest
     {
         @Test
@@ -112,6 +137,23 @@ public class TextBlockBoxTest
             assertSame(box.charsPerLine(80), box);
             assertEquals(80, box.charsPerLine());
             assertEquals(33, box.width());
+        }
+
+        @Test
+        void spliting()
+        {
+            TextBlockBox box = new TextBlockBox("Das ist ein Test.");
+            assertEquals("Das ist ein Test.", box.content());
+            assertArrayEquals(new String[] { "Das ist ein Test." },
+                box.linesText());
+
+            box.charsPerLine(8);
+            assertEquals("Das ist\n" + //
+                    "ein\n" + //
+                    "Test.",
+                box.content());
+            assertArrayEquals(new String[] { "Das ist", "ein", "Test." },
+                box.linesText());
         }
 
         @Test

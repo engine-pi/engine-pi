@@ -26,12 +26,19 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java
+
 /**
  * Eine Sammlung von statischen Hilfsmethoden um <b>Text</b> und
  * <b>Zeichenketten</b> zu bearbeiten.
  */
 public class TextUtil
 {
+    /**
+     * Das Standard-Zeilen-Trennzeichen.
+     */
+    public final static String LINE_SEPARATOR = "\n";
+
     private TextUtil()
     {
         throw new UnsupportedOperationException();
@@ -264,15 +271,20 @@ public class TextUtil
     }
 
     /**
-     * Konvertiert ein Objekt zu einer Zeichenkette. Für Arrays, Listen, Sets
-     * und Karten werden die einzelnen Elemente in die resultierende
-     * Zeichenkette konvertiert.
+     * Konvertiert einen Inhalt in einem beliebigen Datentyp zu einer
+     * <b>Zeichenkette</b>.
+     *
+     * <p>
+     * Für Felder/Arrays, {@link java.util.List Listen}, {@link java.util.Set
+     * Sets} und {@link java.util.Map Maps} werden die einzelnen Elemente in die
+     * resultierende Zeichenkette konvertiert.
+     * </p>
      *
      * <p>
      * Beispiele:
      * </p>
      * <ul>
-     * <li>{@code null} → {@code "null"}
+     * <li>{@code null} → {@code ""}
      * <li>{@code "text"} → {@code "text"}
      * <li>{@code [1, 2, 3]} → {@code "[1, 2, 3]"}
      * <li>{@code [1.5, 2.5]} → {@code "[1.5, 2.5]"}
@@ -280,21 +292,21 @@ public class TextUtil
      * <li>{@code Map.of("key", "value")} → {@code "{key=value}"}
      * </ul>
      *
-     * @param object Das Objekt, das konvertiert werden soll.
+     * @param content Der Inhalt, der konvertiert werden soll.
      *
-     * @return Die Zeichenketten-Repräsentation des Objekts mit konvertierten
+     * @return Die Zeichenketten-Repräsentation des Inhalts mit konvertierten
      *     Elementen für Sammlungstypen.
      *
      * @since 0.45.0
      */
-    public static String convertToString(Object object)
+    public static String convertToString(Object content)
     {
-        if (object == null)
+        if (content == null)
         {
-            return "null";
+            return "";
         }
 
-        if (object instanceof java.util.Map<?, ?> map)
+        if (content instanceof java.util.Map<?, ?> map)
         {
             StringBuilder sb = new StringBuilder("{");
             var entries = map.entrySet().iterator();
@@ -313,7 +325,7 @@ public class TextUtil
             return sb.toString();
         }
 
-        if (object instanceof java.util.Set<?> set)
+        if (content instanceof java.util.Set<?> set)
         {
             StringBuilder sb = new StringBuilder("[");
             var iterator = set.iterator();
@@ -329,7 +341,7 @@ public class TextUtil
             return sb.toString();
         }
 
-        if (object instanceof java.util.List<?> list)
+        if (content instanceof java.util.List<?> list)
         {
             StringBuilder sb = new StringBuilder("[");
             for (int i = 0; i < list.size(); i++)
@@ -344,13 +356,13 @@ public class TextUtil
             return sb.toString();
         }
 
-        if (object.getClass().isArray())
+        if (content.getClass().isArray())
         {
             StringBuilder sb = new StringBuilder("[");
-            int length = Array.getLength(object);
+            int length = Array.getLength(content);
             for (int i = 0; i < length; i++)
             {
-                sb.append(convertToString(Array.get(object, i)));
+                sb.append(convertToString(Array.get(content, i)));
                 if (i < length - 1)
                 {
                     sb.append(", ");
@@ -360,6 +372,35 @@ public class TextUtil
             return sb.toString();
         }
 
-        return object.toString();
+        return content.toString();
+    }
+
+    /**
+     * Konvertiert mehrere Inhalte zu einem <b>mehrzeiligen Text</b>.
+     *
+     * <p>
+     * Jedes übergebene Element wird mit {@link #convertToString(Object)} in
+     * eine Zeichenkette umgewandelt. Anschließend werden die Ergebnisse mit
+     * {@code "\n"} (siehe {@link #LINE_SEPARATOR}) verbunden, sodass jedes
+     * Element in einer eigenen Zeile steht.
+     * </p>
+     *
+     * @param content Die Inhalte, die zeilenweise konvertiert werden sollen.
+     *
+     * @return Eine mehrzeilige Zeichenkette mit einem Eintrag pro Zeile. Bei
+     *     einem leeren Argument-Array wird eine leere Zeichenkette
+     *     zurückgegeben.
+     *
+     * @since 0.45.0
+     */
+    public static String convertToMultilineString(Object... content)
+    {
+        if (content == null)
+        {
+            return convertToString(null);
+        }
+        return java.util.Arrays.stream(content)
+            .map(TextUtil::convertToString)
+            .collect(Collectors.joining(LINE_SEPARATOR));
     }
 }

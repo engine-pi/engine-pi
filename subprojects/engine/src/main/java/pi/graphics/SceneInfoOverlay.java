@@ -24,10 +24,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.function.Function;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import pi.Scene;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 import pi.event.SingleTask;
 import pi.graphics.boxes.BackgroundBox;
 import pi.graphics.boxes.Box;
@@ -72,77 +77,20 @@ import pi.resources.font.FontStyle;
 public class SceneInfoOverlay
 {
     /**
-     * Der <b>Titel</b> der Szene.
-     *
-     * <p>
-     * Der Titel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.42.0
-     */
-    private TextBox title = null;
-
-    /**
-     * Der <b>Untertitel</b> der Szene.
-     *
-     * <p>
-     * Der Untertitel wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.42.0
-     */
-    private TextBox subtitle = null;
-
-    /**
-     * Ein längerer, mehrzeiliger <b>Beschreibungstext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.42.0
-     */
-    private TextBox description = null;
-
-    /**
-     * Ein längerer, mehrzeiliger <b>Hilfetext</b> zur Szene.
-     *
-     * <p>
-     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
-     * </p>
-     *
-     * @since 0.42.0
-     */
-    private TextBox help = null;
-
-    private Color textColor = colors.get("black");
-
-    /**
-     * Die Infobox wird nicht nach einer gewissen Zeit ausgeblendet, sondern ist
-     * <b>permanent</b> zu sehen.
-     */
-    private boolean permanent = false;
-
-    /**
-     * Die Anzeigedauer der Infobox in Sekunden.
-     */
-    private double duration = 10;
-
-    private final CellBox cell;
-
-    public final InsetBox margin;
-
-    public final BackgroundBox background;
-
-    private VerticalBox<Box> vertical;
-
-    /**
      * Die Referenz auf die übergeordnete Szene wird benötigt, um Zugriff auf
      * die
      * {@link pi.event.FrameUpdateListenerRegistration#delay(double, Runnable)
      * delay}-Methode zu haben.
      */
-    private final Scene scene;
+    private @NonNull final Scene scene;
+
+    private @NonNull final CellBox cell;
+
+    public @NonNull final InsetBox margin;
+
+    public @NonNull final BackgroundBox background;
+
+    private VerticalBox<Box> vertical;
 
     /**
      * Die Aufgabe, die mit Verzögerung die Infobox ausblendet.
@@ -172,9 +120,15 @@ public class SceneInfoOverlay
         hideTask = scene.delay(duration, this::disable);
     }
 
+    /* permanent */
+
     /**
-     *
-     *
+     * Die Infobox wird nicht nach einer gewissen Zeit ausgeblendet, sondern ist
+     * <b>permanent</b> zu sehen.
+     */
+    private boolean permanent = false;
+
+    /**
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
      *     gekettete Setter festgelegt werden können, z.B.
@@ -184,12 +138,18 @@ public class SceneInfoOverlay
      */
     @API
     @Setter
+    @ChainableMethod
     public SceneInfoOverlay permanent()
     {
         this.permanent = true;
         cancelHideTask();
         return this;
     }
+
+    /**
+     * Die Anzeigedauer der Infobox in Sekunden.
+     */
+    private double duration = 10;
 
     /**
      * Setzt die Anzeigedauer der Infobox in Sekunden.
@@ -205,6 +165,7 @@ public class SceneInfoOverlay
      */
     @API
     @Setter
+    @ChainableMethod
     public SceneInfoOverlay duration(double duration)
     {
         this.duration = duration;
@@ -227,6 +188,8 @@ public class SceneInfoOverlay
      *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
+
+    @ChainableMethod
     private SceneInfoOverlay assemble()
     {
         vertical = new VerticalBox<>();
@@ -255,12 +218,13 @@ public class SceneInfoOverlay
         return this;
     }
 
-    private boolean isStringEmpty(String content)
+    private boolean isStringEmpty(Object content)
     {
-        return content == null || content.isEmpty();
+        return content == null || String.valueOf(content).isEmpty();
     }
 
-    private TextBox setBox(String content, Function<String, TextBox> function)
+    private @Nullable TextBox setBox(Object content,
+            Function<Object, TextBox> function)
     {
         if (isStringEmpty(content))
         {
@@ -268,6 +232,19 @@ public class SceneInfoOverlay
         }
         return function.apply(content);
     }
+
+    /* title */
+
+    /**
+     * Der <b>Titel</b> der Szene.
+     *
+     * <p>
+     * Der Titel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    private @Nullable TextBox title = null;
 
     /**
      * Setzt den <b>Titel</b> der Szene.
@@ -287,13 +264,27 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
-    public SceneInfoOverlay title(String title)
+    @ChainableMethod
+    public SceneInfoOverlay title(Object title)
     {
         this.title = setBox(title,
             content -> new TextLineBox(content).fontStyle(FontStyle.BOLD)
                 .fontSize(18)).color(textColor);
         return assemble();
     }
+
+    /* subtitle */
+
+    /**
+     * Der <b>Untertitel</b> der Szene.
+     *
+     * <p>
+     * Der Untertitel wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    private @Nullable TextBox subtitle = null;
 
     /**
      * Setzt den <b>Untertitel</b> der Szene.
@@ -313,11 +304,25 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
-    public SceneInfoOverlay subtitle(String subtitle)
+    @ChainableMethod
+    public SceneInfoOverlay subtitle(Object subtitle)
     {
         this.subtitle = setBox(subtitle, TextLineBox::new).color(textColor);
         return assemble();
     }
+
+    /* description */
+
+    /**
+     * Ein längerer, mehrzeiliger <b>Beschreibungstext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    private @Nullable TextBox description = null;
 
     /**
      * Setzt den längeren, mehrzeiligen <b>Beschreibungstext</b> zur Szene.
@@ -327,7 +332,7 @@ public class SceneInfoOverlay
      * </p>
      *
      * @param description Ein längerer, mehrzeiliger <b>Beschreibungstext</b>
-     *     zur Szene.
+     *     zur Szene. Jedes Argument wird in eine neue Zeile gesetzt.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -338,13 +343,37 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
-    public SceneInfoOverlay description(String description)
+    @ChainableMethod
+    public SceneInfoOverlay description(Object... description)
     {
-        this.description = setBox(description,
-            content -> new TextBlockBox(description).fontSize(12))
+        if (isContentArrayNull(description))
+        {
+            this.description = null;
+        }
+        else
+        {
+            this.description = new TextBlockBox(description).fontSize(12)
                 .color(textColor);
+        }
         return assemble();
     }
+
+    private boolean isContentArrayNull(Object... content)
+    {
+        return content.length == 0
+                || (content.length == 1 && content[0] == null);
+    }
+
+    /**
+     * Ein längerer, mehrzeiliger <b>Hilfetext</b> zur Szene.
+     *
+     * <p>
+     * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
+     * </p>
+     *
+     * @since 0.42.0
+     */
+    private @Nullable TextBox help = null;
 
     /**
      * Setzt den <b>Hilfetext</b> zur Szene.
@@ -353,7 +382,8 @@ public class SceneInfoOverlay
      * Der Beschreibungstext wird als Einblendung über die Szene gelegt.
      * </p>
      *
-     * @param help Ein <b>Hilfetext</b> zur Szene.
+     * @param help Eine beliebige Anzahl an <b>Hilfetexten</b> zur Szene. Jedes
+     *     Argument wird in eine neue Zeile gesetzt.
      *
      * @return Eine Referenz auf die eigene Instanz, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften durch aneinander
@@ -364,13 +394,25 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
-    public SceneInfoOverlay help(String help)
+    @ChainableMethod
+    public SceneInfoOverlay help(Object... help)
     {
-        this.help = setBox(help,
-            content -> new TextBlockBox(help).fontSize(12)
-                .fontStyle(FontStyle.ITALIC)).color(textColor);
+        if (isContentArrayNull(help))
+        {
+            this.help = null;
+        }
+        else
+        {
+            this.help = new TextBlockBox(help).fontSize(12)
+                .fontStyle(FontStyle.ITALIC)
+                .color(textColor);
+        }
         return assemble();
     }
+
+    /* textColor */
+
+    private Color textColor = colors.get("black");
 
     /**
      * Setzt die <b>Textfarbe</b>.
@@ -386,6 +428,7 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
+    @ChainableMethod
     public SceneInfoOverlay textColor(Color textColor)
     {
         this.textColor = textColor;
@@ -424,6 +467,7 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
+    @ChainableMethod
     public SceneInfoOverlay hAlign(HAlign hAlign)
     {
         cell.hAlign(hAlign);
@@ -442,6 +486,7 @@ public class SceneInfoOverlay
      */
     @Setter
     @API
+    @ChainableMethod
     public SceneInfoOverlay vAlign(VAlign vAlign)
     {
         cell.vAlign(vAlign);
@@ -476,6 +521,7 @@ public class SceneInfoOverlay
      *     {@code info().title(..).subtitle(..)}.
      */
     @API
+    @ChainableMethod
     public SceneInfoOverlay disable()
     {
         cell.disable();
@@ -494,9 +540,38 @@ public class SceneInfoOverlay
      * @since 0.42.0
      */
     @API
+    @ChainableMethod
     public SceneInfoOverlay toggle()
     {
         cell.toggle();
         return this;
+    }
+
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter(this);
+
+        if (title != null)
+        {
+            formatter.append("title", title.content());
+        }
+        if (subtitle != null)
+        {
+            formatter.append("subtitle", subtitle.content());
+        }
+        if (description != null)
+        {
+            formatter.append("description", description.content());
+        }
+        if (help != null)
+        {
+            formatter.append("help", help.content());
+        }
+
+        formatter.append("permanent", permanent);
+        formatter.append("duration", duration, "s");
+        formatter.append("textColor", textColor);
+        return formatter.format();
     }
 }

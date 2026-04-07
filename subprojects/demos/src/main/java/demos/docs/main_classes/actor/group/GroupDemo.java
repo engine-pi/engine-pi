@@ -48,9 +48,9 @@ public class GroupDemo extends Scene implements KeyStrokeListener
     {
         info().title("Demonstriert die Klasse Group")
             .help(
-                "Cursor: Die Pfeiltasten (Cursor-Tasten) bewegen alle Figuren.\n"
-                        + "c: Färbt die Kreise (Circle)\n"
-                        + "r: Färbt die Rechtecke");
+                "Cursor: Die Pfeiltasten (Cursor-Tasten) bewegen alle Figuren.",
+                "c: Färbt die Kreise (Circle)",
+                "r: Färbt die Rechtecke");
         backgroundColor("#cccccc");
         Circle leftEye = new Circle(3);
         leftEye.center(-5, 5);

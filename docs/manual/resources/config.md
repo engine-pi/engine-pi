@@ -5,7 +5,7 @@ Konfigurationsdatei names `engine-pi.properties` verändert werden. Dabei handel
 es sich um eine
 [Java-Properties-Datei](https://de.wikipedia.org/wiki/Java-Properties-Datei),
 also ein sehr einfaches, selbsterklärend Format. Beim Starten eines Projekts
-sucht die Engine Pi im Ausführungsorder der Anwendung nach dieser Datei. Falls
+sucht die Engine Pi im Ausführungsordner der Anwendung nach dieser Datei. Falls
 keine solche Datei vorhanden ist, erstellt die Engine eine
 `engine-pi.properties` mit den Standardwerten:
 

@@ -8,7 +8,7 @@ hinzufügen. Eine Gruppe ist hilfreich, wenn mehrere Figuren als Einheit
 behandelt werden sollen.
 {{ javadoc('pi.actor.Group') }} ist keine Unterklasse von {{
 javadoc('pi.actor.Actor') }}. Die Klasse {{ javadoc('pi.actor.Group') }} kann jedoch
-mehrere {{ javadoc('pi.actor.Actor', 'Figuren') }} enhälten.
+mehrere {{ javadoc('pi.actor.Actor', 'Figuren') }} enthalten.
 Die Klasse implementiert {{ javadoc('java.lang.Iterable') }}.
 Dadurch kann eine Gruppe direkt in einer `for`-Schleife verwendet werden.
 

@@ -39,6 +39,8 @@ import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/graphics/boxes/TextBlockBoxDemo.java
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/graphics/boxes/TextBlockBoxTest.java
+
 /**
  * Ein mehrzeiliger <b>Textblock</b>.
  *
@@ -72,13 +74,17 @@ public class TextBlockBox extends TextBox
     /**
      * Erzeugt einen mehrzeiligen <b>Textblock</b>.
      *
-     * @param content Der <b>Inhalt</b> des Textblocks als Zeichenkette.
+     * @param content Der <b>Inhalt</b> des Textblocks. Es können mehrere
+     *     Eingabewerte angegeben werden. Jeder Eingabewert wird in eine eigene
+     *     Zeile gesetzt.
      *
      * @since 0.41.0
      */
-    public TextBlockBox(Object content)
+    public TextBlockBox(Object... content)
     {
-        super(content);
+        super(TextUtil.convertToMultilineString(content));
+        wrap();
+        calculateDimension();
     }
 
     /* content */
@@ -86,21 +92,19 @@ public class TextBlockBox extends TextBox
     /**
      * Setzt den Inhalt dieses {@code TextBlockBox}-Objekts
      *
-     * @param content Der zu setzende Inhalt; kann beliebig typisiert sein und
-     *     wird über {@code String.valueOf(content)} in Text umgewandelt
+     * @param content Der <b>Inhalt</b> des Textblocks. Es können mehrere
+     *     Eingabewerte angegeben werden. Jeder Eingabewert wird in eine eigene
+     *     Zeile gesetzt.
      *
      * @return diese Instanz zur Verkettung weiterer Methodenaufrufe (Fluent
      *     API)
      *
      * @since 0.45.0
      */
-    public TextBlockBox content(Object content)
+    public TextBlockBox content(Object... content)
     {
-        super.content(content);
-        if (charsPerLine > 0)
-        {
-            this.content = TextUtil.wrap(this.content, charsPerLine);
-        }
+        super.content(TextUtil.convertToMultilineString(content));
+        wrap();
         calculateDimension();
         return this;
     }
@@ -165,8 +169,17 @@ public class TextBlockBox extends TextBox
         // Damit wird die Zeilenbreite für die automatische Berechnung der
         // Box-Breite verwendet.
         definedWidth = 0;
-        content(this.content);
+        wrap();
+        calculateDimension();
         return this;
+    }
+
+    private void wrap()
+    {
+        if (charsPerLine > 0)
+        {
+            content = TextUtil.wrap(content, charsPerLine);
+        }
     }
 
     /* hAlign */

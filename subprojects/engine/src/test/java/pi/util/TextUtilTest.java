@@ -25,6 +25,7 @@ import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
 import static pi.util.TextAlignment.RIGHT;
 import static pi.util.TextUtil.align;
+import static pi.util.TextUtil.convertToMultilineString;
 import static pi.util.TextUtil.convertToString;
 import static pi.util.TextUtil.getLineCount;
 import static pi.util.TextUtil.getLineWidth;
@@ -173,7 +174,7 @@ public class TextUtilTest
         @Test
         void nullValue()
         {
-            assertEquals(convertToString(null), "null");
+            assertEquals(convertToString(null), "");
         }
 
         @Test
@@ -226,7 +227,7 @@ public class TextUtilTest
             list.add("a");
             list.add(null);
             list.add("b");
-            assertEquals(convertToString(list), "[a, null, b]");
+            assertEquals(convertToString(list), "[a, , b]");
         }
 
         @Test
@@ -337,7 +338,49 @@ public class TextUtilTest
         void arrayWithNull()
         {
             Object[] array = { "a", null, "b" };
-            assertEquals(convertToString(array), "[a, null, b]");
+            assertEquals(convertToString(array), "[a, , b]");
+        }
+    }
+
+    @Nested
+    class ConvertToMultilineStringTest
+    {
+        @Test
+        void emptyVarargs()
+        {
+            assertEquals(convertToMultilineString(), "");
+        }
+
+        @Test
+        void nullVarargs()
+        {
+            assertEquals(convertToMultilineString((Object[]) null), "");
+        }
+
+        @Test
+        void singleElement()
+        {
+            assertEquals(convertToMultilineString("hello"), "hello");
+        }
+
+        @Test
+        void multipleElements()
+        {
+            assertEquals(convertToMultilineString("a", 1, true), "a\n1\ntrue");
+        }
+
+        @Test
+        void nullElement()
+        {
+            assertEquals(convertToMultilineString("a", null, "b"), "a\n\nb");
+        }
+
+        @Test
+        void collectionTypesUseConvertToString()
+        {
+            assertEquals(
+                convertToMultilineString(List.of(1, 2), Map.of("x", 10)),
+                "[1, 2]\n{x=10}");
         }
     }
 }
