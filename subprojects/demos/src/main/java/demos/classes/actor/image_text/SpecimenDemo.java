@@ -25,28 +25,30 @@ import pi.actor.ImageText.Specimen;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/ImageText.java
+
 /**
  * Demonstriert die Klasse {@link Specimen}.
  *
  * <h2>tetris</h2>
  *
  * <p>
- * <img alt="ImageFontSpecimenTetris" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontSpecimenTetris.png">
+ * <img alt="SpecimenTetris" src=
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenTetris.png">
  * </p>
  *
  * <h2>pacman</h2>
  *
  * <p>
- * <img alt="ImageFontSpecimenPacman" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontSpecimenPacman.png">
+ * <img alt="SpecimenPacman" src=
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenPacman.png">
  * </p>
  *
  * <h2>space-invaders</h2>
  *
  * <p>
- * <img alt="ImageFontSpecimenSpaceInvaders" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontSpecimenSpaceInvaders.png">
+ * <img alt="SpecimenSpaceInvaders" src=
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenSpaceInvaders.png">
  * </p>
  *
  * @since 0.27.0
@@ -56,7 +58,7 @@ public class SpecimenDemo extends Scene
     public SpecimenDemo(String fontName)
     {
         backgroundColor("white");
-        Font tetris = new Font("image-font/" + fontName);
+        Font tetris = new Font("main-classes/actor/image-text/" + fontName);
         new Specimen(this, tetris);
     }
 

@@ -60,7 +60,7 @@ public class ImageText extends Image
     /**
      * Die Bilderschriftart.
      */
-    private final Font imageFont;
+    private final Font font;
 
     /**
      * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
@@ -89,7 +89,7 @@ public class ImageText extends Image
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
@@ -103,14 +103,14 @@ public class ImageText extends Image
      * @param pixelPerMeter Wie viele Pixel ein Meter des resultierenden Bilds
      *     groß sein soll.
      */
-    public ImageText(Font imageFont, String content, int lineWidth,
+    public ImageText(Font font, String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication,
             int pixelPerMeter)
     {
-        super(imageFont
+        super(font
             .render(content, lineWidth, alignment, color, pixelMultiplication));
         pixelPerMeter(pixelPerMeter);
-        this.imageFont = imageFont;
+        this.font = font;
         this.content = content;
         this.lineWidth = lineWidth;
         this.alignment = alignment;
@@ -122,7 +122,7 @@ public class ImageText extends Image
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
@@ -134,75 +134,75 @@ public class ImageText extends Image
      *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
      *     Pixel der Abmessung {@code 3x3}.
      */
-    public ImageText(Font imageFont, String content, int lineWidth,
+    public ImageText(Font font, String content, int lineWidth,
             TextAlignment alignment, Color color, int pixelMultiplication)
     {
-        this(imageFont, content, lineWidth, alignment, color,
-                pixelMultiplication, imageFont.glyphWidth());
+        this(font, content, lineWidth, alignment, color, pixelMultiplication,
+                font.glyphWidth());
     }
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      *
      */
-    public ImageText(Font imageFont, String content, Color color)
+    public ImageText(Font font, String content, Color color)
     {
-        this(imageFont, content, imageFont.lineWidth(), imageFont.alignment(),
-                color, imageFont.pixelMultiplication(), imageFont.glyphWidth());
+        this(font, content, font.lineWidth(), font.alignment(), color,
+                font.pixelMultiplication(), font.glyphWidth());
     }
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
      *
      */
-    public ImageText(Font imageFont, String content, String color)
+    public ImageText(Font font, String content, String color)
     {
-        this(imageFont, content, colors.get(color));
+        this(font, content, colors.get(color));
     }
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
      *     kann.
      * @param alignment Die Textausrichtung.
      */
-    public ImageText(Font imageFont, String content, int lineWidth,
+    public ImageText(Font font, String content, int lineWidth,
             TextAlignment alignment)
     {
-        this(imageFont, content, lineWidth, alignment, imageFont.color(),
-                imageFont.pixelMultiplication());
+        this(font, content, lineWidth, alignment, font.color(),
+                font.pixelMultiplication());
     }
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
-     * @param imageFont Die Bilderschriftart.
+     * @param font Die Bilderschriftart.
      * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
      *     soll.
      */
-    public ImageText(Font imageFont, String content)
+    public ImageText(Font font, String content)
     {
-        this(imageFont, content, imageFont.lineWidth(), imageFont.alignment());
+        this(font, content, font.lineWidth(), font.alignment());
     }
 
     /* content */
@@ -232,7 +232,7 @@ public class ImageText extends Image
     public void content(String content, int lineWidth, TextAlignment alignment,
             Color color, int pixelMultiplication)
     {
-        image(imageFont
+        image(font
             .render(content, lineWidth, alignment, color, pixelMultiplication));
         this.content = content;
         this.lineWidth = lineWidth;
@@ -321,9 +321,9 @@ public class ImageText extends Image
     @Override
     public String toString()
     {
-        return String.format("ImageFontText[\n  %s,\n  %s\n]",
-            imageFont,
-            super.toString());
+        ToStringFormatter formatter = toStringFormatter().className(this);
+        formatter.prepend("font", font);
+        return formatter.format();
     }
 
     /**
@@ -348,64 +348,6 @@ public class ImageText extends Image
      */
     public static class Font
     {
-        /**
-         * Der Pfad zu einem Ordner, in dem die Bilder der einzelnen Buchstaben
-         * liegen.
-         */
-        private String basePath;
-
-        /**
-         * Die Breite der Buchstabenbilder in Pixel.
-         */
-        private int glyphWidth;
-
-        /**
-         * Die Höhe der Buchstabenbilder in Pixel.
-         */
-        private int glyphHeight;
-
-        /**
-         * Die Dateierweiterung der Buchstabenbilder.
-         */
-        private String extension;
-
-        /**
-         * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-         * verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-         * Abmessung {@code 3x3}.
-         */
-        private int pixelMultiplication = 1;
-
-        /**
-         * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt
-         * werden soll.
-         */
-        private Color color;
-
-        /**
-         * Die Handhabung der Groß- und Kleinschreibung.
-         */
-        private CaseSensitivity caseSensitivity;
-
-        /**
-         * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
-         */
-        private int lineWidth = -1;
-
-        /**
-         * Die Textausrichtung.
-         */
-        private TextAlignment alignment;
-
-        private final Map<Character, Glyph> glyphs = new LinkedHashMap<>();
-
-        private final Map<String, Glyph> glyphsByFilename = new LinkedHashMap<>();
-
-        /**
-         * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen
-         * werden soll oder nicht.
-         */
-        private boolean throwException = true;
 
         /**
          * Erzeugt eine neue Bilderschriftart.
@@ -487,6 +429,14 @@ public class ImageText extends Image
             this(basePath, null);
         }
 
+        /* basePath */
+
+        /**
+         * Der Pfad zu einem Ordner, in dem die Bilder der einzelnen Buchstaben
+         * liegen.
+         */
+        private String basePath;
+
         /**
          * Setzt den Pfad zu einem Ordner, in dem die Bilder der einzelnen
          * Buchstaben liegen.
@@ -504,6 +454,13 @@ public class ImageText extends Image
             return this;
         }
 
+        /* glyphWidth */
+
+        /**
+         * Die Breite der Buchstabenbilder in Pixel.
+         */
+        private int glyphWidth;
+
         /**
          * Gibt die Breite der Buchstabenbilder in Pixel zurück.
          *
@@ -514,6 +471,32 @@ public class ImageText extends Image
         {
             return glyphWidth;
         }
+
+        /**
+         * Die Höhe der Buchstabenbilder in Pixel.
+         */
+        private int glyphHeight;
+
+        /**
+         * Gibt die Höhe der Buchstabenbilder in Pixel zurück.
+         *
+         * @return Die Höhe der Buchstabenbilder in Pixel.
+         *
+         * @since 0.46.0
+         */
+        @Getter
+        public int glyphHeight()
+        {
+            return glyphHeight;
+        }
+
+        /* color */
+
+        /**
+         * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt
+         * werden soll.
+         */
+        private Color color;
 
         /**
          * Setzt die Farbe, in der die schwarze Farbe der Ausgangsbilder
@@ -545,6 +528,13 @@ public class ImageText extends Image
             return color;
         }
 
+        /* extension */
+
+        /**
+         * Die Dateierweiterung der Buchstabenbilder.
+         */
+        private String extension;
+
         /**
          * Setzt die Dateierweiterung der Buchstabenbilder.
          *
@@ -559,6 +549,13 @@ public class ImageText extends Image
             this.extension = extension;
             return this;
         }
+
+        /**
+         * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
+         * verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
+         * Abmessung {@code 3x3}.
+         */
+        private int pixelMultiplication = 1;
 
         /**
          * Setzt, wie oft ein Pixel vervielfältigt werden soll.
@@ -590,6 +587,13 @@ public class ImageText extends Image
             return pixelMultiplication;
         }
 
+        /* caseSensitivity */
+
+        /**
+         * Die Handhabung der Groß- und Kleinschreibung.
+         */
+        private CaseSensitivity caseSensitivity;
+
         /**
          * Setzt die Handhabung der Groß- und Kleinschreibung.
          *
@@ -604,6 +608,13 @@ public class ImageText extends Image
             this.caseSensitivity = caseSensitivity;
             return this;
         }
+
+        /* lineWidth */
+
+        /**
+         * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
+         */
+        private int lineWidth = -1;
 
         /**
          * Setzt die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
@@ -668,6 +679,13 @@ public class ImageText extends Image
             return lineWidth;
         }
 
+        /* alignment */
+
+        /**
+         * Die Textausrichtung.
+         */
+        private TextAlignment alignment;
+
         /**
          * Setzt die Textausrichtung.
          *
@@ -693,6 +711,12 @@ public class ImageText extends Image
         {
             return alignment;
         }
+
+        /**
+         * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen
+         * werden soll oder nicht.
+         */
+        private boolean throwException = true;
 
         /**
          * Setzt, ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung
@@ -817,6 +841,10 @@ public class ImageText extends Image
                 .addMapping('“', "201c_left-double-quotation-mark") //
                 .addMapping('”', "201d_right-double-quotation-mark");
         }
+
+        private final Map<Character, Glyph> glyphs = new LinkedHashMap<>();
+
+        private final Map<String, Glyph> glyphsByFilename = new LinkedHashMap<>();
 
         @Getter
         public Glyph[] glyphs()

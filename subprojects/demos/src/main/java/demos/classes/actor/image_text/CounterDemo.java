@@ -41,9 +41,8 @@ public class CounterDemo extends Scene
     {
         backgroundColor("yellow");
         AtomicInteger counter = new AtomicInteger();
-        text = new ImageText(
-                new Font("image-font/pacman", CaseSensitivity.TO_UPPER), "0", 5,
-                TextAlignment.RIGHT);
+        text = new ImageText(new Font("main-classes/actor/image-text/pacman",
+                CaseSensitivity.TO_UPPER), "0", 5, TextAlignment.RIGHT);
         text.center(-1, 0);
         repeat(0.05, () -> {
             text.content(String.valueOf(counter.getAndIncrement()));

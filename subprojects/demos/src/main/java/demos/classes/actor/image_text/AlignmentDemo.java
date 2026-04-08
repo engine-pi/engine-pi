@@ -36,7 +36,7 @@ import pi.util.TextAlignment;
  *
  * <p>
  * <img alt="Screenshot" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextAlignmentDemo.png">
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/AlignmentDemo.png">
  * </p>
  *
  * @author Josef Friedrich
@@ -46,7 +46,8 @@ import pi.util.TextAlignment;
  */
 public class AlignmentDemo extends Scene
 {
-    Font font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
+    Font font = new Font("main-classes/actor/image-text/tetris",
+            CaseSensitivity.TO_UPPER);
 
     public AlignmentDemo()
     {

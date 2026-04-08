@@ -33,7 +33,7 @@ import pi.util.TextAlignment;
  *
  * <p>
  * <img alt="Screenshot" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextMultilineDemo.png">
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/MultilineDemo.png">
  * </p>
  *
  * @author Josef Friedrich
@@ -44,7 +44,8 @@ public class MultilineDemo extends Scene
 {
     public MultilineDemo()
     {
-        Font font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
+        Font font = new Font("main-classes/actor/image-text/tetris",
+                CaseSensitivity.TO_UPPER);
         ImageText textField = new ImageText(font,
                 "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
                         + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",

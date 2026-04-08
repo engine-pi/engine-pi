@@ -36,7 +36,7 @@ import pi.actor.ImageText.Font;
  *
  * <p>
  * <img alt="Screenshot" src=
- * "https://raw.githubusercontent.com/engine-pi/engine-pi/main/misc/images/actor/ImageFontTextColorDemo.png">
+ * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/ColorDemo.png">
  * </p>
  *
  * @author Josef Friedrich
@@ -52,12 +52,12 @@ public class ColorDemo extends Scene
         int y = 9;
         for (Map.Entry<String, Color> entry : colors.getAll().entrySet())
         {
-            setImageFontText(entry.getKey(), -5, y);
+            setImageText(entry.getKey(), -5, y);
             y--;
         }
     }
 
-    public void setImageFontText(String color, int x, int y)
+    public void setImageText(String color, int x, int y)
     {
         ImageText textField = new ImageText(font, color, color);
         textField.anchor(x, y);
