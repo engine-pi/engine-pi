@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class CompassTest
 {
     @Test
-    public void methodRotateByNumber()
+    void methodRotateByNumber()
     {
         assertEquals(EAST.rotate(0), EAST);
         assertEquals(EAST.rotate(1), SOUTH);

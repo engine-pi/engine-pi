@@ -11,13 +11,13 @@ public class ItemCreatorTest
         "conditionals_excercises/find_the_destination");
 
     @Test
-    public void createItemByNum()
+    void createItemByNum()
     {
         assertEquals(items.create(2).getNum(), 2);
     }
 
     @Test
-    public void createItemByName()
+    void createItemByName()
     {
         assertEquals(items.create("wall").getNum(), 2);
     }

@@ -13,7 +13,7 @@ public class TaskListTest
     TaskList list;
 
     @BeforeEach
-    public void reset()
+    void reset()
     {
         list.reset();
     }
@@ -24,33 +24,33 @@ public class TaskListTest
     }
 
     @Test
-    public void readFromResources() throws IOException
+    void readFromResources() throws IOException
     {
         TaskList list = TaskList.readFromResources();
         assertTrue(list.size() > 0);
     }
 
     @Test
-    public void readFromMenu() throws IOException
+    void readFromMenu() throws IOException
     {
         TaskList list = TaskList.readFromMenu();
         assertEquals(list.size(), 6);
     }
 
     @Test
-    public void getId()
+    void getId()
     {
         assertTrue(list.getId(0) instanceof String);
     }
 
     @Test
-    public void next()
+    void next()
     {
         assertTrue(list.next().indexOf("/") > 0);
     }
 
     @Test
-    public void previous()
+    void previous()
     {
         assertTrue(list.next().indexOf("/") > 0);
     }

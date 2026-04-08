@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import blockly_robot.robot.logic.navigation.Coords;
 import pi.graphics.geom.Vector;
 
-public class CoordinateSystemTranslatorTest
+class CoordinateSystemTranslatorTest
 {
     private CoordinateSystemTranslator translate(int rows, int cols, int x,
             int y)
@@ -35,7 +35,7 @@ public class CoordinateSystemTranslatorTest
     }
 
     @Test
-    public void rowsAndCols()
+    void rowsAndCols()
     {
         var translator = create(4, 5);
         assertEquals(translator.rows, 4);
