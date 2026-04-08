@@ -67,7 +67,6 @@ public class ConfigurationTest
         assertEquals(0.5, config.sound.musicVolume());
 
         assertFalse(config.debug.enabled());
-        assertFalse(config.debug.verbose());
         assertTrue(config.debug.renderActors());
         assertFalse(config.debug.actorCoordinates());
         assertFalse(config.debug.renderAABBs());

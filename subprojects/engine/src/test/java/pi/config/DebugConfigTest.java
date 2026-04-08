@@ -65,31 +65,6 @@ public class DebugConfigTest
     }
 
     @Nested
-    class VerboseTest
-    {
-        @Test
-        void defaultValue()
-        {
-            assertFalse(config.verbose());
-        }
-
-        @Test
-        void setValue()
-        {
-            config.verbose(true);
-            assertTrue(config.verbose());
-            config.verbose(false);
-            assertFalse(config.verbose());
-        }
-
-        @Test
-        void chaining()
-        {
-            assertSame(config, config.verbose(true));
-        }
-    }
-
-    @Nested
     class RenderActorsTest
     {
         @Test

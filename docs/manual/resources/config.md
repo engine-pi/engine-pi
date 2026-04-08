@@ -24,7 +24,6 @@ sound_soundVolume=0.5
 sound_musicVolume=0.5
 
 debug_enabled=false
-debug_verbose=false
 debug_renderActors=true
 debug_actorCoordinates=false
 debug_renderAABBs=false
@@ -86,7 +85,6 @@ assertEquals(0.5, config.sound.soundVolume());
 assertEquals(0.5, config.sound.musicVolume());
 
 assertFalse(config.debug.enabled());
-assertFalse(config.debug.verbose());
 assertTrue(config.debug.renderActors());
 assertFalse(config.debug.actorCoordinates());
 assertFalse(config.debug.renderAABBs());

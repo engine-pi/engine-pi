@@ -51,7 +51,6 @@ public class DebugConfig extends ConfigGroup
         // „package private“ bleiben, damit die Konfigurationsgruppe nur in
         // diesem Paket instanziert werden kann.
         enabled(false);
-        verbose(false);
         renderActors(true);
         actorCoordinates(false);
         renderAABBs(false);
@@ -98,55 +97,6 @@ public class DebugConfig extends ConfigGroup
     public DebugConfig enabled(boolean enabled)
     {
         set("enabled", enabled);
-        return this;
-    }
-
-    /* verbose */
-
-    /**
-     * Wird dieses Attribut auf <code>true</code> gesetzt, so werden
-     * ausführliche Log-Ausgaben gemacht.
-     *
-     * <p>
-     * Dies betrifft unter anderem Informationen über das Verhalten auf Ebene
-     * von Einzelbildern arbeitenden Threads. Hierfür wurde diese Variable
-     * eingeführt.
-     * </p>
-     */
-    private boolean verbose;
-
-    /**
-     * Gibt die <b>Ausführlichkeit</b> der Log-Ausgaben zurück.
-     *
-     * @return Die <b>Ausführlichkeit</b> der Log-Ausgaben.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Getter
-    public boolean verbose()
-    {
-        return verbose;
-    }
-
-    /**
-     * Setzt die <b>Ausführlichkeit</b> der Log-Ausgaben.
-     *
-     * @param verbose Die <b>Ausführlichkeit</b> der Log-Ausgaben.
-     *
-     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
-     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
-     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
-     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
-     *
-     * @since 0.42.0
-     */
-    @API
-    @Setter
-    @ChainableMethod
-    public DebugConfig verbose(boolean verbose)
-    {
-        set("verbose", verbose);
         return this;
     }
 
