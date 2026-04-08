@@ -2723,7 +2723,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     protected ToStringFormatter toStringFormatter()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Actor");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("x", x());
         formatter.append("y", y());
         return formatter;

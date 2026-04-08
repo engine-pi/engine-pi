@@ -34,9 +34,11 @@ import java.util.function.Function;
 
 import pi.actor.Actor;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 import pi.event.EventListeners;
 import pi.event.FrameUpdateListener;
 import pi.event.FrameUpdateListenerRegistration;
@@ -79,40 +81,12 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     private static final Color PRISMATIC_JOINT_COLOR = Color.GREEN;
 
-    /**
-     * Die <b>Kamera</b> der Szene. Hiermit kann der sichtbare Ausschnitt der
-     * Zeichenebene bestimmt und manipuliert werden.
-     */
-    private final Camera camera;
-
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
-
-    private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
-
-    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
-
-    private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>();
-
-    /**
-     * Die Ebenen dieser Szene.
-     */
-    private final List<Layer> layers = new ArrayList<>();
-
-    private Color backgroundColor = Color.BLACK;
-
-    /**
-     * Die <b>Hauptebene</b>.
-     */
-    private final Layer layer;
-
     private static final int JOINT_CIRCLE_RADIUS = 10;
 
     /**
      * (Basis-)Breite für die Visualisierung von Rechtecken
      */
     private static final int JOINT_RECTANGLE_SIDE = 12;
-
-    private SceneInfoOverlay info;
 
     /**
      * Erzeugt eine neue Szene.
@@ -130,6 +104,10 @@ public class Scene implements KeyStrokeListenerRegistration,
         addLayer(layer);
         EventListeners.registerListeners(this);
     }
+
+    /* info */
+
+    private SceneInfoOverlay info;
 
     /**
      * @return Eine <b>Infobox</b>, die <b>über</b> eine <b>Szene</b> gelegt
@@ -181,6 +159,18 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         return this;
     }
+
+    /* layer */
+
+    /**
+     * Die <b>Hauptebene</b>.
+     */
+    private final Layer layer;
+
+    /**
+     * Die Ebenen dieser Szene.
+     */
+    private final List<Layer> layers = new ArrayList<>();
 
     /**
      * Gibt die <b>Hauptebene</b> dieser Szene aus.
@@ -364,6 +354,14 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         return layer.visibleArea(Controller.windowSize());
     }
+
+    /* camera */
+
+    /**
+     * Die <b>Kamera</b> der Szene. Hiermit kann der sichtbare Ausschnitt der
+     * Zeichenebene bestimmt und manipuliert werden.
+     */
+    private final Camera camera;
 
     /**
      * Gibt die <b>Kamera</b> der Szene aus.
@@ -807,26 +805,9 @@ public class Scene implements KeyStrokeListenerRegistration,
         camera.focus(center());
     }
 
-    @API
-    @Getter
-    public EventListeners<KeyStrokeListener> keyStrokeListeners()
-    {
-        return keyStrokeListeners;
-    }
+    /* frameUpdateListeners */
 
-    @API
-    @Getter
-    public EventListeners<MouseClickListener> mouseClickListeners()
-    {
-        return mouseClickListeners;
-    }
-
-    @API
-    @Getter
-    public EventListeners<MouseScrollListener> mouseScrollListeners()
-    {
-        return mouseScrollListeners;
-    }
+    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
 
     @API
     @Getter
@@ -852,6 +833,17 @@ public class Scene implements KeyStrokeListenerRegistration,
         }
     }
 
+    @API
+    @Getter
+    public EventListeners<KeyStrokeListener> keyStrokeListeners()
+    {
+        return keyStrokeListeners;
+    }
+
+    /* keyStrokeListeners */
+
+    private final EventListeners<KeyStrokeListener> keyStrokeListeners = new EventListeners<>();
+
     /**
      * @hidden
      */
@@ -869,6 +861,10 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         keyStrokeListeners.invoke(listener -> listener.onKeyUp(event));
     }
+
+    /* mouseClickListeners */
+
+    private final EventListeners<MouseClickListener> mouseClickListeners = new EventListeners<>();
 
     /**
      * @hidden
@@ -890,6 +886,17 @@ public class Scene implements KeyStrokeListenerRegistration,
             .invoke(listener -> listener.onMouseUp(position, button));
     }
 
+    @API
+    @Getter
+    public EventListeners<MouseClickListener> mouseClickListeners()
+    {
+        return mouseClickListeners;
+    }
+
+    /* mouseScrollListeners */
+
+    private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>();
+
     /**
      * @hidden
      */
@@ -898,6 +905,13 @@ public class Scene implements KeyStrokeListenerRegistration,
     {
         mouseScrollListeners
             .invoke(listener -> listener.onMouseScrollMove(event));
+    }
+
+    @API
+    @Getter
+    public EventListeners<MouseScrollListener> mouseScrollListeners()
+    {
+        return mouseScrollListeners;
     }
 
     /**
@@ -921,11 +935,16 @@ public class Scene implements KeyStrokeListenerRegistration,
             Controller.mousePositionInFrame());
     }
 
+    /* backgroundColor */
+
+    private Color backgroundColor = Color.BLACK;
+
     /**
      * Gibt die <b>Hintergrundfarbe</b> zurück.
      *
      * @return Die Hintergrundfarbe.
      */
+    @API
     @Getter
     public Color backgroundColor()
     {
@@ -938,10 +957,13 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @param color Die Hintergrundfarbe.
      */
+    @API
     @Setter
-    public void backgroundColor(Color color)
+    @ChainableMethod
+    public Scene backgroundColor(Color color)
     {
         backgroundColor = color;
+        return this;
     }
 
     /**
@@ -952,9 +974,28 @@ public class Scene implements KeyStrokeListenerRegistration,
      *
      * @see ColorContainer#get(String)
      */
+    @API
     @Setter
-    public void backgroundColor(String color)
+    @ChainableMethod
+    public Scene backgroundColor(String color)
     {
         backgroundColor = colors.get(color);
+        return this;
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        ToStringFormatter formatter = new ToStringFormatter(this);
+
+        if (backgroundColor != Color.BLACK)
+        {
+            formatter.append("backgroundColor", backgroundColor);
+        }
+
+        return formatter.format();
     }
 }

@@ -89,8 +89,7 @@ public class EllipseBoxTest
     @Test
     void toStringFormatter()
     {
-        assertEquals(
-            "EllipseBox [color=Color[r=255,g=0,b=0], dWidth=100, dHeight=50]",
+        assertEquals("EllipseBox [color=#ff0000, dWidth=100, dHeight=50]",
             ellipse.toString(true));
     }
 }

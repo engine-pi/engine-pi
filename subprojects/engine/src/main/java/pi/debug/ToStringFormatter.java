@@ -31,6 +31,7 @@ import org.jspecify.annotations.Nullable;
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Setter;
+import pi.resources.color.ColorUtil;
 import pi.util.TextUtil;
 
 // Ähnliche Klasse im Apache Commons Lang Paket:
@@ -326,9 +327,9 @@ public class ToStringFormatter
             }
             else if (value instanceof Color)
             {
-                return String.valueOf(value).replace("java.awt.", "");
+                return ColorUtil.encode((Color) value);
             }
-            return String.valueOf(value);
+            return TextUtil.convertToString(value);
         }
 
         /**

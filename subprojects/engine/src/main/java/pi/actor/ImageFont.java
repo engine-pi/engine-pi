@@ -687,7 +687,7 @@ public class ImageFont
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("ImageFont");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("basePath", basePath);
         if (glyphWidth != 8 || glyphHeight != 8)
         {

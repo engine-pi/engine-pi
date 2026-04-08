@@ -210,7 +210,7 @@ public class CollisionEvent<E extends Actor>
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("CollisionEvent");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("colliding", colliding.toString());
         List<Vector> points = points();
         formatter.append("points", points.toString());

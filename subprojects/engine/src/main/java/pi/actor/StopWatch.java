@@ -355,7 +355,7 @@ public class StopWatch extends Text implements FrameUpdateListener
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("StopWatch");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("time", time());
         if (!format.equals("%02d:%02d:%02d.%03d"))
         {

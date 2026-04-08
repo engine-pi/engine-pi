@@ -803,7 +803,7 @@ public final class Vector implements Cloneable
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Vector");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("x", x);
         formatter.append("y", y);
         return formatter.format();

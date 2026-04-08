@@ -585,7 +585,7 @@ public class Image extends Actor
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Image");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("width", width, "m");
         formatter.append("height", height, "m");
         formatter.append("imageWidth", image.getWidth(), "px");

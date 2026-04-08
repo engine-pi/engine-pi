@@ -24,6 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static pi.CustomAssertions.assertToStringClassName;
+import static pi.CustomAssertions.assertToStringFieldOrder;
+import static pi.CustomAssertions.assertToStringFieldValue;
 import static pi.graphics.geom.Vector.v;
 
 import org.junit.jupiter.api.Nested;
@@ -269,8 +272,11 @@ public class VectorTest
     @Test
     public void toStringFormatter()
     {
-        assertEquals("Vector [x=1.0, y=1.0]",
-            AnsiColor.remove(v(1, 1).toString()));
+        Vector vector = new Vector(1, 1);
+        assertToStringClassName(vector);
+        assertToStringFieldOrder(new String[] { "x", "y" }, vector);
+        assertToStringFieldValue("x", 1.0, vector);
+        assertToStringFieldValue("y", 1.0, vector);
     }
 
     @Nested

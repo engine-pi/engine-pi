@@ -586,7 +586,7 @@ public final class Camera
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Camera");
+        ToStringFormatter formatter = new ToStringFormatter(this);
         formatter.append("meter", meter);
         formatter.append("focus", focus);
         if (rotation != 0)
