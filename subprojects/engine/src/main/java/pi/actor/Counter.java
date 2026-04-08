@@ -381,28 +381,29 @@ public class Counter extends Text
     @Override
     public String toString()
     {
-        ToStringFormatter formatter = new ToStringFormatter("Counter");
-        formatter.append("counter", Integer.toString(counter));
+        ToStringFormatter formatter = toStringFormatter().className(this);
 
-        if (amount != 1)
+        if (suffix != null)
         {
-            formatter.append("amount", amount);
-        }
-
-        if (prefix != null)
-        {
-            formatter.append("prefix", prefix);
+            formatter.prepend("suffix", suffix);
         }
 
         if (template != null)
         {
-            formatter.append("template", template);
+            formatter.prepend("template", template);
         }
 
-        if (suffix != null)
+        if (prefix != null)
         {
-            formatter.append("suffix", suffix);
+            formatter.prepend("prefix", prefix);
         }
+
+        if (amount != 1)
+        {
+            formatter.prepend("amount", amount);
+        }
+
+        formatter.prepend("counter", Integer.toString(counter));
         return formatter.format();
     }
 

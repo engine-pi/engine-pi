@@ -19,9 +19,9 @@
 package pi.actor;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pi.CustomAssertions.assertToStringClassName;
-import static pi.debug.ToStringFormatter.clean;
+import static pi.CustomAssertions.assertToStringFieldOrder;
+import static pi.CustomAssertions.assertToStringFieldValue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class TextTest
+class TextTest
 {
     Text text;
 
@@ -65,17 +65,20 @@ public class TextTest
         @Test
         void content()
         {
-            String result = clean(text.toString());
-            assertTrue(result.contains("Text"));
-            assertTrue(result.contains("content=\"Hello World\""));
+            assertToStringFieldValue("content", "Hello World", text);
         }
 
         @Test
         void differentContent()
         {
-            String result = clean(new Text(42).toString());
-            assertNotNull(result);
-            assertTrue(result.contains("content=\"42\""));
+            assertToStringFieldValue("content", "42", new Text(42));
+        }
+
+        @Test
+        void fieldOrder()
+        {
+            assertToStringFieldOrder(new String[] { "content", "x", "y" },
+                new Text(42));
         }
     }
 }

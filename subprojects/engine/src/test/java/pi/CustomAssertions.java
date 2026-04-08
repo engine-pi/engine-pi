@@ -23,6 +23,9 @@ import static org.junit.jupiter.api.AssertionFailureBuilder.assertionFailure;
 import pi.debug.ToStringFormatter;
 
 /**
+ * Hilfsmethoden für wiederverwendbare Assertions rund um die
+ * {@link ToStringFormatter}-Ausgabe in Tests.
+ *
  * @author Josef Friedrich
  *
  * @since 0.45.0
@@ -34,6 +37,14 @@ public class CustomAssertions
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Prüft, ob die formatierte {@code toString}-Ausgabe mit dem Klassennamen
+     * beginnt.
+     *
+     * @param actual Das zu prüfende Objekt.
+     *
+     * @since 0.45.0
+     */
     public static void assertToStringClassName(Object actual)
     {
         String className = actual.getClass().getSimpleName();
@@ -47,6 +58,15 @@ public class CustomAssertions
         }
     }
 
+    /**
+     * Prüft, ob die formatierte {@code toString}-Ausgabe den erwarteten Text
+     * enthält.
+     *
+     * @param expected Der erwartete Textausschnitt.
+     * @param actual Das zu prüfende Objekt.
+     *
+     * @since 0.45.0
+     */
     public static void assertToStringContains(String expected, Object actual)
     {
         String toStringActual = getToString(actual);
@@ -58,6 +78,16 @@ public class CustomAssertions
         }
     }
 
+    /**
+     * Prüft, ob ein Feld-Wert-Paar in der formatierten {@code toString}-
+     * Ausgabe enthalten ist.
+     *
+     * @param expectedFieldName Der erwartete Feldname.
+     * @param expectedValue Der erwartete Feldwert.
+     * @param actual Das zu prüfende Objekt.
+     *
+     * @since 0.45.0
+     */
     public static void assertToStringFieldValue(String expectedFieldName,
             Object expectedValue, Object actual)
     {
@@ -71,6 +101,52 @@ public class CustomAssertions
                 toStringActual,
                 "ToStringFormatter output doesn’t contain field value pair: "
                         + fieldValuePair);
+        }
+    }
+
+    /**
+     * Prüft, ob die angegebenen Feldnamen in der formatierten
+     * {@code toString}-Ausgabe in der erwarteten Reihenfolge vorkommen.
+     *
+     * @param expectedFieldOrder Die erwartete Reihenfolge der Feldnamen.
+     * @param actual Das zu prüfende Objekt.
+     *
+     * @since 0.45.0
+     */
+    public static void assertToStringFieldOrder(String[] expectedFieldOrder,
+            Object actual)
+    {
+        String toStringActual = getToString(actual);
+
+        int lastIndexOf = -1;
+
+        for (String field : expectedFieldOrder)
+        {
+            int indexOf = toStringActual.indexOf(", " + field + "=");
+
+            if (indexOf == -1)
+            {
+                indexOf = toStringActual.indexOf("[" + field + "=");
+            }
+
+            if (indexOf == -1)
+            {
+                fail(field,
+                    toStringActual,
+                    "ToStringFormatter output doesn’t contain field name: "
+                            + field);
+            }
+            else
+            {
+                if (indexOf < lastIndexOf)
+                {
+                    fail(field,
+                        toStringActual,
+                        "Field of the ToStringFormatter output is not in the right order: "
+                                + field);
+                }
+                lastIndexOf = indexOf;
+            }
         }
     }
 

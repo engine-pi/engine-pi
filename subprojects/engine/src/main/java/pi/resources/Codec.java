@@ -176,7 +176,6 @@ public final class Codec
         }
         catch (final Exception e)
         {
-            log.log(Level.SEVERE, e.getMessage(), e);
             throw new RuntimeException(
                     "Bild konnte nicht dekodiert werden: " + imageString);
         }

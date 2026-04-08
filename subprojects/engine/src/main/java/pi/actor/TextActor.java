@@ -311,11 +311,12 @@ public abstract class TextActor<T extends TextBox> extends BoxActor<T>
     protected ToStringFormatter toStringFormatter()
     {
         var formatter = super.toStringFormatter();
-        formatter.append("content", content());
         if (style() != FontStyle.PLAIN)
         {
-            formatter.append("style", style());
+            formatter.prepend("style", style());
         }
+
+        formatter.prepend("content", content());
         return formatter;
     }
 }

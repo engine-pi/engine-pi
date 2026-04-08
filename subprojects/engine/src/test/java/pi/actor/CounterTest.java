@@ -18,12 +18,16 @@
  */
 package pi.actor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static pi.CustomAssertions.assertToStringClassName;
+import static pi.CustomAssertions.assertToStringFieldOrder;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import pi.Controller;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class CounterTest
 {
@@ -160,5 +164,28 @@ public class CounterTest
         assertEquals(3, counter.amount());
         counter.increase();
         assertEquals("pre_3_suf", counter.content());
+    }
+
+    @Nested
+    class ToStringTest
+    {
+        @Test
+        void className()
+        {
+            assertToStringClassName(counter);
+        }
+
+        @Test
+        void fieldOrder()
+        {
+            assertToStringFieldOrder(
+                new String[]
+                { "counter", "amount", "prefix", "template", "suffix",
+                        "content", "x", "y" },
+                counter.amount(2)
+                    .prefix("pre")
+                    .suffix("suf")
+                    .template("{counter}"));
+        }
     }
 }
