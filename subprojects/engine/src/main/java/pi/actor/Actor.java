@@ -52,6 +52,7 @@ import org.jbox2d.dynamics.joints.WeldJointDef;
 
 import pi.Controller;
 import pi.Layer;
+import pi.actor.Actor.Label;
 import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
@@ -74,7 +75,9 @@ import pi.event.MouseClickListener;
 import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
+import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.TextBlockBox;
+import pi.graphics.boxes.VAlign;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -2685,24 +2688,49 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     private List<Label> labels = new CopyOnWriteArrayList<>();
 
-    public Actor label(Object content)
+    public Actor label(Object... content)
     {
         labels.add(new Label(content));
         return this;
     }
+
+    public Actor label(Label label)
+    {
+        labels.add(label);
+        return this;
+    }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/ActorLabelDemo.java
 
     /**
      * Eine Beschriftung für eine Figur.
      *
      * @since 0.45.0
      */
-    public class Label
+    public static class Label
     {
         private TextBlockBox box;
 
-        public Label(Object content)
+        public Label(Object... content)
         {
-            box = new TextBlockBox(content);
+            box = new TextBlockBox(content).hAlign(hAlign);
+        }
+
+        private VAlign vAlign = VAlign.BOTTOM;
+
+        public Label vAlign(VAlign vAlign)
+        {
+            this.vAlign = vAlign;
+            return this;
+        }
+
+        private HAlign hAlign = HAlign.CENTER;
+
+        public Label hAlign(HAlign hAlign)
+        {
+            this.hAlign = hAlign;
+            return this;
         }
     }
 }

@@ -18,12 +18,15 @@
  */
 package demos.docs.main_classes.actor;
 
+import static pi.Controller.config;
+
 import pi.Controller;
 import pi.Scene;
-import pi.actor.Image;
+import pi.actor.Actor.Label;
+import pi.actor.ActorCreator;
+import pi.actor.Rectangle;
 
 /**
- *
  * @author Josef Friedrich
  *
  * @since 0.45.0
@@ -31,17 +34,26 @@ import pi.actor.Image;
 public class ActorLabelDemo extends Scene
 {
 
+    Label label;
+
     public ActorLabelDemo()
     {
-        info().title("label (Beschriftung)");
-        add(new Image("openpixelproject/various/opp_promo_cavegirl.png")
-            .label("Das ist eine Beschriftung (label)"));
+        info("label (Beschriftung)");
+        ActorCreator.createCage(this);
 
+        label = new Label("Das ist eine Beschriftung", "(label)");
+
+        add(new Rectangle(4, 2).makeDynamic()
+            .applyForce(80000, 110000)
+            .restitution(1)
+            .rotateBy(42)
+            .label(label));
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
+        config.debug.enabled(true).renderAABBs(true);
         Controller.start(new ActorLabelDemo());
     }
 }
