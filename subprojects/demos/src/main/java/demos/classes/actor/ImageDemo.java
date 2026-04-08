@@ -50,10 +50,12 @@ public class ImageDemo extends Scene implements KeyStrokeListener
     public ImageDemo()
     {
         info().title("Demonstriert die Figur Image")
-            .help("Tastenkürzel: \n" + "1: pixelMultiplication = 1\n"
-                    + "2: pixelMultiplication = 2\n"
-                    + "3: pixelMultiplication = 3\n" + "v: vertikal spiegeln\n"
-                    + "h: horizontal spiegeln\n");
+            .help("Tastenkürzel: ",
+                "1: pixelMultiplication = 1",
+                "2: pixelMultiplication = 2",
+                "3: pixelMultiplication = 3",
+                "v: vertikal spiegeln",
+                "h: horizontal spiegeln");
         box1 = new Image("dude/box/obj_box004.png").pixelPerMeter(30);
         box1.x(-7).y(-3);
         add(box1);

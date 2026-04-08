@@ -41,8 +41,11 @@ public class StopWatchDemo extends Scene
     public StopWatchDemo()
     {
         info().title("Demonstriert die Figur Stoppuhr (StopWatch)")
-            .help("Tastenkürzel: \n" + "o: stop()\n" + "r: reset()\n"
-                    + "s: start()\n" + "t: toggle()\n");
+            .help("Tastenkürzel:",
+                "o: stop()",
+                "r: reset()",
+                "s: start()",
+                "t: toggle()");
 
         watch = new StopWatch();
         watch.height(3).center(0, 0);

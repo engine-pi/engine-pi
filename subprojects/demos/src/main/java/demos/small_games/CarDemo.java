@@ -74,8 +74,10 @@ public class CarDemo extends Scene implements FrameUpdateListener
     public CarDemo()
     {
         info().title("Auto-Simulation")
-            .help(
-                "Tastenkürzel:\nl: vorwärts waren\nj: rückwärts fahren\nLeertaste: bremsen");
+            .help("Tastenkürzel:",
+                "l: vorwärts waren",
+                "j: rückwärts fahren",
+                "Leertaste: bremsen");
         backgroundColor(new Color(207, 239, 252));
         Layer blend = new Layer();
         Rectangle blender = new Rectangle((double) WIDTH / ZOOM,

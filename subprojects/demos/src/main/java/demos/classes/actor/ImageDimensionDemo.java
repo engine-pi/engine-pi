@@ -35,17 +35,19 @@ import pi.event.KeyStrokeListener;
  */
 public class ImageDimensionDemo extends Scene implements KeyStrokeListener
 {
-
     Image traveler;
 
     public ImageDimensionDemo()
     {
         info().title(
             "Demonstriert wie die Abmessungen der Figur Image verändert werden können.")
-            .help("Tastenkürzel: \n" + "1: pixelPerMeter = 32\n"
-                    + "2: pixelPerMeter = 64\n" + "3: pixelPerMeter = 128\n"
-                    + "w: width = 5m\n" + "h: height = 5m\n"
-                    + "s: size(1, 5) width = 1m height = 5m\n");
+            .help("Tastenkürzel:",
+                "1: pixelPerMeter = 32",
+                "2: pixelPerMeter = 64",
+                "3: pixelPerMeter = 128",
+                "w: width = 5m",
+                "h: height = 5m",
+                "s: size(1, 5) width = 1m height = 5m");
 
         traveler = new Image("openpixelproject/various/opp_promo_traveler.png");
         traveler.center(0, 0);
