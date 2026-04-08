@@ -140,7 +140,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add more instant actors: Circle, Text.
+- Add more instant actors: `Circle`, `Text`.
 - Add BlueJ template as a build target.
 
 ### Changed
@@ -177,7 +177,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add the [Graphics and Games](https://gng4java.informatikschulbuch.de/allclasses.html) engine from Cornelsen as `little_engine`.
+- Add the [Graphics and Games](https://gng4java.informatikschulbuch.de/allclasses.html)
+  engine from Cornelsen as `little_engine`.
 
 ## [v0.29.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.29.0) - 2024-08-05
 
@@ -185,7 +186,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Use jbox2d from https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/jbox2d-library.
+- Use jbox2d from
+  https://central.sonatype.com/artifact/de.pirckheimer-gymnasium/jbox2d-library.
 - Update eclipse formatter.
 
 ## [v0.28.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.28.0) - 2024-08-01
@@ -198,8 +200,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
-- Remove some addRectangle methods.
-- Remove some addCircle overloads.
+- Remove some `addRectangle` methods.
+- Remove some `addCircle` overloads.
 
 ## [v0.27.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.27.0) - 2024-07-29
 
@@ -230,8 +232,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Add new class `ColorContainerVisualizer`.
-- Add method overload ColorContainer.add(String, int, int, int, int).
-- Add new overload for Animation.createFromImages.
+- Add method overload `ColorContainer.add(String, int, int, int, int)`.
+- Add new overload for `Animation.createFromImages`.
 - Add new class `LetterTileMap`.
 - Add new class `StateFulImagesAnimation`.
 - Add new class `NamedColor`.
@@ -260,11 +262,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Refactor the actor Image.
+- Refactor the actor `Image`.
 
 ### Fixed
 
-- Fix overload ImageContainer.get() not accepting a Color array.
+- Fix overload `ImageContainer.get()` not accepting a `Color` array.
 
 ## [v0.23.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.23.0) - 2024-07-09
 
@@ -272,9 +274,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add new get overloads in the class ImageContainer.
-- Add new a actor named ImageFontText.
-- Extend the TextUtils.
+- Add new get overloads in the class `ImageContainer`.
+- Add new a actor named `ImageFontText`.
+- Extend the `TextUtils`.
 
 ## [v0.22.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.22.0) - 2024-07-02
 
@@ -290,7 +292,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Add more method overloads for the repeat method of the interface FrameUpdateListenerRegistration.
+- Add more method overloads for the repeat method of the interface
+  `FrameUpdateListenerRegistration`.
 
 ## [v0.20.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.20.0) - 2024-06-25
 
@@ -327,7 +330,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Convert project in a monorepo with the three Maven packages `engine-pi-project` `engine-pi` `engine-pi-demos`.
+- Convert project in a monorepo with the three Maven packages
+  `engine-pi-project`, `engine-pi` and `engine-pi-demos`.
 
 ## [v0.17.0](https://github.com/engine-pi/engine-pi/releases/tag/v0.17.0) - 2024-06-17
 
@@ -360,8 +364,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Change logo.
-- Rename MouseWheelListener into MouseScrollListener to avoid confusion with JDK version.
-- Rename KeyListener into KeyStrokeListener to avoid confusing with java.awt.event.KeyListener.
+- Rename `MouseWheelListener` into `MouseScrollListener` to avoid confusion
+  with JDK version.
+- Rename `KeyListener` into `KeyStrokeListener` to avoid confusing with
+  `java.awt.event.KeyListener`.
 
 ### Removed
 
@@ -491,7 +497,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Combine all event specific classes in the package event. `PeriodicTask`,
   `SingleTask` and `FrameUpdateListener` are now located in the package `event`.
 - Extend class `PeriodicTask`.
-- Rewrite global static keyboard listener. `Game.addKeyListener()` and `Game.removeKeyListener()` behave now
+- Rewrite global static keyboard listener. `Game.addKeyListener()` and
+  `Game.removeKeyListener()` behave now
   like `scene.addKeyListener()` or `actor.addKeyListener()`.
 
 
