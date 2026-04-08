@@ -40,7 +40,7 @@ import org.junit.jupiter.api.condition.DisabledIf;
 import pi.Controller;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-public class ImageUtilTest
+class ImageUtilTest
 {
     void assertImageEquals(BufferedImage expected, BufferedImage actual)
     {
@@ -52,7 +52,7 @@ public class ImageUtilTest
     }
 
     @Test
-    public void copy()
+    void copy()
     {
         BufferedImage image = images.get(
             "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
@@ -80,7 +80,7 @@ public class ImageUtilTest
         static BufferedImage expected = images.get("images/rgb.png");
 
         @Test
-        public void colorArray() throws IOException
+        void colorArray() throws IOException
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
                 new Color[]
@@ -91,7 +91,7 @@ public class ImageUtilTest
         }
 
         @Test
-        public void stringArray() throws IOException
+        void stringArray() throws IOException
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
                 new String[]
@@ -102,7 +102,7 @@ public class ImageUtilTest
         }
 
         @Test
-        public void map() throws IOException
+        void map() throws IOException
         {
             HashMap<Color, Color> map = new HashMap<>();
             map.put(white, red);
@@ -115,7 +115,7 @@ public class ImageUtilTest
 
     @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
     @Test
-    public void optimizeImage()
+    void optimizeImage()
     {
         assertFalse(GraphicsEnvironment.isHeadless());
         BufferedImage img = null;

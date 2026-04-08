@@ -22,7 +22,7 @@ import org.junit.jupiter.api.condition.DisabledIf;
  * and container listener patterns.
  */
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-public class ImageContainerTest
+class ImageContainerTest
 {
     private ImageContainer container;
 
@@ -43,7 +43,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void loadImageFromResources()
+    void loadImageFromResources()
     {
         BufferedImage image = container.get(TEST_IMAGE);
 
@@ -54,7 +54,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void cacheReturnsSameInstance()
+    void cacheReturnsSameInstance()
     {
         BufferedImage image1 = container.get(TEST_IMAGE);
         BufferedImage image2 = container.get(TEST_IMAGE);
@@ -63,7 +63,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void containsChecksForLoadedImage()
+    void containsChecksForLoadedImage()
     {
         assertFalse(container.contains(TEST_IMAGE),
             "Container should not contain unloaded image");
@@ -75,7 +75,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void countTracksLoadedImages()
+    void countTracksLoadedImages()
     {
         assertEquals(0, container.count(), "Initial count should be zero");
 
@@ -84,7 +84,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void addManuallyInsertedImage()
+    void addManuallyInsertedImage()
     {
         BufferedImage synthetic = new BufferedImage(10, 10,
                 BufferedImage.TYPE_INT_ARGB);
@@ -102,7 +102,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void clearRemovesAllImages()
+    void clearRemovesAllImages()
     {
         container.get(TEST_IMAGE);
         String synthetic = "synthetic";
@@ -121,7 +121,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void getWithPixelMultiplicationScalesImage()
+    void getWithPixelMultiplicationScalesImage()
     {
         int factor = 2;
 
@@ -137,7 +137,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void getWithColorReplacementChangesColors()
+    void getWithColorReplacementChangesColors()
     {
         Color[] fromColors = { Color.BLUE };
         Color[] toColors = { Color.RED };
@@ -152,7 +152,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void getWithPixelMultiplicationAndColorReplacement()
+    void getWithPixelMultiplicationAndColorReplacement()
     {
         int factor = 2;
         Color[] fromColors = { Color.BLUE };
@@ -168,7 +168,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void containerListenerNotifiedOnAdd()
+    void containerListenerNotifiedOnAdd()
     {
         final boolean[] listenerCalled = { false };
 
@@ -195,7 +195,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void containerListenerNotifiedOnClear()
+    void containerListenerNotifiedOnClear()
     {
         final boolean[] listenerCalled = { false };
 
@@ -223,7 +223,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void removeContainerListenerStopsNotifications()
+    void removeContainerListenerStopsNotifications()
     {
         final int[] callCount = { 0 };
 
@@ -256,7 +256,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void manipulatorModifiesAddedImage()
+    void manipulatorModifiesAddedImage()
     {
         final int[] manipulatorCalled = { 0 };
 
@@ -281,7 +281,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void removeManipulatorStopsModification()
+    void removeManipulatorStopsModification()
     {
         final int[] manipulatorCalled = { 0 };
 
@@ -309,7 +309,7 @@ public class ImageContainerTest
     }
 
     @Test
-    public void throwsException()
+    void throwsException()
     {
         ResourceLoadException exception = assertThrows(
             ResourceLoadException.class,

@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class GroupTest
+class GroupTest
 {
     private Circle circle;
 
@@ -38,7 +38,7 @@ public class GroupTest
     private Group<Actor> group;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         circle = new Circle();

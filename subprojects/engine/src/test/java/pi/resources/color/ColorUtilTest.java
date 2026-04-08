@@ -38,10 +38,10 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ColorUtilTest
+class ColorUtilTest
 {
     @Test
-    public void malformedColorHexString()
+    void malformedColorHexString()
     {
 
         assertThrows(NumberFormatException.class,
@@ -53,7 +53,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getColorFromHexString")
-    public void colorFromHexString(String colorHex, Color expectedColor)
+    void colorFromHexString(String colorHex, Color expectedColor)
     {
         Color colorDecoded = ColorUtil.decode(colorHex);
         assertEquals(expectedColor, colorDecoded);
@@ -67,7 +67,7 @@ public class ColorUtilTest
     }
 
     @Nested
-    public class DecodeTest
+    class DecodeTest
     {
         String red200 = "#ff0000c8";
 
@@ -76,31 +76,31 @@ public class ColorUtilTest
         Color alphaRed = new Color(255, 0, 0, 200);
 
         @Test
-        public void redFromAlphaHexString()
+        void redFromAlphaHexString()
         {
             assertEquals(alphaRed.getRed(), redDecoded.getRed());
         }
 
         @Test
-        public void greenFromAlphaHexString()
+        void greenFromAlphaHexString()
         {
             assertEquals(alphaRed.getGreen(), redDecoded.getGreen());
         }
 
         @Test
-        public void blueFromAlphaHexString()
+        void blueFromAlphaHexString()
         {
             assertEquals(alphaRed.getBlue(), redDecoded.getBlue());
         }
 
         @Test
-        public void alphaFromAlphaHexString()
+        void alphaFromAlphaHexString()
         {
             assertEquals(alphaRed.getAlpha(), redDecoded.getAlpha());
         }
 
         @Test
-        public void stringArray()
+        void stringArray()
         {
             Color color = ColorUtil.decode(new String[] { "#ff0000ff" })[0];
             assertEquals(color.getRed(), 255);
@@ -112,7 +112,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getSolidColorFromAlphaHexString")
-    public void solidColorFromAlphaHexString(String color, Boolean isSolid,
+    void solidColorFromAlphaHexString(String color, Boolean isSolid,
             Color solidColor)
     {
         Color colorDecoded = ColorUtil.decode(color, isSolid);
@@ -130,7 +130,7 @@ public class ColorUtilTest
 
     @ParameterizedTest
     @MethodSource("getHexStringWithoutHashtag")
-    public void hexStringWithoutHashtag(String color, Color expectedColor)
+    void hexStringWithoutHashtag(String color, Color expectedColor)
     {
         Color colorDecoded = ColorUtil.decode(color);
         assertEquals(expectedColor, colorDecoded);
@@ -146,7 +146,7 @@ public class ColorUtilTest
     }
 
     @Test
-    public void encodeColor()
+    void encodeColor()
     {
         String redEncoded = ColorUtil.encode(Color.RED);
         String greenEncoded = ColorUtil.encode(Color.GREEN);
@@ -161,7 +161,7 @@ public class ColorUtilTest
     }
 
     @Test
-    public void encodeAlphaColor()
+    void encodeAlphaColor()
     {
         String redEncoded = ColorUtil.encode(new Color(255, 0, 0, 200));
         String greenEncoded = ColorUtil.encode(new Color(0, 255, 0, 200));
@@ -175,7 +175,7 @@ public class ColorUtilTest
     @CsvSource(
     { "Negative, -10, 0", "Zero, 0, 0", "InRange, 158, 158", "Max, 255, 255",
             "OutOfRange, 300, 255" })
-    public void rgbBounds(String rgbBound, int colorValue, int expectedRgb)
+    void rgbBounds(String rgbBound, int colorValue, int expectedRgb)
     {
         // arrange, act
         int actualRgb = ColorUtil.ensureColorValueRange(colorValue);
@@ -184,14 +184,14 @@ public class ColorUtilTest
     }
 
     @Test
-    public void premultiply()
+    void premultiply()
     {
         Color color = new Color(225, 0, 0);
         assertEquals(new Color(225, 0, 0), ColorUtil.premultiply(color));
     }
 
     @Test
-    public void changeHSB()
+    void changeHSB()
     {
         Color color = new Color(225, 0, 0);
         assertEquals(new Color(225, 0, 0), ColorUtil.chanceHSB(color, (hsb) -> {

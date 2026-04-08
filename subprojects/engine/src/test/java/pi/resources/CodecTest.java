@@ -14,10 +14,10 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
-public class CodecTest
+class CodecTest
 {
     @Test
-    public void constructorThrowsUnsupportedOperationException()
+    void constructorThrowsUnsupportedOperationException()
             throws ReflectiveOperationException
     {
         Constructor<Codec> constructor = Codec.class.getDeclaredConstructor();
@@ -32,7 +32,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeAngleAndDecodeAngleRoundTrip()
+    void encodeAngleAndDecodeAngleRoundTrip()
     {
         float[] angles = { -450f, -10f, 0f, 90f, 179.9f, 359.99f, 721f };
 
@@ -50,7 +50,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeAnglePreciseAndDecodeAngleRoundTrip()
+    void encodeAnglePreciseAndDecodeAngleRoundTrip()
     {
         float[] angles = { -30.5f, 0f, 45.12f, 180.99f, 359.99f, 390.15f };
 
@@ -68,7 +68,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeAndDecodeSmallFloatingPointNumberRoundTrip()
+    void encodeAndDecodeSmallFloatingPointNumberRoundTrip()
     {
         short encoded = Codec.encodeSmallFloatingPointNumber(12.34f, 2);
 
@@ -78,7 +78,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeSmallFloatingPointNumberRejectsOutOfRange()
+    void encodeSmallFloatingPointNumberRejectsOutOfRange()
     {
         assertThrows(IllegalArgumentException.class,
             () -> Codec.encodeSmallFloatingPointNumber(-0.01f, 2));
@@ -87,7 +87,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeAndDecodeBytesRoundTrip()
+    void encodeAndDecodeBytesRoundTrip()
     {
         byte[] bytes = "codec-bytes".getBytes(StandardCharsets.UTF_8);
 
@@ -98,7 +98,7 @@ public class CodecTest
     }
 
     @Test
-    public void encodeImageRejectsNullImage()
+    void encodeImageRejectsNullImage()
     {
         assertThrows(IllegalArgumentException.class,
             () -> Codec.encode((BufferedImage) null));
@@ -107,14 +107,14 @@ public class CodecTest
     }
 
     @Test
-    public void decodeImageRejectsNullImageString()
+    void decodeImageRejectsNullImageString()
     {
         assertThrows(IllegalArgumentException.class,
             () -> Codec.decodeImage(null));
     }
 
     @Test
-    public void decodeImageThrowsRuntimeExceptionForInvalidInput()
+    void decodeImageThrowsRuntimeExceptionForInvalidInput()
     {
         assertThrows(RuntimeException.class,
             () -> Codec.decodeImage("this-is-not-a-valid-image"));
@@ -122,7 +122,7 @@ public class CodecTest
 
     @Test
     @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-    public void encodeImageWithUnsupportedFormatFallsBackToPng()
+    void encodeImageWithUnsupportedFormatFallsBackToPng()
     {
         BufferedImage image = new BufferedImage(2, 2,
                 BufferedImage.TYPE_INT_ARGB);

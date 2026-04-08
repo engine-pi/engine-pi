@@ -43,7 +43,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import pi.EnLocale;
 
-public class TextUtilTest
+class TextUtilTest
 {
     @ExtendWith(EnLocale.class)
     @Nested

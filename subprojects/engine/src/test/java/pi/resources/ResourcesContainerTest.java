@@ -13,10 +13,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
 
-public class ResourcesContainerTest
+class ResourcesContainerTest
 {
     @Test
-    public void getCachesAndForceLoadReloads()
+    void getCachesAndForceLoadReloads()
     {
         var container = new TestContainer();
 
@@ -31,7 +31,7 @@ public class ResourcesContainerTest
     }
 
     @Test
-    public void getWithSupplierLoadsOnlyOnce()
+    void getWithSupplierLoadsOnlyOnce()
     {
         var container = new TestContainer();
         var supplierCalls = new AtomicInteger();
@@ -51,7 +51,7 @@ public class ResourcesContainerTest
     }
 
     @Test
-    public void addManipulatorTransformsResourceAndListenerGetsTransformedValue()
+    void addManipulatorTransformsResourceAndListenerGetsTransformedValue()
     {
         var container = new TestContainer();
         var listener = new RecordingListener();
@@ -68,7 +68,7 @@ public class ResourcesContainerTest
     }
 
     @Test
-    public void removeNotifiesListener()
+    void removeNotifiesListener()
     {
         var container = new TestContainer();
         var listener = new RecordingListener();
@@ -84,7 +84,7 @@ public class ResourcesContainerTest
     }
 
     @Test
-    public void aliasCanResolveLoadedResource()
+    void aliasCanResolveLoadedResource()
     {
         var container = new TestContainer();
         container.useAlias = true;
@@ -97,7 +97,7 @@ public class ResourcesContainerTest
     }
 
     @Test
-    public void loadExceptionIsWrapped()
+    void loadExceptionIsWrapped()
     {
         var container = new TestContainer();
         container.throwOnLoad = true;

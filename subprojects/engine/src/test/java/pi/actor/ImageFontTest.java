@@ -34,12 +34,12 @@ import pi.util.TextAlignment;
  * @author Josef Friedrich
  */
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-public class ImageFontTest
+class ImageFontTest
 {
     ImageFont imageFont;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         imageFont = new ImageFont("image-font/tetris",
                 ImageFontCaseSensitivity.TO_UPPER);
@@ -51,34 +51,34 @@ public class ImageFontTest
     }
 
     @Test
-    public void singleLine()
+    void singleLine()
     {
         write(imageFont.render("Hello, World."), "single-line");
     }
 
     @Test
-    public void multiLine()
+    void multiLine()
     {
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."),
             "multi-line");
     }
 
     @Test
-    public void textAlignmentCenter()
+    void textAlignmentCenter()
     {
         imageFont.alignment(TextAlignment.CENTER);
         write(imageFont.render("Hello,\nWorld.\nHello, Universe."), "center");
     }
 
     @Test
-    public void caseSensitivity()
+    void caseSensitivity()
     {
         imageFont.caseSensitivity(ImageFontCaseSensitivity.TO_LOWER);
         assertThrows(RuntimeException.class, () -> imageFont.render("hello"));
     }
 
     @Test
-    public void methodChaining()
+    void methodChaining()
     {
         write(
             imageFont.basePath("image-font/tetris")
@@ -94,13 +94,13 @@ public class ImageFontTest
     }
 
     @Test
-    public void throwExceptionFalse()
+    void throwExceptionFalse()
     {
         write(imageFont.throwException(false).render("!"), "throw-no-error");
     }
 
     @Test
-    public void throwExceptionTrue()
+    void throwExceptionTrue()
     {
         assertThrows(RuntimeException.class, () -> imageFont.render("!"));
     }

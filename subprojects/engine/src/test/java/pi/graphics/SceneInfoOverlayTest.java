@@ -49,7 +49,7 @@ import pi.graphics.boxes.VAlign;
  *
  * @since 0.45.0
  */
-public class SceneInfoOverlayTest
+class SceneInfoOverlayTest
 {
     private Scene mockScene;
 

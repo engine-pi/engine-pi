@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Josef Friedrich
  */
-public class VersionTest
+class VersionTest
 {
     @Test
     void getJarName()

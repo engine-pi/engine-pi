@@ -13,7 +13,7 @@ import pi.resources.ResourceLoadException;
 import pi.resources.Resources;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-public class FontContainerTest
+class FontContainerTest
 {
     // Nicht von Controller importieren, da die Tests auf Github headless
     // laufen.
@@ -27,21 +27,21 @@ public class FontContainerTest
     }
 
     @Test
-    public void loadFromResources()
+    void loadFromResources()
     {
         var font = container.get("fonts/Cantarell-Bold.ttf");
         assertEquals(font.getName(), "Cantarell Bold");
     }
 
     @Test
-    public void loadSystemFonts()
+    void loadSystemFonts()
     {
         var font = container.get("DejaVu Serif");
         assertEquals(font.getName(), "DejaVu Serif");
     }
 
     @Test
-    public void defaultFont()
+    void defaultFont()
     {
         var font = container.defaultFont(FontStyle.PLAIN);
         assertEquals("Cantarell Regular", font.getName());
@@ -58,32 +58,32 @@ public class FontContainerTest
         }
 
         @Test
-        public void plain()
+        void plain()
         {
             assertEquals(0, getStyle(FontStyle.PLAIN));
         }
 
         @Test
-        public void bold()
+        void bold()
         {
             assertEquals(1, getStyle(FontStyle.BOLD));
         }
 
         @Test
-        public void italic()
+        void italic()
         {
             assertEquals(2, getStyle(FontStyle.ITALIC));
         }
 
         @Test
-        public void boldItalic()
+        void boldItalic()
         {
             assertEquals(3, getStyle(FontStyle.BOLD_ITALIC));
         }
     }
 
     @Test
-    public void throwsException()
+    void throwsException()
     {
         ResourceLoadException exception = assertThrows(
             ResourceLoadException.class,

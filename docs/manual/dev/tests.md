@@ -11,6 +11,25 @@ gleichen Reihenfolge wie die der zu testenden Methoden, um die
 Nachvollziehbarkeit zu erleichtern. Der Name der Testklasse endet stets mit dem
 Suffix `Test`, sodass ihre Funktion eindeutig erkennbar ist.
 
+Test Klassen und Test Methoden müssen nicht `public`[^junit] sein, sodass wir
+diese Sichtbarkeitsoperatoren weg lassen können.
+
+[^junit]:
+    https://docs.junit.org/6.0.3/writing-tests/test-classes-and-methods.html
+
+    Class and method visibility
+
+    Test classes, test methods, and lifecycle methods are not required to be
+    `public`, but they must not be `private`.
+
+    It is generally recommended to omit the `public` modifier for test classes,
+    test methods, and lifecycle methods unless there is a technical reason for
+    doing so – for example, when a test class is extended by a test class in
+    another package. Another technical reason for making classes and methods
+    `public` is to simplify testing on the module path when using the Java Module
+    System.
+
+
 ```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -32,7 +51,7 @@ import pi.debug.ToStringFormatter;
  *
  * @since 0.42.0
  */
-public class EllipseBoxTest
+class EllipseBoxTest
 {
     EllipseBox ellipse;
 

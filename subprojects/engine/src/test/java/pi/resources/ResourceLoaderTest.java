@@ -18,13 +18,13 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-public class ResourceLoaderTest
+class ResourceLoaderTest
 {
     @TempDir
     Path tempDir;
 
     @Test
-    public void loadReadsBytesFromFileSystem() throws IOException
+    void loadReadsBytesFromFileSystem() throws IOException
     {
         Path file = tempDir.resolve("data.bin");
         byte[] content = new byte[] { 1, 2, 3, 4 };
@@ -36,7 +36,7 @@ public class ResourceLoaderTest
     }
 
     @Test
-    public void loadAsStreamReadsFileSystemFile() throws IOException
+    void loadAsStreamReadsFileSystemFile() throws IOException
     {
         Path file = tempDir.resolve("stream.txt");
         Files.writeString(file, "hello", StandardCharsets.UTF_8);
@@ -50,7 +50,7 @@ public class ResourceLoaderTest
     }
 
     @Test
-    public void loadAsFileReturnsExistingFile() throws IOException
+    void loadAsFileReturnsExistingFile() throws IOException
     {
         Path file = tempDir.resolve("asset.txt");
         Files.writeString(file, "engine", StandardCharsets.UTF_8);
@@ -63,7 +63,7 @@ public class ResourceLoaderTest
     }
 
     @Test
-    public void getWrapsNonMarkableStreams() throws IOException
+    void getWrapsNonMarkableStreams() throws IOException
     {
         Path file = tempDir.resolve("wrapped.txt");
         Files.writeString(file, "abc", StandardCharsets.UTF_8);
@@ -79,7 +79,7 @@ public class ResourceLoaderTest
     }
 
     @Test
-    public void readWithCharsetReadsContent() throws IOException
+    void readWithCharsetReadsContent() throws IOException
     {
         Path file = tempDir.resolve("latin1.txt");
         byte[] bytes = "gr\u00FCn".getBytes(StandardCharsets.ISO_8859_1);
@@ -92,7 +92,7 @@ public class ResourceLoaderTest
     }
 
     @Test
-    public void readReturnsNullForMissingFile()
+    void readReturnsNullForMissingFile()
     {
         String missing = tempDir.resolve("missing.txt").toString();
 

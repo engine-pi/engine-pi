@@ -29,26 +29,26 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class CounterTest
+class CounterTest
 {
     private Counter counter;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         counter = new Counter();
     }
 
     @Test
-    public void initialization()
+    void initialization()
     {
         assertEquals(0, counter.counter());
         assertEquals("0", counter.content());
     }
 
     @Test
-    public void constructorWithParameters()
+    void constructorWithParameters()
     {
         Counter c = new Counter(5, "prefix_", "{counter}_template", "_suffix");
         assertEquals(5, c.counter());
@@ -56,7 +56,7 @@ public class CounterTest
     }
 
     @Test
-    public void counter()
+    void counter()
     {
         counter.counter(10);
         assertEquals(10, counter.counter());
@@ -64,14 +64,14 @@ public class CounterTest
     }
 
     @Test
-    public void increase()
+    void increase()
     {
         assertEquals(1, counter.increase());
         assertEquals(1, counter.counter());
     }
 
     @Test
-    public void increaseWithCustomAmount()
+    void increaseWithCustomAmount()
     {
         counter.amount(5);
         assertEquals(5, counter.increase());
@@ -79,7 +79,7 @@ public class CounterTest
     }
 
     @Test
-    public void decrease()
+    void decrease()
     {
         counter.counter(10);
         assertEquals(9, counter.decrease());
@@ -87,7 +87,7 @@ public class CounterTest
     }
 
     @Test
-    public void decreaseWithCustomAmount()
+    void decreaseWithCustomAmount()
     {
         counter.counter(20);
         counter.amount(3);
@@ -96,7 +96,7 @@ public class CounterTest
     }
 
     @Test
-    public void reset()
+    void reset()
     {
         counter.counter(100);
         counter.reset();
@@ -105,7 +105,7 @@ public class CounterTest
     }
 
     @Test
-    public void prefix()
+    void prefix()
     {
         counter.prefix("Zähler: ");
         counter.update();
@@ -113,7 +113,7 @@ public class CounterTest
     }
 
     @Test
-    public void suffix()
+    void suffix()
     {
         counter.suffix(" Punkte");
         counter.update();
@@ -121,7 +121,7 @@ public class CounterTest
     }
 
     @Test
-    public void template()
+    void template()
     {
         counter.template("Score: {counter}");
         counter.update();
@@ -129,7 +129,7 @@ public class CounterTest
     }
 
     @Test
-    public void templateWithPrefixAndSuffix()
+    void templateWithPrefixAndSuffix()
     {
         counter.prefix("[").template("{counter}/10").suffix("]");
         counter.counter(5);
@@ -138,20 +138,20 @@ public class CounterTest
     }
 
     @Test
-    public void templateWithoutPlaceholder()
+    void templateWithoutPlaceholder()
     {
         assertThrows(RuntimeException.class, () -> counter.template("Invalid"));
     }
 
     @Test
-    public void amount()
+    void amount()
     {
         counter.amount(7);
         assertEquals(7, counter.amount());
     }
 
     @Test
-    public void gettersAndSetters()
+    void gettersAndSetters()
     {
         counter.prefix("pre_");
         counter.suffix("_suf");

@@ -37,12 +37,12 @@ import pi.graphics.geom.Vector;
  *
  * @since 0.45.0
  */
-public class LineTest
+class LineTest
 {
     Line line;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         line = new Line(1, 2, 3, 4);

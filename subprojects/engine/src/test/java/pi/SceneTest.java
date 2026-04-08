@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.46.0
  */
-public class SceneTest
+class SceneTest
 {
     Scene scene;
 

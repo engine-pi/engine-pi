@@ -30,12 +30,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class StarTest
+class StarTest
 {
     private Star star;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         star = new Star();
@@ -45,7 +45,7 @@ public class StarTest
     class ConstructorTest
     {
         @Test
-        public void defaultConstructor()
+        void defaultConstructor()
         {
             assertEquals(7, star.numPoints());
             assertEquals(2.0, star.radius());
@@ -53,7 +53,7 @@ public class StarTest
         }
 
         @Test
-        public void constructorWithParameters()
+        void constructorWithParameters()
         {
             Star customStar = new Star(5, 3.0, 1.5);
             assertEquals(5, customStar.numPoints());
@@ -66,13 +66,13 @@ public class StarTest
     class NumPointsTest
     {
         @Test
-        public void getter()
+        void getter()
         {
             assertEquals(7, star.numPoints());
         }
 
         @Test
-        public void setter()
+        void setter()
         {
             Star result = star.numPoints(5);
             assertEquals(5, star.numPoints());
@@ -84,13 +84,13 @@ public class StarTest
     class RadiusTest
     {
         @Test
-        public void getter()
+        void getter()
         {
             assertEquals(2.0, star.radius());
         }
 
         @Test
-        public void setter()
+        void setter()
         {
             Star result = star.radius(4.0);
             assertEquals(4.0, star.radius());
@@ -102,13 +102,13 @@ public class StarTest
     class InnerRadiusTest
     {
         @Test
-        public void getter()
+        void getter()
         {
             assertEquals(1.0, star.innerRadius());
         }
 
         @Test
-        public void setter()
+        void setter()
         {
             Star result = star.innerRadius(0.5);
             assertEquals(0.5, star.innerRadius());
@@ -117,7 +117,7 @@ public class StarTest
     }
 
     @Test
-    public void chaining()
+    void chaining()
     {
         Star result = star.numPoints(5).radius(3.0).innerRadius(1.5);
         assertSame(star, result);
@@ -136,7 +136,7 @@ public class StarTest
         }
 
         @Test
-        public void toStringMethod()
+        void toStringMethod()
         {
             String result = star.toString();
             assertNotNull(result);

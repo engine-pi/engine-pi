@@ -35,7 +35,7 @@ import org.mockito.MockitoAnnotations;
 
 import pi.Controller;
 
-public class ImageTest
+class ImageTest
 {
     private Image image;
 
@@ -45,7 +45,7 @@ public class ImageTest
     private Graphics2D graphics2D;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         MockitoAnnotations.openMocks(this);
         bufferedImage = new BufferedImage(100, 50, BufferedImage.TYPE_INT_RGB);
@@ -54,14 +54,14 @@ public class ImageTest
     }
 
     @Test
-    public void constructorWithDimensions()
+    void constructorWithDimensions()
     {
         assertEquals(2.0, image.width(), 0.01);
         assertEquals(1.0, image.height(), 0.01);
     }
 
     @Test
-    public void imageGetter()
+    void imageGetter()
     {
         assertEquals(bufferedImage, image.image());
     }
@@ -69,13 +69,13 @@ public class ImageTest
     /* width */
 
     @Test
-    public void widthGetter()
+    void widthGetter()
     {
         assertEquals(2.0, image.width(), 0.01);
     }
 
     @Test
-    public void widthSetter()
+    void widthSetter()
     {
         image.width(1);
         assertEquals(1.0, image.width(), 0.01);
@@ -86,13 +86,13 @@ public class ImageTest
     /* height */
 
     @Test
-    public void heightGetter()
+    void heightGetter()
     {
         assertEquals(1.0, image.height(), 0.01);
     }
 
     @Test
-    public void heightSetter()
+    void heightSetter()
     {
         image.height(2);
         assertEquals(2.0, image.height(), 0.01);
@@ -103,13 +103,13 @@ public class ImageTest
     /* pixelPerMeter */
 
     @Test
-    public void pixelPerMeterGetter()
+    void pixelPerMeterGetter()
     {
         assertEquals(50.0, image.pixelPerMeter(), 0.01);
     }
 
     @Test
-    public void pixelPerMeterSetter()
+    void pixelPerMeterSetter()
     {
         image.pixelPerMeter(25);
         assertEquals(4.0, image.width(), 0.01);
@@ -121,7 +121,7 @@ public class ImageTest
     }
 
     @Test
-    public void sizeInPixels()
+    void sizeInPixels()
     {
         Dimension dim = image.sizeInPx();
         assertEquals(100, dim.width);
@@ -129,7 +129,7 @@ public class ImageTest
     }
 
     @Test
-    public void sizeSetter()
+    void sizeSetter()
     {
         image.size(3.0, 2.0);
         assertEquals(3.0, image.width(), 0.01);
@@ -141,7 +141,7 @@ public class ImageTest
     }
 
     @Test
-    public void reset()
+    void reset()
     {
         image.flippedHorizontally(true).flippedVertically(true);
         assertEquals(2.0, image.width(), 0.01);
@@ -162,7 +162,7 @@ public class ImageTest
     /* flippedHorizontally */
 
     @Test
-    public void flipHorizontally()
+    void flipHorizontally()
     {
         assertFalse(image.flippedHorizontally());
         image.toggleFlipHorizontally();
@@ -170,7 +170,7 @@ public class ImageTest
     }
 
     @Test
-    public void flippedHorizontallyToggle()
+    void flippedHorizontallyToggle()
     {
         image.toggleFlipHorizontally();
         image.toggleFlipHorizontally();
@@ -178,14 +178,14 @@ public class ImageTest
     }
 
     @Test
-    public void flippedHorizontallySetterTrue()
+    void flippedHorizontallySetterTrue()
     {
         image.flippedHorizontally(true);
         assertTrue(image.flippedHorizontally());
     }
 
     @Test
-    public void flippedHorizontallySetterFalse()
+    void flippedHorizontallySetterFalse()
     {
         image.flippedHorizontally(true);
         image.flippedHorizontally(false);
@@ -195,7 +195,7 @@ public class ImageTest
     /* flippedVertically */
 
     @Test
-    public void flipVertically()
+    void flipVertically()
     {
         assertFalse(image.flippedVertically());
         image.toggleFlipVertically();
@@ -203,7 +203,7 @@ public class ImageTest
     }
 
     @Test
-    public void flippedVerticallyToggle()
+    void flippedVerticallyToggle()
     {
         image.toggleFlipVertically();
         image.toggleFlipVertically();
@@ -211,14 +211,14 @@ public class ImageTest
     }
 
     @Test
-    public void flippedVerticallySetterTrue()
+    void flippedVerticallySetterTrue()
     {
         image.flippedVertically(true);
         assertTrue(image.flippedVertically());
     }
 
     @Test
-    public void flippedVerticallySetterFalse()
+    void flippedVerticallySetterFalse()
     {
         image.flippedVertically(true);
         image.flippedVertically(false);
@@ -226,7 +226,7 @@ public class ImageTest
     }
 
     @Test
-    public void toStringFormatter()
+    void toStringFormatter()
     {
         assertToStringClassName(image);
     }

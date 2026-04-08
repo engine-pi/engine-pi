@@ -38,7 +38,7 @@ import org.junit.jupiter.api.Test;
 import pi.config.ConfigGroup.ConfigurationChangedListener;
 import pi.util.ReflectionUtil;
 
-public class ConfigGroupTest
+class ConfigGroupTest
 {
     @Test
     void propertyChangedGraphicsConfig()

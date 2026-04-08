@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.42.0
  */
-public class InsetBoxTest
+class InsetBoxTest
 {
     InsetBox inset;
 

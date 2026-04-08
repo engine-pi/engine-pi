@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Josef Friedrich
  */
-public class DebugConfigTest
+class DebugConfigTest
 {
     DebugConfig config;
 

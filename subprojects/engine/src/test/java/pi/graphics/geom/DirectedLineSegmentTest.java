@@ -24,7 +24,7 @@ import static pi.graphics.geom.Vector.v;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class DirectedLineSegmentTest
+class DirectedLineSegmentTest
 {
     private DirectedLineSegment line(double aX, double aY, double bX, double bY)
     {
@@ -32,14 +32,14 @@ public class DirectedLineSegmentTest
     }
 
     @Test
-    public void difference()
+    void difference()
     {
         assertEquals(v(5, 5), line(0, 0, 5, 5).difference());
         assertEquals(v(-5, -5), line(5, 5, 0, 0).difference());
     }
 
     @Test
-    public void proportionalPoint()
+    void proportionalPoint()
     {
         DirectedLineSegment l = line(0, 0, 1, 1);
         assertEquals(v(1, 1), l.relativePoint(1));
@@ -49,7 +49,7 @@ public class DirectedLineSegmentTest
     }
 
     @Test
-    public void distancePoint()
+    void distancePoint()
     {
         DirectedLineSegment l = line(0, 0, 1, 1);
         assertEquals(v(0, 0), l.fixedPoint(0));
@@ -63,7 +63,7 @@ public class DirectedLineSegmentTest
     }
 
     @Test
-    public void length()
+    void length()
     {
         assertEquals(1.4142135623730951, line(0, 0, 1, 1).length());
         assertEquals(1.4142135623730951, line(1, 1, 0, 0).length());
@@ -73,7 +73,7 @@ public class DirectedLineSegmentTest
     class AngleTest
     {
         @Test
-        public void cardinal()
+        void cardinal()
         {
             assertEquals(0.0, line(0, 0, 1, 0).angle(), 1e-12);
             assertEquals(90.0, line(0, 0, 0, 1).angle(), 1e-12);
@@ -82,7 +82,7 @@ public class DirectedLineSegmentTest
         }
 
         @Test
-        public void diagonals()
+        void diagonals()
         {
             assertEquals(45.0, line(0, 0, 1, 1).angle(), 1e-12);
             assertEquals(135.0, line(0, 0, -1, 1).angle(), 1e-12);
@@ -91,7 +91,7 @@ public class DirectedLineSegmentTest
         }
 
         @Test
-        public void arbitrary()
+        void arbitrary()
         {
             assertEquals(53.13010235415598, line(0, 0, 3, 4).angle(), 1e-12);
             assertEquals(-126.86989764584402,

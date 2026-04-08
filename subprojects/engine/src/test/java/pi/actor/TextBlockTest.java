@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class TextBlockTest
+class TextBlockTest
 {
     TextBlock text;
 

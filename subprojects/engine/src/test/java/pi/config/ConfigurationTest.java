@@ -33,7 +33,7 @@ import pi.graphics.geom.Direction;
 /**
  * @author Josef Friedrich
  */
-public class ConfigurationTest
+class ConfigurationTest
 {
     Configuration config;
 
@@ -45,7 +45,7 @@ public class ConfigurationTest
     }
 
     @Test
-    public void all()
+    void all()
     {
         assertEquals("engine-pi.properties", String.valueOf(config.path()));
 
@@ -80,7 +80,7 @@ public class ConfigurationTest
     class ResetTest
     {
         @Test
-        public void hardDeletesConfigFile()
+        void hardDeletesConfigFile()
         {
             Configuration config1 = Configuration.getInstance();
             Configuration.reset(true);
@@ -90,7 +90,7 @@ public class ConfigurationTest
         }
 
         @Test
-        public void softKeepsConfigFile()
+        void softKeepsConfigFile()
         {
             Configuration config1 = Configuration.getInstance();
             Configuration.reset(false);
@@ -100,7 +100,7 @@ public class ConfigurationTest
         }
 
         @Test
-        public void withoutParameterIsDefault()
+        void withoutParameterIsDefault()
         {
             Configuration config1 = Configuration.getInstance();
             Configuration.reset();
@@ -110,7 +110,7 @@ public class ConfigurationTest
         }
 
         @Test
-        public void makesInstanceNull()
+        void makesInstanceNull()
         {
             Configuration.getInstance();
             Configuration.reset(false);

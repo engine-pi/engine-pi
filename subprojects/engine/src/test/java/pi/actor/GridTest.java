@@ -30,12 +30,12 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class GridTest
+class GridTest
 {
     private Grid grid;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         grid = new Grid(3, 4);

@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Test;
 
 import pi.util.FileUtil;
 
-public class ConfigLoaderTest
+class ConfigLoaderTest
 {
     private ConfigLoader config;
 
@@ -241,47 +241,47 @@ public class ConfigLoaderTest
             return this.testBoolean;
         }
 
-        public void setTestBoolean(final boolean testBoolean)
+        void setTestBoolean(final boolean testBoolean)
         {
             this.testBoolean = testBoolean;
         }
 
-        public void setTestByte(final byte testByte)
+        void setTestByte(final byte testByte)
         {
             this.testByte = testByte;
         }
 
-        public void setTestDouble(final double testDouble)
+        void setTestDouble(final double testDouble)
         {
             this.testDouble = testDouble;
         }
 
-        public void setTestEnum(final TEST testEnum)
+        void setTestEnum(final TEST testEnum)
         {
             this.testEnum = testEnum;
         }
 
-        public void setTestFloat(final float testFloat)
+        void setTestFloat(final float testFloat)
         {
             this.testFloat = testFloat;
         }
 
-        public void setTestInt(final int test1)
+        void setTestInt(final int test1)
         {
             this.testInt = test1;
         }
 
-        public void setTestLong(final long testLong)
+        void setTestLong(final long testLong)
         {
             this.testLong = testLong;
         }
 
-        public void setTestShort(final short testShort)
+        void setTestShort(final short testShort)
         {
             this.testShort = testShort;
         }
 
-        public void setTestString(final String testString)
+        void setTestString(final String testString)
         {
             this.testString = testString;
         }
@@ -291,7 +291,7 @@ public class ConfigLoaderTest
             return testStringArray;
         }
 
-        public void setTestStringArray(String[] testStringArray)
+        void setTestStringArray(String[] testStringArray)
         {
             this.testStringArray = testStringArray;
         }

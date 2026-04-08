@@ -29,19 +29,19 @@ import org.junit.jupiter.api.Test;
 
 import pi.Controller;
 
-public class StopWatchTest
+class StopWatchTest
 {
     private StopWatch watch;
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Controller.instantMode(false);
         watch = new StopWatch();
     }
 
     @Test
-    public void initialState()
+    void initialState()
     {
         assertEquals(0, watch.time());
         assertFalse(watch.isRunning());
@@ -49,14 +49,14 @@ public class StopWatchTest
     }
 
     @Test
-    public void start()
+    void start()
     {
         watch.start();
         assertTrue(watch.isRunning());
     }
 
     @Test
-    public void stop()
+    void stop()
     {
         watch.start();
         watch.stop();
@@ -64,7 +64,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void toggle()
+    void toggle()
     {
         assertFalse(watch.isRunning());
         watch.toggle();
@@ -74,7 +74,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void reset()
+    void reset()
     {
         watch.time(5000);
         watch.reset();
@@ -83,7 +83,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void timeSetter()
+    void timeSetter()
     {
         StopWatch result = watch.time(3000);
         assertEquals(3000, watch.time());
@@ -91,7 +91,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void formatSetter()
+    void formatSetter()
     {
         String newFormat = "%d ms";
         StopWatch result = watch.format(newFormat);
@@ -100,7 +100,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void chaining()
+    void chaining()
     {
         StopWatch result = watch.format("%02d:%02d:%02d").time(1000).start();
         assertSame(watch, result);
@@ -109,7 +109,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void testTimeNotUpdatedWhenStopped()
+    void testTimeNotUpdatedWhenStopped()
     {
         watch.time(1000);
         long initialTime = watch.time();
@@ -117,7 +117,7 @@ public class StopWatchTest
     }
 
     @Test
-    public void testCannotSetTimeWhileRunning()
+    void testCannotSetTimeWhileRunning()
     {
         watch.start();
         watch.time(5000);

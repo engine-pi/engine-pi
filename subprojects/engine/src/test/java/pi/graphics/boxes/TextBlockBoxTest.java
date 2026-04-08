@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.45.0
  */
-public class TextBlockBoxTest
+class TextBlockBoxTest
 {
     @Nested
     class ConstructorTest

@@ -32,7 +32,7 @@ import pi.graphics.geom.Direction;
 /**
  * @author Josef Friedrich
  */
-public class GraphicsConfigTest
+class GraphicsConfigTest
 {
     GraphicsConfig config;
 

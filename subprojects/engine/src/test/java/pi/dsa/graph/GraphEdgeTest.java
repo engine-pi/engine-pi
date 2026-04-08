@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Josef Friedrich
  */
-public class GraphEdgeTest
+class GraphEdgeTest
 {
     GraphEdge edge = new GraphEdge(new GraphNode("a"), new GraphNode("b"), 2,
             true);

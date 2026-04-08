@@ -34,7 +34,7 @@ import org.junit.jupiter.api.Test;
  *
  * @since 0.42.0
  */
-public class EllipseBoxTest
+class EllipseBoxTest
 {
     EllipseBox ellipse;
 

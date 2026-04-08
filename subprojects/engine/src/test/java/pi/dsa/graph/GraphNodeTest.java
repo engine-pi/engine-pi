@@ -29,7 +29,7 @@ import pi.graphics.geom.Vector;
 /**
  * @author Josef Friedrich
  */
-public class GraphNodeTest
+class GraphNodeTest
 {
 
     GraphNode node = new GraphNode("test", 1.2, 3.4);

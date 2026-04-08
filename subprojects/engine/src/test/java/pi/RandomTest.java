@@ -27,7 +27,7 @@ import pi.resources.font.FontStyle;
 /**
  * @author Josef Friedrich
  */
-public class RandomTest
+class RandomTest
 {
     @Nested
     class ToggleTest

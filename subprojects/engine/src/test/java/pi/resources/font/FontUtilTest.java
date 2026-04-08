@@ -7,7 +7,7 @@ import java.awt.Font;
 
 import org.junit.jupiter.api.Test;
 
-public class FontUtilTest
+class FontUtilTest
 {
     Font font = new Font("Arial", Font.PLAIN, 12);
 

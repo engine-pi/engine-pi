@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 import pi.resources.ResourceLoadException;
 import pi.resources.Resources;
 
-public class ColorContainerTest
+class ColorContainerTest
 {
     // Nicht von Controller importieren, da die Tests auf Github headless
     // laufen.
@@ -48,31 +48,31 @@ public class ColorContainerTest
     class GetColorSafeTest
     {
         @Test
-        public void primaryName()
+        void primaryName()
         {
             assertNotNull(container.getSafe("blue"));
         }
 
         @Test
-        public void alias()
+        void alias()
         {
             assertNotNull(container.getSafe("blau"));
         }
 
         @Test
-        public void caseInsensitivity()
+        void caseInsensitivity()
         {
             assertNotNull(container.getSafe("BLUE"));
         }
 
         @Test
-        public void whiteSpaces()
+        void whiteSpaces()
         {
             assertNotNull(container.getSafe("b l u e"));
         }
 
         @Test
-        public void hexCode()
+        void hexCode()
         {
             Color actual = container.getSafe("#aabbccdd");
             Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
@@ -83,7 +83,7 @@ public class ColorContainerTest
         }
 
         @Test
-        public void noException()
+        void noException()
         {
             assertNotNull(container.getSafe("XXX"));
         }
@@ -93,31 +93,31 @@ public class ColorContainerTest
     class GetColorTest
     {
         @Test
-        public void primaryName()
+        void primaryName()
         {
             assertNotNull(container.get("blue"));
         }
 
         @Test
-        public void alias()
+        void alias()
         {
             assertNotNull(container.get("blau"));
         }
 
         @Test
-        public void caseInsensitivity()
+        void caseInsensitivity()
         {
             assertNotNull(container.get("BLUE"));
         }
 
         @Test
-        public void whiteSpaces()
+        void whiteSpaces()
         {
             assertNotNull(container.get("b l u e"));
         }
 
         @Test
-        public void hexCode()
+        void hexCode()
         {
             Color actual = container.get("#aabbccdd");
             Color expected = new Color(0xaa, 0xbb, 0xcc, 0xdd);
@@ -128,7 +128,7 @@ public class ColorContainerTest
         }
 
         @Test
-        public void throwsException()
+        void throwsException()
         {
             ResourceLoadException exception = assertThrows(
                 ResourceLoadException.class,

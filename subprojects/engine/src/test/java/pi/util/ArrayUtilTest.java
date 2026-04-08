@@ -42,7 +42,7 @@ class ArrayUtilTests
 {
 
     @BeforeEach
-    public void setUp()
+    void setUp()
     {
         Logger.getLogger(ArrayUtil.class.getName()).setUseParentHandlers(false);
     }

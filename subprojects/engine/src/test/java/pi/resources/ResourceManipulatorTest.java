@@ -11,7 +11,7 @@ import org.junit.jupiter.api.condition.DisabledIf;
 import pi.util.ImageUtil;
 
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-public class ResourceManipulatorTest
+class ResourceManipulatorTest
 {
     ImageContainer container = images;
 
@@ -26,7 +26,7 @@ public class ResourceManipulatorTest
     }
 
     @Test
-    public void doNotManipulateReturnNull()
+    void doNotManipulateReturnNull()
     {
         container.addManipulator((resourceName, image) -> {
             return null;
@@ -36,7 +36,7 @@ public class ResourceManipulatorTest
     }
 
     @Test
-    public void manipulation()
+    void manipulation()
     {
         container.addManipulator((resourceName, image) -> {
             return ImageUtil.multiplyPixel(image, 2);

@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Josef Friedrich
  */
-public class GridBoxTest
+class GridBoxTest
 {
     GridBox<DimensionBox> gridBox = new GridBox<>(DimensionBox.create(5));
 

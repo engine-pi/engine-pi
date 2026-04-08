@@ -22,10 +22,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class BoundsTest
+class BoundsTest
 {
     @Test
-    public void center()
+    void center()
     {
         Bounds bounds = new Bounds(0, 0, 1, 1);
         Vector vector = bounds.center();
