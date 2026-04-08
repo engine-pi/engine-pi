@@ -19,9 +19,12 @@
 package pi;
 
 import static pi.CustomAssertions.assertToStringClassName;
+import static pi.CustomAssertions.assertToStringContains;
 import static pi.CustomAssertions.assertToStringFieldOrder;
 import static pi.CustomAssertions.assertToStringFieldValue;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -31,15 +34,41 @@ import org.junit.jupiter.api.Test;
  */
 public class SceneTest
 {
-    @Test
-    void testToString()
-    {
+    Scene scene;
 
-        Scene scene = new Scene().backgroundColor("red");
-        assertToStringClassName(scene);
-        assertToStringFieldOrder(new String[] { "backgroundColor" }, scene);
-        assertToStringFieldValue("backgroundColor",
-            scene.backgroundColor(),
-            scene);
+    @BeforeEach
+    void setUp()
+    {
+        scene = new Scene();
     }
+
+    @Nested
+    class ToStringTest
+    {
+        @Test
+        void className()
+        {
+            assertToStringClassName(scene);
+        }
+
+        @Test
+        void info()
+        {
+            scene.info("title");
+            assertToStringContains("info=SceneInfoOverlay [title=\"title\"]",
+                scene);
+        }
+
+        @Test
+        void backgroundColor()
+        {
+            scene.backgroundColor("red");
+            assertToStringFieldValue("backgroundColor",
+                scene.backgroundColor(),
+                scene);
+
+            assertToStringFieldOrder(new String[] { "backgroundColor" }, scene);
+        }
+    }
+
 }

@@ -18,8 +18,10 @@
  */
 package pi.graphics;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.mock;
@@ -455,6 +457,14 @@ public class SceneInfoOverlayTest
             overlay.duration(5);
             verify(mockScene, times(2)).delay(anyDouble(), any(Runnable.class));
         }
+    }
+
+    @Test
+    void hasContent()
+    {
+        assertFalse(overlay.hasContent());
+        overlay.title("A title");
+        assertTrue(overlay.hasContent());
     }
 
     @Test

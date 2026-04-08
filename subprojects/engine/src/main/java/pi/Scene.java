@@ -124,24 +124,24 @@ public class Scene implements KeyStrokeListenerRegistration,
         return info;
     }
 
-    public SceneInfoOverlay info(String title)
+    public SceneInfoOverlay info(Object title)
     {
         return info().title(title);
     }
 
-    public SceneInfoOverlay info(String title, String subtitle)
+    public SceneInfoOverlay info(Object title, Object subtitle)
     {
         return info().title(title).subtitle(subtitle);
     }
 
-    public SceneInfoOverlay info(String title, String subtitle,
-            String description)
+    public SceneInfoOverlay info(Object title, Object subtitle,
+            Object description)
     {
         return info().title(title).subtitle(subtitle).description(description);
     }
 
-    public SceneInfoOverlay info(String title, String subtitle,
-            String description, String help)
+    public SceneInfoOverlay info(Object title, Object subtitle,
+            Object description, Object help)
     {
         return info().title(title)
             .subtitle(subtitle)
@@ -990,6 +990,11 @@ public class Scene implements KeyStrokeListenerRegistration,
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter(this);
+
+        if (info != null && info.hasContent())
+        {
+            formatter.append("info", info);
+        }
 
         if (backgroundColor != Color.BLACK)
         {

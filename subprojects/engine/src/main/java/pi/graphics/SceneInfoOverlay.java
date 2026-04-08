@@ -146,10 +146,14 @@ public class SceneInfoOverlay
         return this;
     }
 
+    /* duration */
+
+    private final double DEFAULT_DURATION = 10;
+
     /**
      * Die Anzeigedauer der Infobox in Sekunden.
      */
-    private double duration = 10;
+    private double duration = DEFAULT_DURATION;
 
     /**
      * Setzt die Anzeigedauer der Infobox in Sekunden.
@@ -188,7 +192,6 @@ public class SceneInfoOverlay
      *     gekettete Setter festgelegt werden können, z.B.
      *     {@code info().title(..).subtitle(..)}.
      */
-
     @ChainableMethod
     private SceneInfoOverlay assemble()
     {
@@ -412,7 +415,9 @@ public class SceneInfoOverlay
 
     /* textColor */
 
-    private Color textColor = colors.get("black");
+    private final Color DEFAULT_TEXT_COLOR = colors.get("black");
+
+    private Color textColor = DEFAULT_TEXT_COLOR;
 
     /**
      * Setzt die <b>Textfarbe</b>.
@@ -548,6 +553,19 @@ public class SceneInfoOverlay
     }
 
     /**
+     * Gibt an, ob ein <b>Inhalt</b> gesetzt wurde.
+     *
+     * @return Ob ein <b>Inhalt</b> gesetzt wurde.
+     *
+     * @since 0.46.0
+     */
+    public boolean hasContent()
+    {
+        return title != null || subtitle != null || description != null
+                || help != null;
+    }
+
+    /**
      * @hidden
      */
     @Override
@@ -572,9 +590,21 @@ public class SceneInfoOverlay
             formatter.append("help", help.content());
         }
 
-        formatter.append("permanent", permanent);
-        formatter.append("duration", duration, "s");
-        formatter.append("textColor", textColor);
+        if (permanent)
+        {
+            formatter.append("permanent", permanent);
+        }
+
+        if (duration != DEFAULT_DURATION)
+        {
+            formatter.append("duration", duration, "s");
+        }
+
+        if (textColor != DEFAULT_TEXT_COLOR)
+        {
+            formatter.append("textColor", textColor);
+        }
+
         return formatter.format();
     }
 }

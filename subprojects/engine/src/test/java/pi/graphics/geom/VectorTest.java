@@ -34,7 +34,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import pi.EnLocale;
-import pi.debug.AnsiColor;
 
 public class VectorTest
 {
