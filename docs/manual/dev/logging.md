@@ -11,8 +11,11 @@ this HERE. -->
 Die Engine Pi nutzt das
 [java.util.logging](https://docs.oracle.com/en/java/javase/17/docs/api/java.logging/java/util/logging/package-summary.html)-Framework,
 um Informationen und Fehler zu protokollieren. Die Ausgabe der Protokollierung
-lässt sich konfigurieren, indem man eine Datei namens [logging.properties](https://logging.properties/) im
-Ausführungsverzeichnis des Spiels ablegt. Diese Datei definiert, wohin Logs geschrieben werden (Handlers) und wie detailliert diese sein sollen (Levels).[^gemini][^loggly][^esb-dev][^javabeginners][^oracle-logging-overview][^oracle-logging-config][^stackoverflow][^dash0][^youtube][^papertrail][^sematext]
+lässt sich konfigurieren, indem man eine Datei namens
+[logging.properties](https://logging.properties) im Ausführungsverzeichnis des
+Spiels ablegt. Diese Datei definiert, wohin Logs geschrieben werden (`Handlers`)
+und wie detailliert diese sein sollen
+(`Levels`).[^gemini][^loggly][^esb-dev][^javabeginners][^oracle-logging-overview][^oracle-logging-config][^stackoverflow][^dash0][^youtube][^papertrail][^sematext]
 
 ## logging.properties-Datei
 
@@ -36,7 +39,7 @@ java.util.logging.FileHandler.formatter = java.util.logging.XMLFormatter
 
 Das Logging kann global über die Datei
 `#!bash $JAVA_HOME/conf/logging.properties` konfiguriert werden.[^last9]
-Auf Linux ist beispielsweise ist diese `logging.properties`-Datei im Verzeichnis
+Auf Linux ist beispielsweise diese `logging.properties`-Datei im Verzeichnis
 `/usr/lib/jvm/java-17-openjdk-amd64/conf/logging.properties` zu finden, wenn das
 OpenJDK 17 installiert ist. Diese globale `logging.properties`-Datei ist
 folgendermaßen aufgebaut:
@@ -109,12 +112,89 @@ java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 
 ## Wichtige Konfigurationsoptionen
 
-* Handlers: Bestimmen das Ziel der Logs (z. B. ConsoleHandler für den Bildschirm, FileHandler für Dateien).
-* Levels: Steuern die Granularität. Häufige Stufen sind SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST.
-* Formatter: Legen das Layout fest (z. B. SimpleFormatter für Text oder XMLFormatter).
-* FileHandler Patterns: %h steht für das Home-Verzeichnis des Nutzers, %t für den temporären Ordner.
+* `Handlers`: Bestimmen das Ziel der Logs (z. B. `ConsoleHandler` für den Bildschirm, `FileHandler` für Dateien).
+* `Levels`: Steuern die Granularität. Häufige Stufen sind `SEVERE`, `WARNING`, `INFO`, `CONFIG`, `FINE`, `FINER`, `FINEST`.
+* `Formatter`: Legen das Layout fest (z. B. `SimpleFormatter` für Text oder `XMLFormatter`).
+* `FileHandler` patterns: `%h` steht für das Home-Verzeichnis des Nutzers, `%t` für den temporären Ordner.
 
-## Logging im Code verwenden
+## Logger im Code verwenden
+
+Die Klasse
+[Logger](https://docs.oracle.com/en/java/javase/17/docs/api/java.logging/java/util/logging/Logger.html)
+ist der zentrale Einstiegspunkt fuer Logging in Java.
+
+```java
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class LoggingExample {
+    private static final Logger LOG =
+	    Logger.getLogger(LoggingExample.class.getName());
+
+    public void run() {
+	LOG.info("Anwendung gestartet");
+	LOG.warning("Konfiguration ist unvollstaendig");
+	LOG.log(Level.SEVERE, "Unerwarteter Fehler");
+    }
+}
+```
+
+## Wichtige Logging-Methoden von Logger
+
+### Logger erzeugen
+
+Mit `#!java getLogger(String name)` wird ein benannter Logger geholt.
+In der Praxis wird oft der vollqualifizierte Klassenname verwendet.
+
+```java
+private static final Logger LOG =
+	Logger.getLogger(MyClass.class.getName());
+```
+
+### Direkte Level-Methoden
+
+Diese Methoden sind kurz und lesbar und entsprechen festen Log-Leveln:
+
+* `severe(String msg)`
+* `warning(String msg)`
+* `info(String msg)`
+* `config(String msg)`
+* `fine(String msg)`
+* `finer(String msg)`
+* `finest(String msg)`
+
+```java
+LOG.severe("Datenbank nicht erreichbar");
+LOG.warning("Antwortzeit erhöht");
+LOG.info("Spielstand geladen");
+LOG.fine("Physikschritt abgeschlossen");
+```
+
+### Flexible Methode log(...)
+
+Mit `#!java log(...)` kann das `Level` dynamisch gesetzt werden.
+
+```java
+LOG.log(Level.INFO, "Szene geladen: {0}", sceneName);
+LOG.log(Level.SEVERE, "Fehler beim Laden", exception);
+```
+
+Typische Varianten:
+
+* `log(Level level, String msg)`
+* `log(Level level, String msg, Object param1)`
+* `log(Level level, String msg, Object[] params)`
+* `log(Level level, String msg, Throwable thrown)`
+
+## Best Practices
+
+* Logger als `private static final` pro Klasse definieren.
+* Exceptions immer mit Throwable-Parameter loggen, nicht nur als Text.
+* Für produktive Systeme `FINE`, `FINER`, `FINEST` nur gezielt aktivieren.
+* Keine sensitiven Daten (Passwoerter, Tokens, personenbezogene Daten)
+  in Logs schreiben.
+
+## Logging in Engine Pi
 
 {{ code("demos.classes.class_controller.LoggingDemo", from_import=true) }}
 
