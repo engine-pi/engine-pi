@@ -2440,80 +2440,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Zeichnet einen JBox2D-{@link Shape Umriss} nach den gegebenen
-     * Voreinstellungen im {@link Graphics2D}-Objekt.
-     *
-     * Farbe &amp; Co. sollte im Vorfeld eingestellt sein. Diese Methode
-     * übernimmt nur das direkte rendern.
-     *
-     * @param shape Der Umriss, der einzuzeichnen ist.
-     * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden
-     *     soll.Umriss
-     * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
-     *
-     * @hidden
-     */
-    @Internal
-    private static void renderShape(Shape shape, Graphics2D g,
-            double pixelPerMeter, Actor actor)
-    {
-        // Die Methode ist statisch, weil sie in einem synchronized-Block
-        // verwendet wird. Deshalb brauchen wir als Eingabeparameter auch den
-        // actor.
-        if (shape == null)
-        {
-            return;
-        }
-        AffineTransform oldTransform = g.getTransform();
-        // Graphics2DUtil.antiAliasing(g, false);
-        // Den Anker der Figur einzeichnen
-        g.setColor(colors.getSafe("yellow"));
-        g.drawOval(-1, -1, 2, 2);
-        if (Controller.config.debug.actorCoordinates())
-        {
-            Graphics2DUtil.drawText(g, actor.anchorformatted(), 8, 5, 5);
-        }
-        // Hat die Figur eine Farbe, so wird als Umriss der Komplementärfarbe
-        // gewählt.
-        g.setColor(actor.complementaryColor());
-        if (shape instanceof PolygonShape polygonShape)
-        {
-            Vec2[] vec2s = polygonShape.getVertices();
-            int[] xs = new int[polygonShape.getVertexCount()],
-                    ys = new int[polygonShape.getVertexCount()];
-            for (int i = 0; i < xs.length; i++)
-            {
-                xs[i] = (int) (vec2s[i].x * pixelPerMeter);
-                ys[i] = (-1) * (int) (vec2s[i].y * pixelPerMeter);
-            }
-            g.drawPolygon(xs, ys, xs.length);
-        }
-        else if (shape instanceof CircleShape circleShape)
-        {
-            double diameter = (circleShape.radius * 2);
-            g.drawOval(
-                (int) ((circleShape.p.x - circleShape.radius) * pixelPerMeter),
-                (int) ((-circleShape.p.y - circleShape.radius) * pixelPerMeter),
-                (int) (diameter * pixelPerMeter),
-                (int) (diameter * pixelPerMeter));
-        }
-        else if (shape instanceof EdgeShape edgeShape)
-        {
-            g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
-                (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
-                (int) (edgeShape.vertex2.x * pixelPerMeter),
-                (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
-        }
-        else
-        {
-            throw new RuntimeException("Konnte den Umriss (" + shape
-                    + ") nicht zeichnen, unerwarteter Umriss");
-        }
-        // Graphics2DUtil.antiAliasing(g, true);
-        g.setTransform(oldTransform);
-    }
-
-    /**
      * Zeichnet die Figur an der Position {@code (0|0)} mit der Rotation
      * {@code 0}.
      *
@@ -2694,20 +2620,74 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             }
             if (Controller.isDebug())
             {
-                synchronized (this)
+                /*
+                 * Visualisiere den Umriss
+                 */
+
+                Body body = physics.body();
+                if (body != null)
                 {
-                    // Visualisiere den Umriss
-                    Body body = physics.body();
-                    if (body != null)
+                    Fixture fixture = body.fixtureList;
+                    while (fixture != null && fixture.shape != null)
                     {
-                        Fixture fixture = body.fixtureList;
-                        while (fixture != null && fixture.shape != null)
+
+                        // Den Anker der Figur einzeichnen
+                        g.setColor(colors.getSafe("yellow"));
+                        g.drawOval(-1, -1, 2, 2);
+                        if (Controller.config.debug.actorCoordinates())
                         {
-                            renderShape(fixture.shape, g, pixelPerMeter, this);
-                            fixture = fixture.next;
+                            Graphics2DUtil
+                                .drawText(g, anchorformatted(), 8, 5, 5);
                         }
+                        // Hat die Figur eine Farbe, so wird als Umriss der
+                        // Komplementärfarbe
+                        // gewählt.
+                        g.setColor(complementaryColor());
+                        if (fixture.shape instanceof PolygonShape polygonShape)
+                        {
+                            Vec2[] vec2s = polygonShape.getVertices();
+                            int[] xs = new int[polygonShape.getVertexCount()],
+                                    ys = new int[polygonShape.getVertexCount()];
+                            for (int i = 0; i < xs.length; i++)
+                            {
+                                xs[i] = (int) (vec2s[i].x * pixelPerMeter);
+                                ys[i] = (-1)
+                                        * (int) (vec2s[i].y * pixelPerMeter);
+                            }
+                            g.drawPolygon(xs, ys, xs.length);
+                        }
+                        else if (fixture.shape instanceof CircleShape circleShape)
+                        {
+                            double diameter = (circleShape.radius * 2);
+                            g.drawOval(
+                                (int) ((circleShape.p.x - circleShape.radius)
+                                        * pixelPerMeter),
+                                (int) ((-circleShape.p.y - circleShape.radius)
+                                        * pixelPerMeter),
+                                (int) (diameter * pixelPerMeter),
+                                (int) (diameter * pixelPerMeter));
+                        }
+                        else if (fixture.shape instanceof EdgeShape edgeShape)
+                        {
+                            g.drawLine(
+                                (int) (edgeShape.vertex1.x * pixelPerMeter),
+                                (int) (edgeShape.vertex1.y * pixelPerMeter)
+                                        * -1,
+                                (int) (edgeShape.vertex2.x * pixelPerMeter),
+                                (int) (edgeShape.vertex2.y * pixelPerMeter)
+                                        * -1);
+                        }
+                        else
+                        {
+                            throw new RuntimeException("Konnte den Umriss ("
+                                    + fixture.shape
+                                    + ") nicht zeichnen, unerwarteter Umriss");
+                        }
+
+                        fixture = fixture.next;
                     }
                 }
+
             }
             // ____ Post-Render ____
             // Opacity Update
