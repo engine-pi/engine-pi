@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -112,18 +113,53 @@ public abstract class Box implements Iterable<Box>
      */
     protected int definedWidth;
 
+    /**
+     * Gibt die <b>Breite</b> der Box in Pixel zurück.
+     *
+     * @return Die <b>Breite</b> der Box in Pixel.
+     */
+    @API
     @Getter
     public int width()
     {
         return width;
     }
 
+    /**
+     * Berechnet die <b>Breite</b> der Box in <b>Metern</b> basierend auf der
+     * angegebenen Pixel-pro-Meter-Verhältnis.
+     *
+     * @param pixelPerMeter Das Verhältnis von <b>Pixeln pro Meter</b> für die
+     *     Umrechnung.
+     *
+     * @return Die <b>Breite</b> der Box in Metern.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public double widthMeter(double pixelPerMeter)
+    {
+        return (double) width / pixelPerMeter;
+    }
+
+    /**
+     * Setzt die <b>Breite</b> der Box in Pixel.
+     *
+     * @param width Die <b>Breite</b> der Box in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @API
     @Setter
     public Box width(int width)
     {
         if (supportsDefinedDimension)
         {
-            this.definedWidth = width;
+            definedWidth = width;
         }
         return this;
     }
@@ -144,18 +180,53 @@ public abstract class Box implements Iterable<Box>
      */
     protected int definedHeight;
 
+    /**
+     * Gibt die <b>Höhe</b> der Box in Pixel zurück.
+     *
+     * @return Die <b>Höhe</b> der Box in Pixel.
+     */
+    @API
     @Getter
     public int height()
     {
         return height;
     }
 
+    /**
+     * Berechnet die <b>Höhe</b> der Box in <b>Metern</b> basierend auf der
+     * angegebenen Pixel-pro-Meter-Verhältnis.
+     *
+     * @param pixelPerMeter Das Verhältnis von <b>Pixeln pro Meter</b> für die
+     *     Umrechnung.
+     *
+     * @return Die <b>Höhe</b> der Box in Metern.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public double heightMeter(double pixelPerMeter)
+    {
+        return (double) height / pixelPerMeter;
+    }
+
+    /**
+     * Setzt die <b>Höhe</b> der Box in Pixel.
+     *
+     * @param height Die <b>Höhe</b> der Box in Pixel.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     */
+    @API
     @Setter
     public Box height(int height)
     {
         if (supportsDefinedDimension)
         {
-            this.definedHeight = height;
+            definedHeight = height;
         }
         return this;
     }
@@ -176,6 +247,8 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.42.0
      */
+    @API
+    @Getter
     public int x()
     {
         return x;
@@ -193,10 +266,31 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
+    @API
     @Setter
     public Box x(int x)
     {
         this.x = x;
+        return this;
+    }
+
+    /**
+     * Setzt die <b>x</b>-Koordinate der linken oberen Ecke in Meter.
+     *
+     * @param x Die <b>x</b>-Koordinate der linken oberen Ecke in Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    public Box x(double x, double pixelPerMeter)
+    {
+        this.x = round(x * pixelPerMeter);
         return this;
     }
 
@@ -237,6 +331,26 @@ public abstract class Box implements Iterable<Box>
     public Box y(int y)
     {
         this.y = y;
+        return this;
+    }
+
+    /**
+     * Setzt die <b>y</b>-Koordinate der linken oberen Ecke in Meter.
+     *
+     * @param y Die <b>y</b>-Koordinate der linken oberen Ecke in Meter.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    public Box y(double y, double pixelPerMeter)
+    {
+        this.y = round(y * pixelPerMeter);
         return this;
     }
 
@@ -348,20 +462,17 @@ public abstract class Box implements Iterable<Box>
      *
      * <h4>Single-Child-Code-Beispiel</h4>
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * protected void calculateDimension()
      * {
      *     width = child.width + 2 * margin;
      *     height = child.height + 2 * margin;
      * }
-     * }
-     * </pre>
+     * } </pre>
      *
      * <h4>Multiple-Child-Code-Beispiel</h4>
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * protected void calculateDimension()
      * {
      *     int maxWidth = 0;
@@ -375,8 +486,7 @@ public abstract class Box implements Iterable<Box>
      *     }
      *     width = maxWidth;
      * }
-     * }
-     * </pre>
+     * } </pre>
      */
     protected abstract void calculateDimension();
 
@@ -414,20 +524,17 @@ public abstract class Box implements Iterable<Box>
      *
      * <h4>Single-Child-Code-Beispiel</h4>
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * protected void calculateAnchors()
      * {
      *     child.x = x + margin;
      *     child.y = y + margin;
      * }
-     * }
-     * </pre>
+     * } </pre>
      *
      * <h4>Multiple-Child-Code-Beispiel</h4>
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * protected void calculateAnchors()
      * {
      *     int yCursor = y;
@@ -438,8 +545,7 @@ public abstract class Box implements Iterable<Box>
      *         yCursor += child.height;
      *     }
      * }
-     * }
-     * </pre>
+     * } </pre>
      *
      * @since 0.38.0
      */
@@ -472,8 +578,7 @@ public abstract class Box implements Iterable<Box>
     /**
      * <b>Zeichnet</b> die eigene Box.
      *
-     * <pre>
-     * {@code
+     * <pre> {@code
      * void draw(Graphics2D g)
      * {
      *     Color oldColor = g.getColor();
@@ -481,8 +586,7 @@ public abstract class Box implements Iterable<Box>
      *     g.fillRect(x, y, width, height);
      *     g.setColor(oldColor);
      * }
-     * }
-     * </pre>
+     * } </pre>
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
      *
@@ -623,6 +727,11 @@ public abstract class Box implements Iterable<Box>
             box.debug(depth + 1);
         }
         return this;
+    }
+
+    protected int round(double value)
+    {
+        return (int) Math.round(value);
     }
 
     /**

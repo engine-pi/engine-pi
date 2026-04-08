@@ -52,7 +52,6 @@ import org.jbox2d.dynamics.joints.WeldJointDef;
 
 import pi.Controller;
 import pi.Layer;
-import pi.actor.Actor.Label;
 import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
@@ -2495,14 +2494,36 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         if (!labels.isEmpty())
         {
-            AABB aabb = physics.aabb();
-            Bounds b = Bounds.fromAABB(aabb);
+            // Achsenparallele Begrenzungsbox in Meter
+            Bounds aabb = Bounds.fromAABB(physics.aabb());
 
             for (Label label : labels)
             {
-                label.box.x(b.xLeft(pixelPerMeter))
-                    .y(-b.yBottom(pixelPerMeter))
-                    .render(g);
+                double boxWidth = label.box.widthMeter(pixelPerMeter);
+                double boxHeight = label.box.heightMeter(pixelPerMeter);
+
+                // Die x-Koordinate der linken oberen Ecke der Box in Meter
+                double x = 0;
+                // Die y-Koordinate der linken oberen Ecke der Box in Meter
+                double y = 0;
+
+                switch (label.hAlign)
+                {
+                case LEFT -> x = aabb.xLeft() - boxWidth;
+                case CENTER ->
+                    x = aabb.xLeft() + (aabb.width() / 2) - (boxWidth / 2);
+                case RIGHT -> x = aabb.xRight();
+                }
+
+                switch (label.vAlign)
+                {
+                case TOP -> y = aabb.yTop() + boxHeight;
+                case MIDDLE ->
+                    y = aabb.yBottom() + (aabb.height() / 2) + (boxHeight / 2);
+                case BOTTOM -> y = aabb.yBottom();
+                }
+
+                label.box.x(x, pixelPerMeter).y(-y, pixelPerMeter).render(g);
             }
         }
     }
@@ -2566,11 +2587,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             renderAABB(g, pixelPerMeter);
         }
 
-        if (!labels.isEmpty())
-        {
-            renderLabels(g, pixelPerMeter);
-        }
-
         // ____ Pre-Render ____
         AffineTransform oldTransform = g.getTransform();
 
@@ -2580,17 +2596,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         g.translate(anchor.x() * pixelPerMeter, -anchor.y() * pixelPerMeter);
 
         // Durchsichtigkeit
-        Composite composite;
+        Composite oldComposite = null;
         if (opacity != 1)
         {
-            composite = g.getComposite();
+            oldComposite = g.getComposite();
             g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                 (float) opacity));
         }
-        else
-        {
-            composite = null;
-        }
+
         // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
         // werden können.
         if (config.debug.renderActors())
@@ -2668,12 +2681,17 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         }
         // ____ Post-Render ____
         // Opacity Update
-        if (composite != null)
+        if (oldComposite != null)
         {
-            g.setComposite(composite);
+            g.setComposite(oldComposite);
         }
         // Transform zurücksetzen
         g.setTransform(oldTransform);
+
+        if (!labels.isEmpty())
+        {
+            renderLabels(g, pixelPerMeter);
+        }
     }
 
     protected ToStringFormatter toStringFormatter()
@@ -2715,6 +2733,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         public Label(Object... content)
         {
             box = new TextBlockBox(content).hAlign(hAlign);
+            box.measure();
         }
 
         private VAlign vAlign = VAlign.BOTTOM;
