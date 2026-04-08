@@ -4,8 +4,8 @@
 
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
+        <artifactId>engine-pi-project</artifactId>
+        <version>0.45.0</version>
         <relativePath>../../..</relativePath>
     </parent>
 
@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
     <name>JBox2D Library</name>
 
-    <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine.</description>
+    <description>A 2D java physics engine, a port of the C++ Box2d engine.  This is the core physics engine. It is identical to the latest version on GitHub (https://github.com/jbox2d/jbox2d), but includes more Javadoc documentation.</description>
     <url>https://engine-pi.github.io/engine-pi</url>
     <build>
         <pluginManagement>

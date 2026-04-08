@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.pirckheimer-gymnasium</groupId>
-        <artifactId>engine-pi-meta</artifactId>
-        <version>0.44.0</version>
+        <artifactId>engine-pi-project</artifactId>
+        <version>0.45.0</version>
         <relativePath>../../..</relativePath>
     </parent>
     <artifactId>jbox2d-testbed</artifactId>

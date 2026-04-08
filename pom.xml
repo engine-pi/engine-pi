@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.pirckheimer-gymnasium</groupId>
-    <artifactId>engine-pi-meta</artifactId>
-    <version>0.44.0</version>
+    <artifactId>engine-pi-project</artifactId>
+    <version>0.45.0</version>
     <packaging>pom</packaging>
 
     <name>Engine Pi Project</name>
@@ -156,7 +156,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.9.0</version>
+                <version>0.10.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <!-- see ~/.m2/settings.xml -->
@@ -168,6 +168,9 @@
                     published.
                     https://central.sonatype.org/publish/publish-portal-maven/#ignorepublishedcomponents -->
                     <ignorePublishedComponents>true</ignorePublishedComponents>
+                    <!-- https://central.sonatype.org/publish/publish-portal-maven/#excludeartifacts -->
+                    <!-- https://github.com/mavenplugins/central-publishing-maven-plugin/blob/8143cf505c6434c323560e26df9868859cf9cb0a/src/main/java/org/sonatype/central/publisher/plugin/PublishMojo.java#L283 -->
+                    <excludeArtifacts>jbox2d-testbed,jbox2d-serialization</excludeArtifacts>
                 </configuration>
             </plugin>
             <!-- https://www.mojohaus.org/versions/versions-maven-plugin/-->

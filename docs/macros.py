@@ -34,7 +34,7 @@ def _normalize_java_path(path: str) -> str:
 
 # | Pfad                              | artefactId              |
 # | --------------------------------- | ----------------------- |
-# | ./                                | engine-pi-meta          |
+# | ./                                | engine-pi-project       |
 # | ./subprojects/engine              | engine-pi               |
 # | ./subprojects/demos               | engine-pi-demos         |
 # | ./subprojects/cli                 | engine-pi-cli           |
