@@ -27,6 +27,8 @@ debug_enabled=false
 debug_verbose=false
 debug_renderActors=true
 debug_actorCoordinates=false
+debug_renderAABBs=false
+debug_useANSIcolors=false
 
 coordinatesystem_linesNMeter=-1
 coordinatesystem_labelsOnIntersections=false
@@ -83,13 +85,15 @@ assertEquals(2, config.graphics.screenRecordingNFrames());
 assertEquals(0.5, config.sound.soundVolume());
 assertEquals(0.5, config.sound.musicVolume());
 
-assertEquals(false, config.debug.enabled());
-assertEquals(false, config.debug.verbose());
-assertEquals(true, config.debug.renderActors());
-assertEquals(false, config.debug.actorCoordinates());
+assertFalse(config.debug.enabled());
+assertFalse(config.debug.verbose());
+assertTrue(config.debug.renderActors());
+assertFalse(config.debug.actorCoordinates());
+assertFalse(config.debug.renderAABBs());
+assertFalse(config.debug.useANSIcolors());
 
 assertEquals(-1, config.coordinatesystem.linesNMeter());
-assertEquals(false, config.coordinatesystem.labelsOnIntersections());
+assertFalse(config.coordinatesystem.labelsOnIntersections());
 ```
 
 ## Benutzerdefinierte Konfigurationsgruppen

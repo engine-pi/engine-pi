@@ -28,6 +28,8 @@ package pi.config;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
 /**
  * Verwaltet die <b>Audio</b>-Einstellungsmöglichkeiten.
  *

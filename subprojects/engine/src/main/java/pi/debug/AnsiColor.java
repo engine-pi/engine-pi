@@ -20,6 +20,8 @@ package pi.debug;
 
 import pi.annotations.API;
 
+import static pi.Controller.config;
+
 /**
  * https://github.com/bschlangaul-sammlung/java-fuer-examens-aufgaben/blob/main/src/main/java/org/bschlangaul/helfer/Farbe.java
  *
@@ -38,6 +40,27 @@ import pi.annotations.API;
  * Farbpräfix und setzen die Farbe anschließend mit {@link #RESET} zurück.
  * </p>
  *
+ * <p>
+ * Diese Klasse funktioniert nicht auf Windows und auch nicht in der
+ * BlueJ-Konsole. Statt
+ * </p>
+ *
+ * <p>
+ * {@code Text@21f09f2a [content="Hello, World!", x=[-4.2, y=0.0]}
+ * </p>
+ *
+ * <p>
+ * wird dann
+ * </p>
+ *
+ * <p>
+ * {@code [35mText[0m@[33m21f09f2a[0m [content=[34m"Hello, World!"[0m, x=[34m-4.2[0m, y=[34m0.0[0m]}
+ * </p>
+ *
+ * <p>
+ * angezeigt.
+ * </p>
+ *
  * @author Josef Friedrich
  *
  * @since 0.42.0
@@ -45,6 +68,16 @@ import pi.annotations.API;
 public class AnsiColor
 {
     // https://github.com/fusesource/jansi/blob/70186aa41bef6877a83e1a0c3ed7ebe87185f377/src/main/java/org/fusesource/jansi/Ansi.java#L27-L78
+
+    private static String colorize(String color, Object object)
+    {
+        String output = object.toString();
+        if (config.debug.useANSIcolors())
+        {
+            return color + object.toString() + RESET;
+        }
+        return output;
+    }
 
     /**
      * ANSI-Sequenz zum Zurücksetzen aller Farben und Formatierungen.
@@ -57,41 +90,6 @@ public class AnsiColor
     public static final String BLACK = "\u001B[30m";
 
     /**
-     * ANSI-Sequenz für rote Schrift.
-     */
-    public static final String RED = "\u001B[31m";
-
-    /**
-     * ANSI-Sequenz für grüne Schrift.
-     */
-    public static final String GREEN = "\u001B[32m";
-
-    /**
-     * ANSI-Sequenz für gelbe Schrift.
-     */
-    public static final String YELLOW = "\u001B[33m";
-
-    /**
-     * ANSI-Sequenz für blaue Schrift.
-     */
-    public static final String BLUE = "\u001B[34m";
-
-    /**
-     * ANSI-Sequenz für magentafarbene Schrift.
-     */
-    public static final String MAGENTA = "\u001B[35m";
-
-    /**
-     * ANSI-Sequenz für cyanfarbene Schrift.
-     */
-    public static final String CYAN = "\u001B[36m";
-
-    /**
-     * ANSI-Sequenz für weiße Schrift.
-     */
-    public static final String WHITE = "\u001B[37m";
-
-    /**
      * Wandelt ein Objekt in einen <b>schwarzen</b> Text um.
      *
      * @param object Das zu färbende Objekt.
@@ -101,8 +99,13 @@ public class AnsiColor
     @API
     public static String black(Object object)
     {
-        return BLACK + object.toString() + RESET;
+        return colorize(BLACK, object);
     }
+
+    /**
+     * ANSI-Sequenz für rote Schrift.
+     */
+    public static final String RED = "\u001B[31m";
 
     /**
      * Wandelt ein Objekt in einen <b>roten</b> Text um.
@@ -114,8 +117,13 @@ public class AnsiColor
     @API
     public static String red(Object object)
     {
-        return RED + object.toString() + RESET;
+        return colorize(RED, object);
     }
+
+    /**
+     * ANSI-Sequenz für grüne Schrift.
+     */
+    public static final String GREEN = "\u001B[32m";
 
     /**
      * Wandelt ein Objekt in einen <b>grünen</b> Text um.
@@ -127,8 +135,13 @@ public class AnsiColor
     @API
     public static String green(Object object)
     {
-        return GREEN + object.toString() + RESET;
+        return colorize(GREEN, object);
     }
+
+    /**
+     * ANSI-Sequenz für gelbe Schrift.
+     */
+    public static final String YELLOW = "\u001B[33m";
 
     /**
      * Wandelt ein Objekt in einen <b>gelben</b> Text um.
@@ -140,8 +153,13 @@ public class AnsiColor
     @API
     public static String yellow(Object object)
     {
-        return YELLOW + object.toString() + RESET;
+        return colorize(YELLOW, object);
     }
+
+    /**
+     * ANSI-Sequenz für blaue Schrift.
+     */
+    public static final String BLUE = "\u001B[34m";
 
     /**
      * Wandelt ein Objekt in einen <b>blauen</b> Text um.
@@ -153,8 +171,13 @@ public class AnsiColor
     @API
     public static String blue(Object object)
     {
-        return BLUE + object.toString() + RESET;
+        return colorize(BLUE, object.toString());
     }
+
+    /**
+     * ANSI-Sequenz für magentafarbene Schrift.
+     */
+    public static final String MAGENTA = "\u001B[35m";
 
     /**
      * Wandelt ein Objekt in einen <b>magentafarbenen</b> Text um.
@@ -166,8 +189,13 @@ public class AnsiColor
     @API
     public static String magenta(Object object)
     {
-        return MAGENTA + object.toString() + RESET;
+        return colorize(MAGENTA, object);
     }
+
+    /**
+     * ANSI-Sequenz für cyanfarbene Schrift.
+     */
+    public static final String CYAN = "\u001B[36m";
 
     /**
      * Wandelt ein Objekt in einen <b>cyanfarbenen</b> Text um.
@@ -179,8 +207,13 @@ public class AnsiColor
     @API
     public static String cyan(Object object)
     {
-        return CYAN + object.toString() + RESET;
+        return colorize(CYAN, object);
     }
+
+    /**
+     * ANSI-Sequenz für weiße Schrift.
+     */
+    public static final String WHITE = "\u001B[37m";
 
     /**
      * Wandelt ein Objekt in einen <b>weißen</b> Text um.
@@ -192,7 +225,7 @@ public class AnsiColor
     @API
     public static String white(Object object)
     {
-        return WHITE + object.toString() + RESET;
+        return colorize(WHITE, object);
     }
 
     /**

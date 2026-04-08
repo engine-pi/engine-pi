@@ -30,6 +30,8 @@ import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
 /**
  * Verwaltet die Einstellmöglichkeiten mit Bezug zum <b>Entwicklungs</b>modus.
  *
@@ -53,6 +55,7 @@ public class DebugConfig extends ConfigGroup
         renderActors(true);
         actorCoordinates(false);
         renderAABBs(false);
+        useANSIcolors(false);
     }
 
     /* enabled */
@@ -293,6 +296,8 @@ public class DebugConfig extends ConfigGroup
         return actorCoordinates;
     }
 
+    /* */
+
     private boolean renderAABBs;
 
     /**
@@ -332,6 +337,48 @@ public class DebugConfig extends ConfigGroup
     public DebugConfig renderAABBs(boolean renderAABBs)
     {
         set("renderAABBs", renderAABBs);
+        return this;
+    }
+
+    /* useANSIcolors */
+
+    private boolean useANSIcolors;
+
+    /**
+     * Gibt zurück, ob <b>ANSI-Farbcodes</b> in der Konsolenausgabe verwendet
+     * werden.
+     *
+     * @return Ob <b>ANSI-Farbcodes</b> in der Konsolenausgabe verwendet werden.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public boolean useANSIcolors()
+    {
+        return useANSIcolors;
+    }
+
+    /**
+     * Legt fest, ob <b>ANSI-Farbcodes</b> in der Konsolenausgabe verwendet
+     * werden.
+     *
+     * @param useANSIcolors Ob <b>ANSI-Farbcodes</b> in der Konsolenausgabe
+     *     verwendet werden sollen.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Konfigurationsgruppe,
+     *     damit nach dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der
+     *     Konfigurationsgruppe durch aneinander gekettete Setter festgelegt
+     *     werden können, z.B. {@code debug.enabled(..).renderActors(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public DebugConfig useANSIcolors(boolean useANSIcolors)
+    {
+        set("useANSIcolors", useANSIcolors);
         return this;
     }
 }

@@ -70,6 +70,8 @@ public class ConfigurationTest
         assertFalse(config.debug.verbose());
         assertTrue(config.debug.renderActors());
         assertFalse(config.debug.actorCoordinates());
+        assertFalse(config.debug.renderAABBs());
+        assertFalse(config.debug.useANSIcolors());
 
         assertEquals(-1, config.coordinatesystem.linesNMeter());
         assertFalse(config.coordinatesystem.labelsOnIntersections());

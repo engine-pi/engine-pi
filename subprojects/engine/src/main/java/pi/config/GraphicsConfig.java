@@ -33,6 +33,8 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.graphics.geom.Direction;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
 /**
  * Verwaltet die <b>grafischen</b> Einstellungsmöglichkeiten.
  *

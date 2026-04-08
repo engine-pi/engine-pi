@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -38,132 +39,177 @@ public class DebugConfigTest
         config = new DebugConfig();
     }
 
-    @Test
-    void defaultEnabled()
+    @Nested
+    class EnabledTest
     {
-        assertFalse(config.enabled());
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.enabled());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.enabled(true);
+            assertTrue(config.enabled());
+            config.enabled(false);
+            assertFalse(config.enabled());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.enabled(true));
+        }
     }
 
-    @Test
-    void enabled()
+    @Nested
+    class VerboseTest
     {
-        config.enabled(true);
-        assertTrue(config.enabled());
-        config.enabled(false);
-        assertFalse(config.enabled());
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.verbose());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.verbose(true);
+            assertTrue(config.verbose());
+            config.verbose(false);
+            assertFalse(config.verbose());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.verbose(true));
+        }
     }
 
-    @Test
-    void enabledChaining()
+    @Nested
+    class RenderActorsTest
     {
-        assertSame(config, config.enabled(true));
+        @Test
+        void defaultValue()
+        {
+            assertTrue(config.renderActors());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.renderActors(false);
+            assertFalse(config.renderActors());
+            config.renderActors(true);
+            assertTrue(config.renderActors());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.renderActors(false));
+        }
+
+        @Test
+        void toggle()
+        {
+            assertTrue(config.renderActors());
+            config.toggleRenderActors();
+            assertFalse(config.renderActors());
+            config.toggleRenderActors();
+            assertTrue(config.renderActors());
+        }
+
+        @Test
+        void toggleChaining()
+        {
+            assertSame(config, config.toggleRenderActors());
+        }
     }
 
-    @Test
-    void defaultVerbose()
+    @Nested
+    class ActorCoordinatesTest
     {
-        assertFalse(config.verbose());
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.actorCoordinates());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.actorCoordinates(true);
+            assertTrue(config.actorCoordinates());
+            config.actorCoordinates(false);
+            assertFalse(config.actorCoordinates());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.actorCoordinates(true));
+        }
+
+        @Test
+        void toggleShowPositions()
+        {
+            assertFalse(config.actorCoordinates());
+            assertTrue(config.toogleShowPositions());
+            assertFalse(config.toogleShowPositions());
+        }
     }
 
-    @Test
-    void verbose()
+    @Nested
+    class RenderAABBsTest
     {
-        config.verbose(true);
-        assertTrue(config.verbose());
-        config.verbose(false);
-        assertFalse(config.verbose());
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.renderAABBs());
+        }
+
+        @Test
+        void setValue()
+        {
+            config.renderAABBs(true);
+            assertTrue(config.renderAABBs());
+            config.renderAABBs(false);
+            assertFalse(config.renderAABBs());
+        }
+
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.renderAABBs(true));
+        }
     }
 
-    @Test
-    void verboseChaining()
+    @Nested
+    class UseANSIcolorsTest
     {
-        assertSame(config, config.verbose(true));
-    }
+        @Test
+        void defaultValue()
+        {
+            assertFalse(config.useANSIcolors());
+        }
 
-    @Test
-    void defaultRenderActors()
-    {
-        assertTrue(config.renderActors());
-    }
+        @Test
+        void setValue()
+        {
+            config.useANSIcolors(true);
+            assertTrue(config.useANSIcolors());
+            config.useANSIcolors(false);
+            assertFalse(config.useANSIcolors());
+        }
 
-    @Test
-    void renderActors()
-    {
-        config.renderActors(false);
-        assertFalse(config.renderActors());
-        config.renderActors(true);
-        assertTrue(config.renderActors());
-    }
-
-    @Test
-    void renderActorsChaining()
-    {
-        assertSame(config, config.renderActors(false));
-    }
-
-    @Test
-    void toggleRenderActors()
-    {
-        assertTrue(config.renderActors());
-        config.toggleRenderActors();
-        assertFalse(config.renderActors());
-        config.toggleRenderActors();
-        assertTrue(config.renderActors());
-    }
-
-    @Test
-    void toggleRenderActorsChaining()
-    {
-        assertSame(config, config.toggleRenderActors());
-    }
-
-    @Test
-    void defaultActorCoordinates()
-    {
-        assertFalse(config.actorCoordinates());
-    }
-
-    @Test
-    void actorCoordinates()
-    {
-        config.actorCoordinates(true);
-        assertTrue(config.actorCoordinates());
-        config.actorCoordinates(false);
-        assertFalse(config.actorCoordinates());
-    }
-
-    @Test
-    void actorCoordinatesChaining()
-    {
-        assertSame(config, config.actorCoordinates(true));
-    }
-
-    @Test
-    void toogleShowPositions()
-    {
-        assertFalse(config.actorCoordinates());
-        assertTrue(config.toogleShowPositions());
-        assertFalse(config.toogleShowPositions());
-    }
-
-    @Test
-    void defaultRenderAABBs()
-    {
-        assertFalse(config.renderAABBs());
-    }
-
-    @Test
-    void renderAABBs()
-    {
-        config.renderAABBs(true);
-        assertTrue(config.renderAABBs());
-        config.renderAABBs(false);
-        assertFalse(config.renderAABBs());
-    }
-
-    @Test
-    void renderAABBsChaining()
-    {
-        assertSame(config, config.renderAABBs(true));
+        @Test
+        void chaining()
+        {
+            assertSame(config, config.useANSIcolors(true));
+        }
     }
 }

@@ -25,6 +25,8 @@
  */
 package pi.config;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/resources/config.md
+
 /**
  * Diese Klasse enthält alle Standard-{@link ConfigGroup Konfigurationsgruppen},
  * die von der <b>Engine</b> Pi bereitgestellt werden.

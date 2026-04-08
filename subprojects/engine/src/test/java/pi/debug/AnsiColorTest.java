@@ -38,11 +38,21 @@ import static pi.debug.AnsiColor.remove;
 import static pi.debug.AnsiColor.white;
 import static pi.debug.AnsiColor.yellow;
 
+import static pi.Controller.config;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class AnsiColorTest
 {
+
+    @BeforeEach
+    void setUp()
+    {
+        config.debug.useANSIcolors(true);
+    }
+
     @Test
     void blackColor()
     {
@@ -159,5 +169,13 @@ public class AnsiColorTest
         {
             assertEquals(CYAN + "x" + RESET, cyan('x'));
         }
+    }
+
+    @Test
+    void isConfigurable()
+    {
+        assertEquals(RED + "abc" + RESET, red("abc"));
+        config.debug.useANSIcolors(false);
+        assertEquals("abc", red("abc"));
     }
 }
