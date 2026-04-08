@@ -16,24 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package pi.actor;
 
 /**
- * Beschreibt, wie mit der <b>Groß- und Kleinschreibung</b> umgegangen werden
- * soll.
- *
- * @author Josef Friedrich
- *
- * @since 0.23.0
+ * Demonstriert die Schriftart {@link pi.actor.ImageText.Font}, die Figur
+ * {@link pi.actor.ImageText}
  */
-public enum ImageFontCaseSensitivity
-{
-    /**
-     * Alle Klein- werden zu <b>Großbuchstaben</b> konvertiert.
-     */
-    TO_UPPER,
-    /**
-     * Alle Groß- werden zu <b>Kleinbuchstaben</b> konvertiert.
-     */
-    TO_LOWER
-}
+package demos.classes.actor.image_text;

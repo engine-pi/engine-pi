@@ -16,23 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
-
-import pi.Controller;
-import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
-import pi.event.KeyStrokeListener;
-import pi.util.TextAlignment;
+package demos.classes.actor.image_text;
 
 import java.awt.event.KeyEvent;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+import pi.Controller;
+import pi.Scene;
+import pi.actor.ImageText;
+import pi.actor.ImageText.Font;
+import pi.actor.ImageText.CaseSensitivity;
+
+import pi.event.KeyStrokeListener;
+import pi.util.TextAlignment;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
- * Demonstiert die Methode {@link ImageFontText#content(String)} der Klasse
- * {@link ImageFontText}.
+ * Demonstiert die Methode {@link ImageText#content(String)} der Klasse
+ * {@link ImageText}.
  *
  * <p>
  * Bei jedem Aufruf der Methode wird eine neues Bilder erzeugt.
@@ -42,7 +43,7 @@ import java.awt.event.KeyEvent;
  */
 public class ContentDemo extends Scene implements KeyStrokeListener
 {
-    ImageFontText textField;
+    ImageText textField;
 
     String text1 = "Hello, World. Hello Universe";
 
@@ -52,9 +53,8 @@ public class ContentDemo extends Scene implements KeyStrokeListener
 
     public ContentDemo()
     {
-        ImageFont font = new ImageFont("image-font/tetris",
-                ImageFontCaseSensitivity.TO_UPPER);
-        textField = new ImageFontText(font,
+        Font font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
+        textField = new ImageText(font,
                 "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 15,
                 TextAlignment.LEFT);
         add(textField);

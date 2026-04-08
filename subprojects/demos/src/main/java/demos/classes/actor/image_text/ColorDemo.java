@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import static pi.Controller.colors;
 
@@ -25,11 +25,11 @@ import java.util.Map;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
  * Demonstriert wie Bilderschriftarttexte <b>eingefärbt</b> werden können.
@@ -43,8 +43,8 @@ import pi.actor.ImageFontText;
  */
 public class ColorDemo extends Scene
 {
-    ImageFont font = new ImageFont("image-font/tetris",
-            ImageFontCaseSensitivity.TO_UPPER);
+    Font font = new Font("main-classes/actor/image-text/tetris",
+            CaseSensitivity.TO_UPPER);
 
     public ColorDemo()
     {
@@ -59,7 +59,7 @@ public class ColorDemo extends Scene
 
     public void setImageFontText(String color, int x, int y)
     {
-        ImageFontText textField = new ImageFontText(font, color, color);
+        ImageText textField = new ImageText(font, color, color);
         textField.anchor(x, y);
         add(textField);
     }

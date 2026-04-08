@@ -20,15 +20,13 @@ package pacman.actors;
 
 import static pi.Controller.colors;
 
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
 import pi.util.TextAlignment;
 
-public class Text extends ImageFontText
+public class Text extends ImageText
 {
-    private static final ImageFont font = new ImageFont("images/image-font",
-            ImageFontCaseSensitivity.TO_UPPER);
+    private static final Font font = new Font("images/image-font",
+            CaseSensitivity.TO_UPPER);
 
     public Text(String content, String color)
     {

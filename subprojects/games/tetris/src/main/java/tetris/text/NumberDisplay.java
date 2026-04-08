@@ -17,18 +17,18 @@
 package tetris.text;
 
 import pi.Scene;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
 import pi.util.TextAlignment;
 
 public class NumberDisplay
 {
     private int number;
 
-    private ImageFontText font;
+    private ImageText font;
 
     public NumberDisplay(Scene scene, int x, int y, int maxDigits)
     {
-        font = new ImageFontText(Font.getFont(), "0", maxDigits,
+        font = new ImageText(Font.getFont(), "0", maxDigits,
                 TextAlignment.RIGHT);
         font.anchor(x, y);
         scene.add(font);

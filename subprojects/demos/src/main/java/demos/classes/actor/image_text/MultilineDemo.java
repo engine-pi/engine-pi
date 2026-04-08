@@ -16,16 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 import pi.util.TextAlignment;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
  * Demonstriert den <b>automatischen</b> und <b>erzwungen Zeilenumbruch</b>
@@ -38,15 +38,14 @@ import pi.util.TextAlignment;
  *
  * @author Josef Friedrich
  *
- * @see ImageFontText
+ * @see ImageText
  */
 public class MultilineDemo extends Scene
 {
     public MultilineDemo()
     {
-        ImageFont font = new ImageFont("image-font/tetris",
-                ImageFontCaseSensitivity.TO_UPPER);
-        ImageFontText textField = new ImageFontText(font,
+        Font font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
+        ImageText textField = new ImageText(font,
                 "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
                         + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
                 20, TextAlignment.LEFT);

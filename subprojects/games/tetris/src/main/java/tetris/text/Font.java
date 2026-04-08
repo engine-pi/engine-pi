@@ -2,19 +2,19 @@ package tetris.text;
 
 import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
 
 public class Font
 {
-    private static ImageFont font;
+    private static ImageText.Font font;
 
-    public static ImageFont getFont()
+    public static ImageText.Font getFont()
     {
         if (font == null)
         {
-            font = new ImageFont("images/image-font")
-                .caseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
+            font = new ImageText.Font("images/image-font")
+                .caseSensitivity(CaseSensitivity.TO_UPPER)
                 .color(COLOR_SCHEME_GREEN.getBlack())
                 .addMapping('\uE000', "e000_quotation-mark-and-dot");
         }

@@ -16,35 +16,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 import pi.util.TextAlignment;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
- * Demonstriert die Schriftart {@link pi.actor.ImageFont ImageFont} und die
- * Figur {@link pi.actor.ImageFontText} anhand eines <b>Zählers</b>.
+ * Demonstriert die Schriftart {@link Font} und die Figur {@link ImageText
+ * ImageText} anhand eines <b>Zählers</b>.
  */
 public class CounterDemo extends Scene
 {
-    ImageFontText text;
+    ImageText text;
 
     public CounterDemo()
     {
         backgroundColor("yellow");
         AtomicInteger counter = new AtomicInteger();
-        text = new ImageFontText(
-                new ImageFont("image-font/pacman",
-                        ImageFontCaseSensitivity.TO_UPPER),
-                "0", 5, TextAlignment.RIGHT);
+        text = new ImageText(
+                new Font("image-font/pacman", CaseSensitivity.TO_UPPER), "0", 5,
+                TextAlignment.RIGHT);
         text.center(-1, 0);
         repeat(0.05, () -> {
             text.content(String.valueOf(counter.getAndIncrement()));

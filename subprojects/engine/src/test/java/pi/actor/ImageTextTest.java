@@ -27,6 +27,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 import pi.util.ImageUtil;
 import pi.util.TextAlignment;
 
@@ -34,15 +36,14 @@ import pi.util.TextAlignment;
  * @author Josef Friedrich
  */
 @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
-class ImageFontTest
+class ImageTextTest
 {
-    ImageFont imageFont;
+    Font font;
 
     @BeforeEach
     void setUp()
     {
-        imageFont = new ImageFont("image-font/tetris",
-                ImageFontCaseSensitivity.TO_UPPER);
+        font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
     }
 
     private void write(BufferedImage image, String filename)
@@ -53,37 +54,36 @@ class ImageFontTest
     @Test
     void singleLine()
     {
-        write(imageFont.render("Hello, World."), "single-line");
+        write(font.render("Hello, World."), "single-line");
     }
 
     @Test
     void multiLine()
     {
-        write(imageFont.render("Hello,\nWorld.\nHello, Universe."),
-            "multi-line");
+        write(font.render("Hello,\nWorld.\nHello, Universe."), "multi-line");
     }
 
     @Test
     void textAlignmentCenter()
     {
-        imageFont.alignment(TextAlignment.CENTER);
-        write(imageFont.render("Hello,\nWorld.\nHello, Universe."), "center");
+        font.alignment(TextAlignment.CENTER);
+        write(font.render("Hello,\nWorld.\nHello, Universe."), "center");
     }
 
     @Test
     void caseSensitivity()
     {
-        imageFont.caseSensitivity(ImageFontCaseSensitivity.TO_LOWER);
-        assertThrows(RuntimeException.class, () -> imageFont.render("hello"));
+        font.caseSensitivity(CaseSensitivity.TO_LOWER);
+        assertThrows(RuntimeException.class, () -> font.render("hello"));
     }
 
     @Test
     void methodChaining()
     {
         write(
-            imageFont.basePath("image-font/tetris")
+            font.basePath("image-font/tetris")
                 .extension("png")
-                .caseSensitivity(ImageFontCaseSensitivity.TO_UPPER)
+                .caseSensitivity(CaseSensitivity.TO_UPPER)
                 .alignment(TextAlignment.LEFT)
                 .throwException(false)
                 .pixelMultiplication(4)
@@ -96,12 +96,12 @@ class ImageFontTest
     @Test
     void throwExceptionFalse()
     {
-        write(imageFont.throwException(false).render("!"), "throw-no-error");
+        write(font.throwException(false).render("!"), "throw-no-error");
     }
 
     @Test
     void throwExceptionTrue()
     {
-        assertThrows(RuntimeException.class, () -> imageFont.render("!"));
+        assertThrows(RuntimeException.class, () -> font.render("!"));
     }
 }

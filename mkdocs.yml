@@ -106,7 +106,7 @@ nav:
               - manual/main-classes/actor/circle.md
               - manual/main-classes/actor/counter.md
               - manual/main-classes/actor/grid.md
-              - manual/main-classes/actor/image-font.md
+              - manual/main-classes/actor/image-text.md
               - manual/main-classes/actor/image.md
               - manual/main-classes/actor/line.md
               - manual/main-classes/actor/polygon.md

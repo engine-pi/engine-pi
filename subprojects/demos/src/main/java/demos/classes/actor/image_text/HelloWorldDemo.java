@@ -16,31 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
- * Demonstriert die Schriftart {@link pi.actor.ImageFont ImageFont} und die
- * Figur {@link pi.actor.ImageFontText} anhand des Textes <b>Hello, World.
- * Hello, Universe</b>.
+ * Demonstriert die Schriftart {@link Font} und die Figur {@link ImageText}
+ * anhand des Textes <b>Hello, World. Hello, Universe</b>.
  */
 public class HelloWorldDemo extends Scene
 {
-    ImageFontText helloWorld;
+    ImageText helloWorld;
 
     public HelloWorldDemo()
     {
         backgroundColor("green");
-        helloWorld = new ImageFontText(
-                new ImageFont("image-font/tetris",
-                        ImageFontCaseSensitivity.TO_UPPER),
+        helloWorld = new ImageText(
+                new Font("image-font/tetris", CaseSensitivity.TO_UPPER),
                 "Hello, World.\nHello, Universe");
         helloWorld.center(0, 0);
         add(helloWorld);

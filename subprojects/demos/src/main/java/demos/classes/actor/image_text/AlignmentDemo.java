@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import static pi.util.TextAlignment.CENTER;
 import static pi.util.TextAlignment.LEFT;
@@ -24,12 +24,12 @@ import static pi.util.TextAlignment.RIGHT;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontCaseSensitivity;
-import pi.actor.ImageFontText;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.actor.ImageText.Font;
 import pi.util.TextAlignment;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
  * Demonstriert die <b>Textausrichtung</b> eines Bilderschriftarttextes.
@@ -42,12 +42,11 @@ import pi.util.TextAlignment;
  * @author Josef Friedrich
  *
  * @see pi.util.TextAlignment
- * @see pi.actor.ImageFontText
+ * @see pi.actor.ImageText
  */
 public class AlignmentDemo extends Scene
 {
-    ImageFont font = new ImageFont("image-font/tetris",
-            ImageFontCaseSensitivity.TO_UPPER);
+    Font font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
 
     public AlignmentDemo()
     {
@@ -60,7 +59,7 @@ public class AlignmentDemo extends Scene
 
     private void createText(int y, String content, TextAlignment alignment)
     {
-        ImageFontText line = new ImageFontText(font, content, 18, alignment);
+        ImageText line = new ImageText(font, content, 18, alignment);
         line.anchor(-9, y);
         add(line);
     }

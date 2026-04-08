@@ -16,17 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.actor.image_font;
+package demos.classes.actor.image_text;
 
 import pi.Controller;
 import pi.Scene;
-import pi.actor.ImageFont;
-import pi.actor.ImageFontSpecimen;
+import pi.actor.ImageText.Font;
+import pi.actor.ImageText.Specimen;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-font.md
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
- * Demonstriert die Klasse {@link ImageFontSpecimen}.
+ * Demonstriert die Klasse {@link Specimen}.
  *
  * <h2>tetris</h2>
  *
@@ -56,8 +56,8 @@ public class SpecimenDemo extends Scene
     public SpecimenDemo(String fontName)
     {
         backgroundColor("white");
-        ImageFont tetris = new ImageFont("image-font/" + fontName);
-        new ImageFontSpecimen(this, tetris);
+        Font tetris = new Font("image-font/" + fontName);
+        new Specimen(this, tetris);
     }
 
     public static void main(String[] args)
