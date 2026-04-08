@@ -4,7 +4,7 @@
 
 {{ import_admonition('pi.Camera') }}
 
-{{ drawio('Camera') }}
+![](./camera.drawio)
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Camera.java -->
 

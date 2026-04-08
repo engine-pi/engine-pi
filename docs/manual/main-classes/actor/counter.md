@@ -6,7 +6,7 @@
 
 ## Klassenkarte
 
-{{ drawio('StopWatch') }}
+![](./counter.drawio)
 /// caption
 Die Klassenkarte der Figur `Counter` mit dem Konstruktor und allen Settern.
 ///

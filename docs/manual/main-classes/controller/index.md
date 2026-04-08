@@ -1,6 +1,6 @@
 # `Controller` (Steuerung)
 
-{{ drawio('Controller') }}
+![](./controller.drawio)
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/Controller.java -->
 

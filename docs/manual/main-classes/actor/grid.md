@@ -6,7 +6,7 @@
 
 ## Klassenkarte
 
-{{ drawio('Grid') }}
+![](./grid.drawio)
 /// caption
 Die Klassenkarte der Figur `Grid` mit den Konstruktoren und allen Settern/Gettern.
 ///

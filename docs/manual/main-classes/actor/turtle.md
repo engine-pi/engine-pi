@@ -4,7 +4,7 @@
 
 {{ import_admonition('pi.Turtle') }}
 
-{{ drawio('Turtle') }}
+![](./turtle.drawio)
 /// caption
 Klassen im Paket `pi.dsa.turtle`
 ///

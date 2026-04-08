@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIf;
 
+import pi.Controller;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
 
@@ -41,6 +42,7 @@ class ImageTextTest
     @BeforeEach
     void setUp()
     {
+        Controller.instantMode(false);
         text = new ImageText(
                 new Font("image-font/tetris", CaseSensitivity.TO_UPPER),
                 "test");

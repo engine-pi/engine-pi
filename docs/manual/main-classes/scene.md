@@ -6,7 +6,7 @@
 
 {{ import_admonition('pi.Scene') }}
 
-{{ drawio('Scene') }}
+![](./scene.drawio)
 
 Ein Spiel hat oftmals mehrere verschiedene „Teile“, zwischen denen der Spieler
 während des Spielens wechselt. Zum Beispiel gibt es neben der Hauptdarstellung,

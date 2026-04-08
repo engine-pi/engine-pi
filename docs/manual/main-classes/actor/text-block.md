@@ -6,7 +6,7 @@
 
 ## Klassendiagramm
 
-{{ drawio('TextBlock') }}
+![](./image-text.drawio)
 /// caption
 Die Klasse `TextBlock` und ihr Vererbungshierachie.
 ///

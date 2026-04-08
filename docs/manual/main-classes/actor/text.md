@@ -6,7 +6,7 @@
 
 ## Klassenkarte
 
-{{ drawio('Text') }}
+![](./text.drawio)
 /// caption
 Das Klassenkarte der Figur `Text` mit dem Konstruktor und allen Settern.
 ///

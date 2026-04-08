@@ -4,6 +4,8 @@
 
 {{ import_admonition('pi.actor.ImageText') }}
 
+![](./image-text.drawio)
+
 ## `multiline` (mehrzeilig)
 
 {{ image('docs/main-classes/actor/image-text/MultilineDemo.png') }}

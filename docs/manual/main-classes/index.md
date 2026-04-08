@@ -1,6 +1,6 @@
 # Die Hauptklassen
 
-{{ drawio('main-classes') }}
+![](./main-classes.drawio)
 
 Durch die Steuerklasse {{ javadoc('pi.Controller') }} kann eine
 {{ javadoc('pi.Scene', 'Szene (Scene)') }} gestartet werden.
