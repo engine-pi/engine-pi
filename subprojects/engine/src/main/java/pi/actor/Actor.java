@@ -836,24 +836,6 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Interne Methode. Prüft, ob das anliegende Objekt (teilweise) innerhalb
-     * des sichtbaren Bereichs liegt.
-     *
-     * @param bounds Die Bounds der Kamera.
-     *
-     * @return <code>true</code>, wenn das Objekt (teilweise) innerhalb des
-     *     derzeit sichtbaren Bereichs liegt, sonst <code>false</code>.
-     *
-     * @hidden
-     */
-    @Internal
-    private boolean isWithinBounds(Bounds bounds)
-    {
-        // FIXME : Parameter ändern (?) und Funktionalität implementieren.
-        return true;
-    }
-
-    /**
      * Gibt den aktuellen, internen Physics-Handler aus.
      *
      * @return der aktuellen, internen Physics-Handler aus.
@@ -2561,144 +2543,134 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      * </p>
      *
      * @param g Das {@link Graphics2D}-Objekt, in das gezeichnet werden soll.
-     * @param cameraBounds Das Bounds, dass die Kameraperspektive
-     *     repräsentiert.<br>
-     *     Hierbei soll zunächst getestet werden, ob das Objekt innerhalb der
-     *     Kamera liegt, und erst dann gezeichnet werden.
      * @param pixelPerMeter Gibt an, wie viele Pixel ein Meter misst.
      *
      * @hidden
      */
     @Internal
-    public final void renderBasic(Graphics2D g, Bounds cameraBounds,
-            double pixelPerMeter)
+    public final void renderBasic(Graphics2D g, double pixelPerMeter)
     {
-        if (visible && isWithinBounds(cameraBounds))
+        if (!visible)
         {
-            double rotation = physics.rotation();
-            Vector anchor = physics.anchor();
-
-            if (Controller.isDebug() && config.debug.renderAABBs())
-            {
-                renderAABB(g, pixelPerMeter);
-            }
-
-            if (!labels.isEmpty())
-            {
-                renderLabels(g, pixelPerMeter);
-            }
-
-            // ____ Pre-Render ____
-            AffineTransform oldTransform = g.getTransform();
-
-            g.rotate(-Math.toRadians(rotation),
-                anchor.x() * pixelPerMeter,
-                -anchor.y() * pixelPerMeter);
-            g.translate(anchor.x() * pixelPerMeter,
-                -anchor.y() * pixelPerMeter);
-
-            // Durchsichtigkeit
-            Composite composite;
-            if (opacity != 1)
-            {
-                composite = g.getComposite();
-                g.setComposite(AlphaComposite
-                    .getInstance(AlphaComposite.SRC_OVER, (float) opacity));
-            }
-            else
-            {
-                composite = null;
-            }
-            // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
-            // werden können.
-            if (config.debug.renderActors())
-            {
-                // Zeichnen der Füllungen der Figuren. Die einzelnen
-                // Unterklassen müssen die render-Methode implementieren, die
-                // dann das Zeichen der Füllungen übernimmt.
-                render(g, pixelPerMeter);
-            }
-            if (Controller.isDebug())
-            {
-                /*
-                 * Visualisiere den Umriss
-                 */
-
-                Body body = physics.body();
-                if (body != null)
-                {
-                    Fixture fixture = body.fixtureList;
-                    while (fixture != null && fixture.shape != null)
-                    {
-
-                        // Den Anker der Figur einzeichnen
-                        g.setColor(colors.getSafe("yellow"));
-                        g.drawOval(-1, -1, 2, 2);
-                        if (Controller.config.debug.actorCoordinates())
-                        {
-                            Graphics2DUtil
-                                .drawText(g, anchorformatted(), 8, 5, 5);
-                        }
-                        // Hat die Figur eine Farbe, so wird als Umriss der
-                        // Komplementärfarbe
-                        // gewählt.
-                        g.setColor(complementaryColor());
-                        if (fixture.shape instanceof PolygonShape polygonShape)
-                        {
-                            Vec2[] vec2s = polygonShape.getVertices();
-                            int[] xs = new int[polygonShape.getVertexCount()],
-                                    ys = new int[polygonShape.getVertexCount()];
-                            for (int i = 0; i < xs.length; i++)
-                            {
-                                xs[i] = (int) (vec2s[i].x * pixelPerMeter);
-                                ys[i] = (-1)
-                                        * (int) (vec2s[i].y * pixelPerMeter);
-                            }
-                            g.drawPolygon(xs, ys, xs.length);
-                        }
-                        else if (fixture.shape instanceof CircleShape circleShape)
-                        {
-                            double diameter = (circleShape.radius * 2);
-                            g.drawOval(
-                                (int) ((circleShape.p.x - circleShape.radius)
-                                        * pixelPerMeter),
-                                (int) ((-circleShape.p.y - circleShape.radius)
-                                        * pixelPerMeter),
-                                (int) (diameter * pixelPerMeter),
-                                (int) (diameter * pixelPerMeter));
-                        }
-                        else if (fixture.shape instanceof EdgeShape edgeShape)
-                        {
-                            g.drawLine(
-                                (int) (edgeShape.vertex1.x * pixelPerMeter),
-                                (int) (edgeShape.vertex1.y * pixelPerMeter)
-                                        * -1,
-                                (int) (edgeShape.vertex2.x * pixelPerMeter),
-                                (int) (edgeShape.vertex2.y * pixelPerMeter)
-                                        * -1);
-                        }
-                        else
-                        {
-                            throw new RuntimeException("Konnte den Umriss ("
-                                    + fixture.shape
-                                    + ") nicht zeichnen, unerwarteter Umriss");
-                        }
-
-                        fixture = fixture.next;
-                    }
-                }
-
-            }
-            // ____ Post-Render ____
-            // Opacity Update
-            if (composite != null)
-            {
-                g.setComposite(composite);
-            }
-            // Transform zurücksetzen
-            g.setTransform(oldTransform);
+            return;
         }
 
+        double rotation = physics.rotation();
+        Vector anchor = physics.anchor();
+
+        if (Controller.isDebug() && config.debug.renderAABBs())
+        {
+            renderAABB(g, pixelPerMeter);
+        }
+
+        if (!labels.isEmpty())
+        {
+            renderLabels(g, pixelPerMeter);
+        }
+
+        // ____ Pre-Render ____
+        AffineTransform oldTransform = g.getTransform();
+
+        g.rotate(-Math.toRadians(rotation),
+            anchor.x() * pixelPerMeter,
+            -anchor.y() * pixelPerMeter);
+        g.translate(anchor.x() * pixelPerMeter, -anchor.y() * pixelPerMeter);
+
+        // Durchsichtigkeit
+        Composite composite;
+        if (opacity != 1)
+        {
+            composite = g.getComposite();
+            g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                (float) opacity));
+        }
+        else
+        {
+            composite = null;
+        }
+        // Damit im Debug-Modus nur die Umrisse der Figuren dargestellt
+        // werden können.
+        if (config.debug.renderActors())
+        {
+            // Zeichnen der Füllungen der Figuren. Die einzelnen
+            // Unterklassen müssen die render-Methode implementieren, die
+            // dann das Zeichen der Füllungen übernimmt.
+            render(g, pixelPerMeter);
+        }
+        if (Controller.isDebug())
+        {
+            /*
+             * Visualisiere den Umriss
+             */
+
+            Body body = physics.body();
+            if (body != null)
+            {
+                Fixture fixture = body.fixtureList;
+                while (fixture != null && fixture.shape != null)
+                {
+
+                    // Den Anker der Figur einzeichnen
+                    g.setColor(colors.getSafe("yellow"));
+                    g.drawOval(-1, -1, 2, 2);
+                    if (Controller.config.debug.actorCoordinates())
+                    {
+                        Graphics2DUtil.drawText(g, anchorformatted(), 8, 5, 5);
+                    }
+                    // Hat die Figur eine Farbe, so wird als Umriss der
+                    // Komplementärfarbe
+                    // gewählt.
+                    g.setColor(complementaryColor());
+                    if (fixture.shape instanceof PolygonShape polygonShape)
+                    {
+                        Vec2[] vec2s = polygonShape.getVertices();
+                        int[] xs = new int[polygonShape.getVertexCount()],
+                                ys = new int[polygonShape.getVertexCount()];
+                        for (int i = 0; i < xs.length; i++)
+                        {
+                            xs[i] = (int) (vec2s[i].x * pixelPerMeter);
+                            ys[i] = (-1) * (int) (vec2s[i].y * pixelPerMeter);
+                        }
+                        g.drawPolygon(xs, ys, xs.length);
+                    }
+                    else if (fixture.shape instanceof CircleShape circleShape)
+                    {
+                        double diameter = (circleShape.radius * 2);
+                        g.drawOval(
+                            (int) ((circleShape.p.x - circleShape.radius)
+                                    * pixelPerMeter),
+                            (int) ((-circleShape.p.y - circleShape.radius)
+                                    * pixelPerMeter),
+                            (int) (diameter * pixelPerMeter),
+                            (int) (diameter * pixelPerMeter));
+                    }
+                    else if (fixture.shape instanceof EdgeShape edgeShape)
+                    {
+                        g.drawLine((int) (edgeShape.vertex1.x * pixelPerMeter),
+                            (int) (edgeShape.vertex1.y * pixelPerMeter) * -1,
+                            (int) (edgeShape.vertex2.x * pixelPerMeter),
+                            (int) (edgeShape.vertex2.y * pixelPerMeter) * -1);
+                    }
+                    else
+                    {
+                        throw new RuntimeException("Konnte den Umriss ("
+                                + fixture.shape
+                                + ") nicht zeichnen, unerwarteter Umriss");
+                    }
+
+                    fixture = fixture.next;
+                }
+            }
+
+        }
+        // ____ Post-Render ____
+        // Opacity Update
+        if (composite != null)
+        {
+            g.setComposite(composite);
+        }
+        // Transform zurücksetzen
+        g.setTransform(oldTransform);
     }
 
     protected ToStringFormatter toStringFormatter()

@@ -644,15 +644,12 @@ public class Layer implements KeyStrokeListenerRegistration,
         g.rotate(Math.toRadians(rotation) * parallaxRotation, 0, 0);
         g.translate((-cameraFocus.x() * parallaxX) * pixelPerMeter,
             (cameraFocus.y() * parallaxY) * pixelPerMeter);
-        // TODO: Calculate optimal bounds
-        int size = Math.max(width, height);
         boolean needsSort = false;
         int previousPosition = Integer.MIN_VALUE;
         for (Actor actor : actors)
         {
             actor.renderBasic(g,
-                new Bounds(cameraFocus.x() - size, cameraFocus.y() - size,
-                        size * 2, size * 2),
+
                 pixelPerMeter);
             if (!needsSort)
             {
