@@ -154,6 +154,9 @@ public final class Sound
                 ch * 2, rate, false);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

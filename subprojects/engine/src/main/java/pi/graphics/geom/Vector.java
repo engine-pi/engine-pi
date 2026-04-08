@@ -797,6 +797,8 @@ public final class Vector implements Cloneable
      * </p>
      *
      * @return Die String-Repräsentation dieses Vektors.
+     *
+     * @hidden
      */
     @Override
     public String toString()

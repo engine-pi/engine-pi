@@ -82,6 +82,9 @@ public class LoopedTrack implements Track, Iterator<Sound>
         return this.track.hashCode();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

@@ -551,6 +551,9 @@ public class VirtualRobot implements Robot
         return getOnItems().isPaint();
     }
 
+    /**
+     * @hidden
+     */
     public String toString()
     {
         return "VirtualRobot [row=%s, col=%s, dir=%s]".formatted(row, col, dir);

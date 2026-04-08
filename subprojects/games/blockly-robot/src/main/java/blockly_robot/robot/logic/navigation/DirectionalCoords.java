@@ -25,15 +25,19 @@ public class DirectionalCoords extends Coords
         return Compass.toDirection(dir);
     }
 
-    public String toString()
-    {
-        return "DirectionalPoint [row=%s, col=%s, dir=%s]"
-            .formatted(row, col, dir);
-    }
-
     @Getter
     public String summary()
     {
         return "(%s,%s;%s)".formatted(row, col, dir);
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        return "DirectionalPoint [row=%s, col=%s, dir=%s]"
+            .formatted(row, col, dir);
     }
 }

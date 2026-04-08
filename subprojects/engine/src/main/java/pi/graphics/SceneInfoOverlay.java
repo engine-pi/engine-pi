@@ -547,6 +547,9 @@ public class SceneInfoOverlay
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

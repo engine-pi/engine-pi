@@ -943,6 +943,9 @@ public class Line extends Actor
         }
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

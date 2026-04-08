@@ -53,6 +53,9 @@ public class Coords
         return this;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

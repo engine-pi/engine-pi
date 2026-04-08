@@ -128,6 +128,9 @@ public class IntroTrack implements Track
         return loop.hashCode() * 31 + intro.hashCode();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

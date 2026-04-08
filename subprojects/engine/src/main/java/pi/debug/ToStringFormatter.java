@@ -277,7 +277,10 @@ public class ToStringFormatter
 
     /**
      * @see #format()
+     *
+     * @hidden
      */
+    @Override
     public String toString()
     {
         return format();

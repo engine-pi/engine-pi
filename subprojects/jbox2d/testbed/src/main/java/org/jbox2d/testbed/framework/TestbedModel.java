@@ -260,6 +260,9 @@ public class TestbedModel
             return category != null;
         }
 
+        /**
+         * @hidden
+         */
         @Override
         public String toString()
         {

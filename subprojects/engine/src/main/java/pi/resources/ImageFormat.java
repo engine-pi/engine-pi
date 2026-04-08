@@ -102,6 +102,9 @@ public enum ImageFormat
         return "." + this.name().toLowerCase();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

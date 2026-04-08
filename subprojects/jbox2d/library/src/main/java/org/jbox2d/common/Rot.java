@@ -61,6 +61,9 @@ public class Rot implements Serializable
         return s;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

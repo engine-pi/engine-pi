@@ -135,6 +135,9 @@ public class Vec3 implements Serializable
         return new Vec3(this);
     }
 
+    /**
+     * @hidden
+     */
     public String toString()
     {
         return "(" + x + "," + y + "," + z + ")";

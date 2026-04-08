@@ -106,6 +106,9 @@ public enum SoundFormat
         return "." + name().toLowerCase();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

@@ -40,6 +40,8 @@ public class Mat22 implements Serializable
 
     /**
      * Convert the matrix to printable format.
+     *
+     * @hidden
      */
     @Override
     public String toString()

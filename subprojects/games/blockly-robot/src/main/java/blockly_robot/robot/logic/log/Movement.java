@@ -124,21 +124,6 @@ public class Movement extends Action
         return this;
     }
 
-    /**
-     * Returns a string representation of the Movement object.
-     *
-     * @return a string representation of the Movement object
-     */
-    public String toString()
-    {
-        if (error != null)
-        {
-            return "Movement [name=%s, error=%s]".formatted(name, error);
-        }
-        return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
-            .formatted(name, from.summary(), to.summary(), relocated, rotation);
-    }
-
     @Getter
     @Override
     public String name()
@@ -149,5 +134,22 @@ public class Movement extends Action
             return "!%s".formatted(name);
         }
         return name;
+    }
+
+    /**
+     * Returns a string representation of the Movement object.
+     *
+     * @return a string representation of the Movement object
+     *
+     * @hidden
+     */
+    public String toString()
+    {
+        if (error != null)
+        {
+            return "Movement [name=%s, error=%s]".formatted(name, error);
+        }
+        return "Movement [name=%s, from=%s, to=%s, relocated=%s, rotation=%s]"
+            .formatted(name, from.summary(), to.summary(), relocated, rotation);
     }
 }

@@ -50,6 +50,9 @@ class InsetTestBox extends CombinedChildBox
         addChild(outerBorder);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

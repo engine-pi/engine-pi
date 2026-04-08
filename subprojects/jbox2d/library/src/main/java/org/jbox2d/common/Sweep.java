@@ -60,6 +60,9 @@ public class Sweep implements Serializable
      */
     public float alpha0;
 
+    /**
+     * @hidden
+     */
     public String toString()
     {
         String s = "Sweep:\nlocalCenter: " + localCenter + "\n";

@@ -105,6 +105,9 @@ public class SinglePlayTrack implements Track
         return sound.hashCode() + 0xdb9857d0;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {

@@ -207,6 +207,7 @@ public class CollisionEvent<E extends Actor>
     /**
      * @hidden
      */
+    @Override
     public String toString()
     {
         ToStringFormatter formatter = new ToStringFormatter("CollisionEvent");

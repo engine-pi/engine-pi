@@ -81,6 +81,9 @@ public class Profile
             record(accum);
         }
 
+        /**
+         * @hidden
+         */
         @Override
         public String toString()
         {

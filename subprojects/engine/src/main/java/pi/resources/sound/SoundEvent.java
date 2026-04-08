@@ -61,6 +61,9 @@ public class SoundEvent extends EventObject
         return sound;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public String toString()
     {
