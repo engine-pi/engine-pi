@@ -38,7 +38,7 @@ public class HelloWorldDemo extends Scene
     {
         backgroundColor("green");
         helloWorld = new ImageText(
-                new Font("main-classes/actor/image-text/tetris")
+                new ImageText.Font("main-classes/actor/image-text/tetris")
                     .supportsCase(CaseSensitivity.UPPER))
                         .content("Hello, World.\nHello, Universe")
                         .pixelMultiplication(4);

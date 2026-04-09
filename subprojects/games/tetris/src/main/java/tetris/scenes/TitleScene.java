@@ -16,14 +16,16 @@
  */
 package tetris.scenes;
 
+import static tetris.Tetris.COLOR_SCHEME_GREEN;
+
 import java.awt.event.KeyEvent;
 
 import pi.actor.ImageText;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
-import pi.graphics.geom.Vector;
 import pi.graphics.boxes.HAlign;
+import pi.graphics.geom.Vector;
 import tetris.Tetris;
 import tetris.text.Font;
 
@@ -45,7 +47,8 @@ public class TitleScene extends BaseScene
     {
         ImageText actor = new ImageText(Font.getFont()).content(content)
             .lineWidth(20)
-            .hAlign(HAlign.CENTER);
+            .hAlign(HAlign.CENTER)
+            .color(COLOR_SCHEME_GREEN.getBlack());
         actor.anchor(-2, y);
         add(actor);
     }

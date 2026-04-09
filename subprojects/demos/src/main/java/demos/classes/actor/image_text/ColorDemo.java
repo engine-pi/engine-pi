@@ -27,7 +27,6 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
-import pi.actor.ImageText.Font;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
@@ -43,8 +42,9 @@ import pi.actor.ImageText.Font;
  */
 public class ColorDemo extends Scene
 {
-    Font font = new Font("main-classes/actor/image-text/tetris")
-        .supportsCase(CaseSensitivity.UPPER);
+    ImageText.Font font = new ImageText.Font(
+            "main-classes/actor/image-text/tetris")
+                .supportsCase(CaseSensitivity.UPPER);
 
     public ColorDemo()
     {

@@ -2,6 +2,17 @@
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/ImageText.java -->
 
+Ebenso wie die Figur {{ javadoc('pi.actor.Text', 'Text') }} ist die Figur {{
+javadoc('pi.actor.ImageText', 'ImageText') }} zur Darstellungen von Texten
+gedacht. {{ javadoc('pi.actor.ImageText', 'ImageText') }} verwendet jedoch keine
+vektorbasierte Schriftart zur Darstellung, sondern jedes Zeichen ist durch eine
+Pixelgrafik repräsentiert. Diese Pixelgrafik-Bilddateien müssen in einem
+gemeinsamen Ordner liegen. Hier bietet sich das Dateiformat `png` an.
+
+Bevor {{ javadoc('pi.actor.ImageText', 'ImageText') }} verwendet werden kann,
+muss zuerst eine Bilderschriftart
+definiert werden.
+
 {{ import_admonition('pi.actor.ImageText') }}
 
 ![](./image-text.drawio)
@@ -90,7 +101,6 @@ public class AlignmentDemo extends Scene
 {{ code('demos.classes.actor.image_text.AlignmentDemo', start_line=47) }}
 
 ## `color` (Farbe)
-
 
 {{ image('docs/main-classes/actor/image-text/ColorDemo.png') }}
 

@@ -22,15 +22,14 @@ package pi.actor;
  * Lädt alle Bilddateien mit einem bestimmten <b>Präfix</b> in einem bestimmten
  * Verzeichnis in eine Animation.
  *
- * @param <State> Typ der Zustände, zwischen denen in der Animation gewechselt
+ * @param <T> Typ der Zustände, zwischen denen in der Animation gewechselt
  *     werden soll.
  *
  * @author Josef Friedrich
  *
  * @since 0.27.0
  */
-public class StatefulImagesPrefixAnimation<State>
-        extends StatefulAnimation<State>
+public class StatefulImagesPrefixAnimation<T> extends StatefulAnimation<T>
 {
     /**
      * @param width Die Breite in Meter der animierten Figur.
@@ -57,8 +56,8 @@ public class StatefulImagesPrefixAnimation<State>
      *     dem gegebenen Präfix</a> (im angegebenen Ordner) und fügt sie in
      *     aufsteigender Reihenfolge der Animation hinzu.
      */
-    public void addState(State state, double frameDuration,
-            String directoryPath, String prefix)
+    public void addState(T state, double frameDuration, String directoryPath,
+            String prefix)
     {
         addState(state,
             Animation.createFromImagesPrefix(frameDuration,
@@ -79,7 +78,7 @@ public class StatefulImagesPrefixAnimation<State>
      *     dem gegebenen Präfix</a> (im angegebenen Ordner) und fügt sie in
      *     aufsteigender Reihenfolge der Animation hinzu.
      */
-    public void addState(State state, String directoryPath, String prefix)
+    public void addState(T state, String directoryPath, String prefix)
     {
         addState(state,
             Animation.createFromImagesPrefix(frameDuration,

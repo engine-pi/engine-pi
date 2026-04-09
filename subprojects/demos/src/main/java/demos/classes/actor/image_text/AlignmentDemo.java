@@ -26,7 +26,6 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
-import pi.actor.ImageText.Font;
 import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
@@ -46,8 +45,9 @@ import pi.graphics.boxes.HAlign;
  */
 public class AlignmentDemo extends Scene
 {
-    Font font = new Font("main-classes/actor/image-text/tetris")
-        .supportsCase(CaseSensitivity.UPPER);
+    ImageText.Font font = new ImageText.Font(
+            "main-classes/actor/image-text/tetris")
+                .supportsCase(CaseSensitivity.UPPER);
 
     public AlignmentDemo()
     {

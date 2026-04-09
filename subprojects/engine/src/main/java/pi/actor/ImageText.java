@@ -146,10 +146,11 @@ public class ImageText extends Image
     @API
     @Setter
     @ChainableMethod
-    public ImageText content(Object content)
+    public ImageText content(Object... content)
     {
-        this.content = TextUtil
-            .wrap(TextUtil.convertToString(content), lineWidth, hAlign);
+        this.content = TextUtil.wrap(TextUtil.convertToMultilineString(content),
+            lineWidth,
+            hAlign);
 
         if (this.content.isEmpty())
         {
@@ -285,8 +286,6 @@ public class ImageText extends Image
     }
 
     /* color */
-
-    Color color = null;
 
     /**
      * Setzt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
@@ -465,7 +464,7 @@ public class ImageText extends Image
          *     einzelnen Buchstaben liegen.
          * @param extension Die Dateierweiterung der Buchstabenbilder.
          */
-        public Font(String basePath, String extension)
+        public Font(@NonNull String basePath, @NonNull String extension)
         {
             this.basePath = basePath;
             this.extension = extension;
@@ -512,10 +511,10 @@ public class ImageText extends Image
          * Dateierweiterung {@code png} haben. Der Text wird linksbündig
          * ausgerichtet.
          *
-         * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der
-         *     einzelnen Buchstaben liegen.
+         * @param basePath Der <b>Pfad</b> zu einem Ordner, in dem die Bilder
+         *     der einzelnen Buchstaben liegen.
          */
-        public Font(String basePath)
+        public Font(@NonNull String basePath)
         {
             this(basePath, "png");
         }
@@ -523,23 +522,25 @@ public class ImageText extends Image
         /* basePath */
 
         /**
-         * Der Pfad zu einem Ordner, in dem die Bilder der einzelnen Buchstaben
-         * liegen.
+         * Der <b>Pfad</b> zu einem Ordner, in dem die Bilder der einzelnen
+         * Buchstaben liegen.
          */
-        private String basePath;
+        private @NonNull String basePath;
 
         /**
-         * Setzt den Pfad zu einem Ordner, in dem die Bilder der einzelnen
-         * Buchstaben liegen.
+         * Setzt den <b>Pfad</b> zu einem Ordner, in dem die Bilder der
+         * einzelnen Buchstaben liegen.
          *
-         * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der
-         *     einzelnen Buchstaben liegen.
+         * @param basePath Der <b>Pfad</b> zu einem Ordner, in dem die Bilder
+         *     der einzelnen Buchstaben liegen.
          *
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
          */
+        @API
         @Setter
-        public Font basePath(String basePath)
+        @ChainableMethod
+        public Font basePath(@NonNull String basePath)
         {
             this.basePath = basePath;
             return this;
@@ -548,15 +549,16 @@ public class ImageText extends Image
         /* glyphWidth */
 
         /**
-         * Die Breite der Buchstabenbilder in Pixel.
+         * Die <b>Breite</b> der Buchstabenbilder in Pixel.
          */
         private int glyphWidth;
 
         /**
-         * Gibt die Breite der Buchstabenbilder in Pixel zurück.
+         * Gibt die <b>Breite</b> der Buchstabenbilder in Pixel zurück.
          *
-         * @return Die Breite der Buchstabenbilder in Pixel.
+         * @return Die <b>Breite</b> der Buchstabenbilder in Pixel.
          */
+        @API
         @Getter
         public int glyphWidth()
         {
@@ -564,14 +566,14 @@ public class ImageText extends Image
         }
 
         /**
-         * Die Höhe der Buchstabenbilder in Pixel.
+         * Die <b>Höhe</b> der Buchstabenbilder in Pixel.
          */
         private int glyphHeight;
 
         /**
-         * Gibt die Höhe der Buchstabenbilder in Pixel zurück.
+         * Gibt die <b>Höhe</b> der Buchstabenbilder in Pixel zurück.
          *
-         * @return Die Höhe der Buchstabenbilder in Pixel.
+         * @return Die <b>Höhe</b> der Buchstabenbilder in Pixel.
          *
          * @since 0.46.0
          */
@@ -585,14 +587,14 @@ public class ImageText extends Image
         /* extension */
 
         /**
-         * Die Dateierweiterung der Buchstabenbilder.
+         * Die <b>Dateierweiterung</b> der Buchstabenbilder.
          */
-        private String extension;
+        private @NonNull String extension;
 
         /**
-         * Setzt die Dateierweiterung der Buchstabenbilder.
+         * Setzt die <b>Dateierweiterung</b> der Buchstabenbilder.
          *
-         * @param extension Die Dateierweiterung der Buchstabenbilder.
+         * @param extension Die <b>Dateierweiterung</b> der Buchstabenbilder.
          *
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
@@ -600,7 +602,7 @@ public class ImageText extends Image
         @API
         @Setter
         @ChainableMethod
-        public Font extension(String extension)
+        public Font extension(@NonNull String extension)
         {
             this.extension = extension;
             return this;
@@ -661,17 +663,17 @@ public class ImageText extends Image
         /* throwException */
 
         /**
-         * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen
-         * werden soll oder nicht.
+         * Ob bei einem nicht vorhandenen Zeichen eine <b>Fehlermeldung
+         * geworfen</b> werden soll oder nicht.
          */
         private boolean throwException = true;
 
         /**
-         * Setzt, ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung
-         * geworfen werden soll oder nicht.
+         * Setzt, ob bei einem nicht vorhandenen Zeichen eine <b>Fehlermeldung
+         * geworfen</b> werden soll oder nicht.
          *
          * @param throwException Ob bei einem nicht vorhandenen Zeichen eine
-         *     Fehlermeldung geworfen werden soll oder nicht.
+         *     <b>Fehlermeldung geworfen</b> werden soll oder nicht.
          *
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
@@ -796,6 +798,12 @@ public class ImageText extends Image
 
         private final Map<String, Glyph> glyphsByFilename = new LinkedHashMap<>();
 
+        /**
+         * Gibt die <b>Zeichen</b> der Bilderschriftart als Feld/Array zurück.
+         *
+         * @return Die <b>Zeichen</b> der Bilderschriftart als Feld/Array.
+         */
+        @API
         @Getter
         public Glyph[] glyphs()
         {
@@ -803,17 +811,23 @@ public class ImageText extends Image
         }
 
         /**
-         * Ordnet einem <b>Zeichen</b> einem <b>Bilder-Dateinamen</b> zu. Nicht
-         * alle Zeichen wie zum Beispiel der Schrägstrich oder der Doppelpunkt
-         * können als Dateinamen verwendet werden.
+         * Ordnet einem <b>Zeichen</b> einem <b>Bilder-Dateinamen</b> zu.
          *
-         * @param glyph Das Zeichen, das durch ein Bild dargestellt werden soll.
-         * @param filename Der Dateiname des Bilds ohne Dateierweiterung, das
-         *     ein Zeichen darstellt, relativ zu {@link #basePath}.
+         * <p>
+         * Nicht alle Zeichen wie zum Beispiel der Schrägstrich oder der
+         * Doppelpunkt können als Dateinamen verwendet werden.
+         * </p>
+         *
+         * @param glyph Das <b>Zeichen</b>, das durch ein Bild dargestellt
+         *     werden soll.
+         * @param filename Der <b>Dateiname</b> des Bilds ohne Dateierweiterung,
+         *     das ein Zeichen darstellt, relativ zu {@link #basePath}.
          *
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
          */
+        @API
+        @ChainableMethod
         public Font addMapping(char glyph, String filename)
         {
             Glyph imageGlyph = glyphsByFilename.get(filename);
@@ -854,7 +868,7 @@ public class ImageText extends Image
         }
 
         /**
-         * Setzt den gegebenen Textinhalt in ein Bild.
+         * Setzt den gegebenen Textinhalt in ein {@link BufferedImage Bild}.
          *
          * @param content Der Textinhalt, der in das Bild geschrieben werden
          *     soll.
@@ -869,8 +883,10 @@ public class ImageText extends Image
          *
          * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt
          *     wurden.
+         *
+         * @hidden
          */
-        public BufferedImage createImage(String content, int lineWidth,
+        BufferedImage createImage(String content, int lineWidth,
                 HAlign alignment, Color color, int pixelMultiplication)
         {
             if (supportsCase == CaseSensitivity.UPPER)
@@ -916,11 +932,6 @@ public class ImageText extends Image
             return image;
         }
 
-        public BufferedImage createImage(String content)
-        {
-            return createImage(content, 0, HAlign.LEFT, null, 1);
-        }
-
         /**
          * @hidden
          */
@@ -951,88 +962,6 @@ public class ImageText extends Image
     }
 
     /**
-     * Zeichnet in eine Szene ein <b>Schriftmuster</b> ein.
-     *
-     * <h2>tetris</h2>
-     *
-     * <p>
-     * <img alt="SpecimenTetris" src=
-     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenTetris.png">
-     * </p>
-     *
-     * <h2>pacman</h2>
-     *
-     * <p>
-     * <img alt="SpecimenPacman" src=
-     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenPacman.png">
-     * </p>
-     *
-     * <h2>space-invaders</h2>
-     *
-     * <p>
-     * <img alt="SpecimenSpaceInvaders" src=
-     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenSpaceInvaders.png">
-     * </p>
-     *
-     * @author Josef Friedrich
-     *
-     * @since 0.27.0
-     */
-    public static class Specimen
-    {
-        /**
-         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
-         *     soll.
-         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
-         *     werden sollen.
-         * @param glyphsPerRow Wie viele Zeichen in einer Zeile dargestellt
-         *     werden sollen.
-         * @param x Die x-Koordinate des linken, oberen Zeichens.
-         * @param y Die y-Koordinate des linken, oberen Zeichens.
-         */
-        public Specimen(Scene scene, Font font, int glyphsPerRow, double x,
-                double y)
-        {
-            double startX = x;
-            int i = 0;
-            for (Glyph glyph : font.glyphs())
-            {
-                ImageText text = new ImageText(font).content(glyph.glyph());
-                text.anchor(x, y);
-                scene.add(text);
-                scene.add(
-                    new Text(glyph.content()).anchor(x + 2, y).color("gray"));
-                scene.add(new Text(glyph.unicodeName()).font("Monospaced")
-                    .height(0.3)
-                    .anchor(x, y - 0.4)
-                    .color("gray"));
-                scene.add(new Text(glyph.hexNumber()).font("Monospaced")
-                    .height(0.3)
-                    .anchor(x, y - 0.8)
-                    .color("gray"));
-                x += 4;
-                i++;
-                if (i % glyphsPerRow == 0)
-                {
-                    x = startX;
-                    y -= 2;
-                }
-            }
-        }
-
-        /**
-         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
-         *     soll.
-         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
-         *     werden sollen.
-         */
-        public Specimen(Scene scene, Font font)
-        {
-            this(scene, font, 5, -10, 8);
-        }
-    }
-
-    /**
      * Beschreibt, wie mit der <b>Groß- und Kleinschreibung</b> umgegangen
      * werden soll.
      *
@@ -1040,7 +969,7 @@ public class ImageText extends Image
      *
      * @since 0.23.0
      */
-    public static enum CaseSensitivity
+    public enum CaseSensitivity
     {
         /**
          * Alle Klein- werden zu <b>Großbuchstaben</b> konvertiert.
@@ -1205,4 +1134,85 @@ public class ImageText extends Image
         }
     }
 
+    /**
+     * Zeichnet in eine Szene ein <b>Schriftmuster</b> ein.
+     *
+     * <h2>tetris</h2>
+     *
+     * <p>
+     * <img alt="SpecimenTetris" src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenTetris.png">
+     * </p>
+     *
+     * <h2>pacman</h2>
+     *
+     * <p>
+     * <img alt="SpecimenPacman" src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenPacman.png">
+     * </p>
+     *
+     * <h2>space-invaders</h2>
+     *
+     * <p>
+     * <img alt="SpecimenSpaceInvaders" src=
+     * "https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/docs/main-classes/actor/image-text/SpecimenSpaceInvaders.png">
+     * </p>
+     *
+     * @author Josef Friedrich
+     *
+     * @since 0.27.0
+     */
+    public static class Specimen
+    {
+        /**
+         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
+         *     soll.
+         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
+         *     werden sollen.
+         * @param glyphsPerRow Wie viele Zeichen in einer Zeile dargestellt
+         *     werden sollen.
+         * @param x Die x-Koordinate des linken, oberen Zeichens.
+         * @param y Die y-Koordinate des linken, oberen Zeichens.
+         */
+        public Specimen(Scene scene, Font font, int glyphsPerRow, double x,
+                double y)
+        {
+            double startX = x;
+            int i = 0;
+            for (Glyph glyph : font.glyphs())
+            {
+                ImageText text = new ImageText(font).content(glyph.glyph());
+                text.anchor(x, y);
+                scene.add(text);
+                scene.add(
+                    new Text(glyph.content()).anchor(x + 2, y).color("gray"));
+                scene.add(new Text(glyph.unicodeName()).font("Monospaced")
+                    .height(0.3)
+                    .anchor(x, y - 0.4)
+                    .color("gray"));
+                scene.add(new Text(glyph.hexNumber()).font("Monospaced")
+                    .height(0.3)
+                    .anchor(x, y - 0.8)
+                    .color("gray"));
+                x += 4;
+                i++;
+                if (i % glyphsPerRow == 0)
+                {
+                    x = startX;
+                    y -= 2;
+                }
+            }
+        }
+
+        /**
+         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
+         *     soll.
+         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
+         *     werden sollen.
+         */
+        public Specimen(Scene scene, Font font)
+        {
+            this(scene, font, 5, -10, 8);
+        }
+    }
 }

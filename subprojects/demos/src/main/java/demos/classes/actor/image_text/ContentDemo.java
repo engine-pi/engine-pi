@@ -32,7 +32,7 @@ import pi.graphics.boxes.HAlign;
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
 /**
- * Demonstiert die Methode {@link ImageText#content(String)} der Klasse
+ * Demonstiert die Methode {@link ImageText#content(Object...)} der Klasse
  * {@link ImageText}.
  *
  * <p>

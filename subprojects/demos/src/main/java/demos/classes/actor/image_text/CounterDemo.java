@@ -40,15 +40,15 @@ public class CounterDemo extends Scene
     {
         backgroundColor("yellow");
         AtomicInteger counter = new AtomicInteger();
-        text = new ImageText(new Font("main-classes/actor/image-text/pacman"))
-            .content("0")
-            .lineWidth(5)
-            .hAlign(HAlign.RIGHT)
-            .pixelMultiplication(8);
+        text = new ImageText(
+                new ImageText.Font("main-classes/actor/image-text/pacman"))
+                    .content("0")
+                    .lineWidth(5)
+                    .hAlign(HAlign.RIGHT)
+                    .pixelMultiplication(8);
         text.center(-1, 0);
-        repeat(0.05, () -> {
-            text.content(String.valueOf(counter.getAndIncrement()));
-        });
+        repeat(0.05,
+            () -> text.content(String.valueOf(counter.getAndIncrement())));
         add(text);
     }
 

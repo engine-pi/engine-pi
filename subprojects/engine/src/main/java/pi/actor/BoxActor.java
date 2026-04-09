@@ -476,8 +476,8 @@ public class BoxActor<T extends Box> extends Actor
     {
         box.measure();
 
-        double widthPx = (double) box.width();
-        double heightPx = (double) box.height();
+        double widthPx = box.width();
+        double heightPx = box.height();
 
         if (definedWidth == 0 && definedHeight == 0)
         {

@@ -32,8 +32,8 @@ public class NumberDisplay
     {
         font = new ImageText(Font.getFont()).content("0")
             .lineWidth(maxDigits)
-            .color(COLOR_SCHEME_GREEN.getBlack())
-            .hAlign(HAlign.RIGHT);
+            .hAlign(HAlign.RIGHT)
+            .color(COLOR_SCHEME_GREEN.getBlack());
         font.anchor(x, y);
         scene.add(font);
         set(0);
@@ -41,7 +41,7 @@ public class NumberDisplay
 
     public void write(int number)
     {
-        font.content(String.valueOf(number));
+        font.content(number);
     }
 
     public void set(int number)

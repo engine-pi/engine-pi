@@ -249,6 +249,7 @@ public class Grid extends Actor
      * @hidden
      */
     @Internal
+    @Override
     public void update()
     {
         fixture(() -> FixtureBuilder.rectangle(cols * size, rows * size));
