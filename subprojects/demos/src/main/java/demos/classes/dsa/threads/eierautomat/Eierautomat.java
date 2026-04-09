@@ -49,12 +49,12 @@ class Eierautomat
         automat.size(4, 15);
         automat.color("grau");
         automat.center(0, 0);
-        eierkartons = new ArrayList<Eierkarton>();
+        eierkartons = new ArrayList<>();
         this.scene = scene;
         scene.add(automat);
     }
 
-    protected void fügeEierkartonHinzu(int fach)
+    protected void fuegeEierkartonHinzu(int fach)
     {
         Eierkarton eierkarton = new Eierkarton();
         eierkarton.center(0, 6.5 - 1.40 * fach);
@@ -76,14 +76,14 @@ class Eierautomat
     /**
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
-    synchronized boolean befülle()
+    synchronized boolean befuelle()
     {
-        if (eierkartons.size() == 0)
+        if (eierkartons.isEmpty())
         {
             // Der leere Automat wird mit zehn neuen Kartons befüllt.
             for (int i = 0; i < 10; i++)
             {
-                fügeEierkartonHinzu(i);
+                fuegeEierkartonHinzu(i);
             }
             return true;
         }
@@ -97,7 +97,7 @@ class Eierautomat
      */
     synchronized Eierkarton holeEier()
     {
-        if (eierkartons.size() > 0)
+        if (!eierkartons.isEmpty())
         {
             return entferneEierkarton();
         }

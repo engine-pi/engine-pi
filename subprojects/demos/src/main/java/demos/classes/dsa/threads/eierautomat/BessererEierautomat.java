@@ -42,11 +42,11 @@ class BessererEierautomat extends Eierautomat
      * Befüllen des Eierautomaten mit neuen Eierkartons
      */
     @Override
-    synchronized boolean befülle()
+    synchronized boolean befuelle()
     {
         // So lange der Automat noch Eierkartons enthält, muss mit dem Befüllen
         // gewartet werden.
-        while (eierkartons.size() > 0)
+        while (!eierkartons.isEmpty())
         {
             try
             {
@@ -60,12 +60,12 @@ class BessererEierautomat extends Eierautomat
         // Der leere Automat wird mit zehn neuen Kartons befüllt.
         for (int i = 0; i < 10; i++)
         {
-            fügeEierkartonHinzu(i);
+            fuegeEierkartonHinzu(i);
         }
 
         // Der Zustand der Variable in der Wartebedingung hat sich verändert.
         // Ein wartender Thread wird benachrichtigt.
-        notify();
+        notifyAll();
         return true;
     }
 
@@ -80,7 +80,7 @@ class BessererEierautomat extends Eierautomat
         // solange eine bestimmte Bedingung gilt, müssen Abholer abwarten
         // Die Bedingung um die folgenden Anweisungen könnte dann
         // entfernt werden, ebenso die Rückgabe der leeren Referenz.
-        while (eierkartons.size() == 0)
+        while (eierkartons.isEmpty())
         {
             try
             {
@@ -95,9 +95,9 @@ class BessererEierautomat extends Eierautomat
 
         // Unter einer bestimmten Bedingung muss die Bäuerin informiert
         // werden
-        if (eierkartons.size() == 0)
+        if (eierkartons.isEmpty())
         {
-            notify();
+            notifyAll();
         }
 
         return gekaufterKarton;

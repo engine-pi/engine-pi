@@ -34,10 +34,18 @@ class Landleben extends Scene
     /**
      * Konstruktor für Objekte der Klasse Landleben
      */
-    Landleben()
+    Landleben(boolean verwendeBesseren)
     {
-        Eierautomat automat = new Eierautomat(this);
-        // Eierautomat automat = new BessererEierautomat(this);
+        Eierautomat automat;
+        if (!verwendeBesseren)
+        {
+            automat = new Eierautomat(this);
+        }
+        else
+        {
+            automat = new BessererEierautomat(this);
+        }
+
         Baeuerin baeuerin = new Baeuerin(this, automat);
         Leo leo = new Leo(this, automat);
         baeuerin.start();
@@ -48,6 +56,6 @@ class Landleben extends Scene
     {
         Controller.title("Eierautomat");
         Controller.instantMode(false);
-        Controller.start(new Landleben());
+        Controller.start(new Landleben(false));
     }
 }

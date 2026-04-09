@@ -49,6 +49,8 @@ import org.jbox2d.dynamics.joints.PrismaticJointDef;
 import org.jbox2d.dynamics.joints.RevoluteJointDef;
 import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import pi.Controller;
 import pi.Layer;
@@ -1450,7 +1452,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     {
         if (Double.isNaN(restitution))
         {
-            throw new RuntimeException("Ungültige Stoßzahl: " + restitution);
+            throw new IllegalArgumentException(
+                    "Ungültige Stoßzahl: " + restitution);
         }
         physics.restitution(restitution);
         return this;
@@ -2499,33 +2502,34 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             // Achsenparallele Begrenzungsbox in Meter
             Bounds aabb = Bounds.fromAABB(physics.aabb());
 
-            for (Label label : labels)
+            // l = label
+            for (Label l : labels)
             {
-                double boxWidth = label.box.widthMeter(pixelPerMeter);
-                double boxHeight = label.box.heightMeter(pixelPerMeter);
+                double boxWidth = l.box.widthMeter(pixelPerMeter);
+                double boxHeight = l.box.heightMeter(pixelPerMeter);
 
                 // Die x-Koordinate der linken oberen Ecke der Box in Meter
                 double x = 0;
                 // Die y-Koordinate der linken oberen Ecke der Box in Meter
                 double y = 0;
 
-                switch (label.hAlign)
+                switch (l.hAlign)
                 {
-                case LEFT -> x = aabb.xLeft() - boxWidth;
+                case LEFT -> x = aabb.xLeft() - boxWidth - l.offset;
                 case CENTER ->
                     x = aabb.xLeft() + (aabb.width() / 2) - (boxWidth / 2);
-                case RIGHT -> x = aabb.xRight();
+                case RIGHT -> x = aabb.xRight() + l.offset;
                 }
 
-                switch (label.vAlign)
+                switch (l.vAlign)
                 {
-                case TOP -> y = aabb.yTop() + boxHeight;
+                case TOP -> y = aabb.yTop() + boxHeight + l.offset;
                 case MIDDLE ->
                     y = aabb.yBottom() + (aabb.height() / 2) + (boxHeight / 2);
-                case BOTTOM -> y = aabb.yBottom();
+                case BOTTOM -> y = aabb.yBottom() - l.offset;
                 }
 
-                label.box.x(x, pixelPerMeter).y(-y, pixelPerMeter).render(g);
+                l.box.x(x, pixelPerMeter).y(-y, pixelPerMeter).render(g);
             }
         }
     }
@@ -2642,8 +2646,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                     if (fixture.shape instanceof PolygonShape polygonShape)
                     {
                         Vec2[] vec2s = polygonShape.getVertices();
-                        int[] xs = new int[polygonShape.getVertexCount()],
-                                ys = new int[polygonShape.getVertexCount()];
+                        int[] xs = new int[polygonShape.getVertexCount()];
+                        int[] ys = new int[polygonShape.getVertexCount()];
                         for (int i = 0; i < xs.length; i++)
                         {
                             xs[i] = (int) (vec2s[i].x * pixelPerMeter);
@@ -2671,7 +2675,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                     }
                     else
                     {
-                        throw new RuntimeException("Konnte den Umriss ("
+                        throw new IllegalArgumentException("Konnte den Umriss ("
                                 + fixture.shape
                                 + ") nicht zeichnen, unerwarteter Umriss");
                     }
@@ -2706,16 +2710,70 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /* labels */
 
-    private List<Label> labels = new CopyOnWriteArrayList<>();
-
-    public Actor label(Object... content)
+    class LabelHandler
     {
-        labels.add(new Label(content));
-        return this;
+
     }
 
+    public final LabelHandler label = new LabelHandler();
+
+    private @Nullable Label mainLabel;
+
+    private List<Label> labels = new CopyOnWriteArrayList<>();
+
+    /**
+     * Erstellt eine neue (Haupt)-Beschriftung für diese Figur als Textinhalt.
+     *
+     * <p>
+     * Wurde bereits eine Beschriftung hinzugefügt, wird diese entfernt und
+     * durch die neue Beschriftung ersetzt.
+     * </p>
+     *
+     * @param content Der Inhalt der Beschriftung. Es ist möglich, mehrere
+     *     Eingabewerte anzugeben. Jeder Eingabewert erscheint in einer neuen
+     *     Zeile.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public Actor label(Object... content)
+    {
+        return label(new Label(content));
+    }
+
+    /**
+     * Setzt eine neue (Haupt)-Beschriftung für diese Figur.
+     *
+     * <p>
+     * Das Setzen eines Label-Objekts ermöglicht genauere Einstellmöglichkeiten.
+     * </p>
+     *
+     * @param label Ein möglicherweise vorkonfiguriertes Label-Objekt.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.45.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
     public Actor label(Label label)
     {
+        if (mainLabel != null)
+        {
+            labels.remove(mainLabel);
+        }
+        mainLabel = label;
         labels.add(label);
         return this;
     }
@@ -2730,28 +2788,137 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
      */
     public static class Label
     {
-        private TextBlockBox box;
+        private @NonNull TextBlockBox box;
 
         public Label(Object... content)
         {
             box = new TextBlockBox(content).hAlign(hAlign);
             box.measure();
         }
+        /* content */
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public String content()
+        {
+            return box.content();
+        }
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
+        public Label content(Object... content)
+        {
+            box.content(content);
+            return this;
+        }
+
+        /* color */
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public Color color()
+        {
+            return box.color();
+        }
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
+        public Label color(Color color)
+        {
+            box.color(color);
+            return this;
+        }
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
+        public Label color(String color)
+        {
+            box.color(color);
+            return this;
+        }
+
+        /* vAlign */
 
         private VAlign vAlign = VAlign.BOTTOM;
 
+        /**
+         * @since 0.45.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
         public Label vAlign(VAlign vAlign)
         {
             this.vAlign = vAlign;
             return this;
         }
 
+        /* hAlign */
+
         private HAlign hAlign = HAlign.CENTER;
 
+        /**
+         * @since 0.45.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
         public Label hAlign(HAlign hAlign)
         {
             this.hAlign = hAlign;
             return this;
         }
+
+        /* offset */
+
+        /**
+         * Der Abstand vom achsenparallelen Begrenzungsrahmen (AABB) zur
+         * Beschriftung. Der Offset hat keine Auswirkung wenn
+         * {@link VAlign#MIDDLE} und {@link HAlign#CENTER} eingestellt ist.
+         *
+         * @since 0.46.0
+         */
+        private double offset = 0.2;
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public double offset()
+        {
+            return offset;
+        }
+
+        /**
+         * @since 0.46.0
+         */
+        @API
+        @Setter
+        @ChainableMethod
+        public Label offset(double offset)
+        {
+            this.offset = offset;
+            return this;
+        }
+
     }
 }

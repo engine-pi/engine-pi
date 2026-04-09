@@ -65,8 +65,9 @@ class Baeuerin extends Thread
         zufallsgenerator = new Random();
 
         // Bild der Bäuerin
-        scene.add(
-            new Image("eierautomat/baeuerin.png").size(6, 6).center(-7, 3));
+        scene.add(new Image("eierautomat/baeuerin.png").size(6, 6)
+            .center(-7, 3)
+            .label("Bäuerin"));
 
         // Zähler aller Befüllbesuche
         versuche = new Counter().suffix(". Befüllbesuch");
@@ -90,7 +91,7 @@ class Baeuerin extends Thread
         while (true)
         {
             // Automatenbefüllversuch
-            boolean erfolgreich = automat.befülle();
+            boolean erfolgreich = automat.befuelle();
             if (!erfolgreich)
             {
                 vergeblicheVersuche.increase();
@@ -103,7 +104,7 @@ class Baeuerin extends Thread
             try
             {
                 // Zufallszahl aus dem Bereich [500; 4500[
-                sleep(500 + zufallsgenerator.nextInt(4000));
+                sleep((long) 500 + zufallsgenerator.nextInt(4000));
             }
             catch (InterruptedException e)
             {

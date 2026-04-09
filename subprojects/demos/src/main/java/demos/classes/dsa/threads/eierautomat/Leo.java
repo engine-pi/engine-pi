@@ -65,7 +65,9 @@ class Leo extends Thread
         zufallsgenerator = new Random();
 
         // Bild von Leo
-        scene.add(new Image("eierautomat/leo.png").size(4, 4).center(6, 3));
+        scene.add(new Image("eierautomat/leo.png").size(4, 4)
+            .center(6, 3)
+            .label("Leo"));
 
         // Zähler aller Eierholbesuche
         versuche = new Counter().suffix(". Eierholbesuch");
@@ -103,7 +105,7 @@ class Leo extends Thread
             try
             {
                 // Zufallszahl aus dem Bereich [50; 250[
-                sleep(50 + zufallsgenerator.nextInt(200));
+                sleep((long) 50 + zufallsgenerator.nextInt(200));
             }
             catch (InterruptedException e)
             {

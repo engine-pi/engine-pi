@@ -18,18 +18,22 @@
  */
 package demos.docs.main_classes.actor;
 
+import static pi.Controller.colors;
 import static pi.Controller.config;
 
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
+import pi.actor.Actor;
 import pi.actor.Actor.Label;
 import pi.actor.ActorCreator;
 import pi.actor.Rectangle;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.VAlign;
+import pi.resources.color.ColorUtil;
+import pi.Random;
 
 /**
  * @author Josef Friedrich
@@ -38,6 +42,11 @@ import pi.graphics.boxes.VAlign;
  */
 public class ActorLabelDemo extends Scene implements KeyStrokeListener
 {
+    Actor actor;
+
+    String longContent = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
+
+    String origContent = "";
 
     Label label;
 
@@ -48,11 +57,26 @@ public class ActorLabelDemo extends Scene implements KeyStrokeListener
 
         label = new Label("Das ist eine Beschriftung", "(label)");
 
-        add(new Rectangle(4, 2).makeDynamic()
+        actor = new Rectangle(4, 2).makeDynamic()
             .applyForce(16000, 31000)
             .restitution(1)
             .rotateBy(42)
-            .label(label));
+            .label(label);
+
+        add(actor);
+    }
+
+    private void toggleContent()
+    {
+        if (label.content().equals(longContent))
+        {
+            label.content(origContent);
+        }
+        else
+        {
+            origContent = label.content();
+            label.content(longContent);
+        }
     }
 
     @Override
@@ -66,6 +90,15 @@ public class ActorLabelDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_4 -> label.hAlign(HAlign.LEFT);
         case KeyEvent.VK_5 -> label.hAlign(HAlign.CENTER);
         case KeyEvent.VK_6 -> label.hAlign(HAlign.RIGHT);
+        // T = text
+        case KeyEvent.VK_T -> toggleContent();
+        // C = color
+        case KeyEvent.VK_C -> label.color(colors.random());
+        // O = offset
+        case KeyEvent.VK_O -> label.offset(Random.range(-0.2, 5));
+        // M = multiline
+        case KeyEvent.VK_M ->
+            actor.label("Eine", "neue", "mehrzeilige", "Beschriftung");
         }
     }
 
