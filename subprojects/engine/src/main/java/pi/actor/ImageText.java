@@ -23,7 +23,9 @@ import static pi.Controller.images;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -435,6 +437,19 @@ public class ImageText extends Image
         return formatter.format();
     }
 
+    static class ImageTextFontException extends RuntimeException
+    {
+        ImageTextFontException(Throwable throwable)
+        {
+            super(throwable);
+        }
+
+        ImageTextFontException(String message)
+        {
+            super(message);
+        }
+    }
+
     /**
      * Eine <b>Schriftart</b>, bei der die einzelnen <b>Buchstaben</b> durch ein
      * <b>Bild</b> repräsentiert sind.
@@ -486,22 +501,22 @@ public class ImageText extends Image
                                 || (glyphHeight > 0
                                         && glyphHeight != glyph.height()))
                         {
-                            throw new Exception(
+                            throw new ImageTextFontException(
                                     "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
                         }
                         glyphWidth = glyph.width();
                         glyphHeight = glyph.height();
                         glyphsByFilename.put(glyph.filename(), glyph);
-                        if (glyph.glyph() != 0)
+                        if (glyph.character() != 0)
                         {
-                            glyphs.put(glyph.glyph(), glyph);
+                            glyphs.put(glyph.character(), glyph);
                         }
                     }
                 }
             }
-            catch (Exception e)
+            catch (IOException | URISyntaxException e)
             {
-                throw new RuntimeException(e);
+                throw new ImageTextFontException(e);
             }
             addDefaultMapping();
         }
@@ -833,7 +848,7 @@ public class ImageText extends Image
             Glyph imageGlyph = glyphsByFilename.get(filename);
             if (imageGlyph != null)
             {
-                imageGlyph.glyph(glyph);
+                imageGlyph.character(glyph);
                 glyphs.put(glyph, imageGlyph);
             }
             return this;
@@ -861,8 +876,8 @@ public class ImageText extends Image
             Glyph image = glyphs.get(glyph);
             if (image == null && throwException)
             {
-                throw new RuntimeException("Unbekannter Buchstabe „" + glyph
-                        + "“ im Text „" + content + "“.");
+                throw new ImageTextGlpyhException("Unbekannter Buchstabe „"
+                        + glyph + "“ im Text „" + content + "“.");
             }
             return image;
         }
@@ -941,6 +956,11 @@ public class ImageText extends Image
             ToStringFormatter formatter = new ToStringFormatter(this);
             formatter.append("basePath", basePath);
 
+            if (!glyphs.isEmpty())
+            {
+                formatter.append("glyphs", glyphs);
+            }
+
             if (glyphWidth != 8 || glyphHeight != 8)
             {
                 formatter.append("glyphDimension",
@@ -982,6 +1002,19 @@ public class ImageText extends Image
         LOWER
     }
 
+    static class ImageTextGlpyhException extends RuntimeException
+    {
+        ImageTextGlpyhException(Throwable throwable)
+        {
+            super(throwable);
+        }
+
+        ImageTextGlpyhException(String message)
+        {
+            super(message);
+        }
+    }
+
     /**
      * Stellt ein <b>Zeichen</b> dar, das durch ein <b>Bild</b> repräsentiert
      * ist.
@@ -1014,18 +1047,18 @@ public class ImageText extends Image
             }
             catch (MalformedURLException e)
             {
-                throw new RuntimeException(e);
+                throw new ImageTextGlpyhException(e);
             }
             if (filename.length() == 1)
             {
-                glyph = filename.charAt(0);
+                character = filename.charAt(0);
             }
         }
 
         /**
          * Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
          */
-        char glyph;
+        char character;
 
         /**
          * Gibt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
@@ -1034,9 +1067,9 @@ public class ImageText extends Image
          * @return Das Zeichen, das durch ein Bild dargestellt werden soll.
          */
         @Getter
-        public char glyph()
+        public char character()
         {
-            return glyph;
+            return character;
         }
 
         /**
@@ -1046,22 +1079,24 @@ public class ImageText extends Image
          * @return Das <b>Zeichen</b>, das durch ein Bild dargestellt werden
          *     soll, als Zeichenkette.
          */
+        @API
         @Getter
         public String content()
         {
-            return String.valueOf(glyph);
+            return String.valueOf(character);
         }
 
         /**
          * Setzt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
          *
-         * @param glyph Das <b>Zeichen</b>, das durch ein Bild dargestellt
+         * @param character Das <b>Zeichen</b>, das durch ein Bild dargestellt
          *     werden soll.
          */
+        @API
         @Setter
-        public void glyph(char glyph)
+        public void character(char character)
         {
-            this.glyph = glyph;
+            this.character = character;
         }
 
         /**
@@ -1071,6 +1106,7 @@ public class ImageText extends Image
          * @return Das in den Speicher geladene <b>Bild</b>, das ein Zeichen
          *     darstellt.
          */
+        @API
         @Getter
         public BufferedImage image()
         {
@@ -1082,6 +1118,8 @@ public class ImageText extends Image
          *
          * @return Die <b>Breite</b> des Bilds in Pixel.
          */
+        @API
+        @Getter
         public int width()
         {
             return image.getWidth();
@@ -1092,6 +1130,7 @@ public class ImageText extends Image
          *
          * @return Die <b>Höhe</b> des Bilds in Pixel.
          */
+        @API
         @Getter
         public int height()
         {
@@ -1103,6 +1142,7 @@ public class ImageText extends Image
          *
          * @return Der Dateiname des Bilds ohne Dateierweiterung.
          */
+        @API
         @Getter
         public String filename()
         {
@@ -1115,6 +1155,7 @@ public class ImageText extends Image
          *
          * @return Den <b>Unicode-Namen</b> des Zeichens.
          */
+        @API
         @Getter
         public String unicodeName()
         {
@@ -1127,10 +1168,20 @@ public class ImageText extends Image
          *
          * @return Die vierstellige, hexadezimale Unicode-Nummer.
          */
+        @API
         @Getter
         public String hexNumber()
         {
             return filename.substring(0, 4).toUpperCase();
+        }
+
+        @Override
+        public String toString()
+        {
+            ToStringFormatter formatter = new ToStringFormatter(this);
+            formatter.append("character", character);
+            formatter.append("filename", filename);
+            return formatter.format();
         }
     }
 
@@ -1181,7 +1232,7 @@ public class ImageText extends Image
             int i = 0;
             for (Glyph glyph : font.glyphs())
             {
-                ImageText text = new ImageText(font).content(glyph.glyph());
+                ImageText text = new ImageText(font).content(glyph.character());
                 text.anchor(x, y);
                 scene.add(text);
                 scene.add(

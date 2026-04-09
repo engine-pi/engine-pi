@@ -151,6 +151,7 @@ nav:
       - Java:
           - manual/java/index.md
           - manual/java/packages.md
+          - manual/java/exceptions.md
 
       - Entwicklung:
           - manual/dev/index.md

@@ -182,7 +182,8 @@ public class ToStringFormatter
     {
         if (fieldNames.contains(fieldName))
         {
-            throw new RuntimeException("Ein Feld mit dem Namen " + fieldName
+            throw new IllegalArgumentException("Ein Feld mit dem Namen "
+                    + fieldName
                     + "wurde bereits zum toString()-Formatter hinzugefügt");
         }
         map.put(fieldName, new Field(fieldName, value, unit));
@@ -317,17 +318,21 @@ public class ToStringFormatter
     {
         private String formattedValue()
         {
-            if (value instanceof String)
+            if (value instanceof String string)
             {
-                return "\"" + ((String) value).replace("\n", "\\n ") + "\"";
+                return "\"" + string.replace("\n", "\\n ") + "\"";
             }
             else if (value instanceof Double)
             {
                 return TextUtil.roundNumber(value);
             }
-            else if (value instanceof Color)
+            else if (value instanceof Character character)
             {
-                return ColorUtil.encode((Color) value);
+                return "\'" + character + "'";
+            }
+            else if (value instanceof Color color)
+            {
+                return ColorUtil.encode(color);
             }
             return TextUtil.convertToString(value);
         }

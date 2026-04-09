@@ -65,6 +65,8 @@ public class AlignmentDemo extends Scene
             .hAlign(alignment)
             .pixelMultiplication(4);
         line.anchor(-9, y);
+        // Um die toString-Methode zu testen
+        System.out.println(line);
         add(line);
     }
 
