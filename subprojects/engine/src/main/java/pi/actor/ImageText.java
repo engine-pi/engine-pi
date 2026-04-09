@@ -35,6 +35,7 @@ import java.util.Objects;
 
 import pi.Scene;
 import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -57,33 +58,6 @@ import pi.util.TextUtil;
  */
 public class ImageText extends Image
 {
-    /**
-     * Die Bilderschriftart.
-     */
-    private final Font font;
-
-    /**
-     * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
-     */
-    private int lineWidth;
-
-    /**
-     * Die Textausrichtung.
-     */
-    private TextAlignment alignment;
-
-    /**
-     * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt werden
-     * soll.
-     */
-    private Color color;
-
-    /**
-     * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise verwandelt
-     * die Zahl {@code 3} ein Pixel in {@code 9} Pixel der Abmessung
-     * {@code 3x3}.
-     */
-    private int pixelMultiplication;
 
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
@@ -205,6 +179,48 @@ public class ImageText extends Image
         this(font, content, font.lineWidth(), font.alignment());
     }
 
+    /* font */
+
+    /**
+     * Die <b>Bilderschriftart</b>.
+     */
+    private Font font;
+
+    /**
+     * Gibt die <b>Bilderschriftart</b> zurück.
+     *
+     * @return Die <b>Bilderschriftart</b>
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public Font font()
+    {
+        return font;
+    }
+
+    /**
+     * Setzt die <b>Bilderschriftart</b>.
+     *
+     * @param font Die <b>Bilderschriftart</b>
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ImageText font(Font font)
+    {
+        this.font = font;
+        return this;
+    }
+
     /* content */
 
     /**
@@ -226,6 +242,8 @@ public class ImageText extends Image
      * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
      *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
      *     Pixel der Abmessung {@code 3x3}.
+     *
+     * @deprecated
      */
     @API
     @Setter
@@ -244,13 +262,21 @@ public class ImageText extends Image
     /**
      * Setzt den <b>Textinhalt</b> neu.
      *
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
+     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
+     *     soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
      */
     @API
     @Setter
-    public void content(String content)
+    @ChainableMethod
+    public ImageText content(String content)
     {
         content(content, lineWidth, alignment, color, pixelMultiplication());
+        return this;
     }
 
     /**
@@ -259,6 +285,8 @@ public class ImageText extends Image
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
+     *
+     * @deprecated
      */
     @API
     @Setter
@@ -273,6 +301,8 @@ public class ImageText extends Image
      * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
      * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
      *     umgefärbt werden soll.
+     *
+     * @deprecated
      */
     @API
     @Setter
@@ -299,12 +329,161 @@ public class ImageText extends Image
         return content;
     }
 
+    /* lineWidth */
+
     /**
-     * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll.
+     * Die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die eine
+     * Zeile aufnehmen kann.
+     */
+    private int lineWidth;
+
+    /**
+     * Gibt die <b>Zeilenbreite</b> zurück, also die maximale Anzahl an Zeichen,
+     * die eine Zeile aufnehmen kann.
      *
-     * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-     *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-     *     Abmessung {@code 3x3}.
+     * @return Die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die
+     *     eine Zeile aufnehmen kann.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public int lineWidth()
+    {
+        return lineWidth;
+    }
+
+    /**
+     * Setzt die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die
+     * eine Zeile aufnehmen kann.
+     *
+     * @param lineWidth Die <b>Zeilenbreite</b>, also die maximale Anzahl an
+     *     Zeichen, die eine Zeile aufnehmen kann.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ImageText lineWidth(int lineWidth)
+    {
+        this.lineWidth = lineWidth;
+        update();
+        return this;
+    }
+
+    /* alignment */
+
+    /**
+     * Die <b>Textausrichtung</b>.
+     */
+    private TextAlignment alignment;
+
+    /**
+     * Gibt die <b>Textausrichtung</b> zurück.
+     *
+     * @return Die <b>Textausrichtung</b>.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public TextAlignment alignment()
+    {
+        return alignment;
+    }
+
+    /**
+     * Setzt die <b>Textausrichtung</b>.
+     *
+     * @param alignment Die <b>Textausrichtung</b>
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ImageText alignment(TextAlignment alignment)
+    {
+        this.alignment = alignment;
+        update();
+        return this;
+    }
+
+    /* color */
+
+    /**
+     * Die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder umgefärbt
+     * werden soll.
+     */
+    private Color color;
+
+    /**
+     * Gibt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
+     * umgefärbt werden soll. zurück.
+     *
+     * @return Die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
+     *     umgefärbt werden soll.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Getter
+    public Color color()
+    {
+        return color;
+    }
+
+    /**
+     * Setzt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
+     * umgefärbt werden soll.
+     *
+     * @param color Die <b>Farbe</b>, in der die schwarze Farbe der
+     *     Ausgangsbilder umgefärbt werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
+     *
+     * @since 0.46.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ImageText color(Color color)
+    {
+        this.color = color;
+        update();
+        return this;
+    }
+
+    /* pixelMultiplication */
+
+    /**
+     * Wie oft ein <b>Pixel vervielfältigt</b> werden soll.
+     */
+    private int pixelMultiplication = 1;
+
+    /**
+     * Gibt zurück, wie oft ein <b>Pixel vervielfältigt</b> werden soll.
+     *
+     * <p>
+     * Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9} Pixel
+     * der Abmessung {@code 3x3}.
+     * </p>
+     *
+     * @return Wie oft ein Pixel vervielfältigt werden soll.
      *
      * @since 0.25.0
      */
@@ -312,7 +491,45 @@ public class ImageText extends Image
     @Getter
     public int pixelMultiplication()
     {
-        return Math.max(pixelMultiplication, 1);
+        return pixelMultiplication;
+    }
+
+    /**
+     * Setzt, wie oft ein <b>Pixel vervielfältigt</b> werden soll.
+     *
+     * <p>
+     * Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9} Pixel
+     * der Abmessung {@code 3x3}.
+     * </p>
+     *
+     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
+     *
+     * @since 0.25.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public ImageText pixelMultiplication(int pixelMultiplication)
+    {
+        this.pixelMultiplication = pixelMultiplication;
+        update();
+        return this;
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public void update()
+    {
+        image(font
+            .render(content, lineWidth, alignment, color, pixelMultiplication));
+        super.update();
     }
 
     /**
@@ -348,7 +565,6 @@ public class ImageText extends Image
      */
     public static class Font
     {
-
         /**
          * Erzeugt eine neue Bilderschriftart.
          *
@@ -378,14 +594,14 @@ public class ImageText extends Image
                         .endsWith("." + this.extension.toLowerCase()))
                     {
                         Glyph glyph = new Glyph(path);
-                        if ((glyphWidth > 0 && glyphWidth != glyph.getWidth())
+                        if ((glyphWidth > 0 && glyphWidth != glyph.width())
                                 || (glyphHeight > 0
                                         && glyphHeight != glyph.height()))
                         {
                             throw new Exception(
                                     "Alle Bilder einer Bilderschriftart müssen die gleichen Abmessungen haben!");
                         }
-                        glyphWidth = glyph.getWidth();
+                        glyphWidth = glyph.width();
                         glyphHeight = glyph.height();
                         glyphsByFilename.put(glyph.filename(), glyph);
                         if (glyph.glyph() != 0)
@@ -711,6 +927,8 @@ public class ImageText extends Image
         {
             return alignment;
         }
+
+        /* throwException */
 
         /**
          * Ob bei einem nicht vorhandenen Zeichen eine Fehlermeldung geworfen
@@ -1156,11 +1374,6 @@ public class ImageText extends Image
     public static class Glyph
     {
         /**
-         * Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
-         */
-        char glyph;
-
-        /**
          * Das in den Speicher geladene <b>Bild</b>, das ein Zeichen darstellt.
          */
         BufferedImage image;
@@ -1187,6 +1400,11 @@ public class ImageText extends Image
                 glyph = filename.charAt(0);
             }
         }
+
+        /**
+         * Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
+         */
+        char glyph;
 
         /**
          * Gibt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
@@ -1243,7 +1461,7 @@ public class ImageText extends Image
          *
          * @return Die <b>Breite</b> des Bilds in Pixel.
          */
-        public int getWidth()
+        public int width()
         {
             return image.getWidth();
         }

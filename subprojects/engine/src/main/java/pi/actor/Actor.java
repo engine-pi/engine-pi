@@ -165,12 +165,14 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     /**
      * <b>Aktualisiert</b> die Attribute einer Figur.
      *
+     * <p>
      * Die Methode kann von abgeleiteten Klassen überschrieben werden. Manche
      * Figuren benötigen eine Aktualisierung, wenn Attribute gesetzt werden.
      * Wenn beispielsweise bei der Text-Figur die Schriftart geändert wird,
      * müssen auch Breite und Höhe angepasst werden. Somit ist sichergestellt,
      * dass die Methoden zum Aktualisieren von Attributen bei allen
      * Figur-Unterklassen den gleichen Namen haben.
+     * </p>
      */
     public void update()
     {
