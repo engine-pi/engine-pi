@@ -77,15 +77,28 @@ public class Image extends Actor
     {
         super(null);
         this.image = image;
-        update();
+        this.update();
+    }
+
+    public Image()
+    {
+        super(null);
+        image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
     }
 
     /* image */
 
     /**
      * Das {@link BufferedImage}, das dieses <b>Bild</b> darstellt.
+     *
+     * <p>
+     * Dieses Attribut ist protected, damit es direkt von Unterklassen gesetzt
+     * werden kann und kein Setter dazu verwendet werden muss. Der Setter ruft
+     * die update()-Methode auf und so kann es über die update()-Methode in
+     * Unterklassen zu rekursiven Aufrufen ohne Abbruchbedingung kommen.
+     * </p>
      */
-    private BufferedImage image;
+    protected BufferedImage image;
 
     /**
      * Gibt das {@link BufferedImage}, das dieses <b>Bild</b> darstellt.

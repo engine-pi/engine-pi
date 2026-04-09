@@ -59,9 +59,10 @@ public class ColorDemo extends Scene
 
     public void setImageText(String color, int x, int y)
     {
-        ImageText textField = new ImageText(font, color, color);
-        textField.anchor(x, y);
-        add(textField);
+        add(new ImageText(font).content(color)
+            .pixelMultiplication(4)
+            .color(color)
+            .anchor(x, y));
     }
 
     public static void main(String[] args)

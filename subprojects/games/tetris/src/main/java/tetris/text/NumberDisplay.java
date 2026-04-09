@@ -28,8 +28,9 @@ public class NumberDisplay
 
     public NumberDisplay(Scene scene, int x, int y, int maxDigits)
     {
-        font = new ImageText(Font.getFont(), "0", maxDigits,
-                TextAlignment.RIGHT);
+        font = new ImageText(Font.getFont()).content("0")
+            .lineWidth(maxDigits)
+            .alignment(TextAlignment.RIGHT);
         font.anchor(x, y);
         scene.add(font);
         set(0);
@@ -54,7 +55,7 @@ public class NumberDisplay
 
     public void add(int number)
     {
-        assert number > -1 : "Add only supports positiv values, got " + number;
+        assert number > -1 : "Add only positiv values, got " + number;
         this.number += number;
         write(this.number);
     }

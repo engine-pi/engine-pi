@@ -46,10 +46,12 @@ public class MultilineDemo extends Scene
     {
         Font font = new Font("main-classes/actor/image-text/tetris",
                 CaseSensitivity.TO_UPPER);
-        ImageText textField = new ImageText(font,
-                "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
-                        + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.",
-                20, TextAlignment.LEFT);
+        ImageText textField = new ImageText(font).content(
+            "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
+                    + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.")
+            .alignment(TextAlignment.LEFT)
+            .lineWidth(20)
+            .pixelMultiplication(4);
         add(textField);
         backgroundColor("white");
         focus(textField);

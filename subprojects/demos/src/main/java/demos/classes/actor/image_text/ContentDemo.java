@@ -55,9 +55,11 @@ public class ContentDemo extends Scene implements KeyStrokeListener
     {
         Font font = new Font("main-classes/actor/image-text/tetris",
                 CaseSensitivity.TO_UPPER);
-        textField = new ImageText(font,
-                "Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum", 15,
-                TextAlignment.LEFT);
+        textField = new ImageText(font)
+            .content("Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum")
+            .lineWidth(15)
+            .alignment(TextAlignment.LEFT)
+            .pixelMultiplication(4);
         add(textField);
         camera().focus(10, 8);
         backgroundColor("white");

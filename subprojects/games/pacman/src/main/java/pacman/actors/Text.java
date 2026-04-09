@@ -30,7 +30,11 @@ public class Text extends ImageText
 
     public Text(String content, String color)
     {
-        super(font, content, 28, TextAlignment.LEFT, colors.get(color), 1, 8);
+        super(font);
+        content(content);
+        alignment(TextAlignment.LEFT);
+        color(colors.get(color));
+        pixelPerMeter(8);
     }
 
     public Text(String content)

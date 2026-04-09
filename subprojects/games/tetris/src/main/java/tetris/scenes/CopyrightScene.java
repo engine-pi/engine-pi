@@ -38,28 +38,29 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
     {
         super(null);
         backgroundColor(COLOR_SCHEME_GREEN.getWhite());
-        String origText = "\"TM and ©1987 ELORG,\n" + //
-                "Tetris licensed to\n" + //
-                "Bullet-Proof\n" + //
-                "software and\n" + //
-                "sub-licensed to\n" + //
-                "Nintendo.\n" + //
-                "\n" + //
-                "©1989 Bullet-Proof\n" + //
-                "software\n" + //
-                "©1989 Nintendo\n" + //
-                "\n" + //
-                "All rights reserved.\n" + //
-                "\n" + //
-                "original concept\n" + //
-                "design and programm\n" + //
-                // Im Original: by Alexey Pazhitnov."
-                // ." kann mit ImageText nicht als ein Zeichen dargestellt
-                // werden.
-                // U+E000..U+F8FF BMP (0) Private Use Area
-                "by Alexey Pazhitnov\uE000\n" + "\n";
-        ImageText text = new ImageText(Font.getFont(), origText, 21,
-                TextAlignment.CENTER);
+        ImageText text = new ImageText(Font.getFont())
+            .content("\"TM and ©1987 ELORG,\n" + //
+                    "Tetris licensed to\n" + //
+                    "Bullet-Proof\n" + //
+                    "software and\n" + //
+                    "sub-licensed to\n" + //
+                    "Nintendo.\n" + //
+                    "\n" + //
+                    "©1989 Bullet-Proof\n" + //
+                    "software\n" + //
+                    "©1989 Nintendo\n" + //
+                    "\n" + //
+                    "All rights reserved.\n" + //
+                    "\n" + //
+                    "original concept\n" + //
+                    "design and programm\n" + //
+                    // Im Original: by Alexey Pazhitnov."
+                    // ." kann mit ImageText nicht als ein Zeichen dargestellt
+                    // werden.
+                    // U+E000..U+F8FF BMP (0) Private Use Area
+                    "by Alexey Pazhitnov\uE000\n" + "\n")
+            .lineWidth(21)
+            .alignment(TextAlignment.CENTER);
         text.anchor(-2, 0);
         add(text);
         delay(4, this::startTitleScene);

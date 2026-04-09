@@ -18,7 +18,6 @@
  */
 package pi.actor;
 
-import static pi.Controller.colors;
 import static pi.Controller.images;
 
 import java.awt.Color;
@@ -32,6 +31,8 @@ import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import org.jspecify.annotations.NonNull;
 
 import pi.Scene;
 import pi.annotations.API;
@@ -47,6 +48,13 @@ import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/AlignmentDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/MultilineDemo.java
+
 /**
  * Zur Darstellung von <b>Texten</b> durch eine <b>Bilderschriftart</b>.
  *
@@ -58,125 +66,19 @@ import pi.util.TextUtil;
  */
 public class ImageText extends Image
 {
-
     /**
      * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
      * dargestellt wird.
      *
      * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *     kann.
-     * @param alignment Die Textausrichtung.
-     * @param color Die Farbe in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
-     *     Pixel der Abmessung {@code 3x3}.
-     * @param pixelPerMeter Wie viele Pixel ein Meter des resultierenden Bilds
-     *     groß sein soll.
      */
-    public ImageText(Font font, String content, int lineWidth,
-            TextAlignment alignment, Color color, int pixelMultiplication,
-            int pixelPerMeter)
+    public ImageText(Font font)
     {
-        super(font
-            .render(content, lineWidth, alignment, color, pixelMultiplication));
-        pixelPerMeter(pixelPerMeter);
+        // Wir verwenden ein Platzhalter-Bild. Das eigentliche Bild wird in der
+        // update()-Methode gesetzt.
+        super();
         this.font = font;
-        this.content = content;
-        this.lineWidth = lineWidth;
-        this.alignment = alignment;
-        this.color = color;
-        this.pixelMultiplication = pixelMultiplication;
-    }
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *     kann.
-     * @param alignment Die Textausrichtung.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
-     *     Pixel der Abmessung {@code 3x3}.
-     */
-    public ImageText(Font font, String content, int lineWidth,
-            TextAlignment alignment, Color color, int pixelMultiplication)
-    {
-        this(font, content, lineWidth, alignment, color, pixelMultiplication,
-                font.glyphWidth());
-    }
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     *
-     */
-    public ImageText(Font font, String content, Color color)
-    {
-        this(font, content, font.lineWidth(), font.alignment(), color,
-                font.pixelMultiplication(), font.glyphWidth());
-    }
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     *
-     */
-    public ImageText(Font font, String content, String color)
-    {
-        this(font, content, colors.get(color));
-    }
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *     kann.
-     * @param alignment Die Textausrichtung.
-     */
-    public ImageText(Font font, String content, int lineWidth,
-            TextAlignment alignment)
-    {
-        this(font, content, lineWidth, alignment, font.color(),
-                font.pixelMultiplication());
-    }
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param font Die Bilderschriftart.
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     */
-    public ImageText(Font font, String content)
-    {
-        this(font, content, font.lineWidth(), font.alignment());
+        update();
     }
 
     /* font */
@@ -184,7 +86,7 @@ public class ImageText extends Image
     /**
      * Die <b>Bilderschriftart</b>.
      */
-    private Font font;
+    private @NonNull Font font;
 
     /**
      * Gibt die <b>Bilderschriftart</b> zurück.
@@ -195,7 +97,7 @@ public class ImageText extends Image
      */
     @API
     @Getter
-    public Font font()
+    public @NonNull Font font()
     {
         return font;
     }
@@ -218,6 +120,7 @@ public class ImageText extends Image
     public ImageText font(Font font)
     {
         this.font = font;
+        update();
         return this;
     }
 
@@ -226,38 +129,7 @@ public class ImageText extends Image
     /**
      * Der <b>Textinhalt</b>, der in das Bild geschrieben werden soll.
      */
-    private String content;
-
-    /**
-     * Erzeugt einen neuen <b>Text</b>, der durch eine <b>Bilderschriftart</b>
-     * dargestellt wird.
-     *
-     * @param content Der <b>Textinhalt</b>, der in das Bild geschrieben werden
-     *     soll.
-     * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-     *     kann.
-     * @param alignment Die Textausrichtung.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden soll.
-     *     Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in {@code 9}
-     *     Pixel der Abmessung {@code 3x3}.
-     *
-     * @deprecated
-     */
-    @API
-    @Setter
-    public void content(String content, int lineWidth, TextAlignment alignment,
-            Color color, int pixelMultiplication)
-    {
-        image(font
-            .render(content, lineWidth, alignment, color, pixelMultiplication));
-        this.content = content;
-        this.lineWidth = lineWidth;
-        this.alignment = alignment;
-        this.color = color;
-        this.pixelMultiplication = pixelMultiplication;
-    }
+    private @NonNull String content = " ";
 
     /**
      * Setzt den <b>Textinhalt</b> neu.
@@ -273,46 +145,11 @@ public class ImageText extends Image
     @API
     @Setter
     @ChainableMethod
-    public ImageText content(String content)
+    public ImageText content(Object content)
     {
-        content(content, lineWidth, alignment, color, pixelMultiplication());
+        this.content = TextUtil.convertToString(content);
+        update();
         return this;
-    }
-
-    /**
-     * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
-     *
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     *
-     * @deprecated
-     */
-    @API
-    @Setter
-    public void content(String content, Color color)
-    {
-        content(content, lineWidth, alignment, color, pixelMultiplication());
-    }
-
-    /**
-     * Setzt den <b>Textinhalt</b> zusammen mit einer <b>Farbe</b> neu.
-     *
-     * @param content Der Textinhalt, der in das Bild geschrieben werden soll.
-     * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
-     *
-     * @deprecated
-     */
-    @API
-    @Setter
-    public void content(String content, String color)
-    {
-        content(content,
-            lineWidth,
-            alignment,
-            colors.get(color),
-            pixelMultiplication());
     }
 
     /**
@@ -324,7 +161,7 @@ public class ImageText extends Image
      */
     @API
     @Getter
-    public String content()
+    public @NonNull String content()
     {
         return content;
     }
@@ -335,7 +172,7 @@ public class ImageText extends Image
      * Die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die eine
      * Zeile aufnehmen kann.
      */
-    private int lineWidth;
+    private int lineWidth = -1;
 
     /**
      * Gibt die <b>Zeilenbreite</b> zurück, also die maximale Anzahl an Zeichen,
@@ -382,7 +219,7 @@ public class ImageText extends Image
     /**
      * Die <b>Textausrichtung</b>.
      */
-    private TextAlignment alignment;
+    private @NonNull TextAlignment alignment = TextAlignment.LEFT;
 
     /**
      * Gibt die <b>Textausrichtung</b> zurück.
@@ -393,7 +230,7 @@ public class ImageText extends Image
      */
     @API
     @Getter
-    public TextAlignment alignment()
+    public @NonNull TextAlignment alignment()
     {
         return alignment;
     }
@@ -422,26 +259,33 @@ public class ImageText extends Image
 
     /* color */
 
-    /**
-     * Die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder umgefärbt
-     * werden soll.
-     */
-    private Color color;
+    Color color = null;
 
     /**
-     * Gibt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
-     * umgefärbt werden soll. zurück.
+     * Setzt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
+     * umgefärbt werden soll.
      *
-     * @return Die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
-     *     umgefärbt werden soll.
+     * @param color Die <b>Farbe</b>, in der die schwarze Farbe der
+     *     Ausgangsbilder umgefärbt werden soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code text.content(..).lineWidth(..)}.
      *
      * @since 0.46.0
      */
     @API
-    @Getter
-    public Color color()
+    @Setter
+    @ChainableMethod
+    @Override
+    public ImageText color(Color color)
     {
-        return color;
+        // Wir müssen den Setter überladen, damit wir einen update()-Aufruf
+        // einbauen können.
+        super.color(color);
+        update();
+        return this;
     }
 
     /**
@@ -461,9 +305,12 @@ public class ImageText extends Image
     @API
     @Setter
     @ChainableMethod
-    public ImageText color(Color color)
+    @Override
+    public ImageText color(String color)
     {
-        this.color = color;
+        // Wir müssen den Setter überschreiben, damit wir einen update()-Aufruf
+        // einbauen können.
+        super.color(color);
         update();
         return this;
     }
@@ -527,8 +374,10 @@ public class ImageText extends Image
     @Override
     public void update()
     {
-        image(font
-            .render(content, lineWidth, alignment, color, pixelMultiplication));
+        // Wir verwenden nicht den Setter image() der Actor-Oberklasse Image,
+        // sonst kommt es zu rekursiven Aufrufen ohne Abbruchbedingung.
+        image = font
+            .render(content, lineWidth, alignment, color, pixelMultiplication);
         super.update();
     }
 
@@ -1144,7 +993,16 @@ public class ImageText extends Image
             {
                 content = content.toLowerCase();
             }
-            return TextUtil.wrap(content, lineWidth, alignment);
+            String result = TextUtil.wrap(content, lineWidth, alignment);
+
+            if (result.isEmpty())
+            {
+                // Da wir die Attribute durch verkettete Setter setzen, kann es
+                // sein, dass es noch keinen Inhalt gibt. Wir brauchen jedoch
+                // einen Inhalt, damit das Bild generiert werden kann.
+                return " ";
+            }
+            return result;
         }
 
         /**
@@ -1306,7 +1164,7 @@ public class ImageText extends Image
             int i = 0;
             for (Glyph glyph : font.glyphs())
             {
-                ImageText text = new ImageText(font, glyph.glyph() + "");
+                ImageText text = new ImageText(font).content(glyph.glyph());
                 text.anchor(x, y);
                 scene.add(text);
                 scene.add(

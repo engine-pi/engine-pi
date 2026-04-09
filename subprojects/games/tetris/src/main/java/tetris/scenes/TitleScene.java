@@ -43,8 +43,9 @@ public class TitleScene extends BaseScene
 
     private void addCenteredText(String content, int y)
     {
-        ImageText actor = new ImageText(Font.getFont(), content, 20,
-                TextAlignment.CENTER);
+        ImageText actor = new ImageText(Font.getFont()).content(content)
+            .lineWidth(20)
+            .alignment(TextAlignment.CENTER);
         actor.anchor(-2, y);
         add(actor);
     }

@@ -60,7 +60,10 @@ public class AlignmentDemo extends Scene
 
     private void createText(int y, String content, TextAlignment alignment)
     {
-        ImageText line = new ImageText(font, content, 18, alignment);
+        ImageText line = new ImageText(font).content(content)
+            .lineWidth(18)
+            .alignment(alignment)
+            .pixelMultiplication(4);
         line.anchor(-9, y);
         add(line);
     }

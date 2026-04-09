@@ -44,8 +44,8 @@ class ImageTextTest
     {
         Controller.instantMode(false);
         text = new ImageText(
-                new Font("image-font/tetris", CaseSensitivity.TO_UPPER),
-                "test");
+                new Font("image-font/tetris", CaseSensitivity.TO_UPPER))
+                    .content("test");
     }
 
     @Nested

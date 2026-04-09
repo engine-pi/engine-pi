@@ -39,8 +39,9 @@ public class HelloWorldDemo extends Scene
         backgroundColor("green");
         helloWorld = new ImageText(
                 new Font("main-classes/actor/image-text/tetris",
-                        CaseSensitivity.TO_UPPER),
-                "Hello, World.\nHello, Universe");
+                        CaseSensitivity.TO_UPPER))
+                            .content("Hello, World.\nHello, Universe")
+                            .pixelMultiplication(4);
         helloWorld.center(0, 0);
         add(helloWorld);
     }
