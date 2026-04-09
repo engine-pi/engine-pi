@@ -16,6 +16,8 @@
  */
 package tetris.text;
 
+import static tetris.Tetris.COLOR_SCHEME_GREEN;
+
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.util.TextAlignment;
@@ -30,6 +32,7 @@ public class NumberDisplay
     {
         font = new ImageText(Font.getFont()).content("0")
             .lineWidth(maxDigits)
+            .color(COLOR_SCHEME_GREEN.getBlack())
             .alignment(TextAlignment.RIGHT);
         font.anchor(x, y);
         scene.add(font);

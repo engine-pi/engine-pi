@@ -22,9 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pi.CustomAssertions.assertToStringClassName;
 import static pi.CustomAssertions.assertToStringFieldOrder;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -32,8 +29,6 @@ import org.junit.jupiter.api.condition.DisabledIf;
 
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
-import pi.util.ImageUtil;
-import pi.util.TextAlignment;
 
 /**
  * @author Josef Friedrich
@@ -46,66 +41,14 @@ class ImageTextFontTest
     @BeforeEach
     void setUp()
     {
-        font = new Font("image-font/tetris", CaseSensitivity.TO_UPPER);
-    }
-
-    private void write(BufferedImage image, String filename)
-    {
-        ImageUtil.write(image, "/home/jf/Downloads/" + filename + ".png");
+        font = new Font("image-font/tetris")
+            .supportsCase(CaseSensitivity.UPPER);
     }
 
     @Test
-    void singleLine()
+    void notExistingDirectory()
     {
-        write(font.render("Hello, World."), "single-line");
-    }
-
-    @Test
-    void multiLine()
-    {
-        write(font.render("Hello,\nWorld.\nHello, Universe."), "multi-line");
-    }
-
-    @Test
-    void textAlignmentCenter()
-    {
-        font.alignment(TextAlignment.CENTER);
-        write(font.render("Hello,\nWorld.\nHello, Universe."), "center");
-    }
-
-    @Test
-    void caseSensitivity()
-    {
-        font.caseSensitivity(CaseSensitivity.TO_LOWER);
-        assertThrows(RuntimeException.class, () -> font.render("hello"));
-    }
-
-    @Test
-    void methodChaining()
-    {
-        write(
-            font.basePath("image-font/tetris")
-                .extension("png")
-                .caseSensitivity(CaseSensitivity.TO_UPPER)
-                .alignment(TextAlignment.LEFT)
-                .throwException(false)
-                .pixelMultiplication(4)
-                .color(Color.BLUE)
-                .lineWidth(20)
-                .render("chaining"),
-            "chaining");
-    }
-
-    @Test
-    void throwExceptionFalse()
-    {
-        write(font.throwException(false).render("!"), "throw-no-error");
-    }
-
-    @Test
-    void throwExceptionTrue()
-    {
-        assertThrows(RuntimeException.class, () -> font.render("!"));
+        assertThrows(RuntimeException.class, () -> new Font("xxxxxxx"));
     }
 
     @Nested
@@ -122,16 +65,10 @@ class ImageTextFontTest
         {
             assertToStringFieldOrder(
                 new String[]
-                { "basePath", "pixelMultiplication", "color", "caseSensitivity",
-                        "lineWidth", "alignment" },
+                { "basePath", "supportsCase" },
                 font.basePath("image-font/tetris")
                     .extension("png")
-                    .caseSensitivity(CaseSensitivity.TO_UPPER)
-                    .alignment(TextAlignment.LEFT)
-                    .throwException(false)
-                    .pixelMultiplication(4)
-                    .color(Color.BLUE)
-                    .lineWidth(20));
+                    .throwException(false));
         }
     }
 

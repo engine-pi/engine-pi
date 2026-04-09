@@ -25,8 +25,8 @@ import pi.util.TextAlignment;
 
 public class Text extends ImageText
 {
-    private static final Font font = new Font("images/image-font",
-            CaseSensitivity.TO_UPPER);
+    private static final Font font = new Font("images/image-font")
+        .supportsCase(CaseSensitivity.UPPER);
 
     public Text(String content, String color)
     {

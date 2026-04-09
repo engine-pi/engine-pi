@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
-import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
 import pi.util.TextAlignment;
 
@@ -41,11 +40,11 @@ public class CounterDemo extends Scene
     {
         backgroundColor("yellow");
         AtomicInteger counter = new AtomicInteger();
-        text = new ImageText(new Font("main-classes/actor/image-text/pacman",
-                CaseSensitivity.TO_UPPER)).content("0")
-                    .lineWidth(5)
-                    .alignment(TextAlignment.RIGHT)
-                    .pixelMultiplication(8);
+        text = new ImageText(new Font("main-classes/actor/image-text/pacman"))
+            .content("0")
+            .lineWidth(5)
+            .alignment(TextAlignment.RIGHT)
+            .pixelMultiplication(8);
         text.center(-1, 0);
         repeat(0.05, () -> {
             text.content(String.valueOf(counter.getAndIncrement()));

@@ -18,7 +18,13 @@
  */
 package pi.actor;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static pi.CustomAssertions.assertToStringClassName;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -28,6 +34,8 @@ import org.junit.jupiter.api.condition.DisabledIf;
 import pi.Controller;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
+import pi.util.ImageUtil;
+import pi.util.TextAlignment;
 
 /**
  * @author Josef Friedrich
@@ -39,13 +47,67 @@ class ImageTextTest
 {
     ImageText text;
 
+    Font font;
+
     @BeforeEach
     void setUp()
     {
         Controller.instantMode(false);
-        text = new ImageText(
-                new Font("image-font/tetris", CaseSensitivity.TO_UPPER))
-                    .content("test");
+        font = new Font("image-font/tetris")
+            .supportsCase(CaseSensitivity.UPPER);
+        text = new ImageText(font).content("test");
+    }
+
+    @Nested
+    class WriteTest
+    {
+        private Path temporaryDirectory;
+
+        @BeforeEach
+        void setUpTemporaryDirectory() throws IOException
+        {
+            temporaryDirectory = Files.createTempDirectory("image-text-test-");
+        }
+
+        private void write(ImageText text, String filename)
+        {
+            Path outputPath = temporaryDirectory.resolve(filename + ".png");
+            ImageUtil.write(text.image(), outputPath.toString());
+        }
+
+        @Test
+        void singleLine()
+        {
+            write(text.content("Hello, World."), "single-line");
+        }
+
+        @Test
+        void multiLine()
+        {
+            write(text.content("Hello,\nWorld.\nHello, Universe."),
+                "multi-line");
+        }
+
+        @Test
+        void methodChaining()
+        {
+            write(text.content("Test").alignment(TextAlignment.RIGHT),
+                "chaining");
+        }
+
+        @Test
+        void throwExceptionTrue()
+        {
+            assertThrows(RuntimeException.class, () -> text.content("!"));
+        }
+
+        @Test
+        void throwExceptionFalse()
+        {
+            assertDoesNotThrow(() -> write(
+                new ImageText(font.throwException(false)).content("!"),
+                "throw-no-error"));;
+        }
     }
 
     @Nested

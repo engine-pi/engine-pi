@@ -1,7 +1,5 @@
 package tetris.text;
 
-import static tetris.Tetris.COLOR_SCHEME_GREEN;
-
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
 
@@ -14,9 +12,8 @@ public class Font
         if (font == null)
         {
             font = new ImageText.Font("images/image-font")
-                .caseSensitivity(CaseSensitivity.TO_UPPER)
-                .color(COLOR_SCHEME_GREEN.getBlack())
-                .addMapping('\uE000', "e000_quotation-mark-and-dot");
+                .addMapping('\uE000', "e000_quotation-mark-and-dot")
+                .supportsCase(CaseSensitivity.UPPER);
         }
         return font;
     }

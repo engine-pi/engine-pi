@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import pi.Scene;
 import pi.annotations.API;
@@ -147,7 +148,16 @@ public class ImageText extends Image
     @ChainableMethod
     public ImageText content(Object content)
     {
-        this.content = TextUtil.convertToString(content);
+        this.content = TextUtil
+            .wrap(TextUtil.convertToString(content), lineWidth, alignment);
+
+        if (this.content.isEmpty())
+        {
+            // Da wir die Attribute durch verkettete Setter setzen, kann es
+            // sein, dass es noch keinen Inhalt gibt. Wir brauchen jedoch
+            // einen Inhalt, damit das Bild generiert werden kann.
+            this.content = " ";
+        }
         update();
         return this;
     }
@@ -172,7 +182,7 @@ public class ImageText extends Image
      * Die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die eine
      * Zeile aufnehmen kann.
      */
-    private int lineWidth = -1;
+    private int lineWidth = 0;
 
     /**
      * Gibt die <b>Zeilenbreite</b> zurück, also die maximale Anzahl an Zeichen,
@@ -187,12 +197,21 @@ public class ImageText extends Image
     @Getter
     public int lineWidth()
     {
+        if (lineWidth == 0)
+        {
+            return TextUtil.getLineWidth(content);
+        }
         return lineWidth;
     }
 
     /**
      * Setzt die <b>Zeilenbreite</b>, also die maximale Anzahl an Zeichen, die
      * eine Zeile aufnehmen kann.
+     *
+     * <p>
+     * Wird die Zeilenbreite auf 0 gesetzt, so erhält man einen einzeiligen
+     * Text.
+     * </p>
      *
      * @param lineWidth Die <b>Zeilenbreite</b>, also die maximale Anzahl an
      *     Zeichen, die eine Zeile aufnehmen kann.
@@ -209,7 +228,14 @@ public class ImageText extends Image
     @ChainableMethod
     public ImageText lineWidth(int lineWidth)
     {
+        if (lineWidth < 0)
+        {
+            throw new IllegalArgumentException(
+                    "Die Zeilenbreite eines Bildertextes muss größer gleich 0 sein, nicht: "
+                            + lineWidth);
+        }
         this.lineWidth = lineWidth;
+        content(content);
         update();
         return this;
     }
@@ -253,6 +279,7 @@ public class ImageText extends Image
     public ImageText alignment(TextAlignment alignment)
     {
         this.alignment = alignment;
+        content(content);
         update();
         return this;
     }
@@ -376,8 +403,11 @@ public class ImageText extends Image
     {
         // Wir verwenden nicht den Setter image() der Actor-Oberklasse Image,
         // sonst kommt es zu rekursiven Aufrufen ohne Abbruchbedingung.
-        image = font
-            .render(content, lineWidth, alignment, color, pixelMultiplication);
+        image = font.createImage(content,
+            lineWidth(),
+            alignment(),
+            color(),
+            pixelMultiplication());
         super.update();
     }
 
@@ -389,6 +419,20 @@ public class ImageText extends Image
     {
         ToStringFormatter formatter = toStringFormatter().className(this);
         formatter.prepend("font", font);
+
+        if (pixelMultiplication > 1)
+        {
+            formatter.append("pixelMultiplication", pixelMultiplication);
+        }
+        if (color != null)
+        {
+            formatter.append("color", color);
+        }
+        if (lineWidth > 0)
+        {
+            formatter.append("lineWidth", lineWidth);
+        }
+        formatter.append("alignment", alignment);
         return formatter.format();
     }
 
@@ -420,16 +464,12 @@ public class ImageText extends Image
          * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der
          *     einzelnen Buchstaben liegen.
          * @param extension Die Dateierweiterung der Buchstabenbilder.
-         * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
-         * @param alignment Die Textausrichtung.
          */
-        public Font(String basePath, String extension,
-                CaseSensitivity caseSensitivity, TextAlignment alignment)
+        public Font(String basePath, String extension)
         {
             this.basePath = basePath;
             this.extension = extension;
-            this.caseSensitivity = caseSensitivity;
-            this.alignment = alignment;
+
             glyphWidth = 0;
             glyphHeight = 0;
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths
@@ -474,24 +514,10 @@ public class ImageText extends Image
          *
          * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der
          *     einzelnen Buchstaben liegen.
-         * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
-         */
-        public Font(String basePath, CaseSensitivity caseSensitivity)
-        {
-            this(basePath, "png", caseSensitivity, TextAlignment.LEFT);
-        }
-
-        /**
-         * Erzeugt eine neue Bilderschriftart. Die einzelnen Glyphen müssen als
-         * Dateierweiterung {@code png} haben. Der Text wird linksbündig
-         * ausgerichtet.
-         *
-         * @param basePath Der Pfad zu einem Ordner, in dem die Bilder der
-         *     einzelnen Buchstaben liegen.
          */
         public Font(String basePath)
         {
-            this(basePath, null);
+            this(basePath, "png");
         }
 
         /* basePath */
@@ -549,48 +575,11 @@ public class ImageText extends Image
          *
          * @since 0.46.0
          */
+        @API
         @Getter
         public int glyphHeight()
         {
             return glyphHeight;
-        }
-
-        /* color */
-
-        /**
-         * Die Farbe in der die schwarze Farbe der Ausgangsbilder umgefärbt
-         * werden soll.
-         */
-        private Color color;
-
-        /**
-         * Setzt die Farbe, in der die schwarze Farbe der Ausgangsbilder
-         * umgefärbt werden soll.
-         *
-         * @param color Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-         *     umgefärbt werden soll.
-         *
-         * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-         *     Punktschreibweise verkettet werden können.
-         */
-        @Setter
-        public Font color(Color color)
-        {
-            this.color = color;
-            return this;
-        }
-
-        /**
-         * Gibt die Farbe zurück, in der die schwarze Farbe der Ausgangsbilder
-         * umgefärbt werden soll.
-         *
-         * @return Die Farbe, in der die schwarze Farbe der Ausgangsbilder
-         *     umgefärbt werden soll.
-         */
-        @Getter
-        public Color color()
-        {
-            return color;
         }
 
         /* extension */
@@ -608,173 +597,65 @@ public class ImageText extends Image
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
          */
+        @API
         @Setter
+        @ChainableMethod
         public Font extension(String extension)
         {
             this.extension = extension;
             return this;
         }
 
-        /**
-         * Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-         * verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-         * Abmessung {@code 3x3}.
-         */
-        private int pixelMultiplication = 1;
+        /* supportsCase */
 
         /**
-         * Setzt, wie oft ein Pixel vervielfältigt werden soll.
-         *
-         * @param pixelMultiplication Wie oft ein Pixel vervielfältigt werden
-         *     soll. Beispielsweise verwandelt die Zahl {@code 3} ein Pixel in
-         *     {@code 9 Pixel} der Abmessung {@code 3x3}.
-         *
-         * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-         *     Punktschreibweise verkettet werden können.
+         * Die <b>Handhabung der Groß- und Kleinschreibung</b>.
          */
+        private @Nullable CaseSensitivity supportsCase = null;
+
+        /**
+         * Gibt die <b>Handhabung der Groß- und Kleinschreibung</b> zurück.
+         *
+         * <p>
+         * Diese Methode liefert zurück, ob die Bilderschriftart nur
+         * Großschreibung oder nur Kleinschreibung unterstützt. Ist das Attribut
+         * auf {@code null} gesetzt, so unterstützt die Schriftart sowohl Klein-
+         * als auch Großschreibung.
+         * </p>
+         *
+         * @return Die <b>Handhabung der Groß- und Kleinschreibung</b>.
+         *
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public @Nullable CaseSensitivity supportsCase()
+        {
+            return supportsCase;
+        }
+
+        /**
+         * Setzt die <b>Handhabung der Groß- und Kleinschreibung</b>.
+         *
+         * <p>
+         * Diese Methode legt fest, ob die Bilderschriftart nur Großschreibung
+         * oder nur Kleinschreibung unterstützt. Ist das Attribut auf
+         * {@code null} gesetzt, so unterstützt die Schriftart sowohl Klein- als
+         * auch Großschreibung.
+         * </p>
+         *
+         * @param supportsCase Die <b>Handhabung der Groß- und
+         *     Kleinschreibung</b>.
+         *
+         * @since 0.46.0
+         */
+        @API
         @Setter
-        public Font pixelMultiplication(int pixelMultiplication)
+        @ChainableMethod
+        public Font supportsCase(@Nullable CaseSensitivity supportsCase)
         {
-            this.pixelMultiplication = pixelMultiplication;
+            this.supportsCase = supportsCase;
             return this;
-        }
-
-        /**
-         * Gibt zurück, wie oft ein Pixel vervielfältigt werden soll. i
-         *
-         * @return Wie oft ein Pixel vervielfältigt werden soll. Beispielsweise
-         *     verwandelt die Zahl {@code 3} ein Pixel in {@code 9 Pixel} der
-         *     Abmessung {@code 3x3}.
-         */
-        @Getter
-        public int pixelMultiplication()
-        {
-            return pixelMultiplication;
-        }
-
-        /* caseSensitivity */
-
-        /**
-         * Die Handhabung der Groß- und Kleinschreibung.
-         */
-        private CaseSensitivity caseSensitivity;
-
-        /**
-         * Setzt die Handhabung der Groß- und Kleinschreibung.
-         *
-         * @param caseSensitivity Die Handhabung der Groß- und Kleinschreibung.
-         *
-         * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-         *     Punktschreibweise verkettet werden können.
-         */
-        @Setter
-        public Font caseSensitivity(CaseSensitivity caseSensitivity)
-        {
-            this.caseSensitivity = caseSensitivity;
-            return this;
-        }
-
-        /* lineWidth */
-
-        /**
-         * Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
-         */
-        private int lineWidth = -1;
-
-        /**
-         * Setzt die maximale Anzahl an Zeichen, die eine Zeile aufnehmen kann.
-         *
-         * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile
-         *     aufnehmen kann.
-         *
-         * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-         *     Punktschreibweise verkettet werden können.
-         */
-        @Setter
-        public Font lineWidth(int lineWidth)
-        {
-            this.lineWidth = lineWidth;
-            return this;
-        }
-
-        /**
-         * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
-         * kann.
-         *
-         * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-         *     kann.
-         */
-        @Getter
-        public int lineWidth()
-        {
-            return lineWidth;
-        }
-
-        /**
-         * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
-         * kann.
-         *
-         * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-         *     kann.
-         */
-        @Getter
-        public int lineWidth(String content)
-        {
-            if (lineWidth == -1)
-            {
-                return TextUtil.getLineWidth(content) + 1;
-            }
-            return lineWidth;
-        }
-
-        /**
-         * Gibt die maximale Anzahl an Zeichen zurück, die eine Zeile aufnehmen
-         * kann.
-         *
-         * @return Die maximale Anzahl an Zeichen, die eine Zeile aufnehmen
-         *     kann.
-         */
-        @Getter
-        public int lineWidth(String content, int lineWidth)
-        {
-            if (lineWidth == -1)
-            {
-                return TextUtil.getLineWidth(content) + 1;
-            }
-            return lineWidth;
-        }
-
-        /* alignment */
-
-        /**
-         * Die Textausrichtung.
-         */
-        private TextAlignment alignment;
-
-        /**
-         * Setzt die Textausrichtung.
-         *
-         * @param alignment Die Textausrichtung.
-         *
-         * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
-         *     Punktschreibweise verkettet werden können.
-         */
-        @Setter
-        public Font alignment(TextAlignment alignment)
-        {
-            this.alignment = alignment;
-            return this;
-        }
-
-        /**
-         * Gibt die Textausrichtung zurück.
-         *
-         * @return Die Textausrichtung.
-         */
-        @Getter
-        public TextAlignment alignment()
-        {
-            return alignment;
         }
 
         /* throwException */
@@ -795,7 +676,9 @@ public class ImageText extends Image
          * @return Eine Instanz dieser Klasse, damit mehrere Setter mit der
          *     Punktschreibweise verkettet werden können.
          */
+        @API
         @Setter
+        @ChainableMethod
         public Font throwException(boolean throwException)
         {
             this.throwException = throwException;
@@ -971,41 +854,6 @@ public class ImageText extends Image
         }
 
         /**
-         * Verarbeitet die Zeichenkette, die gesetzt werden soll.
-         *
-         * @param content Der Textinhalt, der in das Bild geschrieben werden
-         *     soll.
-         * @param lineWidth Die maximale Anzahl an Zeichen, die eine Zeile
-         *     aufnehmen kann.
-         * @param alignment Die Textausrichtung.
-         *
-         * @return Der ausgerichtete Text, in dem neue Zeilenumbrüche eingefügt
-         *     wurden.
-         */
-        private String processContent(String content, int lineWidth,
-                TextAlignment alignment)
-        {
-            if (caseSensitivity == CaseSensitivity.TO_UPPER)
-            {
-                content = content.toUpperCase();
-            }
-            else if (caseSensitivity == CaseSensitivity.TO_LOWER)
-            {
-                content = content.toLowerCase();
-            }
-            String result = TextUtil.wrap(content, lineWidth, alignment);
-
-            if (result.isEmpty())
-            {
-                // Da wir die Attribute durch verkettete Setter setzen, kann es
-                // sein, dass es noch keinen Inhalt gibt. Wir brauchen jedoch
-                // einen Inhalt, damit das Bild generiert werden kann.
-                return " ";
-            }
-            return result;
-        }
-
-        /**
          * Setzt den gegebenen Textinhalt in ein Bild.
          *
          * @param content Der Textinhalt, der in das Bild geschrieben werden
@@ -1022,12 +870,19 @@ public class ImageText extends Image
          * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt
          *     wurden.
          */
-        public BufferedImage render(String content, int lineWidth,
+        public BufferedImage createImage(String content, int lineWidth,
                 TextAlignment alignment, Color color, int pixelMultiplication)
         {
-            lineWidth = lineWidth(content, lineWidth);
-            content = processContent(content, lineWidth, alignment);
+            if (supportsCase == CaseSensitivity.UPPER)
+            {
+                content = content.toUpperCase();
+            }
+            else if (supportsCase == CaseSensitivity.LOWER)
+            {
+                content = content.toLowerCase();
+            }
             int lineCount = TextUtil.getLineCount(content);
+
             int imageHeight = glyphHeight * lineCount;
             int imageWidth = glyphWidth * lineWidth;
             BufferedImage image = new BufferedImage(imageWidth, imageHeight,
@@ -1061,22 +916,9 @@ public class ImageText extends Image
             return image;
         }
 
-        /**
-         * Setzt den gegebenen Textinhalt in ein Bild.
-         *
-         * @param content Der Textinhalt, der in das Bild geschrieben werden
-         *     soll.
-         *
-         * @return Ein Bild, in dem alle Zeichen-Einzelbilder zusammengefügt
-         *     wurden.
-         */
-        public BufferedImage render(String content)
+        public BufferedImage createImage(String content)
         {
-            return render(content,
-                lineWidth(content),
-                alignment,
-                color,
-                pixelMultiplication);
+            return createImage(content, 0, TextAlignment.LEFT, null, 1);
         }
 
         /**
@@ -1087,32 +929,23 @@ public class ImageText extends Image
         {
             ToStringFormatter formatter = new ToStringFormatter(this);
             formatter.append("basePath", basePath);
+
             if (glyphWidth != 8 || glyphHeight != 8)
             {
                 formatter.append("glyphDimension",
                     String.format("%sx%s", glyphWidth, glyphHeight));
             }
+
             if (!extension.equals("png"))
             {
                 formatter.append("extension", extension);
             }
-            if (pixelMultiplication > 1)
+
+            if (supportsCase != null)
             {
-                formatter.append("pixelMultiplication", pixelMultiplication);
+                formatter.append("supportsCase", supportsCase);
             }
-            if (color != null)
-            {
-                formatter.append("color", color);
-            }
-            if (caseSensitivity != null)
-            {
-                formatter.append("caseSensitivity", caseSensitivity);
-            }
-            if (lineWidth > 0)
-            {
-                formatter.append("lineWidth", lineWidth);
-            }
-            formatter.append("alignment", alignment);
+
             return formatter.format();
         }
     }
@@ -1212,11 +1045,12 @@ public class ImageText extends Image
         /**
          * Alle Klein- werden zu <b>Großbuchstaben</b> konvertiert.
          */
-        TO_UPPER,
+        UPPER,
+
         /**
          * Alle Groß- werden zu <b>Kleinbuchstaben</b> konvertiert.
          */
-        TO_LOWER
+        LOWER
     }
 
     /**

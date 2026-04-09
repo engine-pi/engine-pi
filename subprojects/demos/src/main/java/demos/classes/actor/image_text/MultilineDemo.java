@@ -44,8 +44,8 @@ public class MultilineDemo extends Scene
 {
     public MultilineDemo()
     {
-        Font font = new Font("main-classes/actor/image-text/tetris",
-                CaseSensitivity.TO_UPPER);
+        Font font = new Font("main-classes/actor/image-text/tetris")
+            .supportsCase(CaseSensitivity.UPPER);
         ImageText textField = new ImageText(font).content(
             "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
                     + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.")

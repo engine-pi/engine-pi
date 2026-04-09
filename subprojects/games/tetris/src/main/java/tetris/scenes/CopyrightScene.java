@@ -60,6 +60,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
                     // U+E000..U+F8FF BMP (0) Private Use Area
                     "by Alexey Pazhitnov\uE000\n" + "\n")
             .lineWidth(21)
+            .color(COLOR_SCHEME_GREEN.getBlack())
             .alignment(TextAlignment.CENTER);
         text.anchor(-2, 0);
         add(text);

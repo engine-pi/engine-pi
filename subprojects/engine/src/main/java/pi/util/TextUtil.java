@@ -26,6 +26,9 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java
 
 /**
@@ -103,7 +106,7 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static int getLineWidth(String text)
+    public static int getLineWidth(@NonNull String text)
     {
         final int[] width = { 0 };
         text.lines().forEach((String line) -> {
@@ -124,7 +127,7 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static int getLineCount(String text)
+    public static int getLineCount(@NonNull String text)
     {
         return (int) text.lines().count();
     }
@@ -139,7 +142,7 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static String[] splitLines(String text)
+    public static String[] splitLines(@NonNull String text)
     {
         return text.lines().toArray(String[]::new);
     }
@@ -159,7 +162,8 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static String align(String text, int width, TextAlignment alignment)
+    public static String align(@NonNull String text, int width,
+            @Nullable TextAlignment alignment)
     {
         return text.lines().map((String line) -> {
             line = line.trim();
@@ -175,7 +179,7 @@ public class TextUtil
                 return " ".repeat(left) + line;
             }
             return line;
-        }).collect(Collectors.joining("\n"));
+        }).collect(Collectors.joining(LINE_SEPARATOR));
     }
 
     /**
@@ -191,7 +195,8 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static String align(String text, TextAlignment alignment)
+    public static String align(@NonNull String text,
+            @Nullable TextAlignment alignment)
     {
         return align(text, getLineWidth(text), alignment);
     }
@@ -218,7 +223,8 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static String wrap(String text, int width, TextAlignment alignment)
+    public static String wrap(@NonNull String text, int width,
+            @Nullable TextAlignment alignment)
     {
         if (width < 1)
         {

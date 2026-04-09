@@ -43,8 +43,8 @@ import pi.actor.ImageText.Font;
  */
 public class ColorDemo extends Scene
 {
-    Font font = new Font("main-classes/actor/image-text/tetris",
-            CaseSensitivity.TO_UPPER);
+    Font font = new Font("main-classes/actor/image-text/tetris")
+        .supportsCase(CaseSensitivity.UPPER);
 
     public ColorDemo()
     {
