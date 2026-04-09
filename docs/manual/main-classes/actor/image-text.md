@@ -43,16 +43,16 @@ public class MultilineDemo extends Scene
 {{ image('docs/main-classes/actor/image-text/AlignmentDemo.png') }}
 
 <!-- ```java
-import static pi.util.TextAlignment.CENTER;
-import static pi.util.TextAlignment.LEFT;
-import static pi.util.TextAlignment.RIGHT;
+import static pi.graphics.boxes.HAlign.CENTER;
+import static pi.graphics.boxes.HAlign.LEFT;
+import static pi.graphics.boxes.HAlign.RIGHT;
 
 import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageTextCaseSensitivity;
 import pi.actor.ImageTextText;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 public class AlignmentDemo extends Scene
 {

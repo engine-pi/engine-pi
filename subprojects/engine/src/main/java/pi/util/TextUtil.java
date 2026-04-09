@@ -18,9 +18,9 @@
  */
 package pi.util;
 
-import static pi.util.TextAlignment.CENTER;
-import static pi.util.TextAlignment.LEFT;
-import static pi.util.TextAlignment.RIGHT;
+import static pi.graphics.boxes.HAlign.CENTER;
+import static pi.graphics.boxes.HAlign.LEFT;
+import static pi.graphics.boxes.HAlign.RIGHT;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
@@ -28,6 +28,8 @@ import java.util.stream.Collectors;
 
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
+
+import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java
 
@@ -163,7 +165,7 @@ public class TextUtil
      * @since 0.23.0
      */
     public static String align(@NonNull String text, int width,
-            @Nullable TextAlignment alignment)
+            @Nullable HAlign alignment)
     {
         return text.lines().map((String line) -> {
             line = line.trim();
@@ -195,8 +197,7 @@ public class TextUtil
      *
      * @since 0.23.0
      */
-    public static String align(@NonNull String text,
-            @Nullable TextAlignment alignment)
+    public static String align(@NonNull String text, @Nullable HAlign alignment)
     {
         return align(text, getLineWidth(text), alignment);
     }
@@ -224,7 +225,7 @@ public class TextUtil
      * @since 0.23.0
      */
     public static String wrap(@NonNull String text, int width,
-            @Nullable TextAlignment alignment)
+            @Nullable HAlign alignment)
     {
         if (width < 1)
         {

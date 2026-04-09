@@ -24,7 +24,7 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageText.Font;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
@@ -43,7 +43,7 @@ public class CounterDemo extends Scene
         text = new ImageText(new Font("main-classes/actor/image-text/pacman"))
             .content("0")
             .lineWidth(5)
-            .alignment(TextAlignment.RIGHT)
+            .hAlign(HAlign.RIGHT)
             .pixelMultiplication(8);
         text.center(-1, 0);
         repeat(0.05, () -> {

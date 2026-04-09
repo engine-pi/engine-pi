@@ -27,7 +27,7 @@ import pi.actor.ImageText.Font;
 import pi.actor.ImageText.CaseSensitivity;
 
 import pi.event.KeyStrokeListener;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
@@ -58,7 +58,7 @@ public class ContentDemo extends Scene implements KeyStrokeListener
         textField = new ImageText(font)
             .content("Hello, World. Lorem ipsum. Lorem ipsum. Lorem ipsum")
             .lineWidth(15)
-            .alignment(TextAlignment.LEFT)
+            .hAlign(HAlign.LEFT)
             .pixelMultiplication(4);
         add(textField);
         camera().focus(10, 8);

@@ -35,7 +35,7 @@ import pi.Controller;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
 import pi.util.ImageUtil;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 /**
  * @author Josef Friedrich
@@ -91,8 +91,7 @@ class ImageTextTest
         @Test
         void methodChaining()
         {
-            write(text.content("Test").alignment(TextAlignment.RIGHT),
-                "chaining");
+            write(text.content("Test").hAlign(HAlign.RIGHT), "chaining");
         }
 
         @Test

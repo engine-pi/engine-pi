@@ -23,7 +23,7 @@ import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
@@ -49,7 +49,7 @@ public class MultilineDemo extends Scene
         ImageText textField = new ImageText(font).content(
             "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
                     + "Zeilenumbrueche\nkoennen auch\nerzwungen werden.")
-            .alignment(TextAlignment.LEFT)
+            .hAlign(HAlign.LEFT)
             .lineWidth(20)
             .pixelMultiplication(4);
         add(textField);

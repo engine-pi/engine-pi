@@ -18,16 +18,16 @@
  */
 package demos.classes.actor.image_text;
 
-import static pi.util.TextAlignment.CENTER;
-import static pi.util.TextAlignment.LEFT;
-import static pi.util.TextAlignment.RIGHT;
+import static pi.graphics.boxes.HAlign.CENTER;
+import static pi.graphics.boxes.HAlign.LEFT;
+import static pi.graphics.boxes.HAlign.RIGHT;
 
 import pi.Controller;
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
 
@@ -41,7 +41,7 @@ import pi.util.TextAlignment;
  *
  * @author Josef Friedrich
  *
- * @see pi.util.TextAlignment
+ * @see pi.graphics.boxes.HAlign
  * @see pi.actor.ImageText
  */
 public class AlignmentDemo extends Scene
@@ -58,11 +58,11 @@ public class AlignmentDemo extends Scene
         createText(-7, "Dieser Text ist rechtsbuendig ausgerichtet.", RIGHT);
     }
 
-    private void createText(int y, String content, TextAlignment alignment)
+    private void createText(int y, String content, HAlign alignment)
     {
         ImageText line = new ImageText(font).content(content)
             .lineWidth(18)
-            .alignment(alignment)
+            .hAlign(alignment)
             .pixelMultiplication(4);
         line.anchor(-9, y);
         add(line);

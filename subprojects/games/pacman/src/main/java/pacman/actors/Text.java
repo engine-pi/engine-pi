@@ -21,7 +21,7 @@ package pacman.actors;
 import static pi.Controller.colors;
 
 import pi.actor.ImageText;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 
 public class Text extends ImageText
 {
@@ -32,7 +32,7 @@ public class Text extends ImageText
     {
         super(font);
         content(content);
-        alignment(TextAlignment.LEFT);
+        hAlign(HAlign.LEFT);
         color(colors.get(color));
         pixelPerMeter(8);
     }

@@ -18,29 +18,22 @@
  */
 package pi.graphics.boxes;
 
-/**
- * Die <b>horizontale</b> Ausrichtung.
- *
- * @author Josef Friedrich
- *
- * @see <a href=
- *     "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align">CSS-Referenz:
- *     text-align</a>
- */
+// Die Namen der Aufzählungselemente entsprechen den CSS-Eigenschaften von text-align https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align
+
 public enum HAlign
 {
     /**
-     * Richtet die Box <b>links</b> aus.
+     * <b>links</b>bündige horizontale Ausrichtung.
      */
     LEFT,
 
     /**
-     * Richtet die Box <b>zentriert</b> aus.
+     * <b>mittige</b> horizontale Ausrichtung.
      */
     CENTER,
 
     /**
-     * Richtet die Box <b>rechts</b> aus.
+     * <b>rechts</b>bündige horizontale Ausrichtung.
      */
     RIGHT
 }

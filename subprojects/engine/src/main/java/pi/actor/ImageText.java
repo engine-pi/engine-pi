@@ -41,10 +41,10 @@ import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
+import pi.graphics.boxes.HAlign;
 import pi.resources.ResourceLoader;
 import pi.util.FileUtil;
 import pi.util.ImageUtil;
-import pi.util.TextAlignment;
 import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/image-text.md
@@ -149,7 +149,7 @@ public class ImageText extends Image
     public ImageText content(Object content)
     {
         this.content = TextUtil
-            .wrap(TextUtil.convertToString(content), lineWidth, alignment);
+            .wrap(TextUtil.convertToString(content), lineWidth, hAlign);
 
         if (this.content.isEmpty())
         {
@@ -245,7 +245,7 @@ public class ImageText extends Image
     /**
      * Die <b>Textausrichtung</b>.
      */
-    private @NonNull TextAlignment alignment = TextAlignment.LEFT;
+    private @NonNull HAlign hAlign = HAlign.LEFT;
 
     /**
      * Gibt die <b>Textausrichtung</b> zurück.
@@ -256,15 +256,15 @@ public class ImageText extends Image
      */
     @API
     @Getter
-    public @NonNull TextAlignment alignment()
+    public @NonNull HAlign hAlign()
     {
-        return alignment;
+        return hAlign;
     }
 
     /**
      * Setzt die <b>Textausrichtung</b>.
      *
-     * @param alignment Die <b>Textausrichtung</b>
+     * @param hAlign Die <b>Textausrichtung</b>
      *
      * @return Eine Referenz auf die eigene Instanz des Bildertextes, damit nach
      *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften des Bildertextes
@@ -276,9 +276,9 @@ public class ImageText extends Image
     @API
     @Setter
     @ChainableMethod
-    public ImageText alignment(TextAlignment alignment)
+    public ImageText hAlign(HAlign hAlign)
     {
-        this.alignment = alignment;
+        this.hAlign = hAlign;
         content(content);
         update();
         return this;
@@ -405,7 +405,7 @@ public class ImageText extends Image
         // sonst kommt es zu rekursiven Aufrufen ohne Abbruchbedingung.
         image = font.createImage(content,
             lineWidth(),
-            alignment(),
+            hAlign(),
             color(),
             pixelMultiplication());
         super.update();
@@ -432,7 +432,7 @@ public class ImageText extends Image
         {
             formatter.append("lineWidth", lineWidth);
         }
-        formatter.append("alignment", alignment);
+        formatter.append("alignment", hAlign);
         return formatter.format();
     }
 
@@ -871,7 +871,7 @@ public class ImageText extends Image
          *     wurden.
          */
         public BufferedImage createImage(String content, int lineWidth,
-                TextAlignment alignment, Color color, int pixelMultiplication)
+                HAlign alignment, Color color, int pixelMultiplication)
         {
             if (supportsCase == CaseSensitivity.UPPER)
             {
@@ -918,7 +918,7 @@ public class ImageText extends Image
 
         public BufferedImage createImage(String content)
         {
-            return createImage(content, 0, TextAlignment.LEFT, null, 1);
+            return createImage(content, 0, HAlign.LEFT, null, 1);
         }
 
         /**

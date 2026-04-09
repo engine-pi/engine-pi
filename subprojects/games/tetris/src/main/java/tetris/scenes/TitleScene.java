@@ -23,7 +23,7 @@ import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 import tetris.Tetris;
 import tetris.text.Font;
 
@@ -45,7 +45,7 @@ public class TitleScene extends BaseScene
     {
         ImageText actor = new ImageText(Font.getFont()).content(content)
             .lineWidth(20)
-            .alignment(TextAlignment.CENTER);
+            .hAlign(HAlign.CENTER);
         actor.anchor(-2, y);
         add(actor);
     }

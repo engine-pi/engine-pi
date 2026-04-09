@@ -20,7 +20,7 @@ import java.awt.event.KeyEvent;
 
 import pi.actor.ImageText;
 import pi.event.KeyStrokeListener;
-import pi.util.TextAlignment;
+import pi.graphics.boxes.HAlign;
 import tetris.Tetris;
 import tetris.text.Font;
 
@@ -61,7 +61,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
                     "by Alexey Pazhitnov\uE000\n" + "\n")
             .lineWidth(21)
             .color(COLOR_SCHEME_GREEN.getBlack())
-            .alignment(TextAlignment.CENTER);
+            .hAlign(HAlign.CENTER);
         text.anchor(-2, 0);
         add(text);
         delay(4, this::startTitleScene);
