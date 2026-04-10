@@ -55,8 +55,7 @@ class ImageTextTest
     void setUp()
     {
         Controller.instantMode(false);
-        font = new Font("image-font/tetris")
-            .supportsCase(CaseSensitivity.UPPER);
+        font = new Font("image-text").supportsCase(CaseSensitivity.UPPER);
         text = new ImageText(font).content("test");
     }
 

@@ -78,7 +78,11 @@ assets_sync_resources:
 	rsync -a --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
 	rsync -a --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 	rsync -a --delete assets/demos/resources/ subprojects/engine/src/test/resources/demos/
+	rsync -a --delete assets/tetris/resources/images/image-text/ subprojects/engine/src/test/resources/image-text/
+	rsync -a --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
 
+
+	rsync -a --delete assets/tetris/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/tetris/
 	rsync -a --delete assets/tetris/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/tetris/
 	rsync -a --delete assets/pacman/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/pacman/
 	rsync -a --delete assets/space-invaders/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/space-invaders/
