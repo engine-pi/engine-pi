@@ -15,7 +15,7 @@ class ResourceManipulatorTest
 {
     ImageContainer container = images;
 
-    String resourceName = "Pixel-Adventure-1/Background/Blue.png";
+    String resourceName = "demos/Pixel-Adventure-1/Background/Blue.png";
 
     @BeforeEach
     @AfterEach

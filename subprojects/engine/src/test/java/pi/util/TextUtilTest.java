@@ -105,7 +105,7 @@ class TextUtilTest
         @Test
         void widthOnOneLine()
         {
-            assertEquals(align(oneLine, 15, LEFT), "Lorem ipsum");
+            assertEquals("Lorem ipsum", align(oneLine, 15, LEFT));
         }
 
         @Test
@@ -372,15 +372,14 @@ class TextUtilTest
         @Test
         void nullElement()
         {
-            assertEquals(convertToMultilineString("a", null, "b"), "a\n\nb");
+            assertEquals("a\n\nb", convertToMultilineString("a", null, "b"));
         }
 
         @Test
         void collectionTypesUseConvertToString()
         {
-            assertEquals(
-                convertToMultilineString(List.of(1, 2), Map.of("x", 10)),
-                "[1, 2]\n{x=10}");
+            assertEquals("[1, 2]\n{x=10}",
+                convertToMultilineString(List.of(1, 2), Map.of("x", 10)));
         }
     }
 }

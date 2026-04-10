@@ -71,23 +71,28 @@ assets_init:
 	cd assets; git checkout main; git pull
 	git pull
 
+# Synchronize resource files using rsync from the assets directory to the subprojects.
 assets_sync_resources:
 	rsync -av --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/
 	rsync -av --delete assets/demos/resources/ subprojects/demos/src/main/resources/
 	rsync -av --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
 	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
+	rsync -av --delete assets/demos/resources/ subprojects/engine/src/test/resources/demos/
 
 assets: assets_init assets_sync_resources
 
 export NO_MKDOCS_2_WARNING := "true"
 
+# Build the MkDocs site and open the generated index.html in a browser using xdg-open.
 mkdocs_build:
 	mkdocs build --strict
 	xdg-open site/index.html
 
+# Deploy the MkDocs site to GitHub Pages using the 'gh-deploy' command.
 mkdocs_deploy:
 	mkdocs gh-deploy
 
+# Serve the MkDocs site locally with livereload enabled using the 'serve' command.
 mkdocs_serve:
 	mkdocs serve --livereload
 

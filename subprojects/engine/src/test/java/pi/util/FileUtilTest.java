@@ -36,23 +36,22 @@ class FileUtilTest
         @Test
         void url() throws MalformedURLException
         {
-            assertEquals(
-                FileUtil.getFileName(new URL("file:/home/pi/test.png")),
-                "test");
+            assertEquals("test",
+                FileUtil.getFileName(new URL("file:/home/pi/test.png")));
         }
 
         @Test
         void string()
         {
-            assertEquals(FileUtil.getFileName("/home/pi/test.png"), "test");
+            assertEquals("test", FileUtil.getFileName("/home/pi/test.png"));
         }
 
         @Test
         void extension()
         {
             String path = "/home/pi/test.png";
-            assertEquals(FileUtil.getFileName(path, false), "test");
-            assertEquals(FileUtil.getFileName(path, true), "test.png");
+            assertEquals("test", FileUtil.getFileName(path, false));
+            assertEquals("test.png", FileUtil.getFileName(path, true));
         }
     }
 

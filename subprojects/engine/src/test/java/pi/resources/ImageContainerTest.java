@@ -26,7 +26,7 @@ class ImageContainerTest
 {
     private ImageContainer container;
 
-    private static final String TEST_IMAGE = "Pixel-Adventure-1/Background/Blue.png";
+    private static final String TEST_IMAGE = "demos/Pixel-Adventure-1/Background/Blue.png";
 
     private static final int EXPECTED_WIDTH = 64;
 

@@ -28,7 +28,6 @@ import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.IOException;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -55,7 +54,7 @@ class ImageUtilTest
     void copy()
     {
         BufferedImage image = images.get(
-            "Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
+            "demos/Pixel-Adventure-1/Main Characters/Virtual Guy/Idle (32x32).png");
         BufferedImage copy = ImageUtil.copy(image);
         assertImageEquals(image, copy);
     }
@@ -80,7 +79,7 @@ class ImageUtilTest
         static BufferedImage expected = images.get("images/rgb.png");
 
         @Test
-        void colorArray() throws IOException
+        void colorArray()
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
                 new Color[]
@@ -91,7 +90,7 @@ class ImageUtilTest
         }
 
         @Test
-        void stringArray() throws IOException
+        void stringArray()
         {
             BufferedImage actual = ImageUtil.replaceColors(input,
                 new String[]
@@ -102,7 +101,7 @@ class ImageUtilTest
         }
 
         @Test
-        void map() throws IOException
+        void map()
         {
             HashMap<Color, Color> map = new HashMap<>();
             map.put(white, red);
@@ -125,7 +124,7 @@ class ImageUtilTest
         }
         catch (Exception e)
         {
-
+            // Mit Absicht leer
         }
         assertNotNull(img);
         BufferedImage opt = ImageUtil.toCompatibleImage(img);
