@@ -14,14 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package tetris.scenes;
+package tetris.text;
 
-import pi.Jukebox;
+import pi.actor.ImageText;
+import pi.actor.ImageText.CaseSensitivity;
+import pi.annotations.Getter;
+
+import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
 /**
  * @author Josef Friedrich
  */
-public class Sound
+public class TextProvider
 {
     /**
      * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
@@ -31,54 +35,37 @@ public class Sound
      * @throws UnsupportedOperationException Falls eine Instanz der Klasse
      *     erzeugt wird.
      */
-    private Sound()
+    private TextProvider()
     {
         throw new UnsupportedOperationException();
     }
 
-    private static void playMusic(String filename)
+    private static ImageText.Font font;
+
+    @Getter
+    public static ImageText.Font font()
     {
-        Jukebox.playMusic("sounds/" + filename);
+        if (font == null)
+        {
+            font = new ImageText.Font("images/image-font")
+                .addMapping('\uE000', "e000_quotation-mark-and-dot")
+                .supportsCase(CaseSensitivity.UPPER);
+        }
+        return font;
     }
 
-    private static void playSound(String filename)
+    /**
+     * Gibt einen vorkonfigurierte Figur der Klasse {@link ImageText} aus.
+     *
+     * <p>
+     * Bei dem Bildertext ist bereits die passende Farbe gesetzt.
+     * </p>
+     *
+     * @return Eine vorkonfigurierte Figur der Klasse {@link ImageText}.
+     */
+    @Getter
+    public static ImageText text()
     {
-        Jukebox.playSound("sounds/" + filename);
-    }
-
-    public static void playTitle()
-    {
-        Jukebox.playIntroTrack("sounds/Title_intro.mp3",
-            "sounds/Title_loop.mp3");
-    }
-
-    public static void playKorobeiniki()
-    {
-        playMusic("A-Type-Music_korobeiniki.mp3");
-    }
-
-    public static void playBlockMove()
-    {
-        playSound("Block_move.wav");
-    }
-
-    public static void playBlockRotate()
-    {
-        playSound("Block_rotate.wav");
-    }
-
-    public static void playBlockDrop()
-    {
-        playSound("Block_drop.wav");
-    }
-
-    public static void playRowClear1to3()
-    {
-        playSound("Row_clear1-3.wav");
-    }
-
-    public static void playRowClear4()
-    {
-        playSound("Row_clear4.wav");
+        return new ImageText(font()).color(COLOR_SCHEME_GREEN.getBlack());
     }
 }

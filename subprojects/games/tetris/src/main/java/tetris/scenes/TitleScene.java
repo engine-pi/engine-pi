@@ -16,20 +16,22 @@
  */
 package tetris.scenes;
 
-import static tetris.Tetris.COLOR_SCHEME_GREEN;
-
 import java.awt.event.KeyEvent;
 
-import pi.actor.ImageText;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.geom.Vector;
 import tetris.Tetris;
-import tetris.text.FontProvider;
+import tetris.text.TextProvider;
 
 /**
+ * Der zweite Bildschirm. Oben sieht man die Schrift Tetris(TM). Darunter ein
+ * Bild, das die Zwiebeltürme der <a href=
+ * "https://de.wikipedia.org/wiki/Basiliuskathedrale_(Moskau)">Basiliuskathedrale</a>
+ * zeigt.
+ *
  * @author Josef Friedrich
  */
 public class TitleScene extends BaseScene
@@ -45,12 +47,12 @@ public class TitleScene extends BaseScene
 
     private void addCenteredText(String content, int y)
     {
-        ImageText actor = new ImageText(FontProvider.getFont()).content(content)
+        add(TextProvider.text()
+            .content(content)
             .lineWidth(20)
             .hAlign(HAlign.CENTER)
-            .color(COLOR_SCHEME_GREEN.getBlack());
-        actor.anchor(-2, y);
-        add(actor);
+            .anchor(-4, y)
+            .debug());
     }
 
     private void startIngameScene()

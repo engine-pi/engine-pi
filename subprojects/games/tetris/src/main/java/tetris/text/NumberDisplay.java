@@ -16,12 +16,13 @@
  */
 package tetris.text;
 
-import static tetris.Tetris.COLOR_SCHEME_GREEN;
-
 import pi.Scene;
 import pi.actor.ImageText;
 import pi.graphics.boxes.HAlign;
 
+/**
+ * @author Josef Friedrich
+ */
 public class NumberDisplay
 {
     private int number;
@@ -30,10 +31,10 @@ public class NumberDisplay
 
     public NumberDisplay(Scene scene, int x, int y, int maxDigits)
     {
-        font = new ImageText(FontProvider.getFont()).content("0")
+        font = TextProvider.text()
+            .content("0")
             .lineWidth(maxDigits)
-            .hAlign(HAlign.RIGHT)
-            .color(COLOR_SCHEME_GREEN.getBlack());
+            .hAlign(HAlign.RIGHT);
         font.anchor(x, y);
         scene.add(font);
         set(0);
@@ -58,7 +59,11 @@ public class NumberDisplay
 
     public void add(int number)
     {
-        assert number > -1 : "Add only positiv values, got " + number;
+        if (number < 0)
+        {
+            throw new IllegalArgumentException(
+                    "Add only positiv values, got " + number);
+        }
         this.number += number;
         write(this.number);
     }

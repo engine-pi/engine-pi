@@ -16,20 +16,20 @@
  */
 package tetris.scenes;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 
+import pi.Controller;
 import pi.actor.ImageText;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import tetris.Tetris;
-import tetris.text.FontProvider;
+import tetris.text.TextProvider;
 
 import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
 /**
  * Das ist der <b>erste Bildschirm</b>, der beim Starten des Spiels angezeigt
- * wird. Zeigt einen <b>Copyright</b>-Hinweis.
+ * wird. Er zeigt einen <b>Copyright</b>-Hinweis.
  *
  * @author Josef Friedrich
  */
@@ -39,29 +39,27 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
     {
         super(null);
         backgroundColor(COLOR_SCHEME_GREEN.getWhite());
-        ImageText text = new ImageText(FontProvider.getFont())
-            .content("\"TM and ©1987 ELORG,\n" + //
-                    "Tetris licensed to\n" + //
-                    "Bullet-Proof\n" + //
-                    "software and\n" + //
-                    "sub-licensed to\n" + //
-                    "Nintendo.\n" + //
-                    "\n" + //
-                    "©1989 Bullet-Proof\n" + //
-                    "software\n" + //
-                    "©1989 Nintendo\n" + //
-                    "\n" + //
-                    "All rights reserved.\n" + //
-                    "\n" + //
-                    "original concept\n" + //
-                    "design and programm\n" + //
-                    // Im Original: by Alexey Pazhitnov."
-                    // ." kann mit ImageText nicht als ein Zeichen dargestellt
-                    // werden.
-                    // U+E000..U+F8FF BMP (0) Private Use Area
-                    "by Alexey Pazhitnov\uE000\n" + "\n")
+        ImageText text = TextProvider.text().content("\"TM and ©1987 ELORG,\n" + //
+                "Tetris licensed to\n" + //
+                "Bullet-Proof\n" + //
+                "software and\n" + //
+                "sub-licensed to\n" + //
+                "Nintendo.\n" + //
+                "\n" + //
+                "©1989 Bullet-Proof\n" + //
+                "software\n" + //
+                "©1989 Nintendo\n" + //
+                "\n" + //
+                "All rights reserved.\n" + //
+                "\n" + //
+                "original concept\n" + //
+                "design and programm\n" + //
+                // Im Original: by Alexey Pazhitnov."
+                // ." kann mit ImageText nicht als ein Zeichen dargestellt
+                // werden.
+                // U+E000..U+F8FF BMP (0) Private Use Area
+                "by Alexey Pazhitnov\uE000\n" + "\n")
             .lineWidth(21)
-
             .hAlign(HAlign.CENTER);
         text.anchor(-2, 0).debug();
         add(text);
@@ -84,6 +82,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
+        Controller.debug();
         Tetris.start(new CopyrightScene());
     }
 }

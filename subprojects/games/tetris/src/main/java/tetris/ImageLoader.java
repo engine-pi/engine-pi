@@ -32,6 +32,19 @@ import pi.util.ImageUtil;
 public class ImageLoader
 {
     /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private ImageLoader()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Gibt ein vergrößertes und eingefärbtes Bild zurück.
      *
      * <p>
@@ -55,6 +68,6 @@ public class ImageLoader
             COLOR_SCHEME_GRAY.getColors(),
             COLOR_SCHEME_GREEN.getColors());
         return new Image(image).pixelPerMeter(
-            Tetris.BLOCK_SIZE * config.graphics.pixelMultiplication());
+            (double) Tetris.BLOCK_SIZE * config.graphics.pixelMultiplication());
     }
 }
