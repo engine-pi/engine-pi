@@ -43,8 +43,7 @@ import javafx.stage.Stage;
  */
 public class TestbedMain extends Application
 {
-    // private static final Logger log =
-    // LoggerFactory.getLogger(TestbedMain.class);
+
     @Override
     public void start(Stage primaryStage) throws Exception
     {

@@ -43,7 +43,7 @@ import org.jbox2d.testbed.framework.TestbedPanel;
 public class TestPanelJ2D extends JPanel implements TestbedPanel
 {
     private static final Logger log = Logger
-        .getLogger(AbstractTestbedController.class.getName());
+        .getLogger(TestPanelJ2D.class.getName());
 
     public static final int SCREEN_DRAG_BUTTON = 3;
 
