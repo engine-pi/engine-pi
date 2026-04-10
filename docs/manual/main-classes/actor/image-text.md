@@ -26,7 +26,7 @@ public class MultilineDemo extends Scene
 {
     public MultilineDemo()
     {
-        ImageText font = new ImageText("image-font/tetris",
+        ImageText font = new ImageText("image-text/tetris",
                 ImageTextCaseSensitivity.TO_UPPER);
         ImageTextText textField = new ImageTextText(font,
                 "Das ist ein laengerer Text, der in mehrere Zeilen unterteilt ist. "
@@ -67,7 +67,7 @@ import pi.graphics.boxes.HAlign;
 
 public class AlignmentDemo extends Scene
 {
-    ImageText font = new ImageText("image-font/tetris",
+    ImageText font = new ImageText("image-text/tetris",
             ImageTextCaseSensitivity.TO_UPPER);
 
     public AlignmentDemo()
@@ -107,7 +107,7 @@ public class AlignmentDemo extends Scene
 <!-- ```java
 public class ColorDemo extends Scene
 {
-    ImageText font = new ImageText("image-font/tetris",
+    ImageText font = new ImageText("image-text/tetris",
             ImageTextCaseSensitivity.TO_UPPER);
 
     public ColorDemo()

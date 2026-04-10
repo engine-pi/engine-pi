@@ -41,8 +41,7 @@ class ImageTextFontTest
     @BeforeEach
     void setUp()
     {
-        font = new Font("image-font/tetris")
-            .supportsCase(CaseSensitivity.UPPER);
+        font = new Font("image-text").supportsCase(CaseSensitivity.UPPER);
     }
 
     @Test
@@ -66,7 +65,7 @@ class ImageTextFontTest
             assertToStringFieldOrder(
                 new String[]
                 { "basePath", "supportsCase" },
-                font.basePath("image-font/tetris")
+                font.basePath("image-text")
                     .extension("png")
                     .throwException(false));
         }
