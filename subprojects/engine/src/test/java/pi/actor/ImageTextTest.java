@@ -19,7 +19,9 @@
 package pi.actor;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pi.CustomAssertions.assertToStringClassName;
 
 import java.io.IOException;
@@ -58,40 +60,53 @@ class ImageTextTest
         text = new ImageText(font).content("test");
     }
 
+    @Test
+    void imageDimension()
+    {
+        assertEquals(32, text.image().getWidth());
+        assertEquals(8, text.image().getHeight());
+        text.content("1");
+        assertEquals(8, text.image().getWidth());
+    }
+
     @Nested
     class WriteTest
     {
-        private Path temporaryDirectory;
+        private Path tmpDir;
 
         @BeforeEach
         void setUpTemporaryDirectory() throws IOException
         {
-            temporaryDirectory = Files.createTempDirectory("image-text-test-");
+            tmpDir = Files.createTempDirectory("image-text-test-");
         }
 
-        private void write(ImageText text, String filename)
+        private Path write(ImageText text, String filename)
         {
-            Path outputPath = temporaryDirectory.resolve(filename + ".png");
+            Path outputPath = tmpDir.resolve(filename + ".png");
             ImageUtil.write(text.image(), outputPath.toString());
+            return outputPath;
         }
 
         @Test
         void singleLine()
         {
-            write(text.content("Hello, World."), "single-line");
+            assertTrue(Files
+                .exists(write(text.content("Hello, World."), "single-line")));
         }
 
         @Test
         void multiLine()
         {
-            write(text.content("Hello,\nWorld.\nHello, Universe."),
-                "multi-line");
+            assertTrue(Files
+                .exists(write(text.content("Hello,\nWorld.\nHello, Universe."),
+                    "multi-line")));
         }
 
         @Test
         void methodChaining()
         {
-            write(text.content("Test").hAlign(HAlign.RIGHT), "chaining");
+            assertTrue(Files.exists(
+                write(text.content("Test").hAlign(HAlign.RIGHT), "chaining")));
         }
 
         @Test
@@ -105,7 +120,8 @@ class ImageTextTest
         {
             assertDoesNotThrow(() -> write(
                 new ImageText(font.throwException(false)).content("!"),
-                "throw-no-error"));;
+                "throw-no-error"));
+            assertTrue(Files.exists(tmpDir.resolve("throw-no-error.png")));
         }
     }
 

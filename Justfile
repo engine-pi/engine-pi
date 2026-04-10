@@ -90,6 +90,9 @@ export NO_MKDOCS_2_WARNING := "true"
 # Build the MkDocs site and open the generated index.html in a browser using xdg-open.
 mkdocs_build:
 	mkdocs build --strict
+
+# Open the generated index.html of the MkDocs site in a browser using xdg-open.
+mkdocs_open:
 	xdg-open site/index.html
 
 # Deploy the MkDocs site to GitHub Pages using the 'gh-deploy' command.
