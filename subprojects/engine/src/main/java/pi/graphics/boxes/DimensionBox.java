@@ -60,6 +60,7 @@ public class DimensionBox extends LeafBox
     @Override
     void draw(Graphics2D g)
     {
+        // Nicht zu tun.
     }
 
     /**

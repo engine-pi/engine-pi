@@ -53,6 +53,7 @@ public class ImageBox extends LeafBox
      *     {@code image.width(..).height(..)}.
      */
     @Setter
+    @Override
     public ImageBox width(int width)
     {
         definedWidth = width;
@@ -70,6 +71,7 @@ public class ImageBox extends LeafBox
      *     {@code image.width(..).height(..)}.
      */
     @Setter
+    @Override
     public ImageBox height(int height)
     {
         definedHeight = height;

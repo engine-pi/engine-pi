@@ -121,6 +121,7 @@ public class TextBlockBox extends TextBox
     @API
     @Setter
     @ChainableMethod
+    @Override
     public TextBlockBox width(int width)
     {
         if (width < 1)

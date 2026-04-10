@@ -47,6 +47,7 @@ public class TextBlockAlignBox extends CombinedChildBox
         return text.height;
     }
 
+    @Override
     public TextBlockAlignBox width(int width)
     {
         definedWidth = width;
@@ -54,6 +55,7 @@ public class TextBlockAlignBox extends CombinedChildBox
         return this;
     }
 
+    @Override
     public TextBlockAlignBox height(int height)
     {
         definedHeight = height;

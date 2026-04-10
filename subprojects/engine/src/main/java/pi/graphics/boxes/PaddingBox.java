@@ -29,7 +29,7 @@ public abstract class PaddingBox<T extends Box> extends ChildsBox<T>
 {
     int padding = 0;
 
-    public PaddingBox(Box... childs)
+    protected PaddingBox(Box... childs)
     {
         super(childs);
     }

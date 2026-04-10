@@ -35,6 +35,6 @@ public abstract class LeafBox extends Box
     @Override
     protected void calculateAnchors()
     {
-
+        // Mit Absicht leer
     }
 }

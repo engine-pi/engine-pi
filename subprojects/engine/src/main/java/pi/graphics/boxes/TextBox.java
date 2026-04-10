@@ -44,7 +44,7 @@ import pi.util.TextUtil;
  */
 public abstract class TextBox extends LeafBox
 {
-    private static double DEFAULT_FONT_SIZE = 16;
+    private static final double DEFAULT_FONT_SIZE = 16;
 
     /**
      * Erzeugt eine <b>Text</b>box.
@@ -53,7 +53,7 @@ public abstract class TextBox extends LeafBox
      *
      * @since 0.39.0
      */
-    public TextBox(Object content)
+    protected TextBox(Object content)
     {
         content(content);
     }

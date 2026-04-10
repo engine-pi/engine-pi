@@ -102,7 +102,7 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         {
             if (box != null)
             {
-                consumer.accept(new PopulatedCell<T>(box));
+                consumer.accept(new PopulatedCell<>(box));
             }
         }
         return this;
@@ -126,7 +126,7 @@ public class GridBox<T extends Box> extends PaddingBox<T>
         List<CellBox> childs = new ArrayList<>(rowCount());
         for (int row = 0; row < rowCount(); row++)
         {
-            childs.add((CellBox) grid.get(row).get(column));
+            childs.add(grid.get(row).get(column));
         }
         return childs;
     }

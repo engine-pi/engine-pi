@@ -34,13 +34,13 @@ public class CompassBox extends LeafBox
      * Die <b>Höhe</b> des gleichschenkligen Dreiecks, das die
      * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    final double arrowHeight = 0.3;
+    static final double ARROW_HEIGHT = 0.3;
 
     /**
      * Die <b>Breite</b> der Basis des gleichschenkligen Dreiecks, das die
      * <b>Pfeilspitze</b> bildet, im Verhältnis zu {@link #size}.
      */
-    final double arrowWidth = 0.3;
+    static final double ARROW_WIDTH = 0.3;
 
     boolean showCenter = true;
 

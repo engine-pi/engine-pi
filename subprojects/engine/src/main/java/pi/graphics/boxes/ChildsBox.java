@@ -79,7 +79,7 @@ public class ChildsBox<T extends Box> extends Box
     {
         for (Box box : childs)
         {
-            consumer.accept(new PopulatedCell<T>((CellBox) box));
+            consumer.accept(new PopulatedCell<>((CellBox) box));
         }
         return this;
     }
@@ -92,17 +92,19 @@ public class ChildsBox<T extends Box> extends Box
     @Override
     protected void calculateDimension()
     {
+        // Mit Absicht leer.
     }
 
     @Override
     protected void calculateAnchors()
     {
+        // Mit Absicht leer.
     }
 
     @Override
     void draw(Graphics2D g)
     {
-        // do nothing
+        // Nichts zu tun
     }
 
     /**
