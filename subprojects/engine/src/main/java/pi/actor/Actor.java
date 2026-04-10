@@ -182,6 +182,33 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
+     * Gibt diesen Figur zum <b>Debugging</b> mit Hilfe von
+     * {@code System.out.println()} auf der Konsole aus.
+     *
+     * <p>
+     * Viele Unterklassen der Klasse {@link Actor} verwenden den
+     * {@link ToStringFormatter} um wichtige Attribute darzustellen. Über die
+     * Einstellung {@link pi.config.DebugConfig#useANSIcolors(boolean)} kann die
+     * Ausgabe des {@link ToStringFormatter} auf Unix-Systemen farbig ausgegeben
+     * werden.
+     * </p>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @see ToStringFormatter
+     *
+     * @since 0.46.0
+     */
+    public Actor debug()
+    {
+        System.out.println(this);
+        return this;
+    }
+
+    /**
      * Fügt einen Beobachter hinzu, der ausgeführt wird, sobald das Objekt
      * angemeldet wurde.
      *

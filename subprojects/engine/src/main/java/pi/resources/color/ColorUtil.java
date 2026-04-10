@@ -72,6 +72,14 @@ public final class ColorUtil
 
     private static final int MAX_RGB_VALUE = 255;
 
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
     private ColorUtil()
     {
         throw new UnsupportedOperationException();

@@ -63,9 +63,17 @@ public final class Photographer
 
     private VideoTask videoTask;
 
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
     private Photographer()
     {
-
+        throw new UnsupportedOperationException();
     }
 
     /**

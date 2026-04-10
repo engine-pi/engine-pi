@@ -49,6 +49,23 @@ Mehrzeilig:
  */
 ```
 
+## Privater Konstruktor einer statischen Klasse
+
+```java
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private Random()
+    {
+        throw new UnsupportedOperationException();
+    }
+```
+
 ## Deutsche Übersetzungen von englischen Klassennamen
 
 | englisch                         | deutsch                                                |

@@ -37,6 +37,21 @@ import pi.resources.ResourceLoader;
 public final class Version
 {
     /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     *
+     * @since 0.46.0
+     */
+    private Version()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Gibt an, ob das Programm gerade aus einer Jar heraus gestartet wurde.
      *
      * @return <code>true</code>, falls ja, sonst <code>false</code>.

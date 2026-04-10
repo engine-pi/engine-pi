@@ -263,9 +263,15 @@ public class ToStringFormatter
     /**
      * Gibt die <b>formatierte</b> Zeichenkette aus.
      *
+     * @param newLineAtBeginning Ob zuerst eine neue Zeile ausgegeben werden
+     *     soll. So kann die Ausgabe bei mehreren Objekten übersichtlicher
+     *     gestaltet werden.
+     *
      * @return Die formatierte Zeichenkette.
+     *
+     * @since 0.46.0
      */
-    public String format()
+    public @NonNull String format(boolean newLineAtBeginning)
     {
         List<String> entries = new ArrayList<>();
         for (String fieldName : fieldNames)
@@ -273,8 +279,24 @@ public class ToStringFormatter
             Field field = map.get(fieldName);
             entries.add(field.format());
         }
-        return String
+        String output = String
             .format("%s [%s]", objectName(), String.join(", ", entries));
+
+        if (newLineAtBeginning)
+        {
+            return TextUtil.LINE_SEPARATOR + output;
+        }
+        return output;
+    }
+
+    /**
+     * Gibt die <b>formatierte</b> Zeichenkette aus.
+     *
+     * @return Die formatierte Zeichenkette.
+     */
+    public @NonNull String format()
+    {
+        return format(false);
     }
 
     /**
@@ -283,7 +305,7 @@ public class ToStringFormatter
      * @hidden
      */
     @Override
-    public String toString()
+    public @NonNull String toString()
     {
         return format();
     }

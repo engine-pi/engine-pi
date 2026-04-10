@@ -3,7 +3,7 @@ package tetris.text;
 import pi.actor.ImageText;
 import pi.actor.ImageText.CaseSensitivity;
 
-public class Font
+public class FontProvider
 {
     private static ImageText.Font font;
 

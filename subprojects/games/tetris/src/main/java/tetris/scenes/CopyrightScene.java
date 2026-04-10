@@ -16,13 +16,14 @@
  */
 package tetris.scenes;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import pi.actor.ImageText;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import tetris.Tetris;
-import tetris.text.Font;
+import tetris.text.FontProvider;
 
 import static tetris.Tetris.COLOR_SCHEME_GREEN;
 
@@ -38,7 +39,7 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
     {
         super(null);
         backgroundColor(COLOR_SCHEME_GREEN.getWhite());
-        ImageText text = new ImageText(Font.getFont())
+        ImageText text = new ImageText(FontProvider.getFont())
             .content("\"TM and ©1987 ELORG,\n" + //
                     "Tetris licensed to\n" + //
                     "Bullet-Proof\n" + //
@@ -60,9 +61,9 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
                     // U+E000..U+F8FF BMP (0) Private Use Area
                     "by Alexey Pazhitnov\uE000\n" + "\n")
             .lineWidth(21)
-            .color(COLOR_SCHEME_GREEN.getBlack())
+
             .hAlign(HAlign.CENTER);
-        text.anchor(-2, 0);
+        text.anchor(-2, 0).debug();
         add(text);
         delay(4, this::startTitleScene);
     }

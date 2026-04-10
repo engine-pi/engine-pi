@@ -18,6 +18,7 @@
  */
 package pi.actor;
 
+import static pi.Controller.colors;
 import static pi.Controller.images;
 
 import java.awt.Color;
@@ -53,9 +54,9 @@ import pi.util.TextUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/AlignmentDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ColorDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/ContentDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/CounterDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/HelloWorldDemo.java
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/MultilineDemo.java
 
 /**
@@ -290,6 +291,13 @@ public class ImageText extends Image
     /* color */
 
     /**
+     * Wir können nicht das Attribut {@link #color} von der Oberklasse
+     * {@link Actor} verwenden, da wir von {@link Image} erben und {@link Image}
+     * das Attribut {@link #color} auf den Durschnittswert setzt.
+     */
+    private Color textColor;
+
+    /**
      * Setzt die <b>Farbe</b>, in der die schwarze Farbe der Ausgangsbilder
      * umgefärbt werden soll.
      *
@@ -309,9 +317,7 @@ public class ImageText extends Image
     @Override
     public ImageText color(Color color)
     {
-        // Wir müssen den Setter überladen, damit wir einen update()-Aufruf
-        // einbauen können.
-        super.color(color);
+        textColor = color;
         update();
         return this;
     }
@@ -336,9 +342,7 @@ public class ImageText extends Image
     @Override
     public ImageText color(String color)
     {
-        // Wir müssen den Setter überschreiben, damit wir einen update()-Aufruf
-        // einbauen können.
-        super.color(color);
+        textColor = colors.get(color);
         update();
         return this;
     }
@@ -407,10 +411,13 @@ public class ImageText extends Image
         image = font.createImage(content,
             lineWidth(),
             hAlign(),
-            color(),
+            textColor,
             pixelMultiplication());
         super.update();
     }
+
+    // Go to
+    // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/image_text/HelloWorldDemo.java
 
     /**
      * @hidden
@@ -419,22 +426,33 @@ public class ImageText extends Image
     public String toString()
     {
         ToStringFormatter formatter = toStringFormatter().className(this);
+
+        // Erst am Schluss da die Ausgabe sehr ausführlich ist.
         formatter.prepend("font", font);
 
         if (pixelMultiplication > 1)
         {
-            formatter.append("pixelMultiplication", pixelMultiplication);
+            formatter.prepend("pixelMultiplication", pixelMultiplication);
         }
-        if (color != null)
+
+        if (textColor != null && !textColor.equals(Color.BLACK))
         {
-            formatter.append("color", color);
+            formatter.prepend("color", textColor);
         }
+
         if (lineWidth > 0)
         {
-            formatter.append("lineWidth", lineWidth);
+            formatter.prepend("lineWidth", lineWidth);
         }
-        formatter.append("alignment", hAlign);
-        return formatter.format();
+
+        if (hAlign != HAlign.LEFT)
+        {
+            formatter.prepend("alignment", hAlign);
+        }
+
+        formatter.prepend("content", content);
+
+        return formatter.format(true);
     }
 
     static class ImageTextFontException extends RuntimeException
@@ -543,6 +561,22 @@ public class ImageText extends Image
         private @NonNull String basePath;
 
         /**
+         * Gibt dem <b>Pfad</b> zu einem Ordner, in dem die Bilder der einzelnen
+         * Buchstaben liegen, zurück.
+         *
+         * @return Der <b>Pfad</b> zu einem Ordner, in dem die Bilder der
+         *     einzelnen Buchstaben liegen.
+         *
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public String basePath()
+        {
+            return basePath;
+        }
+
+        /**
          * Setzt den <b>Pfad</b> zu einem Ordner, in dem die Bilder der
          * einzelnen Buchstaben liegen.
          *
@@ -580,6 +614,8 @@ public class ImageText extends Image
             return glyphWidth;
         }
 
+        /* glyphHeight */
+
         /**
          * Die <b>Höhe</b> der Buchstabenbilder in Pixel.
          */
@@ -605,6 +641,20 @@ public class ImageText extends Image
          * Die <b>Dateierweiterung</b> der Buchstabenbilder.
          */
         private @NonNull String extension;
+
+        /**
+         * Gibt die <b>Dateierweiterung</b> der Buchstabenbilder zurück.
+         *
+         * @return Die <b>Dateierweiterung</b> der Buchstabenbilder.
+         *
+         * @since 0.46.0
+         */
+        @API
+        @Getter
+        public @NonNull String extension()
+        {
+            return extension;
+        }
 
         /**
          * Setzt die <b>Dateierweiterung</b> der Buchstabenbilder.
@@ -1030,7 +1080,7 @@ public class ImageText extends Image
         /**
          * Das in den Speicher geladene <b>Bild</b>, das ein Zeichen darstellt.
          */
-        BufferedImage image;
+        private BufferedImage image;
 
         /**
          * Der <b>Dateiname</b> des Bilds ohne Dateierweiterung.
@@ -1055,10 +1105,12 @@ public class ImageText extends Image
             }
         }
 
+        /* character */
+
         /**
          * Das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
          */
-        char character;
+        private char character;
 
         /**
          * Gibt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll,
@@ -1066,10 +1118,26 @@ public class ImageText extends Image
          *
          * @return Das Zeichen, das durch ein Bild dargestellt werden soll.
          */
+        @API
         @Getter
         public char character()
         {
             return character;
+        }
+
+        /**
+         * Setzt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
+         *
+         * @param character Das <b>Zeichen</b>, das durch ein Bild dargestellt
+         *     werden soll.
+         */
+        @API
+        @Setter
+        @ChainableMethod
+        public Glyph character(char character)
+        {
+            this.character = character;
+            return this;
         }
 
         /**
@@ -1084,19 +1152,6 @@ public class ImageText extends Image
         public String content()
         {
             return String.valueOf(character);
-        }
-
-        /**
-         * Setzt das <b>Zeichen</b>, das durch ein Bild dargestellt werden soll.
-         *
-         * @param character Das <b>Zeichen</b>, das durch ein Bild dargestellt
-         *     werden soll.
-         */
-        @API
-        @Setter
-        public void character(char character)
-        {
-            this.character = character;
         }
 
         /**
@@ -1175,18 +1230,21 @@ public class ImageText extends Image
             return filename.substring(0, 4).toUpperCase();
         }
 
+        /**
+         * @hidden
+         */
         @Override
         public String toString()
         {
             ToStringFormatter formatter = new ToStringFormatter(this);
             formatter.append("character", character);
             formatter.append("filename", filename);
-            return formatter.format();
+            return formatter.format(true);
         }
     }
 
     /**
-     * Zeichnet in eine Szene ein <b>Schriftmuster</b> ein.
+     * Zeichnet in eine Szene ein <b>Schriftmuster</b> einer Bildschriftart ein.
      *
      * <h2>tetris</h2>
      *
@@ -1216,14 +1274,17 @@ public class ImageText extends Image
     public static class Specimen
     {
         /**
-         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
-         *     soll.
-         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
-         *     werden sollen.
-         * @param glyphsPerRow Wie viele Zeichen in einer Zeile dargestellt
-         *     werden sollen.
-         * @param x Die x-Koordinate des linken, oberen Zeichens.
-         * @param y Die y-Koordinate des linken, oberen Zeichens.
+         * Zeichnet in eine Szene ein <b>Schriftmuster</b> einer Bildschriftart
+         * ein.
+         *
+         * @param scene Die <b>Szene</b>, in der das Schriftmuster eingezeichnet
+         *     werden soll.
+         * @param font Die <b>Bilderschriftart</b>, von der alle Zeichen
+         *     dargestellt werden sollen.
+         * @param glyphsPerRow Wie viele Zeichen in einer <b>Zeile</b>
+         *     dargestellt werden sollen.
+         * @param x Die <b>x</b>-Koordinate des linken, oberen Zeichens.
+         * @param y Die <b>y</b>-Koordinate des linken, oberen Zeichens.
          */
         public Specimen(Scene scene, Font font, int glyphsPerRow, double x,
                 double y)
@@ -1256,10 +1317,15 @@ public class ImageText extends Image
         }
 
         /**
-         * @param scene Die Szene, in der das Schriftmuster eingezeichnet werden
-         *     soll.
-         * @param font Die Bilderschrift, von der alle Zeichen dargestellt
-         *     werden sollen.
+         * Zeichnet in eine Szene an die <b>Position (-10|8)</b> ein
+         * <b>Schriftmuster</b> einer Bildschriftart ein.
+         *
+         * <b>Eine Zeile enthält 5 Zeichen.</b>
+         *
+         * @param scene Die <b>Szene</b>, in der das Schriftmuster eingezeichnet
+         *     werden soll.
+         * @param font Die <b>Bilderschriftart</b>, von der alle Zeichen
+         *     dargestellt werden sollen.
          */
         public Specimen(Scene scene, Font font)
         {

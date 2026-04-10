@@ -60,14 +60,17 @@ public class ContentDemo extends Scene implements KeyStrokeListener
             .lineWidth(15)
             .hAlign(HAlign.LEFT)
             .pixelMultiplication(4);
-        add(textField);
+
+        add(textField.debug());
         camera().focus(10, 8);
         backgroundColor("white");
     }
 
     private void setContent(String content)
     {
-        textField.content(content);
+        textField.content(content)
+            // Um die toString-Methode zu testen
+            .debug();
     }
 
     @Override
@@ -78,6 +81,7 @@ public class ContentDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_1 -> setContent(text1);
         case KeyEvent.VK_2 -> setContent(text2);
         case KeyEvent.VK_3 -> setContent(text3);
+        default -> setContent(text1);
         }
     }
 

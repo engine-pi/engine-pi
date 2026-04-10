@@ -45,6 +45,19 @@ import pi.graphics.geom.Vector;
 public final class FixtureBuilder
 {
     /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private FixtureBuilder()
+    {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Erstellt eine <i>einfache</i> rechteckige Form. Einfach bedeutet: Sie
      * beginnt immer bei (0|0) und die Breite und die Höhe ist parallel zu den
      * Koordinatenachsen.

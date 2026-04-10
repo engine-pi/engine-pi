@@ -66,8 +66,7 @@ public class AlignmentDemo extends Scene
             .pixelMultiplication(4);
         line.anchor(-9, y);
         // Um die toString-Methode zu testen
-        System.out.println(line);
-        add(line);
+        add(line.debug());
     }
 
     public static void main(String[] args)

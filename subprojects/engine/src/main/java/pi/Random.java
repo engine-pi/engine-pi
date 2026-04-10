@@ -23,7 +23,6 @@ package pi;
 import java.util.concurrent.ThreadLocalRandom;
 
 import pi.annotations.API;
-import pi.annotations.Internal;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.resources.font.FontContainer;
@@ -39,10 +38,13 @@ import pi.resources.font.FontStyle;
 public final class Random
 {
     /**
-     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
-     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
      */
-    @Internal
     private Random()
     {
         throw new UnsupportedOperationException();

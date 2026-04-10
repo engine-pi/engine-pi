@@ -48,7 +48,7 @@ public class CustomAssertions
     public static void assertToStringClassName(Object actual)
     {
         String className = actual.getClass().getSimpleName();
-        String toStringActual = getToString(actual);
+        String toStringActual = getToString(actual).strip();
         {
             if (!toStringActual.startsWith(className + " ["))
                 fail(className,

@@ -36,14 +36,19 @@ public class HelloWorldDemo extends Scene
 
     public HelloWorldDemo()
     {
+
         backgroundColor("green");
-        helloWorld = new ImageText(
-                new ImageText.Font("main-classes/actor/image-text/tetris")
-                    .supportsCase(CaseSensitivity.UPPER))
-                        .content("Hello, World.\nHello, Universe")
-                        .pixelMultiplication(4);
+
+        ImageText.Font font = new ImageText.Font(
+                "main-classes/actor/image-text/tetris")
+                    .supportsCase(CaseSensitivity.UPPER);
+        helloWorld = new ImageText(font).lineWidth(16)
+            .content("Hello, World.", "Hello, Universe")
+            .pixelMultiplication(4);
         helloWorld.center(0, 0);
-        add(helloWorld);
+
+        // Um die toString-Methode zu testen
+        add(helloWorld.debug());
     }
 
     public static void main(String[] args)

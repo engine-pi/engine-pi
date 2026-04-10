@@ -62,7 +62,8 @@ public class ColorDemo extends Scene
         add(new ImageText(font).content(color)
             .pixelMultiplication(4)
             .color(color)
-            .anchor(x, y));
+            .anchor(x, y)
+            .debug());
     }
 
     public static void main(String[] args)

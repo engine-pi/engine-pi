@@ -80,7 +80,7 @@ import pi.resources.sound.Track;
 public final class Jukebox
 {
     /**
-     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Ein privater Konstruktor, um den öffentlichen Konstruktor zu verbergen.
      * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
      */
     @Internal

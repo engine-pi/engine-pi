@@ -30,7 +30,7 @@ public class NumberDisplay
 
     public NumberDisplay(Scene scene, int x, int y, int maxDigits)
     {
-        font = new ImageText(Font.getFont()).content("0")
+        font = new ImageText(FontProvider.getFont()).content("0")
             .lineWidth(maxDigits)
             .hAlign(HAlign.RIGHT)
             .color(COLOR_SCHEME_GREEN.getBlack());

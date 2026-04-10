@@ -45,6 +45,14 @@ public final class Codec
 {
     private static final Logger log = Logger.getLogger(Codec.class.getName());
 
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
     private Codec()
     {
         throw new UnsupportedOperationException();

@@ -33,6 +33,19 @@ import java.awt.geom.Rectangle2D;
  */
 public final class FontUtil
 {
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private FontUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     private static final ThreadLocal<Canvas> canvas = ThreadLocal
         .withInitial(Canvas::new);
 

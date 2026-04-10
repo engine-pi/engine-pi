@@ -48,8 +48,17 @@ public final class LogSetup
     private static final Logger log = Logger
         .getLogger(LogSetup.class.getName());
 
-    LogSetup()
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private LogSetup()
     {
+        throw new UnsupportedOperationException();
     }
 
     public static Logger log()

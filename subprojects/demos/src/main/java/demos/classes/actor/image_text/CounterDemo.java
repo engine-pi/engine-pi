@@ -46,7 +46,8 @@ public class CounterDemo extends Scene
                     .lineWidth(5)
                     .hAlign(HAlign.RIGHT)
                     .pixelMultiplication(8);
-        text.center(-1, 0);
+        // Um die toString-Methode zu testen
+        text.center(-1, 0).debug();
         repeat(0.05,
             () -> text.content(String.valueOf(counter.getAndIncrement())));
         add(text);

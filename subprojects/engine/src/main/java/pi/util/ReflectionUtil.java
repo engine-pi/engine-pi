@@ -53,8 +53,12 @@ public final class ReflectionUtil
         .getLogger(ReflectionUtil.class.getName());
 
     /**
-     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
-     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
      */
     private ReflectionUtil()
     {

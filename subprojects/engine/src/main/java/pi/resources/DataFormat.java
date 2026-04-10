@@ -38,8 +38,17 @@ import pi.util.FileUtil;
  */
 public final class DataFormat
 {
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
     private DataFormat()
     {
+        throw new UnsupportedOperationException();
     }
 
     public static <T extends Enum<T>> T get(String format, T[] values,

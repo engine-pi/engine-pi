@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class TimeUtil
 {
     /**
-     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Ein privater Konstruktor, um den öffentlichen Konstruktor zu verbergen.
      * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
      */
     private TimeUtil()

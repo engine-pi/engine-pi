@@ -27,7 +27,7 @@ import pi.event.MouseClickListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.geom.Vector;
 import tetris.Tetris;
-import tetris.text.Font;
+import tetris.text.FontProvider;
 
 /**
  * @author Josef Friedrich
@@ -45,7 +45,7 @@ public class TitleScene extends BaseScene
 
     private void addCenteredText(String content, int y)
     {
-        ImageText actor = new ImageText(Font.getFont()).content(content)
+        ImageText actor = new ImageText(FontProvider.getFont()).content(content)
             .lineWidth(20)
             .hAlign(HAlign.CENTER)
             .color(COLOR_SCHEME_GREEN.getBlack());

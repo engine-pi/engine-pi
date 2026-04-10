@@ -43,7 +43,6 @@ import pi.util.StreamUtilities;
  */
 public final class Sound
 {
-
     private AudioInputStream stream;
 
     /**
