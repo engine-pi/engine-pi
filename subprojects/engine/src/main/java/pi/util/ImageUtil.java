@@ -46,10 +46,7 @@ import javax.imageio.ImageIO;
 import pi.resources.color.ColorUtil;
 
 /**
- * Statische Klasse, die Hilfsmethoden zur Bildmanipulation bereitstellt.
- *
- * <a href=
- * "https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/util/Imaging.java">LITIENGINE</a>
+ * Eine Sammlung von statischen Hilfsmethoden zur <b>Bild</b>manipulation.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -58,6 +55,10 @@ public class ImageUtil
 {
     private static GraphicsConfiguration graphicsConfig;
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private ImageUtil()
     {
         throw new UnsupportedOperationException();

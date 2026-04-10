@@ -13,8 +13,8 @@ import pi.annotations.Setter;
 import pi.graphics.geom.Vector;
 
 /**
- * Eine Sammlung von statischen Hilfsmethoden um auf dem Graphics2D-Objekt zu
- * zeichnen.
+ * Eine Sammlung von statischen Hilfsmethoden um auf dem
+ * {@link Graphics2D}-Objekt zu zeichnen.
  *
  * @author Josef Friedrich
  */
@@ -30,6 +30,10 @@ public class Graphics2DUtil
      */
     private static final String FONT_COLOR = "white";
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private Graphics2DUtil()
     {
         throw new UnsupportedOperationException();

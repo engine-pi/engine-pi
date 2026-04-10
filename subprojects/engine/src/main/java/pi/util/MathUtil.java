@@ -29,11 +29,18 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
+ * Eine Sammlung von statischen Hilfsmethoden um <b>mathematische</b> Operation
+ * auszuführen.
+ *
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
 public class MathUtil
 {
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private MathUtil()
     {
         throw new UnsupportedOperationException();

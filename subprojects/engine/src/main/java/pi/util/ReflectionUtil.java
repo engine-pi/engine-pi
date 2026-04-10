@@ -40,11 +40,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Eine Sammlung von statischen Hilfsmethoden, um mit <b>Reflection</b> zu
+ * arbeiten.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public final class ReflectionUtil
 {
     private static final Logger log = Logger
         .getLogger(ReflectionUtil.class.getName());
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private ReflectionUtil()
     {
         throw new UnsupportedOperationException();

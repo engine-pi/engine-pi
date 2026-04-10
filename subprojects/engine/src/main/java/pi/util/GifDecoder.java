@@ -38,19 +38,7 @@ import pi.resources.ResourceLoader;
  * GIF Decoder <a href=
  * "http://www.java2s.com/Code/Java/2D-Graphics-GUI/DecodesaGIFfileintooneormoreframes.htm">
  * quelloffen übernommen</a>. Class GifDecoder - Decodes a GIF file into one or
- * more frames. <br>
- *
- * <pre>
- * Example:
- *    GifDecoder d = new GifDecoder();
- *    d.read("sample.gif");
- *    int n = d.getFrameCount();
- *    for (int i = 0; i &lt; n; i++) {
- *       BufferedImage frame = d.getFrame(i);  // frame i
- *       int t = d.getDelay(i);  // display duration of frame in milliseconds
- *       // do something with frame
- *    }
- * </pre>
+ * more frames.
  *
  * No copyright asserted on the source code of this class. May be used for any
  * purpose, however, refer to the Unisys LZW patent for any additional
@@ -59,6 +47,27 @@ import pi.resources.ResourceLoader;
  * Möglicherweise kann diese Klasse mit
  * https://central.sonatype.com/artifact/com.madgag/animated-gif-lib ersetzt
  * werden.
+ *
+ * https://www.linkedin.com/in/kevinweiner?trk=org-employees
+ *
+ *
+ * https://github.com/rtyley/animated-gif-lib-for-java/blob/master/src/main/java/com/madgag/gif/fmsware/GifDecoder.java
+ */
+
+/**
+ * <b>Dekodiert</b> animierte <b>Gifs</b>.
+ *
+ * <pre>{@code
+ * GifDecoder d = new GifDecoder();
+ * d.read("sample.gif");
+ * int n = d.getFrameCount();
+ * for (int i = 0; i &lt; n; i++)
+ * {
+ *     BufferedImage frame = d.getFrame(i); // frame i
+ *     int t = d.getDelay(i); // display duration of frame in milliseconds
+ *     // do something with frame
+ * }
+ * }</pre>
  *
  * @author Kevin Weiner, FM Software; LZW decoder adapted from John Cristy's
  *     ImageMagick.

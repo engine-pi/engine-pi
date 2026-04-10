@@ -36,6 +36,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Eine Sammlung von statischen Hilfsmethoden, um mit <b>Streams</b> zu
+ * arbeiten.
+ *
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
@@ -44,6 +47,10 @@ public final class StreamUtilities
     private static final Logger log = Logger
         .getLogger(StreamUtilities.class.getName());
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private StreamUtilities()
     {
         throw new UnsupportedOperationException();

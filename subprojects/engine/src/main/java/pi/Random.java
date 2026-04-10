@@ -39,14 +39,13 @@ import pi.resources.font.FontStyle;
 public final class Random
 {
     /**
-     * Privater Konstruktor.
-     *
-     * @hidden
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
      */
     @Internal
     private Random()
     {
-        // Es sollen keine Instanzen dieser Klasse erstellt werden.
+        throw new UnsupportedOperationException();
     }
 
     /**

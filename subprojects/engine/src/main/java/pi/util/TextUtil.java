@@ -36,6 +36,8 @@ import pi.graphics.boxes.HAlign;
 /**
  * Eine Sammlung von statischen Hilfsmethoden um <b>Text</b> und
  * <b>Zeichenketten</b> zu bearbeiten.
+ *
+ * @author Josef Friedrich
  */
 public class TextUtil
 {
@@ -44,6 +46,10 @@ public class TextUtil
      */
     public final static String LINE_SEPARATOR = "\n";
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private TextUtil()
     {
         throw new UnsupportedOperationException();

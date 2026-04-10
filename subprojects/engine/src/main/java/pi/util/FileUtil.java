@@ -42,7 +42,8 @@ import java.util.logging.Logger;
 import pi.resources.ResourceLoader;
 
 /**
- * Hilfsklasse für <b>Datei</b>- und Verzeichnisverwaltungsoperationen.
+ * Eine Sammlung von statischen Hilfsmethoden für <b>Datei</b>- und
+ * Verzeichnisverwaltungsoperationen.
  *
  * <p>
  * Diese Klasse bietet statische Methoden zum Löschen von Verzeichnissen, Suchen
@@ -72,6 +73,10 @@ public final class FileUtil
 
     private static final String FILE_SEPARATOR = "/";
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private FileUtil()
     {
         throw new UnsupportedOperationException();

@@ -36,7 +36,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Utility class for array operations.
+ * Eine Sammlung von statischen Hilfsmethoden für <b>Feld/Array</b>-Operationen.
  *
  * <p>
  * This class provides various static methods for manipulating arrays, such as
@@ -54,6 +54,10 @@ public final class ArrayUtil
     private static final Logger log = Logger
         .getLogger(ArrayUtil.class.getName());
 
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
     private ArrayUtil()
     {
         throw new UnsupportedOperationException();

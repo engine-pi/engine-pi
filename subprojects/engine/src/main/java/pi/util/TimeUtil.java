@@ -21,7 +21,8 @@ package pi.util;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Bietet Hilfsmethoden für <b>zeitbezogene</b> Operationen an.
+ * Eine Sammlung von statischen Hilfsmethoden für <b>zeitbezogene</b>
+ * Operationen.
  *
  * @author Josef Friedrich
  *
@@ -29,6 +30,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class TimeUtil
 {
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
+    private TimeUtil()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * <b>Pausiert</b> den aktuellen Thread für die angegebene Anzahl von
      * Millisekunden.
