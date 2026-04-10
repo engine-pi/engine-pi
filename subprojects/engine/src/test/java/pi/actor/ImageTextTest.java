@@ -31,20 +31,20 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-// import org.junit.jupiter.api.condition.DisabledIf;
+import org.junit.jupiter.api.condition.DisabledIf;
 
 import pi.Controller;
 import pi.actor.ImageText.CaseSensitivity;
 import pi.actor.ImageText.Font;
-import pi.util.ImageUtil;
 import pi.graphics.boxes.HAlign;
+import pi.util.ImageUtil;
 
 /**
  * @author Josef Friedrich
  *
  * @since 0.46.0
  */
-// @DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
+@DisabledIf(value = "java.awt.GraphicsEnvironment#isHeadless", disabledReason = "headless environment")
 class ImageTextTest
 {
     ImageText text;
