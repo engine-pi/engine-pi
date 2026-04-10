@@ -8,6 +8,7 @@ Konfiguration für das [Javadoc Maven Plugin](https://maven.apache.org/plugins/m
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>3.12.0</version>
             <configuration>
+                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
                 <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
             </configuration>
             <dependencies>

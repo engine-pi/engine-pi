@@ -6,6 +6,42 @@ repo_link('subprojects/build-tools/src/main/resources/javadoc-stylesheet.css',
 Engine-Pi-Farbe (Gnome-Farben) und der Engine-Pi-Standard-Schrift (Cantarell)
 anzupassen.
 
+<!-- /data/school/repos/inf/java/engine-pi/subprojects/build-tools/README.md -->
+
+Mit folgender Konfiguration in der Datei pom.xml kann mit Hilfe von Maven
+javadoc angewiesen werden, diese CSS-Datei zu verwenden:
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.12.0</version>
+            <configuration>
+                <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/examples/stylesheet-configuration.html -->
+                <stylesheetfile>javadoc-stylesheet.css</stylesheetfile>
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>de.pirckheimer-gymnasium</groupId>
+                    <artifactId>engine-pi-build-tools</artifactId>
+                    <version>0.2.0</version>
+                </dependency>
+            </dependencies>
+            <executions>
+                <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
 ## Eigene CSS-Klassen
 
 `.development-note`

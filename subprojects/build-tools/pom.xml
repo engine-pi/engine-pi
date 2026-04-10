@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <name>Build Tool Resources</name>
-    <description>Resources for the build tools, for example elipse-formatter.xml, javadoc-stylesheet.css</description>
+    <description>Resources for the build tools, for example eclipse-formatter.xml, javadoc-stylesheet.css</description>
     <url>https://engine-pi.github.io/engine-pi</url>
 
 </project>

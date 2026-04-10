@@ -46,9 +46,9 @@ Im Gegensatz zur Engine Alpha ist die
 Maven Central Repository
 ///
 
-## Maven-Projekt
+## Projekt-Vorlagen
 
-https://github.com/engine-pi/maven-boilerplate
+https://github.com/engine-pi/template-maven-default-layout
 
 In der Projekt-Datei `pom.xml` ist die Engine Pi als
 Abhängigkeit (`dependency`) hinterlegt.
