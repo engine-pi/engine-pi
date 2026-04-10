@@ -183,10 +183,10 @@ public abstract class ConfigGroup
                 {
                     properties.setProperty(propertyKey, value.toString());
                 }
-                else if (value instanceof String[])
+                else if (value instanceof String[] stringArray)
                 {
                     properties.setProperty(propertyKey,
-                        String.join(",", (String[]) value).replace("null", ""));
+                        String.join(",", stringArray).replace("null", ""));
                 }
                 else if (field.getType().isEnum())
                 {

@@ -56,24 +56,24 @@ import pi.event.FrameUpdateListenerRegistration;
  * im {@link AnimationMode#SINGLE SINGLE}-Modus) aufgerufen werden.
  * </p>
  *
- * @param <Value> Der Typ der Werte, die animiert werden, z.B. {@link Double}
+ * @param <T> Der Typ der Werte, die animiert werden, z.B. {@link Double}
  *
  * @see Interpolator
  * @see AnimationMode
  * @see FrameUpdateListener
  */
-public class ValueAnimator<Value> implements FrameUpdateListener
+public class ValueAnimator<T> implements FrameUpdateListener
 {
     /**
      * Die <b>Dauer</b> der Animation in Sekunden.
      */
-    private final Consumer<Value> consumer;
+    private final Consumer<T> consumer;
 
     /**
      * Die Funktion, die bei jedem Einzelbild mit dem interpolierten Wert
      * aufgerufen wird.
      */
-    private final Interpolator<Value> interpolator;
+    private final Interpolator<T> interpolator;
 
     /**
      * Der Animationsmodus (z.B. {@link AnimationMode#SINGLE SINGLE} für
@@ -97,7 +97,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      */
     private boolean goingBackwards = false;
 
-    private EventListeners<Consumer<Value>> completionListeners = new EventListeners<>();
+    private EventListeners<Consumer<T>> completionListeners = new EventListeners<>();
 
     /**
      * @param duration Die <b>Dauer</b> der Animation in Sekunden.
@@ -113,8 +113,8 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      *     registriert, damit der Animator bei Abschluss der Animation abmeldet
      *     werden kann.
      */
-    public ValueAnimator(double duration, Consumer<Value> consumer,
-            Interpolator<Value> interpolator, AnimationMode mode,
+    public ValueAnimator(double duration, Consumer<T> consumer,
+            Interpolator<T> interpolator, AnimationMode mode,
             FrameUpdateListenerRegistration parent)
     {
         this.duration = duration;
@@ -123,8 +123,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         this.mode = mode;
         if (mode == AnimationMode.SINGLE)
         {
-            addCompletionListener(
-                (v) -> parent.removeFrameUpdateListener(this));
+            addCompletionListener(v -> parent.removeFrameUpdateListener(this));
         }
     }
 
@@ -140,8 +139,8 @@ public class ValueAnimator<Value> implements FrameUpdateListener
      *     registriert, damit der Animator bei Abschluss der Animation abmeldet
      *     werden kann.
      */
-    public ValueAnimator(double duration, Consumer<Value> consumer,
-            Interpolator<Value> interpolator,
+    public ValueAnimator(double duration, Consumer<T> consumer,
+            Interpolator<T> interpolator,
             FrameUpdateListenerRegistration parent)
     {
         this(duration, consumer, interpolator, AnimationMode.SINGLE, parent);
@@ -221,7 +220,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
                     this.currentTime = this.duration;
                     progress = 1;
                     complete = true;
-                    Value finalValue = this.interpolator.interpolate(1);
+                    T finalValue = this.interpolator.interpolate(1);
                     completionListeners
                         .invoke(listener -> listener.accept(finalValue));
                     break;
@@ -260,7 +259,7 @@ public class ValueAnimator<Value> implements FrameUpdateListener
         this.consumer.accept(interpolator.interpolate(progress));
     }
 
-    public ValueAnimator<Value> addCompletionListener(Consumer<Value> listener)
+    public ValueAnimator<T> addCompletionListener(Consumer<T> listener)
     {
         if (this.complete)
         {

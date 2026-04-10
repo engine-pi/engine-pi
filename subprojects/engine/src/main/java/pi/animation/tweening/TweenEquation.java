@@ -25,7 +25,9 @@
  */
 package pi.animation.tweening;
 
-/** An interface to generally apply a function to a value. */
+/**
+ * An interface to generally apply a function to a value.
+ */
 public interface TweenEquation
 {
     /**

@@ -30,12 +30,11 @@ import pi.annotations.Setter;
 /**
  * Beschreibt einen Keyframe.
  *
- * @param <Value> Werttyp, der animiert werden soll.
+ * @param <T> Werttyp, der animiert werden soll.
  *
  * @author Michael Andonie
  */
-public class KeyFrame<Value extends Number>
-        implements Comparable<KeyFrame<Value>>
+public class KeyFrame<T extends Number> implements Comparable<KeyFrame<T>>
 {
     /**
      * Der Typ des Keyframes. Bestimmt die Interpolationsart <b>hin zum nächsten
@@ -51,12 +50,12 @@ public class KeyFrame<Value extends Number>
     /**
      * Der Wert, den dieser Keyframe markiert.
      */
-    private Value value;
+    private T value;
 
     /**
      * Referenz auf den Nachfolgenden Keyframe, falls vorhanden.
      */
-    private KeyFrame<Value> next = null;
+    private KeyFrame<T> next = null;
 
     /**
      * Erstellt einen Keyframe
@@ -65,7 +64,7 @@ public class KeyFrame<Value extends Number>
      * @param timecode Der Timecode des Keyframes
      */
     @API
-    public KeyFrame(Value value, Type type, double timecode)
+    public KeyFrame(T value, Type type, double timecode)
     {
         this.value = value;
         this.type = type;
@@ -74,14 +73,14 @@ public class KeyFrame<Value extends Number>
 
     @API
     @Setter
-    public void value(Value value)
+    public void value(T value)
     {
         this.value = value;
     }
 
     @API
     @Getter
-    public Value value()
+    public T value()
     {
         return value;
     }
@@ -125,13 +124,13 @@ public class KeyFrame<Value extends Number>
      */
     @Internal
     @Setter
-    void next(KeyFrame<Value> next)
+    void next(KeyFrame<T> next)
     {
         this.next = next;
     }
 
     @Override
-    public int compareTo(KeyFrame<Value> o)
+    public int compareTo(KeyFrame<T> o)
     {
         return (int) ((this.timecode() - o.timecode()) * 1000);
     }
@@ -140,7 +139,7 @@ public class KeyFrame<Value extends Number>
      * @hidden
      */
     @Internal
-    Interpolator<Double> generateInterpolator(Value destinationValue)
+    Interpolator<Double> generateInterpolator(T destinationValue)
     {
         switch (type)
         {
@@ -169,7 +168,7 @@ public class KeyFrame<Value extends Number>
      */
     @Internal
     @Getter
-    KeyFrame<Value> next()
+    KeyFrame<T> next()
     {
         return next;
     }

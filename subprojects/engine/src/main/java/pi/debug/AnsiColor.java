@@ -69,6 +69,19 @@ public class AnsiColor
 {
     // https://github.com/fusesource/jansi/blob/70186aa41bef6877a83e1a0c3ed7ebe87185f377/src/main/java/org/fusesource/jansi/Ansi.java#L27-L78
 
+    /**
+     * Dieser private Konstruktor dient dazu, den öffentlichen Konstruktor zu
+     * verbergen. Dadurch ist es nicht möglich, Instanzen dieser Klasse zu
+     * erstellen.
+     *
+     * @throws UnsupportedOperationException Falls eine Instanz der Klasse
+     *     erzeugt wird.
+     */
+    private AnsiColor()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     private static String colorize(String color, Object object)
     {
         String output = object.toString();

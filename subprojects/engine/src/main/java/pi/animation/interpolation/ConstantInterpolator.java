@@ -27,11 +27,11 @@ import pi.annotations.Internal;
 /**
  * Ein Interpolator, der eine konstante Funktion darstellt.
  *
- * @param <Value> Ein beliebiger Typ zum Interpolieren
+ * @param <T> Ein beliebiger Typ zum Interpolieren
  */
-public class ConstantInterpolator<Value> implements Interpolator<Value>
+public class ConstantInterpolator<T> implements Interpolator<T>
 {
-    private final Value value;
+    private final T value;
 
     /**
      * Erstellt einen konstanten Interpolator
@@ -39,7 +39,7 @@ public class ConstantInterpolator<Value> implements Interpolator<Value>
      * @param value Der stets auszugebende Wert
      */
     @API
-    public ConstantInterpolator(Value value)
+    public ConstantInterpolator(T value)
     {
         this.value = value;
     }
@@ -49,7 +49,7 @@ public class ConstantInterpolator<Value> implements Interpolator<Value>
      */
     @Internal
     @Override
-    public Value interpolate(double progress)
+    public T interpolate(double progress)
     {
         return value;
     }

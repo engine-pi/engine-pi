@@ -263,7 +263,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
         item.center(Random.range(-7, 7), Random.range(5, 8));
     }
 
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
         Controller.instantMode(false);
         Controller.start(new MainAnimation(true));
