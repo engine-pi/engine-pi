@@ -73,15 +73,15 @@ assets_init:
 
 # Synchronize resource files using rsync from the assets directory to the subprojects.
 assets_sync_resources:
-	rsync -av --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/
-	rsync -av --delete assets/demos/resources/ subprojects/demos/src/main/resources/
-	rsync -av --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
-	rsync -av --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
-	rsync -av --delete assets/demos/resources/ subprojects/engine/src/test/resources/demos/
+	rsync -a --delete assets/blockly-robot/resources/ subprojects/games/blockly-robot/src/main/resources/
+	rsync -a --delete assets/demos/resources/ subprojects/demos/src/main/resources/
+	rsync -a --delete assets/pacman/resources/ subprojects/games/pacman/src/main/resources/
+	rsync -a --delete assets/tetris/resources/ subprojects/games/tetris/src/main/resources/
+	rsync -a --delete assets/demos/resources/ subprojects/engine/src/test/resources/demos/
 
-	rsync -av --delete assets/tetris/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/tetris/
-	rsync -av --delete assets/pacman/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/pacman/
-	rsync -av --delete assets/space-invaders/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/space-invaders/
+	rsync -a --delete assets/tetris/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/tetris/
+	rsync -a --delete assets/pacman/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/pacman/
+	rsync -a --delete assets/space-invaders/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/space-invaders/
 
 assets: assets_init assets_sync_resources
 
