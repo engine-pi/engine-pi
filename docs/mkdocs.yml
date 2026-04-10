@@ -1,5 +1,7 @@
 site_name: Engine Pi
 site_url: https://engine-pi.github.io/engine-pi/
+docs_dir: .
+site_dir: ../site
 
 repo_name: Engine Pi
 repo_url: https://github.com/engine-pi/engine-pi
@@ -31,7 +33,7 @@ plugins:
   # https://mkdocs-macros-plugin.readthedocs.io/en/latest/
   - macros:
       # https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
-      module_name: docs/macros
+      module_name: macros
 
   # https://github.com/tuunit/mkdocs-drawio
   - drawio
@@ -79,7 +81,7 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 watch:
-  - docs
+  - .
 
 # https://www.mkdocs.org/user-guide/writing-your-docs/#configure-pages-and-navigation
 # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages

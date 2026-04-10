@@ -33,7 +33,7 @@ Am besten nach der letzten Versionsnummer suchen (z. B.
 `<version>0.42.0</version>`) und unter Verwendung der Suchen und Ersetzten
 Funktion eines Text-Editors mit der neuen ersetzen.
 
-Die Versionsnummer auch in der Datei {{ repo_link('mkdocs.yml') }} ändern.
+Die Versionsnummer auch in der Datei {{ repo_link('docs/mkdocs.yml') }} ändern.
 
 ### Mit Hilfe des Maven Plugins Versions
 
