@@ -25,7 +25,7 @@ import pi.graphics.boxes.HAlign;
 
 public class Text extends ImageText
 {
-    private static final Font font = new Font("images/image-font")
+    private static final Font font = new Font("images/image-text")
         .supportsCase(CaseSensitivity.UPPER);
 
     public Text(String content, String color)

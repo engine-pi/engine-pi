@@ -47,7 +47,7 @@ public class TextProvider
     {
         if (font == null)
         {
-            font = new ImageText.Font("images/image-font")
+            font = new ImageText.Font("images/image-text")
                 .addMapping('\uE000', "e000_quotation-mark-and-dot")
                 .supportsCase(CaseSensitivity.UPPER);
         }
