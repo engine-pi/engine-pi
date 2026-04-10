@@ -69,12 +69,12 @@ public class Layer implements KeyStrokeListenerRegistration,
     private <T> Supplier<T> createParentSupplier(Function<Scene, T> supplier)
     {
         return () -> {
-            Scene scene = scene();
-            if (scene == null)
+            Scene currentScene = scene();
+            if (currentScene == null)
             {
                 return null;
             }
-            return supplier.apply(scene);
+            return supplier.apply(currentScene);
         };
     }
 
@@ -446,7 +446,7 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @param actors Ein oder mehrere {@link Actor}-Objekte.
      */
     @API
-    final public void remove(Actor... actors)
+    public final void remove(Actor... actors)
     {
         for (Actor actor : actors)
         {

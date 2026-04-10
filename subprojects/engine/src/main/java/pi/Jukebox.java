@@ -39,6 +39,7 @@ import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
 
+import pi.annotations.Internal;
 import pi.resources.sound.IntroTrack;
 import pi.resources.sound.LoopedTrack;
 import pi.resources.sound.MusicPlayback;
@@ -78,6 +79,16 @@ import pi.resources.sound.Track;
  */
 public final class Jukebox
 {
+    /**
+     * Ein privater Konstruktur, um den öffentlichen Konstruktur zu verbergen.
+     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
+     */
+    @Internal
+    private Jukebox()
+    {
+        throw new UnsupportedOperationException();
+    }
+
     public static final ExecutorService EXECUTOR = Executors
         .newCachedThreadPool(new ThreadFactory()
         {
@@ -105,13 +116,13 @@ public final class Jukebox
 
     private static SoundContainer soundsContainer = sounds;
 
-    private static boolean RESTART_DEFAULT = false;
+    private static boolean restartDefault = false;
 
     /**
      * Standardwert für einige Methoden-Overload, die Musik abspielen. Gibt an,
      * ob momentan abspielende Musik gestoppt werden soll.
      */
-    private static boolean STOP_DEFAULT = true;
+    private static boolean stopDefault = true;
 
     /**
      * Sets the currently playing track to a {@code LoopedTrack} with the
@@ -124,7 +135,7 @@ public final class Jukebox
      */
     public static MusicPlayback playMusic(Sound sound)
     {
-        return playMusic(new LoopedTrack(sound), RESTART_DEFAULT, STOP_DEFAULT);
+        return playMusic(new LoopedTrack(sound), restartDefault, stopDefault);
     }
 
     /**
@@ -156,7 +167,7 @@ public final class Jukebox
      */
     public static MusicPlayback playMusic(Track track)
     {
-        return playMusic(track, null, RESTART_DEFAULT, STOP_DEFAULT);
+        return playMusic(track, null, restartDefault, stopDefault);
     }
 
     /**
@@ -207,7 +218,7 @@ public final class Jukebox
      */
     public static MusicPlayback playMusic(Track track, boolean restart)
     {
-        return playMusic(track, null, restart, STOP_DEFAULT);
+        return playMusic(track, null, restart, stopDefault);
     }
 
     /**

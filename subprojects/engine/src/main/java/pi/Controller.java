@@ -515,7 +515,7 @@ public class Controller
         next = Objects.requireNonNullElseGet(scene, Scene::new);
         loop.enqueue(() -> {
             sceneLaunchListeners
-                .invoke((listener) -> listener.onSceneLaunch(next, previous));
+                .invoke(listener -> listener.onSceneLaunch(next, previous));
             Controller.scene = next;
         });
     }
@@ -525,7 +525,7 @@ public class Controller
         loop = new GameLoop(renderPanel, Controller::scene,
                 Controller::isDebug);
         sceneLaunchListeners.invoke(
-            (listener) -> listener.onSceneLaunch(Controller.scene(), null));
+            listener -> listener.onSceneLaunch(Controller.scene(), null));
         loop.run();
         frame().setVisible(false);
         frame().dispose();
@@ -593,7 +593,7 @@ public class Controller
                 event.getPreciseWheelRotation());
         loop.enqueue(() -> {
             mouseScrollListeners.invoke(
-                (listener) -> listener.onMouseScrollMove(mouseScrollEvent));
+                listener -> listener.onMouseScrollMove(mouseScrollEvent));
             scene.invokeMouseScrollListeners(mouseScrollEvent);
         });
     }
@@ -823,13 +823,13 @@ public class Controller
     {
         if (width <= 0 || height <= 0)
         {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Die Fenstergröße kann nicht kleiner/gleich 0 sein. "
                             + "Eingabe war: " + width + " - " + height + ".");
         }
         if (renderPanel == null)
         {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Die Änderung der Fenstergröße ist erst möglich, nachdem die start()-Methode ausgeführt wurde.");
         }
         int diffX = (width - config.graphics.windowWidth()) / 2;
@@ -958,15 +958,15 @@ public class Controller
         int windowWidth = config.graphics.windowWidth();
         int windowHeight = config.graphics.windowHeight();
         return new Vector(
-                position.x() + ((Math.cos(Math.toRadians(rotation))
+                position.x() + (Math.cos(Math.toRadians(rotation))
                         * (mousePosition.x - windowWidth / 2.0)
                         + Math.sin(Math.toRadians(rotation))
-                                * (mousePosition.y - windowHeight / 2.0)))
+                                * (mousePosition.y - windowHeight / 2.0))
                         / zoom,
-                position.y() + ((Math.sin(Math.toRadians(rotation))
+                position.y() + (Math.sin(Math.toRadians(rotation))
                         * (mousePosition.x - windowWidth / 2.0)
                         - Math.cos(Math.toRadians(rotation))
-                                * (mousePosition.y - windowHeight / 2.0)))
+                                * (mousePosition.y - windowHeight / 2.0))
                         / zoom);
     }
 
