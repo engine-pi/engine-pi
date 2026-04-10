@@ -102,10 +102,9 @@ public class ImageRobot extends Image implements Robot
         inMotion = true;
         Vector from = center();
         Vector vector = new Vector(from, to);
-        double duration = (float) 1 / speed / 2;
-        animate(duration, progress -> {
-            center(from.add(vector.multiply(progress)));
-        });
+        double duration = 1 / speed / 2;
+        animate(duration,
+            progress -> center(from.add(vector.multiply(progress))));
         inMotion = false;
     }
 
@@ -113,7 +112,7 @@ public class ImageRobot extends Image implements Robot
     {
         if (movement.rotation() != 0)
         {
-            rotateByAnimated(movement.rotation() * -90);
+            rotateByAnimated((double) movement.rotation() * -90);
         }
         if (movement.isRelocated())
         {

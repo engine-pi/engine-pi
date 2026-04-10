@@ -349,7 +349,7 @@ public class TextBlockBox extends TextBox
     {
         // Source:
         // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
-        ArrayList<TextLayoutLine> lines = new ArrayList<>();
+        ArrayList<TextLayoutLine> resultingLines = new ArrayList<>();
         for (String line : content.split(System.lineSeparator()))
         {
             final AttributedString styledText = new AttributedString(line);
@@ -373,8 +373,8 @@ public class TextBlockBox extends TextBox
                 int end = measurer.getPosition();
                 int start = end - nextLayout.getCharacterCount();
                 String lineContent = line.substring(start, end);
-                lines.add(new TextLayoutLine(nextLayout, lineContent, content,
-                        start, end));
+                resultingLines.add(new TextLayoutLine(nextLayout, lineContent,
+                        content, start, end));
 
                 if (measurer.getPosition() >= line.length())
                 {
@@ -382,7 +382,7 @@ public class TextBlockBox extends TextBox
                 }
             }
         }
-        return lines;
+        return resultingLines;
     }
 
     private PixelDimension measureLines(List<TextLayoutLine> lines)
@@ -427,14 +427,14 @@ public class TextBlockBox extends TextBox
         {
             g.setColor(color);
         }
-        float yCursor = (float) y;
+        float yCursor = y;
         for (TextLayoutLine line : lines)
         {
             TextLayout layout = line.layout();
             // Ascent: der Abstand von der oberen rechten Ecke des
             // Textlayouts zur Grundlinie.
             yCursor += layout.getAscent() * lineSpacing;
-            float xCursor = (float) x;
+            float xCursor = x;
             // Advance: Der Vorschub ist der Abstand vom Ursprung bis zum
             // Vorschub des Zeichens ganz rechts.
             float lineWidth = layout.getAdvance();

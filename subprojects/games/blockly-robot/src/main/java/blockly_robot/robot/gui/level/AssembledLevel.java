@@ -2,7 +2,7 @@ package blockly_robot.robot.gui.level;
 
 import blockly_robot.robot.gui.map.CoordinateSystemTranslator;
 import blockly_robot.robot.gui.map.GraphicalItemController;
-import blockly_robot.robot.gui.map.Grid;
+import pi.actor.Grid;
 import blockly_robot.robot.logic.item.Item;
 import blockly_robot.robot.logic.level.Level;
 import blockly_robot.robot.logic.robot.RobotWrapper;

@@ -1,7 +1,7 @@
 package blockly_robot.robot.gui.level;
 
 import blockly_robot.robot.gui.Color;
-import blockly_robot.robot.gui.map.Grid;
+import pi.actor.Grid;
 import blockly_robot.robot.gui.map.ItemMapPainter;
 import blockly_robot.robot.gui.robot.ImageRobot;
 import blockly_robot.robot.logic.level.Level;

@@ -33,6 +33,7 @@ import pi.physics.FixtureBuilder;
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/grid.md
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/actor/GridTest.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/GridDemo.java
 
 /**
  * Beschreibt ein <b>Gitter</b> aus quadratischen Zellen.
@@ -268,10 +269,7 @@ public class Grid extends Actor
         if (background != null)
         {
             g.setColor(background);
-            g.fillRect(0,
-                -Math.round(cellSize * rows),
-                Math.round(cellSize * cols),
-                Math.round(cellSize * rows));
+            g.fillRect(0, -cellSize * rows, cellSize * cols, cellSize * rows);
         }
         g.setColor(color);
         // Die Dicke der Linie in Pixel.
@@ -281,24 +279,21 @@ public class Grid extends Actor
             thickness = 1;
         }
         // Länge der vertikalen Linien.
-        int lengthVertical = Math.round(rows * cellSize);
+        int lengthVertical = rows * cellSize;
         for (int x = 0; x <= cols; x++)
         {
             // Zeichnen der vertikalen Linien von links nach rechts.
-            g.fillRect(Math.round(x * cellSize),
+            g.fillRect(x * cellSize,
                 -lengthVertical,
                 thickness,
                 lengthVertical);
         }
         // Länge der horizontalen Linien.
-        int lengthHorizontal = Math.round(cols * cellSize);
+        int lengthHorizontal = cols * cellSize;
         for (int y = 0; y <= rows; y++)
         {
             // Zeichnen der horizontalen Linien von unten nach oben.
-            g.fillRect(0,
-                -Math.round(y * cellSize),
-                lengthHorizontal,
-                thickness);
+            g.fillRect(0, -y * cellSize, lengthHorizontal, thickness);
         }
     }
 }
