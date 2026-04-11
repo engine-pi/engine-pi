@@ -19,44 +19,74 @@
 package demos.classes.graphics.boxes;
 
 import static pi.Controller.fonts;
-import pi.graphics.boxes.TextLineBox;
-import pi.graphics.boxes.VerticalBox;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.function.Consumer;
 
 import demos.graphics2d.Graphics2DComponent;
+import pi.graphics.boxes.BorderBox;
+import pi.graphics.boxes.Box;
+import pi.graphics.boxes.TextLineBox;
+import pi.graphics.boxes.VerticalBox;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/graphics/boxes/TextLineBox.java
 
 public class TextLineBoxDemo extends Graphics2DComponent
 {
-    Font font = fonts.defaultFont().deriveFont(64f);
+    Font defaultFont = fonts.defaultFont().deriveFont(64f);
+
+    private Box text(String content, Consumer<TextLineBox> consumer)
+    {
+        var text = new TextLineBox(content);
+        var b = new BorderBox(text).thickness(1);
+        if (consumer != null)
+        {
+            consumer.accept(text);
+        }
+        return b;
+    }
+
+    private Box text(String content)
+    {
+        return text(content, null);
+    }
 
     public void render(Graphics2D g)
     {
 
-        new TextLineBox("definied width and height").width(600)
-            .height(50)
-            .render(g);
+        // Um zu Testen, ob die Box direkt gerendert werden kann.
+        new TextLineBox("as standalone box").anchor(10, 10).render(g);
 
-        new TextLineBox("as standalone box").fontSize(32)
-            .anchor(500, 400)
-            .render(g);
+        new VerticalBox<>(text("default"),
+                text("different fontSize", box -> box.fontSize(24)),
+                text("custom Font", box -> box.font("Monospaced")),
+                text("custom color", box -> box.color("orange")),
+                text("custom content", box -> box.content("updated content")))
+                    .anchor(10, 100)
+                    .render(g)
+                    .debug();
 
-        var box = new VerticalBox<>(new TextLineBox("default"),
-                new TextLineBox("different fontSize").fontSize(42),
-                new TextLineBox("custom Font").font(font),
-                new TextLineBox("custom color").color("orange"),
-                new TextLineBox("custom content").content("updated content"),
-                new TextLineBox("definied width and height").width(200)
-                    .height(50));
-        box.anchor(200, 100);
-        box.render(g).debug();
+        String content = "Lorem ipsum dolor sit esse";
+        new VerticalBox<>(
+                // Nur Breite
+                text(content, box -> box.width(200)),
+                // anderer Wert
+                text(content, box -> box.width(100)),
+                // Nur Höhe
+                text(content, box -> box.height(50)),
+
+                // anderer Wert
+                text(content, box -> box.height(20)),
+                // Höhe und Breite
+                text(content, box -> box.width(200).height(50)),
+                text(content, box -> box.width(50).height(50))).anchor(10, 300)
+                    .render(g)
+                    .debug();
     }
 
     public static void main(String[] args)
     {
-        new TextLineBoxDemo().show();
+        new TextLineBoxDemo().open();
     }
 }

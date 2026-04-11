@@ -81,6 +81,6 @@ public class InsetBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new InsetBoxDemo().show();
+        new InsetBoxDemo().open();
     }
 }

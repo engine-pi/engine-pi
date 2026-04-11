@@ -43,6 +43,6 @@ public class HorizontalBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new HorizontalBoxDemo().show();
+        new HorizontalBoxDemo().open();
     }
 }

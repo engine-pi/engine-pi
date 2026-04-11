@@ -52,6 +52,6 @@ public class TextTableBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new TextTableBoxDemo().show();
+        new TextTableBoxDemo().open();
     }
 }

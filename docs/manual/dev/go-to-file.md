@@ -17,3 +17,7 @@ repo_link('subprojects/demos/src/main/java/demos/classes/actor/ImageDemo.java',
 
 Diese Links funktionieren nur, wenn das Engine-Pi-Repository in das Verzeichnis
 `/data/school/repos/inf/java/engine-pi` geklont wurde.
+
+Das Kommandozeilenprogramm {{ javadoc('cli.checklinks') }} überprüft bei jedem
+`just` Aufruf das komplette Repository, ob die Dateien hinter den Links auch
+noch funktionieren.

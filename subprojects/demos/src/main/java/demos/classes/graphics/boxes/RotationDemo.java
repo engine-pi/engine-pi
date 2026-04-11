@@ -51,6 +51,6 @@ public class RotationDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new RotationDemo().show();
+        new RotationDemo().open();
     }
 }

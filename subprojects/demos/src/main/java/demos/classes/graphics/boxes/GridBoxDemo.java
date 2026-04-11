@@ -58,6 +58,6 @@ public class GridBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new GridBoxDemo().show();
+        new GridBoxDemo().open();
     }
 }

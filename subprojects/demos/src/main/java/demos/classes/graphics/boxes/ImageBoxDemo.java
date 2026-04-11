@@ -52,6 +52,6 @@ public class ImageBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new ImageBoxDemo().show();
+        new ImageBoxDemo().open();
     }
 }

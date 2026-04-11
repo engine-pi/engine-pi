@@ -51,6 +51,6 @@ public class BackgroundBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new BackgroundBoxDemo().show();
+        new BackgroundBoxDemo().open();
     }
 }

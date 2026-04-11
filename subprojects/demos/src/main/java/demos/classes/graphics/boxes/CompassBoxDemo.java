@@ -60,6 +60,6 @@ public class CompassBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new CompassBoxDemo().show();
+        new CompassBoxDemo().open();
     }
 }

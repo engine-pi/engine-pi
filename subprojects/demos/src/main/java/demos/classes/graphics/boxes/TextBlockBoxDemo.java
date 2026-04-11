@@ -98,6 +98,6 @@ public class TextBlockBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new TextBlockBoxDemo().show();
+        new TextBlockBoxDemo().open();
     }
 }

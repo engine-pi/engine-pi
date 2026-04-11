@@ -74,8 +74,35 @@ public class TextLineBox extends TextBox
 
     protected void calculateDimension()
     {
+        // Wir speichert den Getter-Wert zwischen, weil wir ihn zweimal
+        // brauchen.
+        boolean hasDefiniedDimension = hasDefiniedDimension();
+        // Ist Abmessung fest definiert und wird nicht über die Schriftgröße
+        // bestimmt, dann muss die Schriftgröße angepasst werden.
+        if (hasDefiniedDimension)
+        {
+            // Wir können den Setter fontSize() nicht verwenden, sonst gibt es
+            // eine rekursive Endlosschleife
+            font = font.deriveFont(
+                // Wir setzen die Schriftgröße auf einen sehr großen Wert.
+                // Würden wir einen normale Schriftgröße verwenden, kommt es zu
+                // Rundungsfehlern. Der skalierte Text ist dann meistens etwas
+                // zu lang.
+
+                // Es muss hier eine float-Zahl stehen. Ganzzahlen setzen den
+                // Schriftstil.
+                1000f);
+        }
+
         var bounds = FontUtil.getStringBounds(content, font);
         baseline = bounds.getBaseline();
+
+        if (!hasDefiniedDimension)
+        {
+            width = bounds.getWidth();
+            height = bounds.getHeight();
+            return;
+        }
 
         // Die Breite des Textes gesetzt in der aktuellen Schriftart in Pixel
         int fontWidth = bounds.getWidth();
@@ -87,12 +114,7 @@ public class TextLineBox extends TextBox
         // die genaue Höhe als Double
         double preciseHeight = 0;
 
-        if (!hasDefiniedDimension())
-        {
-            preciseWidth = fontWidth;
-            preciseHeight = fontHeight;
-        }
-        else if (definedWidth == 0)
+        if (definedWidth == 0)
         {
             preciseWidth = (double) fontWidth * definedHeight / fontHeight;
             preciseHeight = definedHeight;
@@ -123,7 +145,10 @@ public class TextLineBox extends TextBox
         if (hasDefiniedDimension())
         {
             oldTransform = g.getTransform();
-            // translate muss zuerst stehen
+            // g.scale() ohne g.translate() verändert den Ankerpunkt der Box,
+            // denn die Koordinaten des Ankerpunkts werden auch skaliert. Mit
+            // g.translate() nehmen wir die Skalierung des Ankerpunkts zurück.
+            // g.translate() muss zuerst ausgeführt werden.
             g.translate(x - x * scaleFactorX, y - y * scaleFactorY);
             g.scale(scaleFactorX, scaleFactorY);
         }
@@ -142,6 +167,9 @@ public class TextLineBox extends TextBox
 
         if (oldTransform != null)
         {
+            // Darf nicht auf null gesetzt werden:
+            // java.lang.NullPointerException: Cannot read field "m00" because
+            // "Tx" is null
             g.setTransform(oldTransform);
         }
     }

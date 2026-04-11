@@ -48,6 +48,6 @@ public class BorderBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new BorderBoxDemo().show();
+        new BorderBoxDemo().open();
     }
 }

@@ -100,6 +100,6 @@ public class CellBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new CellBoxDemo().show();
+        new CellBoxDemo().open();
     }
 }

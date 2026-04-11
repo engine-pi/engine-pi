@@ -42,6 +42,6 @@ public class CellWidthHeightDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new CellWidthHeightDemo().show();
+        new CellWidthHeightDemo().open();
     }
 }

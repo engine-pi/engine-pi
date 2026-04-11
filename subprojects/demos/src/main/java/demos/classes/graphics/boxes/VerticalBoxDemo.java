@@ -42,6 +42,6 @@ public class VerticalBoxDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new VerticalBoxDemo().show();
+        new VerticalBoxDemo().open();
     }
 }
