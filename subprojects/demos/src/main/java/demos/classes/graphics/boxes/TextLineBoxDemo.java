@@ -54,7 +54,6 @@ public class TextLineBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
-
         // Um zu Testen, ob die Box direkt gerendert werden kann.
         new TextLineBox("as standalone box").anchor(10, 10).render(g);
 
@@ -73,13 +72,15 @@ public class TextLineBoxDemo extends Graphics2DComponent
                 text(content, box -> box.width(200)),
                 // anderer Wert
                 text(content, box -> box.width(100)),
+
                 // Nur Höhe
                 text(content, box -> box.height(50)),
-
                 // anderer Wert
                 text(content, box -> box.height(20)),
-                // Höhe und Breite
+
+                // Breite und Höhe
                 text(content, box -> box.width(200).height(50)),
+                // anderer Wert
                 text(content, box -> box.width(50).height(50))).anchor(10, 300)
                     .render(g)
                     .debug();

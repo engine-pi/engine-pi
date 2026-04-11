@@ -24,6 +24,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
+
 import pi.annotations.API;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
@@ -52,7 +54,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.38.0
      */
-    protected Box parent;
+    protected @Nullable Box parent;
 
     /**
      * Zeigt an, ob die Box bereits <b>ausgemessen</b> wurde.
@@ -235,6 +237,45 @@ public abstract class Box implements Iterable<Box>
         }
         definedHeight = height;
         return this;
+    }
+
+    /**
+     * Prüft, ob für diese Box mindestens eine Abmessung explizit gesetzt wurde.
+     *
+     * @return {@code true}, wenn eine definierte Breite oder Höhe vorhanden
+     *     ist, sonst {@code false}.
+     *
+     * @since 0.46.0
+     */
+    public boolean hasDefiniedDimension()
+    {
+        return definedWidth > 0 || definedHeight > 0;
+    }
+
+    /**
+     * Prüft, ob nur die Breite explizit gesetzt wurde.
+     *
+     * @return {@code true}, wenn eine definierte Breite und keine definierte
+     *     Höhe vorhanden ist, sonst {@code false}.
+     *
+     * @since 0.46.0
+     */
+    public boolean hasOnlyDefiniedWidth()
+    {
+        return definedWidth > 0 && definedHeight == 0;
+    }
+
+    /**
+     * Prüft, ob nur die Höhe explizit gesetzt wurde.
+     *
+     * @return {@code true}, wenn eine definierte Höhe und keine definierte
+     *     Breite vorhanden ist, sonst {@code false}.
+     *
+     * @since 0.46.0
+     */
+    public boolean hasOnlyDefiniedHeight()
+    {
+        return definedHeight > 0 && definedWidth == 0;
     }
 
     /* x */

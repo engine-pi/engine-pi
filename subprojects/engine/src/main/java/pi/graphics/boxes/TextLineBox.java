@@ -67,27 +67,23 @@ public class TextLineBox extends TextBox
         supportsDefinedDimension = true;
     }
 
-    private boolean hasDefiniedDimension()
-    {
-        return definedWidth > 0 || definedHeight > 0;
-    }
-
     protected void calculateDimension()
     {
         // Wir speichert den Getter-Wert zwischen, weil wir ihn zweimal
         // brauchen.
         boolean hasDefiniedDimension = hasDefiniedDimension();
-        // Ist Abmessung fest definiert und wird nicht über die Schriftgröße
+        // Ist die Abmessung fest definiert und wird nicht über die Schriftgröße
         // bestimmt, dann muss die Schriftgröße angepasst werden.
         if (hasDefiniedDimension)
         {
             // Wir können den Setter fontSize() nicht verwenden, sonst gibt es
-            // eine rekursive Endlosschleife
+            // eine rekursive Endlosschleife.
             font = font.deriveFont(
                 // Wir setzen die Schriftgröße auf einen sehr großen Wert.
                 // Würden wir einen normale Schriftgröße verwenden, kommt es zu
-                // Rundungsfehlern. Der skalierte Text ist dann meistens etwas
-                // zu lang.
+                // Rundungsfehlern. Die Methode getStringBounds gibt die Breite
+                // und Höhe nur als Ganzzahlen aus. Der Text passt nicht genau
+                // in einer BorderBox.
 
                 // Es muss hier eine float-Zahl stehen. Ganzzahlen setzen den
                 // Schriftstil.
@@ -114,12 +110,12 @@ public class TextLineBox extends TextBox
         // die genaue Höhe als Double
         double preciseHeight = 0;
 
-        if (definedWidth == 0)
+        if (hasOnlyDefiniedHeight())
         {
             preciseWidth = (double) fontWidth * definedHeight / fontHeight;
             preciseHeight = definedHeight;
         }
-        else if (definedHeight == 0)
+        else if (hasOnlyDefiniedWidth())
         {
             preciseWidth = definedWidth;
             preciseHeight = (double) fontHeight * definedWidth / fontWidth;
