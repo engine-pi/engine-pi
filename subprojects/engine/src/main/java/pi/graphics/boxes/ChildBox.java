@@ -34,7 +34,7 @@ abstract class ChildBox extends Box
      */
     protected Box child;
 
-    public ChildBox()
+    protected ChildBox()
     {
         this(null);
     }
@@ -47,7 +47,7 @@ abstract class ChildBox extends Box
      *
      * @since 0.38.0
      */
-    public ChildBox(Box child)
+    protected ChildBox(Box child)
     {
         addChild(child);
     }

@@ -20,9 +20,9 @@ package pi.graphics.boxes;
 
 public class TextBlockAlignBox extends CombinedChildBox
 {
-    public CellBox container;
+    public final CellBox container;
 
-    public TextBlockBox text;
+    public final TextBlockBox text;
 
     public TextBlockAlignBox()
     {

@@ -18,9 +18,21 @@
  */
 package pi.graphics.boxes;
 
+/**
+ * Speichert die <b>Abmessungen</b> einer Box bzw. eines Rechtecks in Form von
+ * {@link #width Höhe} und {@link #height Breite} als Ganzzahl.
+ *
+ * @author Josef Friedrich
+ */
 public class PixelDimension
 {
+    /**
+     * Die <b>Breite</b> in Pixel.
+     */
     int width;
 
+    /**
+     * Die <b>Höhe</b> in Pixel.
+     */
     int height;
 }

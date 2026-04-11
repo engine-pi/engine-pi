@@ -363,7 +363,9 @@ public class BodyHandler implements PhysicsHandler
                     break;
 
                 default:
-                    throw new RuntimeException("Unknown body type: " + type);
+                    throw new IllegalArgumentException(
+                            "Unbekannter BodyType (Verhalten einer Figur in der physikalischen Simulation): "
+                                    + type);
                 }
             }
         }

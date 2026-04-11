@@ -36,6 +36,9 @@ import pi.resources.font.FontUtil;
 public class TextLineBox extends TextBox
 {
     /**
+     * Der Abstand der linken oberen Ecke des Rechtecks zur Grundlinie des
+     * Textes in Pixel (positiver Wert).
+     *
      * @since 0.38.0
      */
     private int baseline;

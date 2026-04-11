@@ -63,6 +63,7 @@ public class CellBox extends ChildBox
      *     {@code box.x(..).y(..)}.
      */
     @Setter
+    @Override
     public CellBox width(int width)
     {
         definedWidth = width;
@@ -76,6 +77,7 @@ public class CellBox extends ChildBox
      *     {@code box.x(..).y(..)}.
      */
     @Setter
+    @Override
     public CellBox height(int height)
     {
         definedHeight = height;

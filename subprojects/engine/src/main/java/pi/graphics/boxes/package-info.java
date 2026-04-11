@@ -19,16 +19,14 @@
 
 /**
  * Eine rekursive Datenstruktur, um graphische Elemente ineinander verschachteln
- * zu können und dann die Graphics2D-API einzuzeichen.
- *
- * Die grundlegende Maßeinheit sind Pixel.
- *
- * <p>
- * So kann zum Beispiel um einen Text ein Rahmen gelegt werden.
- * </p>
+ * zu können und dann in die {@link java.awt.Graphics2D Graphics2D}-API
+ * einzuzeichen.
  *
  * <p>
- * Inspiriert von den {@link java.awt.Component}-Klassen.
+ * So kann zum Beispiel um einen Text ein Rahmen gelegt werden. Jedes
+ * einzuzeichnende Element wird in eine rechteckige Box eingebettet. Die
+ * grundlegende Maßeinheit sind Pixel. Dieses Paket ist inspiriert von den
+ * {@link java.awt.Component}-Klassen.
  * </p>
  *
  * @see <a href="https://horstmann.com/sjsu/graphics/">Simple Java Graphics</a>

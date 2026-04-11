@@ -24,7 +24,6 @@ import static pi.Controller.colorScheme;
 import static pi.Controller.colors;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

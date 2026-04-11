@@ -13,12 +13,12 @@ public class PopulatedCell<T extends Box>
     /**
      * Die übergeordnete Zelle
      */
-    public CellBox cell;
+    public final CellBox cell;
 
     /**
      * Die Kind-Box der Zelle
      */
-    public T box;
+    public final T box;
 
     @SuppressWarnings("unchecked")
     public PopulatedCell(CellBox cell)

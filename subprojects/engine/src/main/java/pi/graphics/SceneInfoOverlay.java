@@ -82,13 +82,13 @@ public class SceneInfoOverlay
      * {@link pi.event.FrameUpdateListenerRegistration#delay(double, Runnable)
      * delay}-Methode zu haben.
      */
-    private @NonNull final Scene scene;
+    private final @NonNull Scene scene;
 
-    private @NonNull final CellBox cell;
+    private final @NonNull CellBox cell;
 
-    public @NonNull final InsetBox margin;
+    public final @NonNull InsetBox margin;
 
-    public @NonNull final BackgroundBox background;
+    public final @NonNull BackgroundBox background;
 
     private VerticalBox<Box> vertical;
 
@@ -148,7 +148,7 @@ public class SceneInfoOverlay
 
     /* duration */
 
-    private final double DEFAULT_DURATION = 10;
+    private static final double DEFAULT_DURATION = 10;
 
     /**
      * Die Anzeigedauer der Infobox in Sekunden.
@@ -415,9 +415,9 @@ public class SceneInfoOverlay
 
     /* textColor */
 
-    private final Color DEFAULT_TEXT_COLOR = colors.get("black");
+    private final Color defaultTextColor = colors.get("black");
 
-    private Color textColor = DEFAULT_TEXT_COLOR;
+    private Color textColor = defaultTextColor;
 
     /**
      * Setzt die <b>Textfarbe</b>.
@@ -600,7 +600,7 @@ public class SceneInfoOverlay
             formatter.append("duration", duration, "s");
         }
 
-        if (textColor != DEFAULT_TEXT_COLOR)
+        if (textColor != defaultTextColor)
         {
             formatter.append("textColor", textColor);
         }
