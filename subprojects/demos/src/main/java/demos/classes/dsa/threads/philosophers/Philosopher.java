@@ -21,9 +21,10 @@ package demos.classes.dsa.threads.philosophers;
 import java.util.Random;
 
 import pi.Controller;
-import pi.actor.Image;
 import pi.Scene;
 import pi.actor.Circle;
+import pi.actor.Image;
+import pi.annotations.Getter;
 import pi.graphics.geom.Vector;
 
 /**
@@ -68,6 +69,16 @@ class Philosopher extends Thread
     private Random random;
 
     /**
+     * Der Zeitpunkt, an dem der Philosoph zuletzt gegessen hat.
+     */
+    private long lastMeal;
+
+    /**
+     * Ein Bild, das den Philosophen darstellt.
+     */
+    private Image image;
+
+    /**
      * Konstruktor für Objekte der Klasse Philosoph.
      *
      * @param id Die ID des Philosophen.
@@ -86,20 +97,58 @@ class Philosopher extends Thread
         random = new Random();
 
         // Teller
-        scene.add(new Circle(2).color(color)
-            .center(Vector.ofAngle(72 * id).multiply(5)));
+        scene.add(new Circle(1).color(color)
+            .center(Vector.ofAngle((double) 72 * id).multiply(3)));
         // Bild des Philosophen
-        scene.add(new Image("philosophers/" + name + ".jpg").pixelPerMeter(50)
-            .center(Vector.ofAngle(72 * id).multiply(11)));
+
+        image = (Image) new Image("philosophers/" + name + ".png")
+            .pixelPerMeter(30)
+            .center(Vector.ofAngle((double) 72 * id).multiply(8))
+            .label(name);
+
+        scene.addFrameUpdateListener(
+            deltaTime -> image.opacity(isStarving() ? 0.5 : 1));
+
+        scene.add(image);
 
     }
 
+    /**
+     * Gibt die ID des Philosophen aus.
+     *
+     * @return Die ID des Philosophen.
+     */
+    @Getter
     public int id()
     {
         return id;
     }
 
-    private void sleep()
+    /**
+     * Gibt den Zeitpunkt aus, an dem der Philosoph zuletzt gegessen hat.
+     *
+     * @return Der Zeitpunkt, an dem der Philosoph zuletzt gegessen hat.
+     */
+    @Getter
+    public long lastMeal()
+    {
+        return lastMeal;
+    }
+
+    /**
+     * Gibt den Zeitpunkt aus, an dem der Philosoph zuletzt gegessen hat.
+     *
+     * @return Der Zeitpunkt, an dem der Philosoph zuletzt gegessen hat.
+     */
+    public boolean isStarving()
+    {
+        return System.currentTimeMillis() - lastMeal > 1000;
+    }
+
+    /**
+     * Der Philosoph wartet eine zufällig Zeit lang.
+     */
+    private void waitRandomly()
     {
         try
         {
@@ -107,7 +156,25 @@ class Philosopher extends Thread
         }
         catch (InterruptedException e)
         {
+            Thread.currentThread().interrupt();
         }
+    }
+
+    /**
+     * Der Philosoph denkt.
+     */
+    private void think()
+    {
+        waitRandomly();
+    }
+
+    /**
+     * Der Philosoph isst.
+     */
+    private void eat()
+    {
+        waitRandomly();
+        lastMeal = System.currentTimeMillis();
     }
 
     /**
@@ -116,12 +183,12 @@ class Philosopher extends Thread
     public void fullfilCoffman()
     {
         // denken
-        sleep();
+        think();
 
         // essen
         leftFork.pickUp(color);
         rightFork.pickUp(color);
-        sleep();
+        eat();
         leftFork.putDown();
         rightFork.putDown();
     }
@@ -132,7 +199,7 @@ class Philosopher extends Thread
     public void violateCoffman4()
     {
         // denken
-        sleep();
+        think();
 
         // essen
         leftFork.pickUp(color);
@@ -146,7 +213,7 @@ class Philosopher extends Thread
             rightFork.putDown();
             leftFork.putDown();
         }
-        sleep();
+        eat();
         leftFork.putDown();
         rightFork.putDown();
     }
@@ -157,13 +224,13 @@ class Philosopher extends Thread
     public void violateCoffman2()
     {
         // denken
-        sleep();
+        think();
 
         // essen
         leftFork.pickUp(color);
         if (rightFork.tryPickUp(color))
         {
-            sleep();
+            eat();
             rightFork.putDown();
         }
         leftFork.putDown();
@@ -179,15 +246,16 @@ class Philosopher extends Thread
     {
         while (true)
         {
-            fullfilCoffman();
+            // fullfilCoffman();
             // violateCoffman4();
-            // violateCoffman2();
+            violateCoffman2();
         }
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers(), 950, 950);
+        Controller.start(new DiningPhilosophers(), 800, 800);
     }
+
 }

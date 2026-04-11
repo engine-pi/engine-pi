@@ -24,6 +24,7 @@ import pi.actor.Circle;
 import pi.actor.Line;
 import pi.graphics.geom.Vector;
 import pi.actor.StopWatch;
+import pi.event.FrameUpdateListener;
 
 /**
  * Visualisierung des Problems der speisenden Philosophen.
@@ -33,7 +34,7 @@ import pi.actor.StopWatch;
  *
  * @version 1.0
  */
-class DiningPhilosophers extends Scene
+class DiningPhilosophers extends Scene implements FrameUpdateListener
 {
     /**
      * Verwaltet alle Gabeln.
@@ -46,6 +47,13 @@ class DiningPhilosophers extends Scene
     private Philosopher[] philosophers;
 
     /**
+     * Verhungern die Philosophen?
+     */
+    boolean arePhilosophersStarving = false;
+
+    StopWatch stopWatch;
+
+    /**
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
      * erstellt und die Philosophenthreads gestartet.
      */
@@ -56,16 +64,17 @@ class DiningPhilosophers extends Scene
         forks = new Fork[5];
         philosophers = new Philosopher[5];
 
-        add(new Circle(13).center(0, 0).color("braun"));
+        add(new Circle(8).center(0, 0).color("braun"));
 
         backgroundColor("weiß");
 
         for (int i = 0; i < 5; i++)
         {
             // Gabeln
-            Line line = new Line(Vector.ofAngle(36 + 72 * i).multiply(4),
-                    Vector.ofAngle(36 + 72 * i).multiply(5));
-            line.strokeWidth(0.5);
+            Line line = new Line(
+                    Vector.ofAngle((double) 36 + 72 * i).multiply(2),
+                    Vector.ofAngle((double) 36 + 72 * i).multiply(3));
+            line.strokeWidth(0.2);
             add(line);
             forks[i] = new Fork(i, line);
         }
@@ -80,7 +89,10 @@ class DiningPhilosophers extends Scene
         {
             philosophers[i].start();
         }
-        add(new StopWatch().start().anchor(-13, 13).color("black"));
+        stopWatch = (StopWatch) new StopWatch().start()
+            .anchor(-10, 10)
+            .color("black");
+        add(stopWatch);
     }
 
     private void createPhilosopher(int id, String name, String color)
@@ -89,9 +101,33 @@ class DiningPhilosophers extends Scene
                 forks[(id + 4) % 5], forks[id]);
     }
 
+    @Override
+    public void onFrameUpdate(double pastTime)
+    {
+        arePhilosophersStarving = true;
+        for (Philosopher philosopher : philosophers)
+        {
+            if (!philosopher.isStarving())
+            {
+                arePhilosophersStarving = false;
+            }
+        }
+
+        if (arePhilosophersStarving)
+        {
+            stopWatch.stop();
+        }
+        else
+        {
+            stopWatch.start();
+        }
+
+    }
+
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers(), 950, 950);
+        Controller.start(new DiningPhilosophers(), 800, 800);
     }
+
 }

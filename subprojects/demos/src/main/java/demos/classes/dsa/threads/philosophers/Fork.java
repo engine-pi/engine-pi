@@ -42,7 +42,7 @@ class Fork
     private int id;
 
     /**
-     * Doe Darstellung der Gabel als Linie.
+     * Die Darstellung der Gabel als Linie.
      */
     private Line line;
 
@@ -76,6 +76,7 @@ class Fork
             }
             catch (InterruptedException e)
             {
+                Thread.currentThread().interrupt();
             }
         }
         used = true;
@@ -109,6 +110,7 @@ class Fork
                 }
                 catch (InterruptedException e)
                 {
+                    Thread.currentThread().interrupt();
                 }
                 i++;
             }
@@ -124,7 +126,7 @@ class Fork
     {
         used = false;
         line.color("schwarz");
-        notify();
+        notifyAll();
     }
 
     /**
@@ -140,6 +142,6 @@ class Fork
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers(), 950, 950);
+        Controller.start(new DiningPhilosophers(), 800, 800);
     }
 }
