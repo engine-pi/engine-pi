@@ -40,6 +40,6 @@ public class CircleDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new CircleDemo().show();
+        new CircleDemo().open();
     }
 }

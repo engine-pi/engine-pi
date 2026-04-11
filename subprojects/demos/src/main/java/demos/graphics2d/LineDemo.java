@@ -41,6 +41,6 @@ public class LineDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new LineDemo().show();
+        new LineDemo().open();
     }
 }

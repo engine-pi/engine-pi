@@ -27,6 +27,6 @@ public class FontStyleDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new FontStyleDemo().show();
+        new FontStyleDemo().open();
     }
 }

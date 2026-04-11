@@ -35,6 +35,6 @@ public class DrawImage extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new DrawImage().show();
+        new DrawImage().open();
     }
 }

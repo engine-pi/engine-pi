@@ -17,9 +17,9 @@ public class FontStringBounds extends Graphics2DComponent
 
         int x = 100;
         int y = 100;
-        int width = (int) Math.round(bounds.getWidth());
-        int height = (int) Math.round(bounds.getHeight());
-        int baseline = (int) Math.round(bounds.getBaseline());
+        int width = bounds.getWidth();
+        int height = bounds.getHeight();
+        int baseline = bounds.getBaseline();
 
         // The left and right edges of the rectangle are at x and x + width. The
         // top and bottom edges are at y and y + height.
@@ -32,6 +32,6 @@ public class FontStringBounds extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new FontStringBounds().show();
+        new FontStringBounds().open();
     }
 }

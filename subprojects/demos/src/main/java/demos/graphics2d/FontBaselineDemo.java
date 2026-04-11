@@ -22,6 +22,6 @@ public class FontBaselineDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new FontBaselineDemo().show();
+        new FontBaselineDemo().open();
     }
 }

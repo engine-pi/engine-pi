@@ -19,6 +19,6 @@ public class FontRotationDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new FontRotationDemo().show();
+        new FontRotationDemo().open();
     }
 }

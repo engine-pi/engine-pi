@@ -168,6 +168,7 @@ nav:
           - manual/dev/go-to-file.md
           - manual/dev/screen-recording.md
           - manual/dev/logging.md
+          - manual/dev/graphics2d.md
 
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 

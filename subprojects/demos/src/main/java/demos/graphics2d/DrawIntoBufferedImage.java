@@ -31,7 +31,7 @@ public class DrawIntoBufferedImage extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new DrawIntoBufferedImage().show();
+        new DrawIntoBufferedImage().open();
     }
 
 }

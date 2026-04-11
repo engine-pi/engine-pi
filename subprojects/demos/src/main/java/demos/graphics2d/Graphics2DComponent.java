@@ -11,7 +11,8 @@ import pi.util.Graphics2DUtil;
 /**
  * Übernimmt den Cast von {@link Graphics} zu {@link Graphics2D} und bietet wie
  * die Actor-Klassen eine {@link #render(Graphics2D)}-Methode an. Außerdem eine
- * {@link #show()}-Methode und eine Fenster zum zeichnen.
+ * {@link #open()}-Methode und ein Fenster zu öffnen, in das gezeichnet werden
+ * kann.
  */
 public abstract class Graphics2DComponent extends JComponent
 {
@@ -33,8 +34,10 @@ public abstract class Graphics2DComponent extends JComponent
         }
     }
 
-    @Override
-    public void show()
+    /**
+     * Öffnet das Fenster.
+     */
+    public void open()
     {
         JFrame frame = new JFrame("Graphics2D Demo");
         frame.getContentPane().add(this);

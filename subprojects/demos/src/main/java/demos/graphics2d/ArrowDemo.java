@@ -43,6 +43,6 @@ public class ArrowDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new ArrowDemo().show();
+        new ArrowDemo().open();
     }
 }

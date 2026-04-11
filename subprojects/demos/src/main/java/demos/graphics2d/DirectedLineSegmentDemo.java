@@ -29,6 +29,6 @@ public class DirectedLineSegmentDemo extends Graphics2DComponent
 
     public static void main(String[] args)
     {
-        new DirectedLineSegmentDemo().show();
+        new DirectedLineSegmentDemo().open();
     }
 }

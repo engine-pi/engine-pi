@@ -88,17 +88,15 @@ def _convert_class_path_to_subproject_path(class_path: str, check: bool = True) 
 
 
 def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None) -> str:
-    """:param class_path: for example
-      ``pi.actor.Actor#center(double,double)``
-      ``java.lang.String#indexOf(java.lang.String,int)``
-      ``java.lang.Runnable#run()``
+    """
+    - ``pi.actor.Actor#center(double,double)``: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#center(double,double)``
+    - ``java.lang.String#indexOf(java.lang.String,int)``: ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#indexOf(java.lang.String,int)``
+    - ``java.lang.Runnable#run()``: ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html#run()``
+    - ``java.desktop:java.awt.Graphics2D``: ``https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html``
 
+    :param spec: The specification of the class path
 
-        https://engine-pi.github.io/javadocs/subprojects/engine/src/main/java/pi/actor/Group.java.html
-    :return:
-      ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#center(double,double)`` or
-      ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#indexOf(java.lang.String,int)``
-      ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html#run()``
+    :return: A HTTP-URL
     """
 
     class_path: str = ""
@@ -108,6 +106,12 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
     member = ""
     """for example ``#center(double,double)``
     """
+
+
+    module = ""
+    if ":" in spec:
+        module = spec.split(":")[0]
+        spec = spec.split(":")[1]
 
     if "#" in spec:
         class_path = spec.split("#")[0]
@@ -141,9 +145,11 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
     else:
         url_prefix = JAVADOC_URL_PREFIX
 
-    module = ""
-    if is_java:
+    if is_java and module == "":
         module = "java.base/"
+
+    if not module.endswith("/"):
+        module += "/"
 
     return f":fontawesome-brands-java:[{link_title}]({url_prefix}/{module}{class_relpath}.html{member})"
 
