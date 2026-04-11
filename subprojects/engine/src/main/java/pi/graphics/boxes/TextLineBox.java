@@ -21,6 +21,7 @@ package pi.graphics.boxes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 import pi.resources.font.FontUtil;
 
@@ -44,6 +45,16 @@ public class TextLineBox extends TextBox
     private int baseline;
 
     /**
+     * Der Skalierungsfaktor in x-Richtung.
+     */
+    private double scaleFactorX;
+
+    /**
+     * Der Skalierungsfaktor in y-Richtung.
+     */
+    private double scaleFactorY;
+
+    /**
      * Erzeugt eine <b>Text</b>box.
      *
      * @param content Der <b>Inhalt</b> der Textbox als Zeichenkette.
@@ -53,19 +64,70 @@ public class TextLineBox extends TextBox
     public TextLineBox(Object content)
     {
         super(content);
+        supportsDefinedDimension = true;
+    }
+
+    private boolean hasDefiniedDimension()
+    {
+        return definedWidth > 0 || definedHeight > 0;
     }
 
     protected void calculateDimension()
     {
         var bounds = FontUtil.getStringBounds(content, font);
-        width = bounds.getWidth();
-        height = bounds.getHeight();
         baseline = bounds.getBaseline();
+
+        // Die Breite des Textes gesetzt in der aktuellen Schriftart in Pixel
+        int fontWidth = bounds.getWidth();
+        // Die Höhe des Textes gesetzt in der aktuellen Schriftart in Pixel
+        int fontHeight = bounds.getHeight();
+
+        // die genaue Breite als Double
+        double preciseWidth = 0;
+        // die genaue Höhe als Double
+        double preciseHeight = 0;
+
+        if (!hasDefiniedDimension())
+        {
+            preciseWidth = fontWidth;
+            preciseHeight = fontHeight;
+        }
+        else if (definedWidth == 0)
+        {
+            preciseWidth = (double) fontWidth * definedHeight / fontHeight;
+            preciseHeight = definedHeight;
+        }
+        else if (definedHeight == 0)
+        {
+            preciseWidth = definedWidth;
+            preciseHeight = (double) fontHeight * definedWidth / fontWidth;
+        }
+        else
+        {
+            preciseWidth = definedWidth;
+            preciseHeight = definedHeight;
+        }
+
+        width = round(preciseWidth);
+        height = round(preciseHeight);
+
+        scaleFactorX = preciseWidth / fontWidth;
+        scaleFactorY = preciseHeight / fontHeight;
     }
 
     @Override
     void draw(Graphics2D g)
     {
+        AffineTransform oldTransform = null;
+
+        if (hasDefiniedDimension())
+        {
+            oldTransform = g.getTransform();
+            // translate muss zuerst stehen
+            g.translate(x - x * scaleFactorX, y - y * scaleFactorY);
+            g.scale(scaleFactorX, scaleFactorY);
+        }
+
         Color oldColor = null;
         Font oldFont = g.getFont();
         if (color != null)
@@ -77,6 +139,11 @@ public class TextLineBox extends TextBox
         g.drawString(content, x, y + baseline);
         g.setColor(oldColor);
         g.setFont(oldFont);
+
+        if (oldTransform != null)
+        {
+            g.setTransform(oldTransform);
+        }
     }
 
     /**

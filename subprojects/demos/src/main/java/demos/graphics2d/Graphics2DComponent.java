@@ -26,14 +26,14 @@ public abstract class Graphics2DComponent extends JComponent
     @Override
     public void paintComponent(Graphics graphics)
     {
-        if (graphics instanceof Graphics2D)
+        if (graphics instanceof Graphics2D graphics2D)
         {
-            Graphics2D graphics2D = (Graphics2D) graphics;
             Graphics2DUtil.antiAliasing(graphics2D, true);
             render(graphics2D);
         }
     }
 
+    @Override
     public void show()
     {
         JFrame frame = new JFrame("Graphics2D Demo");

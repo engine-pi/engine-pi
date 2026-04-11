@@ -35,6 +35,11 @@ public class TextLineBoxDemo extends Graphics2DComponent
 
     public void render(Graphics2D g)
     {
+
+        new TextLineBox("definied width and height").width(600)
+            .height(50)
+            .render(g);
+
         new TextLineBox("as standalone box").fontSize(32)
             .anchor(500, 400)
             .render(g);
@@ -43,7 +48,9 @@ public class TextLineBoxDemo extends Graphics2DComponent
                 new TextLineBox("different fontSize").fontSize(42),
                 new TextLineBox("custom Font").font(font),
                 new TextLineBox("custom color").color("orange"),
-                new TextLineBox("custom content").content("updated content"));
+                new TextLineBox("custom content").content("updated content"),
+                new TextLineBox("definied width and height").width(200)
+                    .height(50));
         box.anchor(200, 100);
         box.render(g).debug();
     }

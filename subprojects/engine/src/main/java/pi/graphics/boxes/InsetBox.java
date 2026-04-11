@@ -20,6 +20,8 @@ package pi.graphics.boxes;
 
 import java.awt.Graphics2D;
 
+import pi.annotations.API;
+import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
@@ -84,7 +86,9 @@ public class InsetBox extends ChildBox
      *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
      *     können, z.B. {@code inset.top(..).right(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public InsetBox top(int top)
     {
         this.top = top;
@@ -118,7 +122,9 @@ public class InsetBox extends ChildBox
      *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
      *     können, z.B. {@code inset.top(..).right(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public InsetBox right(int right)
     {
         this.right = right;
@@ -152,7 +158,9 @@ public class InsetBox extends ChildBox
      *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
      *     können, z.B. {@code inset.top(..).right(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public InsetBox bottom(int bottom)
     {
         this.bottom = bottom;
@@ -186,7 +194,9 @@ public class InsetBox extends ChildBox
      *     Außenabstand-Box durch aneinander gekettete Setter festgelegt werden
      *     können, z.B. {@code inset.top(..).right(..)}.
      */
+    @API
     @Setter
+    @ChainableMethod
     public InsetBox left(int left)
     {
         this.left = left;
@@ -207,7 +217,9 @@ public class InsetBox extends ChildBox
      *
      * @since 0.40.0
      */
+    @API
     @Setter
+    @ChainableMethod
     public InsetBox allSides(int margin)
     {
         top = margin;

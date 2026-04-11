@@ -44,7 +44,7 @@ public abstract class Box implements Iterable<Box>
      *
      * @since 0.41.0
      */
-    protected List<Box> childs = new ArrayList<Box>();
+    protected List<Box> childs = new ArrayList<>();
 
     /**
      * Die <b>übergeordnete</b> Box, in der diese Box enthalten ist. Dieses
@@ -60,8 +60,8 @@ public abstract class Box implements Iterable<Box>
     private boolean measured;
 
     /**
-     * Gibt an, ob bei dieser Box die Abmessungen gesetzt werden können oder ob
-     * die Abmessungen nur automatisch bestimmt werden können.
+     * Gibt an, ob bei dieser Box die <b>Abmessungen gesetzt</b> werden können
+     * oder ob die Abmessungen nur automatisch bestimmt werden können.
      */
     protected boolean supportsDefinedDimension = false;
 
@@ -140,7 +140,7 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public double widthMeter(double pixelPerMeter)
     {
-        return (double) width / pixelPerMeter;
+        return width / pixelPerMeter;
     }
 
     /**
@@ -157,10 +157,13 @@ public abstract class Box implements Iterable<Box>
     @Setter
     public Box width(int width)
     {
-        if (supportsDefinedDimension)
+        if (!supportsDefinedDimension)
         {
-            definedWidth = width;
+            throw new IllegalArgumentException("Bei der Box "
+                    + getClass().getSimpleName()
+                    + " kann die Breite nicht setzt werden. Sie wird automatische bestimmt.");
         }
+        definedWidth = width;
         return this;
     }
 
@@ -207,7 +210,7 @@ public abstract class Box implements Iterable<Box>
     @Getter
     public double heightMeter(double pixelPerMeter)
     {
-        return (double) height / pixelPerMeter;
+        return height / pixelPerMeter;
     }
 
     /**
@@ -224,10 +227,13 @@ public abstract class Box implements Iterable<Box>
     @Setter
     public Box height(int height)
     {
-        if (supportsDefinedDimension)
+        if (!supportsDefinedDimension)
         {
-            definedHeight = height;
+            throw new IllegalArgumentException("Bei der Box "
+                    + getClass().getSimpleName()
+                    + " kann die Höhe nicht setzt werden. Sie wird automatische bestimmt.");
         }
+        definedHeight = height;
         return this;
     }
 

@@ -56,7 +56,7 @@ public class BoxActor<T extends Box> extends Actor
     protected double scaleFactorX;
 
     /**
-     * Der Skalierungsfaktor in x-Richtung.
+     * Der Skalierungsfaktor in y-Richtung.
      *
      * <p>
      * Dieses Attribut dient als Cache, damit die Abmessungen der Box nicht bei
@@ -231,7 +231,7 @@ public class BoxActor<T extends Box> extends Actor
 
         if (ppm <= 0)
         {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Pixel per Meter darf nicht kleiner gleich 0 sein.");
         }
         return ppm;
@@ -481,8 +481,8 @@ public class BoxActor<T extends Box> extends Actor
 
         if (definedWidth == 0 && definedHeight == 0)
         {
-            height = 1;
             width = widthPx * height / heightPx;
+            height = 1;
         }
         else if (definedWidth == 0)
         {
