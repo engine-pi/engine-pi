@@ -23,10 +23,10 @@ package demos.billard;
 import java.awt.Color;
 
 import pi.Circle;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Vector;
 
-public class Ball extends Circle implements FrameUpdateListener
+public class Ball extends Circle implements FrameListener
 {
     public static final double DIAMETER = 24;
 
@@ -40,7 +40,7 @@ public class Ball extends Circle implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (velocity().length() < 0.2)
         {

@@ -88,7 +88,7 @@ Rotation im Uhrzeigersinn dauert `8` Sekunden.
         toAnimate.color("orange");
         CircleAnimation animation = new CircleAnimation(toAnimate,
                 new Vector(0, 0), 8, true, true);
-        addFrameUpdateListener(animation);
+        addListener(animation);
         add(toAnimate);
 ``` -->
 
@@ -101,7 +101,7 @@ davon die Rechtecksfarbe ändert. Hierzu wird die Methode
 
 <!-- ```java
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (contains(Controller.mousePosition()))
         {
@@ -124,8 +124,8 @@ Kompletter Code MenuItem
 
 Die Kreisrotation in der Hauptszene geht nicht weiter, solange das Pausenmenü
 die aktive Szene ist. Dies liegt daran, dass die Animation als
-`FrameUpdateListener` in der Hauptszene angemeldet wurde
-(`addFrameUpdateListener(animation)`). Alle Beobachter einer Szene können nur
+`Listener` in der Hauptszene angemeldet wurde
+(`addListener(animation)`). Alle Beobachter einer Szene können nur
 dann aufgerufen werden, wenn die Szene aktiv ist.
 Deshalb lässt sich das Pausenmenü nicht durch drücken von P beenden. Der
 `KeyStrokeListener`, der bei Druck von P zum Pausenmenü wechselt, ist in der

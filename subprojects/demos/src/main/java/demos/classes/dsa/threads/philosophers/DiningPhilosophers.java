@@ -24,7 +24,7 @@ import pi.actor.Circle;
 import pi.actor.Line;
 import pi.graphics.geom.Vector;
 import pi.actor.StopWatch;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
 /**
  * Visualisierung des Problems der speisenden Philosophen.
@@ -34,7 +34,7 @@ import pi.event.FrameUpdateListener;
  *
  * @version 1.0
  */
-class DiningPhilosophers extends Scene implements FrameUpdateListener
+class DiningPhilosophers extends Scene implements FrameListener
 {
     /**
      * Verwaltet alle Gabeln.
@@ -102,7 +102,7 @@ class DiningPhilosophers extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         arePhilosophersStarving = true;
         for (Philosopher philosopher : philosophers)

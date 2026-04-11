@@ -271,7 +271,7 @@ public class TurtleScene extends PaintingSurfaceScene
             future.complete(null);
         });
 
-        addFrameUpdateListener(animator);
+        addFrameListener(animator);
 
         try
         {

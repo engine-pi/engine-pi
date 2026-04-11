@@ -19,7 +19,7 @@ public class EventListenerBundle
 {
     public final EventListeners<CollisionListener<?>> collision;
 
-    public final EventListeners<FrameUpdateListener> frameUpdate;
+    public final EventListeners<FrameListener> frameUpdate;
 
     public final EventListeners<KeyStrokeListener> keyStroke;
 

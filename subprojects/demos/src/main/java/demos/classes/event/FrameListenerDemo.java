@@ -22,31 +22,29 @@ import pi.Controller;
 import pi.Layer;
 import pi.Scene;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
 /**
- * Demonstriert die Methode
- * {@link pi.event.FrameUpdateListener#onFrameUpdate(double)}.
+ * Demonstriert die Methode {@link pi.event.FrameListener#onFrame(double)}.
  */
-public class FrameUpdateListenerDemo extends Scene
-        implements FrameUpdateListener
+public class FrameListenerDemo extends Scene implements FrameListener
 {
-    public FrameUpdateListenerDemo()
+    public FrameListenerDemo()
     {
         add(new TextActor());
         addLayer(new MyLayer());
     }
 
-    private class MyLayer extends Layer implements FrameUpdateListener
+    private class MyLayer extends Layer implements FrameListener
     {
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             System.out.println("Layer: " + pastTime);
         }
     }
 
-    private class TextActor extends Text implements FrameUpdateListener
+    private class TextActor extends Text implements FrameListener
     {
         public TextActor()
         {
@@ -56,14 +54,14 @@ public class FrameUpdateListenerDemo extends Scene
         }
 
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             System.out.println("Actor: " + pastTime);
         }
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         System.out.println("Scene: " + pastTime);
     }
@@ -71,6 +69,6 @@ public class FrameUpdateListenerDemo extends Scene
     public static void main(String[] args)
     {
         Controller.debug();
-        Controller.start(new FrameUpdateListenerDemo(), 700, 200);
+        Controller.start(new FrameListenerDemo(), 700, 200);
     }
 }

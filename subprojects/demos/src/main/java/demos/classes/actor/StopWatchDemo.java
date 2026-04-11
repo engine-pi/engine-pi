@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import pi.Controller;
 import pi.Scene;
 import pi.actor.StopWatch;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/main/java/pi/actor/StopWatch.java
@@ -34,7 +34,7 @@ import pi.event.KeyStrokeListener;
  * @since 0.45.0
  */
 public class StopWatchDemo extends Scene
-        implements KeyStrokeListener, FrameUpdateListener
+        implements KeyStrokeListener, FrameListener
 {
     StopWatch watch;
 
@@ -66,7 +66,7 @@ public class StopWatchDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         System.out.println(watch);
     }

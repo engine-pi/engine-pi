@@ -22,12 +22,12 @@ package demos.small_games.dude;
 
 import pi.Layer;
 import pi.actor.Actor;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
 /**
  * Das HUD gibt einige Spieldaten über dem Rest der Szenen-Objekte wieder
  */
-public class HUD extends Layer implements FrameUpdateListener
+public class HUD extends Layer implements FrameListener
 {
     private final HUDDisplay display;
 
@@ -45,7 +45,7 @@ public class HUD extends Layer implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         display.setLineDisplay(0, 1);
         display.setLineDisplay(1,

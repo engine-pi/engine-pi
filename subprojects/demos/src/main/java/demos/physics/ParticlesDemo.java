@@ -30,7 +30,7 @@ import pi.Rectangle;
 import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.ReverseEaseDouble;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
 
@@ -82,7 +82,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         gravity(new Vector(0, -600));
         camera().meter(1);
         left.animateColor(5, Color.YELLOW);
-        this.addFrameUpdateListener(new ValueAnimator<>(5, left::x,
+        this.addFrameListener(new ValueAnimator<>(5, left::x,
                 new ReverseEaseDouble(left.x(), left.x() + 200),
                 AnimationMode.REPEATED, this));
     }
@@ -90,7 +90,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
     private void createCircle(Vector position, Color color)
     {
         Circle circle = new Circle(6);
-        FrameUpdateListener emitter = repeat(0.01, (counter) -> {
+        FrameListener emitter = repeat(0.01, (counter) -> {
             Circle particle = new Circle(3);
             particle.anchor(circle.center().subtract(new Vector(1, 1)));
             particle.color(Color.RED);
@@ -105,7 +105,7 @@ public class ParticlesDemo extends Scene implements KeyStrokeListener
         circle.anchor(position);
         circle.makeDynamic();
         circle.color(color);
-        circle.addFrameUpdateListener(emitter);
+        circle.addFrameListener(emitter);
         add(circle);
     }
 

@@ -23,7 +23,7 @@ import pi.Scene;
 
 /**
  * Demonstriert die Methode
- * {@link pi.event.FrameUpdateListenerRegistration#repeat(double, int, pi.event.PeriodicTask, pi.event.PeriodicTask)}.
+ * {@link pi.event.FrameListenerRegistration#repeat(double, int, pi.event.PeriodicTask, pi.event.PeriodicTask)}.
  *
  * <p>
  * In der Konsole erscheint viermal {@code task} und einmal {@code final task}

@@ -28,12 +28,12 @@ import pi.Controller;
 import pi.actor.Animation;
 import pi.actor.StatefulAnimation;
 import pi.actor.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
 
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
-        implements KeyStrokeListener, FrameUpdateListener
+        implements KeyStrokeListener, FrameListener
 {
     private static final double THRESHOLD = 0.01;
 
@@ -108,7 +108,7 @@ public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();

@@ -20,7 +20,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Rectangle;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
@@ -70,7 +70,7 @@ import tetris.tetrominos.Tetromino;
  * @author Josef Friedrich
  */
 public class GridDebugScene extends BaseScene
-        implements KeyStrokeListener, FrameUpdateListener, MouseClickListener
+        implements KeyStrokeListener, FrameListener, MouseClickListener
 {
     private final Grid GRID;
 
@@ -323,7 +323,7 @@ public class GridDebugScene extends BaseScene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         // Markiert eine Zeile über der sich die Maus befindet. Diese kann dann
         // durch einen Link-Klick getilgt werden.

@@ -25,7 +25,7 @@ import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.util.TimeUtil;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/actor/stop-watch.md
@@ -37,10 +37,10 @@ import pi.util.TimeUtil;
  *
  * <p>
  * Die StopWatch erweitert die {@link Text}-Klasse und implementiert
- * {@link FrameUpdateListener}, um die Anzeige bei jedem Einzelbild zu
- * aktualisieren. Sie unterstützt das Starten, Stoppen, Pausieren und
- * Zurücksetzen der Zeit. Außerdem kann das das Zeitformat im
- * {@link java.util.Formatter printf}-Stil gesetzt werden.
+ * {@link FrameListener}, um die Anzeige bei jedem Einzelbild zu aktualisieren.
+ * Sie unterstützt das Starten, Stoppen, Pausieren und Zurücksetzen der Zeit.
+ * Außerdem kann das das Zeitformat im {@link java.util.Formatter printf}-Stil
+ * gesetzt werden.
  * </p>
  *
  * <p>
@@ -59,7 +59,7 @@ import pi.util.TimeUtil;
  *
  * @since 0.45.0
  */
-public class StopWatch extends Text implements FrameUpdateListener
+public class StopWatch extends Text implements FrameListener
 {
     private long startTimestamp;
 
@@ -344,7 +344,7 @@ public class StopWatch extends Text implements FrameUpdateListener
      * @hidden
      */
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         content(formatTime(time()));
     }

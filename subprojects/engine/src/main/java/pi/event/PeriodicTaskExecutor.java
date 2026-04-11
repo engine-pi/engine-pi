@@ -33,11 +33,11 @@ import pi.annotations.Setter;
  * @author Niklas Keller
  * @author Josef Friedrich
  *
- * @see FrameUpdateListenerRegistration#repeat(double, PeriodicTask)
- * @see FrameUpdateListenerRegistration#repeat(double, int, PeriodicTask,
+ * @see FrameListenerRegistration#repeat(double, PeriodicTask)
+ * @see FrameListenerRegistration#repeat(double, int, PeriodicTask,
  *     PeriodicTask)
  */
-public final class PeriodicTaskExecutor implements FrameUpdateListener
+public final class PeriodicTaskExecutor implements FrameListener
 {
     /**
      * Aktuelle Zeit bis zur nächsten Ausführung in Sekunden.
@@ -79,7 +79,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * Aufgabe angemeldet wurde. Diese Referenz wird dazu verwendet, um die
      * periodische Ausführung abzumelden und dadurch zu stoppen.
      */
-    private FrameUpdateListenerRegistration container;
+    private FrameListenerRegistration container;
 
     /**
      * Gibt an, ob die Aufgabe pausiert ist.
@@ -108,7 +108,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      */
     public PeriodicTaskExecutor(double interval, int repetitions,
             PeriodicTask task, PeriodicTask finalTask,
-            FrameUpdateListenerRegistration container)
+            FrameListenerRegistration container)
     {
         setInterval(interval);
         this.repetitions = repetitions;
@@ -132,7 +132,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      * @author Josef Friedrich
      */
     public PeriodicTaskExecutor(double interval, PeriodicTask task,
-            FrameUpdateListenerRegistration container)
+            FrameListenerRegistration container)
     {
         setInterval(interval);
         this.task = task;
@@ -319,7 +319,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
     {
         if (container != null)
         {
-            container.removeFrameUpdateListener(this);
+            container.removeFrameListener(this);
         }
         else
         {
@@ -340,7 +340,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
     {
         if (container != null)
         {
-            container.removeFrameUpdateListener(this);
+            container.removeFrameListener(this);
         }
     }
 
@@ -352,7 +352,7 @@ public final class PeriodicTaskExecutor implements FrameUpdateListener
      */
     @Override
     @Internal
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (isPaused)
         {

@@ -29,14 +29,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import pi.Controller;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
 /**
  * The TweenEngine is the central manager for Tweens. It tracks all current
  * Tween instances and applies their {@code TweenEquation} with every
  * {@code GameLoop} update.
  */
-public class TweenEngine implements FrameUpdateListener
+public class TweenEngine implements FrameListener
 {
     private final Map<Tweenable, Map<TweenType, Tween>> tweens;
 
@@ -154,7 +154,7 @@ public class TweenEngine implements FrameUpdateListener
      */
     public void start()
     {
-        Controller.addFrameUpdateListener(this);
+        Controller.addFrameListener(this);
     }
 
     /**
@@ -199,14 +199,14 @@ public class TweenEngine implements FrameUpdateListener
      */
     public void terminate()
     {
-        Controller.removeFrameUpdateListener(this);
+        Controller.removeFrameListener(this);
     }
 
     /**
      * Updates all registered Tweens by applying the {@code TweenEquation}.
      */
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         for (final Tweenable target : this.getTweens().keySet())
         {

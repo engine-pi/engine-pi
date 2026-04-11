@@ -24,8 +24,8 @@ import java.util.function.Consumer;
 
 import pi.annotations.API;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
-import pi.event.FrameUpdateListenerRegistration;
+import pi.event.FrameListener;
+import pi.event.FrameListenerRegistration;
 
 /**
  * Ein Animator, der Werte über eine bestimmte Zeitspanne interpoliert und dabei
@@ -60,9 +60,9 @@ import pi.event.FrameUpdateListenerRegistration;
  *
  * @see Interpolator
  * @see AnimationMode
- * @see FrameUpdateListener
+ * @see FrameListener
  */
-public class ValueAnimator<T> implements FrameUpdateListener
+public class ValueAnimator<T> implements FrameListener
 {
     /**
      * Die <b>Dauer</b> der Animation in Sekunden.
@@ -109,13 +109,13 @@ public class ValueAnimator<T> implements FrameUpdateListener
      *     für einmalige Ausführung).
      * @param parent Die Figur, Szene oder Ebene, die diesen Animator über die
      *     Methode
-     *     {@link FrameUpdateListenerRegistration#addFrameUpdateListener(FrameUpdateListener)}
+     *     {@link FrameListenerRegistration#addFrameListener(FrameListener)}
      *     registriert, damit der Animator bei Abschluss der Animation abmeldet
      *     werden kann.
      */
     public ValueAnimator(double duration, Consumer<T> consumer,
             Interpolator<T> interpolator, AnimationMode mode,
-            FrameUpdateListenerRegistration parent)
+            FrameListenerRegistration parent)
     {
         this.duration = duration;
         this.consumer = consumer;
@@ -123,7 +123,7 @@ public class ValueAnimator<T> implements FrameUpdateListener
         this.mode = mode;
         if (mode == AnimationMode.SINGLE)
         {
-            addCompletionListener(v -> parent.removeFrameUpdateListener(this));
+            addCompletionListener(v -> parent.removeFrameListener(this));
         }
     }
 
@@ -135,13 +135,12 @@ public class ValueAnimator<T> implements FrameUpdateListener
      *     und Ende berechnet.
      * @param parent Die Figur, Szene oder Ebene, die diesen Animator über die
      *     Methode
-     *     {@link FrameUpdateListenerRegistration#addFrameUpdateListener(FrameUpdateListener)}
+     *     {@link FrameListenerRegistration#addFrameListener(FrameListener)}
      *     registriert, damit der Animator bei Abschluss der Animation abmeldet
      *     werden kann.
      */
     public ValueAnimator(double duration, Consumer<T> consumer,
-            Interpolator<T> interpolator,
-            FrameUpdateListenerRegistration parent)
+            Interpolator<T> interpolator, FrameListenerRegistration parent)
     {
         this(duration, consumer, interpolator, AnimationMode.SINGLE, parent);
     }
@@ -197,7 +196,7 @@ public class ValueAnimator<T> implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (paused)
         {

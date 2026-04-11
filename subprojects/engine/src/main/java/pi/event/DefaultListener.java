@@ -17,10 +17,10 @@ import pi.graphics.geom.Vector;
  *
  * @since 0.15.0
  */
-public interface DefaultListener extends FrameUpdateListener, KeyStrokeListener,
+public interface DefaultListener extends FrameListener, KeyStrokeListener,
         MouseClickListener, MouseScrollListener
 {
-    default void onFrameUpdate(double pastTime)
+    default void onFrame(double pastTime)
     {
         // Standardmäßig leer.
     }

@@ -23,7 +23,7 @@ import pi.Controller;
 import pi.Scene;
 import pi.actor.Image;
 import pi.actor.Line;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 
@@ -33,7 +33,7 @@ import pi.graphics.geom.Vector;
 /**
  * Demonstriert die Klasse {@link Camera}.
  */
-public class CameraDemo extends Scene implements FrameUpdateListener
+public class CameraDemo extends Scene implements FrameListener
 {
     Camera camera;
 
@@ -65,7 +65,7 @@ public class CameraDemo extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         var position = Controller.mousePositionInFrame();
         var size = Controller.windowSize();

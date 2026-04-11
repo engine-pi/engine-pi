@@ -25,7 +25,7 @@ import pi.animation.interpolation.CosinusDouble;
 import pi.animation.interpolation.LinearDouble;
 import pi.animation.interpolation.SinusDouble;
 import pi.annotations.API;
-import pi.event.AggregateFrameUpdateListener;
+import pi.event.AggregateFrameListener;
 import pi.graphics.geom.Vector;
 
 /**
@@ -33,7 +33,7 @@ import pi.graphics.geom.Vector;
  *
  * @author Michael Andonie
  */
-public class CircleAnimation extends AggregateFrameUpdateListener
+public class CircleAnimation extends AggregateFrameListener
 {
     /**
      * Erstellt eine Circle-Animation. Animiert ein {@link Actor}-Objekt anhand
@@ -81,8 +81,8 @@ public class CircleAnimation extends AggregateFrameUpdateListener
         double actualProgress = angle / 360;
         aX.setProgress(actualProgress);
         aY.setProgress(actualProgress);
-        addFrameUpdateListener(aX);
-        addFrameUpdateListener(aY);
+        addFrameListener(aX);
+        addFrameListener(aY);
         if (rotateActor)
         {
             double rotationAngle = circleClockwise ? angle : -angle;
@@ -92,7 +92,7 @@ public class CircleAnimation extends AggregateFrameUpdateListener
                             -rotationAngle + 360 * (circleClockwise ? -1 : 1)),
                     AnimationMode.REPEATED, actor);
             aR.setProgress(actualProgress);
-            addFrameUpdateListener(aR);
+            addFrameListener(aR);
         }
     }
 }

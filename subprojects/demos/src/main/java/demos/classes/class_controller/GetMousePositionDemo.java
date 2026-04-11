@@ -21,14 +21,14 @@ package demos.classes.class_controller;
 import pi.Controller;
 import pi.Scene;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Vector;
 import pi.util.TextUtil;
 
 /**
  * Demonstriert die Methode {@link Controller#mousePosition()}.
  */
-public class GetMousePositionDemo extends Scene implements FrameUpdateListener
+public class GetMousePositionDemo extends Scene implements FrameListener
 {
     private final Text x;
 
@@ -47,7 +47,7 @@ public class GetMousePositionDemo extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector position = Controller.mousePosition();
         x.content(TextUtil.roundNumber(position.x()));

@@ -85,7 +85,7 @@ public class PeriodicTaskExecutorDemo extends Scene
             task = new PeriodicTaskExecutor(0.1, (counter) -> {
                 content(counter);
             });
-            addFrameUpdateListener(task);
+            addFrameListener(task);
         }
 
         public void stop()

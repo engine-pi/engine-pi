@@ -28,7 +28,7 @@ import pi.Random;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -99,7 +99,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             .help("Eine beliebige Taste öffnet den Trichter");
         // Trichter
         new Funnel();
-        repeat(0.2, (counter) -> {
+        repeat(0.2, counter -> {
             Circle marble = makeMarble();
             add(marble);
             marble.makeDynamic();
@@ -137,7 +137,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
      */
     public Circle makeMarble()
     {
-        class Marble extends Circle implements FrameUpdateListener
+        class Marble extends Circle implements FrameListener
         {
             public Marble(float diameter)
             {
@@ -145,7 +145,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
             }
 
             @Override
-            public void onFrameUpdate(double pastTime)
+            public void onFrame(double pastTime)
             {
                 if (this.center().length() > 1000)
                 {
@@ -153,7 +153,7 @@ public class MarbleDemo extends Scene implements KeyStrokeListener
                 }
             }
         }
-        Circle marble = new Marble(Random.range(20) + 10);
+        Circle marble = new Marble((float) Random.range(20) + 10);
         marble.makeDynamic();
         marble.gravityScale(2);
         marble.color(

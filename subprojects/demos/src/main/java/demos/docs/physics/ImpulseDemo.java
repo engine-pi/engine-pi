@@ -26,13 +26,13 @@ import pi.Controller;
 import pi.Scene;
 import pi.Circle;
 import pi.Rectangle;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
 
 public class ImpulseDemo extends Scene
-        implements FrameUpdateListener, MouseClickListener
+        implements FrameListener, MouseClickListener
 {
     private Rectangle ground;
 
@@ -95,7 +95,7 @@ public class ImpulseDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector mousePosition = mousePosition();
         Vector ballCenter = ball.center();

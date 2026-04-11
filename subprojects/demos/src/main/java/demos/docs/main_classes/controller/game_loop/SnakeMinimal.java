@@ -29,7 +29,7 @@ import pi.Circle;
 import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
 
@@ -73,7 +73,7 @@ public class SnakeMinimal extends Scene
     }
 
     private class Snake extends Circle
-            implements FrameUpdateListener, KeyStrokeListener
+            implements FrameListener, KeyStrokeListener
     {
         private Vector movement = new Vector(0, 0);
 
@@ -84,7 +84,7 @@ public class SnakeMinimal extends Scene
         }
 
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             moveBy(movement.multiply(pastTime));
         }

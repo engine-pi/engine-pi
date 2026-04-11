@@ -24,9 +24,9 @@ import pi.Controller;
 import pi.Random;
 import pi.Scene;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
-public class SnakeScene extends Scene implements FrameUpdateListener
+public class SnakeScene extends Scene implements FrameListener
 {
     private Text scoreText = new Text("Score: 0");
 
@@ -72,7 +72,7 @@ public class SnakeScene extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double timeInS)
+    public void onFrame(double timeInS)
     {
         if (Controller.isKeyPressed(KeyEvent.VK_W))
         {

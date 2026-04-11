@@ -40,7 +40,7 @@ import pi.actor.Actor;
 import pi.actor.Logo;
 import pi.actor.Polygon;
 import pi.annotations.Internal;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Vector;
 import pi.resources.color.ColorUtil;
 
@@ -61,7 +61,7 @@ import pi.resources.color.ColorUtil;
  * @hidden
  */
 @Internal
-public class MainAnimation extends Scene implements FrameUpdateListener
+public class MainAnimation extends Scene implements FrameListener
 {
     /**
      * Eine etwas dunklere Farbe, damit sich die kleinen Figuren vom Logo
@@ -211,7 +211,7 @@ public class MainAnimation extends Scene implements FrameUpdateListener
      * wird sie wieder von oben heruntergeworfen.
      */
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         for (Actor item : items)
         {

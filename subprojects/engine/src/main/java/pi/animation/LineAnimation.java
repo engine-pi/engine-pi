@@ -22,13 +22,13 @@ package pi.animation;
 
 import pi.actor.Actor;
 import pi.animation.interpolation.LinearDouble;
-import pi.event.AggregateFrameUpdateListener;
+import pi.event.AggregateFrameListener;
 import pi.graphics.geom.Vector;
 
 /**
  * Eine Animation, die ein {@link Actor}-Objekt in einer Linie animiert.
  */
-public class LineAnimation extends AggregateFrameUpdateListener
+public class LineAnimation extends AggregateFrameListener
 {
     /**
      * Erstellt eine neue Linien-Animation.
@@ -49,12 +49,12 @@ public class LineAnimation extends AggregateFrameUpdateListener
             boolean pingpong)
     {
         Vector center = actor.center();
-        addFrameUpdateListener(new ValueAnimator<>(durationInSeconds,
+        addFrameListener(new ValueAnimator<>(durationInSeconds,
                 x -> actor.center(x, actor.center().y()),
                 new LinearDouble(center.x(), endPoint.x()),
                 pingpong ? AnimationMode.PING_PONG : AnimationMode.SINGLE,
                 this));
-        addFrameUpdateListener(new ValueAnimator<>(durationInSeconds,
+        addFrameListener(new ValueAnimator<>(durationInSeconds,
                 y -> actor.center(actor.center().x(), y),
                 new LinearDouble(center.y(), endPoint.y()),
                 pingpong ? AnimationMode.PING_PONG : AnimationMode.SINGLE,

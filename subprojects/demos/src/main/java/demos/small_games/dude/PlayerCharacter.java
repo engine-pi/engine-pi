@@ -36,12 +36,12 @@ import pi.animation.ValueAnimator;
 import pi.animation.interpolation.SinusDouble;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.graphics.geom.Vector;
 
-public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
-        CollisionListener<Actor>, FrameUpdateListener, KeyStrokeListener
+public class PlayerCharacter extends StatefulAnimation<PlayerState>
+        implements CollisionListener<Actor>, FrameListener, KeyStrokeListener
 {
     private static final double MAX_SPEED = 100;
 
@@ -223,7 +223,7 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         gameData.setPlayerVelocity(velocity.length());
@@ -433,10 +433,9 @@ public class PlayerCharacter extends StatefulAnimation<PlayerState> implements
                             .camera()
                             .offset(originalOffset.add(new Vector(0, y))),
                         interpolator, layer());
-                layer().addFrameUpdateListener(valueAnimator);
+                layer().addFrameListener(valueAnimator);
                 valueAnimator.addCompletionListener(
-                    value -> layer().frameUpdateListeners()
-                        .remove(valueAnimator));
+                    value -> layer().frameListeners().remove(valueAnimator));
             }
             Vector speed = physicsHandler().velocity();
             Vector transformedSpeed = Math.abs(speed.x()) < .1

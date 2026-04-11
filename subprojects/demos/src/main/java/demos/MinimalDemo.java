@@ -29,13 +29,13 @@ import pi.actor.Animation;
 import pi.Rectangle;
 import pi.actor.StatefulAnimation;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.event.MouseScrollEvent;
 import pi.event.MouseScrollListener;
 
 public class MinimalDemo extends Scene
-        implements KeyStrokeListener, MouseScrollListener, FrameUpdateListener
+        implements KeyStrokeListener, MouseScrollListener, FrameListener
 {
     private static final int WIDTH = 1020;
 
@@ -116,7 +116,7 @@ public class MinimalDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         // Die Geschwindigkeit, in der sich die Kamera bewegt (pro Sekunde)
         float camSpeed = 600;

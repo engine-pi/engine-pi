@@ -538,15 +538,15 @@ public final class Camera
     }
 
     /**
-     * Implementiert den {@link pi.event.FrameUpdateListener} nicht, da die
-     * Kamera an einem anderen Zeitpunkt aktualisiert wird.
+     * Implementiert den {@link pi.event.FrameListener} nicht, da die Kamera an
+     * einem anderen Zeitpunkt aktualisiert wird.
      *
      * @see pi.loop.GameLoop#run()
      *
      * @hidden
      */
     @Internal
-    public void onFrameUpdate()
+    public void onFrame()
     {
         if (hasFocus())
         {

@@ -19,7 +19,7 @@
  *
  * <ul>
  * <li>Collision: {@link pi.event.CollisionListener}</li>
- * <li>FrameUpdate: {@link pi.event.FrameUpdateListener}</li>
+ * <li>Frame: {@link pi.event.FrameListener}</li>
  * <li>KeyStroke: {@link pi.event.KeyStrokeListener}</li>
  * <li>MouseClick: {@link pi.event.MouseClickListener}</li>
  * <li>MouseScroll: {@link pi.event.MouseScrollListener}</li>

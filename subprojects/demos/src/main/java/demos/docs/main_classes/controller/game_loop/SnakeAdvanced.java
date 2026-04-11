@@ -29,12 +29,12 @@ import pi.Circle;
 import pi.Text;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Vector;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/controller/game-loop.md
 
-public class SnakeAdvanced extends Scene implements FrameUpdateListener
+public class SnakeAdvanced extends Scene implements FrameListener
 {
     private Text scoreText = new Text("Score: 0");
 
@@ -77,7 +77,7 @@ public class SnakeAdvanced extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         double dX = 0, dY = 0;
         if (Controller.isKeyPressed(KeyEvent.VK_W))

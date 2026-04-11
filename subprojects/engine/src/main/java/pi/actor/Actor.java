@@ -68,8 +68,8 @@ import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.event.EventListenerBundle;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
-import pi.event.FrameUpdateListenerRegistration;
+import pi.event.FrameListener;
+import pi.event.FrameListenerRegistration;
 import pi.event.KeyStrokeListener;
 import pi.event.KeyStrokeListenerRegistration;
 import pi.event.MouseClickListener;
@@ -112,7 +112,7 @@ import pi.util.TextUtil;
 @SuppressWarnings("OverlyComplexClass")
 public abstract class Actor implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration
+        FrameListenerRegistration
 {
     private <T> Supplier<T> createParentSupplier(Function<Layer, T> supplier)
     {
@@ -142,8 +142,8 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>(
             createParentSupplier(Layer::mouseScrollListeners));
 
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>(
-            createParentSupplier(Layer::frameUpdateListeners));
+    private final EventListeners<FrameListener> frameUpdateListeners = new EventListeners<>(
+            createParentSupplier(Layer::frameListeners));
 
     /**
      * Erstellt ein neue <b>Figur</b>.
@@ -583,7 +583,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
                 progress -> color(
                     ColorUtil.interpolate(originalColor, color, progress)),
                 new LinearDouble(0, 1), AnimationMode.SINGLE, this);
-        addFrameUpdateListener(animator);
+        addFrameListener(animator);
         return animator;
     }
 
@@ -1000,7 +1000,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             keyStrokeListeners.invoke(layer::removeKeyStrokeListener);
             mouseClickListeners.invoke(layer::removeMouseClickListener);
             mouseScrollListeners.invoke(layer::removeMouseScrollListener);
-            frameUpdateListeners.invoke(layer::removeFrameUpdateListener);
+            frameUpdateListeners.invoke(layer::removeFrameListener);
             listeners.unmount.invoke(Runnable::run);
             physics = handler;
         }
@@ -1016,7 +1016,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
             keyStrokeListeners.invoke(layer::addKeyStrokeListener);
             mouseClickListeners.invoke(layer::addMouseClickListener);
             mouseScrollListeners.invoke(layer::addMouseScrollListener);
-            frameUpdateListeners.invoke(layer::addFrameUpdateListener);
+            frameUpdateListeners.invoke(layer::addFrameListener);
         }
         return this;
     }
@@ -1096,10 +1096,10 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * @return Liste der {@link FrameUpdateListener}.
+     * @return Liste der {@link FrameListener}.
      */
     @API
-    public final EventListeners<FrameUpdateListener> frameUpdateListeners()
+    public final EventListeners<FrameListener> frameListeners()
     {
         return frameUpdateListeners;
     }
@@ -2401,7 +2401,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         ValueAnimator<Double> animator = new ValueAnimator<>(time,
                 this::opacity, new EaseInOutDouble(opacity(), toOpacityValue),
                 this);
-        addFrameUpdateListener(animator);
+        addFrameListener(animator);
         return animator;
     }
 

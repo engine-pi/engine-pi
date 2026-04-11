@@ -58,7 +58,7 @@ public class MainMenuScene extends Scene implements WindowScene
                         .launchScene((WindowScene) new SubMenuScene(main));
                 }
             });
-            rectangle.addFrameUpdateListener((deltaSeconds) -> {
+            rectangle.addFrameListener((deltaSeconds) -> {
                 if (rectangle.contains(pi.Controller.mousePosition()))
                 {
                     rectangle.opacity(0.5f);

@@ -26,10 +26,10 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Image;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.geom.Vector;
 
-class Frog extends Image implements FrameUpdateListener
+class Frog extends Image implements FrameListener
 {
     private boolean canJump = true;
 
@@ -54,7 +54,7 @@ class Frog extends Image implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = this.velocity();
         // A: Die Blickrichtung des Frosches steuern

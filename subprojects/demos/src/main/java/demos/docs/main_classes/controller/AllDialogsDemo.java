@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 import pi.Controller;
 import pi.Scene;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
@@ -97,8 +97,7 @@ public class AllDialogsDemo extends Scene
                 x, y4);
     }
 
-    class DialogOpener extends Text
-            implements MouseClickListener, FrameUpdateListener
+    class DialogOpener extends Text implements MouseClickListener, FrameListener
     {
         Supplier<Object> supplier;
 
@@ -121,7 +120,7 @@ public class AllDialogsDemo extends Scene
         }
 
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             if (contains(Controller.mousePosition()))
             {

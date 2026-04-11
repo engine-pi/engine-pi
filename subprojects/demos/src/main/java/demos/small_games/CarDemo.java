@@ -41,7 +41,7 @@ import pi.Rectangle;
 import pi.actor.TileRegistration;
 import pi.actor.TileMap;
 import pi.event.CollisionEvent;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.PeriodicTask;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -49,7 +49,7 @@ import pi.physics.FixtureBuilder;
 import pi.physics.joints.PrismaticJoint;
 import pi.physics.joints.RevoluteJoint;
 
-public class CarDemo extends Scene implements FrameUpdateListener
+public class CarDemo extends Scene implements FrameListener
 {
     private static final int WIDTH = 1240;
 
@@ -207,7 +207,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         boolean left = Controller.isKeyPressed(KeyEvent.VK_J);
         boolean right = Controller.isKeyPressed(KeyEvent.VK_L);
@@ -317,7 +317,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         }
     }
 
-    private static class Axle extends Rectangle implements FrameUpdateListener
+    private static class Axle extends Rectangle implements FrameListener
     {
         private final PrismaticJoint spring;
 
@@ -340,7 +340,7 @@ public class CarDemo extends Scene implements FrameUpdateListener
         }
 
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             // Federeffekt für die Achsen
             double translation = spring.translation();

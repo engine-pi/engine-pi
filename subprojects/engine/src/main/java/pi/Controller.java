@@ -46,7 +46,7 @@ import pi.debug.MainAnimation;
 import pi.event.DefaultControl;
 import pi.event.DefaultListener;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.event.KeyStrokeListenerRegistration;
 import pi.event.MouseButton;
@@ -556,7 +556,7 @@ public class Controller
         defaultControl = control;
         if (control != null)
         {
-            addFrameUpdateListener(defaultControl);
+            addFrameListener(defaultControl);
             addKeyStrokeListener(defaultControl);
             addMouseClickListener(defaultControl);
             addMouseScrollListener(defaultControl);
@@ -573,7 +573,7 @@ public class Controller
     {
         if (defaultControl != null)
         {
-            removeFrameUpdateListener(defaultControl);
+            removeFrameListener(defaultControl);
             removeKeyStrokeListener(defaultControl);
             removeMouseClickListener(defaultControl);
             removeMouseScrollListener(defaultControl);
@@ -605,14 +605,13 @@ public class Controller
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
      *
      * @return Der Rückgabewert ist mit dem Eingabeparameter identisch. Dieser
-     *     Wert kann dann mit dem Datentyp {@link FrameUpdateListener} einer
-     *     lokalen Variablen bzw. einem Attribut zugewiesen werden und später
-     *     zum Abmelden verwendet werden.
+     *     Wert kann dann mit dem Datentyp {@link FrameListener} einer lokalen
+     *     Variablen bzw. einem Attribut zugewiesen werden und später zum
+     *     Abmelden verwendet werden.
      *
      * @author Josef Friedrich
      */
-    public static FrameUpdateListener addFrameUpdateListener(
-            FrameUpdateListener listener)
+    public static FrameListener addFrameListener(FrameListener listener)
     {
         if (loop != null)
         {
@@ -638,7 +637,7 @@ public class Controller
      *
      * @param listener Der Beobachter, der auf Bildaktualisierungen reagiert.
      */
-    public static void removeFrameUpdateListener(FrameUpdateListener listener)
+    public static void removeFrameListener(FrameListener listener)
     {
         loop.frameUpdateListener().remove(listener);
     }

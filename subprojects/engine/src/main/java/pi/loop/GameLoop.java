@@ -38,7 +38,7 @@ import pi.annotations.Internal;
 import pi.debug.CoordinateSystemDrawer;
 import pi.debug.DebugInfoBoxDrawer;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.RenderTarget;
 import pi.util.Graphics2DUtil;
 
@@ -87,7 +87,7 @@ public final class GameLoop
     /**
      * Für globale Beobachter, die auf Bildaktualisierung reagieren.
      */
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+    private final EventListeners<FrameListener> frameUpdateListeners = new EventListeners<>();
 
     private DebugInfoBoxDrawer infoBoxDrawer;
 
@@ -169,7 +169,7 @@ public final class GameLoop
      * <li>Berechnet die verstrichene Zeit seit dem letzten Frame (maximal 2x
      * die gewünschte Frame-Dauer)</li>
      * <li>Aktualisiert die aktuelle Szene mit der verstrichenen Zeit</li>
-     * <li>Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.</li>
+     * <li>Ruft die {@link FrameListener} der aktuellen Szene auf.</li>
      * <li>Aktualisiert die Kamera der aktuellen Szene</li>
      * <li>Verarbeitet alle ausstehenden Aufgaben aus der Dispatch-Queue</li>
      * <li>Rendert den aktuellen Frame</li>
@@ -202,11 +202,11 @@ public final class GameLoop
                 scene.step(pastTime, threadPoolExecutor::submit);
                 // Beobachter der Bildaktualisierung.
                 frameUpdateListeners
-                    .invoke(listener -> listener.onFrameUpdate(pastTime));
+                    .invoke(listener -> listener.onFrame(pastTime));
                 // Aktualisiert die Kamera der aktuellen Szene
-                scene.camera().onFrameUpdate();
-                // Ruft die {@link FrameUpdateListener} der aktuellen Szene auf.
-                scene.invokeFrameUpdateListeners(pastTime);
+                scene.camera().onFrame();
+                // Ruft die {@link FrameListener} der aktuellen Szene auf.
+                scene.invokeFrameListeners(pastTime);
                 Runnable runnable = dispatchableQueue.poll();
                 while (runnable != null)
                 {
@@ -257,7 +257,7 @@ public final class GameLoop
     }
 
     @Getter
-    public EventListeners<FrameUpdateListener> frameUpdateListener()
+    public EventListeners<FrameListener> frameUpdateListener()
     {
         return frameUpdateListeners;
     }

@@ -43,7 +43,7 @@ public class SubMenuScene extends Scene implements WindowScene
                         LevelsScene.launch(id);
                     }
                 });
-                text.addFrameUpdateListener((deltaSeconds) -> {
+                text.addFrameListener((deltaSeconds) -> {
                     if (text.contains(pi.Controller.mousePosition()))
                     {
                         text.opacity(0.5f);

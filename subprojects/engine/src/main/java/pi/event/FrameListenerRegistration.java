@@ -27,35 +27,35 @@ import pi.annotations.API;
  * <b>Aktualisierungen der Einzelbilder</b> reagieren.
  *
  * <p>
- * Die Schnittstelle {@link FrameUpdateListenerRegistration} definiert Methoden
- * zur Zeitsteuerung. Sie wird von den Klassen {@link pi.actor.Actor Actor},
+ * Die Schnittstelle {@link FrameListenerRegistration} definiert Methoden zur
+ * Zeitsteuerung. Sie wird von den Klassen {@link pi.actor.Actor Actor},
  * {@link pi.Scene Scene} und {@link pi.Layer Layer} implementiert.
  * </p>
  */
 @API
-public interface FrameUpdateListenerRegistration
+public interface FrameListenerRegistration
 {
     /**
-     * @return Liste der {@link FrameUpdateListener}
+     * @return Liste der {@link FrameListener}
      */
-    EventListeners<FrameUpdateListener> frameUpdateListeners();
+    EventListeners<FrameListener> frameListeners();
 
     /**
-     * Fügt einen neuen {@link FrameUpdateListener} hinzu.
+     * Fügt einen neuen {@link FrameListener} hinzu.
      */
     @API
-    default void addFrameUpdateListener(FrameUpdateListener listener)
+    default void addFrameListener(FrameListener listener)
     {
-        frameUpdateListeners().add(listener);
+        frameListeners().add(listener);
     }
 
     /**
-     * Entfernt einen {@link FrameUpdateListener}.
+     * Entfernt einen {@link FrameListener}.
      */
     @API
-    default void removeFrameUpdateListener(FrameUpdateListener listener)
+    default void removeFrameListener(FrameListener listener)
     {
-        frameUpdateListeners().remove(listener);
+        frameListeners().remove(listener);
     }
 
     /**
@@ -72,16 +72,16 @@ public interface FrameUpdateListenerRegistration
     @API
     default void defer(Runnable task)
     {
-        FrameUpdateListener frameUpdateListener = new FrameUpdateListener()
+        FrameListener frameUpdateListener = new FrameListener()
         {
             @Override
-            public void onFrameUpdate(double time)
+            public void onFrame(double time)
             {
-                removeFrameUpdateListener(this);
+                removeFrameListener(this);
                 task.run();
             }
         };
-        addFrameUpdateListener(frameUpdateListener);
+        addFrameListener(frameUpdateListener);
     }
 
     /**
@@ -99,7 +99,7 @@ public interface FrameUpdateListenerRegistration
     default SingleTask delay(double delay, Runnable task)
     {
         SingleTask singleTask = new SingleTask(delay, task, this);
-        addFrameUpdateListener(singleTask);
+        addFrameListener(singleTask);
         return singleTask;
     }
 
@@ -123,7 +123,7 @@ public interface FrameUpdateListenerRegistration
     {
         PeriodicTaskExecutor periodicTask = new PeriodicTaskExecutor(interval,
                 repetitions, task, finalTask, this);
-        addFrameUpdateListener(periodicTask);
+        addFrameListener(periodicTask);
         return periodicTask;
     }
 
@@ -161,7 +161,7 @@ public interface FrameUpdateListenerRegistration
     default PeriodicTaskExecutor repeat(double interval, int repetitions,
             Runnable task)
     {
-        return repeat(interval, repetitions, (counter) -> task.run(), null);
+        return repeat(interval, repetitions, counter -> task.run(), null);
     }
 
     /**
@@ -193,6 +193,6 @@ public interface FrameUpdateListenerRegistration
     @API
     default PeriodicTaskExecutor repeat(double interval, Runnable task)
     {
-        return repeat(interval, -1, (counter) -> task.run(), null);
+        return repeat(interval, -1, counter -> task.run(), null);
     }
 }

@@ -16,7 +16,7 @@ Bevor wir die Physik einschalten, bauen wir das Spielfeld mit allen Objekten auf
 
 ```java
 public class ImpulseDemo extends Scene
-        implements FrameUpdateListener, MouseClickListener
+        implements Listener, MouseClickListener
 {
     private Rectangle ground;
 
@@ -123,7 +123,7 @@ Impulses markiert:
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
-Dafür implementiert die Dominoes-Klasse das Interface `FrameUpdateListener` und
+Dafür implementiert die Dominoes-Klasse das Interface `Listener` und
 berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
 den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 

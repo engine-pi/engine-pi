@@ -145,7 +145,7 @@ public class DefaultControl implements DefaultListener
      *     Aktualisierung vergangen ist.
      */
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (hasNoScene())
         {

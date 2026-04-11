@@ -78,8 +78,7 @@ public class SceneInfoOverlay
 {
     /**
      * Die Referenz auf die übergeordnete Szene wird benötigt, um Zugriff auf
-     * die
-     * {@link pi.event.FrameUpdateListenerRegistration#delay(double, Runnable)
+     * die {@link pi.event.FrameListenerRegistration#delay(double, Runnable)
      * delay}-Methode zu haben.
      */
     private final @NonNull Scene scene;

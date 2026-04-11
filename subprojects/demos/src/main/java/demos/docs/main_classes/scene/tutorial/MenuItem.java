@@ -26,13 +26,13 @@ import pi.Controller;
 import pi.Rectangle;
 import pi.Scene;
 import pi.Text;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
 
 public class MenuItem extends Rectangle
-        implements MouseClickListener, FrameUpdateListener
+        implements MouseClickListener, FrameListener
 {
     final Text label;
 
@@ -61,7 +61,7 @@ public class MenuItem extends Rectangle
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (contains(Controller.mousePosition()))
         {

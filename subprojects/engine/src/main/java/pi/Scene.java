@@ -40,8 +40,8 @@ import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
-import pi.event.FrameUpdateListenerRegistration;
+import pi.event.FrameListener;
+import pi.event.FrameListenerRegistration;
 import pi.event.KeyStrokeListener;
 import pi.event.KeyStrokeListenerRegistration;
 import pi.event.MouseButton;
@@ -71,7 +71,7 @@ import static pi.Controller.colors;
  */
 public class Scene implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration, RenderSource
+        FrameListenerRegistration, RenderSource
 {
     private static final Color REVOLUTE_JOINT_COLOR = Color.BLUE;
 
@@ -807,11 +807,11 @@ public class Scene implements KeyStrokeListenerRegistration,
 
     /* frameUpdateListeners */
 
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+    private final EventListeners<FrameListener> frameUpdateListeners = new EventListeners<>();
 
     @API
     @Getter
-    public EventListeners<FrameUpdateListener> frameUpdateListeners()
+    public EventListeners<FrameListener> frameListeners()
     {
         return frameUpdateListeners;
     }
@@ -820,15 +820,15 @@ public class Scene implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    public final void invokeFrameUpdateListeners(double pastTime)
+    public final void invokeFrameListeners(double pastTime)
     {
         frameUpdateListeners.invoke(
-            frameUpdateListener -> frameUpdateListener.onFrameUpdate(pastTime));
+            frameUpdateListener -> frameUpdateListener.onFrame(pastTime));
         synchronized (layers)
         {
             for (Layer layer : layers)
             {
-                layer.invokeFrameUpdateListeners(pastTime);
+                layer.invokeFrameListeners(pastTime);
             }
         }
     }

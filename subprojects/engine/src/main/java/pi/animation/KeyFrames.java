@@ -26,14 +26,14 @@ import java.util.function.Consumer;
 
 import pi.animation.interpolation.ConstantInterpolator;
 import pi.annotations.API;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 
 /**
  * Utility-Klasse
  *
  * @author Michael Andonie
  */
-public class KeyFrames implements FrameUpdateListener
+public class KeyFrames implements FrameListener
 {
     /**
      * Der Consumer, der durch dieses Set an Keyframes animiert wird.
@@ -135,7 +135,7 @@ public class KeyFrames implements FrameUpdateListener
     private final ArrayList<KeyFrame<Double>> keyFrames = new ArrayList<>();
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (paused)
         {

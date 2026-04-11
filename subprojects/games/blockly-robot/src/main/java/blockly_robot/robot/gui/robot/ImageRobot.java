@@ -316,7 +316,7 @@ public class ImageRobot extends Image implements Robot
             setter.accept(value);
             future.complete(null);
         });
-        addFrameUpdateListener(animator);
+        addFrameListener(animator);
         try
         {
             future.get();

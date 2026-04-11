@@ -192,10 +192,10 @@ public final class EventListeners<T>
             ((MouseScrollListenerRegistration) target)
                 .addMouseScrollListener((MouseScrollListener) target);
         }
-        if (target instanceof FrameUpdateListener)
+        if (target instanceof FrameListener)
         {
-            ((FrameUpdateListenerRegistration) target)
-                .addFrameUpdateListener((FrameUpdateListener) target);
+            ((FrameListenerRegistration) target)
+                .addFrameListener((FrameListener) target);
         }
     }
 }

@@ -27,7 +27,7 @@ import pi.event.PeriodicTaskExecutor;
 
 /**
  * Demonstriert die Methode
- * {@link pi.event.FrameUpdateListenerRegistration#repeat(double, pi.event.PeriodicTask)}.
+ * {@link pi.event.FrameListenerRegistration#repeat(double, pi.event.PeriodicTask)}.
  *
  * <p>
  * Im Spielfenster wird eine Zahl hochgezählt. Über die <b>Leertaste</b> kann

@@ -89,8 +89,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
     /**
      * Führt die einzelnen Aufgaben einer Tastenaktion aus.
      */
-    private class PressedKeyExecutor
-            implements FrameUpdateListener, KeyStrokeListener
+    private class PressedKeyExecutor implements FrameListener, KeyStrokeListener
     {
         private double countdown;
 
@@ -101,13 +100,13 @@ public class PressedKeyRepeater implements KeyStrokeListener
             this.action = action;
             countdown = action.initialInterval();
             Controller.addKeyStrokeListener(this);
-            Controller.addFrameUpdateListener(this);
+            Controller.addFrameListener(this);
             action.runInitialTask();
             action.runRepeatedTask();
         }
 
         @Override
-        public void onFrameUpdate(double pastTime)
+        public void onFrame(double pastTime)
         {
             countdown -= pastTime;
             if (countdown < 0)
@@ -124,7 +123,7 @@ public class PressedKeyRepeater implements KeyStrokeListener
 
         public void stop()
         {
-            Controller.removeFrameUpdateListener(this);
+            Controller.removeFrameListener(this);
             Controller.removeKeyStrokeListener(this);
             action.runFinalTask();
         }

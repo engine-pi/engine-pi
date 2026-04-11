@@ -95,7 +95,7 @@ eigentlichen Spielfigur beginnen:
 
 <!-- ```java
 public class StatefulPlayerCharacter extends StatefulAnimation<PlayerState>
-        implements KeyStrokeListener, FrameUpdateListener
+        implements KeyStrokeListener, Listener
 {
 
     public StatefulPlayerCharacter(Text text)
@@ -265,7 +265,7 @@ Schwellwerte. Stattdessen definieren wir einen Grenzwert, innerhalb dessen wir
 auf `0` runden. (`#!java private static final float THRESHOLD = 0.01;`).
 
 Unsere Spielfigur soll in jedem Einzelbild ihre eigene `Y`-Geschwidingkeit
-überprüfen. Dazu implementiert sie nun zusätzlich `#!java FrameUpdateListener` und
+überprüfen. Dazu implementiert sie nun zusätzlich `#!java Listener` und
 prüft in jedem Frame entsprechend unseres Zustandsübergangsdiagrammes:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Full_Jump2.gif') }}
@@ -275,7 +275,7 @@ Die Figur hat jetzt einen vollen Sprungzyklus
 
 <!-- ```java
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();
@@ -341,7 +341,7 @@ Konstanten in der Klasse der Figur, um diese Werte schnell ändern zu können:
 {{ code('demos.docs.main_classes.actor.stateful_animation.StatefulPlayerCharacter.java', start_line=44, end_line=46) }}
 
 Um die Kraft und die Geschwindigkeit frameweise zu implementieren, wird die
-Methode `#!java onFrameUpdate(double pastTime)` erweitert:
+Methode `#!java onFrame(double pastTime)` erweitert:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Movement_Base.gif') }}
 /// caption
@@ -349,7 +349,7 @@ Die Figur kann sich bewegen, jedoch resultiert dies noch nicht in
 Zustandsänderung.
 ///
 
-In der Methode `#!java onFrameUpdate()`:
+In der Methode `#!java onFrame()`:
 
 <!-- ```java
         if (Math.abs(velocity.x()) > MAX_SPEED)
@@ -405,9 +405,9 @@ Sobald sich die Figur mindestens 1 Meter pro Sekunde bewegt, zählt sie als `#!j
 sobald sie sich mindestens 10 Meter pro Sekunde bewegt (die Hälfte der maximalen
 Geschwindigkeit), so zählt sie als `#!java RUNNING`.
 
-Auf diese Grenzwerte wird jeden Frame in der `#!java onFrameUpdate(...)` der Spielfigur
+Auf diese Grenzwerte wird jeden Frame in der `#!java onFrame(...)` der Spielfigur
 geprüft, genauso wie zuvor die Y-Geschwindigkeit implementiert wurde. Damit ist
-die neue `#!java onFrameUpdate(...)`:
+die neue `#!java onFrame(...)`:
 
 {{ image('docs/stateful-animation/StatefulAnimation_Movement_Full.gif') }}
 /// caption
@@ -417,7 +417,7 @@ vollständig implementiert.
 
 <!-- ```java
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = velocity();
         PlayerState state = state();

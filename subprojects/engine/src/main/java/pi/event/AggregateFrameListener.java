@@ -23,15 +23,15 @@ package pi.event;
 import pi.annotations.API;
 
 /**
- * Aggregiert mehrere {@link FrameUpdateListener}, um sie gemeinsam pausieren zu
+ * Aggregiert mehrere {@link FrameListener}, um sie gemeinsam pausieren zu
  * können.
  *
  * @author Niklas Keller
  */
-public abstract class AggregateFrameUpdateListener
-        implements FrameUpdateListener, FrameUpdateListenerRegistration
+public abstract class AggregateFrameListener
+        implements FrameListener, FrameListenerRegistration
 {
-    private final EventListeners<FrameUpdateListener> listeners = new EventListeners<>();
+    private final EventListeners<FrameListener> listeners = new EventListeners<>();
 
     private boolean paused = false;
 
@@ -48,16 +48,16 @@ public abstract class AggregateFrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (!paused)
         {
-            listeners.invoke(listener -> listener.onFrameUpdate(pastTime));
+            listeners.invoke(listener -> listener.onFrame(pastTime));
         }
     }
 
     @Override
-    public EventListeners<FrameUpdateListener> frameUpdateListeners()
+    public EventListeners<FrameListener> frameListeners()
     {
         return listeners;
     }

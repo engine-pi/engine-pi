@@ -24,7 +24,7 @@ import pi.Circle;
 import pi.Controller;
 import pi.Scene;
 import pi.actor.Line;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.graphics.boxes.TextTableBox;
 import pi.graphics.geom.DirectedLineSegment;
 import pi.graphics.geom.Vector;
@@ -33,8 +33,7 @@ import pi.util.TextUtil;
 /**
  * Demonstiert die Klasse {@link DirectedLineSegment}.
  */
-public class DirectedLineSegmentDemo extends Scene
-        implements FrameUpdateListener
+public class DirectedLineSegmentDemo extends Scene implements FrameListener
 {
     /**
      * Einen Linie mit Pfeil und die gerichtete Strecke zu verdeutlichen.
@@ -234,7 +233,7 @@ public class DirectedLineSegmentDemo extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         syncPoints(mousePosition());
     }

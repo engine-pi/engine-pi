@@ -1,7 +1,9 @@
 /*
+ * Source: https://github.com/engine-alpha/engine-alpha/blob/4.x/engine-alpha/src/main/java/ea/FrameUpdateListener.java
+ *
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2011 - 2024 Michael Andonie and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,21 +18,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.event;
+package pi.event;
 
-import pi.Controller;
-import pi.Scene;
+import pi.annotations.API;
 
 /**
- * Demonstriert die statische Methode
- * {@link pi.Controller#addFrameUpdateListener(pi.event.FrameUpdateListener)}.
+ * Beschreibt ein Objekt, das auf jede Aktualisierung der Einzelbilder reagieren
+ * kann.
  */
-public class GlobalFrameUpdateListenerDemo
+@API
+public interface FrameListener
 {
-    public static void main(String[] args)
-    {
-        Controller.start(new Scene());
-        Controller.addFrameUpdateListener((delta) -> System.out
-            .println("Vergangene Zeit seit letztem Einzelbild: " + delta));
-    }
+    /**
+     * Diese Methode wird bei jedem Einzelbild eines angemeldeten Objekts erneut
+     * aufgerufen.
+     *
+     * @param pastTime Die Zeit <b>in Sekunden</b>, die seit der letzten
+     *     Aktualisierung vergangen ist.
+     */
+    @API
+    void onFrame(double pastTime);
 }

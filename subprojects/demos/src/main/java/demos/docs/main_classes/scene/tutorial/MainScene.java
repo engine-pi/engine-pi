@@ -44,7 +44,7 @@ public class MainScene extends Scene implements KeyStrokeListener
         toAnimate.color("orange");
         CircleAnimation animation = new CircleAnimation(toAnimate,
                 new Vector(0, 0), 8, true, true);
-        addFrameUpdateListener(animation);
+        addFrameListener(animation);
         add(toAnimate);
         addKeyStrokeListener(this);
         Text info = new Text("Pause mit P");

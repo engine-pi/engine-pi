@@ -38,7 +38,7 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.physics.FixtureBuilder;
 import pi.resources.ResourceLoader;
 import pi.util.FileUtil;
@@ -81,7 +81,7 @@ import pi.util.GifDecoder;
  * @author Josef Friedrich
  */
 @API
-public class Animation extends Actor implements FrameUpdateListener
+public class Animation extends Actor implements FrameListener
 {
     private final AnimationFrame[] frames;
 
@@ -333,7 +333,7 @@ public class Animation extends Actor implements FrameUpdateListener
      */
     @Internal
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         if (manualMode || stopped)
         {

@@ -25,7 +25,7 @@ import pi.Jukebox;
 import pi.Random;
 import pi.Scene;
 import pi.actor.Line;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.KeyStrokeListener;
 import pi.event.PressedKeyRepeater;
 import pi.graphics.geom.Bounds;
@@ -37,8 +37,7 @@ import pi.graphics.geom.Vector;
  *
  * @author Josef Friedrich
  */
-public class PongTable extends Scene
-        implements KeyStrokeListener, FrameUpdateListener
+public class PongTable extends Scene implements KeyStrokeListener, FrameListener
 {
     static
     {
@@ -159,7 +158,7 @@ public class PongTable extends Scene
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         double x = ball.center().x();
         if (x < bounds.xLeft())

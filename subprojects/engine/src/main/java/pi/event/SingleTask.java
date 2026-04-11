@@ -28,9 +28,9 @@ import pi.annotations.API;
  *
  * @author Niklas Keller
  *
- * @see FrameUpdateListenerRegistration#delay(double, Runnable)
+ * @see FrameListenerRegistration#delay(double, Runnable)
  */
-public final class SingleTask implements FrameUpdateListener
+public final class SingleTask implements FrameListener
 {
     /**
      * Verzögerung in Sekunden.
@@ -56,13 +56,13 @@ public final class SingleTask implements FrameUpdateListener
      * Container, an dem die Aufgabe angemeldet wird, wo er sich auch selbst
      * wieder abmeldet.
      */
-    private final FrameUpdateListenerRegistration parent;
+    private final FrameListenerRegistration parent;
 
     /**
      * @param delayInSeconds Zeit zwischen den Ausführungen in Sekunden.
      */
     public SingleTask(double delayInSeconds, Runnable task,
-            FrameUpdateListenerRegistration parent)
+            FrameListenerRegistration parent)
     {
         this.delay = delayInSeconds;
         this.countdown = delayInSeconds;
@@ -99,7 +99,7 @@ public final class SingleTask implements FrameUpdateListener
     @API
     public void cancel()
     {
-        parent.removeFrameUpdateListener(this);
+        parent.removeFrameListener(this);
     }
 
     /**
@@ -109,7 +109,7 @@ public final class SingleTask implements FrameUpdateListener
      * @hidden
      */
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         countdown -= pastTime;
         if (!done && countdown < 0)

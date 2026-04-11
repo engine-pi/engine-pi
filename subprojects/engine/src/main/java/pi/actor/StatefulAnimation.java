@@ -95,7 +95,7 @@ public class StatefulAnimation<State> extends Actor
         this.width = width;
         this.height = height;
         this.frameDuration = frameDuration;
-        addFrameUpdateListener(this::internalOnFrameUpdate);
+        addFrameListener(this::internalOnFrame);
     }
 
     /**
@@ -432,7 +432,7 @@ public class StatefulAnimation<State> extends Actor
      * @hidden
      */
     @Internal
-    private void internalOnFrameUpdate(double frameDuration)
+    private void internalOnFrame(double frameDuration)
     {
         if (animation == null || animation.length == 0 || animationPaused)
         {

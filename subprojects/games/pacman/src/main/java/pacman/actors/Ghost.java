@@ -25,11 +25,11 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 
 import pi.actor.StatefulImagesAnimation;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.util.ImageUtil;
 
 public abstract class Ghost extends StatefulImagesAnimation<GhostState>
-        implements FrameUpdateListener
+        implements FrameListener
 {
     private final String name;
 
@@ -87,7 +87,7 @@ public abstract class Ghost extends StatefulImagesAnimation<GhostState>
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         switch (state())
         {

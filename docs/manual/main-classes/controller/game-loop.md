@@ -42,7 +42,7 @@ vier Himmelsrichtungen bewegen.
 
 Die Bewegung der Snake soll möglichst flüssig sein. Daher wird die Bewegung in
 jedem einzelnen Frame ausgeführt, um maximal sauber auszusehen. Dazu
-implementiert die Snake das Engine-Interface FrameUpdateListener, um in jedem
+implementiert die Snake das Engine-Interface Listener, um in jedem
 Frame seine Bewegungslogik auszuführen.
 
 Hierzu kennt die Snake ihre aktuelle Geschwindigkeit als gerichteten Vektor (in
@@ -108,7 +108,7 @@ spezifisch mit der Schlange angemeldet:
   ist sehr steif und die Schlange kann nicht stehen bleiben. Vielleicht möchtest
   du dem Spieler mehr Kontrolle über die Schlange geben: Statt des
   KeyStrokeListener-Interfaces, kann die Schlange in ihrer
-  onFrameUpdate(float)-Methode abfragen, ob gerade der W/A/S/D-Key
+  onFrame(float)-Methode abfragen, ob gerade der W/A/S/D-Key
   heruntergedrückt ist und sich entsprechend dessen weiter bewegen. Tipp: Die
   Methode Controller.isKeyPressed(int keycode) ist hierfür hilfreich.
 - Escalating Difficulty: Je mehr Pick-Ups gesammelt wurden (und damit desto

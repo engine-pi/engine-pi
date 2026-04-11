@@ -47,7 +47,7 @@ public class FroggyJump extends Scene
     }
 }
 
-class Frog extends Image implements FrameUpdateListener
+class Frog extends Image implements Listener
 {
     private boolean canJump = true;
 
@@ -71,7 +71,7 @@ class Frog extends Image implements FrameUpdateListener
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         Vector velocity = this.getVelocity();
         // A: Die Blickrichtung des Frosches steuern
@@ -144,7 +144,7 @@ Spielobjekte und ihrer Umgebung bestimmt:
 ## Bewegung des Frosches
 
 Die Bewegung des Frosches wird in jedem Frame kontrolliert. Wie im Game Loop
-Tutorial beschrieben, wird hierzu das Interface `FrameUpdateListener` genutzt.
+Tutorial beschrieben, wird hierzu das Interface `Listener` genutzt.
 
 In jedem Frame wird die Bewegung des Frosches in dreierlei hinsicht kontrolliert:
 

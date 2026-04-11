@@ -106,7 +106,7 @@ class Philosopher extends Thread
             .center(Vector.ofAngle((double) 72 * id).multiply(8))
             .label(name);
 
-        scene.addFrameUpdateListener(
+        scene.addFrameListener(
             deltaTime -> image.opacity(isStarving() ? 0.5 : 1));
 
         scene.add(image);

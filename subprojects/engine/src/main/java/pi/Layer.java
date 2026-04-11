@@ -36,8 +36,8 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 import pi.annotations.Setter;
 import pi.event.EventListeners;
-import pi.event.FrameUpdateListener;
-import pi.event.FrameUpdateListenerRegistration;
+import pi.event.FrameListener;
+import pi.event.FrameListenerRegistration;
 import pi.event.KeyStrokeListener;
 import pi.event.KeyStrokeListenerRegistration;
 import pi.event.MouseClickListener;
@@ -61,7 +61,7 @@ import pi.physics.WorldHandler;
  */
 public class Layer implements KeyStrokeListenerRegistration,
         MouseClickListenerRegistration, MouseScrollListenerRegistration,
-        FrameUpdateListenerRegistration
+        FrameListenerRegistration
 {
     private static final Comparator<? super Actor> ACTOR_COMPARATOR = Comparator
         .comparingInt(Actor::layerPosition);
@@ -123,7 +123,7 @@ public class Layer implements KeyStrokeListenerRegistration,
     private final EventListeners<MouseScrollListener> mouseScrollListeners = new EventListeners<>(
             createParentSupplier(Scene::mouseScrollListeners));
 
-    private final EventListeners<FrameUpdateListener> frameUpdateListeners = new EventListeners<>();
+    private final EventListeners<FrameListener> frameUpdateListeners = new EventListeners<>();
 
     /**
      * Erstellt eine neue Ebene.
@@ -169,14 +169,14 @@ public class Layer implements KeyStrokeListenerRegistration,
             keyStrokeListeners.invoke(scene::addKeyStrokeListener);
             mouseClickListeners.invoke(scene::addMouseClickListener);
             mouseScrollListeners.invoke(scene::addMouseScrollListener);
-            frameUpdateListeners.invoke(scene::addFrameUpdateListener);
+            frameUpdateListeners.invoke(scene::addFrameListener);
         }
         else
         {
             keyStrokeListeners.invoke(this.scene::removeKeyStrokeListener);
             mouseClickListeners.invoke(this.scene::removeMouseClickListener);
             mouseScrollListeners.invoke(this.scene::removeMouseScrollListener);
-            frameUpdateListeners.invoke(this.scene::removeFrameUpdateListener);
+            frameUpdateListeners.invoke(this.scene::removeFrameListener);
         }
         this.scene = scene;
     }
@@ -701,7 +701,7 @@ public class Layer implements KeyStrokeListenerRegistration,
 
     @API
     @Getter
-    public EventListeners<FrameUpdateListener> frameUpdateListeners()
+    public EventListeners<FrameListener> frameListeners()
     {
         return frameUpdateListeners;
     }
@@ -731,10 +731,10 @@ public class Layer implements KeyStrokeListenerRegistration,
      * @hidden
      */
     @Internal
-    void invokeFrameUpdateListeners(double pastTime)
+    void invokeFrameListeners(double pastTime)
     {
         double scaledSeconds = pastTime * timeDistort;
-        frameUpdateListeners.invoke(frameUpdateListener -> frameUpdateListener
-            .onFrameUpdate(scaledSeconds));
+        frameUpdateListeners.invoke(
+            frameUpdateListener -> frameUpdateListener.onFrame(scaledSeconds));
     }
 }

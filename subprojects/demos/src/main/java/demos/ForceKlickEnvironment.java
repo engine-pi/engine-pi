@@ -30,7 +30,7 @@ import pi.Scene;
 import pi.actor.Actor;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
-import pi.event.FrameUpdateListener;
+import pi.event.FrameListener;
 import pi.event.MouseButton;
 import pi.event.MouseClickListener;
 import pi.graphics.geom.Vector;
@@ -65,8 +65,8 @@ import pi.physics.BodyType;
  * <p>
  * Created by andonie on 05.09.15.
  */
-public class ForceKlickEnvironment extends Scene implements
-        CollisionListener<Actor>, MouseClickListener, FrameUpdateListener
+public class ForceKlickEnvironment extends Scene
+        implements CollisionListener<Actor>, MouseClickListener, FrameListener
 {
     public static final float FIELD_WIDTH = 85;
 
@@ -216,7 +216,7 @@ public class ForceKlickEnvironment extends Scene implements
     }
 
     @Override
-    public void onFrameUpdate(double pastTime)
+    public void onFrame(double pastTime)
     {
         // Visualisiere ggf. die Vectorstange
         if (klickMode == KlickMode.DIRECTION_INTENSITY)
