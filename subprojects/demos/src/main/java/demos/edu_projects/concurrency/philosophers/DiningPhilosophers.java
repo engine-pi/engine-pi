@@ -61,10 +61,10 @@ class DiningPhilosophers extends Scene implements FrameListener
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
      * erstellt und die Philosophenthreads gestartet.
      *
-     * @param numberOfPhilosophers Die Anzahl der Philosophen, die am Tisch
+     * @param count Die Anzahl der Philosophen, die am Tisch
      *     sitzen und essen.
      */
-    DiningPhilosophers(int numberOfPhilosophers)
+    DiningPhilosophers(int count)
     {
         info().description(
             "Abgelegte Gabeln sind schwarz, aufgenommene Gabeln haben die Farbe ihres aktuellen Besitzers.");
@@ -102,7 +102,7 @@ class DiningPhilosophers extends Scene implements FrameListener
         createPhilosopher("Unamuno", "#232a2c", 1864, 1936);
         createPhilosopher("Voltaire", "#764b9c", 1694, 1778);
 
-        eating = selectPhilosophers(numberOfPhilosophers);
+        eating = selectPhilosophers(count);
 
         new Table(this, eating);
 
