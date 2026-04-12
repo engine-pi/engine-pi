@@ -148,6 +148,9 @@ nav:
           - manual/resources/sounds.md
           - manual/resources/config.md
 
+      - Projekte:
+          - manual/projects/index.md
+          - manual/projects/philosophers.md
       - Java:
           - manual/java/index.md
           - manual/java/packages.md
