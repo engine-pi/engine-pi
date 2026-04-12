@@ -18,8 +18,8 @@
  */
 
 /**
- * Ein Paket zum Erstellen von einzelnen Bildschirmfotos (screenshot) oder
- * Videoaufzeichnungen (screen recording) des Spielfensters.
+ * Ein Paket zum Erstellen von einzelnen Bildschirmfotos (<b>screenshot</b>)
+ * oder Videoaufzeichnungen (<b>screen recording</b>) des Spielfensters.
  *
  * <p>
  * Die Hauptklasse {@link Photographer} macht einzelne Bildschirmfotos oder

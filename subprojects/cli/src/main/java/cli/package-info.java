@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2024, 2026 Josef Friedrich and contributors.
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +18,6 @@
  */
 
 /**
- * Nachbau des Spiels <b>Tetris</b> auf dem klassischem Gameboy mit Hilfe der
- * Engine Pi.
+ * Ein <b>Kommandozeilen</b>befehl (CLI = Command Line Interface)
  */
-package tetris;
+package cli;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2024, 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,6 @@
 
 /**
  * Test-Szenen bzw{@literal .} -Bildschirme zum Testen, Ausprobieren und
- * Debuggen.
+ * <b>Debuggen</b>.
  */
 package tetris.debug;

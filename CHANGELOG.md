@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with v0.45.0](https://github.com/engine-pi/engine-pi/compare/v0.45.0...v0.46.0)</small>
 
+### Added
+
+- Add new package `pi.actor.label`
+
 ### Changed
 
 - Rename `FrameUpdateLister` into `FrameListener`
@@ -21,6 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Include JBox2D in this monorepo.
+- Add basic label support for the actors.
 
 ### Changed
 

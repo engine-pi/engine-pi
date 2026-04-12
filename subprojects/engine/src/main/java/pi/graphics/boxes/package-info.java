@@ -18,13 +18,13 @@
  */
 
 /**
- * Eine rekursive Datenstruktur, um graphische Elemente ineinander verschachteln
- * zu können und dann in die {@link java.awt.Graphics2D Graphics2D}-API
- * einzuzeichen.
+ * Eine <b>Box</b> ist ein rechteckiges graphisches Element, das in die
+ * {@link java.awt.Graphics2D Graphics2D}-API eingezeichnet werden kann.
  *
  * <p>
- * So kann zum Beispiel um einen Text ein Rahmen gelegt werden. Jedes
- * einzuzeichnende Element wird in eine rechteckige Box eingebettet. Die
+ * Eine Box kann weitere Boxen enthalten und dadurch entsteht eine rekursive
+ * Datenstruktur. So kann zum Beispiel um einen Text ein Rahmen gelegt werden.
+ * Jedes einzuzeichnende Element wird in eine rechteckige Box eingebettet. Die
  * grundlegende Maßeinheit sind Pixel. Dieses Paket ist inspiriert von den
  * {@link java.awt.Component}-Klassen.
  * </p>

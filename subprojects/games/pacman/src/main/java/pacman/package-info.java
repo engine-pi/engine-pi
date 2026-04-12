@@ -1,4 +1,6 @@
 /*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
  * Copyright (c) 2024, 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,7 +18,6 @@
  */
 
 /**
- * Nachbau des Spiels <b>Tetris</b> auf dem klassischem Gameboy mit Hilfe der
- * Engine Pi.
+ * Nachbau des Spielklassikers <b>Pac-Man</b> mit Hilfe der Engine Pi
  */
-package tetris;
+package pacman;

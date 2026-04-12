@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2024, 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
  */
 
 /**
- * Eine Sammlung von Klassen um Text in den Tetris typischen Schriftarten in ein
- * Textfeld schreiben zu können.
+ * Eine Sammlung von Klassen um <b>Text</b> in den Tetris typischen Schriftarten
+ * in ein Textfeld schreiben zu können.
  */
 package tetris.text;

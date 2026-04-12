@@ -39,6 +39,12 @@ javadoc_all: clean install
 	mvn javadoc:aggregate
 	xdg-open target/reports/apidocs/index.html
 
+# Generate the aggregated Javadoc API for all subprojects, then open the generated documentation in a browser using xdg-open.
+javadoc_aggregate: clean install
+	mvn javadoc:aggregate
+	xdg-open target/reports/apidocs/index.html
+
+# Run 'mvn process-sources' to format the source code using the configured formatter.
 format:
 	mvn process-sources
 
@@ -46,12 +52,15 @@ install_build_tools:
 	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
 
+# Install the CLI subproject, which is required for the 'check_file_links' target.
 install_cli:
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-cli
 
+# Install all subprojects, which is required for the 'package' target.
 install: install_build_tools
 	mvn install
 
+# Run 'mvn package' to build the project and create the JAR files for all subprojects.
 package: install_build_tools
 	# Package build-tools is requried by javadoc
 	mvn install --projects de.pirckheimer-gymnasium:engine-pi-build-tools
@@ -65,6 +74,7 @@ pull:
 clean:
 	mvn clean
 
+# Initialize and update the git submodule for assets, then pull the latest changes from the main branch of the assets repository and the main repository.
 assets_init:
 	git submodule init
 	git submodule update
@@ -87,6 +97,7 @@ assets_sync_resources:
 	rsync -a --delete assets/pacman/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/pacman/
 	rsync -a --delete assets/space-invaders/resources/images/image-text/ subprojects/demos/src/main/resources/main-classes/actor/image-text/space-invaders/
 
+# The 'assets' target depends on 'assets_init' and 'assets_sync_resources', which means that running 'just assets' will first initialize and update the git submodule for assets, then synchronize the resource files using rsync.
 assets: assets_init assets_sync_resources
 
 export NO_MKDOCS_2_WARNING := "true"
@@ -112,5 +123,6 @@ cli *args:
 	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.Client -Dexec.args="{{args}}"
 	# java -jar subprojects/cli/target/engine-pi-cli-0.1.0-jar-with-dependencies.jar {{args}}
 
+# Execute the cli command (subprojects/cli) with the main class 'cli.checklinks.FileLinkChecker' to check file links in the documentation.
 check_file_links: (cli "check-file-links")
 	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker
