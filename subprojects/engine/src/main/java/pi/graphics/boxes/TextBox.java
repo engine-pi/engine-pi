@@ -317,7 +317,7 @@ public abstract class TextBox extends LeafBox
     }
 
     /**
-     * Setzt die <b>Farbe</b> des Textes.
+     * Setzt die <b>Farbe</b> des Textes als {@link Color}-Objekt.
      *
      * @param color Die <b>Farbe</b> des Textes.
      *

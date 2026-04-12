@@ -32,7 +32,6 @@ import java.awt.geom.AffineTransform;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -49,11 +48,12 @@ import org.jbox2d.dynamics.joints.PrismaticJointDef;
 import org.jbox2d.dynamics.joints.RevoluteJointDef;
 import org.jbox2d.dynamics.joints.RopeJointDef;
 import org.jbox2d.dynamics.joints.WeldJointDef;
-import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 
 import pi.Controller;
 import pi.Layer;
+import pi.actor.label.Label;
+import pi.actor.label.LabelHandler;
+import pi.actor.label.TextLabel;
 import pi.animation.AnimationMode;
 import pi.animation.ValueAnimator;
 import pi.animation.interpolation.EaseInOutDouble;
@@ -76,9 +76,7 @@ import pi.event.MouseClickListener;
 import pi.event.MouseClickListenerRegistration;
 import pi.event.MouseScrollListener;
 import pi.event.MouseScrollListenerRegistration;
-import pi.graphics.boxes.HAlign;
-import pi.graphics.boxes.TextBlockBox;
-import pi.graphics.boxes.VAlign;
+import pi.graphics.boxes.Box;
 import pi.graphics.geom.Bounds;
 import pi.graphics.geom.Vector;
 import pi.physics.BodyType;
@@ -2524,39 +2522,42 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     private void renderLabels(Graphics2D g, double pixelPerMeter)
     {
-        if (!labels.isEmpty())
+        if (!label.hasLabels())
         {
             // Achsenparallele Begrenzungsbox in Meter
             Bounds aabb = Bounds.fromAABB(physics.aabb());
 
-            // l = label
-            for (Label l : labels)
+            for (Label currentLabel : label.labels())
             {
-                double boxWidth = l.box.widthMeter(pixelPerMeter);
-                double boxHeight = l.box.heightMeter(pixelPerMeter);
+                Box box = currentLabel.box();
+                double boxWidth = box.widthMeter(pixelPerMeter);
+                double boxHeight = box.heightMeter(pixelPerMeter);
 
                 // Die x-Koordinate der linken oberen Ecke der Box in Meter
                 double x = 0;
                 // Die y-Koordinate der linken oberen Ecke der Box in Meter
                 double y = 0;
 
-                switch (l.hAlign)
+                double offset = currentLabel.offset();
+
+                switch (currentLabel.hAlign())
                 {
-                case LEFT -> x = aabb.xLeft() - boxWidth - l.offset;
+                case LEFT ->
+                    x = aabb.xLeft() - boxWidth - currentLabel.offset();
                 case CENTER ->
                     x = aabb.xLeft() + (aabb.width() / 2) - (boxWidth / 2);
-                case RIGHT -> x = aabb.xRight() + l.offset;
+                case RIGHT -> x = aabb.xRight() + offset;
                 }
 
-                switch (l.vAlign)
+                switch (currentLabel.vAlign())
                 {
-                case TOP -> y = aabb.yTop() + boxHeight + l.offset;
+                case TOP -> y = aabb.yTop() + boxHeight + offset;
                 case MIDDLE ->
                     y = aabb.yBottom() + (aabb.height() / 2) + (boxHeight / 2);
-                case BOTTOM -> y = aabb.yBottom() - l.offset;
+                case BOTTOM -> y = aabb.yBottom() - offset;
                 }
 
-                l.box.x(x, pixelPerMeter).y(-y, pixelPerMeter).render(g);
+                box.x(x, pixelPerMeter).y(-y, pixelPerMeter).render(g);
             }
         }
     }
@@ -2721,7 +2722,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
         // Transform zurücksetzen
         g.setTransform(oldTransform);
 
-        if (!labels.isEmpty())
+        if (!label.hasLabels())
         {
             renderLabels(g, pixelPerMeter);
         }
@@ -2737,16 +2738,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
 
     /* labels */
 
-    class LabelHandler
-    {
-
-    }
-
     public final LabelHandler label = new LabelHandler();
-
-    private @Nullable Label mainLabel;
-
-    private List<Label> labels = new CopyOnWriteArrayList<>();
 
     /**
      * Erstellt eine neue (Haupt)-Beschriftung für diese Figur als Textinhalt.
@@ -2772,7 +2764,7 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @ChainableMethod
     public Actor label(Object... content)
     {
-        return label(new Label(content));
+        return label(new TextLabel(content));
     }
 
     /**
@@ -2794,158 +2786,13 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     @Setter
     @ChainableMethod
-    public Actor label(Label label)
+    public Actor label(TextLabel label)
     {
-        if (mainLabel != null)
-        {
-            labels.remove(mainLabel);
-        }
-        mainLabel = label;
-        labels.add(label);
+        this.label.mainLabel(label);
         return this;
     }
 
     // Go to
     // file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/ActorLabelDemo.java
 
-    /**
-     * Eine Beschriftung für eine Figur.
-     *
-     * @since 0.45.0
-     */
-    public static class Label
-    {
-        private @NonNull TextBlockBox box;
-
-        public Label(Object... content)
-        {
-            box = new TextBlockBox(content).hAlign(hAlign);
-            box.measure();
-        }
-        /* content */
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Getter
-        public String content()
-        {
-            return box.content();
-        }
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label content(Object... content)
-        {
-            box.content(content);
-            return this;
-        }
-
-        /* color */
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Getter
-        public Color color()
-        {
-            return box.color();
-        }
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label color(Color color)
-        {
-            box.color(color);
-            return this;
-        }
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label color(String color)
-        {
-            box.color(color);
-            return this;
-        }
-
-        /* vAlign */
-
-        private VAlign vAlign = VAlign.BOTTOM;
-
-        /**
-         * @since 0.45.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label vAlign(VAlign vAlign)
-        {
-            this.vAlign = vAlign;
-            return this;
-        }
-
-        /* hAlign */
-
-        private HAlign hAlign = HAlign.CENTER;
-
-        /**
-         * @since 0.45.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label hAlign(HAlign hAlign)
-        {
-            this.hAlign = hAlign;
-            return this;
-        }
-
-        /* offset */
-
-        /**
-         * Der Abstand vom achsenparallelen Begrenzungsrahmen (AABB) zur
-         * Beschriftung. Der Offset hat keine Auswirkung wenn
-         * {@link VAlign#MIDDLE} und {@link HAlign#CENTER} eingestellt ist.
-         *
-         * @since 0.46.0
-         */
-        private double offset = 0.2;
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Getter
-        public double offset()
-        {
-            return offset;
-        }
-
-        /**
-         * @since 0.46.0
-         */
-        @API
-        @Setter
-        @ChainableMethod
-        public Label offset(double offset)
-        {
-            this.offset = offset;
-            return this;
-        }
-
-    }
 }

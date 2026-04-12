@@ -24,16 +24,15 @@ import static pi.Controller.config;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
+import pi.Random;
 import pi.Scene;
 import pi.actor.Actor;
-import pi.actor.Actor.Label;
 import pi.actor.ActorCreator;
 import pi.actor.Rectangle;
+import pi.actor.label.TextLabel;
 import pi.event.KeyStrokeListener;
 import pi.graphics.boxes.HAlign;
 import pi.graphics.boxes.VAlign;
-import pi.resources.color.ColorUtil;
-import pi.Random;
 
 /**
  * @author Josef Friedrich
@@ -48,14 +47,14 @@ public class ActorLabelDemo extends Scene implements KeyStrokeListener
 
     String origContent = "";
 
-    Label label;
+    TextLabel label;
 
     public ActorLabelDemo()
     {
         info("label (Beschriftung)");
         ActorCreator.createCage(this);
 
-        label = new Label("Das ist eine Beschriftung", "(label)");
+        label = new TextLabel("Das ist eine Beschriftung", "(label)");
 
         actor = new Rectangle(4, 2).makeDynamic()
             .applyForce(16000, 31000)

@@ -90,14 +90,16 @@ public class TextBlockBox extends TextBox
     /* content */
 
     /**
-     * Setzt den Inhalt dieses {@code TextBlockBox}-Objekts
+     * Setzt den <b>Inhalt</b> des Textblocks.
      *
      * @param content Der <b>Inhalt</b> des Textblocks. Es können mehrere
      *     Eingabewerte angegeben werden. Jeder Eingabewert wird in eine eigene
      *     Zeile gesetzt.
      *
-     * @return diese Instanz zur Verkettung weiterer Methodenaufrufe (Fluent
-     *     API)
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
      *
      * @since 0.45.0
      */
@@ -116,7 +118,10 @@ public class TextBlockBox extends TextBox
      *
      * @param width Die <b>Breite</b> des Textblocks in Pixeln.
      *
-     * @return Dieses Objekt für Methodenverkettung.
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
      */
     @API
     @Setter
@@ -155,6 +160,11 @@ public class TextBlockBox extends TextBox
      * Setzt die maximale Zeichenbreite pro Zeile des Textblocks.
      *
      * @param charsPerLine Die maximale Zeichenbreite pro Zeile.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
      */
     @API
     @Setter
@@ -204,7 +214,10 @@ public class TextBlockBox extends TextBox
      *
      * @param hAlign Die gewünschte <b>horizontale</b> Ausrichtung.
      *
-     * @return Dieses Objekt für Methodenverkettung.
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
      */
     @API
     @Setter
@@ -256,7 +269,10 @@ public class TextBlockBox extends TextBox
      *
      * @param lineSpacing Der <b>Zeilenabstand</b>.
      *
-     * @return Dieses Objekt für Methodenverkettung.
+     * @return Eine Referenz auf die eigene Instanz der Box, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Box durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code box.x(..).y(..)}.
      */
     @API
     @Setter
