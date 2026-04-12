@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
+package demos.edu_projects.recursion.backtracking.eight_queens_puzzle;
 
 import pi.Controller;
 import pi.Scene;
@@ -207,6 +207,7 @@ public class EightQueensPuzzle
 
     public static void main(String[] args)
     {
+        Controller.instantMode(false);
         new EightQueensPuzzle(8);
     }
 }

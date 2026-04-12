@@ -16,16 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.dsa.threads.philosophers;
+package demos.edu_projects.concurrency.philosophers;
 
 import java.util.Random;
 
 import pi.Controller;
-import pi.Scene;
-import pi.actor.Circle;
-import pi.actor.Image;
 import pi.annotations.Getter;
-import pi.graphics.geom.Vector;
+import pi.annotations.Setter;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/projects/philosophers.md
 
 /**
  * Ein speisender Philosoph.
@@ -37,10 +36,30 @@ import pi.graphics.geom.Vector;
  */
 class Philosopher extends Thread
 {
+
     /**
-     * Die ID des Philosophen.
+     * Der <b>Name</b> des Philosophen.
      */
-    private int id;
+    private String name;
+
+    /**
+     * Das <b>Geburstsjahr</b> des Philosophen.
+     *
+     * <p>
+     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt.
+     * </p>
+     */
+    private int birth;
+
+    /**
+     * Das <b>Sterbejahr</b> des Philosophen.
+     *
+     * <p>
+     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt. Dieses
+     * Attribut ist nur der Vollständigkeit halber hier aufgeführt.
+     * </p>
+     */
+    private int death;
 
     /**
      * Die Zeitangabe in ms als Grundlage für die Bestimmung zufälliger Ess- und
@@ -74,54 +93,45 @@ class Philosopher extends Thread
     private long lastMeal;
 
     /**
-     * Ein Bild, das den Philosophen darstellt.
-     */
-    private Image image;
-
-    /**
      * Konstruktor für Objekte der Klasse Philosoph.
      *
-     * @param id Die ID des Philosophen.
      * @param color Die Farbe des Tellers.
      * @param left Die linke Gabel, die der Philosoph nutzt.
      * @param right Die rechte Gabel, die der Philosoph nutzt.
      */
-    Philosopher(Scene scene, int id, String name, String color, Fork left,
-            Fork right)
+    Philosopher(String name, String color, int birth, int death)
     {
         waitingTime = 50;
-        this.id = id;
+        this.name = name;
         this.color = color;
-        leftFork = left;
-        rightFork = right;
+        this.birth = birth;
+        this.death = death;
         random = new Random();
-
-        // Teller
-        scene.add(new Circle(1).color(color)
-            .center(Vector.ofAngle((double) 72 * id).multiply(3)));
-        // Bild des Philosophen
-
-        image = (Image) new Image("philosophers/" + name + ".png")
-            .pixelPerMeter(30)
-            .center(Vector.ofAngle((double) 72 * id).multiply(8))
-            .label(name);
-
-        scene.addFrameListener(
-            deltaTime -> image.opacity(isStarving() ? 0.5 : 1));
-
-        scene.add(image);
-
     }
 
-    /**
-     * Gibt die ID des Philosophen aus.
-     *
-     * @return Die ID des Philosophen.
-     */
-    @Getter
-    public int id()
+    @Setter
+    public void forks(Fork left, Fork right)
     {
-        return id;
+        leftFork = left;
+        rightFork = right;
+    }
+
+    @Getter
+    public String name()
+    {
+        return name;
+    }
+
+    @Getter
+    public String color()
+    {
+        return color;
+    }
+
+    @Getter
+    public String lifeTime()
+    {
+        return birth + " - " + death;
     }
 
     /**
@@ -133,6 +143,17 @@ class Philosopher extends Thread
     public long lastMeal()
     {
         return lastMeal;
+    }
+
+    /**
+     * Gibt das Geburtsjahr des Philosophen aus.
+     *
+     * @return Das Geburtsjahr des Philosophen.
+     */
+    @Getter
+    public int birth()
+    {
+        return birth;
     }
 
     /**
@@ -255,7 +276,7 @@ class Philosopher extends Thread
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers(), 800, 800);
+        Controller.start(new DiningPhilosophers(5), 800, 800);
     }
 
 }

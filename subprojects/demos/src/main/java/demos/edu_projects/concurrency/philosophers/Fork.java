@@ -16,10 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.dsa.threads.philosophers;
+package demos.edu_projects.concurrency.philosophers;
 
 import pi.Controller;
 import pi.actor.Line;
+
+// Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/projects/philosophers.md
 
 /**
  * Die Gabel zwischen zwei Philosophen.
@@ -142,6 +144,6 @@ class Fork
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new DiningPhilosophers(), 800, 800);
+        Controller.start(new DiningPhilosophers(5), 800, 800);
     }
 }

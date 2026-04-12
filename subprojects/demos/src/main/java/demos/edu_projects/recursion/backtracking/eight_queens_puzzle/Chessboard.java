@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.classes.dsa.recursion.backtracking.eight_queens_puzzle;
+package demos.edu_projects.recursion.backtracking.eight_queens_puzzle;
 
 import static pi.Controller.colors;
 import static pi.resources.color.ColorUtil.changeSaturation;

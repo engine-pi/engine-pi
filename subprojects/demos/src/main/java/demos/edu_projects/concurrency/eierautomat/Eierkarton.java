@@ -16,9 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+package demos.edu_projects.concurrency.eierautomat;
+
+import pi.actor.Image;
 
 /**
- * Quelle: <a href=
- * "https://webcodes-prod.obs-website.eu-de.otc.t-systems.com/codes/assetfiles/nepiba/ERBdtU9jKqD8VD7xIIFO0K/K4_Java_Vorl.zip">K4_Java_Vorl.zip</a>
+ * Eierkarton
+ *
+ * @author Johannes Neumeyer
+ * @author Josef Friedrich
+ *
+ * @version 1.0
  */
-package demos.classes.dsa.threads.philosophers;
+class Eierkarton extends Image
+{
+    /**
+     * Legt das Aussehen des Kartons fest
+     */
+    Eierkarton()
+    {
+        super("eierautomat/eierkarton.png");
+        size(3, 1.4);
+    }
+}

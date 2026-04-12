@@ -1,4 +1,4 @@
 /**
  * Demonstierte rekursive Algorithmen.
  */
-package demos.classes.dsa.recursion;
+package demos.edu_projects.recursion;

@@ -1,5 +1,7 @@
 # `Dining Philosophers` (Speisende Philosophen)
 
+Folgende Philosophen könnnen dargestellt werden.
+
 | Name                                                                  | Farbe[^vecteezy]   | Geburt | Tod  |
 | --------------------------------------------------------------------- | ------- | ------ | ---- |
 | [Aquin](https://de.wikipedia.org/wiki/Thomas_von_Aquin)               | #2a3234 | 1225[^genauigkeit]   | 1274 |
@@ -15,7 +17,7 @@
 | [Kant](https://de.wikipedia.org/wiki/Immanuel_Kant)                   | #767733 | 1724   | 1804 |
 | [Kierkegaard](https://de.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard)   | #471008 | 1813   | 1855 |
 | [Konfuzius](https://de.wikipedia.org/wiki/Konfuzius)                  | #8b101d | -551   | -479 |
-| [Laozi](https://de.wikipedia.org/wiki/Laozi)                          | #114ea6 | -600   | -500 |
+| [Laozi](https://de.wikipedia.org/wiki/Laozi)                          | #114ea6 | -600   | -550 |
 | [Machiavelli](https://de.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli) | #f7323d | 1469   | 1527 |
 | [Marx](https://de.wikipedia.org/wiki/Karl_Marx)                       | #1b2223 | 1818   | 1883 |
 | [Montesquieu](https://de.wikipedia.org/wiki/Montesquieu)              | #87111b | 1689   | 1755 |
@@ -28,6 +30,18 @@
 | [Thales](https://de.wikipedia.org/wiki/Thales)                        | #0fa2e3 | -623   | -548 |
 | [Unamuno](https://de.wikipedia.org/wiki/Miguel_de_Unamuno)            | #232a2c | 1864   | 1936 |
 | [Voltaire](https://de.wikipedia.org/wiki/Voltaire)                    | #764b9c | 1694   | 1778 |
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/edu_projects/concurrency/philosophers/Philosopher.java -->
+
+{{ code('demos.edu_projects.concurrency.philosophers.Philosopher') }}
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/edu_projects/concurrency/philosophers/Fork.java -->
+
+{{ code('demos.edu_projects.concurrency.philosophers.Fork') }}
+
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/edu_projects/concurrency/philosophers/DiningPhilosophers.java -->
+
+{{ code('demos.edu_projects.concurrency.philosophers.DiningPhilosophers') }}
 
 [^genauigkeit]: Bei manchen Philosophen ist das genaue Geburts- und Sterbejahr
     nicht bekannt. Die Angaben zu den Lebensdaten sind ohne Gewähr. Die verlinkten
