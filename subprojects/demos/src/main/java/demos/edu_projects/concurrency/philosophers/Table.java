@@ -2,6 +2,7 @@ package demos.edu_projects.concurrency.philosophers;
 
 import java.util.List;
 
+import pi.Controller;
 import pi.Scene;
 import pi.actor.Circle;
 import pi.actor.Image;
@@ -26,8 +27,6 @@ public class Table
     private Image[] philosopherImages;
 
     /**
-     *
-     * @param scene
      * @param philosophers die Philosophen, die am Tisch sitzen und essen.
      */
     public Table(Scene scene, List<Philosopher> philosophers)
@@ -35,15 +34,18 @@ public class Table
         // Ein großer Kreis als runder Tisch.
         scene.add(new Circle(8).center(0, 0).color("braun"));
 
-        forks = new Fork[philosophers.size()];
-        plates = new Circle[philosophers.size()];
-        philosopherImages = new Image[philosophers.size()];
+        // Anzahl an essenden Philosophen
+        int count = philosophers.size();
 
-        double rotation = 360.0 / philosophers.size();
+        forks = new Fork[count];
+        plates = new Circle[count];
+        philosopherImages = new Image[count];
+
+        double rotation = 360.0 / count;
 
         double halfRoation = rotation / 2;
 
-        for (int i = 0; i < philosophers.size(); i++)
+        for (int i = 0; i < count; i++)
         {
             Philosopher philosopher = philosophers.get(i);
             double currentRotation = i * rotation;
@@ -65,23 +67,22 @@ public class Table
             // Bild des Philosophen i
             philosopherImages[i] = (Image) new Image(
                     "philosophers/" + philospherName + ".png").pixelPerMeter(30)
-                        .center(Vector.ofAngle(currentRotation).multiply(8))
+                        .center(Vector.ofAngle(currentRotation).multiply(9))
                         .label(philospherName, philosopher.lifeTime());
-
         }
 
         // Die Gabeln zuordnen
-        for (int i = 0; i < philosophers.size(); i++)
+        for (int i = 0; i < count; i++)
         {
             Philosopher philosopher = philosophers.get(i);
-            philosopher.forks(forks[(i + 4) % 5], forks[i]);
+            philosopher.forks(forks[(i + count - 1) % count], forks[i]);
         }
 
         scene.add(plates);
         scene.add(philosopherImages);
 
         scene.addFrameListener(deltaTime -> {
-            for (int i = 0; i < philosophers.size(); i++)
+            for (int i = 0; i < count; i++)
             {
                 Philosopher philosopher = philosophers.get(i);
                 Image image = philosopherImages[i];
@@ -89,5 +90,11 @@ public class Table
                 image.opacity(philosopher.isStarving() ? 0.5 : 1);
             }
         });
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new DiningPhilosophers(5), 800, 800);
     }
 }

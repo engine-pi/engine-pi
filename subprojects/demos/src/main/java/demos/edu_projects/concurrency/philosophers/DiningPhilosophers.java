@@ -40,33 +40,35 @@ import pi.event.FrameListener;
  */
 class DiningPhilosophers extends Scene implements FrameListener
 {
-
     /**
      * Verwaltet alle Philosophen.
      */
-    private List<Philosopher> allPhilosophers;
+    private List<Philosopher> all;
 
     /**
-     * Die zufaellig ausgewaehlten Philosophen, die am Tisch essen.
+     * Die zufällig ausgewählten Philosophen, die am Tisch essen.
      */
-    private List<Philosopher> eatingPhilosophers;
+    private List<Philosopher> eating;
 
     /**
      * Verhungern die Philosophen?
      */
-    boolean arePhilosophersStarving = false;
+    boolean starving = false;
 
     StopWatch stopWatch;
 
     /**
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
      * erstellt und die Philosophenthreads gestartet.
+     *
+     * @param numberOfPhilosophers Die Anzahl der Philosophen, die am Tisch
+     *     sitzen und essen.
      */
-    DiningPhilosophers(int numbeOfEatingPhilosophers)
+    DiningPhilosophers(int numberOfPhilosophers)
     {
         info().description(
             "Abgelegte Gabeln sind schwarz, aufgenommene Gabeln haben die Farbe ihres aktuellen Besitzers.");
-        allPhilosophers = new ArrayList<>(30);
+        all = new ArrayList<>(30);
 
         // Die die Philosophenbilder eine weiße Hintergrundfarbe und die
         // Philosophen nicht freigestellt sind, verwenden wir als
@@ -100,16 +102,16 @@ class DiningPhilosophers extends Scene implements FrameListener
         createPhilosopher("Unamuno", "#232a2c", 1864, 1936);
         createPhilosopher("Voltaire", "#764b9c", 1694, 1778);
 
-        eatingPhilosophers = selectPhilosophers(numbeOfEatingPhilosophers);
+        eating = selectPhilosophers(numberOfPhilosophers);
 
-        new Table(this, eatingPhilosophers);
+        new Table(this, eating);
 
         stopWatch = (StopWatch) new StopWatch().start()
             .anchor(-10, 10)
             .color("black");
         add(stopWatch);
 
-        for (Philosopher philosopher : allPhilosophers)
+        for (Philosopher philosopher : eating)
         {
             philosopher.start();
         }
@@ -118,45 +120,45 @@ class DiningPhilosophers extends Scene implements FrameListener
     private void createPhilosopher(String name, String color, int birth,
             int death)
     {
-        allPhilosophers.add(new Philosopher(name, color, birth, death));
+        all.add(new Philosopher(name, color, birth, death));
     }
 
-    private List<Philosopher> selectPhilosophers(int numbeOfEatingPhilosophers)
+    /**
+     * @param count Die Anzahl an Philosophen.
+     */
+    private List<Philosopher> selectPhilosophers(int count)
     {
-        if (numbeOfEatingPhilosophers < 0
-                || numbeOfEatingPhilosophers > allPhilosophers.size())
+        if (count < 0 || count > all.size())
         {
             throw new IllegalArgumentException(
-                    "Anzahl der essenden Philosophen ist ungueltig: "
-                            + numbeOfEatingPhilosophers);
+                    "Anzahl der essenden Philosophen ist ungültig: " + count);
         }
 
-        List<Philosopher> shuffledPhilosophers = new ArrayList<>(
-                allPhilosophers);
-        Collections.shuffle(shuffledPhilosophers);
+        List<Philosopher> shuffled = new ArrayList<>(all);
+        Collections.shuffle(shuffled);
 
-        List<Philosopher> selectedPhilosophers = new ArrayList<>(
-                shuffledPhilosophers.subList(0, numbeOfEatingPhilosophers));
+        List<Philosopher> selected = new ArrayList<>(
+                shuffled.subList(0, count));
 
         // Wir sortieren aufsteigenend nach dem Geburtsjahr.
-        selectedPhilosophers.sort(Comparator.comparingInt(Philosopher::birth));
+        selected.sort(Comparator.comparingInt(Philosopher::birth));
 
-        return selectedPhilosophers;
+        return selected;
     }
 
     @Override
     public void onFrame(double pastTime)
     {
-        arePhilosophersStarving = true;
-        for (Philosopher philosopher : eatingPhilosophers)
+        starving = true;
+        for (Philosopher philosopher : eating)
         {
             if (!philosopher.isStarving())
             {
-                arePhilosophersStarving = false;
+                starving = false;
             }
         }
 
-        if (arePhilosophersStarving)
+        if (starving)
         {
             stopWatch.stop();
         }
@@ -172,5 +174,4 @@ class DiningPhilosophers extends Scene implements FrameListener
         Controller.instantMode(false);
         Controller.start(new DiningPhilosophers(5), 800, 800);
     }
-
 }

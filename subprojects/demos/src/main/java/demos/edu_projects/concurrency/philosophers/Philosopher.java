@@ -36,51 +36,11 @@ import pi.annotations.Setter;
  */
 class Philosopher extends Thread
 {
-
-    /**
-     * Der <b>Name</b> des Philosophen.
-     */
-    private String name;
-
-    /**
-     * Das <b>Geburstsjahr</b> des Philosophen.
-     *
-     * <p>
-     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt.
-     * </p>
-     */
-    private int birth;
-
-    /**
-     * Das <b>Sterbejahr</b> des Philosophen.
-     *
-     * <p>
-     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt. Dieses
-     * Attribut ist nur der Vollständigkeit halber hier aufgeführt.
-     * </p>
-     */
-    private int death;
-
     /**
      * Die Zeitangabe in ms als Grundlage für die Bestimmung zufälliger Ess- und
      * Wartezeiten.
      */
     private int waitingTime;
-
-    /**
-     * Die Farbe des Tellers.
-     */
-    private String color;
-
-    /**
-     * Die linke Gabel.
-     */
-    private Fork leftFork;
-
-    /**
-     * Die rechte Gabel.
-     */
-    private Fork rightFork;
 
     /**
      * Der Zufallsgenerator.
@@ -109,6 +69,24 @@ class Philosopher extends Thread
         random = new Random();
     }
 
+    /* forks */
+
+    /**
+     * Die linke Gabel.
+     */
+    private Fork leftFork;
+
+    /**
+     * Die rechte Gabel.
+     */
+    private Fork rightFork;
+
+    /**
+     * Setzt die beiden Gabeln.
+     *
+     * @param left Die linke Gabel.
+     * @param right Die rechte Gabel.
+     */
     @Setter
     public void forks(Fork left, Fork right)
     {
@@ -116,17 +94,54 @@ class Philosopher extends Thread
         rightFork = right;
     }
 
+    /**
+     * Der <b>Name</b> des Philosophen.
+     */
+    private String name;
+
+    /**
+     *
+     * @return
+     */
     @Getter
     public String name()
     {
         return name;
     }
 
+    /* color */
+
+    /**
+     * Die Farbe des Tellers.
+     */
+    private String color;
+
     @Getter
     public String color()
     {
         return color;
     }
+
+    /* lifeTime */
+
+    /**
+     * Das <b>Geburstsjahr</b> des Philosophen.
+     *
+     * <p>
+     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt.
+     * </p>
+     */
+    private int birth;
+
+    /**
+     * Das <b>Sterbejahr</b> des Philosophen.
+     *
+     * <p>
+     * Jahre vor Christi Geburt werden als Minuszahlen dargestellt. Dieses
+     * Attribut ist nur der Vollständigkeit halber hier aufgeführt.
+     * </p>
+     */
+    private int death;
 
     @Getter
     public String lifeTime()
@@ -163,7 +178,7 @@ class Philosopher extends Thread
      */
     public boolean isStarving()
     {
-        return System.currentTimeMillis() - lastMeal > 1000;
+        return System.currentTimeMillis() - lastMeal > 200;
     }
 
     /**
@@ -278,5 +293,4 @@ class Philosopher extends Thread
         Controller.instantMode(false);
         Controller.start(new DiningPhilosophers(5), 800, 800);
     }
-
 }

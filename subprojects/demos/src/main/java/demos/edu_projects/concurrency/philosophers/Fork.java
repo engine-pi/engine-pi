@@ -39,11 +39,6 @@ class Fork
     private boolean used;
 
     /**
-     * Die ID der Gabel.
-     */
-    private int id;
-
-    /**
      * Die Darstellung der Gabel als Linie.
      */
     private Line line;
@@ -59,6 +54,23 @@ class Fork
         used = false;
         this.line = line;
         this.id = id;
+    }
+
+    /* id */
+
+    /**
+     * Die ID der Gabel.
+     */
+    private int id;
+
+    /**
+     * Liefert die ID der Gabel.
+     *
+     * @return Die ID der Gabel.
+     */
+    int id()
+    {
+        return id;
     }
 
     /**
@@ -129,16 +141,6 @@ class Fork
         used = false;
         line.color("schwarz");
         notifyAll();
-    }
-
-    /**
-     * Liefert die ID der Gabel.
-     *
-     * @return Die ID der Gabel.
-     */
-    int id()
-    {
-        return id;
     }
 
     public static void main(String[] args)
