@@ -39,4 +39,4 @@ jobs:
       # --force: Force the push to the repository.
       # -s, --strict / --no-strict: Enable strict mode. This will cause MkDocs to abort the build on any warnings.
       # -v, --verbose: Enable verbose output
-      - run: mkdocs gh-deploy -f docs/mkdocs.yml --force --strict --verbose
+      - run: mkdocs gh-deploy --force --strict --verbose

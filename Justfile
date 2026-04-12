@@ -104,7 +104,7 @@ export NO_MKDOCS_2_WARNING := "true"
 
 # Build the MkDocs site and open the generated index.html in a browser using xdg-open.
 mkdocs_build:
-	mkdocs build --config-file docs/mkdocs.yml --strict
+	mkdocs build --strict
 
 # Open the generated index.html of the MkDocs site in a browser using xdg-open.
 mkdocs_open:
@@ -112,11 +112,11 @@ mkdocs_open:
 
 # Deploy the MkDocs site to GitHub Pages using the 'gh-deploy' command.
 mkdocs_deploy:
-	mkdocs gh-deploy --config-file docs/mkdocs.yml
+	mkdocs gh-deploy
 
 # Serve the MkDocs site locally with livereload enabled using the 'serve' command.
 mkdocs_serve:
-	mkdocs serve --config-file docs/mkdocs.yml --livereload
+	mkdocs serve --livereload
 
 # Execute the cli command (subprojects/cli) with the provided arguments.
 cli *args:
