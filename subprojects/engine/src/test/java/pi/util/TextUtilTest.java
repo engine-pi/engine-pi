@@ -30,6 +30,8 @@ import static pi.util.TextUtil.convertToString;
 import static pi.util.TextUtil.getLineCount;
 import static pi.util.TextUtil.getLineWidth;
 import static pi.util.TextUtil.wrap;
+import static pi.util.TextUtil.normalizeLineSeparator;
+import static pi.util.TextUtil.splitLines;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,26 +55,75 @@ class TextUtilTest
         @Test
         void withoutDecimalPlaces()
         {
-            assertEquals(TextUtil.roundNumber(1.2345), "1.2");
+            assertEquals("1.2", TextUtil.roundNumber(1.2345));
         }
 
         @Test
         void withDecimalPlaces()
         {
-            assertEquals(TextUtil.roundNumber(1.2345, 3), "1.234");
+            assertEquals("1.234", TextUtil.roundNumber(1.2345, 3));
         }
     }
 
     @Test
     void getLineWidthMethod()
     {
-        assertEquals(getLineWidth("Lorem\nipsum\ndolor sit"), 9);
+        assertEquals(9, getLineWidth("Lorem\nipsum\ndolor sit"));
     }
 
     @Test
     void getLineCountMethod()
     {
-        assertEquals(getLineCount("Lorem\nipsum\ndolor sit"), 3);
+        assertEquals(3, getLineCount("Lorem\nipsum\ndolor sit"));
+    }
+
+    @Nested
+    class NormalizeLineSeparatorTest
+    {
+        @Test
+        void unixNewlineIsUnchanged()
+        {
+            assertEquals("line1\nline2",
+                normalizeLineSeparator("line1\nline2"));
+        }
+
+        @Test
+        void windowsLineEndingIsReplaced()
+        {
+            assertEquals("line1\nline2",
+                normalizeLineSeparator("line1\r\nline2"));
+        }
+
+        @Test
+        void classicMacLineEndingIsReplaced()
+        {
+            assertEquals("line1\nline2",
+                normalizeLineSeparator("line1\rline2"));
+        }
+
+        @Test
+        void mixedLineEndingsAreNormalized()
+        {
+            assertEquals("a\nb\nc\nd", normalizeLineSeparator("a\r\nb\rc\nd"));
+        }
+
+        @Test
+        void emptyStringRemainsEmpty()
+        {
+            assertEquals("", normalizeLineSeparator(""));
+        }
+
+        @Test
+        void noLineEndingIsUnchanged()
+        {
+            assertEquals("hello", normalizeLineSeparator("hello"));
+        }
+
+        @Test
+        void multipleWindowsLineEndings()
+        {
+            assertEquals("a\nb\nc", normalizeLineSeparator("a\r\nb\r\nc"));
+        }
     }
 
     @Nested
@@ -85,21 +136,25 @@ class TextUtilTest
         @Test
         void oneLine()
         {
-            assertEquals(align(oneLine, LEFT), "Lorem ipsum");
+            assertEquals("Lorem ipsum", align(oneLine, LEFT));
         }
 
         @Test
         void left()
         {
-            assertEquals(align(text, LEFT),
-                "Lorem ipsum\n" + "dolor sit\n" + "amet.");
+            assertEquals("""
+                    Lorem ipsum
+                    dolor sit
+                    amet.""", align(text, LEFT));
         }
 
         @Test
         void width()
         {
-            assertEquals(align(text, 15, LEFT),
-                "Lorem ipsum\n" + "dolor sit\n" + "amet.");
+            assertEquals("""
+                    Lorem ipsum
+                    dolor sit
+                    amet.""", align(text, 15, LEFT));
         }
 
         @Test
@@ -111,15 +166,19 @@ class TextUtilTest
         @Test
         void right()
         {
-            assertEquals(align(text, RIGHT),
-                "Lorem ipsum\n" + "  dolor sit\n" + "      amet.");
+            assertEquals("""
+                    Lorem ipsum
+                      dolor sit
+                          amet.""", align(text, RIGHT));
         }
 
         @Test
         void center()
         {
-            assertEquals(align(text, CENTER),
-                "Lorem ipsum\n" + " dolor sit\n" + "   amet.");
+            assertEquals("""
+                    Lorem ipsum
+                     dolor sit
+                       amet.""", align(text, CENTER));
         }
     }
 
@@ -131,27 +190,31 @@ class TextUtilTest
         @Test
         void left()
         {
-            assertEquals(wrap(text, 10, LEFT), "Lorem\nipsum\ndolor sit");
+            assertEquals("Lorem\nipsum\ndolor sit", wrap(text, 10, LEFT));
         }
 
         @Test
         void center()
         {
-            assertEquals(wrap(text, 10, CENTER),
-                "  Lorem\n" + "  ipsum\n" + "dolor sit");
+            assertEquals("""
+                      Lorem
+                      ipsum
+                    dolor sit""", wrap(text, 10, CENTER));
         }
 
         @Test
         void right()
         {
-            assertEquals(wrap(text, 10, RIGHT),
-                "     Lorem\n" + "     ipsum\n" + " dolor sit");
+            assertEquals("""
+                         Lorem
+                         ipsum
+                    \sdolor sit""", wrap(text, 10, RIGHT));
         }
 
         @Test
         void widthNotToSmall()
         {
-            assertEquals(wrap(text, 10), "Lorem\nipsum\ndolor sit");
+            assertEquals("Lorem\nipsum\ndolor sit", wrap(text, 10));
         }
 
         @Test
@@ -163,8 +226,8 @@ class TextUtilTest
         @Test
         void inputWithNewlines()
         {
-            assertEquals(wrap("Lorem\nipsum\ndolor\nsit", 10),
-                "Lorem\nipsum\ndolor\nsit");
+            assertEquals("Lorem\nipsum\ndolor\nsit",
+                wrap("Lorem\nipsum\ndolor\nsit", 10));
         }
     }
 
@@ -174,50 +237,50 @@ class TextUtilTest
         @Test
         void nullValue()
         {
-            assertEquals(convertToString(null), "");
+            assertEquals("", convertToString(null));
         }
 
         @Test
         void simpleString()
         {
-            assertEquals(convertToString("hello"), "hello");
+            assertEquals("hello", convertToString("hello"));
         }
 
         @Test
         void integer()
         {
-            assertEquals(convertToString(42), "42");
+            assertEquals("42", convertToString(42));
         }
 
         @Test
         void doubleValue()
         {
-            assertEquals(convertToString(3.14), "3.14");
+            assertEquals("3.14", convertToString(3.14));
         }
 
         @Test
         void emptyList()
         {
-            assertEquals(convertToString(List.of()), "[]");
+            assertEquals("[]", convertToString(List.of()));
         }
 
         @Test
         void listWithStrings()
         {
-            assertEquals(convertToString(List.of("a", "b", "c")), "[a, b, c]");
+            assertEquals("[a, b, c]", convertToString(List.of("a", "b", "c")));
         }
 
         @Test
         void listWithIntegers()
         {
-            assertEquals(convertToString(List.of(1, 2, 3)), "[1, 2, 3]");
+            assertEquals("[1, 2, 3]", convertToString(List.of(1, 2, 3)));
         }
 
         @Test
         void listWithMixedTypes()
         {
-            assertEquals(convertToString(List.of("a", 1, "b", 2)),
-                "[a, 1, b, 2]");
+            assertEquals("[a, 1, b, 2]",
+                convertToString(List.of("a", 1, "b", 2)));
         }
 
         @Test
@@ -227,37 +290,37 @@ class TextUtilTest
             list.add("a");
             list.add(null);
             list.add("b");
-            assertEquals(convertToString(list), "[a, , b]");
+            assertEquals("[a, , b]", convertToString(list));
         }
 
         @Test
         void emptySet()
         {
-            assertEquals(convertToString(Set.of()), "[]");
+            assertEquals("[]", convertToString(Set.of()));
         }
 
         @Test
         void setWithElements()
         {
             String result = convertToString(Set.of("x", "y", "z"));
-            assertEquals(result.startsWith("["), true);
-            assertEquals(result.endsWith("]"), true);
-            assertEquals(result.contains("x"), true);
-            assertEquals(result.contains("y"), true);
-            assertEquals(result.contains("z"), true);
+            assertEquals(true, result.startsWith("["));
+            assertEquals(true, result.endsWith("]"));
+            assertEquals(true, result.contains("x"));
+            assertEquals(true, result.contains("y"));
+            assertEquals(true, result.contains("z"));
         }
 
         @Test
         void emptyMap()
         {
-            assertEquals(convertToString(Map.of()), "{}");
+            assertEquals("{}", convertToString(Map.of()));
         }
 
         @Test
         void mapWithOneEntry()
         {
-            assertEquals(convertToString(Map.of("key", "value")),
-                "{key=value}");
+            assertEquals("{key=value}",
+                convertToString(Map.of("key", "value")));
         }
 
         @Test
@@ -267,10 +330,10 @@ class TextUtilTest
             map.put("a", "1");
             map.put("b", "2");
             String result = convertToString(map);
-            assertEquals(result.startsWith("{"), true);
-            assertEquals(result.endsWith("}"), true);
-            assertEquals(result.contains("a=1"), true);
-            assertEquals(result.contains("b=2"), true);
+            assertEquals(true, result.startsWith("{"));
+            assertEquals(true, result.endsWith("}"));
+            assertEquals(true, result.contains("a=1"));
+            assertEquals(true, result.contains("b=2"));
         }
 
         @Test
@@ -285,21 +348,21 @@ class TextUtilTest
         void objectArrayWithStrings()
         {
             String[] array = { "a", "b", "c" };
-            assertEquals(convertToString(array), "[a, b, c]");
+            assertEquals("[a, b, c]", convertToString(array));
         }
 
         @Test
         void objectArrayWithIntegers()
         {
             int[] array = { 1, 2, 3 };
-            assertEquals(convertToString(array), "[1, 2, 3]");
+            assertEquals("[1, 2, 3]", convertToString(array));
         }
 
         @Test
         void objectArrayEmpty()
         {
             double[] array = {};
-            assertEquals(convertToString(array), "[]");
+            assertEquals("[]", convertToString(array));
         }
 
         @Test
@@ -310,7 +373,7 @@ class TextUtilTest
             outer.add("a");
             outer.add(inner);
             outer.add("b");
-            assertEquals(convertToString(outer), "[a, [x, y], b]");
+            assertEquals("[a, [x, y], b]", convertToString(outer));
         }
 
         @Test
@@ -321,8 +384,8 @@ class TextUtilTest
             Map<String, Object> outer = new HashMap<>();
             outer.put("nested", inner);
             String result = convertToString(outer);
-            assertEquals(result.contains("nested={"), true);
-            assertEquals(result.contains("key1=val1"), true);
+            assertEquals(true, result.contains("nested={"));
+            assertEquals(true, result.contains("key1=val1"));
         }
 
         @Test
@@ -331,14 +394,16 @@ class TextUtilTest
             Map<String, Object> map = new HashMap<>();
             map.put("items", List.of(1, 2, 3));
             String result = convertToString(map);
-            assertEquals(result.contains("items=[1, 2, 3]"), true);
+            assertEquals(true, result.contains("items=[1, 2, 3]"));
         }
 
         @Test
         void arrayWithNull()
         {
-            Object[] array = { "a", null, "b" };
-            assertEquals(convertToString(array), "[a, , b]");
+
+            assertEquals("[a, , b]",
+                convertToString(new Object[]
+                { "a", null, "b" }));
         }
     }
 
@@ -348,25 +413,25 @@ class TextUtilTest
         @Test
         void emptyVarargs()
         {
-            assertEquals(convertToMultilineString(), "");
+            assertEquals("", convertToMultilineString());
         }
 
         @Test
         void nullVarargs()
         {
-            assertEquals(convertToMultilineString((Object[]) null), "");
+            assertEquals("", convertToMultilineString((Object[]) null));
         }
 
         @Test
         void singleElement()
         {
-            assertEquals(convertToMultilineString("hello"), "hello");
+            assertEquals("hello", convertToMultilineString("hello"));
         }
 
         @Test
         void multipleElements()
         {
-            assertEquals(convertToMultilineString("a", 1, true), "a\n1\ntrue");
+            assertEquals("a\n1\ntrue", convertToMultilineString("a", 1, true));
         }
 
         @Test
@@ -382,4 +447,5 @@ class TextUtilTest
                 convertToMultilineString(List.of(1, 2), Map.of("x", 10)));
         }
     }
+
 }

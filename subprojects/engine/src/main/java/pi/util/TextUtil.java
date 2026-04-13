@@ -42,9 +42,14 @@ import pi.graphics.boxes.HAlign;
 public class TextUtil
 {
     /**
-     * Das Standard-Zeilen-Trennzeichen.
+     * Ein einheitliches Standard-Zeilen-Trennzeichen.
+     *
+     * <p>
+     * {@link System#lineSeparator()} liefert für Windows als auch für
+     * Unix-Systeme unterschiedliche Trennzeichen.
+     * </p>
      */
-    public final static String LINE_SEPARATOR = "\n";
+    public static final String LINE_SEPARATOR = "\n";
 
     /**
      * Ein privater Konstruktor, um den öffentlichen Konstruktor zu verbergen.
@@ -156,6 +161,27 @@ public class TextUtil
     }
 
     /**
+     * <b>Normalisiert</b> die <b>Zeilentrennzeichen</b> einer Zeichenkette auf
+     * {@code "\n"}.
+     *
+     * <p>
+     * Ersetzt alle Windows-Zeilenenden ({@code "\r\n"}) und alte
+     * Mac-Zeilenenden ({@code "\r"}) durch {@code "\n"}.
+     * </p>
+     *
+     * @param text Die Zeichenkette, deren Zeilentrennzeichen normalisiert
+     *     werden sollen.
+     *
+     * @return Die Zeichenkette mit einheitlichen {@code "\n"}-Zeilenenden.
+     *
+     * @since 0.47.0
+     */
+    public static String normalizeLineSeparator(@NonNull String text)
+    {
+        return text.replace("\r\n", "\n").replace("\r", "\n");
+    }
+
+    /**
      * <b>Richtet</b> den gegebenen Text gemäß einer bestimmten
      * <b>Zeilenbreite</b> und einer gewünschten <b>Textausrichtung</b>
      * <b>aus</b>.
@@ -241,7 +267,8 @@ public class TextUtil
         int index = 0;
         while (stringBuilder.length() > index + width)
         {
-            int lastLineReturn = stringBuilder.lastIndexOf("\n", index + width);
+            int lastLineReturn = stringBuilder.lastIndexOf(LINE_SEPARATOR,
+                index + width);
             if (lastLineReturn > index)
             {
                 index = lastLineReturn;
@@ -255,7 +282,7 @@ public class TextUtil
                             "Kann den Text nicht umbrechen, da es ein Wort gibt, das länger als die Zeilenbreite ist: "
                                     + stringBuilder.substring(0, width));
                 }
-                stringBuilder.replace(index, index + 1, "\n");
+                stringBuilder.replace(index, index + 1, LINE_SEPARATOR);
                 index++;
             }
         }

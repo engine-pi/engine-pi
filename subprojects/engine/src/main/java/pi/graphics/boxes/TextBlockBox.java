@@ -366,7 +366,12 @@ public class TextBlockBox extends TextBox
         // Source:
         // https://github.com/gurkenlabs/litiengine/blob/0fae965994a30757b078153a67f095fe122ae456/litiengine/src/main/java/de/gurkenlabs/litiengine/graphics/TextRenderer.java#L279-L315
         ArrayList<TextLayoutLine> resultingLines = new ArrayList<>();
-        for (String line : content.split(System.lineSeparator()))
+
+        for (String line : content.split(
+            // Wir verwenden nicht System.lineSeparator(), damit wir keine
+            // unterschiedliche Textbehandlung zwischen Windows und
+            // Unix-Systemen haben. LINE_SEPARATOR ist auf \n gesetzt.
+            TextUtil.LINE_SEPARATOR))
         {
             final AttributedString styledText = new AttributedString(line);
             styledText.addAttribute(TextAttribute.FONT, font);
