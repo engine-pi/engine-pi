@@ -19,6 +19,7 @@
 package pi.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pi.graphics.boxes.HAlign.CENTER;
@@ -78,6 +79,44 @@ class TextUtilTest
     }
 
     @Nested
+    class SplitLinesTest
+    {
+        @Test
+        void singleLine()
+        {
+            assertEquals(1, splitLines("Lorem ipsum").length);
+            assertEquals("Lorem ipsum", splitLines("Lorem ipsum")[0]);
+        }
+
+        @Test
+        void unixLineSeparators()
+        {
+            assertArrayEquals(new String[] { "a", "b", "c" },
+                splitLines("a\nb\nc"));
+        }
+
+        @Test
+        void mixedLineSeparatorsAfterNormalization()
+        {
+            String normalized = normalizeLineSeparator("a\r\nb\rc\nd");
+            assertArrayEquals(new String[] { "a", "b", "c", "d" },
+                splitLines(normalized));
+        }
+
+        @Test
+        void trailingNewlineDoesNotCreateEmptyLine()
+        {
+            assertArrayEquals(new String[] { "a", "b" }, splitLines("a\nb\n"));
+        }
+
+        @Test
+        void emptyStringReturnsEmptyArray()
+        {
+            assertEquals(0, splitLines("").length);
+        }
+    }
+
+    @Nested
     class NormalizeLineSeparatorTest
     {
         @Test
@@ -123,6 +162,24 @@ class TextUtilTest
         void multipleWindowsLineEndings()
         {
             assertEquals("a\nb\nc", normalizeLineSeparator("a\r\nb\r\nc"));
+        }
+
+        @Test
+        void multipleConsecutiveUnixLineEndings()
+        {
+            assertEquals("a\n\nb", normalizeLineSeparator("a\n\nb"));
+        }
+
+        @Test
+        void multipleConsecutiveWindowsLineEndings()
+        {
+            assertEquals("a\n\nb", normalizeLineSeparator("a\r\n\r\nb"));
+        }
+
+        @Test
+        void multipleConsecutiveOldMacLineEndings()
+        {
+            assertEquals("a\n\nb", normalizeLineSeparator("a\r\rb"));
         }
     }
 
@@ -400,10 +457,15 @@ class TextUtilTest
         @Test
         void arrayWithNull()
         {
-
             assertEquals("[a, , b]",
                 convertToString(new Object[]
                 { "a", null, "b" }));
+        }
+
+        @Test
+        void lineSeparatorsAreNormalized()
+        {
+            assertEquals("a\nb\nc\nd", convertToString("a\r\nb\nc\rd"));
         }
     }
 

@@ -321,6 +321,12 @@ public class TextUtil
      * </p>
      *
      * <p>
+     * Außerdem werden die Zeilen-Trennzeichen normalisiert. Alle
+     * Windows-Zeilenenden ({@code "\r\n"}) und alte Mac-Zeilenenden
+     * ({@code "\r"}) werden durch {@code "\n"} ersetzt.
+     * </p>
+     *
+     * <p>
      * Beispiele:
      * </p>
      * <ul>
@@ -412,7 +418,7 @@ public class TextUtil
             return sb.toString();
         }
 
-        return content.toString();
+        return normalizeLineSeparator(content.toString());
     }
 
     /**
