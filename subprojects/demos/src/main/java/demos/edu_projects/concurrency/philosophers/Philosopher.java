@@ -246,8 +246,8 @@ class Philosopher extends Thread
         else
         {
             leftFork.putDown();
-            rightFork.putDown();
-            leftFork.putDown();
+            rightFork.pickUp(color);
+            leftFork.pickUp(color);
         }
         eat();
         leftFork.putDown();

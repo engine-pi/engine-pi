@@ -192,7 +192,9 @@ public abstract class DebugDraw
     public abstract void drawParticlesWireframe(Vec2[] centers, float radius,
             ParticleColor[] colors, int count);
 
-    /** Called at the end of drawing a world */
+    /**
+     * Called at the end of drawing a world
+     */
     public void flush()
     {
     }

@@ -61,8 +61,7 @@ class DiningPhilosophers extends Scene implements FrameListener
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
      * erstellt und die Philosophenthreads gestartet.
      *
-     * @param count Die Anzahl der Philosophen, die am Tisch
-     *     sitzen und essen.
+     * @param count Die Anzahl der Philosophen, die am Tisch sitzen und essen.
      */
     DiningPhilosophers(int count)
     {
