@@ -24,6 +24,9 @@ import static pi.graphics.boxes.HAlign.RIGHT;
 
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.jspecify.annotations.NonNull;
@@ -311,6 +314,35 @@ public class TextUtil
     }
 
     /**
+     * Konvertiert einen Iterator in einen formatierten String.
+     *
+     * Die Elemente des Iterators werden mit Kommas und Leerzeichen getrennt
+     * und von den angegebenen Begrenzer-Strings umgeben.
+     *
+     * @param iterator der zu konvertierende Iterator
+     * @param startDelimiter der String am Anfang der Ausgabe
+     * @param endDelimiter der String am Ende der Ausgabe
+     * @return ein formatierter String mit allen Elementen des Iterators
+     *
+     * @since 0.47.0
+     */
+    private static String convertIteratorToString(Iterator<?> iterator,
+            String startDelimiter, String endDelimiter)
+    {
+        StringBuilder string = new StringBuilder(startDelimiter);
+        while (iterator.hasNext())
+        {
+            string.append(convertToString(iterator.next()));
+            if (iterator.hasNext())
+            {
+                string.append(", ");
+            }
+        }
+        string.append(endDelimiter);
+        return string.toString();
+    }
+
+    /**
      * Konvertiert einen Inhalt in einem beliebigen Datentyp zu einer
      * <b>Zeichenkette</b>.
      *
@@ -354,68 +386,37 @@ public class TextUtil
 
         if (content instanceof java.util.Map<?, ?> map)
         {
-            StringBuilder sb = new StringBuilder("{");
             var entries = map.entrySet().iterator();
+            List<String> list = new ArrayList<>(map.size());
             while (entries.hasNext())
             {
                 var entry = entries.next();
-                sb.append(convertToString(entry.getKey()))
-                    .append("=")
-                    .append(convertToString(entry.getValue()));
-                if (entries.hasNext())
-                {
-                    sb.append(", ");
-                }
+                list.add(
+                    convertToString(entry.getKey()) + "=" + entry.getValue());
+
             }
-            sb.append("}");
-            return sb.toString();
+            return convertIteratorToString(list.iterator(), "{", "}");
         }
 
         if (content instanceof java.util.Set<?> set)
         {
-            StringBuilder sb = new StringBuilder("[");
-            var iterator = set.iterator();
-            while (iterator.hasNext())
-            {
-                sb.append(convertToString(iterator.next()));
-                if (iterator.hasNext())
-                {
-                    sb.append(", ");
-                }
-            }
-            sb.append("]");
-            return sb.toString();
+            return convertIteratorToString(set.iterator(), "[", "]");
         }
 
         if (content instanceof java.util.List<?> list)
         {
-            StringBuilder sb = new StringBuilder("[");
-            for (int i = 0; i < list.size(); i++)
-            {
-                sb.append(convertToString(list.get(i)));
-                if (i < list.size() - 1)
-                {
-                    sb.append(", ");
-                }
-            }
-            sb.append("]");
-            return sb.toString();
+            return convertIteratorToString(list.iterator(), "[", "]");
         }
 
         if (content.getClass().isArray())
         {
-            StringBuilder sb = new StringBuilder("[");
             int length = Array.getLength(content);
+            List<String> list = new ArrayList<>(length);
             for (int i = 0; i < length; i++)
             {
-                sb.append(convertToString(Array.get(content, i)));
-                if (i < length - 1)
-                {
-                    sb.append(", ");
-                }
+                list.add(convertToString(Array.get(content, i)));
             }
-            sb.append("]");
-            return sb.toString();
+            return convertIteratorToString(list.iterator(), "[", "]");
         }
 
         return normalizeLineSeparator(content.toString());

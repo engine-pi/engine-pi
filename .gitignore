@@ -6,8 +6,6 @@
 /example
 /out
 /report
-/src/ea/test
-/src/ea/example
 
 /.settings
 
@@ -43,3 +41,5 @@ engine-pi.properties
 *.log
 *.log.*
 logging.properties
+
+.github/java-upgrade/
