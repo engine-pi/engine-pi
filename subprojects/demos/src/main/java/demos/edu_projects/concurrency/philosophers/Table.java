@@ -8,6 +8,7 @@ import pi.actor.Circle;
 import pi.actor.Image;
 import pi.actor.Line;
 import pi.actor.label.TextLabel;
+import pi.annotations.Getter;
 import pi.graphics.boxes.VAlign;
 import pi.graphics.geom.Vector;
 
@@ -94,6 +95,30 @@ public class Table
                 image.opacity(philosopher.isStarving() ? 0.5 : 1);
             }
         });
+    }
+
+    /**
+     * Die Anzahl an Sitzen, also wie viele Philosophen am Tische sitzen können.
+     */
+    @Getter
+    public int seatCount()
+    {
+        return forks.length;
+    }
+
+    /**
+     * Die Drehwinkel in Grad, von Mittelpunkt des Tisches zu zwei benachbarten
+     * Philosophen.
+     */
+    @Getter
+    public double rotation()
+    {
+        return 360.0 / seatCount();
+    }
+
+    public double halfRotation()
+    {
+        return 360.0 / seatCount();
     }
 
     public static void main(String[] args)
