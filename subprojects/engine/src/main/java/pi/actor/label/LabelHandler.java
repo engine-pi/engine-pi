@@ -21,6 +21,7 @@ package pi.actor.label;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import pi.annotations.API;
@@ -70,6 +71,17 @@ public class LabelHandler
     public boolean hasLabels()
     {
         return labels.isEmpty();
+    }
+
+    public LabelHandler add(@NonNull Label label)
+    {
+        if (labels.contains(label))
+        {
+            throw new IllegalArgumentException(
+                    "Die Beschriftung wurde bereits der Beschriftungsliste hinzugefügt");
+        }
+        labels.add(label);
+        return this;
     }
 
     /**
@@ -124,5 +136,13 @@ public class LabelHandler
         this.mainLabel = mainLabel;
         labels.add(mainLabel);
         return this;
+    }
+
+    @API
+    @Setter
+    @ChainableMethod
+    public LabelHandler mainLabel(Object... content)
+    {
+        return mainLabel(new TextLabel(content));
     }
 }

@@ -2764,11 +2764,12 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @ChainableMethod
     public Actor label(Object... content)
     {
-        return label(new TextLabel(content));
+        this.label.mainLabel(content);
+        return this;
     }
 
     /**
-     * Setzt eine neue (Haupt)-Beschriftung für diese Figur.
+     * Fügt eine Beschriftung für diese Figur hinzu.
      *
      * <p>
      * Das Setzen eines Label-Objekts ermöglicht genauere Einstellmöglichkeiten.
@@ -2786,9 +2787,9 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     @API
     @Setter
     @ChainableMethod
-    public Actor label(TextLabel label)
+    public Actor label(Label label)
     {
-        this.label.mainLabel(label);
+        this.label.add(label);
         return this;
     }
 

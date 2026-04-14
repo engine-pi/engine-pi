@@ -316,12 +316,13 @@ public class TextUtil
     /**
      * Konvertiert einen Iterator in einen formatierten String.
      *
-     * Die Elemente des Iterators werden mit Kommas und Leerzeichen getrennt
-     * und von den angegebenen Begrenzer-Strings umgeben.
+     * Die Elemente des Iterators werden mit Kommas und Leerzeichen getrennt und
+     * von den angegebenen Begrenzer-Strings umgeben.
      *
      * @param iterator der zu konvertierende Iterator
      * @param startDelimiter der String am Anfang der Ausgabe
      * @param endDelimiter der String am Ende der Ausgabe
+     *
      * @return ein formatierter String mit allen Elementen des Iterators
      *
      * @since 0.47.0
@@ -393,7 +394,6 @@ public class TextUtil
                 var entry = entries.next();
                 list.add(
                     convertToString(entry.getKey()) + "=" + entry.getValue());
-
             }
             return convertIteratorToString(list.iterator(), "{", "}");
         }

@@ -19,12 +19,14 @@
 package pi.actor.label;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.graphics.boxes.TextBlockBox;
+import pi.resources.font.FontStyle;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/main_classes/actor/ActorLabelDemo.java
 
@@ -92,6 +94,174 @@ public class TextLabel extends BoxLabel<TextBlockBox>
     {
         box.content(content);
         return this;
+    }
+
+    /* font */
+
+    /**
+     * Gibt die <b>Schriftart</b> zurück, in der der Inhalt dargestellt wird.
+     *
+     * @return Die <b>Schriftart</b>, in der der Inhalt dargestellt wird.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Getter
+    public Font font()
+    {
+        return box.font();
+    }
+
+    /**
+     * Setzt eine neue <b>Schriftart</b> durch Angabe des <b>Names</b>.
+     *
+     * @param fontName Der <b>Name</b> der Schriftart, falls es sich um eine
+     *     Systemschriftart handelt, oder der <b>Pfad</b> zu einer Schriftdatei.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Beschriftung, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der Beschriftung
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code label.content(..).font(..)}.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextLabel font(String fontName)
+    {
+        box.font(fontName);
+        return this;
+    }
+
+    /**
+     * Setzt die <b>Schriftart</b>, in der der Inhalt dargestellt werden soll.
+     *
+     * @param font Die <b>Schriftart</b>, in der der Inhalt dargestellt werden
+     *     soll.
+     *
+     * @return Eine Referenz auf die eigene Instanz der Beschriftung, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der Beschriftung
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code label.content(..).font(..)}.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextLabel font(Font font)
+    {
+        box.font(font);
+        return this;
+    }
+
+    /* fontSize */
+
+    /**
+     * Setzt die <b>Schriftgröße</b> in Punkten (Points pt).
+     *
+     * @param fontSize Die <b>Schriftgröße</b> in Punkten (Points pt).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Beschriftung, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der Beschriftung
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code label.content(..).font(..)}.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextLabel fontSize(double fontSize)
+    {
+        box.fontSize(fontSize);
+        return this;
+    }
+
+    /* fontStyle */
+
+    protected int fontStyle;
+
+    /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b>.
+     *
+     * @param fontStyle Der <b>Stil</b> der Schriftart (<i>fett</i>,
+     *     <i>kursiv</i> oder <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Beschriftung, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der Beschriftung
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code label.content(..).font(..)}.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextLabel fontStyle(FontStyle fontStyle)
+    {
+        box.fontStyle(fontStyle);
+        return this;
+    }
+
+    /**
+     * Setzt den <b>Stil</b> der Schriftart als <b>Ganzzahl</b>.
+     *
+     * @param fontStyle Der <b>Stil</b> der Schriftart (<i>fett</i>,
+     *     <i>kursiv</i> oder <i>fett und kursiv</i>) als Ganzzahl.
+     *
+     *     <ul>
+     *     <li>{@code 0}: Normaler Text</li>
+     *     <li>{@code 1}: Fett</li>
+     *     <li>{@code 2}: Kursiv</li>
+     *     <li>{@code 3}: Fett und Kursiv</li>
+     *     </ul>
+     *
+     * @return Eine Referenz auf die eigene Instanz der Beschriftung, damit nach
+     *     dem Erbauer/Builder-Entwurfsmuster die Eigenschaften der Beschriftung
+     *     durch aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code label.content(..).font(..)}.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Setter
+    @ChainableMethod
+    public TextLabel fontStyle(int fontStyle)
+    {
+        box.fontStyle(fontStyle);
+        return this;
+    }
+
+    /**
+     * Gibt den <b>Stil</b> der Schriftart als <b>Aufzählungstyp</b> zurück.
+     *
+     * @return Der <b>Stil</b> der Schriftart (<i>fett</i>, <i>kursiv</i> oder
+     *     <i>fett und kursiv</i>) als Aufzählungstyp.
+     *
+     *     <ul>
+     *     <li>{@link FontStyle#PLAIN} — normaler Text ({@code 0})</li>
+     *     <li>{@link FontStyle#BOLD} — fetter Text ({@code 1})</li>
+     *     <li>{@link FontStyle#ITALIC} — kursiver Text ({@code 2})</li>
+     *     <li>{@link FontStyle#BOLD_ITALIC} — fett und kursiv kombiniert
+     *     ({@code 3})</li>
+     *     </ul>
+     *
+     * @since 0.47.0
+     */
+    @Getter
+    public FontStyle fontStyle()
+    {
+        return FontStyle.style(fontStyle);
     }
 
     /* color */

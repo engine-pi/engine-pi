@@ -7,6 +7,8 @@ import pi.Scene;
 import pi.actor.Circle;
 import pi.actor.Image;
 import pi.actor.Line;
+import pi.actor.label.TextLabel;
+import pi.graphics.boxes.VAlign;
 import pi.graphics.geom.Vector;
 
 /**
@@ -68,7 +70,9 @@ public class Table
             philosopherImages[i] = (Image) new Image(
                     "philosophers/" + philospherName + ".png").pixelPerMeter(30)
                         .center(Vector.ofAngle(currentRotation).multiply(9))
-                        .label(philospherName, philosopher.lifeTime());
+                        .label(philospherName)
+                        .label(new TextLabel(philosopher.lifeTime()).fontSize(8)
+                            .vAlign(VAlign.TOP));
         }
 
         // Die Gabeln zuordnen
