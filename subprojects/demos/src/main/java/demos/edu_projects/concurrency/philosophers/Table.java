@@ -1,3 +1,21 @@
+/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2026 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package demos.edu_projects.concurrency.philosophers;
 
 import java.util.List;
@@ -7,9 +25,7 @@ import pi.Scene;
 import pi.actor.Circle;
 import pi.actor.Image;
 import pi.actor.Line;
-import pi.actor.label.TextLabel;
 import pi.annotations.Getter;
-import pi.graphics.boxes.VAlign;
 import pi.graphics.geom.Vector;
 
 /**
@@ -17,32 +33,29 @@ import pi.graphics.geom.Vector;
  */
 public class Table
 {
+    private Scene scene;
+
+    private Seat[] seats;
+
     /**
      * Verwaltet alle Gabeln.
      */
     private Fork[] forks;
 
     /**
-     * Das Teller eines Philosophen.
-     */
-    private Circle[] plates;
-
-    private Image[] philosopherImages;
-
-    /**
      * @param philosophers die Philosophen, die am Tisch sitzen und essen.
      */
     public Table(Scene scene, List<Philosopher> philosophers)
     {
+        this.scene = scene;
         // Ein großer Kreis als runder Tisch.
         scene.add(new Circle(8).center(0, 0).color("braun"));
 
         // Anzahl an essenden Philosophen
         int count = philosophers.size();
 
+        seats = new Seat[count];
         forks = new Fork[count];
-        plates = new Circle[count];
-        philosopherImages = new Image[count];
 
         double rotation = 360.0 / count;
 
@@ -51,6 +64,8 @@ public class Table
         for (int i = 0; i < count; i++)
         {
             Philosopher philosopher = philosophers.get(i);
+
+            seats[i] = new Seat(this, i, philosopher);
             double currentRotation = i * rotation;
             double lineRotation = currentRotation + halfRoation;
             // Gabeln
@@ -60,20 +75,6 @@ public class Table
                         .color("black");
             scene.add(line);
             forks[i] = new Fork(i, line);
-
-            // Teller
-            plates[i] = (Circle) new Circle(1).color(philosopher.color())
-                .center(Vector.ofAngle(currentRotation).multiply(3));
-
-            String philospherName = philosopher.name();
-
-            // Bild des Philosophen i
-            philosopherImages[i] = (Image) new Image(
-                    "philosophers/" + philospherName + ".png").pixelPerMeter(30)
-                        .center(Vector.ofAngle(currentRotation).multiply(9))
-                        .label(philospherName)
-                        .label(new TextLabel(philosopher.lifeTime()).fontSize(8)
-                            .vAlign(VAlign.TOP));
         }
 
         // Die Gabeln zuordnen
@@ -83,14 +84,11 @@ public class Table
             philosopher.forks(forks[(i + count - 1) % count], forks[i]);
         }
 
-        scene.add(plates);
-        scene.add(philosopherImages);
-
         scene.addFrameListener(deltaTime -> {
             for (int i = 0; i < count; i++)
             {
                 Philosopher philosopher = philosophers.get(i);
-                Image image = philosopherImages[i];
+                Image image = seats[i].philosopherImage();
                 // Hungert der Philosoph, so wird sein Bild durchsichtig.
                 image.opacity(philosopher.isStarving() ? 0.5 : 1);
             }
@@ -98,7 +96,7 @@ public class Table
     }
 
     /**
-     * Die Anzahl an Sitzen, also wie viele Philosophen am Tische sitzen können.
+     * Die Anzahl an Sitzen, also wie viele Philosophen am Tisch sitzen können.
      */
     @Getter
     public int seatCount()
@@ -119,6 +117,22 @@ public class Table
     public double halfRotation()
     {
         return 360.0 / seatCount();
+    }
+
+    /**
+     *
+     * @param distanceFromCenter
+     *
+     * @return
+     */
+    public Vector point(double rotation, double distanceFromCenter)
+    {
+        return Vector.ofAngle(rotation).multiply(distanceFromCenter);
+    }
+
+    public Scene scene()
+    {
+        return scene;
     }
 
     public static void main(String[] args)

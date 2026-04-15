@@ -101,7 +101,6 @@ class DiningPhilosophers extends Scene implements FrameListener
         {
             stopWatch.start();
         }
-
     }
 
     public static void main(String[] args)
