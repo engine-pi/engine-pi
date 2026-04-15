@@ -19,15 +19,14 @@
 package demos.edu_projects.concurrency.philosophers;
 
 import pi.actor.Circle;
-import pi.actor.Image;
-import pi.actor.label.TextLabel;
 import pi.annotations.Getter;
-import pi.graphics.boxes.VAlign;
 
 /**
  * Ein Sitzplatz am Tisch.
  *
+ * <p>
  * Der Sitzplatz hat eine Sitzplatznummer und ihm wird ein Philosoph zugeordnet.
+ * </p>
  */
 public class Seat
 {
@@ -43,7 +42,7 @@ public class Seat
     /**
      * Das Bild eines Philosophen.
      */
-    private Image philosopherImage;
+    private PhilosopherImage philosopherImage;
 
     public Seat(Table table, int no, Philosopher philosopher)
     {
@@ -68,28 +67,32 @@ public class Seat
             .center(table.point(rotation(), 3));
     }
 
-    private Image createPhilosopherImage()
+    /**
+     * Erzeugt eine Bild, das einen Philosophen zeigt.
+     */
+    private PhilosopherImage createPhilosopherImage()
     {
-        return (Image) new Image("philosophers/" + philosopher.name() + ".png")
-            .pixelPerMeter(30)
-            .center(table.point(rotation(), 9))
-            .label(philosopher.name())
-            .label(new TextLabel(philosopher.lifeTime()).fontSize(8)
-                .vAlign(VAlign.TOP));
+        return new PhilosopherImage(this, philosopher);
     }
 
+    /**
+     * Die Rotation, in der der Sitz vom Tisch-Zentrum und der x-Achse gedreht
+     * ist.
+     */
     public double rotation()
     {
         return table.rotation() * no;
     }
 
     @Getter
-    public Image philosopherImage()
+    public PhilosopherImage philosopherImage()
     {
-        if (philosopherImage == null)
-        {
-            table.scene().add(philosopherImage);
-        }
         return philosopherImage;
+    }
+
+    @Getter
+    public Table table()
+    {
+        return table;
     }
 }

@@ -23,13 +23,12 @@ import java.util.List;
 import pi.Controller;
 import pi.Scene;
 import pi.actor.Circle;
-import pi.actor.Image;
 import pi.actor.Line;
 import pi.annotations.Getter;
 import pi.graphics.geom.Vector;
 
 /**
- * Ein runder Tisch an dem die Philosphen essen.
+ * Ein runder Tisch, an dem die Philosphen essen.
  */
 public class Table
 {
@@ -83,16 +82,6 @@ public class Table
             Philosopher philosopher = philosophers.get(i);
             philosopher.forks(forks[(i + count - 1) % count], forks[i]);
         }
-
-        scene.addFrameListener(deltaTime -> {
-            for (int i = 0; i < count; i++)
-            {
-                Philosopher philosopher = philosophers.get(i);
-                Image image = seats[i].philosopherImage();
-                // Hungert der Philosoph, so wird sein Bild durchsichtig.
-                image.opacity(philosopher.isStarving() ? 0.5 : 1);
-            }
-        });
     }
 
     /**
@@ -119,17 +108,12 @@ public class Table
         return 360.0 / seatCount();
     }
 
-    /**
-     *
-     * @param distanceFromCenter
-     *
-     * @return
-     */
     public Vector point(double rotation, double distanceFromCenter)
     {
         return Vector.ofAngle(rotation).multiply(distanceFromCenter);
     }
 
+    @Getter
     public Scene scene()
     {
         return scene;

@@ -46,11 +46,11 @@ class Fork
     /**
      * Konstruktor für Objekte der Klasse Gabel
      *
-     * @param id Id der Gabel
+     * @param id Die ID der Gabel.
+     * @param line Die Darstellung der Gabel als Linie.
      */
     Fork(int id, Line line)
     {
-        super();
         used = false;
         this.line = line;
         this.id = id;

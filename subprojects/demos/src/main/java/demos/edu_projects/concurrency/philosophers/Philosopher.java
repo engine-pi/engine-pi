@@ -282,9 +282,9 @@ class Philosopher extends Thread
     {
         while (true)
         {
-            // fullfilCoffman();
+            fullfilCoffman();
             // violateCoffman4();
-            violateCoffman2();
+            // violateCoffman2();
         }
     }
 

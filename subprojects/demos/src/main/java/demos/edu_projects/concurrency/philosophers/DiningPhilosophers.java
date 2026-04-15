@@ -37,7 +37,6 @@ import pi.event.FrameListener;
  */
 class DiningPhilosophers extends Scene implements FrameListener
 {
-
     /**
      * Die zufällig ausgewählten Philosophen, die am Tisch essen.
      */
