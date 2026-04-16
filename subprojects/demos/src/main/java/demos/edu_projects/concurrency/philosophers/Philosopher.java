@@ -146,6 +146,14 @@ class Philosopher extends Thread
     @Getter
     public String lifeTime()
     {
+        if (birth < 0 && death < 0)
+        {
+            return -birth + " - " + -death + " v. Chr.";
+        }
+        if (birth < 0)
+        {
+            return -birth + " v. Chr. - " + death;
+        }
         return birth + " - " + death;
     }
 
@@ -211,6 +219,17 @@ class Philosopher extends Thread
     {
         waitRandomly();
         lastMeal = System.currentTimeMillis();
+        eatCounter++;
+    }
+
+    /**
+     * Wie oft die Philosophen bereits gegessen haben.
+     */
+    private int eatCounter;
+
+    public int eatCounter()
+    {
+        return eatCounter;
     }
 
     /**

@@ -27,8 +27,24 @@ public class TextTableBox extends GridBox<TextBlockBox>
         super();
         for (Object content : contents)
         {
-            addChild(new TextBlockBox(content));
+            addTextBlockBox(content);
         }
+        buildGrid();
+    }
+
+    private void addTextBlockBox(Object... content)
+    {
+        addChild(new TextBlockBox(content));
+    }
+
+    /**
+     * @param content Der Inhalt der Zelle. Es können mehrere Eingabewerte
+     *     angegeben werden. Jeder Eingabewert wird in eine eigene Zeile einer
+     *     mehrzeiligen Text-Zelle gesetzt.
+     */
+    public void addCell(Object... content)
+    {
+        addTextBlockBox(content);
         buildGrid();
     }
 }

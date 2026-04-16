@@ -18,12 +18,14 @@
  */
 package demos.edu_projects.concurrency.philosophers;
 
+import java.awt.Graphics2D;
 import java.util.List;
 
 import pi.Controller;
 import pi.Scene;
 import pi.actor.StopWatch;
 import pi.event.FrameListener;
+import pi.graphics.boxes.TextTableBox;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/projects/philosophers.md
 
@@ -48,6 +50,8 @@ class DiningPhilosophers extends Scene implements FrameListener
     boolean starving = false;
 
     StopWatch stopWatch;
+
+    TextTableBox table;
 
     /**
      * Beteiligte Objekte (Philosophen, Teller, Gabeln, ...) werden passend
@@ -74,10 +78,31 @@ class DiningPhilosophers extends Scene implements FrameListener
             .color("black");
         add(stopWatch);
 
+        table = new TextTableBox();
+        table.columns(2).anchor(600, 600);
+        table.padding(5);
+
         for (Philosopher philosopher : philosophers)
         {
             philosopher.start();
+
+            table.addCell(philosopher.name());
+            table.addCell(philosopher.eatCounter());
         }
+
+    }
+
+    @Override
+    public void renderOverlay(Graphics2D g, int width, int height)
+    {
+        for (int i = 0; i < philosophers.size(); i++)
+        {
+            final Philosopher philosopher = philosophers.get(i);
+            table.forBox(i,
+                1,
+                cell -> cell.box.content(philosopher.eatCounter()));
+        }
+        table.render(g);
     }
 
     @Override

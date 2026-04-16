@@ -41,7 +41,7 @@ public class PhilosopherImage extends Image implements FrameListener
         super("philosophers/" + philosopher.name() + ".png");
         this.philosopher = philosopher;
         pixelPerMeter(30);
-        center(seat.table().point(seat.rotation(), 8));
+        center(seat.table().point(seat.rotation(), 8.5));
         label(philosopher.name());
         label(new TextLabel(philosopher.lifeTime()).fontSize(8)
             .vAlign(VAlign.TOP));
