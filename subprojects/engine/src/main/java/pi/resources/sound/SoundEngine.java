@@ -119,56 +119,137 @@ public final class SoundEngine
         return INSTANCE;
     }
 
+    /* sound */
+
     /**
-     * Setzt die aktuell abgespielte Spur auf einen {@link LoopedTrack} mit dem
-     * angegebenen Musik-{@link Sound}.
+     * Spielt den <b>Klang</b> <b>einmalig</b> ab, der durch einen
+     * <b>Dateipfad</b> als <b>Zeichenkette</b> angegeben wird.
+     *
+     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
+     *
+     * @return Die gestartete Klangwiedergabe.
+     */
+    @API
+    public SoundPlayback playSound(final String filePath)
+    {
+        return playSound(filePath, false);
+    }
+
+    /**
+     * Spielt den <b>Klang</b> ab, der durch einen <b>Dateipfad</b> als
+     * <b>Zeichenkette</b> angegeben wird.
+     *
+     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
+     * @param loop Gibt an, ob der Klang in einer <b>Schleife</b> abgespielt
+     *     werden soll.
+     *
+     * @return Die gestartete Klangwiedergabe.
+     */
+    @API
+    public SoundPlayback playSound(final String filePath, boolean loop)
+    {
+        return playSound(sound(filePath), loop);
+    }
+
+    /**
+     * Spielt den <b>Klang</b> ab, der als {@link Sound}-Objekt angegeben wird.
+     *
+     * @param sound Der abzuspielende Klang.
+     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
+     *     soll.
+     *
+     * @return Die gestartete Klangwiedergabe oder {@code null}, falls kein
+     *     Klang übergeben wurde.
+     */
+    @API
+    public SoundPlayback playSound(Sound sound, boolean loop)
+    {
+        if (sound == null)
+        {
+            return null;
+        }
+        SoundPlayback playback = createSoundPlayback(sound, loop);
+        playback.start();
+        return playback;
+    }
+
+    /**
+     * Liefert den {@link Sound} zur angegebenen Datei.
+     *
+     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
+     *
+     * @return Der geladene Klang.
+     */
+    @API
+    public Sound sound(String filePath)
+    {
+        return soundsContainer.get(filePath);
+    }
+
+    /**
+     * Erzeugt ein {@link SoundPlayback}-Objekt, das vor dem Start konfiguriert
+     * werden kann.
      *
      * <p>
-     * Hat keine Wirkung, wenn die angegebene Spur bereits läuft.
+     * Im Gegensatz zu den {@code playSound}-Methoden muss das von dieser
+     * Methode zurückgegebene {@code SoundPlayback}-Objekt manuell mit
+     * {@link Playback#start()} gestartet werden. Die benötigten Ressourcen
+     * werden jedoch <em>sofort</em> beim Aufruf dieser Methode reserviert und
+     * bleiben belegt, bis die Wiedergabe abgebrochen oder beendet wird.
      * </p>
      *
-     * @param sound Der Klang, der abgespielt werden soll.
-     *
-     * @return Ermöglicht die Steuerung der Musikwiedergabe.
-     */
-    @API
-    public MusicPlayback playMusic(Sound sound)
-    {
-        return playMusic(new LoopedTrack(sound), restartDefault, stopDefault);
-    }
-
-    /**
-     * Setzt die aktuell abgespielte Spur auf einen {@code LoopedTrack} mit dem
-     * angegebenen Musik-{@code Sound}. Hat keine Wirkung, wenn die angegebene
-     * Spur bereits läuft.
-     *
-     * @param sound Der Klang, der abgespielt werden soll.
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
+     * @param sound Der abzuspielende Klang.
+     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
      *     soll.
-     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
      *
-     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     * @return Ein konfigurierbares {@code SoundPlayback}-Objekt, das manuell
+     *     gestartet werden muss.
      */
     @API
-    public MusicPlayback playMusic(Sound sound, boolean restart, boolean stop)
+    public @NonNull SoundPlayback createSoundPlayback(Sound sound, boolean loop)
     {
-        return playMusic(new LoopedTrack(sound), null, restart, stop);
+        try
+        {
+            return new SoundPlayback(sound, loop);
+        }
+        catch (LineUnavailableException | IllegalArgumentException e)
+        {
+            throw new IllegalArgumentException(e);
+        }
     }
 
     /**
-     * Setzt die aktuell abgespielte Spur auf die angegebene Spur. Hat keine
-     * Wirkung, wenn die angegebene Spur bereits läuft.
+     * Erzeugt ein {@link SoundPlayback}-Objekt zur angegebenen Datei.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
+     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
+     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
+     *     soll.
      *
-     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     * @return Ein konfigurierbares {@link SoundPlayback}-Objekt.
      */
     @API
-    public MusicPlayback playMusic(Track track)
+    public SoundPlayback createSoundPlayback(String filePath, boolean loop)
     {
-        return playMusic(track, null, restartDefault, stopDefault);
+        return createSoundPlayback(sound(filePath), loop);
     }
+
+    private final Collection<SoundPlayback> allSounds = ConcurrentHashMap
+        .newKeySet();
+
+    /**
+     * <b>Fügt</b> eine <b>Klangwiedergabe</b> zur internen Verwaltung hinzu.
+     *
+     * @param playback Die zu verwaltende <b>Klangwiedergabe</b>.
+     */
+    @API
+    public void addSound(SoundPlayback playback)
+    {
+        allSounds.add(playback);
+    }
+
+    /* music */
+
+    /* playMusic(String|Sound|Track music) */
 
     /**
      * Spielt die als Zeichenkette angegebene Audio-Datei in einer
@@ -191,6 +272,59 @@ public final class SoundEngine
     }
 
     /**
+     * Setzt die aktuell abgespielte Spur auf einen {@link LoopedTrack} mit dem
+     * angegebenen Musik-{@link Sound}.
+     *
+     * <p>
+     * Hat keine Wirkung, wenn die angegebene Spur bereits läuft.
+     * </p>
+     *
+     * @param sound Der Klang, der abgespielt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    @API
+    public MusicPlayback playMusic(Sound sound)
+    {
+        return playMusic(new LoopedTrack(sound), restartDefault, stopDefault);
+    }
+
+    /**
+     * Setzt die aktuell abgespielte Audiospur auf die angegebene Audiospur. Hat
+     * keine Wirkung, wenn die angegebene Spur bereits läuft.
+     *
+     * @param track Die Audiospur, die gespielt werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    @API
+    public MusicPlayback playMusic(Track track)
+    {
+        return playMusic(track, null, restartDefault, stopDefault);
+    }
+
+    /* playMusic(Track music, restart) */
+
+    /**
+     * Setzt die aktuell abgespielte <b>Audiospur</b> auf die angegebene
+     * Audiospur.
+     *
+     * @param track Die Audiospur, die gespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
+     *     werden soll.
+     *
+     * @return Ermöglicht die Steuerung der Musikwiedergabe.
+     */
+    @API
+    public MusicPlayback playMusic(Track track, boolean restart)
+    {
+        return playMusic(track, null, restart, stopDefault);
+    }
+
+    /* playMusic(String|Sound|Track music, restart, top) */
+
+    /**
      * Setzt die aktuell abgespielte Audiospur auf einen {@code LoopedTrack} mit
      * dem angegebenen Musik-{@code Sound}. Hat keine Wirkung, wenn die
      * angegebene Spur bereits läuft.
@@ -198,9 +332,9 @@ public final class SoundEngine
      * @param music Die als Zeichenkette angegebene Audio-Datei, die abgespielt
      *     werden soll
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
-     *     soll.
-     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
+     *     werden soll.
+     * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -211,20 +345,22 @@ public final class SoundEngine
     }
 
     /**
-     * Setzt die aktuell abgespielte <b>Audiospur</b> auf die angegebene
-     * Audiospur.
+     * Setzt die aktuell abgespielte Spur auf einen {@code LoopedTrack} mit dem
+     * angegebenen Musik-{@code Sound}. Hat keine Wirkung, wenn die angegebene
+     * Spur bereits läuft.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
+     * @param sound Der Klang, der abgespielt werden soll.
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
-     *     soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
+     *     werden soll.
+     * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Track track, boolean restart)
+    public MusicPlayback playMusic(Sound sound, boolean restart, boolean stop)
     {
-        return playMusic(track, null, restart, stopDefault);
+        return playMusic(new LoopedTrack(sound), null, restart, stop);
     }
 
     /**
@@ -232,9 +368,9 @@ public final class SoundEngine
      *
      * @param track Die Audiospur, die gespielt werden soll.
      * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
-     *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
-     *     soll.
-     * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
+     *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
+     *     werden soll.
+     * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
@@ -349,131 +485,5 @@ public final class SoundEngine
         {
             track.cancel();
         }
-    }
-
-    /**
-     * Liefert den {@link Sound} zur angegebenen Datei.
-     *
-     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
-     *
-     * @return Der geladene Klang.
-     */
-    @API
-    public Sound sound(String filePath)
-    {
-        return soundsContainer.get(filePath);
-    }
-
-    /**
-     * Erzeugt ein {@code SoundPlayback}-Objekt, das vor dem Start konfiguriert
-     * werden kann.
-     *
-     * <p>
-     * Im Gegensatz zu den {@code playSound}-Methoden muss das von dieser
-     * Methode zurückgegebene {@code SoundPlayback}-Objekt manuell mit
-     * {@link Playback#start()} gestartet werden. Die benötigten Ressourcen
-     * werden jedoch <em>sofort</em> beim Aufruf dieser Methode reserviert und
-     * bleiben belegt, bis die Wiedergabe abgebrochen oder beendet wird.
-     * </p>
-     *
-     * @param sound Der abzuspielende Klang.
-     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
-     *     soll.
-     *
-     * @return Ein konfigurierbares {@code SoundPlayback}-Objekt, das manuell
-     *     gestartet werden muss.
-     */
-    @API
-    public @NonNull SoundPlayback createSoundPlayback(Sound sound, boolean loop)
-    {
-        try
-        {
-            return new SoundPlayback(sound, loop);
-        }
-        catch (LineUnavailableException | IllegalArgumentException e)
-        {
-            throw new IllegalArgumentException(e);
-        }
-    }
-
-    /**
-     * Erzeugt ein {@link SoundPlayback}-Objekt zur angegebenen Datei.
-     *
-     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
-     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
-     *     soll.
-     *
-     * @return Ein konfigurierbares {@link SoundPlayback}-Objekt.
-     */
-    @API
-    public SoundPlayback createSoundPlayback(String filePath, boolean loop)
-    {
-        return createSoundPlayback(sound(filePath), loop);
-    }
-
-    private final Collection<SoundPlayback> allSounds = ConcurrentHashMap
-        .newKeySet();
-
-    /**
-     * <b>Fügt</b> eine <b>Klangwiedergabe</b> zur internen Verwaltung hinzu.
-     *
-     * @param playback Die zu verwaltende <b>Klangwiedergabe</b>.
-     */
-    @API
-    public void addSound(SoundPlayback playback)
-    {
-        allSounds.add(playback);
-    }
-
-    /**
-     * Spielt den <b>Klang</b> ab, der als {@link Sound}-Objekt angegeben wird.
-     *
-     * @param sound Der abzuspielende Klang.
-     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
-     *     soll.
-     *
-     * @return Die gestartete Klangwiedergabe oder {@code null}, falls kein
-     *     Klang übergeben wurde.
-     */
-    @API
-    public SoundPlayback playSound(Sound sound, boolean loop)
-    {
-        if (sound == null)
-        {
-            return null;
-        }
-        SoundPlayback playback = createSoundPlayback(sound, loop);
-        playback.start();
-        return playback;
-    }
-
-    /**
-     * Spielt den <b>Klang</b> ab, der durch einen <b>Dateipfad</b> als
-     * <b>Zeichenkette</b> angegeben wird.
-     *
-     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
-     * @param loop Gibt an, ob der Klang in einer Schleife abgespielt werden
-     *     soll.
-     *
-     * @return Die gestartete Klangwiedergabe.
-     */
-    @API
-    public SoundPlayback playSound(final String filePath, boolean loop)
-    {
-        return playSound(sound(filePath), loop);
-    }
-
-    /**
-     * Spielt den <b>Klang</b> <b>einmalig</b> ab, der durch einen
-     * <b>Dateipfad</b> als <b>Zeichenkette</b> angegeben wird.
-     *
-     * @param filePath Der <b>Pfad</b> zur Audiodatei als Zeichenkette.
-     *
-     * @return Die gestartete Klangwiedergabe.
-     */
-    @API
-    public SoundPlayback playSound(final String filePath)
-    {
-        return playSound(filePath, false);
     }
 }
