@@ -19,11 +19,11 @@
 package demos.small_games.pong;
 
 import pi.Controller;
-import pi.Jukebox;
 import pi.Rectangle;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.physics.BodyType;
+import static pi.Controller.jukebox;
 
 /**
  * Ein Schläger des Ping-Pong-Spiels.
@@ -52,22 +52,22 @@ public class Paddle extends Rectangle implements CollisionListener<Ball>
      * Entfernung, wie viele Meter ein Schläger bei einem Tastendruck nach oben
      * oder nach unten bewegt werden soll.
      */
-    private final double MOVEMENT_DISTANCE = 1;
+    private static final double MOVEMENT_DISTANCE = 1;
 
     /**
      * Wie viele Meter ein Schläger aus dem Spielfeld ragen darf.
      */
-    private final double HIDDEN_LENGTH = 2;
+    private static final double HIDDEN_LENGTH = 2;
 
     /**
      * Abstand vom Spielfeldrand.
      */
-    private final double BORDER_PADDING = 1;
+    private static final double BORDER_PADDING = 1;
 
     /**
      * Im automatischen Modus folgt der Schläger dem Ball.
      */
-    private final boolean automatic = false;
+    private static final boolean AUTOMATIC = false;
 
     /**
      * @param sideSign Gibt an, auf welcher Seite sich der Schläger befindet.
@@ -93,7 +93,7 @@ public class Paddle extends Rectangle implements CollisionListener<Ball>
 
     public void moveUp()
     {
-        if (automatic)
+        if (AUTOMATIC)
         {
             return;
         }
@@ -110,7 +110,7 @@ public class Paddle extends Rectangle implements CollisionListener<Ball>
 
     public void moveDown()
     {
-        if (automatic)
+        if (AUTOMATIC)
         {
             return;
         }
@@ -127,7 +127,7 @@ public class Paddle extends Rectangle implements CollisionListener<Ball>
     @Override
     public void onCollision(CollisionEvent<Ball> collisionEvent)
     {
-        Jukebox.playSound("pong/short-high.wav");
+        jukebox.playSound("pong/short-high.wav");
     }
 
     public static void main(String[] args)

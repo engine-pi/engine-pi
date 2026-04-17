@@ -19,11 +19,11 @@
 package demos.small_games.pong;
 
 import pi.Controller;
-import pi.Jukebox;
 import pi.Rectangle;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 import pi.physics.BodyType;
+import static pi.Controller.jukebox;
 
 /**
  * Eine Abprallbalken als unsichtbares Rechteck am oberen und unteren
@@ -51,6 +51,7 @@ public class BounceBar extends Rectangle implements CollisionListener<Ball>
      * Macht den Abprallbalken sichtbar, um überprüfen zu können, ob er richtig
      * platziert ist.
      */
+    @Override
     public BounceBar debug()
     {
         visible(true);
@@ -61,7 +62,7 @@ public class BounceBar extends Rectangle implements CollisionListener<Ball>
     @Override
     public void onCollision(CollisionEvent<Ball> collisionEvent)
     {
-        Jukebox.playSound("pong/short-low.wav");
+        jukebox.playSound("pong/short-low.wav");
     }
 
     public static void main(String[] args)

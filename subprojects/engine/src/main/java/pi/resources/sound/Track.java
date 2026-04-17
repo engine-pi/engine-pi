@@ -29,7 +29,8 @@ import javax.sound.sampled.AudioFormat;
 
 /**
  * Die Klasse {@link Track} definiert eine Reihenfolge, in der Klänge
- * ({@link Sound}s) von der {@link pi.Jukebox} wiedergegeben werden sollen.
+ * ({@link Sound}s) von der {@link pi.resources.sound.SoundEngine} wiedergegeben
+ * werden sollen.
  */
 public interface Track extends Iterable<Sound>
 {

@@ -27,8 +27,6 @@ package pi.resources.sound;
 
 import javax.sound.sampled.LineUnavailableException;
 
-import pi.Jukebox;
-
 /**
  * A {@code SoundPlayback} implementation for the playback of sound effects.
  */
@@ -74,6 +72,6 @@ public class SoundPlayback extends Playback
     protected void play()
     {
         super.play();
-        Jukebox.addSound(this);
+        SoundEngine.getInstance().addSound(this);
     }
 }

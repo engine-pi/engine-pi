@@ -16,7 +16,7 @@
  */
 package tetris.scenes;
 
-import pi.Jukebox;
+import static pi.Controller.jukebox;
 
 /**
  * @author Josef Friedrich
@@ -38,17 +38,17 @@ public class Sound
 
     private static void playMusic(String filename)
     {
-        Jukebox.playMusic("sounds/" + filename);
+        jukebox.playMusic("sounds/" + filename);
     }
 
     private static void playSound(String filename)
     {
-        Jukebox.playSound("sounds/" + filename);
+        jukebox.playSound("sounds/" + filename);
     }
 
     public static void playTitle()
     {
-        Jukebox.playIntroTrack("sounds/Title_intro.mp3",
+        jukebox.playIntroTrack("sounds/Title_intro.mp3",
             "sounds/Title_loop.mp3");
     }
 

@@ -18,10 +18,11 @@
  */
 package demos.small_games.pong;
 
+import static pi.Controller.jukebox;
+
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Jukebox;
 import pi.Random;
 import pi.Scene;
 import pi.actor.Line;
@@ -119,12 +120,12 @@ public class PongTable extends Scene implements KeyStrokeListener, FrameListener
         repeater = new PressedKeyRepeater();
 
         // Steuerung für den linken Schläger
-        repeater.addListener(KeyEvent.VK_Q, () -> left.movePaddleUp());
-        repeater.addListener(KeyEvent.VK_A, () -> left.movePaddleDown());
+        repeater.addListener(KeyEvent.VK_Q, left::movePaddleUp);
+        repeater.addListener(KeyEvent.VK_A, left::movePaddleDown);
 
         // Steuerung für den rechten Schläger
-        repeater.addListener(KeyEvent.VK_UP, () -> right.movePaddleUp());
-        repeater.addListener(KeyEvent.VK_DOWN, () -> right.movePaddleDown());
+        repeater.addListener(KeyEvent.VK_UP, right::movePaddleUp);
+        repeater.addListener(KeyEvent.VK_DOWN, right::movePaddleDown);
     }
 
     /**
@@ -165,14 +166,14 @@ public class PongTable extends Scene implements KeyStrokeListener, FrameListener
         {
             left.increaseScore();
             applyImpulseToBall();
-            Jukebox.playSound("pong/long.wav");
+            jukebox.playSound("pong/long.wav");
         }
 
         else if (x > bounds.xRight())
         {
             right.increaseScore();
             applyImpulseToBall();
-            Jukebox.playSound("pong/long.wav");
+            jukebox.playSound("pong/long.wav");
         }
     }
 

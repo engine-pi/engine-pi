@@ -18,7 +18,7 @@
  */
 package demos.sound;
 
-import pi.Jukebox;
+import pi.resources.sound.Jukebox;
 
 public class JukeboxStandaloneDemo
 {

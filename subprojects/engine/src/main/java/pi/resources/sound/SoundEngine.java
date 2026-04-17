@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package pi;
+package pi.resources.sound;
 
 import static pi.Controller.sounds;
 
@@ -40,18 +40,10 @@ import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
 
 import pi.annotations.Internal;
-import pi.resources.sound.IntroTrack;
-import pi.resources.sound.LoopedTrack;
-import pi.resources.sound.MusicPlayback;
-import pi.resources.sound.Playback;
-import pi.resources.sound.Sound;
-import pi.resources.sound.SoundContainer;
-import pi.resources.sound.SoundPlayback;
-import pi.resources.sound.Track;
 
 /**
- * Die {@link Jukebox}-Klasse bietet Methoden an, um <b>Klänge</b> (Sound) und
- * <b>Musik</b> (Music) im Spiel <b>wiederzugeben</b>.
+ * Die {@link SoundEngine}-Klasse bietet Methoden an, um <b>Klänge</b> (Sound)
+ * und <b>Musik</b> (Music) im Spiel <b>wiederzugeben</b>.
  *
  * <p>
  * Jede Audio-Datei kann sowohl als Musik als auch als Klang abgespielt. Der
@@ -68,7 +60,7 @@ import pi.resources.sound.Track;
  * </ol>
  *
  * <p>
- * Die {@link Jukebox} kann standardmäßig {@code .wav}, {@code .mp3} und
+ * Die {@link SoundEngine} kann standardmäßig {@code .wav}, {@code .mp3} und
  * {@code .ogg} Dateien abspielen. Wenn andere Dateierweiterungen benötigt
  * werden, muss eine eigene SPI-Implementierung geschrieben und dem Projekt
  * hinzugefügt werden.
@@ -77,19 +69,11 @@ import pi.resources.sound.Track;
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
-public final class Jukebox
+public final class SoundEngine
 {
-    /**
-     * Ein privater Konstruktor, um den öffentlichen Konstruktor zu verbergen.
-     * Dadurch können von dieser Klasse keine Instanzen erstellt werden.
-     */
-    @Internal
-    private Jukebox()
-    {
-        throw new UnsupportedOperationException();
-    }
+    private static final SoundEngine INSTANCE = new SoundEngine();
 
-    public static final ExecutorService EXECUTOR = Executors
+    public final ExecutorService executor = Executors
         .newCachedThreadPool(new ThreadFactory()
         {
             private int id = 0;
@@ -101,28 +85,47 @@ public final class Jukebox
             }
         });
 
-    private static final Logger log = Logger.getLogger(Jukebox.class.getName());
+    private final Logger log = Logger.getLogger(SoundEngine.class.getName());
 
     /**
      * Die aktuelle Musikwiedergabe.
      */
-    private static MusicPlayback music;
+    private MusicPlayback music;
 
-    private static final Collection<MusicPlayback> allMusic = ConcurrentHashMap
+    private final Collection<MusicPlayback> allMusic = ConcurrentHashMap
         .newKeySet();
 
-    private static final Collection<SoundPlayback> allSounds = ConcurrentHashMap
+    private final Collection<SoundPlayback> allSounds = ConcurrentHashMap
         .newKeySet();
 
-    private static SoundContainer soundsContainer = sounds;
+    private SoundContainer soundsContainer = sounds;
 
-    private static boolean restartDefault = false;
+    private boolean restartDefault = false;
 
     /**
      * Standardwert für einige Methoden-Overload, die Musik abspielen. Gibt an,
      * ob momentan abspielende Musik gestoppt werden soll.
      */
-    private static boolean stopDefault = true;
+    private boolean stopDefault = true;
+
+    /**
+     * Ein privater Konstruktor, um sicherzustellen, dass nur eine Instanz
+     * existiert.
+     */
+    @Internal
+    private SoundEngine()
+    {
+    }
+
+    /**
+     * Liefert die Singleton-Instanz der {@link SoundEngine}.
+     *
+     * @return Die Singleton-Instanz.
+     */
+    public static SoundEngine getInstance()
+    {
+        return INSTANCE;
+    }
 
     /**
      * Sets the currently playing track to a {@code LoopedTrack} with the
@@ -133,7 +136,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Sound sound)
+    public MusicPlayback playMusic(Sound sound)
     {
         return playMusic(new LoopedTrack(sound), restartDefault, stopDefault);
     }
@@ -151,8 +154,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Sound sound, boolean restart,
-            boolean stop)
+    public MusicPlayback playMusic(Sound sound, boolean restart, boolean stop)
     {
         return playMusic(new LoopedTrack(sound), null, restart, stop);
     }
@@ -165,7 +167,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Track track)
+    public MusicPlayback playMusic(Track track)
     {
         return playMusic(track, null, restartDefault, stopDefault);
     }
@@ -181,7 +183,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(String music)
+    public MusicPlayback playMusic(String music)
     {
         return playMusic(getSound(music));
     }
@@ -200,8 +202,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(String music, boolean restart,
-            boolean stop)
+    public MusicPlayback playMusic(String music, boolean restart, boolean stop)
     {
         return playMusic(getSound(music), restart, stop);
     }
@@ -216,7 +217,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Track track, boolean restart)
+    public MusicPlayback playMusic(Track track, boolean restart)
     {
         return playMusic(track, null, restart, stopDefault);
     }
@@ -232,8 +233,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playMusic(Track track, boolean restart,
-            boolean stop)
+    public MusicPlayback playMusic(Track track, boolean restart, boolean stop)
     {
         return playMusic(track, null, restart, stop);
     }
@@ -251,7 +251,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static synchronized MusicPlayback playMusic(Track track,
+    public synchronized MusicPlayback playMusic(Track track,
             Consumer<? super MusicPlayback> config, boolean restart,
             boolean stop)
     {
@@ -292,7 +292,7 @@ public final class Jukebox
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
-    public static MusicPlayback playIntroTrack(String intro, String loop)
+    public MusicPlayback playIntroTrack(String intro, String loop)
     {
         return playMusic(new IntroTrack(getSound(intro), getSound(loop)));
     }
@@ -304,7 +304,7 @@ public final class Jukebox
      *
      * @return The main music, which could be {@code null}.
      */
-    public static synchronized MusicPlayback getMusic()
+    public synchronized MusicPlayback getMusic()
     {
         return music;
     }
@@ -314,7 +314,7 @@ public final class Jukebox
      *
      * @return Eine Liste mit allen Musikwiedergaben.
      */
-    public static synchronized Collection<MusicPlayback> getAllMusic()
+    public synchronized Collection<MusicPlayback> getAllMusic()
     {
         return Collections.unmodifiableCollection(allMusic);
     }
@@ -322,7 +322,7 @@ public final class Jukebox
     /**
      * Stoppt die Wiedergabe der aktuellen Hintergrundmusik.
      */
-    public static synchronized void stopMusic()
+    public synchronized void stopMusic()
     {
         for (MusicPlayback track : allMusic)
         {
@@ -330,7 +330,7 @@ public final class Jukebox
         }
     }
 
-    public static Sound getSound(String filePath)
+    public Sound getSound(String filePath)
     {
         return soundsContainer.get(filePath);
     }
@@ -352,7 +352,7 @@ public final class Jukebox
      * @return An {@code SoundPlayback} object that can be configured prior to
      *     starting, but will need to be manually started.
      */
-    public static SoundPlayback createSoundPlayback(Sound sound, boolean loop)
+    public SoundPlayback createSoundPlayback(Sound sound, boolean loop)
     {
         try
         {
@@ -365,18 +365,17 @@ public final class Jukebox
         }
     }
 
-    public static SoundPlayback createSoundPlayback(String filePath,
-            boolean loop)
+    public SoundPlayback createSoundPlayback(String filePath, boolean loop)
     {
         return createSoundPlayback(getSound(filePath), loop);
     }
 
-    public static void addSound(SoundPlayback playback)
+    public void addSound(SoundPlayback playback)
     {
         allSounds.add(playback);
     }
 
-    public static SoundPlayback playSound(Sound sound, boolean loop)
+    public SoundPlayback playSound(Sound sound, boolean loop)
     {
         if (sound == null)
         {
@@ -391,17 +390,17 @@ public final class Jukebox
         return playback;
     }
 
-    public static SoundPlayback playSound(final String filePath, boolean loop)
+    public SoundPlayback playSound(final String filePath, boolean loop)
     {
         return playSound(getSound(filePath), loop);
     }
 
-    public static SoundPlayback playSound(final String filePath)
+    public SoundPlayback playSound(final String filePath)
     {
         return playSound(filePath, false);
     }
 
-    private static void resourceFailure(Throwable e)
+    private void resourceFailure(Throwable e)
     {
         log.log(Level.WARNING, "could not open a line", e);
     }

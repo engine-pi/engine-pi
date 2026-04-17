@@ -24,7 +24,7 @@ import java.io.IOException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import pi.Controller;
-import pi.Jukebox;
+import pi.resources.sound.Jukebox;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.resources.ResourceLoader;

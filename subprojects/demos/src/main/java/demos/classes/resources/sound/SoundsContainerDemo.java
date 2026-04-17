@@ -23,7 +23,7 @@ import static pi.Controller.sounds;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import pi.Jukebox;
+import static pi.Controller.jukebox;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.Sound;
 import pi.resources.sound.SoundEvent;
@@ -48,7 +48,7 @@ public class SoundsContainerDemo
             System.out.println("Contains url");
         }
         sounds.contains(soundName);
-        MusicPlayback playback = Jukebox.playMusic(mySound);
+        MusicPlayback playback = jukebox.playMusic(mySound);
         playback.addSoundPlaybackListener(new SoundPlaybackListener()
         {
             @Override

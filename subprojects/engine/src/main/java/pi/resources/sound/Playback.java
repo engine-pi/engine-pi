@@ -38,8 +38,6 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-import pi.Jukebox;
-
 /**
  * The {@code SoundPlayback} class is a wrapper {@code SourceDataLine} on which
  * a {@code Sound} playback can be carried out.
@@ -255,7 +253,7 @@ public abstract class Playback implements Runnable
 
     void play()
     {
-        Jukebox.EXECUTOR.submit(this);
+        SoundEngine.getInstance().executor.submit(this);
     }
 
     /**

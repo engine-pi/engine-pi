@@ -21,7 +21,7 @@ package demos.sound;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Jukebox;
+import pi.resources.sound.Jukebox;
 import pi.Scene;
 import pi.event.KeyStrokeListener;
 
