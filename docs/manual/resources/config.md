@@ -1,5 +1,7 @@
 # `config` (Konfiguration)
 
+{{ static_import_admonition('config') }}
+
 Die Standardeinstellungen der Engine Pi können mithilfe einer
 Konfigurationsdatei names `engine-pi.properties` verändert werden. Dabei handelt
 es sich um eine

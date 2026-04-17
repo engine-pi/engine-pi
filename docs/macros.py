@@ -54,15 +54,15 @@ subprojects = {
 }
 
 
-def _check_class_path(class_path: str) -> None:
-    relpath = _convert_class_path_to_subproject_path(class_path)
+def _check_classpath(class_path: str) -> None:
+    relpath = _classpath_2_subproject(class_path)
     if not Path(relpath).exists():
         raise Exception(
             f"The class path “{class_path}” has no corresponding Java file in “{relpath}”!"
         )
 
 
-def _convert_class_path_to_subproject_path(class_path: str, check: bool = True) -> str:
+def _classpath_2_subproject(class_path: str, check: bool = True) -> str:
     """:param class_path: for example ``pi.actor.Actor``
 
     :return: ``subprojects/engine/src/main/java/pi/actor/Actor.java``
@@ -87,7 +87,7 @@ def _convert_class_path_to_subproject_path(class_path: str, check: bool = True) 
     return subproject_path
 
 
-def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None) -> str:
+def _classpath_2_link(spec: str, link_title: str | None = None) -> str:
     """
     - ``pi.actor.Actor#center(double,double)``: ``https://engine-pi.github.io/javadocs/pi/actor/Actor.html#center(double,double)``
     - ``java.lang.String#indexOf(java.lang.String,int)``: ``https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#indexOf(java.lang.String,int)``
@@ -107,7 +107,6 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
     """for example ``#center(double,double)``
     """
 
-
     module = ""
     if ":" in spec:
         module = spec.split(":")[0]
@@ -123,7 +122,7 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
     if class_path.startswith("java"):
         is_java = True
 
-    class_relpath = _convert_class_path_to_relpath(class_path, check=not is_java)
+    class_relpath = _classpath_2_relpath(class_path, check=not is_java)
 
     class_name = _get_class_name(class_path)
 
@@ -154,16 +153,17 @@ def _convert_class_path_to_javadoc_url(spec: str, link_title: str | None = None)
     return f":fontawesome-brands-java:[{link_title}]({url_prefix}/{module}{class_relpath}.html{member})"
 
 
-def _convert_class_path_to_relpath(class_path: str, check: bool = True) -> str:
+def _classpath_2_relpath(class_path: str, check: bool = True) -> str:
     """:param class_path: for example ``java.awt.Color``
 
     :return: ``java/awt/Color``
     """
     if check:
-        _convert_class_path_to_subproject_path(class_path, True)
+        _classpath_2_subproject(class_path, True)
     return class_path.replace(".", "/")
 
-def _convert_class_path_to_package_path(class_path: str, check: bool = True) -> str:
+
+def _classpath_2_package(class_path: str, check: bool = True) -> str:
     """:param class_path: for example ``java.awt.Color``
 
     :return: ``java.awt``
@@ -172,7 +172,7 @@ def _convert_class_path_to_package_path(class_path: str, check: bool = True) -> 
     class_path = class_path.replace(".java", "")
 
     if check:
-        _check_class_path(class_path)
+        _check_classpath(class_path)
 
     parts = class_path.split(".")
     if len(parts) <= 1:
@@ -295,7 +295,7 @@ class JavaFile:
         :param path: A class path or a file path relative to subprojects/demos/src/main/java/demos
         """
         if "/" not in path:
-            self.path = Path(_convert_class_path_to_subproject_path(path))
+            self.path = Path(_classpath_2_subproject(path))
         else:
             self.path = Path(
                 "subprojects", "demos", "src", "main", "java", "demos"
@@ -376,7 +376,7 @@ def define_env(env: Any) -> None:
         spec: str,
         link_title: str | None = None,
     ) -> str:
-        return _convert_class_path_to_javadoc_url(spec=spec, link_title=link_title)
+        return _classpath_2_link(spec=spec, link_title=link_title)
 
     env.macro(macro_javadoc, "javadoc")
 
@@ -387,7 +387,7 @@ def define_env(env: Any) -> None:
     ) -> str:
         if link_title is None:
             link_title = _get_class_name(class_path)
-        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_convert_class_path_to_relpath(class_path, False)}.html)"
+        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_classpath_2_relpath(class_path, False)}.html)"
 
     env.macro(macro_java_class, "java_class")
 
@@ -398,7 +398,7 @@ def define_env(env: Any) -> None:
         """
         output: str = f"__Methoden in der Klasse {macro_javadoc(class_path)}:__\n\n"
         for m in methods:
-            output += "- " + macro_javadoc(class_path + '#' + m) + "\n"
+            output += "- " + macro_javadoc(class_path + "#" + m) + "\n"
         return output
 
     env.macro(macro_methods, "methods")
@@ -453,19 +453,18 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_contribute, "contribute")
 
-
-    def macro_import_statement(class_path: str) -> str:
+    def macro_import_statement(classpath: str) -> str:
         """:param class_path: for example ``pi.actor.Group``"""
 
         return f"""!!! import
 
     Die Klasse
-    {_convert_class_path_to_javadoc_url(class_path)} ist im
+    {_classpath_2_link(classpath)} ist im
     Paket
-    {_convert_class_path_to_javadoc_url(_convert_class_path_to_package_path(class_path))} enthalten und kann über die Anweisung
+    {_classpath_2_link(_classpath_2_package(classpath))} enthalten und kann über die Anweisung
 
     ```java
-    import {class_path};
+    import {classpath};
     ```
 
     importiert werden.
@@ -473,8 +472,22 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_import_statement, "import_admonition")
 
+    def macro_static_import(attribute: str, classpath: str = "pi.Controller") -> str:
+        """:param attribute: The name of the static attribute, for example ``images``."""
+        """:param classpath: The class path of the class containing the static attribute, for example ``pi.Controller``."""
 
+        return f"""!!! import
 
+    Das statische Attribut {_classpath_2_link(classpath + '#' + attribute, attribute) } der
+    Klasse {_classpath_2_link(classpath)} kann über einen
+    statischen Import eingebunden werden:
+
+    ```java
+    import static pi.Controller.{attribute};
+    ```
+"""
+
+    env.macro(macro_static_import, "static_import_admonition")
 
     def macro_repo_link(relpath: str, link_title: str | None = None) -> str:
         _check_repo_path(relpath)

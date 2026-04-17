@@ -1,10 +1,17 @@
-# `Controller.dialog` (Dialogfenster)
+# `Controller.dialog` (Dialogfenster)[^engine-alpha-wiki]
 
-https://engine-alpha.org/wiki/Tutorials/Dialoge
+[^engine-alpha-wiki]:
+    Der Abschnitt stammt aus dem
+    Engine-Alpha-Wiki: https://engine-alpha.org/wiki/Tutorials/Dialoge
+
+{{ javadoc('pi.graphics.DialogLauncher') }}
+
+{{ static_import_admonition('dialog()') }}
+
 
 <!-- Ziel dieses Tutorials
 
-Nachdem du dieses Tutorial durchgearbeitet hast, kannst du die verschiedenen Dialog-Fenster einsetzen, die dir die Engine Alpha für die Interaktion mit dem Spieler zur Verfügung stellt. Beispielsweise kannst du es dem Spieler ermöglichen seinen Namen einzugeben. -->
+Nachdem du dieses Tutorial durchgearbeitet hast, kannst du die verschiedenen Dialog-Fenster einsetzen, die dir die Engine Alpha für die Interaktion mit dem Spieler zur Verfügung stellt. Beispielsweise kannst du es dem Spieler ermöglichen seinen Namen einzugeben.
 
 tutorial nachrichtSchicken.png
 
@@ -26,10 +33,7 @@ Methode 	Erklärung
 
  public boolean frage(String frage)
 
-	erzeugt ein modales (im Vordergrund stehendes) Fenster mit einer Frage, die mit JA oder NEIN per Linksklick beantwortet werden muss.
-
-
-Achtung!
+	erzeugt ein modales (im Vordergrund stehendes) Fenster mit einer Frage, die mit JA oder NEIN per Linksklick beantwortet werden muss.-->
 
 Alle Dialog-Fenster drängen sich kompromisslos in den Vordergrund und die
 entsprechende Methode endet erst dann, wenn das Fenster wieder geschlossen wird.

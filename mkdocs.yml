@@ -94,6 +94,7 @@ nav:
               - manual/main-classes/controller/instant-mode.md
               - manual/main-classes/controller/game-loop.md
               - manual/main-classes/controller/dialog.md
+              - manual/main-classes/controller/jukebox.md
           - manual/main-classes/scene.md
           - manual/main-classes/camera.md
           - manual/main-classes/layer.md
@@ -153,8 +154,18 @@ nav:
           - manual/projects/philosophers.md
       - Java:
           - manual/java/index.md
-          - manual/java/packages.md
+
+          # Alphabetische Reihenfolge
+          - manual/java/design-pattern.md
           - manual/java/exceptions.md
+          - manual/java/foreach.md
+          - manual/java/ide.md
+          - manual/java/import.md
+          - manual/java/index.md
+          - manual/java/lambda.md
+          - manual/java/overloading.md
+          - manual/java/packages.md
+          - manual/java/super.md
 
       - Entwicklung:
           - manual/dev/index.md

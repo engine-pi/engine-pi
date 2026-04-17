@@ -8,7 +8,7 @@ anzupassen.
 
 <!-- /data/school/repos/inf/java/engine-pi/subprojects/build-tools/README.md -->
 
-Mit folgender Konfiguration in der Datei pom.xml kann mit Hilfe von Maven
+Mit folgender Konfiguration in der Datei `pom.xml` kann mit Hilfe von Maven
 javadoc angewiesen werden, diese CSS-Datei zu verwenden:
 
 ```xml
