@@ -33,7 +33,7 @@ import pi.resources.DataFormat;
 import pi.resources.ImageFormat;
 
 /**
- * Contains all known audio file-formats supported by the engine.
+ * Enthält alle Audiodateiformate, die von der Engine unterstützt werden.
  *
  * @see ImageFormat
  *
@@ -48,25 +48,28 @@ public enum SoundFormat
     WAV;
 
     /**
-     * Gets the {@code SoundFormat} of the specified format string.
+     * Gibt das {@link SoundFormat} der angegebenen Dateierweiterung zurück.
      *
-     * @param format The format string from which to extract the format.
+     * @param extension Die Dateierweiterung, aus dem das Format ermittelt wird.
+     *     Die Dateierweiterung kann einen führenden Punkt enthalten. Die Groß-
+     *     und Kleinschreibung wird ignoriert.
      *
-     * @return The format of the specified string or {@code UNDEFINED} if not
-     *     supported.
+     * @return Das Format des angegebenen Strings oder {@code UNSUPPORTED}, wenn
+     *     es nicht unterstützt wird.
      */
-    public static SoundFormat get(String format)
+    public static SoundFormat get(String extension)
     {
-        return DataFormat.get(format, values(), UNSUPPORTED);
+        return DataFormat.get(extension, values(), UNSUPPORTED);
     }
 
     /**
-     * Determines whether the extension of the specified file is supported by
-     * the engine.
+     * Prüft, ob die Dateiendung der angegebenen <b>Datei</b> von der Engine
+     * <b>unterstützt</b> wird.
      *
-     * @param file The file to check for.
+     * @param file Die zu prüfende Datei.
      *
-     * @return True if the extension is part of this enum; otherwise false.
+     * @return {@code true}, wenn die Dateiendung in diesem Enum enthalten ist;
+     *     andernfalls {@code false}.
      */
     public static boolean isSupported(File file)
     {
@@ -74,18 +77,25 @@ public enum SoundFormat
     }
 
     /**
-     * Determines whether the extension of the specified file is supported by
-     * the engine.
+     * Prüft, ob die Dateiendung des angegebenen <b>Dateinamens</b> von der
+     * Engine <b>unterstützt</b> wird.
      *
-     * @param fileName The file name to check for.
+     * @param fileName Der zu prüfende Dateiname.
      *
-     * @return True if the extension is part of this enum; otherwise false.
+     * @return {@code true}, wenn die Dateiendung in diesem Enum enthalten ist;
+     *     andernfalls {@code false}.
      */
     public static boolean isSupported(String fileName)
     {
         return DataFormat.isSupported(fileName, values(), UNSUPPORTED);
     }
 
+    /**
+     * Gibt <b>alle</b> unterstützten <b>Dateiendungen</b> als Feld/Array
+     * zurück.
+     *
+     * @return Ein Array aller unterstützten Dateiendungen.
+     */
     @API
     @Getter
     public static String[] allExtensions()
@@ -94,14 +104,14 @@ public enum SoundFormat
     }
 
     /**
-     * Converts this format instance to a file format string that can be used as
-     * an extension (e.g. .ogg).<br>
-     * It adds a leading '.' to the lower-case string representation of this
-     * instance.
+     * Gibt die kleingeschriebene <b>Dateiendung</b> mit Punkt aus (z.B.
+     * {@code .ogg}).
      *
-     * @return The file extension string for this instance.
+     * @return Die kleingeschriebene <b>Dateiendung</b> mit Punkt (z.B.
+     *     {@code .ogg}).
      */
-    public String toFileExtension()
+    @Getter
+    public String fileExtension()
     {
         return "." + name().toLowerCase();
     }

@@ -30,8 +30,8 @@ import java.util.ArrayList;
 import pi.util.FileUtil;
 
 /**
- * Some common implementations that are used by different kinds of file classes
- * (e.g. {@code SoundFormat}, {@code ImageFormat}.
+ * Enthält gemeinsame Hilfsmethoden für verschiedene Klassen zur Verarbeitung
+ * von Dateiformaten, zum Beispiel {@code SoundFormat} und {@code ImageFormat}.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
@@ -51,17 +51,33 @@ public final class DataFormat
         throw new UnsupportedOperationException();
     }
 
-    public static <T extends Enum<T>> T get(String format, T[] values,
+    /**
+     * Ermittelt aus einer Dateiendung den entsprechenden Enum-Wert.
+     *
+     * <p>
+     * Führende Punkte in der Dateiendung werden ignoriert, ebenso die Groß-
+     * oder Kleinschreibung.
+     * </p>
+     *
+     * @param extension Der zu prüfende Format-String.
+     * @param values Alle erlaubten Enum-Werte.
+     * @param defaultValue Der Rückgabewert für unbekannte oder leere Formate.
+     * @param <T> Der Typ der Aufzählung.
+     *
+     * @return Der passende Enum-Wert oder {@code defaultValue}, wenn kein
+     *     passendes Format gefunden wird.
+     */
+    public static <T extends Enum<T>> T get(String extension, T[] values,
             T defaultValue)
     {
-        if (format == null || format.isEmpty())
+        if (extension == null || extension.isEmpty())
         {
             return defaultValue;
         }
-        String stripedImageFormat = format;
+        String stripedImageFormat = extension;
         if (stripedImageFormat.startsWith("."))
         {
-            stripedImageFormat = format.substring(1);
+            stripedImageFormat = extension.substring(1);
         }
         for (T val : values)
         {
@@ -73,6 +89,18 @@ public final class DataFormat
         return defaultValue;
     }
 
+    /**
+     * Prüft, ob die Dateiendung eines Dateinamens in den unterstützten Formaten
+     * enthalten ist.
+     *
+     * @param fileName Der zu prüfende Dateiname.
+     * @param values Alle erlaubten Enum-Werte.
+     * @param defaultValue Der Enum-Wert, der nicht als unterstützt gilt.
+     * @param <T> Der Typ des Format-Enums.
+     *
+     * @return {@code true}, wenn die Dateiendung unterstützt wird, andernfalls
+     *     {@code false}.
+     */
     public static <T extends Enum<T>> boolean isSupported(String fileName,
             T[] values, T defaultValue)
     {
@@ -91,6 +119,17 @@ public final class DataFormat
         return false;
     }
 
+    /**
+     * Gibt alle unterstützten Dateiendungen zurück, ohne den als nicht
+     * unterstützt markierten Standardwert.
+     *
+     * @param values Alle erlaubten Enum-Werte.
+     * @param defaultValue Der Enum-Wert, der aus dem Ergebnis ausgeschlossen
+     *     wird.
+     * @param <T> Der Typ des Format-Enums.
+     *
+     * @return Ein Array mit allen unterstützten Dateiendungen.
+     */
     public static <T extends Enum<T>> String[] getAllExtensions(T[] values,
             T defaultValue)
     {
