@@ -381,7 +381,27 @@ public abstract class ResourcesContainer<T> implements Container<T>
      *
      * @return Die gewünschten Ressourcen als Feld/Array.
      */
-    public List<T> getMultiple(String... names)
+    @SuppressWarnings("unchecked")
+    public T[] getMultiple(String... names)
+    {
+        T[] result = (T[]) new Object[names.length];
+        for (int i = 0; i < names.length; i++)
+        {
+            result[i] = get(names[i]);
+        }
+        return result;
+    }
+
+    /**
+     * <b>Gibt</b> <b>mehrere</b> Ressources als Liste zurück.
+     *
+     * @param names Die Namen bzw. die Dateipfade der gewünschten Ressourcen.
+     *
+     * @return Die gewünschten Ressourcen als Liste.
+     *
+     * @since 0.47.0
+     */
+    public List<T> getMultipleAsList(String... names)
     {
         List<T> result = new ArrayList<>();
         for (int i = 0; i < names.length; i++)
