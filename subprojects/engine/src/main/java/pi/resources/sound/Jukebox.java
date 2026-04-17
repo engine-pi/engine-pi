@@ -78,12 +78,12 @@ public final class Jukebox
 
     public static MusicPlayback getMusic()
     {
-        return soundEngine().getMusic();
+        return soundEngine().music();
     }
 
     public static Collection<MusicPlayback> getAllMusic()
     {
-        return soundEngine().getAllMusic();
+        return soundEngine().allMusic();
     }
 
     public static void stopMusic()
@@ -93,7 +93,7 @@ public final class Jukebox
 
     public static Sound getSound(String filePath)
     {
-        return soundEngine().getSound(filePath);
+        return soundEngine().sound(filePath);
     }
 
     public static SoundPlayback createSoundPlayback(Sound sound, boolean loop)

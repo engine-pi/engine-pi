@@ -131,7 +131,10 @@ Mehrzeilig:
 | ScreenRecording                  | Bildschirmaufnahme                                     |
 | Screenshot                       | Bildschirmfoto                                         |
 | Shape                            | Umriss                                                 |
+| Sound                            | Klang                                                  |
+| SoundPlayback                    | Klangwiedergabe                                        |
 | Square                           | Quadrat                                                |
+| Track                            | Audiospur                                              |
 | TurboFire                        | Dauerfeuer                                             |
 | WeldJoint                        | Schweißnaht                                            |
 
