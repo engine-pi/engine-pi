@@ -145,7 +145,7 @@ nav:
           - manual/resources/colors.md
           - manual/resources/fonts.md
           - manual/resources/images.md
-          - manual/resources/sounds.md
+          - manual/resources/sounds/index.md
           - manual/resources/config.md
 
       - Projekte:
