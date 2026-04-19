@@ -21,12 +21,18 @@ package demos.classes.resources.sound;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.resources.sound.Jukebox;
-import pi.Scene;
 import pi.event.KeyStrokeListener;
+import pi.resources.sound.Jukebox;
 
 class Player
 {
+    private Player()
+    {
+
+    }
+
+    private static final String KOROBEINIKI = "A-Type-Music_Korobeiniki.ogg";
+
     private static String getPath(String baseName)
     {
         return "tetris/sounds/" + baseName;
@@ -34,18 +40,17 @@ class Player
 
     public static void korobeiniki()
     {
-        Jukebox.playMusic(getPath("A-Type-Music_Korobeiniki.ogg"));
+        Jukebox.playMusic(getPath(KOROBEINIKI));
     }
 
     public static void korobeinikiRestart()
     {
-        Jukebox.playMusic(getPath("A-Type-Music_Korobeiniki.ogg"), true, true);
+        Jukebox.playMusic(getPath(KOROBEINIKI), true, true);
     }
 
     public static void korobeinikiStopFalse()
     {
-        Jukebox
-            .playMusic(getPath("A-Type-Music_Korobeiniki.ogg"), false, false);
+        Jukebox.playMusic(getPath(KOROBEINIKI), false, false);
     }
 
     public static void title()
@@ -65,7 +70,8 @@ class Player
     }
 }
 
-public class JukeboxTetrisDemo extends Scene implements KeyStrokeListener
+public class JukeboxTetrisDemo extends AudioDebugScene
+        implements KeyStrokeListener
 {
     @Override
     public void onKeyDown(KeyEvent event)

@@ -24,10 +24,9 @@ import java.io.IOException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import pi.Controller;
-import pi.resources.sound.Jukebox;
-import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.resources.ResourceLoader;
+import pi.resources.sound.Jukebox;
 import pi.resources.sound.LoopedTrack;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.Playback;
@@ -38,7 +37,7 @@ import pi.resources.sound.Track;
 /**
  * Demonstriert die Klasse <b>Jukebox</b>.
  */
-public class JukeboxDemo extends Scene implements KeyStrokeListener
+public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
 {
     Playback casinoBling;
 

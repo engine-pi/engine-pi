@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import pi.debug.AnsiColor;
 import pi.graphics.boxes.HAlign;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/engine/src/test/java/pi/util/TextUtilTest.java
@@ -356,7 +357,8 @@ public class TextUtil
      * <p>
      * Außerdem werden die Zeilen-Trennzeichen normalisiert. Alle
      * Windows-Zeilenenden ({@code "\r\n"}) und alte Mac-Zeilenenden
-     * ({@code "\r"}) werden durch {@code "\n"} ersetzt.
+     * ({@code "\r"}) werden durch {@code "\n"} ersetzt. Darüberhinaus werden
+     * alle ANSI-Farbcodes entfernt.
      * </p>
      *
      * <p>
@@ -419,7 +421,7 @@ public class TextUtil
             return convertIteratorToString(list.iterator(), "[", "]");
         }
 
-        return normalizeLineSeparator(content.toString());
+        return AnsiColor.remove(normalizeLineSeparator(content.toString()));
     }
 
     /**

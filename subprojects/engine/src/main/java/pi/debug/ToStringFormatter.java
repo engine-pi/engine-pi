@@ -51,7 +51,7 @@ import pi.util.TextUtil;
  * <pre>{@code
  * public String toString()
  * {
- *     ToStringFormatter formatter = new ToStringFormatter("Image");
+ *     var formatter = new ToStringFormatter("Image");
  *     formatter.add("width", width, "m");
  *     formatter.add("height", height, "m");
  *     if (pixelPerMeter > 0)
@@ -72,9 +72,9 @@ import pi.util.TextUtil;
  * </p>
  *
  * <pre> {@code
- * public ToStringFormatter toStringFormatter()
+ * public ToStringFormatter toStringFormatter(Object object)
  * {
- *     var formatter = super.toStringFormatter();
+ *     var formatter = super.toStringFormatter(object);
  *     if (numberOfChilds() > 0)
  *     {
  *         formatter.prepend("numberOfChilds", numberOfChilds());

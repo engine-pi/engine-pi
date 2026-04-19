@@ -24,7 +24,6 @@ import static pi.Controller.sounds;
 import java.awt.event.KeyEvent;
 
 import pi.Controller;
-import pi.Scene;
 import pi.event.KeyStrokeListener;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.PlaybackListener;
@@ -35,7 +34,8 @@ import pi.resources.sound.SoundEvent;
 /**
  *
  */
-public class PlaybackListenerDemo extends Scene implements KeyStrokeListener
+public class PlaybackListenerDemo extends AudioDebugScene
+        implements KeyStrokeListener
 {
 
     MusicPlayback playback;
@@ -70,7 +70,6 @@ public class PlaybackListenerDemo extends Scene implements KeyStrokeListener
         case KeyEvent.VK_2 -> playback.cancel();
         case KeyEvent.VK_3 -> playback.start();
         case KeyEvent.VK_4 -> playback.resumePlayback();
-
         }
     }
 

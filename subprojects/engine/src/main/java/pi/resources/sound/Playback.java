@@ -38,6 +38,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+import pi.debug.ToStringFormatter;
+
 /**
  * The {@code SoundPlayback} class is a wrapper {@code SourceDataLine} on which
  * a {@code Sound} playback can be carried out.
@@ -325,6 +327,23 @@ public abstract class Playback implements Runnable
                 this.muteControl.setValue(false);
             }
         }
+    }
+
+    protected ToStringFormatter toStringFormatter(Object object)
+    {
+        var formatter = new ToStringFormatter(object);
+        formatter.append("started", started);
+        formatter.append("canceled", cancelled);
+        return formatter;
+    }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        return toStringFormatter(this).format();
     }
 
     /**

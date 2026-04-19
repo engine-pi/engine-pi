@@ -233,7 +233,7 @@ public class Scene implements KeyStrokeListenerRegistration,
     @API
     public void renderOverlay(Graphics2D g, int width, int height)
     {
-
+        // soll in erbenden Klassen überschrieben werden.
     }
 
     /**

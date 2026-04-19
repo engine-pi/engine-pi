@@ -74,4 +74,15 @@ public class SoundPlayback extends Playback
         super.play();
         SoundEngine.getInstance().addSound(this);
     }
+
+    /**
+     * @hidden
+     */
+    @Override
+    public String toString()
+    {
+        var formatter = super.toStringFormatter(this);
+        formatter.prepend("sound", sound);
+        return formatter.format();
+    }
 }

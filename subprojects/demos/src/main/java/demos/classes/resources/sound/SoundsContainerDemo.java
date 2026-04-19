@@ -24,12 +24,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import static pi.Controller.jukebox;
+
+import pi.Controller;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.Sound;
 import pi.resources.sound.SoundEvent;
 import pi.resources.sound.PlaybackListener;
 
-public class SoundsContainerDemo
+public class SoundsContainerDemo extends AudioDebugScene
 {
     public SoundsContainerDemo() throws MalformedURLException
     {
@@ -68,6 +70,7 @@ public class SoundsContainerDemo
 
     public static void main(String[] args) throws MalformedURLException
     {
-        new SoundsContainerDemo();
+        Controller.instantMode(false);
+        Controller.start(new SoundsContainerDemo());
     }
 }

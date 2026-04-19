@@ -21,7 +21,6 @@ package demos.classes.resources.sound;
 import static pi.Controller.jukebox;
 
 import pi.Controller;
-import pi.Scene;
 import pi.resources.sound.MulitpleSoundsTrack;
 
 /**
@@ -31,7 +30,7 @@ import pi.resources.sound.MulitpleSoundsTrack;
  *
  * @since 0.47.0
  */
-public class MulitpleSoundsTrackDemo extends Scene
+public class MulitpleSoundsTrackDemo extends AudioDebugScene
 {
     String a = "tetris/sounds/Korobeiniki_A-Teil.mp3";
 

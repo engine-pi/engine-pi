@@ -237,6 +237,20 @@ public final class SoundEngine
         .newKeySet();
 
     /**
+     * Liefert eine <b>Liste</b> mit allen <b>Klangwiedergaben</b>.
+     *
+     * @return Eine Liste mit allen <b>Klangwiedergaben</b>.
+     *
+     * @since 0.47.0
+     */
+    @API
+    @Getter
+    public synchronized Collection<SoundPlayback> allSounds()
+    {
+        return Collections.unmodifiableCollection(allSounds);
+    }
+
+    /**
      * <b>Fügt</b> eine <b>Klangwiedergabe</b> zur internen Verwaltung hinzu.
      *
      * @param playback Die zu verwaltende <b>Klangwiedergabe</b>.
@@ -253,7 +267,7 @@ public final class SoundEngine
 
     /**
      * Spielt die als Zeichenkette angegebene Audio-Datei in einer
-     * Endlosschleife ab.
+     * Endlosschleife ab.playbacks.size()
      *
      * <p>
      * Wird diese Audio-Datei bereits abgespielt, so wird diese Wiedergabe nicht
@@ -422,7 +436,7 @@ public final class SoundEngine
             boolean stop)
     {
         if (!restart && music != null && music.isPlaying()
-                && music.getTrack().equals(track))
+                && music.track().equals(track))
         {
             return music;
         }
