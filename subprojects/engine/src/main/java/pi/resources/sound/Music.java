@@ -28,11 +28,11 @@ package pi.resources.sound;
 import javax.sound.sampled.AudioFormat;
 
 /**
- * Die Klasse {@link Track} definiert eine Reihenfolge, in der Klänge
- * ({@link Sound}s) von der {@link pi.resources.sound.SoundEngine} wiedergegeben
+ * Die Klasse {@link Music} definiert eine Reihenfolge, in der Klänge
+ * ({@link Sound}s) von der {@link pi.resources.sound.AudioEngine} wiedergegeben
  * werden sollen.
  */
-public interface Track extends Iterable<Sound>
+public interface Music extends Iterable<Sound>
 {
     AudioFormat format();
 }

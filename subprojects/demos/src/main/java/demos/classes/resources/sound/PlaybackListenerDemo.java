@@ -27,7 +27,7 @@ import pi.Controller;
 import pi.event.KeyStrokeListener;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.PlaybackListener;
-import pi.resources.sound.SinglePlayTrack;
+import pi.resources.sound.SinglePlayMusic;
 import pi.resources.sound.Sound;
 import pi.resources.sound.SoundEvent;
 
@@ -44,7 +44,7 @@ public class PlaybackListenerDemo extends AudioDebugScene
     {
         Sound mySound = sounds.get("sounds/game-level-music.mp3");
 
-        playback = jukebox.playMusic(new SinglePlayTrack(mySound));
+        playback = jukebox.playMusic(new SinglePlayMusic(mySound));
         playback.addPlaybackListener(new PlaybackListener()
         {
             @Override

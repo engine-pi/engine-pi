@@ -37,7 +37,7 @@ public class MusicPlayback extends Playback
 
     private final VolumeControl musicVolume;
 
-    public MusicPlayback(Track track) throws LineUnavailableException
+    public MusicPlayback(Music track) throws LineUnavailableException
     {
         super(track.format());
         this.track = track;
@@ -68,10 +68,10 @@ public class MusicPlayback extends Playback
         }
     }
 
-    private final Track track;
+    private final Music track;
 
     @Getter
-    public Track track()
+    public Music track()
     {
         return track;
     }

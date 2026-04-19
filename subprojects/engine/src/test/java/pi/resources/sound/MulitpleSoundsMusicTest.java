@@ -20,6 +20,7 @@ package pi.resources.sound;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -49,7 +50,7 @@ import pi.resources.ResourceLoader;
  *
  * @since 0.47.0
  */
-class MulitpleSoundsTrackTest
+class MulitpleSoundsMusicTest
 {
     @TempDir
     Path tempDir;
@@ -63,11 +64,10 @@ class MulitpleSoundsTrackTest
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
 
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(
-                    List.of(first, second));
+            var music = new MulitpleSoundsMusic(List.of(first, second));
 
-            assertTrue(track.loop());
-            assertEquals(List.of(first, second), track.sounds());
+            assertTrue(music.loop());
+            assertEquals(List.of(first, second), music.sounds());
         }
 
         @Test
@@ -76,13 +76,13 @@ class MulitpleSoundsTrackTest
             Path first = createFile("first.wav", 44_100, 1);
             Path second = createFile("second.wav", 44_100, 1);
 
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(false,
-                    first.toString(), second.toString());
+            var music = new MulitpleSoundsMusic(false, first.toString(),
+                    second.toString());
 
-            assertFalse(track.loop());
-            assertEquals(2, track.sounds().size());
-            assertEquals("first", track.sounds().get(0).name());
-            assertEquals("second", track.sounds().get(1).name());
+            assertFalse(music.loop());
+            assertEquals(2, music.sounds().size());
+            assertEquals("first", music.sounds().get(0).name());
+            assertEquals("second", music.sounds().get(1).name());
         }
 
         @Test
@@ -90,7 +90,7 @@ class MulitpleSoundsTrackTest
         {
             IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> new MulitpleSoundsTrack(false, List.of()));
+                () -> new MulitpleSoundsMusic(false, List.of()));
 
             assertEquals(
                 "Die Klasse MulitpleSoundsTrack benötigt mindestens einen Klang (Sound).",
@@ -104,7 +104,7 @@ class MulitpleSoundsTrackTest
             Sound stereo = createSound("stereo.wav", 44_100, 2);
 
             assertThrows(IllegalArgumentException.class,
-                () -> new MulitpleSoundsTrack(false, mono, stereo));
+                () -> new MulitpleSoundsMusic(false, mono, stereo));
         }
     }
 
@@ -116,10 +116,9 @@ class MulitpleSoundsTrackTest
         {
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(false, first,
-                    second);
+            var music = new MulitpleSoundsMusic(false, first, second);
 
-            Iterator<Sound> iterator = track.iterator();
+            Iterator<Sound> iterator = music.iterator();
 
             assertTrue(iterator.hasNext());
             assertSame(first, iterator.next());
@@ -134,10 +133,9 @@ class MulitpleSoundsTrackTest
         {
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(true, first,
-                    second);
+            var music = new MulitpleSoundsMusic(true, first, second);
 
-            Iterator<Sound> iterator = track.iterator();
+            Iterator<Sound> iterator = music.iterator();
 
             assertTrue(iterator.hasNext());
             assertSame(first, iterator.next());
@@ -156,22 +154,21 @@ class MulitpleSoundsTrackTest
         {
             Sound first = createSound("first.wav", 22_050, 1);
             Sound second = createSound("second.wav", 22_050, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(false, first,
-                    second);
+            var music = new MulitpleSoundsMusic(false, first, second);
 
-            assertEquals(first.format(), track.format());
+            assertEquals(first.format(), music.format());
         }
 
         @Test
         void loopSetterIsChainable() throws Exception
         {
             Sound first = createSound("first.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(false, first);
+            var music = new MulitpleSoundsMusic(false, first);
 
-            MulitpleSoundsTrack returned = track.loop(true);
+            var returned = music.loop(true);
 
-            assertSame(track, returned);
-            assertTrue(track.loop());
+            assertSame(music, returned);
+            assertTrue(music.loop());
         }
 
         @Test
@@ -179,12 +176,12 @@ class MulitpleSoundsTrackTest
         {
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(false, first);
+            var music = new MulitpleSoundsMusic(false, first);
 
-            MulitpleSoundsTrack returned = track.sounds(List.of(first, second));
+            var returned = music.sounds(List.of(first, second));
 
-            assertSame(track, returned);
-            assertEquals(List.of(first, second), track.sounds());
+            assertSame(music, returned);
+            assertEquals(List.of(first, second), music.sounds());
         }
     }
 
@@ -196,10 +193,10 @@ class MulitpleSoundsTrackTest
         {
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(true, first,
-                    second);
+            var music = new MulitpleSoundsMusic(true, first, second);
 
-            assertTrue(track.equals(track));
+            var expected = music;
+            assertEquals(expected, music);
         }
 
         @Test
@@ -208,23 +205,21 @@ class MulitpleSoundsTrackTest
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
 
-            MulitpleSoundsTrack left = new MulitpleSoundsTrack(true, first,
-                    second);
-            MulitpleSoundsTrack right = new MulitpleSoundsTrack(true, first,
-                    second);
+            var left = new MulitpleSoundsMusic(true, first, second);
+            var right = new MulitpleSoundsMusic(true, first, second);
 
-            assertTrue(left.equals(right));
-            assertTrue(right.equals(left));
+            assertEquals(left, right);
+            assertEquals(right, left);
         }
 
         @Test
         void returnsFalseForNullAndOtherType() throws Exception
         {
             Sound first = createSound("first.wav", 44_100, 1);
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(true, first);
+            var music = new MulitpleSoundsMusic(true, first);
 
-            assertFalse(track.equals(null));
-            assertFalse(track.equals("not a track"));
+            assertNotEquals(null, music);
+            assertNotEquals("not a track", music);
         }
 
         @Test
@@ -233,12 +228,10 @@ class MulitpleSoundsTrackTest
             Sound first = createSound("first.wav", 44_100, 1);
             Sound second = createSound("second.wav", 44_100, 1);
 
-            MulitpleSoundsTrack looping = new MulitpleSoundsTrack(true, first,
-                    second);
-            MulitpleSoundsTrack nonLooping = new MulitpleSoundsTrack(false,
-                    first, second);
+            var looping = new MulitpleSoundsMusic(true, first, second);
+            var nonLooping = new MulitpleSoundsMusic(false, first, second);
 
-            assertFalse(looping.equals(nonLooping));
+            assertNotEquals(nonLooping, looping);
         }
 
         @Test
@@ -248,15 +241,12 @@ class MulitpleSoundsTrackTest
             Sound second = createSound("second.wav", 44_100, 1);
             Sound third = createSound("third.wav", 44_100, 1);
 
-            MulitpleSoundsTrack track = new MulitpleSoundsTrack(true, first,
-                    second);
-            MulitpleSoundsTrack differentOrder = new MulitpleSoundsTrack(true,
-                    second, first);
-            MulitpleSoundsTrack differentIdentity = new MulitpleSoundsTrack(
-                    true, first, third);
+            var music = new MulitpleSoundsMusic(true, first, second);
+            var differentOrder = new MulitpleSoundsMusic(true, second, first);
+            var differentIdentity = new MulitpleSoundsMusic(true, first, third);
 
-            assertFalse(track.equals(differentOrder));
-            assertFalse(track.equals(differentIdentity));
+            assertNotEquals(differentOrder, music);
+            assertNotEquals(differentIdentity, music);
         }
     }
 

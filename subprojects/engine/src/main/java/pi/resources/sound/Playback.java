@@ -255,7 +255,7 @@ public abstract class Playback implements Runnable
 
     void play()
     {
-        SoundEngine.getInstance().executor.submit(this);
+        AudioEngine.getInstance().executor.submit(this);
     }
 
     /**

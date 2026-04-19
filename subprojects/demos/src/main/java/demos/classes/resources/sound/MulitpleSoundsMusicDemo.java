@@ -21,33 +21,33 @@ package demos.classes.resources.sound;
 import static pi.Controller.jukebox;
 
 import pi.Controller;
-import pi.resources.sound.MulitpleSoundsTrack;
+import pi.resources.sound.MulitpleSoundsMusic;
 
 /**
- * Demonstriert die Klasse {@link MulitpleSoundsTrack}.
+ * Demonstriert die Klasse {@link MulitpleSoundsMusic}.
  *
  * @author Josef Friedrich
  *
  * @since 0.47.0
  */
-public class MulitpleSoundsTrackDemo extends AudioDebugScene
+public class MulitpleSoundsMusicDemo extends AudioDebugScene
 {
     String a = "tetris/sounds/Korobeiniki_A-Teil.mp3";
 
     String b = "tetris/sounds/Korobeiniki_B-Teil.mp3";
 
-    public MulitpleSoundsTrackDemo()
+    public MulitpleSoundsMusicDemo()
     {
         info("Demonstriert die Klasse MulitpleSoundsTrack")
             .description("Teil A wird zweimal abgespielt. Teil B nur einmal.");
-        var track = new MulitpleSoundsTrack(a, a, b);
-        jukebox.playMusic(new MulitpleSoundsTrack(a, a, b));
+        var track = new MulitpleSoundsMusic(a, a, b);
+        jukebox.playMusic(new MulitpleSoundsMusic(a, a, b));
         System.out.println(track);
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new MulitpleSoundsTrackDemo());
+        Controller.start(new MulitpleSoundsMusicDemo());
     }
 }

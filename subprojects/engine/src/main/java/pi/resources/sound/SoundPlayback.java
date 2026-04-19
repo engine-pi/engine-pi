@@ -72,7 +72,7 @@ public class SoundPlayback extends Playback
     protected void play()
     {
         super.play();
-        SoundEngine.getInstance().addSound(this);
+        AudioEngine.getInstance().addSound(this);
     }
 
     /**

@@ -21,7 +21,7 @@ public class AudioDebugBox extends VerticalBox<Box>
 
     TextBlockBox musicBox;
 
-    SoundEngine engine;
+    AudioEngine engine;
 
     Collection<SoundPlayback> allSounds;
 
@@ -43,7 +43,7 @@ public class AudioDebugBox extends VerticalBox<Box>
         musicBox.width(700);
         addChild(musicBox);
 
-        engine = SoundEngine.getInstance();
+        engine = AudioEngine.getInstance();
         allMusic = engine.allMusic();
         allSounds = engine.allSounds();
     }

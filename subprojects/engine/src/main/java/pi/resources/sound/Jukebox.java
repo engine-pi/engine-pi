@@ -7,12 +7,12 @@ import java.util.function.Consumer;
 import pi.annotations.Internal;
 
 /**
- * Statische Fassade fuer {@link SoundEngine}.
+ * Statische Fassade fuer {@link AudioEngine}.
  */
 public final class Jukebox
 {
 
-    public static final ExecutorService EXECUTOR = SoundEngine
+    public static final ExecutorService EXECUTOR = AudioEngine
         .getInstance().executor;
 
     @Internal
@@ -21,109 +21,109 @@ public final class Jukebox
         throw new UnsupportedOperationException();
     }
 
-    private static SoundEngine soundEngine()
+    private static AudioEngine engine()
     {
-        return SoundEngine.getInstance();
+        return AudioEngine.getInstance();
     }
 
     public static MusicPlayback playMusic(Sound sound)
     {
-        return soundEngine().playMusic(sound);
+        return engine().playMusic(sound);
     }
 
     public static MusicPlayback playMusic(Sound sound, boolean restart,
             boolean stop)
     {
-        return soundEngine().playMusic(sound, restart, stop);
+        return engine().playMusic(sound, restart, stop);
     }
 
-    public static MusicPlayback playMusic(Track track)
+    public static MusicPlayback playMusic(Music track)
     {
-        return soundEngine().playMusic(track);
+        return engine().playMusic(track);
     }
 
     public static MusicPlayback playMusic(String music)
     {
-        return soundEngine().playMusic(music);
+        return engine().playMusic(music);
     }
 
     public static MusicPlayback playMusic(String music, boolean restart,
             boolean stop)
     {
-        return soundEngine().playMusic(music, restart, stop);
+        return engine().playMusic(music, restart, stop);
     }
 
-    public static MusicPlayback playMusic(Track track, boolean restart)
+    public static MusicPlayback playMusic(Music track, boolean restart)
     {
-        return soundEngine().playMusic(track, restart);
+        return engine().playMusic(track, restart);
     }
 
-    public static MusicPlayback playMusic(Track track, boolean restart,
+    public static MusicPlayback playMusic(Music track, boolean restart,
             boolean stop)
     {
-        return soundEngine().playMusic(track, restart, stop);
+        return engine().playMusic(track, restart, stop);
     }
 
-    public static MusicPlayback playMusic(Track track,
+    public static MusicPlayback playMusic(Music track,
             Consumer<? super MusicPlayback> config, boolean restart,
             boolean stop)
     {
-        return soundEngine().playMusic(track, config, restart, stop);
+        return engine().playMusic(track, config, restart, stop);
     }
 
     public static MusicPlayback playIntroTrack(String intro, String loop)
     {
-        return soundEngine().playIntroTrack(intro, loop);
+        return engine().playIntroTrack(intro, loop);
     }
 
     public static MusicPlayback getMusic()
     {
-        return soundEngine().music();
+        return engine().music();
     }
 
     public static Collection<MusicPlayback> getAllMusic()
     {
-        return soundEngine().allMusic();
+        return engine().allMusic();
     }
 
     public static void stopMusic()
     {
-        soundEngine().stopMusic();
+        engine().stopMusic();
     }
 
     public static Sound getSound(String filePath)
     {
-        return soundEngine().sound(filePath);
+        return engine().sound(filePath);
     }
 
     public static SoundPlayback createSoundPlayback(Sound sound, boolean loop)
     {
-        return soundEngine().createSoundPlayback(sound, loop);
+        return engine().createSoundPlayback(sound, loop);
     }
 
     public static SoundPlayback createSoundPlayback(String filePath,
             boolean loop)
     {
-        return soundEngine().createSoundPlayback(filePath, loop);
+        return engine().createSoundPlayback(filePath, loop);
     }
 
     public static void addSound(SoundPlayback playback)
     {
-        soundEngine().addSound(playback);
+        engine().addSound(playback);
     }
 
     public static SoundPlayback playSound(Sound sound, boolean loop)
     {
-        return soundEngine().playSound(sound, loop);
+        return engine().playSound(sound, loop);
     }
 
     public static SoundPlayback playSound(final String filePath, boolean loop)
     {
-        return soundEngine().playSound(filePath, loop);
+        return engine().playSound(filePath, loop);
     }
 
     public static SoundPlayback playSound(final String filePath)
     {
-        return soundEngine().playSound(filePath);
+        return engine().playSound(filePath);
     }
 }

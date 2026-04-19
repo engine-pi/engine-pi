@@ -65,7 +65,7 @@ import pi.resources.Resources;
 import pi.resources.color.ColorContainer;
 import pi.resources.color.ColorSchemeContainer;
 import pi.resources.font.FontContainer;
-import pi.resources.sound.SoundEngine;
+import pi.resources.sound.AudioEngine;
 import pi.resources.sound.SoundContainer;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/main-classes/controller/index.md
@@ -237,12 +237,12 @@ public class Controller
     public static final SoundContainer sounds = Resources.sounds;
 
     /**
-     * Die {@link SoundEngine}-Klasse bietet Methoden an, um Klänge im Spiel
+     * Die {@link AudioEngine}-Klasse bietet Methoden an, um Klänge im Spiel
      * wiederzugeben.
      *
      * @since 0.47.0
      */
-    public static final SoundEngine jukebox = SoundEngine.getInstance();
+    public static final AudioEngine jukebox = AudioEngine.getInstance();
 
     /**
      * Das <b>Fenster</b> des Projekt.

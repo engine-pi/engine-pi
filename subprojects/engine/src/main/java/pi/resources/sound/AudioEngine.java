@@ -45,7 +45,7 @@ import pi.annotations.Getter;
 import pi.annotations.Internal;
 
 /**
- * Die {@link SoundEngine}-Klasse bietet Methoden an, um <b>Klänge</b> (Sound)
+ * Die {@link AudioEngine}-Klasse bietet Methoden an, um <b>Klänge</b> (Sound)
  * und <b>Musik</b> (Music) im Spiel <b>wiederzugeben</b>.
  *
  * <p>
@@ -63,7 +63,7 @@ import pi.annotations.Internal;
  * </ol>
  *
  * <p>
- * Die {@link SoundEngine} kann standardmäßig {@code .wav}, {@code .mp3} und
+ * Die {@link AudioEngine} kann standardmäßig {@code .wav}, {@code .mp3} und
  * {@code .ogg} Dateien abspielen. Wenn andere Dateierweiterungen benötigt
  * werden, muss eine eigene SPI-Implementierung geschrieben und dem Projekt
  * hinzugefügt werden.
@@ -73,7 +73,7 @@ import pi.annotations.Internal;
  * @author Matthias Wilke
  */
 @java.lang.SuppressWarnings("squid:S6548")
-public final class SoundEngine
+public final class AudioEngine
 {
     public final ExecutorService executor = Executors
         .newCachedThreadPool(new ThreadFactory()
@@ -102,19 +102,19 @@ public final class SoundEngine
      * existiert.
      */
     @Internal
-    private SoundEngine()
+    private AudioEngine()
     {
     }
 
-    private static final SoundEngine INSTANCE = new SoundEngine();
+    private static final AudioEngine INSTANCE = new AudioEngine();
 
     /**
-     * Liefert die Singleton-Instanz der {@link SoundEngine}.
+     * Liefert die Singleton-Instanz der {@link AudioEngine}.
      *
      * @return Die Singleton-Instanz.
      */
     @API
-    public static SoundEngine getInstance()
+    public static AudioEngine getInstance()
     {
         return INSTANCE;
     }
@@ -286,7 +286,7 @@ public final class SoundEngine
     }
 
     /**
-     * Setzt die aktuell abgespielte Spur auf einen {@link LoopedTrack} mit dem
+     * Setzt die aktuell abgespielte Spur auf einen {@link LoopedMusic} mit dem
      * angegebenen Musik-{@link Sound}.
      *
      * <p>
@@ -300,7 +300,7 @@ public final class SoundEngine
     @API
     public MusicPlayback playMusic(Sound sound)
     {
-        return playMusic(new LoopedTrack(sound), restartDefault, stopDefault);
+        return playMusic(new LoopedMusic(sound), restartDefault, stopDefault);
     }
 
     /**
@@ -312,7 +312,7 @@ public final class SoundEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Track track)
+    public MusicPlayback playMusic(Music track)
     {
         return playMusic(track, null, restartDefault, stopDefault);
     }
@@ -331,7 +331,7 @@ public final class SoundEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Track track, boolean restart)
+    public MusicPlayback playMusic(Music track, boolean restart)
     {
         return playMusic(track, null, restart, stopDefault);
     }
@@ -374,7 +374,7 @@ public final class SoundEngine
     @API
     public MusicPlayback playMusic(Sound sound, boolean restart, boolean stop)
     {
-        return playMusic(new LoopedTrack(sound), null, restart, stop);
+        return playMusic(new LoopedMusic(sound), null, restart, stop);
     }
 
     /**
@@ -389,7 +389,7 @@ public final class SoundEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Track track, boolean restart, boolean stop)
+    public MusicPlayback playMusic(Music track, boolean restart, boolean stop)
     {
         return playMusic(track, null, restart, stop);
     }
@@ -431,7 +431,7 @@ public final class SoundEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public synchronized @NonNull MusicPlayback playMusic(Track track,
+    public synchronized @NonNull MusicPlayback playMusic(Music track,
             Consumer<? super MusicPlayback> config, boolean restart,
             boolean stop)
     {
@@ -474,7 +474,7 @@ public final class SoundEngine
     @API
     public MusicPlayback playIntroTrack(String intro, String loop)
     {
-        return playMusic(new IntroTrack(sound(intro), sound(loop)));
+        return playMusic(new IntroMusic(sound(intro), sound(loop)));
     }
 
     /**

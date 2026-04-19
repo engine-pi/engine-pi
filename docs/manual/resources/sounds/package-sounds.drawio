@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="h_UgNbJwjDetw83gG8Xm">
-        <mxGraphModel dx="1518" dy="2391" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
+        <mxGraphModel dx="721" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -37,19 +37,19 @@
                         <mxPoint x="818.5" y="518.11" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="9" value="&lt;div&gt;&lt;font&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Track&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                <mxCell id="9" value="&lt;div&gt;&lt;font&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Music&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
                     <mxGeometry x="410" y="390" width="110" height="49" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="&lt;font&gt;IntroTrack&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                <mxCell id="10" value="&lt;font&gt;IntroMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
                     <mxGeometry x="648.5" y="518.11" width="110" height="49" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="&lt;font&gt;SinglePlayTrack&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                <mxCell id="11" value="&lt;font&gt;SinglePlayMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
                     <mxGeometry x="210" y="518.11" width="110" height="49" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="&lt;font&gt;LoopedTrack&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                <mxCell id="12" value="&lt;font&gt;LoopedMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
                     <mxGeometry x="350" y="518.11" width="110" height="49" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="&lt;font&gt;MutlipleSoundsTrack&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
+                <mxCell id="13" value="&lt;font&gt;MultipleSoundsMusic&lt;/font&gt;" style="html=1;whiteSpace=wrap;fontFamily=Cantarell;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DCantarell;" parent="1" vertex="1">
                     <mxGeometry x="490" y="518.11" width="130" height="49" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" value="" style="startArrow=block;startSize=16;startFill=0;endArrow=none;rounded=0;edgeStyle=elbowEdgeStyle;elbow=vertical;dashed=1;" parent="1" source="9" target="13" edge="1">

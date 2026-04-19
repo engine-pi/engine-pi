@@ -27,12 +27,12 @@ import pi.Controller;
 import pi.event.KeyStrokeListener;
 import pi.resources.ResourceLoader;
 import pi.resources.sound.Jukebox;
-import pi.resources.sound.LoopedTrack;
+import pi.resources.sound.LoopedMusic;
 import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.Playback;
-import pi.resources.sound.SinglePlayTrack;
+import pi.resources.sound.SinglePlayMusic;
 import pi.resources.sound.Sound;
-import pi.resources.sound.Track;
+import pi.resources.sound.Music;
 
 /**
  * Demonstriert die Klasse <b>Jukebox</b>.
@@ -41,11 +41,11 @@ public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
 {
     Playback casinoBling;
 
-    Track gameReached;
+    Music gameReached;
 
-    Track gameBonus;
+    Music gameBonus;
 
-    Track levelMusic;
+    Music levelMusic;
 
     public JukeboxDemo() throws IOException, UnsupportedAudioFileException
     {
@@ -64,16 +64,16 @@ public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
                 fileName);
     }
 
-    public Track loadSinglePlayTrack(String fileName)
+    public Music loadSinglePlayTrack(String fileName)
             throws IOException, UnsupportedAudioFileException
     {
-        return new SinglePlayTrack(loadSound(fileName));
+        return new SinglePlayMusic(loadSound(fileName));
     }
 
-    public Track loadLoopedTrack(String fileName)
+    public Music loadLoopedTrack(String fileName)
             throws IOException, UnsupportedAudioFileException
     {
-        return new LoopedTrack(loadSound(fileName));
+        return new LoopedMusic(loadSound(fileName));
     }
 
     @Override

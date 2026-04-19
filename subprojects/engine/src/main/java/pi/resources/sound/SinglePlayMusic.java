@@ -1,5 +1,5 @@
 /*
- * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/IntroTrack.java
+ * Source: https://github.com/gurkenlabs/litiengine/blob/main/litiengine/src/main/java/de/gurkenlabs/litiengine/sound/SinglePlayTrack.java
  *
  * MIT License
  *
@@ -26,61 +26,57 @@
 package pi.resources.sound;
 
 import java.util.Iterator;
-import java.util.Objects;
+import java.util.NoSuchElementException;
+
 import javax.sound.sampled.AudioFormat;
 
 import pi.annotations.Getter;
 
 /**
- * Eine Audiospur, die einmalig eine Eingangsmusik und die darauf folgende Musik
- * in einer Endlosschleife abspielt.
+ * A {@code Track} that plays a sound once and then stops.
  */
-public class IntroTrack implements Track
+public class SinglePlayMusic implements Music
 {
-    private final Sound intro;
-
-    private final Sound loop;
-
-    /**
-     * Initializes a new {@code IntroTrack} for the specified sound.
-     *
-     * @param intro Die einmalig abgespielte Eingangsmusik.
-     * @param loop Die auf die Eingangsmusik folgende in einer Endlosschleife
-     *     wiedergegeben Anschlussmusik.
-     */
-    public IntroTrack(Sound intro, Sound loop)
-    {
-        Objects.requireNonNull(intro);
-        Objects.requireNonNull(loop);
-        if (!intro.format().matches(loop.format()))
-        {
-            throw new IllegalArgumentException(
-                    intro.format() + " does not match " + loop.format());
-        }
-        this.intro = intro;
-        this.loop = loop;
-    }
+    private Sound sound;
 
     private class Iter implements Iterator<Sound>
     {
-        private boolean first = true;
+        private boolean hasNext = true;
 
         @Override
         public boolean hasNext()
         {
-            return true;
+            return hasNext;
         }
 
         @Override
         public Sound next()
         {
-            if (first)
+            if (!hasNext)
             {
-                first = false;
-                return IntroTrack.this.intro;
+                throw new NoSuchElementException();
             }
-            return IntroTrack.this.loop;
+            hasNext = false;
+            return SinglePlayMusic.this.sound;
         }
+    }
+    /**
+     * Initializes a new {@code SinglePlayTrack} for the specified sound.
+     *
+     * @param soundName The name of the sound to be played by this track.
+     */
+    // public SinglePlayTrack(String soundName) {
+    // this();
+    // }
+
+    /**
+     * Initializes a new {@code SinglePlayTrack} for the specified sound.
+     *
+     * @param sound The sound to be played by this track.
+     */
+    public SinglePlayMusic(Sound sound)
+    {
+        this.sound = sound;
     }
 
     @Override
@@ -93,36 +89,16 @@ public class IntroTrack implements Track
     @Override
     public AudioFormat format()
     {
-        return loop.format();
-    }
-
-    @Getter
-    public Sound intro()
-    {
-        return intro;
-    }
-
-    @Getter
-    public Sound loop()
-    {
-        return loop;
+        return sound.format();
     }
 
     /**
      * @hidden
      */
     @Override
-    public boolean equals(Object anObject)
+    public boolean equals(Object obj)
     {
-        if (this == anObject)
-        {
-            return true;
-        }
-        if (anObject instanceof IntroTrack it)
-        {
-            return intro == it.intro && loop == it.loop;
-        }
-        return false;
+        return obj instanceof SinglePlayMusic spt && sound == spt.sound;
     }
 
     /**
@@ -131,7 +107,8 @@ public class IntroTrack implements Track
     @Override
     public int hashCode()
     {
-        return loop.hashCode() * 31 + intro.hashCode();
+        // add a constant to avoid collisions with LoopedTrack
+        return sound.hashCode() + 0xdb9857d0;
     }
 
     /**
@@ -140,6 +117,6 @@ public class IntroTrack implements Track
     @Override
     public String toString()
     {
-        return "looped track: " + loop + ", with intro: " + intro;
+        return "track: " + sound.name() + " (not looped)";
     }
 }

@@ -33,10 +33,10 @@ import pi.annotations.Getter;
 import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
-// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/MulitpleSoundsTrackDemo.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/MulitpleSoundsMusicDemo.java
 
 /**
- * Ein {@link Track}, der mehrere {@link Sound}s nacheinander abspielt.
+ * Eine {@link Music}, die mehrere {@link Sound}s nacheinander abspielt.
  *
  * <p>
  * Alle Klänge müssen dasselbe {@link AudioFormat} verwenden. Optional kann der
@@ -48,12 +48,12 @@ import pi.debug.ToStringFormatter;
  *
  * @since 0.47.0
  */
-public class MulitpleSoundsTrack implements Track
+public class MulitpleSoundsMusic implements Music
 {
     /* MulitpleSoundsTrack(String[]|Sound[]|List<Sound> sounds) */
 
     /**
-     * Erstellt einen {@link Track} durch Angabe der Klänge als
+     * Erstellt eine {@link Music} durch Angabe der Klänge als
      * <b>Dateipfade</b>, der standardmäßig <b>wiederholt</b> wird.
      *
      * @param filePath Die <b>Klänge</b>, die in ihrer übergebenen Reihenfolge
@@ -61,13 +61,13 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(String... filePath)
+    public MulitpleSoundsMusic(String... filePath)
     {
         this(true, filePath);
     }
 
     /**
-     * Erstellt einen {@link Track} durch Angabe einer variablen Anzahl an
+     * Erstellt eine {@link Music} durch Angabe einer variablen Anzahl an
      * {@link Sound}-Parametern, der standardmäßig <b>wiederholt</b> wird.
      *
      * @param sound Die <b>Klänge</b>, die in ihrer übergebenen Reihenfolge
@@ -75,13 +75,13 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(Sound... sound)
+    public MulitpleSoundsMusic(Sound... sound)
     {
         this(true, sound);
     }
 
     /**
-     * Erstellt einen {@link Track} durch Angabe einer {@link List Liste} mit
+     * Erstellt eine {@link Music} durch Angabe einer {@link List Liste} mit
      * {@link Sound}-Objekten, der standardmäßig <b>wiederholt</b> wird.
      *
      * @param sounds Die <b>Klänge</b>, die in ihrer übergebenen Reihenfolge
@@ -89,7 +89,7 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(List<Sound> sounds)
+    public MulitpleSoundsMusic(List<Sound> sounds)
     {
         this(true, sounds);
     }
@@ -97,7 +97,7 @@ public class MulitpleSoundsTrack implements Track
     /* MulitpleSoundsTrack(boolean loop, String[]|Sound[]|List<Sound> sounds) */
 
     /**
-     * Erstellt einen {@link Track} durch Angabe der Klänge als
+     * Erstellt eine {@link Music} durch Angabe der Klänge als
      * <b>Dateipfade</b>.
      *
      * @param loop {@code true}, wenn nach dem letzten Klang wieder beim ersten
@@ -107,7 +107,7 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(boolean loop, String... filePath)
+    public MulitpleSoundsMusic(boolean loop, String... filePath)
     {
         this.sounds = Controller.sounds.getMultipleAsList(filePath);
         checkSounds();
@@ -115,7 +115,7 @@ public class MulitpleSoundsTrack implements Track
     }
 
     /**
-     * Erstellt einen {@link Track} durch Angabe einer variablen Anzahl an
+     * Erstellt eine {@link Music} durch Angabe einer variablen Anzahl an
      * {@link Sound}-Parametern.
      *
      * @param loop {@code true}, wenn nach dem letzten Klang wieder beim ersten
@@ -125,7 +125,7 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(boolean loop, Sound... sounds)
+    public MulitpleSoundsMusic(boolean loop, Sound... sounds)
     {
         this.sounds = List.copyOf(Arrays.asList(sounds));
         checkSounds();
@@ -133,7 +133,7 @@ public class MulitpleSoundsTrack implements Track
     }
 
     /**
-     * Erstellt einen {@link Track} durch Angabe einer {@link List Liste} mit
+     * Erstellt eine {@link Music} durch Angabe einer {@link List Liste} mit
      * {@link Sound}-Objekten, der standardmäßig <b>wiederholt</b> wird.
      *
      * @param loop {@code true}, wenn nach dem letzten Klang wieder beim ersten
@@ -143,7 +143,7 @@ public class MulitpleSoundsTrack implements Track
      *
      * @since 0.47.0
      */
-    public MulitpleSoundsTrack(boolean loop, List<Sound> sounds)
+    public MulitpleSoundsMusic(boolean loop, List<Sound> sounds)
     {
         this.sounds = List.copyOf(sounds);
         checkSounds();
@@ -251,7 +251,7 @@ public class MulitpleSoundsTrack implements Track
     @API
     @Setter
     @ChainableMethod
-    public MulitpleSoundsTrack sounds(List<Sound> sounds)
+    public MulitpleSoundsMusic sounds(List<Sound> sounds)
     {
         this.sounds = sounds;
         checkSounds();
@@ -293,7 +293,7 @@ public class MulitpleSoundsTrack implements Track
     @API
     @Setter
     @ChainableMethod
-    public MulitpleSoundsTrack loop(boolean loop)
+    public MulitpleSoundsMusic loop(boolean loop)
     {
         this.loop = loop;
         return this;
@@ -324,7 +324,7 @@ public class MulitpleSoundsTrack implements Track
             return true;
         }
 
-        if (other instanceof MulitpleSoundsTrack otherTrack)
+        if (other instanceof MulitpleSoundsMusic otherTrack)
         {
             if (loop != otherTrack.loop())
             {
