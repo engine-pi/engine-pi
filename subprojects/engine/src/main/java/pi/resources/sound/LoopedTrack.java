@@ -69,6 +69,9 @@ public class LoopedTrack implements Track, Iterator<Sound>
         return this.track;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public boolean equals(Object anObject)
     {
@@ -76,6 +79,9 @@ public class LoopedTrack implements Track, Iterator<Sound>
                 && lt.track.equals(this.track);
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public int hashCode()
     {

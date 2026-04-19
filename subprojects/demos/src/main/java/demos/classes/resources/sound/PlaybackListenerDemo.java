@@ -1,7 +1,7 @@
 /*
  * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
  *
- * Copyright (c) 2024 Josef Friedrich and contributors.
+ * Copyright (c) 2026 Josef Friedrich and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,38 +18,33 @@
  */
 package demos.classes.resources.sound;
 
+import static pi.Controller.jukebox;
 import static pi.Controller.sounds;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.event.KeyEvent;
 
-import static pi.Controller.jukebox;
+import pi.Controller;
+import pi.Scene;
+import pi.event.KeyStrokeListener;
 import pi.resources.sound.MusicPlayback;
+import pi.resources.sound.PlaybackListener;
+import pi.resources.sound.SinglePlayTrack;
 import pi.resources.sound.Sound;
 import pi.resources.sound.SoundEvent;
-import pi.resources.sound.PlaybackListener;
 
-public class SoundsContainerDemo
+/**
+ *
+ */
+public class PlaybackListenerDemo extends Scene implements KeyStrokeListener
 {
-    public SoundsContainerDemo() throws MalformedURLException
-    {
-        String soundName = "sounds/game-level-music.mp3";
-        Sound mySound = sounds.get("sounds/game-level-music.mp3");
-        if (sounds.contains(mySound))
-        {
-            System.out.println("Contains mySound");
-        }
-        if (sounds.contains(soundName))
-        {
-            System.out.println("Contains soundName");
-        }
-        if (sounds.contains(new URL("file://" + soundName)))
-        {
-            System.out.println("Contains url");
-        }
-        sounds.contains(soundName);
 
-        MusicPlayback playback = jukebox.playMusic(mySound);
+    MusicPlayback playback;
+
+    public PlaybackListenerDemo()
+    {
+        Sound mySound = sounds.get("sounds/game-level-music.mp3");
+
+        playback = jukebox.playMusic(new SinglePlayTrack(mySound));
         playback.addPlaybackListener(new PlaybackListener()
         {
             @Override
@@ -66,8 +61,23 @@ public class SoundsContainerDemo
         });
     }
 
-    public static void main(String[] args) throws MalformedURLException
+    @Override
+    public void onKeyDown(KeyEvent event)
     {
-        new SoundsContainerDemo();
+        switch (event.getKeyCode())
+        {
+        case KeyEvent.VK_1 -> playback.pausePlayback();
+        case KeyEvent.VK_2 -> playback.cancel();
+        case KeyEvent.VK_3 -> playback.start();
+        case KeyEvent.VK_4 -> playback.resumePlayback();
+
+        }
     }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.start(new PlaybackListenerDemo());
+    }
+
 }

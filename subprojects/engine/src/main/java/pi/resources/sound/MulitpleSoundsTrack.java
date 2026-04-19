@@ -31,6 +31,7 @@ import pi.annotations.API;
 import pi.annotations.ChainableMethod;
 import pi.annotations.Getter;
 import pi.annotations.Setter;
+import pi.debug.ToStringFormatter;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/MulitpleSoundsTrackDemo.java
 
@@ -312,6 +313,9 @@ public class MulitpleSoundsTrack implements Track
         return sounds.get(0).format();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public boolean equals(Object other)
     {
@@ -344,6 +348,9 @@ public class MulitpleSoundsTrack implements Track
         return false;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public int hashCode()
     {
@@ -356,6 +363,14 @@ public class MulitpleSoundsTrack implements Track
     @Override
     public String toString()
     {
-        return "playlist track (loop=" + loop + "): " + sounds;
+        var formatter = new ToStringFormatter(this);
+
+        formatter.append("sounds", sounds);
+
+        if (!loop)
+        {
+            formatter.append("loop", loop);
+        }
+        return formatter.format();
     }
 }

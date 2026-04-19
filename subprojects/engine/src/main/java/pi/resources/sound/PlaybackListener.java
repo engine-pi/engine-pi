@@ -31,7 +31,7 @@ import java.util.EventListener;
  * Diese {@link EventListener}-Implementierung bietet Callbacks an, die darüber
  * informiert, wenn eine {@link Playback} Instanz abgebrochen oder beendet wird.
  */
-public interface SoundPlaybackListener extends EventListener
+public interface PlaybackListener extends EventListener
 {
     /**
      * This method gets called when a {@code SoundPlayback} is cancelled.

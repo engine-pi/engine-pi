@@ -108,6 +108,9 @@ public class IntroTrack implements Track
         return loop;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public boolean equals(Object anObject)
     {
@@ -122,6 +125,9 @@ public class IntroTrack implements Track
         return false;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public int hashCode()
     {

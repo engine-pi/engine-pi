@@ -56,7 +56,7 @@ public abstract class Playback implements Runnable
 
     private volatile boolean cancelled = false;
 
-    private final Collection<SoundPlaybackListener> listeners = ConcurrentHashMap
+    private final Collection<PlaybackListener> listeners = ConcurrentHashMap
         .newKeySet();
 
     private final Collection<VolumeControl> volumeControls = Collections
@@ -101,7 +101,7 @@ public abstract class Playback implements Runnable
      *
      * @param listener The {@code SoundPlaybackListener} to be added.
      */
-    public void addSoundPlaybackListener(SoundPlaybackListener listener)
+    public void addPlaybackListener(PlaybackListener listener)
     {
         this.listeners.add(listener);
     }
@@ -111,7 +111,7 @@ public abstract class Playback implements Runnable
      *
      * @param listener The {@code SoundPlaybackListener} to be removed.
      */
-    public void removeSoundPlaybackListener(SoundPlaybackListener listener)
+    public void removePlaybackListener(PlaybackListener listener)
     {
         this.listeners.remove(listener);
     }
@@ -195,7 +195,7 @@ public abstract class Playback implements Runnable
             this.cancelled = true;
             this.line.flush();
             SoundEvent event = new SoundEvent(this, null);
-            for (SoundPlaybackListener listener : this.listeners)
+            for (PlaybackListener listener : this.listeners)
             {
                 listener.cancelled(event);
             }
@@ -297,7 +297,7 @@ public abstract class Playback implements Runnable
             if (!this.cancelled)
             {
                 SoundEvent event = new SoundEvent(this, null);
-                for (SoundPlaybackListener listener : this.listeners)
+                for (PlaybackListener listener : this.listeners)
                 {
                     listener.finished(event);
                 }

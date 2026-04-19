@@ -92,12 +92,18 @@ public class SinglePlayTrack implements Track
         return sound.format();
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public boolean equals(Object obj)
     {
         return obj instanceof SinglePlayTrack spt && sound == spt.sound;
     }
 
+    /**
+     * @hidden
+     */
     @Override
     public int hashCode()
     {
