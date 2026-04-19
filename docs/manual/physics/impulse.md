@@ -9,6 +9,8 @@
 
 <!-- ## Tutorial: Dominosteine umwerfen -->
 
+<!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/ImpulseDemo.java -->
+
 Um die Grundlagen der Engine Pi Physics zu testen, bauen wir eine einfache
 Kettenreaktion: Ein Ball wird gegen eine Reihe von Dominos geworfen.
 
@@ -78,14 +80,15 @@ drückt sich in verschiedenen {{ javadoc('pi.physics.BodyType') }}s  aus:
   wie viel Kraft ich den Ball gegen die Wand werfe, sie wird niemals nachgeben.
   Diese `Actors` haben einen statischen Körper.
 
-Mit der Methode `#!java Actor.setBodyType(BodyType)` wird das grundlegende Verhalten
-eines `Actors` bestimmt. Zusätzlich wird mit `#!java Scene.setGracity(Vector)` eine
-Schwerkraft gesetzt, die auf den Ball und die Dominos wirkt.
-Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der statische Boden
-hält den Fall
+Mit der Methode `#!java Actor.setBodyType(BodyType)` wird das grundlegende
+Verhalten eines `Actors` bestimmt. Zusätzlich wird mit `#!java
+Scene.setGracity(Vector)` eine Schwerkraft gesetzt, die auf den Ball und die
+Dominos wirkt. Jetzt wirkt Schwerkraft auf die dynamischen Objekte und der
+statische Boden hält den Fall
 
-In einer `#!java setupPhysics()`-Methode werden die Body Types für die Actors gesetzt und
-die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten) aktiviert:
+In einer `#!java setupPhysics()`-Methode werden die Body Types für die Actors
+gesetzt und die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten)
+aktiviert:
 
 {{ code('docs/physics/ImpulseDemo.java', 77, 83) }}
 
@@ -96,8 +99,9 @@ eingerichtet.
 
 Dynamische und statische Körper sind die essentiellsten Body Types in der
 Engine, allerdings nicht die einzigen. Du findest einen Umriss aller Body Types
-in der Dokumentation von {{ javadoc('pi.physics.BodyType') }} und eine vergleichende Übersicht in der
-dedizierten Wikiseite Den Ball Werfen Mit einem Methodenaufruf fliegt der Ball
+in der Dokumentation von {{ javadoc('pi.physics.BodyType') }} und eine
+vergleichende Übersicht in der dedizierten Wikiseite Den Ball Werfen Mit einem
+Methodenaufruf fliegt der Ball
 
 Zeit, die Dominos umzuschmeißen! Die Methode
 `applyImpulse(Vector)` erlaubt, den Ball physikalisch korrekt zu
@@ -123,9 +127,9 @@ Impulses markiert:
 
 Wir wollen, dass das Rechteck stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Frame das Rechteck erneut an die Maus anzupassen.
-Dafür implementiert die Dominoes-Klasse das Interface `Listener` und
-berechnet frameweise anhand der aktuellen Mausposition die korrekte Länge und
-den korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
+Dafür implementiert die Dominoes-Klasse das Interface `Listener` und berechnet
+frameweise anhand der aktuellen Mausposition die korrekte Länge und den
+korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
 {{ code('docs/physics/ImpulseDemo.java', 97, 107) }}
 

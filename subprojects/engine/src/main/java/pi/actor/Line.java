@@ -53,6 +53,17 @@ import pi.util.Graphics2DUtil;
 public class Line extends Actor
 {
     /**
+     * Erstellt eine neue Linie mit zwei Endpunkten an den Koordinaten
+     * <b>(0|0)</b> und <b>(1|1)</b>.
+     *
+     * @since 0.47.0
+     */
+    public Line()
+    {
+        this(new Vector(0, 0), new Vector(1, 1));
+    }
+
+    /**
      * Erstellt eine neue Linie mit den angegebenen <b>Koordinaten</b> der zwei
      * Endpunkte.
      *
@@ -407,7 +418,7 @@ public class Line extends Actor
     {
         if (end1.offset() != end2.offset())
         {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Die beiden Endpunkt der Linien haben einen unterschiedlichen Versatz.");
         }
         return end1.offset();
@@ -461,7 +472,7 @@ public class Line extends Actor
         Stroke oldStroke = g.getStroke();
         Color oldColor = g.getColor();
 
-        float[] dash = (float[]) (null);
+        float[] dash = null;
 
         float scaledStrokeWidth = (float) (strokeWidth * pixelPerMeter);
 

@@ -78,5 +78,4 @@ public class PlaybackListenerDemo extends AudioDebugScene
         Controller.instantMode(false);
         Controller.start(new PlaybackListenerDemo());
     }
-
 }
