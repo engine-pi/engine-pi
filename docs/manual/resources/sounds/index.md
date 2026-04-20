@@ -5,17 +5,22 @@
 ![](./package-sounds.drawio)
 
 
-Die Engine unterscheidet zwischen zwei Klassen von Audioquellen. Sound und Music.
+Die Engine unterscheidet zwischen zwei Klassen:
+{{ javadoc('pi.resources.sound.Sound', 'Sound') }} (Klang) und
+{{ javadoc('pi.resources.sound.Music', 'Music') }} (Musik).
 
-Sound ist für Soundeffekte gedacht. Es können mehrere Sounds gleichzeitig
-abgespielt werden. Die Sounds werden nur einmal abgespielt und können nicht in
-einer Endlosschleife wiedergegeben werden.
+## `Sound` (Klang)
 
-Musik besteht aus mindestens einem oder beliebig vielen Sounds. Im Normalfall
-kann nur eine Musik gleichzeitig abgespielt werden. Wird eine neue Musik
-gestartet, so stoppt die bisher laufende Musik. Eine Music kann in einer
-Endlosschleife wiedergegeben werden. Es gibt spezialisierte Unterklassen von
-Music, zum Beispiel IntroMusic. Hier werden zwei Sounds zusammengefasst. Der
-erste Sound wird nur einmal abgespielt, der zweite in einer Endlosschleife.
+{{ javadoc('pi.resources.sound.Sound', 'Sound') }} ist für Soundeffekte gedacht.
+Es können mehrere Sounds gleichzeitig abgespielt werden. Die Sounds werden nur
+einmal abgespielt und können nicht in einer Endlosschleife wiedergegeben werden.
 
-{{ contribute() }}
+## `Music` (Musik)
+
+{{ javadoc('pi.resources.sound.Music', 'Music') }} besteht aus mindestens einem
+oder beliebig vielen Sounds. Im Normalfall kann nur eine Musik gleichzeitig
+abgespielt werden. Wird eine neue Musik gestartet, so stoppt die bisher
+laufende. Eine Musik kann in einer Endlosschleife wiedergegeben werden. Es gibt
+spezialisierte Unterklassen von Music, zum Beispiel IntroMusic. Hier werden zwei
+Sounds zusammengefasst. Der erste Sound wird nur einmal abgespielt, der zweite
+in einer Endlosschleife.

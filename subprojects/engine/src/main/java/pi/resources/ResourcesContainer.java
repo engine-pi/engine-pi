@@ -157,6 +157,7 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * Fügt die angegebene Ressource zu diesem Speicher hinzu.<br>
      * Das hinzugefügte Element kann später aus dem Speicher abgerufen werden,
      * indem {@code get(resourceName)} aufgerufen wird.
+     *
      * <p>
      * Verwenden Sie diese Methode, um eine Ressource während der Laufzeit über
      * diesen Speicher zugänglich zu machen.
