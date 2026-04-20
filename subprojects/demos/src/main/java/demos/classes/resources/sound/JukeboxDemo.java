@@ -133,7 +133,7 @@ public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
         MusicPlayback playback = Jukebox.getMusic();
         if (playback != null)
         {
-            playback.setVolume(Jukebox.getMusic().getVolume() - diff);
+            playback.volume(Jukebox.getMusic().volume() - diff);
         }
     }
 

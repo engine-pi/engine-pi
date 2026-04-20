@@ -39,8 +39,8 @@ import pi.debug.ToStringFormatter;
  * Eine {@link Music}, die mehrere {@link Sound}s nacheinander abspielt.
  *
  * <p>
- * Alle Klänge müssen dasselbe {@link AudioFormat} verwenden. Optional kann der
- * Track so konfiguriert werden, dass die enthaltenen Sounds nach dem letzten
+ * Alle Klänge müssen dasselbe {@link AudioFormat} verwenden. Optional kann die
+ * Musik so konfiguriert werden, dass die enthaltenen Sounds nach dem letzten
  * Eintrag wieder von vorne abgespielt werden.
  * </p>
  *
@@ -50,14 +50,14 @@ import pi.debug.ToStringFormatter;
  */
 public class MulitpleSoundsMusic implements Music
 {
-    /* MulitpleSoundsTrack(String[]|Sound[]|List<Sound> sounds) */
+    /* MulitpleSoundsMusic(String[]|Sound[]|List<Sound> sounds) */
 
     /**
      * Erstellt eine {@link Music} durch Angabe der Klänge als
      * <b>Dateipfade</b>, der standardmäßig <b>wiederholt</b> wird.
      *
-     * @param filePath Die <b>Klänge</b>, die in ihrer übergebenen Reihenfolge
-     *     abgespielt werden.
+     * @param filePath Die <b>Klänge</b>, die in ihrer
+     *     überMulitpleSoundsMusicgebenen Reihenfolge abgespielt werden.
      *
      * @since 0.47.0
      */
@@ -94,7 +94,7 @@ public class MulitpleSoundsMusic implements Music
         this(true, sounds);
     }
 
-    /* MulitpleSoundsTrack(boolean loop, String[]|Sound[]|List<Sound> sounds) */
+    /* MulitpleSoundsMusic(boolean loop, String[]|Sound[]|List<Sound> sounds) */
 
     /**
      * Erstellt eine {@link Music} durch Angabe der Klänge als
@@ -164,7 +164,7 @@ public class MulitpleSoundsMusic implements Music
         if (sounds.isEmpty())
         {
             throw new IllegalArgumentException(
-                    "Die Klasse MulitpleSoundsTrack benötigt mindestens einen Klang (Sound).");
+                    "Die Klasse MulitpleSoundsMusic benötigt mindestens einen Klang (Sound).");
         }
 
         final Sound first = Objects.requireNonNull(sounds.get(0));
@@ -261,16 +261,16 @@ public class MulitpleSoundsMusic implements Music
     /* loop */
 
     /**
-     * Ob dieser Track in einer <b>Endlosschleife</b> abgespielt wird.
+     * Ob diese Musik in einer <b>Endlosschleife</b> abgespielt wird.
      *
      * @since 0.47.0
      */
     private boolean loop;
 
     /**
-     * Gibt an, ob dieser Track in einer <b>Endlosschleife</b> abgespielt wird.
+     * Gibt an, ob diese Musik in einer <b>Endlosschleife</b> abgespielt wird.
      *
-     * @return {@code true}, wenn der Track nach dem letzten Klang wieder von
+     * @return {@code true}, wenn die Musik nach dem letzten Klang wieder von
      *     vorne beginnt.
      *
      * @since 0.47.0
@@ -283,9 +283,9 @@ public class MulitpleSoundsMusic implements Music
     }
 
     /**
-     * Setzt, ob dieser Track in einer <b>Endlosschleife</b> abgespielt wird.
+     * Setzt, ob diese Musik in einer <b>Endlosschleife</b> abgespielt wird.
      *
-     * @param loop Ob dieser Track in einer <b>Endlosschleife</b> abgespielt
+     * @param loop Ob diese Music in einer <b>Endlosschleife</b> abgespielt
      *     wird.
      *
      * @since 0.47.0
@@ -300,9 +300,9 @@ public class MulitpleSoundsMusic implements Music
     }
 
     /**
-     * Liefert das Audioformat aller in diesem Track enthaltenen Klänge.
+     * Liefert das Audioformat aller in diese Musik enthaltenen Klänge.
      *
-     * @return Das gemeinsame Audioformat des Tracks.
+     * @return Das gemeinsame Audioformat der Musik.
      *
      * @since 0.47.0
      */
@@ -324,21 +324,21 @@ public class MulitpleSoundsMusic implements Music
             return true;
         }
 
-        if (other instanceof MulitpleSoundsMusic otherTrack)
+        if (other instanceof MulitpleSoundsMusic otherMusic)
         {
-            if (loop != otherTrack.loop())
+            if (loop != otherMusic.loop())
             {
                 return false;
             }
 
-            if (sounds.size() != otherTrack.sounds.size())
+            if (sounds.size() != otherMusic.sounds.size())
             {
                 return false;
             }
 
             for (int i = 0; i < sounds.size(); i++)
             {
-                if (sounds.get(i) != otherTrack.sounds.get(i))
+                if (sounds.get(i) != otherMusic.sounds.get(i))
                 {
                     return false;
                 }

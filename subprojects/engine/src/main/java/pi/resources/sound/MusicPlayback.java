@@ -28,6 +28,7 @@ package pi.resources.sound;
 import javax.sound.sampled.LineUnavailableException;
 
 import pi.annotations.Getter;
+import pi.annotations.Setter;
 
 /**
  * Ermöglicht die Steuerung der Musikwiedergabe.
@@ -37,13 +38,12 @@ import pi.annotations.Getter;
  */
 public class MusicPlayback extends Playback
 {
-
     private final VolumeControl musicVolume;
 
-    public MusicPlayback(Music track) throws LineUnavailableException
+    public MusicPlayback(Music music) throws LineUnavailableException
     {
-        super(track.format());
-        this.track = track;
+        super(music.format());
+        this.music = music;
         musicVolume = createVolumeControl();
         musicVolume.set(1);
     }
@@ -53,7 +53,7 @@ public class MusicPlayback extends Playback
     {
         try
         {
-            for (Sound sound : track)
+            for (Sound sound : music)
             {
                 if (play(sound))
                 {
@@ -67,21 +67,22 @@ public class MusicPlayback extends Playback
         }
         finally
         {
-            this.finish();
+            finish();
         }
     }
 
-    private final Music track;
+    private final Music music;
 
     @Getter
-    public Music track()
+    public Music music()
     {
-        return track;
+        return music;
     }
 
-    void setMusicVolume(float volume)
+    @Setter
+    void musicVolume(double volume)
     {
-        musicVolume.set(volume);
+        musicVolume.set((float) volume);
     }
 
     /**
@@ -91,7 +92,7 @@ public class MusicPlayback extends Playback
     public String toString()
     {
         var formatter = super.toStringFormatter(this);
-        formatter.prepend("track", track);
+        formatter.prepend("music", music);
         return formatter.format();
     }
 

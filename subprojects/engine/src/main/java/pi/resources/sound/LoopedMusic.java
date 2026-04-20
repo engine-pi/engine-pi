@@ -29,22 +29,25 @@ import java.util.Iterator;
 import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
+import pi.debug.ToStringFormatter;
+
 /**
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public class LoopedMusic implements Music, Iterator<Sound>
 {
-    private final Sound track;
+    private final Sound sound;
 
     /**
-     * Initializes a new {@code LoopedTrack} for the specified sound.
+     * Initializes a new {@link LoopedMusic} for the specified sound.
      *
-     * @param sound The sound to be played by this track.
+     * @param sound The sound to be played by this music.
      */
     public LoopedMusic(Sound sound)
     {
-        this.track = Objects.requireNonNull(sound);
+        this.sound = Objects.requireNonNull(sound);
     }
 
     @Override
@@ -56,7 +59,7 @@ public class LoopedMusic implements Music, Iterator<Sound>
     @Override
     public AudioFormat format()
     {
-        return this.track.format();
+        return this.sound.format();
     }
 
     // implement the iterator here to avoid allocating new objects
@@ -70,17 +73,17 @@ public class LoopedMusic implements Music, Iterator<Sound>
     @Override
     public Sound next()
     {
-        return this.track;
+        return sound;
     }
 
     /**
      * @hidden
      */
     @Override
-    public boolean equals(Object anObject)
+    public boolean equals(Object other)
     {
-        return this == anObject || anObject instanceof LoopedMusic lt
-                && lt.track.equals(this.track);
+        return this == other || other instanceof LoopedMusic music
+                && music.sound.equals(sound);
     }
 
     /**
@@ -89,7 +92,7 @@ public class LoopedMusic implements Music, Iterator<Sound>
     @Override
     public int hashCode()
     {
-        return this.track.hashCode();
+        return sound.hashCode();
     }
 
     /**
@@ -98,6 +101,8 @@ public class LoopedMusic implements Music, Iterator<Sound>
     @Override
     public String toString()
     {
-        return "looped track: " + this.track;
+        var formatter = new ToStringFormatter(this);
+        formatter.append("sound", sound);
+        return formatter.format();
     }
 }

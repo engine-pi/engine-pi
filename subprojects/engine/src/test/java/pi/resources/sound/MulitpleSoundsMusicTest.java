@@ -94,7 +94,7 @@ class MulitpleSoundsMusicTest
                 () -> new MulitpleSoundsMusic(false, List.of()));
 
             assertEquals(
-                "Die Klasse MulitpleSoundsTrack benötigt mindestens einen Klang (Sound).",
+                "Die Klasse MulitpleSoundsMusic benötigt mindestens einen Klang (Sound).",
                 exception.getMessage());
         }
 

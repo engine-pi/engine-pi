@@ -30,13 +30,16 @@ import java.util.NoSuchElementException;
 
 import javax.sound.sampled.AudioFormat;
 
+import pi.Controller;
 import pi.annotations.Getter;
+import pi.debug.ToStringFormatter;
 
 /**
- * A {@code Track} that plays a sound once and then stops.
+ * A {@link Music} that plays a sound once and then stops.
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public class SinglePlayMusic implements Music
 {
@@ -63,19 +66,21 @@ public class SinglePlayMusic implements Music
             return SinglePlayMusic.this.sound;
         }
     }
-    /**
-     * Initializes a new {@code SinglePlayTrack} for the specified sound.
-     *
-     * @param soundName The name of the sound to be played by this track.
-     */
-    // public SinglePlayTrack(String soundName) {
-    // this();
-    // }
 
     /**
-     * Initializes a new {@code SinglePlayTrack} for the specified sound.
+     * Initializes a new {@link SinglePlayMusic} for the specified sound.
      *
-     * @param sound The sound to be played by this track.
+     * @param filePath The name of the sound to be played by this music.
+     */
+    public SinglePlayMusic(String filePath)
+    {
+        this(Controller.sounds.get(filePath));
+    }
+
+    /**
+     * Initializes a new {@link SinglePlayMusic} for the specified sound.
+     *
+     * @param sound The sound to be played by this music.
      */
     public SinglePlayMusic(Sound sound)
     {
@@ -99,9 +104,9 @@ public class SinglePlayMusic implements Music
      * @hidden
      */
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(Object other)
     {
-        return obj instanceof SinglePlayMusic spt && sound == spt.sound;
+        return other instanceof SinglePlayMusic music && sound == music.sound;
     }
 
     /**
@@ -110,7 +115,7 @@ public class SinglePlayMusic implements Music
     @Override
     public int hashCode()
     {
-        // add a constant to avoid collisions with LoopedTrack
+        // add a constant to avoid collisions with LoopedMusic
         return sound.hashCode() + 0xdb9857d0;
     }
 
@@ -120,6 +125,8 @@ public class SinglePlayMusic implements Music
     @Override
     public String toString()
     {
-        return "track: " + sound.name() + " (not looped)";
+        var formatter = new ToStringFormatter(this);
+        formatter.append("sound", sound);
+        return formatter.format();
     }
 }

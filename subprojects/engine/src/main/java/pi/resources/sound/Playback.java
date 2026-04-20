@@ -38,6 +38,8 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+import pi.annotations.Getter;
+import pi.annotations.Setter;
 import pi.debug.ToStringFormatter;
 
 /**
@@ -76,14 +78,14 @@ public abstract class Playback implements Runnable
         // acquire resources in the constructor so that they can be used before
         // the
         // task is started
-        this.line = AudioSystem.getSourceDataLine(format);
-        this.line.open();
-        this.line.start();
-        this.gainControl = (FloatControl) this.line
+        line = AudioSystem.getSourceDataLine(format);
+        line.open();
+        line.start();
+        gainControl = (FloatControl) line
             .getControl(FloatControl.Type.MASTER_GAIN);
-        this.muteControl = (BooleanControl) this.line
+        muteControl = (BooleanControl) line
             .getControl(BooleanControl.Type.MUTE);
-        this.masterVolume = this.createVolumeControl();
+        masterVolume = createVolumeControl();
     }
 
     /**
@@ -93,12 +95,12 @@ public abstract class Playback implements Runnable
      */
     public synchronized void start()
     {
-        if (this.started)
+        if (started)
         {
             throw new IllegalStateException("already started");
         }
-        this.play();
-        this.started = true;
+        play();
+        started = true;
     }
 
     /**
@@ -108,7 +110,7 @@ public abstract class Playback implements Runnable
      */
     public void addPlaybackListener(PlaybackListener listener)
     {
-        this.listeners.add(listener);
+        listeners.add(listener);
     }
 
     /**
@@ -118,7 +120,7 @@ public abstract class Playback implements Runnable
      */
     public void removePlaybackListener(PlaybackListener listener)
     {
-        this.listeners.remove(listener);
+        listeners.remove(listener);
     }
 
     /**
@@ -126,15 +128,16 @@ public abstract class Playback implements Runnable
      *
      * @param paused Whether to pause or resume this playback
      */
-    public void setPaused(boolean paused)
+    @Setter
+    public void paused(boolean paused)
     {
         if (paused)
         {
-            this.pausePlayback();
+            pause();
         }
         else
         {
-            this.resumePlayback();
+            resume();
         }
     }
 
@@ -142,11 +145,11 @@ public abstract class Playback implements Runnable
      * Pauses this playback. If this playback is already paused, this call has
      * no effect.
      */
-    public void pausePlayback()
+    public void pause()
     {
-        if (this.line.isOpen())
+        if (line.isOpen())
         {
-            this.line.stop();
+            line.stop();
         }
     }
 
@@ -154,11 +157,11 @@ public abstract class Playback implements Runnable
      * Resumes this playback. If this playback is already playing, this call has
      * no effect.
      */
-    public void resumePlayback()
+    public void resume()
     {
-        if (this.line.isOpen())
+        if (line.isOpen())
         {
-            this.line.start();
+            line.start();
         }
     }
 
@@ -169,7 +172,7 @@ public abstract class Playback implements Runnable
      */
     public boolean isPaused()
     {
-        return !this.line.isActive();
+        return !line.isActive();
     }
 
     /**
@@ -181,7 +184,7 @@ public abstract class Playback implements Runnable
      */
     public boolean isPlaying()
     {
-        return this.line.isOpen();
+        return line.isOpen();
     }
 
     /**
@@ -190,17 +193,17 @@ public abstract class Playback implements Runnable
      */
     public synchronized void cancel()
     {
-        if (!this.started)
+        if (!started)
         {
             throw new IllegalStateException("not started");
         }
-        if (!this.cancelled && this.line.isOpen())
+        if (!cancelled && line.isOpen())
         {
-            this.line.stop();
-            this.cancelled = true;
-            this.line.flush();
+            line.stop();
+            cancelled = true;
+            line.flush();
             SoundEvent event = new SoundEvent(this, null);
-            for (PlaybackListener listener : this.listeners)
+            for (PlaybackListener listener : listeners)
             {
                 listener.cancelled(event);
             }
@@ -213,13 +216,14 @@ public abstract class Playback implements Runnable
      *
      * @return The current volume.
      */
-    public float getMasterVolume()
+    @Getter
+    public double masterVolume()
     {
-        if (this.muteControl.getValue())
+        if (muteControl.getValue())
         {
-            return 0f;
+            return 0;
         }
-        return (float) Math.pow(10.0, this.gainControl.getValue() / 20.0);
+        return Math.pow(10.0, gainControl.getValue() / 20.0);
     }
 
     /**
@@ -229,9 +233,10 @@ public abstract class Playback implements Runnable
      *
      * @return The settable volume.
      */
-    public float getVolume()
+    @Getter
+    public double volume()
     {
-        return this.masterVolume.get();
+        return masterVolume.get();
     }
 
     /**
@@ -239,21 +244,22 @@ public abstract class Playback implements Runnable
      *
      * @param volume The new volume.
      */
-    public void setVolume(float volume)
+    @Setter
+    public void volume(double volume)
     {
-        this.masterVolume.set(volume);
+        masterVolume.set((float) volume);
     }
 
     public VolumeControl createVolumeControl()
     {
         VolumeControl control = new VolumeControl();
-        this.volumeControls.add(control);
+        volumeControls.add(control);
         return control;
     }
 
     public Collection<VolumeControl> getVolumeControls()
     {
-        return this.volumeControls;
+        return volumeControls;
     }
 
     void play()
@@ -270,23 +276,23 @@ public abstract class Playback implements Runnable
      */
     boolean play(Sound sound) throws LineUnavailableException
     {
-        this.line.open();
-        this.line.start();
+        line.open();
+        line.start();
         byte[] data = sound.streamData();
-        int len = this.line.getFormat().getFrameSize();
+        int len = line.getFormat().getFrameSize();
         // math hacks here: we're getting just over half the buffer size, but it
         // needs to be an integral
         // number of sample frames
-        len = (this.line.getBufferSize() / len / 2 + 1) * len;
-        for (int i = 0; i < data.length; i += this.line
+        len = (line.getBufferSize() / len / 2 + 1) * len;
+        for (int i = 0; i < data.length; i += line
             .write(data, i, Math.min(len, data.length - i)))
         {
-            if (this.cancelled || !line.isOpen())
+            if (cancelled || !line.isOpen())
             {
                 return true;
             }
         }
-        return this.cancelled;
+        return cancelled;
     }
 
     /**
@@ -295,14 +301,14 @@ public abstract class Playback implements Runnable
      */
     void finish()
     {
-        this.line.drain();
+        line.drain();
         synchronized (this)
         {
             cancel();
-            if (!this.cancelled)
+            if (!cancelled)
             {
                 SoundEvent event = new SoundEvent(this, null);
-                for (PlaybackListener listener : this.listeners)
+                for (PlaybackListener listener : listeners)
                 {
                     listener.finished(event);
                 }
@@ -312,22 +318,22 @@ public abstract class Playback implements Runnable
 
     void updateVolume()
     {
-        synchronized (this.volumeControls)
+        synchronized (volumeControls)
         {
-            float volume = Float.intBitsToFloat(this.miscVolume.get());
-            for (VolumeControl control : this.volumeControls)
+            float volume = Float.intBitsToFloat(miscVolume.get());
+            for (VolumeControl control : volumeControls)
             {
                 volume *= control.get();
             }
             float dbGain = (float) (20.0 * Math.log10(volume));
-            if (dbGain < this.gainControl.getMinimum())
+            if (dbGain < gainControl.getMinimum())
             {
-                this.muteControl.setValue(true);
+                muteControl.setValue(true);
             }
             else
             {
-                this.gainControl.setValue(dbGain);
-                this.muteControl.setValue(false);
+                gainControl.setValue(dbGain);
+                muteControl.setValue(false);
             }
         }
     }
@@ -371,7 +377,7 @@ public abstract class Playback implements Runnable
          */
         public float get()
         {
-            return this.value;
+            return value;
         }
 
         /**

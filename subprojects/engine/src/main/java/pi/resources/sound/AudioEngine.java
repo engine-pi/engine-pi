@@ -263,7 +263,7 @@ public final class AudioEngine
 
     /* music */
 
-    /* playMusic(String|Sound|Track music) */
+    /* playMusic(String|Sound|Music music) */
 
     /**
      * Spielt die als Zeichenkette angegebene Audio-Datei in einer
@@ -307,45 +307,45 @@ public final class AudioEngine
      * Setzt die aktuell abgespielte Audiospur auf die angegebene Audiospur. Hat
      * keine Wirkung, wenn die angegebene Spur bereits läuft.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
+     * @param music Die Audiospur, die gespielt werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Music track)
+    public MusicPlayback playMusic(Music music)
     {
-        return playMusic(track, null, restartDefault, stopDefault);
+        return playMusic(music, null, restartDefault, stopDefault);
     }
 
-    /* playMusic(Track music, restart) */
+    /* playMusic(Music music, restart) */
 
     /**
      * Setzt die aktuell abgespielte <b>Audiospur</b> auf die angegebene
      * Audiospur.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     * @param music Die Audiospur, die gespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe der eigenen Musik
      *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
      *     werden soll.
      *
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Music track, boolean restart)
+    public MusicPlayback playMusic(Music music, boolean restart)
     {
-        return playMusic(track, null, restart, stopDefault);
+        return playMusic(music, null, restart, stopDefault);
     }
 
-    /* playMusic(String|Sound|Track music, restart, top) */
+    /* playMusic(String|Sound|Music music, restart, top) */
 
     /**
-     * Setzt die aktuell abgespielte Audiospur auf einen {@code LoopedTrack} mit
-     * dem angegebenen Musik-{@code Sound}. Hat keine Wirkung, wenn die
+     * Setzt die aktuell abgespielte Audiospur auf einen {@link LoopedMusic} mit
+     * dem angegebenen Musik-{@link Sound}. Hat keine Wirkung, wenn die
      * angegebene Spur bereits läuft.
      *
      * @param music Die als Zeichenkette angegebene Audio-Datei, die abgespielt
      *     werden soll
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     * @param restart Ob die laufende Musikwiedergabe der eigenen Musik
      *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
      *     werden soll.
      * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
@@ -359,12 +359,12 @@ public final class AudioEngine
     }
 
     /**
-     * Setzt die aktuell abgespielte Spur auf einen {@code LoopedTrack} mit dem
-     * angegebenen Musik-{@code Sound}. Hat keine Wirkung, wenn die angegebene
+     * Setzt die aktuell abgespielte Spur auf einen {@link LoopedMusic} mit dem
+     * angegebenen Musik-{@link Sound}. Hat keine Wirkung, wenn die angegebene
      * Spur bereits läuft.
      *
      * @param sound Der Klang, der abgespielt werden soll.
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     * @param restart Ob die laufende Musikwiedergabe der eigenen Musik
      *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
      *     werden soll.
      * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
@@ -380,8 +380,8 @@ public final class AudioEngine
     /**
      * <b>Spielt</b> die angegebene <b>Audiospur</b> ab.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     * @param music Die Audiospur, die gespielt werden soll.
+     * @param restart Ob die laufende Musikwiedergabe der eigenen Musik
      *     (bestimmt mit {@link Object#equals(Object)}) <b>neu gestartet</b>
      *     werden soll.
      * @param stop Ob die laufende Musikwiedergabe <b>gestoppt</b> werden soll.
@@ -389,15 +389,15 @@ public final class AudioEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playMusic(Music track, boolean restart, boolean stop)
+    public MusicPlayback playMusic(Music music, boolean restart, boolean stop)
     {
-        return playMusic(track, null, restart, stop);
+        return playMusic(music, null, restart, stop);
     }
 
     /**
      * Die aktuelle Musikwiedergabe.
      */
-    private @Nullable MusicPlayback music;
+    private @Nullable MusicPlayback currentMusic;
 
     /**
      * Liefert die aktuell relevante <b>„Hauptmusik“</b>. In der Regel ist das
@@ -410,7 +410,7 @@ public final class AudioEngine
     @Getter
     public synchronized @Nullable MusicPlayback music()
     {
-        return music;
+        return currentMusic;
     }
 
     private final Collection<MusicPlayback> allMusic = ConcurrentHashMap
@@ -420,10 +420,10 @@ public final class AudioEngine
      * Spielt die angegebene <b>Audiospur</b> ab und erlaubt optional eine
      * Konfiguration vor dem Start.
      *
-     * @param track Die Audiospur, die gespielt werden soll.
+     * @param music Die Audiospur, die gespielt werden soll.
      * @param config Funktion zur Konfiguration der Wiedergabe vor dem Start;
      *     kann {@code null} sein.
-     * @param restart Ob die laufende Musikwiedergabe des eigenen Tracks
+     * @param restart Ob die laufende Musikwiedergabe der eigenen Musik
      *     (bestimmt mit {@link Object#equals(Object)}) neu gestartet werden
      *     soll.
      * @param stop Ob die laufende Musikwiedergabe gestoppt werden soll.
@@ -431,18 +431,18 @@ public final class AudioEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public synchronized @NonNull MusicPlayback playMusic(Music track,
+    public synchronized @NonNull MusicPlayback playMusic(Music music,
             Consumer<? super MusicPlayback> config, boolean restart,
             boolean stop)
     {
-        if (!restart && music != null && music.isPlaying()
-                && music.track().equals(track))
+        if (!restart && currentMusic != null && currentMusic.isPlaying()
+                && currentMusic.music().equals(music))
         {
-            return music;
+            return currentMusic;
         }
         try
         {
-            MusicPlayback playback = new MusicPlayback(track);
+            MusicPlayback playback = new MusicPlayback(music);
             if (config != null)
             {
                 config.accept(playback);
@@ -453,7 +453,7 @@ public final class AudioEngine
             }
             allMusic.add(playback);
             playback.start();
-            music = playback;
+            currentMusic = playback;
             return playback;
         }
         catch (LineUnavailableException | IllegalArgumentException e)
@@ -472,7 +472,7 @@ public final class AudioEngine
      * @return Ermöglicht die Steuerung der Musikwiedergabe.
      */
     @API
-    public MusicPlayback playIntroTrack(String intro, String loop)
+    public MusicPlayback playIntroMusic(String intro, String loop)
     {
         return playMusic(new IntroMusic(sound(intro), sound(loop)));
     }
@@ -495,9 +495,9 @@ public final class AudioEngine
     @API
     public synchronized void stopMusic()
     {
-        for (MusicPlayback track : allMusic)
+        for (MusicPlayback music : allMusic)
         {
-            track.cancel();
+            music.cancel();
         }
     }
 }

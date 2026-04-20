@@ -48,7 +48,7 @@ public class Sound
 
     public static void playTitle()
     {
-        jukebox.playIntroTrack("sounds/Title_intro.mp3",
+        jukebox.playIntroMusic("sounds/Title_intro.mp3",
             "sounds/Title_loop.mp3");
     }
 

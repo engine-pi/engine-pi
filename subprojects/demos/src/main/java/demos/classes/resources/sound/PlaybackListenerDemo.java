@@ -66,10 +66,10 @@ public class PlaybackListenerDemo extends AudioDebugScene
     {
         switch (event.getKeyCode())
         {
-        case KeyEvent.VK_1 -> playback.pausePlayback();
+        case KeyEvent.VK_1 -> playback.pause();
         case KeyEvent.VK_2 -> playback.cancel();
         case KeyEvent.VK_3 -> playback.start();
-        case KeyEvent.VK_4 -> playback.resumePlayback();
+        case KeyEvent.VK_4 -> playback.resume();
         }
     }
 

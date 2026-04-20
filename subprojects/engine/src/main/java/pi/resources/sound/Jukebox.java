@@ -75,7 +75,7 @@ public final class Jukebox
 
     public static MusicPlayback playIntroTrack(String intro, String loop)
     {
-        return engine().playIntroTrack(intro, loop);
+        return engine().playIntroMusic(intro, loop);
     }
 
     public static MusicPlayback getMusic()

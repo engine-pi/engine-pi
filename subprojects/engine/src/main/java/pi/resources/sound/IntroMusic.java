@@ -30,6 +30,7 @@ import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
 import pi.annotations.Getter;
+import pi.debug.ToStringFormatter;
 
 /**
  * Eine Audiospur, die einmalig eine Eingangsmusik und die darauf folgende Musik
@@ -45,7 +46,7 @@ public class IntroMusic implements Music
     private final Sound loop;
 
     /**
-     * Initializes a new {@code IntroTrack} for the specified sound.
+     * Initializes a new {@link IntroMusic} for the specified sound.
      *
      * @param intro Die einmalig abgespielte Eingangsmusik.
      * @param loop Die auf die Eingangsmusik folgende in einer Endlosschleife
@@ -115,15 +116,15 @@ public class IntroMusic implements Music
      * @hidden
      */
     @Override
-    public boolean equals(Object anObject)
+    public boolean equals(Object other)
     {
-        if (this == anObject)
+        if (this == other)
         {
             return true;
         }
-        if (anObject instanceof IntroMusic it)
+        if (other instanceof IntroMusic music)
         {
-            return intro == it.intro && loop == it.loop;
+            return intro == music.intro && loop == music.loop;
         }
         return false;
     }
@@ -143,6 +144,9 @@ public class IntroMusic implements Music
     @Override
     public String toString()
     {
-        return "looped track: " + loop + ", with intro: " + intro;
+        var formatter = new ToStringFormatter(this);
+        formatter.append("intro", intro);
+        formatter.append("loop", loop);
+        return formatter.format();
     }
 }
