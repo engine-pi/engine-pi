@@ -289,12 +289,21 @@ public abstract class ResourcesContainer<T> implements Container<T>
      *
      * @return Die Ressource mit dem angegebenen Namen oder {@code null}, wenn
      *     sie nicht gefunden wird.
+     *
+     * @throws ResourceLoadException wenn die Ressource nicht aufgerufen werden
+     *     konnte.
      */
     public T get(String name)
     {
         return get(identifier(name), false);
     }
 
+    /**
+     *
+     *
+     * @throws ResourceLoadException wenn die Ressource nicht aufgerufen werden
+     *     konnte.
+     */
     public T get(URL name)
     {
         return get(name, false);
@@ -313,6 +322,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      *     on-demand if it's not present on this container.
      *
      * @return T The resource with the specified name.
+     *
+     *
+     * @throws ResourceLoadException wenn die Ressource nicht aufgerufen werden
+     *     konnte.
      */
     public T get(String name, Supplier<? extends T> loadCallback)
     {
@@ -346,7 +359,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * @param forceLoad If set to true, cached resource (if existing) will be
      *     discarded and the resource will be freshly loaded.
      *
-     * @return The game resource or null if not found.
+     * @return The game resource.
+     *
+     * @throws ResourceLoadException wenn die Ressource nicht aufgerufen werden
+     *     konnte.
      */
     public T get(String name, boolean forceLoad)
     {
@@ -380,6 +396,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * @param names Die Namen bzw. die Dateipfade der gewünschten Ressourcen.
      *
      * @return Die gewünschten Ressourcen als Feld/Array.
+     *
+     * @throws ResourceLoadException wenn eine Ressource nicht aufgerufen werden
+     *     konnte.
      */
     @SuppressWarnings("unchecked")
     public T[] getMultiple(String... names)
@@ -400,6 +419,10 @@ public abstract class ResourcesContainer<T> implements Container<T>
      * @return Die gewünschten Ressourcen als Liste.
      *
      * @since 0.47.0
+     *
+     *
+     * @throws ResourceLoadException wenn eine Ressource nicht aufgerufen werden
+     *     konnte.
      */
     public List<T> getMultipleAsList(String... names)
     {
@@ -420,6 +443,9 @@ public abstract class ResourcesContainer<T> implements Container<T>
      *
      * @return A {@code Future} object that can be used to retrieve the resource
      *     once it is finished loading
+     *
+     * @throws ResourceLoadException wenn eine Ressource nicht aufgerufen werden
+     *     konnte.
      */
     public Future<T> getAsync(URL location)
     {

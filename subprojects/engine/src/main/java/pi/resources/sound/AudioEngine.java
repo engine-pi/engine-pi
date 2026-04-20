@@ -72,7 +72,7 @@ import pi.annotations.Internal;
  * @author Steffen Wilke
  * @author Matthias Wilke
  */
-@java.lang.SuppressWarnings("squid:S6548")
+@SuppressWarnings("squid:S6548")
 public final class AudioEngine
 {
     public final ExecutorService executor = Executors

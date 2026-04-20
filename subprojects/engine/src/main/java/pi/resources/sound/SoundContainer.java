@@ -37,6 +37,7 @@ import pi.resources.ResourcesContainer;
  *
  * @author Steffen Wilke
  * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public final class SoundContainer extends ResourcesContainer<Sound>
 {
@@ -60,5 +61,23 @@ public final class SoundContainer extends ResourcesContainer<Sound>
             }
             return new Sound(is, filePath);
         }
+    }
+
+    /**
+     * Ruft den {@link Sound} mit dem angegebenen <b>Dateipfad</b> auf.
+     *
+     * @param filePath Der <b>Dateipfad</b>, unter dem der {@link Sound}
+     *     verwaltet wird.
+     *
+     * @return Der {@link Sound}.
+     *
+     * @throws ResourceLoadException wenn die Audio-Datei nicht aufgerufen
+     *     werden konnte.
+     */
+    @Override
+    @SuppressWarnings("squid:S1185")
+    public Sound get(String filePath)
+    {
+        return super.get(filePath);
     }
 }
