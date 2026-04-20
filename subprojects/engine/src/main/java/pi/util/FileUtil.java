@@ -27,6 +27,7 @@ package pi.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -40,6 +41,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import pi.resources.ResourceLoader;
+
+class FileUtilException extends RuntimeException
+{
+    FileUtilException(Throwable throwable)
+    {
+        super(throwable);
+    }
+}
 
 /**
  * Eine Sammlung von statischen Hilfsmethoden für <b>Datei</b>- und
@@ -113,7 +122,7 @@ public final class FileUtil
         }
         catch (IOException e)
         {
-            throw new RuntimeException(e);
+            throw new FileUtilException(e);
         }
     }
 
@@ -621,7 +630,7 @@ public final class FileUtil
         }
         catch (IOException e)
         {
-            throw new RuntimeException(e);
+            throw new FileUtilException(e);
         }
     }
 
@@ -672,15 +681,12 @@ public final class FileUtil
      */
     public static String getVideosDir()
     {
-        String english = getHomeDir() + FILE_SEPARATOR + "Videos";
-
-        if (exists(english))
+        String dir = getHomeDir() + FILE_SEPARATOR + "Videos";
+        if (!exists(dir))
         {
-            return english;
+            createDir(dir);
         }
-
-        createDir(english);
-        return english;
+        return dir;
     }
 
     /**
@@ -705,8 +711,38 @@ public final class FileUtil
             }
             catch (Exception e)
             {
-                throw new RuntimeException(e);
+                throw new FileUtilException(e);
             }
+        }
+    }
+
+    /**
+     * Wandelt einen Dateipfad in eine {@link URL} um.
+     *
+     * <p>
+     * Der übergebene Pfad wird zunächst als {@link java.nio.file.Path}
+     * interpretiert, anschließend in eine URI und danach in eine URL
+     * konvertiert.
+     * </p>
+     *
+     * @param filePath der zu konvertierende Dateipfad
+     *
+     * @return die aus dem Dateipfad erzeugte URL
+     *
+     * @throws FileUtilException wenn bei der URL-Erzeugung eine
+     *     {@link MalformedURLException} auftritt
+     *
+     * @since 0.48.0
+     */
+    public static URL toURL(String filePath)
+    {
+        try
+        {
+            return Path.of(filePath).toUri().toURL();
+        }
+        catch (MalformedURLException e)
+        {
+            throw new FileUtilException(e);
         }
     }
 }

@@ -28,7 +28,6 @@ package pi.resources.sound;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Path;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -43,6 +42,14 @@ import pi.util.FileUtil;
 import pi.util.StreamUtilities;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/SoundDemo.java
+
+class SoundException extends RuntimeException
+{
+    SoundException(Throwable throwable)
+    {
+        super(throwable);
+    }
+}
 
 /**
  * Ein <b>Klang</b> stellt eine Audio-Datei dar.
@@ -68,28 +75,32 @@ public final class Sound
      *
      * @param is Der Eingabestrom, aus dem der Sound geladen wird.
      * @param filePath Der Name dieser Sounddatei.
-     *
-     * @throws IOException Falls beim Laden ein Fehler auftritt.
-     * @throws UnsupportedAudioFileException Falls das Audioformat nicht
-     *     unterstützt wird.
      */
     public Sound(InputStream is, URL filePath)
-            throws IOException, UnsupportedAudioFileException
     {
         this.filePath = filePath;
         this.name = FileUtil.getFileName(filePath);
         data = StreamUtilities.getBytes(is);
-        AudioInputStream in = AudioSystem.getAudioInputStream(is);
-        if (in != null)
+
+        try
         {
-            final AudioFormat baseFormat = in.getFormat();
-            final AudioFormat decodedFormat = outFormat(baseFormat);
-            // Liefert einen AudioInputStream, der durch das zugrunde liegende
-            // VorbisSPI dekodiert wird.
-            in = AudioSystem.getAudioInputStream(decodedFormat, in);
-            stream = in;
-            streamData = StreamUtilities.getBytes(stream);
-            format = stream.getFormat();
+            AudioInputStream in = AudioSystem.getAudioInputStream(is);
+            if (in != null)
+            {
+                final AudioFormat baseFormat = in.getFormat();
+                final AudioFormat decodedFormat = outFormat(baseFormat);
+                // Liefert einen AudioInputStream, der durch das zugrunde
+                // liegende
+                // VorbisSPI dekodiert wird.
+                in = AudioSystem.getAudioInputStream(decodedFormat, in);
+                stream = in;
+                streamData = StreamUtilities.getBytes(stream);
+                format = stream.getFormat();
+            }
+        }
+        catch (UnsupportedAudioFileException | IOException e)
+        {
+            throw new SoundException(e);
         }
     }
 
@@ -98,16 +109,11 @@ public final class Sound
      *
      * @param filePath Der Dateipfad der Audiodatei.
      *
-     * @throws IOException Falls beim Laden ein Fehler auftritt.
-     * @throws UnsupportedAudioFileException Falls das Audioformat nicht
-     *     unterstützt wird.
-     *
      * @since 0.48.0
      */
     public Sound(String filePath)
-            throws IOException, UnsupportedAudioFileException
     {
-        this(ResourceLoader.get(filePath), Path.of(filePath).toUri().toURL());
+        this(ResourceLoader.get(filePath), FileUtil.toURL(filePath));
     }
 
     /* filePath */
