@@ -31,6 +31,9 @@ import pi.annotations.Getter;
 
 /**
  * Ermöglicht die Steuerung der Musikwiedergabe.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class MusicPlayback extends Playback
 {

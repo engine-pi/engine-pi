@@ -29,6 +29,10 @@ import java.util.Iterator;
 import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 
+/**
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ */
 public class LoopedMusic implements Music, Iterator<Sound>
 {
     private final Sound track;

@@ -20,6 +20,7 @@ package demos.classes.resources.sound;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -60,8 +61,9 @@ public class JukeboxDemo extends AudioDebugScene implements KeyStrokeListener
     public Sound loadSound(String fileName)
             throws IOException, UnsupportedAudioFileException
     {
-        return new Sound(ResourceLoader.loadAsStream("sounds/" + fileName),
-                fileName);
+        String filePath = "sounds/" + fileName;
+        return new Sound(ResourceLoader.loadAsStream(filePath),
+                Path.of(filePath).toUri().toURL());
     }
 
     public Music loadSinglePlayTrack(String fileName)

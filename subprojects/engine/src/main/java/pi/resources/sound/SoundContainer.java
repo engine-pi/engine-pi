@@ -25,18 +25,12 @@
  */
 package pi.resources.sound;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import pi.resources.Codec;
 import pi.resources.ResourceLoadException;
 import pi.resources.ResourceLoader;
 import pi.resources.ResourcesContainer;
-import pi.util.FileUtil;
 
 /**
  * Ein Speicher für <b>Klänge</b> des Datentyps {@link Sound}.
@@ -47,52 +41,24 @@ import pi.util.FileUtil;
 public final class SoundContainer extends ResourcesContainer<Sound>
 {
     /**
-     * Loads a sound from the specified XML resource.
-     *
-     * @param resource The XML resource that contains the sound as Base64
-     *     string.
-     *
-     * @return The {@code Sound} instance loaded from the specified resource.
-     *
-     * @see Codec#decode(String)
-     */
-    public Sound load(final SoundResource resource)
-    {
-        byte[] data = Codec.decode(resource.data());
-        ByteArrayInputStream input = new ByteArrayInputStream(data);
-        Sound sound;
-        try
-        {
-            sound = new Sound(input, resource.name());
-            this.add(resource.name(), sound);
-            return sound;
-        }
-        catch (IOException | UnsupportedAudioFileException e)
-        {
-            throw new ResourceLoadException("Die Audio-Datei " + resource.name()
-                    + " konnte nicht geladen werden.");
-        }
-    }
-
-    /**
      * Loads the sound from the specified path and returns it.
      *
-     * @param name The path of the file to be loaded.(Can be relative or
+     * @param filePath The path of the file to be loaded. (Can be relative or
      *     absolute)
      *
      * @return The loaded Sound from the specified path.
      */
     @Override
-    protected Sound load(URL name) throws Exception
+    protected Sound load(URL filePath) throws Exception
     {
-        try (final InputStream is = ResourceLoader.get(name))
+        try (final InputStream is = ResourceLoader.get(filePath))
         {
             if (is == null)
             {
-                throw new ResourceLoadException("Die Audio-Datei " + name
+                throw new ResourceLoadException("Die Audio-Datei " + filePath
                         + " konnte nicht geladen werden.");
             }
-            return new Sound(is, FileUtil.getFileName(name));
+            return new Sound(is, filePath);
         }
     }
 }

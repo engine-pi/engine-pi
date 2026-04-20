@@ -34,6 +34,9 @@ import pi.annotations.Getter;
 /**
  * Eine Audiospur, die einmalig eine Eingangsmusik und die darauf folgende Musik
  * in einer Endlosschleife abspielt.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class IntroMusic implements Music
 {

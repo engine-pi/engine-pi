@@ -36,6 +36,9 @@ import pi.annotations.Getter;
  *
  * @see Playback#cancel()
  * @see Playback#finish()
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class SoundEvent extends EventObject
 {

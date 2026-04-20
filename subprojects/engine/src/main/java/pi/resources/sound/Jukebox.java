@@ -8,6 +8,8 @@ import pi.annotations.Internal;
 
 /**
  * Statische Fassade fuer {@link AudioEngine}.
+ *
+ * @author Josef Friedrich
  */
 public final class Jukebox
 {

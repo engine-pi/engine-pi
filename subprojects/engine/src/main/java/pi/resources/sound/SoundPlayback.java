@@ -29,6 +29,9 @@ import javax.sound.sampled.LineUnavailableException;
 
 /**
  * A {@code SoundPlayback} implementation for the playback of sound effects.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class SoundPlayback extends Playback
 {

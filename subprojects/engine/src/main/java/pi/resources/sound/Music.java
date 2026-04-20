@@ -31,6 +31,9 @@ import javax.sound.sampled.AudioFormat;
  * Die Klasse {@link Music} definiert eine Reihenfolge, in der Klänge
  * ({@link Sound}s) von der {@link pi.resources.sound.AudioEngine} wiedergegeben
  * werden sollen.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public interface Music extends Iterable<Sound>
 {

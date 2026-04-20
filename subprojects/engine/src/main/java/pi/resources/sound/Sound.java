@@ -27,6 +27,8 @@ package pi.resources.sound;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Path;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -35,44 +37,55 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import pi.annotations.API;
 import pi.annotations.Getter;
+import pi.debug.ToStringFormatter;
+import pi.resources.ResourceLoader;
+import pi.util.FileUtil;
 import pi.util.StreamUtilities;
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/resources/sound/SoundDemo.java
+
 /**
- * This class implements all required functionality to load sounds from the file
- * system and provide a stream that can later on be used for the sound playback.
+ * Ein <b>Klang</b> stellt eine Audio-Datei dar.
+ *
+ * <p>
+ * Diese Klasse implementiert die notwendige Funktionalität, um Klänge aus dem
+ * Dateisystem zu laden und einen Stream bereitzustellen, der später für die
+ * Wiedergabe verwendet werden kann.
+ * </p>
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ * @author Josef Friedrich
  */
 public final class Sound
 {
     private AudioInputStream stream;
 
     /**
-     * Creates a new Sound instance by the specified file path. Loads the sound
-     * data into a byte array and also retrieves information about the format of
-     * the sound file.
+     * Erstellt eine neue Sound-Instanz aus dem angegebenen Eingabestrom. Die
+     * Sounddaten werden in ein Byte-Array geladen und Informationen über das
+     * Audioformat ermittelt.
      *
-     * <p>
-     * Note that the constructor is private. In order to load files use the
-     * static {@code
-     * Controller.sounds.get(String)} method.
+     * @param is Der Eingabestrom, aus dem der Sound geladen wird.
+     * @param filePath Der Name dieser Sounddatei.
      *
-     * @param is The input stream to load the sound from.
-     * @param name The name of this sound file.
-     *
-     * @throws IOException If something went wrong loading the file
-     * @throws UnsupportedAudioFileException If the audio format is not
-     *     supported
+     * @throws IOException Falls beim Laden ein Fehler auftritt.
+     * @throws UnsupportedAudioFileException Falls das Audioformat nicht
+     *     unterstützt wird.
      */
-    public Sound(InputStream is, String name)
+    public Sound(InputStream is, URL filePath)
             throws IOException, UnsupportedAudioFileException
     {
-        this.name = name;
+        this.filePath = filePath;
+        this.name = FileUtil.getFileName(filePath);
         data = StreamUtilities.getBytes(is);
         AudioInputStream in = AudioSystem.getAudioInputStream(is);
         if (in != null)
         {
             final AudioFormat baseFormat = in.getFormat();
             final AudioFormat decodedFormat = outFormat(baseFormat);
-            // Get AudioInputStream that will be decoded by underlying VorbisSPI
+            // Liefert einen AudioInputStream, der durch das zugrunde liegende
+            // VorbisSPI dekodiert wird.
             in = AudioSystem.getAudioInputStream(decodedFormat, in);
             stream = in;
             streamData = StreamUtilities.getBytes(stream);
@@ -80,31 +93,55 @@ public final class Sound
         }
     }
 
-    /* format */
+    /**
+     * Erstellt eine neue Sound-Instanz aus dem angegeben <b>Dateipfad</b>.
+     *
+     * @param filePath Der Dateipfad der Audiodatei.
+     *
+     * @throws IOException Falls beim Laden ein Fehler auftritt.
+     * @throws UnsupportedAudioFileException Falls das Audioformat nicht
+     *     unterstützt wird.
+     *
+     * @since 0.48.0
+     */
+    public Sound(String filePath)
+            throws IOException, UnsupportedAudioFileException
+    {
+        this(ResourceLoader.get(filePath), Path.of(filePath).toUri().toURL());
+    }
 
-    private AudioFormat format;
+    /* filePath */
 
     /**
-     * Gets the audio format of this sound instance.
+     * Der Dateipfad der Audio-Datei.
+     */
+    private final URL filePath;
+
+    /**
+     * Liefert den Dateipfad der Audio-Datei.
      *
-     * @return The audio format of this instance.
+     * @return Der Dateipfad der Audio-Datei.
+     *
+     * @since 0.47.0
      */
     @API
     @Getter
-    public AudioFormat format()
+    public URL filePath()
     {
-        return format;
+        return filePath;
     }
 
     /* name */
 
+    /**
+     * Der <b>Dateiname</b> der Audio-Datei ohne Dateiendung.
+     */
     private final String name;
 
     /**
-     * Gets the name of this instance that is used to uniquely identify the
-     * resource of this sound.
+     * Liefert den <b>Dateinamen</b> der Audio-Datei ohne Dateiendung.
      *
-     * @return The name of this sound.
+     * @return Der <b>Dateiname</b> der Audio-Datei ohne Dateiendung.
      */
     @API
     @Getter
@@ -113,17 +150,34 @@ public final class Sound
         return name;
     }
 
+    /* Format */
+
+    private AudioFormat format;
+
+    /**
+     * Liefert das <b>Audioformat</b> dieser Sound-Instanz.
+     *
+     * @return Das Audioformat dieser Instanz.
+     */
+    @API
+    @Getter
+    public AudioFormat format()
+    {
+        return format;
+    }
+
     /* data */
 
     private byte[] data;
 
     /**
-     * Gets the raw data of this sound as byte array.
+     * Liefert die <b>Rohdaten</b> dieses Sounds als Byte-Array.
      *
      * <p>
-     * This is used during resource serialization.
+     * Diese Daten werden bei der Serialisierung von Ressourcen verwendet.
+     * </p>
      *
-     * @return The raw data of this sound as byte array.
+     * @return Die Rohdaten dieses Sounds als Byte-Array.
      */
     public byte[] rawData()
     {
@@ -134,6 +188,13 @@ public final class Sound
 
     private byte[] streamData;
 
+    /**
+     * Liefert die dekodierten Stream-Daten dieses Sounds als geklontes
+     * Byte-Array.
+     *
+     * @return Die Stream-Daten oder ein leeres Array, falls keine Daten
+     *     vorhanden sind.
+     */
     @Getter
     byte[] streamData()
     {
@@ -144,6 +205,14 @@ public final class Sound
         return streamData.clone();
     }
 
+    /**
+     * Erzeugt das Ziel-Audioformat für die Dekodierung in PCM_SIGNED mit 16
+     * Bit.
+     *
+     * @param inFormat Das Quell-Audioformat.
+     *
+     * @return Das Ziel-Audioformat für die Dekodierung.
+     */
     @Getter
     private static AudioFormat outFormat(final AudioFormat inFormat)
     {
@@ -159,6 +228,10 @@ public final class Sound
     @Override
     public String toString()
     {
-        return name();
+        var formatter = new ToStringFormatter(this);
+        formatter.append("filePath", filePath);
+        formatter.append("name", name);
+        formatter.append("format", format);
+        return formatter.format();
     }
 }

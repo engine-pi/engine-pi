@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.List;
@@ -256,7 +257,7 @@ class MulitpleSoundsMusicTest
         Path file = createFile(fileName, sampleRate, channels);
         try (InputStream input = ResourceLoader.get(file.toString()))
         {
-            return new Sound(input, file.getFileName().toString());
+            return new Sound(input, new URL("file:" + fileName));
         }
     }
 

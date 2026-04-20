@@ -44,6 +44,9 @@ import pi.debug.ToStringFormatter;
  * The {@code SoundPlayback} class is a wrapper {@code SourceDataLine} on which
  * a {@code Sound} playback can be carried out.
  *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
+ *
  * @see #play(Sound)
  */
 public abstract class Playback implements Runnable

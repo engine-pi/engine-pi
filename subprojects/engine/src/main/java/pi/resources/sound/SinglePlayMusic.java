@@ -34,6 +34,9 @@ import pi.annotations.Getter;
 
 /**
  * A {@code Track} that plays a sound once and then stops.
+ *
+ * @author Steffen Wilke
+ * @author Matthias Wilke
  */
 public class SinglePlayMusic implements Music
 {
