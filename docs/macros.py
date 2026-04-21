@@ -387,31 +387,31 @@ class JavaFile:
     def get_code_snippets(self) -> list[JavaCodeSnippet]:
         snippets: list[JavaCodeSnippet] = []
 
-        line_no = 0
+        i = 0
         start_line = -1
         end_line = -1
         for line in self.lines:
             if "// -->" in line:
-                start_line = line_no + 1
+                start_line = i + 1
 
-            if re.match(r"// .*<--", line) is not None:
-                end_line = line_no - 1
+            if re.search(r"// .*<--", line) is not None:
+                end_line = i
 
             if start_line > -1 and end_line > 0:
                 snippets.append(
                     JavaCodeSnippet(
-                        start_line=start_line, lines=self.lines[start_line:end_line]
+                        start_line=start_line + 1, lines=self.lines[start_line:end_line]
                     )
                 )
                 start_line = -1
                 end_line = -1
 
-            line_no += 1
+            i += 1
 
-        if start_line > -1:
+        if start_line > -1 and end_line == -1:
             snippets.append(
                 JavaCodeSnippet(
-                    start_line=start_line, lines=self.lines[start_line:line_no]
+                    start_line=start_line, lines=self.lines[start_line:i]
                 )
             )
 

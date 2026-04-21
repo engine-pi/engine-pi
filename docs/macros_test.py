@@ -26,3 +26,23 @@ class TestJavaFile:
         def test_class_not_found(self) -> None:
             with pytest.raises(FileNotFoundError):
                 JavaFile("demos/xxxxxxx")
+
+
+def test_all() -> None:
+    file = JavaFile("demos.classes.resources.sound.SoundsContainerContainsDemo")
+    snippets = file.get_code_snippets()
+    assert len(snippets) == 1
+
+    snippet = snippets[0]
+
+    assert snippet.start_line == 34
+    assert (
+        snippet.lines[0] == '        String filePath = "sounds/game-level-music.mp3";'
+    )
+
+    assert (
+        snippet.lines[-1] == '        }'
+    )
+
+
+    assert len(snippet.lines) == 14

@@ -18,10 +18,6 @@
  */
 package demos.classes.resources.sound;
 
-import java.io.IOException;
-
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 import pi.Controller;
 import pi.resources.sound.Sound;
 
@@ -30,13 +26,12 @@ import pi.resources.sound.Sound;
  */
 public class SoundDemo extends AudioDebugScene
 {
-    public SoundDemo() throws IOException, UnsupportedAudioFileException
+    public SoundDemo()
     {
         System.out.println(new Sound("sounds/casino-bling-achievement.mp3"));
     }
 
     public static void main(String[] args)
-            throws IOException, UnsupportedAudioFileException
     {
         Controller.instantMode(false);
         Controller.start(new SoundDemo());

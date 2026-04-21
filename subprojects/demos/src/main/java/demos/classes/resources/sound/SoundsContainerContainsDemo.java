@@ -23,54 +23,34 @@ import static pi.Controller.sounds;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static pi.Controller.jukebox;
-
 import pi.Controller;
-import pi.resources.sound.MusicPlayback;
 import pi.resources.sound.Sound;
-import pi.resources.sound.SoundEvent;
-import pi.resources.sound.PlaybackListener;
 
-public class SoundsContainerDemo extends AudioDebugScene
+public class SoundsContainerContainsDemo extends AudioDebugScene
 {
-    public SoundsContainerDemo() throws MalformedURLException
+    public SoundsContainerContainsDemo() throws MalformedURLException
     {
-        String soundName = "sounds/game-level-music.mp3";
-        Sound mySound = sounds.get("sounds/game-level-music.mp3");
+        // -->
+        String filePath = "sounds/game-level-music.mp3";
+        Sound mySound = sounds.get(filePath);
         if (sounds.contains(mySound))
         {
-            System.out.println("Contains mySound");
+            System.out.println("Contains Sound object");
         }
-        if (sounds.contains(soundName))
+        if (sounds.contains(filePath))
         {
-            System.out.println("Contains soundName");
+            System.out.println("Contains filePath");
         }
-        if (sounds.contains(new URL("file://" + soundName)))
+        if (sounds.contains(new URL("file:" + filePath)))
         {
             System.out.println("Contains url");
         }
-        sounds.contains(soundName);
-
-        MusicPlayback playback = jukebox.playMusic(mySound);
-        playback.addPlaybackListener(new PlaybackListener()
-        {
-            @Override
-            public void finished(SoundEvent event)
-            {
-                System.out.println("finished");
-            }
-
-            @Override
-            public void cancelled(SoundEvent event)
-            {
-                System.out.println("cancelled");
-            }
-        });
+        // <--
     }
 
     public static void main(String[] args) throws MalformedURLException
     {
         Controller.instantMode(false);
-        Controller.start(new SoundsContainerDemo());
+        Controller.start(new SoundsContainerContainsDemo());
     }
 }
