@@ -478,11 +478,13 @@ def macro_code(
     :param end_line: The ending line number (1-indexed, inclusive). If 0, goes
         to the end. Defaults to 0.
     :param line: A specific line number to extract (1-indexed). If greater than 0,
-                    overrides start_line and end_line to extract only that line.
-                    Defaults to 0.
+        overrides ``start_line`` and ``end_line`` to extract only that line.
+        Defaults to 0.
     :param link: If true, it adds a link to the GitHub repository where the
         Java class is hosted.
-    :param snippet:
+    :param snippet: If the parameter is true, all the snippets are shown.
+       If the snippet is an integer, then that integer specifies which snippet
+       should be used. 1 specifies the first snippet
 
     :return: A string containing the extracted code lines joined by newline characters.
 
@@ -507,8 +509,11 @@ def macro_code(
     if snippet:
         snippets = java_file.get_code_snippets()
 
-        for s in snippets:
-            output += s.fenced_code_block()
+        if not isinstance(snippet, bool):
+            output += snippets[snippet - 1].fenced_code_block()
+        else:
+            for s in snippets:
+                output += s.fenced_code_block()
 
     else:
         output += java_file.get_code_sample(
