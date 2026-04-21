@@ -51,5 +51,10 @@
     "**/__pycache__/": true,
     ".idea/": true,
     ".gitmodules": true
-  }
+  },
+  "python.testing.pytestArgs": [
+    "docs"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }

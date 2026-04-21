@@ -126,3 +126,7 @@ cli *args:
 # Execute the cli command (subprojects/cli) with the main class 'cli.checklinks.FileLinkChecker' to check file links in the documentation.
 check_file_links: (cli "check-file-links")
 	mvn --projects de.pirckheimer-gymnasium:engine-pi-cli exec:java -Dexec.mainClass=cli.checklinks.FileLinkChecker
+
+# Test the macros.py file using pytest and uv
+mkdocs_test:
+	cd docs; uv run pytest

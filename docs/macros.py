@@ -3,13 +3,17 @@ https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
 """
 
 from pathlib import Path
-from typing import Any
+import re
+from typing import Any, Optional
 
 JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
 RAW_GITHUB_URL = "https://raw.githubusercontent.com/engine-pi"
 RAW_ASSETS_URL = f"{RAW_GITHUB_URL}/assets/refs/heads/main"
 ORACLE_URL_PREFIX = "https://docs.oracle.com/en/java/javase/17/docs/api"
+
+
+BASE = (Path(__file__).parent / "..").resolve()
 
 
 def _normalize_package_path(package_path: str) -> str:
@@ -80,7 +84,7 @@ def _classpath_2_subproject(class_path: str, check: bool = True) -> str:
     subproject_path = (
         f"subprojects/{subprojects[subproject]}/src/main/java/{class_path}"
     )
-    if check and not Path(subproject_path).exists():
+    if check and not (BASE / subproject_path).exists():
         raise Exception(
             f"The class path “{class_path_orig}” has no corresponding Java file in “{subproject_path}”!"
         )
@@ -285,6 +289,20 @@ class CodeSample:
         )
 
 
+class JavaCodeSnippet:
+    prefix_comment: Optional[str]
+
+    start_line: int
+
+    lines: list[str]
+
+    suffix_comment: Optional[str]
+
+    def __init__(self, start_line: int, lines: list[str]) -> None:
+        self.start_line = start_line
+        self.lines = lines
+
+
 class JavaFile:
     path: Path
 
@@ -292,12 +310,12 @@ class JavaFile:
 
     def __init__(self, path: str) -> None:
         """
-        :param path: A class path or a file path relative to subprojects/demos/src/main/java/demos
+        :param path: A class path or a file path relative to ``subprojects/demos/src/main/java/demos``
         """
         if "/" not in path:
-            self.path = Path(_classpath_2_subproject(path))
+            self.path = BASE / _classpath_2_subproject(path)
         else:
-            self.path = Path(
+            self.path = BASE / Path(
                 "subprojects", "demos", "src", "main", "java", "demos"
             ) / _normalize_java_path(path)
         self.lines = self.path.read_text().splitlines()
@@ -365,6 +383,40 @@ class JavaFile:
         if end_line == 0:
             end_line = len(self.lines)
         return CodeSample(java_file=self, start_line=start_line, end_line=end_line)
+
+    def get_code_snippets(self) -> list[JavaCodeSnippet]:
+        snippets: list[JavaCodeSnippet] = []
+
+        line_no = 0
+        start_line = -1
+        end_line = -1
+        for line in self.lines:
+            if "// -->" in line:
+                start_line = line_no + 1
+
+            if re.match(r"// .*<--", line) is not None:
+                end_line = line_no - 1
+
+            if start_line > -1 and end_line > 0:
+                snippets.append(
+                    JavaCodeSnippet(
+                        start_line=start_line, lines=self.lines[start_line:end_line]
+                    )
+                )
+                start_line = -1
+                end_line = -1
+
+            line_no += 1
+
+        if start_line > -1:
+            snippets.append(
+                JavaCodeSnippet(
+                    start_line=start_line, lines=self.lines[start_line:line_no]
+                )
+            )
+
+
+        return snippets
 
     def url(self) -> str:
         return _github_code_url(str(self.path))
@@ -478,7 +530,7 @@ def define_env(env: Any) -> None:
 
         return f"""!!! import
 
-    Das statische Attribut {_classpath_2_link(classpath + '#' + attribute, attribute) } der
+    Das statische Attribut {_classpath_2_link(classpath + "#" + attribute, attribute)} der
     Klasse {_classpath_2_link(classpath)} kann über einen
     statischen Import eingebunden werden:
 
