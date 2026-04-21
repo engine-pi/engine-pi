@@ -31,7 +31,8 @@ public class SoundsContainerPlaybackListenerDemo extends AudioDebugScene
 {
     public SoundsContainerPlaybackListenerDemo() throws MalformedURLException
     {
-        MusicPlayback playback = jukebox.playMusic("sounds/game-level-music.mp3");
+        MusicPlayback playback = jukebox
+            .playMusic("sounds/game-level-music.mp3");
         playback.addPlaybackListener(new PlaybackListener()
         {
             @Override
