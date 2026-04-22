@@ -45,13 +45,13 @@ Breakable -->
 
 BulletTest
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/BulletTest.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/BulletTest.gif)
 
 <!-- Cantilever -->
 
 Car
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/Car.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/Car.gif)
 
 <!-- Chain
 CharacterCollision
@@ -66,13 +66,13 @@ ConveyorBelt -->
 
 DamBreak
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/DamBreak.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/DamBreak.gif)
 
 <!-- DistanceTest -->
 
 DominoTest
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/Dominos.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/Dominos.gif)
 
 <!--
 DominoTower
@@ -86,7 +86,7 @@ Gears -->
 
 LiquidTimer
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/LiquidTimer.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/LiquidTimer.gif)
 
 <!--
 MotorTest
@@ -95,7 +95,7 @@ Particles -->
 
 ParticleTypes
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/Particles.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/Particles.gif)
 
 <!-- PistonTest
 PolyShapes
@@ -117,6 +117,6 @@ VerticalStack -->
 
 WaveMachine
 
-![](https://raw.githubusercontent.com/engine-pi/jbox2d/main/screencasts/WaveMachine.gif)
+![](https://raw.githubusercontent.com/engine-pi/assets/refs/heads/main/jbox2d/screencasts/WaveMachine.gif)
 
 <!-- Web -->
