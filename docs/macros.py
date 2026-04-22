@@ -634,11 +634,3 @@ def define_env(env: Any) -> None:
         return macro_code(path=relpath, line=line, link=False)
 
     env.macro(macro_line, "line")
-
-    def macro_drawio(basename: str) -> str:
-        """
-        :param basename: The filename without extension
-        """
-        return f"![]({RAW_GITHUB_URL}/engine-pi/refs/heads/main/docs/drawio/{basename}.drawio)"
-
-    env.macro(macro_drawio, "drawio")

@@ -178,16 +178,6 @@ soll.
 
 {{ repo_link('docs/macros.py') }}
 
-### `drawio(basename)`
-
-```jinja
-{% raw %}
-{{ drawio('main-classes') }}
-{% endraw %}
-```
-
-{{ drawio('main-classes') }}
-
 ---
 
 ## Vom Macros-Plugin bereit gestellt.
