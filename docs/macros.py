@@ -409,6 +409,25 @@ class JavaFile:
         return CodeSnippet(java_file=self, start_line=start_line, end_line=end_line)
 
     def get_code_snippets(self) -> list[CodeSnippet]:
+        """
+        Extract all snippet regions marked in the Java source file.
+
+        Snippets are detected using comment markers in the source code:
+
+        - Start marker: ``// -->``
+        - End marker: a comment matching ``// .*<--``
+
+        For every detected region, a :class:`CodeSnippet` is created.
+        If a start marker exists without a closing end marker, a snippet is
+        created from the start marker to the end of the file.
+
+        :return: A list of extracted code snippets.
+        """
+
+        # Other approach to mark snippets:
+        # https://docs.oracle.com/en/java/javase/22/javadoc/programmers-guide-snippets.html#GUID-E17E559E-BD80-4548-846F-1AC53C768CAD
+        # // @start region=main
+        # // @end region=main
         snippets: list[CodeSnippet] = []
 
         i = 0
