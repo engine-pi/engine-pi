@@ -181,6 +181,7 @@ nav:
           - manual/dev/screen-recording.md
           - manual/dev/logging.md
           - manual/dev/graphics2d.md
+          - manual/dev/other-engines.md
 
   - API (javadocs): https://engine-pi.github.io/javadocs/pi/package-summary.html
 

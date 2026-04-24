@@ -18,22 +18,39 @@
  */
 package demos.classes.resources.sound;
 
+import static pi.Controller.sounds;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import pi.Controller;
 import pi.resources.sound.Sound;
 
-/**
- * Demonstiert die Klasse {@link Sound}.
- */
-public class SoundDemo extends AudioDebugScene
+public class SoundsContainerContainsDemo extends AudioDebugScene
 {
-    public SoundDemo()
+    public SoundsContainerContainsDemo() throws MalformedURLException
     {
-        System.out.println(new Sound("sounds/casino-bling-achievement.mp3"));
+        // -->
+        String filePath = "sounds/game-level-music.mp3";
+        Sound mySound = sounds.get(filePath);
+        if (sounds.contains(mySound))
+        {
+            System.out.println("Contains Sound object");
+        }
+        if (sounds.contains(filePath))
+        {
+            System.out.println("Contains filePath");
+        }
+        if (sounds.contains(new URL("file:" + filePath)))
+        {
+            System.out.println("Contains url");
+        }
+        // <--
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws MalformedURLException
     {
         Controller.instantMode(false);
-        Controller.start(new SoundDemo());
+        Controller.start(new SoundsContainerContainsDemo());
     }
 }

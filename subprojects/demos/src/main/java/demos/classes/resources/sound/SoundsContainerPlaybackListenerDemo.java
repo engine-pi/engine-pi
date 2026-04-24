@@ -18,40 +18,21 @@
  */
 package demos.classes.resources.sound;
 
-import static pi.Controller.sounds;
+import static pi.Controller.jukebox;
 
 import java.net.MalformedURLException;
-import java.net.URL;
-
-import static pi.Controller.jukebox;
 
 import pi.Controller;
 import pi.resources.sound.MusicPlayback;
-import pi.resources.sound.Sound;
-import pi.resources.sound.SoundEvent;
 import pi.resources.sound.PlaybackListener;
+import pi.resources.sound.SoundEvent;
 
-public class SoundsContainerDemo extends AudioDebugScene
+public class SoundsContainerPlaybackListenerDemo extends AudioDebugScene
 {
-    public SoundsContainerDemo() throws MalformedURLException
+    public SoundsContainerPlaybackListenerDemo() throws MalformedURLException
     {
-        String soundName = "sounds/game-level-music.mp3";
-        Sound mySound = sounds.get("sounds/game-level-music.mp3");
-        if (sounds.contains(mySound))
-        {
-            System.out.println("Contains mySound");
-        }
-        if (sounds.contains(soundName))
-        {
-            System.out.println("Contains soundName");
-        }
-        if (sounds.contains(new URL("file://" + soundName)))
-        {
-            System.out.println("Contains url");
-        }
-        sounds.contains(soundName);
-
-        MusicPlayback playback = jukebox.playMusic(mySound);
+        MusicPlayback playback = jukebox
+            .playMusic("sounds/game-level-music.mp3");
         playback.addPlaybackListener(new PlaybackListener()
         {
             @Override
@@ -71,6 +52,6 @@ public class SoundsContainerDemo extends AudioDebugScene
     public static void main(String[] args) throws MalformedURLException
     {
         Controller.instantMode(false);
-        Controller.start(new SoundsContainerDemo());
+        Controller.start(new SoundsContainerPlaybackListenerDemo());
     }
 }

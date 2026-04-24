@@ -9,7 +9,7 @@ Endpunkten zu zeichnen.
 
 ## Klassenkarte
 
-{{ drawio('Line') }}
+![](./line.drawio)
 /// caption
 Das Klassendiagramm der Figur `Line` zusammen mit der inneren Klasse `Line.End` und dem Aufzählungstyp `Line.ArrowType`.
 ///

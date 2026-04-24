@@ -4,7 +4,7 @@ https://mkdocs-macros-plugin.readthedocs.io/en/latest/macros/
 
 from pathlib import Path
 import re
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 JAVADOC_URL_PREFIX = "https://engine-pi.github.io/javadocs"
 # JAVADOC_URL_PREFIX = "https://javadoc.io/doc/de.pirckheimer-gymnasium/engine-pi/latest"
@@ -260,12 +260,26 @@ def _get_class_name(class_path: str) -> str:
     return class_path.split(".")[-1]
 
 
-class CodeSample:
+class CodeSnippet:
+    """
+    Represents a slice of lines extracted from a :class:`JavaFile`.
+    """
+
     java_file: "JavaFile"
+    """
+    Source Java file used to retrieve lines.
+    """
 
     start_line: int = 0
+    """First 1-based line index to include."""
 
     end_line: int = 0
+    """Last 1-based line index to include. If ``0``, includes
+        all remaining lines from ``start_line``."""
+
+    prefix_comment: Optional[str]
+
+    suffix_comment: Optional[str]
 
     def __init__(
         self,
@@ -273,34 +287,40 @@ class CodeSample:
         start_line: int = 1,
         end_line: int = 0,
     ) -> None:
+        """
+        Initialize a code sample selection.
+
+        :param java_file: The Java source holder.
+        :param start_line: Starting 1-based line number.
+        :param end_line: Ending 1-based line number (inclusive). Use ``0``
+            to include all lines to the end of the file.
+        """
         self.java_file = java_file
         self.start_line = start_line
         self.end_line = end_line
 
     @property
     def lines(self) -> list[str]:
+        """
+        Return the selected lines from the source file.
+
+        :return: A list of lines covered by this sample.
+        """
+        if not self.end_line:
+            return self.java_file.lines[self.start_line - 1 :]
         return self.java_file.lines[self.start_line - 1 : self.end_line]
 
     def fenced_code_block(self) -> str:
+        """
+        Build a fenced Markdown code block for the selected Java lines.
+
+        :return: A fenced code block with Java syntax hint and line numbering.
+        """
         return _fenced_code_block(
             "\n".join(self.lines),
             language="java",
             start_line=self.start_line,
         )
-
-
-class JavaCodeSnippet:
-    prefix_comment: Optional[str]
-
-    start_line: int
-
-    lines: list[str]
-
-    suffix_comment: Optional[str]
-
-    def __init__(self, start_line: int, lines: list[str]) -> None:
-        self.start_line = start_line
-        self.lines = lines
 
 
 class JavaFile:
@@ -310,14 +330,18 @@ class JavaFile:
 
     def __init__(self, path: str) -> None:
         """
-        :param path: A class path or a file path relative to ``subprojects/demos/src/main/java/demos``
+        :param path: A class path (for example
+            ``demos.docs.resources.config.CustomConfigGroupDemo``) or a file
+            path relative to ``subprojects/demos/src/main/java/demos``.
         """
         if "/" not in path:
             self.path = BASE / _classpath_2_subproject(path)
         else:
-            self.path = BASE / Path(
-                "subprojects", "demos", "src", "main", "java", "demos"
-            ) / _normalize_java_path(path)
+            self.path = (
+                BASE
+                / Path("subprojects", "demos", "src", "main", "java", "demos")
+                / _normalize_java_path(path)
+            )
         self.lines = self.path.read_text().splitlines()
 
     def get_first_import_statement(self) -> int:
@@ -334,7 +358,7 @@ class JavaFile:
         end_line: int = 0,
         line: int = 0,
         from_import: bool = False,
-    ) -> CodeSample:
+    ) -> CodeSnippet:
         """
         Extract a substring of code lines based on specified line numbers.
 
@@ -382,44 +406,145 @@ class JavaFile:
             start_line = 1
         if end_line == 0:
             end_line = len(self.lines)
-        return CodeSample(java_file=self, start_line=start_line, end_line=end_line)
+        return CodeSnippet(java_file=self, start_line=start_line, end_line=end_line)
 
-    def get_code_snippets(self) -> list[JavaCodeSnippet]:
-        snippets: list[JavaCodeSnippet] = []
+    def get_code_snippets(self) -> list[CodeSnippet]:
+        """
+        Extract all snippet regions marked in the Java source file.
 
-        line_no = 0
+        Snippets are detected using comment markers in the source code:
+
+        - Start marker: ``// -->``
+        - End marker: a comment matching ``// .*<--``
+
+        For every detected region, a :class:`CodeSnippet` is created.
+        If a start marker exists without a closing end marker, a snippet is
+        created from the start marker to the end of the file.
+
+        :return: A list of extracted code snippets.
+        """
+
+        # Other approach to mark snippets:
+        # https://docs.oracle.com/en/java/javase/22/javadoc/programmers-guide-snippets.html#GUID-E17E559E-BD80-4548-846F-1AC53C768CAD
+        # // @start region=main
+        # // @end region=main
+        snippets: list[CodeSnippet] = []
+
+        i = 0
         start_line = -1
         end_line = -1
         for line in self.lines:
             if "// -->" in line:
-                start_line = line_no + 1
+                start_line = i + 1
 
-            if re.match(r"// .*<--", line) is not None:
-                end_line = line_no - 1
+            if re.search(r"// .*<--", line) is not None:
+                end_line = i
 
             if start_line > -1 and end_line > 0:
                 snippets.append(
-                    JavaCodeSnippet(
-                        start_line=start_line, lines=self.lines[start_line:end_line]
+                    CodeSnippet(
+                        java_file=self, start_line=start_line + 1, end_line=end_line
                     )
                 )
                 start_line = -1
                 end_line = -1
 
-            line_no += 1
+            i += 1
 
-        if start_line > -1:
-            snippets.append(
-                JavaCodeSnippet(
-                    start_line=start_line, lines=self.lines[start_line:line_no]
-                )
-            )
-
+        if start_line > -1 and end_line == -1:
+            snippets.append(CodeSnippet(java_file=self, start_line=start_line))
 
         return snippets
 
     def url(self) -> str:
         return _github_code_url(str(self.path))
+
+
+def macro_demo(
+    relpath: str,
+    blob: str = "main",
+    lines: str | None = None,
+    start_line: int = 0,
+    end_line: int = 0,
+) -> str:  # pyright: ignore[reportUnusedFunction]
+    """
+    :param blob: The branch name or the commit id
+    """
+    relpath = _normalize_java_path(relpath)
+    url = _github_code_url(
+        relpath, blob, lines=lines, start_line=start_line, end_line=end_line
+    )
+    return f'<small class="demo-link">Zum Java-Code: <a href="{url}" title="Die Quelldatei des Code-Beispiels auf Github aufrufen." target="_blank">demos/{relpath}</a></small>'
+
+
+def macro_code(
+    path: str,
+    start_line: int = 0,
+    end_line: int = 0,
+    line: int = 0,
+    link: bool = True,
+    from_import: bool = False,
+    snippet: Union[bool, int] = False,
+) -> str:
+    """
+    Extract a substring of code lines based on specified line numbers.
+
+    :param path: A class path (for example
+        ``demos.docs.resources.config.CustomConfigGroupDemo``) or a file
+        path relative to ``subprojects/demos/src/main/java/demos``.
+    :param start_line: The starting line number (1-indexed). If 0, starts from
+        the beginning. Defaults to 0.
+    :param end_line: The ending line number (1-indexed, inclusive). If 0, goes
+        to the end. Defaults to 0.
+    :param line: A specific line number to extract (1-indexed). If greater than 0,
+        overrides ``start_line`` and ``end_line`` to extract only that line.
+        Defaults to 0.
+    :param link: If true, it adds a link to the GitHub repository where the
+        Java class is hosted.
+    :param snippet: If the parameter is true, all the snippets are shown.
+       If the snippet is an integer, then that integer specifies which snippet
+       should be used. 1 specifies the first snippet
+
+    :return: A string containing the extracted code lines joined by newline characters.
+
+    :raises Exception: If the end line is an empty string.
+    :raises Exception: If the start line is an empty string.
+
+    .. note::
+        If the `line` parameter is specified (> 0), it takes precedence over
+        `start_line` and `end_line` parameters.
+    https://github.com/mkdocs/mkdocs/issues/692
+
+    https://pypi.org/project/mkdocs-snippets/
+    """
+
+    if snippet and (start_line or line or from_import):
+        raise Exception("Don’t use snippet with start_line, line or from_import")
+
+    java_file = JavaFile(path)
+
+    output: str = ""
+
+    if snippet:
+        snippets = java_file.get_code_snippets()
+
+        if not isinstance(snippet, bool):
+            output += snippets[snippet - 1].fenced_code_block()
+        else:
+            for s in snippets:
+                output += s.fenced_code_block()
+
+    else:
+        output += java_file.get_code_sample(
+            start_line=start_line, end_line=end_line, line=line, from_import=from_import
+        ).fenced_code_block()
+
+    if link:
+        output += "\n" + macro_demo(
+            str(java_file.path), start_line=start_line, end_line=end_line
+        )
+
+    return output
 
 
 def define_env(env: Any) -> None:
@@ -432,17 +557,6 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_javadoc, "javadoc")
 
-    def macro_java_class(
-        class_path: str,
-        link_title: str | None = None,
-        module: str = "java.base",
-    ) -> str:
-        if link_title is None:
-            link_title = _get_class_name(class_path)
-        return f"[{link_title}]({ORACLE_URL_PREFIX}/{module}/{_classpath_2_relpath(class_path, False)}.html)"
-
-    env.macro(macro_java_class, "java_class")
-
     def macro_methods(class_path: str, methods: list[str]) -> str:
         """
         :param class_path: For example ``pi.actor.Actor``
@@ -454,22 +568,6 @@ def define_env(env: Any) -> None:
         return output
 
     env.macro(macro_methods, "methods")
-
-    def macro_demo(
-        relpath: str,
-        blob: str = "main",
-        lines: str | None = None,
-        start_line: int = 0,
-        end_line: int = 0,
-    ) -> str:  # pyright: ignore[reportUnusedFunction]
-        """
-        :param blob: The branch name or the commit id
-        """
-        relpath = _normalize_java_path(relpath)
-        url = _github_code_url(
-            relpath, blob, lines=lines, start_line=start_line, end_line=end_line
-        )
-        return f'<small class="demo-link">Zum Java-Code: <a href="{url}" title="Die Quelldatei des Code-Beispiels auf Github aufrufen." target="_blank">demos/{relpath}</a></small>'
 
     env.macro(macro_demo, "demo")
 
@@ -549,61 +647,9 @@ def define_env(env: Any) -> None:
 
     env.macro(macro_repo_link, "repo_link")
 
-    def macro_code(
-        path: str,
-        start_line: int = 0,
-        end_line: int = 0,
-        line: int = 0,
-        link: bool = True,
-        from_import: bool = False,
-    ) -> str:
-        """
-        Extract a substring of code lines based on specified line numbers.
-
-        :param start_line: The starting line number (1-indexed). If 0, starts from the beginning.
-                           Defaults to 0.
-        :param end_line: The ending line number (1-indexed, inclusive). If 0, goes to the end.
-                         Defaults to 0.
-        :param line: A specific line number to extract (1-indexed). If greater than 0,
-                     overrides start_line and end_line to extract only that line.
-                     Defaults to 0.
-        :return: A string containing the extracted code lines joined by newline characters.
-
-        :raises Exception: If the end line is an empty string.
-        :raises Exception: If the start line is an empty string.
-
-        .. note::
-           If the `line` parameter is specified (> 0), it takes precedence over
-           `start_line` and `end_line` parameters.
-        https://github.com/mkdocs/mkdocs/issues/692
-
-        https://pypi.org/project/mkdocs-snippets/
-        """
-
-        java_file = JavaFile(path)
-
-        output = java_file.get_code_sample(
-            start_line=start_line, end_line=end_line, line=line, from_import=from_import
-        ).fenced_code_block()
-
-        if link:
-            output += "\n" + macro_demo(
-                str(java_file.path), start_line=start_line, end_line=end_line
-            )
-
-        return output
-
     env.macro(macro_code, "code")
 
     def macro_line(relpath: str, line: int) -> str:
         return macro_code(path=relpath, line=line, link=False)
 
     env.macro(macro_line, "line")
-
-    def macro_drawio(basename: str) -> str:
-        """
-        :param basename: The filename without extension
-        """
-        return f"![]({RAW_GITHUB_URL}/engine-pi/refs/heads/main/docs/drawio/{basename}.drawio)"
-
-    env.macro(macro_drawio, "drawio")

@@ -228,7 +228,8 @@ public abstract class ResourcesContainer<T> implements Container<T>
 
     public boolean contains(URL name)
     {
-        return contains(name.toString());
+        return contains(
+            name.toString().replace("file://", "").replace("file:", ""));
     }
 
     /**

@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Optional
 
 import pytest
-from macros import JavaFile, CodeSample, JavaCodeSnippet
+from macros import JavaFile, CodeSnippet
 
 
 def java_file(
@@ -80,7 +80,7 @@ class TestJavaFile:
         def test_default_returns_all_lines(self) -> None:
             file = java_file()
             sample = file.get_code_sample()
-            assert isinstance(sample, CodeSample)
+            assert isinstance(sample, CodeSnippet)
             assert sample.start_line == 1
             assert sample.end_line == 46
 
@@ -164,7 +164,7 @@ class TestJavaFile:
             )
             snippets = file.get_code_snippets()
             assert len(snippets) == 1
-            assert isinstance(snippets[0], JavaCodeSnippet)
+            assert isinstance(snippets[0], CodeSnippet)
             assert snippets[0].start_line == 2
             assert snippets[0].lines == ["snippet line 1"]
 

@@ -2,7 +2,6 @@
 
 Die Engine-Pi nutzt intensiv die {{ javadoc('java.desktop:java.awt.Graphics2D') }}-API.
 
-
 Um sich mit dieser API vertraut zu machen, gibt es im Demo {{ javadoc('demos')
 }}-Subprojekt die Klasse {{ javadoc('demos.graphics2d.Graphics2DComponent') }}.
 Dieser Klasse stellt eine {{ javadoc('java.desktop:java.awt.Graphics2D') }}-Instanz zur Verfügung und öffnet ein
@@ -194,3 +193,8 @@ public class Graphics2DDemo extends JPanel {
 Die offizielle API-Doku ist die beste Quelle fuer Detailverhalten einzelner Methoden und Randfaelle:
 
 - https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Graphics2D.html -->
+
+
+Sehr nahe an der Graphics2D-API ist das Paket {{ javadoc('pi.graphics.boxes') }}
+
+![](./boxes.drawio)
