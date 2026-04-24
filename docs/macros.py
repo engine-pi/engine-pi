@@ -260,9 +260,12 @@ def _get_class_name(class_path: str) -> str:
     return class_path.split(".")[-1]
 
 
-class CodeSnippet:
+class Snippet:
     """
     Represents a slice of lines extracted from a :class:`JavaFile`.
+
+    index: 0-based
+    no: 1-based
     """
 
     java_file: "JavaFile"
@@ -270,34 +273,62 @@ class CodeSnippet:
     Source Java file used to retrieve lines.
     """
 
-    start_line: int = 0
+    start_line_no: int = 1
     """First 1-based line index to include."""
 
-    end_line: int = 0
+    end_line_no: int = 0
     """Last 1-based line index to include. If ``0``, includes
         all remaining lines from ``start_line``."""
 
-    prefix_comment: Optional[str]
+    prolog: list[str]
+    """Comments thats prefix the code snippet"""
 
-    suffix_comment: Optional[str]
+    epilog: list[str]
+    """Comments thats suffix the code snippet"""
 
     def __init__(
         self,
         java_file: "JavaFile",
-        start_line: int = 1,
-        end_line: int = 0,
+        start_marker_index: int = 1,
+        end_marker_index: int = 0,
     ) -> None:
         """
         Initialize a code sample selection.
 
         :param java_file: The Java source holder.
-        :param start_line: Starting 1-based line number.
-        :param end_line: Ending 1-based line number (inclusive). Use ``0``
-            to include all lines to the end of the file.
+        :param start_line: The 0-based number of the line containing the start marker
+        :param end_line: The 0-based number of the line containing the end marker
         """
         self.java_file = java_file
-        self.start_line = start_line
-        self.end_line = end_line
+
+        i = start_marker_index
+        self.prolog = []
+        while self._is_line_comment(i):
+            text = self.get_comment_text(i)
+            if text is not None:
+                self.prolog.append(text)
+            i += 1
+        self.start_line_no = i + 1
+
+        self.epilog = []
+
+        if end_marker_index > 0:
+            i = end_marker_index
+            while self._is_line_comment(i):
+                text = self.get_comment_text(i)
+                if text is not None:
+                    self.epilog.insert(0, text)
+                i -= 1
+            self.end_line_no = i + 1
+
+    def get_comment_text(self, index: int) -> Optional[str]:
+        """If the line is not comment line none is returned, else the text
+        without the comment sign `//`"""
+        line = self.java_file.lines[index]
+        if Snippet.is_line_comment(line):
+            line = line.replace("//", "").replace("-->", "").replace("<--", "").strip()
+            if line != "":
+                return line
 
     @property
     def lines(self) -> list[str]:
@@ -306,9 +337,9 @@ class CodeSnippet:
 
         :return: A list of lines covered by this sample.
         """
-        if not self.end_line:
-            return self.java_file.lines[self.start_line - 1 :]
-        return self.java_file.lines[self.start_line - 1 : self.end_line]
+        if not self.end_line_no:
+            return self.java_file.lines[self.start_line_no - 1 :]
+        return self.java_file.lines[self.start_line_no - 1 : self.end_line_no]
 
     def fenced_code_block(self) -> str:
         """
@@ -319,7 +350,33 @@ class CodeSnippet:
         return _fenced_code_block(
             "\n".join(self.lines),
             language="java",
-            start_line=self.start_line,
+            start_line=self.start_line_no,
+        )
+
+    @staticmethod
+    def is_start_marker(line: str) -> bool:
+        return re.search(r"^\s*//.*-->", line) is not None
+
+    def _is_start_marker(self, index: int) -> bool:
+        """
+        :param no: 0-based line index
+        """
+        return Snippet.is_start_marker(self.java_file.lines[index])
+
+    @staticmethod
+    def is_end_marker(line: str) -> bool:
+        return re.search(r"^\s*//.*<--", line) is not None
+
+    @staticmethod
+    def is_line_comment(line: str) -> bool:
+        return re.search(r"^\s*//", line) is not None
+
+    def _is_line_comment(self, index: int) -> bool:
+        """
+        :param no: 0-based line index
+        """
+        return index < len(self.java_file.lines) and Snippet.is_line_comment(
+            self.java_file.lines[index]
         )
 
 
@@ -354,11 +411,11 @@ class JavaFile:
 
     def get_code_sample(
         self,
-        start_line: int = 0,
-        end_line: int = 0,
-        line: int = 0,
+        start_line_no: int = 0,
+        end_line_no: int = 0,
+        line_no: int = 0,
         from_import: bool = False,
-    ) -> CodeSnippet:
+    ) -> Snippet:
         """
         Extract a substring of code lines based on specified line numbers.
 
@@ -379,36 +436,40 @@ class JavaFile:
            `start_line` and `end_line` parameters.
         """
 
-        if from_import and (start_line > 0 or end_line > 0 or line > 0):
+        if from_import and (start_line_no > 0 or end_line_no > 0 or line_no > 0):
             raise Exception("from_import is an exclusive option")
 
         if from_import:
-            start_line = self.get_first_import_statement()
+            start_line_no = self.get_first_import_statement()
 
-        if line > 0:
-            start_line = line
-            end_line = line
+        if line_no > 0:
+            start_line_no = line_no
+            end_line_no = line_no
         lines = self.lines
-        if end_line > 0:
-            lines = lines[:end_line]
+        if end_line_no > 0:
+            lines = lines[:end_line_no]
             if lines[len(lines) - 1] == "":
                 raise Exception(
-                    f"End line no {end_line} of code {lines} is an empty string!"
+                    f"End line no {end_line_no} of code {lines} is an empty string!"
                 )
-        if start_line > 0:
-            lines = lines[start_line - 1 :]
+        if start_line_no > 0:
+            lines = lines[start_line_no - 1 :]
             if lines[0] == "":
                 raise Exception(
-                    f"Start line no {start_line} of code {lines} is an empty string!"
+                    f"Start line no {start_line_no} of code {lines} is an empty string!"
                 )
 
-        if start_line == 0:
-            start_line = 1
-        if end_line == 0:
-            end_line = len(self.lines)
-        return CodeSnippet(java_file=self, start_line=start_line, end_line=end_line)
+        if start_line_no == 0:
+            start_line_no = 1
+        if end_line_no == 0:
+            end_line_no = len(self.lines)
+        return Snippet(
+            java_file=self,
+            start_marker_index=start_line_no - 1,
+            end_marker_index=end_line_no - 1,
+        )
 
-    def get_code_snippets(self) -> list[CodeSnippet]:
+    def get_code_snippets(self) -> list[Snippet]:
         """
         Extract all snippet regions marked in the Java source file.
 
@@ -428,22 +489,24 @@ class JavaFile:
         # https://docs.oracle.com/en/java/javase/22/javadoc/programmers-guide-snippets.html#GUID-E17E559E-BD80-4548-846F-1AC53C768CAD
         # // @start region=main
         # // @end region=main
-        snippets: list[CodeSnippet] = []
+        snippets: list[Snippet] = []
 
         i = 0
         start_line = -1
         end_line = -1
         for line in self.lines:
-            if "// -->" in line:
-                start_line = i + 1
+            if Snippet.is_start_marker(line):
+                start_line = i
 
-            if re.search(r"// .*<--", line) is not None:
+            if Snippet.is_end_marker(line):
                 end_line = i
 
             if start_line > -1 and end_line > 0:
                 snippets.append(
-                    CodeSnippet(
-                        java_file=self, start_line=start_line + 1, end_line=end_line
+                    Snippet(
+                        java_file=self,
+                        start_marker_index=start_line,
+                        end_marker_index=end_line,
                     )
                 )
                 start_line = -1
@@ -452,7 +515,7 @@ class JavaFile:
             i += 1
 
         if start_line > -1 and end_line == -1:
-            snippets.append(CodeSnippet(java_file=self, start_line=start_line))
+            snippets.append(Snippet(java_file=self, start_marker_index=start_line))
 
         return snippets
 
@@ -536,7 +599,7 @@ def macro_code(
 
     else:
         output += java_file.get_code_sample(
-            start_line=start_line, end_line=end_line, line=line, from_import=from_import
+            start_line_no=start_line, end_line_no=end_line, line_no=line, from_import=from_import
         ).fenced_code_block()
 
     if link:
