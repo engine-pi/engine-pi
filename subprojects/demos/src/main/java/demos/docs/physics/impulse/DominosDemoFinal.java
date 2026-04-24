@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.docs.physics;
+package demos.docs.physics.impulse;
 
 import pi.Controller;
 import pi.Scene;
@@ -32,11 +32,14 @@ import pi.graphics.geom.Vector;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/physics/impulse.md
 
-public class ImpulseDemo extends Scene
+/**
+ * Das fertig Dominos-Demo.
+ */
+public class DominosDemoFinal extends Scene
         implements FrameListener, MouseClickListener
 {
     /**
-     * Der Boden auf dem die Dominosteine stehen.
+     * Der Boden, auf dem die Dominosteine stehen.
      */
     private Rectangle ground;
 
@@ -49,38 +52,54 @@ public class ImpulseDemo extends Scene
      * Zeigt den Impuls an, mit dem der Ball gegen die Dominosteine katapultiert
      * wird.
      */
-    private Line impulseLine;
+    private Line line;
 
-    public ImpulseDemo()
+    public DominosDemoFinal()
     {
         setupBasicObjects();
-        setupPhysics();
-        setupAngle();
         makeDominoes();
+        setupPhysics();
+        setupLine();
     }
 
     private void setupBasicObjects()
     {
-        ground = (Rectangle) new Rectangle(200, 2).center(0, -5)
-            .color("white")
-            .friction(0);
+        ground = new Rectangle(200, 2);
+        ground.center(0, -5);
+        ground.color("white");
+        ground.friction(1);
         add(ground);
 
-        ball = (Circle) new Circle(0.5).color("red").anchor(-17, -2);
+        ball = new Circle(0.5);
+        ball.color("red");
+        ball.anchor(-17, -2);
         add(ball);
     }
 
-    private void setupAngle()
+    private void makeDominoes()
     {
-        impulseLine = new Line();
-        impulseLine.end2.arrow(true);
-        impulseLine.strokeWidth(0.05);
-        impulseLine.dashed();
-        impulseLine.dashPattern(0.1);
-        impulseLine.color("gray");
-        impulseLine.makeSensor();
-        impulseLine.gravityScale(0);
-        add(impulseLine);
+        for (int i = 0; i < 20; i++)
+        {
+            Rectangle domino = new Rectangle(0.2, 3);
+            domino.anchor(-10 + i * 1.3, -4);
+            domino.color("white");
+            domino.makeDynamic();
+            domino.friction(1);
+            add(domino);
+        }
+    }
+
+    private void setupLine()
+    {
+        line = new Line();
+        line.end2.arrow(true);
+        line.strokeWidth(0.05);
+        line.dashed();
+        line.dashPattern(0.1);
+        line.color("gray");
+        line.makeSensor();
+        line.gravityScale(0);
+        add(line);
     }
 
     private void setupPhysics()
@@ -90,35 +109,23 @@ public class ImpulseDemo extends Scene
         gravityOfEarth();
     }
 
-    private void makeDominoes()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            Rectangle domino = new Rectangle(0.2, 3);
-            domino.anchor(-10 + i * 1.3, -4);
-            domino.makeDynamic();
-            domino.color("blue");
-            add(domino);
-        }
-    }
-
     @Override
     public void onFrame(double pastTime)
     {
-        impulseLine.end1(ball.center());
-        impulseLine.end2(mousePosition());
+        line.end1(ball.center());
+        line.end2(mousePosition());
     }
 
     @Override
     public void onMouseDown(Vector position, MouseButton button)
     {
-        Vector impulse = ball.center().distance(position).multiply(5);
+        Vector impulse = ball.center().distance(position).multiply(10);
         ball.applyImpulse(impulse);
     }
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
-        Controller.start(new ImpulseDemo(), 1200, 300);
+        Controller.start(new DominosDemoFinal(), 1200, 300);
     }
 }

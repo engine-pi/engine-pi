@@ -111,74 +111,74 @@ class TestJavaFile:
     class TestGetCodeSample:
         def test_default_returns_all_lines(self) -> None:
             file = java_file()
-            sample = file.get_code_sample()
+            sample = file.define_snippet()
             assert isinstance(sample, Snippet)
             assert sample.start_line_no == 1
             assert sample.end_line_no == 46
 
         def test_start_line_only(self) -> None:
             file = java_file()
-            sample = file.get_code_sample(start_line_no=21)
+            sample = file.define_snippet(start_line_no=21)
             assert sample.start_line_no == 21
             assert sample.end_line_no == 46
 
         def test_end_line_only(self) -> None:
             file = java_file()
-            sample = file.get_code_sample(end_line_no=22)
+            sample = file.define_snippet(end_line_no=22)
             assert sample.start_line_no == 1
             assert sample.end_line_no == 22
 
         def test_start_and_end_line(self) -> None:
             file = java_file()
-            sample = file.get_code_sample(start_line_no=21, end_line_no=22)
+            sample = file.define_snippet(start_line_no=21, end_line_no=22)
             assert sample.start_line_no == 21
             assert sample.end_line_no == 22
             assert sample.lines == ["import pi.Controller;", "import pi.actor.Star;"]
 
         def test_line_parameter(self) -> None:
             file = java_file()
-            sample = file.get_code_sample(line_no=21)
+            sample = file.define_snippet(line_no=21)
             assert sample.start_line_no == 21
             assert sample.end_line_no == 21
             assert sample.lines == ["import pi.Controller;"]
 
         def test_from_import(self) -> None:
             file = java_file()
-            sample = file.get_code_sample(from_import=True)
+            sample = file.define_snippet(from_import=True)
             assert sample.start_line_no == 21
             assert sample.end_line_no == 46
 
         def test_from_import_exclusive_with_start_line(self) -> None:
             file = java_file()
             with pytest.raises(Exception, match="exclusive"):
-                file.get_code_sample(from_import=True, start_line_no=5)
+                file.define_snippet(from_import=True, start_line_no=5)
 
         def test_from_import_exclusive_with_end_line(self) -> None:
             file = java_file()
             with pytest.raises(Exception, match="exclusive"):
-                file.get_code_sample(from_import=True, end_line_no=30)
+                file.define_snippet(from_import=True, end_line_no=30)
 
         def test_from_import_exclusive_with_line(self) -> None:
             file = java_file()
             with pytest.raises(Exception, match="exclusive"):
-                file.get_code_sample(from_import=True, line_no=21)
+                file.define_snippet(from_import=True, line_no=21)
 
         def test_empty_start_line_raises(self) -> None:
             # Line 20 of StarDemo.java is empty
             file = java_file()
             with pytest.raises(Exception, match="Start line"):
-                file.get_code_sample(start_line_no=20)
+                file.define_snippet(start_line_no=20)
 
         def test_empty_end_line_raises(self) -> None:
             # Line 20 of StarDemo.java is empty
             file = java_file()
             with pytest.raises(Exception, match="End line"):
-                file.get_code_sample(end_line_no=20)
+                file.define_snippet(end_line_no=20)
 
     class TestGetCodeSnippets:
         def test_no_markers_returns_empty_list(self) -> None:
             file = java_file(lines=["line one", "line two", "line three"])
-            assert file.get_code_snippets() == []
+            assert file.get_all_snippets() == []
 
         def test_single_closed_snippet(self) -> None:
             file = java_file(
@@ -192,7 +192,7 @@ class TestJavaFile:
                     "line six",
                 ]
             )
-            snippets = file.get_code_snippets()
+            snippets = file.get_all_snippets()
             assert len(snippets) == 1
             snippet = snippets[0]
             assert isinstance(snippet, Snippet)
@@ -212,7 +212,7 @@ class TestJavaFile:
                     "snippet line 2",
                 ]
             )
-            snippets = file.get_code_snippets()
+            snippets = file.get_all_snippets()
             assert len(snippets) == 1
             assert snippets[0].start_line_no == 3
             assert snippets[0].lines == ["snippet line 1", "snippet line 2"]
@@ -229,7 +229,7 @@ class TestJavaFile:
                     "// b <--",  # index 6 → end_line = 5, lines[5:5] = []
                 ]
             )
-            snippets = file.get_code_snippets()
+            snippets = file.get_all_snippets()
             assert len(snippets) == 2
 
     class TestUrl:
