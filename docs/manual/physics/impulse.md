@@ -94,7 +94,7 @@ In einer `#!java setupPhysics()`-Methode werden die Body Types für die Actors
 gesetzt und die Schwerkraft (standardmäßige `9,81 m/s^2`, gerade nach unten)
 aktiviert:
 
-{{ code('demos.docs.physics.impulse.DominosDemoFinal', 77, 83) }}
+{{ code('demos.docs.physics.impulse.DominosDemoFinal', snippet=1) }}
 
 Zusätzlich werden die Dominos in `makeDominoes()` mit `domino.makeDynamic();`
 eingerichtet.
@@ -125,24 +125,24 @@ Impulses markiert:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/impulse/DominosDemoFinal.java -->
 
-{{ code('demos.docs.physics.impulse.DominosDemoFinal', 70, 75) }}
+{{ code('demos.docs.physics.impulse.DominosDemoFinal', snippet=2) }}
 
 {{ image('docs/physics/impulse/Dominos_4-Wurfwinkel-Visualisierung.gif', 'Visualisierung des Wurfwinkels') }}
 
 Wir wollen, dass eine Linie stets Ball und Maus verbindet. Die einfachste
 Methode hierzu ist, in jedem Einzelbild die Linie erneut an die Maus anzupassen.
-Dafür implementiert die Dominoes-Klasse das Interface `Listener` und berechnet
+Dafür implementiert die Dominoes-Klasse das Interface `FrameListener` und berechnet
 frameweise anhand der aktuellen Mausposition die korrekte Länge und den
 korrekten Winkel, um die visuelle Hilfe richtig zu positionieren:
 
-{{ code('demos.docs.physics.impulse.DominosDemoFinal', 97, 107) }}
+{{ code('demos.docs.physics.impulse.DominosDemoFinal', snippet=3) }}
 
 Zuletzt muss der Ballwurf bei Mausklick umgesetzt werden. Hierzu wird noch das
 Interface `MouseClickListener` implementiert:
 
 <!-- Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/docs/physics/impulse/DominosDemoFinal.java -->
 
-{{ code('demos.docs.physics.impulse.DominosDemoFinal', 109, 114) }}
+{{ code('demos.docs.physics.impulse.DominosDemoFinal', snippet=4) }}
 
 <!-- - Von Dominos zu Kartenhaus: Mehrere Schichten von Dominos, mit quer gelegten
   Steinen als Fundament zwischen den Schichten, sorgen für mehr Spaß bei der

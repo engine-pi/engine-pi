@@ -32,6 +32,12 @@ import pi.graphics.geom.Vector;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/physics/impulse.md
 
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/jbox2d/testbed/src/main/java/org/jbox2d/testbed/tests/DominoTest.java
+// Go to file:///data/school/repos/inf/java/engine-pi/subprojects/jbox2d/testbed/src/main/java/org/jbox2d/testbed/tests/DominoTower.java
+
+// https://de.wikipedia.org/wiki/Domino: Professionelle Spielsteine
+// haben im Allgemeinen eine Größe von ca. 56 × 28 × 13 mm.
+
 /**
  * Das fertig Dominos-Demo.
  */
@@ -64,68 +70,78 @@ public class DominosDemoFinal extends Scene
 
     private void setupBasicObjects()
     {
-        ground = new Rectangle(200, 2);
-        ground.center(0, -5);
-        ground.color("white");
+        ground = new Rectangle(20, 0.2);
+        ground.center(0, -0.5);
+        ground.color("blue");
         ground.friction(1);
         add(ground);
 
-        ball = new Circle(0.5);
+        ball = new Circle(0.15);
         ball.color("red");
-        ball.anchor(-17, -2);
+        ball.anchor(-3, -0.2);
         add(ball);
     }
 
     private void makeDominoes()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Rectangle domino = new Rectangle(0.2, 3);
-            domino.anchor(-10 + i * 1.3, -4);
+            Rectangle domino = new Rectangle(0.13, 0.56);
+            domino.anchor(-1 + i * 0.5, -0.4);
             domino.color("white");
             domino.makeDynamic();
             domino.friction(1);
+            domino.density(5);
             add(domino);
         }
     }
 
-    private void setupLine()
-    {
-        line = new Line();
-        line.end2.arrow(true);
-        line.strokeWidth(0.05);
-        line.dashed();
-        line.dashPattern(0.1);
-        line.color("gray");
-        line.makeSensor();
-        line.gravityScale(0);
-        add(line);
-    }
-
+    // -->
     private void setupPhysics()
     {
         ground.makeStatic();
         ball.makeDynamic();
         gravityOfEarth();
     }
+    // <--
 
+    // -->
+    private void setupLine()
+    {
+        line = new Line();
+        line.end2.arrow(true).arrowSideLength(0.1);
+        line.strokeWidth(0.01);
+        line.dashed();
+        line.dashPattern(0.03);
+        line.color("gray");
+        line.makeSensor();
+        line.gravityScale(0);
+        add(line);
+    }
+    // <--
+
+    // -->
     @Override
     public void onFrame(double pastTime)
     {
         line.end1(ball.center());
         line.end2(mousePosition());
     }
+    // <--
 
+    // -->
     @Override
     public void onMouseDown(Vector position, MouseButton button)
     {
-        Vector impulse = ball.center().distance(position).multiply(10);
+        Vector impulse = ball.center().distance(position);
         ball.applyImpulse(impulse);
     }
+    // <--
 
     public static void main(String[] args)
     {
         Controller.instantMode(false);
+        Controller.config.graphics.pixelPerMeter(128);
         Controller.start(new DominosDemoFinal(), 1200, 300);
     }
 }
