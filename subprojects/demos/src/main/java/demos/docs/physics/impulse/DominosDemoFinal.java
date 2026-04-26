@@ -96,16 +96,16 @@ public class DominosDemoFinal extends Scene
         }
     }
 
-    // -->
+    // >>
     private void setupPhysics()
     {
         ground.makeStatic();
         ball.makeDynamic();
         gravityOfEarth();
     }
-    // <--
+    // <<
 
-    // -->
+    // >>
     private void setupLine()
     {
         line = new Line();
@@ -118,25 +118,25 @@ public class DominosDemoFinal extends Scene
         line.gravityScale(0);
         add(line);
     }
-    // <--
+    // <<
 
-    // -->
+    // >>
     @Override
     public void onFrame(double pastTime)
     {
         line.end1(ball.center());
         line.end2(mousePosition());
     }
-    // <--
+    // <<
 
-    // -->
+    // >>
     @Override
     public void onMouseDown(Vector position, MouseButton button)
     {
         Vector impulse = ball.center().distance(position);
         ball.applyImpulse(impulse);
     }
-    // <--
+    // <<
 
     public static void main(String[] args)
     {

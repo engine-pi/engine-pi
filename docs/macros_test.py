@@ -8,6 +8,55 @@ from macros import JavaFile, Snippet
 # Go to file:///data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StarDemo.java
 
 
+star_demo_content = """/*
+ * Engine Pi ist eine anfängerorientierte 2D-Gaming Engine.
+ *
+ * Copyright (c) 2024 Josef Friedrich and contributors.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package demos.classes.actor;
+
+import pi.Controller;
+import pi.actor.Star;
+
+/**
+ * Demonstriert die Figur <b>Stern</b> ({@link Star}).
+ *
+ * @author Josef Friedrich
+ */
+public class StarDemo extends ActorBaseScene
+{
+    public StarDemo()
+    {
+        Star star = new Star();
+        star.anchor(2, 2);
+        star.makeDynamic();
+        star.rotateBy(45);
+        add(star);
+    }
+
+    public static void main(String[] args)
+    {
+        Controller.instantMode(false);
+        Controller.debug();
+        Controller.start(new StarDemo());
+    }
+}
+"""
+
+
 def java_file(
     path: str = "demos.classes.actor.StarDemo",
     content: Optional[str] = None,
@@ -21,27 +70,31 @@ def java_file(
         java_file.lines = content.splitlines()
     elif lines is not None:
         java_file.lines = lines
+    else:
+        java_file.lines = star_demo_content.splitlines()
 
     return java_file
 
 
 class TestSnippet:
     def test_is_start_marker(self) -> None:
-        assert Snippet.is_start_marker("//-->")
-        assert Snippet.is_start_marker("  // -->")
-        assert Snippet.is_start_marker("// -->after")
+        assert Snippet.is_start_marker("//>>")
+        assert Snippet.is_start_marker("  // >>")
+        assert Snippet.is_start_marker("// >>after")
+        assert Snippet.is_start_marker("  // >snippet1>")
 
-        assert not Snippet.is_start_marker("//->")
-        assert not Snippet.is_start_marker("/-->")
-        assert not Snippet.is_start_marker("abc//-->")
+        assert not Snippet.is_start_marker("//>")
+        assert not Snippet.is_start_marker("/>>")
+        assert not Snippet.is_start_marker("abc//>>")
 
     def test_is_end_marker(self) -> None:
-        assert Snippet.is_end_marker("//<--")
-        assert Snippet.is_end_marker("  // <--")
-        assert Snippet.is_end_marker("// <--after")
+        assert Snippet.is_end_marker("//<<")
+        assert Snippet.is_end_marker("  // <<")
+        assert Snippet.is_end_marker("// <<")
+        assert Snippet.is_end_marker("// <snippet1<")
 
-        assert not Snippet.is_end_marker("/<--")
-        assert not Snippet.is_end_marker("//<-")
+        assert not Snippet.is_end_marker("/<<")
+        assert not Snippet.is_end_marker("//<")
 
     def test_is_line_comment(self):
         assert Snippet.is_line_comment("//")
@@ -54,25 +107,24 @@ class TestSnippet:
         assert not Snippet.is_line_comment("abc//")
 
 
+star_demo_file_path = Path(
+    "/data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StarDemo.java"
+)
+
+
 class TestJavaFile:
     class TestConstructor:
         def test_filepath(self) -> None:
             file = JavaFile("classes/actor/StarDemo.java")
-            assert file.path == Path(
-                "/data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StarDemo.java"
-            )
+            assert file.path == star_demo_file_path
 
         def test_filepath_without_extension(self) -> None:
             file = JavaFile("classes/actor/StarDemo")
-            assert file.path == Path(
-                "/data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StarDemo.java"
-            )
+            assert file.path == star_demo_file_path
 
         def test_classpath(self) -> None:
             file = JavaFile("demos.classes.actor.StarDemo")
-            assert file.path == Path(
-                "/data/school/repos/inf/java/engine-pi/subprojects/demos/src/main/java/demos/classes/actor/StarDemo.java"
-            )
+            assert file.path == star_demo_file_path
 
         def test_lines_are_loaded(self) -> None:
             file = java_file()
@@ -184,11 +236,11 @@ class TestJavaFile:
             file = java_file(
                 lines=[
                     "line one",
-                    "// --> This is a prolog text",
+                    "// >> This is a prolog text",
                     "// continuation",
                     "snippet line 1",
                     "snippet line 2",
-                    "// end <--",
+                    "// end <<",
                     "line six",
                 ]
             )
@@ -207,7 +259,7 @@ class TestJavaFile:
             file = java_file(
                 lines=[
                     "line one",
-                    "// -->",
+                    "// >>",
                     "snippet line 1",
                     "snippet line 2",
                 ]
@@ -220,13 +272,13 @@ class TestJavaFile:
         def test_multiple_closed_snippets(self) -> None:
             file = java_file(
                 lines=[
-                    "// -->",  # index 0 → start_line = 1
+                    "// >>",  # index 0 → start_line = 1
                     "first snippet",  # index 1
-                    "// a <--",  # index 2 → end_line = 1, lines[1:1] = []
+                    "// a <<",  # index 2 → end_line = 1, lines[1:1] = []
                     "middle",
-                    "// -->",  # index 4 → start_line = 5
+                    "// >>",  # index 4 → start_line = 5
                     "second snippet",  # index 5
-                    "// b <--",  # index 6 → end_line = 5, lines[5:5] = []
+                    "// b <<",  # index 6 → end_line = 5, lines[5:5] = []
                 ]
             )
             snippets = file.get_all_snippets()

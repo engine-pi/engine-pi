@@ -30,7 +30,7 @@ public class SoundsContainerContainsDemo extends AudioDebugScene
 {
     public SoundsContainerContainsDemo() throws MalformedURLException
     {
-        // -->
+        // >>
         String filePath = "sounds/game-level-music.mp3";
         Sound mySound = sounds.get(filePath);
         if (sounds.contains(mySound))
@@ -45,7 +45,7 @@ public class SoundsContainerContainsDemo extends AudioDebugScene
         {
             System.out.println("Contains url");
         }
-        // <--
+        // <<
     }
 
     public static void main(String[] args) throws MalformedURLException

@@ -326,7 +326,9 @@ class Snippet:
         If the line is not a comment line, ``None`` is returned;"""
         line = self.java_file.lines[index]
         if Snippet.is_line_comment(line):
-            line = line.replace("//", "").replace("-->", "").replace("<--", "").strip()
+            line = re.sub(r">[a-z0-9]*>", "", line)
+            line = re.sub(r"<[a-z0-9]*<", "", line)
+            line = line.replace("//", "").strip()
             if line != "":
                 return line
 
@@ -368,7 +370,7 @@ class Snippet:
 
     @staticmethod
     def is_start_marker(line: str) -> bool:
-        return re.search(r"^\s*//.*-->", line) is not None
+        return re.search(r"^\s*//.*>[a-z0-9]*>", line) is not None
 
     def _is_start_marker(self, index: int) -> bool:
         """
@@ -378,7 +380,7 @@ class Snippet:
 
     @staticmethod
     def is_end_marker(line: str) -> bool:
-        return re.search(r"^\s*//.*<--", line) is not None
+        return re.search(r"^\s*//.*<[a-z0-9]*<", line) is not None
 
     @staticmethod
     def is_line_comment(line: str) -> bool:
@@ -503,8 +505,8 @@ class JavaFile:
 
         Snippets are detected using comment markers in the source code:
 
-        - Start marker: ``// -->``
-        - End marker: a comment matching ``// .*<--``
+        - Start marker: ``// >>``
+        - End marker: a comment matching ``// .*<<``
 
         For every detected region, a :class:`CodeSnippet` is created.
         If a start marker exists without a closing end marker, a snippet is
