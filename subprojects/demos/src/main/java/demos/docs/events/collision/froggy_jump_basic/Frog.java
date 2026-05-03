@@ -37,7 +37,7 @@ class Frog extends Image implements FrameListener
 
     public Frog()
     {
-        super("froggy/Frog.png");
+        super("Pixel-Adventure-1/Main Characters/Ninja Frog/Jump (32x32).png");
         pixelPerMeter(25);
         makeDynamic();
         rotationLocked(true);

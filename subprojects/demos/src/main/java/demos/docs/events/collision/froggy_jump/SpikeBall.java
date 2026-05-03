@@ -31,7 +31,7 @@ class SpikeBall extends Image implements CollisionListener<Frog>
 {
     public SpikeBall()
     {
-        super("froggy/Spiked-Ball.png");
+        super("Pixel-Adventure-1/Traps/Spiked Ball/Spiked Ball.png");
         pixelPerMeter(40);
         gravityScale(0);
         addCollisionListener(Frog.class, this);
