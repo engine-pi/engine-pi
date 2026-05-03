@@ -18,13 +18,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.docs.events.collision.froggy_jump;
+package demos.docs.events.collision.froggy_jump_basic;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
 
 import pi.Camera;
 import pi.Controller;
-import pi.Random;
 import pi.Scene;
 import pi.graphics.geom.Vector;
 
@@ -45,7 +44,6 @@ public class FroggyJump extends Scene
         Camera camera = camera();
         camera.focus(frog);
         camera.offset(new Vector(0, 4));
-        makeLevel(40);
         makePlatforms(10);
     }
 
@@ -56,31 +54,6 @@ public class FroggyJump extends Scene
             Platform platform = new Platform(5, PLATFORM_HEIGHT);
             platform.anchor(0, (double) i * 4);
             add(platform);
-        }
-    }
-
-    private void makeLevel(int heightLevel)
-    {
-        for (int i = 0; i < heightLevel; i++)
-        {
-            int numPlatforms = Random.range(2) + 1;
-            for (int j = 0; j < numPlatforms; j++)
-            {
-                Platform platform = new Platform((double) 6 / numPlatforms,
-                        PLATFORM_HEIGHT);
-                platform.anchor(numPlatforms * (j + 1) * i * Random.range(),
-                    (double) i * 4);
-                add(platform);
-            }
-            if (i > 3)
-            {
-                for (int j = 0; j < Random.range(3); j++)
-                {
-                    SpikeBall.setupSpikeBall(Random.range() * (4 + j) * i,
-                        Random.range() * 4 + 0.5 + 5 * i,
-                        layer());
-                }
-            }
         }
     }
 

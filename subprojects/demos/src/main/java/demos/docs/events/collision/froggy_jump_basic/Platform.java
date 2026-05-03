@@ -18,38 +18,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.docs.events.collision.froggy_jump;
+package demos.docs.events.collision.froggy_jump_basic;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
 
-import pi.actor.Image;
-import pi.Layer;
-import pi.event.CollisionEvent;
-import pi.event.CollisionListener;
+import pi.actor.Rectangle;
 
-class SpikeBall extends Image implements CollisionListener<Frog>
+class Platform extends Rectangle
 {
-    public SpikeBall()
+    public Platform(double width, double height)
     {
-        super("froggy/Spiked-Ball.png");
-        pixelPerMeter(40);
-        gravityScale(0);
-        addCollisionListener(Frog.class, this);
-    }
-
-    public static SpikeBall setupSpikeBall(double x, double y, Layer layer)
-    {
-        SpikeBall ball = new SpikeBall();
-        ball.center(x, y);
-        SpikeSensor sensor = new SpikeSensor(ball);
-        sensor.anchor(x - 1, y - 8);
-        layer.add(ball, sensor);
-        return ball;
-    }
-
-    @Override
-    public void onCollision(CollisionEvent<Frog> collisionEvent)
-    {
-        collisionEvent.colliding().kill();
+        super(width, height);
+        makeStatic();
+        color("brown");
     }
 }

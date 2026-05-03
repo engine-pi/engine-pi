@@ -22,7 +22,7 @@ package demos.docs.events.collision.froggy_jump;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
 
-import pi.Rectangle;
+import pi.actor.Rectangle;
 import pi.event.CollisionEvent;
 import pi.event.CollisionListener;
 

@@ -18,7 +18,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package demos.docs.events.collision.froggy_jump;
+package demos.docs.events.collision.froggy_jump_basic;
 
 // Go to file:///data/school/repos/inf/java/engine-pi/docs/manual/events/collision.md
 
@@ -46,11 +46,6 @@ class Frog extends Image implements FrameListener
     public void jumpEnabled(boolean jumpEnabled)
     {
         this.jumpEnabled = jumpEnabled;
-    }
-
-    public void kill()
-    {
-        Controller.transitionToScene(new DeathScreen());
     }
 
     @Override

@@ -26,7 +26,7 @@ import java.awt.event.KeyEvent;
 
 import pi.Controller;
 import pi.Scene;
-import pi.Text;
+import pi.actor.Text;
 import pi.event.KeyStrokeListener;
 
 class DeathScreen extends Scene implements KeyStrokeListener
