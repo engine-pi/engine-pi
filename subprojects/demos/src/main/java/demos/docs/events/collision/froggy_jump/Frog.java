@@ -56,35 +56,33 @@ class Frog extends Image implements FrameListener
     @Override
     public void onFrame(double pastTime)
     {
-        Vector velocity = velocity();
         // A: Die Blickrichtung des Frosches steuern
-        flippedHorizontally(velocity.x() < 0);
+        flippedHorizontally(velocityX() < 0);
         // B: Horizontale Bewegung steuern
         if (Controller.isKeyPressed(KeyEvent.VK_A))
         {
-            if (velocity.x() > 0)
+            if (velocityX() > 0)
             {
-                velocity(new Vector(0, velocity.y()));
+                velocityX(0);
             }
             applyForce(Vector.LEFT.multiply(600));
         }
         else if (Controller.isKeyPressed(KeyEvent.VK_D))
         {
-            if (velocity.x() < 0)
+            if (velocityX() < 0)
             {
-                velocity(new Vector(0, velocity.y()));
+                velocityX(0);
             }
             applyForce(Vector.RIGHT.multiply(600));
         }
-        if (Math.abs(velocity.x()) > MAX_SPEED)
+        if (Math.abs(velocityX()) > MAX_SPEED)
         {
-            velocity(new Vector(MAX_SPEED * Math.signum(velocity.x()),
-                    velocity.y()));
+            velocityX(MAX_SPEED * Math.signum(velocityX()));
         }
         // C: Wenn möglich den Frosch springen lassen
-        if (isGrounded() && velocity.y() <= 0 && jumpEnabled)
+        if (isGrounded() && velocityY() <= 0 && jumpEnabled)
         {
-            velocity(new Vector(velocity.x(), 0));
+            velocityY(0);
             applyImpulse(Vector.UP.multiply(180));
         }
     }
