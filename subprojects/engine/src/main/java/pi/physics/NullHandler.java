@@ -299,11 +299,20 @@ public class NullHandler implements PhysicsHandler
         physicsData.angularVelocity(0);
     }
 
+    /**
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Figur bewegen soll.
+     *
+     * @param velocity Die <b>Geschwindigkeit</b>, mit der sich die Figur
+     *     bewegen soll.
+     *
+     * @see BodyHandler#velocity(Vector)
+     * @see pi.actor.Actor#velocity(Vector)
+     */
     @Override
     @Setter
-    public void velocity(Vector metersPerSecond)
+    public void velocity(Vector velocity)
     {
-        physicsData.setVelocity(metersPerSecond);
+        physicsData.setVelocity(velocity);
     }
 
     @Override

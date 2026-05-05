@@ -317,20 +317,24 @@ public interface PhysicsHandler
     void resetMovement();
 
     /**
-     * Setzt die Geschwindigkeit für das Handler-Objekt.
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Figur bewegen soll.
      *
-     * @param metersPerSecond Setzt die Geschwindigkeit, mit der sich das
-     *     Zielobjekt bewegen soll.
+     * @param velocity Die <b>Geschwindigkeit</b>, mit der sich die Figur
+     *     bewegen soll.
+     *
+     * @see NullHandler#velocity(Vector)
+     * @see BodyHandler#velocity(Vector)
+     * @see pi.actor.Actor#velocity(Vector)
      *
      * @hidden
      */
     @Internal
-    void velocity(Vector metersPerSecond);
+    void velocity(Vector velocity);
 
     /**
-     * Gibt die aktuelle Geschwindigkeit aus.
+     * Gibt die aktuelle <b>Geschwindigkeit</b> aus.
      *
-     * @return Die aktuelle Geschwindigkeit.
+     * @return Die aktuelle <b>Geschwindigkeit</b>.
      *
      * @hidden
      */

@@ -407,12 +407,23 @@ public class BodyHandler implements PhysicsHandler
         }
     }
 
+    /**
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Figur bewegen soll.
+     *
+     * @param velocity Die <b>Geschwindigkeit</b>, mit der sich die Figur
+     *     bewegen soll.
+     *
+     * @see NullHandler#velocity(Vector)
+     * @see pi.actor.Actor#velocity(Vector)
+     *
+     * @hidden
+     */
     @Override
-    public void velocity(Vector metersPerSecond)
+    public void velocity(Vector velocity)
     {
         synchronized (worldHandler)
         {
-            body.setLinearVelocity(metersPerSecond.toVec2());
+            body.setLinearVelocity(velocity.toVec2());
         }
     }
 

@@ -1349,14 +1349,66 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Setzt die Geschwindigkeit „hart“ für dieses Objekt.
+     * Gibt die <b>Geschwindigkeit</b> aus, mit der sich diese Figur gerade
+     * (also in diesem Einzelbild) bewegt.
+     *
+     * @return Die <b>Geschwindigkeit</b>, mit der sich diese Figur gerade (also
+     *     in diesem Einzelbild) bewegt (in <b>[m / s]</b>).
+     *
+     * @see #velocity(Vector)
+     * @see #angularVelocity()
+     */
+    @API
+    @Getter
+    public final Vector velocity()
+    {
+        return physics.velocity();
+    }
+
+    /**
+     * Gibt die <b>Geschwindigkeit</b> in <b>x</b>-Richtung aus, mit der sich
+     * diese Figur gerade (also in diesem Einzelbild) bewegt.
+     *
+     * @return Die <b>Geschwindigkeit</b> in <b>x</b>-Richtung, mit der sich
+     *     diese Figur gerade (also in diesem Einzelbild) bewegt (in <b>[m /
+     *     s]</b>).
+     *
+     * @since 0.48.0
+     */
+    @API
+    @Getter
+    public final double velocityX()
+    {
+        return velocity().x();
+    }
+
+    /**
+     * Gibt die <b>Geschwindigkeit</b> in <b>y</b>-Richtung aus, mit der sich
+     * diese Figur gerade (also in diesem Einzelbild) bewegt.
+     *
+     * @return Die <b>Geschwindigkeit</b> in <b>y</b>-Richtung, mit der sich
+     *     diese Figur gerade (also in diesem Einzelbild) bewegt (in <b>[m /
+     *     s]</b>).
+     *
+     * @since 0.48.0
+     */
+    @API
+    @Getter
+    public final double velocityY()
+    {
+        return velocity().y();
+    }
+
+    /**
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Figur bewegen soll.
      *
      * <p>
-     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) des Objekts
-     * ignoriert und hart auf den übergebenen Wert gesetzt.
+     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) der Figur
+     * ignoriert und auf den übergebenen Wert gesetzt.
+     * </p>
      *
-     * @param velocity Die Geschwindigkeit, mit der sich dieses Objekt ab sofort
-     *     bewegen soll. In <b>[m / s]</b>
+     * @param velocity Die <b>Geschwindigkeit</b>, mit der sich die Figur
+     *     bewegen soll (in <b>[m / s]</b>).
      *
      * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
      *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
@@ -1378,20 +1430,86 @@ public abstract class Actor implements KeyStrokeListenerRegistration,
     }
 
     /**
-     * Gibt die Geschwindigkeit aus, mit der sich dieses Objekt gerade (also in
-     * diesem Frame) bewegt.
+     * Setzt die <b>Geschwindigkeit</b>, mit der sich die Figur bewegen soll.
      *
-     * @return Die Geschwindigkeit, mit der sich dieses Objekt gerade (also in
-     *     diesem Frame) bewegt. In <b>[m / s]</b>
+     * <p>
+     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) der Figur
+     * ignoriert und auf den übergebenen Wert gesetzt.
+     * </p>
      *
-     * @see #velocity(Vector)
-     * @see #angularVelocity()
+     * @param x Die <b>Geschwindigkeit</b> in <b>x</b>-Richtung, mit der sich
+     *     die Figur bewegen soll (in <b>[m / s]</b>).
+     * @param y Die <b>Geschwindigkeit</b> in <b>y</b>-Richtung, mit der sich
+     *     die Figur bewegen soll (in <b>[m / s]</b>).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @see #velocity()
+     *
+     * @since 0.48.0
      */
     @API
-    @Getter
-    public final Vector velocity()
+    @Setter
+    public final Actor velocity(double x, double y)
     {
-        return physics.velocity();
+        return velocity(new Vector(x, y));
+    }
+
+    /**
+     * Setzt die <b>Geschwindigkeit</b> in <b>x</b>-Richtung, mit der sich die
+     * Figur bewegen soll.
+     *
+     * <p>
+     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) der Figur
+     * ignoriert und auf den übergebenen Wert gesetzt. Die Geschwindigkeit in
+     * <b>y</b>-Richtung wird nicht verändert.
+     * </p>
+     *
+     * @param x Die <b>Geschwindigkeit</b> in <b>x</b>-Richtung, mit der sich
+     *     die Figur bewegen soll (in <b>[m / s]</b>).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.48.0
+     */
+    @API
+    @Setter
+    public final Actor velocityX(double x)
+    {
+        return velocity(x, velocityY());
+    }
+
+    /**
+     * Setzt die <b>Geschwindigkeit</b> in <b>y</b>-Richtung, mit der sich die
+     * Figur bewegen soll.
+     *
+     * <p>
+     * Damit wird die aktuelle Bewegung (nicht aber die Rotation) der Figur
+     * ignoriert und auf den übergebenen Wert gesetzt. Die Geschwindigkeit in
+     * <b>x</b>-Richtung wird nicht verändert.
+     * </p>
+     *
+     * @param y Die <b>Geschwindigkeit</b> in <b>y</b>-Richtung, mit der sich
+     *     die Figur bewegen soll (in <b>[m / s]</b>).
+     *
+     * @return Eine Referenz auf die eigene Instanz der Figur, damit nach dem
+     *     Erbauer/Builder-Entwurfsmuster die Eigenschaften der Figur durch
+     *     aneinander gekettete Setter festgelegt werden können, z.B.
+     *     {@code actor.color(..).postion(..)}.
+     *
+     * @since 0.48.0
+     */
+    @API
+    @Setter
+    public final Actor velocityY(double y)
+    {
+        return velocity(velocityX(), y);
     }
 
     /**
